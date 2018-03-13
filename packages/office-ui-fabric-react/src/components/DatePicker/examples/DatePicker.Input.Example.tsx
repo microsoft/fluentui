@@ -70,9 +70,10 @@ export interface IDatePickerInputExampleState {
   value?: Date | null;
 }
 
-export class DatePickerInputExample extends React.Component<any, IDatePickerInputExampleState> {
-  public constructor() {
-    super();
+export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
@@ -81,7 +82,7 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
   }
 
   public render() {
-    let { firstDayOfWeek, value } = this.state;
+    const { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
     return (
       <div>

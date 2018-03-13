@@ -5,7 +5,7 @@ import {
   css
 } from '../../Utilities';
 import { Link } from '../../Link';
-import { IGroupDividerProps } from './GroupedList.Props';
+import { IGroupDividerProps } from './GroupedList.types';
 import { GroupSpacer } from './GroupSpacer';
 import * as stylesImport from './GroupShowAll.scss';
 const styles: any = stylesImport;
@@ -24,7 +24,7 @@ export class GroupShowAll extends BaseComponent<IGroupDividerProps, {}> {
   };
 
   public render(): JSX.Element | null {
-    let { group, groupLevel, showAllLinkText } = this.props;
+    const { group, groupLevel, showAllLinkText } = this.props;
 
     if (group) {
       return (

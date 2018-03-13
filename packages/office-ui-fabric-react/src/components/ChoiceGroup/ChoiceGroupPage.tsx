@@ -39,10 +39,12 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ 'input' }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')
             ] }
           />
         }
@@ -88,7 +90,7 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ChoiceGroupStatus}
+            { ...ChoiceGroupStatus }
           />
         }
       />

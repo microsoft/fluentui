@@ -19,26 +19,27 @@ export interface ICalloutDirectionalExampleState {
 }
 
 const DIRECTION_OPTIONS = [
-  { key: DirectionalHint[DirectionalHint.topLeftEdge], text: 'Top Left Edge' },
-  { key: DirectionalHint[DirectionalHint.topCenter], text: 'Top Center' },
-  { key: DirectionalHint[DirectionalHint.topRightEdge], text: 'Top Right Edge' },
-  { key: DirectionalHint[DirectionalHint.topAutoEdge], text: 'Top Auto Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomLeftEdge], text: 'Bottom Left Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomCenter], text: 'Bottom Center' },
-  { key: DirectionalHint[DirectionalHint.bottomRightEdge], text: 'Bottom Right Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomAutoEdge], text: 'Bottom Auto Edge' },
-  { key: DirectionalHint[DirectionalHint.leftTopEdge], text: 'Left Top Edge' },
-  { key: DirectionalHint[DirectionalHint.leftCenter], text: 'Left Center' },
-  { key: DirectionalHint[DirectionalHint.leftBottomEdge], text: 'Left Bottom Edge' },
-  { key: DirectionalHint[DirectionalHint.rightTopEdge], text: 'Right Top Edge' },
-  { key: DirectionalHint[DirectionalHint.rightCenter], text: 'Right Center' },
-  { key: DirectionalHint[DirectionalHint.rightBottomEdge], text: 'Right Bottom Edge' },
+  { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
+  { key: DirectionalHint.topCenter, text: 'Top Center' },
+  { key: DirectionalHint.topRightEdge, text: 'Top Right Edge' },
+  { key: DirectionalHint.topAutoEdge, text: 'Top Auto Edge' },
+  { key: DirectionalHint.bottomLeftEdge, text: 'Bottom Left Edge' },
+  { key: DirectionalHint.bottomCenter, text: 'Bottom Center' },
+  { key: DirectionalHint.bottomRightEdge, text: 'Bottom Right Edge' },
+  { key: DirectionalHint.bottomAutoEdge, text: 'Bottom Auto Edge' },
+  { key: DirectionalHint.leftTopEdge, text: 'Left Top Edge' },
+  { key: DirectionalHint.leftCenter, text: 'Left Center' },
+  { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
+  { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
+  { key: DirectionalHint.rightCenter, text: 'Right Center' },
+  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
-export class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
-  private _menuButtonElement: HTMLElement;
-  public constructor() {
-    super();
+export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
+  private _menuButtonElement: HTMLElement | null;
+
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       isCalloutVisible: false,
@@ -48,7 +49,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
   }
 
   public render() {
-    let { isCalloutVisible, isBeakVisible, directionalHint, gapSpace, beakWidth } = this.state;
+    const { isCalloutVisible, isBeakVisible, directionalHint, gapSpace, beakWidth } = this.state;
     //  ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>
@@ -76,13 +77,14 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             />) }
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint!] }
+            selectedKey={ directionalHint! }
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged }
           />
         </div>
-        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <DefaultButton
+            className={ 'calloutExampleButton' }
             onClick={ this._onShowMenuClicked }
             text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
           />
@@ -91,7 +93,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
           <Callout
             className='ms-CalloutExample-callout'
             gapSpace={ gapSpace }
-            targetElement={ this._menuButtonElement }
+            target={ this._menuButtonElement }
             isBeakVisible={ isBeakVisible }
             beakWidth={ beakWidth }
             onDismiss={ this._onCalloutDismiss }
@@ -100,13 +102,13 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             <div className='ms-CalloutExample-header'>
               <p className='ms-CalloutExample-title'>
                 All of your favorite people
-              </p>
+               </p>
             </div>
             <div className='ms-CalloutExample-inner'>
               <div className='ms-CalloutExample-content'>
                 <p className='ms-CalloutExample-subText'>
                   Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-                </p>
+                 </p>
               </div>
             </div>
           </Callout>
@@ -140,7 +142,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
   @autobind
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      directionalHint: (DirectionalHint as any)[option.key]
+      directionalHint: option.key as number
     });
   }
 

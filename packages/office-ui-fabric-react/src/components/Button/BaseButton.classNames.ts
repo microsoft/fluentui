@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
-import { IButtonStyles } from './Button.Props';
+import { mergeStyleSets } from '../../Styling';
+import { IButtonStyles } from './Button.types';
 
 export interface IButtonClassNames {
   root?: string;
@@ -13,97 +13,121 @@ export interface IButtonClassNames {
   screenReaderText?: string;
 }
 
-export const getClassNames = memoizeFunction((
+export const getBaseButtonClassNames = memoizeFunction((
   styles: IButtonStyles,
   className: string,
   variantClassName: string,
   iconClassName: string | undefined,
+  menuIconClassName: string | undefined,
   disabled: boolean,
   checked: boolean,
-  expanded: boolean
+  expanded: boolean,
+  isSplit: boolean | undefined
 ): IButtonClassNames => {
-  return {
-    root: mergeStyles(
-      className,
+  const isExpanded = expanded && !isSplit;
+  return mergeStyleSets({
+    root: [
       'ms-Button',
-      variantClassName,
       styles.root,
+      className,
+      variantClassName,
       checked && [
         'is-checked',
         styles.rootChecked
       ],
-      expanded && [
+      isExpanded && [
         'is-expanded',
         styles.rootExpanded,
         {
-          ':hover .ms-Button-icon': styles.iconExpandedHovered,
-          ':hover': styles.rootExpandedHovered
+          selectors: {
+            ':hover .ms-Button-icon': styles.iconExpandedHovered,
+            ':hover .ms-Button-menuIcon': styles.rootExpandedHovered,
+            ':hover': styles.rootExpandedHovered
+          }
         }
       ],
       disabled && [
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && {
-        ':hover': styles.rootHovered,
-        ':hover .ms-Button-icon': styles.iconHovered,
-        ':hover .ms-Button-description': styles.descriptionHovered,
-        ':focus': styles.rootFocused,
-        ':active': styles.rootPressed,
-        ':active .ms-Button-description': styles.descriptionPressed
+      !disabled && !isExpanded && !checked && {
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':hover .ms-Button-icon': styles.iconHovered,
+          ':hover .ms-Button-description': styles.descriptionHovered,
+          ':hover .ms-Button-menuIcon': styles.menuIconHovered,
+          ':focus': styles.rootFocused,
+          ':active': styles.rootPressed,
+          ':active .ms-Button-icon': styles.iconPressed,
+          ':active .ms-Button-description': styles.descriptionPressed,
+          ':active .ms-Button-menuIcon': styles.menuIconPressed
+        }
       },
       disabled && checked && [
         styles.rootCheckedDisabled
       ],
       !disabled && checked && {
-        ':hover': styles.rootCheckedHovered,
-        ':active': styles.rootCheckedPressed
+        selectors: {
+          ':hover': styles.rootCheckedHovered,
+          ':active': styles.rootCheckedPressed
+        }
       }
-    ) as string,
-
-    flexContainer: mergeStyles(
+    ],
+    flexContainer: [
       'ms-Button-flexContainer',
       styles.flexContainer
-    ) as string,
-
-    textContainer: mergeStyles(
+    ],
+    textContainer: [
       'ms-Button-textContainer',
       styles.textContainer
-    ) as string,
-
-    icon: mergeStyles(
+    ],
+    icon: [
       'ms-Button-icon',
       iconClassName,
       styles.icon,
-      expanded && styles.iconExpanded,
+      isExpanded && styles.iconExpanded,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
-    ) as string,
-
-    label: mergeStyles(
+    ],
+    label: [
       'ms-Button-label',
       styles.label,
       checked && styles.labelChecked,
       disabled && styles.labelDisabled,
-    ) as string,
-
-    menuIcon: mergeStyles(
+    ],
+    menuIcon: [
       'ms-Button-menuIcon',
+      menuIconClassName,
       styles.menuIcon,
       checked && styles.menuIconChecked,
-      disabled && styles.menuIconDisabled
-    ) as string,
-
-    description: mergeStyles(
+      disabled && styles.menuIconDisabled,
+      !disabled &&
+      !isExpanded &&
+      !checked && {
+        selectors: {
+          ':hover': styles.menuIconHovered,
+          ':active': styles.menuIconPressed,
+        },
+      },
+      isExpanded && [
+        'is-expanded',
+        styles.menuIconExpanded,
+        {
+          selectors: {
+            ':hover': styles.menuIconExpandedHovered,
+          },
+        },
+      ]
+    ],
+    description: [
       'ms-Button-description',
       styles.description,
       checked && styles.descriptionChecked,
       disabled && styles.descriptionDisabled
-    ) as string,
-
-    screenReaderText: mergeStyles(
+    ],
+    screenReaderText: [
       'ms-Button-screenReaderText',
       styles.screenReaderText
-    ) as string
-  };
+    ]
+  });
 });

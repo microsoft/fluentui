@@ -1,7 +1,7 @@
-import { ICheckboxStyles } from './Checkbox.Props';
+import { ICheckboxStyles } from './Checkbox.types';
 import {
   ITheme,
-  mergeStyleSets,
+  concatStyleSets,
   getFocusStyle,
   FontSizes
 } from '../../Styling';
@@ -18,18 +18,20 @@ export const getStyles = memoizeFunction((
   const { semanticColors, palette } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
-  const checkboxBorderColor = semanticColors.inputBorder;
-  const checkboxBorderColorDisabled = semanticColors.disabledText;
+  const checkboxBorderColor = semanticColors.smallInputBorder;
+  const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
+  const checkboxBorderColorDisabled = semanticColors.disabledBodyText;
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxBackgroundDisabled = semanticColors.disabledText;
+  const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+  const checkboxBackgroundDisabled = semanticColors.disabledBodyText;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
   const styles: ICheckboxStyles = {
     root: [
-      getFocusStyle(theme),
+      getFocusStyle(theme, -2),
       {
         padding: '0',
         border: 'none',
@@ -58,7 +60,7 @@ export const getStyles = memoizeFunction((
     },
     checkbox: {
       display: 'flex',
-      flexShrink: '0',
+      flexShrink: 0,
       alignItems: 'center',
       justifyContent: 'center',
       height: MS_CHECKBOX_LABEL_SIZE,
@@ -73,19 +75,27 @@ export const getStyles = memoizeFunction((
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
       /* incase the icon is bigger than the box */
-      overflow: 'hidden',
+      overflow: 'hidden'
     },
     checkboxHovered: {
       borderColor: checkboxBorderHoveredColor,
     },
+    checkboxFocused: {
+      borderColor: checkboxBorderHoveredColor,
+    },
     checkboxChecked: {
       background: checkboxBackgroundChecked,
+      borderColor: checkboxBorderColorChecked
     },
     checkboxCheckedHovered: {
       background: checkboxBackgroundCheckedHovered,
+      borderColor: checkboxBorderColorCheckedHovered
+    },
+    checkboxCheckedFocused: {
+      background: checkboxBackgroundCheckedHovered,
+      borderColor: checkboxBorderColorCheckedHovered
     },
     checkboxDisabled: {
-      background: checkboxBackgroundDisabled,
       borderColor: checkboxBorderColorDisabled
     },
     checkboxCheckedDisabled: {
@@ -113,10 +123,13 @@ export const getStyles = memoizeFunction((
     textHovered: {
       color: palette.black,
     },
+    textFocused: {
+      color: palette.black,
+    },
     textDisabled: {
       color: checkboxTextColorDisabled,   // ms-fontColor-neutralTertiary
     }
   };
 
-  return mergeStyleSets(styles, customStyles)!;
+  return concatStyleSets(styles, customStyles)!;
 });

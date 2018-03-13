@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,9 +22,36 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-82c8b87c.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-5-5a61f6fb.woff') format('woff')`,
     },
     icons: {
+      'YammerLogo': '\uED19',
+      'Hide': '\uED1A',
+      'Uneditable': '\uED1D',
+      'ReturnToSession': '\uED24',
+      'OpenFolderHorizontal': '\uED25',
+      'CalendarMirrored': '\uED28',
+      'SwayLogoInverse': '\uED29',
+      'OutOfOffice': '\uED34',
+      'Trophy': '\uED3F',
+      'ReopenPages': '\uED50',
+      'EmojiTabSymbols': '\uED58',
+      'AADLogo': '\uED68',
+      'AccessLogo': '\uED69',
+      'AdminALogoInverse32': '\uED6A',
+      'AdminCLogoInverse32': '\uED6B',
+      'AdminDLogoInverse32': '\uED6C',
+      'AdminELogoInverse32': '\uED6D',
+      'AdminLLogoInverse32': '\uED6E',
+      'AdminMLogoInverse32': '\uED6F',
+      'AdminOLogoInverse32': '\uED70',
+      'AdminPLogoInverse32': '\uED71',
+      'AdminSLogoInverse32': '\uED72',
+      'AdminYLogoInverse32': '\uED73',
+      'DelveLogoInverse': '\uED76',
+      'ExchangeLogoInverse': '\uED78',
+      'LyncLogo': '\uED79',
+      'OfficeVideoLogoInverse': '\uED7A',
       'SocialListeningLogo': '\uED7C',
       'VisioLogoInverse': '\uED7D',
       'Balloons': '\uED7E',
@@ -54,6 +90,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Room': '\uED9F',
       'Unsubscribe': '\uEDA0',
       'Subscribe': '\uEDA1',
+      'HardDrive': '\uEDA2',
       'RecurringTask': '\uEDB2',
       'TaskManager': '\uEDB7',
       'TaskManagerMirrored': '\uEDB8',
@@ -87,35 +124,9 @@ export function initializeIcons(baseUrl: string = ''): void {
       'CaretRightSolid8': '\uEDDA',
       'CaretUpSolid8': '\uEDDB',
       'CaretDownSolid8': '\uEDDC',
-      'ClearFormatting': '\uEDDD',
-      'Superscript': '\uEDDE',
-      'Subscript': '\uEDDF',
-      'Strikethrough': '\uEDE0',
-      'Export': '\uEDE1',
-      'ExportMirrored': '\uEDE2',
-      'SingleBookmark': '\uEDFF',
-      'DoubleChevronDown': '\uEE04',
-      'ReplyAll': '\uEE0A',
-      'GoogleDriveLogo': '\uEE0B',
-      'Questionnaire': '\uEE19',
-      'ReplyMirrored': '\uEE35',
-      'ReplyAllMirrored': '\uEE36',
-      'AddGroup': '\uEE3D',
-      'QuestionnaireMirrored': '\uEE4B',
-      'TemporaryUser': '\uEE58',
-      'CaretSolid16': '\uEE62',
-      'GroupedDescending': '\uEE66',
-      'GroupedAscending': '\uEE67',
-      'AwayStatus': '\uEE6A',
-      'MyMoviesTV': '\uEE6C',
-      'AustralianRules': '\uEE70',
-      'WifiEthernet': '\uEE77',
-      'DateTimeMirrored': '\uEE93',
-      'StopSolid': '\uEE95',
-      'DoubleChevronUp12': '\uEE96',
-      'DoubleChevronDown12': '\uEE97',
-      'DoubleChevronLeft12': '\uEE98',
-      'DoubleChevronRight12': '\uEE99'
+      'ClearFormatting': '\uEDDD'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

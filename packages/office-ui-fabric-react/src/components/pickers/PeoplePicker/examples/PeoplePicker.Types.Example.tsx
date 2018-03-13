@@ -18,7 +18,7 @@ import {
   ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru } from './PeoplePickerExampleData';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Promise } from 'es6-promise';
@@ -53,11 +53,11 @@ const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limited
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _picker: IBasePicker<IPersonaProps>;
 
-  constructor() {
-    super();
-    let peopleList: IPersonaWithMenu[] = [];
+  constructor(props: {}) {
+    super(props);
+    const peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
-      let target: IPersonaWithMenu = {};
+      const target: IPersonaWithMenu = {};
 
       assign(target, persona);
       peopleList.push(target);
@@ -131,12 +131,15 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
+  private _getTextFromItem(persona: IPersonaProps): string {
+    return persona.primaryText as string;
+  }
   private _renderListPicker() {
     return (
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
         key={ 'list' }
@@ -147,7 +150,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -157,7 +161,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
@@ -169,7 +173,9 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        componentRef={ this._resolveRef('_picker') }
+        onInputChange={ this._onInputChange }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -179,7 +185,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
@@ -189,7 +195,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -199,7 +206,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         className={ 'ms-PeoplePicker' }
         defaultSelectedItems={ people.splice(0, 3) }
         key={ 'list' }
@@ -211,7 +218,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -223,7 +231,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
         onEmptyInputFocus={ this._returnMostRecentlyUsedWithLimit }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
@@ -233,7 +241,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -243,7 +252,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
@@ -255,15 +264,16 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
 
   private _renderControlledPicker() {
-    let controlledItems = [];
+    const controlledItems = [];
     for (let i = 0; i < 5; i++) {
-      let item = this.state.peopleList[i];
+      const item = this.state.peopleList[i];
       if (this.state.currentSelectedItems!.indexOf(item) === -1) {
         controlledItems.push(this.state.peopleList[i]);
       }
@@ -272,7 +282,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <div>
         <NormalPeoplePicker
           onResolveSuggestions={ this._onFilterChanged }
-          getTextFromItem={ (persona: IPersonaProps) => persona.primaryText! }
+          getTextFromItem={ this._getTextFromItem }
           pickerSuggestionsProps={ suggestionProps }
           className={ 'ms-PeoplePicker' }
           key={ 'controlled' }
@@ -282,19 +292,21 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
           } }
-          componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+          componentRef={ this._resolveRef('_picker') }
+          resolveDelay={ 300 }
         />
         <label> Click to Add a person </label>
-        { controlledItems.map(item => <div>
+        { controlledItems.map((item, index) => <div key={ index }>
           <DefaultButton
             className='controlledPickerButton'
+            // tslint:disable-next-line:jsx-no-lambda
             onClick={ () => {
               this.setState({
                 currentSelectedItems: this.state.currentSelectedItems!.concat([item])
               });
             } }
           >
-            <Persona { ...item} />
+            <Persona { ...item } />
           </DefaultButton>
         </div>) }
       </div>
@@ -311,7 +323,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   @autobind
   private _onSetFocusButtonClicked() {
     if (this._picker) {
-      this._picker.focus();
+      this._picker.focusInput();
     }
   }
 
@@ -322,17 +334,17 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   @autobind
   private _onRemoveSuggestion(item: IPersonaProps): void {
-    let { peopleList, mostRecentlyUsed: mruState } = this.state;
-    let indexPeopleList: number = peopleList.indexOf(item);
-    let indexMostRecentlyUsed: number = mruState.indexOf(item);
+    const { peopleList, mostRecentlyUsed: mruState } = this.state;
+    const indexPeopleList: number = peopleList.indexOf(item);
+    const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
     if (indexMostRecentlyUsed >= 0) {
-      let newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
+      const newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }
@@ -429,4 +441,21 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
   }
 
+  /**
+   * Takes in the picker input and modifies it in whichever way
+   * the caller wants, i.e. parsing entries copied from Outlook (sample
+   * input: "Aaron Reid <aaron>").
+   *
+   * @param input The text entered into the picker.
+   */
+  private _onInputChange(input: string): string {
+    const outlookRegEx = /<.*>/g;
+    const emailAddress = outlookRegEx.exec(input);
+
+    if (emailAddress && emailAddress[0]) {
+      return emailAddress[0].substring(1, emailAddress[0].length - 1);
+    }
+
+    return input;
+  }
 }

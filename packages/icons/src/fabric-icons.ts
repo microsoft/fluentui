@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,7 +22,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-4ac62dd2.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`,
     },
     icons: {
       'GlobalNavButton': '\uE700',
@@ -28,6 +37,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Filter': '\uE71C',
       'Search': '\uE721',
       'Share': '\uE72D',
+      'BlockedSite': '\uE72F',
       'FavoriteStar': '\uE734',
       'FavoriteStarFill': '\uE735',
       'CheckMark': '\uE73E',
@@ -35,9 +45,11 @@ export function initializeIcons(baseUrl: string = ''): void {
       'ChevronLeft': '\uE76B',
       'ChevronRight': '\uE76C',
       'Calendar': '\uE787',
+      'Megaphone': '\uE789',
       'Undo': '\uE7A7',
       'Flag': '\uE7C1',
       'Page': '\uE7C3',
+      'Pinned': '\uE840',
       'View': '\uE890',
       'Clear': '\uE894',
       'Download': '\uE896',
@@ -49,7 +61,6 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Tag': '\uE8EC',
       'AddFriend': '\uE8FA',
       'Info': '\uE946',
-      'Pinned': '\uE840',
       'SortLines': '\uE9D0',
       'List': '\uEA37',
       'CircleRing': '\uEA3A',
@@ -57,6 +68,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'HeartFill': '\uEB52',
       'Tiles': '\uECA5',
       'Embed': '\uECCE',
+      'Glimmer': '\uECF4',
       'Ascending': '\uEDC0',
       'Descending': '\uEDC1',
       'SortUp': '\uEE68',
@@ -71,5 +83,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'StatusCircleCheckmark': '\uF13E',
       'MoreVertical': '\uF2BC'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

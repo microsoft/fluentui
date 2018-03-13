@@ -32,7 +32,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
   }
 
   public render() {
-    let { items, columns } = this.state;
+    const { items, columns } = this.state;
 
     return (
       <div>
@@ -81,7 +81,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
   @autobind
   private _onRenderExpandedCard(item: any): JSX.Element {
-    let { items, columns } = this.state;
+    const { items, columns } = this.state;
     return (
       <div className='hoverCardExample-expandedCard'>
         { item.description }

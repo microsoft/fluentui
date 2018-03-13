@@ -1,8 +1,8 @@
 @import '../../common/common';
 
-$iconForegroundColor: $ms-color-neutralSecondary;
-$headerForegroundColor: $ms-color-neutralPrimary;
-$headerBackgroundColor: $ms-color-white;
+$iconForegroundColor: $bodySubtextColor;
+$headerForegroundColor: $bodyTextColor;
+$headerBackgroundColor: $bodyBackgroundColor;
 $dropdownChevronForegroundColor: $ms-color-neutralTertiary;
 $rowHeight: 32px;
 $resizerColor: $ms-color-neutralTertiaryAlt;
@@ -18,8 +18,9 @@ $isPaddedMargin: 24px;
   height: $rowHeight;
   line-height: $rowHeight;
   white-space: nowrap;
+  box-sizing: content-box;
   padding-bottom: 1px;
-  border-bottom: 1px solid $dividerColor;
+  border-bottom: 1px solid $bodyDividerColor;
   cursor: default;
   user-select: none;
 
@@ -55,17 +56,19 @@ $isPaddedMargin: 24px;
     position: relative;
     padding: 0;
     margin: 0;
+    display: inline-flex;
+    align-items: center;
   }
 
   &.cellIsActionable {
 
     &:hover {
-      color: $ms-color-neutralPrimary;
-      background: $unselectedHoverBackgroundColor;
+      color: $bodyTextColor;
+      background: $bodyBackgroundColor;
     }
 
     &:active {
-      background: $unselectedActiveBackgroundColor;
+      background: $listItemBackgroundHoveredColor;
     }
   }
 
@@ -82,7 +85,6 @@ $isPaddedMargin: 24px;
   cursor: ew-resize;
   bottom: 0;
   top: 0;
-  margin: 0 -8px;
   overflow: hidden;
   height: inherit;
   background: transparent;
@@ -110,6 +112,15 @@ $isPaddedMargin: 24px;
   &.cellIsResizing:after {
     @include ms-drop-shadow();
   }
+}
+
+.cellSizerStart {
+  margin: 0 -8px;
+}
+
+.cellSizerEnd {
+  margin: 0;
+  @include margin-left(-16px);
 }
 
 .collapseButton {

@@ -9,16 +9,80 @@
 	},
 	"glyphs": [
 		{
+			"name": "World",
+			"unicode": "E909"
+		},
+		{
+			"name": "Comment",
+			"unicode": "E90A"
+		},
+		{
+			"name": "DockLeft",
+			"unicode": "E90C"
+		},
+		{
+			"name": "DockRight",
+			"unicode": "E90D"
+		},
+		{
+			"name": "Repair",
+			"unicode": "E90F"
+		},
+		{
+			"name": "Accounts",
+			"unicode": "E910"
+		},
+		{
+			"name": "RadioBullet",
+			"unicode": "E915"
+		},
+		{
+			"name": "Stopwatch",
+			"unicode": "E916"
+		},
+		{
+			"name": "Clock",
+			"unicode": "E917"
+		},
+		{
+			"name": "WorldClock",
+			"unicode": "E918"
+		},
+		{
+			"name": "AlarmClock",
+			"unicode": "E919"
+		},
+		{
+			"name": "Hospital",
+			"unicode": "E91D"
+		},
+		{
+			"name": "Timer",
+			"unicode": "E91E"
+		},
+		{
+			"name": "FullCircleMask",
+			"unicode": "E91F"
+		},
+		{
+			"name": "LocationFill",
+			"unicode": "E920"
+		},
+		{
+			"name": "ChromeMinimize",
+			"unicode": "E921"
+		},
+		{
+			"name": "Annotation",
+			"unicode": "E924"
+		},
+		{
 			"name": "Fingerprint",
 			"unicode": "E928"
 		},
 		{
 			"name": "Handwriting",
 			"unicode": "E929"
-		},
-		{
-			"name": "StackIndicator",
-			"unicode": "E7FF"
 		},
 		{
 			"name": "Completed",
@@ -43,6 +107,14 @@
 		{
 			"name": "FlickRight",
 			"unicode": "E938"
+		},
+		{
+			"name": "MiniExpand",
+			"unicode": "E93A"
+		},
+		{
+			"name": "MiniContract",
+			"unicode": "E93B"
 		},
 		{
 			"name": "Streaming",
@@ -133,14 +205,6 @@
 			"unicode": "E974"
 		},
 		{
-			"name": "Dictionary",
-			"unicode": "E82D"
-		},
-		{
-			"name": "ChromeBack",
-			"unicode": "E830"
-		},
-		{
 			"name": "PC1",
 			"unicode": "E977"
 		},
@@ -155,10 +219,6 @@
 		{
 			"name": "HalfAlpha",
 			"unicode": "E97E"
-		},
-		{
-			"name": "LockSolid",
-			"unicode": "E9A2"
 		},
 		{
 			"name": "ConstructionCone",
@@ -185,22 +245,6 @@
 			"unicode": "E995"
 		},
 		{
-			"name": "CaretHollow",
-			"unicode": "E817"
-		},
-		{
-			"name": "CaretSolid",
-			"unicode": "E818"
-		},
-		{
-			"name": "FolderOpen",
-			"unicode": "E838"
-		},
-		{
-			"name": "PinnedFill",
-			"unicode": "E842"
-		},
-		{
 			"name": "Chart",
 			"unicode": "E999"
 		},
@@ -209,16 +253,16 @@
 			"unicode": "E99A"
 		},
 		{
+			"name": "LockSolid",
+			"unicode": "E9A2"
+		},
+		{
 			"name": "BidiLtr",
 			"unicode": "E9AA"
 		},
 		{
 			"name": "BidiRtl",
 			"unicode": "E9AB"
-		},
-		{
-			"name": "RevToggleKey",
-			"unicode": "E845"
 		},
 		{
 			"name": "RightDoubleQuote",
@@ -297,14 +341,6 @@
 			"unicode": "E9CF"
 		},
 		{
-			"name": "Ringer",
-			"unicode": "EA8F"
-		},
-		{
-			"name": "PDF",
-			"unicode": "EA90"
-		},
-		{
 			"name": "Ribbon",
 			"unicode": "E9D1"
 		},
@@ -365,48 +401,12 @@
 			"unicode": "EA01"
 		},
 		{
-			"name": "StoreLogoMed",
+			"name": "HourGlass",
+			"unicode": "EA03"
+		},
+		{
+			"name": "StoreLogoMed20",
 			"unicode": "EA04"
-		},
-		{
-			"name": "TriangleSolid",
-			"unicode": "EA08"
-		},
-		{
-			"name": "RainShowersNight",
-			"unicode": "EA0F"
-		},
-		{
-			"name": "SnowShowerNight",
-			"unicode": "EA11"
-		},
-		{
-			"name": "HailNight",
-			"unicode": "EA13"
-		},
-		{
-			"name": "Info2",
-			"unicode": "EA1F"
-		},
-		{
-			"name": "StoreLogo",
-			"unicode": "EA96"
-		},
-		{
-			"name": "MultiSelectMirrored",
-			"unicode": "EA98"
-		},
-		{
-			"name": "Broom",
-			"unicode": "EA99"
-		},
-		{
-			"name": "MusicInCollectionFill",
-			"unicode": "EA36"
-		},
-		{
-			"name": "Asterisk",
-			"unicode": "EA38"
 		}
 	]
 }

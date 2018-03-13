@@ -9,9 +9,13 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "strict": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "types": [
-      "chai",
-      "mocha",
       "webpack-env"
     ]
   },

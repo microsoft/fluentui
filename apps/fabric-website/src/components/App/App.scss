@@ -4,63 +4,35 @@
 :global {
   // Element that wraps everything except for the header
   .App-wrapper {
-    display: flex;
-    flex-direction: column;
     margin: 0 auto;
     max-width: $App-maximumWidth;
+    position: relative;
   }
 
   // Nav is hidden off screen by default
   .App-nav {
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
-    bottom: 0;
-    @include ms-left(-$Nav-width);
     overflow-y: auto;
-    position: fixed;
-    top: $Header-height;
-    transition: $ms-animation-duration-2 $ms-animation-ease-1;
-    @include ms-transition-property(left);
+    max-height: 100vh;
+    height: 100vh; // fallback height if not set in JS style attribute
     width: $Nav-width;
+    @include ms-float(left);
+    z-index: 999; // This z-index needs to be high to prevent jittery scrolling in Edge.
   }
 
   .App-content {
     @include contentPadding();
     background-color: $ms-color-neutralLighter;
-    flex-grow: 1;
     left: 0;
     overflow: hidden;
     position: relative;
     transition: all $ms-animation-duration-2 $ms-animation-ease-1;
+    min-height: calc(100vh - #{$Header-height-full-uhf});
 
     @include high-contrast {
       border-right: 1px solid WindowText;
       border-left: 1px solid WindowText;
       border-bottom: 1px solid WindowText;
-    }
-  }
-
-  // When the nav is open (smaller screens only) push the content over and prevent app from scrolling
-  @media screen and (max-width: $uhf-screen-min-mobile) {
-    .App {
-      padding: 0;
-    }
-
-    .App.is-navOpen {
-      bottom: 0;
-      left: 0;
-      overflow: hidden;
-      position: fixed;
-      right: 0;
-      top: 0;
-
-      .App-nav {
-        @include ms-left(0);
-      }
-
-      .App-content {
-        @include ms-left($Nav-width);
-        opacity: 0.5; // Dim the content
-      }
     }
   }
 
@@ -73,32 +45,17 @@
       @include ms-padding-left($App-padding-left-lg);
     }
 
-    .App-wrapper {
-      flex-direction: row;
-    }
-
     .App-nav {
-      @include ms-left(auto);
-      top: auto; // Mobile nav bar is no longer there
-      position: relative;
-      overflow-y: visible
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .App-content {
-      margin-top: 0;
-      flex-grow: unset;
+      max-width: calc(100% - #{$Nav-width}); // IE needs max-width, it was ignoring width
       width: calc(100% - #{$Nav-width});
-    }
-
-    // Reset values for the nav and content if opened on larger screens
-    .App.is-navOpen {
-      .App-nav {
-        @include ms-left(auto);
-      }
-
-      .App-content {
-        @include ms-left(auto);
-      }
+      @include ms-left($Nav-width);
     }
   }
 
@@ -110,6 +67,11 @@
 
     .App-nav {
       @include ms-margin-left(18px);
+    }
+
+    .App-content {
+      width: calc(100% - #{$Nav-width});
+      @include ms-left($Nav-width + 18px);
     }
   }
 }

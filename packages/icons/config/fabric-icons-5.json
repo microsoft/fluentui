@@ -9,6 +9,114 @@
 	},
 	"glyphs": [
 		{
+			"name": "YammerLogo",
+			"unicode": "ED19"
+		},
+		{
+			"name": "Hide",
+			"unicode": "ED1A"
+		},
+		{
+			"name": "Uneditable",
+			"unicode": "ED1D"
+		},
+		{
+			"name": "ReturnToSession",
+			"unicode": "ED24"
+		},
+		{
+			"name": "OpenFolderHorizontal",
+			"unicode": "ED25"
+		},
+		{
+			"name": "CalendarMirrored",
+			"unicode": "ED28"
+		},
+		{
+			"name": "SwayLogoInverse",
+			"unicode": "ED29"
+		},
+		{
+			"name": "OutOfOffice",
+			"unicode": "ED34"
+		},
+		{
+			"name": "Trophy",
+			"unicode": "ED3F"
+		},
+		{
+			"name": "ReopenPages",
+			"unicode": "ED50"
+		},
+		{
+			"name": "EmojiTabSymbols",
+			"unicode": "ED58"
+		},
+		{
+			"name": "AADLogo",
+			"unicode": "ED68"
+		},
+		{
+			"name": "AccessLogo",
+			"unicode": "ED69"
+		},
+		{
+			"name": "AdminALogoInverse32",
+			"unicode": "ED6A"
+		},
+		{
+			"name": "AdminCLogoInverse32",
+			"unicode": "ED6B"
+		},
+		{
+			"name": "AdminDLogoInverse32",
+			"unicode": "ED6C"
+		},
+		{
+			"name": "AdminELogoInverse32",
+			"unicode": "ED6D"
+		},
+		{
+			"name": "AdminLLogoInverse32",
+			"unicode": "ED6E"
+		},
+		{
+			"name": "AdminMLogoInverse32",
+			"unicode": "ED6F"
+		},
+		{
+			"name": "AdminOLogoInverse32",
+			"unicode": "ED70"
+		},
+		{
+			"name": "AdminPLogoInverse32",
+			"unicode": "ED71"
+		},
+		{
+			"name": "AdminSLogoInverse32",
+			"unicode": "ED72"
+		},
+		{
+			"name": "AdminYLogoInverse32",
+			"unicode": "ED73"
+		},
+		{
+			"name": "DelveLogoInverse",
+			"unicode": "ED76"
+		},
+		{
+			"name": "ExchangeLogoInverse",
+			"unicode": "ED78"
+		},
+		{
+			"name": "LyncLogo",
+			"unicode": "ED79"
+		},
+		{
+			"name": "OfficeVideoLogoInverse",
+			"unicode": "ED7A"
+		},
+		{
 			"name": "SocialListeningLogo",
 			"unicode": "ED7C"
 		},
@@ -161,6 +269,10 @@
 			"unicode": "EDA1"
 		},
 		{
+			"name": "HardDrive",
+			"unicode": "EDA2"
+		},
+		{
 			"name": "RecurringTask",
 			"unicode": "EDB2"
 		},
@@ -295,118 +407,6 @@
 		{
 			"name": "ClearFormatting",
 			"unicode": "EDDD"
-		},
-		{
-			"name": "Superscript",
-			"unicode": "EDDE"
-		},
-		{
-			"name": "Subscript",
-			"unicode": "EDDF"
-		},
-		{
-			"name": "Strikethrough",
-			"unicode": "EDE0"
-		},
-		{
-			"name": "Export",
-			"unicode": "EDE1"
-		},
-		{
-			"name": "ExportMirrored",
-			"unicode": "EDE2"
-		},
-		{
-			"name": "SingleBookmark",
-			"unicode": "EDFF"
-		},
-		{
-			"name": "DoubleChevronDown",
-			"unicode": "EE04"
-		},
-		{
-			"name": "ReplyAll",
-			"unicode": "EE0A"
-		},
-		{
-			"name": "GoogleDriveLogo",
-			"unicode": "EE0B"
-		},
-		{
-			"name": "Questionnaire",
-			"unicode": "EE19"
-		},
-		{
-			"name": "ReplyMirrored",
-			"unicode": "EE35"
-		},
-		{
-			"name": "ReplyAllMirrored",
-			"unicode": "EE36"
-		},
-		{
-			"name": "AddGroup",
-			"unicode": "EE3D"
-		},
-		{
-			"name": "QuestionnaireMirrored",
-			"unicode": "EE4B"
-		},
-		{
-			"name": "TemporaryUser",
-			"unicode": "EE58"
-		},
-		{
-			"name": "CaretSolid16",
-			"unicode": "EE62"
-		},
-		{
-			"name": "GroupedDescending",
-			"unicode": "EE66"
-		},
-		{
-			"name": "GroupedAscending",
-			"unicode": "EE67"
-		},
-		{
-			"name": "AwayStatus",
-			"unicode": "EE6A"
-		},
-		{
-			"name": "MyMoviesTV",
-			"unicode": "EE6C"
-		},
-		{
-			"name": "AustralianRules",
-			"unicode": "EE70"
-		},
-		{
-			"name": "WifiEthernet",
-			"unicode": "EE77"
-		},
-		{
-			"name": "DateTimeMirrored",
-			"unicode": "EE93"
-		},
-		{
-			"name": "StopSolid",
-			"unicode": "EE95"
-		},
-		{
-			"name": "DoubleChevronUp12",
-			"unicode": "EE96"
-		},
-		{
-			"name": "DoubleChevronDown12",
-			"unicode": "EE97"
-		},
-		{
-			"name": "DoubleChevronLeft12",
-			"unicode": "EE98"
-		},
-		{
-			"name": "DoubleChevronRight12",
-			"unicode": "EE99"
 		}
 	]
 }

@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,11 +22,12 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-8a1666a2.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-0-6a62cc1b.woff') format('woff')`,
     },
     icons: {
       'DecreaseIndentLegacy': '\uE290',
       'IncreaseIndentLegacy': '\uE291',
+      'SizeLegacy': '\uE2B2',
       'InternetSharing': '\uE704',
       'Brightness': '\uE706',
       'MapPin': '\uE707',
@@ -31,6 +41,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Shop': '\uE719',
       'Stop': '\uE71A',
       'Link': '\uE71B',
+      'AllApps': '\uE71D',
       'Zoom': '\uE71E',
       'ZoomOut': '\uE71F',
       'Microphone': '\uE720',
@@ -43,6 +54,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Back': '\uE72B',
       'Refresh': '\uE72C',
       'Lock': '\uE72E',
+      'ReportHacked': '\uE730',
       'EMI': '\uE731',
       'MiniLink': '\uE732',
       'Blocked': '\uE733',
@@ -58,6 +70,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Print': '\uE749',
       'Up': '\uE74A',
       'Down': '\uE74B',
+      'OEM': '\uE74C',
       'Save': '\uE74E',
       'Cloud': '\uE753',
       'CommandPrompt': '\uE756',
@@ -86,7 +99,6 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Error': '\uE783',
       'GripperBarVertical': '\uE784',
       'Unlock': '\uE785',
-      'Megaphone': '\uE789',
       'AutoEnhanceOn': '\uE78D',
       'AutoEnhanceOff': '\uE78E',
       'Color': '\uE790',
@@ -96,6 +108,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'AspectRatio': '\uE799',
       'Contrast': '\uE7A1',
       'Redo': '\uE7A6',
+      'Crop': '\uE7A8',
       'PhotoCollection': '\uE7AA',
       'Album': '\uE7AB',
       'Rotate': '\uE7AD',
@@ -111,11 +124,9 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Move': '\uE7C2',
       'TouchPointer': '\uE7C9',
       'Merge': '\uE7D5',
-      'TurnRight': '\uE7DB',
-      'Ferry': '\uE7E3',
-      'Highlight': '\uE7E6',
-      'Tab': '\uE7E9',
-      'Admin': '\uE7EF'
+      'TurnRight': '\uE7DB'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

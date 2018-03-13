@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   Persona,
   PersonaSize,
@@ -20,16 +21,18 @@ const examplePersona = {
   optionalText: 'Available at 4:00pm'
 };
 
-export class PersonaBasicExample extends React.Component<React.Props<PersonaBasicExample>, { renderPersonaDetails?: boolean; }> {
-  constructor() {
-    super();
+export class PersonaBasicExample extends React.Component<{}, {
+  renderPersonaDetails?: boolean;
+}> {
+  constructor(props: {}) {
+    super(props);
     this.state = {
       renderPersonaDetails: true
     };
   }
 
   public render() {
-    let { renderPersonaDetails } = this.state;
+    const { renderPersonaDetails } = this.state;
 
     return (
       <div>
@@ -37,68 +40,79 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           <Checkbox
             label='Include persona details'
             checked={ renderPersonaDetails }
-            onChange={ (ev, checked) => { this.setState({ renderPersonaDetails: checked }); } }
+            onChange={ this._onChange }
           />
         </div>
 
-        <Label className={ exampleStyles.exampleLabel }>Tiny Persona (12px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 10 Persona, with no presence</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.tiny }
+          size={ PersonaSize.size10 }
+          hidePersonaDetails={ !renderPersonaDetails }
+        />
+        <Label className={ exampleStyles.exampleLabel }>Size 10 Persona, with presence</Label>
+        <Persona
+          { ...examplePersona }
+          size={ PersonaSize.size10 }
           presence={ PersonaPresence.offline }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Extra Extra Small Persona (24px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 24 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraExtraSmall }
-          presence={ PersonaPresence.none }
+          size={ PersonaSize.size24 }
+          presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Size 28 Persona (28px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 28 Persona</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.size28 }
-          presence={ PersonaPresence.none }
+          presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Extra Small Persona (32px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 32 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.size32 }
           presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className={ exampleStyles.exampleLabel }>Small Persona (40px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 40 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.small }
+          size={ PersonaSize.size40 }
           presence={ PersonaPresence.away }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Medium Persona (48px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 48 Persona (default) </Label>
         <Persona
           { ...examplePersona }
           hidePersonaDetails={ !renderPersonaDetails }
           presence={ PersonaPresence.busy }
         />
 
-        <Label className={ exampleStyles.exampleLabel }>Large Persona (72px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 72 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.large }
+          size={ PersonaSize.size72 }
           presence={ PersonaPresence.dnd }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Extra Large Persona (100px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 100 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraLarge }
+          size={ PersonaSize.size100 }
           presence={ PersonaPresence.blocked }
           hidePersonaDetails={ !renderPersonaDetails }
         />
       </div >
     );
+  }
+
+  @autobind
+  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked: boolean | undefined): void {
+    this.setState({ renderPersonaDetails: checked });
   }
 }

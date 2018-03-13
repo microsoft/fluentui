@@ -3,14 +3,14 @@ import * as React from 'react';
 /* tslint:enable */
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
-import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
-import { ValidationState } from '../../BasePicker.Props';
+import { IPeoplePickerItemProps } from './PeoplePickerItem.types';
+import { ValidationState } from '../../BasePicker.types';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
-  let {
+  const {
     item,
     onRemoveItem,
     index,

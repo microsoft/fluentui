@@ -9,6 +9,266 @@
 	},
 	"glyphs": [
 		{
+			"name": "ChevronLeftEnd6",
+			"unicode": "F371"
+		},
+		{
+			"name": "ChevronRightEnd6",
+			"unicode": "F372"
+		},
+		{
+			"name": "ContextMenu",
+			"unicode": "F37C"
+		},
+		{
+			"name": "AzureAPIManagement",
+			"unicode": "F37F"
+		},
+		{
+			"name": "AzureServiceEndpoint",
+			"unicode": "F380"
+		},
+		{
+			"name": "VSTSLogo",
+			"unicode": "F381"
+		},
+		{
+			"name": "VSTSAltLogo1",
+			"unicode": "F382"
+		},
+		{
+			"name": "VSTSAltLogo2",
+			"unicode": "F383"
+		},
+		{
+			"name": "FileTypeSolution",
+			"unicode": "F387"
+		},
+		{
+			"name": "WordLogoInverse16",
+			"unicode": "F390"
+		},
+		{
+			"name": "WordLogo16",
+			"unicode": "F391"
+		},
+		{
+			"name": "WordLogoFill16",
+			"unicode": "F392"
+		},
+		{
+			"name": "PowerPointLogoInverse16",
+			"unicode": "F393"
+		},
+		{
+			"name": "PowerPointLogo16",
+			"unicode": "F394"
+		},
+		{
+			"name": "PowerPointLogoFill16",
+			"unicode": "F395"
+		},
+		{
+			"name": "ExcelLogoInverse16",
+			"unicode": "F396"
+		},
+		{
+			"name": "ExcelLogo16",
+			"unicode": "F397"
+		},
+		{
+			"name": "ExcelLogoFill16",
+			"unicode": "F398"
+		},
+		{
+			"name": "OneNoteLogoInverse16",
+			"unicode": "F399"
+		},
+		{
+			"name": "OneNoteLogo16",
+			"unicode": "F39A"
+		},
+		{
+			"name": "OneNoteLogoFill16",
+			"unicode": "F39B"
+		},
+		{
+			"name": "OutlookLogoInverse16",
+			"unicode": "F39C"
+		},
+		{
+			"name": "OutlookLogo16",
+			"unicode": "F39D"
+		},
+		{
+			"name": "OutlookLogoFill16",
+			"unicode": "F39E"
+		},
+		{
+			"name": "PublisherLogoInverse16",
+			"unicode": "F39F"
+		},
+		{
+			"name": "PublisherLogo16",
+			"unicode": "F3A0"
+		},
+		{
+			"name": "PublisherLogoFill16",
+			"unicode": "F3A1"
+		},
+		{
+			"name": "VisioLogoInverse16",
+			"unicode": "F3A2"
+		},
+		{
+			"name": "VisioLogo16",
+			"unicode": "F3A3"
+		},
+		{
+			"name": "VisioLogoFill16",
+			"unicode": "F3A4"
+		},
+		{
+			"name": "TestBeaker",
+			"unicode": "F3A5"
+		},
+		{
+			"name": "TestBeakerSolid",
+			"unicode": "F3A6"
+		},
+		{
+			"name": "TestExploreSolid",
+			"unicode": "F3A7"
+		},
+		{
+			"name": "TestAutoSolid",
+			"unicode": "F3A8"
+		},
+		{
+			"name": "TestUserSolid",
+			"unicode": "F3A9"
+		},
+		{
+			"name": "TestImpactSolid",
+			"unicode": "F3AA"
+		},
+		{
+			"name": "TestPlan",
+			"unicode": "F3AB"
+		},
+		{
+			"name": "TestStep",
+			"unicode": "F3AC"
+		},
+		{
+			"name": "TestParameter",
+			"unicode": "F3AD"
+		},
+		{
+			"name": "TestSuite",
+			"unicode": "F3AE"
+		},
+		{
+			"name": "TestCase",
+			"unicode": "F3AF"
+		},
+		{
+			"name": "Sprint",
+			"unicode": "F3B0"
+		},
+		{
+			"name": "SignOut",
+			"unicode": "F3B1"
+		},
+		{
+			"name": "TriggerApproval",
+			"unicode": "F3B2"
+		},
+		{
+			"name": "Rocket",
+			"unicode": "F3B3"
+		},
+		{
+			"name": "AzureKeyVault",
+			"unicode": "F3B4"
+		},
+		{
+			"name": "Transition",
+			"unicode": "F3BC"
+		},
+		{
+			"name": "LikeSolid",
+			"unicode": "F3BF"
+		},
+		{
+			"name": "DislikeSolid",
+			"unicode": "F3C0"
+		},
+		{
+			"name": "DeclineCall",
+			"unicode": "F405"
+		},
+		{
+			"name": "RectangularClipping",
+			"unicode": "F407"
+		},
+		{
+			"name": "Spacer",
+			"unicode": "F40D"
+		},
+		{
+			"name": "SkypeLogo16",
+			"unicode": "F40E"
+		},
+		{
+			"name": "SkypeForBusinessLogo16",
+			"unicode": "F40F"
+		},
+		{
+			"name": "SkypeForBusinessLogoFill16",
+			"unicode": "F410"
+		},
+		{
+			"name": "FilterSolid",
+			"unicode": "F412"
+		},
+		{
+			"name": "MailUndelivered",
+			"unicode": "F415"
+		},
+		{
+			"name": "MailTentative",
+			"unicode": "F416"
+		},
+		{
+			"name": "MailTentativeMirrored",
+			"unicode": "F417"
+		},
+		{
+			"name": "MailReminder",
+			"unicode": "F418"
+		},
+		{
+			"name": "ReceiptUndelivered",
+			"unicode": "F419"
+		},
+		{
+			"name": "ReceiptTentative",
+			"unicode": "F41A"
+		},
+		{
+			"name": "ReceiptTentativeMirrored",
+			"unicode": "F41B"
+		},
+		{
+			"name": "Inbox",
+			"unicode": "F41C"
+		},
+		{
+			"name": "IRMReply",
+			"unicode": "F41D"
+		},
+		{
 			"name": "IRMReplyMirrored",
 			"unicode": "F41E"
 		},
@@ -43,6 +303,10 @@
 		{
 			"name": "IDBadge",
 			"unicode": "F427"
+		},
+		{
+			"name": "BackgroundColor",
+			"unicode": "F42B"
 		},
 		{
 			"name": "OfficeFormsLogoInverse16",
@@ -143,206 +407,6 @@
 		{
 			"name": "ProjectLogoFill32",
 			"unicode": "F47F"
-		},
-		{
-			"name": "ProjectLogo16",
-			"unicode": "F480"
-		},
-		{
-			"name": "ProjectLogoFill16",
-			"unicode": "F481"
-		},
-		{
-			"name": "SwayLogo32",
-			"unicode": "F482"
-		},
-		{
-			"name": "SwayLogoFill32",
-			"unicode": "F483"
-		},
-		{
-			"name": "SwayLogo16",
-			"unicode": "F484"
-		},
-		{
-			"name": "SwayLogoFill16",
-			"unicode": "F485"
-		},
-		{
-			"name": "ClassNotebookLogo32",
-			"unicode": "F486"
-		},
-		{
-			"name": "ClassNotebookLogoFill32",
-			"unicode": "F487"
-		},
-		{
-			"name": "ClassNotebookLogo16",
-			"unicode": "F488"
-		},
-		{
-			"name": "ClassNotebookLogoFill16",
-			"unicode": "F489"
-		},
-		{
-			"name": "ClassNotebookLogoInverse32",
-			"unicode": "F48A"
-		},
-		{
-			"name": "ClassNotebookLogoInverse16",
-			"unicode": "F48B"
-		},
-		{
-			"name": "StaffNotebookLogo32",
-			"unicode": "F48C"
-		},
-		{
-			"name": "StaffNotebookLogoFill32",
-			"unicode": "F48D"
-		},
-		{
-			"name": "StaffNotebookLogo16",
-			"unicode": "F48E"
-		},
-		{
-			"name": "StaffNotebookLogoFill16",
-			"unicode": "F48F"
-		},
-		{
-			"name": "StaffNotebookLogoInverted32",
-			"unicode": "F490"
-		},
-		{
-			"name": "StaffNotebookLogoInverted16",
-			"unicode": "F491"
-		},
-		{
-			"name": "KaizalaLogo",
-			"unicode": "F492"
-		},
-		{
-			"name": "TaskLogo",
-			"unicode": "F493"
-		},
-		{
-			"name": "ProtectionCenterLogo32",
-			"unicode": "F494"
-		},
-		{
-			"name": "NonprofitLogo32",
-			"unicode": "F495"
-		},
-		{
-			"name": "GallatinLogo",
-			"unicode": "F496"
-		},
-		{
-			"name": "Globe2",
-			"unicode": "F49A"
-		},
-		{
-			"name": "Guitar",
-			"unicode": "F49B"
-		},
-		{
-			"name": "Breakfast",
-			"unicode": "F49C"
-		},
-		{
-			"name": "Brunch",
-			"unicode": "F49D"
-		},
-		{
-			"name": "BeerMug",
-			"unicode": "F49E"
-		},
-		{
-			"name": "Vacation",
-			"unicode": "F49F"
-		},
-		{
-			"name": "Teeth",
-			"unicode": "F4A0"
-		},
-		{
-			"name": "Taxi",
-			"unicode": "F4A1"
-		},
-		{
-			"name": "Chopsticks",
-			"unicode": "F4A2"
-		},
-		{
-			"name": "SyncOccurence",
-			"unicode": "F4A3"
-		},
-		{
-			"name": "UnsyncOccurence",
-			"unicode": "F4A4"
-		},
-		{
-			"name": "PrimaryCalendar",
-			"unicode": "F4AE"
-		},
-		{
-			"name": "SearchCalendar",
-			"unicode": "F4AF"
-		},
-		{
-			"name": "VideoOff",
-			"unicode": "F4B0"
-		},
-		{
-			"name": "MicrosoftFlowLogo",
-			"unicode": "F4B1"
-		},
-		{
-			"name": "BusinessCenterLogo",
-			"unicode": "F4B2"
-		},
-		{
-			"name": "ToDoLogoBottom",
-			"unicode": "F4B3"
-		},
-		{
-			"name": "ToDoLogoTop",
-			"unicode": "F4B4"
-		},
-		{
-			"name": "EditSolid12",
-			"unicode": "F4B5"
-		},
-		{
-			"name": "EditSolidMirrored12",
-			"unicode": "F4B6"
-		},
-		{
-			"name": "UneditableSolid12",
-			"unicode": "F4B7"
-		},
-		{
-			"name": "UneditableSolidMirrored12",
-			"unicode": "F4B8"
-		},
-		{
-			"name": "UneditableMirrored",
-			"unicode": "F4B9"
-		},
-		{
-			"name": "AdminALogo32",
-			"unicode": "F4BA"
-		},
-		{
-			"name": "AdminALogoFill32",
-			"unicode": "F4BB"
-		},
-		{
-			"name": "ToDoLogoInverse",
-			"unicode": "F4BC"
-		},
-		{
-			"name": "Snooze",
-			"unicode": "F4BD"
 		}
 	]
 }

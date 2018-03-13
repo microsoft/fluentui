@@ -20,7 +20,7 @@
   }
 }
 
-.shadow {
+.front {
   display: block;
   position: absolute;
   left: -3px;
@@ -28,20 +28,12 @@
   bottom: -4px;
 }
 
-.front {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 .back {
   display: block;
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: -3px;
+  right: -3px;
+  bottom: -4px;
 }
 
 .content {
@@ -93,19 +85,12 @@
   &,
   &.isSmall {
     font-size: $ms-font-size-s;
+    margin-bottom: 3px;
   }
 
   .isLarge & {
     font-size: $ms-font-size-m;
-  }
-
-  &,
-  &.isDefault {
-    margin-bottom: 8px;
-  }
-
-  .isMedia & {
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 }
 
@@ -119,19 +104,11 @@
   &,
   &.isSmall {
     font-size: $ms-font-size-l;
+    margin-bottom: 3px;
   }
 
   .isLarge & {
     font-size: $ms-font-size-xl;
-  }
-
-
-  &,
-  &.isDefault {
-    margin-bottom: 8px;
-  }
-
-  .isMedia & {
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 }

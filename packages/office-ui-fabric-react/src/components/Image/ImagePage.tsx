@@ -50,10 +50,12 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ 'img' }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')
             ] }
           />
         }
@@ -89,7 +91,7 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ImageStatus}
+            { ...ImageStatus }
           />
         }
       />

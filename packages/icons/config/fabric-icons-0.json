@@ -17,6 +17,10 @@
 			"unicode": "E291"
 		},
 		{
+			"name": "SizeLegacy",
+			"unicode": "E2B2"
+		},
+		{
 			"name": "InternetSharing",
 			"unicode": "E704"
 		},
@@ -69,6 +73,10 @@
 			"unicode": "E71B"
 		},
 		{
+			"name": "AllApps",
+			"unicode": "E71D"
+		},
+		{
 			"name": "Zoom",
 			"unicode": "E71E"
 		},
@@ -115,6 +123,10 @@
 		{
 			"name": "Lock",
 			"unicode": "E72E"
+		},
+		{
+			"name": "ReportHacked",
+			"unicode": "E730"
 		},
 		{
 			"name": "EMI",
@@ -175,6 +187,10 @@
 		{
 			"name": "Down",
 			"unicode": "E74B"
+		},
+		{
+			"name": "OEM",
+			"unicode": "E74C"
 		},
 		{
 			"name": "Save",
@@ -289,10 +305,6 @@
 			"unicode": "E785"
 		},
 		{
-			"name": "Megaphone",
-			"unicode": "E789"
-		},
-		{
 			"name": "AutoEnhanceOn",
 			"unicode": "E78D"
 		},
@@ -327,6 +339,10 @@
 		{
 			"name": "Redo",
 			"unicode": "E7A6"
+		},
+		{
+			"name": "Crop",
+			"unicode": "E7A8"
 		},
 		{
 			"name": "PhotoCollection",
@@ -391,22 +407,6 @@
 		{
 			"name": "TurnRight",
 			"unicode": "E7DB"
-		},
-		{
-			"name": "Ferry",
-			"unicode": "E7E3"
-		},
-		{
-			"name": "Highlight",
-			"unicode": "E7E6"
-		},
-		{
-			"name": "Tab",
-			"unicode": "E7E9"
-		},
-		{
-			"name": "Admin",
-			"unicode": "E7EF"
 		}
 	]
 }

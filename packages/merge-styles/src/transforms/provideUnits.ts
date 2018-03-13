@@ -5,6 +5,7 @@ const NON_PIXEL_NUMBER_PROPS = [
   'flex',
   'flex-grow',
   'flex-shrink',
+  'fill-opacity',
   'opacity',
   'order',
   'z-index',
@@ -18,10 +19,9 @@ export function provideUnits(
   const name = rulePairs[index];
   const value = rulePairs[index + 1];
 
-  if (
-    typeof value === 'number' &&
-    NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1
-  ) {
-    rulePairs[index + 1] = `${value}px`;
+  if (typeof value === 'number') {
+    const unit = (NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1) ? 'px' : '';
+
+    rulePairs[index + 1] = `${value}${unit}`;
   }
 }

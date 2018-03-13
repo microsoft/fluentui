@@ -1,2 +1,2 @@
 export * from './Link';
-export * from './Link.Props';
+export * from './Link.types';

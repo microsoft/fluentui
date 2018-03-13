@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as stylesImport from './MarqueeSelection.scss';
+
 import {
   AutoScroll,
   BaseComponent,
@@ -10,8 +12,8 @@ import {
   getDistanceBetweenPoints,
   getRTL
 } from '../../Utilities';
-import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import * as stylesImport from './MarqueeSelection.scss';
+
+import { IMarqueeSelectionProps } from './MarqueeSelection.types';
 const styles: any = stylesImport;
 
 export interface IMarqueeSelectionState {
@@ -36,16 +38,13 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     isEnabled: true
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
-
+  private _root: HTMLDivElement;
   private _dragOrigin: IPoint | undefined;
   private _rootRect: IRectangle;
   private _lastMouseEvent: MouseEvent | undefined;
   private _autoScroll: AutoScroll | undefined;
   private _selectedIndicies: { [key: string]: boolean } | undefined;
+  private _preservedIndicies: number[] | undefined;
   private _itemRectCache: { [key: string]: IRectangle } | undefined;
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
@@ -61,11 +60,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   public componentDidMount() {
-    this._scrollableParent = findScrollableParent(this.refs.root) as HTMLElement;
-    this._scrollableSurface = this._scrollableParent === window as any ? document.body : this._scrollableParent;
+    this._scrollableParent = findScrollableParent(this._root) as HTMLElement;
+    this._scrollableSurface = (this._scrollableParent === window as any) ? document.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.
 
-    const hitTarget = this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableSurface;
+    const hitTarget = this.props.isDraggingConstrainedToRoot ? this._root : this._scrollableSurface;
 
     this._events.on(
       hitTarget,
@@ -90,8 +89,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   public render(): JSX.Element {
-    let { rootProps, children } = this.props;
-    let { dragRect } = this.state;
+    const { rootProps, children } = this.props;
+    const { dragRect } = this.state;
 
     return (
       <div
@@ -101,7 +100,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
           styles.root,
           rootProps && rootProps.className
         ) }
-        ref='root'
+        ref={ this._resolveRef('_root') }
       >
         { children }
         { dragRect && (<div className={ css('ms-MarqueeSelection-dragMask', styles.dragMask) } />) }
@@ -127,11 +126,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
   /** Determine if the mouse event occured on a scrollbar of the target element. */
   private _isMouseEventOnScrollbar(ev: MouseEvent) {
-    let targetElement = ev.target as HTMLElement;
-    let targetScrollbarWidth = (targetElement.offsetWidth - targetElement.clientWidth);
+    const targetElement = ev.target as HTMLElement;
+    const targetScrollbarWidth = (targetElement.offsetWidth - targetElement.clientWidth);
 
     if (targetScrollbarWidth) {
-      let targetRect = targetElement.getBoundingClientRect();
+      const targetRect = targetElement.getBoundingClientRect();
 
       // Check vertical scroll
       if (getRTL()) {
@@ -155,23 +154,28 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
   @autobind
   private _onMouseDown(ev: MouseEvent) {
-    let { isEnabled, onShouldStartSelection } = this.props;
+    const { isEnabled, onShouldStartSelection } = this.props;
 
     // Ensure the mousedown is within the boundaries of the target. If not, it may have been a click on a scrollbar.
     if (this._isMouseEventOnScrollbar(ev)) {
       return;
     }
 
+    if (this._isInSelectionToggle(ev)) {
+      return;
+    }
+
     if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0) {
         this._selectedIndicies = {};
+        this._preservedIndicies = undefined;
         this._events.on(window, 'mousemove', this._onAsyncMouseMove);
         this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
         this._events.on(window, 'click', this._onMouseUp, true);
 
-        this._autoScroll = new AutoScroll(this.refs.root);
+        this._autoScroll = new AutoScroll(this._root);
         this._scrollTop = this._scrollableSurface.scrollTop;
-        this._rootRect = this.refs.root.getBoundingClientRect();
+        this._rootRect = this._root.getBoundingClientRect();
 
         this._onMouseMove(ev);
       }
@@ -225,8 +229,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       this._lastMouseEvent = ev;
     }
 
-    let rootRect = this._getRootRect();
-    let currentPoint = { x: ev.clientX - rootRect.left, y: ev.clientY - rootRect.top };
+    const rootRect = this._getRootRect();
+    const currentPoint = { x: ev.clientX - rootRect.left, y: ev.clientY - rootRect.top };
 
     if (!this._dragOrigin) {
       this._dragOrigin = currentPoint;
@@ -236,8 +240,15 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       this._onMouseUp(ev);
     } else {
       if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
+        if (!this.state.dragRect) {
+          const {
+            selection
+          } = this.props;
+
+          this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
+        }
         // We need to constrain the current point to the rootRect boundaries.
-        let constrainedPoint = this.props.isDraggingConstrainedToRoot ? {
+        const constrainedPoint = this.props.isDraggingConstrainedToRoot ? {
           x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
           y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top))
         } : {
@@ -245,7 +256,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
             y: this._lastMouseEvent!.clientY - rootRect.top
           };
 
-        let dragRect = {
+        const dragRect = {
           left: Math.min(this._dragOrigin.x, constrainedPoint.x),
           top: Math.min(this._dragOrigin.y, constrainedPoint.y),
           width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
@@ -299,7 +310,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       return false;
     }
 
-    const allElements = this.refs.root.querySelectorAll('[data-selection-index]');
+    const allElements = this._root.querySelectorAll('[data-selection-index]');
     for (let i = 0; i < allElements.length; i++) {
       const element = allElements[i];
       const index = Number(element.getAttribute('data-selection-index'));
@@ -314,14 +325,28 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return false;
   }
 
+  private _isInSelectionToggle(ev: MouseEvent): boolean {
+    let element: HTMLElement | null = ev.target as HTMLElement;
+
+    while (element && element !== this._root) {
+      if (element.getAttribute('data-selection-toggle') === 'true') {
+        return true;
+      }
+
+      element = element.parentElement;
+    }
+
+    return false;
+  }
+
   private _evaluateSelection(dragRect: IRectangle, rootRect: IRectangle) {
     // Break early if we don't need to evaluate.
     if (!dragRect) {
       return;
     }
 
-    let { selection } = this.props;
-    let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
+    const { selection } = this.props;
+    const allElements = this._root.querySelectorAll('[data-selection-index]');
 
     if (!this._itemRectCache) {
       this._itemRectCache = {};
@@ -332,8 +357,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     selection.setAllSelected(false);
 
     for (let i = 0; i < allElements.length; i++) {
-      let element = allElements[i];
-      let index = element.getAttribute('data-selection-index') as string;
+      const element = allElements[i];
+      const index = element.getAttribute('data-selection-index') as string;
 
       // Pull the memoized rectangle for the item, or the get the rect and memoize.
       let itemRect = this._itemRectCache[index];
@@ -368,9 +393,15 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       }
     }
 
-    for (let index in this._selectedIndicies!) {
+    for (const index in this._selectedIndicies!) {
       if (this._selectedIndicies!.hasOwnProperty(index)) {
         selection.setIndexSelected(Number(index), true, false);
+      }
+    }
+
+    if (this._preservedIndicies) {
+      for (const index of this._preservedIndicies) {
+        selection.setIndexSelected(index, true, false);
       }
     }
 

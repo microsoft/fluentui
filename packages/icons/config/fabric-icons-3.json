@@ -9,6 +9,78 @@
 	},
 	"glyphs": [
 		{
+			"name": "TimeSheet",
+			"unicode": "EA05"
+		},
+		{
+			"name": "TriangleSolid",
+			"unicode": "EA08"
+		},
+		{
+			"name": "VideoSolid",
+			"unicode": "EA0C"
+		},
+		{
+			"name": "RainShowersNight",
+			"unicode": "EA0F"
+		},
+		{
+			"name": "SnowShowerNight",
+			"unicode": "EA11"
+		},
+		{
+			"name": "Teamwork",
+			"unicode": "EA12"
+		},
+		{
+			"name": "HailNight",
+			"unicode": "EA13"
+		},
+		{
+			"name": "PeopleAdd",
+			"unicode": "EA15"
+		},
+		{
+			"name": "Glasses",
+			"unicode": "EA16"
+		},
+		{
+			"name": "DateTime2",
+			"unicode": "EA17"
+		},
+		{
+			"name": "Shield",
+			"unicode": "EA18"
+		},
+		{
+			"name": "Header1",
+			"unicode": "EA19"
+		},
+		{
+			"name": "PageAdd",
+			"unicode": "EA1A"
+		},
+		{
+			"name": "NumberedList",
+			"unicode": "EA1C"
+		},
+		{
+			"name": "PowerBILogo",
+			"unicode": "EA1E"
+		},
+		{
+			"name": "Info2",
+			"unicode": "EA1F"
+		},
+		{
+			"name": "MusicInCollectionFill",
+			"unicode": "EA36"
+		},
+		{
+			"name": "Asterisk",
+			"unicode": "EA38"
+		},
+		{
 			"name": "ErrorBadge",
 			"unicode": "EA39"
 		},
@@ -19,6 +91,10 @@
 		{
 			"name": "Record2",
 			"unicode": "EA3F"
+		},
+		{
+			"name": "AllAppsMirrored",
+			"unicode": "EA40"
 		},
 		{
 			"name": "BookmarksMirrored",
@@ -129,6 +205,30 @@
 			"unicode": "EA8A"
 		},
 		{
+			"name": "Ringer",
+			"unicode": "EA8F"
+		},
+		{
+			"name": "PDF",
+			"unicode": "EA90"
+		},
+		{
+			"name": "HeartBroken",
+			"unicode": "EA92"
+		},
+		{
+			"name": "StoreLogo16",
+			"unicode": "EA96"
+		},
+		{
+			"name": "MultiSelectMirrored",
+			"unicode": "EA98"
+		},
+		{
+			"name": "Broom",
+			"unicode": "EA99"
+		},
+		{
 			"name": "Cocktails",
 			"unicode": "EA9D"
 		},
@@ -157,6 +257,10 @@
 			"unicode": "EACC"
 		},
 		{
+			"name": "HandsFree",
+			"unicode": "EAD0"
+		},
+		{
 			"name": "Medical",
 			"unicode": "EAD4"
 		},
@@ -167,6 +271,14 @@
 		{
 			"name": "Weights",
 			"unicode": "EADB"
+		},
+		{
+			"name": "Trackers",
+			"unicode": "EADF"
+		},
+		{
+			"name": "AddNotes",
+			"unicode": "EAE3"
 		},
 		{
 			"name": "BarChart4",
@@ -209,12 +321,24 @@
 			"unicode": "EB0B"
 		},
 		{
+			"name": "Sell",
+			"unicode": "EB0C"
+		},
+		{
 			"name": "StockDown",
 			"unicode": "EB0F"
 		},
 		{
 			"name": "StockUp",
 			"unicode": "EB11"
+		},
+		{
+			"name": "Lamp",
+			"unicode": "EB19"
+		},
+		{
+			"name": "Source",
+			"unicode": "EB1B"
 		},
 		{
 			"name": "MSNVideos",
@@ -265,6 +389,10 @@
 			"unicode": "EB2D"
 		},
 		{
+			"name": "SubstitutionsIn",
+			"unicode": "EB31"
+		},
+		{
 			"name": "Tennis",
 			"unicode": "EB33"
 		},
@@ -279,134 +407,6 @@
 		{
 			"name": "Website",
 			"unicode": "EB41"
-		},
-		{
-			"name": "Drop",
-			"unicode": "EB42"
-		},
-		{
-			"name": "SkiResorts",
-			"unicode": "EB45"
-		},
-		{
-			"name": "Snowflake",
-			"unicode": "EB46"
-		},
-		{
-			"name": "BusSolid",
-			"unicode": "EB47"
-		},
-		{
-			"name": "FerrySolid",
-			"unicode": "EB48"
-		},
-		{
-			"name": "AirplaneSolid",
-			"unicode": "EB4C"
-		},
-		{
-			"name": "TrainSolid",
-			"unicode": "EB4D"
-		},
-		{
-			"name": "Ticket",
-			"unicode": "EB54"
-		},
-		{
-			"name": "Devices4",
-			"unicode": "EB66"
-		},
-		{
-			"name": "AzureLogo",
-			"unicode": "EB6A"
-		},
-		{
-			"name": "BingLogo",
-			"unicode": "EB6B"
-		},
-		{
-			"name": "MSNLogo",
-			"unicode": "EB6C"
-		},
-		{
-			"name": "OutlookLogoInverse",
-			"unicode": "EB6D"
-		},
-		{
-			"name": "OfficeLogo",
-			"unicode": "EB6E"
-		},
-		{
-			"name": "SkypeLogo",
-			"unicode": "EB6F"
-		},
-		{
-			"name": "Door",
-			"unicode": "EB75"
-		},
-		{
-			"name": "EditMirrored",
-			"unicode": "EB7E"
-		},
-		{
-			"name": "GiftCard",
-			"unicode": "EB8E"
-		},
-		{
-			"name": "DoubleBookmark",
-			"unicode": "EB8F"
-		},
-		{
-			"name": "StatusErrorFull",
-			"unicode": "EB90"
-		},
-		{
-			"name": "Certificate",
-			"unicode": "EB95"
-		},
-		{
-			"name": "FastForward",
-			"unicode": "EB9D"
-		},
-		{
-			"name": "Rewind",
-			"unicode": "EB9E"
-		},
-		{
-			"name": "Photo2",
-			"unicode": "EB9F"
-		},
-		{
-			"name": "OpenSource",
-			"unicode": "EBC2"
-		},
-		{
-			"name": "CloudDownload",
-			"unicode": "EBD3"
-		},
-		{
-			"name": "WindDirection",
-			"unicode": "EBE6"
-		},
-		{
-			"name": "Family",
-			"unicode": "EBDA"
-		},
-		{
-			"name": "CSS",
-			"unicode": "EBEF"
-		},
-		{
-			"name": "JS",
-			"unicode": "EBF0"
-		},
-		{
-			"name": "DeliveryTruck",
-			"unicode": "EBF4"
-		},
-		{
-			"name": "ReminderPerson",
-			"unicode": "EBF7"
 		}
 	]
 }

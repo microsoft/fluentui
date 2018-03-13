@@ -13,10 +13,9 @@ import './GroupedList.Custom.Example.scss';
 let _items: any[];
 let _groups: IGroup[];
 
-export class GroupedListCustomExample extends React.Component<any, any> {
-
-  constructor() {
-    super();
+export class GroupedListCustomExample extends React.Component {
+  constructor(props: {}) {
+    super(props);
 
     _items = _items || createListItems(20);
     _groups = createGroups(4, 0, 0, 5);
@@ -25,7 +24,6 @@ export class GroupedListCustomExample extends React.Component<any, any> {
   public render() {
     return (
       <GroupedList
-        ref='groupedList'
         items={ _items }
         onRenderCell={ this._onRenderCell }
         groupProps={

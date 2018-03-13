@@ -1,0 +1,412 @@
+{
+	"fontName": "fabric-icons-13",
+	"fontFamilyName": "FabricMDL2Icons-13",
+	"excludeGlyphs": false,
+	"chunkSubsets": true,
+	"hashFontFileName": true,
+	"subsetChunkSettings": {
+		"maxSubsetSize": 100
+	},
+	"glyphs": [
+		{
+			"name": "PaddingTop",
+			"unicode": "F519"
+		},
+		{
+			"name": "PaddingBottom",
+			"unicode": "F51A"
+		},
+		{
+			"name": "PaddingLeft",
+			"unicode": "F51B"
+		},
+		{
+			"name": "PaddingRight",
+			"unicode": "F51C"
+		},
+		{
+			"name": "NavigationFlipper",
+			"unicode": "F51D"
+		},
+		{
+			"name": "AlignJustify",
+			"unicode": "F51E"
+		},
+		{
+			"name": "TextOverflow",
+			"unicode": "F51F"
+		},
+		{
+			"name": "VisualsFolder",
+			"unicode": "F520"
+		},
+		{
+			"name": "VisualsStore",
+			"unicode": "F521"
+		},
+		{
+			"name": "PictureCenter",
+			"unicode": "F522"
+		},
+		{
+			"name": "PictureFill",
+			"unicode": "F523"
+		},
+		{
+			"name": "PicturePosition",
+			"unicode": "F524"
+		},
+		{
+			"name": "PictureStretch",
+			"unicode": "F525"
+		},
+		{
+			"name": "PictureTile",
+			"unicode": "F526"
+		},
+		{
+			"name": "Slider",
+			"unicode": "F527"
+		},
+		{
+			"name": "SliderHandleSize",
+			"unicode": "F528"
+		},
+		{
+			"name": "DefaultRatio",
+			"unicode": "F529"
+		},
+		{
+			"name": "NumberSequence",
+			"unicode": "F52A"
+		},
+		{
+			"name": "GUID",
+			"unicode": "F52B"
+		},
+		{
+			"name": "ReportAdd",
+			"unicode": "F52C"
+		},
+		{
+			"name": "DashboardAdd",
+			"unicode": "F52D"
+		},
+		{
+			"name": "MapPinSolid",
+			"unicode": "F52E"
+		},
+		{
+			"name": "WebPublish",
+			"unicode": "F52F"
+		},
+		{
+			"name": "PieSingleSolid",
+			"unicode": "F530"
+		},
+		{
+			"name": "BlockedSolid",
+			"unicode": "F531"
+		},
+		{
+			"name": "DrillDown",
+			"unicode": "F532"
+		},
+		{
+			"name": "DrillDownSolid",
+			"unicode": "F533"
+		},
+		{
+			"name": "DrillExpand",
+			"unicode": "F534"
+		},
+		{
+			"name": "DrillShow",
+			"unicode": "F535"
+		},
+		{
+			"name": "OneDriveFolder16",
+			"unicode": "F53B"
+		},
+		{
+			"name": "ChronosLogo",
+			"unicode": "F541"
+		},
+		{
+			"name": "FunctionalManagerDashboard",
+			"unicode": "F542"
+		},
+		{
+			"name": "BIDashboard",
+			"unicode": "F543"
+		},
+		{
+			"name": "CodeEdit",
+			"unicode": "F544"
+		},
+		{
+			"name": "RenewalCurrent",
+			"unicode": "F545"
+		},
+		{
+			"name": "RenewalFuture",
+			"unicode": "F546"
+		},
+		{
+			"name": "SplitObject",
+			"unicode": "F547"
+		},
+		{
+			"name": "BulkUpload",
+			"unicode": "F548"
+		},
+		{
+			"name": "DownloadDocument",
+			"unicode": "F549"
+		},
+		{
+			"name": "WaitlistConfirm",
+			"unicode": "F550"
+		},
+		{
+			"name": "WaitlistConfirmMirrored",
+			"unicode": "F551"
+		},
+		{
+			"name": "LaptopSecure",
+			"unicode": "F552"
+		},
+		{
+			"name": "DragObject",
+			"unicode": "F553"
+		},
+		{
+			"name": "EntryView",
+			"unicode": "F554"
+		},
+		{
+			"name": "EntryDecline",
+			"unicode": "F555"
+		},
+		{
+			"name": "ContactCardSettings",
+			"unicode": "F556"
+		},
+		{
+			"name": "ContactCardSettingsMirrored",
+			"unicode": "F557"
+		},
+		{
+			"name": "CalendarSettings",
+			"unicode": "F558"
+		},
+		{
+			"name": "CalendarSettingsMirrored",
+			"unicode": "F559"
+		},
+		{
+			"name": "HardDriveLock",
+			"unicode": "F55A"
+		},
+		{
+			"name": "HardDriveUnlock",
+			"unicode": "F55B"
+		},
+		{
+			"name": "AccountManagement",
+			"unicode": "F55C"
+		},
+		{
+			"name": "TransitionPop",
+			"unicode": "F5B2"
+		},
+		{
+			"name": "TransitionPush",
+			"unicode": "F5B3"
+		},
+		{
+			"name": "TransitionEffect",
+			"unicode": "F5B4"
+		},
+		{
+			"name": "LookupEntities",
+			"unicode": "F5B5"
+		},
+		{
+			"name": "ExploreData",
+			"unicode": "F5B6"
+		},
+		{
+			"name": "AddBookmark",
+			"unicode": "F5B7"
+		},
+		{
+			"name": "SearchBookmark",
+			"unicode": "F5B8"
+		},
+		{
+			"name": "DrillThrough",
+			"unicode": "F5B9"
+		},
+		{
+			"name": "MasterDatabase",
+			"unicode": "F5BA"
+		},
+		{
+			"name": "CertifiedDatabase",
+			"unicode": "F5BB"
+		},
+		{
+			"name": "MaximumValue",
+			"unicode": "F5BC"
+		},
+		{
+			"name": "MinimumValue",
+			"unicode": "F5BD"
+		},
+		{
+			"name": "VisualStudioIDELogo32",
+			"unicode": "F5D0"
+		},
+		{
+			"name": "PasteAsText",
+			"unicode": "F5D5"
+		},
+		{
+			"name": "PasteAsCode",
+			"unicode": "F5D6"
+		},
+		{
+			"name": "BrowserTab",
+			"unicode": "F5D7"
+		},
+		{
+			"name": "BrowserTabScreenshot",
+			"unicode": "F5D8"
+		},
+		{
+			"name": "DesktopScreenshot",
+			"unicode": "F5D9"
+		},
+		{
+			"name": "FileYML",
+			"unicode": "F5DA"
+		},
+		{
+			"name": "ClipboardSolid",
+			"unicode": "F5DC"
+		},
+		{
+			"name": "AnalyticsView",
+			"unicode": "F5F1"
+		},
+		{
+			"name": "Leave",
+			"unicode": "F627"
+		},
+		{
+			"name": "Trending12",
+			"unicode": "F62D"
+		},
+		{
+			"name": "Blocked12",
+			"unicode": "F62E"
+		},
+		{
+			"name": "Warning12",
+			"unicode": "F62F"
+		},
+		{
+			"name": "CheckedOutByOther12",
+			"unicode": "F630"
+		},
+		{
+			"name": "CheckedOutByYou12",
+			"unicode": "F631"
+		},
+		{
+			"name": "CircleShapeSolid",
+			"unicode": "F63C"
+		},
+		{
+			"name": "SquareShapeSolid",
+			"unicode": "F63D"
+		},
+		{
+			"name": "TriangleShapeSolid",
+			"unicode": "F63E"
+		},
+		{
+			"name": "DropShapeSolid",
+			"unicode": "F63F"
+		},
+		{
+			"name": "RectangleShapeSolid",
+			"unicode": "F640"
+		},
+		{
+			"name": "InsertColumnsLeft",
+			"unicode": "F64A"
+		},
+		{
+			"name": "InsertColumnsRight",
+			"unicode": "F64B"
+		},
+		{
+			"name": "InsertRowsAbove",
+			"unicode": "F64C"
+		},
+		{
+			"name": "InsertRowsBelow",
+			"unicode": "F64D"
+		},
+		{
+			"name": "DeleteColumns",
+			"unicode": "F64E"
+		},
+		{
+			"name": "DeleteRows",
+			"unicode": "F64F"
+		},
+		{
+			"name": "DeleteRowsMirrored",
+			"unicode": "F650"
+		},
+		{
+			"name": "DeleteTable",
+			"unicode": "F651"
+		},
+		{
+			"name": "VersionControlPush",
+			"unicode": "F664"
+		},
+		{
+			"name": "ExternalGit",
+			"unicode": "F665"
+		},
+		{
+			"name": "WhiteBoardApp16",
+			"unicode": "F673"
+		},
+		{
+			"name": "WhiteBoardApp32",
+			"unicode": "F674"
+		},
+		{
+			"name": "InsertSignatureLine",
+			"unicode": "F677"
+		},
+		{
+			"name": "ArrangeByFrom",
+			"unicode": "F678"
+		},
+		{
+			"name": "Phishing",
+			"unicode": "F679"
+		},
+		{
+			"name": "CreateMailRule",
+			"unicode": "F67A"
+		}
+	]
+}

@@ -57,6 +57,10 @@
 			"unicode": "E72D"
 		},
 		{
+			"name": "BlockedSite",
+			"unicode": "E72F"
+		},
+		{
 			"name": "FavoriteStar",
 			"unicode": "E734"
 		},
@@ -85,6 +89,10 @@
 			"unicode": "E787"
 		},
 		{
+			"name": "Megaphone",
+			"unicode": "E789"
+		},
+		{
 			"name": "Undo",
 			"unicode": "E7A7"
 		},
@@ -95,6 +103,10 @@
 		{
 			"name": "Page",
 			"unicode": "E7C3"
+		},
+		{
+			"name": "Pinned",
+			"unicode": "E840"
 		},
 		{
 			"name": "View",
@@ -141,10 +153,6 @@
 			"unicode": "E946"
 		},
 		{
-			"name": "Pinned",
-			"unicode": "E840"
-		},
-		{
 			"name": "SortLines",
 			"unicode": "E9D0"
 		},
@@ -171,6 +179,10 @@
 		{
 			"name": "Embed",
 			"unicode": "ECCE"
+		},
+		{
+			"name": "Glimmer",
+			"unicode": "ECF4"
 		},
 		{
 			"name": "Ascending",

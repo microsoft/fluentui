@@ -7,12 +7,12 @@ import {
   autobind
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
-import { IPivotProps } from './Pivot.Props';
-import { IPivotItemProps } from './PivotItem.Props';
+import { IPivotProps } from './Pivot.types';
+import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
-import { PivotLinkFormat } from './Pivot.Props';
-import { PivotLinkSize } from './Pivot.Props';
+import { PivotLinkFormat } from './Pivot.types';
+import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Pivot.scss';
 const styles: any = stylesImport;
@@ -149,6 +149,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         ariaLabel={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }
+        name={ link.linkText }
       >
         { linkContent }
       </CommandButton>
@@ -182,7 +183,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
 
     const itemKey: string = this.state.selectedKey;
     const index = this._keyToIndexMapping[itemKey];
-    let { selectedTabId } = this.state;
+    const { selectedTabId } = this.state;
 
     return (
       <div

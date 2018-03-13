@@ -29,10 +29,11 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.types.ts')
             ] }
           />
         }
@@ -64,7 +65,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...OverlayStatus}
+            { ...OverlayStatus }
           />
         }
       />

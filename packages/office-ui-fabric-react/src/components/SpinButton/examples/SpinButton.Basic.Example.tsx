@@ -11,6 +11,16 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
           min={ 0 }
           max={ 100 }
           step={ 1 }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        />
+        <SpinButton
+          defaultValue='0'
+          label={ 'Decimal SpinButton:' }
+          min={ 0 }
+          max={ 10 }
+          step={ 0.1 }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
         />

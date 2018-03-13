@@ -8,11 +8,17 @@ import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index
 import { GettingStartedPage } from './GettingStartedPage';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { initializeFileTypeIcons } from '@uifabric/file-type-icons/src/index';
 
 import './index.scss';
 import './ColorStyles.scss';
 
 setBaseUrl('./dist/');
+
+// Initialize all icons.
+initializeIcons();
+initializeFileTypeIcons();
 
 let rootElement: HTMLElement | null;
 

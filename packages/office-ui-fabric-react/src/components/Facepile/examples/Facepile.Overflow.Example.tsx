@@ -27,9 +27,10 @@ export interface IFacepileOverflowExampleState {
   overflowButtonType: OverflowButtonType;
 }
 
-export class FacepileOverflowExample extends React.Component<any, IFacepileOverflowExampleState> {
-  public constructor() {
-    super();
+export class FacepileOverflowExample extends React.Component<{}, IFacepileOverflowExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       displayedPersonas: 5,
@@ -38,7 +39,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
   }
 
   public render() {
-    let { displayedPersonas, overflowButtonType } = this.state;
+    const { displayedPersonas, overflowButtonType } = this.state;
     facepileProps.maxDisplayablePersonas = displayedPersonas;
     facepileProps.overflowButtonType = overflowButtonType;
 
@@ -47,29 +48,29 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
         <Facepile {...facepileProps} />
         <div className={ 'control' }>
           <Slider
-            label='Number of Personas Shown:'
-            min={ 0 }
-            max={ 6 }
+            label='Number of Personas:'
+            min={ 1 }
+            max={ 5 }
             step={ 1 }
             showValue={ true }
             value={ this.state.displayedPersonas }
             onChange={ this._onChangePersonaNumber }
           />
+          <Dropdown
+            label='Overflow Button Type:'
+            selectedKey={ this.state.overflowButtonType }
+            options={
+              [
+                { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
+                { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
+                { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
+                { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
+              ]
+            }
+            onChanged={ this._onChangeType
+            }
+          />
         </div>
-        <Dropdown
-          label='Overflow Type:'
-          selectedKey={ this.state.overflowButtonType }
-          options={
-            [
-              { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
-              { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
-              { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
-              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
-            ]
-          }
-          onChanged={ this._onChangeType
-          }
-        />
       </div>
     );
   }

@@ -1,2 +1,3 @@
 export * from './ScrollablePane';
-export * from './ScrollablePane.Props';
+export * from './ScrollablePane.base';
+export * from './ScrollablePane.types';

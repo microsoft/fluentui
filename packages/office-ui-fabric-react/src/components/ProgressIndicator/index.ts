@@ -1,2 +1,2 @@
 export * from './ProgressIndicator';
-export * from './ProgressIndicator.Props';
+export * from './ProgressIndicator.types';

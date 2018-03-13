@@ -1,2 +1,3 @@
 export * from './Rating';
-export * from './Rating.Props';
+export * from './Rating.base';
+export * from './Rating.types';

@@ -17,8 +17,6 @@ $spacingAroundItemButton: 2px;
 
 .members {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   overflow: hidden;
   margin: -1 * $spacingAroundItemButton;
 
@@ -82,6 +80,10 @@ button.descriptiveOverflowButton {
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
   @include margin-left($spacingAroundItemButton * 2);
+}
+
+.overflowInitialsIcon {
+  color: $ms-color-neutralPrimary;
 }
 
 .screenReaderOnly {

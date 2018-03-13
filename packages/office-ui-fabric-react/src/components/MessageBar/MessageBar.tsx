@@ -3,17 +3,19 @@ import {
   BaseComponent,
   DelayedRender,
   css,
+  autobind,
   getId
 } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
-import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
+import { IMessageBarProps, MessageBarType } from './MessageBar.types';
 import * as stylesImport from './MessageBar.scss';
 const styles: any = stylesImport;
 
 export interface IMessageBarState {
   labelId?: string;
   showContent?: boolean;
+  expandSingleLine?: boolean;
 }
 
 export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState> {
@@ -28,7 +30,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     [MessageBarType.info]: 'Info',
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
-    [MessageBarType.blocked]: 'Blocked',
+    [MessageBarType.blocked]: 'Blocked2',
     [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed'
@@ -39,12 +41,13 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
     this.state = {
       labelId: getId('MessageBar'),
-      showContent: false
+      showContent: false,
+      expandSingleLine: false,
     };
   }
 
   public render(): JSX.Element {
-    let { isMultiline } = this.props;
+    const { isMultiline } = this.props;
 
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
   }
@@ -55,7 +58,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
         <div
           className={ this.props.isMultiline ?
             ('ms-MessageBar-actions ' + styles.actions) :
-            ('ms-MessageBar-actionsOneline ' + styles.actionsOneline) }
+            ('ms-MessageBar-actionsSingleLine ' + styles.actionsSingleLine) }
         >
           { this.props.actions }
         </div>
@@ -69,7 +72,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
       ['ms-MessageBar ' + styles.root]: this.props.messageBarType === MessageBarType.info,
       ['ms-MessageBar--error ' + styles.rootIsError]: this.props.messageBarType === MessageBarType.error,
       ['ms-MessageBar--blocked ' + styles.rootIsBlocked]: (this.props.messageBarType === MessageBarType.blocked) ||
-      (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
+        (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
       ['ms-MessageBar--severeWarning ' + styles.rootIsSevereWarning]: this.props.messageBarType === MessageBarType.severeWarning,
       ['ms-MessageBar--success ' + styles.rootIsSuccess]: this.props.messageBarType === MessageBarType.success,
       ['ms-MessageBar--warning ' + styles.rootIsWarning]: this.props.messageBarType === MessageBarType.warning
@@ -83,7 +86,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           disabled={ false }
           className={ css('ms-MessageBar-dismissal', styles.dismissal) }
           onClick={ this.props.onDismiss }
-          iconProps={ { iconName: 'Cancel' } }
+          iconProps={ { iconName: 'Clear' } }
           ariaLabel={ this.props.dismissButtonAriaLabel }
         />
       );
@@ -91,11 +94,28 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     return null;
   }
 
-  private _getDismissOneLine(): JSX.Element | null {
+  private _getDismissSingleLine(): JSX.Element | null {
     if (this.props.onDismiss) {
       return (
-        <div className={ css('ms-MessageBar-dismissOneline', styles.dismissOneline) }>
+        <div className={ css('ms-MessageBar-dismissSingleLine', styles.dismissSingleLine) }>
           { this._getDismissDiv() }
+        </div>
+      );
+    }
+    return null;
+  }
+
+  private _getExpandSingleLine(): JSX.Element | null {
+    if (!this.props.actions && this.props.truncated) {
+      return (
+        <div className={ css('ms-MessageBar-expandSingleLine', styles.expandSingleLine) }>
+          <IconButton
+            disabled={ false }
+            className={ css('ms-MessageBar-expand', styles.expand) }
+            onClick={ this._onClick }
+            iconProps={ { iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' } }
+            ariaLabel={ this.props.overflowButtonAriaLabel }
+          />
         </div>
       );
     }
@@ -110,20 +130,14 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     );
   }
 
-  private _getInnerTextClassName(): string {
-    return this.props.onDismiss || this.props.actions ?
-      'ms-MessageBar-innerTextPadding ' + styles.innerTextPadding : 'ms-MessageBar-innerText ' + styles.innerText;
-  }
-
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
       <div
         className={
           css(this._getClassName(),
             'ms-MessageBar-multiline',
-            styles.multiline,
-            this.props.onDismiss && styles.dismissalMultiline,
-            this.props.actions && styles.actionableMultiline
+            styles.multiLine,
+            this.props.onDismiss && styles.dismissalMultiLine
           )
         }
         role='status'
@@ -145,16 +159,18 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
         className={
           css(this._getClassName(),
             'ms-MessageBar-singleline',
-            styles.singleline,
-            this.props.onDismiss && 'ms-MessageBar-dismissalOneline ' + styles.rootIsOneline,
-            this.props.actions && styles.actionableOneline
+            styles.singleLine,
+            this.props.onDismiss && 'ms-MessageBar-dismissalSingleLine',
+            this.props.truncated && 'ms-MessageBar-expandingSingleLine',
+            this.props.truncated && styles.expandingSingleLine
           )
         }
       >
         <div className={ css(styles.content, 'ms-MessageBar-content') }>
           { this._getIconSpan() }
           { this._renderInnerText() }
-          { this._getDismissOneLine() }
+          { this._getExpandSingleLine() }
+          { this._getDismissSingleLine() }
         </div>
         { this._getActionsDiv() }
       </div >
@@ -163,13 +179,20 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _renderInnerText(): JSX.Element {
     return (
-      <div className={ css('ms-MessageBar-text', styles.text) } id={ this.state.labelId }>
-        <span className={ this._getInnerTextClassName() } role='status' aria-live={ this._getAnnouncementPriority() }>
+      <div
+        className={ css('ms-MessageBar-text', styles.text, this.props.actions && styles.multiLineWithActions, !this.props.onDismiss && styles.noDismissButton, this.state.expandSingleLine && styles.expandSingleLine) }
+        id={ this.state.labelId }
+      >
+        <span
+          className={ css('ms-MessageBar-innerText ' + styles.innerText) }
+          role='status'
+          aria-live={ this._getAnnouncementPriority() }
+        >
           <DelayedRender>
             <span>{ this.props.children }</span>
           </DelayedRender>
         </span>
-      </div>
+      </div >
     );
   }
 
@@ -181,5 +204,10 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
         return 'assertive';
     }
     return 'polite';
+  }
+
+  @autobind
+  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+    this.setState({ expandSingleLine: !this.state.expandSingleLine });
   }
 }

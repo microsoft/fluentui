@@ -81,6 +81,29 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
 }
 
 /**
+ * Gets the elements which are child elements of the given element.
+ * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
+ * after the original children.
+ * @param parent
+ * @param allowVirtualChildren
+ */
+export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean = true): HTMLElement[] {
+  const children: HTMLElement[] = [];
+
+  if (parent) {
+    for (let i = 0; i < parent.children.length; i++) {
+      children.push(parent.children.item(i) as HTMLElement);
+    }
+
+    if (allowVirtualChildren && isVirtualElement(parent)) {
+      children.push(...parent._virtual.children);
+    }
+  }
+
+  return children;
+}
+
+/**
  * Determines whether or not a parent element contains a given child element.
  * If `allowVirtualParents` is true, this method may return `true` if the child
  * has the parent in its virtual element hierarchy.
@@ -128,7 +151,7 @@ export function setSSR(isEnabled: boolean): void {
  *
  * @public
  */
-export function getWindow(rootElement?: HTMLElement): Window | undefined {
+export function getWindow(rootElement?: Element): Window | undefined {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
@@ -179,6 +202,31 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
   }
 
   return rect;
+}
+
+/**
+ * Finds the first parent element where the matchFunction returns true
+ * @param element element to start searching at
+ * @param matchFunction the function that determines if the element is a match
+ * @returns the matched element or null no match was found
+ */
+export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null {
+  if (!element || element === document.body) {
+    return null;
+  }
+
+  return matchFunction(element) ? element : findElementRecursive(getParent(element), matchFunction);
+}
+
+/**
+ * Determines if an element, or any of its ancestors, contian the given attribute
+ * @param element - element to start searching at
+ * @param attribute - the attribute to search for
+ * @returns the value of the first instance found
+ */
+export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null {
+  let elementMatch = findElementRecursive(element, (testElement: HTMLElement) => testElement.hasAttribute(attribute));
+  return elementMatch && elementMatch.getAttribute(attribute);
 }
 
 /**

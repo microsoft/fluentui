@@ -13,13 +13,16 @@ import { createListItems } from '@uifabric/example-app-base';
 import './DetailsList.DragDrop.Example.scss';
 
 let _draggedItem: any = null;
-let _draggedIndex: number = -1;
+let _draggedIndex = -1;
 
-export class DetailsListDragDropExample extends React.Component<any, any> {
+export class DetailsListDragDropExample extends React.Component<{}, {
+  items: {}[];
+  selectionDetails?: string;
+}> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
 
@@ -31,7 +34,7 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { items, selectionDetails } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <div className='detailsListDragDropExample'>
@@ -86,9 +89,9 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
   }
 
   private _insertBeforeItem(item: any) {
-    let draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
-    let items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.

@@ -1,4 +1,4 @@
-import update = require('immutability-helper');
+import * as update from 'immutability-helper';
 import { Promise } from 'es6-promise';
 import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, IDataProvider } from './types/index';
@@ -110,7 +110,7 @@ export default class DataProvider implements IDataProvider {
    */
   public toggleComplete(item: ITodoItem): Promise<ITodoItem[]> {
     // Create a new Item in which the PercentComplete value has been changed.
-    const newItem: ITodoItem = update(item, {
+    const newItem: ITodoItem = (update as any)(item, {
       isComplete: { $set: item.isComplete === true ? false : true }
     });
 

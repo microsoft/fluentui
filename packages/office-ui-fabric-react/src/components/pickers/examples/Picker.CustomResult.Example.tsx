@@ -63,38 +63,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          icon: 'Share', onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Pin', onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Ringer', onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ] as IButtonProps[]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document1',
@@ -117,38 +120,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          icon: 'Share', onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Pin', onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Ringer', onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document2',
@@ -171,38 +177,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          icon: 'Share', onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Pin', onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Ringer', onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document3',
@@ -225,38 +234,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          icon: 'Share', onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Pin', onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          icon: 'Ringer', onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document4',
@@ -270,7 +282,7 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
 };
 
 export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
-  let {
+  const {
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
@@ -279,33 +291,36 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
     <Persona
       imageUrl={ documentPreviewProps && documentPreviewProps.previewImages[0].previewImageSrc }
       primaryText={ documentTitleProps && documentTitleProps.title }
-      size={ PersonaSize.small }
+      size={ PersonaSize.size40 }
     />
   );
 };
 
 export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
-  let {
+  const {
     documentActionsProps,
     documentPreviewProps,
     documentActivityProps,
     documentTitleProps
   } = documentProps.item;
-  let actions: IButtonProps[] = [];
+  const actions: IButtonProps[] = [];
   if (documentActionsProps) {
     documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
     actions.push({
-      icon: 'Cancel', onClick: (ev: any) => {
+      iconProps: { iconName: 'Cancel' },
+      onClick: (ev: any) => {
         if (documentProps.onRemoveItem) {
           documentProps.onRemoveItem();
         }
       }
     });
   }
+  const log = (text: string): () => void =>
+    (): void => console.log(text);
 
   return (
     <DocumentCard
-      onClick={ () => { console.log('You clicked the card.'); } }
+      onClick={ log('You clicked the card.') }
     >
       <DocumentCardPreview { ...(documentPreviewProps as IDocumentCardPreviewProps) } />
       <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
@@ -318,9 +333,9 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
 
 export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {
 }
-export class PickerCustomResultExample extends React.Component<any, IPeoplePickerExampleState> {
-  constructor() {
-    super();
+export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
+  constructor(props: {}) {
+    super(props);
     this._onFilterChanged = this._onFilterChanged.bind(this);
     this.state = {
       isPickerDisabled: false
@@ -340,7 +355,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
           onRenderSuggestionsItem={ SuggestedBigItem as any }
           onResolveSuggestions={ this._onFilterChanged }
           onRenderItem={ SelectedDocumentItem }
-          getTextFromItem={ (props: any) => props.documentTitleProps.title }
+          getTextFromItem={ this._getTextFromItem }
           pickerSuggestionsProps={
             {
               suggestionsHeaderText: 'Suggested Documents',
@@ -358,6 +373,10 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
     );
   }
 
+  private _getTextFromItem(props: any): any {
+    return props.documentTitleProps.title;
+  }
+
   @autobind
   private _onDisabledButtonClick(): void {
     this.setState({
@@ -373,7 +392,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
     if (!items || !items.length || items.length === 0) {
       return false;
     }
-    let documentTitle = document.documentTitleProps && document.documentTitleProps.title;
+    const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
     return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
   }
 }

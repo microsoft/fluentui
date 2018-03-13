@@ -1,9 +1,10 @@
 
-import { IComponentStatusProps } from './ComponentStatus.Props';
+import { IComponentStatusProps } from './ComponentStatus.types';
 export interface IComponentStatusState {
   [key: string]: IComponentStatusProps;
 }
 export const AllComponentsStatus: IComponentStatusState = {
+  ActivityItem: require<any>('../../components/ActivityItem/ActivityItem.checklist').ActivityItemStatus,
   Breadcrumb: require<any>('../../components/Breadcrumb/Breadcrumb.checklist').BreadcrumbStatus,
   Button: require<any>('../../components/Button/Button.checklist').ButtonStatus,
   Calendar: require<any>('../../components/Calendar/Calendar.checklist').CalendarStatus,

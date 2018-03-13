@@ -9,12 +9,36 @@
 	},
 	"glyphs": [
 		{
+			"name": "Ferry",
+			"unicode": "E7E3"
+		},
+		{
+			"name": "Highlight",
+			"unicode": "E7E6"
+		},
+		{
+			"name": "PowerButton",
+			"unicode": "E7E8"
+		},
+		{
+			"name": "Tab",
+			"unicode": "E7E9"
+		},
+		{
+			"name": "Admin",
+			"unicode": "E7EF"
+		},
+		{
 			"name": "TVMonitor",
 			"unicode": "E7F4"
 		},
 		{
 			"name": "Speakers",
 			"unicode": "E7F5"
+		},
+		{
+			"name": "StackIndicator",
+			"unicode": "E7FF"
 		},
 		{
 			"name": "Nav2DMapView",
@@ -61,6 +85,14 @@
 			"unicode": "E816"
 		},
 		{
+			"name": "CaretHollow",
+			"unicode": "E817"
+		},
+		{
+			"name": "CaretSolid",
+			"unicode": "E818"
+		},
+		{
 			"name": "History",
 			"unicode": "E81C"
 		},
@@ -85,16 +117,24 @@
 			"unicode": "E827"
 		},
 		{
-			"name": "News",
-			"unicode": "E900"
+			"name": "Dictionary",
+			"unicode": "E82D"
 		},
 		{
-			"name": "Chat",
-			"unicode": "E901"
+			"name": "ChromeBack",
+			"unicode": "E830"
 		},
 		{
-			"name": "Group",
-			"unicode": "E902"
+			"name": "FolderOpen",
+			"unicode": "E838"
+		},
+		{
+			"name": "PinnedFill",
+			"unicode": "E842"
+		},
+		{
+			"name": "RevToggleKey",
+			"unicode": "E845"
 		},
 		{
 			"name": "Previous",
@@ -169,12 +209,28 @@
 			"unicode": "E8AC"
 		},
 		{
+			"name": "Remote",
+			"unicode": "E8AF"
+		},
+		{
+			"name": "SelectAll",
+			"unicode": "E8B3"
+		},
+		{
+			"name": "Orientation",
+			"unicode": "E8B4"
+		},
+		{
 			"name": "Import",
 			"unicode": "E8B5"
 		},
 		{
 			"name": "Picture",
 			"unicode": "E8B9"
+		},
+		{
+			"name": "ChromeClose",
+			"unicode": "E8BB"
 		},
 		{
 			"name": "ShowResults",
@@ -297,6 +353,10 @@
 			"unicode": "E8EA"
 		},
 		{
+			"name": "Calculator",
+			"unicode": "E8EF"
+		},
+		{
 			"name": "Library",
 			"unicode": "E8F1"
 		},
@@ -325,6 +385,10 @@
 			"unicode": "E8F8"
 		},
 		{
+			"name": "Accept",
+			"unicode": "E8FB"
+		},
+		{
 			"name": "BulletedList",
 			"unicode": "E8FD"
 		},
@@ -333,80 +397,16 @@
 			"unicode": "E8FF"
 		},
 		{
-			"name": "World",
-			"unicode": "E909"
+			"name": "News",
+			"unicode": "E900"
 		},
 		{
-			"name": "Comment",
-			"unicode": "E90A"
+			"name": "Chat",
+			"unicode": "E901"
 		},
 		{
-			"name": "DockLeft",
-			"unicode": "E90C"
-		},
-		{
-			"name": "DockRight",
-			"unicode": "E90D"
-		},
-		{
-			"name": "Repair",
-			"unicode": "E90F"
-		},
-		{
-			"name": "Accounts",
-			"unicode": "E910"
-		},
-		{
-			"name": "RadioBullet",
-			"unicode": "E915"
-		},
-		{
-			"name": "Stopwatch",
-			"unicode": "E916"
-		},
-		{
-			"name": "Clock",
-			"unicode": "E917"
-		},
-		{
-			"name": "WorldClock",
-			"unicode": "E918"
-		},
-		{
-			"name": "AlarmClock",
-			"unicode": "E919"
-		},
-		{
-			"name": "Hospital",
-			"unicode": "E91D"
-		},
-		{
-			"name": "Timer",
-			"unicode": "E91E"
-		},
-		{
-			"name": "FullCircleMask",
-			"unicode": "E91F"
-		},
-		{
-			"name": "LocationFill",
-			"unicode": "E920"
-		},
-		{
-			"name": "ChromeMinimize",
-			"unicode": "E921"
-		},
-		{
-			"name": "Annotation",
-			"unicode": "E924"
-		},
-		{
-			"name": "ChromeClose",
-			"unicode": "E8BB"
-		},
-		{
-			"name": "Accept",
-			"unicode": "E8FB"
+			"name": "Group",
+			"unicode": "E902"
 		}
 	]
 }

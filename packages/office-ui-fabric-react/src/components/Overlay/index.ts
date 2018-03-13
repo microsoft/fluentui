@@ -1,2 +1,3 @@
 export * from './Overlay';
-export * from './Overlay.Props';
+export * from './Overlay.base';
+export * from './Overlay.types';

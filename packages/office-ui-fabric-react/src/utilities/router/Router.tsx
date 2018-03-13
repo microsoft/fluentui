@@ -27,10 +27,16 @@ export class Router extends BaseComponent<IRouterProps, {}> {
 
   private _getPath() {
     let path = location.hash;
-    let index = path.lastIndexOf('#');
+    const hashIndex = path.lastIndexOf('#'),
+          questionMarkIndex = path.indexOf('?');
 
-    if (index > 0) {
-      path = path.substr(0, index);
+    // Look for the start of a query in the currentPath, then strip out the query to find the correct page to render
+    if (questionMarkIndex > -1) {
+      path = path.substr(0, questionMarkIndex);
+    }
+
+    if (hashIndex > 0) {
+      path = path.substr(0, hashIndex);
     }
 
     return path;
@@ -40,13 +46,14 @@ export class Router extends BaseComponent<IRouterProps, {}> {
     path = path || this._getPath();
     children = children || this.props.children;
 
-    let routes = React.Children.toArray(children);
+    const routes = React.Children.toArray(children);
 
     for (let i = 0; i < routes.length; i++) {
-      let route: any = routes[i];
+      const route: any = routes[i];
 
       if (_match(path, route)) {
-        let { component, getComponent } = route.props;
+        const { getComponent } = route.props;
+        let { component } = route.props;
 
         if (getComponent) {
           let asynchronouslyResolved = false;
@@ -67,7 +74,7 @@ export class Router extends BaseComponent<IRouterProps, {}> {
         }
 
         if (component) {
-          let componentChildren = this._resolveRoute(path, route.props.children || []);
+          const componentChildren = this._resolveRoute(path, route.props.children || []);
 
           if (componentChildren) {
             return React.createElement(component, { key: route.key }, componentChildren) as React.DOMElement<any, any>;

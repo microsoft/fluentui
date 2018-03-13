@@ -1,2 +1,3 @@
 export * from './Nav';
-export * from './Nav.Props';
+export * from './Nav.base';
+export * from './Nav.types';

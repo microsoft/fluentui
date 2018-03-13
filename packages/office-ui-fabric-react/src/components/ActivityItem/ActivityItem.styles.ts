@@ -1,12 +1,13 @@
 import {
-  mergeStyleSets,
+  concatStyleSets,
   ITheme,
-  getTheme
+  getTheme,
+  HighContrastSelector
 } from '../../Styling';
 import {
   memoizeFunction
 } from '../../Utilities';
-import { IActivityItemStyles } from './ActivityItem.Props';
+import { IActivityItemStyles } from './ActivityItem.types';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
@@ -15,9 +16,9 @@ const COMPACT_ICON_SIZE = '13px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IActivityItemStyles | undefined = undefined
+  customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
-  let ActivityItemStyles = {
+  const ActivityItemStyles: IActivityItemStyles = {
 
     root: [
       theme.fonts.small,
@@ -65,7 +66,20 @@ export const getStyles = memoizeFunction((
       fontSize: COMPACT_ICON_SIZE,
       lineHeight: COMPACT_ICON_SIZE,
       color: theme.palette.themePrimary,
-      marginTop: '1px'
+      marginTop: '1px',
+      selectors: {
+        '.ms-Persona-imageArea': {
+          marginTop: '-2px',
+          border: '2px solid' + theme.palette.white,
+          borderRadius: '50%',
+          selectors: {
+            [HighContrastSelector]: {
+              border: 'none',
+              marginTop: '0'
+            }
+          }
+        }
+      }
     },
 
     activityPersona: {
@@ -73,8 +87,10 @@ export const getStyles = memoizeFunction((
     },
 
     doublePersona: {
-      '&:first-child': {
-        alignSelf: 'flex-end'
+      selectors: {
+        ':first-child': {
+          alignSelf: 'flex-end'
+        }
       }
     },
 
@@ -108,11 +124,11 @@ export const getStyles = memoizeFunction((
     timeStamp: [
       theme.fonts.tiny,
       {
-        fontWeight: '400',
+        fontWeight: 400,
         color: theme.palette.neutralSecondary
       }
     ]
   };
 
-  return mergeStyleSets(ActivityItemStyles, customStyles)!;
+  return concatStyleSets(ActivityItemStyles, customStyles);
 });

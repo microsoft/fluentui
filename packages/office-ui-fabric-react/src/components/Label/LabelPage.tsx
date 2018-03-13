@@ -22,10 +22,11 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
             <LabelBasicExample />
           </ExampleCard>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')
             ] }
           />
         }
@@ -59,7 +60,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...LabelStatus}
+            { ...LabelStatus }
           />
         }
       />

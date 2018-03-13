@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentCard renders DocumentCard correctly 1`] = `
+<div
+  className="ms-DocumentCard"
+  onClick={undefined}
+  onKeyDown={undefined}
+  role={undefined}
+  style={undefined}
+  tabIndex={undefined}
+>
+  <div
+    className="ms-DocumentCardPreview"
+    style={undefined}
+  />
+  <div
+    className="ms-DocumentCardTitle"
+    title=""
+  >
+    
+  </div>
+  <div
+    className="ms-DocumentCardActivity"
+  >
+    <div
+      className="ms-DocumentCardActivity-avatars"
+    >
+      <div
+        className="ms-DocumentCardActivity-avatar"
+      >
+        <div
+          className="ms-Persona-coin ms-Persona--size32 undefined"
+          role="persentation"
+          size={11}
+        >
+          <div
+            className="ms-Persona-imageArea"
+            style={undefined}
+          >
+            <div
+              aria-hidden="true"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #2D89EF;
+                  }
+              style={undefined}
+            >
+              <i
+                aria-hidden={true}
+                className=
+
+                    {
+                      display: inline-block;
+                    }
+                data-icon-name="Contact"
+                role="presentation"
+              />
+            </div>
+            <div
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    overflow: hidden;
+                  }
+              style={
+                Object {
+                  "height": 32,
+                  "width": 32,
+                }
+              }
+            >
+              <img
+                alt=""
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50%;
+                      opacity: 0;
+                      position: relative;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-DocumentCardActivity-details"
+    >
+      <span
+        className="ms-DocumentCardActivity-name"
+      >
+        
+      </span>
+      <span
+        className="ms-DocumentCardActivity-activity"
+      >
+        
+      </span>
+    </div>
+  </div>
+</div>
+`;

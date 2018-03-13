@@ -5,17 +5,19 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
+import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { CalendarStatus } from './Calendar.checklist';
+import { addMonths, addYears } from '../../utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
+    const today = new Date(Date.now());
     return (
       <ComponentPage
         title={ 'Calendar' }
@@ -84,6 +86,15 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showWeekNumbers={ true }
               />
             </ExampleCard>
+            <ExampleCard title='Inline Calendar with 6 weeks display by default' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample
+                isMonthPickerVisible={ false }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ false }
+                showGoToToday={ false }
+                showSixWeeksByDefault={ true }
+              />
+            </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker and no day picker' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Month }
@@ -91,6 +102,32 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showGoToToday={ true }
                 highlightCurrentMonth={ true }
                 isDayPickerVisible={ false }
+              />
+            </ExampleCard>
+            <ExampleCard
+              title='Inline Calendar with date boundary (minDate, maxDate)'
+              code={ CalendarInlineExampleCode }
+            >
+              <CalendarInlineExample
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ true }
+                highlightCurrentMonth={ true }
+                showGoToToday={ false }
+                minDate={ addMonths(today, -1) }
+                maxDate={ addYears(today, 1) }
+              />
+            </ExampleCard>
+            <ExampleCard
+              title='Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, first day of week = Monday'
+              code={ CalendarButtonExampleCode }
+            >
+              <CalendarInlineExample
+                dateRangeType={ DateRangeType.WorkWeek }
+                firstDayOfWeek={ DayOfWeek.Monday }
+                autoNavigateOnSelection={ true }
+                highlightCurrentMonth={ true }
+                showGoToToday={ true }
+                workWeekDays={ [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday] }
               />
             </ExampleCard>
             <ExampleCard
@@ -110,12 +147,22 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 buttonString={ 'Click for Month Picker' }
               />
             </ExampleCard>
+            <ExampleCard
+              title='Calendar with overlayed month picker launched from a button'
+              code={ CalendarButtonExampleCode }
+            >
+              <CalendarButtonExample
+                showMonthPickerAsOverlay={ true }
+                highlightCurrentMonth={ true }
+                buttonString={ 'Click for Overlayed Day Picker and Month Picker' }
+              />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')
             ] }
           />
         }

@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,9 +22,43 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-6"`,
-      src: `url('${baseUrl}fabric-icons-6-2ab76fc9.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-6-baae6235.woff') format('woff')`,
     },
     icons: {
+      'Superscript': '\uEDDE',
+      'Subscript': '\uEDDF',
+      'Strikethrough': '\uEDE0',
+      'Export': '\uEDE1',
+      'ExportMirrored': '\uEDE2',
+      'SingleBookmark': '\uEDFF',
+      'SingleBookmarkSolid': '\uEE00',
+      'DoubleChevronDown': '\uEE04',
+      'FollowUser': '\uEE05',
+      'ReplyAll': '\uEE0A',
+      'WorkforceManagement': '\uEE0F',
+      'Questionnaire': '\uEE19',
+      'ManagerSelfService': '\uEE23',
+      'ReplyMirrored': '\uEE35',
+      'ReplyAllMirrored': '\uEE36',
+      'Medal': '\uEE38',
+      'AddGroup': '\uEE3D',
+      'QuestionnaireMirrored': '\uEE4B',
+      'TemporaryUser': '\uEE58',
+      'CaretSolid16': '\uEE62',
+      'GroupedDescending': '\uEE66',
+      'GroupedAscending': '\uEE67',
+      'AwayStatus': '\uEE6A',
+      'MyMoviesTV': '\uEE6C',
+      'GenericScan': '\uEE6F',
+      'AustralianRules': '\uEE70',
+      'WifiEthernet': '\uEE77',
+      'TrackersMirrored': '\uEE92',
+      'DateTimeMirrored': '\uEE93',
+      'StopSolid': '\uEE95',
+      'DoubleChevronUp12': '\uEE96',
+      'DoubleChevronDown12': '\uEE97',
+      'DoubleChevronLeft12': '\uEE98',
+      'DoubleChevronRight12': '\uEE99',
       'CalendarAgenda': '\uEE9A',
       'AddEvent': '\uEEB5',
       'AssetLibrary': '\uEEB6',
@@ -48,7 +91,10 @@ export function initializeIcons(baseUrl: string = ''): void {
       'DelveAnalytics': '\uEEEE',
       'ArrowUpRightMirrored8': '\uEEEF',
       'ArrowDownRightMirrored8': '\uEEF0',
+      'CompanyDirectory': '\uEF0D',
+      'CompanyDirectoryMirrored': '\uEF2B',
       'OneDriveAdd': '\uEF32',
+      'ProfileSearch': '\uEF35',
       'Header2': '\uEF36',
       'Header3': '\uEF37',
       'Header4': '\uEF38',
@@ -78,44 +124,9 @@ export function initializeIcons(baseUrl: string = ''): void {
       'ExpandMenu': '\uEF67',
       'Boards': '\uEF68',
       'SunAdd': '\uEF69',
-      'SunQuestionMark': '\uEF6A',
-      'LandscapeOrientation': '\uEF6B',
-      'DocumentSearch': '\uEF6C',
-      'PublicCalendar': '\uEF6D',
-      'PublicContactCard': '\uEF6E',
-      'PublicEmail': '\uEF6F',
-      'PublicFolder': '\uEF70',
-      'WordDocument': '\uEF71',
-      'PowerPointDocument': '\uEF72',
-      'ExcelDocument': '\uEF73',
-      'GroupedList': '\uEF74',
-      'ClassroomLogo': '\uEF75',
-      'Sections': '\uEF76',
-      'EditPhoto': '\uEF77',
-      'Starburst': '\uEF78',
-      'ShareiOS': '\uEF79',
-      'AirTickets': '\uEF7A',
-      'PencilReply': '\uEF7B',
-      'Tiles2': '\uEF7C',
-      'SkypeCircleCheck': '\uEF7D',
-      'SkypeCircleClock': '\uEF7E',
-      'SkypeCircleMinus': '\uEF7F',
-      'SkypeMessage': '\uEF83',
-      'ClosedCaption': '\uEF84',
-      'ATPLogo': '\uEF85',
-      'OfficeFormsLogoInverse': '\uEF86',
-      'RecycleBin': '\uEF87',
-      'EmptyRecycleBin': '\uEF88',
-      'Hide2': '\uEF89',
-      'iOSAppStoreLogo': '\uEF8A',
-      'AndroidLogo': '\uEF8B',
-      'Breadcrumb': '\uEF8C',
-      'PageEdit': '\uEFB6',
-      'Database': '\uEFC7',
-      'DocumentManagement': '\uEFFC',
-      'CRMReport': '\uEFFE',
-      'ZipFolder': '\uF012',
-      'TextDocument': '\uF029'
+      'SunQuestionMark': '\uEF6A'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

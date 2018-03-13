@@ -1,12 +1,11 @@
 
 import * as React from 'react';
-import { ITileProps, TileSize } from './Tile.Props';
+import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { ISize } from '@uifabric/utilities';
+import { ISize, css, BaseComponent, autobind, getId } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
-import * as SignalStylesModule from '../signals/Signals.scss';
+import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
 
 // tslint:disable:no-any
@@ -17,16 +16,17 @@ const CheckStyles: any = CheckStylesModule;
 
 const enum TileLayoutValues {
   nameplatePadding = 12,
-  largeNameplateNameHeight = 17,
-  smallNameplateNameHeight = 14,
-  nameplateMargin = 4,
-  largeNameplateActivityHeight = 14,
-  smallNameplateActivityHeight = 14,
+  largeNameplateNameHeight = 15,
+  smallNameplateNameHeight = 12,
+  nameplateMargin = 0,
+  largeNameplateActivityHeight = 20,
+  smallNameplateActivityHeight = 20,
   foregroundMargin = 16
 }
 
 export interface ITileState {
   isSelected?: boolean;
+  isModal?: boolean;
 }
 
 const SIZES: {
@@ -82,9 +82,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     } = props;
 
     const isSelected = !!selection && selectionIndex > -1 && selection.isIndexSelected(selectionIndex);
+    const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.state = {
-      isSelected: isSelected
+      isSelected: isSelected,
+      isModal: isModal
     };
   }
 
@@ -101,9 +103,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     if (selection !== nextSelection || selectionIndex !== nextSelectionIndex) {
       const isSelected = !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
+      const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
-        isSelected: isSelected
+        isSelected: isSelected,
+        isModal: isModal
       });
     }
   }
@@ -142,6 +146,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const {
       children,
       selectionIndex = -1,
+      invokeSelection = false,
       selection,
       background,
       foreground,
@@ -162,11 +167,13 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       ...divProps
     } = this.props;
 
-    const isSelectable = !!selection && selectionIndex > -1;
-
     const {
-      isSelected = false
+      isSelected = false,
+      isModal = false
     } = this.state;
+
+    const isSelectable = !!selection && selectionIndex > -1;
+    const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
     return (
       <div
@@ -183,7 +190,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           [`ms-Tile--isSelectable ${TileStyles.selectable}`]: isSelectable,
           [`ms-Tile--hasBackground ${TileStyles.hasBackground}`]: !!background,
           [SignalStyles.dark]: !!background && !hideBackground,
-          [`ms-Tile--showBackground ${TileStyles.showBackground}`]: !hideBackground
+          [`ms-Tile--showBackground ${TileStyles.showBackground}`]: !hideBackground,
+          [`ms-Tile--invokable ${TileStyles.invokable}`]: isInvokable,
+          [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
+          [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
+          [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal
         }) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
@@ -193,7 +204,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         <a
           href={ href }
           onClick={ onClick }
-          data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
+          ref={ this.props.linkRef }
+          data-selection-invoke={ (isInvokable && selectionIndex > -1) ? true : undefined }
           className={ css('ms-Tile-link', TileStyles.link) }
         >
           {
@@ -332,17 +344,19 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isSelected: boolean;
     }): JSX.Element {
     return (
-      <button
-        aria-label={ this.props.toggleSelectionAriaLabel }
-        className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost) }
-        data-selection-toggle={ true }
+      <span
         role='checkbox'
+        aria-label={ this.props.toggleSelectionAriaLabel }
+        className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
+          [CheckStyles.hostShowCheck]: this.state.isModal
+        }) }
+        data-selection-toggle={ true }
         aria-checked={ isSelected }
       >
         <Check
           checked={ isSelected }
         />
-      </button>
+      </span>
     );
   }
 
@@ -353,8 +367,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       selectionIndex = -1
     } = this.props;
 
+    const isSelected = selectionIndex > -1 && !!selection && selection.isIndexSelected(selectionIndex);
+    const isModal = !!selection && !!selection.isModal && selection.isModal();
+
     this.setState({
-      isSelected: selectionIndex > -1 && selection && selection.isIndexSelected(selectionIndex)
+      isSelected: isSelected,
+      isModal: isModal
     });
   }
 }

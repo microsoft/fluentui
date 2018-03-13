@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,11 +22,17 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-1"`,
-      src: `url('${baseUrl}fabric-icons-1-a961c249.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-1-8143b877.woff') format('woff')`,
     },
     icons: {
+      'Ferry': '\uE7E3',
+      'Highlight': '\uE7E6',
+      'PowerButton': '\uE7E8',
+      'Tab': '\uE7E9',
+      'Admin': '\uE7EF',
       'TVMonitor': '\uE7F4',
       'Speakers': '\uE7F5',
+      'StackIndicator': '\uE7FF',
       'Nav2DMapView': '\uE800',
       'Car': '\uE804',
       'Bus': '\uE806',
@@ -29,15 +44,19 @@ export function initializeIcons(baseUrl: string = ''): void {
       'IncidentTriangle': '\uE814',
       'Touch': '\uE815',
       'MapDirections': '\uE816',
+      'CaretHollow': '\uE817',
+      'CaretSolid': '\uE818',
       'History': '\uE81C',
       'Location': '\uE81D',
       'Work': '\uE821',
       'Recent': '\uE823',
       'Hotel': '\uE824',
       'LocationDot': '\uE827',
-      'News': '\uE900',
-      'Chat': '\uE901',
-      'Group': '\uE902',
+      'Dictionary': '\uE82D',
+      'ChromeBack': '\uE830',
+      'FolderOpen': '\uE838',
+      'PinnedFill': '\uE842',
+      'RevToggleKey': '\uE845',
       'Previous': '\uE892',
       'Next': '\uE893',
       'Sync': '\uE895',
@@ -56,8 +75,12 @@ export function initializeIcons(baseUrl: string = ''): void {
       'ViewAll': '\uE8A9',
       'Switch': '\uE8AB',
       'Rename': '\uE8AC',
+      'Remote': '\uE8AF',
+      'SelectAll': '\uE8B3',
+      'Orientation': '\uE8B4',
       'Import': '\uE8B5',
       'Picture': '\uE8B9',
+      'ChromeClose': '\uE8BB',
       'ShowResults': '\uE8BC',
       'Message': '\uE8BD',
       'CalendarDay': '\uE8BF',
@@ -88,6 +111,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'FontIncrease': '\uE8E8',
       'FontSize': '\uE8E9',
       'CellPhone': '\uE8EA',
+      'Calculator': '\uE8EF',
       'Library': '\uE8F1',
       'PostUpdate': '\uE8F3',
       'NewFolder': '\uE8F4',
@@ -95,27 +119,14 @@ export function initializeIcons(baseUrl: string = ''): void {
       'UnsyncFolder': '\uE8F6',
       'SyncFolder': '\uE8F7',
       'BlockContact': '\uE8F8',
+      'Accept': '\uE8FB',
       'BulletedList': '\uE8FD',
       'Preview': '\uE8FF',
-      'World': '\uE909',
-      'Comment': '\uE90A',
-      'DockLeft': '\uE90C',
-      'DockRight': '\uE90D',
-      'Repair': '\uE90F',
-      'Accounts': '\uE910',
-      'RadioBullet': '\uE915',
-      'Stopwatch': '\uE916',
-      'Clock': '\uE917',
-      'WorldClock': '\uE918',
-      'AlarmClock': '\uE919',
-      'Hospital': '\uE91D',
-      'Timer': '\uE91E',
-      'FullCircleMask': '\uE91F',
-      'LocationFill': '\uE920',
-      'ChromeMinimize': '\uE921',
-      'Annotation': '\uE924',
-      'ChromeClose': '\uE8BB',
-      'Accept': '\uE8FB'
+      'News': '\uE900',
+      'Chat': '\uE901',
+      'Group': '\uE902'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

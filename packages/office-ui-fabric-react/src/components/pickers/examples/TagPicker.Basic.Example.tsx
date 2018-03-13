@@ -6,7 +6,7 @@ import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/p
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-let _testTags = [
+const _testTags = [
   'black',
   'blue',
   'brown',
@@ -25,8 +25,8 @@ let _testTags = [
 ].map(item => ({ key: item, name: item }));
 
 export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       isPickerDisabled: false
     };
@@ -42,9 +42,8 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
           onChange={ this._onDisabledButtonClick }
         />
         <TagPicker
-          ref='tagPicker'
           onResolveSuggestions={ this._onFilterChanged }
-          getTextFromItem={ (item: any) => { return item.name; } }
+          getTextFromItem={ this._getTextFromItem }
           pickerSuggestionsProps={
             {
               suggestionsHeaderText: 'Suggested Tags',
@@ -61,6 +60,10 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
         />
       </div>
     );
+  }
+
+  private _getTextFromItem(item: any): any {
+    return item.name;
   }
 
   @autobind

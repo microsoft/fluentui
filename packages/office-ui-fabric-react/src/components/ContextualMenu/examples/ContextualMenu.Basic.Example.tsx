@@ -3,10 +3,10 @@ import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMen
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
-export class ContextualMenuBasicExample extends React.Component<any, any> {
+export class ContextualMenuBasicExample extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showCallout: false
     };
@@ -23,7 +23,8 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
             items: [
               {
                 key: 'newItem',
-                name: 'New'
+                name: 'New',
+                onClick: () => console.log('New clicked')
               },
               {
                 key: 'divider_1',
@@ -31,20 +32,35 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
               },
               {
                 key: 'rename',
-                name: 'Rename'
+                name: 'Rename',
+                onClick: () => console.log('Rename clicked')
               },
               {
                 key: 'edit',
-                name: 'Edit'
+                name: 'Edit',
+                onClick: () => console.log('Edit clicked')
               },
               {
                 key: 'properties',
-                name: 'Properties'
+                name: 'Properties',
+                onClick: () => console.log('Properties clicked')
+              },
+              {
+                key: 'linkNoTarget',
+                name: 'Link same window',
+                href: 'http://bing.com'
+              },
+              {
+                key: 'linkWithTarget',
+                name: 'Link new window',
+                href: 'http://bing.com',
+                target: '_blank'
               },
               {
                 key: 'disabled',
                 name: 'Disabled item',
-                disabled: true
+                disabled: true,
+                onClick: () => console.error('Disabled item should not be clickable.')
               }
             ]
           } }

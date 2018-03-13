@@ -8,7 +8,7 @@ import {
   getNativeProps,
   autobind
 } from '../../Utilities';
-import { IPopupProps } from './Popup.Props';
+import { IPopupProps } from './Popup.types';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -19,10 +19,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     shouldRestoreFocus: true
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
+  public _root: HTMLDivElement;
 
   private _originalFocusedElement: HTMLElement;
   private _containsFocus: boolean;
@@ -32,9 +29,9 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public componentDidMount(): void {
-    this._events.on(this.refs.root, 'focus', this._onFocus, true);
-    this._events.on(this.refs.root, 'blur', this._onBlur, true);
-    if (doesElementContainFocus(this.refs.root)) {
+    this._events.on(this._root, 'focus', this._onFocus, true);
+    this._events.on(this._root, 'blur', this._onBlur, true);
+    if (doesElementContainFocus(this._root)) {
       this._containsFocus = true;
     }
   }
@@ -55,11 +52,16 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public render() {
-    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy } = this.props;
+    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
+
+    let needsVerticalScrollBar = false;
+    if (this._root && this._root.firstElementChild) {
+      needsVerticalScrollBar = this._root.firstElementChild.clientHeight > this._root.clientHeight;
+    }
 
     return (
       <div
-        ref='root'
+        ref={ this._resolveRef('_root') }
         { ...getNativeProps(this.props, divProperties) }
         className={ className }
         role={ role }
@@ -67,6 +69,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
+        style={ { overflowY: needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
       >
         { this.props.children }
       </div>

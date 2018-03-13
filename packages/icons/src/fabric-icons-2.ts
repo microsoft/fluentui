@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,18 +22,36 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-2"`,
-      src: `url('${baseUrl}fabric-icons-2-2be8dca9.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-2-e49d4cfd.woff') format('woff')`,
     },
     icons: {
+      'World': '\uE909',
+      'Comment': '\uE90A',
+      'DockLeft': '\uE90C',
+      'DockRight': '\uE90D',
+      'Repair': '\uE90F',
+      'Accounts': '\uE910',
+      'RadioBullet': '\uE915',
+      'Stopwatch': '\uE916',
+      'Clock': '\uE917',
+      'WorldClock': '\uE918',
+      'AlarmClock': '\uE919',
+      'Hospital': '\uE91D',
+      'Timer': '\uE91E',
+      'FullCircleMask': '\uE91F',
+      'LocationFill': '\uE920',
+      'ChromeMinimize': '\uE921',
+      'Annotation': '\uE924',
       'Fingerprint': '\uE928',
       'Handwriting': '\uE929',
-      'StackIndicator': '\uE7FF',
       'Completed': '\uE930',
       'Label': '\uE932',
       'FlickDown': '\uE935',
       'FlickUp': '\uE936',
       'FlickLeft': '\uE937',
       'FlickRight': '\uE938',
+      'MiniExpand': '\uE93A',
+      'MiniContract': '\uE93B',
       'Streaming': '\uE93E',
       'MusicInCollection': '\uE940',
       'OneDrive': '\uE941',
@@ -47,28 +74,21 @@ export function initializeIcons(baseUrl: string = ''): void {
       'ChevronDownMed': '\uE972',
       'ChevronLeftMed': '\uE973',
       'ChevronRightMed': '\uE974',
-      'Dictionary': '\uE82D',
-      'ChromeBack': '\uE830',
       'PC1': '\uE977',
       'PresenceChickletVideo': '\uE979',
       'Reply': '\uE97A',
       'HalfAlpha': '\uE97E',
-      'LockSolid': '\uE9A2',
       'ConstructionCone': '\uE98F',
       'DoubleChevronLeftMed': '\uE991',
       'Volume0': '\uE992',
       'Volume1': '\uE993',
       'Volume2': '\uE994',
       'Volume3': '\uE995',
-      'CaretHollow': '\uE817',
-      'CaretSolid': '\uE818',
-      'FolderOpen': '\uE838',
-      'PinnedFill': '\uE842',
       'Chart': '\uE999',
       'Robot': '\uE99A',
+      'LockSolid': '\uE9A2',
       'BidiLtr': '\uE9AA',
       'BidiRtl': '\uE9AB',
-      'RevToggleKey': '\uE845',
       'RightDoubleQuote': '\uE9B1',
       'Sunny': '\uE9BD',
       'CloudWeather': '\uE9BE',
@@ -88,8 +108,6 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Duststorm': '\uE9CD',
       'Unknown': '\uE9CE',
       'Precipitation': '\uE9CF',
-      'Ringer': '\uEA8F',
-      'PDF': '\uEA90',
       'Ribbon': '\uE9D1',
       'AreaChart': '\uE9D2',
       'Assign': '\uE9D3',
@@ -105,17 +123,10 @@ export function initializeIcons(baseUrl: string = ''): void {
       'SnowShowerDay': '\uE9FD',
       'HailDay': '\uEA00',
       'WorkFlow': '\uEA01',
-      'StoreLogoMed': '\uEA04',
-      'TriangleSolid': '\uEA08',
-      'RainShowersNight': '\uEA0F',
-      'SnowShowerNight': '\uEA11',
-      'HailNight': '\uEA13',
-      'Info2': '\uEA1F',
-      'StoreLogo': '\uEA96',
-      'MultiSelectMirrored': '\uEA98',
-      'Broom': '\uEA99',
-      'MusicInCollectionFill': '\uEA36',
-      'Asterisk': '\uEA38'
+      'HourGlass': '\uEA03',
+      'StoreLogoMed20': '\uEA04'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

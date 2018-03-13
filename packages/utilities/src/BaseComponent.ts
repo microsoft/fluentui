@@ -9,8 +9,9 @@ import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps
  *
  * @public
  */
-export interface IBaseProps {
-  componentRef?: (ref: React.ReactNode | null) => (void | React.ReactNode);
+// tslint:disable-next-line:no-any
+export interface IBaseProps<T = any> {
+  componentRef?: (ref: T | null) => (void | T);
 }
 
 /**
@@ -18,10 +19,9 @@ export interface IBaseProps {
  *
  * @public
  */
-export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> {
+export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Component<P, S> {
   /**
-   * External consumers should override BaseComponent.onError to hook into error messages that occur from
-   * exceptions thrown from within components.
+   * @deprecated Use React's error boundaries instead.
    */
   // tslint:disable-next-line:no-any
   public static onError: ((errorMessage?: string, ex?: any) => void);
@@ -47,7 +47,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * @param context - The context for the component.
    */
   // tslint:disable-next-line:no-any
-  constructor(props?: P, context?: any) {
+  constructor(props: P, context?: any) {
     super(props, context);
 
     this._shouldUpdateComponentRef = true;
@@ -68,7 +68,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * When the component will receive props, make sure the componentRef is updated.
    */
   // tslint:disable-next-line:no-any
-  public componentWillReceiveProps(newProps?: P, newContext?: any): void {
+  public componentWillReceiveProps(newProps: Readonly<P>, newContext: any): void {
     this._updateComponentRef(this.props, newProps);
   }
 
@@ -240,30 +240,17 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
     (obj as any)[methodName] = function (): any {
       let retVal;
 
-      try {
-        if (prototypeMethod) {
-          retVal = prototypeMethod.apply(this, arguments);
-        }
-        if (classMethod !== prototypeMethod) {
-          retVal = classMethod.apply(this, arguments);
-        }
-      } catch (e) {
-        const errorMessage = `Exception in ${obj.className}.${methodName}(): ${typeof e === 'string' ? e : e.stack}`;
-
-        if (BaseComponent.onError) {
-          BaseComponent.onError(errorMessage, e);
-        }
+      if (prototypeMethod) {
+        retVal = prototypeMethod.apply(this, arguments);
+      }
+      if (classMethod !== prototypeMethod) {
+        retVal = classMethod.apply(this, arguments);
       }
 
       return retVal;
     };
   }
 }
-
-BaseComponent.onError = (errorMessage: string) => {
-  console.error(errorMessage);
-  throw errorMessage;
-};
 
 /**
  * Simple constant function for returning null, used to render empty templates in JSX.

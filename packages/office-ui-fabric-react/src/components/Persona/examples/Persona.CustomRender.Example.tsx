@@ -7,8 +7,10 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import './PersonaExample.scss';
 import { TestImages } from '../../../common/TestImages';
+import './PersonaExample.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 const examplePersona = {
   imageUrl: TestImages.personaFemale,
@@ -19,17 +21,15 @@ const examplePersona = {
   optionalText: 'Available at 4:00pm'
 };
 
-export class PersonaCustomRenderExample extends React.Component<React.Props<PersonaCustomRenderExample>, any> {
-  constructor() {
-    super();
-  }
+export class PersonaCustomRenderExample extends React.Component {
 
   public render() {
     return (
-      <div>
+      <div className='ms-PersonaExample'>
+        <div className={ exampleStyles.exampleLabel }>Custom icon in secondary text</div>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.large }
+          size={ PersonaSize.size72 }
           presence={ PersonaPresence.offline }
           onRenderSecondaryText={ this._onRenderSecondaryText }
         />

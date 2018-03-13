@@ -13,7 +13,9 @@ import { PanelLargeExample } from './examples/Panel.Large.Example';
 import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelCustomExample } from './examples/Panel.Custom.Example';
+import { PanelHiddenOnDismissExample } from './examples/Panel.HiddenOnDismiss.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
+import { PanelLightDismissCustomExample } from './examples/Panel.LightDismissCustom.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
 import { FontClassNames } from '../../Styling';
@@ -28,7 +30,9 @@ const PanelLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 const PanelLargeFixedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LargeFixed.Example.tsx') as string;
 const PanelExtraLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ExtraLarge.Example.tsx') as string;
 const PanelCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Custom.Example.tsx') as string;
+const PanelHiddenOnDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HiddenOnDismiss.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
+const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 
@@ -64,8 +68,14 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Panel - Custom' code={ PanelCustomExampleCode }>
               <PanelCustomExample />
             </ExampleCard>
+            <ExampleCard title='Panel - Hidden on Dismiss' code={ PanelHiddenOnDismissExampleCode }>
+              <PanelHiddenOnDismissExample />
+            </ExampleCard>
             <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
               <PanelLightDismissExample />
+            </ExampleCard>
+            <ExampleCard title='Panel - Custom Light Dismiss' code={ PanelLightDismissCustomExampleCode }>
+              <PanelLightDismissCustomExample />
             </ExampleCard>
             <ExampleCard title='Panel - Non-Modal' code={ PanelNonModalExampleCode }>
               <PanelNonModalExample />
@@ -78,7 +88,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')
             ] }
           />
         }

@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,9 +22,46 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-9"`,
-      src: `url('${baseUrl}fabric-icons-9-a362212c.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-9-938d7113.woff') format('woff')`,
     },
     icons: {
+      'BranchMerge': '\uF295',
+      'BranchPullRequest': '\uF296',
+      'BranchSearch': '\uF297',
+      'BranchShelveset': '\uF298',
+      'RawSource': '\uF299',
+      'MergeDuplicate': '\uF29A',
+      'RowsGroup': '\uF29B',
+      'RowsChild': '\uF29C',
+      'Deploy': '\uF29D',
+      'Redeploy': '\uF29E',
+      'ServerEnviroment': '\uF29F',
+      'VisioDiagram': '\uF2A0',
+      'HighlightMappedShapes': '\uF2A1',
+      'TextCallout': '\uF2A2',
+      'IconSetsFlag': '\uF2A4',
+      'VisioLogo': '\uF2A7',
+      'VisioLogoFill': '\uF2A8',
+      'VisioDocument': '\uF2A9',
+      'TimelineProgress': '\uF2AA',
+      'TimelineDelivery': '\uF2AB',
+      'Backlog': '\uF2AC',
+      'TeamFavorite': '\uF2AD',
+      'TaskGroup': '\uF2AE',
+      'TaskGroupMirrored': '\uF2AF',
+      'ScopeTemplate': '\uF2B0',
+      'AssessmentGroupTemplate': '\uF2B1',
+      'NewTeamProject': '\uF2B2',
+      'CommentAdd': '\uF2B3',
+      'CommentNext': '\uF2B4',
+      'CommentPrevious': '\uF2B5',
+      'ShopServer': '\uF2B6',
+      'LocaleLanguage': '\uF2B7',
+      'QueryList': '\uF2B8',
+      'UserSync': '\uF2B9',
+      'UserPause': '\uF2BA',
+      'StreamingOff': '\uF2BB',
+      'ArrowTallUpLeft': '\uF2BD',
       'ArrowTallUpRight': '\uF2BE',
       'ArrowTallDownLeft': '\uF2BF',
       'ArrowTallDownRight': '\uF2C0',
@@ -78,44 +124,9 @@ export function initializeIcons(baseUrl: string = ''): void {
       'PY': '\uF2F9',
       'CoffeeScript': '\uF2FA',
       'MarkDownLanguage': '\uF2FB',
-      'FullWidth': '\uF2FE',
-      'FullWidthEdit': '\uF2FF',
-      'SingleColumnEdit': '\uF321',
-      'DoubleColumnEdit': '\uF322',
-      'TripleColumnEdit': '\uF323',
-      'ColumnLeftTwoThirdsEdit': '\uF324',
-      'ColumnRightTwoThirdsEdit': '\uF325',
-      'StreamLogo': '\uF329',
-      'AlertSolid': '\uF331',
-      'MegaphoneSolid': '\uF332',
-      'TaskSolid': '\uF333',
-      'ConfigurationSolid': '\uF334',
-      'BugSolid': '\uF335',
-      'CrownSolid': '\uF336',
-      'Trophy2Solid': '\uF337',
-      'QuickNoteSolid': '\uF338',
-      'ConstructionConeSolid': '\uF339',
-      'PageListSolid': '\uF33A',
-      'PageListMirroredSolid': '\uF33B',
-      'StarburstSolid': '\uF33C',
-      'ReadingModeSolid': '\uF33D',
-      'SadSolid': '\uF33E',
-      'HealthSolid': '\uF33F',
-      'ShieldSolid': '\uF340',
-      'GiftBoxSolid': '\uF341',
-      'ShoppingCartSolid': '\uF342',
-      'MailSolid': '\uF343',
-      'ChatSolid': '\uF344',
-      'RibbonSolid': '\uF345',
-      'FinancialSolid': '\uF346',
-      'FinancialMirroredSolid': '\uF347',
-      'HeadsetSolid': '\uF348',
-      'PermissionsSolid': '\uF349',
-      'ParkingSolid': '\uF34A',
-      'ParkingMirroredSolid': '\uF34B',
-      'DiamondSolid': '\uF34C',
-      'AsteriskSolid': '\uF34D',
-      'OfflineStorageSolid': '\uF34E'
+      'FullWidth': '\uF2FE'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

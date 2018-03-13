@@ -53,6 +53,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/checkbox'
         },
         {
+          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
+          key: 'Coachmark',
+          name: 'Coachmark',
+          url: '#/examples/coachmark'
+        },
+        {
           component: require<any>('../components/ChoiceGroup/ChoiceGroupPage').ChoiceGroupPage,
           key: 'ChoiceGroup',
           name: 'ChoiceGroup',
@@ -93,6 +99,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Dialog',
           name: 'Dialog',
           url: '#/examples/dialog'
+        },
+        {
+          component: require<any>('../components/Divider/DividerPage').DividerPage,
+          key: 'Divider',
+          name: 'Divider',
+          url: '#/examples/Divider'
         },
         {
           component: require<any>('../components/DocumentCard/DocumentCardPage').DocumentCardPage,

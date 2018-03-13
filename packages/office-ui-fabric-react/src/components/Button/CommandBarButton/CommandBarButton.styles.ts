@@ -1,7 +1,7 @@
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
-  mergeStyleSets
+  concatStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -17,9 +17,9 @@ export const getStyles = memoizeFunction((
   focusInset?: string,
   focusColor?: string
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let commandButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const commandButtonStyles: IButtonStyles = {
     root: {
       minWidth: '40px',
       backgroundColor: theme.palette.neutralLighter,
@@ -29,34 +29,22 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.neutralDark,
-      icon: {
-        color: theme.palette.themeDark
-      }
+      color: theme.palette.neutralDark
     },
 
     rootPressed: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDark
-      }
+      color: theme.palette.black
     },
 
     rootChecked: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDarker
-      }
+      color: theme.palette.black
     },
 
     rootExpanded: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDark
-      }
+      color: theme.palette.black
     },
 
     rootCheckedHovered: {
@@ -78,5 +66,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
+  return concatStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
 });

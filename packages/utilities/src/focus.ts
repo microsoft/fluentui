@@ -1,6 +1,6 @@
 /* tslint:disable:no-string-literal */
 
-import { elementContains, getDocument } from './dom';
+import { elementContains, getDocument, elementContainsAttribute } from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
@@ -34,6 +34,19 @@ export function getLastFocusable(
 }
 
 /**
+ * Gets the last tabbable element.
+ *
+ * @public
+ */
+export function getLastTabbable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
+
+  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones, false, true);
+}
+
+/**
  * Attempts to focus the first focusable element that is a child or child's child of the rootElement.
  *
  * @public
@@ -63,7 +76,8 @@ export function getPreviousElement(
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean,
-  allowFocusRoot?: boolean): HTMLElement | null {
+  allowFocusRoot?: boolean,
+  elementShouldBeTabbable?: boolean): HTMLElement | null {
 
   if (!currentElement ||
     (!allowFocusRoot && currentElement === rootElement)) {
@@ -82,15 +96,58 @@ export function getPreviousElement(
       true,
       true,
       includeElementsInFocusZones,
-      allowFocusRoot);
+      allowFocusRoot,
+      elementShouldBeTabbable);
 
     if (childMatch) {
-      return childMatch;
+      if ((elementShouldBeTabbable && isElementTabbable(childMatch, true)) || !elementShouldBeTabbable) {
+        return childMatch;
+      }
+
+      const childMatchSiblingMatch = getPreviousElement(
+        rootElement,
+        childMatch.previousElementSibling as HTMLElement,
+        true,
+        true,
+        true,
+        includeElementsInFocusZones,
+        allowFocusRoot,
+        elementShouldBeTabbable
+      );
+      if (childMatchSiblingMatch) {
+        return childMatchSiblingMatch;
+      }
+
+      let childMatchParent = childMatch.parentElement;
+
+      // At this point if we have not found any potential matches
+      // start looking at the rest of the subtree under the currentParent.
+      // NOTE: We do not want to recurse here because doing so could
+      // cause elements to get skipped.
+      while (childMatchParent && childMatchParent !== currentElement) {
+        const childMatchParentMatch = getPreviousElement(
+          rootElement,
+          childMatchParent.previousElementSibling as HTMLElement,
+          true,
+          true,
+          true,
+          includeElementsInFocusZones,
+          allowFocusRoot,
+          elementShouldBeTabbable
+        );
+
+        if (childMatchParentMatch) {
+          return childMatchParentMatch;
+        }
+
+        childMatchParent = childMatchParent.parentElement;
+      }
     }
   }
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
+  if (checkNode && isCurrentElementVisible &&
+    ((elementShouldBeTabbable && isElementTabbable(currentElement, true)) || !elementShouldBeTabbable)) {
     return currentElement;
   }
 
@@ -102,7 +159,8 @@ export function getPreviousElement(
     true,
     true,
     includeElementsInFocusZones,
-    allowFocusRoot);
+    allowFocusRoot,
+    elementShouldBeTabbable);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -111,7 +169,7 @@ export function getPreviousElement(
   // Check its parent.
   if (!suppressParentTraversal) {
     return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones,
-      allowFocusRoot);
+      allowFocusRoot, elementShouldBeTabbable);
   }
 
   return null;
@@ -217,7 +275,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
  *
  * @public
  */
-export function isElementTabbable(element: HTMLElement): boolean {
+export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean): boolean {
 
   // If this element is null or is disabled, it is not considered tabbable.
   if (!element || (element as HTMLButtonElement).disabled) {
@@ -238,8 +296,7 @@ export function isElementTabbable(element: HTMLElement): boolean {
   let isFocusableAttribute = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
   let isTabIndexSet = tabIndexAttributeValue !== null && tabIndex >= 0;
 
-  return (
-    !!element &&
+  const result = !!element &&
     isFocusableAttribute !== 'false' &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON') ||
@@ -248,7 +305,9 @@ export function isElementTabbable(element: HTMLElement): boolean {
       isFocusableAttribute === 'true' ||
       isTabIndexSet ||
       element.getAttribute && element.getAttribute('role') === 'button'
-    ));
+    );
+
+  return checkTabIndex ? (tabIndex !== -1) && result : result;
 }
 
 /**
@@ -281,4 +340,15 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
     return true;
   }
   return false;
+}
+
+/**
+ * Determines if an, or any of its ancestors, sepcificies that it doesn't want focus to wrap
+ * @param element - element to start searching from
+ * @param noWrapDataAttribute - the no wrap data attribute to match (either)
+ * @returns true if focus should wrap, false otherwise
+ */
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
+
+  return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
 }

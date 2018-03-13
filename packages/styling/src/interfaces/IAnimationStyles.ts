@@ -1,4 +1,4 @@
-import { IRawStyle } from './IRawStyle';
+import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 
 /**
  * All Fabric standard animations, exposed as json objects referencing predefined
@@ -43,4 +43,13 @@ export interface IAnimationStyles {
   fadeOut500: IRawStyle;
   rotate90deg: IRawStyle;
   rotateN90deg: IRawStyle;
+}
+
+export interface IAnimationVariables {
+  easeFunction1: string;
+  easeFunction2: string;
+  durationValue1: string;
+  durationValue2: string;
+  durationValue3: string;
+  durationValue4: string;
 }

@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,12 +22,31 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-80b6008d.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-3-39ed3795.woff') format('woff')`,
     },
     icons: {
+      'TimeSheet': '\uEA05',
+      'TriangleSolid': '\uEA08',
+      'VideoSolid': '\uEA0C',
+      'RainShowersNight': '\uEA0F',
+      'SnowShowerNight': '\uEA11',
+      'Teamwork': '\uEA12',
+      'HailNight': '\uEA13',
+      'PeopleAdd': '\uEA15',
+      'Glasses': '\uEA16',
+      'DateTime2': '\uEA17',
+      'Shield': '\uEA18',
+      'Header1': '\uEA19',
+      'PageAdd': '\uEA1A',
+      'NumberedList': '\uEA1C',
+      'PowerBILogo': '\uEA1E',
+      'Info2': '\uEA1F',
+      'MusicInCollectionFill': '\uEA36',
+      'Asterisk': '\uEA38',
       'ErrorBadge': '\uEA39',
       'CircleFill': '\uEA3B',
       'Record2': '\uEA3F',
+      'AllAppsMirrored': '\uEA40',
       'BookmarksMirrored': '\uEA41',
       'BulletedListMirrored': '\uEA42',
       'CaretHollowMirrored': '\uEA45',
@@ -46,6 +74,12 @@ export function initializeIcons(baseUrl: string = ''): void {
       'EmojiNeutral': '\uEA87',
       'EmojiDisappointed': '\uEA88',
       'HomeSolid': '\uEA8A',
+      'Ringer': '\uEA8F',
+      'PDF': '\uEA90',
+      'HeartBroken': '\uEA92',
+      'StoreLogo16': '\uEA96',
+      'MultiSelectMirrored': '\uEA98',
+      'Broom': '\uEA99',
       'Cocktails': '\uEA9D',
       'Wines': '\uEABF',
       'Articles': '\uEAC1',
@@ -53,9 +87,12 @@ export function initializeIcons(baseUrl: string = ''): void {
       'DietPlanNotebook': '\uEAC8',
       'Pill': '\uEACB',
       'ExerciseTracker': '\uEACC',
+      'HandsFree': '\uEAD0',
       'Medical': '\uEAD4',
       'Running': '\uEADA',
       'Weights': '\uEADB',
+      'Trackers': '\uEADF',
+      'AddNotes': '\uEAE3',
       'BarChart4': '\uEAE7',
       'CirclePlus': '\uEAEE',
       'Coffee': '\uEAEF',
@@ -66,8 +103,11 @@ export function initializeIcons(baseUrl: string = ''): void {
       'PieSingle': '\uEB05',
       'RemoveFilter': '\uEB08',
       'Savings': '\uEB0B',
+      'Sell': '\uEB0C',
       'StockDown': '\uEB0F',
       'StockUp': '\uEB11',
+      'Lamp': '\uEB19',
+      'Source': '\uEB1B',
       'MSNVideos': '\uEB1C',
       'Cricket': '\uEB1E',
       'Golf': '\uEB1F',
@@ -80,42 +120,13 @@ export function initializeIcons(baseUrl: string = ''): void {
       'ProFootball': '\uEB27',
       'ProHockey': '\uEB28',
       'Rugby': '\uEB2D',
+      'SubstitutionsIn': '\uEB31',
       'Tennis': '\uEB33',
       'Arrivals': '\uEB34',
       'Design': '\uEB3C',
-      'Website': '\uEB41',
-      'Drop': '\uEB42',
-      'SkiResorts': '\uEB45',
-      'Snowflake': '\uEB46',
-      'BusSolid': '\uEB47',
-      'FerrySolid': '\uEB48',
-      'AirplaneSolid': '\uEB4C',
-      'TrainSolid': '\uEB4D',
-      'Ticket': '\uEB54',
-      'Devices4': '\uEB66',
-      'AzureLogo': '\uEB6A',
-      'BingLogo': '\uEB6B',
-      'MSNLogo': '\uEB6C',
-      'OutlookLogoInverse': '\uEB6D',
-      'OfficeLogo': '\uEB6E',
-      'SkypeLogo': '\uEB6F',
-      'Door': '\uEB75',
-      'EditMirrored': '\uEB7E',
-      'GiftCard': '\uEB8E',
-      'DoubleBookmark': '\uEB8F',
-      'StatusErrorFull': '\uEB90',
-      'Certificate': '\uEB95',
-      'FastForward': '\uEB9D',
-      'Rewind': '\uEB9E',
-      'Photo2': '\uEB9F',
-      'OpenSource': '\uEBC2',
-      'CloudDownload': '\uEBD3',
-      'WindDirection': '\uEBE6',
-      'Family': '\uEBDA',
-      'CSS': '\uEBEF',
-      'JS': '\uEBF0',
-      'DeliveryTruck': '\uEBF4',
-      'ReminderPerson': '\uEBF7'
+      'Website': '\uEB41'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

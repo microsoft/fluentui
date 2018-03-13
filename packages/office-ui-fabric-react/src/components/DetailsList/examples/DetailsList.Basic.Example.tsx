@@ -11,9 +11,9 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-let _items: any[] = [];
+const _items: any[] = [];
 
-let _columns: IColumn[] = [
+const _columns: IColumn[] = [
   {
     key: 'column1',
     name: 'Name',
@@ -34,11 +34,14 @@ let _columns: IColumn[] = [
   },
 ];
 
-export class DetailsListBasicExample extends React.Component<any, any> {
+export class DetailsListBasicExample extends React.Component<{}, {
+  items: {}[];
+  selectionDetails: {};
+}> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     // Populate with items for demos.
     if (_items.length === 0) {
@@ -62,7 +65,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { items, selectionDetails } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <div>
@@ -89,7 +92,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:

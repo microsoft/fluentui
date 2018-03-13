@@ -9,7 +9,7 @@ import {
 import {
   IToggleProps,
   IToggle
-} from './Toggle.Props';
+} from './Toggle.types';
 import { Label } from '../../Label';
 import {
   customizable
@@ -27,7 +27,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   private _toggleButton: HTMLButtonElement;
 
   constructor(props: IToggleProps) {
-    super();
+    super(props);
 
     this._warnMutuallyExclusive({
       checked: 'defaultChecked'
@@ -61,7 +61,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
-    let {
+    const {
       className,
       theme,
       styles: customStyles,
@@ -72,8 +72,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
       onAriaLabel,
       onText
       } = this.props;
-    let { isChecked } = this.state;
-    let stateText = isChecked ? onText : offText;
+    const { isChecked } = this.state;
+    const stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = getClassNames(
@@ -101,7 +101,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             ref={ this._resolveRef('_toggleButton') }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
-            aria-label={ ariaLabel }
+            aria-label={ ariaLabel ? ariaLabel : label }
             data-is-focusable={ true }
             onChange={ this._noop }
             onClick={ this._onClick }
@@ -124,8 +124,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
 
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLElement>) {
-    let { disabled, checked, onChanged, onClick } = this.props;
-    let { isChecked } = this.state;
+    const { disabled, checked, onChanged, onClick } = this.props;
+    const { isChecked } = this.state;
 
     if (!disabled) {
       // Only update the state if the user hasn't provided it.

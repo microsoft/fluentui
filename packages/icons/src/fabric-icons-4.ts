@@ -1,9 +1,18 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,10 +22,48 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-03329fef.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-4-0838b5e4.woff') format('woff')`,
     },
     icons: {
+      'Drop': '\uEB42',
+      'SkiResorts': '\uEB45',
+      'Snowflake': '\uEB46',
+      'BusSolid': '\uEB47',
+      'FerrySolid': '\uEB48',
+      'AirplaneSolid': '\uEB4C',
+      'TrainSolid': '\uEB4D',
+      'Ticket': '\uEB54',
+      'Devices4': '\uEB66',
+      'AzureLogo': '\uEB6A',
+      'BingLogo': '\uEB6B',
+      'MSNLogo': '\uEB6C',
+      'OutlookLogoInverse': '\uEB6D',
+      'OfficeLogo': '\uEB6E',
+      'SkypeLogo': '\uEB6F',
+      'Door': '\uEB75',
+      'EditMirrored': '\uEB7E',
+      'GiftCard': '\uEB8E',
+      'DoubleBookmark': '\uEB8F',
+      'StatusErrorFull': '\uEB90',
+      'Certificate': '\uEB95',
+      'FastForward': '\uEB9D',
+      'Rewind': '\uEB9E',
+      'Photo2': '\uEB9F',
+      'OpenSource': '\uEBC2',
+      'Movers': '\uEBCD',
+      'CloudDownload': '\uEBD3',
+      'Family': '\uEBDA',
+      'WindDirection': '\uEBE6',
+      'Bug': '\uEBE8',
+      'SiteScan': '\uEBEC',
+      'BrowserScreenShot': '\uEBED',
+      'F12DevTools': '\uEBEE',
+      'CSS': '\uEBEF',
+      'JS': '\uEBF0',
+      'DeliveryTruck': '\uEBF4',
+      'ReminderPerson': '\uEBF7',
       'ReminderGroup': '\uEBF8',
+      'TabletMode': '\uEBFC',
       'Umbrella': '\uEC04',
       'NetworkTower': '\uEC05',
       'CityNext': '\uEC06',
@@ -35,6 +82,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'PowerPointLogoInverse': '\uEC2A',
       'Cafe': '\uEC32',
       'SpeedHigh': '\uEC4A',
+      'Commitments': '\uEC4D',
       'ThisPC': '\uEC4E',
       'MusicNote': '\uEC4F',
       'MicOff': '\uEC54',
@@ -49,6 +97,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'DeveloperTools': '\uEC7A',
       'InsertTextBox': '\uEC7D',
       'LowerBrightness': '\uEC8A',
+      'DOM': '\uEC8D',
       'CloudUpload': '\uEC8E',
       'ScrollUpDown': '\uEC8F',
       'DateTime': '\uEC92',
@@ -62,60 +111,22 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Photo2Add': '\uECAB',
       'Photo2Remove': '\uECAC',
       'POI': '\uECAF',
-      'FacebookLogo': '\uECB3',
       'AddTo': '\uECC8',
       'RadioBtnOff': '\uECCA',
       'RadioBtnOn': '\uECCB',
       'ExploreContent': '\uECCD',
-      'VideoSolid': '\uEA0C',
-      'Teamwork': '\uEA12',
-      'PeopleAdd': '\uEA15',
-      'Glasses': '\uEA16',
-      'DateTime2': '\uEA17',
-      'Shield': '\uEA18',
-      'Header1': '\uEA19',
-      'PageAdd': '\uEA1A',
-      'NumberedList': '\uEA1C',
-      'PowerBILogo': '\uEA1E',
       'Product': '\uECDC',
       'ProgressLoopInner': '\uECDE',
       'ProgressLoopOuter': '\uECDF',
       'Blocked2': '\uECE4',
       'FangBody': '\uECEB',
-      'Glimmer': '\uECF4',
       'ChatInviteFriend': '\uECFE',
       'Crown': '\uED01',
+      'ScaleUp': '\uED09',
       'Feedback': '\uED15',
-      'SharepointLogoInverse': '\uED18',
-      'YammerLogo': '\uED19',
-      'Hide': '\uED1A',
-      'Uneditable': '\uED1D',
-      'ReturnToSession': '\uED24',
-      'OpenFolderHorizontal': '\uED25',
-      'CalendarMirrored': '\uED28',
-      'SwayLogoInverse': '\uED29',
-      'OutOfOffice': '\uED34',
-      'Trophy': '\uED3F',
-      'ReopenPages': '\uED50',
-      'AADLogo': '\uED68',
-      'AccessLogo': '\uED69',
-      'AdminALogoInverse32': '\uED6A',
-      'AdminCLogoInverse32': '\uED6B',
-      'AdminDLogoInverse32': '\uED6C',
-      'AdminELogoInverse32': '\uED6D',
-      'AdminLLogoInverse32': '\uED6E',
-      'AdminMLogoInverse32': '\uED6F',
-      'AdminOLogoInverse32': '\uED70',
-      'AdminPLogoInverse32': '\uED71',
-      'AdminSLogoInverse32': '\uED72',
-      'AdminYLogoInverse32': '\uED73',
-      'BoxLogo': '\uED75',
-      'DelveLogoInverse': '\uED76',
-      'DropboxLogo': '\uED77',
-      'ExchangeLogoInverse': '\uED78',
-      'LyncLogo': '\uED79',
-      'OfficeVideoLogoInverse': '\uED7A',
-      'ParatureLogo': '\uED7B'
+      'SharepointLogoInverse': '\uED18'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

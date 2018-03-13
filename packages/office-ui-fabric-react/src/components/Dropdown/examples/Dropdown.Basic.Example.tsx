@@ -1,21 +1,28 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { autobind, BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
-export class DropdownBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DropdownBasicExample extends BaseComponent<{}, {
+  selectedItem?: { key: string | number | undefined },
+  selectedItems: string[]
+}> {
+  private _basicDropdown: IDropdown;
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
-      selectedItem: null
+      selectedItem: undefined,
+      selectedItems: [],
     };
   }
 
   public render() {
-    let { selectedItem } = this.state;
+    const { selectedItem, selectedItems } = this.state;
 
     return (
-      <div className='dropdownExample'>
-
+      <div className='docs-DropdownExample'>
         <Dropdown
           placeHolder='Select an Option'
           label='Basic uncontrolled example:'
@@ -26,7 +33,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
               { key: 'A', text: 'Option a' },
               { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
+              { key: 'C', text: 'Option c', disabled: true },
               { key: 'D', text: 'Option d' },
               { key: 'E', text: 'Option e' },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
@@ -40,8 +47,12 @@ export class DropdownBasicExample extends React.Component<any, any> {
           }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
+          componentRef={ this._resolveRef('_basicDropdown') }
         />
-
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._onSetFocusButtonClicked }
+        />
         <Dropdown
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
@@ -63,7 +74,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
 
         <Dropdown
           label='Controlled example:'
-          selectedKey={ selectedItem && selectedItem.key }
+          selectedKey={ (selectedItem ? selectedItem.key : undefined) }
           onChanged={ this.changeState }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
@@ -85,8 +96,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         <Dropdown
           placeHolder='Select options'
           label='Multi-Select uncontrolled example:'
-          defaultSelectedKeys={ ['Apple', 'Banana'] }
-          onChanged={ this.changeState }
+          defaultSelectedKeys={ ['Apple', 'Banana', 'Orange'] }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
           multiSelect
@@ -95,8 +105,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
               { key: 'Apple', text: 'apple' },
               { key: 'Banana', text: 'banana' },
-              { key: 'Orange', text: 'orange' },
-              { key: 'Grape', text: 'grape' },
+              { key: 'Orange', text: 'orange', disabled: true },
+              { key: 'Grape', text: 'grape', disabled: true },
               { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
               { key: 'Header3', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
               { key: 'English', text: 'english' },
@@ -109,7 +119,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         <Dropdown
           placeHolder='Select options'
           label='Multi-Select controlled example:'
-          selectedKeys={ selectedItem && selectedItem.key }
+          selectedKeys={ selectedItems }
           onChanged={ this.onChangeMultiSelect }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
@@ -153,43 +163,43 @@ export class DropdownBasicExample extends React.Component<any, any> {
     );
   }
 
-  public makeList(items: any) {
-    let list = [];
-    for (let i = 0; i < items; i++) {
-      list.push({ key: i, text: 'Option ' + i });
-    }
-
-    return list;
-  }
-
+  @autobind
   public changeState(item: IDropdownOption) {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     this.setState({ selectedItem: item });
   }
 
+  @autobind
   public onChangeMultiSelect(item: IDropdownOption) {
-    let updatedSelectedItem = this.state.selectedItem ? this.copyArray(this.state.selectedItem) : [];
+    const updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
     if (item.selected) {
       // add the option if it's checked
-      updatedSelectedItem.push(item);
+      updatedSelectedItem.push(item.key);
     } else {
       // remove the option if it's unchecked
-      let currIndex = updatedSelectedItem.indexOf(item.index);
+      const currIndex = updatedSelectedItem.indexOf(item.key);
       if (currIndex > -1) {
         updatedSelectedItem.splice(currIndex, 1);
       }
     }
     this.setState({
-      selectedItem: updatedSelectedItem
+      selectedItems: updatedSelectedItem
     });
   }
 
   public copyArray(array: any[]): any[] {
-    let newArray: any[] = [];
+    const newArray: any[] = [];
     for (let i = 0; i < array.length; i++) {
       newArray[i] = array[i];
     }
     return newArray;
+  }
+
+  @autobind
+  private _onSetFocusButtonClicked() {
+    if (this._basicDropdown) {
+      this._basicDropdown.focus(true);
+    }
   }
 
   private _log(str: string): () => void {

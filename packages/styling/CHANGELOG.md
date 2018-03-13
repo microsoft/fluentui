@@ -1,6 +1,223 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 26 Sep 2017 10:09:04 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+
+## 5.19.1
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Patches
+
+- By default, try to use the system font before downloading a web font
+
+## 5.19.0
+Fri, 23 Feb 2018 03:05:53 GMT
+
+### Minor changes
+
+- add preliminary support for variant theming, add bodyLink slot
+
+## 5.18.1
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Patches
+
+- Add whiteTranslucent40 to palette
+
+## 5.18.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- Adjusting IColorClassNames and IFontStyles to remove the optional part for the members, to make the interfaces easier to consume.
+
+## 5.17.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule 
+
+## 5.16.0
+Wed, 24 Jan 2018 11:23:26 GMT
+
+### Minor changes
+
+- New slot for inputPlaceholderText color.
+
+## 5.15.3
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Patches
+
+- updated divider color to neutralTertiaryAlt
+- Theming: fix listText semantic slot
+
+## 5.15.2
+Fri, 19 Jan 2018 11:14:02 GMT
+
+### Patches
+
+- added semantic slots for smallInputBorder and smallInputBorderHover
+
+## 5.15.1
+Thu, 28 Dec 2017 11:23:50 GMT
+
+### Patches
+
+- Adding new normalize and AnimationValues
+
+## 5.15.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.14.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add an event callback for when the theme changes.
+
+## 5.12.1
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Patches
+
+- Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI
+
+## 5.12.0
+Thu, 30 Nov 2017 11:23:35 GMT
+
+### Minor changes
+
+- Updating the `registerIcons` helper to take in options.
+
+## 5.11.1
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Patches
+
+- SemanticSlots: Updated inputBorderHovered color.
+
+## 5.11.0
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Minor changes
+
+- Moving `styled` and `getClassNameFunction` out of styling to utilities.
+
+## 5.10.1
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Patches
+
+- Theme: Updated menuItemBackgroundChecked for ContextualMenu.
+
+## 5.10.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- Export functions used to create font sets based upon a given locale code
+
+## 5.8.0
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Minor changes
+
+- Adding `styled` and `classNameFunction` helpers, in addition to a variety of interface.
+
+## 5.7.0
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Minor changes
+
+- Adjusting the IFabricConfig interface to allow for mergeStyle settings to be included.
+- Updating `getIconClassName` to return display: inline-block to be consistent with the styled used by `ms-Icon ms-Icon--*`.
+
+## 5.6.1
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Patches
+
+- Adding Button related semantic slots.
+
+## 5.6.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Added IconFontSizes
+
+## 5.5.0
+Thu, 26 Oct 2017 10:21:37 GMT
+
+### Minor changes
+
+- Updating the icon warning to link to documentation for assistance.
+
+## 5.4.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- remove outdated semantic slots
+
+## 5.4.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Adjusting the `registerIcons` code to allow for icons to map to JSX.Elements or icon code strings.
+
+## 5.3.0
+Tue, 10 Oct 2017 10:24:47 GMT
+
+### Minor changes
+
+- "Add menuSelectedText to theme and semanticColors"
+
+## 5.2.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Fixing version dependencies.
+
+## 5.1.1
+Wed, 04 Oct 2017 22:40:22 GMT
+
+*Version update only*
+
+## 5.1.0
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Minor changes
+
+- Add a new success background color
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- The 5.0 Fabric release. See the [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-5.0:-What's-new) for a full list of changes and how to work with the new bits.
+
+## 0.24.2
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Patches
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
 
 ## 0.24.1
 Tue, 26 Sep 2017 10:09:04 GMT
@@ -133,22 +350,22 @@ Thu, 03 Aug 2017 10:13:03 GMT
 ## 0.15.4
 Wed, 02 Aug 2017 10:22:40 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.3
 Tue, 01 Aug 2017 10:13:55 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.2
 Mon, 31 Jul 2017 10:12:08 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.1
 Fri, 28 Jul 2017 18:36:00 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.0
 Fri, 28 Jul 2017 10:23:10 GMT
@@ -171,12 +388,12 @@ Thu, 27 Jul 2017 10:23:33 GMT
 ## 0.13.16
 Tue, 25 Jul 2017 10:22:35 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.15
 Mon, 24 Jul 2017 10:24:30 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.14
 Fri, 21 Jul 2017 10:21:45 GMT
@@ -189,7 +406,7 @@ Fri, 21 Jul 2017 10:21:45 GMT
 ## 0.13.13
 Thu, 20 Jul 2017 10:11:23 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.12
 Wed, 19 Jul 2017 21:40:34 GMT
@@ -201,17 +418,17 @@ Wed, 19 Jul 2017 21:40:34 GMT
 ## 0.13.11
 Mon, 17 Jul 2017 18:38:01 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.10
 Mon, 17 Jul 2017 10:22:38 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.9
 Fri, 14 Jul 2017 17:34:53 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.8
 Thu, 13 Jul 2017 10:21:52 GMT
@@ -223,7 +440,7 @@ Thu, 13 Jul 2017 10:21:52 GMT
 ## 0.13.7
 Thu, 13 Jul 2017 02:58:02 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.6
 Wed, 12 Jul 2017 01:49:50 GMT
@@ -235,22 +452,22 @@ Wed, 12 Jul 2017 01:49:50 GMT
 ## 0.13.5
 Tue, 11 Jul 2017 10:14:04 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.4
 Mon, 10 Jul 2017 19:18:55 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.3
 Mon, 10 Jul 2017 10:22:21 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.2
 Sat, 08 Jul 2017 05:59:28 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.1
 Sat, 08 Jul 2017 03:34:35 GMT
@@ -273,17 +490,17 @@ Fri, 07 Jul 2017 10:11:38 GMT
 ## 0.12.3
 Thu, 06 Jul 2017 10:11:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.12.2
 Tue, 04 Jul 2017 10:21:53 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.12.1
 Mon, 03 Jul 2017 10:11:52 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.12.0
 Fri, 30 Jun 2017 19:44:26 GMT
@@ -295,22 +512,22 @@ Fri, 30 Jun 2017 19:44:26 GMT
 ## 0.11.10
 Fri, 30 Jun 2017 10:23:15 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.9
 Thu, 29 Jun 2017 20:48:31 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.8
 Thu, 29 Jun 2017 10:13:16 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.7
 Wed, 28 Jun 2017 10:12:04 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.6
 Tue, 27 Jun 2017 01:26:31 GMT
@@ -322,22 +539,22 @@ Tue, 27 Jun 2017 01:26:31 GMT
 ## 0.11.5
 Fri, 23 Jun 2017 20:02:00 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.4
 Fri, 23 Jun 2017 04:12:23 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.3
 Thu, 22 Jun 2017 21:45:08 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.2
 Thu, 22 Jun 2017 10:13:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.1
 Wed, 21 Jun 2017 01:52:48 GMT
@@ -361,17 +578,17 @@ Wed, 21 Jun 2017 00:45:41 GMT
 ## 0.10.5
 Tue, 20 Jun 2017 10:22:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.10.4
 Sat, 17 Jun 2017 17:39:43 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.10.2
 Sat, 17 Jun 2017 06:27:45 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.10.1
 Sat, 17 Jun 2017 04:36:46 GMT
@@ -390,7 +607,7 @@ Fri, 16 Jun 2017 23:02:08 GMT
 ## 0.9.1
 Fri, 16 Jun 2017 19:39:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.9.0
 Thu, 15 Jun 2017 23:55:18 GMT
@@ -402,7 +619,7 @@ Thu, 15 Jun 2017 23:55:18 GMT
 ## 0.8.1
 Thu, 15 Jun 2017 10:09:15 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.8.0
 Wed, 14 Jun 2017 06:02:15 GMT
@@ -420,7 +637,7 @@ Wed, 14 Jun 2017 06:02:15 GMT
 ## 0.7.4
 Tue, 13 Jun 2017 10:13:21 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.7.3
 Mon, 12 Jun 2017 01:47:18 GMT
@@ -439,7 +656,7 @@ Fri, 09 Jun 2017 10:10:47 GMT
 ## 0.7.1
 Thu, 08 Jun 2017 10:20:07 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.7.0
 Thu, 08 Jun 2017 00:18:05 GMT
@@ -451,7 +668,7 @@ Thu, 08 Jun 2017 00:18:05 GMT
 ## 0.6.1
 Tue, 06 Jun 2017 07:41:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.6.0
 Tue, 06 Jun 2017 06:06:46 GMT
@@ -475,12 +692,12 @@ Tue, 06 Jun 2017 00:50:06 GMT
 ## 0.4.3
 Fri, 02 Jun 2017 01:19:36 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.4.2
 Thu, 01 Jun 2017 16:34:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.4.1
 Wed, 31 May 2017 01:58:23 GMT

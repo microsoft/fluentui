@@ -1,11 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
+import { css, classNamesFunction } from '../../../Utilities';
+import {
+  getStyles,
+  IButtonBasicExampleStyleProps,
+  IButtonBasicExampleStyles
+} from './Button.Basic.Example.styles';
 import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IButtonSwapExampleState {
   isPrimary: boolean;
@@ -15,8 +19,8 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
   private buttonRef: HTMLElement | null;
   private hasFocus: boolean;
 
-  public constructor() {
-    super();
+  public constructor(props: IButtonProps) {
+    super(props);
 
     this.hasFocus = false;
     this.buttonRef = null;
@@ -39,12 +43,12 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
   }
 
   public render() {
-    let { isPrimary } = this.state;
-    let { disabled, checked } = this.props;
-    let text = 'Swap';
+    const { isPrimary } = this.state;
+    const { disabled, checked } = this.props;
+    const text = 'Swap';
 
     // determine which button to render
-    let button = isPrimary
+    const button = isPrimary
       ? (
         <PrimaryButton
           ref={ this._setButtonRef }
@@ -65,9 +69,11 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
         </DefaultButton>
       );
 
+    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+    const classNames = getClassNames(getStyles);
+
     return (
-      <div className='ms-BasicButtonsExample'>
-        <Label>Click to swap button types</Label>
+      <div className={ css(classNames.example) }>
         { button }
       </div>
     );

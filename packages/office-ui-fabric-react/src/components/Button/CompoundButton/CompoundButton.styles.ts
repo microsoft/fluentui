@@ -1,8 +1,9 @@
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
-  mergeStyleSets,
-  FontWeights
+  concatStyleSets,
+  FontWeights,
+  HighContrastSelector
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -19,13 +20,11 @@ import {
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles,
-  primary?: boolean,
-  focusInset?: string,
-  focusColor?: string
+  primary?: boolean
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let compoundButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const compoundButtonStyles: IButtonStyles = {
     root: {
       maxWidth: '280px',
       minHeight: '72px',
@@ -67,7 +66,7 @@ export const getStyles = memoizeFunction((
 
   };
 
-  let standardCompoundTheme: IButtonStyles = {
+  const standardCompoundTheme: IButtonStyles = {
 
     description: {
       color: theme.palette.neutralSecondary,
@@ -90,14 +89,29 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  let primaryCompoundTheme: IButtonStyles = {
+  const primaryCompoundTheme: IButtonStyles = {
 
     description: {
       color: theme.palette.white,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
+
     },
 
     descriptionHovered: {
-      color: theme.palette.white
+      color: theme.palette.white,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
     },
 
     descriptionPressed: {
@@ -113,7 +127,7 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(
+  return concatStyleSets(
     baseButtonStyles,
     compoundButtonStyles,
     primary ? primaryStyles(theme) : standardStyles(theme),
@@ -121,4 +135,5 @@ export const getStyles = memoizeFunction((
     splitButtonStyles,
     customStyles
   )!;
+
 });

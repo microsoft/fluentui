@@ -6,6 +6,7 @@ import {
 import {
   Link
 } from 'office-ui-fabric-react/lib/Link';
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -17,6 +18,7 @@ export interface IComponentPageProps {
   title: string;
   componentName: string;
   exampleCards?: JSX.Element;
+  implementationExampleCards?: JSX.Element;
   propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
@@ -27,7 +29,9 @@ export interface IComponentPageProps {
   areBadgesVisible?: boolean;
   className?: string;
   componentStatus?: JSX.Element;
-  otherSections?: [IComponentPageSection];
+  otherSections?: IComponentPageSection[];
+  allowNativeProps?: boolean | string;
+  nativePropsElement?: string | string[] | undefined;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -69,6 +73,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             </div>
             { this._getDosAndDonts() }
             { this._getVariants() }
+            { this._getImplementationExamples() }
             { this._getPropertiesTable() }
             { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
               return this._getSection(componentPageSection);
@@ -101,7 +106,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink' key='nav-link'>
-          <Link { ...{ href: this._baseUrl + '#Best Practices' } }>Best Practices</Link>
+          <Link { ...{ href: this._baseUrl + '#BestPractices' } }>Best Practices</Link>
         </div>
       );
     }
@@ -114,6 +119,9 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         { links }
         { this.props.exampleCards && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Variants' } }>Variants</Link>
+        </div> }
+        { this.props.implementationExampleCards && <div className='ComponentPage-navLink'>
+          <Link { ...{ href: this._baseUrl + '#ImplementationExamples' } }>Implementation Examples</Link>
         </div> }
         { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
@@ -143,11 +151,43 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
   }
 
+  private _getNativePropsInfo(): JSX.Element | undefined {
+    if (this.props.allowNativeProps) {
+      let elementString: string | string[] | JSX.Element = this.props.nativePropsElement || 'div',
+        componentString: JSX.Element | undefined;
+      if (typeof elementString === 'object' && elementString.length > 1) {
+        const elementArr = elementString.slice();
+        for (let _i = 0; _i < elementArr.length; _i++) {
+          if (_i === 0) {
+            elementString = <><code>{ '<' }{ elementArr[_i] }{ '>' }</code></>;
+          } else {
+            elementString = <>{ elementString } and <code>{ '<' }{ elementArr[_i] }{ '>' }</code></>;
+          }
+        }
+        elementString = <>{ elementString } tags</>;
+      } else {
+        elementString = <><code>{ '<' }{ elementString }{ '>' }</code> tag</>;
+      }
+
+      if (typeof this.props.allowNativeProps === 'string') {
+        componentString = <> <code>{ this.props.allowNativeProps }</code></>;
+      }
+
+      return (
+        <MessageBar>
+          <strong>Native Props Allowed{ componentString }</strong> - all HTML attributes native to the { elementString },
+          including all aria and custom data attributes, can be applied as native props on{ componentString || <> this component</> }.
+        </MessageBar>
+      );
+    }
+  }
+
   private _getPropertiesTable(): JSX.Element | undefined {
     if (this.props.propertiesTables) {
       return (
         <div className='ComponentPage-implementationSection'>
           <h2 className='ComponentPage-subHeading' id='Implementation'>Implementation</h2>
+          { this._getNativePropsInfo() }
           { this.props.propertiesTables }
         </div>
       );
@@ -159,8 +199,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.bestPractices) {
       dosAndDonts.push(
-        <div className='ComponentPage-usage' id='Best Practices' key='best-practices'>
-          <h2 className='ComponentPage-subHeading'>Best practices</h2>
+        <div className='ComponentPage-usage' id='BestPractices' key='best-practices'>
+          <h2 className='ComponentPage-subHeading'>Best Practices</h2>
           { this.props.bestPractices }
         </div>
       );
@@ -196,6 +236,19 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         <div className='ComponentPage-variantsSection'>
           <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
           { this.props.exampleCards }
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getImplementationExamples(): JSX.Element | undefined {
+    if (this.props.implementationExampleCards) {
+      return (
+        <div className='ComponentPage-implementationExamplesSection'>
+          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='ImplementationExamples'>Implementation Examples</h2>
+          { this.props.implementationExampleCards }
         </div>
       );
     }

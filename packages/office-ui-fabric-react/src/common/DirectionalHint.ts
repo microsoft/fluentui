@@ -1,4 +1,4 @@
-export enum DirectionalHint {
+export const enum DirectionalHint {
   /**
    * Appear above the target element, with the left edges of the callout and target aligning.
    */

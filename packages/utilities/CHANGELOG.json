@@ -2,6 +2,546 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.18.1",
+      "tag": "@uifabric/utilities_v5.18.1",
+      "date": "Tue, 13 Mar 2018 10:17:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "298ac062041a2323afb25027867b70f12870aa8f",
+            "comment": "Customizable: Fix hoist/customizations import so it doesn't break amd"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.0",
+      "tag": "@uifabric/utilities_v5.18.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
+            "comment": "Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "feb4db4410cdd49d5df8a50fcef138fbcd324dc2",
+            "comment": "Styled: Add display name to styled wrapper"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "494d1258ce23505c8e5a4d1565ff5a2451048162",
+            "comment": "added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.17.1",
+      "tag": "@uifabric/utilities_v5.17.1",
+      "date": "Fri, 09 Mar 2018 15:07:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "4fc956a30e82d90fe405def0f9434ffdb0d407ab",
+            "comment": "Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.17.0",
+      "tag": "@uifabric/utilities_v5.17.0",
+      "date": "Fri, 09 Mar 2018 11:13:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b410f6b9a328dd4ad24cbaa739156c23880e44e4",
+            "comment": "Add hoistStatics function to withResponsiveMode decorator."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.0",
+      "tag": "@uifabric/utilities_v5.16.0",
+      "date": "Thu, 08 Mar 2018 11:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "61c7a055825c41f828c416e5370212804f71d05c",
+            "comment": "Added hoistStatics function to @customizable decorator so static methods work properly"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.0",
+      "tag": "@uifabric/utilities_v5.15.0",
+      "date": "Tue, 06 Mar 2018 11:13:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "25e736fb4506e1021274c420283338e499388477",
+            "comment": "Adds createRef polyfil to prepare for object refs."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.1",
+      "tag": "@uifabric/utilities_v5.14.1",
+      "date": "Tue, 06 Mar 2018 02:06:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8a4dc859a5f8016b630220775caa98691ddf5345",
+            "comment": "Replaced PureComponent with Component to appease website's UHF react version."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.0",
+      "tag": "@uifabric/utilities_v5.14.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "44ca7b84a94649581e68a693971891fb1a834720",
+            "comment": "Update KeyCodes enum to include all key codes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.2 <6.0.0` to `>=5.13.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.13.0",
+      "tag": "@uifabric/utilities_v5.13.0",
+      "date": "Thu, 22 Feb 2018 11:15:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "b0550145231d18adea954f56be47967ab04cb19d",
+            "comment": "Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.1",
+      "tag": "@uifabric/utilities_v5.12.1",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "0661239920ded0ecfce53788322b4bc5b21860e1",
+            "comment": "fix bug in IE that IE does not support Number.IsInteger"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.1 <6.0.0` to `>=5.12.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.0",
+      "tag": "@uifabric/utilities_v5.12.0",
+      "date": "Fri, 16 Feb 2018 11:23:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "44b167af31b9b6dd079359209f101f1af10762a5",
+            "comment": "Added a triangle abstraction class"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "f0c4c5cfd1d20ea16af3378bf68e05269653d321",
+            "comment": "Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.0 <6.0.0` to `>=5.12.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.0",
+      "tag": "@uifabric/utilities_v5.11.0",
+      "date": "Wed, 14 Feb 2018 22:10:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "69854e90a1bc2eb447087df89f5276c166a9d766",
+            "comment": "BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.11.2 <6.0.0` to `>=5.12.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.3",
+      "tag": "@uifabric/utilities_v5.10.3",
+      "date": "Tue, 13 Feb 2018 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "938be5b0904db106f39b5afdc0bd6a79a78462cd",
+            "comment": "Export IClassNames fro Utilities for creating private getClassNames methods"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.2",
+      "tag": "@uifabric/utilities_v5.10.2",
+      "date": "Thu, 08 Feb 2018 11:13:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "77a0be82fb6c440fa7ec6f4e80efed7d67f007c1",
+            "comment": "Return empty initials for phone numbers"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.1",
+      "tag": "@uifabric/utilities_v5.10.1",
+      "date": "Wed, 07 Feb 2018 11:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "48700c65292e57126b95be80c3092a39c6e171d0",
+            "comment": "Fixing direct reference to @uifabric/utilities/lib from ResizeGroup"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.11.1 <6.0.0` to `>=5.11.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.0",
+      "tag": "@uifabric/utilities_v5.10.0",
+      "date": "Mon, 05 Feb 2018 11:24:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "fe1c0f061947e66f1a3c63b168cdfecdc282b39b",
+            "comment": "[Math] implemented precision rounding functions"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.9.0",
+      "tag": "@uifabric/utilities_v5.9.0",
+      "date": "Mon, 29 Jan 2018 11:23:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "c91e28996fc74eff98bbb3c59426e8f6f159e64f",
+            "comment": "Add work week date range type and update date math getDateRangeArray to consume it, add unit tests"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.8.0",
+      "tag": "@uifabric/utilities_v5.8.0",
+      "date": "Fri, 26 Jan 2018 11:25:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "46ca980e37486b51ccf2bc13aea571213bb081e9",
+            "comment": "IBaseProps: typings adjusted to be less restrictive and compatible with strict mode."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.1",
+      "tag": "@uifabric/utilities_v5.7.1",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "c0d264e51b37fb707a149c1dd22641f9378e367b",
+            "comment": "Set timeout ids to null for cancel and flush functions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.10.1 <6.0.0` to `>=5.11.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/utilities_v5.7.0",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "3918313795cd6f12b7405aa94b559e68c7d71652",
+            "comment": "Adding a helper component to inject context values"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.1",
+      "tag": "@uifabric/utilities_v5.6.1",
+      "date": "Tue, 19 Dec 2017 11:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "745d39de8459b457c00c81af37b458188608eaad",
+            "comment": "Broaden the range of allowed prop-type versions"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/utilities_v5.6.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.8.1 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/utilities_v5.5.0",
+      "date": "Tue, 28 Nov 2017 02:24:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "94954657769c46824f84e8aba06b326721b4a161",
+            "comment": "Moving `styled` and `getClassNameFunction` out of styling to utilities."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "@uifabric/utilities_v5.4.0",
+      "date": "Mon, 13 Nov 2017 11:20:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8d460f38a03684f44ead13a08d84a990ca07d24b",
+            "comment": "BaseComponent: fixing some typings to be compatible with current React typings."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.3",
+      "tag": "@uifabric/utilities_v5.3.3",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "dc0a310f07398df8a158349958bfc463e1d773e4",
+            "comment": "Object: getId: updated so it will correctly return a string rather than an  int"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.2",
+      "tag": "@uifabric/utilities_v5.3.2",
+      "date": "Wed, 08 Nov 2017 11:11:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cody Hoover <hoovercj@users.noreply.github.com>",
+            "commit": "07ff9612172861245b7cf01ffa38f9c5167e5d3a",
+            "comment": "This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.1",
+      "tag": "@uifabric/utilities_v5.3.1",
+      "date": "Wed, 08 Nov 2017 06:05:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chaofeng2014 <fengchao199011@hotmail.com>",
+            "commit": "6055741480986f3e593feaf297001c6cec698b64",
+            "comment": "Update @uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.0",
+      "tag": "@uifabric/utilities_v5.3.0",
+      "date": "Wed, 18 Oct 2017 10:21:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "68a345d9e55491298d70cee431bd1f418a67fd44",
+            "comment": "Add cancel/flush to debounce"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.1",
+      "tag": "@uifabric/utilities_v5.2.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/utilities_v5.2.0",
+      "date": "Thu, 05 Oct 2017 17:03:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "41cef49e56908d5a9a794617aad64e626ab5b315",
+            "comment": "Undoing 6.0 bump which was made by automation inadvertently."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "41cef49e56908d5a9a794617aad64e626ab5b315",
+            "comment": "Fixing version dependencies."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/utilities_v5.1.0",
+      "date": "Thu, 05 Oct 2017 16:29:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b07513cf96f054685766b3ffbf9896b1d10332f9",
+            "comment": "Undoing 6.0 bump which was made by automation inadvertently."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/utilities_v6.0.0",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "1bad538220cc18885e7e6efd7c4cc0e7846c25d4",
+            "comment": "Positioning: Refactored positioning and removed deprecated properties"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/utilities_v5.0.1",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "Updated for Fabric 5.0."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.16.0",
+      "tag": "@uifabric/utilities_v4.16.0",
+      "date": "Tue, 26 Sep 2017 20:42:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c85736b0d854f1ecac15fee119106aeba61f1750",
+            "comment": "Reverting Customizer changes, as they are breaking. Will include in 5.0."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.15.0",
       "tag": "@uifabric/utilities_v4.15.0",
       "date": "Tue, 26 Sep 2017 10:09:04 GMT",
