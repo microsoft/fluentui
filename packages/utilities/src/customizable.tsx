@@ -2,8 +2,10 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {
   Customizations,
+} from './Customizations';
+import {
   hoistStatics
-} from './';
+} from './hoistStatics';
 
 export function customizable(
   scope: string,
