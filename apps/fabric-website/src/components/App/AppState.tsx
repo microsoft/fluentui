@@ -93,7 +93,6 @@ export const AppState: IAppState = {
         {
           title: 'Theme generator',
           url: '#/styles/themegenerator',
-          isHiddenFromMainNav: true,
           component: () => <StylesLoadingComponent title='Theme generator' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
         },

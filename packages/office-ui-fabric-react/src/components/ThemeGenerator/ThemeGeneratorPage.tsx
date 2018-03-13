@@ -443,7 +443,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     return (
       <div>
-        <h2>Output</h2>
+        <h2 id='Output'>Output</h2>
         <div className={ 'ms-themer-output-root' }>
           <div>
             <h3>JSON</h3>
