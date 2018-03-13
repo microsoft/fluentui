@@ -1,0 +1,14 @@
+{
+  "localLinks": {
+    "fabric-website": [
+      "@uifabric/utilities",
+      "office-ui-fabric-react"
+    ],
+    "office-ui-fabric-react": [
+      "@uifabric/utilities"
+    ],
+    "todo-app": [
+      "office-ui-fabric-react"
+    ]
+  }
+}

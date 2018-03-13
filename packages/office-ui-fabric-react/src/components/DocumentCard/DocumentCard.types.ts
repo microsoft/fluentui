@@ -5,6 +5,7 @@ import { DocumentCardPreview } from './DocumentCardPreview';
 import { DocumentCardLocation } from './DocumentCardLocation';
 import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
+import { DocumentCardLogo } from './DocumentCardLogo';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
@@ -144,6 +145,12 @@ export interface IDocumentCardPreviewImage {
    * If provided, icon will be rendered instead of image.
    */
   previewIconProps?: IIconProps;
+
+  /**
+  * The props for the preview text.
+  * If provided, text will be rendered instead of image.
+  */
+  previewTextProps?: string;
 }
 
 export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
@@ -162,6 +169,11 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
    * @defaultvalue true
    */
   shouldTruncate?: boolean;
+
+  /**
+   * Icon before title, opiontal. If the card represents conversation, icon could prepresent if there is attachment such as pin icon".
+   */
+  titleIcon?: string;
 }
 
 export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
@@ -246,4 +258,20 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
    * The number of views this document has received.
    */
   views?: Number;
+}
+
+export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+  /**
+   * Describes DocumentCard Logo badge.
+   */
+  logoIcon: string;
+
+  /**
+   * Describe Logo name, optional.
+   */
+  logoName?: string;
 }

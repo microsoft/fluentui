@@ -6,7 +6,9 @@ import {
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle,
-  IDocumentCardPreviewProps
+  DocumentCardLogo,
+  IDocumentCardPreviewProps,
+  IDocumentCardLogoProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '../../../common/TestImages';
@@ -84,6 +86,18 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
       ]
     };
 
+    const previewTextProps: IDocumentCardPreviewProps = {
+      previewImages: [
+        {
+          previewTextProps: 'This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card!'
+        }
+      ]
+    }
+
+    const logoProps: IDocumentCardLogoProps = {
+      logoIcon: 'OutlookLogoInverse'
+    };
+
     return (
       <div>
         <DocumentCard
@@ -154,6 +168,22 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
               }
             />
           </div>
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardLogo { ...logoProps } />
+          <DocumentCardTitle title='Conversation about anual report a very long long name' titleIcon='attach' />
+          <DocumentCardPreview { ...previewTextProps } />
+          <DocumentCardActivity
+            activity='Sent March 13, 2018'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
+              ]
+            }
+          />
         </DocumentCard>
       </div>
     );

@@ -22,14 +22,18 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
       preview = this._renderPreviewList(previewImages);
       isFileList = true;
     } else if (previewImages.length === 1) {
-      // Render a single preview
-      preview = this._renderPreviewImage(previewImages[0]);
+      if (previewImages[0].previewTextProps) {
+        return this._renderPreviewText(previewImages[0].previewTextProps);
+      } else {
+        // Render a single preview
+        preview = this._renderPreviewImage(previewImages[0]);
 
-      // Override the border color if an accent color was provided
-      if (previewImages[0].accentColor) {
-        style = {
-          borderBottomColor: previewImages[0].accentColor
-        };
+        // Override the border color if an accent color was provided
+        if (previewImages[0].accentColor) {
+          style = {
+            borderBottomColor: previewImages[0].accentColor
+          };
+        }
       }
     }
 
@@ -39,6 +43,16 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
         style={ style }
       >
         { preview }
+      </div>
+    );
+  }
+
+  private _renderPreviewText(previewText?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+    return (
+      <div>
+        { previewText &&
+          <div className={ css('ms-DocumentCardPreview', styles.previewTextContainer) }> { previewText } </div>
+        }
       </div>
     );
   }
