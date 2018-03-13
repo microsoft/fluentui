@@ -1,6 +1,61 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+
+## 5.18.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator
+
+### Patches
+
+- Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus.
+- Styled: Add display name to styled wrapper
+
+## 5.17.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)
+
+## 5.17.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Add hoistStatics function to withResponsiveMode decorator.
+
+## 5.16.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added hoistStatics function to @customizable decorator so static methods work properly
+
+## 5.15.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Adds createRef polyfil to prepare for object refs.
+
+## 5.14.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.14.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+- Update KeyCodes enum to include all key codes
 
 ## 5.13.0
 Thu, 22 Feb 2018 11:15:23 GMT

@@ -27,6 +27,16 @@ export interface IDetailsList extends IList {
    * call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.
    */
   forceUpdate: () => void;
+
+  /**
+   * Scroll to and focus the item at the given index. focusIndex will call scrollToIndex on the specified index.
+   *
+   * @param index Index of item to scroll to
+   * @param forceIntoFirstElement If true, focus will be set to the first focusable child element of the item rather
+   *  than the item itself.
+   * @param measureItem Optional callback to measure the height of an individual item
+   */
+  focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number) => void;
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
@@ -319,7 +329,7 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.

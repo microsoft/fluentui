@@ -6,6 +6,8 @@ import { IStyleFunction } from '../../Utilities';
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
   forceLayoutUpdate(): void;
+  /** Gets the current scroll position of the scrollable pane */
+  getScrollPosition(): number;
 }
 
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePaneBase> {
@@ -31,6 +33,11 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Sets the initial scroll position of the ScrollablePane
+   */
+  initialScrollPosition?: number;
 }
 
 export interface IScrollablePaneStyleProps {
@@ -53,10 +60,6 @@ export interface IScrollablePaneStyles {
    * Style set for the root element.
    */
   root: IStyle;
-  /**
-   * Style set for the stickyContainer element.
-   */
-  stickyContainer: IStyle;
   /**
    * Style set for the stickyAbove element.
    */

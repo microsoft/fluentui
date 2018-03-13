@@ -17,8 +17,8 @@ export interface IPositioningContainerNames {
   container: string;
   main: string;
   overFlowYHidden: string;
-  beak: string;
-  beakCurtain: string;
+  beak?: string;
+  beakCurtain?: string;
 }
 
 // @TODO Remove this tslint disable statement after the styles are converted

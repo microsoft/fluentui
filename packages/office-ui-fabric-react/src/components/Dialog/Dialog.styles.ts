@@ -1,7 +1,6 @@
 import { IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import {
-  IStyle,
-  ITheme,
+  ScreenWidthMinMedium,
 } from '../../Styling';
 
 export const getStyles = (
@@ -9,20 +8,32 @@ export const getStyles = (
 ): IDialogStyles => {
   const {
     className,
-    theme,
+    containerClassName,
+    dialogDefaultMinWidth = '288px',
+    dialogDefaultMaxWidth = '340px',
+    hidden,
   } = props;
-
-  const { palette, semanticColors } = theme;
 
   return ({
     root: [
       'ms-Dialog',
-      {
-        // Insert css properties
-
-      }
+      className,
     ],
 
-    // Insert className styles
+    main: [
+      {
+        width: dialogDefaultMinWidth,
+
+        selectors: {
+          [`@media (min-width: ${ScreenWidthMinMedium}px)`]: {
+            width: 'auto',
+            maxWidth: dialogDefaultMaxWidth,
+            minWidth: dialogDefaultMinWidth,
+          }
+        }
+      },
+      !hidden && { display: 'flex' },
+      containerClassName,
+    ]
   });
 };

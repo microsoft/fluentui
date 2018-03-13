@@ -15,7 +15,6 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { ContextualMenuItem } from './ContextualMenuItem';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 export enum ContextualMenuItemType {
@@ -38,10 +37,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
-   * It can be either an HTMLElement a querySelector string of a valid HTMLElement
+   * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | IPoint | null;
+  target?: Element | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned
@@ -227,8 +226,8 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default ContextualMenuItem
    */
   contextualMenuItemAs?:
-    React.ComponentClass<IContextualMenuItemProps> |
-    React.StatelessComponent<IContextualMenuItemProps>;
+  React.ComponentClass<IContextualMenuItemProps> |
+  React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -334,6 +333,11 @@ export interface IContextualMenuItem {
    * An optional target when using href
    */
   target?: string;
+
+  /**
+   * An optional rel when using href. If target is _blank rel is defaulted to a value to prevent clickjacking.
+   */
+  rel?: string;
 
   /**
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.

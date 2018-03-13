@@ -117,11 +117,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
-    return (<FloatingPeoplePicker {...props} />);
+    return (<FloatingPeoplePicker { ...props } />);
   }
 
   private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
-    return (<SelectedPeopleList {...props} />);
+    return (<SelectedPeopleList { ...props } />);
   }
 
   private _getEditingItemText(item: IExtendedPersonaProps): string {
@@ -164,15 +164,15 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] {
+  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): Promise<IPersonaProps[]> | null {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
       filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-      return filteredPersonas;
+      return this._convertResultsToPromise(filteredPersonas);
     } else {
-      return [];
+      return this._convertResultsToPromise([]);
     }
   }
 
@@ -180,7 +180,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
-    return mostRecentlyUsed;
+    return this._convertResultsToPromise(mostRecentlyUsed);
   }
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
@@ -198,8 +198,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   @autobind
   private _shouldShowForceResolve(): boolean {
-    return this._validateInput(this._picker.floatingPicker.inputText)
-      && this._picker.floatingPicker.suggestions.length === 0;
+    return Boolean(
+      this._picker.floatingPicker &&
+      this._validateInput(this._picker.floatingPicker.inputText) &&
+      this._picker.floatingPicker.suggestions.length === 0
+    );
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {
@@ -223,6 +226,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   private _getTextFromItem(persona: IPersonaProps): string {
     return persona.primaryText as string;
+  }
+
+  private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
+    // tslint:disable-next-line:no-any
+    return new Promise<IPersonaProps[]>((resolve: any, reject: any) => setTimeout(() => resolve(results), 150));
   }
 
   @autobind

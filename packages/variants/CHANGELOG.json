@@ -2,6 +2,30 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.0.1",
+      "tag": "@uifabric/variants_v5.0.1",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "bc0d12b6c5952b22f079e9e09ec31654726f9a37",
+            "comment": "fix version for variants package"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "9076096e7fc955b21ea01665d2b513034ac3c651",
+            "comment": "update readme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.19.0 <6.0.0` to `>=5.19.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.2",
       "tag": "@uifabric/variants_v5.11.2",
       "date": "Fri, 23 Feb 2018 03:05:53 GMT",
