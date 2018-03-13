@@ -104,7 +104,8 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
               ]
             } }
           />
-        </div>        <div>
+        </div>
+        <div>
           <Label>Button Disabled</Label>
           <DefaultButton
             primary
