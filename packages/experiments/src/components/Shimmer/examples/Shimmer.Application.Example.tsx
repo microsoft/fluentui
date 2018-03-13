@@ -203,10 +203,9 @@ function _buildColumns(): IColumn[] {
 
   columns.forEach((column: IColumn) => {
     if (column.key === 'thumbnail') {
-      console.log(column);
       column.name = 'FileType';
-      column.minWidth = 20;
-      column.maxWidth = 20;
+      column.minWidth = 16;
+      column.maxWidth = 16;
       column.isIconOnly = true;
       column.iconName = 'Page';
     }

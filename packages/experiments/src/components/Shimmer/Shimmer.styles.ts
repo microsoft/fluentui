@@ -35,6 +35,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       },
       isBaseStyle && {
         margin: '0',
+        minHeight: 'inherit',
         display: 'flex',
         alignItems: 'center'
       }
@@ -71,8 +72,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         visibility: 'hidden'
       },
       isBaseStyle && {
-        height: '20px',
         position: 'static',
+        width: 'auto'
       }
     ],
     dataWrapper: [
