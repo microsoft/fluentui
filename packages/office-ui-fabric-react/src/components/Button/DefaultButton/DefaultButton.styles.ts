@@ -31,6 +31,7 @@ export const getStyles = memoizeFunction((
     root: {
       minWidth: DEFAULT_BUTTON_MINWIDTH,
       height: DEFAULT_BUTTON_HEIGHT,
+      paddingRight: 40
     },
     label: {
       fontWeight: FontWeights.semibold
