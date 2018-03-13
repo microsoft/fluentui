@@ -137,7 +137,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Click handler which is invoked if onClick is not passed for individual contextual
    * menu item
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
   /**
    * CSS class to apply to the context menu.
@@ -322,7 +322,7 @@ export interface IContextualMenuItem {
   /**
    * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
   /**
    * An optional URL to navigate to upon selection

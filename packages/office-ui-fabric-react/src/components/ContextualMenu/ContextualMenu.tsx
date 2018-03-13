@@ -627,14 +627,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _onSplitContainerItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter) {
-      if (item.disabled || item.isDisabled) {
-        return;
-      }
-      if (item.onClick) {
-        item.onClick(ev, item);
-      }
-
-      !ev.defaultPrevented && this.dismiss(ev, true);
+      this._executeItemClick(item, ev);
     } else {
       this._onItemKeyDown(item, ev);
     }
@@ -858,7 +851,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     ev.stopPropagation();
   }
 
-  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     if (item.disabled || item.isDisabled) {
       return;
     }
