@@ -62,7 +62,7 @@ export const AppState: IAppState = {
         },
         {
           title: 'Brand icons',
-          url: '#/styles/brand-icons',
+          url: '#/styles/brandicons',
           component: () => <StylesLoadingComponent title='Brand icons' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/BrandIconsPage/BrandIconsPage').BrandIconsPage))
         },
@@ -92,7 +92,7 @@ export const AppState: IAppState = {
         },
         {
           title: 'Theme generator',
-          url: '#/styles/theme-generator',
+          url: '#/styles/themegenerator',
           isHiddenFromMainNav: true,
           component: () => <StylesLoadingComponent title='Theme generator' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
