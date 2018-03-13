@@ -11,13 +11,8 @@ import {
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-<<<<<<< HEAD
-import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
-import { TooltipHost } from '../../Tooltip';
-=======
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
->>>>>>> master
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -425,16 +420,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
-<<<<<<< HEAD
-
       if (item.readOnly) {
         return;
       }
 
       if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
-=======
-      if (item.key === this.state.expandedMenuItemKey || !hasSubmenu(item)) {
->>>>>>> master
         this._onContextMenuDismiss();
       } else {
         this.setState({
