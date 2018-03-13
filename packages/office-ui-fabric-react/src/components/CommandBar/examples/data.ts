@@ -3,6 +3,7 @@ export const items = [
     key: 'newItem',
     name: 'New',
     icon: 'Add',
+    title: 'testing testing',
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
     subMenuProps: {

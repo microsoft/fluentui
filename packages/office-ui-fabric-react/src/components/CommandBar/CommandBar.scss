@@ -171,6 +171,15 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
       color: $ms-color-neutralTertiaryAlt;
     }
   }
+
+  &.readOnly {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: default;
+    pointer-events: none;
+    .itemIcon {
+      color: $ms-color-neutralTertiaryAlt;
+    }
+  }
 }
 
 .itemIcon {

@@ -12,6 +12,7 @@ import {
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import { TooltipHost } from '../../Tooltip';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -177,17 +178,27 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     const className = css(
       isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
-      (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded)
+      (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded),
+      item.readOnly ? styles.readOnly : ""
     );
     let hasIcon = !!item.icon || !!item.iconProps;
+    
+    var tooltipContent: string = "";
+    var tooltipId: string = "";
+    if (item.title) {
+        tooltipContent = item.title;
+        tooltipId = getId("command-bar-item-tooltip");
+    }
 
     return (
       <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ itemKey } ref={ itemKey }>
         { (() => {
           if (isLink) {
-            return <button
+            const button = <button
               { ...getNativeProps(item, buttonProperties) }
               id={ this._id + item.key }
+              title={""}
+              aria-disabled={item.readOnly}
               className={ className }
               onClick={ this._onItemClick(item) }
               data-command-key={ itemKey }
@@ -208,6 +219,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
               ) : (null) }
             </button>;
+
+            if (tooltipContent) {
+                return  <TooltipHost content={ tooltipContent } id={tooltipId} >
+                    { button }
+                </TooltipHost>;
+            }
+
+            return button;
+            
           } else if (item.href) {
             return <a
               { ...getNativeProps(item, anchorProperties) }
