@@ -6,6 +6,7 @@ import {
 import {
   Link
 } from 'office-ui-fabric-react/lib/Link';
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -29,6 +30,8 @@ export interface IComponentPageProps {
   className?: string;
   componentStatus?: JSX.Element;
   otherSections?: IComponentPageSection[];
+  allowNativeProps?: boolean | string;
+  nativePropsElement?: string | string[] | undefined;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -148,11 +151,43 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
   }
 
+  private _getNativePropsInfo(): JSX.Element | undefined {
+    if (this.props.allowNativeProps) {
+      let elementString: string | string[] | JSX.Element = this.props.nativePropsElement || 'div',
+        componentString: JSX.Element | undefined;
+      if (typeof elementString === 'object' && elementString.length > 1) {
+        const elementArr = elementString.slice();
+        for (let _i = 0; _i < elementArr.length; _i++) {
+          if (_i === 0) {
+            elementString = <><code>{ '<' }{ elementArr[_i] }{ '>' }</code></>;
+          } else {
+            elementString = <>{ elementString } and <code>{ '<' }{ elementArr[_i] }{ '>' }</code></>;
+          }
+        }
+        elementString = <>{ elementString } tags</>;
+      } else {
+        elementString = <><code>{ '<' }{ elementString }{ '>' }</code> tag</>;
+      }
+
+      if (typeof this.props.allowNativeProps === 'string') {
+        componentString = <> <code>{ this.props.allowNativeProps }</code></>;
+      }
+
+      return (
+        <MessageBar>
+          <strong>Native Props Allowed{ componentString }</strong> - all HTML attributes native to the { elementString },
+          including all aria and custom data attributes, can be applied as native props on{ componentString || <> this component</> }.
+        </MessageBar>
+      );
+    }
+  }
+
   private _getPropertiesTable(): JSX.Element | undefined {
     if (this.props.propertiesTables) {
       return (
         <div className='ComponentPage-implementationSection'>
           <h2 className='ComponentPage-subHeading' id='Implementation'>Implementation</h2>
+          { this._getNativePropsInfo() }
           { this.props.propertiesTables }
         </div>
       );

@@ -135,7 +135,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.forceResolve
+                this.state.selectedActionType === SuggestionActionType.forceResolve
               }) }
             onClick={ this._forceResolve }
           >
@@ -158,7 +158,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.searchMore
+                this.state.selectedActionType === SuggestionActionType.searchMore
               }) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults }
@@ -304,7 +304,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
   // TODO get the element to scroll into view properly regardless of direction.
   public scrollSelected() {
-    if (this._selectedElement) {
+    if (this._selectedElement && this._selectedElement.scrollIntoView !== undefined) {
       this._selectedElement.scrollIntoView(false);
     }
   }

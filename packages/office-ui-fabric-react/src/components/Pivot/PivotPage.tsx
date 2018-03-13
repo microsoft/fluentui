@@ -69,10 +69,12 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ 'PivotItem' }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
             ] }
           />
         }
@@ -118,7 +120,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...PivotStatus}
+            { ...PivotStatus }
           />
         }
       />
