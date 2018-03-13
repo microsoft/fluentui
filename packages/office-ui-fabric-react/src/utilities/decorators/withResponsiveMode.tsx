@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { getWindow } from '../../Utilities';
+import { getWindow, hoistStatics } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -35,7 +35,7 @@ export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined) {
 
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
 
-  return class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
+  const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
 
     constructor(props: TProps) {
       super(props);
@@ -96,5 +96,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
       return responsiveMode;
     }
+
   };
+  return hoistStatics(ComposedComponent, resultClass);
 }

@@ -10,7 +10,6 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IButtonSwapExampleState {
   isPrimary: boolean;

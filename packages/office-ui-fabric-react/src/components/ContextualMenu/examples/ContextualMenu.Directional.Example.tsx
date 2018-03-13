@@ -3,7 +3,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { autobind, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
@@ -36,12 +35,6 @@ const DIRECTION_OPTIONS = [{ key: DirectionalHint.topLeftEdge, text: 'Top Left E
 ];
 
 export class ContextualMenuDirectionalExample extends React.Component<{}, IContextualMenuDirectionalExampleState> {
-  public refs: {
-    [key: string]: React.ReactInstance;
-    menuButton: HTMLElement;
-    gapSize: TextField;
-  };
-
   public constructor(props: {}) {
     super(props);
 
@@ -95,7 +88,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             />
           }
         </div>
-        <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
+        <div className='ms-ContextualMenuDirectionalExample-buttonArea'>
           <DefaultButton
             text='Show context menu'
             menuProps={ {

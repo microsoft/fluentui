@@ -24,11 +24,11 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-selected={true}
         className=
             ms-Button
-            ms-Button--action
-            ms-Button--command
             ms-Pivot-link
             is-selected
             undefined
+            ms-Button--action
+            ms-Button--command
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -39,7 +39,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #333333;
               cursor: pointer;
               display: inline-block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 40px;
@@ -120,9 +120,9 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-selected={false}
         className=
             ms-Button
+            ms-Pivot-link
             ms-Button--action
             ms-Button--command
-            ms-Pivot-link
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -133,7 +133,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #333333;
               cursor: pointer;
               display: inline-block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 40px;

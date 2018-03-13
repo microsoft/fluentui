@@ -34,8 +34,7 @@ describe('Callout', () => {
 
   it('target id strings does not throw exception', () => {
 
-    let threwException: boolean = false;
-    let exception;
+    let threwException = false;
     try {
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
@@ -51,7 +50,6 @@ describe('Callout', () => {
         </div>
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
 
@@ -62,7 +60,7 @@ describe('Callout', () => {
     const mouseEvent = document.createEvent('MouseEvent');
     const eventTarget = document.createElement('div');
     mouseEvent.initMouseEvent('click', false, false, window, 0, 0, 0, 0, 0, false, false, false, false, 1, eventTarget);
-    let threwException: boolean = false;
+    let threwException = false;
     try {
 
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
@@ -84,10 +82,10 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
   });
 
-  it('target HTMLElements does not throw exception', () => {
+  it('target Elements does not throw exception', () => {
     const targetElement = document.createElement('div');
     document.body.appendChild(targetElement);
-    let threwException: boolean = false;
+    let threwException = false;
     try {
 
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
@@ -110,7 +108,7 @@ describe('Callout', () => {
   });
 
   it('without target does not throw exception', () => {
-    let threwException: boolean = false;
+    let threwException = false;
     try {
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
@@ -130,8 +128,8 @@ describe('Callout', () => {
   });
 
   it('passes event to onDismiss prop', (done) => {
-    let threwException: boolean = false;
-    let gotEvent: boolean = false;
+    let threwException = false;
+    let gotEvent = false;
     const onDismiss = (ev?: any) => {
       if (ev) {
         gotEvent = true;

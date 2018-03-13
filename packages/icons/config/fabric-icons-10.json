@@ -9,6 +9,46 @@
 	},
 	"glyphs": [
 		{
+			"name": "FullWidthEdit",
+			"unicode": "F2FF"
+		},
+		{
+			"name": "Plug",
+			"unicode": "F300"
+		},
+		{
+			"name": "PlugSolid",
+			"unicode": "F301"
+		},
+		{
+			"name": "PlugConnected",
+			"unicode": "F302"
+		},
+		{
+			"name": "PlugDisconnected",
+			"unicode": "F303"
+		},
+		{
+			"name": "UnlockSolid",
+			"unicode": "F304"
+		},
+		{
+			"name": "Variable",
+			"unicode": "F305"
+		},
+		{
+			"name": "Parameter",
+			"unicode": "F306"
+		},
+		{
+			"name": "CommentUrgent",
+			"unicode": "F307"
+		},
+		{
+			"name": "Storyboard",
+			"unicode": "F308"
+		},
+		{
 			"name": "DiffInline",
 			"unicode": "F309"
 		},
@@ -367,46 +407,6 @@
 		{
 			"name": "ChevronUpEnd6",
 			"unicode": "F370"
-		},
-		{
-			"name": "ChevronLeftEnd6",
-			"unicode": "F371"
-		},
-		{
-			"name": "ChevronRightEnd6",
-			"unicode": "F372"
-		},
-		{
-			"name": "EgnyteLogo",
-			"unicode": "F373"
-		},
-		{
-			"name": "GoogleDriveLogoLeftGreen",
-			"unicode": "F374"
-		},
-		{
-			"name": "GoogleDriveLogoBottomBlue",
-			"unicode": "F375"
-		},
-		{
-			"name": "GoogleDriveLogoRightYellow",
-			"unicode": "F376"
-		},
-		{
-			"name": "ContextMenu",
-			"unicode": "F37C"
-		},
-		{
-			"name": "AzureAPIManagement",
-			"unicode": "F37F"
-		},
-		{
-			"name": "AzureServiceEndpoint",
-			"unicode": "F380"
-		},
-		{
-			"name": "VSTSLogo",
-			"unicode": "F381"
 		}
 	]
 }

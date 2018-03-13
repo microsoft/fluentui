@@ -8,10 +8,12 @@ import {
 import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
+import { FocusZoneTabbableExample } from './examples/FocusZone.Tabbable.Example';
 
 const FocusZonePhotosExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
 const FocusZoneListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
 const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
+const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
 
 export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -30,8 +32,12 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
             <ExampleCard title='Disabled FocusZone' code={ FocusZoneDisabledExampleCode }>
               <FocusZoneDisabledExample />
             </ExampleCard>
+            <ExampleCard title='Tabbable FocusZone' code={ FocusZoneTabbableCode }>
+              <FocusZoneTabbableExample />
+            </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [

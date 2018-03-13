@@ -43,12 +43,10 @@ export class App extends React.Component<IAppProps, any> {
 
   public render() {
     let { navHeight } = this.state;
-    let appContentTop = this._appContentRect ? this._appContentRect.top : 100;
-    // Using appContentTop as a reference to match instead of 'unset' because it does not work in IE.
-    let navTop: string = this.state.isAttached ? '0' : appContentTop.toString();
+    let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute';
     let navStyle = {
-      top: navTop,
-      height: navHeight
+      height: navHeight,
+      position: navPosition
     };
 
     return (
@@ -80,7 +78,7 @@ export class App extends React.Component<IAppProps, any> {
   @autobind
   private _handleNavPositioning() {
     let { isAttached, navHeight } = this.state;
-    this._appContentRect = this._appContent.getBoundingClientRect();
+    this._appContentRect = this._appContent && this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;
     isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
     navHeight = this._calculateNavHeight(viewPortHeight, this._appContentRect, navHeight);

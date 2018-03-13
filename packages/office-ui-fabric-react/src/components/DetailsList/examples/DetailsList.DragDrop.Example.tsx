@@ -13,7 +13,7 @@ import { createListItems } from '@uifabric/example-app-base';
 import './DetailsList.DragDrop.Example.scss';
 
 let _draggedItem: any = null;
-let _draggedIndex: number = -1;
+let _draggedIndex = -1;
 
 export class DetailsListDragDropExample extends React.Component<{}, {
   items: {}[];

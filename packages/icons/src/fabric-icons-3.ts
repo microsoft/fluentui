@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-a13cb765.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-3-39ed3795.woff') format('woff')`,
     },
     icons: {
+      'TimeSheet': '\uEA05',
       'TriangleSolid': '\uEA08',
       'VideoSolid': '\uEA0C',
       'RainShowersNight': '\uEA0F',
@@ -45,6 +46,7 @@ export function initializeIcons(
       'ErrorBadge': '\uEA39',
       'CircleFill': '\uEA3B',
       'Record2': '\uEA3F',
+      'AllAppsMirrored': '\uEA40',
       'BookmarksMirrored': '\uEA41',
       'BulletedListMirrored': '\uEA42',
       'CaretHollowMirrored': '\uEA45',
@@ -89,6 +91,7 @@ export function initializeIcons(
       'Medical': '\uEAD4',
       'Running': '\uEADA',
       'Weights': '\uEADB',
+      'Trackers': '\uEADF',
       'AddNotes': '\uEAE3',
       'BarChart4': '\uEAE7',
       'CirclePlus': '\uEAEE',
@@ -104,6 +107,7 @@ export function initializeIcons(
       'StockDown': '\uEB0F',
       'StockUp': '\uEB11',
       'Lamp': '\uEB19',
+      'Source': '\uEB1B',
       'MSNVideos': '\uEB1C',
       'Cricket': '\uEB1E',
       'Golf': '\uEB1F',
@@ -120,11 +124,7 @@ export function initializeIcons(
       'Tennis': '\uEB33',
       'Arrivals': '\uEB34',
       'Design': '\uEB3C',
-      'Website': '\uEB41',
-      'Drop': '\uEB42',
-      'SkiResorts': '\uEB45',
-      'Snowflake': '\uEB46',
-      'BusSolid': '\uEB47'
+      'Website': '\uEB41'
     }
   };
 

@@ -13,8 +13,12 @@ import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
+export interface ICalendarMonth {
+  focus(): void;
+}
+
 export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
-  componentRef?: () => void;
+  componentRef?: (c: ICalendarMonth) => void;
   navigatedDate: Date;
   strings: ICalendarStrings;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
@@ -33,7 +37,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     navigatedMonth: HTMLElement;
   };
 
-  private _selectMonthCallbacks: (() => void) [];
+  private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: ICalendarMonthProps) {
     super(props);

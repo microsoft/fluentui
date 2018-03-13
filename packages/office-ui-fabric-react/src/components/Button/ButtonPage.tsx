@@ -7,7 +7,6 @@ import {
 } from '@uifabric/example-app-base';
 import { ButtonStatus } from './Button.checklist';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
-import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonActionExample } from './examples/Button.Action.Example';
@@ -126,15 +125,14 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ ['a', 'button'] }
         propertiesTables={
-          <div>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')
-              ] }
-            />
-            <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')
+            ] }
+          />
         }
         overview={
           <div>
@@ -178,7 +176,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ButtonStatus}
+            { ...ButtonStatus }
           />
         }
       />

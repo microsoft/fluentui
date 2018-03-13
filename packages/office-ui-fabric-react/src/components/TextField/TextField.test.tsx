@@ -31,8 +31,8 @@ describe('TextField', () => {
   });
 
   it('should render label and value to input element', () => {
-    const exampleLabel: string = 'this is label';
-    const exampleValue: string = 'this is value';
+    const exampleLabel = 'this is label';
+    const exampleValue = 'this is value';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -51,7 +51,7 @@ describe('TextField', () => {
   });
 
   it('should render prefix in input element', () => {
-    const examplePrefix: string = 'this is a prefix';
+    const examplePrefix = 'this is a prefix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -65,7 +65,7 @@ describe('TextField', () => {
   });
 
   it('should render suffix in input element', () => {
-    const exampleSuffix: string = 'this is a suffix';
+    const exampleSuffix = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -79,8 +79,8 @@ describe('TextField', () => {
   });
 
   it('should render both prefix and suffix in input element', () => {
-    const examplePrefix: string = 'this is a prefix';
-    const exampleSuffix: string = 'this is a suffix';
+    const examplePrefix = 'this is a prefix';
+    const exampleSuffix = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -133,7 +133,7 @@ describe('TextField', () => {
   });
 
   describe('error message', () => {
-    const errorMessage: string = 'The string is too long, should not exceed 3 characters.';
+    const errorMessage = 'The string is too long, should not exceed 3 characters.';
 
     function assertErrorMessage(renderedDOM: HTMLElement, expectedErrorMessage: string | boolean): void {
       const errorMessageDOM: HTMLElement =
@@ -423,6 +423,24 @@ describe('TextField', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).toEqual(2);
+  });
+
+  it('should not call onChanged when initial value is undefined and input change is an empty string', () => {
+    let callCount = 0;
+    const onChangedSpy = (value: string) => { callCount++; };
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        onChanged={ onChangedSpy }
+      />
+    );
+
+    expect(callCount).toEqual(0);
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
+    expect(callCount).toEqual(0);
   });
 
   it('should select a range of text', () => {

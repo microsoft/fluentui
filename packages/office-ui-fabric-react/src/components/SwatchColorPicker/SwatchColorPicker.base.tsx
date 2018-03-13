@@ -6,10 +6,8 @@ import {
   classNamesFunction,
   customizable,
   findIndex,
-  htmlElementProperties,
   KeyCodes,
-  getId,
-  getNativeProps
+  getId
 } from '../../Utilities';
 import {
   ISwatchColorPicker,
@@ -20,7 +18,6 @@ import {
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
-import { mergeStyleSets } from '../../Styling';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -38,6 +35,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   } as ISwatchColorPickerProps;
 
   private _id: string;
+  private _cellFocused: boolean;
 
   private navigationIdleTimeoutId: number | undefined;
   private isNavigationIdle: boolean;
@@ -86,6 +84,13 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
   }
 
+  public componentWillUnmount() {
+    if (this.props.onCellFocused && this._cellFocused) {
+      this._cellFocused = false;
+      this.props.onCellFocused();
+    }
+  }
+
   public render() {
     const {
       colorCells,
@@ -95,7 +100,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
-      disabled,
       getStyles,
     } = this.props;
 
@@ -138,6 +142,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   @autobind
   private _onSwatchColorPickerBlur() {
     if (this.props.onCellFocused) {
+      this._cellFocused = false;
       this.props.onCellFocused();
     }
   }
@@ -151,10 +156,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
     const selectedIndex = findIndex(items, (item => (item.id === selectedId)));
     return selectedIndex >= 0 ? selectedIndex : undefined;
-  }
-
-  private _isSelected(index: number): boolean {
-    return this.state.selectedIndex !== undefined && (this.state.selectedIndex === index);
   }
 
   /**
@@ -331,7 +332,13 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   private _onGridCellFocused(item?: IColorCellProps): void {
     const { onCellFocused } = this.props;
     if (onCellFocused) {
-      return item ? onCellFocused(item.id, item.color) : onCellFocused();
+      if (item) {
+        this._cellFocused = true;
+        return onCellFocused(item.id, item.color);
+      } else {
+        this._cellFocused = false;
+        return onCellFocused();
+      }
     }
   }
 
@@ -350,6 +357,12 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     // If we have a valid index and it is not already
     // selected, select it
     if (index >= 0 && index !== this.state.selectedIndex) {
+
+      if (this.props.onCellFocused && this._cellFocused) {
+        this._cellFocused = false;
+        this.props.onCellFocused();
+      }
+
       if (this.props.onColorChanged) {
         this.props.onColorChanged(item.id, item.color);
       }

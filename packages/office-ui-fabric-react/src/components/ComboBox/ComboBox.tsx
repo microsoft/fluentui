@@ -19,15 +19,12 @@ import {
   customizable,
   css
 } from '../../Utilities';
-import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import {
   getStyles,
   getOptionStyles,
   getCaretDownButtonStyles
 } from './ComboBox.styles';
-import {
-  IComboBoxStyles,
-} from './ComboBox.types';
 import {
   IComboBoxClassNames,
   getClassNames,
@@ -89,10 +86,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance,
-    root: HTMLElement
-  };
+  private _root: HTMLElement;
 
   // The input aspect of the comboBox
   private _comboBox: Autofill;
@@ -127,6 +121,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _classNames: IComboBoxClassNames;
 
   private _isScrollIdle: boolean;
+
+  private _hasPendingValue: boolean;
 
   private readonly _scrollIdleDelay: number = 250 /* ms */;
 
@@ -239,6 +235,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._select();
     }
 
+    this._notifyPendingValueChanged(prevState);
+
     if (isOpen && !prevState.isOpen && onMenuOpen) {
       onMenuOpen();
     }
@@ -270,14 +268,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderItem = this._onRenderItem,
       onRenderOption = this._onRenderOption,
       allowFreeform,
-      autoComplete,
       buttonIconProps,
       isButtonAriaHidden = true,
       styles: customStyles,
       theme,
       title
     } = this.props;
-    const { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     const divProps = getNativeProps(this.props, divProperties);
@@ -306,7 +303,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       );
 
     return (
-      <div { ...divProps } ref='root' className={ this._classNames.container }>
+      <div { ...divProps } ref={ this._resolveRef('_root') } className={ this._classNames.container }>
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
@@ -350,6 +347,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             styles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden={ isButtonAriaHidden }
+            data-is-focusable={ false }
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
@@ -694,7 +692,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search along the options from the given index
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
-    const { onChanged } = this.props;
+    const { onChanged, onPendingValueChanged } = this.props;
     const { selectedIndex, currentOptions } = this.state;
 
     // Find the next selectable index, if searchDirection is none
@@ -715,6 +713,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         selectedIndex: index
       });
 
+      // If ComboBox value is changed, revert preview first
+      if (this._hasPendingValue && onPendingValueChanged) {
+        onPendingValueChanged();
+        this._hasPendingValue = false;
+      }
+
       // Did the creator give us an onChanged callback?
       if (onChanged) {
         onChanged(option, index);
@@ -732,7 +736,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   @autobind
   private _select() {
-    this._comboBox.inputElement.select();
+    if (this._comboBox.inputElement) {
+      this._comboBox.inputElement.select();
+    }
 
     if (!this.state.focused) {
       this.setState({ focused: true });
@@ -784,7 +790,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // inside the comboBox root or the comboBox menu since
     // it we are not really bluring from the whole comboBox
     if (event.relatedTarget &&
-      (this.refs.root && this.refs.root.contains(event.relatedTarget as HTMLElement) ||
+      (this._root && this._root.contains(event.relatedTarget as HTMLElement) ||
         this._comboBoxMenu && this._comboBoxMenu.contains(event.relatedTarget as HTMLElement))) {
       event.preventDefault();
       event.stopPropagation();
@@ -829,7 +835,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           (autoComplete && pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
             (this._comboBox.isValueSelected &&
               currentPendingValue.length + (this._comboBox.selectionEnd - this._comboBox.selectionStart) === pendingOptionText.length) ||
-            (this._comboBox.inputElement.value.toLocaleLowerCase() === pendingOptionText)
+            (this._comboBox.inputElement && this._comboBox.inputElement.value.toLocaleLowerCase() === pendingOptionText)
           )) {
           this._setSelectedIndex(currentPendingValueValidIndex);
           this._clearPendingInfo();
@@ -1231,15 +1237,46 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search
    */
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
-    const {
-      isOpen,
-      selectedIndex,
-      currentOptions
-    } = this.state;
+    const { currentOptions } = this.state;
 
     index = this._getNextSelectableIndex(index, searchDirection);
     if (this._indexWithinBounds(currentOptions, index)) {
       this._setPendingInfoFromIndex(index);
+    }
+  }
+
+  private _notifyPendingValueChanged(prevState: IComboBoxState) {
+    const { onPendingValueChanged } = this.props;
+
+    if (!onPendingValueChanged) {
+      return;
+    }
+
+    const {
+      currentPendingValue,
+      currentOptions,
+      currentPendingValueValidIndex,
+      currentPendingValueValidIndexOnHover
+    } = this.state;
+
+    let newPendingIndex: number | undefined = undefined;
+    let newPendingValue: string | undefined = undefined;
+
+    if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover && this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
+      // Set new pending index if hover index was changed
+      newPendingIndex = currentPendingValueValidIndexOnHover;
+    } else if (currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex && this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+      // Set new pending index if currentPendingValueValidIndex was changed
+      newPendingIndex = currentPendingValueValidIndex;
+    } else if (currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '') {
+      // Set pendingValue in the case it was changed and no index was changed
+      newPendingValue = currentPendingValue;
+    }
+
+    // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
+    if (newPendingIndex !== undefined || newPendingValue || this._hasPendingValue) {
+      onPendingValueChanged(newPendingIndex ? currentOptions[newPendingIndex] : undefined, newPendingIndex, newPendingValue);
+      this._hasPendingValue = newPendingIndex !== undefined || newPendingValue !== undefined;
     }
   }
 
@@ -1266,7 +1303,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
     const {
       isOpen,
-      currentPendingValueValidIndex,
       currentOptions,
       currentPendingValueValidIndexOnHover
     } = this.state;

@@ -19,9 +19,7 @@ let _surface0: Element;
 let _invoke0: Element;
 let _toggle0: Element;
 let _surface1: Element;
-let _invoke1: Element;
 let _toggle1: Element;
-let _invoke2: Element;
 let _toggle2: Element;
 let _surface3: Element;
 
@@ -66,9 +64,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
   _invoke0 = _componentElement.querySelector('#invoke0')!;
   _toggle0 = _componentElement.querySelector('#toggle0')!;
   _surface1 = _componentElement.querySelector('#surface1')!;
-  _invoke1 = _componentElement.querySelector('#invoke1')!;
   _toggle1 = _componentElement.querySelector('#toggle1')!;
-  _invoke2 = _componentElement.querySelector('#invoke2')!;
   _toggle2 = _componentElement.querySelector('#toggle2')!;
   _surface3 = _componentElement.querySelector('#surface3')!;
 

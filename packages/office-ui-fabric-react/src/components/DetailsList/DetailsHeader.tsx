@@ -7,7 +7,8 @@ import {
   getRTL,
   getId,
   KeyCodes,
-  IRenderFunction
+  IRenderFunction,
+  createRef
 } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -82,10 +83,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     collapseAllVisibility: CollapseAllVisibility.visible
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: FocusZone;
-  };
+  private _root = createRef<FocusZone>();
 
   private _id: string;
 
@@ -105,10 +103,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   public componentDidMount() {
     const { selection } = this.props;
+    const rootElement = this._root.value;
+
+    if (!rootElement) {
+      return;
+    }
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
-
-    const rootElement = ReactDOM.findDOMNode(this.refs.root);
 
     // We need to use native on this to avoid MarqueeSelection from handling the event before us.
     this._events.on(rootElement, 'mousedown', this._onRootMouseDown);
@@ -145,7 +146,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           (selectAllVisibility === SelectAllVisibility.hidden) && ('is-selectAllHidden ' + styles.rootIsSelectAllHidden),
           (!!columnResizeDetails && isSizing) && 'is-resizingColumn'
         ) }
-        ref='root'
+        ref={ this._root }
         onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'
         direction={ FocusZoneDirection.horizontal }
@@ -329,7 +330,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return this.refs.root.focus();
+    return Boolean(this._root.value && this._root.value.focus());
   }
 
   private _renderColumnSizer(columnIndex: number) {
@@ -501,7 +502,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
       buttons
-  } = ev;
+    } = ev;
     const { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
     const { columnResizeDetails } = this.state;
 
