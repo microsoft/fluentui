@@ -198,7 +198,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
                 }] }
               label='Pick one'
               required={ true }
-            />,
+            />
             <ChoiceGroup
               options={ [
                 {
