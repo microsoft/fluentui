@@ -20,7 +20,12 @@ const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
         backgroundColor: 'Highlight',
         borderColor: 'Highlight',
         color: 'HighlightText',
-        MsHighContrastAdjust: 'none'
+        MsHighContrastAdjust: 'none',
+        selectors: {
+          '.ms-ContextualMenu-icon': {
+            color: 'HighlightText'
+          }
+        }
       }
     },
   };
@@ -128,11 +133,6 @@ export const getMenuItemStyles = memoizeFunction((
     },
     iconColor: {
       color: semanticColors.menuIcon,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'HighlightText',
-        }
-      }
     },
     iconDisabled: {
       color: semanticColors.disabledBodyText,
