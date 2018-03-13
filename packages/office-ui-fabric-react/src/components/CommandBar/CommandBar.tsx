@@ -227,7 +227,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             }
 
             return button;
-            
+
           } else if (item.href) {
             return <a
               { ...getNativeProps(item, anchorProperties) }
@@ -373,6 +373,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
+
+      if (item.readOnly) {
+        return;
+      }
+
       if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
         this._onContextMenuDismiss();
       } else {
