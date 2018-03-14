@@ -627,7 +627,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const itemProps = {
-      onClick: this._onItemClick.bind(this, item),
+      onClick: this._onSplitItemClick.bind(this, item),
       disabled: this._isItemDisabled(item),
       className: classNames.splitMenu,
       subMenuProps: item.subMenuProps,
@@ -804,7 +804,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (hasSubmenu(item)) {
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
-        this._onItemSubMenuExpand(item, targetElement);
+        this._onItemSubMenuExpand(item,
+          ((item.split && targetElement.parentElement) ? targetElement.parentElement : targetElement) as HTMLElement);
       }, this._navigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
@@ -821,6 +822,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+    this._onItemClickBase(item, ev, ev.currentTarget as HTMLElement);
+  }
+
+  private _onSplitItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+    // get the whole splitButton container to base the menu off of
+    this._onItemClickBase(item, ev,
+      (ev.currentTarget.parentElement ? ev.currentTarget.parentElement : ev.currentTarget) as HTMLElement);
+  }
+
+  private _onItemClickBase(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target: HTMLElement) {
     const items = getSubmenuItems(item);
 
     if (!hasSubmenu(item) && (!items || !items.length)) { // This is an item without a menu. Click it.
@@ -829,7 +840,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
-        this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
+        this._onItemSubMenuExpand(item, target);
       }
     }
 
