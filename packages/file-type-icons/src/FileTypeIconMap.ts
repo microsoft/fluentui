@@ -28,7 +28,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'profile', 'ps1', 'pss', 'pt', 'py', 'pyw', 'r', 'rake', 'rb', 'rbx', 'rc', 'rdf', 're', 'reg',
       'rest', 'resw', 'resx', 'rhtml', 'rjs', 'rprofile', 'rpy', 'rss', 'rst', 'ruby', 'rxml', 's',
       'sass', 'scala', 'scm', 'sconscript', 'sconstruct', 'script', 'scss', 'sgml', 'sh', 'sh',
-      'shtml', 'sml', 'svn-base', 'sql', 'sql', 'sty', 'tcl', 'tex', 'textile', 'tld', 'tli',
+      'shtml', 'sml', 'svn-base', 'swift', 'sql', 'sty', 'tcl', 'tex', 'textile', 'tld', 'tli',
       'tmpl', 'tpl', 'vb', 'vi', 'vim', 'vmg', 'webpart', 'wsp', 'wsdl', 'xhtml', 'xoml', 'xsd',
       'xslt', 'yaml', 'yaws', 'yml', 'zsh'
     ]
@@ -49,14 +49,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   'model': {
     extensions: [
       '3ds', '3mf', 'blend', 'cool', 'dae', 'df', 'dwfx', 'dwg', 'dxf', 'fbx', 'glb', 'gltf', 'holo',
-      'layout', 'max', 'off', 'ply', 'skp', 'stp', 'stl', 't', 'thl', 'x'
+      'layout', 'max', 'mtl', 'obj', 'off', 'ply', 'skp', 'stp', 'stl', 't', 'thl', 'x'
     ]
   },
   'mpp': { extensions: ['mpp'] },
   'mpt': { extensions: ['mpt'] },
-  'odp': { extensions: ['odp'] },
-  'ods': { extensions: ['ods'] },
-  'odt': { extensions: ['odt'] },
   'one': { extensions: ['one', 'onepkg'] }, // this is a format for exported single-file notebook pages
   'onetoc': { extensions: ['ms-one-stub', 'onetoc', 'onetoc2'] }, // this icon represents a complete, logical notebook.
   'pdf': { extensions: ['pdf'] },
@@ -70,9 +67,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   'potx': { extensions: ['pot', 'potm', 'potx'] },
   'ppsx': { extensions: ['pps', 'ppsm', 'ppsx'] },
   'pptx': { extensions: ['ppt', 'pptm', 'pptx'] },
+  'presentation': { extensions: ['odp', 'gslides', 'key'] },
   'pub': { extensions: ['pub'] },
   'spo': { extensions: ['aspx'] },
-  'rtf': { extensions: ['epub', 'rtf', 'wri'] },
+  'spreadsheet': { extensions: ['ods', 'gsheet', 'numbers'] },
+  'rtf': { extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'] },
   'sharedfolder': {},
   'sysfile': {
     extensions: [
@@ -82,7 +81,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   'txt': { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
-  'vector': { extensions: ['ai', 'dgn', 'pd', 'emf', 'eps', 'indd', 'indt', 'ps', 'svg', 'svgz', 'wmf', 'oxps', 'xps', 'xd', 'sketch'] },
+  'vector': {
+    extensions: [
+      'ai', 'dgn', 'gdraw', 'pd', 'emf', 'eps', 'indd', 'indt', 'ps', 'svg', 'svgz', 'wmf', 'oxps', 'xps', 'xd', 'sketch'
+    ]
+  },
   'video': {
     extensions: ['3gp', 'asf', 'avi', 'dvr-ms', 'flv', 'm1v', 'm4v', 'mkv', 'mod', 'mov',
       'mm4p', 'mp2', 'mp2v', 'mp4', ' mpa', 'mpe', 'mpeg', 'mpg', 'mpv', 'mpv2', 'mts', 'ogg', 'qt',

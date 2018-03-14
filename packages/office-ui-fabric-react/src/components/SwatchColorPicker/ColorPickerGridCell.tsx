@@ -1,9 +1,8 @@
-import * as React from 'react';
 import {
-  IStyleFunction,
   styled
 } from '../../Utilities';
 import { ColorPickerGridCellBase } from './ColorPickerGridCell.base';
+// tslint:disable-next-line:no-unused-variable
 import { IColorPickerGridCellProps } from './ColorPickerGridCell.types';
 import { getStyles } from './ColorPickerGridCell.styles';
 

@@ -3,13 +3,7 @@ import {
   IRawStyle,
   focusClear
 } from '../../Styling';
-import {
-  ICalloutPositionedInfo,
-  RectangleEdge
-} from '../../utilities/positioning';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
-
-const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 
 function getBeakStyle(beakWidth?: number,
   beakStyle?: string): IRawStyle {

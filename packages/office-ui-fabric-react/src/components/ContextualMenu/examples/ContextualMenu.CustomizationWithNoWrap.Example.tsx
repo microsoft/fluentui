@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton, IconButton, IButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
@@ -200,7 +200,7 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
   private _renderCharmMenuItem(item: any, dismissMenu: () => void) {
     return (
       <IconButton
-        {...item}
+        { ...item }
         iconProps={ { iconName: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
@@ -215,7 +215,7 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>
           { item.categoryList.map((category: any) =>
-            <button key={ category.name } className='ms-ContextualMenu-link' role='menuitem'>
+            <DefaultButton key={ category.name } className='ms-ContextualMenu-link ms-ContextualMenu-customizationExample-button' role='menuitem'>
               <div>
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
@@ -225,7 +225,7 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
                   { category.name }
                 </span>
               </div>
-            </button>
+            </DefaultButton>
           ) }
         </li>
       </ul>

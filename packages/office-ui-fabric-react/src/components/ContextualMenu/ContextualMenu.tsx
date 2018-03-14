@@ -31,10 +31,7 @@ import {
 import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
-import {
-  Icon,
-  IIconProps
-} from '../../Icon';
+import { IIconProps } from '../../Icon';
 import {
   VerticalDivider
 } from '../../Divider';
@@ -203,7 +200,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       coverTarget,
       ariaLabel,
       doNotLayer,
-      arrowDirection,
       target,
       bounds,
       useTargetWidth,
@@ -211,7 +207,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       directionalHintFixed,
       shouldFocusOnMount,
       title,
-      styles: customStyles,
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
@@ -493,12 +488,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
+
+    let anchorRel = item.rel;
+    if (item.target && item.target.toLowerCase() === '_blank') {
+      anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
+    }
+
     return (
       <div>
         <a
           { ...getNativeProps(item, anchorProperties) }
           href={ item.href }
           target={ item.target }
+          rel={ anchorRel }
           className={ classNames.root }
           role='menuitem'
           aria-posinset={ focusableElementIndex + 1 }
@@ -506,7 +508,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           aria-disabled={ this._isItemDisabled(item) }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
-          { ...this._keytipPropsMap[item.key]}
+          { ...this._keytipPropsMap[item.key] }
         >
           <ChildrenRenderer
             item={ item }
@@ -578,7 +580,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <button
         { ...buttonNativeProperties }
         { ...itemButtonProperties }
-        { ...this._keytipPropsMap[item.key]}
+        { ...this._keytipPropsMap[item.key] }
       >
         <ChildrenRenderer
           item={ item }

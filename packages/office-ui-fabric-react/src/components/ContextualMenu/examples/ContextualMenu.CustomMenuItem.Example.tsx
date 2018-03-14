@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
@@ -48,7 +48,7 @@ export class ContextualMenuWithCustomMenuItemExample extends React.Component {
                 disabled: true
               }
             ],
-            contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.name}</div>
+            contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered { props.item.name }</div>
           } }
         />
       </div>

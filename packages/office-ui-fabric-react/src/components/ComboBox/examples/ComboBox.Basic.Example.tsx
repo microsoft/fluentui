@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   ComboBox,
-  IComboBoxProps,
   IComboBoxOption,
   VirtualizedComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';
@@ -20,20 +19,20 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   value?: string;
 }> {
   private _testOptions =
-    [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
-    { key: 'A', text: 'Arial Black' },
-    { key: 'B', text: 'Times New Roman' },
-    { key: 'C', text: 'Comic Sans MS' },
-    { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-    { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-    { key: 'D', text: 'Option d' },
-    { key: 'E', text: 'Option e' },
-    { key: 'F', text: 'Option f' },
-    { key: 'G', text: 'Option g' },
-    { key: 'H', text: 'Option h' },
-    { key: 'I', text: 'Option i' },
-    { key: 'J', text: 'Option j', disabled: true },
-    ];
+  [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'A', text: 'Arial Black' },
+  { key: 'B', text: 'Times New Roman' },
+  { key: 'C', text: 'Comic Sans MS' },
+  { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+  { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'D', text: 'Option d' },
+  { key: 'E', text: 'Option e' },
+  { key: 'F', text: 'Option f' },
+  { key: 'G', text: 'Option g' },
+  { key: 'H', text: 'Option h' },
+  { key: 'I', text: 'Option i' },
+  { key: 'J', text: 'Option j', disabled: true },
+  ];
 
   private _fontMapping: { [key: string]: string } = {
     ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
@@ -81,7 +80,8 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-          // tslint:enable:jsx-no-lambda
+          onPendingValueChanged={ (option, pendingIndex, pendingValue) => console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue) }
+        // tslint:enable:jsx-no-lambda
         />
 
         <PrimaryButton
@@ -133,6 +133,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
+          onPendingValueChanged={ (option, pendingIndex, pendingValue) => console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue) }
         // tslint:enable:jsx-no-lambda
         />
 

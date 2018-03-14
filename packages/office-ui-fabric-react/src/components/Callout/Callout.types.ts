@@ -1,7 +1,4 @@
-import * as React from 'react';
-import { Callout } from './Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,

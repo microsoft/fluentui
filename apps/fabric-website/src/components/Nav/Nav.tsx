@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import {
@@ -69,7 +70,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     const links: React.ReactElement<{}>[] = pages
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
       .map(
-      (page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex)
+        (page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex)
       );
 
     return (
@@ -91,25 +92,19 @@ function _isPageActive(page: INavPage): boolean {
   }
   _urlResolver.href = page.url || '';
   const target: string = _urlResolver.href;
+  let path = location.href;
 
   if (location.protocol + '//' + location.host + location.pathname === target) {
     return true;
   }
 
-  if (location.href === target) {
-    return true;
+  const hashCount = path.split('#').length - 1;
+  if (hashCount > 1) {
+    path = getPathMinusLastHash(path);
   }
 
-  if (location.hash) {
-    // Match the hash to the url.
-    if (location.hash === page.url) {
-      return true;
-    }
-
-    // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
-    _urlResolver.href = location.hash.substring(1);
-
-    return _urlResolver.href === target;
+  if (path === target) {
+    return true;
   }
 
   return false;

@@ -8,9 +8,10 @@ import {
   buttonProperties,
   getId,
   getNativeProps,
-  KeyCodes
+  KeyCodes,
+  createRef
 } from '../../Utilities';
-import { Icon, IIconProps } from '../../Icon';
+import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
@@ -44,8 +45,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     split: false,
   };
 
-  private _buttonElement: HTMLElement;
-  private _splitButtonContainer: HTMLElement;
+  private _buttonElement = createRef<HTMLElement>();
+  private _splitButtonContainer = createRef<HTMLDivElement>();
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
@@ -104,14 +105,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps && menuIconProps.className,
       isPrimaryButtonDisabled!,
       checked!,
-      !!this.state.menuProps,
+      !!menuProps,
       this.props.split) : getBaseButtonClassNames(styles!, className!,
         variantClassName!,
         iconProps && iconProps.className,
         menuIconProps && menuIconProps.className,
         isPrimaryButtonDisabled!,
         checked!,
-        !!this.state.menuProps,
+        !!menuProps,
         this.props.split);
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -160,7 +161,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       nativeProps,
       {
         className: this._classNames.root,
-        ref: this._resolveRef('_buttonElement'),
+        ref: this._buttonElement,
         'disabled': isPrimaryButtonDisabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
@@ -218,8 +219,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public focus(): void {
-    if (this._buttonElement) {
-      this._buttonElement.focus();
+    if (this._buttonElement.value) {
+      this._buttonElement.value.focus();
     }
   }
 
@@ -413,7 +414,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={ DirectionalHint.bottomLeftEdge }
         { ...menuProps }
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
-        target={ this._isSplitButton ? this._splitButtonContainer : this._buttonElement }
+        target={ this._isSplitButton ? this._splitButtonContainer.value : this._buttonElement.value }
         labelElementId={ this._labelId }
         onDismiss={ onDismiss }
       />
@@ -464,7 +465,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-describedby={ buttonProps.ariaDescription }
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onMenuKeyDown }
-        ref={ this._resolveRef('_splitButtonContainer') }
+        ref={ this._splitButtonContainer }
         data-is-focusable={ true }
         onClick={ !disabled && !primaryDisabled ? onClick : undefined }
       >

@@ -63,7 +63,6 @@ export const getOptionStyles = memoizeFunction((
   const ComboBoxOptionTextColorSelected = palette.black;
   const ComboBoxOptionTextColorDisabled = semanticColors.disabledText;
   const ComboBoxOptionBackgroundDisabled = semanticColors.bodyBackground;
-  const ComboBoxOptionBorderColorFocused = palette.neutralSecondary;
 
   const optionStyles: IComboBoxOptionStyles = {
     root: [
@@ -233,7 +232,6 @@ export const getStyles = memoizeFunction((
       fonts.medium,
       {
         boxShadow: 'none',
-        marginBottom: '10px',
         marginLeft: '0',
         paddingTop: '1px', // The 1px padding centers the input field, avoiding overlap in the browser
         paddingBottom: '1px',

@@ -31,7 +31,6 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     const {
       items,
       overflowItems,
-      onRenderOverflowButton,
       className,
       focusZoneProps,
       vertical = false,
