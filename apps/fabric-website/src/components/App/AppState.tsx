@@ -91,10 +91,9 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
         },
         {
-          title: 'Beta theme generator',
-          url: '#/styles/themeGenerator',
-          isHiddenFromMainNav: true,
-          component: () => <StylesLoadingComponent title='Beta theme generator' />,
+          title: 'Theme generator',
+          url: '#/styles/themegenerator',
+          component: () => <StylesLoadingComponent title='Theme generator' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
         },
         {

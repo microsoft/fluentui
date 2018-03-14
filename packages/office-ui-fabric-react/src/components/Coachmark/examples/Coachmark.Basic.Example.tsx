@@ -6,7 +6,8 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IStyle } from '../../../Styling';
 import {
   BaseComponent,
-  classNamesFunction
+  classNamesFunction,
+  createRef
 } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
@@ -28,7 +29,7 @@ export interface ICoachmarkBasicExampleStyles {
 }
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
-  private _targetButton: HTMLElement;
+  private _targetButton = createRef<HTMLDivElement>();
 
   public constructor(props: {}) {
     super(props);
@@ -63,7 +64,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       <div className={ classNames.root }>
         <div
           className={ classNames.buttonContainer }
-          ref={ this._resolveRef('_targetButton') }
+          ref={ this._targetButton }
         >
           <DefaultButton
             onClick={ this._onShowMenuClicked }
@@ -72,7 +73,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         </div>
         { isVisible && (
           <Coachmark
-            target={ this._targetButton }
+            target={ this._targetButton.value }
           >
             <TeachingBubbleContent
               headline='Example Title'

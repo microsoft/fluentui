@@ -18,13 +18,17 @@ export const DefaultFontStyles: IFontStyles = createFontStyles(getLanguage());
 function _registerFontFace(
   fontFamily: string,
   url: string,
-  fontWeight?: IFontWeight
+  fontWeight?: IFontWeight,
+  localFontName?: string
 ): void {
   fontFamily = `'${fontFamily}'`;
+
+  const localFontSrc = localFontName !== undefined ? `local('${localFontName}'),` : '';
 
   fontFace({
     fontFamily,
     src:
+      localFontSrc +
       `url('${url}.woff2') format('woff2'),` +
       `url('${url}.woff') format('woff')`,
     fontWeight,
@@ -36,14 +40,15 @@ function _registerFontFaceSet(
   baseUrl: string,
   fontFamily: string,
   cdnFolder: string,
-  cdnFontName: string = 'segoeui'
+  cdnFontName: string = 'segoeui',
+  localFontName?: string
 ): void {
   const urlBase = `${baseUrl}/${cdnFolder}/${cdnFontName}`;
 
-  _registerFontFace(fontFamily, urlBase + '-light', FontWeights.light);
-  _registerFontFace(fontFamily, urlBase + '-semilight', FontWeights.semilight);
-  _registerFontFace(fontFamily, urlBase + '-regular', FontWeights.regular);
-  _registerFontFace(fontFamily, urlBase + '-semibold', FontWeights.semibold);
+  _registerFontFace(fontFamily, urlBase + '-light', FontWeights.light, localFontName && localFontName + ' Light');
+  _registerFontFace(fontFamily, urlBase + '-semilight', FontWeights.semilight, localFontName && localFontName + ' SemiLight');
+  _registerFontFace(fontFamily, urlBase + '-regular', FontWeights.regular, localFontName);
+  _registerFontFace(fontFamily, urlBase + '-semibold', FontWeights.semibold, localFontName && localFontName + ' SemiBold');
 }
 
 export function registerDefaultFontFaces(baseUrl: string): void {
@@ -58,7 +63,7 @@ export function registerDefaultFontFaces(baseUrl: string): void {
     _registerFontFaceSet(fontUrl, LocalizedFontNames.Greek, 'segoeui-greek');
     _registerFontFaceSet(fontUrl, LocalizedFontNames.Hebrew, 'segoeui-hebrew');
     _registerFontFaceSet(fontUrl, LocalizedFontNames.Vietnamese, 'segoeui-vietnamese');
-    _registerFontFaceSet(fontUrl, LocalizedFontNames.WestEuropean, 'segoeui-westeuropean');
+    _registerFontFaceSet(fontUrl, LocalizedFontNames.WestEuropean, 'segoeui-westeuropean', 'segoeui', 'Segoe UI');
     _registerFontFaceSet(fontUrl, LocalizedFontFamilies.Selawik, 'selawik', 'selawik');
 
     // Leelawadee UI (Thai) does not have a 'light' weight, so we override

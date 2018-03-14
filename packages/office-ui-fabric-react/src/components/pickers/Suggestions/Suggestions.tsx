@@ -305,7 +305,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
   // TODO get the element to scroll into view properly regardless of direction.
   public scrollSelected() {
-    if (this._selectedElement) {
+    if (this._selectedElement && this._selectedElement.scrollIntoView !== undefined) {
       this._selectedElement.scrollIntoView(false);
     }
   }
