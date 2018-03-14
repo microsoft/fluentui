@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed keyboard focus border visibility for IE11, where overflow is hidden by default.",
+      "comment": "Fixed keyboard focus border visibility for Toggle on IE11, where overflow is hidden by default.",
       "type": "patch"
     }
   ],
