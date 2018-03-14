@@ -6,7 +6,8 @@ import {
   customizable,
   divProperties,
   getNativeProps,
-  provideContext
+  provideContext,
+  createRef
 } from '../../Utilities';
 import {
   IResizeGroupProps,
@@ -293,8 +294,8 @@ const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupSty
 @customizable('ResizeGroup', ['theme'])
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
-  private _root: HTMLElement;
-  private _measured: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
+  private _measured = createRef<HTMLDivElement>();
 
   constructor(props: IResizeGroupProps) {
     super(props);
@@ -358,12 +359,12 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   private _afterComponentRendered() {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
-      if (this.state.measureContainer) {
-        containerWidth = this._root.getBoundingClientRect().width;
+      if (this.state.measureContainer && this._root.value) {
+        containerWidth = this._root.value.getBoundingClientRect().width;
       }
       const nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
         this.state,
-        () => this._measured.scrollWidth,
+        () => this._measured.value ? this._measured.value.scrollWidth : 0,
         containerWidth);
 
       if (nextState) {

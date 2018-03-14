@@ -151,7 +151,7 @@ export function setSSR(isEnabled: boolean): void {
  *
  * @public
  */
-export function getWindow(rootElement?: Element): Window | undefined {
+export function getWindow(rootElement?: Element | null): Window | undefined {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
