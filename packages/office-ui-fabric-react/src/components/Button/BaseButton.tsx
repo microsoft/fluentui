@@ -553,6 +553,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (ev.pointerType === 'touch') {
       this._processingTouch = true;
 
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+
       this._async.setTimeout(() => {
         this._processingTouch = false;
       }, 500);

@@ -1524,8 +1524,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   @autobind
   private _onAutofillClick() {
-    if (this.props.allowFreeform && !this._processingTouch) {
-      this.focus(this.state.isOpen);
+    if (this.props.allowFreeform) {
+      this.focus(this.state.isOpen || this._processingTouch);
     } else {
       this._onComboBoxClick();
     }
@@ -1535,6 +1535,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onPointerDown(ev: PointerEvent) {
     if (ev.pointerType === 'touch') {
       this._processingTouch = true;
+
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
 
       this._async.setTimeout(() => {
         this._processingTouch = false;

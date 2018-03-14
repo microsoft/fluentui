@@ -680,6 +680,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (ev.pointerType === 'touch') {
       this._processingTouch = true;
 
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+
       this._async.setTimeout(() => {
         this._processingTouch = false;
       }, 500);
