@@ -432,7 +432,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       checked,
       getSplitButtonClassNames,
-      onClick,
       primaryDisabled
     } = this.props;
 
