@@ -91,6 +91,7 @@ export const getClassNames = memoizeFunction((
         background: pillUncheckedBackground,
         borderColor: pillBorderColor,
         cursor: 'pointer',
+        overflow: 'visible',
       },
       styles.pill,
       !disabled && [
