@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-brgarl@microsoft.com"
+}
