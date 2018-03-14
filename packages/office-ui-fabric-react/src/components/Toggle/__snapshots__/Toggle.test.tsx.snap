@@ -59,6 +59,7 @@ exports[`Toggle renders toggle correctly 1`] = `
             height: 1em;
             line-height: 1em;
             outline: transparent;
+            overflow: visible;
             position: relative;
             transition: all 0.1s ease;
             width: 2.2em;
