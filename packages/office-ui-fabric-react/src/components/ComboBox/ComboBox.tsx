@@ -169,6 +169,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentDidMount() {
     // hook up resolving the options if needed on focus
     this._events.on(this._comboBoxWrapper, 'focus', this._onResolveOptions, true);
+
+    this._events.on(this._comboBoxWrapper, 'pointerdown', this._onPointerDown, true);
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
@@ -322,7 +324,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
             onClick={ this._onAutofillClick }
-            onTouchStart={ this._onTouchStart }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ this._getAriaAutoCompleteValue() }
@@ -1528,15 +1529,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else {
       this._onComboBoxClick();
     }
-
-    this._processingTouch = false;
   }
 
   @autobind
-  private _onTouchStart(ev: React.TouchEvent<HTMLInputElement>) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    this._processingTouch = true;
+  private _onPointerDown(ev: PointerEvent) {
+    if (ev.pointerType === 'touch') {
+      this._processingTouch = true;
+
+      this._async.setTimeout(() => {
+        this._processingTouch = false;
+      }, 500);
+    }
   }
 
   /**

@@ -94,6 +94,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _isScrollIdle: boolean;
   private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
+  private _processingTouch: boolean;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -148,6 +149,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
+    super.componentWillUnmount();
     if (this._isFocusingPreviousElement && this._previousActiveElement) {
 
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
@@ -159,9 +161,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
     }
-
-    this._events.dispose();
-    this._async.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -585,6 +584,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
+        ref={ elm =>
+          elm && this._events.on(elm, 'pointerdown', this._onPointerDown, true)
+        }
       >
         <span
           aria-hidden={ true }
@@ -670,6 +672,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ev.preventDefault();
       ev.stopPropagation();
       this.dismiss(ev);
+    }
+  }
+
+  @autobind
+  private _onPointerDown(ev: PointerEvent) {
+    if (ev.pointerType === 'touch') {
+      this._processingTouch = true;
+
+      this._async.setTimeout(() => {
+        this._processingTouch = false;
+      }, 500);
     }
   }
 
@@ -846,6 +859,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.disabled || item.isDisabled) {
       return;
     }
+    if (this._processingTouch) {
+      return this._onItemClick(item, ev);
+    }
+
     if (item.onClick) {
       item.onClick(ev, item);
     } else if (this.props.onItemClick) {

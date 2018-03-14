@@ -50,6 +50,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _descriptionId: string;
   private _ariaDescriptionId: string;
   private _classNames: IButtonClassNames;
+  private _processingTouch: boolean;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -193,11 +194,21 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this._onRenderContent(tag, buttonProps);
   }
 
+  public componentDidMount() {
+    if (this._isSplitButton && this._splitButtonContainer) {
+      this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
+    }
+  }
+
   public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
     // If Button's menu was closed, run onAfterMenuDismiss
     if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
       this.props.onAfterMenuDismiss();
     }
+  }
+
+  public componentWillUnmount() {
+    super.componentWillUnmount();
   }
 
   public focus(): void {
@@ -449,7 +460,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onKeyDown={ this._onMenuKeyDown }
         ref={ this._splitButtonContainer }
         data-is-focusable={ true }
-        onClick={ !disabled && !primaryDisabled ? onClick : undefined }
+        onClick={ !disabled && !primaryDisabled ? this._onSplitButtonClick : undefined }
       >
         <span
           style={ { 'display': 'flex' } }
@@ -501,6 +512,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
+  private _onSplitButtonClick(ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) {
+    if (!this._processingTouch && this.props.onClick) {
+      this.props.onClick(ev);
+    } else {
+      this._onMenuClick(ev);
+    }
+  }
+
+  @autobind
   private _onMouseDown(ev: React.MouseEvent<BaseButton>) {
     if (this.props.onMouseDown) {
       this.props.onMouseDown(ev);
@@ -530,7 +550,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
-  private _onMenuClick(ev: React.MouseEvent<HTMLAnchorElement>) {
+  private _onPointerDown(ev: PointerEvent) {
+    if (ev.pointerType === 'touch') {
+      this._processingTouch = true;
+
+      this._async.setTimeout(() => {
+        this._processingTouch = false;
+      }, 500);
+    }
+  }
+
+  @autobind
+  private _onMenuClick(ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);
