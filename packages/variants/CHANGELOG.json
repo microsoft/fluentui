@@ -2,6 +2,20 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.0.2",
+      "tag": "@uifabric/variants_v5.0.2",
+      "date": "Wed, 14 Mar 2018 10:28:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "20d3b5f8cadc5051a1a002d2af6e90d015aa2191",
+            "comment": "add a usage example to the readme"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.1",
       "tag": "@uifabric/variants_v5.0.1",
       "date": "Mon, 12 Mar 2018 06:29:20 GMT",

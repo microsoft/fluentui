@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 13 Mar 2018 10:17:37 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Mar 2018 10:28:26 GMT and should not be manually modified.
+
+## 5.64.1
+Wed, 14 Mar 2018 10:28:26 GMT
+
+### Patches
+
+- Theme generator: exposing to the website.
 
 ## 5.64.0
 Tue, 13 Mar 2018 10:17:37 GMT
