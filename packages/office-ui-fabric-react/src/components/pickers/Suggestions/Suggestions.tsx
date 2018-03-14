@@ -28,7 +28,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       RenderSuggestion,
       onClick,
       className,
-      onRemoveItem
+      onRemoveItem,
+      isSelectedOverride
     } = this.props;
     return (
       <div
@@ -36,7 +37,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           'ms-Suggestions-item',
           styles.suggestionsItem,
           {
-            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
+            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected || isSelectedOverride
           },
           className
         ) }
@@ -135,7 +136,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.forceResolve
+                this.state.selectedActionType === SuggestionActionType.forceResolve
               }) }
             onClick={ this._forceResolve }
           >
@@ -158,7 +159,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.searchMore
+                this.state.selectedActionType === SuggestionActionType.searchMore
               }) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults }
