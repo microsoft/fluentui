@@ -637,6 +637,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onSplitContainerItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter) {
       this._executeItemClick(item, ev);
+      ev.preventDefault();
+      ev.stopPropagation();
     } else {
       this._onItemKeyDown(item, ev);
     }
