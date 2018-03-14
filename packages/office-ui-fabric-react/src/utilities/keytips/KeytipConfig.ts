@@ -9,8 +9,9 @@ export interface IKeytipConfig {
 export interface IKeytipConfigItem {
   /**
    * Key Sequence for this keytip only
+   * If sequence is not defined it will be derived from the content string
    */
-  sequence: IKeySequence;
+  sequence?: IKeySequence;
 
   /**
    * Content for the keytip
@@ -53,9 +54,17 @@ export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap {
   return configMap;
 }
 
+/**
+ * Constructs a keytip from an IKeytipConfigItem and puts it in the configMap
+ *
+ * @param configMap - IKeytipConfigMap to store the keytip in
+ * @param parentSequence - IKeySequence of the parent keytip
+ * @param keytip - IKeytipConfigItem data
+ */
 export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: IKeySequence[], keytip: IKeytipConfigItem): void {
   // Compute full key sequence
-  const keytipSequence = addKeytipSequence(parentSequence, keytip.sequence);
+  const sequence = keytip.sequence || getKeytipSequenceFromContent(keytip.content);
+  const keytipSequence = addKeytipSequence(parentSequence, sequence);
 
   // Save props in configMap
   const keytipProps: IKeytipProps = { ...keytip.optionalProps, keySequences: keytipSequence, content: keytip.content };
@@ -67,4 +76,19 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: IKe
       constructKeytip(configMap, keytipSequence, child);
     }
   }
+}
+
+/**
+ * Gets a keytip sequence based off its content
+ * Will be all characters to localized lowercase
+ *
+ * @param keytipContent - Content for this keytip
+ * @returns {IKeySequence} - The calculated key sequence for this keytip
+ */
+export function getKeytipSequenceFromContent(keytipContent: string): IKeySequence {
+  return {
+    keys: keytipContent.split('').map((char: string): string => {
+      return char.toLocaleLowerCase();
+    })
+  } as IKeySequence;
 }

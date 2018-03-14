@@ -65,7 +65,7 @@ export interface IKeytipProps {
   keySequences: IKeySequence[];
 
   /**
-   * KeySequence of overflow set which will trigger the keytip.
+   * KeySequence of the overflow set button, set if this keytip is inside an overflow
    *
    * @type {IKeySequence}
    */

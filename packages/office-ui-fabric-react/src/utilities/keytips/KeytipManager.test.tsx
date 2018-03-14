@@ -22,6 +22,7 @@ const keytipIdB = ktpFullPrefix + 'b';
 const keytipIdC = ktpFullPrefix + 'c';
 const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
 const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+const keytipIdO = ktpFullPrefix + 'o';
 const keytipOverflowIdM = ktpFullPrefix + 'o' + ktpSeparator + 'm';
 
 describe('KeytipManager', () => {
@@ -80,6 +81,21 @@ describe('KeytipManager', () => {
       expect(ariaDescribedBy).toEqual(layerID +
         ' ' + convertSequencesToKeytipID([keySequences[0]]) +
         ' ' + convertSequencesToKeytipID(keySequences));
+    });
+
+    it('correctly omits the overflowSequence if defined', () => {
+      const keySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }, { keys: ['b'] }];
+      const overflowSequence: IKeySequence = { keys: ['c', 'b'] };
+      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences, overflowSequence);
+      expect(ariaDescribedBy).toEqual(layerID +
+        ' ' + convertSequencesToKeytipID([keySequences[0]]) +
+        ' ' + convertSequencesToKeytipID([keySequences[0], keySequences[2]]));
+
+      const keySequences2: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['b'] }];
+      const ariaDescribedBy2 = keytipManager.getAriaDescribedBy(keySequences2, overflowSequence);
+      expect(ariaDescribedBy2).toEqual(layerID +
+        ' ' + convertSequencesToKeytipID([keySequences2[0]]) +
+        ' ' + convertSequencesToKeytipID(keySequences2));
     });
   });
 
@@ -173,16 +189,6 @@ describe('KeytipManager', () => {
       // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
       expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.nodeMap[keytipIdB]);
     });
-
-    it('Processing a node with with a keytipLink should make currentKeytip its link', () => {
-      const onExecuteOM: jest.Mock = jest.fn();
-      const nodeOverflowM = keytipManager.keytipTree.nodeMap[keytipOverflowIdM];
-      nodeOverflowM.onExecute = onExecuteOM;
-      keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processInput('m');
-      // Expect overflow m node's execute func to be
-      expect(onExecuteOM).toBeCalled();
-    });
   });
 
   describe('registerKeytip', () => {
@@ -246,6 +252,19 @@ describe('KeytipManager', () => {
       expect(keytipNodeB.disabled).toEqual(true);
     });
   });
+
+  describe('persistedKeytipExecute', () => {
+    it('should call overflow`s onExecute', () => {
+      keytipManager.keytipTree = populateTreeMap(keytipManager.keytipTree, layerID);
+
+      keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
+      const overflowNode = keytipManager.keytipTree.nodeMap[keytipIdO];
+      const overflowCallback: jest.Mock = jest.fn();
+      keytipManager.keytipTree.nodeMap[keytipIdO] = { ...overflowNode, onExecute: overflowCallback };
+      keytipManager.persistedKeytipExecute([{ keys: ['o'] }], [{ keys: ['o'] }, { keys: ['m'] }]);
+      expect(overflowCallback).toBeCalled();
+    });
+  });
 });
 
 function getKeytips(keytipLayer: ReactWrapper, keytipIDs?: string[]): IKeytipProps[] {
@@ -290,7 +309,6 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
 
   // Node O
-  const keytipIdO = ktpFullPrefix + 'o';
   const keytipOverflowSeq: IKeySequence = { keys: ['o'] };
 
   // Node M
@@ -306,7 +324,6 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   const nodeO = createTreeNode(keytipIdO, rootId, [keytipOverflowIdM], keytipOverflowSeq, true);
   const nodeOM = createTreeNode(keytipOverflowIdM, keytipIdO, [], keytipSeqM);
   const nodeM = createTreeNode(keytipIdM, rootId, [], keytipSeqM);
-  nodeM.keytipLink = nodeOM;
   keytipTree.nodeMap[rootId].children.push(keytipIdB, keytipIdC, keytipIdE1, keytipIdE2, keytipIdO, keytipIdM);
   keytipTree.nodeMap[keytipIdB] = nodeB;
   keytipTree.nodeMap[keytipIdC] = nodeC;

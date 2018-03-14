@@ -2,6 +2,7 @@ import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
 import { IFocusZoneProps } from '../../FocusZone';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IOverflowSet {
   /**
@@ -46,7 +47,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * Rendering method for overflow button and contextual menu. The argument to the function is
    * the overflowItems passed in as props to this function.
   */
-  onRenderOverflowButton: IRenderFunction<any[]>;
+  onRenderOverflowButton: (items?: IOverflowSetItemProps[], keytipProps?: IKeytipProps) => JSX.Element;
 
   /**
    * Custom properties for OverflowSet's FocusZone.
@@ -58,6 +59,11 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * @default 'menubar'
    */
   role?: string;
+
+  /**
+   * Optional keytip for the overflow button
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface IOverflowSetItemProps {
@@ -65,6 +71,11 @@ export interface IOverflowSetItemProps {
    * Unique id to identify the item
    */
   key: string;
+
+  /**
+   * Optional keytip for the overflowSetItem
+   */
+  keytipProps?: IKeytipProps;
 
   /**
    * Any additional properties to use when custom rendering menu items.

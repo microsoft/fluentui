@@ -5,7 +5,10 @@ import {
   IKeySequence,
   convertSequencesToKeytipID,
   transitionKeysContain,
-  IKeytipTransitionKey
+  IKeytipTransitionKey,
+  keySequencesAreEqual,
+  fullKeySequencesAreEqual,
+  getDocument
 } from '../../Utilities';
 import { constructKeytipTargetFromId } from './KeytipUtils';
 
@@ -19,6 +22,7 @@ export class KeytipManager {
   private _enableSequences: IKeytipTransitionKey[];
   private _exitSequences: IKeytipTransitionKey[];
   private _returnSequences: IKeytipTransitionKey[];
+  private _newCurrentKeytipSequences?: IKeySequence[];
 
   /**
    * Static function to get singleton KeytipManager instance
@@ -52,11 +56,18 @@ export class KeytipManager {
    * @param keySequences - Full path of IKeySequences for one keytip
    * @returns {string} String to use for the aria-describedby property for the element with this Keytip
    */
-  public getAriaDescribedBy(keySequences: IKeySequence[]): string {
+  public getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequence?: IKeySequence): string {
     const describedby = this._layer.props.id;
     if (!keySequences.length) {
       // Return just the layer ID
       return describedby;
+    }
+
+    // Remove overflowSetSequence if in keySequences
+    if (overflowSetSequence) {
+      keySequences = keySequences.filter((keySequence: IKeySequence) => {
+        return !keySequencesAreEqual(keySequence, overflowSetSequence);
+      });
     }
 
     return keySequences.reduce((prevValue: string, keySequence: IKeySequence, currentIndex: number): string => {
@@ -82,14 +93,36 @@ export class KeytipManager {
     this._layer.registerKeytip(keytipProps);
     this.keytipTree.addNode(keytipProps);
 
+    if (this._newCurrentKeytipSequences && fullKeySequencesAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
+      // This keytip should become the currentKeytip and should execute right away
+      this.keytipTree.currentKeytip = this.keytipTree.nodeMap[convertSequencesToKeytipID(keytipProps.keySequences)];
+      if (this.keytipTree.currentKeytip.onExecute) {
+        this.keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
+      }
+
+      // Show all children keytips
+      this.hideKeytips();
+      this.showKeytips(this.keytipTree.currentKeytip.children);
+
+      this._newCurrentKeytipSequences = undefined;
+    }
+
     // Construct aria-describedby and data-ktp-id attributes and return
-    const ariaDescribedBy = this.getAriaDescribedBy(keytipProps.keySequences);
+    const ariaDescribedBy = this.getAriaDescribedBy(keytipProps.keySequences, keytipProps.overflowSetSequence);
     const ktpId = convertSequencesToKeytipID(keytipProps.keySequences);
 
     return {
       'aria-describedby': ariaDescribedBy,
       'data-ktp-id': ktpId
     };
+  }
+
+  /**
+   * Register a persisted keytip
+   * This means just adding a KeytipTreeNode
+   */
+  public registerPersistedKeytip(keytipProps: IKeytipProps): void {
+    this.keytipTree.addNode(keytipProps);
   }
 
   /**
@@ -100,6 +133,14 @@ export class KeytipManager {
   public unregisterKeytip(keytipToRemove: IKeytipProps): void {
     this._layer.unregisterKeytip(keytipToRemove);
     this.keytipTree.removeNode(keytipToRemove.keySequences);
+  }
+
+  /**
+   * Unegister a persisted keytip
+   * This means just removing it from the KeytipTree
+   */
+  public unregisterPersistedKeytip(keySequences: IKeySequence[]): void {
+    this.keytipTree.removeNode(keySequences);
   }
 
   /**
@@ -138,6 +179,25 @@ export class KeytipManager {
   }
 
   /**
+   * Callback function to use for persisted keytips
+   *
+   * @param overflowButtonSequences - The overflow button sequence to execute
+   * @param keytipSequences - The keytip that should become the 'currentKeytip' when it is registered
+   */
+  public persistedKeytipExecute(overflowButtonSequences: IKeySequence[], keytipSequences: IKeySequence[]) {
+    // Save newCurrentKeytip for later
+    this._newCurrentKeytipSequences = keytipSequences;
+
+    // Execute the overflow button's onExecute
+    const overflowKeytipNode = this.keytipTree.nodeMap[convertSequencesToKeytipID(overflowButtonSequences)];
+    if (overflowKeytipNode) {
+      if (overflowKeytipNode.onExecute) {
+        overflowKeytipNode.onExecute(this._getKeytipDOMElement(overflowKeytipNode.id));
+      }
+    }
+  }
+
+  /**
    * Processes an IKeytipTransitionKey entered by the user
    *
    * @param transitionKey - IKeytipTransitionKey received by the layer to process
@@ -155,8 +215,7 @@ export class KeytipManager {
         } else {
           // If this keytip has a onReturn prop, we execute the func.
           if (this.keytipTree.currentKeytip.onReturn) {
-            const domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
-            this.keytipTree.currentKeytip.onReturn(domEl);
+            this.keytipTree.currentKeytip.onReturn(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
           }
 
           // Clean currentSequence array
@@ -193,13 +252,11 @@ export class KeytipManager {
     if (this.keytipTree.currentKeytip) {
       const node = this.keytipTree.getExactMatchedNode(currentSequence, this.keytipTree.currentKeytip);
       if (node) {
-        // If this is a persisted keytip, then we use its keytipLink
-        this.keytipTree.currentKeytip = node.keytipLink ? node.keytipLink : node;
+        this.keytipTree.currentKeytip = node;
 
         // Execute this node's onExecute if defined
         if (this.keytipTree.currentKeytip.onExecute) {
-          const domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
-          this.keytipTree.currentKeytip.onExecute(domEl);
+          this.keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
         }
 
         // To exit keytipMode after executing keytip we should check if currentKeytip has no children and
@@ -260,6 +317,6 @@ export class KeytipManager {
    */
   private _getKeytipDOMElement(keytipId: string): HTMLElement {
     const dataKeytipId = constructKeytipTargetFromId(keytipId);
-    return document.querySelector(dataKeytipId) as HTMLElement;
+    return getDocument()!.querySelector(dataKeytipId) as HTMLElement;
   }
 }

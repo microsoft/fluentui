@@ -224,97 +224,6 @@ describe('KeytipTree', () => {
       expect(keytipTree.root.children).toContain(keytipIdC);
       expect(keytipTree.root.children).toContain(keytipIdE);
     });
-
-    it('add a node with overflowsetSequence when overflow node already has been created', () => {
-      const rootId = 'a';
-      const keytipTree = new KeytipTree(rootId);
-      /**
-       *   Tree should end up looking like: Where O is overflow menu and d is inside
-       *
-       *              a
-       *          /   |
-       *          o  d
-       *          |
-       *          d
-       *
-       */
-
-      const keytipIdO = ktpFullPrefix + 'o';
-      const overflowSequence: IKeySequence = { keys: ['o'] };
-      keytipTree.addNode({ keySequences: [overflowSequence], content: '' });
-
-      const keytipPersistedIdD = ktpFullPrefix + 'd';
-      const keytipOverflowIdD = ktpFullPrefix + 'o' + ktpSeparator + 'd';
-      const keytipSequenceD: IKeySequence[] = [{ keys: ['d'] }];
-      const keytipProps = createKeytipProps(keytipSequenceD, overflowSequence);
-
-      // Add d node with an overflow sequence
-      keytipTree.addNode(keytipProps);
-
-      // Root should have overflow keytip node and persisted keytip node.
-      expect(keytipTree.root.children).toHaveLength(2);
-
-      // Test nodes are in the node map
-      const keytipOverflowNode = keytipTree.nodeMap[keytipIdO];
-      expect(keytipOverflowNode).toBeDefined();
-      const keytipPersistedD = keytipTree.nodeMap[keytipPersistedIdD];
-      expect(keytipPersistedD).toBeDefined();
-      const keytipOverflowD = keytipTree.nodeMap[keytipOverflowIdD];
-      expect(keytipOverflowD).toBeDefined();
-
-      // Test hierarchy
-      expect(keytipOverflowNode.parent).toEqual(rootId);
-      expect(keytipPersistedD.parent).toEqual(rootId);
-      expect(keytipOverflowD.parent).toEqual(keytipIdO);
-
-      // Persisted keytip keytip link should be the node in the overflow
-      expect(keytipPersistedD.keytipLink).toEqual(keytipOverflowD);
-    });
-
-    it('add a node with overflowsetSequence when overflow node has not been created', () => {
-      const rootId = 'a';
-      const keytipTree = new KeytipTree(rootId);
-      /**
-       *   Tree should end up looking like: Where O is overflow menu and d is inside
-       *
-       *              a
-       *          /   |
-       *          o  d
-       *          |
-       *          d
-       *
-       */
-
-      const keytipIdO = ktpFullPrefix + 'o';
-      const overflowSequence: IKeySequence = { keys: ['o'] };
-
-      const keytipPersistedIdD = ktpFullPrefix + 'd';
-      const keytipOverflowIdD = ktpFullPrefix + 'o' + ktpSeparator + 'd';
-      const keytipSequenceD: IKeySequence[] = [{ keys: ['d'] }];
-      const keytipProps = createKeytipProps(keytipSequenceD, overflowSequence);
-
-      // Add d node with an overflow sequence
-      keytipTree.addNode(keytipProps);
-
-      // Root should have overflow keytip node and persisted keytip node.
-      expect(keytipTree.root.children).toHaveLength(2);
-
-      // Test nodes are in the node map
-      const keytipOverflowNode = keytipTree.nodeMap[keytipIdO];
-      expect(keytipOverflowNode).toBeDefined();
-      const keytipPersistedD = keytipTree.nodeMap[keytipPersistedIdD];
-      expect(keytipPersistedD).toBeDefined();
-      const keytipOverflowD = keytipTree.nodeMap[keytipOverflowIdD];
-      expect(keytipOverflowD).toBeDefined();
-
-      // Test hierarchy
-      expect(keytipOverflowNode.parent).toEqual(rootId);
-      expect(keytipPersistedD.parent).toEqual(rootId);
-      expect(keytipOverflowD.parent).toEqual(keytipIdO);
-
-      // Persisted keytip keytip link should be the node in the overflow
-      expect(keytipPersistedD.keytipLink).toEqual(keytipOverflowD);
-    });
   });
 
   describe('removeNode', () => {
@@ -395,36 +304,6 @@ describe('KeytipTree', () => {
 
       // Verify that root has no children
       expect(keytipTree.root.children).toHaveLength(0);
-    });
-
-    it('Removing persisted keytip also removes overflow link node', () => {
-      const rootId = 'a';
-      const keytipTree = new KeytipTree(rootId);
-      /**
-       *   Tree should end up looking like: Where O is overflow menu and d is inside
-       *
-       *              a
-       *          /   |
-       *          o  d
-       *          |
-       *          d
-       *
-       */
-
-      const keytipIdO = ktpFullPrefix + 'o';
-      const overflowSequence: IKeySequence = { keys: ['o'] };
-      keytipTree.addNode({ keySequences: [overflowSequence], content: '' });
-
-      const keytipSequenceD: IKeySequence[] = [{ keys: ['d'] }];
-      const keytipProps = createKeytipProps(keytipSequenceD, overflowSequence);
-
-      // Add d node with an overflow sequence
-      keytipTree.addNode(keytipProps);
-
-      keytipTree.removeNode(keytipSequenceD);
-      expect(keytipTree.nodeMap[rootId].children).toHaveLength(1);
-      // Removing persisted d, should also remove o's children.
-      expect(keytipTree.nodeMap[keytipIdO].children).toHaveLength(0);
     });
   });
 
@@ -638,10 +517,9 @@ describe('KeytipTree', () => {
   });
 });
 
-function createKeytipProps(keySequences: IKeySequence[], overflowSequence?: IKeySequence): IKeytipProps {
+function createKeytipProps(keySequences: IKeySequence[]): IKeytipProps {
   return {
     keySequences,
-    overflowSetSequence: overflowSequence,
     // Just add empty content since it's required, but not needed for tests
     content: ''
   };

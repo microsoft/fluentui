@@ -1,5 +1,5 @@
-import { buildKeytipConfigMap, IKeytipConfig } from './KeytipConfig';
-import { fullKeySequencesAreEqual, IKeySequence } from '../../Utilities';
+import { buildKeytipConfigMap, IKeytipConfig, getKeytipSequenceFromContent } from './KeytipConfig';
+import { fullKeySequencesAreEqual, IKeySequence, keySequencesAreEqual } from '../../Utilities';
 
 describe('KeytipConfig', () => {
   it('buildKeytipConfigMap test', () => {
@@ -118,5 +118,39 @@ describe('KeytipConfig', () => {
     const keytip8 = keytipConfigMap.keytip8;
     expect(fullKeySequencesAreEqual(keytip8.keySequences, keytip8Seq)).toEqual(true);
     expect(keytip8.content).toEqual('R');
+  });
+
+  it('getKeytipSequenceFromContent tests', () => {
+    const keytipContent1 = 'A';
+    const computedSequence1 = getKeytipSequenceFromContent(keytipContent1);
+    const keytipSeq1: IKeySequence = { keys: ['a'] };
+    expect(keySequencesAreEqual(computedSequence1, keytipSeq1)).toEqual(true);
+
+    const keytipContent2 = 'A1';
+    const computedSequence2 = getKeytipSequenceFromContent(keytipContent2);
+    const keytipSeq2: IKeySequence = { keys: ['a', '1'] };
+    expect(keySequencesAreEqual(computedSequence2, keytipSeq2)).toEqual(true);
+
+    const keytipContent3 = 'A1G';
+    const computedSequence3 = getKeytipSequenceFromContent(keytipContent3);
+    const keytipSeq3: IKeySequence = { keys: ['a', '1', 'g'] };
+    expect(keySequencesAreEqual(computedSequence3, keytipSeq3)).toEqual(true);
+
+    // Test other languages
+    const keytipContent4 = 'ÑÉ';
+    const computedSequence4 = getKeytipSequenceFromContent(keytipContent4);
+    const keytipSeq4: IKeySequence = { keys: ['ñ', 'é'] };
+    expect(keySequencesAreEqual(computedSequence4, keytipSeq4)).toEqual(true);
+
+    const keytipContent5 = 'ПИ';
+    const computedSequence5 = getKeytipSequenceFromContent(keytipContent5);
+    const keytipSeq5: IKeySequence = { keys: ['п', 'и'] };
+    expect(keySequencesAreEqual(computedSequence5, keytipSeq5)).toEqual(true);
+
+    // Test lowercase content
+    const keytipContent6 = 'a';
+    const computedSequence6 = getKeytipSequenceFromContent(keytipContent6);
+    const keytipSeq6: IKeySequence = { keys: ['a'] };
+    expect(keySequencesAreEqual(computedSequence6, keytipSeq6)).toEqual(true);
   });
 });
