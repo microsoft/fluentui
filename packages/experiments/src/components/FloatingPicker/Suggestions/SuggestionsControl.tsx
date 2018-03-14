@@ -14,7 +14,7 @@ import {
   ISuggestionsHeaderFooterProps
 } from './Suggestions.types';
 import { Suggestions } from './Suggestions';
-import * as stylesImport from './Suggestions.scss';
+import * as stylesImport from './SuggestionsControl.scss';
 
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
@@ -201,7 +201,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         this.selectPreviousItem(SuggestionItemType.footer);
         isKeyDownHandled = true;
       }
-    } else if (keyCode === KeyCodes.enter) {
+    } else if (keyCode === KeyCodes.enter
+      || keyCode === KeyCodes.tab) {
       if (this.hasSelection()) {
         this.executeSelectedAction();
         isKeyDownHandled = true;
@@ -256,8 +257,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     let { selectedFooterIndex } = this.state;
     return footerItemsProps ? (
       <div
-        className={ css('ms-Suggestions-headerContainer', styles.suggestionsContainer) }
-        id='suggestionHeader-list'
+        className={ css('ms-Suggestions-footerContainer', styles.suggestionsContainer) }
+        id='suggestionFooter-list'
         role='list'
         aria-label={ suggestionsFooterContainerAriaLabel }
       >
@@ -299,7 +300,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected selectNextItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void {
     // If the recursive calling has not found a selectable item in the other suggestion item type groups
     // And the method is being called again with the original item type,
-    // Select the first selectable item of this suggestion item type group (could be itself)
+    // Select the first selectable item of this suggestion item type group (could be the currently selected item)
     if (itemType === originalItemType) {
       this._selectNextItemOfItemType(itemType);
       return;
@@ -326,7 +327,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void {
     // If the recursive calling has not found a selectable item in the other suggestion item type groups
     // And the method is being called again with the original item type,
-    // Select the last selectable item of this suggestion item type group (could be itself)
+    // Select the last selectable item of this suggestion item type group (could be the currently selected item)
     if (itemType === originalItemType) {
       this._selectPreviousItemOfItemType(itemType);
       return;

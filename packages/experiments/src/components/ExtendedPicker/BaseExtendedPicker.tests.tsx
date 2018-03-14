@@ -7,8 +7,7 @@ import * as renderer from 'react-test-renderer';
 
 import { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
 import { BaseExtendedPicker } from './BaseExtendedPicker';
-import { SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../FloatingPicker';
+import { IBaseFloatingPickerProps, BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker';
 import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../SelectedItemsList';
 import { KeyCodes } from '../../Utilities';
 
@@ -57,7 +56,7 @@ const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple
 const floatingPickerProps = {
   onResolveSuggestions: onResolveSuggestions,
   onRenderSuggestionsItem: basicSuggestionRenderer,
-  suggestionsController: new SuggestionsController<ISimple>()
+  suggestionsStore: new SuggestionsStore<ISimple>()
 };
 
 const selectedItemsListProps: IBaseSelectedItemsListProps<ISimple> = {
