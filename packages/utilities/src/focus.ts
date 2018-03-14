@@ -77,7 +77,7 @@ export function getPreviousElement(
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean,
-  tabbable?: boolean): HTMLElement | null {
+  elementShouldBeTabbable?: boolean): HTMLElement | null {
 
   if (!currentElement ||
     (!allowFocusRoot && currentElement === rootElement)) {
@@ -97,32 +97,57 @@ export function getPreviousElement(
       true,
       includeElementsInFocusZones,
       allowFocusRoot,
-      tabbable);
+      elementShouldBeTabbable);
 
     if (childMatch) {
-      if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
+      if ((elementShouldBeTabbable && isElementTabbable(childMatch, true)) || !elementShouldBeTabbable) {
         return childMatch;
-      } else {
-        // Check previous sibling of the child match.
-        const childMatchSiblingMatch = getPreviousElement(
+      }
+
+      const childMatchSiblingMatch = getPreviousElement(
+        rootElement,
+        childMatch.previousElementSibling as HTMLElement,
+        true,
+        true,
+        true,
+        includeElementsInFocusZones,
+        allowFocusRoot,
+        elementShouldBeTabbable
+      );
+      if (childMatchSiblingMatch) {
+        return childMatchSiblingMatch;
+      }
+
+      let childMatchParent = childMatch.parentElement;
+
+      // At this point if we have not found any potential matches
+      // start looking at the rest of the subtree under the currentParent.
+      // NOTE: We do not want to recurse here because doing so could
+      // cause elements to get skipped.
+      while (childMatchParent && childMatchParent !== currentElement) {
+        const childMatchParentMatch = getPreviousElement(
           rootElement,
-          childMatch.previousElementSibling as HTMLElement,
+          childMatchParent.previousElementSibling as HTMLElement,
           true,
           true,
           true,
           includeElementsInFocusZones,
           allowFocusRoot,
-          tabbable
+          elementShouldBeTabbable
         );
-        if (childMatchSiblingMatch) {
-          return childMatchSiblingMatch;
+
+        if (childMatchParentMatch) {
+          return childMatchParentMatch;
         }
+
+        childMatchParent = childMatchParent.parentElement;
       }
     }
   }
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
+  if (checkNode && isCurrentElementVisible &&
+    ((elementShouldBeTabbable && isElementTabbable(currentElement, true)) || !elementShouldBeTabbable)) {
     return currentElement;
   }
 
@@ -135,7 +160,7 @@ export function getPreviousElement(
     true,
     includeElementsInFocusZones,
     allowFocusRoot,
-    tabbable);
+    elementShouldBeTabbable);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -144,7 +169,7 @@ export function getPreviousElement(
   // Check its parent.
   if (!suppressParentTraversal) {
     return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones,
-      allowFocusRoot, tabbable);
+      allowFocusRoot, elementShouldBeTabbable);
   }
 
   return null;

@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.25.0",
+      "tag": "@uifabric/experiments_v5.25.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "8fefccb51072642d80de8370c550a3c49d49e45a",
+            "comment": "Adds a new Shimmer Component to experiments package."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.62.1 <6.0.0` to `>=5.63.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.24.1",
       "tag": "@uifabric/experiments_v5.24.1",
       "date": "Thu, 08 Mar 2018 11:27:23 GMT",

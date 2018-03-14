@@ -1,6 +1,39 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 08 Mar 2018 11:27:24 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Mar 2018 10:17:37 GMT and should not be manually modified.
+
+## 5.18.1
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Patches
+
+- Customizable: Fix hoist/customizations import so it doesn't break amd
+
+## 5.18.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator
+
+### Patches
+
+- Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus.
+- Styled: Add display name to styled wrapper
+
+## 5.17.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)
+
+## 5.17.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Add hoistStatics function to withResponsiveMode decorator.
 
 ## 5.16.0
 Thu, 08 Mar 2018 11:27:24 GMT

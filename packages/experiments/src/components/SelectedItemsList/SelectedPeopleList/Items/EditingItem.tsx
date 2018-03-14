@@ -9,8 +9,7 @@ import {
   getNativeProps,
   inputProperties,
   css,
-  createRef,
-  RefObject
+  createRef
 } from '../../../../Utilities';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
@@ -33,7 +32,7 @@ export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProp
 
 export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
-  private _editingFloatingPicker: RefObject<FloatingPeoplePicker> = createRef<FloatingPeoplePicker>();
+  private _editingFloatingPicker = createRef<FloatingPeoplePicker>();
   private _onRenderFloatingPicker: (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
   private _floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
 

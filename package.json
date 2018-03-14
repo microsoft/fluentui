@@ -28,6 +28,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "4.1.0"
+    "@microsoft/rush": "4.3.0"
   }
 }

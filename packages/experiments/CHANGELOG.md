@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 08 Mar 2018 11:27:23 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+
+## 5.25.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- Adds a new Shimmer Component to experiments package.
 
 ## 5.24.1
 Thu, 08 Mar 2018 11:27:23 GMT

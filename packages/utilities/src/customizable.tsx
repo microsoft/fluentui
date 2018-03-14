@@ -1,6 +1,11 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { Customizations } from './Customizations';
+import {
+  Customizations,
+} from './Customizations';
+import {
+  hoistStatics
+} from './hoistStatics';
 
 export function customizable(
   scope: string,
@@ -55,15 +60,4 @@ export function customizable(
 
     return hoistStatics(ComposedComponent, resultClass);
   };
-}
-
-function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest {
-  for (const name in source) {
-    if (source.hasOwnProperty(name)) {
-      // tslint:disable-next-line:no-any
-      (dest as any)[name] = source[name];
-    }
-  }
-
-  return dest;
 }

@@ -1,6 +1,62 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Mar 2018 11:27:24 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Mar 2018 10:28:26 GMT and should not be manually modified.
+
+## 5.64.1
+Wed, 14 Mar 2018 10:28:26 GMT
+
+### Patches
+
+- Theme generator: exposing to the website.
+
+## 5.64.0
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Minor changes
+
+- Added an is-open class to the DatePicker root element to indicate when the datepicker is being shown based on the IDatePickerState.isDatePickerShown state property.
+- Added documentation for components that allow native props
+
+### Patches
+
+- Pickers: Fix aria bug where activedescendant would be sug--1
+
+## 5.63.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- Add rel option for Contextual Menu Items
+- ComoboBox and SpinButton: Removing excess margins and padding to make them consistent with TextField.
+- Facepile: Added `overflowPersonas` option to better control what personas go into the overflow personas vs show up as a persona coin. Also adjusted Facepile back to showing a Persona control if there is only one persona to be shown with no overflow.
+- importing hoistStatics from Utilities for withResponsiveMode decorator
+- Add ability to get and set scroll position on ScrollablePane
+- DetailsList: IColumn `onColumnClick` callback args marked non-optional.
+
+### Patches
+
+- Updating a test to ensure that focus is trapped in a FocusTrapZone when it has a FocusZone as the last element
+- [TextField] onChange fix for IE when using multiline with placeholder
+- Run onCellFocused before unmount and before select color
+
+## 5.62.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Add unit test to catch focus regression being fixed by this PR
+
+## 5.62.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Allow DetailsRow to have a custom renderer
+- Dialog: convert to mergeStyles part 2.
+
+### Patches
+
+- Fixes #3985 by removing HC style override on ms-Link buttons.
 
 ## 5.61.0
 Thu, 08 Mar 2018 11:27:24 GMT
