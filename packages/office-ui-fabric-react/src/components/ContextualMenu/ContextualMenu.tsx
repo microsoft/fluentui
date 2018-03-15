@@ -478,11 +478,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
     }
 
-    let { subMenuId } = this.state;
-    if (item.subMenuProps && item.subMenuProps.id) {
-      subMenuId = item.subMenuProps.id;
-    }
-
+    const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
 
     return (
@@ -528,11 +524,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const { expandedMenuItemKey } = this.state;
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
-    let { subMenuId } = this.state;
-    if (item.subMenuProps && item.subMenuProps.id) {
-      subMenuId = item.subMenuProps.id;
-    }
-
+    const subMenuId = this._getSubMenuId(item);
     let ariaLabel = '';
 
     if (item.ariaLabel) {
@@ -986,5 +978,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _isItemDisabled(item: IContextualMenuItem): boolean {
     return !!(item.isDisabled || item.disabled);
+  }
+
+  private _getSubMenuId(item: IContextualMenuItem): string | undefined {
+    let { subMenuId } = this.state;
+
+    if (item.subMenuProps && item.subMenuProps.id) {
+      subMenuId = item.subMenuProps.id;
+    }
+
+    return subMenuId;
   }
 }
