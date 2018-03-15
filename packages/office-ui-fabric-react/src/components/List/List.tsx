@@ -11,7 +11,13 @@ import {
   IRenderFunction,
   autobind
 } from '../../Utilities';
-import { IList, IListProps, IPage, IPageProps } from './List.types';
+import {
+  IList,
+  IListProps,
+  IPage,
+  IPageProps,
+  ScrollToMode
+} from './List.types';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -186,7 +192,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * @param index Index of item to scroll to
    * @param measureItem Optional callback to measure the height of an individual item
    */
-  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
     const startIndex = this.props.startIndex as number;
     const renderCount = this._getRenderCount();
     const endIndex = startIndex + renderCount;
@@ -207,12 +213,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in just
         // the given item, otherwise we'll only bring the page into view
         if (measureItem) {
-          // Adjust for actual item position within page
-          const itemPositionWithinPage = index - itemIndex;
-          for (let itemIndexInPage = 0; itemIndexInPage < itemPositionWithinPage; ++itemIndexInPage) {
-            scrollTop += measureItem(itemIndex + itemIndexInPage);
-          }
-          const scrollBottom = scrollTop + measureItem(index);
 
           const scrollRect = _measureScrollRect(this._scrollElement);
           const scrollWindow = {
@@ -220,9 +220,16 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
             bottom: this._scrollElement.scrollTop + scrollRect.height
           };
 
+          // Adjust for actual item position within page
+          const itemPositionWithinPage = index - itemIndex;
+          for (let itemIndexInPage = 0; itemIndexInPage < itemPositionWithinPage; ++itemIndexInPage) {
+            scrollTop += measureItem(itemIndex + itemIndexInPage);
+          }
+          const scrollBottom = scrollTop + measureItem(index);
+
           const itemIsFullyVisible = scrollTop >= scrollWindow.top && scrollBottom <= scrollWindow.bottom;
-          if (itemIsFullyVisible) {
-            // Item is already visible, do nothing.
+          // Item is already visible and scrollMode is auto, do nothing and return
+          if (itemIsFullyVisible && scrollToMode === ScrollToMode.auto) {
             return;
           }
 
@@ -230,27 +237,41 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           const itemIsPartiallyBelow = scrollBottom > scrollWindow.bottom;
 
           if (itemIsPartiallyAbove) {
-            // We will just scroll to 'scrollTop'
-            //  ______
-            // |Item  |   - scrollTop
-            // |  ____|_
-            // |_|____| | - scrollWindow.top
-            //   |      |
-            //   |______|
+            /**
+             * We will just scroll to 'scrollTop'
+             * .------.   - scrollTop
+             * |Item  |
+             * | .----|-. - scrollWindow.top
+             * '------' |
+             *   |      |
+             *   '------'
+             */
           } else if (itemIsPartiallyBelow) {
-            // Adjust scrollTop position to just bring in the element
-            //  ______   - scrollTop
-            // |      |
-            // |  ____|_  - scrollWindow.bottom
-            // |_|____| |
-            //   | Item |
-            //   |______| - scrollBottom
-            scrollTop = this._scrollElement.scrollTop + (scrollBottom - scrollWindow.bottom);
+            /**
+             *  Adjust scrollTop position to just bring in the element
+             * .------.  - scrollTop
+             * |      |
+             * | .------.
+             * '-|----' | - scrollWindow.bottom
+             *   | Item |
+             *   '------' - scrollBottom
+             * If scrollToMode is top, we always want to scroll
+             * the element to the top of the window
+             */
+            if (scrollToMode !== ScrollToMode.top) {
+              scrollTop = scrollBottom - scrollRect.height;
+            }
+          }
+
+          // if scrollToMode is bottom, we want to put the item on the bottom of the scrollWindow
+          if (scrollToMode === ScrollToMode.bottom) {
+            this._scrollElement.scrollTop = scrollBottom - scrollRect.height;
+            return;
           }
         }
 
         this._scrollElement.scrollTop = scrollTop;
-        break;
+        return;
       }
 
       scrollTop += pageHeight;
@@ -469,7 +490,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     return (
       <div { ...divProps }>
         { cells }
-      </div>
+      </div >
     );
   }
 
