@@ -795,6 +795,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+    //SAYALITODO
     // If a tab was used, we want to focus on the next element.
     if (!this._processingTabKey &&
       element &&
