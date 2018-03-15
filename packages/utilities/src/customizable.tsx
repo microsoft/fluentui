@@ -1,6 +1,11 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { Customizations } from './Customizations';
+import {
+  Customizations,
+} from './Customizations';
+import {
+  hoistStatics
+} from './hoistStatics';
 
 export function customizable(
   scope: string,
@@ -14,14 +19,14 @@ export function customizable(
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
     // tslint:disable-next-line:no-any
   ): any {
-    return class ComponentWithInjectedProps extends React.Component<P, {}> {
+    const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
       public static contextTypes: {
         customizations: PropTypes.Requireable<{}>;
       } = {
-        customizations: PropTypes.object
-      };
+          customizations: PropTypes.object
+        };
 
       // tslint:disable-next-line:no-any
       constructor(props: P, context: any) {
@@ -52,5 +57,7 @@ export function customizable(
       }
 
     };
+
+    return hoistStatics(ComposedComponent, resultClass);
   };
 }

@@ -119,9 +119,6 @@ exports[`Link renders Link with no href as a button 1`] = `
         top: 1px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){& {
-        color: Highlight;
-      }
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
@@ -212,9 +209,6 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         right: 1px;
         top: 1px;
         z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        color: Highlight;
       }
       &:link, &:visited {
         pointer-events: none;

@@ -1,6 +1,35 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 05 Mar 2018 11:16:58 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+
+## 5.25.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- Adds a new Shimmer Component to experiments package.
+
+## 5.24.1
+Thu, 08 Mar 2018 11:27:23 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+
+## 5.24.0
+Wed, 07 Mar 2018 11:16:50 GMT
+
+### Minor changes
+
+- add clearInput on BaseExtendedPicker
+
+## 5.23.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+- Replaced PureComponent with Component to appease website's UHF react version.
 
 ## 5.23.0
 Mon, 05 Mar 2018 11:16:58 GMT
