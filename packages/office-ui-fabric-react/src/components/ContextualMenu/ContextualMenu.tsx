@@ -470,12 +470,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+    const { expandedMenuItemKey } = this.state;
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
     let anchorRel = item.rel;
     if (item.target && item.target.toLowerCase() === '_blank') {
       anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
     }
+
+    const subMenuId = this._getSubMenuId(item);
+    const itemHasSubmenu = hasSubmenu(item);
 
     return (
       <div>
@@ -486,11 +490,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           rel={ anchorRel }
           className={ classNames.root }
           role='menuitem'
+          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
+          aria-haspopup={ itemHasSubmenu || null }
+          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
           aria-posinset={ focusableElementIndex + 1 }
           aria-setsize={ totalItemCount }
           aria-disabled={ this._isItemDisabled(item) }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
+          onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+          onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+          onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
         >
           <ChildrenRenderer
             item={ item }
@@ -514,11 +524,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const { expandedMenuItemKey } = this.state;
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
-    let { subMenuId } = this.state;
-    if (item.subMenuProps && item.subMenuProps.id) {
-      subMenuId = item.subMenuProps.id;
-    }
-
+    const subMenuId = this._getSubMenuId(item);
     let ariaLabel = '';
 
     if (item.ariaLabel) {
@@ -791,6 +797,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _updateFocusOnMouseEvent(item: any, ev: React.MouseEvent<HTMLElement>) {
     const targetElement = ev.currentTarget as HTMLElement;
+    const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
 
     if (item.key === this.state.expandedMenuItemKey) {
       return;
@@ -812,12 +819,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
         this._onItemSubMenuExpand(item, targetElement);
-      }, this._navigationIdleDelay);
+      }, timeoutDuration);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
         targetElement.focus();
-      }, this._navigationIdleDelay);
+      }, timeoutDuration);
     }
   }
 
@@ -853,13 +860,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.disabled || item.isDisabled) {
       return;
     }
+    let dismiss = false;
     if (item.onClick) {
-      item.onClick(ev, item);
+      dismiss = !!item.onClick(ev, item);
     } else if (this.props.onItemClick) {
-      this.props.onItemClick(ev, item);
+      dismiss = !!this.props.onItemClick(ev, item);
     }
 
-    !ev.defaultPrevented && this.dismiss(ev, true);
+    (dismiss || !ev.defaultPrevented) && this.dismiss(ev, true);
   }
 
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {
@@ -970,5 +978,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _isItemDisabled(item: IContextualMenuItem): boolean {
     return !!(item.isDisabled || item.disabled);
+  }
+
+  private _getSubMenuId(item: IContextualMenuItem): string | undefined {
+    let { subMenuId } = this.state;
+
+    if (item.subMenuProps && item.subMenuProps.id) {
+      subMenuId = item.subMenuProps.id;
+    }
+
+    return subMenuId;
   }
 }
