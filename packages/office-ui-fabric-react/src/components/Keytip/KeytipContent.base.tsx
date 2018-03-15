@@ -18,8 +18,7 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
       getStyles,
       theme,
       disabled,
-      keySequences,
-      visible
+      keySequences
     } = this.props;
 
     const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
@@ -27,14 +26,13 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
       getStyles!,
       {
         theme: theme!,
-        disabled,
-        visible
+        disabled
       }
     );
 
     return (
       <div className={ classNames.container } >
-        <span id={ convertSequencesToKeytipID(keySequences) } className={ classNames.root }>{ content }</span>
+        <span className={ classNames.root }>{ content }</span>
       </div >
     );
   }

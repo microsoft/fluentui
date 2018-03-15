@@ -1,70 +1,60 @@
 import * as React from 'react';
-import { BaseComponent, IPoint, getDocument } from '../../Utilities';
-import { Callout, CalloutTargetFunction } from '../../Callout';
-import { DirectionalHint } from '../../ContextualMenu';
+import { BaseComponent, IKeySequence, convertSequencesToKeytipID } from '../../Utilities';
 import { IKeytip, IKeytipProps } from './Keytip.types';
-import { KeytipContent } from './KeytipContent';
-import { getCalloutStyles } from './Keytip.styles';
-import { constructKeytipTargetFromSequences } from '../../utilities/keytips';
+import { KeytipManager, constructAriaDescribedByString } from '../../utilities/keytips';
 
 /**
- * A callout corresponding to another Fabric component to describe a key sequence that will activate that component
+ * A small element to help the target element correctly read out its aria-describedby for its Keytip
  *
  * @export
  * @class Keytip
  * @extends {BaseComponent<IKeytipProps, {}}>}
  */
-export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
+export class Keytip extends BaseComponent<IKeytipProps, {}> {
+  private _keytipManager: KeytipManager = KeytipManager.getInstance();
 
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipProps, context: any) {
     super(props, context);
   }
 
+  public componentDidMount() {
+    // Register Keytip in KeytipManager
+    this._keytipManager.registerKeytip(this._createKeytipProps());
+  }
+
+  public componentWillUnmount() {
+    // Unregister Keytip in KeytipManager
+    this._keytipManager.unregisterKeytip(this._createKeytipProps());
+  }
+
+  public componentDidUpdate() {
+    // Update Keytip in KeytipManager
+    this._keytipManager.updateKeytip(this._createKeytipProps());
+  }
+
   public render(): JSX.Element {
-    const {
-      keySequences,
-      offset
-    } = this.props;
-    let {
-      calloutProps
-    } = this.props;
-
-    const sequenceToTarget = constructKeytipTargetFromSequences(keySequences);
-    let keytipTarget: string | CalloutTargetFunction = sequenceToTarget;
-
-    if (offset) {
-      keytipTarget = (): Element | string | MouseEvent | IPoint | null => {
-        const currentDoc: Document = getDocument()!;
-        const targetEl = currentDoc ? currentDoc.querySelector(sequenceToTarget) as Element : undefined;
-        if (targetEl) {
-          const targetRect = targetEl.getBoundingClientRect();
-          // Add keytip offset to the top-left of the target
-          return { x: targetRect.left + offset.x, y: targetRect.top + offset.y };
-        }
-        return null;
-      };
-    }
-
-    if (!calloutProps || !calloutProps.directionalHint) {
-      // Default callout directional hint to BottomCenter
-      calloutProps = {
-        ...calloutProps,
-        directionalHint: DirectionalHint.bottomCenter
-      };
-    }
+    const { keySequences, overflowSetSequence } = this.props;
+    const keySequencesString = constructAriaDescribedByString(keySequences, overflowSetSequence);
 
     return (
-      <Callout
-        { ...calloutProps }
-        isBeakVisible={ false }
-        doNotLayer={ true }
-        getStyles={ getCalloutStyles }
-        preventDismissOnScroll={ true }
-        target={ keytipTarget }
-      >
-        <KeytipContent {...this.props} />
-      </Callout>
+      // TODO: put these styles in the styles file
+      <span style={ { visibility: 'hidden', position: 'fixed', top: 0, left: 0 } } id={ convertSequencesToKeytipID(keySequences) }>{ keySequencesString }</span>
     );
+  }
+
+  private _createKeytipProps(): IKeytipProps {
+    return {
+      content: this.props.content,
+      disabled: this.props.disabled,
+      visible: this.props.visible,
+      onExecute: this.props.onExecute,
+      onReturn: this.props.onReturn,
+      keySequences: this.props.keySequences,
+      overflowSetSequence: this.props.overflowSetSequence,
+      calloutProps: this.props.calloutProps,
+      offset: this.props.offset,
+      hasChildrenNodes: this.props.hasChildrenNodes
+    }
   }
 }

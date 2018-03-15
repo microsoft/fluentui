@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { IKeytipLayerProps } from './KeytipLayer.types';
-import { Keytip, IKeytipProps } from '../../Keytip';
+import { KeytipWrapper, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
 import {
   autobind,
   BaseComponent,
   KeyCodes,
+  find,
   findIndex,
+  replaceElement,
   KeytipTransitionModifier,
   convertSequencesToKeytipID,
   fullKeySequencesAreEqual,
@@ -18,7 +20,7 @@ import { KeytipManager } from '../../utilities/keytips';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
-  keytips: IKeytipProps[];
+  activeKeytips: IKeytipProps[];
 }
 
 const defaultStartSequence: IKeytipTransitionKey = {
@@ -57,90 +59,57 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
 
     this.state = {
       inKeytipMode: false,
-      keytips: []
+      activeKeytips: []
     };
 
     this._keytipManager.init(this);
   }
 
   /**
-   * Register a keytip in this layer
    *
-   * @param keytipProps - IKeytipProps to add to this layer
    */
-  public registerKeytip(keytipProps: IKeytipProps): void {
-    this.setState(this.addKeytip(keytipProps));
+  public setActiveKeytips(keytips: IKeytipProps[]) {
+    this.setState({ activeKeytips: keytips });
   }
 
   /**
-   * Unregister a keytip in this layer
    *
-   * @param keytipProps - IKeytipProps to remove from this layer
    */
-  public unregisterKeytip(keytipProps: IKeytipProps): void {
-    this.setState(this.removeKeytip(keytipProps));
+  public clearKeytips() {
+    this.setState({ activeKeytips: [] });
   }
 
   /**
-   * Add or update a keytip to this layer by modifying this layer's state
    *
-   * @param keytipProps - Keytip to add or update in the layer
-   * @returns Function to call with setState
+   * @param keytip
    */
-  public addKeytip(keytipProps: IKeytipProps): {} {
-    return (previousState: IKeytipLayerState) => {
-      const previousKeytips: IKeytipProps[] = previousState.keytips;
-
-      // Try to find keytipProps in previousKeytips to update
-      const keytipToUpdateIndex = findIndex(previousKeytips, (previousKeytip: IKeytipProps) => {
-        return fullKeySequencesAreEqual(keytipProps.keySequences, previousKeytip.keySequences);
-      });
-
-      const currentKeytips = [...previousState.keytips];
-      if (keytipToUpdateIndex >= 0) {
-        // Replace the keytip props
-        currentKeytips.splice(keytipToUpdateIndex, 1, keytipProps);
-      } else {
-        // Add the new keytip props
-        currentKeytips.push(keytipProps);
-      }
-      return { ...previousState, keytips: currentKeytips };
-    };
-  }
-
-  /**
-   * Removes a keytip from this layer's state
-   *
-   * @param keytipToRemove - IKeytipProps of the keytip to remove
-   * @returns Function to call with setState
-   */
-  public removeKeytip(keytipToRemove: IKeytipProps): {} {
-    return (previousState: IKeytipLayerState) => {
-      const currentKeytips = previousState.keytips;
-      // Filter out keytips that don't equal the one to remove
-      const filteredKeytips: IKeytipProps[] = currentKeytips.filter((currentKeytip: IKeytipProps) => {
-        return !fullKeySequencesAreEqual(currentKeytip.keySequences, keytipToRemove.keySequences);
-      });
-      return { ...previousState, keytips: filteredKeytips };
-    };
-  }
-
-  /**
-   * Sets the visibility of the keytips in this layer
-   *
-   * @param ids - Keytip IDs that should have their visibility updated
-   * @param visible - T/F if the specified Keytips will be visible or not
-   */
-  public setKeytipVisibility(ids: string[], visible: boolean): void {
+  public addOrUpdateKeytip(keytip: IKeytipProps) {
     this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
-      const currentKeytips: IKeytipProps[] = [...previousState.keytips];
-      for (const keytip of currentKeytips) {
-        const keytipId = convertSequencesToKeytipID(keytip.keySequences);
-        if (ids.indexOf(keytipId) >= 0) {
-          keytip.visible = visible;
-        }
+      let currentKeytips: IKeytipProps[] = [...previousState.activeKeytips];
+      const keytipIndex = findIndex(currentKeytips, (currentKeytip: IKeytipProps) => {
+        return fullKeySequencesAreEqual(currentKeytip.keySequences, keytip.keySequences);
+      });
+      if (keytipIndex >= 0) {
+        currentKeytips = replaceElement(currentKeytips, keytip, keytipIndex);
+      } else {
+        currentKeytips.push(keytip);
       }
-      return { ...previousState, keytips: currentKeytips };
+      return { ...previousState, activeKeytips: currentKeytips };
+    });
+  }
+
+  /**
+   *
+   * @param keytip
+   */
+  public removeKeytip(keytip: IKeytipProps) {
+    this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
+      let currentKeytips: IKeytipProps[] = [...previousState.activeKeytips];
+      // Filter out 'keytip'
+      currentKeytips = currentKeytips.filter((currentKeytip: IKeytipProps) => {
+        return !fullKeySequencesAreEqual(keytip.keySequences, currentKeytip.keySequences);
+      });
+      return { ...previousState, activeKeytips: currentKeytips };
     });
   }
 
@@ -151,14 +120,14 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     } = this.props;
 
     const {
-      keytips
+      activeKeytips
     } = this.state;
 
     return (
       <Layer>
         <span id={ id } style={ { visibility: 'hidden' } }>{ content }</span>
-        { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
-          return <Keytip key={ index } { ...keytipProps } />;
+        { activeKeytips && activeKeytips.map((keytipProps: IKeytipProps, index: number) => {
+          return <KeytipWrapper key={ index } { ...keytipProps } />;
         }) }
       </Layer>
     );
@@ -185,7 +154,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     if (this.props.onExitKeytipMode) {
       this.props.onExitKeytipMode();
     }
-    this.setState({ inKeytipMode: false });
+    this.setState({ inKeytipMode: false, activeKeytips: [] });
   }
 
   /**

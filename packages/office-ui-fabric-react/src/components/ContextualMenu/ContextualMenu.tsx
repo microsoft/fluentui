@@ -37,7 +37,8 @@ import {
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
-import { registerKeytip, unregisterKeytip } from '../../utilities/keytips';
+import { Keytip } from '../../Keytip';
+import { getNativeKeytipProps } from '../../utilities/keytips';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -98,7 +99,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _scrollIdleTimeoutId: number | undefined;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
-  private _keytipPropsMap: { [key: string]: any };
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -116,8 +116,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
-
-    this._keytipPropsMap = {};
   }
 
   @autobind
@@ -141,12 +139,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
     this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
-
-    this.props.items.forEach((item: IContextualMenuItem) => {
-      if (item.keytipProps) {
-        this._keytipPropsMap[item.key] = registerKeytip(item.keytipProps);
-      }
-    });
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
@@ -166,12 +158,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       // to reset the focus back to the thing it thinks should have been focused.
       setTimeout(() => this._previousActiveElement!.focus(), 0);
     }
-
-    this.props.items.forEach((item: IContextualMenuItem) => {
-      if (item.keytipProps) {
-        unregisterKeytip(item.keytipProps);
-      }
-    });
 
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
@@ -498,6 +484,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div>
         <a
           { ...getNativeProps(item, anchorProperties) }
+          { ...getNativeKeytipProps(item.keytipProps) }
           href={ item.href }
           target={ item.target }
           rel={ anchorRel }
@@ -508,7 +495,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           aria-disabled={ this._isItemDisabled(item) }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
-          { ...this._keytipPropsMap[item.key] }
         >
           <ChildrenRenderer
             item={ item }
@@ -517,6 +503,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
             hasIcons={ hasIcons }
           />
+          { item.keytipProps && <Keytip { ...item.keytipProps } /> }
         </a>
       </div>);
   }
@@ -580,7 +567,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <button
         { ...buttonNativeProperties }
         { ...itemButtonProperties }
-        { ...this._keytipPropsMap[item.key] }
+        { ...getNativeKeytipProps(item.keytipProps) }
       >
         <ChildrenRenderer
           item={ item }
@@ -589,6 +576,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
           hasIcons={ hasIcons }
         />
+        { item.keytipProps && <Keytip { ...item.keytipProps } /> }
       </button>
     );
   }

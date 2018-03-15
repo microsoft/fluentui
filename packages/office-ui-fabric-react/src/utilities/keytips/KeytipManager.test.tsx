@@ -7,7 +7,8 @@ import {
   KeytipTransitionModifier,
   IKeytipTransitionKey,
   ktpSeparator,
-  ktpFullPrefix
+  ktpFullPrefix,
+  fullKeySequencesAreEqual
 } from '../../Utilities';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from '../../KeytipLayer';
@@ -49,6 +50,7 @@ describe('KeytipManager', () => {
 
   describe('getAriaDescribedBy', () => {
 
+    /*
     it('returns just the layer ID when an empty sequence is passed in', () => {
       const keySequence: IKeySequence[] = [];
       const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
@@ -97,6 +99,7 @@ describe('KeytipManager', () => {
         ' ' + convertSequencesToKeytipID([keySequences2[0]]) +
         ' ' + convertSequencesToKeytipID(keySequences2));
     });
+    */
   });
 
   describe('processInput tests', () => {
@@ -169,7 +172,7 @@ describe('KeytipManager', () => {
       // There is no more buffer in the sequence
       expect(keytipManager.currentSequence.keys.length).toEqual(0);
       // Children keytips should be visible
-      const childrenKeytips = getKeytips(defaultKeytipLayer, keytipManager.keytipTree.currentKeytip.children);
+      const childrenKeytips = getKeytips(defaultKeytipLayer);
       for (const childrenKeytip of childrenKeytips) {
         expect(childrenKeytip.visible).toEqual(true);
       }
@@ -192,6 +195,51 @@ describe('KeytipManager', () => {
   });
 
   describe('registerKeytip', () => {
+    it('should set properties correctly in the manager _keytips', () => {
+      // Create keytip b
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+      const keytipBProps: IKeytipProps = {
+        keySequences: keytipSequenceB,
+        content: 'B',
+        visible: true
+      };
+      keytipManager.registerKeytip(keytipBProps);
+      const keytips = keytipManager.getKeytips();
+
+      expect(keytips).toHaveLength(1);
+      expect(keytips[0].content).toEqual('B');
+      expect(keytips[0].visible).toEqual(true);
+      expect(fullKeySequencesAreEqual(keytipSequenceB, keytips[0].keySequences)).toEqual(true);
+    });
+
+    it('should add the keytip to the layer if visible is true', () => {
+      // Create keytip b
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+      const keytipBProps: IKeytipProps = {
+        keySequences: keytipSequenceB,
+        content: 'B',
+        visible: true
+      };
+      keytipManager.registerKeytip(keytipBProps);
+
+      // No keytips should be in the layer yet
+      const keytipB = getKeytips(defaultKeytipLayer);
+      expect(keytipB).toHaveLength(1);
+    });
+
+    it('should not add the keytip to the layer if not visible', () => {
+      // Create keytip b
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+      const keytipBProps: IKeytipProps = {
+        keySequences: keytipSequenceB,
+        content: 'B'
+      };
+      keytipManager.registerKeytip(keytipBProps);
+
+      // No keytips should be in the layer yet
+      const keytipB = getKeytips(defaultKeytipLayer);
+      expect(keytipB).toHaveLength(0);
+    });
 
     it('should automatically show Keytip when currentKeytip is its parent', () => {
       // Create keytip b
@@ -215,41 +263,67 @@ describe('KeytipManager', () => {
       keytipManager.registerKeytip(keytipGProps);
 
       // G should now be visible in the layer
-      const keytipG = getKeytips(defaultKeytipLayer, [keytipIdG]);
+      const keytipG = getKeytips(defaultKeytipLayer);
       expect(keytipG).toHaveLength(1);
       expect(keytipG[0].visible).toEqual(true);
     });
+  });
 
-    it('should update the keytip if it has the same key sequence', () => {
-      // Create keytip b
-      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
-      const keytipBProps: IKeytipProps = {
-        keySequences: keytipSequenceB,
-        content: 'B',
-        disabled: false
-      };
+  describe('updateKeytip', () => {
+    const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+    const keytipBProps: IKeytipProps = {
+      keySequences: keytipSequenceB,
+      content: 'B',
+      disabled: false
+    };
+
+    beforeEach(() => {
+      // Register keytip b
       keytipManager.registerKeytip(keytipBProps);
+    });
 
-      let keytipB = getKeytips(defaultKeytipLayer, [keytipIdB]);
-      let keytipNodeB = keytipManager.keytipTree.nodeMap[keytipIdB];
-      expect(keytipB).toHaveLength(1);
-      expect(keytipB[0].disabled).toEqual(false);
-      expect(keytipB[0].content).toEqual('B');
-      expect(keytipNodeB.disabled).toEqual(false);
-
-      // Change some properties
+    it('should update the keytip properties in the manager', () => {
+      // Change some properties and update
       keytipBProps.disabled = true;
       keytipBProps.content = 'BEE';
+      keytipManager.updateKeytip(keytipBProps);
 
-      // Re-register
-      keytipManager.registerKeytip(keytipBProps);
+      // Test that B was updated
+      const keytips = keytipManager.getKeytips();
+      expect(keytips).toHaveLength(1);
+      expect(keytips[0].content).toEqual('BEE');
+      expect(keytips[0].disabled).toEqual(true);
+    });
 
-      keytipB = getKeytips(defaultKeytipLayer, [keytipIdB]);
-      keytipNodeB = keytipManager.keytipTree.nodeMap[keytipIdB];
+    it('should add keytip to the KeytipLayer if the visible prop is changed to true', () => {
+      // Change the visible property
+      keytipBProps.visible = true;
+
+      // Update
+      keytipManager.updateKeytip(keytipBProps);
+
+      const keytipB = getKeytips(defaultKeytipLayer);
+      const keytipNodeB = keytipManager.keytipTree.nodeMap[keytipIdB];
+      expect(keytipB).toHaveLength(1);
+    });
+
+    it('should update the keytip in the manager and layer if it was already visible', () => {
+      // Change the visible property
+      keytipBProps.visible = true;
+
+      // Update
+      keytipManager.updateKeytip(keytipBProps);
+
+      // Change some properties and update
+      keytipBProps.disabled = true;
+      keytipBProps.content = 'BEE';
+      keytipManager.updateKeytip(keytipBProps);
+
+      const keytipB = getKeytips(defaultKeytipLayer);
+      const keytipNodeB = keytipManager.keytipTree.nodeMap[keytipIdB];
       expect(keytipB).toHaveLength(1);
       expect(keytipB[0].disabled).toEqual(true);
       expect(keytipB[0].content).toEqual('BEE');
-      expect(keytipNodeB.disabled).toEqual(true);
     });
   });
 
@@ -267,15 +341,8 @@ describe('KeytipManager', () => {
   });
 });
 
-function getKeytips(keytipLayer: ReactWrapper, keytipIDs?: string[]): IKeytipProps[] {
-  const currentKeytips: IKeytipProps[] = keytipLayer.state('keytips');
-  if (keytipIDs) {
-    return currentKeytips.filter((currentKeytip: IKeytipProps) => {
-      return keytipIDs.indexOf(convertSequencesToKeytipID(currentKeytip.keySequences)) !== -1;
-    });
-  } else {
-    return currentKeytips;
-  }
+function getKeytips(keytipLayer: ReactWrapper): IKeytipProps[] {
+  return keytipLayer.state('activeKeytips');
 }
 
 function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {

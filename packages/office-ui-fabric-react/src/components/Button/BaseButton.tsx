@@ -17,7 +17,8 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { registerKeytip, unregisterKeytip } from '../../utilities/keytips';
+import { Keytip } from '../../Keytip';
+import { getNativeKeytipProps } from '../../utilities/keytips';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -51,7 +52,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _descriptionId: string;
   private _ariaDescriptionId: string;
   private _classNames: IButtonClassNames;
-  private _keytipAttributes: any;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -195,26 +195,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this._onRenderContent(tag, buttonProps);
   }
 
-  public componentWillMount() {
-    if (this.props.keytipProps) {
-      this._keytipAttributes = registerKeytip(this.props.keytipProps);
-    }
-  }
-
   public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
     // If Button's menu was closed, run onAfterMenuDismiss
     if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
       this.props.onAfterMenuDismiss();
-    }
-
-    if (this.props.keytipProps) {
-      registerKeytip(this.props.keytipProps);
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this.props.keytipProps) {
-      unregisterKeytip(this.props.keytipProps);
     }
   }
 
@@ -238,11 +222,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
-      onRenderMenuIcon = this._onRenderMenuIcon
+      onRenderMenuIcon = this._onRenderMenuIcon,
+      keytipProps
     } = props;
 
     const Content = (
-      <Tag { ...buttonProps } { ...this._keytipAttributes }>
+      <Tag { ...buttonProps } { ...getNativeKeytipProps(keytipProps) }>
         <div className={ this._classNames.flexContainer } >
           { onRenderIcon(props, this._onRenderIcon) }
           { this._onRenderTextContents() }
@@ -251,6 +236,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
           { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
         </div>
+        { keytipProps && <Keytip { ...keytipProps } /> }
       </Tag>
     );
 

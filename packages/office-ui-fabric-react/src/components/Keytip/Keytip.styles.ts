@@ -2,7 +2,7 @@ import { IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
-  const { theme, disabled, visible } = props;
+  const { theme, disabled } = props;
   return {
     container: [
       {
@@ -10,9 +10,6 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
       },
       disabled && {
         opacity: 0.5,
-      },
-      !visible && {
-        visibility: 'hidden'
       }
     ],
     root: [{
