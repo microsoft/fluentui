@@ -337,7 +337,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderDescription(props: IButtonProps) {
     const {
       description
-    } = this.props;
+    } = props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
