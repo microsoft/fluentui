@@ -1100,7 +1100,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return false;
     }
 
-    if (this._getPendingSelectedIndex(true /* includePendingValue */) === index) {
+    if (!this.props.multiSelect && this._getPendingSelectedIndex(true /* includePendingValue */) === index) {
       return true;
     }
 
@@ -1128,7 +1128,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover >= 0 ?
         currentPendingValueValidIndexOnHover :
         (currentPendingValueValidIndex >= 0 || (includeCurrentPendingValue && currentPendingValue !== '')) ?
-          currentPendingValueValidIndex : this._getFirstSelectedIndex()
+          currentPendingValueValidIndex :
+          this.props.multiSelect ? 0 : this._getFirstSelectedIndex()
     );
   }
 
@@ -1249,7 +1250,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     for (let selectedKey of selectedKeys) {
-      selectedIndices.push(findIndex(options, (option => (option.selected || option.key === selectedKey))));
+      let index = findIndex(options, (option => (option.selected || option.key === selectedKey)));
+      if (index > -1) {
+        selectedIndices.push(index);
+      }
     }
     return selectedIndices;
   }
@@ -1362,7 +1366,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       isOpen,
       currentOptions,
-      currentPendingValueValidIndexOnHover
+      currentPendingValueValidIndexOnHover,
+      selectedIndices
     } = this.state;
 
     if (disabled) {
@@ -1374,28 +1379,38 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     switch (ev.which) {
       case KeyCodes.enter:
-        // On enter submit the pending value
-        this._submitPendingValue();
-
-        // if we are open or
-        // if we are not allowing freeform or
-        // our we have no pending value
-        // and no valid pending index
-        // flip the open state
-        if ((isOpen ||
-          ((!allowFreeform ||
-            this.state.currentPendingValue === undefined ||
-            this.state.currentPendingValue === null ||
-            this.state.currentPendingValue.length <= 0) &&
-            this.state.currentPendingValueValidIndex < 0))) {
-          this.setState({
-            isOpen: !isOpen
-          });
-        }
-
-        // Allow TAB to propigate
-        if (ev.which as number === KeyCodes.tab) {
+        if (this.props.multiSelect && isOpen) {
+          // Toggle the current pending option
+          if (selectedIndices) {
+            let idxToRemove: number = selectedIndices.indexOf(index);
+            if (idxToRemove > -1) {
+              selectedIndices.splice(idxToRemove, 1);
+            } else {
+              selectedIndices.push(index);
+            }
+            this.setState({
+              selectedIndices: selectedIndices
+            });
+          }
           return;
+        } else {
+          // On enter submit the pending value
+          this._submitPendingValue();
+          if ((isOpen ||
+            ((!allowFreeform ||
+              this.state.currentPendingValue === undefined ||
+              this.state.currentPendingValue === null ||
+              this.state.currentPendingValue.length <= 0) &&
+              this.state.currentPendingValueValidIndex < 0))) {
+            // if we are open or
+            // if we are not allowing freeform or
+            // our we have no pending value
+            // and no valid pending index
+            // flip the open state
+            this.setState({
+              isOpen: !isOpen
+            });
+          }  
         }
         break;
 
