@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.64.3",
+      "tag": "office-ui-fabric-react_v5.64.3",
+      "date": "Thu, 15 Mar 2018 10:37:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "fe61a19cfe9890247cbb58a90789e932769210c0",
+            "comment": "TextField: Enabled scrolling and resize when disabled"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.64.2",
       "tag": "office-ui-fabric-react_v5.64.2",
       "date": "Thu, 15 Mar 2018 02:42:27 GMT",

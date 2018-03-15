@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Mar 2018 02:42:27 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Mar 2018 10:37:10 GMT and should not be manually modified.
+
+## 5.64.3
+Thu, 15 Mar 2018 10:37:10 GMT
+
+### Patches
+
+- TextField: Enabled scrolling and resize when disabled
 
 ## 5.64.2
 Thu, 15 Mar 2018 02:42:27 GMT
