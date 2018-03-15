@@ -443,7 +443,7 @@ export interface IContextualMenuItem {
   /**
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
-  readOnly?: string;
+  inactive?: boolean;
 }
 
 export interface IContextualMenuSection extends React.Props<ContextualMenu> {

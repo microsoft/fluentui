@@ -189,7 +189,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
       (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded),
-      item.readOnly ? styles.readOnly : ""
+      item.inactive ? styles.inactive : ""
     );
 
     var tooltipContent: string = "";
@@ -210,7 +210,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           title={""}
-          aria-disabled={item.readOnly}
+          aria-disabled={item.inactive}
           onClick={ this._onItemClick(item) }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
@@ -241,7 +241,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           title={""}
-          aria-disabled={item.readOnly}
+          aria-disabled={item.inactive}
           href={ item.disabled ? undefined : item.href }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
@@ -268,7 +268,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           title={""}
-          aria-disabled={item.readOnly}
+          aria-disabled={item.inactive}
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-label={ ariaLabel }
@@ -295,8 +295,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           { command }
         </TooltipHost>
       );
-    }
-    else if (tooltipContent) {
+    } else if (tooltipContent) {
       command = (
         <TooltipHost content={ tooltipContent }>
           { command }
@@ -420,7 +419,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
-      if (item.readOnly) {
+      if (item.inactive) {
         return;
       }
 

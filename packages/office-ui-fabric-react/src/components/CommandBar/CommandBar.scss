@@ -173,7 +173,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     background-color: $ms-color-neutralQuaternary;
   }
   
-  &.readOnly {
+  &.inactive {
     color: $ms-color-neutralTertiaryAlt;
     cursor: default;
     pointer-events: none;
