@@ -1,6 +1,41 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Mar 2018 10:28:26 GMT and should not be manually modified.
+
+## 5.4.0
+Wed, 14 Mar 2018 10:28:26 GMT
+
+### Minor changes
+
+- Theme generator: exposing to the website.
+
+## 5.3.4
+Tue, 13 Mar 2018 20:00:06 GMT
+
+### Patches
+
+- Hide left nav on mobile.
+
+## 5.3.3
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Patches
+
+- Fixed in page nav so that the left nav links will display properly.
+
+## 5.3.2
+Thu, 01 Mar 2018 00:05:10 GMT
+
+### Patches
+
+- Improved left nav scroll behavior and added fix to webpack so that we can load component pages from our local machines with the UHF.
+
+## 5.3.1
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Patches
+
+- Left nav: Less jittery and component pages load in full height.
 
 ## 5.3.0
 Mon, 22 Jan 2018 11:14:27 GMT

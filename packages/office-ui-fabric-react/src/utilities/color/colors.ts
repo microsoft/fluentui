@@ -156,14 +156,14 @@ export function hsv2rgb(h: number, s: number, v: number): IRGB {
 }
 
 export function getColorFromString(inputColor: string): IColor | undefined {
-  let color = cssColor(inputColor);
+  const color = cssColor(inputColor);
 
   if (!color) {
     return;
   }
 
-  let { a, b, g, r } = color;
-  let { h, s, v } = rgb2hsv(r, g, b);
+  const { a, b, g, r } = color;
+  const { h, s, v } = rgb2hsv(r, g, b);
 
   return {
     a: a,
@@ -179,10 +179,10 @@ export function getColorFromString(inputColor: string): IColor | undefined {
 }
 
 export function getColorFromRGBA(rgba: { r: number, g: number, b: number, a: number }): IColor {
-  let { a, b, g, r } = rgba;
-  let { h, s, v } = rgb2hsv(r, g, b);
+  const { a, b, g, r } = rgba;
+  const { h, s, v } = rgb2hsv(r, g, b);
 
-  let hex = rgb2hex(r, g, b);
+  const hex = rgb2hex(r, g, b);
   return {
     a: a,
     b: b,
@@ -201,8 +201,8 @@ export function getFullColorString(color: IColor): string {
 }
 
 export function updateSV(color: IColor, s: number, v: number): IColor {
-  let { r, g, b } = hsv2rgb(color.h, s, v);
-  let hex = rgb2hex(r, g, b);
+  const { r, g, b } = hsv2rgb(color.h, s, v);
+  const hex = rgb2hex(r, g, b);
 
   return {
     a: color.a,
@@ -218,8 +218,8 @@ export function updateSV(color: IColor, s: number, v: number): IColor {
 }
 
 export function updateH(color: IColor, h: number): IColor {
-  let { r, g, b } = hsv2rgb(h, color.s, color.v);
-  let hex = rgb2hex(r, g, b);
+  const { r, g, b } = hsv2rgb(h, color.s, color.v);
+  const hex = rgb2hex(r, g, b);
 
   return {
     a: color.a,

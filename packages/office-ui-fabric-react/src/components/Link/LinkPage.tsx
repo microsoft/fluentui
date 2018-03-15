@@ -9,7 +9,7 @@ import { LinkBasicExample } from './examples/Link.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { LinkStatus } from './Link.checklist';
 
-let LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
+const LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
 
 export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -22,6 +22,8 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
             <LinkBasicExample />
           </ExampleCard>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ ['a', 'button'] }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -65,7 +67,7 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...LinkStatus}
+            { ...LinkStatus }
           />
         }
       />

@@ -68,6 +68,33 @@ export interface IColorPickerGridCellProps {
   * Optional styles for the component.
   */
   getStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+
+  /**
+   * Optional, mouseEnter handler.
+   * @returns true if the event should be processed, false otherwise
+   */
+  onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+
+  /**
+   * Optional, mouseMove handler
+   * @returns true if the event should be processed, false otherwise
+   */
+  onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+
+  /**
+   * Optional, mouseLeave handler
+   */
+  onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+
+  /**
+   * Optional, onWheel handler
+   */
+  onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+
+  /**
+   * Optional, onkeydown handler
+   */
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
 export interface IColorCellProps {

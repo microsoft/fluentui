@@ -33,7 +33,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | Button>) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | HTMLDivElement | Button>) => any;
 
   /**
    * Determines if the message bar is multi lined.
@@ -54,6 +54,11 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   * @defaultvalue false
   */
   truncated?: boolean;
+
+  /**
+  * Aria label on overflow button if truncated is defined.
+  */
+  overflowButtonAriaLabel?: string;
 }
 
 export enum MessageBarType {

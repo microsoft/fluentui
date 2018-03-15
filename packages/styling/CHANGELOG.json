@@ -2,6 +2,75 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.19.1",
+      "tag": "@uifabric/styling_v5.19.1",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a3841913dd420f50f9a04cdd56676aa9f4f0fd89",
+            "comment": "By default, try to use the system font before downloading a web font"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.17.1 <6.0.0` to `>=5.18.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.0",
+      "tag": "@uifabric/styling_v5.19.0",
+      "date": "Fri, 23 Feb 2018 03:05:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "ebe601051c081838ae9d029e1020f316258d148a",
+            "comment": "add preliminary support for variant theming, add bodyLink slot"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.1",
+      "tag": "@uifabric/styling_v5.18.1",
+      "date": "Sat, 17 Feb 2018 21:29:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "1f1db9da4f7368806e1a819e75d7685ec7b73f04",
+            "comment": "Add whiteTranslucent40 to palette"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.0",
+      "tag": "@uifabric/styling_v5.18.0",
+      "date": "Wed, 14 Feb 2018 22:10:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "8b573a64f3d9f4e3dbd17b1f90788ab8fffd6185",
+            "comment": "Adjusting IColorClassNames and IFontStyles to remove the optional part for the members, to make the interfaces easier to consume."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.10.3 <6.0.0` to `>=5.11.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.11.2 <6.0.0` to `>=5.12.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.0",
       "tag": "@uifabric/styling_v5.17.0",
       "date": "Thu, 25 Jan 2018 11:23:06 GMT",

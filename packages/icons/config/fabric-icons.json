@@ -57,6 +57,10 @@
 			"unicode": "E72D"
 		},
 		{
+			"name": "BlockedSite",
+			"unicode": "E72F"
+		},
+		{
 			"name": "FavoriteStar",
 			"unicode": "E734"
 		},
@@ -175,6 +179,10 @@
 		{
 			"name": "Embed",
 			"unicode": "ECCE"
+		},
+		{
+			"name": "Glimmer",
+			"unicode": "ECF4"
 		},
 		{
 			"name": "Ascending",

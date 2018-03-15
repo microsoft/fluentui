@@ -1,6 +1,100 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 31 Jan 2018 11:11:59 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+
+## 5.25.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- Adds a new Shimmer Component to experiments package.
+
+## 5.24.1
+Thu, 08 Mar 2018 11:27:23 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+
+## 5.24.0
+Wed, 07 Mar 2018 11:16:50 GMT
+
+### Minor changes
+
+- add clearInput on BaseExtendedPicker
+
+## 5.23.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.23.0
+Mon, 05 Mar 2018 11:16:58 GMT
+
+### Minor changes
+
+- Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)
+
+## 5.22.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection
+
+### Patches
+
+- Add initial set of Keytip work
+
+## 5.21.0
+Fri, 16 Feb 2018 11:23:28 GMT
+
+### Minor changes
+
+- Removing Coachmark
+
+### Patches
+
+- Hook up onPaste for BaseExtendedPicker
+
+## 5.20.0
+Wed, 14 Feb 2018 22:10:49 GMT
+
+### Minor changes
+
+- Use new "use current input" command in Suggestions
+
+## 5.19.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- Added a fillHorizontal mode to TilesList
+
+## 5.18.0
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Minor changes
+
+- change persona pill css
+
+### Patches
+
+- BasePicker: Use correct autofillnow
+
+## 5.17.0
+Fri, 02 Feb 2018 11:24:16 GMT
+
+### Minor changes
+
+- allow editing of selected items in selected people list
+
+### Patches
+
+- consume BlockedSite icon for malware detected signal
 
 ## 5.16.1
 Wed, 31 Jan 2018 11:11:59 GMT

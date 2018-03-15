@@ -1,11 +1,16 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import {
+  BaseComponent,
+  autobind
+} from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import './DetailsList.Grouped.Example.scss';
 
-let _columns = [
+const _columns = [
   {
     key: 'name',
     name: 'Name',
@@ -22,7 +27,7 @@ let _columns = [
     maxWidth: 200
   }
 ];
-let _items = [
+const _items = [
   {
     key: 'a',
     name: 'a',
@@ -50,9 +55,11 @@ let _items = [
   }
 ];
 
-export class DetailsListGroupedExample extends React.Component<{}, {
+export class DetailsListGroupedExample extends BaseComponent<{}, {
   items: {}[];
 }> {
+  private _root: DetailsList;
+
   constructor(props: {}) {
     super(props);
 
@@ -62,15 +69,16 @@ export class DetailsListGroupedExample extends React.Component<{}, {
   }
 
   public render() {
-    let { items } = this.state;
+    const { items } = this.state;
 
     return (
-      <Fabric className='foo'>
+      <Fabric className='DetailsList-grouped-example'>
         <DefaultButton
           onClick={ this._addItem }
           text='Add an item'
         />
         <DetailsList
+          componentRef={ this._resolveRef('_root') }
           items={ items }
           groups={ [
             {
@@ -89,7 +97,7 @@ export class DetailsListGroupedExample extends React.Component<{}, {
               key: 'groupblue2',
               name: 'By "blue"',
               startIndex: 2,
-              count: 3
+              count: items.length - 2
             }
           ] }
           columns={ _columns }
@@ -98,13 +106,15 @@ export class DetailsListGroupedExample extends React.Component<{}, {
           groupProps={ {
             showEmptyGroups: true
           } }
+          onRenderItemColumn={ this._onRenderColumn }
         />
       </Fabric>
     );
   }
 
+  @autobind
   private _addItem() {
-    let items = this.state.items;
+    const items = this.state.items;
 
     this.setState({
       items: items.concat([{
@@ -112,7 +122,25 @@ export class DetailsListGroupedExample extends React.Component<{}, {
         name: 'New item ' + items.length,
         color: 'blue'
       }])
+    }, () => {
+      this._root.focusIndex(items.length, true);
     });
   }
 
+  private _onRenderColumn(item: any, index: number, column: IColumn) {
+    let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
+
+    if (value === null || value === undefined) {
+      value = '';
+    }
+
+    return (
+      <div
+        className={ 'grouped-example-column' }
+        data-is-focusable={ true }
+      >
+        { value }
+      </div>
+    );
+  }
 }

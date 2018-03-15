@@ -1,6 +1,440 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 31 Jan 2018 11:11:59 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Mar 2018 10:37:10 GMT and should not be manually modified.
+
+## 5.64.3
+Thu, 15 Mar 2018 10:37:10 GMT
+
+### Patches
+
+- TextField: Enabled scrolling and resize when disabled
+
+## 5.64.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). 
+
+## 5.64.1
+Wed, 14 Mar 2018 10:28:26 GMT
+
+### Patches
+
+- Theme generator: exposing to the website.
+
+## 5.64.0
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Minor changes
+
+- Added an is-open class to the DatePicker root element to indicate when the datepicker is being shown based on the IDatePickerState.isDatePickerShown state property.
+- Added documentation for components that allow native props
+
+### Patches
+
+- Pickers: Fix aria bug where activedescendant would be sug--1
+
+## 5.63.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- Add rel option for Contextual Menu Items
+- ComoboBox and SpinButton: Removing excess margins and padding to make them consistent with TextField.
+- Facepile: Added `overflowPersonas` option to better control what personas go into the overflow personas vs show up as a persona coin. Also adjusted Facepile back to showing a Persona control if there is only one persona to be shown with no overflow.
+- importing hoistStatics from Utilities for withResponsiveMode decorator
+- Add ability to get and set scroll position on ScrollablePane
+- DetailsList: IColumn `onColumnClick` callback args marked non-optional.
+
+### Patches
+
+- Updating a test to ensure that focus is trapped in a FocusTrapZone when it has a FocusZone as the last element
+- [TextField] onChange fix for IE when using multiline with placeholder
+- Run onCellFocused before unmount and before select color
+
+## 5.62.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Add unit test to catch focus regression being fixed by this PR
+
+## 5.62.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Allow DetailsRow to have a custom renderer
+- Dialog: convert to mergeStyles part 2.
+
+### Patches
+
+- Fixes #3985 by removing HC style override on ms-Link buttons.
+
+## 5.61.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added the @customizable decorator to Image and Layer to enable theme functionality
+- MessageBar: Aria label for truncated text overflow button and added aria labels for buttons in examples.
+
+### Patches
+
+- ComboBox adding onPendingValueChanged callback prop to run when pending value is changed
+- Seperated the SCSS for Persona and Persona Coin components due to bloat when imported twice.
+
+## 5.60.1
+Wed, 07 Mar 2018 11:16:50 GMT
+
+### Patches
+
+- Fix ContextualMenu customization sample
+- TeachingBubble: New animation for bounce with fade in.
+
+## 5.60.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Add async debounce option to BasePicker
+
+### Patches
+
+- Facepile: Conditionally apply `aria-describedby` only when `ariaDescription` is provided
+
+## 5.59.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Temporarily commented out @customizable decorator in Image component to restore usage of static functions and variables.
+
+## 5.59.0
+Mon, 05 Mar 2018 11:16:58 GMT
+
+### Minor changes
+
+- Converting Image SCSS to MergeStyles step 2 - style conversion
+
+### Patches
+
+- Fix issue 3608: DetailsList horizontal scroll due to cellSizer
+- Nav: Wire nav link to expand/collapse behavior if it has no URL but has children.
+- Fixed aria-describedby bug causing it not to render properly
+- Removes unused variables
+- GroupedListSection: Changed the list ref name from `list` to `_list`
+
+## 5.58.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- ChoiceGroup: Flex layout for icon and image fields.  Fixed some image field bugs.
+- Upgrade to TypeScript 2.7.2
+- Allowing Nav Links to specify iconProps
+- added More items aria label
+
+### Patches
+
+- DetailsList: only adding `aria-selected` when `selectionMode` is set to `none`.
+- Dropdown: Fixed custom render option in multi select.
+- Callout: move animation inline to greatly improve perf
+- make sure disabled links are non-navigable
+- DocumentCard: Change it to use set theme
+- ProgressIndicator: adjusting css so that the gleam doesn't go outside the indicator boundary.
+- Allowing use of Elements as target prop for Callouts and ContextualMenus
+- CommandBar: Fixed case where commandItemWidths would be null
+- SpinButton: Updated styling to be consistent with Button and TextField
+- SearchBox: Deprecated `labelText` for `placeholder`.
+- Fix infinite recursion in scrollable pane
+- Added is-selected and is-expanded semantic classes to compositelink style sets
+- Searchbox: Removed non-localized default placeholder string.
+- BasePicker: check for null reference before checking value of `this.suggestionElement`.
+- only mount spinner component when necessary
+
+## 5.57.0
+Thu, 01 Mar 2018 11:12:54 GMT
+
+### Minor changes
+
+- Added index import for base files in Layer, Nav, Image, ScrollablePane, ResizeGroup, and Rating components so unstyled component can be used.
+- Converting ResizeGroup SCSS to MergeStyles step 2 - style converstion
+
+## 5.56.1
+Thu, 01 Mar 2018 00:05:10 GMT
+
+### Patches
+
+- Fix an issue on IE11 where Autofill would swallow some keystrokes if typing quickly enough
+- CoachMarkStyles: Use ... instead of assign for IE compatibility
+- FocusZone: isDefaultPrevented is now respected.
+- GroupedList: Chevron css no longer uses ms-icon
+
+## 5.56.0
+Wed, 28 Feb 2018 11:15:45 GMT
+
+### Minor changes
+
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Dialog: Converting to mergeStyles part 1.2 - sub component file structure. 
+- Prepare Persona for conversion to merge-styles
+
+### Patches
+
+- ContextualMenu: Update Hover/Focus Behavior around expanding/collapsing Submenus
+- SplitButton: ENTER/SPACE should execute the primary button when focus is on the whole splitButton
+
+## 5.55.3
+Tue, 27 Feb 2018 22:56:59 GMT
+
+### Patches
+
+- ComboBox: Shortened and centered the input field to account for overlap that appears at some resolutions.
+- Toggle color fixes
+- Fixing direct references to @uifabric which breaks AMD
+- Fixing reference of 'utilities/contextualMenu' to point an actual file.
+- Allow ScrollablePane to accept native properties.
+- Make ScrollablePane._sortStickies change elements only when needed.
+- Fix this.root undefined issue in Sticky component.
+
+## 5.55.2
+Tue, 27 Feb 2018 06:33:39 GMT
+
+### Patches
+
+- DatePicker calls onDateSelected then AfterMenuDismissed to follow the same pattern as BaseButton
+- ColorPicker: internal ref issue was fixed, which lets colors be picked a little better.
+
+## 5.55.1
+Sat, 24 Feb 2018 05:10:13 GMT
+
+### Patches
+
+- Fix SplitButton rendering issue in ContextualMenu
+- ComboBox: Added property to set ComboBox's button's data-is-focusable attribute.
+- ContextualMenu: Import ContextualMenuUtility/index directly instead of folder. 
+- [Focus] Enable focus forceIntoFirstElement parameter
+- [DetailsList] Fixed test by mocking visiblity
+- [ContextualMenu] Disabled buttons are focusable
+- Convert Check to mergeStyles
+- Button: reverting previous tweak to fix ComboBox dropdown selection styling.
+
+## 5.55.0
+Fri, 23 Feb 2018 03:05:53 GMT
+
+### Minor changes
+
+- add optional custom rendering of items for ContextualMenu
+- Focus Zone: Add support for tab to skip selection elements
+- SelectionZone: deprecating `layout` as it is no longer in use. Removing `SelectionLayout` as it is not required.
+
+### Patches
+
+- Nav: fix multiple invocations of onClick
+- minor fixes to theming
+
+## 5.54.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount
+- FocusZone: Add the ability turn off directional wrapping on sections of a FocusZone
+- Convert Layer component to mergeStyles
+- Converting SCSS to MergeStyles step 2 - style conversion
+- Add imageErrorAs to IIconProps
+
+### Patches
+
+- Enable variable-name and jsx-boolean-value tslint rules
+- Calendar: changing refs to componentRef.
+- DatePicker-onAfterMenuDismiss callback created
+- DatePicker - Adding public focus method
+- [TextField] Set input size to 1
+- [TooltipHost] Inline display for when overflow mode is on"
+- Updated contextual menu to pass the correct number
+- Contextual Menu - Added aria-posinset and aria-setsize to split buttons
+
+## 5.53.0
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Minor changes
+
+- added support for aria-posinset and aria-setsize
+- Converting Image SCSS to MergeStyles step 1 - file structure
+- SwatchColorPicker: Improve keyboard/mouse behavior
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Converting Nav SCSS to MergeStyles step 1 - file structure
+- Converting ResizeGroup SCSS to MergeStyles step 1 - file structure
+- Converting SCSS to MergeStyles step 2 - style conversion
+- make onShouldVirtualize work for grouped list
+
+### Patches
+
+- Enable jsx-key tslint rule
+- Only apply 'pointer-events: none' to disabled Link components if there is an href 
+- Dialog: default modal props now respective (Modal rendered with light background.)
+- Buttons: moving className lower in the merge list so that it has more precedence than default rules.
+- Rating: Adding `type=button` to Rating buttons.
+
+## 5.52.0
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Minor changes
+
+- Converting SCSS to MergeStyles step 1 - file structure
+
+### Patches
+
+- Add notifyPageChange function to List
+- Cleaning up a console.log in CommandBar.test.tsx that I noticed while updating snapshots
+- Fixes useTargetWidth prop for ContextualMenu
+- Convert overlay and examples to mergeStyles
+- DetailsList: Groups are now considered for aria-rowcount.
+
+## 5.51.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added enum for triggering menu with arrow keys and bool to allow it or not
+- Migrating Coachmark to main office-ui-fabrc-react package and adding a beak compoentn as well as updating  the experimental component PositioningContainer to reflect some of the latest bits in  Callout
+- FocusZone.Focus now respects forceIntoFirstChild parameter and  IFocusZone.ts has been updated to reflect this
+- Link: Update to use merge-styles
+
+### Patches
+
+- Fix bug: '#3942 Fixed controlled TextField with multiline and autoAdjustHeight does not adjust when setting value via state'
+- SearchBox: adding unit test and tweaking how the value is read from ev rather than the element itself.
+
+## 5.50.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- Add "use current input command" and remove need to explicity call focus when moving between suggestions and commands
+- Add clearButtonProps prop to SearchBox.types.ts with the IButtonPropsType. This is passed to the icon button in SearchBox.base.tsx
+- SearchBox: Fixed getStyles interface to be using ISearchBoxStyleProps instead of ISearchBoxProps
+
+### Patches
+
+- Fix bug: '#3940 Validate function works incorrect with attribute validateOnFocusOut'
+- Converted ButtonBasicExample to use mergeStyles instead of SCSS.
+- Fix ComboBox, ContextualMenu, Teachingbubble overwriting calloutProps.className
+- Fire onKeyDown for Button with menuProps
+- Fabric: Adds button overflow visible global style so that ie11 renders like edge/chrome/firefox
+- DatePicker: Fixing pointer when datepicker doesn't have a label
+- ComboBox: Add getClassNAmes prop to allow complete customization of the component
+- CalloutContent: Remove calloutWidth from calloutMain 
+- SpinButton: Add getClassNAmes prop to allow complete customization of the component
+- Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items.
+
+## 5.49.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Contextual Menu - adding support for aria-setsize and aria-posinset for rendering menu items that relies on the menu item's own rendering
+- Moves DatePicker label outside of hit target
+- Add name attribute to button
+
+## 5.49.2
+Mon, 12 Feb 2018 17:33:11 GMT
+
+### Patches
+
+- presence indicator does not influence layout of Persona
+
+## 5.49.1
+Mon, 12 Feb 2018 11:14:02 GMT
+
+### Patches
+
+- Fix issue where CommandBar chevron doesn't change color with rest of control when disabled
+- DetailsList: fix disappearing line when hovering on column header
+
+## 5.49.0
+Fri, 09 Feb 2018 18:11:52 GMT
+
+### Minor changes
+
+- ChoiceGroup: More flexible image field sizing, default image size, large image class.
+
+### Patches
+
+- Allowing for contextual and menus to be closed on Alt keys
+- Rating: Renamed RatingBase.tsx to Rating.base.tsx to match convention
+
+## 5.48.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.48.1
+Thu, 08 Feb 2018 02:29:26 GMT
+
+### Patches
+
+- Callout/Positioning: Fixed a bug where callout would lose alignment for some hints in rtl
+- Callout: Move positioning to inline styling
+
+## 5.48.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- SearchBox: Export base component as well as styled
+
+### Patches
+
+- Remove duplicate export of command button from the button index
+- [Spinner] Use rotateZ to stop the spinner from wiggling in IE
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+- SearchBox: minor correction in hover styles.
+
+## 5.47.0
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Minor changes
+
+- BaseAutofill: Move to it's own component
+
+### Patches
+
+- fix deselect all in suggestionsController
+- DetailsList: Adding optional callback aria-describedby for each item in DetailsList
+
+## 5.46.0
+Mon, 05 Feb 2018 11:24:23 GMT
+
+### Minor changes
+
+- [SpinButton] Implemented precision
+
+### Patches
+
+- ComboBox, Dropdown, TextField: Improved high contrast in focus state. Layout changes for ComboBox to allow for border-box sizing.
+
+## 5.45.3
+Fri, 02 Feb 2018 11:24:16 GMT
+
+### Patches
+
+- Converted ActivityItemExample to use mergeStyles instead of SCSS
+
+## 5.45.2
+Thu, 01 Feb 2018 11:23:17 GMT
+
+### Patches
+
+- Adds the _isControlled flag to the TextField component that disabled onChange if the value prop is set, which follows developer expectations with React inputs.
+- Theme Generator: fix autogenerated neutral colors
+- Fix bug in modal selection handling
+- added return default when reaching the html tag in while loop inside _getBackground() inside Sticky component.
 
 ## 5.45.1
 Wed, 31 Jan 2018 11:11:59 GMT

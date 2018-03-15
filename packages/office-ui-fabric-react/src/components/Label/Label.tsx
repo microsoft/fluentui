@@ -6,7 +6,7 @@ import { getLabelClassNames } from './Label.classNames';
 @customizable('Label', ['theme'])
 export class Label extends BaseComponent<ILabelProps, {}> {
   public render() {
-    let { disabled, required, children, className, theme } = this.props;
+    const { disabled, required, children, className, theme } = this.props;
     return (
       <label
         { ...getNativeProps(this.props, divProperties) }

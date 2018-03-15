@@ -1,6 +1,135 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Mar 2018 02:42:27 GMT and should not be manually modified.
+
+## 5.18.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Revert focus changes
+
+## 5.18.1
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Patches
+
+- Customizable: Fix hoist/customizations import so it doesn't break amd
+
+## 5.18.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator
+
+### Patches
+
+- Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus.
+- Styled: Add display name to styled wrapper
+
+## 5.17.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)
+
+## 5.17.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Add hoistStatics function to withResponsiveMode decorator.
+
+## 5.16.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added hoistStatics function to @customizable decorator so static methods work properly
+
+## 5.15.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Adds createRef polyfil to prepare for object refs.
+
+## 5.14.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.14.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+- Update KeyCodes enum to include all key codes
+
+## 5.13.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true
+
+## 5.12.1
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- fix bug in IE that IE does not support Number.IsInteger
+
+## 5.12.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added a triangle abstraction class
+
+### Patches
+
+- Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found
+
+## 5.11.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling.
+
+## 5.10.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Export IClassNames fro Utilities for creating private getClassNames methods
+
+## 5.10.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.10.1
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+
+## 5.10.0
+Mon, 05 Feb 2018 11:24:23 GMT
+
+### Minor changes
+
+- [Math] implemented precision rounding functions
 
 ## 5.9.0
 Mon, 29 Jan 2018 11:23:40 GMT

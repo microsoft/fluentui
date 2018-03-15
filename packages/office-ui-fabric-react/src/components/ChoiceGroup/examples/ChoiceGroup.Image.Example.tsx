@@ -21,7 +21,7 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
   }
 
   public render() {
-    let { selectedKey } = this.state;
+    const { selectedKey } = this.state;
 
     return (
       <div>

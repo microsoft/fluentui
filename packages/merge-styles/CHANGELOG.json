@@ -2,6 +2,90 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.13.0",
+      "tag": "@uifabric/merge-styles_v5.13.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.2",
+      "tag": "@uifabric/merge-styles_v5.12.2",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "51d47a80898d9834d40205274268e60730f306a1",
+            "comment": "Adding test coverage for media queries."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.1",
+      "tag": "@uifabric/merge-styles_v5.12.1",
+      "date": "Fri, 16 Feb 2018 11:23:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "04bd4051d81e68f7b007009e85b50665d4b9db4e",
+            "comment": "mergeStyles: setting `fill-opacity` as unitless."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.0",
+      "tag": "@uifabric/merge-styles_v5.12.0",
+      "date": "Wed, 14 Feb 2018 22:10:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "711ef243d0212f623a55ebde0d98042f148d81db",
+            "comment": "mergeStyles: Adding support to register selectors globally. Use `:global(rule)` as the selector to ensure that the unique className is not prepended in the output. See merge-styles README.md for more details."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.2",
+      "tag": "@uifabric/merge-styles_v5.11.2",
+      "date": "Wed, 07 Feb 2018 11:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d121208b61c93811909fb69d2ba8d104c3531769",
+            "comment": "Adjusting rtl flipping logic to be more resilient to invalid styling."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.1",
+      "tag": "@uifabric/merge-styles_v5.11.1",
+      "date": "Tue, 06 Feb 2018 11:14:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "857b101451a04bb20ee88d08b36511485939005d",
+            "comment": "[provideUnits] Add line-height to ignore"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.0",
       "tag": "@uifabric/merge-styles_v5.11.0",
       "date": "Thu, 25 Jan 2018 11:23:06 GMT",

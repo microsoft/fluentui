@@ -29,9 +29,9 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
   }
 
   public render() {
-    let { items: originalItems } = this.props;
-    let { items } = this.state;
-    let resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
+    const { items: originalItems } = this.props;
+    const { items } = this.state;
+    const resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
@@ -45,7 +45,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
   }
 
   private _onFilterChanged(text: string) {
-    let { items } = this.props;
+    const { items } = this.props;
 
     this.setState({
       filterText: text,

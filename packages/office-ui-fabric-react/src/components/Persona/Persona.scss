@@ -51,7 +51,6 @@ $ms-Persona-presenceBorder: 2px;
   height: $ms-Persona-size48;
   display: flex;
   align-items: center;
-  overflow: hidden;
 
   .contextualHost {
     display: none;
@@ -61,18 +60,6 @@ $ms-Persona-presenceBorder: 2px;
     .primaryText {
       color: $ms-color-neutralDark;
     }
-  }
-}
-
-.imageArea {
-  position: relative;
-  text-align: center;
-  flex: 0 0 auto;
-  height: $ms-Persona-size48;
-  width: $ms-Persona-size48;
-
-  .image {
-    border: 0px;
   }
 }
 
@@ -87,39 +74,6 @@ $ms-Persona-presenceBorder: 2px;
   font-size: 47px;
   top: 9px;
   z-index: $ms-zIndex-middle;
-}
-
-.initials {
-  border-radius: 50%;
-  color: $ms-color-white;
-  font-size: $ms-font-size-l;
-  font-weight: $ms-font-weight-regular;
-  line-height: 46px;
-  height: $ms-Persona-size48;
-
-  @include high-contrast {
-    border: 1px solid WindowText;
-    -ms-high-contrast-adjust: none;
-    color: WindowText;
-    box-sizing: border-box;
-    // Using important to override all of the more specific initialsIsColor rules
-    background-color: Window !important;
-  }
-}
-
-.image {
-  @include ms-margin-right(10px);
-  position: absolute;
-  top: 0;
-  @include ms-left(0);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  perspective: 1px;
-}
-
-.image[src=""] {
-  display: none;
 }
 
 .presence {
@@ -202,13 +156,7 @@ $ms-Persona-presenceBorder: 2px;
   min-width: $ms-Persona-size10;
 }
 
-.rootIsSize10{
-  .imageArea {
-    overflow: visible;
-    background: transparent;
-    height: 0;
-    width: 0;
-  }
+.rootIsSize10 {
 
   .presence {
     @include ms-right(auto);
@@ -242,14 +190,6 @@ $ms-Persona-presenceBorder: 2px;
   }
 }
 
-.size10NoPresenceIcon {
-  font-size: 10px;
-  position: absolute;
-  top: 5px;
-  @include ms-right(auto);
-  @include ms-left(0);
-}
-
 //== Modifier: Size 10 Persona with read only state
 //
 // This variant includes a semicolon, and is
@@ -266,27 +206,15 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 16 Persona
 //
 .root.rootIsSize16 {
-  height: $ms-Persona-size16 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size16  + $ms-Persona-presenceBorder;
-  overflow: hidden;
+  height: $ms-Persona-size16;
+  min-width: $ms-Persona-size16;
 }
 
 .rootIsSize16 {
-  .imageArea,
-  .image {
-    height: $ms-Persona-size16;
-    width: $ms-Persona-size16;
-  }
 
   .placeholder {
     font-size: 18px;
     top: 4px;
-  }
-
-  .initials {
-    font-size: $ms-font-size-xs;
-    height: $ms-Persona-size16;
-    line-height: $ms-Persona-size16;
   }
 
   .presence {
@@ -312,26 +240,15 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 24 Persona
 //
 .root.rootIsSize24 {
-  height: $ms-Persona-size24 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size24 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size24;
+  min-width: $ms-Persona-size24;
 }
 
 .rootIsSize24 {
-  .imageArea,
-  .image {
-    height: $ms-Persona-size24;
-    width: $ms-Persona-size24;
-  }
 
   .placeholder {
     font-size: 18px;
     top: 4px;
-  }
-
-  .initials {
-    font-size: $ms-font-size-xs;
-    height: $ms-Persona-size24;
-    line-height: $ms-Persona-size24;
   }
 
   .presence {
@@ -372,31 +289,18 @@ $ms-Persona-presenceBorder: 2px;
   }
 }
 
-
 //== Modifier: Size 28 Persona
 //
 .root.rootIsSize28 {
-  height: $ms-Persona-size28 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size28 + $ms-Persona-presenceBorder;
-  overflow: hidden;
+  height: $ms-Persona-size28;
+  min-width: $ms-Persona-size28;
 }
 
 .rootIsSize28 {
-  .imageArea,
-  .image {
-    height: $ms-Persona-size28;
-    width: $ms-Persona-size28;
-  }
 
   .placeholder {
     font-size: 18px;
     top: 4px;
-  }
-
-  .initials {
-    font-size: $ms-font-size-xs;
-    height: $ms-Persona-size28;
-    line-height: $ms-Persona-size28;
   }
 
   .presence {
@@ -441,26 +345,15 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 32 Persona
 //
 .root.rootIsSize32 {
-  height: $ms-Persona-size32 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size32 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size32;
+  min-width: $ms-Persona-size32;
 }
 
 .rootIsSize32 {
-  .imageArea,
-  .image {
-    height: $ms-Persona-size32;
-    width: $ms-Persona-size32;
-  }
 
   .placeholder {
     font-size: 28px;
     top: 6px;
-  }
-
-  .initials {
-    font-size: $ms-font-size-m;
-    height: $ms-Persona-size32;
-    line-height: $ms-Persona-size32;
   }
 
   .presence {
@@ -495,26 +388,15 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 40 Persona
 //
 .root.rootIsSize40 {
-  height: $ms-Persona-size40 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size40 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size40;
+  min-width: $ms-Persona-size40;
 }
 
 .rootIsSize40 {
-  .imageArea,
-  .image {
-    height: $ms-Persona-size40;
-    width: $ms-Persona-size40;
-  }
 
   .placeholder {
     font-size: 38px;
     top: 5px;
-  }
-
-  .initials {
-    font-size: $ms-font-size-m;
-    height: $ms-Persona-size40;
-    line-height: $ms-Persona-size40;
   }
 
   .primaryText {
@@ -526,26 +408,15 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 72 Persona
 //
 .root.rootIsSize72 {
-  height: $ms-Persona-size72 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size72 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size72;
+  min-width: $ms-Persona-size72;
 }
 
 .rootIsSize72 {
-  .imageArea,
-  .image {
-    height: $ms-Persona-size72;
-    width: $ms-Persona-size72;
-  }
 
   .placeholder {
     font-size: 67px;
     top: 10px;
-  }
-
-  .initials {
-    font-size: $ms-font-size-xxl;
-    height: $ms-Persona-size72;
-    line-height: 70px;
   }
 
   .presence {
@@ -575,26 +446,15 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 100 Persona
 //
 .root.rootIsSize100 {
-  height: $ms-Persona-size100 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size100 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size100;
+  min-width: $ms-Persona-size100;
 }
 
 .rootIsSize100 {
-  .imageArea,
-  .image {
-    height: $ms-Persona-size100;
-    width: $ms-Persona-size100;
-  }
 
   .placeholder {
     font-size: 95px;
     top: 12px;
-  }
-
-  .initials {
-    font-size: $ms-font-size-su;
-    height: $ms-Persona-size100;
-    line-height: 96px;
   }
 
   .presence {

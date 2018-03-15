@@ -4,6 +4,7 @@ import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRenderFunction } from '../../Utilities';
+import { IComboBoxClassNames } from './ComboBox.classNames';
 
 export interface IComboBox {
   /**
@@ -46,6 +47,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    *    (and hence only value would be true, the other parameter would be null in this case)
    */
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * Callback issued when the user changes the pending value in ComboBox
+   */
+  onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
    * Function that gets invoked when the ComboBox menu is launched
@@ -100,6 +106,21 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Custom styles for this component
    */
   styles?: Partial<IComboBoxStyles>;
+
+  /**
+   * Custom function for providing the classNames for the ComboBox. Can be used to provide
+   * all styles for the component instead of applying them on top of the default styles.
+   */
+  getClassNames?: (
+    theme: ITheme,
+    isOpen: boolean,
+    disabled: boolean,
+    required: boolean,
+    focused: boolean,
+    allowFreeForm: boolean,
+    hasErrorMessage: boolean,
+    className?: string
+  ) => IComboBoxClassNames;
 
   /**
    * Styles for the caret down button.

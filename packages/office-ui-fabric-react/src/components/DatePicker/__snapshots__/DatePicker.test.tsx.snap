@@ -30,7 +30,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             onInput={[Function]}
             onKeyDown={[Function]}
             placeholder={undefined}
-            readOnly={false}
+            readOnly={true}
             required={false}
             role="menu"
             type="text"
@@ -38,7 +38,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           />
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-DatePicker-event--without-label
                 {
