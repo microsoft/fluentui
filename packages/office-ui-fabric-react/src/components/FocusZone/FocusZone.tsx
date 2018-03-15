@@ -20,7 +20,6 @@ import {
   getParent,
   getPreviousElement,
   getRTL,
-  getWindow,
   isElementFocusZone,
   isElementFocusSubZone,
   isElementTabbable,

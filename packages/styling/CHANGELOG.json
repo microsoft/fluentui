@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.19.1",
+      "tag": "@uifabric/styling_v5.19.1",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a3841913dd420f50f9a04cdd56676aa9f4f0fd89",
+            "comment": "By default, try to use the system font before downloading a web font"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.17.1 <6.0.0` to `>=5.18.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.19.0",
       "tag": "@uifabric/styling_v5.19.0",
       "date": "Fri, 23 Feb 2018 03:05:53 GMT",

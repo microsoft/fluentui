@@ -5,12 +5,7 @@ import {
   IPoint,
   IRectangle
 } from '../../../Utilities';
-import {
-  getRelativePositions,
-  IPositionProps,
-  getMaxHeight,
-  ICalloutPositon
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IPositioningContainer {
 }

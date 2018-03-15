@@ -12,8 +12,6 @@ import {
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 
-import { FocusZone } from '../../FocusZone';
-
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
 
 export interface ISearchBoxState {
