@@ -104,13 +104,13 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     let scrollMode = this.state.scrollToMode;
     switch (option.key) {
       case 'auto':
-        scrollMode = ScrollToMode.auto
+        scrollMode = ScrollToMode.auto;
         break;
       case 'top':
-        scrollMode = ScrollToMode.top
+        scrollMode = ScrollToMode.top;
         break;
       case 'bottom':
-        scrollMode = ScrollToMode.bottom
+        scrollMode = ScrollToMode.bottom;
         break;
     }
     this._scroll(this.state.selectedIndex, scrollMode);
