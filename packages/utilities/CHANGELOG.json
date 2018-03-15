@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.18.2",
+      "tag": "@uifabric/utilities_v5.18.2",
+      "date": "Thu, 15 Mar 2018 02:42:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3cd823b02aadb1e66f9b6221d4d32bafbe895386",
+            "comment": "Revert focus changes"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.1",
       "tag": "@uifabric/utilities_v5.18.1",
       "date": "Tue, 13 Mar 2018 10:17:37 GMT",
