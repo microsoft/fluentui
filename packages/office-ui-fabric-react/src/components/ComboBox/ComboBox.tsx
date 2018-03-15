@@ -12,14 +12,12 @@ import { Autofill } from '../Autofill/Autofill';
 import {
   autobind,
   BaseComponent,
-  css,
   divProperties,
   findIndex,
   getId,
   getNativeProps,
   KeyCodes,
-  customizable,
-  css
+  customizable
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -151,7 +149,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._id = props.id || getId('ComboBox');
 
-
     let selectedKeys = [];
     if (props.multiSelect) {
       selectedKeys = (props.defaultSelectedKeys ? props.defaultSelectedKeys : props.selectedKeys) || [];
@@ -161,7 +158,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._isScrollIdle = true;
 
-    let initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
+    const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
     this.state = {
       isOpen: false,
@@ -186,8 +183,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (newProps.selectedKey !== this.props.selectedKey ||
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
-      let selectedKeys: (string | number | undefined)[] = (this.props.multiSelect ? newProps.selectedKeys : [newProps.selectedKey]) || [];
-      let indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
+      const selectedKeys: (string | number | undefined)[] = (this.props.multiSelect ? newProps.selectedKeys : [newProps.selectedKey]) || [];
+      const indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
 
       this.setState({
         selectedIndices: indices,
@@ -284,7 +281,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       theme,
       title
     } = this.props;
-    let { isOpen, selectedIndices, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, selectedIndices, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     const divProps = getNativeProps(this.props, divProperties);
@@ -457,7 +454,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       autoComplete
     } = this.props;
-    let {
+    const {
       selectedIndices,
       currentPendingValueValidIndex,
       currentOptions,
@@ -476,19 +473,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     // Values to display in the BaseAutoFill area
-    let displayValues = [];
+    const displayValues = [];
 
     if (this.props.multiSelect) {
       // MUlti-select
       if (focused) {
-        let index: number = -1;
+        let index = -1;
         if (autoComplete === 'on' && currentPendingIndexValid) {
           index = currentPendingValueValidIndex;
         }
         displayValues.push(currentPendingValue !== '' ? currentPendingValue : (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : ''));
       } else {
         for (let idx = 0; selectedIndices && (idx < selectedIndices.length); idx ++) {
-          let index: number = selectedIndices[idx];
+          const index: number = selectedIndices[idx];
           displayValues.push(this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : suggestedDisplayValue);
         }
       }
@@ -524,7 +521,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If we have a valid index then return the text value of that option,
     // otherwise return the suggestedDisplayValue
-    let displayString: string = '';
+    let displayString = '';
     for (let idx = 0; idx < displayValues.length; idx++) {
       if (idx > 0) {
         displayString += ', ';
@@ -669,7 +666,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // If we get here, either autoComplete is on or we did not find a match with autoComplete on.
     // Remember we are not allowing freeform, so at this point, if we have a pending valid value index
     // use that; otherwise use the selectedIndex
-    let index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : this._getFirstSelectedIndex();
+    const index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : this._getFirstSelectedIndex();
 
     // Since we are not allowing freeform, we need to
     // set both the pending and suggested values/index
@@ -729,8 +726,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search along the options from the given index
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
-    let { onChanged, onPendingValueChanged } = this.props;
-    let { selectedIndices, currentOptions } = this.state;
+    const { onChanged, onPendingValueChanged } = this.props;
+    const { currentOptions } = this.state;
+    let { selectedIndices } = this.state;
+
     if (!selectedIndices) {
       selectedIndices = [];
     }
@@ -746,7 +745,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
     if (this.props.multiSelect || (selectedIndices && selectedIndices.length === 1 && selectedIndices[0] !== index)) {
-      let option: IComboBoxOption = currentOptions[index];
+      const option: IComboBoxOption = currentOptions[index];
       if (!option) {
         return;
       }
@@ -784,7 +783,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _removeSelectedIndex(index: number) {
-    let selectedIndices = this.state.selectedIndices && this.state.selectedIndices.filter((idx: number) => idx !== index) || [];
+    const selectedIndices = this.state.selectedIndices && this.state.selectedIndices.filter((idx: number) => idx !== index) || [];
     this.setState({
       selectedIndices: selectedIndices
     });
@@ -871,13 +870,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       autoComplete
     } = this.props;
-    let {
-      selectedIndices,
+    const {
       currentPendingValue,
       currentPendingValueValidIndex,
       currentOptions,
       currentPendingValueValidIndexOnHover
     } = this.state;
+    let { selectedIndices } = this.state;
 
     // If we allow freeform and we have a pending value, we
     // need to handle that
@@ -907,8 +906,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onChanged(undefined, undefined, currentPendingValue);
       } else {
         // If we are not controlled, create a new option
-        let newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
-        let newOptions: IComboBoxOption[] = [...currentOptions, newOption];
+        const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
+        const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
         if (selectedIndices) {
           if (!this.props.multiSelect) {
             selectedIndices = [];
@@ -1114,7 +1113,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return true;
     }
 
-    let idxOfSelectedIndex: number = -1;
+    let idxOfSelectedIndex = -1;
     if ((index !== undefined) && this.state.selectedIndices) {
       idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
     }
@@ -1254,13 +1253,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns { number } - the index of the selected option, -1 if not found
    */
   private _getSelectedIndices(options: IComboBoxOption[] | undefined, selectedKeys: (string | number | undefined)[]): number[] {
-    let selectedIndices: any[] = [];
+    const selectedIndices: any[] = [];
     if (options === undefined || selectedKeys === undefined) {
       return selectedIndices;
     }
 
-    for (let selectedKey of selectedKeys) {
-      let index = findIndex(options, (option => (option.selected || option.key === selectedKey)));
+    for (const selectedKey of selectedKeys) {
+      const index = findIndex(options, (option => (option.selected || option.key === selectedKey)));
       if (index > -1) {
         selectedIndices.push(index);
       }
@@ -1275,14 +1274,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * selected state text
    */
   private _resetSelectedIndex() {
-    let {
+    const {
       selectedIndices,
       currentOptions
     } = this.state;
     this._comboBox.clear();
     this._clearPendingInfo();
 
-    let selectedIndex: number = this._getFirstSelectedIndex();
+    const selectedIndex: number = this._getFirstSelectedIndex();
     if (selectedIndex > 0 && selectedIndex < currentOptions.length) {
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
@@ -1341,7 +1340,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search
    */
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
-    let {
+    const {
       isOpen,
       currentOptions
     } = this.state;
@@ -1427,7 +1426,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         if (this.props.multiSelect && isOpen) {
           // Toggle the current pending option
           if (selectedIndices) {
-            let idxToRemove: number = selectedIndices.indexOf(index);
+            const idxToRemove: number = selectedIndices.indexOf(index);
             if (idxToRemove > -1) {
               selectedIndices.splice(idxToRemove, 1);
             } else {
@@ -1455,7 +1454,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             this.setState({
               isOpen: !isOpen
             });
-          }  
+          }
         }
         break;
 
