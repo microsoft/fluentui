@@ -29,12 +29,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         overflow: 'inherit',
         padding: 0,
         textAlign: 'left',
-        textOverflow: 'inherit',
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'Highlight'
-          }
-        }
+        textOverflow: 'inherit'
       },
       !isButton && {
         textDecoration: 'none'

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 01 Mar 2018 00:05:10 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Mar 2018 10:28:26 GMT and should not be manually modified.
+
+## 5.4.0
+Wed, 14 Mar 2018 10:28:26 GMT
+
+### Minor changes
+
+- Theme generator: exposing to the website.
+
+## 5.3.4
+Tue, 13 Mar 2018 20:00:06 GMT
+
+### Patches
+
+- Hide left nav on mobile.
+
+## 5.3.3
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Patches
+
+- Fixed in page nav so that the left nav links will display properly.
 
 ## 5.3.2
 Thu, 01 Mar 2018 00:05:10 GMT

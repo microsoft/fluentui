@@ -33,6 +33,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     const facepileProps: IFacepileProps = {
       personaSize: personaSize,
       personas: facepilePersonas.slice(0, numberOfFaces),
+      overflowPersonas: facepilePersonas.slice(numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
         return {
           imageShouldFadeIn: this.state.imagesFadeIn

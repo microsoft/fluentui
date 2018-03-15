@@ -18,8 +18,7 @@ import { ResizeGroup, IResizeGroup } from 'office-ui-fabric-react/lib/ResizeGrou
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import {
   classNamesFunction,
-  createRef,
-  RefObject
+  createRef
 } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
@@ -56,8 +55,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     elipisisIconProps: { iconName: 'More' }
   };
 
-  private _overflowSet: RefObject<IOverflowSet> = createRef<IOverflowSet>();
-  private _resizeGroup: RefObject<IResizeGroup> = createRef<IResizeGroup>();
+  private _overflowSet = createRef<IOverflowSet>();
+  private _resizeGroup = createRef<IResizeGroup>();
   private _classNames: {[key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {

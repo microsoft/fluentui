@@ -204,7 +204,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>
           { item.categoryList.map((category: any) =>
-            <button className='ms-ContextualMenu-link' role='menuitem' key={ category.name }>
+            <DefaultButton className='ms-ContextualMenu-link ms-ContextualMenu-customizationExample-button' role='menuitem' key={ category.name }>
               <div>
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
@@ -214,7 +214,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
                   { category.name }
                 </span>
               </div>
-            </button>
+            </DefaultButton>
           ) }
         </li>
       </ul>
