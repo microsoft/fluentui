@@ -180,6 +180,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let target = ev.target as HTMLElement;
     const itemRoot = this._findItemRoot(target);
 
+    // No-op if selection is disabled
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
     while (target !== this._root) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
         break;
