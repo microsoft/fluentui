@@ -114,7 +114,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
   @autobind
   private _onItemSelected(item: any) {
     if (this._listContainsDocument(item, this._picker.items)) {
-      return null
+      return null;
     }
     return item;
   }
