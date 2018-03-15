@@ -242,8 +242,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           }
 
           const itemIsFullyVisible = scrollTop >= scrollWindow.top && scrollBottom <= scrollWindow.bottom;
-          // Item is already visible and scrollMode is auto, do nothing and return
           if (itemIsFullyVisible) {
+            // Item is already visible, do nothing.
             return;
           }
 
