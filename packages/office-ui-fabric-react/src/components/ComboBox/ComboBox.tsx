@@ -1704,7 +1704,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
+    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._isPendingOption(item));
   }
 
   /**
@@ -1727,5 +1727,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _getAriaAutoCompleteValue(): string {
     const autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
     return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
+  }
+
+  private _isPendingOption(item: IComboBoxOption): boolean {
+    return item && item.index === this.state.currentPendingValueValidIndex;
   }
 }
