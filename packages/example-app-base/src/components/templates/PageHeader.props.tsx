@@ -6,9 +6,6 @@ import {
   ITheme,
   IStyle
 } from 'office-ui-fabric-react/lib/Styling';
-// import {
-//   IGetStylesFunction
-// } from '../utilities';
 
 /**
  * The getStyles props contract.

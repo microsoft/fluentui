@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { createStyled } from '../utilities';
 import {
   BaseComponent,
   IBaseProps,
@@ -12,9 +11,6 @@ import {
   ITheme,
   IStyle
 } from 'office-ui-fabric-react/lib/Styling';
-// import {
-//   IGetStylesFunction
-// } from '../utilities';
 
 /**
  * The getStyles props contract.

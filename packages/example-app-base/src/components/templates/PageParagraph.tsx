@@ -10,9 +10,6 @@ import {
   IStyle,
   mergeStyleSets
 } from 'office-ui-fabric-react/lib/Styling';
-// import {
-//   IClassNames
-// } from '../utilities';
 
 export interface IPageParagraphProps extends React.Props<PageParagraph>, IBaseProps {
   theme?: ITheme;

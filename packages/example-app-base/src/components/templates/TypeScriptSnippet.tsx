@@ -40,7 +40,7 @@ export class TypeScriptSnippet extends React.Component {
         lineNumberStyle={ lineNumberStyle }
         language='typescript'
         className={ rootClass }
-        style={ style }
+        style={ style } // tslint:disable-line
       >
         { this.props.children }
       </SyntaxHighlighter>

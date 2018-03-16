@@ -10,9 +10,6 @@ import {
   mergeStyleSets
 } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-// import {
-//   IClassNames
-// } from '../utilities';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 
 export interface IPageTagProps extends React.Props<PageTag>, IBaseProps {

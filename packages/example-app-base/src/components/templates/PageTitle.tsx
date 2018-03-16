@@ -10,9 +10,6 @@ import {
   mergeStyleSets
 } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-// import {
-//   IClassNames
-// } from '../utilities';
 
 export interface IPageTitleProps extends React.Props<PageTitle>, IBaseProps {
   theme?: ITheme;

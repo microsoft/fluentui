@@ -13,9 +13,6 @@ import {
 import {
   IImageProps
 } from 'office-ui-fabric-react/lib/Image';
-// import {
-//   IClassNames
-// } from '../utilities';
 
 export interface IPageImageSetStyles {
   root: IStyle;

@@ -90,7 +90,7 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
             return <PageImageSet { ...imageSetProps } />;
           }
           return (
-            <ul { ...props} />
+            <ul { ...props } />
           );
         }
       },
