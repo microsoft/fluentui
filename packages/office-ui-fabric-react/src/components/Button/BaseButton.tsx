@@ -507,7 +507,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     ev.preventDefault();
   }
 
-  private _onSplitButtonContainerKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
+  private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which === KeyCodes.enter) {
       if (this._buttonElement.value) {
         this._buttonElement.value.click();
