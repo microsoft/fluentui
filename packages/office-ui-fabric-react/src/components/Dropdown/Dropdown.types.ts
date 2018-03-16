@@ -73,6 +73,13 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   multiSelectDelimiter?: string;
 
   /**
+   * Allows the user to search the dropdown items with a text input, like a
+   * combobox. If an item does not have the property specified, it will not be
+   * searchable.
+   */
+  searchItemsBy?: string;
+
+  /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
    */
