@@ -1264,13 +1264,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {
-          ...{
-            handleTabKey: FocusZoneTabbableElements.all,
-            isCircularNavigation: false,
-            shouldInputLoseFocusOnArrowKey: (element) => { return true; }
-          }
-        }>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: false, shouldInputLoseFocusOnArrowKey: (element) => { return true; } } }>
           <input type='text' className='a' />
           <button className='b'>b</button>
         </FocusZone>
@@ -1304,25 +1298,10 @@ describe('FocusZone', () => {
     inputA.focus();
     expect(lastFocusedElement).toBe(inputA);
 
-    // When we hit right/left on the arrow key, we don't want to be able to leave focus on an input
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    expect(lastFocusedElement).toBe(inputA);
-
-    expect(inputA.tabIndex).toBe(0);
-    expect(buttonB.tabIndex).toBe(-1);
-
-    // Pressing arrow down should put focus on the button
+    // Pressing arrow down, input should loose the focus and the button should get the focus
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
     expect(lastFocusedElement).toBe(buttonB);
     expect(inputA.tabIndex).toBe(-1);
     expect(buttonB.tabIndex).toBe(0);
   });
 });
-
-
