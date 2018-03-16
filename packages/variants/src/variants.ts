@@ -3,8 +3,8 @@ import {
   ISemanticColors,
   ITheme,
   IPartialTheme
-} from '@uifabric/styling';
-import { createTheme } from '@uifabric/styling';
+} from '@uifabric/styling/lib/index';
+import { createTheme } from '@uifabric/styling/lib/index';
 
 /* Variants
  * Variants are themes based off the current theme.
