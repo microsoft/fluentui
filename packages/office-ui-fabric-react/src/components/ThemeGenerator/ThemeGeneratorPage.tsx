@@ -284,7 +284,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         // todo: could use more logic based on isInverted and isBg
         switch (color.toLowerCase()) {
           case 'black': return '#1f1f1f';
-          case 'blue': return '#0078d7';
+          case 'blue': return '#0078d4';
           case 'brown': return '#754d12';
           case 'gray':
           case 'grey': return isBg ? '#444' : '#ccc';
