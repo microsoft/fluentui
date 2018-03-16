@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "ThemePrimary: Updating this color along with an Office branding update.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "lynam.emily@gmail.com"
+}

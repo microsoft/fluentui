@@ -77,10 +77,10 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;
@@ -179,10 +179,10 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;

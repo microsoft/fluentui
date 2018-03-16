@@ -179,7 +179,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -372,7 +372,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -565,7 +565,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -758,7 +758,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -955,7 +955,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -1148,7 +1148,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -1341,7 +1341,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -1534,7 +1534,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -1731,7 +1731,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -1924,7 +1924,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -2117,7 +2117,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
@@ -2310,7 +2310,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;

@@ -58,10 +58,10 @@ exports[`Button renders ActionButton correctly 1`] = `
         top: -2px;
       }
       &:hover {
-        color: #0078d7;
+        color: #0078d4;
       }
       &:hover .ms-Button-icon {
-        color: #0078d7;
+        color: #0078d4;
       }
       &:active {
         color: #000000;
@@ -574,7 +574,7 @@ exports[`Button renders IconButton correctly 1`] = `
         color: #004578;
       }
       &:active {
-        color: #0078d7;
+        color: #0078d4;
       }
   data-is-focusable={true}
   disabled={undefined}
