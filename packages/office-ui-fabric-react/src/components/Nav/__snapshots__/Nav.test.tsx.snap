@@ -12,6 +12,7 @@ exports[`Nav renders Nav correctly 1`] = `
   role="presentation"
 >
   <nav
+    aria-label={undefined}
     className=
         ms-Nav
         {
@@ -40,7 +41,6 @@ exports[`Nav renders Nav correctly 1`] = `
             }
       >
         <ul
-          aria-label={undefined}
           className=
               ms-Nav-navItems
               {

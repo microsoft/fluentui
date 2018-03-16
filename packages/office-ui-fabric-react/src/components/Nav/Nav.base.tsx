@@ -105,6 +105,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         <nav
           role='navigation'
           className={ classNames.root }
+          aria-label={ this.props.ariaLabel }
         >
           { groupElements }
         </nav>
@@ -218,7 +219,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const classNames = getClassNames(getStyles!, { theme: theme!, groups });
 
     return (
-      <ul role='list' aria-label={ this.props.ariaLabel } className={ classNames.navItems }>
+      <ul role='list' className={ classNames.navItems }>
         { linkElements }
       </ul>
     );
