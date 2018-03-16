@@ -44,7 +44,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           display: none;
         }
         &.is-open {
-          border-color: #0078d7;
+          border-color: #0078d4;
         }
         @media screen and (-ms-high-contrast: active){&.is-open {
           -ms-high-contrast-adjust: none;
@@ -70,7 +70,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           color: HighlightText;
         }
         &:active {
-          border-color: #0078d7;
+          border-color: #0078d4;
         }
         @media screen and (-ms-high-contrast: active){&:active {
           -ms-high-contrast-adjust: none;
@@ -87,7 +87,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           top: -2px;
         }
         &:focus {
-          border-color: #0078d7;
+          border-color: #0078d4;
         }
         @media screen and (-ms-high-contrast: active){&:focus {
           -ms-high-contrast-adjust: none;
