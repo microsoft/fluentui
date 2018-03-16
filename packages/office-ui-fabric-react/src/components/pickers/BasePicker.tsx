@@ -230,7 +230,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected renderSuggestions(): JSX.Element | null {
     const TypedSuggestion = this.SuggestionOfProperType;
-    return this.state.suggestionsVisible ? (
+    return this.state.suggestionsVisible && this.input ? (
       <Callout
         isBeakVisible={ false }
         gapSpace={ 5 }
