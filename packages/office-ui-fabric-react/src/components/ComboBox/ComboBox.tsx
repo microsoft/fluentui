@@ -1040,7 +1040,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOption } = this.props;
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
-    const rootClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item)).root;
+    const optionStyles = this._getCurrentOptionStyles(item);
 
     return (
       !this.props.multiSelect ? (
@@ -1048,8 +1048,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           id={id + '-list' + item.index}
           key={item.key}
           data-index={item.index}
-          className={rootClassNames}
-          styles={this._getCurrentOptionStyles(item)}
+          styles={optionStyles}
           checked={isSelected}
           onClick={this._onItemClick(item.index)}
           onMouseEnter={this._onOptionMouseEnter.bind(this, item.index)}
@@ -1072,13 +1071,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             ref={'option' + item.index}
             key={item.key}
             data-index={item.index}
+            styles={optionStyles}
             data-is-focusable={true}
             onChange={this._onItemClick(item.index!)}
             label={item.text}
             role='option'
             aria-selected={ isSelected ? 'true' : 'false' }
             checked={isSelected}
-            styles={this._getCurrentOptionStyles(item)}
           >
             {onRenderOption(item, this._onRenderOption)}
           </Checkbox>
