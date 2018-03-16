@@ -57,7 +57,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
     const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
-          previewIconProps: { iconName: 'OutlookLogoInverse', styles: { root: { fontSize: 42, color: '#0078d7' } } },
+          previewIconProps: { iconName: 'OutlookLogo', styles: { root: { fontSize: 42, color: '#0078d7' } } },
           previewIconContainerClass: 'ms-DocumentCardPreview-iconContainer2',
           width: 144
         }

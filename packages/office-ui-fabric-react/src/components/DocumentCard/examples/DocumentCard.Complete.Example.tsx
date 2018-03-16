@@ -96,7 +96,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
     };
 
     const logoProps: IDocumentCardLogoProps = {
-      logoIcon: 'OutlookLogoInverse'
+      logoIcon: 'OutlookLogo'
     };
 
     return (
