@@ -744,7 +744,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
-    if (this.props.multiSelect || (selectedIndices && selectedIndices.length === 1 && selectedIndices[0] !== index)) {
+    if (this.props.multiSelect || selectedIndices.length < 1 || (selectedIndices.length === 1 && selectedIndices[0] !== index)) {
       const option: IComboBoxOption = currentOptions[index];
       if (!option) {
         return;
@@ -1050,6 +1050,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           data-index={item.index}
           styles={optionStyles}
           checked={isSelected}
+          className={'ms-ComboBox-option'}
           onClick={this._onItemClick(item.index)}
           onMouseEnter={this._onOptionMouseEnter.bind(this, item.index)}
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
@@ -1072,6 +1073,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             key={item.key}
             data-index={item.index}
             styles={optionStyles}
+            className={'ms-ComboBox-option'}
             data-is-focusable={true}
             onChange={this._onItemClick(item.index!)}
             label={item.text}
