@@ -255,7 +255,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     color: #004578;
                   }
                   &:active {
-                    color: #0078d7;
+                    color: #0078d4;
                   }
               data-is-focusable={true}
               disabled={undefined}

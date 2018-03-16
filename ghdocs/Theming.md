@@ -10,7 +10,7 @@ Theming is a mechanism by which a consistent look and feel can be applied to all
 
 ## What's in a theme?
 A theme is defined by a simple collection of variables (which we call slots) with string values.
-For example, `themePrimary` by default is `"#0078d7"`, but it could easily be `"rgba(0, 120, 215)"`.
+For example, `themePrimary` by default is `"#0078d4"`, but it could easily be `"rgba(0, 120, 212)"`.
 
 
 ## What are theme slots?

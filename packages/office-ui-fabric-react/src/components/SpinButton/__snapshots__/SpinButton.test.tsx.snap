@@ -104,7 +104,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             width: calc(100% - 14px);
           }
           &::selection {
-            background-color: #0078d7;
+            background-color: #0078d4;
             color: #ffffff;
           }
           @media screen and (-ms-high-contrast: active){&::selection {

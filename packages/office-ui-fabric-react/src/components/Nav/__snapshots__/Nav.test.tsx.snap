@@ -141,10 +141,10 @@ exports[`Nav renders Nav correctly 1`] = `
                       color: #333333;
                     }
                     &:hover {
-                      color: #0078d7;
+                      color: #0078d4;
                     }
                     &:hover .ms-Button-icon {
-                      color: #0078d7;
+                      color: #0078d4;
                     }
                     &:active {
                       color: #000000;
