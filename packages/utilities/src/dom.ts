@@ -170,7 +170,7 @@ export function getWindow(rootElement?: Element | null): Window | undefined {
  *
  * @public
  */
-export function getDocument(rootElement?: HTMLElement): Document | undefined {
+export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {

@@ -108,9 +108,10 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        const doc = getDocument(this._rootElement.value);
+        const rootElement = this._rootElement.value;
+        const doc = getDocument(rootElement);
 
-        if (!this._rootElement.value || !doc) {
+        if (!doc || !rootElement) {
           return;
         }
 
@@ -118,7 +119,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
         this._layerElement.className = classNames.root;
 
         host.appendChild(this._layerElement);
-        setVirtualParent(this._layerElement, this._rootElement.value);
+        setVirtualParent(this._layerElement, rootElement);
       }
 
       // Using this 'unstable' method allows us to retain the React context across the layer projection.
@@ -168,9 +169,13 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  private _getHost(): Node {
+  private _getHost(): Node | undefined {
     const { hostId } = this.props;
-    const doc = getDocument(this._rootElement.value) as Document;
+    const doc = getDocument(this._rootElement.value);
+
+    if (!doc) {
+      return undefined;
+    }
 
     if (hostId) {
       return doc.getElementById(hostId) as Node;
