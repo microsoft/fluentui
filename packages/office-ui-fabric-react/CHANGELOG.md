@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Mar 2018 10:37:10 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Mar 2018 10:28:03 GMT and should not be manually modified.
+
+## 5.64.4
+Fri, 16 Mar 2018 10:28:03 GMT
+
+### Patches
+
+- Button: fixed bug causes by onRenderDescription pulling from this.props instead of passed in props
+- BaseButton: removing autobind usage.
+- Added _isSelectionDisabled check in SelectionZone's onMouseDown event handler
+- Pickers: Allow onItemSelected to return null
+- Nav component sets aria-label on nested element with role=navigation
+- ContextualMenu: Allow anchor menu items to have sub menus. Added prop for sub menu hover delay.
+- Export LinkBase from OfficeFabric/Link/index.ts
 
 ## 5.64.3
 Thu, 15 Mar 2018 10:37:10 GMT

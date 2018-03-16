@@ -10,6 +10,14 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
+  const buttonHighContrastFocus = {
+    left: -2,
+    top: -2,
+    bottom: -2,
+    right: -2,
+    border: 'none'
+  };
+
   const splitButtonStyles: IButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
@@ -21,7 +29,7 @@ export const getStyles = memoizeFunction((
       border: '1px solid'
     },
     splitButtonMenuButton: [
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
       {
         padding: 6,
         height: 'auto',

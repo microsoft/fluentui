@@ -117,7 +117,7 @@ function _renderItemColumn(item: any, index: number, column: IColumn) {
       return <Link href='#'>{ fieldContent }</Link>;
 
     case 'color':
-      return <span data-selection-disabled={ true } style={ { color: fieldContent } }>{ fieldContent }</span>;
+      return <span data-selection-disabled={ true } style={ { color: fieldContent, height: '100%', display: 'block' } }>{ fieldContent }</span>;
 
     default:
       return <span>{ fieldContent }</span>;

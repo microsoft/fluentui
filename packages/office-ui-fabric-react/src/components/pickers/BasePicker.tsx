@@ -596,7 +596,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected addItem(item: T) {
-    const processedItem: T | PromiseLike<T> = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+    const processedItem: T | PromiseLike<T> | null =
+      this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+
+    if (processedItem === null) {
+      return;
+    }
 
     const processedItemObject: T = processedItem as T;
     const processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
