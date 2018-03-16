@@ -2,8 +2,7 @@ import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
   concatStyleSets,
-  getFocusStyle,
-  HighContrastSelector
+  getFocusStyle
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 

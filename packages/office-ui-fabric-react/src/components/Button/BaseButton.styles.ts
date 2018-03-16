@@ -5,8 +5,7 @@ import {
   IRawStyle,
   getFocusStyle,
   FontSizes,
-  hiddenContentStyle,
-  HighContrastSelector
+  hiddenContentStyle
 } from '../../Styling';
 
 const noOutline: IRawStyle = {
