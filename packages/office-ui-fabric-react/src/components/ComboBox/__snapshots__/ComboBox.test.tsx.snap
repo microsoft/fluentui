@@ -205,6 +205,14 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             top: 0px;
             z-index: 1;
           }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
             background-color: ButtonFace;
