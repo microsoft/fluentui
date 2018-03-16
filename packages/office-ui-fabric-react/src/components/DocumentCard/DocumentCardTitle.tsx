@@ -66,31 +66,20 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
   }
 
   public render() {
-    const { title, shouldTruncate, titleIcon } = this.props;
+    const { title, shouldTruncate } = this.props;
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
 
     let documentCardTitle;
     if (shouldTruncate && this._isTruncated) {
       documentCardTitle = (
-        <div className={ css('ms-DocumentCardTitle', titleIcon ? styles.titleTitle : styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>
+        <div className={ css('ms-DocumentCardTitle', styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>
           { truncatedTitleFirstPiece }&hellip;{ truncatedTitleSecondPiece }
         </div>
       );
     } else {
       documentCardTitle = (
-        <div className={ css('ms-DocumentCardTitle', titleIcon ? styles.titleTitle : styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>
+        <div className={ css('ms-DocumentCardTitle', styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>
           { title }
-        </div>
-      );
-    }
-
-    if (titleIcon) {
-      return (
-        <div>
-          <div className={ css('ms-DocumentCardTitle', styles.titleIcon) } ref={ this._resolveRef('_titleWithIconElement') }>
-            { titleIcon && <Icon iconName={ titleIcon } /> }
-          </div>
-          { documentCardTitle }
         </div>
       );
     }

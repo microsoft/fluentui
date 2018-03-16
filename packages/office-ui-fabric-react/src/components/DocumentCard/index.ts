@@ -6,3 +6,4 @@ export * from './DocumentCardLocation';
 export * from './DocumentCardPreview';
 export * from './DocumentCardTitle';
 export * from './DocumentCardLogo';
+export * from './DocumentCardStatus';

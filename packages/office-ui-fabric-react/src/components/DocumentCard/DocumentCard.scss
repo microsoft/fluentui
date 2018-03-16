@@ -226,21 +226,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 .previewIconContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.previewTextContainer {
-  padding: 16px;
-  display: block;
-  @include ms-font-m-plus;
-}
-
-.logo {
-  @include ms-font-xxl;
-  color: $ms-color-themePrimary;
-  display: block;
-  padding-top: 16px;
-  @include ms-padding-left(16px);
+  justify-content: center
 }
 
 .icon {
@@ -302,23 +288,24 @@ $DocumentCard-title-lineHeight: 21px;
   word-wrap: break-word;
 }
 
-.titleIcon {
-  padding: 8px 8px 8px 14px;
+.logo {
+  font-size: 32px;
+  color: $ms-color-themePrimary;
   display: block;
-  @include ms-font-l;
-  color: $ms-color-neutralPrimary;
-  height: 38px; // Two lines of text, making sure the third line is hidden
-  line-height: $DocumentCard-title-lineHeight;
-  float: left;
+  @include ms-padding(16px, 16px, 0, 16px);
 }
 
-.titleTitle {
-  padding-top: 8px;
+
+.previewTextContainer {
+  @include ms-padding(8px, 16px, 8px, 16px);
   display: block;
-  @include ms-font-l;
+  @include ms-font-m;
+  color: $ms-color-neutralSecondary;
+}
+
+.status {
+  @include ms-margin(0,16px, 8px, 16px);
+  @include ms-font-m;
   color: $ms-color-neutralPrimary;
-  height: 38px; // Two lines of text, making sure the third line is hidden
-  line-height: $DocumentCard-title-lineHeight;
-  overflow: hidden;
-  word-wrap: break-word;
+  background-color: $ms-color-neutralLighter;
 }

@@ -57,7 +57,8 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
     const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
-          previewIconProps: { iconName: 'OutlookLogoInverse', styles: { root: { fontSize: 42, color: '#ffffff' } } },
+          previewIconProps: { iconName: 'OutlookLogoInverse', styles: { root: { fontSize: 42, color: '#0078d7' } } },
+          previewIconContainerClass: 'ms-DocumentCardPreview-iconContainer2',
           width: 144
         }
       ]
@@ -124,7 +125,6 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='Conversation about anual report from SharePoint conference'
-              titleIcon='attach'
               shouldTruncate={ true }
             />
             <DocumentCardActivity
