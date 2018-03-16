@@ -55,6 +55,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   checkboxCellClassName?: string;
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
+  isShimmer?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -189,6 +190,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
       rowFieldsAs: RowFields = DetailsRowFields,
       selection,
+      isShimmer
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -200,6 +202,21 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = (selectionMode === SelectionMode.none) ? undefined : isSelected;
+
+    const rowFields = (
+      <RowFields
+        columns={ columns }
+        item={ item }
+        itemIndex={ itemIndex }
+        columnStartIndex={ showCheckbox ? 1 : 0 }
+        onRenderItemColumn={ onRenderItemColumn }
+        isShimmer={ isShimmer }
+      />
+    );
+
+    if (isShimmer) {
+      return rowFields;
+    }
 
     return (
       <FocusZone
@@ -252,15 +269,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
         { GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
-        { item && (
-          <RowFields
-            columns={ columns }
-            item={ item }
-            itemIndex={ itemIndex }
-            columnStartIndex={ showCheckbox ? 1 : 0 }
-            onRenderItemColumn={ onRenderItemColumn }
-          />
-        ) }
+        { item && rowFields }
         { columnMeasureInfo && (
           <span
             role='presentation'

@@ -15,6 +15,7 @@ export interface IDetailsRowFieldsProps {
   columns: IColumn[];
   compact?: boolean;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  isShimmer?: boolean;
 }
 
 export interface IDetailsRowFieldsState {
@@ -33,7 +34,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   public render() {
-    const { columns, columnStartIndex } = this.props;
+    const { columns, columnStartIndex, isShimmer } = this.props;
     const { cellContent } = this.state;
 
     return (
@@ -52,6 +53,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               column.isRowHeader && styles.isRowHeader,
               column.isPadded && styles.isPadded,
               column.isMultiline && styles.isMultiline,
+              isShimmer && styles.isShimmer
             ) }
             style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
@@ -65,7 +67,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   private _getState(props: IDetailsRowFieldsProps) {
-    const { item, itemIndex, onRenderItemColumn } = props;
+    const { item, itemIndex, onRenderItemColumn, isShimmer } = props;
 
     return {
       cellContent: props.columns.map((column) => {
@@ -74,7 +76,11 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
         try {
           const render = column.onRender || onRenderItemColumn;
 
-          cellContent = render ? render(item, itemIndex, column) : this._getCellText(item, column);
+          cellContent = render ?
+            !isShimmer ?
+              render(item, itemIndex, column)
+              : this._getCellText(item, column)
+            : this._getCellText(item, column);
         } catch (e) { /* no-op */ }
 
         return cellContent;
