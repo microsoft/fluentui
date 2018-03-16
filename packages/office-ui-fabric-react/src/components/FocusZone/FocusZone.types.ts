@@ -123,6 +123,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   /**
    * A callback method to determine if the input element should lose focus on arrow keys
    *  @param {HTMLInputElement} inputElement The input element which is to loose focus.
+   *  @returns True if input element should loose focus or false otherwise.
    */
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
