@@ -100,7 +100,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
           styles.root,
           rootProps && rootProps.className
         ) }
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
       >
         { children }
         { dragRect && (<div className={ css('ms-MarqueeSelection-dragMask', styles.dragMask) } />) }

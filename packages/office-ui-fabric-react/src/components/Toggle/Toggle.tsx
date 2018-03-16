@@ -98,7 +98,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             disabled={ disabled }
             id={ this._id }
             type='button'
-            ref={ this._resolveRef('_toggleButton') }
+            ref={ this._toggleButton }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
             aria-label={ ariaLabel ? ariaLabel : label }

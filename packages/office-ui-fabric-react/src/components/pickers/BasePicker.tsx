@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
@@ -33,9 +34,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected selection: Selection;
 
-  protected root: HTMLElement;
+  protected root = createRef<HTMLDivElement>();
   protected input: Autofill;
-  protected focusZone: FocusZone;
+  protected focusZone = createRef<FocusZone>();
   protected suggestionElement: Suggestions<T>;
 
   protected suggestionStore: SuggestionsController<T>;
@@ -109,7 +110,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   public focus() {
-    this.focusZone.focus();
+    if (this.focusZone.value) {
+      this.focusZone.value.focus();
+    }
   }
 
   public focusInput() {
@@ -177,14 +180,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     return (
       <div
-        ref={ this._resolveRef('root') }
+        ref={ this.root }
         className={ css(
           'ms-BasePicker',
           className ? className : '') }
         onKeyDown={ this.onKeyDown }
       >
         <FocusZone
-          ref={ this._resolveRef('focusZone') }
+          ref={ this.focusZone }
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
@@ -276,9 +279,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const { items } = this.state;
 
     if (items.length && index! >= 0) {
-      const newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
-      if (newEl) {
-        this.focusZone.focusElement(newEl);
+      const newEl: HTMLElement | null = this.root.value && this.root.value.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement | null;
+      if (newEl && this.focusZone.value) {
+        this.focusZone.value.focusElement(newEl);
       }
     } else if (!this.canAddItems()) {
       (items[items.length - 1] as IPickerItemProps<T>).selected = true;

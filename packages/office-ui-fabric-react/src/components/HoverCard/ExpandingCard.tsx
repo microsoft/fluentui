@@ -6,7 +6,8 @@ import {
   getNativeProps,
   divProperties,
   customizable,
-  KeyCodes
+  KeyCodes,
+  createRef
 } from '../../Utilities';
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.types';
 import { Callout, ICallout } from '../../Callout';
@@ -32,8 +33,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
   private _styles: IExpandingCardStyles;
   // tslint:disable-next-line:no-unused-variable
-  private _callout: ICallout;
-  private _expandedElem: HTMLDivElement;
+  private _callout = createRef<ICallout>();
+  private _expandedElem = createRef<HTMLDivElement>();
 
   constructor(props: IExpandingCardProps) {
     super(props);
@@ -78,7 +79,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     return (
       <Callout
         { ...getNativeProps(this.props, divProperties) }
-        componentRef={ this._resolveRef('_callout') }
+        componentRef={ this._callout }
         className={ mergeStyles(
           AnimationStyles.scaleUpIn100,
           this._styles.root
@@ -131,7 +132,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
           this._styles.expandedCard,
           this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' }
         ) }
-        ref={ this._resolveRef('_expandedElem') }
+        ref={ this._expandedElem }
       >
         <div className={ mergeStyles(this.state.needsScroll && this._styles.expandedCardScroll) }>
           { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
@@ -141,9 +142,9 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   private _checkNeedsScroll = (): void => {
-    if (this._expandedElem) {
+    if (this._expandedElem.value) {
       this._async.requestAnimationFrame(() => {
-        if (this._expandedElem.scrollHeight >= this.props.expandedCardHeight!) {
+        if (this._expandedElem.value && this._expandedElem.value.scrollHeight >= this.props.expandedCardHeight!) {
           this.setState({
             needsScroll: true
           });

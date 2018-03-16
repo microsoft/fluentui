@@ -7,7 +7,8 @@ import {
   getNativeProps,
   getId,
   KeyCodes,
-  getDocument
+  getDocument,
+  createRef
 } from '../../Utilities';
 import {
   mergeStyles
@@ -33,9 +34,8 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   };
 
   // The wrapping div that gets the hover events
-  private _hoverCard: HTMLElement;
-  // tslint:disable-next-line:no-unused-variable
-  private _expandingCard: ExpandingCard;
+  private _hoverCard = createRef<HTMLDivElement>();
+  private _expandingCard = createRef<ExpandingCard>();
   private _dismissTimerId: number;
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget;
@@ -107,13 +107,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     return (
       <div
         className={ mergeStyles(this._styles.host) }
-        ref={ this._resolveRef('_hoverCard') }
+        ref={ this._hoverCard }
         aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >
         { children }
         { isHoverCardVisible &&
           <ExpandingCard
-            componentRef={ this._resolveRef('_expandingCard') }
+            componentRef={ this._expandingCard }
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             trapFocus={ !!this.props.trapFocus }
@@ -129,7 +129,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     );
   }
 
-  private _getTargetElement(): HTMLElement {
+  private _getTargetElement(): HTMLElement | undefined {
     const { target } = this.props;
 
     switch (typeof target) {
@@ -140,7 +140,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         return target as HTMLElement;
 
       default:
-        return this._hoverCard;
+        return this._hoverCard.value ? this._hoverCard.value : undefined;
     }
   }
 

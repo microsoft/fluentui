@@ -313,11 +313,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     const classNames = getClassNames(getStyles!, { theme: theme!, className });
 
     return (
-      <div { ...divProps } className={ classNames.root } ref={ this._resolveRef('_root') }>
+      <div { ...divProps } className={ classNames.root } ref={ this._root }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div
             style={ { position: 'fixed', visibility: 'hidden' } }
-            ref={ this._resolveRef('_measured') }
+            ref={ this._measured }
           >
             <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>
           </div>
@@ -351,7 +351,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public remeasure(): void {
-    if (this._root) {
+    if (this._root.value) {
       this.setState({ measureContainer: true });
     }
   }
@@ -374,7 +374,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   private _onResize() {
-    if (this._root) {
+    if (this._root.value) {
       this.setState({ measureContainer: true });
     }
   }
