@@ -1259,4 +1259,70 @@ describe('FocusZone', () => {
     expect(inputA.tabIndex).toBe(-1);
     expect(buttonB.tabIndex).toBe(0);
   });
+
+  it('focus should leave input box when arrow keys are pressed when tabbing is supported but shouldInputLoseFocusOnArrowKey callback method return true', () => {
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone {
+          ...{
+            handleTabKey: FocusZoneTabbableElements.all,
+            isCircularNavigation: false,
+            shouldInputLoseFocusOnArrowKey: (element) => { return true; }
+          }
+        }>
+          <input type='text' className='a' />
+          <button className='b'>b</button>
+        </FocusZone>
+      </div >
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // InputA should be focused.
+    inputA.focus();
+    expect(lastFocusedElement).toBe(inputA);
+
+    // When we hit right/left on the arrow key, we don't want to be able to leave focus on an input
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(inputA);
+
+    expect(inputA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+
+    // Pressing arrow down should put focus on the button
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonB);
+    expect(inputA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
+  });
 });
+
+
