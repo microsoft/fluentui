@@ -1,7 +1,10 @@
 import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
-  concatStyleSets
+  concatStyleSets,
+  getFocusStyle,
+  HighContrastSelector,
+  IRawStyle
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -19,13 +22,29 @@ export const getStyles = memoizeFunction((
 ): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const commandButtonHighContrastFocus = {
+    left: 4,
+    top: 4,
+    bottom: 4,
+    right: 4,
+    border: 'none'
+  };
+
   const commandButtonStyles: IButtonStyles = {
-    root: {
-      minWidth: '40px',
-      backgroundColor: theme.palette.neutralLighter,
-      color: theme.palette.neutralPrimary,
-      padding: '0 4px'
-    },
+    root: [
+      getFocusStyle(theme, -1, 'relative', commandButtonHighContrastFocus),
+      {
+        minWidth: '40px',
+        backgroundColor: theme.palette.neutralLighter,
+        color: theme.palette.neutralPrimary,
+        padding: '0 4px',
+        selectors: {
+          [HighContrastSelector]: {
+            border: 'none'
+          }
+        }
+      }
+    ],
 
     rootHovered: {
       backgroundColor: theme.palette.neutralLight,
