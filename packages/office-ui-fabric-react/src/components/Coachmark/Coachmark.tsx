@@ -1,6 +1,6 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, autobind, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 
 // Component Dependencies
@@ -205,13 +205,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     }));
   }
 
-  @autobind
-  private _onFocusHandler(): void {
+  private _onFocusHandler = (): void => {
     this._openCoachmark();
   }
 
-  @autobind
-  private _openCoachmark(): void {
+  private _openCoachmark = (): void => {
     this.setState({
       collapsed: false
     });

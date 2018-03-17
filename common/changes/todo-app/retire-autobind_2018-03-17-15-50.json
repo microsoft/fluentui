@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "todo-app",
+      "comment": "Use arrow function properties instead of @autobind",
+      "type": "patch"
+    }
+  ],
+  "packageName": "todo-app",
+  "email": "mark@thedutchies.com"
+}

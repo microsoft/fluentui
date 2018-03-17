@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   assign,
-  autobind,
   css,
   createRef
 } from '../../Utilities';
@@ -77,16 +76,14 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     );
   }
 
-  @autobind
-  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
     this._events.on(window, 'mouseup', this._onMouseUp, true);
 
     this._onMouseMove(ev);
   }
 
-  @autobind
-  private _onMouseMove(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const { color, onSVChanged } = this.props;
 
     if (!this._root.value) {
@@ -118,8 +115,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     ev.stopPropagation();
   }
 
-  @autobind
-  private _onMouseUp(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.off();
 
     this.setState({

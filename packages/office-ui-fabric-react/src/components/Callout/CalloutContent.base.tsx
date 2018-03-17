@@ -12,7 +12,6 @@ import {
   IPoint,
   IRectangle,
   assign,
-  autobind,
   elementContains,
   focusFirstChild,
   getWindow,
@@ -216,8 +215,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return content;
   }
 
-  @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -246,16 +244,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  @autobind
-  protected _setInitialFocus() {
+  protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
       this._didSetInitialFocus = true;
       focusFirstChild(this._calloutElement.value);
     }
   }
 
-  @autobind
-  protected _onComponentDidMount() {
+  protected _onComponentDidMount = (): void => {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from

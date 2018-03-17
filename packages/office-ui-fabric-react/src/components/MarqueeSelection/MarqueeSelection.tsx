@@ -6,7 +6,6 @@ import {
   BaseComponent,
   IPoint,
   IRectangle,
-  autobind,
   css,
   findScrollableParent,
   getDistanceBetweenPoints,
@@ -152,8 +151,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return false;
   }
 
-  @autobind
-  private _onMouseDown(ev: MouseEvent) {
+  private _onMouseDown = (ev: MouseEvent): void => {
     const { isEnabled, onShouldStartSelection } = this.props;
 
     // Ensure the mousedown is within the boundaries of the target. If not, it may have been a click on a scrollbar.
@@ -182,8 +180,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }
   }
 
-  @autobind
-  private _onTouchStart(ev: TouchEvent) {
+  private _onTouchStart = (ev: TouchEvent): void => {
     this._isTouch = true;
 
     this._async.setTimeout(() => {
@@ -191,8 +188,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }, 0);
   }
 
-  @autobind
-  private _onPointerDown(ev: PointerEvent) {
+  private _onPointerDown = (ev: PointerEvent): void => {
     if (ev.pointerType === 'touch') {
       this._isTouch = true;
 

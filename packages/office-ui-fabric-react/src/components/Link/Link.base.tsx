@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   anchorProperties,
-  autobind,
   BaseComponent,
   buttonProperties,
   classNamesFunction,
@@ -65,8 +64,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     }
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+  private _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     const { onClick, disabled } = this.props;
 
     if (disabled) {

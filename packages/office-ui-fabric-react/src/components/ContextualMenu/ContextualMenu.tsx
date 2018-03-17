@@ -18,7 +18,6 @@ import {
   assign,
   getId,
   getRTL,
-  autobind,
   KeyCodes,
   getDocument,
   getWindow,
@@ -115,8 +114,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._isScrollIdle = true;
   }
 
-  @autobind
-  public dismiss(ev?: any, dismissAll?: boolean) {
+  public dismiss = (ev?: any, dismissAll?: boolean) => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -672,8 +670,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return iconProps;
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (ev.which === KeyCodes.escape ||
       ev.altKey ||
       ev.metaKey ||
@@ -689,8 +686,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   /**
    * Checks if the submenu should be closed
    */
-  @autobind
-  private _shouldCloseSubMenu(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  private _shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     const submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
@@ -701,8 +697,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       (!!this._adjustedFocusZoneProps.checkForNoWrap && !shouldWrapFocus(ev.target as HTMLElement, 'data-no-horizontal-wrap'));
   }
 
-  @autobind
-  private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (ev.which === KeyCodes.escape || ev.altKey || ev.metaKey) {
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
@@ -732,8 +727,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    * Scroll handler for the callout to make sure the mouse events
    * for updating focus are not interacting during scroll
    */
-  @autobind
-  private _onScroll() {
+  private _onScroll = (): void => {
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
       this._async.clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
@@ -763,8 +757,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._updateFocusOnMouseEvent(item, ev);
   }
 
-  @autobind
-  private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     if (!this._isScrollIdle) {
       return;
     }
@@ -941,8 +934,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  @autobind
-  private _onSubMenuDismiss(ev?: any, dismissAll?: boolean) {
+  private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);
     } else {

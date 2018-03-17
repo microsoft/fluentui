@@ -5,8 +5,7 @@ import {
   divProperties,
   doesElementContainFocus,
   getDocument,
-  getNativeProps,
-  autobind
+  getNativeProps
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
@@ -76,8 +75,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     );
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.escape:
 

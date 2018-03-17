@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, autobind, css } from '../../../../Utilities';
+import { BaseComponent, css } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.types';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
@@ -68,13 +68,11 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
     );
   }
 
-  @autobind
-  private _onContextualMenu(ev?: any) {
+  private _onContextualMenu = (ev?: any): void => {
     this.setState({ contextualMenuVisible: true });
   }
 
-  @autobind
-  private _onCloseContextualMenu(ev: Event) {
+  private _onCloseContextualMenu = (ev: Event) => {
     this.setState({ contextualMenuVisible: false });
   }
 }

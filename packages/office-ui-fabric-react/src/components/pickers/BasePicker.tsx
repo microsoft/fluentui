@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -119,8 +118,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  public dismissSuggestions(ev?: any) {
+  public dismissSuggestions = (ev?: any): void => {
     const selectItemFunction = () => {
       if (this.props.onDismiss) {
         this.props.onDismiss(
@@ -153,8 +151,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  public refocusSuggestions(keyCode: KeyCodes) {
+  public refocusSuggestions = (keyCode: KeyCodes): void => {
     this.resetFocus();
     if (this.suggestionStore.suggestions && this.suggestionStore.suggestions.length > 0) {
       if (keyCode === KeyCodes.up) {
@@ -394,8 +391,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  protected onInputChange(value: string) {
+  protected onInputChange = (value: string): void => {
     this.updateValue(value);
     this.setState({
       moreSuggestionsAvailable: true,
@@ -403,22 +399,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     });
   }
 
-  @autobind
-  protected onSuggestionClick(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
+  protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: any, index: number): void => {
     this.addItemByIndex(index);
     this.setState({ suggestionsVisible: false });
   }
 
-  @autobind
-  protected onSuggestionRemove(ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number) {
+  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number): void => {
     if (this.props.onRemoveSuggestion) {
       (this.props.onRemoveSuggestion as any)(item);
     }
     this.suggestionStore.removeSuggestion(index);
   }
 
-  @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
+  protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
     this.setState({ isFocused: true });
     this.selection.setAllSelected(false);
     if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
@@ -439,16 +432,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
+  protected onInputBlur = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
     this.setState({ isFocused: false });
     if (this.props.inputProps && this.props.inputProps.onBlur) {
       this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
     }
   }
 
-  @autobind
-  protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
@@ -543,8 +534,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  protected onItemChange(changedItem: T, index: number) {
+  protected onItemChange = (changedItem: T, index: number): void => {
     const { items } = this.state;
 
     if (index >= 0) {
@@ -555,8 +545,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  protected onGetMoreResults() {
+  protected onGetMoreResults = (): void => {
     this.setState({
       isSearching: true
     }, () => {
@@ -585,8 +574,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     });
   }
 
-  @autobind
-  protected addItemByIndex(index: number): void {
+  protected addItemByIndex = (index: number): void => {
     this.addItem(this.suggestionStore.getSuggestionAtIndex(index).item);
     if (this.input) {
       this.input.clear();
@@ -594,8 +582,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.updateValue('');
   }
 
-  @autobind
-  protected addItem(item: T) {
+  protected addItem = (item: T): void => {
     const processedItem: T | PromiseLike<T> | null =
       this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
@@ -618,8 +605,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({ suggestedDisplayValue: '' });
   }
 
-  @autobind
-  protected removeItem(item: IPickerItemProps<T>) {
+  protected removeItem = (item: IPickerItemProps<T>): void => {
     const { items } = this.state;
     const index: number = items.indexOf(item);
 
@@ -629,8 +615,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  protected removeItems(itemsToRemove: any[]) {
+  protected removeItems = (itemsToRemove: any[]): void => {
     const { items } = this.state;
     const newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);
     const firstItemToRemove = itemsToRemove[0];
@@ -651,8 +636,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  @autobind
-  protected _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  protected _isFocusZoneInnerKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown const up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.state.suggestionsVisible) {
       switch (ev.which) {

@@ -4,7 +4,6 @@ import * as React from 'react';
 
 import {
   BaseComponent,
-  autobind,
   css
 } from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.types';
@@ -82,8 +81,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     return documentCardTitle;
   }
 
-  @autobind
-  private _startTruncation(props: IDocumentCardTitleProps) {
+  private _startTruncation = (props: IDocumentCardTitleProps): void => {
     const originalTitle = props.title;
     this._isTruncated = false;
 

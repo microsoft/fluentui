@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css
 } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
@@ -146,28 +145,23 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     );
   }
 
-  @autobind
-  private _onSVChanged(s: number, v: number) {
+  private _onSVChanged = (s: number, v: number): void => {
     this._updateColor(updateSV(this.state.color, s, v));
   }
 
-  @autobind
-  private _onHChanged(h: number) {
+  private _onHChanged = (h: number): void => {
     this._updateColor(updateH(this.state.color, h));
   }
 
-  @autobind
-  private _onAChanged(a: number) {
+  private _onAChanged = (a: number): void => {
     this._updateColor(updateA(this.state.color, a));
   }
 
-  @autobind
-  private _onHexChanged() {
+  private _onHexChanged = (): void => {
     this._updateColor(getColorFromString('#' + this.hexText.value));
   }
 
-  @autobind
-  private _onRGBAChanged() {
+  private _onRGBAChanged = (): void => {
     this._updateColor(getColorFromRGBA({
       r: Number(this.rText.value),
       g: Number(this.gText.value),

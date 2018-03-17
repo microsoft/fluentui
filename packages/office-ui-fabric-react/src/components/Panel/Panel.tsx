@@ -4,7 +4,6 @@ import * as React from 'react';
 
 import {
   BaseComponent,
-  autobind,
   css,
   getId,
   getRTL
@@ -202,8 +201,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  @autobind
-  public dismiss() {
+  public dismiss = (): void => {
     if (this.state.isOpen) {
       this.setState({
         isOpen: false,
@@ -218,8 +216,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  @autobind
-  private _onRenderNavigation(props: IPanelProps): JSX.Element | null {
+  private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
     const {
       closeButtonAriaLabel,
       hasCloseButton
@@ -253,8 +250,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     return null;
   }
 
-  @autobind
-  private _onRenderHeader(props: IPanelProps): JSX.Element | null {
+  private _onRenderHeader = (props: IPanelProps): JSX.Element | null => {
     const {
       headerText,
       componentId,
@@ -273,8 +269,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     return null;
   }
 
-  @autobind
-  private _onRenderBody(props: IPanelProps): JSX.Element {
+  private _onRenderBody = (props: IPanelProps): JSX.Element => {
     const contentClass = css(
       'ms-Panel-content',
       styles.content,
@@ -288,8 +283,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     );
   }
 
-  @autobind
-  private _onRenderFooter(props: IPanelProps): JSX.Element | null {
+  private _onRenderFooter = (props: IPanelProps): JSX.Element | null => {
     const { isFooterSticky } = this.state;
     const { onRenderFooterContent = null } = this.props;
     if (onRenderFooterContent) {
@@ -304,7 +298,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     return null;
   }
 
-  private _updateFooterPosition() {
+  private _updateFooterPosition(): void {
     const _content = this._content;
     if (_content) {
       const height = _content.clientHeight;
@@ -316,13 +310,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  @autobind
-  private _onPanelClick() {
+  private _onPanelClick = (): void => {
     this.dismiss();
   }
 
-  @autobind
-  private _onTransitionComplete() {
+  private _onTransitionComplete = (): void => {
     this.setState({
       isAnimating: false
     });

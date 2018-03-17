@@ -9,7 +9,6 @@ import {
   BaseComponent,
   EventGroup,
   KeyCodes,
-  autobind,
   css,
   divProperties,
   elementContains,
@@ -206,8 +205,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  @autobind
-  private _onFocus(ev: React.FocusEvent<HTMLElement>) {
+  private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { onActiveElementChanged } = this.props;
 
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
@@ -238,8 +236,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
-  @autobind
-  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     const { disabled } = this.props;
 
     if (disabled) {
@@ -293,8 +290,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   /**
    * Handle the keystrokes.
    */
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
     if (disabled) {

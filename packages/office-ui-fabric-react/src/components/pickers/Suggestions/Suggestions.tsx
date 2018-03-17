@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  autobind,
   KeyCodes
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
@@ -135,7 +134,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                this.state.selectedActionType === SuggestionActionType.forceResolve
+                  this.state.selectedActionType === SuggestionActionType.forceResolve
               }) }
             onClick={ this._forceResolve }
           >
@@ -158,7 +157,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                this.state.selectedActionType === SuggestionActionType.searchMore
+                  this.state.selectedActionType === SuggestionActionType.searchMore
               }) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults }
@@ -193,8 +192,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   /**
    * Returns true if the event was handled, false otherwise
    */
-  @autobind
-  public tryHandleKeyDown(keyCode: number, currentSuggestionIndex: number): boolean {
+  public tryHandleKeyDown = (keyCode: number, currentSuggestionIndex: number): boolean => {
     let isEventHandled = false;
     let newSelectedActionType = null;
     const currentSelectedAction = this.state.selectedActionType;
@@ -352,41 +350,35 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       </div>);
   }
 
-  @autobind
-  private _getMoreResults() {
+  private _getMoreResults = (): void => {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
     }
   }
 
-  @autobind
-  private _forceResolve() {
+  private _forceResolve = (): void => {
     if (this.props.createGenericItem) {
       this.props.createGenericItem();
     }
   }
 
-  @autobind
-  private _shouldShowForceResolve() {
+  private _shouldShowForceResolve = (): boolean => {
     return this.props.showForceResolve ? this.props.showForceResolve() : false;
   }
 
-  @autobind
-  private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onClickTypedSuggestionsItem = (item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       this.props.onSuggestionClick(ev, item, index);
     };
   }
 
-  @autobind
-  private _refocusOnSuggestions(keyCode: number): void {
+  private _refocusOnSuggestions = (keyCode: number): void => {
     if (typeof this.props.refocusSuggestions === 'function') {
       this.props.refocusSuggestions(keyCode);
     }
   }
 
-  @autobind
-  private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onRemoveTypedSuggestionsItem = (item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       const onSuggestionRemove = this.props.onSuggestionRemove!;
       onSuggestionRemove(ev, item, index);

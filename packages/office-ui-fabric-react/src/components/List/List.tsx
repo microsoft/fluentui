@@ -8,8 +8,7 @@ import {
   getParent,
   divProperties,
   getNativeProps,
-  IRenderFunction,
-  autobind
+  IRenderFunction
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps } from './List.types';
 
@@ -424,8 +423,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     };
   }
 
-  @autobind
-  private _onRenderPage(pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): any {
+  private _onRenderPage = (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): any => {
     const {
       onRenderCell,
       role

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   buttonProperties,
   anchorProperties,
   css,
@@ -415,8 +414,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     };
   }
 
-  @autobind
-  private _onOverflowClick(ev: React.MouseEvent<HTMLButtonElement>) {
+  private _onOverflowClick = (ev: React.MouseEvent<HTMLButtonElement>) => {
     if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
       this._onContextMenuDismiss();
     } else {
@@ -429,8 +427,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
   }
 
-  @autobind
-  private _onContextMenuDismiss(ev?: any) {
+  private _onContextMenuDismiss = (ev?: any) => {
     const { value: commandSurface } = this._commandSurface;
 
     if (!ev || !ev.relatedTarget || commandSurface && !commandSurface.contains(ev.relatedTarget as HTMLElement)) {

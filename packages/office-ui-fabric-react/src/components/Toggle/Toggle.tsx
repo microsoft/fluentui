@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   getId,
   inputProperties,
   getNativeProps
@@ -71,7 +70,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
       offText,
       onAriaLabel,
       onText
-      } = this.props;
+    } = this.props;
     const { isChecked } = this.state;
     const stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
@@ -122,8 +121,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     }
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
     const { disabled, checked, onChanged, onClick } = this.props;
     const { isChecked } = this.state;
 

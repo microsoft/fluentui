@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  autobind,
   css,
   divProperties,
   getNativeProps,
@@ -66,9 +65,9 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         ) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
-        { ...{ onBlurCapture: this._onTooltipMouseLeave } }
+        { ...{ onBlurCapture: this._hideTooltip } }
         onMouseEnter={ this._onTooltipMouseEnter }
-        onMouseLeave={ this._onTooltipMouseLeave }
+        onMouseLeave={ this._hideTooltip }
         aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
@@ -80,7 +79,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             targetElement={ this._getTargetElement() }
             directionalHint={ directionalHint }
             directionalHintForRTL={ directionalHintForRTL }
-            calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
+            calloutProps={ assign(calloutProps, { onDismiss: this._hideTooltip }) }
             { ...getNativeProps(this.props, divProperties) }
             { ...tooltipProps }
           />
@@ -108,8 +107,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Show Tooltip
-  @autobind
-  private _onTooltipMouseEnter(ev: any) {
+  private _onTooltipMouseEnter = (ev: any): void => {
     const { overflowMode } = this.props;
 
     if (overflowMode !== undefined) {
@@ -122,15 +120,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     this._toggleTooltip(true);
   }
 
-  // Hide Tooltip
-  @autobind
-  private _onTooltipMouseLeave(ev: any) {
-    this._toggleTooltip(false);
-  }
-
-  // Hide Tooltip
-  @autobind
-  private _onTooltipCallOutDismiss() {
+  private _hideTooltip = (): void => {
     this._toggleTooltip(false);
   }
 

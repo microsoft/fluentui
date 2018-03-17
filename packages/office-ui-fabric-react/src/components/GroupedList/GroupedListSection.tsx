@@ -13,8 +13,7 @@ import {
 import {
   BaseComponent,
   IRenderFunction,
-  IDisposable,
-  autobind
+  IDisposable
 } from '../../Utilities';
 
 import {
@@ -271,18 +270,15 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  @autobind
-  private _onRenderGroupHeader(props: IGroupDividerProps) {
+  private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
     return <GroupHeader { ...props } />;
   }
 
-  @autobind
-  private _onRenderGroupShowAll(props: IGroupDividerProps) {
+  private _onRenderGroupShowAll = (props: IGroupDividerProps): JSX.Element => {
     return <GroupShowAll { ...props } />;
   }
 
-  @autobind
-  private _onRenderGroupFooter(props: IGroupDividerProps) {
+  private _onRenderGroupFooter = (props: IGroupDividerProps): JSX.Element => {
     return <GroupFooter { ...props } />;
   }
 
@@ -327,8 +323,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     );
   }
 
-  @autobind
-  private _renderSubGroup(subGroup: any, subGroupIndex: number) {
+  private _renderSubGroup = (subGroup: any, subGroupIndex: number): JSX.Element | null => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -389,8 +384,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   /**
    * collect all the data we need to enable drag/drop for a group
    */
-  @autobind
-  private _getGroupDragDropOptions(): IDragDropOptions {
+  private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
     const options = {
       eventMap: eventsToRegister,
@@ -410,8 +404,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
    * @param {boolean} newValue (new isDropping state value)
    * @param {DragEvent} event (the event trigger dropping state change which can be dragenter, dragleave etc)
    */
-  @autobind
-  private _updateDroppingState(newIsDropping: boolean, event: DragEvent) {
+  private _updateDroppingState = (newIsDropping: boolean, event: DragEvent): void => {
     const { isDropping } = this.state;
     const { dragDropEvents } = this.props;
 

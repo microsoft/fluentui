@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css,
   getId,
   getRTL,
@@ -160,8 +159,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return this.state.value;
   }
 
-  @autobind
-  private _getAriaValueText(value: number | undefined): string | void {
+  private _getAriaValueText = (value: number | undefined): string | void => {
     if (this.props.ariaValueText && value !== undefined) {
       return this.props.ariaValueText(value);
     }
@@ -174,8 +172,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     };
   }
 
-  @autobind
-  private _onMouseDownOrTouchStart(event: MouseEvent | TouchEvent): void {
+  private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
       this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
       this._events.on(window, 'mouseup', this._onMouseUpOrTouchEnd, true);
@@ -186,8 +183,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     this._onMouseMoveOrTouchMove(event, true);
   }
 
-  @autobind
-  private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
+  private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
     const { max, min, step } = this.props;
     const steps: number = (max! - min!) / step!;
     const sliderPositionRect: ClientRect = this._sliderLine.getBoundingClientRect();
@@ -258,8 +254,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     });
   }
 
-  @autobind
-  private _onMouseUpOrTouchEnd(): void {
+  private _onMouseUpOrTouchEnd = (): void => {
     // Synchronize the renderedValue to the actual value.
     this.setState({
       renderedValue: this.state.value
@@ -268,8 +263,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     this._events.off();
   }
 
-  @autobind
-  private _onKeyDown(event: KeyboardEvent): void {
+  private _onKeyDown = (event: KeyboardEvent): void => {
     let value: number | undefined = this.state.value;
     const { max, min, step } = this.props;
 

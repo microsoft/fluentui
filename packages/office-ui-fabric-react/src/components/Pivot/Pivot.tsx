@@ -3,8 +3,7 @@ import {
   BaseComponent,
   KeyCodes,
   css,
-  getId,
-  autobind
+  getId
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps } from './Pivot.types';
@@ -66,7 +65,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
       selectedTabId: this._keyToTabIds[selectedKey!],
     } as IPivotState;
 
-    this._renderLink = this._renderLink.bind(this);
+    this._renderPivotLink = this._renderPivotLink.bind(this);
   }
 
   public componentWillReceiveProps(nextProps: IPivotProps) {
@@ -111,17 +110,13 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
             { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
           role='tablist'
         >
-          { this.state.links.map(this._renderLink) }
+          { this.state.links.map(this._renderPivotLink) }
         </ul>
       </FocusZone>
     );
   }
 
-  /**
-   * Renders a pivot link
-   */
-  @autobind
-  private _renderLink(link: IPivotItemProps) {
+  private _renderPivotLink = (link: IPivotItemProps): JSX.Element => {
     const { itemKey } = link;
     const tabId = this._keyToTabIds[itemKey as string];
     const { onRenderItemLink } = link;
@@ -156,8 +151,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     );
   }
 
-  @autobind
-  private _renderLinkContent(link: IPivotItemProps): JSX.Element {
+  private _renderLinkContent = (link: IPivotItemProps): JSX.Element => {
     const { itemCount, itemIcon, linkText } = link;
 
     return (

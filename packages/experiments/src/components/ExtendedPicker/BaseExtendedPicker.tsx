@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css,
 } from '../../Utilities';
 import {
@@ -133,8 +132,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     );
   }
 
-  @autobind
-  protected onSelectionChange(): void {
+  protected onSelectionChange = (): void => {
     this.forceUpdate();
   }
 
@@ -179,13 +177,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
   }
 
-  @autobind
-  protected onInputChange(value: string): void {
+  protected onInputChange = (value: string): void => {
     this.floatingPicker.onQueryStringChanged(value);
   }
 
-  @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>): void {
+  protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
     this.selectedItemsList.unselectAll();
     this.floatingPicker.showPicker();
 
@@ -196,8 +192,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
-  @autobind
-  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
+  protected onBackspace = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which !== KeyCodes.backspace) {
       return;
     }
@@ -209,14 +204,12 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
   }
 
-  @autobind
-  protected onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
+  protected onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
     // Pass it down into the selected items list
     this.selectedItemsList.onCopy(ev);
   }
 
-  @autobind
-  protected onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void {
+  protected onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void => {
     if (this.props.onPaste) {
       let inputText = ev.clipboardData.getData('Text');
       ev.preventDefault();
@@ -224,8 +217,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
   }
 
-  @autobind
-  protected _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  protected _isFocusZoneInnerKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown let up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.floatingPicker.isSuggestionsShown) {
       switch (ev.which) {
@@ -243,8 +235,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     return false;
   }
 
-  @autobind
-  protected _onSuggestionSelected(item: T): void {
+  protected _onSuggestionSelected = (item: T): void => {
     this.selectedItemsList.addItems([item]);
     if (this.props.onItemSelected) {
       this.props.onItemSelected(item);
@@ -255,8 +246,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.focus();
   }
 
-  @autobind
-  protected _onSelectedItemsChanged(): void {
+  protected _onSelectedItemsChanged = (): void => {
     this.focus();
   }
 }
