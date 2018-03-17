@@ -6,7 +6,6 @@ import {
   BaseComponent,
   KeyCodes,
   assign,
-  autobind,
   css,
   elementContains,
   getRTLSafeKeyCode,
@@ -420,19 +419,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._forceListUpdates();
   }
 
-  @autobind
-  protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
     return <DetailsRow { ...props } />;
   }
 
-  @autobind
-  private _onRenderDetailsHeader(detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
+  private _onRenderDetailsHeader = (detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element => {
     return <DetailsHeader { ...detailsHeaderProps } />;
   }
 
-  @autobind
-  private _onRenderListCell(nestingDepth: number)
-    : (item: any, itemIndex: number) => React.ReactNode {
+  private _onRenderListCell = (nestingDepth: number)
+    : (item: any, itemIndex: number) => React.ReactNode => {
     return (item: any, itemIndex: number): React.ReactNode => {
       return this._onRenderCell(nestingDepth, item, itemIndex as number);
     };
