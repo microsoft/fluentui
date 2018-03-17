@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "suggestions should not be shown in BasePicker when input does not exist",
+      "comment": "BasePicker: suggestions should not be shown in BasePicker when input does not exist.",
       "type": "patch"
     }
   ],
