@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 
-import { autobind, BaseComponent } from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.types';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
@@ -52,8 +52,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     );
   }
 
-  @autobind
-  private _onRenderIcon(props: IActivityItemProps): JSX.Element | React.ReactNode | null {
+  private _onRenderIcon = (props: IActivityItemProps): JSX.Element | React.ReactNode | null => {
     if (props.activityPersonas) {
       return this._onRenderPersonaArray(props);
     } else {
@@ -61,8 +60,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     }
   }
 
-  @autobind
-  private _onRenderActivityDescription(props: IActivityItemProps): JSX.Element | null {
+  private _onRenderActivityDescription = (props: IActivityItemProps): JSX.Element | null => {
     const activityDescription = props.activityDescription || props.activityDescriptionText;
 
     if (activityDescription) {
@@ -72,8 +70,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return null;
   }
 
-  @autobind
-  private _onRenderComments(props: IActivityItemProps): JSX.Element | null {
+  private _onRenderComments = (props: IActivityItemProps): JSX.Element | null => {
     const comments = props.comments || props.commentText;
 
     if (!props.isCompact && comments) {
@@ -83,8 +80,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return null;
   }
 
-  @autobind
-  private _onRenderTimeStamp(props: IActivityItemProps): JSX.Element | null {
+  private _onRenderTimeStamp = (props: IActivityItemProps): JSX.Element | null => {
     if (!props.isCompact && props.timeStamp) {
       return (<div className={ this._classNames.timeStamp }>{ props.timeStamp }</div>);
     }
@@ -93,8 +89,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   }
 
   // If activityPersonas is an array of persona props, build the persona cluster element.
-  @autobind
-  private _onRenderPersonaArray(props: IActivityItemProps): JSX.Element | null {
+  private _onRenderPersonaArray = (props: IActivityItemProps): JSX.Element | null => {
     let personaElement: JSX.Element | null = null;
     const activityPersonas = props.activityPersonas as Array<IPersonaProps & { key?: string | number }>;
     if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {

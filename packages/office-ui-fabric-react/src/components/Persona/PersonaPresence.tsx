@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  autobind,
-  css
-} from '../../Utilities';
+import { css } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
   IPersonaProps,
@@ -45,8 +42,7 @@ export class PersonaPresence extends React.Component<IPersonaProps, {}> {
     );
   }
 
-  @autobind
-  private _determineIcon(): string | undefined {
+  private _determineIcon = (): string | undefined => {
     const { presence } = this.props;
 
     if (presence !== PersonaPresenceEnum.none) {

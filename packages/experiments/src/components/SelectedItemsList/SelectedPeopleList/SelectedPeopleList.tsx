@@ -6,7 +6,7 @@ import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelected
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
 import { SelectedItemWithContextMenu } from './Items/SelectedItemWithContextMenu';
-import { autobind, IRenderFunction } from '../../../Utilities';
+import { IRenderFunction } from '../../../Utilities';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem } from './Items/EditingItem';
@@ -45,11 +45,10 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
 
   // tslint:disable-next-line:no-any
   public static defaultProps: any = {
-    onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
+    onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem { ...props } />,
   };
 
-  @autobind
-  public replaceItem(itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]): void {
+  public replaceItem = (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]): void => {
     let { items } = this.state;
     let index: number = items.indexOf(itemToReplace);
     if (index > -1) {
@@ -58,8 +57,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     }
   }
 
-  @autobind
-  protected renderItems(): JSX.Element[] {
+  protected renderItems = (): JSX.Element[] => {
     let { items } = this.state;
     // tslint:disable-next-line:no-any
     return items.map((item: any, index: number) => this._renderItem(item, index));
@@ -84,7 +82,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     if ((item as IExtendedPersonaProps).isEditing) {
       return (
         <EditingItem
-          {...props}
+          { ...props }
           onRenderFloatingPicker={ this.props.onRenderFloatingPicker }
           floatingPickerProps={ this.props.floatingPickerProps }
           onEditingComplete={ this._completeEditing }
@@ -109,15 +107,13 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     }
   }
 
-  @autobind
-  private _beginEditing(item: IExtendedPersonaProps): void {
+  private _beginEditing = (item: IExtendedPersonaProps): void => {
     item.isEditing = true;
     this.forceUpdate();
   }
 
-  @autobind
   // tslint:disable-next-line:no-any
-  private _completeEditing(oldItem: any, newItem: any): void {
+  private _completeEditing = (oldItem: any, newItem: any): void => {
     oldItem.isEditing = false;
     this.replaceItem(oldItem, newItem);
   }

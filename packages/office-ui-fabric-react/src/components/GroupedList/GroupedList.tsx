@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   IRectangle,
-  autobind,
   assign,
   css
 } from '../../Utilities';
@@ -80,7 +79,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       usePageCache,
@@ -139,8 +138,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _renderGroup(group: any, groupIndex: number) {
+  private _renderGroup = (group: any, groupIndex: number): JSX.Element | null => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -220,8 +218,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     return level;
   }
 
-  @autobind
-  private _onToggleCollapse(group: IGroup) {
+  private _onToggleCollapse = (group: IGroup): void => {
     const { groupProps } = this.props;
     const onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
 
@@ -236,8 +233,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _onToggleSelectGroup(group: IGroup) {
+  private _onToggleSelectGroup = (group: IGroup): void => {
     if (group) {
       this.props.selection!.toggleRangeSelected(group.startIndex, group.count);
     }
@@ -265,8 +261,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _onToggleSummarize(group: IGroup) {
+  private _onToggleSummarize = (group: IGroup): void => {
     const { groupProps } = this.props;
     const onToggleSummarize = groupProps && groupProps.showAllProps && groupProps.showAllProps.onToggleSummarize;
 
@@ -281,10 +276,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _getPageSpecification(itemIndex: number, visibleRect: IRectangle): {
+  private _getPageSpecification = (itemIndex: number, visibleRect: IRectangle): {
     key?: string;
-  } {
+  } => {
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {

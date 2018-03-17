@@ -6,9 +6,6 @@ import { IFormCheckBoxProps } from './FormCheckBox.types';
 import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
 import { IFormContext } from '../../Form';
 
-// Utilities
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-
 /**
  * Checkbox input for the Form. Displays a boolean value as a checkbox
  */
@@ -31,7 +28,7 @@ export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFo
   public render(): JSX.Element {
     return (
       <Checkbox
-        {...this.props.checkboxProps}
+        { ...this.props.checkboxProps }
         key={ this.props.inputKey }
         onChange={ this._onChange }
         checked={ this.state.currentValue }
@@ -39,8 +36,7 @@ export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFo
     );
   }
 
-  @autobind
-  private _onChange(event: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+  private _onChange = (event: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
     this.setValue(isChecked);
   }
 

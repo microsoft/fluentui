@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   css,
   divProperties,
   getInitials,
@@ -146,8 +145,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     );
   }
 
-  @autobind
-  private _onRenderCoin(props: IPersonaProps): JSX.Element | null {
+  private _onRenderCoin = (props: IPersonaProps): JSX.Element | null => {
     const {
       coinSize,
       imageUrl,
@@ -173,8 +171,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     );
   }
 
-  @autobind
-  private _onRenderInitials(props: IPersonaProps): JSX.Element {
+  private _onRenderInitials = (props: IPersonaProps): JSX.Element => {
     let { imageInitials } = props;
     const { primaryText } = props;
 
@@ -189,8 +186,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     );
   }
 
-  @autobind
-  private _onPhotoLoadingStateChange(loadState: ImageLoadState) {
+  private _onPhotoLoadingStateChange = (loadState: ImageLoadState) => {
     this.setState({
       isImageLoaded: loadState === ImageLoadState.loaded,
       isImageError: loadState === ImageLoadState.error

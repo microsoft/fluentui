@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css
 } from '../../Utilities';
 import { Link } from '../../Link';
@@ -37,8 +36,7 @@ export class GroupShowAll extends BaseComponent<IGroupDividerProps, {}> {
     return null;
   }
 
-  @autobind
-  private _onSummarizeClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onSummarizeClick = (ev: React.MouseEvent<HTMLElement>): void => {
     this.props.onToggleSummarize!(this.props.group!);
 
     ev.stopPropagation();
