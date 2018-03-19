@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "CommandBar changed the title attribute to render as tooltip and added readonly state (visitable by keyboard, functionally disabled)",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "peterdunlop2519@gmail.com"
+}
