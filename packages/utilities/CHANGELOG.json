@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.18.3",
+      "tag": "@uifabric/utilities_v5.18.3",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.2",
       "tag": "@uifabric/utilities_v5.18.2",
       "date": "Thu, 15 Mar 2018 02:42:27 GMT",
