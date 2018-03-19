@@ -6,8 +6,7 @@ import {
   getNativeProps,
   divProperties,
   customizable,
-  KeyCodes,
-  autobind
+  KeyCodes
 } from '../../Utilities';
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.types';
 import { Callout, ICallout } from '../../Callout';
@@ -103,15 +102,13 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     );
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.escape) {
       this.props.onLeave && this.props.onLeave(ev);
     }
   }
 
-  @autobind
-  private _onRenderCompactCard(): JSX.Element {
+  private _onRenderCompactCard = (): JSX.Element => {
     return (
       <div className={ mergeStyles(this._styles.compactCard, { height: this.props.compactCardHeight + 'px' }) as string }>
         { this.props.onRenderCompactCard!(this.props.renderData) }
@@ -119,8 +116,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     );
   }
 
-  @autobind
-  private _onRenderExpandedCard(): JSX.Element {
+  private _onRenderExpandedCard = (): JSX.Element => {
     // firstFrameRendered helps in initially setting height of expanded card to 1px, even if
     // mode prop is set to ExpandingCardMode.expanded on first render. This is to make sure transition animation takes place.
     !this.state.firstFrameRendered && this._async.requestAnimationFrame(() => {
@@ -144,9 +140,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     );
   }
 
-  @autobind
-  // tslint:disable-next-line:no-unused-variable
-  private _checkNeedsScroll(): void {
+  private _checkNeedsScroll = (): void => {
     if (this._expandedElem) {
       this._async.requestAnimationFrame(() => {
         if (this._expandedElem.scrollHeight >= this.props.expandedCardHeight!) {

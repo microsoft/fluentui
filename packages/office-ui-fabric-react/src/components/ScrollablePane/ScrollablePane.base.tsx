@@ -4,7 +4,6 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as PropTypes from 'prop-types';
 import {
-  autobind,
   BaseComponent,
   classNamesFunction,
   customizable,
@@ -69,6 +68,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     this._events.off(window);
   }
 
+  public componentDidUpdate(prevProps: IScrollablePaneProps) {
+    const initialScrollPosition = this.props.initialScrollPosition;
+    if (initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
+      this.root.scrollTop = initialScrollPosition;
+    }
+  }
+
   public render() {
     const { className, theme, getStyles } = this.props;
     const classNames = getClassNames(getStyles!,
@@ -97,42 +103,35 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     this._onWindowResize();
   }
 
-  @autobind
-  public subscribe(handler: (headerBound: ClientRect, footerBound: ClientRect) => void) {
+  public subscribe = (handler: (headerBound: ClientRect, footerBound: ClientRect) => void): void => {
     this._subscribers.add(handler);
   }
 
-  @autobind
-  public unsubscribe(handler: (headerBound: ClientRect, footerBound: ClientRect) => void) {
+  public unsubscribe = (handler: (headerBound: ClientRect, footerBound: ClientRect) => void): void => {
     this._subscribers.delete(handler);
   }
 
-  @autobind
-  public addStickyHeader(sticky: Sticky) {
+  public addStickyHeader = (sticky: Sticky): void => {
     this._addSticky(sticky, this._stickyAbove, this.stickyAbove, () => {
       this.stickyAbove.appendChild(sticky.content);
     });
   }
 
-  @autobind
-  public addStickyFooter(sticky: Sticky) {
+  public addStickyFooter = (sticky: Sticky): void => {
     this._addSticky(sticky, this._stickyBelow, this.stickyBelow, () => {
       this.stickyBelow.insertBefore(sticky.content, this.stickyBelow.firstChild);
     });
   }
 
-  @autobind
-  public removeStickyHeader(sticky: Sticky) {
+  public removeStickyHeader = (sticky: Sticky): void => {
     this._removeSticky(sticky, this._stickyAbove, this.stickyAbove);
   }
 
-  @autobind
-  public removeStickyFooter(sticky: Sticky) {
+  public removeStickyFooter = (sticky: Sticky): void => {
     this._removeSticky(sticky, this._stickyBelow, this.stickyBelow);
   }
 
-  @autobind
-  public notifySubscribers(sort?: boolean): void {
+  public notifySubscribers = (sort?: boolean): void => {
     this._subscribers.forEach((handle) => {
       handle(this.stickyAbove.getBoundingClientRect(), this.stickyBelow.getBoundingClientRect());
     });
@@ -142,6 +141,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     if (this._stickyBelow.size > 1) {
       this._sortStickies(this._stickyBelow, this.stickyBelow);
     }
+  }
+
+  public getScrollPosition = (): number => {
+    return this.root.scrollTop;
   }
 
   private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement, addStickyToContainer: () => void) {
@@ -178,8 +181,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     }, 5);
   }
 
-  @autobind
-  private _setPlaceholderHeights(stickies: Set<Sticky>) {
+  private _setPlaceholderHeights = (stickies: Set<Sticky>): void => {
     stickies.forEach((sticky, idx) => {
       sticky.setPlaceholderHeight(sticky.content.clientHeight);
     });

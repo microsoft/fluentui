@@ -123,21 +123,38 @@ BAD:
 GOOD:
 `onRenderItem: IRenderFunction<IItemProps>`
 
-## Use @autobind. Avoid ALL binds in templates
+## Use arrow function properties to avoid ALL binds in templates
 
-The autobind decorator simplifies making event callbacks "bound" to the instance. It's easy to use:
+When we use bind in a template, it means that the function is recreated every time, which is an anti-pattern.
 
+BAD:
 ```typescript
 class Foo {
 
-  @autobind
   public _onClick(ev: React.MouseEvent) {
+  }
+
+  render() {
+    <button onClick={this._onClick.bind(this)}>Click me</button
   }
 
 }
 ```
 
-When we use bind in a template, it means that the function is recreated every time, which is an anti-pattern.
+Instead we can use an arrow function property as it will always be bound to the component.
+
+GOOD:
+```typescript
+class Foo {
+
+  public _onClick = (ev: React.MouseEvent) => {
+  }
+
+  render() {
+    <button onClick={this._onClick}>Click me</button
+  }
+}
+```
 
 ## For gathering refs, avoid string refs, use resolve functions
 
@@ -173,14 +190,26 @@ public render() {
 ```
 
 Best, use createRef:
+
+The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://github.com/facebook/react/pull/11555). (When Fabric switches over to React 16, we'll use React.createRef instead)
+
+`createRef` creates a reference object that has the following type `{ value: T | null }`, where T is the element to reference (either a dom node or a react component). You set the reference by passing the reference object as the `ref` prop. You can then subsequently access the reference through the `.value` property on the reference object elsewhere in your code.
+
 ```typescript
-import { createRef, RefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 class Foo extends BaseComponent<...> {
-  private _root: RefObject<HTMLElement> = createRef<HTMLElement>();
+  // Create the reference object that will be used for setting and accessing the reference
+  private _root = createRef<HTMLButtonElement>();
 
   public render() {
-    return <div ref={ _root } />;
+    // Set the reference by passing the reference object as the ref prop
+    return <button ref={ _root } onClick={this._onClick} />;
+  }
+
+  private _onClick() {
+    // Access the reference through the .value property on the reference object
+    this._root.value.focus();
   }
 }
 ```
@@ -258,8 +287,7 @@ class ItemComponent extends React.Component<...> {
     );
   }
 
-  @autobind
-  _onClick(ev: MouseEvent) {
+  _onClick = (ev: MouseEvent) => {
 
   }
 }

@@ -20,11 +20,10 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           color: #333333;
           cursor: text;
           display: block;
-          font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          margin-bottom: 10px;
           margin-left: 0;
           outline: 0;
           overflow: hidden;
@@ -45,7 +44,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           display: none;
         }
         &.is-open {
-          border-color: #0078d7;
+          border-color: #0078d4;
         }
         @media screen and (-ms-high-contrast: active){&.is-open {
           -ms-high-contrast-adjust: none;
@@ -71,7 +70,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           color: HighlightText;
         }
         &:active {
-          border-color: #0078d7;
+          border-color: #0078d4;
         }
         @media screen and (-ms-high-contrast: active){&:active {
           -ms-high-contrast-adjust: none;
@@ -88,7 +87,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           top: -2px;
         }
         &:focus {
-          border-color: #0078d7;
+          border-color: #0078d4;
         }
         @media screen and (-ms-high-contrast: active){&:focus {
           -ms-high-contrast-adjust: none;
@@ -173,7 +172,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: #666666;
             cursor: default;
             display: inline-block;
-            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
             height: 32px;
@@ -205,6 +204,14 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             right: 0px;
             top: 0px;
             z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;

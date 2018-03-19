@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  autobind,
   customizable
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
@@ -18,8 +17,7 @@ import { ResizeGroup, IResizeGroup } from 'office-ui-fabric-react/lib/ResizeGrou
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import {
   classNamesFunction,
-  createRef,
-  RefObject
+  createRef
 } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
@@ -56,8 +54,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     elipisisIconProps: { iconName: 'More' }
   };
 
-  private _overflowSet: RefObject<IOverflowSet> = createRef<IOverflowSet>();
-  private _resizeGroup: RefObject<IResizeGroup> = createRef<IResizeGroup>();
+  private _overflowSet = createRef<IOverflowSet>();
+  private _resizeGroup = createRef<IResizeGroup>();
   private _classNames: {[key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
@@ -158,8 +156,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return [primaryKey, farKey, overflowKey].join(' ');
   }
 
-  @autobind
-  private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
+  private _onReduceData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { endAligned, onDataReduced } = this.props;
     let { primaryItems, overflowItems, cacheKey, farItems } = data;
 
@@ -183,8 +180,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return undefined;
   }
 
-  @autobind
-  private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
+  private _onGrowData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { endAligned, onDataGrown } = this.props;
     let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
     const movedItem = overflowItems[0];
@@ -208,8 +204,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return undefined;
   }
 
-  @autobind
-  private _onRenderItems(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
+  private _onRenderItems = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
     let { buttonStyles } = this.props;
 
     if (item.onRender) {
@@ -236,8 +231,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return this._onRenderButton(commandButtonProps);
   }
 
-  @autobind
-  private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
+  private _onRenderButton = (props: ICommandBarItemProps): JSX.Element => {
     // tslint:disable-next-line:no-any
     return <CommandBarButton { ...props as any } />;
   }

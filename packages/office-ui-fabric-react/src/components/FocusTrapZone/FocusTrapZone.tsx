@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   elementContains,
   getNativeProps,
   divProperties,
@@ -117,8 +116,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  @autobind
-  private _onKeyboardHandler(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyboardHandler = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which !== KeyCodes.tab) {
       return;
     }

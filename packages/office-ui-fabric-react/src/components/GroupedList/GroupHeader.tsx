@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css
 } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
@@ -130,8 +129,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     );
   }
 
-  @autobind
-  private _onToggleCollapse(ev: React.MouseEvent<HTMLElement>) {
+  private _onToggleCollapse = (ev: React.MouseEvent<HTMLElement>): void => {
     const { group, onToggleCollapse, isGroupLoading } = this.props;
     const { isCollapsed } = this.state;
 
@@ -150,8 +148,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     ev.preventDefault();
   }
 
-  @autobind
-  private _onToggleSelectGroupClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onToggleSelectGroupClick = (ev: React.MouseEvent<HTMLElement>): void => {
     const { onToggleSelectGroup, group } = this.props;
 
     if (onToggleSelectGroup) {
@@ -162,8 +159,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     ev.stopPropagation();
   }
 
-  @autobind
-  private _onHeaderClick() {
+  private _onHeaderClick = (): void => {
     const { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
 
     if (onGroupHeaderClick) {

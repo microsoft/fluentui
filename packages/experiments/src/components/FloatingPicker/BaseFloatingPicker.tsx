@@ -2,11 +2,9 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css,
   getRTL,
-  createRef,
-  RefObject
+  createRef
 } from '../../Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
@@ -32,8 +30,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
-  protected root: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
-  protected suggestionElement: RefObject<Suggestions<T>> = createRef<Suggestions<T>>();
+  protected root = createRef<HTMLDivElement>();
+  protected suggestionElement = createRef<Suggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
@@ -128,8 +126,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this._unbindFromInputElement();
   }
 
-  @autobind
-  public dismissSuggestions(): void {
+  public dismissSuggestions = (): void => {
     this.setState({ suggestionsVisible: false });
   }
 
@@ -139,8 +136,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  public refocusSuggestions(keyCode: KeyCodes): void {
+  public refocusSuggestions = (keyCode: KeyCodes): void => {
     if (this.suggestionStore.suggestions && this.suggestionStore.suggestions.length > 0) {
       if (keyCode === KeyCodes.up) {
         this.suggestionStore.setSelectedSuggestion(
@@ -321,29 +317,26 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  protected onSuggestionClick(
+  protected onSuggestionClick = (
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-  ): void {
+  ): void => {
     this.onChange(item);
   }
 
-  @autobind
-  protected onSuggestionRemove(
+  protected onSuggestionRemove = (
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-  ): void {
+  ): void => {
     if (this.props.onRemoveSuggestion) {
       (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
     this.suggestionStore.removeSuggestion(index);
   }
 
-  @autobind
-  protected onKeyDown(ev: MouseEvent): void {
+  protected onKeyDown = (ev: MouseEvent): void => {
     if (!this.state.suggestionsVisible ||
       (this.props.inputElement &&
         !(this.props.inputElement as HTMLElement).contains(ev.target as HTMLElement))) {
@@ -439,8 +432,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  protected onGetMoreResults(): void {
+  protected onGetMoreResults = (): void => {
     this.setState(
       {
         isSearching: true
@@ -488,8 +480,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  private _onValidateInput(): void {
+  private _onValidateInput = (): void => {
     if (
       this.props.onValidateInput &&
       this.props.createGenericItem
@@ -506,8 +497,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  private _showForceResolve(): boolean {
+  private _showForceResolve = (): boolean => {
     return this.props.showForceResolve ? this.props.showForceResolve() : false;
   }
 

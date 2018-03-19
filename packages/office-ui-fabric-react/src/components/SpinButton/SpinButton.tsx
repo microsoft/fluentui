@@ -6,7 +6,6 @@ import {
   BaseComponent,
   getId,
   KeyCodes,
-  autobind,
   customizable,
   calculatePrecision,
   precisionRound
@@ -265,8 +264,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
   }
 
-  @autobind
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement>) {
+  private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
     if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
@@ -280,8 +278,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
   }
 
-  @autobind
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this._validate(ev);
     this.setState({ isFocused: false });
     if (this.props.onBlur) {
@@ -340,8 +337,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * in the input (not when changed via the buttons)
    * @param event - the event that fired
    */
-  @autobind
-  private _validate(event: React.FocusEvent<HTMLInputElement>) {
+  private _validate = (event: React.FocusEvent<HTMLInputElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     if (this.state.value) {
@@ -358,8 +354,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * without this our value will never change (and validation will not have the correct number)
    * @param event - the event that was fired
    */
-  @autobind
-  private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
 
@@ -374,8 +369,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    */
-  @autobind
-  private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void) {
+  private _updateValue = (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
@@ -394,8 +388,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Stop spinning (clear any currently pending update and set spinning to false)
    */
-  @autobind
-  private _stop() {
+  private _stop = (): void => {
     if (this._currentStepFunctionHandle >= 0) {
       this._async.clearTimeout(this._currentStepFunctionHandle);
       this._currentStepFunctionHandle = -1;
@@ -412,8 +405,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * the value when up or down arrow are depressed
    * @param event - the keyboardEvent that was fired
    */
-  @autobind
-  private _handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+  private _handleKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
     if (this.props.disabled) {
       this._stop();
 
@@ -457,22 +449,18 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * if the up or down arrow fired this event
    * @param event stop spinning if we
    */
-  @autobind
-  private _handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
-
+  private _handleKeyUp = (event: React.KeyboardEvent<HTMLElement>): void => {
     if (this.props.disabled || event.which === KeyCodes.up || event.which === KeyCodes.down) {
       this._stop();
       return;
     }
   }
 
-  @autobind
-  private _onIncrementMouseDown() {
+  private _onIncrementMouseDown = (): void => {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
   }
 
-  @autobind
-  private _onDecrementMouseDown() {
+  private _onDecrementMouseDown = (): void => {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
   }
 }

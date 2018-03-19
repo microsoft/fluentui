@@ -8,6 +8,7 @@ import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
 import { PersonaSize } from '../../Persona';
+import { Persona } from '../../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
 import { TestImages } from '../../common/TestImages';
 import { findNodes, expectOne, expectMissing } from '../../common/testUtilities';
@@ -191,4 +192,41 @@ describe('Facepile', () => {
     });
   });
 
+  it('renders Persona control if exactly one persona is sent in props', () => {
+    let wrapper = shallow(
+      <Facepile
+        personas={ facepilePersonas.slice(0, 1) }
+        overflowPersonas={ [] }
+      />);
+
+    expect(wrapper.find(PersonaCoin).length).toEqual(0);
+    expect(wrapper.find(Persona).length).toEqual(1);
+
+    wrapper = shallow(
+      <Facepile
+        personas={ facepilePersonas.slice(0, 1) }
+      />);
+
+    expect(wrapper.find(PersonaCoin).length).toEqual(0);
+    expect(wrapper.find(Persona).length).toEqual(1);
+  });
+
+  it('renders Persona control if exactly one persona is sent in props', () => {
+    let wrapper = shallow(
+      <Facepile
+        personas={ facepilePersonas.slice(0, 1) }
+        overflowPersonas={ [] }
+      />);
+
+    expect(wrapper.find(PersonaCoin).length).toEqual(0);
+    expect(wrapper.find(Persona).length).toEqual(1);
+
+    wrapper = shallow(
+      <Facepile
+        personas={ facepilePersonas.slice(0, 1) }
+      />);
+
+    expect(wrapper.find(PersonaCoin).length).toEqual(0);
+    expect(wrapper.find(Persona).length).toEqual(1);
+  });
 });

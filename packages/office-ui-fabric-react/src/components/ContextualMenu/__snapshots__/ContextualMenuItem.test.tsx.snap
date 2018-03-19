@@ -28,7 +28,7 @@ ShallowWrapper {
         "key": "123",
       }
     }
-    onCheckmarkClick={[Function]}
+    onCheckmarkClick={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
