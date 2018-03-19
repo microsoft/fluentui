@@ -341,7 +341,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <Checkbox
@@ -382,22 +382,15 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     });
   }
 
-  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
-    if (!filterText) {
-      return [];
-    }
-    return data
-      .filter((item: IFullDocumentCardProps) => item.documentTitleProps &&
-        item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0
-      )
-      .filter((item: IFullDocumentCardProps) => !this._listContainsDocument(item, items));
+  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]) {
+    return filterText ? data.filter(item => item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, items)) : [];
   }
 
-  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean {
+  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]) {
     if (!items || !items.length || items.length === 0) {
       return false;
     }
     const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
-    return items.filter((item: IFullDocumentCardProps) => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
+    return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
   }
 }

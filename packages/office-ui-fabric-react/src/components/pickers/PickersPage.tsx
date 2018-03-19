@@ -15,7 +15,7 @@ const TagPickerExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 const PickerCustomResultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/examples/Picker.CustomResult.Example.tsx') as string;
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render() {
     return (
       <ComponentPage
         title='Pickers'

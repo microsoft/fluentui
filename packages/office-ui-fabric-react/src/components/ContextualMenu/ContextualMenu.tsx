@@ -141,7 +141,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
-  public componentWillMount(): void {
+  public componentWillMount() {
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
     if (!this.props.hidden) {
@@ -157,7 +157,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
-  public componentWillUnmount(): void {
+  public componentWillUnmount() {
     if (this._isFocusingPreviousElement && this._previousActiveElement) {
 
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
@@ -398,7 +398,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return renderedItems;
   }
 
-  private _renderSectionItem(item: IContextualMenuItem, menuClassNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+  private _renderSectionItem(item: IContextualMenuItem, menuClassNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     const section = item.sectionProps;
     if (!section) {
       return;
@@ -435,7 +435,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _renderListItem(content: React.ReactNode, key: string | number, classNames: IMenuItemClassNames, title?: string): JSX.Element {
+  private _renderListItem(content: React.ReactNode, key: string | number, classNames: IMenuItemClassNames, title?: string) {
     return (
       <li
         role='presentation'
@@ -640,7 +640,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+  private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
 
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
@@ -701,7 +701,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _renderSplitDivider(item: IContextualMenuItem): JSX.Element {
+  private _renderSplitDivider(item: IContextualMenuItem) {
     const getDividerClassnames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return <VerticalDivider getClassNames={ getDividerClassnames } />;
   }

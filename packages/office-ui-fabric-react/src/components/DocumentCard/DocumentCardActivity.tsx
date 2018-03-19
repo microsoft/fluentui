@@ -7,7 +7,7 @@ import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
-  public render(): JSX.Element {
+  public render() {
     const { activity, people } = this.props;
 
     return (
@@ -37,7 +37,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
     );
   }
 
-  private _renderAvatar(person: IDocumentCardActivityPerson): JSX.Element {
+  private _renderAvatar(person: IDocumentCardActivityPerson) {
 
     return (
       <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>

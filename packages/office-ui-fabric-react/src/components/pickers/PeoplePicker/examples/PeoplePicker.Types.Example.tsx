@@ -71,7 +71,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     let currentPicker: JSX.Element | undefined = undefined;
 
     switch (this.state.currentPicker) {
@@ -133,7 +133,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   private _getTextFromItem(persona: IPersonaProps): string {
     return persona.primaryText as string;
   }
-  private _renderListPicker(): JSX.Element {
+  private _renderListPicker() {
     return (
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -155,7 +155,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderNormalPicker(): JSX.Element {
+  private _renderNormalPicker() {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }

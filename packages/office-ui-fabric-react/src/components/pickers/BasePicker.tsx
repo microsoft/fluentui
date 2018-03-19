@@ -317,7 +317,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.updateSuggestionsList(suggestions);
   }
 
-  protected updateValue(updatedValue: string): void {
+  protected updateValue(updatedValue: string) {
     this._onResolveSuggestions(updatedValue);
   }
 

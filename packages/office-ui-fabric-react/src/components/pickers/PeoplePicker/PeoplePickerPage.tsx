@@ -13,7 +13,7 @@ import { PeoplePickerStatus } from './PeoplePicker.checklist';
 const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
 export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render() {
     return (
       <ComponentPage
         title='PeoplePicker'

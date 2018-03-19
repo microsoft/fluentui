@@ -56,7 +56,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     };
   }
 
-  public componentDidMount(): void {
+  public componentDidMount() {
     this._events.on(window, 'resize', this._updateFooterPosition);
 
     if (this.props.isOpen) {
@@ -74,7 +74,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  public render(): JSX.Element {
+  public render() {
     const {
       className = '',
       elementToFocusOnDismiss,

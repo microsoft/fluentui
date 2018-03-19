@@ -24,9 +24,9 @@ let _toggle2: Element;
 let _surface3: Element;
 
 let _onItemInvokeCalled: number;
-let _lastItemInvoked: { key: number | string } | null;
+let _lastItemInvoked: any;
 
-function _initializeSelection(selectionMode: SelectionMode = SelectionMode.multiple): void {
+function _initializeSelection(selectionMode = SelectionMode.multiple) {
   _selection = new Selection();
   _selection.setItems([{ key: 'a', }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
   _selectionZone = ReactTestUtils.renderIntoDocument(
@@ -34,7 +34,7 @@ function _initializeSelection(selectionMode: SelectionMode = SelectionMode.multi
       selection={ _selection }
       selectionMode={ selectionMode }
       // tslint:disable-next-line:jsx-no-lambda
-      onItemInvoked={ (item: { key: number | string } | null) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
+      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
     >
 
       <button id='toggleAll' data-selection-all-toggle={ true }>Toggle all selected</button>
@@ -69,7 +69,7 @@ function _initializeSelection(selectionMode: SelectionMode = SelectionMode.multi
   _surface3 = _componentElement.querySelector('#surface3')!;
 
   _onItemInvokeCalled = 0;
-  _lastItemInvoked = null;
+  _lastItemInvoked = undefined;
 }
 
 describe('SelectionZone', () => {
@@ -232,7 +232,7 @@ describe('SelectionZone', () => {
   });
 });
 
-function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData): void {
+function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData) {
   ReactTestUtils.Simulate.mouseDown(el, eventData);
   ReactTestUtils.Simulate.focus(el, eventData);
   ReactTestUtils.Simulate.click(el, eventData);

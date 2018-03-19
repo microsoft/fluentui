@@ -96,7 +96,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._positionAttempts = 0;
   }
 
-  public componentDidUpdate(): void {
+  public componentDidUpdate() {
     this._setInitialFocus();
     if (!this.props.hidden) {
       if (!this._hasListeners) {
@@ -110,7 +110,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  public componentWillMount(): void {
+  public componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
