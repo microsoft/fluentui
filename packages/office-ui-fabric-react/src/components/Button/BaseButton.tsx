@@ -206,7 +206,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public dismissMenu(): void {
-    this.setState({ menuProps: null });
+    this._dismissMenu();
+  }
+
+  public openMenu(): void {
+    this._openMenu();
   }
 
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
@@ -398,10 +402,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: null });
   }
 
+  private _openMenu = (): void => {
+    if (this.props.menuProps) {
+      this.setState({ menuProps: this.props.menuProps });
+    }
+  }
+
   private _onToggleMenu = (): void => {
-    const { menuProps } = this.props;
     const currentMenuProps = this.state.menuProps;
-    this.setState({ menuProps: currentMenuProps ? null : menuProps });
+    currentMenuProps ? this._dismissMenu() : this._openMenu();
   }
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {

@@ -187,8 +187,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     const className = css(
       isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
-      (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded)
+      (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded),
+      item.inactive ? styles.inactive : ''
     );
+
+    let tooltipContent = '';
+
+    if (item.title) {
+        tooltipContent = item.title;
+    }
+
     const hasIcon = !!item.icon || !!item.iconProps;
     const isNameVisible = !!item.name && !item.iconOnly;
     const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : undefined);
@@ -203,6 +211,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           className={ className }
           href={ item.disabled ? undefined : item.href }
           onClick={ item.onClick }
+          title={''}
+          aria-disabled={item.inactive}
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           role='menuitem'
@@ -227,6 +237,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           onClick={ this._onItemClick(item) }
+          title={''}
+          aria-disabled={item.inactive}
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
@@ -255,6 +267,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           { ...getNativeProps(item, divProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
+          title={''}
+          aria-disabled={item.inactive}
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-label={ ariaLabel }
@@ -278,6 +292,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     if (item.iconOnly && item.name) {
       command = (
         <TooltipHost content={ item.name }>
+          { command }
+        </TooltipHost>
+      );
+    } else if (tooltipContent) {
+      command = (
+        <TooltipHost content={ tooltipContent }>
           { command }
         </TooltipHost>
       );
@@ -399,6 +419,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      if (item.inactive) {
+        return;
+      }
+
       if (item.key === this.state.expandedMenuItemKey || !hasSubmenu(item)) {
         this._onContextMenuDismiss();
       } else {
