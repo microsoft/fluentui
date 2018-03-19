@@ -361,7 +361,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
-              ref={ this._focusZone }
+              componentRef={ this._focusZone }
               className={ styles.focusZone }
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ isRightArrow }
