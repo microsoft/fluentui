@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add `hasFocus` public api in `SearchBox` that returns a flag indicating whether `SearchBox` has focus or not.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "sayalis@microsoft.com"
+}
