@@ -119,6 +119,13 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
+  /**
+   * Returns a flag indicating whether the search box has focus
+   */
+  public hasFocus(): boolean {
+    return !!this.state.hasFocus;
+  }
+
   private _onClear(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) {
     this.props.onClear && this.props.onClear(ev);
     if (!ev.defaultPrevented) {
