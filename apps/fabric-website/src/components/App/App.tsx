@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Nav } from '../Nav/Nav';
@@ -75,8 +74,7 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
-  @autobind
-  private _handleNavPositioning() {
+  private _handleNavPositioning = () => {
     let { isAttached, navHeight } = this.state;
     this._appContentRect = this._appContent && this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;

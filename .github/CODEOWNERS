@@ -27,7 +27,7 @@ scripts/ @dzearing
 
 #### Packages
 # packages/example-app-base/
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp
+packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
@@ -45,14 +45,14 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @johannao76 lorejoh12@gmail.com jolore@microsoft.com
-dateValues/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+dateMath/     @lorejoh12 @sathi23
+dateValues/   @lorejoh12 @sathi23
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+Calendar/   @lorejoh12 @sathi23
 Callout/  @joschect
 # Check/
 # Checkbox/
@@ -61,7 +61,7 @@ Callout/  @joschect
 # ComboBox/
 CommandBar/   @micahgodbolt
 ContextualMenu/  @joschect
-DatePicker/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+DatePicker/   @lorejoh12 @sathi23
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton

@@ -1,6 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+
+## 5.4.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- Use arrow function properties instead of @autobind
 
 ## 5.3.0
 Fri, 02 Mar 2018 11:25:35 GMT

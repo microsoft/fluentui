@@ -1,6 +1,65 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+
+## 5.65.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- DetailsList: scrollbars show up unnecessarily on IE11
+- Button: High contrast mode focus bug fixes.
+- Use arrow function properties instead of @autobind
+
+## 5.64.4
+Fri, 16 Mar 2018 10:28:03 GMT
+
+### Patches
+
+- Button: fixed bug causes by onRenderDescription pulling from this.props instead of passed in props
+- BaseButton: removing autobind usage.
+- Added _isSelectionDisabled check in SelectionZone's onMouseDown event handler
+- Pickers: Allow onItemSelected to return null
+- Nav component sets aria-label on nested element with role=navigation
+- ContextualMenu: Allow anchor menu items to have sub menus. Added prop for sub menu hover delay.
+- Export LinkBase from OfficeFabric/Link/index.ts
+
+## 5.64.3
+Thu, 15 Mar 2018 10:37:10 GMT
+
+### Patches
+
+- TextField: Enabled scrolling and resize when disabled
+
+## 5.64.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). 
+
+## 5.64.1
+Wed, 14 Mar 2018 10:28:26 GMT
+
+### Patches
+
+- Theme generator: exposing to the website.
+
+## 5.64.0
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Minor changes
+
+- Added an is-open class to the DatePicker root element to indicate when the datepicker is being shown based on the IDatePickerState.isDatePickerShown state property.
+- Added documentation for components that allow native props
+
+### Patches
+
+- Pickers: Fix aria bug where activedescendant would be sug--1
 
 ## 5.63.0
 Mon, 12 Mar 2018 06:29:20 GMT

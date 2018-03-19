@@ -359,8 +359,8 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('../components/ThemeGenerator/ThemeGeneratorPage').ThemeGeneratorPage,
           key: 'Theme Generator',
-          name: 'Beta Theme Generator',
-          url: '#examples/themeGenerator'
+          name: 'Theme Generator',
+          url: '#examples/themegenerator'
         },
         {
           component: require<any>('./ComponentStatus/ComponentStatusPage').ComponentStatusPage,

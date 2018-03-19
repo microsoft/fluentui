@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Async,
-  autobind,
   BaseComponent,
   classNamesFunction,
   customizable,
@@ -139,8 +138,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * When the whole swatchColorPicker is blurred,
    * make sure to clear the pending focused stated
    */
-  @autobind
-  private _onSwatchColorPickerBlur() {
+  private _onSwatchColorPickerBlur = (): void => {
     if (this.props.onCellFocused) {
       this._cellFocused = false;
       this.props.onCellFocused();
@@ -163,8 +161,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * @param item - The item to render
    * @returns {JSX.Element} - Element representing the item
    */
-  @autobind
-  private _renderOption(item: IColorCellProps): JSX.Element {
+  private _renderOption = (item: IColorCellProps): JSX.Element => {
     const id = this._id;
 
     return (
@@ -192,8 +189,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   /**
    * Callback passed to the GridCell that will manage triggering the onCellHovered callback for mouseEnter
    */
-  @autobind
-  private _onMouseEnter(ev: React.MouseEvent<HTMLButtonElement>): boolean {
+  private _onMouseEnter = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
 
     if (!this.props.focusOnHover) {
       if (!this.isNavigationIdle || this.props.disabled) {
@@ -213,8 +209,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   /**
    * Callback passed to the GridCell that will manage Hover/Focus updates
    */
-  @autobind
-  private _onMouseMove(ev: React.MouseEvent<HTMLButtonElement>): boolean {
+  private _onMouseMove = (ev: React.MouseEvent<HTMLButtonElement>): boolean => {
 
     if (!this.props.focusOnHover) {
       if (!this.isNavigationIdle || this.props.disabled) {
@@ -238,9 +233,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   /**
    * Callback passed to the GridCell that will manage Hover/Focus updates
    */
-  @autobind
-  private _onMouseLeave(ev: React.MouseEvent<HTMLButtonElement>): void {
-
+  private _onMouseLeave = (ev: React.MouseEvent<HTMLButtonElement>): void => {
     const parentSelector = this.props.mouseLeaveParentSelector;
 
     if (!this.props.focusOnHover ||
@@ -275,16 +268,14 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   /**
    * Callback to make sure we don't update the hovered element during mouse wheel
    */
-  @autobind
-  private _onWheel(): void {
+  private _onWheel = (): void => {
     this.setNavigationTimeout();
   }
 
   /**
    * Callback that
    */
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>): void => {
     if (
       ev.which === KeyCodes.up ||
       ev.which === KeyCodes.down ||
@@ -316,8 +307,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * Callback passed to the GridCell class that will trigger the onCellHovered callback of the SwatchColorPicker
    * NOTE: This will not be triggered if shouldFocusOnHover === true
    */
-  @autobind
-  private _onGridCellHovered(item?: IColorCellProps): void {
+  private _onGridCellHovered = (item?: IColorCellProps): void => {
     const { onCellHovered } = this.props;
 
     if (onCellHovered) {
@@ -328,8 +318,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   /**
    * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
    */
-  @autobind
-  private _onGridCellFocused(item?: IColorCellProps): void {
+  private _onGridCellFocused = (item?: IColorCellProps): void => {
     const { onCellFocused } = this.props;
     if (onCellFocused) {
       if (item) {
@@ -346,8 +335,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * Handle the click on a cell
    * @param item - The cell that the click was fired against
    */
-  @autobind
-  private _onCellClick(item: IColorCellProps) {
+  private _onCellClick = (item: IColorCellProps): void => {
     if (this.props.disabled) {
       return;
     }

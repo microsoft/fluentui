@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import {
   BaseComponent,
-  autobind,
   getId,
   KeyCodes,
   customizable,
@@ -134,8 +133,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
-  @autobind
-  private _onFocusCapture(ev: React.FocusEvent<HTMLElement>) {
+  private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
     this.setState({
       hasFocus: true
     });
@@ -147,8 +145,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
-  @autobind
-  private _onClearClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+  private _onClearClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     const { clearButtonProps } = this.props;
 
     if (clearButtonProps && clearButtonProps.onClick) {
@@ -160,8 +157,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
 
     switch (ev.which) {
 
@@ -191,8 +187,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     ev.stopPropagation();
   }
 
-  @autobind
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement>) {
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
     this._events.off(this._rootElement, 'blur');
     this.setState({
       hasFocus: false
@@ -203,8 +198,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
-  @autobind
-  private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
+  private _onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const value = ev.target.value;
 
     if (value === this._latestValue) {
