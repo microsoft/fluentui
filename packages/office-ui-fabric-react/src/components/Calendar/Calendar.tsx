@@ -5,7 +5,6 @@ import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
 import {
-  autobind,
   css,
   BaseComponent,
   KeyCodes,
@@ -210,16 +209,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _navigateDay(date: Date) {
+  private _navigateDay = (date: Date): void => {
     this.setState({
       navigatedDate: date
     });
   }
 
-  @autobind
-  private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-
+  private _onNavigateDate = (date: Date, focusOnNavigatedDay: boolean): void => {
     if (this.props.isDayPickerVisible || (!this.props.isDayPickerVisible && !focusOnNavigatedDay)) {
       this._navigateDay(date);
       this._focusOnUpdate = focusOnNavigatedDay;
@@ -229,8 +225,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onSelectDate(date: Date, selectedDateRangeArray?: Date[]) {
+  private _onSelectDate = (date: Date, selectedDateRangeArray?: Date[]): void => {
     const { onSelectDate } = this.props;
 
     this.setState({
@@ -242,8 +237,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onHeaderSelect(focus: boolean) {
+  private _onHeaderSelect = (focus: boolean): void => {
     this.setState({
       isDayPickerVisible: !this.state.isDayPickerVisible,
       isMonthPickerVisible: !this.state.isMonthPickerVisible
@@ -254,19 +248,15 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onGotoToday() {
-
+  private _onGotoToday = (): void => {
     const { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
     const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
     this._onSelectDate(today!, dates);
-
   }
 
-  @autobind
-  private _onGotoTodayKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onGotoTodayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       ev.preventDefault();
       this._onGotoToday();
@@ -279,8 +269,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onDatePickerPopupKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -299,8 +288,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
+  private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (this.props.onDismiss) {
       this.props.onDismiss();
     }

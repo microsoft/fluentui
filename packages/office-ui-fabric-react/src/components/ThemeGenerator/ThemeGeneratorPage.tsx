@@ -1,9 +1,6 @@
 import * as React from 'react';
 import './ThemeGeneratorPage.scss';
-import {
-  BaseComponent,
-  autobind
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 import {
   loadTheme
@@ -237,9 +234,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
   /* tslint:disable:no-unused-variable */
-  private _makeThemeFromImg() {
+  private _makeThemeFromImg = (): void => {
     /* tslint:enable:no-unused-variable */
     this._imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
     (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
@@ -266,8 +262,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
   }
 
-  @autobind
-  private _cognitiveVisionCallback(e: any) {
+  private _cognitiveVisionCallback = (e: any): void => {
     const xhr = e.target;
     if (xhr.status === 200) {
       const response = JSON.parse(xhr.response);
@@ -284,7 +279,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         // todo: could use more logic based on isInverted and isBg
         switch (color.toLowerCase()) {
           case 'black': return '#1f1f1f';
-          case 'blue': return '#0078d7';
+          case 'blue': return '#0078d4';
           case 'brown': return '#754d12';
           case 'gray':
           case 'grey': return isBg ? '#444' : '#ccc';
@@ -341,13 +336,11 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
   }
 
-  @autobind
-  private _colorPickerOnDismiss() {
+  private _colorPickerOnDismiss = (): void => {
     this.setState({ colorPickerVisible: false });
   }
 
-  @autobind
-  private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
+  private _semanticSlotRuleChanged = (slotRule: IThemeSlotRule, color: string): void => {
     if (this._semanticSlotColorChangeTimeout) {
       clearTimeout(this._semanticSlotColorChangeTimeout);
     }
@@ -361,8 +354,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     // but high enough that quick changes don't get bogged down by a million changes inbetween
   }
 
-  @autobind
-  private _onSwatchClick(slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>) {
+  private _onSwatchClick = (slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>): void => {
     const { colorPickerSlotRule, colorPickerElement } = this.state;
 
     if (colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && !!colorPickerElement && colorPickerSlotRule === slotRule && colorPickerElement === ev.target) { // same one, close it
@@ -372,8 +364,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
   }
 
-  @autobind
-  private _slotWidget(slotRule: IThemeSlotRule) {
+  private _slotWidget = (slotRule: IThemeSlotRule): JSX.Element => {
     return (
       <div key={ slotRule.name } className='ms-themer-slot'>
         { this._colorSquareSwatchWidget(slotRule) }
@@ -387,8 +378,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _fabricSlotWidget(fabricSlot: FabricSlots) {
+  private _fabricSlotWidget = (fabricSlot: FabricSlots): JSX.Element => {
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   }
 
@@ -403,8 +393,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _accessibilityRow(foreground: FabricSlots, background: FabricSlots) {
+  private _accessibilityRow = (foreground: FabricSlots, background: FabricSlots): JSX.Element => {
     const themeRules = this.state.themeRules;
     const bgc: IColor = themeRules[FabricSlots[background]].color!;
     const fgc: IColor = themeRules[FabricSlots[foreground]].color!;
@@ -425,8 +414,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _outputSection() {
+  private _outputSection = (): JSX.Element => {
     const themeRules = this.state.themeRules;
 
     // strip out the unnecessary shade slots from the final output theme
@@ -472,8 +460,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _makeNewTheme() {
+  private _makeNewTheme = (): void => {
     const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
 
@@ -493,8 +480,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     console.log('New theme:', finalTheme);
   }
 
-  @autobind
-  private _baseColorSlotPicker(baseSlot: BaseSlots, title: string) {
+  private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
     let colorChangeTimeout: number;
 
     function _onColorChanged(newColor: string) {
