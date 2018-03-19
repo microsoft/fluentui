@@ -23,7 +23,6 @@ import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 import { createRef } from '../../Utilities';
 import { Keytip } from '../../Keytip';
-import { getNativeKeytipProps } from '../../utilities/keytips';
 
 const styles: any = stylesImport;
 
@@ -199,33 +198,36 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let command: React.ReactNode;
     if (isLink) {
       command = (
-        <button
-          { ...getNativeProps(item, buttonProperties) }
-          { ...getNativeKeytipProps(item.keytipProps) }
-          id={ this._id + item.key }
-          className={ className }
-          onClick={ this._onItemClick(item) }
-          data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
-          aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
-          role='menuitem'
-          aria-label={ ariaLabel }
-          aria-setsize={ setSize }
-          aria-posinset={ posInSet }
-        >
-          { (hasIcon) ? this._renderIcon(item) : (null) }
-          { isNameVisible && (
-            <span
-              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+        <Keytip { ...item.keytipProps! }>
+          { (keytip: {}): JSX.Element => (
+            <button
+              { ...getNativeProps(item, buttonProperties) }
+              { ...keytip }
+              id={ this._id + item.key }
+              className={ className }
+              onClick={ this._onItemClick(item) }
+              data-command-key={ itemKey }
+              aria-haspopup={ hasSubmenu(item) }
+              aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
+              role='menuitem'
+              aria-label={ ariaLabel }
+              aria-setsize={ setSize }
+              aria-posinset={ posInSet }
             >
-              { item.name }
-            </span>
+              { (hasIcon) ? this._renderIcon(item) : (null) }
+              { isNameVisible && (
+                <span
+                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                >
+                  { item.name }
+                </span>
+              ) }
+              { hasSubmenu(item) ? (
+                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
+              ) : (null) }
+            </button>
           ) }
-          { hasSubmenu(item) ? (
-            <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
-          ) : (null) }
-          { item.keytipProps && <Keytip { ...item.keytipProps } /> }
-        </button>
+        </Keytip>
       );
     } else if (item.href) {
       // Allow the disabled property on anchor elements for commandbar

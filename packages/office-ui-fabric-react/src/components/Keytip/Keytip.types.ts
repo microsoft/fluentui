@@ -99,6 +99,8 @@ export interface IKeytipProps {
    * @type {boolean}
    */
   hasChildrenNodes?: boolean;
+
+  render?: (keytip: any) => JSX.Element;
 }
 
 /**

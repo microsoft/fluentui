@@ -45,12 +45,6 @@ export class KeytipOffsetExample extends React.Component<{}, IKeytipExampleState
           data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
           onClick={ btnClick }
         />
-        <Keytip
-          content={ this.keytipMap.Keytip1.content }
-          offset={ { x: 19, y: 17 } }
-          keySequences={ this.keytipMap.Keytip1.keySequences }
-          visible={ this.state.keytipVisible }
-        />
       </div>
     );
   }

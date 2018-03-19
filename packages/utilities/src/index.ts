@@ -14,6 +14,7 @@ export * from './IKeySequence';
 export * from './IKeytipTransitionKey';
 export * from './IPoint';
 export * from './IRectangle';
+export * from './IRenderComponent';
 export * from './IRenderFunction';
 export * from './ISize';
 export * from './IStyleFunction';

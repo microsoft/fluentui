@@ -1,6 +1,6 @@
 import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { IKeytipProps } from '../../Keytip';
+import { IKeytipProps, Keytip } from '../../Keytip';
 import {
   IKeySequence,
   convertSequencesToKeytipID,
@@ -10,18 +10,19 @@ import {
   fullKeySequencesAreEqual,
   getDocument,
   replaceElement,
-  findIndex
+  findIndex,
+  ktpLayerId
 } from '../../Utilities';
 import { constructKeytipTargetFromId } from './KeytipUtils';
 
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
 
-  public keytipTree: KeytipTree;
+  public keytipTree: KeytipTree = new KeytipTree();
+  public keytips: IKeytipProps[] = [];
   public currentSequence: IKeySequence;
 
   private _layer: KeytipLayer;
-  private _keytips: IKeytipProps[];
   private _enableSequences: IKeytipTransitionKey[];
   private _exitSequences: IKeytipTransitionKey[];
   private _returnSequences: IKeytipTransitionKey[];
@@ -44,39 +45,11 @@ export class KeytipManager {
    */
   public init(layer: KeytipLayer): void {
     this._layer = layer;
-    this._keytips = [];
     this.currentSequence = { keys: [] };
+    // All guaranteed to be set because of defaultProps in KeytipLayer
     this._enableSequences = this._layer.props.keytipStartSequences!;
     this._exitSequences = this._layer.props.keytipExitSequences!;
     this._returnSequences = this._layer.props.keytipReturnSequences!;
-    // Create the KeytipTree
-    this.keytipTree = new KeytipTree(this._layer.props.id);
-  }
-
-  public getKeytips() {
-    return this._keytips;
-  }
-
-  public getLayerId(): string {
-    return this._layer.props.id;
-  }
-
-  /**
-   * Gets the aria-describedby property for a set of keySequences
-   * keySequences should not include the initial keytip 'start' sequence
-   *
-   * @param keySequences - Full path of IKeySequences for one keytip
-   * @returns {string} String to use for the aria-describedby property for the element with this Keytip
-   */
-  public getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequence?: IKeySequence): string {
-    const describedby = this._layer.props.id;
-    if (!keySequences.length) {
-      // Return just the layer ID
-      return describedby;
-    }
-
-    // TODO: constant for ariaSeparator
-    return describedby + ', ' + convertSequencesToKeytipID(keySequences);
   }
 
   /**
@@ -91,9 +64,11 @@ export class KeytipManager {
       keytipProps.visible = true;
     }
 
-    // Set the 'keytips' property in _layer
-    this._keytips.push(keytipProps);
+    // Add keytip to this, Tree, and Layer
+    // TODO: should register check for duplicates?
+    this.keytips.push(keytipProps);
     this.keytipTree.addNode(keytipProps);
+    this._layer && this._layer.setKeytips(this.keytips);
 
     if (this._newCurrentKeytipSequences && fullKeySequencesAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
       // This keytip should become the currentKeytip and should execute right away
@@ -104,11 +79,7 @@ export class KeytipManager {
 
       // Show all children keytips
       this.showKeytips(this.keytipTree.currentKeytip.children);
-
       this._newCurrentKeytipSequences = undefined;
-    } else if (keytipProps.visible) {
-      // Add this keytip to the layer
-      this._layer.addOrUpdateKeytip(keytipProps);
     }
   }
 
@@ -124,21 +95,16 @@ export class KeytipManager {
    * Update a keytip's props
    */
   public updateKeytip(keytipProps: IKeytipProps): void {
-    // Update keytip in this._keytips
-    const keytipIndex = findIndex(this._keytips, (keytip: IKeytipProps) => {
+    // Update keytip in this.keytips
+    const keytipIndex = findIndex(this.keytips, (keytip: IKeytipProps) => {
       return fullKeySequencesAreEqual(keytip.keySequences, keytipProps.keySequences);
     });
     if (keytipIndex) {
-      this._keytips = replaceElement(this._keytips, keytipProps, keytipIndex);
+      this.keytips = replaceElement(this.keytips, keytipProps, keytipIndex);
     }
-    // Update keytip in keytip tree
+    // Update keytip in keytip tree and layer
     this.keytipTree.addNode(keytipProps);
-    // Add, update, or remove keytip in layer
-    if (keytipProps.visible) {
-      this._layer.addOrUpdateKeytip(keytipProps);
-    } else {
-      this._layer.removeKeytip(keytipProps);
-    }
+    this._layer && this._layer.setKeytips(this.keytips);
   }
 
   /**
@@ -147,13 +113,13 @@ export class KeytipManager {
    * @param keytipToRemove - IKeytipProps of the keytip to remove
    */
   public unregisterKeytip(keytipToRemove: IKeytipProps): void {
-    // Remove keytipToRemove from this._keytips
-    this._keytips = this._keytips.filter((keytip: IKeytipProps) => {
+    // Remove keytipToRemove from this.keytips
+    this.keytips = this.keytips.filter((keytip: IKeytipProps) => {
       return !fullKeySequencesAreEqual(keytip.keySequences, keytipToRemove.keySequences);
     });
     // Remove the node from the Tree
     this.keytipTree.removeNode(keytipToRemove.keySequences);
-    this._layer.removeKeytip(keytipToRemove);
+    this._layer && this._layer.setKeytips(this.keytips);
   }
 
   /**
@@ -172,20 +138,29 @@ export class KeytipManager {
    * @param ids: list of Ids to show.
    */
   public showKeytips(ids: string[]): void {
-    // Get matching IKeytipProps from this._keytips
-    const keytipsToShow = this._keytips.filter((keytip: IKeytipProps) => {
-      return ids.indexOf(convertSequencesToKeytipID(keytip.keySequences)) >= 0;
+    // Set visible property in this.keytips
+    // TODO: would this be better as just a for-loop
+    this.keytips = this.keytips.map((keytip: IKeytipProps) => {
+      if (ids.indexOf(convertSequencesToKeytipID(keytip.keySequences)) >= 0) {
+        keytip.visible = true;
+      } else {
+        keytip.visible = false;
+      }
+      return keytip;
     });
-    this._layer.setActiveKeytips(keytipsToShow);
+
+    // Set in layer
+    this._layer && this._layer.setKeytips(this.keytips);
   }
 
   public exitKeytipMode(): void {
     this.keytipTree.currentKeytip = undefined;
-    this._layer.exitKeytipMode();
+    this.showKeytips([]);
+    this._layer && this._layer.exitKeytipMode();
   }
 
   public enterKeytipMode(): void {
-    this._layer.enterKeytipMode();
+    this._layer && this._layer.enterKeytipMode();
   }
 
   /**

@@ -50,7 +50,6 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
         <KeytipLayer
           keytipStartSequences={ [this.startingKeySequence] }
           keytipExitSequences={ [this.startingKeySequence] }
-          id={ 'test-id' }
           content='Alt Windows'
         />
         <p>Press Alt-Win to enable keytips, Esc to return up a level, and Alt-Win to exit keytip mode</p>
@@ -77,6 +76,10 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
                 keytipProps={ this.keytipMap.Button3Pivot1Keytip }
                 text='Test Button 3'
                 onClick={ () => { alert('Button 3'); } }
+              />
+              <DefaultButton
+                text='Test Button 4'
+                onClick={ () => { alert('Button 4'); } }
               />
             </div>
           </div>

@@ -10,13 +10,6 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
   componentRef?: (component: KeytipLayer) => void;
 
   /**
-   * The DOM ID to use as the hostId for the child keytips
-   *
-   * @type {string}
-   */
-  id: string;
-
-  /**
    * String to put inside the layer to be used for the aria-describedby for the component with the keytip
    * Should be one of the starting sequences
    *

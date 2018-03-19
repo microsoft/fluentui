@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, IKeySequence, convertSequencesToKeytipID } from '../../Utilities';
+import * as PropTypes from 'prop-types';
+import { BaseComponent, IKeySequence, convertSequencesToKeytipID, IRenderComponent } from '../../Utilities';
 import { IKeytip, IKeytipProps } from './Keytip.types';
-import { KeytipManager, constructAriaDescribedByString } from '../../utilities/keytips';
+import { KeytipManager, getNativeKeytipProps } from '../../utilities/keytips';
 
 /**
  * A small element to help the target element correctly read out its aria-describedby for its Keytip
@@ -10,37 +11,35 @@ import { KeytipManager, constructAriaDescribedByString } from '../../utilities/k
  * @class Keytip
  * @extends {BaseComponent<IKeytipProps, {}}>}
  */
-export class Keytip extends BaseComponent<IKeytipProps, {}> {
+export class Keytip extends BaseComponent<IKeytipProps & IRenderComponent<{}>, {}> {
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
-
-  // tslint:disable-next-line:no-any
-  constructor(props: IKeytipProps, context: any) {
-    super(props, context);
-  }
 
   public componentDidMount() {
     // Register Keytip in KeytipManager
-    this._keytipManager.registerKeytip(this._createKeytipProps());
+    this._hasValidKeytipProps() && this._keytipManager.registerKeytip(this._createKeytipProps());
   }
 
   public componentWillUnmount() {
     // Unregister Keytip in KeytipManager
-    this._keytipManager.unregisterKeytip(this._createKeytipProps());
+    this._hasValidKeytipProps() && this._keytipManager.unregisterKeytip(this._createKeytipProps());
   }
 
   public componentDidUpdate() {
     // Update Keytip in KeytipManager
-    this._keytipManager.updateKeytip(this._createKeytipProps());
+    this._hasValidKeytipProps() && this._keytipManager.updateKeytip(this._createKeytipProps());
   }
 
   public render(): JSX.Element {
-    const { keySequences, overflowSetSequence } = this.props;
-    const keySequencesString = constructAriaDescribedByString(keySequences, overflowSetSequence);
+    const { children } = this.props;
+    let nativeKeytipProps = {};
+    if (this._hasValidKeytipProps()) {
+      nativeKeytipProps = getNativeKeytipProps(this.props);
+    }
+    return children(nativeKeytipProps);
+  }
 
-    return (
-      // TODO: put these styles in the styles file
-      <span style={ { visibility: 'hidden', position: 'fixed', top: 0, left: 0 } } id={ convertSequencesToKeytipID(keySequences) }>{ keySequencesString }</span>
-    );
+  private _hasValidKeytipProps(): boolean {
+    return !!this.props.content && !!this.props.keySequences;
   }
 
   private _createKeytipProps(): IKeytipProps {
@@ -55,6 +54,6 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> {
       calloutProps: this.props.calloutProps,
       offset: this.props.offset,
       hasChildrenNodes: this.props.hasChildrenNodes
-    }
+    };
   }
 }

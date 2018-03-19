@@ -14,13 +14,14 @@ import {
   fullKeySequencesAreEqual,
   IKeytipTransitionKey,
   ktpFullPrefix,
-  ktpSeparator
+  ktpSeparator,
+  ktpLayerId
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
-  activeKeytips: IKeytipProps[];
+  keytips: IKeytipProps[];
 }
 
 const defaultStartSequence: IKeytipTransitionKey = {
@@ -47,7 +48,6 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    id: ktpFullPrefix + 'Alt' + ktpSeparator + 'Meta',
     content: 'Alt Windows'
   };
 
@@ -59,33 +59,17 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
 
     this.state = {
       inKeytipMode: false,
-      activeKeytips: []
+      // Get the initial set of keytips
+      keytips: [...this._keytipManager.keytips],
     };
 
     this._keytipManager.init(this);
   }
 
-  /**
-   *
-   */
-  public setActiveKeytips(keytips: IKeytipProps[]) {
-    this.setState({ activeKeytips: keytips });
-  }
-
-  /**
-   *
-   */
-  public clearKeytips() {
-    this.setState({ activeKeytips: [] });
-  }
-
-  /**
-   *
-   * @param keytip
-   */
+  /*
   public addOrUpdateKeytip(keytip: IKeytipProps) {
     this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
-      let currentKeytips: IKeytipProps[] = [...previousState.activeKeytips];
+      let currentKeytips: IKeytipProps[] = [...previousState.keytips];
       const keytipIndex = findIndex(currentKeytips, (currentKeytip: IKeytipProps) => {
         return fullKeySequencesAreEqual(currentKeytip.keySequences, keytip.keySequences);
       });
@@ -98,13 +82,9 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     });
   }
 
-  /**
-   *
-   * @param keytip
-   */
   public removeKeytip(keytip: IKeytipProps) {
     this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
-      let currentKeytips: IKeytipProps[] = [...previousState.activeKeytips];
+      let currentKeytips: IKeytipProps[] = [...previousState.keytips];
       // Filter out 'keytip'
       currentKeytips = currentKeytips.filter((currentKeytip: IKeytipProps) => {
         return !fullKeySequencesAreEqual(keytip.keySequences, currentKeytip.keySequences);
@@ -112,21 +92,29 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       return { ...previousState, activeKeytips: currentKeytips };
     });
   }
+  */
+
+  /**
+   *
+   * @param keytipProps
+   */
+  public setKeytips(keytipProps: IKeytipProps[]) {
+    this.setState({ keytips: keytipProps });
+  }
 
   public render(): JSX.Element {
     const {
-      id,
       content
     } = this.props;
 
     const {
-      activeKeytips
+      keytips
     } = this.state;
 
     return (
       <Layer>
-        <span id={ id } style={ { visibility: 'hidden' } }>{ content }</span>
-        { activeKeytips && activeKeytips.map((keytipProps: IKeytipProps, index: number) => {
+        <span id={ ktpLayerId } style={ { visibility: 'hidden' } }>{ content }</span>
+        { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return <KeytipWrapper key={ index } { ...keytipProps } />;
         }) }
       </Layer>
@@ -154,7 +142,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     if (this.props.onExitKeytipMode) {
       this.props.onExitKeytipMode();
     }
-    this.setState({ inKeytipMode: false, activeKeytips: [] });
+    this.setState({ inKeytipMode: false });
   }
 
   /**
@@ -188,7 +176,13 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         this._keytipManager.exitKeytipMode();
         break;
       default:
-        const transitionKey: IKeytipTransitionKey = { key: ev.key };
+        let key = ev.key;
+        if (key === 'OS' || key === 'Win') {
+          // Special cases for browser-specific changes that will be fixed in the future
+          // TODO: add bug numbers for Edge and Firefox
+          key = 'Meta';
+        }
+        const transitionKey: IKeytipTransitionKey = { key };
         transitionKey.modifierKeys = this._getModifierKey(ev);
         this._keytipManager.processTransitionInput(transitionKey);
         break;

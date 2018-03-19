@@ -1,4 +1,4 @@
-import { IKeySequence, convertSequencesToKeytipID, dataKtpId, keySequencesAreEqual } from '../../Utilities';
+import { IKeySequence, convertSequencesToKeytipID, dataKtpId, keySequencesAreEqual, ktpLayerId } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from './KeytipManager';
 
@@ -55,10 +55,15 @@ export function constructKeytipTargetFromId(keytipId: string): string {
 /**
  *
  * @param keySequences
- * @param overflowSetSequence
  */
-export function constructAriaDescribedByString(keySequences: IKeySequence[], overflowSetSequence?: IKeySequence): string {
-  // Remove overflowSetSequence if in keySequences
+export function getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequence?: IKeySequence): string {
+  const describedby = ktpLayerId;
+  if (!keySequences.length) {
+    // Return just the layer ID
+    return describedby;
+  }
+
+  // Remove overflow from describedby if present
   if (overflowSetSequence) {
     keySequences = keySequences.filter((keySequence: IKeySequence) => {
       return !keySequencesAreEqual(keySequence, overflowSetSequence);
@@ -66,9 +71,9 @@ export function constructAriaDescribedByString(keySequences: IKeySequence[], ove
   }
 
   // TODO: need comma separator? and turn into constant
-  return keySequences.reduce((prevValue: string, sequence: IKeySequence): string => {
-    return prevValue + sequence.keys.join('') + ' ';
-  }, '');
+  return keySequences.reduce((prevValue: string, sequence: IKeySequence, currentIndex: number): string => {
+    return prevValue + ' ' + convertSequencesToKeytipID(keySequences.slice(0, currentIndex + 1));
+  }, describedby);
 }
 
 /**
@@ -80,9 +85,8 @@ export function constructAriaDescribedByString(keySequences: IKeySequence[], ove
 // tslint:disable-next-line:no-any
 export function getNativeKeytipProps(keytipProps?: IKeytipProps): any {
   if (keytipProps) {
-    const ktpMgr = KeytipManager.getInstance();
     // Construct aria-describedby and data-ktp-id attributes and return
-    const ariaDescribedBy = ktpMgr.getAriaDescribedBy(keytipProps.keySequences, keytipProps.overflowSetSequence);
+    const ariaDescribedBy = getAriaDescribedBy(keytipProps.keySequences, keytipProps.overflowSetSequence);
     const ktpId = convertSequencesToKeytipID(keytipProps.keySequences);
 
     return {

@@ -10,11 +10,12 @@ import {
   KeytipTransitionModifier,
   IKeytipTransitionKey,
   ktpSeparator,
-  ktpFullPrefix
+  ktpFullPrefix,
+  ktpLayerId
 } from '../../Utilities';
 
 describe('KeytipTree', () => {
-  const layerID = 'my-layer-id';
+  const layerID = ktpLayerId;
   const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
   const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
   const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
@@ -24,13 +25,17 @@ describe('KeytipTree', () => {
     // Create layer
     ReactTestUtils.renderIntoDocument<KeytipLayer>(
       <KeytipLayer
-        id={ layerID }
         content='Alt Windows'
         keytipStartSequences={ keytipStartSequences }
         keytipReturnSequences={ keytipReturnSequences }
         keytipExitSequences={ keytipExitSequences }
       />
     );
+  });
+
+  afterEach(() => {
+    keytipManager.keytipTree = new KeytipTree();
+    keytipManager.keytips = [];
   });
 
   it('constructor creates a root node', () => {
@@ -309,7 +314,7 @@ describe('KeytipTree', () => {
 
   describe('getExactlyMatchedNodes', () => {
     it('get matched node tests ', () => {
-      const keytipTree = new KeytipTree('id1');
+      const keytipTree = new KeytipTree();
 
       /**
        *   Tree should end up looking like:
@@ -370,7 +375,7 @@ describe('KeytipTree', () => {
     });
 
     it('should be undefined is matched node is disabled ', () => {
-      const keytipTree = new KeytipTree('id1');
+      const keytipTree = new KeytipTree();
 
       /**
        *   Tree should end up looking like:
@@ -417,7 +422,7 @@ describe('KeytipTree', () => {
 
   describe('getPartiallyMatchedNodes', () => {
     it('get partially matched node tests ', () => {
-      const keytipTree = new KeytipTree('id1');
+      const keytipTree = new KeytipTree();
 
       /**
        *   Tree should end up looking like:
@@ -476,7 +481,7 @@ describe('KeytipTree', () => {
     });
 
     it('get partially matched nodes that are not disabled ', () => {
-      const keytipTree = new KeytipTree('id1');
+      const keytipTree = new KeytipTree();
 
       /**
        *   Tree should end up looking like:

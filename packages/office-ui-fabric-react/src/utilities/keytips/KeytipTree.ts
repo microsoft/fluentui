@@ -3,7 +3,8 @@ import {
   keySequencesAreEqual,
   keySequenceStartsWith,
   convertSequencesToKeytipID,
-  find
+  find,
+  ktpLayerId
 } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
@@ -62,13 +63,11 @@ export class KeytipTree {
   /**
    * KeytipTree constructor
    *
-   * @param rootId - Layer ID to create the root node of the tree
    */
-  constructor(rootId: string) {
-
+  constructor() {
     // Root has no keytipSequence, we instead check _enableSequences to handle multiple entry points
     this.root = {
-      id: rootId,
+      id: ktpLayerId,
       children: [],
       parent: '',
       keytipSequence: { keys: [] },

@@ -38,7 +38,6 @@ import {
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 import { Keytip } from '../../Keytip';
-import { getNativeKeytipProps } from '../../utilities/keytips';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -479,33 +478,36 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.target && item.target.toLowerCase() === '_blank') {
       anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
     }
-
     return (
-      <div>
-        <a
-          { ...getNativeProps(item, anchorProperties) }
-          { ...getNativeKeytipProps(item.keytipProps) }
-          href={ item.href }
-          target={ item.target }
-          rel={ anchorRel }
-          className={ classNames.root }
-          role='menuitem'
-          aria-posinset={ focusableElementIndex + 1 }
-          aria-setsize={ totalItemCount }
-          aria-disabled={ this._isItemDisabled(item) }
-          style={ item.style }
-          onClick={ this._onAnchorClick.bind(this, item) }
-        >
-          <ChildrenRenderer
-            item={ item }
-            classNames={ classNames }
-            index={ index }
-            onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
-            hasIcons={ hasIcons }
-          />
-          { item.keytipProps && <Keytip { ...item.keytipProps } /> }
-        </a>
-      </div>);
+      <Keytip { ...item.keytipProps! }>
+        { (keytip: {}): JSX.Element => (
+          <div>
+            <a
+              { ...getNativeProps(item, anchorProperties) }
+              { ...keytip }
+              href={ item.href }
+              target={ item.target }
+              rel={ anchorRel }
+              className={ classNames.root }
+              role='menuitem'
+              aria-posinset={ focusableElementIndex + 1 }
+              aria-setsize={ totalItemCount }
+              aria-disabled={ this._isItemDisabled(item) }
+              style={ item.style }
+              onClick={ this._onAnchorClick.bind(this, item) }
+            >
+              <ChildrenRenderer
+                item={ item }
+                classNames={ classNames }
+                index={ index }
+                onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+                hasIcons={ hasIcons }
+              />
+            </a>
+          </div>
+        ) }
+      </Keytip>
+    );
   }
 
   private _renderButtonItem(
@@ -564,20 +566,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     return (
-      <button
-        { ...buttonNativeProperties }
-        { ...itemButtonProperties }
-        { ...getNativeKeytipProps(item.keytipProps) }
-      >
-        <ChildrenRenderer
-          item={ item }
-          classNames={ classNames }
-          index={ index }
-          onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
-          hasIcons={ hasIcons }
-        />
-        { item.keytipProps && <Keytip { ...item.keytipProps } /> }
-      </button>
+      <Keytip { ...item.keytipProps! }>
+        { (keytip: {}): JSX.Element => (
+          <button
+            { ...buttonNativeProperties }
+            { ...itemButtonProperties }
+            { ...keytip }
+          >
+            <ChildrenRenderer
+              item={ item }
+              classNames={ classNames }
+              index={ index }
+              onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+              hasIcons={ hasIcons }
+            />
+          </button>
+        ) }
+      </Keytip>
     );
   }
 

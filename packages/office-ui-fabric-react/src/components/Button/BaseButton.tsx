@@ -18,7 +18,6 @@ import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { Keytip } from '../../Keytip';
-import { getNativeKeytipProps } from '../../utilities/keytips';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -227,17 +226,20 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = props;
 
     const Content = (
-      <Tag { ...buttonProps } { ...getNativeKeytipProps(keytipProps) }>
-        <div className={ this._classNames.flexContainer } >
-          { onRenderIcon(props, this._onRenderIcon) }
-          { this._onRenderTextContents() }
-          { onRenderAriaDescription(props, this._onRenderAriaDescription) }
-          { onRenderChildren(props, this._onRenderChildren) }
-          { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
-          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
-        </div>
-        { keytipProps && <Keytip { ...keytipProps } /> }
-      </Tag>
+      <Keytip { ...keytipProps! }>
+        { (keytip: {}): JSX.Element => (
+          <Tag { ...buttonProps } { ...keytip }>
+            <div className={ this._classNames.flexContainer } >
+              { onRenderIcon(props, this._onRenderIcon) }
+              { this._onRenderTextContents() }
+              { onRenderAriaDescription(props, this._onRenderAriaDescription) }
+              { onRenderChildren(props, this._onRenderChildren) }
+              { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
+              { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
+            </div>
+          </Tag>
+        ) }
+      </Keytip >
     );
 
     if (menuProps && menuProps.doNotLayer) {

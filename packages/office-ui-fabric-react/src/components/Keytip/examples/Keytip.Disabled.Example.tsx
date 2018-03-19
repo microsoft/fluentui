@@ -38,12 +38,6 @@ export class KeytipDisabledExample extends React.Component<{}, IKeytipExampleSta
           data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
           onClick={ btnClick }
         />
-        <Keytip
-          content={ this.keytipMap.Keytip1.content }
-          keySequences={ this.keytipMap.Keytip1.keySequences }
-          visible={ this.state.keytipVisible }
-          disabled={ this.keytipMap.Keytip1.disabled }
-        />
       </div>
     );
   }
