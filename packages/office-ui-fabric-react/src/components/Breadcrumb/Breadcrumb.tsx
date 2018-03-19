@@ -65,7 +65,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
-    const { className, ariaLabel, onRenderItem = this._onRenderItem, overflowAriaLabel } = data.props;
+    const { className, ariaLabel, iconAs, onRenderItem = this._onRenderItem, overflowAriaLabel } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
     const contextualItems = renderedOverflowItems.map(
@@ -76,6 +76,9 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
         href: item.href
       })
     );
+
+    // console.log(`length: ${renderedItems.length}`);
+    const lastItemIndex = renderedItems.length - 1;
 
     return (
       <div
@@ -99,7 +102,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                     directionalHint: DirectionalHint.bottomLeftEdge
                   } }
                 />
-                { <Icon
+                { iconAs || <Icon
                   className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                   iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
                 /> }
@@ -109,10 +112,11 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) }>
                   { onRenderItem(item, this._onRenderItem) }
-                  <Icon
+                  { console.log(index) }
+                  { index !== lastItemIndex && iconAs || <Icon
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                     iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-                  />
+                  /> }
                 </li>
               )) }
           </ol>
