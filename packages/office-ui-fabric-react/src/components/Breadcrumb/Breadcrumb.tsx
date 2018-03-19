@@ -77,7 +77,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       })
     );
 
-    // console.log(`length: ${renderedItems.length}`);
     const lastItemIndex = renderedItems.length - 1;
 
     return (
@@ -112,7 +111,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) }>
                   { onRenderItem(item, this._onRenderItem) }
-                  { console.log(index) }
                   { index !== lastItemIndex && iconAs || <Icon
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                     iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
