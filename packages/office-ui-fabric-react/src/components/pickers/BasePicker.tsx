@@ -187,7 +187,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         onKeyDown={ this.onKeyDown }
       >
         <FocusZone
-          ref={ this.focusZone }
+          componentRef={ this.focusZone }
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
@@ -750,7 +750,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         </div>
         { this.renderSuggestions() }
         <FocusZone
-          ref={ this.focusZone }
+          componentRef={ this.focusZone }
           className='ms-BasePicker-selectedItems'
           isCircularNavigation={ true }
           direction={ FocusZoneDirection.bidirectional }

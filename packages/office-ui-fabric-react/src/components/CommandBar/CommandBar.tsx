@@ -121,7 +121,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     return (
       <div className={ css('ms-CommandBar', styles.root, className) } ref={ this._commandBarRegion }>
         { searchBox }
-        <FocusZone ref={ this._focusZone } className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
+        <FocusZone componentRef={ this._focusZone } className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref={ this._commandSurface }>
             { renderedItems!.map(item => (
               this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!)

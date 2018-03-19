@@ -101,7 +101,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
           className ? className : '') }
       >
         <FocusZone
-          ref={ this.focusZone }
+          componentRef={ this.focusZone }
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
           onKeyDown={ this.onBackspace }
