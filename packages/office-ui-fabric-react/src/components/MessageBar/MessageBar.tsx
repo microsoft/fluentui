@@ -3,7 +3,6 @@ import {
   BaseComponent,
   DelayedRender,
   css,
-  autobind,
   getId
 } from '../../Utilities';
 import { IconButton } from '../../Button';
@@ -206,8 +205,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     return 'polite';
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+  private _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     this.setState({ expandSingleLine: !this.state.expandSingleLine });
   }
 }
