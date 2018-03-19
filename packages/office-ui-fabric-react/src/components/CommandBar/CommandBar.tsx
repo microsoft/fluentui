@@ -194,7 +194,33 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : undefined);
 
     let command: React.ReactNode;
-    if (isLink) {
+    if (item.href) {
+      // Allow the disabled property on anchor elements for commandbar
+      command = (
+        <a
+          { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
+          id={ this._id + item.key }
+          className={ className }
+          href={ item.disabled ? undefined : item.href }
+          onClick={ item.onClick }
+          data-command-key={ itemKey }
+          aria-haspopup={ hasSubmenu(item) }
+          role='menuitem'
+          aria-label={ ariaLabel }
+          aria-setsize={ setSize }
+          aria-posinset={ posInSet }
+        >
+          { (hasIcon) ? this._renderIcon(item) : (null) }
+          { isNameVisible && (
+            <span
+              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+            >
+              { item.name }
+            </span>
+          ) }
+        </a>
+      );
+    } else if (isLink) {
       command = (
         <button
           { ...getNativeProps(item, buttonProperties) }
@@ -221,31 +247,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
           ) : (null) }
         </button>
-      );
-    } else if (item.href) {
-      // Allow the disabled property on anchor elements for commandbar
-      command = (
-        <a
-          { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
-          id={ this._id + item.key }
-          className={ className }
-          href={ item.disabled ? undefined : item.href }
-          data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
-          role='menuitem'
-          aria-label={ ariaLabel }
-          aria-setsize={ setSize }
-          aria-posinset={ posInSet }
-        >
-          { (hasIcon) ? this._renderIcon(item) : (null) }
-          { isNameVisible && (
-            <span
-              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
-            >
-              { item.name }
-            </span>
-          ) }
-        </a>
       );
     } else {
       // Allow the disabled property on div elements for commandbar
