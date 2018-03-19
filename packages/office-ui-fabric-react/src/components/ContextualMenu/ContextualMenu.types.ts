@@ -439,11 +439,11 @@ export interface IContextualMenuItem {
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
-  
+
   /**
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
-  inactive?: boolean; 
+  inactive?: boolean;
 
 }
 

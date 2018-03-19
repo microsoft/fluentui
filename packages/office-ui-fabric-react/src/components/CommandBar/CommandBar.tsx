@@ -189,10 +189,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
       (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded),
-      item.inactive ? styles.inactive : ""
+      item.inactive ? styles.inactive : ''
     );
 
-    var tooltipContent: string = "";
+    let tooltipContent = '';
 
     if (item.title) {
         tooltipContent = item.title;
@@ -209,7 +209,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           { ...getNativeProps(item, buttonProperties) }
           id={ this._id + item.key }
           className={ className }
-          title={""}
+          title={''}
           aria-disabled={item.inactive}
           onClick={ this._onItemClick(item) }
           data-command-key={ itemKey }
@@ -240,7 +240,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
-          title={""}
+          title={''}
           aria-disabled={item.inactive}
           href={ item.disabled ? undefined : item.href }
           data-command-key={ itemKey }
@@ -267,7 +267,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           { ...getNativeProps(item, divProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
-          title={""}
+          title={''}
           aria-disabled={item.inactive}
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
