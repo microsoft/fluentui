@@ -2,6 +2,48 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.65.0",
+      "tag": "office-ui-fabric-react_v5.65.0",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "9e7719f9f2ef616342d0b95873f79eec852665d7",
+            "comment": "DetailsList: scrollbars show up unnecessarily on IE11"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "b4f58e498bc0885180f67f1fc9d3eb742e3704f6",
+            "comment": "Button: High contrast mode focus bug fixes."
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e3a40d52e73af6e5a0062452e550f1b066c851c2",
+            "comment": "ThemePrimary: Updating this color along with an Office branding update."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.19.1 <6.0.0` to `>=5.20.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.18.2 <6.0.0` to `>=5.18.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.3.0 <6.0.0` to `>=5.4.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.64.4",
       "tag": "office-ui-fabric-react_v5.64.4",
       "date": "Fri, 16 Mar 2018 10:28:03 GMT",
