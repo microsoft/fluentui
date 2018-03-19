@@ -120,7 +120,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   /**
-   * Returns a flag indicating whether the search box has focus
+   * Returns whether or not the SearchBox has focus
    */
   public hasFocus(): boolean {
     return !!this.state.hasFocus;

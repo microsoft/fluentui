@@ -10,7 +10,7 @@ export interface ISearchBox {
   focus(): void;
 
   /**
-   * Returns a flag indicating whether the search box has focus
+   * Returns whether or not the SearchBox has focus
    */
   hasFocus(): boolean;
 }
