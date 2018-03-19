@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Allow onItemSelected to return null",
+      "comment": "Use arrow function properties instead of @autobind",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "law@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

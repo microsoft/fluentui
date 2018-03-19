@@ -4,7 +4,6 @@ import {
   BaseComponent,
   IDisposable,
   assign,
-  autobind,
   css,
   shallowCompare,
   getNativeProps,
@@ -343,8 +342,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     selection.toggleIndexSelected(this.props.itemIndex);
   }
 
-  @autobind
-  private _onRootRef(focusZone: FocusZone) {
+  private _onRootRef = (focusZone: FocusZone): void => {
     if (focusZone) {
       // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
       this._root = ReactDOM.findDOMNode(focusZone) as HTMLElement;

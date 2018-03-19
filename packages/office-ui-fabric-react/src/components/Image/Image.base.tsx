@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
-  autobind,
   BaseComponent,
   classNamesFunction,
   customizable,
@@ -127,8 +126,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     );
   }
 
-  @autobind
-  private _onImageLoaded(ev: React.SyntheticEvent<HTMLImageElement>): void {
+  private _onImageLoaded = (ev: React.SyntheticEvent<HTMLImageElement>): void => {
     const { src, onLoad } = this.props;
     if (onLoad) {
       onLoad(ev);
@@ -192,8 +190,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  @autobind
-  private _onImageError(ev: React.SyntheticEvent<HTMLImageElement>) {
+  private _onImageError = (ev: React.SyntheticEvent<HTMLImageElement>): void => {
     if (this.props.onError) {
       this.props.onError(ev);
     }

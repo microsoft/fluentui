@@ -4,10 +4,7 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import * as PropTypes from 'prop-types';
-import {
-  BaseComponent,
-  autobind
-} from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 
 export interface IStickyState {
@@ -52,7 +49,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     };
   }
 
-  @autobind
   public componentDidMount() {
     if (!this.context.scrollablePane) {
       throw new TypeError('Expected Sticky to be mounted within ScrollablePane');
@@ -136,8 +132,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     );
   }
 
-  @autobind
-  private _onScrollEvent(headerBound: ClientRect, footerBound: ClientRect) {
+  private _onScrollEvent = (headerBound: ClientRect, footerBound: ClientRect) => {
     const { top, bottom } = this.root.getBoundingClientRect();
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyPosition } = this.props;

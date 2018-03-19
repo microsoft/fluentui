@@ -7,7 +7,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pivot';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { KeyCodes, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import TodoItem from './TodoItem';
 import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
 
@@ -73,8 +73,7 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
     );
   }
 
-  @autobind
-  private _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return ev.which === KeyCodes.right;
   }
 

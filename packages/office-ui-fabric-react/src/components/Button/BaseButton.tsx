@@ -4,7 +4,6 @@ import {
   IRenderFunction,
   anchorProperties,
   assign,
-  autobind,
   buttonProperties,
   getId,
   getNativeProps,
@@ -248,8 +247,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return Content;
   }
 
-  @autobind
-  private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
+  private _onRenderIcon = (buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null => {
     const {
       iconProps
     } = this.props;
@@ -265,8 +263,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  @autobind
-  private _onRenderTextContents(): JSX.Element | (JSX.Element | null)[] {
+  private _onRenderTextContents = (): JSX.Element | (JSX.Element | null)[] => {
     const {
       text,
       children,
@@ -291,8 +288,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     ]);
   }
 
-  @autobind
-  private _onRenderText(): JSX.Element | null {
+  private _onRenderText = (): JSX.Element | null => {
     let {
       text
     } = this.props;
@@ -320,8 +316,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  @autobind
-  private _onRenderChildren(): JSX.Element | null {
+  private _onRenderChildren = (): JSX.Element | null => {
     const { children } = this.props;
 
     // If children is just a string, either it or the text will be rendered via onRenderLabel
@@ -333,8 +328,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return children as any;
   }
 
-  @autobind
-  private _onRenderDescription(props: IButtonProps) {
+  private _onRenderDescription = (props: IButtonProps) => {
     const {
       description
     } = props;
@@ -354,8 +348,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       );
   }
 
-  @autobind
-  private _onRenderAriaDescription() {
+  private _onRenderAriaDescription = () => {
     const {
       ariaDescription
     } = this.props;
@@ -369,8 +362,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       );
   }
 
-  @autobind
-  private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
+  private _onRenderMenuIcon = (props: IButtonProps): JSX.Element | null => {
     const {
       menuIconProps
     } = this.props;
@@ -386,8 +378,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   }
 
-  @autobind
-  private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
+  private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { onDismiss = this._dismissMenu } = menuProps;
 
     return (
@@ -403,13 +394,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   }
 
-  @autobind
-  private _dismissMenu(): void {
+  private _dismissMenu = (): void => {
     this.setState({ menuProps: null });
   }
 
-  @autobind
-  private _onToggleMenu(): void {
+  private _onToggleMenu = (): void => {
     const { menuProps } = this.props;
     const currentMenuProps = this.state.menuProps;
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
@@ -500,8 +489,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   }
 
-  @autobind
-  private _onMouseDown(ev: React.MouseEvent<BaseButton>) {
+  private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
     if (this.props.onMouseDown) {
       this.props.onMouseDown(ev);
     }
@@ -509,8 +497,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     ev.preventDefault();
   }
 
-  @autobind
-  private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) {
+  private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
     }
@@ -529,8 +516,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  @autobind
-  private _onMenuClick(ev: React.MouseEvent<HTMLAnchorElement>) {
+  private _onMenuClick = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);
