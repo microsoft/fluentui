@@ -8,7 +8,8 @@ import {
   divProperties,
   getFirstFocusable,
   getLastTabbable,
-  getNextElement
+  getNextElement,
+  focusAsync
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
@@ -75,7 +76,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
 
     if (!ignoreExternalFocusing && this._previouslyFocusedElement && typeof this._previouslyFocusedElement.focus === 'function') {
-      this._previouslyFocusedElement.focus();
+      focusAsync(this._previouslyFocusedElement);
     }
   }
 
@@ -113,7 +114,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       _firstFocusableChild = getNextElement(this._root, this._root.firstChild as HTMLElement, true, false, false, true);
     }
     if (_firstFocusableChild) {
-      (_firstFocusableChild as any).focus();
+      focusAsync(_firstFocusableChild);
     }
   }
 
@@ -127,11 +128,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const _lastFocusableChild = getLastTabbable(this._root, this._root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
-      _lastFocusableChild!.focus();
+      focusAsync(_lastFocusableChild);
       ev.preventDefault();
       ev.stopPropagation();
     } else if (!ev.shiftKey && _lastFocusableChild === ev.target) {
-      _firstFocusableChild!.focus();
+      focusAsync(_firstFocusableChild);
       ev.preventDefault();
       ev.stopPropagation();
     }
