@@ -402,7 +402,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: null });
   }
 
-
   private _openMenu = (): void => {
     if (this.props.menuProps) {
       this.setState({ menuProps: this.props.menuProps });
