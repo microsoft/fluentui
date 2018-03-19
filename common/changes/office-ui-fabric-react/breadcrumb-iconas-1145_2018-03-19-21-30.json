@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added iconAs prop to Breadcrumb component allowing the user to pass a custom JSX element to be used as the trail icon.",
+      "comment": "Added dividerAs prop to Breadcrumb component allowing the user to pass a custom JSX element to be used as the trail divider icon.",
       "type": "minor"
     }
   ],

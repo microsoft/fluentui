@@ -26,9 +26,10 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   className?: string;
 
   /**
-   * Render a custom icon as a custom JSX element
+   * Render a custom divider in place of the default chevron '>'
+   * as a custom JSX element
    */
-  iconAs?: JSX.Element;
+  dividerAs?: JSX.Element;
 
   /**
    * The maximum number of breadcrumbs to display before coalescing.

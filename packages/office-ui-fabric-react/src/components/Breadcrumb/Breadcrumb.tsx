@@ -65,7 +65,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
-    const { className, ariaLabel, iconAs, onRenderItem = this._onRenderItem, overflowAriaLabel } = data.props;
+    const { className, ariaLabel, dividerAs, onRenderItem = this._onRenderItem, overflowAriaLabel } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
     const contextualItems = renderedOverflowItems.map(
@@ -77,6 +77,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       })
     );
 
+    // Find index of last rendered item so the divider icon
+    // knows not to render on that item
     const lastItemIndex = renderedItems.length - 1;
 
     return (
@@ -101,7 +103,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                     directionalHint: DirectionalHint.bottomLeftEdge
                   } }
                 />
-                { iconAs || <Icon
+                { dividerAs || <Icon
                   className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                   iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
                 /> }
@@ -111,7 +113,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) }>
                   { onRenderItem(item, this._onRenderItem) }
-                  { index !== lastItemIndex && iconAs || <Icon
+                  { index !== lastItemIndex && dividerAs || <Icon
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                     iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
                   /> }
