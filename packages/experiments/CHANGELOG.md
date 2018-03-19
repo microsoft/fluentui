@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+
+## 5.25.1
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
 
 ## 5.25.0
 Mon, 12 Mar 2018 06:29:20 GMT

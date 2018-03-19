@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 15 Mar 2018 02:42:27 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+
+## 5.18.3
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
 
 ## 5.18.2
 Thu, 15 Mar 2018 02:42:27 GMT
