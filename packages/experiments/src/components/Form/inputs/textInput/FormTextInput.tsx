@@ -6,9 +6,6 @@ import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
 import { IFormContext } from '../../Form';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 
-// Utilities
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-
 /**
  * TextBox input for the Form.
  */
@@ -38,7 +35,7 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
   public render(): JSX.Element {
     return (
       <TextField
-        {...this.props.textFieldProps}
+        { ...this.props.textFieldProps }
         key={ this.props.inputKey }
         value={ this.state.currentValue }
         onBeforeChange={ this._onChange }
@@ -47,8 +44,7 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
     );
   }
 
-  @autobind
-  private _onChange(value: string): void {
+  private _onChange = (value: string): void => {
     this.setValue(value);
   }
 

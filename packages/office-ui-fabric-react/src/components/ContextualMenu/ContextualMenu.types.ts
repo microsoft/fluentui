@@ -135,9 +135,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * Click handler which is invoked if onClick is not passed for individual contextual
-   * menu item
+   * menu item.
+   * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * CSS class to apply to the context menu.
@@ -220,6 +221,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
+  */
+  subMenuHoverDelay?: number;
 
   /**
    * Method to override the render of the individual menu items
@@ -320,9 +326,10 @@ export interface IContextualMenuItem {
   data?: any;
 
   /**
-   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu
+   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu.
+   * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * An optional URL to navigate to upon selection

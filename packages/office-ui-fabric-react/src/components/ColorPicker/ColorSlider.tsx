@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css,
   createRef
 } from '../../Utilities';
@@ -78,16 +77,14 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     );
   }
 
-  @autobind
-  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
     this._events.on(window, 'mouseup', this._onMouseUp, true);
 
     this._onMouseMove(ev);
   }
 
-  @autobind
-  private _onMouseMove(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     if (!this._root.value) {
       return;
     }
@@ -111,8 +108,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     ev.stopPropagation();
   }
 
-  @autobind
-  private _onMouseUp(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.off();
 
     this.setState({

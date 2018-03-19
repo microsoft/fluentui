@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css,
   getRTL,
   createRef
@@ -129,13 +128,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this._unbindFromInputElement();
   }
 
-  @autobind
-  public dismissSuggestions(): void {
+  public dismissSuggestions = (): void => {
     this.setState({ suggestionsVisible: false });
   }
 
   @autobind
-  public completeSuggestion(): void {
+  public completeSuggestion = (): void =>{
     if (this.suggestionsControl.hasSuggestionSelected()) {
       this.onChange(this.suggestionsControl.currentSuggestion!.item);
     }
@@ -304,29 +302,26 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  protected onSuggestionClick(
+  protected onSuggestionClick = (
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-    ): void {
+  ): void => {
     this.onChange(item);
   }
 
-  @autobind
-  protected onSuggestionRemove(
+  protected onSuggestionRemove = (
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-    ): void {
+  ): void => {
     if (this.props.onRemoveSuggestion) {
       (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
     this.suggestionsControl.removeSuggestion(index);
   }
 
-  @autobind
-  protected onKeyDown(ev: MouseEvent): void {
+  protected onKeyDown = (ev: MouseEvent): void => {
     if (!this.state.suggestionsVisible ||
       (this.props.inputElement &&
         !(this.props.inputElement as HTMLElement).contains(ev.target as HTMLElement))) {
@@ -383,8 +378,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  protected onGetMoreResults(): void {
+  protected onGetMoreResults = (): void => {
     this.setState(
       {
         isSearching: true
@@ -432,8 +426,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  @autobind
-  private _onValidateInput(): void {
+  private _onValidateInput = (): void => {
     if (
       this.props.onValidateInput &&
       this.props.createGenericItem
@@ -445,7 +438,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         this.state.queryString,
         (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
         );
-
       let convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this.onChange(convertedItems[0].item);
     }

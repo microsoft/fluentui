@@ -100,6 +100,17 @@ exports[`CommandBar renders commands correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: 4px;
+                  left: 4px;
+                  outline-color: ButtonText;
+                  right: 4px;
+                  top: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: none;
+                }
                 &:hover {
                   background-color: #eaeaea;
                   color: #212121;
@@ -200,6 +211,17 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: 4px;
+                  left: 4px;
+                  outline-color: ButtonText;
+                  right: 4px;
+                  top: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: none;
                 }
                 &:hover {
                   background-color: #eaeaea;
