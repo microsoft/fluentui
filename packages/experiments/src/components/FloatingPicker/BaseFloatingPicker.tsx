@@ -132,7 +132,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.setState({ suggestionsVisible: false });
   }
 
-  @autobind
   public completeSuggestion = (): void => {
     if (this.suggestionsControl.hasSuggestionSelected()) {
       this.onChange(this.suggestionsControl.currentSuggestion!.item);
