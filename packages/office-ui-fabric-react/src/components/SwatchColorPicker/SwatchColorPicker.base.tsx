@@ -90,7 +90,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       colorCells,
       columnCount,

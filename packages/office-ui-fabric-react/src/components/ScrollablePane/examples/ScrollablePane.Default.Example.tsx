@@ -21,7 +21,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
     );
   }
 
-  private _getRandomColor() {
+  private _getRandomColor(): void {
     const letters = 'BCDEF'.split('');
     let color = '#';
     for (let i = 0; i < 6; i++) {
@@ -30,7 +30,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
     return color;
   }
 
-  private _createContentArea(index: number) {
+  private _createContentArea(index: number): void {
     const style = this._getRandomColor();
 
     return (

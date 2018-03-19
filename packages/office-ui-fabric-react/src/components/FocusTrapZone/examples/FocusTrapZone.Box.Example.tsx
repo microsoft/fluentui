@@ -24,7 +24,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     const { isChecked } = this.state;
 
     return (

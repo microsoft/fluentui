@@ -371,7 +371,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @param {number} columnIndex (index of the column user double clicked)
    * @param {React.MouseEvent} ev (mouse double click event)
    */
-  private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>) {
+  private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnAutoResized, columns } = this.props;
     if (onColumnAutoResized) {
       onColumnAutoResized(columns[columnIndex], columnIndex);
@@ -556,7 +556,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onSelectionChanged() {
+  private _onSelectionChanged(): void {
     const isAllSelected = this.props.selection.isAllSelected();
 
     if (this.state.isAllSelected !== isAllSelected) {
@@ -566,7 +566,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
@@ -578,7 +578,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
+  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnContextMenu } = this.props;
 
     if (column.onColumnContextMenu) {
@@ -594,7 +594,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onToggleCollapseAll() {
+  private _onToggleCollapseAll(): void {
     const { onToggleCollapseAll } = this.props;
     const newCollapsed = !this.state.isAllCollapsed;
     this.setState({
@@ -606,6 +606,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 }
 
-function stopPropagation(ev: React.MouseEvent<HTMLElement>) {
+function stopPropagation(ev: React.MouseEvent<HTMLElement>): void {
   ev.stopPropagation();
 }

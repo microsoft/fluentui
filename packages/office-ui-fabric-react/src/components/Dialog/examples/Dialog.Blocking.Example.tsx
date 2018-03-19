@@ -13,7 +13,7 @@ export class DialogBlockingExample extends React.Component<{}, {
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <DefaultButton

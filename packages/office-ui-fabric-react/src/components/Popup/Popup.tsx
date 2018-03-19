@@ -106,13 +106,13 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  private _updateScrollBarAsync() {
+  private _updateScrollBarAsync(): void {
     this._async.requestAnimationFrame(() => {
       this._getScrollBar();
     });
   }
 
-  private _getScrollBar() {
+  private _getScrollBar(): void {
     let needsVerticalScrollBar = false;
     if (this._root && this._root.value && this._root.value.firstElementChild) {
       // ClientHeight returns the client height of an element rounded to an
@@ -137,11 +137,11 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  private _onFocus() {
+  private _onFocus(): void {
     this._containsFocus = true;
   }
 
-  private _onBlur() {
+  private _onBlur(): void {
     this._containsFocus = false;
   }
 }

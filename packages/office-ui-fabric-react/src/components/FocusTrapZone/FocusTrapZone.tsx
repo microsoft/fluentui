@@ -152,7 +152,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  private _forceFocusInTrap(ev: FocusEvent) {
+  private _forceFocusInTrap(ev: FocusEvent): void {
     if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
       const focusedElement = document.activeElement as HTMLElement;
 
@@ -164,7 +164,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  private _forceClickInTrap(ev: MouseEvent) {
+  private _forceClickInTrap(ev: MouseEvent): void {
     if (FocusTrapZone._clickStack.length && this === FocusTrapZone._clickStack[FocusTrapZone._clickStack.length - 1]) {
       const clickedElement = ev.target as HTMLElement;
 

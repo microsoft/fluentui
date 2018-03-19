@@ -502,15 +502,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return onRenderRow(rowProps, this._onRenderRow);
   }
 
-  private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
+  private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean): void {
     this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
   }
 
-  private _onColumnIsSizingChanged(column: IColumn, isSizing: boolean) {
+  private _onColumnIsSizingChanged(column: IColumn, isSizing: boolean): void {
     this.setState({ isSizing: isSizing });
   }
 
-  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.down) {
       if (this._focusZone.value && this._focusZone.value.focus()) {
         ev.preventDefault();
@@ -519,7 +519,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _onContentKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onContentKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.up && !ev.altKey) {
       if (this._header.value && this._header.value.focus()) {
         ev.preventDefault();
@@ -541,7 +541,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return level;
   }
 
-  private _onRowDidMount(row: DetailsRow) {
+  private _onRowDidMount(row: DetailsRow): void {
     const { item, itemIndex } = row.props;
     const itemKey = this._getItemKey(item, itemIndex);
     this._activeRows[itemKey] = row; // this is used for column auto resize
@@ -554,7 +554,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _setFocusToRowIfPending(row: DetailsRow) {
+  private _setFocusToRowIfPending(row: DetailsRow): void {
     const { itemIndex } = row.props;
     if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
       this._setFocusToRow(row);
@@ -562,16 +562,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false) {
+  private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false): void {
     if (this._selectionZone.value) {
       this._selectionZone.value.ignoreNextFocus();
     }
-    this._async.setTimeout(() => {
+    this._async.setTimeout((): void => {
       row.focus(forceIntoFirstElement);
     }, 0);
   }
 
-  private _onRowWillUnmount(row: DetailsRow) {
+  private _onRowWillUnmount(row: DetailsRow): void {
     const { onRowWillUnmount } = this.props;
 
     const { item, itemIndex } = row.props;
@@ -583,7 +583,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _onToggleCollapse(collapsed: boolean) {
+  private _onToggleCollapse(collapsed: boolean): void {
     this.setState({
       isCollapsed: collapsed
     });
@@ -592,7 +592,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _forceListUpdates() {
+  private _forceListUpdates(): void {
     this._pendingForceUpdate = false;
 
     if (this._groupedList.value) {
@@ -603,7 +603,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number) {
+  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
     const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
     const { width: viewportWidth } = this.props.viewport!;
 
@@ -663,7 +663,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
-  private _getFixedColumns(newColumns: IColumn[]) {
+  private _getFixedColumns(newColumns: IColumn[]): void {
     return newColumns.map(column => {
       const newColumn = assign({}, column, this._columnOverrides[column.key]);
 
@@ -692,7 +692,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, firstIndex: number) {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, firstIndex: number): void {
     const {
       selectionMode,
       checkboxVisibility,
@@ -763,7 +763,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return adjustedColumns;
   }
 
-  private _onColumnResized(resizingColumn: IColumn, newWidth: number, resizingColumnIndex: number) {
+  private _onColumnResized(resizingColumn: IColumn, newWidth: number, resizingColumnIndex: number): void {
     const newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
     if (this.props.onColumnResize) {
       this.props.onColumnResize(resizingColumn, newCalculatedWidth, resizingColumnIndex);
@@ -775,7 +775,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._forceListUpdates();
   }
 
-  private _rememberCalculatedWidth(column: IColumn, newCalculatedWidth: number) {
+  private _rememberCalculatedWidth(column: IColumn, newCalculatedWidth: number): void {
     const overrides = this._getColumnOverride(column.key);
     overrides.calculatedWidth = newCalculatedWidth;
     overrides.currentWidth = newCalculatedWidth;
@@ -795,7 +795,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
    * @param {number} columnIndex (double clicked column index)
    * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
    */
-  private _onColumnAutoResized(column: IColumn, columnIndex: number) {
+  private _onColumnAutoResized(column: IColumn, columnIndex: number): void {
     let max = 0;
     let count = 0;
     const totalCount = Object.keys(this._activeRows).length;
@@ -822,7 +822,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
    * @param {el} row element that became active in Focus Zone
    * @param {ev} focus event from Focus Zone
    */
-  private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) {
+  private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>): void {
     const { items, onActiveItemChanged } = this.props;
 
     if (!el) {
@@ -839,7 +839,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _onBlur(event: React.FocusEvent<HTMLElement>) {
+  private _onBlur(event: React.FocusEvent<HTMLElement>): void {
     this.setState({
       focusedItemIndex: -1
     });
@@ -903,7 +903,7 @@ export function buildColumns(
   return columns;
 }
 
-function isRightArrow(event: React.KeyboardEvent<HTMLElement>) {
+function isRightArrow(event: React.KeyboardEvent<HTMLElement>): void {
   return event.which === getRTLSafeKeyCode(KeyCodes.right);
 }
 

@@ -11,7 +11,7 @@ import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
-  function _onFocus(ev: any) {
+  function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
   }
 

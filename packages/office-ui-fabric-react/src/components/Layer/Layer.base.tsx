@@ -155,7 +155,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     );
   }
 
-  private _removeLayerElement() {
+  private _removeLayerElement(): void {
     if (this._layerElement) {
       this.props.onLayerWillUnmount!();
 

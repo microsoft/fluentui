@@ -65,7 +65,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     );
   }
 
-  private _onDismiss(ev: any) {
+  private _onDismiss(ev: any): void {
     this.setState({
       isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
     });

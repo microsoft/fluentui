@@ -381,7 +381,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._onTextFieldClick(ev);
   }
 
-  private _showDatePickerPopup() {
+  private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
       this.setState({

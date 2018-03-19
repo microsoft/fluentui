@@ -356,7 +356,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     }
   }
 
-  private _afterComponentRendered() {
+  private _afterComponentRendered(): void {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
       if (this.state.measureContainer && this._root.value) {
@@ -373,7 +373,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     });
   }
 
-  private _onResize() {
+  private _onResize(): void {
     if (this._root.value) {
       this.setState({ measureContainer: true });
     }

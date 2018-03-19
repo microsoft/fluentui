@@ -74,7 +74,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className = '',
       elementToFocusOnDismiss,

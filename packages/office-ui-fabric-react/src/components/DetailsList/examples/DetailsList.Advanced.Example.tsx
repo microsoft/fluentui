@@ -144,7 +144,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     );
   }
 
-  private _onDataMiss(index: number) {
+  private _onDataMiss(index: number): void {
     index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
 
     if (!this._isFetchingItems) {
@@ -442,7 +442,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     return false;
   }
 
-  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn) => {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       this.setState({
         contextualMenuProps: this._getContextualMenuProps(ev, column)
@@ -450,7 +450,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     }
   }
 
-  private _onColumnContextMenu = (column: IColumn, ev: React.MouseEvent<HTMLElement>) => {
+  private _onColumnContextMenu = (column: IColumn, ev: React.MouseEvent<HTMLElement>): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       this.setState({
         contextualMenuProps: this._getContextualMenuProps(ev, column)
@@ -458,13 +458,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     }
   }
 
-  private _onContextualMenuDismissed = () => {
+  private _onContextualMenuDismissed = (): void => {
     this.setState({
       contextualMenuProps: undefined
     });
   }
 
-  private _onSortColumn = (key: string, isSortedDescending: boolean) => {
+  private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
     const sortedItems = _items.slice(0).sort((a: any, b: any) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
 
     this.setState({
@@ -483,7 +483,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   }
 
-  private _onGroupByColumn = (column: IColumn) => {
+  private _onGroupByColumn = (column: IColumn): void => {
     const { key, isGrouped } = column;
     const { sortedColumnKey, isSortedDescending, groups, items, columns } = this.state;
 
@@ -565,13 +565,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     return leafKey;
   }
 
-  private _onAddRow = () => {
+  private _onAddRow = (): void => {
     this.setState({
       items: createListItems(1).concat(this.state.items)
     });
   }
 
-  private _onDeleteRow = () => {
+  private _onDeleteRow = (): void => {
     this.setState({
       items: this.state.items!.slice(1)
     });

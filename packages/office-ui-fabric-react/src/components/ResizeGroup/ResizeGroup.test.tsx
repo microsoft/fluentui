@@ -17,7 +17,7 @@ function onReduceScalingData(data: ITestScalingData): ITestScalingData {
   };
 }
 
-function getRequiredResizeGroupProps() {
+function getRequiredResizeGroupProps(): void {
   return {
     data: {},
     onReduceData: sinon.stub(),

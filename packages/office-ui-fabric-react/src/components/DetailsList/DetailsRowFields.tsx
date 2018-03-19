@@ -67,7 +67,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     );
   }
 
-  private _getState(props: IDetailsRowFieldsProps) {
+  private _getState(props: IDetailsRowFieldsProps): IDetailsRowFieldsState {
     const { item, itemIndex, onRenderItemColumn, shimmer } = props;
 
     return {
@@ -85,7 +85,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     };
   }
 
-  private _getCellText(item: any, column: IColumn) {
+  private _getCellText(item: any, column: IColumn): void {
     let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
 
     if (value === null || value === undefined) {

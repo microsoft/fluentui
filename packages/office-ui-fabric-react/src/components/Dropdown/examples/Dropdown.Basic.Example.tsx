@@ -18,7 +18,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     const { selectedItem, selectedItems } = this.state;
 
     return (

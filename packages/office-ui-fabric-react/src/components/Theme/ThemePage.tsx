@@ -115,7 +115,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     this._list = component;
   }
 
-  private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent<HTMLElement>) {
+  private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent<HTMLElement>): void {
     this.setState({
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
@@ -125,7 +125,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     });
   }
 
-  private _onColorChanged(index: number, newColor: string) {
+  private _onColorChanged(index: number, newColor: string): void {
     const { colors } = this.state;
     const color = colors[index];
     const palette: Partial<IPalette> = {};
@@ -144,7 +144,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     this._list.forceUpdate();
   }
 
-  private _onPickerDismiss() {
+  private _onPickerDismiss(): void {
     this.setState({
       colorPickerProps: undefined
     });

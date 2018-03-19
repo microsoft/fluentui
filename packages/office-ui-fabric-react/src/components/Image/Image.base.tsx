@@ -163,7 +163,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  private _computeCoverStyle(props: IImageProps) {
+  private _computeCoverStyle(props: IImageProps): void {
     const { imageFit, width, height } = props;
 
     // Do not compute cover style if it was already specified in props

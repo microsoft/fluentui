@@ -84,7 +84,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     this._processingTabKey = false;
   }
 
-  public componentDidMount(): void {
+  public componentDidMount() {
     _allInstances[this._id] = this;
     if (this._root.value) {
       const windowElement = this._root.value.ownerDocument.defaultView;
@@ -117,11 +117,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
-  public componentWillUnmount(): void {
+  public componentWillUnmount() {
     delete _allInstances[this._id];
   }
 
-  public render(): JSX.Element {
+  public render() {
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 

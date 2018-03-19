@@ -8,7 +8,7 @@ const styles: any = stylesImport;
 
 export class ChoiceGroupCustomExample extends React.Component {
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <ChoiceGroup

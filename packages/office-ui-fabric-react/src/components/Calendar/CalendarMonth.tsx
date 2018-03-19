@@ -157,7 +157,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     }
   }
 
-  private _isCurrentMonth(month: number, year: number, today: Date) {
+  private _isCurrentMonth(month: number, year: number, today: Date): boolean {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 

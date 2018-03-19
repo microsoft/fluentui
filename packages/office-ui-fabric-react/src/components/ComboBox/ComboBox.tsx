@@ -6,7 +6,8 @@ import { Label } from '../../Label';
 import { Checkbox } from '../../Checkbox';
 import {
   CommandButton,
-  IconButton
+  IconButton,
+  IButtonStyles
 } from '../../Button';
 import { IAutofill, Autofill } from '../Autofill/index';
 import {
@@ -581,7 +582,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * allows freeform entry
    * @param updatedValue - the input's newly changed value
    */
-  private _processInputChangeWithFreeform(updatedValue: string) {
+  private _processInputChangeWithFreeform(updatedValue: string): void {
     const {
       currentOptions
     } = this.state;
@@ -638,7 +639,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * does not allow freeform entry
    * @param updatedValue - the input's newly changed value
    */
-  private _processInputChangeWithoutFreeform(updatedValue: string) {
+  private _processInputChangeWithoutFreeform(updatedValue: string): void {
     const {
       currentPendingValue,
       currentPendingValueValidIndex,
@@ -750,7 +751,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index to set (or the index to set from if a search direction is provided)
    * @param searchDirection - the direction to search along the options from the given index
    */
-  private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
+  private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none): void {
     const { onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
@@ -882,7 +883,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Submit a pending value if there is one
    */
-  private _submitPendingValue() {
+  private _submitPendingValue(): void {
     const {
       onChanged,
       allowFreeform,
@@ -1188,7 +1189,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Scroll the selected element into view
    */
-  private _scrollIntoView() {
+  private _scrollIntoView(): void {
     const {
       onScrollToItem,
       scrollSelectedToTop
@@ -1297,7 +1298,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * and setting the suggested display value to the last
    * selected state text
    */
-  private _resetSelectedIndex() {
+  private _resetSelectedIndex(): void {
     const {
       selectedIndices,
       currentOptions
@@ -1323,7 +1324,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Clears the pending info state
    */
-  private _clearPendingInfo() {
+  private _clearPendingInfo(): void {
     this._setPendingInfo('' /* suggestedDisplayValue */, -1 /* currentPendingValueValidIndex */, '' /* currentPendingValue */);
   }
 
@@ -1333,7 +1334,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param currentPendingValueValidIndex - new pending value index to set
    * @param suggestedDisplayValue - new suggest display value to set
    */
-  private _setPendingInfo(currentPendingValue: string, currentPendingValueValidIndex: number, suggestedDisplayValue: string) {
+  private _setPendingInfo(currentPendingValue: string, currentPendingValueValidIndex: number, suggestedDisplayValue: string): void {
     this.setState({
       currentPendingValue: currentPendingValue,
       currentPendingValueValidIndex: currentPendingValueValidIndex,
@@ -1346,7 +1347,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Set the pending info from the given index
    * @param index - the index to set the pending info from
    */
-  private _setPendingInfoFromIndex(index: number) {
+  private _setPendingInfoFromIndex(index: number): void {
     const {
       currentOptions
     } = this.state;
@@ -1365,7 +1366,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index to search from
    * @param searchDirection - the direction to search
    */
-  private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
+  private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection): void {
     const {
       isOpen,
       currentOptions
@@ -1400,7 +1401,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  private _notifyPendingValueChanged(prevState: IComboBoxState) {
+  private _notifyPendingValueChanged(prevState: IComboBoxState): void {
     const { onPendingValueChanged } = this.props;
 
     if (!onPendingValueChanged) {
@@ -1438,7 +1439,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Sets the isOpen state and updates focusInputAfterClose
    */
-  private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean) {
+  private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean): void {
     this._focusInputAfterClose = focusInputAfterClose;
     this.setState({
       isOpen: isOpen
@@ -1650,7 +1651,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     ev.preventDefault();
   }
 
-  private _onOptionMouseEnter(index: number) {
+  private _onOptionMouseEnter(index: number): void {
     if (!this._isScrollIdle) {
       return;
     }
@@ -1660,7 +1661,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     });
   }
 
-  private _onOptionMouseMove(index: number) {
+  private _onOptionMouseMove(index: number): void {
     if (!this._isScrollIdle || this.state.currentPendingValueValidIndexOnHover === index) {
       return;
     }
@@ -1685,7 +1686,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * eating the required key event when disabled
    * @param ev - the keyboard event that was fired
    */
-  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | Autofill> | null) {
+  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | Autofill> | null): void {
     // If we are disabled, close the menu (if needed)
     // and eat all keystokes other than TAB or ESC
     if (this.props.disabled) {
@@ -1734,7 +1735,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
  * Get the styles for the current option.
  * @param item Item props for the current option
  */
-  private _getCaretButtonStyles() {
+  private _getCaretButtonStyles(): IButtonStyles {
     const { caretDownButtonStyles: customCaretDownButtonStyles } = this.props;
     return getCaretDownButtonStyles(this.props.theme!, customCaretDownButtonStyles);
   }
@@ -1743,7 +1744,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Get the styles for the current option.
    * @param item Item props for the current option
    */
-  private _getCurrentOptionStyles(item: IComboBoxOption) {
+  private _getCurrentOptionStyles(item: IComboBoxOption): Partial<IComboBoxOptionStyles> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 

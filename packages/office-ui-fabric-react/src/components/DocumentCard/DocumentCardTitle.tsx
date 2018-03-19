@@ -125,7 +125,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
 
   }
 
-  private _shrinkTitle() {
+  private _shrinkTitle(): void {
     if (this._doesTitleOverflow()) {
       const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
       this._isTruncated = true;
@@ -151,7 +151,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     return titleElement.scrollHeight > titleElement.clientHeight + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD || titleElement.scrollWidth > titleElement.clientWidth;
   }
 
-  private _updateTruncation() {
+  private _updateTruncation(): void {
     // Only update truncation if the title's size has changed since the last time we truncated
     if (this._titleElement.value && (this._titleElement.value.clientWidth !== this._truncatedTitleAtWidth)) {
       // Throttle truncation so that it doesn't happen during a window resize

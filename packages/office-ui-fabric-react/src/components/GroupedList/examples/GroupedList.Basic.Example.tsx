@@ -58,7 +58,7 @@ export class GroupedListBasicExample extends React.Component {
     );
   }
 
-  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
+  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number): void {
     const {
       _selection: selection
     } = this;

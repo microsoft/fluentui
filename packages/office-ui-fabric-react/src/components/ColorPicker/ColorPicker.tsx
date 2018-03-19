@@ -170,7 +170,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     }));
   }
 
-  private _updateColor(newColor?: IColor) {
+  private _updateColor(newColor?: IColor): void {
     if (!newColor) {
       return;
     }

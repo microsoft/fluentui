@@ -41,7 +41,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     }
   }
 
-  private _eventListener(event) {
+  private _eventListener(event): void {
     event.preventDefault();
     history.pushState({}, '', this._els.link.getAttribute('href'));
     let navigatorUserAgent = navigator.userAgent.toLowerCase();

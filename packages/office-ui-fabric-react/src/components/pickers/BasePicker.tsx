@@ -166,7 +166,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { suggestedDisplayValue } = this.state;
     const {
       className,
@@ -675,7 +675,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
    */
-  private _updateSelectedItems(items: T[], focusIndex?: number) {
+  private _updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
       this.onChange(items);
@@ -686,7 +686,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number) {
+  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
     this.resetFocus(focusIndex);
     this.onChange(items);
   }
@@ -699,7 +699,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  private _onValidateInput() {
+  private _onValidateInput(): void {
     if (this.props.onValidateInput && this.input.value && (this.props.onValidateInput as any)(this.input.value.value) !== ValidationState.invalid && this.props.createGenericItem) {
       const itemToConvert = this.props.createGenericItem(this.input.value.value, this.props.onValidateInput(this.input.value.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
@@ -717,7 +717,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 }
 
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
-  public render() {
+  public render(): JSX.Element {
     const { suggestedDisplayValue } = this.state;
     const {
       className,

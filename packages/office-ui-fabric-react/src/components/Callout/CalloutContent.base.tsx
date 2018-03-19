@@ -307,7 +307,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._hasListeners = false;
   }
 
-  private _updateAsyncPosition() {
+  private _updateAsyncPosition(): void {
     this._async.requestAnimationFrame(() => this._updatePosition());
   }
 
@@ -325,7 +325,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return beakPostionStyle;
   }
 
-  private _updatePosition() {
+  private _updatePosition(): void {
     const { positions } = this.state;
     const hostElement: HTMLElement | null = this._hostElement.value;
     const calloutElement: HTMLElement | null = this._calloutElement.value;
@@ -399,12 +399,12 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return this._maxHeight!;
   }
 
-  private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo) {
+  private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
     return this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
       this._comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition);
   }
 
-  private _comparePositions(oldPositions: IPosition, newPositions: IPosition) {
+  private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
     for (const key in newPositions) {
       // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {

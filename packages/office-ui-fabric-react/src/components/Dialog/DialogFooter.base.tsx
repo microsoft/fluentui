@@ -17,7 +17,7 @@ const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterS
 export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
   private _classNames: IClassNames<IDialogFooterStyles>;
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       getStyles,
@@ -38,7 +38,7 @@ export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
     );
   }
 
-  private _renderChildrenAsActions() {
+  private _renderChildrenAsActions(): void {
     return React.Children.map(this.props.children, child =>
       child && <span className={ this._classNames.action }>{ child }</span>
     );

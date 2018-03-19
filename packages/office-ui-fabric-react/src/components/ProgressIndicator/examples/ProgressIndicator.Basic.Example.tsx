@@ -48,7 +48,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     );
   }
 
-  private _startProgressDemo() {
+  private _startProgressDemo(): void {
     // reset the demo
     this.setState({
       percentComplete: 0

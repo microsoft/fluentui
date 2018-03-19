@@ -119,7 +119,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
     );
   }
 
-  private _onDropdownChanged = (option: IDropdownOption) => {
+  private _onDropdownChanged = (option: IDropdownOption): void => {
     this.setState({
       firstDayOfWeek: (DayOfWeek as any)[option.key]
     });

@@ -44,7 +44,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Render
-  public render() {
+  public render(): JSX.Element {
     const {
       calloutProps,
       children,
@@ -158,7 +158,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     this._toggleTooltip(false);
   }
 
-  private _toggleTooltip(isTooltipVisible: boolean) {
+  private _toggleTooltip(isTooltipVisible: boolean): void {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState(
         { isTooltipVisible },

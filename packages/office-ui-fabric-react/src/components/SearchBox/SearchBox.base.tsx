@@ -52,7 +52,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
-  public render(): JSX.Element {
+  public render() {
     const {
       ariaLabel,
       placeholder,

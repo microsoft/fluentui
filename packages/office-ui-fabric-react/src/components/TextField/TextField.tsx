@@ -231,7 +231,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   /**
    * Sets the selection start of the text field to a specified value
    */
-  public setSelectionStart(value: number) {
+  public setSelectionStart(value: number): void {
     if (this._textElement.value) {
       this._textElement.value.selectionStart = value;
     }
@@ -240,7 +240,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   /**
    * Sets the selection end of the text field to a specified value
    */
-  public setSelectionEnd(value: number) {
+  public setSelectionEnd(value: number): void {
     if (this._textElement.value) {
       this._textElement.value.selectionEnd = value;
     }
@@ -265,13 +265,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * @param start Index of the start of the selection.
    * @param end Index of the end of the selection.
    */
-  public setSelectionRange(start: number, end: number) {
+  public setSelectionRange(start: number, end: number): void {
     if (this._textElement.value) {
       (this._textElement.value as HTMLInputElement).setSelectionRange(start, end);
     }
   }
 
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     if (this.props.onFocus) {
       this.props.onFocus(ev);
     }
@@ -282,7 +282,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }

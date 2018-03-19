@@ -51,7 +51,7 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
     );
   }
 
-  private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption) {
+  private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
     this.setState({
       selectedKey: option.key
     });

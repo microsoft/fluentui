@@ -31,7 +31,7 @@ export class BlogPost extends React.Component<{}, {}> {
     );
   }
 
-  private _getParameterByName(name: string, url?: string) {
+  private _getParameterByName(name: string, url?: string): string {
     if (!url) {
       url = window.location.href;
     }

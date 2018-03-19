@@ -142,9 +142,7 @@ export class RatingBasicExample extends React.Component<{}, {
     });
   }
 
-  private _getRatingComponentAriaLabel(rating: number, maxRating: number) {
-
-    return 'Rating value is ' + rating + ' of ' + maxRating;
-
+  private _getRatingComponentAriaLabel(rating: number, maxRating: number): string {
+    return `Rating value is ${rating} of ${maxRating}`;
   }
 }

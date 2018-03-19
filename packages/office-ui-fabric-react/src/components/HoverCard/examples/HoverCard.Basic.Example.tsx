@@ -30,7 +30,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     const { items, columns } = this.state;
 
     return (

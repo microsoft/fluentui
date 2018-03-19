@@ -44,7 +44,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
     );
   }
 
-  private _onFilterChanged(text: string) {
+  private _onFilterChanged(text: string): void {
     const { items } = this.props;
 
     this.setState({

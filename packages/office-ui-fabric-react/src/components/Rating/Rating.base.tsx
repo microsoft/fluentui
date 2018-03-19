@@ -172,7 +172,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     );
   }
 
-  private _getInitialValue(props: IRatingProps) {
+  private _getInitialValue(props: IRatingProps): void {
     if (typeof props.rating === 'undefined') {
       return props.min;
     }

@@ -148,7 +148,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
   }
 
   // Watch for completed animations and set the state
-  private _onModalClose() {
+  private _onModalClose(): void {
     this.setState({
       isOpen: false
     });

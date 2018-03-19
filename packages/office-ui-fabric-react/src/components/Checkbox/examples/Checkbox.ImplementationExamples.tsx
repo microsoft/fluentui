@@ -91,7 +91,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     );
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
     console.log(`The option has been changed to ${isChecked}.`);
   }
 

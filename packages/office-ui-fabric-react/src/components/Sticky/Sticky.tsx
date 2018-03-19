@@ -163,7 +163,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.root.value.appendChild(this.content);
     }
 
-    setTimeout(() => {
+    setTimeout((): void => {
       if (this.props.stickyClassName) {
         this.content.children[0].classList.remove(this.props.stickyClassName);
       }

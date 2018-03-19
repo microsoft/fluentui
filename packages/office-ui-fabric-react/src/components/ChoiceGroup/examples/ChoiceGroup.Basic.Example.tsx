@@ -17,7 +17,7 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <ChoiceGroup

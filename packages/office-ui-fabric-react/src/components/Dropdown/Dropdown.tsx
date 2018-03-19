@@ -219,9 +219,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  public focus(shouldOpenOnFocus?: boolean) {
+  public focus(shouldOpenOnFocus?: boolean): void {
     if (this._dropDown.value && this._dropDown.value.tabIndex !== -1) {
       this._dropDown.value.focus();
+
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
@@ -230,7 +231,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
-  public setSelectedIndex(index: number) {
+  public setSelectedIndex(index: number): void {
     const { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
@@ -585,7 +586,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
   }
 
-  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
     if (!this._isScrollIdle) {
       return;
     }
@@ -594,7 +595,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     targetElement.focus();
   }
 
-  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
 
     if (!this._isScrollIdle || document.activeElement === targetElement) {
@@ -654,7 +655,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Get all selected options for multi-select mode
-  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]) {
+  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]): void {
     const selectedOptions: IDropdownOption[] = [];
     for (const index of selectedIndices) {
       const option = options[index];

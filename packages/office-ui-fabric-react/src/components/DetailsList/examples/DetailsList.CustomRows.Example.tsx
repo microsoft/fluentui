@@ -16,7 +16,7 @@ export class DetailsListCustomRowsExample extends React.Component {
     _items = _items || createListItems(500);
   }
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <DetailsList
         items={ _items }

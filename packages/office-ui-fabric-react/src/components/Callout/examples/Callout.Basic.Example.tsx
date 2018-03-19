@@ -103,13 +103,13 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     );
   }
 
-  private _onShowMenuClicked = () => {
+  private _onShowMenuClicked = (): void => {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
   }
 
-  private _onCalloutDismiss = () => {
+  private _onCalloutDismiss = (): void => {
     this.setState({
       isCalloutVisible: false
     });

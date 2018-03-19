@@ -108,7 +108,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       displayValue
     } = this.state;
@@ -230,7 +230,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * @param isComposing if true then the text is actively being composed and it has not completed.
    * @param isComposed if the text is a composed text value.
    */
-  private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean) {
+  private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean): void {
     if (!isComposing
       && newValue
       && this._inputElement.value
@@ -241,7 +241,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  private _notifyInputChange(newValue: string) {
+  private _notifyInputChange(newValue: string): void {
     if (this.props.onInputValueChange) {
       this.props.onInputValueChange(newValue);
     }
@@ -265,7 +265,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * @param inputValue the value that the input currently has.
    * @param suggestedDisplayValue the possible full value
    */
-  private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string) {
+  private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
     if (suggestedDisplayValue
       && inputValue
@@ -276,7 +276,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return displayValue;
   }
 
-  private _doesTextStartWith(text: string, startWith: string) {
+  private _doesTextStartWith(text: string, startWith: string): boolean {
     if (!text || !startWith) {
       return false;
     }

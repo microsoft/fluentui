@@ -205,7 +205,7 @@ class Foo extends BaseComponent<...> {
     return <button ref={ _root } onClick={this._onClick} />;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     // Access the reference through the .value property on the reference object
     this._root.value.focus();
   }
@@ -436,7 +436,7 @@ class Foo extends React.Component {
     return <div onClick={ this._onClick }>{ `Foo ${ this._fooRocks ? 'rocks' : 'rolls' }</div>;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     this._fooRocks = !this._fooRocks;
     this.forceUpdate();
   }
@@ -457,7 +457,7 @@ class Foo extends React.Component {
     return <div onClick={ this._onClick }>{ `Foo ${ this.state.fooRocks ? 'rocks' : 'rolls' }</div>;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     this.setState({
       fooRocks: !this.state.fooRocks
     });

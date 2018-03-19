@@ -15,7 +15,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       onRenderIcon = this._onRenderIcon,
       onRenderActivityDescription = this._onRenderActivityDescription,
