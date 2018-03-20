@@ -19,7 +19,7 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: (component: IShimmer) => void;
 
   /**
-   * Sets the width of the shimmer wave container in percentages.
+   * Sets the width of the shimmer wave wrapper in percentages.
    * @default 100%
    */
   width?: number;
@@ -29,6 +29,12 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * @default false
    */
   isDataLoaded?: boolean;
+
+  /**
+   * Provide when Shimmer is intended to be used when using 'onRenderMissingItem' optional callback of the DetailsList Fabric Component.
+   * @default false
+   */
+  isBaseStyle?: boolean;
 
   /**
    * Elements to render in one line of the Shimmer.
@@ -48,19 +54,25 @@ export interface IShimmerElement {
   type: ShimmerElementType;
 
   /**
-   * The hight of the element (ICircle, ILine, IGap).
+   * The hight of the element in pixels (ICircle, ILine).
    * Read more details for each specific element.
    */
   height?: number;
 
   /**
-   * The width of the element (ICircle, ILine, IGap).
+   * The width of the element in pixels (ILine, IGap).
    * Read more details for each specific element.
    */
-  width?: number;
+  widthInPixel?: number;
 
   /**
-   * The vertical alignemt of the element (ICircle, ILine, IGap).
+   * The width of the element in pixels (ILine, IGap).
+   * Read more details for each specific element.
+   */
+  widthInPercentage?: number;
+
+  /**
+   * The vertical alignemt of the element (ICircle, ILine).
    * @default center
    */
   verticalAlign?: ShimmerElementVerticalAlign;
@@ -68,52 +80,49 @@ export interface IShimmerElement {
 
 export interface ILine extends IShimmerElement {
   /**
-   * Sets the height of the rectangle.
-   * The value will represent the height in pixels.
-   * @default 16
+   * Sets the height of the shimmer line in pixels.
+   * @default 16px
    */
   height?: number;
 
   /**
-   * If not provided the line will the take the remaining space to fill the shimmer container.
-   * The value provided will represent the width as '%' relative to the shimmer container.
+   * The value provided will represent the width as '%' relative to the shimmer wrapper.
    */
-  width?: number;
+  widthInPercentage?: number;
+
+  /**
+   * Sets the width of the Line to an exact value in pixels.
+   * @default 50px
+   */
+  widthInPixel?: number;
 }
 
 export interface ICircle extends IShimmerElement {
   /**
-   * Sets the height of the circle.
-   * The value will represent the height in pixels.
-   * @default 24
+   * Sets the height of the shimmer circle in pixels.
+   * @default 24px
    */
   height?: number;
-
-  /**
-   * Width of the circle element if provided will be ignored.
-   * The value will be set equal to the height of the circle for scale ratio reasons.
-   */
-  width?: number;
 }
 
 export interface IGap extends IShimmerElement {
   /**
-   * Height for gap element will be ignored and set equal to the heighest element on the line.
+   * The value will be calculated as '%' relative the to shimmer wrapper.
    */
-  height?: number;
+  widthInPercentage?: number;
 
   /**
-   * Sets the width relative to the shimmer container width for responsiveness reasons.
-   * The value will be calculated as '%' relative the to shimmer container.
-   * @default 1%
+   * Sets the width of the Gap to an exact value in pixels.
+   * @default 5px
    */
-  width?: number;
+  widthInPixel?: number;
 }
 
 export interface IShimmerStyleProps {
   width?: number;
   maxHeight?: number;
   isDataLoaded?: boolean;
+  isBaseStyle?: boolean;
 }
 
 export interface IShimmerStyles {
@@ -123,7 +132,7 @@ export interface IShimmerStyles {
 }
 
 export const enum ShimmerElementType {
-  RECTANGLE = 'line',
+  LINE = 'line',
   CIRCLE = 'circle',
   GAP = 'gap'
 }
