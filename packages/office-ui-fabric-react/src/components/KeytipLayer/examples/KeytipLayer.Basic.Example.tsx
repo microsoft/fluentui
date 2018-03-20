@@ -46,7 +46,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     };
 
     return (
-      <div>
+      <div style={ { paddingBottom: '100px' } }>
         <KeytipLayer
           keytipStartSequences={ [this.startingKeySequence] }
           keytipExitSequences={ [this.startingKeySequence] }

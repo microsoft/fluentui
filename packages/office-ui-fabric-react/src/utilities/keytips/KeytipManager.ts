@@ -93,6 +93,8 @@ export class KeytipManager {
 
   /**
    * Update a keytip's props
+   *
+   * @param keytipProps - Keytip to update
    */
   public updateKeytip(keytipProps: IKeytipProps): void {
     // Update keytip in this.keytips
@@ -100,7 +102,8 @@ export class KeytipManager {
       return fullKeySequencesAreEqual(keytip.keySequences, keytipProps.keySequences);
     });
     if (keytipIndex) {
-      this.keytips = replaceElement(this.keytips, keytipProps, keytipIndex);
+      // Update everything except 'visible'
+      this.keytips = replaceElement(this.keytips, { ...keytipProps, visible: this.keytips[keytipIndex].visible }, keytipIndex);
     }
     // Update keytip in keytip tree and layer
     this.keytipTree.addNode(keytipProps);
@@ -126,7 +129,7 @@ export class KeytipManager {
    * Unegister a persisted keytip
    * This means just removing it from the KeytipTree
    *
-   * @param keySequences
+   * @param keySequences - keySequences of the persisted Keytip to unregister
    */
   public unregisterPersistedKeytip(keySequences: IKeySequence[]): void {
     this.keytipTree.removeNode(keySequences);
@@ -135,7 +138,7 @@ export class KeytipManager {
   /**
    * Method that makes visible keytips currently in the DOM given a list of IDs.
    *
-   * @param ids: list of Ids to show.
+   * @param ids - list of Ids to show
    */
   public showKeytips(ids: string[]): void {
     // Set visible property in this.keytips
@@ -153,12 +156,18 @@ export class KeytipManager {
     this._layer && this._layer.setKeytips(this.keytips);
   }
 
+  /**
+   * Exit keytip mode
+   */
   public exitKeytipMode(): void {
     this.keytipTree.currentKeytip = undefined;
     this.showKeytips([]);
     this._layer && this._layer.exitKeytipMode();
   }
 
+  /**
+   * Enter keytip mode
+   */
   public enterKeytipMode(): void {
     this._layer && this._layer.enterKeytipMode();
   }

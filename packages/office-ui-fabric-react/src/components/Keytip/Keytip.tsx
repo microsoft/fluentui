@@ -1,59 +1,69 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import { BaseComponent, IKeySequence, convertSequencesToKeytipID, IRenderComponent } from '../../Utilities';
+import { BaseComponent, IPoint, getDocument } from '../../Utilities';
+import { Callout, CalloutTargetFunction } from '../../Callout';
+import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';
-import { KeytipManager, getNativeKeytipProps } from '../../utilities/keytips';
+import { KeytipContent } from './KeytipContent';
+import { getCalloutStyles } from './Keytip.styles';
+import { constructKeytipTargetFromSequences, KeytipManager } from '../../utilities/keytips';
 
 /**
- * A small element to help the target element correctly read out its aria-describedby for its Keytip
+ * A callout corresponding to another Fabric component to describe a key sequence that will activate that component
  *
  * @export
  * @class Keytip
  * @extends {BaseComponent<IKeytipProps, {}}>}
  */
-export class Keytip extends BaseComponent<IKeytipProps & IRenderComponent<{}>, {}> {
-  private _keytipManager: KeytipManager = KeytipManager.getInstance();
-
-  public componentDidMount() {
-    // Register Keytip in KeytipManager
-    this._hasValidKeytipProps() && this._keytipManager.registerKeytip(this._createKeytipProps());
-  }
-
-  public componentWillUnmount() {
-    // Unregister Keytip in KeytipManager
-    this._hasValidKeytipProps() && this._keytipManager.unregisterKeytip(this._createKeytipProps());
-  }
-
-  public componentDidUpdate() {
-    // Update Keytip in KeytipManager
-    this._hasValidKeytipProps() && this._keytipManager.updateKeytip(this._createKeytipProps());
+export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
+  // tslint:disable-next-line:no-any
+  constructor(props: IKeytipProps, context: any) {
+    super(props, context);
   }
 
   public render(): JSX.Element {
-    const { children } = this.props;
-    let nativeKeytipProps = {};
-    if (this._hasValidKeytipProps()) {
-      nativeKeytipProps = getNativeKeytipProps(this.props);
+    const {
+      keySequences,
+      offset
+    } = this.props;
+    let {
+      calloutProps
+    } = this.props;
+
+    const sequenceToTarget = constructKeytipTargetFromSequences(keySequences);
+    let keytipTarget: string | CalloutTargetFunction = sequenceToTarget;
+
+    if (offset) {
+      keytipTarget = (): Element | string | MouseEvent | IPoint | null => {
+        const currentDoc: Document = getDocument()!;
+        const targetEl = currentDoc ? currentDoc.querySelector(sequenceToTarget) as Element : undefined;
+        if (targetEl) {
+          const targetRect = targetEl.getBoundingClientRect();
+          // Add keytip offset to the top-left of the target
+          return { x: targetRect.left + offset.x, y: targetRect.top + offset.y };
+        }
+        return null;
+      };
     }
-    return children(nativeKeytipProps);
-  }
 
-  private _hasValidKeytipProps(): boolean {
-    return !!this.props.content && !!this.props.keySequences;
-  }
+    if (!calloutProps || !calloutProps.directionalHint) {
+      // Default callout directional hint to BottomCenter
+      calloutProps = {
+        ...calloutProps,
+        directionalHint: DirectionalHint.bottomCenter
+      };
+    }
 
-  private _createKeytipProps(): IKeytipProps {
-    return {
-      content: this.props.content,
-      disabled: this.props.disabled,
-      visible: this.props.visible,
-      onExecute: this.props.onExecute,
-      onReturn: this.props.onReturn,
-      keySequences: this.props.keySequences,
-      overflowSetSequence: this.props.overflowSetSequence,
-      calloutProps: this.props.calloutProps,
-      offset: this.props.offset,
-      hasChildrenNodes: this.props.hasChildrenNodes
-    };
+    return (
+      <Callout
+        { ...calloutProps }
+        isBeakVisible={ false }
+        doNotLayer={ true }
+        getStyles={ getCalloutStyles }
+        preventDismissOnScroll={ true }
+        target={ keytipTarget }
+      >
+        <KeytipContent { ...this.props } />
+      </Callout>
+    );
   }
 }

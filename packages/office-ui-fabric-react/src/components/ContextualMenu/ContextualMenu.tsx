@@ -37,7 +37,7 @@ import {
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
-import { Keytip } from '../../Keytip';
+import { KeytipHost } from '../../Keytip';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -479,7 +479,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
     }
     return (
-      <Keytip { ...item.keytipProps! }>
+      <KeytipHost keytipProps={ item.keytipProps }>
         { (keytip: {}): JSX.Element => (
           <div>
             <a
@@ -506,7 +506,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             </a>
           </div>
         ) }
-      </Keytip>
+      </KeytipHost>
     );
   }
 
@@ -566,7 +566,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     return (
-      <Keytip { ...item.keytipProps! }>
+      <KeytipHost keytipProps={ item.keytipProps }>
         { (keytip: {}): JSX.Element => (
           <button
             { ...buttonNativeProperties }
@@ -582,7 +582,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             />
           </button>
         ) }
-      </Keytip>
+      </KeytipHost>
     );
   }
 

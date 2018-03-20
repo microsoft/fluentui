@@ -46,7 +46,6 @@ export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutCont
     ],
     calloutMain: [{
       backgroundColor: 'transparent'
-    }
-    ]
+    }]
   };
 };

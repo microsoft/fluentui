@@ -22,7 +22,7 @@ import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 import { createRef } from '../../Utilities';
-import { Keytip } from '../../Keytip';
+import { KeytipHost } from '../../Keytip';
 
 const styles: any = stylesImport;
 
@@ -198,7 +198,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let command: React.ReactNode;
     if (isLink) {
       command = (
-        <Keytip { ...item.keytipProps! }>
+        <KeytipHost keytipProps={ item.keytipProps }>
           { (keytip: {}): JSX.Element => (
             <button
               { ...getNativeProps(item, buttonProperties) }
@@ -227,7 +227,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               ) : (null) }
             </button>
           ) }
-        </Keytip>
+        </KeytipHost>
       );
     } else if (item.href) {
       // Allow the disabled property on anchor elements for commandbar

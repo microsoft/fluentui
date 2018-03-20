@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IKeytipLayerProps } from './KeytipLayer.types';
-import { KeytipWrapper, IKeytipProps } from '../../Keytip';
+import { getLayerStyles } from './KeytipLayer.styles';
+import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
 import {
   autobind,
@@ -66,37 +67,10 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._keytipManager.init(this);
   }
 
-  /*
-  public addOrUpdateKeytip(keytip: IKeytipProps) {
-    this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
-      let currentKeytips: IKeytipProps[] = [...previousState.keytips];
-      const keytipIndex = findIndex(currentKeytips, (currentKeytip: IKeytipProps) => {
-        return fullKeySequencesAreEqual(currentKeytip.keySequences, keytip.keySequences);
-      });
-      if (keytipIndex >= 0) {
-        currentKeytips = replaceElement(currentKeytips, keytip, keytipIndex);
-      } else {
-        currentKeytips.push(keytip);
-      }
-      return { ...previousState, activeKeytips: currentKeytips };
-    });
-  }
-
-  public removeKeytip(keytip: IKeytipProps) {
-    this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
-      let currentKeytips: IKeytipProps[] = [...previousState.keytips];
-      // Filter out 'keytip'
-      currentKeytips = currentKeytips.filter((currentKeytip: IKeytipProps) => {
-        return !fullKeySequencesAreEqual(keytip.keySequences, currentKeytip.keySequences);
-      });
-      return { ...previousState, activeKeytips: currentKeytips };
-    });
-  }
-  */
-
   /**
+   * Sets the keytips state property
    *
-   * @param keytipProps
+   * @param keytipProps - Keytips to set in this layer
    */
   public setKeytips(keytipProps: IKeytipProps[]) {
     this.setState({ keytips: keytipProps });
@@ -111,11 +85,12 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       keytips
     } = this.state;
 
+    // TODO: put span styles in KeytipLayer.styles
     return (
-      <Layer>
+      <Layer getStyles={ getLayerStyles }>
         <span id={ ktpLayerId } style={ { visibility: 'hidden' } }>{ content }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
-          return <KeytipWrapper key={ index } { ...keytipProps } />;
+          return <Keytip key={ index } { ...keytipProps } />;
         }) }
       </Layer>
     );
@@ -128,12 +103,15 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
 
     // Add handler to remove Keytips when we scroll the page
+    // TODO: can we use EventGroup here?
     window.addEventListener('scroll', (): void => {
       if (this.state.inKeytipMode) {
         this._keytipManager.exitKeytipMode();
       }
     }, { capture: true });
   }
+
+  // TODO: remove window listeners on unmount?
 
   /**
    * Exits keytip mode for this layer
@@ -206,7 +184,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     if (ev.shiftKey) {
       modifierKeys.push(KeytipTransitionModifier.shift);
     }
-    // TODO: include windows key or option for MAC
+    // TODO: bug if the only key is a modifier (just pressed 'Alt', shouldn't be in modifierKeys but it is)
     return modifierKeys.length ? modifierKeys : undefined;
   }
 

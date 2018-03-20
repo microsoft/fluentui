@@ -54,63 +54,7 @@ describe('KeytipManager', () => {
     keytipManager.keytipTree = new KeytipTree();
   });
 
-  describe('getAriaDescribedBy', () => {
-
-    /*
-    // TODO: move these to a KeytipUtils test
-    it('returns just the layer ID when an empty sequence is passed in', () => {
-      const keySequence: IKeySequence[] = [];
-      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
-      expect(ariaDescribedBy).toEqual(layerID);
-    });
-
-    it('for one singular key sequence', () => {
-      const keySequence: IKeySequence[] = [{ keys: ['b'] }];
-      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
-      expect(ariaDescribedBy).toEqual(layerID + ' ' + convertSequencesToKeytipID(keySequence));
-    });
-
-    it('for one complex key sequence', () => {
-      const keySequence: IKeySequence[] = [{ keys: ['b', 'c'] }];
-      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
-      expect(ariaDescribedBy).toEqual(layerID + ' ' + convertSequencesToKeytipID(keySequence));
-    });
-
-    it('for multiple singular key sequences', () => {
-      const keySequences: IKeySequence[] = [{ keys: ['b'] }, { keys: ['c'] }];
-      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
-      expect(ariaDescribedBy).toEqual(layerID +
-        ' ' + convertSequencesToKeytipID([keySequences[0]]) +
-        ' ' + convertSequencesToKeytipID(keySequences));
-    });
-
-    it('for multiple complex key sequences', () => {
-      const keySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
-      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
-      expect(ariaDescribedBy).toEqual(layerID +
-        ' ' + convertSequencesToKeytipID([keySequences[0]]) +
-        ' ' + convertSequencesToKeytipID(keySequences));
-    });
-
-    it('correctly omits the overflowSequence if defined', () => {
-      const keySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }, { keys: ['b'] }];
-      const overflowSequence: IKeySequence = { keys: ['c', 'b'] };
-      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences, overflowSequence);
-      expect(ariaDescribedBy).toEqual(layerID +
-        ' ' + convertSequencesToKeytipID([keySequences[0]]) +
-        ' ' + convertSequencesToKeytipID([keySequences[0], keySequences[2]]));
-
-      const keySequences2: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['b'] }];
-      const ariaDescribedBy2 = keytipManager.getAriaDescribedBy(keySequences2, overflowSequence);
-      expect(ariaDescribedBy2).toEqual(layerID +
-        ' ' + convertSequencesToKeytipID([keySequences2[0]]) +
-        ' ' + convertSequencesToKeytipID(keySequences2));
-    });
-    */
-  });
-
   describe('processInput tests', () => {
-
     beforeEach(() => {
       keytipManager.keytipTree = populateTreeMap(keytipManager.keytipTree, layerID);
     });
@@ -201,26 +145,33 @@ describe('KeytipManager', () => {
     });
   });
 
-  describe('exitKeytipMode should hide all keytips', () => {
-    // Create keytip b
-    const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
-    const keytipBProps: IKeytipProps = {
-      keySequences: keytipSequenceB,
-      content: 'B',
-      visible: true
-    };
-    const keytipSequenceG: IKeySequence[] = [{ keys: ['G'] }];
-    const keytipGProps: IKeytipProps = {
-      keySequences: keytipSequenceG,
-      content: 'G',
-      visible: true
-    };
+  describe('exitKeytipMode', () => {
+    it('should hide all keytips', () => {
+      // Create keytip b
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+      const keytipBProps: IKeytipProps = {
+        keySequences: keytipSequenceB,
+        content: 'B',
+        visible: true
+      };
+      const keytipSequenceG: IKeySequence[] = [{ keys: ['G'] }];
+      const keytipGProps: IKeytipProps = {
+        keySequences: keytipSequenceG,
+        content: 'G',
+        visible: true
+      };
 
-    keytipManager.keytips = [keytipBProps, keytipGProps];
-    keytipManager.exitKeytipMode();
-    for (const keytip of keytipManager.keytips) {
-      expect(keytip.visible).toEqual(false);
-    }
+      keytipManager.keytips = [keytipBProps, keytipGProps];
+      keytipManager.exitKeytipMode();
+      for (const keytip of keytipManager.keytips) {
+        expect(keytip.visible).toEqual(false);
+      }
+    });
+
+    it('should call dev-defined onExitKeytipMode', () => {
+      keytipManager.exitKeytipMode();
+      expect(onExitKeytipMode).toBeCalled();
+    });
   });
 
   describe('register, update, and unregister tests', () => {

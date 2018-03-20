@@ -17,7 +17,7 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { Keytip } from '../../Keytip';
+import { KeytipHost } from '../../Keytip';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -226,7 +226,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = props;
 
     const Content = (
-      <Keytip { ...keytipProps! }>
+      <KeytipHost keytipProps={ keytipProps }>
         { (keytip: {}): JSX.Element => (
           <Tag { ...buttonProps } { ...keytip }>
             <div className={ this._classNames.flexContainer } >
@@ -239,7 +239,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             </div>
           </Tag>
         ) }
-      </Keytip >
+      </KeytipHost>
     );
 
     if (menuProps && menuProps.doNotLayer) {
