@@ -206,87 +206,102 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     if (item.href) {
       // Allow the disabled property on anchor elements for commandbar
       command = (
-        <a
-          { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
-          id={ this._id + item.key }
-          className={ className }
-          href={ item.disabled ? undefined : item.href }
-          onClick={ item.onClick }
-          title={ '' }
-          aria-disabled={ item.inactive }
-          data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
-          role='menuitem'
-          aria-label={ ariaLabel }
-          aria-setsize={ setSize }
-          aria-posinset={ posInSet }
-        >
-          { (hasIcon) ? this._renderIcon(item) : (null) }
-          { isNameVisible && (
-            <span
-              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+        <KeytipHost keytipProps={ item.keytipProps }>
+          { (keytipAttributes: any): JSX.Element => (
+            <a
+              { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
+              { ...keytipAttributes }
+              id={ this._id + item.key }
+              className={ className }
+              href={ item.disabled ? undefined : item.href }
+              onClick={ item.onClick }
+              title={ '' }
+              aria-disabled={ item.inactive }
+              data-command-key={ itemKey }
+              aria-haspopup={ hasSubmenu(item) }
+              role='menuitem'
+              aria-label={ ariaLabel }
+              aria-setsize={ setSize }
+              aria-posinset={ posInSet }
             >
-              { item.name }
-            </span>
+              { (hasIcon) ? this._renderIcon(item) : (null) }
+              { isNameVisible && (
+                <span
+                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                >
+                  { item.name }
+                </span>
+              ) }
+            </a>
           ) }
-        </a>
+        </KeytipHost>
       );
     } else if (isLink) {
       command = (
-        <button
-          { ...getNativeProps(item, buttonProperties) }
-          id={ this._id + item.key }
-          className={ className }
-          onClick={ this._onItemClick(item) }
-          title={ '' }
-          aria-disabled={ item.inactive }
-          data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
-          aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
-          role='menuitem'
-          aria-label={ ariaLabel }
-          aria-setsize={ setSize }
-          aria-posinset={ posInSet }
-        >
-          { (hasIcon) ? this._renderIcon(item) : (null) }
-          { isNameVisible && (
-            <span
-              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+        <KeytipHost keytipProps={ item.keytipProps }>
+          { (keytipAttributes: any): JSX.Element => (
+            <button
+              { ...getNativeProps(item, buttonProperties) }
+              { ...keytipAttributes }
+              id={ this._id + item.key }
+              className={ className }
+              onClick={ this._onItemClick(item) }
+              title={ '' }
+              aria-disabled={ item.inactive }
+              data-command-key={ itemKey }
+              aria-haspopup={ hasSubmenu(item) }
+              aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
+              role='menuitem'
+              aria-label={ ariaLabel }
+              aria-setsize={ setSize }
+              aria-posinset={ posInSet }
             >
-              { item.name }
-            </span>
+              { (hasIcon) ? this._renderIcon(item) : (null) }
+              { isNameVisible && (
+                <span
+                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                >
+                  { item.name }
+                </span>
+              ) }
+              { hasSubmenu(item) ? (
+                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
+              ) : (null) }
+            </button>
           ) }
-          { hasSubmenu(item) ? (
-            <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
-          ) : (null) }
-        </button>
+        </KeytipHost>
       );
     } else {
       // Allow the disabled property on div elements for commandbar
       command = (
-        <div
-          { ...getNativeProps(item, divProperties.concat(['disabled'])) }
-          id={ this._id + item.key }
-          className={ className }
-          title={ '' }
-          aria-disabled={ item.inactive }
-          data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
-          aria-label={ ariaLabel }
-          aria-setsize={ setSize }
-          aria-posinset={ posInSet }
-        >
-          { (hasIcon) ? this._renderIcon(item) : (null) }
-          { (isNameVisible) && (
-            <span
-              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
-              aria-hidden='true'
-              role='presentation'
+        <KeytipHost keytipProps={ item.keytipProps }>
+          { (keytipAttributes: any): JSX.Element => (
+            <div
+              { ...getNativeProps(item, divProperties.concat(['disabled'])) }
+              { ...keytipAttributes }
+              id={ this._id + item.key }
+              className={ className }
+              title={ '' }
+              aria-disabled={ item.inactive }
+              data-command-key={ itemKey }
+              aria-haspopup={ hasSubmenu(item) }
+              aria-label={ ariaLabel }
+              aria-setsize={ setSize }
+              aria-posinset={ posInSet }
             >
-              { item.name }
-            </span>
+              { (hasIcon) ? this._renderIcon(item) : (null) }
+              { (isNameVisible) && (
+                <span
+                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                  aria-hidden='true'
+                  role='presentation'
+                >
+                  { item.name }
+                </span>
+              ) }
+            </div>
           ) }
-        </div>
+        </KeytipHost>
       );
     }
 

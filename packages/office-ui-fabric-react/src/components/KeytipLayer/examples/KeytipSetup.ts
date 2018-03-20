@@ -140,6 +140,11 @@ export const keytipConfig: IKeytipConfig = {
                 },
               ]
             },
+            {
+              id: 'SubmenuKeytip3',
+              sequence: { keys: ['r'] },
+              content: 'r'
+            },
           ]
         }
       ]

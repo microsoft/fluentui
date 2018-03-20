@@ -483,33 +483,38 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <div>
-        <a
-          { ...getNativeProps(item, anchorProperties) }
-          href={ item.href }
-          target={ item.target }
-          rel={ anchorRel }
-          className={ classNames.root }
-          role='menuitem'
-          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
-          aria-haspopup={ itemHasSubmenu || null }
-          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
-          aria-posinset={ focusableElementIndex + 1 }
-          aria-setsize={ totalItemCount }
-          aria-disabled={ this._isItemDisabled(item) }
-          style={ item.style }
-          onClick={ this._onAnchorClick.bind(this, item) }
-          onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
-          onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
-          onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
-        >
-          <ChildrenRenderer
-            item={ item }
-            classNames={ classNames }
-            index={ index }
-            onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
-            hasIcons={ hasIcons }
-          />
-        </a>
+        <KeytipHost keytipProps={ item.keytipProps }>
+          { (keytipAttributes: any): JSX.Element => (
+            <a
+              { ...getNativeProps(item, anchorProperties) }
+              { ...keytipAttributes }
+              href={ item.href }
+              target={ item.target }
+              rel={ anchorRel }
+              className={ classNames.root }
+              role='menuitem'
+              aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
+              aria-haspopup={ itemHasSubmenu || null }
+              aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
+              aria-posinset={ focusableElementIndex + 1 }
+              aria-setsize={ totalItemCount }
+              aria-disabled={ this._isItemDisabled(item) }
+              style={ item.style }
+              onClick={ this._onAnchorClick.bind(this, item) }
+              onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+              onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+              onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
+            >
+              <ChildrenRenderer
+                item={ item }
+                classNames={ classNames }
+                index={ index }
+                onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+                hasIcons={ hasIcons }
+              />
+            </a>
+          ) }
+        </KeytipHost>
       </div>);
   }
 

@@ -166,6 +166,25 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
                               }
                             ]
                           }
+                        },
+                        {
+                          key: 'splitButtonTest',
+                          name: 'Split Button',
+                          split: true,
+                          keytipProps: this.keytipMap.SubmenuKeytip3,
+                          subMenuProps: {
+                            items: [
+                              {
+                                key: 'splitButtonSubMenu1',
+                                name: 'Test Button',
+                              },
+                              {
+                                key: 'splitButtonSubMenu2',
+                                name: 'Test Button 2',
+                                href: 'http://www.bing.com'
+                              }
+                            ]
+                          }
                         }
                       ],
                     },
