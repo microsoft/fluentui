@@ -4,7 +4,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   getId,
   getNativeProps,
   inputProperties,
@@ -44,7 +43,6 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     this._floatingPickerProps = this.props.floatingPickerProps as IBaseFloatingPickerProps<IExtendedPersonaProps>;
   }
 
-  @autobind
   public componentDidMount(): void {
     let getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
     let itemText = getEditingItemText(this.props.item);
@@ -53,7 +51,6 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     this._editingInput.focus();
   }
 
-  @autobind
   public render(): JSX.Element {
     const itemId = getId();
     const nativeProps = getNativeProps(this.props, inputProperties);
@@ -76,8 +73,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
       </div>);
   }
 
-  @autobind
-  private _renderEditingSuggestions(): JSX.Element {
+  private _renderEditingSuggestions = (): JSX.Element => {
     let onRenderFloatingPicker = this._onRenderFloatingPicker;
     return (onRenderFloatingPicker({
       componentRef: this._editingFloatingPicker,
@@ -88,20 +84,17 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     }));
   }
 
-  @autobind
-  private _resolveInputRef(ref: HTMLInputElement): void {
+  private _resolveInputRef = (ref: HTMLInputElement): void => {
     this._editingInput = ref;
 
     this.forceUpdate(() => { this._editingInput.focus(); });
   }
 
-  @autobind
-  private _onInputClick(): void {
+  private _onInputClick = (): void => {
     this._editingFloatingPicker.value && this._editingFloatingPicker.value.showPicker();
   }
 
-  @autobind
-  private _onInputBlur(ev: React.FocusEvent<HTMLElement>): void {
+  private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     if (this._editingFloatingPicker.value &&
       (ev.relatedTarget === null || (ev.relatedTarget as HTMLElement).className.indexOf('ms-SearchMore-button') === -1)
     ) {
@@ -109,8 +102,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     }
   }
 
-  @autobind
-  private _onInputChange(ev: React.FormEvent<HTMLElement>): void {
+  private _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
     let value: string = (ev.target as HTMLInputElement).value;
 
     if (value === '') {
@@ -128,8 +120,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     }
   }
 
-  @autobind
-  private _onSuggestionSelected(item: IExtendedPersonaProps): void {
+  private _onSuggestionSelected = (item: IExtendedPersonaProps): void => {
     this.props.onEditingComplete(this.props.item, item);
   }
 }

@@ -12,7 +12,6 @@ import {
   IPoint,
   IRectangle,
   assign,
-  autobind,
   css,
   elementContains,
   focusFirstChild,
@@ -198,8 +197,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     );
   }
 
-  @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -228,16 +226,14 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     }
   }
 
-  @autobind
-  protected _setInitialFocus(): void {
+  protected _setInitialFocus = (): void => {
     if (this._contentHost.value && this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
       this._didSetInitialFocus = true;
       focusFirstChild(this._contentHost.value);
     }
   }
 
-  @autobind
-  protected _onComponentDidMount(): void {
+  protected _onComponentDidMount = (): void => {
     // This is added so the positioningContainer will dismiss when the window is scrolled
     // but not when something inside the positioningContainer is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from

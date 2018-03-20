@@ -9,7 +9,6 @@ import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ScrollablePaneStatus } from './ScrollablePane.checklist';
-import { MessageBar } from '../../MessageBar';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
 

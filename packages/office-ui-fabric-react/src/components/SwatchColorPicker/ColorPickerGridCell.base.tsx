@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  autobind,
-  customizable
-} from '../../Utilities';
+import { customizable } from '../../Utilities';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,
@@ -93,8 +90,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
  * Render the core of a color cell
  * @returns {JSX.Element} - Element representing the core of the item
  */
-  @autobind
-  private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
+  private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties
     return (
       <svg className={ this._classNames.svg } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
@@ -107,11 +103,11 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     );
   }
 
- /**
-  * Validate if the cell's color is white or not to apply whiteCell style
-  * @param inputColor - The color of the current cell
-  * @returns - Whether the cell's color is white or not.
-  */
+  /**
+   * Validate if the cell's color is white or not to apply whiteCell style
+   * @param inputColor - The color of the current cell
+   * @returns - Whether the cell's color is white or not.
+   */
   private _isWhiteCell(inputColor: string | undefined): boolean {
     return inputColor!.toLocaleLowerCase() === '#ffffff';
   }
@@ -119,8 +115,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   /**
    * Method to override the getClassNames func in a button.
    */
-  @autobind
-  private _getClassNames(
+  private _getClassNames = (
     theme: ITheme,
     className: string,
     variantClassName: string,
@@ -129,7 +124,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined): IButtonClassNames {
+    isSplit: boolean | undefined): IButtonClassNames => {
     const styles = getActionButtonStyles(theme);
     return mergeStyleSets(this._classNames as {}, {
       root: [

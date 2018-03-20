@@ -46,4 +46,14 @@ describe('Nav', () => {
     link.simulate('click');
     expect(handler.mock.calls.length).toBe(1);
   });
+
+  it('sets ARIA label on the nav element', () => {
+    const label = 'The navigation label';
+    const nav = mount<NavBase>(
+      <Nav
+        ariaLabel={ label }
+        groups={ [] }
+      />);
+    expect(nav.find('[role="navigation"]').prop('aria-label')).toEqual(label);
+  });
 });
