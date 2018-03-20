@@ -345,7 +345,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
     this.setState({
       optionsMulti: INITIAL_OPTIONS,
-      selectedOptionKey: 'C1',
+      selectedOptionKeys: [ 'C1' ],
       value: undefined
     });
 
@@ -381,7 +381,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
       // User selected/de-selected an existing option
       this.setState({
         selectedOptionKeys: this._updateSelectedOptionKeys(this.state.selectedOptionKeys || [], option),
-        value: undefined
+        valueMulti: undefined
       });
     } else if (value !== undefined) {
       // User typed a freeform option
@@ -390,7 +390,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
       this.setState({
         optionsMulti: [...this.state.optionsMulti, newOption],
         selectedOptionKeys: updatedSelectedKeys,
-        value: undefined
+        valueMulti: undefined
       });
     }
   }

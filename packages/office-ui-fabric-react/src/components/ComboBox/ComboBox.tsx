@@ -784,13 +784,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  private _removeSelectedIndex(index: number) {
-    const selectedIndices = this.state.selectedIndices && this.state.selectedIndices.filter((idx: number) => idx !== index) || [];
-    this.setState({
-      selectedIndices: selectedIndices
-    });
-  }
-
   /**
    * Focus (and select) the content of the input
    * and set the focused state
@@ -857,7 +850,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (this.state.focused) {
       this.setState({ focused: false });
-      this._submitPendingValue();
+      if (!this.props.multiSelect) {
+        this._submitPendingValue();
+      }
     }
   }
 
@@ -1413,23 +1408,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     switch (ev.which) {
       case KeyCodes.enter:
+        this._submitPendingValue();
         if (this.props.multiSelect && isOpen) {
-          // Toggle the current pending option
-          if (selectedIndices) {
-            const idxToRemove: number = selectedIndices.indexOf(index);
-            if (idxToRemove > -1) {
-              selectedIndices.splice(idxToRemove, 1);
-            } else {
-              selectedIndices.push(index);
-            }
-            this.setState({
-              selectedIndices: selectedIndices
-            });
-          }
-          return;
+          this.setState({
+            currentPendingValueValidIndex: index
+          });
         } else {
           // On enter submit the pending value
-          this._submitPendingValue();
           if ((isOpen ||
             ((!allowFreeform ||
               this.state.currentPendingValue === undefined ||
@@ -1450,7 +1435,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       case KeyCodes.tab:
         // On enter submit the pending value
-        this._submitPendingValue();
+        if (!this.props.multiSelect) {
+          this._submitPendingValue();
+        }
 
         // If we are not allowing freeform
         // or the comboBox is open, flip the open state
