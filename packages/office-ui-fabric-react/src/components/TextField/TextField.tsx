@@ -9,7 +9,8 @@ import {
   css,
   getNativeProps,
   inputProperties,
-  textAreaProperties
+  textAreaProperties,
+  createRef
 } from '../../Utilities';
 import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
@@ -55,7 +56,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
-  private _textElement: HTMLTextAreaElement;
+  private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -213,8 +214,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Sets focus on the text field
    */
   public focus() {
-    if (this._textElement) {
-      this._textElement.focus();
+    if (this._textElement.value) {
+      this._textElement.value.focus();
     }
   }
 
@@ -222,8 +223,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Selects the text field
    */
   public select() {
-    if (this._textElement) {
-      this._textElement.select();
+    if (this._textElement.value) {
+      this._textElement.value.select();
     }
   }
 
@@ -231,8 +232,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Sets the selection start of the text field to a specified value
    */
   public setSelectionStart(value: number) {
-    if (this._textElement) {
-      this._textElement.selectionStart = value;
+    if (this._textElement.value) {
+      this._textElement.value.selectionStart = value;
     }
   }
 
@@ -240,8 +241,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Sets the selection end of the text field to a specified value
    */
   public setSelectionEnd(value: number) {
-    if (this._textElement) {
-      this._textElement.selectionEnd = value;
+    if (this._textElement.value) {
+      this._textElement.value.selectionEnd = value;
     }
   }
 
@@ -249,14 +250,14 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Gets the selection start of the text field
    */
   public get selectionStart(): number {
-    return this._textElement ? this._textElement.selectionStart : -1;
+    return this._textElement.value ? this._textElement.value.selectionStart : -1;
   }
 
   /**
    * Gets the selection end of the text field
    */
   public get selectionEnd(): number {
-    return this._textElement ? this._textElement.selectionEnd : -1;
+    return this._textElement.value ? this._textElement.value.selectionEnd : -1;
   }
 
   /**
@@ -265,8 +266,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * @param end Index of the end of the selection.
    */
   public setSelectionRange(start: number, end: number) {
-    if (this._textElement) {
-      this._textElement.setSelectionRange(start, end);
+    if (this._textElement.value) {
+      this._textElement.value.setSelectionRange(start, end);
     }
   }
 
@@ -355,7 +356,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       <textarea
         id={ this._id }
         { ...textAreaProps }
-        ref={ this._resolveRef('_textElement') }
+        ref={ this._textElement }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
@@ -377,7 +378,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         type={ 'text' }
         id={ this._id }
         { ...inputProps }
-        ref={ this._resolveRef('_textElement') }
+        ref={ this._textElement }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
@@ -464,8 +465,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _adjustInputHeight(): void {
-    if (this._textElement && this.props.autoAdjustHeight && this.props.multiline) {
-      const textField = this._textElement as HTMLElement;
+    if (this._textElement.value && this.props.autoAdjustHeight && this.props.multiline) {
+      const textField = this._textElement.value;
       textField.style.height = '';
       const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';

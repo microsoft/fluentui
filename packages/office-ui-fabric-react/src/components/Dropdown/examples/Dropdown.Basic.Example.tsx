@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { autobind, BaseComponent } from '../../../Utilities';
+import { autobind, BaseComponent, createRef } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends BaseComponent<{}, {
   selectedItem?: { key: string | number | undefined },
   selectedItems: string[]
 }> {
-  private _basicDropdown: IDropdown;
+  private _basicDropdown = createRef<IDropdown>();
 
   constructor(props: {}) {
     super(props);
@@ -47,7 +47,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
           }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
-          componentRef={ this._resolveRef('_basicDropdown') }
+          componentRef={ this._basicDropdown }
         />
         <PrimaryButton
           text='Set focus'
@@ -197,8 +197,8 @@ export class DropdownBasicExample extends BaseComponent<{}, {
 
   @autobind
   private _onSetFocusButtonClicked() {
-    if (this._basicDropdown) {
-      this._basicDropdown.focus(true);
+    if (this._basicDropdown.value) {
+      this._basicDropdown.value.focus(true);
     }
   }
 

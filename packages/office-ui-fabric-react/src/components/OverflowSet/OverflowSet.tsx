@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {
   css,
-  BaseComponent
+  BaseComponent,
+  createRef
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
@@ -12,7 +13,7 @@ const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
-  private _focusZone: FocusZone;
+  private _focusZone = createRef<FocusZone>();
 
   public render() {
     const {
@@ -27,7 +28,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     return (
       <FocusZone
         { ...focusZoneProps }
-        componentRef={ this._resolveRef('_focusZone') }
+        componentRef={ this._focusZone }
         className={ mergeStyles(
           'ms-OverflowSet',
           styles.root,
@@ -44,8 +45,8 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   public focus() {
-    if (this._focusZone) {
-      this._focusZone.focus();
+    if (this._focusZone.value) {
+      this._focusZone.value.focus();
     }
   }
 

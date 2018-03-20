@@ -7,7 +7,8 @@ import {
   getParent,
   getDocument,
   getWindow,
-  isElementTabbable
+  isElementTabbable,
+  createRef
 } from '../../Utilities';
 import {
   ISelection,
@@ -57,7 +58,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     selectionMode: SelectionMode.multiple
   };
 
-  private _root: HTMLDivElement;
+  private _root = createRef<HTMLDivElement>();
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
@@ -67,8 +68,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isTouchTimeoutId: number | undefined;
 
   public componentDidMount() {
-    const win = getWindow(this._root);
-    const scrollElement = findScrollableParent(this._root);
+    const win = getWindow(this._root.value);
+    const scrollElement = findScrollableParent(this._root.value);
 
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown, keyup', this._updateModifiers, true);
@@ -81,7 +82,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return (
       <div
         className='ms-SelectionZone'
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onKeyDownCapture={ this._onKeyDownCapture }
@@ -116,13 +117,13 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       return;
     }
 
-    if (!elementContains(ev.target, this._root)) {
+    if (!elementContains(ev.target, this._root.value)) {
       return;
     }
 
     let target = ev.target as HTMLElement;
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
         this.ignoreNextFocus();
         break;
@@ -180,7 +181,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       return;
     }
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
         break;
       } else if (itemRoot) {
@@ -213,7 +214,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       return;
     }
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
         this._onToggleAllClick(ev);
         break;
@@ -262,7 +263,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _isSelectionDisabled(target: HTMLElement): boolean {
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
         return true;
       }
@@ -291,7 +292,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     if (itemRoot && onItemInvoked && selectionMode !== SelectionMode.none && !this._isInputElement(target)) {
       const index = this._getItemIndex(itemRoot);
 
-      while (target !== this._root) {
+      while (target !== this._root.value) {
         if (
           this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) ||
           this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
@@ -357,7 +358,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     if (itemRoot) {
       const index = this._getItemIndex(itemRoot);
 
-      while (target !== this._root) {
+      while (target !== this._root.value) {
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
           // For toggle elements, assuming they are rendered as buttons, they will generate a click event,
           // so we can no-op for any keydowns in this case.
@@ -504,7 +505,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _findItemRoot(target: HTMLElement): HTMLElement | undefined {
     const { selection } = this.props;
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       const indexValue = target.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
       const index = Number(indexValue);
 
@@ -515,7 +516,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       target = getParent(target) as HTMLElement;
     }
 
-    if (target === this._root) {
+    if (target === this._root.value) {
       return undefined;
     }
 
@@ -529,7 +530,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _hasAttribute(element: HTMLElement, attributeName: string): boolean {
     let isToggle = false;
 
-    while (!isToggle && element !== this._root) {
+    while (!isToggle && element !== this._root.value) {
       isToggle = element.getAttribute(attributeName) === 'true';
       element = getParent(element) as HTMLElement;
     }

@@ -6,7 +6,8 @@ import {
   BaseComponent,
   css,
   getId,
-  getRTL
+  getRTL,
+  createRef
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType } from './Panel.types';
@@ -36,7 +37,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     type: PanelType.smallFixedFar,
   };
 
-  private _content: HTMLElement;
+  private _content = createRef<HTMLDivElement>();
 
   constructor(props: IPanelProps) {
     super(props);
@@ -277,7 +278,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     );
 
     return (
-      <div ref={ this._resolveRef('_content') } className={ contentClass } >
+      <div ref={ this._content } className={ contentClass } >
         { props.children }
       </div>
     );
@@ -299,7 +300,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   private _updateFooterPosition(): void {
-    const _content = this._content;
+    const _content = this._content.value;
     if (_content) {
       const height = _content.clientHeight;
       const innerHeight = _content.scrollHeight;
