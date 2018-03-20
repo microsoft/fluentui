@@ -1,4 +1,4 @@
-import { IKeySequence, convertSequencesToKeytipID, dataKtpId, keySequencesAreEqual, ktpLayerId } from '../../Utilities';
+import { IKeySequence, convertSequencesToKeytipID, dataKtpId, keySequencesAreEqual, ktpLayerId, ktpAriaSeparatorId } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from './KeytipManager';
 
@@ -70,9 +70,8 @@ export function getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequ
     });
   }
 
-  // TODO: need comma separator? and turn into constant
   return keySequences.reduce((prevValue: string, sequence: IKeySequence, currentIndex: number): string => {
-    return prevValue + ' ' + convertSequencesToKeytipID(keySequences.slice(0, currentIndex + 1));
+    return prevValue + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences.slice(0, currentIndex + 1));
   }, describedby);
 }
 

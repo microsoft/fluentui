@@ -16,7 +16,9 @@ import {
   IKeytipTransitionKey,
   ktpFullPrefix,
   ktpSeparator,
-  ktpLayerId
+  ktpLayerId,
+  ktpAriaSeparator,
+  ktpAriaSeparatorId
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips';
 
@@ -89,6 +91,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     return (
       <Layer getStyles={ getLayerStyles }>
         <span id={ ktpLayerId } style={ { visibility: 'hidden' } }>{ content }</span>
+        <span id={ ktpAriaSeparatorId } style={ { visibility: 'hidden' } }>{ ktpAriaSeparator }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return <Keytip key={ index } { ...keytipProps } />;
         }) }
