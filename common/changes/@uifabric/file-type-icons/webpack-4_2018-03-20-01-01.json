@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/file-type-icons",
+      "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/file-type-icons",
+  "email": "dzearing@microsoft.com"
+}
