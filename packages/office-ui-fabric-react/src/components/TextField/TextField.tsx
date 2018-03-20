@@ -194,12 +194,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
             { errorMessage &&
-              <div>
+              <div aria-live='assertive'>
                 <DelayedRender>
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
                   >
-                    <span aria-live='assertive' className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
+                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>
