@@ -4,7 +4,9 @@ import {
   BaseComponent,
   customizable,
   classNamesFunction,
-  DelayedRender
+  DelayedRender,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
@@ -29,6 +31,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
       className
     } = this.props;
     const statusMessage = ariaLabel || label;
+    const nativeProps = getNativeProps(this.props, divProperties, ['size']);
 
     // SpinnerType is deprecated. If someone is still using this property, rather than putting the SpinnerType into the ISpinnerStyleProps,
     // we'll map SpinnerType to its equivalent SpinnerSize and pass that in. Once SpinnerType finally goes away we should delete this.
@@ -44,7 +47,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
     });
 
     return (
-      <div className={ classNames.root }>
+      <div { ...nativeProps } className={ classNames.root }>
         <div className={ classNames.circle } />
         {
           label && <div className={ classNames.label }>{ label }</div>
