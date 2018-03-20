@@ -36,6 +36,7 @@ export class KeytipLanguageExample extends React.Component<{}, IKeytipExampleSta
           data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
           onClick={ btnClick }
         />
+        <Keytip { ...this.keytipMap.Keytip1 } visible={ this.state.keytipVisible } />
       </div>
     );
   }

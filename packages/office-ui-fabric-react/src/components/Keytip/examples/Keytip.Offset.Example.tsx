@@ -31,6 +31,7 @@ export class KeytipOffsetExample extends React.Component<{}, IKeytipExampleState
     this.keytipMap.Keytip1 = {
       content: 'X',
       keySequences: [{ keys: ['x'] }],
+      offset: { x: 19, y: 17 }
     } as IKeytipProps;
   }
 
@@ -40,11 +41,13 @@ export class KeytipOffsetExample extends React.Component<{}, IKeytipExampleState
 
     return (
       <div>
+        <p>The offset property will align the keytip from the top-left corner of the element it's attached to</p>
         <DefaultButton
           text='Click to toggle offset keytip'
           data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
           onClick={ btnClick }
         />
+        <Keytip { ...this.keytipMap.Keytip1 } visible={ this.state.keytipVisible } />
       </div>
     );
   }
