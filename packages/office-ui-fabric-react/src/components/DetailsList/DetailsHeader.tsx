@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {
   BaseComponent,
   css,
@@ -145,7 +144,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           (selectAllVisibility === SelectAllVisibility.hidden) && ('is-selectAllHidden ' + styles.rootIsSelectAllHidden),
           (!!columnResizeDetails && isSizing) && 'is-resizingColumn'
         ) }
-        ref={ this._root }
+        componentRef={ this._root }
         onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'
         direction={ FocusZoneDirection.horizontal }

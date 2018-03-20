@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.66.0",
+      "tag": "office-ui-fabric-react_v5.66.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ff76e427cc92a203779d6c227f002ef18fce720a",
+            "comment": "Button: Added public openMenu method and cleaned up open/close functions"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "856989f01186c078741a64fb3bf7c6371b6439bd",
+            "comment": "Updates refs to use createRef object references"
+          },
+          {
+            "author": "Alicia Drummond <aliciakds88@gmail.com>",
+            "commit": "40bb5ea68260317f46edafd1759a2415658f0302",
+            "comment": "Javascript styling for Spinner"
+          },
+          {
+            "author": "petdun2519 <peterdunlop2519@gmail.com>",
+            "commit": "1d69b5db81dca397760cf22bfc2d73c297bdf666",
+            "comment": "CommandBar changed the title attribute to render as tooltip and added readonly state (visitable by keyboard, functionally disabled)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "SayaliS <sayalis@microsoft.com>",
+            "commit": "da374c8f7e9391968ca7c2aaefe85817018e37af",
+            "comment": "Add shouldInputLoseFocusOnArrowKey callback for scenario to determine if input should loose focus when arrow key is present when Tabbing is enabled on All elements or Input elements"
+          },
+          {
+            "author": "SayaliS <sayalis@microsoft.com>",
+            "commit": "da374c8f7e9391968ca7c2aaefe85817018e37af",
+            "comment": "FocusZone: adding `shouldInputLoseFocusOnArrowKey` optional callback for scenarios where user press an arrow key on an input element and want it to loose focus when FocusZone disables moving focus away in case when FocusZoneTabbableElements is set to All or none"
+          },
+          {
+            "author": "dmarcey <demarcey@microsoft.com>",
+            "commit": "73dc88723ad46cf3bdbd90a05fffb9377e9b6d75",
+            "comment": "Fixed bug with HC colors in icons in menus."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.18.3 <6.0.0` to `>=5.19.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.65.0",
       "tag": "office-ui-fabric-react_v5.65.0",
       "date": "Mon, 19 Mar 2018 10:27:55 GMT",
