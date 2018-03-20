@@ -7,7 +7,9 @@ module.exports = resources.createConfig(
   PACKAGE_NAME,
   true,
   {
-    entry: './lib/index.js',
+    entry: {
+      [PACKAGE_NAME]: './lib/index.js',
+    },
 
     externals: {
       'react': 'React',

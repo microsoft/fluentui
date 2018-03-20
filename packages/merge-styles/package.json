@@ -3,7 +3,9 @@
   "version": "5.13.0",
   "description": "Office UI Fabric style loading utilities.",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "module": "lib-es2015/index.js",
+  "typings": "lib-es2015/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
