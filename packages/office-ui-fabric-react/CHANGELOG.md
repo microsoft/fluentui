@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+
+## 5.66.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Button: Added public openMenu method and cleaned up open/close functions
+- Updates refs to use createRef object references
+- Javascript styling for Spinner
+- CommandBar changed the title attribute to render as tooltip and added readonly state (visitable by keyboard, functionally disabled)
+
+### Patches
+
+- Add shouldInputLoseFocusOnArrowKey callback for scenario to determine if input should loose focus when arrow key is present when Tabbing is enabled on All elements or Input elements
+- FocusZone: adding `shouldInputLoseFocusOnArrowKey` optional callback for scenarios where user press an arrow key on an input element and want it to loose focus when FocusZone disables moving focus away in case when FocusZoneTabbableElements is set to All or none
+- Fixed bug with HC colors in icons in menus.
 
 ## 5.65.0
 Mon, 19 Mar 2018 10:27:55 GMT

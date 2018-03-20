@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+
+## 5.19.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Make helper functions getWindow and getDocument accept `null`.
 
 ## 5.18.3
 Mon, 19 Mar 2018 10:27:55 GMT
