@@ -8,7 +8,8 @@ import {
   KeyCodes,
   customizable,
   calculatePrecision,
-  precisionRound
+  precisionRound,
+  createRef
 } from '../../Utilities';
 import {
   ISpinButton,
@@ -62,7 +63,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
-  private _input: HTMLInputElement;
+  private _input = createRef<HTMLInputElement>();
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
@@ -205,7 +206,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             aria-valuemin={ min && String(min) }
             aria-valuemax={ max && String(max) }
             onBlur={ this._onBlur }
-            ref={ this._resolveRef('_input') }
+            ref={ this._input }
             onFocus={ this._onFocus }
             onKeyDown={ this._handleKeyDown }
             onKeyUp={ this._handleKeyUp }
@@ -259,17 +260,22 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   public focus(): void {
-    if (this._input) {
-      this._input.focus();
+    if (this._input.value) {
+      this._input.value.focus();
     }
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
+    // We can't set focus on a non-existing element
+    if (!this._input.value) {
+      return;
+    }
+
     if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
 
-    this._input.select();
+    this._input.value.select();
 
     this.setState({ isFocused: true });
 

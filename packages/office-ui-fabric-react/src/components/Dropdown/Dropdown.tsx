@@ -19,7 +19,8 @@ import {
   getNativeProps,
   divProperties,
   getFirstFocusable,
-  getLastFocusable
+  getLastFocusable,
+  createRef
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
@@ -46,11 +47,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private static Option = 'option';
 
-  private _host: HTMLDivElement;
-  private _focusZone: FocusZone;
-  private _dropDown: HTMLDivElement;
-  // tslint:disable-next-line:no-unused-variable
-  private _dropdownLabel: HTMLElement;
+  private _host = createRef<HTMLDivElement>();
+  private _focusZone = createRef<FocusZone>();
+  private _dropDown = createRef<HTMLDivElement>();
+  private _dropdownLabel = createRef<Label>();
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
@@ -111,7 +111,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
-      this._dropDown.focus();
+      if (this._dropDown.value) {
+        this._dropDown.value.focus();
+      }
 
       if (this.props.onDismiss) {
         this.props.onDismiss();
@@ -150,11 +152,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._dropdownLabel } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }
-          ref={ this._resolveRef('_dropDown') }
+          ref={ this._dropDown }
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
@@ -219,8 +221,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public focus(shouldOpenOnFocus?: boolean) {
-    if (this._dropDown && this._dropDown.tabIndex !== -1) {
-      this._dropDown.focus();
+    if (this._dropDown.value && this._dropDown.value.tabIndex !== -1) {
+      this._dropDown.value.focus();
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
@@ -370,11 +372,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
-            target={ this._dropDown }
+            target={ this._dropDown.value }
             onDismiss={ this._onDismiss }
             onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
-            calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
+            calloutWidth={ dropdownWidth || (this._dropDown.value ? this._dropDown.value.clientWidth : 0) }
           >
             { onRenderList(props, this._onRenderList) }
           </Callout>
@@ -402,11 +404,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       <div
         className={ styles.listWrapper }
         onKeyDown={ this._onZoneKeyDown }
-        ref={ this._resolveRef('_host') }
+        ref={ this._host }
         tabIndex={ 0 }
       >
         <FocusZone
-          ref={ this._resolveRef('_focusZone') }
+          ref={ this._focusZone }
           direction={ FocusZoneDirection.vertical }
           defaultActiveElement={ selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined }
           id={ id + '-list' }
@@ -545,7 +547,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _onPositioned = (): void => {
-    this._focusZone.focus();
+    if (this._focusZone.value) {
+      this._focusZone.value.focus();
+    }
   }
 
   private _onItemClick = (item: IDropdownOption): () => void => {
@@ -606,16 +610,21 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
      * Edge and IE expose a setActive() function for focusable divs that
      * sets the page focus but does not scroll the parent element.
      */
-    if ((this._host as any).setActive) {
-      (this._host as any).setActive();
-    } else {
-      this._host.focus();
+    if (this._host.value) {
+      if ((this._host.value as any).setActive) {
+        (this._host.value as any).setActive();
+      } else {
+        this._host.value.focus();
+      }
     }
   }
 
   private _onDismiss = (): void => {
     this.setState({ isOpen: false });
-    this._dropDown.focus();
+
+    if (this._dropDown.value) {
+      this._dropDown.value.focus();
+    }
   }
 
   // Get all selected indexes for multi-select mode
@@ -786,7 +795,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: false });
         } else {
-          elementToFocus = getLastFocusable(this._host, (this._host.lastChild as HTMLElement), true);
+          if (this._host.value) {
+            elementToFocus = getLastFocusable(this._host.value, (this._host.value.lastChild as HTMLElement), true);
+          }
         }
         break;
 
@@ -799,7 +810,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        elementToFocus = getFirstFocusable(this._host, (this._host.firstChild as HTMLElement), true);
+        if (this._host.value) {
+          elementToFocus = getFirstFocusable(this._host.value, (this._host.value.firstChild as HTMLElement), true);
+        }
         break;
 
       case KeyCodes.escape:

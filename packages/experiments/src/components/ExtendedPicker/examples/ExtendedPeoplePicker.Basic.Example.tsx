@@ -142,8 +142,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   @autobind
   private _onExpandItem(item: IExtendedPersonaProps): void {
-    // tslint:disable-next-line:no-any
-    (this._picker.selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+    if (this._picker.selectedItemsList.value) {
+      // tslint:disable-next-line:no-any
+      (this._picker.selectedItemsList.value as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+    }
   }
 
   @autobind
@@ -199,9 +201,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   @autobind
   private _shouldShowForceResolve(): boolean {
     return Boolean(
-      this._picker.floatingPicker &&
-      this._validateInput(this._picker.floatingPicker.inputText) &&
-      this._picker.floatingPicker.suggestions.length === 0
+      this._picker.floatingPicker.value &&
+      this._validateInput(this._picker.floatingPicker.value.inputText) &&
+      this._picker.floatingPicker.value.suggestions.length === 0
     );
   }
 

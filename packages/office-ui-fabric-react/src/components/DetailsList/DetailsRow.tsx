@@ -76,7 +76,7 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   private _root: HTMLElement | undefined;
-  private _cellMeasurer: HTMLElement;
+  private _cellMeasurer = createRef<HTMLSpanElement>();
   private _focusZone = createRef<IFocusZone>();
   private _droppingClassNames: string;
   private _hasMounted: boolean;
@@ -132,8 +132,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
     }
 
-    if (columnMeasureInfo && columnMeasureInfo.index >= 0) {
-      const newWidth = this._cellMeasurer.getBoundingClientRect().width;
+    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.value) {
+      const newWidth = this._cellMeasurer.value.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
 
@@ -264,7 +264,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           <span
             role='presentation'
             className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
-            ref={ this._resolveRef('_cellMeasurer') }
+            ref={ this._cellMeasurer }
           >
             <RowFields
               columns={ [columnMeasureInfo.column] }

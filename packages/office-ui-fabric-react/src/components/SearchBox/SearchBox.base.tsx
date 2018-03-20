@@ -5,7 +5,8 @@ import {
   getId,
   KeyCodes,
   customizable,
-  classNamesFunction
+  classNamesFunction,
+  createRef
 } from '../../Utilities';
 
 import { IconButton } from '../../Button';
@@ -21,8 +22,8 @@ export interface ISearchBoxState {
 
 @customizable('SearchBox', ['theme'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-  private _rootElement: HTMLElement;
-  private _inputElement: HTMLInputElement;
+  private _rootElement = createRef<HTMLDivElement>();
+  private _inputElement = createRef<HTMLInputElement>();
   private _latestValue: string;
 
   public constructor(props: ISearchBoxProps) {
@@ -76,7 +77,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
     return (
       <div
-        ref={ this._resolveRef('_rootElement') }
+        ref={ this._rootElement }
         className={ classNames.root }
         onFocusCapture={ this._onFocusCapture }
       >
@@ -93,7 +94,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           value={ value }
           disabled={ this.props.disabled }
           aria-label={ ariaLabel ? ariaLabel : placeholder }
-          ref={ this._resolveRef('_inputElement') }
+          ref={ this._inputElement }
         />
         { value!.length > 0 &&
           <div className={ classNames.clearButton }>
@@ -113,8 +114,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
    * Sets focus to the search box input field
    */
   public focus() {
-    if (this._inputElement) {
-      this._inputElement.focus();
+    if (this._inputElement.value) {
+      this._inputElement.value.focus();
     }
   }
 
@@ -129,7 +130,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       ev.stopPropagation();
       ev.preventDefault();
 
-      this._inputElement.focus();
+      this.focus();
     }
   }
 
@@ -138,7 +139,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       hasFocus: true
     });
 
-    this._events.on(this._rootElement, 'blur', this._onBlur, true);
+    this._events.on(this._rootElement.value, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
@@ -187,8 +188,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     ev.stopPropagation();
   }
 
-  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
-    this._events.off(this._rootElement, 'blur');
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+    this._events.off(this._rootElement.value, 'blur');
     this.setState({
       hasFocus: false
     });
