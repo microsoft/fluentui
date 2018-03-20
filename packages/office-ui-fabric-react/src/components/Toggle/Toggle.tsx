@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   getId,
   inputProperties,
-  getNativeProps
+  getNativeProps,
+  createRef
 } from '../../Utilities';
 import {
   IToggleProps,
@@ -25,7 +25,7 @@ export interface IToggleState {
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
-  private _toggleButton: HTMLButtonElement;
+  private _toggleButton = createRef<HTMLButtonElement>();
 
   constructor(props: IToggleProps) {
     super(props);
@@ -98,12 +98,11 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             { (keytipAttributes: any): JSX.Element => (
               <button
                 { ...toggleNativeProps }
-                { ...keytipAttributes }
                 className={ classNames.pill }
                 disabled={ disabled }
                 id={ this._id }
                 type='button'
-                ref={ this._resolveRef('_toggleButton') }
+                ref={ this._toggleButton }
                 aria-disabled={ disabled }
                 aria-pressed={ isChecked }
                 aria-label={ ariaLabel ? ariaLabel : label }
@@ -124,13 +123,12 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public focus() {
-    if (this._toggleButton) {
-      this._toggleButton.focus();
+    if (this._toggleButton.value) {
+      this._toggleButton.value.focus();
     }
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
     const { disabled, checked, onChanged, onClick } = this.props;
     const { isChecked } = this.state;
 

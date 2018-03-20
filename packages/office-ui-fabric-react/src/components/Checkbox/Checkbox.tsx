@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   getId,
   createRef,
   customizable
@@ -144,8 +143,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @autobind
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement>): void {
+  private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onFocus) {
@@ -153,8 +151,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @autobind
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onBlur) {
@@ -162,8 +159,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @autobind
-  private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
+  private _onClick = (ev: React.FormEvent<HTMLButtonElement>): void => {
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
     ev.preventDefault();
@@ -180,8 +176,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @autobind
-  private _onRenderLabel(props: ICheckboxProps) {
+  private _onRenderLabel = (props: ICheckboxProps): JSX.Element | null => {
     const { label } = props;
 
     return label ? (

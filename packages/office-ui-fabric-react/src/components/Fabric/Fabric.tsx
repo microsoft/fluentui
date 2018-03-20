@@ -4,7 +4,8 @@ import {
   KeyCodes,
   customizable,
   getNativeProps,
-  divProperties
+  divProperties,
+  createRef
 } from '../../Utilities';
 import {
   ITheme
@@ -43,7 +44,7 @@ if (typeof (document) === 'object' && document.documentElement && !document.docu
 @customizable('Fabric', ['theme'])
 export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
   // tslint:disable-next-line:no-unused-variable
-  private _root: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
 
   constructor(props: IFabricProps) {
     super(props);
@@ -73,7 +74,7 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
       <div
         { ...divProps }
         className={ classNames.root }
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
       />
     );
   }

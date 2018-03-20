@@ -3,7 +3,6 @@ import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css
 } from '../../Utilities';
 import * as stylesImport from './DocumentCard.scss';
@@ -62,20 +61,17 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     );
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
     this._onAction(ev);
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       this._onAction(ev);
     }
   }
 
-  @autobind
-  private _onAction(ev: React.SyntheticEvent<HTMLElement>): void {
+  private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
     const { onClick, onClickHref } = this.props;
 
     if (onClick) {

@@ -6,10 +6,17 @@ import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './Shimmer.Example.scss';
+import {
+  Shimmer,
+} from 'experiments/lib/Shimmer';
+import { IColumn, DetailsList, buildColumns } from 'office-ui-fabric-react';
+
+const PAGING_DELAY = 3000;
+const ITEMS_COUNT = 1000;
+const PAGING_SIZE = 10;
 
 export interface IItem {
   [index: string]: string | number;
@@ -24,7 +31,38 @@ export interface IItem {
   height: number;
 }
 
-let _items: IItem[];
+export interface IShimmerElem {
+  [index: string]: HTMLElement;
+}
+
+// tslint:disable-next-line:no-any
+let _items: any[];
+
+const fileIcons: { name: string; }[] = [
+  { 'name': 'accdb' },
+  { 'name': 'csv' },
+  { 'name': 'docx' },
+  { 'name': 'dotx' },
+  { 'name': 'mpp' },
+  { 'name': 'mpt' },
+  { 'name': 'odp' },
+  { 'name': 'ods' },
+  { 'name': 'odt' },
+  { 'name': 'one' },
+  { 'name': 'onepkg' },
+  { 'name': 'onetoc' },
+  { 'name': 'potx' },
+  { 'name': 'ppsx' },
+  { 'name': 'pptx' },
+  { 'name': 'pub' },
+  { 'name': 'vsdx' },
+  { 'name': 'vssx' },
+  { 'name': 'vstx' },
+  { 'name': 'xls' },
+  { 'name': 'xlsx' },
+  { 'name': 'xltx' },
+  { 'name': 'xsn' }
+];
 
 export interface IShimmerApplicationExampleState {
   items?: IItem[];
@@ -32,14 +70,21 @@ export interface IShimmerApplicationExampleState {
 }
 
 export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
+  private _isFetchingItems: boolean;
 
   constructor(props: {}) {
     super(props);
 
-    _items = _items || createListItems(10);
+    if (!_items) {
+      _items = createListItems(ITEMS_COUNT);
+      _items.map((item: IItem) => {
+        const randomFileType = this._randomFileIcon();
+        item.thumbnail = randomFileType.url;
+      });
+    }
 
     this.state = {
-      items: _items,
+      items: _items.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)),
       columns: _buildColumns()
     };
   }
@@ -48,16 +93,45 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     const { items, columns } = this.state;
 
     return (
-      <div>
+      <div className='shimmerExample-application'>
         <p> Hover over location of a row item to see the card </p>
         <DetailsList
-          setKey='hoverSet'
+          setKey='items'
           items={ items! }
           columns={ columns }
           onRenderItemColumn={ this._onRenderItemColumn }
+          onRenderMissingItem={ this._onRenderMissingItem }
         />
       </div>
     );
+  }
+
+  @autobind
+  private _onRenderMissingItem(index: number): JSX.Element {
+    this._onDataMiss(index as number);
+    return (
+      <Shimmer />
+    );
+  }
+
+  private _onDataMiss(index: number): void {
+    index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
+
+    if (!this._isFetchingItems) {
+
+      this._isFetchingItems = true;
+
+      setTimeout(() => {
+        this._isFetchingItems = false;
+        // tslint:disable-next-line:no-any
+        const itemsCopy = ([] as any[]).concat(this.state.items);
+        itemsCopy.splice.apply(itemsCopy, [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE)));
+
+        this.setState({
+          items: itemsCopy
+        });
+      }, PAGING_DELAY);
+    }
   }
 
   @autobind
@@ -75,6 +149,14 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             { item.key }
           </div>
         </HoverCard>
+      );
+    }
+
+    if (column.key === 'thumbnail') {
+      return (
+        <img
+          src={ item.thumbnail }
+        />
       );
     }
 
@@ -106,8 +188,27 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       </div>
     );
   }
+
+  private _randomFileIcon(): { docType: string; url: string; } {
+    const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+    return {
+      docType,
+      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+    };
+  }
 }
 
 function _buildColumns(): IColumn[] {
-  return buildColumns(_items).filter((column: IColumn) => column.name === 'location' || column.name === 'key');
+  const columns: IColumn[] = buildColumns(_items);
+
+  columns.forEach((column: IColumn) => {
+    if (column.key === 'thumbnail') {
+      column.name = 'FileType';
+      column.minWidth = 16;
+      column.maxWidth = 16;
+      column.isIconOnly = true;
+      column.iconName = 'Page';
+    }
+  });
+  return columns;
 }

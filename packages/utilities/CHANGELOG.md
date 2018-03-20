@@ -1,6 +1,27 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 13 Mar 2018 10:17:37 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+
+## 5.19.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Make helper functions getWindow and getDocument accept `null`.
+
+## 5.18.3
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.18.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Revert focus changes
 
 ## 5.18.1
 Tue, 13 Mar 2018 10:17:37 GMT

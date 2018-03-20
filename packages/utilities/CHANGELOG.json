@@ -2,6 +2,48 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.19.0",
+      "tag": "@uifabric/utilities_v5.19.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "856989f01186c078741a64fb3bf7c6371b6439bd",
+            "comment": "Make helper functions getWindow and getDocument accept `null`."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.3",
+      "tag": "@uifabric/utilities_v5.18.3",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.2",
+      "tag": "@uifabric/utilities_v5.18.2",
+      "date": "Thu, 15 Mar 2018 02:42:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3cd823b02aadb1e66f9b6221d4d32bafbe895386",
+            "comment": "Revert focus changes"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.1",
       "tag": "@uifabric/utilities_v5.18.1",
       "date": "Tue, 13 Mar 2018 10:17:37 GMT",
