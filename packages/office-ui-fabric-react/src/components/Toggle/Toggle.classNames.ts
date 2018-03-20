@@ -145,7 +145,8 @@ export const getClassNames = memoizeFunction((
         checked && [
           {
             backgroundColor: pillCheckedDisabledBackground,
-            borderColor: 'transparent'
+            borderColor: 'transparent',
+            justifyContent: 'flex-end'
           },
           styles.pillCheckedDisabled
         ],
