@@ -7,7 +7,6 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './FocusTrapZone.Box.Example.scss';
 
 interface IFocusTrapComponentProps {
@@ -53,13 +52,11 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
     return contents;
   }
 
-  @autobind
-  private _onStringButtonClicked() {
+  private _onStringButtonClicked = (): void => {
     console.log(this.props.name);
   }
 
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
+  private _onFocusTrapZoneToggleChanged = (isChecked: boolean): void => {
     this.props.setIsActive(this.props.name, isChecked);
   }
 
@@ -100,14 +97,12 @@ export default class FocusTrapZoneNestedExample extends React.Component<{}, IFoc
     );
   }
 
-  @autobind
-  private _setIsActive(name: string, isActive: boolean): void {
+  private _setIsActive = (name: string, isActive: boolean): void => {
     this.state.stateMap[name] = isActive;
     this.forceUpdate();
   }
 
-  @autobind
-  private _randomize(): void {
+  private _randomize = (): void => {
     NAMES.forEach((name) => {
       this.state.stateMap[name] = Math.random() >= .5;
     });

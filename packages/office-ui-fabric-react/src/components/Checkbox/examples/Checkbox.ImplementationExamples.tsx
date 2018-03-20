@@ -8,7 +8,6 @@ import {
   Persona,
   PersonaSize
 } from 'office-ui-fabric-react/lib/Persona';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
@@ -96,8 +95,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     console.log(`The option has been changed to ${isChecked}.`);
   }
 
-  @autobind
-  private _onControlledCheckboxChange(ev: React.FormEvent<HTMLElement>, checked: boolean): void {
+  private _onControlledCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isChecked: checked! });
   }
 
