@@ -5,6 +5,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { ISpinButtonClassNames } from './SpinButton.classNames';
 import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
+import { IKeytipProps } from '../../Keytip';
 
 export interface ISpinButton {
   /**
@@ -199,6 +200,11 @@ export interface ISpinButtonProps {
   * The total size of the parent set (if in a set) for aria-setsize.
   */
   ariaSetSize?: number;
+
+  /**
+   * Optional keytip for this spin button
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface ISpinButtonStyles {

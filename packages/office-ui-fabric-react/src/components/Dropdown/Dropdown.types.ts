@@ -2,6 +2,7 @@ import { IRenderFunction } from '../../Utilities';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { IKeytipProps } from '../../Keytip';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -77,6 +78,11 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
    * @deprecated
    */
   isDisabled?: boolean;
+
+  /**
+   * Optional keytip for this dropdown
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface IDropdownOption extends ISelectableOption {

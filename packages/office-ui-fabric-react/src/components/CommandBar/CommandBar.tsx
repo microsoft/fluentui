@@ -199,10 +199,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     if (isLink) {
       command = (
         <KeytipHost keytipProps={ item.keytipProps }>
-          { (keytip: {}): JSX.Element => (
+          { (keytipAttributes: any): JSX.Element => (
             <button
               { ...getNativeProps(item, buttonProperties) }
-              { ...keytip }
+              { ...keytipAttributes }
               id={ this._id + item.key }
               className={ className }
               onClick={ this._onItemClick(item) }

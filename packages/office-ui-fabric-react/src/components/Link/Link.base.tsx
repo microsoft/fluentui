@@ -14,6 +14,7 @@ import {
   ILinkStyleProps,
   ILinkStyles
 } from './Link.types';
+import { KeytipHost } from '../../Keytip';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
@@ -22,7 +23,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link: HTMLElement;
 
   public render() {
-    const { disabled, children, className, href, theme, getStyles } = this.props;
+    const { disabled, children, className, href, theme, getStyles, keytipProps } = this.props;
 
     const classNames = getClassNames(getStyles!, {
       className,
@@ -32,28 +33,38 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     });
 
     const anchorElement: JSX.Element = (
-      <a
-        { ...getNativeProps(this.props, anchorProperties) }
-        className={ classNames.root }
-        onClick={ this._onClick }
-        ref={ this._resolveRef('_link') }
-        target={ this.props.target }
-        aria-disabled={ disabled }
-      >
-        { children }
-      </a>
+      <KeytipHost keytipProps={ keytipProps }>
+        { (keytipAttributes: any): JSX.Element => (
+          <a
+            { ...keytipAttributes }
+            { ...getNativeProps(this.props, anchorProperties) }
+            className={ classNames.root }
+            onClick={ this._onClick }
+            ref={ this._resolveRef('_link') }
+            target={ this.props.target }
+            aria-disabled={ disabled }
+          >
+            { children }
+          </a>
+        ) }
+      </KeytipHost>
     );
 
     const buttonElement: JSX.Element = (
-      <button
-        { ...getNativeProps(this.props, buttonProperties) }
-        className={ classNames.root }
-        onClick={ this._onClick }
-        ref={ this._resolveRef('_link') }
-        aria-disabled={ disabled }
-      >
-        { children }
-      </button>
+      <KeytipHost keytipProps={ keytipProps }>
+        { (keytipAttributes: any): JSX.Element => (
+          <button
+            { ...keytipAttributes }
+            { ...getNativeProps(this.props, buttonProperties) }
+            className={ classNames.root }
+            onClick={ this._onClick }
+            ref={ this._resolveRef('_link') }
+            aria-disabled={ disabled }
+          >
+            { children }
+          </button>
+        ) }
+      </KeytipHost>
     );
 
     return href ? anchorElement : buttonElement;

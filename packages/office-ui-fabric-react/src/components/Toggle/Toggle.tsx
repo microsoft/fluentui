@@ -15,6 +15,7 @@ import {
   customizable
 } from '../../Utilities';
 import { getClassNames } from './Toggle.classNames';
+import { KeytipHost } from '../../Keytip';
 
 export interface IToggleState {
   isChecked: boolean;
@@ -70,8 +71,9 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
       offAriaLabel,
       offText,
       onAriaLabel,
-      onText
-      } = this.props;
+      onText,
+      keytipProps
+    } = this.props;
     const { isChecked } = this.state;
     const stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
@@ -92,22 +94,27 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         ) }
 
         <div className={ classNames.container } >
-          <button
-            { ...toggleNativeProps }
-            className={ classNames.pill }
-            disabled={ disabled }
-            id={ this._id }
-            type='button'
-            ref={ this._resolveRef('_toggleButton') }
-            aria-disabled={ disabled }
-            aria-pressed={ isChecked }
-            aria-label={ ariaLabel ? ariaLabel : label }
-            data-is-focusable={ true }
-            onChange={ this._noop }
-            onClick={ this._onClick }
-          >
-            <div className={ classNames.thumb } />
-          </button>
+          <KeytipHost keytipProps={ keytipProps }>
+            { (keytipAttributes: any): JSX.Element => (
+              <button
+                { ...toggleNativeProps }
+                { ...keytipAttributes }
+                className={ classNames.pill }
+                disabled={ disabled }
+                id={ this._id }
+                type='button'
+                ref={ this._resolveRef('_toggleButton') }
+                aria-disabled={ disabled }
+                aria-pressed={ isChecked }
+                aria-label={ ariaLabel ? ariaLabel : label }
+                data-is-focusable={ true }
+                onChange={ this._noop }
+                onClick={ this._onClick }
+              >
+                <div className={ classNames.thumb } />
+              </button>
+            ) }
+          </KeytipHost>
           { stateText && (
             <Label htmlFor={ this._id } className={ classNames.text }>{ stateText }</Label>
           ) }

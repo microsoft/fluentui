@@ -14,6 +14,12 @@ import { DefaultButton, ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ComboBox } from 'office-ui-fabric-react/lib/ComboBox';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export interface IKeytipLayerBasicExampleState {
   showModal: boolean;
@@ -67,16 +73,29 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
                 text='Test Button 1'
                 onClick={ () => { alert('Button 1'); } }
               />
-              <DefaultButton
-                keytipProps={ this.keytipMap.Button2Pivot1Keytip }
-                text='Test Button 2'
-                onClick={ () => { alert('Button 2'); } }
+              <Checkbox
+                keytipProps={ this.keytipMap.Checkbox1Pivot1Keytip }
+                label={ 'Check Me' }
               />
-              <DefaultButton
-                keytipProps={ this.keytipMap.Button3Pivot1Keytip }
-                text='Test Button 3'
-                onClick={ () => { alert('Button 3'); } }
+              <ComboBox
+                options={ [
+                  { key: 'A', text: 'Option 1' },
+                  { key: 'B', text: 'Option 2' },
+                  { key: 'C', text: 'Option 3' },
+                ] }
+                keytipProps={ this.keytipMap.ComboBox1Pivot1Keytip }
               />
+              <Dropdown
+                keytipProps={ this.keytipMap.Dropdown1Pivot1Keytip }
+                options={ [
+                  { key: 'A', text: 'Option 1' },
+                  { key: 'B', text: 'Option 2' },
+                  { key: 'C', text: 'Option 3' },
+                ] }
+              />
+              <Link keytipProps={ this.keytipMap.Link1Pivot1Keytip } href={ 'http://www.bing.com' }>This is a link</Link>
+              <SpinButton label={ 'Spin Button' } keytipProps={ this.keytipMap.SpinButton1Pivot1Keytip } />
+              <Toggle keytipProps={ this.keytipMap.Toggle1Pivot1Keytip } />
               <DefaultButton
                 text='Test Button 4'
                 onClick={ () => { alert('Button 4'); } }

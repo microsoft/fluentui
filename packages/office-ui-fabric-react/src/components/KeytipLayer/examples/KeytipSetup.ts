@@ -21,7 +21,7 @@ export const keytipConfig: IKeytipConfig = {
           }
         },
         {
-          id: 'Button2Pivot1Keytip',
+          id: 'Checkbox1Pivot1Keytip',
           sequence: { keys: ['1', 'a'] },
           content: '1A',
           optionalProps: {
@@ -29,13 +29,51 @@ export const keytipConfig: IKeytipConfig = {
           }
         },
         {
-          id: 'Button3Pivot1Keytip',
+          id: 'ComboBox1Pivot1Keytip',
           sequence: { keys: ['m'] },
           content: 'M',
           optionalProps: {
+            onExecute: (el: HTMLElement) => {
+              el.focus();
+            }
+          }
+        },
+        {
+          id: 'Dropdown1Pivot1Keytip',
+          sequence: { keys: ['x'] },
+          content: 'X',
+          optionalProps: {
+            onExecute: (el: HTMLElement) => {
+              el.focus();
+            }
+          }
+        },
+        {
+          id: 'Link1Pivot1Keytip',
+          sequence: { keys: ['d'] },
+          content: 'D',
+          optionalProps: {
             onExecute: btnExecute
           }
-        }
+        },
+        {
+          id: 'SpinButton1Pivot1Keytip',
+          sequence: { keys: ['r', 'x'] },
+          content: 'RX',
+          optionalProps: {
+            onExecute: (el: HTMLElement) => {
+              el.focus();
+            }
+          }
+        },
+        {
+          id: 'Toggle1Pivot1Keytip',
+          sequence: { keys: ['i'] },
+          content: 'I',
+          optionalProps: {
+            onExecute: btnExecute
+          }
+        },
       ]
     },
     {

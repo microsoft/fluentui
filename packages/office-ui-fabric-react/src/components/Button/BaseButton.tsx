@@ -227,8 +227,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     const Content = (
       <KeytipHost keytipProps={ keytipProps }>
-        { (keytip: {}): JSX.Element => (
-          <Tag { ...buttonProps } { ...keytip }>
+        { (keytipAttributes: any): JSX.Element => (
+          <Tag { ...buttonProps } { ...keytipAttributes }>
             <div className={ this._classNames.flexContainer } >
               { onRenderIcon(props, this._onRenderIcon) }
               { this._onRenderTextContents() }

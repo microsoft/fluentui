@@ -480,11 +480,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
     return (
       <KeytipHost keytipProps={ item.keytipProps }>
-        { (keytip: {}): JSX.Element => (
+        { (keytipAttributes: any): JSX.Element => (
           <div>
             <a
               { ...getNativeProps(item, anchorProperties) }
-              { ...keytip }
+              { ...keytipAttributes }
               href={ item.href }
               target={ item.target }
               rel={ anchorRel }
@@ -567,11 +567,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <KeytipHost keytipProps={ item.keytipProps }>
-        { (keytip: {}): JSX.Element => (
+        { (keytipAttributes: any): JSX.Element => (
           <button
             { ...buttonNativeProperties }
             { ...itemButtonProperties }
-            { ...keytip }
+            { ...keytipAttributes }
           >
             <ChildrenRenderer
               item={ item }

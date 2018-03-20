@@ -30,6 +30,7 @@ import {
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
+import { KeytipHost } from '../../Keytip';
 
 export interface IComboBoxState {
 
@@ -272,7 +273,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       isButtonAriaHidden = true,
       styles: customStyles,
       theme,
-      title
+      title,
+      keytipProps
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -302,6 +304,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         !!hasErrorMessage
       );
 
+    const describedBy = id + '-option';
+
     return (
       <div { ...divProps } ref={ this._resolveRef('_root') } className={ this._classNames.container }>
         { label && (
@@ -312,36 +316,41 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           id={ id + 'wrapper' }
           className={ this._classNames.root }
         >
-          <Autofill
-            data-is-interactable={ !disabled }
-            ref={ this._resolveRef('_comboBox') }
-            id={ id + '-input' }
-            className={ this._classNames.input }
-            type='text'
-            onFocus={ this._select }
-            onBlur={ this._onBlur }
-            onKeyDown={ this._onInputKeyDown }
-            onKeyUp={ this._onInputKeyUp }
-            onClick={ this._onAutofillClick }
-            onInputValueChange={ this._onInputChange }
-            aria-expanded={ isOpen }
-            aria-autocomplete={ this._getAriaAutoCompleteValue() }
-            role='combobox'
-            aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
-            readOnly={ disabled || !allowFreeform }
-            aria-labelledby={ (label && (id + '-label')) }
-            aria-label={ ((ariaLabel && !label) && ariaLabel) }
-            aria-describedby={ (id + '-option') }
-            aria-activedescendant={ this._getAriaActiveDescentValue() }
-            aria-disabled={ disabled }
-            aria-owns={ (id + '-list') }
-            spellCheck={ false }
-            defaultVisibleValue={ this._currentVisibleValue }
-            suggestedDisplayValue={ suggestedDisplayValue }
-            updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
-            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
-            title={ title }
-          />
+          <KeytipHost keytipProps={ keytipProps }>
+            { (keytipAttributes: any): JSX.Element => (
+              <Autofill
+                { ...keytipAttributes }
+                data-is-interactable={ !disabled }
+                ref={ this._resolveRef('_comboBox') }
+                id={ id + '-input' }
+                className={ this._classNames.input }
+                type='text'
+                onFocus={ this._select }
+                onBlur={ this._onBlur }
+                onKeyDown={ this._onInputKeyDown }
+                onKeyUp={ this._onInputKeyUp }
+                onClick={ this._onAutofillClick }
+                onInputValueChange={ this._onInputChange }
+                aria-expanded={ isOpen }
+                aria-autocomplete={ this._getAriaAutoCompleteValue() }
+                role='combobox'
+                aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
+                readOnly={ disabled || !allowFreeform }
+                aria-labelledby={ (label && (id + '-label')) }
+                aria-label={ ((ariaLabel && !label) && ariaLabel) }
+                aria-describedby={ keytipAttributes['aria-describedby'] ? describedBy + ' ' + keytipAttributes['aria-describedby'] : describedBy }
+                aria-activedescendant={ this._getAriaActiveDescentValue() }
+                aria-disabled={ disabled }
+                aria-owns={ (id + '-list') }
+                spellCheck={ false }
+                defaultVisibleValue={ this._currentVisibleValue }
+                suggestedDisplayValue={ suggestedDisplayValue }
+                updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
+                shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
+                title={ title }
+              />
+            ) }
+          </KeytipHost>
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
             styles={ this._getCaretButtonStyles() }
@@ -355,7 +364,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             checked={ isOpen }
           />
         </div>
-
         { isOpen && (
           (onRenderContainer as any)({
             ...this.props,
