@@ -3,8 +3,7 @@ import {
   ITheme,
   concatStyleSets,
   getFocusStyle,
-  HighContrastSelector,
-  IRawStyle
+  HighContrastSelector
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
