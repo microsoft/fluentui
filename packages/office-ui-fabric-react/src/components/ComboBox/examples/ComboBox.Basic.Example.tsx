@@ -392,7 +392,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         selectedOptionKeys: updatedSelectedKeys,
         value: undefined
       });
-    }    
+    }
   }
 
   private _updateSelectedOptionKeys(selectedKeys: string[], option: IComboBoxOption): string[] {
