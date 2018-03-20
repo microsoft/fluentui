@@ -10,7 +10,7 @@ import {
   createRef
 } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -82,7 +82,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     collapseAllVisibility: CollapseAllVisibility.visible
   };
 
-  private _root = createRef<FocusZone>();
+  private _root = createRef<IFocusZone>();
 
   private _id: string;
 
@@ -102,8 +102,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   public componentDidMount() {
     const { selection } = this.props;
-    const rootElement = this._root.value;
-
+    const focusZone = this._root.value;
+    const rootElement = ReactDOM.findDOMNode(focusZone as any);
     if (!rootElement) {
       return;
     }
@@ -145,7 +145,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           (selectAllVisibility === SelectAllVisibility.hidden) && ('is-selectAllHidden ' + styles.rootIsSelectAllHidden),
           (!!columnResizeDetails && isSizing) && 'is-resizingColumn'
         ) }
-        ref={ this._root }
+        componentRef={ this._root }
         onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'
         direction={ FocusZoneDirection.horizontal }
