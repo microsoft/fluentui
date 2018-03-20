@@ -142,15 +142,13 @@ export class KeytipManager {
    */
   public showKeytips(ids: string[]): void {
     // Set visible property in this.keytips
-    // TODO: would this be better as just a for-loop
-    this.keytips = this.keytips.map((keytip: IKeytipProps) => {
+    for (const keytip of this.keytips) {
       if (ids.indexOf(convertSequencesToKeytipID(keytip.keySequences)) >= 0) {
         keytip.visible = true;
       } else {
         keytip.visible = false;
       }
-      return keytip;
-    });
+    }
 
     // Set in layer
     this._layer && this._layer.setKeytips(this.keytips);

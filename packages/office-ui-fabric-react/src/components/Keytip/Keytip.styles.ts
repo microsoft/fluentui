@@ -12,7 +12,8 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
         opacity: 0.5,
       },
       !visible && {
-        visibility: 'hidden'
+        visibility: 'hidden',
+        opacity: 0
       }
     ],
     root: [{

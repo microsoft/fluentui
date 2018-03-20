@@ -21,6 +21,7 @@ import {
   ktpAriaSeparatorId
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips';
+import { hiddenContentStyle } from '../../Styling';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -87,11 +88,16 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       keytips
     } = this.state;
 
-    // TODO: put span styles in KeytipLayer.styles
+    const hiddenStyle = {
+      ...hiddenContentStyle,
+      visibility: 'hidden',
+      opacity: 0
+    };
+
     return (
       <Layer getStyles={ getLayerStyles }>
-        <span id={ ktpLayerId } style={ { visibility: 'hidden' } }>{ content }</span>
-        <span id={ ktpAriaSeparatorId } style={ { visibility: 'hidden' } }>{ ktpAriaSeparator }</span>
+        <span id={ ktpLayerId } style={ { hiddenStyle } }>{ content }</span>
+        <span id={ ktpAriaSeparatorId } style={ { hiddenStyle } }>{ ktpAriaSeparator }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return <Keytip key={ index } { ...keytipProps } />;
         }) }
@@ -100,21 +106,22 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   }
 
   public componentDidMount(): void {
+    // Add window listeners
     this._events.on(window, 'mousedown', this._onDismiss);
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
-
-    // Add handler to remove Keytips when we scroll the page
-    // TODO: can we use EventGroup here?
-    window.addEventListener('scroll', (): void => {
-      if (this.state.inKeytipMode) {
-        this._keytipManager.exitKeytipMode();
-      }
-    }, { capture: true });
+    this._events.on(window, 'scroll', this._onDismiss, true /* useCapture */);
   }
 
-  // TODO: remove window listeners on unmount?
+  public componentWillUnmount(): void {
+    // Remove window listeners
+    this._events.off(window, 'mousedown', this._onDismiss);
+    this._events.off(window, 'resize', this._onDismiss);
+    this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
+    this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
+    this._events.off(window, 'scroll', this._onDismiss, true /* useCapture */);
+  }
 
   /**
    * Exits keytip mode for this layer
@@ -160,11 +167,13 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         let key = ev.key;
         if (key === 'OS' || key === 'Win') {
           // Special cases for browser-specific changes that will be fixed in the future
-          // TODO: add bug numbers for Edge and Firefox
+          // Firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=1232918
+          // Edge: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8860571/
+          // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/16424492/
           key = 'Meta';
         }
         const transitionKey: IKeytipTransitionKey = { key };
-        transitionKey.modifierKeys = this._getModifierKey(ev);
+        transitionKey.modifierKeys = this._getModifierKey(key, ev);
         this._keytipManager.processTransitionInput(transitionKey);
         break;
     }
@@ -176,18 +185,20 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    * @param ev - React.KeyboardEvent
    * @returns List of ModifierKeyCodes that were pressed
    */
-  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): KeytipTransitionModifier[] | undefined {
+  private _getModifierKey(key: string, ev: React.KeyboardEvent<HTMLElement>): KeytipTransitionModifier[] | undefined {
     const modifierKeys = [];
-    if (ev.altKey) {
+    if (ev.altKey && key !== 'Alt') {
       modifierKeys.push(KeytipTransitionModifier.alt);
     }
-    if (ev.ctrlKey) {
+    if (ev.ctrlKey && key !== 'Ctrl') {
       modifierKeys.push(KeytipTransitionModifier.ctrl);
     }
-    if (ev.shiftKey) {
+    if (ev.shiftKey && key !== 'Shift') {
       modifierKeys.push(KeytipTransitionModifier.shift);
     }
-    // TODO: bug if the only key is a modifier (just pressed 'Alt', shouldn't be in modifierKeys but it is)
+    if (ev.metaKey && key !== 'Meta') {
+      modifierKeys.push(KeytipTransitionModifier.meta);
+    }
     return modifierKeys.length ? modifierKeys : undefined;
   }
 
