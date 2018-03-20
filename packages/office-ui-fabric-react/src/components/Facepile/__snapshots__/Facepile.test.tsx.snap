@@ -11,7 +11,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
       aria-describedby={undefined}
       aria-labelledby={undefined}
       className="ms-FocusZone ms-Facepile-members"
-      data-focuszone-id="FocusZone2"
+      data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -177,6 +177,14 @@ exports[`Facepile renders Facepile correctly 1`] = `
               right: 0px;
               top: 0px;
               z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
             }
         data="75%"
         data-is-focusable={true}

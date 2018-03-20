@@ -23,7 +23,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
     className=
         ms-ActivityItem-activityTypeIcon
         {
-          color: #0078d7;
+          color: #0078d4;
           font-size: 13px;
           height: 16px;
           line-height: 13px;
@@ -175,7 +175,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
     className=
         ms-ActivityItem-activityTypeIcon
         {
-          color: #0078d7;
+          color: #0078d4;
           font-size: 13px;
           height: 16px;
           line-height: 13px;
@@ -254,7 +254,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
     className=
         ms-ActivityItem-activityTypeIcon
         {
-          color: #0078d7;
+          color: #0078d4;
           font-size: 13px;
           height: 16px;
           line-height: 13px;

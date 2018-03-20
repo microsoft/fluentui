@@ -77,8 +77,6 @@ $field-error-color: $errorTextColor;
   .rootIsDisabled & {
     background-color: $field-background-disabled-color;
     border-color: $field-border-disabled-color;
-    pointer-events: none;
-    cursor: default;
   }
 
   &:hover,
@@ -104,8 +102,6 @@ $field-error-color: $errorTextColor;
   :global(.field) {
     background-color: $field-background-disabled-color;
     border-color: $field-border-disabled-color;
-    pointer-events: none;
-    cursor: default;
   }
 }
 
@@ -148,8 +144,6 @@ $field-error-color: $errorTextColor;
   &[disabled] {
     background-color: transparent;
     border-color: transparent;
-    pointer-events: none;
-    cursor: default;
   }
 
   .field {

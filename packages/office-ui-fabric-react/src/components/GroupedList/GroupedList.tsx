@@ -2,9 +2,9 @@ import * as React from 'react';
 import {
   BaseComponent,
   IRectangle,
-  autobind,
   assign,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import {
   IGroupedList,
@@ -40,7 +40,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     [key: string]: React.ReactInstance,
   };
 
-  private _list: List;
+  private _list = createRef<List>();
 
   private _isSomeGroupExpanded: boolean;
 
@@ -56,7 +56,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
-    this._list && this._list.scrollToIndex(index, measureItem);
+    if (this._list.value) {
+      this._list.value.scrollToIndex(index, measureItem);
+    }
   }
 
   public componentWillReceiveProps(newProps: IGroupedListProps) {
@@ -80,7 +82,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       usePageCache,
@@ -100,7 +102,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         { !groups ?
           this._renderGroup(null, 0) : (
             <List
-              ref={ this._resolveRef('_list') }
+              ref={ this._list }
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ this._returnOne }
@@ -139,8 +141,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _renderGroup(group: any, groupIndex: number) {
+  private _renderGroup = (group: any, groupIndex: number): JSX.Element | null => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -220,8 +221,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     return level;
   }
 
-  @autobind
-  private _onToggleCollapse(group: IGroup) {
+  private _onToggleCollapse = (group: IGroup): void => {
     const { groupProps } = this.props;
     const onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
 
@@ -236,8 +236,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _onToggleSelectGroup(group: IGroup) {
+  private _onToggleSelectGroup = (group: IGroup): void => {
     if (group) {
       this.props.selection!.toggleRangeSelected(group.startIndex, group.count);
     }
@@ -248,11 +247,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
     const groupCount = groups ? groups.length : 1;
 
-    if (this._list) {
-      this._list.forceUpdate();
+    if (this._list.value) {
+      this._list.value.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this._list.refs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.value.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
@@ -265,8 +264,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _onToggleSummarize(group: IGroup) {
+  private _onToggleSummarize = (group: IGroup): void => {
     const { groupProps } = this.props;
     const onToggleSummarize = groupProps && groupProps.showAllProps && groupProps.showAllProps.onToggleSummarize;
 
@@ -281,10 +279,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  @autobind
-  private _getPageSpecification(itemIndex: number, visibleRect: IRectangle): {
+  private _getPageSpecification = (itemIndex: number, visibleRect: IRectangle): {
     key?: string;
-  } {
+  } => {
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {

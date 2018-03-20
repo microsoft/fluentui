@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  autobind,
   customizable
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
@@ -157,8 +156,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return [primaryKey, farKey, overflowKey].join(' ');
   }
 
-  @autobind
-  private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
+  private _onReduceData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { endAligned, onDataReduced } = this.props;
     let { primaryItems, overflowItems, cacheKey, farItems } = data;
 
@@ -182,8 +180,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return undefined;
   }
 
-  @autobind
-  private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
+  private _onGrowData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { endAligned, onDataGrown } = this.props;
     let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
     const movedItem = overflowItems[0];
@@ -207,8 +204,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return undefined;
   }
 
-  @autobind
-  private _onRenderItems(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
+  private _onRenderItems = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
     let { buttonStyles } = this.props;
 
     if (item.onRender) {
@@ -235,8 +231,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return this._onRenderButton(commandButtonProps);
   }
 
-  @autobind
-  private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
+  private _onRenderButton = (props: ICommandBarItemProps): JSX.Element => {
     // tslint:disable-next-line:no-any
     return <CommandBarButton { ...props as any } />;
   }
