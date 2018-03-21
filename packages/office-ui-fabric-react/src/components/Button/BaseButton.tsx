@@ -401,6 +401,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onToggleMenu = (): void => {
+    if (this._splitButtonContainer.value) {
+      this._splitButtonContainer.value.focus();
+    }
     const { menuProps } = this.props;
     const currentMenuProps = this.state.menuProps;
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
@@ -446,9 +449,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onSplitButtonContainerKeyDown }
         ref={ this._splitButtonContainer }
-        data-is-focusable={ !disabled && !primaryDisabled }
+        data-is-focusable={ true }
         onClick={ !disabled && !primaryDisabled ? onClick : undefined }
-        tabIndex={ !disabled && !primaryDisabled ? 0 : undefined }
+        tabIndex={ !disabled ? 0 : undefined }
       >
         <span
           style={ { 'display': 'flex' } }
@@ -474,9 +477,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = this.props;
 
     const {
-      splitButtonAriaLabel,
-      disabled,
-      primaryDisabled
+      splitButtonAriaLabel
     } = this.props;
 
     if (menuIconProps === undefined) {
@@ -485,7 +486,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
-    const isPrimaryButtonDisabled = (!disabled && primaryDisabled);
     const splitButtonProps = {
       'styles': classNames,
       'checked': this.props.checked,
@@ -496,9 +496,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'ariaLabel': splitButtonAriaLabel,
       'aria-haspopup': true,
       'aria-expanded': this._isExpanded,
-      'data-is-focusable': !isPrimaryButtonDisabled
+      'data-is-focusable': false
     };
-    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ !isPrimaryButtonDisabled ? -1 : undefined } />;
+    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {

@@ -605,12 +605,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
-        <span aria-hidden={ true }>
+        <span
+          style={ { display: 'flex', height: '100%' } }>
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
           { this._renderSplitDivider(item) }
           { this._renderSplitIconButton(item, classNames, index) }
         </span>
-      </div>
+      </div >
     );
   }
 
@@ -885,7 +886,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _onItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
-
+    // TODO need to focus the container so that when the menu closes the previous focused item would be the container
     if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
