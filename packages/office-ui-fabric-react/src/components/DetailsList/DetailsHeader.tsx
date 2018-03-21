@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import {
   BaseComponent,
   css,
@@ -103,7 +103,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   public componentDidMount() {
     const { selection } = this.props;
     const focusZone = this._root.value;
-    const rootElement = ReactDOM.findDOMNode(focusZone as any);
+    const rootElement = findDOMNode(focusZone as any);
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
 
