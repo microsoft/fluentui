@@ -40,7 +40,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     // neutralTertiary: '#a6a6a6',
 
     // backgrounds
-    // neutralTertiaryAlt: '#c8c8c8', // themeLighter?
+    // neutralTertiaryAlt: '#c8c8c8',
     // neutralQuaternary: '#d0d0d0',
     // neutralQuaternaryAlt: '#dadada',
     neutralLight: p.neutralQuaternaryAlt,
