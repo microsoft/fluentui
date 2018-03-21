@@ -21,7 +21,6 @@ export const FocusZoneTabbableExample = () => (
         <TextField value='FocusZone TextField' className='ms-FocusZoneTabbableExample-textField' />
         <DefaultButton>Button 3</DefaultButton>
         <DefaultButton
-          data-automation-id='test'
           text='Create account'
           split={ true }
           onClick={ alertClicked }
