@@ -277,7 +277,7 @@ describe('KeytipManager', () => {
       it('should remove a keytip the Tree only', () => {
         keytipManager.registerPersistedKeytip(keytipBProps);
 
-        keytipManager.unregisterPersistedKeytip(keytipBProps.keySequences);
+        keytipManager.unregisterPersistedKeytip(keytipBProps);
 
         expect(keytipManager.keytips).toHaveLength(0);
 

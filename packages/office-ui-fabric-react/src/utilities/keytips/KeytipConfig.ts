@@ -11,7 +11,7 @@ export interface IKeytipConfigItem {
    * Key Sequence for this keytip only
    * If sequence is not defined it will be derived from the content string
    */
-  sequence?: IKeySequence;
+  sequence?: string[];
 
   /**
    * Content for the keytip
@@ -63,7 +63,7 @@ export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap {
  */
 export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: IKeySequence[], keytip: IKeytipConfigItem): void {
   // Compute full key sequence
-  const sequence = keytip.sequence || getKeytipSequenceFromContent(keytip.content);
+  const sequence = keytip.sequence ? { keys: keytip.sequence } : getKeytipSequenceFromContent(keytip.content);
   const keytipSequence = addKeytipSequence(parentSequence, sequence);
 
   // Save props in configMap

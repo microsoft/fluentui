@@ -46,7 +46,7 @@ export interface IKeytipProps {
    *
    * @type {(HTMLElement) => void}
    */
-  onExecute?: (el: HTMLElement) => void;
+  onExecute?: (el: HTMLElement | null) => void;
 
   /**
    * Function to call when the keytip is returned to
@@ -54,7 +54,7 @@ export interface IKeytipProps {
    *
    * @type {(HTMLElement) => void}
    */
-  onReturn?: (el: HTMLElement) => void;
+  onReturn?: (el: HTMLElement | null) => void;
 
   /**
    * Array of KeySequences which is the full key sequence to trigger this keytip

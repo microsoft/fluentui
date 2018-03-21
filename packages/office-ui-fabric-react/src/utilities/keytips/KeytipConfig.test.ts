@@ -7,7 +7,6 @@ describe('KeytipConfig', () => {
       keytips: [
         {
           id: 'keytip1',
-          sequence: { keys: ['a'] },
           content: 'A',
           optionalProps: {
             onExecute: jest.fn()
@@ -15,7 +14,6 @@ describe('KeytipConfig', () => {
           children: [
             {
               id: 'keytip2',
-              sequence: { keys: ['b', '1'] },
               content: 'B1',
               optionalProps: {
                 disabled: true
@@ -23,24 +21,20 @@ describe('KeytipConfig', () => {
               children: [
                 {
                   id: 'keytip3',
-                  content: 'C',
-                  sequence: { keys: ['c'] }
+                  content: 'C'
                 }
               ]
             },
             {
               id: 'keytip4',
-              sequence: { keys: ['t', '2'] },
               content: 'T2'
             },
             {
               id: 'keytip5',
-              sequence: { keys: ['f'] },
               content: 'F',
               children: [
                 {
                   id: 'keytip6',
-                  sequence: { keys: ['x', '0'] },
                   content: 'X0',
                   optionalProps: {
                     onReturn: jest.fn()
@@ -48,13 +42,11 @@ describe('KeytipConfig', () => {
                 },
                 {
                   id: 'keytip7',
-                  sequence: { keys: ['y', 'y'] },
                   content: 'YY',
                   children: [
                     {
                       id: 'keytip8',
-                      content: 'R',
-                      sequence: { keys: ['r'] }
+                      content: 'R'
                     },
                   ]
                 }

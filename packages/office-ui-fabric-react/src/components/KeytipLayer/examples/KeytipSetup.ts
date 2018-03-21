@@ -9,12 +9,10 @@ export const keytipConfig: IKeytipConfig = {
   keytips: [
     {
       id: 'Pivot1Keytip',
-      sequence: { keys: ['a'] },
       content: 'A',
       children: [
         {
           id: 'Button1Pivot1Keytip',
-          sequence: { keys: ['1', 'b'] },
           content: '1B',
           optionalProps: {
             onExecute: btnExecute
@@ -22,7 +20,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'Button2Pivot1Keytip',
-          sequence: { keys: ['r', '7'] },
           content: 'R7',
           optionalProps: {
             onExecute: btnExecute
@@ -30,7 +27,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'Button3Pivot1Keytip',
-          sequence: { keys: ['r', '9'] },
           content: 'R9',
           optionalProps: {
             onExecute: btnExecute
@@ -38,7 +34,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'Button5Pivot1Keytip',
-          sequence: { keys: ['r', '8'] },
           content: 'R8',
           optionalProps: {
             onExecute: btnExecute
@@ -46,7 +41,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'Checkbox1Pivot1Keytip',
-          sequence: { keys: ['1', 'a'] },
           content: '1A',
           optionalProps: {
             onExecute: btnExecute
@@ -54,7 +48,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'ComboBox1Pivot1Keytip',
-          sequence: { keys: ['m'] },
           content: 'M',
           optionalProps: {
             onExecute: (el: HTMLElement) => {
@@ -64,7 +57,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'Dropdown1Pivot1Keytip',
-          sequence: { keys: ['x'] },
           content: 'X',
           optionalProps: {
             onExecute: (el: HTMLElement) => {
@@ -74,7 +66,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'Link1Pivot1Keytip',
-          sequence: { keys: ['d'] },
           content: 'D',
           optionalProps: {
             onExecute: btnExecute
@@ -82,7 +73,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'SpinButton1Pivot1Keytip',
-          sequence: { keys: ['r', 'x'] },
           content: 'RX',
           optionalProps: {
             onExecute: (el: HTMLElement) => {
@@ -92,7 +82,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'Toggle1Pivot1Keytip',
-          sequence: { keys: ['i'] },
           content: 'I',
           optionalProps: {
             onExecute: btnExecute
@@ -102,12 +91,10 @@ export const keytipConfig: IKeytipConfig = {
     },
     {
       id: 'Pivot2Keytip',
-      sequence: { keys: ['b'] },
       content: 'B',
       children: [
         {
           id: 'CommandButton2Pivot2Keytip',
-          sequence: { keys: ['2'] },
           content: '2',
           optionalProps: {
             onExecute: btnExecute
@@ -115,7 +102,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'CommandButton1Pivot2Keytip',
-          sequence: { keys: ['y'] },
           content: 'Y',
           optionalProps: {
             onExecute: btnExecute
@@ -123,7 +109,6 @@ export const keytipConfig: IKeytipConfig = {
         },
         {
           id: 'CommandButton3Pivot2Keytip',
-          sequence: { keys: ['l', 'k'] },
           content: 'LK',
           optionalProps: {
             onExecute: btnExecute
@@ -131,7 +116,6 @@ export const keytipConfig: IKeytipConfig = {
           children: [
             {
               id: 'SubmenuKeytip1',
-              sequence: { keys: ['m'] },
               content: 'M',
               optionalProps: {
                 onExecute: btnExecute
@@ -139,7 +123,6 @@ export const keytipConfig: IKeytipConfig = {
             },
             {
               id: 'SubmenuKeytip2',
-              sequence: { keys: ['p'] },
               content: 'P',
               optionalProps: {
                 onExecute: btnExecute,
@@ -148,7 +131,6 @@ export const keytipConfig: IKeytipConfig = {
               children: [
                 {
                   id: 'SubmenuKeytip3',
-                  sequence: { keys: ['o'] },
                   content: 'O',
                   optionalProps: {
                     onExecute: btnExecute
@@ -156,7 +138,6 @@ export const keytipConfig: IKeytipConfig = {
                 },
                 {
                   id: 'SubmenuKeytip4',
-                  sequence: { keys: ['d', 'd'] },
                   content: 'DD',
                   optionalProps: {
                     onExecute: btnExecute
@@ -166,12 +147,39 @@ export const keytipConfig: IKeytipConfig = {
             },
             {
               id: 'SubmenuKeytip5',
-              sequence: { keys: ['r'] },
               content: 'r'
             },
           ]
         }
       ]
-    }
+    },
+    {
+      id: 'OverflowButton1',
+      content: '1'
+    },
+    {
+      id: 'OverflowButton2',
+      content: '2'
+    },
+    {
+      id: 'OverflowButton3',
+      content: '3'
+    },
+    {
+      id: 'OverflowButton4',
+      content: '4',
+      optionalProps: {
+        hasChildrenNodes: true,
+        onExecute: btnExecute
+      }
+    },
+    {
+      id: 'OverflowButton5',
+      content: '5'
+    },
+    {
+      id: 'OverflowButton6',
+      content: '6'
+    },
   ]
 };

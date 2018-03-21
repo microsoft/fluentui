@@ -65,8 +65,14 @@ export class KeytipManager {
     }
 
     // Add keytip to this, Tree, and Layer
-    // TODO: should register check for duplicates?
-    this.keytips.push(keytipProps);
+    // Check if trying to register a duplicate keytip, if so just update
+    const keytipIndex = this._findKeytipIndex(keytipProps);
+    if (keytipIndex >= 0) {
+      // Update everything except 'visible'
+      this.keytips = replaceElement(this.keytips, { ...keytipProps, visible: this.keytips[keytipIndex].visible }, keytipIndex);
+    } else {
+      this.keytips.push(keytipProps);
+    }
     this.keytipTree.addNode(keytipProps);
     this._layer && this._layer.setKeytips(this.keytips);
 
@@ -98,10 +104,8 @@ export class KeytipManager {
    */
   public updateKeytip(keytipProps: IKeytipProps): void {
     // Update keytip in this.keytips
-    const keytipIndex = findIndex(this.keytips, (keytip: IKeytipProps) => {
-      return fullKeySequencesAreEqual(keytip.keySequences, keytipProps.keySequences);
-    });
-    if (keytipIndex) {
+    const keytipIndex = this._findKeytipIndex(keytipProps);
+    if (keytipIndex >= 0) {
       // Update everything except 'visible'
       this.keytips = replaceElement(this.keytips, { ...keytipProps, visible: this.keytips[keytipIndex].visible }, keytipIndex);
     }
@@ -131,8 +135,8 @@ export class KeytipManager {
    *
    * @param keySequences - keySequences of the persisted Keytip to unregister
    */
-  public unregisterPersistedKeytip(keySequences: IKeySequence[]): void {
-    this.keytipTree.removeNode(keySequences);
+  public unregisterPersistedKeytip(keytipToRemove: IKeytipProps): void {
+    this.keytipTree.removeNode(keytipToRemove.keySequences);
   }
 
   /**
@@ -159,6 +163,7 @@ export class KeytipManager {
    */
   public exitKeytipMode(): void {
     this.keytipTree.currentKeytip = undefined;
+    // Hide all keytips
     this.showKeytips([]);
     this._layer && this._layer.exitKeytipMode();
   }
@@ -297,8 +302,14 @@ export class KeytipManager {
    * @param keytipId - ID of the keytip to query for
    * @return {HTMLElement} DOM element of the keytip
    */
-  private _getKeytipDOMElement(keytipId: string): HTMLElement {
+  private _getKeytipDOMElement(keytipId: string): HTMLElement | null {
     const dataKtpExecuteTarget = constructKeytipExecuteTargetFromId(keytipId);
-    return getDocument()!.querySelector(dataKtpExecuteTarget) as HTMLElement;
+    return getDocument()!.querySelector(dataKtpExecuteTarget);
+  }
+
+  private _findKeytipIndex(keytipProps: IKeytipProps): number {
+    return findIndex(this.keytips, (keytip: IKeytipProps) => {
+      return fullKeySequencesAreEqual(keytip.keySequences, keytipProps.keySequences);
+    });
   }
 }

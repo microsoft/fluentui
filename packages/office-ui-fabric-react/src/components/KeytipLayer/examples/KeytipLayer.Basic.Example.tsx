@@ -10,7 +10,7 @@ import { keytipConfig } from './KeytipSetup';
 import { KeytipLayer, } from 'office-ui-fabric-react/lib/KeytipLayer';
 import { registerKeytip, addKeytipSequence } from '../../../utilities/keytips';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { DefaultButton, ActionButton, CompoundButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, ActionButton, CompoundButton, IconButton, CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -20,10 +20,13 @@ import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 
 export interface IKeytipLayerBasicExampleState {
   showModal: boolean;
   showMessageBar: boolean;
+  items: IOverflowSetItemProps[];
+  overflowItems: IOverflowSetItemProps[];
 }
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
@@ -34,13 +37,73 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
   constructor(props: {}) {
     super(props);
 
-    // Setup state
-    this.state = {
-      showModal: false,
-      showMessageBar: false
+    const overflowItem1Click = () => {
+      console.log('first overflow item');
+    };
+
+    const overflowItem2Click = () => {
+      console.log('second overflow two item');
     };
 
     this.keytipMap = buildKeytipConfigMap(keytipConfig);
+
+    // Setup state
+    this.state = {
+      showModal: false,
+      showMessageBar: false,
+      items: [
+        {
+          key: 'item1',
+          name: 'Link 1',
+          onClick: () => { return; },
+          keytipProps: this.keytipMap.OverflowButton1
+        },
+        {
+          key: 'item2',
+          name: 'Link 2',
+          onClick: () => { return; },
+          keytipProps: this.keytipMap.OverflowButton2
+        },
+        {
+          key: 'item3',
+          name: 'Link 3',
+          onClick: () => { return; },
+          keytipProps: this.keytipMap.OverflowButton3
+        }
+      ],
+      overflowItems: [
+        {
+          key: 'item4',
+          name: 'Overflow Link 1',
+          keytipProps: {
+            ...this.keytipMap.OverflowButton5,
+            onExecute: (el: HTMLElement | null) => {
+              if (el) {
+                el.click();
+              } else {
+                overflowItem1Click();
+              }
+            }
+          },
+          onClick: overflowItem1Click
+        },
+        {
+          key: 'item5',
+          name: 'Overflow Link 2',
+          keytipProps: {
+            ...this.keytipMap.OverflowButton6,
+            onExecute: (el: HTMLElement | null) => {
+              if (el) {
+                el.click();
+              } else {
+                overflowItem2Click();
+              }
+            }
+          },
+          onClick: overflowItem2Click
+        }
+      ]
+    };
   }
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
@@ -236,6 +299,19 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
               }
             />
           </div>
+          <div>
+            <OverflowSet
+              items={ this.state.items }
+              overflowItems={ this.state.overflowItems }
+              keytipSequences={ this.keytipMap.OverflowButton4.keySequences }
+              onRenderOverflowButton={ this._onRenderOverflowButton }
+              onRenderItem={ this._onRenderItem }
+            />
+            <DefaultButton
+              text={ 'Move overflow items' }
+              onClick={ this._toggleOverflowItems }
+            />
+          </div>
         </div>
         { this.state.showMessageBar &&
           <MessageBar messageBarType={ MessageBarType.success }>
@@ -250,6 +326,28 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
           <h2>Hello this is a Modal</h2>
         </Modal>
       </div>
+    );
+  }
+
+  private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
+    return (
+      <CommandBarButton
+        styles={ { root: { padding: '10px' } } }
+        onClick={ item.onClick }
+        keytipProps={ item.keytipProps }
+      >{ item.name }
+      </CommandBarButton>
+    );
+  }
+
+  @autobind
+  private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
+    return (
+      <CommandBarButton
+        menuIconProps={ { iconName: 'More' } }
+        menuProps={ { items: overflowItems! } }
+        keytipProps={ this.keytipMap.OverflowButton4 }
+      />
     );
   }
 
@@ -274,5 +372,23 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
   @autobind
   private _hideMessageBar(): void {
     this.setState({ showMessageBar: false });
+  }
+
+  @autobind
+  private _toggleOverflowItems(): void {
+    this.setState((prevState: IKeytipLayerBasicExampleState) => {
+      let items = prevState.items;
+      let overflowItems = prevState.overflowItems;
+      if (overflowItems.length) {
+        // Move all overflowItems to items
+        items = items.concat(overflowItems);
+        overflowItems = [];
+      } else {
+        // Move last two items to overflowItems
+        overflowItems = items.slice(-2);
+        items = items.slice(0, -2);
+      }
+      return { items, overflowItems };
+    });
   }
 }

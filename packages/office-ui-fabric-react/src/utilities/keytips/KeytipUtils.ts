@@ -42,6 +42,11 @@ export function unregisterKeytip(keytipProps: IKeytipProps): void {
   ktpMgr.unregisterKeytip(keytipProps);
 }
 
+export function updateKeytip(keytipProps: IKeytipProps): void {
+  const ktpMgr = KeytipManager.getInstance();
+  ktpMgr.updateKeytip(keytipProps);
+}
+
 /**
  * Constructs the data-ktp-id attribute selector from a full key sequence
  *

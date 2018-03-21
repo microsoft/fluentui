@@ -3,12 +3,14 @@ import {
   css,
   BaseComponent,
   createRef,
-  IKeySequence
+  IKeySequence,
+  addElementAtIndex
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { KeytipManager } from '../../utilities/keytips';
+import { IKeytipProps } from '../../Keytip';
 import * as stylesImport from './OverflowSet.scss';
 
 const styles: any = stylesImport;
@@ -16,14 +18,14 @@ const styles: any = stylesImport;
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
   private _focusZone = createRef<FocusZone>();
-  private _persistedKeytips: IKeySequence[][] = [];
+  private _persistedKeytips: IKeytipProps[] = [];
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
 
   public render() {
     if (this._persistedKeytips.length) {
       // Delete all persisted keytips saved
-      this._persistedKeytips.forEach((keySequences: IKeySequence[]) => {
-        this._keytipManager.unregisterPersistedKeytip(keySequences);
+      this._persistedKeytips.forEach((keytips: IKeytipProps) => {
+        this._keytipManager.unregisterPersistedKeytip(keytips);
       });
       this._persistedKeytips = [];
     }
@@ -62,6 +64,20 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     }
   }
 
+  public componentDidMount() {
+    this._registerPersistedKeytips();
+  }
+
+  public componentDidUpdate() {
+    this._registerPersistedKeytips();
+  }
+
+  private _registerPersistedKeytips() {
+    this._persistedKeytips.forEach((keytips: IKeytipProps) => {
+      this._keytipManager.registerPersistedKeytip(keytips);
+    });
+  }
+
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
@@ -76,56 +92,59 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
-    const overflowKeytip = this.props.keytipProps;
+    const overflowKeytipSequences = this.props.keytipSequences;
 
-    const newOverflowItems: any[] = [];
+    let newOverflowItems: any[] = [];
 
     // Register all persisted keytips and save
-    items.forEach((overflowItem) => {
-      const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
-      if (keytip) {
-        // Create persisted keytip
-        const persistedKeytip = { ...keytip, hasChildrenNodes: false };
-        if (keytip.hasChildrenNodes) {
-          // If the keytip has a submenu, we need to modify the onExecute
-          persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytip!.keySequences, keytip.keySequences);
-        } else {
-          // If the keytip doesn't have a submenu, just execute the original function
-          // and exit keytip mode
-          persistedKeytip.onExecute = (el: HTMLElement) => {
-            keytip.onExecute && keytip.onExecute(el);
-            this._keytipManager.exitKeytipMode();
-          };
-        }
-        this._keytipManager.registerPersistedKeytip(persistedKeytip);
-        this._persistedKeytips.push(persistedKeytip.keySequences);
+    if (overflowKeytipSequences) {
+      const overflowKeytipSequence = [...overflowKeytipSequences].pop();
+      items.forEach((overflowItem) => {
+        const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
+        if (keytip) {
+          // Create persisted keytip
+          const persistedKeytip = { ...keytip, hasChildrenNodes: false };
+          if (keytip.hasChildrenNodes) {
+            // If the keytip has a submenu, we need to modify the onExecute
+            persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, keytip.keySequences);
+          } else {
+            // If the keytip doesn't have a submenu, just execute the original function
+            persistedKeytip.onExecute = (el: HTMLElement | null) => {
+              keytip.onExecute && keytip.onExecute(el);
+            };
+          }
 
-        // Modify this keytip's sequence to include the overflow sequence
-        const overflowSequence = { ...overflowKeytip!.keySequences }.pop();
-        const modifiedOverflowItem = { ...overflowItem };
-        this._modifyOverflowItemKeytip(overflowSequence!, modifiedOverflowItem, -1);
-        newOverflowItems.push(modifiedOverflowItem);
-      } else {
-        newOverflowItems.push(overflowItem);
-      }
-    });
+          // Add this persisted keytip to our internal list
+          this._persistedKeytips.push(persistedKeytip);
+
+          // Modify this keytip's sequence to include the overflow sequence
+          const modifiedOverflowItem = { ...overflowItem, keytipProps: { ...overflowItem.keytipProps } };
+          this._modifyOverflowItemKeytip(overflowKeytipSequence!, modifiedOverflowItem, -1);
+          newOverflowItems.push(modifiedOverflowItem);
+        } else {
+          newOverflowItems.push(overflowItem);
+        }
+      });
+    } else {
+      // If there is no keytip for the overflow button we don't have to do any of the above logic
+      newOverflowItems = items;
+    }
     return (
       <div { ...wrapperDivProps }>
-        { this.props.onRenderOverflowButton(newOverflowItems, this.props.keytipProps) }
+        { this.props.onRenderOverflowButton(newOverflowItems) }
       </div>
     );
   }
 
   private _modifyOverflowItemKeytip(overflowSequence: IKeySequence, overflowItem: any, insertIndex: number): void {
-    overflowItem.keytipProps.keySequences.splice(insertIndex, 0, overflowSequence);
+    overflowItem.keytipProps.keySequences = addElementAtIndex(overflowItem.keytipProps.keySequences, insertIndex, overflowSequence);
     overflowItem.keytipProps.overflowSetSequence = overflowSequence;
 
     if (overflowItem.subMenuProps) {
       // Need to insert into subMenu keytips
-      const newIndex = insertIndex - 1;
       overflowItem.subMenuProps.items.forEach((item: any) => {
         if (item.keytipProps) {
-          this._modifyOverflowItemKeytip(overflowSequence, item, newIndex);
+          this._modifyOverflowItemKeytip(overflowSequence, item, --insertIndex);
         }
       });
     }
