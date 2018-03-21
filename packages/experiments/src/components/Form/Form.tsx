@@ -9,7 +9,6 @@ import { GenericFormInput } from './FormBaseInput';
 
 // Utilities
 import {
-  autobind,
   BaseComponent,
   getNativeProps,
   divProperties
@@ -106,7 +105,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
     let nativeProps = getNativeProps(this.props, divProperties);
     return (
       <form
-        {...nativeProps}
+        { ...nativeProps }
         onSubmit={ this._onSubmit }
       >
         { this.props.children }
@@ -177,8 +176,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * When the form is submitted. This will validate the form and call the appropriate submit callback
    * @param event The form event
    */
-  @autobind
-  private _onSubmit(event: React.FormEvent<HTMLElement>): void {
+  private _onSubmit = (event: React.FormEvent<HTMLElement>): void => {
     event.preventDefault();
     if (this._pristine) {
       this._pristine = false;
@@ -201,8 +199,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Register an input with the form
    * @param input The input to register
    */
-  @autobind
-  private _mountInput(input: GenericFormInput): void {
+  private _mountInput = (input: GenericFormInput): void => {
     if (this._mountedInputs.indexOf(input) === -1) {
       this._mountedInputs.push(input);
       this.setState((prevState: IFormState) => {
@@ -212,8 +209,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
     }
   }
 
-  @autobind
-  private _submitValue(input: GenericFormInput): void {
+  private _submitValue = (input: GenericFormInput): void => {
     let validationResult: IFormValidationResult = this._validateComponent(input);
     this.setState((prevState: IFormState) => {
       prevState.validationResults[input.props.inputKey] = validationResult;
@@ -231,8 +227,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Unregister an input with the form
    * @param input The input to unregister
    */
-  @autobind
-  private _unmountInput(input: GenericFormInput): void {
+  private _unmountInput = (input: GenericFormInput): void => {
     let currentIndex: number = this._mountedInputs.indexOf(input);
     if (currentIndex > -1) {
       this._mountedInputs.splice(currentIndex, 1);
@@ -243,8 +238,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
     }
   }
 
-  @autobind
-  private _isFormValid(validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults): boolean {
+  private _isFormValid = (validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults): boolean => {
     for (let key in validationResults) {
       if (!validationResults[key].isValid) {
         return false;

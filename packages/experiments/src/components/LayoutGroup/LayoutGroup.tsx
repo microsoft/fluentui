@@ -3,7 +3,6 @@ import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.types';
 import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
-  autobind,
   getNativeProps,
   divProperties
 } from 'office-ui-fabric-react/lib/Utilities';
@@ -76,8 +75,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     );
   }
 
-  @autobind
-  private _getJustify(justify: string | undefined): string {
+  private _getJustify = (justify: string | undefined): string => {
     if (justify === 'end') {
       return 'flex-end';
     } else if (justify === 'center') {

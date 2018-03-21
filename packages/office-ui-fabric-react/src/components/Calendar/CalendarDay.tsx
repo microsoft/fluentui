@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css,
   getId,
   getRTL,
@@ -403,23 +402,20 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  @autobind
-  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (callback: () => void, ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
 
-  @autobind
-  private _onDayKeyDown(originalDate: Date, weekIndex: number, dayIndex: number)
-    : (ev: React.KeyboardEvent<HTMLElement>) => void {
+  private _onDayKeyDown = (originalDate: Date, weekIndex: number, dayIndex: number)
+    : (ev: React.KeyboardEvent<HTMLElement>) => void => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
     };
   }
 
-  @autobind
-  private _onSelectDate(selectedDate: Date) {
+  private _onSelectDate = (selectedDate: Date): void => {
     const {
       onSelectDate,
       dateRangeType,
@@ -451,39 +447,33 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  @autobind
-  private _onSelectNextMonth() {
+  private _onSelectNextMonth = (): void => {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, 1), false);
   }
 
-  @autobind
-  private _onSelectPrevMonth() {
+  private _onSelectPrevMonth = (): void => {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
   }
 
-  @autobind
-  private _onHeaderSelect() {
+  private _onHeaderSelect = (): void => {
     const { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
       onHeaderSelect(true);
     }
   }
 
-  @autobind
-  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     const { onHeaderSelect } = this.props;
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }
   }
 
-  @autobind
-  private _onPrevMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onPrevMonthKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectPrevMonth, ev);
   }
 
-  @autobind
-  private _onNextMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onNextMonthKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectNextMonth, ev);
   }
 

@@ -130,7 +130,21 @@ export const getMenuItemStyles = memoizeFunction((
       color: semanticColors.menuIcon,
       selectors: {
         [HighContrastSelector]: {
-          color: 'HighlightText',
+          color: 'inherit',
+        },
+        ['$root:hover &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
+        },
+        ['$root:focus &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
         }
       }
     },
