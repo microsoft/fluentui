@@ -4,7 +4,6 @@ import { Image } from '../../Image';
 import { Icon } from '../../Icon';
 import {
   BaseComponent,
-  autobind,
   css
 } from '../../Utilities';
 import * as stylesImport from './DocumentCard.scss';
@@ -79,8 +78,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     );
   }
 
-  @autobind
-  private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderPreviewList = (previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> => {
     const { getOverflowDocumentCountText } = this.props;
 
     // Determine how many documents we won't be showing

@@ -10,7 +10,6 @@ import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSe
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ResizeGroupStatus } from './ResizeGroup.checklist';
-import { MessageBar } from '../../MessageBar';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 

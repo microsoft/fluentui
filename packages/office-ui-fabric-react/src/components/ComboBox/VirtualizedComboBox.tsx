@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { autobind, BaseComponent, createRef } from '../../Utilities';
+import { BaseComponent, createRef } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import { IComboBoxProps, IComboBox } from './ComboBox.types';
 import { List } from '../../List';
@@ -37,8 +37,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     );
   }
 
-  @autobind
-  protected _onRenderList(props: IComboBoxProps): JSX.Element {
+  protected _onRenderList = (props: IComboBoxProps): JSX.Element => {
     const {
       onRenderItem
     } = props;
@@ -54,8 +53,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     );
   }
 
-  @autobind
-  protected _onScrollToItem(itemIndex: number): void {
+  protected _onScrollToItem = (itemIndex: number): void => {
     // We are using the List component, call scrollToIndex
     this._list.value && this._list.value.scrollToIndex(itemIndex);
   }

@@ -53,7 +53,6 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
 
     return (
       <Callout
-        ref={ this._resolveRef('_callout') }
         target={ targetElement }
         onDismiss={ onDismiss }
         { ...calloutProps }
