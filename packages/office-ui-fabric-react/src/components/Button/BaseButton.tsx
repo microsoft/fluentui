@@ -485,6 +485,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
+    const isPrimaryButtonDisabled = (!disabled && primaryDisabled);
     const splitButtonProps = {
       'styles': classNames,
       'checked': this.props.checked,
@@ -495,10 +496,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'ariaLabel': splitButtonAriaLabel,
       'aria-haspopup': true,
       'aria-expanded': this._isExpanded,
-      'data-is-focusable': false
+      'data-is-focusable': !isPrimaryButtonDisabled
     };
-    const isPrimaryButtonDisabled = (!disabled && primaryDisabled);
-    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ isPrimaryButtonDisabled ? -1 : undefined } />;
+    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ !isPrimaryButtonDisabled ? -1 : undefined } />;
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
