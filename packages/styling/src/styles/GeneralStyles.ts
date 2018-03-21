@@ -8,3 +8,10 @@ export const normalize: IRawStyle = {
   padding: 0,
   boxSizing: 'border-box'
 };
+
+export const noWrap: IRawStyle = {
+  display: 'block',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+};
