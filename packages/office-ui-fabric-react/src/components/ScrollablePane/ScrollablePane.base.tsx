@@ -8,7 +8,8 @@ import {
   classNamesFunction,
   customizable,
   divProperties,
-  getNativeProps
+  getNativeProps,
+  createRef
 } from '../../Utilities';
 import {
   IScrollablePane,
@@ -30,9 +31,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     scrollablePane: PropTypes.object
   };
 
-  public root: HTMLElement;
-  public stickyAbove: HTMLElement;
-  public stickyBelow: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
+  private _stickyAboveRef = createRef<HTMLDivElement>();
+  private _stickyBelowRef = createRef<HTMLDivElement>();
   private _subscribers: Set<Function>;
   private _stickyAbove: Set<Sticky>;
   private _stickyBelow: Set<Sticky>;
@@ -42,6 +43,18 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     this._subscribers = new Set<Function>();
     this._stickyAbove = new Set<Sticky>();
     this._stickyBelow = new Set<Sticky>();
+  }
+
+  public get root(): HTMLDivElement | null {
+    return this._root.value;
+  }
+
+  public get stickyAbove(): HTMLDivElement | null {
+    return this._stickyAboveRef.value;
+  }
+
+  public get stickyBelow(): HTMLDivElement | null {
+    return this._stickyBelowRef.value;
   }
 
   public getChildContext() {
@@ -59,19 +72,19 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   }
 
   public componentDidMount() {
-    this._events.on(this.root, 'scroll', this.notifySubscribers);
+    this._events.on(this._root.value, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
   }
 
   public componentWillUnmount() {
-    this._events.off(this.root);
+    this._events.off(this._root.value);
     this._events.off(window);
   }
 
   public componentDidUpdate(prevProps: IScrollablePaneProps) {
     const initialScrollPosition = this.props.initialScrollPosition;
-    if (initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
-      this.root.scrollTop = initialScrollPosition;
+    if (this._root.value && initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
+      this._root.value.scrollTop = initialScrollPosition;
     }
   }
 
@@ -87,11 +100,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     return (
       <div
         { ...getNativeProps(this.props, divProperties) }
-        ref={ this._resolveRef('root') }
+        ref={ this._root }
         className={ classNames.root }
       >
-        <div ref={ this._resolveRef('stickyAbove') } className={ classNames.stickyAbove } />
-        <div ref={ this._resolveRef('stickyBelow') } className={ classNames.stickyBelow } />
+        <div ref={ this._stickyAboveRef } className={ classNames.stickyAbove } />
+        <div ref={ this._stickyBelowRef } className={ classNames.stickyBelow } />
         <div data-is-scrollable={ true }>
           { this.props.children }
         </div>
@@ -112,42 +125,52 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   }
 
   public addStickyHeader = (sticky: Sticky): void => {
-    this._addSticky(sticky, this._stickyAbove, this.stickyAbove, () => {
-      this.stickyAbove.appendChild(sticky.content);
+    this._addSticky(sticky, this._stickyAbove, () => {
+      if (this._stickyAboveRef.value) {
+        this._stickyAboveRef.value.appendChild(sticky.content);
+      }
     });
   }
 
   public addStickyFooter = (sticky: Sticky): void => {
-    this._addSticky(sticky, this._stickyBelow, this.stickyBelow, () => {
-      this.stickyBelow.insertBefore(sticky.content, this.stickyBelow.firstChild);
+    this._addSticky(sticky, this._stickyBelow, () => {
+      if (this._stickyBelowRef.value) {
+        this._stickyBelowRef.value.insertBefore(sticky.content, this._stickyBelowRef.value.firstChild);
+      }
     });
   }
 
   public removeStickyHeader = (sticky: Sticky): void => {
-    this._removeSticky(sticky, this._stickyAbove, this.stickyAbove);
+    this._removeSticky(sticky, this._stickyAbove, this._stickyAboveRef.value);
   }
 
   public removeStickyFooter = (sticky: Sticky): void => {
-    this._removeSticky(sticky, this._stickyBelow, this.stickyBelow);
+    this._removeSticky(sticky, this._stickyBelow, this._stickyBelowRef.value);
   }
 
   public notifySubscribers = (sort?: boolean): void => {
     this._subscribers.forEach((handle) => {
-      handle(this.stickyAbove.getBoundingClientRect(), this.stickyBelow.getBoundingClientRect());
+      if (this._stickyAboveRef.value && this._stickyBelowRef.value) {
+        handle(this._stickyAboveRef.value.getBoundingClientRect(), this._stickyBelowRef.value.getBoundingClientRect());
+      }
     });
     if (this._stickyAbove.size > 1) {
-      this._sortStickies(this._stickyAbove, this.stickyAbove);
+      this._sortStickies(this._stickyAbove, this._stickyAboveRef.value);
     }
     if (this._stickyBelow.size > 1) {
-      this._sortStickies(this._stickyBelow, this.stickyBelow);
+      this._sortStickies(this._stickyBelow, this._stickyBelowRef.value);
     }
   }
 
   public getScrollPosition = (): number => {
-    return this.root.scrollTop;
+    if (this._root.value) {
+      return this._root.value.scrollTop;
+    }
+
+    return 0;
   }
 
-  private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement, addStickyToContainer: () => void) {
+  private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, addStickyToContainer: () => void) {
     if (!stickyList.has(sticky)) {
       stickyList.add(sticky);
       addStickyToContainer();
@@ -165,8 +188,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     }
   }
 
-  private _removeSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement) {
-    if (stickyList.has(sticky)) {
+  private _removeSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement | null) {
+    if (container && stickyList.has(sticky)) {
       sticky.content.removeEventListener('transitionend',
         this._setPlaceholderHeights.bind(null, stickyList, container));
       stickyList.delete(sticky);
@@ -187,11 +210,16 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     });
   }
 
-  private _sortStickies(stickyList: Set<Sticky>, container: HTMLElement): void {
+  private _sortStickies(stickyList: Set<Sticky>, container: HTMLElement | null): void {
+    // No sorting needed if there is no container
+    if (!container) {
+      return;
+    }
+
     let stickyArr = Array.from(stickyList);
     stickyArr = stickyArr.sort((a, b) => {
-      const aOffset = this._calculateOffsetParent(a.root);
-      const bOffset = this._calculateOffsetParent(b.root);
+      const aOffset = this._calculateOffsetParent(a.root.value);
+      const bOffset = this._calculateOffsetParent(b.root.value);
       return aOffset - bOffset;
     });
     // Get number of elements that is already in order.
@@ -213,9 +241,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     }
   }
 
-  private _calculateOffsetParent(ele: HTMLElement): number {
+  private _calculateOffsetParent(ele: HTMLElement | null): number {
     let offset = 0;
-    while (ele.offsetParent !== this.root.offsetParent) {
+    while (ele && this._root.value && ele.offsetParent !== this._root.value.offsetParent) {
       offset += ele.offsetTop;
       if (ele.parentElement) {
         ele = ele.parentElement;

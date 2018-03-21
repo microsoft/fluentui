@@ -8,7 +8,8 @@ import {
   getParent,
   divProperties,
   getNativeProps,
-  IRenderFunction
+  IRenderFunction,
+  createRef
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps } from './List.types';
 
@@ -89,8 +90,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     [key: string]: React.ReactInstance,
   };
 
-  private _root: HTMLElement;
-  private _surface: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
+  private _surface = createRef<HTMLDivElement>();
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -260,11 +261,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     this._updatePages();
     this._measureVersion++;
-    this._scrollElement = findScrollableParent(this._root) as HTMLElement;
+    this._scrollElement = findScrollableParent(this._root.value) as HTMLElement;
 
     this._events.on(window, 'resize', this._onAsyncResize);
-    if (this._root) {
-      this._events.on(this._root, 'focus', this._onFocus, true);
+    if (this._root.value) {
+      this._events.on(this._root.value, 'focus', this._onFocus, true);
     }
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
@@ -344,12 +345,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     return (
       <div
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
         { ...divProps }
         role={ (role === undefined) ? 'list' : role }
         className={ css('ms-List', className) }
       >
-        <div ref={ this._resolveRef('_surface') } className={ css('ms-List-surface') } role='presentation'>
+        <div ref={ this._surface } className={ css('ms-List-surface') } role='presentation'>
           { pageElements }
         </div>
       </div>
@@ -475,7 +476,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _onFocus(ev: any) {
     let target = ev.target as HTMLElement;
 
-    while (target !== this._surface) {
+    while (target !== this._surface.value) {
       const indexString = target.getAttribute('data-list-index');
 
       if (indexString) {
@@ -926,13 +927,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // This needs to be called to recalculate when new pages should be loaded.
     // We check to see how far we've scrolled and if it's further than a third of a page we run it again.
     if (
-      forceUpdate ||
-      !pages ||
-      !this._surfaceRect ||
-      !scrollHeight ||
-      scrollHeight !== this._scrollHeight ||
-      Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3) {
-      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface);
+      this._surface.value &&
+      (forceUpdate ||
+        !pages ||
+        !this._surfaceRect ||
+        !scrollHeight ||
+        scrollHeight !== this._scrollHeight ||
+        Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3)
+    ) {
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.value);
       this._scrollTop = scrollTop;
     }
 

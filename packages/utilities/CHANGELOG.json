@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.19.0",
+      "tag": "@uifabric/utilities_v5.19.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "856989f01186c078741a64fb3bf7c6371b6439bd",
+            "comment": "Make helper functions getWindow and getDocument accept `null`."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.3",
       "tag": "@uifabric/utilities_v5.18.3",
       "date": "Mon, 19 Mar 2018 10:27:55 GMT",
