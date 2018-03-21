@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 
 import * as stylesImport from './ChoiceGroup.Custom.Example.scss';
@@ -60,8 +60,7 @@ export class ChoiceGroupCustomExample extends React.Component {
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLInputElement>, option: any) {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
     console.dir(option);
   }
 }

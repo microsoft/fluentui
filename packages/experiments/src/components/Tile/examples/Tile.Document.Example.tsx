@@ -10,7 +10,7 @@ import {
   SharedSignal
 } from '../../signals/Signals';
 import { lorem } from '@uifabric/example-app-base';
-import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
+import { css, ISize, fitContentToBounds } from '../../../Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any
@@ -218,8 +218,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
     );
   }
 
-  @autobind
-  private _onImagesLoadedChanged(event: React.FormEvent<HTMLInputElement>, checked: boolean): void {
+  private _onImagesLoadedChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
       imagesLoaded: checked
     });

@@ -4,9 +4,6 @@ import * as React from 'react';
 import {
   Breadcrumb, IBreadcrumbItem
 } from 'office-ui-fabric-react/lib/Breadcrumb';
-import {
-  autobind
-} from '../../../Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
@@ -49,8 +46,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     );
   }
 
-  @autobind
-  private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
+  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
 
