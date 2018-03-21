@@ -1,12 +1,14 @@
-// Large ranges
-export const zIndex0 = 0;
-export const zIndex1 = 100;
-export const zIndex2 = 200;
-export const zIndex3 = 300;
-export const zIndex4 = 400;
-export const zIndex5 = 500;
+export namespace zIndex {
+  // large ranges
+  export const z0 = 0;
+  export const z1 = 100;
+  export const z2 = 200;
+  export const z3 = 300;
+  export const z4 = 400;
+  export const z5 = 500;
 
-// Small ranges
-export const zIndexBack = 0;
-export const zIndexMiddle = 5;
-export const zIndexFront = 10;
+  // small ranges
+  export const back = 0;
+  export const middle = 5;
+  export const front = 10;
+}
