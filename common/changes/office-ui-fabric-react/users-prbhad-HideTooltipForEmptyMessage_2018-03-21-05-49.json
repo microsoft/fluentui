@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Fixing issue with promise based error message not being announced by firefox + NVDA",
+      "comment": "Removing empty callout when tooltip content is empty",
       "type": "patch"
     }
   ],

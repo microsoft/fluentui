@@ -7,7 +7,6 @@ import {
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './HoverCard.Example.scss';
 
@@ -47,8 +46,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     );
   }
 
-  @autobind
-  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
+  private _onRenderItemColumn = (item: any, index: number, column: IColumn): JSX.Element => {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
@@ -68,8 +66,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     return item[column.key];
   }
 
-  @autobind
-  private _onRenderCompactCard(item: any): JSX.Element {
+  private _onRenderCompactCard = (item: any): JSX.Element => {
     return (
       <div className='hoverCardExample-compactCard'>
         <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
@@ -79,8 +76,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     );
   }
 
-  @autobind
-  private _onRenderExpandedCard(item: any): JSX.Element {
+  private _onRenderExpandedCard = (item: any): JSX.Element => {
     const { items, columns } = this.state;
     return (
       <div className='hoverCardExample-expandedCard'>

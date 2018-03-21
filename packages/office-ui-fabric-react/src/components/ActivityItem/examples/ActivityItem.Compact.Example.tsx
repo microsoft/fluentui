@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { css, classNamesFunction } from '../../../Utilities';
 import { ActivityItem } from '../ActivityItem';
+import { IActivityItemProps } from '../ActivityItem.types';
 import {
   getStyles,
   IActivityItemExampleStyleProps,
@@ -16,7 +17,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
     const classNames = getClassNames(getStyles);
 
-    const activityItemExamples = [
+    const activityItemExamples: Partial<IActivityItemProps & React.Props<{}>>[] = [
       {
         key: 1,
         activityDescription: [
@@ -58,7 +59,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
           <span key={ 1 } className={ css(classNames.nameText) }>Sabrina De Luca</span>,
           <span key={ 2 }> added this file</span>
         ],
-        activityIcon: React.createElement(Icon, { iconName: 'Add' }),
+        activityIcon: <Icon iconName={ 'Add' } />,
         isCompact: true
       },
       {
@@ -67,7 +68,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
           <span key={ 1 } className={ css(classNames.nameText) }>Chuan Rojumanong</span>,
           <span key={ 2 }> shared this file</span>
         ],
-        activityIcon: React.createElement(Icon, { iconName: 'Share' }),
+        activityIcon: <Icon iconName={ 'Share' } />,
         isCompact: true
       }
     ];
@@ -76,7 +77,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
     activityItemExamples.forEach((item) => {
       const props = item;
       activityExampleList.push(
-        <ActivityItem {...props} key={ item.key } className={ css(classNames.exampleRoot) } />
+        <ActivityItem { ...props } key={ item.key } className={ css(classNames.exampleRoot) } />
       );
     });
 

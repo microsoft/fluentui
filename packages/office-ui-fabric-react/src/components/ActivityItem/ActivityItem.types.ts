@@ -148,4 +148,10 @@ export interface IActivityItemStyles {
    * Styles applied to the timestamp at the end of each activity item.
    */
   timeStamp?: IStyle;
+
+  /**
+   * Styles applied to the timestamp in compact mode.
+   * This can occur if a host overrides the render behavior to force the timestamp to render.
+   */
+  isCompactTimeStamp?: IStyle;
 }

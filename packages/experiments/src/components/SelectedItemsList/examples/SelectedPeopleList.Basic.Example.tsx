@@ -2,8 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 import {
-  BaseComponent,
-  autobind
+  BaseComponent
 } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
@@ -51,11 +50,10 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     );
   }
 
-  @autobind
-  private _onRenderItem(props: ISelectedPeopleItemProps): JSX.Element {
+  private _onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
     return (
       <ExtendedSelectedItem
-        {...props}
+        { ...props }
         renderPersonaCoin={ this._renderPersonaElement }
       />
     );
@@ -70,13 +68,11 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     );
   }
 
-  @autobind
-  private _setComponentRef(component: SelectedPeopleList): void {
+  private _setComponentRef = (component: SelectedPeopleList): void => {
     this._selectionList = component;
   }
 
-  @autobind
-  private _onAddItemButtonClicked(): void {
+  private _onAddItemButtonClicked = (): void => {
     if (this._selectionList) {
       if (!this.index) {
         this.index = 0;
@@ -86,8 +82,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     }
   }
 
-  @autobind
-  private _onExpandItem(item: IExtendedPersonaProps): void {
+  private _onExpandItem = (item: IExtendedPersonaProps): void => {
     // tslint:disable-next-line:no-any
     this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
   }

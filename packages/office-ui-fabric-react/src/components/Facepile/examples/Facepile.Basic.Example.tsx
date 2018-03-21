@@ -4,7 +4,6 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-react/lib/Facepile';
 import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
@@ -80,24 +79,21 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     );
   }
 
-  @autobind
-  private _onChangeFadeIn(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChangeFadeIn = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
       prevState.imagesFadeIn = checked!;
       return prevState;
     });
   }
 
-  @autobind
-  private _onChangePersonaNumber(value: number): void {
+  private _onChangePersonaNumber = (value: number): void => {
     this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
       prevState.numberOfFaces = value;
       return prevState;
     });
   }
 
-  @autobind
-  private _onChangePersonaSize(value: IDropdownOption): void {
+  private _onChangePersonaSize = (value: IDropdownOption): void => {
     this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
       prevState.personaSize = value.key as PersonaSize;
       return prevState;

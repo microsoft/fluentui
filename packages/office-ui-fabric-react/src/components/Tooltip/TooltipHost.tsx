@@ -56,6 +56,8 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
+    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
+    const showTooltip = isTooltipVisible && isContentPresent;
 
     return (
       <div
@@ -72,7 +74,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
-        { isTooltipVisible && (
+        { showTooltip && (
           <Tooltip
             id={ tooltipId }
             delay={ delay }
