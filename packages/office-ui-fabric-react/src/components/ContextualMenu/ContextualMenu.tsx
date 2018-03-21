@@ -605,7 +605,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       >
         <span
           aria-hidden={ true }
-          style={ { display: 'flex', height: '100%' } }>
+          style={ { display: 'flex', height: '100%' } }
+        >
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
           { this._renderSplitDivider(item) }
           { this._renderSplitIconButton(item, classNames, index) }
@@ -880,7 +881,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _onItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
-    // TODO need to focus the container so that when the menu closes the previous focused item would be the container
+
     if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
@@ -890,6 +891,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onItemSubMenuExpand(item: IContextualMenuItem, target: HTMLElement) {
     if (this.state.expandedMenuItemKey !== item.key) {
 
+      // TODO need to focus the container so that when the menu closes the previous focused item would be the container
       if (this.state.expandedMenuItemKey) {
         this._onSubMenuDismiss();
       }
