@@ -149,7 +149,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           <DocumentCardLogo { ...logoProps } />
           <div className='ms-ConversationTile-TitlePreviewArea' >
             <DocumentCardTitle title='Conversation about anual report a very long long name, Title should be truncated on the long name.' shouldTruncate={ true } />
-            <DocumentCardTitle title='This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last sentences.  Do you still go on more than 4 lines.' shouldTruncate={ true } showAsSecondaryTitle={ true } />
+            <DocumentCardTitle title='This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last.' shouldTruncate={ true } showAsSecondaryTitle={ true } />
             <DocumentCardStatus statusIcon='attach' status=' 3 Attachments' />
           </div>
           <DocumentCardActivity

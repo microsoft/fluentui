@@ -295,7 +295,7 @@ $DocumentCard-title-lineHeight: 21px;
   line-height: 18px;
   overflow: hidden;
   word-wrap: break-word;
-  height: 59px;
+  height: 54px;
 }
 
 .logo {
@@ -306,7 +306,7 @@ $DocumentCard-title-lineHeight: 21px;
 }
 
 .status {
-  @include ms-margin(0, 16px, 8px, 16px);
+  @include ms-margin(8px, 16px, 8px, 16px);
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
   background-color: $ms-color-neutralLighter;
