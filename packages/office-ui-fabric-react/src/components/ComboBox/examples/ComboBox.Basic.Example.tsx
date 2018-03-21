@@ -273,9 +273,9 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         <ComboBox
           multiSelect
           selectedKeys={ this.state.selectedOptionKeys }
-          label='Basic controlled multi-select example:'
+          label='Basic controlled ComboBox multi-select example:'
           id='Basicdrop5'
-          ariaLabel='Basic ComboBox multi-select example'
+          ariaLabel='Basic controlled ComboBox multi-select example'
           allowFreeform={ true }
           autoComplete='on'
           options={ optionsMulti }
