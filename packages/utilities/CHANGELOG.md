@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Mar 2018 10:18:30 GMT and should not be manually modified.
+
+## 5.19.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- EventGroup.raise: event args are now correctly mixed into the event object.
 
 ## 5.19.0
 Tue, 20 Mar 2018 10:27:37 GMT

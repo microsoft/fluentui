@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.19.1",
+      "tag": "@uifabric/utilities_v5.19.1",
+      "date": "Wed, 21 Mar 2018 10:18:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d50399a80ffde20e5981c3c9a0f5e080016b342d",
+            "comment": "EventGroup.raise: event args are now correctly mixed into the event object."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.19.0",
       "tag": "@uifabric/utilities_v5.19.0",
       "date": "Tue, 20 Mar 2018 10:27:37 GMT",
