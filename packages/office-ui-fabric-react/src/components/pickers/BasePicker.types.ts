@@ -20,7 +20,7 @@ export interface IBasePicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBasePicker<T>) => void;
+  componentRef?: (component?: IBasePicker<T> | null) => void;
 
   /**
    * Function that specifies how the selected item will appear.

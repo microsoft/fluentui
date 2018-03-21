@@ -19,7 +19,7 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble | Teach
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITeachingBubble) => void;
+  componentRef?: (component: ITeachingBubble | null) => void;
 
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps

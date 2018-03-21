@@ -21,7 +21,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * Optional callback to access the IList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IList) => void;
+  componentRef?: (component: IList | null) => void;
 
   /** Optional classname to append to root list. */
   className?: string;

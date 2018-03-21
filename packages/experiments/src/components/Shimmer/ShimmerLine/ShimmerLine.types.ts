@@ -17,7 +17,7 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
    * Optional callback to access the IShimmerLine interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerLine) => void;
+  componentRef?: (component: IShimmerLine | null) => void;
 
   /**
    * Sets the height of the rectangle.

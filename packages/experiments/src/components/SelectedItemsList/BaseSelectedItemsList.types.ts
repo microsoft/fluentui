@@ -17,7 +17,7 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
 export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseSelectedItemsList<T>) => void;
+  componentRef?: (component?: IBaseSelectedItemsList<T> | null) => void;
 
   /**
    * The selection

@@ -33,7 +33,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IComboBox) => void;
+  componentRef?: (component: IComboBox | null) => void;
 
   /**
    * Collection of options for this ComboBox

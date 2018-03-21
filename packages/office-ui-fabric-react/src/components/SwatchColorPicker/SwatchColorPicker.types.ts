@@ -8,7 +8,7 @@ export interface ISwatchColorPickerProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (componentRef?: ISwatchColorPicker) => void;
+  componentRef?: (componentRef?: ISwatchColorPicker | null) => void;
 
   /**
    * the number of columns for the swatch color picker

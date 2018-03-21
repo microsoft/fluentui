@@ -10,7 +10,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * Optional callback to access the IMessageBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IMessageBar) => void;
+  componentRef?: (component: IMessageBar | null) => void;
 
   /**
    * The type of MessageBar to render.

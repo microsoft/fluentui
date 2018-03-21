@@ -11,7 +11,7 @@ export interface IKeytipProps {
    * Optional callback to access the Keytip component. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IKeytip) => void;
+  componentRef?: (component: IKeytip | null) => void;
 
   /**
    * Content to put inside the keytip

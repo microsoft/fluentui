@@ -15,7 +15,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IResizeGroup) => void;
+  componentRef?: (component: IResizeGroup | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

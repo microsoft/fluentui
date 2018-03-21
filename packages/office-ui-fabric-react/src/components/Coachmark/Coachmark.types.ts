@@ -8,7 +8,7 @@ export interface ICoachmark {
 }
 
 export interface ICoachmarkTypes extends React.Props<Coachmark> {
-  componentRef?: (component: ICoachmark) => void;
+  componentRef?: (component: ICoachmark | null) => void;
 
   /**
    * Get styles method.

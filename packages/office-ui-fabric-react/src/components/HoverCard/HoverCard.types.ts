@@ -15,7 +15,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * Optional callback to access the IHoverCardHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IHoverCard) => void;
+  componentRef?: (component: IHoverCard | null) => void;
 
   /**
    * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps

@@ -16,7 +16,7 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * Optional callback to access the IScrollablePane interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IScrollablePane) => void;
+  componentRef?: (component: IScrollablePane | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

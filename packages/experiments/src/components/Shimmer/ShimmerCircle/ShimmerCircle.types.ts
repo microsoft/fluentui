@@ -17,7 +17,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
    * Optional callback to access the IShimmerCircle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerCircle) => void;
+  componentRef?: (component: IShimmerCircle | null) => void;
 
   /**
    * Sets the height of the circle.

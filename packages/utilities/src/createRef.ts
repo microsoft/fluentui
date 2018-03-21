@@ -1,5 +1,5 @@
 export type RefObject<T> = {
-  (component: T): void;
+  (component: T | null): void;
   value: T | null;
 };
 

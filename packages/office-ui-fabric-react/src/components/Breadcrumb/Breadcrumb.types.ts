@@ -13,7 +13,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IBreadcrumb) => void;
+  componentRef?: (component: IBreadcrumb | null) => void;
 
   /**
    * Collection of breadcrumbs to render

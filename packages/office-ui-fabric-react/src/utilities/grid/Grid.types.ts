@@ -7,7 +7,7 @@ export interface IGridProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (componentRef?: IGrid) => void;
+  componentRef?: (componentRef?: IGrid | null) => void;
 
   /**
    * The items to turn into a grid

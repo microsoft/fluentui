@@ -40,7 +40,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITextField) => void;
+  componentRef?: (component: ITextField | null) => void;
 
   /**
    * Whether or not the textfield is a multiline textfield.

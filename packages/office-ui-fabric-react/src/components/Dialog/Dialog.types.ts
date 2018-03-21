@@ -18,7 +18,7 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDialog) => void;
+  componentRef?: (component: IDialog | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

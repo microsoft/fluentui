@@ -18,7 +18,7 @@ export interface INavProps {
    * Optional callback to access the INav interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: INav) => void;
+  componentRef?: (component: INav | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

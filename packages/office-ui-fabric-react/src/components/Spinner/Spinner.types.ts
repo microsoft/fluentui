@@ -12,7 +12,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
    * Optional callback to access the ISpinner interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISpinner) => void;
+  componentRef?: (component: ISpinner | null) => void;
 
   /**
    * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.

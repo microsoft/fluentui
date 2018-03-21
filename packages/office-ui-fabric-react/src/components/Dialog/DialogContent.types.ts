@@ -14,7 +14,7 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
   * the public methods and properties of the component.
   */
-  componentRef?: (component: IDialogContent) => void;
+  componentRef?: (component: IDialogContent | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
