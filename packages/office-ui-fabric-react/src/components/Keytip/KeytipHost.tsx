@@ -6,6 +6,7 @@ import { KeytipManager, getNativeKeytipProps } from '../../utilities/keytips';
 
 export interface IKeytipHostProps {
   keytipProps?: IKeytipProps;
+  ariaDescribedBy?: string;
 }
 
 /**
@@ -34,10 +35,14 @@ export class KeytipHost extends BaseComponent<IKeytipHostProps & IRenderComponen
   }
 
   public render(): JSX.Element {
-    const { children, keytipProps } = this.props;
-    let nativeKeytipProps = {};
+    const { children, keytipProps, ariaDescribedBy } = this.props;
+    let nativeKeytipProps: any = {};
     if (keytipProps) {
       nativeKeytipProps = getNativeKeytipProps(keytipProps);
+      if (ariaDescribedBy) {
+        // Append our aria-describedby to the one given
+        nativeKeytipProps['aria-describedby'] = ariaDescribedBy + nativeKeytipProps['aria-describedby'];
+      }
     }
     return children(nativeKeytipProps);
   }

@@ -21,6 +21,30 @@ export const keytipConfig: IKeytipConfig = {
           }
         },
         {
+          id: 'Button2Pivot1Keytip',
+          sequence: { keys: ['r', '7'] },
+          content: 'R7',
+          optionalProps: {
+            onExecute: btnExecute
+          }
+        },
+        {
+          id: 'Button3Pivot1Keytip',
+          sequence: { keys: ['r', '9'] },
+          content: 'R9',
+          optionalProps: {
+            onExecute: btnExecute
+          }
+        },
+        {
+          id: 'Button5Pivot1Keytip',
+          sequence: { keys: ['r', '8'] },
+          content: 'R8',
+          optionalProps: {
+            onExecute: btnExecute
+          }
+        },
+        {
           id: 'Checkbox1Pivot1Keytip',
           sequence: { keys: ['1', 'a'] },
           content: '1A',
@@ -141,7 +165,7 @@ export const keytipConfig: IKeytipConfig = {
               ]
             },
             {
-              id: 'SubmenuKeytip3',
+              id: 'SubmenuKeytip5',
               sequence: { keys: ['r'] },
               content: 'r'
             },

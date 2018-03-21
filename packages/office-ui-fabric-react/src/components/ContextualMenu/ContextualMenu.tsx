@@ -480,13 +480,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
+    const nativeProps = getNativeProps(item, anchorProperties);
 
     return (
       <div>
-        <KeytipHost keytipProps={ item.keytipProps }>
+        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
           { (keytipAttributes: any): JSX.Element => (
             <a
-              { ...getNativeProps(item, anchorProperties) }
+              { ...nativeProps }
               { ...keytipAttributes }
               href={ item.href }
               target={ item.target }
@@ -570,7 +571,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     return (
-      <KeytipHost keytipProps={ item.keytipProps }>
+      <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }>
         { (keytipAttributes: any): JSX.Element => (
           <button
             { ...buttonNativeProperties }

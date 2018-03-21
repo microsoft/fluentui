@@ -205,11 +205,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let command: React.ReactNode;
     if (item.href) {
       // Allow the disabled property on anchor elements for commandbar
+      const nativeProps = getNativeProps(item, anchorProperties.concat(['disabled']));
       command = (
-        <KeytipHost keytipProps={ item.keytipProps }>
+        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
           { (keytipAttributes: any): JSX.Element => (
             <a
-              { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
+              { ...nativeProps }
               { ...keytipAttributes }
               id={ this._id + item.key }
               className={ className }
@@ -237,11 +238,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         </KeytipHost>
       );
     } else if (isLink) {
+      const nativeProps = getNativeProps(item, buttonProperties);
       command = (
-        <KeytipHost keytipProps={ item.keytipProps }>
+        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
           { (keytipAttributes: any): JSX.Element => (
             <button
-              { ...getNativeProps(item, buttonProperties) }
+              { ...nativeProps }
               { ...keytipAttributes }
               id={ this._id + item.key }
               className={ className }
@@ -268,16 +270,18 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
               ) : (null) }
             </button>
-          ) }
-        </KeytipHost>
+          )
+          }
+        </KeytipHost >
       );
     } else {
       // Allow the disabled property on div elements for commandbar
+      const nativeProps = getNativeProps(item, divProperties.concat(['disabled']));
       command = (
-        <KeytipHost keytipProps={ item.keytipProps }>
+        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
           { (keytipAttributes: any): JSX.Element => (
             <div
-              { ...getNativeProps(item, divProperties.concat(['disabled'])) }
+              { ...nativeProps }
               { ...keytipAttributes }
               id={ this._id + item.key }
               className={ className }

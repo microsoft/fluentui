@@ -1,4 +1,12 @@
-import { IKeySequence, convertSequencesToKeytipID, dataKtpId, keySequencesAreEqual, ktpLayerId, ktpAriaSeparatorId } from '../../Utilities';
+import {
+  IKeySequence,
+  convertSequencesToKeytipID,
+  dataKtpTarget,
+  keySequencesAreEqual,
+  ktpLayerId,
+  ktpAriaSeparatorId,
+  dataKtpExecuteTarget
+} from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from './KeytipManager';
 
@@ -40,7 +48,7 @@ export function unregisterKeytip(keytipProps: IKeytipProps): void {
  * @param keySequences - Full IKeySequence for a Keytip
  */
 export function constructKeytipTargetFromSequences(keySequences: IKeySequence[]): string {
-  return '[' + dataKtpId + '="' + convertSequencesToKeytipID(keySequences) + '"]';
+  return '[' + dataKtpTarget + '="' + convertSequencesToKeytipID(keySequences) + '"]';
 }
 
 /**
@@ -49,7 +57,16 @@ export function constructKeytipTargetFromSequences(keySequences: IKeySequence[])
  * @param keytipId - ID of the Keytip
  */
 export function constructKeytipTargetFromId(keytipId: string): string {
-  return '[' + dataKtpId + '="' + keytipId + '"]';
+  return '[' + dataKtpTarget + '="' + keytipId + '"]';
+}
+
+/**
+ * Constructs the data-ktp-execute-target attribute selector from a keytip ID
+ *
+ * @param keytipId - ID of the Keytip
+ */
+export function constructKeytipExecuteTargetFromId(keytipId: string): string {
+  return '[' + dataKtpExecuteTarget + '="' + keytipId + '"]';
 }
 
 /**
@@ -60,7 +77,7 @@ export function getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequ
   const describedby = ktpLayerId;
   if (!keySequences.length) {
     // Return just the layer ID
-    return describedby;
+    return ' ' + describedby;
   }
 
   // Remove overflow from describedby if present
@@ -70,7 +87,8 @@ export function getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequ
     });
   }
 
-  return keySequences.reduce((prevValue: string, sequence: IKeySequence, currentIndex: number): string => {
+  // Add beginning space so it can be easily appended
+  return ' ' + keySequences.reduce((prevValue: string, sequence: IKeySequence, currentIndex: number): string => {
     return prevValue + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences.slice(0, currentIndex + 1));
   }, describedby);
 }
@@ -90,7 +108,8 @@ export function getNativeKeytipProps(keytipProps?: IKeytipProps): any {
 
     return {
       'aria-describedby': ariaDescribedBy,
-      'data-ktp-id': ktpId
+      'data-ktp-target': ktpId,
+      'data-ktp-execute-target': ktpId
     };
   }
   return undefined;

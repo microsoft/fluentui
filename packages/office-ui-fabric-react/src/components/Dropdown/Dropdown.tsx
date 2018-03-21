@@ -78,6 +78,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       'selectedKey': 'multiSelect'
     });
 
+    const i = 0;
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
 
@@ -157,57 +158,62 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         { label && (
           <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._dropdownLabel } required={ required }>{ label }</Label>
         ) }
-        <div
-          data-is-focusable={ !disabled }
-          ref={ this._dropDown }
-          id={ id }
-          tabIndex={ disabled ? -1 : 0 }
-          aria-expanded={ isOpen ? 'true' : 'false' }
-          role='combobox'
-          aria-autocomplete='none'
-          aria-live={ disabled || isOpen ? 'off' : 'assertive' }
-          aria-label={ ariaLabel }
-          aria-describedby={ id + '-option' }
-          aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : null }
-          aria-disabled={ disabled }
-          aria-owns={ isOpen ? id + '-list' : null }
-          { ...divProps }
-          className={ css(
-            'ms-Dropdown',
-            styles.root,
-            className,
-            isOpen! && 'is-open',
-            disabled! && ('is-disabled ' + styles.rootIsDisabled),
-            required! && 'is-required',
+        <KeytipHost keytipProps={ keytipProps }>
+          { (keytipAttributes: any): JSX.Element => (
+            <div
+              { ...keytipAttributes }
+              data-is-focusable={ !disabled }
+              ref={ this._dropDown }
+              id={ id }
+              tabIndex={ disabled ? -1 : 0 }
+              aria-expanded={ isOpen ? 'true' : 'false' }
+              role='combobox'
+              aria-autocomplete='none'
+              aria-live={ disabled || isOpen ? 'off' : 'assertive' }
+              aria-label={ ariaLabel }
+              aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+              aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : null }
+              aria-disabled={ disabled }
+              aria-owns={ isOpen ? id + '-list' : null }
+              { ...divProps }
+              className={ css(
+                'ms-Dropdown',
+                styles.root,
+                className,
+                isOpen! && 'is-open',
+                disabled! && ('is-disabled ' + styles.rootIsDisabled),
+                required! && 'is-required',
+              ) }
+              onBlur={ this._onDropdownBlur }
+              onKeyDown={ this._onDropdownKeyDown }
+              onKeyUp={ this._onDropdownKeyUp }
+              onClick={ this._onDropdownClick }
+            >
+              <span
+                id={ id + '-option' }
+                className={ css(
+                  'ms-Dropdown-title', styles.title,
+                  !selectedOptions.length && 'ms-Dropdown-titleIsPlaceHolder',
+                  !selectedOptions.length && styles.titleIsPlaceHolder,
+                  (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
+                }
+                aria-atomic={ true }
+                role='textbox'
+                aria-readonly='true'
+              >
+                { // If option is selected render title, otherwise render the placeholder text
+                  selectedOptions.length ? (
+                    onRenderTitle(selectedOptions, this._onRenderTitle)
+                  ) :
+                    onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
+                }
+              </span>
+              <span className={ css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper) }>
+                { onRenderCaretDown(this.props, this._onRenderCaretDown) }
+              </span>
+            </div>
           ) }
-          onBlur={ this._onDropdownBlur }
-          onKeyDown={ this._onDropdownKeyDown }
-          onKeyUp={ this._onDropdownKeyUp }
-          onClick={ this._onDropdownClick }
-        >
-          <span
-            id={ id + '-option' }
-            className={ css(
-              'ms-Dropdown-title', styles.title,
-              !selectedOptions.length && 'ms-Dropdown-titleIsPlaceHolder',
-              !selectedOptions.length && styles.titleIsPlaceHolder,
-              (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
-            }
-            aria-atomic={ true }
-            role='textbox'
-            aria-readonly='true'
-          >
-            { // If option is selected render title, otherwise render the placeholder text
-              selectedOptions.length ? (
-                onRenderTitle(selectedOptions, this._onRenderTitle)
-              ) :
-                onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
-            }
-          </span>
-          <span className={ css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper) }>
-            { onRenderCaretDown(this.props, this._onRenderCaretDown) }
-          </span>
-        </div>
+        </KeytipHost>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }

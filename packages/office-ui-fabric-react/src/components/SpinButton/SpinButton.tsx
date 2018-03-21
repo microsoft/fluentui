@@ -198,6 +198,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <KeytipHost keytipProps={ keytipProps }>
             { (keytipAttributes: any): JSX.Element => (
               <input
+                { ...keytipAttributes }
                 value={ value }
                 id={ this._inputId }
                 onChange={ this._onChange }

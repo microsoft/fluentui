@@ -13,7 +13,7 @@ import {
   findIndex,
   ktpLayerId
 } from '../../Utilities';
-import { constructKeytipTargetFromId } from './KeytipUtils';
+import { constructKeytipTargetFromId, constructKeytipExecuteTargetFromId } from './KeytipUtils';
 
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
@@ -298,7 +298,7 @@ export class KeytipManager {
    * @return {HTMLElement} DOM element of the keytip
    */
   private _getKeytipDOMElement(keytipId: string): HTMLElement {
-    const dataKeytipId = constructKeytipTargetFromId(keytipId);
-    return getDocument()!.querySelector(dataKeytipId) as HTMLElement;
+    const dataKtpExecuteTarget = constructKeytipExecuteTargetFromId(keytipId);
+    return getDocument()!.querySelector(dataKtpExecuteTarget) as HTMLElement;
   }
 }

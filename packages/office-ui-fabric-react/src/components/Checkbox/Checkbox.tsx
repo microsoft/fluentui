@@ -117,7 +117,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
             aria-disabled={ disabled }
             aria-label={ ariaLabel }
             aria-labelledby={ ariaLabelledBy }
-            aria-describedby={ ariaDescribedBy }
+            aria-describedby={ (ariaDescribedBy || '') + (keytipAttributes['aria-describedby'] || '') }
             aria-posinset={ ariaPositionInSet }
             aria-setsize={ ariaSetSize }
           >

@@ -312,15 +312,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
-        <div
-          ref={ this._comboBoxWrapper }
-          id={ id + 'wrapper' }
-          className={ this._classNames.root }
-        >
-          <KeytipHost keytipProps={ keytipProps }>
-            { (keytipAttributes: any): JSX.Element => (
+        <KeytipHost keytipProps={ keytipProps }>
+          { (keytipAttributes: any): JSX.Element => (
+            <div
+              data-ktp-target={ keytipAttributes['data-ktp-target'] }
+              ref={ this._comboBoxWrapper }
+              id={ id + 'wrapper' }
+              className={ this._classNames.root }
+            >
               <Autofill
-                { ...keytipAttributes }
+                data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
                 data-is-interactable={ !disabled }
                 ref={ this._comboBox }
                 id={ id + '-input' }
@@ -339,7 +340,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 readOnly={ disabled || !allowFreeform }
                 aria-labelledby={ (label && (id + '-label')) }
                 aria-label={ ((ariaLabel && !label) && ariaLabel) }
-                aria-describedby={ (id + '-option') }
+                aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
                 aria-activedescendant={ this._getAriaActiveDescentValue() }
                 aria-disabled={ disabled }
                 aria-owns={ (id + '-list') }
@@ -350,21 +351,21 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
                 title={ title }
               />
-            ) }
-          </KeytipHost>
-          <IconButton
-            className={ 'ms-ComboBox-CaretDown-button' }
-            styles={ this._getCaretButtonStyles() }
-            role='presentation'
-            aria-hidden={ isButtonAriaHidden }
-            data-is-focusable={ false }
-            tabIndex={ -1 }
-            onClick={ this._onComboBoxClick }
-            iconProps={ buttonIconProps }
-            disabled={ disabled }
-            checked={ isOpen }
-          />
-        </div>
+              <IconButton
+                className={ 'ms-ComboBox-CaretDown-button' }
+                styles={ this._getCaretButtonStyles() }
+                role='presentation'
+                aria-hidden={ isButtonAriaHidden }
+                data-is-focusable={ false }
+                tabIndex={ -1 }
+                onClick={ this._onComboBoxClick }
+                iconProps={ buttonIconProps }
+                disabled={ disabled }
+                checked={ isOpen }
+              />
+            </div>
+          ) }
+        </KeytipHost>
         { isOpen && (
           (onRenderContainer as any)({
             ...this.props,
@@ -412,10 +413,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
-   * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
-   *  in to the auto fill's componentWillReceiveProps
-   * @returns {string} - the updated value to set, if needed
-   */
+* @param { IAutofillProps } defaultVisibleValue - the defaultVisibleValue that got passed
+    *  in to the auto fill's componentWillReceiveProps
+* @returns { string } - the updated value to set, if needed
+    */
   private _onUpdateValueInAutofillWillReceiveProps = (): string | null => {
     const comboBox = this._comboBox.value;
 
@@ -437,11 +438,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentDidUpdate handler for the auto fill component
    *
-   * @param { string } defaultVisibleValue - the current defaultVisibleValue in the auto fill's componentDidUpdate
-   * @param { string } suggestedDisplayValue - the current suggestedDisplayValue in the auto fill's componentDidUpdate
-   * @returns {boolean} - should the full value of the input be selected?
-   * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
-   */
+ * @param { string } defaultVisibleValue - the current defaultVisibleValue in the auto fill's componentDidUpdate
+ * @param { string } suggestedDisplayValue - the current suggestedDisplayValue in the auto fill's componentDidUpdate
+ * @returns { boolean } - should the full value of the input be selected?
+      * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
+      */
   private _onShouldSelectFullInputValueInAutofillComponentDidUpdate = (): boolean => {
     return this._currentVisibleValue === this.state.suggestedDisplayValue;
   }
@@ -449,8 +450,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Get the correct value to pass to the input
    * to show to the user based off of the current props and state
-   * @returns {string} the value to pass to the input
-   */
+* @returns { string } the value to pass to the input
+    */
   private _getVisibleValue = (): string | undefined => {
     const {
       value,
@@ -515,8 +516,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Is the index within the bounds of the array?
    * @param options - options to check if the index is valid for
    * @param index - the index to check
-   * @returns {boolean} - true if the index is valid for the given options, false otherwise
-   */
+     * @returns { boolean } - true if the index is valid for the given options, false otherwise
+          */
   private _indexWithinBounds(options: IComboBoxOption[] | undefined, index: number): boolean {
     if (!options) {
       return false;
@@ -655,13 +656,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-   * Walk along the options starting at the index, stepping by the delta (positive or negative)
-   * looking for the next valid selectable index (e.g. skipping headings and dividers)
-   * @param index - the index to get the next selectable index from
-   * @param delta - optional delta to step by when finding the next index, defaults to 0
-   * @returns {number} - the next valid selectable index. If the new index is outside of the bounds,
-   * it will snap to the edge of the options array. If delta == 0 and the given index is not selectable
-   */
+  * Walk along the options starting at the index, stepping by the delta (positive or negative)
+  * looking for the next valid selectable index (e.g. skipping headings and dividers)
+  * @param index - the index to get the next selectable index from
+  * @param delta - optional delta to step by when finding the next index, defaults to 0
+     * @returns { number } - the next valid selectable index. If the new index is outside of the bounds,
+          * it will snap to the edge of the options array. If delta == 0 and the given index is not selectable
+          */
   private _getNextSelectableIndex(index: number, searchDirection: SearchDirection): number {
     const { currentOptions } = this.state;
 
@@ -1151,8 +1152,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Get the index of the option that is marked as selected
    * @param options - the comboBox options
    * @param selectedKey - the known selected key to find
-   * @returns { number } - the index of the selected option, -1 if not found
-   */
+* @returns { number } - the index of the selected option, -1 if not found
+    */
   private _getSelectedIndex(options: IComboBoxOption[] | undefined, selectedKey: string | number | undefined): number {
     if (options === undefined || selectedKey === undefined) {
       return -1;
