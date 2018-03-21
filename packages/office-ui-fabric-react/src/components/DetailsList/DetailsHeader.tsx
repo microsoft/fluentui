@@ -29,7 +29,7 @@ const INNER_PADDING = 16;
 const ISPADDED_WIDTH = 24;
 
 export interface IDetailsHeader {
-  focus(): boolean;
+  focus: () => boolean;
 }
 
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
@@ -517,9 +517,12 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         movement = -movement;
       }
 
+      const column = columns[columnResizeDetails!.columnIndex];
+      const requestedSize = columnResizeDetails!.columnMinWidth + movement;
+
       onColumnResized(
-        columns[columnResizeDetails!.columnIndex],
-        columnResizeDetails!.columnMinWidth + movement,
+        column,
+        !!column.maxWidth ? Math.min(column.maxWidth, requestedSize) : requestedSize,
         columnResizeDetails!.columnIndex
       );
     }
