@@ -148,12 +148,6 @@ export interface IDocumentCardPreviewImage {
   previewIconProps?: IIconProps;
 
   /**
-  * The props for the preview text.
-  * If provided, text will be rendered instead of image.
-  */
-  previewTextProps?: string;
-
-  /**
    * The props for the preview icon container classname.
    * If provided, icon container classname will be used..
    */

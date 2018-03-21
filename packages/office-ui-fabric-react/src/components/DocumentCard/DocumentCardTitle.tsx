@@ -9,7 +9,7 @@ import {
 } from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.types';
 import * as stylesImport from './DocumentCard.scss';
-import { Icon } from '../../Icon';
+
 const styles: any = stylesImport;
 
 export interface IDocumentCardTitleState {

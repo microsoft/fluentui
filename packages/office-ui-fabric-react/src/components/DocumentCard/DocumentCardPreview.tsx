@@ -43,16 +43,6 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     );
   }
 
-  private _renderPreviewText(previewText?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    return (
-      <div>
-        { previewText &&
-          <div className={ css('ms-DocumentCardPreview', styles.previewTextContainer) }> { previewText } </div>
-        }
-      </div>
-    );
-  }
-
   private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
     const iconContainerClass = previewIconContainerClass ? previewIconContainerClass : 'ms-DocumentCardPreview-iconContainer';

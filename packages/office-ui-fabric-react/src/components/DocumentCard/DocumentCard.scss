@@ -305,14 +305,6 @@ $DocumentCard-title-lineHeight: 21px;
   @include ms-padding(16px, 16px, 0, 16px);
 }
 
-
-.previewTextContainer {
-  @include ms-padding(8px, 16px, 8px, 16px);
-  display: block;
-  @include ms-font-m;
-  color: $ms-color-neutralSecondary;
-}
-
 .status {
   @include ms-margin(0, 16px, 8px, 16px);
   @include ms-font-m;
