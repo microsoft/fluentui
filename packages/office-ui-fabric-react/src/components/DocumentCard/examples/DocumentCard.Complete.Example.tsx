@@ -87,14 +87,6 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
       ]
     };
 
-    const previewTextProps: IDocumentCardPreviewProps = {
-      previewImages: [
-        {
-          previewTextProps: 'This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card!'
-        }
-      ]
-    };
-
     const logoProps: IDocumentCardLogoProps = {
       logoIcon: 'OutlookLogo'
     };
@@ -152,12 +144,45 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
             views={ 432 }
           />
         </DocumentCard>
+        <p />Card Logo, Text Preview CardStatus are used on below examples.<p />
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardLogo { ...logoProps } />
+          <DocumentCardTitle title='Conversation about anual report a very long long name, Title should be truncated on the long name.' shouldTruncate={ true } />
+          <DocumentCardTitle title='This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last sentences.  Do you still go on more than 4 lines.' shouldTruncate={ true } showAsSecondaryTitle={ true } />
+          <DocumentCardStatus statusIcon='attach' status=' 3 Attachments' />
+          <DocumentCardActivity
+            activity='Sent March 13, 2018'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
+              ]
+            }
+          />
+        </DocumentCard>
         <p />
         <DocumentCard onClickHref='http://bing.com'>
           <DocumentCardLogo { ...logoProps } />
-          <DocumentCardTitle title='Conversation about anual report a very long long name' />
-          <DocumentCardPreview { ...previewTextProps } />
+          <DocumentCardTitle title='Conversation about anual Report' />
+          <DocumentCardTitle title='This is the email content preview, help.' showAsSecondaryTitle={ true } />
           <DocumentCardStatus statusIcon='attach' status=' 3 Attachments' />
+          <DocumentCardActivity
+            activity='Sent March 13, 2018'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
+              ]
+            }
+          />
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardLogo { ...logoProps } />
+          <DocumentCardTitle title='Conversation about anual report' shouldTruncate={ true } />
+          <DocumentCardTitle title='This is the email content preview, please feel free to give!' shouldTruncate={ true } showAsSecondaryTitle={ true } />
           <DocumentCardActivity
             activity='Sent March 13, 2018'
             people={

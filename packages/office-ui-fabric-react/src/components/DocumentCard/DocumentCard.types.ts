@@ -176,6 +176,12 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
    * @defaultvalue true
    */
   shouldTruncate?: boolean;
+
+  /**
+   * Whether show as title as secondary title style such as smaller font and lighter color.
+   * @defaultvalue false
+   */
+  showAsSecondaryTitle?: boolean;
 }
 
 export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {

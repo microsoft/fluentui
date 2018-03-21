@@ -22,18 +22,14 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
       preview = this._renderPreviewList(previewImages);
       isFileList = true;
     } else if (previewImages.length === 1) {
-      if (previewImages[0].previewTextProps) {
-        return this._renderPreviewText(previewImages[0].previewTextProps);
-      } else {
-        // Render a single preview
-        preview = this._renderPreviewImage(previewImages[0]);
+      // Render a single preview
+      preview = this._renderPreviewImage(previewImages[0]);
 
-        // Override the border color if an accent color was provided
-        if (previewImages[0].accentColor) {
-          style = {
-            borderBottomColor: previewImages[0].accentColor
-          };
-        }
+      // Override the border color if an accent color was provided
+      if (previewImages[0].accentColor) {
+        style = {
+          borderBottomColor: previewImages[0].accentColor
+        };
       }
     }
 
@@ -59,7 +55,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
 
   private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
-    let iconContainerClass = previewIconContainerClass ? previewIconContainerClass : 'ms-DocumentCardPreview-iconContainer';
+    const iconContainerClass = previewIconContainerClass ? previewIconContainerClass : 'ms-DocumentCardPreview-iconContainer';
 
     if (previewIconProps) {
       return (
