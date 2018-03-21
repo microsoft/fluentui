@@ -247,8 +247,30 @@ export interface IPersonaStyleProps {
    * Custom class name.
    */
   className?: string;
+  personaSize?: PersonaSize;
+  readOnly?: boolean;
+  showSecondaryText?: boolean;
+  darkText?: boolean;
+  isSelectable?: boolean;
+  extraLarge?: boolean;
+  isAvailable?: boolean;
+  isAway?: boolean;
+  isBlocked?: boolean;
+  isBusy?: boolean;
+  isDoNotDisturb?: boolean;
+  isOffline?: boolean;
 }
 
 export interface IPersonaStyles {
   root: IStyle;
+  placeholder?: IStyle;
+  presense?: IStyle;
+  presenseIcon?: IStyle;
+  details?: IStyle;
+  primaryText?: IStyle;
+  secondaryText?: IStyle;
+  tertiaryText?: IStyle;
+  optionalText?: IStyle;
+  textContent?: IStyle;
+
 }
