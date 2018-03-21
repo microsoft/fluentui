@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Mar 2018 10:18:30 GMT and should not be manually modified.
+
+## 5.67.0
+Wed, 21 Mar 2018 10:18:30 GMT
+
+### Minor changes
+
+- Reordered the logic in CommandBar that decides to render an anchor or button tag so that the anchor tag can have both an href and onclick attribute.
+- Add `hasFocus` api in `SearchBox` that returns a flag indicating whether `SearchBox` has focus or not.
+
+### Patches
+
+- DetailsList: headers now resize correctly and respect maxWidth.
+- Toggle: Updating to use flexbox positioning
+- TextField: Fixing issue with promise based error message not being announced by firefox + NVDA
 
 ## 5.66.0
 Tue, 20 Mar 2018 10:27:37 GMT
