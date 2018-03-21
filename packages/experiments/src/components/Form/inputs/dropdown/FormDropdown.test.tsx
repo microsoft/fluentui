@@ -8,7 +8,7 @@ import { Form } from '../../Form';
 import { DEFAULT_DEBOUNCE } from '../../FormBaseInput';
 import { FormDropdown } from './FormDropdown';
 
-describe('FormDropdown Unit Tests', () => {
+describe.skip('FormDropdown Unit Tests', () => {
   describe('Renders for all combinations of props', () => {
     let renderedForm: Form;
     let renderedInput: HTMLElement;

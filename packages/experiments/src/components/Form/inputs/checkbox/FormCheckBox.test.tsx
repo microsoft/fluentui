@@ -7,7 +7,7 @@ import { Form } from '../../Form';
 import { DEFAULT_DEBOUNCE } from '../../FormBaseInput';
 import { FormCheckBox } from './FormCheckBox';
 
-describe('FormCheckBox Unit Tests', () => {
+describe.skip('FormCheckBox Unit Tests', () => {
   let sandbox: sinon.SinonSandbox;
 
   beforeAll(() => {
