@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
-import { DetailsListLayoutMode } from './DetailsList.types';
+import { DetailsListLayoutMode, IColumn } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
-import { EventGroup } from '../../Utilities';
+import { EventGroup, createRef } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
 const _items: {}[] = [];
 const _selection = new Selection();
+const _columns: IColumn[] = [
+  { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
+  { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
+];
 
 _selection.setItems(_items);
 
@@ -19,35 +23,37 @@ describe('DetailsHeader', () => {
         selection={ _selection }
         selectionMode={ SelectionMode.multiple }
         layoutMode={ DetailsListLayoutMode.fixedColumns }
-        columns={ [
-          { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
-          { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
-        ] }
+        columns={ _columns }
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('can resize columns', () => {
-    let header: any;
     let lastResize = { size: -1, index: -1 };
 
+    const onColumnResized = (
+      column: IColumn,
+      size: number,
+      index: number
+    ): { size: number; index: number; } => lastResize = { size, index };
+    const headerRef = createRef<any>();
+
+    const columns = [];
     const wrapper = mount(
       <DetailsHeader
-        componentRef={ h => header = h }
+        componentRef={ headerRef }
         selection={ _selection }
         selectionMode={ SelectionMode.multiple }
         layoutMode={ DetailsListLayoutMode.fixedColumns }
-        columns={ [
-          { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
-          { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
-        ] }
-        onColumnResized={ (column, size, index) => lastResize = { size, index } }
+        columns={ _columns }
+        onColumnResized={ onColumnResized }
       />
     );
 
     const rootElement = wrapper.getDOMNode();
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
+    const header: any = headerRef.value;
 
     // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
     EventGroup.raise(
