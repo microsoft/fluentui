@@ -604,6 +604,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         data-is-focusable={ true }
       >
         <span
+          aria-hidden={ true }
           style={ { display: 'flex', height: '100%' } }>
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
           { this._renderSplitDivider(item) }
