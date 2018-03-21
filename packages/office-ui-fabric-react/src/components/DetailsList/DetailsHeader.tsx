@@ -104,9 +104,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     const { selection } = this.props;
     const focusZone = this._root.value;
     const rootElement = ReactDOM.findDOMNode(focusZone as any);
-    if (!rootElement) {
-      return;
-    }
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
 
