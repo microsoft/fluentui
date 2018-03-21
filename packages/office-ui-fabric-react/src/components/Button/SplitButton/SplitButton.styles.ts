@@ -19,11 +19,14 @@ export const getStyles = memoizeFunction((
   };
 
   const splitButtonStyles: IButtonStyles = {
-    splitButtonContainer: {
-      position: 'relative',
-      display: 'inline-block',
-      border: '1px solid transparent'
-    },
+    splitButtonContainer: [
+      getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+      {
+        position: 'relative',
+        display: 'inline-block',
+        border: '1px solid transparent'
+      }
+    ],
     splitButtonContainerFocused: {
       outline: 'none!important',
       border: '1px solid'

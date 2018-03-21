@@ -446,9 +446,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onSplitButtonContainerKeyDown }
         ref={ this._splitButtonContainer }
-        data-is-focusable={ true }
+        data-is-focusable={ !disabled && !primaryDisabled }
         onClick={ !disabled && !primaryDisabled ? onClick : undefined }
-        tabIndex={ 0 }
+        tabIndex={ !disabled && !primaryDisabled ? 0 : undefined }
       >
         <span
           style={ { 'display': 'flex' } }
@@ -474,7 +474,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = this.props;
 
     const {
-      splitButtonAriaLabel
+      splitButtonAriaLabel,
+      disabled,
+      primaryDisabled
     } = this.props;
 
     if (menuIconProps === undefined) {
@@ -495,8 +497,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-expanded': this._isExpanded,
       'data-is-focusable': false
     };
-
-    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
+    const isPrimaryButtonDisabled = (!disabled && primaryDisabled);
+    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ isPrimaryButtonDisabled ? -1 : undefined } />;
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
