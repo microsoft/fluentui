@@ -878,6 +878,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
+    if (ev) {
+
+    }
     if (ev.which === openKey) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
