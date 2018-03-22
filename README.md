@@ -89,6 +89,40 @@ console.log(
 
 Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
+### Browserless Testing
+
+In unit or end-to-end tests that run in an SSR-like (non-browser) environment such as Node, you'll need to disable style loading.
+
+```typescript
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+initializeIcons('dist/');
+
+// Configure load-themed-styles to avoid registering styles.
+let themeLoader = require('@microsoft/load-themed-styles');
+themeLoader.configureLoadStyles((styles) => {
+  // noop
+});
+
+// Set ssr mode to true, and rtl to false.
+let library = require('office-ui-fabric-react/lib/Utilities');
+library.setSSR(true);
+library.setRTL(false);
+
+// Assume a large screen.
+let responsiveLib = require('office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode');
+responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
+```
+
+You'll also want to mock out requiring `.scss` files.
+In Jest:
+
+```javascript
+  moduleNameMapper: {
+    // jest-style-mock.js should just contain module.exports = {};
+    '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
+  }
+```
+
 ## Advanced usage
 
 For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
