@@ -121,6 +121,7 @@ export const getStyles = (
        * Modifier: Size 10 Persona
        */
       isSize10 && [
+        'ms-Persona--isSize10',
         {
           height: personaSize10,
           minWidth: personaSize10,
@@ -168,23 +169,22 @@ export const getStyles = (
        * This variant includes a semicolon, and is
        * most often presented within a People Picker.
        */
-      isSize10 && isReadOnly && [
-        {
-          padding: 0,
-          backgroundColor: 'transparent',
+      isSize10 && isReadOnly && {
+        padding: 0,
+        backgroundColor: 'transparent',
 
-          selectors: {
-            '$primaryText:after': {
-              content: ';',
-            }
+        selectors: {
+          '$primaryText:after': {
+            content: ';',
           }
         }
-      ],
+      },
 
       /**
        * Modifier: Size 16 Persona
        */
       isSize16 && [
+        'ms-Persona--isSize16',
         {
           height: personaSize16,
           minWidth: personaSize16,
@@ -221,6 +221,7 @@ export const getStyles = (
        * Modifier: Size 24 Persona
        */
       isSize24 && [
+        'ms-Persona--isSize24',
         {
           height: personaSize24,
           minWidth: personaSize24,
@@ -278,6 +279,7 @@ export const getStyles = (
        * Modifier: Size 28 Persona
        */
       isSize28 && [
+        'ms-Persona--isSize28',
         {
           height: personaSize28,
           minWidth: personaSize28,
@@ -335,6 +337,7 @@ export const getStyles = (
        * Modifier: Size 32 Persona
        */
       isSize32 && [
+        'ms-Persona--isSize32',
         {
           height: personaSize32,
           minWidth: personaSize32,
@@ -380,6 +383,7 @@ export const getStyles = (
        * Modifier: Size 40 Persona
        */
       isSize40 && [
+        'ms-Persona--isSize40',
         {
           height: personaSize40,
           minWidth: personaSize40,
@@ -401,6 +405,7 @@ export const getStyles = (
        * Modifier: Size 72 Persona
        */
       isSize72 && [
+        'ms-Persona--isSize72',
         {
           height: personaSize72,
           maxWidth: personaSize72,
@@ -440,6 +445,7 @@ export const getStyles = (
        * Modifier: Size 100 Persona
        */
       isSize100 && [
+        'ms-Persona--isSize100',
         {
           height: personaSize100,
           maxWidth: personaSize100,
@@ -482,6 +488,7 @@ export const getStyles = (
        * Note: Typically applied when the component has a colored background.
        */
       isDarkText && [
+        'ms-Persona--isDarkText',
         {
           selectors: {
             '$primaryText': {
@@ -499,6 +506,7 @@ export const getStyles = (
        * Modifier: Selectable Persona
        */
       isSelectable && [
+        'ms-Persona--isSelected',
         {
           cursor: 'pointer',
           padding: '0 10px',
@@ -524,6 +532,7 @@ export const getStyles = (
        * Modifier: Persona with available presence
        */
       isAvailable && [
+        'ms-Persona--isAvailable',
         {
           selectors: {
             '$presence': {
@@ -545,6 +554,7 @@ export const getStyles = (
        * Modifier: Persona with away presence
        */
       isAway && [
+        'ms-Persona--isAway',
         {
           selectors: {
             '$presence': {
@@ -569,6 +579,7 @@ export const getStyles = (
        * Modifier: Persona with blocked presence
        */
       isBlocked && [
+        'ms-Persona--isBlocked',
         {
           selectors: {
             '$presence': {
@@ -663,6 +674,7 @@ export const getStyles = (
        * Modifier: Persona with busy presence
        */
       isBusy && [
+        'ms-Persona--isBusy',
         {
           selectors: {
             '$presence': {
@@ -686,6 +698,7 @@ export const getStyles = (
        * Modifier: Persona with do not disturb presence
        */
       isDoNotDisturb && [
+        'ms-Persona--isDoNotDisturb',
         {
           selectors: {
             '$presence': {
@@ -720,6 +733,7 @@ export const getStyles = (
        * Modifier: Persona with offline presence
        */
       isOffline && [
+        'ms-Persona--isOffline',
         {
           selectors: {
             '$presence': {
@@ -755,6 +769,7 @@ export const getStyles = (
     ],
 
     presense: [
+      'ms-Persona-presence',
       {
         backgroundColor: colorPresenceAvailable,
         position: 'absolute',
@@ -792,9 +807,10 @@ export const getStyles = (
       }
     ],
 
-    presenseIcon: [],
+    presenseIcon: ['ms-Persona-presenceIcon'],
 
     details: [
+      'ms-Persona-details',
       {
         padding: '0 24px 0 16px',
         minWidth: 0,
@@ -807,6 +823,7 @@ export const getStyles = (
     ],
 
     primaryText: [
+      'ms-Persona-primaryText',
       noWrap,
       {
         color: palette.neutralPrimary,
@@ -816,12 +833,13 @@ export const getStyles = (
     ],
 
     secondaryText: [
+      'ms-Persona-secondaryText',
       noWrap,
-      sharedTextStyles,
-      {}
+      sharedTextStyles
     ],
 
     tertiaryText: [
+      'ms-Persona-tertiaryText',
       noWrap,
       sharedTextStyles,
       {
@@ -830,6 +848,7 @@ export const getStyles = (
     ],
 
     optionalText: [
+      'ms-Persona-optionalText',
       noWrap,
       sharedTextStyles,
       {
@@ -838,8 +857,8 @@ export const getStyles = (
     ],
 
     textContent: [
-      noWrap,
-      {},
+      'ms-Persona-textContent',
+      noWrap
     ],
   });
 };
