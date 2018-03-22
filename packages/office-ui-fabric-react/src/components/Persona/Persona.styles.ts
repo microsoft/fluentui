@@ -79,6 +79,8 @@ export const getStyles = (
   const personaPresenceSize28 = '28px';
   const personaPresenceBorder = '2px';
 
+  const HighContrastBWSelector = '@media screen and (-ms-high-contrast: black-on-white)';
+
   const sharedTextStyles: IStyle = {
     color: palette.neutralSecondary,
     fontWeight: FontWeights.regular,
@@ -114,6 +116,58 @@ export const getStyles = (
         }
       },
       className,
+
+      /**
+       * Modifier: Size 10 Persona
+       */
+      isSize10 && [
+        {
+          height: personaSize10,
+          minWidth: personaSize10,
+
+          selectors: {
+            '$presence': {
+              right: 'auto',
+              top: '7px',
+              left: 0,
+              border: 0,
+              height: personaPresenceSize8,
+              width: personaPresenceSize8,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  top: '9px',
+                  border: '1px solid WindowText',
+                },
+
+                '$presenceIcon': {
+                  display: 'none',
+                }
+              }
+            },
+
+            '$details': {
+              paddingLeft: '17px',
+            },
+
+            '$primaryText': {
+              fontSize: FontSizes.small,
+              lineHeight: personaSize10,
+            },
+
+            '$secondaryText': {
+              display: 'none',
+            }
+          }
+        }
+      ],
+
+      /**
+       * Modifier: Size 10 Persona with read only state
+       *
+       * This variant includes a semicolon, and is
+       * most often presented within a People Picker.
+       */
       isSize10 && isReadOnly && [
         {
           padding: 0,
@@ -126,6 +180,10 @@ export const getStyles = (
           }
         }
       ],
+
+      /**
+       * Modifier: Size 16 Persona
+       */
       isSize16 && [
         {
           height: personaSize16,
@@ -159,6 +217,9 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * Modifier: Size 24 Persona
+       */
       isSize24 && [
         {
           height: personaSize24,
@@ -213,6 +274,9 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * Modifier: Size 28 Persona
+       */
       isSize28 && [
         {
           height: personaSize28,
@@ -267,6 +331,9 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * Modifier: Size 32 Persona
+       */
       isSize32 && [
         {
           height: personaSize32,
@@ -309,6 +376,9 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * Modifier: Size 40 Persona
+       */
       isSize40 && [
         {
           height: personaSize40,
@@ -327,8 +397,9 @@ export const getStyles = (
         }
       ],
 
-      isSize48 && [],
-
+      /**
+       * Modifier: Size 72 Persona
+       */
       isSize72 && [
         {
           height: personaSize72,
@@ -365,6 +436,9 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * Modifier: Size 100 Persona
+       */
       isSize100 && [
         {
           height: personaSize100,
@@ -402,6 +476,11 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * Modifier: Persona with darker text
+       *
+       * Note: Typically applied when the component has a colored background.
+       */
       isDarkText && [
         {
           selectors: {
@@ -416,6 +495,9 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * Modifier: Selectable Persona
+       */
       isSelectable && [
         {
           cursor: 'pointer',
@@ -434,6 +516,13 @@ export const getStyles = (
         }
       ],
 
+      /**
+       * === Presence indicator variants. ===
+       */
+
+      /**
+       * Modifier: Persona with available presence
+       */
       isAvailable && [
         {
           selectors: {
@@ -445,19 +534,212 @@ export const getStyles = (
               backgroundColor: 'WindowText',
             },
 
-            '@media screen and (-ms-high-contrast: black-on-white)': {
+            [HighContrastBWSelector]: {
               backgroundColor: palette.white,
             }
           }
         }
       ],
 
-      isAway && [],
-      isBlocked && [],
-      isBusy && [],
-      isDoNotDisturb && [],
-      isOffline && [],
-      isReadOnly && [],
+      /**
+       * Modifier: Persona with away presence
+       */
+      isAway && [
+        {
+          selectors: {
+            '$presence': {
+              backgroundColor: colorPresenceAway,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: 'WindowText',
+                }
+              }
+            },
+
+            '$presenceIcon': {
+              position: 'relative',
+              left: '1px',
+            }
+          }
+        }
+      ],
+
+      /**
+       * Modifier: Persona with blocked presence
+       */
+      isBlocked && [
+        {
+          selectors: {
+            '$presence': {
+              backgroundColor: palette.white,
+
+              selectors: {
+                '&:before': {
+                  content: '""',
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  boxShadow: `0 0 0 2px ${colorPresenceBusyAverage} inset`,
+                  borderRadius: '50%',
+                },
+
+                '&:after': {
+                  content: '""',
+                  width: '100%',
+                  height: '2px',
+                  backgroundColor: colorPresenceBusyAverage,
+                  transform: 'rotate(-45deg)',
+                  position: 'absolute',
+                  top: '40%',
+                  left: 0,
+                },
+
+                [HighContrastSelector]: {
+                  color: palette.contrastBlackDisabled,
+                  backgroundColor: 'Window',
+
+                  selectors: {
+                    '&:before': {
+                      boxShadow: `0 0 0 2px ${palette.contrastBlackDisabled} inset`,
+                    },
+
+                    '&:after': {
+                      backgroundColor: palette.contrastBlackDisabled,
+                    }
+                  }
+                },
+
+                [HighContrastBWSelector]: {
+                  color: palette.contrastWhiteDisabled,
+
+                  selectors: {
+                    '&:before': {
+                      boxShadow: `0 0 0 2px ${palette.contrastWhiteDisabled} inset`,
+                    },
+
+                    '&:after': {
+                      backgroundColor: palette.contrastWhiteDisabled,
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+
+      isBlocked && isSize72 && [
+        {
+          selectors: {
+            '$presence': {
+              selectors: {
+                '&:after': {
+                  top: '9px',
+                }
+              }
+            }
+          }
+        }
+      ],
+
+      isBlocked && isSize100 && [
+        {
+          selectors: {
+            '$presence': {
+              selectors: {
+                '&:after': {
+                  top: '13px',
+                }
+              }
+            }
+          }
+        }
+      ],
+
+      /**
+       * Modifier: Persona with busy presence
+       */
+      isBusy && [
+        {
+          selectors: {
+            '$presence': {
+              backgroundColor: colorPresenceBusyAverage,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: palette.contrastBlackDisabled,
+                },
+
+                [HighContrastBWSelector]: {
+                  backgroundColor: palette.contrastWhiteDisabled,
+                }
+              }
+            }
+          }
+        }
+      ],
+
+      /**
+       * Modifier: Persona with do not disturb presence
+       */
+      isDoNotDisturb && [
+        {
+          selectors: {
+            '$presence': {
+              backgroundColor: colorPresenceDndBackground,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  color: palette.black,
+                  backgroundColor: palette.contrastBlackDisabled,
+
+                  selectors: {
+                    '&:before': {
+                      backgroundColor: palette.contrastBlackDisabled,
+                    },
+
+                    '&:after': {
+                      backgroundColor: palette.contrastBlackDisabled,
+                    }
+                  }
+                },
+
+                [HighContrastBWSelector]: {
+                  backgroundColor: palette.contrastWhiteDisabled,
+                }
+              }
+            }
+          }
+        }
+      ],
+
+      /**
+       * Modifier: Persona with offline presence
+       */
+      isOffline && [
+        {
+          selectors: {
+            '$presence': {
+              backgroundColor: colorPresenceOffline,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: palette.contrastBlackDisabled,
+                  boxShadow: `0 0 0 1px ${palette.white} inset`,
+                },
+
+                [HighContrastBWSelector]: {
+                  backgroundColor: palette.white,
+                  boxShadow: `0 0 0 1px ${palette.black} inset`,
+                }
+              }
+            }
+          }
+        }
+      ],
     ],
 
     placeholder: [
@@ -480,8 +762,8 @@ export const getStyles = (
         width: personaPresenceSize12,
         borderRadius: '50%',
         top: 'auto',
-        right: personaPresenceBorder,
-        bottom: personaPresenceBorder,
+        right: `-${personaPresenceBorder}`,
+        bottom: `-${personaPresenceBorder}`,
         border: `${personaPresenceBorder} solid ${palette.white}`,
         textAlign: 'center',
         boxSizing: 'content-box',
@@ -510,9 +792,7 @@ export const getStyles = (
       }
     ],
 
-    presenseIcon: [
-      {}
-    ],
+    presenseIcon: [],
 
     details: [
       {
