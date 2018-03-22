@@ -136,16 +136,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                 TestText4
               </div>
             </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
           </li>
         </ol>
       </div>
@@ -355,16 +345,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                 TestText4
               </div>
             </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
           </li>
         </ol>
       </div>
