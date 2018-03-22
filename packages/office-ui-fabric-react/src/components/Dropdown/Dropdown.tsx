@@ -691,7 +691,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onDropdownKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
-      if (ev.preventDefault) {
+      if (ev.defaultPrevented) {
         return;
       }
     }
