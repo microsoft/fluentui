@@ -694,7 +694,6 @@ describe('Dropdown', () => {
     });
 
     it('Will skip disabled items on keydown', () => {
-      debugger;
       const container = document.createElement('div');
       const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
 
