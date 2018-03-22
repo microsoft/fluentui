@@ -693,5 +693,25 @@ describe('Dropdown', () => {
       expect(titleElement.textContent).toEqual('');
     });
 
+    it('Will skip disabled items on keydown', () => {
+      debugger;
+      const container = document.createElement('div');
+      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ options }
+        />,
+        container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('1');
+
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      expect(titleElement.textContent).toEqual('3');
+    });
   });
 });
