@@ -119,7 +119,7 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
-  it('reset focused index after setKey updates', () => {
+  it('reset focusedItemIndex when setKey updates', () => {
     jest.useFakeTimers();
 
     let component: any;
@@ -136,10 +136,9 @@ describe('DetailsList', () => {
       />);
 
     expect(component).toBeDefined();
-    (component as IDetailsList).focusIndex(3);
+    component.setState({ focusedItemIndex: 3 });
     setTimeout(() => {
-      expect(document.activeElement.textContent).toEqual('3');
-      expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
+      expect(component.state.focusedItemIndex).toEqual(3);
     }, 0);
     jest.runOnlyPendingTimers();
 
@@ -148,8 +147,9 @@ describe('DetailsList', () => {
     detailsList.setProps(newProps);
     detailsList.update();
 
-    // verify that focus index is reset to 0
+    // verify that focusedItemIndex is reset to 0 and 0th row is focused
     setTimeout(() => {
+      expect(component.state.focusedItemIndex).toEqual(0);
       expect(document.activeElement.textContent).toEqual('0');
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);

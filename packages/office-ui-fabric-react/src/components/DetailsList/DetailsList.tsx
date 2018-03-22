@@ -212,7 +212,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       this._initialFocusedIndex = newProps.initialFocusedIndex;
       // reset focusedItemIndex when setKey changes
       this.setState({
-        focusedItemIndex: this._initialFocusedIndex || -1
+        focusedItemIndex: (this._initialFocusedIndex !== undefined) ? this._initialFocusedIndex : -1
       });
     }
 
