@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 21 Mar 2018 10:18:30 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Mar 2018 10:14:03 GMT and should not be manually modified.
+
+## 5.68.0
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- ,
+
+### Patches
+
+- Provide compact timestamp style for ActivityItem
+- Removes @autobind from examples
+- Removing empty callout when tooltip content is empty
 
 ## 5.67.0
 Wed, 21 Mar 2018 10:18:30 GMT
