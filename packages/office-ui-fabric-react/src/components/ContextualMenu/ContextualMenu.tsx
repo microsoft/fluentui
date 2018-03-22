@@ -94,6 +94,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
 
+  private _splitButtonContainers: Map<string, HTMLDivElement>;
+
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
   constructor(props: IContextualMenuProps) {
@@ -139,6 +141,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    this._splitButtonContainers = new Map();
     if (this.props.onMenuOpened) {
       this.props.onMenuOpened(this.props);
     }
@@ -589,6 +592,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <div
+        ref={ (el: HTMLDivElement) =>
+          this._splitButtonContainers.set(item.key, el)
+        }
         role={ 'button' }
         aria-labelledby={ item.ariaLabel }
         className={ classNames.splitContainer }
@@ -891,9 +897,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onItemSubMenuExpand(item: IContextualMenuItem, target: HTMLElement) {
     if (this.state.expandedMenuItemKey !== item.key) {
 
-      // TODO need to focus the container so that when the menu closes the previous focused item would be the container
       if (this.state.expandedMenuItemKey) {
         this._onSubMenuDismiss();
+      }
+
+      const el = this._splitButtonContainers.get(item.key);
+      if (el) {
+        el.focus();
       }
       this.setState({
         expandedMenuItemKey: item.key,
