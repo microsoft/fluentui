@@ -65,7 +65,13 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
-    const { className, ariaLabel, dividerAs, onRenderItem = this._onRenderItem, overflowAriaLabel } = data.props;
+    const {
+      className,
+      ariaLabel,
+      dividerAs: Divider = Icon,
+      onRenderItem = this._onRenderItem,
+      overflowAriaLabel
+    } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
     const contextualItems = renderedOverflowItems.map(
@@ -103,17 +109,17 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                     directionalHint: DirectionalHint.bottomLeftEdge
                   } }
                 />
-                { dividerAs || <Icon
+                <Divider
                   className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                   iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-                /> }
+                />
               </li>
             ) }
             { renderedItems.map(
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) }>
                   { onRenderItem(item, this._onRenderItem) }
-                  { index !== lastItemIndex && dividerAs || <Icon
+                  { index !== lastItemIndex && <Divider
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                     iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
                   /> }
