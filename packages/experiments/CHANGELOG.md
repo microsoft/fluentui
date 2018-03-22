@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Mar 2018 10:14:03 GMT and should not be manually modified.
+
+## 5.26.1
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Patches
+
+- Removes @autobind for arrow functions
 
 ## 5.26.0
 Tue, 20 Mar 2018 10:27:37 GMT

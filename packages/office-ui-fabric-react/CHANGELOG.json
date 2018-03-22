@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.68.0",
+      "tag": "office-ui-fabric-react_v5.68.0",
+      "date": "Thu, 22 Mar 2018 10:14:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "b07d07440fbce5e907a5cd18c06e037547ab2616",
+            "comment": "Provide compact timestamp style for ActivityItem"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "c5245a51bd4f740399d6d9dbd98f2c51ef6f0a59",
+            "comment": "Removes @autobind from examples"
+          },
+          {
+            "author": "priyank <priyank.bhadja91@gmail.com>",
+            "commit": "5ebf43e6c339d783900a58055f4c9e8b3ac5a124",
+            "comment": "Removing empty callout when tooltip content is empty"
+          }
+        ],
+        "minor": [
+          {
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "d4159b20c9b143248cf52d1f3cdda24fd2e1caae",
+            "comment": ","
+          }
+        ]
+      }
+    },
+    {
       "version": "5.67.0",
       "tag": "office-ui-fabric-react_v5.67.0",
       "date": "Wed, 21 Mar 2018 10:18:30 GMT",
