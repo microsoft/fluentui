@@ -160,17 +160,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   multiSelect?: boolean;
 
   /**
-   * Keys that will be initially used to set selected items.
-   */
-  defaultSelectedKeys?: string[] | number[];
-
-  /**
-  * Keys of the selected items. If you provide this, you must maintain selection
-  * state by observing onChange events and passing a new value in when changed.
-  */
-  selectedKeys?: string[] | number[];
-
-  /**
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.
    * @default true
    */

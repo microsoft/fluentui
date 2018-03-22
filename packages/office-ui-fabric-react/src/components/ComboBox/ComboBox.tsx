@@ -142,25 +142,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._warnMutuallyExclusive({
       'defaultSelectedKey': 'selectedKey',
-      'defaultSelectedKeys': 'selectedKeys',
       'value': 'defaultSelectedKey',
       'selectedKey': 'value',
       'dropdownWidth': 'useComboBoxAsMenuWidth',
     });
 
-    this._warnMutuallyExclusive({
-      'defaultSelectedKey': 'defaultSelectedKeys',
-      'selectedKey': 'selectedKeys'
-    });
-
     this._id = props.id || getId('ComboBox');
 
-    let selectedKeys = [];
-    if (props.multiSelect) {
-      selectedKeys = (props.defaultSelectedKeys ? props.defaultSelectedKeys : props.selectedKeys) || [];
-    } else {
-      selectedKeys.push(props.defaultSelectedKey ? props.defaultSelectedKey : props.selectedKey);
-    }
+    let selectedKeys: (string | number)[] = this._getSelectedKeys(props.defaultSelectedKey, props.selectedKey);
 
     this._isScrollIdle = true;
 
@@ -189,7 +178,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (newProps.selectedKey !== this.props.selectedKey ||
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
-      const selectedKeys: (string | number | undefined)[] = (this.props.multiSelect ? newProps.selectedKeys : [newProps.selectedKey]) || [];
+      const selectedKeys: string[] | number[] = this._getSelectedKeys(undefined, newProps.selectedKey);
       const indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
 
       this.setState({
@@ -265,6 +254,34 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // remove the eventHanlder that was added in componentDidMount
     this._events.off(this._comboBoxWrapper.value);
+  }
+
+  private _getSelectedKeys(
+    defaultSelectedKey: string | number | string[] | number[] | undefined,
+    selectedKey: string | number | string[] | number[] | undefined
+  ): string[] | number[] {
+
+    let retKeys: string[] | number[] = [];
+
+    if (defaultSelectedKey) {
+      if (defaultSelectedKey instanceof Array) {
+        retKeys = defaultSelectedKey;
+      } else if (typeof defaultSelectedKey === 'string') {
+        retKeys = [defaultSelectedKey as string];
+      } else if (typeof defaultSelectedKey === 'number') {
+        retKeys = [defaultSelectedKey as number];
+      }
+    } else if (selectedKey) {
+      if (selectedKey instanceof Array) {
+        retKeys = selectedKey;
+      } else if (typeof selectedKey === 'string') {
+        retKeys = [selectedKey as string];
+      } else if (typeof selectedKey === 'number') {
+        retKeys = [selectedKey as number];
+      }
+    }
+
+    return retKeys;
   }
 
   // Primary Render

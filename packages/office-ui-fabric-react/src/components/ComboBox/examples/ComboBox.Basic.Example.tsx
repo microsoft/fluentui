@@ -116,7 +116,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
         <ComboBox
           multiSelect
-          defaultSelectedKeys={ ['C', 'E'] }
+          defaultSelectedKey={ ['C', 'E'] }
           label='Basic uncontrolled multi select example (allowFreeform: T, AutoComplete: T):'
           id='Basicdrop11'
           ariaLabel='Basic ComboBox example'
@@ -271,7 +271,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
         <ComboBox
           multiSelect
-          selectedKeys={ this.state.selectedOptionKeys }
+          selectedKey={ this.state.selectedOptionKeys }
           label='Basic controlled ComboBox multi-select example:'
           id='Basicdrop5'
           ariaLabel='Basic controlled ComboBox multi-select example'
@@ -332,7 +332,6 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     return INITIAL_OPTIONS;
   }
 
-  @autobind
   private _getOptionsMulti(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
 
     if (this.state.options.length > 0) {
