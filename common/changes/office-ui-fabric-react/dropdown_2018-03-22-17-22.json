@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Toggle: Updating to use flexbox positioning",
+      "comment": "Dropdown: onKeydown should check for defaultPrevented, not preventDefault.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jdrush89@gmail.com"
+  "email": "dzearing@microsoft.com"
 }

@@ -5,10 +5,6 @@ import {
   Breadcrumb, IBreadcrumbItem
 } from 'office-ui-fabric-react/lib/Breadcrumb';
 
-import {
-  autobind
-} from '../../../Utilities';
-
 export class BreadcrumbStaticExample extends React.Component {
 
   public render() {
@@ -32,8 +28,7 @@ export class BreadcrumbStaticExample extends React.Component {
     );
   }
 
-  @autobind
-  private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
+  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
 

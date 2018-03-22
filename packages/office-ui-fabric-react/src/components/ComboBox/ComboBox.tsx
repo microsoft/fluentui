@@ -142,10 +142,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._warnMutuallyExclusive({
       'defaultSelectedKey': 'selectedKey',
+      'defaultSelectedKeys': 'selectedKeys',
       'value': 'defaultSelectedKey',
       'selectedKey': 'value',
       'dropdownWidth': 'useComboBoxAsMenuWidth',
-      'multiSelect': 'defaultSelectedKey'
+    });
+
+    this._warnMutuallyExclusive({
+      'defaultSelectedKey': 'defaultSelectedKeys',
+      'selectedKey': 'selectedKeys'
     });
 
     this._id = props.id || getId('ComboBox');

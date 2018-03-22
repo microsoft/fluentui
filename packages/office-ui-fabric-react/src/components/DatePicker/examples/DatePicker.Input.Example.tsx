@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -102,13 +101,11 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
     );
   }
 
-  @autobind
-  private _onSelectDate(date: Date | null | undefined): void {
+  private _onSelectDate = (date: Date | null | undefined): void => {
     this.setState({ value: date });
   }
 
-  @autobind
-  private _onClick(): void {
+  private _onClick = (): void => {
     this.setState({ value: null });
   }
 }

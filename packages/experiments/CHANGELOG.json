@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.26.1",
+      "tag": "@uifabric/experiments_v5.26.1",
+      "date": "Thu, 22 Mar 2018 10:14:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "c5245a51bd4f740399d6d9dbd98f2c51ef6f0a59",
+            "comment": "Removes @autobind for arrow functions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.67.0 <6.0.0` to `>=5.68.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.26.0",
       "tag": "@uifabric/experiments_v5.26.0",
       "date": "Tue, 20 Mar 2018 10:27:37 GMT",

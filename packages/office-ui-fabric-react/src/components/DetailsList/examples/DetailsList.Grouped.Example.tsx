@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  autobind,
   createRef
 } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
@@ -113,8 +112,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
     );
   }
 
-  @autobind
-  private _addItem() {
+  private _addItem = (): void => {
     const items = this.state.items;
 
     this.setState({
