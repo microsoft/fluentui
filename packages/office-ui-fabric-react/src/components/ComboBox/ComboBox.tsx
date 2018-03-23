@@ -1042,7 +1042,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={ isSelected ? 'true' : 'false'}
           ariaLabel= {item.text }
           disabled={ item.disabled }
-        > { <span ref={ this._selectedElement }>
+        > { <span ref={ isSelected ? this._selectedElement : undefined }>
           { onRenderOption(item, this._onRenderOptionContent) }
         </span>
           }
