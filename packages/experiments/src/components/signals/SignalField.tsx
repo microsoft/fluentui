@@ -6,7 +6,10 @@ import * as SignalFieldStylesModule from './SignalField.scss';
 // tslint:disable-next-line:no-any
 const SignalFieldStyles: any = SignalFieldStylesModule;
 
+export type SignalFieldMode = 'wide' | 'compact';
+
 export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement> {
+  signalsFieldMode?: SignalFieldMode;
   before?: React.ReactNode | React.ReactNode[];
   after?: React.ReactNode | React.ReactNode[];
 }
@@ -21,12 +24,16 @@ export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: 
     before,
     after,
     className,
+    signalsFieldMode = 'compact',
     ...spanProps
   } = props;
   return (
     <span
       { ...spanProps }
-      className={ css(SignalFieldStyles.signalField, className) }
+      className={ css(SignalFieldStyles.signalField, {
+        [SignalFieldStyles.wide]: signalsFieldMode === 'wide',
+        [SignalFieldStyles.compact]: signalsFieldMode === 'compact'
+      }, className) }
     >
       { props.before }
       <span className={ SignalFieldStyles.signalFieldValue }>

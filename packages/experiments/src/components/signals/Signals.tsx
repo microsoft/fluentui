@@ -19,7 +19,7 @@ export const YouCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element =>
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.youCheckedOutl) }
-      iconName=''
+      iconName='checkedoutbyyou12'
     /> // TODO get correct icon
   );
 };
@@ -29,7 +29,7 @@ export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.blocked) }
-      iconName='blocked2'
+      iconName='blocked12'
     />
   );
 };
@@ -49,7 +49,7 @@ export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.warning) }
-      iconName='warning'
+      iconName='warning12'
     />
   );
 };
@@ -59,8 +59,8 @@ export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.awaitingApproval) }
-      iconName='documentmanagement'
-    /> // TODO get correct icon
+      iconName='clock'
+    />
   );
 };
 
@@ -79,8 +79,18 @@ export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Elemen
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.someoneCheckedOut) }
-      iconName='navigateforward'
-    /> // TODO get correct icon
+      iconName='checkedoutbyother12'
+    />
+  );
+};
+
+export const RecordSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return (
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalsStyles.record) }
+      iconName='lock'
+    />
   );
 };
 
@@ -166,13 +176,26 @@ export const CommentsSignal: Signal = (props: ISignalProps): JSX.Element => {
   );
 };
 
+/**
+ * Renders a signal for a number of comments.
+ */
+export const UnseenReplySignal: Signal = (props: ISignalProps): JSX.Element => {
+  return (
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalsStyles.unseenReply) }
+      iconName='commentprevious'
+    />
+  );
+};
+
 export const UnseenEditSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.unseenEdit) }
       iconName='edit'
-    /> // TODO get correct icon
+    />
   );
 };
 
@@ -181,8 +204,18 @@ export const ReadOnlySignal: Signal = (props: ISignalProps): JSX.Element => {
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.readOnly) }
-      iconName=''
-    /> // TODO get correct icon
+      iconName='uneditablesolid12'
+    />
+  );
+};
+
+export const EmailedSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return (
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalsStyles.emailed) }
+      iconName='mail'
+    />
   );
 };
 
