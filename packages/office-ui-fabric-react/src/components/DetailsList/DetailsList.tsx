@@ -60,6 +60,8 @@ const ISPADDED_WIDTH = 24;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
+const SHIMMER_INITIAL_ITEMS = 10;
+
 @withViewport
 export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
@@ -67,7 +69,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     selectionMode: SelectionMode.multiple,
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    enableShimmer: false
   };
 
   // References
@@ -83,6 +86,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
   private _pendingForceUpdate: boolean;
+  private _shimmerInitialItems: any[];
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -269,7 +273,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey,
       listProps,
       usePageCache,
-      onShouldVirtualize
+      onShouldVirtualize,
+      enableShimmer
     } = this.props;
     const {
       adjustedColumns,
@@ -311,6 +316,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     } = this.props;
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+
+    if (enableShimmer) {
+      this._shimmerInitialItems = new Array(SHIMMER_INITIAL_ITEMS);
+    }
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -398,7 +407,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     <List
                       ref={ this._list }
                       role='presentation'
-                      items={ items }
+                      items={ enableShimmer && !items.length ? this._shimmerInitialItems : items }
                       onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
@@ -458,15 +467,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       adjustedColumns: columns
     } = this.state;
 
-    if (!item) {
-      if (onRenderMissingItem) {
-        return onRenderMissingItem(index);
-      }
-
-      return null;
-    }
-
-    return onRenderRow({
+    const rowProps = {
       item: item,
       itemIndex: index,
       compact: compact,
@@ -487,7 +488,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
       checkboxCellClassName: checkboxCellClassName,
-    }, this._onRenderRow);
+    };
+
+    if (!item) {
+      if (onRenderMissingItem) {
+        return onRenderMissingItem(index, rowProps);
+      }
+
+      return null;
+    }
+
+    return onRenderRow(rowProps, this._onRenderRow);
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {

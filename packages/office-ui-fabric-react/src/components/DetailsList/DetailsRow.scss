@@ -6,6 +6,10 @@ $rowVerticalPadding: 11px;
 $rowHorizontalPadding: 8px;
 $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
+$rowShimmerHorizontalBorder: $rowHorizontalPadding;
+$rowShimmerVerticalBorder: ($rowHeight - 7px) / 2;
+$compactRowShimmerVerticalBorder: ($compactRowHeight - 7px) / 2;
+
 
 
 /* DetailsList Colors */
@@ -45,6 +49,19 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   .cell {
     min-height: $compactRowHeight;
     padding: $compactRowVerticalPadding $rowHorizontalPadding;
+
+    &.isShimmer {
+      padding: 0 0;
+      border-left: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+      border-right: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+      border-top: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
+      border-bottom: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
+
+      &:first-of-type {
+        border-bottom: ($compactRowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
+        border-top: ($compactRowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
+      }
+    }
   }
 
   .check {
@@ -210,6 +227,19 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   [data-is-focusable=true] {
     @include focus-border(0, $ms-color-neutralSecondary);
   }
+
+  &.isShimmer {
+    padding: 0 0;
+    border-left: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+    border-right: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+    border-top: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
+    border-bottom: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
+
+    &:first-of-type {
+      border-bottom: ($rowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
+      border-top: ($rowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
+    }
+  }
 }
 
 
@@ -248,4 +278,9 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   .anySelected & {
     display: block;
   }
+}
+
+// 40px to take into account the checkbox of items if present.
+.shimmerLeftBorder {
+  border-left: 40px solid $detailsList-item-default-background-color;
 }

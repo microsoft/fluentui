@@ -145,7 +145,15 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
-  onRenderMissingItem?: (index?: number) => React.ReactNode;
+  onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
+
+  /**
+   * If set to true and we provide an empty array to DetailsList while waiting the API call, it will render 10 shimmer lines.
+   * When data comes back check if the array of items from the data source is empty.
+   * If so, we need to provide a false value to this prop to prevent continuos shimmer animation in case you acces an empty folder.
+   * @default false
+   */
+  enableShimmer?: boolean;
 
   /**
    * An override to render the details header.
