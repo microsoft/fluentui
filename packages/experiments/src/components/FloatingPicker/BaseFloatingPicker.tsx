@@ -185,7 +185,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected onSuggestionSelect(): void {
-    if (this.suggestionsControl.currentSuggestion) {
+    if (this.suggestionsControl && this.suggestionsControl.currentSuggestion) {
       let currentValue: string = this.state.queryString;
       let itemValue: string = this._getTextFromItem(
         this.suggestionsControl.currentSuggestion.item,

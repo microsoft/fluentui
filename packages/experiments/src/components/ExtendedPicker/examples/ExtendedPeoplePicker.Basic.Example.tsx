@@ -67,11 +67,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
             <div>Suggested Contacts</div>
           );
         },
-        shouldShow: () => {
-          return this._picker !== undefined
-            && this._picker.inputElement !== null
-            && this._picker.inputElement.value === '';
-        }
+        shouldShow: this._shouldShowSuggestedContacts,
       }
       ],
       footerItemsProps: [{
@@ -89,8 +85,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       {
         renderItem: () => { return (<div>Search for more</div>); },
         onExecute: () => { this.setState({ searchMoreAvailable: false }); },
-        shouldShow: () => { return this.state.searchMoreAvailable; }
+        shouldShow: () => { return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts(); }
       }],
+      shouldSelectFirstItem: () => { return !this._shouldShowSuggestedContacts(); },
     };
 
     this._floatingPickerProps = {
@@ -241,6 +238,13 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       this._validateInput(this._picker.floatingPicker.inputText) &&
       this._picker.floatingPicker.suggestions.length === 0
     );
+  }
+
+  @autobind
+  private _shouldShowSuggestedContacts(): boolean {
+    return this._picker !== undefined
+      && this._picker.inputElement !== null
+      && this._picker.inputElement.value === '';
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {

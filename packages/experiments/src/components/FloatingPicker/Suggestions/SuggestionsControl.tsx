@@ -180,7 +180,9 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     let { selectedHeaderIndex, selectedFooterIndex } = this.state;
     let isKeyDownHandled = false;
     if (keyCode === KeyCodes.down) {
-      if (selectedHeaderIndex !== -1) {
+      if (selectedHeaderIndex === -1 && !this._suggestions.hasSuggestionSelected() && selectedFooterIndex === -1) {
+        this.selectFirstItem();
+      } else if (selectedHeaderIndex !== -1) {
         this.selectNextItem(SuggestionItemType.header);
         isKeyDownHandled = true;
       } else if (this._suggestions.hasSuggestionSelected()) {
@@ -191,7 +193,9 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         isKeyDownHandled = true;
       }
     } else if (keyCode === KeyCodes.up) {
-      if (selectedHeaderIndex !== -1) {
+      if (selectedHeaderIndex === -1 && !this._suggestions.hasSuggestionSelected() && selectedFooterIndex === -1) {
+        this.selectLastItem();
+      } else if (selectedHeaderIndex !== -1) {
         this.selectPreviousItem(SuggestionItemType.header);
         isKeyDownHandled = true;
       } else if (this._suggestions.hasSuggestionSelected()) {
@@ -348,19 +352,46 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   /**
-   * Selects the first selectable item
+   * Resets the selected state and selects the first selectable item
    */
   protected resetSelectedItem(): void {
+    this.setState({ selectedHeaderIndex: -1, selectedFooterIndex: -1 });
+    this._suggestions.deselectAllSuggestions();
+
+    // Select the first item if the shouldSelectFirstItem prop is not set or it is set and it returns true
+    if (this.props.shouldSelectFirstItem == undefined || this.props.shouldSelectFirstItem()) {
+      this.selectFirstItem();
+    }
+  }
+
+  /**
+   * Selects the first item
+   */
+  private selectFirstItem(): void {
     if (this._selectNextItemOfItemType(SuggestionItemType.header)) {
       return;
     }
 
-    this._suggestions.deselectAllSuggestions();
     if (this._selectNextItemOfItemType(SuggestionItemType.suggestion)) {
       return;
     }
 
     this._selectNextItemOfItemType(SuggestionItemType.footer);
+  }
+
+  /**
+   * Selects the last item
+   */
+  private selectLastItem(): void {
+    if (this._selectPreviousItemOfItemType(SuggestionItemType.footer)) {
+      return;
+    }
+
+    if (this._selectPreviousItemOfItemType(SuggestionItemType.suggestion)) {
+      return;
+    }
+
+    this._selectPreviousItemOfItemType(SuggestionItemType.header);
   }
 
   /**

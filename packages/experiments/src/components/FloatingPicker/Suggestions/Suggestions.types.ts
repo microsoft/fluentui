@@ -72,6 +72,10 @@ export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggesti
    */
   footerItemsProps?: ISuggestionsHeaderFooterProps[];
   /**
+   * Whether or not the first selectable item in the suggestions list should be selected
+   */
+  shouldSelectFirstItem?: () => boolean;
+  /**
   * How the "no result found" should look in the suggestion list.
   */
   onRenderNoResultFound?: IRenderFunction<void>;

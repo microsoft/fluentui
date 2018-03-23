@@ -133,6 +133,11 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
 
 export interface IBaseFloatingPickerSuggestionProps {
   /**
+   * Whether or not the first selectable item in the suggestions list should be selected
+   */
+  shouldSelectFirstItem?: () => boolean;
+
+  /**
  * The header items props
  */
   headerItemsProps?: ISuggestionsHeaderFooterProps[];
