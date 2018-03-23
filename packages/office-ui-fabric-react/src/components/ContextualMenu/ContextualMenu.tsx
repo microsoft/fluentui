@@ -833,8 +833,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (hasSubmenu(item)) {
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
+        const splitButtonContainer = this._splitButtonContainers.get(item);
         this._onItemSubMenuExpand(item,
-          ((item.split && targetElement.parentElement) ? targetElement.parentElement : targetElement) as HTMLElement);
+          ((item.split && splitButtonContainer) ? splitButtonContainer : targetElement) as HTMLElement);
       }, this._navigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
