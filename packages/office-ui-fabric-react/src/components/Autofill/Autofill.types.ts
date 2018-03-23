@@ -45,7 +45,7 @@ export interface IAutofillProps extends
   /**
    * Gets the compoonent ref.
    */
-  componentRef?: (componentRef?: IAutofill) => void;
+  componentRef?: (componentRef?: IAutofill | null) => void;
 
   /**
    * The suggested autofill value that will display.

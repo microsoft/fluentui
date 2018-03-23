@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Provide compact timestamp style for ActivityItem",
+      "comment": "Update componentRef types",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

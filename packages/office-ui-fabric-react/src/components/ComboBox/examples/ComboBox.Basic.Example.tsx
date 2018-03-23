@@ -12,10 +12,34 @@ import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utiliti
 import { IComboBox } from '../ComboBox.types';
 import { PrimaryButton } from '../../../Button';
 
+const INITIAL_OPTIONS =
+[
+  { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
+  { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
+  { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
+  { key: 'C1', text: 'Calibri', fontFamily: 'Calibri, Calibri_MSFontService, sans-serif' },
+  { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+  { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'D', text: 'Option d' },
+  { key: 'E', text: 'Option e' },
+  { key: 'F', text: 'Option f' },
+  { key: 'G', text: 'Option g' },
+  { key: 'H', text: 'Option h' },
+  { key: 'I', text: 'Option i' },
+  { key: 'J', text: 'Option j' }
+];
+
 export class ComboBoxBasicExample extends React.Component<{}, {
+  // For controled single select
   options: IComboBoxOption[];
   selectedOptionKey?: string | number;
   value?: string;
+
+  // For controled multi select
+  optionsMulti: IComboBoxOption[];
+  selectedOptionKeys?: string[];
+  valueMulti?: string;
 }> {
   private _testOptions =
     [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
@@ -47,6 +71,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     super(props);
     this.state = {
       options: [],
+      optionsMulti: [],
       selectedOptionKey: undefined,
       value: 'Calibri'
     };
@@ -61,6 +86,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
   public render() {
     const { options, selectedOptionKey, value } = this.state;
+    const { optionsMulti, selectedOptionKeys, valueMulti } = this.state;
 
     return (
       <div className='ms-ComboBoxBasicExample'>
@@ -86,6 +112,23 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         <PrimaryButton
           text='Set focus'
           onClick={ this._basicComboBoxOnClick }
+        />
+
+        <ComboBox
+          multiSelect
+          defaultSelectedKey={ ['C', 'E'] }
+          label='Basic uncontrolled multi select example (allowFreeform: T, AutoComplete: T):'
+          id='Basicdrop11'
+          ariaLabel='Basic ComboBox example'
+          allowFreeform={ true }
+          autoComplete='on'
+          options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
+          // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -225,6 +268,25 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           // tslint:enable:jsx-no-lambda
           />
         }
+
+        <ComboBox
+          multiSelect
+          selectedKey={ this.state.selectedOptionKeys }
+          label='Basic controlled ComboBox multi-select example:'
+          id='Basicdrop5'
+          ariaLabel='Basic controlled ComboBox multi-select example'
+          allowFreeform={ true }
+          autoComplete='on'
+          options={ optionsMulti }
+          onChanged={ this._onChangedMulti }
+          onResolveOptions={ this._getOptionsMulti }
+          onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
+          // tslint:enable:jsx-no-lambda
+        />
       </div>
 
     );
@@ -261,30 +323,28 @@ export class ComboBoxBasicExample extends React.Component<{}, {
       return this.state.options;
     }
 
-    const newOptions =
-      [
-        { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
-        { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
-        { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
-        { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
-        { key: 'C1', text: 'Calibri', fontFamily: 'Calibri, Calibri_MSFontService, sans-serif' },
-        { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-        { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-        { key: 'D', text: 'Option d' },
-        { key: 'E', text: 'Option e' },
-        { key: 'F', text: 'Option f' },
-        { key: 'G', text: 'Option g' },
-        { key: 'H', text: 'Option h' },
-        { key: 'I', text: 'Option i' },
-        { key: 'J', text: 'Option j' }
-      ];
     this.setState({
-      options: newOptions,
+      options: INITIAL_OPTIONS,
       selectedOptionKey: 'C1',
       value: undefined
     });
 
-    return newOptions;
+    return INITIAL_OPTIONS;
+  }
+
+  private _getOptionsMulti(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
+
+    if (this.state.options.length > 0) {
+      return this.state.optionsMulti;
+    }
+
+    this.setState({
+      optionsMulti: INITIAL_OPTIONS,
+      selectedOptionKeys: [ 'C1' ],
+      value: undefined
+    });
+
+    return INITIAL_OPTIONS;
   }
 
   private _onChanged = (option: IComboBoxOption, index: number, value: string): void => {
@@ -307,6 +367,37 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         value: undefined
       });
     }
+  }
+
+  private _onChangedMulti = (option: IComboBoxOption, index: number, value: string) => {
+    if (option !== undefined) {
+      // User selected/de-selected an existing option
+      this.setState({
+        selectedOptionKeys: this._updateSelectedOptionKeys(this.state.selectedOptionKeys || [], option),
+        valueMulti: undefined
+      });
+    } else if (value !== undefined) {
+      // User typed a freeform option
+      const newOption: IComboBoxOption = { key: value, text: value };
+      const updatedSelectedKeys: string[] = this.state.selectedOptionKeys ? [...this.state.selectedOptionKeys, newOption.key as string] : [newOption.key as string];
+      this.setState({
+        optionsMulti: [...this.state.optionsMulti, newOption],
+        selectedOptionKeys: updatedSelectedKeys,
+        valueMulti: undefined
+      });
+    }
+  }
+
+  private _updateSelectedOptionKeys = (selectedKeys: string[], option: IComboBoxOption): string[] => {
+    if (selectedKeys && option) {
+      const index = selectedKeys.indexOf(option.key as string);
+      if (option.selected && index < 0) {
+        selectedKeys.push(option.key as string);
+      } else {
+        selectedKeys.splice(index, 1);
+      }
+    }
+    return selectedKeys;
   }
 
   private _basicComboBoxOnClick = (): void => {

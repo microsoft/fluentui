@@ -2,6 +2,83 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.69.0",
+      "tag": "office-ui-fabric-react_v5.69.0",
+      "date": "Fri, 23 Mar 2018 01:29:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "4293e416922981422628c31f175359fcfc6eca4b",
+            "comment": "DetailsList: reset focusedItemIndex after setKey changes to fix scrolling after folder navigation"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "76bb72a2271c4cc0632777403fefda38c660f6bd",
+            "comment": "Dropdown: onKeydown should check for defaultPrevented, not preventDefault."
+          },
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "09072228d65bb12f2adf389da670f53a20f5f8c9",
+            "comment": "Removed focusability on buttons for split buttons and spin buttons"
+          },
+          {
+            "author": "racbatch <37089629+racbatch@users.noreply.github.com>",
+            "commit": "f639a03366c3e156d3b7b338da50e2fee7c55f5d",
+            "comment": "Remove the redundant tooltip in a Dropdown command button"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b152150b7222ff499f2f552ce3117e0d27eb1e23",
+            "comment": "Introduced focusAsync for cheaper element focusing, and made FocusTrapZone utilize it"
+          },
+          {
+            "author": "Stanley Yao <stanley.yao@microsoft.com>",
+            "commit": "dd4b6142206b9884fbfc8c7aa6566930b2cf46df",
+            "comment": "Add multiSelect capability for ComboBox"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.19.1 <6.0.0` to `>=5.20.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.68.0",
+      "tag": "office-ui-fabric-react_v5.68.0",
+      "date": "Thu, 22 Mar 2018 10:14:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "b07d07440fbce5e907a5cd18c06e037547ab2616",
+            "comment": "Provide compact timestamp style for ActivityItem"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "c5245a51bd4f740399d6d9dbd98f2c51ef6f0a59",
+            "comment": "Removes @autobind from examples"
+          },
+          {
+            "author": "priyank <priyank.bhadja91@gmail.com>",
+            "commit": "5ebf43e6c339d783900a58055f4c9e8b3ac5a124",
+            "comment": "Removing empty callout when tooltip content is empty"
+          }
+        ],
+        "minor": [
+          {
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "d4159b20c9b143248cf52d1f3cdda24fd2e1caae",
+            "comment": ","
+          }
+        ]
+      }
+    },
+    {
       "version": "5.67.0",
       "tag": "office-ui-fabric-react_v5.67.0",
       "date": "Wed, 21 Mar 2018 10:18:30 GMT",

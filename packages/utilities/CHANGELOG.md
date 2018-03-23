@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 21 Mar 2018 10:18:30 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Mar 2018 01:29:21 GMT and should not be manually modified.
+
+## 5.20.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing
 
 ## 5.19.1
 Wed, 21 Mar 2018 10:18:29 GMT

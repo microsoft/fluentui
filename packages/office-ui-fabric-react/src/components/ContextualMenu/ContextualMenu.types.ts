@@ -33,7 +33,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenu) => void;
+  componentRef?: (component: IContextualMenu | null) => void;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -138,7 +138,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * menu item.
    * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * CSS class to apply to the context menu.
@@ -329,7 +329,7 @@ export interface IContextualMenuItem {
    * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu.
    * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * An optional URL to navigate to upon selection
