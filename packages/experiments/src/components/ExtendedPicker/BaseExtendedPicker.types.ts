@@ -17,7 +17,7 @@ export interface IBaseExtendedPicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBaseExtendedPickerProps<T> {
-  componentRef?: (component?: IBaseExtendedPicker<T>) => void;
+  componentRef?: (component?: IBaseExtendedPicker<T> | null) => void;
 
   /**
    * Header/title element for the picker
