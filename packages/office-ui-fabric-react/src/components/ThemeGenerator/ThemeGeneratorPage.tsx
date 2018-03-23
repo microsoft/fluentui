@@ -1,9 +1,6 @@
 import * as React from 'react';
 import './ThemeGeneratorPage.scss';
-import {
-  BaseComponent,
-  autobind
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 import {
   loadTheme
@@ -110,13 +107,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     return (
       <div className='ms-themer'>
-        <p>
-          This tool helps you easily create all the shades and slots for a custom theme.
-          The theme can be used by Fabric React's styling package, see the <a href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
+        <div className='overview'>
+          <h2 id='Overview'>Overview</h2>
+          <p>This tool helps you easily create all the shades and slots for a custom theme.
+          The theme can be used by Fabric React's styling package, see the <a className={ 'themeGeneratorPageLink' } href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
           <br />
-          As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.
-        </p>
-
+            As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.</p>
+        </div>
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
           * Cognitive Vision API, documented here:
           * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
@@ -161,7 +158,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         { this._outputSection() }
         <br />
 
-        <h2>Fabric Palette</h2>
+        <h2 id='Fabric palette'>Fabric palette</h2>
         <p>The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint of a base color.</p>
         <div className={ 'ms-themer-fabricPalette-root' }>
           <div>{ fabricThemeSlots }</div>
@@ -176,7 +173,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         </div>
         <br />
 
-        <h3>Samples</h3>
+        <h2 id='Samples'>Samples</h2>
         { <div style={ { display: 'flex', flexDirection: 'row' } }>
           <div className='ms-themer-example'>
             <TextFieldBasicExample />
@@ -196,7 +193,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
                 }] }
               label='Pick one'
               required={ true }
-            />,
+            />
             <ChoiceGroup
               options={ [
                 {
@@ -221,7 +218,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           </div>
         </div> }
 
-        <h3>Accessibility</h3>
+        <h2 id='Accessibility'>Accessibility</h2>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5.</p>
         <table className='ms-themer-accessibilityTable'>
           <thead>
@@ -237,9 +234,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
   /* tslint:disable:no-unused-variable */
-  private _makeThemeFromImg() {
+  private _makeThemeFromImg = (): void => {
     /* tslint:enable:no-unused-variable */
     this._imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
     (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
@@ -266,8 +262,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
   }
 
-  @autobind
-  private _cognitiveVisionCallback(e: any) {
+  private _cognitiveVisionCallback = (e: any): void => {
     const xhr = e.target;
     if (xhr.status === 200) {
       const response = JSON.parse(xhr.response);
@@ -284,7 +279,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         // todo: could use more logic based on isInverted and isBg
         switch (color.toLowerCase()) {
           case 'black': return '#1f1f1f';
-          case 'blue': return '#0078d7';
+          case 'blue': return '#0078d4';
           case 'brown': return '#754d12';
           case 'gray':
           case 'grey': return isBg ? '#444' : '#ccc';
@@ -341,13 +336,11 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
   }
 
-  @autobind
-  private _colorPickerOnDismiss() {
+  private _colorPickerOnDismiss = (): void => {
     this.setState({ colorPickerVisible: false });
   }
 
-  @autobind
-  private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
+  private _semanticSlotRuleChanged = (slotRule: IThemeSlotRule, color: string): void => {
     if (this._semanticSlotColorChangeTimeout) {
       clearTimeout(this._semanticSlotColorChangeTimeout);
     }
@@ -361,8 +354,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     // but high enough that quick changes don't get bogged down by a million changes inbetween
   }
 
-  @autobind
-  private _onSwatchClick(slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>) {
+  private _onSwatchClick = (slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>): void => {
     const { colorPickerSlotRule, colorPickerElement } = this.state;
 
     if (colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && !!colorPickerElement && colorPickerSlotRule === slotRule && colorPickerElement === ev.target) { // same one, close it
@@ -372,8 +364,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
   }
 
-  @autobind
-  private _slotWidget(slotRule: IThemeSlotRule) {
+  private _slotWidget = (slotRule: IThemeSlotRule): JSX.Element => {
     return (
       <div key={ slotRule.name } className='ms-themer-slot'>
         { this._colorSquareSwatchWidget(slotRule) }
@@ -387,8 +378,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _fabricSlotWidget(fabricSlot: FabricSlots) {
+  private _fabricSlotWidget = (fabricSlot: FabricSlots): JSX.Element => {
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   }
 
@@ -403,8 +393,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _accessibilityRow(foreground: FabricSlots, background: FabricSlots) {
+  private _accessibilityRow = (foreground: FabricSlots, background: FabricSlots): JSX.Element => {
     const themeRules = this.state.themeRules;
     const bgc: IColor = themeRules[FabricSlots[background]].color!;
     const fgc: IColor = themeRules[FabricSlots[foreground]].color!;
@@ -425,8 +414,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _outputSection() {
+  private _outputSection = (): JSX.Element => {
     const themeRules = this.state.themeRules;
 
     // strip out the unnecessary shade slots from the final output theme
@@ -441,7 +429,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     return (
       <div>
-        <h2>Output</h2>
+        <h2 id='Output'>Output</h2>
         <div className={ 'ms-themer-output-root' }>
           <div>
             <h3>JSON</h3>
@@ -472,8 +460,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  @autobind
-  private _makeNewTheme() {
+  private _makeNewTheme = (): void => {
     const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
 
@@ -493,8 +480,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     console.log('New theme:', finalTheme);
   }
 
-  @autobind
-  private _baseColorSlotPicker(baseSlot: BaseSlots, title: string) {
+  private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
     let colorChangeTimeout: number;
 
     function _onColorChanged(newColor: string) {

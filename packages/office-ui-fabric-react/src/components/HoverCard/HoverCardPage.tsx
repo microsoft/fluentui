@@ -32,6 +32,7 @@ export class HoverCardPage extends React.Component<IComponentDemoPageProps, any>
             </ExampleCard>
           </LayerHost>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -47,7 +48,7 @@ export class HoverCardPage extends React.Component<IComponentDemoPageProps, any>
         }
         componentStatus={
           <ComponentStatus
-            {...HoverCardStatus}
+            { ...HoverCardStatus }
           />
         }
         isHeaderVisible={ this.props.isHeaderVisible }

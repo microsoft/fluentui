@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
@@ -32,8 +31,7 @@ export class PanelMediumExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _setShowPanel(showPanel: boolean): () => void {
+  private _setShowPanel = (showPanel: boolean): () => void => {
     return (): void => {
       this.setState({ showPanel });
     };

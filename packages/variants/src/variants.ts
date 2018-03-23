@@ -3,8 +3,59 @@ import {
   ISemanticColors,
   ITheme,
   IPartialTheme
-} from '@uifabric/styling';
-import { createTheme } from '@uifabric/styling';
+} from '@uifabric/styling/lib/index';
+import { createTheme } from '@uifabric/styling/lib/index';
+
+/**
+ * A variant where the background soft shade of the neutral color. Most other colors remain unchanged.
+ *
+ * @export
+ * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @returns {ITheme} the variant theme
+ */
+export function getNeutralVariant(theme: IPartialTheme): ITheme {
+  const fullTheme = createTheme(theme);
+  const p = fullTheme.palette;
+
+  // commented lines are unchanged, but left in for tracking purposes
+  // in a tint variant, most colors remain unchanged
+  const partialPalette: Partial<IPalette> = {
+    // theme
+    // themeDarker: '#004578',
+    // themeDark: '#005a9e',
+    // themeDarkAlt: '#106ebe',
+    // themePrimary: '#0078d4',
+    // themeSecondary: '#2b88d8',
+    // themeTertiary: '#71afe5',
+    // themeLight: '#c7e0f4',
+    // themeLighter: '#deecf9',
+    // themeLighterAlt: '#eff6fc',
+
+    // foregrounds
+    // black: '#000000',
+    // neutralDark: '#212121',
+    // neutralPrimary: '#333333',
+    // neutralPrimaryAlt: '#3c3c3c',
+    // neutralSecondary: '#666666',
+    // neutralTertiary: '#a6a6a6',
+
+    // backgrounds
+    // neutralTertiaryAlt: '#c8c8c8',
+    // neutralQuaternary: '#d0d0d0',
+    // neutralQuaternaryAlt: '#dadada',
+    neutralLight: p.neutralQuaternaryAlt,
+    neutralLighter: p.neutralLight,
+    neutralLighterAlt: p.neutralLight,
+    white: p.neutralLighter
+    // squish the backgrounds a bit
+  };
+
+  const partialSemantic: Partial<ISemanticColors> = {
+    bodyBackground: p.neutralLighter
+  };
+
+  return createTheme({ ...theme, ...{ palette: partialPalette, semanticColors: partialSemantic } });
+}
 
 /* Variants
  * Variants are themes based off the current theme.
@@ -33,7 +84,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // themeDarker: '#004578',
     // themeDark: '#005a9e',
     // themeDarkAlt: '#106ebe',
-    // themePrimary: '#0078d7',
+    // themePrimary: '#0078d4',
     // themeSecondary: '#2b88d8',
     // themeTertiary: '#71afe5',
     // themeLight: '#c7e0f4',

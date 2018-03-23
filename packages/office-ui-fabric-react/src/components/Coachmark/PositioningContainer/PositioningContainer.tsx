@@ -12,12 +12,12 @@ import {
   IPoint,
   IRectangle,
   assign,
-  autobind,
   css,
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument
+  getDocument,
+  createRef
 } from '../../../Utilities';
 
 import {
@@ -71,10 +71,10 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   /**
    * The primary positioned div.
    */
-  private _positionedHost: HTMLDivElement;
+  private _positionedHost = createRef<HTMLDivElement>();
 
   // @TODO rename to reflect the name of this class
-  private _contentHost: HTMLDivElement;
+  private _contentHost = createRef<HTMLDivElement>();
 
   /**
    * Stores an instance of Window, used to check
@@ -164,7 +164,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       && (positioningContainerMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : positioningContainerMaxHeight!;
     const content = (
       <div
-        ref={ this._resolveRef('_positionedHost') }
+        ref={ this._positionedHost }
         className={ css('ms-PositioningContainer', styles.container) }
       >
         <div
@@ -180,7 +180,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
           style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          ref={ this._resolveRef('_contentHost') }
+          ref={ this._contentHost }
         >
           { children }
           { // @TODO apply to the content container
@@ -197,8 +197,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     );
   }
 
-  @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -215,7 +214,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
 
   protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._positionedHost && !elementContains(this._positionedHost, target);
+    const clickedOutsideCallout = this._positionedHost.value && !elementContains(this._positionedHost.value, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -227,16 +226,14 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     }
   }
 
-  @autobind
-  protected _setInitialFocus(): void {
-    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
+  protected _setInitialFocus = (): void => {
+    if (this._contentHost.value && this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
       this._didSetInitialFocus = true;
-      focusFirstChild(this._contentHost);
+      focusFirstChild(this._contentHost.value);
     }
   }
 
-  @autobind
-  protected _onComponentDidMount(): void {
+  protected _onComponentDidMount = (): void => {
     // This is added so the positioningContainer will dismiss when the window is scrolled
     // but not when something inside the positioningContainer is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -267,8 +264,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       onPositioned
     } = this.props;
 
-    const hostElement: HTMLElement = this._positionedHost;
-    const positioningContainerElement: HTMLElement = this._contentHost;
+    const hostElement = this._positionedHost.value;
+    const positioningContainerElement = this._contentHost.value;
 
     if (hostElement && positioningContainerElement) {
       let currentProps: IPositionProps | undefined;
@@ -388,7 +385,11 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   private _setHeightOffsetEveryFrame(): void {
     if (this._contentHost && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const positioningContainerMainElem = this._contentHost.lastChild as HTMLElement;
+        if (!this._contentHost.value) {
+          return;
+        }
+
+        const positioningContainerMainElem = this._contentHost.value.lastChild as HTMLElement;
         const cardScrollHeight: number = positioningContainerMainElem.scrollHeight;
         const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;

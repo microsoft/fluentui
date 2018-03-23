@@ -12,6 +12,7 @@ exports[`Nav renders Nav correctly 1`] = `
   role="presentation"
 >
   <nav
+    aria-label={undefined}
     className=
         ms-Nav
         {
@@ -40,7 +41,6 @@ exports[`Nav renders Nav correctly 1`] = `
             }
       >
         <ul
-          aria-label={undefined}
           className=
               ms-Nav-navItems
               {
@@ -94,7 +94,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       color: #333333;
                       cursor: pointer;
                       display: block;
-                      font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 36px;
@@ -128,15 +128,23 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                      border: none;
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #f8f8f8;
                       color: #333333;
                     }
                     &:hover {
-                      color: #0078d7;
+                      color: #0078d4;
                     }
                     &:hover .ms-Button-icon {
-                      color: #0078d7;
+                      color: #0078d4;
                     }
                     &:active {
                       color: #000000;

@@ -139,8 +139,7 @@ export const getStyles = memoizeFunction((
       outline: 'none',
       fontSize: FontSizes.medium,
       width: '100%',
-      minWidth: '86px',
-      padding: '2px',
+      minWidth: '86px'
     },
     labelWrapper: {
       display: 'inline-flex'

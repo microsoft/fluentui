@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   anchorProperties,
-  autobind,
   BaseComponent,
   buttonProperties,
   classNamesFunction,
   customizable,
-  getNativeProps
+  getNativeProps,
+  createRef
 } from '../../Utilities';
 import {
   ILink,
@@ -19,7 +19,7 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
 @customizable('Link', ['theme', 'getStyles'])
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
-  private _link: HTMLElement;
+  private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
   public render() {
     const { disabled, children, className, href, theme, getStyles } = this.props;
@@ -36,7 +36,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         { ...getNativeProps(this.props, anchorProperties) }
         className={ classNames.root }
         onClick={ this._onClick }
-        ref={ this._resolveRef('_link') }
+        ref={ this._link }
         target={ this.props.target }
         aria-disabled={ disabled }
       >
@@ -49,7 +49,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         { ...getNativeProps(this.props, buttonProperties) }
         className={ classNames.root }
         onClick={ this._onClick }
-        ref={ this._resolveRef('_link') }
+        ref={ this._link }
         aria-disabled={ disabled }
       >
         { children }
@@ -60,13 +60,12 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   }
 
   public focus() {
-    if (this._link) {
-      this._link.focus();
+    if (this._link.value) {
+      this._link.value.focus();
     }
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+  private _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     const { onClick, disabled } = this.props;
 
     if (disabled) {

@@ -6,9 +6,6 @@ import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-reac
 import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
 import { IFormContext } from '../../Form';
 
-// Utilities
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-
 /**
  * Dropdown input for Form
  */
@@ -35,7 +32,7 @@ export class FormDropdown extends FormBaseInput<number | string, IFormDropdownPr
   public render(): JSX.Element {
     return (
       <Dropdown
-        {...this.props.dropdownProps}
+        { ...this.props.dropdownProps }
 
         // These props cannot be overridden
         key={ this.props.inputKey }
@@ -45,8 +42,7 @@ export class FormDropdown extends FormBaseInput<number | string, IFormDropdownPr
     );
   }
 
-  @autobind
-  private _onChanged(option: IDropdownOption): void {
+  private _onChanged = (option: IDropdownOption): void => {
     this.setValue(option.key);
   }
 

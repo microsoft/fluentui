@@ -22,6 +22,8 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
             <LinkBasicExample />
           </ExampleCard>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ ['a', 'button'] }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -65,7 +67,7 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...LinkStatus}
+            { ...LinkStatus }
           />
         }
       />

@@ -121,6 +121,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   handleTabKey?: FocusZoneTabbableElements;
 
   /**
+   * A callback method to determine if the input element should lose focus on arrow keys
+   *  @param {HTMLInputElement} inputElement The input element which is to loose focus.
+   *  @returns True if input element should loose focus or false otherwise.
+   */
+  shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+
+  /**
    * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
    * when determining how to move focus
    * @default false
