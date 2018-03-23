@@ -102,11 +102,16 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       items.forEach((overflowItem) => {
         const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
         if (keytip) {
+          // Modify this keytip's sequence to include the overflow sequence
+          const modifiedOverflowItem = { ...overflowItem, keytipProps: { ...overflowItem.keytipProps } };
+          this._modifyOverflowItemKeytip(overflowKeytipSequence!, modifiedOverflowItem, -1);
+          newOverflowItems.push(modifiedOverflowItem);
+
           // Create persisted keytip
           const persistedKeytip = { ...keytip, hasChildrenNodes: false };
-          if (keytip.hasChildrenNodes) {
+          if (keytip.hasChildrenNodes || overflowItem.subMenuProps) {
             // If the keytip has a submenu, we need to modify the onExecute
-            persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, keytip.keySequences);
+            persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, modifiedOverflowItem.keytipProps.keySequences);
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
             persistedKeytip.onExecute = (el: HTMLElement | null) => {
@@ -116,11 +121,6 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
           // Add this persisted keytip to our internal list
           this._persistedKeytips.push(persistedKeytip);
-
-          // Modify this keytip's sequence to include the overflow sequence
-          const modifiedOverflowItem = { ...overflowItem, keytipProps: { ...overflowItem.keytipProps } };
-          this._modifyOverflowItemKeytip(overflowKeytipSequence!, modifiedOverflowItem, -1);
-          newOverflowItems.push(modifiedOverflowItem);
         } else {
           newOverflowItems.push(overflowItem);
         }

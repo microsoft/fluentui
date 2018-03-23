@@ -42,7 +42,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     };
 
     const overflowItem2Click = () => {
-      console.log('second overflow two item');
+      console.log('second overflow item');
     };
 
     this.keytipMap = buildKeytipConfigMap(keytipConfig);
@@ -73,7 +73,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
       ],
       overflowItems: [
         {
-          key: 'item4',
+          key: 'item5',
           name: 'Overflow Link 1',
           keytipProps: {
             ...this.keytipMap.OverflowButton5,
@@ -88,10 +88,11 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
           onClick: overflowItem1Click
         },
         {
-          key: 'item5',
+          key: 'item6',
           name: 'Overflow Link 2',
           keytipProps: {
             ...this.keytipMap.OverflowButton6,
+            hasChildrenNodes: true,
             onExecute: (el: HTMLElement | null) => {
               if (el) {
                 el.click();
@@ -100,7 +101,20 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
               }
             }
           },
-          onClick: overflowItem2Click
+          onClick: overflowItem2Click,
+          subMenuProps: {
+            items: [
+              {
+                key: 'overflowSubMenu1',
+                name: 'Overflow Submenu Item 1',
+                keytipProps: this.keytipMap.OverflowSubMenuButton1
+              },
+              {
+                key: 'overflowSubMenu2',
+                name: 'Overflow Submenu Item 2'
+              }
+            ]
+          }
         }
       ]
     };
@@ -332,9 +346,9 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
   private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
     return (
       <CommandBarButton
+        { ...item }
         styles={ { root: { padding: '10px' } } }
-        onClick={ item.onClick }
-        keytipProps={ item.keytipProps }
+        menuProps={ item.subMenuProps }
       >{ item.name }
       </CommandBarButton>
     );

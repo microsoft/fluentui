@@ -158,7 +158,6 @@ export class KeytipTree {
    */
   public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     const possibleNodes = this._getNodes(currentKeytip.children);
-
     return find(possibleNodes, (node: IKeytipTreeNode) => {
       return keySequencesAreEqual(node.keytipSequence, keySequence) && !node.disabled;
     });

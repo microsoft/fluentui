@@ -179,7 +179,13 @@ export const keytipConfig: IKeytipConfig = {
     },
     {
       id: 'OverflowButton6',
-      content: '6'
+      content: '6',
+      children: [
+        {
+          id: 'OverflowSubMenuButton1',
+          content: 'H'
+        }
+      ]
     },
   ]
 };
