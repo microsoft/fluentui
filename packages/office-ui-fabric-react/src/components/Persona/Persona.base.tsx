@@ -11,15 +11,18 @@ import { PersonaCoin } from './PersonaCoin';
 import {
   IPersonaProps,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
+  IPersonaStyleProps,
+  IPersonaStyles,
 } from './Persona.types';
 import {
-  PERSONA_PRESENCE,
-  PERSONA_SIZE
-} from './PersonaConsts';
-import * as stylesImport from './Persona.scss';
-const styles: any = stylesImport;
+  classNamesFunction,
+  customizable,
+} from '../../Utilities';
 
+const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
+
+@customizable('Persona', ['theme'])
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',

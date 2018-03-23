@@ -1,10 +1,9 @@
-import { IPersonaStyleProps, IPersonaStyles, PersonaSize } from './Persona.types';
+import { IPersonaStyleProps, IPersonaStyles, PersonaPresence, PersonaSize } from './Persona.types';
 import {
   FontSizes,
   FontWeights,
   HighContrastSelector,
   IStyle,
-  ITheme,
   normalize,
   noWrap,
   zIndex,
@@ -16,22 +15,35 @@ export const getStyles = (
 ): IPersonaStyles => {
   const {
     className,
-    extraLarge,
-    isAvailable,
-    isAway,
-    isBlocked,
-    isBusy,
     isDarkText,
-    isDoNotDisturb,
-    isOffline,
     isReadOnly,
     isSelectable,
     showSecondaryText,
+    presence,
     size,
     theme,
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette } = theme;
+
+  // Persona presence conditionals
+  const isAvailable = presence === PersonaPresence.online;
+  const isAway = presence === PersonaPresence.away;
+  const isBlocked = presence === PersonaPresence.blocked;
+  const isBusy = presence === PersonaPresence.busy;
+  const isDoNotDisturb = presence === PersonaPresence.dnd;
+  const isOffline = presence === PersonaPresence.offline;
+
+  // Persona size conditionals
+  const isSize10 = size === PersonaSize.size10 || size === PersonaSize.tiny;
+  const isSize16 = size === PersonaSize.size16;
+  const isSize24 = size === PersonaSize.size24 || size === PersonaSize.extraExtraSmall;
+  const isSize28 = size === PersonaSize.size28 || size === PersonaSize.extraSmall;
+  const isSize32 = size === PersonaSize.size32;
+  const isSize40 = size === PersonaSize.size40 || size === PersonaSize.small;
+  const isSize48 = size === PersonaSize.size48;
+  const isSize72 = size === PersonaSize.size72 || size === PersonaSize.large;
+  const isSize100 = size === PersonaSize.size100 || size === PersonaSize.extraLarge;
 
   // Skype presence colors
   const colorPresenceAvailable = '#7FBA00';
@@ -48,17 +60,6 @@ export const getStyles = (
   const colorPresenceBusyStripeLight = '#E57A79';
   const colorPresenceBusyStripeDark = '#D00E0D';
   const colorPresenceBusyAverage = '#D93B3B';
-
-  // Persona size conditionals
-  const isSize10 = size === PersonaSize.size10;
-  const isSize16 = size === PersonaSize.size16;
-  const isSize24 = size === PersonaSize.size24;
-  const isSize28 = size === PersonaSize.size28;
-  const isSize32 = size === PersonaSize.size32;
-  const isSize40 = size === PersonaSize.size40;
-  const isSize48 = size === PersonaSize.size48;
-  const isSize72 = size === PersonaSize.size72;
-  const isSize100 = size === PersonaSize.size100;
 
   // Persona Sizes
   const personaSize10 = '20px';
@@ -115,13 +116,12 @@ export const getStyles = (
           }
         }
       },
-      className,
 
       /**
        * Modifier: Size 10 Persona
        */
       isSize10 && [
-        'ms-Persona--isSize10',
+        'ms-Persona--size10',
         {
           height: personaSize10,
           minWidth: personaSize10,
@@ -184,7 +184,7 @@ export const getStyles = (
        * Modifier: Size 16 Persona
        */
       isSize16 && [
-        'ms-Persona--isSize16',
+        'ms-Persona--size16',
         {
           height: personaSize16,
           minWidth: personaSize16,
@@ -221,7 +221,7 @@ export const getStyles = (
        * Modifier: Size 24 Persona
        */
       isSize24 && [
-        'ms-Persona--isSize24',
+        'ms-Persona--size24',
         {
           height: personaSize24,
           minWidth: personaSize24,
@@ -279,7 +279,7 @@ export const getStyles = (
        * Modifier: Size 28 Persona
        */
       isSize28 && [
-        'ms-Persona--isSize28',
+        'ms-Persona--size28',
         {
           height: personaSize28,
           minWidth: personaSize28,
@@ -337,7 +337,7 @@ export const getStyles = (
        * Modifier: Size 32 Persona
        */
       isSize32 && [
-        'ms-Persona--isSize32',
+        'ms-Persona--size32',
         {
           height: personaSize32,
           minWidth: personaSize32,
@@ -383,7 +383,7 @@ export const getStyles = (
        * Modifier: Size 40 Persona
        */
       isSize40 && [
-        'ms-Persona--isSize40',
+        'ms-Persona--size40',
         {
           height: personaSize40,
           minWidth: personaSize40,
@@ -405,7 +405,7 @@ export const getStyles = (
        * Modifier: Size 72 Persona
        */
       isSize72 && [
-        'ms-Persona--isSize72',
+        'ms-Persona--size72',
         {
           height: personaSize72,
           maxWidth: personaSize72,
@@ -445,7 +445,7 @@ export const getStyles = (
        * Modifier: Size 100 Persona
        */
       isSize100 && [
-        'ms-Persona--isSize100',
+        'ms-Persona--size100',
         {
           height: personaSize100,
           maxWidth: personaSize100,
@@ -488,7 +488,7 @@ export const getStyles = (
        * Note: Typically applied when the component has a colored background.
        */
       isDarkText && [
-        'ms-Persona--isDarkText',
+        'ms-Persona--DarkText',
         {
           selectors: {
             '$primaryText': {
@@ -506,14 +506,14 @@ export const getStyles = (
        * Modifier: Selectable Persona
        */
       isSelectable && [
-        'ms-Persona--isSelected',
+        'ms-Persona--Selected',
         {
           cursor: 'pointer',
           padding: '0 10px',
         }
       ],
 
-      isSelectable && !extraLarge && [
+      isSelectable && !isSize100 && [
         {
           selectors: {
             '&:hover, &:focus': {
@@ -532,7 +532,7 @@ export const getStyles = (
        * Modifier: Persona with available presence
        */
       isAvailable && [
-        'ms-Persona--isAvailable',
+        'ms-Persona--online',
         {
           selectors: {
             '$presence': {
@@ -554,7 +554,7 @@ export const getStyles = (
        * Modifier: Persona with away presence
        */
       isAway && [
-        'ms-Persona--isAway',
+        'ms-Persona--away',
         {
           selectors: {
             '$presence': {
@@ -579,7 +579,7 @@ export const getStyles = (
        * Modifier: Persona with blocked presence
        */
       isBlocked && [
-        'ms-Persona--isBlocked',
+        'ms-Persona--blocked',
         {
           selectors: {
             '$presence': {
@@ -674,7 +674,7 @@ export const getStyles = (
        * Modifier: Persona with busy presence
        */
       isBusy && [
-        'ms-Persona--isBusy',
+        'ms-Persona--Busy',
         {
           selectors: {
             '$presence': {
@@ -698,7 +698,7 @@ export const getStyles = (
        * Modifier: Persona with do not disturb presence
        */
       isDoNotDisturb && [
-        'ms-Persona--isDoNotDisturb',
+        'ms-Persona--DoNotDisturb',
         {
           selectors: {
             '$presence': {
@@ -733,7 +733,7 @@ export const getStyles = (
        * Modifier: Persona with offline presence
        */
       isOffline && [
-        'ms-Persona--isOffline',
+        'ms-Persona--Offline',
         {
           selectors: {
             '$presence': {
@@ -754,6 +754,8 @@ export const getStyles = (
           }
         }
       ],
+
+      className,
     ],
 
     placeholder: [
@@ -767,47 +769,6 @@ export const getStyles = (
         zIndex: zIndex.middle,
       }
     ],
-
-    presense: [
-      'ms-Persona-presence',
-      {
-        backgroundColor: colorPresenceAvailable,
-        position: 'absolute',
-        height: personaPresenceSize12,
-        width: personaPresenceSize12,
-        borderRadius: '50%',
-        top: 'auto',
-        right: `-${personaPresenceBorder}`,
-        bottom: `-${personaPresenceBorder}`,
-        border: `${personaPresenceBorder} solid ${palette.white}`,
-        textAlign: 'center',
-        boxSizing: 'content-box',
-        MsHighContrastAdjust: 'none',
-
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Window',
-            color: 'Window',
-            backgroundColor: 'WindowText',
-          },
-
-          '$presenseIcon': {
-            color: palette.white,
-            fontSize: '6px',
-            lineHeight: personaPresenceSize12,
-            verticalAlign: 'top',
-
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'Window',
-              }
-            }
-          }
-        }
-      }
-    ],
-
-    presenseIcon: ['ms-Persona-presenceIcon'],
 
     details: [
       'ms-Persona-details',
