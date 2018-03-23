@@ -53,19 +53,16 @@ describe('OverflowSet', () => {
         content: 'D',
         keySequences: [{ keys: ['d'] }],
         onExecute: jest.fn()
-
       },
       overflowItemKeytip5: {
         content: 'E',
         keySequences: [{ keys: ['d'] }, { keys: ['e'] }],
         onExecute: jest.fn()
-
       },
       overflowItemKeytip6: {
         content: 'F',
         keySequences: [{ keys: ['d'] }, { keys: ['f'] }],
         onExecute: jest.fn()
-
       },
       overflowButtonKeytip: {
         // Overflow button
@@ -249,6 +246,7 @@ describe('OverflowSet', () => {
     });
 
     describe('persisted keytip with a submenu', () => {
+      /*
       it('children keytips should open the overflow and submenu', () => {
         const overflowItemsWithSubMenuAndKeytips = [
           {
@@ -263,7 +261,6 @@ describe('OverflowSet', () => {
               ...overflowKeytips.overflowItemKeytip4,
               hasChildrenNodes: true,
               onExecute: (el: HTMLElement) => {
-                debugger;
                 el.focus();
                 // ReactTestUtils.Simulate.click(el);
               }
@@ -285,14 +282,12 @@ describe('OverflowSet', () => {
           },
         ];
 
-        debugger;
         overflowSet.setProps({
           items,
           overflowItems: overflowItemsWithSubMenuAndKeytips
         });
 
         keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-        debugger;
         keytipManager.processInput('d');
 
         // The two submenu keytips should be registered with their modified sequence
@@ -314,6 +309,7 @@ describe('OverflowSet', () => {
 
         // Assert that the correct DOM elements are showing
       });
+      */
 
       /*
       it('persisted keytip with a submenu and no children keytips should also exit keytip mode after being triggered', () => {
