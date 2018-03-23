@@ -20,24 +20,20 @@ export const getStyles = memoizeFunction((
 
   const splitButtonStyles: IButtonStyles = {
     splitButtonContainer: [
-      getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+      getFocusStyle(theme, 0, 'relative', buttonHighContrastFocus),
       {
-        position: 'relative',
-        display: 'inline-block',
-        border: '1px solid transparent'
+        display: 'inline-block'
       }
     ],
     splitButtonContainerFocused: {
       outline: 'none!important',
-      border: '1px solid'
     },
-    splitButtonMenuButton: [
-      getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+    splitButtonMenuButton:
       {
         padding: 6,
         height: 'auto',
         boxSizing: 'border-box',
-        border: '1px solid transparent',
+        border: 0,
         borderRadius: 0,
         outline: 'transparent',
         userSelect: 'none',
@@ -48,8 +44,7 @@ export const getStyles = memoizeFunction((
         verticalAlign: 'top',
         width: 32,
         marginLeft: -1
-      }
-    ],
+      },
 
     splitButtonDivider: {
       position: 'absolute',

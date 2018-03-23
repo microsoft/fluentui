@@ -563,7 +563,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
     } else {
-      return ev.which === KeyCodes.down && ev.altKey;
+      return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
   }
 
