@@ -1,6 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+
+## 5.20.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- High contrast mode for focus styling.
 
 ## 5.19.1
 Mon, 12 Mar 2018 06:29:20 GMT

@@ -106,11 +106,11 @@ describe('Pickers', () => {
         picker.inputElement.value = 'bl';
       }
 
-      expect(picker.floatingPicker.suggestions.length).toBe(2);
-      expect(picker.floatingPicker.suggestions[0].name).toBe('black');
+      expect(picker.floatingPicker.value && picker.floatingPicker.value.suggestions.length).toBe(2);
+      expect(picker.floatingPicker.value && picker.floatingPicker.value.suggestions[0].name).toBe('black');
 
       // Force resolve to the first suggestions
-      picker.floatingPicker.forceResolveSuggestion();
+      picker.floatingPicker.value && picker.floatingPicker.value.forceResolveSuggestion();
       expect(picker.items.length).toBe(1);
       expect(picker.items[0].name).toBe('black');
 
@@ -135,11 +135,11 @@ describe('Pickers', () => {
         picker.inputElement.value = 'bl';
       }
 
-      expect(picker.floatingPicker.isSuggestionsShown).toBeTruthy();
-      picker.floatingPicker.hidePicker();
-      expect(picker.floatingPicker.isSuggestionsShown).toBeFalsy();
-      picker.floatingPicker.showPicker();
-      expect(picker.floatingPicker.isSuggestionsShown).toBeTruthy();
+      expect(picker.floatingPicker.value && picker.floatingPicker.value.isSuggestionsShown).toBeTruthy();
+      picker.floatingPicker.value && picker.floatingPicker.value.hidePicker();
+      expect(picker.floatingPicker.value && picker.floatingPicker.value.isSuggestionsShown).toBeFalsy();
+      picker.floatingPicker.value && picker.floatingPicker.value.showPicker();
+      expect(picker.floatingPicker.value && picker.floatingPicker.value.isSuggestionsShown).toBeTruthy();
 
       ReactDOM.unmountComponentAtNode(root);
     });
@@ -163,9 +163,9 @@ describe('Pickers', () => {
         ReactTestUtils.Simulate.keyDown(picker.inputElement, { which: KeyCodes.down });
       }
 
-      picker.floatingPicker.completeSuggestion();
-      expect(picker.selectedItemsList.items.length).toBe(1);
-      expect(picker.selectedItemsList.items[0].name).toBe('blue');
+      picker.floatingPicker.value && picker.floatingPicker.value.completeSuggestion();
+      expect(picker.selectedItemsList.value && picker.selectedItemsList.value.items.length).toBe(1);
+      expect(picker.selectedItemsList.value && picker.selectedItemsList.value.items[0].name).toBe('blue');
 
       ReactDOM.unmountComponentAtNode(root);
     });

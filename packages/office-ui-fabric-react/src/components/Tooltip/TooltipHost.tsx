@@ -8,7 +8,8 @@ import {
   getNativeProps,
   getId,
   assign,
-  hasOverflow
+  hasOverflow,
+  createRef
 } from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
@@ -27,7 +28,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   };
 
   // The wrapping div that gets the hover events
-  private _tooltipHost: HTMLElement;
+  private _tooltipHost = createRef<HTMLDivElement>();
 
   // Constructor
   constructor(props: ITooltipHostProps) {
@@ -55,6 +56,8 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
+    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
+    const showTooltip = isTooltipVisible && isContentPresent;
 
     return (
       <div
@@ -63,7 +66,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
           hostClassName,
           overflowMode !== undefined && styles.hostOverflow
         ) }
-        ref={ this._resolveRef('_tooltipHost') }
+        ref={ this._tooltipHost }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._hideTooltip } }
         onMouseEnter={ this._onTooltipMouseEnter }
@@ -71,7 +74,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
-        { isTooltipVisible && (
+        { showTooltip && (
           <Tooltip
             id={ tooltipId }
             delay={ delay }
@@ -88,7 +91,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     );
   }
 
-  private _getTargetElement(): HTMLElement {
+  private _getTargetElement(): HTMLElement | undefined {
+    if (!this._tooltipHost.value) {
+      return undefined;
+    }
+
     const { overflowMode } = this.props;
 
     // Select target element based on overflow mode. For parent mode, you want to position the tooltip relative
@@ -96,14 +103,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.parentElement!;
+          return this._tooltipHost.value.parentElement!;
 
         case TooltipOverflowMode.Self:
-          return this._tooltipHost;
+          return this._tooltipHost.value;
       }
     }
 
-    return this._tooltipHost;
+    return this._tooltipHost.value;
   }
 
   // Show Tooltip

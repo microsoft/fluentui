@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Use arrow function properties instead of @autobind",
+      "comment": "ComboBox: Add some code comments. Minor bug fixes to the example page.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com"
+  "email": "stanleyy@microsoft.com"
 }

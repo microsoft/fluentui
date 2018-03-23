@@ -8,6 +8,11 @@ export interface ISearchBox {
    * Sets focus inside the search input box.
    */
   focus(): void;
+
+  /**
+   * Returns whether or not the SearchBox has focus
+   */
+  hasFocus(): boolean;
 }
 
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -15,7 +20,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISearchBox) => void;
+  componentRef?: (component: ISearchBox | null) => void;
 
   /**
    * Placeholder for the search box.

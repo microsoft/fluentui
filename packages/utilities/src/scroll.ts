@@ -75,7 +75,7 @@ export function getScrollbarWidth(): number {
  *
  * @public
  */
-export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null {
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null {
   let el: HTMLElement | null = startingElement;
 
   // First do a quick scan for the scrollable attribute.

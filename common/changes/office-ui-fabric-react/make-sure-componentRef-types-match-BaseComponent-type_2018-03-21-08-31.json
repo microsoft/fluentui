@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: scrollbars show up unnecessarily on IE11",
+      "comment": "Update componentRef types",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "aditima@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

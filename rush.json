@@ -68,6 +68,12 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/fabric-website",
+      "projectFolder": "apps/fabric-website",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/icons",
       "projectFolder": "packages/icons",
       "versionPolicyName": "lockedMajor",
@@ -76,43 +82,31 @@
     {
       "packageName": "@uifabric/build",
       "projectFolder": "scripts",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     },
     {
       "packageName": "ssr-tests",
       "projectFolder": "apps/ssr-tests",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     },
     {
       "packageName": "vr-tests",
       "projectFolder": "apps/vr-tests",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     },
     {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
-    },
-    {
-      "packageName": "@uifabric/fabric-website",
-      "projectFolder": "apps/fabric-website",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": true
     },
     {
       "packageName": "test-bundle-button",
       "projectFolder": "apps/test-bundle-button",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     },
     {
       "packageName": "office-ui-fabric-react-tslint",
       "projectFolder": "packages/office-ui-fabric-react-tslint",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     }
   ]

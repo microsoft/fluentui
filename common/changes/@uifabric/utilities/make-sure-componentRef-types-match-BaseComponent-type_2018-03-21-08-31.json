@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Use arrow function properties instead of @autobind",
-      "type": "patch"
+      "comment": "Update createRef type",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/utilities",

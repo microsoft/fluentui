@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import {
   IDocumentCardActionsProps,
   IDocumentCardPreviewProps,
@@ -377,8 +376,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     return props.documentTitleProps.title;
   }
 
-  @autobind
-  private _onDisabledButtonClick(): void {
+  private _onDisabledButtonClick = (): void => {
     this.setState({
       isPickerDisabled: !this.state.isPickerDisabled
     });

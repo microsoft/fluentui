@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Use arrow function properties instead of @autobind",
+      "comment": "Update componentRef types",
       "type": "patch"
     }
   ],

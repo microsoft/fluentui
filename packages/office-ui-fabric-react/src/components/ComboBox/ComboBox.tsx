@@ -3,6 +3,7 @@ import { IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
+import { Checkbox } from '../../Checkbox';
 import {
   CommandButton,
   IconButton
@@ -16,7 +17,8 @@ import {
   getNativeProps,
   KeyCodes,
   customizable,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -35,8 +37,8 @@ export interface IComboBoxState {
   // The open state
   isOpen?: boolean;
 
-  // The currently selected index (-1 if no index is selected)
-  selectedIndex: number;
+  // The currently selected indices
+  selectedIndices?: number[];
 
   // The focused state of the comboBox
   focused?: boolean;
@@ -85,19 +87,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
-  private _root: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
 
   // The input aspect of the comboBox
-  private _comboBox: Autofill;
+  private _comboBox = createRef<Autofill>();
 
   // The wrapping div of the input and button
-  private _comboBoxWrapper: HTMLDivElement;
+  private _comboBoxWrapper = createRef<HTMLDivElement>();
 
   // The callout element
-  private _comboBoxMenu: HTMLElement;
+  private _comboBoxMenu = createRef<HTMLDivElement>();
 
   // The menu item element that is currently selected
-  private _selectedElement: HTMLElement;
+  private _selectedElement = createRef<HTMLSpanElement>();
 
   // The base id for the comboBox
   private _id: string;
@@ -142,19 +144,20 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       'defaultSelectedKey': 'selectedKey',
       'value': 'defaultSelectedKey',
       'selectedKey': 'value',
-      'dropdownWidth': 'useComboBoxAsMenuWidth'
+      'dropdownWidth': 'useComboBoxAsMenuWidth',
     });
 
     this._id = props.id || getId('ComboBox');
 
-    const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
+    const selectedKeys: (string | number)[] = this._getSelectedKeys(props.defaultSelectedKey, props.selectedKey);
+
     this._isScrollIdle = true;
 
-    const index: number = this._getSelectedIndex(props.options, selectedKey);
+    const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
     this.state = {
       isOpen: false,
-      selectedIndex: index,
+      selectedIndices: initialSelectedIndices,
       focused: false,
       suggestedDisplayValue: '',
       currentOptions: this.props.options,
@@ -166,7 +169,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   public componentDidMount() {
     // hook up resolving the options if needed on focus
-    this._events.on(this._comboBoxWrapper, 'focus', this._onResolveOptions, true);
+    this._events.on(this._comboBoxWrapper.value, 'focus', this._onResolveOptions, true);
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
@@ -175,11 +178,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (newProps.selectedKey !== this.props.selectedKey ||
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
-
-      const index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
+      const selectedKeys: string[] | number[] = this._getSelectedKeys(undefined, newProps.selectedKey);
+      const indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
 
       this.setState({
-        selectedIndex: index,
+        selectedIndices: indices,
         currentOptions: newProps.options
       });
     }
@@ -195,7 +198,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       isOpen,
       focused,
-      selectedIndex,
+      selectedIndices,
       currentPendingValueValidIndex
     } = this.state;
 
@@ -215,7 +218,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         !isOpen &&
         this._focusInputAfterClose &&
         focused &&
-        document.activeElement !== this._comboBox.inputElement)) {
+        this._comboBox.value &&
+        document.activeElement !== this._comboBox.value.inputElement)) {
       this.focus();
     }
 
@@ -228,7 +232,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // we need to set selection
     if (this._focusInputAfterClose && (prevState.isOpen && !isOpen ||
       (focused &&
-        ((!isOpen && prevState.selectedIndex !== selectedIndex) ||
+        ((!isOpen && !this.props.multiSelect && prevState.selectedIndices && selectedIndices && prevState.selectedIndices[0] !== selectedIndices[0]) ||
           !allowFreeform || value !== prevProps.value)
       ))) {
       this._select();
@@ -249,7 +253,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     super.componentWillUnmount();
 
     // remove the eventHanlder that was added in componentDidMount
-    this._events.off(this._comboBoxWrapper);
+    this._events.off(this._comboBoxWrapper.value);
   }
 
   // Primary Render
@@ -273,7 +277,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       theme,
       title
     } = this.props;
-    const { isOpen, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, selectedIndices, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     const divProps = getNativeProps(this.props, divProperties);
@@ -302,18 +306,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       );
 
     return (
-      <div { ...divProps } ref={ this._resolveRef('_root') } className={ this._classNames.container }>
+      <div { ...divProps } ref={ this._root } className={ this._classNames.container }>
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
         <div
-          ref={ this._resolveRef('_comboBoxWrapper') }
+          ref={ this._comboBoxWrapper }
           id={ id + 'wrapper' }
           className={ this._classNames.root }
         >
           <Autofill
             data-is-interactable={ !disabled }
-            ref={ this._resolveRef('_comboBox') }
+            ref={ this._comboBox }
             id={ id + '-input' }
             className={ this._classNames.input }
             type='text'
@@ -342,8 +346,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             title={ title }
           />
           <IconButton
-            className={ 'ms-ComboBox-CaretDown-button' }
-            styles={ this._getCaretButtonStyles() }
+            className={'ms-ComboBox-CaretDown-button'}
+            styles={this._getCaretButtonStyles()}
             role='presentation'
             aria-hidden={ isButtonAriaHidden }
             data-is-focusable={ false }
@@ -355,7 +359,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           />
         </div>
 
-        { isOpen && (
+        {isOpen && (
           (onRenderContainer as any)({
             ...this.props,
             onRenderList,
@@ -364,13 +368,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
           },
             this._onRenderContainer)
-        ) }
+        )}
         {
           errorMessage &&
           <div
-            className={ this._classNames.errorMessage }
+            className={this._classNames.errorMessage}
           >
-            { errorMessage }
+            {errorMessage}
           </div>
         }
       </div>
@@ -381,8 +385,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Set focus on the input
    */
   public focus = (shouldOpenOnFocus?: boolean): void => {
-    if (this._comboBox) {
-      this._comboBox.focus();
+    if (this._comboBox.value) {
+      this._comboBox.value.focus();
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
@@ -407,15 +411,21 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns {string} - the updated value to set, if needed
    */
   private _onUpdateValueInAutofillWillReceiveProps = (): string | null => {
-    if (this._comboBox === null || this._comboBox === undefined) {
+    const comboBox = this._comboBox.value;
+
+    if (!comboBox) {
       return null;
     }
 
-    if (this._currentVisibleValue && this._currentVisibleValue !== '' && this._comboBox.value !== this._currentVisibleValue) {
+    if (comboBox.value === null || comboBox.value === undefined) {
+      return null;
+    }
+
+    if (this._currentVisibleValue && this._currentVisibleValue !== '' && comboBox.value !== this._currentVisibleValue) {
       return this._currentVisibleValue;
     }
 
-    return this._comboBox.value;
+    return comboBox.value;
   }
 
   /**
@@ -442,12 +452,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autoComplete
     } = this.props;
     const {
-      selectedIndex,
+      selectedIndices,
       currentPendingValueValidIndex,
       currentOptions,
       currentPendingValue,
       suggestedDisplayValue,
-      isOpen
+      isOpen,
+      focused
     } = this.state;
 
     const currentPendingIndexValid = this._indexWithinBounds(currentOptions, currentPendingValueValidIndex);
@@ -458,41 +469,63 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return value;
     }
 
-    let index = selectedIndex;
+    // Values to display in the BaseAutoFill area
+    const displayValues = [];
 
-    if (allowFreeform) {
-      // If we are allowing freeform and autocomplete is also true
-      // and we've got a pending value that matches an option, remember
-      // the matched option's index
-      if (autoComplete === 'on' && currentPendingIndexValid) {
-        index = currentPendingValueValidIndex;
+    if (this.props.multiSelect) {
+      // MUlti-select
+      if (focused) {
+        let index = -1;
+        if (autoComplete === 'on' && currentPendingIndexValid) {
+          index = currentPendingValueValidIndex;
+        }
+        displayValues.push(currentPendingValue !== '' ? currentPendingValue : (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : ''));
+      } else {
+        for (let idx = 0; selectedIndices && (idx < selectedIndices.length); idx ++) {
+          const index: number = selectedIndices[idx];
+          displayValues.push(this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : suggestedDisplayValue);
+        }
       }
-
-      // Since we are allowing freeform, if there is currently a nonempty pending value, use that
-      // otherwise use the index determined above (falling back to '' if we did not get a valid index)
-      return currentPendingValue !== '' ? currentPendingValue : (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : '');
-
     } else {
-
-      // If we are not allowing freeform and have a
-      // valid index that matches the pending value,
-      // we know we will need some version of the pending value
-      if (currentPendingIndexValid) {
-
-        // If autoComplete is on, return the
-        // raw pending value, otherwise remember
+      // Single-select
+      let index: number = this._getFirstSelectedIndex();
+      if (allowFreeform) {
+        // If we are allowing freeform and autocomplete is also true
+        // and we've got a pending value that matches an option, remember
         // the matched option's index
-        if (autoComplete === 'on') {
-          return currentPendingValue;
+        if (autoComplete === 'on' && currentPendingIndexValid) {
+          index = currentPendingValueValidIndex;
         }
 
-        index = currentPendingValueValidIndex;
+        // Since we are allowing freeform, if there is currently a nonempty pending value, use that
+        // otherwise use the index determined above (falling back to '' if we did not get a valid index)
+        displayValues.push(currentPendingValue !== '' ? currentPendingValue : (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : ''));
+      } else {
+        // If we are not allowing freeform and have a
+        // valid index that matches the pending value,
+        // we know we will need some version of the pending value
+        if (currentPendingIndexValid && autoComplete === 'on') {
+          // If autoComplete is on, return the
+          // raw pending value, otherwise remember
+          // the matched option's index
+          index = currentPendingValueValidIndex;
+          displayValues.push(currentPendingValue);
+        } else {
+          displayValues.push(this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : suggestedDisplayValue);
+        }
       }
-
-      // If we have a valid index then return the text value of that option,
-      // otherwise return the suggestedDisplayValue
-      return this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : suggestedDisplayValue;
     }
+
+    // If we have a valid index then return the text value of that option,
+    // otherwise return the suggestedDisplayValue
+    let displayString = '';
+    for (let idx = 0; idx < displayValues.length; idx++) {
+      if (idx > 0) {
+        displayString += ', ';
+      }
+      displayString += displayValues[idx];
+    }
+    return displayString;
   }
 
   /**
@@ -583,7 +616,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValue,
       currentPendingValueValidIndex,
       currentOptions,
-      selectedIndex
+      selectedIndices
     } = this.state;
 
     if (this.props.autoComplete === 'on') {
@@ -629,13 +662,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // If we get here, either autoComplete is on or we did not find a match with autoComplete on.
     // Remember we are not allowing freeform, so at this point, if we have a pending valid value index
     // use that; otherwise use the selectedIndex
-    const index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : selectedIndex;
+    const index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : this._getFirstSelectedIndex();
 
     // Since we are not allowing freeform, we need to
     // set both the pending and suggested values/index
     // to allow us to select all content in the input to
     // give the illusion that we are readonly (e.g. freeform off)
     this._setPendingInfoFromIndex(index);
+  }
+
+  private _getFirstSelectedIndex(): number {
+    return (this.state.selectedIndices && this.state.selectedIndices.length > 0) ? this.state.selectedIndices[0] : -1;
   }
 
   /**
@@ -686,7 +723,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
     const { onChanged, onPendingValueChanged } = this.props;
-    const { selectedIndex, currentOptions } = this.state;
+    const { currentOptions } = this.state;
+    let { selectedIndices } = this.state;
+
+    if (!selectedIndices) {
+      selectedIndices = [];
+    }
 
     // Find the next selectable index, if searchDirection is none
     // we will get our starting index back
@@ -698,12 +740,25 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
-    if (index !== selectedIndex) {
+    if (this.props.multiSelect || selectedIndices.length < 1 || (selectedIndices.length === 1 && selectedIndices[0] !== index)) {
       const option: IComboBoxOption = currentOptions[index];
+      if (!option) {
+        return;
+      }
+      if (this.props.multiSelect) {
+        option.selected = !option.selected;
+        if (option.selected && selectedIndices.indexOf(index) < 0) {
+          selectedIndices.push(index);
+        } else if (!option.selected && selectedIndices.indexOf(index) >= 0) {
+          selectedIndices = selectedIndices.filter((value: number) => value !== index);
+        }
+      } else {
+        selectedIndices[0] = index;
+      }
 
       // Set the selected option
       this.setState({
-        selectedIndex: index
+        selectedIndices: selectedIndices
       });
 
       // If ComboBox value is changed, revert preview first
@@ -728,8 +783,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * and set the focused state
    */
   private _select = (): void => {
-    if (this._comboBox.inputElement) {
-      this._comboBox.inputElement.select();
+    if (this._comboBox.value && this._comboBox.value.inputElement) {
+      this._comboBox.value.inputElement.select();
     }
 
     if (!this.state.focused) {
@@ -780,8 +835,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // inside the comboBox root or the comboBox menu since
     // it we are not really bluring from the whole comboBox
     if (event.relatedTarget &&
-      (this._root && this._root.contains(event.relatedTarget as HTMLElement) ||
-        this._comboBoxMenu && this._comboBoxMenu.contains(event.relatedTarget as HTMLElement))) {
+      (this._root.value && this._root.value.contains(event.relatedTarget as HTMLElement) ||
+        this._comboBoxMenu.value && this._comboBoxMenu.value.contains(event.relatedTarget as HTMLElement))) {
       event.preventDefault();
       event.stopPropagation();
       return;
@@ -789,7 +844,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (this.state.focused) {
       this.setState({ focused: false });
-      this._submitPendingValue();
+      if (!this.props.multiSelect) {
+        this._submitPendingValue();
+      }
     }
   }
 
@@ -808,6 +865,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentOptions,
       currentPendingValueValidIndexOnHover
     } = this.state;
+    let { selectedIndices } = this.state;
 
     // If we allow freeform and we have a pending value, we
     // need to handle that
@@ -823,9 +881,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // the live value in the underlying input matches the pending option; update the state
         if (currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
           (autoComplete && pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
-            (this._comboBox.isValueSelected &&
-              currentPendingValue.length + (this._comboBox.selectionEnd - this._comboBox.selectionStart) === pendingOptionText.length) ||
-            (this._comboBox.inputElement && this._comboBox.inputElement.value.toLocaleLowerCase() === pendingOptionText)
+            (this._comboBox.value && this._comboBox.value.isValueSelected &&
+              currentPendingValue.length + (this._comboBox.value.selectionEnd - this._comboBox.value.selectionStart) === pendingOptionText.length) ||
+            (this._comboBox.value && this._comboBox.value.inputElement && this._comboBox.value.inputElement.value.toLocaleLowerCase() === pendingOptionText)
           )) {
           this._setSelectedIndex(currentPendingValueValidIndex);
           this._clearPendingInfo();
@@ -839,10 +897,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we are not controlled, create a new option
         const newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
         const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
-
+        if (selectedIndices) {
+          if (!this.props.multiSelect) {
+            selectedIndices = [];
+          }
+          selectedIndices.push(newOptions.length - 1);
+        }
         this.setState({
           currentOptions: newOptions,
-          selectedIndex: newOptions.length - 1
+          selectedIndices: selectedIndices
         });
       }
     } else if (currentPendingValueValidIndex >= 0) {
@@ -870,26 +933,26 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (
       <Callout
-        isBeakVisible={ false }
-        gapSpace={ 0 }
-        doNotLayer={ false }
-        directionalHint={ DirectionalHint.bottomLeftEdge }
-        directionalHintFixed={ true }
+        isBeakVisible={false}
+        gapSpace={0}
+        doNotLayer={false}
+        directionalHint={DirectionalHint.bottomLeftEdge}
+        directionalHintFixed={true}
         { ...calloutProps }
         className={ css(this._classNames.callout, calloutProps ? calloutProps.className : undefined) }
-        target={ this._comboBoxWrapper }
+        target={ this._comboBoxWrapper.value }
         onDismiss={ this._onDismiss }
         onScroll={ this._onScroll }
         setInitialFocus={ false }
         calloutWidth={
-          useComboBoxAsMenuWidth ?
-            this._comboBoxWrapper.clientWidth + 2
+          useComboBoxAsMenuWidth && this._comboBoxWrapper.value ?
+            this._comboBoxWrapper.value.clientWidth + 2
             : dropdownWidth }
       >
-        <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
+        <div className={ this._classNames.optionsContainerWrapper } ref={ this._comboBoxMenu }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
-        { onRenderLowerContent(this.props, this._onRenderLowerContent) }
+        {onRenderLowerContent(this.props, this._onRenderLowerContent)}
       </Callout>
     );
   }
@@ -904,12 +967,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     return (
       <div
-        id={ id + '-list' }
-        className={ this._classNames.optionsContainer }
-        aria-labelledby={ id + '-label' }
+        id={id + '-list'}
+        className={this._classNames.optionsContainer}
+        aria-labelledby={id + '-label'}
         role='listbox'
       >
-        { options.map((item) => (onRenderItem as any)(item, this._onRenderItem)) }
+        {options.map((item) => (onRenderItem as any)(item, this._onRenderItem))}
       </div>
     );
   }
@@ -939,8 +1002,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return (
         <div
           role='separator'
-          key={ key }
-          className={ this._classNames.divider }
+          key={key}
+          className={this._classNames.divider}
         />
       );
     }
@@ -960,29 +1023,48 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
-    const rootClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item)).root;
+    const optionStyles = this._getCurrentOptionStyles(item);
 
     return (
-      <CommandButton
-        id={ id + '-list' + item.index }
-        key={ item.key }
-        data-index={ item.index }
-        className={ rootClassNames }
-        styles={ this._getCurrentOptionStyles(item) }
-        checked={ isSelected }
-        onClick={ this._onItemClick(item.index) }
-        onMouseEnter={ this._onOptionMouseEnter.bind(this, item.index) }
-        onMouseMove={ this._onOptionMouseMove.bind(this, item.index) }
-        onMouseLeave={ this._onOptionMouseLeave }
-        role='option'
-        aria-selected={ isSelected ? 'true' : 'false' }
-        ariaLabel={ item.text }
-        disabled={ item.disabled }
-      > { <span ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }>
-        { onRenderOption(item, this._onRenderOptionContent) }
-      </span>
-        }
-      </CommandButton>
+      !this.props.multiSelect ? (
+        <CommandButton
+          id={ id + '-list' + item.index }
+          key={ item.key }
+          data-index={ item.index }
+          styles={ optionStyles }
+          checked={ isSelected }
+          className={ 'ms-ComboBox-option' }
+          onClick={ this._onItemClick(item.index) }
+          onMouseEnter={ this._onOptionMouseEnter.bind(this, item.index) }
+          onMouseMove={ this._onOptionMouseMove.bind(this, item.index) }
+          onMouseLeave={ this._onOptionMouseLeave }
+          role='option'
+          aria-selected={ isSelected ? 'true' : 'false'}
+          ariaLabel= {item.text }
+          disabled={ item.disabled }
+        > { <span ref={ this._selectedElement }>
+          { onRenderOption(item, this._onRenderOptionContent) }
+        </span>
+          }
+        </CommandButton>
+      ) : (
+        <Checkbox
+          id={id + '-list' + item.index}
+          ref={'option' + item.index}
+          key={item.key}
+          data-index={item.index}
+          styles={optionStyles}
+          className={'ms-ComboBox-option'}
+          data-is-focusable={true}
+          onChange={this._onItemClick(item.index!)}
+          label={item.text}
+          role='option'
+          aria-selected={ isSelected ? 'true' : 'false' }
+          checked={isSelected}
+        >
+          {onRenderOption(item, this._onRenderOptionContent)}
+        </Checkbox>
+      )
     );
   }
 
@@ -1009,7 +1091,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return false;
     }
 
-    return this._getPendingSelectedIndex(true /* includePendingValue */) === index;
+    if (!this.props.multiSelect && this._getPendingSelectedIndex(true /* includePendingValue */) === index) {
+      return true;
+    }
+
+    let idxOfSelectedIndex = -1;
+    if ((index !== undefined) && this.state.selectedIndices) {
+      idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
+    }
+    return (idxOfSelectedIndex >= 0);
   }
 
   /**
@@ -1022,7 +1112,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover,
       currentPendingValueValidIndex,
       currentPendingValue,
-      selectedIndex
+      selectedIndices
     } = this.state;
 
     return (
@@ -1030,7 +1120,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         currentPendingValueValidIndexOnHover :
         (currentPendingValueValidIndex >= 0 || (includeCurrentPendingValue && currentPendingValue !== '')) ?
           currentPendingValueValidIndex :
-          selectedIndex
+          this.props.multiSelect ? 0 : this._getFirstSelectedIndex()
     );
   }
 
@@ -1061,22 +1151,22 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       currentPendingValueValidIndex,
       currentPendingValue,
-      selectedIndex
+      selectedIndices
     } = this.state;
 
     if (onScrollToItem) {
       // Use the custom scroll handler
-      onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
-    } else if (this._selectedElement && this._selectedElement.offsetParent) {
+      onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : this._getFirstSelectedIndex());
+    } else if (this._selectedElement.value && this._selectedElement.value.offsetParent) {
       // We are using refs, scroll the ref into view
       if (scrollSelectedToTop) {
-        this._selectedElement.offsetParent.scrollIntoView(true);
+        this._selectedElement.value.offsetParent.scrollIntoView(true);
       } else {
         let alignToTop = true;
 
-        if (this._comboBoxMenu.offsetParent) {
-          const scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
-          const selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
+        if (this._comboBoxMenu.value && this._comboBoxMenu.value.offsetParent) {
+          const scrollableParentRect = this._comboBoxMenu.value.offsetParent.getBoundingClientRect();
+          const selectedElementRect = this._selectedElement.value.offsetParent.getBoundingClientRect();
 
           // If we are completely in view then we do not need to scroll
           if (scrollableParentRect.top <= selectedElementRect.top &&
@@ -1090,14 +1180,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         }
 
-        this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+        this._selectedElement.value.offsetParent.scrollIntoView(alignToTop);
       }
     }
   }
 
   private _onRenderOptionContent = (item: IComboBoxOption): JSX.Element => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
+    return <span className={optionClassNames.optionText}>{item.text}</span>;
   }
 
   /**
@@ -1108,9 +1198,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onItemClick(index: number | undefined): () => void {
     return (): void => {
       this._setSelectedIndex(index as number);
-      this.setState({
-        isOpen: false
-      });
+      if (!this.props.multiSelect) {
+        // only close the callout when it's in single-select mode
+        this.setState({
+          isOpen: false
+        });
+      }
     };
   }
 
@@ -1126,23 +1219,30 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // close the menu and focus the input
     this.setState({ isOpen: false });
 
-    if (this._focusInputAfterClose) {
-      this._comboBox.focus();
+    if (this._comboBox.value && this._focusInputAfterClose) {
+      this._comboBox.value.focus();
     }
   }
 
   /**
    * Get the index of the option that is marked as selected
    * @param options - the comboBox options
-   * @param selectedKey - the known selected key to find
+   * @param selectedKeys - the known selected key to find
    * @returns { number } - the index of the selected option, -1 if not found
    */
-  private _getSelectedIndex(options: IComboBoxOption[] | undefined, selectedKey: string | number | undefined): number {
-    if (options === undefined || selectedKey === undefined) {
-      return -1;
+  private _getSelectedIndices(options: IComboBoxOption[] | undefined, selectedKeys: (string | number | undefined)[]): number[] {
+    const selectedIndices: any[] = [];
+    if (options === undefined || selectedKeys === undefined) {
+      return selectedIndices;
     }
 
-    return findIndex(options, (option => (option.selected || option.key === selectedKey)));
+    for (const selectedKey of selectedKeys) {
+      const index = findIndex(options, (option => (option.selected || option.key === selectedKey)));
+      if (index > -1) {
+        selectedIndices.push(index);
+      }
+    }
+    return selectedIndices;
   }
 
   /**
@@ -1153,12 +1253,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _resetSelectedIndex() {
     const {
-      selectedIndex,
+      selectedIndices,
       currentOptions
     } = this.state;
-    this._comboBox.clear();
+    if (this._comboBox.value) {
+      this._comboBox.value.clear();
+    }
     this._clearPendingInfo();
 
+    const selectedIndex: number = this._getFirstSelectedIndex();
     if (selectedIndex > 0 && selectedIndex < currentOptions.length) {
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
@@ -1217,7 +1320,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search
    */
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
-    const { currentOptions } = this.state;
+    const {
+      isOpen,
+      currentOptions
+    } = this.state;
 
     index = this._getNextSelectableIndex(index, searchDirection);
     if (this._indexWithinBounds(currentOptions, index)) {
@@ -1283,7 +1389,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       isOpen,
       currentOptions,
-      currentPendingValueValidIndexOnHover
+      currentPendingValueValidIndexOnHover,
+      selectedIndices
     } = this.state;
 
     if (disabled) {
@@ -1295,34 +1402,36 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     switch (ev.which) {
       case KeyCodes.enter:
-        // On enter submit the pending value
         this._submitPendingValue();
-
-        // if we are open or
-        // if we are not allowing freeform or
-        // our we have no pending value
-        // and no valid pending index
-        // flip the open state
-        if ((isOpen ||
-          ((!allowFreeform ||
-            this.state.currentPendingValue === undefined ||
-            this.state.currentPendingValue === null ||
-            this.state.currentPendingValue.length <= 0) &&
-            this.state.currentPendingValueValidIndex < 0))) {
+        if (this.props.multiSelect && isOpen) {
           this.setState({
-            isOpen: !isOpen
+            currentPendingValueValidIndex: index
           });
-        }
-
-        // Allow TAB to propigate
-        if (ev.which as number === KeyCodes.tab) {
-          return;
+        } else {
+          // On enter submit the pending value
+          if ((isOpen ||
+            ((!allowFreeform ||
+              this.state.currentPendingValue === undefined ||
+              this.state.currentPendingValue === null ||
+              this.state.currentPendingValue.length <= 0) &&
+              this.state.currentPendingValueValidIndex < 0))) {
+            // if we are open or
+            // if we are not allowing freeform or
+            // our we have no pending value
+            // and no valid pending index
+            // flip the open state
+            this.setState({
+              isOpen: !isOpen
+            });
+          }
         }
         break;
 
       case KeyCodes.tab:
         // On enter submit the pending value
-        this._submitPendingValue();
+        if (!this.props.multiSelect) {
+          this._submitPendingValue();
+        }
 
         // If we are not allowing freeform
         // or the comboBox is open, flip the open state
@@ -1564,7 +1673,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
+    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._isPendingOption(item));
   }
 
   /**
@@ -1572,7 +1681,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
    */
   private _getAriaActiveDescentValue(): string | null {
-    let descendantText = (this.state.isOpen && (this.state.selectedIndex as number) >= 0 ? (this._id + '-list' + this.state.selectedIndex) : null);
+    let descendantText = (this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length >= 0 ? (this._id + '-list' + this.state.selectedIndices[0]) : null);
     if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
     }
@@ -1587,5 +1696,44 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _getAriaAutoCompleteValue(): string {
     const autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
     return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
+  }
+
+  private _isPendingOption(item: IComboBoxOption): boolean {
+    return item && item.index === this.state.currentPendingValueValidIndex;
+  }
+
+  /**
+   * Given default selected key(s) and selected key(s), return the selected keys(s).
+   * When default selected key(s) are available, they take precedence and return them instead of selected key(s).
+   *
+   * @returns No matter what specific types the input parameters are, always return an array of
+   *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
+   */
+  private _getSelectedKeys(
+    defaultSelectedKey: string | number | string[] | number[] | undefined,
+    selectedKey: string | number | string[] | number[] | undefined
+  ): string[] | number[] {
+
+    let retKeys: string[] | number[] = [];
+
+    if (defaultSelectedKey) {
+      if (defaultSelectedKey instanceof Array) {
+        retKeys = defaultSelectedKey;
+      } else if (typeof defaultSelectedKey === 'string') {
+        retKeys = [defaultSelectedKey as string];
+      } else if (typeof defaultSelectedKey === 'number') {
+        retKeys = [defaultSelectedKey as number];
+      }
+    } else if (selectedKey) {
+      if (selectedKey instanceof Array) {
+        retKeys = selectedKey;
+      } else if (typeof selectedKey === 'string') {
+        retKeys = [selectedKey as string];
+      } else if (typeof selectedKey === 'number') {
+        retKeys = [selectedKey as number];
+      }
+    }
+
+    return retKeys;
   }
 }

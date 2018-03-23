@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  KeyCodes
+  KeyCodes,
+  createRef
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
@@ -63,9 +64,9 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
 
-  protected _forceResolveButton: IButton;
-  protected _searchForMoreButton: IButton;
-  protected _selectedElement: HTMLDivElement;
+  protected _forceResolveButton = createRef<IButton>();
+  protected _searchForMoreButton = createRef<IButton>();
+  protected _selectedElement = createRef<HTMLDivElement>();
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
@@ -129,7 +130,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           </div>) : (null) }
         { forceResolveText && this._shouldShowForceResolve() && (
           <CommandButton
-            componentRef={ this._resolveRef('_forceResolveButton') }
+            componentRef={ this._forceResolveButton }
             className={ css(
               'ms-forceResolve-button',
               styles.actionButton,
@@ -153,7 +154,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
         }
         { searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
-            componentRef={ this._resolveRef('_searchForMoreButton') }
+            componentRef={ this._searchForMoreButton }
             className={ css('ms-SearchMore-button',
               styles.actionButton,
               {
@@ -204,14 +205,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
-          } else if (this._searchForMoreButton) {
+          } else if (this._searchForMoreButton.value) {
             newSelectedActionType = SuggestionActionType.searchMore;
           } else {
             newSelectedActionType = SuggestionActionType.forceResolve;
           }
           break;
         case SuggestionActionType.searchMore:
-          if (this._forceResolveButton) {
+          if (this._forceResolveButton.value) {
             newSelectedActionType = SuggestionActionType.forceResolve;
           } else if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
@@ -221,7 +222,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           }
           break;
         case SuggestionActionType.none:
-          if (currentSuggestionIndex === -1 && this._forceResolveButton) {
+          if (currentSuggestionIndex === -1 && this._forceResolveButton.value) {
             newSelectedActionType = SuggestionActionType.forceResolve;
           }
           break;
@@ -229,7 +230,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     } else if (keyCode === KeyCodes.up) {
       switch (currentSelectedAction) {
         case SuggestionActionType.forceResolve:
-          if (this._searchForMoreButton) {
+          if (this._searchForMoreButton.value) {
             newSelectedActionType = SuggestionActionType.searchMore;
           } else if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
@@ -240,12 +241,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
-          } else if (this._forceResolveButton) {
+          } else if (this._forceResolveButton.value) {
             newSelectedActionType = SuggestionActionType.forceResolve;
           }
           break;
         case SuggestionActionType.none:
-          if (currentSuggestionIndex === -1 && this._searchForMoreButton) {
+          if (currentSuggestionIndex === -1 && this._searchForMoreButton.value) {
             newSelectedActionType = SuggestionActionType.searchMore;
           }
           break;
@@ -261,7 +262,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   public hasSuggestedAction(): boolean {
-    return this._searchForMoreButton !== undefined || this._forceResolveButton !== undefined;
+    return this._searchForMoreButton.value !== undefined || this._forceResolveButton.value !== undefined;
   }
 
   public hasSuggestedActionSelected(): boolean {
@@ -280,31 +281,31 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   public focusAboveSuggestions(): void {
-    if (this._forceResolveButton) {
+    if (this._forceResolveButton.value) {
       this.setState({ selectedActionType: SuggestionActionType.forceResolve });
-    } else if (this._searchForMoreButton) {
+    } else if (this._searchForMoreButton.value) {
       this.setState({ selectedActionType: SuggestionActionType.searchMore });
     }
   }
 
   public focusBelowSuggestions(): void {
-    if (this._searchForMoreButton) {
+    if (this._searchForMoreButton.value) {
       this.setState({ selectedActionType: SuggestionActionType.searchMore });
-    } else if (this._forceResolveButton) {
+    } else if (this._forceResolveButton.value) {
       this.setState({ selectedActionType: SuggestionActionType.forceResolve });
     }
   }
 
   public focusSearchForMoreButton() {
-    if (this._searchForMoreButton) {
-      this._searchForMoreButton.focus();
+    if (this._searchForMoreButton.value) {
+      this._searchForMoreButton.value.focus();
     }
   }
 
   // TODO get the element to scroll into view properly regardless of direction.
   public scrollSelected() {
-    if (this._selectedElement && this._selectedElement.scrollIntoView !== undefined) {
-      this._selectedElement.scrollIntoView(false);
+    if (this._selectedElement.value && this._selectedElement.value.scrollIntoView !== undefined) {
+      this._selectedElement.value.scrollIntoView(false);
     }
   }
 
@@ -331,7 +332,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       >
         { suggestions.map((suggestion, index) =>
           <div
-            ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
+            ref={ this._selectedElement }
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
