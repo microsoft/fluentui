@@ -189,7 +189,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
       rowFieldsAs: RowFields = DetailsRowFields,
       selection,
-      isShimmer
+      isShimmer,
+      compact
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -215,7 +216,12 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     // Rendering Shimmer Animation outside the focus zone
     if (isShimmer) {
       return (
-        <div className={ css(showCheckbox && styles.shimmerLeftBorder) }>
+        <div
+          className={ css(
+            showCheckbox && styles.shimmerLeftBorder,
+            compact && styles.shimmerBottomBorder
+          ) }
+        >
           { rowFields }
         </div>
       );

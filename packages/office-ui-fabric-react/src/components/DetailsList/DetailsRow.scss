@@ -231,11 +231,12 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   &.isShimmer {
     padding: 0 0;
     border-left: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
-    border-right: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+    border-right: ($rowShimmerHorizontalBorder * 4) solid $detailsList-item-default-background-color;
     border-top: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
     border-bottom: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
 
     &:first-of-type {
+      border-right: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
       border-bottom: ($rowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
       border-top: ($rowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
     }
@@ -283,4 +284,8 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 // 40px to take into account the checkbox of items if present.
 .shimmerLeftBorder {
   border-left: 40px solid $detailsList-item-default-background-color;
+}
+// 1px to take into account the border-bottom when items replace shimmer lines and in default state.
+.shimmerBottomBorder {
+  border-bottom: 1px solid $detailsList-item-default-background-color;
 }
