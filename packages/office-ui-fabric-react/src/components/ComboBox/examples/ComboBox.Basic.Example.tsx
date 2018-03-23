@@ -73,7 +73,8 @@ export class ComboBoxBasicExample extends React.Component<{}, {
       options: [],
       optionsMulti: [],
       selectedOptionKey: undefined,
-      value: 'Calibri'
+      value: 'Calibri',
+      valueMulti: 'Calibri'
     };
 
     for (let i = 0; i < 1000; i++) {
@@ -278,6 +279,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           allowFreeform={ true }
           autoComplete='on'
           options={ optionsMulti }
+          value={ valueMulti }
           onChanged={ this._onChangedMulti }
           onResolveOptions={ this._getOptionsMulti }
           onRenderOption={ this._onRenderFontOption }
@@ -332,7 +334,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     return INITIAL_OPTIONS;
   }
 
-  private _getOptionsMulti(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
+  private _getOptionsMulti = (currentOptions: IComboBoxOption[]): IComboBoxOption[] => {
 
     if (this.state.options.length > 0) {
       return this.state.optionsMulti;
@@ -341,7 +343,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     this.setState({
       optionsMulti: INITIAL_OPTIONS,
       selectedOptionKeys: [ 'C1' ],
-      value: undefined
+      valueMulti: undefined
     });
 
     return INITIAL_OPTIONS;
