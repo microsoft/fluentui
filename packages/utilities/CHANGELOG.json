@@ -2,6 +2,116 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.20.0",
+      "tag": "@uifabric/utilities_v5.20.0",
+      "date": "Fri, 23 Mar 2018 01:29:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b152150b7222ff499f2f552ce3117e0d27eb1e23",
+            "comment": "Introduced focusAsync for cheaper element focusing"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.1",
+      "tag": "@uifabric/utilities_v5.19.1",
+      "date": "Wed, 21 Mar 2018 10:18:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d50399a80ffde20e5981c3c9a0f5e080016b342d",
+            "comment": "EventGroup.raise: event args are now correctly mixed into the event object."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.0",
+      "tag": "@uifabric/utilities_v5.19.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "856989f01186c078741a64fb3bf7c6371b6439bd",
+            "comment": "Make helper functions getWindow and getDocument accept `null`."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.3",
+      "tag": "@uifabric/utilities_v5.18.3",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.2",
+      "tag": "@uifabric/utilities_v5.18.2",
+      "date": "Thu, 15 Mar 2018 02:42:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3cd823b02aadb1e66f9b6221d4d32bafbe895386",
+            "comment": "Revert focus changes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.1",
+      "tag": "@uifabric/utilities_v5.18.1",
+      "date": "Tue, 13 Mar 2018 10:17:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "298ac062041a2323afb25027867b70f12870aa8f",
+            "comment": "Customizable: Fix hoist/customizations import so it doesn't break amd"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.0",
+      "tag": "@uifabric/utilities_v5.18.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
+            "comment": "Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "feb4db4410cdd49d5df8a50fcef138fbcd324dc2",
+            "comment": "Styled: Add display name to styled wrapper"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "494d1258ce23505c8e5a4d1565ff5a2451048162",
+            "comment": "added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.1",
       "tag": "@uifabric/utilities_v5.17.1",
       "date": "Fri, 09 Mar 2018 15:07:28 GMT",

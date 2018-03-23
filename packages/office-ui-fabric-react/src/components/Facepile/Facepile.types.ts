@@ -19,10 +19,14 @@ export interface IFacepileProps extends React.Props<Facepile> {
   componentRef?: (component: IFacepile) => void;
 
   /**
-   * Array of IPersonaProps that define each Persona. Note that the size
-   * is fixed at PersonaSize.size32 regardless of what is specified.
+   * Array of IPersonaProps that define each Persona.
    */
   personas: IFacepilePersona[];
+
+  /**
+   * Personas to place in the overflow
+   */
+  overflowPersonas?: IFacepilePersona[];
 
   /** Maximum number of personas to show */
   maxDisplayablePersonas?: number;

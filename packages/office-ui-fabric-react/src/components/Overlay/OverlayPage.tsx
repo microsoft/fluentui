@@ -29,6 +29,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -64,7 +65,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...OverlayStatus}
+            { ...OverlayStatus }
           />
         }
       />

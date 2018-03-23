@@ -155,6 +155,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   useComboBoxAsMenuWidth?: boolean;
 
   /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiSelect?: boolean;
+
+  /**
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.
    * @default true
    */

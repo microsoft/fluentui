@@ -44,7 +44,7 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h3>Fabric Design Toolkit</h3>
                 <p>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Office experiences.</p>
                 <ul>
-                  <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/officeuifabric.zip'>Adobe XD Toolkit</a></li>
+                  <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/officeuifabric_v4.0.0.zip'>Adobe XD Toolkit</a></li>
                   <li><a className={ styles.relatedLink } href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97'>Adobe XD Toolkit (Microsoft employees)</a></li>
                 </ul>
 
@@ -58,6 +58,12 @@ export class ResourcesPage extends React.Component<any, any> {
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/segoeui_fabricmdl2_icon_fonts.zip'>Segoe UI and Fabric MDL2 icon font</a></li>
                   <li><a className={ styles.relatedLink } href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97/SitePages/Fabric%20MDL2%20Icons.aspx'>Segoe UI and Fabric MDL2 icon font (Microsoft employees)</a></li>
+                </ul>
+
+                <h3>Theme generator</h3>
+                <p>This tool helps you easily create all the shades and slots for a custom theme.</p>
+                <ul>
+                  <li><a className={ styles.relatedLink } href='#/styles/themegenerator'>Theme generator</a></li>
                 </ul>
               </div>
             </div>

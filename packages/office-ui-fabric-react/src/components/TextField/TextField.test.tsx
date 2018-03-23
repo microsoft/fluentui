@@ -425,6 +425,24 @@ describe('TextField', () => {
     expect(callCount).toEqual(2);
   });
 
+  it('should not call onChanged when initial value is undefined and input change is an empty string', () => {
+    let callCount = 0;
+    const onChangedSpy = (value: string) => { callCount++; };
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        onChanged={ onChangedSpy }
+      />
+    );
+
+    expect(callCount).toEqual(0);
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
+    expect(callCount).toEqual(0);
+  });
+
   it('should select a range of text', () => {
     let textField: TextField | undefined;
     const initialValue = 'initial value';

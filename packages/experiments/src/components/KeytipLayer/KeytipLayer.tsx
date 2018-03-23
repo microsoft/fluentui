@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IKeytipLayerProps } from './KeytipLayer.types';
 import { Keytip, IKeytipProps, KeytipTransitionModifier } from '../Keytip';
 import {
-  autobind,
   BaseComponent
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
@@ -191,16 +190,14 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this.setState({ inKeytipMode: true });
   }
 
-  @autobind
-  private _onDismiss(ev?: React.MouseEvent<HTMLElement>): void {
+  private _onDismiss = (ev?: React.MouseEvent<HTMLElement>): void => {
     // if we are in keytip mode, then exit keytip mode
     if (this.state.inKeytipMode) {
       this._keytipManager.exitKeytipMode();
     }
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.alt:
         // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
@@ -240,8 +237,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     return modifierKeys.length ? modifierKeys : undefined;
   }
 
-  @autobind
-  private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyPress = (ev: React.KeyboardEvent<HTMLElement>): void => {
     // Call processInput
     this._keytipManager.processInput(ev.key);
   }

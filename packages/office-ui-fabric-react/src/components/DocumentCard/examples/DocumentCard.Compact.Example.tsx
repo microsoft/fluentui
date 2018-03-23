@@ -54,6 +54,16 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       ]
     };
 
+    const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
+      previewImages: [
+        {
+          previewIconProps: { iconName: 'OutlookLogo', styles: { root: { fontSize: 42, color: '#0078d7' } } },
+          previewIconContainerClass: 'ms-DocumentCardPreview-iconContainer2',
+          width: 144
+        }
+      ]
+    };
+
     return (
       <div>
         <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
@@ -101,6 +111,24 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
             />
             <DocumentCardActivity
               activity='Created a few minutes ago'
+              people={
+                [
+                  { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }
+                ]
+              }
+            />
+          </div>
+        </DocumentCard>
+        <p />
+        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
+          <DocumentCardPreview { ...previewOutlookUsingIcon } />
+          <div className='ms-DocumentCard-details'>
+            <DocumentCardTitle
+              title='Conversation about anual report from SharePoint conference'
+              shouldTruncate={ true }
+            />
+            <DocumentCardActivity
+              activity='Sent a few minutes ago'
               people={
                 [
                   { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }

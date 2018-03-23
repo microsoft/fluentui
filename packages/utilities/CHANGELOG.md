@@ -1,6 +1,60 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 09 Mar 2018 15:07:28 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Mar 2018 01:29:21 GMT and should not be manually modified.
+
+## 5.20.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing
+
+## 5.19.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- EventGroup.raise: event args are now correctly mixed into the event object.
+
+## 5.19.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Make helper functions getWindow and getDocument accept `null`.
+
+## 5.18.3
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.18.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Revert focus changes
+
+## 5.18.1
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Patches
+
+- Customizable: Fix hoist/customizations import so it doesn't break amd
+
+## 5.18.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator
+
+### Patches
+
+- Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus.
+- Styled: Add display name to styled wrapper
 
 ## 5.17.1
 Fri, 09 Mar 2018 15:07:28 GMT

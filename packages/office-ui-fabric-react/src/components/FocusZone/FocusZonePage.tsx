@@ -37,6 +37,7 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [

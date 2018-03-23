@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-import { BaseComponent, getParent, css, autobind, createRef, RefObject } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, getParent, css, createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IRange {
   /** Start of range */
@@ -26,7 +26,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
-  private _root: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
+  private _root = createRef<HTMLDivElement>();
 
   private _spacerElements: { [key: string]: HTMLElement } = {};
 
@@ -193,8 +193,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     return <ItemTag ref={ this._spacerRef.bind(this, key) } key={ key } style={ { height: spacerHeight } } />;
   }
 
-  @autobind
-  private _spacerRef(key: string, ref: HTMLElement): void {
+  private _spacerRef = (key: string, ref: HTMLElement): void => {
     if (ref) {
       this._spacerElements[key] = ref;
     } else {
