@@ -52,12 +52,13 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
     &.isShimmer {
       padding: 0 0;
-      border-left: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
-      border-right: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+      @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
+      @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
       border-top: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
       border-bottom: $compactRowShimmerVerticalBorder solid $detailsList-item-default-background-color;
 
       &:first-of-type {
+        @include border-right($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
         border-bottom: ($compactRowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
         border-top: ($compactRowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
       }
@@ -230,13 +231,13 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
   &.isShimmer {
     padding: 0 0;
-    border-left: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
-    border-right: ($rowShimmerHorizontalBorder * 4) solid $detailsList-item-default-background-color;
+    @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
+    @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
     border-top: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
     border-bottom: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
 
     &:first-of-type {
-      border-right: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+      @include border-right($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
       border-bottom: ($rowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
       border-top: ($rowHeight - 16px) / 2 solid $detailsList-item-default-background-color;
     }

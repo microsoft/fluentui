@@ -76,11 +76,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
         try {
           const render = column.onRender || onRenderItemColumn;
 
-          cellContent = render ?
-            !isShimmer ?
-              render(item, itemIndex, column)
-              : this._getCellText(item, column)
-            : this._getCellText(item, column);
+          cellContent = render && !isShimmer ? render(item, itemIndex, column) : this._getCellText(item, column);
         } catch (e) { /* no-op */ }
 
         return cellContent;
