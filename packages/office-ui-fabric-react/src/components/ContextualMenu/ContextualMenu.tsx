@@ -810,7 +810,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    * As part of updating focus, This function will also update
    * the expand/collapse state accordingly.
    */
-  private _updateFocusOnMouseEvent(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     const targetElement = ev.currentTarget as HTMLElement;
     const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
 
@@ -833,7 +833,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (hasSubmenu(item)) {
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
-        const splitButtonContainer = this._splitButtonContainers.get(item);
+        const splitButtonContainer = this._splitButtonContainers.get(item.key);
         this._onItemSubMenuExpand(item,
           ((item.split && splitButtonContainer) ? splitButtonContainer : targetElement) as HTMLElement);
       }, this._navigationIdleDelay);
@@ -856,9 +856,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onSplitItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+    const splitButtonContainer = this._splitButtonContainers.get(item.key);
     // get the whole splitButton container to base the menu off of
     this._onItemClickBase(item, ev,
-      (ev.currentTarget.parentElement ? ev.currentTarget.parentElement : ev.currentTarget) as HTMLElement);
+      (splitButtonContainer ? splitButtonContainer : ev.currentTarget) as HTMLElement);
   }
 
   private _onItemClickBase(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target: HTMLElement) {
