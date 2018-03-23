@@ -7,14 +7,20 @@ import {
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
 import { createListItems } from '@uifabric/example-app-base';
+// import {
+//   IColumn,
+//   DetailsList,
+//   buildColumns,
+//   SelectionMode,
+//   DetailsRow,
+//   IDetailsRowProps
+// } from '../../../../../office-ui-fabric-react/src/components/DetailsList';
 import {
   IColumn,
   DetailsList,
   buildColumns,
   SelectionMode,
-  DetailsRow,
-  IDetailsRowProps
-} from '../../../../../office-ui-fabric-react/src/components/DetailsList';
+} from 'office-ui-fabric-react';
 import { Toggle } from 'office-ui-fabric-react';
 import { Shimmer } from 'experiments/lib/Shimmer';
 import './Shimmer.Example.scss';
@@ -131,7 +137,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             compact={ isCompactMode }
             selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
             onRenderItemColumn={ this._onRenderItemColumn }
-            enableShimmer={ true }
+            // enableShimmer={ true }
             onRenderMissingItem={ this._onRenderMissingItem }
             listProps={ { renderedWindowsAhead: 0, renderedWindowsBehind: 0 } }
           />
@@ -140,22 +146,31 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
-  private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
+  private _onRenderMissingItem = (index: number): React.ReactNode => {
     const { isDataLoaded } = this.state;
     isDataLoaded && this._onDataMiss(index as number);
 
-    return this._onRenderBasicShimmer(rowProps);
-  }
-
-  private _onRenderBasicShimmer(rowProps: IDetailsRowProps): JSX.Element {
     return (
-      <Shimmer
-        isBaseStyle={ true }
-      >
-        <DetailsRow { ...rowProps } isShimmer={ true } />
-      </Shimmer>
+      <Shimmer />
     );
   }
+
+  // private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
+  //   const { isDataLoaded } = this.state;
+  //   isDataLoaded && this._onDataMiss(index as number);
+
+  //   return this._onRenderBasicShimmer(rowProps);
+  // }
+
+  // private _onRenderBasicShimmer(rowProps: IDetailsRowProps): JSX.Element {
+  //   return (
+  //     <Shimmer
+  //       isBaseStyle={ true }
+  //     >
+  //       <DetailsRow { ...rowProps } isShimmer={ true } />
+  //     </Shimmer>
+  //   );
+  // }
 
   private _onDataMiss = (index: number): void => {
     index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
