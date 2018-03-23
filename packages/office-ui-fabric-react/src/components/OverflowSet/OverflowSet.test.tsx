@@ -141,6 +141,14 @@ describe('OverflowSet', () => {
       // Clean up the keytip items
       keytipManager.keytips = [];
       keytipManager.keytipTree = new KeytipTree();
+
+      // Cleanup ContextualMenus that were created
+      for (let i = 0; i < document.body.children.length; i++) {
+        if (document.body.children[i].tagName === 'DIV') {
+          document.body.removeChild(document.body.children[i]);
+          i--;
+        }
+      }
     });
 
     it('should register regular and persisted keytips', () => {
@@ -246,7 +254,6 @@ describe('OverflowSet', () => {
     });
 
     describe('persisted keytip with a submenu', () => {
-      /*
       it('children keytips should open the overflow and submenu', () => {
         const overflowItemsWithSubMenuAndKeytips = [
           {
@@ -261,8 +268,7 @@ describe('OverflowSet', () => {
               ...overflowKeytips.overflowItemKeytip4,
               hasChildrenNodes: true,
               onExecute: (el: HTMLElement) => {
-                el.focus();
-                // ReactTestUtils.Simulate.click(el);
+                el.click();
               }
             },
             subMenuProps: {
@@ -306,15 +312,11 @@ describe('OverflowSet', () => {
         submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
           expect(submenuKeytip.visible).toEqual(true);
         });
-
-        // Assert that the correct DOM elements are showing
       });
-      */
 
-      /*
       it('persisted keytip with a submenu and no children keytips should also exit keytip mode after being triggered', () => {
         // Insert a submenu into one of the overflow items
-        const overflowItemsWithSubmenu = [
+        const overflowItemsWithSubMenu = [
           {
             key: 'item3',
             name: 'Item 3',
@@ -326,8 +328,7 @@ describe('OverflowSet', () => {
             keytipProps: {
               ...overflowKeytips.overflowItemKeytip4,
               onExecute: (el: HTMLElement) => {
-                // Find the overflow button and manually click it to open the overflow menu
-                overflowSet.find(constructKeytipExecuteTargetFromId('ktp-x-4')).simulate('click');
+                el.click();
               }
             },
             subMenuProps: {
@@ -347,15 +348,17 @@ describe('OverflowSet', () => {
 
         overflowSet.setProps({
           items,
-          overflowItems: overflowItemsWithSubmenu
+          overflowItems: overflowItemsWithSubMenu
         });
 
         keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
         keytipManager.processInput('d');
 
-        // The two keytips for the submenu items
+        expect(keytipManager.keytipTree.currentKeytip).toBeUndefined();
+        keytipManager.keytips.forEach((keytip: IKeytipProps) => {
+          expect(keytip.visible).toBeFalsy();
+        });
       });
-    */
     });
   });
 });

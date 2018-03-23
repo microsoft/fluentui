@@ -83,8 +83,10 @@ export class KeytipManager {
         this.keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
       }
 
-      // Show all children keytips
-      this.showKeytips(this.keytipTree.currentKeytip.children);
+      // Show all children keytips if there
+      this.keytipTree.currentKeytip.children && this.showKeytips(this.keytipTree.currentKeytip.children);
+
+      // Unset _newCurrentKeytipSequences
       this._newCurrentKeytipSequences = undefined;
     }
   }
