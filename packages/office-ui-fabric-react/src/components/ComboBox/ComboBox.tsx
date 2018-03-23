@@ -1705,7 +1705,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Given default selected key(s) and selected key(s), return the selected keys(s).
    * When default selected key(s) are available, they take precedence and return them instead of selected key(s).
-   * 
+   *
    * @returns No matter what specific types the input parameters are, always return an array of
    *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
    */
