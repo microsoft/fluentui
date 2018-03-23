@@ -2,12 +2,12 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
-  autobind,
   BaseComponent,
   classNamesFunction,
-  // customizable,
+  customizable,
   getNativeProps,
-  imageProperties
+  imageProperties,
+  createRef
 } from '../../Utilities';
 import {
   IImageProps,
@@ -26,7 +26,7 @@ export interface IImageState {
 
 const KEY_PREFIX = 'fabricImage';
 
-// @customizable('Image', ['theme'])
+@customizable('Image', ['theme'])
 export class ImageBase extends BaseComponent<IImageProps, IImageState> {
   public static defaultProps = {
     shouldFadeIn: true
@@ -38,8 +38,8 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
   // check the rendered element. The value here only takes effect when
   // shouldStartVisible is true.
   private _coverStyle: ImageCoverStyle = ImageCoverStyle.portrait;
-  private _imageElement: HTMLImageElement;
-  private _frameElement: HTMLDivElement;
+  private _imageElement = createRef<HTMLImageElement>();
+  private _frameElement = createRef<HTMLDivElement>();
 
   constructor(props: IImageProps) {
     super(props);
@@ -110,7 +110,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       <div
         className={ classNames.root }
         style={ { width: width, height: height } }
-        ref={ this._resolveRef('_frameElement') }
+        ref={ this._frameElement }
       >
         <img
           { ...imageProps }
@@ -118,7 +118,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
           onError={ this._onImageError }
           key={ KEY_PREFIX + this.props.src || '' }
           className={ classNames.image }
-          ref={ this._resolveRef('_imageElement') }
+          ref={ this._imageElement }
           src={ src }
           alt={ alt }
           role={ role }
@@ -127,8 +127,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     );
   }
 
-  @autobind
-  private _onImageLoaded(ev: React.SyntheticEvent<HTMLImageElement>): void {
+  private _onImageLoaded = (ev: React.SyntheticEvent<HTMLImageElement>): void => {
     const { src, onLoad } = this.props;
     if (onLoad) {
       onLoad(ev);
@@ -152,8 +151,8 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       // .complete, because .complete will also be set to true if the image breaks. However,
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
-      const isLoaded: boolean = src && this._imageElement && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
-        (this._imageElement.complete && ImageBase._svgRegex.test(src!));
+      const isLoaded: boolean = this._imageElement.value ? src && (this._imageElement.value.naturalWidth > 0 && this._imageElement.value.naturalHeight > 0) ||
+        (this._imageElement.value.complete && ImageBase._svgRegex.test(src!)) : false;
 
       if (isLoaded) {
         this._computeCoverStyle(this.props);
@@ -170,18 +169,19 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     // Do not compute cover style if it was already specified in props
     if ((imageFit === ImageFit.cover || imageFit === ImageFit.contain) &&
       this.props.coverStyle === undefined &&
-      this._imageElement) {
+      this._imageElement.value &&
+      this._frameElement.value) {
       // Determine the desired ratio using the width and height props.
       // If those props aren't available, measure measure the frame.
       let desiredRatio;
       if (!!width && !!height) {
         desiredRatio = (width as number) / (height as number);
       } else {
-        desiredRatio = this._frameElement.clientWidth / this._frameElement.clientHeight;
+        desiredRatio = this._frameElement.value.clientWidth / this._frameElement.value.clientHeight;
       }
 
       // Examine the source image to determine its original ratio.
-      const naturalRatio = this._imageElement.naturalWidth / this._imageElement.naturalHeight;
+      const naturalRatio = this._imageElement.value.naturalWidth / this._imageElement.value.naturalHeight;
 
       // Should we crop from the top or the sides?
       if (naturalRatio > desiredRatio) {
@@ -192,8 +192,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  @autobind
-  private _onImageError(ev: React.SyntheticEvent<HTMLImageElement>) {
+  private _onImageError = (ev: React.SyntheticEvent<HTMLImageElement>): void => {
     if (this.props.onError) {
       this.props.onError(ev);
     }

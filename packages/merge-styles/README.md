@@ -204,11 +204,12 @@ To register a selector globally, wrap it in a `:global()` wrapper:
 ```tsx
 {
   selectors: {
-    ':global(button): {
+    ':global(button)': {
       overflow: 'visible'
     }
   }
 }
+```
 
 ### Media queries
 

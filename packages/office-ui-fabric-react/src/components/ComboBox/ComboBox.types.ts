@@ -49,6 +49,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
+   * Callback issued when the user changes the pending value in ComboBox
+   */
+  onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
    * Function that gets invoked when the ComboBox menu is launched
    */
   onMenuOpen?: () => void;
@@ -148,6 +153,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Whether to use the ComboBoxes width as the menu's width
    */
   useComboBoxAsMenuWidth?: boolean;
+
+  /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiSelect?: boolean;
 
   /**
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.

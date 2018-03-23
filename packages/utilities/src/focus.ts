@@ -58,7 +58,7 @@ export function focusFirstChild(
   let element: HTMLElement | null = getNextElement(rootElement, rootElement, true, false, false, true);
 
   if (element) {
-    element.focus();
+    focusAsync(element);
     return true;
   }
   return false;
@@ -102,11 +102,32 @@ export function getPreviousElement(
     if (childMatch) {
       if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
         return childMatch;
-      } else {
-        // Check previous sibling of the child match.
-        const childMatchSiblingMatch = getPreviousElement(
+      }
+
+      const childMatchSiblingMatch = getPreviousElement(
+        rootElement,
+        childMatch.previousElementSibling as HTMLElement,
+        true,
+        true,
+        true,
+        includeElementsInFocusZones,
+        allowFocusRoot,
+        tabbable
+      );
+      if (childMatchSiblingMatch) {
+        return childMatchSiblingMatch;
+      }
+
+      let childMatchParent = childMatch.parentElement;
+
+      // At this point if we have not found any potential matches
+      // start looking at the rest of the subtree under the currentParent.
+      // NOTE: We do not want to recurse here because doing so could
+      // cause elements to get skipped.
+      while (childMatchParent && childMatchParent !== currentElement) {
+        const childMatchParentMatch = getPreviousElement(
           rootElement,
-          childMatch.previousElementSibling as HTMLElement,
+          childMatchParent.previousElementSibling as HTMLElement,
           true,
           true,
           true,
@@ -114,9 +135,12 @@ export function getPreviousElement(
           allowFocusRoot,
           tabbable
         );
-        if (childMatchSiblingMatch) {
-          return childMatchSiblingMatch;
+
+        if (childMatchParentMatch) {
+          return childMatchParentMatch;
         }
+
+        childMatchParent = childMatchParent.parentElement;
       }
     }
   }
@@ -326,4 +350,32 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
 
   return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
+}
+
+let targetToFocusOnNextRepaint: HTMLElement | null | undefined = undefined;
+
+/**
+ * Sets focus to an element asynchronously. The focus will be set at the next browser repaint,
+ * meaning it won't cause any extra recalculations. If more than one focusAsync is called during one frame,
+ * only the latest called focusAsync element will actually be focused
+ * @param element The element to focus
+ */
+export function focusAsync(element: HTMLElement | undefined | null): void {
+  if (element) {
+    // An element was already queued to be focused, so replace that one with the new element
+    if (targetToFocusOnNextRepaint) {
+      targetToFocusOnNextRepaint = element;
+      return;
+    }
+
+    targetToFocusOnNextRepaint = element;
+
+    // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
+    element.ownerDocument.defaultView.requestAnimationFrame(() => {
+      targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+
+      // We are done focusing for this frame, so reset the queued focus element
+      targetToFocusOnNextRepaint = undefined;
+    });
+  }
 }

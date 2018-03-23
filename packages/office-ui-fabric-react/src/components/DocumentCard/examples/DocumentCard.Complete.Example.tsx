@@ -6,7 +6,10 @@ import {
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle,
-  IDocumentCardPreviewProps
+  DocumentCardLogo,
+  DocumentCardStatus,
+  IDocumentCardPreviewProps,
+  IDocumentCardLogoProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '../../../common/TestImages';
@@ -84,6 +87,10 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
       ]
     };
 
+    const logoProps: IDocumentCardLogoProps = {
+      logoIcon: 'OutlookLogo'
+    };
+
     return (
       <div>
         <DocumentCard
@@ -135,6 +142,62 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
               ]
             }
             views={ 432 }
+          />
+        </DocumentCard>
+        <p />Card Logo, Text Preview CardStatus are used on below examples.<p />
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardLogo { ...logoProps } />
+          <div className='ms-ConversationTile-TitlePreviewArea' >
+            <DocumentCardTitle title='Conversation about anual report a very long long name, Title should be truncated on the long name.' shouldTruncate={ true } />
+            <DocumentCardTitle title='This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last.' shouldTruncate={ true } showAsSecondaryTitle={ true } />
+            <DocumentCardStatus statusIcon='attach' status=' 3 Attachments' />
+          </div>
+          <DocumentCardActivity
+            activity='Sent March 13, 2018'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
+              ]
+            }
+          />
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardLogo { ...logoProps } />
+          <div className='ms-ConversationTile-TitlePreviewArea' >
+            <DocumentCardTitle title='Conversation about anual Report' />
+            <DocumentCardTitle title='This is the email content preview, help.' showAsSecondaryTitle={ true } />
+            <DocumentCardStatus statusIcon='attach' status=' 3 Attachments' />
+          </div>
+          <DocumentCardActivity
+            activity='Sent March 13, 2018'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
+              ]
+            }
+          />
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardLogo { ...logoProps } />
+          <div className='ms-ConversationTile-TitlePreviewArea' >
+            <DocumentCardTitle title='Conversation about anual report' shouldTruncate={ true } />
+            <DocumentCardTitle title='This is the email content preview, please feel free to give!' shouldTruncate={ true } showAsSecondaryTitle={ true } />
+          </div>
+          <DocumentCardActivity
+            activity='Sent March 13, 2018'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
+              ]
+            }
           />
         </DocumentCard>
         <p />

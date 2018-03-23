@@ -2,6 +2,508 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.69.0",
+      "tag": "office-ui-fabric-react_v5.69.0",
+      "date": "Fri, 23 Mar 2018 01:29:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "4293e416922981422628c31f175359fcfc6eca4b",
+            "comment": "DetailsList: reset focusedItemIndex after setKey changes to fix scrolling after folder navigation"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "76bb72a2271c4cc0632777403fefda38c660f6bd",
+            "comment": "Dropdown: onKeydown should check for defaultPrevented, not preventDefault."
+          },
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "09072228d65bb12f2adf389da670f53a20f5f8c9",
+            "comment": "Removed focusability on buttons for split buttons and spin buttons"
+          },
+          {
+            "author": "racbatch <37089629+racbatch@users.noreply.github.com>",
+            "commit": "f639a03366c3e156d3b7b338da50e2fee7c55f5d",
+            "comment": "Remove the redundant tooltip in a Dropdown command button"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b152150b7222ff499f2f552ce3117e0d27eb1e23",
+            "comment": "Introduced focusAsync for cheaper element focusing, and made FocusTrapZone utilize it"
+          },
+          {
+            "author": "Stanley Yao <stanley.yao@microsoft.com>",
+            "commit": "dd4b6142206b9884fbfc8c7aa6566930b2cf46df",
+            "comment": "Add multiSelect capability for ComboBox"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.19.1 <6.0.0` to `>=5.20.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.68.0",
+      "tag": "office-ui-fabric-react_v5.68.0",
+      "date": "Thu, 22 Mar 2018 10:14:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "b07d07440fbce5e907a5cd18c06e037547ab2616",
+            "comment": "Provide compact timestamp style for ActivityItem"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "c5245a51bd4f740399d6d9dbd98f2c51ef6f0a59",
+            "comment": "Removes @autobind from examples"
+          },
+          {
+            "author": "priyank <priyank.bhadja91@gmail.com>",
+            "commit": "5ebf43e6c339d783900a58055f4c9e8b3ac5a124",
+            "comment": "Removing empty callout when tooltip content is empty"
+          }
+        ],
+        "minor": [
+          {
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "d4159b20c9b143248cf52d1f3cdda24fd2e1caae",
+            "comment": ","
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.67.0",
+      "tag": "office-ui-fabric-react_v5.67.0",
+      "date": "Wed, 21 Mar 2018 10:18:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "3bfe9498f8cfa0cccc1129d10bd49744c8a152f5",
+            "comment": "Reordered the logic in CommandBar that decides to render an anchor or button tag so that the anchor tag can have both an href and onclick attribute."
+          },
+          {
+            "author": "SayaliS <sayalis@microsoft.com>",
+            "commit": "d1feb088557c62359dc5f6a55b0b460dc8c63fd1",
+            "comment": "Add `hasFocus` api in `SearchBox` that returns a flag indicating whether `SearchBox` has focus or not."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d50399a80ffde20e5981c3c9a0f5e080016b342d",
+            "comment": "DetailsList: headers now resize correctly and respect maxWidth."
+          },
+          {
+            "author": "Joshua Rush <jdrush89@gmail.com>",
+            "commit": "2527a28766718529e7f6ab3d4ead88d6bedd4c05",
+            "comment": "Toggle: Updating to use flexbox positioning"
+          },
+          {
+            "author": "priyank <priyank.bhadja91@gmail.com>",
+            "commit": "376e93ead5c3695822614770711daa2579dd9246",
+            "comment": "TextField: Fixing issue with promise based error message not being announced by firefox + NVDA"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.19.0 <6.0.0` to `>=5.19.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.66.0",
+      "tag": "office-ui-fabric-react_v5.66.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ff76e427cc92a203779d6c227f002ef18fce720a",
+            "comment": "Button: Added public openMenu method and cleaned up open/close functions"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "856989f01186c078741a64fb3bf7c6371b6439bd",
+            "comment": "Updates refs to use createRef object references"
+          },
+          {
+            "author": "Alicia Drummond <aliciakds88@gmail.com>",
+            "commit": "40bb5ea68260317f46edafd1759a2415658f0302",
+            "comment": "Javascript styling for Spinner"
+          },
+          {
+            "author": "petdun2519 <peterdunlop2519@gmail.com>",
+            "commit": "1d69b5db81dca397760cf22bfc2d73c297bdf666",
+            "comment": "CommandBar changed the title attribute to render as tooltip and added readonly state (visitable by keyboard, functionally disabled)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "SayaliS <sayalis@microsoft.com>",
+            "commit": "da374c8f7e9391968ca7c2aaefe85817018e37af",
+            "comment": "Add shouldInputLoseFocusOnArrowKey callback for scenario to determine if input should loose focus when arrow key is present when Tabbing is enabled on All elements or Input elements"
+          },
+          {
+            "author": "SayaliS <sayalis@microsoft.com>",
+            "commit": "da374c8f7e9391968ca7c2aaefe85817018e37af",
+            "comment": "FocusZone: adding `shouldInputLoseFocusOnArrowKey` optional callback for scenarios where user press an arrow key on an input element and want it to loose focus when FocusZone disables moving focus away in case when FocusZoneTabbableElements is set to All or none"
+          },
+          {
+            "author": "dmarcey <demarcey@microsoft.com>",
+            "commit": "73dc88723ad46cf3bdbd90a05fffb9377e9b6d75",
+            "comment": "Fixed bug with HC colors in icons in menus."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.18.3 <6.0.0` to `>=5.19.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.65.0",
+      "tag": "office-ui-fabric-react_v5.65.0",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "9e7719f9f2ef616342d0b95873f79eec852665d7",
+            "comment": "DetailsList: scrollbars show up unnecessarily on IE11"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "b4f58e498bc0885180f67f1fc9d3eb742e3704f6",
+            "comment": "Button: High contrast mode focus bug fixes."
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e3a40d52e73af6e5a0062452e550f1b066c851c2",
+            "comment": "ThemePrimary: Updating this color along with an Office branding update."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.19.1 <6.0.0` to `>=5.20.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.18.2 <6.0.0` to `>=5.18.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.3.0 <6.0.0` to `>=5.4.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.64.4",
+      "tag": "office-ui-fabric-react_v5.64.4",
+      "date": "Fri, 16 Mar 2018 10:28:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "552fef5879cc776b66aa09135dbbeacfb6e7d578",
+            "comment": "Button: fixed bug causes by onRenderDescription pulling from this.props instead of passed in props"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "25a4bd19fcda505fa3c18116e0aca52bc521e17d",
+            "comment": "BaseButton: removing autobind usage."
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "4e5441d6542b2f4f7ac6097f5b6a6a5839282410",
+            "comment": "Added _isSelectionDisabled check in SelectionZone's onMouseDown event handler"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "adf51e2212bebeffb2d33078dba4972bcfb40e9f",
+            "comment": "Pickers: Allow onItemSelected to return null"
+          },
+          {
+            "author": "Shiran Pasternak <shiranpasternak@gmail.com>",
+            "commit": "a72e2b07b931ce113460b28035db2330b2e48cc8",
+            "comment": "Nav component sets aria-label on nested element with role=navigation"
+          },
+          {
+            "author": "dmarcey <demarcey@microsoft.com>",
+            "commit": "1b072de8cd4ccd26a51d38b8cb6d4a151d570aab",
+            "comment": "ContextualMenu: Allow anchor menu items to have sub menus. Added prop for sub menu hover delay."
+          },
+          {
+            "author": "dmarcey <demarcey@microsoft.com>",
+            "commit": "8fcd8e334afcbe3fc7f23fa2f983e2ee7a3926ee",
+            "comment": "Export LinkBase from OfficeFabric/Link/index.ts"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.64.3",
+      "tag": "office-ui-fabric-react_v5.64.3",
+      "date": "Thu, 15 Mar 2018 10:37:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "fe61a19cfe9890247cbb58a90789e932769210c0",
+            "comment": "TextField: Enabled scrolling and resize when disabled"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.64.2",
+      "tag": "office-ui-fabric-react_v5.64.2",
+      "date": "Thu, 15 Mar 2018 02:42:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "d1b3d356374e2c5887566df9f6e7645c932529bd",
+            "comment": "Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.18.1 <6.0.0` to `>=5.18.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.64.1",
+      "tag": "office-ui-fabric-react_v5.64.1",
+      "date": "Wed, 14 Mar 2018 10:28:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8b1625290f6a775f6c64b30617a2593576aacb34",
+            "comment": "Theme generator: exposing to the website."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.64.0",
+      "tag": "office-ui-fabric-react_v5.64.0",
+      "date": "Tue, 13 Mar 2018 10:17:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "7a6c2bda4918fb262600609f2169a337c2613328",
+            "comment": "Added an is-open class to the DatePicker root element to indicate when the datepicker is being shown based on the IDatePickerState.isDatePickerShown state property."
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "a1271228d199722b34c61b903e7ef4c0e4cba744",
+            "comment": "Added documentation for components that allow native props"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "6bce81a5497dcf09595e6e6bb04591595a887cce",
+            "comment": "Pickers: Fix aria bug where activedescendant would be sug--1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.18.0 <6.0.0` to `>=5.18.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.63.0",
+      "tag": "office-ui-fabric-react_v5.63.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Alex Henry <adhe223@g.uky.edu>",
+            "commit": "2480bbe4e1f498a7ebd086c0b406eb7706bc3c20",
+            "comment": "Add rel option for Contextual Menu Items"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7251c2dc69071e97fccbeb18971736f4e65cf301",
+            "comment": "ComoboBox and SpinButton: Removing excess margins and padding to make them consistent with TextField."
+          },
+          {
+            "author": "Matt Lind <matthewtlind@hotmail.com>",
+            "commit": "327e1e350ab4bb9909d449e66b7ec9ef8ca879e4",
+            "comment": "Facepile: Added `overflowPersonas` option to better control what personas go into the overflow personas vs show up as a persona coin. Also adjusted Facepile back to showing a Persona control if there is only one persona to be shown with no overflow."
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "494d1258ce23505c8e5a4d1565ff5a2451048162",
+            "comment": "importing hoistStatics from Utilities for withResponsiveMode decorator"
+          },
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "aa9c51c996715398e2b8a722db66b00806743e45",
+            "comment": "Add ability to get and set scroll position on ScrollablePane"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fa97fa979c83ce8b9c67ca0dbb51ffe49e20b1b4",
+            "comment": "DetailsList: IColumn `onColumnClick` callback args marked non-optional."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
+            "comment": "Updating a test to ensure that focus is trapped in a FocusTrapZone when it has a FocusZone as the last element"
+          },
+          {
+            "author": "Hlynur Tryggvason <hlynur.tryggvason@officeatwork.com>",
+            "commit": "76a874fe31f68d88b31b738a4d600df0129924d8",
+            "comment": "[TextField] onChange fix for IE when using multiline with placeholder"
+          },
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "374759cd95dc57a079b7a76120b008bcd791b173",
+            "comment": "Run onCellFocused before unmount and before select color"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.19.0 <6.0.0` to `>=5.19.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.17.1 <6.0.0` to `>=5.18.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.62.1",
+      "tag": "office-ui-fabric-react_v5.62.1",
+      "date": "Fri, 09 Mar 2018 15:07:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "4fc956a30e82d90fe405def0f9434ffdb0d407ab",
+            "comment": "Add unit test to catch focus regression being fixed by this PR"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.17.0 <6.0.0` to `>=5.17.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.62.0",
+      "tag": "office-ui-fabric-react_v5.62.0",
+      "date": "Fri, 09 Mar 2018 11:13:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cyrus Balsara <cyrusb@microsoft.com>",
+            "commit": "6d2d87f10bdd69a46a879d2ce6fb09f983d309bd",
+            "comment": "Allow DetailsRow to have a custom renderer"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b410f6b9a328dd4ad24cbaa739156c23880e44e4",
+            "comment": "Dialog: convert to mergeStyles part 2."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "a4a17ef0a30d1c37629b9200236dfd82bd80ce54",
+            "comment": "Fixes #3985 by removing HC style override on ms-Link buttons."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.16.0 <6.0.0` to `>=5.17.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.61.0",
+      "tag": "office-ui-fabric-react_v5.61.0",
+      "date": "Thu, 08 Mar 2018 11:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "48ad19d4b13e248d91a70fd59960e85a00753d96",
+            "comment": "ComboBox adding onPendingValueChanged callback prop to run when pending value is changed"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "dfe67eaf43e3d135075cfd9feea5acd40466c88e",
+            "comment": "Seperated the SCSS for Persona and Persona Coin components due to bloat when imported twice."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "61c7a055825c41f828c416e5370212804f71d05c",
+            "comment": "Added the @customizable decorator to Image and Layer to enable theme functionality"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2cf6fefa3c6aa497e2e6e1e748b4bf57abc1b480",
+            "comment": "MessageBar: Aria label for truncated text overflow button and added aria labels for buttons in examples."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.15.0 <6.0.0` to `>=5.16.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.60.1",
+      "tag": "office-ui-fabric-react_v5.60.1",
+      "date": "Wed, 07 Mar 2018 11:16:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "52a113ea0f91c4591a8c951c9233046320cdeddc",
+            "comment": "Fix ContextualMenu customization sample"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "eee7b8801c94dcefe050211f244bba81afffe402",
+            "comment": "TeachingBubble: New animation for bounce with fade in."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.60.0",
       "tag": "office-ui-fabric-react_v5.60.0",
       "date": "Tue, 06 Mar 2018 11:13:36 GMT",

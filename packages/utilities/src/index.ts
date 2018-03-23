@@ -26,6 +26,7 @@ export * from './customizable';
 export * from './dom';
 export * from './focus';
 export * from './hoist';
+export * from './hoistStatics';
 export * from './initials';
 export * from './language';
 export * from './math';

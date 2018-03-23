@@ -18,6 +18,11 @@ export interface IButton {
    * If there is a menu associated with this button and it is visible, this will dismiss the menu
    */
   dismissMenu: () => void;
+
+  /**
+   * If there is a menu associated with this button and it is visible, this will open the menu
+   */
+  openMenu: () => void;
 }
 
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {

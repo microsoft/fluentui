@@ -71,6 +71,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/tileslist'
         },
         {
+          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
+          key: 'Shimmer',
+          name: 'Shimmer',
+          url: '#/examples/shimmer'
+        },
+        {
           component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
           key: 'FloatingPeoplePicker',
           name: 'FloatingPeoplePicker',

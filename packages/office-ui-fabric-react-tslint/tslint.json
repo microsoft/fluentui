@@ -50,8 +50,7 @@
       "call-signature",
       "parameter",
       "arrow-parameter",
-      "property-declaration",
-      "member-variable-declaration"
+      "property-declaration"
     ],
     "prefer-const": true,
     "quotemark": [

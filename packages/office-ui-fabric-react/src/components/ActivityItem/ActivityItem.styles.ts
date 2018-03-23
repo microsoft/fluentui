@@ -127,7 +127,13 @@ export const getStyles = memoizeFunction((
         fontWeight: 400,
         color: theme.palette.neutralSecondary
       }
-    ]
+    ],
+
+    isCompactTimeStamp: {
+      display: 'inline-block',
+      paddingLeft: '0.3em', // One space character
+      fontSize: '1em'
+    }
   };
 
   return concatStyleSets(ActivityItemStyles, customStyles);

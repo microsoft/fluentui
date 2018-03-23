@@ -119,9 +119,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   removeButtonAriaLabel?: string;
   /**
-   * A callback to process a selection after the user selects something from the picker.
+   * A callback to process a selection after the user selects something from the picker. If the callback returns null,
+   * the item will not be added to the picker.
    */
-  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
    */

@@ -4,7 +4,6 @@ import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
 
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
@@ -117,44 +116,38 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     );
   }
 
-  @autobind
-  private _onCalloutDismiss() {
+  private _onCalloutDismiss = (): void => {
     this.setState({
       isCalloutVisible: false
     });
   }
 
-  @autobind
-  private _onShowMenuClicked() {
+  private _onShowMenuClicked = (): void => {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
   }
 
-  @autobind
-  private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
+  private _onShowBeakChange = (ev: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
     this.setState({
       isBeakVisible: isVisible,
       beakWidth: 10
     });
   }
 
-  @autobind
-  private _onDirectionalChanged(option: IDropdownOption) {
+  private _onDirectionalChanged = (option: IDropdownOption): void => {
     this.setState({
       directionalHint: option.key as number
     });
   }
 
-  @autobind
-  private _onGapSlider(value: number) {
+  private _onGapSlider = (value: number): void => {
     this.setState({
       gapSpace: value
     });
   }
 
-  @autobind
-  private _onBeakWidthSlider(value: number) {
+  private _onBeakWidthSlider = (value: number): void => {
     this.setState({
       beakWidth: value
     });

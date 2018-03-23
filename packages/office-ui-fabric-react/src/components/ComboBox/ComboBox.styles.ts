@@ -53,7 +53,8 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IRawSty
 export const getOptionStyles = memoizeFunction((
   theme: ITheme,
   customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
-  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>
+  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
+  isPending?: boolean
 ): Partial<IComboBoxOptionStyles> => {
 
   const { semanticColors, palette } = theme;
@@ -67,7 +68,7 @@ export const getOptionStyles = memoizeFunction((
   const optionStyles: IComboBoxOptionStyles = {
     root: [
       {
-        backgroundColor: 'transparent',
+        backgroundColor: isPending ? ComboBoxOptionBackgroundHovered : 'transparent',
         boxSizing: 'border-box',
         cursor: 'pointer',
         display: 'block',
@@ -232,7 +233,6 @@ export const getStyles = memoizeFunction((
       fonts.medium,
       {
         boxShadow: 'none',
-        marginBottom: '10px',
         marginLeft: '0',
         paddingTop: '1px', // The 1px padding centers the input field, avoiding overlap in the browser
         paddingBottom: '1px',
