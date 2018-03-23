@@ -198,6 +198,13 @@ export const getItemClassNames = memoizeFunction((
       'ms-ContextualMenu-itemText',
       styles.label
     ],
-    splitContainer: styles.splitButtonFlexContainer,
+    splitContainer: [
+      styles.splitButtonFlexContainer,
+      !disabled && !checked && [{
+        selectors: {
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+        }
+      }]
+    ],
   });
 });
