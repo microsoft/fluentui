@@ -12,7 +12,7 @@ export interface IPivotProps extends React.Props<Pivot> {
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPivot) => void;
+  componentRef?: (component: IPivot | null) => void;
 
   /**
    * The index of the pivot item initially selected.

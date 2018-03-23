@@ -12,7 +12,7 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
    * Optional callback to access the IPopup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPopup) => void;
+  componentRef?: (component: IPopup | null) => void;
 
   /**
    * Aria role for popup

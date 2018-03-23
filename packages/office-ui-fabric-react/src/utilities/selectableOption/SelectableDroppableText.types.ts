@@ -8,7 +8,7 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
   * the public methods and properties of the component.
   */
-  componentRef?: (component: T) => void;
+  componentRef?: (component: T | null) => void;
 
   /**
    * Descriptive label for the ISelectableDroppableText

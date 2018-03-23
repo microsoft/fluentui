@@ -17,7 +17,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
    * Optional callback to access the IRating interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IRating) => void;
+  componentRef?: (component: IRating | null) => void;
 
   /**
    * Selected rating, has to be an integer between min and max

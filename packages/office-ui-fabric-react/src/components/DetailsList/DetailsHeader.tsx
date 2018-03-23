@@ -33,7 +33,7 @@ export interface IDetailsHeader {
 }
 
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
-  componentRef?: (component: IDetailsHeader) => void;
+  componentRef?: (component: IDetailsHeader | null) => void;
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
