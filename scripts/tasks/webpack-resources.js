@@ -21,10 +21,6 @@ module.exports = {
           test: /\.js$/,
           use: 'source-map-loader',
           enforce: 'pre'
-        },
-        {
-          test: /\.json$/,
-          use: 'json-loader'
         }
       ]
     };
@@ -101,14 +97,6 @@ module.exports = {
 
         module: {
           rules: [
-            {
-              test: [/\.json$/],
-              enforce: 'pre',
-              use: 'json-loader',
-              exclude: [
-                /node_modules/
-              ]
-            },
             {
               test: [/\.tsx?$/],
               use: 'ts-loader',
