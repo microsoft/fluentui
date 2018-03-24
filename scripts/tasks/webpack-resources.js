@@ -2,6 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const merge = require('./merge');
 
+const webpackVersion = require('webpack/package.json').version;
+console.log(`Webpack version: ${webpackVersion}`);
+
 module.exports = {
   webpack,
 
@@ -38,7 +41,6 @@ module.exports = {
           },
           resolveLoader,
           module,
-          stats,
           devtool,
           plugins: getPlugins(packageName, false)
         },
