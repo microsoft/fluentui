@@ -25,7 +25,6 @@ module.exports = {
       ]
     };
 
-    const stats = 'errors-only';
     const devtool = 'source-map';
     const configs = [];
 
