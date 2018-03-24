@@ -8,7 +8,9 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "module": "lib-es2015/index.js",
+  "typings": "lib-es2015/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
