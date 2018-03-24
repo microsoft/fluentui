@@ -55,14 +55,8 @@ module.exports = {
           path: path.resolve(process.cwd(), 'dist')
         },
 
-        optimization: {
-          concatenateModules: true,
-          minimize: true
-        },
-
         resolveLoader,
         module,
-        // stats,
         devtool,
         plugins: getPlugins(packageName, true)
       }, customConfig));
