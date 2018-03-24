@@ -7,7 +7,7 @@ export interface ICheckProps extends React.Props<CheckBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: ICheckProps) => void;
+  componentRef?: (component: ICheckProps | null) => void;
 
   /**
    * Whether or not this menu item is currently checked.

@@ -8,7 +8,6 @@ import {
   Selection
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: {
   key: number,
@@ -104,8 +103,7 @@ export class DetailsListCompactExample extends React.Component<{}, {
     }
   }
 
-  @autobind
-  private _onChanged(text: any): void {
+  private _onChanged = (text: any): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   }
 

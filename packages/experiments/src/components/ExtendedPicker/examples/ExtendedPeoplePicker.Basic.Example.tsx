@@ -3,8 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
@@ -128,26 +127,24 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return item.primaryText as string;
   }
 
-  @autobind
-  private _setComponentRef(component: ExtendedPeoplePicker): void {
+  private _setComponentRef = (component: ExtendedPeoplePicker): void => {
     this._picker = component;
   }
 
-  @autobind
-  private _onSetFocusButtonClicked(): void {
+  private _onSetFocusButtonClicked = (): void => {
     if (this._picker) {
       this._picker.focus();
     }
   }
 
-  @autobind
-  private _onExpandItem(item: IExtendedPersonaProps): void {
-    // tslint:disable-next-line:no-any
-    (this._picker.selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+  private _onExpandItem = (item: IExtendedPersonaProps): void => {
+    if (this._picker.selectedItemsList.value) {
+      // tslint:disable-next-line:no-any
+      (this._picker.selectedItemsList.value as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+    }
   }
 
-  @autobind
-  private _onRemoveSuggestion(item: IPersonaProps): void {
+  private _onRemoveSuggestion = (item: IPersonaProps): void => {
     let { peopleList, mostRecentlyUsed: mruState } = this.state;
     let indexPeopleList: number = peopleList.indexOf(item);
     let indexMostRecentlyUsed: number = mruState.indexOf(item);
@@ -163,8 +160,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     }
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): Promise<IPersonaProps[]> | null {
+  private _onFilterChanged = (filterText: string, currentPersonas: IPersonaProps[], limitResults?: number):
+    Promise<IPersonaProps[]> | null => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -176,8 +173,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     }
   }
 
-  @autobind
-  private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
     return this._convertResultsToPromise(mostRecentlyUsed);
@@ -196,12 +192,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return copyText;
   }
 
-  @autobind
-  private _shouldShowForceResolve(): boolean {
+  private _shouldShowForceResolve = (): boolean => {
     return Boolean(
-      this._picker.floatingPicker &&
-      this._validateInput(this._picker.floatingPicker.inputText) &&
-      this._picker.floatingPicker.suggestions.length === 0
+      this._picker.floatingPicker.value &&
+      this._validateInput(this._picker.floatingPicker.value.inputText) &&
+      this._picker.floatingPicker.value.suggestions.length === 0
     );
   }
 
@@ -233,8 +228,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return new Promise<IPersonaProps[]>((resolve: any, reject: any) => setTimeout(() => resolve(results), 150));
   }
 
-  @autobind
-  private _validateInput(input: string): boolean {
+  private _validateInput = (input: string): boolean => {
     if (input.indexOf('@') !== -1) {
       return true;
     } else if (input.length > 1) {

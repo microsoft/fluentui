@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Mar 2018 10:18:29 GMT and should not be manually modified.
+
+## 5.5.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- Updated OfficeUIFabric Toolkit link to v4.0.0.
 
 ## 5.5.0
 Mon, 19 Mar 2018 10:27:55 GMT

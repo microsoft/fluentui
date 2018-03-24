@@ -1,6 +1,64 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Mar 2018 01:29:21 GMT and should not be manually modified.
+
+## 5.69.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing, and made FocusTrapZone utilize it
+- Add multiSelect capability for ComboBox
+
+### Patches
+
+- DetailsList: reset focusedItemIndex after setKey changes to fix scrolling after folder navigation
+- Dropdown: onKeydown should check for defaultPrevented, not preventDefault.
+- Removed focusability on buttons for split buttons and spin buttons
+- Remove the redundant tooltip in a Dropdown command button
+
+## 5.68.0
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- ,
+
+### Patches
+
+- Provide compact timestamp style for ActivityItem
+- Removes @autobind from examples
+- Removing empty callout when tooltip content is empty
+
+## 5.67.0
+Wed, 21 Mar 2018 10:18:30 GMT
+
+### Minor changes
+
+- Reordered the logic in CommandBar that decides to render an anchor or button tag so that the anchor tag can have both an href and onclick attribute.
+- Add `hasFocus` api in `SearchBox` that returns a flag indicating whether `SearchBox` has focus or not.
+
+### Patches
+
+- DetailsList: headers now resize correctly and respect maxWidth.
+- Toggle: Updating to use flexbox positioning
+- TextField: Fixing issue with promise based error message not being announced by firefox + NVDA
+
+## 5.66.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Button: Added public openMenu method and cleaned up open/close functions
+- Updates refs to use createRef object references
+- Javascript styling for Spinner
+- CommandBar changed the title attribute to render as tooltip and added readonly state (visitable by keyboard, functionally disabled)
+
+### Patches
+
+- Add shouldInputLoseFocusOnArrowKey callback for scenario to determine if input should loose focus when arrow key is present when Tabbing is enabled on All elements or Input elements
+- FocusZone: adding `shouldInputLoseFocusOnArrowKey` optional callback for scenarios where user press an arrow key on an input element and want it to loose focus when FocusZone disables moving focus away in case when FocusZoneTabbableElements is set to All or none
+- Fixed bug with HC colors in icons in menus.
 
 ## 5.65.0
 Mon, 19 Mar 2018 10:27:55 GMT

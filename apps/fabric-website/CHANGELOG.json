@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.5.1",
+      "tag": "@uifabric/fabric-website_v5.5.1",
+      "date": "Wed, 21 Mar 2018 10:18:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "5fbbac6c535b5db98eaf8167f4ecd8fe2b882990",
+            "comment": "Updated OfficeUIFabric Toolkit link to v4.0.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.66.0 <6.0.0` to `>=5.67.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "@uifabric/fabric-website_v5.5.0",
       "date": "Mon, 19 Mar 2018 10:27:55 GMT",

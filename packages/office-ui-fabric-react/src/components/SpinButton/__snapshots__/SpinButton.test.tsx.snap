@@ -213,7 +213,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={true}
+        data-is-focusable={false}
         disabled={undefined}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
@@ -326,7 +326,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={true}
+        data-is-focusable={false}
         disabled={undefined}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}

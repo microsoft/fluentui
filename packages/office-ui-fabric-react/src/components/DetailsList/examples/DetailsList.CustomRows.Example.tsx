@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowCheckProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';
 
@@ -26,19 +26,17 @@ export class DetailsListCustomRowsExample extends React.Component {
     );
   }
 
-  @autobind
-  private _onRenderRow(props: IDetailsRowProps) {
+  private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {
     return (
       <DetailsRow
-        { ...props}
+        { ...props }
         onRenderCheck={ this._onRenderCheck }
         aria-busy={ false }
       />
     );
   }
 
-  @autobind
-  private _onRenderCheck(props: IDetailsRowCheckProps) {
+  private _onRenderCheck = (props: IDetailsRowCheckProps): JSX.Element => {
     return (
       <div
         className={ css(
