@@ -78,9 +78,9 @@ describe('DetailsHeader', () => {
     header._onSizerMouseMove({ clientX: 100 });
     expect(lastResize).toEqual({ index: 0, size: 300 });
 
-    // Mouse move 300 pixels to the right (should be capped at 400px width
+    // Mouse move 300 pixels to the right, should be 500.
     header._onSizerMouseMove({ clientX: 300 });
-    expect(lastResize).toEqual({ index: 0, size: 400 });
+    expect(lastResize).toEqual({ index: 0, size: 500 });
 
     // Complete sizing.
     header._onSizerMouseUp();

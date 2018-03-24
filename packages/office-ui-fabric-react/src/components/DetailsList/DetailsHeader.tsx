@@ -514,12 +514,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         movement = -movement;
       }
 
-      const column = columns[columnResizeDetails!.columnIndex];
-      const requestedSize = columnResizeDetails!.columnMinWidth + movement;
-
       onColumnResized(
-        column,
-        !!column.maxWidth ? Math.min(column.maxWidth, requestedSize) : requestedSize,
+        columns[columnResizeDetails!.columnIndex],
+        columnResizeDetails!.columnMinWidth + movement,
         columnResizeDetails!.columnIndex
       );
     }
