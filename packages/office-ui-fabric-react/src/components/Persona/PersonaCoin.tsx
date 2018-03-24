@@ -1,13 +1,13 @@
 import { styled } from '../../Utilities';
 import {
-  IPersonaCoinProps,
-  IPersonaCoinStyleProps,
-  IPersonaCoinStyles
+  IPersonaProps,
+  IPersonaStyleProps,
+  IPersonaStyles
 } from './Persona.types';
 import { PersonaCoinBase } from './PersonaCoin.base';
 import { getStyles } from './PersonaCoin.styles';
 
-export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(
+export const PersonaCoin = styled<IPersonaProps, IPersonaStyleProps, IPersonaStyles>(
   PersonaCoinBase,
   getStyles
 );

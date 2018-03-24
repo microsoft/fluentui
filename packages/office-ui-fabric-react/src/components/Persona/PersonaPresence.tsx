@@ -1,28 +1,48 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  styled,
+} from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
   IPersonaProps,
-  PersonaPresence as PersonaPresenceEnum
+  IPersonaStyleProps,
+  IPersonaStyles,
+  PersonaPresence as PersonaPresenceEnum,
 } from './Persona.types';
-import * as stylesImport from './Persona.scss';
-const styles: any = stylesImport;
+import { getStyles } from './Persona.styles';
+
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;
 const presenceMaxSize = 40;
 const presenceFontMaxSize = 20;
 
-export class PersonaPresence extends React.Component<IPersonaProps, {}> {
+const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
+
+@customizable('PersonaPresence', ['theme'])
+export class PersonaPresenceBase extends BaseComponent<IPersonaProps, {}> {
   constructor(props: IPersonaProps) {
     super(props);
   }
 
   public render(): JSX.Element | null {
-    const { presence, coinSize } = this.props;
+    const {
+      coinSize,
+      presence,
+      theme,
+    } = this.props;
+
     const presenceHeightWidth = coinSize && (coinSize / coinSizePresenceScaleFactor < presenceMaxSize ? coinSize / coinSizePresenceScaleFactor : presenceMaxSize);
     const presenceFontSize = coinSize && (coinSize / coinSizeFontScaleFactor < presenceFontMaxSize ? coinSize / coinSizeFontScaleFactor : presenceFontMaxSize);
     const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth + 'px' } : undefined;
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
+
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      presence,
+    });
 
     if (presence === PersonaPresenceEnum.none) {
       return null;
@@ -30,11 +50,11 @@ export class PersonaPresence extends React.Component<IPersonaProps, {}> {
 
     return (
       <div
-        className={ css('ms-Persona-presence', styles.presence) }
+        className={ classNames.presence }
         style={ coinSizeWithPresenceStyle }
       >
         <Icon
-          className={ css('ms-Persona-presenceIcon', styles.presenceIcon) }
+          className={ classNames.presenceIcon }
           iconName={ this._determineIcon() }
           style={ coinSizeWithPresenceIconStyle }
         />
@@ -66,3 +86,8 @@ export class PersonaPresence extends React.Component<IPersonaProps, {}> {
     }
   }
 }
+
+export const PersonaPresence = styled<IPersonaProps, IPersonaStyleProps, IPersonaStyles>(
+  PersonaPresenceBase,
+  getStyles
+);

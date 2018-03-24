@@ -1,4 +1,4 @@
-import { IPersonaCoinStyleProps, IPersonaCoinStyles, PersonaSize } from './Persona.types';
+import { IPersonaStyleProps, IPersonaStyles, PersonaSize } from './Persona.types';
 import {
   HighContrastSelector,
   FontSizes,
@@ -6,8 +6,8 @@ import {
 } from '../../Styling';
 
 export const getStyles = (
-  props: IPersonaCoinStyleProps
-): IPersonaCoinStyles => {
+  props: IPersonaStyleProps
+): IPersonaStyles => {
   const {
     className,
     theme,

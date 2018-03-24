@@ -86,13 +86,13 @@ export const getStyles = (
     color: palette.neutralSecondary,
     fontWeight: FontWeights.regular,
     fontSize: FontSizes.small,
-    whiteSpace: 'nowrap',
   };
 
   return ({
     root: [
       'ms-Persona',
       normalize,
+      isSize10 && 'IS_SIZE_10',
       {
         color: palette.neutralPrimary,
         fontSize: FontSizes.medium,
@@ -259,21 +259,21 @@ export const getStyles = (
               display: 'none',
             }
           }
-        },
-
-        showSecondaryText && {
-          height: '36px',
-
-          selectors: {
-            '$primaryText, $secondaryText': {
-              display: 'block',
-              height: '18px',
-              lineHeight: '16px',
-              overflowX: 'hidden',
-            }
-          }
         }
       ],
+
+      isSize24 && showSecondaryText && {
+        height: '36px',
+
+        selectors: {
+          '$primaryText, $secondaryText': {
+            display: 'block',
+            height: '18px',
+            lineHeight: '16px',
+            overflowX: 'hidden',
+          }
+        }
+      },
 
       /**
        * Modifier: Size 28 Persona
@@ -317,21 +317,21 @@ export const getStyles = (
               display: 'none',
             }
           }
-        },
-
-        showSecondaryText && {
-          height: '32px',
-
-          selectors: {
-            '$primaryText, $secondaryText': {
-              display: 'block',
-              lineHeight: '16px',
-              height: '16px',
-              overflowX: 'hidden',
-            }
-          }
         }
       ],
+
+      isSize28 && showSecondaryText && {
+        height: '32px',
+
+        selectors: {
+          '$primaryText, $secondaryText': {
+            display: 'block',
+            lineHeight: '16px',
+            height: '16px',
+            overflowX: 'hidden',
+          }
+        }
+      },
 
       /**
        * Modifier: Size 32 Persona
@@ -365,19 +365,19 @@ export const getStyles = (
               display: 'none',
             }
           }
-        },
-
-        showSecondaryText && {
-          selectors: {
-            '$primaryText, $secondaryText': {
-              display: 'block',
-              height: '16px',
-              lineHeight: '16px',
-              overflowX: 'hidden',
-            }
-          }
         }
       ],
+
+      isSize32 && showSecondaryText && {
+        selectors: {
+          '$primaryText, $secondaryText': {
+            display: 'block',
+            height: '16px',
+            lineHeight: '16px',
+            overflowX: 'hidden',
+          }
+        }
+      },
 
       /**
        * Modifier: Size 40 Persona
@@ -820,6 +820,48 @@ export const getStyles = (
     textContent: [
       'ms-Persona-textContent',
       noWrap
+    ],
+
+    presence: [
+      'ms-Persona-presence',
+      {
+        backgroundColor: colorPresenceAvailable,
+        position: 'absolute',
+        height: personaPresenceSize12,
+        width: personaPresenceSize12,
+        borderRadius: '50%',
+        top: 'auto',
+        right: `-${personaPresenceBorder}`,
+        bottom: `-${personaPresenceBorder}`,
+        border: `${personaPresenceBorder} solid ${palette.white}`,
+        textAlign: 'center',
+        boxSizing: 'content-box',
+        MsHighContrastAdjust: 'none',
+
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'Window',
+            color: 'Window',
+            backgroundColor: 'WindowText',
+          }
+        }
+      }
+    ],
+
+    presenceIcon: [
+      'ms-Persona-presenceIcon',
+      {
+        color: palette.white,
+        fontSize: '6px',
+        lineHeight: personaPresenceSize12,
+        verticalAlign: 'top',
+
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'Window',
+          }
+        }
+      }
     ],
   });
 };
