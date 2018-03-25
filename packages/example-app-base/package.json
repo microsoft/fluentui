@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib/index.js",
   "module": "lib-es2015/index.js",
@@ -34,8 +34,8 @@
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.20.0 <6.0.0",
-    "@uifabric/utilities": ">=5.20.0 <6.0.0",
+    "@uifabric/styling": ">=5.21.0 <6.0.0",
+    "@uifabric/utilities": ">=5.21.0 <6.0.0",
     "highlight.js": "^9.12.0",
     "office-ui-fabric-react": ">=5.1.0 <6.0.0",
     "tslib": "^1.7.1"
