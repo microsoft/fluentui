@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { concatStyleSets } from '@uifabric/merge-styles/lib/index';
+import { concatStyleSets } from '@uifabric/merge-styles';
 import { IStyleFunction } from './IStyleFunction';
 
 export interface IPropsWithStyles<TStyleProps, TStyles> {

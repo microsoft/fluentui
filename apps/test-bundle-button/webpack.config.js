@@ -8,7 +8,12 @@ module.exports = resources.createConfig(
   true,
   {
     entry: {
-      [PACKAGE_NAME]: './lib/index.js',
+      [PACKAGE_NAME]: './lib-es2015/index.js',
+    },
+
+    optimization: {
+      concatenateModules: true,
+      minimize: true
     },
 
     externals: {
@@ -16,4 +21,6 @@ module.exports = resources.createConfig(
       'react-dom': 'ReactDOM'
     }
 
-  });
+  },
+  true
+);

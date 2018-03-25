@@ -6,7 +6,7 @@ import {
   IIconOptions,
   IIconSubset,
   registerIcons
-} from '@uifabric/styling/lib/index';
+} from '@uifabric/styling';
 
 export function initializeIcons(
   baseUrl: string = '',
