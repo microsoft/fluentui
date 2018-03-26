@@ -86,7 +86,7 @@ describe('Slider', () => {
   });
 
   it('can read the current value', () => {
-    let slider: ISlider | undefined;
+    let slider: ISlider | null;
 
     ReactTestUtils.renderIntoDocument(
       // tslint:disable-next-line:jsx-no-lambda

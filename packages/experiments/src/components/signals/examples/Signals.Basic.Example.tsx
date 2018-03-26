@@ -14,9 +14,12 @@ import {
   LiveEditSignal,
   MentionSignal,
   CommentsSignal,
+  UnseenReplySignal,
   UnseenEditSignal,
   ReadOnlySignal,
-  SharedSignal
+  SharedSignal,
+  EmailedSignal,
+  RecordSignal
 } from '../Signals';
 import { ChoiceGroup, IChoiceGroupOption, Checkbox } from 'office-ui-fabric-react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
@@ -163,8 +166,20 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
             signal={ <CommentsSignal>2</CommentsSignal> }
           />
           <SignalExample
+            name='Unseen reply'
+            signal={ <UnseenReplySignal /> }
+          />
+          <SignalExample
             name='Unseen edit'
             signal={ <UnseenEditSignal /> }
+          />
+          <SignalExample
+            name='Emailed'
+            signal={ <EmailedSignal /> }
+          />
+          <SignalExample
+            name='Record'
+            signal={ <RecordSignal /> }
           />
           <SignalExample
             name='Read-only'

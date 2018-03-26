@@ -2,6 +2,46 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.27.0",
+      "tag": "@uifabric/experiments_v5.27.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "a0e09698ae1443623e202087360986f65a613559",
+            "comment": "Update componentRef types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "e81f0d8f3f90ab68048069380459fc7a89d49ae4",
+            "comment": "Add missing icons to Signals and fix colors"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.69.0 <6.0.0` to `>=5.70.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.6.0 <6.0.0` to `>=5.7.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.4.0 <6.0.0` to `>=5.5.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.5.0 <1.0.0` to `>=0.6.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.26.1",
       "tag": "@uifabric/experiments_v5.26.1",
       "date": "Thu, 22 Mar 2018 10:14:03 GMT",

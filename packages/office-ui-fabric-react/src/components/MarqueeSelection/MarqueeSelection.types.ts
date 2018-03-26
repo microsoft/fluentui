@@ -11,7 +11,7 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    * Optional callback to access the IMarqueeSelection interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IMarqueeSelection) => void;
+  componentRef?: (component: IMarqueeSelection | null) => void;
 
   /**
    * The selection object to interact with when updating selection changes.
