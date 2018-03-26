@@ -74,7 +74,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._hideTooltip } }
         onMouseEnter={ this._onTooltipMouseEnter }
-        onMouseLeave={ this._hideTooltip }
+        onMouseLeave={ this._onTooltipMouseLeave }
         aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
@@ -88,8 +88,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             directionalHintForRTL={ directionalHintForRTL }
             calloutProps={ assign(calloutProps, {
               onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave,
-              onDismiss: this._hideTooltip
+              onMouseLeave: this._onTooltipMouseLeave
             }) }
             onMouseEnter={ this._onTooltipMouseEnter }
             onMouseLeave={ this._onTooltipMouseLeave }

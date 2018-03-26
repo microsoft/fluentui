@@ -10,7 +10,7 @@ export class TooltipInteractiveExample extends BaseComponent<any, any> {
   public render() {
     return (
       <div>
-        <TooltipHost content='This is the tooltip' id='myID' calloutProps={ { gapSpace: 0 } } closeDelay={ 2000 }>
+        <TooltipHost content='This is the tooltip' id='myID' calloutProps={ { gapSpace: 0 } } closeDelay={ 500 }>
           <DefaultButton aria-describedby='myID'>Interact with my tooltip</DefaultButton>
         </TooltipHost>
       </div>
