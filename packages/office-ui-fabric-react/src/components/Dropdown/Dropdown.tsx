@@ -301,8 +301,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       index = options.length - 1;
     }
     let stepCounter = 0;
-    // If current index is a header or divider, increment by step
-    while (options[index].itemType === DropdownMenuItemType.Header || options[index].itemType === DropdownMenuItemType.Divider) {
+    // If current index is a header or divider, or disabled, increment by step
+    while (options[index].itemType === DropdownMenuItemType.Header ||
+      options[index].itemType === DropdownMenuItemType.Divider ||
+      options[index].disabled) {
       // If stepCounter exceeds length of options, then return selectedIndex (-1)
       if (stepCounter >= options.length) {
         return selectedIndex;
