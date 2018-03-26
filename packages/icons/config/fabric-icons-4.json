@@ -9,6 +9,22 @@
 	},
 	"glyphs": [
 		{
+			"name": "Drop",
+			"unicode": "EB42"
+		},
+		{
+			"name": "SkiResorts",
+			"unicode": "EB45"
+		},
+		{
+			"name": "Snowflake",
+			"unicode": "EB46"
+		},
+		{
+			"name": "BusSolid",
+			"unicode": "EB47"
+		},
+		{
 			"name": "FerrySolid",
 			"unicode": "EB48"
 		},
@@ -337,10 +353,6 @@
 			"unicode": "ECAF"
 		},
 		{
-			"name": "FacebookLogo",
-			"unicode": "ECB3"
-		},
-		{
 			"name": "AddTo",
 			"unicode": "ECC8"
 		},
@@ -377,10 +389,6 @@
 			"unicode": "ECEB"
 		},
 		{
-			"name": "Glimmer",
-			"unicode": "ECF4"
-		},
-		{
 			"name": "ChatInviteFriend",
 			"unicode": "ECFE"
 		},
@@ -399,14 +407,6 @@
 		{
 			"name": "SharepointLogoInverse",
 			"unicode": "ED18"
-		},
-		{
-			"name": "YammerLogo",
-			"unicode": "ED19"
-		},
-		{
-			"name": "Hide",
-			"unicode": "ED1A"
 		}
 	]
 }

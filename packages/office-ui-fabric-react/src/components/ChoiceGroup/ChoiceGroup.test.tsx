@@ -35,7 +35,6 @@ describe('ChoiceGroup', () => {
       { key: '2', text: '2' },
       { key: '3', text: '3' }
     ];
-    let exception;
     let threwException = false;
     let choiceGroup;
     try {
@@ -47,7 +46,6 @@ describe('ChoiceGroup', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
     expect(threwException).toEqual(false);
@@ -84,7 +82,6 @@ describe('ChoiceGroup', () => {
       { key: '2', text: '2' },
       { key: '3', text: '3' }
     ];
-    let exception;
     let threwException = false;
     let choiceGroup;
     try {
@@ -96,7 +93,6 @@ describe('ChoiceGroup', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
     expect(threwException).toEqual(false);
@@ -115,7 +111,6 @@ describe('ChoiceGroup', () => {
       { key: '2', text: '2' },
       { key: '3', text: '3' }
     ];
-    let exception;
     let threwException = false;
     let choiceGroup;
     try {
@@ -128,7 +123,6 @@ describe('ChoiceGroup', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
     expect(threwException).toEqual(false);
@@ -185,10 +179,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('extra <input> attributes appear in dom if specified', () => {
-    let _selectedItem;
-    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
-      _selectedItem = item;
-    };
+    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
 
     const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
       <ChoiceGroup

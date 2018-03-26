@@ -3,8 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
@@ -60,7 +59,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       <div>
         <div className='ms-SearchBoxSmallExample' ref={ (ref: HTMLDivElement) => this._inputElement = ref }>
           <SearchBox
-            labelText={ 'Search a person' }
+            placeholder={ 'Search a person' }
             onChange={ this._onSearchChange }
             value={ this.state.searchValue }
           />
@@ -88,27 +87,23 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     );
   }
 
-  @autobind
-  private _setComponentRef(component: IBaseFloatingPicker): void {
+  private _setComponentRef = (component: IBaseFloatingPicker): void => {
     this._picker = component;
   }
 
-  @autobind
-  private _onSearchChange(newValue: string): void {
+  private _onSearchChange = (newValue: string): void => {
     if (newValue !== this.state.searchValue) {
       this.setState({ searchValue: newValue });
       this._picker.onQueryStringChanged(newValue);
     }
   }
 
-  @autobind
-  private _onPickerChange(selectedSuggestion: IPersonaProps): void {
+  private _onPickerChange = (selectedSuggestion: IPersonaProps): void => {
     this.setState({ searchValue: selectedSuggestion.primaryText ? selectedSuggestion.primaryText : '' });
     this._picker.hidePicker();
   }
 
-  @autobind
-  private _onRemoveSuggestion(item: IPersonaProps): void {
+  private _onRemoveSuggestion = (item: IPersonaProps): void => {
     let { peopleList, mostRecentlyUsed: mruState } = this.state;
     let indexPeopleList: number = peopleList.indexOf(item);
     let indexMostRecentlyUsed: number = mruState.indexOf(item);
@@ -124,8 +119,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     }
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] {
+  private _onFilterChanged = (filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -160,8 +154,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
   }
 
-  @autobind
-  private _validateInput(input: string): boolean {
+  private _validateInput = (input: string): boolean => {
     if (input.indexOf('@') !== -1) {
       return true;
     } else if (input.length > 1) {

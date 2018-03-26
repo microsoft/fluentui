@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu';
+import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { getRTL } from '../../Utilities';
-import { Icon, IIconProps } from '../../Icon';
+import { Icon } from '../../Icon';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 const renderItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemProps) => {

@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
-  autobind,
   css,
   createArray
 } from 'office-ui-fabric-react/lib/Utilities';
@@ -97,8 +96,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     };
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void => {
     this.setState({ isMarqueeEnabled: isMarqueeEnabled! });
   }
 }

@@ -17,7 +17,7 @@ export enum Position {
   end = 3
 }
 export interface IPositionProps {
-  target?: HTMLElement | MouseEvent | IPoint;
+  target?: Element | MouseEvent | IPoint;
   /** how the element should be positioned */
   directionalHint?: DirectionalHint;
   /**

@@ -10,12 +10,12 @@ import {
   ILayerStyles,
 } from './Layer.types';
 import {
-  css,
   BaseComponent,
   classNamesFunction,
   customizable,
   getDocument,
-  setVirtualParent
+  setVirtualParent,
+  createRef
 } from '../../Utilities';
 
 const _layersByHostId: { [hostId: string]: LayerBase[] } = {};
@@ -23,7 +23,7 @@ let _defaultHostSelector: string | undefined;
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-// @customizable('Layer', ['theme'])
+@customizable('Layer', ['theme'])
 export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   public static defaultProps: ILayerProps = {
@@ -31,7 +31,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     onLayerWillUnmount: () => undefined
   };
 
-  private _rootElement: HTMLElement;
+  private _rootElement = createRef<HTMLDivElement>();
   private _host: Node;
   private _layerElement: HTMLElement | undefined;
   private _hasMounted: boolean;
@@ -108,13 +108,18 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        const doc = getDocument(this._rootElement) as Document;
+        const rootElement = this._rootElement.value;
+        const doc = getDocument(rootElement);
+
+        if (!doc || !rootElement) {
+          return;
+        }
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = classNames.root;
 
         host.appendChild(this._layerElement);
-        setVirtualParent(this._layerElement, this._rootElement);
+        setVirtualParent(this._layerElement, rootElement);
       }
 
       // Using this 'unstable' method allows us to retain the React context across the layer projection.
@@ -145,7 +150,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     return (
       <span
         className='ms-Layer'
-        ref={ this._resolveRef('_rootElement') }
+        ref={ this._rootElement }
       />
     );
   }
@@ -164,9 +169,13 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  private _getHost(): Node {
+  private _getHost(): Node | undefined {
     const { hostId } = this.props;
-    const doc = getDocument(this._rootElement) as Document;
+    const doc = getDocument(this._rootElement.value);
+
+    if (!doc) {
+      return undefined;
+    }
 
     if (hostId) {
       return doc.getElementById(hostId) as Node;

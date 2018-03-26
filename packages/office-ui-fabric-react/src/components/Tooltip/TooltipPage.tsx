@@ -46,6 +46,7 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
             </ExampleCard>
           </LayerHost>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [

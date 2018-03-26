@@ -9,6 +9,46 @@
 	},
 	"glyphs": [
 		{
+			"name": "StatusCircleInfo",
+			"unicode": "F13F"
+		},
+		{
+			"name": "StatusCircleBlock2",
+			"unicode": "F141"
+		},
+		{
+			"name": "StatusCircleQuestionMark",
+			"unicode": "F142"
+		},
+		{
+			"name": "Toll",
+			"unicode": "F160"
+		},
+		{
+			"name": "ExploreContentSingle",
+			"unicode": "F164"
+		},
+		{
+			"name": "CollapseContent",
+			"unicode": "F165"
+		},
+		{
+			"name": "CollapseContentSingle",
+			"unicode": "F166"
+		},
+		{
+			"name": "InfoSolid",
+			"unicode": "F167"
+		},
+		{
+			"name": "ProgressRingDots",
+			"unicode": "F16A"
+		},
+		{
+			"name": "CaloriesAdd",
+			"unicode": "F172"
+		},
+		{
 			"name": "BranchFork",
 			"unicode": "F173"
 		},
@@ -367,46 +407,6 @@
 		{
 			"name": "BranchCompare",
 			"unicode": "F294"
-		},
-		{
-			"name": "BranchMerge",
-			"unicode": "F295"
-		},
-		{
-			"name": "BranchPullRequest",
-			"unicode": "F296"
-		},
-		{
-			"name": "BranchSearch",
-			"unicode": "F297"
-		},
-		{
-			"name": "BranchShelveset",
-			"unicode": "F298"
-		},
-		{
-			"name": "RawSource",
-			"unicode": "F299"
-		},
-		{
-			"name": "MergeDuplicate",
-			"unicode": "F29A"
-		},
-		{
-			"name": "RowsGroup",
-			"unicode": "F29B"
-		},
-		{
-			"name": "RowsChild",
-			"unicode": "F29C"
-		},
-		{
-			"name": "Deploy",
-			"unicode": "F29D"
-		},
-		{
-			"name": "Redeploy",
-			"unicode": "F29E"
 		}
 	]
 }

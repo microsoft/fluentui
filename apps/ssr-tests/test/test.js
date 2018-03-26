@@ -1,7 +1,6 @@
 'use strict';
 
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-
 initializeIcons('dist/');
 
 // Configure load-themed-styles to avoid registering styles.
@@ -33,7 +32,6 @@ describe('Fabric components', () => {
     }
   }
 });
-
 
 function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, (done) => {

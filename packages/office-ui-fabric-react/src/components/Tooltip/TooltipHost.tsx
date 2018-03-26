@@ -3,13 +3,13 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  autobind,
   css,
   divProperties,
   getNativeProps,
   getId,
   assign,
-  hasOverflow
+  hasOverflow,
+  createRef
 } from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
@@ -28,7 +28,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   };
 
   // The wrapping div that gets the hover events
-  private _tooltipHost: HTMLElement;
+  private _tooltipHost = createRef<HTMLDivElement>();
 
   // The ID of the setTimeout that will eventually close the tooltip if the
   // the tooltip isn't hovered over.
@@ -60,6 +60,8 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
+    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
+    const showTooltip = isTooltipVisible && isContentPresent;
 
     return (
       <div
@@ -68,15 +70,15 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
           hostClassName,
           overflowMode !== undefined && styles.hostOverflow
         ) }
-        ref={ this._resolveRef('_tooltipHost') }
+        ref={ this._tooltipHost }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
-        { ...{ onBlurCapture: this._onTooltipMouseLeave } }
+        { ...{ onBlurCapture: this._hideTooltip } }
         onMouseEnter={ this._onTooltipMouseEnter }
-        onMouseLeave={ this._onTooltipMouseLeave }
+        onMouseLeave={ this._hideTooltip }
         aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
-        { isTooltipVisible && (
+        { showTooltip && (
           <Tooltip
             id={ tooltipId }
             delay={ delay }
@@ -86,7 +88,8 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             directionalHintForRTL={ directionalHintForRTL }
             calloutProps={ assign(calloutProps, {
               onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave
+              onMouseLeave: this._onTooltipMouseLeave,
+              onDismiss: this._hideTooltip
             }) }
             onMouseEnter={ this._onTooltipMouseEnter }
             onMouseLeave={ this._onTooltipMouseLeave }
@@ -98,7 +101,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     );
   }
 
-  private _getTargetElement(): HTMLElement {
+  private _getTargetElement(): HTMLElement | undefined {
+    if (!this._tooltipHost.value) {
+      return undefined;
+    }
+
     const { overflowMode } = this.props;
 
     // Select target element based on overflow mode. For parent mode, you want to position the tooltip relative
@@ -106,19 +113,18 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.parentElement!;
+          return this._tooltipHost.value.parentElement!;
 
         case TooltipOverflowMode.Self:
-          return this._tooltipHost;
+          return this._tooltipHost.value;
       }
     }
 
-    return this._tooltipHost;
+    return this._tooltipHost.value;
   }
 
   // Show Tooltip
-  @autobind
-  private _onTooltipMouseEnter(ev: any) {
+  private _onTooltipMouseEnter = (ev: any): void => {
     const { overflowMode } = this.props;
 
     if (overflowMode !== undefined) {
@@ -133,8 +139,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Hide Tooltip
-  @autobind
-  private _onTooltipMouseLeave(ev: any) {
+  private _onTooltipMouseLeave = (ev: any): void => {
     if (this.props.closeDelay) {
       this._clearDismissTimer();
 
@@ -146,14 +151,12 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     }
   }
 
-  @autobind
-  private _clearDismissTimer() {
+  private _clearDismissTimer = (): void => {
     window.clearTimeout(this._closingTimer);
   }
 
   // Hide Tooltip
-  @autobind
-  private _onTooltipCallOutDismiss() {
+  private _hideTooltip = (): void => {
     this._toggleTooltip(false);
   }
 

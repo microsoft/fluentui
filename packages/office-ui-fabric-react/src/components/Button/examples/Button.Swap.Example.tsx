@@ -6,11 +6,7 @@ import {
   IButtonBasicExampleStyleProps,
   IButtonBasicExampleStyles
 } from './Button.Basic.Example.styles';
-import {
-  autobind
-} from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IButtonSwapExampleState {
   isPrimary: boolean;
@@ -80,13 +76,11 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
     );
   }
 
-  @autobind
-  private _setButtonRef(ref: any): void {
+  private _setButtonRef = (ref: any): void => {
     this.buttonRef = ReactDOM.findDOMNode(ref) as HTMLElement;
   }
 
-  @autobind
-  private _onClick(): void {
+  private _onClick = (): void => {
     // change the button type on click
     this.setState({ isPrimary: !this.state.isPrimary });
   }

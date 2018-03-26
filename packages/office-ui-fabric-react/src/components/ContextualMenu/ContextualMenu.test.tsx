@@ -11,7 +11,6 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { LayerBase as Layer } from '../Layer/Layer.base';
-import { mount } from 'enzyme';
 
 describe('ContextualMenu', () => {
 
@@ -239,31 +238,20 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
-  it('applies disabled property when `disabled` is true', () => {
+  it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
         disabled: true,
       },
-    ];
-
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
-      <ContextualMenu
-        items={ items }
-      />
-    );
-
-    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-
-    expect(menuItem.disabled).toBeTruthy();
-  });
-
-  it('applies disabled property when deprecated property `isDisabled` is true', () => {
-    const items: IContextualMenuItem[] = [
       {
-        name: 'TestText 1',
-        key: 'TestKey1',
+        name: 'TestText 3',
+        key: 'TestKey3',
         isDisabled: true,
       },
     ];
@@ -274,9 +262,71 @@ describe('ContextualMenu', () => {
       />
     );
 
-    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
+    expect(menuItems.length).toEqual(3);
 
-    expect(menuItem.disabled).toBeTruthy();
+    menuItems[0].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 1');
+    expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
+
+    menuItems[1].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 2');
+    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+
+    menuItems[2].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 3');
+    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+  });
+
+  it('cannot click on disabled items', () => {
+    const itemsClicked = [
+      false,
+      false,
+      false
+    ];
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        onClick: () => itemsClicked[0] = true
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
+        disabled: true,
+        onClick: () => {
+          itemsClicked[1] = true;
+          fail('Disabled item should not be clickable');
+        }
+      },
+      {
+        name: 'TestText 3',
+        key: 'TestKey3',
+        isDisabled: true,
+        onClick: () => {
+          itemsClicked[2] = true;
+          fail('Disabled item should not be clickable');
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
+    expect(menuItems.length).toEqual(3);
+
+    menuItems[0].click();
+    expect(itemsClicked[0]).toEqual(true);
+
+    menuItems[1].click();
+    expect(itemsClicked[1]).toEqual(false);
+
+    menuItems[2].click();
+    expect(itemsClicked[2]).toEqual(false);
   });
 
   it('renders headers properly', () => {
@@ -357,7 +407,7 @@ describe('ContextualMenu', () => {
       }
     ];
 
-    const foo = ReactTestUtils.renderIntoDocument<ContextualMenu>(
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
       />
@@ -366,6 +416,97 @@ describe('ContextualMenu', () => {
     const menuItems = document.querySelectorAll('li');
     expect(menuItems.length).toEqual(8);
 
+  });
+
+  describe('with links', () => {
+    const testUrl = 'http://test.com';
+    let items: IContextualMenuItem[];
+    let menuItems: NodeListOf<Element>;
+    let linkNoTarget: Element;
+    let linkBlankTarget: Element;
+    let linkBlankTargetAndRel: Element;
+    let linkSelfTarget: Element;
+    let linkNoTargetAndRel: Element;
+
+    beforeEach(() => {
+      items = [
+        {
+          name: 'TestText 1',
+          key: 'TestKey1',
+          href: testUrl
+        },
+        {
+          name: 'TestText 2',
+          key: 'TestKey2',
+          href: testUrl,
+          target: '_blank'
+        },
+        {
+          name: 'TestText 3',
+          key: 'TestKey3',
+          href: testUrl,
+          target: '_blank',
+          rel: 'test'
+        },
+        {
+          name: 'TestText 4',
+          key: 'TestKey4',
+          href: testUrl,
+          target: '_self',
+        },
+        {
+          name: 'TestText 5',
+          key: 'TestKey5',
+          href: testUrl,
+          rel: 'test'
+        },
+      ];
+
+      ReactTestUtils.renderIntoDocument<ContextualMenu>(
+        <ContextualMenu
+          items={ items }
+        />
+      );
+
+      menuItems = document.querySelectorAll('li a');
+      linkNoTarget = menuItems[0];
+      linkBlankTarget = menuItems[1];
+      linkBlankTargetAndRel = menuItems[2];
+      linkSelfTarget = menuItems[3];
+      linkNoTargetAndRel = menuItems[4];
+    });
+
+    it('should render an anchor with the passed href', () => {
+      expect(linkNoTarget.getAttribute('href')).toEqual(testUrl);
+    });
+
+    describe('with target passed', () => {
+      it('should render with the specified target', () => {
+        expect(linkSelfTarget.getAttribute('target')).toEqual('_self');
+      });
+
+      it('should not default the rel if the target is not _blank', () => {
+        expect(linkSelfTarget.getAttribute('rel')).toBeNull();
+      });
+
+      describe('when the target is _blank and there is no rel specified', () => {
+        it('should default a rel to prevent clickjacking', () => {
+          expect(linkBlankTarget.getAttribute('rel')).toEqual('nofollow noopener noreferrer');
+        });
+      });
+
+      describe('when the target is _blank and there is a rel specified', () => {
+        it('should use the specified rel', () => {
+          expect(linkBlankTargetAndRel.getAttribute('rel')).toEqual('test');
+        });
+      });
+    });
+
+    describe('with rel passed', () => {
+      it('should add the specified rel', () => {
+        expect(linkNoTargetAndRel.getAttribute('rel')).toEqual('test');
+      });
+    });
   });
 
   it('does not return a value if no items are given', () => {

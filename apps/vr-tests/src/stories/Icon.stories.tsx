@@ -4,7 +4,15 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Icon, IconType, getIconClassName } from 'office-ui-fabric-react';
+import * as IconNames from '../../../../packages/icons/src/IconNames';
+
 import { TestImages } from '../common/TestImages';
+
+// Rendering allIcons tests that the icon package can initialize all icons from the cdn
+let allIcons: JSX.Element[] = [];
+for (let iconName in (IconNames as any)['IconNames']) {
+  allIcons.push(<Icon iconName={ iconName } />);
+}
 
 storiesOf('Icon', module)
   .addDecorator(FabricDecorator)
@@ -20,9 +28,7 @@ storiesOf('Icon', module)
   )).add('Root', () => (
     <div>
       <div>
-        <Icon iconName='CompassNW' />
-        <Icon iconName='Upload' />
-        <Icon iconName='Share' />
+        { allIcons }
       </div>
       <div>
         <Icon className={ getIconClassName('CompassNW') } />

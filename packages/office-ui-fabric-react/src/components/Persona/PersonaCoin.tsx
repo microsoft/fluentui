@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   css,
   divProperties,
   getInitials,
@@ -12,16 +11,12 @@ import { PersonaPresence } from './PersonaPresence';
 import {
   IPersonaProps,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaInitialsColor,
   PersonaSize
 } from './Persona.types';
 import {
-  PERSONA_SIZE
-} from './PersonaConsts';
-import {
   Icon
 } from '../../Icon';
-import * as stylesImport from './Persona.scss';
+import * as stylesImport from './PersonaCoin.scss';
 const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS: { [key: number]: number } = {
@@ -44,6 +39,27 @@ const SIZE_TO_PIXELS: { [key: number]: number } = {
 };
 import { mergeStyles } from '../../Styling';
 import { initialsColorPropToColorCode } from './PersonaInitialsColor';
+
+export const PERSONACOIN_SIZE: { [key: number]: string } = {
+  // All non-numerically named sizes are deprecated, use the numerically named classes below
+  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsSize10,
+  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsSize24,
+  [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsSize28,
+  [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSize40,
+  [PersonaSize.regular]: '',
+  [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsSize72,
+  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsSize100,
+
+  [PersonaSize.size10]: 'ms-Persona--size10 ' + styles.rootIsSize10,
+  [PersonaSize.size16]: 'ms-Persona--size16 ' + styles.rootIsSize16,
+  [PersonaSize.size24]: 'ms-Persona--size24 ' + styles.rootIsSize24,
+  [PersonaSize.size28]: 'ms-Persona--size28 ' + styles.rootIsSize28,
+  [PersonaSize.size32]: 'ms-Persona--size32 ' + styles.rootIsSize32,
+  [PersonaSize.size40]: 'ms-Persona--size40 ' + styles.rootIsSize40,
+  [PersonaSize.size48]: 'ms-Persona--size48 ' + styles.rootIsSize48,
+  [PersonaSize.size72]: 'ms-Persona--size72 ' + styles.rootIsSize72,
+  [PersonaSize.size100]: 'ms-Persona--size100 ' + styles.rootIsSize100
+};
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
@@ -72,14 +88,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       coinProps,
       coinSize,
       imageUrl,
-      imageAlt,
-      initialsColor,
-      primaryText,
-      imageShouldFadeIn,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
-      imageShouldStartVisible
-     } = this.props;
+    } = this.props;
 
     const size = this.props.size as PersonaSize;
     const divProps = getNativeProps(this.props, divProperties);
@@ -88,7 +99,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona-coin', PERSONA_SIZE[size], coinProps && coinProps.className) }
+        className={ css('ms-Persona-coin', PERSONACOIN_SIZE[size], coinProps && coinProps.className) }
       >
         { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
           <div
@@ -134,8 +145,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     );
   }
 
-  @autobind
-  private _onRenderCoin(props: IPersonaProps): JSX.Element | null {
+  private _onRenderCoin = (props: IPersonaProps): JSX.Element | null => {
     const {
       coinSize,
       imageUrl,
@@ -146,7 +156,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
     const size = this.props.size as PersonaSize;
 
-    return(
+    return (
       <Image
         className={ css('ms-Persona-image', styles.image) }
         imageFit={ ImageFit.cover }
@@ -161,8 +171,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     );
   }
 
-  @autobind
-  private _onRenderInitials(props: IPersonaProps): JSX.Element {
+  private _onRenderInitials = (props: IPersonaProps): JSX.Element => {
     let { imageInitials } = props;
     const { primaryText } = props;
 
@@ -177,8 +186,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     );
   }
 
-  @autobind
-  private _onPhotoLoadingStateChange(loadState: ImageLoadState) {
+  private _onPhotoLoadingStateChange = (loadState: ImageLoadState) => {
     this.setState({
       isImageLoaded: loadState === ImageLoadState.loaded,
       isImageError: loadState === ImageLoadState.error

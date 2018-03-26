@@ -9,7 +9,7 @@ import {
   divProperties,
   getNativeProps,
   IRenderFunction,
-  autobind
+  createRef
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps } from './List.types';
 
@@ -90,8 +90,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     [key: string]: React.ReactInstance,
   };
 
-  private _root: HTMLElement;
-  private _surface: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
+  private _surface = createRef<HTMLDivElement>();
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -103,7 +103,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   };
   private _focusedIndex: number;
   private _scrollElement: HTMLElement;
-  private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
@@ -174,7 +173,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
-    this._scrollingToIndex = -1;
     this._pageCache = {};
   }
 
@@ -263,10 +261,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     this._updatePages();
     this._measureVersion++;
-    this._scrollElement = findScrollableParent(this._root) as HTMLElement;
+    this._scrollElement = findScrollableParent(this._root.value) as HTMLElement;
 
     this._events.on(window, 'resize', this._onAsyncResize);
-    this._events.on(this._root, 'focus', this._onFocus, true);
+    if (this._root.value) {
+      this._events.on(this._root.value, 'focus', this._onFocus, true);
+    }
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
       this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
@@ -345,12 +345,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     return (
       <div
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
         { ...divProps }
         role={ (role === undefined) ? 'list' : role }
         className={ css('ms-List', className) }
       >
-        <div ref={ this._resolveRef('_surface') } className={ css('ms-List-surface') } role='presentation'>
+        <div ref={ this._surface } className={ css('ms-List-surface') } role='presentation'>
           { pageElements }
         </div>
       </div>
@@ -424,8 +424,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     };
   }
 
-  @autobind
-  private _onRenderPage(pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): any {
+  private _onRenderPage = (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): any => {
     const {
       onRenderCell,
       role
@@ -477,7 +476,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _onFocus(ev: any) {
     let target = ev.target as HTMLElement;
 
-    while (target !== this._surface) {
+    while (target !== this._surface.value) {
       const indexString = target.getAttribute('data-list-index');
 
       if (indexString) {
@@ -641,10 +640,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _updatePageMeasurements(pages: IPage[]) {
-    const renderedIndexes: {
-      [index: number]: IPage;
-    } = {};
-
     let heightChanged = false;
 
     // when not in virtualize mode, we render all the items without page measurement
@@ -932,13 +927,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // This needs to be called to recalculate when new pages should be loaded.
     // We check to see how far we've scrolled and if it's further than a third of a page we run it again.
     if (
-      forceUpdate ||
-      !pages ||
-      !this._surfaceRect ||
-      !scrollHeight ||
-      scrollHeight !== this._scrollHeight ||
-      Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3) {
-      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface);
+      this._surface.value &&
+      (forceUpdate ||
+        !pages ||
+        !this._surfaceRect ||
+        !scrollHeight ||
+        scrollHeight !== this._scrollHeight ||
+        Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3)
+    ) {
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.value);
       this._scrollTop = scrollTop;
     }
 

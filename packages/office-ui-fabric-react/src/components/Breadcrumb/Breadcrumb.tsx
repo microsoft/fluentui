@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css,
   getRTL
 } from '../../Utilities';
@@ -53,8 +52,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     );
   }
 
-  @autobind
-  private _onReduceData(data: IBreadCrumbData): IBreadCrumbData | undefined {
+  private _onReduceData = (data: IBreadCrumbData): IBreadCrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;
     const movedItem = renderedItems[0];
     renderedItems = renderedItems.slice(1);
@@ -66,9 +64,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     }
   }
 
-  @autobind
-  private _onRenderBreadcrumb(data: IBreadCrumbData) {
-    const { className, ariaLabel, onRenderItem = this._onRenderItem } = data.props;
+  private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
+    const { className, ariaLabel, onRenderItem = this._onRenderItem, overflowAriaLabel } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
     const contextualItems = renderedOverflowItems.map(
@@ -95,6 +92,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
+                  ariaLabel={ overflowAriaLabel }
                   onRenderMenuIcon={ nullFunction }
                   menuProps={ {
                     items: contextualItems,
@@ -123,8 +121,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     );
   }
 
-  @autobind
-  private _onRenderItem(item: IBreadcrumbItem) {
+  private _onRenderItem = (item: IBreadcrumbItem) => {
     if (item.onClick || item.href) {
       return (
         <Link
@@ -155,8 +152,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     }
   }
 
-  @autobind
-  private _onBreadcrumbClicked(item: IBreadcrumbItem, ev: React.MouseEvent<HTMLElement>) {
+  private _onBreadcrumbClicked = (item: IBreadcrumbItem, ev: React.MouseEvent<HTMLElement>) => {
     if (item.onClick) {
       item.onClick(ev, item);
     }

@@ -23,7 +23,7 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
             onRender: (item: any) => {
               return (
                 <SearchBox
-                  labelText='Search'
+                  placeholder='Search'
                 />
               );
             }

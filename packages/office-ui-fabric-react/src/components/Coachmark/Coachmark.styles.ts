@@ -131,9 +131,12 @@ function continuousPulseStepFour(beaconColorTwo: string): IRawStyle {
 }
 
 function continuousPulseStepFive(beaconColorOne: string): IRawStyle {
-  return Object.assign(continuousPulseStepOne(beaconColorOne), {
-    opacity: '0'
-  });
+  return {
+    ...continuousPulseStepOne(beaconColorOne),
+    ...{
+      opacity: '0'
+    }
+  };
 }
 
 export const translateOne: string = keyframes({

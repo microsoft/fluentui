@@ -35,10 +35,18 @@ export const getStyles = memoizeFunction((
   const border = semanticColors.buttonBorder;
   const disabledBackground = semanticColors.disabledBackground;
   const disabledText = semanticColors.disabledText;
+  const buttonHighContrastFocus = {
+    left: -2,
+    top: -2,
+    bottom: -2,
+    right: -2,
+    border: 'none',
+    outlineColor: 'ButtonText'
+  };
 
   return {
     root: [
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
       theme.fonts.medium,
       {
         boxSizing: 'border-box',

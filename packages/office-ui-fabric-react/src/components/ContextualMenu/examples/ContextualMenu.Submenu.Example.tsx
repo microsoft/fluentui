@@ -1,17 +1,32 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './ContextualMenuExample.scss';
 
-export class ContextualMenuSubmenuExample extends React.Component<any, any> {
+export interface IContextualMenuSubmenuExampleState {
+  hoverDelay: number;
+}
+
+export class ContextualMenuSubmenuExample extends React.Component<any, IContextualMenuSubmenuExampleState> {
+
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      hoverDelay: 250
+    };
+  }
 
   public render() {
     return (
       <div>
+        <TextField value={ String(this.state.hoverDelay) } onChanged={ this._onHoverDelayChanged } />
         <DefaultButton
           id='ContextualMenuButton2'
           text='Click for ContextualMenu'
           menuProps={ {
             shouldFocusOnMount: true,
+            subMenuHoverDelay: this.state.hoverDelay,
             items: [
               {
                 key: 'newItem',
@@ -29,6 +44,7 @@ export class ContextualMenuSubmenuExample extends React.Component<any, any> {
                     }
                   ],
                 },
+                href: 'https://bing.com',
                 name: 'New'
               },
               {
@@ -71,5 +87,11 @@ export class ContextualMenuSubmenuExample extends React.Component<any, any> {
         />
       </div>
     );
+  }
+
+  private _onHoverDelayChanged = (newValue: string) => {
+    this.setState({
+      hoverDelay: +newValue
+    });
   }
 }

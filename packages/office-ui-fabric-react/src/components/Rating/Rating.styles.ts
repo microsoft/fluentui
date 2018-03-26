@@ -3,7 +3,7 @@ import {
   hiddenContentStyle,
   HighContrastSelector,
 } from '../../Styling';
-import { RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
+import { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 export function getStyles(props: IRatingStyleProps): IRatingStyles {
   const {
