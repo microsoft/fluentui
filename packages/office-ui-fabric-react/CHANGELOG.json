@@ -2,6 +2,59 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.70.0",
+      "tag": "office-ui-fabric-react_v5.70.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8023b1d8536056b13d5029049f0b9f671ec09b32",
+            "comment": "DetailsHeader: reverting how maxWidth is handled to previous behavior."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "b163a65955903b05e4ba58f5ea2b040a971a6a57",
+            "comment": "Fix bug in combo box where _selectedElement ref wasn't being set conditionally"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "a0e09698ae1443623e202087360986f65a613559",
+            "comment": "Update componentRef types"
+          },
+          {
+            "author": "Stanley Yao <stanley.yao@microsoft.com>",
+            "commit": "7e3911a8378407a5a57a56a493ed066539aee02d",
+            "comment": "ComboBox: Add some code comments. Minor bug fixes to the example page."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` flags on all applicable packages."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.6.0 <6.0.0` to `>=5.7.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.13.0 <6.0.0` to `>=5.14.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.20.0 <6.0.0` to `>=5.21.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.20.0 <6.0.0` to `>=5.21.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.4.0 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.69.0",
       "tag": "office-ui-fabric-react_v5.69.0",
       "date": "Fri, 23 Mar 2018 01:29:21 GMT",
