@@ -5,7 +5,8 @@ import {
   keySequencesAreEqual,
   ktpLayerId,
   ktpAriaSeparatorId,
-  dataKtpExecuteTarget
+  dataKtpExecuteTarget,
+  mergeOverflowKeySequences
 } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from './KeytipManager';
@@ -78,18 +79,11 @@ export function constructKeytipExecuteTargetFromId(keytipId: string): string {
  *
  * @param keySequences
  */
-export function getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequence?: IKeySequence): string {
+export function getAriaDescribedBy(keySequences: IKeySequence[]): string {
   const describedby = ktpLayerId;
   if (!keySequences.length) {
     // Return just the layer ID
     return ' ' + describedby;
-  }
-
-  // Remove overflow from describedby if present
-  if (overflowSetSequence) {
-    keySequences = keySequences.filter((keySequence: IKeySequence) => {
-      return !keySequencesAreEqual(keySequence, overflowSetSequence);
-    });
   }
 
   // Add beginning space so it can be easily appended
@@ -108,8 +102,12 @@ export function getAriaDescribedBy(keySequences: IKeySequence[], overflowSetSequ
 export function getNativeKeytipProps(keytipProps?: IKeytipProps): any {
   if (keytipProps) {
     // Construct aria-describedby and data-ktp-id attributes and return
-    const ariaDescribedBy = getAriaDescribedBy(keytipProps.keySequences, keytipProps.overflowSetSequence);
-    const ktpId = convertSequencesToKeytipID(keytipProps.keySequences);
+    const ariaDescribedBy = getAriaDescribedBy(keytipProps.keySequences);
+    let keySequences = keytipProps.keySequences;
+    if (keytipProps.overflowSetSequence) {
+      keySequences = mergeOverflowKeySequences(keySequences, keytipProps.overflowSetSequence);
+    }
+    const ktpId = convertSequencesToKeytipID(keySequences);
 
     return {
       'aria-describedby': ariaDescribedBy,

@@ -292,6 +292,18 @@ describe('KeytipManager', () => {
     }
   });
 
+  it('showKeytips should handle overflow keytips correctly', () => {
+    keytipManager.keytips.push({
+      content: 'A',
+      keySequences: [{ keys: ['a'] }],
+      overflowSetSequence: [{ keys: ['x'] }]
+    });
+    const idsToShow = ['ktp-x-a'];
+    keytipManager.showKeytips(idsToShow);
+
+    expect(keytipManager.keytips[0].visible).toEqual(true);
+  });
+
   it('persistedKeytipExecute should call overflow`s onExecute', () => {
     keytipManager.keytipTree = populateTreeMap(keytipManager.keytipTree, layerID);
 

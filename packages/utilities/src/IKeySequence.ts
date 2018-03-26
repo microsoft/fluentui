@@ -1,5 +1,5 @@
 import { ktpPrefix, ktpSeparator } from './KeytipConstants';
-import { find } from './array';
+import { find, addElementAtIndex } from './array';
 
 export interface IKeySequence {
   keys: string[];
@@ -80,4 +80,16 @@ export function convertSequencesToKeytipID(keySequences: IKeySequence[]): string
   return keySequences.reduce((prevValue: string, keySequence: IKeySequence): string => {
     return prevValue + ktpSeparator + keySequence.keys.join(ktpSeparator);
   }, ktpPrefix);
+}
+
+/**
+ *
+ * @param keySequences
+ * @param overflowKeySequences
+ */
+export function mergeOverflowKeySequences(keySequences: IKeySequence[], overflowKeySequences: IKeySequence[]): IKeySequence[] {
+  const overflowSequenceLen = overflowKeySequences.length;
+  const overflowSequence = [...overflowKeySequences].pop();
+  const newKeySequences = [...keySequences];
+  return addElementAtIndex(newKeySequences, overflowSequenceLen - 1, overflowSequence!);
 }

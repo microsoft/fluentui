@@ -65,11 +65,11 @@ export interface IKeytipProps {
   keySequences: IKeySequence[];
 
   /**
-   * KeySequence of the overflow set button, set if this keytip is inside an overflow
+   * Full KeySequence of the overflow set button, set if this keytip is inside an overflow
    *
    * @type {IKeySequence}
    */
-  overflowSetSequence?: IKeySequence;
+  overflowSetSequence?: IKeySequence[];
 
   /**
    * ICalloutProps to pass to the callout element

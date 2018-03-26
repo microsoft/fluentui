@@ -229,6 +229,26 @@ describe('KeytipTree', () => {
       expect(keytipTree.root.children).toContain(keytipIdC);
       expect(keytipTree.root.children).toContain(keytipIdE);
     });
+
+    it('correctly adds node when overflowSetSequence is defined', () => {
+      const keytipProps = {
+        content: 'A',
+        keySequences: [{ keys: ['a'] }],
+        overflowSetSequence: [{ keys: ['x'] }]
+      };
+      const overflowNode = {
+        content: 'X',
+        keySequences: [{ keys: ['x'] }]
+      };
+      const keytipTree = keytipManager.keytipTree;
+      keytipTree.addNode(overflowNode);
+      keytipTree.addNode(keytipProps);
+
+      const keytipNode = keytipTree.nodeMap['ktp-x-a'];
+      expect(keytipNode).toBeDefined();
+      expect(keytipNode.parent).toEqual('ktp-x');
+      expect(keytipTree.nodeMap['ktp-a']).toBeUndefined();
+    });
   });
 
   describe('removeNode', () => {
@@ -309,6 +329,29 @@ describe('KeytipTree', () => {
 
       // Verify that root has no children
       expect(keytipTree.root.children).toHaveLength(0);
+    });
+
+    it('correctly removes a node when overflowSetSequence is defined', () => {
+      const keytipProps = {
+        content: 'A',
+        keySequences: [{ keys: ['a'] }],
+        overflowSetSequence: [{ keys: ['x'] }]
+      };
+      const overflowProps = {
+        content: 'X',
+        keySequences: [{ keys: ['x'] }]
+      };
+      const keytipTree = keytipManager.keytipTree;
+      keytipTree.addNode(overflowProps);
+      keytipTree.addNode(keytipProps);
+
+      keytipTree.removeNode(keytipProps.keySequences, keytipProps.overflowSetSequence);
+
+      const keytipNode = keytipTree.nodeMap['ktp-x-a'];
+      expect(keytipNode).toBeUndefined();
+      const overflowNode = keytipTree.nodeMap['ktp-x'];
+      expect(overflowNode).toBeDefined();
+      expect(overflowNode.children).toHaveLength(0);
     });
   });
 

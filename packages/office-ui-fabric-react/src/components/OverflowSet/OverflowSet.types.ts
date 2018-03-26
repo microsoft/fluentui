@@ -61,7 +61,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   role?: string;
 
   /**
-   * Optional keytip sequence for the overflow button, if it will have a keytip
+   * Optional full keytip sequence for the overflow button, if it will have a keytip
    */
   keytipSequences?: IKeySequence[];
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IPoint, getDocument } from '../../Utilities';
+import { BaseComponent, IPoint, getDocument, mergeOverflowKeySequences } from '../../Utilities';
 import { Callout, CalloutTargetFunction } from '../../Callout';
 import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';
@@ -23,13 +23,19 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
   public render(): JSX.Element {
     const {
       keySequences,
-      offset
+      offset,
+      overflowSetSequence
     } = this.props;
     let {
       calloutProps
     } = this.props;
 
-    const sequenceToTarget = constructKeytipTargetFromSequences(keySequences);
+    let sequenceToTarget: string;
+    if (overflowSetSequence) {
+      sequenceToTarget = constructKeytipTargetFromSequences(mergeOverflowKeySequences(keySequences, overflowSetSequence));
+    } else {
+      sequenceToTarget = constructKeytipTargetFromSequences(keySequences);
+    }
     let keytipTarget: string | CalloutTargetFunction = sequenceToTarget;
 
     if (offset) {

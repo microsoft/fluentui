@@ -180,6 +180,9 @@ export const keytipConfig: IKeytipConfig = {
     {
       id: 'OverflowButton6',
       content: '6',
+      optionalProps: {
+        hasChildrenNodes: true
+      },
       children: [
         {
           id: 'OverflowSubMenuButton1',

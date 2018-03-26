@@ -11,7 +11,8 @@ import {
   getDocument,
   replaceElement,
   findIndex,
-  ktpLayerId
+  ktpLayerId,
+  mergeOverflowKeySequences
 } from '../../Utilities';
 import { constructKeytipTargetFromId, constructKeytipExecuteTargetFromId } from './KeytipUtils';
 
@@ -78,13 +79,17 @@ export class KeytipManager {
 
     if (this._newCurrentKeytipSequences && fullKeySequencesAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
       // This keytip should become the currentKeytip and should execute right away
-      this.keytipTree.currentKeytip = this.keytipTree.nodeMap[convertSequencesToKeytipID(keytipProps.keySequences)];
+      let keytipSequence = [...keytipProps.keySequences];
+      if (keytipProps.overflowSetSequence) {
+        keytipSequence = mergeOverflowKeySequences(keytipSequence, keytipProps.overflowSetSequence);
+      }
+      this.keytipTree.currentKeytip = this.keytipTree.nodeMap[convertSequencesToKeytipID(keytipSequence)];
       if (this.keytipTree.currentKeytip.onExecute) {
         this.keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
       }
 
       // Show all children keytips if there
-      this.keytipTree.currentKeytip.children && this.showKeytips(this.keytipTree.currentKeytip.children);
+      this.keytipTree.currentKeytip.children && this.showKeytips(this.keytipTree.getChildren());
 
       // Unset _newCurrentKeytipSequences
       this._newCurrentKeytipSequences = undefined;
@@ -96,7 +101,7 @@ export class KeytipManager {
    * This means just adding a KeytipTreeNode
    */
   public registerPersistedKeytip(keytipProps: IKeytipProps): void {
-    this.keytipTree.addNode(keytipProps);
+    this.keytipTree.addNode(keytipProps, true);
   }
 
   /**
@@ -127,7 +132,7 @@ export class KeytipManager {
       return !fullKeySequencesAreEqual(keytip.keySequences, keytipToRemove.keySequences);
     });
     // Remove the node from the Tree
-    this.keytipTree.removeNode(keytipToRemove.keySequences);
+    this.keytipTree.removeNode(keytipToRemove.keySequences, keytipToRemove.overflowSetSequence);
     this._layer && this._layer.setKeytips(this.keytips);
   }
 
@@ -138,7 +143,7 @@ export class KeytipManager {
    * @param keySequences - keySequences of the persisted Keytip to unregister
    */
   public unregisterPersistedKeytip(keytipToRemove: IKeytipProps): void {
-    this.keytipTree.removeNode(keytipToRemove.keySequences);
+    this.keytipTree.removeNode(keytipToRemove.keySequences, keytipToRemove.overflowSetSequence);
   }
 
   /**
@@ -149,7 +154,13 @@ export class KeytipManager {
   public showKeytips(ids: string[]): void {
     // Set visible property in this.keytips
     for (const keytip of this.keytips) {
-      if (ids.indexOf(convertSequencesToKeytipID(keytip.keySequences)) >= 0) {
+      const keytipId = convertSequencesToKeytipID(keytip.keySequences);
+      if (ids.indexOf(keytipId) >= 0) {
+        keytip.visible = true;
+      } else if (keytip.overflowSetSequence && ids.indexOf(
+        convertSequencesToKeytipID(
+          mergeOverflowKeySequences(keytip.keySequences, keytip.overflowSetSequence))) >= 0) {
+        // Check if the ID with the overflow is the keytip we're looking for
         keytip.visible = true;
       } else {
         keytip.visible = false;
@@ -222,14 +233,14 @@ export class KeytipManager {
           // Return pointer to its parent
           this.keytipTree.currentKeytip = this.keytipTree.nodeMap[this.keytipTree.currentKeytip.parent!];
           // Show children keytips of the new currentKeytip
-          this.showKeytips(this.keytipTree.currentKeytip.children);
+          this.showKeytips(this.keytipTree.getChildren());
         }
       }
     } else if (transitionKeysContain(this._enableSequences, transitionKey) && !this.keytipTree.currentKeytip) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
       this.keytipTree.currentKeytip = this.keytipTree.root;
       // Show children of root
-      this.showKeytips(this.keytipTree.currentKeytip.children);
+      this.showKeytips(this.keytipTree.getChildren());
       // Trigger onEnter callback
       this.enterKeytipMode();
     }
@@ -261,7 +272,7 @@ export class KeytipManager {
           this.exitKeytipMode();
         } else {
           // Show all children keytips
-          this.showKeytips(this.keytipTree.currentKeytip.children);
+          this.showKeytips(this.keytipTree.getChildren());
         }
 
         // Clear currentSequence
@@ -288,7 +299,10 @@ export class KeytipManager {
    */
   private _isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
     if (this.keytipTree.currentKeytip) {
-      const fullSequence = [...keytipProps.keySequences];
+      let fullSequence = [...keytipProps.keySequences];
+      if (keytipProps.overflowSetSequence) {
+        fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
+      }
       // Take off the last sequence to calculate the parent ID
       fullSequence.pop();
       // Parent ID is the root if there aren't any more sequences
