@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "TimeSheet",
+			"unicode": "EA05"
+		},
+		{
 			"name": "TriangleSolid",
 			"unicode": "EA08"
 		},
@@ -87,6 +91,10 @@
 		{
 			"name": "Record2",
 			"unicode": "EA3F"
+		},
+		{
+			"name": "AllAppsMirrored",
+			"unicode": "EA40"
 		},
 		{
 			"name": "BookmarksMirrored",
@@ -265,6 +273,10 @@
 			"unicode": "EADB"
 		},
 		{
+			"name": "Trackers",
+			"unicode": "EADF"
+		},
+		{
 			"name": "AddNotes",
 			"unicode": "EAE3"
 		},
@@ -323,6 +335,10 @@
 		{
 			"name": "Lamp",
 			"unicode": "EB19"
+		},
+		{
+			"name": "Source",
+			"unicode": "EB1B"
 		},
 		{
 			"name": "MSNVideos",
@@ -391,22 +407,6 @@
 		{
 			"name": "Website",
 			"unicode": "EB41"
-		},
-		{
-			"name": "Drop",
-			"unicode": "EB42"
-		},
-		{
-			"name": "SkiResorts",
-			"unicode": "EB45"
-		},
-		{
-			"name": "Snowflake",
-			"unicode": "EB46"
-		},
-		{
-			"name": "BusSolid",
-			"unicode": "EB47"
 		}
 	]
 }

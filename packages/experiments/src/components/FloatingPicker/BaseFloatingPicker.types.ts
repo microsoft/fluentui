@@ -21,7 +21,7 @@ export interface IBaseFloatingPicker {
 // displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
 export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseFloatingPicker) => void;
+  componentRef?: (component?: IBaseFloatingPicker | null) => void;
 
   /** The suggestions controller */
   suggestionsController: SuggestionsController<T>;
@@ -34,7 +34,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * The input element to listen on events
    */
-  inputElement?: HTMLElement;
+  inputElement?: HTMLElement | null;
 
   /**
    * Function that specifies how an individual suggestion item will appear.
@@ -46,7 +46,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * Returns the already selected items so the resolver can filter them out.
    * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
    */
-  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
 
   /**
    * A callback for when the input has been changed

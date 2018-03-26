@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-import { CalendarDay } from './CalendarDay';
-import { CalendarMonth } from './CalendarMonth';
+import { CalendarDay, ICalendarDay } from './CalendarDay';
+import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
 import {
-  autobind,
   css,
   BaseComponent,
-  KeyCodes
+  KeyCodes,
+  createRef
 } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
-const leftArrow: string = 'Up';
-const rightArrow: string = 'Down';
+const leftArrow = 'Up';
+const rightArrow = 'Down';
 const iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
@@ -71,12 +71,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     workWeekDays: defaultWorkWeekDays
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-    dayPicker: CalendarDay;
-    monthPicker: CalendarMonth;
-  };
+  private _dayPicker = createRef<ICalendarDay>();
+  private _monthPicker = createRef<ICalendarMonth>();
 
   private _focusOnUpdate: boolean;
 
@@ -116,10 +112,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   public componentDidUpdate() {
     if (this._focusOnUpdate) {
       // if the day picker is shown, focus on it
-      if (this.refs.dayPicker) {
-        this.refs.dayPicker.focus();
-      } else if (this.refs.monthPicker) {
-        this.refs.monthPicker.focus();
+      if (this._dayPicker.value) {
+        this._dayPicker.value.focus();
+      } else if (this._monthPicker.value) {
+        this._monthPicker.value.focus();
       }
       this._focusOnUpdate = false;
     }
@@ -134,7 +130,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     return (
-      <div className={ css(rootClass, styles.root) } ref='root' role='application'>
+      <div className={ css(rootClass, styles.root) } role='application'>
         <div
           className={ css(
             'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
@@ -170,7 +166,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   minDate={ minDate }
                   maxDate={ maxDate }
                   workWeekDays={ this.props.workWeekDays }
-                  ref='dayPicker'
+                  componentRef={ this._dayPicker }
                 />
                 }
 
@@ -185,7 +181,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   minDate={ minDate }
                   maxDate={ maxDate }
-                  ref='monthPicker'
+                  componentRef={ this._monthPicker }
                 /> }
 
                 { showGoToToday &&
@@ -208,21 +204,18 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public focus() {
-    if (this.refs.dayPicker) {
-      this.refs.dayPicker.focus();
+    if (this._dayPicker.value) {
+      this._dayPicker.value.focus();
     }
   }
 
-  @autobind
-  private _navigateDay(date: Date) {
+  private _navigateDay = (date: Date): void => {
     this.setState({
       navigatedDate: date
     });
   }
 
-  @autobind
-  private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-
+  private _onNavigateDate = (date: Date, focusOnNavigatedDay: boolean): void => {
     if (this.props.isDayPickerVisible || (!this.props.isDayPickerVisible && !focusOnNavigatedDay)) {
       this._navigateDay(date);
       this._focusOnUpdate = focusOnNavigatedDay;
@@ -232,8 +225,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onSelectDate(date: Date, selectedDateRangeArray?: Date[]) {
+  private _onSelectDate = (date: Date, selectedDateRangeArray?: Date[]): void => {
     const { onSelectDate } = this.props;
 
     this.setState({
@@ -245,8 +237,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onHeaderSelect(focus: boolean) {
+  private _onHeaderSelect = (focus: boolean): void => {
     this.setState({
       isDayPickerVisible: !this.state.isDayPickerVisible,
       isMonthPickerVisible: !this.state.isMonthPickerVisible
@@ -257,19 +248,15 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onGotoToday() {
-
+  private _onGotoToday = (): void => {
     const { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
     const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
     this._onSelectDate(today!, dates);
-
   }
 
-  @autobind
-  private _onGotoTodayKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onGotoTodayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       ev.preventDefault();
       this._onGotoToday();
@@ -282,8 +269,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onDatePickerPopupKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -302,8 +288,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  @autobind
-  private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
+  private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (this.props.onDismiss) {
       this.props.onDismiss();
     }

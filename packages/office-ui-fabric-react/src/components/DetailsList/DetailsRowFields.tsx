@@ -91,5 +91,4 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
 
     return value;
   }
-
 }

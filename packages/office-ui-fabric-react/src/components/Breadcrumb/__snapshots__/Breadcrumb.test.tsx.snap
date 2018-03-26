@@ -2,10 +2,20 @@
 
 exports[`Breadcrumb renders breadcumb correctly 1`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -44,7 +54,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
                   ms-Breadcrumb-chevron
                   {
@@ -73,7 +82,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
                   ms-Breadcrumb-chevron
                   {
@@ -102,7 +110,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
                   ms-Breadcrumb-chevron
                   {
@@ -131,7 +138,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
                   ms-Breadcrumb-chevron
                   {
@@ -150,10 +156,20 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
 
 exports[`Breadcrumb renders breadcumb correctly 2`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -186,8 +202,8 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-pressed={undefined}
               className=
                   ms-Button
-                  ms-Button--icon
                   ms-Breadcrumb-overflowButton
+                  ms-Button--icon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -197,7 +213,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     box-sizing: border-box;
                     cursor: pointer;
                     display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
@@ -227,11 +243,19 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     top: 0px;
                     z-index: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
                   &:hover {
                     color: #004578;
                   }
                   &:active {
-                    color: #0078d7;
+                    color: #0078d4;
                   }
               data-is-focusable={true}
               disabled={undefined}
@@ -253,7 +277,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               >
                 <i
                   aria-hidden={true}
-                  aria-label={undefined}
                   className=
                       ms-Button-icon
                       {
@@ -278,7 +301,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             </button>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
                   ms-Breadcrumb-chevron
                   {
@@ -307,7 +329,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
                   ms-Breadcrumb-chevron
                   {
@@ -336,7 +357,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
                   ms-Breadcrumb-chevron
                   {

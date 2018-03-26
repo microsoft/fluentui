@@ -6,7 +6,7 @@ import {
   doesElementContainFocus,
   getDocument,
   getNativeProps,
-  autobind
+  createRef
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
@@ -19,10 +19,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     shouldRestoreFocus: true
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
+  public _root = createRef<HTMLDivElement>();
 
   private _originalFocusedElement: HTMLElement;
   private _containsFocus: boolean;
@@ -32,9 +29,14 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public componentDidMount(): void {
-    this._events.on(this.refs.root, 'focus', this._onFocus, true);
-    this._events.on(this.refs.root, 'blur', this._onBlur, true);
-    if (doesElementContainFocus(this.refs.root)) {
+    if (!this._root.value) {
+      return;
+    }
+
+    this._events.on(this._root.value, 'focus', this._onFocus, true);
+    this._events.on(this._root.value, 'blur', this._onBlur, true);
+
+    if (doesElementContainFocus(this._root.value)) {
       this._containsFocus = true;
     }
   }
@@ -58,13 +60,13 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
     let needsVerticalScrollBar = false;
-    if (this.refs.root && this.refs.root.firstElementChild) {
-      needsVerticalScrollBar = this.refs.root.firstElementChild.clientHeight > this.refs.root.clientHeight;
+    if (this._root.value && this._root.value.firstElementChild) {
+      needsVerticalScrollBar = this._root.value.firstElementChild.clientHeight > this._root.value.clientHeight;
     }
 
     return (
       <div
-        ref='root'
+        ref={ this._root }
         { ...getNativeProps(this.props, divProperties) }
         className={ className }
         role={ role }
@@ -79,8 +81,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     );
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.escape:
 

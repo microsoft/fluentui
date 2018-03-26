@@ -2,6 +2,87 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.21.0",
+      "tag": "@uifabric/styling_v5.21.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.20.0 <6.0.0` to `>=5.21.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.13.0 <6.0.0` to `>=5.14.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.20.0",
+      "tag": "@uifabric/styling_v5.20.0",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "b4f58e498bc0885180f67f1fc9d3eb742e3704f6",
+            "comment": "High contrast mode for focus styling."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e3a40d52e73af6e5a0062452e550f1b066c851c2",
+            "comment": "ThemePrimary: Updating this color along with an Office branding update."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.18.2 <6.0.0` to `>=5.18.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.1",
+      "tag": "@uifabric/styling_v5.19.1",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a3841913dd420f50f9a04cdd56676aa9f4f0fd89",
+            "comment": "By default, try to use the system font before downloading a web font"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.17.1 <6.0.0` to `>=5.18.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.0",
+      "tag": "@uifabric/styling_v5.19.0",
+      "date": "Fri, 23 Feb 2018 03:05:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "ebe601051c081838ae9d029e1020f316258d148a",
+            "comment": "add preliminary support for variant theming, add bodyLink slot"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.1",
       "tag": "@uifabric/styling_v5.18.1",
       "date": "Sat, 17 Feb 2018 21:29:00 GMT",

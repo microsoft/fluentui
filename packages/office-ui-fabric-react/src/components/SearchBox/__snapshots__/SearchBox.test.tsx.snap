@@ -15,7 +15,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: 32px;
@@ -43,7 +43,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     className=
         ms-SearchBox-iconContainer
         {
-          color: #0078d7;
+          color: #0078d4;
           display: flex;
           flex-direction: column;
           flex-shrink: 0;
@@ -56,7 +56,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
   >
     <i
       aria-hidden={true}
-      aria-label={undefined}
       className=
           ms-SearchBox-icon
           {
@@ -71,7 +70,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     />
   </div>
   <input
-    aria-label="Search"
+    aria-label={undefined}
     className=
         ms-SearchBox-field
         {
@@ -111,7 +110,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
-    placeholder="Search"
+    placeholder={undefined}
     value=""
   />
 </div>

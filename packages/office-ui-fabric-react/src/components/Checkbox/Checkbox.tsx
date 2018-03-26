@@ -1,22 +1,15 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   getId,
-  memoize
+  createRef,
+  customizable
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
   ICheckbox,
   ICheckboxProps,
-  ICheckboxStyles
 } from './Checkbox.types';
-import {
-  customizable
-} from '../../Utilities';
-import {
-  mergeStyles
-} from '../../Styling';
 import {
   ICheckboxClassNames,
   getClassNames
@@ -34,7 +27,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     boxSide: 'start'
   };
 
-  private _checkBox: HTMLInputElement;
+  private _checkBox = createRef<HTMLInputElement>();
   private _id: string;
   private _classNames: ICheckboxClassNames;
 
@@ -106,7 +99,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         { ...(checked !== undefined && { checked }) }
         { ...(defaultChecked !== undefined && { defaultChecked }) }
         disabled={ disabled }
-        ref={ this._resolveRef('_checkBox') }
+        ref={ this._checkBox }
         name={ name }
         id={ this._id }
         role='checkbox'
@@ -125,7 +118,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       >
         <label className={ this._classNames.label } htmlFor={ this._id } >
           <div className={ this._classNames.checkbox }>
-            <Icon iconName='CheckMark' {...checkmarkIconProps} className={ this._classNames.checkmark } />
+            <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
           </div>
           { onRenderLabel(this.props, this._onRenderLabel) }
         </label>
@@ -138,13 +131,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public focus(): void {
-    if (this._checkBox) {
-      this._checkBox.focus();
+    if (this._checkBox.value) {
+      this._checkBox.value.focus();
     }
   }
 
-  @autobind
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement>): void {
+  private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onFocus) {
@@ -152,8 +144,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @autobind
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onBlur) {
@@ -161,8 +152,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @autobind
-  private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
+  private _onClick = (ev: React.FormEvent<HTMLButtonElement>): void => {
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
     ev.preventDefault();
@@ -179,8 +169,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @autobind
-  private _onRenderLabel(props: ICheckboxProps) {
+  private _onRenderLabel = (props: ICheckboxProps): JSX.Element | null => {
     const { label } = props;
 
     return label ? (

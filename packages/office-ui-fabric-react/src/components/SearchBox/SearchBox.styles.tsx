@@ -1,13 +1,9 @@
 import {
-  FontSizes,
   HighContrastSelector,
-  ScreenWidthMaxMedium,
-  ScreenWidthMaxSmall,
   AnimationVariables,
   normalize
 } from '../../Styling';
-import { SearchBoxBase } from './SearchBox.base';
-import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
+import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput } = props;

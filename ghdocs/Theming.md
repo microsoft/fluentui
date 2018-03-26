@@ -10,7 +10,7 @@ Theming is a mechanism by which a consistent look and feel can be applied to all
 
 ## What's in a theme?
 A theme is defined by a simple collection of variables (which we call slots) with string values.
-For example, `themePrimary` by default is `"#0078d7"`, but it could easily be `"rgba(0, 120, 215)"`.
+For example, `themePrimary` by default is `"#0078d4"`, but it could easily be `"rgba(0, 120, 212)"`.
 
 
 ## What are theme slots?
@@ -25,7 +25,8 @@ Customizing Fabric palette slots allows broad-stroke changes to the overall colo
 Semantic slots are documented in [ISemanticColors.ts](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/interfaces/ISemanticColors.ts).
 These, on the other hand, are prescriptive slots, each slot having an intended use.
 This allows more targeted customizations.
-For example, you could change the light gray color of a disabled checkbox without affecting the light gray used by list item hover/selection state.
+For example, you could change the light gray color of a disabled checkbox without affecting the light gray background used by list item hover/selection state, even though they share the same color, because they use different slots.
+This wouldn't be possible with Fabric palette slots.
 We highly recommend using semantic slots wherever possible.
 
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
   css,
-  autobind,
-  BaseComponent
+  BaseComponent,
+  createRef
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
@@ -13,13 +13,12 @@ const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
-  private _focusZone: FocusZone;
+  private _focusZone = createRef<FocusZone>();
 
   public render() {
     const {
       items,
       overflowItems,
-      onRenderOverflowButton,
       className,
       focusZoneProps,
       vertical = false,
@@ -29,7 +28,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     return (
       <FocusZone
         { ...focusZoneProps }
-        componentRef={ this._resolveRef('_focusZone') }
+        componentRef={ this._focusZone }
         className={ mergeStyles(
           'ms-OverflowSet',
           styles.root,
@@ -46,13 +45,12 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   public focus() {
-    if (this._focusZone) {
-      this._focusZone.focus();
+    if (this._focusZone.value) {
+      this._focusZone.value.focus();
     }
   }
 
-  @autobind
-  private _onRenderItems(items: IOverflowSetItemProps[]): JSX.Element[] {
+  private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
 
@@ -64,8 +62,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     });
   }
 
-  @autobind
-  private _onRenderOverflowButtonWrapper(items: any[]): JSX.Element {
+  private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     return (
       <div { ...wrapperDivProps }>

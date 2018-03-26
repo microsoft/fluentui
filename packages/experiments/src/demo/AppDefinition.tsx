@@ -35,6 +35,18 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/filetypeicon'
         },
         {
+          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
+          key: 'Keytip',
+          name: 'Keytip',
+          url: '#/examples/keytip'
+        },
+        {
+          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
+          key: 'KeytipLayer',
+          name: 'KeytipLayer',
+          url: '#/examples/keytipLayer'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
@@ -57,6 +69,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist'
+        },
+        {
+          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
+          key: 'Shimmer',
+          name: 'Shimmer',
+          url: '#/examples/shimmer'
         },
         {
           component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,

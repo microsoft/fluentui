@@ -71,7 +71,7 @@ class Comp extends React.Component {
 
 A component should consist of these files:
 
-* `ComponentName.props.ts` - The interfaces for the component. We separate these out for documentation reasons.
+* `ComponentName.types.ts` - The interfaces for the component. We separate these out for documentation reasons.
 * `ComponentName.base.tsx` - The unstyled component. This renders DOM structure and conrtains logic, MINUS styling opinions.
 * `ComponentName.styles.ts` - Exports a `getStyles` function for the component which takes in `IComponentNameStyleProps` and returns `IComponentNameStyles`.
 

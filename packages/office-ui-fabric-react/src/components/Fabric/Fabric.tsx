@@ -4,7 +4,8 @@ import {
   KeyCodes,
   customizable,
   getNativeProps,
-  divProperties
+  divProperties,
+  createRef
 } from '../../Utilities';
 import {
   ITheme
@@ -33,7 +34,7 @@ export interface IFabricState {
 
 // We will track the last focus visibility state so that if we tear down and recreate
 // the Fabric component, we will use the last known value as the default.
-let _lastIsFocusVisible: boolean = false;
+let _lastIsFocusVisible = false;
 
 // Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
 if (typeof (document) === 'object' && document.documentElement && !document.documentElement.getAttribute('dir')) {
@@ -43,7 +44,7 @@ if (typeof (document) === 'object' && document.documentElement && !document.docu
 @customizable('Fabric', ['theme'])
 export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
   // tslint:disable-next-line:no-unused-variable
-  private _root: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
 
   constructor(props: IFabricProps) {
     super(props);
@@ -73,7 +74,7 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
       <div
         { ...divProps }
         className={ classNames.root }
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
       />
     );
   }

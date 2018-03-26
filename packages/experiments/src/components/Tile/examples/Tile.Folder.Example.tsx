@@ -11,7 +11,7 @@ import {
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../../FolderCover/FolderCover';
 import { FolderCoverType } from '../../FolderCover/FolderCover.types';
 import { lorem } from '@uifabric/example-app-base';
-import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
+import { css, ISize, fitContentToBounds } from '../../../Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any
@@ -197,8 +197,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
     );
   }
 
-  @autobind
-  private _onIsLargeChanged(event: React.FormEvent<HTMLInputElement>, checked: boolean): void {
+  private _onIsLargeChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
       size: checked ? 'large' : 'small'
     });

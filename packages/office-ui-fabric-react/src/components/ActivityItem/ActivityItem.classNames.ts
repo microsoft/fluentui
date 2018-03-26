@@ -1,7 +1,5 @@
 import {
-  mergeStyles,
-  ITheme,
-  getTheme
+  mergeStyles
 } from '../../Styling';
 import {
   memoizeFunction
@@ -61,6 +59,9 @@ export const getClassNames = memoizeFunction((
 
     activityText: mergeStyles('ms-ActivityItem-activityText', styles.activityText),
     commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText),
-    timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp)
+    timeStamp: mergeStyles(
+      'ms-ActivityItem-timeStamp',
+      styles.timeStamp,
+      isCompact && styles.isCompactTimeStamp)
   };
 });

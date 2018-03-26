@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 import {
   findScrollableParent,
-  getRect
+  getRect,
+  createRef
 } from '../../Utilities';
 
 export interface IViewport {
@@ -24,10 +25,7 @@ const MAX_RESIZE_ATTEMPTS = 3;
 export function withViewport<TProps extends { viewport?: IViewport }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
 
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
-    public refs: {
-      [key: string]: React.ReactInstance;
-    };
-
+    private _root = createRef<HTMLDivElement>();
     private _resizeAttempts: number;
 
     constructor(props: TProps) {
@@ -71,7 +69,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
-        <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
+        <div className='ms-Viewport' ref={ this._root } style={ { minWidth: 1, minHeight: 1 } }>
           { isViewportVisible && (
             <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props as any } />
           ) }
@@ -90,7 +88,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
       const { viewport } = this.state;
-      const viewportElement = (this.refs as any).root;
+      const viewportElement = this._root.value;
       const scrollElement = findScrollableParent(viewportElement);
       const scrollRect = getRect(scrollElement);
       const clientRect = getRect(viewportElement);

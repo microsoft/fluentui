@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -26,7 +25,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
 
   public render() {
     const { isChecked } = this.state;
-    const className: string = 'shouldFocus input';
+    const className = 'shouldFocus input';
 
     return (
       <div>
@@ -85,29 +84,25 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     );
   }
 
-  @autobind
-  private _onButtonClickHandler() {
+  private _onButtonClickHandler = (): void => {
     this.setState({
       isChecked: true
     });
   }
 
-  @autobind
-  private _onExitButtonClickHandler() {
+  private _onExitButtonClickHandler = (): void => {
     this.setState({
       isChecked: false
     });
   }
 
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
+  private _onFocusTrapZoneToggleChanged = (isChecked: boolean): void => {
     this.setState({
       isChecked: isChecked
     }, () => this._toggle.focus());
   }
 
-  @autobind
-  private _setRef(toggle: IToggle): void {
+  private _setRef = (toggle: IToggle): void => {
     this._toggle = toggle;
   }
 }

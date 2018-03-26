@@ -1,33 +1,29 @@
 import * as React from 'react';
 import {
-  autobind,
   BaseComponent,
-  css,
+  classNamesFunction,
+  customizable,
   divProperties,
-  getNativeProps,
-  getRTL
+  getNativeProps
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ActionButton, IButtonStyles } from '../../Button';
+import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
-import * as stylesImport from './Nav.scss';
-const styles: any = stylesImport;
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { buttonStyles } from './Nav.styles';
 import {
   INav,
   INavProps,
   INavLinkGroup,
-  INavLink
+  INavLink,
+  INavStyles,
+  INavStyleProps
 } from './Nav.types';
 
 // The number pixels per indentation level for Nav links.
-const _indentationSize: number = 14;
+const _indentationSize = 14;
 
 // The number of pixels of left margin
-const _baseIndent: number = 3;
-
-// The number of pixels of padding to add to the far side of the button (allows ellipsis to happen)
-const _farSidePadding: number = 20;
+const _baseIndent = 3;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -37,19 +33,20 @@ export function isRelativeUrl(url: string): boolean {
   return !!url && !/^[a-z0-9+-.]:\/\//i.test(url);
 }
 
+const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
+
 export interface INavState {
   isGroupCollapsed?: { [key: string]: boolean };
   isLinkExpandStateChanged?: boolean;
   selectedKey?: string;
 }
 
+@customizable('Nav', ['theme'])
 export class NavBase extends BaseComponent<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
     groups: null
   };
-
-  private _hasExpandButton: boolean;
 
   constructor(props: INavProps) {
     super(props);
@@ -67,7 +64,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         }
       }
     }
-    this._hasExpandButton = false;
   }
 
   public componentWillReceiveProps(newProps: INavProps) {
@@ -93,32 +89,22 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   public render(): JSX.Element | null {
-    const { groups, className, isOnTop } = this.props;
+    const { getStyles, groups, className, isOnTop, theme } = this.props;
 
     if (!groups) {
       return null;
     }
 
-    // When groups[x].name is specified or any of the links have children, the expand/collapse
-    // chevron button is shown and different padding is needed. _hasExpandButton marks this condition.
-    this._hasExpandButton = groups.some((group: INavLinkGroup) => {
-      return group ? !!group.name || (group.links && group.links.some((link: INavLink) => {
-        return !!(link && link.links && link.links.length);
-      })) : false;
-    });
-
     const groupElements: React.ReactElement<{}>[] = groups.map(this._renderGroup);
+
+    const classNames = getClassNames(getStyles!, { theme: theme!, className, isOnTop, groups });
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav
           role='navigation'
-          className={ css(
-            'ms-Nav',
-            styles.root,
-            className,
-            isOnTop && css('is-onTop', styles.rootIsOnTop, AnimationClassNames.slideRightIn40)
-          ) }
+          className={ classNames.root }
+          aria-label={ this.props.ariaLabel }
         >
           { groupElements }
         </nav>
@@ -130,47 +116,38 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     return this.state.selectedKey;
   }
 
-  private _onRenderLink(link: INavLink) {
-    return (<div className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</div>);
+  private _onRenderLink = (link: INavLink): JSX.Element => {
+    const { getStyles, groups, theme } = this.props;
+    const classNames = getClassNames(getStyles!, { theme: theme!, groups });
+    return (<div className={ classNames.linkText }>{ link.name }</div>);
   }
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
-    const isRtl: boolean = getRTL();
-    const paddingBefore = _indentationSize * nestingLevel + _baseIndent;
-    const buttonStyles: IButtonStyles = {
-      root: {
-        [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
-        [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
-      },
-      textContainer: {
-        overflow: 'hidden',
-      },
-      label: {
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        lineHeight: '36px'
-      }
-    };
     const {
+      getStyles,
+      groups,
+      theme,
       onRenderLink = this._onRenderLink
     } = this.props;
+
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      isSelected: this._isLinkSelected(link),
+      isButtonEntry: link.onClick && !link.forceAnchor,
+      leftPadding: _indentationSize * nestingLevel + _baseIndent,
+      groups
+    });
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     return (
       <ActionButton
-        className={ mergeStyles(
-          'ms-Nav-link' + link.onClick && 'ms-Nav-linkButton',
-          styles.link,
-          link.onClick && !link.forceAnchor && styles.buttonEntry,
-          this._hasExpandButton && 'isOnExpanded') as string
-        }
+        className={ classNames.link }
         styles={ buttonStyles }
         href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
-        iconProps={ { iconName: link.icon || '' } }
-        description={ link.title || link.name }
+        iconProps={ link.iconProps || { iconName: link.icon || '' } }
+        ariaDescription={ link.title || link.name }
         onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
         title={ link.title || link.name }
         target={ link.target }
@@ -182,42 +159,32 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const isLinkSelected: boolean = this._isLinkSelected(link);
-    const isRtl: boolean = getRTL();
-    const absolutePositionString = `${_indentationSize * nestingLevel + 1}px`;
+    const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
+    const { getStyles, groups, theme } = this.props;
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      isExpanded: !!link.isExpanded,
+      isSelected: this._isLinkSelected(link),
+      isLink: true,
+      position: _indentationSize * nestingLevel + 1,
+      groups
+    });
 
     return (
       <div
-        { ...getNativeProps(link, divProperties) }
+        { ...divProps }
         key={ link.key || linkIndex }
-        className={ css(
-          'ms-Nav-compositeLink',
-          styles.compositeLink,
-          !!link.isExpanded && 'is-expanded',
-          isLinkSelected && 'is-selected',
-          !!link.isExpanded && styles.compositeLinkIsExpanded,
-          isLinkSelected && styles.compositeLinkIsSelected
-        ) }
+        className={ classNames.compositeLink }
       >
         { (link.links && link.links.length > 0 ?
           <button
-            className={ mergeStyles(
-              'ms-Nav-chevronButton ms-Nav-chevronButton--link',
-              styles.chevronButton,
-              styles.chevronButtonLink,
-              isRtl && {
-                right: absolutePositionString,
-              },
-              !isRtl && {
-                left: absolutePositionString,
-              }) as string
-            }
+            className={ classNames.chevronButton }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }
             aria-expanded={ link.isExpanded ? 'true' : 'false' }
           >
             <Icon
-              className={ css('ms-Nav-chevron', styles.chevronIcon, link.isExpanded) }
+              className={ classNames.chevronIcon }
               iconName='ChevronDown'
             />
           </button> : null
@@ -228,8 +195,11 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
+    const { getStyles, groups, theme } = this.props;
+    const classNames = getClassNames(getStyles!, { theme: theme!, groups });
+
     return (
-      <li key={ link.key || linkIndex } role='listitem' className={ css(styles.navItem) }>
+      <li key={ link.key || linkIndex } role='listitem' className={ classNames.navItem }>
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
@@ -243,43 +213,43 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const linkElements: React.ReactElement<{}>[] = links.map(
       (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel));
 
+    const { getStyles, groups, theme } = this.props;
+    const classNames = getClassNames(getStyles!, { theme: theme!, groups });
+
     return (
-      <ul role='list' aria-label={ this.props.ariaLabel } className={ css(styles.navItems) }>
+      <ul role='list' className={ classNames.navItems }>
         { linkElements }
       </ul>
     );
   }
 
-  @autobind
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
-    const isGroupExpanded: boolean = !this.state.isGroupCollapsed![group.name!];
+  private _renderGroup = (group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> => {
+    const { getStyles, groups, theme } = this.props;
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      isGroup: true,
+      isExpanded: !this.state.isGroupCollapsed![group.name!],
+      groups
+    });
 
     return (
       <div
         key={ groupIndex }
-        className={ css(
-          'ms-Nav-group',
-          styles.group,
-          isGroupExpanded && ('is-expanded ' + styles.groupIsExpanded)
-        ) }
+        className={ classNames.group }
       >
         { (group.name ?
           <button
-            className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonIsGroup, styles.groupHeaderFontSize) }
+            className={ classNames.chevronButton }
             onClick={ this._onGroupHeaderClicked.bind(this, group) }
           >
             <Icon
-              className={ css(
-                'ms-Nav-chevron',
-                styles.chevronIcon,
-                isGroupExpanded && styles.chevronIsExpanded
-              ) }
+              className={ classNames.chevronIcon }
               iconName='ChevronDown'
             />
             { group.name }
           </button> : null)
         }
-        <div className={ css('ms-Nav-groupContent', AnimationClassNames.slideDownIn20, styles.groupContent) }>
+        <div className={ classNames.groupContent }>
           { this._renderLinks(group.links, 0 /* nestingLevel */) }
         </div>
       </div>
@@ -322,6 +292,9 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     if (this.props.onLinkClick) {
       this.props.onLinkClick(ev, link);
     }
+    if (!link.url && link.links && link.links.length > 0) {
+      this._onLinkExpandClicked(link, ev);
+    }
 
     this.setState({ selectedKey: link.key });
   }
@@ -329,6 +302,9 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     if (link.onClick) {
       link.onClick(ev, link);
+    }
+    if (!link.url && link.links && link.links.length > 0) {
+      this._onLinkExpandClicked(link, ev);
     }
 
     this.setState({ selectedKey: link.key });

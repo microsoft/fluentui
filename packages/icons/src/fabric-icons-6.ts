@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,16 +22,16 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-6"`,
-      src: `url('${baseUrl}fabric-icons-6-2e7e2914.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-6-baae6235.woff') format('woff')`,
     },
     icons: {
-      'ClearFormatting': '\uEDDD',
       'Superscript': '\uEDDE',
       'Subscript': '\uEDDF',
       'Strikethrough': '\uEDE0',
       'Export': '\uEDE1',
       'ExportMirrored': '\uEDE2',
       'SingleBookmark': '\uEDFF',
+      'SingleBookmarkSolid': '\uEE00',
       'DoubleChevronDown': '\uEE04',
       'FollowUser': '\uEE05',
       'ReplyAll': '\uEE0A',
@@ -52,6 +52,7 @@ export function initializeIcons(
       'GenericScan': '\uEE6F',
       'AustralianRules': '\uEE70',
       'WifiEthernet': '\uEE77',
+      'TrackersMirrored': '\uEE92',
       'DateTimeMirrored': '\uEE93',
       'StopSolid': '\uEE95',
       'DoubleChevronUp12': '\uEE96',

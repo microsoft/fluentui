@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "World",
+			"unicode": "E909"
+		},
+		{
 			"name": "Comment",
 			"unicode": "E90A"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "StoreLogoMed20",
 			"unicode": "EA04"
-		},
-		{
-			"name": "TimeSheet",
-			"unicode": "EA05"
 		}
 	]
 }

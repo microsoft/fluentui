@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-cf6d96bb.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`,
     },
     icons: {
       'GlobalNavButton': '\uE700',
@@ -37,6 +37,7 @@ export function initializeIcons(
       'Filter': '\uE71C',
       'Search': '\uE721',
       'Share': '\uE72D',
+      'BlockedSite': '\uE72F',
       'FavoriteStar': '\uE734',
       'FavoriteStarFill': '\uE735',
       'CheckMark': '\uE73E',
@@ -67,6 +68,7 @@ export function initializeIcons(
       'HeartFill': '\uEB52',
       'Tiles': '\uECA5',
       'Embed': '\uECCE',
+      'Glimmer': '\uECF4',
       'Ascending': '\uEDC0',
       'Descending': '\uEDC1',
       'SortUp': '\uEE68',

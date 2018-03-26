@@ -1,0 +1,18 @@
+@import '../../../common/common';
+
+:global {
+  .DetailsList-grouped-example {
+    .ms-DetailsList {
+      max-height: 500px;
+      overflow-y: scroll;
+
+      .ms-DetailsRow-cell {
+        padding: 0px;
+      }
+
+      .grouped-example-column {
+        padding: 11px 8px;
+      }
+    }
+  }
+}

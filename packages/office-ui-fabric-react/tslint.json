@@ -3,22 +3,15 @@
     "office-ui-fabric-react-tslint"
   ],
   "rules": {
-    "jsx-no-string-ref": false,
-    "jsx-boolean-value": false,
     "jsx-ban-props": false,
     "max-line-length": [
       false,
       140
     ],
+    "no-unused-variable": false,
     "no-any": false,
-    "variable-name": false,
-    "no-internal-module": false,
     "typedef": [
       false
-    ],
-    "no-inferrable-types": [
-      false
-    ],
-    "no-unused-variable": false
+    ]
   }
 }

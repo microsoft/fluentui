@@ -1,6 +1,87 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+
+## 5.27.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Add missing icons to Signals and fix colors
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+### Patches
+
+- Update componentRef types
+
+## 5.26.1
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Patches
+
+- Removes @autobind for arrow functions
+
+## 5.26.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Changes in the props and naming.
+- Adds a new Shimmer Component to experiments package.
+
+## 5.25.1
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.25.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- Adds a new Shimmer Component to experiments package.
+
+## 5.24.1
+Thu, 08 Mar 2018 11:27:23 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+
+## 5.24.0
+Wed, 07 Mar 2018 11:16:50 GMT
+
+### Minor changes
+
+- add clearInput on BaseExtendedPicker
+
+## 5.23.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.23.0
+Mon, 05 Mar 2018 11:16:58 GMT
+
+### Minor changes
+
+- Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)
+
+## 5.22.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection
+
+### Patches
+
+- Add initial set of Keytip work
 
 ## 5.21.0
 Fri, 16 Feb 2018 11:23:28 GMT

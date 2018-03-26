@@ -23,8 +23,8 @@ const ColorTintTable = [.07, .18, .436, .751, .956]; // default soften
 const ColorShadeTable = [.90, .64, .550]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
-const c_LuminanceLow = 0.2;
-const c_LuminanceHigh = 0.8;
+const LowLuminanceThreshold = 0.2;
+const HighLuminanceThreshold = 0.8;
 
 /** Shades of a given color, from softest to strongest. */
 export enum Shade {
@@ -117,9 +117,9 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
     hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
   } else if (_isBlack(color)) { // black
     hsl = _lighten(hsl, BlackTintTable[tableIndex]);
-  } else if (hsl.l / 100 > c_LuminanceHigh) { // light
+  } else if (hsl.l / 100 > HighLuminanceThreshold) { // light
     hsl = _strongen(hsl, LumShadeTable[tableIndex]);
-  } else if (hsl.l / 100 < c_LuminanceLow) { // dark
+  } else if (hsl.l / 100 < LowLuminanceThreshold) { // dark
     hsl = _soften(hsl, LumTintTable[tableIndex]);
   } else { // default
     if (tableIndex < ColorTintTable.length) {

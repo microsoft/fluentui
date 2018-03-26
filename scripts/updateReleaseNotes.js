@@ -68,13 +68,13 @@ function forEachFileRecursive(folder, fileName, cb) {
 /**
  * Build up the markdown from the entry description.
  */
-function getMarkdownForEntry(entry) {
+async function getMarkdownForEntry(entry) {
   let markdown = '';
   let comments = '';
 
-  comments += getChangeComments('Breaking changes', entry.comments.major);
-  comments += getChangeComments('Minor changes', entry.comments.minor);
-  comments += getChangeComments('Patches', entry.comments.patch);
+  comments += await getChangeComments('Breaking changes', entry.comments.major);
+  comments += await getChangeComments('Minor changes', entry.comments.minor);
+  comments += await getChangeComments('Patches', entry.comments.patch);
 
   if (!comments) {
     markdown += '*Changes not tracked*' +
@@ -90,17 +90,59 @@ function getMarkdownForEntry(entry) {
 /**
  * From a comment array, conditionally returns a section of markdown.
  */
-function getChangeComments(title, commentsArray) {
+async function getChangeComments(title, commentsArray) {
   var comments = '';
   if (commentsArray) {
     comments = "# " + title + (EOL + EOL);
-    commentsArray.forEach(function (comment) {
-      comments += "- " + comment.comment + EOL;
-    });
+
+    for (let i = 0; i < commentsArray.length; i++) {
+      var comment = commentsArray[i];
+      var searchResult;
+
+      comments += `- ${comment.comment}`;
+      if (comment.commit) {
+        comments += ` ([commit](https://github.com/${REPO_DETAILS.owner}/${REPO_DETAILS.repo}/commit/${comment.commit})`;
+        searchResult = await getPullRequest(comment.commit);
+
+        if (searchResult) {
+          comments += ` by [${searchResult.author}](${searchResult.authorUrl}), pr [#${searchResult.number}](${searchResult.url})`;
+        }
+
+        comments += `)`;
+      }
+      comments += EOL;
+    }
     comments += EOL;
   }
   return comments;
 };
+
+function getPullRequest(commitHash) {
+  return new Promise((resolve, reject) => {
+
+    github.search.issues({ q: commitHash }, (response, result) => {
+      if (result && result.items && result.items.length >= 1) {
+        var item = result.items.find(
+          item => item.repository_url === `https://api.github.com/repos/${REPO_DETAILS.owner}/${REPO_DETAILS.repo}`
+        );
+
+        if (item) {
+          resolve({
+            number: item.number,
+            url: item.html_url,
+            author: item.user.login,
+            authorUrl: item.user.html_url
+          });
+
+          return;
+        }
+      }
+
+      resolve(null);
+    });
+
+  });
+}
 
 /**
  * Builds a map of changelog tags to entries defined in CHANGELOG.json files.
@@ -112,7 +154,6 @@ function getChangelogTagMap() {
     let changelog = JSON.parse(result.content);
     changelog.entries.forEach(entry => {
       entry.name = changelog.name;
-      entry.body = getMarkdownForEntry(entry);
       map.set(entry.tag, entry);
     });
   });
@@ -180,7 +221,7 @@ function updateReleaseNotes(shouldPatchChangelog) {
   getReleases((releases) => {
     let count = 0;
 
-    publishedTags.forEach(tag => {
+    publishedTags.forEach(async tag => {
       let entry = changelogEntries.get(tag);
       let hasBeenReleased = releases.has(tag);
 
@@ -197,6 +238,8 @@ function updateReleaseNotes(shouldPatchChangelog) {
           console.log(`Creating release notes for ${entry.name} ${entry.version}`);
           count++;
 
+          releaseDetails.body = await getMarkdownForEntry(entry);
+
           if (SHOULD_APPLY) {
             github.repos.createRelease(releaseDetails, (err, cb) => {
               if (err) {
@@ -212,6 +255,8 @@ function updateReleaseNotes(shouldPatchChangelog) {
 
           if (SHOULD_APPLY) {
             releaseDetails.id = releases.get(tag).id;
+            releaseDetails.body = await getMarkdownForEntry(entry);
+
             github.repos.editRelease(releaseDetails, (err, cb) => {
               if (err) {
                 throw new Error(`Failed to commit release notes for ${entry.name} ${entry.version}.${EOL}${err}`);

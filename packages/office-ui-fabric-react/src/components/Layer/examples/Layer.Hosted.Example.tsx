@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Checkbox } from '../../../Checkbox';
+import { Layer } from '../Layer';
+import { LayerHost } from '../LayerHost';
+import { Toggle } from '../../../Toggle';
 import { AnimationClassNames } from '../../../Styling';
 import './Layer.Example.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
@@ -10,6 +10,7 @@ const exampleStyles: any = exampleStylesImport;
 
 export class LayerHostedExample extends React.Component<{}, {
   showLayer: boolean;
+  showLayerNoId: boolean;
   showHost: boolean;
 }> {
 
@@ -17,12 +18,13 @@ export class LayerHostedExample extends React.Component<{}, {
     super(props);
     this.state = {
       showLayer: false,
+      showLayerNoId: false,
       showHost: true
     };
   }
 
   public render() {
-    const { showLayer, showHost } = this.state;
+    const { showLayer, showLayerNoId, showHost } = this.state;
     const content = (
       <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 } >
         This is example layer content.
@@ -57,12 +59,33 @@ export class LayerHostedExample extends React.Component<{}, {
             hostId='layerhost1'
             onLayerDidMount={ this._log('didmount') }
             onLayerWillUnmount={ this._log('willunmount') }
+            className={ 'exampleLayerClassName' }
           >
             { content }
           </Layer>
         ) : content }
 
         <div className='LayerExample-nonLayered'>I am normally below the content.</div>
+
+        <p>
+          If you do not specify a hostId then the hosted layer will default to being fixed to the page by default.
+        </p>
+
+        <Checkbox
+          className={ exampleStyles.exampleCheckbox }
+          label='Render the box below in a Layer without specifying a host, fixing it to the top of the page'
+          checked={ showLayerNoId }
+          onChange={ this._onChangeCheckboxNoId }
+        />
+
+        { showLayerNoId ? (
+          <Layer
+            onLayerDidMount={ this._log('didmount') }
+            onLayerWillUnmount={ this._log('willunmount') }
+          >
+            { content }
+          </Layer>
+        ) : content }
 
       </div>
     );
@@ -74,13 +97,15 @@ export class LayerHostedExample extends React.Component<{}, {
     };
   }
 
-  @autobind
-  private _onChangeCheckbox(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChangeCheckbox = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ showLayer: checked });
   }
 
-  @autobind
-  private _onChangeToggle(checked: boolean): void {
+  private _onChangeCheckboxNoId = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
+    this.setState({ showLayerNoId: checked });
+  }
+
+  private _onChangeToggle = (checked: boolean): void => {
     this.setState({ showHost: checked });
   }
 }

@@ -31,6 +31,7 @@ export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, an
             </ExampleCard>
           </LayerHost>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -103,7 +104,7 @@ export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, an
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ResizeGroupStatus}
+            { ...ResizeGroupStatus }
           />
         }
       />

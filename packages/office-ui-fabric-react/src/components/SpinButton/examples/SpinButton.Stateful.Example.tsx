@@ -34,16 +34,16 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
     );
   }
 
-  private _hasSuffix(string: string, suffix: string): Boolean {
-    const subString = string.substr(string.length - suffix.length);
+  private _hasSuffix(value: string, suffix: string): Boolean {
+    const subString = value.substr(value.length - suffix.length);
     return subString === suffix;
   }
 
-  private _removeSuffix(string: string, suffix: string): string {
-    if (!this._hasSuffix(string, suffix)) {
-      return string;
+  private _removeSuffix(value: string, suffix: string): string {
+    if (!this._hasSuffix(value, suffix)) {
+      return value;
     }
 
-    return string.substr(0, string.length - suffix.length);
+    return value.substr(0, value.length - suffix.length);
   }
 }

@@ -14,7 +14,6 @@ let _items: any[];
 let _groups: IGroup[];
 
 export class GroupedListCustomExample extends React.Component {
-
   constructor(props: {}) {
     super(props);
 
@@ -25,7 +24,6 @@ export class GroupedListCustomExample extends React.Component {
   public render() {
     return (
       <GroupedList
-        ref='groupedList'
         items={ _items }
         onRenderCell={ this._onRenderCell }
         groupProps={
