@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[TextField] Inmplemented Input Masking",
+      "comment": "TextField: Inmplemented input masking.",
       "type": "minor"
     }
   ],
