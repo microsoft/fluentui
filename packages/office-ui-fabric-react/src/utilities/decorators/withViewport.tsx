@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 import {
   findScrollableParent,
-  getRect
+  getRect,
+  createRef
 } from '../../Utilities';
 
 export interface IViewport {
@@ -14,20 +15,21 @@ export interface IWithViewportState {
   viewport?: IViewport;
 }
 
+export interface IWithViewportProps {
+  skipViewportMeasures?: boolean;
+}
+
 const RESIZE_DELAY = 500;
 const MAX_RESIZE_ATTEMPTS = 3;
 
-export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
+export function withViewport<TProps extends { viewport?: IViewport }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
 
-  return class WithViewportComponent extends BaseDecorator<P, IWithViewportState> {
-    public refs: {
-      [key: string]: React.ReactInstance;
-    };
-
+  return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
+    private _root = createRef<HTMLDivElement>();
     private _resizeAttempts: number;
 
-    constructor() {
-      super();
+    constructor(props: TProps) {
+      super(props);
       this._resizeAttempts = 0;
 
       this.state = {
@@ -47,7 +49,12 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         });
 
       this._events.on(window, 'resize', this._onAsyncResize);
-      this._updateViewport();
+      const {
+        skipViewportMeasures
+      } = this.props as IWithViewportProps;
+      if (!skipViewportMeasures) {
+        this._updateViewport();
+      }
     }
 
     public componentWillUnmount() {
@@ -55,11 +62,14 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
     }
 
     public render() {
-      let { viewport } = this.state;
-      let isViewportVisible = viewport.width > 0 && viewport.height > 0;
+      const { viewport } = this.state;
+      const {
+        skipViewportMeasures
+      } = this.props as IWithViewportProps;
+      const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
-        <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
+        <div className='ms-Viewport' ref={ this._root } style={ { minWidth: 1, minHeight: 1 } }>
           { isViewportVisible && (
             <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props as any } />
           ) }
@@ -77,22 +87,22 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
-      let { viewport } = this.state;
-      let viewportElement = (this.refs as any).root;
-      let scrollElement = findScrollableParent(viewportElement);
-      let scrollRect = getRect(scrollElement);
-      let clientRect = getRect(viewportElement);
-      let updateComponent = () => {
+      const { viewport } = this.state;
+      const viewportElement = this._root.value;
+      const scrollElement = findScrollableParent(viewportElement);
+      const scrollRect = getRect(scrollElement);
+      const clientRect = getRect(viewportElement);
+      const updateComponent = () => {
         if (withForceUpdate && this._composedComponentInstance) {
           this._composedComponentInstance.forceUpdate();
         }
       };
 
-      let isSizeChanged = (
-        clientRect.width !== viewport.width ||
-        scrollRect.height !== viewport.height);
+      const isSizeChanged = (
+        (clientRect && clientRect.width) !== viewport!.width ||
+        (scrollRect && scrollRect.height) !== viewport!.height);
 
-      if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS) {
+      if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;
         this.setState({
           viewport: {

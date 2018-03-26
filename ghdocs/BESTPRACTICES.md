@@ -22,7 +22,7 @@ want a single command bar item with a dropdown menu.
 This is an example where instead of building a single large component, we should build more atomic building blocks that are puzzled
 together. While it may be more effort to think in smaller blocks, it makes the code easier to reuse and often simpler to maintain.
 
-## Use a .Props.ts file to extract out the public contracts that should be supported and documented.
+## Use a .types.ts file to extract out the public contracts that should be supported and documented.
 
 A props file contains all of the interface contracts that the user should know about to use the component. It is the "contract" for the
 component. When we evaluate semversioning, we look through the changes at Props files to determine if the change is a major, minor, or
@@ -43,7 +43,7 @@ interface IButton {
 }
 ```
 
-### Provide explicit return types for methods declared in .Props.ts
+### Provide explicit return types for methods declared in .types.ts
 
 Bad:
 ```typescript
@@ -67,7 +67,7 @@ interface IButton {
 
 ## Naming guidance
 
-### Flags
+### Flags(Booleans)
 
 Property flags should be as consistent as possible with given html guidelines.
 
@@ -96,11 +96,12 @@ controlling the disabled state of the input element.)
 ### Event callbacks
 
 Event callbacks should be prefixed with `on`. If it is necessary to target a subject, the subject should be in between `on` and the event
-name.
+name. Always use present tense verbs instead of past tense.
 
 |BAD|GOOD|Notes|
 |---|----|-----|
 |mouseClick|onClick|
+|onClicked|onClick|
 |inputClick, onClickInput|onInputClick|
 
 
@@ -122,21 +123,38 @@ BAD:
 GOOD:
 `onRenderItem: IRenderFunction<IItemProps>`
 
-## Use @autobind. Avoid ALL binds in templates
+## Use arrow function properties to avoid ALL binds in templates
 
-The autobind decorator simplifies making event callbacks "bound" to the instance. It's easy to use:
+When we use bind in a template, it means that the function is recreated every time, which is an anti-pattern.
 
+BAD:
 ```typescript
 class Foo {
 
-  @autobind
   public _onClick(ev: React.MouseEvent) {
+  }
+
+  render() {
+    <button onClick={this._onClick.bind(this)}>Click me</button
   }
 
 }
 ```
 
-When we use bind in a template, it means that the function is recreated every time, which is an anti-pattern.
+Instead we can use an arrow function property as it will always be bound to the component.
+
+GOOD:
+```typescript
+class Foo {
+
+  public _onClick = (ev: React.MouseEvent) => {
+  }
+
+  render() {
+    <button onClick={this._onClick}>Click me</button
+  }
+}
+```
 
 ## For gathering refs, avoid string refs, use resolve functions
 
@@ -171,13 +189,27 @@ public render() {
 }
 ```
 
-Best, use _resolveRef in BaseComponent:
+Best, use createRef:
+
+The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://github.com/facebook/react/pull/11555). (When Fabric switches over to React 16, we'll use React.createRef instead)
+
+`createRef` creates a reference object that has the following type `{ value: T | null }`, where T is the element to reference (either a dom node or a react component). You set the reference by passing the reference object as the `ref` prop. You can then subsequently access the reference through the `.value` property on the reference object elsewhere in your code.
+
 ```typescript
+import { createRef } from 'office-ui-fabric-react/lib/Utilities';
+
 class Foo extends BaseComponent<...> {
-  private _root: HTMLElement;
+  // Create the reference object that will be used for setting and accessing the reference
+  private _root = createRef<HTMLButtonElement>();
 
   public render() {
-    return <div ref={ this._resolveRef('_root') } />;
+    // Set the reference by passing the reference object as the ref prop
+    return <button ref={ _root } onClick={this._onClick} />;
+  }
+
+  private _onClick() {
+    // Access the reference through the .value property on the reference object
+    this._root.value.focus();
   }
 }
 ```
@@ -185,10 +217,6 @@ class Foo extends BaseComponent<...> {
 Note that it's very critical you do NOT inline the functions in render! This causes weird side effects, because the function
 is recreated. If you do this, react will call your function with null to clear it, and then render, and then once complete, will
 call it again with the element. This creates timing issues where your ref may be null when you didn't expect.
-
-See example here that illustates refs being re-evaluated:
-
-http://codepen.io/dzearing/pen/WGZOaR
 
 ## Use unique keys for items in a mapped array, avoid indexes for keys
 
@@ -259,8 +287,7 @@ class ItemComponent extends React.Component<...> {
     );
   }
 
-  @autobind
-  _onClick(ev: MouseEvent) {
+  _onClick = (ev: MouseEvent) => {
 
   }
 }

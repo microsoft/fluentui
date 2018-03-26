@@ -2,11 +2,12 @@ import * as React from 'react';
 import { CalloutPage } from 'office-ui-fabric-react/lib/components/Callout/CalloutPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class CalloutComponentPage extends React.Component<any, any> {
   public render() {
     return (
-      <div ref='pageElement'>
+      <div ref='pageElement' className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='Callout' backgroundColor='#038387'
             links={
@@ -17,7 +18,7 @@ export class CalloutComponentPage extends React.Component<any, any> {
                 },
                 {
                   'text': 'Best Practices',
-                  'location': 'Best Practices'
+                  'location': 'BestPractices'
                 },
                 {
                   'text': 'Variants',

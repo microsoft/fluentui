@@ -1,16 +1,19 @@
 import * as React from 'react';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
+import * as stylesImport from './TypographyPage.module.scss';
+const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const typeRampData = require('json!../../../data/type-ramp.json');
-const typeSizeData = require('json!../../../data/type-sizes.json');
-const typeWeightData = require('json!../../../data/type-weights.json');
+const typeRampData = require('../../../data/type-ramp.json');
+const typeSizeData = require('../../../data/type-sizes.json');
+const typeWeightData = require('../../../data/type-weights.json');
 
 export class TypographyPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ css(pageStyles.basePage, styles.typographyPage) }>
         <PageHeader
           pageTitle='Typography'
           links={
@@ -39,7 +42,7 @@ export class TypographyPage extends React.Component<any, any> {
         <Table responsive={ true } content={ typeRampData } />
 
         <div className={ pageStyles.u_maxTextWidth }>
-          <p>To provide flexibility, text color is not included in these base classes. We recommend using 'neutral primary' for most text on white backgrounds. See the <a href='#/styles/colors'>color documentation</a> for guidance.</p>
+          <p>To provide flexibility, text color is not included in these base classes. We recommend using 'neutral primary' for most text on white backgrounds. See the <a className={ styles.typographyPageLink } href='#/styles/colors'>color documentation</a> for guidance.</p>
         </div>
         <h2 id='size'>Size classes</h2>
         <p>To set the text size independent of the weight, use a size class.</p>

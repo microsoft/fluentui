@@ -1,15 +1,12 @@
 import * as React from 'react';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
+import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 
 import * as stylesImport from './ChoiceGroup.Custom.Example.scss';
 const styles: any = stylesImport;
 
-export class ChoiceGroupCustomExample extends React.Component<any, any> {
-  constructor() {
-    super();
-  }
+export class ChoiceGroupCustomExample extends React.Component {
 
   public render() {
     return (
@@ -23,7 +20,7 @@ export class ChoiceGroupCustomExample extends React.Component<any, any> {
               onRenderField: (props, render) => {
                 return (
                   <div className={ css(styles.root) }>
-                    { render(props) }
+                    { render!(props) }
                     <Dropdown
                       className={ css(styles.dropdown) }
                       defaultSelectedKey='A'
@@ -63,8 +60,7 @@ export class ChoiceGroupCustomExample extends React.Component<any, any> {
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLInputElement>, option: any) {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
     console.dir(option);
   }
 }

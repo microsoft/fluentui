@@ -4,7 +4,7 @@ import {
   Facepile,
   OverflowButtonType,
 } from 'office-ui-fabric-react/lib/Facepile';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
@@ -26,9 +26,10 @@ export interface IFacepileOverflowExampleState {
   overflowButtonType: OverflowButtonType;
 }
 
-export class FacepileOverflowExample extends React.Component<any, IFacepileOverflowExampleState> {
-  public constructor() {
-    super();
+export class FacepileOverflowExample extends React.Component<{}, IFacepileOverflowExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       displayedPersonas: 5,
@@ -37,44 +38,53 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
   }
 
   public render() {
-    let { displayedPersonas, overflowButtonType } = this.state;
+    const { displayedPersonas, overflowButtonType } = this.state;
     facepileProps.maxDisplayablePersonas = displayedPersonas;
     facepileProps.overflowButtonType = overflowButtonType;
 
     return (
       <div className={ 'ms-FacepileExample' }>
-        <Facepile {...facepileProps} />
+        <Facepile { ...facepileProps } />
         <div className={ 'control' }>
           <Slider
-            label='Number of Personas Shown:'
-            min={ 0 }
-            max={ 6 }
+            label='Number of Personas:'
+            min={ 1 }
+            max={ 5 }
             step={ 1 }
             showValue={ true }
             value={ this.state.displayedPersonas }
-            onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-              prevState.displayedPersonas = value;
-              return prevState;
-            }) }
+            onChange={ this._onChangePersonaNumber }
+          />
+          <Dropdown
+            label='Overflow Button Type:'
+            selectedKey={ this.state.overflowButtonType }
+            options={
+              [
+                { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
+                { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
+                { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
+                { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
+              ]
+            }
+            onChanged={ this._onChangeType
+            }
           />
         </div>
-        <Dropdown
-          label='Overflow Type:'
-          selectedKey={ this.state.overflowButtonType }
-          options={
-            [
-              { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
-              { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
-              { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
-              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
-            ]
-          }
-          onChanged={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-            prevState.overflowButtonType = value.key as OverflowButtonType;
-            return prevState;
-          }) }
-        />
       </div>
     );
+  }
+
+  private _onChangePersonaNumber = (value: number): void => {
+    this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
+      prevState.displayedPersonas = value;
+      return prevState;
+    });
+  }
+
+  private _onChangeType = (value: IDropdownOption): void => {
+    this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
+      prevState.overflowButtonType = value.key as OverflowButtonType;
+      return prevState;
+    });
   }
 }

@@ -1,18 +1,23 @@
 import * as React from 'react';
-import * as hljs from 'highlight.js/lib/highlight';
+import { registerLanguage, highlightBlock } from 'highlight.js';
 import * as javascript from 'highlight.js/lib/languages/javascript';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { createRef } from '@uifabric/utilities/lib/createRef';
 
-hljs.registerLanguage('javascript', javascript);
+registerLanguage('javascript', javascript);
 
-export class Highlight extends BaseComponent<React.HTMLProps<HTMLDivElement>, {}> {
-  private _codeElement: HTMLElement;
+export interface IHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: () => void;
+}
 
-  public render() {
+export class Highlight extends BaseComponent<IHighlightProps, {}> {
+  private _codeElement = createRef<HTMLElement>();
+
+  public render(): JSX.Element {
     return (
       <pre>
         <code
-          ref={ this._resolveRef('_codeElement') }
+          ref={ this._codeElement }
           className='javascript'
         >
           { this.props.children }
@@ -21,11 +26,13 @@ export class Highlight extends BaseComponent<React.HTMLProps<HTMLDivElement>, {}
     );
   }
 
-  public shouldComponentUpdate() {
+  public shouldComponentUpdate(): boolean {
     return false;
   }
 
-  public componentDidMount() {
-    hljs.highlightBlock(this._codeElement);
+  public componentDidMount(): void {
+    if (this._codeElement.value) {
+      highlightBlock(this._codeElement.value);
+    }
   }
 }

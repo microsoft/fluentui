@@ -1,11 +1,38 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { ITodoFormProps, ITodoFormState } from '../types/index';
-import * as stylesImport from './Todo.module.scss';
+import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
+import * as stylesImport from './Todo.scss';
 const styles: any = stylesImport;
 import strings from './../strings';
+
+/**
+ * Props for TodoForm component.
+ */
+export interface ITodoFormProps extends IBaseProps {
+  /**
+   * onSubmit callback triggered when the is submitted.
+   * Either triggered by clicking on add button or pressed Enter key in input field.
+   *
+   * @params {string} title represents the value in input box when submitting.
+   */
+  onSubmit: (title: string) => void;
+}
+
+/**
+ * States for TodoForm component.
+ */
+export interface ITodoFormState {
+  /**
+   * inputValue is the react state of input box value.
+   */
+  inputValue: string;
+
+  /**
+   * The error message will show below the input box if the title filled in is invalid.
+   */
+  errorMessage: string;
+}
 
 /**
  * The form component used for adding new item to the list. It uses fabric-react components
@@ -14,8 +41,8 @@ import strings from './../strings';
  * TextField: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/textfield
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
-export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormState> {
-  private _textField: TextField;
+export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormState> {
+  private _textField = createRef<ITextField>();
 
   constructor(props: ITodoFormProps) {
     super(props);
@@ -35,7 +62,7 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
         <TextField
           className={ styles.textField }
           value={ this.state.inputValue }
-          ref={ ref => this._textField = ref }
+          componentRef={ this._textField }
           placeholder={ strings.inputBoxPlaceholder }
           onBeforeChange={ this._onBeforeTextFieldChange }
           autoComplete='off'
@@ -51,22 +78,26 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
     );
   }
 
-  @autobind
-  private _onSubmit(event: React.FormEvent<HTMLElement>): void {
+  private _onSubmit = (event: React.FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    if (!this._getTitleErrorMessage(this._textField.value)) {
+    const { value: textField } = this._textField;
+    if (!textField) {
+      return;
+    }
+
+    if (!this._getTitleErrorMessage(textField.value || '')) {
       this.setState({
         inputValue: ''
       } as ITodoFormState);
 
-      this.props.onSubmit(this._textField.value);
+      this.props.onSubmit(textField.value || '');
     } else {
       this.setState({
         errorMessage: this._getTitleErrorMessage(this.state.inputValue)
       } as ITodoFormState);
 
-      this._textField.focus();
+      textField.focus();
     }
   }
 

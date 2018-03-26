@@ -6,10 +6,16 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { BreadcrumbStatus } from './Breadcrumb.checklist';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
+import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 
 const BreadcrumbBasicExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx'
+) as string;
+const BreadcrumbStaticExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx'
 ) as string;
 
 export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
@@ -19,16 +25,25 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         title='Breadcrumb'
         componentName='BreadcrumbExample'
         exampleCards={
-          <ExampleCard
-            title='Simple breadcrumb'
-            code={ BreadcrumbBasicExampleCode }>
-            <BreadcrumbBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard
+              title='Default Breadcrumb'
+              code={ BreadcrumbBasicExampleCode }
+            >
+              <BreadcrumbBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Breadcrumb with static width '
+              code={ BreadcrumbStaticExampleCode }
+            >
+              <BreadcrumbStaticExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/Breadcrumb.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/Breadcrumb.types.ts')
             ] }
           />
         }
@@ -38,11 +53,8 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             <p>Breadcrumbs are typically placed, in horizontal form, under the masthead or navigation of an experience, above the primary content area.</p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Breadcrumb/Breadcrumb.html'>Fabric JS</a>
-        }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -58,8 +70,13 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...BreadcrumbStatus}
+          />
+        }
+      />
     );
   }
 }

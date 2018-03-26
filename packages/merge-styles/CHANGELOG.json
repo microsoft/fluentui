@@ -1,0 +1,376 @@
+{
+  "name": "@uifabric/merge-styles",
+  "entries": [
+    {
+      "version": "5.14.0",
+      "tag": "@uifabric/merge-styles_v5.14.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.13.0",
+      "tag": "@uifabric/merge-styles_v5.13.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.2",
+      "tag": "@uifabric/merge-styles_v5.12.2",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "51d47a80898d9834d40205274268e60730f306a1",
+            "comment": "Adding test coverage for media queries."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.1",
+      "tag": "@uifabric/merge-styles_v5.12.1",
+      "date": "Fri, 16 Feb 2018 11:23:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "04bd4051d81e68f7b007009e85b50665d4b9db4e",
+            "comment": "mergeStyles: setting `fill-opacity` as unitless."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.0",
+      "tag": "@uifabric/merge-styles_v5.12.0",
+      "date": "Wed, 14 Feb 2018 22:10:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "711ef243d0212f623a55ebde0d98042f148d81db",
+            "comment": "mergeStyles: Adding support to register selectors globally. Use `:global(rule)` as the selector to ensure that the unique className is not prepended in the output. See merge-styles README.md for more details."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.2",
+      "tag": "@uifabric/merge-styles_v5.11.2",
+      "date": "Wed, 07 Feb 2018 11:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d121208b61c93811909fb69d2ba8d104c3531769",
+            "comment": "Adjusting rtl flipping logic to be more resilient to invalid styling."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.1",
+      "tag": "@uifabric/merge-styles_v5.11.1",
+      "date": "Tue, 06 Feb 2018 11:14:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "857b101451a04bb20ee88d08b36511485939005d",
+            "comment": "[provideUnits] Add line-height to ignore"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.0",
+      "tag": "@uifabric/merge-styles_v5.11.0",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "a2864f8c6d0fc2b271c952b9929767ed760660ab",
+            "comment": "Change maxHeight/maxFontSize to CSSPixelUnitRule (number and string)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.1",
+      "tag": "@uifabric/merge-styles_v5.10.1",
+      "date": "Wed, 17 Jan 2018 11:11:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "3a3877323f5a0b1a9d9d7bb74d4a649802aa9bc0",
+            "comment": "Fix styles with undefined values being added to document (#3700)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.0",
+      "tag": "@uifabric/merge-styles_v5.10.0",
+      "date": "Thu, 28 Dec 2017 11:23:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jakob Werner <jaxxx_w@yahoo.com>",
+            "commit": "e5c7d91dff4a37f5d6dabe3ac461afd644804d37",
+            "comment": "Added a setting to Stylesheet which allows overriding the default prefix"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.9.0",
+      "tag": "@uifabric/merge-styles_v5.9.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.8.1",
+      "tag": "@uifabric/merge-styles_v5.8.1",
+      "date": "Mon, 11 Dec 2017 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a1c3530c60b1b1b90de33fb917d0f668f1055525",
+            "comment": "Fixing issues where child variables in selectors would not expand correctly. Also fixing a case where the same static class registered in two different sets will not show up multiple times in the result from `mergeStyleSets`."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.8.0",
+      "tag": "@uifabric/merge-styles_v5.8.0",
+      "date": "Fri, 01 Dec 2017 11:11:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "df00b312271aff8c1b662b593caf1724271210d4",
+            "comment": "Adding `onInsertNode` callback and adjusting appendChild method for injecting styles to not cause flashes."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/merge-styles_v5.7.0",
+      "date": "Wed, 29 Nov 2017 11:24:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a6ef94b3edb7679d7659ec0d51e199139102d28c",
+            "comment": "Updating TypeScript to 2.6.2."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/merge-styles_v5.6.0",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "696cd19b230f855f071f766c27c0066eb15d8109",
+            "comment": "Adding the ability to append style content rather than inject using insertRule, for special cases."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.1",
+      "tag": "@uifabric/merge-styles_v5.5.1",
+      "date": "Thu, 02 Nov 2017 18:20:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "stephenzsy <stephen.zsy@gmail.com>",
+            "commit": "5e58d5a68692b2fcef119444fb52361b51118b1f",
+            "comment": "When selectors use previously registered class names as values, they are now correctly auto expanded."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/merge-styles_v5.5.0",
+      "date": "Tue, 24 Oct 2017 10:21:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ea31239988130fe5750af706893dc3676b0cce06",
+            "comment": "Adding `stroke` css property to typings."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.2",
+      "tag": "@uifabric/merge-styles_v5.4.2",
+      "date": "Fri, 20 Oct 2017 18:42:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "74e329e01e32d23b5669c469fe7e4c4a2b4eee89",
+            "comment": "Calling `mergeStyles` with strings containing space delimited class names was not expanding merge-styles generated class names in the final merge. Fixed so that it does."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.1",
+      "tag": "@uifabric/merge-styles_v5.4.1",
+      "date": "Tue, 17 Oct 2017 17:17:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ab9e5db6f06d9f52c648281cd97bbbce4cf9fa77",
+            "comment": "mergeStyles: in RTL we were seeing exceptions with registering opacity: 0 in keyframes. This has been addressed and a test has been added to cover the case."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "@uifabric/merge-styles_v5.4.0",
+      "date": "Fri, 13 Oct 2017 04:00:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2b318265a85acf7d858bcd5b161641e6c2d7c07a",
+            "comment": "Adding data-merge-styles attribute to the style element so that it can be uniquely identified."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2b318265a85acf7d858bcd5b161641e6c2d7c07a",
+            "comment": "Fixes to support media queries."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.3",
+      "tag": "@uifabric/merge-styles_v5.3.3",
+      "date": "Fri, 13 Oct 2017 01:36:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1c74d9f0c7d7af5edada08e69e0d71968c90f13f",
+            "comment": "Adding data-merge-styles attribute to the style element so that it can be uniquely identified."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.2",
+      "tag": "@uifabric/merge-styles_v5.3.2",
+      "date": "Mon, 09 Oct 2017 10:08:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "71ff33573d03e3cdefc2ba2c5410711be6e2ee09",
+            "comment": "Add test for autoexpand"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.1",
+      "tag": "@uifabric/merge-styles_v5.3.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.0",
+      "tag": "@uifabric/merge-styles_v5.3.0",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f95fa74185b6faaf278fdc0a78e72635bcc3ec48",
+            "comment": "Adding selector support to target child class names that were generated in the same mergeStyleSets set."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/merge-styles_v5.2.0",
+      "date": "Sat, 30 Sep 2017 01:26:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4ef41283e7667631964dd6cf973534fab4cbb1fa",
+            "comment": "Found that adding `false` to the list of accepted typings in `mergeStyleSets` was breaking type safety. Removed it."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/merge-styles_v5.1.0",
+      "date": "Fri, 29 Sep 2017 10:20:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "88b06cfda2262661375f90f3bde2d6a16af749a9",
+            "comment": "The `mergeStyleSets` method's type safety was not correct. Now with significantly better type safety."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 export * from './Tooltip';
-export * from './Tooltip.Props';
+export * from './Tooltip.types';
 export * from './TooltipHost';
-export * from './TooltipHost.Props';
+export * from './TooltipHost.types';
 export * from '../../common/DirectionalHint';

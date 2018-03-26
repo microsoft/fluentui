@@ -28,6 +28,9 @@
     position: relative;
     top: -2px;
     height: 40px;
+    @include high-contrast {
+      display: none;
+    }
 }
 
 /* Require update when office-ui-fabric-react changes to CSS modules */

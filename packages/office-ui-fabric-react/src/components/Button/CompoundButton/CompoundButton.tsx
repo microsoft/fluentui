@@ -1,24 +1,10 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { BaseComponent } from '../../../Utilities';
-import { IButtonProps } from '../Button.Props';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable } from '../../../Utilities';
+import { IButtonProps } from '../Button.types';
+import { getStyles } from './CompoundButton.styles';
 
-import * as stylesImport from './CompoundButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--compound',
-  description: styles.description,
-  flexContainer: styles.flexContainer,
-  icon: null,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  isToggled: styles.isToggled,
-  label: styles.label,
-  root: styles.root
-};
-
+@customizable('CompoundButton', ['theme'])
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
@@ -26,10 +12,12 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
+    const { primary = false, styles, theme } = this.props;
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
         { ...this.props }
+        variantClassName={ primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound' }
+        styles={ getStyles(theme!, styles, primary) }
       />
     );
   }

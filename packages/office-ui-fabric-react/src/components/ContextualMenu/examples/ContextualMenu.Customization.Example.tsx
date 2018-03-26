@@ -1,63 +1,28 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
-export interface IContextualMenuMultiselectExampleState {
-  selection?: { [key: string]: boolean };
-  isContextMenuVisible?: boolean;
-}
-
-export class ContextualMenuCustomizationExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
-
-  constructor() {
-    super();
-    this._onClick = this._onClick.bind(this);
-    this._onDismiss = this._onDismiss.bind(this);
-    this.state = {
-      selection: {},
-      isContextMenuVisible: false
-    };
-  }
-
+export class ContextualMenuCustomizationExample extends React.Component<{}, {}> {
   public render() {
     return (
-      <div>
-        <DefaultButton
-          onClick={ this._onClick }
-          className='ContextualMenuButton3'
-          text='Click for ContextualMenu'
-        />
-        { this.state.isContextMenuVisible ? (
-          <ContextualMenu
-            target='.ContextualMenuButton3'
-            shouldFocusOnMount={ false }
-            onDismiss={ this._onDismiss }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            className='ms-ContextualMenu-customizationExample'
-            items={
+      <DefaultButton
+        className='ContextualMenuButton3'
+        text='Click for ContextualMenu'
+        menuProps={
+          {
+            shouldFocusOnMount: true,
+            directionalHint: DirectionalHint.bottomLeftEdge,
+            className: 'ms-ContextualMenu-customizationExample',
+            items:
               [
                 {
                   key: 'newItem',
-                  icon: 'Add',
-                  subMenuProps: {
-                    items: [
-                      {
-                        key: 'emailMessage',
-                        name: 'Email message',
-                      },
-                      {
-                        key: 'calendarEvent',
-                        name: 'Calendar event',
-                      }
-                    ],
-                  },
                   name: 'New'
                 },
                 {
                   key: 'upload',
-                  icon: 'Upload',
                   name: 'Upload'
                 },
                 {
@@ -214,18 +179,20 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                   },
                 }
               ]
-            }
-          />) : null }
-      </div>
+          }
+        }
+
+      />
     );
   }
 
-  private _renderCharmMenuItem(item: any) {
+  private _renderCharmMenuItem = (item: any, dismissMenu: () => void): JSX.Element => {
     return (
       <IconButton
         iconProps={ { iconName: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
+        onClick={ dismissMenu }
       />
     );
   }
@@ -234,29 +201,21 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
     return (
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>
-          { item.categoryList.map(category =>
-            <button className='ms-ContextualMenu-link' role='menuitem'>
+          { item.categoryList.map((category: any) =>
+            <DefaultButton className='ms-ContextualMenu-link ms-ContextualMenu-customizationExample-button' role='menuitem' key={ category.name }>
               <div>
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
-                  style={ { backgroundColor: category.color } } />
-                <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>
+                  style={ { backgroundColor: category.color } }
+                />
+                <span className='ms-ContextualMenu-itemText'>
                   { category.name }
                 </span>
               </div>
-            </button>
+            </DefaultButton>
           ) }
         </li>
       </ul>
     );
   }
-
-  private _onClick(event: any) {
-    this.setState({ isContextMenuVisible: true });
-  }
-
-  private _onDismiss(event: any) {
-    this.setState({ isContextMenuVisible: false });
-  }
-
 }

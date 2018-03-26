@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List renders List correctly 1`] = `
+<div
+  className="ms-List"
+  role="list"
+>
+  <div
+    className="ms-List-surface"
+    role="presentation"
+  />
+</div>
+`;

@@ -18,8 +18,9 @@ export enum ExampleStatus {
 }
 
 export interface IAppLink extends INavLink {
+  // tslint:disable-next-line:no-any
   getComponent?: (cb: (obj: any) => void) => any;
-  component?: any;
+  component?: React.ComponentClass | (() => JSX.Element);
 }
 
 export interface IAppLinkGroup extends INavLinkGroup {
@@ -35,7 +36,7 @@ export interface IAppDefinition {
 
 export interface IAppProps extends React.Props<App> {
   responsiveMode?: ResponsiveMode;
-  appDefinition?: IAppDefinition;
+  appDefinition: IAppDefinition;
 }
 
 export interface IAppState {
@@ -43,7 +44,7 @@ export interface IAppState {
 }
 
 @withResponsiveMode
-export class App extends React.Component<IAppProps, any> {
+export class App extends React.Component<IAppProps, IAppState> {
 
   constructor(props: IAppProps) {
     super(props);
@@ -51,22 +52,21 @@ export class App extends React.Component<IAppProps, any> {
     this.state = {
       isMenuVisible: false
     };
-
-    this._onIsMenuVisibleChanged = this._onIsMenuVisibleChanged.bind(this);
-    this._onLinkClick = this._onLinkClick.bind(this);
   }
 
-  public render() {
-    let { responsiveMode, appDefinition } = this.props;
+  public render(): JSX.Element {
+    let { appDefinition, responsiveMode } = this.props;
     let { isMenuVisible } = this.state;
 
+    if (responsiveMode === undefined) {
+      responsiveMode = ResponsiveMode.large;
+    }
+
     let navPanel = (
-      <Nav groups={ appDefinition.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={ (link) => ([
-        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
-        (link.status !== undefined ?
-          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
-          null)
-      ]) }
+      <Nav
+        groups={ appDefinition.examplePages }
+        onLinkClick={ this._onLinkClick }
+        onRenderLink={ this._onRenderLink }
       />
     );
 
@@ -94,11 +94,12 @@ export class App extends React.Component<IAppProps, any> {
 
         { (responsiveMode <= ResponsiveMode.large) ? (
           <Panel
-            className='ms-App-navPanel ms-font-m'
+            className='ms-App-navPanel'
             isOpen={ isMenuVisible }
             isLightDismiss={ true }
             type={ PanelType.smallFixedNear }
-            onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }>
+            onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }
+          >
             { navPanel }
           </Panel>
         ) : (null) }
@@ -106,11 +107,23 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
-  private _onIsMenuVisibleChanged(isMenuVisible: boolean) {
+  private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
     this.setState({ isMenuVisible });
   }
 
-  private _onLinkClick() {
+  private _onLinkClick = (): void => {
     this.setState({ isMenuVisible: false });
+  }
+
+  // tslint:disable-next-line:no-any
+  private _onRenderLink = (link: INavLink): any => {
+    return (
+      [
+        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
+        (link.status !== undefined ?
+          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
+          null)
+      ]
+    );
   }
 }

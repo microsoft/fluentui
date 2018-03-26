@@ -2,10 +2,11 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  getId
+  getId,
+  createRef
 } from '../../Utilities';
-import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IModalProps } from './Modal.Props';
+import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
+import { IModalProps, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
@@ -23,7 +24,7 @@ export interface IDialogState {
 }
 
 @withResponsiveMode
-export class Modal extends BaseComponent<IModalProps, IDialogState> {
+export class Modal extends BaseComponent<IModalProps, IDialogState> implements IModal {
 
   public static defaultProps: IModalProps = {
     isOpen: false,
@@ -34,6 +35,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
   };
 
   private _onModalCloseTimer: number;
+  private _focusTrapZone = createRef<IFocusTrapZone>();
 
   constructor(props: IModalProps) {
     super(props);
@@ -79,8 +81,8 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     }
   }
 
-  public render() {
-    let {
+  public render(): JSX.Element | null {
+    const {
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -94,19 +96,22 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
       titleAriaId,
       subtitleAriaId,
     } = this.props;
-    let { id, isOpen, isVisible } = this.state;
+    const { isOpen, isVisible } = this.state;
 
-    const modalClassName = css('ms-Dialog', styles.root, this.props.className, {
-      ['is-open']: isOpen,
-      [styles.rootIsVisible]: isVisible,
-    });
+    const modalClassName = css(
+      'ms-Modal',
+      styles.root,
+      this.props.className,
+      !!isOpen && 'is-open',
+      !!isVisible && styles.rootIsVisible
+    );
 
     if (!isOpen) {
       return null;
     }
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
-    if (responsiveMode >= ResponsiveMode.small) {
+    if (responsiveMode! >= ResponsiveMode.small) {
       return (
         <Layer onLayerDidMount={ onLayerDidMount }>
           <Popup
@@ -116,20 +121,29 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
             onDismiss={ onDismiss }
           >
             <div className={ modalClassName }>
-              <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
+              <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? undefined : (onDismiss as any) } />
               <FocusTrapZone
+                componentRef={ this._focusTrapZone }
                 className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
                 elementToFocusOnDismiss={ elementToFocusOnDismiss }
                 isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
                 ignoreExternalFocusing={ ignoreExternalFocusing }
                 forceFocusInsideTrap={ forceFocusInsideTrap }
-                firstFocusableSelector={ firstFocusableSelector }>
+                firstFocusableSelector={ firstFocusableSelector }
+              >
                 { this.props.children }
               </FocusTrapZone>
             </div>
           </Popup>
         </Layer>
       );
+    }
+    return null;
+  }
+
+  public focus() {
+    if (this._focusTrapZone.value) {
+      this._focusTrapZone.value.focus();
     }
   }
 

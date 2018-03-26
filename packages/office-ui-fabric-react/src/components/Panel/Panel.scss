@@ -25,8 +25,11 @@ $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
 $CommandBarHeight: 44px;
 
+.hiddenPanel {
+  visibility: hidden;
+}
+
 .root {
-  display: none;
   pointer-events: none;
 
   position: absolute;
@@ -38,11 +41,10 @@ $CommandBarHeight: 44px;
 
   // Overlay used within panel
   .overlay {
-    display: none;
     pointer-events: none;
     opacity: 1;
     cursor: pointer;
-    transition: opacity $ms-duration3 $ms-ease1;
+    transition: opacity $ms-animation-duration-3 $ms-animation-ease-1;
   }
 }
 
@@ -51,25 +53,23 @@ $CommandBarHeight: 44px;
   background-color: $ms-color-white;
 
   position: absolute;
-  @include right(0);
+  @include ms-right(0);
   width: 100%;
   bottom: 0;
   top: 0;
-
-  display: none;
 
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   // Medium screens and up - (anchored right, fixed width)
-  @media (min-width: $ms-screen-md-min) {
+  @media (min-width: $ms-screen-min-md) {
     border-left: 1px solid $ms-color-neutralLight;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
     width: $Panel-width-sm;
-    @include drop-shadow(-30px, 0px, 30px, -30px, .2);
-    @include left(auto);
+    @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
+    @include ms-left(auto);
   }
 }
 
@@ -79,7 +79,7 @@ $CommandBarHeight: 44px;
   .main {
     width: $Panel-width-xs;
 
-    @media (min-width: $ms-screen-md-min) {
+    @media (min-width: $ms-screen-min-md) {
       width: $Panel-width-sm;
     }
   }
@@ -89,10 +89,10 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsSmallLeft {
   .main {
-    @include right(auto);
-    @include left(0);
+    @include ms-right(auto);
+    @include ms-left(0);
     width: $Panel-width-xs;
-    @include drop-shadow(30px, 0px, 30px, -30px, .2);
+    @include ms-drop-shadow(30px, 0px, 30px, -30px, .2);
   }
 }
 
@@ -112,8 +112,8 @@ $CommandBarHeight: 44px;
 .root.rootIsXLarge,
 .root.rootIsCustom {
   .main {
-    @media (min-width: $ms-screen-lg-min) {
-      @include left($Panel-margin-md);
+    @media (min-width: $uhf-screen-min-mobile) {
+      @include ms-left($Panel-margin-md);
       width: auto;
     }
   }
@@ -123,8 +123,8 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsMedium {
   .main {
-    @media (min-width: $ms-screen-xl-min) {
-      @include left(auto);
+    @media (min-width: $ms-screen-min-xl) {
+      @include ms-left(auto);
       width: $Panel-width-md;
     }
   }
@@ -134,8 +134,8 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsLarge {
   .main {
-    @media (min-width: $ms-screen-xxl-min) {
-      @include left($Panel-margin-lg);
+    @media (min-width: $ms-screen-min-xxl) {
+      @include ms-left($Panel-margin-lg);
     }
   }
 }
@@ -144,8 +144,8 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsLarge.rootIsFixed {
   .main {
-    @media (min-width: $ms-screen-xxl-min) {
-      @include left(auto);
+    @media (min-width: $ms-screen-min-xxl) {
+      @include ms-left(auto);
       width: $Panel-width-lg;
     }
   }
@@ -155,8 +155,8 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsXLarge {
   .main {
-    @media (min-width: $ms-screen-xxl-min) {
-      @include left($Panel-margin-xl);
+    @media (min-width: $ms-screen-min-xxl) {
+      @include ms-left($Panel-margin-xl);
     }
   }
 }
@@ -165,8 +165,8 @@ $CommandBarHeight: 44px;
 //
 .root.rootIsCustom {
   .main {
-    @media (min-width: $ms-screen-xl-min) {
-      @include left(auto);
+    @media (min-width: $ms-screen-min-xl) {
+      @include ms-left(auto);
     }
   }
 }
@@ -174,41 +174,25 @@ $CommandBarHeight: 44px;
 //== State: When the panel is open.
 //
 .root.rootIsOpen {
-  display: block;
-
   .main {
-    opacity: 1;
     pointer-events: auto;
-    display: block;
   }
 
   .overlay {
     cursor: pointer;
-    display: block;
     pointer-events: auto;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       opacity: 0;
     }
   }
 }
 
-// The button in the top right (x)
-.closeButton {
-  @include button-reset();
-  position: absolute;
-  @include right(4px);
-  top: 0;
+.navigation {
+  padding: 0 5px;
   height: $CommandBarHeight;
-  width: $CommandBarHeight;
-  line-height: $CommandBarHeight;
-  padding: 0;
-  color: $ms-color-neutralSecondary;
-  font-size: $ms-icon-size-l;
-
-  &:hover {
-    color: $ms-color-neutralPrimary;
-  }
+  display: flex;
+  justify-content: flex-end;
 }
 
 // Scrollable content area
@@ -235,12 +219,12 @@ $CommandBarHeight: 44px;
   padding-left: 16px;
   padding-right: 16px;
 
-  @media (min-width: $ms-screen-lg-min) {
+  @media (min-width: $uhf-screen-min-mobile) {
     padding-left: 32px;
     padding-right: 32px;
   }
 
-  @media (min-width: $ms-screen-xxl-min) {
+  @media (min-width: $ms-screen-min-xxl) {
     padding-left: 40px;
     padding-right: 40px;
   }
@@ -250,21 +234,26 @@ $CommandBarHeight: 44px;
   margin: 14px 0;
   // Ensure that title doesn't shrink if screen is too small
   flex-grow: 0;
-  @media (min-width: $ms-screen-xl-min) {
+  @media (min-width: $ms-screen-min-xl) {
     margin-top: 30px;
   }
 }
 
 .content {
   margin-bottom: 0;
+  padding-bottom: 20px;
   overflow-y: auto;
+}
+
+.contentGrow {
+  flex-grow: 1;
 }
 
 .footer {
   // Ensure that footer doesn't shrink if screen is too small
   flex-grow: 0;
   border-top: 1px solid transparent;
-  transition: border $ms-duration3 $ms-ease2;
+  transition: border $ms-animation-duration-3 $ms-animation-ease-2;
 }
 
 .footerInner {

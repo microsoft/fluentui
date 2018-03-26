@@ -2,8 +2,15 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  css
+  customizable,
+  getNativeProps,
+  divProperties,
+  createRef
 } from '../../Utilities';
+import {
+  ITheme
+} from '../../Styling';
+import { getClassNames } from './Fabric.classNames';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,
@@ -17,27 +24,30 @@ const DIRECTIONAL_KEY_CODES = [
   KeyCodes.pageDown
 ];
 
+export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: () => void;
+  theme?: ITheme;
+}
 export interface IFabricState {
   isFocusVisible?: boolean;
 }
 
 // We will track the last focus visibility state so that if we tear down and recreate
 // the Fabric component, we will use the last known value as the default.
-let _lastIsFocusVisible: boolean = false;
+let _lastIsFocusVisible = false;
 
 // Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
 if (typeof (document) === 'object' && document.documentElement && !document.documentElement.getAttribute('dir')) {
   document.documentElement.setAttribute('dir', 'ltr');
 }
 
-export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabricState> {
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
+@customizable('Fabric', ['theme'])
+export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
+  // tslint:disable-next-line:no-unused-variable
+  private _root = createRef<HTMLDivElement>();
 
-  constructor() {
-    super();
+  constructor(props: IFabricProps) {
+    super(props);
 
     this.state = {
       isFocusVisible: _lastIsFocusVisible
@@ -51,12 +61,21 @@ export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabr
 
   public render() {
     const { isFocusVisible } = this.state;
-    const rootClass = css('ms-Fabric ms-font-m', this.props.className, {
-      'is-focusVisible': isFocusVisible
-    });
+    const { className } = this.props;
 
+    const classNames = getClassNames(
+      this.props.theme!,
+      className!,
+      isFocusVisible!
+    );
+
+    const divProps = getNativeProps(this.props, divProperties);
     return (
-      <div { ...this.props } className={ rootClass } ref='root' />
+      <div
+        { ...divProps }
+        className={ classNames.root }
+        ref={ this._root }
+      />
     );
   }
 

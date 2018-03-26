@@ -2,10 +2,12 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelLightDismissExample extends React.Component<any, any> {
+export class PanelLightDismissExample extends React.Component<{}, {
+  showPanel: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = { showPanel: false };
   }
@@ -15,17 +17,25 @@ export class PanelLightDismissExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           text='Open panel'
-          onClick={ () => this.setState({ showPanel: true }) }
+          onClick={ this._showPanel }
         />
         <Panel
           isOpen={ this.state.showPanel }
           isLightDismiss={ true }
           headerText='Light Dismiss Panel'
-          onDismiss={ () => this.setState({ showPanel: false }) }
+          onDismiss={ this._hidePanel }
         >
-          <span className='ms-font-m'>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
+          <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
         </Panel>
       </div>
     );
+  }
+
+  private _showPanel = (): void => {
+    this.setState({ showPanel: true });
+  }
+
+  private _hidePanel = (): void => {
+    this.setState({ showPanel: false });
   }
 }

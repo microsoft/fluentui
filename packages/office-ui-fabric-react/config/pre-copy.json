@@ -1,0 +1,13 @@
+{
+  "copyTo": {
+    "dist": [
+      "index.html"
+    ],
+    "dist/sass": [
+      "node_modules/office-ui-fabric-core/dist/sass/**/*"
+    ],
+    "dist/css": [
+      "node_modules/office-ui-fabric-core/dist/css/**/*"
+    ]
+  }
+}

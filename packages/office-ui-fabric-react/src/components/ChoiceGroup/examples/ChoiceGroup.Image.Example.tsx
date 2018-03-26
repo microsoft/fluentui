@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { TestImages } from '../../../common/TestImages';
 
 /**
@@ -10,9 +9,9 @@ export interface IChoiceGroupImageExampleState {
   selectedKey: string;
 }
 
-export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupImageExampleState> {
-  constructor() {
-    super();
+export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupImageExampleState> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       selectedKey: 'bar'
@@ -22,7 +21,7 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
   }
 
   public render() {
-    let { selectedKey } = this.state;
+    const { selectedKey } = this.state;
 
     return (
       <div>
@@ -33,9 +32,10 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
             {
               key: 'bar',
               imageSrc: TestImages.choiceGroupBarUnselected,
+              imageAlt: 'Bar chart icon',
               selectedImageSrc: TestImages.choiceGroupBarSelected,
               imageSize: { width: 32, height: 32 },
-              text: 'Bar chart'
+              text: 'Clustered bar chart' // This text is long to show text wrapping.
             },
             {
               key: 'pie',

@@ -1,12 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  BaseComponent,
-  css,
-  getId
-} from '../../Utilities';
-import { ITeachingBubbleProps } from './TeachingBubble.Props';
+import { BaseComponent, css } from '../../Utilities';
+import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
@@ -25,20 +21,15 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
   };
 
-  // Specify any private variables
-  private _id: string;
-
-  // Constructor
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
-    this._id = getId('TeachingBubble');
     this.state = {
     };
   }
 
   public render() {
-    let { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel } = this.props;
+    const { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline } = this.props;
 
     let imageContent;
     let headerContent;
@@ -48,7 +39,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
-        <div className={ 'ms-TeachingBubble-header' }>
+        <div className={ 'ms-TeachingBubble-header ms-TeachingBubble-image' }>
           <Image { ...illustrationImage as any } />
         </div>
       );
@@ -56,12 +47,16 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (headline) {
       headerContent = (
-        <div className={ css(
-          'ms-TeachingBubble-header',
-          hasCondensedHeadline ?
-            'ms-TeachingBubble-header--small ' + styles.headerIsSmall :
-            'ms-TeachingBubble-header--large ' + styles.headerIsLarge
-        ) }>
+        <div
+          className={ css(
+            'ms-TeachingBubble-header',
+            hasCondensedHeadline ?
+              'ms-TeachingBubble-header--condensed ' + styles.headerIsCondensed
+              : hasSmallHeadline
+                ? 'ms-TeachingBubble-header--small ' + styles.headerIsSmall
+                : 'ms-TeachingBubble-header--large ' + styles.headerIsLarge
+          ) }
+        >
           <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
             { headline }
           </p>

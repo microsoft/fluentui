@@ -1,22 +1,28 @@
 import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { BaseComponent, createRef } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
-import { DropdownMenuItemType } from './../Dropdown.Props';
 
-export class DropdownBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DropdownBasicExample extends BaseComponent<{}, {
+  selectedItem?: { key: string | number | undefined },
+  selectedItems: string[]
+}> {
+  private _basicDropdown = createRef<IDropdown>();
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
-      selectedItem: null
+      selectedItem: undefined,
+      selectedItems: [],
     };
   }
 
   public render() {
-    let { selectedItem } = this.state;
+    const { selectedItem, selectedItems } = this.state;
 
     return (
-      <div className='ms-DropdownBasicExample'>
-
+      <div className='docs-DropdownExample'>
         <Dropdown
           placeHolder='Select an Option'
           label='Basic uncontrolled example:'
@@ -27,11 +33,11 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
               { key: 'A', text: 'Option a' },
               { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
+              { key: 'C', text: 'Option c', disabled: true },
               { key: 'D', text: 'Option d' },
               { key: 'E', text: 'Option e' },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'Header', text: 'People', itemType: DropdownMenuItemType.Header },
+              { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
               { key: 'F', text: 'Option f' },
               { key: 'G', text: 'Option g' },
               { key: 'H', text: 'Option h' },
@@ -39,8 +45,14 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'J', text: 'Option j' },
             ]
           }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
+          componentRef={ this._basicDropdown }
         />
-
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._onSetFocusButtonClicked }
+        />
         <Dropdown
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
@@ -55,13 +67,18 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'G', text: 'Option g' },
             ]
           }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
           disabled={ true }
         />
 
         <Dropdown
           label='Controlled example:'
-          selectedKey={ selectedItem && selectedItem.key }
-          onChanged={ (item) => this.setState({ selectedItem: item }) }
+          selectedKey={ (selectedItem ? selectedItem.key : undefined) }
+          onChanged={ this.changeState }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
+          placeHolder='Select an Option'
           options={
             [
               { key: 'A', text: 'Option a' },
@@ -76,18 +93,116 @@ export class DropdownBasicExample extends React.Component<any, any> {
           }
         />
 
+        <Dropdown
+          placeHolder='Select options'
+          label='Multi-Select uncontrolled example:'
+          defaultSelectedKeys={ ['Apple', 'Banana', 'Orange'] }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
+          multiSelect
+          options={
+            [
+              { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
+              { key: 'Apple', text: 'apple' },
+              { key: 'Banana', text: 'banana' },
+              { key: 'Orange', text: 'orange', disabled: true },
+              { key: 'Grape', text: 'grape', disabled: true },
+              { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
+              { key: 'Header3', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
+              { key: 'English', text: 'english' },
+              { key: 'French', text: 'french' },
+              { key: 'Germany', text: 'germany' },
+            ]
+          }
+        />
+
+        <Dropdown
+          placeHolder='Select options'
+          label='Multi-Select controlled example:'
+          selectedKeys={ selectedItems }
+          onChanged={ this.onChangeMultiSelect }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
+          multiSelect
+          options={
+            [
+              { key: 'Header4', text: 'Colors', itemType: DropdownMenuItemType.Header },
+              { key: 'red', text: 'Red' },
+              { key: 'green', text: 'Green' },
+              { key: 'blue', text: 'Blue' },
+              { key: 'yellow', text: 'Yellow' },
+              { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
+              { key: 'Header5', text: 'Flower', itemType: DropdownMenuItemType.Header },
+              { key: 'rose', text: 'Rose' },
+              { key: 'lily', text: 'Lily' },
+              { key: 'sunflower', text: 'Sunflower' },
+            ]
+          }
+        />
+        <Dropdown
+          label='Disabled uncontrolled example with defaultSelectedKey:'
+          defaultSelectedKeys={ ['GG', 'FF'] }
+          multiSelect
+          options={
+            [
+              { key: 'AA', text: 'Option a' },
+              { key: 'BB', text: 'Option b' },
+              { key: 'CC', text: 'Option c' },
+              { key: 'DD', text: 'Option d' },
+              { key: 'EE', text: 'Option e' },
+              { key: 'FF', text: 'Option f' },
+              { key: 'GG', text: 'Option g' },
+            ]
+          }
+          disabled={ true }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
+        />
       </div>
 
     );
   }
 
-  public makeList(items) {
-    let list = [];
-    for (let i = 0; i < items; i++) {
-      list.push({ key: i, text: 'Option ' + i });
-    }
+  public changeState = (item: IDropdownOption): void => {
+    console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
+    this.setState({ selectedItem: item });
+  }
 
-    return list;
+  public onChangeMultiSelect = (item: IDropdownOption): void => {
+    const updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
+    if (item.selected) {
+      // add the option if it's checked
+      updatedSelectedItem.push(item.key);
+    } else {
+      // remove the option if it's unchecked
+      const currIndex = updatedSelectedItem.indexOf(item.key);
+      if (currIndex > -1) {
+        updatedSelectedItem.splice(currIndex, 1);
+      }
+    }
+    this.setState({
+      selectedItems: updatedSelectedItem
+    });
+  }
+
+  public copyArray = (array: any[]): any[] => {
+    const newArray: any[] = [];
+    for (let i = 0; i < array.length; i++) {
+      newArray[i] = array[i];
+    }
+    return newArray;
+  }
+
+  private _onSetFocusButtonClicked = (): void => {
+    if (this._basicDropdown.value) {
+      this._basicDropdown.value.focus(true);
+    }
+  }
+
+  private _log(str: string): () => void {
+    return (): void => {
+      console.log(str);
+    };
   }
 
 }

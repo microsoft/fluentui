@@ -1,32 +1,34 @@
 import * as React from 'react';
+import { css, classNamesFunction } from '../../../Utilities';
+import {
+  getStyles,
+  IButtonBasicExampleStyleProps,
+  IButtonBasicExampleStyles
+} from './Button.Basic.Example.styles';
 import {
   IButtonProps,
-  PrimaryButton
+  DefaultButton
 } from 'office-ui-fabric-react/lib/Button';
-import {
-  Label
-} from 'office-ui-fabric-react/lib/Label';
 
-export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
-
+export class ButtonAnchorExample extends React.Component<IButtonProps> {
   public render() {
-    let { disabled, toggled } = this.props;
+    const { disabled, checked } = this.props;
+
+    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+    const classNames = getClassNames(getStyles);
 
     return (
-      <div className='ms-BasicButtonsExample'>
-        <Label>Button like anchor</Label>
-        <PrimaryButton
+      <div className={ css(classNames.example) }>
+        <DefaultButton
           data-automation-id='test'
           disabled={ disabled }
-          toggled={ toggled }
+          checked={ checked }
           href='http://bing.com'
           target='_blank'
-          title='Let us bing!'>
+          title='let us bing!'
+        >
           Bing
-        </PrimaryButton>
+        </DefaultButton>
       </div >
     );
   }

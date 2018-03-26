@@ -1,11 +1,10 @@
 language: node_js
 node_js:
-  - 'node'
-before_script:
-  - npm install -g gulp
+  - '8'
 script:
-  - npm run build
-cache:
-  directories:
-    - node_modules
-    - common/node_modules
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "true" ]; then
+      npm run checkchange;
+    fi
+  - npm run buildfast
+  - npm run bundlesize
+  - npm run vrtest

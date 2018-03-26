@@ -1,41 +1,87 @@
 {
-  "npmVersion": "3.10.9",
-  "rushMinimumVersion": "2.5.0",
-  "nodeSupportedVersionRange": ">=6.9.0 <8.0.0",
-  "commonFolder": "common",
-  "projectFolderMinDepth": 1,
-  "projectFolderMaxDepth": 999,
+  "npmVersion": "5.3.0",
+  "rushVersion": "4.3.0",
+  "repository": {
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
+  },
+  "nodeSupportedVersionRange": ">=6.9.0 <9.0.0",
   "projects": [
     {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/experiments",
+      "projectFolder": "packages/experiments",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/merge-styles",
+      "projectFolder": "packages/merge-styles",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/jest-serializer-merge-styles",
+      "projectFolder": "packages/jest-serializer-merge-styles",
+      "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
     {
       "packageName": "@uifabric/utilities",
       "projectFolder": "packages/utilities",
+      "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
     {
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
-      "shouldPublish": true,
+      "versionPolicyName": "lockedMajor",
       "cyclicDependencyProjects": [
         "office-ui-fabric-react"
-      ]
+      ],
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/styling",
       "projectFolder": "packages/styling",
-      "shouldPublish": true,
+      "versionPolicyName": "lockedMajor",
       "cyclicDependencyProjects": [
         "office-ui-fabric-react",
         "@uifabric/example-app-base"
-      ]
+      ],
+      "shouldPublish": true
     },
     {
-      "packageName": "@uifabric/example-component",
-      "projectFolder": "packages/example-component",
+      "packageName": "@uifabric/variants",
+      "projectFolder": "packages/variants",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/file-type-icons",
+      "projectFolder": "packages/file-type-icons",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/fabric-website",
+      "projectFolder": "apps/fabric-website",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/icons",
+      "projectFolder": "packages/icons",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/build",
+      "projectFolder": "scripts",
       "shouldPublish": false
     },
     {
@@ -44,14 +90,14 @@
       "shouldPublish": false
     },
     {
-      "packageName": "todo-app",
-      "projectFolder": "apps/todo-app",
+      "packageName": "vr-tests",
+      "projectFolder": "apps/vr-tests",
       "shouldPublish": false
     },
     {
-      "packageName": "@uifabric/fabric-website",
-      "projectFolder": "apps/fabric-website",
-      "shouldPublish": true
+      "packageName": "todo-app",
+      "projectFolder": "apps/todo-app",
+      "shouldPublish": false
     },
     {
       "packageName": "test-bundle-button",

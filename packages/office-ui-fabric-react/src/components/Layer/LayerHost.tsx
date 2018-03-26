@@ -3,22 +3,21 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import {
-  Layer
-} from './Layer';
+import { LayerBase } from './Layer.base';
+import { ILayerHostProps } from './LayerHost.types';
 
-export class LayerHost extends BaseComponent<React.HTMLProps<HTMLElement>, {}> {
+export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
 
   public shouldComponentUpdate() {
     return false;
   }
 
   public componentDidMount() {
-    Layer.notifyHostChanged(this.props.id);
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
   public componentWillUnmount() {
-    Layer.notifyHostChanged(this.props.id);
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
   public render() {

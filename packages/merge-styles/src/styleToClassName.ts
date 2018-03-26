@@ -1,0 +1,237 @@
+import { IRawStyle, IStyle } from './IStyle';
+
+import { Stylesheet } from './Stylesheet';
+import { kebabRules } from './transforms/kebabRules';
+import { prefixRules } from './transforms/prefixRules';
+import { provideUnits } from './transforms/provideUnits';
+import { rtlifyRules } from './transforms/rtlifyRules';
+
+const DISPLAY_NAME = 'displayName';
+
+// tslint:disable-next-line:no-any
+type IDictionary = { [key: string]: any };
+
+interface IRuleSet {
+  __order: string[];
+  [key: string]: IDictionary;
+}
+
+function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefined {
+  const rootStyle: IStyle = rules && rules['&'];
+
+  return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
+}
+
+function extractRules(
+  args: IStyle[],
+  rules: IRuleSet = { __order: [] },
+  currentSelector: string = '&'
+): IRuleSet {
+  const stylesheet = Stylesheet.getInstance();
+  let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
+
+  if (!currentRules) {
+    currentRules = {};
+    rules[currentSelector] = currentRules;
+    rules.__order.push(currentSelector);
+  }
+
+  for (const arg of args) {
+    // If the arg is a string, we need to look up the class map and merge.
+    if (typeof arg === 'string') {
+      const expandedRules = stylesheet.argsFromClassName(arg);
+
+      if (expandedRules) {
+        extractRules(expandedRules, rules, currentSelector);
+      }
+      // Else if the arg is an array, we need to recurse in.
+    } else if (Array.isArray(arg)) {
+      extractRules(arg, rules, currentSelector);
+    } else {
+      // tslint:disable-next-line:no-any
+      for (const prop in (arg as any)) {
+        if (prop === 'selectors') {
+          // tslint:disable-next-line:no-any
+          const selectors: { [key: string]: IStyle } = (arg as any).selectors;
+
+          for (let newSelector in selectors) {
+            if (selectors.hasOwnProperty(newSelector)) {
+              const selectorValue = selectors[newSelector];
+
+              if (newSelector.indexOf(':global(') === 0) {
+                newSelector = newSelector.replace(/:global\(|\)$/g, '');
+              } else if (newSelector.indexOf('@media') === 0) {
+                newSelector = newSelector + '{' + currentSelector;
+              } else if (newSelector.indexOf(':') === 0) {
+                newSelector = currentSelector + newSelector;
+              } else if (newSelector.indexOf('&') < 0) {
+                newSelector = currentSelector + ' ' + newSelector;
+              }
+
+              extractRules([selectorValue], rules, newSelector);
+            }
+          }
+        } else {
+          // Else, add the rule to the currentSelector.
+          if (prop === 'margin' || prop === 'padding') {
+            // tslint:disable-next-line:no-any
+            expandQuads(currentRules, prop, (arg as any)[prop]);
+          } else {
+            // tslint:disable-next-line:no-any
+            (currentRules as any)[prop] = (arg as any)[prop] as any;
+          }
+        }
+      }
+    }
+  }
+
+  return rules;
+}
+
+function expandQuads(
+  currentRules: IDictionary,
+  name: string,
+  value: string
+): void {
+  const parts = (typeof value === 'string') ? value.split(' ') : [value];
+
+  currentRules[name + 'Top'] = parts[0];
+  currentRules[name + 'Right'] = parts[1] || parts[0];
+  currentRules[name + 'Bottom'] = parts[2] || parts[0];
+  currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0];
+}
+
+function getKeyForRules(rules: IRuleSet): string | undefined {
+  const serialized: string[] = [];
+  let hasProps = false;
+
+  for (const selector of rules.__order) {
+    serialized.push(selector);
+    const rulesForSelector = rules[selector];
+
+    for (const propName in rulesForSelector) {
+      if (rulesForSelector.hasOwnProperty(propName) && rulesForSelector[propName] !== undefined) {
+        hasProps = true;
+        serialized.push(propName, rulesForSelector[propName]);
+      }
+    }
+  }
+
+  return hasProps ? serialized.join('') : undefined;
+}
+
+export function serializeRuleEntries(ruleEntries: { [key: string]: string | number }): string {
+  if (!ruleEntries) {
+    return '';
+  }
+
+  const allEntries: (string | number)[] = [];
+
+  for (const entry in ruleEntries) {
+    if (ruleEntries.hasOwnProperty(entry) && entry !== DISPLAY_NAME && ruleEntries[entry] !== undefined) {
+      allEntries.push(entry, ruleEntries[entry]);
+    }
+  }
+
+  // Apply transforms.
+  for (let i = 0; i < allEntries.length; i += 2) {
+    kebabRules(allEntries, i);
+    provideUnits(allEntries, i);
+    rtlifyRules(allEntries, i);
+    prefixRules(allEntries, i);
+  }
+
+  // Apply punctuation.
+  for (let i = 1; i < allEntries.length; i += 4) {
+    allEntries.splice(i, 1, ':', allEntries[i], ';');
+  }
+
+  return allEntries.join('');
+}
+
+export interface IRegistration {
+  className: string;
+  key: string;
+  args: IStyle[];
+  rulesToInsert: string[];
+}
+
+export function styleToRegistration(...args: IStyle[]): IRegistration | undefined {
+  const rules: IRuleSet = extractRules(args);
+  const key = getKeyForRules(rules);
+
+  if (key) {
+    const stylesheet = Stylesheet.getInstance();
+    const registration: Partial<IRegistration> = {
+      className: stylesheet.classNameFromKey(key),
+      key,
+      args
+    };
+
+    if (!registration.className) {
+      registration.className = stylesheet.getClassName(getDisplayName(rules));
+      const rulesToInsert: string[] = [];
+
+      for (const selector of rules.__order) {
+        rulesToInsert.push(
+          selector,
+          serializeRuleEntries(rules[selector])
+        );
+      }
+      registration.rulesToInsert = rulesToInsert;
+    }
+
+    return registration as IRegistration;
+  }
+}
+
+export function applyRegistration(
+  registration: IRegistration,
+  classMap?: { [key: string]: string }
+): void {
+  const stylesheet = Stylesheet.getInstance();
+  const { className, key, args, rulesToInsert } = registration;
+
+  if (rulesToInsert) {
+    // rulesToInsert is an ordered array of selector/rule pairs.
+    for (let i = 0; i < rulesToInsert.length; i += 2) {
+      const rules = rulesToInsert[i + 1];
+      if (rules) {
+        let selector = rulesToInsert[i];
+
+        // Fix selector using map.
+        selector = selector.replace(/(&)|\$([\w-]+)\b/g, (match: string, amp: string, cn: string): string => {
+          if (amp) {
+            return '.' + registration.className;
+          } else if (cn) {
+            return '.' + ((classMap && classMap[cn]) || cn);
+          }
+          return '';
+        });
+
+        // Insert. Note if a media query, we must close the query with a final bracket.
+        const processedRule = `${selector}{${rules}}${(selector.indexOf('@media') === 0) ? '}' : ''}`;
+
+        stylesheet.insertRule(processedRule);
+      }
+    }
+    stylesheet.cacheClassName(
+      className!,
+      key!,
+      args!,
+      rulesToInsert
+    );
+
+  }
+}
+
+export function styleToClassName(...args: IStyle[]): string {
+  const registration = styleToRegistration(...args);
+  if (registration) {
+    applyRegistration(registration);
+
+    return registration.className;
+  }
+
+  return '';
+}

@@ -4,13 +4,9 @@ import * as React from 'react';
 
 /* tslint:disable:no-string-literal */
 
-import * as ReactDOM from 'react-dom';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './FocusTrapZone.Box.Example.scss';
 
 interface IFocusTrapComponentProps {
@@ -25,7 +21,7 @@ interface IFocusTrapComponentState {
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
 
   public render() {
-    let contents = (
+    const contents = (
       <div className='ms-FocusTrapComponent'>
         <DefaultButton
           onClick={ this._onStringButtonClicked }
@@ -36,7 +32,8 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
           onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         {
           this.props.children
         }
@@ -55,13 +52,11 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
     return contents;
   }
 
-  @autobind
-  private _onStringButtonClicked() {
+  private _onStringButtonClicked = (): void => {
     console.log(this.props.name);
   }
 
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
+  private _onFocusTrapZoneToggleChanged = (isChecked: boolean): void => {
     this.props.setIsActive(this.props.name, isChecked);
   }
 
@@ -75,10 +70,10 @@ export interface IFocusTrapZoneNestedExampleState {
 
 const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
 
-export default class FocusTrapZoneNestedExample extends React.Component<React.HTMLProps<HTMLDivElement>, IFocusTrapZoneNestedExampleState> {
+export default class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       stateMap: {}
@@ -86,7 +81,7 @@ export default class FocusTrapZoneNestedExample extends React.Component<React.HT
   }
 
   public render() {
-    let { stateMap } = this.state;
+    const { stateMap } = this.state;
 
     return (
       <div>
@@ -102,14 +97,12 @@ export default class FocusTrapZoneNestedExample extends React.Component<React.HT
     );
   }
 
-  @autobind
-  private _setIsActive(name: string, isActive: boolean): void {
+  private _setIsActive = (name: string, isActive: boolean): void => {
     this.state.stateMap[name] = isActive;
     this.forceUpdate();
   }
 
-  @autobind
-  private _randomize(): void {
+  private _randomize = (): void => {
     NAMES.forEach((name) => {
       this.state.stateMap[name] = Math.random() >= .5;
     });

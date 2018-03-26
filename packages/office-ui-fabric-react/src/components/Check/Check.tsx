@@ -1,46 +1,13 @@
-import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './Check.scss';
-const styles: any = stylesImport;
+import { styled } from '../../Utilities';
+import {
+  ICheckProps,
+  ICheckStyleProps,
+  ICheckStyles
+} from './Check.types';
+import { CheckBase } from './Check.base';
+import { getStyles } from './Check.styles';
 
-export interface ICheckProps extends React.Props<Check> {
-  /**
-   * Whether or not this menu item is currently checked.
-   * @defaultvalue false
-   */
-  checked?: boolean;
-  /**
-   * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'checked' instead.
-   * @deprecated
-   */
-  isChecked?: boolean;
-}
-
-export class Check extends BaseComponent<ICheckProps, {}> {
-  public static defaultProps = {
-    isChecked: false
-  };
-
-  public shouldComponentUpdate(newProps: ICheckProps) {
-    return this.props.isChecked !== newProps.isChecked || this.props.checked !== newProps.checked;
-  }
-
-  public render() {
-    let { isChecked, checked } = this.props;
-
-    isChecked = isChecked || checked;
-
-    return (
-      <div className={ css(
-        'ms-Check',
-        styles.root,
-        {
-          ['is-checked ' + styles.rootIsChecked]: isChecked
-        }) }>
-        <div className={ css('ms-Icon ms-Check-background', styles.background) }>
-        </div>
-        <i className={ css('ms-Check-check ms-Icon ms-Icon--CheckMark', styles.check) }></i>
-      </div>
-    );
-  }
-}
+export const Check = styled<ICheckProps, ICheckStyleProps, ICheckStyles>(
+  CheckBase,
+  getStyles
+);

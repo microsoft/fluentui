@@ -1,20 +1,26 @@
 @import '../../common/common';
 
-$iconForegroundColor: $ms-color-neutralSecondary;
-$actionableHeaderForegroundColor: $ms-color-neutralSecondary;
+$iconForegroundColor: $bodySubtextColor;
+$headerForegroundColor: $bodyTextColor;
+$headerBackgroundColor: $bodyBackgroundColor;
 $dropdownChevronForegroundColor: $ms-color-neutralTertiary;
-$rowHeight: 36px;
+$rowHeight: 32px;
 $resizerColor: $ms-color-neutralTertiaryAlt;
+$cellPadding: 8px;
+$isPaddedMargin: 24px;
 
 .root {
   display: inline-block;
+  background: $headerBackgroundColor;
+  position: relative;
   min-width: 100%;
   vertical-align: top;
   height: $rowHeight;
   line-height: $rowHeight;
   white-space: nowrap;
+  box-sizing: content-box;
   padding-bottom: 1px;
-  border-bottom: 1px solid $dividerColor;
+  border-bottom: 1px solid $bodyDividerColor;
   cursor: default;
   user-select: none;
 
@@ -25,70 +31,45 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   }
 }
 
-.cell.cellIsCheck :global(.ms-Check-background) {
-  opacity: 0;
-}
-
-.cell.cellIsCheck:hover :global(.ms-Check-background),
-.root.rootIsAllSelected :global(.ms-Check-background) {
-  opacity: 1;
-}
-
-.cellWrapper {
-  display: inline-block;
-  position: relative;
+.cellWrapperPadded {
+  @include ms-padding-right($isPaddedMargin + $cellPadding);
 }
 
 .cell {
   @include ms-font-s;
-  background: transparent;
-  color: $disabledForegroundColor;
+  color: $headerForegroundColor;
   @include focus-border();
-  font-weight: $ms-font-weight-regular;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 8px;
+  padding: 0 $cellPadding;
   border: none;
   line-height: inherit;
   margin: 0;
-  @include text-align(left);
   height: $rowHeight;
   vertical-align: top;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  @include text-align(left);
+  @include ms-text-align(left);
 
   &.cellIsCheck {
     position: relative;
-    padding: 6px;
+    padding: 0;
     margin: 0;
+    display: inline-flex;
+    align-items: center;
   }
 
   &.cellIsActionable {
-    color: $actionableHeaderForegroundColor;
 
     &:hover {
-      color: $ms-color-neutralPrimary;
-      background: $unselectedHoverBackgroundColor;
+      color: $bodyTextColor;
+      background: $bodyBackgroundColor;
     }
 
     &:active {
-      background: $unselectedActiveBackgroundColor;
+      background: $listItemBackgroundHoveredColor;
     }
-  }
-
-  &.cellIsSizer {
-    position: absolute;
-    width: 16px;
-
-    @include margin-left(-10px);
-    cursor: ew-resize;
-    bottom: 0;
-    top: 0;
-    height: inherit;
-    background: transparent;
   }
 
   &.cellIsEmpty {
@@ -96,21 +77,50 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   }
 }
 
-.cell.cellIsSizer:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
+.cellSizer {
+  @include focus-clear();
+
+  display: inline-block;
+  position: relative;
+  cursor: ew-resize;
   bottom: 0;
-  width: 1px;
-  background: $resizerColor;
-  opacity: 0;
+  top: 0;
+  overflow: hidden;
+  height: inherit;
+  background: transparent;
+  z-index: 1;
+  width: 16px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: $resizerColor;
+    opacity: 0;
+    left: 50%;
+  }
+
+  &:focus:after,
+  &:hover:after,
+  &.cellIsResizing:after {
+    opacity: 1;
+    transition: opacity .3s linear;
+  }
+
+  &.cellIsResizing:after {
+    @include ms-drop-shadow();
+  }
 }
 
-.cell.cellIsSizer:hover:after,
-.cell.cellIsSizer.cellIsResizing:after {
-  opacity: 1;
-  transition: opacity .3s linear;
+.cellSizerStart {
+  margin: 0 -8px;
+}
+
+.cellSizerEnd {
+  margin: 0;
+  @include margin-left(-16px);
 }
 
 .collapseButton {
@@ -126,16 +136,52 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   }
 }
 
-.cell .nearIcon {
+.iconOnlyHeader {
+  .nearIcon {
+    @include ms-padding-left(0);
+  }
+}
+
+.nearIcon {
   color: $iconForegroundColor;
   opacity: 1;
-  @include padding-right(4px);
+  @include ms-padding-left(8px);
+
+  &.sortIcon {
+    @include ms-padding-left(4px);
+    position: relative;
+    top: 1px;
+  }
 }
 
 .cell .filterChevron {
   color: $dropdownChevronForegroundColor;
-  @include padding-left(4px);
+  @include ms-padding-left(4px);
   vertical-align: middle;
+}
+
+.cellTitle {
+  display: block;
+  overflow: hidden;
+  @include focus-border($position: absolute);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 8px;
+}
+
+:global(.ms-TooltipHost).checkTooltip {
+  display: block;
+}
+
+.cellTooltip {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .sizingOverlay {
@@ -146,8 +192,17 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   bottom: 0;
   cursor: ew-resize;
   background: rgba(255, 255, 255, 0);
+
+  @include high-contrast {
+    background: transparent;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .cell .collapseButton {
-  @include padding-right(0);
+  @include ms-padding-right(0);
+}
+
+.accessibleLabel {
+  @include ms-screenReaderOnly;
 }

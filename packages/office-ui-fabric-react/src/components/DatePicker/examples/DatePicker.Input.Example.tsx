@@ -66,12 +66,13 @@ const DayPickerStrings: IDatePickerStrings = {
 
 export interface IDatePickerInputExampleState {
   firstDayOfWeek?: DayOfWeek;
-  value?: Date;
+  value?: Date | null;
 }
 
-export class DatePickerInputExample extends React.Component<any, IDatePickerInputExampleState> {
-  public constructor() {
-    super();
+export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
@@ -80,7 +81,7 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
   }
 
   public render() {
-    let { firstDayOfWeek, value } = this.state;
+    const { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
     return (
       <div>
@@ -92,11 +93,19 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
           ariaLabel={ desc }
           firstDayOfWeek={ firstDayOfWeek }
           strings={ DayPickerStrings }
-          value={ value }
-          onSelectDate={ date => this.setState({ value: date }) }
+          value={ value! }
+          onSelectDate={ this._onSelectDate }
         />
-        <DefaultButton onClick={ () => this.setState({ value: null }) } text='Clear' />
+        <DefaultButton onClick={ this._onClick } text='Clear' />
       </div>
     );
+  }
+
+  private _onSelectDate = (date: Date | null | undefined): void => {
+    this.setState({ value: date });
+  }
+
+  private _onClick = (): void => {
+    this.setState({ value: null });
   }
 }

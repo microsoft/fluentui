@@ -2,11 +2,10 @@ import * as React from 'react';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DocumentCardActivity } from 'office-ui-fabric-react/lib/DocumentCard';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, ITodoItemProps } from '../types/index';
 
-import * as stylesImport from './Todo.module.scss';
+import * as stylesImport from './Todo.scss';
 const styles: any = stylesImport;
 import strings from './../strings';
 
@@ -19,10 +18,10 @@ import strings from './../strings';
  * Link of DocumentCardActivity: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/documentcard
  */
 export default class TodoItem extends React.Component<ITodoItemProps, {}> {
-  private static ANIMATION_TIMEOUT: number = 200;
+  private static ANIMATION_TIMEOUT = 200;
 
-  private _animationTimeoutId: number;
-  private _rowItem: HTMLDivElement;
+  private _animationTimeoutId!: number;
+  private _rowItem!: HTMLDivElement;
 
   constructor(props: ITodoItemProps) {
     super(props);
@@ -35,12 +34,12 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     window.clearTimeout(this._animationTimeoutId);
   }
 
-  public render(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+  public render(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const className: string = css(
       styles.todoItem,
       this.props.item.isComplete === true ? styles.isCompleted : '',
       'ms-Grid',
-      'ms-u-slideDownIn20'
+      'ms-slideDownIn20'
     );
 
     return (
@@ -60,7 +59,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
             />
             <IconButton
               className={ styles.deleteButton }
-              iconProps={ { iconName: 'x' } }
+              iconProps={ { iconName: 'X' } }
               onClick={ this._onDelete }
               title={ strings.deleteItemTitle }
               ariaLabel={ strings.deleteItemAriaLabel }
@@ -79,12 +78,12 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     return `${completeState} ${titleString}`;
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
-    this._handleWithAnimation(this.props.onToggleComplete, 'ms-u-slideUpOut20');
+  private _onCheckboxChange(ev?: React.FormEvent<HTMLElement>, isChecked?: boolean): void {
+    this._handleWithAnimation(this.props.onToggleComplete, 'ms-slideUpOut20');
   }
 
   private _onDelete(event: React.MouseEvent<HTMLButtonElement>): void {
-    this._handleWithAnimation(this.props.onDeleteItem, 'ms-u-slideUpOut20');
+    this._handleWithAnimation(this.props.onDeleteItem, 'ms-slideUpOut20');
   }
 
   private _handleWithAnimation(callback: (task: ITodoItem) => void, animationClass: string): void {

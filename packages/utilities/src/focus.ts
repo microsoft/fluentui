@@ -1,71 +1,147 @@
 /* tslint:disable:no-string-literal */
 
-import { elementContains, getDocument } from './dom';
+import { elementContains, getDocument, elementContainsAttribute } from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
+const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 
+/**
+ * Gets the first focusable element.
+ *
+ * @public
+ */
 export function getFirstFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
 
   return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
 }
 
+/**
+ * Gets the last focusable element.
+ *
+ * @public
+ */
 export function getLastFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
 
   return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
 }
 
 /**
+ * Gets the last tabbable element.
+ *
+ * @public
+ */
+export function getLastTabbable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
+
+  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones, false, true);
+}
+
+/**
  * Attempts to focus the first focusable element that is a child or child's child of the rootElement.
+ *
+ * @public
  * @param rootElement - Element to start the search for a focusable child.
  * @returns True if focus was set, false if it was not.
  */
 export function focusFirstChild(
   rootElement: HTMLElement): boolean {
-  let element: HTMLElement = getNextElement(rootElement, rootElement, true, false, false, true);
+  let element: HTMLElement | null = getNextElement(rootElement, rootElement, true, false, false, true);
 
   if (element) {
-    element.focus();
+    focusAsync(element);
     return true;
   }
   return false;
 }
 
-/** Traverse to find the previous element. */
+/**
+ * Traverse to find the previous element.
+ *
+ * @public
+ */
 export function getPreviousElement(
   rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean,
+  tabbable?: boolean): HTMLElement | null {
 
   if (!currentElement ||
-    currentElement === rootElement) {
+    (!allowFocusRoot && currentElement === rootElement)) {
     return null;
   }
 
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check its children.
-  if (traverseChildren && (includeElementsInFocusZones || !isElementFocusZone(currentElement)) && isCurrentElementVisible) {
+  if (traverseChildren && isCurrentElementVisible &&
+    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))) {
     const childMatch = getPreviousElement(
       rootElement,
       currentElement.lastElementChild as HTMLElement,
       true,
       true,
       true,
-      includeElementsInFocusZones);
+      includeElementsInFocusZones,
+      allowFocusRoot,
+      tabbable);
 
     if (childMatch) {
-      return childMatch;
+      if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
+        return childMatch;
+      }
+
+      const childMatchSiblingMatch = getPreviousElement(
+        rootElement,
+        childMatch.previousElementSibling as HTMLElement,
+        true,
+        true,
+        true,
+        includeElementsInFocusZones,
+        allowFocusRoot,
+        tabbable
+      );
+      if (childMatchSiblingMatch) {
+        return childMatchSiblingMatch;
+      }
+
+      let childMatchParent = childMatch.parentElement;
+
+      // At this point if we have not found any potential matches
+      // start looking at the rest of the subtree under the currentParent.
+      // NOTE: We do not want to recurse here because doing so could
+      // cause elements to get skipped.
+      while (childMatchParent && childMatchParent !== currentElement) {
+        const childMatchParentMatch = getPreviousElement(
+          rootElement,
+          childMatchParent.previousElementSibling as HTMLElement,
+          true,
+          true,
+          true,
+          includeElementsInFocusZones,
+          allowFocusRoot,
+          tabbable
+        );
+
+        if (childMatchParentMatch) {
+          return childMatchParentMatch;
+        }
+
+        childMatchParent = childMatchParent.parentElement;
+      }
     }
   }
 
@@ -81,7 +157,9 @@ export function getPreviousElement(
     true,
     true,
     true,
-    includeElementsInFocusZones);
+    includeElementsInFocusZones,
+    allowFocusRoot,
+    tabbable);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -89,24 +167,30 @@ export function getPreviousElement(
 
   // Check its parent.
   if (!suppressParentTraversal) {
-    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones);
+    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones,
+      allowFocusRoot, tabbable);
   }
 
   return null;
 }
 
-/** Traverse to find the next focusable element. */
+/**
+ * Traverse to find the next focusable element.
+ *
+ * @public
+ */
 export function getNextElement(
   rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean): HTMLElement | null {
 
   if (
     !currentElement ||
-    (currentElement === rootElement && suppressChildTraversal)) {
+    (currentElement === rootElement && suppressChildTraversal && !allowFocusRoot)) {
     return null;
   }
 
@@ -118,14 +202,16 @@ export function getNextElement(
   }
 
   // Check its children.
-  if (!suppressChildTraversal && isCurrentElementVisible && (includeElementsInFocusZones || !isElementFocusZone(currentElement))) {
+  if (!suppressChildTraversal && isCurrentElementVisible &&
+    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))) {
     const childMatch = getNextElement(
       rootElement,
       currentElement.firstElementChild as HTMLElement,
       true,
       true,
       false,
-      includeElementsInFocusZones);
+      includeElementsInFocusZones,
+      allowFocusRoot);
 
     if (childMatch) {
       return childMatch;
@@ -143,20 +229,27 @@ export function getNextElement(
     true,
     true,
     false,
-    includeElementsInFocusZones);
+    includeElementsInFocusZones,
+    allowFocusRoot);
 
   if (siblingMatch) {
     return siblingMatch;
   }
 
   if (!suppressParentTraversal) {
-    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones);
+    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones,
+      allowFocusRoot);
   }
 
   return null;
 }
 
-export function isElementVisible(element: HTMLElement): boolean {
+/**
+ * Determines if an element is visible.
+ *
+ * @public
+ */
+export function isElementVisible(element: HTMLElement | undefined | null): boolean {
   // If the element is not valid, return false.
   if (!element || !element.getAttribute) {
     return false;
@@ -172,47 +265,117 @@ export function isElementVisible(element: HTMLElement): boolean {
   // Fallback to other methods of determining actual visibility.
   return (element.offsetHeight !== 0 ||
     element.offsetParent !== null ||
+    // tslint:disable-next-line:no-any
     (element as any).isVisible === true); // used as a workaround for testing.
 }
 
-export function isElementTabbable(element: HTMLElement): boolean {
+/**
+ * Determines if an element can receive focus.
+ *
+ * @public
+ */
+export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean): boolean {
 
   // If this element is null or is disabled, it is not considered tabbable.
   if (!element || (element as HTMLButtonElement).disabled) {
     return false;
   }
 
-  // In IE, element.tabIndex is default to 0. We need to use element get tabIndex attribute to get the correct tabIndex
-  let tabIndex = -1;
+  let tabIndex = 0;
+  let tabIndexAttributeValue = null;
 
   if (element && element.getAttribute) {
-    tabIndex = parseInt(element.getAttribute('tabIndex'), 10);
+    tabIndexAttributeValue = element.getAttribute('tabIndex');
+
+    if (tabIndexAttributeValue) {
+      tabIndex = parseInt(tabIndexAttributeValue, 10);
+    }
   }
 
-  let isFocusableAttribute: string = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
+  let isFocusableAttribute = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
+  let isTabIndexSet = tabIndexAttributeValue !== null && tabIndex >= 0;
 
-  return (
-    !!element && isFocusableAttribute !== 'false' &&
+  const result = !!element &&
+    isFocusableAttribute !== 'false' &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON') ||
       (element.tagName === 'INPUT') ||
       (element.tagName === 'TEXTAREA') ||
-      (tabIndex >= 0) ||
-      (element.getAttribute && (
-        isFocusableAttribute === 'true' ||
-        element.getAttribute('role') === 'button'
-      ))
-    ));
+      isFocusableAttribute === 'true' ||
+      isTabIndexSet ||
+      element.getAttribute && element.getAttribute('role') === 'button'
+    );
+
+  return checkTabIndex ? (tabIndex !== -1) && result : result;
 }
 
+/**
+ * Determines if a given element is a focus zone.
+ *
+ * @public
+ */
 export function isElementFocusZone(element?: HTMLElement): boolean {
-  return element && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
+  return !!(element && element.getAttribute && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE));
 }
 
-export function doesElementContainFocus(element: HTMLElement) {
-  let currentActiveElement: HTMLElement = getDocument(element).activeElement as HTMLElement;
+/**
+ * Determines if a given element is a focus sub zone.
+ *
+ * @public
+ */
+export function isElementFocusSubZone(element?: HTMLElement): boolean {
+  return !!(element && element.getAttribute && element.getAttribute(FOCUSZONE_SUB_ATTRIBUTE) === 'true');
+}
+
+/**
+ * Determines if an element, or any of its children, contain focus.
+ *
+ * @public
+ */
+export function doesElementContainFocus(element: HTMLElement): boolean {
+  let document = getDocument(element);
+  let currentActiveElement: HTMLElement | undefined = document && document.activeElement as HTMLElement;
   if (currentActiveElement && elementContains(element, currentActiveElement)) {
     return true;
   }
   return false;
+}
+
+/**
+ * Determines if an, or any of its ancestors, sepcificies that it doesn't want focus to wrap
+ * @param element - element to start searching from
+ * @param noWrapDataAttribute - the no wrap data attribute to match (either)
+ * @returns true if focus should wrap, false otherwise
+ */
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
+
+  return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
+}
+
+let targetToFocusOnNextRepaint: HTMLElement | null | undefined = undefined;
+
+/**
+ * Sets focus to an element asynchronously. The focus will be set at the next browser repaint,
+ * meaning it won't cause any extra recalculations. If more than one focusAsync is called during one frame,
+ * only the latest called focusAsync element will actually be focused
+ * @param element The element to focus
+ */
+export function focusAsync(element: HTMLElement | undefined | null): void {
+  if (element) {
+    // An element was already queued to be focused, so replace that one with the new element
+    if (targetToFocusOnNextRepaint) {
+      targetToFocusOnNextRepaint = element;
+      return;
+    }
+
+    targetToFocusOnNextRepaint = element;
+
+    // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
+    element.ownerDocument.defaultView.requestAnimationFrame(() => {
+      targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+
+      // We are done focusing for this frame, so reset the queued focus element
+      targetToFocusOnNextRepaint = undefined;
+    });
+  }
 }

@@ -12,9 +12,19 @@
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
-    "**/bower_components": true,
     "**/coverage": true,
     "**/*.scss.ts": true
+  },
+  "files.watcherExclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/lib": true,
+    "**/lib-amd": true,
+    "/**lib-es2015": true,
+    "**/temp": true,
+    "**/dist": true,
+    "**/*.scss.ts": true,
+    "**/coverage": true
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
@@ -22,6 +32,7 @@
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,
+    "**/lib-es2015": true,
     "**/dist": true,
     "**/*.scss.ts": true
   },
@@ -29,10 +40,10 @@
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 140,
   "tslint.enable": true,
-  "tslint.rulesDirectory": "./common/node_modules/tslint-microsoft-contrib",
+  "tslint.rulesDirectory": "./common/temp/node_modules/tslint-microsoft-contrib",
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "editor.formatOnSave": true,
-  "typescript.tsdk": "./common/node_modules/typescript/lib",
-  "tslint.autoFixOnSave": true
+  "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
+  "tslint.autoFixOnSave": false
 }

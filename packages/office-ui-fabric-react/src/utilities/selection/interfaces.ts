@@ -1,5 +1,5 @@
 export interface IObjectWithKey {
-  key?: string;
+  key?: string | number;
 }
 
 export const SELECTION_CHANGE = 'change';
@@ -12,19 +12,22 @@ export enum SelectionMode {
 
 export interface ISelection {
   count: number;
-  canSelectItem?: (item: IObjectWithKey) => boolean;
+  mode: SelectionMode;
+
+  canSelectItem: (item: IObjectWithKey) => boolean;
 
   // Obesrvable methods.
-  setChangeEvents(isEnabled: boolean, suppressChange?: boolean);
+  setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
 
   // Initialization methods.
 
-  setItems(items: IObjectWithKey[], shouldClear: boolean);
+  setItems(items: IObjectWithKey[], shouldClear: boolean): void;
   getItems(): IObjectWithKey[];
 
   // Read selection methods.
 
   getSelection(): IObjectWithKey[];
+  getSelectedIndices?(): number[]; // TODO make non-optional on next breaking change
   getSelectedCount(): number;
   isRangeSelected(fromIndex: number, count: number): boolean;
 
@@ -32,30 +35,27 @@ export interface ISelection {
   isKeySelected(key: string): boolean;
   isIndexSelected(index: number): boolean;
 
+  isModal?(): boolean;
+
   // Write selection methods.
 
-  setAllSelected(isAllSelected: boolean);
-  setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean);
-  setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean);
+  setAllSelected(isAllSelected: boolean): void;
+  setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
+  setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
+
+  setModal?(isModal: boolean): void; // TODO make non-optional on next breaking change
 
   // Write range selection methods.
 
-  selectToKey(key: string, clearSelection?: boolean);
-  selectToIndex(index: number, clearSelection?: boolean);
+  selectToKey(key: string, clearSelection?: boolean): void;
+  selectToIndex(index: number, clearSelection?: boolean): void;
 
   // Toggle helpers.
 
-  toggleAllSelected();
-  toggleKeySelected(key: string);
-  toggleIndexSelected(index: number);
-  toggleRangeSelected(fromIndex: number, count: number);
-}
-
-export interface ISelectionLayout {
-  getItemIndexAbove(index: number, items: any[]): number;
-  getItemIndexBelow(index: number, items: any[]): number;
-  getItemIndexLeft(index: number, items: any[]): number;
-  getItemIndexRight(index: number, items: any[]): number;
+  toggleAllSelected(): void;
+  toggleKeySelected(key: string): void;
+  toggleIndexSelected(index: number): void;
+  toggleRangeSelected(fromIndex: number, count: number): void;
 }
 
 export enum SelectionDirection {

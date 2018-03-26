@@ -16,22 +16,22 @@
   },
   {
     "name": "themePrimary",
-    "value": "#0078d7",
+    "value": "#0078d4",
     "labelColorClass": "ms-fontColor-white"
   },
   {
     "name": "themeSecondary",
-    "value": "#2488d8",
-    "labelColorClass": "ms-fontColor-white"
+    "value": "#2b88d8",
+    "labelColorClass": "ms-fontColor-black"
   },
   {
     "name": "themeTertiary",
-    "value": "#69afe5",
-    "labelColorClass": "ms-fontColor-white"
+    "value": "#71afe5",
+    "labelColorClass": "ms-fontColor-black"
   },
   {
     "name": "themeLight",
-    "value": "#b3d6f2",
+    "value": "#c7e0f4",
     "labelColorClass": "ms-fontColor-black"
   },
   {

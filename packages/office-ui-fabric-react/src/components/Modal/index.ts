@@ -1,2 +1,2 @@
 export * from './Modal';
-export * from './Modal.Props';
+export * from './Modal.types';

@@ -1,52 +1,39 @@
 import * as React from 'react';
-import {
-  Checkbox,
-  Dropdown,
-  Facepile,
-  IFacepilePersona,
-  IFacepileProps,
-  PersonaSize,
-  Slider
-} from 'office-ui-fabric-react/lib/index';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-react/lib/Facepile';
+import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
-
-export enum ExtraDataType {
-  none = 0,
-  name = 1
-}
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export interface IFacepileBasicExampleState {
   numberOfFaces: any;
   imagesFadeIn: boolean;
-  extraDataType: ExtraDataType;
   personaSize: PersonaSize;
 }
 
-export class FacepileBasicExample extends React.Component<any, IFacepileBasicExampleState> {
-  public constructor() {
-    super();
+export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      extraDataType: ExtraDataType.none,
-      personaSize: PersonaSize.extraSmall
+      personaSize: PersonaSize.size32
     };
   }
 
   public render() {
-    let { extraDataType, numberOfFaces, personaSize } = this.state;
-    let facepileProps: IFacepileProps = {
+    const { numberOfFaces, personaSize } = this.state;
+    const facepileProps: IFacepileProps = {
       personaSize: personaSize,
       personas: facepilePersonas.slice(0, numberOfFaces),
+      overflowPersonas: facepilePersonas.slice(numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
-        if (extraDataType === ExtraDataType.name) {
-          return {
-            imageShouldFadeIn: this.state.imagesFadeIn,
-            hidePersonaDetails: false
-          };
-        }
         return {
           imageShouldFadeIn: this.state.imagesFadeIn
         };
@@ -56,7 +43,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
 
     return (
       <div className={ 'ms-FacepileExample' }>
-        <Facepile {...facepileProps} />
+        <Facepile { ...facepileProps } />
         <div className={ 'control' }>
           <Slider
             label='Number of Personas:'
@@ -65,51 +52,51 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             step={ 1 }
             showValue={ true }
             value={ numberOfFaces }
-            onChange={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-              prevState.numberOfFaces = value;
-              return prevState;
-            }) }
+            onChange={ this._onChangePersonaNumber }
+          />
+          <Dropdown
+            label='Persona Size:'
+            selectedKey={ this.state.personaSize }
+            options={
+              [
+                { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
+                { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
+                { key: PersonaSize.size28, text: PersonaSize[PersonaSize.size28] },
+                { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
+                { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
+              ]
+            }
+            onChanged={ this._onChangePersonaSize }
+          />
+          <Checkbox
+            className={ exampleStyles.exampleCheckbox }
+            label='Fade In'
+            checked={ this.state.imagesFadeIn }
+            onChange={ this._onChangeFadeIn }
           />
         </div>
-        <Checkbox
-          label='Fade In'
-          checked={ this.state.imagesFadeIn }
-          onChange={ (ev, checked) => {
-            this.setState((prevState: IFacepileBasicExampleState) => {
-              prevState.imagesFadeIn = checked;
-              return prevState;
-            });
-          } }
-        />
-        <Dropdown
-          label='Persona Size:'
-          selectedKey={ this.state.personaSize }
-          options={
-            [
-              { key: PersonaSize.extraSmall, text: PersonaSize[PersonaSize.extraSmall] },
-              { key: PersonaSize.extraExtraSmall, text: PersonaSize[PersonaSize.extraExtraSmall] }
-            ]
-          }
-          onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-            prevState.personaSize = value.key as PersonaSize;
-            return prevState;
-          }) }
-        />
-        <Dropdown
-          label='Additional Data:'
-          selectedKey={ this.state.extraDataType }
-          options={
-            [
-              { key: ExtraDataType.none, text: ExtraDataType[ExtraDataType.none] },
-              { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] }
-            ]
-          }
-          onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-            prevState.extraDataType = value.key as ExtraDataType;
-            return prevState;
-          }) }
-        />
       </div>
     );
+  }
+
+  private _onChangeFadeIn = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
+    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+      prevState.imagesFadeIn = checked!;
+      return prevState;
+    });
+  }
+
+  private _onChangePersonaNumber = (value: number): void => {
+    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+      prevState.numberOfFaces = value;
+      return prevState;
+    });
+  }
+
+  private _onChangePersonaSize = (value: IDropdownOption): void => {
+    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+      prevState.personaSize = value.key as PersonaSize;
+      return prevState;
+    });
   }
 }

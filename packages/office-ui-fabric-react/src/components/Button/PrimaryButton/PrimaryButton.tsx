@@ -1,23 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, nullRender } from '../../../Utilities';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { IButtonProps } from '../Button.Props';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { DefaultButton } from '../DefaultButton/DefaultButton';
+import { IButtonProps } from '../Button.types';
 
-import * as stylesImport from './PrimaryButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--primary',
-  icon: styles.icon,
-  menuIcon: styles.icon,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  isToggled: styles.isToggled,
-  label: styles.label,
-  root: styles.root
-};
-
+@customizable('PrimaryButton', ['theme'])
 export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
@@ -26,10 +12,10 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
 
   public render() {
     return (
-      <BaseButton
-        classNames={ CLASS_NAMES }
-        onRenderDescription={ nullRender }
+      <DefaultButton
         { ...this.props }
+        primary={ true }
+        onRenderDescription={ nullRender }
       />
     );
   }

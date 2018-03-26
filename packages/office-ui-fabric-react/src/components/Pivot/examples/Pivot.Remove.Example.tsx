@@ -14,7 +14,7 @@ export interface IPivotOnChangeExampleState {
 }
 
 export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExampleState> {
-  private _shouldShowFirstPivotItem;
+  private _shouldShowFirstPivotItem: boolean;
 
   constructor(props: any) {
     super(props);

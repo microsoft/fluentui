@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ModalStatus } from './Modal.checklist';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
 
@@ -26,7 +28,7 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')
             ] }
           />
         }
@@ -36,12 +38,12 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
               Modals are temporary, modal UI overlay that generally provide contextual app information or require user confirmation/input, or can be used to advertise new app features. In some cases, Modals block interactions with the web page or application until being explicitly dismissed. They are can be used for lightweight creation or edit tasks and simple management tasks, or for hosting heavier temporary content.
             </p>
             <p>
-              For usage requiring a quick choice from the user, <Link href='#/examples/dialog'>Dialog</Link> may be a more appropriate control.
+              For usage requiring a quick choice from the user, <Link href='#/components/dialog'>Dialog</Link> may be a more appropriate control.
             </p>
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -58,8 +60,13 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ModalStatus}
+          />
+        }
+      />
     );
   }
 }

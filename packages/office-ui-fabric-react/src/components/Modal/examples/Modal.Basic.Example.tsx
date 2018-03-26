@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './Modal.Basic.Example.scss';
 
-export class ModalBasicExample extends React.Component<any, any> {
+export class ModalBasicExample extends React.Component<{}, {
+  showModal: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showModal: false
     };
@@ -18,12 +19,12 @@ export class ModalBasicExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           description='Opens the Sample Modal'
-          onClick={ this._showModal.bind(this) }
+          onClick={ this._showModal }
           text='Open Modal'
         />
         <Modal
           isOpen={ this.state.showModal }
-          onDismiss={ this._closeModal.bind(this) }
+          onDismiss={ this._closeModal }
           isBlocking={ false }
           containerClassName='ms-modalExample-container'
         >
@@ -42,11 +43,11 @@ export class ModalBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _showModal() {
+  private _showModal = (): void => {
     this.setState({ showModal: true });
   }
 
-  private _closeModal() {
+  private _closeModal = (): void => {
     this.setState({ showModal: false });
   }
 }

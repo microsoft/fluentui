@@ -5,10 +5,12 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { items, farItems } from './examples/data';
+import { items, overflowItems, farItems } from './examples/data';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 import { CommandBarCustomizationExample } from './examples/CommandBar.Customization.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { CommandBarStatus } from './CommandBar.checklist';
 
 const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.NonFocusable.Example.tsx') as string;
@@ -16,11 +18,11 @@ const CommandBarCustomizationExampleCode = require('!raw-loader!office-ui-fabric
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
-    let cmdBarParamsTextAndIcons: any = { items: items, farItems: farItems };
+    const cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (
       <ComponentPage
-        title='CommandBar'
+        title={ 'CommandBar' }
         componentName='CommandBarExample'
         exampleCards={
           <div>
@@ -38,8 +40,8 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
             ] }
           />
         }
@@ -57,7 +59,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -79,11 +81,13 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...CommandBarStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 

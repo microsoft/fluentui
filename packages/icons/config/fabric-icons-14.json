@@ -1,0 +1,32 @@
+{
+	"fontName": "fabric-icons-14",
+	"fontFamilyName": "FabricMDL2Icons-14",
+	"excludeGlyphs": false,
+	"chunkSubsets": true,
+	"hashFontFileName": true,
+	"subsetChunkSettings": {
+		"maxSubsetSize": 100
+	},
+	"glyphs": [
+		{
+			"name": "PublishCourse",
+			"unicode": "F699"
+		},
+		{
+			"name": "DictionaryRemove",
+			"unicode": "F69A"
+		},
+		{
+			"name": "UserRemove",
+			"unicode": "F69B"
+		},
+		{
+			"name": "UserEvent",
+			"unicode": "F69C"
+		},
+		{
+			"name": "Encryption",
+			"unicode": "F69D"
+		}
+	]
+}

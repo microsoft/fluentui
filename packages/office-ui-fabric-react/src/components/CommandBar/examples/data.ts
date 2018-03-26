@@ -25,7 +25,7 @@ export const items = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    href: 'https://mytenenat.sharepoint.com/teams/IT/BPU/',
+    href: 'https://microsoft.com',
     ['data-automation-id']: 'uploadButton'
   },
   {
@@ -38,32 +38,12 @@ export const items = [
     key: 'download',
     name: 'Download',
     icon: 'Download',
-    onClick: () => { return; }
   },
   {
-    key: 'move',
-    name: 'Move to...',
-    icon: 'MoveToFolder',
-    onClick: () => { return; }
-  },
-  {
-    key: 'copy',
-    name: 'Copy to...',
-    icon: 'Copy',
-    onClick: () => { return; }
-  },
-  {
-    key: 'rename',
-    name: 'Rename...',
-    icon: 'Edit',
-    onClick: () => { return; }
-  },
-  {
-    key: 'disabled',
-    name: 'Disabled...',
-    icon: 'Cancel',
-    disabled: true,
-    onClick: () => { return; }
+    key: 'link',
+    name: 'Link',
+    icon: 'WindowsLogo',
+    href: 'https://microsoft.com',
   }
 ];
 
@@ -81,27 +61,6 @@ export const textOnlyItems = [
   {
     key: 'download',
     name: 'Download',
-    onClick: () => { return; }
-  },
-  {
-    key: 'move',
-    name: 'Move to...',
-    onClick: () => { return; }
-  },
-  {
-    key: 'copy',
-    name: 'Copy to...',
-    onClick: () => { return; }
-  },
-  {
-    key: 'rename',
-    name: 'Rename...',
-    onClick: () => { return; }
-  },
-  {
-    key: 'disabled',
-    name: 'Disabled...',
-    disabled: true,
     onClick: () => { return; }
   }
 ];
@@ -167,8 +126,8 @@ export const overflowItems = [
     name: 'Rename...',
     icon: 'Edit'
   }
-
 ];
+
 export const farItems = [
   {
     key: 'sort',

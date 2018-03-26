@@ -1,22 +1,32 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Checkbox } from '../../../Checkbox';
+import { Layer } from '../Layer';
+import { LayerHost } from '../LayerHost';
+import { Toggle } from '../../../Toggle';
+import { AnimationClassNames } from '../../../Styling';
 import './Layer.Example.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
-export class LayerHostedExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class LayerHostedExample extends React.Component<{}, {
+  showLayer: boolean;
+  showLayerNoId: boolean;
+  showHost: boolean;
+}> {
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showLayer: false,
+      showLayerNoId: false,
       showHost: true
     };
   }
 
   public render() {
-    let { showLayer, showHost} = this.state;
-    let content = (
-      <div className='LayerExample-content ms-u-scaleUpIn100'>
+    const { showLayer, showLayerNoId, showHost } = this.state;
+    const content = (
+      <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 } >
         This is example layer content.
       </div>
     );
@@ -26,7 +36,8 @@ export class LayerHostedExample extends React.Component<any, any> {
         <Toggle
           label='Show host'
           checked={ showHost }
-          onChanged={ checked => this.setState({ showHost: checked }) } />
+          onChanged={ this._onChangeToggle }
+        />
 
         { showHost && (
           <LayerHost id='layerhost1' className='LayerExample-customHost' />
@@ -37,15 +48,18 @@ export class LayerHostedExample extends React.Component<any, any> {
         </p>
 
         <Checkbox
+          className={ exampleStyles.exampleCheckbox }
           label='Render the box below in a Layer and target it at hostId=layerhost1'
           checked={ showLayer }
-          onChange={ (ev, checked) => this.setState({ showLayer: checked }) } />
+          onChange={ this._onChangeCheckbox }
+        />
 
         { showLayer ? (
           <Layer
             hostId='layerhost1'
-            onLayerDidMount={ () => console.log('didmount') }
-            onLayerWillUnmount={ () => console.log('willunmount') }
+            onLayerDidMount={ this._log('didmount') }
+            onLayerWillUnmount={ this._log('willunmount') }
+            className={ 'exampleLayerClassName' }
           >
             { content }
           </Layer>
@@ -53,7 +67,45 @@ export class LayerHostedExample extends React.Component<any, any> {
 
         <div className='LayerExample-nonLayered'>I am normally below the content.</div>
 
+        <p>
+          If you do not specify a hostId then the hosted layer will default to being fixed to the page by default.
+        </p>
+
+        <Checkbox
+          className={ exampleStyles.exampleCheckbox }
+          label='Render the box below in a Layer without specifying a host, fixing it to the top of the page'
+          checked={ showLayerNoId }
+          onChange={ this._onChangeCheckboxNoId }
+        />
+
+        { showLayerNoId ? (
+          <Layer
+            onLayerDidMount={ this._log('didmount') }
+            onLayerWillUnmount={ this._log('willunmount') }
+          >
+            { content }
+          </Layer>
+        ) : content }
+
       </div>
     );
+  }
+
+  private _log(text: string): () => void {
+    return (): void => {
+      console.log(text);
+    };
+  }
+
+  private _onChangeCheckbox = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
+    this.setState({ showLayer: checked });
+  }
+
+  private _onChangeCheckboxNoId = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
+    this.setState({ showLayerNoId: checked });
+  }
+
+  private _onChangeToggle = (checked: boolean): void => {
+    this.setState({ showHost: checked });
   }
 }

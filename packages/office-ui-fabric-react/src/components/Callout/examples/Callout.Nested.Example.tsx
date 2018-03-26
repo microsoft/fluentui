@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
 import './CalloutExample.scss';
 
-import { items } from '../../CommandBar/examples/data';
-
-export interface ICalloutBaiscExampleState {
-  isCalloutVisible?: boolean;
+export interface ICalloutNestedExampleProps {
+  items: ICommandBarItemProps[];
 }
 
-export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExampleState> {
-  private _menuButtonElement: HTMLElement;
+export class CalloutNestedExample extends React.Component<ICalloutNestedExampleProps, {
+  isCalloutVisible: boolean;
+}> {
+  private _menuButtonElement: HTMLElement | null;
 
-  public constructor() {
-    super();
+  public constructor(props: ICalloutNestedExampleProps) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
 
@@ -24,7 +24,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
   }
 
   public render() {
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
 
     return (
       <div className='ms-CalloutExample'>
@@ -41,8 +41,8 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
               ariaLabelledBy={ 'callout-label-2' }
               className='ms-CalloutExample-callout'
               gapSpace={ 0 }
-              targetElement={ this._menuButtonElement }
-              onDismiss={ (ev: any) => { this._onDismiss(ev); } }
+              target={ this._menuButtonElement }
+              onDismiss={ this._onDismiss }
               setInitialFocus={ true }
             >
               <div className='ms-CalloutExample-header'>

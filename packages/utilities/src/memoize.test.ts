@@ -1,42 +1,110 @@
-import 'es6-weak-map/implement';
+import { memoize, memoizeFunction } from './memoize';
 
-import { memoize } from './memoize';
+describe('memoizeFunction', () => {
 
-let { expect } = chai;
-
-describe('memoize', () => {
   it('can return a cached result with a no args function', () => {
     let _timesCalled = 0;
-    let memoizedTimesCalled = memoize(() => ++_timesCalled);
+    let memoizeFunctiondTimesCalled = memoizeFunction(() => ++_timesCalled);
 
-    expect(memoizedTimesCalled()).equals(1);
-    expect(memoizedTimesCalled()).equals(1);
+    expect(memoizeFunctiondTimesCalled()).toEqual(1);
+    expect(memoizeFunctiondTimesCalled()).toEqual(1);
   });
 
   it('can return a cached result with a 2 arg function', () => {
     let _timesCalled = 0;
-    let combine = memoize((obj1, obj2) => (obj1.val + obj2.val + ++_timesCalled));
+    // tslint:disable-next-line:no-any
+    let combine = memoizeFunction((obj1: any, obj2: any) => (obj1.val + obj2.val + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
-    expect(combine(objA, objA)).equals('aa1');
-    expect(combine(objA, objA)).equals('aa1');
-    expect(combine(objA, objB)).equals('ab2');
-    expect(combine(objA, objB)).equals('ab2');
-    expect(combine(objB, objA)).equals('ba3');
-    expect(combine(objB, objA)).equals('ba3');
+    expect(combine(objA, objA)).toEqual('aa1');
+    expect(combine(objA, objA)).toEqual('aa1');
+    expect(combine(objA, objB)).toEqual('ab2');
+    expect(combine(objA, objB)).toEqual('ab2');
+    expect(combine(objB, objA)).toEqual('ba3');
+    expect(combine(objB, objA)).toEqual('ba3');
   });
 
   it('can return a cached result with falsy args', () => {
     let _timesCalled = 0;
-    let combine = memoize((obj1, obj2) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
+    // tslint:disable-next-line:no-any
+    let combine = memoizeFunction((obj1: any, obj2: any) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
-    expect(combine(objA, objA)).equals('aa1');
-    expect(combine(objA, undefined)).equals('a2');
-    expect(combine(null, objB)).equals('b3');
-    expect(combine(false, 0)).equals('4');
+    expect(combine(objA, objA)).toEqual('aa1');
+    expect(combine(objA, undefined)).toEqual('a2');
+    expect(combine(null, objB)).toEqual('b3');
+    expect(combine(false, 0)).toEqual('4');
+  });
+
+  it('works if you pass less arguments on subsequent calls', () => {
+    let count = 0;
+    let func = memoizeFunction((
+      a: string = '',
+      b: string = ''
+    ) => a + b + count++);
+
+    expect(func('hi', 'world')).toEqual('hiworld0');
+    expect(func('hi', 'world')).toEqual('hiworld0');
+    expect(func('hi')).toEqual('hi1');
+    expect(func('hi')).toEqual('hi1');
+    expect(func()).toEqual('2');
+    expect(func()).toEqual('2');
+  });
+
+  it('works if you pass more arguments on subsequent calls', () => {
+    let count = 0;
+    let func = memoizeFunction((
+      a: string = '',
+      b: string = ''
+    ) => a + b + count++);
+
+    expect(func()).toEqual('0');
+    expect(func()).toEqual('0');
+    expect(func('hi')).toEqual('hi1');
+    expect(func('hi')).toEqual('hi1');
+    expect(func('hi', 'world')).toEqual('hiworld2');
+    expect(func('hi', 'world')).toEqual('hiworld2');
+  });
+
+  it('resets after resetCount limit is reached.', () => {
+    let count = 0;
+    let func = memoizeFunction((
+      a: string
+    ) => a + count++, 1);
+
+    expect(func('a')).toEqual('a0');
+    expect(func('a')).toEqual('a0');
+    expect(func('b')).toEqual('b1');
+    expect(func('b')).toEqual('b2');
+    expect(func('b')).toEqual('b2');
+    expect(func('a')).toEqual('a3');
+    expect(func('a')).toEqual('a4');
+    expect(func('a')).toEqual('a4');
+  });
+
+});
+
+describe('memoize', () => {
+
+  it('can work on multiple instances of a class', () => {
+    let _count = 0;
+
+    class Foo {
+
+      @memoize
+      public bar(val: string): string {
+        return val + _count++;
+      }
+    }
+
+    let f = new Foo();
+
+    expect(f.bar('hi')).toEqual('hi0');
+    expect(f.bar('hi')).toEqual('hi0');
+    expect(f.bar('bye')).toEqual('bye1');
+    expect(f.bar('bye')).toEqual('bye1');
   });
 
 });

@@ -1,66 +1,57 @@
 import * as React from 'react';
-import { ContextualMenu, IContextualMenuItem, DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuMultiselectExampleState {
   selection?: { [key: string]: boolean };
-  isContextMenuVisible?: boolean;
 }
 
-let keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent'];
+const keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent', 'disabledNewSub', 'disabledEmailMessage', 'disabledCalendarEvent'];
 
-export class ContextualMenuCheckmarksExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
+export class ContextualMenuCheckmarksExample extends React.Component<{}, IContextualMenuMultiselectExampleState> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._onToggleSelect = this._onToggleSelect.bind(this);
-    this._onClick = this._onClick.bind(this);
-    this._onDismiss = this._onDismiss.bind(this);
 
     this.state = {
       selection: {},
-      isContextMenuVisible: false
     };
   }
 
   public render() {
-    let { selection } = this.state;
+    const { selection } = this.state;
 
     return (
-      <div>
-        <DefaultButton
-          onClick={ this._onClick } id='ContextualMenuButton2'
-          text='Click for ContextualMenu'
-        />
-        { this.state.isContextMenuVisible ? (
-          <ContextualMenu
-            target='#ContextualMenuButton2'
-            shouldFocusOnMount={ false }
-            onDismiss={ this._onDismiss }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            items={
+      <DefaultButton
+        id='ContextualMenuButton2'
+        text='Click for ContextualMenu'
+        menuProps={
+          {
+            shouldFocusOnMount: true,
+            items:
               [
                 {
                   key: keys[0],
                   name: 'New',
                   canCheck: true,
-                  isChecked: selection[keys[0]],
+                  isChecked: selection![keys[0]],
                   onClick: this._onToggleSelect
                 },
                 {
                   key: keys[1],
                   name: 'Share',
                   canCheck: true,
-                  isChecked: selection[keys[1]],
+                  isChecked: selection![keys[1]],
                   onClick: this._onToggleSelect
                 },
                 {
                   key: keys[2],
                   name: 'Mobile',
                   canCheck: true,
-                  isChecked: selection[keys[2]],
+                  isChecked: selection![keys[2]],
                   onClick: this._onToggleSelect
                 },
                 {
@@ -72,61 +63,89 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                   key: keys[3],
                   name: 'Print',
                   canCheck: true,
-                  isChecked: selection[keys[3]],
+                  isChecked: selection![keys[3]],
                   onClick: this._onToggleSelect
                 },
                 {
                   key: keys[4],
                   name: 'Music',
                   canCheck: true,
-                  isChecked: selection[keys[4]],
+                  isChecked: selection![keys[4]],
                   onClick: this._onToggleSelect
                 },
                 {
                   key: keys[5],
+                  iconProps: {
+                    iconName: 'MusicInCollectionFill'
+                  },
                   subMenuProps: {
                     items: [
                       {
                         key: keys[6],
                         name: 'Email message',
                         canCheck: true,
-                        isChecked: selection[keys[6]],
+                        isChecked: selection![keys[6]],
                         onClick: this._onToggleSelect
                       },
                       {
                         key: keys[7],
                         name: 'Calendar event',
                         canCheck: true,
-                        isChecked: selection[keys[7]],
+                        isChecked: selection![keys[7]],
                         onClick: this._onToggleSelect
                       }
                     ],
                   },
-                  name: 'New'
+                  name: 'Split Button',
+                  canCheck: true,
+                  isChecked: selection![keys[5]],
+                  split: true,
+                  onClick: this._onToggleSelect,
+                },
+                {
+                  key: keys[8],
+                  iconProps: {
+                    iconName: 'MusicInCollectionFill'
+                  },
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: keys[6],
+                        name: 'Email message',
+                        canCheck: true,
+                        isChecked: selection![keys[9]],
+                        onClick: this._onToggleSelect
+                      },
+                      {
+                        key: keys[7],
+                        name: 'Calendar event',
+                        canCheck: true,
+                        isChecked: selection![keys[10]],
+                        onClick: this._onToggleSelect
+                      }
+                    ],
+                  },
+                  name: 'Split Button',
+                  canCheck: true,
+                  isChecked: selection![keys[8]],
+                  split: true,
+                  onClick: this._onToggleSelect,
+                  disabled: true
                 },
               ]
-            }
-          />) : (null) }
-      </div>
+          }
+        }
+      />
     );
   }
 
   private _onToggleSelect(ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem) {
-    let { selection } = this.state;
-
-    selection[item.key] = !selection[item.key];
+    const { selection } = this.state;
+    ev!.preventDefault();
+    selection![item!.key] = !selection![item!.key];
 
     this.setState({
       selection: selection
     });
   }
-
-  private _onClick(event: React.MouseEvent<HTMLButtonElement>) {
-    this.setState({ isContextMenuVisible: true });
-  }
-
-  private _onDismiss() {
-    this.setState({ isContextMenuVisible: false });
-  }
-
 }

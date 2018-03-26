@@ -1,11 +1,16 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import {
+  BaseComponent,
+  createRef
+} from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import './DetailsList.Grouped.Example.scss';
 
-let _columns = [
+const _columns = [
   {
     key: 'name',
     name: 'Name',
@@ -22,7 +27,7 @@ let _columns = [
     maxWidth: 200
   }
 ];
-let _items = [
+const _items = [
   {
     key: 'a',
     name: 'a',
@@ -50,40 +55,13 @@ let _items = [
   }
 ];
 
-function groupBy(items, fieldName) {
-  let groups = items.reduce((currentGroups, currentItem, index) => {
-    let lastGroup = currentGroups[currentGroups.length - 1];
-    let fieldValue = currentItem[fieldName];
+export class DetailsListGroupedExample extends BaseComponent<{}, {
+  items: {}[];
+}> {
+  private _root = createRef<DetailsList>();
 
-    if (!lastGroup || lastGroup.value !== fieldValue) {
-      currentGroups.push({
-        key: 'group' + fieldValue + index,
-        name: `By "${fieldValue}"`,
-        value: fieldValue,
-        startIndex: index,
-        level: 0,
-        count: 0
-      });
-    }
-    if (lastGroup) {
-      lastGroup.count = index - lastGroup.startIndex;
-    }
-    return currentGroups;
-  }, []);
-
-  // Fix last group count
-  let lastGroup = groups[groups.length - 1];
-
-  if (lastGroup) {
-    lastGroup.count = items.length - lastGroup.startIndex;
-  }
-
-  return groups;
-}
-
-export class DetailsListGroupedExample extends React.Component<any, any> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       items: _items
@@ -91,22 +69,51 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { items } = this.state;
+    const { items } = this.state;
 
     return (
-      <Fabric className='foo'>
-        <DefaultButton onClick={ () => this._addItem() } text='Add an item' />
+      <Fabric className='DetailsList-grouped-example'>
+        <DefaultButton
+          onClick={ this._addItem }
+          text='Add an item'
+        />
         <DetailsList
+          componentRef={ this._root }
           items={ items }
-          groups={ groupBy(items, 'color') }
+          groups={ [
+            {
+              key: 'groupred0',
+              name: 'By "red"',
+              startIndex: 0,
+              count: 2
+            },
+            {
+              key: 'groupgreen2',
+              name: 'By "green"',
+              startIndex: 2,
+              count: 0
+            },
+            {
+              key: 'groupblue2',
+              name: 'By "blue"',
+              startIndex: 2,
+              count: items.length - 2
+            }
+          ] }
           columns={ _columns }
+          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+          ariaLabelForSelectionColumn='Toggle selection'
+          groupProps={ {
+            showEmptyGroups: true
+          } }
+          onRenderItemColumn={ this._onRenderColumn }
         />
       </Fabric>
     );
   }
 
-  private _addItem() {
-    let items = this.state.items;
+  private _addItem = (): void => {
+    const items = this.state.items;
 
     this.setState({
       items: items.concat([{
@@ -114,7 +121,27 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
         name: 'New item ' + items.length,
         color: 'blue'
       }])
+    }, () => {
+      if (this._root.value) {
+        this._root.value.focusIndex(items.length, true);
+      }
     });
   }
 
+  private _onRenderColumn(item: any, index: number, column: IColumn) {
+    let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
+
+    if (value === null || value === undefined) {
+      value = '';
+    }
+
+    return (
+      <div
+        className={ 'grouped-example-column' }
+        data-is-focusable={ true }
+      >
+        { value }
+      </div>
+    );
+  }
 }

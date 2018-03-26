@@ -1,19 +1,13 @@
 @import '../../common/common';
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-
 //
 // Office UI Fabric
 // --------------------------------------------------
 // ProgressIndicator Styles
-
-
 $ProgressIndicatorMarginBetweenText: 8px;
 $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
-
 .root {
-  @include ms-baseFont;
   font-weight: $ms-font-weight-regular;
 }
 
@@ -35,6 +29,7 @@ $ProgressIndicatorTextHeight: 18px;
 
 .itemProgress {
   position: relative;
+  overflow: hidden;
   height: 2px;
   padding: $ProgressIndicatorMarginBetweenText 0;
 }
@@ -44,7 +39,9 @@ $ProgressIndicatorTextHeight: 18px;
   width: 100%;
   height: 2px;
   background-color: $ms-color-neutralLight;
-  outline: 1px solid transparent;
+  @include high-contrast {
+    border-bottom: 1px solid WindowText;
+  }
 }
 
 .progressBar {
@@ -53,13 +50,19 @@ $ProgressIndicatorTextHeight: 18px;
   position: absolute;
   transition: width .3s ease;
   width: 0;
-
-  @media screen and (-ms-high-contrast: active) {
-    background-color: $ms-color-white;
+  &.indeterminate {
+    position: absolute;
+    min-width: 33%;
+    background: linear-gradient(to right, transparent 0%, $ms-color-themePrimary 50%, transparent 100%);
+    animation: indeterminateProgress 3s infinite;
   }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    background-color: $ms-color-black;
+  @include high-contrast {
+    background-color: WindowText;
+  }
+  @include RTL {
+    &.indeterminate {
+      animation: indeterminateProgressRTL 3s infinite;
+    }
   }
 }
 
@@ -67,4 +70,22 @@ $ProgressIndicatorTextHeight: 18px;
   transition-property: width;
   transition-timing-function: linear;
   transition-duration: 150ms;
+}
+
+@keyframes indeterminateProgress {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes indeterminateProgressRTL {
+  0% {
+    right: -30%;
+  }
+  100% {
+    right: 100%;
+  }
 }

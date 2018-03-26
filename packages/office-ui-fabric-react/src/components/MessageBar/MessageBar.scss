@@ -7,27 +7,38 @@
 // --------------------------------------------------
 // MessageBar Styles
 
+// Mixins
+@mixin multiLineContent {
+  flex-direction: column;
+  .content {
+    flex-direction: row;
+  }
+  .innerText {
+    overflow: visible;
+    white-space: pre-wrap;
+  }
+}
+
+@mixin buttonMargins($sidesAndBottom, $top: $sidesAndBottom) {
+  @include margin($top, $sidesAndBottom, $sidesAndBottom, 0);
+  :nth-child(n+2) {
+    @include margin-left($sidesAndBottom);
+  }
+}
+
 .root {
-  @include ms-baseFont;
   @include ms-bgColor-info;
+  min-height: 32px;
   color: $ms-color-infoText;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   position: relative;
-
-  .icon {
-    @include padding-right(8px);
-    color: $ms-color-info;
-  }
+  word-break: break-word;
 
   :global(.ms-Link) {
     font-size: $ms-font-size-s;
     color: $ms-color-themeDark;
-  }
-
-  :global(.ms-Button) {
-    @include margin-left(6px);
   }
 }
 
@@ -42,14 +53,40 @@
   min-width: 16px;
   min-height: 16px;
   display: flex;
+  color: $ms-color-info;
+  flex-shrink: 0;
+  // Margin-right is accounted for in the .innerText margin-left
+  @include margin(16px, 0, 16px, 16px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+  }
 }
 
 .text {
   @include ms-font-s;
   min-width: 0;
   display: flex;
+  flex-grow: 1;
+  @include margin(16px, 8px, 16px, 8px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+    &.noDismissButton {
+      @include margin-right(8px);
+    }
+  }
+  &.noDismissButton {
+    @include margin-right(16px);
+  }
 }
 
+.innerText {
+  line-height: 16px;
+
+  // Add padding between text and hyperlink
+  span a {
+    @include padding-left(4px);
+  }
+}
 
 //== Modifier: Warning message
 //
@@ -106,11 +143,10 @@
   }
 }
 
-// Shared
-
+// Shared between Single- and Multi- Line
 .content {
-  padding: 16px;
   display: flex;
+  line-height: normal;
   width: 100%;
   box-sizing: border-box;
   &:before {
@@ -121,96 +157,95 @@
     left: 0;
     top: 0;
     margin: 0;
-    @media screen and (-ms-high-contrast: active) {
-        border: 1px solid $ms-color-white;
-        content: ' ';
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-        border: 1px solid $ms-color-black;
+    @include high-contrast {
+        border: 1px solid WindowText;
         content: ' ';
     }
   }
 }
 
-.actionables {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 0;
+.actions {
+  @include buttonMargins(12px, 0);
 }
 
-.actionables > .dismissal {
-  right: 0;
-  top: 0;
-  position: absolute !important; // Needed because we're using focus-border mixin
+.actionsSingleLine {
+  @include buttonMargins(8px);
 }
 
-.actions, .actionsOneline {
+.actions, .actionsSingleLine {
   display: flex;
   flex: 0 0 auto;
   flex-direction: row-reverse;
   align-items: center;
-}
-
-.actionsOneline {
-  position: relative;
-}
-
-.dismissal {
-  @include focus-border();
-  min-width: 0;
-}
-.dismissalOneline .dismissal {
-  @include margin-right(-8px);
-}
-
-// Add space between adjacent MessageBars.
-.root + .root {
-  margin-top: 6px;
-}
-
-.innerTextPadding {
-  @include padding-right(24px); // Add padding if we have a dismiss to prevent button overlapping text.
-
-  span, .innerText > span {
-    @include padding-right(4px); // Add padding between text and hyperlink.
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include buttonMargins(8px, 0);
+    :global(.ms-Button) {
+      margin-top: 8px;
+    }
   }
 }
 
-// When we can have multiple lines in the message bar.
-.multiline > .content > .actionables {
-  flex-direction: column;
+.dismissal,
+.expand {
+  @include focus-border();
+  flex-shrink: 0;
+  @include margin(8px, 8px, 8px, 0); // Margin-left is accounted for in the .text margin-right
+
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(0, 0, 0, 8px);
+  }
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
 }
 
-// When we should have only a single line of text in the message bar.
-.singleline {
-  .content {
-    .icon{
-      align-items: center;
+.dismissSingleLine,
+.expandSingleLine {
+  display: flex;
+}
+
+.dismissal,
+.dismissSingleLine,
+.expandSingleLine {
+  :global(.ms-Button-icon) {
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+    color: $ms-color-neutralSecondary;
+  }
+}
+
+// Multi line specific attributes
+.multiLine {
+  @include multiLineContent();
+  .text.multiLineWithActions {
+    margin-bottom: 8px; // This creates an 8px space between text and actions
+    @media screen and (max-width: $ms-screen-max-sm) {
+      margin-bottom: 0;
     }
+  }
+}
 
-    .actionables > .text {
-      justify-content: center;
-      align-items: center;
-
-      .innerText,
-      .innerTextPadding {
-        max-height: 1.3em;
-        line-height: 1.3em;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+// Single line specific attributes
+.singleLine {
+  .innerText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .expandSingleLine {
+    @include multiLineContent();
+  }
+  @media screen and (max-width: $ms-screen-max-sm) {
+    // Singleline acts like multiLine in mobile, unless text is specified to be truncated
+    &:not(.expandingSingleLine) {
+      @include multiLineContent();
+      .text.multiLineWithActions {
+        @media screen and (max-width: $ms-screen-max-sm) {
+          margin-bottom: 0;
+        }
       }
     }
   }
-
-  .content > .actionables {
-    flex-direction: row;
-  }
-}
-
-// Because of an odd behaviour in other CSS, ms-MessageBar--remove causes children's icons to use 8px, and not inherit.
-.root :global(.ms-Icon--Cancel) {
-  font-size: 14px;
 }

@@ -6,6 +6,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { LabelBasicExample } from './examples/Label.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { LabelStatus } from './Label.checklist';
 
 const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Label/examples/Label.Basic.Example.tsx') as string;
 
@@ -20,10 +22,11 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
             <LabelBasicExample />
           </ExampleCard>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')
             ] }
           />
         }
@@ -35,7 +38,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -54,11 +57,13 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Label/Label.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            { ...LabelStatus }
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

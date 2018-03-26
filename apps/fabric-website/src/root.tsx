@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -6,10 +7,15 @@ import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { setBaseUrl } from '@uifabric/utilities/lib/resources';
+import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+const corePackageData = require('../node_modules/office-ui-fabric-core/package.json');
+const corePackageVersion: string = corePackageData && corePackageData.version || '9.2.0';
+
+initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
@@ -23,7 +29,7 @@ let rootElement;
 let currentBreakpoint;
 let scrollDistance;
 
-function _routerDidMount() {
+function _routerDidMount(): void {
   if (_hasAnchorLink(window.location.hash)) {
     let hash = _extractAnchorLink(window.location.hash);
     let el = document.getElementById(hash);
@@ -35,12 +41,12 @@ function _routerDidMount() {
   }
 }
 
-function _getBreakpoint() {
+function _getBreakpoint(): void {
   currentBreakpoint = WindowWidthUtility.currentFabricBreakpoint();
   scrollDistance = _setScrollDistance();
 }
 
-function _setScrollDistance() {
+function _setScrollDistance(): number {
   switch (currentBreakpoint) {
     case ('LG'):
       return 240;
@@ -49,7 +55,7 @@ function _setScrollDistance() {
   }
 }
 
-function _hasAnchorLink(path) {
+function _hasAnchorLink(path: string): boolean {
   return (path.match(/#/g) || []).length > 1;
 }
 
@@ -65,7 +71,7 @@ function _extractAnchorLink(path) {
   return cleanedSplit[cleanedSplit.length - 1];
 }
 
-function _onLoad() {
+function _onLoad(): void {
 
   // Load the app into this element.
   rootElement = rootElement || document.getElementById('main');
@@ -82,16 +88,19 @@ function _onLoad() {
     rootElement);
 }
 
-function _createRoutes(pages): any[] {
+function _createRoutes(pages: {}[]): {}[] {
   let routes = [];
-  let pageRoutes = [];
-  pages.forEach((page, pageIndex) => {
-    routes.push(<Route
-      key={ pageIndex }
-      path={ page.url }
-      component={ page.component }
-      getComponent={ page.getComponent }
-    />);
+
+  // tslint:disable-next-line:no-any
+  pages.forEach((page: any, pageIndex: number) => {
+    routes.push(
+      <Route
+        key={ pageIndex }
+        path={ page.url }
+        component={ page.component }
+        getComponent={ page.getComponent }
+      />
+    );
     if (page.pages) {
       routes = routes.concat(_createRoutes(page.pages));
     }
@@ -126,12 +135,15 @@ if (isReady) {
 }
 
 window.onunload = _onUnload;
-function addCSSToHeader(fileName) {
+
+function addCSSToHeader(fileName: string) {
   let headEl = document.head;
   let linkEl = document.createElement('link');
-  linkEl.type = 'text/css'
-  linkEl.rel = 'stylesheet'
-  linkEl.href = fileName
-  headEl.appendChild(linkEl)
+
+  linkEl.type = 'text/css';
+  linkEl.rel = 'stylesheet';
+  linkEl.href = fileName;
+  headEl.appendChild(linkEl);
 }
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/5.1.0/css/fabric.min.css')
+
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');

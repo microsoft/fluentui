@@ -1,0 +1,184 @@
+{
+  "name": "@uifabric/icons",
+  "entries": [
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/icons_v5.7.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.20.0 <6.0.0` to `>=5.21.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/icons_v5.6.0",
+      "date": "Tue, 13 Mar 2018 20:00:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f973b9c00982af3a844f34c6e11aa0644fb2d0a6",
+            "comment": "Adjusting npmrc to ensure we have published to the correct registry."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/icons_v5.5.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "47663d07d856cf09d880f67b7221eebeda54461e",
+            "comment": "Updating icons to FabMDL2v2.68 and adding 2 icons to the main partition."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.2",
+      "tag": "@uifabric/icons_v5.4.2",
+      "date": "Thu, 01 Feb 2018 11:23:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Srikanth Deshpande <srideshpande@users.noreply.github.com>",
+            "commit": "952ad7979322352ca597d4e6319391529d5d2212",
+            "comment": "updating config files in @uifabric/icons package"
+          },
+          {
+            "author": "Srikanth Deshpande <srideshpande@users.noreply.github.com>",
+            "commit": "66a91aadb99bca3923125d62cadc15984dba0be6",
+            "comment": "Updating fabric icons in office-ui-fabric-react's  @uifabric/icons package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.1",
+      "tag": "@uifabric/icons_v5.4.1",
+      "date": "Mon, 29 Jan 2018 11:23:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Srikanth Deshpande <srideshpande@users.noreply.github.com>",
+            "commit": "25129e761bc4463160015d5282c82f66aad99174",
+            "comment": "Updating fabric icons in office-ui-fabric-react's  @uifabric/icons package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "@uifabric/icons_v5.4.0",
+      "date": "Wed, 03 Jan 2018 11:23:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "ca52fe19a919c0fe6630b7fc0f44aa1fdda98a98",
+            "comment": "Updated icon font files to match the hash in the src files."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.0",
+      "tag": "@uifabric/icons_v5.3.0",
+      "date": "Thu, 30 Nov 2017 11:23:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7bd70ca910f147560e0c0e8a536a2659730b5f13",
+            "comment": "Updating the icons package to pass through optional `options` argument in `initializeIcons`."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.11.1 <6.0.0` to `>=5.12.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/icons_v5.2.0",
+      "date": "Fri, 13 Oct 2017 21:59:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2160f2eb3f73deb473b879273030ed2b737d63a0",
+            "comment": "IconNames should not produce javascript."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.1",
+      "tag": "@uifabric/icons_v5.1.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/icons_v5.1.0",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c13ebe30151821c40de32a3e64d3da7e476a030a",
+            "comment": "Exporting `IconNames` const enum."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/icons_v5.0.1",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "Initial release of the icons package."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

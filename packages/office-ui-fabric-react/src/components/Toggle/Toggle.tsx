@@ -1,29 +1,33 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  KeyCodes,
-  autobind,
-  css,
   getId,
   inputProperties,
-  getNativeProps
+  getNativeProps,
+  createRef
 } from '../../Utilities';
-import { IToggleProps, IToggle } from './Toggle.Props';
+import {
+  IToggleProps,
+  IToggle
+} from './Toggle.types';
 import { Label } from '../../Label';
-import * as stylesImport from './Toggle.scss';
-const styles: any = stylesImport;
+import {
+  customizable
+} from '../../Utilities';
+import { getClassNames } from './Toggle.classNames';
 
 export interface IToggleState {
   isChecked: boolean;
 }
 
+@customizable('Toggle', ['theme'])
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
-  private _toggleInput: HTMLInputElement;
+  private _toggleButton = createRef<HTMLButtonElement>();
 
   constructor(props: IToggleProps) {
-    super();
+    super(props);
 
     this._warnMutuallyExclusive({
       checked: 'defaultChecked'
@@ -57,91 +61,91 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
-    let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
-    let { isChecked } = this.state;
-    let stateText = isChecked ? onText : offText;
+    const {
+      className,
+      theme,
+      styles: customStyles,
+      disabled,
+      label,
+      offAriaLabel,
+      offText,
+      onAriaLabel,
+      onText
+    } = this.props;
+    const { isChecked } = this.state;
+    const stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
+    const classNames = getClassNames(
+      theme!,
+      customStyles!,
+      className!,
+      disabled!,
+      isChecked
+    );
+
     return (
-      <div className={
-        css(
-          styles.root,
-          'ms-Toggle',
-          className,
-          {
-            'is-checked': isChecked,
-            'is-enabled': !disabled,
-            'is-disabled': disabled,
-            [styles.isChecked]: isChecked,
-            [styles.isEnabled]: !disabled,
-            [styles.isDisabled]: disabled,
-          }
-        ) }>
-        <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
-          { label && (
-            <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
+      <div className={ classNames.root }>
+
+        { label && (
+          <Label htmlFor={ this._id } className={ classNames.label }>{ label }</Label>
+        ) }
+
+        <div className={ classNames.container } >
+          <button
+            { ...toggleNativeProps }
+            className={ classNames.pill }
+            disabled={ disabled }
+            id={ this._id }
+            type='button'
+            ref={ this._toggleButton }
+            aria-disabled={ disabled }
+            aria-pressed={ isChecked }
+            aria-label={ ariaLabel ? ariaLabel : label }
+            data-is-focusable={ true }
+            onChange={ this._noop }
+            onClick={ this._onClick }
+          >
+            <div className={ classNames.thumb } />
+          </button>
+          { stateText && (
+            <Label htmlFor={ this._id } className={ classNames.text }>{ stateText }</Label>
           ) }
-          <div className={ css(styles.slider, 'ms-Toggle-slider') }>
-            <input
-              key='invisibleToggle'
-              ref={ (c): HTMLInputElement => this._toggleInput = c }
-              type='checkbox'
-              id={ this._id }
-              onChange={ () => { /* no-op */ } }
-              { ...toggleNativeProps }
-              className={ styles.invisibleToggle }
-              name={ this._id }
-              disabled={ disabled }
-              checked={ isChecked }
-              aria-label={ ariaLabel }
-              onClick={ this._onClick }
-              onKeyDown={ this._onInputKeyDown }
-            />
-            <div className={ css(styles.background, 'ms-Toggle-background') }>
-              <div className={ css(styles.focus, 'ms-Toggle-focus') } />
-              <div className={ css(styles.thumb, 'ms-Toggle-thumb') } />
-            </div>
-            { stateText && (
-              <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
-            ) }
-          </div>
         </div>
-      </div>
+      </div >
     );
   }
 
   public focus() {
-    if (this._toggleInput) {
-      this._toggleInput.focus();
+    if (this._toggleButton.value) {
+      this._toggleButton.value.focus();
     }
   }
 
-  @autobind
-  private _onClick() {
-    let { checked, onChanged } = this.props;
-    let { isChecked } = this.state;
+  private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
+    const { disabled, checked, onChanged, onClick } = this.props;
+    const { isChecked } = this.state;
 
-    // Only update the state if the user hasn't provided it.
-    if (checked === undefined) {
-      this.setState({
-        isChecked: !isChecked
-      });
-    }
+    if (!disabled) {
+      // Only update the state if the user hasn't provided it.
+      if (checked === undefined) {
+        this.setState({
+          isChecked: !isChecked
+        });
+      }
 
-    if (onChanged) {
-      onChanged(!isChecked);
-    }
-  }
+      if (onChanged) {
+        onChanged(!isChecked);
+      }
 
-  @autobind
-  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    switch (ev.which) {
-      case KeyCodes.enter:
-        // Also support toggling via the enter key.
-        // While toggling via the space bar is technically correct for a checkbox, this control looks more like a button to sighted users.
-        this._onClick();
-
-        break;
+      if (onClick) {
+        onClick(ev);
+      }
     }
   }
+
+  private _noop(): void {
+    /* no-op */
+  }
+
 }

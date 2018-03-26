@@ -64,9 +64,9 @@ export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
-export class DatePickerBasicExample extends React.Component<any, IDatePickerBasicExampleState> {
-  public constructor() {
-    super();
+export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasicExampleState> {
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday
@@ -74,11 +74,18 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
   }
 
   public render() {
-    let { firstDayOfWeek } = this.state;
+    const { firstDayOfWeek } = this.state;
 
     return (
       <div>
-        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+        <DatePicker
+          firstDayOfWeek={ firstDayOfWeek }
+          strings={ DayPickerStrings }
+          placeholder='Select a date...'
+          // tslint:disable:jsx-no-lambda
+          onAfterMenuDismiss={ () => console.log('onAfterMenuDismiss called') }
+        // tslint:enable:jsx-no-lambda
+        />
         <Dropdown
           label='Select the first day of the week'
           options={ [
@@ -111,16 +118,16 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
               key: DayOfWeek[DayOfWeek.Saturday]
             }
           ] }
-          selectedKey={ DayOfWeek[firstDayOfWeek] }
-          onChanged={ this._onDropdownChanged.bind(this) }
+          selectedKey={ DayOfWeek[firstDayOfWeek!] }
+          onChanged={ this._onDropdownChanged }
         />
       </div>
     );
   }
 
-  private _onDropdownChanged(option: IDropdownOption) {
+  private _onDropdownChanged = (option: IDropdownOption): void => {
     this.setState({
-      firstDayOfWeek: DayOfWeek[option.key]
+      firstDayOfWeek: (DayOfWeek as any)[option.key]
     });
   }
 }

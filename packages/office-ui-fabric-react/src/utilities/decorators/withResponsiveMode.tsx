@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { getWindow } from '../../Utilities';
+import { getWindow, hoistStatics } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -24,21 +24,21 @@ const RESPONSIVE_MAX_CONSTRAINT = [
   99999999
 ];
 
-let _defaultMode: ResponsiveMode;
+let _defaultMode: ResponsiveMode | undefined;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
  */
-export function setResponsiveMode(responsiveMode: ResponsiveMode) {
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined) {
   _defaultMode = responsiveMode;
 }
 
-export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
+export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
 
-  return class WithResponsiveMode extends BaseDecorator<P, IWithResponsiveModeState> {
+  const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
 
-    constructor() {
-      super();
+    constructor(props: TProps) {
+      super(props);
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
@@ -48,7 +48,7 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
 
     public componentDidMount() {
       this._events.on(window, 'resize', () => {
-        let responsiveMode = this._getResponsiveMode();
+        const responsiveMode = this._getResponsiveMode();
 
         if (responsiveMode !== this.state.responsiveMode) {
           this.setState({
@@ -63,7 +63,7 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
     }
 
     public render() {
-      let { responsiveMode } = this.state;
+      const { responsiveMode } = this.state;
 
       return (
         <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props as any } />
@@ -72,11 +72,16 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
 
     private _getResponsiveMode(): ResponsiveMode {
       let responsiveMode = ResponsiveMode.small;
-      let win = getWindow();
+      const win = getWindow();
 
       if (typeof win !== 'undefined') {
-        while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
-          responsiveMode++;
+        try {
+          while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
+            responsiveMode++;
+          }
+        } catch (e) {
+          // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
+          responsiveMode = ResponsiveMode.large;
         }
       } else {
         if (_defaultMode !== undefined) {
@@ -91,5 +96,7 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
 
       return responsiveMode;
     }
+
   };
+  return hoistStatics(ComposedComponent, resultClass);
 }

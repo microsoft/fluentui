@@ -9,7 +9,7 @@
 
   a, a:visited {
     color: $ms-color-white;
-    transition: color $ms-duration2 $ms-ease1;
+    transition: color $ms-animation-duration-2 $ms-animation-ease-1;
   }
 
   img {
@@ -56,8 +56,8 @@
   display: block;
   font-size: $font-size-big;
   font-weight: $ms-font-weight-semilight;
-  margin-bottom: 8px;
-  margin-top: 24px;
+  margin-bottom: $contentMargin-vertical;
+  margin-top: $titleMargin-vertical;
 }
 
 .description {
@@ -67,12 +67,19 @@
   margin-bottom: 12px;
 }
 
+.descriptionLarge {
+  display: block;
+  font-size: $ms-font-size-m;
+  width: 70%;
+  margin-bottom: $contentMargin-vertical;
+}
+
 .secondary {
   padding-top: 80px;
   width: 50%;
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .features {
     flex-direction: row;
 
@@ -83,7 +90,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-xl-min) {
+@media screen and (min-width: $ms-screen-min-xl) {
   .header p,
   .features {
     max-width: 53%;
@@ -98,7 +105,7 @@
     position: absolute;
     top: -40px;
     height: 340px;
-    @include right(120px);
+    @include ms-right(120px);
     z-index: 500;
   }
 }

@@ -1,20 +1,25 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as PropTypes from 'prop-types';
 /* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 
-let { expect } = chai;
-
 describe('Layer', () => {
+  it('renders Layer correctly', () => {
+    const component = renderer.create(<Layer>Content</Layer>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('can render in a targeted LayerHost and pass context through', () => {
 
     class Child extends React.Component<{}, {}> {
       public static contextTypes = {
-        foo: React.PropTypes.string.isRequired
+        foo: PropTypes.string.isRequired
       };
 
       public context: any;
@@ -28,7 +33,7 @@ describe('Layer', () => {
 
     class Parent extends React.Component<{}, {}> {
       public static childContextTypes = {
-        foo: React.PropTypes.string
+        foo: PropTypes.string
       };
 
       public getChildContext() {
@@ -60,20 +65,20 @@ describe('Layer', () => {
       }
     }
 
-    let appElement = document.createElement('div');
+    const appElement = document.createElement('div');
 
     try {
       document.body.appendChild(appElement);
       ReactDOM.render(<App />, appElement);
 
-      let parentElement = appElement.querySelector('#parent');
+      const parentElement = appElement.querySelector('#parent');
 
-      expect(parentElement).is.not.empty;
-      expect(parentElement.ownerDocument).is.not.empty;
+      expect(parentElement).toBeDefined();
+      expect(parentElement!.ownerDocument).toBeDefined();
 
-      let childElement = appElement.querySelector('#child');
+      const childElement = appElement.querySelector('#child') as Element;
 
-      expect(childElement.textContent).equals('foo');
+      expect(childElement.textContent).toEqual('foo');
     } finally {
       ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();

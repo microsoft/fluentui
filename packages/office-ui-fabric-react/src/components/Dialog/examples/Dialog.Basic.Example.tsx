@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import './Dialog.Basic.Example.scss';
 
-export class DialogBasicExample extends React.Component<any, any> {
+export class DialogBasicExample extends React.Component<{}, {
+  hideDialog: boolean
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
+
     this.state = {
-      showDialog: false
+      hideDialog: true
     };
   }
 
@@ -18,56 +20,42 @@ export class DialogBasicExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           description='Opens the Sample Dialog'
-          onClick={ this._showDialog.bind(this) }
+          onClick={ this._showDialog }
           text='Open Dialog'
         />
+        <label id='myLabelId' className='screenReaderOnly'>My sample Label</label>
+        <label id='mySubTextId' className='screenReaderOnly'>My Sample description</label>
+
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.normal }
-          onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ false }
-          containerClassName='ms-dialogMainOverride'
+          hidden={ this.state.hideDialog }
+          onDismiss={ this._closeDialog }
+          dialogContentProps={ {
+            type: DialogType.normal,
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          } }
+          modalProps={ {
+            titleAriaId: 'myLabelId',
+            subtitleAriaId: 'mySubTextId',
+            isBlocking: false,
+            containerClassName: 'ms-dialogMainOverride'
+          } }
         >
-          <ChoiceGroup
-            options={ [
-              {
-                key: 'A',
-                text: 'Option A'
-              },
-              {
-                key: 'B',
-                text: 'Option B',
-                checked: true
-              },
-              {
-                key: 'C',
-                text: 'Option C',
-                disabled: true
-              }
-            ] }
-            onChanged={ this._onChoiceChanged }
-          />
           { null /** You can also include null values as the result of conditionals */ }
           <DialogFooter>
-            <PrimaryButton onClick={ this._closeDialog.bind(this) } text='Save' />
-            <DefaultButton onClick={ this._closeDialog.bind(this) } text='Cancel' />
+            <PrimaryButton onClick={ this._closeDialog } text='Save' />
+            <DefaultButton onClick={ this._closeDialog } text='Cancel' />
           </DialogFooter>
         </Dialog>
       </div>
     );
   }
 
-  private _showDialog() {
-    this.setState({ showDialog: true });
+  private _showDialog = (): void => {
+    this.setState({ hideDialog: false });
   }
 
-  private _closeDialog() {
-    this.setState({ showDialog: false });
-  }
-
-  private _onChoiceChanged() {
-    console.log('Choice option change');
+  private _closeDialog = (): void => {
+    this.setState({ hideDialog: true });
   }
 }

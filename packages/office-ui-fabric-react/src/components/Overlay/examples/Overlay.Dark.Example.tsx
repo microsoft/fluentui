@@ -1,35 +1,57 @@
 import * as React from 'react';
+import {
+  IStyleFunction,
+  classNamesFunction
+} from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 
-import './Overlay.Example.scss';
+import { Overlay } from '../Overlay';
 
-export class OverlayDarkExample extends React.Component<any, any> {
-  constructor() {
-    super();
+import { getStyles, IOverlayExampleStyles } from './Overlay.Example.styles';
+
+export interface IOverlayDarkExampleProps {
+  getStyles?: IStyleFunction<{}, IOverlayExampleStyles>;
+}
+
+export class OverlayDarkExample extends React.Component<{}, {
+  isOverlayVisible: boolean;
+}> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = { isOverlayVisible: false };
   }
 
   public render() {
-    let { isOverlayVisible } = this.state;
+    const { isOverlayVisible } = this.state;
+    const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
+    const classNames = getClassNames(getStyles);
 
     return (
       <div>
         <DefaultButton
-          onClick={ () => this.setState({ isOverlayVisible: !isOverlayVisible }) }
+          onClick={ this._toggleOverlay }
           text='Show the overlay'
         />
         { isOverlayVisible && (
           <Overlay
             isDarkThemed={ true }
-            onClick={ () => this.setState({ isOverlayVisible: false }) }>
-            <div className='OverlayExample-content'>
+            onClick={ this._setVisibilityFalse }
+          >
+            <div className={ classNames.root }>
               <p>I am content within the overlay.</p>
             </div>
           </Overlay>
         ) }
       </div>
     );
+  }
+
+  private _setVisibilityFalse = (): void => {
+    this.setState({ isOverlayVisible: false });
+  }
+
+  private _toggleOverlay = (): void => {
+    this.setState({ isOverlayVisible: !this.state.isOverlayVisible });
   }
 }

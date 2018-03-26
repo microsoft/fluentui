@@ -14,8 +14,10 @@ interface IVirtualElement extends HTMLElement {
 /**
  * Sets the virtual parent of an element.
  * Pass `undefined` as the `parent` to clear the virtual parent.
+ *
+ * @public
  */
-export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
+export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void {
   let virtualChild = <IVirtualElement>child;
   let virtualParent = <IVirtualElement>parent;
 
@@ -49,8 +51,13 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
   }
 }
 
-export function getVirtualParent(child: HTMLElement): HTMLElement {
-  let parent: HTMLElement;
+/**
+ * Gets the virtual parent given the child element, if it exists.
+ *
+ * @public
+ */
+export function getVirtualParent(child: HTMLElement): HTMLElement | undefined {
+  let parent: HTMLElement | undefined;
 
   if (child && isVirtualElement(child)) {
     parent = child._virtual.parent;
@@ -63,8 +70,10 @@ export function getVirtualParent(child: HTMLElement): HTMLElement {
  * Gets the element which is the parent of a given element.
  * If `allowVirtuaParents` is `true`, this method prefers the virtual parent over
  * real DOM parent when present.
+ *
+ * @public
  */
-export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement {
+export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
   return child && (
     allowVirtualParents && getVirtualParent(child) ||
     child.parentNode && child.parentNode as HTMLElement
@@ -72,11 +81,36 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
 }
 
 /**
+ * Gets the elements which are child elements of the given element.
+ * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
+ * after the original children.
+ * @param parent
+ * @param allowVirtualChildren
+ */
+export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean = true): HTMLElement[] {
+  const children: HTMLElement[] = [];
+
+  if (parent) {
+    for (let i = 0; i < parent.children.length; i++) {
+      children.push(parent.children.item(i) as HTMLElement);
+    }
+
+    if (allowVirtualChildren && isVirtualElement(parent)) {
+      children.push(...parent._virtual.children);
+    }
+  }
+
+  return children;
+}
+
+/**
  * Determines whether or not a parent element contains a given child element.
  * If `allowVirtualParents` is true, this method may return `true` if the child
  * has the parent in its virtual element hierarchy.
+ *
+ * @public
  */
-export function elementContains(parent: HTMLElement, child: HTMLElement, allowVirtualParents: boolean = true): boolean {
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean {
   let isContained = false;
 
   if (parent && child) {
@@ -84,7 +118,7 @@ export function elementContains(parent: HTMLElement, child: HTMLElement, allowVi
       isContained = false;
 
       while (child) {
-        let nextParent = getParent(child);
+        let nextParent: HTMLElement | null = getParent(child);
 
         if (nextParent === parent) {
           isContained = true;
@@ -105,14 +139,20 @@ let _isSSR = false;
 
 /**
  * Helper to set ssr mode to simulate no window object returned from getWindow helper.
+ *
+ * @public
  */
-export function setSSR(isEnabled) {
+export function setSSR(isEnabled: boolean): void {
   _isSSR = isEnabled;
 }
 
-/** Helper to get the window object. */
-export function getWindow(rootElement?: HTMLElement) {
-  if (_isSSR) {
+/**
+ * Helper to get the window object.
+ *
+ * @public
+ */
+export function getWindow(rootElement?: Element | null): Window | undefined {
+  if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
     return (
@@ -127,9 +167,11 @@ export function getWindow(rootElement?: HTMLElement) {
 
 /**
  * Helper to get the document object.
+ *
+ * @public
  */
-export function getDocument(rootElement?: HTMLElement) {
-  if (_isSSR) {
+export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
+  if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {
     return rootElement && rootElement.ownerDocument ? rootElement.ownerDocument : document;
@@ -138,9 +180,11 @@ export function getDocument(rootElement?: HTMLElement) {
 
 /**
  * Helper to get bounding client rect, works with window.
+ *
+ * @public
  */
-export function getRect(element: HTMLElement | Window): IRectangle {
-  let rect: IRectangle;
+export function getRect(element: HTMLElement | Window | null): IRectangle | undefined {
+  let rect: IRectangle | undefined;
 
   if (element) {
     if (element === window) {
@@ -161,7 +205,34 @@ export function getRect(element: HTMLElement | Window): IRectangle {
 }
 
 /**
+ * Finds the first parent element where the matchFunction returns true
+ * @param element element to start searching at
+ * @param matchFunction the function that determines if the element is a match
+ * @returns the matched element or null no match was found
+ */
+export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null {
+  if (!element || element === document.body) {
+    return null;
+  }
+
+  return matchFunction(element) ? element : findElementRecursive(getParent(element), matchFunction);
+}
+
+/**
+ * Determines if an element, or any of its ancestors, contian the given attribute
+ * @param element - element to start searching at
+ * @param attribute - the attribute to search for
+ * @returns the value of the first instance found
+ */
+export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null {
+  let elementMatch = findElementRecursive(element, (testElement: HTMLElement) => testElement.hasAttribute(attribute));
+  return elementMatch && elementMatch.getAttribute(attribute);
+}
+
+/**
  * Determines whether or not an element has the virtual hierarchy extension.
+ *
+ * @public
  */
 function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement {
   return element && !!(<IVirtualElement>element)._virtual;

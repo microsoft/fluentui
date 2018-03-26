@@ -1,6 +1,6 @@
 /* tslint:disable:no-trailing-whitespace */
 
-import { IProperty, PropertyType } from './interfaces';
+import { IEnumProperty, IInterfaceProperty, IProperty, PropertyType } from './interfaces';
 import { InterfaceParserHelper } from './InterfaceParserHelper';
 import { EnumParserHelper } from './EnumParserHelper';
 
@@ -21,7 +21,7 @@ import { EnumParserHelper } from './EnumParserHelper';
  */
 export function parse(source: string, propsInterfaceOrEnumName?: string): IProperty[] {
   let props: IProperty[] = [];
-  let regex: RegExp = null;
+  let regex: RegExp | null = null;
   let parseInfo;
 
   let propertyNameSuffix = (type: string) => type === 'interface' ? ' interface' : ' enum';
@@ -41,7 +41,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
     }
   } else {
     regex = new RegExp(`export (interface|enum) (\\S*?)(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`, 'g');
-    let regexResult: RegExpExecArray;
+    let regexResult: RegExpExecArray | null;
     let results: Array<IProperty> = [];
     while ((regexResult = regex.exec(source)) !== null) {
       parseInfo = _parseEnumOrInterface(regexResult);
@@ -59,16 +59,14 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
   return props;
 }
 
-function _parseEnumOrInterface(regexResult: RegExpExecArray) {
-  let parseInfo;
+function _parseEnumOrInterface(regexResult: RegExpExecArray): IInterfaceProperty[] | IEnumProperty[] {
+  let parseInfo: IInterfaceProperty[] | IEnumProperty[];
   if (regexResult[1] === 'interface') {
     let parser = new InterfaceParserHelper(regexResult[0]);
     parseInfo = parser.parse();
-    parser = null;
   } else {
     let parser = new EnumParserHelper(regexResult[0]);
     parseInfo = parser.parse();
-    parser = null;
   }
   return parseInfo;
 }

@@ -6,8 +6,14 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DetailsListStatus } from './DetailsList.checklist';
+
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
+
+import { DetailsListCompactExample } from './examples/DetailsList.Compact.Example';
+const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
 
 import { DetailsListCustomColumnsExample } from './examples/DetailsList.CustomColumns.Example';
 const DetailsListCustomColumnsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
@@ -27,6 +33,12 @@ const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-reac
 import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
+import { DetailsListDocumentsExample } from './examples/DetailsList.Documents.Example';
+const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
+
+import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
+const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
+
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
@@ -35,8 +47,14 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         componentName='DetailsListExample'
         exampleCards={
           <div>
+            <ExampleCard title='Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
+              <DetailsListDocumentsExample />
+            </ExampleCard>
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
               <DetailsListBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Compact DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListCompactExampleCode }>
+              <DetailsListCompactExample />
             </ExampleCard>
             <ExampleCard title='Simple Grouped DetailsList' isOptIn={ true } code={ DetailsListGroupedExampleCode }>
               <DetailsListGroupedExample />
@@ -56,19 +74,22 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
               <DetailsListDragDropExample />
             </ExampleCard>
+            <ExampleCard title='Navigating to new content preserving keyboard focus with initialFocusedIndex' isOptIn={ true } code={ DetailsListNavigatingFocusExampleCode }>
+              <DetailsListNavigatingFocusExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
             ] }
           />
         }
         overview={
           <div>
             <p>
-              DetailsList is a derivative of the <Link href='#/examples/list'>List</Link> component. It is a robust way to display an information rich collection of items. It can support powerful ways to aid a user in finding content with sorting, grouping and filtering. Lists are a great way to handle large amounts of content, but poorly designed Lists can be difficult to parse.
+              DetailsList is a derivative of the <Link href='#/components/list'>List</Link> component. It is a robust way to display an information rich collection of items. It can support powerful ways to aid a user in finding content with sorting, grouping and filtering. Lists are a great way to handle large amounts of content, but poorly designed Lists can be difficult to parse.
             </p>
             <p>
               Use a DetailsList when density of information is critical. Lists can support single and multiple selection, as well as drag and drop and marquee selection. They are composed of a column header, which contains the metadata fields which are attached to the list items, and provide the ability to sort, filter and even group the list. List items are composed of selection, icon, and name columns at minimum. One can also include other columns such as Date Modified, or any other metadata field associated with the collection. Place the most important columns from left to right for ease of recall and comparison.
@@ -79,7 +100,7 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -100,8 +121,13 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...DetailsListStatus}
+          />
+        }
+      />
     );
   }
 }

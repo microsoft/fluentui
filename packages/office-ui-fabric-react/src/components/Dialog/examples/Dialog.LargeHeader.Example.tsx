@@ -3,12 +3,14 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
-export class DialogLargeHeaderExample extends React.Component<any, any> {
+export class DialogLargeHeaderExample extends React.Component<{}, {
+  hideDialog: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
-      showDialog: false
+      hideDialog: true
     };
   }
 
@@ -17,16 +19,21 @@ export class DialogLargeHeaderExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           description='Opens the Sample Dialog'
-          onClick={ this._showDialog.bind(this) }
+          onClick={ this._showDialog }
           text='Open Dialog'
         />
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.largeHeader }
-          onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ false }
+          hidden={ this.state.hideDialog }
+          onDismiss={ this._closeDialog }
+          dialogContentProps={ {
+            type: DialogType.largeHeader,
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          } }
+          modalProps={ {
+            isBlocking: false,
+            containerClassName: 'ms-dialogMainOverride'
+          } }
         >
           <ChoiceGroup
             options={ [
@@ -45,23 +52,23 @@ export class DialogLargeHeaderExample extends React.Component<any, any> {
                 disabled: true
               }
             ] }
-            onChanged={ this._onChoiceChanged }
+            onChange={ this._onChoiceChanged }
           />
           <DialogFooter>
-            <PrimaryButton onClick={ this._closeDialog.bind(this) } text='Save' />
-            <DefaultButton onClick={ this._closeDialog.bind(this) } text='Cancel' />
+            <PrimaryButton onClick={ this._closeDialog } text='Save' />
+            <DefaultButton onClick={ this._closeDialog } text='Cancel' />
           </DialogFooter>
         </Dialog>
       </div>
     );
   }
 
-  private _showDialog() {
-    this.setState({ showDialog: true });
+  private _showDialog = (): void => {
+    this.setState({ hideDialog: false });
   }
 
-  private _closeDialog() {
-    this.setState({ showDialog: false });
+  private _closeDialog = (): void => {
+    this.setState({ hideDialog: true });
   }
 
   private _onChoiceChanged() {

@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
+import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css
 } from '../../Utilities';
 import * as stylesImport from './DocumentCard.scss';
@@ -14,9 +13,17 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     type: DocumentCardType.normal
   };
 
+  constructor(props: IDocumentCardProps) {
+    super(props);
+
+    this._warnDeprecations({
+      accentColor: undefined
+    });
+  }
+
   public render() {
-    let { onClick, onClickHref, children, className, type, accentColor } = this.props;
-    let actionable = (onClick || onClickHref) ? true : false;
+    const { onClick, onClickHref, children, className, type, accentColor } = this.props;
+    const actionable = (onClick || onClickHref) ? true : false;
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
@@ -27,8 +34,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     }
 
     // if this element is actionable it should have an aria role
-    let role = actionable ? (onClick ? 'button' : 'link') : null;
-    let tabIndex = actionable ? 0 : null;
+    const role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    const tabIndex = actionable ? 0 : undefined;
 
     return (
       <div
@@ -45,29 +52,27 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
             className
           )
         }
-        onKeyDown={ actionable ? this._onKeyDown : null }
-        onClick={ actionable ? this._onClick : null }
-        style={ style }>
+        onKeyDown={ actionable ? this._onKeyDown : undefined }
+        onClick={ actionable ? this._onClick : undefined }
+        style={ style }
+      >
         { children }
       </div>
     );
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
     this._onAction(ev);
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       this._onAction(ev);
     }
   }
 
-  @autobind
-  private _onAction(ev: React.SyntheticEvent<HTMLElement>): void {
-    let { onClick, onClickHref } = this.props;
+  private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
+    const { onClick, onClickHref } = this.props;
 
     if (onClick) {
       onClick(ev);

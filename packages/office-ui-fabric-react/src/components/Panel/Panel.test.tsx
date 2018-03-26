@@ -4,49 +4,49 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 
-let { expect } = chai;
-
 import { Panel } from './Panel';
 
-describe('Panel', () => {
-  afterEach(() => {
-    [].forEach.call(document.querySelectorAll('body > div'), div => div.parentNode.removeChild(div));
+let div: HTMLElement;
 
-    expect(document.querySelector('.ms-Panel')).to.be.null;
+describe('Panel', () => {
+  beforeEach(() => {
+    div = document.createElement('div');
   });
 
-  it('Fires the correct events when closing', () => {
+  afterEach(() => {
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('fires the correct events when closing', (done) => {
     let dismissedCalled = false;
     let dismissCalled = false;
-
-    const handleDismissed = () => {
+    const setDismissTrue = (): void => {
+      dismissCalled = true;
+    };
+    const setDismissedTrue = (): void => {
       dismissedCalled = true;
     };
 
-    const div = document.createElement('div');
-
-    let panel: Panel = ReactDOM.render(
+    const panel: Panel = ReactDOM.render(
       <Panel
         isOpen={ true }
-        onDismiss={ () => { dismissCalled = true; } }
-        onDismissed={ handleDismissed } />,
+        onDismiss={ setDismissTrue }
+        onDismissed={ setDismissedTrue }
+      />,
       div) as any;
 
     panel.dismiss();
 
-    expect(dismissCalled).equals(true, 'onDismiss was not called');
-    expect(dismissedCalled).equals(false, 'onDismissed was called prematurely');
+    expect(dismissCalled).toEqual(true);
+    expect(dismissedCalled).toEqual(false);
 
-    // Generate animation event to simulate animation completing.
-    const event = document.createEvent('CustomEvent'); // AnimationEvent is not supported by PhantomJS
-    event.initCustomEvent('animationend', true, true, {});
-    (event as any).animationName = 'fadeOut';
-
-    const panelElement = document.querySelector('.ms-Panel');
-    expect(panel).not.to.be.null;
-
-    panelElement.dispatchEvent(event);
-
-    expect(dismissedCalled).equals(true, 'onDismissed was not called');
+    setTimeout(() => {
+      try {
+        expect(dismissedCalled).toEqual(true);
+        done();
+      } catch (e) {
+        done(e);
+      }
+    }, 250);
   });
 });

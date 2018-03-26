@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { createListItems } from '@uifabric/example-app-base';
-
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import {
@@ -32,22 +31,24 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
   }
 
   public render() {
-    let { sortedItems, columns } = this.state;
+    const { sortedItems, columns } = this.state;
 
     return (
       <DetailsList
-        items={ sortedItems }
+        items={ sortedItems as any[] }
         setKey='set'
         columns={ columns }
         onRenderItemColumn={ _renderItemColumn }
-        onColumnHeaderClick={ this._onColumnClick.bind(this) }
-        onItemInvoked={ (item, index) => alert(`Item ${item.name} at index ${index} has been invoked.`) }
-        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column.key} contextmenu opened.`) } />
+        onColumnHeaderClick={ this._onColumnClick }
+        onItemInvoked={ this._onItemInvoked }
+        onColumnHeaderContextMenu={ this._onColumnHeaderContextMenu }
+      />
     );
   }
 
-  private _onColumnClick(column) {
-    let { sortedItems, columns } = this.state;
+  private _onColumnClick = (event: React.MouseEvent<HTMLElement>, column: IColumn): void => {
+    const { columns } = this.state;
+    let { sortedItems } = this.state;
     let isSortedDescending = column.isSortedDescending;
 
     // If we've sorted this column, flip it.
@@ -56,9 +57,9 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     }
 
     // Sort the items.
-    sortedItems = sortedItems.concat([]).sort((a, b) => {
-      let firstValue = a[column.fieldName];
-      let secondValue = b[column.fieldName];
+    sortedItems = sortedItems!.concat([]).sort((a, b) => {
+      const firstValue = a[column.fieldName];
+      const secondValue = b[column.fieldName];
 
       if (isSortedDescending) {
         return firstValue > secondValue ? -1 : 1;
@@ -70,7 +71,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     // Reset the items and columns to match the state.
     this.setState({
       sortedItems: sortedItems,
-      columns: columns.map(col => {
+      columns: columns!.map(col => {
         col.isSorted = (col.key === column.key);
 
         if (col.isSorted) {
@@ -81,12 +82,20 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
       })
     });
   }
+
+  private _onColumnHeaderContextMenu(column: IColumn | undefined, ev: React.MouseEvent<HTMLElement> | undefined): void {
+    console.log(`column ${column!.key} contextmenu opened.`);
+  }
+
+  private _onItemInvoked(item: any, index: number | undefined): void {
+    alert(`Item ${item.name} at index ${index} has been invoked.`);
+  }
 }
 
 function _buildColumns() {
-  let columns = buildColumns(_items);
+  const columns = buildColumns(_items);
 
-  let thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
+  const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
 
   // Special case one column's definition.
   thumbnailColumn.name = '';
@@ -95,8 +104,8 @@ function _buildColumns() {
   return columns;
 }
 
-function _renderItemColumn(item, index, column) {
-  let fieldContent = item[column.fieldName];
+function _renderItemColumn(item: any, index: number, column: IColumn) {
+  const fieldContent = item[column.fieldName];
 
   switch (column.key) {
     case 'thumbnail':
@@ -106,7 +115,7 @@ function _renderItemColumn(item, index, column) {
       return <Link href='#'>{ fieldContent }</Link>;
 
     case 'color':
-      return <span data-selection-disabled={ true } style={ { color: fieldContent } }>{ fieldContent }</span>;
+      return <span data-selection-disabled={ true } style={ { color: fieldContent, height: '100%', display: 'block' } }>{ fieldContent }</span>;
 
     default:
       return <span>{ fieldContent }</span>;

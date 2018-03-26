@@ -7,7 +7,7 @@ export * from './components/Header/Header';
 export * from './components/Highlight/Highlight';
 export * from './components/PropertiesTable/PropertiesTable';
 export * from './components/PropertiesTable/PropertiesTableSet';
-export * from './components/PropertiesTable/PropertiesTableSet.Props';
+export * from './components/PropertiesTable/PropertiesTableSet.types';
 export * from './utilities/beep';
 export * from './utilities/createApp';
 export * from './utilities/data';

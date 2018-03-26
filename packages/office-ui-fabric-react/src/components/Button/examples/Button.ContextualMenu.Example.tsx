@@ -3,7 +3,7 @@ import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonContextualMenuExample extends React.Component<IButtonProps, {}> {
   public render() {
-    let { disabled, toggled } = this.props;
+    const { disabled, checked } = this.props;
 
     return (
       <div className='ms-ContextualMenuButtonsExample'>
@@ -11,9 +11,11 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
           <DefaultButton
             data-automation-id='test'
             disabled={ disabled }
-            toggled={ toggled }
+            checked={ checked }
             iconProps={ { iconName: 'Add' } }
             text='New'
+            // tslint:disable-next-line:jsx-no-lambda
+            onMenuClick={ (ev) => { console.log(ev); } }
             menuProps={ {
               items: [
                 {
@@ -29,8 +31,7 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
               ]
             }
             }
-          >
-          </DefaultButton>
+          />
         </div>
       </div>
     );

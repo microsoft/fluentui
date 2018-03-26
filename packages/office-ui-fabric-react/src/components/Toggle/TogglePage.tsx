@@ -6,8 +6,13 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
+import { ToggleAriaLabelExample } from './examples/Toggle.AriaLabel.Example';
+import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
+const ToggleAriaLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.AriaLabel.Example.tsx') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -16,14 +21,27 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         title='Toggle'
         componentName='ToggleExample'
         exampleCards={
-          <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
-            <ToggleBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard
+              title='Default Toggles'
+              code={ ToggleBasicExampleCode }
+            >
+              <ToggleBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off'
+              code={ ToggleAriaLabelExampleCode }
+            >
+              <ToggleAriaLabelExample />
+            </ExampleCard>
+          </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ 'input' }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
             ] }
           />
         }
@@ -33,7 +51,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
               Toggles represent a physical switch that allows users to turn things on or off. Use Toggles to present users with two mutually exclusive options (like on/off), where choosing an option results in an immediate action. Use a Toggle for binary operations that take effect right after the user flips the Toggle. For example, use a Toggle to turn services or hardware components on or off. In other words, if a physical switch would work for the action, a Toggle is probably the best control to use.
             </p>
 
-            <h2 className='ms-font-xl'>Choosing between Toggle and Checkbox</h2>
+            <h2 className={ FontClassNames.xLarge }>Choosing between Toggle and Checkbox</h2>
 
             <p>
               For some actions, either a Toggle or a Checkbox might work. To decide which control would work better, follow these tips:
@@ -47,7 +65,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -65,11 +83,13 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Toggle/Toggle.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            { ...ToggleStatus }
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

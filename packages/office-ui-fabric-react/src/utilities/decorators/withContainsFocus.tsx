@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 
-export function withContainsFocus<P extends { containsFocus?: boolean }, S>(ComposedComponent: (new (props: P, ...args: any[]) => (React.Component<P, S>))): any {
+export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>(ComposedComponent: (new (props: TProps, ...args: any[]) => (React.Component<TProps, S>))): any {
 
-  return class WithContainsFocusComponent extends BaseDecorator<P & { containsFocus?}, { containsFocus?: boolean }> {
-    public refs: {
-      [key: string]: React.ReactInstance,
-    };
-
+  return class WithContainsFocusComponent extends BaseDecorator<TProps & { containsFocus?: boolean }, { containsFocus?: boolean }> {
     private _newContainsFocus: boolean;
     private _delayedSetContainsFocus: () => void;
 
-    constructor() {
-      super();
+    constructor(props: TProps) {
+      super(props);
 
       this.state = {
         containsFocus: false
@@ -20,6 +16,8 @@ export function withContainsFocus<P extends { containsFocus?: boolean }, S>(Comp
 
       this._delayedSetContainsFocus = this._async.debounce(this._setContainsFocus, 20);
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
+      this._handleFocus = this._handleFocus.bind(this);
+      this._handleBlur = this._handleBlur.bind(this);
     }
 
     public componentWillUnmount() {
@@ -27,11 +25,15 @@ export function withContainsFocus<P extends { containsFocus?: boolean }, S>(Comp
     }
 
     public render() {
-      let { containsFocus } = this.state;
+      const { containsFocus } = this.state;
 
       return (
-        <div ref='root' onFocus={ this._handleFocus.bind(this) } onBlur={ this._handleBlur.bind(this) }>
-          <ComposedComponent ref={ this._updateComposedComponentRef } containsFocus={ containsFocus } { ...this.props as any } />
+        <div onFocus={ this._handleFocus } onBlur={ this._handleBlur }>
+          <ComposedComponent
+            ref={ this._updateComposedComponentRef }
+            containsFocus={ containsFocus }
+            { ...this.props as any }
+          />
         </div>
       );
     }
@@ -40,12 +42,12 @@ export function withContainsFocus<P extends { containsFocus?: boolean }, S>(Comp
       this._composedComponentInstance.forceUpdate();
     }
 
-    private _handleFocus(ev) {
+    private _handleFocus(ev: React.FocusEvent<HTMLDivElement>) {
       this._newContainsFocus = true;
       this._delayedSetContainsFocus();
     }
 
-    private _handleBlur(ev) {
+    private _handleBlur(ev: React.FocusEvent<HTMLDivElement>) {
       this._newContainsFocus = false;
       this._delayedSetContainsFocus();
     }

@@ -1,6 +1,5 @@
-import { IAnimationStyles } from '../interfaces/index';
-import { IRawStyle } from '../interfaces/index';
-import { keyframes } from '../glamorExports';
+import { IAnimationStyles, IAnimationVariables } from '../interfaces/index';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles/lib/index';
 
 /* Register the keyframes */
 
@@ -54,7 +53,7 @@ const SCALE_UP100: string = keyframes({
 
 const SCALE_DOWN98: string = keyframes({
   from: { transform: 'scale3d(1,1,1)' },
-  'top': { transform: 'scale3d(.98,.98,1)' },
+  to: { transform: 'scale3d(.98,.98,1)' },
 });
 
 const SCALE_DOWN100: string = keyframes({
@@ -76,6 +75,18 @@ const ROTATE_N90: string = keyframes({
   from: { transform: 'rotateZ(0deg)' },
   to: { transform: 'rotateZ(-90deg)' }
 });
+
+/**
+ * Exporting raw duraction values and easing functions to be used in custom animations
+ */
+export const AnimationVariables: IAnimationVariables = {
+  easeFunction1: EASING_FUNCTION_1,
+  easeFunction2: EASING_FUNCTION_2,
+  durationValue1: DURATION_1,
+  durationValue2: DURATION_2,
+  durationValue3: DURATION_3,
+  durationValue4: DURATION_4
+};
 
 /**
  * All Fabric standard animations, exposed as json objects referencing predefined
@@ -122,6 +133,7 @@ export const AnimationStyles: IAnimationStyles = {
   fadeOut200: _createAnimation(FADE_OUT, DURATION_2, EASING_FUNCTION_2),
   fadeOut400: _createAnimation(FADE_OUT, DURATION_3, EASING_FUNCTION_2),
   fadeOut500: _createAnimation(FADE_OUT, DURATION_4, EASING_FUNCTION_2),
+
   rotate90deg: _createAnimation(ROTATE90, '0.1s', EASING_FUNCTION_2),
   rotateN90deg: _createAnimation(ROTATE_N90, '0.1s', EASING_FUNCTION_2)
 
