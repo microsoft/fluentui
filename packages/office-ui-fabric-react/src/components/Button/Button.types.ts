@@ -18,6 +18,11 @@ export interface IButton {
    * If there is a menu associated with this button and it is visible, this will dismiss the menu
    */
   dismissMenu: () => void;
+
+  /**
+   * If there is a menu associated with this button and it is visible, this will open the menu
+   */
+  openMenu: () => void;
 }
 
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
@@ -25,7 +30,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IButton) => void;
+  componentRef?: (component: IButton | null) => void;
 
   /**
    * If provided, this component will be rendered as an anchor.

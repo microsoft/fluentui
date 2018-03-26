@@ -6,7 +6,6 @@ import {
 } from 'office-ui-fabric-react/lib/Facepile';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 
@@ -45,7 +44,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
 
     return (
       <div className={ 'ms-FacepileExample' }>
-        <Facepile {...facepileProps} />
+        <Facepile { ...facepileProps } />
         <div className={ 'control' }>
           <Slider
             label='Number of Personas:'
@@ -75,16 +74,14 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
     );
   }
 
-  @autobind
-  private _onChangePersonaNumber(value: number): void {
+  private _onChangePersonaNumber = (value: number): void => {
     this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
       prevState.displayedPersonas = value;
       return prevState;
     });
   }
 
-  @autobind
-  private _onChangeType(value: IDropdownOption): void {
+  private _onChangeType = (value: IDropdownOption): void => {
     this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
       prevState.overflowButtonType = value.key as OverflowButtonType;
       return prevState;

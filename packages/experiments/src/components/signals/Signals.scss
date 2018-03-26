@@ -26,7 +26,7 @@ settings used by the parent control.
   bottom: 100%;
   @include right(-0.15em);
   font-size: 0.66em;
-  margin-bottom: -0.8em;
+  margin-bottom: -0.9em;
 }
 
 .comments {
@@ -49,11 +49,11 @@ settings used by the parent control.
 }
 
 .trending {
-  color: #006257;
+  color: $ms-color-green;
 }
 
 .blocked {
-  color: #a80000;
+  color: $ms-color-redDark;
 }
 
 .warning {
@@ -62,10 +62,38 @@ settings used by the parent control.
 
 .shared {
   color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.lock {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
 }
 
 .missingMetadata {
-  color: $ms-color-themeDarker;
+  color: #cf3902;
+}
+
+.youCheckedOut {
+  color: $ms-color-redDark;
+}
+
+.someoneCheckedOut {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.awaitingApproval {
+  color: #ad3100;
 }
 
 .mention {
@@ -78,10 +106,54 @@ settings used by the parent control.
   }
 }
 
+.unseenEdit {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.unseenReply {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+i.unseenReply {
+  top: 0.25em;
+}
+
+.emailed {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+i.emailed {
+  top: 0.25em;
+}
+
 .malwareDetected {
   color: $ms-color-redDark;
 }
 
+.readOnly {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
 .external {
   color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
 }

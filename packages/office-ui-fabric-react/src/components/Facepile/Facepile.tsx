@@ -3,7 +3,6 @@ import {
   BaseComponent,
   buttonProperties,
   css,
-  divProperties,
   getId,
   getNativeProps
 } from '../../Utilities';
@@ -42,12 +41,10 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   };
 
   private _ariaDescriptionId: string;
-  private _id: string;
 
   constructor(props: IFacepileProps) {
     super(props);
 
-    this._id = getId('Facepile');
     this._ariaDescriptionId = getId();
   }
 
@@ -121,7 +118,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         initialsColor={ persona.initialsColor }
         primaryText={ persona.personaName }
         size={ personaSize }
-        {...(getPersonaProps ? getPersonaProps(persona) : null) }
+        { ...(getPersonaProps ? getPersonaProps(persona) : null) }
       />
     );
   }
@@ -144,7 +141,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (
       <FacepileButton
         { ...getNativeProps(persona, buttonProperties) }
-        {...this._getElementProps(persona, index) }
+        { ...this._getElementProps(persona, index) }
         onClick={ this._onPersonaClick.bind(this, persona) }
       >
         { personaControl }
@@ -156,7 +153,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (
       <div
         { ...getNativeProps(persona, buttonProperties) }
-        {...this._getElementProps(persona, index) }
+        { ...this._getElementProps(persona, index) }
       >
         { personaControl }
       </div>
@@ -189,7 +186,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getDescriptiveOverflowElement(personasOverflow: IFacepilePersona[]): JSX.Element | null {
-    const { overflowButtonProps, personas, personaSize } = this.props;
+    const { overflowButtonProps, personaSize } = this.props;
 
     if (!personasOverflow || personasOverflow.length < 1) { return null; }
 

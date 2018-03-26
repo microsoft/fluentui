@@ -1,6 +1,5 @@
 import {
-  getFocusStyle,
-  HighContrastSelector
+  getFocusStyle
 } from '../../Styling';
 import {
   ILinkStyleProps,

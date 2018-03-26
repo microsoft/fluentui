@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   Rating,
   RatingSize
@@ -119,29 +118,25 @@ export class RatingBasicExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _onLargeStarChanged(rating: number) {
+  private _onLargeStarChanged = (rating: number): void => {
     this.setState({
       largeStarRating: rating
     });
   }
 
-  @autobind
-  private _onSmallStarChanged(rating: number) {
+  private _onSmallStarChanged = (rating: number): void => {
     this.setState({
       smallStarRating: rating
     });
   }
 
-  @autobind
-  private _onTenStarChanged(rating: number) {
+  private _onTenStarChanged = (rating: number): void => {
     this.setState({
       tenStarRating: rating
     });
   }
 
-  @autobind
-  private _onThemedStarChanged(rating: number) {
+  private _onThemedStarChanged = (rating: number): void => {
     this.setState({
       themedStarRating: rating
     });

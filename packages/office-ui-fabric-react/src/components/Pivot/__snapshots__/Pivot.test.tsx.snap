@@ -68,11 +68,19 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;
@@ -162,11 +170,19 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;

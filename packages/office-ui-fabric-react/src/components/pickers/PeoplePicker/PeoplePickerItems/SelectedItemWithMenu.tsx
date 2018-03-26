@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, autobind, css } from '../../../../Utilities';
+import { BaseComponent, css, createRef } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.types';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
@@ -19,7 +19,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
     [key: string]: any,
   };
 
-  private _ellipsisRef: HTMLElement;
+  private _ellipsisRef = createRef<HTMLDivElement>();
 
   constructor(props: IPeoplePickerItemWithMenuProps) {
     super(props);
@@ -41,7 +41,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
               presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
           </div>
-          <div ref={ this._resolveRef('_ellipsisRef') } className={ css('ms-PickerItem-content', styles.itemContent) }>
+          <div ref={ this._ellipsisRef } className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
               iconProps={ { iconName: 'More' } }
               onClick={ this._onContextualMenu }
@@ -58,7 +58,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
             <ContextualMenu
               items={ item.menuItems! }
               shouldFocusOnMount={ true }
-              target={ this._ellipsisRef }
+              target={ this._ellipsisRef.value }
               onDismiss={ this._onCloseContextualMenu }
               directionalHint={ DirectionalHint.bottomAutoEdge }
             />)
@@ -68,13 +68,11 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
     );
   }
 
-  @autobind
-  private _onContextualMenu(ev?: any) {
+  private _onContextualMenu = (ev?: any): void => {
     this.setState({ contextualMenuVisible: true });
   }
 
-  @autobind
-  private _onCloseContextualMenu(ev: Event) {
+  private _onCloseContextualMenu = (ev: Event) => {
     this.setState({ contextualMenuVisible: false });
   }
 }

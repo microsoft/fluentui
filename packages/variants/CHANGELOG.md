@@ -1,6 +1,31 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Wed, 14 Mar 2018 10:28:26 GMT and should not be manually modified.
+This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+
+## 5.3.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.2.0
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- add neutral variant
+
+## 5.1.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- fix imports so it works with amd
 
 ## 5.0.2
 Wed, 14 Mar 2018 10:28:26 GMT

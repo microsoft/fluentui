@@ -30,7 +30,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFocusZone) => void;
+  componentRef?: (component: IFocusZone | null) => void;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
@@ -119,6 +119,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * and have to hit escape or some other key.
    */
   handleTabKey?: FocusZoneTabbableElements;
+
+  /**
+   * A callback method to determine if the input element should lose focus on arrow keys
+   *  @param {HTMLInputElement} inputElement The input element which is to loose focus.
+   *  @returns True if input element should loose focus or false otherwise.
+   */
+  shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
    * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes

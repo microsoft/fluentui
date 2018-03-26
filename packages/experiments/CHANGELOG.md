@@ -1,6 +1,40 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+
+## 5.27.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Add missing icons to Signals and fix colors
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+### Patches
+
+- Update componentRef types
+
+## 5.26.1
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Patches
+
+- Removes @autobind for arrow functions
+
+## 5.26.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Changes in the props and naming.
+- Adds a new Shimmer Component to experiments package.
+
+## 5.25.1
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
 
 ## 5.25.0
 Mon, 12 Mar 2018 06:29:20 GMT
