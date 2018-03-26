@@ -30,6 +30,10 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   // The wrapping div that gets the hover events
   private _tooltipHost: HTMLElement;
 
+  // The ID of the setTimeout that will eventually close the tooltip if the
+  // the tooltip isn't hovered over.
+  private _closingTimer = -1;
+
   // Constructor
   constructor(props: ITooltipHostProps) {
     super(props);
@@ -80,7 +84,12 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             targetElement={ this._getTargetElement() }
             directionalHint={ directionalHint }
             directionalHintForRTL={ directionalHintForRTL }
-            calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
+            calloutProps={ assign(calloutProps, {
+              onMouseEnter: this._onTooltipMouseEnter,
+              onMouseLeave: this._onTooltipMouseLeave
+            }) }
+            onMouseEnter={ this._onTooltipMouseEnter }
+            onMouseLeave={ this._onTooltipMouseLeave }
             { ...getNativeProps(this.props, divProperties) }
             { ...tooltipProps }
           />
@@ -120,12 +129,26 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     }
 
     this._toggleTooltip(true);
+    this._clearDismissTimer();
   }
 
   // Hide Tooltip
   @autobind
   private _onTooltipMouseLeave(ev: any) {
-    this._toggleTooltip(false);
+    if (this.props.closeDelay) {
+      this._clearDismissTimer();
+
+      this._closingTimer = window.setTimeout(() => {
+        this._toggleTooltip(false);
+      }, this.props.closeDelay);
+    } else {
+      this._toggleTooltip(false);
+    }
+  }
+
+  @autobind
+  private _clearDismissTimer() {
+    window.clearTimeout(this._closingTimer);
   }
 
   // Hide Tooltip
@@ -135,9 +158,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   private _toggleTooltip(isTooltipVisible: boolean) {
-    this.setState(
-      { isTooltipVisible },
-      () => this.props.onTooltipToggle &&
-        this.props.onTooltipToggle(this.state.isTooltipVisible));
+    if (this.state.isTooltipVisible !== isTooltipVisible) {
+      this.setState(
+        { isTooltipVisible },
+        () => this.props.onTooltipToggle &&
+          this.props.onTooltipToggle(this.state.isTooltipVisible));
+    }
   }
 }

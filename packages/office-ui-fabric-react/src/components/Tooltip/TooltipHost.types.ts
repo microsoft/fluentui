@@ -77,6 +77,14 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   hostClassName?: string;
 
   /**
+   * Optionally a number of milliseconds to delay closing the tooltip, so that
+   * the user has time to hover over the tooltip and interact with it. Hovering
+   * over the tooltip will count as hovering over the host, so that the tooltip
+   * will stay open if the user is actively interacting with it.
+   */
+  closeDelay?: number;
+
+  /**
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
    */
   onTooltipToggle?(isTooltipVisible: boolean): void;
