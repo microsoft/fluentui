@@ -60,8 +60,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     );
   }
 
-  @autobind
-  private _onFocus(): void {
+  private _onFocus = (): void => {
     if (this._picker) {
       this._picker.showPicker();
     }

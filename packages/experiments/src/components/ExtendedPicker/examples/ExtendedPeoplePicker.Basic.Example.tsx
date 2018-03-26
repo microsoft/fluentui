@@ -58,7 +58,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
             && this._picker.inputElement !== null
             && this._picker.inputElement.value.indexOf('@') > -1;
         },
-        onExecute: () => { this._picker.floatingPicker.forceResolveSuggestion(); }
+        onExecute: () => {
+          if (this._picker.floatingPicker.value !== null) {
+            this._picker.floatingPicker.value.forceResolveSuggestion();
+          }
+        }
       },
       {
         renderItem: () => {
@@ -78,7 +82,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
         shouldShow: () => {
           return this._picker !== undefined
             && this._picker.floatingPicker !== undefined
-            && this._picker.floatingPicker.suggestions.length === 0;
+            && this._picker.floatingPicker.value !== null
+            && this._picker.floatingPicker.value.suggestions.length === 0;
         }
       },
       {
@@ -235,8 +240,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     );
   }
 
-  @autobind
-  private _shouldShowSuggestedContacts(): boolean {
+  private _shouldShowSuggestedContacts = (): boolean => {
     return this._picker !== undefined
       && this._picker.inputElement !== null
       && this._picker.inputElement.value === '';
@@ -261,8 +265,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
   }
 
-  @autobind
-  private _onInputChanged(): void {
+  private _onInputChanged = (): void => {
     this.setState({ searchMoreAvailable: true });
   }
 

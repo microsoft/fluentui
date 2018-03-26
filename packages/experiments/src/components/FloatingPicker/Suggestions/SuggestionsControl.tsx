@@ -359,7 +359,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     this._suggestions.deselectAllSuggestions();
 
     // Select the first item if the shouldSelectFirstItem prop is not set or it is set and it returns true
-    if (this.props.shouldSelectFirstItem == undefined || this.props.shouldSelectFirstItem()) {
+    if (this.props.shouldSelectFirstItem === undefined || this.props.shouldSelectFirstItem()) {
       this.selectFirstItem();
     }
   }
@@ -367,7 +367,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   /**
    * Selects the first item
    */
-  private selectFirstItem(): void {
+  protected selectFirstItem(): void {
     if (this._selectNextItemOfItemType(SuggestionItemType.header)) {
       return;
     }
@@ -382,7 +382,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   /**
    * Selects the last item
    */
-  private selectLastItem(): void {
+  protected selectLastItem(): void {
     if (this._selectPreviousItemOfItemType(SuggestionItemType.footer)) {
       return;
     }
