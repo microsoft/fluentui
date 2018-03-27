@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
@@ -21,11 +21,7 @@ export class ContextualMenuBasicExample extends React.Component {
           menuProps={ {
             shouldFocusOnMount: true,
             items: [
-              {
-                key: 'newItem',
-                name: 'New',
-                onClick: () => console.log('New clicked')
-              },
+              _createItem('New'),
               {
                 key: 'divider_1',
                 itemType: ContextualMenuItemType.Divider
@@ -68,4 +64,17 @@ export class ContextualMenuBasicExample extends React.Component {
       </div>
     );
   }
+
+}
+
+function _createItem(name: string): IContextualMenuItem {
+  const item: IContextualMenuItem = {
+    key: name,
+    name,
+    onClick: () => {
+      console.log(`${name} clicked`);
+    }
+  };
+
+  return item;
 }
