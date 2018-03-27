@@ -9,6 +9,7 @@ import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip
 import { PersonaCoin } from './PersonaCoin';
 import {
   IPersonaProps,
+  IPersonaSharedProps,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
   IPersonaStyleProps,
@@ -64,28 +65,25 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       theme,
     } = this.props;
 
-    const personaCoinProps = {
+    const personaCoinProps: IPersonaSharedProps = {
       coinProps,
       coinSize,
-      imageUrl,
       imageAlt,
       imageInitials,
-      initialsColor,
-      presence,
-      primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      size,
+      imageUrl,
+      initialsColor,
       onPhotoLoadingStateChange,
-      onRenderCoin
+      onRenderCoin,
+      presence,
+      primaryText,
+      size,
     };
 
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
       className,
-      // isDarkText,
-      // isReadOnly,
-      // isSelectable,
       showSecondaryText,
       presence,
       size,
