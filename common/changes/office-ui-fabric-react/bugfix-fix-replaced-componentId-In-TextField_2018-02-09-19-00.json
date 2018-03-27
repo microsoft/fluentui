@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Used TextField's id for the input id. If none is provided, default to a generated one.",
+      "packageName": "office-ui-fabric-react",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "ia.samoylov@icloud.com"
+}
