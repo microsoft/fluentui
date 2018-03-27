@@ -42,7 +42,7 @@ export interface IKeytipProps {
 
   /**
    * Function to call when this keytip is activated
-   * 'el' is the DOM element that the keytip is attached to
+   * 'el' is the DOM element marked with 'data-ktp-execute-target'
    *
    * @type {(HTMLElement) => void}
    */
@@ -50,7 +50,7 @@ export interface IKeytipProps {
 
   /**
    * Function to call when the keytip is returned to
-   * 'el' is the DOM element that the keytip is attached to
+   * 'el' is the DOM element marked with 'data-ktp-execute-target'
    *
    * @type {(HTMLElement) => void}
    */
@@ -65,9 +65,9 @@ export interface IKeytipProps {
   keySequences: IKeySequence[];
 
   /**
-   * Full KeySequence of the overflow set button, set if this keytip is inside an overflow
+   * Full KeySequence of the overflow set button, will be set automatically if this keytip is inside an overflow
    *
-   * @type {IKeySequence}
+   * @type {IKeySequence[]}
    */
   overflowSetSequence?: IKeySequence[];
 

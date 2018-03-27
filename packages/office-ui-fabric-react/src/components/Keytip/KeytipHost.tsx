@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import { BaseComponent, IKeySequence, convertSequencesToKeytipID, IRenderComponent } from '../../Utilities';
-import { IKeytip, IKeytipProps } from './Keytip.types';
+import { BaseComponent, IRenderComponent } from '../../Utilities';
+import { IKeytipProps } from './Keytip.types';
 import { getNativeKeytipProps, registerKeytip, unregisterKeytip, updateKeytip } from '../../utilities/keytips';
 
 export interface IKeytipHostProps {
@@ -10,7 +9,7 @@ export interface IKeytipHostProps {
 }
 
 /**
- * A small element to help the target element correctly read out its aria-describedby for its Keytip
+ * A small element to help the target component correctly read out its aria-describedby for its Keytip
  *
  * @export
  * @class KeytipHost

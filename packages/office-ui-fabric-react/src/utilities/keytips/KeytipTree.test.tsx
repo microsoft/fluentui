@@ -15,46 +15,26 @@ import {
 } from '../../Utilities';
 
 describe('KeytipTree', () => {
-  const layerID = ktpLayerId;
-  const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
-  const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
-  const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
-  const keytipManager = KeytipManager.getInstance();
-
-  beforeEach(() => {
-    // Create layer
-    ReactTestUtils.renderIntoDocument<KeytipLayer>(
-      <KeytipLayer
-        content='Alt Windows'
-        keytipStartSequences={ keytipStartSequences }
-        keytipReturnSequences={ keytipReturnSequences }
-        keytipExitSequences={ keytipExitSequences }
-      />
-    );
-  });
+  let keytipTree = new KeytipTree();
 
   afterEach(() => {
-    keytipManager.keytipTree = new KeytipTree();
-    keytipManager.keytips = [];
+    // Reset tree
+    keytipTree = new KeytipTree();
   });
 
   it('constructor creates a root node', () => {
-    const keytipTree = keytipManager.keytipTree;
-
     // Tree root ID should be the layer's ID
-    expect(keytipTree.root.id).toEqual(layerID);
+    expect(keytipTree.root.id).toEqual(ktpLayerId);
     // Tree root should not have any children
     expect(keytipTree.root.children).toHaveLength(0);
 
     // Only the root should be specified in the nodeMap
-    expect(keytipTree.nodeMap[layerID]).toBeDefined();
+    expect(keytipTree.nodeMap[ktpLayerId]).toBeDefined();
     expect(Object.keys(keytipTree.nodeMap)).toHaveLength(1);
   });
 
   describe('addNode', () => {
     it('directly under root works correctly', () => {
-      const keytipTree = keytipManager.keytipTree;
-
       // TreeNode C, will be child of root
       const keytipIdC = ktpFullPrefix + 'c';
       const sampleKeySequence: IKeySequence[] = [{ keys: ['c'] }];
@@ -73,12 +53,10 @@ describe('KeytipTree', () => {
       // Test TreeNode C properties
       expect(keytipNodeC.id).toEqual(keytipIdC);
       expect(keytipNodeC.children).toHaveLength(0);
-      expect(keytipNodeC.parent).toEqual(layerID);
+      expect(keytipNodeC.parent).toEqual(ktpLayerId);
     });
 
     it('two levels from root', () => {
-      const keytipTree = keytipManager.keytipTree;
-
       // Parent
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
@@ -104,8 +82,6 @@ describe('KeytipTree', () => {
     });
 
     it('add a child node before its parent', () => {
-      const keytipTree = keytipManager.keytipTree;
-
       // Parent
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
@@ -165,8 +141,6 @@ describe('KeytipTree', () => {
        * Nodes will be added in order: F, C, B, D, E
        */
 
-      const keytipTree = keytipManager.keytipTree;
-
       // Node B
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
@@ -209,14 +183,14 @@ describe('KeytipTree', () => {
       expect(keytipNodeB.parent).toEqual(keytipIdC);
       expect(keytipNodeB.children).toHaveLength(0);
 
-      expect(keytipNodeC.parent).toEqual(layerID);
+      expect(keytipNodeC.parent).toEqual(ktpLayerId);
       expect(keytipNodeC.children).toHaveLength(1);
       expect(keytipNodeC.children).toContain(keytipIdB);
 
       expect(keytipNodeD.parent).toEqual(keytipIdE);
       expect(keytipNodeD.children).toHaveLength(0);
 
-      expect(keytipNodeE.parent).toEqual(layerID);
+      expect(keytipNodeE.parent).toEqual(ktpLayerId);
       expect(keytipNodeE.children).toHaveLength(2);
       expect(keytipNodeE.children).toContain(keytipIdD);
       expect(keytipNodeE.children).toContain(keytipIdF);
@@ -240,7 +214,6 @@ describe('KeytipTree', () => {
         content: 'X',
         keySequences: [{ keys: ['x'] }]
       };
-      const keytipTree = keytipManager.keytipTree;
       keytipTree.addNode(overflowNode);
       keytipTree.addNode(keytipProps);
 
@@ -253,8 +226,6 @@ describe('KeytipTree', () => {
 
   describe('removeNode', () => {
     it('removes a child node of root and has no children', () => {
-      const keytipTree = keytipManager.keytipTree;
-
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
@@ -272,8 +243,6 @@ describe('KeytipTree', () => {
     });
 
     it('removes multiple nodes in order correctly', () => {
-      const keytipTree = keytipManager.keytipTree;
-
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
@@ -306,8 +275,6 @@ describe('KeytipTree', () => {
     });
 
     it('removes children as well when a parent is removed', () => {
-      const keytipTree = keytipManager.keytipTree;
-
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
@@ -341,7 +308,6 @@ describe('KeytipTree', () => {
         content: 'X',
         keySequences: [{ keys: ['x'] }]
       };
-      const keytipTree = keytipManager.keytipTree;
       keytipTree.addNode(overflowProps);
       keytipTree.addNode(keytipProps);
 
@@ -357,8 +323,6 @@ describe('KeytipTree', () => {
 
   describe('getExactlyMatchedNodes', () => {
     it('get matched node tests ', () => {
-      const keytipTree = new KeytipTree();
-
       /**
        *   Tree should end up looking like:
        *
@@ -418,8 +382,6 @@ describe('KeytipTree', () => {
     });
 
     it('should be undefined is matched node is disabled ', () => {
-      const keytipTree = new KeytipTree();
-
       /**
        *   Tree should end up looking like:
        *
@@ -465,8 +427,6 @@ describe('KeytipTree', () => {
 
   describe('getPartiallyMatchedNodes', () => {
     it('get partially matched node tests ', () => {
-      const keytipTree = new KeytipTree();
-
       /**
        *   Tree should end up looking like:
        *
@@ -524,8 +484,6 @@ describe('KeytipTree', () => {
     });
 
     it('get partially matched nodes that are not disabled ', () => {
-      const keytipTree = new KeytipTree();
-
       /**
        *   Tree should end up looking like:
        *
@@ -561,6 +519,53 @@ describe('KeytipTree', () => {
       // nodes array should equal 1, for node e2 is disabled.
       const matchedNodes = keytipTree.getPartiallyMatchedNodes({ keys: ['e'] }, nodeA);
       expect(matchedNodes.length).toEqual(1);
+    });
+  });
+
+  describe('getChildren', () => {
+    const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
+    const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+    const keytipIdA = ktpFullPrefix + 'a';
+
+    beforeEach(() => {
+      // Node E1
+      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+
+      // Node E2
+      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+
+      // Node A
+      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+
+      const nodeA = createTreeNode(keytipIdA, '', [keytipIdE1, keytipIdE2], keytipSequenceA);
+      const nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [], keytipSequenceE1);
+      const nodeE2 = createTreeNode(keytipIdE2, keytipIdA, [], keytipSequenceE2);
+
+      keytipTree.nodeMap[keytipIdA] = nodeA;
+      keytipTree.nodeMap[keytipIdE1] = nodeE1;
+      keytipTree.nodeMap[keytipIdE2] = nodeE2;
+    });
+
+    it('works for a passed in node', () => {
+      const childrenOfA = keytipTree.getChildren(keytipTree.nodeMap[keytipIdA]);
+      expect(childrenOfA).toHaveLength(2);
+      expect(childrenOfA).toContain(keytipIdE1);
+      expect(childrenOfA).toContain(keytipIdE2);
+    });
+
+    it('gets the children of the current node when no parameter is passed', () => {
+      keytipTree.currentKeytip = keytipTree.nodeMap[keytipIdA];
+      const childrenOfA = keytipTree.getChildren();
+      expect(childrenOfA).toHaveLength(2);
+      expect(childrenOfA).toContain(keytipIdE1);
+      expect(childrenOfA).toContain(keytipIdE2);
+    });
+
+    it('correctly omits persisted nodes', () => {
+      keytipTree.nodeMap[keytipIdE1].persisted = true;
+      const childrenOfA = keytipTree.getChildren(keytipTree.nodeMap[keytipIdA]);
+      expect(childrenOfA).toHaveLength(1);
+      expect(childrenOfA).toContain(keytipIdE2);
     });
   });
 });

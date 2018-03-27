@@ -1,20 +1,18 @@
 import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { IKeytipProps, Keytip } from '../../Keytip';
+import { IKeytipProps } from '../../Keytip';
 import {
   IKeySequence,
   convertSequencesToKeytipID,
   transitionKeysContain,
   IKeytipTransitionKey,
-  keySequencesAreEqual,
   fullKeySequencesAreEqual,
   getDocument,
   replaceElement,
   findIndex,
-  ktpLayerId,
   mergeOverflowKeySequences
 } from '../../Utilities';
-import { constructKeytipTargetFromId, constructKeytipExecuteTargetFromId } from './KeytipUtils';
+import { constructKeytipExecuteTargetFromId } from './KeytipUtils';
 
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();

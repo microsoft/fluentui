@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  convertSequencesToKeytipID,
   IKeytipTransitionKey,
   KeytipTransitionModifier,
   autobind
@@ -8,9 +7,7 @@ import {
 import { buildKeytipConfigMap, IKeytipConfigMap } from '../../../utilities/keytips';
 import { keytipConfig } from './KeytipSetup';
 import { KeytipLayer, } from 'office-ui-fabric-react/lib/KeytipLayer';
-import { registerKeytip, addKeytipSequence } from '../../../utilities/keytips';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { DefaultButton, ActionButton, CompoundButton, IconButton, CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, ActionButton, CompoundButton, CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -47,76 +44,81 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
     this.keytipMap = buildKeytipConfigMap(keytipConfig);
 
+    // Setup initial overflow items
+    const initialItems = [
+      {
+        key: 'item1',
+        name: 'Link 1',
+        onClick: () => { return; },
+        keytipProps: this.keytipMap.OverflowButton1
+      },
+      {
+        key: 'item2',
+        name: 'Link 2',
+        onClick: () => { return; },
+        keytipProps: this.keytipMap.OverflowButton2
+      },
+      {
+        key: 'item3',
+        name: 'Link 3',
+        onClick: () => { return; },
+        keytipProps: this.keytipMap.OverflowButton3
+      }
+    ];
+
+    const initialOverflowItems = [
+      {
+        key: 'item5',
+        name: 'Overflow Link 1',
+        keytipProps: {
+          ...this.keytipMap.OverflowButton5,
+          onExecute: (el: HTMLElement | null) => {
+            if (el) {
+              el.click();
+            } else {
+              overflowItem1Click();
+            }
+          }
+        },
+        onClick: overflowItem1Click
+      },
+      {
+        key: 'item6',
+        name: 'Overflow Link 2',
+        keytipProps: {
+          ...this.keytipMap.OverflowButton6,
+          hasChildrenNodes: true,
+          onExecute: (el: HTMLElement | null) => {
+            if (el) {
+              el.click();
+            } else {
+              overflowItem2Click();
+            }
+          }
+        },
+        onClick: overflowItem2Click,
+        subMenuProps: {
+          items: [
+            {
+              key: 'overflowSubMenu1',
+              name: 'Overflow Submenu Item 1',
+              keytipProps: this.keytipMap.OverflowSubMenuButton1
+            },
+            {
+              key: 'overflowSubMenu2',
+              name: 'Overflow Submenu Item 2'
+            }
+          ]
+        }
+      }
+    ];
+
     // Setup state
     this.state = {
       showModal: false,
       showMessageBar: false,
-      items: [
-        {
-          key: 'item1',
-          name: 'Link 1',
-          onClick: () => { return; },
-          keytipProps: this.keytipMap.OverflowButton1
-        },
-        {
-          key: 'item2',
-          name: 'Link 2',
-          onClick: () => { return; },
-          keytipProps: this.keytipMap.OverflowButton2
-        },
-        {
-          key: 'item3',
-          name: 'Link 3',
-          onClick: () => { return; },
-          keytipProps: this.keytipMap.OverflowButton3
-        }
-      ],
-      overflowItems: [
-        {
-          key: 'item5',
-          name: 'Overflow Link 1',
-          keytipProps: {
-            ...this.keytipMap.OverflowButton5,
-            onExecute: (el: HTMLElement | null) => {
-              if (el) {
-                el.click();
-              } else {
-                overflowItem1Click();
-              }
-            }
-          },
-          onClick: overflowItem1Click
-        },
-        {
-          key: 'item6',
-          name: 'Overflow Link 2',
-          keytipProps: {
-            ...this.keytipMap.OverflowButton6,
-            hasChildrenNodes: true,
-            onExecute: (el: HTMLElement | null) => {
-              if (el) {
-                el.click();
-              } else {
-                overflowItem2Click();
-              }
-            }
-          },
-          onClick: overflowItem2Click,
-          subMenuProps: {
-            items: [
-              {
-                key: 'overflowSubMenu1',
-                name: 'Overflow Submenu Item 1',
-                keytipProps: this.keytipMap.OverflowSubMenuButton1
-              },
-              {
-                key: 'overflowSubMenu2',
-                name: 'Overflow Submenu Item 2'
-              }
-            ]
-          }
-        }
-      ]
+      items: initialItems,
+      overflowItems: initialOverflowItems
     };
   }
 

@@ -3,8 +3,7 @@ import {
   css,
   BaseComponent,
   createRef,
-  IKeySequence,
-  addElementAtIndex
+  IKeySequence
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
@@ -79,19 +78,15 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
-    // Remove 'overflowSetSequence' from any keytip props if necessary
     const overflowKeytipSequences = this.props.keytipSequences;
-    if (overflowKeytipSequences) {
-      items.forEach((overflowItem) => {
-        const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
-        if (keytip) {
-          this._removeOverflowKeytip(overflowItem);
-        }
-      });
-    }
 
     return items.map((item, i) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
+
+      // Remove overflowSetSequence from all regular items
+      if (overflowKeytipSequences && item.keytipProps) {
+        this._removeOverflowSequence(item);
+      }
 
       return (
         <div key={ item.key } { ...wrapperDivProps }>
@@ -117,8 +112,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
             hasChildrenNodes: false,
             disabled: keytip.disabled
           };
+
           if (keytip.hasChildrenNodes || overflowItem.subMenuProps) {
-            // If the keytip has a submenu, we need to modify the onExecute
+            // If the keytip has a submenu, change onExecute to persistedKeytipExecute
             persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, overflowItem.keytipProps.keySequences);
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
@@ -131,7 +127,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
           this._persistedKeytips.push(persistedKeytip);
 
           // Add the overflow sequence to this item and its subMenu items
-          this._addOverflowKeytip(overflowKeytipSequences, overflowItem);
+          this._addOverflowSequence(overflowKeytipSequences, overflowItem);
         }
       });
     }
@@ -142,28 +138,31 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     );
   }
 
-  // Unsets overflowSetSequence on item and its subMenu items
-  private _removeOverflowKeytip(item: any): void {
+  /**
+   * Unsets overflowSetSequence on item and its subMenu items
+   */
+  private _removeOverflowSequence(item: any): void {
     item.keytipProps.overflowSetSequence = undefined;
 
     if (item.subMenuProps) {
       item.subMenuProps.items.forEach((subMenuItem: any) => {
         if (subMenuItem.keytipProps) {
-          this._removeOverflowKeytip(subMenuItem);
+          this._removeOverflowSequence(subMenuItem);
         }
       });
     }
   }
 
-  // Sets overflowSetSequence on item and its subMenu items
-  private _addOverflowKeytip(overflowSequence: IKeySequence[], overflowItem: any): void {
+  /**
+   * Sets overflowSetSequence on item and its subMenu items
+   */
+  private _addOverflowSequence(overflowSequence: IKeySequence[], overflowItem: any): void {
     overflowItem.keytipProps.overflowSetSequence = overflowSequence;
 
     if (overflowItem.subMenuProps) {
-      // Need to insert into subMenu keytips
       overflowItem.subMenuProps.items.forEach((subMenuItem: any) => {
         if (subMenuItem.keytipProps) {
-          this._addOverflowKeytip(overflowSequence, subMenuItem);
+          this._addOverflowSequence(overflowSequence, subMenuItem);
         }
       });
     }

@@ -2,7 +2,6 @@ import {
   IKeySequence,
   convertSequencesToKeytipID,
   dataKtpTarget,
-  keySequencesAreEqual,
   ktpLayerId,
   ktpAriaSeparatorId,
   dataKtpExecuteTarget,

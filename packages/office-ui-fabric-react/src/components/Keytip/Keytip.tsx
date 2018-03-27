@@ -5,7 +5,7 @@ import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';
 import { KeytipContent } from './KeytipContent';
 import { getCalloutStyles } from './Keytip.styles';
-import { constructKeytipTargetFromSequences, KeytipManager } from '../../utilities/keytips';
+import { constructKeytipTargetFromSequences } from '../../utilities/keytips';
 
 /**
  * A callout corresponding to another Fabric component to describe a key sequence that will activate that component
@@ -31,6 +31,7 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
     } = this.props;
 
     let sequenceToTarget: string;
+    // Take into consideration the overflow sequence
     if (overflowSetSequence) {
       sequenceToTarget = constructKeytipTargetFromSequences(mergeOverflowKeySequences(keySequences, overflowSetSequence));
     } else {
@@ -39,6 +40,8 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
     let keytipTarget: string | CalloutTargetFunction = sequenceToTarget;
 
     if (offset) {
+      // If we have an offset, use a function to calculate the exact point after the
+      // item has rendered
       keytipTarget = (): Element | string | MouseEvent | IPoint | null => {
         const currentDoc: Document = getDocument()!;
         const targetEl = currentDoc ? currentDoc.querySelector(sequenceToTarget) as Element : undefined;

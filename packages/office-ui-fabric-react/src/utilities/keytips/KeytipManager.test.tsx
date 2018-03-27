@@ -8,7 +8,6 @@ import {
   IKeytipTransitionKey,
   ktpSeparator,
   ktpFullPrefix,
-  fullKeySequencesAreEqual,
   ktpLayerId
 } from '../../Utilities';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';

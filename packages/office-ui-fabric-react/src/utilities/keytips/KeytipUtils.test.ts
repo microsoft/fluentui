@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { getAriaDescribedBy, getNativeKeytipProps } from './KeytipUtils';
 import { IKeySequence, convertSequencesToKeytipID, ktpLayerId, ktpAriaSeparatorId } from '../../Utilities';
 
