@@ -7,23 +7,23 @@ import {
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
-  IPersonaProps,
-  IPersonaStyleProps,
-  IPersonaStyles,
+  IPersonaPresenceProps,
+  IPersonaPresenceStyleProps,
+  IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
 } from './Persona.types';
-import { getStyles } from './Persona.styles';
+import { getStyles } from './PersonaPresence.styles';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;
 const presenceMaxSize = 40;
 const presenceFontMaxSize = 20;
 
-const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
+const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>();
 
 @customizable('PersonaPresence', ['theme'])
-export class PersonaPresenceBase extends BaseComponent<IPersonaProps, {}> {
-  constructor(props: IPersonaProps) {
+export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {
+  constructor(props: IPersonaPresenceProps) {
     super(props);
   }
 
@@ -32,6 +32,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaProps, {}> {
       coinSize,
       presence,
       theme,
+      size,
     } = this.props;
 
     const presenceHeightWidth = coinSize && (coinSize / coinSizePresenceScaleFactor < presenceMaxSize ? coinSize / coinSizePresenceScaleFactor : presenceMaxSize);
@@ -42,6 +43,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaProps, {}> {
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
       presence,
+      size,
     });
 
     if (presence === PersonaPresenceEnum.none) {
@@ -87,7 +89,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaProps, {}> {
   }
 }
 
-export const PersonaPresence = styled<IPersonaProps, IPersonaStyleProps, IPersonaStyles>(
+export const PersonaPresence = styled<IPersonaPresenceProps, IPersonaPresenceStyleProps, IPersonaPresenceStyles>(
   PersonaPresenceBase,
   getStyles
 );
