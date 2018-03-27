@@ -60,6 +60,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
               { key: 'auto', text: 'Auto' },
               { key: 'top', text: 'Top' },
               { key: 'bottom', text: 'Bottom' },
+              { key: 'center', text: 'Center' },
             ]
           }
           onChanged={ this._onDropdownChanged }
@@ -111,6 +112,9 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
         break;
       case 'bottom':
         scrollMode = ScrollToMode.bottom;
+        break;
+      case 'center':
+        scrollMode = ScrollToMode.center;
         break;
     }
     this._scroll(this.state.selectedIndex, scrollMode);

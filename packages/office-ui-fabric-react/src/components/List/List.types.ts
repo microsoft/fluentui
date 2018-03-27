@@ -15,6 +15,10 @@ export const enum ScrollToMode {
    * Attempts to scroll the list so the bottom of the desired item is aligned with the bottom of the viewport.
    */
   bottom,
+  /**
+   * Attempts to scroll the list so the desired item is in the exact center of the viewport.
+   */
+  center
 }
 
 export interface IList {

@@ -236,6 +236,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
             case ScrollToMode.bottom:
               this._scrollElement.scrollTop = scrollBottom - scrollRect.height;
               return;
+            case ScrollToMode.center:
+              this._scrollElement.scrollTop = (scrollTop + scrollBottom - scrollRect.height) / 2;
+              return;
             case ScrollToMode.auto:
             default:
               break;
