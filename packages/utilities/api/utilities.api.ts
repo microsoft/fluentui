@@ -131,7 +131,7 @@ export function getFirstFocusable(rootElement: HTMLElement,
 export function getId(prefix?: string): string;
 
 // @public
-export function getInitials(displayName: string | undefined | null, isRtl: boolean): string;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, calculateInitialsForPhoneNumber?: boolean): string;
 
 // @public
 export function getLanguage(): string | null;

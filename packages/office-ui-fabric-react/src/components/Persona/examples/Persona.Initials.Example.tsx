@@ -27,11 +27,28 @@ export class PersonaInitialsExample extends React.Component<any, any> {
         />
         <Persona
           { ...examplePersona  }
+          primaryText='Annie'
+        />
+        <Persona
+          { ...examplePersona  }
           primaryText='Annie Lindqvist'
         />
         <Persona
           { ...examplePersona  }
+          primaryText='Annie Boyl Lindqvist'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='Annie Boyl Carrie Lindqvist'
+        />
+        <Persona
+          { ...examplePersona  }
           primaryText='+1 (555) 123-4567 X4567'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='+1 (555) 123-4567 X4567'
+          calculateInitialsForPhoneNumber={true}
         />
         <Persona
           { ...examplePersona  }

@@ -82,6 +82,12 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
   imageInitials?: string;
 
   /**
+   * Whether initials are calculated for phone numbers.
+   * @defaultvalue false
+   */
+  calculateInitialsForPhoneNumber?: boolean;
+
+  /**
    * The background color when the user's initials are displayed.
    * @defaultvalue [Derived from personaName]
    */

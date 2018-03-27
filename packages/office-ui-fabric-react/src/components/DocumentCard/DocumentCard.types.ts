@@ -239,6 +239,12 @@ export interface IDocumentCardActivityPerson {
   initials?: string;
 
   /**
+   * Whether initials are calculated for phone numbers.
+   * @defaultvalue false
+   */
+  calculateInitialsForPhoneNumber?: boolean;
+
+  /**
    * The background color when the user's initials are displayed.
    * @defaultvalue PersonaInitialsColor.blue
    */
