@@ -1,10 +1,7 @@
 
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import * as SignalFieldStylesModule from './SignalField.scss';
-
-// tslint:disable-next-line:no-any
-const SignalFieldStyles: any = SignalFieldStylesModule;
+import * as SignalFieldStyles from './SignalField.scss';
 
 export type SignalFieldMode = 'wide' | 'compact';
 
