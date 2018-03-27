@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removed focusability on buttons for split buttons and spin buttons",
-      "type": "patch"
+      "comment": "Contextual Menu Split Button Fix Styling Problems For Centered Button Content",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
