@@ -72,12 +72,6 @@ export const getStyles = (
         flex: '0 0 auto',
         height: personaSize48,
         width: personaSize48,
-
-        // selectors: {
-        //   '$image': {
-        //     border: 0,
-        //   }
-        // }
       },
 
       isSize10 && {
@@ -135,13 +129,6 @@ export const getStyles = (
         border: 0,
         borderRadius: '50%',
         perspective: '1px',
-
-        // Remove this and use conditional render to hide instead
-        selectors: {
-          '&[src=""]': {
-            display: 'none',
-          }
-        }
       },
 
       isSize10 && {

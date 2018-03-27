@@ -7,6 +7,7 @@ import {
 import {
   FontSizes,
   HighContrastSelector,
+  HighContrastBWSelector,
 } from '../../Styling';
 
 export const getStyles = (
@@ -20,8 +21,6 @@ export const getStyles = (
   } = props;
 
   const { palette } = theme;
-
-  const HighContrastBWSelector = '@media screen and (-ms-high-contrast: black-on-white)';
 
   // Persona presence conditionals
   const isAvailable = presence === PersonaPresence.online;
@@ -52,10 +51,6 @@ export const getStyles = (
   // const colorPresenceOutOfOffice = palette.magenta;
 
   // Other presence colors
-  // const colorPresenceBlockedBackground = '#DEDEDE';
-  // const colorPresenceBlockedLine = '#C72D25';
-  // const colorPresenceBusyStripeLight = '#E57A79';
-  // const colorPresenceBusyStripeDark = '#D00E0D';
   const colorPresenceBusyAverage = '#D93B3B';
 
   // Presence Sizes
@@ -153,6 +148,12 @@ export const getStyles = (
 
       isAvailable && {
         backgroundColor: colorPresenceAvailable,
+
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText',
+          },
+        }
       },
 
       isAway && {
@@ -178,6 +179,16 @@ export const getStyles = (
             left: 0,
             boxShadow: `0 0 0 2px ${colorPresenceBusyAverage} inset`,
             borderRadius: '50%',
+
+            selectors: {
+              [HighContrastSelector]: {
+                boxShadow: `0 0 0 2px ${palette.contrastBlackDisabled} inset`,
+              },
+
+              [HighContrastBWSelector]: {
+                boxShadow: `0 0 0 2px ${palette.contrastWhiteDisabled} inset`,
+              }
+            }
           },
 
           '&:after': {
@@ -189,35 +200,25 @@ export const getStyles = (
             position: 'absolute',
             top: '40%',
             left: 0,
+
+            selectors: {
+              [HighContrastSelector]: {
+                backgroundColor: palette.contrastBlackDisabled,
+              },
+
+              [HighContrastBWSelector]: {
+                backgroundColor: palette.contrastWhiteDisabled,
+              }
+            }
           },
 
           [HighContrastSelector]: {
             color: palette.contrastBlackDisabled,
             backgroundColor: 'Window',
-
-            selectors: {
-              '&:before': {
-                boxShadow: `0 0 0 2px ${palette.contrastBlackDisabled} inset`,
-              },
-
-              '&:after': {
-                backgroundColor: palette.contrastBlackDisabled,
-              }
-            }
           },
 
           [HighContrastBWSelector]: {
             color: palette.contrastWhiteDisabled,
-
-            selectors: {
-              '&:before': {
-                boxShadow: `0 0 0 2px ${palette.contrastWhiteDisabled} inset`,
-              },
-
-              '&:after': {
-                backgroundColor: palette.contrastWhiteDisabled,
-              }
-            }
           }
         }
       },
@@ -256,19 +257,37 @@ export const getStyles = (
         backgroundColor: colorPresenceDndBackground,
 
         selectors: {
-          [HighContrastSelector]: {
-            color: palette.black,
+          '&:before': {
             backgroundColor: palette.contrastBlackDisabled,
 
             selectors: {
-              '&:before': {
+              [HighContrastSelector]: {
                 backgroundColor: palette.contrastBlackDisabled,
               },
 
-              '&:after': {
-                backgroundColor: palette.contrastBlackDisabled,
+              [HighContrastBWSelector]: {
+                backgroundColor: palette.contrastWhiteDisabled,
               }
             }
+          },
+
+          '&:after': {
+            backgroundColor: palette.contrastBlackDisabled,
+
+            selectors: {
+              [HighContrastSelector]: {
+                backgroundColor: palette.contrastBlackDisabled,
+              },
+
+              [HighContrastBWSelector]: {
+                backgroundColor: palette.contrastWhiteDisabled,
+              }
+            }
+          },
+
+          [HighContrastSelector]: {
+            color: palette.black,
+            backgroundColor: palette.contrastBlackDisabled,
           },
 
           [HighContrastBWSelector]: {

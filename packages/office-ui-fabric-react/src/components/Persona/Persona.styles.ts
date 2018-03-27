@@ -7,7 +7,6 @@ import {
 import {
   FontSizes,
   FontWeights,
-  HighContrastSelector,
   IStyle,
   normalize,
   noWrap,
@@ -26,8 +25,6 @@ export const getStyles = (
   } = props;
 
   const { palette } = theme;
-
-  const HighContrastBWSelector = '@media screen and (-ms-high-contrast: black-on-white)';
 
   // Persona presence conditionals
   const isAvailable = presence === PersonaPresence.online;
@@ -171,26 +168,12 @@ export const getStyles = (
       /**
        * Modifiers: presence
        */
-      isAvailable && [
-        'ms-Persona--available',
-        {
-          selectors: {
-            [HighContrastSelector]: {
-              backgroundColor: 'WindowText',
-            },
-
-            [HighContrastBWSelector]: {
-              backgroundColor: palette.white,
-            }
-          }
-        }
-      ],
+      isAvailable && 'ms-Persona--online',
       isAway && 'ms-Persona--away',
       isBlocked && 'ms-Persona--blocked',
       isBusy && 'ms-Persona--busy',
       isDoNotDisturb && 'ms-Persona--donotdisturb',
       isOffline && 'ms-Persona--offline',
-
       className,
     ],
 
