@@ -174,7 +174,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // hook up resolving the options if needed on focus
     this._events.on(this._comboBoxWrapper.value, 'focus', this._onResolveOptions, true);
 
-    this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+    // if ('onpointerdown' in this._comboBoxWrapper.value) {
+    //   this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+    // } else {
+    //   this._events.on(this._comboBoxWrapper.value, 'touchstart', this._onPointerDown, true);
+    // }
+    this._events.on(this._comboBoxWrapper.value, 'touchstart', this._onTouchStart, true);
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
@@ -1659,6 +1664,21 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else {
       this._onComboBoxClick();
     }
+  }
+
+  private _onTouchStart = (ev: TouchEvent): void => {
+    this._processingTouch = true;
+
+    ev.preventDefault();
+    ev.stopImmediatePropagation();
+
+    if (this._comboBox.value()) {
+      this._comboBox.value().focus();
+    }
+
+    this._async.setTimeout(() => {
+      this._processingTouch = false;
+    }, 500);
   }
 
   private _onPointerDown = (ev: PointerEvent): void => {
