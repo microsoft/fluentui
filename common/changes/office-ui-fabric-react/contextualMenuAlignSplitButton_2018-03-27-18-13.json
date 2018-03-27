@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Contextual Menu Split Button Fix Styling Problems For Centered Button Content",
+      "comment": "ContextualMenu / Split Button: Fixed styling problems For centered button content.",
       "type": "minor"
     }
   ],
