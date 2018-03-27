@@ -35,8 +35,6 @@ export interface ITextFieldState {
   errorMessage?: string;
 }
 
-export const DEFAULT_MASK_CHAR = '_';
-
 export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
@@ -44,7 +42,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     autoAdjustHeight: false,
     underlined: false,
     borderless: false,
-    maskChar: DEFAULT_MASK_CHAR,
     onChanged: () => { /* noop */ },
     onBeforeChange: () => { /* noop */ },
     onNotifyValidationResult: () => { /* noop */ },

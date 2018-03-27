@@ -1,5 +1,9 @@
 export interface IMaskValue {
   value?: string;
+  /**
+   * This index refers to the index in the displayMask rather than the inputMask.
+   * This means that any escaped characters do not count toward this index.
+   */
   displayIndex: number;
   format: RegExp;
 }
@@ -41,6 +45,10 @@ export function parseMask(
       const maskFormat = formatChars[maskChar];
       if (maskFormat) {
         maskCharData.push({
+          /**
+           * Do not add escapedChars to the displayIndex.
+           * The index referst to a position in the mask's displayValue
+           */
           displayIndex: i,
           format: maskFormat
         });
@@ -77,7 +85,13 @@ export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValu
     return '';
   }
 
+  // Remove all backslashes
+  maskDisplay = maskDisplay.replace(/\\/g, '');
+
   let lastDisplayIndex = 0;
+  if (maskCharData.length > 0) {
+    lastDisplayIndex = maskCharData[0].displayIndex - 1;
+  }
 
   /**
    * For each input value, replace the character in the maskDisplay

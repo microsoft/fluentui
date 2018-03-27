@@ -248,4 +248,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * @default '_'
    */
   maskChar?: string;
+
+  /**
+   * An object defining the format characters and corresponding regexp values.
+   * Default format characters: {
+   *  '9': /[0-9]/,
+   *  'a': /[a-zA-Z]/,
+   *  '*': /[a-zA-Z0-9]/
+   * }
+   */
+  maskFormat?: { [key: string]: RegExp };
 }

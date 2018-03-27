@@ -14,6 +14,7 @@ import {
   clearNext,
   clearPrev,
   clearRange,
+  DEFAULT_MASK_FORMAT_CHARS,
   getLeftFormatIndex,
   getMaskDisplay,
   getRightFormatIndex,
@@ -52,14 +53,20 @@ export interface IMaskedTextFieldState {
   maskCursorPosition?: number;
 }
 
-export interface IMaskOptions {
-  maskPrefix: string;
-  maskDisplay: string;
-  lastEditablePos: number;
-  permanents: IMaskValue[];
+export const DEFAULT_MASK_CHAR = '_';
+
+enum inputChangeType {
+  default,
+  backspace,
+  delete,
+  textPasted
 }
 
-export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState> {
+export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
+  public static defaultProps: ITextFieldProps = {
+    maskChar: DEFAULT_MASK_CHAR,
+    maskFormat: DEFAULT_MASK_FORMAT_CHARS,
+  };
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
@@ -72,15 +79,9 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   // True if the TextField was not focused and it was clicked into
   private _moveCursorOnMouseUp: boolean;
 
-  // The input data associated with a delete or backspace change
-  private _charRemovalData: {
-    keyCode: number,
-    selectionStart: number,
-    selectionEnd: number
-  } | null;
-
-  // The clipboard data associated with a paste event
-  private _pasteData: {
+  // The stored selection data prior to input change events.
+  private _changeSelectionData: {
+    changeType: inputChangeType
     selectionStart: number,
     selectionEnd: number
   } | null;
@@ -89,16 +90,31 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     super(props);
 
     // Translate mask into charData
-    this._maskCharData = parseMask(props.mask);
+    this._maskCharData = parseMask(props.mask, props.maskFormat);
+    // If an initial value is provided, use it to populate the format chars
+    props.value && this.setValue(props.value);
+
     this._isFocused = false;
     this._moveCursorOnMouseUp = false;
 
     this.state = {
       displayValue: getMaskDisplay(
-        this.props.mask,
+        props.mask,
         this._maskCharData,
-        this.props.maskChar),
+        props.maskChar),
     };
+  }
+
+  public componentWillReceiveProps(newProps: ITextFieldProps) {
+    if (newProps.mask !== this.props.mask) {
+      this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
+      this.state = {
+        displayValue: getMaskDisplay(
+          newProps.mask,
+          this._maskCharData,
+          newProps.maskChar),
+      };
+    }
   }
 
   public componentDidUpdate() {
@@ -117,6 +133,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
         onMouseDown={ this._onMouseDown }
         onMouseUp={ this._onMouseUp }
         onChanged={ this._onInputChange }
+        onBeforeChange={ this._onBeforeChange }
         onKeyDown={ this._onKeyDown }
         onPaste={ this._onPaste }
         value={ this.state.displayValue }
@@ -128,7 +145,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   /**
    * @return The value of all filled format characters or undefined if not all format characters are filled
    */
-  public value(): string | undefined {
+  public get value(): string | undefined {
     let value = '';
 
     for (let i = 0; i < this._maskCharData.length; i++) {
@@ -138,6 +155,53 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
       value += this._maskCharData[i].value;
     }
     return value;
+  }
+
+  /**
+   *
+   */
+  public setValue(newValue: string): void {
+    let valueIndex = 0,
+      charDataIndex = 0;
+
+    while (valueIndex < newValue.length &&
+      charDataIndex < this._maskCharData.length) {
+      // Test if the next character in the new value fits the next format character
+      const testVal = newValue[valueIndex];
+      if (this._maskCharData[charDataIndex].format.test(testVal)) {
+        this._maskCharData[charDataIndex].value = testVal;
+        charDataIndex++;
+      }
+      valueIndex++;
+    }
+  }
+
+  public focus(): void {
+    this._textField && this._textField.focus();
+  }
+
+  public select(): void {
+    this._textField && this._textField.select();
+  }
+
+  public setSelectionStart(value: number): void {
+    this._textField && this._textField.setSelectionStart(value);
+  }
+
+  public setSelectionEnd(value: number): void {
+    this._textField && this._textField.setSelectionEnd(value);
+  }
+
+  public setSelectionRange(start: number, end: number): void {
+    this._textField && this._textField.setSelectionRange(start, end);
+  }
+
+  public get selectionStart(): number {
+    return this._textField ? this._textField.selectionStart : -1;
+  }
+
+  public get selectionEnd(): number {
+    return this._textField ? this._textField.selectionEnd : -1;
   }
 
   @autobind
@@ -207,44 +271,61 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
+  private _onBeforeChange(value: String) {
+    if (this._changeSelectionData == null) {
+      this._changeSelectionData = {
+        changeType: inputChangeType.default,
+        selectionStart: this._textField.selectionStart,
+        selectionEnd: this._textField.selectionEnd
+      };
+    }
+  }
+
+  @autobind
   private _onInputChange(value: string) {
+    if (!this._changeSelectionData) {
+      return;
+    }
+
     const { displayValue } = this.state;
-    const selectionEnd = this._textField.selectionEnd;
 
     // The initial value of cursorPos does not matter
-    let cursorPos = selectionEnd;
+    let cursorPos = 0;
+    const {
+      changeType,
+      selectionStart,
+      selectionEnd
+    } = this._changeSelectionData;
 
-    if (this._pasteData) {
-      const charsSelected = this._pasteData.selectionEnd - this._pasteData.selectionStart,
+    if (changeType === inputChangeType.textPasted) {
+      const charsSelected = selectionEnd - selectionStart,
         charCount = value.length + charsSelected - displayValue.length,
-        startPos = selectionEnd - charCount,
+        startPos = selectionStart,
         pastedString = value.substr(startPos, charCount);
 
       // Clear any selected characters
       if (charsSelected) {
-        this._maskCharData = clearRange(this._maskCharData, this._pasteData.selectionStart, charsSelected);
+        this._maskCharData = clearRange(this._maskCharData, selectionStart, charsSelected);
       }
       cursorPos = insertString(this._maskCharData, startPos, pastedString);
-
-      this._pasteData = null;
-    } else if (this._charRemovalData) {
+    } else if (changeType === inputChangeType.delete ||
+      changeType === inputChangeType.backspace) {
       // isDel is true If the characters are removed LTR, otherwise RTL
-      const isDel = this._charRemovalData.keyCode === KeyCodes.del,
-        charCount = this._charRemovalData.selectionEnd - this._charRemovalData.selectionStart;
+      const isDel = changeType === inputChangeType.delete,
+        charCount = selectionEnd - selectionStart;
 
       if (charCount) { // charCount is > 0 if range was deleted
-        this._maskCharData = clearRange(this._maskCharData, this._charRemovalData.selectionStart, charCount);
-        cursorPos = getRightFormatIndex(this._maskCharData, this._charRemovalData.selectionStart);
+        this._maskCharData = clearRange(this._maskCharData, selectionStart, charCount);
+        cursorPos = getRightFormatIndex(this._maskCharData, selectionStart);
       } else { // If charCount === 0, there was no selection and a single character was deleted
         if (isDel) {
-          this._maskCharData = clearNext(this._maskCharData, this._charRemovalData.selectionStart);
-          cursorPos = getRightFormatIndex(this._maskCharData, this._charRemovalData.selectionStart);
+          this._maskCharData = clearNext(this._maskCharData, selectionStart);
+          cursorPos = getRightFormatIndex(this._maskCharData, selectionStart);
         } else {
-          this._maskCharData = clearPrev(this._maskCharData, this._charRemovalData.selectionStart);
-          cursorPos = getLeftFormatIndex(this._maskCharData, this._charRemovalData.selectionStart);
+          this._maskCharData = clearPrev(this._maskCharData, selectionStart);
+          cursorPos = getLeftFormatIndex(this._maskCharData, selectionStart);
         }
       }
-      this._charRemovalData = null;
     } else if (value.length > displayValue.length) {
       // This case is if the user added characters
       const charCount = value.length - displayValue.length,
@@ -268,6 +349,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
       cursorPos = insertString(this._maskCharData, startPos, enteredString);
     }
 
+    this._changeSelectionData = null;
+
     this.setState({
       displayValue: getMaskDisplay(
         this.props.mask,
@@ -279,7 +362,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    this._charRemovalData = null;
+    this._changeSelectionData = null;
     if (this._textField.value) {
       const {
         keyCode,
@@ -303,8 +386,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
           return;
         }
 
-        this._charRemovalData = {
-          keyCode,
+        this._changeSelectionData = {
+          changeType: keyCode === KeyCodes.backspace ?
+            inputChangeType.backspace :
+            inputChangeType.delete,
           selectionStart,
           selectionEnd
         };
@@ -317,7 +402,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     const selectionStart = (event.target as HTMLInputElement).selectionStart,
       selectionEnd = (event.target as HTMLInputElement).selectionEnd;
     // Store the paste selection range
-    this._pasteData = {
+    this._changeSelectionData = {
+      changeType: inputChangeType.textPasted,
       selectionStart,
       selectionEnd
     };

@@ -26,10 +26,10 @@ export class TextFieldBasicExample extends React.Component<any, any> {
         />
         <MaskedTextField
           label='With input mask'
-          mask='Phone Number: (999) 999 - 9999'
-          maskChar='_'
+          mask='m\ask: (999) 999 - 9999'
         />
       </div>
     );
+    // mask='Phone Number m\ask: (999) 999 - 9999'
   }
 }
