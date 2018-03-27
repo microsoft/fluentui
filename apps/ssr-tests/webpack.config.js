@@ -20,8 +20,8 @@ module.exports = resources.createConfig(
     resolve: {
       alias: {
         'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
-        'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-        '@uifabric/styling/lib': path.join(__dirname, '../../packages/styling/lib'),
+        'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib-es2015'),
+        '@uifabric/styling/lib': path.join(__dirname, '../../packages/styling/lib-es2015'),
         'Props.ts.js': 'Props'
       },
       extensions: ['.js', '.tsx']
