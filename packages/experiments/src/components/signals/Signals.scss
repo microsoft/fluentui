@@ -157,3 +157,15 @@ i.emailed {
     color: $ms-color-black;
   }
 }
+
+.record {
+  color: $ms-color-neutralSecondary;
+
+  .selected & {
+    color: $ms-color-black;
+  }
+}
+
+.liveEdit {
+  display: none; // Not implemented.
+}

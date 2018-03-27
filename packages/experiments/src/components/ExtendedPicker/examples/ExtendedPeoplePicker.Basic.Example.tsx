@@ -6,19 +6,19 @@ import {
   assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
-import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
+import { SuggestionsStore, FloatingPeoplePicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps }
   from '../../SelectedItemsList';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
+  searchMoreAvailable: boolean;
 }
 
 // tslint:disable-next-line:no-any
@@ -26,7 +26,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _picker: ExtendedPeoplePicker;
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
-  private _suggestionProps: IBasePickerSuggestionsProps;
+  private _suggestionProps: IBaseFloatingPickerSuggestionProps;
 
   constructor(props: {}) {
     super(props);
@@ -41,22 +41,61 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     this.state = {
       peopleList: peopleList,
       mostRecentlyUsed: mru,
+      searchMoreAvailable: true,
     };
 
     this._suggestionProps = {
-      suggestionsHeaderText: 'Suggested People',
-      mostRecentlyUsedHeaderText: 'Suggested Contacts',
-      noResultsFoundText: 'No results found',
-      loadingText: 'Loading',
-      showRemoveButtons: true,
-      suggestionsAvailableAlertText: 'People Picker Suggestions available',
-      suggestionsContainerAriaLabel: 'Suggested contacts',
-      searchForMoreText: 'Search more',
-      forceResolveText: 'Use this name',
+      headerItemsProps: [{
+        renderItem: () => {
+          return (
+            <div>Use this address: { this._picker
+              && this._picker.inputElement
+              && this._picker.inputElement ? this._picker.inputElement.value : '' }</div>
+          );
+        },
+        shouldShow: () => {
+          return this._picker !== undefined
+            && this._picker.inputElement !== null
+            && this._picker.inputElement.value.indexOf('@') > -1;
+        },
+        onExecute: () => {
+          if (this._picker.floatingPicker.value !== null) {
+            this._picker.floatingPicker.value.forceResolveSuggestion();
+          }
+        }
+      },
+      {
+        renderItem: () => {
+          return (
+            <div>Suggested Contacts</div>
+          );
+        },
+        shouldShow: this._shouldShowSuggestedContacts,
+      }
+      ],
+      footerItemsProps: [{
+        renderItem: () => {
+          return (
+            <div>No results</div>
+          );
+        },
+        shouldShow: () => {
+          return this._picker !== undefined
+            && this._picker.floatingPicker !== undefined
+            && this._picker.floatingPicker.value !== null
+            && this._picker.floatingPicker.value.suggestions.length === 0;
+        }
+      },
+      {
+        renderItem: () => { return (<div>Search for more</div>); },
+        onExecute: () => { this.setState({ searchMoreAvailable: false }); },
+        shouldShow: () => { return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts(); }
+      }],
+      shouldSelectFirstItem: () => { return !this._shouldShowSuggestedContacts(); },
     };
 
     this._floatingPickerProps = {
-      suggestionsController: new SuggestionsController<IPersonaProps>(),
+      suggestionsStore: new SuggestionsStore<IPersonaProps>(),
       onResolveSuggestions: this._onFilterChanged,
       getTextFromItem: this._getTextFromItem,
       pickerSuggestionsProps: this._suggestionProps,
@@ -65,6 +104,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       onValidateInput: this._validateInput,
       onZeroQuerySuggestion: this._returnMostRecentlyUsed,
       showForceResolve: this._shouldShowForceResolve,
+      onInputChanged: this._onInputChanged,
     };
 
     this._selectedItemsListProps = {
@@ -200,6 +240,12 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     );
   }
 
+  private _shouldShowSuggestedContacts = (): boolean => {
+    return this._picker !== undefined
+      && this._picker.inputElement !== null
+      && this._picker.inputElement.value === '';
+  }
+
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {
     if (!personas || !personas.length || personas.length === 0) {
       return false;
@@ -217,6 +263,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]): IPersonaProps[] {
     return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
+  }
+
+  private _onInputChanged = (): void => {
+    this.setState({ searchMoreAvailable: true });
   }
 
   private _getTextFromItem(persona: IPersonaProps): string {

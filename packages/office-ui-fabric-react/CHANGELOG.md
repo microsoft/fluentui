@@ -1,6 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Mar 2018 10:14:03 GMT and should not be manually modified.
+
+## 5.71.0
+Tue, 27 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- Deprecate SearchBox defaultValue prop.
+
+### Patches
+
+- Dropdown: do not select disabled items on keydown
+- FocusZone: Align props to HTMLElement to be consistent
+- TextField, Panel: Deprecated componentId prop.
+- BasePicker: suggestions should not be shown in BasePicker when input does not exist.
+- In Panel component, isClickableOutsideFocusTrap should not be overriden back to false if it's already set to true in focusTrapZoneProps.
+- MessageBar: For single line, put dismiss button after action buttons.
+- ComboBox: Removed a redundant property from the basic example.
 
 ## 5.70.0
 Sun, 25 Mar 2018 03:08:03 GMT

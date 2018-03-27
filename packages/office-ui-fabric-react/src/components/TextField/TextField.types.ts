@@ -223,11 +223,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   iconClass?: string;
 
   /**
-   * Internal ID passed to render functions.
-   */
-  componentId?: string;
-
-  /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
    */
@@ -258,4 +253,10 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * }
    */
   maskFormat?: { [key: string]: RegExp };
+
+  /**
+   * Deprecated property. Serves no function.
+   * @deprecated
+   */
+  componentId?: string;
 }

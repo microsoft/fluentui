@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 21 Mar 2018 10:18:29 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Mar 2018 10:14:02 GMT and should not be manually modified.
+
+## 5.5.2
+Tue, 27 Mar 2018 10:14:02 GMT
+
+### Patches
+
+- Adds missing neutralQuaternary and neutralQuaternaryAlt to document colors page
 
 ## 5.5.1
 Wed, 21 Mar 2018 10:18:29 GMT

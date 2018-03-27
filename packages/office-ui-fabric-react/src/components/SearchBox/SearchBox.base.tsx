@@ -30,7 +30,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     super(props);
 
     this._warnDeprecations({
-      'labelText': 'placeholder'
+      'labelText': 'placeholder',
+      'defaultValue': 'value'
     });
 
     this._latestValue = props.value || '';
