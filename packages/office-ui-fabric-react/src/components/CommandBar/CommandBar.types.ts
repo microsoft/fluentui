@@ -13,7 +13,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional callback to access the ICommandBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICommandBar) => void;
+  componentRef?: (component: ICommandBar | null) => void;
 
   /**
    * Whether or not the search box is visible

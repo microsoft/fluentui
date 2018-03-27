@@ -11,7 +11,7 @@ export interface ISliderProps {
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISlider) => void;
+  componentRef?: (component: ISlider | null) => void;
 
   /**
    * Description label of the Slider

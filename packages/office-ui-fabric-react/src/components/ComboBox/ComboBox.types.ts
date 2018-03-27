@@ -34,7 +34,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IComboBox) => void;
+  componentRef?: (component: IComboBox | null) => void;
 
   /**
    * Collection of options for this ComboBox
@@ -154,6 +154,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Whether to use the ComboBoxes width as the menu's width
    */
   useComboBoxAsMenuWidth?: boolean;
+
+  /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiSelect?: boolean;
 
   /**
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.

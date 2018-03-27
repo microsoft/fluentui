@@ -2,6 +2,44 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.21.0",
+      "tag": "@uifabric/utilities_v5.21.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "a0e09698ae1443623e202087360986f65a613559",
+            "comment": "Update createRef type"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.13.0 <6.0.0` to `>=5.14.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.20.0",
+      "tag": "@uifabric/utilities_v5.20.0",
+      "date": "Fri, 23 Mar 2018 01:29:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b152150b7222ff499f2f552ce3117e0d27eb1e23",
+            "comment": "Introduced focusAsync for cheaper element focusing"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.19.1",
       "tag": "@uifabric/utilities_v5.19.1",
       "date": "Wed, 21 Mar 2018 10:18:29 GMT",

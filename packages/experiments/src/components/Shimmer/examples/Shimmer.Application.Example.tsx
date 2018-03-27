@@ -6,7 +6,6 @@ import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './Shimmer.Example.scss';
 import {
@@ -106,8 +105,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
-  @autobind
-  private _onRenderMissingItem(index: number): JSX.Element {
+  private _onRenderMissingItem = (index: number): JSX.Element => {
     this._onDataMiss(index as number);
     return (
       <Shimmer />
@@ -134,8 +132,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     }
   }
 
-  @autobind
-  private _onRenderItemColumn(item: IItem, index: number, column: IColumn): JSX.Element | string | number {
+  private _onRenderItemColumn = (item: IItem, index: number, column: IColumn): JSX.Element | string | number => {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
@@ -163,8 +160,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     return item[column.key];
   }
 
-  @autobind
-  private _onRenderCompactCard(item: IItem): JSX.Element {
+  private _onRenderCompactCard = (item: IItem): JSX.Element => {
     return (
       <div className='hoverCardExample-compactCard'>
         <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
@@ -174,8 +170,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
-  @autobind
-  private _onRenderExpandedCard(item: IItem): JSX.Element {
+  private _onRenderExpandedCard = (item: IItem): JSX.Element => {
     const { items, columns } = this.state;
     return (
       <div className='hoverCardExample-expandedCard'>

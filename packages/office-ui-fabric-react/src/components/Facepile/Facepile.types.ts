@@ -16,7 +16,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFacepile) => void;
+  componentRef?: (component: IFacepile | null) => void;
 
   /**
    * Array of IPersonaProps that define each Persona.

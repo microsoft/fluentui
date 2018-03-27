@@ -9,7 +9,6 @@ import { Tile } from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells } from './ExampleHelpers';
 
@@ -91,28 +90,24 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
     );
   }
 
-  @autobind
-  private _onToggleIsModalSelection(checked: boolean): void {
+  private _onToggleIsModalSelection = (checked: boolean): void => {
     this._selection.setModal(checked);
   }
 
-  @autobind
-  private _onSelectionChange(): void {
+  private _onSelectionChange = (): void => {
     this.setState({
       isModalSelection: this._selection.isModal()
     });
   }
 
-  @autobind
-  private _onItemInvoked(item: IExampleItem, index: number, event: Event): void {
+  private _onItemInvoked = (item: IExampleItem, index: number, event: Event): void => {
     event.stopPropagation();
     event.preventDefault();
 
     alert(`Invoked item '${item.name}'`);
   }
 
-  @autobind
-  private _onRenderDocumentCell(item: IExampleItem): JSX.Element {
+  private _onRenderDocumentCell = (item: IExampleItem): JSX.Element => {
     return (
       <Tile
         role='listitem'
@@ -144,8 +139,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
     );
   }
 
-  @autobind
-  private _onRenderHeader(item: IExampleItem): JSX.Element {
+  private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
       <div role='presentation'>
         <h3>{ item.name }</h3>

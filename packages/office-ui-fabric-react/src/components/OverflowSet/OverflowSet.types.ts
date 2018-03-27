@@ -15,7 +15,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (ref?: IOverflowSet) => void;
+  componentRef?: (ref?: IOverflowSet | null) => void;
 
   /**
    * Class name

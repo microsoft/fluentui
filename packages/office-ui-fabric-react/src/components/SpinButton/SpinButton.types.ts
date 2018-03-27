@@ -25,7 +25,7 @@ export interface ISpinButtonProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component?: ISpinButton) => void;
+  componentRef?: (component?: ISpinButton | null) => void;
 
   /**
    * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.

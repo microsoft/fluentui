@@ -164,7 +164,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
-        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true,
+        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled || this._isSplitButton) ? false : true,
         'aria-pressed': checked
       }
     );
@@ -201,7 +201,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public focus(): void {
-    if (this._buttonElement.value) {
+    if (this._isSplitButton && this._splitButtonContainer.value) {
+      this._splitButtonContainer.value.focus();
+    } else if (this._buttonElement.value) {
       this._buttonElement.value.focus();
     }
   }
@@ -416,6 +418,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onToggleMenu = (): void => {
+    if (this._splitButtonContainer.value) {
+      this._splitButtonContainer.value.focus();
+    }
+    const { menuProps } = this.props;
     const currentMenuProps = this.state.menuProps;
     currentMenuProps ? this._dismissMenu() : this._openMenu();
   }
@@ -440,7 +446,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         !!this.state.menuProps,
         !!checked);
 
-    buttonProps = { ...buttonProps, onClick: undefined };
+    assign(
+      buttonProps,
+      {
+        onClick: undefined,
+        tabIndex: -1,
+        'data-is-focusable': false
+      }
+    );
     const ariaDescribedBy = buttonProps.ariaDescription || '';
 
     return (
@@ -456,10 +469,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-pressed={ this.props.checked }
             aria-describedby={ ariaDescribedBy + (keytipAttributes['aria-describedby'] || '') }
             className={ classNames && classNames.splitButtonContainer }
-            onKeyDown={ this._onMenuKeyDown }
+            onKeyDown={ this._onSplitButtonContainerKeyDown }
             ref={ this._splitButtonContainer }
             data-is-focusable={ true }
             onClick={ !disabled && !primaryDisabled ? onClick : undefined }
+            tabIndex={ !disabled ? 0 : undefined }
           >
             <span
               style={ { 'display': 'flex' } }
@@ -505,11 +519,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'iconProps': menuIconProps,
       'ariaLabel': splitButtonAriaLabel,
       'aria-haspopup': true,
-      'aria-expanded': this._isExpanded
+      'aria-expanded': this._isExpanded,
+      'data-is-focusable': false
     };
 
     // Add data-ktp-execute-target to the split button if the keytip is defined
-    return <BaseButton { ...splitButtonProps } data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] } onMouseDown={ this._onMouseDown } />;
+    return <BaseButton
+      { ...splitButtonProps }
+      data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
+      onMouseDown={ this._onMouseDown }
+      tabIndex={ -1 }
+    />;
 
   }
 
@@ -521,7 +541,23 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     ev.preventDefault();
   }
 
+  private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+    if (ev.which === KeyCodes.enter) {
+      if (this._buttonElement.value) {
+        this._buttonElement.value.click();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    } else {
+      this._onMenuKeyDown(ev);
+    }
+  }
+
   private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
+    if (this.props.disabled) {
+      return;
+    }
+
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
     }
@@ -533,10 +569,23 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (!ev.defaultPrevented &&
       this.props.menuTriggerKeyCode !== null &&
-      ev.which === (this.props.menuTriggerKeyCode === undefined ? KeyCodes.down : this.props.menuTriggerKeyCode)) {
+      this._isValidMenuOpenKey(ev)) {
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
+    }
+  }
+
+  /**
+   * Returns if the user hits a valid keyboard key to open the menu
+   * @param ev - the keyboard event
+   * @returns True if user clicks on custom trigger key if enabled or alt + down arrow if not. False otherwise.
+   */
+  private _isValidMenuOpenKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
+    if (this.props.menuTriggerKeyCode) {
+      return ev.which === this.props.menuTriggerKeyCode;
+    } else {
+      return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
   }
 

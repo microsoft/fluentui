@@ -16,7 +16,7 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Optional callback to access the IExpandingCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IExpandingCard) => void;
+  componentRef?: (component: IExpandingCard | null) => void;
 
   /**
    *  Item to be returned with onRender functions

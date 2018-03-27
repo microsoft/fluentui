@@ -3,23 +3,22 @@ import * as React from 'react';
 /* tslint:enable */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
-import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
+import { SuggestionsStore, FloatingPeoplePicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps }
   from '../../SelectedItemsList';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
+  searchMoreAvailable: boolean;
 }
 
 // tslint:disable-next-line:no-any
@@ -27,7 +26,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _picker: ExtendedPeoplePicker;
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
-  private _suggestionProps: IBasePickerSuggestionsProps;
+  private _suggestionProps: IBaseFloatingPickerSuggestionProps;
 
   constructor(props: {}) {
     super(props);
@@ -42,22 +41,61 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     this.state = {
       peopleList: peopleList,
       mostRecentlyUsed: mru,
+      searchMoreAvailable: true,
     };
 
     this._suggestionProps = {
-      suggestionsHeaderText: 'Suggested People',
-      mostRecentlyUsedHeaderText: 'Suggested Contacts',
-      noResultsFoundText: 'No results found',
-      loadingText: 'Loading',
-      showRemoveButtons: true,
-      suggestionsAvailableAlertText: 'People Picker Suggestions available',
-      suggestionsContainerAriaLabel: 'Suggested contacts',
-      searchForMoreText: 'Search more',
-      forceResolveText: 'Use this name',
+      headerItemsProps: [{
+        renderItem: () => {
+          return (
+            <div>Use this address: { this._picker
+              && this._picker.inputElement
+              && this._picker.inputElement ? this._picker.inputElement.value : '' }</div>
+          );
+        },
+        shouldShow: () => {
+          return this._picker !== undefined
+            && this._picker.inputElement !== null
+            && this._picker.inputElement.value.indexOf('@') > -1;
+        },
+        onExecute: () => {
+          if (this._picker.floatingPicker.value !== null) {
+            this._picker.floatingPicker.value.forceResolveSuggestion();
+          }
+        }
+      },
+      {
+        renderItem: () => {
+          return (
+            <div>Suggested Contacts</div>
+          );
+        },
+        shouldShow: this._shouldShowSuggestedContacts,
+      }
+      ],
+      footerItemsProps: [{
+        renderItem: () => {
+          return (
+            <div>No results</div>
+          );
+        },
+        shouldShow: () => {
+          return this._picker !== undefined
+            && this._picker.floatingPicker !== undefined
+            && this._picker.floatingPicker.value !== null
+            && this._picker.floatingPicker.value.suggestions.length === 0;
+        }
+      },
+      {
+        renderItem: () => { return (<div>Search for more</div>); },
+        onExecute: () => { this.setState({ searchMoreAvailable: false }); },
+        shouldShow: () => { return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts(); }
+      }],
+      shouldSelectFirstItem: () => { return !this._shouldShowSuggestedContacts(); },
     };
 
     this._floatingPickerProps = {
-      suggestionsController: new SuggestionsController<IPersonaProps>(),
+      suggestionsStore: new SuggestionsStore<IPersonaProps>(),
       onResolveSuggestions: this._onFilterChanged,
       getTextFromItem: this._getTextFromItem,
       pickerSuggestionsProps: this._suggestionProps,
@@ -66,6 +104,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       onValidateInput: this._validateInput,
       onZeroQuerySuggestion: this._returnMostRecentlyUsed,
       showForceResolve: this._shouldShowForceResolve,
+      onInputChanged: this._onInputChanged,
     };
 
     this._selectedItemsListProps = {
@@ -128,28 +167,24 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return item.primaryText as string;
   }
 
-  @autobind
-  private _setComponentRef(component: ExtendedPeoplePicker): void {
+  private _setComponentRef = (component: ExtendedPeoplePicker): void => {
     this._picker = component;
   }
 
-  @autobind
-  private _onSetFocusButtonClicked(): void {
+  private _onSetFocusButtonClicked = (): void => {
     if (this._picker) {
       this._picker.focus();
     }
   }
 
-  @autobind
-  private _onExpandItem(item: IExtendedPersonaProps): void {
+  private _onExpandItem = (item: IExtendedPersonaProps): void => {
     if (this._picker.selectedItemsList.value) {
       // tslint:disable-next-line:no-any
       (this._picker.selectedItemsList.value as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
     }
   }
 
-  @autobind
-  private _onRemoveSuggestion(item: IPersonaProps): void {
+  private _onRemoveSuggestion = (item: IPersonaProps): void => {
     let { peopleList, mostRecentlyUsed: mruState } = this.state;
     let indexPeopleList: number = peopleList.indexOf(item);
     let indexMostRecentlyUsed: number = mruState.indexOf(item);
@@ -165,8 +200,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     }
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): Promise<IPersonaProps[]> | null {
+  private _onFilterChanged = (filterText: string, currentPersonas: IPersonaProps[], limitResults?: number):
+    Promise<IPersonaProps[]> | null => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -178,8 +213,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     }
   }
 
-  @autobind
-  private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
     return this._convertResultsToPromise(mostRecentlyUsed);
@@ -198,13 +232,18 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return copyText;
   }
 
-  @autobind
-  private _shouldShowForceResolve(): boolean {
+  private _shouldShowForceResolve = (): boolean => {
     return Boolean(
       this._picker.floatingPicker.value &&
       this._validateInput(this._picker.floatingPicker.value.inputText) &&
       this._picker.floatingPicker.value.suggestions.length === 0
     );
+  }
+
+  private _shouldShowSuggestedContacts = (): boolean => {
+    return this._picker !== undefined
+      && this._picker.inputElement !== null
+      && this._picker.inputElement.value === '';
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {
@@ -226,6 +265,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
   }
 
+  private _onInputChanged = (): void => {
+    this.setState({ searchMoreAvailable: true });
+  }
+
   private _getTextFromItem(persona: IPersonaProps): string {
     return persona.primaryText as string;
   }
@@ -235,8 +278,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return new Promise<IPersonaProps[]>((resolve: any, reject: any) => setTimeout(() => resolve(results), 150));
   }
 
-  @autobind
-  private _validateInput(input: string): boolean {
+  private _validateInput = (input: string): boolean => {
     if (input.indexOf('@') !== -1) {
       return true;
     } else if (input.length > 1) {
