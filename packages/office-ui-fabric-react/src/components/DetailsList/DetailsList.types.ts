@@ -148,9 +148,8 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
 
   /**
-   * If set to true and we provide an empty array to DetailsList while waiting the API call, it will render 10 shimmer lines.
-   * When data comes back check if the array of items from the data source is empty.
-   * If so, we need to provide a false value to this prop to prevent continuos shimmer animation in case you acces an empty folder.
+   * If set to true and we provide an empty initial array it will render 10 shimmer lines.
+   * To disable it, change the value to false or provide an array of items to render.
    * @default false
    */
   enableShimmer?: boolean;

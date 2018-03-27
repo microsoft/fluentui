@@ -50,7 +50,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     min-height: $compactRowHeight;
     padding: $compactRowVerticalPadding $rowHorizontalPadding;
 
-    &.isShimmer {
+    &.shimmer {
       padding: 0 0;
       @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
       @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);
@@ -229,7 +229,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     @include focus-border(0, $ms-color-neutralSecondary);
   }
 
-  &.isShimmer {
+  &.shimmer {
     padding: 0 0;
     @include border-left($rowShimmerHorizontalBorder, solid, $detailsList-item-default-background-color);
     @include border-right(($rowShimmerHorizontalBorder * 4), solid, $detailsList-item-default-background-color);

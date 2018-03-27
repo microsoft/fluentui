@@ -54,7 +54,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   checkboxCellClassName?: string;
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
-  isShimmer?: boolean;
+  shimmer?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -189,7 +189,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
       rowFieldsAs: RowFields = DetailsRowFields,
       selection,
-      isShimmer,
+      shimmer,
       compact
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
@@ -210,16 +210,16 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         itemIndex={ itemIndex }
         columnStartIndex={ showCheckbox ? 1 : 0 }
         onRenderItemColumn={ onRenderItemColumn }
-        isShimmer={ isShimmer }
+        shimmer={ shimmer }
       />
     );
     // Rendering Shimmer Animation outside the focus zone
-    if (isShimmer) {
+    if (shimmer) {
       return (
         <div
           className={ css(
             showCheckbox && styles.shimmerLeftBorder,
-            compact && styles.shimmerBottomBorder
+            !compact && styles.shimmerBottomBorder
           ) }
         >
           { rowFields }

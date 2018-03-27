@@ -127,6 +127,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       minimumPixelsForDrag: props.minimumPixelsForDrag
     }) : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
+    this._shimmerInitialItems = props.enableShimmer ? new Array(SHIMMER_INITIAL_ITEMS) : [];
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
@@ -316,10 +317,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     } = this.props;
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
-
-    if (enableShimmer) {
-      this._shimmerInitialItems = new Array(SHIMMER_INITIAL_ITEMS);
-    }
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
