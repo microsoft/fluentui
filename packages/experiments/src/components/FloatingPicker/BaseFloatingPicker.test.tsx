@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
-import { SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -57,7 +57,7 @@ describe('Pickers', () => {
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
+          suggestionsStore={ new SuggestionsStore<ISimple>() }
         />
       );
       let tree = component.toJSON();
@@ -74,7 +74,7 @@ describe('Pickers', () => {
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
+          suggestionsStore={ new SuggestionsStore<ISimple>() }
           onZeroQuerySuggestion={ onZeroQuerySuggestion }
           inputElement={ input }
         />,
@@ -101,7 +101,7 @@ describe('Pickers', () => {
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
+          suggestionsStore={ new SuggestionsStore<ISimple>() }
           inputElement={ input }
         />,
         root
