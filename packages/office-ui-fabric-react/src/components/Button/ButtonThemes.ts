@@ -45,7 +45,13 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {},
+    splitButtonContainer: {
+      selectors: {
+        [HighContrastSelector]: {
+          border: 'none'
+        }
+      }
+    },
 
     splitButtonMenuButton: {
       color: theme.palette.white,
@@ -152,7 +158,13 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {},
+    splitButtonContainer: {
+      selectors: {
+        [HighContrastSelector]: {
+          border: 'none'
+        }
+      }
+    },
 
     splitButtonDivider: {
       backgroundColor: theme.palette.themeLighter

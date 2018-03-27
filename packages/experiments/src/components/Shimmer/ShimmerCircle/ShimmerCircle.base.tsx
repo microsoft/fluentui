@@ -7,15 +7,13 @@ import {
   IShimmerCircleProps,
   IShimmerCircleStyleProps,
   IShimmerCircleStyles
-} from './ShimmerCircle.styles';
+} from './ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
-  public static defaultProps: IShimmerCircleProps = {
-    height: 24
-  };
   private _classNames: {[key in keyof IShimmerCircleStyles]: string};
+
   constructor(props: IShimmerCircleProps) {
     super(props);
   }

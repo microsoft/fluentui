@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsHeader can render 1`] = `
+<div
+  aria-describedby={undefined}
+  aria-label={undefined}
+  aria-labelledby={undefined}
+  className="ms-FocusZone ms-DetailsHeader"
+  data-automationid="DetailsHeader"
+  data-focuszone-id="FocusZone1"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  onMouseMove={[Function]}
+  role="row"
+>
+  <div
+    aria-colindex={0}
+    aria-labelledby="header0-check"
+    className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+    onClick={[Function]}
+    role="columnheader"
+  >
+    <span
+      className=""
+    >
+      <div
+        aria-checked={undefined}
+        aria-describedby="header0-checkTooltip"
+        aria-label={undefined}
+        className="ms-DetailsRow-check ms-DetailsRow-check--isHeader undefined"
+        data-automationid="DetailsRowCheck"
+        data-is-focusable={true}
+        data-selection-toggle={true}
+        id="header0-check"
+        role="checkbox"
+      >
+        <div
+          className=
+              ms-Check
+              {
+                height: 18px;
+                line-height: 1;
+                position: relative;
+                user-select: none;
+                vertical-align: top;
+                width: 18px;
+              }
+              &:before {
+                background: #ffffff;
+                border-radius: 50%;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                opacity: 1;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+              }
+              .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                opacity: 1;
+              }
+        >
+          <i
+            aria-hidden={true}
+            className=
+                ms-Check-circle
+                {
+                  display: inline-block;
+                }
+                {
+                  color: #c8c8c8;
+                  font-size: 18px;
+                  height: 18px;
+                  left: 0px;
+                  position: absolute;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: WindowText;
+                }
+            data-icon-name="CircleRing"
+            role="presentation"
+          />
+          <i
+            aria-hidden={true}
+            className=
+                ms-Check-check
+                {
+                  display: inline-block;
+                }
+                {
+                  color: #c8c8c8;
+                  font-size: 16px;
+                  height: 18px;
+                  left: .5px;
+                  opacity: 0;
+                  position: absolute;
+                  text-align: center;
+                  top: 0px;
+                  vertical-align: middle;
+                  width: 18px;
+                }
+                &:hover {
+                  opacity: 1;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                }
+            data-icon-name="StatusCircleCheckmark"
+            role="presentation"
+          />
+        </div>
+      </div>
+    </span>
+  </div>
+  <div
+    aria-colindex={1}
+    aria-disabled={false}
+    aria-sort="none"
+    className="ms-DetailsHeader-cell is-actionable undefined"
+    data-automationid="ColumnsHeaderColumn"
+    data-item-key="a"
+    role="columnheader"
+    style={
+      Object {
+        "width": 216,
+      }
+    }
+  >
+    <span
+      className=""
+    >
+      <span
+        aria-describedby="header0-a-tooltip"
+        aria-haspopup={false}
+        aria-label={undefined}
+        aria-labelledby="header0-a-name "
+        className="ms-DetailsHeader-cellTitle"
+        data-is-focusable={true}
+        id="header0-a"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        role="button"
+      >
+        <span
+          className="ms-DetailsHeader-cellName"
+          id="header0-a-name"
+        >
+          a
+        </span>
+      </span>
+    </span>
+  </div>
+  <div
+    aria-hidden={true}
+    className="ms-DetailsHeader-cellSizer"
+    data-is-focusable={false}
+    data-sizer-index={0}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="button"
+  />
+  <div
+    aria-colindex={2}
+    aria-disabled={false}
+    aria-sort="none"
+    className="ms-DetailsHeader-cell is-actionable undefined"
+    data-automationid="ColumnsHeaderColumn"
+    data-item-key="b"
+    role="columnheader"
+    style={
+      Object {
+        "width": 216,
+      }
+    }
+  >
+    <span
+      className=""
+    >
+      <span
+        aria-describedby="header0-b-tooltip"
+        aria-haspopup={false}
+        aria-label={undefined}
+        aria-labelledby="header0-b-name "
+        className="ms-DetailsHeader-cellTitle"
+        data-is-focusable={true}
+        id="header0-b"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        role="button"
+      >
+        <span
+          className="ms-DetailsHeader-cellName"
+          id="header0-b-name"
+        >
+          b
+        </span>
+      </span>
+    </span>
+  </div>
+  <div
+    aria-hidden={true}
+    className="ms-DetailsHeader-cellSizer"
+    data-is-focusable={false}
+    data-sizer-index={1}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="button"
+  />
+</div>
+`;

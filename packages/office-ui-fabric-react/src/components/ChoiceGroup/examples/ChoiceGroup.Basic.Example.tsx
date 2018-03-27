@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Interface for ChoiceGroupBasicExample state.
@@ -52,8 +51,7 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLInputElement>, option: any) {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
     console.dir(option);
   }
 }

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Allow onItemSelected to return null",
+      "comment": "Checkbox: label text should be selectable, but not the checkmark icons.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "law@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

@@ -12,7 +12,7 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
    * Optional callback to access the ILabel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILabel) => void;
+  componentRef?: (component: ILabel | null) => void;
 
   /**
    * Whether the associated form field is required or not

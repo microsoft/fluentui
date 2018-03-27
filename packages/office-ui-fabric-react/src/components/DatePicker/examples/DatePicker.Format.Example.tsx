@@ -5,7 +5,6 @@ import {
   DayOfWeek,
   IDatePickerStrings
 } from 'office-ui-fabric-react/lib/DatePicker';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -110,18 +109,15 @@ export class DatePickerFormatExample extends React.Component<
     );
   }
 
-  @autobind
-  private _onSelectDate(date: Date | null | undefined): void {
+  private _onSelectDate = (date: Date | null | undefined): void => {
     this.setState({ value: date });
   }
 
-  @autobind
-  private _onClick(): void {
+  private _onClick = (): void => {
     this.setState({ value: null });
   }
 
-  @autobind
-  private _onFormatDate(date: Date): string {
+  private _onFormatDate = (date: Date): string => {
     return (
       date.getDate() +
       '/' +
@@ -131,8 +127,7 @@ export class DatePickerFormatExample extends React.Component<
     );
   }
 
-  @autobind
-  private _onParseDateFromString(value: string): Date {
+  private _onParseDateFromString = (value: string): Date => {
     const date = this.state.value || new Date();
     const values = (value || '').trim().split('/');
     const day =

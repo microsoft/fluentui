@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
@@ -34,13 +33,11 @@ export class PanelLargeFixedExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _showPanel() {
+  private _showPanel = (): void => {
     this.setState({ showPanel: true });
   }
 
-  @autobind
-  private _closePanel() {
+  private _closePanel = (): void => {
     this.setState({ showPanel: false });
   }
 }
