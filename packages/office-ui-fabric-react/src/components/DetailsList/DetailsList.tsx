@@ -464,7 +464,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       adjustedColumns: columns
     } = this.state;
 
-    const rowProps = {
+    const rowProps: IDetailsRowProps = {
       item: item,
       itemIndex: index,
       compact: compact,
