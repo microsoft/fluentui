@@ -504,4 +504,9 @@ export interface IButtonStyles {
    * Style override for the SplitButton FlexContainer.
    */
   splitButtonFlexContainer?: IStyle;
+
+  /**
+   * Style override for focus on the the SplitButton Container
+   */
+  splitButtonFlexContainerFocus?: IStyle;
 }
