@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add new option for Persona control to calculate initials for phone numbers: calculateInitialsForPhoneNumber",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "khalle@microsoft.com"
+}
