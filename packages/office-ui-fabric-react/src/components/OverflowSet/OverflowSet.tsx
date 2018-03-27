@@ -15,6 +15,16 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
   private _focusZone = createRef<FocusZone>();
 
+  constructor(props: IOverflowSetProps) {
+    super(props);
+
+    if (props.doNotContainWithinFocusZone) {
+      this._warnMutuallyExclusive({
+        'doNotContainWithinFocusZone': 'focusZoneProps'
+      });
+    }
+  }
+
   public render() {
     const {
       items,
@@ -22,10 +32,19 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       className,
       focusZoneProps,
       vertical = false,
-      role = 'menubar'
+      role = 'menubar',
+      doNotContainWithinFocusZone
     } = this.props;
 
-    return (
+    const overflowSetItems = items && this._onRenderItems(items);
+    const overflowSetButtonWrapper = overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems);
+
+    const overflowSetContents = {
+      ...overflowSetItems,
+      ...overflowSetButtonWrapper
+    };
+
+    return doNotContainWithinFocusZone ? overflowSetContents : (
       <FocusZone
         { ...focusZoneProps }
         componentRef={ this._focusZone }
@@ -38,8 +57,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
         direction={ vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal }
         role={ role }
       >
-        { items && this._onRenderItems(items) }
-        { overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems) }
+        { overflowSetContents }
       </FocusZone>
     );
   }
