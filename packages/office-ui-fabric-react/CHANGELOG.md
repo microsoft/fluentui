@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Mar 2018 10:14:03 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Mar 2018 20:22:53 GMT and should not be manually modified.
+
+## 5.72.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- add isSelectedOverride to suggestionItemProps
+- ContextualMenu / Split Button: Fixed styling problems For centered button content.
+- Use markdown-to-jsx for ActivityItem documentation
+
+### Patches
+
+- Checkbox: label text should be selectable, but not the checkmark icons.
 
 ## 5.71.0
 Tue, 27 Mar 2018 10:14:03 GMT
