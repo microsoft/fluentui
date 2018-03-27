@@ -597,7 +597,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         }
         role={ 'button' }
         aria-labelledby={ item.ariaLabel }
-        className={ classNames.splitContainer }
+        className={ classNames.splitContainerFocus }
         aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
@@ -611,7 +611,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       >
         <span
           aria-hidden={ true }
-          style={ { display: 'flex', height: '100%' } }
+          className={ classNames.splitContainer }
         >
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
           { this._renderSplitDivider(item) }
