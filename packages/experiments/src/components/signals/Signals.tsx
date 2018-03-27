@@ -3,13 +3,8 @@ import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Signal, ISignalProps } from './Signal';
-import * as SignalsStylesModule from './Signals.scss';
-import * as SignalStylesModule from './Signal.scss';
-
-// tslint:disable-next-line:no-any
-const SignalsStyles = SignalsStylesModule as any;
-// tslint:disable-next-line:no-any
-const SignalStyles = SignalStylesModule as any;
+import * as SignalsStyles from './Signals.scss';
+import * as SignalStyles from './Signal.scss';
 
 export * from './Signal';
 export * from './SignalField';
@@ -18,9 +13,9 @@ export const YouCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element =>
   return (
     <Icon
       ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.youCheckedOutl) }
+      className={ css(SignalStyles.signal, SignalsStyles.youCheckedOut) }
       iconName='checkedoutbyyou12'
-    /> // TODO get correct icon
+    />
   );
 };
 
@@ -245,21 +240,11 @@ export const ATPSignal: Signal = MalwareDetectedSignal; // TODO Delete on next m
  * Renders a signal for an external item.
  */
 export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
-  const {
-    ariaLabel,
-    ...spanProps
-  } = props;
-
   return (
-    <span
-      { ...spanProps }
-      className={ css(SignalStyles.signal, SignalStyles.centeredSignal) }
-    >
-      <Icon
-        ariaLabel={ props.ariaLabel }
-        className={ css(SignalStyles.signal, SignalStyles.external) }
-        iconName='Globe'
-      />
-    </span>
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalsStyles.external) }
+      iconName='Globe'
+    />
   );
 };
