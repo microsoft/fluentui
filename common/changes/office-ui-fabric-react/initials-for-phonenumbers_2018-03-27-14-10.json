@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add new option for Persona control to calculate initials for phone numbers: calculateInitialsForPhoneNumber",
+      "comment": "Persona: adding `allowPhoneInitials` prop to allow for calculating initials from phone numbers.",
       "type": "minor"
     }
   ],
