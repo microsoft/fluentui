@@ -4,7 +4,9 @@ exports[`Dialog renders Dialog correctly 1`] = `
 <div
   className=
 
-
+      {
+        width: 100%;
+      }
 >
   <div
     className=

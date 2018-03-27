@@ -24,6 +24,9 @@ export const getStyles = (
     content: [
       isLargeHeader && 'ms-Dialog-lgHeader',
       isClose && 'ms-Dialog--close',
+      {
+        width: '100%'
+      },
       className
     ],
 
