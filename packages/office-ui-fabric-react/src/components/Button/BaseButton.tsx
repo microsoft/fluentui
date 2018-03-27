@@ -524,12 +524,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     };
 
     // Add data-ktp-execute-target to the split button if the keytip is defined
-    return <BaseButton
-      { ...splitButtonProps }
-      data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
-      onMouseDown={ this._onMouseDown }
-      tabIndex={ -1 }
-    />;
+    return (
+      <BaseButton
+        { ...splitButtonProps }
+        data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
+        onMouseDown={ this._onMouseDown }
+        tabIndex={ -1 }
+      />
+    );
 
   }
 
