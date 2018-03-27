@@ -1,25 +1,20 @@
 import * as React from 'react';
-
-import {
-  ITextField,
-  ITextFieldProps
-} from './TextField.types';
+import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
-  BaseComponent,
-  css,
   DelayedRender,
+  BaseComponent,
   getId,
+  css,
   getNativeProps,
   inputProperties,
   textAreaProperties,
   createRef
 } from '../../Utilities';
-import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
-
+import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
   value?: string | undefined;
 
