@@ -170,7 +170,8 @@ export interface IPanelProps extends React.Props<Panel> {
   onRenderFooterContent?: IRenderFunction<IPanelProps>;
 
   /**
-   * Internal ID passed to render functions.
+   * Deprecated property. Serves no function.
+   * @deprecated
    */
   componentId?: string;
 }
