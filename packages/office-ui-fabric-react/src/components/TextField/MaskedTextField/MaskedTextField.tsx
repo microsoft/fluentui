@@ -272,7 +272,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onBeforeChange(value: String) {
-    if (this._changeSelectionData == null) {
+    if (this._changeSelectionData === null) {
       this._changeSelectionData = {
         changeType: inputChangeType.default,
         selectionStart: this._textField.selectionStart,
