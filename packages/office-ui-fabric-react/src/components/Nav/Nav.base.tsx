@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   BaseComponent,
   classNamesFunction,
   customizable,
@@ -105,6 +104,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         <nav
           role='navigation'
           className={ classNames.root }
+          aria-label={ this.props.ariaLabel }
         >
           { groupElements }
         </nav>
@@ -116,8 +116,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     return this.state.selectedKey;
   }
 
-  @autobind
-  private _onRenderLink(link: INavLink) {
+  private _onRenderLink = (link: INavLink): JSX.Element => {
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, { theme: theme!, groups });
     return (<div className={ classNames.linkText }>{ link.name }</div>);
@@ -218,14 +217,13 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const classNames = getClassNames(getStyles!, { theme: theme!, groups });
 
     return (
-      <ul role='list' aria-label={ this.props.ariaLabel } className={ classNames.navItems }>
+      <ul role='list' className={ classNames.navItems }>
         { linkElements }
       </ul>
     );
   }
 
-  @autobind
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
+  private _renderGroup = (group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> => {
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
       theme: theme!,

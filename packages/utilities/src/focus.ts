@@ -58,7 +58,7 @@ export function focusFirstChild(
   let element: HTMLElement | null = getNextElement(rootElement, rootElement, true, false, false, true);
 
   if (element) {
-    element.focus();
+    focusAsync(element);
     return true;
   }
   return false;
@@ -77,7 +77,7 @@ export function getPreviousElement(
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean,
-  elementShouldBeTabbable?: boolean): HTMLElement | null {
+  tabbable?: boolean): HTMLElement | null {
 
   if (!currentElement ||
     (!allowFocusRoot && currentElement === rootElement)) {
@@ -97,10 +97,10 @@ export function getPreviousElement(
       true,
       includeElementsInFocusZones,
       allowFocusRoot,
-      elementShouldBeTabbable);
+      tabbable);
 
     if (childMatch) {
-      if ((elementShouldBeTabbable && isElementTabbable(childMatch, true)) || !elementShouldBeTabbable) {
+      if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
         return childMatch;
       }
 
@@ -112,7 +112,7 @@ export function getPreviousElement(
         true,
         includeElementsInFocusZones,
         allowFocusRoot,
-        elementShouldBeTabbable
+        tabbable
       );
       if (childMatchSiblingMatch) {
         return childMatchSiblingMatch;
@@ -133,7 +133,7 @@ export function getPreviousElement(
           true,
           includeElementsInFocusZones,
           allowFocusRoot,
-          elementShouldBeTabbable
+          tabbable
         );
 
         if (childMatchParentMatch) {
@@ -146,8 +146,7 @@ export function getPreviousElement(
   }
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible &&
-    ((elementShouldBeTabbable && isElementTabbable(currentElement, true)) || !elementShouldBeTabbable)) {
+  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
     return currentElement;
   }
 
@@ -160,7 +159,7 @@ export function getPreviousElement(
     true,
     includeElementsInFocusZones,
     allowFocusRoot,
-    elementShouldBeTabbable);
+    tabbable);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -169,7 +168,7 @@ export function getPreviousElement(
   // Check its parent.
   if (!suppressParentTraversal) {
     return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones,
-      allowFocusRoot, elementShouldBeTabbable);
+      allowFocusRoot, tabbable);
   }
 
   return null;
@@ -351,4 +350,32 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
 
   return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
+}
+
+let targetToFocusOnNextRepaint: HTMLElement | null | undefined = undefined;
+
+/**
+ * Sets focus to an element asynchronously. The focus will be set at the next browser repaint,
+ * meaning it won't cause any extra recalculations. If more than one focusAsync is called during one frame,
+ * only the latest called focusAsync element will actually be focused
+ * @param element The element to focus
+ */
+export function focusAsync(element: HTMLElement | undefined | null): void {
+  if (element) {
+    // An element was already queued to be focused, so replace that one with the new element
+    if (targetToFocusOnNextRepaint) {
+      targetToFocusOnNextRepaint = element;
+      return;
+    }
+
+    targetToFocusOnNextRepaint = element;
+
+    // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
+    element.ownerDocument.defaultView.requestAnimationFrame(() => {
+      targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+
+      // We are done focusing for this frame, so reset the queued focus element
+      targetToFocusOnNextRepaint = undefined;
+    });
+  }
 }

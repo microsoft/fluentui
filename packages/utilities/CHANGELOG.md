@@ -1,6 +1,49 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 13 Mar 2018 10:17:37 GMT and should not be manually modified.
+This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Update createRef type
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.20.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing
+
+## 5.19.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- EventGroup.raise: event args are now correctly mixed into the event object.
+
+## 5.19.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Make helper functions getWindow and getDocument accept `null`.
+
+## 5.18.3
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.18.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Revert focus changes
 
 ## 5.18.1
 Tue, 13 Mar 2018 10:17:37 GMT

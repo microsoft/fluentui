@@ -8,15 +8,18 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     width,
     maxHeight,
-    isDataLoaded
+    isDataLoaded,
+    isBaseStyle
   } = props;
+
+  const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
 
   const shimmerAnimation: string = keyframes({
     '0%': {
-      backgroundPosition: '-900%'
+      backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
     },
     '100%': {
-      backgroundPosition: '1000%'
+      backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
     }
   });
 
@@ -26,8 +29,15 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       {
         position: 'relative',
         margin: '10px',
+        width: 'auto',
         boxSizing: 'content-box',
         minHeight: maxHeight ? `${maxHeight}px` : '16px'
+      },
+      isBaseStyle && {
+        margin: '0',
+        minHeight: 'inherit',
+        display: 'flex',
+        alignItems: 'center'
       }
     ],
     shimmerWrapper: [
@@ -60,6 +70,10 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       isDataLoaded && {
         opacity: '0',
         visibility: 'hidden'
+      },
+      isBaseStyle && {
+        position: 'static',
+        width: 'auto'
       }
     ],
     dataWrapper: [

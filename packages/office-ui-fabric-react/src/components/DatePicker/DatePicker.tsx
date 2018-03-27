@@ -14,7 +14,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField, ITextField } from '../../TextField';
 import { Label } from '../../Label';
 import {
-  autobind,
   BaseComponent,
   KeyCodes,
   css,
@@ -285,8 +284,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onSelectDate(date: Date) {
+  private _onSelectDate = (date: Date): void => {
     const { formatDate, onSelectDate } = this.props;
 
     if (this.props.calendarProps && this.props.calendarProps.onSelectDate) {
@@ -307,15 +305,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     });
   }
 
-  @autobind
-  private _onCalloutPositioned() {
+  private _onCalloutPositioned = (): void => {
     if (this._calendar.value) {
       this._calendar.value.focus();
     }
   }
 
-  @autobind
-  private _onTextFieldFocus(ev: React.FocusEvent<HTMLElement>) {
+  private _onTextFieldFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     if (this.props.disableAutoFocus) {
       return;
     }
@@ -329,13 +325,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onTextFieldBlur(ev: React.FocusEvent<HTMLElement>) {
+  private _onTextFieldBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     this._validateTextInput();
   }
 
-  @autobind
-  private _onTextFieldChanged(newValue: string) {
+  private _onTextFieldChanged = (newValue: string): void => {
     if (this.props.allowTextInput) {
       if (this.state.isDatePickerShown) {
         this._dismissDatePickerPopup();
@@ -350,8 +344,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onTextFieldKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onTextFieldKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -376,8 +369,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onTextFieldClick = (ev: React.MouseEvent<HTMLElement>): void => {
     if (!this.state.isDatePickerShown && !this.props.disabled) {
       this._showDatePickerPopup();
     } else {
@@ -389,8 +381,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onIconClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
     ev.stopPropagation();
     this._onTextFieldClick(ev);
   }
@@ -405,8 +396,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _dismissDatePickerPopup() {
+  private _dismissDatePickerPopup = (): void => {
     if (this.state.isDatePickerShown) {
       this.setState({
         isDatePickerShown: false
@@ -419,8 +409,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   /**
    * Callback for closing the calendar callout
    */
-  @autobind
-  private _calendarDismissed() {
+  private _calendarDismissed = (): void => {
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
 
@@ -429,13 +418,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
+  private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._calendarDismissed();
   }
 
-  @autobind
-  private _validateTextInput() {
+  private _validateTextInput = (): void => {
     const { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate, minDate, maxDate } = this.props;
     const inputValue = this.state.formattedDate;
 

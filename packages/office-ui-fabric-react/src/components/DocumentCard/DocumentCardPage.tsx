@@ -33,6 +33,9 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
               <p>
                 This example shows a couple of optional abilities, including being able to have a card represent multiple items, being able to expose up to three relevant commands, and showing the number of views in the bottom right corner.
               </p>
+              <p>
+                Also show a card with Logo, text preview and status that is used for Conversation card.
+              </p>
               <DocumentCardCompleteExample />
             </ExampleCard>
             <ExampleCard title='DocumentCard with compact layout ' code={ DocumentCardCompactExampleCode }>
@@ -80,7 +83,7 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...DocumentCardStatus}
+            { ...DocumentCardStatus }
           />
         }
       />

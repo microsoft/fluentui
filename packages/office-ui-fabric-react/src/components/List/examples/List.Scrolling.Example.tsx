@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  css,
-  autobind
+  autobind,
+  css
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
   FocusZone,
@@ -152,8 +152,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     });
   }
 
-  @autobind
-  private _resolveList(list: List) {
+  private _resolveList = (list: List): void => {
     this._list = list;
   }
 }

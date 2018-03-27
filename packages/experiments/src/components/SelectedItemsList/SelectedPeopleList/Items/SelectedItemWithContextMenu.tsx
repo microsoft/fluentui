@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, autobind, createRef, RefObject } from '../../../../Utilities';
+import { BaseComponent, createRef, RefObject } from '../../../../Utilities';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
@@ -46,8 +46,7 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
       </div >);
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
     ev.preventDefault();
     if (this.props.beginEditing && !this.props.item.isValid) {
       this.props.beginEditing(this.props.item);
@@ -56,8 +55,7 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
     }
   }
 
-  @autobind
-  private _onCloseContextualMenu(ev: Event): void {
+  private _onCloseContextualMenu = (ev: Event): void => {
     this.setState({ contextualMenuVisible: false });
   }
 }

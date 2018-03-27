@@ -2,6 +2,100 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.21.0",
+      "tag": "@uifabric/utilities_v5.21.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "a0e09698ae1443623e202087360986f65a613559",
+            "comment": "Update createRef type"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.13.0 <6.0.0` to `>=5.14.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.20.0",
+      "tag": "@uifabric/utilities_v5.20.0",
+      "date": "Fri, 23 Mar 2018 01:29:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b152150b7222ff499f2f552ce3117e0d27eb1e23",
+            "comment": "Introduced focusAsync for cheaper element focusing"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.1",
+      "tag": "@uifabric/utilities_v5.19.1",
+      "date": "Wed, 21 Mar 2018 10:18:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d50399a80ffde20e5981c3c9a0f5e080016b342d",
+            "comment": "EventGroup.raise: event args are now correctly mixed into the event object."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.0",
+      "tag": "@uifabric/utilities_v5.19.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "856989f01186c078741a64fb3bf7c6371b6439bd",
+            "comment": "Make helper functions getWindow and getDocument accept `null`."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.3",
+      "tag": "@uifabric/utilities_v5.18.3",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.2",
+      "tag": "@uifabric/utilities_v5.18.2",
+      "date": "Thu, 15 Mar 2018 02:42:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3cd823b02aadb1e66f9b6221d4d32bafbe895386",
+            "comment": "Revert focus changes"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.1",
       "tag": "@uifabric/utilities_v5.18.1",
       "date": "Tue, 13 Mar 2018 10:17:37 GMT",

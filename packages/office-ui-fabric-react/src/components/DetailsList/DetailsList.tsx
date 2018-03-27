@@ -6,11 +6,11 @@ import {
   BaseComponent,
   KeyCodes,
   assign,
-  autobind,
   css,
   elementContains,
   getRTLSafeKeyCode,
-  IRenderFunction
+  IRenderFunction,
+  createRef
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -75,13 +75,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   };
 
   // References
-  // tslint:disable-next-line:no-unused-variable
-  private _root: HTMLElement;
-  private _header: IDetailsHeader;
-  private _groupedList: GroupedList;
-  private _list: List;
-  private _focusZone: FocusZone;
-  private _selectionZone: SelectionZone;
+  private _root = createRef<HTMLDivElement>();
+  private _header = createRef<IDetailsHeader>();
+  private _groupedList = createRef<GroupedList>();
+  private _list = createRef<List>();
+  private _focusZone = createRef<FocusZone>();
+  private _selectionZone = createRef<SelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
@@ -131,8 +130,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
-    this._list && this._list.scrollToIndex(index, measureItem, scrollToMode);
-    this._groupedList && this._groupedList.scrollToIndex(index, measureItem, scrollToMode);
+    this._list.value && this._list.value.scrollToIndex(index, measureItem, scrollToMode);
+    this._groupedList.value && this._groupedList.value.scrollToIndex(index, measureItem, scrollToMode);
   }
 
   public focusIndex(
@@ -175,7 +174,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       this.props.items !== prevProps.items &&
       this.props.items.length > 0 &&
       this.state.focusedItemIndex !== -1 &&
-      !elementContains(this._root, document.activeElement as HTMLElement, false)
+      !elementContains(this._root.value, document.activeElement as HTMLElement, false)
     ) {
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,
@@ -216,6 +215,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     if (shouldResetSelection) {
       this._initialFocusedIndex = newProps.initialFocusedIndex;
+      // reset focusedItemIndex when setKey changes
+      this.setState({
+        focusedItemIndex: (this._initialFocusedIndex !== undefined) ? this._initialFocusedIndex : -1
+      });
     }
 
     if (newProps.items !== items) {
@@ -322,7 +325,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
       <div
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
         className={ css(
           'ms-DetailsList',
           styles.root,
@@ -345,7 +348,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         >
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && onRenderDetailsHeader({
-              componentRef: this._resolveRef('_header'),
+              componentRef: this._header,
               selectionMode: selectionMode!,
               layoutMode: layoutMode!,
               selection: selection,
@@ -367,7 +370,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
-              ref={ this._resolveRef('_focusZone') }
+              componentRef={ this._focusZone }
               className={ styles.focusZone }
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ isRightArrow }
@@ -375,7 +378,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               onBlur={ this._onBlur }
             >
               <SelectionZone
-                ref={ this._resolveRef('_selectionZone') }
+                ref={ this._selectionZone }
                 selection={ selection }
                 selectionPreservedOnEmptyClick={ selectionPreservedOnEmptyClick }
                 selectionMode={ selectionMode }
@@ -385,7 +388,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               >
                 { groups ? (
                   <GroupedList
-                    ref={ this._resolveRef('_groupedList') }
+                    ref={ this._groupedList }
                     groups={ groups }
                     groupProps={ groupProps }
                     items={ items }
@@ -402,7 +405,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   />
                 ) : (
                     <List
-                      ref={ this._resolveRef('_list') }
+                      ref={ this._list }
                       role='presentation'
                       items={ items }
                       onRenderCell={ this._onRenderListCell(0) }
@@ -425,19 +428,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._forceListUpdates();
   }
 
-  @autobind
-  protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
     return <DetailsRow { ...props } />;
   }
 
-  @autobind
-  private _onRenderDetailsHeader(detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
+  private _onRenderDetailsHeader = (detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element => {
     return <DetailsHeader { ...detailsHeaderProps } />;
   }
 
-  @autobind
-  private _onRenderListCell(nestingDepth: number)
-    : (item: any, itemIndex: number) => React.ReactNode {
+  private _onRenderListCell = (nestingDepth: number)
+    : (item: any, itemIndex: number) => React.ReactNode => {
     return (item: any, itemIndex: number): React.ReactNode => {
       return this._onRenderCell(nestingDepth, item, itemIndex as number);
     };
@@ -509,7 +509,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.down) {
-      if (this._focusZone && this._focusZone.focus()) {
+      if (this._focusZone.value && this._focusZone.value.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -518,7 +518,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onContentKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.up && !ev.altKey) {
-      if (this._header && this._header.focus()) {
+      if (this._header.value && this._header.value.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -560,8 +560,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false) {
-    if (this._selectionZone) {
-      this._selectionZone.ignoreNextFocus();
+    if (this._selectionZone.value) {
+      this._selectionZone.value.ignoreNextFocus();
     }
     this._async.setTimeout(() => {
       row.focus(forceIntoFirstElement);
@@ -584,19 +584,19 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this.setState({
       isCollapsed: collapsed
     });
-    if (this._groupedList) {
-      this._groupedList.toggleCollapseAll(collapsed);
+    if (this._groupedList.value) {
+      this._groupedList.value.toggleCollapseAll(collapsed);
     }
   }
 
   private _forceListUpdates() {
     this._pendingForceUpdate = false;
 
-    if (this._groupedList) {
-      this._groupedList.forceUpdate();
+    if (this._groupedList.value) {
+      this._groupedList.value.forceUpdate();
     }
-    if (this._list) {
-      this._list.forceUpdate();
+    if (this._list.value) {
+      this._list.value.forceUpdate();
     }
   }
 

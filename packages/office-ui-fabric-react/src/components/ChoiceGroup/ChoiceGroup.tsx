@@ -122,7 +122,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                       onChange={ this._onChange.bind(this, option) }
                       onFocus={ this._onFocus.bind(this, option) }
                       onBlur={ this._onBlur.bind(this, option) }
-                      aria-labelledby={ option.id }
+                      aria-labelledby={ option.labelId }
                       { ...getNativeProps(option, inputProperties) }
                     />
                     { onRenderField(option, this._onRenderField) }

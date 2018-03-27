@@ -18,7 +18,6 @@ import {
   assign,
   getId,
   getRTL,
-  autobind,
   KeyCodes,
   getDocument,
   getWindow,
@@ -95,6 +94,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
 
+  private _splitButtonContainers: Map<string, HTMLDivElement>;
+
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
   constructor(props: IContextualMenuProps) {
@@ -115,8 +116,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._isScrollIdle = true;
   }
 
-  @autobind
-  public dismiss(ev?: any, dismissAll?: boolean) {
+  public dismiss = (ev?: any, dismissAll?: boolean) => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -141,6 +141,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    this._splitButtonContainers = new Map();
     if (this.props.onMenuOpened) {
       this.props.onMenuOpened(this.props);
     }
@@ -470,12 +471,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+    const { expandedMenuItemKey } = this.state;
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
     let anchorRel = item.rel;
     if (item.target && item.target.toLowerCase() === '_blank') {
       anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
     }
+
+    const subMenuId = this._getSubMenuId(item);
+    const itemHasSubmenu = hasSubmenu(item);
 
     return (
       <div>
@@ -486,11 +491,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           rel={ anchorRel }
           className={ classNames.root }
           role='menuitem'
+          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
+          aria-haspopup={ itemHasSubmenu || null }
+          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
           aria-posinset={ focusableElementIndex + 1 }
           aria-setsize={ totalItemCount }
           aria-disabled={ this._isItemDisabled(item) }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
+          onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+          onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+          onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
         >
           <ChildrenRenderer
             item={ item }
@@ -514,11 +525,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const { expandedMenuItemKey } = this.state;
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
-    let { subMenuId } = this.state;
-    if (item.subMenuProps && item.subMenuProps.id) {
-      subMenuId = item.subMenuProps.id;
-    }
-
+    const subMenuId = this._getSubMenuId(item);
     let ariaLabel = '';
 
     if (item.ariaLabel) {
@@ -585,13 +592,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <div
+        ref={ (el: HTMLDivElement) =>
+          this._splitButtonContainers.set(item.key, el)
+        }
+        role={ 'button' }
         aria-labelledby={ item.ariaLabel }
+        className={ classNames.splitContainerFocus }
         aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
+        onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
+        onClick={ this._executeItemClick.bind(this, item) }
+        tabIndex={ 0 }
+        data-is-focusable={ true }
       >
         <span
           aria-hidden={ true }
@@ -601,7 +617,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           { this._renderSplitDivider(item) }
           { this._renderSplitIconButton(item, classNames, index) }
         </span>
-      </div>
+      </div >
     );
   }
 
@@ -614,7 +630,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const itemProps = {
       key: item.key,
-      onClick: this._executeItemClick.bind(this, item),
       disabled: this._isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
       className: classNames.splitPrimary,
@@ -623,12 +638,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       isChecked: item.isChecked,
       checked: item.checked,
       icon: item.icon,
-      iconProps: item.iconProps
+      iconProps: item.iconProps,
+      'data-is-focusable': false
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined } hasIcons={ hasIcons } />,
     );
+  }
+
+  private _onSplitContainerItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
+    if (ev.which === KeyCodes.enter) {
+      this._executeItemClick(item, ev);
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      this._onItemKeyDown(item, ev);
+    }
   }
 
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
@@ -644,11 +670,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return React.createElement('button',
       assign({}, getNativeProps(itemProps, buttonProperties), {
-        onKeyDown: this._onItemKeyDown.bind(this, item),
         onMouseEnter: this._onItemMouseEnter.bind(this, item),
         onMouseLeave: this._onMouseItemLeave.bind(this, item),
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
-        onMouseMove: this._onItemMouseMove.bind(this, item)
+        onMouseMove: this._onItemMouseMove.bind(this, item),
+        'data-is-focusable': false
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );
@@ -666,8 +692,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return iconProps;
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (ev.which === KeyCodes.escape ||
       ev.altKey ||
       ev.metaKey ||
@@ -683,8 +708,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   /**
    * Checks if the submenu should be closed
    */
-  @autobind
-  private _shouldCloseSubMenu(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  private _shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     const submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
@@ -695,8 +719,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       (!!this._adjustedFocusZoneProps.checkForNoWrap && !shouldWrapFocus(ev.target as HTMLElement, 'data-no-horizontal-wrap'));
   }
 
-  @autobind
-  private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (ev.which === KeyCodes.escape || ev.altKey || ev.metaKey) {
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
@@ -726,8 +749,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    * Scroll handler for the callout to make sure the mouse events
    * for updating focus are not interacting during scroll
    */
-  @autobind
-  private _onScroll() {
+  private _onScroll = (): void => {
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
       this._async.clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
@@ -757,8 +779,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._updateFocusOnMouseEvent(item, ev);
   }
 
-  @autobind
-  private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     if (!this._isScrollIdle) {
       return;
     }
@@ -791,6 +812,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _updateFocusOnMouseEvent(item: any, ev: React.MouseEvent<HTMLElement>) {
     const targetElement = ev.currentTarget as HTMLElement;
+    const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
 
     if (item.key === this.state.expandedMenuItemKey) {
       return;
@@ -812,12 +834,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
         this._onItemSubMenuExpand(item, targetElement);
-      }, this._navigationIdleDelay);
+      }, timeoutDuration);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
         targetElement.focus();
-      }, this._navigationIdleDelay);
+      }, timeoutDuration);
     }
   }
 
@@ -849,23 +871,24 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     ev.stopPropagation();
   }
 
-  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     if (item.disabled || item.isDisabled) {
       return;
     }
+    let dismiss = false;
     if (item.onClick) {
-      item.onClick(ev, item);
+      dismiss = !!item.onClick(ev, item);
     } else if (this.props.onItemClick) {
-      this.props.onItemClick(ev, item);
+      dismiss = !!this.props.onItemClick(ev, item);
     }
 
-    !ev.defaultPrevented && this.dismiss(ev, true);
+    (dismiss || !ev.defaultPrevented) && this.dismiss(ev, true);
   }
 
-  private _onItemKeyDown(item: any, ev: KeyboardEvent) {
+  private _onItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-    if (ev.which === openKey) {
+    if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
     }
@@ -876,6 +899,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
       if (this.state.expandedMenuItemKey) {
         this._onSubMenuDismiss();
+      }
+
+      // focus the container so when we close the menu, we focus on the split button container.
+      const el = this._splitButtonContainers.get(item.key);
+      if (el) {
+        el.focus();
       }
       this.setState({
         expandedMenuItemKey: item.key,
@@ -933,8 +962,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  @autobind
-  private _onSubMenuDismiss(ev?: any, dismissAll?: boolean) {
+  private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);
     } else {
@@ -970,5 +998,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _isItemDisabled(item: IContextualMenuItem): boolean {
     return !!(item.isDisabled || item.disabled);
+  }
+
+  private _getSubMenuId(item: IContextualMenuItem): string | undefined {
+    let { subMenuId } = this.state;
+
+    if (item.subMenuProps && item.subMenuProps.id) {
+      subMenuId = item.subMenuProps.id;
+    }
+
+    return subMenuId;
   }
 }

@@ -9,6 +9,13 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 
+// rAF does not exist in node - let's mock it
+window.requestAnimationFrame = (callback: FrameRequestCallback) => {
+  return window.setTimeout(callback, 16);
+};
+
+jest.useFakeTimers();
+
 describe('FocusTrapZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
   function _onFocus(ev: any) {
@@ -139,15 +146,23 @@ describe('FocusTrapZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    expect(lastFocusedElement).toBe(buttonA);
+    window.requestAnimationFrame(() => {
+      expect(lastFocusedElement).toBe(buttonA);
 
-    // Pressing shift + tab should go to d.
-    ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab, shiftKey: true });
-    expect(lastFocusedElement).toBe(buttonD);
+      // Pressing shift + tab should go to d.
+      ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab, shiftKey: true });
+      window.requestAnimationFrame(() => {
+        expect(lastFocusedElement).toBe(buttonD);
 
-    // Pressing tab should go to a.
-    ReactTestUtils.Simulate.keyDown(buttonD, { which: KeyCodes.tab });
-    expect(lastFocusedElement).toBe(buttonA);
+        // Pressing tab should go to a.
+        ReactTestUtils.Simulate.keyDown(buttonD, { which: KeyCodes.tab });
+        window.requestAnimationFrame(() => {
+          expect(lastFocusedElement).toBe(buttonA);
+        });
+      });
+    });
+
+    jest.runAllTimers();
   });
 
   it('can tab across a FocusZone with different button structures', () => {
@@ -229,85 +244,22 @@ describe('FocusTrapZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonX);
-    expect(lastFocusedElement).toBe(buttonX);
+    window.requestAnimationFrame(() => {
+      expect(lastFocusedElement).toBe(buttonX);
 
-    // Pressing shift + tab should go to a.
-    ReactTestUtils.Simulate.keyDown(buttonX, { which: KeyCodes.tab, shiftKey: true });
-    expect(lastFocusedElement).toBe(buttonA);
+      // Pressing shift + tab should go to a.
+      ReactTestUtils.Simulate.keyDown(buttonX, { which: KeyCodes.tab, shiftKey: true });
+      window.requestAnimationFrame(() => {
+        expect(lastFocusedElement).toBe(buttonA);
 
-    // Pressing tab should go to x.
-    ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab });
-    expect(lastFocusedElement).toBe(buttonX);
-  });
-
-  it('can tab across FocusZones with different button structures', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <div { ...{ onFocusCapture: _onFocus } }>
-        <FocusTrapZone forceFocusInsideTrap={ false }>
-          <button className='a'>a</button>
-          <FocusZone direction={ FocusZoneDirection.horizontal } data-is-visible={ true }>
-            <button className='d'>d</button>
-            <button className='e'>e</button>
-            <button className='f'>f</button>
-          </FocusZone>
-        </FocusTrapZone>
-      </div>
-    );
-
-    const focusTrapZone = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-
-    const buttonA = focusTrapZone.querySelector('.a') as HTMLElement;
-    const buttonD = focusTrapZone.querySelector('.d') as HTMLElement;
-    const buttonE = focusTrapZone.querySelector('.e') as HTMLElement;
-    const buttonF = focusTrapZone.querySelector('.f') as HTMLElement;
-
-    // Assign bounding locations to buttons.
-    setupElement(buttonA, {
-      clientRect: {
-        top: 0,
-        bottom: 30,
-        left: 0,
-        right: 30
-      }
+        // Pressing tab should go to x.
+        ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab });
+        window.requestAnimationFrame(() => {
+          expect(lastFocusedElement).toBe(buttonX);
+        });
+      });
     });
 
-    setupElement(buttonD, {
-      clientRect: {
-        top: 30,
-        bottom: 60,
-        left: 0,
-        right: 30
-      }
-    });
-
-    setupElement(buttonE, {
-      clientRect: {
-        top: 30,
-        bottom: 60,
-        left: 30,
-        right: 60
-      }
-    });
-
-    setupElement(buttonF, {
-      clientRect: {
-        top: 30,
-        bottom: 60,
-        left: 60,
-        right: 90
-      }
-    });
-
-    // Focus the first button.
-    ReactTestUtils.Simulate.focus(buttonD);
-    expect(lastFocusedElement).toBe(buttonD);
-
-    // Pressing tab should go to a.
-    ReactTestUtils.Simulate.keyDown(buttonD, { which: KeyCodes.tab });
-    expect(lastFocusedElement).toBe(buttonA);
-
-    // Pressing shift + tab should go to a.
-    ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab, shiftKey: true });
-    expect(lastFocusedElement).toBe(buttonD);
+    jest.runAllTimers();
   });
 });
