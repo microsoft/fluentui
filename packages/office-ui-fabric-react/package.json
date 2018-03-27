@@ -32,6 +32,7 @@
     "@types/webpack-env": "1.13.0",
     "@uifabric/jest-serializer-merge-styles": ">=5.1.0 <6.0.0",
     "@uifabric/example-app-base": ">=5.5.0 <6.0.0",
+    "awesome-typescript-loader": "^3.2.3",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "es6-promise": "^4.1.0",
