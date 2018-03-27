@@ -914,11 +914,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._onSubMenuDismiss();
       }
 
-      // focus the container so when we close the menu, we focus on the split button container.
-      const el = this._splitButtonContainers.get(item.key);
-      if (el) {
-        el.focus();
-      }
+      // Focus the target to ensure when we close it, we're focusing on the correct element.
+      target.focus();
       this.setState({
         expandedMenuItemKey: item.key,
         submenuTarget: target
