@@ -310,6 +310,26 @@ describe('MaskedTextField', () => {
     inputDOM.setSelectionRange(1, 1);
     input.simulate('change', mockEvent('9'));
     expect(inputDOM.value).toEqual('mask: (9__) ___ - ____');
+  });
 
+  it('should ignore overflowed characters', () => {
+    const component = mount(
+      <MaskedTextField
+        label='With input mask'
+        mask='m\ask: (999) 999 - 9999'
+        value='123-456-7890'
+      />
+    );
+
+    const input = component.find('input'),
+      inputDOM = input.getDOMNode() as HTMLInputElement;
+    input.simulate('focus');
+
+    // Add '1' to the end
+    inputDOM.setSelectionRange(22, 22);
+    input.simulate('keyDown', { keyCode: KeyCodes.one });
+    inputDOM.setSelectionRange(23, 23);
+    input.simulate('change', mockEvent('mask: (123) 456 - 78901'));
+    expect(inputDOM.value).toEqual('mask: (123) 456 - 7890');
   });
 });
