@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove a redundant property from the ComboBox example",
+      "comment": "ComboBox: Removed a redundant property from the basic example.",
       "type": "patch"
     }
   ],
