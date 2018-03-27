@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add \"awesome-typescript-loader\" as a dev-dependency of the office-ui-fabric-react package.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "s@warmsea.net"
+}
