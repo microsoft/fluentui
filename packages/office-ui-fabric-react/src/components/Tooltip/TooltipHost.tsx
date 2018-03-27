@@ -142,7 +142,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (this.props.closeDelay) {
       this._clearDismissTimer();
 
-      this._closingTimer = window.setTimeout(() => {
+      this._closingTimer = this._async.setTimeout(() => {
         this._toggleTooltip(false);
       }, this.props.closeDelay);
     } else {
