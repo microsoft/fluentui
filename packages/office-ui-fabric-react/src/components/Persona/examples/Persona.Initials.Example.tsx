@@ -48,7 +48,7 @@ export class PersonaInitialsExample extends React.Component<any, any> {
         <Persona
           { ...examplePersona  }
           primaryText='+1 (555) 123-4567 X4567'
-          calculateInitialsForPhoneNumber={true}
+          allowPhoneInitials={true}
         />
         <Persona
           { ...examplePersona  }

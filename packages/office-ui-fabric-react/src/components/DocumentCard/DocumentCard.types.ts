@@ -239,10 +239,11 @@ export interface IDocumentCardActivityPerson {
   initials?: string;
 
   /**
-   * Whether initials are calculated for phone numbers.
+   * Whether initials are calculated for phone numbers and number sequences.
+   * Example: Set property to true to get initials for project names consisting of numbers only.
    * @defaultvalue false
    */
-  calculateInitialsForPhoneNumber?: boolean;
+  allowPhoneInitials?: boolean;
 
   /**
    * The background color when the user's initials are displayed.

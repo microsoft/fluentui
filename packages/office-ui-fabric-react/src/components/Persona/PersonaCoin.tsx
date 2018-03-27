@@ -174,11 +174,11 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   private _onRenderInitials = (props: IPersonaProps): JSX.Element => {
     let { imageInitials } = props;
     const { primaryText } = props;
-    const { calculateInitialsForPhoneNumber } = props;
+    const { allowPhoneInitials } = props;
 
     const isRTL = getRTL();
 
-    imageInitials = imageInitials || getInitials(primaryText, isRTL, calculateInitialsForPhoneNumber);
+    imageInitials = imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
 
     return (
       imageInitials !== '' ?

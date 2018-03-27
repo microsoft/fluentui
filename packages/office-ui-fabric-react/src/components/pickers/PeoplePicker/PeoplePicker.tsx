@@ -52,7 +52,7 @@ export class ListPeoplePicker extends MemberListPeoplePicker {
   };
 }
 
-export function createGenericItem(name: string, currentValidationState: ValidationState, calculateInitialsForPhoneNumber: boolean) {
+export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean) {
   const personaToConvert = {
     key: name,
     primaryText: name,
@@ -61,7 +61,7 @@ export function createGenericItem(name: string, currentValidationState: Validati
   };
 
   if (currentValidationState !== ValidationState.warning) {
-    personaToConvert.imageInitials = getInitials(name, getRTL(), calculateInitialsForPhoneNumber);
+    personaToConvert.imageInitials = getInitials(name, getRTL(), allowPhoneInitials);
   }
 
   return personaToConvert;

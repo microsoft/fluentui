@@ -57,7 +57,7 @@ describe('Persona', () => {
       expect(result.text()).toEqual('');
       wrapper.unmount();
 
-      wrapper = mount(<Persona primaryText='+1 (555) 6789' calculateInitialsForPhoneNumber={true} />);
+      wrapper = mount(<Persona primaryText='+1 (555) 6789' allowPhoneInitials={true} />);
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('16');
