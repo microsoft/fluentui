@@ -6,7 +6,7 @@ import { BaseComponent } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.types';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
-import { PersonaSize, PersonaCoin, IPersonaProps } from '../../Persona';
+import { PersonaSize, PersonaCoin, IPersonaSharedProps } from '../../Persona';
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _classNames: IActivityItemClassNames;
@@ -91,7 +91,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   // If activityPersonas is an array of persona props, build the persona cluster element.
   private _onRenderPersonaArray = (props: IActivityItemProps): JSX.Element | null => {
     let personaElement: JSX.Element | null = null;
-    const activityPersonas = props.activityPersonas as Array<IPersonaProps & { key?: string | number }>;
+    const activityPersonas = props.activityPersonas as Array<IPersonaSharedProps & { key?: string | number }>;
     if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {
       const personaList: Array<JSX.Element> = [];
       const showSize16Personas = (activityPersonas.length > 1 || props.isCompact);

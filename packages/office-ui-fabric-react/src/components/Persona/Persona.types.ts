@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { PersonaBase } from './Persona.base';
-import { PersonaCoinBase } from './PersonaCoin.base';
+import { PersonaCoinBase } from './PersonaCoin';
 import { PersonaPresenceBase } from './PersonaPresence';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
@@ -11,13 +11,7 @@ export interface IPersona {
 
 }
 
-export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
-  /**
-   * Optional callback to access the IPersona interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: (component: IPersona) => void;
-
+export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Primary text to display, usually the name of the person.
    */
@@ -37,7 +31,7 @@ export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Optional custom renderer for the coin
    */
-  onRenderCoin?: IRenderFunction<IPersonaProps>;
+  onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
 
   /**
    * If true, adds the css class 'is-fadeIn' to the image.
@@ -70,7 +64,7 @@ export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Optional custom renderer for the initials
    */
-  onRenderInitials?: IRenderFunction<IPersonaProps>;
+  onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
 
   /**
    * Optional callback for when loading state of the photo changes
@@ -124,11 +118,6 @@ export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
    */
   hidePersonaDetails?: boolean;
 
-  /**
-   * Additional CSS class(es) to apply to the Persona
-   */
-  className?: string;
-
   /*
    * If true, show the secondary text line regardless of the size of the persona
    */
@@ -145,14 +134,157 @@ export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
   coinProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
-   * Call to provide customized styling that will layer on top of variant rules
-   */
-  getStyles?: IStyleFunction<IPersonaStyleProps, IPersonaStyles>;
-
-  /**
    * Theme provided by HOC.
    */
   theme?: ITheme;
+}
+
+export interface IPersonaProps extends IPersonaSharedProps {
+  /**
+   * Optional callback to access the IPersona interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPersona) => void;
+
+  /**
+   * Additional CSS class(es) to apply to the Persona
+   */
+  className?: string;
+
+  /**
+   * Call to provide customized styling that will layer on top of variant rules
+   */
+  getStyles?: IStyleFunction<IPersonaStyleProps, IPersonaStyles>;
+}
+
+export interface IPersonaStyleProps {
+  /**
+   * Theme.
+   */
+  theme: ITheme;
+
+  /**
+   * Custom class name.
+   */
+  className?: string;
+
+  /**
+   * Optional custom persona coin size in pixel.
+   */
+  coinSize?: number;
+
+  /**
+   * Decides the size of the control.
+   * @defaultvalue PersonaSize.size48
+   */
+  size?: PersonaSize;
+
+  /**
+   * Presence of the person to display - will not display presence if undefined.
+   * @defaultvalue PersonaPresence.none
+   */
+  presence?: PersonaPresence;
+
+  /*
+   * If true, show the secondary text line regardless of the size of the persona
+   */
+  showSecondaryText?: boolean;
+}
+
+export interface IPersonaStyles {
+  root: IStyle;
+  placeholder: IStyle;
+  details: IStyle;
+  primaryText: IStyle;
+  secondaryText: IStyle;
+  tertiaryText: IStyle;
+  optionalText: IStyle;
+  textContent: IStyle;
+}
+
+export interface IPersonaCoinProps extends IPersonaSharedProps {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: (component: IPersonaCoinProps) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  getStyles?: IStyleFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>;
+
+  /**
+   * Additional css class to apply to the PersonaCoin
+   * @defaultvalue undefined
+   */
+  className?: string;
+}
+
+export interface IPersonaCoinStyleProps {
+  /**
+   * Theme.
+   */
+  theme: ITheme;
+
+  /**
+   * Custom class name.
+   */
+  className?: string;
+
+  /**
+   * Decides the size of the control.
+   * @defaultvalue PersonaSize.size48
+   */
+  size?: PersonaSize;
+}
+
+export interface IPersonaCoinStyles {
+  coin: IStyle;
+  imageArea: IStyle;
+  image: IStyle;
+  initials: IStyle;
+  size10NoPresenceIcon: IStyle;
+}
+
+export interface IPersonaPresenceProps extends IPersonaSharedProps {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: (component: IPersonaPresenceProps) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  getStyles?: IStyleFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
+}
+
+export interface IPersonaPresenceStyleProps {
+  /**
+   * Theme.
+   */
+  theme: ITheme;
+
+  /**
+   * Custom class name.
+   */
+  className?: string;
+
+  /**
+   * Presence of the person to display - will not display presence if undefined.
+   * @defaultvalue PersonaPresence.none
+   */
+  presence?: PersonaPresence;
+
+  /**
+   * Decides the size of the control.
+   * @defaultvalue PersonaSize.size48
+   */
+  size?: PersonaSize;
+}
+
+export interface IPersonaPresenceStyles {
+  presence: IStyle;
+  presenceIcon: IStyle;
 }
 
 export enum PersonaSize {
@@ -238,230 +370,3 @@ export enum PersonaInitialsColor {
    */
   transparent = 15,
 }
-
-export interface IPersonaStyleProps {
-  /**
-   * Theme.
-   */
-  theme: ITheme;
-
-  /**
-   * Custom class name.
-   */
-  className?: string;
-
-  /**
-   * Optional custom persona coin size in pixel.
-   */
-  coinSize?: number;
-
-  /**
-   * Decides the size of the control.
-   * @defaultvalue PersonaSize.size48
-   */
-  size?: PersonaSize;
-
-  /**
-   * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue PersonaPresence.none
-   */
-  presence?: PersonaPresence;
-
-  /*
-   * If true, show the secondary text line regardless of the size of the persona
-   */
-  showSecondaryText?: boolean;
-
-  isDarkText?: boolean;
-  isReadOnly?: boolean;
-  isSelectable?: boolean;
-  // extraLarge?: boolean;
-}
-
-export interface IPersonaStyles {
-  root?: IStyle;
-  placeholder?: IStyle;
-  details?: IStyle;
-  primaryText?: IStyle;
-  secondaryText?: IStyle;
-  tertiaryText?: IStyle;
-  optionalText?: IStyle;
-  textContent?: IStyle;
-  coin?: IStyle;
-  imageArea?: IStyle;
-  image?: IStyle;
-  initials?: IStyle;
-  size10NoPresenceIcon?: IStyle;
-  presence?: IStyle;
-  presenceIcon?: IStyle;
-}
-
-// export interface IPersonaCoinProps extends React.Props<PersonaCoinBase> {
-//   /**
-//    * Gets the component ref.
-//    */
-//   componentRef?: (component: IPersonaCoinProps) => void;
-
-//   /**
-//    * Call to provide customized styling that will layer on top of the variant rules
-//    */
-//   getStyles?: IStyleFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>;
-
-//   /**
-//    * Theme provided by HOC.
-//    */
-//   theme?: ITheme;
-
-//   /**
-//    * Additional css class to apply to the PersonaCoin
-//    * @defaultvalue undefined
-//    */
-//   className?: string;
-
-//   /**
-//    * Optional HTML element props for Persona coin.
-//    */
-//   coinProps?: React.HTMLAttributes<HTMLDivElement>;
-
-//   /**
-//    * Optional custom persona coin size in pixel.
-//    */
-//   coinSize?: number;
-
-//   /**
-//    * Alt text for the image to use. Defaults to an empty string.
-//    */
-//   imageAlt?: string;
-
-//   /**
-//    * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
-//    */
-//   imageUrl?: string;
-
-//   /**
-//    * If true, adds the css class 'is-fadeIn' to the image.
-//    */
-//   imageShouldFadeIn?: boolean;
-
-//   /**
-//    * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until
-//    * it is successfully loaded. This disables imageShouldFadeIn.
-//    * @defaultvalue false
-//    */
-//   imageShouldStartVisible?: boolean;
-
-//   /**
-//    * The user's initials to display in the image area when there is no image.
-//    * @defaultvalue [Derived from primaryText]
-//    */
-//   imageInitials?: string;
-
-//   /**
-//    * Optional callback for when loading state of the photo changes
-//    */
-//   onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
-
-//   /**
-//    * Optional custom renderer for the coin
-//    */
-//   onRenderCoin?: IRenderFunction<IPersonaProps>;
-
-//   /**
-//    * Optional custom renderer for the initials
-//    */
-//   onRenderInitials?: IRenderFunction<IPersonaProps>;
-
-//   /**
-//    * Presence of the person to display - will not display presence if undefined.
-//    * @defaultvalue PersonaPresence.none
-//    */
-//   presence?: PersonaPresence;
-
-//   /**
-//    * Primary text to display, usually the name of the person.
-//    */
-//   primaryText?: string;
-
-//   /**
-//    * Decides the size of the control.
-//    * @defaultvalue PersonaSize.size48
-//    */
-//   size?: PersonaSize;
-// }
-
-// export interface IPersonaCoinStyleProps {
-//   /**
-//    * Theme.
-//    */
-//   theme: ITheme;
-
-//   /**
-//    * Custom class name.
-//    */
-//   className?: string;
-
-//   /**
-//    * Decides the size of the control.
-//    * @defaultvalue PersonaSize.size48
-//    */
-//   size?: PersonaSize;
-// }
-
-// export interface IPersonaCoinStyles {
-//   coin: IStyle;
-//   imageArea: IStyle;
-//   image: IStyle;
-//   initials: IStyle;
-//   size10NoPresenceIcon: IStyle;
-// }
-
-// export interface IPersonaPresenceProps extends React.Props<PersonaPresenceBase> {
-//   /**
-//    * Gets the component ref.
-//    */
-//   componentRef?: (component: IPersonaPresenceProps) => void;
-
-//   /**
-//    * Call to provide customized styling that will layer on top of the variant rules
-//    */
-//   getStyles?: IStyleFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
-
-//   /**
-//    * Theme provided by HOC.
-//    */
-//   theme?: ITheme;
-
-//   /**
-//    * Optional custom persona coin size in pixel.
-//    */
-//   coinSize?: number;
-
-//   /**
-//    * Presence of the person to display - will not display presence if undefined.
-//    * @defaultvalue PersonaPresence.none
-//    */
-//   presence?: PersonaPresence;
-// }
-
-// export interface IPersonaPresenceStyleProps {
-//   /**
-//    * Theme.
-//    */
-//   theme: ITheme;
-
-//   /**
-//    * Custom class name.
-//    */
-//   className?: string;
-
-//   /**
-//    * Presence of the person to display - will not display presence if undefined.
-//    * @defaultvalue PersonaPresence.none
-//    */
-//   presence?: PersonaPresence;
-// }
-
-// export interface IPersonaPresenceStyles {
-//   presense: IStyle;
-//   presenseIcon: IStyle;
-// }
