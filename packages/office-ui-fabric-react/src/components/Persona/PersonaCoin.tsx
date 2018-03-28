@@ -193,11 +193,14 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
   private _onRenderInitials = (props: IPersonaCoinProps): JSX.Element => {
     let { imageInitials } = props;
-    const { primaryText } = props;
+    const {
+      allowPhoneInitials,
+      primaryText,
+    } = props;
 
     const isRTL = getRTL();
 
-    imageInitials = imageInitials || getInitials(primaryText, isRTL);
+    imageInitials = imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
 
     return (
       imageInitials !== ''

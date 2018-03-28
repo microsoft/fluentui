@@ -45,6 +45,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 
     // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
     const {
+      allowPhoneInitials,
       className,
       coinProps,
       coinSize,
@@ -64,6 +65,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     } = this.props;
 
     const personaCoinProps: IPersonaSharedProps = {
+      allowPhoneInitials,
       coinProps,
       coinSize,
       imageAlt,

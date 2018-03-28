@@ -109,6 +109,15 @@ describe('getInitials', () => {
     result = getInitials('+47 12 34 56 78 (X 5678)', false);
     expect(result).toEqual('');
 
+    result = getInitials('+47 12 34 56 78 (X 5678)', false, true);
+    expect(result).toEqual('4');
+
+    result = getInitials('47 12 34', false, true);
+    expect(result).toEqual('43');
+
+    result = getInitials('47 12', false, true);
+    expect(result).toEqual('41');
+
     result = getInitials('1 Ext 2', false);
     expect(result).toEqual('');
 

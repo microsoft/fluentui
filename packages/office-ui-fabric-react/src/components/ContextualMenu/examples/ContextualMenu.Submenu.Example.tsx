@@ -80,6 +80,42 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                   ],
                 },
                 name: 'Share'
+              },
+              {
+                key: 'shareSplit',
+                onClick: () => alert('Split buttons!'),
+                split: true,
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'sharetotwittersplit',
+                      name: 'Share to Twitter',
+                    },
+                    {
+                      key: 'sharetofacebooksplit',
+                      name: 'Share to Facebook',
+                    },
+                    {
+                      key: 'sharetoemailsplit',
+                      name: 'Share to Email',
+                      subMenuProps: {
+                        items: [
+                          {
+                            key: 'sharetooutlooksplit_1',
+                            name: 'Share to Outlook',
+                            title: 'Share to Outlook',
+                          },
+                          {
+                            key: 'sharetogmailsplit_1',
+                            name: 'Share to Gmail',
+                            title: 'Share to Gmail',
+                          }
+                        ],
+                      },
+                    },
+                  ],
+                },
+                name: 'Share w/ Split'
               }
             ]
           }
