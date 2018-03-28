@@ -6,6 +6,16 @@ import {
 } from '@uifabric/styling/lib/index';
 import { createTheme } from '@uifabric/styling/lib/index';
 
+function makeThemeFromPartials(originalTheme: IPartialTheme, partialPalette: Partial<IPalette>, partialSemantic: Partial<ISemanticColors>): ITheme {
+  return createTheme({
+    ...originalTheme,
+    ...{
+      palette: { ...originalTheme.palette, ...partialPalette },
+      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
+    }
+  });
+}
+
 /**
  * A variant where the background soft shade of the neutral color. Most other colors remain unchanged.
  *
@@ -54,23 +64,8 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyBackground: p.neutralLighter
   };
 
-  return createTheme({
-    ...theme,
-    ...{
-      palette: { ...theme.palette, ...partialPalette },
-      semanticColors: { ...theme.semanticColors, ...partialSemantic }
-    }
-  });
+  return makeThemeFromPartials(theme, partialPalette, partialSemantic);
 }
-
-/* Variants
- * Variants are themes based off the current theme.
- * Each variant is a subset of the current theme, rearranging slots to create a theme of a different style.
- * Variants are meant to be applied to sections of a page, not the entire page.
- * They can be used to highlight or de-emphasize sections of a page.
- *
- * Variants are still under development.
- */
 
 /**
  * A variant where the background a softer version of the primary color. Most other colors remain unchanged.
@@ -127,13 +122,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
   };
 
-  return createTheme({
-    ...theme,
-    ...{
-      palette: { ...theme.palette, ...partialPalette },
-      semanticColors: { ...theme.semanticColors, ...partialSemantic }
-    }
-  });
+  return makeThemeFromPartials(theme, partialPalette, partialSemantic);
 }
 
 /**
@@ -198,11 +187,5 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
   };
 
-  return createTheme({
-    ...theme,
-    ...{
-      palette: { ...theme.palette, ...partialPalette },
-      semanticColors: { ...theme.semanticColors, ...partialSemantic }
-    }
-  });
+  return makeThemeFromPartials(theme, partialPalette, partialSemantic);
 }
