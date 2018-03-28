@@ -19,7 +19,6 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
   private _focusZone = createRef<FocusZone>();
   private _divContainer = createRef<HTMLDivElement>();
-  private _overflowButtonKey: string;
 
   constructor(props: IOverflowSetProps) {
     super(props);
@@ -29,8 +28,6 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
         'doNotContainWithinFocusZone': 'focusZoneProps'
       });
     }
-
-    this._overflowButtonKey = getId();
   }
 
   public render() {
@@ -109,7 +106,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     return (
-      <div key={ this._overflowButtonKey } { ...wrapperDivProps }>
+      <div { ...wrapperDivProps }>
         { this.props.onRenderOverflowButton(items) }
       </div>
     );
