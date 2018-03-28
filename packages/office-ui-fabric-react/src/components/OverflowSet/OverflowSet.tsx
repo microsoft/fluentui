@@ -2,7 +2,11 @@ import * as React from 'react';
 import {
   css,
   BaseComponent,
-  createRef
+  createRef,
+  getNativeProps,
+  buttonProperties,
+  getId,
+  focusFirstChild
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
@@ -14,6 +18,8 @@ const styles: any = stylesImport;
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
   private _focusZone = createRef<FocusZone>();
+  private _divContainer = createRef<HTMLDivElement>();
+  private _overflowButtonKey: string;
 
   constructor(props: IOverflowSetProps) {
     super(props);
@@ -23,6 +29,8 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
         'doNotContainWithinFocusZone': 'focusZoneProps'
       });
     }
+
+    this._overflowButtonKey = getId();
   }
 
   public render() {
@@ -36,33 +44,50 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       doNotContainWithinFocusZone
     } = this.props;
 
-    const overflowSetItems = items && this._onRenderItems(items);
-    const overflowSetButtonWrapper = overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems);
+    const overflowSetContents = [
+      items && this._onRenderItems(items),
+      overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)
+    ];
 
-    const overflowSetContents = {
-      ...overflowSetItems,
-      ...overflowSetButtonWrapper
+    const commonProps = {
+      className: mergeStyles(
+        'ms-OverflowSet',
+        styles.root,
+        vertical && styles.rootVertical,
+        className
+      ),
+      role: role
     };
 
-    return doNotContainWithinFocusZone ? overflowSetContents : (
-      <FocusZone
-        { ...focusZoneProps }
-        componentRef={ this._focusZone }
-        className={ mergeStyles(
-          'ms-OverflowSet',
-          styles.root,
-          vertical && styles.rootVertical,
-          className
-        ) }
-        direction={ vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal }
-        role={ role }
+    return doNotContainWithinFocusZone ? (
+      <div
+        { ...getNativeProps(this.props, buttonProperties) }
+        ref={ this._divContainer }
+        { ...commonProps }
       >
         { overflowSetContents }
-      </FocusZone>
-    );
+      </div>
+    ) : (
+        <FocusZone
+          { ...focusZoneProps }
+          componentRef={ this._focusZone }
+          direction={ vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal }
+          { ...commonProps }
+        >
+          { overflowSetContents }
+        </FocusZone>
+      );
   }
 
   public focus() {
+    if (this.props.doNotContainWithinFocusZone) {
+      if (this._divContainer.value) {
+        focusFirstChild(this._divContainer.value);
+      }
+
+      return;
+    }
+
     if (this._focusZone.value) {
       this._focusZone.value.focus();
     }
@@ -83,7 +108,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     return (
-      <div { ...wrapperDivProps }>
+      <div key={ this._overflowButtonKey } { ...wrapperDivProps }>
         { this.props.onRenderOverflowButton(items) }
       </div>
     );
