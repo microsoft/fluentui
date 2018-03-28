@@ -56,6 +56,8 @@ export const getStyles = (
   const personaSize72 = '72px';
   const personaSize100 = '100px';
 
+  const showSecondaryTextDefaultHeight = '16px';
+
   const sharedTextStyles: IStyle = {
     color: palette.neutralSecondary,
     fontWeight: FontWeights.regular,
@@ -246,8 +248,8 @@ export const getStyles = (
       },
 
       showSecondaryText && {
-        height: '16px',
-        lineHeight: '16px',
+        height: showSecondaryTextDefaultHeight,
+        lineHeight: showSecondaryTextDefaultHeight,
         overflowX: 'hidden',
       },
 
@@ -295,8 +297,8 @@ export const getStyles = (
 
       showSecondaryText && {
         display: 'block',
-        height: '16px',
-        lineHeight: '16px',
+        height: showSecondaryTextDefaultHeight,
+        lineHeight: showSecondaryTextDefaultHeight,
         overflowX: 'hidden',
       }
     ],
