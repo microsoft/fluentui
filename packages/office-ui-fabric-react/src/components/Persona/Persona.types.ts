@@ -11,17 +11,7 @@ export interface IPersona {
 
 }
 
-<<<<<<< HEAD
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
-=======
-export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
-  /**
-   * Optional callback to access the IPersona interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: (component: IPersona | null) => void;
-
->>>>>>> master
   /**
    * Primary text to display, usually the name of the person.
    */
@@ -134,7 +124,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPersona) => void;
+  componentRef?: (component: IPersona | null) => void;
 
   /**
    * Additional CSS class(es) to apply to the Persona
