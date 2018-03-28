@@ -30,9 +30,10 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   public render(): JSX.Element | null {
     const {
       coinSize,
+      getStyles: getStylesProp,
       presence,
-      theme,
       size,
+      theme,
     } = this.props;
 
     const presenceHeightWidth = coinSize && (coinSize / coinSizePresenceScaleFactor < presenceMaxSize ? coinSize / coinSizePresenceScaleFactor : presenceMaxSize);
@@ -40,7 +41,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth + 'px' } : undefined;
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(getStylesProp! || getStyles!, {
       theme: theme!,
       presence,
       size,
