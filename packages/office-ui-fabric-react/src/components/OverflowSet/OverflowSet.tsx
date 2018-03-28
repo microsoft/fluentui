@@ -44,39 +44,40 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       doNotContainWithinFocusZone
     } = this.props;
 
-    const overflowSetContents = [
-      items && this._onRenderItems(items),
-      overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)
-    ];
+    let Tag;
+    let elementRef;
+    let direction;
 
-    const commonProps = {
-      className: mergeStyles(
-        'ms-OverflowSet',
-        styles.root,
-        vertical && styles.rootVertical,
-        className
-      ),
-      role: role
-    };
+    if (doNotContainWithinFocusZone) {
+      Tag = 'div';
+      elementRef = {
+        ref: this._divContainer
+      };
+    } else {
+      Tag = FocusZone;
+      elementRef = {
+        componentRef: this._focusZone
+      };
+      direction = vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal;
+    }
 
-    return doNotContainWithinFocusZone ? (
-      <div
+    return (
+      <Tag
         { ...getNativeProps(this.props, buttonProperties) }
-        ref={ this._divContainer }
-        { ...commonProps }
+        { ...elementRef }
+        className={ mergeStyles(
+          'ms-OverflowSet',
+          styles.root,
+          vertical && styles.rootVertical,
+          className
+        ) }
+        direction={ direction }
+        role={ role }
       >
-        { overflowSetContents }
-      </div>
-    ) : (
-        <FocusZone
-          { ...focusZoneProps }
-          componentRef={ this._focusZone }
-          direction={ vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal }
-          { ...commonProps }
-        >
-          { overflowSetContents }
-        </FocusZone>
-      );
+        { items && this._onRenderItems(items) }
+        { overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems) }
+      </Tag>
+    );
   }
 
   public focus() {
