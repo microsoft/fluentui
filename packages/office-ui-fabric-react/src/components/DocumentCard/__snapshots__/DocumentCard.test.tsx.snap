@@ -97,9 +97,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     top: 0px;
                     width: 32px;
                   }
-                  &[src=""] {
-                    display: none;
-                  }
               style={
                 Object {
                   "height": 32,

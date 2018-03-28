@@ -121,9 +121,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   top: 0px;
                   width: 16px;
                 }
-                &[src=""] {
-                  display: none;
-                }
             style={
               Object {
                 "height": undefined,
@@ -388,9 +385,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   top: 0px;
                   width: 16px;
                 }
-                &[src=""] {
-                  display: none;
-                }
             style={
               Object {
                 "height": undefined,
@@ -466,9 +460,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   position: absolute;
                   top: 0px;
                   width: 16px;
-                }
-                &[src=""] {
-                  display: none;
                 }
             style={
               Object {
@@ -571,9 +562,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   position: absolute;
                   top: 0px;
                   width: 16px;
-                }
-                &[src=""] {
-                  display: none;
                 }
             style={
               Object {
@@ -740,9 +728,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   position: absolute;
                   top: 0px;
                   width: 32px;
-                }
-                &[src=""] {
-                  display: none;
                 }
             style={
               Object {
@@ -1021,9 +1006,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   top: 0px;
                   width: 16px;
                 }
-                &[src=""] {
-                  display: none;
-                }
             style={
               Object {
                 "height": undefined,
@@ -1092,9 +1074,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   position: absolute;
                   top: 0px;
                   width: 16px;
-                }
-                &[src=""] {
-                  display: none;
                 }
             style={
               Object {
@@ -1191,9 +1170,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   top: 0px;
                   width: 16px;
                 }
-                &[src=""] {
-                  display: none;
-                }
             style={
               Object {
                 "height": undefined,
@@ -1262,9 +1238,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   position: absolute;
                   top: 0px;
                   width: 16px;
-                }
-                &[src=""] {
-                  display: none;
                 }
             style={
               Object {

@@ -69,9 +69,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
               top: 0px;
               width: 100%;
             }
-            &[src=""] {
-              display: none;
-            }
         style={
           Object {
             "height": 48,
@@ -282,9 +279,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               position: absolute;
               top: 0px;
               width: 100%;
-            }
-            &[src=""] {
-              display: none;
             }
         style={
           Object {
