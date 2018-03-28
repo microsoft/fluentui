@@ -40,7 +40,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITextField) => void;
+  componentRef?: (component: ITextField | null) => void;
 
   /**
    * Whether or not the textfield is a multiline textfield.
@@ -223,13 +223,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   iconClass?: string;
 
   /**
-   * Internal ID passed to render functions.
-   */
-  componentId?: string;
-
-  /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
    */
   autoComplete?: 'on' | 'off';
+
+  /**
+   * Deprecated property. Serves no function.
+   * @deprecated
+   */
+  componentId?: string;
 }

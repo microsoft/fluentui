@@ -173,9 +173,12 @@ export const getMenuItemStyles = memoizeFunction((
       height: ContextualMenuItemHeight,
       flexWrap: 'nowrap',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
-    splitButtonSeparator: {}
+    splitButtonSeparator: {},
+    splitButtonFlexContainerFocus: [
+      getFocusStyle(theme)
+    ]
   };
 
   return concatStyleSets(menuItemStyles);

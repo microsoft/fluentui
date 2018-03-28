@@ -1,6 +1,76 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 22 Mar 2018 10:14:03 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Mar 2018 10:16:39 GMT and should not be manually modified.
+
+## 5.73.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- Persona: adding `allowPhoneInitials` prop to allow for calculating initials from phone numbers.
+
+### Patches
+
+- ContextualMenu: SplitButtons in ContextualMenus are incorrectly using the menuLauncher portion of the splitButton for the tagrate when the  menuLauncher portion is  activated. This can lead to weird overhangs of the parent menu even if  directionalHintFixed is not true (e.g. it will overlap the primary portion of the  splitButton and potentially other items in the parent menu)
+
+## 5.72.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- add isSelectedOverride to suggestionItemProps
+- ContextualMenu / Split Button: Fixed styling problems For centered button content.
+- Use markdown-to-jsx for ActivityItem documentation
+
+### Patches
+
+- Checkbox: label text should be selectable, but not the checkmark icons.
+
+## 5.71.0
+Tue, 27 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- Deprecate SearchBox defaultValue prop.
+
+### Patches
+
+- Dropdown: do not select disabled items on keydown
+- FocusZone: Align props to HTMLElement to be consistent
+- TextField, Panel: Deprecated componentId prop.
+- BasePicker: suggestions should not be shown in BasePicker when input does not exist.
+- In Panel component, isClickableOutsideFocusTrap should not be overriden back to false if it's already set to true in focusTrapZoneProps.
+- MessageBar: For single line, put dismiss button after action buttons.
+- ComboBox: Removed a redundant property from the basic example.
+
+## 5.70.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` flags on all applicable packages.
+
+### Patches
+
+- DetailsHeader: reverting how maxWidth is handled to previous behavior.
+- Fix bug in combo box where _selectedElement ref wasn't being set conditionally
+- Update componentRef types
+- ComboBox: Add some code comments. Minor bug fixes to the example page.
+
+## 5.69.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing, and made FocusTrapZone utilize it
+- Add multiSelect capability for ComboBox
+
+### Patches
+
+- DetailsList: reset focusedItemIndex after setKey changes to fix scrolling after folder navigation
+- Dropdown: onKeydown should check for defaultPrevented, not preventDefault.
+- Removed focusability on buttons for split buttons and spin buttons
+- Remove the redundant tooltip in a Dropdown command button
 
 ## 5.68.0
 Thu, 22 Mar 2018 10:14:03 GMT

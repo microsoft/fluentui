@@ -7,7 +7,7 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
    * Optional callback to access the KeytipLayer component. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: KeytipLayer) => void;
+  componentRef?: (component: KeytipLayer | null) => void;
 
   /**
    * The DOM ID to use as the hostId for the child keytips

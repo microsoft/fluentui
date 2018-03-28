@@ -65,6 +65,21 @@ export const MessageBarBasicExample = () => (
       Success lorem ipsum dolor sit amet. <Link href='www.bing.com'>Visit our website.</Link>
     </MessageBar>
 
+    <Label>Warning MessageBar - single line, with dismiss and action buttons</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.warning }
+      isMultiline={ false }
+      onDismiss={ log('test') }
+      dismissButtonAriaLabel='Close'
+      actions={
+        <div>
+          <MessageBarButton>Action</MessageBarButton>
+        </div>
+      }
+    >
+      Warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
     <Label>Warning MessageBar - defaults to multiline, with dismiss and action buttons</Label>
     <MessageBar
       onDismiss={ log('test') }

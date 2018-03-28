@@ -21,7 +21,7 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
    * Optional callback to access the IDocumentCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDocumentCard) => void;
+  componentRef?: (component: IDocumentCard | null) => void;
 
   /**
   * The type of DocumentCard to display.
@@ -237,6 +237,13 @@ export interface IDocumentCardActivityPerson {
    * The user's initials to display in the profile photo area when there is no image.
    */
   initials?: string;
+
+  /**
+   * Whether initials are calculated for phone numbers and number sequences.
+   * Example: Set property to true to get initials for project names consisting of numbers only.
+   * @defaultvalue false
+   */
+  allowPhoneInitials?: boolean;
 
   /**
    * The background color when the user's initials are displayed.

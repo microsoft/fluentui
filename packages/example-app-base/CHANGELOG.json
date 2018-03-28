@@ -2,6 +2,42 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.6.0",
+      "tag": "@uifabric/example-app-base_v5.6.0",
+      "date": "Tue, 27 Mar 2018 20:22:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "6fa074e6907cb6e9e47393f2fef30e93c55aa16b",
+            "comment": "Add markdown-to-jsx for use in documentation."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/example-app-base_v5.5.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.20.0 <6.0.0` to `>=5.21.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.20.0 <6.0.0` to `>=5.21.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.0",
       "tag": "@uifabric/example-app-base_v5.4.0",
       "date": "Mon, 19 Mar 2018 10:27:55 GMT",

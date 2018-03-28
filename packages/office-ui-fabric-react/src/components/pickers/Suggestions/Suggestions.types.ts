@@ -141,4 +141,5 @@ export interface ISuggestionItemProps<T> {
   className?: string;
   id?: string;
   showRemoveButton?: boolean;
+  isSelectedOverride?: boolean;
 }

@@ -30,7 +30,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IButton) => void;
+  componentRef?: (component: IButton | null) => void;
 
   /**
    * If provided, this component will be rendered as an anchor.
@@ -504,4 +504,9 @@ export interface IButtonStyles {
    * Style override for the SplitButton FlexContainer.
    */
   splitButtonFlexContainer?: IStyle;
+
+  /**
+   * Style override for focus on the the SplitButton Container
+   */
+  splitButtonFlexContainerFocus?: IStyle;
 }
