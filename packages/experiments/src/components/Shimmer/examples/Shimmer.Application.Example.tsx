@@ -146,6 +146,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
+  // Simulating asynchronus data loading each 2.5 sec
   private _onDataMiss = (index: number): void => {
     index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
     if (!this._isFetchingItems) {
