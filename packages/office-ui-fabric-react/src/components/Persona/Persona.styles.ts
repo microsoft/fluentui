@@ -233,10 +233,6 @@ export const getStyles = (
 
       (isSize24 || isSize28) && {
         padding: '0 12px',
-      },
-
-      isSize28 && {
-        padding: '0 12px',
       }
     ],
 
