@@ -12,39 +12,25 @@ import {
   noWrap,
   zIndex,
 } from '../../Styling';
-import { personaSize } from './PersonaConsts';
+import {
+  personaSize,
+  presenceBoolean,
+  sizeBoolean,
+} from './PersonaConsts';
 
 export const getStyles = (
   props: IPersonaStyleProps
 ): IPersonaStyles => {
   const {
     className,
-    presence,
     showSecondaryText,
-    size,
     theme,
   } = props;
 
   const { palette } = theme;
 
-  // Persona presence conditionals
-  const isAvailable = presence === PersonaPresence.online;
-  const isAway = presence === PersonaPresence.away;
-  const isBlocked = presence === PersonaPresence.blocked;
-  const isBusy = presence === PersonaPresence.busy;
-  const isDoNotDisturb = presence === PersonaPresence.dnd;
-  const isOffline = presence === PersonaPresence.offline;
-
-  // Persona size conditionals
-  const isSize10 = size === PersonaSize.size10 || size === PersonaSize.tiny;
-  const isSize16 = size === PersonaSize.size16;
-  const isSize24 = size === PersonaSize.size24 || size === PersonaSize.extraExtraSmall;
-  const isSize28 = size === PersonaSize.size28 || size === PersonaSize.extraSmall;
-  const isSize32 = size === PersonaSize.size32;
-  const isSize40 = size === PersonaSize.size40 || size === PersonaSize.small;
-  const isSize48 = size === PersonaSize.size48;
-  const isSize72 = size === PersonaSize.size72 || size === PersonaSize.large;
-  const isSize100 = size === PersonaSize.size100 || size === PersonaSize.extraLarge;
+  const size = sizeBoolean(props.size as PersonaSize);
+  const presence = presenceBoolean(props.presence as PersonaPresence);
 
   const showSecondaryTextDefaultHeight = '16px';
 
@@ -83,7 +69,7 @@ export const getStyles = (
         }
       },
 
-      isSize10 && [
+      size.isSize10 && [
         'ms-Persona--size10',
         {
           height: personaSize.size10,
@@ -91,7 +77,7 @@ export const getStyles = (
         }
       ],
 
-      isSize16 && [
+      size.isSize16 && [
         'ms-Persona--size16',
         {
           height: personaSize.size16,
@@ -99,7 +85,7 @@ export const getStyles = (
         }
       ],
 
-      isSize24 && [
+      size.isSize24 && [
         'ms-Persona--size24',
         {
           height: personaSize.size24,
@@ -107,11 +93,11 @@ export const getStyles = (
         }
       ],
 
-      isSize24 && showSecondaryText && {
+      size.isSize24 && showSecondaryText && {
         height: '36px',
       },
 
-      isSize28 && [
+      size.isSize28 && [
         'ms-Persona--size28',
         {
           height: personaSize.size28,
@@ -119,11 +105,11 @@ export const getStyles = (
         }
       ],
 
-      isSize28 && showSecondaryText && {
+      size.isSize28 && showSecondaryText && {
         height: '32px',
       },
 
-      isSize32 && [
+      size.isSize32 && [
         'ms-Persona--size32',
         {
           height: personaSize.size32,
@@ -131,7 +117,7 @@ export const getStyles = (
         }
       ],
 
-      isSize40 && [
+      size.isSize40 && [
         'ms-Persona--size40',
         {
           height: personaSize.size40,
@@ -139,9 +125,9 @@ export const getStyles = (
         }
       ],
 
-      isSize48 && 'ms-Persona--size48',
+      size.isSize48 && 'ms-Persona--size48',
 
-      isSize72 && [
+      size.isSize72 && [
         'ms-Persona--size72',
         {
           height: personaSize.size72,
@@ -149,7 +135,7 @@ export const getStyles = (
         }
       ],
 
-      isSize100 && [
+      size.isSize100 && [
         'ms-Persona--size100',
         {
           height: personaSize.size100,
@@ -160,12 +146,12 @@ export const getStyles = (
       /**
        * Modifiers: presence
        */
-      isAvailable && 'ms-Persona--online',
-      isAway && 'ms-Persona--away',
-      isBlocked && 'ms-Persona--blocked',
-      isBusy && 'ms-Persona--busy',
-      isDoNotDisturb && 'ms-Persona--donotdisturb',
-      isOffline && 'ms-Persona--offline',
+      presence.isAvailable && 'ms-Persona--online',
+      presence.isAway && 'ms-Persona--away',
+      presence.isBlocked && 'ms-Persona--blocked',
+      presence.isBusy && 'ms-Persona--busy',
+      presence.isDoNotDisturb && 'ms-Persona--donotdisturb',
+      presence.isOffline && 'ms-Persona--offline',
       className,
     ],
 
@@ -181,27 +167,27 @@ export const getStyles = (
         zIndex: zIndex.middle,
       },
 
-      (isSize16 || isSize24 || isSize28) && {
+      (size.isSize16 || size.isSize24 || size.isSize28) && {
         fontSize: '18px',
         top: '4px',
       },
 
-      isSize32 && {
+      size.isSize32 && {
         fontSize: '28px',
         top: '6px',
       },
 
-      isSize40 && {
+      size.isSize40 && {
         fontSize: '38px',
         top: '5px',
       },
 
-      isSize72 && {
+      size.isSize72 && {
         fontSize: '67px',
         top: '10px',
       },
 
-      isSize100 && {
+      size.isSize100 && {
         fontSize: '95px',
         top: '12px',
       },
@@ -219,11 +205,11 @@ export const getStyles = (
         justifyContent: 'space-around',
       },
 
-      isSize10 && {
+      size.isSize10 && {
         paddingLeft: '17px',
       },
 
-      (isSize24 || isSize28) && {
+      (size.isSize24 || size.isSize28) && {
         padding: '0 12px',
       }
     ],
@@ -243,26 +229,26 @@ export const getStyles = (
         overflowX: 'hidden',
       },
 
-      isSize10 && {
+      size.isSize10 && {
         fontSize: FontSizes.small,
         lineHeight: personaSize.size10,
       },
 
-      (isSize16 || isSize24 || isSize28 || isSize32 || isSize40) && {
+      (size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40) && {
         fontSize: FontSizes.medium,
       },
 
-      isSize16 && {
+      size.isSize16 && {
         lineHeight: personaSize.size28,
       },
 
-      isSize24 && showSecondaryText && { height: '18px' },
+      size.isSize24 && showSecondaryText && { height: '18px' },
 
-      isSize72 && {
+      size.isSize72 && {
         fontSize: FontSizes.xLarge,
       },
 
-      isSize100 && {
+      size.isSize100 && {
         fontSize: FontSizes.xLarge,
         fontWeight: FontWeights.semilight,
       }
@@ -273,15 +259,15 @@ export const getStyles = (
       noWrap,
       sharedTextStyles,
 
-      (isSize10 || isSize16 || isSize24 || isSize28 || isSize32) && {
+      (size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && {
         display: 'none',
       },
 
-      isSize24 && showSecondaryText && {
+      size.isSize24 && showSecondaryText && {
         height: '18px',
       },
 
-      (isSize72 || isSize100) && {
+      (size.isSize72 || size.isSize100) && {
         fontSize: FontSizes.medium,
       },
 
@@ -301,7 +287,7 @@ export const getStyles = (
         display: 'none',
       },
 
-      (isSize72 || isSize100) && {
+      (size.isSize72 || size.isSize100) && {
         display: 'block',
       }
     ],
@@ -314,7 +300,7 @@ export const getStyles = (
         display: 'none',
       },
 
-      isSize100 && {
+      size.isSize100 && {
         display: 'block',
       }
     ],

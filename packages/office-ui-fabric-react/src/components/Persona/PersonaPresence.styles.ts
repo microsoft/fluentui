@@ -9,7 +9,11 @@ import {
   HighContrastSelector,
   HighContrastBWSelector,
 } from '../../Styling';
-import { personaPresenceSize } from './PersonaConsts';
+import {
+  personaPresenceSize,
+  presenceBoolean,
+  sizeBoolean,
+} from './PersonaConsts';
 
 export const getStyles = (
   props: IPersonaPresenceStyleProps
@@ -17,30 +21,12 @@ export const getStyles = (
   const {
     className,
     theme,
-    presence,
-    size,
   } = props;
 
   const { palette } = theme;
 
-  // Persona presence conditionals
-  const isAvailable = presence === PersonaPresence.online;
-  const isAway = presence === PersonaPresence.away;
-  const isBlocked = presence === PersonaPresence.blocked;
-  const isBusy = presence === PersonaPresence.busy;
-  const isDoNotDisturb = presence === PersonaPresence.dnd;
-  const isOffline = presence === PersonaPresence.offline;
-
-  // Persona size conditionals
-  const isSize10 = size === PersonaSize.size10 || size === PersonaSize.tiny;
-  const isSize16 = size === PersonaSize.size16;
-  const isSize24 = size === PersonaSize.size24 || size === PersonaSize.extraExtraSmall;
-  const isSize28 = size === PersonaSize.size28 || size === PersonaSize.extraSmall;
-  const isSize32 = size === PersonaSize.size32;
-  const isSize40 = size === PersonaSize.size40 || size === PersonaSize.small;
-  const isSize48 = size === PersonaSize.size48;
-  const isSize72 = size === PersonaSize.size72 || size === PersonaSize.large;
-  const isSize100 = size === PersonaSize.size100 || size === PersonaSize.extraLarge;
+  const size = sizeBoolean(props.size as PersonaSize);
+  const presence = presenceBoolean(props.presence as PersonaPresence);
 
   // Presence colors
   const presenceColorAvailable = '#7FBA00';
@@ -75,7 +61,7 @@ export const getStyles = (
         }
       },
 
-      isSize10 && {
+      size.isSize10 && {
         right: 'auto',
         top: '7px',
         left: 0,
@@ -91,13 +77,13 @@ export const getStyles = (
         }
       },
 
-      isSize16 && {
+      size.isSize16 && {
         height: personaPresenceSize.size6,
         width: personaPresenceSize.size6,
         borderWidth: '1.5px',
       },
 
-      isSize24 && {
+      size.isSize24 && {
         height: personaPresenceSize.size8,
         width: personaPresenceSize.size8,
 
@@ -108,7 +94,7 @@ export const getStyles = (
         }
       },
 
-      isSize28 && {
+      size.isSize28 && {
         height: personaPresenceSize.size8,
         width: personaPresenceSize.size8,
 
@@ -119,22 +105,22 @@ export const getStyles = (
         }
       },
 
-      isSize32 && {
+      size.isSize32 && {
         height: personaPresenceSize.size8,
         width: personaPresenceSize.size8,
       },
 
-      isSize72 && {
+      size.isSize72 && {
         height: personaPresenceSize.size20,
         width: personaPresenceSize.size20,
       },
 
-      isSize100 && {
+      size.isSize100 && {
         height: personaPresenceSize.size28,
         width: personaPresenceSize.size28,
       },
 
-      isAvailable && {
+      presence.isAvailable && {
         backgroundColor: presenceColorAvailable,
 
         selectors: {
@@ -144,7 +130,7 @@ export const getStyles = (
         }
       },
 
-      isAway && {
+      presence.isAway && {
         backgroundColor: presenceColorAway,
 
         selectors: {
@@ -154,7 +140,7 @@ export const getStyles = (
         }
       },
 
-      isBlocked && {
+      presence.isBlocked && {
         backgroundColor: palette.white,
 
         selectors: {
@@ -211,7 +197,7 @@ export const getStyles = (
         }
       },
 
-      isBlocked && isSize72 && {
+      presence.isBlocked && size.isSize72 && {
         selectors: {
           ':after': {
             top: '9px',
@@ -219,7 +205,7 @@ export const getStyles = (
         }
       },
 
-      isBlocked && isSize100 && {
+      presence.isBlocked && size.isSize100 && {
         selectors: {
           ':after': {
             top: '13px',
@@ -227,7 +213,7 @@ export const getStyles = (
         }
       },
 
-      isBusy && {
+      presence.isBusy && {
         backgroundColor: presenceColorBusy,
 
         selectors: {
@@ -241,7 +227,7 @@ export const getStyles = (
         }
       },
 
-      isDoNotDisturb && {
+      presence.isDoNotDisturb && {
         backgroundColor: presenceColorDnd,
 
         selectors: {
@@ -284,7 +270,7 @@ export const getStyles = (
         }
       },
 
-      isOffline && {
+      presence.isOffline && {
         backgroundColor: presenceColorOffline,
 
         selectors: {
@@ -316,21 +302,21 @@ export const getStyles = (
         }
       },
 
-      (isSize10 || isSize16 || isSize24 || isSize28 || isSize32) && {
+      (size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && {
         display: 'none',
       },
 
-      isSize72 && {
+      size.isSize72 && {
         fontSize: FontSizes.small,
         lineHeight: personaPresenceSize.size20,
       },
 
-      isSize100 && {
+      size.isSize100 && {
         fontSize: FontSizes.medium,
         lineHeight: personaPresenceSize.size28,
       },
 
-      isAway && {
+      presence.isAway && {
         position: 'relative',
         left: '1px',
       },
