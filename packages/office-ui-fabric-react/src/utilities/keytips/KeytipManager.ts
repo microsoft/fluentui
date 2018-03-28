@@ -60,10 +60,9 @@ export class KeytipManager {
   // tslint:disable-next-line:no-any
   public registerKeytip(keytipProps: IKeytipProps): string {
     const keytipTree = this.keytipTree;
-    // console.log('register ' + keytipProps.content);
     const uniqueID = (++this._keytipIDCounter).toString();
     // Add the unique ID to the keytip
-    keytipProps.uniqueID = uniqueID;
+    keytipProps = { ...keytipProps, uniqueID };
 
     // Set 'visible' property to true in keytipProps if currentKeytip is this keytips parent
     if (this._isCurrentKeytipParent(keytipProps)) {
@@ -76,10 +75,11 @@ export class KeytipManager {
     if (keytipIndex >= 0) {
       // Update everything except 'visible'
       this.keytips = replaceElement(this.keytips, { ...keytipProps, visible: this.keytips[keytipIndex].visible }, keytipIndex);
+      keytipTree.updateNode(keytipProps);
     } else {
       this.keytips.push(keytipProps);
+      keytipTree.addNode(keytipProps);
     }
-    keytipTree.addNode(keytipProps);
     this._layer && this._layer.setKeytips(this.keytips);
 
     if (this._newCurrentKeytipSequences && fullKeySequencesAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
@@ -136,7 +136,7 @@ export class KeytipManager {
     }
 
     // Update keytip in keytip tree and layer
-    this.keytipTree.addNode(keytipProps);
+    this.keytipTree.updateNode(keytipProps);
     this._layer && this._layer.setKeytips(this.keytips);
   }
 
@@ -146,14 +146,12 @@ export class KeytipManager {
    * @param keytipToRemove - IKeytipProps of the keytip to remove
    */
   public unregisterKeytip(keytipToRemove: IKeytipProps, uniqueID: string): void {
-    // console.log('unregister ' + keytipToRemove.content);
     // Add the unique ID to the keytip
-    keytipToRemove.uniqueID = uniqueID;
+    keytipToRemove = { ...keytipToRemove, uniqueID };
 
     // Remove keytipToRemove from this.keytips
     this.keytips = this.keytips.filter((keytip: IKeytipProps) => {
-      return !(fullKeySequencesAreEqual(keytip.keySequences, keytipToRemove.keySequences) ||
-        keytip.uniqueID === keytipToRemove.uniqueID);
+      return !(fullKeySequencesAreEqual(keytip.keySequences, keytipToRemove.keySequences) && keytip.uniqueID === keytipToRemove.uniqueID);
     });
     // Remove the node from the Tree
     this.keytipTree.removeNode(keytipToRemove);

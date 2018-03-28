@@ -103,24 +103,10 @@ export class KeytipTree {
     // Parent ID is the root if there aren't any more sequences
     const parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
 
-    // See if node already exists
-    let node = this.nodeMap[combinedID];
-    if (node) {
-      // If node exists, it was added when one of its children was added or is now being updated
-      // Update values
-      node.keytipSequence = keytipSequence!;
-      node.onExecute = keytipProps.onExecute;
-      node.onReturn = keytipProps.onReturn;
-      node.hasChildrenNodes = keytipProps.hasChildrenNodes;
-      node.parent = parentID;
-      node.disabled = keytipProps.disabled;
-      node.persisted = persisted;
-    } else {
-      // If node doesn't exist, add node
-      node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasChildrenNodes,
-        keytipProps.onExecute, keytipProps.onReturn, keytipProps.disabled, persisted);
-      this.nodeMap[combinedID] = node;
-    }
+    // Create node and add to map
+    const node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasChildrenNodes,
+      keytipProps.onExecute, keytipProps.onReturn, keytipProps.disabled, persisted);
+    this.nodeMap[combinedID] = node;
 
     // Find all nodes that have this node as its parent, add them to 'children' if not already there
     const children = Object.keys(this.nodeMap).reduce((array: string[], nodeMapKey: string): string[] => {
@@ -129,14 +115,42 @@ export class KeytipTree {
       }
       return array;
     }, []);
-    this.nodeMap[combinedID].children = this.nodeMap[combinedID].children.concat(children.filter((child: string) => {
-      return node.children.indexOf(child) === -1;
-    }));
+    this.nodeMap[combinedID].children = this.nodeMap[combinedID].children.concat(children);
 
     // Try to add self to parents children, if they exist
     const parent = this.getNode(parentID);
-    if (parent && parent.children.indexOf(nodeID) === -1) {
+    if (parent) {
       parent.children.push(nodeID);
+    }
+  }
+
+  /**
+   *
+   * @param keytipProps
+   */
+  public updateNode(keytipProps: IKeytipProps): void {
+    let fullSequence = [...keytipProps.keySequences];
+    if (keytipProps.overflowSetSequence) {
+      fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
+    }
+    const nodeID = convertSequencesToKeytipID(fullSequence);
+    const combinedID = nodeID + this._idSeparator + keytipProps.uniqueID!;
+
+    // This keytip's sequence is the last one defined
+    const keytipSequence = fullSequence.pop();
+    // Parent ID is the root if there aren't any more sequences
+    const parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
+
+    const node = this.nodeMap[combinedID];
+    if (node) {
+      // Update values
+      node.id = nodeID;
+      node.keytipSequence = keytipSequence!;
+      node.onExecute = keytipProps.onExecute;
+      node.onReturn = keytipProps.onReturn;
+      node.hasChildrenNodes = keytipProps.hasChildrenNodes;
+      node.parent = parentID;
+      node.disabled = keytipProps.disabled;
     }
   }
 

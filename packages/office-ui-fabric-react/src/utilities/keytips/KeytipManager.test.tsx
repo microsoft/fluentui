@@ -177,11 +177,16 @@ describe('KeytipManager', () => {
 
   describe('register, update, and unregister tests', () => {
     // Create keytip b
-    const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
-    const keytipBProps: IKeytipProps = {
-      keySequences: keytipSequenceB,
-      content: 'B'
-    };
+    let keytipBProps: IKeytipProps;
+    let keytipSequenceB: IKeySequence[];
+
+    beforeEach(() => {
+      keytipSequenceB = [{ keys: ['b'] }];
+      keytipBProps = {
+        keySequences: keytipSequenceB,
+        content: 'B'
+      };
+    });
 
     describe('registerKeytip', () => {
       it('should add the keytip to the Manager, Layer, and Tree', () => {
@@ -215,6 +220,14 @@ describe('KeytipManager', () => {
         const keytipG = getKeytips(defaultKeytipLayer, [keytipIdG]);
         expect(keytipG).toHaveLength(1);
         expect(keytipG[0].visible).toEqual(true);
+      });
+
+      it('registerKeytip should correctly take into account the uniqueID', () => {
+        // Register duplicate keytips, but should both be in the keytips array
+        // because they will have unique IDs
+        const uniqueID1 = keytipManager.registerKeytip(keytipBProps);
+        const uniqueID2 = keytipManager.registerKeytip(keytipBProps);
+        expect(keytipManager.keytips).toHaveLength(2);
       });
     });
 
@@ -255,6 +268,17 @@ describe('KeytipManager', () => {
 
       const keytipB = getKeytips(defaultKeytipLayer, [keytipIdB]);
       expect(keytipB).toHaveLength(0);
+    });
+
+    it('unregisterKeytip should correctly take into account the uniqueID', () => {
+      // Register duplicate keytips, where the first will be deleted
+      // Simulates React 16 lifecycle order
+      const uniqueID1 = keytipManager.registerKeytip(keytipBProps);
+      const uniqueID2 = keytipManager.registerKeytip(keytipBProps);
+      keytipManager.unregisterKeytip(keytipBProps, uniqueID1);
+
+      expect(keytipManager.keytips).toHaveLength(1);
+      expect(keytipManager.keytips[0].uniqueID).toEqual(uniqueID2);
     });
 
     it('registerPersistedKeytip should add a keytip to the Tree only', () => {

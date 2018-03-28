@@ -214,6 +214,27 @@ describe('KeytipTree', () => {
     });
   });
 
+  describe('updateNode', () => {
+    it('correctly updates node attributes', () => {
+      const keytipProps: IKeytipProps = {
+        content: 'A',
+        keySequences: [{ keys: ['a'] }],
+        uniqueID: '1'
+      };
+      keytipTree.addNode(keytipProps);
+
+      keytipProps.disabled = true;
+      keytipProps.hasChildrenNodes = true;
+
+      keytipTree.updateNode(keytipProps);
+
+      const node = keytipTree.getNode('ktp-a');
+      expect(node).toBeDefined();
+      expect(node!.disabled).toEqual(true);
+      expect(node!.hasChildrenNodes).toEqual(true);
+    });
+  });
+
   describe('removeNode', () => {
     it('removes a child node of root and has no children', () => {
       // Node C
@@ -335,6 +356,33 @@ describe('KeytipTree', () => {
       expect(overflowNode).toBeDefined();
       expect(overflowNode!.children).toHaveLength(0);
     });
+  });
+
+  it('adding and removing out of order (simulate mounting/unmounting) handled correctly', () => {
+    const keytipProps: IKeytipProps = {
+      content: 'A',
+      keySequences: [{ keys: ['a'] }],
+      uniqueID: '1'
+    };
+    keytipTree.addNode(keytipProps);
+
+    // Simulate mounting a new instance of the same keytip
+    const keytipProps2: IKeytipProps = {
+      content: 'A',
+      keySequences: [{ keys: ['a'] }],
+      uniqueID: '2'
+    };
+
+    keytipTree.addNode(keytipProps2);
+    keytipTree.removeNode(keytipProps);
+
+    // Keytip 'a' should exist
+    const keytip = keytipTree.getNode('ktp-a');
+    expect(keytip).toBeDefined();
+
+    // Root should still have 'ktp-a' as a child
+    expect(keytipTree.root.children).toHaveLength(1);
+    expect(keytipTree.root.children).toContain('ktp-a');
   });
 
   describe('getExactlyMatchedNodes', () => {
