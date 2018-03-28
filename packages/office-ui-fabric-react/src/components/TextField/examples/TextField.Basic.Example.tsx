@@ -30,6 +30,5 @@ export class TextFieldBasicExample extends React.Component<any, any> {
         />
       </div>
     );
-    // mask='Phone Number m\ask: (999) 999 - 9999'
   }
 }
