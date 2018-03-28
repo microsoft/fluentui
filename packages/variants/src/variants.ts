@@ -54,7 +54,13 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyBackground: p.neutralLighter
   };
 
-  return createTheme({ ...theme, ...{ palette: partialPalette, semanticColors: partialSemantic } });
+  return createTheme({
+    ...theme,
+    ...{
+      palette: { ...theme.palette, ...partialPalette },
+      semanticColors: { ...theme.semanticColors, ...partialSemantic }
+    }
+  });
 }
 
 /* Variants
@@ -121,7 +127,13 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
   };
 
-  return createTheme({ ...theme, ...{ palette: partialPalette, semanticColors: partialSemantic } });
+  return createTheme({
+    ...theme,
+    ...{
+      palette: { ...theme.palette, ...partialPalette },
+      semanticColors: { ...theme.semanticColors, ...partialSemantic }
+    }
+  });
 }
 
 /**
@@ -186,5 +198,11 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
   };
 
-  return createTheme({ ...theme, ...{ palette: partialPalette, semanticColors: partialSemantic } });
+  return createTheme({
+    ...theme,
+    ...{
+      palette: { ...theme.palette, ...partialPalette },
+      semanticColors: { ...theme.semanticColors, ...partialSemantic }
+    }
+  });
 }
