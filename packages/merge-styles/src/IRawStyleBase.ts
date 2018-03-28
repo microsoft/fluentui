@@ -22,6 +22,8 @@ export type IFontWeight =
   '800' | 800 |
   '900' | 900;
 
+export type IWhiteSpace = 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
+
 /**
  * The base font style.
  */
@@ -167,6 +169,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * (Moz specific) font smoothing directive.
    */
   MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+
+  /**
+   * (Moz specific) white-space value.
+   */
+  MozWhiteSpace?: IWhiteSpace;
 
   /**
    * (Webkit specific) font smoothing directive.
@@ -1715,7 +1722,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * The white-space property controls whether and how white space inside the element is
    * collapsed, and whether lines may wrap at unforced "soft wrap" opportunities.
    */
-  whiteSpace?: ICSSRule | string;
+  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
 
   /**
    * In paged media, this property defines the mimimum number of lines that must be left
