@@ -200,7 +200,6 @@ export interface IPersonaStyleProps {
 
 export interface IPersonaStyles {
   root: IStyle;
-  placeholder: IStyle;
   details: IStyle;
   primaryText: IStyle;
   secondaryText: IStyle;

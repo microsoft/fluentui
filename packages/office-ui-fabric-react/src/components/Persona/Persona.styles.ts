@@ -155,44 +155,6 @@ export const getStyles = (
       className,
     ],
 
-    placeholder: [
-      'ms-Persona-placeholder',
-      {
-        color: palette.white,
-        position: 'absolute',
-        right: '0',
-        left: '0',
-        fontSize: '47px',
-        top: '9px',
-        zIndex: zIndex.middle,
-      },
-
-      (size.isSize16 || size.isSize24 || size.isSize28) && {
-        fontSize: '18px',
-        top: '4px',
-      },
-
-      size.isSize32 && {
-        fontSize: '28px',
-        top: '6px',
-      },
-
-      size.isSize40 && {
-        fontSize: '38px',
-        top: '5px',
-      },
-
-      size.isSize72 && {
-        fontSize: '67px',
-        top: '10px',
-      },
-
-      size.isSize100 && {
-        fontSize: '95px',
-        top: '12px',
-      },
-    ],
-
     details: [
       'ms-Persona-details',
       {
