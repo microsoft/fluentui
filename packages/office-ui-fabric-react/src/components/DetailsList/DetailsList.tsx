@@ -61,6 +61,7 @@ const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
 const SHIMMER_INITIAL_ITEMS = 10;
+const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
 
 @withViewport
 export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
@@ -86,7 +87,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
   private _pendingForceUpdate: boolean;
-  private _shimmerInitialItems: any[];
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -127,7 +127,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       minimumPixelsForDrag: props.minimumPixelsForDrag
     }) : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
-    this._shimmerInitialItems = props.enableShimmer ? new Array(SHIMMER_INITIAL_ITEMS) : [];
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
@@ -408,7 +407,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     <List
                       ref={ this._list }
                       role='presentation'
-                      items={ enableShimmer && !items.length ? this._shimmerInitialItems : items }
+                      items={ enableShimmer && !items.length ? SHIMMER_ITEMS : items }
                       onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
