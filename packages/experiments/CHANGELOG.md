@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 27 Mar 2018 20:22:53 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Mar 2018 21:50:01 GMT and should not be manually modified.
+
+## 5.28.1
+Wed, 28 Mar 2018 21:50:01 GMT
+
+### Patches
+
+- Remove root imports of office-ui-fabric-react
 
 ## 5.28.0
 Tue, 27 Mar 2018 20:22:53 GMT
