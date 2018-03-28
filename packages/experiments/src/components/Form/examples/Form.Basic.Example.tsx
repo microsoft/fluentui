@@ -1,7 +1,6 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Form, FormTextInput } from '../../Form';
 
 export interface IFormBasicExampleState {
@@ -28,8 +27,7 @@ export class FormBasicExample extends React.Component<{}, IFormBasicExampleState
     );
   }
 
-  @autobind
-  private _onSubmit(values: { [key: string]: any }): void {
+  private _onSubmit = (values: { [key: string]: any }): void => {
     this.setState({ formResults: values });
   }
 }

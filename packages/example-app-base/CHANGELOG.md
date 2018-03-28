@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Mar 2018 20:22:53 GMT and should not be manually modified.
+
+## 5.6.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
+
+## 5.5.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
 
 ## 5.4.0
 Mon, 19 Mar 2018 10:27:55 GMT

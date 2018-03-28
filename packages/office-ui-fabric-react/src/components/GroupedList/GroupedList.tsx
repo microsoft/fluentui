@@ -3,7 +3,8 @@ import {
   BaseComponent,
   IRectangle,
   assign,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import {
   IGroupedList,
@@ -39,7 +40,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     [key: string]: React.ReactInstance,
   };
 
-  private _list: List;
+  private _list = createRef<List>();
 
   private _isSomeGroupExpanded: boolean;
 
@@ -55,7 +56,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
-    this._list && this._list.scrollToIndex(index, measureItem);
+    if (this._list.value) {
+      this._list.value.scrollToIndex(index, measureItem);
+    }
   }
 
   public componentWillReceiveProps(newProps: IGroupedListProps) {
@@ -99,7 +102,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         { !groups ?
           this._renderGroup(null, 0) : (
             <List
-              ref={ this._resolveRef('_list') }
+              ref={ this._list }
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ this._returnOne }
@@ -244,11 +247,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
     const groupCount = groups ? groups.length : 1;
 
-    if (this._list) {
-      this._list.forceUpdate();
+    if (this._list.value) {
+      this._list.value.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this._list.refs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.value.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }

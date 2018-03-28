@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
@@ -64,13 +63,11 @@ export class DialogLargeHeaderExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _showDialog() {
+  private _showDialog = (): void => {
     this.setState({ hideDialog: false });
   }
 
-  @autobind
-  private _closeDialog() {
+  private _closeDialog = (): void => {
     this.setState({ hideDialog: true });
   }
 

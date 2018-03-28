@@ -1,6 +1,44 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Mar 2018 20:22:53 GMT and should not be manually modified.
+
+## 5.28.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- Create new pattern for suggestions for BaseFloatingPicker
+
+### Patches
+
+- Fix errors in Signals styles
+
+## 5.27.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Add missing icons to Signals and fix colors
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+### Patches
+
+- Update componentRef types
+
+## 5.26.1
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Patches
+
+- Removes @autobind for arrow functions
+
+## 5.26.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Changes in the props and naming.
+- Adds a new Shimmer Component to experiments package.
 
 ## 5.25.1
 Mon, 19 Mar 2018 10:27:55 GMT

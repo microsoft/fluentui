@@ -10,7 +10,6 @@ import { Tile, getTileLayout, renderTileWithLayout } from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { IExampleGroup, IExampleItem, createGroup, createMediaItems, getTileCells } from './ExampleHelpers';
 import * as TilesListExampleStylesModule from './TilesList.Example.scss';
@@ -96,28 +95,24 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     );
   }
 
-  @autobind
-  private _onToggleIsModalSelection(checked: boolean): void {
+  private _onToggleIsModalSelection = (checked: boolean): void => {
     this._selection.setModal(checked);
   }
 
-  @autobind
-  private _onSelectionChange(): void {
+  private _onSelectionChange = (): void => {
     this.setState({
       isModalSelection: this._selection.isModal()
     });
   }
 
-  @autobind
-  private _onItemInvoked(item: IExampleItem, index: number, event: Event): void {
+  private _onItemInvoked = (item: IExampleItem, index: number, event: Event): void => {
     event.stopPropagation();
     event.preventDefault();
 
     alert(`Invoked item '${item.name}'`);
   }
 
-  @autobind
-  private _onRenderMediaCell(item: IExampleItem, finalSize: ITileSize): JSX.Element {
+  private _onRenderMediaCell = (item: IExampleItem, finalSize: ITileSize): JSX.Element => {
     const tile = (
       <Tile
         role='listitem'
@@ -153,8 +148,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
     });
   }
 
-  @autobind
-  private _onRenderHeader(item: IExampleItem): JSX.Element {
+  private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
       <div role='presentation'>
         <h3>{ item.name }</h3>

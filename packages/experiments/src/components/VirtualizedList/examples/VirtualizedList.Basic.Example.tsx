@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { VirtualizedList } from '../VirtualizedList';
 import { ScrollContainer } from '../../../utilities/scrolling/ScrollContainer';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 import * as VirtualizedListExampleStylesModule from './VirtualizedList.Example.scss';
 
@@ -44,8 +43,7 @@ export class VirtualizedListBasicExample extends React.Component {
     );
   }
 
-  @autobind
-  private _renderItem(item: IItem, itemIndex: number): JSX.Element {
+  private _renderItem = (item: IItem, itemIndex: number): JSX.Element => {
     return (
       // tslint:disable-next-line:jsx-ban-props
       <div key={ item.key } style={ { height: 30 } }>
