@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.28.1",
+      "tag": "@uifabric/experiments_v5.28.1",
+      "date": "Wed, 28 Mar 2018 21:50:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "f15e7a522d14439f5bab69040fe78cb5786be649",
+            "comment": "Remove root imports of office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.28.0",
       "tag": "@uifabric/experiments_v5.28.0",
       "date": "Tue, 27 Mar 2018 20:22:53 GMT",
