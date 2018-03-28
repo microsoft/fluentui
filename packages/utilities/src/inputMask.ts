@@ -36,7 +36,7 @@ export function parseMask(
   }
 
   let maskCharData: IMaskValue[] = [];
-  // Count the escape characters in the mask string. 
+  // Count the escape characters in the mask string.
   let escapedChars = 0;
   for (let i = 0; i + escapedChars < mask.length; i++) {
     const maskChar = mask.charAt(i + escapedChars);
@@ -50,7 +50,7 @@ export function parseMask(
           /**
            * Do not add escapedChars to the displayIndex.
            * The index refers to a position in the mask's displayValue.
-           * Since the backslashes don't appear in the displayValue, 
+           * Since the backslashes don't appear in the displayValue,
            * we do not add them to the charData displayIndex.
            */
           displayIndex: i,
@@ -93,7 +93,7 @@ export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValu
   // Remove all backslashes
   maskDisplay = maskDisplay.replace(/\\/g, '');
 
-  // lastDisplayIndex is is used to truncate the string if necessary. 
+  // lastDisplayIndex is is used to truncate the string if necessary.
   let lastDisplayIndex = 0;
   if (maskCharData.length > 0) {
     lastDisplayIndex = maskCharData[0].displayIndex - 1;
