@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
@@ -55,28 +54,23 @@ export class PanelLightDismissCustomExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _showPanel(): void {
+  private _showPanel = (): void => {
     this.setState({ showPanel: true });
   }
 
-  @autobind
-  private _hidePanel(): void {
+  private _hidePanel = (): void => {
     this.setState({ showPanel: false });
   }
 
-  @autobind
-  private _showDialog() {
+  private _showDialog = (): void => {
     this.setState({ hideDialog: false });
   }
 
-  @autobind
-  private _closeDialog() {
+  private _closeDialog = (): void => {
     this.setState({ hideDialog: true });
   }
 
-  @autobind
-  private _closeDialogAndHidePanel() {
+  private _closeDialogAndHidePanel = (): void => {
     this._hidePanel();
     this._closeDialog();
   }

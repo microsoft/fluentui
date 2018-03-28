@@ -12,6 +12,7 @@ images
 results
 *.build.log
 dist/*.stats.html
+dist/*.stats.json
 dist/demo*.*
 gulpfile.js
 index.html

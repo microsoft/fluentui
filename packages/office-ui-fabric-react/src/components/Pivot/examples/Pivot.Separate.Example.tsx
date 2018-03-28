@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export class PivotSeparateExample extends React.Component<any, any> {
   public state = { selectedKey: 'rectangleRed' };
@@ -32,15 +31,13 @@ export class PivotSeparateExample extends React.Component<any, any> {
     );
   }
 
-  @autobind
-  private _handleLinkClick(item: PivotItem): void {
+  private _handleLinkClick = (item: PivotItem): void => {
     this.setState({
       selectedKey: item.props.itemKey
     });
   }
 
-  @autobind
-  private _getTabId(itemKey: string): string {
+  private _getTabId = (itemKey: string): string => {
     return `ShapeColorPivot_${itemKey}`;
   }
 }

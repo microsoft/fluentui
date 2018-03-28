@@ -168,13 +168,14 @@ export const getMenuItemStyles = memoizeFunction((
       flexShrink: '0',
       fontSize: FontSizes.mini
     },
-    splitButtonFlexContainer: {
-      display: 'flex',
-      height: ContextualMenuItemHeight,
-      flexWrap: 'nowrap',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
+    splitButtonFlexContainer: [
+      getFocusStyle(theme), {
+        display: 'flex',
+        height: ContextualMenuItemHeight,
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }],
     splitButtonSeparator: {}
   };
 

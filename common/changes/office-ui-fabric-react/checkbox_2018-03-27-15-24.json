@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Toggle: Updating to use flexbox positioning",
+      "comment": "Checkbox: label text should be selectable, but not the checkmark icons.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jdrush89@gmail.com"
+  "email": "dzearing@microsoft.com"
 }

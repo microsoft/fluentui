@@ -20,7 +20,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISearchBox) => void;
+  componentRef?: (component: ISearchBox | null) => void;
 
   /**
    * Placeholder for the search box.
@@ -66,6 +66,9 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The default value of the text in the SearchBox, in the case of an uncontrolled component.
+   * Up till now, this has not been implemented, deprecating. Will re-implement if uncontrolled
+   * component behavior is implemented.
+   * @deprecated
    */
   defaultValue?: string;
 

@@ -94,6 +94,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
 
+  private _splitButtonContainers: Map<string, HTMLDivElement>;
+
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
   constructor(props: IContextualMenuProps) {
@@ -139,6 +141,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    this._splitButtonContainers = new Map();
     if (this.props.onMenuOpened) {
       this.props.onMenuOpened(this.props);
     }
@@ -589,23 +592,32 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <div
+        ref={ (el: HTMLDivElement) =>
+          this._splitButtonContainers.set(item.key, el)
+        }
+        role={ 'button' }
         aria-labelledby={ item.ariaLabel }
+        className={ classNames.splitContainer }
         aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
+        onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
+        onClick={ this._executeItemClick.bind(this, item) }
+        tabIndex={ 0 }
+        data-is-focusable={ true }
       >
         <span
           aria-hidden={ true }
-          className={ classNames.splitContainer }
+          style={ { display: 'flex', height: '100%' } }
         >
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
           { this._renderSplitDivider(item) }
           { this._renderSplitIconButton(item, classNames, index) }
         </span>
-      </div>
+      </div >
     );
   }
 
@@ -618,7 +630,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const itemProps = {
       key: item.key,
-      onClick: this._executeItemClick.bind(this, item),
       disabled: this._isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
       className: classNames.splitPrimary,
@@ -627,12 +638,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       isChecked: item.isChecked,
       checked: item.checked,
       icon: item.icon,
-      iconProps: item.iconProps
+      iconProps: item.iconProps,
+      'data-is-focusable': false
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined } hasIcons={ hasIcons } />,
     );
+  }
+
+  private _onSplitContainerItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
+    if (ev.which === KeyCodes.enter) {
+      this._executeItemClick(item, ev);
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      this._onItemKeyDown(item, ev);
+    }
   }
 
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
@@ -648,11 +670,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return React.createElement('button',
       assign({}, getNativeProps(itemProps, buttonProperties), {
-        onKeyDown: this._onItemKeyDown.bind(this, item),
         onMouseEnter: this._onItemMouseEnter.bind(this, item),
         onMouseLeave: this._onMouseItemLeave.bind(this, item),
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
-        onMouseMove: this._onItemMouseMove.bind(this, item)
+        onMouseMove: this._onItemMouseMove.bind(this, item),
+        'data-is-focusable': false
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );
@@ -849,7 +871,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     ev.stopPropagation();
   }
 
-  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     if (item.disabled || item.isDisabled) {
       return;
     }
@@ -863,10 +885,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     (dismiss || !ev.defaultPrevented) && this.dismiss(ev, true);
   }
 
-  private _onItemKeyDown(item: any, ev: KeyboardEvent) {
+  private _onItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-    if (ev.which === openKey) {
+    if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
     }
@@ -877,6 +899,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
       if (this.state.expandedMenuItemKey) {
         this._onSubMenuDismiss();
+      }
+
+      // focus the container so when we close the menu, we focus on the split button container.
+      const el = this._splitButtonContainers.get(item.key);
+      if (el) {
+        el.focus();
       }
       this.setState({
         expandedMenuItemKey: item.key,
