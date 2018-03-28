@@ -18,11 +18,6 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   primaryText?: string;
 
   /**
-   * Optional custom renderer for the primary text.
-   */
-  onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
-
-  /**
    * Decides the size of the control.
    * @defaultvalue PersonaSize.size48
    */
@@ -89,29 +84,14 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   secondaryText?: string;
 
   /**
-   * Optional custom renderer for the secondary text.
-   */
-  onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
-
-  /**
    * Tertiary text to display, usually the status of the user.
    */
   tertiaryText?: string;
 
   /**
-   * Optional custom renderer for the tertiary text.
-   */
-  onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
-
-  /**
    * Optional text to display, usually a custom message set.
    */
   optionalText?: string;
-
-  /**
-   * Optional custom renderer for the optional text.
-   */
-  onRenderOptionalText?: IRenderFunction<IPersonaProps>;
 
   /**
    * Whether to not render persona details, and just render the persona image/initials.
@@ -155,6 +135,26 @@ export interface IPersonaProps extends IPersonaSharedProps {
    * Call to provide customized styling that will layer on top of variant rules
    */
   getStyles?: IStyleFunction<IPersonaStyleProps, IPersonaStyles>;
+
+  /**
+   * Optional custom renderer for the primary text.
+   */
+  onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
+   * Optional custom renderer for the secondary text.
+   */
+  onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
+   * Optional custom renderer for the tertiary text.
+   */
+  onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
+   * Optional custom renderer for the optional text.
+   */
+  onRenderOptionalText?: IRenderFunction<IPersonaProps>;
 }
 
 export interface IPersonaStyleProps {
