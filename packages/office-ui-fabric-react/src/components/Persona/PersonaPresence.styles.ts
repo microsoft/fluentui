@@ -9,6 +9,7 @@ import {
   HighContrastSelector,
   HighContrastBWSelector,
 } from '../../Styling';
+import { personaPresenceSize } from './PersonaConsts';
 
 export const getStyles = (
   props: IPersonaPresenceStyleProps
@@ -48,27 +49,19 @@ export const getStyles = (
   const presenceColorDnd = '#E81123';
   const presenceColorOffline = '#93ABBD';
 
-  // Presence Sizes
-  const personaPresenceSize6 = '6px';
-  const personaPresenceSize8 = '8px';
-  const personaPresenceSize12 = '12px';
-  const personaPresenceSize20 = '20px';
-  const personaPresenceSize28 = '28px';
-  const personaPresenceBorder = '2px';
-
   return ({
     presence: [
       'ms-Persona-presence',
       {
         backgroundColor: presenceColorAvailable,
         position: 'absolute',
-        height: personaPresenceSize12,
-        width: personaPresenceSize12,
+        height: personaPresenceSize.size12,
+        width: personaPresenceSize.size12,
         borderRadius: '50%',
         top: 'auto',
-        right: `-${personaPresenceBorder}`,
-        bottom: `-${personaPresenceBorder}`,
-        border: `${personaPresenceBorder} solid ${palette.white}`,
+        right: `-${personaPresenceSize.border}`,
+        bottom: `-${personaPresenceSize.border}`,
+        border: `${personaPresenceSize.border} solid ${palette.white}`,
         textAlign: 'center',
         boxSizing: 'content-box',
         MsHighContrastAdjust: 'none',
@@ -87,8 +80,8 @@ export const getStyles = (
         top: '7px',
         left: 0,
         border: 0,
-        height: personaPresenceSize8,
-        width: personaPresenceSize8,
+        height: personaPresenceSize.size8,
+        width: personaPresenceSize.size8,
 
         selectors: {
           [HighContrastSelector]: {
@@ -99,14 +92,14 @@ export const getStyles = (
       },
 
       isSize16 && {
-        height: personaPresenceSize6,
-        width: personaPresenceSize6,
+        height: personaPresenceSize.size6,
+        width: personaPresenceSize.size6,
         borderWidth: '1.5px',
       },
 
       isSize24 && {
-        height: personaPresenceSize8,
-        width: personaPresenceSize8,
+        height: personaPresenceSize.size8,
+        width: personaPresenceSize.size8,
 
         selectors: {
           ':after': {
@@ -116,8 +109,8 @@ export const getStyles = (
       },
 
       isSize28 && {
-        height: personaPresenceSize8,
-        width: personaPresenceSize8,
+        height: personaPresenceSize.size8,
+        width: personaPresenceSize.size8,
 
         selectors: {
           ':after': {
@@ -127,18 +120,18 @@ export const getStyles = (
       },
 
       isSize32 && {
-        height: personaPresenceSize8,
-        width: personaPresenceSize8,
+        height: personaPresenceSize.size8,
+        width: personaPresenceSize.size8,
       },
 
       isSize72 && {
-        height: personaPresenceSize20,
-        width: personaPresenceSize20,
+        height: personaPresenceSize.size20,
+        width: personaPresenceSize.size20,
       },
 
       isSize100 && {
-        height: personaPresenceSize28,
-        width: personaPresenceSize28,
+        height: personaPresenceSize.size28,
+        width: personaPresenceSize.size28,
       },
 
       isAvailable && {
@@ -313,7 +306,7 @@ export const getStyles = (
       {
         color: palette.white,
         fontSize: '6px',
-        lineHeight: personaPresenceSize12,
+        lineHeight: personaPresenceSize.size12,
         verticalAlign: 'top',
 
         selectors: {
@@ -329,12 +322,12 @@ export const getStyles = (
 
       isSize72 && {
         fontSize: FontSizes.small,
-        lineHeight: personaPresenceSize20,
+        lineHeight: personaPresenceSize.size20,
       },
 
       isSize100 && {
         fontSize: FontSizes.medium,
-        lineHeight: personaPresenceSize28,
+        lineHeight: personaPresenceSize.size28,
       },
 
       isAway && {

@@ -8,6 +8,7 @@ import {
   FontSizes,
   FontWeights,
 } from '../../Styling';
+import { personaSize } from './PersonaConsts';
 
 export const getStyles = (
   props: IPersonaCoinStyleProps
@@ -30,16 +31,6 @@ export const getStyles = (
   const isSize48 = size === PersonaSize.size48;
   const isSize72 = size === PersonaSize.size72 || size === PersonaSize.large;
   const isSize100 = size === PersonaSize.size100 || size === PersonaSize.extraLarge;
-
-  // Persona Sizes
-  const personaSize16 = '16px';
-  const personaSize24 = '24px';
-  const personaSize28 = '28px';
-  const personaSize32 = '32px';
-  const personaSize40 = '40px';
-  const personaSize48 = '48px';
-  const personaSize72 = '72px';
-  const personaSize100 = '100px';
 
   return ({
     coin: [
@@ -70,8 +61,8 @@ export const getStyles = (
         position: 'relative',
         textAlign: 'center',
         flex: '0 0 auto',
-        height: personaSize48,
-        width: personaSize48,
+        height: personaSize.size48,
+        width: personaSize.size48,
       },
 
       isSize10 && {
@@ -82,38 +73,38 @@ export const getStyles = (
       },
 
       isSize16 && {
-        height: personaSize16,
-        width: personaSize16,
+        height: personaSize.size16,
+        width: personaSize.size16,
       },
 
       isSize24 && {
-        height: personaSize24,
-        width: personaSize24,
+        height: personaSize.size24,
+        width: personaSize.size24,
       },
 
       isSize28 && {
-        height: personaSize28,
-        width: personaSize28,
+        height: personaSize.size28,
+        width: personaSize.size28,
       },
 
       isSize32 && {
-        height: personaSize32,
-        width: personaSize32,
+        height: personaSize.size32,
+        width: personaSize.size32,
       },
 
       isSize40 && {
-        height: personaSize40,
-        width: personaSize40,
+        height: personaSize.size40,
+        width: personaSize.size40,
       },
 
       isSize72 && {
-        height: personaSize72,
-        width: personaSize72,
+        height: personaSize.size72,
+        width: personaSize.size72,
       },
 
       isSize100 && {
-        height: personaSize100,
-        width: personaSize100,
+        height: personaSize.size100,
+        width: personaSize.size100,
       },
     ],
 
@@ -139,38 +130,38 @@ export const getStyles = (
       },
 
       isSize16 && {
-        height: personaSize16,
-        width: personaSize16,
+        height: personaSize.size16,
+        width: personaSize.size16,
       },
 
       isSize24 && {
-        height: personaSize24,
-        width: personaSize24,
+        height: personaSize.size24,
+        width: personaSize.size24,
       },
 
       isSize28 && {
-        height: personaSize28,
-        width: personaSize28,
+        height: personaSize.size28,
+        width: personaSize.size28,
       },
 
       isSize32 && {
-        height: personaSize32,
-        width: personaSize32,
+        height: personaSize.size32,
+        width: personaSize.size32,
       },
 
       isSize40 && {
-        height: personaSize40,
-        width: personaSize40,
+        height: personaSize.size40,
+        width: personaSize.size40,
       },
 
       isSize72 && {
-        height: personaSize72,
-        width: personaSize72,
+        height: personaSize.size72,
+        width: personaSize.size72,
       },
 
       isSize100 && {
-        height: personaSize100,
-        width: personaSize100,
+        height: personaSize.size100,
+        width: personaSize.size100,
       },
     ],
 
@@ -182,7 +173,7 @@ export const getStyles = (
         fontSize: FontSizes.large,
         fontWeight: FontWeights.regular,
         lineHeight: '46px',
-        height: personaSize48,
+        height: personaSize.size48,
 
         selectors: {
           [HighContrastSelector]: {
@@ -200,18 +191,18 @@ export const getStyles = (
       },
 
       isSize16 && {
-        height: personaSize16,
-        lineHeight: personaSize16,
+        height: personaSize.size16,
+        lineHeight: personaSize.size16,
       },
 
       isSize24 && {
-        height: personaSize24,
-        lineHeight: personaSize24,
+        height: personaSize.size24,
+        lineHeight: personaSize.size24,
       },
 
       isSize28 && {
-        height: personaSize28,
-        lineHeight: personaSize28,
+        height: personaSize.size28,
+        lineHeight: personaSize.size28,
       },
 
       (isSize32 || isSize40) && {
@@ -219,25 +210,25 @@ export const getStyles = (
       },
 
       isSize32 && {
-        height: personaSize32,
-        lineHeight: personaSize32,
+        height: personaSize.size32,
+        lineHeight: personaSize.size32,
       },
 
       isSize40 && {
-        height: personaSize40,
-        lineHeight: personaSize40,
+        height: personaSize.size40,
+        lineHeight: personaSize.size40,
       },
 
       isSize72 && {
         fontSize: FontSizes.xxLarge,
-        height: personaSize72,
-        lineHeight: personaSize72,
+        height: personaSize.size72,
+        lineHeight: personaSize.size72,
       },
 
       isSize100 && {
         fontSize: FontSizes.superLarge,
-        height: personaSize100,
-        lineHeight: personaSize100,
+        height: personaSize.size100,
+        lineHeight: personaSize.size100,
       }
     ]
   });

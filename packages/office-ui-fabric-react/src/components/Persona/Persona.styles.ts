@@ -12,6 +12,7 @@ import {
   noWrap,
   zIndex,
 } from '../../Styling';
+import { personaSize } from './PersonaConsts';
 
 export const getStyles = (
   props: IPersonaStyleProps
@@ -45,17 +46,6 @@ export const getStyles = (
   const isSize72 = size === PersonaSize.size72 || size === PersonaSize.large;
   const isSize100 = size === PersonaSize.size100 || size === PersonaSize.extraLarge;
 
-  // Persona Sizes
-  const personaSize10 = '20px';
-  const personaSize16 = '16px';
-  const personaSize24 = '24px';
-  const personaSize28 = '28px';
-  const personaSize32 = '32px';
-  const personaSize40 = '40px';
-  const personaSize48 = '48px'; // default
-  const personaSize72 = '72px';
-  const personaSize100 = '100px';
-
   const showSecondaryTextDefaultHeight = '16px';
 
   const sharedTextStyles: IStyle = {
@@ -73,8 +63,8 @@ export const getStyles = (
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.regular,
         position: 'relative',
-        height: personaSize48,
-        minWidth: personaSize48,
+        height: personaSize.size48,
+        minWidth: personaSize.size48,
         display: 'flex',
         alignItems: 'center',
 
@@ -96,24 +86,24 @@ export const getStyles = (
       isSize10 && [
         'ms-Persona--size10',
         {
-          height: personaSize10,
-          minWidth: personaSize10,
+          height: personaSize.size10,
+          minWidth: personaSize.size10,
         }
       ],
 
       isSize16 && [
         'ms-Persona--size16',
         {
-          height: personaSize16,
-          minWidth: personaSize16,
+          height: personaSize.size16,
+          minWidth: personaSize.size16,
         }
       ],
 
       isSize24 && [
         'ms-Persona--size24',
         {
-          height: personaSize24,
-          minWidth: personaSize24,
+          height: personaSize.size24,
+          minWidth: personaSize.size24,
         }
       ],
 
@@ -124,8 +114,8 @@ export const getStyles = (
       isSize28 && [
         'ms-Persona--size28',
         {
-          height: personaSize28,
-          minWidth: personaSize28,
+          height: personaSize.size28,
+          minWidth: personaSize.size28,
         }
       ],
 
@@ -136,16 +126,16 @@ export const getStyles = (
       isSize32 && [
         'ms-Persona--size32',
         {
-          height: personaSize32,
-          minWidth: personaSize32,
+          height: personaSize.size32,
+          minWidth: personaSize.size32,
         }
       ],
 
       isSize40 && [
         'ms-Persona--size40',
         {
-          height: personaSize40,
-          minWidth: personaSize40,
+          height: personaSize.size40,
+          minWidth: personaSize.size40,
         }
       ],
 
@@ -154,16 +144,16 @@ export const getStyles = (
       isSize72 && [
         'ms-Persona--size72',
         {
-          height: personaSize72,
-          minWidth: personaSize72,
+          height: personaSize.size72,
+          minWidth: personaSize.size72,
         }
       ],
 
       isSize100 && [
         'ms-Persona--size100',
         {
-          height: personaSize100,
-          minWidth: personaSize100,
+          height: personaSize.size100,
+          minWidth: personaSize.size100,
         }
       ],
 
@@ -255,7 +245,7 @@ export const getStyles = (
 
       isSize10 && {
         fontSize: FontSizes.small,
-        lineHeight: personaSize10,
+        lineHeight: personaSize.size10,
       },
 
       (isSize16 || isSize24 || isSize28 || isSize32 || isSize40) && {
@@ -263,7 +253,7 @@ export const getStyles = (
       },
 
       isSize16 && {
-        lineHeight: personaSize28,
+        lineHeight: personaSize.size28,
       },
 
       isSize24 && showSecondaryText && { height: '18px' },
