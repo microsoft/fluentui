@@ -14,7 +14,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
-        border-radius: 0px;
+        border-radius: 50%;
         border: 1px solid transparent;
         box-sizing: border-box;
         color: #333333;
@@ -126,7 +126,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: #f4f4f4;
-        border-radius: 0px;
+        border-radius: 50%;
         border: 1px solid transparent;
         box-sizing: border-box;
         color: #333333;
@@ -283,7 +283,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: #f4f4f4;
-        border-radius: 0px;
+        border-radius: 50%;
         border: 1px solid transparent;
         box-sizing: border-box;
         color: #333333;
@@ -420,7 +420,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: #f4f4f4;
-        border-radius: 0px;
+        border-radius: 50%;
         border: 1px solid transparent;
         box-sizing: border-box;
         color: #333333;
@@ -433,8 +433,8 @@ exports[`Button renders DefaultButton correctly 1`] = `
         min-width: 80px;
         outline: transparent;
         padding-bottom: 0;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 46px;
+        padding-right: 46px;
         padding-top: 0;
         position: relative;
         text-align: center;
@@ -527,7 +527,7 @@ exports[`Button renders IconButton correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
-        border-radius: 0px;
+        border-radius: 50%;
         border: 1px solid transparent;
         box-sizing: border-box;
         cursor: pointer;

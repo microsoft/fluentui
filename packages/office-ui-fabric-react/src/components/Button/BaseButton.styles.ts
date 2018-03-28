@@ -57,8 +57,8 @@ export const getStyles = memoizeFunction((
         textAlign: 'center',
         cursor: 'pointer',
         verticalAlign: 'top',
-        padding: '0 16px',
-        borderRadius: 0
+        padding: '0 46px',
+        borderRadius: '50%'
       }
     ],
 

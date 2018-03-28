@@ -145,7 +145,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              border-radius: 0px;
+              border-radius: 50%;
               border: 1px solid transparent;
               box-sizing: border-box;
               cursor: pointer;
@@ -155,8 +155,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
               font-weight: 400;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
+              padding-left: 46px;
+              padding-right: 46px;
               padding-top: 0;
               position: relative;
               text-align: center;
