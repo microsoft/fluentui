@@ -36,18 +36,22 @@ export function parseMask(
   }
 
   let maskCharData: IMaskValue[] = [];
+  // Count the escape characters in the mask string. 
   let escapedChars = 0;
   for (let i = 0; i + escapedChars < mask.length; i++) {
     const maskChar = mask.charAt(i + escapedChars);
     if (maskChar === '\\') {
       escapedChars++;
     } else {
+      // Check if the maskChar is a format character.
       const maskFormat = formatChars[maskChar];
       if (maskFormat) {
         maskCharData.push({
           /**
            * Do not add escapedChars to the displayIndex.
-           * The index referst to a position in the mask's displayValue
+           * The index refers to a position in the mask's displayValue.
+           * Since the backslashes don't appear in the displayValue, 
+           * we do not add them to the charData displayIndex.
            */
           displayIndex: i,
           format: maskFormat
@@ -61,7 +65,8 @@ export function parseMask(
 
 /**
  * Takes in the mask string, an array of MaskValues, and the maskCharacter
- * returns the mask string formatted with the input values and maskCharacter
+ * returns the mask string formatted with the input values and maskCharacter.
+ * If the maskChar is undefined, the maskDisplay is truncated to the last filled format character.
  * Example:
  * mask = 'Phone Number: (999) 999 - 9999'
  * maskCharData = '12345'
@@ -88,14 +93,15 @@ export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValu
   // Remove all backslashes
   maskDisplay = maskDisplay.replace(/\\/g, '');
 
+  // lastDisplayIndex is is used to truncate the string if necessary. 
   let lastDisplayIndex = 0;
   if (maskCharData.length > 0) {
     lastDisplayIndex = maskCharData[0].displayIndex - 1;
   }
 
   /**
-   * For each input value, replace the character in the maskDisplay
-   * with the value or the maskChar if no value set
+   * For each input value, replace the character in the maskDisplay with the value.
+   * If there is no value set for the format character, use the maskChar.
    */
   for (let charData of maskCharData) {
     let nextChar = ' ';
@@ -110,7 +116,7 @@ export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValu
       }
     }
 
-    // Insert character into the maskdisplay at its corresponding index
+    // Insert the character into the maskdisplay at its corresponding index
     maskDisplay = maskDisplay.slice(0, charData.displayIndex) + nextChar +
       maskDisplay.slice(charData.displayIndex + 1);
   }
@@ -206,8 +212,8 @@ export function clearPrev(maskCharData: IMaskValue[], selectionStart: number): I
 
 /**
  * Deletes all values in maskCharData with a displayIndex that falls inside the specified range.
- * Modifies the maskCharData inplace and returns an index.
- *
+ * Modifies the maskCharData inplace with the passed string and returns the display index of the
+ * next format character after the inserted string.
  * @param maskCharData
  * @param selectionStart
  * @param selectionCount
@@ -220,10 +226,12 @@ export function insertString(maskCharData: IMaskValue[], selectionStart: number,
   for (let i = 0; i < maskCharData.length && stringIndex < newString.length; i++) {
     if (maskCharData[i].displayIndex >= selectionStart) {
       nextIndex = maskCharData[i].displayIndex;
-      // Find the next character in the insertString that matches the format
+      // Find the next character in the newString that matches the format
       while (stringIndex < newString.length) {
+        // If the character matches the format regexp, set the maskCharData to the new character
         if (maskCharData[i].format.test(newString.charAt(stringIndex))) {
           maskCharData[i].value = newString.charAt(stringIndex++);
+          // Set the nextIndex to the display index of the next mask format character.
           if (i + 1 < maskCharData.length) {
             nextIndex = maskCharData[i + 1].displayIndex;
           } else {
