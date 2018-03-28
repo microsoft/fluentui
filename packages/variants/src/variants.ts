@@ -6,7 +6,10 @@ import {
 } from '@uifabric/styling/lib/index';
 import { createTheme } from '@uifabric/styling/lib/index';
 
-function makeThemeFromPartials(originalTheme: IPartialTheme, partialPalette: Partial<IPalette>, partialSemantic: Partial<ISemanticColors>): ITheme {
+function makeThemeFromPartials(
+  originalTheme: IPartialTheme,
+  partialPalette: Partial<IPalette>,
+  partialSemantic: Partial<ISemanticColors>): ITheme {
   return createTheme({
     ...originalTheme,
     ...{
