@@ -18,8 +18,8 @@ export const getStyles = (
 ): IPersonaStyles => {
   const {
     className,
-    showSecondaryText,
     presence,
+    showSecondaryText,
     size,
     theme,
   } = props;
@@ -81,7 +81,7 @@ export const getStyles = (
             display: 'none',
           },
 
-          '&:hover': {
+          ':hover': {
             selectors: {
               '$primaryText': {
                 color: palette.neutralDark,

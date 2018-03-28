@@ -1,24 +1,22 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  classNamesFunction,
+  customizable,
   divProperties,
   getNativeProps,
-  IRenderFunction
+  IRenderFunction,
 } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin';
 import {
   IPersonaProps,
   IPersonaSharedProps,
-  PersonaPresence as PersonaPresenceEnum,
-  PersonaSize,
   IPersonaStyleProps,
   IPersonaStyles,
+  PersonaPresence as PersonaPresenceEnum,
+  PersonaSize,
 } from './Persona.types';
-import {
-  classNamesFunction,
-  customizable,
-} from '../../Utilities';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
@@ -38,10 +36,10 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public render() {
     const {
       hidePersonaDetails,
+      onRenderOptionalText,
       onRenderPrimaryText,
       onRenderSecondaryText,
       onRenderTertiaryText,
-      onRenderOptionalText,
     } = this.props;
     const size = this.props.size as PersonaSize;
 

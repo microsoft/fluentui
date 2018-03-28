@@ -9,15 +9,8 @@ import {
   getRTL,
   styled,
 } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 import { PersonaPresence } from './PersonaPresence';
-import {
-  IPersonaCoinProps,
-  IPersonaCoinStyleProps,
-  IPersonaCoinStyles,
-  IPersonaPresenceProps,
-  PersonaPresence as PersonaPresenceEnum,
-  PersonaSize,
-} from './Persona.types';
 import {
   Icon
 } from '../../Icon';
@@ -26,7 +19,14 @@ import {
   ImageFit,
   ImageLoadState
 } from '../../Image';
-import { mergeStyles } from '../../Styling';
+import {
+  IPersonaCoinProps,
+  IPersonaCoinStyleProps,
+  IPersonaCoinStyles,
+  IPersonaPresenceProps,
+  PersonaPresence as PersonaPresenceEnum,
+  PersonaSize,
+} from './Persona.types';
 import { initialsColorPropToColorCode } from './PersonaInitialsColor';
 import { getStyles } from './PersonaCoin.styles';
 
@@ -77,7 +77,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     const {
       coinProps,
       coinSize,
