@@ -56,7 +56,7 @@ export const getStyles = (
       className
     ],
 
-    size10NoPresenceIcon: {
+    size10WithoutPresenceIcon: {
       fontSize: '10px',
       position: 'absolute',
       top: '5px',

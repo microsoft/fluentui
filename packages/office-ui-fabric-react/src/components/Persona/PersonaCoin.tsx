@@ -143,7 +143,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
             ? <PersonaPresence { ...personaPresenceProps } />
             : <Icon
               iconName='Contact'
-              className={ classNames.size10NoPresenceIcon }
+                  className={ classNames.size10WithoutPresenceIcon }
             />
           )
         }

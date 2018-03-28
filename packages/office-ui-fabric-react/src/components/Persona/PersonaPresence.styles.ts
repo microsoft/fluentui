@@ -41,17 +41,12 @@ export const getStyles = (
   const isSize72 = size === PersonaSize.size72 || size === PersonaSize.large;
   const isSize100 = size === PersonaSize.size100 || size === PersonaSize.extraLarge;
 
-  // Skype presence colors
-  const colorPresenceAvailable = '#7FBA00';
-  const colorPresenceAway = '#FCD116';
-  const colorPresenceBusy = '#E81123';
-  const colorPresenceDndBackground = '#E81123';
-  const colorPresenceDndLine = '#FFFFFF';
-  const colorPresenceOffline = '#93ABBD';
-  // const colorPresenceOutOfOffice = palette.magenta;
-
-  // Other presence colors
-  const colorPresenceBusyAverage = '#D93B3B';
+  // Presence colors
+  const presenceColorAvailable = '#7FBA00';
+  const presenceColorAway = '#FCD116';
+  const presenceColorBusy = '#D93B3B';
+  const presenceColorDnd = '#E81123';
+  const presenceColorOffline = '#93ABBD';
 
   // Presence Sizes
   const personaPresenceSize6 = '6px';
@@ -65,7 +60,7 @@ export const getStyles = (
     presence: [
       'ms-Persona-presence',
       {
-        backgroundColor: colorPresenceAvailable,
+        backgroundColor: presenceColorAvailable,
         position: 'absolute',
         height: personaPresenceSize12,
         width: personaPresenceSize12,
@@ -147,7 +142,7 @@ export const getStyles = (
       },
 
       isAvailable && {
-        backgroundColor: colorPresenceAvailable,
+        backgroundColor: presenceColorAvailable,
 
         selectors: {
           [HighContrastSelector]: {
@@ -157,7 +152,7 @@ export const getStyles = (
       },
 
       isAway && {
-        backgroundColor: colorPresenceAway,
+        backgroundColor: presenceColorAway,
 
         selectors: {
           [HighContrastSelector]: {
@@ -177,7 +172,7 @@ export const getStyles = (
             position: 'absolute',
             top: 0,
             left: 0,
-            boxShadow: `0 0 0 2px ${colorPresenceBusyAverage} inset`,
+            boxShadow: `0 0 0 2px ${presenceColorBusy} inset`,
             borderRadius: '50%',
           },
 
@@ -185,7 +180,7 @@ export const getStyles = (
             content: '""',
             width: '100%',
             height: '2px',
-            backgroundColor: colorPresenceBusyAverage,
+            backgroundColor: presenceColorBusy,
             transform: 'rotate(-45deg)',
             position: 'absolute',
             top: '40%',
@@ -240,7 +235,7 @@ export const getStyles = (
       },
 
       isBusy && {
-        backgroundColor: colorPresenceBusyAverage,
+        backgroundColor: presenceColorBusy,
 
         selectors: {
           [HighContrastSelector]: {
@@ -254,7 +249,7 @@ export const getStyles = (
       },
 
       isDoNotDisturb && {
-        backgroundColor: colorPresenceDndBackground,
+        backgroundColor: presenceColorDnd,
 
         selectors: {
           ':before': {
@@ -297,7 +292,7 @@ export const getStyles = (
       },
 
       isOffline && {
-        backgroundColor: colorPresenceOffline,
+        backgroundColor: presenceColorOffline,
 
         selectors: {
           [HighContrastSelector]: {

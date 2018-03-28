@@ -114,7 +114,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   coinProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
-   * Theme provided by HOC.
+   * Theme provided by High Order Component.
    */
   theme?: ITheme;
 }
@@ -243,7 +243,7 @@ export interface IPersonaCoinStyles {
   imageArea: IStyle;
   image: IStyle;
   initials: IStyle;
-  size10NoPresenceIcon: IStyle;
+  size10WithoutPresenceIcon: IStyle;
 }
 
 export interface IPersonaPresenceProps extends IPersonaSharedProps {
