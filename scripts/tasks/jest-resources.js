@@ -5,7 +5,7 @@ const styleMockPath =
   module.exports = {
     createRawConfig: () => (
       {
-        rootDir: 'lib',
+        rootDir: 'lib-commonjs',
         'testRegex': '(/__tests__/.*|\\.(test|spec))\\.js$',
       }
     ),

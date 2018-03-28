@@ -8,7 +8,7 @@ module.exports = resources.createConfig(
   true,
   {
     entry: {
-      [PACKAGE_NAME]: './lib-es2015/index.js',
+      [PACKAGE_NAME]: './lib/index.js',
     },
 
     optimization: {
