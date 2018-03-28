@@ -21,6 +21,7 @@ const presenceFontMaxSize = 20;
 
 const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>();
 
+// Export themeable PersonaPresenceBase
 @customizable('PersonaPresence', ['theme'])
 export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {
   constructor(props: IPersonaPresenceProps) {
@@ -30,7 +31,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   public render(): JSX.Element | null {
     const {
       coinSize,
-      getStyles: getStylesProp,
+      getStyles: getStylesProp, // Use getStyles from props.
       presence,
       size,
       theme,
@@ -41,6 +42,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth + 'px' } : undefined;
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
+    // Use getStyles from props, or fall back to getStyles from styles file.
     const classNames = getClassNames(getStylesProp || getStyles, {
       theme: theme!,
       presence,
@@ -90,6 +92,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   }
 }
 
+// Export Styled PersonaPresence
 export const PersonaPresence = styled<IPersonaPresenceProps, IPersonaPresenceStyleProps, IPersonaPresenceStyles>(
   PersonaPresenceBase,
   getStyles

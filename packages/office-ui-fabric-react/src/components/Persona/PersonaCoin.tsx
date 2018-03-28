@@ -56,6 +56,7 @@ export interface IPersonaState {
   isImageError?: boolean;
 }
 
+// Export themeable PersonaCoinBase
 @customizable('PersonaCoin', ['theme'])
 export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
   public static defaultProps: IPersonaCoinProps = {
@@ -64,7 +65,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     presence: PersonaPresenceEnum.none,
     imageAlt: '',
     coinProps: {
-      className: '',
+      className: '', // HTMLDivElement type can't receive undefined className.
     },
   };
 
@@ -81,7 +82,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const {
       coinProps,
       coinSize,
-      getStyles: getStylesProp,
+      getStyles: getStylesProp, // Use getStyles from props.
       imageUrl,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
@@ -100,6 +101,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       size,
     };
 
+    // Use getStyles from props, or fall back to getStyles from styles file.
     const classNames = getClassNames(getStylesProp || getStyles, {
       theme: theme!,
       className: coinProps!.className,
@@ -111,41 +113,45 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
         { ...divProps }
         className={ classNames.coin }
       >
-        { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
-          <div
-            { ...coinProps }
-            className={ classNames.imageArea }
-            style={ coinSizeStyle }
-          >
-            {
-              !this.state.isImageLoaded &&
-              (!imageUrl || this.state.isImageError) &&
-              (
-                <div
-                  className={ mergeStyles(
-                    classNames.initials,
-                    {
-                      backgroundColor: initialsColorPropToColorCode(this.props)
-                    }
-                  ) }
-                  style={ coinSizeStyle }
-                  aria-hidden='true'
-                >
-                  { onRenderInitials(this.props, this._onRenderInitials) }
-                </div>
-              )
-            }
-            { onRenderCoin(this.props, this._onRenderCoin) }
-            <PersonaPresence { ...personaPresenceProps } />
-          </div>
-        ) :
-          (this.props.presence
-            ? <PersonaPresence { ...personaPresenceProps } />
-            : <Icon
-              iconName='Contact'
+
+        { // Render PersonaCoin if size is not size10
+          (size !== PersonaSize.size10 && size !== PersonaSize.tiny)
+            ? (
+              <div
+                { ...coinProps }
+                className={ classNames.imageArea }
+                style={ coinSizeStyle }
+              >
+                {
+                  !this.state.isImageLoaded &&
+                  (!imageUrl || this.state.isImageError) &&
+                  (
+                    <div
+                      className={ mergeStyles(
+                        classNames.initials,
+                        {
+                          backgroundColor: initialsColorPropToColorCode(this.props)
+                        }
+                      ) }
+                      style={ coinSizeStyle }
+                      aria-hidden='true'
+                    >
+                      { onRenderInitials(this.props, this._onRenderInitials) }
+                    </div>
+                  )
+                }
+                { onRenderCoin(this.props, this._onRenderCoin) }
+                <PersonaPresence { ...personaPresenceProps } />
+              </div>
+            ) : ( // Otherwise, render just PersonaPresence.
+              this.props.presence
+                ? <PersonaPresence { ...personaPresenceProps } />
+                : // Just render Contact Icon if there isn't a Presence prop.
+                <Icon
+                  iconName='Contact'
                   className={ classNames.size10WithoutPresenceIcon }
-            />
-          )
+                />
+            )
         }
         { this.props.children }
       </div>
@@ -194,9 +200,9 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     imageInitials = imageInitials || getInitials(primaryText, isRTL);
 
     return (
-      imageInitials !== '' ?
-        <span>{ imageInitials }</span> :
-        <Icon iconName='Contact' />
+      imageInitials !== ''
+        ? <span>{ imageInitials }</span>
+        : <Icon iconName='Contact' />
     );
   }
 
@@ -206,12 +212,11 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       isImageError: loadState === ImageLoadState.error
     });
 
-    if (this.props.onPhotoLoadingStateChange) {
-      this.props.onPhotoLoadingStateChange(loadState);
-    }
+    this.props.onPhotoLoadingStateChange && this.props.onPhotoLoadingStateChange(loadState);
   }
 }
 
+// Export styled PersonaCoin
 export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(
   PersonaCoinBase,
   getStyles
