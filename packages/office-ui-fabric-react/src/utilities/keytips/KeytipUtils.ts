@@ -27,9 +27,9 @@ export function addKeytipSequence(sequences: IKeySequence[], seq1: IKeySequence)
  * @param keytipProps - Keytip to register
  */
 
-export function registerKeytip(keytipProps: IKeytipProps): void {
+export function registerKeytip(keytipProps: IKeytipProps): string {
   const ktpMgr = KeytipManager.getInstance();
-  ktpMgr.registerKeytip(keytipProps);
+  return ktpMgr.registerKeytip(keytipProps);
 }
 
 /**
@@ -37,14 +37,17 @@ export function registerKeytip(keytipProps: IKeytipProps): void {
  *
  * @param keytipProps - Keytip to unregister
  */
-export function unregisterKeytip(keytipProps: IKeytipProps): void {
+export function unregisterKeytip(keytipProps: IKeytipProps, uniqueID: string): void {
   const ktpMgr = KeytipManager.getInstance();
-  ktpMgr.unregisterKeytip(keytipProps);
+  ktpMgr.unregisterKeytip(keytipProps, uniqueID);
 }
 
-export function updateKeytip(keytipProps: IKeytipProps): void {
+/**
+ *
+ */
+export function updateKeytip(keytipProps: IKeytipProps, uniqueID: string): void {
   const ktpMgr = KeytipManager.getInstance();
-  ktpMgr.updateKeytip(keytipProps);
+  ktpMgr.updateKeytip(keytipProps, uniqueID);
 }
 
 /**

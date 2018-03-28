@@ -16,20 +16,23 @@ export interface IKeytipHostProps {
  * @extends {BaseComponent<IKeytipProps, {}}>}
  */
 export class KeytipHost extends BaseComponent<IKeytipHostProps & IRenderComponent<{}>, {}> {
+  private _uniqueId: string;
 
   public componentDidMount() {
     // Register Keytip in KeytipManager
-    this.props.keytipProps && registerKeytip({ ...this.props.keytipProps });
+    if (this.props.keytipProps) {
+      this._uniqueId = registerKeytip({ ...this.props.keytipProps });
+    }
   }
 
   public componentWillUnmount() {
     // Unregister Keytip in KeytipManager
-    this.props.keytipProps && unregisterKeytip({ ...this.props.keytipProps });
+    this.props.keytipProps && unregisterKeytip({ ...this.props.keytipProps }, this._uniqueId);
   }
 
   public componentDidUpdate() {
     // Update Keytip in KeytipManager
-    this.props.keytipProps && updateKeytip({ ...this.props.keytipProps });
+    this.props.keytipProps && updateKeytip({ ...this.props.keytipProps }, this._uniqueId);
   }
 
   public render(): JSX.Element {

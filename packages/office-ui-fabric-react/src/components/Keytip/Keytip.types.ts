@@ -99,6 +99,13 @@ export interface IKeytipProps {
    * @type {boolean}
    */
   hasChildrenNodes?: boolean;
+
+  /**
+   * Unique ID added to the instance of the keytip
+   * Helps keep track of exactly which keytip to modify since lifecycle functions
+   *  are not guaranteed to be in order
+   */
+  uniqueID?: string;
 }
 
 /**

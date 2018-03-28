@@ -21,13 +21,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
 
   public render() {
-    if (this._persistedKeytips.length) {
-      // Delete all persisted keytips saved
-      this._persistedKeytips.forEach((keytips: IKeytipProps) => {
-        this._keytipManager.unregisterPersistedKeytip(keytips);
-      });
-      this._persistedKeytips = [];
-    }
+    this._unregisterPersistedKeytips();
 
     const {
       items,
@@ -71,10 +65,22 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     this._registerPersistedKeytips();
   }
 
+  public componentWillUnmount() {
+    this._unregisterPersistedKeytips();
+  }
+
   private _registerPersistedKeytips() {
-    this._persistedKeytips.forEach((keytips: IKeytipProps) => {
-      this._keytipManager.registerPersistedKeytip(keytips);
+    this._persistedKeytips.forEach((keytip: IKeytipProps) => {
+      keytip.uniqueID = this._keytipManager.registerPersistedKeytip(keytip);
     });
+  }
+
+  private _unregisterPersistedKeytips() {
+    // Delete all persisted keytips saved
+    this._persistedKeytips.forEach((keytip: IKeytipProps) => {
+      this._keytipManager.unregisterPersistedKeytip(keytip, keytip.uniqueID!);
+    });
+    this._persistedKeytips = [];
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {

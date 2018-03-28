@@ -166,17 +166,17 @@ describe('OverflowSet', () => {
         // Persisted keytips will have the original key sequence of the items in the overflow
         const keytipTree = keytipManager.keytipTree;
         // Regular keytips
-        const item1Keytip = keytipTree.nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip1.keySequences)];
+        const item1Keytip = keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip1.keySequences));
         expect(item1Keytip).toBeDefined();
-        const item2Keytip = keytipTree.nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip2.keySequences)];
+        const item2Keytip = keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip2.keySequences));
         expect(item2Keytip).toBeDefined();
         // Persisted keytips
-        const item3Keytip = keytipTree.nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip3.keySequences)];
+        const item3Keytip = keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip3.keySequences));
         expect(item3Keytip).toBeDefined();
-        const item4Keytip = keytipTree.nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip4.keySequences)];
+        const item4Keytip = keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip4.keySequences));
         expect(item4Keytip).toBeDefined();
         // Overflow button keytip
-        const overflowButtonKeytip = keytipTree.nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowButtonKeytip.keySequences)];
+        const overflowButtonKeytip = keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowButtonKeytip.keySequences));
         expect(overflowButtonKeytip).toBeDefined();
       });
 
@@ -188,15 +188,15 @@ describe('OverflowSet', () => {
         });
 
         // Should still have 5 keytips in the tree
-        const nodeMap = keytipManager.keytipTree.nodeMap;
+        const keytipTree = keytipManager.keytipTree;
         // Regular keytips
-        expect(nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip1.keySequences)]).toBeDefined();
-        expect(nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip2.keySequences)]).toBeDefined();
-        expect(nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip3.keySequences)]).toBeDefined();
+        expect(keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip1.keySequences))).toBeDefined();
+        expect(keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip2.keySequences))).toBeDefined();
+        expect(keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip3.keySequences))).toBeDefined();
         // Persisted keytips
-        expect(nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip4.keySequences)]).toBeDefined();
+        expect(keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowItemKeytip4.keySequences))).toBeDefined();
         // Overflow button keytip
-        expect(nodeMap[convertSequencesToKeytipID(overflowKeytips.overflowButtonKeytip.keySequences)]).toBeDefined();
+        expect(keytipTree.getNode(convertSequencesToKeytipID(overflowKeytips.overflowButtonKeytip.keySequences))).toBeDefined();
       });
 
       it('persisted keytip should execute function when triggered', () => {
@@ -218,15 +218,16 @@ describe('OverflowSet', () => {
 
       it('triggering the overflow button keytip should register the menu item keytips with their modified sequence', () => {
         // Set current keytip at root, like we've entered keytip mode
-        keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
+        const keytipTree = keytipManager.keytipTree;
+        keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
         keytipManager.processInput('x');
 
         // Opening the submenu should register the two keytips for those items
         const modifiedKeytip3Sequence = [{ keys: ['x'] }, { keys: ['c'] }];
         const modifiedKeytip4Sequence = [{ keys: ['x'] }, { keys: ['d'] }];
-        expect(keytipManager.keytipTree.nodeMap[convertSequencesToKeytipID(modifiedKeytip3Sequence)]).toBeDefined();
-        expect(keytipManager.keytipTree.nodeMap[convertSequencesToKeytipID(modifiedKeytip4Sequence)]).toBeDefined();
+        expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip3Sequence))).toBeDefined();
+        expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip4Sequence))).toBeDefined();
 
         // Those two keytips should now be visible in the Layer
         const submenuKeytips = keytipManager.keytips.filter((keytip: IKeytipProps) => {
@@ -395,15 +396,16 @@ describe('OverflowSet', () => {
         });
 
         it('should open the overflow and submenu when the persisted keytip is triggered', () => {
-          keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
+          const keytipTree = keytipManager.keytipTree;
+          keytipTree.currentKeytip = keytipTree.root;
           keytipManager.processInput('d');
 
           // The two submenu keytips should be registered with their modified sequence in the tree
           const modifiedKeytip5Sequence = [{ keys: ['x'] }, { keys: ['d'] }, { keys: ['e'] }];
           const modifiedKeytip6Sequence = [{ keys: ['x'] }, { keys: ['d'] }, { keys: ['f'] }];
-          const subMenu5Keytip = keytipManager.keytipTree.nodeMap[convertSequencesToKeytipID(modifiedKeytip5Sequence)];
+          const subMenu5Keytip = keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip5Sequence));
           expect(subMenu5Keytip).toBeDefined();
-          const subMenu6Keytip = keytipManager.keytipTree.nodeMap[convertSequencesToKeytipID(modifiedKeytip6Sequence)];
+          const subMenu6Keytip = keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip6Sequence));
           expect(subMenu6Keytip).toBeDefined();
 
           // Those two keytips should now be visible in the Layer

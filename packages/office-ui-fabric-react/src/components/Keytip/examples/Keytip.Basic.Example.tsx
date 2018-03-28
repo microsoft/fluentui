@@ -43,7 +43,7 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
       <div>
         <DefaultButton
           text='Click to toggle keytip'
-          data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
+          data-ktp-target={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
           onClick={ btnClick }
         />
         <Keytip { ...this.keytipMap.Keytip1 } visible={ this.state.keytipVisible } />

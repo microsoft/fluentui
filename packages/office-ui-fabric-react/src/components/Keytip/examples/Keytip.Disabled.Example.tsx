@@ -35,7 +35,7 @@ export class KeytipDisabledExample extends React.Component<{}, IKeytipExampleSta
           be activated when its keys are pressed</p>
         <DefaultButton
           text='Click to toggle keytip'
-          data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
+          data-ktp-target={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
           onClick={ btnClick }
         />
         <Keytip { ...this.keytipMap.Keytip1 } visible={ this.state.keytipVisible } />

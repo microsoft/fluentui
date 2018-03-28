@@ -29,7 +29,7 @@ describe('KeytipTree', () => {
     expect(keytipTree.root.children).toHaveLength(0);
 
     // Only the root should be specified in the nodeMap
-    expect(keytipTree.nodeMap[ktpLayerId]).toBeDefined();
+    expect(keytipTree.getNode(ktpLayerId)).toBeDefined();
     expect(Object.keys(keytipTree.nodeMap)).toHaveLength(1);
   });
 
@@ -47,13 +47,13 @@ describe('KeytipTree', () => {
 
       // Test C was added to nodeMap
       expect(Object.keys(keytipTree.nodeMap)).toHaveLength(2);
-      const keytipNodeC = keytipTree.nodeMap[keytipIdC];
+      const keytipNodeC = keytipTree.getNode(keytipIdC);
       expect(keytipNodeC).toBeDefined();
 
       // Test TreeNode C properties
-      expect(keytipNodeC.id).toEqual(keytipIdC);
-      expect(keytipNodeC.children).toHaveLength(0);
-      expect(keytipNodeC.parent).toEqual(ktpLayerId);
+      expect(keytipNodeC!.id).toEqual(keytipIdC);
+      expect(keytipNodeC!.children).toHaveLength(0);
+      expect(keytipNodeC!.parent).toEqual(ktpLayerId);
     });
 
     it('two levels from root', () => {
@@ -68,17 +68,18 @@ describe('KeytipTree', () => {
       keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
       // Test B was added to C's children
-      expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
-      expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+      const keytipCNode = keytipTree.getNode(keytipIdC);
+      expect(keytipCNode!.children).toHaveLength(1);
+      expect(keytipCNode!.children).toContain(keytipIdB);
 
       // Test B was added to nodeMap
-      const keytipNodeB = keytipTree.nodeMap[keytipIdB];
+      const keytipNodeB = keytipTree.getNode(keytipIdB);
       expect(keytipNodeB).toBeDefined();
 
       // Test TreeNode B properties
-      expect(keytipNodeB.id).toEqual(keytipIdB);
-      expect(keytipNodeB.children).toHaveLength(0);
-      expect(keytipNodeB.parent).toEqual(keytipIdC);
+      expect(keytipNodeB!.id).toEqual(keytipIdB);
+      expect(keytipNodeB!.children).toHaveLength(0);
+      expect(keytipNodeB!.parent).toEqual(keytipIdC);
     });
 
     it('add a child node before its parent', () => {
@@ -93,35 +94,24 @@ describe('KeytipTree', () => {
       keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
       // Test B was added to nodeMap
-      const keytipNodeB = keytipTree.nodeMap[keytipIdB];
+      const keytipNodeB = keytipTree.getNode(keytipIdB);
       expect(keytipNodeB).toBeDefined();
 
       // Test B has C set as parent
-      expect(keytipNodeB.parent).toEqual(keytipIdC);
+      expect(keytipNodeB!.parent).toEqual(keytipIdC);
 
       // Test root still has no children
       expect(keytipTree.root.children).toHaveLength(0);
 
-      // Test C is added to nodeMap
-      let keytipNodeC = keytipTree.nodeMap[keytipIdC];
-      expect(keytipNodeC).toBeDefined();
-
-      // Test C has no parent
-      expect(keytipNodeC.parent).toBeFalsy();
-
-      // Test C has B as its child
-      expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
-      expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
-
       // Add parent
       keytipTree.addNode(createKeytipProps(keytipSequenceC));
 
-      keytipNodeC = keytipTree.nodeMap[keytipIdC];
+      const keytipNodeC = keytipTree.getNode(keytipIdC);
       expect(keytipNodeC).toBeDefined();
 
       // Test C has B as its child
-      expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
-      expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+      expect(keytipNodeC!.children).toHaveLength(1);
+      expect(keytipNodeC!.children).toContain(keytipIdB);
 
       // Test root has C as its child
       expect(keytipTree.root.children).toHaveLength(1);
@@ -168,35 +158,35 @@ describe('KeytipTree', () => {
       keytipTree.addNode(createKeytipProps(keytipSequenceE));
 
       // Test all nodes are in the nodeMap
-      const keytipNodeB = keytipTree.nodeMap[keytipIdB];
+      const keytipNodeB = keytipTree.getNode(keytipIdB);
       expect(keytipNodeB).toBeDefined();
-      const keytipNodeC = keytipTree.nodeMap[keytipIdC];
+      const keytipNodeC = keytipTree.getNode(keytipIdC);
       expect(keytipNodeC).toBeDefined();
-      const keytipNodeD = keytipTree.nodeMap[keytipIdD];
+      const keytipNodeD = keytipTree.getNode(keytipIdD);
       expect(keytipNodeD).toBeDefined();
-      const keytipNodeE = keytipTree.nodeMap[keytipIdE];
+      const keytipNodeE = keytipTree.getNode(keytipIdE);
       expect(keytipNodeE).toBeDefined();
-      const keytipNodeF = keytipTree.nodeMap[keytipIdF];
+      const keytipNodeF = keytipTree.getNode(keytipIdF);
       expect(keytipNodeF).toBeDefined();
 
       // Test each node's parent and children
-      expect(keytipNodeB.parent).toEqual(keytipIdC);
-      expect(keytipNodeB.children).toHaveLength(0);
+      expect(keytipNodeB!.parent).toEqual(keytipIdC);
+      expect(keytipNodeB!.children).toHaveLength(0);
 
-      expect(keytipNodeC.parent).toEqual(ktpLayerId);
-      expect(keytipNodeC.children).toHaveLength(1);
-      expect(keytipNodeC.children).toContain(keytipIdB);
+      expect(keytipNodeC!.parent).toEqual(ktpLayerId);
+      expect(keytipNodeC!.children).toHaveLength(1);
+      expect(keytipNodeC!.children).toContain(keytipIdB);
 
-      expect(keytipNodeD.parent).toEqual(keytipIdE);
-      expect(keytipNodeD.children).toHaveLength(0);
+      expect(keytipNodeD!.parent).toEqual(keytipIdE);
+      expect(keytipNodeD!.children).toHaveLength(0);
 
-      expect(keytipNodeE.parent).toEqual(ktpLayerId);
-      expect(keytipNodeE.children).toHaveLength(2);
-      expect(keytipNodeE.children).toContain(keytipIdD);
-      expect(keytipNodeE.children).toContain(keytipIdF);
+      expect(keytipNodeE!.parent).toEqual(ktpLayerId);
+      expect(keytipNodeE!.children).toHaveLength(2);
+      expect(keytipNodeE!.children).toContain(keytipIdD);
+      expect(keytipNodeE!.children).toContain(keytipIdF);
 
-      expect(keytipNodeF.parent).toEqual(keytipIdE);
-      expect(keytipNodeF.children).toHaveLength(0);
+      expect(keytipNodeF!.parent).toEqual(keytipIdE);
+      expect(keytipNodeF!.children).toHaveLength(0);
 
       // Test root's children
       expect(keytipTree.root.children).toHaveLength(2);
@@ -217,10 +207,10 @@ describe('KeytipTree', () => {
       keytipTree.addNode(overflowNode);
       keytipTree.addNode(keytipProps);
 
-      const keytipNode = keytipTree.nodeMap['ktp-x-a'];
+      const keytipNode = keytipTree.getNode('ktp-x-a');
       expect(keytipNode).toBeDefined();
-      expect(keytipNode.parent).toEqual('ktp-x');
-      expect(keytipTree.nodeMap['ktp-a']).toBeUndefined();
+      expect(keytipNode!.parent).toEqual('ktp-x');
+      expect(keytipTree.getNode('ktp-a')).toBeUndefined();
     });
   });
 
@@ -229,14 +219,16 @@ describe('KeytipTree', () => {
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipCProps = createKeytipProps(keytipSequenceC);
+      keytipCProps.uniqueID = '1';
 
-      keytipTree.addNode(createKeytipProps(keytipSequenceC));
+      keytipTree.addNode(keytipCProps);
 
       // Remove C from the tree
-      keytipTree.removeNode(keytipSequenceC);
+      keytipTree.removeNode(keytipCProps);
 
       // Verify that C is not in the node map
-      expect(keytipTree.nodeMap[keytipIdC]).toBeUndefined();
+      expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
 
       // Verify that root has no children
       expect(keytipTree.root.children).toHaveLength(0);
@@ -246,35 +238,39 @@ describe('KeytipTree', () => {
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipCProps = createKeytipProps(keytipSequenceC);
+      keytipCProps.uniqueID = '1';
 
       // Node B
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      const keytipBProps = createKeytipProps(keytipSequenceB);
+      keytipBProps.uniqueID = '2';
 
-      keytipTree.addNode(createKeytipProps(keytipSequenceC));
-      keytipTree.addNode(createKeytipProps(keytipSequenceB));
+      keytipTree.addNode(keytipCProps);
+      keytipTree.addNode(keytipBProps);
 
       // Remove B
-      keytipTree.removeNode(keytipSequenceB);
+      keytipTree.removeNode(keytipBProps);
 
       // Verify that B is not in the node map
-      expect(keytipTree.nodeMap[keytipIdB]).toBeUndefined();
+      expect(keytipTree.getNode(keytipIdB)).toBeUndefined();
 
       // Verify C has no children
-      const nodeC = keytipTree.nodeMap[keytipIdC];
-      expect(nodeC.children).toHaveLength(0);
+      const nodeC = keytipTree.getNode(keytipIdC);
+      expect(nodeC!.children).toHaveLength(0);
 
       // Remove C
-      keytipTree.removeNode(keytipSequenceC);
+      keytipTree.removeNode(keytipCProps);
 
       // Verify that C is not in the node map
-      expect(keytipTree.nodeMap[keytipIdC]).toBeUndefined();
+      expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
 
       // Verify that root has no children
       expect(keytipTree.root.children).toHaveLength(0);
     });
 
-    it('removes children as well when a parent is removed', () => {
+    it('removed node will be able to be re-added in place', () => {
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
@@ -283,41 +279,61 @@ describe('KeytipTree', () => {
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
 
-      keytipTree.addNode(createKeytipProps(keytipSequenceC));
+      const keytipC = createKeytipProps(keytipSequenceC);
+      keytipC.uniqueID = '1';
+      keytipTree.addNode(keytipC);
       keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
       // Remove C
-      keytipTree.removeNode(keytipSequenceC);
+      keytipTree.removeNode(keytipC);
 
       // Verify that C is not in the node map
-      expect(keytipTree.nodeMap[keytipIdC]).toBeUndefined();
-      // Verify that B is not in the node map
-      expect(keytipTree.nodeMap[keytipIdB]).toBeUndefined();
-
+      expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
+      // Verify that B still has C as its parent
+      expect(keytipTree.getNode(keytipIdB)!.parent).toEqual(keytipIdC);
       // Verify that root has no children
       expect(keytipTree.root.children).toHaveLength(0);
+
+      // Re-add C
+      keytipTree.addNode(keytipC);
+
+      // Verify that C is in the node map
+      const keytipNodeC = keytipTree.getNode(keytipIdC);
+      expect(keytipNodeC).toBeDefined();
+      // Verify that C's parent is the root
+      expect(keytipNodeC!.parent).toEqual(ktpLayerId);
+      // Verify that the root has C as a child
+      expect(keytipTree.root.children).toHaveLength(1);
+      expect(keytipTree.root.children).toContain(keytipIdC);
+      // Verify that B is a child of C
+      expect(keytipNodeC!.children).toHaveLength(1);
+      expect(keytipNodeC!.children).toContain(keytipIdB);
+      // Verify B has parent C
+      expect(keytipTree.getNode(keytipIdB)!.parent).toEqual(keytipIdC);
     });
 
     it('correctly removes a node when overflowSetSequence is defined', () => {
       const keytipProps = {
         content: 'A',
         keySequences: [{ keys: ['a'] }],
-        overflowSetSequence: [{ keys: ['x'] }]
+        overflowSetSequence: [{ keys: ['x'] }],
+        uniqueID: '1'
       };
       const overflowProps = {
         content: 'X',
-        keySequences: [{ keys: ['x'] }]
+        keySequences: [{ keys: ['x'] }],
+        uniqueID: '2'
       };
       keytipTree.addNode(overflowProps);
       keytipTree.addNode(keytipProps);
 
-      keytipTree.removeNode(keytipProps.keySequences, keytipProps.overflowSetSequence);
+      keytipTree.removeNode(keytipProps);
 
-      const keytipNode = keytipTree.nodeMap['ktp-x-a'];
+      const keytipNode = keytipTree.getNode('ktp-x-a');
       expect(keytipNode).toBeUndefined();
-      const overflowNode = keytipTree.nodeMap['ktp-x'];
+      const overflowNode = keytipTree.getNode('ktp-x');
       expect(overflowNode).toBeDefined();
-      expect(overflowNode.children).toHaveLength(0);
+      expect(overflowNode!.children).toHaveLength(0);
     });
   });
 
@@ -547,14 +563,14 @@ describe('KeytipTree', () => {
     });
 
     it('works for a passed in node', () => {
-      const childrenOfA = keytipTree.getChildren(keytipTree.nodeMap[keytipIdA]);
+      const childrenOfA = keytipTree.getChildren(keytipTree.getNode(keytipIdA));
       expect(childrenOfA).toHaveLength(2);
       expect(childrenOfA).toContain(keytipIdE1);
       expect(childrenOfA).toContain(keytipIdE2);
     });
 
     it('gets the children of the current node when no parameter is passed', () => {
-      keytipTree.currentKeytip = keytipTree.nodeMap[keytipIdA];
+      keytipTree.currentKeytip = keytipTree.getNode(keytipIdA);
       const childrenOfA = keytipTree.getChildren();
       expect(childrenOfA).toHaveLength(2);
       expect(childrenOfA).toContain(keytipIdE1);
@@ -563,7 +579,7 @@ describe('KeytipTree', () => {
 
     it('correctly omits persisted nodes', () => {
       keytipTree.nodeMap[keytipIdE1].persisted = true;
-      const childrenOfA = keytipTree.getChildren(keytipTree.nodeMap[keytipIdA]);
+      const childrenOfA = keytipTree.getChildren(keytipTree.getNode(keytipIdA));
       expect(childrenOfA).toHaveLength(1);
       expect(childrenOfA).toContain(keytipIdE2);
     });

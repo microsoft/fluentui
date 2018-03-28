@@ -5,7 +5,8 @@ import {
   convertSequencesToKeytipID,
   find,
   ktpLayerId,
-  mergeOverflowKeySequences
+  mergeOverflowKeySequences,
+  values
 } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
@@ -66,6 +67,8 @@ export class KeytipTree {
   public root: IKeytipTreeNode;
   public nodeMap: IKeytipTreeNodeMap = {};
 
+  private _idSeparator = '::';
+
   /**
    * KeytipTree constructor
    *
@@ -93,13 +96,15 @@ export class KeytipTree {
       fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
     }
     const nodeID = convertSequencesToKeytipID(fullSequence);
+    const combinedID = nodeID + this._idSeparator + keytipProps.uniqueID!;
+
     // This keytip's sequence is the last one defined
     const keytipSequence = fullSequence.pop();
     // Parent ID is the root if there aren't any more sequences
     const parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
 
     // See if node already exists
-    let node = this.nodeMap[nodeID];
+    let node = this.nodeMap[combinedID];
     if (node) {
       // If node exists, it was added when one of its children was added or is now being updated
       // Update values
@@ -114,51 +119,52 @@ export class KeytipTree {
       // If node doesn't exist, add node
       node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasChildrenNodes,
         keytipProps.onExecute, keytipProps.onReturn, keytipProps.disabled, persisted);
-      this.nodeMap[nodeID] = node;
+      this.nodeMap[combinedID] = node;
     }
 
-    // Get parent node given its id.
-    const parent = this._getOrCreateParentNode(parentID);
+    // Find all nodes that have this node as its parent, add them to 'children' if not already there
+    const children = Object.keys(this.nodeMap).reduce((array: string[], nodeMapKey: string): string[] => {
+      if (this.nodeMap[nodeMapKey].parent === nodeID) {
+        array.push(this.nodeMap[nodeMapKey].id);
+      }
+      return array;
+    }, []);
+    this.nodeMap[combinedID].children = this.nodeMap[combinedID].children.concat(children.filter((child: string) => {
+      return node.children.indexOf(child) === -1;
+    }));
 
-    // Add node to parent's children if not already added
-    if (parent.children.indexOf(nodeID) === -1) {
+    // Try to add self to parents children, if they exist
+    const parent = this.getNode(parentID);
+    if (parent && parent.children.indexOf(nodeID) === -1) {
       parent.children.push(nodeID);
     }
   }
 
   /**
    * Removes a node from the KeytipTree
-   * Will also remove all of the node's children from the Tree
    *
    * @param sequence - full IKeySequence of the node to remove
    */
-  public removeNode(sequence: IKeySequence[], overflowSetSequence?: IKeySequence[]): void {
-    let fullSequence = [...sequence];
-    if (overflowSetSequence) {
-      fullSequence = mergeOverflowKeySequences(fullSequence, overflowSetSequence);
+  public removeNode(keytipProps: IKeytipProps): void {
+    let fullSequence = [...keytipProps.keySequences];
+    if (keytipProps.overflowSetSequence) {
+      fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
     }
     const nodeID = convertSequencesToKeytipID(fullSequence);
+    const combinedID = nodeID + this._idSeparator + keytipProps.uniqueID!;
     // Take off the last sequence to calculate the parent ID
     fullSequence.pop();
     // Parent ID is the root if there aren't any more sequences
     const parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
-
-    const parent = this.nodeMap[parentID];
+    const parent = this.getNode(parentID);
     if (parent) {
       // Remove node from its parent's children
       parent.children.splice(parent.children.indexOf(nodeID), 1);
     }
 
-    const node = this.nodeMap[nodeID];
-    if (node) {
-      // Remove all the node's children from the nodeMap
-      const children = node.children;
-      for (const child of children) {
-        delete this.nodeMap[child];
-      }
-
+    if (this.nodeMap[combinedID]) {
       // Remove the node from the nodeMap
-      delete this.nodeMap[nodeID];
+      delete this.nodeMap[combinedID];
     }
   }
 
@@ -170,7 +176,7 @@ export class KeytipTree {
    * @returns {IKeytipTreeNode | undefined} The node that exactly matched the keySequence, or undefined if none matched
    */
   public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
-    const possibleNodes = this._getNodes(currentKeytip.children);
+    const possibleNodes = this.getNodes(currentKeytip.children);
     return find(possibleNodes, (node: IKeytipTreeNode) => {
       return keySequencesAreEqual(node.keytipSequence, keySequence) && !node.disabled;
     });
@@ -184,7 +190,8 @@ export class KeytipTree {
    * @returns {IKeytipTreeNode[]} List of tree nodes that partially match the given sequence
    */
   public getPartiallyMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
-    const possibleNodes = this._getNodes(this.getChildren(currentKeytip));
+    // TODO: should we allow for persisted children here?
+    const possibleNodes = this.getNodes(this.getChildren(currentKeytip));
 
     return possibleNodes.filter((node: IKeytipTreeNode) => {
       return keySequenceStartsWith(node.keytipSequence, keySequence) && !node.disabled;
@@ -204,28 +211,39 @@ export class KeytipTree {
       }
     }
     const children = node.children;
-    return children.reduce((array: string[], child: string): string[] => {
-      if (!this.nodeMap[child].persisted) {
-        array.push(child);
+    return Object.keys(this.nodeMap).reduce((nodes: string[], key: string): string[] => {
+      if (children.indexOf(this.nodeMap[key].id) >= 0 && !this.nodeMap[key].persisted) {
+        nodes.push(this.nodeMap[key].id);
       }
-      return array;
+      return nodes;
     }, []);
   }
 
   /**
-   * Retrieves or creates a parent node based on an ID
+   * Gets all nodes from their IDs
    *
-   * @param parentId - ID of the parent node
-   * @returns {IKeytipTreeNode} Node retrieved or created from the given parent ID
+   * @param ids List of keytip IDs
+   * @returns {IKeytipTreeNode[]} Array of nodes that match the given IDs, can be empty
    */
-  private _getOrCreateParentNode(parentId: string): IKeytipTreeNode {
-    let parent = this.nodeMap[parentId];
-    if (!parent) {
-      // If parent doesn't exist, create parent with ID and children only
-      parent = this._createNode(parentId, { keys: [] }, '' /* parentId */, [] /* childrenIds */, true /*hasChildren */);
-      this.nodeMap[parentId] = parent;
-    }
-    return parent;
+  public getNodes(ids: string[]): IKeytipTreeNode[] {
+    return Object.keys(this.nodeMap).reduce((nodes: IKeytipTreeNode[], key: string): IKeytipTreeNode[] => {
+      if (ids.indexOf(this.nodeMap[key].id) >= 0) {
+        nodes.push(this.nodeMap[key]);
+      }
+      return nodes;
+    }, []);
+  }
+
+  /**
+   * Gets a single node from its ID
+   *
+   * @param id
+   */
+  public getNode(id: string): IKeytipTreeNode | undefined {
+    const nodeMapValues = values<IKeytipTreeNode>(this.nodeMap);
+    return find(nodeMapValues, (node: IKeytipTreeNode): boolean => {
+      return node.id === id;
+    });
   }
 
   private _createNode(
@@ -249,17 +267,5 @@ export class KeytipTree {
       disabled,
       persisted
     };
-  }
-
-  /**
-   * Gets all nodes from their IDs
-   *
-   * @param ids List of keytip IDs
-   * @returns {IKeytipTreeNode[]} Array of nodes that match the given IDs
-   */
-  private _getNodes(ids: string[]): IKeytipTreeNode[] {
-    return ids.map((id: string): IKeytipTreeNode => {
-      return this.nodeMap[id];
-    });
   }
 }
