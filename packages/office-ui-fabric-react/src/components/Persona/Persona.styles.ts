@@ -10,7 +10,6 @@ import {
   IStyle,
   normalize,
   noWrap,
-  zIndex,
 } from '../../Styling';
 import {
   personaSize,
