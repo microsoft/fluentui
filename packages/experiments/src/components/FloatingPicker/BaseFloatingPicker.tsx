@@ -7,9 +7,12 @@ import {
   createRef
 } from '../../Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
+import { ISuggestionModel }
   from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
+import { IBaseFloatingPicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
+import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
+import { SuggestionsControl } from './Suggestions/SuggestionsControl';
+import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import * as stylesImport from './BaseFloatingPicker.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
@@ -31,11 +34,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   protected selection: Selection;
 
   protected root = createRef<HTMLDivElement>();
-  protected suggestionElement = createRef<Suggestions<T>>();
-
-  protected suggestionStore: SuggestionsController<T>;
-  protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
-    Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  protected suggestionStore: SuggestionsStore<T>;
+  protected suggestionsControl: SuggestionsControl<T>;
+  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> =
+  SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   protected loadingTimer: number | undefined;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
@@ -43,7 +45,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
-    this.suggestionStore = basePickerProps.suggestionsController;
+    this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
       queryString: '',
       suggestedDisplayValue: '',
@@ -64,7 +66,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   public forceResolveSuggestion(): void {
-    if (this.suggestionStore.hasSelectedSuggestion()) {
+    if (this.suggestionsControl.hasSuggestionSelected()) {
       this.completeSuggestion();
     } else {
       this._onValidateInput();
@@ -130,21 +132,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.setState({ suggestionsVisible: false });
   }
 
-  public completeSuggestion(): void {
-    if (this.suggestionStore.hasSelectedSuggestion()) {
-      this.onChange(this.suggestionStore.currentSuggestion!.item);
-    }
-  }
-
-  public refocusSuggestions = (keyCode: KeyCodes): void => {
-    if (this.suggestionStore.suggestions && this.suggestionStore.suggestions.length > 0) {
-      if (keyCode === KeyCodes.up) {
-        this.suggestionStore.setSelectedSuggestion(
-          this.suggestionStore.suggestions.length - 1
-        );
-      } else if (keyCode === KeyCodes.down) {
-        this.suggestionStore.setSelectedSuggestion(0);
-      }
+  public completeSuggestion = (): void => {
+    if (this.suggestionsControl.hasSuggestionSelected()) {
+      this.onChange(this.suggestionsControl.currentSuggestion!.item);
     }
   }
 
@@ -161,7 +151,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    let TypedSuggestion = this.SuggestionOfProperType;
+    let TypedSuggestionsControl = this.SuggestionsControlOfProperType;
     return this.state.suggestionsVisible ? (
       <Callout
         className={ styles.callout }
@@ -178,32 +168,27 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         }
         calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
       >
-        <TypedSuggestion
-          showForceResolve={ this._showForceResolve }
+        <TypedSuggestionsControl
           createGenericItem={ this._onValidateInput }
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
           onSuggestionRemove={ this.onSuggestionRemove }
           suggestions={ this.suggestionStore.getSuggestions() }
-          ref={ this.suggestionElement }
-          onGetMoreResults={ this.onGetMoreResults }
-          moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
-          isLoading={ this.state.suggestionsLoading }
+          ref={ this._resolveRef('suggestionsControl') }
           isSearching={ this.state.isSearching }
-          isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
-          isResultsFooterVisible={ this.state.isResultsFooterVisible }
-          refocusSuggestions={ this.refocusSuggestions }
-          { ...this.props.pickerSuggestionsProps as IBasePickerSuggestionsProps }
+          completeSuggestion={ this.completeSuggestion }
+          shouldLoopSelection={ false }
+          { ...this.props.pickerSuggestionsProps as IBaseFloatingPickerSuggestionProps }
         />
       </Callout>
     ) : null;
   }
 
   protected onSuggestionSelect(): void {
-    if (this.suggestionStore.currentSuggestion) {
+    if (this.suggestionsControl && this.suggestionsControl.currentSuggestion) {
       let currentValue: string = this.state.queryString;
       let itemValue: string = this._getTextFromItem(
-        this.suggestionStore.currentSuggestion.item,
+        this.suggestionsControl.currentSuggestion.item,
         currentValue
       );
       this.setState({ suggestedDisplayValue: itemValue });
@@ -215,11 +200,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected updateSuggestions(suggestions: T[]): void {
-    this.suggestionStore.updateSuggestions(suggestions, 0);
+    this.suggestionStore.updateSuggestions(suggestions);
   }
 
   protected updateValue(updatedValue: string): void {
-    // Call onInputChanged
     if (this.props.onInputChanged) {
       (this.props.onInputChanged as (filter: string) => void)(updatedValue);
     }
@@ -252,7 +236,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       if (updatedValue !== undefined) {
         this.resolveNewValue(updatedValue, suggestionsArray);
       } else {
-        this.suggestionStore.updateSuggestions(suggestionsArray, 0);
+        this.suggestionStore.updateSuggestions(suggestionsArray);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       this.setState({
@@ -294,12 +278,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]): void {
-    this.suggestionStore.updateSuggestions(suggestions, 0);
+    this.suggestionStore.updateSuggestions(suggestions);
     let itemValue: string | undefined = undefined;
 
-    if (this.suggestionStore.currentSuggestion) {
+    if (this.suggestionsControl.currentSuggestion) {
       itemValue = this._getTextFromItem(
-        this.suggestionStore.currentSuggestion.item,
+        this.suggestionsControl.currentSuggestion.item,
         updatedValue
       );
     }
@@ -333,7 +317,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     if (this.props.onRemoveSuggestion) {
       (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
-    this.suggestionStore.removeSuggestion(index);
+    this.suggestionsControl.removeSuggestion(index);
   }
 
   protected onKeyDown = (ev: MouseEvent): void => {
@@ -343,7 +327,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       return;
     }
     let keyCode = ev.which;
-    let { value: suggestionElement } = this.suggestionElement;
     switch (keyCode) {
       case KeyCodes.escape:
         this.setState({ suggestionsVisible: false });
@@ -353,12 +336,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (suggestionElement && suggestionElement.hasSuggestedActionSelected()) {
-          suggestionElement.executeSelectedAction();
-        } else if (!ev.shiftKey &&
+        if (!ev.shiftKey &&
           !ev.ctrlKey &&
-          this.suggestionStore.hasSelectedSuggestion()) {
-          this.completeSuggestion();
+          this.suggestionsControl &&
+          this.suggestionsControl.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
         } else {
@@ -367,66 +348,30 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         break;
 
       case KeyCodes.del:
-        if (this.suggestionStore.currentIndex !== -1) {
-          if (this.props.onRemoveSuggestion) {
-            (this.props.onRemoveSuggestion as ((item: T) => void))(
-              this.suggestionStore.currentSuggestion!.item
-            );
-          }
-          this.suggestionStore.removeSuggestion(
-            this.suggestionStore.currentIndex
+        if (this.props.onRemoveSuggestion
+          && this.suggestionsControl.hasSuggestionSelected
+          && this.suggestionsControl.currentSuggestion) {
+          (this.props.onRemoveSuggestion as ((item: T) => void))(
+            this.suggestionsControl.currentSuggestion!.item
           );
+
+          this.suggestionsControl.removeSuggestion();
           this.forceUpdate();
         }
         ev.stopPropagation();
         break;
 
       case KeyCodes.up:
-        if (suggestionElement && suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+        if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
-        } else {
-          if (suggestionElement && suggestionElement.hasSuggestedAction() &&
-            this.suggestionStore.currentIndex === 0
-          ) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            suggestionElement.focusAboveSuggestions();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
-          } else {
-            if (this.suggestionStore.previousSuggestion()) {
-              ev.preventDefault();
-              ev.stopPropagation();
-              this.onSuggestionSelect();
-            }
-          }
         }
         break;
 
       case KeyCodes.down:
-        if (suggestionElement && suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+        if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
-        } else {
-          if (
-            suggestionElement &&
-            suggestionElement.hasSuggestedAction() &&
-            this.suggestionStore.currentIndex + 1 ===
-            this.suggestionStore.suggestions.length
-          ) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            suggestionElement.focusBelowSuggestions();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
-          } else {
-            if (this.suggestionStore.nextSuggestion()) {
-              ev.preventDefault();
-              ev.stopPropagation();
-              this.onSuggestionSelect();
-            }
-          }
         }
         break;
     }
@@ -485,20 +430,16 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       this.props.onValidateInput &&
       this.props.createGenericItem
     ) {
-      let itemToConvert = (this.props.createGenericItem as ((
+      let itemToConvert: ISuggestionModel<T> = (this.props.createGenericItem as ((
         input: string,
         isValid: boolean
       ) => ISuggestionModel<T>))(
         this.state.queryString,
         (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
-      );
-      this.suggestionStore.createGenericSuggestion(itemToConvert);
-      this.completeSuggestion();
+        );
+      let convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
+      this.onChange(convertedItems[0].item);
     }
-  }
-
-  private _showForceResolve = (): boolean => {
-    return this.props.showForceResolve ? this.props.showForceResolve() : false;
   }
 
   private _getTextFromItem(item: T, currentValue?: string): string {

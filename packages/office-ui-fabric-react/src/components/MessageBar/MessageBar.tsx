@@ -169,9 +169,9 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           { this._getIconSpan() }
           { this._renderInnerText() }
           { this._getExpandSingleLine() }
+          { this._getActionsDiv() }
           { this._getDismissSingleLine() }
         </div>
-        { this._getActionsDiv() }
       </div >
     );
   }
