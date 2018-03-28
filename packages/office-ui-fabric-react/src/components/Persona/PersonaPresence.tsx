@@ -41,7 +41,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth + 'px' } : undefined;
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
-    const classNames = getClassNames(getStylesProp! || getStyles!, {
+    const classNames = getClassNames(getStylesProp || getStyles, {
       theme: theme!,
       presence,
       size,

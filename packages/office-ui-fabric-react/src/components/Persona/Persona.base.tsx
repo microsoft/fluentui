@@ -79,7 +79,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       size,
     };
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(getStyles, {
       theme: theme!,
       className,
       showSecondaryText,

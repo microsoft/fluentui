@@ -100,7 +100,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       size,
     };
 
-    const classNames = getClassNames(getStylesProp! || getStyles!, {
+    const classNames = getClassNames(getStylesProp || getStyles, {
       theme: theme!,
       className: coinProps!.className,
       size,
