@@ -11,7 +11,7 @@ import './Shimmer.Example.scss';
 import {
   Shimmer,
 } from 'experiments/lib/Shimmer';
-import { IColumn, DetailsList, buildColumns } from 'office-ui-fabric-react';
+import { IColumn, DetailsList, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 
 const PAGING_DELAY = 3000;
 const ITEMS_COUNT = 1000;

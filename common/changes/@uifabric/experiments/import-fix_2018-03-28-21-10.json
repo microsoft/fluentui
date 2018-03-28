@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Update componentRef types",
+      "comment": "Remove root imports of office-ui-fabric-react",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "mark@thedutchies.com"
+  "email": "tmichon@microsoft.com"
 }

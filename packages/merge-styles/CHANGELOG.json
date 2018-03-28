@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.14.0",
+      "tag": "@uifabric/merge-styles_v5.14.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.13.0",
       "tag": "@uifabric/merge-styles_v5.13.0",
       "date": "Fri, 02 Mar 2018 11:25:35 GMT",

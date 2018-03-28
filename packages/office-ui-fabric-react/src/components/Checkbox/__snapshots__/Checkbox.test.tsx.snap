@@ -76,7 +76,6 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           margin-top: 0;
           position: relative;
           text-align: left;
-          user-select: none;
         }
     htmlFor="checkbox-0"
   >
@@ -101,6 +100,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             transition-duration: 200ms;
             transition-property: background, border, border-color;
             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+            user-select: none;
             width: 20px;
           }
     >

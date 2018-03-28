@@ -2,6 +2,44 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.22.0",
+      "tag": "@uifabric/utilities_v5.22.0",
+      "date": "Wed, 28 Mar 2018 10:16:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "130511930f8994e0010039781da6e1fdb2968e45",
+            "comment": "The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.21.0",
+      "tag": "@uifabric/utilities_v5.21.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "a0e09698ae1443623e202087360986f65a613559",
+            "comment": "Update createRef type"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.13.0 <6.0.0` to `>=5.14.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.20.0",
       "tag": "@uifabric/utilities_v5.20.0",
       "date": "Fri, 23 Mar 2018 01:29:21 GMT",

@@ -73,7 +73,8 @@ export class ComboBoxBasicExample extends React.Component<{}, {
       options: [],
       optionsMulti: [],
       selectedOptionKey: undefined,
-      value: 'Calibri'
+      value: 'Calibri',
+      valueMulti: 'Calibri'
     };
 
     for (let i = 0; i < 1000; i++) {
@@ -332,22 +333,23 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     return INITIAL_OPTIONS;
   }
 
-  private _getOptionsMulti(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
+  private _getOptionsMulti = (currentOptions: IComboBoxOption[]): IComboBoxOption[] => {
 
-    if (this.state.options.length > 0) {
+    if (this.state.optionsMulti.length > 0) {
       return this.state.optionsMulti;
     }
 
     this.setState({
       optionsMulti: INITIAL_OPTIONS,
       selectedOptionKeys: [ 'C1' ],
-      value: undefined
+      valueMulti: undefined
     });
 
     return INITIAL_OPTIONS;
   }
 
   private _onChanged = (option: IComboBoxOption, index: number, value: string): void => {
+    console.log('_onChanged() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
@@ -370,6 +372,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   }
 
   private _onChangedMulti = (option: IComboBoxOption, index: number, value: string) => {
+    console.log('_onChangedMulti() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       // User selected/de-selected an existing option
       this.setState({
