@@ -148,8 +148,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
 
   /**
-   * If set to true and we provide an empty initial array it will render 10 shimmer lines.
-   * To disable it, change the value to false or provide an array of items to render.
+   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
    * @default false
    */
   enableShimmer?: boolean;
