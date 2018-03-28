@@ -66,8 +66,6 @@ export const getStyles = (
         top: '7px',
         left: 0,
         border: 0,
-        height: personaPresenceSize.size8,
-        width: personaPresenceSize.size8,
 
         selectors: {
           [HighContrastSelector]: {
@@ -77,37 +75,23 @@ export const getStyles = (
         }
       },
 
+      (size.isSize10 || size.isSize24 || size.isSize28 || size.isSize32) && {
+        height: personaPresenceSize.size8,
+        width: personaPresenceSize.size8,
+      },
+
       size.isSize16 && {
         height: personaPresenceSize.size6,
         width: personaPresenceSize.size6,
         borderWidth: '1.5px',
       },
 
-      size.isSize24 && {
-        height: personaPresenceSize.size8,
-        width: personaPresenceSize.size8,
-
+      (size.isSize24 || size.isSize28) && {
         selectors: {
           ':after': {
             display: 'none',
           }
         }
-      },
-
-      size.isSize28 && {
-        height: personaPresenceSize.size8,
-        width: personaPresenceSize.size8,
-
-        selectors: {
-          ':after': {
-            display: 'none',
-          }
-        }
-      },
-
-      size.isSize32 && {
-        height: personaPresenceSize.size8,
-        width: personaPresenceSize.size8,
       },
 
       size.isSize72 && {
@@ -231,14 +215,6 @@ export const getStyles = (
         backgroundColor: presenceColorDnd,
 
         selectors: {
-          ':before': {
-            backgroundColor: palette.contrastBlackDisabled,
-          },
-
-          ':after': {
-            backgroundColor: palette.contrastBlackDisabled,
-          },
-
           [HighContrastSelector]: {
             color: palette.black,
             backgroundColor: palette.contrastBlackDisabled,
@@ -256,16 +232,6 @@ export const getStyles = (
 
           [HighContrastBWSelector]: {
             backgroundColor: palette.contrastWhiteDisabled,
-
-            selectors: {
-              ':before': {
-                backgroundColor: palette.contrastWhiteDisabled,
-              },
-
-              ':after': {
-                backgroundColor: palette.contrastWhiteDisabled,
-              },
-            }
           }
         }
       },
