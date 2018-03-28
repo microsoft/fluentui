@@ -157,7 +157,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 50%;
               border: 1px solid transparent;
               box-sizing: border-box;
               color: #333333;
@@ -270,7 +270,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 50%;
               border: 1px solid transparent;
               box-sizing: border-box;
               color: #333333;

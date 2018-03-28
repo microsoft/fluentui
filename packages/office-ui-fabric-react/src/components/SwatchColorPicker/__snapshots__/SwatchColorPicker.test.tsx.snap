@@ -65,7 +65,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -258,7 +258,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -451,7 +451,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -644,7 +644,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -841,7 +841,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -1034,7 +1034,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -1227,7 +1227,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -1420,7 +1420,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -1617,7 +1617,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -1810,7 +1810,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -2003,7 +2003,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -2196,7 +2196,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: transparent;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;

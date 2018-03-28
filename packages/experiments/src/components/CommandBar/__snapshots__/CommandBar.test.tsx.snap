@@ -64,7 +64,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   background-color: #f4f4f4;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
@@ -176,7 +176,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   background-color: #f4f4f4;
-                  border-radius: 0px;
+                  border-radius: 50%;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
