@@ -12,9 +12,9 @@ import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example'
 import { ActivityItemPersonaExample } from './examples/ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './examples/ActivityItem.Compact.Example';
 
-const ActivityItemOverview = require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItemOverview.md');
-const ActivityItemDos = require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItemDos.md');
-const ActivityItemDonts = require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItemDonts.md');
+const ActivityItemOverview = require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md');
+const ActivityItemDos = require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md');
+const ActivityItemDonts = require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md');
 
 const ActivityItemBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Basic.Example.tsx') as string;
 const ActivityItemPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Persona.Example.tsx') as string;
