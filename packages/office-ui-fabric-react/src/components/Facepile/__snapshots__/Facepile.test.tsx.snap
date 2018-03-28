@@ -155,8 +155,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
               font-weight: 400;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
+              padding-left: 46px;
+              padding-right: 46px;
               padding-top: 0;
               position: relative;
               text-align: center;
