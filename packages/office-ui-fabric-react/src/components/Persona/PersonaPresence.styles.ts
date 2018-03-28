@@ -257,7 +257,7 @@ export const getStyles = (
         backgroundColor: colorPresenceDndBackground,
 
         selectors: {
-          ':before, :after': {
+          ':before': {
             backgroundColor: palette.contrastBlackDisabled,
           },
 
