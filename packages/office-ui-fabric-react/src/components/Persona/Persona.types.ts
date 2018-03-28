@@ -66,6 +66,13 @@ export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
   imageInitials?: string;
 
   /**
+   * Whether initials are calculated for phone numbers and number sequences.
+   * Example: Set property to true to get initials for project names consisting of numbers only.
+   * @defaultvalue false
+   */
+  allowPhoneInitials?: boolean;
+
+  /**
    * Optional custom renderer for the initials
    */
   onRenderInitials?: IRenderFunction<IPersonaProps>;
