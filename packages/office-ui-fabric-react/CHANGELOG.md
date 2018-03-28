@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 28 Mar 2018 10:16:39 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Mar 2018 19:26:19 GMT and should not be manually modified.
+
+## 5.74.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Use markdown-to-jsx for ActivityItem documentation
 
 ## 5.73.0
 Wed, 28 Mar 2018 10:16:39 GMT
