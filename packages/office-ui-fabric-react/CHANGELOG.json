@@ -2,6 +2,68 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.73.0",
+      "tag": "office-ui-fabric-react_v5.73.0",
+      "date": "Wed, 28 Mar 2018 10:16:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "130511930f8994e0010039781da6e1fdb2968e45",
+            "comment": "Persona: adding `allowPhoneInitials` prop to allow for calculating initials from phone numbers."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "bb7193052a77747ad3564d14fe1e347394a94570",
+            "comment": "ContextualMenu: SplitButtons in ContextualMenus are incorrectly using the menuLauncher portion of the splitButton for the tagrate when the  menuLauncher portion is  activated. This can lead to weird overhangs of the parent menu even if  directionalHintFixed is not true (e.g. it will overlap the primary portion of the  splitButton and potentially other items in the parent menu)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.21.0 <6.0.0` to `>=5.22.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.72.0",
+      "tag": "office-ui-fabric-react_v5.72.0",
+      "date": "Tue, 27 Mar 2018 20:22:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "8da21c4d2e485c6070aabf732fa3d80e617a7e60",
+            "comment": "add isSelectedOverride to suggestionItemProps"
+          },
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "85b7b1bb42ef65b216e4bc6343f0585b6f95dd6f",
+            "comment": "ContextualMenu / Split Button: Fixed styling problems For centered button content."
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "6fa074e6907cb6e9e47393f2fef30e93c55aa16b",
+            "comment": "Use markdown-to-jsx for ActivityItem documentation"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c7bb510473a3c87d3ca93978822cec621861776d",
+            "comment": "Checkbox: label text should be selectable, but not the checkmark icons."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.5.0 <6.0.0` to `>=5.6.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.71.0",
       "tag": "office-ui-fabric-react_v5.71.0",
       "date": "Tue, 27 Mar 2018 10:14:03 GMT",
