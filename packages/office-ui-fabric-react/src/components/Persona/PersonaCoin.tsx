@@ -64,9 +64,6 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: '',
-    coinProps: {
-      className: '', // HTMLDivElement type can't receive undefined className.
-    },
   };
 
   constructor(props: IPersonaCoinProps) {
@@ -80,6 +77,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
   public render(): JSX.Element | null {
     const {
+      className,
       coinProps,
       coinSize,
       getStyles: getStylesProp, // Use getStyles from props.
@@ -104,7 +102,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     // Use getStyles from props, or fall back to getStyles from styles file.
     const classNames = getClassNames(getStylesProp || getStyles, {
       theme: theme!,
-      className: coinProps!.className,
+      className: (coinProps && coinProps.className) ? coinProps.className : className,
       size,
     });
 
