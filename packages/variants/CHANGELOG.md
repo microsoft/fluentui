@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Mar 2018 01:39:41 GMT and should not be manually modified.
+
+## 5.3.1
+Thu, 29 Mar 2018 01:39:41 GMT
+
+### Patches
+
+- fix theme output from variants
 
 ## 5.3.0
 Sun, 25 Mar 2018 03:08:03 GMT
