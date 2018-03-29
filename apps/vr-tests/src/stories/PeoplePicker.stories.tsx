@@ -149,7 +149,10 @@ storiesOf('PeoplePicker', module)
   )).add('Normal with text', () => (
     <Screener
       steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
+        .setValue('.ms-BasePicker-input', 'a')
+        .snapshot('suggestiona')
         .setValue('.ms-BasePicker-input', 'al')
         .snapshot('suggestional')
         .end() }>
