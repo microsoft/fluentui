@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 27 Mar 2018 20:22:53 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Mar 2018 19:26:19 GMT and should not be manually modified.
+
+## 5.7.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
 
 ## 5.6.0
 Tue, 27 Mar 2018 20:22:53 GMT
