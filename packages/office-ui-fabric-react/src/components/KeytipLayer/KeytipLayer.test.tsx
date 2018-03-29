@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { KeytipManager, KeytipTree } from '../../utilities/keytips';
 import { mount } from 'enzyme';
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayerBase } from './KeytipLayer.base';
 import { IKeytipProps } from '../../Keytip';
 import {
   KeytipTransitionModifier,
@@ -34,7 +34,7 @@ describe('KeytipLayer', () => {
 
     // Create layer
     const defaultKeytipLayer = mount(
-      <KeytipLayer
+      <KeytipLayerBase
         content='Alt Windows'
         keytipStartSequences={ keytipStartSequences }
         keytipReturnSequences={ keytipReturnSequences }

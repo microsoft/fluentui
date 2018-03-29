@@ -11,7 +11,7 @@ import {
   ktpLayerId
 } from '../../Utilities';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { KeytipLayer } from '../../KeytipLayer';
+import { KeytipLayerBase } from '../../KeytipLayer';
 import { IKeytipProps, } from '../../Keytip';
 import { mount, ReactWrapper } from 'enzyme';
 
@@ -36,7 +36,7 @@ describe('KeytipManager', () => {
   beforeEach(() => {
     // Create layer
     defaultKeytipLayer = mount(
-      <KeytipLayer
+      <KeytipLayerBase
         content='Alt Windows'
         keytipStartSequences={ keytipStartSequences }
         keytipReturnSequences={ keytipReturnSequences }
@@ -273,7 +273,6 @@ describe('KeytipManager', () => {
     it('unregisterKeytip should correctly take into account the uniqueID', () => {
       // Register duplicate keytips, where the first will be deleted
       // Simulates React 16 lifecycle order
-      debugger;
       const uniqueID1 = keytipManager.registerKeytip(keytipBProps);
       const uniqueID2 = keytipManager.registerKeytip(keytipBProps);
       keytipManager.unregisterKeytip(keytipBProps, uniqueID1);
