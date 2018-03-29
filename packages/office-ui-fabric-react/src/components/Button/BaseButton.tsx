@@ -449,7 +449,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onKeyDown={ this._onMenuKeyDown }
         ref={ this._splitButtonContainer }
         data-is-focusable={ true }
-        onClick={ !disabled && !primaryDisabled ? onClick : undefined }
+        onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
       >
         <span
           style={ { 'display': 'flex' } }
@@ -460,6 +460,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         </span>
       </div>
     );
+  }
+
+  private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
+    if (this._isExpanded) {
+      this._dismissMenu();
+    }
+    if (this.props.onClick) {
+      this.props.onClick(ev);
+    }
   }
 
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
