@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { Label } from './Label';
+import { Label } from './index';
 
 describe('Label', () => {
 
