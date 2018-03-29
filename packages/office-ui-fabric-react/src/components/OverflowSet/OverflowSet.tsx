@@ -5,7 +5,6 @@ import {
   createRef,
   getNativeProps,
   divProperties,
-  getId,
   focusFirstChild
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
