@@ -65,7 +65,7 @@ dependencies:
   mustache: 2.3.0
   node-sass: 4.8.3
   office-ui-fabric-core: 9.6.0
-  office-ui-fabric-react: 5.73.0
+  office-ui-fabric-react: 5.74.0
   open: 0.0.5
   performance-now: 2.1.0
   postcss: 6.0.21
@@ -187,7 +187,7 @@ packages:
       uuid: 3.2.1
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/addon-actions/3.3.15
-    peerDependencies: &ref_9
+    peerDependencies: &ref_20
       '@storybook/addons': ^3.3.0
       react: '*'
       react-dom: '*'
@@ -204,7 +204,7 @@ packages:
       uuid: 3.2.1
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/addon-actions/3.3.15
-    peerDependencies: *ref_9
+    peerDependencies: *ref_20
     resolution:
       integrity: sha1-KDHlKUfcJYII3ReAS0efesxi2Fk=
   /@storybook/addon-links/3.3.15/8354a8e82d272778804b3598904ef203:
@@ -217,7 +217,7 @@ packages:
       react-dom: /react-dom/16.2.0/react@16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/addon-links/3.3.15
-    peerDependencies: &ref_11
+    peerDependencies: &ref_22
       '@storybook/addons': ^3.3.0
       react: '*'
       react-dom: '*'
@@ -231,14 +231,14 @@ packages:
       prop-types: 15.6.1
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/addon-links/3.3.15
-    peerDependencies: *ref_11
+    peerDependencies: *ref_22
     resolution:
       integrity: sha1-sK1BUd5ymqoTTs6GlH6d+VFYOv4=
   /@storybook/addon-options/3.2.3:
     dependencies:
       '@storybook/addons': 3.3.15
     dev: false
-    peerDependencies: &ref_7
+    peerDependencies: &ref_18
       react: '*'
       react-dom: '*'
     resolution:
@@ -250,7 +250,7 @@ packages:
       react-dom: /react-dom/16.2.0/react@16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/addon-options/3.2.3
-    peerDependencies: *ref_7
+    peerDependencies: *ref_18
     resolution:
       integrity: sha1-6jdA0onUKc52fpaZvzpkfddBWS0=
   /@storybook/addons/3.3.15:
@@ -279,7 +279,7 @@ packages:
       glamorous: /glamorous/4.12.1/glamor@2.20.40
       prop-types: 15.6.1
     dev: false
-    peerDependencies: &ref_12
+    peerDependencies: &ref_23
       react: '*'
       react-dom: '*'
     resolution:
@@ -293,7 +293,7 @@ packages:
       react-dom: /react-dom/16.2.0/react@16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/components/3.3.15
-    peerDependencies: *ref_12
+    peerDependencies: *ref_23
     resolution:
       integrity: sha1-UNwhOVixig5kwWJMUL39rwI2Cao=
   /@storybook/mantra-core/1.7.2:
@@ -330,7 +330,7 @@ packages:
     dev: false
     engines:
       npm: '>=3.0.0'
-    peerDependencies: &ref_3
+    peerDependencies: &ref_25
       react: ^0.14.7 || ^15.0.0 || ^16.0.0
     resolution:
       integrity: sha1-+eEqlYayzpXCTBN+q7i3FSfds2k=
@@ -346,7 +346,7 @@ packages:
     engines:
       npm: '>=3.0.0'
     id: onedrive.pkgs.visualstudio.com/@storybook/react-komposer/2.0.3
-    peerDependencies: *ref_3
+    peerDependencies: *ref_25
     resolution:
       integrity: sha1-+eEqlYayzpXCTBN+q7i3FSfds2k=
   /@storybook/react-simple-di/1.3.0:
@@ -366,7 +366,7 @@ packages:
     dev: false
     engines:
       npm: '>=3.0.0'
-    peerDependencies: &ref_4
+    peerDependencies: &ref_26
       react: ^0.14.7 || ^15.0.0 || ^16.0.0
     resolution:
       integrity: sha1-jDEsJli57q/ORw4cOeQZPwtb+bE=
@@ -378,7 +378,7 @@ packages:
     engines:
       npm: '>=3.0.0'
     id: onedrive.pkgs.visualstudio.com/@storybook/react-stubber/1.0.1
-    peerDependencies: *ref_4
+    peerDependencies: *ref_26
     resolution:
       integrity: sha1-jDEsJli57q/ORw4cOeQZPwtb+bE=
   /@storybook/react/3.3.15:
@@ -441,7 +441,7 @@ packages:
       webpack-dev-middleware: /webpack-dev-middleware/1.12.2/webpack@3.11.0
       webpack-hot-middleware: 2.21.2
     dev: false
-    peerDependencies: &ref_8
+    peerDependencies: &ref_19
       babel-core: ^6.26.0 || ^7.0.0-0
       react: '>=15.0.0 || ^16.0.0'
       react-dom: '>=15.0.0 || ^16.0.0'
@@ -510,7 +510,7 @@ packages:
       webpack-hot-middleware: 2.21.2
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/react/3.3.15
-    peerDependencies: *ref_8
+    peerDependencies: *ref_19
     resolution:
       integrity: sha1-jZ6qx35uhZf8y3TTzyQFt/CCd2A=
   /@storybook/ui/3.3.15:
@@ -539,7 +539,7 @@ packages:
       react-treebeard: 2.1.0
       redux: 3.7.2
     dev: false
-    peerDependencies: &ref_13
+    peerDependencies: &ref_24
       react: '*'
       react-dom: '*'
     resolution:
@@ -573,7 +573,7 @@ packages:
       redux: 3.7.2
     dev: false
     id: onedrive.pkgs.visualstudio.com/@storybook/ui/3.3.15
-    peerDependencies: *ref_13
+    peerDependencies: *ref_24
     resolution:
       integrity: sha1-ZDDBiZBGHlyfTbCOxJe1+5VBplQ=
   /@types/argparse/1.0.33:
@@ -706,7 +706,7 @@ packages:
       prop-types: 15.6.1
       tslib: 1.9.0
     dev: false
-    peerDependencies: &ref_1
+    peerDependencies: &ref_11
       react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
       react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
     resolution:
@@ -721,7 +721,7 @@ packages:
       tslib: 1.9.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/@uifabric/utilities/5.22.0
-    peerDependencies: *ref_1
+    peerDependencies: *ref_11
     resolution:
       integrity: sha1-5bDOh534GAAuaulAnRUh9r9sDOM=
   /abab/1.0.4:
@@ -1238,7 +1238,7 @@ packages:
       mkdirp: 0.5.1
       source-map-support: 0.5.4
     dev: false
-    peerDependencies: &ref_22
+    peerDependencies: &ref_35
       typescript: ^2
     resolution:
       integrity: sha1-TU0Qy6egTtQz36AzQlCEb7EaGlo=
@@ -1254,7 +1254,7 @@ packages:
       typescript: 2.7.2
     dev: false
     id: onedrive.pkgs.visualstudio.com/awesome-typescript-loader/3.5.0
-    peerDependencies: *ref_22
+    peerDependencies: *ref_35
     resolution:
       integrity: sha1-TU0Qy6egTtQz36AzQlCEb7EaGlo=
   /aws-sign2/0.6.0:
@@ -4112,7 +4112,7 @@ packages:
       react-reconciler: 0.7.0
       react-test-renderer: 16.2.0
     dev: false
-    peerDependencies: &ref_23
+    peerDependencies: &ref_14
       enzyme: ^3.0.0
       react: ^16.0.0-0
       react-dom: ^16.0.0-0
@@ -4132,7 +4132,7 @@ packages:
       react-test-renderer: /react-test-renderer/16.2.0/react@16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/enzyme-adapter-react-16/1.1.1
-    peerDependencies: *ref_23
+    peerDependencies: *ref_14
     resolution:
       integrity: sha1-qPQni0fggvvKFPW/se5Q7mUHF7Q=
   /enzyme-adapter-utils/1.3.0:
@@ -4141,7 +4141,7 @@ packages:
       object.assign: 4.1.0
       prop-types: 15.6.1
     dev: false
-    peerDependencies: &ref_24
+    peerDependencies: &ref_15
       react: 0.13.x || 0.14.x || ^15.0.0-0 || ^16.0.0-0
     resolution:
       integrity: sha1-1shXVoJsJXqFRNNizHpn6X6mmMc=
@@ -4153,7 +4153,7 @@ packages:
       react: 16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/enzyme-adapter-utils/1.3.0
-    peerDependencies: *ref_24
+    peerDependencies: *ref_15
     resolution:
       integrity: sha1-1shXVoJsJXqFRNNizHpn6X6mmMc=
   /enzyme/3.3.0:
@@ -4809,12 +4809,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-2uRqnXj74lKSJYzB54CkHZXAN4I=
-  /flow-parser/0.68.0:
+  /flow-parser/0.69.0:
     dev: false
     engines:
       node: '>=0.4.0'
     resolution:
-      integrity: sha1-nMlmIKEC4xajFLa81WIFzqzoYtg=
+      integrity: sha1-N4tRKNbQtVSosvFqTKPhq5ZJ8A4=
   /flush-write-stream/1.0.3:
     dependencies:
       inherits: 2.0.3
@@ -6872,7 +6872,7 @@ packages:
       babel-register: 6.26.0
       babylon: 6.18.0
       colors: 1.2.1
-      flow-parser: 0.68.0
+      flow-parser: 0.69.0
       lodash: 4.17.5
       micromatch: 2.3.11
       node-dir: 0.1.8
@@ -6893,7 +6893,7 @@ packages:
       babel-register: 6.26.0
       babylon: 7.0.0-beta.42
       colors: 1.2.1
-      flow-parser: 0.68.0
+      flow-parser: 0.69.0
       lodash: 4.17.5
       micromatch: 2.3.11
       neo-async: 2.5.0
@@ -7529,7 +7529,7 @@ packages:
     dev: false
     engines:
       node: '>= 4'
-    peerDependencies: &ref_27
+    peerDependencies: &ref_12
       react: '>= 0.14.0'
     resolution:
       integrity: sha1-MR9bezwYzv0GageABTFzDTpisCk=
@@ -7542,7 +7542,7 @@ packages:
     engines:
       node: '>= 4'
     id: onedrive.pkgs.visualstudio.com/markdown-to-jsx/6.6.0
-    peerDependencies: *ref_27
+    peerDependencies: *ref_12
     resolution:
       integrity: sha1-MR9bezwYzv0GageABTFzDTpisCk=
   /marked/0.3.19:
@@ -8322,7 +8322,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-KhZgU8ye+wlWUGPn/Td8yKywNBw=
-  /office-ui-fabric-react/5.73.0:
+  /office-ui-fabric-react/5.74.0:
     dependencies:
       '@microsoft/load-themed-styles': 1.7.48
       '@uifabric/icons': 5.7.0
@@ -8332,12 +8332,12 @@ packages:
       prop-types: 15.6.1
       tslib: 1.9.0
     dev: false
-    peerDependencies: &ref_28
+    peerDependencies: &ref_10
       react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
       react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
     resolution:
-      integrity: sha1-dldNM6cLcuFMr+pK3RuwHev/9C0=
-  /office-ui-fabric-react/5.73.0/react-dom@16.2.0+react@16.2.0:
+      integrity: sha1-tR5u+lHHqG4Fg2ysFkIXXhB/vuY=
+  /office-ui-fabric-react/5.74.0/react-dom@16.2.0+react@16.2.0:
     dependencies:
       '@microsoft/load-themed-styles': 1.7.48
       '@uifabric/icons': 5.7.0
@@ -8349,10 +8349,10 @@ packages:
       react-dom: /react-dom/16.2.0/react@16.2.0
       tslib: 1.9.0
     dev: false
-    id: onedrive.pkgs.visualstudio.com/office-ui-fabric-react/5.73.0
-    peerDependencies: *ref_28
+    id: onedrive.pkgs.visualstudio.com/office-ui-fabric-react/5.74.0
+    peerDependencies: *ref_10
     resolution:
-      integrity: sha1-dldNM6cLcuFMr+pK3RuwHev/9C0=
+      integrity: sha1-tR5u+lHHqG4Fg2ysFkIXXhB/vuY=
   /on-finished/2.3.0:
     dependencies:
       ee-first: 1.1.1
@@ -9413,7 +9413,7 @@ packages:
       inline-style-prefixer: 2.0.5
       prop-types: 15.6.1
     dev: false
-    peerDependencies: &ref_19
+    peerDependencies: &ref_32
       react: ^15.3.0 || ^16.0.0
     resolution:
       integrity: sha1-uGch0I29MDsGGkri67BsxuM1rnI=
@@ -9426,7 +9426,7 @@ packages:
       react: 16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/radium/0.19.6
-    peerDependencies: *ref_19
+    peerDependencies: *ref_32
     resolution:
       integrity: sha1-uGch0I29MDsGGkri67BsxuM1rnI=
   /raf/3.4.0:
@@ -9548,7 +9548,7 @@ packages:
       fuse.js: 3.2.0
       prop-types: 15.6.1
     dev: false
-    peerDependencies: &ref_14
+    peerDependencies: &ref_27
       react: ^0.14.7 || ^15.0.0 || ^16.0.0
     resolution:
       integrity: sha1-/BO/bwt4Xl/v6QhyTv6+xJNerv4=
@@ -9561,7 +9561,7 @@ packages:
       react: 16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-fuzzy/0.5.2
-    peerDependencies: *ref_14
+    peerDependencies: *ref_27
     resolution:
       integrity: sha1-/BO/bwt4Xl/v6QhyTv6+xJNerv4=
   /react-highlight/0.10.0:
@@ -9585,7 +9585,7 @@ packages:
       react-dom: /react-dom/16.2.0/react@16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-icon-base/2.1.0
-    peerDependencies: &ref_16
+    peerDependencies: &ref_29
       prop-types: '*'
       react: '*'
       react-dom: '*'
@@ -9596,7 +9596,7 @@ packages:
       prop-types: 15.6.1
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-icon-base/2.1.0
-    peerDependencies: *ref_16
+    peerDependencies: *ref_29
     resolution:
       integrity: sha1-oZbjP98eeqof2jrvu2i9rZ6Cp50=
   /react-icons/2.2.7/be9d48104242a75b5ed16d29253f9691:
@@ -9606,7 +9606,7 @@ packages:
       react-icon-base: /react-icon-base/2.1.0/be9d48104242a75b5ed16d29253f9691
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-icons/2.2.7
-    peerDependencies: &ref_15
+    peerDependencies: &ref_28
       react: ^0.14.0 || ^15.0.0 || ^16.0.0
       react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
     resolution:
@@ -9616,7 +9616,7 @@ packages:
       react-icon-base: /react-icon-base/2.1.0/prop-types@15.6.1
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-icons/2.2.7
-    peerDependencies: *ref_15
+    peerDependencies: *ref_28
     resolution:
       integrity: sha1-14YIJrJYVXUQ2sEGgKvqXKI89lA=
   /react-inspector/2.2.2:
@@ -9624,7 +9624,7 @@ packages:
       babel-runtime: 6.26.0
       is-dom: 1.0.9
     dev: false
-    peerDependencies: &ref_10
+    peerDependencies: &ref_21
       react: ^0.14.0 || ^15.0.0 || ^16.0.0
     resolution:
       integrity: sha1-wE9SSPqSq2wj43lg5yX7f0jDTQU=
@@ -9635,7 +9635,7 @@ packages:
       react: 16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-inspector/2.2.2
-    peerDependencies: *ref_10
+    peerDependencies: *ref_21
     resolution:
       integrity: sha1-wE9SSPqSq2wj43lg5yX7f0jDTQU=
   /react-modal/3.3.2:
@@ -9644,7 +9644,7 @@ packages:
       prop-types: 15.6.1
       warning: 3.0.0
     dev: false
-    peerDependencies: &ref_17
+    peerDependencies: &ref_30
       react: ^0.14.0 || ^15.0.0 || ^16
       react-dom: ^0.14.0 || ^15.0.0 || ^16
     resolution:
@@ -9658,7 +9658,7 @@ packages:
       warning: 3.0.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-modal/3.3.2
-    peerDependencies: *ref_17
+    peerDependencies: *ref_30
     resolution:
       integrity: sha1-sT2pSQZTp8drwOlgAyPrEHnGIOc=
   /react-reconciler/0.7.0:
@@ -9670,7 +9670,7 @@ packages:
     dev: false
     engines:
       node: '>=0.10.0'
-    peerDependencies: &ref_25
+    peerDependencies: &ref_16
       react: ^16.0.0
     resolution:
       integrity: sha1-lhSJQQPl8Tje7rXquvPugOsdAm0=
@@ -9685,7 +9685,7 @@ packages:
     engines:
       node: '>=0.10.0'
     id: onedrive.pkgs.visualstudio.com/react-reconciler/0.7.0
-    peerDependencies: *ref_25
+    peerDependencies: *ref_16
     resolution:
       integrity: sha1-lhSJQQPl8Tje7rXquvPugOsdAm0=
   /react-remarkable/1.1.3:
@@ -9716,7 +9716,7 @@ packages:
       prismjs: 1.13.0
       refractor: 2.3.0
     dev: false
-    peerDependencies: &ref_29
+    peerDependencies: &ref_13
       react: '>= 0.14.0'
     resolution:
       integrity: sha1-Z0A21IAxg/OjMgLe/DXluoPZkvU=
@@ -9730,7 +9730,7 @@ packages:
       refractor: 2.3.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-syntax-highlighter/7.0.2
-    peerDependencies: *ref_29
+    peerDependencies: *ref_13
     resolution:
       integrity: sha1-Z0A21IAxg/OjMgLe/DXluoPZkvU=
   /react-test-renderer/16.2.0:
@@ -9739,7 +9739,7 @@ packages:
       object-assign: 4.1.1
       prop-types: 15.6.1
     dev: false
-    peerDependencies: &ref_26
+    peerDependencies: &ref_17
       react: ^16.0.0
     resolution:
       integrity: sha1-vd8lmmuPzYVV8BKvyOrMI4hyohE=
@@ -9751,7 +9751,7 @@ packages:
       react: 16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-test-renderer/16.2.0
-    peerDependencies: *ref_26
+    peerDependencies: *ref_17
     resolution:
       integrity: sha1-vd8lmmuPzYVV8BKvyOrMI4hyohE=
   /react-transition-group/1.2.1:
@@ -9762,7 +9762,7 @@ packages:
       prop-types: 15.6.1
       warning: 3.0.0
     dev: false
-    peerDependencies: &ref_21
+    peerDependencies: &ref_34
       react: ^15.0.0 || ^16.0.0
       react-dom: ^15.0.0 || ^16.0.0
     resolution:
@@ -9778,7 +9778,7 @@ packages:
       warning: 3.0.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-transition-group/1.2.1
-    peerDependencies: *ref_21
+    peerDependencies: *ref_34
     resolution:
       integrity: sha1-4R9yslf5IbITIpp3TfRmEjRsfKY=
   /react-treebeard/2.1.0:
@@ -9790,7 +9790,7 @@ packages:
       shallowequal: 0.2.2
       velocity-react: 1.3.3
     dev: false
-    peerDependencies: &ref_18
+    peerDependencies: &ref_31
       react: ^15.5.4 || ^16.0.0
       react-dom: ^15.5.4 || ^16.0.0
     resolution:
@@ -9807,7 +9807,7 @@ packages:
       velocity-react: /velocity-react/1.3.3/react-dom@16.2.0+react@16.2.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/react-treebeard/2.1.0
-    peerDependencies: *ref_18
+    peerDependencies: *ref_31
     resolution:
       integrity: sha1-+9XPUQibbwmpsYNQqzvd9zbleAA=
   /react/15.6.2:
@@ -10161,7 +10161,7 @@ packages:
     engines:
       node: '>=0.10.0'
     id: onedrive.pkgs.visualstudio.com/request-promise-core/1.1.1
-    peerDependencies: &ref_6
+    peerDependencies: &ref_1
       request: ^2.34
     resolution:
       integrity: sha1-Pu4AssWqgyOc+wTFcA2jb4HNCLY=
@@ -10173,7 +10173,7 @@ packages:
     engines:
       node: '>=0.10.0'
     id: onedrive.pkgs.visualstudio.com/request-promise-core/1.1.1
-    peerDependencies: *ref_6
+    peerDependencies: *ref_1
     resolution:
       integrity: sha1-Pu4AssWqgyOc+wTFcA2jb4HNCLY=
   /request-promise-native/1.0.5/request@2.85.0:
@@ -10535,12 +10535,12 @@ packages:
     dev: false
     engines:
       node: '>= 4.3 < 5.0.0 || >= 5.10'
-    peerDependencies: &ref_30
+    peerDependencies: &ref_4
       node-sass: ^4.0.0
       webpack: ^2.0.0 || ^3.0.0 || ^4.0.0
     resolution:
       integrity: sha1-3S/bPn7v9KU/NbpqxAhxVIg1PQA=
-  /sass-loader/6.0.7/node-sass@4.8.3+webpack@4.3.0:
+  /sass-loader/6.0.7/node-sass@4.8.3+webpack@4.4.1:
     dependencies:
       clone-deep: 2.0.2
       loader-utils: 1.1.0
@@ -10548,12 +10548,12 @@ packages:
       neo-async: 2.5.0
       node-sass: 4.8.3
       pify: 3.0.0
-      webpack: 4.3.0
+      webpack: 4.4.1
     dev: false
     engines:
       node: '>= 4.3 < 5.0.0 || >= 5.10'
     id: onedrive.pkgs.visualstudio.com/sass-loader/6.0.7
-    peerDependencies: *ref_30
+    peerDependencies: *ref_4
     resolution:
       integrity: sha1-3S/bPn7v9KU/NbpqxAhxVIg1PQA=
   /sax/1.2.4:
@@ -10591,11 +10591,11 @@ packages:
     peerDependencies: *ref_0
     resolution:
       integrity: sha1-IYNvBgiqwXt4+ePiTa/xSlyhOj4=
-  /schema-utils/0.4.5/webpack@4.3.0:
+  /schema-utils/0.4.5/webpack@4.4.1:
     dependencies:
       ajv: 6.4.0
       ajv-keywords: /ajv-keywords/3.1.0/ajv@6.4.0
-      webpack: 4.3.0
+      webpack: 4.4.1
     dev: false
     engines:
       node: '>= 4.8.0 || >= 6.9.0 || >= 8.9.0'
@@ -11187,7 +11187,7 @@ packages:
       react-remarkable: 1.1.3
       string-raw: 1.0.1
     dev: false
-    peerDependencies: &ref_31
+    peerDependencies: &ref_36
       '@storybook/addons': ^3.0.0-alpha.0
       react: ^15.3.2
       react-dom: ^15.3.2
@@ -11202,7 +11202,7 @@ packages:
       string-raw: 1.0.1
     dev: false
     id: onedrive.pkgs.visualstudio.com/storybook-readme/3.0.6
-    peerDependencies: *ref_31
+    peerDependencies: *ref_36
     resolution:
       integrity: sha1-R1oUpbOdx6hcQjQxJTor8fWxx4Y=
   /stream-browserify/2.0.1:
@@ -11719,7 +11719,7 @@ packages:
       pkg-dir: 2.0.0
       yargs: 11.0.0
     dev: false
-    peerDependencies: &ref_32
+    peerDependencies: &ref_3
       jest: ^22.4.0 || ^22.5.0-alpha.1 || ^23.0.0-alpha.1
       typescript: 2.x
     resolution:
@@ -11739,7 +11739,7 @@ packages:
       yargs: 11.0.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/ts-jest/22.4.2
-    peerDependencies: *ref_32
+    peerDependencies: *ref_3
     resolution:
       integrity: sha1-ITe8CJmxTfsdWCV+4QsYq4otksU=
   /ts-loader/4.1.0:
@@ -11760,9 +11760,9 @@ packages:
       integrity: sha1-43qG/ajLuvI6BX9HPJ9Nxk5fwug=
   /tslint-microsoft-contrib/5.0.3:
     dependencies:
-      tsutils: 2.24.0
+      tsutils: 2.25.0
     dev: false
-    peerDependencies: &ref_34
+    peerDependencies: &ref_8
       tslint: ^5.1.0
       typescript: ^2.1.0
     resolution:
@@ -11770,16 +11770,16 @@ packages:
   /tslint-microsoft-contrib/5.0.3/tslint@5.9.1+typescript@2.7.2:
     dependencies:
       tslint: /tslint/5.9.1/typescript@2.7.2
-      tsutils: /tsutils/2.24.0/typescript@2.7.2
+      tsutils: /tsutils/2.25.0/typescript@2.7.2
       typescript: 2.7.2
     dev: false
     id: onedrive.pkgs.visualstudio.com/tslint-microsoft-contrib/5.0.3
-    peerDependencies: *ref_34
+    peerDependencies: *ref_8
     resolution:
       integrity: sha1-b8PiOBec1yBFwrQi5NZV9Bg6jVw=
   /tslint-react/3.5.1:
     dependencies:
-      tsutils: 2.24.0
+      tsutils: 2.25.0
     dev: false
     peerDependencies:
       tslint: ^5.1.0
@@ -11799,11 +11799,11 @@ packages:
       resolve: 1.6.0
       semver: 5.5.0
       tslib: 1.9.0
-      tsutils: 2.24.0
+      tsutils: 2.25.0
     dev: false
     engines:
       node: '>=4.8.0'
-    peerDependencies: &ref_33
+    peerDependencies: &ref_6
       typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev'
     resolution:
       integrity: sha1-ElX4ej/1frCw4fDmEKi0dIBGya4=
@@ -11820,32 +11820,32 @@ packages:
       resolve: 1.6.0
       semver: 5.5.0
       tslib: 1.9.0
-      tsutils: /tsutils/2.24.0/typescript@2.7.2
+      tsutils: /tsutils/2.25.0/typescript@2.7.2
       typescript: 2.7.2
     dev: false
     engines:
       node: '>=4.8.0'
     id: onedrive.pkgs.visualstudio.com/tslint/5.9.1
-    peerDependencies: *ref_33
+    peerDependencies: *ref_6
     resolution:
       integrity: sha1-ElX4ej/1frCw4fDmEKi0dIBGya4=
-  /tsutils/2.24.0:
+  /tsutils/2.25.0:
     dependencies:
       tslib: 1.9.0
     dev: false
-    peerDependencies: &ref_2
+    peerDependencies: &ref_7
       typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 2.10.0-dev'
     resolution:
-      integrity: sha1-qEE0NY4QxCA5/tCo8VSEE/EYr/c=
-  /tsutils/2.24.0/typescript@2.7.2:
+      integrity: sha1-FNYW71kiSjyft+tIPhwYK2Zlrl4=
+  /tsutils/2.25.0/typescript@2.7.2:
     dependencies:
       tslib: 1.9.0
       typescript: 2.7.2
     dev: false
-    id: onedrive.pkgs.visualstudio.com/tsutils/2.24.0
-    peerDependencies: *ref_2
+    id: onedrive.pkgs.visualstudio.com/tsutils/2.25.0
+    peerDependencies: *ref_7
     resolution:
-      integrity: sha1-qEE0NY4QxCA5/tCo8VSEE/EYr/c=
+      integrity: sha1-FNYW71kiSjyft+tIPhwYK2Zlrl4=
   /tty-browserify/0.0.0:
     dev: false
     resolution:
@@ -11977,15 +11977,15 @@ packages:
       webpack: ^2.0.0 || ^3.0.0 || ^4.0.0
     resolution:
       integrity: sha1-XuyUGy6bhTi+CiD8btolsUx8EEM=
-  /uglifyjs-webpack-plugin/1.2.4/webpack@4.3.0:
+  /uglifyjs-webpack-plugin/1.2.4/webpack@4.4.1:
     dependencies:
       cacache: 10.0.4
       find-cache-dir: 1.0.0
-      schema-utils: /schema-utils/0.4.5/webpack@4.3.0
+      schema-utils: /schema-utils/0.4.5/webpack@4.4.1
       serialize-javascript: 1.4.0
       source-map: 0.6.1
       uglify-es: 3.3.9
-      webpack: 4.3.0
+      webpack: 4.4.1
       webpack-sources: 1.1.0
       worker-farm: 1.6.0
     dev: false
@@ -12247,7 +12247,7 @@ packages:
       react-transition-group: 1.2.1
       velocity-animate: 1.5.1
     dev: false
-    peerDependencies: &ref_20
+    peerDependencies: &ref_33
       react: ^15.3.0 || ^16.0.0
       react-dom: ^15.3.0 || ^16.0.0
     resolution:
@@ -12262,7 +12262,7 @@ packages:
       velocity-animate: 1.5.1
     dev: false
     id: onedrive.pkgs.visualstudio.com/velocity-react/1.3.3
-    peerDependencies: *ref_20
+    peerDependencies: *ref_33
     resolution:
       integrity: sha1-1tRyds/Ivip1Yjh5sgFArFjBuCs=
   /vendors/1.0.1:
@@ -12427,11 +12427,11 @@ packages:
     dev: false
     engines:
       node: '>=6.11.5'
-    peerDependencies: &ref_35
+    peerDependencies: &ref_9
       webpack: ^4.0.0
     resolution:
       integrity: sha1-bivZ75E0U0RzchfiLikAGthTdRg=
-  /webpack-cli/2.0.13/webpack@4.3.0:
+  /webpack-cli/2.0.13/webpack@4.4.1:
     dependencies:
       chalk: 2.3.2
       cross-spawn: 6.0.5
@@ -12454,7 +12454,7 @@ packages:
       resolve-cwd: 2.0.0
       supports-color: 5.3.0
       v8-compile-cache: 1.1.2
-      webpack: 4.3.0
+      webpack: 4.4.1
       webpack-addons: 1.1.5
       yargs: 11.0.0
       yeoman-environment: 2.0.5
@@ -12463,7 +12463,7 @@ packages:
     engines:
       node: '>=6.11.5'
     id: onedrive.pkgs.visualstudio.com/webpack-cli/2.0.13
-    peerDependencies: *ref_35
+    peerDependencies: *ref_9
     resolution:
       integrity: sha1-bivZ75E0U0RzchfiLikAGthTdRg=
   /webpack-dev-middleware/1.12.2:
@@ -12476,7 +12476,7 @@ packages:
     dev: false
     engines:
       node: '>=0.6'
-    peerDependencies: &ref_36
+    peerDependencies: &ref_2
       webpack: ^1.0.0 || ^2.0.0 || ^3.0.0
     resolution:
       integrity: sha1-+PwRIM47T8VoDO7LQ9d3lmshEF4=
@@ -12492,10 +12492,10 @@ packages:
     engines:
       node: '>=0.6'
     id: onedrive.pkgs.visualstudio.com/webpack-dev-middleware/1.12.2
-    peerDependencies: *ref_36
+    peerDependencies: *ref_2
     resolution:
       integrity: sha1-+PwRIM47T8VoDO7LQ9d3lmshEF4=
-  /webpack-dev-middleware/3.0.1/webpack@4.3.0:
+  /webpack-dev-middleware/3.0.1/webpack@4.4.1:
     dependencies:
       loud-rejection: 1.6.0
       memory-fs: 0.4.1
@@ -12503,7 +12503,7 @@ packages:
       path-is-absolute: 1.0.1
       range-parser: 1.2.0
       url-join: 4.0.0
-      webpack: 4.3.0
+      webpack: 4.4.1
       webpack-log: 1.1.2
     dev: false
     engines:
@@ -12549,7 +12549,7 @@ packages:
       webpack: ^2.2.0 || ^3.0.0
     resolution:
       integrity: sha1-H09MeL8YlTePN2gVkQgS2veaIW8=
-  /webpack-dev-server/3.1.1/webpack@4.3.0:
+  /webpack-dev-server/3.1.1/webpack@4.4.1:
     dependencies:
       ansi-html: 0.0.7
       array-includes: 3.0.3
@@ -12576,8 +12576,8 @@ packages:
       spdy: 3.4.7
       strip-ansi: 3.0.1
       supports-color: 5.3.0
-      webpack: 4.3.0
-      webpack-dev-middleware: /webpack-dev-middleware/3.0.1/webpack@4.3.0
+      webpack: 4.4.1
+      webpack-dev-middleware: /webpack-dev-middleware/3.0.1/webpack@4.4.1
       webpack-log: 1.1.2
       yargs: 9.0.1
     dev: false
@@ -12652,7 +12652,7 @@ packages:
       node: '>=4.3.0 <5.0.0 || >=5.10'
     resolution:
       integrity: sha1-d9pFGx17SxF62vQaGpO1dC8k2JQ=
-  /webpack/4.3.0:
+  /webpack/4.4.1:
     dependencies:
       acorn: 5.5.3
       acorn-dynamic-import: 3.0.0
@@ -12668,16 +12668,16 @@ packages:
       mkdirp: 0.5.1
       neo-async: 2.5.0
       node-libs-browser: 2.1.0
-      schema-utils: /schema-utils/0.4.5/webpack@4.3.0
+      schema-utils: /schema-utils/0.4.5/webpack@4.4.1
       tapable: 1.0.0
-      uglifyjs-webpack-plugin: /uglifyjs-webpack-plugin/1.2.4/webpack@4.3.0
+      uglifyjs-webpack-plugin: /uglifyjs-webpack-plugin/1.2.4/webpack@4.4.1
       watchpack: 1.5.0
       webpack-sources: 1.1.0
     dev: false
     engines:
       node: '>=6.11.5'
     resolution:
-      integrity: sha1-CwweIRMRs5ld0lrtR6tG6mWL4HA=
+      integrity: sha1-sBBXiYkMKL/OnzkmI+9YUCVDKKQ=
   /websocket-driver/0.7.0:
     dependencies:
       http-parser-js: 0.4.11
@@ -13101,7 +13101,7 @@ packages:
       postcss-modules: 0.8.0
       raf: 3.4.0
       raw-loader: 0.5.1
-      sass-loader: /sass-loader/6.0.7/node-sass@4.8.3+webpack@4.3.0
+      sass-loader: /sass-loader/6.0.7/node-sass@4.8.3+webpack@4.4.1
       source-map-loader: 0.2.3
       source-map-support: 0.5.4
       style-loader: 0.19.1
@@ -13110,16 +13110,16 @@ packages:
       tslint: /tslint/5.9.1/typescript@2.7.2
       tslint-microsoft-contrib: /tslint-microsoft-contrib/5.0.3/tslint@5.9.1+typescript@2.7.2
       typescript: 2.7.2
-      webpack: 4.3.0
+      webpack: 4.4.1
       webpack-bundle-analyzer: 2.11.1
-      webpack-cli: /webpack-cli/2.0.13/webpack@4.3.0
-      webpack-dev-server: /webpack-dev-server/3.1.1/webpack@4.3.0
+      webpack-cli: /webpack-cli/2.0.13/webpack@4.4.1
+      webpack-dev-server: /webpack-dev-server/3.1.1/webpack@4.4.1
       webpack-notifier: 1.6.0
       yargs: 6.6.0
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-054Esj3bPKsmE46R9qp2bnLJXPgyMRXsg/O9/yQyrpMYmas5OAdRMfSQ6fHWplWD74a3nfF4ae0zpXPnJLe9KA==
+      integrity: sha512-WP2I4U7DQ7B2FkDZkStsLiWHS1I7ZhIUujuh3a+nM2S5kDakt6OdcVr66F8BLNGkNUXT33tch+u4/0Lgu9SupQ==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/example-app-base.tgz':
@@ -13135,7 +13135,7 @@ packages:
       es6-weak-map: 2.0.2
       highlight.js: 9.12.0
       markdown-to-jsx: /markdown-to-jsx/6.6.0/react@16.2.0
-      office-ui-fabric-react: /office-ui-fabric-react/5.73.0/react-dom@16.2.0+react@16.2.0
+      office-ui-fabric-react: /office-ui-fabric-react/5.74.0/react-dom@16.2.0+react@16.2.0
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
       react-syntax-highlighter: /react-syntax-highlighter/7.0.2/react@16.2.0
@@ -13143,7 +13143,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-Hl4gofkLhZeKXZcLMEZZ4JL9T8PW5Z+BRWrY/EFDNEKtrlqQG1x0XbjH++pkMSqFm4HWTXLovOVGQysD3cs/yA==
+      integrity: sha512-q1VsIHjSwZg4+bfd0InIxk9z6nE2+Tl67QQi3zvELQPaoNww5D8dDklrWOHeWjKsTAv0wnzOCs722gDNKhWM1A==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -13174,7 +13174,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-ZReqRYPF7Ng4U/hN8IKfaY0hV03OHt5Wg0NdDF/i6DGQxGEmqT/qJFY4OQ3icTwPi53r8wHxdMN/99owejpsOg==
+      integrity: sha512-EHotz2onxWCtx//kKuAc598kNsx8AIC2Jf4sMMMynExUr4ZqVQqXX8wnPKR9Rlrsg12cmmbpEHM0MikrLaCitQ==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -13201,7 +13201,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-/JaNFu2tD3BJk7G/wHyYDrGvxNRMhdndKSIpNODbUQ8hKTxskTxFiIy1GFmTA5VGM8a6Dpx0GAnCIARzpg3slA==
+      integrity: sha512-L2YHd6OWcTNNFpxHNyC+vnffJeCgIKoWcFjwhWGU/b16CJWQSsEWMcLnalMWlMsKVsNcATcKaLkP0uM01lpZTQ==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -13214,7 +13214,7 @@ packages:
     dev: false
     name: '@rush-temp/file-type-icons'
     resolution:
-      integrity: sha512-G6sIflo4ngMljkw/8qTK9tthfA4RSV6yQFnwPp8jGBLYri3uFzQAU2ZXK8ttMgt8X9w5rkTY60ek9DYXoRlAPw==
+      integrity: sha512-4c1yM82Cg0F6h7g29sILjatyXCJs8uH/iD2HxcFX2Te/jt9j9gnryUfrqlh8LpUm30J5PFYi3EdZ29lRi5lhXw==
       tarball: 'file:projects/file-type-icons.tgz'
     version: 0.0.0
   'file:projects/icons.tgz':
@@ -13223,7 +13223,7 @@ packages:
     dev: false
     name: '@rush-temp/icons'
     resolution:
-      integrity: sha512-zr2f8csiSmUD7RyW6Vn/qAWorX9/XF9vSdBN/w+GNREaBcFjduIV0M6DsZgopg0Qe8oyQw76Qr3t0vyPRKGqaQ==
+      integrity: sha512-BXsGucFvCmCyLUR9Lsr0BMgxsI8oWuT+q03PdEGJ90SoRZvs/0ogYMt1mgqqKmBCtkvhwffBJ9mXxfRiM3ogHQ==
       tarball: 'file:projects/icons.tgz'
     version: 0.0.0
   'file:projects/jest-serializer-merge-styles.tgz':
@@ -13232,7 +13232,7 @@ packages:
     dev: false
     name: '@rush-temp/jest-serializer-merge-styles'
     resolution:
-      integrity: sha512-XPHgf7pY+2TUHFrGjN4JrIk0Q5n99uwN5EFW8owzd4+i5tf3kY+V1Kpju+I1Fp+V14vDWJutx4yEULUow0NL2g==
+      integrity: sha512-4L9vtvAxJQBM/y3t3Oa3zoiSjhuSeB5HozYAj1LneFTTX9ROGTQ64GCEC45ol3GhHsylUb49Iau7voeVAxIdRg==
       tarball: 'file:projects/jest-serializer-merge-styles.tgz'
     version: 0.0.0
   'file:projects/merge-styles.tgz':
@@ -13242,7 +13242,7 @@ packages:
     dev: false
     name: '@rush-temp/merge-styles'
     resolution:
-      integrity: sha512-5d0aoOPrU7aBHWwL9tRGJzo3p5yemjodQiBDe+C3tW4sf/e6GNKBnWhQS/svVXs7LbmQ8HEMThyYrBoRud5tYw==
+      integrity: sha512-BvMaQ9Q7YfVXHPQSjRkxwzLI7pbm6Gy5sTUqL+OoF5cYyZduwf2hupW5HCWmXx0gCUO1QoXoiZyWPPHQzA3sPw==
       tarball: 'file:projects/merge-styles.tgz'
     version: 0.0.0
   'file:projects/office-ui-fabric-react-tslint.tgz':
@@ -13251,7 +13251,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react-tslint'
     resolution:
-      integrity: sha512-zpNMJFqYrJaiu8H9ci1fUNuoWBYQsMbUxSjgIYhLp/trewPtDEBHEId5qHZZpl8zvfH3+Yen0bM5ekI4JfcSbQ==
+      integrity: sha512-86wk981C06G+uUK94+OQ99iItPOyRT0WkDN2kPoaAOcC0woaRktghLLU0TAJuDtmuVMOvh99LCct10A9IbHcCg==
       tarball: 'file:projects/office-ui-fabric-react-tslint.tgz'
     version: 0.0.0
   'file:projects/office-ui-fabric-react.tgz':
@@ -13286,7 +13286,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-PUQZp4AmwEhwhxoOtyYnzWd5sr+SPVhONfgkalR0wFitmL+5SLPK2Qvh6Ja+j2PbO/hsiCLBLJrT4vkw1+/1HQ==
+      integrity: sha512-r33UQvky0Xhshoa3gHyCRZ7V7caSZhEeAtvQYcTph1oTVLv1Hr+kxT7nsziKhQ69WwQY6R85Y15jabNmUXtVNw==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/ssr-tests.tgz':
@@ -13301,11 +13301,11 @@ packages:
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
       tslib: 1.9.0
-      webpack: 4.3.0
+      webpack: 4.4.1
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-UU8uUlW7NfO//TfJnZHRr/WyPZtk3ZpfdtmDdGUlZvuH9Z+rw9UDC5YdN4X9JdETxke85/FHl2SCkG9igrQmww==
+      integrity: sha512-wwQa/u/u9LHNRwrQkXnLIizr5JXm3bZeuWdHP/g/aRKmKYiZF/dJUkKnttlsRZtt01aUJ7kH+miI0KGagUL7kw==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -13322,7 +13322,7 @@ packages:
     dev: false
     name: '@rush-temp/styling'
     resolution:
-      integrity: sha512-LACrcaIUYG4n7yYIuf+Nfx287yfyjSe8TEPnjE7+MI8DdDxWP15hk+a4xx3ENlwZqnHR7RSqemumlutXJBTRoQ==
+      integrity: sha512-t8fH7+b35paZPMVYk++AjU6VnfSliICDjGX9sH/xFRINMPy3P6NY2fLmLpTDNMY31xWMsto3kQaPFwvgc4g+Zw==
       tarball: 'file:projects/styling.tgz'
     version: 0.0.0
   'file:projects/test-bundle-button.tgz':
@@ -13337,7 +13337,7 @@ packages:
     dev: false
     name: '@rush-temp/test-bundle-button'
     resolution:
-      integrity: sha512-OwhI8tvQHzz9XDtkvxd4MvJimk9xKIyEru7OhVMQtBAJiApikDolsyrnttAR8I5bC004QD1Ijg+j8wr/Vrrmvg==
+      integrity: sha512-TZ60BRPLjgPyhKQLcHjRbxwBOetPPlI82+EQY5MPsKKXgt/u4qo2F02sc8zjhhweOcShOlpUNAPyyNd4pnDn/w==
       tarball: 'file:projects/test-bundle-button.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
@@ -13356,7 +13356,7 @@ packages:
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-ueR5xDl7xsRgBEvao7op3J00KN2Ks+Sa8nsBo4LvcrSFt999yf5ndxpr1DLmbFcL7cvErT+uThgR7kxL3OVMhA==
+      integrity: sha512-+1vtxYITrXJ04z00HxiM//eFBnuTN9NuJJNmBkLJxNk6mEYU0iePioAYx0Ay3zTEJcrv2m7zsq/FTpEFKVtmCQ==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/utilities.tgz':
@@ -13379,7 +13379,7 @@ packages:
     dev: false
     name: '@rush-temp/utilities'
     resolution:
-      integrity: sha512-UfZfMf9sGvwlrClrdDT/Xk6d93OpkAgGVYrZskw4arlTUzXIDHrjiPrlxDUtFa0fCV6BdRzJdvyvKLq4Sr7HSg==
+      integrity: sha512-oZECaa+oFcRxSJoD6JjPYiU2vA+44UVbC/9zvDw4hQvwuOXaMUsQkr72wNPV0A8OvCtAD1fuiQwwS4mfHUoKig==
       tarball: 'file:projects/utilities.tgz'
     version: 0.0.0
   'file:projects/variants.tgz':
@@ -13389,7 +13389,7 @@ packages:
     dev: false
     name: '@rush-temp/variants'
     resolution:
-      integrity: sha512-dW+fvtimuH4Bs+7ZYqIdDj9jx7DkPV18gaBQ5J3LrjLktE+B1l8H3ValYgzRUIuCbFN5wBVH8GmbKHWTbFlEJA==
+      integrity: sha512-yi85FhefRl/PmhF/sAxl18Ymg6Ehz/X2ysfpOEw0G4wpuwqwRG0nawpXrqbMZQt4hEHdDdaINH4eCQljlXItaA==
       tarball: 'file:projects/variants.tgz'
     version: 0.0.0
   'file:projects/vr-tests.tgz':
@@ -13415,7 +13415,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-W4bCwD2fhHygajdTkLkGPxepe7lyvbuvz2zQapJcWMu3BTQhobPHOcKuVKb/u0CGsxo54jfmFLzUOOisC+Dpsw==
+      integrity: sha512-BL3JjrBh8d85RLKI68bR6PrCD1mX0Kias1fhPBbMjpM19jjozuw9qtax43/XoT4aFPjISHyJnB4e0eOCdvFV+Q==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   github.com/screener-io/ngrok/ca2e459b401722ae8c033491aaacaf87125cd238:
@@ -13496,7 +13496,7 @@ specifiers:
   jest-cli: ^22.4.0
   jest-environment-jsdom: ^22.4.0
   json-loader: ^0.5.7
-  markdown-to-jsx: ^6.5.2
+  markdown-to-jsx: ^6.6.0
   mocha: ^3.3.0
   mustache: ^2.3.0
   node-sass: ^4.5.3
