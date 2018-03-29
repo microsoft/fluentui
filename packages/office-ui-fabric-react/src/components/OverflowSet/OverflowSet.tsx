@@ -4,7 +4,7 @@ import {
   BaseComponent,
   createRef,
   getNativeProps,
-  buttonProperties,
+  divProperties,
   getId,
   focusFirstChild
 } from '../../Utilities';
@@ -47,6 +47,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     if (doNotContainWithinFocusZone) {
       Tag = 'div';
       uniqueComponentProps = {
+        ...getNativeProps(this.props, divProperties),
         ref: this._divContainer
       };
     } else {
@@ -60,7 +61,6 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
     return (
       <Tag
-        { ...getNativeProps(this.props, buttonProperties) }
         { ...uniqueComponentProps }
         className={ mergeStyles(
           'ms-OverflowSet',
