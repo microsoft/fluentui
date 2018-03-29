@@ -18,6 +18,8 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
+    const divider = () => <span>*</span>;
+
     let component = renderer.create(
       <Breadcrumb
         items={ items }
@@ -32,6 +34,17 @@ describe('Breadcrumb', () => {
       <Breadcrumb
         items={ items }
         maxDisplayedItems={ 2 }
+      />
+    );
+
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // With custom divider
+    component = renderer.create(
+      <Breadcrumb
+        items={ items }
+        dividerAs={ divider }
       />
     );
 
