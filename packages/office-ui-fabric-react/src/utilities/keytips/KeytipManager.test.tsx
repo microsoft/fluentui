@@ -273,6 +273,7 @@ describe('KeytipManager', () => {
     it('unregisterKeytip should correctly take into account the uniqueID', () => {
       // Register duplicate keytips, where the first will be deleted
       // Simulates React 16 lifecycle order
+      debugger;
       const uniqueID1 = keytipManager.registerKeytip(keytipBProps);
       const uniqueID2 = keytipManager.registerKeytip(keytipBProps);
       keytipManager.unregisterKeytip(keytipBProps, uniqueID1);

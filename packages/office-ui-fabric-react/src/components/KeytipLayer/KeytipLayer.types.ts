@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { IKeytipTransitionKey } from '../../Utilities';
+import { IKeytipTransitionKey, IStyleFunction } from '../../Utilities';
 import { KeytipLayer } from './KeytipLayer';
+import { IStyle } from '../../Styling';
 
-export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
+export interface IKeytipLayer {
+}
+
+export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   /**
    * Optional callback to access the KeytipLayer component. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: KeytipLayer | null) => void;
+  componentRef?: (component: IKeytipLayer | null) => void;
 
   /**
    * String to put inside the layer to be used for the aria-describedby for the component with the keytip
@@ -51,4 +55,13 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
    * @type {() => void)}
    */
   onEnterKeytipMode?: () => void;
+
+  getStyles?: IStyleFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>;
+}
+
+export interface IKeytipLayerStyles {
+  innerContent: IStyle;
+}
+
+export interface IKeytipLayerStyleProps {
 }

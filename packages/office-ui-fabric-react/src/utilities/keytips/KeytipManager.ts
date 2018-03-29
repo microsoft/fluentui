@@ -1,4 +1,4 @@
-import { KeytipLayer } from '../../KeytipLayer';
+import { KeytipLayerBase } from '../../KeytipLayer';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
 import {
@@ -21,7 +21,7 @@ export class KeytipManager {
   public keytips: IKeytipProps[] = [];
   public currentSequence: IKeySequence;
 
-  private _layer: KeytipLayer;
+  private _layer: KeytipLayerBase;
   private _enableSequences: IKeytipTransitionKey[];
   private _exitSequences: IKeytipTransitionKey[];
   private _returnSequences: IKeytipTransitionKey[];
@@ -43,7 +43,7 @@ export class KeytipManager {
    *
    * @param layer - KeytipLayer object
    */
-  public init(layer: KeytipLayer): void {
+  public init(layer: KeytipLayerBase): void {
     this._layer = layer;
     this.currentSequence = { keys: [] };
     // All guaranteed to be set because of defaultProps in KeytipLayer
