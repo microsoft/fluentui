@@ -45,7 +45,7 @@ export class KeytipManager {
    */
   public init(layer: KeytipLayerBase): void {
     this._layer = layer;
-    this.currentSequence = { keys: [] };
+    this.currentSequence = '';
     // All guaranteed to be set because of defaultProps in KeytipLayer
     this._enableSequences = this._layer.props.keytipStartSequences!;
     this._exitSequences = this._layer.props.keytipExitSequences!;
@@ -250,8 +250,8 @@ export class KeytipManager {
             this.keytipTree.currentKeytip.onReturn(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
           }
 
-          // Clean currentSequence array
-          this.currentSequence.keys = [];
+          // Reset currentSequence
+          this.currentSequence = '';
           // Return pointer to its parent
           this.keytipTree.currentKeytip = this.keytipTree.getNode(this.keytipTree.currentKeytip.parent!);
           // Show children keytips of the new currentKeytip
@@ -275,7 +275,7 @@ export class KeytipManager {
    */
   public processInput(key: string): void {
     // Concat the input key with the current sequence
-    const currentSequence: IKeySequence = { keys: [...this.currentSequence.keys, ...[key]] };
+    const currentSequence: IKeySequence = this.currentSequence + key;
 
     // currentKeytip must be defined, otherwise we haven't entered keytip mode yet
     if (this.keytipTree.currentKeytip) {
@@ -298,7 +298,7 @@ export class KeytipManager {
         }
 
         // Clear currentSequence
-        this.currentSequence = { keys: [] };
+        this.currentSequence = '';
         return;
       }
 

@@ -21,7 +21,7 @@ export class KeytipLanguageExample extends React.Component<{}, IKeytipExampleSta
     // Setup keytips
     this.keytipMap.Keytip1 = {
       content: 'ы ñ خ',
-      keySequences: [{ keys: ['c'] }],
+      keySequences: ['c'],
     } as IKeytipProps;
   }
 

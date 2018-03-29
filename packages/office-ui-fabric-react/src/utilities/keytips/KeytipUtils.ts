@@ -18,7 +18,7 @@ import { KeytipManager } from './KeytipManager';
  * @param seq1 - IKeySequence to append
  */
 export function addKeytipSequence(sequences: IKeySequence[], seq1: IKeySequence): IKeySequence[] {
-  return [...sequences, { keys: [...seq1.keys] }];
+  return sequences.concat(seq1);
 }
 
 /**

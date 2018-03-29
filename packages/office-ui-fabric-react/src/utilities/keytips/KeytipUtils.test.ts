@@ -10,19 +10,19 @@ describe('getAriaDescribedBy', () => {
   });
 
   it('for one singular key sequence', () => {
-    const keySequence: IKeySequence[] = [{ keys: ['b'] }];
+    const keySequence: IKeySequence[] = ['b'];
     const ariaDescribedBy = getAriaDescribedBy(keySequence);
     expect(ariaDescribedBy).toEqual(' ' + ktpLayerId + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequence));
   });
 
   it('for one complex key sequence', () => {
-    const keySequence: IKeySequence[] = [{ keys: ['b', 'c'] }];
+    const keySequence: IKeySequence[] = ['bc'];
     const ariaDescribedBy = getAriaDescribedBy(keySequence);
     expect(ariaDescribedBy).toEqual(' ' + ktpLayerId + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequence));
   });
 
   it('for multiple singular key sequences', () => {
-    const keySequences: IKeySequence[] = [{ keys: ['b'] }, { keys: ['c'] }];
+    const keySequences: IKeySequence[] = ['b', 'c'];
     const ariaDescribedBy = getAriaDescribedBy(keySequences);
     expect(ariaDescribedBy).toEqual(' ' + ktpLayerId +
       ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID([keySequences[0]]) +
@@ -30,7 +30,7 @@ describe('getAriaDescribedBy', () => {
   });
 
   it('for multiple complex key sequences', () => {
-    const keySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
+    const keySequences: IKeySequence[] = ['an', 'cb'];
     const ariaDescribedBy = getAriaDescribedBy(keySequences);
     expect(ariaDescribedBy).toEqual(' ' + ktpLayerId +
       ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID([keySequences[0]]) +
@@ -41,8 +41,8 @@ describe('getAriaDescribedBy', () => {
 it('getNativeKeytipProps will handle overflowSequence correctly', () => {
   const keytipProps = {
     content: 'A',
-    keySequences: [{ keys: ['a'] }],
-    overflowSetSequence: [{ keys: ['x'] }]
+    keySequences: ['a'],
+    overflowSetSequence: ['x']
   };
   const nativeProps = getNativeKeytipProps(keytipProps);
   expect(nativeProps['data-ktp-execute-target']).toEqual('ktp-x-a');

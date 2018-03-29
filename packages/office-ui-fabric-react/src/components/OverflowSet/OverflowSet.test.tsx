@@ -56,45 +56,45 @@ describe('OverflowSet', () => {
     const keytipManager = KeytipManager.getInstance();
 
     beforeEach(() => {
-      keytipManager.currentSequence = { keys: [] };
+      keytipManager.currentSequence = '';
 
       overflowKeytips = {
         overflowItemKeytip1: {
           content: 'A',
-          keySequences: [{ keys: ['a'] }],
+          keySequences: ['a'],
           onExecute: jest.fn()
         },
         overflowItemKeytip2: {
           content: 'B',
-          keySequences: [{ keys: ['b'] }],
+          keySequences: ['b'],
           onExecute: jest.fn()
 
         },
         overflowItemKeytip3: {
           content: 'C',
-          keySequences: [{ keys: ['c'] }],
+          keySequences: ['c'],
           onExecute: jest.fn()
 
         },
         overflowItemKeytip4: {
           content: 'D',
-          keySequences: [{ keys: ['d'] }],
+          keySequences: ['d'],
           onExecute: jest.fn()
         },
         overflowItemKeytip5: {
           content: 'E',
-          keySequences: [{ keys: ['d'] }, { keys: ['e'] }],
+          keySequences: ['d', 'e'],
           onExecute: jest.fn()
         },
         overflowItemKeytip6: {
           content: 'F',
-          keySequences: [{ keys: ['d'] }, { keys: ['f'] }],
+          keySequences: ['d', 'f'],
           onExecute: jest.fn()
         },
         overflowButtonKeytip: {
           // Overflow button
           content: 'X',
-          keySequences: [{ keys: ['x'] }],
+          keySequences: ['x'],
           onExecute: (el: HTMLElement) => {
             // Find the overflow button and manually click it to open the overflow menu
             overflowSet.find(constructKeytipExecuteTargetFromId('ktp-x')).simulate('click');
@@ -224,8 +224,8 @@ describe('OverflowSet', () => {
         keytipManager.processInput('x');
 
         // Opening the submenu should register the two keytips for those items
-        const modifiedKeytip3Sequence = [{ keys: ['x'] }, { keys: ['c'] }];
-        const modifiedKeytip4Sequence = [{ keys: ['x'] }, { keys: ['d'] }];
+        const modifiedKeytip3Sequence = ['x', 'c'];
+        const modifiedKeytip4Sequence = ['x', 'd'];
         expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip3Sequence))).toBeDefined();
         expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip4Sequence))).toBeDefined();
 
@@ -401,8 +401,8 @@ describe('OverflowSet', () => {
           keytipManager.processInput('d');
 
           // The two submenu keytips should be registered with their modified sequence in the tree
-          const modifiedKeytip5Sequence = [{ keys: ['x'] }, { keys: ['d'] }, { keys: ['e'] }];
-          const modifiedKeytip6Sequence = [{ keys: ['x'] }, { keys: ['d'] }, { keys: ['f'] }];
+          const modifiedKeytip5Sequence = ['x', 'd', 'e'];
+          const modifiedKeytip6Sequence = ['x', 'd', 'f'];
           const subMenu5Keytip = keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip5Sequence));
           expect(subMenu5Keytip).toBeDefined();
           const subMenu6Keytip = keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip6Sequence));

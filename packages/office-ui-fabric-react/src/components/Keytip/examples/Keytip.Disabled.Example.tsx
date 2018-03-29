@@ -21,7 +21,7 @@ export class KeytipDisabledExample extends React.Component<{}, IKeytipExampleSta
     // Setup keytips
     this.keytipMap.Keytip1 = {
       content: 'B',
-      keySequences: [{ keys: ['b'] }],
+      keySequences: ['b'],
       disabled: true
     } as IKeytipProps;
   }

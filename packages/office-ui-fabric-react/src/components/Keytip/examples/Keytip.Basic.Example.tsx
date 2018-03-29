@@ -31,7 +31,7 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
     // Setup keytips
     this.keytipMap.Keytip1 = {
       content: 'A',
-      keySequences: [{ keys: ['a'] }],
+      keySequences: ['a'],
     } as IKeytipProps;
   }
 

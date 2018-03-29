@@ -24,11 +24,11 @@ describe('KeytipLayer', () => {
     // Add some keytips to the Manager
     const keytipB: IKeytipProps = {
       content: 'B',
-      keySequences: [{ keys: ['b'] }]
+      keySequences: ['b']
     };
     const keytipG: IKeytipProps = {
       content: 'G',
-      keySequences: [{ keys: ['g'] }]
+      keySequences: ['g']
     };
     keytipManager.keytips = [keytipB, keytipG];
 

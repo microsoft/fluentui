@@ -1,22 +1,7 @@
 import { ktpPrefix, ktpSeparator } from './KeytipConstants';
-import { find, addElementAtIndex } from './array';
+import { addElementAtIndex } from './array';
 
-export interface IKeySequence {
-  keys: string[];
-}
-
-/**
- * Tests for equality between two IKeySequences
- *
- * @param seq1 - First IKeySequence
- * @param seq2 - Second IKeySequence
- * @returns {boolean} T/F if the two sequences are equal
- */
-export function keySequencesAreEqual(seq1: IKeySequence, seq2: IKeySequence): boolean {
-  let keyCodes1 = seq1.keys.join();
-  let keyCodes2 = seq2.keys.join();
-  return keyCodes1 === keyCodes2;
-}
+export type IKeySequence = string;
 
 /**
  * Tests for equality between two arrays of IKeySequence
@@ -31,7 +16,7 @@ export function fullKeySequencesAreEqual(seq1: IKeySequence[], seq2: IKeySequenc
   }
 
   for (let i = 0; i < seq1.length; i++) {
-    if (!keySequencesAreEqual(seq1[i], seq2[i])) {
+    if (seq1[i] !== seq2[i]) {
       return false;
     }
   }
@@ -40,20 +25,7 @@ export function fullKeySequencesAreEqual(seq1: IKeySequence[], seq2: IKeySequenc
 }
 
 /**
- * Tests if 'seq' is present in 'sequences'
- *
- * @param sequences - Array of IKeySequence
- * @param seq - IKeySequence to check for in 'sequences'
- * @returns {boolean} T/F if 'sequences' contains 'seq'
- */
-export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence): boolean {
-  return !!find(sequences, (sequence: IKeySequence) => {
-    return keySequencesAreEqual(sequence, seq);
-  });
-}
-
-/**
- * Method returns true if the key squence of the object with minimum length is in the other key sequence.
+ * Method returns true if the key squence with minimum length is in the other key sequence.
  * If the minium length is zero, then it will default to false.
  *
  * @param seq1 - First IKeySequence
@@ -61,12 +33,10 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
  * @returns {boolean} T/F if seq1 starts with seq2, or vice versa
  */
 export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): boolean {
-  let keyCodes1 = seq1.keys.join();
-  let keyCodes2 = seq2.keys.join();
-  if (keyCodes1.length === 0 || keyCodes2.length === 0) {
+  if (seq1.length === 0 || seq2.length === 0) {
     return false;
   }
-  return keyCodes1.indexOf(keyCodes2) === 0 || keyCodes2.indexOf(keyCodes1) === 0;
+  return seq1.indexOf(seq2) === 0 || seq2.indexOf(seq1) === 0;
 }
 
 /**
@@ -78,14 +48,16 @@ export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): b
  */
 export function convertSequencesToKeytipID(keySequences: IKeySequence[]): string {
   return keySequences.reduce((prevValue: string, keySequence: IKeySequence): string => {
-    return prevValue + ktpSeparator + keySequence.keys.join(ktpSeparator);
+    return prevValue + ktpSeparator + keySequence.split('').join(ktpSeparator);
   }, ktpPrefix);
 }
 
 /**
+ * Merges an overflow sequence with a key sequence
  *
- * @param keySequences
- * @param overflowKeySequences
+ * @param keySequences - Full sequence for one keytip
+ * @param overflowKeySequences - Full overflow keytip sequence
+ * @returns {IKeySequence[]} Sequence that will be used by the keytip when in the overflow
  */
 export function mergeOverflowKeySequences(keySequences: IKeySequence[], overflowKeySequences: IKeySequence[]): IKeySequence[] {
   const overflowSequenceLen = overflowKeySequences.length;

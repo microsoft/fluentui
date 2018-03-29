@@ -37,7 +37,7 @@ describe('KeytipTree', () => {
     it('directly under root works correctly', () => {
       // TreeNode C, will be child of root
       const keytipIdC = ktpFullPrefix + 'c';
-      const sampleKeySequence: IKeySequence[] = [{ keys: ['c'] }];
+      const sampleKeySequence: IKeySequence[] = ['c'];
 
       keytipTree.addNode(createKeytipProps(sampleKeySequence));
 
@@ -59,10 +59,10 @@ describe('KeytipTree', () => {
     it('two levels from root', () => {
       // Parent
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipSequenceC: IKeySequence[] = ['c'];
 
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      const keytipSequenceB: IKeySequence[] = ['c', 'b'];
 
       keytipTree.addNode(createKeytipProps(keytipSequenceC));
       keytipTree.addNode(createKeytipProps(keytipSequenceB));
@@ -85,11 +85,11 @@ describe('KeytipTree', () => {
     it('add a child node before its parent', () => {
       // Parent
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipSequenceC: IKeySequence[] = ['c'];
 
       // Child
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      const keytipSequenceB: IKeySequence[] = ['c', 'b'];
 
       keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
@@ -133,23 +133,23 @@ describe('KeytipTree', () => {
 
       // Node B
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      const keytipSequenceB: IKeySequence[] = ['c', 'b'];
 
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipSequenceC: IKeySequence[] = ['c'];
 
       // Node D
       const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + 'd';
-      const keytipSequenceD: IKeySequence[] = [{ keys: ['e'] }, { keys: ['d'] }];
+      const keytipSequenceD: IKeySequence[] = ['e', 'd'];
 
       // Node E
       const keytipIdE = ktpFullPrefix + 'e';
-      const keytipSequenceE: IKeySequence[] = [{ keys: ['e'] }];
+      const keytipSequenceE: IKeySequence[] = ['e'];
 
       // Node F
       const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + 'f';
-      const keytipSequenceF: IKeySequence[] = [{ keys: ['e'] }, { keys: ['f'] }];
+      const keytipSequenceF: IKeySequence[] = ['e', 'f'];
 
       keytipTree.addNode(createKeytipProps(keytipSequenceF));
       keytipTree.addNode(createKeytipProps(keytipSequenceC));
@@ -197,12 +197,12 @@ describe('KeytipTree', () => {
     it('correctly adds node when overflowSetSequence is defined', () => {
       const keytipProps = {
         content: 'A',
-        keySequences: [{ keys: ['a'] }],
-        overflowSetSequence: [{ keys: ['x'] }]
+        keySequences: ['a'],
+        overflowSetSequence: ['x']
       };
       const overflowNode = {
         content: 'X',
-        keySequences: [{ keys: ['x'] }]
+        keySequences: ['x']
       };
       keytipTree.addNode(overflowNode);
       keytipTree.addNode(keytipProps);
@@ -218,7 +218,7 @@ describe('KeytipTree', () => {
     it('correctly updates node attributes', () => {
       const keytipProps: IKeytipProps = {
         content: 'A',
-        keySequences: [{ keys: ['a'] }],
+        keySequences: ['a'],
         uniqueID: '1'
       };
       keytipTree.addNode(keytipProps);
@@ -239,7 +239,7 @@ describe('KeytipTree', () => {
     it('removes a child node of root and has no children', () => {
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipSequenceC: IKeySequence[] = ['c'];
       const keytipCProps = createKeytipProps(keytipSequenceC);
       keytipCProps.uniqueID = '1';
 
@@ -258,13 +258,13 @@ describe('KeytipTree', () => {
     it('removes multiple nodes in order correctly', () => {
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipSequenceC: IKeySequence[] = ['c'];
       const keytipCProps = createKeytipProps(keytipSequenceC);
       keytipCProps.uniqueID = '1';
 
       // Node B
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      const keytipSequenceB: IKeySequence[] = ['c', 'b'];
       const keytipBProps = createKeytipProps(keytipSequenceB);
       keytipBProps.uniqueID = '2';
 
@@ -294,11 +294,11 @@ describe('KeytipTree', () => {
     it('removed node will be able to be re-added in place', () => {
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      const keytipSequenceC: IKeySequence[] = ['c'];
 
       // Node B
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      const keytipSequenceB: IKeySequence[] = ['c', 'b'];
 
       const keytipC = createKeytipProps(keytipSequenceC);
       keytipC.uniqueID = '1';
@@ -336,13 +336,13 @@ describe('KeytipTree', () => {
     it('correctly removes a node when overflowSetSequence is defined', () => {
       const keytipProps = {
         content: 'A',
-        keySequences: [{ keys: ['a'] }],
-        overflowSetSequence: [{ keys: ['x'] }],
+        keySequences: ['a'],
+        overflowSetSequence: ['x'],
         uniqueID: '1'
       };
       const overflowProps = {
         content: 'X',
-        keySequences: [{ keys: ['x'] }],
+        keySequences: ['x'],
         uniqueID: '2'
       };
       keytipTree.addNode(overflowProps);
@@ -361,7 +361,7 @@ describe('KeytipTree', () => {
   it('adding and removing out of order (simulate mounting/unmounting) handled correctly', () => {
     const keytipProps: IKeytipProps = {
       content: 'A',
-      keySequences: [{ keys: ['a'] }],
+      keySequences: ['a'],
       uniqueID: '1'
     };
     keytipTree.addNode(keytipProps);
@@ -369,7 +369,7 @@ describe('KeytipTree', () => {
     // Simulate mounting a new instance of the same keytip
     const keytipProps2: IKeytipProps = {
       content: 'A',
-      keySequences: [{ keys: ['a'] }],
+      keySequences: ['a'],
       uniqueID: '2'
     };
 
@@ -400,27 +400,27 @@ describe('KeytipTree', () => {
 
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence = { keys: ['c'] };
+      const keytipSequenceC: IKeySequence = 'c';
 
       // Node D
       const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'd';
-      const keytipSequenceD: IKeySequence = { keys: ['d'] };
+      const keytipSequenceD: IKeySequence = 'd';
 
       // Node F
       const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'f';
-      const keytipSequenceF: IKeySequence = { keys: ['f'] };
+      const keytipSequenceF: IKeySequence = 'f';
 
       // Node E1
       const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
-      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+      const keytipSequenceE1: IKeySequence = 'e1';
 
       // Node E2
       const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
-      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+      const keytipSequenceE2: IKeySequence = 'e2';
 
       // Node A
       const keytipIdA = ktpFullPrefix + 'a';
-      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+      const keytipSequenceA: IKeySequence = 'a';
 
       const nodeA = createTreeNode(keytipIdA, '', [keytipIdC, keytipIdE1, keytipIdE2], keytipSequenceA);
       const nodeC = createTreeNode(keytipIdC, keytipIdA, [], keytipSequenceC);
@@ -437,11 +437,11 @@ describe('KeytipTree', () => {
       keytipTree.nodeMap[keytipIdF] = nodeF;
 
       // node should be undefined because it is not a child of node A.
-      const matchedNode1 = keytipTree.getExactMatchedNode({ keys: ['n'] }, nodeA);
+      const matchedNode1 = keytipTree.getExactMatchedNode('n', nodeA);
       expect(matchedNode1).toBeUndefined();
 
       // node should be equal to node c due to keysequnce.
-      const matchedNode2 = keytipTree.getExactMatchedNode({ keys: ['c'] }, nodeA);
+      const matchedNode2 = keytipTree.getExactMatchedNode('c', nodeA);
       expect(matchedNode2).toEqual(nodeC);
     });
 
@@ -458,19 +458,19 @@ describe('KeytipTree', () => {
 
       // Node C
       const keytipIdC = ktpFullPrefix + 'c';
-      const keytipSequenceC: IKeySequence = { keys: ['c'] };
+      const keytipSequenceC: IKeySequence = 'c';
 
       // Node E1
       const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
-      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+      const keytipSequenceE1: IKeySequence = 'e1';
 
       // Node E2
       const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
-      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+      const keytipSequenceE2: IKeySequence = 'e2';
 
       // Node A
       const keytipIdA = ktpFullPrefix + 'a';
-      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+      const keytipSequenceA: IKeySequence = 'a';
 
       const nodeA = createTreeNode(keytipIdA, '', [keytipIdC, keytipIdE1, keytipIdE2], keytipSequenceA);
       const nodeC = createTreeNode(keytipIdC, keytipIdA, [], keytipSequenceC);
@@ -484,7 +484,7 @@ describe('KeytipTree', () => {
       keytipTree.nodeMap[keytipIdE2] = nodeE2;
 
       // node should be undefined because it is disabled.
-      const matchedNode1 = keytipTree.getExactMatchedNode({ keys: ['c'] }, nodeA);
+      const matchedNode1 = keytipTree.getExactMatchedNode('c', nodeA);
       expect(matchedNode1).toBeUndefined();
     });
   });
@@ -504,23 +504,23 @@ describe('KeytipTree', () => {
 
       // Node D
       const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'd';
-      const keytipSequenceD: IKeySequence = { keys: ['d'] };
+      const keytipSequenceD: IKeySequence = 'd';
 
       // Node F
       const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'f';
-      const keytipSequenceF: IKeySequence = { keys: ['f'] };
+      const keytipSequenceF: IKeySequence = 'f';
 
       // Node E1
       const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
-      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+      const keytipSequenceE1: IKeySequence = 'e1';
 
       // Node E2
       const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
-      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+      const keytipSequenceE2: IKeySequence = 'e2';
 
       // Node A
       const keytipIdA = ktpFullPrefix + 'a';
-      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+      const keytipSequenceA: IKeySequence = 'a';
 
       const nodeA = createTreeNode(keytipIdA, '', [keytipIdE1, keytipIdE2], keytipSequenceA);
       const nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [keytipIdD, keytipIdF], keytipSequenceE1);
@@ -535,15 +535,15 @@ describe('KeytipTree', () => {
       keytipTree.nodeMap[keytipIdF] = nodeF;
 
       // nodes array should be empty.
-      const matchedNodes1 = keytipTree.getPartiallyMatchedNodes({ keys: ['n'] }, nodeA);
+      const matchedNodes1 = keytipTree.getPartiallyMatchedNodes('n', nodeA);
       expect(matchedNodes1.length).toEqual(0);
 
       // nodes array should be empty.
-      const matchedNodes2 = keytipTree.getPartiallyMatchedNodes({ keys: [] }, nodeA);
+      const matchedNodes2 = keytipTree.getPartiallyMatchedNodes('', nodeA);
       expect(matchedNodes2.length).toEqual(0);
 
       // nodes array should be equal to 2.
-      const matchedNodes3 = keytipTree.getPartiallyMatchedNodes({ keys: ['e'] }, nodeA);
+      const matchedNodes3 = keytipTree.getPartiallyMatchedNodes('e', nodeA);
       expect(matchedNodes3.length).toEqual(2);
     });
 
@@ -561,15 +561,15 @@ describe('KeytipTree', () => {
 
       // Node E1
       const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
-      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+      const keytipSequenceE1: IKeySequence = 'e1';
 
       // Node E2
       const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
-      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+      const keytipSequenceE2: IKeySequence = 'e2';
 
       // Node A
       const keytipIdA = ktpFullPrefix + 'a';
-      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+      const keytipSequenceA: IKeySequence = 'a';
 
       const nodeA = createTreeNode(keytipIdA, '', [keytipIdE1, keytipIdE2], keytipSequenceA);
       const nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [], keytipSequenceE1);
@@ -581,7 +581,7 @@ describe('KeytipTree', () => {
       keytipTree.nodeMap[keytipIdE2] = nodeE2;
 
       // nodes array should equal 1, for node e2 is disabled.
-      const matchedNodes = keytipTree.getPartiallyMatchedNodes({ keys: ['e'] }, nodeA);
+      const matchedNodes = keytipTree.getPartiallyMatchedNodes('e', nodeA);
       expect(matchedNodes.length).toEqual(1);
     });
   });
@@ -593,13 +593,13 @@ describe('KeytipTree', () => {
 
     beforeEach(() => {
       // Node E1
-      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+      const keytipSequenceE1: IKeySequence = 'e1';
 
       // Node E2
-      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+      const keytipSequenceE2: IKeySequence = 'e2';
 
       // Node A
-      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+      const keytipSequenceA: IKeySequence = 'a';
 
       const nodeA = createTreeNode(keytipIdA, '', [keytipIdE1, keytipIdE2], keytipSequenceA);
       const nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [], keytipSequenceE1);

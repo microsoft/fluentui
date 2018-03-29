@@ -30,7 +30,7 @@ export class KeytipOffsetExample extends React.Component<{}, IKeytipExampleState
 
     this.keytipMap.Keytip1 = {
       content: 'X',
-      keySequences: [{ keys: ['x'] }],
+      keySequences: ['x'],
       offset: { x: 19, y: 17 }
     } as IKeytipProps;
   }

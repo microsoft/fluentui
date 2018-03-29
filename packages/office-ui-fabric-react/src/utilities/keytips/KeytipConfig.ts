@@ -11,7 +11,7 @@ export interface IKeytipConfigItem {
    * Key Sequence for this keytip only
    * If sequence is not defined it will be derived from the content string
    */
-  sequence?: string[];
+  sequence?: IKeySequence;
 
   /**
    * Content for the keytip
@@ -63,7 +63,7 @@ export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap {
  */
 export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: IKeySequence[], keytip: IKeytipConfigItem): void {
   // Compute full key sequence
-  const sequence = keytip.sequence ? { keys: keytip.sequence } : getKeytipSequenceFromContent(keytip.content);
+  const sequence = keytip.sequence ? keytip.sequence : keytip.content.toLocaleLowerCase();
   const keytipSequence = addKeytipSequence(parentSequence, sequence);
 
   // Save props in configMap
@@ -76,19 +76,4 @@ export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: IKe
       constructKeytip(configMap, keytipSequence, child);
     }
   }
-}
-
-/**
- * Gets a keytip sequence based off its content
- * Will be all characters to localized lowercase
- *
- * @param keytipContent - Content for this keytip
- * @returns {IKeySequence} - The calculated key sequence for this keytip
- */
-export function getKeytipSequenceFromContent(keytipContent: string): IKeySequence {
-  return {
-    keys: keytipContent.split('').map((char: string): string => {
-      return char.toLocaleLowerCase();
-    })
-  } as IKeySequence;
 }

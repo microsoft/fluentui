@@ -1,6 +1,5 @@
 import {
   IKeySequence,
-  keySequencesAreEqual,
   keySequenceStartsWith,
   convertSequencesToKeytipID,
   find,
@@ -79,7 +78,7 @@ export class KeytipTree {
       id: ktpLayerId,
       children: [],
       parent: '',
-      keytipSequence: { keys: [] },
+      keytipSequence: '',
       hasChildrenNodes: true
     };
     this.nodeMap[this.root.id] = this.root;
@@ -192,7 +191,7 @@ export class KeytipTree {
   public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     const possibleNodes = this.getNodes(currentKeytip.children);
     return find(possibleNodes, (node: IKeytipTreeNode) => {
-      return keySequencesAreEqual(node.keytipSequence, keySequence) && !node.disabled;
+      return node.keytipSequence === keySequence && !node.disabled;
     });
   }
 

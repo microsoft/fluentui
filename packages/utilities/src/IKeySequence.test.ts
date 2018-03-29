@@ -1,8 +1,6 @@
 import {
   IKeySequence,
-  keySequencesAreEqual,
   keySequenceStartsWith,
-  keySequencesContain,
   convertSequencesToKeytipID,
   fullKeySequencesAreEqual,
   mergeOverflowKeySequences
@@ -10,126 +8,65 @@ import {
 import { ktpFullPrefix, ktpSeparator } from './KeytipConstants';
 
 describe('IKeySequence', () => {
-
-  describe('keySequencesAreEqual', () => {
-    it('empty key', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const seq2: IKeySequence = { keys: [] };
-      expect(keySequencesAreEqual(seq1, seq2)).toEqual(false);
-    });
-
-    it('single key', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const seq2: IKeySequence = { keys: ['a'] };
-      const seq3: IKeySequence = { keys: ['b'] };
-      expect(keySequencesAreEqual(seq1, seq2)).toEqual(true);
-      expect(keySequencesAreEqual(seq1, seq3)).toEqual(false);
-    });
-
-    it('multiple keys', () => {
-      const seq1: IKeySequence = { keys: ['a', 'b'] };
-      const seq2: IKeySequence = { keys: ['a', 'b'] };
-      const seq3: IKeySequence = { keys: ['b', 'a'] };
-      expect(keySequencesAreEqual(seq1, seq2)).toEqual(true);
-      expect(keySequencesAreEqual(seq1, seq3)).toEqual(false);
-    });
-
-    it('should be false when sequences are different length', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const seq2: IKeySequence = { keys: ['a', 'b'] };
-      expect(keySequencesAreEqual(seq1, seq2)).toEqual(false);
-    });
-  });
-
-  describe('keySequencesContain', () => {
-    it('empty sequences', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const sequences: IKeySequence[] = [{ keys: [] }];
-      expect(keySequencesContain(sequences, seq1)).toEqual(false);
-    });
-
-    it('empty key sequence', () => {
-      const seq1: IKeySequence = { keys: [] };
-      const sequences: IKeySequence[] = [{ keys: ['a'] }, { keys: ['b'] }];
-      expect(keySequencesContain(sequences, seq1)).toEqual(false);
-    });
-
-    it('single key', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const sequences: IKeySequence[] = [{ keys: ['a'] }, { keys: ['b'] }];
-      const sequences2: IKeySequence[] = [{ keys: ['a', 'b'] }];
-      expect(keySequencesContain(sequences, seq1)).toEqual(true);
-      expect(keySequencesContain(sequences2, seq1)).toEqual(false);
-    });
-
-    it('multiple keys', () => {
-      const seq1: IKeySequence = { keys: ['a', 'b'] };
-      const sequences: IKeySequence[] = [{ keys: ['a'] }, { keys: ['b'] }];
-      const sequences2: IKeySequence[] = [{ keys: ['a', 'b'] }, { keys: ['c', 'd'] }];
-      expect(keySequencesContain(sequences, seq1)).toEqual(false);
-      expect(keySequencesContain(sequences2, seq1)).toEqual(true);
-    });
-  });
-
   describe('keySequencesStartsWith', () => {
     it('false when the key sequence for seq1 is zero ', () => {
-      const seq1: IKeySequence = { keys: [] };
-      const seq2: IKeySequence = { keys: ['b'] };
+      const seq1: IKeySequence = '';
+      const seq2: IKeySequence = 'b';
       expect(keySequenceStartsWith(seq1, seq2)).toEqual(false);
     });
 
     it('false when the key sequence for seq2 is zero ', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const seq2: IKeySequence = { keys: [] };
+      const seq1: IKeySequence = 'a';
+      const seq2: IKeySequence = '';
       expect(keySequenceStartsWith(seq1, seq2)).toEqual(false);
     });
 
     it('false when sequence start is different', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const seq2: IKeySequence = { keys: ['b'] };
+      const seq1: IKeySequence = 'a';
+      const seq2: IKeySequence = 'b';
       expect(keySequenceStartsWith(seq1, seq2)).toEqual(false);
     });
 
     it('true when sequences are equal', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const seq2: IKeySequence = { keys: ['a'] };
+      const seq1: IKeySequence = 'a';
+      const seq2: IKeySequence = 'a';
       expect(keySequenceStartsWith(seq1, seq2)).toEqual(true);
     });
 
     it('true when sequence1 is a subset of sequence 2', () => {
-      const seq1: IKeySequence = { keys: ['a'] };
-      const seq2: IKeySequence = { keys: ['a', 'b'] };
+      const seq1: IKeySequence = 'a';
+      const seq2: IKeySequence = 'ab';
       expect(keySequenceStartsWith(seq1, seq2)).toEqual(true);
     });
 
     it('true when sequence2 is a subset of sequence 1', () => {
-      const seq1: IKeySequence = { keys: ['a', 'b'] };
-      const seq2: IKeySequence = { keys: ['a'] };
+      const seq1: IKeySequence = 'ab';
+      const seq2: IKeySequence = 'a';
       expect(keySequenceStartsWith(seq1, seq2)).toEqual(true);
     });
   });
 
   describe('convertSequencesToKeytipID', () => {
     it('for one singular key sequence', () => {
-      const keySequence: IKeySequence[] = [{ keys: ['a'] }];
+      const keySequence: IKeySequence[] = ['a'];
       const keytipID = convertSequencesToKeytipID(keySequence);
       expect(keytipID).toEqual(ktpFullPrefix + 'a');
     });
 
     it('for one complex key sequence', () => {
-      const complexKeySequence: IKeySequence[] = [{ keys: ['a', 'd'] }];
+      const complexKeySequence: IKeySequence[] = ['ad'];
       const keytipID = convertSequencesToKeytipID(complexKeySequence);
       expect(keytipID).toEqual(ktpFullPrefix + 'a' + ktpSeparator + 'd');
     });
 
     it('for multiple singular key sequences', () => {
-      const keySequences: IKeySequence[] = [{ keys: ['a'] }, { keys: ['c'] }];
+      const keySequences: IKeySequence[] = ['ac'];
       const keytipID = convertSequencesToKeytipID(keySequences);
       expect(keytipID).toEqual(ktpFullPrefix + 'a' + ktpSeparator + 'c');
     });
 
     it('for multiple complex key sequences', () => {
-      const complexKeySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
+      const complexKeySequences: IKeySequence[] = ['an', 'cb'];
       const keytipID = convertSequencesToKeytipID(complexKeySequences);
       expect(keytipID).toEqual(ktpFullPrefix + 'a' +
         ktpSeparator + 'n' + ktpSeparator +
@@ -139,16 +76,16 @@ describe('IKeySequence', () => {
 
   describe('fullKeySequencesAreEqual', () => {
     it('different lengths should not be equal', () => {
-      const keySequences1: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
-      const keySequences2: IKeySequence[] = [{ keys: ['a', 'n'] }];
+      const keySequences1: IKeySequence[] = ['an', 'cb'];
+      const keySequences2: IKeySequence[] = ['a', 'n'];
       expect(fullKeySequencesAreEqual(keySequences1, keySequences2)).toEqual(false);
     });
 
     it('should correctly be equal', () => {
-      const keySequences1: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
-      const keySequences2: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
-      const keySequences3: IKeySequence[] = [{ keys: ['n', 'a'] }, { keys: ['c', 'b'] }];
-      const keySequences4: IKeySequence[] = [{ keys: ['a'] }, { keys: ['c', 'b'] }];
+      const keySequences1: IKeySequence[] = ['an', 'cb'];
+      const keySequences2: IKeySequence[] = ['an', 'cb'];
+      const keySequences3: IKeySequence[] = ['na', 'cb'];
+      const keySequences4: IKeySequence[] = ['a', 'cb'];
 
       expect(fullKeySequencesAreEqual(keySequences1, keySequences2)).toEqual(true);
       expect(fullKeySequencesAreEqual(keySequences1, keySequences3)).toEqual(false);
@@ -158,18 +95,18 @@ describe('IKeySequence', () => {
 
   describe('mergeOverflowKeySequences', () => {
     it('when overflow sequence is first', () => {
-      const overflowSequence = [{ keys: ['0', '1'] }];
-      const keySequences = [{ keys: ['x'] }, { keys: ['c'] }];
+      const overflowSequence = ['01'];
+      const keySequences = ['x', 'c'];
       const newKeySequence = mergeOverflowKeySequences(keySequences, overflowSequence);
-      expect(fullKeySequencesAreEqual(newKeySequence, [{ keys: ['0', '1'] }, { keys: ['x'] }, { keys: ['c'] }])).toEqual(true);
+      expect(fullKeySequencesAreEqual(newKeySequence, ['01', 'x', 'c'])).toEqual(true);
     });
 
     it('when overflowSequence is in the middle', () => {
-      const overflowSequence = [{ keys: ['h'] }, { keys: ['0', '1'] }];
-      const keySequences = [{ keys: ['h'] }, { keys: ['x'] }, { keys: ['c'] }];
+      const overflowSequence = ['h', '01'];
+      const keySequences = ['h', 'x', 'c'];
       const newKeySequence = mergeOverflowKeySequences(keySequences, overflowSequence);
       expect(fullKeySequencesAreEqual(newKeySequence,
-        [{ keys: ['h'] }, { keys: ['0', '1'] }, { keys: ['x'] }, { keys: ['c'] }])).toEqual(true);
+        ['h', '01', 'x', 'c'])).toEqual(true);
     });
   });
 });

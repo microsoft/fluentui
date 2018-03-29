@@ -94,7 +94,7 @@ describe('KeytipManager', () => {
       keytipManager.processInput('c');
       expect(onExecuteC).toBeCalled();
       expect(onExitKeytipMode).toBeCalled();
-      expect(keytipManager.currentSequence.keys.length).toEqual(0);
+      expect(keytipManager.currentSequence.length).toEqual(0);
     });
 
     it('Processing a node with two keys should save sequence and wait for second key', () => {
@@ -103,10 +103,10 @@ describe('KeytipManager', () => {
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
       keytipManager.processInput('e');
       // We are still waiting for second key
-      expect(keytipManager.currentSequence.keys.length).toEqual(1);
+      expect(keytipManager.currentSequence.length).toEqual(1);
       keytipManager.processInput('2');
       expect(onExecuteE2).toBeCalled();
-      expect(keytipManager.currentSequence.keys.length).toEqual(0);
+      expect(keytipManager.currentSequence.length).toEqual(0);
       expect(onExitKeytipMode).toBeCalled();
     });
 
@@ -116,11 +116,11 @@ describe('KeytipManager', () => {
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
       keytipManager.processInput('e');
       // We are still waiting for second key
-      expect(keytipManager.currentSequence.keys.length).toEqual(1);
+      expect(keytipManager.currentSequence.length).toEqual(1);
       keytipManager.processInput('1');
       expect(onExecuteE1).toBeCalled();
       // There is no more buffer in the sequence
-      expect(keytipManager.currentSequence.keys.length).toEqual(0);
+      expect(keytipManager.currentSequence.length).toEqual(0);
       // Children keytips should be visible
       const childrenKeytips = getKeytips(defaultKeytipLayer, keytipManager.keytipTree.currentKeytip.children);
       for (const childrenKeytip of childrenKeytips) {
@@ -139,7 +139,7 @@ describe('KeytipManager', () => {
       // Node B' on execute should be called
       expect(onExecuteB).toBeCalled();
       // There is no more buffer in the sequence
-      expect(keytipManager.currentSequence.keys.length).toEqual(0);
+      expect(keytipManager.currentSequence.length).toEqual(0);
       // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
       expect(keytipManager.keytipTree.currentKeytip).toBeDefined();
       expect(keytipManager.keytipTree.currentKeytip.id).toEqual(keytipIdB);
@@ -149,13 +149,13 @@ describe('KeytipManager', () => {
   describe('exitKeytipMode', () => {
     it('should hide all keytips', () => {
       // Create keytip b
-      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+      const keytipSequenceB: IKeySequence[] = ['b'];
       const keytipBProps: IKeytipProps = {
         keySequences: keytipSequenceB,
         content: 'B',
         visible: true
       };
-      const keytipSequenceG: IKeySequence[] = [{ keys: ['G'] }];
+      const keytipSequenceG: IKeySequence[] = ['g'];
       const keytipGProps: IKeytipProps = {
         keySequences: keytipSequenceG,
         content: 'G',
@@ -181,7 +181,7 @@ describe('KeytipManager', () => {
     let keytipSequenceB: IKeySequence[];
 
     beforeEach(() => {
-      keytipSequenceB = [{ keys: ['b'] }];
+      keytipSequenceB = ['b'];
       keytipBProps = {
         keySequences: keytipSequenceB,
         content: 'B'
@@ -208,7 +208,7 @@ describe('KeytipManager', () => {
         keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.getNode(keytipIdB);
 
         // Add a node 'g' who's parent is 'b'
-        const keytipSequenceG: IKeySequence[] = [{ keys: ['b'] }, { keys: ['g'] }];
+        const keytipSequenceG: IKeySequence[] = ['b', 'g'];
         const keytipIdG = ktpFullPrefix + 'b' + ktpSeparator + 'g';
         const keytipGProps: IKeytipProps = {
           keySequences: keytipSequenceG,
@@ -320,8 +320,8 @@ describe('KeytipManager', () => {
   it('showKeytips should handle overflow keytips correctly', () => {
     keytipManager.keytips.push({
       content: 'A',
-      keySequences: [{ keys: ['a'] }],
-      overflowSetSequence: [{ keys: ['x'] }]
+      keySequences: ['a'],
+      overflowSetSequence: ['x']
     });
     const idsToShow = ['ktp-x-a'];
     keytipManager.showKeytips(idsToShow);
@@ -336,7 +336,7 @@ describe('KeytipManager', () => {
     const overflowNode = keytipManager.keytipTree.getNode(keytipIdO);
     const overflowCallback: jest.Mock = jest.fn();
     keytipManager.keytipTree.nodeMap[keytipIdO] = { ...overflowNode!, onExecute: overflowCallback };
-    keytipManager.persistedKeytipExecute([{ keys: ['o'] }], [{ keys: ['o'] }, { keys: ['m'] }]);
+    keytipManager.persistedKeytipExecute(['o'], ['o', 'm']);
     expect(overflowCallback).toBeCalled();
   });
 });
@@ -364,30 +364,30 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
    *
    */
 
-  const keytipSequenceB: IKeySequence = { keys: ['b'] };
+  const keytipSequenceB: IKeySequence = 'b';
   // Node C
-  const keytipSequenceC: IKeySequence = { keys: ['c'] };
+  const keytipSequenceC: IKeySequence = 'c';
 
   // Node D
   const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'd';
-  const keytipSequenceD: IKeySequence = { keys: ['d'] };
+  const keytipSequenceD: IKeySequence = 'd';
 
   // Node F
   const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'f';
-  const keytipSequenceF: IKeySequence = { keys: ['f'] };
+  const keytipSequenceF: IKeySequence = 'f';
 
   // Node E1
-  const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+  const keytipSequenceE1: IKeySequence = 'e1';
 
   // Node E2
-  const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+  const keytipSequenceE2: IKeySequence = 'e2';
 
   // Node O
-  const keytipOverflowSeq: IKeySequence = { keys: ['o'] };
+  const keytipOverflowSeq: IKeySequence = 'o';
 
   // Node M
   const keytipIdM = ktpFullPrefix + 'm';
-  const keytipSeqM: IKeySequence = { keys: ['m'] };
+  const keytipSeqM: IKeySequence = 'm';
   const nodeB = createTreeNode(keytipIdB, rootId, [], keytipSequenceB, true /* hasChildrenNodes*/);
   const nodeC = createTreeNode(keytipIdC, rootId, [], keytipSequenceC);
   const nodeE1 = createTreeNode(keytipIdE1, rootId, [keytipIdD, keytipIdF], keytipSequenceE1);
