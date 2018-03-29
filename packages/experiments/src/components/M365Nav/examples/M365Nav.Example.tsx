@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { INavLinkGroup } from "../M365Nav.types";
-import { M365NavToggler } from "../M365NavToggler";
+import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
+import { M365NavToggler } from '../M365NavToggler';
 
 export class M365NavExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -10,45 +10,53 @@ export class M365NavExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const navLinkGroups: INavLinkGroup[] = [
       {
-        name: "default group",
+        name: 'default group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: true, icon: "Home",
+            name: 'Home - no action supported', url: 'http://example.com', isExpanded: true, icon: 'Home',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key1' },
-              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: "_blank", key: 'key2' }
+              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key2' }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key3', icon: "Document" },
-          { name: 'Pages', url: 'http://msn.com', target: "_blank", key: 'key4', icon: "Page" },
-          { name: 'Notebook - test with long name to show ellipse', url: 'http://msn.com', target: "_blank", key: 'key5', icon: "DietPlanNotebook" },
+          { name: 'Documents', url: 'http://example.com', key: 'key3', icon: 'Document' },
+          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key4', icon: 'Page' },
+          {
+            name: 'Notebook - test with long name to show ellipse',
+            url: 'http://msn.com',
+            target: '_blank',
+            key: 'key5',
+            icon: 'DietPlanNotebook'
+          },
         ]
       },
       {
-        name: "named menu group",
+        name: 'named menu group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: false, icon: "Home",
+            name: 'Home - no action supported', url: 'http://example.com', isExpanded: false, icon: 'Home',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key6' },
-              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: "_blank", key: 'key7' }
+              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key7' }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key8', icon: "Document" },
-          { name: 'Pages', url: 'http://msn.com', target: "_blank", key: 'key9', icon: "Page" },
-          { name: 'Notebook - test with long name to show ellipse', url: 'http://msn.com', target: "_blank", key: 'key10', icon: "DietPlanNotebook" },
+          { name: 'Documents', url: 'http://example.com', key: 'key8', icon: 'Document' },
+          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key9', icon: 'Page' },
+          {
+            name: 'Notebook - test with long name to show ellipse',
+            url: 'http://msn.com',
+            target: '_blank',
+            key: 'key10',
+            icon: 'DietPlanNotebook'
+          },
         ]
       }
     ];
 
     return (
       <div>
-        <M365NavToggler groups={ navLinkGroups } onNavCollapsedCallback={ this.onNavCollapsed } />
+        <M365NavToggler groups={ navLinkGroups } />
       </div>
     );
-  }
-
-  private onNavCollapsed(isCollapsed: boolean) {
-
   }
 }
