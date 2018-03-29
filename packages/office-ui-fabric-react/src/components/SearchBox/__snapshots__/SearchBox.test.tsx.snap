@@ -43,7 +43,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     className=
         ms-SearchBox-iconContainer
         {
-          color: #0078d7;
+          color: #0078d4;
           display: flex;
           flex-direction: column;
           flex-shrink: 0;

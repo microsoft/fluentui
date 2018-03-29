@@ -24,7 +24,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITooltipHost) => void;
+  componentRef?: (component: ITooltipHost | null) => void;
 
   /**
    * Additional properties to pass through for Callout, reference detail properties in ICalloutProps

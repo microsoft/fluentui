@@ -49,11 +49,19 @@ exports[`Button renders ActionButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
       &:hover {
-        color: #0078d7;
+        color: #0078d4;
       }
       &:hover .ms-Button-icon {
-        color: #0078d7;
+        color: #0078d4;
       }
       &:active {
         color: #000000;
@@ -152,6 +160,17 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         right: 0px;
         top: 0px;
         z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+        border: none;
+        bottom: 4px;
+        left: 4px;
+        outline-color: ButtonText;
+        right: 4px;
+        top: 4px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border: none;
       }
       &:hover {
         background-color: #eaeaea;
@@ -301,6 +320,14 @@ exports[`Button renders CompoundButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
       &:hover {
         background-color: #eaeaea;
         color: #000000;
@@ -429,6 +456,14 @@ exports[`Button renders DefaultButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
       &:hover {
         background-color: #eaeaea;
         color: #000000;
@@ -527,11 +562,19 @@ exports[`Button renders IconButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
       &:hover {
         color: #004578;
       }
       &:active {
-        color: #0078d7;
+        color: #0078d4;
       }
   data-is-focusable={true}
   disabled={undefined}

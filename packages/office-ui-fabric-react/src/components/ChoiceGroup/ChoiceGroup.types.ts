@@ -11,7 +11,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IChoiceGroup) => void;
+  componentRef?: (component: IChoiceGroup | null) => void;
 
   /**
    * The options for the choice group.

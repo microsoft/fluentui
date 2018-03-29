@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css,
   divProperties,
   getNativeProps,
@@ -52,6 +51,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       imageAlt,
       imageInitials,
       initialsColor,
+      allowPhoneInitials,
       presence,
       primaryText,
       imageShouldFadeIn,
@@ -68,6 +68,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       imageAlt,
       imageInitials,
       initialsColor,
+      allowPhoneInitials,
       presence,
       primaryText,
       imageShouldFadeIn,
@@ -120,8 +121,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     );
   }
 
-  @autobind
-  private _renderElement(text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
+  private _renderElement = (text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element => {
     return (
       <div className={ className }>
         { render

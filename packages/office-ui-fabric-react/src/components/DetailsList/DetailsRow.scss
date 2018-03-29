@@ -107,6 +107,9 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
       background: Highlight;
       color: HighlightText;
       -ms-high-contrast-adjust: none;
+      > a {
+        color: HighlightText;
+      }
     }
   }
 
@@ -132,6 +135,9 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
       @include high-contrast {
         color: HighlightText;
+        > a {
+          color: HighlightText;
+        }
       }
 
       // Selected State hover Header cell
@@ -155,6 +161,9 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
       @include high-contrast {
         color: HighlightText;
+        > a {
+          color: HighlightText;
+        }
       }
 
       // Row header cell

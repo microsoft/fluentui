@@ -14,7 +14,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (ref?: IOverflowSet) => void;
+  componentRef?: (ref?: IOverflowSet | null) => void;
 
   /**
    * Class name
@@ -50,8 +50,18 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
 
   /**
    * Custom properties for OverflowSet's FocusZone.
+   * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
+   * Use one or the other
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * If true do not contain the OverflowSet inside of a FocusZone,
+   * otherwise the OverflowSet will contain a FocusZone.
+   * If this is set to true focusZoneProps will be ignored.
+   * Use one or the other
+   */
+  doNotContainWithinFocusZone?: boolean;
 
   /**
    * The role for the OverflowSet.

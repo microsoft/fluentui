@@ -12,7 +12,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
    * Optional callback to access the ILayer interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILayer) => void;
+  componentRef?: (component: ILayer | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

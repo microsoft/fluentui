@@ -3,8 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -313,27 +312,23 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  @autobind
-  private _onItemsChange(items: any[]) {
+  private _onItemsChange = (items: any[]): void => {
     this.setState({
       currentSelectedItems: items
     });
   }
 
-  @autobind
-  private _onSetFocusButtonClicked() {
+  private _onSetFocusButtonClicked = (): void => {
     if (this._picker) {
       this._picker.focusInput();
     }
   }
 
-  @autobind
-  private _renderFooterText(): JSX.Element {
+  private _renderFooterText = (): JSX.Element => {
     return <div>No additional results</div>;
   }
 
-  @autobind
-  private _onRemoveSuggestion(item: IPersonaProps): void {
+  private _onRemoveSuggestion = (item: IPersonaProps): void => {
     const { peopleList, mostRecentlyUsed: mruState } = this.state;
     const indexPeopleList: number = peopleList.indexOf(item);
     const indexMostRecentlyUsed: number = mruState.indexOf(item);
@@ -349,15 +344,13 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
   }
 
-  @autobind
-  private _onItemSelected(item: IPersonaProps) {
+  private _onItemSelected = (item: IPersonaProps): Promise<IPersonaProps> => {
     const processedItem = Object.assign({}, item);
     processedItem.primaryText = `${item.primaryText} (selected)`;
     return new Promise<IPersonaProps>((resolve, reject) => setTimeout(() => resolve(processedItem), 250));
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
+  private _onFilterChanged = (filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -369,23 +362,20 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
   }
 
-  @autobind
-  private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
     return this._filterPromise(mostRecentlyUsed);
   }
 
-  @autobind
-  private _returnMostRecentlyUsedWithLimit(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _returnMostRecentlyUsedWithLimit = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
     mostRecentlyUsed = mostRecentlyUsed.splice(0, 3);
     return this._filterPromise(mostRecentlyUsed);
   }
 
-  @autobind
-  private _onFilterChangedWithLimit(filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _onFilterChangedWithLimit = (filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     return this._onFilterChanged(filterText, currentPersonas, 3);
   }
 
@@ -420,18 +410,15 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
   }
 
-  @autobind
-  private _toggleDelayResultsChange(toggleState: boolean) {
+  private _toggleDelayResultsChange = (toggleState: boolean): void => {
     this.setState({ delayResults: toggleState });
   }
 
-  @autobind
-  private _dropDownSelected(option: IDropdownOption) {
+  private _dropDownSelected = (option: IDropdownOption): void => {
     this.setState({ currentPicker: option.key });
   }
 
-  @autobind
-  private _validateInput(input: string) {
+  private _validateInput = (input: string): ValidationState => {
     if (input.indexOf('@') !== -1) {
       return ValidationState.valid;
     } else if (input.length > 1) {
