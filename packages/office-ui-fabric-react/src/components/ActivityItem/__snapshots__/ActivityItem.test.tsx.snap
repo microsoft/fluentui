@@ -56,7 +56,13 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -320,7 +326,13 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -422,7 +434,13 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -498,7 +516,13 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -671,7 +695,10 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size32
-
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={11}
         style={undefined}
       >
@@ -948,7 +975,10 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
@@ -1043,7 +1073,10 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
@@ -1112,7 +1145,10 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
@@ -1207,7 +1243,10 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         className=
             ms-Persona-coin
             ms-Persona--size16
-
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
