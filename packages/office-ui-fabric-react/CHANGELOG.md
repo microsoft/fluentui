@@ -1,6 +1,37 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Mar 2018 10:14:03 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Mar 2018 19:26:19 GMT and should not be manually modified.
+
+## 5.74.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Use markdown-to-jsx for ActivityItem documentation
+
+## 5.73.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- Persona: adding `allowPhoneInitials` prop to allow for calculating initials from phone numbers.
+
+### Patches
+
+- ContextualMenu: SplitButtons in ContextualMenus are incorrectly using the menuLauncher portion of the splitButton for the tagrate when the  menuLauncher portion is  activated. This can lead to weird overhangs of the parent menu even if  directionalHintFixed is not true (e.g. it will overlap the primary portion of the  splitButton and potentially other items in the parent menu)
+
+## 5.72.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- add isSelectedOverride to suggestionItemProps
+- ContextualMenu / Split Button: Fixed styling problems For centered button content.
+- Use markdown-to-jsx for ActivityItem documentation
+
+### Patches
+
+- Checkbox: label text should be selectable, but not the checkmark icons.
 
 ## 5.71.0
 Tue, 27 Mar 2018 10:14:03 GMT
