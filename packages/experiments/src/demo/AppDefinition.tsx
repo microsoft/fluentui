@@ -105,6 +105,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'StaticList',
           name: 'StaticList',
           url: '#/examples/staticlist'
+        },
+        {
+          component: require<any>('../components/M365Nav/M365NavPage').M365NavPage,
+          key: 'M365Nav',
+          name: 'M365Nav',
+          url: '#/examples/m365Nav'
         }
       ]
     }
