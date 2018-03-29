@@ -1,4 +1,4 @@
-import { Customizations } from '@uifabric/utilities/lib/Customizations';
+import { Customizations } from '@uifabric/utilities';
 import {
   IPalette,
   ISemanticColors,

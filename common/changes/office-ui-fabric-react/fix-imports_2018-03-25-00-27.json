@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "In order for webpack 4 tree shaking to work, all cross package imports must refer to non-path based imports, so that webpack can refer to the `module` entrypoint of the package, rather than whatever type is in path (if you refer to a `/lib/` path, it would infer commonjs, wich breaks tree shaking.) With this change, you can now `import { PrimaryButton } from 'office-ui-fabric-react'` and get a properly shaken tree of modules, resulting in smaller output.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com"
+}

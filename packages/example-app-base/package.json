@@ -2,9 +2,9 @@
   "name": "@uifabric/example-app-base",
   "version": "5.7.0",
   "description": "Office UI Fabric example app base utilities for building example sites.",
-  "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
-  "typings": "lib-es2015/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",

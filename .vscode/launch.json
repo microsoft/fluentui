@@ -92,7 +92,7 @@
       "stopOnEntry": true,
       "args": [
         "--debug",
-        "dist/test-bundle.js"
+        "dist/ssr-tests.js"
       ],
       "cwd": "${workspaceRoot}/apps/ssr-tests",
       "runtimeExecutable": null,

@@ -2,9 +2,9 @@
   "name": "@uifabric/utilities",
   "version": "5.22.0",
   "description": "Office UI Fabric utilities for building React components.",
-  "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
-  "typings": "lib-es2015/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",

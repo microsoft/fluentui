@@ -11,9 +11,16 @@ module.exports = resources.createConfig(
       [PACKAGE_NAME]: './lib/index.js',
     },
 
+    optimization: {
+      concatenateModules: true,
+      minimize: true
+    },
+
     externals: {
       'react': 'React',
       'react-dom': 'ReactDOM'
     }
 
-  });
+  },
+  true
+);

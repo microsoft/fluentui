@@ -2,7 +2,7 @@
   "name": "@uifabric/fabric-website",
   "version": "5.5.2",
   "description": "Reusable React components for building experiences for Office 365.",
-  "main": "lib/index.js",
+  "main": "lib-commonjs/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",

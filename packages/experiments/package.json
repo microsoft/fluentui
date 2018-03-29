@@ -2,9 +2,9 @@
   "name": "@uifabric/experiments",
   "version": "5.28.1",
   "description": "Experimental React components for building experiences for Office 365.",
-  "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
-  "typings": "lib-es2015/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
