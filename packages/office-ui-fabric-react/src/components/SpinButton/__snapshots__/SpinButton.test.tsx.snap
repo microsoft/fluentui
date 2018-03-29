@@ -104,7 +104,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             width: calc(100% - 14px);
           }
           &::selection {
-            background-color: #0078d7;
+            background-color: #0078d4;
             color: #ffffff;
           }
           @media screen and (-ms-high-contrast: active){&::selection {
@@ -193,6 +193,14 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
               background-color: #eaeaea;
               color: #000000;
@@ -205,7 +213,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={true}
+        data-is-focusable={false}
         disabled={undefined}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
@@ -298,6 +306,14 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
               background-color: #eaeaea;
               color: #000000;
@@ -310,7 +326,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={true}
+        data-is-focusable={false}
         disabled={undefined}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}

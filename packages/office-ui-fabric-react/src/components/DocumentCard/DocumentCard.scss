@@ -274,7 +274,6 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   font-size: $ms-font-size-s;
 }
 
-
 /** Title **/
 $DocumentCard-title-lineHeight: 21px;
 .title {
@@ -286,4 +285,30 @@ $DocumentCard-title-lineHeight: 21px;
   line-height: $DocumentCard-title-lineHeight;
   overflow: hidden;
   word-wrap: break-word;
+}
+
+.secondaryTitle {
+  padding: 8px 16px;
+  display: block;
+  @include ms-font-m;
+  color: $ms-color-neutralSecondary;
+  line-height: 18px;
+  overflow: hidden;
+  word-wrap: break-word;
+  height: 45px;
+}
+
+.logo {
+  font-size: 32px;
+  color: $ms-color-themePrimary;
+  display: block;
+  @include ms-padding(16px, 16px, 0, 16px);
+}
+
+.status {
+  @include ms-margin(8px, 16px, 8px, 16px);
+  @include ms-font-m;
+  color: $ms-color-neutralPrimary;
+  background-color: $ms-color-neutralLighter;
+  height: 32px;
 }

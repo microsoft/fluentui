@@ -4,7 +4,6 @@ import {
   KeyCodes,
   css,
   getRTL,
-  autobind
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
@@ -162,37 +161,31 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 
-  @autobind
-  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (callback: () => void, ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
 
-  @autobind
-  private _onSelectNextYear() {
+  private _onSelectNextYear = (): void => {
     const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
   }
 
-  @autobind
-  private _onSelectNextYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onSelectNextYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectNextYear, ev);
   }
 
-  @autobind
-  private _onSelectPrevYear() {
+  private _onSelectPrevYear = (): void => {
     const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
   }
 
-  @autobind
-  private _onSelectPrevYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onSelectPrevYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectPrevYear, ev);
   }
 
-  @autobind
-  private _onSelectMonth(newMonth: number) {
+  private _onSelectMonth = (newMonth: number): void => {
     const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
 
     // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
@@ -202,16 +195,14 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
 
-  @autobind
-  private _onHeaderSelect() {
+  private _onHeaderSelect = (): void => {
     const { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
       onHeaderSelect(true);
     }
   }
 
-  @autobind
-  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     const { onHeaderSelect } = this.props;
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);

@@ -6,7 +6,7 @@ exports[`Link renders Link correctly 1`] = `
   className=
       ms-Link
       {
-        color: #0078d7;
+        color: #0078d4;
         outline: transparent;
         position: relative;
         text-decoration: none;
@@ -29,7 +29,7 @@ exports[`Link renders Link correctly 1`] = `
         color: #004578;
       }
       &:focus {
-        color: #0078d7;
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
@@ -46,7 +46,7 @@ exports[`Link renders Link with a custom class name 1`] = `
       ms-Link
       customClassName
       {
-        color: #0078d7;
+        color: #0078d4;
         outline: transparent;
         position: relative;
         text-decoration: none;
@@ -69,7 +69,7 @@ exports[`Link renders Link with a custom class name 1`] = `
         color: #004578;
       }
       &:focus {
-        color: #0078d7;
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
@@ -87,7 +87,7 @@ exports[`Link renders Link with no href as a button 1`] = `
       {
         background: none;
         border: none;
-        color: #0078d7;
+        color: #0078d4;
         cursor: pointer;
         display: inline;
         font-size: inherit;
@@ -123,7 +123,7 @@ exports[`Link renders Link with no href as a button 1`] = `
         color: #004578;
       }
       &:focus {
-        color: #0078d7;
+        color: #0078d4;
       }
   onClick={[Function]}
 >

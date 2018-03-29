@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   BaseComponent
 } from '../../../Utilities';
 import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
@@ -93,26 +92,22 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     return item.name;
   }
 
-  @autobind
-  private _onDisabledButtonClick(): void {
+  private _onDisabledButtonClick = (): void => {
     this.setState({
       isPickerDisabled: !this.state.isPickerDisabled
     });
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, tagList: { key: string, name: string }[]) {
+  private _onFilterChanged = (filterText: string, tagList: { key: string, name: string }[]): { key: string, name: string }[] => {
     return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
       .filter(tag => !this._listContainsDocument(tag, tagList)) : [];
   }
 
-  @autobind
-  private _onFilterChangedNoFilter(filterText: string, tagList: { key: string, name: string }[]) {
+  private _onFilterChangedNoFilter = (filterText: string, tagList: { key: string, name: string }[]): { key: string, name: string }[] => {
     return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   }
 
-  @autobind
-  private _onItemSelected(item: any) {
+  private _onItemSelected = (item: { key: string, name: string }): { key: string, name: string } | null => {
     if (this._listContainsDocument(item, this._picker.items)) {
       return null;
     }
