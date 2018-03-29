@@ -42,33 +42,32 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     } = this.props;
 
     let Tag;
-    let elementRef;
-    let direction;
+    let uniqueComponentProps;
 
     if (doNotContainWithinFocusZone) {
       Tag = 'div';
-      elementRef = {
+      uniqueComponentProps = {
         ref: this._divContainer
       };
     } else {
       Tag = FocusZone;
-      elementRef = {
-        componentRef: this._focusZone
+      uniqueComponentProps = {
+        ...focusZoneProps,
+        componentRef: this._focusZone,
+        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
       };
-      direction = vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal;
     }
 
     return (
       <Tag
         { ...getNativeProps(this.props, buttonProperties) }
-        { ...elementRef }
+        { ...uniqueComponentProps }
         className={ mergeStyles(
           'ms-OverflowSet',
           styles.root,
           vertical && styles.rootVertical,
           className
         ) }
-        direction={ direction }
         role={ role }
       >
         { items && this._onRenderItems(items) }
