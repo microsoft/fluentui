@@ -42,7 +42,8 @@ export class M365NavPage extends React.Component<IComponentDemoPageProps, {}> {
               <li>Use M365 Nav component in all M365 Admin Centers to acheive coherence</li>
               <li>Use the hamburger icon at the top to switch between expanded and collapsed state</li>
               <li>Use the optional named second menu group if needed to split/categorize the menu items.</li>
-              <li>Use only supported actions on leaf nodes - expand if there is child menu or script execution through onClick props or open url (includes hashtag) based on target property</li>
+              <li>Use only supported actions on leaf nodes - expand if there is child menu or script execution
+                through onClick props or open url (includes hashtag) based on target property</li>
             </ul>
           </div>
         }
