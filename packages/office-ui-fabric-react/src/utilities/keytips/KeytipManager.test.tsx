@@ -162,9 +162,9 @@ describe('KeytipManager', () => {
         visible: true
       };
 
-      keytipManager.keytips = [keytipBProps, keytipGProps];
+      keytipManager.keytips = [{ keytip: keytipBProps, uniqueID: '1' }, { keytip: keytipGProps, uniqueID: '2' }];
       keytipManager.exitKeytipMode();
-      for (const keytip of keytipManager.keytips) {
+      for (const keytip of keytipManager.getKeytips()) {
         expect(keytip.visible).toEqual(false);
       }
     });
@@ -192,8 +192,9 @@ describe('KeytipManager', () => {
       it('should add the keytip to the Manager, Layer, and Tree', () => {
         keytipManager.registerKeytip(keytipBProps);
 
-        expect(keytipManager.keytips).toHaveLength(1);
-        expect(keytipManager.keytips[0].content).toEqual('B');
+        const mgrKeytips = keytipManager.getKeytips();
+        expect(mgrKeytips).toHaveLength(1);
+        expect(mgrKeytips[0].content).toEqual('B');
 
         expect(keytipManager.keytipTree.getNode(keytipIdB)).toBeDefined();
 
@@ -227,7 +228,7 @@ describe('KeytipManager', () => {
         // because they will have unique IDs
         const uniqueID1 = keytipManager.registerKeytip(keytipBProps);
         const uniqueID2 = keytipManager.registerKeytip(keytipBProps);
-        expect(keytipManager.keytips).toHaveLength(2);
+        expect(keytipManager.getKeytips()).toHaveLength(2);
       });
     });
 
@@ -262,7 +263,7 @@ describe('KeytipManager', () => {
 
       keytipManager.unregisterKeytip(keytipBProps, uniqueID);
 
-      expect(keytipManager.keytips).toHaveLength(0);
+      expect(keytipManager.getKeytips()).toHaveLength(0);
 
       expect(keytipManager.keytipTree.getNode(keytipIdB)).toBeUndefined();
 
@@ -277,14 +278,14 @@ describe('KeytipManager', () => {
       const uniqueID2 = keytipManager.registerKeytip(keytipBProps);
       keytipManager.unregisterKeytip(keytipBProps, uniqueID1);
 
-      expect(keytipManager.keytips).toHaveLength(1);
+      expect(keytipManager.getKeytips()).toHaveLength(1);
       expect(keytipManager.keytips[0].uniqueID).toEqual(uniqueID2);
     });
 
     it('registerPersistedKeytip should add a keytip to the Tree only', () => {
       keytipManager.registerPersistedKeytip(keytipBProps);
 
-      expect(keytipManager.keytips).toHaveLength(0);
+      expect(keytipManager.getKeytips()).toHaveLength(0);
 
       expect(keytipManager.keytipTree.getNode(keytipIdB)).toBeDefined();
 
@@ -297,7 +298,7 @@ describe('KeytipManager', () => {
 
       keytipManager.unregisterPersistedKeytip(keytipBProps, uniqueID);
 
-      expect(keytipManager.keytips).toHaveLength(0);
+      expect(keytipManager.getKeytips()).toHaveLength(0);
 
       expect(keytipManager.keytipTree.getNode(keytipIdB)).toBeUndefined();
 
@@ -312,21 +313,24 @@ describe('KeytipManager', () => {
     keytipManager.showKeytips(idsToShow);
 
     // Test keytip manager has set visible correctly
-    for (const keytip of keytipManager.keytips) {
+    for (const keytip of keytipManager.getKeytips()) {
       expect(keytip.visible).toEqual(idsToShow.indexOf(convertSequencesToKeytipID(keytip.keySequences)) >= 0);
     }
   });
 
   it('showKeytips should handle overflow keytips correctly', () => {
     keytipManager.keytips.push({
-      content: 'A',
-      keySequences: ['a'],
-      overflowSetSequence: ['x']
+      keytip: {
+        content: 'A',
+        keySequences: ['a'],
+        overflowSetSequence: ['x'],
+      },
+      uniqueID: '1'
     });
     const idsToShow = ['ktp-x-a'];
     keytipManager.showKeytips(idsToShow);
 
-    expect(keytipManager.keytips[0].visible).toEqual(true);
+    expect(keytipManager.getKeytips()[0].visible).toEqual(true);
   });
 
   it('persistedKeytipExecute should call overflow`s onExecute', () => {

@@ -17,7 +17,7 @@ const styles: any = stylesImport;
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
   private _focusZone = createRef<FocusZone>();
-  private _persistedKeytips: IKeytipProps[] = [];
+  private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
 
   public render() {
@@ -70,17 +70,23 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   private _registerPersistedKeytips() {
-    this._persistedKeytips.forEach((keytip: IKeytipProps) => {
-      keytip.uniqueID = this._keytipManager.registerPersistedKeytip(keytip);
+    Object.keys(this._persistedKeytips).forEach((key: string) => {
+      const keytip = this._persistedKeytips[key];
+      // TODO: use helper
+      const uniqueID = this._keytipManager.registerPersistedKeytip(keytip);
+      // Update map
+      this._persistedKeytips[uniqueID] = keytip;
+      delete this._persistedKeytips[key];
     });
   }
 
   private _unregisterPersistedKeytips() {
     // Delete all persisted keytips saved
-    this._persistedKeytips.forEach((keytip: IKeytipProps) => {
-      this._keytipManager.unregisterPersistedKeytip(keytip, keytip.uniqueID!);
+    Object.keys(this._persistedKeytips).forEach((uniqueID: string) => {
+      // TODO: use helper
+      this._keytipManager.unregisterPersistedKeytip(this._persistedKeytips[uniqueID], uniqueID);
     });
-    this._persistedKeytips = [];
+    this._persistedKeytips = {};
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
@@ -121,6 +127,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
           if (keytip.hasChildrenNodes || overflowItem.subMenuProps) {
             // If the keytip has a submenu, change onExecute to persistedKeytipExecute
+            // TODO: use helper
             persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, overflowItem.keytipProps.keySequences);
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
@@ -129,8 +136,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
             };
           }
 
-          // Add this persisted keytip to our internal list
-          this._persistedKeytips.push(persistedKeytip);
+          // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
+          // uniqueID will get updated on register
+          this._persistedKeytips[persistedKeytip.content] = persistedKeytip;
 
           // Add the overflow sequence to this item and its subMenu items
           this._addOverflowSequence(overflowKeytipSequences, overflowItem);

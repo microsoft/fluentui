@@ -57,14 +57,10 @@ export interface IKeytipTreeNode {
   persisted?: boolean;
 }
 
-export interface IKeytipTreeNodeMap {
-  [nodeId: string]: IKeytipTreeNode;
-}
-
 export class KeytipTree {
   public currentKeytip?: IKeytipTreeNode;
   public root: IKeytipTreeNode;
-  public nodeMap: IKeytipTreeNodeMap = {};
+  public nodeMap: { [nodeId: string]: IKeytipTreeNode } = {};
 
   private _idSeparator = '::';
 
@@ -89,13 +85,13 @@ export class KeytipTree {
    *
    * @param keytipProps - Keytip to add to the Tree
    */
-  public addNode(keytipProps: IKeytipProps, persisted?: boolean): void {
+  public addNode(keytipProps: IKeytipProps, uniqueID: string, persisted?: boolean): void {
     let fullSequence = [...keytipProps.keySequences];
     if (keytipProps.overflowSetSequence) {
       fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
     }
     const nodeID = convertSequencesToKeytipID(fullSequence);
-    const combinedID = nodeID + this._idSeparator + keytipProps.uniqueID!;
+    const combinedID = nodeID + this._idSeparator + uniqueID;
 
     // This keytip's sequence is the last one defined
     const keytipSequence = fullSequence.pop();
@@ -127,13 +123,13 @@ export class KeytipTree {
    *
    * @param keytipProps
    */
-  public updateNode(keytipProps: IKeytipProps): void {
+  public updateNode(keytipProps: IKeytipProps, uniqueID: string): void {
     let fullSequence = [...keytipProps.keySequences];
     if (keytipProps.overflowSetSequence) {
       fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
     }
     const nodeID = convertSequencesToKeytipID(fullSequence);
-    const combinedID = nodeID + this._idSeparator + keytipProps.uniqueID!;
+    const combinedID = nodeID + this._idSeparator + uniqueID;
 
     // This keytip's sequence is the last one defined
     const keytipSequence = fullSequence.pop();
@@ -158,13 +154,13 @@ export class KeytipTree {
    *
    * @param sequence - full IKeySequence of the node to remove
    */
-  public removeNode(keytipProps: IKeytipProps): void {
+  public removeNode(keytipProps: IKeytipProps, uniqueID: string): void {
     let fullSequence = [...keytipProps.keySequences];
     if (keytipProps.overflowSetSequence) {
       fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
     }
     const nodeID = convertSequencesToKeytipID(fullSequence);
-    const combinedID = nodeID + this._idSeparator + keytipProps.uniqueID!;
+    const combinedID = nodeID + this._idSeparator + uniqueID;
     // Take off the last sequence to calculate the parent ID
     fullSequence.pop();
     // Parent ID is the root if there aren't any more sequences

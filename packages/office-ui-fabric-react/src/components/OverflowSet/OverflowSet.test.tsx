@@ -211,7 +211,7 @@ describe('OverflowSet', () => {
         expect(keytipManager.keytipTree.currentKeytip).toBeUndefined();
 
         // No keytips should be visible
-        keytipManager.keytips.forEach((keytip: IKeytipProps) => {
+        keytipManager.getKeytips().forEach((keytip: IKeytipProps) => {
           expect(keytip.visible).toBeFalsy();
         });
       });
@@ -230,7 +230,7 @@ describe('OverflowSet', () => {
         expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip4Sequence))).toBeDefined();
 
         // Those two keytips should now be visible in the Layer
-        const submenuKeytips = keytipManager.keytips.filter((keytip: IKeytipProps) => {
+        const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
           return keytip.content === 'C' || keytip.content === 'D';
         });
         submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
@@ -305,7 +305,7 @@ describe('OverflowSet', () => {
           keytipManager.processInput('d');
 
           expect(keytipManager.keytipTree.currentKeytip).toBeUndefined();
-          keytipManager.keytips.forEach((keytip: IKeytipProps) => {
+          keytipManager.getKeytips().forEach((keytip: IKeytipProps) => {
             expect(keytip.visible).toBeFalsy();
           });
         });
@@ -409,7 +409,7 @@ describe('OverflowSet', () => {
           expect(subMenu6Keytip).toBeDefined();
 
           // Those two keytips should now be visible in the Layer
-          const submenuKeytips = keytipManager.keytips.filter((keytip: IKeytipProps) => {
+          const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
             return keytip.content === 'E' || keytip.content === 'F';
           });
           submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {

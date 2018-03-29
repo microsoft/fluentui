@@ -30,7 +30,7 @@ describe('KeytipLayer', () => {
       content: 'G',
       keySequences: ['g']
     };
-    keytipManager.keytips = [keytipB, keytipG];
+    keytipManager.keytips = [{ keytip: keytipB, uniqueID: '1' }, { keytip: keytipG, uniqueID: '2' }];
 
     // Create layer
     const defaultKeytipLayer = mount(

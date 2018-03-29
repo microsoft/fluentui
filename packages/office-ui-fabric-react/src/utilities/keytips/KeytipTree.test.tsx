@@ -39,7 +39,7 @@ describe('KeytipTree', () => {
       const keytipIdC = ktpFullPrefix + 'c';
       const sampleKeySequence: IKeySequence[] = ['c'];
 
-      keytipTree.addNode(createKeytipProps(sampleKeySequence));
+      keytipTree.addNode(createKeytipProps(sampleKeySequence), '1');
 
       // Test C has been added to root's children
       expect(keytipTree.root.children).toHaveLength(1);
@@ -64,8 +64,8 @@ describe('KeytipTree', () => {
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = ['c', 'b'];
 
-      keytipTree.addNode(createKeytipProps(keytipSequenceC));
-      keytipTree.addNode(createKeytipProps(keytipSequenceB));
+      keytipTree.addNode(createKeytipProps(keytipSequenceC), '1');
+      keytipTree.addNode(createKeytipProps(keytipSequenceB), '2');
 
       // Test B was added to C's children
       const keytipCNode = keytipTree.getNode(keytipIdC);
@@ -91,7 +91,7 @@ describe('KeytipTree', () => {
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = ['c', 'b'];
 
-      keytipTree.addNode(createKeytipProps(keytipSequenceB));
+      keytipTree.addNode(createKeytipProps(keytipSequenceB), '1');
 
       // Test B was added to nodeMap
       const keytipNodeB = keytipTree.getNode(keytipIdB);
@@ -104,7 +104,7 @@ describe('KeytipTree', () => {
       expect(keytipTree.root.children).toHaveLength(0);
 
       // Add parent
-      keytipTree.addNode(createKeytipProps(keytipSequenceC));
+      keytipTree.addNode(createKeytipProps(keytipSequenceC), '2');
 
       const keytipNodeC = keytipTree.getNode(keytipIdC);
       expect(keytipNodeC).toBeDefined();
@@ -151,11 +151,11 @@ describe('KeytipTree', () => {
       const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + 'f';
       const keytipSequenceF: IKeySequence[] = ['e', 'f'];
 
-      keytipTree.addNode(createKeytipProps(keytipSequenceF));
-      keytipTree.addNode(createKeytipProps(keytipSequenceC));
-      keytipTree.addNode(createKeytipProps(keytipSequenceB));
-      keytipTree.addNode(createKeytipProps(keytipSequenceD));
-      keytipTree.addNode(createKeytipProps(keytipSequenceE));
+      keytipTree.addNode(createKeytipProps(keytipSequenceF), '1');
+      keytipTree.addNode(createKeytipProps(keytipSequenceC), '2');
+      keytipTree.addNode(createKeytipProps(keytipSequenceB), '3');
+      keytipTree.addNode(createKeytipProps(keytipSequenceD), '4');
+      keytipTree.addNode(createKeytipProps(keytipSequenceE), '5');
 
       // Test all nodes are in the nodeMap
       const keytipNodeB = keytipTree.getNode(keytipIdB);
@@ -204,8 +204,8 @@ describe('KeytipTree', () => {
         content: 'X',
         keySequences: ['x']
       };
-      keytipTree.addNode(overflowNode);
-      keytipTree.addNode(keytipProps);
+      keytipTree.addNode(overflowNode, '1');
+      keytipTree.addNode(keytipProps, '2');
 
       const keytipNode = keytipTree.getNode('ktp-x-a');
       expect(keytipNode).toBeDefined();
@@ -218,15 +218,14 @@ describe('KeytipTree', () => {
     it('correctly updates node attributes', () => {
       const keytipProps: IKeytipProps = {
         content: 'A',
-        keySequences: ['a'],
-        uniqueID: '1'
+        keySequences: ['a']
       };
-      keytipTree.addNode(keytipProps);
+      keytipTree.addNode(keytipProps, '1');
 
       keytipProps.disabled = true;
       keytipProps.hasChildrenNodes = true;
 
-      keytipTree.updateNode(keytipProps);
+      keytipTree.updateNode(keytipProps, '1');
 
       const node = keytipTree.getNode('ktp-a');
       expect(node).toBeDefined();
@@ -241,12 +240,12 @@ describe('KeytipTree', () => {
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = ['c'];
       const keytipCProps = createKeytipProps(keytipSequenceC);
-      keytipCProps.uniqueID = '1';
+      const uniqueID = '1';
 
-      keytipTree.addNode(keytipCProps);
+      keytipTree.addNode(keytipCProps, uniqueID);
 
       // Remove C from the tree
-      keytipTree.removeNode(keytipCProps);
+      keytipTree.removeNode(keytipCProps, uniqueID);
 
       // Verify that C is not in the node map
       expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
@@ -260,19 +259,19 @@ describe('KeytipTree', () => {
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = ['c'];
       const keytipCProps = createKeytipProps(keytipSequenceC);
-      keytipCProps.uniqueID = '1';
+      const uniqueIDC = '1';
 
       // Node B
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = ['c', 'b'];
       const keytipBProps = createKeytipProps(keytipSequenceB);
-      keytipBProps.uniqueID = '2';
+      const uniqueIDB = '2';
 
-      keytipTree.addNode(keytipCProps);
-      keytipTree.addNode(keytipBProps);
+      keytipTree.addNode(keytipCProps, uniqueIDC);
+      keytipTree.addNode(keytipBProps, uniqueIDB);
 
       // Remove B
-      keytipTree.removeNode(keytipBProps);
+      keytipTree.removeNode(keytipBProps, uniqueIDB);
 
       // Verify that B is not in the node map
       expect(keytipTree.getNode(keytipIdB)).toBeUndefined();
@@ -282,7 +281,7 @@ describe('KeytipTree', () => {
       expect(nodeC!.children).toHaveLength(0);
 
       // Remove C
-      keytipTree.removeNode(keytipCProps);
+      keytipTree.removeNode(keytipCProps, uniqueIDC);
 
       // Verify that C is not in the node map
       expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
@@ -301,12 +300,12 @@ describe('KeytipTree', () => {
       const keytipSequenceB: IKeySequence[] = ['c', 'b'];
 
       const keytipC = createKeytipProps(keytipSequenceC);
-      keytipC.uniqueID = '1';
-      keytipTree.addNode(keytipC);
-      keytipTree.addNode(createKeytipProps(keytipSequenceB));
+      const uniqueIDC = '1';
+      keytipTree.addNode(keytipC, uniqueIDC);
+      keytipTree.addNode(createKeytipProps(keytipSequenceB), '2');
 
       // Remove C
-      keytipTree.removeNode(keytipC);
+      keytipTree.removeNode(keytipC, uniqueIDC);
 
       // Verify that C is not in the node map
       expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
@@ -316,7 +315,7 @@ describe('KeytipTree', () => {
       expect(keytipTree.root.children).toHaveLength(0);
 
       // Re-add C
-      keytipTree.addNode(keytipC);
+      keytipTree.addNode(keytipC, uniqueIDC);
 
       // Verify that C is in the node map
       const keytipNodeC = keytipTree.getNode(keytipIdC);
@@ -337,18 +336,18 @@ describe('KeytipTree', () => {
       const keytipProps = {
         content: 'A',
         keySequences: ['a'],
-        overflowSetSequence: ['x'],
-        uniqueID: '1'
+        overflowSetSequence: ['x']
       };
       const overflowProps = {
         content: 'X',
-        keySequences: ['x'],
-        uniqueID: '2'
+        keySequences: ['x']
       };
-      keytipTree.addNode(overflowProps);
-      keytipTree.addNode(keytipProps);
+      const uniqueIDA = '1';
+      const uniqueIDO = '2';
+      keytipTree.addNode(overflowProps, uniqueIDO);
+      keytipTree.addNode(keytipProps, uniqueIDA);
 
-      keytipTree.removeNode(keytipProps);
+      keytipTree.removeNode(keytipProps, uniqueIDA);
 
       const keytipNode = keytipTree.getNode('ktp-x-a');
       expect(keytipNode).toBeUndefined();
@@ -361,20 +360,20 @@ describe('KeytipTree', () => {
   it('adding and removing out of order (simulate mounting/unmounting) handled correctly', () => {
     const keytipProps: IKeytipProps = {
       content: 'A',
-      keySequences: ['a'],
-      uniqueID: '1'
+      keySequences: ['a']
     };
-    keytipTree.addNode(keytipProps);
+    const uniqueID1 = '1';
+    keytipTree.addNode(keytipProps, uniqueID1);
 
     // Simulate mounting a new instance of the same keytip
     const keytipProps2: IKeytipProps = {
       content: 'A',
-      keySequences: ['a'],
-      uniqueID: '2'
+      keySequences: ['a']
     };
+    const uniqueID2 = '2';
 
-    keytipTree.addNode(keytipProps2);
-    keytipTree.removeNode(keytipProps);
+    keytipTree.addNode(keytipProps2, uniqueID2);
+    keytipTree.removeNode(keytipProps, uniqueID1);
 
     // Keytip 'a' should exist
     const keytip = keytipTree.getNode('ktp-a');

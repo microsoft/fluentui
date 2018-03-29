@@ -59,7 +59,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this.state = {
       inKeytipMode: false,
       // Get the initial set of keytips
-      keytips: [...this._keytipManager.keytips],
+      keytips: [...this._keytipManager.getKeytips()],
     };
 
     this._keytipManager.init(this);
