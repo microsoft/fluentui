@@ -47,56 +47,6 @@ const people: (IPersonaProps & { key: string | number })[] = [
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     presence: PersonaPresence.offline
-  },
-  {
-    key: 5,
-    imageUrl: TestImages.personaMale,
-    imageInitials: 'RK',
-    primaryText: 'Alex Lundberg1',
-    secondaryText: 'Financial Analyst',
-    tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
-  },
-  {
-    key: 6,
-    imageUrl: TestImages.personaMale,
-    imageInitials: 'RK',
-    primaryText: 'Alex Lundberg2',
-    secondaryText: 'Financial Analyst',
-    tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
-  },
-  {
-    key: 7,
-    imageUrl: TestImages.personaMale,
-    imageInitials: 'RK',
-    primaryText: 'Alex Lundberg2',
-    secondaryText: 'Financial Analyst',
-    tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
-  },
-  {
-    key: 8,
-    imageUrl: TestImages.personaMale,
-    imageInitials: 'RK',
-    primaryText: 'Alex Lundberg3',
-    secondaryText: 'Financial Analyst',
-    tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
-  },
-  {
-    key: 9,
-    imageUrl: TestImages.personaMale,
-    imageInitials: 'RK',
-    primaryText: 'Alex Lundberg4',
-    secondaryText: 'Financial Analyst',
-    tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
   }
 ];
 
@@ -146,22 +96,7 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={ suggestionProps }
       disabled
     />
-  )).add('Normal with text', () => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .click('.ms-BasePicker-input')
-        .setValue('.ms-BasePicker-input', 'a')
-        .snapshot('suggestion: "a"')
-        .end() }>
-      <NormalPeoplePicker
-        onResolveSuggestions={ getPeople }
-        onEmptyInputFocus={ getPeople }
-        getTextFromItem={ getTextFromItem }
-        className={ 'ms-PeoplePicker' }
-        pickerSuggestionsProps={ suggestionProps }
-      />
-    </Screener>))
+  ))
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
