@@ -451,8 +451,16 @@ export namespace positioningFunctions {
    */
   export function _getPositionData(
     directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
-    directionalHintForRTL?: DirectionalHint
+    directionalHintForRTL?: DirectionalHint,
+    previousPositions?: IPositionedData
   ): IPositionDirectionalHintData {
+    if (previousPositions) {
+      return {
+        alignmentEdge: previousPositions.alignmentEdge,
+        isAuto: previousPositions.isAuto,
+        targetEdge: previousPositions.targetEdge
+      }
+    }
     const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
     if (getRTL()) {
 
@@ -634,14 +642,15 @@ export namespace positioningFunctions {
   export function _positionElementRelative(
     props: IPositionProps,
     hostElement: HTMLElement,
-    elementToPosition: HTMLElement): IElementPositionInfo {
+    elementToPosition: HTMLElement,
+    previousPositions?: IPositionedData): IElementPositionInfo {
     const gap: number = props.gapSpace ? props.gapSpace : 0;
     const boundingRect: Rectangle = props.bounds ?
       _getRectangleFromIRect(props.bounds) :
       new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
     const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
     const positionData: IPositionDirectionalHintData = _getAlignmentData(
-      _getPositionData(props.directionalHint, props.directionalHintForRTL)!,
+      _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
       targetRect,
       boundingRect,
       props.coverTarget);
@@ -656,7 +665,7 @@ export namespace positioningFunctions {
     return { ...positionedElement, targetRectangle: targetRect };
   }
 
-  export function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement) {
+  export function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement): IPositionedData {
     const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
       positionedElement.elementRectangle,
       hostElement,
@@ -664,25 +673,28 @@ export namespace positioningFunctions {
       positionedElement.alignmentEdge);
     return {
       elementPosition: finalizedElement,
-      targetEdge: positionedElement.targetEdge
+      targetEdge: positionedElement.targetEdge,
+      alignmentEdge: positionedElement.alignmentEdge
     };
   }
   export function _positionElement(
     props: IPositionProps,
     hostElement: HTMLElement,
-    elementToPosition: HTMLElement): IPositionedData {
-    const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition);
+    elementToPosition: HTMLElement,
+    previousPositions?: IPositionedData): IPositionedData {
+    const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition, previousPositions);
     return _finalizePositionData(positionedElement, hostElement);
   }
 
   export function _positionCallout(props: ICalloutPositionProps,
     hostElement: HTMLElement,
-    callout: HTMLElement): ICalloutPositionedInfo {
+    callout: HTMLElement,
+    previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo {
     const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
     const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
     const positionProps: IPositionProps = props;
     positionProps.gapSpace = gap;
-    const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout);
+    const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout, previousPositions);
     const beakPositioned: Rectangle = _positionBeak(
       beakWidth,
       positionedElement);
@@ -737,23 +749,29 @@ export function getRelativePositions(props: IPositionProps,
 
 /**
  * Used to position an element relative to the given positioning props.
+ * If positioning has been completed before, previousPositioningData
+ * can be passed to ensure that the positioning element repositions based on
+ * its previous targets rather than starting with directionalhint.
  *
  * @export
  * @param {IPositionProps} props
  * @param {HTMLElement} hostElement
  * @param {HTMLElement} elementToPosition
+ * @param {IPositionedData} previousPositions
  * @returns
  */
 export function positionElement(props: IPositionProps,
   hostElement: HTMLElement,
-  elementToPosition: HTMLElement): IPositionedData {
-  return positioningFunctions._positionElement(props, hostElement, elementToPosition);
+  elementToPosition: HTMLElement,
+  previousPositions?: IPositionedData): IPositionedData {
+  return positioningFunctions._positionElement(props, hostElement, elementToPosition, previousPositions);
 }
 
 export function positionCallout(props: IPositionProps,
   hostElement: HTMLElement,
-  elementToPosition: HTMLElement): ICalloutPositionedInfo {
-  return positioningFunctions._positionCallout(props, hostElement, elementToPosition);
+  elementToPosition: HTMLElement,
+  previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo {
+  return positioningFunctions._positionCallout(props, hostElement, elementToPosition, previousPositions);
 }
 
 /**

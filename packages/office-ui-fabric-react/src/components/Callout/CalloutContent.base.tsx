@@ -78,6 +78,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _positionAttempts: number;
   private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
+  private _hasListeners: boolean = false;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -97,7 +98,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   public componentDidUpdate() {
     this._setInitialFocus();
-    this._updateAsyncPosition();
+    if (!this.props.isHidden) {
+      if (!this._hasListeners) {
+        this._addListeners();
+      }
+      this._updateAsyncPosition();
+    } else {
+      if (this._hasListeners) {
+        this._removeListeners();
+      }
+    }
   }
 
   public componentWillMount() {
@@ -119,10 +129,19 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (newProps.finalHeight !== this.props.finalHeight) {
       this._setHeightOffsetEveryFrame();
     }
+
+    // if the callout becomes hidden, then remove any positions that were placed on it.
+    if (newProps.isHidden && newProps.isHidden !== this.props.isHidden) {
+      this.setState({
+        positions: undefined
+      });
+    }
   }
 
   public componentDidMount() {
-    this._onComponentDidMount();
+    if (!this.props.isHidden) {
+      this._onComponentDidMount();
+    }
   }
 
   public render() {
@@ -179,6 +198,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       <div
         ref={ this._hostElement }
         className={ this._classNames.container }
+        style={ { visibility: this.props.isHidden ? 'hidden' : undefined } }
       >
         <div
           className={ css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!]) }
@@ -195,7 +215,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             />) }
           { beakVisible &&
             (<div className={ this._classNames.beakCurtain } />) }
-          <Popup
+          { !this.props.isHidden && <Popup
             role={ role }
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
@@ -208,6 +228,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
           >
             { children }
           </Popup>
+          }
         </div>
       </div >
     );
@@ -252,6 +273,18 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   protected _onComponentDidMount = (): void => {
+
+    this._addListeners();
+
+    if (this.props.onLayerMounted) {
+      this.props.onLayerMounted();
+    }
+
+    this._updateAsyncPosition();
+    this._setHeightOffsetEveryFrame();
+  }
+
+  private _addListeners() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -261,14 +294,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+      this._hasListeners = true;
     }, 0);
+  }
 
-    if (this.props.onLayerMounted) {
-      this.props.onLayerMounted();
-    }
-
-    this._updateAsyncPosition();
-    this._setHeightOffsetEveryFrame();
+  private _removeListeners() {
+    this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
+    this._events.off(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.off(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
+    this._events.off(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+    this._hasListeners = false;
   }
 
   private _updateAsyncPosition() {
@@ -299,7 +334,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement);
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
