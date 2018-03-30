@@ -74,14 +74,6 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   public render() {
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
-<<<<<<< HEAD
-    let needsVerticalScrollBar = false;
-    if (this._root.value && this._root.value.firstElementChild) {
-      needsVerticalScrollBar = this._root.value.firstElementChild.clientHeight > this._root.value.clientHeight;
-    }
-=======
->>>>>>> use async.requestanimationframe
-
     return (
       <div
         ref={ this._root }
