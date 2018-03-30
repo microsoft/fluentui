@@ -179,8 +179,7 @@ export class KeytipManager {
    */
   public showKeytips(ids: string[]): void {
     // Set visible property in this.keytips
-    const keytips = this.getKeytips();
-    for (const keytip of keytips) {
+    for (const keytip of this.getKeytips()) {
       const keytipId = convertSequencesToKeytipID(keytip.keySequences);
       if (ids.indexOf(keytipId) >= 0) {
         keytip.visible = true;
@@ -375,7 +374,7 @@ export class KeytipManager {
    * Gets the DOM element for the specified keytip
    *
    * @param keytipId - ID of the keytip to query for
-   * @return {HTMLElement | null} DOM element of the keytip if found
+   * @returns {HTMLElement | null} DOM element of the keytip if found
    */
   private _getKeytipDOMElement(keytipId: string): HTMLElement | null {
     const dataKtpExecuteTarget = constructKeytipExecuteTargetFromId(keytipId);
