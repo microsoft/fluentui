@@ -28,8 +28,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       RenderSuggestion,
       onClick,
       className,
-      onRemoveItem,
-      isSelectedOverride
+      onRemoveItem
     } = this.props;
     return (
       <div
@@ -37,7 +36,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           'ms-Suggestions-item',
           styles.suggestionsItem,
           {
-            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected || isSelectedOverride
+            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
           },
           className
         ) }
@@ -332,7 +331,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       >
         { suggestions.map((suggestion, index) =>
           <div
-            ref={ suggestion.selected ? this._selectedElement : '' }
+            ref={ this._selectedElement }
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
