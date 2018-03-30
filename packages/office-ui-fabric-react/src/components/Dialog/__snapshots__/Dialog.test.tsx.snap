@@ -5,7 +5,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
   className=
 
       {
-        width: 100%;
+        flex-grow: 1;
       }
 >
   <div
