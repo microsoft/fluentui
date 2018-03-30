@@ -1,5 +1,4 @@
 import { IKeySequence } from '../../Utilities';
-import { addKeytipSequence } from './KeytipUtils';
 import { IKeytipProps } from '../../Keytip';
 
 export interface IKeytipConfig {
@@ -64,7 +63,7 @@ export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap {
 export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: IKeySequence[], keytip: IKeytipConfigItem): void {
   // Compute full key sequence
   const sequence = keytip.sequence ? keytip.sequence : keytip.content.toLocaleLowerCase();
-  const keytipSequence = addKeytipSequence(parentSequence, sequence);
+  const keytipSequence = parentSequence.concat(sequence);
 
   // Save props in configMap
   const keytipProps: IKeytipProps = { ...keytip.optionalProps, keySequences: keytipSequence, content: keytip.content };

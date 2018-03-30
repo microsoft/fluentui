@@ -160,7 +160,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       default:
         let key = ev.key;
         if (key === 'OS' || key === 'Win') {
-          // Special cases for browser-specific changes that will be fixed in the future
+          // Special cases for browser-specific keys that are not at standard
           // Firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=1232918
           // Edge: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8860571/
           // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/16424492/

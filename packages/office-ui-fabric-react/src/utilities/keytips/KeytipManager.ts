@@ -1,5 +1,6 @@
 import { KeytipLayerBase } from '../../KeytipLayer';
-import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
+import { KeytipTree } from './KeytipTree';
+import { IKeytipTreeNode } from './IKeytipTreeNode';
 import { IKeytipProps } from '../../Keytip';
 import {
   IKeySequence,
@@ -14,7 +15,7 @@ import {
 } from '../../Utilities';
 import { constructKeytipExecuteTargetFromId } from './KeytipUtils';
 
-export interface IUniqueKeytipProps {
+export interface IUniqueKeytip {
   uniqueID: string;
   keytip: IKeytipProps;
 }
@@ -24,7 +25,7 @@ export class KeytipManager {
 
   public keytipTree: KeytipTree = new KeytipTree();
   public currentSequence: IKeySequence;
-  public keytips: IUniqueKeytipProps[] = [];
+  public keytips: IUniqueKeytip[] = [];
 
   private _layer: KeytipLayerBase;
   private _enableSequences: IKeytipTransitionKey[];
@@ -43,10 +44,10 @@ export class KeytipManager {
   }
 
   /**
-   * Sets the _layer property and creates a KeytipTree
+   * Sets the _layer property and other related variables
    * Should be called from the KeytipLayer constructor
    *
-   * @param layer - KeytipLayer object
+   * @param layer - KeytipLayerBase object
    */
   public init(layer: KeytipLayerBase): void {
     this._layer = layer;
@@ -61,33 +62,31 @@ export class KeytipManager {
    * Registers a keytip
    *
    * @param keytipProps - Keytip to register
+   * @returns {string} Unique ID for this keytip
    */
-  // tslint:disable-next-line:no-any
   public registerKeytip(keytipProps: IKeytipProps): string {
     const keytipTree = this.keytipTree;
-    const uniqueID = this._getNextUniqueID();
 
-    // Set 'visible' property to true in keytipProps if currentKeytip is this keytips parent
-    if (this._isCurrentKeytipParent(keytipProps)) {
+    // Set 'visible' property to true in keytipProps if 'currentKeytip' is this keytip's parent
+    if (this.keytipTree.isCurrentKeytipParent(keytipProps)) {
       keytipProps.visible = true;
     }
 
-    // Add the unique ID to the keytip
-    const uniqueKeytipProps: IUniqueKeytipProps = { keytip: { ...keytipProps }, uniqueID };
+    // Create a unique keytip
+    const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(keytipProps);
 
-    // Add keytip to this, Tree, and Layer
+    // Add keytip to the Manager, Tree, and Layer
     // Check if trying to register a duplicate keytip, if so just update
-    const keytipIndex = this._findKeytipIndex(uniqueKeytipProps);
-    if (keytipIndex >= 0) {
-      // Update everything except 'visible'
-      uniqueKeytipProps.keytip.visible = this.keytips[keytipIndex].keytip.visible;
-      this.keytips = replaceElement(this.keytips, uniqueKeytipProps, keytipIndex);
-      keytipTree.updateNode(keytipProps, uniqueID);
+    const keytipIndex = this._findKeytipIndex(uniqueKeytip);
+    if (keytipIndex < 0) {
+      // Add
+      this.keytips.push(uniqueKeytip);
+      keytipTree.addNode(keytipProps, uniqueKeytip.uniqueID);
+      this._layer && this._layer.setKeytips(this.getKeytips());
     } else {
-      this.keytips.push(uniqueKeytipProps);
-      keytipTree.addNode(keytipProps, uniqueID);
+      // Update
+      this._updateKeytip(uniqueKeytip, keytipIndex);
     }
-    this._layer && this._layer.setKeytips(this.getKeytips());
 
     if (this._newCurrentKeytipSequences && fullKeySequencesAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
       // This keytip should become the currentKeytip and should execute right away
@@ -104,19 +103,23 @@ export class KeytipManager {
         }
 
         // Show all children keytips if there
-        keytipTree.currentKeytip.children && this.showKeytips(keytipTree.getChildren());
+        const children = keytipTree.getChildren();
+        children.length && this.showKeytips(children);
       }
 
       // Unset _newCurrentKeytipSequences
       this._newCurrentKeytipSequences = undefined;
     }
 
-    return uniqueID;
+    return uniqueKeytip.uniqueID;
   }
 
   /**
    * Register a persisted keytip
    * This means just adding a KeytipTreeNode
+   *
+   * @param keytipProps - Persisted Keytip to register
+   * @returns {string} Unique ID for this persisted keytip
    */
   public registerPersistedKeytip(keytipProps: IKeytipProps): string {
     const uniqueID = this._getNextUniqueID();
@@ -128,20 +131,15 @@ export class KeytipManager {
    * Update a keytip's props
    *
    * @param keytipProps - Keytip to update
+   * @param uniqueID - Unique ID of this keytip
    */
   public updateKeytip(keytipProps: IKeytipProps, uniqueID: string): void {
     // Update keytip in this.keytips
-    const uniqueKeytipProps = { keytip: keytipProps, uniqueID };
-    const keytipIndex = this._findKeytipIndex({ keytip: keytipProps, uniqueID });
+    const uniqueKeytip = this._constructUniqueKeytip(keytipProps, uniqueID);
+    const keytipIndex = this._findKeytipIndex(uniqueKeytip);
     if (keytipIndex >= 0) {
-      // Update everything except 'visible'
-      uniqueKeytipProps.keytip.visible = this.keytips[keytipIndex].keytip.visible;
-      this.keytips = replaceElement(this.keytips, uniqueKeytipProps, keytipIndex);
+      this._updateKeytip(uniqueKeytip, keytipIndex);
     }
-
-    // Update keytip in keytip tree and layer
-    this.keytipTree.updateNode(keytipProps, uniqueID);
-    this._layer && this._layer.setKeytips(this.getKeytips());
   }
 
   /**
@@ -151,10 +149,10 @@ export class KeytipManager {
    */
   public unregisterKeytip(keytipToRemove: IKeytipProps, uniqueID: string): void {
     // Add the unique ID to the keytip
-    const uniqueKeytipToRemove = { keytip: keytipToRemove, uniqueID };
+    const uniqueKeytipToRemove = this._constructUniqueKeytip(keytipToRemove, uniqueID);
 
     // Remove keytipToRemove from this.keytips
-    this.keytips = this.keytips.filter((uniqueKtp: IUniqueKeytipProps) => {
+    this.keytips = this.keytips.filter((uniqueKtp: IUniqueKeytip) => {
       return !(fullKeySequencesAreEqual(uniqueKtp.keytip.keySequences, keytipToRemove.keySequences) && uniqueKtp.uniqueID === uniqueID);
     });
     // Remove the node from the Tree
@@ -166,7 +164,8 @@ export class KeytipManager {
    * Unegister a persisted keytip
    * This means just removing it from the KeytipTree
    *
-   * @param keySequences - keySequences of the persisted Keytip to unregister
+   * @param keytipToRemove - Persisted keytip to remove
+   * @param uniqueID - Unique ID of this persisted keytip
    */
   public unregisterPersistedKeytip(keytipToRemove: IKeytipProps, uniqueID: string): void {
     // Add the unique ID to the keytip
@@ -176,12 +175,12 @@ export class KeytipManager {
   /**
    * Method that makes visible keytips currently in the DOM given a list of IDs.
    *
-   * @param ids - list of Ids to show
+   * @param ids - list of Keytip IDs to show
    */
   public showKeytips(ids: string[]): void {
     // Set visible property in this.keytips
-    for (const uniqueKeytip of this.keytips) {
-      const keytip = uniqueKeytip.keytip;
+    const keytips = this.getKeytips();
+    for (const keytip of keytips) {
       const keytipId = convertSequencesToKeytipID(keytip.keySequences);
       if (ids.indexOf(keytipId) >= 0) {
         keytip.visible = true;
@@ -213,6 +212,10 @@ export class KeytipManager {
    * Enter keytip mode
    */
   public enterKeytipMode(): void {
+    this.keytipTree.currentKeytip = this.keytipTree.root;
+    // Show children of root
+    this.showKeytips(this.keytipTree.getChildren());
+    // Trigger onEnter callback
     this._layer && this._layer.enterKeytipMode();
   }
 
@@ -239,35 +242,32 @@ export class KeytipManager {
    * @param transitionKey - IKeytipTransitionKey received by the layer to process
    */
   public processTransitionInput(transitionKey: IKeytipTransitionKey): void {
-    if (transitionKeysContain(this._exitSequences, transitionKey) && this.keytipTree.currentKeytip) {
+    const currKtp = this.keytipTree.currentKeytip;
+    if (transitionKeysContain(this._exitSequences, transitionKey) && currKtp) {
       // If key sequence is in 'exit sequences', exit keytip mode
       this.exitKeytipMode();
     } else if (transitionKeysContain(this._returnSequences, transitionKey)) {
       // If key sequence is in return sequences, move currentKeytip to parent (or if currentKeytip is the root, exit)
-      if (this.keytipTree.currentKeytip) {
-        if (this.keytipTree.currentKeytip.id === this.keytipTree.root.id) {
+      if (currKtp) {
+        if (currKtp.id === this.keytipTree.root.id) {
           // We are at the root, exit keytip mode
           this.exitKeytipMode();
         } else {
           // If this keytip has a onReturn prop, we execute the func.
-          if (this.keytipTree.currentKeytip.onReturn) {
-            this.keytipTree.currentKeytip.onReturn(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
+          if (currKtp.onReturn) {
+            currKtp.onReturn(this._getKeytipDOMElement(currKtp.id));
           }
 
           // Reset currentSequence
           this.currentSequence = '';
           // Return pointer to its parent
-          this.keytipTree.currentKeytip = this.keytipTree.getNode(this.keytipTree.currentKeytip.parent!);
+          this.keytipTree.currentKeytip = this.keytipTree.getNode(currKtp.parent);
           // Show children keytips of the new currentKeytip
           this.showKeytips(this.keytipTree.getChildren());
         }
       }
-    } else if (transitionKeysContain(this._enableSequences, transitionKey) && !this.keytipTree.currentKeytip) {
-      // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
-      this.keytipTree.currentKeytip = this.keytipTree.root;
-      // Show children of root
-      this.showKeytips(this.keytipTree.getChildren());
-      // Trigger onEnter callback
+    } else if (transitionKeysContain(this._enableSequences, transitionKey) && !currKtp) {
+      // If key sequence is in 'entry sequences' and currentKeytip is null, we enter keytip mode
       this.enterKeytipMode();
     }
   }
@@ -279,26 +279,30 @@ export class KeytipManager {
    */
   public processInput(key: string): void {
     // Concat the input key with the current sequence
-    const currentSequence: IKeySequence = this.currentSequence + key;
+    const currSequence: IKeySequence = this.currentSequence + key;
+    let currKtp = this.keytipTree.currentKeytip;
 
     // currentKeytip must be defined, otherwise we haven't entered keytip mode yet
-    if (this.keytipTree.currentKeytip) {
-      const node = this.keytipTree.getExactMatchedNode(currentSequence, this.keytipTree.currentKeytip);
+    if (currKtp) {
+      const node = this.keytipTree.getExactMatchedNode(currSequence, currKtp);
       if (node) {
-        this.keytipTree.currentKeytip = node;
+        this.keytipTree.currentKeytip = currKtp = node;
 
         // Execute this node's onExecute if defined
-        if (this.keytipTree.currentKeytip.onExecute) {
-          this.keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
+        if (currKtp.onExecute) {
+          currKtp.onExecute(this._getKeytipDOMElement(currKtp.id));
+          // Reset currKtp, this might have changed from the onExecute
+          currKtp = this.keytipTree.currentKeytip;
         }
 
         // To exit keytipMode after executing keytip we should check if currentKeytip has no children and
-        // if the node doesn't have children nodes.
-        if (this.keytipTree.currentKeytip.children.length === 0 && !this.keytipTree.currentKeytip.hasChildrenNodes) {
+        // if the node doesn't have children nodes
+        const currKtpChildren = this.keytipTree.getChildren();
+        if (currKtpChildren.length === 0 && !currKtp.hasChildrenNodes) {
           this.exitKeytipMode();
         } else {
           // Show all children keytips
-          this.showKeytips(this.keytipTree.getChildren());
+          this.showKeytips(currKtpChildren);
         }
 
         // Clear currentSequence
@@ -306,61 +310,86 @@ export class KeytipManager {
         return;
       }
 
-      const partialNodes = this.keytipTree.getPartiallyMatchedNodes(currentSequence, this.keytipTree.currentKeytip);
+      const partialNodes = this.keytipTree.getPartiallyMatchedNodes(currSequence, currKtp);
       if (partialNodes.length > 0) {
-        // We found nodes that partially match the sequence, so we show only those.
-        const ids = partialNodes.map((partialNode: IKeytipTreeNode) => { return partialNode.id; });
+        // We found nodes that partially match the sequence, so we show only those
+        // Omit showing persisted nodes here
+        const ids = partialNodes.filter((partialNode: IKeytipTreeNode) => {
+          return !partialNode.persisted;
+        }).map((partialNode: IKeytipTreeNode) => { return partialNode.id; });
         this.showKeytips(ids);
         // Save currentSequence
-        this.currentSequence = currentSequence;
+        this.currentSequence = currSequence;
       }
     }
   }
 
+  /**
+   * Gets all IKeytipProps from this.keytips
+   *
+   * @returns {IKeytipProps[]} All keytips stored in the manager
+   */
   public getKeytips(): IKeytipProps[] {
-    return this.keytips.map((uniqueKeytip: IUniqueKeytipProps) => {
+    return this.keytips.map((uniqueKeytip: IUniqueKeytip) => {
       return uniqueKeytip.keytip;
     });
   }
 
   /**
-   * Tests if the currentKeytip in this.keytipTree is the parent of 'keytipProps'
+   * Generates the next unique ID for a keytip
    *
-   * @param keytipProps - Keytip to test the parent for
-   * @returns {boolean} T/F if the currentKeytip is this keytipProps' parent
+   * @returns {string} A unique ID for a keytip
    */
-  private _isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
-    if (this.keytipTree.currentKeytip) {
-      let fullSequence = [...keytipProps.keySequences];
-      if (keytipProps.overflowSetSequence) {
-        fullSequence = mergeOverflowKeySequences(fullSequence, keytipProps.overflowSetSequence);
-      }
-      // Take off the last sequence to calculate the parent ID
-      fullSequence.pop();
-      // Parent ID is the root if there aren't any more sequences
-      const parentID = fullSequence.length === 0 ? this.keytipTree.root.id : convertSequencesToKeytipID(fullSequence);
-      return this.keytipTree.currentKeytip.id === parentID;
-    }
-    return false;
-  }
-
   private _getNextUniqueID(): string {
     return (++this._keytipIDCounter).toString();
+  }
+
+  /**
+   * Update a unique keytip in this.keytips
+   *
+   * @param uniqueKeytip - Keytip to update
+   * @param keytipIndex - Index of the keytip in the array
+   */
+  private _updateKeytip(uniqueKeytip: IUniqueKeytip, keytipIndex: number): void {
+    // Update everything except 'visible'
+    uniqueKeytip.keytip.visible = this.keytips[keytipIndex].keytip.visible;
+    this.keytips = replaceElement(this.keytips, uniqueKeytip, keytipIndex);
+
+    // Update keytip in keytip tree and layer
+    this.keytipTree.updateNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
+    this._layer && this._layer.setKeytips(this.getKeytips());
+  }
+
+  /**
+   * Creates an IUniqueKeytip object
+   *
+   * @param keytipProps - IKeytipProps
+   * @param uniqueID - Unique ID, will default to the next unique ID if not passed
+   * @returns {IUniqueKeytip} IUniqueKeytip object
+   */
+  private _constructUniqueKeytip(keytipProps: IKeytipProps, uniqueID: string = this._getNextUniqueID()): IUniqueKeytip {
+    return { keytip: { ...keytipProps }, uniqueID };
   }
 
   /**
    * Gets the DOM element for the specified keytip
    *
    * @param keytipId - ID of the keytip to query for
-   * @return {HTMLElement} DOM element of the keytip
+   * @return {HTMLElement | null} DOM element of the keytip if found
    */
   private _getKeytipDOMElement(keytipId: string): HTMLElement | null {
     const dataKtpExecuteTarget = constructKeytipExecuteTargetFromId(keytipId);
     return getDocument()!.querySelector(dataKtpExecuteTarget);
   }
 
-  private _findKeytipIndex(ktpToFind: IUniqueKeytipProps): number {
-    return findIndex(this.keytips, (ktp: IUniqueKeytipProps) => {
+  /**
+   * Find a keytip in this.keytips
+   *
+   * @param ktpToFind - IUniqueKeytipProps to find
+   * @returns {number} Index of the keytip in this.keytips (or -1 if not found)
+   */
+  private _findKeytipIndex(ktpToFind: IUniqueKeytip): number {
+    return findIndex(this.keytips, (ktp: IUniqueKeytip) => {
       return fullKeySequencesAreEqual(ktp.keytip.keySequences, ktpToFind.keytip.keySequences) &&
         ktp.uniqueID === ktpToFind.uniqueID;
     });

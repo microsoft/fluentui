@@ -56,6 +56,9 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
    */
   onEnterKeytipMode?: () => void;
 
+  /**
+   * getStyles function for KeytipLayer
+   */
   getStyles?: IStyleFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
 

@@ -2,7 +2,6 @@ import { getAriaDescribedBy, getNativeKeytipProps } from './KeytipUtils';
 import { IKeySequence, convertSequencesToKeytipID, ktpLayerId, ktpAriaSeparatorId } from '../../Utilities';
 
 describe('getAriaDescribedBy', () => {
-
   it('returns just the layer ID when an empty sequence is passed in', () => {
     const keySequence: IKeySequence[] = [];
     const ariaDescribedBy = getAriaDescribedBy(keySequence);
@@ -38,13 +37,28 @@ describe('getAriaDescribedBy', () => {
   });
 });
 
-it('getNativeKeytipProps will handle overflowSequence correctly', () => {
-  const keytipProps = {
-    content: 'A',
-    keySequences: ['a'],
-    overflowSetSequence: ['x']
-  };
-  const nativeProps = getNativeKeytipProps(keytipProps);
-  expect(nativeProps['data-ktp-execute-target']).toEqual('ktp-x-a');
-  expect(nativeProps['data-ktp-target']).toEqual('ktp-x-a');
+describe('getNativeKeytipProps', () => {
+  it('sets the three properties', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+
+    const nativeProps = getNativeKeytipProps(keytipProps);
+    expect(nativeProps['data-ktp-execute-target']).toBeDefined();
+    expect(nativeProps['data-ktp-target']).toBeDefined();
+    expect(nativeProps['aria-describedby']).toBeDefined();
+  });
+
+  it('will handle overflowSequence correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a'],
+      overflowSetSequence: ['x']
+    };
+    const nativeProps = getNativeKeytipProps(keytipProps);
+    // Both target properties should include the overflow sequence
+    expect(nativeProps['data-ktp-execute-target']).toEqual('ktp-x-a');
+    expect(nativeProps['data-ktp-target']).toEqual('ktp-x-a');
+  });
 });
