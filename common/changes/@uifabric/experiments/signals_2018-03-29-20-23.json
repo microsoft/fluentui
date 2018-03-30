@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Remove root imports of office-ui-fabric-react",
+      "comment": "Pass all props to Signal Icon elements",
       "type": "patch"
     }
   ],
