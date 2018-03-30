@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Breadcrumb, IBreadCrumbData } from './Breadcrumb';
+import { Breadcrumb, IBreadCrumbData } from './Breadcrumb.base';
 import { IRenderFunction } from '../../Utilities';
 
 export interface IBreadcrumb {

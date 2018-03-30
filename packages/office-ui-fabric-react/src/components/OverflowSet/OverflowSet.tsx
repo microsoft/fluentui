@@ -3,7 +3,10 @@ import {
   css,
   BaseComponent,
   createRef,
-  IKeySequence
+  IKeySequence,
+  getNativeProps,
+  divProperties,
+  focusFirstChild
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
@@ -19,6 +22,17 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _focusZone = createRef<FocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
+  private _divContainer = createRef<HTMLDivElement>();
+
+  constructor(props: IOverflowSetProps) {
+    super(props);
+
+    if (props.doNotContainWithinFocusZone) {
+      this._warnMutuallyExclusive({
+        'doNotContainWithinFocusZone': 'focusZoneProps'
+      });
+    }
+  }
 
   public render() {
     this._unregisterPersistedKeytips();
@@ -29,29 +43,54 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       className,
       focusZoneProps,
       vertical = false,
-      role = 'menubar'
+      role = 'menubar',
+      doNotContainWithinFocusZone
     } = this.props;
 
+    let Tag;
+    let uniqueComponentProps;
+
+    if (doNotContainWithinFocusZone) {
+      Tag = 'div';
+      uniqueComponentProps = {
+        ...getNativeProps(this.props, divProperties),
+        ref: this._divContainer
+      };
+    } else {
+      Tag = FocusZone;
+      uniqueComponentProps = {
+        ...focusZoneProps,
+        componentRef: this._focusZone,
+        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
+      };
+    }
+
     return (
-      <FocusZone
-        { ...focusZoneProps }
-        componentRef={ this._focusZone }
+      <Tag
+        { ...uniqueComponentProps }
         className={ mergeStyles(
           'ms-OverflowSet',
           styles.root,
           vertical && styles.rootVertical,
           className
         ) }
-        direction={ vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal }
         role={ role }
       >
         { items && this._onRenderItems(items) }
         { overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems) }
-      </FocusZone>
+      </Tag>
     );
   }
 
   public focus() {
+    if (this.props.doNotContainWithinFocusZone) {
+      if (this._divContainer.value) {
+        focusFirstChild(this._divContainer.value);
+      }
+
+      return;
+    }
+
     if (this._focusZone.value) {
       this._focusZone.value.focus();
     }
