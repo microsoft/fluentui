@@ -151,7 +151,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   private _clearDismissTimer = (): void => {
-    window.clearTimeout(this._closingTimer);
+    this._async.clearTimeout(this._closingTimer);
   }
 
   // Hide Tooltip
