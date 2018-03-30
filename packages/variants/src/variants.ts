@@ -176,6 +176,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themeDarkAlt,
     bodyText: p.white,
+    bodySubtext: p.white,
 
     inputBorder: p.themeDark,
     // inputBorderHovered: p.neutralPrimary,
@@ -186,5 +187,16 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
   };
 
-  return createTheme({ ...theme, ...{ palette: partialPalette, semanticColors: partialSemantic } });
+  // Strong variant is unique here, we've redefined the entire palette and are
+  // effectively inverting the theme. Thus, do not mix in the original theme's value
+  // for the palette and semanticColors, since they will not work, instead always
+  // semanticColors from scratch.
+  return createTheme({
+    ...theme,
+    ...{
+      palette: { ...partialPalette },
+      semanticColors: { ...partialSemantic },
+      isInverted: !theme.isInverted
+    }
+  });
 }
