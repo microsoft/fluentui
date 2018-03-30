@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "We need to temporarily remove `sideEffects: false` flag from package.json which will disable webpack 4 tree shaking until we can identify a good fix for it to not shake out the scss files.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com"
+}
