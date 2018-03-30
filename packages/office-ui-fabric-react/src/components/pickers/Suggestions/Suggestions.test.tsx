@@ -34,7 +34,7 @@ function generateSimpleSuggestions(selectedIndex: number = 0) {
         key: value,
         name: value
       },
-      selected: index === 0
+      selected: index === selectedIndex
     };
   });
 

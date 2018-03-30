@@ -1563,7 +1563,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="listitem"
     >
       <div
-        className="ms-Suggestions-item is-suggested undefined"
+        className="ms-Suggestions-item"
       >
         <button
           aria-describedby={null}
@@ -2379,7 +2379,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="listitem"
     >
       <div
-        className="ms-Suggestions-item"
+        className="ms-Suggestions-item is-suggested undefined"
       >
         <button
           aria-describedby={null}

@@ -152,7 +152,7 @@ storiesOf('PeoplePicker', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .setValue('.ms-BasePicker-input', 'a')
-        .snapshot('suggestiona')
+        .snapshot('suggestion: "a"')
         .end() }>
       <NormalPeoplePicker
         onResolveSuggestions={ getPeople }
