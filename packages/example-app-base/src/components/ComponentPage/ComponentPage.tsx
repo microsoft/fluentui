@@ -6,7 +6,9 @@ import {
 import {
   Link
 } from 'office-ui-fabric-react/lib/Link';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -17,6 +19,8 @@ export interface IComponentPageSection {
 export interface IComponentPageProps {
   title: string;
   componentName: string;
+  /** Github link to the Component */
+  componentUrl?: string;
   exampleCards?: JSX.Element;
   implementationExampleCards?: JSX.Element;
   propertiesTables?: JSX.Element;
@@ -24,6 +28,9 @@ export interface IComponentPageProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview: JSX.Element;
+  editDosUrl?: string;
+  editDontsUrl?: string;
+  editOverview?: string;
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
@@ -63,7 +70,10 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <div className='ComponentPage-body'>
             { this._getComponentStatusBadges() }
             <div className='ComponentPage-overviewSection'>
-              <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <div className='ComponentPage-overviewSectionHeader'>
+                <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+                { this._editButton('Overview', this.props.editOverview) }
+              </div>
               <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
                   { overview }
@@ -100,7 +110,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let {
       bestPractices,
       dos,
-      donts
+      donts,
+      componentUrl,
     } = this.props;
 
     if (bestPractices && dos && donts) {
@@ -126,6 +137,9 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
         </div> }
+        { componentUrl && <div className='ComponentPage-navLink'>
+          <Link href={ componentUrl } target='_blank' rel='noopener noreferrer'>View On Github</Link>
+        </div> }
         { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
           return <div key={ index + 'class' } className='ComponentPage-navLink'>
             <Link
@@ -138,6 +152,39 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         }) }
       </div >
     );
+  }
+
+  private _editButton(section: 'Overview' | 'Dos' | 'Donts', url?: string): JSX.Element | undefined {
+    let mdUrl: string | undefined = undefined;
+    if (this.props.componentUrl) {
+      mdUrl = `${this.props.componentUrl}/docs/${this.props.componentName}${section}.md`;
+    }
+
+    // Allow generated URL fallback.
+    const editUrl: string | undefined = url || mdUrl || undefined;
+
+    if (editUrl) {
+      return (
+        <TooltipHost
+          content={ `Edit ${this.props.componentName} ${section} on GitHub` }
+          id={ `${this.props.componentName}-${section}-editButtonHost` }
+        >
+          <IconButton
+            key={ `${this.props.componentName}-${section}-editButton` }
+            aria-describedby={ `${this.props.componentName}-${section}-editButtonHost` }
+            className={ `ComponentPage-editButton ComponentPage-editButton--${section}` }
+            iconProps={ {
+              iconName: 'Edit'
+            } }
+            href={ editUrl }
+            target='_blank'
+            rel='noopener noreferrer'
+          />
+        </TooltipHost>
+      );
+    }
+
+    return undefined;
   }
 
   private _getRelatedComponents(): JSX.Element | undefined {
@@ -210,11 +257,19 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       dosAndDonts.push(
         <div className='ComponentPage-doSections' key='do-sections'>
           <div className='ComponentPage-doSection'>
-            <h3>Do</h3>
+            <div className='ComponentPage-doSectionHeader'>
+              <h3>Do</h3>
+              { this._editButton('Dos', this.props.editDosUrl) }
+            </div>
+            <hr className='ComponentPage-doSectionHr' />
             { this.props.dos }
           </div>
           <div className='ComponentPage-doSection ComponentPage-doSection--dont'>
-            <h3>Don&rsquo;t</h3>
+            <div className='ComponentPage-doSectionHeader'>
+              <h3>Don&rsquo;t</h3>
+              { this._editButton('Donts', this.props.editDontsUrl) }
+            </div>
+            <hr className='ComponentPage-doSectionHr' />
             { this.props.donts }
           </div>
         </div>
