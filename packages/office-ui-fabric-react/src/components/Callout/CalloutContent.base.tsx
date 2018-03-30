@@ -209,7 +209,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             { children }
           </Popup>
         </div>
-      </div>
+      </div >
     );
 
     return content;
@@ -247,7 +247,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
       this._didSetInitialFocus = true;
-      focusFirstChild(this._calloutElement.value);
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.value));
     }
   }
 
