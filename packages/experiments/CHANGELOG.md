@@ -1,6 +1,24 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Mar 2018 21:50:01 GMT and should not be manually modified.
+
+## 5.28.1
+Wed, 28 Mar 2018 21:50:01 GMT
+
+### Patches
+
+- Remove root imports of office-ui-fabric-react
+
+## 5.28.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- Create new pattern for suggestions for BaseFloatingPicker
+
+### Patches
+
+- Fix errors in Signals styles
 
 ## 5.27.0
 Sun, 25 Mar 2018 03:08:03 GMT

@@ -2,6 +2,49 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.28.1",
+      "tag": "@uifabric/experiments_v5.28.1",
+      "date": "Wed, 28 Mar 2018 21:50:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "f15e7a522d14439f5bab69040fe78cb5786be649",
+            "comment": "Remove root imports of office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.0",
+      "tag": "@uifabric/experiments_v5.28.0",
+      "date": "Tue, 27 Mar 2018 20:22:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "8da21c4d2e485c6070aabf732fa3d80e617a7e60",
+            "comment": "Create new pattern for suggestions for BaseFloatingPicker"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "adae0d4cb00487ebce197fad43d0cf21db985565",
+            "comment": "Fix errors in Signals styles"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.71.0 <6.0.0` to `>=5.72.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.5.0 <6.0.0` to `>=5.6.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.27.0",
       "tag": "@uifabric/experiments_v5.27.0",
       "date": "Sun, 25 Mar 2018 03:08:03 GMT",

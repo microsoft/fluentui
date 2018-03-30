@@ -8,6 +8,7 @@ export * from './components/Highlight/Highlight';
 export * from './components/PropertiesTable/PropertiesTable';
 export * from './components/PropertiesTable/PropertiesTableSet';
 export * from './components/PropertiesTable/PropertiesTableSet.types';
+export * from './components/templates';
 export * from './utilities/beep';
 export * from './utilities/createApp';
 export * from './utilities/data';
