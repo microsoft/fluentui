@@ -384,6 +384,40 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
+    it('Touch Start on primary button of SplitButton expands menu', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          split={ true }
+          onClick={ alertClicked }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const primaryButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
+
+      // in a normal scenario, when we do a touchstart we would also cause a
+      // click event to fire. This doesn't happen in the simulator so we're
+      // manually adding this in.
+      ReactTestUtils.Simulate.touchStart(primaryButtonDOM);
+      ReactTestUtils.Simulate.click(primaryButtonDOM);
+      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+    });
+
     it('If menu trigger is disabled, pressing down does not trigger menu', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton

@@ -16,6 +16,7 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import { TouchEvent } from 'react';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -194,7 +195,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public componentDidMount() {
-    if (this._isSplitButton && this._splitButtonContainer) {
+    if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
       this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
     }
   }
@@ -468,6 +469,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-describedby={ buttonProps.ariaDescription }
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onSplitButtonContainerKeyDown }
+        onTouchStart={ this._onTouchStart.bind(this) }
         ref={ this._splitButtonContainer }
         data-is-focusable={ true }
         onClick={ !disabled && !primaryDisabled ? this._onSplitButtonClick : undefined }
@@ -569,6 +571,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
+    }
+  }
+
+  private _onTouchStart() {
+    if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
+      this._processingTouch = true;
+
+      this._async.setTimeout(() => {
+        this._processingTouch = false;
+      }, 500);
     }
   }
 

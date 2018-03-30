@@ -35,6 +35,7 @@ import {
   VerticalDivider
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
+import { TouchEvent } from 'react';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -593,7 +594,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div
         ref={ (el: HTMLDivElement) => {
           this._splitButtonContainers.set(item.key, el);
-          el && this._events.on(el, 'pointerdown', this._onPointerDown, true);
+          if (el && 'onpointerdown' in el) {
+            this._events.on(el, 'pointerdown', this._onPointerDown, true);
+          }
         }
         }
         role={ 'button' }
@@ -607,6 +610,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-setsize={ totalItemCount }
         onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
         onClick={ this._executeItemClick.bind(this, item) }
+        onTouchStart={ this._onTouchStart.bind(this) }
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
@@ -703,6 +707,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ev.preventDefault();
       ev.stopPropagation();
       this.dismiss(ev);
+    }
+  }
+
+  private _onTouchStart(ev: TouchEvent<HTMLElement>) {
+    if (this._host && !('onpointerdown' in this._host)) {
+      this._processingTouch = true;
+
+      this._async.setTimeout(() => {
+        this._processingTouch = false;
+      }, 500);
     }
   }
 

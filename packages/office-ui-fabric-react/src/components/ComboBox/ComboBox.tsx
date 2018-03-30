@@ -31,6 +31,7 @@ import {
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
+import { TouchEvent, InputHTMLAttributes } from 'react';
 
 export interface IComboBoxState {
 
@@ -172,14 +173,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   public componentDidMount() {
     // hook up resolving the options if needed on focus
-    this._events.on(this._comboBoxWrapper.value, 'focus', this._onResolveOptions, true);
-
-    // if ('onpointerdown' in this._comboBoxWrapper.value) {
-    //   this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
-    // } else {
-    //   this._events.on(this._comboBoxWrapper.value, 'touchstart', this._onPointerDown, true);
-    // }
-    this._events.on(this._comboBoxWrapper.value, 'touchstart', this._onTouchStart, true);
+    if (this._comboBoxWrapper.value && 'onpointerdown' in this._comboBoxWrapper.value) {
+      this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+    }
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
@@ -336,6 +332,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
             onClick={ this._onAutofillClick }
+            onTouchStart={ this._onTouchStart }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ this._getAriaAutoCompleteValue() }
@@ -1666,19 +1663,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  private _onTouchStart = (ev: TouchEvent): void => {
-    this._processingTouch = true;
+  private _onTouchStart = (ev: TouchEvent<HTMLInputElement>): void => {
+    if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
+      this._processingTouch = true;
 
-    ev.preventDefault();
-    ev.stopImmediatePropagation();
-
-    if (this._comboBox.value()) {
-      this._comboBox.value().focus();
+      this._async.setTimeout(() => {
+        this._processingTouch = false;
+      }, 500);
     }
-
-    this._async.setTimeout(() => {
-      this._processingTouch = false;
-    }, 500);
   }
 
   private _onPointerDown = (ev: PointerEvent): void => {
