@@ -206,6 +206,8 @@ export interface ICalloutProps {
    * Only use this when perf is a concern. Also if isHidden is applied then
    * the layermount callback will be called when the component is first loaded,
    * not when hidden is changed.
+   * Note: When callout is hidden its content will not be rendered. It will only render
+   * once the callout is visible.
    */
   isHidden?: boolean;
 }
