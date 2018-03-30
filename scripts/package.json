@@ -38,7 +38,7 @@
     "ts-jest": "^21.1.2",
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "2.7.2",
+    "typescript": "2.8.1",
     "webpack": "^4.2.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.12",
