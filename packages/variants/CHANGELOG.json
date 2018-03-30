@@ -2,6 +2,20 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.3.1",
+      "tag": "@uifabric/variants_v5.3.1",
+      "date": "Thu, 29 Mar 2018 01:39:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "d8d127d10279c0004ee8297af4cd7f6f745f4f5f",
+            "comment": "fix theme output from variants"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.0",
       "tag": "@uifabric/variants_v5.3.0",
       "date": "Sun, 25 Mar 2018 03:08:03 GMT",

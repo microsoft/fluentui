@@ -279,7 +279,6 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           allowFreeform={ true }
           autoComplete='on'
           options={ optionsMulti }
-          value={ valueMulti }
           onChanged={ this._onChangedMulti }
           onResolveOptions={ this._getOptionsMulti }
           onRenderOption={ this._onRenderFontOption }
@@ -336,7 +335,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
   private _getOptionsMulti = (currentOptions: IComboBoxOption[]): IComboBoxOption[] => {
 
-    if (this.state.options.length > 0) {
+    if (this.state.optionsMulti.length > 0) {
       return this.state.optionsMulti;
     }
 
@@ -350,6 +349,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   }
 
   private _onChanged = (option: IComboBoxOption, index: number, value: string): void => {
+    console.log('_onChanged() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
@@ -372,6 +372,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   }
 
   private _onChangedMulti = (option: IComboBoxOption, index: number, value: string) => {
+    console.log('_onChangedMulti() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       // User selected/de-selected an existing option
       this.setState({

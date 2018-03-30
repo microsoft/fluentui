@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: do not select disabled items on keydown",
+      "comment": "Pickers: fix bug where suggestions wouldn't have correct value selected",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "aditima@microsoft.com"
+  "email": "joschect@microsoft.com"
 }

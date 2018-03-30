@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel, IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
+import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -14,6 +16,13 @@ export interface IBaseFloatingPicker {
 
   /** Shows the picker */
   showPicker: () => void;
+
+  /** Gets the suggestions */
+  // tslint:disable-next-line:no-any
+  suggestions: any[];
+
+  /** Gets the input text */
+  inputText: string;
 }
 
 // Type T is the type of the item that is displayed
@@ -23,8 +32,10 @@ export interface IBaseFloatingPicker {
 export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   componentRef?: (component?: IBaseFloatingPicker | null) => void;
 
-  /** The suggestions controller */
-  suggestionsController: SuggestionsController<T>;
+  /**
+   * The suggestions store
+   */
+  suggestionsStore: SuggestionsStore<T>;
 
   /**
    * The suggestions to show on zero query
@@ -76,7 +87,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * The properties that will get passed to the Suggestions component.
    */
-  pickerSuggestionsProps?: IBasePickerSuggestionsProps;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
@@ -118,4 +129,20 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * Width for the suggestions callout
    */
   calloutWidth?: number;
+}
+
+export interface IBaseFloatingPickerSuggestionProps {
+  /**
+   * Whether or not the first selectable item in the suggestions list should be selected
+   */
+  shouldSelectFirstItem?: () => boolean;
+
+  /**
+ * The header items props
+ */
+  headerItemsProps?: ISuggestionsHeaderFooterProps[];
+  /**
+   * The footer items props
+   */
+  footerItemsProps?: ISuggestionsHeaderFooterProps[];
 }

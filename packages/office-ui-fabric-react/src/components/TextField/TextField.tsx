@@ -3,6 +3,7 @@ import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
+  autobind,
   DelayedRender,
   BaseComponent,
   getId,
@@ -154,7 +155,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
-    const renderProps: ITextFieldProps = { ...this.props, componentId: this._id };
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
@@ -169,7 +169,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         <div className={ css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '') }>
-          { onRenderLabel(renderProps, this._onRenderLabel) }
+          { onRenderLabel(this.props, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css('ms-TextField-prefix', styles.fieldPrefixSuffix) }>
@@ -293,13 +293,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
+  @autobind
   private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
     const {
-      label,
-      componentId
+      label
     } = props;
     if (label) {
-      return (<Label htmlFor={ componentId }>{ label }</Label>);
+      return (<Label htmlFor={ this._id }>{ label }</Label>);
     }
     return null;
   }
