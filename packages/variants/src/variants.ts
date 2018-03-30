@@ -193,13 +193,13 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
   // Strong variant is unique here, we've redefined the entire palette and are
   // effectively inverting the theme. Thus, do not mix in the original theme's value
-  // for the palette and semanticColors, since they will not work, instead always
-  // semanticColors from scratch.
+  // for the palette and semanticColors, since they will not work well "inverted",
+  // instead, use the new palette and then generate semanticColors from scratch.
   return createTheme({
     ...theme,
     ...{
-      palette: { ...partialPalette },
-      semanticColors: { ...partialSemantic },
+      palette: partialPalette,
+      semanticColors: partialSemantic,
       isInverted: !theme.isInverted
     }
   });
