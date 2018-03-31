@@ -193,12 +193,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     );
 
     const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
+    const visibilityStyle: React.CSSProperties = this.props.isHidden ? { visibility: 'hidden' } : {};
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div
         ref={ this._hostElement }
         className={ this._classNames.container }
-        style={ { visibility: this.props.isHidden ? 'hidden' : undefined } }
+        style={ visibilityStyle }
       >
         <div
           className={ css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!]) }
