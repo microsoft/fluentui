@@ -8,21 +8,21 @@ import {
 } from '@uifabric/example-app-base';
 
 /* tslint:disable:max-line-length */
-import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
-const TilesListBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx'
-) as string;
+// import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
+// const TilesListBasicExampleCode = require(
+//   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx'
+// ) as string;
 
 import { TilesListDocumentExample } from './examples/TilesList.Document.Example';
 const TilesListDocumentExampleCode = require(
   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Document.Example.tsx'
 ) as string;
 
-import { TilesListMediaExample } from './examples/TilesList.Media.Example';
+// import { TilesListMediaExample } from './examples/TilesList.Media.Example';
 
-const TilesListMediaExampleCode = require(
-  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx'
-) as string;
+// const TilesListMediaExampleCode = require(
+//   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx'
+// ) as string;
 
 export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -32,15 +32,15 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName='TilesListExample'
         exampleCards={
           <div>
-            <ExampleCard title='TilesList with basic tiles' isOptIn={ true } code={ TilesListBasicExampleCode }>
+            {/* <ExampleCard title='TilesList with basic tiles' isOptIn={ true } code={ TilesListBasicExampleCode }>
               <TilesListBasicExample />
-            </ExampleCard>
+            </ExampleCard> */}
             <ExampleCard title='TilesList with document tiles' isOptIn={ true } code={ TilesListDocumentExampleCode }>
               <TilesListDocumentExample />
             </ExampleCard>
-            <ExampleCard title='TilesList with media tiles' isOptIn={ true } code={ TilesListMediaExampleCode }>
+            {/* <ExampleCard title='TilesList with media tiles' isOptIn={ true } code={ TilesListMediaExampleCode }>
               <TilesListMediaExample />
-            </ExampleCard>
+            </ExampleCard> */}
           </div>
         }
         propertiesTables={

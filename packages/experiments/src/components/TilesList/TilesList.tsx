@@ -173,15 +173,21 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       className: pageClassName,
       ...divProps
     } = pageProps;
-
+    console.log(page);
     const {
       items
     } = page;
 
     const data: IPageData<TItem> = page.data;
 
-    const cells: ITileCell<TItem>[] = items || [];
+    const cellsPerRow: number = Math.floor(data.pageWidths[0] / data.cellSizes[0].width);
 
+    const cells: ITileCell<TItem>[] = items ?
+      items[0].key === 'shimmerItem' ?
+        this._getShimmerCells(items[0], cellsPerRow) :
+        items :
+      [];
+    console.log(cells);
     let grids: React.ReactNode[] = [];
 
     const previousCell = this.state.cells[page.startIndex - 1];
@@ -523,6 +529,30 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           key: `header-${item.key}`
         });
       }
+    }
+
+    return cells;
+  }
+
+  private _getShimmerCells(item: ITileCell<TItem>, cellsPerRow: number): ITileCell<TItem>[] {
+    let cells: ITileCell<TItem>[] = [];
+
+    for (let i = 0; i < cellsPerRow * 3; i++) {
+      cells.push({
+        aspectRatio: 1,
+        content: item.content,
+        onRender: item.onRender,
+        grid: {
+          minRowHeight: item.grid.minRowHeight,
+          spacing: item.grid.spacing,
+          mode: item.grid.mode,
+          key: `grid-shimmerGroup-${item.key}`,
+          maxScaleFactor: item.grid.maxScaleFactor,
+          marginBottom: item.grid.marginBottom,
+          marginTop: item.grid.marginTop
+        },
+        key: `shimmer-${i}`
+      });
     }
 
     return cells;

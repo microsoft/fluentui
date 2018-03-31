@@ -34,6 +34,13 @@ export interface IExampleGroup {
   key: string;
 }
 
+export interface IExampleShimmerGroup {
+  key: string;
+  items: IExampleItem[];
+  name: string;
+  index: number;
+}
+
 export function createMediaItems(count: number, indexOffset: number): IExampleItem[] {
   const items: IExampleItem[] = [];
 
@@ -124,6 +131,55 @@ export function getTileCells(groups: IExampleGroup[], {
           TilesGridMode.fillHorizontal :
           TilesGridMode.stack :
         TilesGridMode.fill,
+      key: group.key
+    });
+  }
+
+  return items;
+}
+
+export function createShimmerGroup(): IExampleShimmerGroup[] {
+  return [{
+    items: [{
+      key: 'shimmerItem',
+      name: lorem(4),
+      index: 0,
+      aspectRatio: 1
+    }],
+    index: 0,
+    name: lorem(4),
+    key: 'shimmerGroup'
+  }];
+}
+
+export function getShimmerCells(groups: IExampleShimmerGroup[], {
+  onRenderCell,
+  size = 'large'
+}: {
+    onRenderCell: (item: IExampleItem, finalSize?: ITileSize) => JSX.Element;
+    size?: 'large' | 'small'
+  }): (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] {
+  const items: (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] = [];
+
+  for (const group of groups) {
+    items.push({
+      items: group.items.map((item: IExampleItem): ITilesGridItem<IExampleItem> => {
+        return {
+          key: item.key,
+          content: item,
+          desiredSize: {
+            width: 176,
+            height: 171
+          },
+          onRender: onRenderCell
+        };
+      }),
+      spacing: 8,
+      marginBottom: 40,
+      minRowHeight: 171,
+      mode: size === 'small' ?
+        TilesGridMode.fillHorizontal :
+        TilesGridMode.stack,
       key: group.key
     });
   }

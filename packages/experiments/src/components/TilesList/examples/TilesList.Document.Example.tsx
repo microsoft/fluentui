@@ -3,14 +3,23 @@ import * as React from 'react';
 import {
   TilesList,
   ITilesGridItem,
-  ITilesGridSegment
+  ITilesGridSegment,
+  ITileSize
 } from '../../TilesList';
-import { Tile } from '../../../Tile';
+import { Tile, ITileProps } from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells } from './ExampleHelpers';
+import {
+  IExampleGroup,
+  IExampleItem,
+  createGroup,
+  createDocumentItems,
+  getTileCells,
+  createShimmerGroup,
+  getShimmerCells
+} from './ExampleHelpers';
 
 function createGroups(): IExampleGroup[] {
   let offset = 0;
@@ -32,12 +41,15 @@ const GROUPS = createGroups();
 
 const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[]; }) => group.items));
 
+const SHIMMER_GROUP = createShimmerGroup();
+
 declare class TilesListClass extends TilesList<IExampleItem> { }
 
 const TilesListType: typeof TilesListClass = TilesList;
 
 export interface ITilesListDocumentExampleState {
   isModalSelection: boolean;
+  isDataLoaded: boolean;
   cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
 }
 
@@ -56,9 +68,9 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
 
     this.state = {
       isModalSelection: this._selection.isModal(),
-      cells: getTileCells(GROUPS, {
-        onRenderCell: this._onRenderDocumentCell,
-        onRenderHeader: this._onRenderHeader
+      isDataLoaded: false,
+      cells: getShimmerCells(SHIMMER_GROUP, {
+        onRenderCell: this._onRenderShimmerCell
       })
     };
   }
@@ -73,6 +85,13 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
           onChanged={ this._onToggleIsModalSelection }
           onText='Modal'
           offText='Normal'
+        />
+        <Toggle
+          label='Load Data'
+          checked={ this.state.isDataLoaded }
+          onChanged={ this._onToggleIsDataLoaded }
+          onText='Loaded'
+          offText='Loading...'
         />
         <MarqueeSelection selection={ this._selection }>
           <SelectionZone
@@ -92,6 +111,27 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
 
   private _onToggleIsModalSelection = (checked: boolean): void => {
     this._selection.setModal(checked);
+  }
+
+  private _onToggleIsDataLoaded = (checked: boolean): void => {
+    const { isDataLoaded } = this.state;
+    let { cells } = this.state;
+
+    if (cells.length && cells[0].key !== 'shimmerGroup') {
+      cells = getShimmerCells(SHIMMER_GROUP, {
+        onRenderCell: this._onRenderShimmerCell
+      });
+    } else {
+      cells = getTileCells(GROUPS, {
+        onRenderCell: this._onRenderDocumentCell,
+        onRenderHeader: this._onRenderHeader
+      });
+    }
+
+    this.setState({
+      isDataLoaded: !isDataLoaded,
+      cells: cells
+    });
   }
 
   private _onSelectionChange = (): void => {
@@ -136,6 +176,51 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
         itemName={ item.name }
         itemActivity={ item.key }
       />
+    );
+  }
+
+  private _onRenderShimmerCell(content: IExampleItem, finalSize: ITileSize): JSX.Element {
+    const tileProps: ITileProps = {
+      itemName: (
+        <div
+          // tslint:disable-next-line:jsx-ban-props
+          style={
+            {
+              width: `${(finalSize.width * 70) / 100}px`,
+              height: '7px',
+              backgroundColor: '#f4f4f4'
+            }
+          }
+        />
+      ),
+      itemActivity: (
+        <div
+          // tslint:disable-next-line:jsx-ban-props
+          style={
+            {
+              width: `${(finalSize.width * 30) / 100}px`,
+              height: '7px',
+              backgroundColor: '#f4f4f4'
+            }
+          }
+        />
+      ),
+      showForegroundFrame: true,
+      foreground: (
+        <div
+          // tslint:disable-next-line:jsx-ban-props
+          style={
+            {
+              width: `${(finalSize.width * 45) / 100}px`,
+              height: `${(finalSize.width * 45) / 100}px`,
+              backgroundColor: '#f4f4f4'
+            }
+          }
+        />
+      )
+    };
+    return (
+      <Tile { ...tileProps } />
     );
   }
 
