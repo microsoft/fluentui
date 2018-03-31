@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/variants",
       "comment": "Variants: improve algorithm for generating strong variant that better handles inversion",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/variants",
