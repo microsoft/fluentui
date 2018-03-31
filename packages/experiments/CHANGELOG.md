@@ -1,6 +1,15 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 28 Mar 2018 21:50:01 GMT and should not be manually modified.
+This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+
+## 5.28.2
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable w
+- Fix flex styling for SignalField
+- Pass all props to Signal Icon elements
 
 ## 5.28.1
 Wed, 28 Mar 2018 21:50:01 GMT
