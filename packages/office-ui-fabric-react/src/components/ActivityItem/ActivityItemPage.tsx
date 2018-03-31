@@ -61,7 +61,6 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
             { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md') }
           </PageMarkdown>
         }
-        editDontsUrl='https://google.com'
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
