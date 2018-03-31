@@ -35,14 +35,15 @@ export interface IComponentPageProps {
   allowNativeProps?: boolean | string;
   nativePropsElement?: string | string[] | undefined;
 
-  /** Link to the Component on GitHub.
+  /**
+   * Link to the Component on GitHub.
    * Enables 'View On GitHub' and all 'Edit' buttons.
    */
   componentUrl?: string;
 
   /**
    * Link to the Donts markdown file on GitHub.
-   * Enables the 'Edit Donts' button.
+   * Enables the 'Edit Don'ts' button.
    * Overrides URL from componentUrl.
    */
   editDontsUrl?: string;
@@ -59,7 +60,7 @@ export interface IComponentPageProps {
    * Enables the 'Edit Overview' button.
    * Overrides URL from componentUrl.
    */
-  editOverview?: string;
+  editOverviewUrl?: string;
 }
 
 export enum ComponentPageSection {
@@ -99,7 +100,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             <div className='ComponentPage-overviewSection'>
               <div className='ComponentPage-overviewSectionHeader'>
                 <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
-                { this._editButton(ComponentPageSection.Overview, this.props.editOverview) }
+                { this._editButton(ComponentPageSection.Overview, this.props.editOverviewUrl) }
               </div>
               <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
