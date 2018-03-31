@@ -78,7 +78,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _positionAttempts: number;
   private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
-  private _hasListeners: boolean = false;
+  private _hasListeners = false;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -268,7 +268,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
       this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.value));
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.value!));
     }
   }
 

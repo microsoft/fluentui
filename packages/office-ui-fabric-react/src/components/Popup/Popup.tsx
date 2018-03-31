@@ -114,8 +114,8 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
   private _getScrollBar() {
     let needsVerticalScrollBar = false;
-    if (this._root && this._root.firstElementChild) {
-      needsVerticalScrollBar = this._root.firstElementChild.clientHeight > this._root.clientHeight;
+    if (this._root && this._root.value && this._root.value.firstElementChild) {
+      needsVerticalScrollBar = this._root.value.firstElementChild.clientHeight > this._root.value.clientHeight;
     }
     if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
       this.setState({

@@ -551,7 +551,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (this._focusZone.value) {
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
-      this._async.requestAnimationFrame(() => this._focusZone.focus());
+      this._async.requestAnimationFrame(() => this._focusZone.value!.focus());
     }
   }
 

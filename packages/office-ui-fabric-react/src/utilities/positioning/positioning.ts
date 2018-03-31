@@ -459,7 +459,7 @@ export namespace positioningFunctions {
         alignmentEdge: previousPositions.alignmentEdge,
         isAuto: previousPositions.isAuto,
         targetEdge: previousPositions.targetEdge
-      }
+      };
     }
     const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
     if (getRTL()) {
