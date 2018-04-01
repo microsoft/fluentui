@@ -19,15 +19,15 @@
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/highlight.js": "9.12.2",
-    "@types/react": "16.0.25",
-    "@types/react-dom": "16.0.3",
+    "@types/react": "16.1.0",
+    "@types/react-dom": "16.0.4",
     "@types/webpack-env": "1.13.0",
     "es6-map": "^0.1.5",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
