@@ -168,6 +168,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
           });
         }
+        return prevState;
       });
     }, this.props.cardOpenDelay!);
   }
@@ -201,11 +202,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this.setState((prevState: IHoverCardState) => {
       if (!prevState.isHoverCardVisible) {
-        return ({
+        return {
           isHoverCardVisible: true,
           mode: ExpandingCardMode.expanded
-        });
+        };
       }
+
+      return prevState;
     });
   }
 }

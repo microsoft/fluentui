@@ -165,9 +165,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
-          aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : null }
+          aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : undefined }
           aria-disabled={ disabled }
-          aria-owns={ isOpen ? id + '-list' : null }
+          aria-owns={ isOpen ? id + '-list' : undefined }
           { ...divProps }
           className={ css(
             'ms-Dropdown',

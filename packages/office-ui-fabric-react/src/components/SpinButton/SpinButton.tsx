@@ -202,9 +202,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             type='text'
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
-            aria-valuenow={ value }
-            aria-valuemin={ min && String(min) }
-            aria-valuemax={ max && String(max) }
+            aria-valuenow={ (Number.isNaN(Number(value)) ? undefined : Number(value) }
+            aria-valuetext={ (Number.isNaN(Number(value)) ? value : undefined }
+            aria-valuemin={ min || undefined }
+            aria-valuemax={ max || undefined }
             onBlur={ this._onBlur }
             ref={ this._input }
             onFocus={ this._onFocus }

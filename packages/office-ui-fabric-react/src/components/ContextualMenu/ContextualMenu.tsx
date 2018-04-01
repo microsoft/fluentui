@@ -491,9 +491,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           rel={ anchorRel }
           className={ classNames.root }
           role='menuitem'
-          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
-          aria-haspopup={ itemHasSubmenu || null }
-          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
+          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : undefined }
+          aria-haspopup={ itemHasSubmenu || undefined }
+          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
           aria-posinset={ focusableElementIndex + 1 }
           aria-setsize={ totalItemCount }
           aria-disabled={ this._isItemDisabled(item) }
@@ -534,7 +534,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ariaLabel = item.name;
     }
 
-    const isChecked: boolean | null | undefined = getIsChecked(item);
+    const isChecked: boolean | null = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
     const itemHasSubmenu = hasSubmenu(item);
@@ -554,10 +554,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
-      'aria-haspopup': itemHasSubmenu || null,
-      'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
-      'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : null,
-      'aria-checked': isChecked,
+      'aria-haspopup': itemHasSubmenu || undefined,
+      'aria-owns': item.key === expandedMenuItemKey ? subMenuId : undefined,
+      'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : undefined,
+      'aria-checked': !!isChecked,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': this._isItemDisabled(item),

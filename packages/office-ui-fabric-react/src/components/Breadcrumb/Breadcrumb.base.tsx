@@ -127,7 +127,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
         <Link
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
-          aria-current={ item.isCurrentItem ? 'page' : null }
+          aria-current={ item.isCurrentItem ? 'page' : undefined }
           onClick={ this._onBreadcrumbClicked.bind(this, item) }
         >
           <TooltipHost

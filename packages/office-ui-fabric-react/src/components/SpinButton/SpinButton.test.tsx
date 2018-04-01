@@ -452,7 +452,7 @@ describe('SpinButton', () => {
     expect(inputDOM.value).toEqual(String(errorMessage));
     expect(inputDOM.getAttribute('aria-valuemin')).toEqual(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).toEqual(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).toEqual(String(errorMessage));
+    expect(inputDOM.getAttribute('aria-valuetext')).toEqual(String(errorMessage));
   });
 
   it('should have correct value after increment and using defaultValue', () => {
