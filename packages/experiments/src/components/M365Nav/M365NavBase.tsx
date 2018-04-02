@@ -15,7 +15,7 @@ export class M365NavBase extends React.Component<IM365NavProps, INavState> imple
   }
 
   protected getPreferredSelectedKey(): string {
-    let selectedKey: string = '';
+    let selectedKey = '';
 
     // if caller passes in selectedKey, use it as first choice or use current state.selectedKey
     if (this.props.selectedKey) {
