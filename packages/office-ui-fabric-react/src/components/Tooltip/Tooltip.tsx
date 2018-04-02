@@ -54,6 +54,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
           AnimationClassNames.fadeIn200,
           styles.root,
           (delay === TooltipDelay.medium) && styles.hasMediumDelay,
+          (delay === TooltipDelay.long) && styles.hasLongDelay,
           (maxWidth !== null) && { maxWidth: maxWidth },
           calloutProps ? calloutProps.className : undefined,
           this.props.className
