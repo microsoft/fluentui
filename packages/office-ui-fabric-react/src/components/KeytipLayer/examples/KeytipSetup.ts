@@ -118,6 +118,7 @@ export const keytipConfig: IKeytipConfig = {
               id: 'SubmenuKeytip1',
               content: 'M',
               optionalProps: {
+                offset: { x: 17, y: 19 },
                 onExecute: btnExecute
               }
             },
@@ -125,6 +126,7 @@ export const keytipConfig: IKeytipConfig = {
               id: 'SubmenuKeytip2',
               content: 'P',
               optionalProps: {
+                offset: { x: 17, y: 19 },
                 onExecute: btnExecute,
                 hasChildrenNodes: true
               },

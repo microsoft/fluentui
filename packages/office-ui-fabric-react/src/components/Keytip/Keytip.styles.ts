@@ -1,5 +1,6 @@
 import { IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
+import { IStyleFunction, IPoint } from '../../Utilities';
 
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
   const { theme, disabled, visible } = props;
@@ -48,5 +49,29 @@ export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutCont
     calloutMain: [{
       backgroundColor: 'transparent'
     }]
+  };
+};
+
+export const getCalloutOffsetStyles = (offset: IPoint): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
+  return (props: ICalloutContentStyleProps): ICalloutContentStyles => {
+    return {
+      container: [
+      ],
+      root: [{
+        border: 'none',
+        boxShadow: 'none',
+        marginLeft: offset.x,
+        // Reverse the margin from the bottom so the callout positioning
+        // doesn't auto-correct it
+        marginBottom: -1 * offset.y
+      }],
+      beak: [
+      ],
+      beakCurtain: [
+      ],
+      calloutMain: [{
+        backgroundColor: 'transparent'
+      }]
+    };
   };
 };

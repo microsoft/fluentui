@@ -11,9 +11,6 @@ export interface ICallout {
 
 }
 
-export type CalloutTarget = Element | string | MouseEvent | IPoint | null;
-export type CalloutTargetFunction = () => CalloutTarget;
-
 export interface ICalloutProps {
   /**
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
@@ -27,7 +24,7 @@ export interface ICalloutProps {
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    * It can also be a function which returns a CalloutTarget
    */
-  target?: CalloutTarget | CalloutTargetFunction;
+  target?: Element | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned

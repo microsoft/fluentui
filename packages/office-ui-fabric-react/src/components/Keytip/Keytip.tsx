@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { BaseComponent, IPoint, getDocument, mergeOverflowKeySequences } from '../../Utilities';
-import { Callout, CalloutTargetFunction } from '../../Callout';
+import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';
 import { KeytipContent } from './KeytipContent';
-import { getCalloutStyles } from './Keytip.styles';
+import { getCalloutStyles, getCalloutOffsetStyles } from './Keytip.styles';
 import { constructKeytipTargetFromSequences } from '../../utilities/keytips';
 
 /**
@@ -30,31 +30,25 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
       calloutProps
     } = this.props;
 
-    let sequenceToTarget: string;
+    let keytipTarget: string;
     // Take into consideration the overflow sequence
     if (overflowSetSequence) {
-      sequenceToTarget = constructKeytipTargetFromSequences(mergeOverflowKeySequences(keySequences, overflowSetSequence));
+      keytipTarget = constructKeytipTargetFromSequences(mergeOverflowKeySequences(keySequences, overflowSetSequence));
     } else {
-      sequenceToTarget = constructKeytipTargetFromSequences(keySequences);
+      keytipTarget = constructKeytipTargetFromSequences(keySequences);
     }
-    let keytipTarget: string | CalloutTargetFunction = sequenceToTarget;
 
     if (offset) {
-      // If we have an offset, use a function to calculate the exact point after the
-      // item has rendered
-      keytipTarget = (): Element | string | MouseEvent | IPoint | null => {
-        const currentDoc: Document = getDocument()!;
-        const targetEl = currentDoc ? currentDoc.querySelector(sequenceToTarget) as Element : undefined;
-        if (targetEl) {
-          const targetRect = targetEl.getBoundingClientRect();
-          // Add keytip offset to the top-left of the target
-          return { x: targetRect.left + offset.x, y: targetRect.top + offset.y };
-        }
-        return null;
+      // Set callout to top-left corner, will be further positioned in
+      // getCalloutOffsetStyles
+      calloutProps = {
+        ...calloutProps,
+        coverTarget: true,
+        directionalHint: DirectionalHint.topLeftEdge
       };
     }
 
-    if (!calloutProps || !calloutProps.directionalHint) {
+    if (!calloutProps || !!calloutProps.directionalHint) {
       // Default callout directional hint to BottomCenter
       calloutProps = {
         ...calloutProps,
@@ -67,7 +61,7 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
         { ...calloutProps }
         isBeakVisible={ false }
         doNotLayer={ true }
-        getStyles={ getCalloutStyles }
+        getStyles={ offset ? getCalloutOffsetStyles(offset) : getCalloutStyles }
         preventDismissOnScroll={ true }
         target={ keytipTarget }
       >
