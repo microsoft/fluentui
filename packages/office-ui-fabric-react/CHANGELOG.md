@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Apr 2018 22:15:06 GMT and should not be manually modified.
+
+## 5.77.0
+Mon, 02 Apr 2018 22:15:06 GMT
+
+### Minor changes
+
+- Make tooltip interactable if given a delay before closing.
+
+### Patches
+
+- Add overflow control to ms-Document-details
 
 ## 5.76.0
 Sat, 31 Mar 2018 17:40:00 GMT

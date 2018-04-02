@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.77.0",
+      "tag": "office-ui-fabric-react_v5.77.0",
+      "date": "Mon, 02 Apr 2018 22:15:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "qiangh <nif_tony@outlook.com>",
+            "commit": "beaaad8ddf77130612a83c430f4290d3ea76738d",
+            "comment": "Add overflow control to ms-Document-details"
+          }
+        ],
+        "minor": [
+          {
+            "author": "wygoodin <wygoodin@microsoft.com>",
+            "commit": "e405fefcbf48d7bd72e24a3231d4de1a2f4d3ec3",
+            "comment": "Make tooltip interactable if given a delay before closing."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.76.0",
       "tag": "office-ui-fabric-react_v5.76.0",
       "date": "Sat, 31 Mar 2018 17:40:00 GMT",
