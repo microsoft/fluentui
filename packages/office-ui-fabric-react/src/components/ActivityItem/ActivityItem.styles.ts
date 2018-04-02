@@ -110,9 +110,9 @@ export const getStyles = memoizeFunction((
       },
       (props.isBeaconAnimating) && {
         animationName: ContinuousPulse,
-        animationIterationCount: 'infinite',
-        animationDuration: '5s',
-        animationDelay: '.3s'
+        animationIterationCount: '1',
+        animationDuration: '14s',
+        animationDelay: '2s'
       }
     ],
 
