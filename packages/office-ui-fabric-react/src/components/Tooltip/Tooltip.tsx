@@ -40,14 +40,14 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
       id,
       maxWidth,
       onRenderContent = this._onRenderContent
-  } = this.props;
+    } = this.props;
 
     return (
       <Callout
         target={ targetElement }
         directionalHint={ directionalHint }
         directionalHintForRTL={ directionalHintForRTL }
-        {...calloutProps}
+        { ...calloutProps }
         { ...getNativeProps(this.props, divProperties) }
         className={ mergeStyles(
           'ms-Tooltip',
@@ -59,7 +59,13 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
           this.props.className
         ) }
       >
-        <div className={ css('ms-Tooltip-content', styles.content) } id={ id } role='tooltip'>
+        <div
+          className={ css('ms-Tooltip-content', styles.content) }
+          id={ id }
+          role='tooltip'
+          onMouseEnter={ this.props.onMouseEnter }
+          onMouseLeave={ this.props.onMouseLeave }
+        >
           { onRenderContent(this.props, this._onRenderContent) }
         </div>
       </Callout >
