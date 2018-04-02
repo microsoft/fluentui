@@ -99,7 +99,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                 onRenderOverflowButton={ (overflowItems) => {
                   return (
                     <DefaultButton
-                      menuProps={ { items: overflowItems! } }
+                      menuProps={ { items: overflowItems as IContextualMenuItem[] } }
                     />
                   );
                 } }
