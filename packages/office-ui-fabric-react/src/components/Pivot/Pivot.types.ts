@@ -22,6 +22,11 @@ export interface IPivotProps extends React.Props<Pivot> {
   initialSelectedIndex?: number;
 
   /**
+   * Optional root classname for the root pivot element.
+   */
+  className?: string;
+
+  /**
    * The key of the pivot item initially selected.
    *
    * It will make initialSelectedIndex not work. You must not use them together.

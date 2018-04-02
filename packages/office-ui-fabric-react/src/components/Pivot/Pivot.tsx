@@ -105,7 +105,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul
-          className={ css('ms-Pivot', styles.root,
+          className={ css('ms-Pivot', styles.root, this.props.className,
             { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
             { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
           role='tablist'
@@ -152,10 +152,10 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderLinkContent = (link: IPivotItemProps): JSX.Element => {
-    const { itemCount, itemIcon, linkText } = link;
+    const { itemCount, itemIcon, linkText, className } = link;
 
     return (
-      <span className={ css('ms-Pivot-link-content') }>
+      <span className={ css('ms-Pivot-link-content', className) }>
         { itemIcon !== undefined && (
           <span className={ css('ms-Pivot-icon', styles.icon) }>
             <Icon iconName={ itemIcon } />
@@ -206,6 +206,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         links.push({
           linkText: pivotItem.props.linkText,
           ariaLabel: pivotItem.props.ariaLabel,
+          className: pivotItem.props.className,
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
           itemIcon: pivotItem.props.itemIcon,
