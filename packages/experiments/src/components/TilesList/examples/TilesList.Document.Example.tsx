@@ -188,7 +188,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
             {
               width: `${(finalSize.width * 70) / 100}px`,
               height: '7px',
-              backgroundColor: '#f4f4f4'
+              // backgroundColor: '#f4f4f4'
             }
           }
         />
@@ -200,7 +200,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
             {
               width: `${(finalSize.width * 30) / 100}px`,
               height: '7px',
-              backgroundColor: '#f4f4f4'
+              // backgroundColor: '#f4f4f4'
             }
           }
         />
@@ -213,7 +213,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
             {
               width: `${(finalSize.width * 45) / 100}px`,
               height: `${(finalSize.width * 45) / 100}px`,
-              backgroundColor: '#f4f4f4'
+              // backgroundColor: '#f4f4f4'
             }
           }
         />

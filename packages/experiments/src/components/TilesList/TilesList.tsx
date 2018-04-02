@@ -5,6 +5,7 @@ import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
+import { Shimmer } from 'experiments/lib/Shimmer';
 
 // tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
@@ -289,7 +290,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         { ...divProps }
         className={ css(pageClassName, this._onGetPageClassName()) }
       >
-        { grids }
+        { isShimmer ?
+          <Shimmer
+            isBaseStyle={ true }
+          >
+            { grids }
+          </Shimmer> :
+          grids
+        }
       </div>
     );
   }
