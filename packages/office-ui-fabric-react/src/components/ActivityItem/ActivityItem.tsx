@@ -9,6 +9,11 @@ import { getStyles } from './ActivityItem.styles';
 import { PersonaSize, PersonaCoin, IPersonaProps } from '../../Persona';
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
+  public static defaultProps: Partial<IActivityItemProps> = {
+    beaconColorOne: '#00FFEC',
+    beaconColorTwo: '#005EDD'
+  };
+
   constructor(props: IActivityItemProps) {
     super(props);
   }
@@ -29,6 +34,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
         { (this.props.activityPersonas || this.props.activityIcon || this.props.onRenderIcon) &&
           <div className={ classNames.activityTypeIcon }>
+            <div className={ classNames.pulsingBeacon } />
             { onRenderIcon(this.props) }
           </div>
         }
@@ -122,6 +128,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   }
 
   private _getClassNames(props: IActivityItemProps): IActivityItemClassNames {
-    return getClassNames(getStyles(undefined, props.styles), props.className!, props.activityPersonas!, props.isCompact!);
+    return getClassNames(getStyles(props, undefined, props.styles), props.className!, props.activityPersonas!, props.isCompact!);
   }
 }

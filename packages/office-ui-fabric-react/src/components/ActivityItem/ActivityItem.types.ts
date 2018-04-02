@@ -76,6 +76,22 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
    * Element shown as a timestamp on this activity. If not included, no timestamp is shown.
    */
   timeStamp?: string | React.ReactNode[] | React.ReactNode;
+
+  /**
+   * Beacon color one
+   */
+  beaconColorOne?: string;
+
+  /**
+   * Beacon color two
+   */
+  beaconColorTwo?: string;
+
+  /**
+   * Is the beacon currently animating.
+   * @default false
+   */
+  isBeaconAnimating?: boolean;
 }
 
 export interface IActivityItemStyles {
@@ -83,6 +99,11 @@ export interface IActivityItemStyles {
    * Styles applied to the root activity item container.
    */
   root?: IStyle;
+
+  /**
+   * Styles applied to the root activity item container.
+   */
+  pulsingBeacon?: IStyle;
 
   /**
    * Styles applied to the main container of the activity's description.
