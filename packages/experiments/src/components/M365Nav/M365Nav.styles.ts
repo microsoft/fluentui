@@ -12,15 +12,15 @@ export type IM365FloatingNavStyle = IStyle & {
     withChild?: IStyle;
 };
 
-const navFontSize = '13px';
+const navFontSize = 13;
 const navTextColor = '#FFF';
-const navWidth = '280px';
-const navCollapsedWidth = '50px';
-const navFloatingWidth = '230px';
+const navWidth = 280;
+const navCollapsedWidth = 50;
+const navFloatingWidth = 230;
 const navItemHeight = 50;
 const navBackgroundColor = '#333333';
 const navItemHoverColor = '#767676';
-const navGroupSeparatorItemHeight = '40px';
+const navGroupSeparatorItemHeight = 40;
 const navItemWithChildBgColor = '#505050';
 const navItemSelectedColor = '#666666';
 const navItemIndentSize = 50;

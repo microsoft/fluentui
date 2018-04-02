@@ -1,7 +1,7 @@
 ﻿/* tslint:disable */
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
-import { INav, INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
+import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
@@ -14,9 +14,9 @@ import {
   getM365FloatingNavStyle,
   getM365FloatingNavItemStyle
 } from './M365Nav.styles';
+import { M365NavBase } from './M365NavBase';
 
-export class M365SlimNav extends React.Component<IM365NavProps, INavState> implements INav {
-
+export class M365SlimNav extends M365NavBase {
   constructor(props: IM365NavProps) {
     super(props);
 
@@ -24,10 +24,6 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey
     };
-
-    this.renderGroup = this.renderGroup.bind(this);
-    this.renderLinks = this.renderLinks.bind(this);
-    this.renderLink = this.renderLink.bind(this);
   }
 
   public get selectedKey(): string | undefined {
@@ -41,7 +37,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
 
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
-        <nav role="navigation">
+        <nav role='navigation'>
           {
             this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
               return this.renderGroup(group, groupIndex);
@@ -74,45 +70,6 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
     ev.stopPropagation();
   }
 
-  private getPreferredSelectedKey(): string {
-    let selectedKey: string = "";
-
-    // if caller passes in selectedKey, use it as first choice or use current state.selectedKey
-    if (this.props.selectedKey) {
-      selectedKey = this.props.selectedKey;
-    } else if (this.state.selectedKey) {
-      selectedKey = this.state.selectedKey;
-    }
-
-    return selectedKey;
-  }
-
-  /* given a link, find if one of the child is selected */
-  private isChildLinkSelected(link: IM365NavLink): boolean {
-    let selectedKey = this.getPreferredSelectedKey();
-
-    if (!selectedKey || !link || !link.links || link.links.length === 0) {
-      return false;
-    }
-
-    return link.links.some((childLink: IM365NavLink) => {
-      return !!childLink && childLink.key === selectedKey;
-    });
-  }
-
-  // given a link and an optional includeChildren parameter, find if the link or any of the children is selected
-  private isLinkSelected(link: IM365NavLink, includeChildren: boolean): boolean {
-    let selectedKey = this.getPreferredSelectedKey();
-
-    if (!selectedKey || !link) {
-      return false;
-    }
-
-    // check if the link or any of the child link is selected
-    return link.key === selectedKey ||
-      (includeChildren && this.isChildLinkSelected(link));
-  }
-
   private getScrollTop(): number | undefined {
     if (!this.props.navScrollerId) {
       return undefined;
@@ -142,18 +99,18 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
     }
 
     var rightIconName = null;
-    if (link.url && link.target && link.target === "_blank") {
+    if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
-      rightIconName = "OpenInNewWindow";
+      rightIconName = 'OpenInNewWindow';
     }
 
     var linkTextStyle: React.CSSProperties = {};
     if (!rightIconName) {
-      linkTextStyle.width = "100%";
+      linkTextStyle.width = '100%';
     }
     else {
       // leave 50px to the icon on the right
-      linkTextStyle.width = "calc(100% - 50px)";
+      linkTextStyle.width = 'calc(100% - 50px)';
     }
 
     const isSelected = nestingLevel > 0 && this.isLinkSelected(link, false /* includeChildren */);
@@ -164,7 +121,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
         href={link.url ? link.url : undefined}
         target={link.target ? link.target : undefined}
         key={link.key || linkIndex}
-        data-hint="SlimReactLeftNav"
+        data-hint='SlimReactLeftNav'
         data-value={link.name}
         aria-label={link.name}
         tabIndex={0}
@@ -195,7 +152,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
 
     return (
       <li
-        role="listitem"
+        role='listitem'
         key={link.key || linkIndex}
         title={link.name}>
         {
@@ -222,7 +179,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
     }
 
     return (
-      <ul role="list">
+      <ul role='list'>
         {
           links.map((link: IM365NavLink, linkIndex: number) => {
             return this.renderFloatingLink(link, linkIndex, nestingLevel);
@@ -264,7 +221,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
 
     return (
       <li
-        role="listitem"
+        role='listitem'
         key={link.key || linkIndex}
         onMouseEnter={this.onLinkMouseEnterOrLeave.bind(this, link)}
         onMouseLeave={this.onLinkMouseEnterOrLeave.bind(this, link)}
@@ -274,7 +231,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
           href={link.url ? link.url : undefined}
           target={link.target ? link.target : undefined}
           key={link.key || linkIndex}
-          data-hint="SlimReactLeftNav"
+          data-hint='SlimReactLeftNav'
           data-value={link.name}
           tabIndex={0}
           onClick={this.onLinkClicked.bind(this, link)}>
@@ -298,7 +255,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
     }
 
     return (
-      <ul role="list">
+      <ul role='list'>
         {
           links.map((link: IM365NavLink, linkIndex: number) => {
             return this.renderLink(link, linkIndex, nestingLevel);
@@ -321,7 +278,7 @@ export class M365SlimNav extends React.Component<IM365NavProps, INavState> imple
           // do not render group header for the first group
           groupIndex > 0 && group.name ?
             <div className={mergeStyles(navGroupSeparatorStyle)}>
-              <div className="horizontalLine">
+              <div className='horizontalLine'>
               </div>
             </div>
             : null

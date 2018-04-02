@@ -1,7 +1,7 @@
 ﻿/* tslint:disable */
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
-import { INav, INavLinkGroup, INavProps } from 'office-ui-fabric-react/lib/components/Nav';
+import { INavLinkGroup, INavProps } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
@@ -10,8 +10,9 @@ import {
   getM365NavItemStyle,
   getM365NavGroupSeparatorStyle
 } from './M365Nav.styles';
+import { M365NavBase } from './M365NavBase';
 
-export class M365Nav extends React.Component<INavProps, INavState> implements INav {
+export class M365Nav extends M365NavBase {
   constructor(props: INavProps) {
     super(props);
 
@@ -19,16 +20,6 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey
     };
-
-    this.renderGroup = this.renderGroup.bind(this);
-    this.renderLinks = this.renderLinks.bind(this);
-    this.renderLink = this.renderLink.bind(this);
-    this.renderCompositeLink = this.renderCompositeLink.bind(this);
-    this.onLinkClicked = this.onLinkClicked.bind(this);
-  }
-
-  public get selectedKey(): string | undefined {
-    return this.state.selectedKey;
   }
 
   public render() {
@@ -84,11 +75,11 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
     var rightIconName = null;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
-      rightIconName = link.isExpanded ? "ChevronUp" : "ChevronDown"
+      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
     }
-    else if (link.url && link.target && link.target === "_blank") {
+    else if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
-      rightIconName = "OpenInNewWindow";
+      rightIconName = 'OpenInNewWindow';
     }
 
     // show nav icon for the first level only
@@ -96,14 +87,14 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
 
     var linkTextStyle: React.CSSProperties = {};
     if (!rightIconName && !leftIconName) {
-      linkTextStyle.width = "100%";
+      linkTextStyle.width = '100%';
     }
     else if (!leftIconName || !rightIconName) {
-      linkTextStyle.width = "calc(100% - 50px)";
+      linkTextStyle.width = 'calc(100% - 50px)';
     }
     else {
       // leave 50px to the icon on the right
-      linkTextStyle.width = "calc(100% - 100px)";
+      linkTextStyle.width = 'calc(100% - 100px)';
     }
 
     const isLinkSelected = this.isLinkSelected(link, false /* includeChildren */);
@@ -119,11 +110,11 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
         key={link.key || linkIndex}
         tabIndex={0}
         onClick={this.onLinkClicked.bind(this, link)}
-        data-hint="ReactLeftNav"
+        data-hint='ReactLeftNav'
         data-value={link.name}
         aria-label={link.name}
-        role="menu">
-        <div className={mergeStyles(navItemStyle.root)} aria-hidden="true">
+        role='menu'>
+        <div className={mergeStyles(navItemStyle.root)} aria-hidden='true'>
           {
 
             leftIconName ?
@@ -151,45 +142,6 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
     );
   }
 
-  private getPreferredSelectedKey(): string {
-    let selectedKey: string = "";
-
-    // if caller passes in selectedKey, use it as first choice or use current state.selectedKey
-    if (this.props.selectedKey) {
-      selectedKey = this.props.selectedKey;
-    } else if (this.state.selectedKey) {
-      selectedKey = this.state.selectedKey;
-    }
-
-    return selectedKey;
-  }
-
-  /* given a link, find if one of the child is selected */
-  private isChildLinkSelected(link: IM365NavLink): boolean {
-    let selectedKey = this.getPreferredSelectedKey();
-
-    if (!selectedKey || !link || !link.links || link.links.length === 0) {
-      return false;
-    }
-
-    return link.links.some((childLink: IM365NavLink) => {
-      return !!childLink && childLink.key === selectedKey;
-    });
-  }
-
-  // given a link and an optional includeChildren parameter, find if the link or any of the children is selected
-  private isLinkSelected(link: IM365NavLink, includeChildren: boolean): boolean {
-    let selectedKey = this.getPreferredSelectedKey();
-
-    if (!selectedKey || !link) {
-      return false;
-    }
-
-    // check if the link or any of the child link is selected
-    return link.key === selectedKey ||
-      (includeChildren && this.isChildLinkSelected(link));
-  }
-
   private renderLink(link: IM365NavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
@@ -197,7 +149,7 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
 
     return (
       <li
-        role="listitem"
+        role='listitem'
         key={link.key || linkIndex}
         title={link.name}>
         {
@@ -225,7 +177,7 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
     }
 
     return (
-      <ul role="list">
+      <ul role='list'>
         {
           links.map((link: IM365NavLink, linkIndex: number) => {
             return this.renderLink(link, linkIndex, nestingLevel);
@@ -246,8 +198,8 @@ export class M365Nav extends React.Component<INavProps, INavState> implements IN
       <div key={groupIndex}>
         {groupIndex > 0 && group.name ?
           <div className={mergeStyles(navGroupSeparatorStyle)}>
-            <div className="horizontalLine">
-              {<span className="groupName">{group.name}</span>}
+            <div className='horizontalLine'>
+              {<span className='groupName'>{group.name}</span>}
             </div>
           </div> : null
         }
