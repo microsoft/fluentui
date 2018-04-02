@@ -9,7 +9,7 @@ import {
   getNativeProps
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -52,7 +52,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _commandSurface = createRef<HTMLDivElement>();
   private _commandBarRegion = createRef<HTMLDivElement>();
   private _farCommandSurface = createRef<HTMLDivElement>();
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _overflow = createRef<HTMLDivElement>();
 
   private _id: string;
@@ -194,7 +194,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let tooltipContent = '';
 
     if (item.title) {
-        tooltipContent = item.title;
+      tooltipContent = item.title;
     }
 
     const hasIcon = !!item.icon || !!item.iconProps;
@@ -211,8 +211,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           className={ className }
           href={ item.disabled ? undefined : item.href }
           onClick={ item.onClick }
-          title={''}
-          aria-disabled={item.inactive}
+          title={ '' }
+          aria-disabled={ item.inactive }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           role='menuitem'
@@ -237,8 +237,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           onClick={ this._onItemClick(item) }
-          title={''}
-          aria-disabled={item.inactive}
+          title={ '' }
+          aria-disabled={ item.inactive }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
@@ -267,8 +267,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           { ...getNativeProps(item, divProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
-          title={''}
-          aria-disabled={item.inactive}
+          title={ '' }
+          aria-disabled={ item.inactive }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-label={ ariaLabel }

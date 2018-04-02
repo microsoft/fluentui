@@ -23,8 +23,9 @@ import {
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
+  ISelectionZone,
   IObjectWithKey,
   ISelection,
   Selection,
@@ -33,8 +34,8 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { GroupedList } from '../../GroupedList';
-import { List, IListProps } from '../../List';
+import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IList, List, IListProps } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
@@ -73,10 +74,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   // References
   private _root = createRef<HTMLDivElement>();
   private _header = createRef<IDetailsHeader>();
-  private _groupedList = createRef<GroupedList>();
-  private _list = createRef<List>();
-  private _focusZone = createRef<FocusZone>();
-  private _selectionZone = createRef<SelectionZone>();
+  private _groupedList = createRef<IGroupedList>();
+  private _list = createRef<IList>();
+  private _focusZone = createRef<IFocusZone>();
+  private _selectionZone = createRef<ISelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };

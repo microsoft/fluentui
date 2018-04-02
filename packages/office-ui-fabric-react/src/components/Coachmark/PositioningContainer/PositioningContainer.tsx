@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  IPositioningContainer,
   IPositioningContainerTypes
 } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
@@ -57,7 +58,9 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState> {
+export class PositioningContainer
+  extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState>
+  implements PositioningContainer {
 
   public static defaultProps: IPositioningContainerTypes = {
     preventDismissOnScroll: false,

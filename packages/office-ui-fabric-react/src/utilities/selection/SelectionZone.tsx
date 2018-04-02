@@ -36,6 +36,10 @@ const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
+export interface ISelectionZone {
+  ignoreNextFocus: () => void;
+}
+
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   componentRef?: () => void;
   selection: ISelection;
