@@ -5,12 +5,11 @@
 - The component can always provide `id`, `className`, `style`, `aria-*` and `data-*` attributes on the container of a component.
 
 - If the component represents a standard HTML element (e.g. Button), we should mix in the valid root props using the `getNativeProps`
-utility so that we can let the user use native things as expected.
+utility so that we can let the user use native functionality as expected.
 
-- If the component hosts clickable elements, there must be a way to inject `data-*` attributes onto the clickable things. This enables
-automation to be built downstream.
+- If the component hosts clickable elements, there must be a way to inject `data-*` attributes onto the clickable components. This enables test automation to be built downstream.
 
-- Interactable elements must be accessible via keyboard, mouse, and touch`. Nothing can be ONLY interactable by mouse.
+- Interactable elements must be accessible via keyboard, mouse, and touch. Nothing can be ONLY interactable by mouse.
 
 ## Build many smaller components and compose them together.
 
@@ -24,8 +23,7 @@ together. While it may be more effort to think in smaller blocks, it makes the c
 
 ## Use a .types.ts file to extract out the public contracts that should be supported and documented.
 
-A props file contains all of the interface contracts that the user should know about to use the component. It is the "contract" for the
-component. When we evaluate semversioning, we look through the changes at Props files to determine if the change is a major, minor, or
+A props file contains all of the interface contracts that the user should know about to use the component. It is the "contract" for the component. When we evaluate semversioning, we look through the changes at Props files to determine if the change is a major, minor, or
 patch.
 
 The props files are also auto documented. All JSDoc comments will be extracted and shown on the demo site for documentation.
