@@ -42,7 +42,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBaiscExampl
           target={ this._menuButtonElement }
           onDismiss={ this._onCalloutDismiss }
           setInitialFocus={ true }
-          isHidden={ !this.state.isCalloutVisible }
+          hidden={ !this.state.isCalloutVisible }
         >
           <div className='ms-CalloutExample-header'>
             <p className='ms-CalloutExample-title' id={ 'callout-label-1' }>

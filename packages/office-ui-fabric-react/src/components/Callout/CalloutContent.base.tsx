@@ -98,7 +98,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   public componentDidUpdate() {
     this._setInitialFocus();
-    if (!this.props.isHidden) {
+    if (!this.props.hidden) {
       if (!this._hasListeners) {
         this._addListeners();
       }
@@ -131,7 +131,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
 
     // if the callout becomes hidden, then remove any positions that were placed on it.
-    if (newProps.isHidden && newProps.isHidden !== this.props.isHidden) {
+    if (newProps.hidden && newProps.hidden !== this.props.hidden) {
       this.setState({
         positions: undefined
       });
@@ -139,7 +139,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   public componentDidMount() {
-    if (!this.props.isHidden) {
+    if (!this.props.hidden) {
       this._onComponentDidMount();
     }
   }
@@ -193,7 +193,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     );
 
     const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
-    const visibilityStyle: React.CSSProperties | undefined = this.props.isHidden ? { visibility: 'hidden' } : undefined;
+    const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div
@@ -216,7 +216,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             />) }
           { beakVisible &&
             (<div className={ this._classNames.beakCurtain } />) }
-          { !this.props.isHidden && <Popup
+          { !this.props.hidden && <Popup
             role={ role }
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }

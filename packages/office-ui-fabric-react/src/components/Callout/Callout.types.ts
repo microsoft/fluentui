@@ -203,13 +203,13 @@ export interface ICalloutProps {
   getStyles?: IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles>;
   /**
    * Whether or not the callout should be hidden rather than displayed.
-   * Only use this when perf is a concern. Also if isHidden is applied then
+   * Only use this when perf is a concern. Also if hidden is applied then
    * the layermount callback will be called when the component is first loaded,
    * not when hidden is changed.
    * Note: When callout is hidden its content will not be rendered. It will only render
    * once the callout is visible.
    */
-  isHidden?: boolean;
+  hidden?: boolean;
 }
 
 export interface ICalloutContentStyleProps {
