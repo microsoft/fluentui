@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added ontouch support to expand menus for split buttons and combo boxes",
+      "comment": "SplitButton/ComboBox: added onTouch support for menu expansion.",
       "type": "minor"
     }
   ],
