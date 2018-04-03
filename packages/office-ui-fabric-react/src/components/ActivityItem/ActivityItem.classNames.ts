@@ -34,7 +34,7 @@ export const getClassNames = memoizeFunction((
     ),
 
     pulsingBeacon: mergeStyles(
-      'ms-ActivityItem-pulsing-beacon',
+      'ms-ActivityItem-pulsingBeacon',
       styles.pulsingBeacon
     ),
 
