@@ -48,7 +48,7 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
       };
     }
 
-    if (!calloutProps || !!calloutProps.directionalHint) {
+    if (!calloutProps || calloutProps.directionalHint === undefined) {
       // Default callout directional hint to BottomCenter
       calloutProps = {
         ...calloutProps,
