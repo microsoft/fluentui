@@ -36,7 +36,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               <ShimmerLoadDataExample />
             </ExampleCard>
             <ExampleCard
-              title='Details List with 1000 items loading in async way.'
+              title='Details List with 500 items loading in async way and having enabled Shimmer.'
               code={ ShimmerApplicationExampleCode }
             >
               <ShimmerApplicationExample />
