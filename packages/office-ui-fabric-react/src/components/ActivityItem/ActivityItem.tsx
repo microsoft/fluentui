@@ -24,7 +24,9 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
-      styles: customStyles
+      styles: customStyles,
+      animateBeaconSignal,
+      isCompact
     } = this.props;
 
     const classNames = this._getClassNames(this.props);
@@ -34,7 +36,9 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
         { (this.props.activityPersonas || this.props.activityIcon || this.props.onRenderIcon) &&
           <div className={ classNames.activityTypeIcon }>
-            <div className={ classNames.pulsingBeacon } />
+            { animateBeaconSignal && isCompact &&
+              <div className={ classNames.pulsingBeacon } />
+            }
             { onRenderIcon(this.props) }
           </div>
         }
