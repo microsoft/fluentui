@@ -88,10 +88,11 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   beaconColorTwo?: string;
 
   /**
-   * Is the beacon currently animating.
+   * Enables/Disables the beacon that radiates
+   * from the center of the center of the activity icon. Signals an activity has started.
    * @default false
    */
-  isBeaconAnimating?: boolean;
+  animateBeaconSignal?: boolean;
 }
 
 export interface IActivityItemStyles {
