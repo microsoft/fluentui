@@ -15,6 +15,8 @@ const CELLS_PER_PAGE = 100;
 const MIN_ASPECT_RATIO = 0.5;
 const MAX_ASPECT_RATIO = 3;
 
+const ROW_OF_SHIMMER_CELLS = 3;
+
 export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
 }
@@ -182,11 +184,15 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const data: IPageData<TItem> = page.data;
 
     const isShimmer: boolean = items && items[0] && items[0].key === 'shimmerItem' ? true : false;
-    const cellsPerRow: number = isShimmer ? Math.floor(data.pageWidths[0] / data.cellSizes[0].width) : 0;
+    const shimmerCellWithMarginsSize = isShimmer && (data.cellSizes[0].width + (items ? items[0].grid.spacing : 0));
+    const shimmerCellsPerRow: number | undefined = isShimmer ?
+      Math.floor(data.pageWidths[0] / shimmerCellWithMarginsSize)
+      : undefined;
+    // const shimmerWrapperWidth =
 
     const cells: ITileCell<TItem>[] = items ?
-      items[0].key === 'shimmerItem' ?
-        this._getShimmerCells(items[0], cellsPerRow) :
+      isShimmer ?
+        this._getCells(this.props.items, shimmerCellsPerRow) :
         items :
       [];
 
@@ -478,7 +484,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     };
   }
 
-  private _getCells(items: (ITilesGridSegment<TItem> | ITilesGridItem<TItem>)[]): ITileCell<TItem>[] {
+  private _getCells(items: (ITilesGridSegment<TItem> | ITilesGridItem<TItem>)[],
+    shimmerCellsPerRow?: number | undefined): ITileCell<TItem>[] {
     const cells: ITileCell<TItem>[] = [];
 
     for (const item of items) {
@@ -513,13 +520,25 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
               minAspectRatio,
               desiredSize && (desiredSize.width / desiredSize.height) || 1));
 
-          cells.push({
-            aspectRatio: aspectRatio,
-            content: gridItem.content,
-            onRender: gridItem.onRender,
-            grid: grid,
-            key: gridItem.key
-          });
+          if (shimmerCellsPerRow) {
+            for (let i = 0; i < shimmerCellsPerRow * ROW_OF_SHIMMER_CELLS; i++) {
+              cells.push({
+                aspectRatio: aspectRatio,
+                content: gridItem.content,
+                onRender: gridItem.onRender,
+                grid: grid,
+                key: gridItem.key + i
+              });
+            }
+          } else {
+            cells.push({
+              aspectRatio: aspectRatio,
+              content: gridItem.content,
+              onRender: gridItem.onRender,
+              grid: grid,
+              key: gridItem.key
+            });
+          }
         }
       } else {
         cells.push({
@@ -538,31 +557,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           key: `header-${item.key}`
         });
       }
-    }
-
-    return cells;
-  }
-
-  private _getShimmerCells(item: ITileCell<TItem>, cellsPerRow: number): ITileCell<TItem>[] {
-    let cells: ITileCell<TItem>[] = [];
-
-    const grid: ITileGrid = {
-      minRowHeight: item.grid.minRowHeight,
-      spacing: item.grid.spacing,
-      mode: item.grid.mode,
-      key: 'grid-shimmerGroup',
-      maxScaleFactor: item.grid.maxScaleFactor,
-      marginBottom: item.grid.marginBottom,
-      marginTop: item.grid.marginTop
-    };
-    for (let i = 0; i < cellsPerRow * 3; i++) {
-      cells.push({
-        aspectRatio: 1,
-        content: item.content,
-        onRender: item.onRender,
-        grid: grid,
-        key: `shimmer-${i}`
-      });
     }
 
     return cells;

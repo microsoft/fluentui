@@ -6,7 +6,10 @@ import {
   ITilesGridSegment,
   ITileSize
 } from '../../TilesList';
-import { Tile, ITileProps } from '../../../Tile';
+import {
+  Tile,
+  ITileProps
+} from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
@@ -219,8 +222,23 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
         />
       )
     };
+
+    const shimmerTile: JSX.Element = (
+      <div
+        // tslint:disable-next-line:jsx-ban-props
+        style={
+          {
+            width: `100%`,
+            height: `100%`,
+            backgroundColor: 'red'
+          }
+        }
+      />
+    );
+
     return (
-      <Tile { ...tileProps } />
+      shimmerTile
+      // <Tile { ...tileProps } />
     );
   }
 
