@@ -117,7 +117,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderPivotLink = (link: IPivotItemProps): JSX.Element => {
-    const { itemKey } = link;
+    const { itemKey, className } = link;
     const tabId = this._keyToTabIds[itemKey as string];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
@@ -137,7 +137,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
           styles.link,
           {
             ['is-selected ' + styles.linkIsSelected]: this.state.selectedKey === itemKey
-          }
+          },
+          className
         ) }
         onClick={ this._onLinkClick.bind(this, itemKey) }
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
