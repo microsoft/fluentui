@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: fix bug where suggestions wouldn't have correct value selected",
+      "comment": "Fixing bug dialog content does not grow fully to take up all the space provided by parent",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "serkani@microsoft.com"
 }
