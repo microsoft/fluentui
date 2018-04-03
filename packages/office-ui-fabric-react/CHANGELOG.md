@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 02 Apr 2018 22:15:06 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Apr 2018 10:16:05 GMT and should not be manually modified.
+
+## 5.78.0
+Tue, 03 Apr 2018 10:16:05 GMT
+
+### Minor changes
+
+- Brings changes to DetailsList, DetailsRow and DetailsRowFields to enable use of a basic Shimmer.
+
+### Patches
+
+- Fix phantom scrollbar in Panel popups in Firefox
+- Adding a longer delay as an option to the tooltip comonent. Before there was only a medium (300ms) or zero (0ms) delay.
 
 ## 5.77.0
 Mon, 02 Apr 2018 22:15:06 GMT

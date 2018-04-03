@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Apr 2018 10:16:05 GMT and should not be manually modified.
+
+## 5.29.0
+Tue, 03 Apr 2018 10:16:05 GMT
+
+### Minor changes
+
+- Sets up an example of Shimmer used with DetailsList Component.
 
 ## 5.28.2
 Sat, 31 Mar 2018 17:40:00 GMT

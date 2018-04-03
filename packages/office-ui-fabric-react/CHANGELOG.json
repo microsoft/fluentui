@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.78.0",
+      "tag": "office-ui-fabric-react_v5.78.0",
+      "date": "Tue, 03 Apr 2018 10:16:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "3f7c6aa215d842a18ed17b7d735da7965fac9652",
+            "comment": "Fix phantom scrollbar in Panel popups in Firefox"
+          },
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "8745677f91b986616eb2e37130767c5ce0ca2101",
+            "comment": "Adding a longer delay as an option to the tooltip comonent. Before there was only a medium (300ms) or zero (0ms) delay."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "0771cc20e7f8a3379444ff32355488946d8f9332",
+            "comment": "Brings changes to DetailsList, DetailsRow and DetailsRowFields to enable use of a basic Shimmer."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.77.0",
       "tag": "office-ui-fabric-react_v5.77.0",
       "date": "Mon, 02 Apr 2018 22:15:06 GMT",
