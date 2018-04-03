@@ -268,10 +268,6 @@ export const getStyles = (
         }
       },
 
-      (size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && {
-        display: 'none',
-      },
-
       size.isSize72 && {
         fontSize: FontSizes.small,
         lineHeight: personaPresenceSize.size20,
