@@ -218,9 +218,9 @@ export const rotateOne: string = keyframes({
 });
 
 export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
-  const animationInnerDimension: string = '35px';
-  const animationOuterDimension: string = '150px';
-  const animationBorderWidth: string = '10px';
+  const animationInnerDimension = '35px';
+  const animationOuterDimension = '150px';
+  const animationBorderWidth = '10px';
 
   const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimation(
     props.beaconColorOne!,
