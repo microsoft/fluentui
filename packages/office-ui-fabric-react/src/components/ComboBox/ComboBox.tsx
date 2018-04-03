@@ -132,6 +132,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _processingTouch: boolean;
 
+  private _lastTouchTimeoutId: number | undefined;
+
   // Determines if we should be setting
   // focus back to the input when the menu closes.
   // The general rule of thumb is if the menu was launched
@@ -1665,11 +1667,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _onTouchStart: (ev: TouchEvent<HTMLInputElement>) => void = (ev) => {
     if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
-      this._processingTouch = true;
-
-      this._async.setTimeout(() => {
-        this._processingTouch = false;
-      }, 500);
+      this._handleTouchAndPointerEvent();
     } else {
       ev.preventDefault();
       ev.stopPropagation();
@@ -1678,15 +1676,25 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _onPointerDown = (ev: PointerEvent): void => {
     if (ev.pointerType === 'touch') {
-      this._processingTouch = true;
+      this._handleTouchAndPointerEvent();
 
       ev.preventDefault();
       ev.stopImmediatePropagation();
-
-      this._async.setTimeout(() => {
-        this._processingTouch = false;
-      }, 500);
     }
+  }
+
+  private _handleTouchAndPointerEvent() {
+    // If we already have an existing timeeout from a previous touch and pointer event
+    // cancel that timeout so we can set a nwe one.
+    if (this._lastTouchTimeoutId !== undefined) {
+      this._async.clearTimeout(this._lastTouchTimeoutId);
+      this._lastTouchTimeoutId = undefined;
+    }
+    this._processingTouch = true;
+
+    this._lastTouchTimeoutId = this._async.setTimeout(() => {
+      this._processingTouch = false;
+    }, 500);
   }
 
   /**

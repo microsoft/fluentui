@@ -51,6 +51,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _ariaDescriptionId: string;
   private _classNames: IButtonClassNames;
   private _processingTouch: boolean;
+  private _lastTouchTimeoutId: number | undefined;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -584,11 +585,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
     if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
-      this._processingTouch = true;
-
-      this._async.setTimeout(() => {
-        this._processingTouch = false;
-      }, 500);
+      this._handleTouchAndPointerEvent();
     } else {
       ev.preventDefault();
       ev.stopPropagation();
@@ -597,15 +594,25 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onPointerDown(ev: PointerEvent) {
     if (ev.pointerType === 'touch') {
-      this._processingTouch = true;
+      this._handleTouchAndPointerEvent();
 
       ev.preventDefault();
       ev.stopImmediatePropagation();
-
-      this._async.setTimeout(() => {
-        this._processingTouch = false;
-      }, 500);
     }
+  }
+
+  private _handleTouchAndPointerEvent() {
+    // If we already have an existing timeeout from a previous touch and pointer event
+    // cancel that timeout so we can set a nwe one.
+    if (this._lastTouchTimeoutId !== undefined) {
+      this._async.clearTimeout(this._lastTouchTimeoutId);
+      this._lastTouchTimeoutId = undefined;
+    }
+    this._processingTouch = true;
+
+    this._lastTouchTimeoutId = this._async.setTimeout(() => {
+      this._processingTouch = false;
+    }, 500);
   }
 
   /**

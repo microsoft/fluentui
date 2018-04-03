@@ -95,6 +95,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingTouch: boolean;
+  private _lastTouchTimeoutId: number | undefined;
 
   private _splitButtonContainers: Map<string, HTMLDivElement>;
 
@@ -712,41 +713,34 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
     if (this._host && !('onpointerdown' in this._host)) {
-      this._processingTouch = true;
-
-      this._async.setTimeout(() => {
-        this._processingTouch = false;
-      }, 500);
+      this._handleTouchAndPointerEvent();
     } else {
       ev.preventDefault();
       ev.stopPropagation();
     }
   }
 
-  // private _onTouchStart(ev: TouchEvent<HTMLElement>) {
-  //   if (this._host && !('onpointerdown' in this._host)) {
-  //     this._processingTouch = true;
-
-  //     this._async.setTimeout(() => {
-  //       this._processingTouch = false;
-  //     }, 500);
-  //   } else {
-  //     ev.preventDefault();
-  //     ev.stopPropagation();
-  //   }
-  // }
-
   private _onPointerDown(ev: PointerEvent) {
     if (ev.pointerType === 'touch') {
-      this._processingTouch = true;
+      this._handleTouchAndPointerEvent();
 
       ev.preventDefault();
       ev.stopImmediatePropagation();
-
-      this._async.setTimeout(() => {
-        this._processingTouch = false;
-      }, 500);
     }
+  }
+
+  private _handleTouchAndPointerEvent() {
+    // If we already have an existing timeeout from a previous touch and pointer event
+    // cancel that timeout so we can set a nwe one.
+    if (this._lastTouchTimeoutId !== undefined) {
+      this._async.clearTimeout(this._lastTouchTimeoutId);
+      this._lastTouchTimeoutId = undefined;
+    }
+    this._processingTouch = true;
+
+    this._lastTouchTimeoutId = this._async.setTimeout(() => {
+      this._processingTouch = false;
+    }, 500);
   }
 
   /**
