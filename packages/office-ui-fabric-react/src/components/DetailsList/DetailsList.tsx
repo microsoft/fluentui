@@ -60,6 +60,9 @@ const ISPADDED_WIDTH = 24;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
+const SHIMMER_INITIAL_ITEMS = 10;
+const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
+
 @withViewport
 export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
@@ -67,7 +70,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     selectionMode: SelectionMode.multiple,
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    enableShimmer: false
   };
 
   // References
@@ -273,7 +277,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey,
       listProps,
       usePageCache,
-      onShouldVirtualize
+      onShouldVirtualize,
+      enableShimmer
     } = this.props;
     const {
       adjustedColumns,
@@ -402,7 +407,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     <List
                       ref={ this._list }
                       role='presentation'
-                      items={ items }
+                      items={ enableShimmer && !items.length ? SHIMMER_ITEMS : items }
                       onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
@@ -462,15 +467,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       adjustedColumns: columns
     } = this.state;
 
-    if (!item) {
-      if (onRenderMissingItem) {
-        return onRenderMissingItem(index);
-      }
-
-      return null;
-    }
-
-    return onRenderRow({
+    const rowProps: IDetailsRowProps = {
       item: item,
       itemIndex: index,
       compact: compact,
@@ -491,7 +488,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
       checkboxCellClassName: checkboxCellClassName,
-    }, this._onRenderRow);
+    };
+
+    if (!item) {
+      if (onRenderMissingItem) {
+        return onRenderMissingItem(index, rowProps);
+      }
+
+      return null;
+    }
+
+    return onRenderRow(rowProps, this._onRenderRow);
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {

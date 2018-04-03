@@ -107,7 +107,7 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesLis
   /**
    * Component ref for the focus zone within the list. Use this to control auto-focus.
    */
-  focusZoneComponentRef?: (focusZone: IFocusZone) => void;
+  focusZoneComponentRef?: (focusZone: IFocusZone | null) => void;
   /**
    * Callback for when the active element within the list's FocusZone changes.
    */

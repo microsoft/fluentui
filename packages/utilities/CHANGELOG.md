@@ -1,6 +1,28 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 23 Mar 2018 01:29:21 GMT and should not be manually modified.
+This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+
+## 5.22.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus.
+
+## 5.22.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Update createRef type
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
 
 ## 5.20.0
 Fri, 23 Mar 2018 01:29:21 GMT

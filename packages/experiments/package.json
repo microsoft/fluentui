@@ -1,9 +1,11 @@
 {
   "name": "@uifabric/experiments",
-  "version": "5.26.1",
+  "version": "5.28.2",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "module": "lib-es2015/index.js",
+  "typings": "lib-es2015/index.d.ts",
+  "sideEffects": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
@@ -29,8 +31,8 @@
     "@types/enzyme": "3.1.5",
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=5.4.0 <6.0.0",
-    "@uifabric/file-type-icons": ">=0.5.0 <1.0.0",
+    "@uifabric/example-app-base": ">=5.7.1 <6.0.0",
+    "@uifabric/file-type-icons": ">=0.6.0 <1.0.0",
     "@uifabric/jest-serializer-merge-styles": ">=5.1.0 <6.0.0",
     "es6-weak-map": "^2.0.2",
     "enzyme": "^3.2.0",
@@ -44,8 +46,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "office-ui-fabric-react": ">=5.69.0 <6.0.0",
-    "@uifabric/icons": ">=5.6.0 <6.0.0",
+    "office-ui-fabric-react": ">=5.77.0 <6.0.0",
+    "@uifabric/icons": ">=5.7.0 <6.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

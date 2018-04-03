@@ -144,6 +144,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      onTouchStart={[Function]}
       readOnly={true}
       role="combobox"
       spellCheck={false}

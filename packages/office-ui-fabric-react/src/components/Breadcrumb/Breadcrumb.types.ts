@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Breadcrumb, IBreadCrumbData } from './Breadcrumb';
+import { Breadcrumb, IBreadCrumbData } from './Breadcrumb.base';
 import { IRenderFunction } from '../../Utilities';
 
 export interface IBreadcrumb {
@@ -13,7 +13,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IBreadcrumb) => void;
+  componentRef?: (component: IBreadcrumb | null) => void;
 
   /**
    * Collection of breadcrumbs to render

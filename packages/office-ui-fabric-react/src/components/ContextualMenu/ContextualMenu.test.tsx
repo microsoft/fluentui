@@ -203,7 +203,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    const menuItem = document.querySelector('button.splitPrimary-65') as HTMLButtonElement;
+    const menuItem = document.getElementsByName('TestText 1')[0] as HTMLButtonElement;
 
     // in a normal scenario, when we do a touchstart we would also cause a
     // click event to fire. This doesn't happen in the simulator so we're

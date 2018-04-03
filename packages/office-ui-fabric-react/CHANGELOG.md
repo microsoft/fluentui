@@ -1,6 +1,95 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Mar 2018 01:29:21 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Apr 2018 22:15:06 GMT and should not be manually modified.
+
+## 5.77.0
+Mon, 02 Apr 2018 22:15:06 GMT
+
+### Minor changes
+
+- Make tooltip interactable if given a delay before closing.
+
+### Patches
+
+- Add overflow control to ms-Document-details
+
+## 5.76.0
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Minor changes
+
+- OverflowSet: Allow the OverflowSet to not be contained within a FocusZone
+
+### Patches
+
+- DetailsList: link color too close to selected background in high-contrast-white
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable webpack 4 tree shaking until we can identify a good fix for it to not shake out the scss files.
+- Dropdown: aria role is `listbox` instead of `textbox`
+- Pickers: fix bug where suggestions wouldn't have correct value selected
+- Updating the split button to close the menu when the primary button is executed.
+- Pickers: Fix focus problems and scroll issues
+
+## 5.74.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Use markdown-to-jsx for ActivityItem documentation
+
+## 5.73.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- Persona: adding `allowPhoneInitials` prop to allow for calculating initials from phone numbers.
+
+### Patches
+
+- ContextualMenu: SplitButtons in ContextualMenus are incorrectly using the menuLauncher portion of the splitButton for the tagrate when the  menuLauncher portion is  activated. This can lead to weird overhangs of the parent menu even if  directionalHintFixed is not true (e.g. it will overlap the primary portion of the  splitButton and potentially other items in the parent menu)
+
+## 5.72.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- add isSelectedOverride to suggestionItemProps
+- ContextualMenu / Split Button: Fixed styling problems For centered button content.
+- Use markdown-to-jsx for ActivityItem documentation
+
+### Patches
+
+- Checkbox: label text should be selectable, but not the checkmark icons.
+
+## 5.71.0
+Tue, 27 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- Deprecate SearchBox defaultValue prop.
+
+### Patches
+
+- Dropdown: do not select disabled items on keydown
+- FocusZone: Align props to HTMLElement to be consistent
+- TextField, Panel: Deprecated componentId prop.
+- BasePicker: suggestions should not be shown in BasePicker when input does not exist.
+- In Panel component, isClickableOutsideFocusTrap should not be overriden back to false if it's already set to true in focusTrapZoneProps.
+- MessageBar: For single line, put dismiss button after action buttons.
+- ComboBox: Removed a redundant property from the basic example.
+
+## 5.70.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` flags on all applicable packages.
+
+### Patches
+
+- DetailsHeader: reverting how maxWidth is handled to previous behavior.
+- Fix bug in combo box where _selectedElement ref wasn't being set conditionally
+- Update componentRef types
+- ComboBox: Add some code comments. Minor bug fixes to the example page.
 
 ## 5.69.0
 Fri, 23 Mar 2018 01:29:21 GMT

@@ -28,7 +28,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       RenderSuggestion,
       onClick,
       className,
-      onRemoveItem
+      onRemoveItem,
+      isSelectedOverride
     } = this.props;
     return (
       <div
@@ -36,7 +37,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           'ms-Suggestions-item',
           styles.suggestionsItem,
           {
-            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
+            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected || isSelectedOverride
           },
           className
         ) }
@@ -67,16 +68,25 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   protected _searchForMoreButton = createRef<IButton>();
   protected _selectedElement = createRef<HTMLDivElement>();
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
-
+  private activeSelectedElement: HTMLDivElement | null;
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
     this.state = {
       selectedActionType: SuggestionActionType.none,
     };
   }
-
-  public componentDidUpdate() {
+  public componentDidMount() {
     this.scrollSelected();
+    this.activeSelectedElement = this._selectedElement ? this._selectedElement.value : null;
+  }
+  public componentDidUpdate() {
+    // Only scroll to selected element if the selected element has changed. Otherwise do nothing.
+    // This prevents some odd behavior where scrolling the active element out of view and clicking on a selected element
+    // will trigger a focus event and not give the clicked element the click.
+    if (this.activeSelectedElement && this._selectedElement.value && this.activeSelectedElement !== this._selectedElement.value) {
+      this.scrollSelected();
+      this.activeSelectedElement = this._selectedElement.value;
+    }
   }
 
   public render() {
@@ -331,7 +341,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       >
         { suggestions.map((suggestion, index) =>
           <div
-            ref={ this._selectedElement }
+            ref={ suggestion.selected ? this._selectedElement : '' }
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }

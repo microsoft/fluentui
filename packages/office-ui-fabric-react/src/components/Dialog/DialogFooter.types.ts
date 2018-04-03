@@ -7,7 +7,7 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IDialogFooterProps) => void;
+  componentRef?: (component: IDialogFooterProps | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

@@ -465,10 +465,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-describedby={ buttonProps.ariaDescription }
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onSplitButtonContainerKeyDown }
-        onTouchStart={ this._onTouchStart.bind(this) }
+        onTouchStart={ this._onTouchStart }
         ref={ this._splitButtonContainer }
         data-is-focusable={ true }
-        onClick={ !disabled && !primaryDisabled ? this._onSplitButtonClick : undefined }
+        onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
         tabIndex={ !disabled ? 0 : undefined }
       >
         <span
@@ -480,6 +480,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         </span>
       </div>
     );
+  }
+
+  private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
+    if (this._isExpanded) {
+      this._dismissMenu();
+    }
+
+    if (!this._processingTouch && this.props.onClick) {
+      this.props.onClick(ev);
+    } else {
+      this._onMenuClick(ev);
+    }
   }
 
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
@@ -570,7 +582,20 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  private _onTouchStart(ev: TouchEvent<HTMLElement>) {
+  // private _onTouchStart(ev: TouchEvent<HTMLElement>) {
+  //   if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
+  //     this._processingTouch = true;
+
+  //     this._async.setTimeout(() => {
+  //       this._processingTouch = false;
+  //     }, 500);
+  //   } else {
+  //     ev.preventDefault();
+  //     ev.stopPropagation();
+  //   }
+  // }
+
+  private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
     if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
       this._processingTouch = true;
 

@@ -1049,7 +1049,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={ isSelected ? 'true' : 'false' }
           ariaLabel={ item.text }
           disabled={ item.disabled }
-        > { <span ref={ this._selectedElement }>
+        > { <span ref={ isSelected ? this._selectedElement : undefined }>
           { onRenderOption(item, this._onRenderOptionContent) }
         </span>
           }
@@ -1663,7 +1663,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  private _onTouchStart = (ev: TouchEvent<HTMLInputElement>): void => {
+  private _onTouchStart: (ev: TouchEvent<HTMLInputElement>) => void = (ev) => {
     if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
       this._processingTouch = true;
 
@@ -1735,6 +1735,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return item && item.index === this.state.currentPendingValueValidIndex;
   }
 
+  /**
+   * Given default selected key(s) and selected key(s), return the selected keys(s).
+   * When default selected key(s) are available, they take precedence and return them instead of selected key(s).
+   *
+   * @returns No matter what specific types the input parameters are, always return an array of
+   *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
+   */
   private _getSelectedKeys(
     defaultSelectedKey: string | number | string[] | number[] | undefined,
     selectedKey: string | number | string[] | number[] | undefined
