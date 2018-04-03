@@ -5,13 +5,16 @@ import {
   customizable,
   styled,
 } from '../../Utilities';
+import { IStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import {
   IPersonaPresenceProps,
   IPersonaPresenceStyleProps,
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
+  PersonaSize,
 } from './Persona.types';
+import { sizeBoolean } from './PersonaConsts';
 import { getStyles } from './PersonaPresence.styles';
 
 const coinSizeFontScaleFactor = 6;
@@ -33,20 +36,23 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
       coinSize,
       getStyles: getStylesProp, // Use getStyles from props.
       presence,
-      size,
       theme,
     } = this.props;
+    const size = sizeBoolean(this.props.size as PersonaSize);
 
-    const presenceHeightWidth = coinSize && (coinSize / coinSizePresenceScaleFactor < presenceMaxSize ? coinSize / coinSizePresenceScaleFactor : presenceMaxSize);
-    const presenceFontSize = coinSize && (coinSize / coinSizeFontScaleFactor < presenceFontMaxSize ? coinSize / coinSizeFontScaleFactor : presenceFontMaxSize);
-    const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth + 'px' } : undefined;
+    // Render Presence Icon if Persona is above size 32.
+    const renderIcon = this.props.showIcon || !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && (coinSize ? coinSize > 32 : true);
+
+    const presenceHeightWidth: string = coinSize ? (coinSize / coinSizePresenceScaleFactor < presenceMaxSize ? coinSize / coinSizePresenceScaleFactor + 'px' : presenceMaxSize + 'px') : '';
+    const presenceFontSize: string = coinSize ? (coinSize / coinSizeFontScaleFactor < presenceFontMaxSize ? coinSize / coinSizeFontScaleFactor + 'px' : presenceFontMaxSize + 'px') : '';
+    const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth } : undefined;
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
     // Use getStyles from props, or fall back to getStyles from styles file.
     const classNames = getClassNames(getStylesProp || getStyles, {
       theme: theme!,
       presence,
-      size,
+      size: this.props.size,
     });
 
     if (presence === PersonaPresenceEnum.none) {
