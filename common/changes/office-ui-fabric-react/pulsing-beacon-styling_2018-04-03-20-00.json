@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Coachmark: Moved pulsing beacon animation to the styling package.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "lynam.emily@gmail.com"
+}
