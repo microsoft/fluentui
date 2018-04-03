@@ -64,14 +64,18 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
         className={ classNames.presence }
         style={ coinSizeWithPresenceStyle }
       >
-        <Icon
-          className={ classNames.presenceIcon }
-          iconName={ this._determineIcon() }
-          style={ coinSizeWithPresenceIconStyle }
-        />
+        { renderIcon && this._onRenderIcon(classNames.presenceIcon, coinSizeWithPresenceIconStyle) }
       </div>
     );
   }
+
+  private _onRenderIcon = (className?: string, styles?: IStyleSet): JSX.Element => (
+    <Icon
+      className={ className }
+      iconName={ this._determineIcon() }
+      style={ styles }
+    />
+  )
 
   private _determineIcon = (): string | undefined => {
     const { presence } = this.props;
