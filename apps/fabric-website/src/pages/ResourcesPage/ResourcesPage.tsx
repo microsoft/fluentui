@@ -54,6 +54,12 @@ export class ResourcesPage extends React.Component<any, any> {
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/sharepoint_toolkit.zip'>SharePoint XD Toolkit</a></li>
                 </ul>
 
+                <h3>Office Add-ins Toolkit</h3>
+                <p>The Add-in design toolkit provides layouts for interface elements and commonly used UX patterns in Word, Excel, and PowerPoint. Use it together with the Fabric design toolkit to create an add-in that fits seamlessly with Office.</p>
+                <ul>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/addins-toolkit'>Add-in XD Toolkit</a></li>
+                </ul>
+
                 <h3>Fonts</h3>
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/segoeui_fabricmdl2_icon_fonts.zip'>Segoe UI and Fabric MDL2 icon font</a></li>
