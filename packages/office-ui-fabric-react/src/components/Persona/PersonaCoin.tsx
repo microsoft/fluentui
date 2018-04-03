@@ -85,6 +85,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       presence,
+      showIcon,
       theme,
     } = this.props;
 
@@ -95,8 +96,9 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const personaPresenceProps: IPersonaPresenceProps = {
       coinSize,
       presence,
-      theme,
       size,
+      showIcon,
+      theme,
     };
 
     // Use getStyles from props, or fall back to getStyles from styles file.
