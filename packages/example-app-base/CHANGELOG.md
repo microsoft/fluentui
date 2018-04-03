@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 28 Mar 2018 19:26:19 GMT and should not be manually modified.
+This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+
+## 5.7.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable w
 
 ## 5.7.0
 Wed, 28 Mar 2018 19:26:19 GMT

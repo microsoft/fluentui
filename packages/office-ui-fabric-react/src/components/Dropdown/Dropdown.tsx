@@ -191,7 +191,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
             aria-atomic={ true }
-            role='textbox'
+            role='listbox'
             aria-readonly='true'
           >
             { // If option is selected render title, otherwise render the placeholder text

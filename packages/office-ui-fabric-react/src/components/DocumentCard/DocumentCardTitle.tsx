@@ -78,13 +78,13 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     let documentCardTitle;
     if (shouldTruncate && this._isTruncated) {
       documentCardTitle = (
-        <div className={ css('ms-DocumentCardTitle', showAsSecondaryTitle ? styles.secondaryTitle : styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>
+        <div className={ css('ms-DocumentCardTitle', showAsSecondaryTitle ? styles.secondaryTitle : styles.title) } ref={ this._titleElement } title={ title }>
           { truncatedTitleFirstPiece }&hellip;{ truncatedTitleSecondPiece }
         </div>
       );
     } else {
       documentCardTitle = (
-        <div className={ css('ms-DocumentCardTitle', showAsSecondaryTitle ? styles.secondaryTitle : styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>
+        <div className={ css('ms-DocumentCardTitle', showAsSecondaryTitle ? styles.secondaryTitle : styles.title) } ref={ this._titleElement } title={ title }>
           { title }
         </div>
       );
