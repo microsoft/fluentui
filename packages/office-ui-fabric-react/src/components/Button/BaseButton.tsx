@@ -582,19 +582,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  // private _onTouchStart(ev: TouchEvent<HTMLElement>) {
-  //   if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
-  //     this._processingTouch = true;
-
-  //     this._async.setTimeout(() => {
-  //       this._processingTouch = false;
-  //     }, 500);
-  //   } else {
-  //     ev.preventDefault();
-  //     ev.stopPropagation();
-  //   }
-  // }
-
   private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
     if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
       this._processingTouch = true;
