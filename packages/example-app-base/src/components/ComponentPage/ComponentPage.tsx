@@ -192,7 +192,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
 
     // Allow generated URL fallback.
-    const editUrl: string | undefined = url || mdUrl || undefined;
+    let editUrl: string | undefined = url || mdUrl || undefined;
 
     if (editUrl) {
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
