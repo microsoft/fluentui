@@ -184,7 +184,7 @@ describe('ContextualMenu', () => {
         name: 'TestText 1',
         key: 'TestKey1',
         split: true,
-        onClick: () => { alert('test') },
+        onClick: () => { alert('test'); },
         subMenuProps: {
           items: [
             {

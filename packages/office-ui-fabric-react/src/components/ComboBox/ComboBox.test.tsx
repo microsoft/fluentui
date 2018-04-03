@@ -342,7 +342,6 @@ describe('ComboBox', () => {
 
   it('Call onMenuOpened when touch start on the input', () => {
     let comboBoxRoot;
-    let buttonElement;
     let inputElement;
     const returnUndefined = jest.fn();
 

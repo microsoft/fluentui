@@ -717,6 +717,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._async.setTimeout(() => {
         this._processingTouch = false;
       }, 500);
+    } else {
+      ev.preventDefault();
+      ev.stopPropagation();
     }
   }
 
