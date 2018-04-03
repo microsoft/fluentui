@@ -5,6 +5,7 @@ import {
   HighContrastSelector,
   keyframes,
   IRawStyle
+  // PulsingBeaconAnimationStyles
 } from '../../Styling';
 import {
   memoizeFunction
@@ -20,15 +21,15 @@ function continuousPulseStepOne(beaconColorOne: string): IRawStyle {
   return {
     borderColor: beaconColorOne,
     borderWidth: '0px',
-    width: '7px', // TODO: arg
-    height: '7px' // TODO: arg
+    width: '8px',
+    height: '8px'
   };
 }
 
 function continuousPulseStepTwo(): IRawStyle {
   return {
-    opacity: '1',
-    borderWidth: '5px' // TODO: arg
+    opacity: 1,
+    borderWidth: '5px'
   };
 }
 
@@ -41,9 +42,9 @@ function continuousPulseStepThree(): IRawStyle {
 function continuousPulseStepFour(beaconColorTwo: string): IRawStyle {
   return {
     borderWidth: '0',
-    width: '30px', // TODO: arg
-    height: '30px', // TODO: arg
-    opacity: '0',
+    width: '32px',
+    height: '32px',
+    opacity: 0,
     borderColor: beaconColorTwo
   };
 }
@@ -52,7 +53,7 @@ function continuousPulseStepFive(beaconColorOne: string): IRawStyle {
   return {
     ...continuousPulseStepOne(beaconColorOne),
     ...{
-      opacity: '0'
+      opacity: 0
     }
   };
 }
@@ -82,6 +83,8 @@ export const getStyles = memoizeFunction((
     '100%': {}
   });
 
+  // const ContinuousPulseTwo = PulsingBeaconAnimationStyles.continuousPulseAnimation(props.beaconColorOne!, props.beaconColorTwo!, '8px', '32px', '5px');
+
   const ActivityItemStyles: IActivityItemStyles = {
 
     root: [
@@ -106,9 +109,9 @@ export const getStyles = memoizeFunction((
         height: '0px',
         borderRadius: '225px',
         borderStyle: 'solid',
-        opacity: '0'
+        opacity: 0
       },
-      (props.isBeaconAnimating) && {
+      (props.animateBeaconSignal && props.isCompact) && {
         animationName: ContinuousPulse,
         animationIterationCount: '1',
         animationDuration: '14s',
@@ -143,18 +146,22 @@ export const getStyles = memoizeFunction((
       fontSize: DEFAULT_ICON_SIZE,
       lineHeight: DEFAULT_ICON_SIZE,
       marginTop: '3px',
-      position: 'relative'
     },
 
     isCompactIcon: {
       height: COMPACT_PERSONA_SIZE,
+      minWidth: COMPACT_PERSONA_SIZE,
       fontSize: COMPACT_ICON_SIZE,
       lineHeight: COMPACT_ICON_SIZE,
       color: theme.palette.themePrimary,
       marginTop: '1px',
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       selectors: {
         '.ms-Persona-imageArea': {
-          marginTop: '-2px',
+          margin: '-2px 0 0 -2px',
           border: '2px solid' + theme.palette.white,
           borderRadius: '50%',
           selectors: {
