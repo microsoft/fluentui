@@ -551,7 +551,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _onPositioned = (): void => {
     if (this._focusZone.value) {
-      this._focusZone.value.focus();
+      // Focusing an element can trigger a reflow. Making this wait until there is an animation
+      // frame can improve perf significantly.
+      this._async.requestAnimationFrame(() => this._focusZone.value!.focus());
     }
   }
 
