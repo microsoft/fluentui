@@ -902,10 +902,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onSplitItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
-    const splitButtonContainer = this._splitButtonContainers.get(item.key);
     // get the whole splitButton container to base the menu off of
+    const splitButtonContainer = this._splitButtonContainers.get(item.key);
 
-    // TODO don't process anything if we're processing a mouse enter
+    // Cancel a async menu item hover timeout action from being taken and instead
+    // just trigger the click event instead.
     if (this._enterTimerId !== undefined) {
       this._async.clearTimeout(this._enterTimerId);
       this._enterTimerId = undefined;

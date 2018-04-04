@@ -1691,6 +1691,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
+      this._lastTouchTimeoutId = undefined;
     }, 500);
   }
 

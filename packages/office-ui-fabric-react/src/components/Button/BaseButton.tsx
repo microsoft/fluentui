@@ -609,6 +609,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
+      this._lastTouchTimeoutId = undefined;
     }, 500);
   }
 
