@@ -67,6 +67,10 @@ interface IPageSpecificationCache<TItem> {
   width: number;
 }
 
+/**
+ * Component which renders a virtualized flexbox list of 'tiles', which have arbitrary width and height
+ * and which support scaling to fill rows when needed.
+ */
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
 
@@ -168,6 +172,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     );
   }
 
+  /**
+   * Renders a single list page using a flexbox layout.
+   * By defualt, List provides no special formatting for a list page. For Tiles, the parent element
+   * needs flexbox metadata and padding to support the alignment rules.
+   */
   private _onRenderPage = (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element => {
     const {
       page,
@@ -221,6 +230,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           } = currentRow;
 
           if (currentRowMaxScaleFactor) {
+            // If the current row has its own max scale factor,
+            // compute final size from the provided value.
             const finalScaleFactor = Math.min(currentRowMaxScaleFactor, grid.maxScaleFactor);
 
             finalSize = {
@@ -232,6 +243,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           } else if ((grid.mode === TilesGridMode.fill ||
             grid.mode === TilesGridMode.fillHorizontal) &&
             (!isLastRow || scaleFactor <= grid.maxScaleFactor)) {
+            // Compute the final size from the overall max scale factor, if present.
             const finalScaleFactor = Math.min(
               grid.maxScaleFactor,
               scaleFactor);
@@ -254,9 +266,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             }) }
             // tslint:disable-next-line:jsx-ban-props
             style={
-              {
-                ...this._onGetCellStyle(cell, currentRow)
-              }
+              this._onGetCellStyle(cell, currentRow)
             }
           >
             { this._onRenderCell(cell, finalSize) }
@@ -285,7 +295,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             }
           }
         >
-          { ...renderedCells }
+          { renderedCells }
         </div>
       );
     }
@@ -300,6 +310,12 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     );
   }
 
+  /**
+   * Gets the specification for the list page, which requires pre-calculating the flexbox layout
+   * to determine the set of tiles which fit neatly within a rectangle. Any tiles left dangling
+   * at the end of a page are overflowed into the next page unless they are just before a grid
+   * boundary.
+   */
   private _getPageSpecification = (startIndex: number, bounds: IRectangle): {
     itemCount: number;
     data: IPageData<TItem>;
@@ -320,6 +336,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const pageSpecificationCache = this._pageSpecificationCache;
 
     if (pageSpecificationCache.byIndex[startIndex]) {
+      // If the page specification has already been calculated, return it.
+      // List recalculates all pages if any input changes, so this memoization
+      // cuts down on calculation of individual pages without changes.
       return pageSpecificationCache.byIndex[startIndex];
     }
 
@@ -392,6 +411,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         if (rowWidth > boundsWidth) {
           rowWidth = width;
           rowStart = i;
+          // Add a marker for a new row, with the default scale factor.
           currentRow = startCells[i] = {
             scaleFactor: 1
           };
@@ -411,6 +431,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
         if ((grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal) && currentRow.isLastRow) {
           if (i - rowStart > 0) {
+            // If the grid is in 'fill' mode, and there is underflow in the last row, then by default, flexbox will
+            // scale all widths to the maximum possible, which may cause regularly-sized items to be larger than
+            // those in previous rows.
+            // A way to counter that is to pretend that the last row is actually filled with more items, and calculate
+            // the resulting scale factor. Then pass the new maximum width to flexbox.
+            // The result should be perfectly-aligned final items.
+            // The 'phantom' items are not actually rendered in the list.
+
             // Project the average tile width across the rest of the row.
             const width = (rowWidth - totalMargin) / (i - rowStart) + grid.spacing;
 
@@ -418,7 +446,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
             for (let j = i; ; j++) {
               if (phantomRowWidth + width > boundsWidth) {
+                // The final phantom item has been added, so the row is complete.
                 const phantomTotalMargin = grid.spacing * (j - rowStart);
+                // Set the new scale factor based on the total width including the phantom items.
                 currentRow.maxScaleFactor = (boundsWidth - phantomTotalMargin) / (phantomRowWidth - phantomTotalMargin);
                 break;
               }
@@ -466,6 +496,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return TilesListStyles.listPage;
   }
 
+  /**
+   * Get the style to be applied to a single list cell, which will specify the flex behavior
+   * within the flexbox layout.
+   */
   private _onGetCellStyle = (item: ITileCell<TItem>, currentRow?: IRowData): React.CSSProperties => {
     const {
       grid: {
@@ -487,8 +521,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     let maxWidth: number;
 
     if (currentRow && currentRow.maxScaleFactor) {
+      // If the row has its own max scale factor, force flexbox to limit at that value.
+      // This typically happens if there is underflow in the final row of a grid.
       maxWidth = width * Math.min(currentRow.maxScaleFactor, maxScaleFactor);
     } else if (isFill && (!currentRow || !currentRow.isLastRow || currentRow.scaleFactor <= maxScaleFactor)) {
+      // If the entire grid has a max scale factor, use that limit.
       maxWidth = width * maxScaleFactor;
     } else {
       maxWidth = width;
@@ -501,11 +538,17 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     };
   }
 
+  /**
+   * Flattens the grid and item specifications into a cell list. List will partition the cells into
+   * pages use `getPageSpecification`, so each cell is marked up with metadata to assist the flexbox
+   * algorithm.
+   */
   private _getCells(items: (ITilesGridSegment<TItem> | ITilesGridItem<TItem>)[]): ITileCell<TItem>[] {
     const cells: ITileCell<TItem>[] = [];
 
     for (const item of items) {
       if (isGridSegment(item)) {
+        // The item is a grid of child items.
         const {
           spacing = 0,
           maxScaleFactor = MAX_TILE_STRETCH,
@@ -545,6 +588,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           });
         }
       } else {
+        // The item is not part of the grid, and should take up a whole row.
         cells.push({
           aspectRatio: 1,
           content: item.content,
