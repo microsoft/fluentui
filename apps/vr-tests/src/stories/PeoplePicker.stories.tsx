@@ -60,9 +60,9 @@ const suggestionProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-let getTextFromItem = (persona: IPersonaProps): string => persona.primaryText as string;
+const getTextFromItem = (persona: IPersonaProps): string => persona.primaryText as string;
 
-let getPeople = () => people;
+const getPeople = () => people;
 
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('PeoplePicker', module)
