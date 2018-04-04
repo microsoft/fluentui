@@ -105,6 +105,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       onZeroQuerySuggestion: this._returnMostRecentlyUsed,
       showForceResolve: this._shouldShowForceResolve,
       onInputChanged: this._onInputChanged,
+      onSuggestionsHidden: () => { console.log('FLOATINGPICKER: hidden'); },
+      onSuggestionsShown: () => { console.log('FLOATINGPICKER: shown'); },
     };
 
     this._selectedItemsListProps = {

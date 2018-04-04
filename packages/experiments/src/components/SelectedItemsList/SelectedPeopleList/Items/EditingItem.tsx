@@ -91,7 +91,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   private _onInputClick = (): void => {
-    this._editingFloatingPicker.value && this._editingFloatingPicker.value.showPicker();
+    this._editingFloatingPicker.value && this._editingFloatingPicker.value.showPicker(true /*updatevalue*/);
   }
 
   private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {

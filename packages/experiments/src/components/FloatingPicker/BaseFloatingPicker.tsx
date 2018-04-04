@@ -74,17 +74,19 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   public get isSuggestionsShown(): boolean {
-    return this.state.suggestionsVisible ? false : this.state.suggestionsVisible as boolean;
+    return this.state.suggestionsVisible === undefined ? false : this.state.suggestionsVisible;
   }
 
-  public onQueryStringChanged(queryString: string): void {
+  public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
         queryString: queryString,
         moreSuggestionsAvailable: true,
         isMostRecentlyUsedVisible: false,
-        suggestionsVisible: true,
       });
+
+      this.showPicker();
+
       if (queryString === '') {
         this.updateSuggestionWithZeroState();
       } else {
@@ -93,19 +95,31 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  public hidePicker(): void {
+  public hidePicker = (): void => {
+    if (this.props.onSuggestionsHidden && this.isSuggestionsShown) {
+      this.props.onSuggestionsHidden();
+    }
+
     this.setState({
       suggestionsVisible: false,
     });
   }
 
-  public showPicker(): void {
+  public showPicker = (updateValue: boolean = false): void => {
+    if (this.props.onSuggestionsShown && !this.isSuggestionsShown) {
+      this.props.onSuggestionsShown();
+    }
+
     this.setState({
       suggestionsVisible: true,
     });
 
-    if (this.suggestionStore.suggestions.length === 0
-      || this.props.inputElement && this.props.inputElement.textContent !== this.state.queryString) {
+    // If updateValue AND
+    //  Either suggestionsVisible is undefined (first time the suggestions is set to visble)
+    //  OR the inputElement value is different than the query string
+    if (updateValue &&
+      (this.state.suggestionsVisible === undefined
+        || (this.props.inputElement && this.props.inputElement.value !== this.state.queryString))) {
       if (this.state.queryString === '') {
         this.updateSuggestionWithZeroState();
       } else {
@@ -126,10 +140,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   public componentWillUnmount(): void {
     this._unbindFromInputElement();
-  }
-
-  public dismissSuggestions = (): void => {
-    this.setState({ suggestionsVisible: false });
   }
 
   public completeSuggestion = (): void => {
@@ -158,7 +168,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         isBeakVisible={ false }
         gapSpace={ 5 }
         target={ this.props.inputElement }
-        onDismiss={ this.dismissSuggestions }
+        onDismiss={ this.hidePicker }
         directionalHint={
           getRTL() ? (
             DirectionalHint.bottomRightEdge
@@ -217,7 +227,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       let suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.props.selectedItems);
       this.updateSuggestionsList(suggestions);
     } else {
-      this.setState({ suggestionsVisible: false });
+      this.hidePicker();
     }
   }
 
@@ -243,15 +253,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         suggestionsLoading: true
       });
 
-      if (updatedValue !== undefined) {
-        this.setState({
-          suggestionsVisible: updatedValue !== ''
-        });
-      } else {
-        this.setState({
-          suggestionsVisible: false
-        });
-      }
+      this._updateSuggestionsVisible(updatedValue !== undefined && updatedValue !== '');
 
       // Ensure that the promise will only use the callback if it was the most recent one.
       let promise: PromiseLike<
@@ -264,9 +266,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           } else {
             this.suggestionStore.updateSuggestions(newSuggestions);
             this.setState({
-              suggestionsVisible: newSuggestions.length > 0,
               suggestionsLoading: false
             });
+
+            this._updateSuggestionsVisible(newSuggestions.length > 0);
           }
           if (this.loadingTimer) {
             this._async.clearTimeout(this.loadingTimer);
@@ -290,9 +293,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
     this.setState({
       suggestionsLoading: false,
-      suggestedDisplayValue: itemValue,
-      suggestionsVisible: updatedValue !== ''
+      suggestedDisplayValue: itemValue
     });
+
+    this._updateSuggestionsVisible(updatedValue !== '');
   }
 
   protected onChange(item: T): void {
@@ -329,7 +333,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     let keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
-        this.setState({ suggestionsVisible: false });
+        this.hidePicker();
         ev.preventDefault();
         ev.stopPropagation();
         break;
@@ -404,7 +408,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
           // Focus back on the input element
           if (this.props.inputElement) {
-            (this.props.inputElement as HTMLDivElement).focus();
+            (this.props.inputElement as HTMLElement).focus();
           }
         } else {
           this.setState({ isSearching: false });
@@ -447,6 +451,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       return (this.props.getTextFromItem as ((item: T, currentValue?: string) => string))(item, currentValue);
     } else {
       return '';
+    }
+  }
+
+  private _updateSuggestionsVisible(shouldShow: boolean): void {
+    if (shouldShow) {
+      this.showPicker();
+    } else {
+      this.hidePicker();
     }
   }
 
