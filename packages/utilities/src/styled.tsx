@@ -9,6 +9,11 @@ export interface IPropsWithStyles<TStyleProps, TStyles> {
   };
 }
 
+interface IWrappedComponent<P> {
+  (props: P): JSX.Element;
+  displayName: string;
+}
+
 /**
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
  * getStyles functional props, and mix customized props passed in using concatStyleSets. Example:
@@ -29,7 +34,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
   getProps?: (props: TComponentProps) => Partial<TComponentProps>
 ): (props: TComponentProps) => JSX.Element {
 
-  return (componentProps: TComponentProps) => {
+  const Wrapped = ((componentProps: TComponentProps) => {
     const getStyles = (
       styleProps: TStyleProps
     ) => concatStyleSets(
@@ -45,5 +50,8 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
         getStyles={ getStyles }
       />
     );
-  };
+  }) as IWrappedComponent<TComponentProps>;
+
+  Wrapped.displayName = `Styled${Component.displayName || Component.name}`;
+  return Wrapped;
 }

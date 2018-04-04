@@ -5,7 +5,7 @@ export interface IStickyProps extends React.Props<Sticky> {
   /**
    * Gets ref to component interface.
    */
-  componentRef?: (component: IStickyProps) => void;
+  componentRef?: (component: IStickyProps | null) => void;
 
   /**
    * Class name to apply to the sticky element if component is sticky.

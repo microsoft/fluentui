@@ -16,7 +16,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
    * Optional callback to access the ITooltip interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITooltip) => void;
+  componentRef?: (component: ITooltip | null) => void;
 
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
@@ -65,5 +65,6 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 
 export enum TooltipDelay {
   zero = 0,
-  medium = 1
+  medium = 1,
+  long = 2
 }

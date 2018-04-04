@@ -18,7 +18,7 @@ describe('KeytipTree', () => {
 
   beforeEach(() => {
     // Create layer
-    ReactTestUtils.renderIntoDocument<KeytipLayer>(
+    ReactTestUtils.renderIntoDocument(
       <KeytipLayer
         id={ layerID }
         keytipStartSequences={ keytipStartSequences }

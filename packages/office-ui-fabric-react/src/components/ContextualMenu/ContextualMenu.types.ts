@@ -33,7 +33,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenu) => void;
+  componentRef?: (component: IContextualMenu | null) => void;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -135,9 +135,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * Click handler which is invoked if onClick is not passed for individual contextual
-   * menu item
+   * menu item.
+   * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * CSS class to apply to the context menu.
@@ -220,6 +221,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
+  */
+  subMenuHoverDelay?: number;
 
   /**
    * Method to override the render of the individual menu items
@@ -320,9 +326,10 @@ export interface IContextualMenuItem {
   data?: any;
 
   /**
-   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu
+   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu.
+   * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * An optional URL to navigate to upon selection
@@ -333,6 +340,11 @@ export interface IContextualMenuItem {
    * An optional target when using href
    */
   target?: string;
+
+  /**
+   * An optional rel when using href. If target is _blank rel is defaulted to a value to prevent clickjacking.
+   */
+  rel?: string;
 
   /**
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
@@ -434,6 +446,12 @@ export interface IContextualMenuItem {
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
+
+  /**
+   * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
+   */
+  inactive?: boolean;
+
 }
 
 export interface IContextualMenuSection extends React.Props<ContextualMenu> {

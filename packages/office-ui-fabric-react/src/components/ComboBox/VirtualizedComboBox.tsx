@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { autobind, BaseComponent } from '../../Utilities';
+import { BaseComponent, createRef } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import { IComboBoxProps, IComboBox } from './ComboBox.types';
 import { List } from '../../List';
@@ -7,19 +7,19 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {
   /** The combo box element */
-  private _comboBox: ComboBox;
+  private _comboBox = createRef<IComboBox>();
   /** The virtualized list element */
-  private _list: List;
+  private _list = createRef<List>();
 
   public dismissMenu(): void {
-    if (this._comboBox) {
-      return this._comboBox.dismissMenu();
+    if (this._comboBox.value) {
+      return this._comboBox.value.dismissMenu();
     }
   }
 
   public focus() {
-    if (this._comboBox) {
-      this._comboBox.focus();
+    if (this._comboBox.value) {
+      this._comboBox.value.focus();
       return true;
     }
 
@@ -30,15 +30,14 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     return (
       <ComboBox
         { ...this.props }
-        componentRef={ this._resolveRef('_comboBox') }
+        componentRef={ this._comboBox }
         onRenderList={ this._onRenderList }
         onScrollToItem={ this._onScrollToItem }
       />
     );
   }
 
-  @autobind
-  protected _onRenderList(props: IComboBoxProps): JSX.Element {
+  protected _onRenderList = (props: IComboBoxProps): JSX.Element => {
     const {
       onRenderItem
     } = props;
@@ -46,7 +45,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     // Render virtualized list
     return (
       <List
-        componentRef={ this._resolveRef('_list') }
+        componentRef={ this._list }
         role='listbox'
         items={ props.options }
         onRenderCell={ onRenderItem ? (item: ISelectableOption) => onRenderItem(item) : () => null }
@@ -54,9 +53,8 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     );
   }
 
-  @autobind
-  protected _onScrollToItem(itemIndex: number): void {
+  protected _onScrollToItem = (itemIndex: number): void => {
     // We are using the List component, call scrollToIndex
-    this._list.scrollToIndex(itemIndex);
+    this._list.value && this._list.value.scrollToIndex(itemIndex);
   }
 }

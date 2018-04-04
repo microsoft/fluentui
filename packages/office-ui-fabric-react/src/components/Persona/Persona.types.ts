@@ -14,7 +14,7 @@ export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPersona) => void;
+  componentRef?: (component: IPersona | null) => void;
 
   /**
    * Primary text to display, usually the name of the person.
@@ -64,6 +64,13 @@ export interface IPersonaProps extends React.HTMLAttributes<PersonaBase> {
    * @defaultvalue [Derived from primaryText]
    */
   imageInitials?: string;
+
+  /**
+   * Whether initials are calculated for phone numbers and number sequences.
+   * Example: Set property to true to get initials for project names consisting of numbers only.
+   * @defaultvalue false
+   */
+  allowPhoneInitials?: boolean;
 
   /**
    * Optional custom renderer for the initials

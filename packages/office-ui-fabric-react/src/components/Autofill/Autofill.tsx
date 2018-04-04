@@ -3,7 +3,6 @@ import { IAutofillProps, IAutofill } from './Autofill.types';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   getNativeProps,
   inputProperties,
   createRef
@@ -146,31 +145,27 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Composition events are used when the character/text requires several keystrokes to be completed.
   // Some examples of this are mobile text input and langauges like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
-  @autobind
-  private _onCompositionStart(ev: React.CompositionEvent<HTMLInputElement>) {
+  private _onCompositionStart = (ev: React.CompositionEvent<HTMLInputElement>) => {
     this._autoFillEnabled = false;
   }
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
   // Some examples of this are mobile text input and langauges like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
-  @autobind
-  private _onCompositionEnd(ev: React.CompositionEvent<HTMLInputElement>) {
+  private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => this._updateValue(inputValue), 0);
   }
 
-  @autobind
-  private _onClick() {
+  private _onClick = () => {
     if (this._value && this._value !== '' && this._autoFillEnabled) {
       this._autoFillEnabled = false;
     }
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
     }
@@ -200,8 +195,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  @autobind
-  private _onInputChanged(ev: React.FormEvent<HTMLElement>) {
+  private _onInputChanged = (ev: React.FormEvent<HTMLElement>) => {
     const value: string = this._getCurrentInputValue(ev);
 
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
@@ -209,8 +203,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     this._updateValue(value);
   }
 
-  @autobind
-  private _onChanged(): void {
+  private _onChanged = (): void => {
     // Swallow this event, we don't care about it
     // We must provide it because React PropTypes marks it as required, but onInput serves the correct purpose
     return;
@@ -258,8 +251,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Updates the current input value as well as getting a new display value.
    * @param newValue The new value from the input
    */
-  @autobind
-  private _updateValue(newValue: string) {
+  private _updateValue = (newValue: string) => {
     this._value = this.props.onInputChange ? this.props.onInputChange(newValue) : newValue;
     this.setState({
       displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)

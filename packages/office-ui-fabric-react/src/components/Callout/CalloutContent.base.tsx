@@ -12,13 +12,13 @@ import {
   IPoint,
   IRectangle,
   assign,
-  autobind,
   elementContains,
   focusFirstChild,
   getWindow,
   getDocument,
   customizable,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import {
   positionCallout,
@@ -70,8 +70,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _classNames: {[key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
-  private _hostElement: HTMLDivElement;
-  private _calloutElement: HTMLDivElement;
+  private _hostElement = createRef<HTMLDivElement>();
+  private _calloutElement = createRef<HTMLDivElement>();
   private _targetWindow: Window;
   private _bounds: IRectangle;
   private _maxHeight: number | undefined;
@@ -177,7 +177,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div
-        ref={ this._resolveRef('_hostElement') }
+        ref={ this._hostElement }
         className={ this._classNames.container }
       >
         <div
@@ -185,7 +185,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
           style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          ref={ this._resolveRef('_calloutElement') }
+          ref={ this._calloutElement }
         >
 
           { beakVisible && (
@@ -215,8 +215,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return content;
   }
 
-  @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -233,7 +232,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   protected _dismissOnLostFocus(ev: Event) {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement && !elementContains(this._hostElement, target);
+    const clickedOutsideCallout = this._hostElement.value && !elementContains(this._hostElement.value, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -245,16 +244,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  @autobind
-  protected _setInitialFocus() {
-    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
+  protected _setInitialFocus = (): void => {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
       this._didSetInitialFocus = true;
-      focusFirstChild(this._calloutElement);
+      focusFirstChild(this._calloutElement.value);
     }
   }
 
-  @autobind
-  protected _onComponentDidMount() {
+  protected _onComponentDidMount = (): void => {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -294,8 +291,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _updatePosition() {
     const { positions } = this.state;
-    const hostElement: HTMLElement = this._hostElement;
-    const calloutElement: HTMLElement = this._calloutElement;
+    const hostElement: HTMLElement | null = this._hostElement.value;
+    const calloutElement: HTMLElement | null = this._calloutElement.value;
 
     if (hostElement && calloutElement) {
       let currentProps: IPositionProps | undefined;
@@ -407,9 +404,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _setHeightOffsetEveryFrame(): void {
-    if (this._calloutElement && this.props.finalHeight) {
+    if (this._calloutElement.value && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem = this._calloutElement.lastChild as HTMLElement;
+        const calloutMainElem = this._calloutElement.value && this._calloutElement.value.lastChild as HTMLElement;
+
+        if (!calloutMainElem) {
+          return;
+        }
+
         const cardScrollHeight: number = calloutMainElem.scrollHeight;
         const cardCurrHeight: number = calloutMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;

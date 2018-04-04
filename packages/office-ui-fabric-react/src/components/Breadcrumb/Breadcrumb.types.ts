@@ -1,8 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Breadcrumb, IBreadCrumbData } from './Breadcrumb';
-import { IRenderFunction } from '../../Utilities';
+import { Breadcrumb, IBreadCrumbData } from './Breadcrumb.base';
+import { IIconProps } from '../Icon';
+import { IRenderFunction, IComponentAs } from '../../Utilities';
 
 export interface IBreadcrumb {
 
@@ -13,7 +14,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IBreadcrumb) => void;
+  componentRef?: (component: IBreadcrumb | null) => void;
 
   /**
    * Collection of breadcrumbs to render
@@ -24,6 +25,11 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Optional root classname for the root breadcrumb element.
    */
   className?: string;
+
+  /**
+   * Render a custom divider in place of the default chevron '>'
+   */
+  dividerAs?: IComponentAs<IIconProps>;
 
   /**
    * The maximum number of breadcrumbs to display before coalescing.

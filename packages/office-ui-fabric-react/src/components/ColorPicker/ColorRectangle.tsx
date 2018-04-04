@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   BaseComponent,
   assign,
-  autobind,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import {
   IColor,
@@ -35,7 +35,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     minSize: 220
   };
 
-  private _root: HTMLDivElement;
+  private _root = createRef<HTMLDivElement>();
 
   constructor(props: IColorRectangleProps) {
     super(props);
@@ -68,7 +68,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     const { color, fullColorString } = this.state;
 
     return (
-      <div ref={ this._resolveRef('_root') } className={ css('ms-ColorPicker-colorRect', styles.colorRect) } style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
+      <div ref={ this._root } className={ css('ms-ColorPicker-colorRect', styles.colorRect) } style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
         <div className={ css('ms-ColorPicker-light', styles.light) } />
         <div className={ css('ms-ColorPicker-dark', styles.dark) } />
         <div className={ css('ms-ColorPicker-thumb', styles.thumb) } style={ { left: color!.s + '%', top: (MAX_COLOR_VALUE - color!.v) + '%', backgroundColor: color!.str } } />
@@ -76,18 +76,21 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     );
   }
 
-  @autobind
-  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
     this._events.on(window, 'mouseup', this._onMouseUp, true);
 
     this._onMouseMove(ev);
   }
 
-  @autobind
-  private _onMouseMove(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const { color, onSVChanged } = this.props;
-    const rectSize = this._root.getBoundingClientRect();
+
+    if (!this._root.value) {
+      return;
+    }
+
+    const rectSize = this._root.value.getBoundingClientRect();
 
     const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;
@@ -112,8 +115,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     ev.stopPropagation();
   }
 
-  @autobind
-  private _onMouseUp(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.off();
 
     this.setState({

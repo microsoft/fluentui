@@ -16,13 +16,17 @@ export interface IFacepileProps extends React.Props<Facepile> {
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFacepile) => void;
+  componentRef?: (component: IFacepile | null) => void;
 
   /**
-   * Array of IPersonaProps that define each Persona. Note that the size
-   * is fixed at PersonaSize.size32 regardless of what is specified.
+   * Array of IPersonaProps that define each Persona.
    */
   personas: IFacepilePersona[];
+
+  /**
+   * Personas to place in the overflow
+   */
+  overflowPersonas?: IFacepilePersona[];
 
   /** Maximum number of personas to show */
   maxDisplayablePersonas?: number;
@@ -76,6 +80,13 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
    * @defaultvalue [Derived from personaName]
    */
   imageInitials?: string;
+
+  /**
+   * Whether initials are calculated for phone numbers and number sequences.
+   * Example: Set property to true to get initials for project names consisting of numbers only.
+   * @defaultvalue false
+   */
+  allowPhoneInitials?: boolean;
 
   /**
    * The background color when the user's initials are displayed.

@@ -6,6 +6,8 @@ import { IStyleFunction } from '../../Utilities';
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
   forceLayoutUpdate(): void;
+  /** Gets the current scroll position of the scrollable pane */
+  getScrollPosition(): number;
 }
 
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePaneBase> {
@@ -14,7 +16,7 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * Optional callback to access the IScrollablePane interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IScrollablePane) => void;
+  componentRef?: (component: IScrollablePane | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -31,6 +33,11 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Sets the initial scroll position of the ScrollablePane
+   */
+  initialScrollPosition?: number;
 }
 
 export interface IScrollablePaneStyleProps {

@@ -11,9 +11,8 @@
     "@microsoft/api-extractor": "^4.2.6",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=5.13.0 <6.0.0",
+    "@uifabric/merge-styles": ">=5.14.0 <6.0.0",
     "autoprefixer": "^7.1.5",
-    "awesome-typescript-loader": "^3.2.3",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
     "command-line-args": "^4.0.7",
@@ -22,9 +21,8 @@
     "github": "^7.0.0",
     "glob": "^7.1.2",
     "gzip-size": "^3.0.0",
-    "json-loader": "^0.5.7",
     "jest": "^21.2.0",
-    "ts-jest": "^21.1.2",
+    "json-loader": "^0.5.7",
     "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
     "open": "^0.0.5",
@@ -36,20 +34,22 @@
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.19.0",
+    "ts-jest": "^21.1.2",
+    "ts-loader": "^4.1.0",
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
     "typescript": "2.7.2",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.7.1",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.7.1",
-    "webpack-notifier": "^1.5.0",
+    "webpack": "^4.2.0",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1",
+    "webpack-notifier": "^1.6.0",
     "yargs": "^6.5.0"
   },
   "bundlesize": [
     {
-      "path": "../apps/test-bundle-button/dist/main.min.js",
-      "maxSize": "44.6 kB"
+      "path": "../apps/test-bundle-button/dist/test-bundle-button.min.js",
+      "maxSize": "45.5 kB"
     }
   ]
 }

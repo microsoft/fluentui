@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  autobind
+  createRef
 } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
@@ -58,7 +58,7 @@ const _items = [
 export class DetailsListGroupedExample extends BaseComponent<{}, {
   items: {}[];
 }> {
-  private _root: DetailsList;
+  private _root = createRef<DetailsList>();
 
   constructor(props: {}) {
     super(props);
@@ -78,7 +78,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
           text='Add an item'
         />
         <DetailsList
-          componentRef={ this._resolveRef('_root') }
+          componentRef={ this._root }
           items={ items }
           groups={ [
             {
@@ -112,8 +112,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
     );
   }
 
-  @autobind
-  private _addItem() {
+  private _addItem = (): void => {
     const items = this.state.items;
 
     this.setState({
@@ -123,7 +122,9 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
         color: 'blue'
       }])
     }, () => {
-      this._root.focusIndex(items.length, true);
+      if (this._root.value) {
+        this._root.value.focusIndex(items.length, true);
+      }
     });
   }
 

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   css,
   getId,
 } from '../../Utilities';
@@ -58,8 +57,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     );
   }
 
-  @autobind
-  private _onClick() {
+  private _onClick = (): void => {
     const {
       onClick,
       disabled,
@@ -71,8 +69,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     }
   }
 
-  @autobind
-  private _onMouseEnter(ev: React.MouseEvent<HTMLButtonElement>) {
+  private _onMouseEnter = (ev: React.MouseEvent<HTMLButtonElement>): void => {
     const {
       onHover,
       disabled,
@@ -87,8 +84,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     }
   }
 
-  @autobind
-  private _onMouseMove(ev: React.MouseEvent<HTMLButtonElement>) {
+  private _onMouseMove = (ev: React.MouseEvent<HTMLButtonElement>): void => {
     const {
       onHover,
       disabled,
@@ -103,8 +99,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     }
   }
 
-  @autobind
-  private _onMouseLeave(ev: React.MouseEvent<HTMLButtonElement>) {
+  private _onMouseLeave = (ev: React.MouseEvent<HTMLButtonElement>): void => {
     const {
       onHover,
       disabled,
@@ -118,8 +113,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     }
   }
 
-  @autobind
-  private _onFocus() {
+  private _onFocus = (): void => {
     const {
       onFocus,
       disabled,

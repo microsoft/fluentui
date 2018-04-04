@@ -9,3 +9,4 @@ export { SelectedPeopleList } from './SelectedItemsList';
 export { ExtendedPeoplePicker } from './ExtendedPicker';
 export { Keytip } from './Keytip';
 export { KeytipLayer } from './KeytipLayer';
+export { Shimmer } from './Shimmer';

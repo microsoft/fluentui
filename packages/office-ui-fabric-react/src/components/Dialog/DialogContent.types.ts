@@ -14,7 +14,7 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
   * the public methods and properties of the component.
   */
-  componentRef?: (component: IDialogContent) => void;
+  componentRef?: (component: IDialogContent | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -25,6 +25,11 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+   * Is inside a multiline wrapper
+   */
+  isMultiline?: boolean;
 
   /**
   * Show an 'x' close button in the upper-right corner
@@ -104,14 +109,26 @@ export interface IDialogContentStyleProps {
    */
   className?: string;
 
-  // Insert DialogContent style props below
+  isLargeHeader?: boolean;
+  isClose?: boolean;
+  hidden?: boolean;
+
+  /**
+   * Is inside a multiline wrapper
+   */
+  isMultiline?: boolean;
 }
 
 export interface IDialogContentStyles {
   /**
-   * Style for the root element.
+   * Style for the content element.
    */
-  content?: IStyle;
-
-  // Insert DialogContent classNames below
+  content: IStyle;
+  subText: IStyle;
+  header: IStyle;
+  button: IStyle;
+  inner: IStyle;
+  innerContent: IStyle;
+  title: IStyle;
+  topButton: IStyle;
 }

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+
+## 5.7.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.6.0
+Tue, 13 Mar 2018 20:00:06 GMT
+
+### Minor changes
+
+- Adjusting npmrc to ensure we have published to the correct registry.
 
 ## 5.5.0
 Fri, 02 Mar 2018 11:25:35 GMT

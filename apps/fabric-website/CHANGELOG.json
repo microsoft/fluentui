@@ -2,6 +2,122 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.5.2",
+      "tag": "@uifabric/fabric-website_v5.5.2",
+      "date": "Tue, 27 Mar 2018 10:14:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "ccf2163bda809f6033fff3892b494c004fe0ff13",
+            "comment": "Adds missing neutralQuaternary and neutralQuaternaryAlt to document colors page"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.70.0 <6.0.0` to `>=5.71.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.1",
+      "tag": "@uifabric/fabric-website_v5.5.1",
+      "date": "Wed, 21 Mar 2018 10:18:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "5fbbac6c535b5db98eaf8167f4ecd8fe2b882990",
+            "comment": "Updated OfficeUIFabric Toolkit link to v4.0.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.66.0 <6.0.0` to `>=5.67.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/fabric-website_v5.5.0",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e3a40d52e73af6e5a0062452e550f1b066c851c2",
+            "comment": "ThemePrimary: Updating this color along with an Office branding update."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.64.4 <6.0.0` to `>=5.65.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "@uifabric/fabric-website_v5.4.0",
+      "date": "Wed, 14 Mar 2018 10:28:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8b1625290f6a775f6c64b30617a2593576aacb34",
+            "comment": "Theme generator: exposing to the website."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.64.0 <6.0.0` to `>=5.64.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.4",
+      "tag": "@uifabric/fabric-website_v5.3.4",
+      "date": "Tue, 13 Mar 2018 20:00:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "0904a98019ac935ed975f6188624cc68df477a25",
+            "comment": "Hide left nav on mobile."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.3",
+      "tag": "@uifabric/fabric-website_v5.3.3",
+      "date": "Fri, 09 Mar 2018 11:13:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e67bcbe68c55f057a10c3c51d923554bae81524d",
+            "comment": "Fixed in page nav so that the left nav links will display properly."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.61.0 <6.0.0` to `>=5.62.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.2",
       "tag": "@uifabric/fabric-website_v5.3.2",
       "date": "Thu, 01 Mar 2018 00:05:10 GMT",

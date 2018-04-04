@@ -4,9 +4,6 @@ import * as React from 'react';
 import {
   Breadcrumb, IBreadcrumbItem
 } from 'office-ui-fabric-react/lib/Breadcrumb';
-import {
-  autobind
-} from '../../../Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
@@ -17,6 +14,8 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   }
 
   public render() {
+    const customDivider = () => <span>*</span>;
+
     return (
       <div>
         <Label className={ exampleStyles.exampleLabel }>With no maxDisplayedItems</Label>
@@ -29,6 +28,20 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ] }
+          ariaLabel={ 'Website breadcrumb' }
+        />
+
+        <Label className={ exampleStyles.exampleLabel } style={ { marginTop: '24px' } }>With Custom Divider Icon</Label>
+        <Breadcrumb
+          items={ [
+            { text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
+          ] }
+          dividerAs={ customDivider }
           ariaLabel={ 'Website breadcrumb' }
         />
 
@@ -49,8 +62,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     );
   }
 
-  @autobind
-  private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
+  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
 

@@ -20,7 +20,7 @@ export interface IBasePicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBasePicker<T>) => void;
+  componentRef?: (component?: IBasePicker<T> | null) => void;
 
   /**
    * Function that specifies how the selected item will appear.
@@ -119,9 +119,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   removeButtonAriaLabel?: string;
   /**
-   * A callback to process a selection after the user selects something from the picker.
+   * A callback to process a selection after the user selects something from the picker. If the callback returns null,
+   * the item will not be added to the picker.
    */
-  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
    */
