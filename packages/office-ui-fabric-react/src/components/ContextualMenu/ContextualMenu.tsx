@@ -596,7 +596,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div
         ref={ (el: HTMLDivElement) => {
           this._splitButtonContainers.set(item.key, el);
-          if (el /*&& 'onpointerdown' in el*/) {
+          if (el && 'onpointerdown' in el) {
             this._events.on(el, 'pointerdown', this._onPointerDown, true);
           }
         }
@@ -612,7 +612,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-setsize={ totalItemCount }
         onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
         onClick={ this._executeItemClick.bind(this, item) }
-        // onTouchStart={ this._onTouchStart }
+        onTouchStart={ this._onTouchStart }
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
@@ -713,22 +713,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
-    if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-      // return;
-    }
     if (this._host && !('onpointerdown' in this._host)) {
       this._handleTouchAndPointerEvent();
     }
   }
 
   private _onPointerDown(ev: PointerEvent) {
-    if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-      // return;
-    }
     if (ev.pointerType === 'touch') {
       this._handleTouchAndPointerEvent();
 
@@ -738,7 +728,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _handleTouchAndPointerEvent() {
-    // If we already have an existing timeeout from a previous touch and pointer event
+    // If we already have a command that would open/close the menu from hover, we'll
+    // cancel that async event and continue with our pointeer/touch event
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+    }
+
+    // If we already have an existing timeeout from a previous touch/pointer event
     // cancel that timeout so we can set a nwe one.
     if (this._lastTouchTimeoutId !== undefined) {
       this._async.clearTimeout(this._lastTouchTimeoutId);
@@ -748,6 +745,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
+      this._lastTouchTimeoutId = undefined;
     }, 500);
   }
 
@@ -807,7 +805,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
-    if (!this._isScrollIdle || this._processingTouch) { // write code to cancel the processingtouch?
+    if (!this._isScrollIdle) {
       return;
     }
 
@@ -882,11 +880,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         const splitButtonContainer = this._splitButtonContainers.get(item.key);
         this._onItemSubMenuExpand(item,
           ((item.split && splitButtonContainer) ? splitButtonContainer : targetElement) as HTMLElement);
+        this._enterTimerId = undefined;
       }, this._navigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
         targetElement.focus();
+        this._enterTimerId = undefined;
       }, timeoutDuration);
     }
   }
@@ -909,7 +909,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (this._enterTimerId !== undefined) {
       this._async.clearTimeout(this._enterTimerId);
       this._enterTimerId = undefined;
-      // return;
     }
     this._onItemClickBase(item, ev,
       (splitButtonContainer ? splitButtonContainer : ev.currentTarget) as HTMLElement);
