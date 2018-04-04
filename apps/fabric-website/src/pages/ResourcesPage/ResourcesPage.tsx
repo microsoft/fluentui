@@ -57,7 +57,7 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h3>Office Add-ins Toolkit</h3>
                 <p>The Add-in design toolkit provides layouts for interface elements and commonly used UX patterns in Word, Excel, and PowerPoint. Use it together with the Fabric design toolkit to create an add-in that fits seamlessly with Office.</p>
                 <ul>
-                  <li><a className={ styles.relatedLink } href='https://aka.ms/addins-toolkit'>Add-in XD Toolkit</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/addins_toolkit'>Add-in XD Toolkit</a></li>
                 </ul>
 
                 <h3>Fonts</h3>
