@@ -13,6 +13,7 @@ export const getStyles = (
     position: 'absolute',
     pointerEvents: 'auto',
     width: '100%',
+    maxWidth: 'inherit',
     zIndex: 1
   };
 
