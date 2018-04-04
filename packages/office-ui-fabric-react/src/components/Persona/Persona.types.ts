@@ -121,11 +121,6 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   coinProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
-   * Force render presence icon at size 32 or under
-   */
-  showIcon?: boolean;
-
-  /**
    * Theme provided by High Order Component.
    */
   theme?: ITheme;

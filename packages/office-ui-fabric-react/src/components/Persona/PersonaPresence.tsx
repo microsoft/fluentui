@@ -41,7 +41,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     const size = sizeBoolean(this.props.size as PersonaSize);
 
     // Render Presence Icon if Persona is above size 32.
-    const renderIcon = this.props.showIcon || !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && (coinSize ? coinSize > 32 : true);
+    const renderIcon = !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && (coinSize ? coinSize > 32 : true);
 
     const presenceHeightWidth: string = coinSize ? (coinSize / coinSizePresenceScaleFactor < presenceMaxSize ? coinSize / coinSizePresenceScaleFactor + 'px' : presenceMaxSize + 'px') : '';
     const presenceFontSize: string = coinSize ? (coinSize / coinSizeFontScaleFactor < presenceFontMaxSize ? coinSize / coinSizeFontScaleFactor + 'px' : presenceFontMaxSize + 'px') : '';
