@@ -586,9 +586,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
     if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
       this._handleTouchAndPointerEvent();
-    } else {
-      ev.preventDefault();
-      ev.stopPropagation();
     }
   }
 

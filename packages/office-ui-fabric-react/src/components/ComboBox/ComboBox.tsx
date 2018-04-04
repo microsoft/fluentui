@@ -1668,9 +1668,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onTouchStart: (ev: TouchEvent<HTMLInputElement>) => void = (ev) => {
     if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
       this._handleTouchAndPointerEvent();
-    } else {
-      ev.preventDefault();
-      ev.stopPropagation();
     }
   }
 

@@ -36,6 +36,7 @@ import {
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { TouchEvent } from 'react';
+import { PageContent } from '../../../../example-app-base/lib-es2015/index';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -595,7 +596,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div
         ref={ (el: HTMLDivElement) => {
           this._splitButtonContainers.set(item.key, el);
-          if (el && 'onpointerdown' in el) {
+          if (el /*&& 'onpointerdown' in el*/) {
             this._events.on(el, 'pointerdown', this._onPointerDown, true);
           }
         }
@@ -611,7 +612,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-setsize={ totalItemCount }
         onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
         onClick={ this._executeItemClick.bind(this, item) }
-        onTouchStart={ this._onTouchStart }
+        // onTouchStart={ this._onTouchStart }
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
@@ -712,15 +713,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+      // return;
+    }
     if (this._host && !('onpointerdown' in this._host)) {
       this._handleTouchAndPointerEvent();
-    } else {
-      ev.preventDefault();
-      ev.stopPropagation();
     }
   }
 
   private _onPointerDown(ev: PointerEvent) {
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+      // return;
+    }
     if (ev.pointerType === 'touch') {
       this._handleTouchAndPointerEvent();
 
@@ -799,7 +807,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
-    if (!this._isScrollIdle) {
+    if (!this._isScrollIdle || this._processingTouch) { // write code to cancel the processingtouch?
       return;
     }
 
@@ -884,7 +892,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
-    if (item.onMouseDown) {
+    if (item.onMouseDown && this._enterTimerId === undefined) {
       item.onMouseDown(item, ev);
     }
   }
@@ -896,6 +904,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onSplitItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     const splitButtonContainer = this._splitButtonContainers.get(item.key);
     // get the whole splitButton container to base the menu off of
+
+    // TODO don't process anything if we're processing a mouse enter
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+      // return;
+    }
     this._onItemClickBase(item, ev,
       (splitButtonContainer ? splitButtonContainer : ev.currentTarget) as HTMLElement);
   }
