@@ -184,11 +184,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const data: IPageData<TItem> = page.data;
 
     const isShimmer: boolean = items && items[0] && items[0].key === 'shimmerItem' ? true : false;
-    const shimmerCellWithMarginsSize = isShimmer && (data.cellSizes[0].width + (items ? items[0].grid.spacing : 0));
+    const shimmerCellSpacing: number = items ? items[0].grid.spacing : 0;
+    const shimmerCellWidth: number = isShimmer ? data.cellSizes[0].width : 0;
     const shimmerCellsPerRow: number | undefined = isShimmer ?
-      Math.floor(data.pageWidths[0] / shimmerCellWithMarginsSize)
+      Math.floor(data.pageWidths[0] / (shimmerCellSpacing + shimmerCellWidth))
       : undefined;
-    // const shimmerWrapperWidth =
+    const shimmerWrapperWidth: number | undefined = shimmerCellsPerRow ?
+      (shimmerCellsPerRow * shimmerCellWidth) + (shimmerCellSpacing * (shimmerCellsPerRow - 1)) :
+      undefined;
 
     const cells: ITileCell<TItem>[] = items ?
       isShimmer ?
@@ -256,7 +259,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             // tslint:disable-next-line:jsx-ban-props
             style={
               {
-                ...this._onGetCellStyle(cell, currentRow)
+                ...this._onGetCellStyle(cell, currentRow, isShimmer)
               }
             }
           >
@@ -299,6 +302,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         { isShimmer ?
           <Shimmer
             isBaseStyle={ true }
+            width={ shimmerWrapperWidth }
           >
             { grids }
           </Shimmer> :
@@ -455,7 +459,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return TilesListStyles.listPage;
   }
 
-  private _onGetCellStyle = (item: ITileCell<TItem>, currentRow?: IRowData): React.CSSProperties => {
+  private _onGetCellStyle = (item: ITileCell<TItem>, currentRow?: IRowData, isShimmer?: boolean): React.CSSProperties => {
     const {
       grid: {
         mode: gridMode,
@@ -480,7 +484,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         `${width * maxScaleFactor}px` :
         // The item must not be scaled.
         `${width}px`,
-      margin: `${margin}px`
+      margin: !isShimmer ? `${margin}px` : 0,
+      border: isShimmer ? `${margin}px solid white` : 'none'
     };
   }
 

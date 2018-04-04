@@ -175,7 +175,7 @@ export function getShimmerCells(groups: IExampleShimmerGroup[], {
         };
       }),
       spacing: 8,
-      marginBottom: 40,
+      marginBottom: 0,
       minRowHeight: 171,
       mode: size === 'small' ?
         TilesGridMode.fillHorizontal :
