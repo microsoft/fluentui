@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "Fix flex styling for SignalField",
       "packageName": "@uifabric/experiments",
+      "comment": "fix suggestion header/footer for more flexibile rendering",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com"
+  "email": "amyngu@microsoft.com"
 }

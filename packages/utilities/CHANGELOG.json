@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.22.1",
+      "tag": "@uifabric/utilities_v5.22.1",
+      "date": "Sat, 31 Mar 2018 17:40:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0df6c75d24895ffbfa6136409aae6656a6751892",
+            "comment": "asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.22.0",
       "tag": "@uifabric/utilities_v5.22.0",
       "date": "Wed, 28 Mar 2018 10:16:39 GMT",
