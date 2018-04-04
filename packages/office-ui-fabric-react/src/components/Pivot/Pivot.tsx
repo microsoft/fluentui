@@ -117,7 +117,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderPivotLink = (link: IPivotItemProps): JSX.Element => {
-    const { itemKey } = link;
+    const { itemKey, linkNativeProps } = link;
     const tabId = this._keyToTabIds[itemKey as string];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
@@ -130,6 +130,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <CommandButton
+        { ...linkNativeProps }
         id={ tabId }
         key={ itemKey }
         className={ css(
@@ -205,6 +206,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
 
         links.push({
           linkText: pivotItem.props.linkText,
+          linkNativeProps: pivotItem.props.linkNativeProps,
           ariaLabel: pivotItem.props.ariaLabel,
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,

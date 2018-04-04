@@ -13,6 +13,11 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   linkText?: string;
 
   /**
+   * Native props - data-* and aria-* - for each pivot link element
+   */
+  linkNativeProps?: object;
+
+  /**
    * An required key to uniquely identify a pivot item.
    *
    * Note: The 'key' from react props cannot be used inside component.
