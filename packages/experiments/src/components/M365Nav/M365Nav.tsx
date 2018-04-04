@@ -1,19 +1,29 @@
 ﻿/* tslint:disable */
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
-import { INavLinkGroup, INavProps } from 'office-ui-fabric-react/lib/components/Nav';
+import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
-import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import { IM365NavLink } from './M365Nav.types';
 import {
-  getM365NavItemStyle,
-  getM365NavGroupSeparatorStyle
+  IM365NavProps,
+  IM365NavLink,
+  IM365NavStyleProps,
+  IM365NavStyles
+} from './M365Nav.types';
+import {
+  getStyles
 } from './M365Nav.styles';
 import { M365NavBase } from './M365NavBase';
+import {
+  styled,
+  classNamesFunction
+} from 'office-ui-fabric-react/lib/Utilities';
 
-export class M365Nav extends M365NavBase {
-  constructor(props: INavProps) {
+const getClassNames = classNamesFunction<IM365NavStyleProps, IM365NavStyles>();
+
+class M365NavComponent extends M365NavBase {
+  constructor(props: IM365NavProps) {
     super(props);
 
     this.state = {
@@ -28,7 +38,7 @@ export class M365Nav extends M365NavBase {
     }
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
+      <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation'>
           {
             this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
@@ -101,39 +111,41 @@ export class M365Nav extends M365NavBase {
     const isChildLinkSelected = this.isChildLinkSelected(link);
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
-    const navItemStyle = getM365NavItemStyle(isSelected, undefined, nestingLevel);
+
+    const { getStyles } = this.props;
+    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
 
     return (
       <a
-        href={link.url ? link.url : undefined}
-        target={link.target ? link.target : undefined}
-        key={link.key || linkIndex}
-        tabIndex={0}
-        onClick={this.onLinkClicked.bind(this, link)}
+        href={ link.url ? link.url : undefined }
+        target={ link.target ? link.target : undefined }
+        key={ link.key || linkIndex }
+        tabIndex={ 0 }
+        onClick={ this.onLinkClicked.bind(this, link) }
         data-hint='ReactLeftNav'
-        data-value={link.name}
-        aria-label={link.name}
+        data-value={ link.name }
+        aria-label={ link.name }
         role='menu'>
-        <div className={mergeStyles(navItemStyle.root)} aria-hidden='true'>
+        <div className={ classNames.navItemRoot } aria-hidden='true'>
           {
 
             leftIconName ?
               <Icon
-                className={mergeStyles(navItemStyle.iconColumn)}
-                iconName={leftIconName}
+                className={ classNames.navItemIconColumn }
+                iconName={ leftIconName }
               />
               : null
           }
           {
-            <div className={mergeStyles(navItemStyle.nameColumn)} style={linkTextStyle}>
-              {link.name}
+            <div className={ classNames.navItemNameColumn } style={ linkTextStyle }>
+              { link.name }
             </div>
           }
           {
             rightIconName ?
               <Icon
-                className={mergeStyles(navItemStyle.iconColumn)}
-                iconName={rightIconName}
+                className={ classNames.navItemIconColumn }
+                iconName={ rightIconName }
               />
               : null
           }
@@ -150,8 +162,8 @@ export class M365Nav extends M365NavBase {
     return (
       <li
         role='listitem'
-        key={link.key || linkIndex}
-        title={link.name}>
+        key={ link.key || linkIndex }
+        title={ link.name }>
         {
           this.renderCompositeLink(link, linkIndex, nestingLevel)
         }
@@ -160,7 +172,7 @@ export class M365Nav extends M365NavBase {
           // 1. only for the first level and
           // 2. if the link is expanded
           nestingLevel == 0 && link.isExpanded ?
-            <div className={AnimationClassNames.slideDownIn20}>
+            <div className={ AnimationClassNames.slideDownIn20 }>
               {
                 this.renderLinks(link.links as IM365NavLink[], ++nestingLevel)
               }
@@ -192,20 +204,34 @@ export class M365Nav extends M365NavBase {
       return null;
     }
 
-    const navGroupSeparatorStyle = getM365NavGroupSeparatorStyle();
+    const { getStyles } = this.props;
+    const classNames = getClassNames(getStyles!, {});
 
     return (
-      <div key={groupIndex}>
-        {groupIndex > 0 && group.name ?
-          <div className={mergeStyles(navGroupSeparatorStyle)}>
-            <div className='horizontalLine'>
-              {<span className='groupName'>{group.name}</span>}
-            </div>
-          </div> : null
+      <div key={ groupIndex }>
+        {
+          groupIndex > 0 && group.name ?
+            <div className={ classNames.navGroupSeparatorRoot }>
+              <div className={ classNames.navGroupSeparatorHrLine }>
+                {
+                  <span className={ classNames.navGroupSeparatorGroupName }>
+                    {
+                      group.name
+                    }
+                  </span>
+                }
+              </div>
+            </div> : null
         }
-        {this.renderLinks(group.links, 0 /* nestingLevel */)}
+        { this.renderLinks(group.links, 0 /* nestingLevel */) }
       </div>
     );
   }
 }
+
+export const M365Nav = styled<IM365NavProps, IM365NavStyleProps, IM365NavStyles>(
+  M365NavComponent,
+  getStyles
+);
+
 /* tslint:enable */

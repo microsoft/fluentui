@@ -1,13 +1,25 @@
 ﻿/* tslint:disable */
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
-import { mergeStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import { M365Nav } from './M365Nav';
-import { IM365NavProps, IM365NavState } from "./M365Nav.types";
+import {
+  IM365NavProps,
+  IM365NavState,
+  IM365NavStyleProps,
+  IM365NavStyles
+} from "./M365Nav.types";
 import { M365SlimNav } from './M365SlimNav';
-import { getM365NavStyle, getM365NavItemStyle } from './M365Nav.styles';
+import {
+  getStyles
+} from './M365Nav.styles';
+import {
+  styled,
+  classNamesFunction
+} from 'office-ui-fabric-react/lib/Utilities';
 
-export class M365NavToggler extends React.Component<IM365NavProps, IM365NavState> {
+const getClassNames = classNamesFunction<IM365NavStyleProps, IM365NavStyles>();
+
+class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavState> {
   constructor(props: IM365NavProps) {
     super(props);
 
@@ -21,24 +33,25 @@ export class M365NavToggler extends React.Component<IM365NavProps, IM365NavState
       return null;
     }
 
-    const isNavCollapsed = this.state.isNavCollapsed;
-    const navStyle = getM365NavStyle(isNavCollapsed as boolean);
+    const isCollapsed = this.state.isNavCollapsed;
+    const { getStyles } = this.props;
+    const classNames = getClassNames(getStyles!, { isCollapsed });
 
     return (
-      <div className={mergeStyles(navStyle)}>
+      <div className={ classNames.root }>
         {
           this.renderExpandCollapseNavItem()
         }
         {
-          isNavCollapsed ?
+          isCollapsed ?
             <M365SlimNav
-              groups={this.props.groups}
-              selectedKey={this.props.selectedKey}
-              navScrollerId={this.props.navScrollerId} />
+              groups={ this.props.groups }
+              selectedKey={ this.props.selectedKey }
+              navScrollerId={ this.props.navScrollerId } />
             :
             <M365Nav
-              groups={this.props.groups}
-              selectedKey={this.props.selectedKey} />
+              groups={ this.props.groups }
+              selectedKey={ this.props.selectedKey } />
         }
       </div>
     );
@@ -60,23 +73,24 @@ export class M365NavToggler extends React.Component<IM365NavProps, IM365NavState
   }
 
   private renderExpandCollapseNavItem(): React.ReactElement<{}> {
-    const style: IStyle = {
+    const style: React.CSSProperties = {
       textAlign: "right"
     };
 
     const isNavCollapsed = this.state.isNavCollapsed;
-    const navItemStyle = getM365NavItemStyle();
+    const { getStyles } = this.props;
+    const classNames = getClassNames(getStyles!, {});
 
     return (
       <a
-        tabIndex={0}
-        onClick={this.onNavCollapseClicked.bind(this)}
-        aria-expanded={isNavCollapsed ? "false" : "true"}
+        tabIndex={ 0 }
+        onClick={ this.onNavCollapseClicked.bind(this) }
+        aria-expanded={ isNavCollapsed ? "false" : "true" }
         data-hint="ReactLeftNav"
         data-value="ToggleNavCollapse">
-        <div className={mergeStyles(navItemStyle.root, style)}>
+        <div style={ style } className={ classNames.navItemRoot }>
           <Icon
-            className={mergeStyles(navItemStyle.iconColumn)}
+            className={ classNames.navItemIconColumn }
             iconName="GlobalNavButton"
             aria-hidden="true"
           />
@@ -85,4 +99,9 @@ export class M365NavToggler extends React.Component<IM365NavProps, IM365NavState
     );
   }
 }
+
+export const M365NavToggler = styled<IM365NavProps, IM365NavStyleProps, IM365NavStyles>(
+  M365NavTogglerComponent,
+  getStyles
+);
 /* tslint:enable */
