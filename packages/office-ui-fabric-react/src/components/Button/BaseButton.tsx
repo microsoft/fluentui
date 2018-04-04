@@ -168,6 +168,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const buttonProps = assign(
+      {
+        'aria-pressed': checked,
+      },
       nativeProps,
       {
         className: this._classNames.root,
@@ -176,8 +179,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
-        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled || this._isSplitButton) ? false : true,
-        'aria-pressed': checked
+        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled || this._isSplitButton) ? false : true
       }
     );
 

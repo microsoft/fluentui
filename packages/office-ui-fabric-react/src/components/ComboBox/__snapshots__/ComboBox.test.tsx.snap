@@ -2,8 +2,12 @@
 
 exports[`ComboBox Renders ComboBox correctly 1`] = `
 <div
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-owns={null}
   autoComplete="on"
   className="ms-ComboBox-container "
+  role="combobox"
 >
   <div
     className=
@@ -109,12 +113,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
     <input
       aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby="ComboBox0-option"
+      aria-controls={null}
       aria-disabled={undefined}
-      aria-expanded={false}
       aria-label={undefined}
       aria-labelledby={undefined}
-      aria-owns="ComboBox0-list"
+      aria-multiline="false"
       aria-readonly="true"
       autoCapitalize="off"
       autoComplete="off"
@@ -148,7 +151,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       onKeyUp={[Function]}
       onTouchStart={[Function]}
       readOnly={true}
-      role="combobox"
+      role="textbox"
       spellCheck={false}
       title={undefined}
       type="text"
