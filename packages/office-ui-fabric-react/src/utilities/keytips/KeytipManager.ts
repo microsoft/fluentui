@@ -11,7 +11,8 @@ import {
   getDocument,
   replaceElement,
   findIndex,
-  mergeOverflowKeySequences
+  mergeOverflowKeySequences,
+  Async
 } from '../../Utilities';
 import { constructKeytipExecuteTargetFromId } from './KeytipUtils';
 
@@ -28,11 +29,17 @@ export class KeytipManager {
   public keytips: IUniqueKeytip[] = [];
 
   private _layer: KeytipLayerBase;
+
   private _enableSequences: IKeytipTransitionKey[];
   private _exitSequences: IKeytipTransitionKey[];
   private _returnSequences: IKeytipTransitionKey[];
   private _newCurrentKeytipSequences?: IKeySequence[];
+
   private _keytipIDCounter = 0;
+
+  private _delayedKeytipQueue: string[] = [];
+  private _delayedQueueTimeout: number;
+  private _async: Async = new Async();
 
   /**
    * Static function to get singleton KeytipManager instance
@@ -67,11 +74,6 @@ export class KeytipManager {
   public registerKeytip(keytipProps: IKeytipProps): string {
     const keytipTree = this.keytipTree;
 
-    // Set 'visible' property to true in keytipProps if 'currentKeytip' is this keytip's parent
-    if (this.keytipTree.isCurrentKeytipParent(keytipProps)) {
-      keytipProps.visible = true;
-    }
-
     // Create a unique keytip
     const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(keytipProps);
 
@@ -83,6 +85,11 @@ export class KeytipManager {
       this.keytips.push(uniqueKeytip);
       keytipTree.addNode(keytipProps, uniqueKeytip.uniqueID);
       this._layer && this._layer.setKeytips(this.getKeytips());
+
+      // Add the keytip to the queue to show later
+      if (this.keytipTree.isCurrentKeytipParent(keytipProps)) {
+        this._addKeytipToQueue(convertSequencesToKeytipID(keytipProps.keySequences));
+      }
     } else {
       // Update
       this._updateKeytip(uniqueKeytip, keytipIndex);
@@ -98,13 +105,13 @@ export class KeytipManager {
       // Set currentKeytip
       keytipTree.currentKeytip = keytipTree.getNode(convertSequencesToKeytipID(keytipSequence));
       if (keytipTree.currentKeytip) {
-        if (keytipTree.currentKeytip.onExecute) {
-          keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(keytipTree.currentKeytip.id));
-        }
-
         // Show all children keytips if there
         const children = keytipTree.getChildren();
         children.length && this.showKeytips(children);
+
+        if (keytipTree.currentKeytip.onExecute) {
+          keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(keytipTree.currentKeytip.id));
+        }
       }
 
       // Unset _newCurrentKeytipSequences
@@ -155,6 +162,10 @@ export class KeytipManager {
     this.keytips = this.keytips.filter((uniqueKtp: IUniqueKeytip) => {
       return !(fullKeySequencesAreEqual(uniqueKtp.keytip.keySequences, keytipToRemove.keySequences) && uniqueKtp.uniqueID === uniqueID);
     });
+
+    // Remove keytip from the delayed queue
+    this._removeKeytipFromQueue(convertSequencesToKeytipID(keytipToRemove.keySequences));
+
     // Remove the node from the Tree
     this.keytipTree.removeNode(keytipToRemove, uniqueID);
     this._layer && this._layer.setKeytips(this.getKeytips());
@@ -286,6 +297,7 @@ export class KeytipManager {
       const node = this.keytipTree.getExactMatchedNode(currSequence, currKtp);
       if (node) {
         this.keytipTree.currentKeytip = currKtp = node;
+        const currKtpChildren = this.keytipTree.getChildren();
 
         // Execute this node's onExecute if defined
         if (currKtp.onExecute) {
@@ -296,7 +308,6 @@ export class KeytipManager {
 
         // To exit keytipMode after executing keytip we should check if currentKeytip has no children and
         // if the node doesn't have children nodes
-        const currKtpChildren = this.keytipTree.getChildren();
         if (currKtpChildren.length === 0 && !currKtp.hasChildrenNodes) {
           this.exitKeytipMode();
         } else {
@@ -332,6 +343,29 @@ export class KeytipManager {
     return this.keytips.map((uniqueKeytip: IUniqueKeytip) => {
       return uniqueKeytip.keytip;
     });
+  }
+
+  private _addKeytipToQueue(keytipID: string) {
+    // Add keytip
+    this._delayedKeytipQueue.push(keytipID);
+    // Clear timeout
+    this._delayedQueueTimeout && this._async.clearTimeout(this._delayedQueueTimeout);
+    // Reset timeout
+    this._delayedQueueTimeout = this._async.setTimeout(() => {
+      if (this._delayedKeytipQueue.length) {
+        this.showKeytips(this._delayedKeytipQueue);
+        this._delayedKeytipQueue = [];
+      }
+    }, 500);
+  }
+
+  private _removeKeytipFromQueue(keytipID: string) {
+    const index = this._delayedKeytipQueue.indexOf(keytipID);
+    if (index >= 0) {
+      this._delayedKeytipQueue.splice(index, 1);
+      // Clear timeout
+      this._delayedQueueTimeout && this._async.clearTimeout(this._delayedQueueTimeout);
+    }
   }
 
   /**

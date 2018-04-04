@@ -81,6 +81,10 @@ function createKeytipProps(keySequences: IKeySequence[], content: string): IKeyt
   };
 }
 
+function delay(millisecond: number): Promise<void> {
+  return new Promise<void>((resolve) => setTimeout(resolve, millisecond));
+}
+
 describe('KeytipManager', () => {
 
   beforeEach(() => {
@@ -140,10 +144,12 @@ describe('KeytipManager', () => {
         };
         ktpMgr.registerKeytip(keytipGProps);
 
-        // G should now be visible in the layer
-        const keytipG = getLayerKeytips(ktpLayer, [keytipIdG]);
-        expect(keytipG).toHaveLength(1);
-        expect(keytipG[0].visible).toEqual(true);
+        delay(750).then(() => {
+          // G should now be visible in the layer
+          const keytipG = getLayerKeytips(ktpLayer, [keytipIdG]);
+          expect(keytipG).toHaveLength(1);
+          expect(keytipG[0].visible).toEqual(true);
+        });
       });
 
       it('registerKeytip should correctly take into account the uniqueID', () => {

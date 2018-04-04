@@ -150,6 +150,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     const overflowKeytipSequences = this.props.keytipSequences;
+    const itemSubMenuProvider = this.props.itemSubMenuProvider;
 
     // Register all persisted keytips and save
     if (overflowKeytipSequences) {
@@ -157,6 +158,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
         const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
         if (keytip) {
           // Create persisted keytip
+          // TODO: test a persisted keytip that has a corresponding disabled button
           const persistedKeytip: IKeytipProps = {
             content: keytip.content,
             keySequences: keytip.keySequences,
@@ -164,15 +166,13 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
             disabled: keytip.disabled
           };
 
-          if (keytip.hasChildrenNodes || overflowItem.subMenuProps) {
-            // If the keytip has a submenu, change onExecute to persistedKeytipExecute
+          if (keytip.hasChildrenNodes || this._getSubMenuForItem(overflowItem)) {
+            // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
             // TODO: use helper
             persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, overflowItem.keytipProps.keySequences);
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
-            persistedKeytip.onExecute = (el: HTMLElement | null) => {
-              keytip.onExecute && keytip.onExecute(el);
-            };
+            persistedKeytip.onExecute = keytip.onExecute;
           }
 
           // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
@@ -196,9 +196,10 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
    */
   private _removeOverflowSequence(item: any): void {
     item.keytipProps.overflowSetSequence = undefined;
+    const subMenuItems = this._getSubMenuForItem(item);
 
-    if (item.subMenuProps) {
-      item.subMenuProps.items.forEach((subMenuItem: any) => {
+    if (subMenuItems) {
+      subMenuItems.forEach((subMenuItem: any) => {
         if (subMenuItem.keytipProps) {
           this._removeOverflowSequence(subMenuItem);
         }
@@ -211,14 +212,25 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
    */
   private _addOverflowSequence(overflowSequence: IKeySequence[], overflowItem: any): void {
     overflowItem.keytipProps.overflowSetSequence = overflowSequence;
+    const subMenuItems = this._getSubMenuForItem(overflowItem);
 
-    if (overflowItem.subMenuProps) {
-      overflowItem.subMenuProps.items.forEach((subMenuItem: any) => {
+    if (subMenuItems) {
+      subMenuItems.forEach((subMenuItem: any) => {
         if (subMenuItem.keytipProps) {
           this._addOverflowSequence(overflowSequence, subMenuItem);
         }
       });
     }
+  }
+
+  private _getSubMenuForItem(item: any): any[] | undefined {
+    if (this.props.itemSubMenuProvider) {
+      return this.props.itemSubMenuProvider(item);
+    }
+    if (item.subMenuProps) {
+      return item.subMenuProps.items;
+    }
+    return undefined;
   }
 
 }

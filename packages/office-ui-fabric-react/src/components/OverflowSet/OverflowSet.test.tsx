@@ -27,6 +27,10 @@ describe('OverflowSet', () => {
     expect(onRenderOverflowButton.called).toEqual(false);
   });
 
+  function delay(millisecond: number): Promise<void> {
+    return new Promise<void>((resolve) => setTimeout(resolve, millisecond));
+  }
+
   describe('keytip tests', () => {
     let overflowSet: ReactWrapper;
     let overflowKeytips: any;
@@ -223,18 +227,20 @@ describe('OverflowSet', () => {
         // Open the overflow menu
         keytipManager.processInput('x');
 
-        // Opening the submenu should register the two keytips for those items
-        const modifiedKeytip3Sequence = ['x', 'c'];
-        const modifiedKeytip4Sequence = ['x', 'd'];
-        expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip3Sequence))).toBeDefined();
-        expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip4Sequence))).toBeDefined();
+        delay(750).then(() => {
+          // Opening the submenu should register the two keytips for those items
+          const modifiedKeytip3Sequence = ['x', 'c'];
+          const modifiedKeytip4Sequence = ['x', 'd'];
+          expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip3Sequence))).toBeDefined();
+          expect(keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip4Sequence))).toBeDefined();
 
-        // Those two keytips should now be visible in the Layer
-        const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
-          return keytip.content === 'C' || keytip.content === 'D';
-        });
-        submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
-          expect(submenuKeytip.visible).toEqual(true);
+          // Those two keytips should now be visible in the Layer
+          const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
+            return keytip.content === 'C' || keytip.content === 'D';
+          });
+          submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
+            expect(submenuKeytip.visible).toEqual(true);
+          });
         });
       });
 
@@ -408,12 +414,14 @@ describe('OverflowSet', () => {
           const subMenu6Keytip = keytipTree.getNode(convertSequencesToKeytipID(modifiedKeytip6Sequence));
           expect(subMenu6Keytip).toBeDefined();
 
-          // Those two keytips should now be visible in the Layer
-          const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
-            return keytip.content === 'E' || keytip.content === 'F';
-          });
-          submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
-            expect(submenuKeytip.visible).toEqual(true);
+          delay(750).then(() => {
+            // Those two keytips should now be visible in the Layer
+            const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
+              return keytip.content === 'E' || keytip.content === 'F';
+            });
+            submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
+              expect(submenuKeytip.visible).toEqual(true);
+            });
           });
         });
       });

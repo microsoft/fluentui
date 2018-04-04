@@ -74,6 +74,13 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * Optional full keytip sequence for the overflow button, if it will have a keytip
    */
   keytipSequences?: IKeySequence[];
+
+  /**
+   * Function that will take in an IOverflowSetItemProps and return the subMenu for that item
+   * If not provided, will use 'item.subMenuProps.items' by default
+   * This is only used if your overflow set has keytips
+   */
+  itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
 }
 
 export interface IOverflowSetItemProps {

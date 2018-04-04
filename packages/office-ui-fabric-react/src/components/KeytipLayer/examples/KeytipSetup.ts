@@ -111,7 +111,8 @@ export const keytipConfig: IKeytipConfig = {
           id: 'CommandButton3Pivot2Keytip',
           content: 'LK',
           optionalProps: {
-            onExecute: btnExecute
+            onExecute: btnExecute,
+            hasChildrenNodes: true
           },
           children: [
             {
