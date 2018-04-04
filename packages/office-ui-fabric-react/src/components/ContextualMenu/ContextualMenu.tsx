@@ -35,6 +35,7 @@ import {
   VerticalDivider
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
+import { KeytipHost } from '../../Keytip';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -481,36 +482,42 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
+    const nativeProps = getNativeProps(item, anchorProperties);
 
     return (
       <div>
-        <a
-          { ...getNativeProps(item, anchorProperties) }
-          href={ item.href }
-          target={ item.target }
-          rel={ anchorRel }
-          className={ classNames.root }
-          role='menuitem'
-          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
-          aria-haspopup={ itemHasSubmenu || null }
-          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
-          aria-posinset={ focusableElementIndex + 1 }
-          aria-setsize={ totalItemCount }
-          aria-disabled={ this._isItemDisabled(item) }
-          style={ item.style }
-          onClick={ this._onAnchorClick.bind(this, item) }
-          onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
-          onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
-          onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
-        >
-          <ChildrenRenderer
-            item={ item }
-            classNames={ classNames }
-            index={ index }
-            onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
-            hasIcons={ hasIcons }
-          />
-        </a>
+        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+          { (keytipAttributes: any): JSX.Element => (
+            <a
+              { ...nativeProps }
+              { ...keytipAttributes }
+              href={ item.href }
+              target={ item.target }
+              rel={ anchorRel }
+              className={ classNames.root }
+              role='menuitem'
+              aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
+              aria-haspopup={ itemHasSubmenu || null }
+              aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
+              aria-posinset={ focusableElementIndex + 1 }
+              aria-setsize={ totalItemCount }
+              aria-disabled={ this._isItemDisabled(item) }
+              style={ item.style }
+              onClick={ this._onAnchorClick.bind(this, item) }
+              onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+              onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+              onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
+            >
+              <ChildrenRenderer
+                item={ item }
+                classNames={ classNames }
+                index={ index }
+                onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+                hasIcons={ hasIcons }
+              />
+            </a>
+          ) }
+        </KeytipHost>
       </div>);
   }
 
@@ -566,18 +573,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     return (
-      <button
-        { ...buttonNativeProperties }
-        { ...itemButtonProperties }
-      >
-        <ChildrenRenderer
-          item={ item }
-          classNames={ classNames }
-          index={ index }
-          onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
-          hasIcons={ hasIcons }
-        />
-      </button>
+      <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }>
+        { (keytipAttributes: any): JSX.Element => (
+          <button
+            { ...buttonNativeProperties }
+            { ...itemButtonProperties }
+            { ...keytipAttributes }
+          >
+            <ChildrenRenderer
+              item={ item }
+              classNames={ classNames }
+              index={ index }
+              onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+              hasIcons={ hasIcons }
+            />
+          </button>
+        ) }
+      </KeytipHost>
     );
   }
 

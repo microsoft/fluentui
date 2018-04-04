@@ -431,6 +431,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
     const { useTargetPoint, targetPoint, target } = props;
-    return useTargetPoint ? targetPoint! : target!;
+    if (useTargetPoint) {
+      return targetPoint!;
+    }
+    return target!;
   }
 }
