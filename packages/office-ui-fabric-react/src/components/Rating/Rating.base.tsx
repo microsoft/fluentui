@@ -97,32 +97,34 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     });
 
     for (let i = min as number; i <= (max as number); i++) {
-      const ratingStarProps: IRatingStarProps = {
-        fillPercentage: this._getFillingPercentage(i),
-        disabled: disabled ? true : false,
-        classNames: this._classNames
-      };
+      if (i != 0) {
+        const ratingStarProps: IRatingStarProps = {
+          fillPercentage: this._getFillingPercentage(i),
+          disabled: disabled ? true : false,
+          classNames: this._classNames
+        };
 
-      starIds.push(this._getStarId(i - 1));
+        starIds.push(this._getStarId(i - 1));
 
-      stars.push(
-        <button
-          className={ css(this._classNames.ratingButton, {
-            [this._classNames.rootIsLarge]: size === RatingSize.Large,
-            [this._classNames.rootIsSmall]: size !== RatingSize.Large
-          }) }
-          id={ starIds[i - 1] }
-          key={ i }
-          { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
-          onFocus={ this._onFocus.bind(this, i) }
-          disabled={ disabled || readOnly ? true : false }
-          role='presentation'
-          type='button'
-        >
-          { this._getLabel(i) }
-          <RatingStar key={ i + 'rating' }  {...ratingStarProps} />
-        </button>
-      );
+        stars.push(
+          <button
+            className={ css(this._classNames.ratingButton, {
+              [this._classNames.rootIsLarge]: size === RatingSize.Large,
+              [this._classNames.rootIsSmall]: size !== RatingSize.Large
+            }) }
+            id={ starIds[i - 1] }
+            key={ i }
+            { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
+            onFocus={ this._onFocus.bind(this, i) }
+            disabled={ disabled || readOnly ? true : false }
+            role='presentation'
+            type='button'
+          >
+            { this._getLabel(i) }
+            <RatingStar key={ i + 'rating' }  { ...ratingStarProps } />
+          </button>
+        );
+      }
     }
 
     return (
