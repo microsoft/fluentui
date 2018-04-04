@@ -490,7 +490,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (!this._processingTouch && this.props.onClick) {
       this.props.onClick(ev);
-    } else {
+    } else if (this._processingTouch) {
       this._onMenuClick(ev);
     }
   }

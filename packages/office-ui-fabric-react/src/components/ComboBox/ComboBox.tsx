@@ -174,7 +174,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentDidMount() {
-    // hook up resolving the options if needed on focus
     if (this._comboBoxWrapper.value && 'onpointerdown' in this._comboBoxWrapper.value) {
       this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
     }
