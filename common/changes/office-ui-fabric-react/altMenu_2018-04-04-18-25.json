@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox/Contextual Menu: Adding support for Ctrl + Up to close menus",
+      "comment": "ComboBox: Adding support for Ctrl + Up to close menus",
       "type": "patch"
     }
   ],
