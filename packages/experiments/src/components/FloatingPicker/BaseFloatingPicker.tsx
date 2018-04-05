@@ -209,8 +209,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.forceUpdate();
   }
 
-  protected updateSuggestions(suggestions: T[]): void {
+  protected updateSuggestions(suggestions: T[], forceUpdate: boolean = false): void {
     this.suggestionStore.updateSuggestions(suggestions);
+
+    if (forceUpdate) {
+      this.forceUpdate();
+    }
   }
 
   protected updateValue(updatedValue: string): void {
@@ -246,7 +250,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       if (updatedValue !== undefined) {
         this.resolveNewValue(updatedValue, suggestionsArray);
       } else {
-        this.suggestionStore.updateSuggestions(suggestionsArray);
+        this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       this.setState({
@@ -264,7 +268,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           if (updatedValue !== undefined) {
             this.resolveNewValue(updatedValue, newSuggestions);
           } else {
-            this.suggestionStore.updateSuggestions(newSuggestions);
+            this.updateSuggestions(newSuggestions);
             this.setState({
               suggestionsLoading: false
             });
@@ -281,7 +285,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]): void {
-    this.suggestionStore.updateSuggestions(suggestions);
+    this.updateSuggestions(suggestions);
     let itemValue: string | undefined = undefined;
 
     if (this.suggestionsControl.currentSuggestion) {
