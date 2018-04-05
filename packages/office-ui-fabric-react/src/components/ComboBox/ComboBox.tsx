@@ -1464,7 +1464,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           index = this.state.currentOptions.length;
         }
 
-        if (ev.altKey && isOpen) {
+        if ((ev.altKey || ev.metaKey) && isOpen) {
           this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
           return;
         }
