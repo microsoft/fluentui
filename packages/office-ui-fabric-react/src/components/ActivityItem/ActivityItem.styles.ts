@@ -4,8 +4,8 @@ import {
   getTheme,
   HighContrastSelector,
   keyframes,
-  IRawStyle
-  // PulsingBeaconAnimationStyles
+  IRawStyle,
+  PulsingBeaconAnimationStyles
 } from '../../Styling';
 import {
   memoizeFunction
@@ -16,74 +16,25 @@ const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
 const DEFAULT_ICON_SIZE = '16px';
 const COMPACT_ICON_SIZE = '13px';
-
-function continuousPulseStepOne(beaconColorOne: string): IRawStyle {
-  return {
-    borderColor: beaconColorOne,
-    borderWidth: '0px',
-    width: '8px',
-    height: '8px'
-  };
-}
-
-function continuousPulseStepTwo(): IRawStyle {
-  return {
-    opacity: 1,
-    borderWidth: '5px'
-  };
-}
-
-function continuousPulseStepThree(): IRawStyle {
-  return {
-    opacity: 1
-  };
-}
-
-function continuousPulseStepFour(beaconColorTwo: string): IRawStyle {
-  return {
-    borderWidth: '0',
-    width: '32px',
-    height: '32px',
-    opacity: 0,
-    borderColor: beaconColorTwo
-  };
-}
-
-function continuousPulseStepFive(beaconColorOne: string): IRawStyle {
-  return {
-    ...continuousPulseStepOne(beaconColorOne),
-    ...{
-      opacity: 0
-    }
-  };
-}
+const ANIMATION_INNER_DIMENSION = '8px';
+const ANIMATION_OUTER_DIMENSION = '32px';
+const ANIMATION_BORDER_WIDTH = '4px';
 
 export const getStyles = memoizeFunction((
   props: IActivityItemProps,
   theme: ITheme = getTheme(),
   customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
-  const ContinuousPulse: string = keyframes({
-    '0%': continuousPulseStepOne(props.beaconColorOne!),
-    '1.42%': continuousPulseStepTwo(),
-    '3.57%': continuousPulseStepThree(),
-    '7.14%': continuousPulseStepFour(props.beaconColorTwo!),
-    '8%': continuousPulseStepFive(props.beaconColorOne!),
-    '29.99%': continuousPulseStepFive(props.beaconColorOne!),
-    '30%': continuousPulseStepOne(props.beaconColorOne!),
-    '31.42%': continuousPulseStepTwo(),
-    '33.57%': continuousPulseStepThree(),
-    '37.14%': continuousPulseStepFour(props.beaconColorTwo!),
-    '38%': continuousPulseStepFive(props.beaconColorOne!),
-    '79.42%': continuousPulseStepFive(props.beaconColorOne!),
-    '79.43': continuousPulseStepOne(props.beaconColorOne!),
-    '81.85': continuousPulseStepTwo(),
-    '83.42': continuousPulseStepThree(),
-    '87%': continuousPulseStepFour(props.beaconColorTwo!),
-    '100%': {}
-  });
 
-  // const ContinuousPulseTwo = PulsingBeaconAnimationStyles.continuousPulseAnimation(props.beaconColorOne!, props.beaconColorTwo!, '8px', '32px', '5px');
+  const ContinuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimation(
+    props.beaconColorOne!,
+    props.beaconColorTwo!,
+    ANIMATION_INNER_DIMENSION,
+    ANIMATION_OUTER_DIMENSION,
+    ANIMATION_BORDER_WIDTH
+  );
+
+  const continuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse);
 
   const ActivityItemStyles: IActivityItemStyles = {
 
@@ -111,12 +62,7 @@ export const getStyles = memoizeFunction((
         borderStyle: 'solid',
         opacity: 0
       },
-      (props.animateBeaconSignal && props.isCompact) && {
-        animationName: ContinuousPulse,
-        animationIterationCount: '1',
-        animationDuration: '14s',
-        animationDelay: '2s'
-      }
+      (props.isCompact && props.animateBeaconSignal) && continuousPulseAnimation
     ],
 
     isCompactRoot: {
