@@ -7,8 +7,7 @@ import {
   ITileSize
 } from '../../TilesList';
 import {
-  Tile,
-  ITileProps
+  Tile
 } from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
@@ -183,74 +182,11 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
   }
 
   private _onRenderShimmerCell(content: IExampleItem, finalSize: ITileSize): JSX.Element {
-    const tileProps: ITileProps = {
-      tileSize: 'small',
-      itemName: (
-        <div
-          // tslint:disable-next-line:jsx-ban-props
-          style={
-            {
-              width: `${(finalSize.width * 70) / 100}px`,
-              height: '7px',
-              backgroundColor: 'transparent'
-            }
-          }
-        />
-      ),
-      itemActivity: (
-        <div
-          // tslint:disable-next-line:jsx-ban-props
-          style={
-            {
-              width: `${(finalSize.width * 30) / 100}px`,
-              height: '7px',
-              backgroundColor: 'transparent'
-            }
-          }
-        />
-      ),
-      showForegroundFrame: true,
-      foreground: (
-        <div
-          // tslint:disable-next-line:jsx-ban-props
-          style={
-            {
-              width: `${(finalSize.width * 45) / 100}px`,
-              height: `${(finalSize.width * 45) / 100}px`,
-              backgroundColor: 'transparent'
-            }
-          }
-        />
-      )
-    };
-
-    // const shimmerTile: JSX.Element = (
-    //   <div
-    //     // tslint:disable-next-line:jsx-ban-props
-    //     style={
-    //       {
-    //         width: `100%`,
-    //         height: `100%`,
-    //       }
-    //     }
-    //   >
-    //     <div
-    //       // tslint:disable-next-line:jsx-ban-props
-    //       style={
-    //         {
-    //           width: '100%',
-    //           height: '70%',
-    //           border: `${(finalSize.width * 15) / 100}px solid white`,
-    //           boxSizing: 'border-box'
-    //         }
-    //       }
-    //     />
-    //   </div>
-    // );
-
     return (
-      // shimmerTile
-      <Tile { ...tileProps } />
+      <Tile
+        shimmerPlaceholder={ true }
+        contentSize={ finalSize }
+      />
     );
   }
 

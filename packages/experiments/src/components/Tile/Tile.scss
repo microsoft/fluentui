@@ -1,6 +1,30 @@
 
 @import '~office-ui-fabric-react/src/common/common';
 
+$nameplatePadding: 12px;
+$largeNameplateNameHeight: 15px;
+$smallNameplateNameHeight: 12px;
+$largeNameplateActivityHeight: 20px;
+$smallNameplateActivityHeight: 20px;
+$foregroundMargin: 16px;
+$smallNameplateHeight: (($nameplatePadding * 2) + $smallNameplateNameHeight + $smallNameplateActivityHeight);
+$largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $largeNameplateActivityHeight);
+
+@mixin shimmerBorders($divHeight, $lineHeight, $type) {
+  @if $type == 'nameBorders' {
+    border-top: $nameplatePadding solid $ms-color-white;
+    border-left: $nameplatePadding solid $ms-color-white;
+    border-right: $nameplatePadding solid $ms-color-white;
+    border-bottom: ($divHeight - $lineHeight) solid $ms-color-white;
+  }
+  @if $type == 'activityBorders' {
+    border-top: ($divHeight - $lineHeight) solid $ms-color-white;
+    border-left: ($nameplatePadding * 4) solid $ms-color-white;
+    border-right: ($nameplatePadding * 4) solid $ms-color-white;
+    border-bottom: $nameplatePadding solid $ms-color-white
+  }
+}
+
 .tile {
   @include focus-clear();
 
@@ -391,6 +415,67 @@
       &:before {
         opacity: 1;
       }
+    }
+  }
+}
+
+.shimmerTile {
+  width: 100%;
+  height: 100%;
+}
+
+.aboveNameplateShimmer {
+  box-sizing: border-box;
+  width: 100%;
+  border-top: $foregroundMargin solid $ms-color-white;
+  border-left: ($foregroundMargin * 2) solid $ms-color-white;
+  border-right: ($foregroundMargin * 2) solid $ms-color-white;
+
+  .isLargeShimmer & {
+    height: calc(100% - #{$largeNameplateHeight});
+  }
+
+  .isSmallShimmer & {
+    height: calc(100% - #{$smallNameplateHeight});
+  }
+}
+
+.nameplateShimmer {
+  width: 100%;
+
+  .isLargeShimmer & {
+    height: $largeNameplateHeight;
+
+    .nameShimmer {
+      width: 100%;
+      box-sizing: border-box;
+      height: ($largeNameplateNameHeight + $nameplatePadding);
+      @include shimmerBorders($largeNameplateNameHeight, $ms-font-size-m, 'nameBorders');
+    }
+
+    .activityShimmer {
+      width: 100%;
+      box-sizing: border-box;
+      height: ($largeNameplateActivityHeight + $nameplatePadding);
+      @include shimmerBorders($largeNameplateActivityHeight, $ms-font-size-s, 'activityBorders');
+    }
+  }
+
+  .isSmallShimmer & {
+    height: $smallNameplateHeight;
+
+    .nameShimmer {
+      width: 100%;
+      box-sizing: border-box;
+      height: ($smallNameplateNameHeight + $nameplatePadding);
+      @include shimmerBorders($smallNameplateActivityHeight, $ms-font-size-s, 'nameBorders');
+    }
+
+    .activityShimmer {
+      width: 100%;
+      box-sizing: border-box;
+      height: ($smallNameplateActivityHeight + $nameplatePadding);
+      @include shimmerBorders($smallNameplateActivityHeight, $ms-font-size-s, 'activityBorders');
     }
   }
 }

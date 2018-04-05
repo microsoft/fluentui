@@ -39,6 +39,13 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   selection?: ISelection;
   /**
+   * Whether or not the tile is used to render a shimmer tile placeholder.
+   *
+   * @type {boolean}
+   * @memberof ITileProps
+   */
+  shimmerPlaceholder?: boolean;
+  /**
    * Whether or not the item should be invoked if clicked.
    *
    * @type {boolean}
