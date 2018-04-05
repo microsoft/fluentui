@@ -133,6 +133,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _lastTouchTimeoutId: number | undefined;
 
+  private readonly _touchIdleDelay: number = 500; /* ms */
+
   // Determines if we should be setting
   // focus back to the input when the menu closes.
   // The general rule of thumb is if the menu was launched
@@ -1690,7 +1692,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
-    }, 500);
+    }, this._touchIdleDelay);
   }
 
   /**

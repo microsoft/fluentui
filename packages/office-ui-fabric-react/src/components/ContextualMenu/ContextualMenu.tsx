@@ -95,6 +95,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _scrollIdleTimeoutId: number | undefined;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
+  private readonly _touchIdleDelay: number = 500; /* ms */
 
   private _splitButtonContainers: Map<string, HTMLDivElement>;
 
@@ -710,7 +711,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
+  private _onTouchStart: () => void = () => {
     if (this._host && !('onpointerdown' in this._host)) {
       this._handleTouchAndPointerEvent();
     }
@@ -744,7 +745,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
-    }, 500);
+    }, this._touchIdleDelay);
   }
 
   /**

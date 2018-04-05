@@ -51,6 +51,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _classNames: IButtonClassNames;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
+  private readonly _touchIdleDelay: number = 500;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -574,7 +575,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  private _onTouchStart: (ev: TouchEvent<HTMLElement>) => void = (ev) => {
+  private _onTouchStart: () => void = () => {
     if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
       this._handleTouchAndPointerEvent();
     }
@@ -601,7 +602,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
-    }, 500);
+    }, this._touchIdleDelay);
   }
 
   /**
