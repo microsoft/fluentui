@@ -70,10 +70,8 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
   });
 }
 
-
-const NavigationIdleDelay: number = 250 /* ms */;
-
-const TouchIdleDelay: number = 500; /* ms */
+const NavigationIdleDelay = 250 /* ms */;
+const TouchIdleDelay = 500; /* ms */
 
 @customizable('ContextualMenu', ['theme'])
 @withResponsiveMode

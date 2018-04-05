@@ -77,8 +77,8 @@ enum HoverStatus {
   default = -1
 }
 
-const ScrollIdleDelay: number = 250 /* ms */;
-const TouchIdleDelay: number = 500; /* ms */
+const ScrollIdleDelay = 250 /* ms */;
+const TouchIdleDelay = 500; /* ms */
 
 // This is used to clear any pending autocomplete
 // text (used when autocomplete is true and allowFreeform is false)
