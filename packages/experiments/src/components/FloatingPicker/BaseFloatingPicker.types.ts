@@ -79,10 +79,6 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   onChange?: (item: T) => void;
 
   /**
-   * A callback that gets the rest of the results when a user clicks get more results.
-   */
-  onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
-  /**
    * ClassName for the picker.
    */
   className?: string;

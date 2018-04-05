@@ -385,46 +385,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  protected onGetMoreResults = (): void => {
-    this.setState(
-      {
-        isSearching: true
-      },
-      () => {
-        if (this.props.onGetMoreResults) {
-          let suggestions: T[] | PromiseLike<T[]> =
-            (this.props.onGetMoreResults as ((filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>))
-              (this.state.queryString, []);
-          let suggestionsArray: T[] = suggestions as T[];
-          let suggestionsPromiseLike: PromiseLike<
-            T[]
-            > = suggestions as PromiseLike<T[]>;
-
-          if (Array.isArray(suggestionsArray)) {
-            this.updateSuggestions(suggestionsArray);
-            this.setState({ isSearching: false });
-          } else if (suggestionsPromiseLike.then) {
-            suggestionsPromiseLike.then((newSuggestions: T[]) => {
-              this.updateSuggestions(newSuggestions);
-              this.setState({ isSearching: false });
-            });
-          }
-
-          // Focus back on the input element
-          if (this.props.inputElement) {
-            (this.props.inputElement as HTMLElement).focus();
-          }
-        } else {
-          this.setState({ isSearching: false });
-        }
-        this.setState({
-          moreSuggestionsAvailable: false,
-          isResultsFooterVisible: true
-        });
-      }
-    );
-  }
-
   private _onResolveSuggestions(updatedValue: string): void {
     let suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
 
