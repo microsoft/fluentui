@@ -100,7 +100,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const isLeft = type === PanelType.smallFixedNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
-    const headerTextId = id + '-headerText';
+    const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
@@ -122,11 +122,13 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       );
     }
 
+    const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
+
     return (
       <Layer { ...layerProps }>
         <Popup
           role='dialog'
-          ariaLabelledBy={ headerText && headerTextId }
+          ariaLabelledBy={ header ? headerTextId : undefined }
           onDismiss={ this.dismiss }
           className={
             css(
@@ -181,7 +183,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 { onRenderNavigation(this.props, this._onRenderNavigation) }
               </div>
               <div className={ css('ms-Panel-contentInner', styles.contentInner) } >
-                { onRenderHeader(this.props, this._onRenderHeader, headerTextId) }
+                { header }
                 { onRenderBody(this.props, this._onRenderBody) }
                 { onRenderFooter(this.props, this._onRenderFooter) }
               </div>
