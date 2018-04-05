@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 03 Apr 2018 10:16:05 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+
+## 5.29.1
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Patches
+
+- fix suggestion header/footer for more flexibile rendering
+- Align Tiles in last row with previous rows
 
 ## 5.29.0
 Tue, 03 Apr 2018 10:16:05 GMT

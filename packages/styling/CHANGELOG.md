@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+
+## 5.22.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- New pulsing beacon animation moved in from Coachmark for reuse.
 
 ## 5.21.0
 Sun, 25 Mar 2018 03:08:03 GMT
