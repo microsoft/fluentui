@@ -13,19 +13,33 @@ export const getStyles = (
     position: 'absolute',
     pointerEvents: 'auto',
     width: '100%',
-    zIndex: 1
+    zIndex: 1,
+    background: '#ffffff'
   };
+
+  const maxHeightStyles: IStyle = {
+    height: 'inherit',
+    maxHeight: 'inherit'
+  }
 
   return ({
     root: [
       'ms-ScrollablePane',
       {
+        WebkitOverflowScrolling: 'touch',
+        position: 'relative'
+      },
+      maxHeightStyles,
+      className
+    ],
+    contentContainer: [
+      'ms-ScrollablePane--contentContainer',
+      {
         overflowY: 'auto',
-        maxHeight: 'inherit',
-        height: 'inherit',
+        position: 'relative',
         WebkitOverflowScrolling: 'touch'
       },
-      className
+      maxHeightStyles
     ],
     stickyAbove: [
       {

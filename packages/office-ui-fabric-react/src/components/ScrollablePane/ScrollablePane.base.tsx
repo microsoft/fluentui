@@ -23,10 +23,15 @@ export interface IScrollablePaneContext {
   scrollablePane: PropTypes.Requireable<object>;
 }
 
+export interface IScrollablePaneState {
+  stickyTopHeight: number;
+  stickyBottomHeight: number;
+}
+
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
 @customizable('ScrollablePane', ['theme'])
-export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> implements IScrollablePane {
+export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
   public static childContextTypes: React.ValidationMap<IScrollablePaneContext> = {
     scrollablePane: PropTypes.object
   };
@@ -34,7 +39,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   private _root = createRef<HTMLDivElement>();
   private _stickyAboveRef = createRef<HTMLDivElement>();
   private _stickyBelowRef = createRef<HTMLDivElement>();
+  private _contentContainer = createRef<HTMLDivElement>();
   private _subscribers: Set<Function>;
+  private _stickies: Set<Sticky>;
   private _stickyAbove: Set<Sticky>;
   private _stickyBelow: Set<Sticky>;
 
@@ -43,6 +50,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     this._subscribers = new Set<Function>();
     this._stickyAbove = new Set<Sticky>();
     this._stickyBelow = new Set<Sticky>();
+    this._stickies = new Set<Sticky>();
+
+    this.state = {
+      stickyTopHeight: 0,
+      stickyBottomHeight: 0
+    };
   }
 
   public get root(): HTMLDivElement | null {
@@ -60,19 +73,17 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   public getChildContext() {
     return {
       scrollablePane: {
-        subscribe: this.subscribe,
+        subscribe: this.subscribe2,
         unsubscribe: this.unsubscribe,
-        addStickyHeader: this.addStickyHeader,
-        removeStickyHeader: this.removeStickyHeader,
-        addStickyFooter: this.addStickyFooter,
-        removeStickyFooter: this.removeStickyFooter,
+        addSticky: this.addSticky,
+        updateStickyAboveHeight: this.updateStickyAboveHeight,
         notifySubscribers: this.notifySubscribers
       }
     };
   }
 
   public componentDidMount() {
-    this._events.on(this._root.value, 'scroll', this.notifySubscribers);
+    this._events.on(this._contentContainer.value, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
   }
 
@@ -97,15 +108,37 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
       }
     );
 
+    let stickyTopStyle = {};
+    stickyTopStyle = {
+      height: this.state.stickyTopHeight + 'px'
+    };
+
+
+
+    let stickyBottomStyle = {};
+    stickyBottomStyle = {
+      height: this.state.stickyBottomHeight + 'px'
+    };
+
+
+
     return (
       <div
         { ...getNativeProps(this.props, divProperties) }
         ref={ this._root }
         className={ classNames.root }
       >
-        <div ref={ this._stickyAboveRef } className={ classNames.stickyAbove } />
-        <div ref={ this._stickyBelowRef } className={ classNames.stickyBelow } />
-        <div data-is-scrollable={ true }>
+        <div ref={ this._stickyAboveRef }
+          className={ classNames.stickyAbove }
+          style={ stickyTopStyle }
+        />
+        <div ref={ this._stickyBelowRef }
+          className={ classNames.stickyBelow }
+          style={ stickyBottomStyle }
+        />
+        <div ref={ this._contentContainer }
+          className={ classNames.contentContainer }
+          data-is-scrollable={ true }>
           { this.props.children }
         </div>
       </div>
@@ -116,7 +149,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     this._onWindowResize();
   }
 
-  public subscribe = (handler: (headerBound: ClientRect, footerBound: ClientRect) => void): void => {
+  // public subscribe = (handler: (headerBound: ClientRect, footerBound: ClientRect) => void): void => {
+  //   this._subscribers.add(handler);
+  // }
+
+  public subscribe2 = (handler: (container: HTMLElement) => void): void => {
     this._subscribers.add(handler);
   }
 
@@ -124,34 +161,45 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     this._subscribers.delete(handler);
   }
 
-  public addStickyHeader = (sticky: Sticky): void => {
-    this._addSticky(sticky, this._stickyAbove, () => {
-      if (this._stickyAboveRef.value) {
-        this._stickyAboveRef.value.appendChild(sticky.content);
+  public addSticky = (sticky: Sticky): void => {
+    console.log(sticky);
+    if (this.stickyAbove && sticky.stickyContentTop.value) {
+      this.stickyAbove.appendChild(sticky.stickyContentTop.value);
+    }
+    if (this.stickyBelow && sticky.stickyContentBottom.value) {
+      this.stickyBelow.appendChild(sticky.stickyContentBottom.value);
+    }
+    this._stickies.add(sticky);
+  }
+
+  public updateStickyAboveHeight = (): void => {
+    const stickyItems = this._stickies;
+
+    let stickyTopHeight: number = 0;
+    let stickyBottomHeight: number = 0;
+
+    stickyItems.forEach((sticky: Sticky) => {
+      if (sticky.state.isStickyTop && sticky.stickyContentTop && sticky.stickyContentTop.value) {
+        stickyTopHeight += sticky.stickyContentTop.value.clientHeight;
+      }
+      if (sticky.state.isStickyBottom && sticky.stickyContentBottom && sticky.stickyContentBottom.value) {
+        stickyTopHeight += sticky.stickyContentBottom.value.clientHeight;
       }
     });
-  }
 
-  public addStickyFooter = (sticky: Sticky): void => {
-    this._addSticky(sticky, this._stickyBelow, () => {
-      if (this._stickyBelowRef.value) {
-        this._stickyBelowRef.value.insertBefore(sticky.content, this._stickyBelowRef.value.firstChild);
-      }
+
+    this.setState({
+      stickyTopHeight: stickyTopHeight,
+      stickyBottomHeight: stickyBottomHeight
     });
-  }
-
-  public removeStickyHeader = (sticky: Sticky): void => {
-    this._removeSticky(sticky, this._stickyAbove, this._stickyAboveRef.value);
-  }
-
-  public removeStickyFooter = (sticky: Sticky): void => {
-    this._removeSticky(sticky, this._stickyBelow, this._stickyBelowRef.value);
   }
 
   public notifySubscribers = (sort?: boolean): void => {
     this._subscribers.forEach((handle) => {
-      if (this._stickyAboveRef.value && this._stickyBelowRef.value) {
-        handle(this._stickyAboveRef.value.getBoundingClientRect(), this._stickyBelowRef.value.getBoundingClientRect());
+      // if (this._stickyAboveRef.value && this._stickyBelowRef.value) {
+      if (this._contentContainer) {
+        // handle(this._stickyAboveRef.value.getBoundingClientRect(), this._stickyBelowRef.value.getBoundingClientRect());
+        handle(this._contentContainer.value);
       }
     });
     if (this._stickyAbove.size > 1) {
@@ -170,47 +218,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     return 0;
   }
 
-  private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, addStickyToContainer: () => void) {
-    if (!stickyList.has(sticky)) {
-      stickyList.add(sticky);
-      addStickyToContainer();
-      sticky.content.addEventListener('transitionend',
-        this._setPlaceholderHeights.bind(null, stickyList),
-        false);
-      if (sticky.props.stickyClassName) {
-        this._async.setTimeout(() => {
-          if (sticky.props.stickyClassName) {
-            sticky.content.children[0].classList.add(sticky.props.stickyClassName);
-          }
-        }, 1);
-      }
-      this._setPlaceholderHeights(stickyList);
-    }
-  }
-
-  private _removeSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement | null) {
-    if (container && stickyList.has(sticky)) {
-      sticky.content.removeEventListener('transitionend',
-        this._setPlaceholderHeights.bind(null, stickyList, container));
-      stickyList.delete(sticky);
-    }
-  }
-
-  private _onWindowResize() {
+  private _onWindowResize = (): void => {
     this._async.setTimeout(() => {
       this.notifySubscribers();
-      this._setPlaceholderHeights(this._stickyAbove);
-      this._setPlaceholderHeights(this._stickyBelow);
     }, 5);
   }
 
-  private _setPlaceholderHeights = (stickies: Set<Sticky>): void => {
-    stickies.forEach((sticky, idx) => {
-      sticky.setPlaceholderHeight(sticky.content.clientHeight);
-    });
-  }
-
-  private _sortStickies(stickyList: Set<Sticky>, container: HTMLElement | null): void {
+  private _sortStickies = (stickyList: Set<Sticky>, container: HTMLElement | null): void => {
     // No sorting needed if there is no container
     if (!container) {
       return;
@@ -225,11 +239,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     // Get number of elements that is already in order.
     let elementsInOrder = 0;
     while (elementsInOrder < container.children.length && elementsInOrder < stickyArr.length) {
-      if (container.children[elementsInOrder] === stickyArr[elementsInOrder].content) {
-        ++elementsInOrder;
-      } else {
-        break;
-      }
+      // if (container.children[elementsInOrder] === stickyArr[elementsInOrder].content) {
+      //   ++elementsInOrder;
+      // } else {
+      //   break;
+      // }
     }
     // Remove elements that is not in order if exist.
     for (let i = container.children.length - 1; i >= elementsInOrder; --i) {
@@ -237,7 +251,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     }
     // Append further elements if needed.
     for (let i = elementsInOrder; i < stickyArr.length; ++i) {
-      container.appendChild(stickyArr[i].content);
+      // container.appendChild(stickyArr[i].content);
     }
   }
 
