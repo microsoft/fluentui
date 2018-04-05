@@ -10,10 +10,13 @@ import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
-import './ExtendedPeoplePicker.Basic.Example.scss';
 import { SuggestionsStore, FloatingPeoplePicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps }
   from '../../SelectedItemsList';
+
+import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
+// tslint:disable-next-line:no-any
+const styles: any = stylesImport;
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -48,7 +51,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       headerItemsProps: [{
         renderItem: () => {
           return (
-            <div>Use this address: { this._picker
+            <div className={ styles.headerItem }>Use this address: { this._picker
               && this._picker.inputElement
               && this._picker.inputElement ? this._picker.inputElement.value : '' }</div>
           );
@@ -67,7 +70,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       {
         renderItem: () => {
           return (
-            <div>Suggested Contacts</div>
+            <div className={ styles.headerItem }>Suggested Contacts</div>
           );
         },
         shouldShow: this._shouldShowSuggestedContacts,
@@ -76,7 +79,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       footerItemsProps: [{
         renderItem: () => {
           return (
-            <div>No results</div>
+            <div className={ styles.footerItem }>No results</div>
           );
         },
         shouldShow: () => {
@@ -87,7 +90,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
         }
       },
       {
-        renderItem: () => { return (<div>Search for more</div>); },
+        renderItem: () => { return (<div className={ styles.footerItem }>Search for more</div>); },
         onExecute: () => { this.setState({ searchMoreAvailable: false }); },
         shouldShow: () => { return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts(); }
       }],
