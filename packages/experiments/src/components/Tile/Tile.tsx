@@ -455,29 +455,33 @@ function getShimmerTile(
       }) }
     >
       <div
-        className={ css('ms-shimmerTile-aboveNameplate', TileStyles.aboveNameplateShimmer) }
+        className={ css(
+          'ms-shimmerTile-aboveNameplate',
+          TileStyles.aboveNameplateShimmer,
+          !foreground && TileStyles.noShimmer
+        ) }
       />
       <div
-        className={ css('ms-shimmerTile-nameplate', TileStyles.nameplateShimmer) }
+        className={ css(
+          'ms-shimmerTile-nameplate',
+          TileStyles.nameplateShimmer
+        ) }
       >
         <div
-          className={ css('ms-shimmerTile-name', TileStyles.nameShimmer) }
+          className={ css(
+            'ms-shimmerTile-name',
+            TileStyles.nameShimmer,
+            !itemName && TileStyles.noShimmer
+          ) }
         />
         <div
-          className={ css('ms-shimmerTile-activity', TileStyles.activityShimmer) }
+          className={ css(
+            'ms-shimmerTile-activity',
+            TileStyles.activityShimmer,
+            !itemActivity && TileStyles.noShimmer
+          ) }
         />
       </div>
     </div>
   );
 }
-
-// {
-//   ariaLabel ? (
-//     <span
-//       id={ this._labelId }
-//       className={ css('ms-Tile-label', TileStylesModule.label) }
-//     >
-//       { ariaLabel }
-//     </span>
-//   ) : null
-// }

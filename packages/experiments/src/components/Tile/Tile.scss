@@ -422,6 +422,10 @@ $largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $l
 .shimmerTile {
   width: 100%;
   height: 100%;
+
+  .noShimmer {
+    background-color: $ms-color-white;
+  }
 }
 
 .aboveNameplateShimmer {
