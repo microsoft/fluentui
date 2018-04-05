@@ -15,7 +15,7 @@ const CELLS_PER_PAGE = 100;
 const MIN_ASPECT_RATIO = 0.5;
 const MAX_ASPECT_RATIO = 3;
 
-// const ROW_OF_SHIMMER_CELLS = 3;
+const ROW_OF_SHIMMER_CELLS = 3;
 
 export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
@@ -185,16 +185,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const data: IPageData<TItem> = page.data;
 
-    const isShimmer: boolean = items && items[0] && items[0].key === 'shimmerItem' ? true : false;
-    const shimmerCellSpacing: number = items ? items[0].grid.spacing : 0;
-    const shimmerCellWidth: number = isShimmer ? data.cellSizes[0].width : 0;
-    const shimmerCellsPerRow: number | undefined = isShimmer ?
-      Math.floor(data.pageWidths[0] / (shimmerCellSpacing + shimmerCellWidth))
-      : undefined;
-    const shimmerWrapperWidth: number | undefined = shimmerCellsPerRow ?
-      (shimmerCellsPerRow * shimmerCellWidth) + (shimmerCellSpacing * (shimmerCellsPerRow - 1)) :
-      undefined;
-
     const cells: ITileCell<TItem>[] = items || [];
 
     let grids: React.ReactNode[] = [];
@@ -206,26 +196,30 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     let currentRow: IRowData | undefined;
 
+    let shimmerWrapperWidth = 0;
+
     for (let i = 0; i < endIndex;) {
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
 
+      const isPlaceholder = grid.isPlaceholder;
+
       const renderedCells: React.ReactNode[] = [];
 
-      const width = data.pageWidths[isShimmer ? 0 : page.startIndex + i];
+      const width = data.pageWidths[page.startIndex + i];
 
       for (; i < endIndex && cells[i].grid === grid; i++) {
         // For each cell in the current grid.
         const cell = cells[i];
 
         const index = page.startIndex + i;
-        const cellAsFirstRow = data.rows[isShimmer ? 0 : index];
+        const cellAsFirstRow = data.rows[index];
 
         if (cellAsFirstRow) {
           currentRow = cellAsFirstRow;
         }
 
-        let finalSize = data.cellSizes[isShimmer ? 0 : index];
+        let finalSize = data.cellSizes[index];
 
         if (currentRow) {
           const {
@@ -247,7 +241,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           }
         }
 
-        renderedCells.push(
+        const renderedCell: JSX.Element = (
           <div
             key={ `${grid.key}-item-${cell.key}` }
             data-item-index={ index }
@@ -257,13 +251,24 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             // tslint:disable-next-line:jsx-ban-props
             style={
               {
-                ...this._onGetCellStyle(cell, currentRow, isShimmer)
+                ...this._onGetCellStyle(cell, currentRow)
               }
             }
           >
             { this._onRenderCell(cell, finalSize) }
           </div>
         );
+
+        if (cell.isPlaceholder && grid.mode !== TilesGridMode.none) {
+          let cellsPerRow = Math.floor(width / (grid.spacing + finalSize.width));
+          let totalPlaceholderItems = cellsPerRow * ROW_OF_SHIMMER_CELLS;
+          shimmerWrapperWidth = (cellsPerRow * finalSize.width) + (grid.spacing * (cellsPerRow - 1));
+          for (let j = 0; j < totalPlaceholderItems; j++) {
+            renderedCells.push(renderedCell);
+          }
+        } else {
+          renderedCells.push(renderedCell);
+        }
       }
 
       const isOpenStart = previousCell && previousCell.grid === grid;
@@ -271,7 +276,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       const margin = grid.spacing / 2;
 
-      grids.push(
+      const finalGrid: JSX.Element = (
         <div
           key={ grid.key }
           className={ css('ms-TilesList-grid', {
@@ -290,6 +295,19 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           { ...renderedCells }
         </div>
       );
+
+      grids.push(
+        isPlaceholder ?
+          (
+            <Shimmer
+              isBaseStyle={ true }
+              width={ shimmerWrapperWidth }
+            >
+              { finalGrid }
+            </Shimmer>
+          ) :
+          finalGrid
+      );
     }
 
     return (
@@ -297,15 +315,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         { ...divProps }
         className={ css(pageClassName, this._onGetPageClassName()) }
       >
-        { isShimmer ?
-          <Shimmer
-            isBaseStyle={ true }
-            width={ shimmerWrapperWidth }
-          >
-            { grids }
-          </Shimmer> :
-          grids
-        }
+        { grids }
       </div>
     );
   }
@@ -457,7 +467,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return TilesListStyles.listPage;
   }
 
-  private _onGetCellStyle = (item: ITileCell<TItem>, currentRow?: IRowData, isShimmer?: boolean): React.CSSProperties => {
+  private _onGetCellStyle = (item: ITileCell<TItem>, currentRow?: IRowData): React.CSSProperties => {
     const {
       grid: {
         mode: gridMode,
@@ -482,8 +492,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         `${width * maxScaleFactor}px` :
         // The item must not be scaled.
         `${width}px`,
-      margin: !isShimmer ? `${margin}px` : 0,
-      border: isShimmer ? `${margin}px solid white` : 'none'
+      margin: !item.isPlaceholder ? `${margin}px` : 0,
+      border: item.isPlaceholder ? `${margin}px solid white` : 'none'
     };
   }
 

@@ -177,7 +177,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
     if (shimmerPlaceholder) {
-      return getShimmerTile(foreground, itemName, itemActivity, tileSize);
+      return this._getShimmerTile();
     }
 
     return (
@@ -379,6 +379,53 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isModal: isModal
     });
   }
+
+  private _getShimmerTile(): JSX.Element {
+    const {
+      foreground,
+      itemName,
+      itemActivity,
+      tileSize = 'large'
+    } = this.props;
+
+    return (
+      <div
+        className={ css('ms-shimmerTile', TileStyles.shimmerTile, {
+          [`ms-shimmerTile--isSmall ${TileStyles.isSmallShimmer}`]: tileSize === 'small',
+          [`ms-shimmerTile--isLarge ${TileStyles.isLargeShimmer}`]: tileSize === 'large',
+        }) }
+      >
+        <div
+          className={ css(
+            'ms-shimmerTile-aboveNameplate',
+            TileStyles.aboveNameplateShimmer,
+            !foreground && TileStyles.noShimmer
+          ) }
+        />
+        <div
+          className={ css(
+            'ms-shimmerTile-nameplate',
+            TileStyles.nameplateShimmer
+          ) }
+        >
+          <div
+            className={ css(
+              'ms-shimmerTile-name',
+              TileStyles.nameShimmer,
+              !itemName && TileStyles.noShimmer
+            ) }
+          />
+          <div
+            className={ css(
+              'ms-shimmerTile-activity',
+              TileStyles.activityShimmer,
+              !itemActivity && TileStyles.noShimmer
+            ) }
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
 export interface ITileLayout {
@@ -437,51 +484,5 @@ export function renderTileWithLayout(tileElement: JSX.Element, props: Partial<IT
       { ...tileElement.props }
       { ...props }
     />
-  );
-}
-
-function getShimmerTile(
-  foreground: React.ReactNode | React.ReactNode[],
-  itemName: React.ReactNode | React.ReactNode[],
-  itemActivity: React.ReactNode | React.ReactNode[],
-  tileSize: TileSize = 'large'
-): JSX.Element {
-
-  return (
-    <div
-      className={ css('ms-shimmerTile', TileStyles.shimmerTile, {
-        [`ms-shimmerTile--isSmall ${TileStyles.isSmallShimmer}`]: tileSize === 'small',
-        [`ms-shimmerTile--isLarge ${TileStyles.isLargeShimmer}`]: tileSize === 'large',
-      }) }
-    >
-      <div
-        className={ css(
-          'ms-shimmerTile-aboveNameplate',
-          TileStyles.aboveNameplateShimmer,
-          !foreground && TileStyles.noShimmer
-        ) }
-      />
-      <div
-        className={ css(
-          'ms-shimmerTile-nameplate',
-          TileStyles.nameplateShimmer
-        ) }
-      >
-        <div
-          className={ css(
-            'ms-shimmerTile-name',
-            TileStyles.nameShimmer,
-            !itemName && TileStyles.noShimmer
-          ) }
-        />
-        <div
-          className={ css(
-            'ms-shimmerTile-activity',
-            TileStyles.activityShimmer,
-            !itemActivity && TileStyles.noShimmer
-          ) }
-        />
-      </div>
-    </div>
   );
 }
