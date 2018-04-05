@@ -186,7 +186,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
   private _onRenderShimmerCell(item: IExampleItem): JSX.Element {
     return (
       <Tile
-        shimmerPlaceholder={ true }
+        asPlaceholder={ true }
         foreground={ <div /> } // placeholder
         itemName={ item.name } // placeholder
         itemActivity={ item.key } // placeholder

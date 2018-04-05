@@ -164,7 +164,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       descriptionAriaLabel,
       href,
       onClick,
-      shimmerPlaceholder = false,
+      asPlaceholder = false,
       ...divProps
     } = this.props;
 
@@ -176,7 +176,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const isSelectable = !!selection && selectionIndex > -1;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
-    if (shimmerPlaceholder) {
+    if (asPlaceholder) {
       return this._getShimmerTile();
     }
 
@@ -380,7 +380,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     });
   }
 
-  private _getShimmerTile(): JSX.Element {
+  private _getShimmerTile = (): JSX.Element => {
     const {
       foreground,
       itemName,

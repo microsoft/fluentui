@@ -493,7 +493,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         // The item must not be scaled.
         `${width}px`,
       margin: !item.isPlaceholder ? `${margin}px` : 0,
-      border: item.isPlaceholder ? `${margin}px solid white` : 'none'
+      borderStyle: item.isPlaceholder ? 'solid' : 'none',
+      borderWidth: item.isPlaceholder ? `${margin}px` : 0
     };
   }
 
