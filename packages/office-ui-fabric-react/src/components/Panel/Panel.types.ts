@@ -176,7 +176,6 @@ export interface IPanelProps extends React.Props<Panel> {
   componentId?: string;
 }
 
-
 /**
  * Renderer function which takes an additional parameter, the ID to use for the element containing
  * the panel's title. This allows the `aria-labelledby` for the panel popup to work correctly.
