@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix phantom scrollbar in Panel popups in Firefox",
+      "comment": "Fixing bug dialog content does not grow fully to take up all the space provided by parent",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "miclo@microsoft.com"
+  "email": "serkani@microsoft.com"
 }
