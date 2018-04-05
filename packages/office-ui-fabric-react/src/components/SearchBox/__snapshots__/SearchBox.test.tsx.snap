@@ -74,7 +74,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     className=
         ms-SearchBox-field
         {
-          background-color: transparent;
+          background-color: #ffffff;
           border: none;
           box-shadow: none;
           box-sizing: border-box;
