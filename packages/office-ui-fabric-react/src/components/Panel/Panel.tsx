@@ -181,7 +181,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 { onRenderNavigation(this.props, this._onRenderNavigation) }
               </div>
               <div className={ css('ms-Panel-contentInner', styles.contentInner) } >
-                { onRenderHeader(this.props, this._onRenderHeader) }
+                { onRenderHeader(this.props, this._onRenderHeader, headerTextId) }
                 { onRenderBody(this.props, this._onRenderBody) }
                 { onRenderFooter(this.props, this._onRenderFooter) }
               </div>
@@ -252,7 +252,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     return null;
   }
 
-  private _onRenderHeader = (props: IPanelProps): JSX.Element | null => {
+  private _onRenderHeader = (
+    props: IPanelProps,
+    defaultRender?: (props?: IPanelProps) => JSX.Element | null,
+    headerTextId?: string | undefined
+  ): JSX.Element | null => {
     const {
       headerText,
       headerClassName = '',
@@ -263,7 +267,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         <div className={ css('ms-Panel-header', styles.header) }>
           <p
             className={ css('ms-Panel-headerText', styles.headerText, headerClassName) }
-            id={ this.state.id + '-headerText' }
+            id={ headerTextId }
             role='heading'
           >
             { headerText }

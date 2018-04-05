@@ -152,7 +152,7 @@ export interface IPanelProps extends React.Props<Panel> {
   /**
    * Optional custom renderer for header region. Replaces current title
    */
-  onRenderHeader?: IRenderFunction<IPanelProps>;
+  onRenderHeader?: IPanelHeaderRenderer;
 
   /**
    * Optional custom renderer for body region. Replaces any children passed into the component.
@@ -174,6 +174,25 @@ export interface IPanelProps extends React.Props<Panel> {
    * @deprecated
    */
   componentId?: string;
+}
+
+
+/**
+ * Renderer function which takes an additional parameter, the ID to use for the element containing
+ * the panel's title. This allows the aria-labelledby for the panel popup to work correctly.
+ */
+export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
+  /**
+   * @param props Props given to the panel
+   * @param defaultRender Default header renderer
+   * @param headerTextId Use this as the ID of the element containing the panel's title,
+   * because the panel popup uses this ID as its aria-labelledby.
+   */
+  (
+    props?: IPanelProps,
+    defaultRender?: (props?: IPanelProps) => JSX.Element | null,
+    headerTextId?: string | undefined
+  ): JSX.Element | null;
 }
 
 export enum PanelType {
