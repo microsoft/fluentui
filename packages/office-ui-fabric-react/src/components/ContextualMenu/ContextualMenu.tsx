@@ -35,8 +35,6 @@ import {
   VerticalDivider
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
-import { TouchEvent } from 'react';
-import { PageContent } from '../../../../example-app-base/lib-es2015/index';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;

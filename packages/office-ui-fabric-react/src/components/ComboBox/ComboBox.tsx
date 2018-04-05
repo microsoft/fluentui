@@ -31,7 +31,6 @@ import {
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
-import { TouchEvent, InputHTMLAttributes } from 'react';
 
 export interface IComboBoxState {
 
@@ -1664,7 +1663,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  private _onTouchStart: (ev: TouchEvent<HTMLInputElement>) => void = (ev) => {
+  private _onTouchStart: () => void = () => {
     if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
       this._handleTouchAndPointerEvent();
     }

@@ -16,7 +16,6 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { TouchEvent } from 'react';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -530,14 +529,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'data-is-focusable': false
     };
     return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
-  }
-
-  private _onSplitButtonClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
-    if (!this._processingTouch && this.props.onClick) {
-      this.props.onClick(ev);
-    } else {
-      this._onMenuClick(ev);
-    }
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
