@@ -125,7 +125,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontFamily: 'inherit',
         fontSize: 'inherit',
         color: palette.neutralPrimary,
-        backgroundColor: 'transparent',
+        backgroundColor: semanticColors.inputBackground,
         flex: '1 1 0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
