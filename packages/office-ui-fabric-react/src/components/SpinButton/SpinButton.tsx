@@ -188,17 +188,18 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             </Label>
           }
         </div> }
-        <div
-          className={ classNames.spinButtonWrapper }
-          title={ title && title }
-          aria-label={ ariaLabel && ariaLabel }
-          aria-posinset={ ariaPositionInSet }
-          aria-setsize={ ariaSetSize }
-        >
-          <KeytipHost keytipProps={ keytipProps }>
-            { (keytipAttributes: any): JSX.Element => (
+        <KeytipHost keytipProps={ keytipProps }>
+          { (keytipAttributes: any): JSX.Element => (
+            <div
+              className={ classNames.spinButtonWrapper }
+              title={ title && title }
+              aria-label={ ariaLabel && ariaLabel }
+              aria-posinset={ ariaPositionInSet }
+              aria-setsize={ ariaSetSize }
+              data-ktp-target={ keytipAttributes['data-ktp-target'] }
+            >
               <input
-                { ...keytipAttributes }
+                aria-describedby={ keytipAttributes['aria-describedby'] }
                 value={ value }
                 id={ this._inputId }
                 onChange={ this._onChange }
@@ -219,38 +220,39 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 disabled={ disabled }
                 aria-disabled={ disabled }
                 data-lpignore={ true }
+                data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
               />
-            ) }
-          </KeytipHost>
-          <span className={ classNames.arrowBox }>
-            <IconButton
-              styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
-              className={ 'ms-UpButton' }
-              checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
-              disabled={ disabled }
-              iconProps={ incrementButtonIcon }
-              onMouseDown={ this._onIncrementMouseDown }
-              onMouseLeave={ this._stop }
-              onMouseUp={ this._stop }
-              tabIndex={ -1 }
-              ariaLabel={ incrementButtonAriaLabel }
-              data-is-focusable={ false }
-            />
-            <IconButton
-              styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
-              className={ 'ms-DownButton' }
-              checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
-              disabled={ disabled }
-              iconProps={ decrementButtonIcon }
-              onMouseDown={ this._onDecrementMouseDown }
-              onMouseLeave={ this._stop }
-              onMouseUp={ this._stop }
-              tabIndex={ -1 }
-              ariaLabel={ decrementButtonAriaLabel }
-              data-is-focusable={ false }
-            />
-          </span>
-        </div>
+              <span className={ classNames.arrowBox }>
+                <IconButton
+                  styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
+                  className={ 'ms-UpButton' }
+                  checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
+                  disabled={ disabled }
+                  iconProps={ incrementButtonIcon }
+                  onMouseDown={ this._onIncrementMouseDown }
+                  onMouseLeave={ this._stop }
+                  onMouseUp={ this._stop }
+                  tabIndex={ -1 }
+                  ariaLabel={ incrementButtonAriaLabel }
+                  data-is-focusable={ false }
+                />
+                <IconButton
+                  styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
+                  className={ 'ms-DownButton' }
+                  checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
+                  disabled={ disabled }
+                  iconProps={ decrementButtonIcon }
+                  onMouseDown={ this._onDecrementMouseDown }
+                  onMouseLeave={ this._stop }
+                  onMouseUp={ this._stop }
+                  tabIndex={ -1 }
+                  ariaLabel={ decrementButtonAriaLabel }
+                  data-is-focusable={ false }
+                />
+              </span>
+            </div>
+          ) }
+        </KeytipHost>
         { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
           { label &&

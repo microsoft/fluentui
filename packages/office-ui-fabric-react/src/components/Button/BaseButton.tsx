@@ -504,7 +504,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes?: any): JSX.Element {
+  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
     let {
       menuIconProps
     } = this.props;

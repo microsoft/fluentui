@@ -100,7 +100,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         { (keytipAttributes: any): JSX.Element => (
           <button
             { ...inputProps }
-            { ...keytipAttributes }
+            data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
             { ...(checked !== undefined && { checked }) }
             { ...(defaultChecked !== undefined && { defaultChecked }) }
             disabled={ disabled }
@@ -122,7 +122,10 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
             aria-setsize={ ariaSetSize }
           >
             <label className={ this._classNames.label } htmlFor={ this._id } >
-              <div className={ this._classNames.checkbox }>
+              <div
+                className={ this._classNames.checkbox }
+                data-ktp-target={ keytipAttributes['data-ktp-target'] }
+              >
                 <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
               </div>
               { onRenderLabel(this.props, this._onRenderLabel) }

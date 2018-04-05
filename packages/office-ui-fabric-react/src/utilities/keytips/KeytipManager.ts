@@ -356,15 +356,23 @@ export class KeytipManager {
         this.showKeytips(this._delayedKeytipQueue);
         this._delayedKeytipQueue = [];
       }
-    }, 500);
+    }, 300);
   }
 
   private _removeKeytipFromQueue(keytipID: string) {
     const index = this._delayedKeytipQueue.indexOf(keytipID);
     if (index >= 0) {
+      // Remove keytip
       this._delayedKeytipQueue.splice(index, 1);
       // Clear timeout
       this._delayedQueueTimeout && this._async.clearTimeout(this._delayedQueueTimeout);
+      // Reset timeout
+      this._delayedQueueTimeout = this._async.setTimeout(() => {
+        if (this._delayedKeytipQueue.length) {
+          this.showKeytips(this._delayedKeytipQueue);
+          this._delayedKeytipQueue = [];
+        }
+      }, 300);
     }
   }
 

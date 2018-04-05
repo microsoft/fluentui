@@ -603,33 +603,38 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasIcons?: boolean): JSX.Element {
 
     return (
-      <div
-        ref={ (el: HTMLDivElement) =>
-          this._splitButtonContainers.set(item.key, el)
-        }
-        role={ 'button' }
-        aria-labelledby={ item.ariaLabel }
-        className={ classNames.splitContainerFocus }
-        aria-disabled={ this._isItemDisabled(item) }
-        aria-haspopup={ true }
-        aria-describedby={ item.ariaDescription }
-        aria-checked={ item.isChecked || item.checked }
-        aria-posinset={ focusableElementIndex + 1 }
-        aria-setsize={ totalItemCount }
-        onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
-        onClick={ this._executeItemClick.bind(this, item) }
-        tabIndex={ 0 }
-        data-is-focusable={ true }
-      >
-        <span
-          aria-hidden={ true }
-          className={ classNames.splitContainer }
-        >
-          { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-          { this._renderSplitDivider(item) }
-          { this._renderSplitIconButton(item, classNames, index) }
-        </span>
-      </div >
+      <KeytipHost keytipProps={ item.keytipProps }>
+        { (keytipAttributes: any): JSX.Element => (
+          <div
+            data-ktp-target={ keytipAttributes['data-ktp-target'] }
+            ref={ (el: HTMLDivElement) =>
+              this._splitButtonContainers.set(item.key, el)
+            }
+            role={ 'button' }
+            aria-labelledby={ item.ariaLabel }
+            className={ classNames.splitContainerFocus }
+            aria-disabled={ this._isItemDisabled(item) }
+            aria-haspopup={ true }
+            aria-describedby={ item.ariaDescription + + (keytipAttributes['aria-describedby'] || '') }
+            aria-checked={ item.isChecked || item.checked }
+            aria-posinset={ focusableElementIndex + 1 }
+            aria-setsize={ totalItemCount }
+            onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
+            onClick={ this._executeItemClick.bind(this, item) }
+            tabIndex={ 0 }
+            data-is-focusable={ true }
+          >
+            <span
+              aria-hidden={ true }
+              className={ classNames.splitContainer }
+            >
+              { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+              { this._renderSplitDivider(item) }
+              { this._renderSplitIconButton(item, classNames, index, keytipAttributes) }
+            </span>
+          </div >
+        ) }
+      </KeytipHost>
     );
   }
 
@@ -669,7 +674,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, keytipAttributes: any) {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const itemProps = {
       onClick: this._onSplitItemClick.bind(this, item),
@@ -686,7 +691,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseLeave: this._onMouseItemLeave.bind(this, item),
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item),
-        'data-is-focusable': false
+        'data-is-focusable': false,
+        'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target']
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );

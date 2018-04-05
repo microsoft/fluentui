@@ -61,6 +61,7 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
         { ...calloutProps }
         isBeakVisible={ false }
         doNotLayer={ true }
+        minPagePadding={ 0 }
         getStyles={ offset ? getCalloutOffsetStyles(offset) : getCalloutStyles }
         preventDismissOnScroll={ true }
         target={ keytipTarget }

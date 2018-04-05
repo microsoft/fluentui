@@ -22,7 +22,8 @@ export const keytipConfig: IKeytipConfig = {
           id: 'Button2Pivot1Keytip',
           content: 'R7',
           optionalProps: {
-            onExecute: btnExecute
+            onExecute: btnExecute,
+            offset: { x: 19, y: 17 }
           }
         },
         {
@@ -84,7 +85,8 @@ export const keytipConfig: IKeytipConfig = {
           id: 'Toggle1Pivot1Keytip',
           content: 'I',
           optionalProps: {
-            onExecute: btnExecute
+            onExecute: btnExecute,
+            offset: { x: 19, y: 17 }
           }
         },
       ]
@@ -150,7 +152,11 @@ export const keytipConfig: IKeytipConfig = {
             },
             {
               id: 'SubmenuKeytip5',
-              content: 'r'
+              content: 'R',
+              optionalProps: {
+                offset: { x: 17, y: 19 },
+                onExecute: btnExecute
+              }
             },
           ]
         }
