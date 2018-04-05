@@ -116,11 +116,12 @@ export function getTileCells(groups: IExampleGroup[], {
               width: 171 * item.aspectRatio,
               height: 171
             },
-          onRender: onRenderCell
+          onRender: onRenderCell,
+          isPlaceholder: shimmerMode
         };
       }),
       spacing: 8,
-      marginBottom: 40,
+      marginBottom: shimmerMode ? 0 : 40,
       minRowHeight: 171,
       mode: group.type === 'document' ?
         size === 'small' ?

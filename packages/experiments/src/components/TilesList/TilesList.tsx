@@ -15,7 +15,7 @@ const CELLS_PER_PAGE = 100;
 const MIN_ASPECT_RATIO = 0.5;
 const MAX_ASPECT_RATIO = 3;
 
-const ROW_OF_SHIMMER_CELLS = 3;
+// const ROW_OF_SHIMMER_CELLS = 3;
 
 export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
@@ -29,6 +29,7 @@ export interface ITileGrid {
   marginTop: number;
   marginBottom: number;
   key: string;
+  isPlaceholder?: boolean;
 }
 
 export interface ITileCell<TItem> {
@@ -36,6 +37,7 @@ export interface ITileCell<TItem> {
   content: TItem;
   aspectRatio: number;
   grid: ITileGrid;
+  isPlaceholder?: boolean;
   onRender(content: TItem, finalSize: { width: number; height: number; }): React.ReactNode | React.ReactNode[];
 }
 
@@ -193,11 +195,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       (shimmerCellsPerRow * shimmerCellWidth) + (shimmerCellSpacing * (shimmerCellsPerRow - 1)) :
       undefined;
 
-    const cells: ITileCell<TItem>[] = items ?
-      isShimmer ?
-        this._getCells(this.props.items, shimmerCellsPerRow) :
-        items :
-      [];
+    const cells: ITileCell<TItem>[] = items || [];
 
     let grids: React.ReactNode[] = [];
 
@@ -489,8 +487,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     };
   }
 
-  private _getCells(items: (ITilesGridSegment<TItem> | ITilesGridItem<TItem>)[],
-    shimmerCellsPerRow?: number | undefined): ITileCell<TItem>[] {
+  private _getCells(items: (ITilesGridSegment<TItem> | ITilesGridItem<TItem>)[]): ITileCell<TItem>[] {
     const cells: ITileCell<TItem>[] = [];
 
     for (const item of items) {
@@ -510,8 +507,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           mode: item.mode,
           key: `grid-${item.key}`,
           maxScaleFactor: maxScaleFactor,
-          marginTop: marginTop,
-          marginBottom: marginBottom
+          marginTop: item.isPlaceholder ? 0 : marginTop,
+          marginBottom: item.isPlaceholder ? 0 : marginBottom,
+          isPlaceholder: item.isPlaceholder
         };
 
         for (const gridItem of item.items) {
@@ -525,25 +523,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
               minAspectRatio,
               desiredSize && (desiredSize.width / desiredSize.height) || 1));
 
-          if (shimmerCellsPerRow) {
-            for (let i = 0; i < shimmerCellsPerRow * ROW_OF_SHIMMER_CELLS; i++) {
-              cells.push({
-                aspectRatio: aspectRatio,
-                content: gridItem.content,
-                onRender: gridItem.onRender,
-                grid: grid,
-                key: gridItem.key + i
-              });
-            }
-          } else {
-            cells.push({
-              aspectRatio: aspectRatio,
-              content: gridItem.content,
-              onRender: gridItem.onRender,
-              grid: grid,
-              key: gridItem.key
-            });
-          }
+          cells.push({
+            aspectRatio: aspectRatio,
+            content: gridItem.content,
+            onRender: gridItem.onRender,
+            grid: grid,
+            key: gridItem.key,
+            isPlaceholder: gridItem.isPlaceholder
+          });
         }
       } else {
         cells.push({
@@ -557,9 +544,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             key: `grid-header-${item.key}`,
             maxScaleFactor: 1,
             marginBottom: 0,
-            marginTop: 0
+            marginTop: 0,
+            isPlaceholder: item.isPlaceholder
           },
-          key: `header-${item.key}`
+          key: `header-${item.key}`,
+          isPlaceholder: item.isPlaceholder
         });
       }
     }

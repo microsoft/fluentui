@@ -118,7 +118,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
   private _onToggleIsDataLoaded = (checked: boolean): void => {
     const { isDataLoaded } = this.state;
     let { cells } = this.state;
-    console.log(cells);
+
     if (cells.length && !cells[0].isPlaceholder) {
       cells = getTileCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
