@@ -135,8 +135,9 @@ export const getStyles = (
             position: 'absolute',
             top: 0,
             left: 0,
-            boxShadow: `0 0 0 2px ${presenceColorBusy} inset`,
+            border: `${personaPresenceSize.border} solid ${presenceColorBusy}`,
             borderRadius: '50%',
+            boxSizing: 'border-box',
           },
 
           ':after': {
@@ -156,7 +157,7 @@ export const getStyles = (
 
             selectors: {
               ':before': {
-                boxShadow: `0 0 0 2px ${palette.contrastBlackDisabled} inset`,
+                borderColor: 'WindowText',
               },
 
               ':after': {
