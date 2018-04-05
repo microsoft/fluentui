@@ -192,7 +192,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
    */
   (
     props?: IPanelProps,
-    defaultRender?: (props?: IPanelProps) => JSX.Element | null,
+    defaultRender?: IPanelHeaderRenderer,
     headerTextId?: string | undefined
   ): JSX.Element | null;
 }
