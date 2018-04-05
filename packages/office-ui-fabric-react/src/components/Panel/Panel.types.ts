@@ -186,7 +186,8 @@ export interface IPanelProps extends React.Props<Panel> {
 export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   /**
    * @param props Props given to the panel
-   * @param defaultRender Default header renderer
+   * @param defaultRender Default header renderer. If using this renderer in code that does not
+   * assign `headerTextId` to an element elsewhere, it **must** be passed to this function.
    * @param headerTextId If provided, this **must** be used as the ID of an element containing the
    * panel's title, because the panel popup uses this ID as its aria-labelledby.
    */
