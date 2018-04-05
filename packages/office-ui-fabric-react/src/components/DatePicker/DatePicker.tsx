@@ -300,7 +300,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       onSelectDate(date);
     }
 
-    this._dismissDatePickerPopup();
+    this._calendarDismissed();
   }
 
   private _onCalloutPositioned = (): void => {
