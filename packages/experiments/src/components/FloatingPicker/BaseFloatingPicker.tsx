@@ -138,6 +138,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
+  public updateSuggestions(suggestions: T[]): void {
+    this.suggestionStore.updateSuggestions(suggestions);
+  }
+
   public render(): JSX.Element {
     let { className } = this.props;
     return (
@@ -197,10 +201,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected onSelectionChange(): void {
     this.forceUpdate();
-  }
-
-  protected updateSuggestions(suggestions: T[]): void {
-    this.suggestionStore.updateSuggestions(suggestions);
   }
 
   protected updateValue(updatedValue: string): void {
