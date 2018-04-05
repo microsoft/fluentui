@@ -164,7 +164,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       descriptionAriaLabel,
       href,
       onClick,
-      asPlaceholder = false,
+      renderPlaceholder = false,
       ...divProps
     } = this.props;
 
@@ -176,8 +176,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const isSelectable = !!selection && selectionIndex > -1;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
-    if (asPlaceholder) {
-      return this._getShimmerTile();
+    if (renderPlaceholder) {
+      return this._onRenderPlaceholderTile();
     }
 
     return (
@@ -380,7 +380,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     });
   }
 
-  private _getShimmerTile = (): JSX.Element => {
+  private _onRenderPlaceholderTile = (): JSX.Element => {
     const {
       foreground,
       itemName,
@@ -390,36 +390,36 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     return (
       <div
-        className={ css('ms-shimmerTile', TileStyles.shimmerTile, {
-          [`ms-shimmerTile--isSmall ${TileStyles.isSmallShimmer}`]: tileSize === 'small',
-          [`ms-shimmerTile--isLarge ${TileStyles.isLargeShimmer}`]: tileSize === 'large',
+        className={ css('ms-placeholderTile', TileStyles.placeholderTile, {
+          [`ms-placeholderTile--isSmall ${TileStyles.isSmallPlaceholder}`]: tileSize === 'small',
+          [`ms-placeholderTile--isLarge ${TileStyles.isLargePlaceholder}`]: tileSize === 'large',
         }) }
       >
         <div
           className={ css(
-            'ms-shimmerTile-aboveNameplate',
-            TileStyles.aboveNameplateShimmer,
-            !foreground && TileStyles.noShimmer
+            'ms-placeholderTile-aboveNameplate',
+            TileStyles.aboveNameplatePlaceholder,
+            !foreground && TileStyles.missingContent
           ) }
         />
         <div
           className={ css(
-            'ms-shimmerTile-nameplate',
-            TileStyles.nameplateShimmer
+            'ms-placeholderTile-nameplate',
+            TileStyles.nameplatePlaceholder
           ) }
         >
           <div
             className={ css(
-              'ms-shimmerTile-name',
-              TileStyles.nameShimmer,
-              !itemName && TileStyles.noShimmer
+              'ms-placeholderTile-name',
+              TileStyles.namePlaceholder,
+              !itemName && TileStyles.missingContent
             ) }
           />
           <div
             className={ css(
-              'ms-shimmerTile-activity',
-              TileStyles.activityShimmer,
-              !itemActivity && TileStyles.noShimmer
+              'ms-placeholderTile-activity',
+              TileStyles.activityPlaceholder,
+              !itemActivity && TileStyles.missingContent
             ) }
           />
         </div>
