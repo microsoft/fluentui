@@ -97,7 +97,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     });
 
     for (let i = min as number; i <= (max as number); i++) {
-      if (i != 0) {
+      if (i !== 0) {
         const ratingStarProps: IRatingStarProps = {
           fillPercentage: this._getFillingPercentage(i),
           disabled: disabled ? true : false,
