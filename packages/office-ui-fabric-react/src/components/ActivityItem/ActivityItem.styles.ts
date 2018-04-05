@@ -91,7 +91,7 @@ export const getStyles = memoizeFunction((
       height: DEFAULT_PERSONA_SIZE,
       fontSize: DEFAULT_ICON_SIZE,
       lineHeight: DEFAULT_ICON_SIZE,
-      marginTop: '3px',
+      marginTop: '3px'
     },
 
     isCompactIcon: {
