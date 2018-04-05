@@ -3,8 +3,7 @@ import * as React from 'react';
 import {
   TilesList,
   ITilesGridItem,
-  ITilesGridSegment,
-  ITileSize
+  ITilesGridSegment
 } from '../../TilesList';
 import {
   Tile
@@ -19,8 +18,7 @@ import {
   createGroup,
   createDocumentItems,
   getTileCells,
-  createShimmerGroup,
-  getShimmerCells
+  createShimmerGroups
 } from './ExampleHelpers';
 
 function createGroups(): IExampleGroup[] {
@@ -41,9 +39,9 @@ function createGroups(): IExampleGroup[] {
 
 const GROUPS = createGroups();
 
-const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[]; }) => group.items));
+const SHIMMER_GROUPS = createShimmerGroups('document', 0);
 
-const SHIMMER_GROUP = createShimmerGroup();
+const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[]; }) => group.items));
 
 declare class TilesListClass extends TilesList<IExampleItem> { }
 
@@ -71,8 +69,10 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
     this.state = {
       isModalSelection: this._selection.isModal(),
       isDataLoaded: false,
-      cells: getShimmerCells(SHIMMER_GROUP, {
-        onRenderCell: this._onRenderShimmerCell
+      cells: getTileCells(SHIMMER_GROUPS, {
+        onRenderCell: this._onRenderShimmerCell,
+        onRenderHeader: this._onRenderHeader,
+        shimmerMode: true
       })
     };
   }
@@ -118,10 +118,12 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
   private _onToggleIsDataLoaded = (checked: boolean): void => {
     const { isDataLoaded } = this.state;
     let { cells } = this.state;
-
-    if (cells.length && cells[0].key !== 'shimmerGroup') {
-      cells = getShimmerCells(SHIMMER_GROUP, {
-        onRenderCell: this._onRenderShimmerCell
+    console.log(cells);
+    if (cells.length && !cells[0].isPlaceholder) {
+      cells = getTileCells(SHIMMER_GROUPS, {
+        onRenderCell: this._onRenderShimmerCell,
+        onRenderHeader: this._onRenderHeader,
+        shimmerMode: true
       });
     } else {
       cells = getTileCells(GROUPS, {
