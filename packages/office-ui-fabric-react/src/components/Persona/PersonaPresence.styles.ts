@@ -7,7 +7,6 @@ import {
 import {
   FontSizes,
   HighContrastSelector,
-  HighContrastBWSelector,
 } from '../../Styling';
 import {
   personaPresenceSize,
@@ -23,7 +22,7 @@ export const getStyles = (
     theme,
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
 
   const size = sizeBoolean(props.size as PersonaSize);
   const presence = presenceBoolean(props.presence as PersonaPresence);
@@ -39,7 +38,6 @@ export const getStyles = (
     presence: [
       'ms-Persona-presence',
       {
-        backgroundColor: presenceColorAvailable,
         position: 'absolute',
         height: personaPresenceSize.size12,
         width: personaPresenceSize.size12,
@@ -55,7 +53,6 @@ export const getStyles = (
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Window',
-            color: 'Window',
             backgroundColor: 'WindowText',
           }
         }
@@ -86,14 +83,6 @@ export const getStyles = (
         borderWidth: '1.5px',
       },
 
-      (size.isSize24 || size.isSize28) && {
-        selectors: {
-          ':after': {
-            display: 'none',
-          }
-        }
-      },
-
       size.isSize72 && {
         height: personaPresenceSize.size20,
         width: personaPresenceSize.size20,
@@ -109,23 +98,18 @@ export const getStyles = (
 
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText',
+            backgroundColor: 'Highlight',
           },
         }
       },
 
       presence.isAway && {
         backgroundColor: presenceColorAway,
-
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'WindowText',
-          }
-        }
       },
 
-      presence.isBlocked && {
-        backgroundColor: palette.white,
+      presence.isBlocked && [
+        {
+          backgroundColor: semanticColors.bodyBackground,
 
         selectors: {
           ':before': {
@@ -140,124 +124,58 @@ export const getStyles = (
             boxSizing: 'border-box',
           },
 
-          ':after': {
+            // Only show :after at larger sizes
+            ':after': (size.isSize40 || size.isSize48 || size.isSize72 || size.isSize100) ? {
             content: '""',
             width: '100%',
-            height: '2px',
+              height: personaPresenceSize.border,
             backgroundColor: presenceColorBusy,
             transform: 'rotate(-45deg)',
             position: 'absolute',
             top: '40%',
             left: 0,
-          },
+            } : undefined,
 
           [HighContrastSelector]: {
-            color: palette.contrastBlackDisabled,
-            backgroundColor: 'Window',
+              backgroundColor: 'WindowText',
 
             selectors: {
               ':before': {
-                borderColor: 'WindowText',
+                  width: `calc(100% - ${personaPresenceSize.border})`,
+                  height: `calc(100% - ${personaPresenceSize.border})`,
+                  top: parseFloat(personaPresenceSize.border) / 2 + 'px',
+                  left: parseFloat(personaPresenceSize.border) / 2 + 'px',
+                  borderColor: 'Window',
               },
 
               ':after': {
-                backgroundColor: palette.contrastBlackDisabled,
-              }
+                  width: `calc(100% - ${parseFloat(personaPresenceSize.border) * 2}px)`,
+                  left: personaPresenceSize.border,
+                  backgroundColor: 'Window',
             }
-          },
-
-          [HighContrastBWSelector]: {
-            color: palette.contrastWhiteDisabled,
-
-            selectors: {
-              ':before': {
-                boxShadow: `0 0 0 2px ${palette.contrastWhiteDisabled} inset`,
-              },
-
-              ':after': {
-                backgroundColor: palette.contrastWhiteDisabled,
-              }
-            }
-          }
         }
       },
-
-      presence.isBlocked && size.isSize72 && {
-        selectors: {
-          ':after': {
-            top: '9px',
-          }
         }
       },
-
-      presence.isBlocked && size.isSize100 && {
-        selectors: {
-          ':after': {
-            top: '13px',
-          }
-        }
-      },
+      ],
 
       presence.isBusy && {
         backgroundColor: presenceColorBusy,
-
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: palette.contrastBlackDisabled,
           },
-
-          [HighContrastBWSelector]: {
-            backgroundColor: palette.contrastWhiteDisabled,
-          }
-        }
-      },
 
       presence.isDoNotDisturb && {
         backgroundColor: presenceColorDnd,
-
-        selectors: {
-          [HighContrastSelector]: {
-            color: palette.black,
-            backgroundColor: palette.contrastBlackDisabled,
-
-            selectors: {
-              ':before': {
-                backgroundColor: palette.contrastBlackDisabled,
-              },
-
-              ':after': {
-                backgroundColor: palette.contrastBlackDisabled,
-              },
-            }
-          },
-
-          [HighContrastBWSelector]: {
-            backgroundColor: palette.contrastWhiteDisabled,
-          }
-        }
       },
 
       presence.isOffline && {
         backgroundColor: presenceColorOffline,
-
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: palette.contrastBlackDisabled,
-            boxShadow: `0 0 0 1px ${palette.white} inset`,
-          },
-
-          [HighContrastBWSelector]: {
-            backgroundColor: palette.white,
-            boxShadow: `0 0 0 1px ${palette.black} inset`,
-          }
-        }
       },
     ],
 
     presenceIcon: [
       'ms-Persona-presenceIcon',
       {
-        color: palette.white,
+        color: semanticColors.bodyBackground,
         fontSize: '6px',
         lineHeight: personaPresenceSize.size12,
         verticalAlign: 'top',
