@@ -82,7 +82,7 @@ const TouchIdleDelay = 500; /* ms */
 
 // This is used to clear any pending autocomplete
 // text (used when autocomplete is true and allowFreeform is false)
-const ReadOnlyPendingAutoCompleteTimeout: number = 1000 /* ms */;
+const ReadOnlyPendingAutoCompleteTimeout = 1000 /* ms */;
 
 @customizable('ComboBox', ['theme'])
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
