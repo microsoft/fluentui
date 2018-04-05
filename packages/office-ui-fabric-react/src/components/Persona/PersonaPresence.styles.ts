@@ -23,7 +23,7 @@ export const getStyles = (
     theme,
   } = props;
 
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   const size = sizeBoolean(props.size as PersonaSize);
   const presence = presenceBoolean(props.presence as PersonaPresence);
@@ -47,7 +47,7 @@ export const getStyles = (
         top: 'auto',
         right: `-${personaPresenceSize.border}`,
         bottom: `-${personaPresenceSize.border}`,
-        border: `${personaPresenceSize.border} solid ${palette.white}`,
+        border: `${personaPresenceSize.border} solid ${semanticColors.bodyBackground}`,
         textAlign: 'center',
         boxSizing: 'content-box',
         MsHighContrastAdjust: 'none',
