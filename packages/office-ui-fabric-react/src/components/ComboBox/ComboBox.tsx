@@ -77,6 +77,13 @@ enum HoverStatus {
   default = -1
 }
 
+const ScrollIdleDelay: number = 250 /* ms */;
+const TouchIdleDelay: number = 500; /* ms */
+
+// This is used to clear any pending autocomplete
+// text (used when autocomplete is true and allowFreeform is false)
+const ReadOnlyPendingAutoCompleteTimeout: number = 1000 /* ms */;
+
 @customizable('ComboBox', ['theme'])
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
@@ -104,10 +111,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // The base id for the comboBox
   private _id: string;
 
-  // This is used to clear any pending autocomplete
-  // text (used when autocomplete is true and allowFreeform is false)
-  private readonly _readOnlyPendingAutoCompleteTimeout: number = 1000 /* ms */;
-
   // After a character is inserted when autocomplete is true and
   // allowFreeform is false, remember the task that will clear
   // the pending string of characters
@@ -125,15 +128,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _hasPendingValue: boolean;
 
-  private readonly _scrollIdleDelay: number = 250 /* ms */;
-
   private _scrollIdleTimeoutId: number | undefined;
 
   private _processingTouch: boolean;
 
   private _lastTouchTimeoutId: number | undefined;
-
-  private readonly _touchIdleDelay: number = 500; /* ms */
 
   // Determines if we should be setting
   // focus back to the input when the menu closes.
@@ -662,7 +661,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this._lastReadOnlyAutoCompleteChangeTimeoutId =
           this._async.setTimeout(
             () => { this._lastReadOnlyAutoCompleteChangeTimeoutId = undefined; },
-            this._readOnlyPendingAutoCompleteTimeout
+            ReadOnlyPendingAutoCompleteTimeout
           );
         return;
       }
@@ -1145,7 +1144,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, ScrollIdleDelay);
   }
 
   /**
@@ -1692,7 +1691,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
-    }, this._touchIdleDelay);
+    }, TouchIdleDelay);
   }
 
   /**

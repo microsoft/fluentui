@@ -70,6 +70,11 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
   });
 }
 
+
+const NavigationIdleDelay: number = 250 /* ms */;
+
+const TouchIdleDelay: number = 500; /* ms */
+
 @customizable('ContextualMenu', ['theme'])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -91,11 +96,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _target: Element | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
-  private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
-  private readonly _touchIdleDelay: number = 500; /* ms */
 
   private _splitButtonContainers: Map<string, HTMLDivElement>;
 
@@ -745,7 +748,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
-    }, this._touchIdleDelay);
+    }, TouchIdleDelay);
   }
 
   /**
@@ -800,7 +803,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._navigationIdleDelay);
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, NavigationIdleDelay);
   }
 
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
@@ -855,7 +858,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     const targetElement = ev.currentTarget as HTMLElement;
-    const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
+    const { subMenuHoverDelay: timeoutDuration = NavigationIdleDelay } = this.props;
 
     if (item.key === this.state.expandedMenuItemKey) {
       return;
@@ -880,7 +883,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._onItemSubMenuExpand(item,
           ((item.split && splitButtonContainer) ? splitButtonContainer : targetElement) as HTMLElement);
         this._enterTimerId = undefined;
-      }, this._navigationIdleDelay);
+      }, NavigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);

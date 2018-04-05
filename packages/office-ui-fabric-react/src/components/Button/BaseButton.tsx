@@ -26,6 +26,8 @@ export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
+const TouchIdleDelay = 500; /* ms */
+
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   private get _isSplitButton(): boolean {
@@ -51,7 +53,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _classNames: IButtonClassNames;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
-  private readonly _touchIdleDelay: number = 500;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -602,7 +603,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._lastTouchTimeoutId = this._async.setTimeout(() => {
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
-    }, this._touchIdleDelay);
+    }, TouchIdleDelay);
   }
 
   /**
