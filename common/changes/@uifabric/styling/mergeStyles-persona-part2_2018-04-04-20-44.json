@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Add some contrast colors to palette. Add HighContrastBWSelector. Add noWrap style set.",
+      "comment": "Add noWrap style set.",
       "type": "minor"
     }
   ],
