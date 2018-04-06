@@ -40,11 +40,7 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
     const { children, keytipProps, ariaDescribedBy } = this.props;
     let nativeKeytipProps: any = {};
     if (keytipProps) {
-      nativeKeytipProps = getNativeKeytipProps(keytipProps);
-      if (ariaDescribedBy) {
-        // Append our aria-describedby to the one given
-        nativeKeytipProps['aria-describedby'] = ariaDescribedBy + nativeKeytipProps['aria-describedby'];
-      }
+      nativeKeytipProps = getNativeKeytipProps(keytipProps, ariaDescribedBy);
     }
     return children(nativeKeytipProps);
   }

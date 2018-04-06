@@ -15,11 +15,6 @@ import { constructKeytipTargetFromSequences } from '../../utilities/keytips';
  * @extends {BaseComponent<IKeytipProps, {}}>}
  */
 export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
-  // tslint:disable-next-line:no-any
-  constructor(props: IKeytipProps, context: any) {
-    super(props, context);
-  }
-
   public render(): JSX.Element {
     const {
       keySequences,

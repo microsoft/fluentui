@@ -61,4 +61,14 @@ describe('getNativeKeytipProps', () => {
     expect(nativeProps['data-ktp-execute-target']).toEqual('ktp-x-a');
     expect(nativeProps['data-ktp-target']).toEqual('ktp-x-a');
   });
+
+  it('will prepend a given aria-describedby', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const ariaPrepend = 'my-prepend-string';
+    const nativeProps = getNativeKeytipProps(keytipProps, ariaPrepend);
+    expect(nativeProps['aria-describedby']).toEqual(ariaPrepend + ' ' + ktpLayerId + ' ' + ktpAriaSeparatorId + ' ktp-a');
+  });
 });
