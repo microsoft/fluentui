@@ -71,25 +71,20 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.props.children !== nextProps.children;
   }
 
-  private _getStickyStyles(isSticky: boolean): React.CSSProperties {
-    return {
-      visibility: isSticky ? 'visible' : 'hidden',
-      backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-    };
-  }
-
   public render(): JSX.Element {
     const { isStickyTop, isStickyBottom } = this.state;
 
     return (
       <div ref={ this.root }>
         <div
+          className={ this.props.stickyClassName }
           ref={ this.stickyContentTop }
           style={ this._getStickyStyles(isStickyTop) }
         >
           { this.props.children }
         </div>
         <div
+          className={ this.props.stickyClassName }
           ref={ this.stickyContentBottom }
           style={ this._getStickyStyles(isStickyBottom) }
         >
@@ -97,6 +92,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         </div>
         <div
           ref={ this.nonStickyContent }
+          className={ isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined }
           style={ {
             backgroundColor: this.props.stickyBackgroundColor
           } }>
@@ -104,6 +100,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         </div>
       </div>
     );
+  }
+
+  private _getStickyStyles = (isSticky: boolean): React.CSSProperties => {
+    return {
+      visibility: isSticky ? 'visible' : 'hidden',
+      backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
+    };
   }
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
@@ -127,7 +130,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyTop: canStickyTop && isStickyTop,
         isStickyBottom: canStickyBottom && isStickyBottom
       }, () => {
-        // Update ScrollablePane's Sticky bop and Sticky bottom heights
+        // Update ScrollablePane's Sticky top and Sticky bottom heights
         scrollablePane.updateStickyRefHeights();
       });
     }

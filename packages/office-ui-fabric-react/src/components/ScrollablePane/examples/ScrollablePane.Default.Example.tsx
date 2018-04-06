@@ -37,7 +37,6 @@ export class ScrollablePaneDefaultExample extends React.Component {
       <div key={ index }>
         <Sticky
           stickyPosition={ StickyPositionType.Both }
-          stickyClassName='largeFont'
           stickyBackgroundColor={ style }
         >
           <div className='sticky'>
