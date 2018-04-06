@@ -50,15 +50,15 @@ let _stylesheet: Stylesheet;
  * @public
  */
 export class Stylesheet {
-  private _styleElement: HTMLStyleElement;
-  private _rules: string[];
+  private _styleElement?: HTMLStyleElement;
+  private _rules: string[] = [];
   private _config: IStyleSheetConfig;
-  private _rulesToInsert: string[];
-  private _counter: number;
-  private _keyToClassName: { [key: string]: string };
+  private _rulesToInsert: string[] = [];
+  private _counter = 0;
+  private _keyToClassName: { [key: string]: string } = {};
 
   // tslint:disable-next-line:no-any
-  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } };
+  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } } = {};
 
   /**
    * Gets the singleton instance.
@@ -84,8 +84,6 @@ export class Stylesheet {
       defaultPrefix: 'css',
       ...config
     };
-
-    this.reset();
   }
 
   /**
