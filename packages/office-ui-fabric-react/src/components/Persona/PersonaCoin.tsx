@@ -56,7 +56,10 @@ export interface IPersonaState {
   isImageError?: boolean;
 }
 
-// Export themeable PersonaCoinBase
+/**
+ * PersonaCoin with no default styles. Use the `getStyles` API to add
+ * your own styles.
+ */
 @customizable('PersonaCoin', ['theme'])
 export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
   public static defaultProps: IPersonaCoinProps = {
@@ -217,7 +220,9 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   }
 }
 
-// Export styled PersonaCoin
+/**
+ * PersonaCoin is used to render an individual's avatar and presence.
+ */
 export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(
   PersonaCoinBase,
   getStyles

@@ -24,7 +24,10 @@ const presenceFontMaxSize = 20;
 
 const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>();
 
-// Export themeable PersonaPresenceBase
+/**
+ * PersonaPresence with no default styles. Use the `getStyles` API to add
+ * your own styles.
+ */
 @customizable('PersonaPresence', ['theme'])
 export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {
   constructor(props: IPersonaPresenceProps) {
@@ -102,7 +105,9 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   }
 }
 
-// Export Styled PersonaPresence
+/**
+ * PersonaPresence is used to render an individual's presence.
+ */
 export const PersonaPresence = styled<IPersonaPresenceProps, IPersonaPresenceStyleProps, IPersonaPresenceStyles>(
   PersonaPresenceBase,
   getStyles

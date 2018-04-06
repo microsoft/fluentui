@@ -20,6 +20,10 @@ import {
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
+/**
+ * Persona with no default styles.
+ * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ */
 @customizable('Persona', ['theme'])
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {

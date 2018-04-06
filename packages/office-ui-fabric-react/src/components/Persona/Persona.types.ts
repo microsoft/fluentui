@@ -121,7 +121,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   coinProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
-   * Theme provided by High Order Component.
+   * Theme provided by High-Order Component.
    */
   theme?: ITheme;
 }
@@ -166,7 +166,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
 
 export interface IPersonaStyleProps {
   /**
-   * Theme.
+   * Theme provided by High-Order Component.
    */
   theme: ITheme;
 
@@ -228,7 +228,7 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
 
 export interface IPersonaCoinStyleProps {
   /**
-   * Theme.
+   * Theme provided by High-Order Component.
    */
   theme: ITheme;
 
@@ -266,7 +266,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 
 export interface IPersonaPresenceStyleProps {
   /**
-   * Theme.
+   * Theme provided by High-Order Component.
    */
   theme: ITheme;
 
