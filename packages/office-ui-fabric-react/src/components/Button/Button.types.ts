@@ -237,7 +237,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuTriggerKeyCode?: KeyCodes | null;
 
   /**
-   * Keytip for this button
+   * Optional keytip for this button
    */
   keytipProps?: IKeytipProps;
 }

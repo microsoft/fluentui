@@ -78,7 +78,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       'selectedKey': 'multiSelect'
     });
 
-    const i = 0;
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
 
