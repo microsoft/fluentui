@@ -10,6 +10,7 @@ export * from './Calendar';
 export * from './Callout';
 export * from './Check';
 export * from './Checkbox';
+export * from './Chiclet';
 export * from './ChoiceGroup';
 export * from './ColorPicker';
 export * from './ComboBox';
