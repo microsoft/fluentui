@@ -20,8 +20,8 @@
     -o-transform: translateZ(0);
     transform: translateZ(0);
     will-change: font-size;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid $ms-color-black;
+    border-bottom: 1px solid $ms-color-black;
   }
 
   .largeFont {

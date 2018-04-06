@@ -15,7 +15,8 @@ export const getStyles = (
     width: '100%',
     zIndex: 1,
     background: '#ffffff',
-    overflow: 'hidden'
+    overflowY: 'hidden',
+    overflowX: 'auto'
   };
 
   const maxHeightStyles: IStyle = {
