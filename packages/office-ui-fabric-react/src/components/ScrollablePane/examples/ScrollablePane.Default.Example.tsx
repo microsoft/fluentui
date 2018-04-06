@@ -8,7 +8,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
 
   public render() {
     const contentAreas: JSX.Element[] = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       contentAreas.push(this._createContentArea(i));
     }
 

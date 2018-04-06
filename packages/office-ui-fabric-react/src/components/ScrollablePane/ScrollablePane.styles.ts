@@ -14,7 +14,8 @@ export const getStyles = (
     pointerEvents: 'auto',
     width: '100%',
     zIndex: 1,
-    background: '#ffffff'
+    background: '#ffffff',
+    overflow: 'hidden'
   };
 
   const maxHeightStyles: IStyle = {
@@ -60,6 +61,12 @@ export const getStyles = (
             borderTop: '1px solid WindowText'
           }
         }
+      },
+      AboveAndBelowStyles
+    ],
+    stickyBelowItems: [
+      {
+        bottom: 0
       },
       AboveAndBelowStyles
     ]
