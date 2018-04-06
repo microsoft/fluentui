@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "fix suggestion header/footer for more flexibile rendering",
-      "type": "patch"
+      "comment": "FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same ",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",

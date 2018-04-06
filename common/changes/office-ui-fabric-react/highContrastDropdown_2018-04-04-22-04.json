@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixing bug dialog content does not grow fully to take up all the space provided by parent",
+      "comment": "Dropdown: color of caretDown changed to highlighttext on focus",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "serkani@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

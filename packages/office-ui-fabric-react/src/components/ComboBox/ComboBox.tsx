@@ -1473,6 +1473,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           index = this.state.currentOptions.length;
         }
 
+        if ((ev.altKey || ev.metaKey) && isOpen) {
+          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+          return;
+        }
+
         // Go to the previous option
         this._setPendingInfoFromIndexAndDirection(index, SearchDirection.backward);
         break;
