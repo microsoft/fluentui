@@ -268,6 +268,30 @@ describe('ComboBox', () => {
     expect(wrapper.find('input').props().value).toEqual('Foo');
   });
 
+  it('Can change selected option with keyboard', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS2 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('Bar');
+  });
+
+  it('Can change selected option with keyboard', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='3'
+        options={ DEFAULT_OPTIONS2 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('One');
+  });
+
   it('Cannot insert text while disabled', () => {
     const wrapper = mount(
       <ComboBox
