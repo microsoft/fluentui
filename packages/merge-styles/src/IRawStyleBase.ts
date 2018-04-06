@@ -294,12 +294,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   backgroundBlendMode?: ICSSRule | string;
 
   /**
-   * The background-clip CSS property specifies if an element's
-   * background, whether a <color> or an <image>, extends
-   * underneath its border.
+   * The background-clip CSS property specifies if an element's background, whether a
+   * <color> or an <image>, extends underneath its border.
    *
-   * The `text` value is experimental and should not be used
-   * in production code.
+   * \* Does not work in IE
+   *
+   * \* The `text` value is experimental and should not be used in production code.
    */
   backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
 
