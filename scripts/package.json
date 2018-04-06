@@ -42,7 +42,7 @@
     "webpack": "^4.2.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.12",
-    "webpack-dev-server": "^3.1.1",
+    "webpack-dev-server-speedy": "^3.1.1",
     "webpack-notifier": "^1.6.0",
     "yargs": "^6.5.0"
   },

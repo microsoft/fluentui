@@ -94,12 +94,18 @@ module.exports = {
           rules: [
             {
               test: [/\.tsx?$/],
-              use: 'ts-loader',
+              use: {
+                loader: 'ts-loader',
+                options: {
+                  experimentalWatchApi: true,
+                  transpileOnly: true
+                }
+              },
               exclude: [
                 /node_modules/,
                 /\.scss.ts$/,
                 /\.test.tsx?$/
-              ]
+              ],
             },
             {
               test: /\.scss$/,
