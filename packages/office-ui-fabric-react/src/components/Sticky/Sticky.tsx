@@ -56,12 +56,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     scrollablePane.subscribe(this._onScrollEvent);
     scrollablePane.addSticky(this);
 
-
     this.context.scrollablePane.notifySubscribers(true);
   }
 
   public componentWillUnmount(): void {
-    const { isStickyTop, isStickyBottom } = this.state;
     const { scrollablePane } = this.context;
     scrollablePane.unsubscribe(this._onScrollEvent);
   }
@@ -182,17 +180,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     let currElem = this.root.value;
 
     if (currElem) {
-      if (currElem.offsetParent === container) {
-        return currElem.offsetTop;
+      while (currElem.offsetParent !== container) {
+        distance += currElem.offsetTop;
+        currElem = currElem.offsetParent as HTMLDivElement;
       }
 
-      if (currElem.offsetParent) {
-        do {
-          distance += currElem.offsetTop;
-          if (currElem) {
-            currElem = currElem.offsetParent as HTMLDivElement;
-          }
-        } while (currElem && currElem.offsetParent !== container)
+      if (currElem.offsetParent === container) {
+        distance += currElem.offsetTop;
       }
     }
     return distance;
