@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "mergeStyles: flipping RTL at runtime now resets the keys.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com"
+}
