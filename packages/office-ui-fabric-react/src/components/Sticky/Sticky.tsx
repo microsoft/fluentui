@@ -30,6 +30,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       subscribe: (handler: Function) => void;
       unsubscribe: (handler: Function) => void;
       addSticky: (sticky: Sticky) => void;
+      removeSticky: (sticky: Sticky) => void;
       updateStickyRefHeights: () => void;
       notifySubscribers: (sort?: boolean) => void;
     }
@@ -55,12 +56,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { scrollablePane } = this.context;
     scrollablePane.subscribe(this._onScrollEvent);
     scrollablePane.addSticky(this);
-
-    this.context.scrollablePane.notifySubscribers(true);
   }
 
   public componentWillUnmount(): void {
     const { scrollablePane } = this.context;
+
+    scrollablePane.removeSticky(this);
     scrollablePane.unsubscribe(this._onScrollEvent);
   }
 
@@ -130,7 +131,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     );
   }
 
-  private _onScrollEvent = (container: HTMLElement, footerStickyVisible: HTMLElement): void => {
+  private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
     const { scrollablePane } = this.context;
     const { stickyPosition } = this.props;
 
@@ -144,16 +145,16 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       const isStickyTop = distanceToStickTop <= container.scrollTop;
       let isStickyBottom: boolean = false;
 
-      // Can sticky bottom if the scrollablePane height is smaller than the sticky's distance from the top of the pane
-      if (container.clientHeight <= distanceFromTop) {
-        isStickyBottom = distanceFromTop - container.scrollTop > this._getStickyDistanceFromTopForFooter(container, footerStickyVisible);
+      // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
+      if (container.clientHeight - footerStickyContainer.offsetHeight <= distanceFromTop) {
+        isStickyBottom = distanceFromTop - container.scrollTop > this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
       this.setState({
         isStickyTop: canStickyTop && isStickyTop,
         isStickyBottom: canStickyBottom && isStickyBottom
+      }, () => {
+        scrollablePane.updateStickyRefHeights();
       });
-
-      scrollablePane.updateStickyRefHeights();
     }
   }
 

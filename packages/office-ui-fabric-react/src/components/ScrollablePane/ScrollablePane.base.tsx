@@ -81,6 +81,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         subscribe: this.subscribe,
         unsubscribe: this.unsubscribe,
         addSticky: this.addSticky,
+        removeSticky: this.removeSticky,
         updateStickyRefHeights: this.updateStickyRefHeights,
         notifySubscribers: this.notifySubscribers
       }
@@ -94,7 +95,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public componentWillUnmount() {
-    this._events.off(this._root.value);
+    this._events.off(this._contentContainer.value);
     this._events.off(window);
   }
 
@@ -175,6 +176,18 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (this.stickyBelow && sticky.stickyContentBottom.value) {
       this.stickyBelow.appendChild(sticky.stickyContentBottom.value);
     }
+    this.notifySubscribers();
+  }
+
+  public removeSticky = (sticky: Sticky): void => {
+    this._stickies.delete(sticky);
+    if (this.stickyAbove && sticky.stickyContentTop.value) {
+      this.stickyAbove.removeChild(sticky.stickyContentTop.value);
+    }
+    if (this.stickyBelow && sticky.stickyContentBottom.value) {
+      this.stickyBelow.removeChild(sticky.stickyContentBottom.value);
+    }
+    this.notifySubscribers();
   }
 
   public updateStickyRefHeights = (): void => {
@@ -198,7 +211,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     });
   }
 
-  public notifySubscribers = (sort?: boolean): void => {
+  public notifySubscribers = (): void => {
     this._subscribers.forEach((handle) => {
       if (this._contentContainer && this.stickyBelowContainer) {
         handle(this._contentContainer.value, this.stickyBelow);
