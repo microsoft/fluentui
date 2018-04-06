@@ -25,9 +25,9 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
             <ExampleCard title='Default' code={ ScrollablePaneDefaultExampleCode }>
               <ScrollablePaneDefaultExample />
             </ExampleCard>
-            {/* <ExampleCard title='DetailsList Locked Header' code={ ScrollablePaneDetailsListExampleCode }>
+            <ExampleCard title='DetailsList Locked Header' code={ ScrollablePaneDetailsListExampleCode }>
               <ScrollablePaneDetailsListExample />
-            </ExampleCard> */}
+            </ExampleCard>
           </div>
         }
         allowNativeProps={ true }

@@ -86,6 +86,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
 
     return (
       <ScrollablePane>
+        hello world <br />
         <Sticky>{ selectionDetails }</Sticky>
         <TextField
           label='Filter by name:'
