@@ -20,6 +20,10 @@ import {
   getTileCells,
   createShimmerGroups
 } from './ExampleHelpers';
+import * as TilesListExampleStylesModule from './TilesList.Example.scss';
+
+// tslint:disable-next-line:no-any
+const TilesListExampleStyles = TilesListExampleStylesModule as any;
 
 function createGroups(): IExampleGroup[] {
   let offset = 0;
@@ -71,7 +75,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
       isDataLoaded: false,
       cells: getTileCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
-        onRenderHeader: this._onRenderHeader,
+        onRenderHeader: this._onRenderShimmerHeader,
         shimmerMode: true
       })
     };
@@ -122,7 +126,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
     if (cells.length && !cells[0].isPlaceholder) {
       cells = getTileCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
-        onRenderHeader: this._onRenderHeader,
+        onRenderHeader: this._onRenderShimmerHeader,
         shimmerMode: true
       });
     } else {
@@ -197,6 +201,16 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
   private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
       <div role='presentation'>
+        <h3>{ item.name }</h3>
+      </div>
+    );
+  }
+
+  private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
+    return (
+      <div
+        className={ TilesListExampleStyles.shimmerHeader }
+      >
         <h3>{ item.name }</h3>
       </div>
     );

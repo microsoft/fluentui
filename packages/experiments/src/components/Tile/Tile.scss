@@ -7,10 +7,28 @@ $smallNameplateNameHeight: 12px;
 $largeNameplateActivityHeight: 20px;
 $smallNameplateActivityHeight: 20px;
 $foregroundMargin: 16px;
-$smallNameplateHeight: (($nameplatePadding * 2) + $smallNameplateNameHeight + $smallNameplateActivityHeight);
-$largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $largeNameplateActivityHeight);
 
-@mixin placeholderBorders($type, $divHeight: 0, $lineHeight: 0) {
+// Values given by designers for placeholder tile.
+// Large tile specs
+$largeSquareWidth: 96px;
+$largeSquareHeight: 96px;
+$largeLineHeight: 7px;
+$largeTopLineWidth: 144px;
+$largeBottomLineWidth: $largeSquareWidth;
+// Small tile specs
+$smallSquareWidth: 62px;
+$smallSquareHeight: 61px;
+$smallLineHeight: 5px;
+$smallTopLineWidth: 106px;
+$smallBottomLineWidth: $smallSquareWidth;
+
+
+$largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $largeNameplateActivityHeight);
+$smallNameplateHeight: (($nameplatePadding * 2) + $smallNameplateNameHeight + $smallNameplateActivityHeight);
+$largeAboveNameplateHeight: calc(100% - #{$largeNameplateHeight});
+$smallAboveNameplateHeight: calc(100% - #{$smallNameplateHeight});
+
+@mixin placeholderBorders($type, $divHeight, $lineHeight, $lineWidth) {
   @if $type == 'nameBorders' {
     border-style: solid;
     border-color: $ms-color-white;
@@ -19,12 +37,16 @@ $largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $l
   @if $type == 'activityBorders' {
     border-style: solid;
     border-color: $ms-color-white;
-    border-width: ($divHeight - $lineHeight) ($nameplatePadding * 4) $nameplatePadding ($nameplatePadding * 4);
+    border-width: ($divHeight - ($lineHeight * 2)) ($nameplatePadding * 4) ($nameplatePadding + $lineHeight) ($nameplatePadding * 4);
   }
   @if $type == 'aboveNameplateBorders' {
+    // border-top: ($divHeight - $lineHeight) solid $ms-color-white;
+    // border-right: 0 solid $ms-color-white;
+    // border-bottom: 0 solid $ms-color-white;
+    // border-left: 0 solid $ms-color-white;
     border-style: solid;
     border-color: $ms-color-white;
-    border-width: $foregroundMargin ($foregroundMargin * 2) 0;
+    border-width: (($divHeight) - ($lineHeight)) 0 0 0;
   }
 }
 
@@ -441,14 +463,15 @@ $largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $l
 }
 
 .aboveNameplatePlaceholder {
-  @include placeholderBorders('aboveNameplateBorders');
 
   .isLargePlaceholder & {
-    height: calc(100% - #{$largeNameplateHeight});
+    height: $largeAboveNameplateHeight;
+    @include placeholderBorders('aboveNameplateBorders', $largeAboveNameplateHeight, $largeSquareHeight, $largeSquareWidth);
   }
 
   .isSmallPlaceholder & {
-    height: calc(100% - #{$smallNameplateHeight});
+    height: $smallAboveNameplateHeight;
+    @include placeholderBorders('aboveNameplateBorders', $smallAboveNameplateHeight, $smallSquareHeight, $smallSquareWidth);
   }
 }
 
@@ -458,12 +481,12 @@ $largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $l
 
     .namePlaceholder {
       height: ($largeNameplateNameHeight + $nameplatePadding);
-      @include placeholderBorders('nameBorders', $largeNameplateNameHeight, $ms-font-size-m);
+      @include placeholderBorders('nameBorders', $largeNameplateNameHeight, $largeLineHeight, $largeTopLineWidth);
     }
 
     .activityPlaceholder {
       height: ($largeNameplateActivityHeight + $nameplatePadding);
-      @include placeholderBorders('activityBorders', $largeNameplateActivityHeight, $ms-font-size-s);
+      @include placeholderBorders('activityBorders', $largeNameplateActivityHeight, $largeLineHeight, $smallTopLineWidth);
     }
   }
 
@@ -472,12 +495,12 @@ $largeNameplateHeight: (($nameplatePadding * 2) + $largeNameplateNameHeight + $l
 
     .namePlaceholder {
       height: ($smallNameplateNameHeight + $nameplatePadding);
-      @include placeholderBorders('nameBorders', $smallNameplateActivityHeight, $ms-font-size-s);
+      @include placeholderBorders('nameBorders', $smallNameplateActivityHeight, $smallLineHeight, $largeBottomLineWidth);
     }
 
     .activityPlaceholder {
       height: ($smallNameplateActivityHeight + $nameplatePadding);
-      @include placeholderBorders('activityBorders', $smallNameplateActivityHeight, $ms-font-size-s);
+      @include placeholderBorders('activityBorders', $smallNameplateActivityHeight, $smallLineHeight, $smallBottomLineWidth);
     }
   }
 }

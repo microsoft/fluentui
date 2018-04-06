@@ -15,7 +15,7 @@ const CELLS_PER_PAGE = 100;
 const MIN_ASPECT_RATIO = 0.5;
 const MAX_ASPECT_RATIO = 3;
 
-const ROW_OF_SHIMMER_CELLS = 3;
+const ROW_OF_PLACEHOLDER_CELLS = 3;
 
 export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
@@ -241,33 +241,35 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           }
         }
 
-        const renderedCell: JSX.Element = (
-          <div
-            key={ `${grid.key}-item-${cell.key}` }
-            data-item-index={ index }
-            className={ css('ms-List-cell', this._onGetCellClassName(), {
-              [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
-            }) }
-            // tslint:disable-next-line:jsx-ban-props
-            style={
-              {
-                ...this._onGetCellStyle(cell, currentRow)
+        const renderedCell = (offset?: number): JSX.Element => {
+          return (
+            <div
+              key={ `${grid.key}-item-${cell.key}${offset ? '-' + offset : ''}` }
+              data-item-index={ index }
+              className={ css('ms-List-cell', this._onGetCellClassName(), {
+                [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
+              }) }
+              // tslint:disable-next-line:jsx-ban-props
+              style={
+                {
+                  ...this._onGetCellStyle(cell, currentRow)
+                }
               }
-            }
-          >
-            { this._onRenderCell(cell, finalSize) }
-          </div>
-        );
+            >
+              { this._onRenderCell(cell, finalSize) }
+            </div>
+          );
+        };
 
         if (cell.isPlaceholder && grid.mode !== TilesGridMode.none) {
           let cellsPerRow = Math.floor(width / (grid.spacing + finalSize.width));
-          let totalPlaceholderItems = cellsPerRow * ROW_OF_SHIMMER_CELLS;
+          let totalPlaceholderItems = cellsPerRow * ROW_OF_PLACEHOLDER_CELLS;
           shimmerWrapperWidth = (cellsPerRow * finalSize.width) + (grid.spacing * (cellsPerRow - 1));
           for (let j = 0; j < totalPlaceholderItems; j++) {
-            renderedCells.push(renderedCell);
+            renderedCells.push(renderedCell(j));
           }
         } else {
-          renderedCells.push(renderedCell);
+          renderedCells.push(renderedCell());
         }
       }
 
@@ -300,6 +302,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         isPlaceholder ?
           (
             <Shimmer
+              key={ i }
               isBaseStyle={ true }
               width={ shimmerWrapperWidth }
             >
