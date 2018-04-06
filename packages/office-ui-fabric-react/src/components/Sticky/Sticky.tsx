@@ -71,46 +71,27 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.props.children !== nextProps.children;
   }
 
+  private _getStickyStyles(isSticky: boolean): React.CSSProperties {
+    return {
+      visibility: isSticky ? 'visible' : 'hidden',
+      backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
+    };
+  }
+
   public render(): JSX.Element {
     const { isStickyTop, isStickyBottom } = this.state;
-
-    let isStickyStyleTop = {};
-    if (isStickyTop) {
-      isStickyStyleTop = {
-        opacity: '1',
-        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-      };
-    } else {
-      isStickyStyleTop = {
-        opacity: '0',
-        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-      };
-    }
-
-    let isStickyStyleBottom = {};
-    if (isStickyBottom) {
-      isStickyStyleBottom = {
-        opacity: '1',
-        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-      };
-    } else {
-      isStickyStyleBottom = {
-        opacity: '0',
-        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-      };
-    }
 
     return (
       <div ref={ this.root }>
         <div
           ref={ this.stickyContentTop }
-          style={ isStickyStyleTop }
+          style={ this._getStickyStyles(isStickyTop) }
         >
           { this.props.children }
         </div>
         <div
           ref={ this.stickyContentBottom }
-          style={ isStickyStyleBottom }
+          style={ this._getStickyStyles(isStickyBottom) }
         >
           { this.props.children }
         </div>
