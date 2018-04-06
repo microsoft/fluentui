@@ -14,7 +14,7 @@ import {
   ILinkStyleProps,
   ILinkStyles
 } from './Link.types';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
@@ -36,7 +36,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     const buttonNativeProps = getNativeProps(this.props, buttonProperties);
 
     const anchorElement: JSX.Element = (
-      <KeytipHost
+      <KeytipData
         keytipProps={ keytipProps }
         ariaDescribedBy={ (anchorNativeProps as any)['aria-describedby'] }
         disabled={ disabled }
@@ -54,11 +54,11 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
             { children }
           </a>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
 
     const buttonElement: JSX.Element = (
-      <KeytipHost
+      <KeytipData
         keytipProps={ keytipProps }
         ariaDescribedBy={ (buttonNativeProps as any)['aria-describedby'] }
         disabled={ disabled }
@@ -75,7 +75,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
             { children }
           </button>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
 
     return href ? anchorElement : buttonElement;

@@ -15,7 +15,7 @@ import {
   customizable
 } from '../../Utilities';
 import { getClassNames } from './Toggle.classNames';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface IToggleState {
   isChecked: boolean;
@@ -94,7 +94,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         ) }
 
         <div className={ classNames.container } >
-          <KeytipHost
+          <KeytipData
             keytipProps={ keytipProps }
             ariaDescribedBy={ (toggleNativeProps as any)['aria-describedby'] }
             disabled={ disabled }
@@ -118,7 +118,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
                 <div className={ classNames.thumb } />
               </button>
             ) }
-          </KeytipHost>
+          </KeytipData>
           { stateText && (
             <Label htmlFor={ this._id } className={ classNames.text }>{ stateText }</Label>
           ) }

@@ -31,7 +31,7 @@ import {
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface IComboBoxState {
 
@@ -314,7 +314,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
-        <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
+        <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               data-ktp-target={ keytipAttributes['data-ktp-target'] }
@@ -367,7 +367,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               />
             </div>
           ) }
-        </KeytipHost>
+        </KeytipData>
         { isOpen && (
           (onRenderContainer as any)({
             ...this.props,

@@ -3,7 +3,7 @@ import { BaseComponent, IRenderComponent } from '../../Utilities';
 import { IKeytipProps } from './Keytip.types';
 import { getNativeKeytipProps, registerKeytip, unregisterKeytip, updateKeytip } from '../../utilities/keytips';
 
-export interface IKeytipHostProps {
+export interface IKeytipDataProps {
   keytipProps?: IKeytipProps;
   ariaDescribedBy?: string;
   disabled?: boolean;
@@ -13,10 +13,10 @@ export interface IKeytipHostProps {
  * A small element to help the target component correctly read out its aria-describedby for its Keytip
  *
  * @export
- * @class KeytipHost
- * @extends {BaseComponent<IKeytipProps, {}}>}
+ * @class KeytipData
+ * @extends {BaseComponent<IKeytipDataProps & IRenderComponent<{}>, {}>}
  */
-export class KeytipHost extends BaseComponent<IKeytipHostProps & IRenderComponent<{}>, {}> {
+export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponent<{}>, {}> {
   private _uniqueId: string;
 
   public componentDidMount() {

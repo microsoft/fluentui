@@ -1,3 +1,3 @@
 export * from './Keytip';
 export * from './Keytip.types';
-export * from './KeytipHost';
+export * from './KeytipData';

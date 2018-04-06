@@ -21,7 +21,7 @@ import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 import { createRef } from '../../Utilities';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 const styles: any = stylesImport;
 
@@ -207,7 +207,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       // Allow the disabled property on anchor elements for commandbar
       const nativeProps = getNativeProps(item, anchorProperties.concat(['disabled']));
       command = (
-        <KeytipHost
+        <KeytipData
           keytipProps={ item.keytipProps }
           ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
           disabled={ item.disabled }
@@ -239,12 +239,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               ) }
             </a>
           ) }
-        </KeytipHost>
+        </KeytipData>
       );
     } else if (isLink) {
       const nativeProps = getNativeProps(item, buttonProperties);
       command = (
-        <KeytipHost
+        <KeytipData
           keytipProps={ item.keytipProps }
           ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
           disabled={ item.disabled }
@@ -280,13 +280,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             </button>
           )
           }
-        </KeytipHost >
+        </KeytipData >
       );
     } else {
       // Allow the disabled property on div elements for commandbar
       const nativeProps = getNativeProps(item, divProperties.concat(['disabled']));
       command = (
-        <KeytipHost
+        <KeytipData
           keytipProps={ item.keytipProps }
           ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
           disabled={ item.disabled }
@@ -317,7 +317,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               ) }
             </div>
           ) }
-        </KeytipHost>
+        </KeytipData>
       );
     }
 

@@ -27,7 +27,7 @@ import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
 import { getTheme } from '../../Styling';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -158,7 +158,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         { label && (
           <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._dropdownLabel } required={ required }>{ label }</Label>
         ) }
-        <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
+        <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               { ...keytipAttributes }
@@ -213,7 +213,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               </span>
             </div>
           ) }
-        </KeytipHost>
+        </KeytipData>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }

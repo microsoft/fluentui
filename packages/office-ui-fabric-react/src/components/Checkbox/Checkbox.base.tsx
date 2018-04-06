@@ -15,7 +15,7 @@ import {
   getClassNames
 } from './Checkbox.classNames';
 import { getStyles } from './Checkbox.styles';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
@@ -96,7 +96,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       );
 
     return (
-      <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
+      <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
         { (keytipAttributes: any): JSX.Element => (
           <button
             { ...inputProps }
@@ -132,7 +132,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
             </label>
           </button>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
   }
 

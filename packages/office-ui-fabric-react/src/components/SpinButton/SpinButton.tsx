@@ -18,7 +18,7 @@ import {
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -188,7 +188,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             </Label>
           }
         </div> }
-        <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
+        <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               className={ classNames.spinButtonWrapper }
@@ -252,7 +252,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               </span>
             </div>
           ) }
-        </KeytipHost>
+        </KeytipData>
         { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
           { label &&

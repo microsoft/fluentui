@@ -35,7 +35,7 @@ import {
   VerticalDivider
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -487,7 +487,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <div>
-        <KeytipHost
+        <KeytipData
           keytipProps={ item.keytipProps }
           ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
           disabled={ disabled }
@@ -522,7 +522,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
               />
             </a>
           ) }
-        </KeytipHost>
+        </KeytipData>
       </div>);
   }
 
@@ -578,7 +578,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     return (
-      <KeytipHost
+      <KeytipData
         keytipProps={ item.keytipProps }
         ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }
         disabled={ this._isItemDisabled(item) }
@@ -598,7 +598,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             />
           </button>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
   }
 
@@ -612,7 +612,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasIcons?: boolean): JSX.Element {
 
     return (
-      <KeytipHost keytipProps={ item.keytipProps } disabled={ this._isItemDisabled(item) }>
+      <KeytipData keytipProps={ item.keytipProps } disabled={ this._isItemDisabled(item) }>
         { (keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }
@@ -643,7 +643,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             </span>
           </div >
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
   }
 

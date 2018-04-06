@@ -16,7 +16,7 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -233,7 +233,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     const Content = (
       // If we're making a split button, we won't put the keytip here
-      <KeytipHost
+      <KeytipData
         keytipProps={ !this._isSplitButton ? keytipProps : undefined }
         ariaDescribedBy={ (buttonProps as any)['aria-describedby'] }
         disabled={ disabled }
@@ -250,7 +250,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             </div>
           </Tag>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
 
     if (menuProps && menuProps.doNotLayer) {
@@ -462,7 +462,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const ariaDescribedBy = buttonProps.ariaDescription || '';
 
     return (
-      <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
+      <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
         { (keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }
@@ -489,7 +489,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             </span>
           </div>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
   }
 
