@@ -100,12 +100,12 @@ export interface IRatingStyleProps {
 }
 
 export interface IRatingStyles {
-  ratingStar?: IStyle;
-  ratingStarBack?: IStyle;
-  ratingStarFront?: IStyle;
-  ratingButton?: IStyle;
-  rootIsSmall?: IStyle;
-  rootIsLarge?: IStyle;
-  labelText?: IStyle;
-  ratingFocusZone?: IStyle;
+  ratingStar: IStyle;
+  ratingStarBack: IStyle;
+  ratingStarFront: IStyle;
+  ratingButton: IStyle;
+  rootIsSmall: IStyle;
+  rootIsLarge: IStyle;
+  labelText: IStyle;
+  ratingFocusZone: IStyle;
 }
