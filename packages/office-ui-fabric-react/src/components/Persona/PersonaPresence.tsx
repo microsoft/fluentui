@@ -25,8 +25,8 @@ const presenceFontMaxSize = 20;
 const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>();
 
 /**
- * PersonaPresence with no default styles. Use the `getStyles` API to add
- * your own styles.
+ * PersonaPresence with no default styles.
+ * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
 @customizable('PersonaPresence', ['theme'])
 export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {

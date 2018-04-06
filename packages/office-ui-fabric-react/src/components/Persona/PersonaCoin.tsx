@@ -57,8 +57,8 @@ export interface IPersonaState {
 }
 
 /**
- * PersonaCoin with no default styles. Use the `getStyles` API to add
- * your own styles.
+ * PersonaCoin with no default styles.
+ * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
 @customizable('PersonaCoin', ['theme'])
 export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
