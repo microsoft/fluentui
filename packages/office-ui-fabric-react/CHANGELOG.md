@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Apr 2018 10:25:55 GMT and should not be manually modified.
+
+## 5.79.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- Stops event propagation of Esc keypress on DatePicker
 
 ## 5.79.0
 Thu, 05 Apr 2018 10:15:39 GMT
