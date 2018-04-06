@@ -201,7 +201,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public notifySubscribers = (sort?: boolean): void => {
     this._subscribers.forEach((handle) => {
       if (this._contentContainer && this.stickyBelowContainer) {
-        handle(this._contentContainer.value, this.stickyBelowContainer, this.stickyBelow);
+        handle(this._contentContainer.value, this.stickyBelow);
       }
     });
   }

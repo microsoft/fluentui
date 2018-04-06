@@ -85,12 +85,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (isStickyTop) {
       isStickyStyleTop = {
         opacity: '1',
-        backgroundColor: this.props.stickyBackgroundColor
+        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
       };
     } else {
       isStickyStyleTop = {
         opacity: '0',
-        backgroundColor: this.props.stickyBackgroundColor
+        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
       };
     }
 
@@ -98,12 +98,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (isStickyBottom) {
       isStickyStyleBottom = {
         opacity: '1',
-        backgroundColor: this.props.stickyBackgroundColor
+        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
       };
     } else {
       isStickyStyleBottom = {
         opacity: '0',
-        backgroundColor: this.props.stickyBackgroundColor
+        backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
       };
     }
 
@@ -132,7 +132,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     );
   }
 
-  private _onScrollEvent = (container: HTMLElement, bottomStickyContainer: HTMLElement, footerStickyVisible: HTMLElement): void => {
+  private _onScrollEvent = (container: HTMLElement, footerStickyVisible: HTMLElement): void => {
     const { scrollablePane } = this.context;
     const { stickyPosition } = this.props;
 

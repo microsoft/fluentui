@@ -89,14 +89,17 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
       <ScrollablePane>
         hello world <br />
         <Sticky stickyPosition={ StickyPositionType.Header }>{ selectionDetails }</Sticky>
+        <br />
         <TextField
           label='Filter by name:'
           // tslint:disable-next-line:jsx-no-lambda
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
         />
+        <br />
         <Sticky stickyPosition={ StickyPositionType.Header }>
           <h1 style={ { margin: '0px' } }>Item List</h1>
         </Sticky>
+        <br />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
             items={ items }
