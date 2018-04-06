@@ -207,7 +207,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       // Allow the disabled property on anchor elements for commandbar
       const nativeProps = getNativeProps(item, anchorProperties.concat(['disabled']));
       command = (
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+        <KeytipHost
+          keytipProps={ item.keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ item.disabled }
+        >
           { (keytipAttributes: any): JSX.Element => (
             <a
               { ...nativeProps }
@@ -240,7 +244,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     } else if (isLink) {
       const nativeProps = getNativeProps(item, buttonProperties);
       command = (
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+        <KeytipHost
+          keytipProps={ item.keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ item.disabled }
+        >
           { (keytipAttributes: any): JSX.Element => (
             <button
               { ...nativeProps }
@@ -278,7 +286,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       // Allow the disabled property on div elements for commandbar
       const nativeProps = getNativeProps(item, divProperties.concat(['disabled']));
       command = (
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+        <KeytipHost
+          keytipProps={ item.keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ item.disabled }
+        >
           { (keytipAttributes: any): JSX.Element => (
             <div
               { ...nativeProps }

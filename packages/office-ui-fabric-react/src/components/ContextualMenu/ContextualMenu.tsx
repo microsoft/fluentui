@@ -483,10 +483,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
     const nativeProps = getNativeProps(item, anchorProperties);
+    const disabled = this._isItemDisabled(item);
 
     return (
       <div>
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+        <KeytipHost
+          keytipProps={ item.keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ disabled }
+        >
           { (keytipAttributes: any): JSX.Element => (
             <a
               { ...nativeProps }
@@ -573,7 +578,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     return (
-      <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }>
+      <KeytipHost
+        keytipProps={ item.keytipProps }
+        ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }
+        disabled={ this._isItemDisabled(item) }
+      >
         { (keytipAttributes: any): JSX.Element => (
           <button
             { ...buttonNativeProperties }
@@ -603,7 +612,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasIcons?: boolean): JSX.Element {
 
     return (
-      <KeytipHost keytipProps={ item.keytipProps }>
+      <KeytipHost keytipProps={ item.keytipProps } disabled={ this._isItemDisabled(item) }>
         { (keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }

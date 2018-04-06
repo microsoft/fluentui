@@ -137,16 +137,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/icon'
         },
         {
-          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
-          key: 'Keytip',
-          name: 'Keytip',
-          url: '#/examples/keytip'
-        },
-        {
-          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
-          key: 'KeytipLayer',
-          name: 'KeytipLayer',
-          url: '#/examples/keytipLayer'
+          component: require<any>('../components/Keytip/KeytipsPage').KeytipsPage,
+          key: 'Keytips',
+          name: 'Keytips',
+          url: '#/examples/keytips'
         },
         {
           component: require<any>('../components/Label/LabelPage').LabelPage,

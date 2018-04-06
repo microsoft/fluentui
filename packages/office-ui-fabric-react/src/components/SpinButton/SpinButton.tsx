@@ -188,7 +188,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             </Label>
           }
         </div> }
-        <KeytipHost keytipProps={ keytipProps }>
+        <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               className={ classNames.spinButtonWrapper }

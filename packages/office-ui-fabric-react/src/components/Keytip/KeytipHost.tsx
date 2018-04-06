@@ -6,6 +6,7 @@ import { getNativeKeytipProps, registerKeytip, unregisterKeytip, updateKeytip } 
 export interface IKeytipHostProps {
   keytipProps?: IKeytipProps;
   ariaDescribedBy?: string;
+  disabled?: boolean;
 }
 
 /**
@@ -21,18 +22,18 @@ export class KeytipHost extends BaseComponent<IKeytipHostProps & IRenderComponen
   public componentDidMount() {
     // Register Keytip in KeytipManager
     if (this.props.keytipProps) {
-      this._uniqueId = registerKeytip({ ...this.props.keytipProps });
+      this._uniqueId = registerKeytip(this._getKeytipProps());
     }
   }
 
   public componentWillUnmount() {
     // Unregister Keytip in KeytipManager
-    this.props.keytipProps && unregisterKeytip({ ...this.props.keytipProps }, this._uniqueId);
+    this.props.keytipProps && unregisterKeytip(this._getKeytipProps(), this._uniqueId);
   }
 
   public componentDidUpdate() {
     // Update Keytip in KeytipManager
-    this.props.keytipProps && updateKeytip({ ...this.props.keytipProps }, this._uniqueId);
+    this.props.keytipProps && updateKeytip(this._getKeytipProps(), this._uniqueId);
   }
 
   public render(): JSX.Element {
@@ -46,5 +47,12 @@ export class KeytipHost extends BaseComponent<IKeytipHostProps & IRenderComponen
       }
     }
     return children(nativeKeytipProps);
+  }
+
+  private _getKeytipProps(): IKeytipProps {
+    return {
+      disabled: this.props.disabled,
+      ...this.props.keytipProps!,
+    };
   }
 }

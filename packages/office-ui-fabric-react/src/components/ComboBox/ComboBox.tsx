@@ -314,7 +314,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
-        <KeytipHost keytipProps={ keytipProps }>
+        <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               data-ktp-target={ keytipAttributes['data-ktp-target'] }

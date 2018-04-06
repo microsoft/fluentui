@@ -158,7 +158,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         { label && (
           <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._dropdownLabel } required={ required }>{ label }</Label>
         ) }
-        <KeytipHost keytipProps={ keytipProps }>
+        <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               { ...keytipAttributes }

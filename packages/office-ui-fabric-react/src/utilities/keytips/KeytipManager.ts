@@ -213,9 +213,13 @@ export class KeytipManager {
    */
   public exitKeytipMode(): void {
     this.keytipTree.currentKeytip = undefined;
+    this.currentSequence = '';
     // Hide all keytips
     this.showKeytips([]);
     this._layer && this._layer.exitKeytipMode();
+    // Reset the delayed keytips if any
+    this._delayedQueueTimeout && this._async.clearTimeout(this._delayedQueueTimeout);
+    this._delayedKeytipQueue = [];
   }
 
   /**

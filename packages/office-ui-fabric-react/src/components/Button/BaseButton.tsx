@@ -227,12 +227,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
+      disabled,
       keytipProps
     } = props;
 
     const Content = (
       // If we're making a split button, we won't put the keytip here
-      <KeytipHost keytipProps={ !this._isSplitButton ? keytipProps : undefined } ariaDescribedBy={ (buttonProps as any)['aria-describedby'] }>
+      <KeytipHost
+        keytipProps={ !this._isSplitButton ? keytipProps : undefined }
+        ariaDescribedBy={ (buttonProps as any)['aria-describedby'] }
+        disabled={ disabled }
+      >
         { (keytipAttributes: any): JSX.Element => (
           <Tag { ...buttonProps } { ...keytipAttributes }>
             <div className={ this._classNames.flexContainer } >
@@ -457,7 +462,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const ariaDescribedBy = buttonProps.ariaDescription || '';
 
     return (
-      <KeytipHost keytipProps={ keytipProps }>
+      <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
         { (keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }

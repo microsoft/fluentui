@@ -96,7 +96,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       );
 
     return (
-      <KeytipHost keytipProps={ keytipProps }>
+      <KeytipHost keytipProps={ keytipProps } disabled={ disabled }>
         { (keytipAttributes: any): JSX.Element => (
           <button
             { ...inputProps }
