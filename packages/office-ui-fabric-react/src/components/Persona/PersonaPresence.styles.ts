@@ -48,6 +48,7 @@ export const getStyles = (
         border: `${personaPresenceSize.border} solid ${semanticColors.bodyBackground}`,
         textAlign: 'center',
         boxSizing: 'content-box',
+        backgroundClip: 'content-box',
         MsHighContrastAdjust: 'none',
 
         selectors: {
@@ -111,57 +112,57 @@ export const getStyles = (
         {
           backgroundColor: semanticColors.bodyBackground,
 
-        selectors: {
-          ':before': {
-            content: '""',
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            border: `${personaPresenceSize.border} solid ${presenceColorBusy}`,
-            borderRadius: '50%',
-            boxSizing: 'border-box',
-          },
+          selectors: {
+            ':before': {
+              content: '""',
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              border: `${personaPresenceSize.border} solid ${presenceColorBusy}`,
+              borderRadius: '50%',
+              boxSizing: 'border-box',
+            },
 
             // Only show :after at larger sizes
             ':after': (size.isSize40 || size.isSize48 || size.isSize72 || size.isSize100) ? {
-            content: '""',
-            width: '100%',
+              content: '""',
+              width: '100%',
               height: personaPresenceSize.border,
-            backgroundColor: presenceColorBusy,
-            transform: 'rotate(-45deg)',
-            position: 'absolute',
-            top: '40%',
-            left: 0,
+              backgroundColor: presenceColorBusy,
+              transform: 'translateY(-50%) rotate(-45deg)',
+              position: 'absolute',
+              top: '50%',
+              left: 0,
             } : undefined,
 
-          [HighContrastSelector]: {
+            [HighContrastSelector]: {
               backgroundColor: 'WindowText',
 
-            selectors: {
-              ':before': {
+              selectors: {
+                ':before': {
                   width: `calc(100% - ${personaPresenceSize.border})`,
                   height: `calc(100% - ${personaPresenceSize.border})`,
                   top: parseFloat(personaPresenceSize.border) / 2 + 'px',
                   left: parseFloat(personaPresenceSize.border) / 2 + 'px',
                   borderColor: 'Window',
-              },
+                },
 
-              ':after': {
+                ':after': {
                   width: `calc(100% - ${parseFloat(personaPresenceSize.border) * 2}px)`,
                   left: personaPresenceSize.border,
                   backgroundColor: 'Window',
-            }
-        }
-      },
-        }
-      },
+                }
+              }
+            },
+          }
+        },
       ],
 
       presence.isBusy && {
         backgroundColor: presenceColorBusy,
-          },
+      },
 
       presence.isDoNotDisturb && {
         backgroundColor: presenceColorDnd,
