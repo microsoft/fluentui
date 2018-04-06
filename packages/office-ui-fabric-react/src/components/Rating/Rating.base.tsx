@@ -53,18 +53,23 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     max: 5
   };
   private _id: string;
+  private _min: number;
   private _labelId: string;
-  private _classNames: {[key in keyof IRatingStyles]: string };
+  private _classNames: { [key in keyof IRatingStyles]: string };
 
   constructor(props: IRatingProps) {
     super(props);
 
+    this._id = getId('Rating');
+    this._min = this.props.allowZeroStars ? 0 : 1;
+    if (this.props.min !== undefined && this.props.min !== 1) {
+      this._min = this.props.min;
+    }
+    this._labelId = getId('RatingLabel');
+
     this.state = {
       rating: this._getInitialValue(props)
     };
-
-    this._id = getId('Rating');
-    this._labelId = getId('RatingLabel');
   }
 
   public componentWillReceiveProps(nextProps: IRatingProps) {
@@ -80,11 +85,11 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const stars = [];
     const starIds = [];
     const {
+      allowZeroStars,
       disabled,
       getAriaLabel,
       getStyles,
       max,
-      min,
       rating,
       readOnly,
       size,
@@ -96,7 +101,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       theme: theme!
     });
 
-    for (let i = min as number; i <= (max as number); i++) {
+    for (let i = this._min as number; i <= (max as number); i++) {
       if (i !== 0) {
         const ratingStarProps: IRatingStarProps = {
           fillPercentage: this._getFillingPercentage(i),
@@ -176,7 +181,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
   private _getInitialValue(props: IRatingProps) {
     if (typeof props.rating === 'undefined') {
-      return props.min;
+      return this._min;
     }
 
     if (props.rating === null) {
@@ -187,7 +192,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getClampedRating(rating: number): number {
-    return Math.min(Math.max(rating, this.props.min as number), this.props.max as number);
+    return Math.min(Math.max(rating, this._min as number), this.props.max as number);
   }
 
   private _getFillingPercentage(starPosition: number): number {
