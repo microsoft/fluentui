@@ -12,6 +12,7 @@ export interface IExampleCardProps {
   isRightAligned?: boolean;
   dos?: JSX.Element;
   donts?: JSX.Element;
+  isScrollable?: boolean;
 }
 
 export interface IExampleCardState {
@@ -31,7 +32,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   }
 
   public render(): JSX.Element {
-    const { title, code, children, isRightAligned } = this.props;
+    const { title, code, children, isRightAligned = false, isScrollable = true } = this.props;
     const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
@@ -66,9 +67,12 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         <div
           className={ css(
             'ExampleCard-example',
-            isRightAligned && ' is-right-aligned'
+            {
+              'is-right-aligned': isRightAligned,
+              'is-scrollable': isScrollable
+            }
           ) }
-          data-is-scrollable='true'
+          data-is-scrollable={ isScrollable }
         >
           { children }
         </div>

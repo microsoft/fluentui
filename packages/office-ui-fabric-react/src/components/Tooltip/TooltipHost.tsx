@@ -30,6 +30,10 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   // The wrapping div that gets the hover events
   private _tooltipHost = createRef<HTMLDivElement>();
 
+  // The ID of the setTimeout that will eventually close the tooltip if the
+  // the tooltip isn't hovered over.
+  private _closingTimer = -1;
+
   // Constructor
   constructor(props: ITooltipHostProps) {
     super(props);
@@ -70,7 +74,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._hideTooltip } }
         onMouseEnter={ this._onTooltipMouseEnter }
-        onMouseLeave={ this._hideTooltip }
+        onMouseLeave={ this._onTooltipMouseLeave }
         aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
@@ -82,7 +86,12 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             targetElement={ this._getTargetElement() }
             directionalHint={ directionalHint }
             directionalHintForRTL={ directionalHintForRTL }
-            calloutProps={ assign(calloutProps, { onDismiss: this._hideTooltip }) }
+            calloutProps={ assign(calloutProps, {
+              onMouseEnter: this._onTooltipMouseEnter,
+              onMouseLeave: this._onTooltipMouseLeave
+            }) }
+            onMouseEnter={ this._onTooltipMouseEnter }
+            onMouseLeave={ this._onTooltipMouseLeave }
             { ...getNativeProps(this.props, divProperties) }
             { ...tooltipProps }
           />
@@ -125,16 +134,37 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     }
 
     this._toggleTooltip(true);
+    this._clearDismissTimer();
   }
 
+  // Hide Tooltip
+  private _onTooltipMouseLeave = (ev: any): void => {
+    if (this.props.closeDelay) {
+      this._clearDismissTimer();
+
+      this._closingTimer = this._async.setTimeout(() => {
+        this._toggleTooltip(false);
+      }, this.props.closeDelay);
+    } else {
+      this._toggleTooltip(false);
+    }
+  }
+
+  private _clearDismissTimer = (): void => {
+    this._async.clearTimeout(this._closingTimer);
+  }
+
+  // Hide Tooltip
   private _hideTooltip = (): void => {
     this._toggleTooltip(false);
   }
 
   private _toggleTooltip(isTooltipVisible: boolean) {
-    this.setState(
-      { isTooltipVisible },
-      () => this.props.onTooltipToggle &&
-        this.props.onTooltipToggle(this.state.isTooltipVisible));
+    if (this.state.isTooltipVisible !== isTooltipVisible) {
+      this.setState(
+        { isTooltipVisible },
+        () => this.props.onTooltipToggle &&
+          this.props.onTooltipToggle(this.state.isTooltipVisible));
+    }
   }
 }

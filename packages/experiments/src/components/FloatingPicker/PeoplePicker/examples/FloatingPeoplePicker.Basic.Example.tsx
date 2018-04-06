@@ -24,7 +24,7 @@ export interface IPeoplePickerExampleState {
 
 export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: IBaseFloatingPicker;
-  private _inputElement: HTMLDivElement;
+  private _inputElement: HTMLInputElement;
 
   constructor(props: {}) {
     super(props);
@@ -47,7 +47,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   public render(): JSX.Element {
     return (
       <div>
-        <div className='ms-SearchBoxSmallExample' ref={ (ref: HTMLDivElement) => this._inputElement = ref }>
+        <div className='ms-SearchBoxSmallExample' ref={ this._setInputElementRef }>
           <SearchBox
             placeholder={ 'Search a person' }
             onChange={ this._onSearchChange }
@@ -63,6 +63,12 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _onFocus = (): void => {
     if (this._picker) {
       this._picker.showPicker();
+    }
+  }
+
+  private _setInputElementRef = (ref: HTMLDivElement) => {
+    if (ref && ref.getElementsByClassName('ms-SearchBox-field').length > 0) {
+      this._inputElement = ref.getElementsByClassName('ms-SearchBox-field')[0] as HTMLInputElement;
     }
   }
 
