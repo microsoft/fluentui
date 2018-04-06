@@ -43,14 +43,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _contentContainer = createRef<HTMLDivElement>();
   private _subscribers: Set<Function>;
   private _stickies: Set<Sticky>;
-  private _stickyAbove: Set<Sticky>;
-  private _stickyBelow: Set<Sticky>;
 
   constructor(props: IScrollablePaneProps) {
     super(props);
     this._subscribers = new Set<Function>();
-    this._stickyAbove = new Set<Sticky>();
-    this._stickyBelow = new Set<Sticky>();
     this._stickies = new Set<Sticky>();
 
     this.state = {
@@ -113,22 +109,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public render() {
     const { className, theme, getStyles } = this.props;
+    const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(getStyles!,
       {
         theme: theme!,
         className
       }
     );
-
-    let stickyTopStyle = {};
-    stickyTopStyle = {
-      height: this.state.stickyTopHeight + 'px'
-    };
-
-    let stickyBottomStyle = {};
-    stickyBottomStyle = {
-      height: this.state.stickyBottomHeight + 'px'
-    };
 
     return (
       <div
@@ -139,12 +126,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         <div
           ref={ this._stickyAboveRef }
           className={ classNames.stickyAbove }
-          style={ stickyTopStyle }
+          style={ this._getStickyContainerStyle(stickyTopHeight) }
         />
         <div
           ref={ this._stickyBelowContainerRef }
           className={ classNames.stickyBelow }
-          style={ stickyBottomStyle }
+          style={ this._getStickyContainerStyle(stickyBottomHeight) }
         >
           <div
             ref={ this._stickyBelowRef }
@@ -236,5 +223,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this._async.setTimeout(() => {
       this.notifySubscribers();
     }, 5);
+  }
+
+  private _getStickyContainerStyle = (height: number): React.CSSProperties => {
+    return {
+      height: height
+    }
   }
 }
