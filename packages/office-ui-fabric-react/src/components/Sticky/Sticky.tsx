@@ -60,14 +60,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public componentWillUnmount(): void {
     const { scrollablePane } = this.context;
-
-    scrollablePane.removeSticky(this);
     scrollablePane.unsubscribe(this._onScrollEvent);
-  }
-
-  public componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState): void {
-    const { isStickyTop, isStickyBottom } = this.state;
-    const { scrollablePane } = this.context;
+    scrollablePane.removeSticky(this);
   }
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
@@ -137,8 +131,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     if (container && this.root.value && this.nonStickyContent.value && this.stickyContentBottom.value) {
       const distanceFromTop = this._getNonStickyDistanceFromTop(container);
-      const stickyDistanceFromTop = this._getStickyDistanceFromTop();
-      const distanceToStickTop = distanceFromTop - stickyDistanceFromTop;
+      const distanceToStickTop = distanceFromTop - this._getStickyDistanceFromTop();
       const canStickyTop = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Header;
       const canStickyBottom = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Footer;
 
@@ -153,6 +146,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyTop: canStickyTop && isStickyTop,
         isStickyBottom: canStickyBottom && isStickyBottom
       }, () => {
+        // Update ScrollablePane's Sticky bop and Sticky bottom heights
         scrollablePane.updateStickyRefHeights();
       });
     }

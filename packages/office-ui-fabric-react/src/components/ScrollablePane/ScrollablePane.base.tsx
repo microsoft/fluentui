@@ -104,6 +104,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (this._root.value && initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
       this._root.value.scrollTop = initialScrollPosition;
     }
+
+    // Update subscribers when DOM changes
+    if (prevProps.children !== this.props.children) {
+      this.notifySubscribers();
+    }
   }
 
   public render() {
