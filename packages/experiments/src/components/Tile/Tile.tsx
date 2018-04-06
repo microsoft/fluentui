@@ -14,7 +14,7 @@ const SignalStyles: any = SignalStylesModule;
 const CheckStyles: any = CheckStylesModule;
 // tslint:enable:no-any
 
-const enum TileLayoutValues {
+export const enum TileLayoutValues {
   nameplatePadding = 12,
   largeNameplateNameHeight = 15,
   smallNameplateNameHeight = 12,
