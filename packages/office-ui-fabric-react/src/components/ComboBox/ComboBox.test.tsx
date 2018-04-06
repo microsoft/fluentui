@@ -268,7 +268,7 @@ describe('ComboBox', () => {
     expect(wrapper.find('input').props().value).toEqual('Foo');
   });
 
-  it('Can change selected option with keyboard', () => {
+  it('Can change selected option with keyboard, looping from top to bottom', () => {
     const wrapper = mount(
       <ComboBox
         label='testgroup'
@@ -280,7 +280,7 @@ describe('ComboBox', () => {
     expect(wrapper.find('input').props().value).toEqual('Bar');
   });
 
-  it('Can change selected option with keyboard', () => {
+  it('Can change selected option with keyboard, looping from bottom to top', () => {
     const wrapper = mount(
       <ComboBox
         label='testgroup'
