@@ -14,7 +14,6 @@ export class ScrollablePaneDefaultExample extends React.Component {
 
     return (
       <ScrollablePane className='scrollablePaneDefaultExample'>
-        testing testing <br />
         { contentAreas.map((ele) => {
           return ele;
         }) }
