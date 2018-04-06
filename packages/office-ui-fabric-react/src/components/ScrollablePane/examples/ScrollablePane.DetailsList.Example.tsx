@@ -20,7 +20,8 @@ import {
   ScrollablePane
 } from 'office-ui-fabric-react/lib/ScrollablePane';
 import {
-  Sticky
+  Sticky,
+  StickyPositionType
 } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
@@ -87,13 +88,13 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
     return (
       <ScrollablePane>
         hello world <br />
-        <Sticky>{ selectionDetails }</Sticky>
+        <Sticky stickyPosition={ StickyPositionType.Header }>{ selectionDetails }</Sticky>
         <TextField
           label='Filter by name:'
           // tslint:disable-next-line:jsx-no-lambda
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
         />
-        <Sticky>
+        <Sticky stickyPosition={ StickyPositionType.Header }>
           <h1 style={ { margin: '0px' } }>Item List</h1>
         </Sticky>
         <MarqueeSelection selection={ this._selection }>
@@ -105,7 +106,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
             onRenderDetailsHeader={
               // tslint:disable-next-line:jsx-no-lambda
               (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => (
-                <Sticky>
+                <Sticky stickyPosition={ StickyPositionType.Header }>
                   { defaultRender({
                     ...detailsHeaderProps,
                     onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />

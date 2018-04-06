@@ -185,10 +185,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
     stickyItems.forEach((sticky: Sticky) => {
       if (sticky.state.isStickyTop && sticky.stickyContentTop && sticky.stickyContentTop.value) {
-        stickyTopHeight += sticky.stickyContentTop.value.clientHeight;
+        stickyTopHeight += sticky.stickyContentTop.value.offsetHeight;
       }
       if (sticky.state.isStickyBottom && sticky.stickyContentBottom && sticky.stickyContentBottom.value) {
-        stickyBottomHeight += sticky.stickyContentBottom.value.clientHeight;
+        stickyBottomHeight += sticky.stickyContentBottom.value.offsetHeight;
       }
     });
 
