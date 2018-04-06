@@ -14,6 +14,7 @@ export class RatingButtonControlledExample extends React.Component<{}, {
     };
   }
 
+  // tslint:disable:jsx-no-lambda
   public render() {
     const maxrating = 5;
 
@@ -29,16 +30,14 @@ export class RatingButtonControlledExample extends React.Component<{}, {
           text={ 'Click to change rating to ' + (maxrating - this.state.rating) }
           onClick={
             (e) => {
-              if (this.state.rating === 0)
+              if (this.state.rating === 0) {
                 this.setState({ rating: 5 });
-              else
+              } else {
                 this.setState({ rating: 0 });
-              console.log("rating", this.state.rating);
+              }
             }
           }
         />
-
-
       </div>
     );
   }
