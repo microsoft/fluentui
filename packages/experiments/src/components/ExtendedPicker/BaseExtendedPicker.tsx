@@ -197,7 +197,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     if (this.floatingPicker.value) {
-      this.floatingPicker.value.showPicker();
+      this.floatingPicker.value.showPicker(true /*updateValue*/);
     }
 
     if (this.props.inputProps && this.props.inputProps.onFocus) {
