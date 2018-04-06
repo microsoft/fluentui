@@ -10,7 +10,6 @@ export const normalize: IRawStyle = {
 };
 
 export const noWrap: IRawStyle = {
-  display: 'block',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
