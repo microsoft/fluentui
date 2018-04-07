@@ -196,6 +196,11 @@ export interface ICalendarStrings {
    */
   nextYearAriaLabel?: string;
 
+  /**
+   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
+   */
+  weekNumberFormatString?: string;
+
 }
 
 export interface ICalendarIconStrings {

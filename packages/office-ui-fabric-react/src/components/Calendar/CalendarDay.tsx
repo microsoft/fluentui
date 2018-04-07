@@ -5,7 +5,8 @@ import {
   css,
   getId,
   getRTL,
-  getRTLSafeKeyCode
+  getRTLSafeKeyCode,
+  format
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
@@ -184,33 +185,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           </div>
         </div>
         <FocusZone>
-          {
-            showWeekNumbers ?
-              <table
-                className={ css('ms-DatePicker-weekNumbers', styles.weekNumbers, 'ms-DatePicker-table', styles.table) }
-              >
-                <tbody>
-                  { weekNumbers!.map((weekNumber, index) =>
-                    <tr key={ index }>
-                      <td>
-                        <div
-                          className={ css(
-                            'ms-DatePicker-day',
-                            styles.day,
-                            {
-                              ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumber
-                            }
-                          ) }
-                        >
-                          <span>{ weekNumber }</span>
-                        </div>
-                      </td>
-                    </tr>
-                  ) }
-                </tbody>
-              </table>
-              : null
-          }
           <table
             className={ css('ms-DatePicker-table', styles.table) }
             aria-readonly='true'
@@ -220,6 +194,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           >
             <thead>
               <tr>
+                { showWeekNumbers && <th /> }
                 { strings.shortDays.map((val, index) =>
                   <th
                     className={ css('ms-DatePicker-weekday', styles.weekday) }
@@ -235,7 +210,28 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </thead>
             <tbody>
               { weeks!.map((week, weekIndex) =>
-                <tr key={ weekIndex } role='row'>
+                <tr key={ weekNumbers ? weekNumbers[weekIndex] : weekIndex } role='row'>
+                  { showWeekNumbers && weekNumbers &&
+                    <th
+                      className={ css('ms-DatePicker-weekNumbers', styles.weekNumbers) }
+                      key={ weekIndex }
+                      title={ weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex]) }
+                      aria-label={ weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex]) }
+                      scope='row'
+                    >
+                      <div
+                        className={ css(
+                          'ms-DatePicker-day',
+                          styles.day,
+                          {
+                            ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumbers[weekIndex]
+                          }
+                        ) }
+                      >
+                        <span>{ weekNumbers[weekIndex] }</span>
+                      </div>
+                    </th>
+                  }
                   { week.map((day, dayIndex) => {
                     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
                     return <td
@@ -248,6 +244,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         }) }
                     >
                       <div
+                        key={ day.key + 'div' }
                         className={ css(
                           'ms-DatePicker-day',
                           styles.day,
@@ -266,7 +263,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         aria-selected={ day.isInBounds ? day.isSelected : undefined }
                         data-is-focusable={ day.isInBounds ? true : undefined }
                         ref={ isNavigatedDate ? 'navigatedDay' : undefined }
-                        key={ isNavigatedDate ? 'navigatedDay' : undefined }
                       >
                         <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
