@@ -66,6 +66,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return this._stickyBelowRef.value;
   }
 
+  public get contentContainer(): HTMLDivElement | null {
+    return this._contentContainer.value;
+  }
+
   public getChildContext() {
     return {
       scrollablePane: {
@@ -80,20 +84,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public componentDidMount() {
-    this._events.on(this._contentContainer.value, 'scroll', this.notifySubscribers);
+    this._events.on(this.contentContainer, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
     this.notifySubscribers();
   }
 
   public componentWillUnmount() {
-    this._events.off(this._contentContainer.value);
+    this._events.off(this.contentContainer);
     this._events.off(window);
   }
 
   public componentDidUpdate(prevProps: IScrollablePaneProps) {
     const initialScrollPosition = this.props.initialScrollPosition;
-    if (this._root.value && initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
-      this._root.value.scrollTop = initialScrollPosition;
+    if (this.root && initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
+      this.root.scrollTop = initialScrollPosition;
     }
 
     // Update subscribers when DOM changes
@@ -199,15 +203,15 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public notifySubscribers = (): void => {
     this._subscribers.forEach((handle) => {
-      if (this._contentContainer) {
-        handle(this._contentContainer.value, this.stickyBelow);
+      if (this.contentContainer) {
+        handle(this.contentContainer, this.stickyBelow);
       }
     });
   }
 
   public getScrollPosition = (): number => {
-    if (this._root.value) {
-      return this._root.value.scrollTop;
+    if (this.root) {
+      return this.root.scrollTop;
     }
 
     return 0;
