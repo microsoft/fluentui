@@ -221,6 +221,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       while (parentElement && parentElement !== this._root.value) {
         if (isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
           this._activeElement = parentElement;
+          this._setFocusAlignment(this._activeElement);
           break;
         }
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
@@ -696,24 +697,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
-    if (this.props.direction === FocusZoneDirection.bidirectional &&
-      (!this._focusAlignment || isHorizontal || isVertical)) {
+    if (this.props.direction === FocusZoneDirection.bidirectional) {
 
       const rect = element.getBoundingClientRect();
       const left = rect.left + (rect.width / 2);
       const top = rect.top + (rect.height / 2);
 
-      if (!this._focusAlignment) {
-        this._focusAlignment = { left, top };
-      }
-
-      if (isHorizontal) {
-        this._focusAlignment.left = left;
-      }
-
-      if (isVertical) {
-        this._focusAlignment.top = top;
-      }
+      this._focusAlignment = { left, top };
     }
   }
 
