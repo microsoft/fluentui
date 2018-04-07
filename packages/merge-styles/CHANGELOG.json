@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.14.1",
+      "tag": "@uifabric/merge-styles_v5.14.1",
+      "date": "Fri, 06 Apr 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "22604406e2cba799fca243348ac8ec87ae0f6102",
+            "comment": "mergeStyles: flipping RTL at runtime now resets the keys."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.14.0",
       "tag": "@uifabric/merge-styles_v5.14.0",
       "date": "Sun, 25 Mar 2018 03:08:03 GMT",

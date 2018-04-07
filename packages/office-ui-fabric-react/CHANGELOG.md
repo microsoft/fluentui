@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 03 Apr 2018 10:16:05 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Apr 2018 10:25:55 GMT and should not be manually modified.
+
+## 5.79.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- Stops event propagation of Esc keypress on DatePicker
+
+## 5.79.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Added dividerAs prop to Breadcrumb component allowing the user to pass a custom icon to be used as the trail divider icon.
+- Add the ability to use custom props for the panel used to render options on small devices.
+- Panel: pass ID for header text element to custom renderer
+- Callout/Positioning: Improve callout perf with hidden flag and improve repositioning logic
+
+### Patches
+
+- ComboBox: Adding support for Alt or Meta + Up to close menus
+- Fix SearchBox background color.
+- Fixes bug with undefined reference
+- Fixing bug dialog content does not grow fully to take up all the space provided by parent
+- Make the link button selectable.
 
 ## 5.78.0
 Tue, 03 Apr 2018 10:16:05 GMT

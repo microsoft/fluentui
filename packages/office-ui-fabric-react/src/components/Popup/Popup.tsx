@@ -10,10 +10,14 @@ import {
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
+export interface IPopupState {
+  needsVerticalScrollBar?: boolean;
+}
+
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export class Popup extends BaseComponent<IPopupProps, {}> {
+export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
@@ -23,6 +27,11 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
 
   private _originalFocusedElement: HTMLElement;
   private _containsFocus: boolean;
+
+  public constructor(props: IPopupProps) {
+    super(props);
+    this.state = { needsVerticalScrollBar: false };
+  }
 
   public componentWillMount() {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
@@ -39,6 +48,12 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     if (doesElementContainFocus(this._root.value)) {
       this._containsFocus = true;
     }
+
+    this._updateScrollBarAsync();
+  }
+
+  public componentDidUpdate() {
+    this._updateScrollBarAsync();
   }
 
   public componentWillUnmount(): void {
@@ -59,12 +74,6 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   public render() {
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
-    let needsVerticalScrollBar = false;
-    if (this._root.value && this._root.value.firstElementChild) {
-      needsVerticalScrollBar = this._root.value.clientHeight > 0
-        && this._root.value.firstElementChild.clientHeight > this._root.value.clientHeight;
-    }
-
     return (
       <div
         ref={ this._root }
@@ -75,7 +84,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
-        style={ { overflowY: needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
+        style={ { overflowY: this.state.needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
       >
         { this.props.children }
       </div>
@@ -94,6 +103,25 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         }
 
         break;
+    }
+  }
+
+  private _updateScrollBarAsync() {
+    this._async.requestAnimationFrame(() => {
+      this._getScrollBar();
+    });
+  }
+
+  private _getScrollBar() {
+    let needsVerticalScrollBar = false;
+    if (this._root && this._root.value && this._root.value.firstElementChild) {
+      needsVerticalScrollBar = this._root.value.clientHeight > 0
+          && this._root.value.firstElementChild.clientHeight > this._root.value.clientHeight;
+    }
+    if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
+      this.setState({
+        needsVerticalScrollBar: needsVerticalScrollBar
+      });
     }
   }
 
