@@ -32,13 +32,13 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName='TilesListExample'
         exampleCards={
           <div>
-            <ExampleCard title='TilesList with basic tiles' isOptIn={ true } code={ TilesListBasicExampleCode }>
+            <ExampleCard title='TilesList with basic tiles' isOptIn={ true } isScrollable={ false } code={ TilesListBasicExampleCode }>
               <TilesListBasicExample />
             </ExampleCard>
-            <ExampleCard title='TilesList with document tiles' isOptIn={ true } code={ TilesListDocumentExampleCode }>
+            <ExampleCard title='TilesList with document tiles' isOptIn={ true } isScrollable={ false } code={ TilesListDocumentExampleCode }>
               <TilesListDocumentExample />
             </ExampleCard>
-            <ExampleCard title='TilesList with media tiles' isOptIn={ true } code={ TilesListMediaExampleCode }>
+            <ExampleCard title='TilesList with media tiles' isOptIn={ true } isScrollable={ false } code={ TilesListMediaExampleCode }>
               <TilesListMediaExample />
             </ExampleCard>
           </div>

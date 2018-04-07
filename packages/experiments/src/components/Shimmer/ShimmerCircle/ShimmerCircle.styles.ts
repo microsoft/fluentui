@@ -5,7 +5,7 @@ import {
 import {
   IStyleSet,
   DefaultPalette
-} from 'office-ui-fabric-react';
+} from 'office-ui-fabric-react/lib/Styling';
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
   const {

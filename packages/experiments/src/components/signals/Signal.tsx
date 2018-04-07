@@ -13,6 +13,7 @@ export const Signal: Signal = (props: ISignalProps): JSX.Element => {
   const {
     ariaLabel,
     className,
+    children,
     ...spanProps
   } = props;
 

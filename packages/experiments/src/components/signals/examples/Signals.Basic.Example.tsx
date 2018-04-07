@@ -21,7 +21,8 @@ import {
   EmailedSignal,
   RecordSignal
 } from '../Signals';
-import { ChoiceGroup, IChoiceGroupOption, Checkbox } from 'office-ui-fabric-react';
+import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { lorem } from '@uifabric/example-app-base';
 import * as SignalStylesModule from '../Signal.scss';

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
+import { IPanelProps } from '../../Panel';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
 export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T> {
@@ -85,6 +86,11 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
    * Custom properties for ISelectableDroppableText's Callout used to render options.
    */
   calloutProps?: ICalloutProps;
+
+  /**
+   * Custom properties for ISelectableDroppableText's Panel used to render options on small devices.
+   */
+  panelProps?: IPanelProps;
 
   /**
    * Descriptive label for the ISelectableDroppableText Error Message
