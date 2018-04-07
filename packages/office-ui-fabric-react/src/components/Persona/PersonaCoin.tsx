@@ -103,7 +103,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
 
     // Use getStyles from props, or fall back to getStyles from styles file.
-    const classNames = getClassNames(getStylesProp || getStyles, {
+    const classNames = getClassNames(getStylesProp, {
       theme: theme!,
       className: (coinProps && coinProps.className) ? coinProps.className : className,
       size,
@@ -172,7 +172,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const size = this.props.size as PersonaSize;
 
-    const classNames = getClassNames(getStylesProp! || getStyles!, {
+    const classNames = getClassNames(getStylesProp, {
       theme: theme!,
       size
     });
