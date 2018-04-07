@@ -21,6 +21,7 @@ import { ShimmerLine } from './ShimmerLine/ShimmerLine';
 import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
 
 const LINE_DEFAULT_HEIGHT = 16;
+const GAP_DEFAULT_HEIGHT = 16;
 const CIRCLE_DEFAULT_HEIGHT = 24;
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
@@ -38,21 +39,18 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
   public render(): JSX.Element {
     const { getStyles, width, lineElements, children, isDataLoaded, isBaseStyle } = this.props;
-    const maxHeight: number | undefined = lineElements ? this._findMaxHeight(lineElements) : undefined;
+    const maxHeight: number | undefined = lineElements ? findMaxHeight(lineElements) : undefined;
     this._classNames = getClassNames(getStyles!, { width, maxHeight, isDataLoaded, isBaseStyle });
 
     const elements: JSX.Element[] | JSX.Element = lineElements ?
       lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
         switch (elem.type) {
           case ShimmerElementType.CIRCLE:
-            if (!elem.height) {
-              elem.height = CIRCLE_DEFAULT_HEIGHT;
-            }
             return (
               <ShimmerCircle
                 key={ index }
                 { ...elem }
-                borderAlignStyle={ this._getBorderAlignStyles(maxHeight, elem) }
+                borderAlignStyle={ getBorderAlignStyles(maxHeight, elem) }
               />
             );
           case ShimmerElementType.GAP:
@@ -71,14 +69,11 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
               />
             );
           case ShimmerElementType.LINE:
-            if (!elem.height) {
-              elem.height = LINE_DEFAULT_HEIGHT;
-            }
             return (
               <ShimmerLine
                 key={ index }
                 { ...elem }
-                borderAlignStyle={ this._getBorderAlignStyles(maxHeight, elem) }
+                borderAlignStyle={ getBorderAlignStyles(maxHeight, elem) }
               />
             );
         }
@@ -102,60 +97,60 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       </div>
     );
   }
+}
 
-  private _findMaxHeight(items: Array<ICircle | IGap | ILine>): number {
-    const itemsDefaulted: Array<ICircle | IGap | ILine> = items.map((item: ICircle | IGap | ILine): ICircle | IGap | ILine => {
-      switch (item.type) {
-        case ShimmerElementType.CIRCLE:
-          if (!item.height) {
-            item.height = CIRCLE_DEFAULT_HEIGHT;
-          }
-        case ShimmerElementType.LINE:
-          if (!item.height) {
-            item.height = LINE_DEFAULT_HEIGHT;
-          }
-      }
-      return item;
-    });
+export function getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
+  const elemHeight: number | undefined = elem.height;
 
-    const maxHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
-      return next.height ?
-        next.height > acc ? next.height : acc
-        : acc;
-    }, 0);
-    return maxHeight;
+  const dif: number = maxHeight && elemHeight ? maxHeight - elemHeight : 0;
+
+  let borderStyle: IStyleSet | undefined;
+
+  if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.CENTER) {
+    borderStyle = {
+      alignSelf: 'center',
+      borderBottom: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`,
+      borderTop: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`
+    };
+  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.TOP) {
+    borderStyle = {
+      alignSelf: 'top',
+      borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
+      borderTop: `0px solid ${DefaultPalette.white}`
+    };
+  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.BOTTOM) {
+    borderStyle = {
+      alignSelf: 'bottom',
+      borderBottom: `0px solid ${DefaultPalette.white}`,
+      borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
+    };
   }
+  return borderStyle;
+}
 
-  private _getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
-    const elemHeight: number | undefined = elem.height;
-
-    const dif: number | undefined = maxHeight && elemHeight ?
-      maxHeight - elemHeight > 0 ?
-        maxHeight - elemHeight : undefined
-      : undefined;
-
-    let borderStyle: IStyleSet | undefined;
-    const hasVerticalAlign: boolean = elem.verticalAlign ? true : false;
-
-    if (elem.verticalAlign === ShimmerElementVerticalAlign.CENTER || !hasVerticalAlign) {
-      borderStyle = {
-        alignSelf: 'center',
-        borderBottom: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`,
-        borderTop: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`
-      };
-    } else if (elem.verticalAlign === ShimmerElementVerticalAlign.TOP && hasVerticalAlign) {
-      borderStyle = {
-        alignSelf: 'top',
-        borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
-        borderTop: `0px solid ${DefaultPalette.white}`
-      };
-    } else if (elem.verticalAlign === ShimmerElementVerticalAlign.BOTTOM && hasVerticalAlign) {
-      borderStyle = {
-        alignSelf: 'bottom',
-        borderBottom: `0px solid ${DefaultPalette.white}`,
-        borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
-      };
+export function findMaxHeight(items: Array<ICircle | IGap | ILine>): number {
+  const itemsDefaulted: Array<ICircle | IGap | ILine> = items.map((item: ICircle | IGap | ILine): ICircle | IGap | ILine => {
+    switch (item.type) {
+      case ShimmerElementType.CIRCLE:
+        if (!item.height) {
+          item.height = CIRCLE_DEFAULT_HEIGHT;
+        }
+      case ShimmerElementType.LINE:
+        if (!item.height) {
+          item.height = LINE_DEFAULT_HEIGHT;
+        }
+      case ShimmerElementType.GAP:
+        if (!item.height) {
+          item.height = GAP_DEFAULT_HEIGHT;
+        }
     }
-    return borderStyle;
-  }
+    return item;
+  });
+
+  const maxHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
+    return next.height ?
+      next.height > acc ? next.height : acc
+      : acc;
+  }, 0);
+  return maxHeight;
 }
