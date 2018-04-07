@@ -39,8 +39,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
   public render(): JSX.Element {
     const { getStyles, width, lineElements, children, isDataLoaded, isBaseStyle } = this.props;
-    const maxHeight: number | undefined = lineElements ? findMaxHeight(lineElements) : undefined;
-    this._classNames = getClassNames(getStyles!, { width, maxHeight, isDataLoaded, isBaseStyle });
+    const maxLineHeight: number | undefined = lineElements ? findMaxHeight(lineElements) : undefined;
+    this._classNames = getClassNames(getStyles!, { width, maxLineHeight, isDataLoaded, isBaseStyle });
 
     const elements: JSX.Element[] | JSX.Element = lineElements ?
       lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
@@ -50,7 +50,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
               <ShimmerCircle
                 key={ index }
                 { ...elem }
-                borderAlignStyle={ getBorderAlignStyles(maxHeight, elem) }
+                borderAlignStyle={ getBorderAlignStyles(maxLineHeight, elem) }
               />
             );
           case ShimmerElementType.GAP:
@@ -63,7 +63,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
                 // tslint:disable-next-line:jsx-ban-props
                 style={ {
                   width: gapWidth,
-                  height: maxHeight + 'px',
+                  height: maxLineHeight + 'px',
                   backgroundColor: `${DefaultPalette.white}`
                 } }
               />
@@ -73,7 +73,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
               <ShimmerLine
                 key={ index }
                 { ...elem }
-                borderAlignStyle={ getBorderAlignStyles(maxHeight, elem) }
+                borderAlignStyle={ getBorderAlignStyles(maxLineHeight, elem) }
               />
             );
         }
@@ -99,10 +99,10 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 }
 
-export function getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
+export function getBorderAlignStyles(maxLineHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
   const elemHeight: number | undefined = elem.height;
 
-  const dif: number = maxHeight && elemHeight ? maxHeight - elemHeight : 0;
+  const dif: number = maxLineHeight && elemHeight ? maxLineHeight - elemHeight : 0;
 
   let borderStyle: IStyleSet | undefined;
 
@@ -147,10 +147,10 @@ export function findMaxHeight(items: Array<ICircle | IGap | ILine>): number {
     return item;
   });
 
-  const maxHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
+  const maxLineHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
     return next.height ?
       next.height > acc ? next.height : acc
       : acc;
   }, 0);
-  return maxHeight;
+  return maxLineHeight;
 }
