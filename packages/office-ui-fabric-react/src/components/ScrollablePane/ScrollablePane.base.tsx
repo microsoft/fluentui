@@ -38,7 +38,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   private _root = createRef<HTMLDivElement>();
   private _stickyAboveRef = createRef<HTMLDivElement>();
-  private _stickyBelowContainerRef = createRef<HTMLDivElement>();
   private _stickyBelowRef = createRef<HTMLDivElement>();
   private _contentContainer = createRef<HTMLDivElement>();
   private _subscribers: Set<Function>;
@@ -61,10 +60,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public get stickyAbove(): HTMLDivElement | null {
     return this._stickyAboveRef.value;
-  }
-
-  public get stickyBelowContainer(): HTMLDivElement | null {
-    return this._stickyBelowContainerRef.value;
   }
 
   public get stickyBelow(): HTMLDivElement | null {
@@ -129,7 +124,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           style={ this._getStickyContainerStyle(stickyTopHeight) }
         />
         <div
-          ref={ this._stickyBelowContainerRef }
           className={ classNames.stickyBelow }
           style={ this._getStickyContainerStyle(stickyBottomHeight) }
         >
@@ -205,7 +199,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public notifySubscribers = (): void => {
     this._subscribers.forEach((handle) => {
-      if (this._contentContainer && this.stickyBelowContainer) {
+      if (this._contentContainer) {
         handle(this._contentContainer.value, this.stickyBelow);
       }
     });
