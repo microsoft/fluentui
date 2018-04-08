@@ -2,8 +2,12 @@ import * as React from 'react';
 import {
   IStyle,
   IStyleSet
-} from '../../../Styling';
-import { IStyleFunction } from '../../../Utilities';
+} from 'office-ui-fabric-react/lib/Styling';
+import {
+  ISize,
+  IStyleFunction
+} from 'office-ui-fabric-react/lib/Utilities';
+import { TileSize } from 'experiments/lib/Tile';
 
 export interface IShimmerTile {
 
@@ -20,27 +24,32 @@ export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> 
   componentRef?: (component: IShimmerTile | null) => void;
 
   /**
-   * Sets the height of the rectangle.
-   * @default 16px
+   * The intended dimensions for the Tile.
    */
-  height?: number;
+  contentSize?: ISize;
 
   /**
-   * Sets width of the element in percentages.
-   * @default 100%
+   * The breakpoint size for the Tile.
    */
-  widthInPercentage?: number;
+  tileSize?: TileSize;
 
   /**
-   * Sets width of the element in pixels.
-   * @default 50px
+   * Set to false if you choose not to display a name on the nameplate for the tile.
+   * @default true
    */
-  widthInPixel?: number;
+  itemName?: boolean;
 
   /**
-   * Sets custom styling of the rectangle.
+   * Set to false if you choose not to display a activity on the nameplate for the tile.
+   * @default true
    */
-  borderStyle?: IStyleSet;
+  itemActivity?: boolean;
+
+  /**
+   * Set to false if you choose not to display a thumbnail of item type above the nameplate for the tile.
+   * @default true
+   */
+  itemThumbnail?: boolean;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

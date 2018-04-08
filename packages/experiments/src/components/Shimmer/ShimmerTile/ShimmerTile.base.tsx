@@ -19,9 +19,9 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, getStyles, widthInPercentage, widthInPixel, borderStyle } = this.props;
+    const { getStyles, } = this.props;
 
-    this._classNames = getClassNames(getStyles!, { height, widthInPixel, widthInPercentage, borderStyle });
+    this._classNames = getClassNames(getStyles!, {});
 
     return (
       <div className={ this._classNames.root } />
