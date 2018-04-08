@@ -125,7 +125,7 @@ export interface IGap extends IShimmerElement {
 
 export interface IShimmerStyleProps {
   width?: number;
-  maxLineHeight?: number;
+  rowHeight?: number;
   isDataLoaded?: boolean;
   isBaseStyle?: boolean;
 }

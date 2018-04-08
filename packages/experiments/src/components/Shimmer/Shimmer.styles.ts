@@ -7,7 +7,7 @@ import {
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     width,
-    maxLineHeight,
+    rowHeight,
     isDataLoaded,
     isBaseStyle
   } = props;
@@ -31,7 +31,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         margin: '10px',
         width: 'auto',
         boxSizing: 'content-box',
-        minHeight: maxLineHeight ? `${maxLineHeight}px` : '16px'
+        minHeight: rowHeight ? `${rowHeight}px` : '16px'
       },
       isBaseStyle && {
         margin: '0',
@@ -46,6 +46,9 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         display: 'flex',
         position: 'absolute',
         top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
         alignItems: 'center',
         alignContent: 'space-between',
         width: `${width}%`,
