@@ -51,7 +51,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         right: '0',
         alignItems: 'center',
         alignContent: 'space-between',
-        width: `${width}%`,
+        width: width ? `${width}%` : '100%',
         height: 'auto',
         boxSizing: 'border-box',
         background: `${DefaultPalette.neutralLighter}
@@ -76,7 +76,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       },
       isBaseStyle && {
         position: 'static',
-        width: 'auto'
+        width: width ? `${width}px` : 'auto'
       }
     ],
     dataWrapper: [
