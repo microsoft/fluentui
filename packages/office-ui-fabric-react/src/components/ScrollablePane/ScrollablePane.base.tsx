@@ -78,14 +78,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         addSticky: this.addSticky,
         removeSticky: this.removeSticky,
         updateStickyRefHeights: this.updateStickyRefHeights,
+        sortSticky: this.sortSticky,
         notifySubscribers: this.notifySubscribers
       }
     };
   }
 
   public componentDidMount() {
+    const { initialScrollPosition } = this.props;
     this._events.on(this.contentContainer, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
+    if (this.contentContainer && initialScrollPosition) {
+      this.contentContainer.scrollTop = initialScrollPosition;
+    }
+
     this.notifySubscribers();
   }
 
@@ -94,10 +100,19 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this._events.off(window);
   }
 
-  public componentDidUpdate(prevProps: IScrollablePaneProps) {
+  // Only updates if props/state change, just to prevent excessive setState with updateStickyRefHeights
+  public shouldComponentUpdate(nextProps: IScrollablePaneProps, nextState: IScrollablePaneState): boolean {
+    return this.props.children !== nextProps.children ||
+      this.props.initialScrollPosition !== nextProps.initialScrollPosition ||
+      this.props.className !== nextProps.className ||
+      this.state.stickyTopHeight !== nextState.stickyTopHeight ||
+      this.state.stickyBottomHeight !== nextState.stickyBottomHeight;
+  }
+
+  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState) {
     const initialScrollPosition = this.props.initialScrollPosition;
-    if (this.root && initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
-      this.root.scrollTop = initialScrollPosition;
+    if (this.contentContainer && initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
+      this.contentContainer.scrollTop = initialScrollPosition;
     }
 
     // Update subscribers when DOM changes
@@ -160,24 +175,33 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public addSticky = (sticky: Sticky): void => {
     this._stickies.add(sticky);
-    if (this.stickyAbove && sticky.stickyContentTop.value) {
-      this.stickyAbove.appendChild(sticky.stickyContentTop.value);
-    }
-    if (this.stickyBelow && sticky.stickyContentBottom.value) {
-      this.stickyBelow.appendChild(sticky.stickyContentBottom.value);
-    }
     this.notifySubscribers();
   }
 
   public removeSticky = (sticky: Sticky): void => {
     this._stickies.delete(sticky);
-    if (this.stickyAbove && sticky.stickyContentTop.value) {
-      this.stickyAbove.removeChild(sticky.stickyContentTop.value);
-    }
-    if (this.stickyBelow && sticky.stickyContentBottom.value) {
-      this.stickyBelow.removeChild(sticky.stickyContentBottom.value);
-    }
+    this._removeStickyFromContainers(sticky);
     this.notifySubscribers();
+  }
+
+  public sortSticky = (sticky: Sticky): void => {
+    if (this.stickyAbove && this.stickyBelow) {
+      if (sticky.canStickyTop && sticky.stickyContentTop.value) {
+        if (!this.stickyAbove.children.length) {
+          this.stickyAbove.appendChild(sticky.stickyContentTop.value);
+        } else if (!this.stickyAbove.contains(sticky.stickyContentTop.value)) {
+          this._addToStickyContainer(sticky, this.stickyAbove);
+        }
+      }
+
+      if (sticky.canStickyBottom && sticky.stickyContentBottom.value) {
+        if (!this.stickyBelow.children.length) {
+          this.stickyBelow.appendChild(sticky.stickyContentBottom.value);
+        } else if (!this.stickyBelow.contains(sticky.stickyContentBottom.value)) {
+          this._addToStickyContainer(sticky, this.stickyBelow);
+        }
+      }
+    }
   }
 
   public updateStickyRefHeights = (): void => {
@@ -187,10 +211,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     let stickyBottomHeight: number = 0;
 
     stickyItems.forEach((sticky: Sticky) => {
-      if (sticky.state.isStickyTop && sticky.stickyContentTop && sticky.stickyContentTop.value) {
+      if (sticky.state.isStickyTop && sticky.canStickyTop && sticky.stickyContentTop.value) {
         stickyTopHeight += sticky.stickyContentTop.value.offsetHeight;
       }
-      if (sticky.state.isStickyBottom && sticky.stickyContentBottom && sticky.stickyContentBottom.value) {
+      if (sticky.state.isStickyBottom && sticky.canStickyBottom && sticky.stickyContentBottom.value) {
         stickyBottomHeight += sticky.stickyContentBottom.value.offsetHeight;
       }
     });
@@ -202,11 +226,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public notifySubscribers = (): void => {
-    this._subscribers.forEach((handle) => {
-      if (this.contentContainer) {
+    if (this.contentContainer) {
+      this._subscribers.forEach((handle) => {
         handle(this.contentContainer, this.stickyBelow);
-      }
-    });
+      });
+    }
   }
 
   public getScrollPosition = (): number => {
@@ -215,6 +239,57 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
 
     return 0;
+  }
+
+  private _addToStickyContainer = (sticky: Sticky, stickyContainer: HTMLDivElement): void => {
+    if (stickyContainer) {
+      const stickyChildrenElements = Array.from(stickyContainer.children) as HTMLElement[];
+      const stickyListSorted = Array.from(this._stickies).sort((a, b) => {
+        return a.distanceFromTop - b.distanceFromTop;
+      }).filter((item) => {
+        const stickyContent = (stickyContainer === this.stickyAbove) ? item.stickyContentTop.value : item.stickyContentBottom.value;
+        if (stickyContent) {
+          return stickyChildrenElements.indexOf(stickyContent) > -1;
+        }
+      }).filter((item) => {
+        if (stickyContainer === this.stickyAbove) {
+          return item.canStickyTop;
+        } else {
+          return item.canStickyBottom;
+        }
+      });
+
+      const first = stickyListSorted.filter((sticky, idx) => {
+        return sticky.distanceFromTop > sticky.distanceFromTop
+      })[0];
+      let targetContainer: HTMLDivElement | null = null;
+      if (first) {
+        if (stickyContainer === this.stickyAbove) {
+          targetContainer = first.stickyContentTop.value;
+        } else {
+          targetContainer = first.stickyContentBottom.value;
+        }
+      }
+
+      let stickyContent: HTMLDivElement | undefined = undefined;
+      if (stickyContainer === this.stickyAbove && sticky.stickyContentTop.value) {
+        stickyContent = sticky.stickyContentTop.value;
+      }
+      if (stickyContainer === this.stickyBelow && sticky.stickyContentBottom.value) {
+        stickyContent = sticky.stickyContentBottom.value;
+      }
+
+      if (stickyContent) {
+        stickyContainer.insertBefore(stickyContent, targetContainer);
+      }
+    }
+  }
+
+  private _removeStickyFromContainers = (sticky: Sticky): void => {
+    if (this.stickyAbove && this.stickyBelow && sticky.stickyContentTop.value && sticky.stickyContentBottom.value) {
+      this.stickyAbove.removeChild(sticky.stickyContentTop.value);
+      this.stickyBelow.removeChild(sticky.stickyContentBottom.value);
+    }
   }
 
   private _onWindowResize = (): void => {
