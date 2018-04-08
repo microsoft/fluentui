@@ -29,7 +29,7 @@ export interface ITileState {
   isModal?: boolean;
 }
 
-const SIZES: {
+export const SIZES: {
   [P in TileSize]: {
     nameplatePadding: number;
     nameplateNameHeight: number;
