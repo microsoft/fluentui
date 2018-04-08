@@ -30,6 +30,7 @@ export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> 
 
   /**
    * The breakpoint size for the Tile.
+   * @default large
    */
   tileSize?: TileSize;
 
@@ -58,12 +59,10 @@ export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> 
 }
 
 export interface IShimmerTileStyleProps {
-  height?: number;
-  widthInPercentage?: number;
-  widthInPixel?: number;
-  borderStyle?: IStyleSet;
+  contentSize?: ISize
 }
 
 export interface IShimmerTileStyles {
   root?: IStyle;
+  thumbnail?: IStyle;
 }
