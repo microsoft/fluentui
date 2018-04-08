@@ -17,7 +17,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
 
   return {
     root: [
-      'ms-ShimmerCircle-wrapper',
+      'ms-ShimmerCircle-root',
       {
         width: `${height}px`,
         height: `${height}px`,

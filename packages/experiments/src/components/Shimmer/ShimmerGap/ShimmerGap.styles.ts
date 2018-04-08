@@ -17,7 +17,7 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
 
   return {
     root: [
-      'ms-ShimmerGap-line',
+      'ms-ShimmerGap-root',
       {
         backgroundColor: `${DefaultPalette.white}`,
         width: ACTUAL_WIDTH,

@@ -5,19 +5,19 @@ import {
 } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
-export interface IShimmerGap {
+export interface IShimmerTile {
 
 }
 
 /**
- * ShimmerGap component props.
+ * ShimmerTile component props.
  */
-export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Optional callback to access the IShimmerGap interface. Use this instead of ref for accessing
+   * Optional callback to access the IShimmerTile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerGap | null) => void;
+  componentRef?: (component: IShimmerTile | null) => void;
 
   /**
    * Sets the height of the rectangle.
@@ -38,11 +38,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   widthInPixel?: number;
 
   /**
-   * @default center
-   */
-  verticalAlign?: string;
-
-  /**
    * Sets custom styling of the rectangle.
    */
   borderStyle?: IStyleSet;
@@ -50,17 +45,16 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerGapStyleProps, IShimmerGapStyles>;
+  getStyles?: IStyleFunction<IShimmerTileStyleProps, IShimmerTileStyles>;
 }
 
-export interface IShimmerGapStyleProps {
+export interface IShimmerTileStyleProps {
   height?: number;
-  verticalAlign?: string;
   widthInPercentage?: number;
   widthInPixel?: number;
   borderStyle?: IStyleSet;
 }
 
-export interface IShimmerGapStyles {
+export interface IShimmerTileStyles {
   root?: IStyle;
 }
