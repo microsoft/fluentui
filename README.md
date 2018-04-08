@@ -51,7 +51,7 @@ ReactDOM.render(
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
+Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Testing/BrowserSupport.md) for more information.
 
 ## Server-side rendering
 
@@ -125,15 +125,17 @@ In Jest:
 
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BestPracties/ADVANCED.md).
 
 ## Contribute to Fabric React
 
 Please take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/CONTRIBUTING.md) for more info.
 
+Please read [Bug fixes](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Contributing/BugFixes.md) and [New component](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Contributing/NewComponent.md)
+
 ## Building the repo
 
-Before you get started, **make sure you have [node.js](https://nodejs.org/) and [git](https://git-scm.com/) installed.**
+Before you get started, **make sure you have read the [Git branch setup instrucions](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Contributing/Setup.md)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
@@ -149,7 +151,7 @@ To build individual packages within the `packages/*/` folders, you can use `npm 
 
 ## Testing
 
-For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BestPractices/Testing.md).
 
 ## Advanced building tips
 

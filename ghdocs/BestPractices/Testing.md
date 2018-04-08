@@ -4,7 +4,7 @@
 
 Our tests are built using [Jest](https://facebook.github.io/jest/). This allows us to run tests in a node environment, and simulates the browser using jsdom.
 
-For snapshot testing, we use `react-test-renderer` and Jest apis.
+For snapshot testing, we use `react-test-renderer` and `Jest apis`.
 
 For creating React functional tests, we use [Enzyme](http://airbnb.io/enzyme/) to automate rendering. This gives us helpers for mounting a component, accessing elements rendered by it, and simulating clicks and keypresses.
 
