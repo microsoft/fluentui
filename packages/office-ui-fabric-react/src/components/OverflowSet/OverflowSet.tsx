@@ -99,19 +99,23 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
   /**
    * Sets focus to a specific child element within the OverflowSet.
-   * @param {HTMLElement} element The child element within the zone to focus.
+   * @param {HTMLElement} childElement The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  public focusElement(element: HTMLElement): boolean {
+  public focusElement(childElement?: HTMLElement): boolean {
     let focusSucceeded = false;
 
+    if (!childElement) {
+      return false;
+    }
+
     if (this.props.doNotContainWithinFocusZone) {
-      if (this._divContainer.value && element && elementContains(this._divContainer.value, element)) {
-        element.focus();
-        focusSucceeded = document.activeElement === element;
+      if (this._divContainer.value && elementContains(this._divContainer.value, childElement)) {
+        childElement.focus();
+        focusSucceeded = document.activeElement === childElement;
       }
     } else if (this._focusZone.value) {
-      focusSucceeded = this._focusZone.value.focusElement(element);
+      focusSucceeded = this._focusZone.value.focusElement(childElement);
     }
 
     return focusSucceeded;
