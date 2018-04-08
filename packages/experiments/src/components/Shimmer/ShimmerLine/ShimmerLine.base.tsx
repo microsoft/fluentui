@@ -8,14 +8,10 @@ import {
   IShimmerLineStyleProps,
   IShimmerLineStyles
 } from './ShimmerLine.types';
-import { ShimmerElementVerticalAlign } from 'experiments/lib/Shimmer';
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
-  public static defaultProps: IShimmerLineProps = {
-    verticalAlign: ShimmerElementVerticalAlign.CENTER,
-  };
   private _classNames: {[key in keyof IShimmerLineStyles]: string};
 
   constructor(props: IShimmerLineProps) {

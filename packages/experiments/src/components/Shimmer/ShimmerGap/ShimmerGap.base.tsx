@@ -8,14 +8,10 @@ import {
   IShimmerGapStyleProps,
   IShimmerGapStyles
 } from './ShimmerGap.types';
-import { ShimmerElementVerticalAlign } from 'experiments/lib/Shimmer';
 
 const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyles>();
 
 export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
-  public static defaultProps: IShimmerGapProps = {
-    verticalAlign: ShimmerElementVerticalAlign.CENTER,
-  };
   private _classNames: {[key in keyof IShimmerGapStyles]: string};
 
   constructor(props: IShimmerGapProps) {

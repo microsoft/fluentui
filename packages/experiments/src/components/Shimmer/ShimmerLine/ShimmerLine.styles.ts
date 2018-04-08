@@ -19,7 +19,6 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
     root: [
       'ms-ShimmerLine-line',
       {
-        color: 'transparent',
         width: ACTUAL_WIDTH,
         height: `${height}px`,
         boxSizing: 'content-box',

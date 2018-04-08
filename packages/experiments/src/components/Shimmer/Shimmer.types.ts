@@ -118,7 +118,7 @@ export interface IGap extends IShimmerElement {
 
   /**
    * Sets the width of the Gap to an exact value in pixels.
-   * @default 5px
+   * @default 10px
    */
   widthInPixel?: number;
 }

@@ -20,7 +20,7 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: (component: IShimmerGap | null) => void;
 
   /**
-   * Sets the height of the rectangle.
+   * Sets the height of the gap.
    * @default 16px
    */
   height?: number;
@@ -38,11 +38,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   widthInPixel?: number;
 
   /**
-   * @default center
-   */
-  verticalAlign?: string;
-
-  /**
    * Sets custom styling of the rectangle.
    */
   borderAlignStyle?: IStyleSet;
@@ -55,7 +50,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
 
 export interface IShimmerGapStyleProps {
   height?: number;
-  verticalAlign?: string;
   widthInPercentage?: number;
   widthInPixel?: number;
   borderAlignStyle?: IStyleSet;

@@ -38,11 +38,6 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   widthInPixel?: number;
 
   /**
-   * @default center
-   */
-  verticalAlign?: string;
-
-  /**
    * Sets custom styling of the rectangle.
    */
   borderAlignStyle?: IStyleSet;
@@ -55,7 +50,6 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
 
 export interface IShimmerLineStyleProps {
   height?: number;
-  verticalAlign?: string;
   widthInPercentage?: number;
   widthInPixel?: number;
   borderAlignStyle?: IStyleSet;
