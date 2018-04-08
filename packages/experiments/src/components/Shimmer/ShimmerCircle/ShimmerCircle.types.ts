@@ -28,7 +28,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   /**
    * Used to
    */
-  borderAlignStyle?: IStyleSet;
+  borderStyle?: IStyleSet;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -38,7 +38,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 
 export interface IShimmerCircleStyleProps {
   height?: number;
-  borderAlignStyle?: IStyleSet;
+  borderStyle?: IStyleSet;
 }
 
 export interface IShimmerCircleStyles {

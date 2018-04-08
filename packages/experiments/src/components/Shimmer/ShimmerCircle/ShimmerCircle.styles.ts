@@ -10,10 +10,10 @@ import {
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
   const {
     height,
-    borderAlignStyle
+    borderStyle
   } = props;
 
-  const styles: IStyleSet = !!borderAlignStyle ? borderAlignStyle : {};
+  const styles: IStyleSet = !!borderStyle ? borderStyle : {};
 
   return {
     root: [

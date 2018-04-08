@@ -19,9 +19,9 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, getStyles, widthInPercentage, widthInPixel, borderAlignStyle } = this.props;
+    const { height, getStyles, widthInPercentage, widthInPixel, borderStyle } = this.props;
 
-    this._classNames = getClassNames(getStyles!, { height, widthInPixel, widthInPercentage, borderAlignStyle });
+    this._classNames = getClassNames(getStyles!, { height, widthInPixel, widthInPercentage, borderStyle });
 
     return (
       <div className={ this._classNames.root } />

@@ -18,6 +18,7 @@ import {
   IStyleSet
 } from '../../Styling';
 import { ShimmerLine } from './ShimmerLine/ShimmerLine';
+import { ShimmerGap } from './ShimmerGap/ShimmerGap';
 import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
 
 const LINE_DEFAULT_HEIGHT = 16;
@@ -71,22 +72,15 @@ export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>
             <ShimmerCircle
               key={ index }
               { ...elem }
-              borderAlignStyle={ getBorderStyles(elem, rowHeight) }
+              borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
         case ShimmerElementType.GAP:
-          const gapWidth = elem.widthInPercentage || elem.widthInPixel ?
-            elem.widthInPercentage ? elem.widthInPercentage + '%' : elem.widthInPixel + 'px'
-            : '5px';
           return (
-            <div
+            <ShimmerGap
               key={ index }
-              // tslint:disable-next-line:jsx-ban-props
-              style={ {
-                width: gapWidth,
-                height: rowHeight + 'px',
-                backgroundColor: `${DefaultPalette.white}`
-              } }
+              { ...elem }
+              borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
         case ShimmerElementType.LINE:
@@ -94,7 +88,7 @@ export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>
             <ShimmerLine
               key={ index }
               { ...elem }
-              borderAlignStyle={ getBorderStyles(elem, rowHeight) }
+              borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
       }

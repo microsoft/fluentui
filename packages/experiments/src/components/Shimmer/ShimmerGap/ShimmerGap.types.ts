@@ -38,9 +38,9 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   widthInPixel?: number;
 
   /**
-   * Sets custom styling of the rectangle.
+   * Sets custom styling of the gap.
    */
-  borderAlignStyle?: IStyleSet;
+  borderStyle?: IStyleSet;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -52,7 +52,7 @@ export interface IShimmerGapStyleProps {
   height?: number;
   widthInPercentage?: number;
   widthInPixel?: number;
-  borderAlignStyle?: IStyleSet;
+  borderStyle?: IStyleSet;
 }
 
 export interface IShimmerGapStyles {

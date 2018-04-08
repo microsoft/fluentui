@@ -9,10 +9,10 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
     height,
     widthInPercentage,
     widthInPixel,
-    borderAlignStyle
+    borderStyle
   } = props;
 
-  const styles: IStyleSet = !!borderAlignStyle ? borderAlignStyle : {};
+  const styles: IStyleSet = !!borderStyle ? borderStyle : {};
   const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '10px';
 
   return {
