@@ -41,11 +41,11 @@ class M365SlimNavComponent extends M365NavBase {
     }
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
+      <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation'>
           {
             this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this.renderGroup(group, groupIndex);
+              return this._renderGroup(group, groupIndex);
             })
           }
         </nav>
@@ -53,7 +53,7 @@ class M365SlimNavComponent extends M365NavBase {
     );
   }
 
-  private onLinkClicked(link: IM365NavLink, ev: React.MouseEvent<HTMLElement>): void {
+  private _onLinkClicked(link: IM365NavLink, ev: React.MouseEvent<HTMLElement>): void {
     // set selected node
     var nextState: INavState = {
       selectedKey: link.key
@@ -75,7 +75,7 @@ class M365SlimNavComponent extends M365NavBase {
     ev.stopPropagation();
   }
 
-  private getScrollTop(): number | undefined {
+  private _getScrollTop(): number | undefined {
     if (!this.props.navScrollerId) {
       return undefined;
     }
@@ -90,15 +90,15 @@ class M365SlimNavComponent extends M365NavBase {
   }
 
 
-  private onLinkMouseEnterOrLeave(link: IM365NavLink, ev: React.SyntheticEvent<HTMLElement>): void {
-    link.scrollTop = this.getScrollTop();
+  private _onLinkMouseEnterOrLeave(link: IM365NavLink, ev: React.SyntheticEvent<HTMLElement>): void {
+    link.scrollTop = this._getScrollTop();
     this.setState({ isLinkExpandStateChanged: true });
 
     ev.preventDefault();
     ev.stopPropagation();
   }
 
-  private renderCompositeLink(link: IM365NavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderCompositeLink(link: IM365NavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
@@ -124,25 +124,25 @@ class M365SlimNavComponent extends M365NavBase {
 
     return (
       <a
-        href={link.url ? link.url : undefined}
-        target={link.target ? link.target : undefined}
-        key={link.key || linkIndex}
+        href={ link.url ? link.url : undefined }
+        target={ link.target ? link.target : undefined }
+        key={ link.key || linkIndex }
         data-hint='SlimReactLeftNav'
-        data-value={link.name}
-        aria-label={link.name}
-        tabIndex={0}
-        onClick={this.onLinkClicked.bind(this, link)}>
-        <div className={classNames.navFloatingItemRoot}>
+        data-value={ link.name }
+        aria-label={ link.name }
+        tabIndex={ 0 }
+        onClick={ this._onLinkClicked.bind(this, link) }>
+        <div className={ classNames.navFloatingItemRoot }>
           {
-            <div className={classNames.navItemNameColumn} style={linkTextStyle}>
-              {link.name}
+            <div className={ classNames.navItemNameColumn } style={ linkTextStyle }>
+              { link.name }
             </div>
           }
           {
             rightIconName ?
               <Icon
-                className={classNames.navItemIconColumn}
-                iconName={rightIconName}
+                className={ classNames.navItemIconColumn }
+                iconName={ rightIconName }
               />
               : null
           }
@@ -151,7 +151,7 @@ class M365SlimNavComponent extends M365NavBase {
     );
   }
 
-  private renderFloatingLink(link: IM365NavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderFloatingLink(link: IM365NavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
@@ -159,10 +159,10 @@ class M365SlimNavComponent extends M365NavBase {
     return (
       <li
         role='listitem'
-        key={link.key || linkIndex}
-        title={link.name}>
+        key={ link.key || linkIndex }
+        title={ link.name }>
         {
-          this.renderCompositeLink(link, linkIndex, nestingLevel)
+          this._renderCompositeLink(link, linkIndex, nestingLevel)
         }
         {
           // show child links
@@ -170,7 +170,7 @@ class M365SlimNavComponent extends M365NavBase {
           nestingLevel == 0 ?
             <div>
               {
-                this.renderFloatingLinks(link.links as IM365NavLink[], ++nestingLevel)
+                this._renderFloatingLinks(link.links as IM365NavLink[], ++nestingLevel)
               }
             </div>
             : null
@@ -179,7 +179,7 @@ class M365SlimNavComponent extends M365NavBase {
     )
   }
 
-  private renderFloatingLinks(links: IM365NavLink[], nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderFloatingLinks(links: IM365NavLink[], nestingLevel: number): React.ReactElement<{}> | null {
     if (!links || links.length === 0) {
       return null;
     }
@@ -188,14 +188,14 @@ class M365SlimNavComponent extends M365NavBase {
       <ul role='list'>
         {
           links.map((link: IM365NavLink, linkIndex: number) => {
-            return this.renderFloatingLink(link, linkIndex, nestingLevel);
+            return this._renderFloatingLink(link, linkIndex, nestingLevel);
           })
         }
       </ul>
     );
   }
 
-  private renderFloatingNav(link: IM365NavLink, _linkIndex: number): React.ReactElement<{}> | null {
+  private _renderFloatingNav(link: IM365NavLink, _linkIndex: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
@@ -205,15 +205,15 @@ class M365SlimNavComponent extends M365NavBase {
     const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
 
     return (
-      <div className={classNames.navFloatingRoot}>
+      <div className={ classNames.navFloatingRoot }>
         {
-          this.renderFloatingLinks([link], 0 /* nestingLevel */)
+          this._renderFloatingLinks([link], 0 /* nestingLevel */)
         }
       </div>
     );
   }
 
-  private renderLink(link: IM365NavLink, linkIndex: number, _nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderLink(link: IM365NavLink, linkIndex: number, _nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
@@ -226,34 +226,34 @@ class M365SlimNavComponent extends M365NavBase {
     return (
       <li
         role='listitem'
-        key={link.key || linkIndex}
-        onMouseEnter={this.onLinkMouseEnterOrLeave.bind(this, link)}
-        onMouseLeave={this.onLinkMouseEnterOrLeave.bind(this, link)}
-        title={link.name}
-        className={classNames.navSlimItemRoot}>
+        key={ link.key || linkIndex }
+        onMouseEnter={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        title={ link.name }
+        className={ classNames.navSlimItemRoot }>
         <a
-          href={link.url ? link.url : undefined}
-          target={link.target ? link.target : undefined}
-          key={link.key || linkIndex}
+          href={ link.url ? link.url : undefined }
+          target={ link.target ? link.target : undefined }
+          key={ link.key || linkIndex }
           data-hint='SlimReactLeftNav'
-          data-value={link.name}
-          tabIndex={0}
-          onClick={this.onLinkClicked.bind(this, link)}>
-          <div className={classNames.navItemRoot}>
+          data-value={ link.name }
+          tabIndex={ 0 }
+          onClick={ this._onLinkClicked.bind(this, link) }>
+          <div className={ classNames.navItemRoot }>
             <Icon
-              className={classNames.navItemIconColumn}
-              iconName={link.icon}
+              className={ classNames.navItemIconColumn }
+              iconName={ link.icon }
             />
           </div>
         </a>
         {
-          this.renderFloatingNav(link, linkIndex)
+          this._renderFloatingNav(link, linkIndex)
         }
       </li>
     );
   }
 
-  private renderLinks(links: IM365NavLink[], nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderLinks(links: IM365NavLink[], nestingLevel: number): React.ReactElement<{}> | null {
     if (!links || links.length === 0) {
       return null;
     }
@@ -262,14 +262,14 @@ class M365SlimNavComponent extends M365NavBase {
       <ul role='list'>
         {
           links.map((link: IM365NavLink, linkIndex: number) => {
-            return this.renderLink(link, linkIndex, nestingLevel);
+            return this._renderLink(link, linkIndex, nestingLevel);
           })
         }
       </ul>
     );
   }
 
-  private renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
     if (!group || !group.links || group.links.length === 0) {
       return null;
     }
@@ -278,18 +278,18 @@ class M365SlimNavComponent extends M365NavBase {
     const classNames = getClassNames(getStyles!, {});
 
     return (
-      <div key={groupIndex}>
+      <div key={ groupIndex }>
         {
           // do not render group header for the first group
           groupIndex > 0 && group.name ?
-            <div className={classNames.navGroupSeparatorRoot}>
-              <div className={classNames.navGroupSeparatorHrLine}>
+            <div className={ classNames.navGroupSeparatorRoot }>
+              <div className={ classNames.navGroupSeparatorHrLine }>
               </div>
             </div>
             : null
         }
         {
-          this.renderLinks(group.links, 0 /* nestingLevel */)
+          this._renderLinks(group.links, 0 /* nestingLevel */)
         }
       </div>
     );

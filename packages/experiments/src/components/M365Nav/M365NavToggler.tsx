@@ -40,7 +40,7 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
     return (
       <div className={ classNames.root }>
         {
-          this.renderExpandCollapseNavItem()
+          this._renderExpandCollapseNavItem()
         }
         {
           isCollapsed ?
@@ -57,7 +57,7 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
     );
   }
 
-  private onNavCollapseClicked(_ev: React.MouseEvent<HTMLElement>): void {
+  private _onNavCollapseClicked(_ev: React.MouseEvent<HTMLElement>): void {
     this.setState((prevState: IM365NavState) => {
       var isNavCollapsed = !prevState.isNavCollapsed;
 
@@ -72,7 +72,7 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
     });
   }
 
-  private renderExpandCollapseNavItem(): React.ReactElement<{}> {
+  private _renderExpandCollapseNavItem(): React.ReactElement<{}> {
     const style: React.CSSProperties = {
       textAlign: "right"
     };
@@ -84,7 +84,7 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
     return (
       <a
         tabIndex={ 0 }
-        onClick={ this.onNavCollapseClicked.bind(this) }
+        onClick={ this._onNavCollapseClicked.bind(this) }
         aria-expanded={ isNavCollapsed ? "false" : "true" }
         data-hint="ReactLeftNav"
         data-value="ToggleNavCollapse">
