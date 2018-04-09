@@ -1,17 +1,17 @@
 /* tslint:disable */
 import { IStyle, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import {
-  IM365NavStyleProps,
-  IM365NavStyles
-} from './M365Nav.types';
+  INavStyleProps,
+  INavStyles
+} from './Nav.types';
 
-export type IM365NavItemStyle = {
+export type INavItemStyle = {
   root?: IStyle;
   iconColumn?: IStyle;
   nameColumn?: IStyle;
 };
 
-export type IM365FloatingNavStyle = IStyle & {
+export type IFloatingNavStyle = IStyle & {
   root?: IStyle;
   withChild?: IStyle;
 };
@@ -30,8 +30,8 @@ const navItemSelectedColor = '#666666';
 const navItemIndentSize = 50;
 
 export const getStyles = (
-  props: IM365NavStyleProps
-): IM365NavStyles => {
+  props: INavStyleProps
+): INavStyles => {
   const {
     isSelected,
     hasChildren,
@@ -56,7 +56,7 @@ export const getStyles = (
               selectors: {
                 ':hover': {
                   selectors: {
-                    '>div[class*=m365FloatingNav]': {
+                    '>div[class*=ms-Nav-FloatingNav]': {
                       visibility: 'visible'
                     }
                   }
@@ -106,7 +106,7 @@ export const getStyles = (
     },
     navFloatingRoot: [
       {
-        displayName: 'm365FloatingNav',
+        displayName: 'ms-Nav-FloatingNav',
         display: 'block',
         visibility: 'hidden',
         position: 'absolute',

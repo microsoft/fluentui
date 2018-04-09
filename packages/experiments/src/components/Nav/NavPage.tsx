@@ -5,29 +5,29 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { M365NavExample } from './examples/M365Nav.Example';
-const M365NavExampleCode =
-  require('!raw-loader!experiments/src/components/M365Nav/examples/M365Nav.Example.tsx') as string;
+import { NavExample } from './examples/Nav.Example';
+const NavExampleCode =
+  require('!raw-loader!experiments/src/components/Nav/examples/Nav.Example.tsx') as string;
 
-export class M365NavPage extends React.Component<IComponentDemoPageProps, {}> {
+export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='M365 Nav'
-        componentName='M365NavToggler'
+        title=' Nav'
+        componentName='NavToggler'
         exampleCards={
           <div>
-            <ExampleCard title='M365 Nav' isOptIn={ true } code={ M365NavExampleCode }>
-              <M365NavExample />
+            <ExampleCard title='Nav' isOptIn={ true } code={ NavExampleCode }>
+              <NavExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/M365Nav/M365Nav.types.ts')
+              require<string>('!raw-loader!experiments/src/components/Nav/Nav.types.ts')
             ] }
-            renderOnly={ ['IM365NavProps', 'IM365NavState'] }
+            renderOnly={ ['INavProps', 'INavState'] }
           />
         }
         overview={
@@ -39,7 +39,6 @@ export class M365NavPage extends React.Component<IComponentDemoPageProps, {}> {
         dos={
           <div>
             <ul>
-              <li>Use M365 Nav component in all M365 Admin Centers to acheive coherence</li>
               <li>Use the hamburger icon at the top to switch between expanded and collapsed state</li>
               <li>Use the optional named second menu group if needed to split/categorize the menu items.</li>
               <li>Use only supported actions on leaf nodes - expand if there is child menu or script execution

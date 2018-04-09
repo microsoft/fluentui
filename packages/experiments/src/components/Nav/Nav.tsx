@@ -6,24 +6,24 @@ import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import {
-  IM365NavProps,
-  IM365NavLink,
-  IM365NavStyleProps,
-  IM365NavStyles
-} from './M365Nav.types';
+  INavProps,
+  INavLink,
+  INavStyleProps,
+  INavStyles
+} from './Nav.types';
 import {
   getStyles
-} from './M365Nav.styles';
-import { M365NavBase } from './M365NavBase';
+} from './Nav.styles';
+import { NavBase } from './NavBase';
 import {
   styled,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<IM365NavStyleProps, IM365NavStyles>();
+const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
-class M365NavComponent extends M365NavBase {
-  constructor(props: IM365NavProps) {
+class NavComponent extends NavBase {
+  constructor(props: INavProps) {
     super(props);
 
     this.state = {
@@ -42,7 +42,7 @@ class M365NavComponent extends M365NavBase {
         <nav role='navigation'>
           {
             this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this.renderGroup(group, groupIndex);
+              return this._renderGroup(group, groupIndex);
             })
           }
         </nav>
@@ -50,12 +50,12 @@ class M365NavComponent extends M365NavBase {
     );
   }
 
-  private onLinkClicked(link: IM365NavLink, ev: React.MouseEvent<HTMLElement>): void {
-    var nextState: INavState = {
+  private _onLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    let nextState: INavState = {
       selectedKey: link.key
     };
 
-    var hasChildren = link.links && link.links.length > 0;
+    const hasChildren = link.links && link.links.length > 0;
 
     if (hasChildren) {
       // show child links
@@ -77,12 +77,12 @@ class M365NavComponent extends M365NavBase {
     ev.stopPropagation();
   }
 
-  private renderCompositeLink(link: IM365NavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
 
-    var rightIconName = null;
+    let rightIconName = null;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
       rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
@@ -93,9 +93,9 @@ class M365NavComponent extends M365NavBase {
     }
 
     // show nav icon for the first level only
-    var leftIconName = nestingLevel === 0 ? link.icon : null;
+    const leftIconName = nestingLevel === 0 ? link.icon : null;
 
-    var linkTextStyle: React.CSSProperties = {};
+    let linkTextStyle: React.CSSProperties = {};
     if (!rightIconName && !leftIconName) {
       linkTextStyle.width = '100%';
     }
@@ -120,8 +120,7 @@ class M365NavComponent extends M365NavBase {
         href={ link.url ? link.url : undefined }
         target={ link.target ? link.target : undefined }
         key={ link.key || linkIndex }
-        tabIndex={ 0 }
-        onClick={ this.onLinkClicked.bind(this, link) }
+        onClick={ this._onLinkClicked.bind(this, link) }
         data-hint='ReactLeftNav'
         data-value={ link.name }
         aria-label={ link.name }
@@ -154,7 +153,7 @@ class M365NavComponent extends M365NavBase {
     );
   }
 
-  private renderLink(link: IM365NavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
@@ -165,7 +164,7 @@ class M365NavComponent extends M365NavBase {
         key={ link.key || linkIndex }
         title={ link.name }>
         {
-          this.renderCompositeLink(link, linkIndex, nestingLevel)
+          this._renderCompositeLink(link, linkIndex, nestingLevel)
         }
         {
           // show child links
@@ -174,7 +173,7 @@ class M365NavComponent extends M365NavBase {
           nestingLevel == 0 && link.isExpanded ?
             <div className={ AnimationClassNames.slideDownIn20 }>
               {
-                this.renderLinks(link.links as IM365NavLink[], ++nestingLevel)
+                this._renderLinks(link.links as INavLink[], ++nestingLevel)
               }
             </div>
             : null
@@ -183,7 +182,7 @@ class M365NavComponent extends M365NavBase {
     );
   }
 
-  private renderLinks(links: IM365NavLink[], nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> | null {
     if (!links || links.length === 0) {
       return null;
     }
@@ -191,15 +190,15 @@ class M365NavComponent extends M365NavBase {
     return (
       <ul role='list'>
         {
-          links.map((link: IM365NavLink, linkIndex: number) => {
-            return this.renderLink(link, linkIndex, nestingLevel);
+          links.map((link: INavLink, linkIndex: number) => {
+            return this._renderLink(link, linkIndex, nestingLevel);
           })
         }
       </ul>
     );
   }
 
-  private renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
     if (!group || !group.links || group.links.length === 0) {
       return null;
     }
@@ -223,14 +222,14 @@ class M365NavComponent extends M365NavBase {
               </div>
             </div> : null
         }
-        { this.renderLinks(group.links, 0 /* nestingLevel */) }
+        { this._renderLinks(group.links, 0 /* nestingLevel */) }
       </div>
     );
   }
 }
 
-export const M365Nav = styled<IM365NavProps, IM365NavStyleProps, IM365NavStyles>(
-  M365NavComponent,
+export const Nav = styled<INavProps, INavStyleProps, INavStyles>(
+  NavComponent,
   getStyles
 );
 

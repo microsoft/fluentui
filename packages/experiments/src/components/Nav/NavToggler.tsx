@@ -1,26 +1,26 @@
 ﻿/* tslint:disable */
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import * as React from 'react';
-import { M365Nav } from './M365Nav';
+import { Nav } from './Nav';
 import {
-  IM365NavProps,
-  IM365NavState,
-  IM365NavStyleProps,
-  IM365NavStyles
-} from "./M365Nav.types";
-import { M365SlimNav } from './M365SlimNav';
+  INavProps,
+  INavState,
+  INavStyleProps,
+  INavStyles
+} from "./Nav.types";
+import { SlimNav } from './SlimNav';
 import {
   getStyles
-} from './M365Nav.styles';
+} from './Nav.styles';
 import {
   styled,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<IM365NavStyleProps, IM365NavStyles>();
+const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
-class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavState> {
-  constructor(props: IM365NavProps) {
+class NavTogglerComponent extends React.Component<INavProps, INavState> {
+  constructor(props: INavProps) {
     super(props);
 
     this.state = {
@@ -44,12 +44,12 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
         }
         {
           isCollapsed ?
-            <M365SlimNav
+            <SlimNav
               groups={ this.props.groups }
               selectedKey={ this.props.selectedKey }
               navScrollerId={ this.props.navScrollerId } />
             :
-            <M365Nav
+            <Nav
               groups={ this.props.groups }
               selectedKey={ this.props.selectedKey } />
         }
@@ -58,8 +58,8 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
   }
 
   private _onNavCollapseClicked(_ev: React.MouseEvent<HTMLElement>): void {
-    this.setState((prevState: IM365NavState) => {
-      var isNavCollapsed = !prevState.isNavCollapsed;
+    this.setState((prevState: INavState) => {
+      const isNavCollapsed = !prevState.isNavCollapsed;
 
       // inform the caller about the collapse event
       if (!!this.props.onNavCollapsedCallback) {
@@ -68,7 +68,7 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
 
       return {
         isNavCollapsed: isNavCollapsed
-      } as IM365NavState;
+      } as INavState;
     });
   }
 
@@ -83,7 +83,6 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
 
     return (
       <a
-        tabIndex={ 0 }
         onClick={ this._onNavCollapseClicked.bind(this) }
         aria-expanded={ isNavCollapsed ? "false" : "true" }
         data-hint="ReactLeftNav"
@@ -100,8 +99,8 @@ class M365NavTogglerComponent extends React.Component<IM365NavProps, IM365NavSta
   }
 }
 
-export const M365NavToggler = styled<IM365NavProps, IM365NavStyleProps, IM365NavStyles>(
-  M365NavTogglerComponent,
+export const NavToggler = styled<INavProps, INavStyleProps, INavStyles>(
+  NavTogglerComponent,
   getStyles
 );
 /* tslint:enable */

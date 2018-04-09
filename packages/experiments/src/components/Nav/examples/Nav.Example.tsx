@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
-import { M365NavToggler } from '../M365NavToggler';
+import { NavToggler } from '../NavToggler';
 
-export class M365NavExample extends React.Component<{}, {}> {
+export class NavExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
   }
@@ -55,7 +55,7 @@ export class M365NavExample extends React.Component<{}, {}> {
 
     return (
       <div>
-        <M365NavToggler groups={ navLinkGroups } />
+        <NavToggler groups={ navLinkGroups } />
       </div>
     );
   }

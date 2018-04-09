@@ -8,7 +8,7 @@ import {
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 /* tslint:enable */
 
-export interface IM365NavProps {
+export interface INavProps {
   /**
    * A collection of link groups to display in the navigation bar
    */
@@ -38,7 +38,7 @@ export interface IM365NavProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IM365NavStyleProps, IM365NavStyles>;
+  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
 
   /**
    * (Optional) callback for the parent component when the nav component is toggled between expanded and collapsed state
@@ -46,19 +46,19 @@ export interface IM365NavProps {
   onNavCollapsedCallback?(isCollapsed: boolean): void;
 }
 
-export interface IM365NavState extends INavState {
+export interface INavState extends INavState {
   /**
    * Used to toggle the nav component between expanded and collapsed state.
    */
   isNavCollapsed?: boolean;
 }
 
-export interface IM365NavLink extends INavLink {
+export interface INavLink extends INavLink {
   /* used to adjust the floating nav when the scrollbar appears */
   scrollTop?: number;
 }
 
-export interface IM365NavStyleProps {
+export interface INavStyleProps {
   /**
    * is element selected boolean
    */
@@ -85,7 +85,7 @@ export interface IM365NavStyleProps {
   scrollTop?: number;
 }
 
-export interface IM365NavStyles {
+export interface INavStyles {
   /**
    * Style set for the nav component root
    */
