@@ -26,11 +26,15 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
-      color: theme.palette.themeDarker
+      backgroundColor: theme.palette.neutralLighter,
+    },
+
+    rootFocused: {
+      border: `1px solid ${theme.palette.neutralSecondary}`,
     },
 
     rootPressed: {
-      color: theme.palette.themePrimary
+      backgroundColor: theme.palette.neutralLight,
     },
 
     rootExpanded: {
