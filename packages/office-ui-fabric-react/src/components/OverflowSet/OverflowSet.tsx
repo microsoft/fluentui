@@ -6,7 +6,9 @@ import {
   IKeySequence,
   getNativeProps,
   divProperties,
-  focusFirstChild
+  focusFirstChild,
+  getFirstFocusable,
+  elementContains
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
@@ -82,18 +84,48 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     );
   }
 
-  public focus() {
+  /**
+   * Sets focus to the first tabbable item in the OverflowSet.
+   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element,
+   * even if focus is already in theOverflowSet
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focus(forceIntoFirstElement?: boolean): boolean {
+    let focusSucceeded = false;
+
     if (this.props.doNotContainWithinFocusZone) {
       if (this._divContainer.value) {
-        focusFirstChild(this._divContainer.value);
+        focusSucceeded = focusFirstChild(this._divContainer.value);
       }
-
-      return;
+    } else if (this._focusZone.value) {
+      focusSucceeded = this._focusZone.value.focus(forceIntoFirstElement);
     }
 
-    if (this._focusZone.value) {
-      this._focusZone.value.focus();
+    return focusSucceeded;
+  }
+
+  /**
+   * Sets focus to a specific child element within the OverflowSet.
+   * @param {HTMLElement} childElement The child element within the zone to focus.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focusElement(childElement?: HTMLElement): boolean {
+    let focusSucceeded = false;
+
+    if (!childElement) {
+      return false;
     }
+
+    if (this.props.doNotContainWithinFocusZone) {
+      if (this._divContainer.value && elementContains(this._divContainer.value, childElement)) {
+        childElement.focus();
+        focusSucceeded = document.activeElement === childElement;
+      }
+    } else if (this._focusZone.value) {
+      focusSucceeded = this._focusZone.value.focusElement(childElement);
+    }
+
+    return focusSucceeded;
   }
 
   public componentDidMount() {
