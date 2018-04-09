@@ -224,6 +224,9 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: #212121;
             cursor: pointer;
           }
+          &:focus {
+            border: 1px solid #666666;
+          }
           &:active {
             background-color: #eaeaea;
             color: #212121;
