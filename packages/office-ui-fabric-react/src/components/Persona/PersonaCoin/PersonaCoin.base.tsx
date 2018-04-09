@@ -7,9 +7,9 @@ import {
   getInitials,
   getNativeProps,
   getRTL,
-} from '../../Utilities';
-import { mergeStyles } from '../../Styling';
-import { PersonaPresence } from './PersonaPresence';
+} from '../../../Utilities';
+import { mergeStyles } from '../../../Styling';
+import { PersonaPresence } from '../PersonaPresence';
 import {
   Icon
 } from '../../Icon';
@@ -25,8 +25,8 @@ import {
   IPersonaPresenceProps,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
-} from './Persona.types';
-import { initialsColorPropToColorCode } from './PersonaInitialsColor';
+} from '../Persona.types';
+import { initialsColorPropToColorCode } from '../PersonaInitialsColor';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>();
 

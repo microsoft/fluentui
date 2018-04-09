@@ -3,8 +3,8 @@ import {
   BaseComponent,
   classNamesFunction,
   customizable,
-} from '../../Utilities';
-import { IStyleSet } from '../../Styling';
+} from '../../../Utilities';
+import { IStyleSet } from '../../../Styling';
 import { Icon } from '../../Icon';
 import {
   IPersonaPresenceProps,
@@ -12,8 +12,8 @@ import {
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
-} from './Persona.types';
-import { sizeBoolean } from './PersonaConsts';
+} from '../Persona.types';
+import { sizeBoolean } from '../PersonaConsts';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;

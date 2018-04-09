@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { PersonaBase } from './Persona.base';
-import { PersonaCoinBase } from './PersonaCoin.base';
-import { PersonaPresenceBase } from './PersonaPresence.base';
+import { PersonaCoinBase } from './PersonaCoin';
+import { PersonaPresenceBase } from './PersonaPresence';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';

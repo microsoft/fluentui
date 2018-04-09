@@ -3,16 +3,16 @@ import {
   IPersonaPresenceStyles,
   PersonaPresence,
   PersonaSize,
-} from './Persona.types';
+} from '../Persona.types';
 import {
   FontSizes,
   HighContrastSelector,
-} from '../../Styling';
+} from '../../../Styling';
 import {
   personaPresenceSize,
   presenceBoolean,
   sizeBoolean,
-} from './PersonaConsts';
+} from '../PersonaConsts';
 
 export const getStyles = (
   props: IPersonaPresenceStyleProps
