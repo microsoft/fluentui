@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: fix bug where suggestions wouldn't have correct value selected",
+      "comment": "Move sub-components to sub-folders",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "jordanjanzen@jordanjanzen.com"
 }

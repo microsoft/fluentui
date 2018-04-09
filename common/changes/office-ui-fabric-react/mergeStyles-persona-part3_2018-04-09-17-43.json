@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updating the split button to close the menu when the primary button is executed.",
+      "comment": "Split PersonaCoin and PersonaPresence files for more consistency.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kysedate@microsoft.com"
+  "email": "jordancjanzen@gmail.com"
 }
