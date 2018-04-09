@@ -1333,7 +1333,30 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentOptions
     } = this.state;
 
-    index = this._getNextSelectableIndex(index, searchDirection);
+    // update index to allow content to wrap
+    if (searchDirection === SearchDirection.forward && index >= currentOptions.length - 1) {
+      index = -1;
+    } else if (searchDirection === SearchDirection.backward && index <= 0) {
+      index = currentOptions.length;
+    }
+
+    // get the next "valid" index
+    const indexUpdate = this._getNextSelectableIndex(index, searchDirection);
+
+    // if the two indicies are equal we didn't move and
+    // we should attempt to get  get the first/last "valid" index to use
+    // (Note, this takes care of the potential cases where the first/last
+    // item is not focusable), otherwise use the updated index
+    if (index === indexUpdate) {
+      if (searchDirection === SearchDirection.forward) {
+        index = this._getNextSelectableIndex(-1, searchDirection);
+      } else if (searchDirection === SearchDirection.backward) {
+        index = this._getNextSelectableIndex(currentOptions.length, searchDirection);
+      }
+    } else {
+      index = indexUpdate;
+    }
+
     if (this._indexWithinBounds(currentOptions, index)) {
       this._setPendingInfoFromIndex(index);
     }
@@ -1470,6 +1493,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // go to the last index
         if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
           index = this.state.currentOptions.length;
+        }
+
+        if ((ev.altKey || ev.metaKey) && isOpen) {
+          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+          return;
         }
 
         // Go to the previous option

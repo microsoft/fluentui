@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix phantom scrollbar in Panel popups in Firefox",
+      "comment": "Move sub-components to sub-folders",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "miclo@microsoft.com"
+  "email": "jordanjanzen@jordanjanzen.com"
 }
