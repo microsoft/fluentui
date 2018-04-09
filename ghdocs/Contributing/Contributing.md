@@ -1,5 +1,5 @@
 
- ## Contributing to Office UI Fabric
+ ## Contributing to Office UI Fabric React
 
 Please use the following steps to contribute a new component or a bug fix to the Office UI Fabric project.
 

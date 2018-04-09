@@ -1,4 +1,4 @@
-# [office-ui-fabric-react](../../../README.md) › Contributing
+# Git branch setup
 
 This document describes how to setup your development environment and contribute changes to the **office-ui-fabric-react** project. This document assumes basic working knowledge with Git and related tools. We are providing instructions specific to this project.
 
