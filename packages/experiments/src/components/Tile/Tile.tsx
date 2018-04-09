@@ -29,7 +29,7 @@ export interface ITileState {
   isModal?: boolean;
 }
 
-export const SIZES: {
+export const TileLayoutSizes: {
   [P in TileSize]: {
     nameplatePadding: number;
     nameplateNameHeight: number;
@@ -401,7 +401,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
     nameplateActivityHeight,
     nameplateNameHeight,
     foregroundMargin
-  } = SIZES[tileSize];
+  } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

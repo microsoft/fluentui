@@ -8,7 +8,7 @@ import {
   IShimmerTileStyleProps,
   IShimmerTileStyles
 } from './ShimmerTile.types';
-import { SIZES, TileSize } from 'experiments/lib/Tile';
+import { TileLayoutSizes, TileSize } from 'experiments/lib/Tile';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
 import { getRenderedElements } from '../Shimmer.base';
 import { ShimmerElementType as ElemType } from 'experiments/lib/Shimmer';
@@ -80,7 +80,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
       nameplateMargin,
       nameplateActivityHeight,
       nameplateNameHeight
-    } = SIZES[tileSize];
+    } = TileLayoutSizes[tileSize];
 
     const {
       squareWidth,
