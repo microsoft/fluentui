@@ -10,7 +10,8 @@ import {
 } from './ShimmerTile.types';
 import { SIZES, TileSize } from 'experiments/lib/Tile';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
-import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
+import { getRenderedElements } from '../Shimmer.base';
+import { ShimmerElementType as ElemType } from 'experiments/lib/Shimmer';
 
 const enum ShimmerTileLayoutValues {
   largeSquareWidth = 96,
@@ -78,8 +79,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
       nameplatePadding,
       nameplateMargin,
       nameplateActivityHeight,
-      nameplateNameHeight,
-      foregroundMargin
+      nameplateNameHeight
     } = SIZES[tileSize];
 
     const {
@@ -114,28 +114,108 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
           height={ contentSize.height - squareHeight - nameplateHeight }
         />
         <div
-          className={ this._classNames.thumbnail }
+          className={ this._classNames.flexDiv }
         >
-          <ShimmerGap
-            widthInPixel={ (contentSize.width - squareWidth) / 2 }
-            height={ squareHeight }
-          />
           {
-            itemThumbnail ?
-              <ShimmerLine
-                widthInPixel={ squareWidth }
-                height={ squareHeight }
-              /> :
-              <ShimmerGap
-                widthInPixel={ squareWidth }
-                height={ squareHeight }
-              />
+            getRenderedElements(
+              [
+                {
+                  type: ElemType.GAP,
+                  widthInPixel: (contentSize.width - squareWidth) / 2,
+                  height: squareHeight
+                },
+                itemThumbnail ?
+                  {
+                    type: ElemType.LINE,
+                    widthInPixel: squareWidth,
+                    height: squareHeight
+                  } :
+                  {
+                    type: ElemType.GAP,
+                    widthInPixel: squareWidth,
+                    height: squareHeight
+                  },
+                {
+                  type: ElemType.GAP,
+                  widthInPixel: (contentSize.width - squareWidth) / 2,
+                  height: squareHeight
+                }
+              ],
+              squareHeight
+            )
           }
-          <ShimmerGap
-            widthInPixel={ (contentSize.width - squareWidth) / 2 }
-            height={ squareHeight }
-          />
         </div>
+        {
+          itemActivity || itemName ?
+            <div>
+              <ShimmerGap
+                widthInPixel={ contentSize.width }
+                height={ nameplatePadding }
+              />
+              {
+                itemName ?
+                  <div
+                    className={ this._classNames.flexDiv }
+                  >
+                    {
+                      getRenderedElements(
+                        [
+                          {
+                            type: ElemType.GAP,
+                            widthInPixel: (contentSize.width - nameWidth) / 2,
+                            height: nameplateNameHeight
+                          },
+                          {
+                            type: ElemType.LINE,
+                            widthInPixel: nameWidth,
+                            height: nameHeight
+                          },
+                          {
+                            type: ElemType.GAP,
+                            widthInPixel: (contentSize.width - nameWidth) / 2,
+                            height: nameplateNameHeight
+                          }
+                        ],
+                        nameplateNameHeight
+                      )
+                    }
+                  </div> : null
+              }
+              {
+                itemActivity ?
+                  <div
+                    className={ this._classNames.flexDiv }
+                  >
+                    {
+                      getRenderedElements(
+                        [
+                          {
+                            type: ElemType.GAP,
+                            widthInPixel: (contentSize.width - activityWidth) / 2,
+                            height: nameplateActivityHeight
+                          },
+                          {
+                            type: ElemType.LINE,
+                            widthInPixel: activityWidth,
+                            height: activityHeight
+                          },
+                          {
+                            type: ElemType.GAP,
+                            widthInPixel: (contentSize.width - activityWidth) / 2,
+                            height: nameplateActivityHeight
+                          }
+                        ],
+                        nameplateActivityHeight
+                      )
+                    }
+                  </div> : null
+              }
+              <ShimmerGap
+                widthInPixel={ contentSize.width }
+                height={ nameplatePadding }
+              />
+            </div> : null
+        }
       </div>
     );
   }

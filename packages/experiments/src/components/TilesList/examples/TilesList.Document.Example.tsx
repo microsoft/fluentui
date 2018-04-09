@@ -5,12 +5,27 @@ import {
   ITilesGridItem,
   ITilesGridSegment
 } from '../../TilesList';
-import { Tile } from '../../../Tile';
+import {
+  Tile
+} from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells } from './ExampleHelpers';
+import {
+  IExampleGroup,
+  IExampleItem,
+  createGroup,
+  createDocumentItems,
+  getTileCells,
+  createShimmerGroups
+} from './ExampleHelpers';
+import { ISize } from 'experiments/lib/Utilities';
+import { ShimmerTile } from '../../Shimmer/ShimmerTile/ShimmerTile';
+import * as TilesListExampleStylesModule from './TilesList.Example.scss';
+
+// tslint:disable-next-line:no-any
+const TilesListExampleStyles = TilesListExampleStylesModule as any;
 
 function createGroups(): IExampleGroup[] {
   let offset = 0;
@@ -30,6 +45,8 @@ function createGroups(): IExampleGroup[] {
 
 const GROUPS = createGroups();
 
+const SHIMMER_GROUPS = createShimmerGroups('document', 0);
+
 const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[]; }) => group.items));
 
 declare class TilesListClass extends TilesList<IExampleItem> { }
@@ -38,6 +55,7 @@ const TilesListType: typeof TilesListClass = TilesList;
 
 export interface ITilesListDocumentExampleState {
   isModalSelection: boolean;
+  isDataLoaded: boolean;
   cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
 }
 
@@ -56,9 +74,11 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
 
     this.state = {
       isModalSelection: this._selection.isModal(),
-      cells: getTileCells(GROUPS, {
-        onRenderCell: this._onRenderDocumentCell,
-        onRenderHeader: this._onRenderHeader
+      isDataLoaded: false,
+      cells: getTileCells(SHIMMER_GROUPS, {
+        onRenderCell: this._onRenderShimmerCell,
+        onRenderHeader: this._onRenderShimmerHeader,
+        shimmerMode: true
       })
     };
   }
@@ -73,6 +93,13 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
           onChanged={ this._onToggleIsModalSelection }
           onText='Modal'
           offText='Normal'
+        />
+        <Toggle
+          label='Load Data'
+          checked={ this.state.isDataLoaded }
+          onChanged={ this._onToggleIsDataLoaded }
+          onText='Loaded'
+          offText='Loading...'
         />
         <MarqueeSelection selection={ this._selection }>
           <SelectionZone
@@ -92,6 +119,29 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
 
   private _onToggleIsModalSelection = (checked: boolean): void => {
     this._selection.setModal(checked);
+  }
+
+  private _onToggleIsDataLoaded = (checked: boolean): void => {
+    const { isDataLoaded } = this.state;
+    let { cells } = this.state;
+
+    if (cells.length && !cells[0].isPlaceholder) {
+      cells = getTileCells(SHIMMER_GROUPS, {
+        onRenderCell: this._onRenderShimmerCell,
+        onRenderHeader: this._onRenderShimmerHeader,
+        shimmerMode: true
+      });
+    } else {
+      cells = getTileCells(GROUPS, {
+        onRenderCell: this._onRenderDocumentCell,
+        onRenderHeader: this._onRenderHeader
+      });
+    }
+
+    this.setState({
+      isDataLoaded: !isDataLoaded,
+      cells: cells
+    });
   }
 
   private _onSelectionChange = (): void => {
@@ -139,9 +189,31 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
     );
   }
 
+  private _onRenderShimmerCell(item: IExampleItem, finalSize: ISize): JSX.Element {
+    return (
+      <ShimmerTile
+        contentSize={ finalSize }
+        itemName={ true } // placeholder
+        itemActivity={ true } // placeholder
+        itemThumbnail={ true } // placeholder
+        tileSize={ 'large' }
+      />
+    );
+  }
+
   private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
       <div role='presentation'>
+        <h3>{ item.name }</h3>
+      </div>
+    );
+  }
+
+  private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
+    return (
+      <div
+        className={ TilesListExampleStyles.shimmerHeader }
+      >
         <h3>{ item.name }</h3>
       </div>
     );

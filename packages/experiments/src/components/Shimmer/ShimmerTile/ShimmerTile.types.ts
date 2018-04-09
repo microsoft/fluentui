@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  IStyle,
-  IStyleSet
+  IStyle
 } from 'office-ui-fabric-react/lib/Styling';
 import {
   ISize,
@@ -59,10 +58,10 @@ export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> 
 }
 
 export interface IShimmerTileStyleProps {
-  contentSize?: ISize
+  contentSize?: ISize;
 }
 
 export interface IShimmerTileStyles {
   root?: IStyle;
-  thumbnail?: IStyle;
+  flexDiv?: IStyle;
 }
