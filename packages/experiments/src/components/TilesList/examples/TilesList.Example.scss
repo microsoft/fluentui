@@ -2,12 +2,3 @@
 .tileImage {
   display: block;
 }
-
-.shimmerHeader {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  border-style: solid;
-  border-color: white;
-  border-width: calc(100% - 10px) calc(100% - 50%) calc(100% - 10px) 10px;
-}

@@ -266,10 +266,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           }
         }
 
-        const renderedCell = (offset?: number): JSX.Element => {
+        const renderedCell = (keyOffset?: number): JSX.Element => {
           return (
             <div
-              key={ `${grid.key}-item-${cell.key}${offset ? '-' + offset : ''}` }
+              key={ `${grid.key}-item-${cell.key}${keyOffset ? '-' + keyOffset : ''}` }
               data-item-index={ index }
               className={ css('ms-List-cell', this._onGetCellClassName(), {
                 [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
@@ -294,6 +294,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             renderedCells.push(renderedCell(j));
           }
         } else {
+          shimmerWrapperWidth = finalSize.width / 3;
           renderedCells.push(renderedCell());
         }
       }

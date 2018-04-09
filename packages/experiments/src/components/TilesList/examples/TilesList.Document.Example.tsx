@@ -22,10 +22,13 @@ import {
 } from './ExampleHelpers';
 import { ISize } from 'experiments/lib/Utilities';
 import { ShimmerTile } from '../../Shimmer/ShimmerTile/ShimmerTile';
-import * as TilesListExampleStylesModule from './TilesList.Example.scss';
+import { getRenderedElements } from '../../Shimmer/Shimmer.base';
+import {
+  ShimmerElementType as ElemType,
+} from 'experiments/lib/Shimmer';
 
-// tslint:disable-next-line:no-any
-const TilesListExampleStyles = TilesListExampleStylesModule as any;
+const HEADER_VERTICAL_PADDING = 13;
+const HEADER_FONT_SIZE = 18;
 
 function createGroups(): IExampleGroup[] {
   let offset = 0;
@@ -203,18 +206,33 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
 
   private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
-      <div role='presentation'>
-        <h3>{ item.name }</h3>
+      <div
+        role='presentation'
+        style={
+          {
+            padding: `${HEADER_VERTICAL_PADDING}px 0`,
+            fontSize: `${HEADER_FONT_SIZE}px`,
+            fontWeight: 700,
+            lineHeight: `${HEADER_FONT_SIZE}px`
+          }
+        }
+      >
+        { item.name }
       </div>
     );
   }
 
   private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
     return (
-      <div
-        className={ TilesListExampleStyles.shimmerHeader }
-      >
-        <h3>{ item.name }</h3>
+      <div>
+        {
+          getRenderedElements(
+            [
+              { type: ElemType.LINE, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
+            ],
+            HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE
+          )
+        }
       </div>
     );
   }
