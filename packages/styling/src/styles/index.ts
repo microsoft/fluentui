@@ -14,4 +14,4 @@ export {
   removeOnThemeChangeCallback
 } from './theme';
 export * from './CommonStyles';
-export { normalize } from './GeneralStyles';
+export * from './GeneralStyles';
