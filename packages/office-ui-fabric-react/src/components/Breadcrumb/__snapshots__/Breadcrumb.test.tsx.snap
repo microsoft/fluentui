@@ -382,6 +382,7 @@ exports[`Breadcrumb renders breadcumb correctly 3`] = `
         aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone11"
+        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
