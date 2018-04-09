@@ -26,6 +26,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
+      color: theme.palette.themeDarker,
       backgroundColor: theme.palette.neutralLighter,
     },
 
@@ -34,6 +35,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootPressed: {
+      color: theme.palette.themePrimary,
       backgroundColor: theme.palette.neutralLight,
     },
 
