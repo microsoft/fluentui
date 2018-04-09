@@ -201,6 +201,11 @@ export const getItemClassNames = memoizeFunction((
     ],
     splitContainer: [
       styles.splitButtonFlexContainer,
+      !disabled && !checked && [{
+        selectors: {
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+        }
+      }]
     ],
     splitContainerFocus: [
       styles.splitButtonFlexContainerFocus,
