@@ -574,9 +574,6 @@ exports[`Button renders IconButton correctly 1`] = `
         background-color: #f4f4f4;
         color: #004578;
       }
-      &:focus {
-        border: 1px solid #666666;
-      }
       &:active {
         background-color: #eaeaea;
         color: #0078d4;
