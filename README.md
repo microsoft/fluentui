@@ -116,7 +116,7 @@ responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 You'll also want to mock out requiring `.scss` files.
 In Jest:
 
-```javascript
+```js
   moduleNameMapper: {
     // jest-style-mock.js should just contain module.exports = {};
     '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
@@ -127,15 +127,13 @@ In Jest:
 
 For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BestPracties/ADVANCED.md).
 
-## Contribute to Fabric React
+## Contribute to Office UI Fabric React
 
-Please take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/CONTRIBUTING.md) for more info.
-
-Please read [Bug fixes](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Contributing/BugFixes.md) and [New component](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Contributing/NewComponent.md)
+Please take a look at our [contribution guidelines](./ghdocs/Contributing/Contributing.md) for more info. Also read [Contribute Bug fixes](./ghdocs/Contributing/BugFixes.md) and [Contribute New component](./ghdocs/Contributing/NewComponent.md).
 
 ## Building the repo
 
-Before you get started, **make sure you have read the [Git branch setup instrucions](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Contributing/Setup.md)**
+Before you get started, **make sure you have read the [Git branch setup instrucions](./ghdocs/Contributing/Setup.md)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
@@ -151,7 +149,7 @@ To build individual packages within the `packages/*/` folders, you can use `npm 
 
 ## Testing
 
-For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BestPractices/Testing.md).
+For testing see our [testing documentation](./ghdocs/BestPractices/Testing.md).
 
 ## Advanced building tips
 

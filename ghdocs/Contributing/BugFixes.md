@@ -5,6 +5,6 @@
 
 * Setup your branch using instructions in [GitbranchSetup](./GitBranchSetup.md)
 
-* Code and test the bug fix
+* Code and test the bug fix.
 
-* Test the fix and make sure all the tests are passing
+* Test the fix and make sure all the tests are passing.
