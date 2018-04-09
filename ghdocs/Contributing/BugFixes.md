@@ -3,7 +3,7 @@
 
  Please use the following steps to contribute bug fixes
 
-* Setup your branch using instructions in [GitbranchSetup](./GitBranchSetup.md)
+* Setup your branch using instructions in [GitbranchSetup](./Setup.md)
 
 * Code and test the bug fix.
 

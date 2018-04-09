@@ -51,7 +51,7 @@ ReactDOM.render(
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Testing/BrowserSupport.md) for more information.
+Fabric React supports many commonly used browsers. See the [browser support doc](./ghdocs/Testing/BrowserSupport.md) for more information.
 
 ## Server-side rendering
 
@@ -125,7 +125,7 @@ In Jest:
 
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BestPracties/ADVANCED.md).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](./ghdocs/BestPractices/Advanced.md).
 
 ## Contribute to Office UI Fabric React
 
