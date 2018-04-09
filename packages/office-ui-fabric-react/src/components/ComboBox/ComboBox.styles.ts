@@ -53,7 +53,8 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IRawSty
 export const getOptionStyles = memoizeFunction((
   theme: ITheme,
   customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
-  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>
+  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
+  isPending?: boolean
 ): Partial<IComboBoxOptionStyles> => {
 
   const { semanticColors, palette } = theme;
@@ -63,12 +64,11 @@ export const getOptionStyles = memoizeFunction((
   const ComboBoxOptionTextColorSelected = palette.black;
   const ComboBoxOptionTextColorDisabled = semanticColors.disabledText;
   const ComboBoxOptionBackgroundDisabled = semanticColors.bodyBackground;
-  const ComboBoxOptionBorderColorFocused = palette.neutralSecondary;
 
   const optionStyles: IComboBoxOptionStyles = {
     root: [
       {
-        backgroundColor: 'transparent',
+        backgroundColor: isPending ? ComboBoxOptionBackgroundHovered : 'transparent',
         boxSizing: 'border-box',
         cursor: 'pointer',
         display: 'block',
@@ -214,11 +214,9 @@ export const getStyles = memoizeFunction((
     borderWidth: '2px',
     MsHighContrastAdjust: 'none',
     paddingLeft: '11px',
+    paddingTop: '0',
+    paddingBottom: '0',
     selectors: {
-      '.ms-ComboBox-Input': {
-        // ComboBoxHeight is 32, 28 accounts for the 2px borders
-        height: '28px'
-      },
       '.ms-ComboBox-CaretDown-button': {
         // Negative positioning to account for the 2px border
         right: '-2px',
@@ -235,11 +233,10 @@ export const getStyles = memoizeFunction((
       fonts.medium,
       {
         boxShadow: 'none',
-        marginBottom: '10px',
         marginLeft: '0',
-        paddingTop: '0',
+        paddingTop: '1px', // The 1px padding centers the input field, avoiding overlap in the browser
+        paddingBottom: '1px',
         paddingRight: ComboxBoxCaretDownWidth,
-        paddingBottom: '0',
         paddingLeft: '12px',
         color: ComboBoxRootTextColor,
         position: 'relative',
@@ -316,7 +313,7 @@ export const getStyles = memoizeFunction((
     input: {
       boxSizing: 'border-box',
       width: '100%',
-      height: '30px',
+      height: '28px',
       borderStyle: 'none',
       outline: 'none',
       font: 'inherit',

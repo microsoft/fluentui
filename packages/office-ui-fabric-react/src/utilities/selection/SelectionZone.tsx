@@ -2,17 +2,16 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   elementContains,
   findScrollableParent,
   getParent,
   getDocument,
   getWindow,
-  isElementTabbable
+  isElementTabbable,
+  createRef
 } from '../../Utilities';
 import {
   ISelection,
-  SelectionDirection,
   SelectionMode
 } from './interfaces';
 
@@ -59,7 +58,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     selectionMode: SelectionMode.multiple
   };
 
-  private _root: HTMLDivElement;
+  private _root = createRef<HTMLDivElement>();
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
@@ -69,8 +68,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isTouchTimeoutId: number | undefined;
 
   public componentDidMount() {
-    const win = getWindow(this._root);
-    const scrollElement = findScrollableParent(this._root);
+    const win = getWindow(this._root.value);
+    const scrollElement = findScrollableParent(this._root.value);
 
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown, keyup', this._updateModifiers, true);
@@ -83,7 +82,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return (
       <div
         className='ms-SelectionZone'
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onKeyDownCapture={ this._onKeyDownCapture }
@@ -108,25 +107,23 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * been called on an element, so we need a flag to store the idea that we will bypass the "next"
    * focus event that occurs. This method does that.
    */
-  @autobind
-  public ignoreNextFocus() {
+  public ignoreNextFocus = (): void => {
     this._handleNextFocus(false);
   }
 
-  @autobind
-  private _onMouseDownCapture(ev: any) {
+  private _onMouseDownCapture = (ev: any): void => {
     if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
       this.ignoreNextFocus();
       return;
     }
 
-    if (!elementContains(ev.target, this._root)) {
+    if (!elementContains(ev.target, this._root.value)) {
       return;
     }
 
     let target = ev.target as HTMLElement;
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
         this.ignoreNextFocus();
         break;
@@ -141,8 +138,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * as long as the focus did not originate from a mouse down/touch event. For those cases, we handle them
    * specially.
    */
-  @autobind
-  private _onFocus(ev: React.FocusEvent<HTMLElement>) {
+  private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const target = ev.target as HTMLElement;
     const { selection } = this.props;
     const isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
@@ -174,14 +170,18 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._handleNextFocus(false);
   }
 
-  @autobind
-  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
     const itemRoot = this._findItemRoot(target);
 
-    while (target !== this._root) {
+    // No-op if selection is disabled
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
         break;
       } else if (itemRoot) {
@@ -199,13 +199,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  @autobind
-  private _onTouchStartCapture(ev: React.TouchEvent<HTMLElement>) {
+  private _onTouchStartCapture = (ev: React.TouchEvent<HTMLElement>): void => {
     this._setIsTouch(true);
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -216,7 +214,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       return;
     }
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
         this._onToggleAllClick(ev);
         break;
@@ -243,8 +241,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  @autobind
-  private _onContextMenu(ev: React.MouseEvent<HTMLElement>) {
+  private _onContextMenu = (ev: React.MouseEvent<HTMLElement>): void => {
     const target = ev.target as HTMLElement;
 
     const { onItemContextMenu, selection } = this.props;
@@ -266,7 +263,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _isSelectionDisabled(target: HTMLElement): boolean {
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
         return true;
       }
@@ -280,8 +277,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
    * we should execute the invoke handler.
    */
-  @autobind
-  private _onDoubleClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onDoubleClick = (ev: React.MouseEvent<HTMLElement>): void => {
     let target = ev.target as HTMLElement;
 
     if (this._isSelectionDisabled(target)) {
@@ -296,7 +292,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     if (itemRoot && onItemInvoked && selectionMode !== SelectionMode.none && !this._isInputElement(target)) {
       const index = this._getItemIndex(itemRoot);
 
-      while (target !== this._root) {
+      while (target !== this._root.value) {
         if (
           this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) ||
           this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
@@ -313,15 +309,13 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  @autobind
-  private _onKeyDownCapture(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDownCapture = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._updateModifiers(ev);
 
     this._handleNextFocus(true);
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -364,7 +358,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     if (itemRoot) {
       const index = this._getItemIndex(itemRoot);
 
-      while (target !== this._root) {
+      while (target !== this._root.value) {
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
           // For toggle elements, assuming they are rendered as buttons, they will generate a click event,
           // so we can no-op for any keydowns in this case.
@@ -511,7 +505,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _findItemRoot(target: HTMLElement): HTMLElement | undefined {
     const { selection } = this.props;
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       const indexValue = target.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
       const index = Number(indexValue);
 
@@ -522,7 +516,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       target = getParent(target) as HTMLElement;
     }
 
-    if (target === this._root) {
+    if (target === this._root.value) {
       return undefined;
     }
 
@@ -536,7 +530,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _hasAttribute(element: HTMLElement, attributeName: string): boolean {
     let isToggle = false;
 
-    while (!isToggle && element !== this._root) {
+    while (!isToggle && element !== this._root.value) {
       isToggle = element.getAttribute(attributeName) === 'true';
       element = getParent(element) as HTMLElement;
     }

@@ -5,9 +5,7 @@ import {
   DefaultFontStyles,
   getFocusStyle,
   FontSizes,
-  FontWeights,
-  IStyle,
-  ITheme,
+  FontWeights
 } from '../../Styling';
 
 export const buttonStyles: IButtonStyles = {
@@ -75,7 +73,9 @@ export const getStyles = (
         position: 'relative',
         color: semanticColors.bodyText,
         backgroundColor: semanticColors.bodyBackground,
-      }
+      },
+      isExpanded && 'is-expanded',
+      isSelected && 'is-selected'
     ],
     link: [
       'ms-Nav-link',

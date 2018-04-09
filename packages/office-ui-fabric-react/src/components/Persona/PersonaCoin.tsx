@@ -1,28 +1,36 @@
 import * as React from 'react';
 import {
-  autobind,
-  css,
+  BaseComponent,
+  classNamesFunction,
+  customizable,
   divProperties,
   getInitials,
   getNativeProps,
-  getRTL
+  getRTL,
+  styled,
 } from '../../Utilities';
-import { Image, ImageFit, ImageLoadState } from '../../Image';
+import { mergeStyles } from '../../Styling';
 import { PersonaPresence } from './PersonaPresence';
-import {
-  IPersonaProps,
-  PersonaPresence as PersonaPresenceEnum,
-  PersonaInitialsColor,
-  PersonaSize
-} from './Persona.types';
-import {
-  PERSONA_SIZE
-} from './PersonaConsts';
 import {
   Icon
 } from '../../Icon';
-import * as stylesImport from './Persona.scss';
-const styles: any = stylesImport;
+import {
+  Image,
+  ImageFit,
+  ImageLoadState
+} from '../../Image';
+import {
+  IPersonaCoinProps,
+  IPersonaCoinStyleProps,
+  IPersonaCoinStyles,
+  IPersonaPresenceProps,
+  PersonaPresence as PersonaPresenceEnum,
+  PersonaSize,
+} from './Persona.types';
+import { initialsColorPropToColorCode } from './PersonaInitialsColor';
+import { getStyles } from './PersonaCoin.styles';
+
+const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>();
 
 const SIZE_TO_PIXELS: { [key: number]: number } = {
   [PersonaSize.tiny]: 20,
@@ -42,23 +50,26 @@ const SIZE_TO_PIXELS: { [key: number]: number } = {
   [PersonaSize.size72]: 72,
   [PersonaSize.size100]: 100
 };
-import { mergeStyles } from '../../Styling';
-import { initialsColorPropToColorCode } from './PersonaInitialsColor';
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
   isImageError?: boolean;
 }
 
-export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
-  public static defaultProps: IPersonaProps = {
+/**
+ * PersonaCoin with no default styles.
+ * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ */
+@customizable('PersonaCoin', ['theme'])
+export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
+  public static defaultProps: IPersonaCoinProps = {
     primaryText: '',
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
-    imageAlt: ''
+    imageAlt: '',
   };
 
-  constructor(props: IPersonaProps) {
+  constructor(props: IPersonaCoinProps) {
     super(props);
 
     this.state = {
@@ -69,86 +80,106 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
   public render(): JSX.Element | null {
     const {
+      className,
       coinProps,
       coinSize,
+      getStyles: getStylesProp, // Use getStyles from props.
       imageUrl,
-      imageAlt,
-      initialsColor,
-      primaryText,
-      imageShouldFadeIn,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
-      imageShouldStartVisible
-     } = this.props;
+      presence,
+      theme,
+    } = this.props;
 
     const size = this.props.size as PersonaSize;
     const divProps = getNativeProps(this.props, divProperties);
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
+    const personaPresenceProps: IPersonaPresenceProps = {
+      coinSize,
+      presence,
+      size,
+      theme,
+    };
+
+    // Use getStyles from props, or fall back to getStyles from styles file.
+    const classNames = getClassNames(getStylesProp, {
+      theme: theme!,
+      className: (coinProps && coinProps.className) ? coinProps.className : className,
+      size,
+    });
+
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona-coin', PERSONA_SIZE[size], coinProps && coinProps.className) }
+        className={ classNames.coin }
       >
-        { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
-          <div
-            { ...coinProps }
-            className={ css('ms-Persona-imageArea', styles.imageArea) }
-            style={ coinSizeStyle }
-          >
-            {
-              !this.state.isImageLoaded &&
-              (!imageUrl || this.state.isImageError) &&
-              (
-                <div
-                  className={ css(
-                    'ms-Persona-initials',
-                    styles.initials,
-                    mergeStyles({
-                      backgroundColor: initialsColorPropToColorCode(this.props)
-                    })
-                  ) }
-                  style={ coinSizeStyle }
-                  aria-hidden='true'
-                >
-                  { onRenderInitials(this.props, this._onRenderInitials) }
-                </div>
-              )
-            }
-            { onRenderCoin(this.props, this._onRenderCoin) }
-            <PersonaPresence { ...this.props } />
-          </div>
-        ) :
-          (this.props.presence ?
-            <PersonaPresence
-              { ...this.props }
-            /> :
-            <Icon
-              iconName='Contact'
-              className={ styles.size10NoPresenceIcon }
-            />
-          )
+
+        { // Render PersonaCoin if size is not size10
+          (size !== PersonaSize.size10 && size !== PersonaSize.tiny)
+            ? (
+              <div
+                { ...coinProps }
+                className={ classNames.imageArea }
+                style={ coinSizeStyle }
+              >
+                {
+                  !this.state.isImageLoaded &&
+                  (!imageUrl || this.state.isImageError) &&
+                  (
+                    <div
+                      className={ mergeStyles(
+                        classNames.initials,
+                        {
+                          backgroundColor: initialsColorPropToColorCode(this.props)
+                        }
+                      ) }
+                      style={ coinSizeStyle }
+                      aria-hidden='true'
+                    >
+                      { onRenderInitials(this.props, this._onRenderInitials) }
+                    </div>
+                  )
+                }
+                { onRenderCoin(this.props, this._onRenderCoin) }
+                <PersonaPresence { ...personaPresenceProps } />
+              </div>
+            ) : ( // Otherwise, render just PersonaPresence.
+              this.props.presence
+                ? <PersonaPresence { ...personaPresenceProps } />
+                : // Just render Contact Icon if there isn't a Presence prop.
+                <Icon
+                  iconName='Contact'
+                  className={ classNames.size10WithoutPresenceIcon }
+                />
+            )
         }
         { this.props.children }
       </div>
     );
   }
 
-  @autobind
-  private _onRenderCoin(props: IPersonaProps): JSX.Element | null {
+  private _onRenderCoin = (props: IPersonaCoinProps): JSX.Element | null => {
     const {
       coinSize,
+      getStyles: getStylesProp,
       imageUrl,
       imageAlt,
       imageShouldFadeIn,
-      imageShouldStartVisible
+      imageShouldStartVisible,
+      theme,
     } = this.props;
 
     const size = this.props.size as PersonaSize;
 
-    return(
+    const classNames = getClassNames(getStylesProp, {
+      theme: theme!,
+      size
+    });
+
+    return (
       <Image
-        className={ css('ms-Persona-image', styles.image) }
+        className={ classNames.image }
         imageFit={ ImageFit.cover }
         src={ imageUrl }
         width={ coinSize || SIZE_TO_PIXELS[size] }
@@ -161,31 +192,38 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     );
   }
 
-  @autobind
-  private _onRenderInitials(props: IPersonaProps): JSX.Element {
+  private _onRenderInitials = (props: IPersonaCoinProps): JSX.Element => {
     let { imageInitials } = props;
-    const { primaryText } = props;
+    const {
+      allowPhoneInitials,
+      primaryText,
+    } = props;
 
     const isRTL = getRTL();
 
-    imageInitials = imageInitials || getInitials(primaryText, isRTL);
+    imageInitials = imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
 
     return (
-      imageInitials !== '' ?
-        <span>{ imageInitials }</span> :
-        <Icon iconName='Contact' />
+      imageInitials !== ''
+        ? <span>{ imageInitials }</span>
+        : <Icon iconName='Contact' />
     );
   }
 
-  @autobind
-  private _onPhotoLoadingStateChange(loadState: ImageLoadState) {
+  private _onPhotoLoadingStateChange = (loadState: ImageLoadState) => {
     this.setState({
       isImageLoaded: loadState === ImageLoadState.loaded,
       isImageError: loadState === ImageLoadState.error
     });
 
-    if (this.props.onPhotoLoadingStateChange) {
-      this.props.onPhotoLoadingStateChange(loadState);
-    }
+    this.props.onPhotoLoadingStateChange && this.props.onPhotoLoadingStateChange(loadState);
   }
 }
+
+/**
+ * PersonaCoin is used to render an individual's avatar and presence.
+ */
+export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(
+  PersonaCoinBase,
+  getStyles
+);

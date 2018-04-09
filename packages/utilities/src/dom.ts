@@ -151,7 +151,7 @@ export function setSSR(isEnabled: boolean): void {
  *
  * @public
  */
-export function getWindow(rootElement?: HTMLElement): Window | undefined {
+export function getWindow(rootElement?: Element | null): Window | undefined {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
@@ -170,7 +170,7 @@ export function getWindow(rootElement?: HTMLElement): Window | undefined {
  *
  * @public
  */
-export function getDocument(rootElement?: HTMLElement): Document | undefined {
+export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {

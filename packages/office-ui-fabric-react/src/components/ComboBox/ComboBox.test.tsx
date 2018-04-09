@@ -9,6 +9,7 @@ import { KeyCodes } from '../../Utilities';
 
 import { ComboBox } from './ComboBox';
 import { IComboBox, IComboBoxOption } from './ComboBox.types';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { expectOne, expectMissing } from '../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
@@ -18,6 +19,12 @@ const DEFAULT_OPTIONS: IComboBoxOption[] = [
 ];
 
 const DEFAULT_OPTIONS2: IComboBoxOption[] = [
+  { key: '1', text: 'One' },
+  { key: '2', text: 'Foo' },
+  { key: '3', text: 'Bar' }
+];
+const DEFAULT_OPTIONS3: IComboBoxOption[] = [
+  { key: '0', text: 'Zero', itemType: SelectableOptionMenuItemType.Header },
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
   { key: '3', text: 'Bar' }
@@ -45,7 +52,6 @@ describe('ComboBox', () => {
         label='testgroup'
         options={ DEFAULT_OPTIONS }
       />);
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
 
     expectMissing(wrapper, '.ms-ComboBox.is-disabled');
     expectOne(wrapper, '[data-is-interactable=true]');
@@ -119,7 +125,7 @@ describe('ComboBox', () => {
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('change', { target: { value: 'f' } });
+    inputElement.simulate('input', { target: { value: 'f' } });
     inputElement.simulate('keydown', { which: KeyCodes.enter });
     expect((comboBoxComponent as React.Component<any, any>).state.currentOptions.length).toEqual(DEFAULT_OPTIONS.length);
   });
@@ -141,7 +147,7 @@ describe('ComboBox', () => {
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('change', { target: { value: 'f' } });
+    inputElement.simulate('input', { target: { value: 'f' } });
     inputElement.simulate('keydown', { which: KeyCodes.enter });
     const currentOptions = (comboBoxComponent as React.Component<any, any>).state.currentOptions;
     expect(currentOptions.length).toEqual(DEFAULT_OPTIONS.length + 1);
@@ -209,7 +215,7 @@ describe('ComboBox', () => {
         allowFreeform={ true }
       />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'f' } });
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
   });
@@ -224,7 +230,7 @@ describe('ComboBox', () => {
         allowFreeform={ false }
       />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'f' } });
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
   });
@@ -238,7 +244,7 @@ describe('ComboBox', () => {
         autoComplete='off'
         allowFreeform={ true }
       />);
-    wrapper.find('input').simulate('change', { target: { value: 'f' } });
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('f');
   });
@@ -267,6 +273,42 @@ describe('ComboBox', () => {
     wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
+  });
+
+  it('Can change selected option with keyboard, looping from top to bottom', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS2 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('Bar');
+  });
+
+  it('Can change selected option with keyboard, looping from bottom to top', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='3'
+        options={ DEFAULT_OPTIONS2 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('One');
+  });
+
+  it('Can change selected option with keyboard, looping from top to bottom', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS3 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('Bar');
   });
 
   it('Cannot insert text while disabled', () => {
@@ -364,10 +406,10 @@ describe('ComboBox', () => {
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('change', { target: { value: 't' } });
-    inputElement.simulate('change', { target: { value: 'e' } });
-    inputElement.simulate('change', { target: { value: 'x' } });
-    inputElement.simulate('change', { target: { value: 't' } });
+    inputElement.simulate('input', { target: { value: 't' } });
+    inputElement.simulate('input', { target: { value: 'e' } });
+    inputElement.simulate('input', { target: { value: 'x' } });
+    inputElement.simulate('input', { target: { value: 't' } });
     inputElement.simulate('keydown', { which: KeyCodes.enter });
     expect(executionCount).toEqual(1);
     expect(updatedOption).toEqual(initialOption);

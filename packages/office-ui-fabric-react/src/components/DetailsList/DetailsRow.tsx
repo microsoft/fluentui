@@ -4,16 +4,16 @@ import {
   BaseComponent,
   IDisposable,
   assign,
-  autobind,
   css,
   shallowCompare,
   getNativeProps,
-  divProperties
+  divProperties,
+  createRef
 } from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { DetailsRowFields } from './DetailsRowFields';
+import { DetailsRowFields, IDetailsRowFieldsProps } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { CollapseAllVisibility } from '../../GroupedList';
@@ -52,7 +52,9 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   getRowAriaDescribedBy?: (item: any) => string;
   checkButtonAriaLabel?: string;
   checkboxCellClassName?: string;
+  rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
+  shimmer?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -75,9 +77,8 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   private _root: HTMLElement | undefined;
-  private _cellMeasurer: HTMLElement;
-  private _focusZone: IFocusZone;
-  private _hasSetFocus: boolean;
+  private _cellMeasurer = createRef<HTMLSpanElement>();
+  private _focusZone = createRef<IFocusZone>();
   private _droppingClassNames: string;
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
@@ -91,8 +92,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       isDropping: false,
       groupNestingDepth: props.groupNestingDepth
     };
-
-    this._hasSetFocus = false;
 
     this._droppingClassNames = '';
 
@@ -134,8 +133,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
     }
 
-    if (columnMeasureInfo && columnMeasureInfo.index >= 0) {
-      const newWidth = this._cellMeasurer.getBoundingClientRect().width;
+    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.value) {
+      const newWidth = this._cellMeasurer.value.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
 
@@ -187,7 +186,11 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
+      /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
+      rowFieldsAs: RowFields = DetailsRowFields,
       selection,
+      shimmer,
+      compact
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -198,13 +201,38 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
+    const ariaSelected = (selectionMode === SelectionMode.none) ? undefined : isSelected;
+
+    const rowFields = (
+      <RowFields
+        columns={ columns }
+        item={ item }
+        itemIndex={ itemIndex }
+        columnStartIndex={ showCheckbox ? 1 : 0 }
+        onRenderItemColumn={ onRenderItemColumn }
+        shimmer={ shimmer }
+      />
+    );
+    // Rendering Shimmer Animation outside the focus zone
+    if (shimmer) {
+      return (
+        <div
+          className={ css(
+            showCheckbox && styles.shimmerLeftBorder,
+            !compact && styles.shimmerBottomBorder
+          ) }
+        >
+          { rowFields }
+        </div>
+      );
+    }
 
     return (
       <FocusZone
         { ...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
         ref={ this._onRootRef }
-        componentRef={ this._resolveRef('_focusZone') }
+        componentRef={ this._focusZone }
         role='row'
         aria-label={ ariaLabel }
         ariaDescribedBy={ ariaDescribedBy }
@@ -229,7 +257,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
-        aria-selected={ isSelected }
+        aria-selected={ ariaSelected }
         allowFocusRoot={ true }
       >
         { showCheckbox && (
@@ -250,23 +278,14 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
         { GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
-        { item && (
-          <DetailsRowFields
-            columns={ columns }
-            item={ item }
-            itemIndex={ itemIndex }
-            columnStartIndex={ showCheckbox ? 1 : 0 }
-            onRenderItemColumn={ onRenderItemColumn }
-          />
-        ) }
-
+        { item && rowFields }
         { columnMeasureInfo && (
           <span
             role='presentation'
             className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
-            ref={ this._resolveRef('_cellMeasurer') }
+            ref={ this._cellMeasurer }
           >
-            <DetailsRowFields
+            <RowFields
               columns={ [columnMeasureInfo.column] }
               item={ item }
               itemIndex={ itemIndex }
@@ -310,7 +329,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(forceIntoFirstElement: boolean = false): boolean {
-    return !!this._focusZone && this._focusZone.focus(forceIntoFirstElement);
+    return !!this._focusZone.value && this._focusZone.value.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
@@ -342,8 +361,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     selection.toggleIndexSelected(this.props.itemIndex);
   }
 
-  @autobind
-  private _onRootRef(focusZone: FocusZone) {
+  private _onRootRef = (focusZone: FocusZone): void => {
     if (focusZone) {
       // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
       this._root = ReactDOM.findDOMNode(focusZone) as HTMLElement;

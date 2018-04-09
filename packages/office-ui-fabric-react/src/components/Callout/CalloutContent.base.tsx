@@ -12,12 +12,13 @@ import {
   IPoint,
   IRectangle,
   assign,
-  autobind,
   elementContains,
   focusFirstChild,
   getWindow,
   getDocument,
-  customizable
+  customizable,
+  css,
+  createRef
 } from '../../Utilities';
 import {
   positionCallout,
@@ -29,6 +30,16 @@ import {
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
+import {
+  AnimationClassNames
+} from '../../Styling';
+
+const ANIMATIONS: { [key: number]: string | undefined; } = {
+  [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
+  [RectangleEdge.bottom]: AnimationClassNames.slideDownIn10,
+  [RectangleEdge.left]: AnimationClassNames.slideLeftIn10,
+  [RectangleEdge.right]: AnimationClassNames.slideRightIn10,
+};
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
 const BORDER_WIDTH = 1;
@@ -59,14 +70,15 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _classNames: {[key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
-  private _hostElement: HTMLDivElement;
-  private _calloutElement: HTMLDivElement;
+  private _hostElement = createRef<HTMLDivElement>();
+  private _calloutElement = createRef<HTMLDivElement>();
   private _targetWindow: Window;
   private _bounds: IRectangle;
   private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
+  private _hasListeners = false;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -86,7 +98,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   public componentDidUpdate() {
     this._setInitialFocus();
-    this._updateAsyncPosition();
+    if (!this.props.hidden) {
+      if (!this._hasListeners) {
+        this._addListeners();
+      }
+      this._updateAsyncPosition();
+    } else {
+      if (this._hasListeners) {
+        this._removeListeners();
+      }
+    }
   }
 
   public componentWillMount() {
@@ -108,10 +129,19 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (newProps.finalHeight !== this.props.finalHeight) {
       this._setHeightOffsetEveryFrame();
     }
+
+    // if the callout becomes hidden, then remove any positions that were placed on it.
+    if (newProps.hidden && newProps.hidden !== this.props.hidden) {
+      this.setState({
+        positions: undefined
+      });
+    }
   }
 
   public componentDidMount() {
-    this._onComponentDidMount();
+    if (!this.props.hidden) {
+      this._onComponentDidMount();
+    }
   }
 
   public render() {
@@ -163,17 +193,20 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     );
 
     const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
+    const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
+    // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div
-        ref={ this._resolveRef('_hostElement') }
+        ref={ this._hostElement }
         className={ this._classNames.container }
+        style={ visibilityStyle }
       >
         <div
-          className={ this._classNames.root }
+          className={ css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!]) }
           style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          ref={ this._resolveRef('_calloutElement') }
+          ref={ this._calloutElement }
         >
 
           { beakVisible && (
@@ -183,7 +216,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             />) }
           { beakVisible &&
             (<div className={ this._classNames.beakCurtain } />) }
-          <Popup
+          { !this.props.hidden && <Popup
             role={ role }
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
@@ -196,15 +229,15 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
           >
             { children }
           </Popup>
+          }
         </div>
-      </div>
+      </div >
     );
 
     return content;
   }
 
-  @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -221,7 +254,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   protected _dismissOnLostFocus(ev: Event) {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement && !elementContains(this._hostElement, target);
+    const clickedOutsideCallout = this._hostElement.value && !elementContains(this._hostElement.value, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -233,16 +266,26 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  @autobind
-  protected _setInitialFocus() {
-    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
+  protected _setInitialFocus = (): void => {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
       this._didSetInitialFocus = true;
-      focusFirstChild(this._calloutElement);
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.value!));
     }
   }
 
-  @autobind
-  protected _onComponentDidMount() {
+  protected _onComponentDidMount = (): void => {
+
+    this._addListeners();
+
+    if (this.props.onLayerMounted) {
+      this.props.onLayerMounted();
+    }
+
+    this._updateAsyncPosition();
+    this._setHeightOffsetEveryFrame();
+  }
+
+  private _addListeners() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -252,14 +295,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+      this._hasListeners = true;
     }, 0);
+  }
 
-    if (this.props.onLayerMounted) {
-      this.props.onLayerMounted();
-    }
-
-    this._updateAsyncPosition();
-    this._setHeightOffsetEveryFrame();
+  private _removeListeners() {
+    this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
+    this._events.off(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.off(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
+    this._events.off(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+    this._hasListeners = false;
   }
 
   private _updateAsyncPosition() {
@@ -282,15 +327,15 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _updatePosition() {
     const { positions } = this.state;
-    const hostElement: HTMLElement = this._hostElement;
-    const calloutElement: HTMLElement = this._calloutElement;
+    const hostElement: HTMLElement | null = this._hostElement.value;
+    const calloutElement: HTMLElement | null = this._calloutElement.value;
 
     if (hostElement && calloutElement) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement);
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -371,17 +416,17 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return true;
   }
 
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
+        this._target = currentDoc ? currentDoc.querySelector(target) as Element : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
-      } else if ((target as HTMLElement).getBoundingClientRect) {
-        const targetElement: HTMLElement = target as HTMLElement;
+      } else if ((target as Element).getBoundingClientRect) {
+        const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
         this._target = target;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
@@ -395,9 +440,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _setHeightOffsetEveryFrame(): void {
-    if (this._calloutElement && this.props.finalHeight) {
+    if (this._calloutElement.value && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem = this._calloutElement.lastChild as HTMLElement;
+        const calloutMainElem = this._calloutElement.value && this._calloutElement.value.lastChild as HTMLElement;
+
+        if (!calloutMainElem) {
+          return;
+        }
+
         const cardScrollHeight: number = calloutMainElem.scrollHeight;
         const cardCurrHeight: number = calloutMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
@@ -415,7 +465,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
     const { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }

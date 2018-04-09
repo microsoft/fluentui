@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
+import { IPanelProps } from '../../Panel';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
 export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T> {
@@ -8,7 +9,7 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
   * the public methods and properties of the component.
   */
-  componentRef?: (component: T) => void;
+  componentRef?: (component: T | null) => void;
 
   /**
    * Descriptive label for the ISelectableDroppableText
@@ -31,15 +32,15 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   className?: string;
 
   /**
-   * The key that will be initially used to set a selected item.
+   * The key(s) that will be initially used to set a selected item.
    */
-  defaultSelectedKey?: string | number;
+  defaultSelectedKey?: string | number | string[] | number[];
 
   /**
-   * The key of the selected item. If you provide this, you must maintain selection
+   * The key(s) of the selected item. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
    */
-  selectedKey?: string | number;
+  selectedKey?: string | number | string[] | number[];
 
   /**
    * Collection of options for this ISelectableDroppableText
@@ -85,6 +86,11 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
    * Custom properties for ISelectableDroppableText's Callout used to render options.
    */
   calloutProps?: ICalloutProps;
+
+  /**
+   * Custom properties for ISelectableDroppableText's Panel used to render options on small devices.
+   */
+  panelProps?: IPanelProps;
 
   /**
    * Descriptive label for the ISelectableDroppableText Error Message

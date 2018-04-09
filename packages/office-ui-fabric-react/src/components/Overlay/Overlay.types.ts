@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { OverlayBase } from './Overlay.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
@@ -11,7 +10,7 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IOverlayProps) => void;
+  componentRef?: (component: IOverlayProps | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

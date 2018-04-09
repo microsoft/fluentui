@@ -10,7 +10,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * Optional callback to access the IMessageBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IMessageBar) => void;
+  componentRef?: (component: IMessageBar | null) => void;
 
   /**
    * The type of MessageBar to render.
@@ -54,6 +54,11 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   * @defaultvalue false
   */
   truncated?: boolean;
+
+  /**
+  * Aria label on overflow button if truncated is defined.
+  */
+  overflowButtonAriaLabel?: string;
 }
 
 export enum MessageBarType {

@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
-import { IPoint, IStyleFunction } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ICoachmark {
 }
 
 export interface ICoachmarkTypes extends React.Props<Coachmark> {
-  componentRef?: (component: ICoachmark) => void;
+  componentRef?: (component: ICoachmark | null) => void;
 
   /**
    * Get styles method.
@@ -18,7 +18,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
    * The target that the TeachingBubble should try to position itself based on.
    */
-  target: HTMLElement;
+  target: HTMLElement | null;
 
   positioningContainerProps?: IPositioningContainerTypes;
 

@@ -9,6 +9,46 @@
 	},
 	"glyphs": [
 		{
+			"name": "BranchMerge",
+			"unicode": "F295"
+		},
+		{
+			"name": "BranchPullRequest",
+			"unicode": "F296"
+		},
+		{
+			"name": "BranchSearch",
+			"unicode": "F297"
+		},
+		{
+			"name": "BranchShelveset",
+			"unicode": "F298"
+		},
+		{
+			"name": "RawSource",
+			"unicode": "F299"
+		},
+		{
+			"name": "MergeDuplicate",
+			"unicode": "F29A"
+		},
+		{
+			"name": "RowsGroup",
+			"unicode": "F29B"
+		},
+		{
+			"name": "RowsChild",
+			"unicode": "F29C"
+		},
+		{
+			"name": "Deploy",
+			"unicode": "F29D"
+		},
+		{
+			"name": "Redeploy",
+			"unicode": "F29E"
+		},
+		{
 			"name": "ServerEnviroment",
 			"unicode": "F29F"
 		},
@@ -367,46 +407,6 @@
 		{
 			"name": "FullWidth",
 			"unicode": "F2FE"
-		},
-		{
-			"name": "FullWidthEdit",
-			"unicode": "F2FF"
-		},
-		{
-			"name": "Plug",
-			"unicode": "F300"
-		},
-		{
-			"name": "PlugSolid",
-			"unicode": "F301"
-		},
-		{
-			"name": "PlugConnected",
-			"unicode": "F302"
-		},
-		{
-			"name": "PlugDisconnected",
-			"unicode": "F303"
-		},
-		{
-			"name": "UnlockSolid",
-			"unicode": "F304"
-		},
-		{
-			"name": "Variable",
-			"unicode": "F305"
-		},
-		{
-			"name": "Parameter",
-			"unicode": "F306"
-		},
-		{
-			"name": "CommentUrgent",
-			"unicode": "F307"
-		},
-		{
-			"name": "Storyboard",
-			"unicode": "F308"
 		}
 	]
 }

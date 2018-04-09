@@ -1,11 +1,8 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import {
-  getTheme,
   HighContrastSelector,
   IStyle,
-  ITheme,
-} from '@uifabric/styling';
-import { memoizeFunction } from '@uifabric/utilities';
+} from '../../Styling';
 
 export const getStyles = (
   props: ICheckStyleProps

@@ -1,19 +1,13 @@
 import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
 import {
   HighContrastSelector,
-  IStyle,
-  ITheme
+  IStyle
 } from '../../Styling';
 
 export const getStyles = (
   props: IScrollablePaneStyleProps
 ): IScrollablePaneStyles => {
-  const {
-    className,
-    theme,
-  } = props;
-
-  const { palette, semanticColors } = theme;
+  const { className } = props;
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
@@ -32,14 +26,6 @@ export const getStyles = (
         WebkitOverflowScrolling: 'touch'
       },
       className
-    ],
-    stickyContainer: [
-      {
-        overflow: 'hidden',
-        position: 'absolute',
-        pointerEvents: 'none',
-
-      }
     ],
     stickyAbove: [
       {

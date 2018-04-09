@@ -9,6 +9,30 @@
 	},
 	"glyphs": [
 		{
+			"name": "PaddingTop",
+			"unicode": "F519"
+		},
+		{
+			"name": "PaddingBottom",
+			"unicode": "F51A"
+		},
+		{
+			"name": "PaddingLeft",
+			"unicode": "F51B"
+		},
+		{
+			"name": "PaddingRight",
+			"unicode": "F51C"
+		},
+		{
+			"name": "NavigationFlipper",
+			"unicode": "F51D"
+		},
+		{
+			"name": "AlignJustify",
+			"unicode": "F51E"
+		},
+		{
 			"name": "TextOverflow",
 			"unicode": "F51F"
 		},
@@ -245,22 +269,6 @@
 			"unicode": "F5D0"
 		},
 		{
-			"name": "ApacheIvyLogo32",
-			"unicode": "F5D1"
-		},
-		{
-			"name": "BitbucketLogo32",
-			"unicode": "F5D2"
-		},
-		{
-			"name": "LinuxLogo32",
-			"unicode": "F5D3"
-		},
-		{
-			"name": "GradleLogo32",
-			"unicode": "F5D4"
-		},
-		{
 			"name": "PasteAsText",
 			"unicode": "F5D5"
 		},
@@ -333,6 +341,10 @@
 			"unicode": "F63F"
 		},
 		{
+			"name": "RectangleShapeSolid",
+			"unicode": "F640"
+		},
+		{
 			"name": "InsertColumnsLeft",
 			"unicode": "F64A"
 		},
@@ -365,34 +377,6 @@
 			"unicode": "F651"
 		},
 		{
-			"name": "GitLogo",
-			"unicode": "F65D"
-		},
-		{
-			"name": "GitHubLogo",
-			"unicode": "F65E"
-		},
-		{
-			"name": "ApacheMavenLogo",
-			"unicode": "F65F"
-		},
-		{
-			"name": "NPMLogo",
-			"unicode": "F660"
-		},
-		{
-			"name": "GitFork",
-			"unicode": "F661"
-		},
-		{
-			"name": "SVNLogo",
-			"unicode": "F662"
-		},
-		{
-			"name": "JenkinsLogo",
-			"unicode": "F663"
-		},
-		{
 			"name": "VersionControlPush",
 			"unicode": "F664"
 		},
@@ -401,12 +385,28 @@
 			"unicode": "F665"
 		},
 		{
+			"name": "WhiteBoardApp16",
+			"unicode": "F673"
+		},
+		{
+			"name": "WhiteBoardApp32",
+			"unicode": "F674"
+		},
+		{
 			"name": "InsertSignatureLine",
 			"unicode": "F677"
 		},
 		{
 			"name": "ArrangeByFrom",
 			"unicode": "F678"
+		},
+		{
+			"name": "Phishing",
+			"unicode": "F679"
+		},
+		{
+			"name": "CreateMailRule",
+			"unicode": "F67A"
 		}
 	]
 }

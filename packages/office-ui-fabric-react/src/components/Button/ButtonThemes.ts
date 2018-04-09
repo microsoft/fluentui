@@ -7,7 +7,6 @@ export function standardStyles(theme: ITheme): IButtonStyles {
   const buttonBackground = s.buttonBackground;
   const buttonBackgroundChecked = s.buttonBackgroundChecked;
   const buttonBackgroundHovered = s.buttonBackgroundHovered;
-  const buttonBackgroundCheckedHovered = s.buttonBackgroundCheckedHovered;
 
   const buttonText = s.buttonText;
   const buttonTextHovered = s.buttonTextHovered;
@@ -46,7 +45,13 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {},
+    splitButtonContainer: {
+      selectors: {
+        [HighContrastSelector]: {
+          border: 'none'
+        }
+      }
+    },
 
     splitButtonMenuButton: {
       color: theme.palette.white,
@@ -153,7 +158,13 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {},
+    splitButtonContainer: {
+      selectors: {
+        [HighContrastSelector]: {
+          border: 'none'
+        }
+      }
+    },
 
     splitButtonDivider: {
       backgroundColor: theme.palette.themeLighter

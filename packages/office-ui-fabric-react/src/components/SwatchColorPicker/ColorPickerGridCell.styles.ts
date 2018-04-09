@@ -1,8 +1,4 @@
-import {
-  IRawStyle,
-  getFocusStyle,
-  HighContrastSelector,
-} from '../../Styling';
+import { IRawStyle, HighContrastSelector } from '../../Styling';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 const ACTIVE_BORDER_COLOR = '#969696';
@@ -28,7 +24,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
     isWhite
   } = props;
 
-  const { semanticColors, fonts } = theme;
+  const { semanticColors } = theme;
   return {
     colorCell: [
       {

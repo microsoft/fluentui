@@ -4,7 +4,7 @@
 // Colors (all taken from the MDL2 palette)
 $color-home-darker: #004e8c;
 $color-home-dark: #0063b1;
-$color-home-medium: #0078d7;
+$color-home-medium: #0078d4;
 $color-home-light: #3a96dd;
 $color-home-lighter: #b3dbf2;
 
@@ -59,6 +59,7 @@ $CodeBlock-toggleButtonHeight: 28px;
 
 $Header-backgroundColor: $ms-color-black;
 $Header-height: 50px;
+$Header-height-full-uhf: $Header-height*2;
 
 $Nav-width: 208px;
 

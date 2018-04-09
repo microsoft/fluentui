@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { autobind, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import * as stylesImport from './Todo.scss';
@@ -42,7 +42,7 @@ export interface ITodoFormState {
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
 export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormState> {
-  private _textField: ITextField;
+  private _textField = createRef<ITextField>();
 
   constructor(props: ITodoFormProps) {
     super(props);
@@ -62,7 +62,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
         <TextField
           className={ styles.textField }
           value={ this.state.inputValue }
-          componentRef={ this._resolveRef('_textField') }
+          componentRef={ this._textField }
           placeholder={ strings.inputBoxPlaceholder }
           onBeforeChange={ this._onBeforeTextFieldChange }
           autoComplete='off'
@@ -78,22 +78,26 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
     );
   }
 
-  @autobind
-  private _onSubmit(event: React.FormEvent<HTMLElement>): void {
+  private _onSubmit = (event: React.FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    if (!this._getTitleErrorMessage(this._textField.value || '')) {
+    const { value: textField } = this._textField;
+    if (!textField) {
+      return;
+    }
+
+    if (!this._getTitleErrorMessage(textField.value || '')) {
       this.setState({
         inputValue: ''
       } as ITodoFormState);
 
-      this.props.onSubmit(this._textField.value || '');
+      this.props.onSubmit(textField.value || '');
     } else {
       this.setState({
         errorMessage: this._getTitleErrorMessage(this.state.inputValue)
       } as ITodoFormState);
 
-      this._textField.focus();
+      textField.focus();
     }
   }
 

@@ -2,6 +2,131 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.3.2",
+      "tag": "@uifabric/variants_v5.3.2",
+      "date": "Mon, 02 Apr 2018 22:15:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f4227ad2577683c8fcfb1181c22d79e09809df12",
+            "comment": "Variants: improve algorithm for generating strong variant that better handles inversion"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.1",
+      "tag": "@uifabric/variants_v5.3.1",
+      "date": "Thu, 29 Mar 2018 01:39:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "d8d127d10279c0004ee8297af4cd7f6f745f4f5f",
+            "comment": "fix theme output from variants"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.0",
+      "tag": "@uifabric/variants_v5.3.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.20.0 <6.0.0` to `>=5.21.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/variants_v5.2.0",
+      "date": "Thu, 22 Mar 2018 10:14:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "7987ad64a756b1f3cf9d4fd4dd2dd8999c2f271a",
+            "comment": "add neutral variant"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/variants_v5.1.0",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "51fa6d3504561fe2ae84f1888785f47473dd0cc1",
+            "comment": "fix imports so it works with amd"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e3a40d52e73af6e5a0062452e550f1b066c851c2",
+            "comment": "ThemePrimary: Updating this color along with an Office branding update."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.19.1 <6.0.0` to `>=5.20.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.2",
+      "tag": "@uifabric/variants_v5.0.2",
+      "date": "Wed, 14 Mar 2018 10:28:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "20d3b5f8cadc5051a1a002d2af6e90d015aa2191",
+            "comment": "add a usage example to the readme"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/variants_v5.0.1",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "bc0d12b6c5952b22f079e9e09ec31654726f9a37",
+            "comment": "fix version for variants package"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "9076096e7fc955b21ea01665d2b513034ac3c651",
+            "comment": "update readme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.19.0 <6.0.0` to `>=5.19.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.2",
       "tag": "@uifabric/variants_v5.11.2",
       "date": "Fri, 23 Feb 2018 03:05:53 GMT",

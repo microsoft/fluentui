@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  KeyCodes,
-  autobind,
+  KeyCodes
 } from '../../Utilities';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
@@ -44,8 +43,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     return this.state.items;
   }
 
-  @autobind
-  public addItems(items: T[]): void {
+  public addItems = (items: T[]): void => {
     // tslint:disable-next-line:no-any
     let processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected ? (this.props.onItemSelected as any)(items) : items;
 
@@ -64,8 +62,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     this.setState({ suggestedDisplayValue: '' });
   }
 
-  @autobind
-  public removeItemAt(index: number): void {
+  public removeItemAt = (index: number): void => {
     let { items } = this.state;
     // tslint:disable-next-line:no-any
     if (index > -1) {
@@ -74,8 +71,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  @autobind
-  public onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
+  public onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
     if (this.props.onCopyItems && this.selection.getSelectedCount() > 0) {
       let selectedItems: T[] = this.selection.getSelection() as T[];
       this.copyItems(selectedItems);
@@ -113,8 +109,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     return this.renderItems();
   }
 
-  @autobind
-  protected renderItems(): JSX.Element[] {
+  protected renderItems = (): JSX.Element[] => {
     let { removeButtonAriaLabel } = this.props;
     let onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
@@ -132,8 +127,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }));
   }
 
-  @autobind
-  protected onSelectionChanged(): void {
+  protected onSelectionChanged = (): void => {
     this.forceUpdate();
   }
 
@@ -143,8 +137,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  @autobind
-  protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.backspace:
         ev.stopPropagation();
@@ -156,8 +149,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  @autobind
-  protected onItemChange(changedItem: T, index: number): void {
+  protected onItemChange = (changedItem: T, index: number): void => {
     let { items } = this.state;
 
     if (index >= 0) {
@@ -168,8 +160,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  @autobind
-  protected removeItem(item: ISelectedItemProps<T>): void {
+  protected removeItem = (item: ISelectedItemProps<T>): void => {
     let { items } = this.state;
     let index: number = items.indexOf(item);
 
@@ -179,9 +170,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  @autobind
   // tslint:disable-next-line:no-any
-  protected removeItems(itemsToRemove: any[]): void {
+  protected removeItems = (itemsToRemove: any[]): void => {
     let { items } = this.state;
     // tslint:disable-next-line:no-any
     let newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);

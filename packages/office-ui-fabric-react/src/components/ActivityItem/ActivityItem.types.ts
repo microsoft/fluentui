@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
-import { IPersonaProps } from '../../Persona';
+import { IPersonaSharedProps } from '../../Persona';
 
 // Please keep alphabetized
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -24,7 +24,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   /**
    * If activityIcon is not set, then the persona props in this array will be used as the icon for the this activity item.
    */
-  activityPersonas?: Array<IPersonaProps>;
+  activityPersonas?: Array<IPersonaSharedProps>;
 
   /**
    * An element containing the text of comments or @mention messages. If no comments, commentText, or onRenderComments are included, no comments are shown.
@@ -148,4 +148,10 @@ export interface IActivityItemStyles {
    * Styles applied to the timestamp at the end of each activity item.
    */
   timeStamp?: IStyle;
+
+  /**
+   * Styles applied to the timestamp in compact mode.
+   * This can occur if a host overrides the render behavior to force the timestamp to render.
+   */
+  isCompactTimeStamp?: IStyle;
 }

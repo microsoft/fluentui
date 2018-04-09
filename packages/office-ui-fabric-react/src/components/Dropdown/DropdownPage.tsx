@@ -45,6 +45,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
 
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -78,7 +79,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...DropdownStatus}
+            { ...DropdownStatus }
           />
         }
       />

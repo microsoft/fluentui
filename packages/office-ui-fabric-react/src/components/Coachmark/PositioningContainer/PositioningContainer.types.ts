@@ -5,12 +5,7 @@ import {
   IPoint,
   IRectangle
 } from '../../../Utilities';
-import {
-  getRelativePositions,
-  IPositionProps,
-  getMaxHeight,
-  ICalloutPositon
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IPositioningContainer {
 }
@@ -26,7 +21,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   /**
   * All props for your component are to be defined here.
   */
-  componentRef?: (component: IPositioningContainer) => void;
+  componentRef?: (component: IPositioningContainer | null) => void;
   /**
    * The target that the positioningContainer should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement

@@ -10,7 +10,7 @@ export interface InformationLink {
   renderedText: string;
 }
 
-export const ComponentStatusInfoState: [IComponentStatusInfoState] = [
+export const ComponentStatusInfoState: IComponentStatusInfoState[] = [
   {
     name: 'Keyboard Accessibility Support',
     description: 'Components should be fully usable with the keyboard.',

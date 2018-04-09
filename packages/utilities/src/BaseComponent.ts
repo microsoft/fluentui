@@ -153,6 +153,7 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * Helper to return a memoized ref resolver function.
    * @param refName - Name of the member to assign the ref to.
    * @returns A function instance keyed from the given refname.
+   * @deprecated Use `createRef` from `@uifabric/utilities`
    */
   protected _resolveRef(refName: string): (ref: React.ReactNode) => React.ReactNode {
     if (!this.__resolves) {

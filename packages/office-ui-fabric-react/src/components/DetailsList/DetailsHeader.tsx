@@ -1,16 +1,16 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import {
   BaseComponent,
-  autobind,
   css,
   getRTL,
   getId,
   KeyCodes,
-  IRenderFunction
+  IRenderFunction,
+  createRef
 } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -29,11 +29,11 @@ const INNER_PADDING = 16;
 const ISPADDED_WIDTH = 24;
 
 export interface IDetailsHeader {
-  focus(): boolean;
+  focus: () => boolean;
 }
 
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
-  componentRef?: (component: IDetailsHeader) => void;
+  componentRef?: (component: IDetailsHeader | null) => void;
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -82,7 +82,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     collapseAllVisibility: CollapseAllVisibility.visible
   };
 
-  private _root: FocusZone;
+  private _root = createRef<IFocusZone>();
 
   private _id: string;
 
@@ -102,10 +102,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   public componentDidMount() {
     const { selection } = this.props;
+    const focusZone = this._root.value;
+    const rootElement = findDOMNode(focusZone as any);
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
-
-    const rootElement = ReactDOM.findDOMNode(this._root);
 
     // We need to use native on this to avoid MarqueeSelection from handling the event before us.
     this._events.on(rootElement, 'mousedown', this._onRootMouseDown);
@@ -142,7 +142,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           (selectAllVisibility === SelectAllVisibility.hidden) && ('is-selectAllHidden ' + styles.rootIsSelectAllHidden),
           (!!columnResizeDetails && isSizing) && 'is-resizingColumn'
         ) }
-        ref={ this._resolveRef('_root') }
+        componentRef={ this._root }
         onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'
         direction={ FocusZoneDirection.horizontal }
@@ -326,7 +326,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return this._root.focus();
+    return Boolean(this._root.value && this._root.value.focus());
   }
 
   private _renderColumnSizer(columnIndex: number) {
@@ -355,8 +355,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     );
   }
 
-  @autobind
-  private _onRenderColumnHeaderTooltip(tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>) {
+  private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>): JSX.Element => {
     return (
       <span className={ tooltipHostProps.hostClassName }>
         { tooltipHostProps.children }
@@ -382,16 +381,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   /**
    * Called when the select all toggle is clicked.
    */
-
-  @autobind
-  private _onSelectAllClicked() {
+  private _onSelectAllClicked = (): void => {
     const { selection } = this.props;
 
     selection.toggleAllSelected();
   }
 
-  @autobind
-  private _onRootMouseDown(ev: MouseEvent) {
+  private _onRootMouseDown = (ev: MouseEvent): void => {
     const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
     const columnIndex = Number(columnIndexAttr);
     const { columns } = this.props;
@@ -413,8 +409,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     ev.stopPropagation();
   }
 
-  @autobind
-  private _onRootMouseMove(ev: React.MouseEvent<HTMLElement>) {
+  private _onRootMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const { columnResizeDetails, isSizing } = this.state;
 
     if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
@@ -422,8 +417,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  @autobind
-  private _onRootKeyDown(ev: KeyboardEvent) {
+  private _onRootKeyDown = (ev: KeyboardEvent): void => {
     const { columnResizeDetails, isSizing } = this.state;
     const { columns, onColumnResized } = this.props;
 
@@ -492,8 +486,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @private
    * @param {React.MouseEvent} ev (mouse move event)
    */
-  @autobind
-  private _onSizerMouseMove(ev: React.MouseEvent<HTMLElement>) {
+  private _onSizerMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const {
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
@@ -530,8 +523,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   }
 
-  @autobind
-  private _onSizerBlur(ev: React.FocusEvent<HTMLElement>) {
+  private _onSizerBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     const { columnResizeDetails } = this.state;
 
     if (columnResizeDetails) {
@@ -550,8 +542,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @private
    * @param {React.MouseEvent} ev (mouse up event)
    */
-  @autobind
-  private _onSizerMouseUp(ev: React.MouseEvent<HTMLElement>) {
+  private _onSizerMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     const { columns, onColumnIsSizingChanged } = this.props;
     const { columnResizeDetails } = this.state;
 

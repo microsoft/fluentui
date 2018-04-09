@@ -1,6 +1,27 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 21 Feb 2018 11:12:11 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Apr 2018 10:25:55 GMT and should not be manually modified.
+
+## 5.14.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- mergeStyles: flipping RTL at runtime now resets the keys.
+
+## 5.14.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.13.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
 
 ## 5.12.2
 Wed, 21 Feb 2018 11:12:11 GMT

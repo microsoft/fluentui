@@ -43,6 +43,7 @@
     flex-direction: column;
     flex: 1;
     justify-content: space-between;
+    overflow: hidden;
   }
 
   .preview {
@@ -103,7 +104,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 
   :global(.ms-Button:hover) {
     :global(.ms-Button-icon) {
-      color: #1174c3;
+      color: $buttonTextColor;
       cursor: pointer;
     }
   }
@@ -162,7 +163,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
     top: -1px;
     right: -1px;
     bottom: -1px;
-    border: 2px solid #fafafa; // Match the background of the card
+    border: 2px solid $ms-color-white; // Match the background of the card
     border-radius: 50%;
   }
 }
@@ -274,7 +275,6 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   font-size: $ms-font-size-s;
 }
 
-
 /** Title **/
 $DocumentCard-title-lineHeight: 21px;
 .title {
@@ -286,4 +286,30 @@ $DocumentCard-title-lineHeight: 21px;
   line-height: $DocumentCard-title-lineHeight;
   overflow: hidden;
   word-wrap: break-word;
+}
+
+.secondaryTitle {
+  padding: 8px 16px;
+  display: block;
+  @include ms-font-m;
+  color: $ms-color-neutralSecondary;
+  line-height: 18px;
+  overflow: hidden;
+  word-wrap: break-word;
+  height: 45px;
+}
+
+.logo {
+  font-size: 32px;
+  color: $ms-color-themePrimary;
+  display: block;
+  @include ms-padding(16px, 16px, 0, 16px);
+}
+
+.status {
+  @include ms-margin(8px, 16px, 8px, 16px);
+  @include ms-font-m;
+  color: $ms-color-neutralPrimary;
+  background-color: $ms-color-neutralLighter;
+  height: 32px;
 }

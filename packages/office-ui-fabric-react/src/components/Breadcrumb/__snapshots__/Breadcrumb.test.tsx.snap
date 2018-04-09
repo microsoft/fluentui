@@ -2,10 +2,20 @@
 
 exports[`Breadcrumb renders breadcumb correctly 1`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -126,16 +136,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                 TestText4
               </div>
             </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
           </li>
         </ol>
       </div>
@@ -146,10 +146,20 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
 
 exports[`Breadcrumb renders breadcumb correctly 2`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -193,7 +203,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     box-sizing: border-box;
                     cursor: pointer;
                     display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
@@ -223,11 +233,19 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     top: 0px;
                     z-index: 1;
                   }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
                   &:hover {
                     color: #004578;
                   }
                   &:active {
-                    color: #0078d7;
+                    color: #0078d4;
                   }
               data-is-focusable={true}
               disabled={undefined}
@@ -327,16 +345,129 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                 TestText4
               </div>
             </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumb renders breadcumb correctly 3`] = `
+<div
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
+>
+  <div
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
+  >
+    <div
+      aria-label={undefined}
+      className="ms-Breadcrumb"
+      role="navigation"
+    >
+      <div
+        aria-describedby={undefined}
+        aria-labelledby={undefined}
+        className="ms-FocusZone"
+        data-focuszone-id="FocusZone11"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <ol
+          className="ms-Breadcrumb-list"
+        >
+          <li
+            className="ms-Breadcrumb-listItem"
+          >
+            <span
+              className="ms-Breadcrumb-item"
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText1
+              </div>
+            </span>
+            <span>
+              *
+            </span>
+          </li>
+          <li
+            className="ms-Breadcrumb-listItem"
+          >
+            <span
+              className="ms-Breadcrumb-item"
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText2
+              </div>
+            </span>
+            <span>
+              *
+            </span>
+          </li>
+          <li
+            className="ms-Breadcrumb-listItem"
+          >
+            <span
+              className="ms-Breadcrumb-item"
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText3
+              </div>
+            </span>
+            <span>
+              *
+            </span>
+          </li>
+          <li
+            className="ms-Breadcrumb-listItem"
+          >
+            <span
+              className="ms-Breadcrumb-item"
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText4
+              </div>
+            </span>
           </li>
         </ol>
       </div>

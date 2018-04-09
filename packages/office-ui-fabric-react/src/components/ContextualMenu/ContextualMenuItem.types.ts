@@ -1,4 +1,3 @@
-import { ContextualMenuItem } from './ContextualMenuItem';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 

@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,9 +22,11 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-125dbde8.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-5-5a61f6fb.woff') format('woff')`,
     },
     icons: {
+      'YammerLogo': '\uED19',
+      'Hide': '\uED1A',
       'Uneditable': '\uED1D',
       'ReturnToSession': '\uED24',
       'OpenFolderHorizontal': '\uED25',
@@ -50,7 +52,6 @@ export function initializeIcons(
       'ExchangeLogoInverse': '\uED78',
       'LyncLogo': '\uED79',
       'OfficeVideoLogoInverse': '\uED7A',
-      'ParatureLogo': '\uED7B',
       'SocialListeningLogo': '\uED7C',
       'VisioLogoInverse': '\uED7D',
       'Balloons': '\uED7E',
@@ -122,7 +123,8 @@ export function initializeIcons(
       'CaretLeftSolid8': '\uEDD9',
       'CaretRightSolid8': '\uEDDA',
       'CaretUpSolid8': '\uEDDB',
-      'CaretDownSolid8': '\uEDDC'
+      'CaretDownSolid8': '\uEDDC',
+      'ClearFormatting': '\uEDDD'
     }
   };
 
