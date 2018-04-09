@@ -7,6 +7,7 @@ exports[`Callout renders Callout correctly 1`] = `
       {
         position: relative;
       }
+  style={undefined}
 >
   <div
     className=

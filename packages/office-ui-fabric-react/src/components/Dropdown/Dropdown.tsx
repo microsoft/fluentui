@@ -191,7 +191,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
             aria-atomic={ true }
-            role='textbox'
+            role='listbox'
             aria-readonly='true'
           >
             { // If option is selected render title, otherwise render the placeholder text
@@ -346,6 +346,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderList = this._onRenderList,
       responsiveMode,
       calloutProps,
+      panelProps,
       dropdownWidth
     } = this.props;
 
@@ -355,11 +356,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isSmall ?
         (
           <Panel
-            className={ css('ms-Dropdown-panel', styles.panel) }
+            className={ css('ms-Dropdown-panel', styles.panel, !!panelProps && panelProps.className) }
             isOpen={ true }
             isLightDismiss={ true }
             onDismissed={ this._onDismiss }
             hasCloseButton={ false }
+            { ...panelProps }
           >
             { onRenderList(props, this._onRenderList) }
           </Panel>
@@ -373,7 +375,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHintFixed={ true }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
-            className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
+            className={ css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className) }
             target={ this._dropDown.value }
             onDismiss={ this._onDismiss }
             onScroll={ this._onScroll }
@@ -549,7 +551,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _onPositioned = (): void => {
     if (this._focusZone.value) {
-      this._focusZone.value.focus();
+      // Focusing an element can trigger a reflow. Making this wait until there is an animation
+      // frame can improve perf significantly.
+      this._async.requestAnimationFrame(() => this._focusZone.value!.focus());
     }
   }
 

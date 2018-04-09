@@ -1,6 +1,27 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 27 Mar 2018 20:22:53 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+
+## 5.8.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add ability to disable scrolling for an ExampleCard
+
+## 5.7.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable w
+
+## 5.7.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
 
 ## 5.6.0
 Tue, 27 Mar 2018 20:22:53 GMT

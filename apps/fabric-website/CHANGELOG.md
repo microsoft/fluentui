@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 27 Mar 2018 10:14:02 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+
+## 5.6.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add Office Add-ins Toolkit
 
 ## 5.5.2
 Tue, 27 Mar 2018 10:14:02 GMT
