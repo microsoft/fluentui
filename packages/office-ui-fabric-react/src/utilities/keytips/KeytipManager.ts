@@ -310,9 +310,8 @@ export class KeytipManager {
           currKtp = this.keytipTree.currentKeytip;
         }
 
-        // To exit keytipMode after executing keytip we should check if currentKeytip has no children and
-        // if the node doesn't have children nodes
-        if (currKtpChildren.length === 0 && !currKtp.hasChildrenNodes) {
+        // To exit keytipMode after executing the keytip it must not have a menu or have dynamic children
+        if (currKtpChildren.length === 0 && !(currKtp.hasDynamicChildren || currKtp.hasMenu)) {
           this.exitKeytipMode();
         } else {
           // Show all children keytips

@@ -366,7 +366,7 @@ describe('KeytipManager', () => {
 
       it('Processing a node which is not leaf but its children are not in the DOM', () => {
         const onExecuteQ: jest.Mock = jest.fn();
-        ktpMgr.updateKeytip({ ...keytipPropsQ, onExecute: onExecuteQ, hasChildrenNodes: true }, uniqueIDQ);
+        ktpMgr.updateKeytip({ ...keytipPropsQ, onExecute: onExecuteQ, hasDynamicChildren: true }, uniqueIDQ);
         ktpTree.currentKeytip = ktpTree.root;
         ktpMgr.processInput('q');
         // Node Q's onExecute should be called

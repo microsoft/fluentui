@@ -577,9 +577,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       style: item.style
     };
 
+    let { keytipProps } = item;
+    if (keytipProps && itemHasSubmenu) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
       <KeytipData
-        keytipProps={ item.keytipProps }
+        keytipProps={ keytipProps }
         ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }
         disabled={ this._isItemDisabled(item) }
       >
@@ -611,8 +619,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean): JSX.Element {
 
+    let { keytipProps } = item;
+    if (keytipProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
-      <KeytipData keytipProps={ item.keytipProps } disabled={ this._isItemDisabled(item) }>
+      <KeytipData keytipProps={ keytipProps } disabled={ this._isItemDisabled(item) }>
         { (keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }

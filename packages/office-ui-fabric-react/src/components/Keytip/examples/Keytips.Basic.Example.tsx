@@ -26,93 +26,14 @@ export interface IKeytipsBasicExampleState {
 }
 
 export class KeytipsBasicExample extends React.Component<{}, IKeytipsBasicExampleState> {
+  private _sampleOptions = [
+    { key: 'A', text: 'Option 1' },
+    { key: 'B', text: 'Option 2' },
+    { key: 'C', text: 'Option 3' },
+  ];
+
   constructor(props: {}) {
     super(props);
-
-    const overflowItem1Click = () => {
-      console.log('first overflow item');
-    };
-
-    const overflowItem2Click = () => {
-      console.log('second overflow item');
-    };
-
-    // Setup initial overflow items
-    const initialItems = [
-      {
-        key: 'item1',
-        name: 'Link 1',
-        onClick: () => { return; },
-        keytipProps: keytipMap.OverflowButton1
-      },
-      {
-        key: 'item2',
-        name: 'Link 2',
-        onClick: () => { return; },
-        keytipProps: keytipMap.OverflowButton2
-      },
-      {
-        key: 'item3',
-        name: 'Link 3',
-        onClick: () => { return; },
-        keytipProps: keytipMap.OverflowButton3
-      }
-    ];
-
-    const initialOverflowItems = [
-      {
-        key: 'item5',
-        name: 'Overflow Link 1',
-        keytipProps: {
-          ...keytipMap.OverflowButton5,
-          onExecute: (el: HTMLElement | null) => {
-            if (el) {
-              el.click();
-            } else {
-              overflowItem1Click();
-            }
-          }
-        },
-        onClick: overflowItem1Click
-      },
-      {
-        key: 'item6',
-        name: 'Overflow Link 2',
-        keytipProps: {
-          ...keytipMap.OverflowButton6,
-          hasChildrenNodes: true,
-          onExecute: (el: HTMLElement | null) => {
-            if (el) {
-              el.click();
-            } else {
-              overflowItem2Click();
-            }
-          }
-        },
-        onClick: overflowItem2Click,
-        subMenuProps: {
-          items: [
-            {
-              key: 'overflowSubMenu1',
-              name: 'Overflow Submenu Item 1',
-              keytipProps: keytipMap.OverflowSubMenuButton1
-            },
-            {
-              key: 'overflowSubMenu2',
-              name: 'Overflow Submenu Item 2'
-            }
-          ]
-        }
-      }
-    ];
-
-    // Setup state
-    this.state = {
-      showModal: false,
-      showMessageBar: false,
-      items: initialItems,
-      overflowItems: initialOverflowItems
-    };
   }
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
@@ -121,7 +42,7 @@ export class KeytipsBasicExample extends React.Component<{}, IKeytipsBasicExampl
       <div>
         <p>Press Alt-Win to enable keytips, Esc to return up a level, and Alt-Win to exit keytip mode</p>
         <Pivot>
-          <PivotItem linkText={ 'Fabric Components' } keytipProps={ keytipMap.Pivot1Keytip } style={ { height: 500 } }>
+          <PivotItem linkText='Tab A' keytipProps={ keytipMap.Pivot1Keytip } style={ { height: 500 } }>
             <Checkbox
               keytipProps={ keytipMap.Checkbox1Pivot1Keytip }
               label={ 'Check Box' }
@@ -130,21 +51,13 @@ export class KeytipsBasicExample extends React.Component<{}, IKeytipsBasicExampl
             <Link keytipProps={ keytipMap.Link1Pivot1Keytip } href={ 'http://www.bing.com' }>This is a link</Link>
             <ComboBox
               label={ 'Combo Box' }
-              options={ [
-                { key: 'A', text: 'Option 1' },
-                { key: 'B', text: 'Option 2' },
-                { key: 'C', text: 'Option 3' },
-              ] }
+              options={ this._sampleOptions }
               keytipProps={ keytipMap.ComboBox1Pivot1Keytip }
             />
             <Dropdown
               label={ 'Dropdown' }
               keytipProps={ keytipMap.Dropdown1Pivot1Keytip }
-              options={ [
-                { key: 'A', text: 'Option 1' },
-                { key: 'B', text: 'Option 2' },
-                { key: 'C', text: 'Option 3' },
-              ] }
+              options={ this._sampleOptions }
             />
             <SpinButton label={ 'Spin Button' } keytipProps={ keytipMap.SpinButton1Pivot1Keytip } />
           </PivotItem>
@@ -153,3 +66,10 @@ export class KeytipsBasicExample extends React.Component<{}, IKeytipsBasicExampl
     );
   }
 }
+
+/*
+  <PivotItem linkText='Tab B' keytipProps={ keytipMap.Pivot2Keytip } style={ { height: 500 } }>
+  </PivotItem>
+  <PivotItem linkText='Tab C' keytipProps={ keytipMap.Pivot3Keytip } style={ { height: 500 } }>
+  </PivotItem>
+*/

@@ -26,8 +26,7 @@ export class KeytipTree {
       id: ktpLayerId,
       children: [],
       parent: '',
-      keytipSequence: '',
-      hasChildrenNodes: true
+      keytipSequence: ''
     };
     this.nodeMap[this.root.id] = this.root;
   }
@@ -51,7 +50,7 @@ export class KeytipTree {
     const parentID = this._getParentID(fullSequence);
 
     // Create node and add to map
-    const node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasChildrenNodes,
+    const node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasDynamicChildren, keytipProps.hasMenu,
       keytipProps.onExecute, keytipProps.onReturn, keytipProps.disabled, persisted);
     this.nodeMap[combinedID] = node;
 
@@ -85,7 +84,8 @@ export class KeytipTree {
       node.keytipSequence = keytipSequence!;
       node.onExecute = keytipProps.onExecute;
       node.onReturn = keytipProps.onReturn;
-      node.hasChildrenNodes = keytipProps.hasChildrenNodes;
+      node.hasDynamicChildren = keytipProps.hasDynamicChildren;
+      node.hasMenu = keytipProps.hasMenu;
       node.parent = parentID;
       node.disabled = keytipProps.disabled;
     }
@@ -242,7 +242,8 @@ export class KeytipTree {
     sequence: IKeySequence,
     parentId: string,
     children: string[],
-    hasChildrenNodes?: boolean,
+    hasDynamicChildren?: boolean,
+    hasMenu?: boolean,
     onExecute?: (el: HTMLElement) => void,
     onReturn?: (el: HTMLElement) => void,
     disabled?: boolean,
@@ -254,7 +255,8 @@ export class KeytipTree {
       children,
       onExecute,
       onReturn,
-      hasChildrenNodes,
+      hasDynamicChildren,
+      hasMenu,
       disabled,
       persisted
     };

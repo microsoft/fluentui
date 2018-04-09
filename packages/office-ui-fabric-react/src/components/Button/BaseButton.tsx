@@ -227,9 +227,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
-      disabled,
-      keytipProps
+      disabled
     } = props;
+    let { keytipProps } = props;
+    if (keytipProps && menuProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
 
     const Content = (
       // If we're making a split button, we won't put the keytip here
@@ -439,8 +445,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       getSplitButtonClassNames,
       onClick,
       primaryDisabled,
-      keytipProps
+      menuProps
     } = this.props;
+    let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames ? getSplitButtonClassNames(
       !!disabled,
@@ -460,6 +467,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       }
     );
     const ariaDescribedBy = buttonProps.ariaDescription || '';
+
+    if (keytipProps && menuProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
 
     return (
       <KeytipData keytipProps={ keytipProps } disabled={ disabled }>

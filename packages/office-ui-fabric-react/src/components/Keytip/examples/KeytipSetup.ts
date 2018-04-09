@@ -34,8 +34,7 @@ const keytipConfig: IKeytipConfig = {
       id: 'ButtonWithMenu',
       content: '2A',
       optionalProps: {
-        onExecute: btnExecute,
-        hasChildrenNodes: true
+        onExecute: btnExecute
       },
       children: [
         {
@@ -52,8 +51,7 @@ const keytipConfig: IKeytipConfig = {
       id: 'SplitButton',
       content: '2B',
       optionalProps: {
-        onExecute: btnExecute,
-        hasChildrenNodes: true
+        onExecute: btnExecute
       },
       children: [
         {
@@ -92,8 +90,7 @@ const keytipConfig: IKeytipConfig = {
       id: 'CommandButton3Keytip',
       content: 'LK',
       optionalProps: {
-        onExecute: btnExecute,
-        hasChildrenNodes: true
+        onExecute: btnExecute
       },
       children: [
         {
@@ -109,8 +106,7 @@ const keytipConfig: IKeytipConfig = {
           content: 'P',
           optionalProps: {
             offset: { x: 17, y: 19 },
-            onExecute: btnExecute,
-            hasChildrenNodes: true
+            onExecute: btnExecute
           },
           children: [
             {
@@ -156,7 +152,6 @@ const keytipConfig: IKeytipConfig = {
       id: 'OverflowButton4',
       content: 'R',
       optionalProps: {
-        hasChildrenNodes: true,
         onExecute: btnExecute
       }
     },
@@ -167,9 +162,6 @@ const keytipConfig: IKeytipConfig = {
     {
       id: 'OverflowButton6',
       content: 'Y',
-      optionalProps: {
-        hasChildrenNodes: true
-      },
       children: [
         {
           id: 'OverflowSubMenuButton1',
@@ -182,7 +174,7 @@ const keytipConfig: IKeytipConfig = {
       id: 'Pivot1Keytip',
       content: 'A',
       optionalProps: {
-        hasChildrenNodes: true,
+        hasDynamicChildren: true,
         onExecute: btnExecute
       },
       children: [
@@ -192,7 +184,7 @@ const keytipConfig: IKeytipConfig = {
       id: 'Pivot2Keytip',
       content: 'B',
       optionalProps: {
-        hasChildrenNodes: true,
+        hasDynamicChildren: true,
         onExecute: btnExecute
       },
       children: [
@@ -202,7 +194,7 @@ const keytipConfig: IKeytipConfig = {
       id: 'Pivot3Keytip',
       content: 'C',
       optionalProps: {
-        hasChildrenNodes: true,
+        hasDynamicChildren: true,
         onExecute: btnExecute
       },
       children: [

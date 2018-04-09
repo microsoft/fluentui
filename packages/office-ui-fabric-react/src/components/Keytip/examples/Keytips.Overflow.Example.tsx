@@ -55,7 +55,6 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
       name: 'Overflow Link 2',
       keytipProps: {
         ...keytipMap.OverflowButton6,
-        hasChildrenNodes: true,
         onExecute: (el: HTMLElement | null) => {
           if (el) {
             el.click();

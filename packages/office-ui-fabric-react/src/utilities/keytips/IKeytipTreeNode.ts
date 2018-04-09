@@ -32,10 +32,16 @@ export interface IKeytipTreeNode {
   parent: string;
 
   /**
-   * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have
-   * their children registered after the initial rendering of the DOM.
+   * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on keytip activation)
+   * Common cases are keytips in a menu or modal
    */
-  hasChildrenNodes?: boolean;
+  hasDynamicChildren?: boolean;
+
+  /**
+   * Whether or not this keytip belongs to a component that has a menu
+   * Keytip mode will stay on when a menu is opened, even if the items in that menu have no keytips
+   */
+  hasMenu?: boolean;
 
   /**
    * T/F if this keytip's component is currently disabled

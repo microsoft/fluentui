@@ -102,8 +102,7 @@ describe('OverflowSet', () => {
           onExecute: (el: HTMLElement) => {
             // Find the overflow button and manually click it to open the overflow menu
             overflowSet.find(constructKeytipExecuteTargetFromId('ktp-x')).simulate('click');
-          },
-          hasChildrenNodes: true
+          }
         }
       };
 
@@ -275,7 +274,7 @@ describe('OverflowSet', () => {
       });
 
       describe('without children keytips', () => {
-        it('should also exit keytip mode after being triggered', () => {
+        it('should not exit keytip mode after being triggered', () => {
           // Insert a submenu into one of the overflow items
           const overflowItemsWithSubMenu = [
             item3,
@@ -310,10 +309,7 @@ describe('OverflowSet', () => {
           keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
           keytipManager.processInput('d');
 
-          expect(keytipManager.keytipTree.currentKeytip).toBeUndefined();
-          keytipManager.getKeytips().forEach((keytip: IKeytipProps) => {
-            expect(keytip.visible).toBeFalsy();
-          });
+          expect(keytipManager.keytipTree.currentKeytip).toBeDefined();
         });
       });
 
@@ -328,7 +324,6 @@ describe('OverflowSet', () => {
               name: 'Item 4',
               keytipProps: {
                 ...overflowKeytips.overflowItemKeytip4,
-                hasChildrenNodes: true,
                 onExecute: (el: HTMLElement) => {
                   el.click();
                 }

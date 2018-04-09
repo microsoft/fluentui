@@ -162,11 +162,11 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
           const persistedKeytip: IKeytipProps = {
             content: keytip.content,
             keySequences: keytip.keySequences,
-            hasChildrenNodes: false,
+            hasDynamicChildren: false,
             disabled: keytip.disabled
           };
 
-          if (keytip.hasChildrenNodes || this._getSubMenuForItem(overflowItem)) {
+          if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
             // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
             // TODO: use helper
             persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, overflowItem.keytipProps.keySequences);

@@ -203,13 +203,13 @@ describe('KeytipTree', () => {
       const updatedKeytipProps = {
         ...keytipPropsB,
         disabled: true,
-        hasChildrenNodes: true
+        hasDynamicChildren: true
       };
       keytipTree.updateNode(updatedKeytipProps, '1');
       const nodeB = keytipTree.getNode(keytipIdB)!;
       expect(nodeB).toBeDefined();
       expect(nodeB.disabled).toEqual(true);
-      expect(nodeB.hasChildrenNodes).toEqual(true);
+      expect(nodeB.hasDynamicChildren).toEqual(true);
     });
   });
 
