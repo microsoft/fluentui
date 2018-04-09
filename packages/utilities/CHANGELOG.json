@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.23.0",
+      "tag": "@uifabric/utilities_v5.23.0",
+      "date": "Thu, 05 Apr 2018 10:15:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "bb506d48b28c2bd0bd0be5c11ab1d4f847e6f359",
+            "comment": "Added IComponentAs as a type for 'render as' props in components"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.22.1",
       "tag": "@uifabric/utilities_v5.22.1",
       "date": "Sat, 31 Mar 2018 17:40:00 GMT",

@@ -1,6 +1,21 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+
+## 5.29.1
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Patches
+
+- fix suggestion header/footer for more flexibile rendering
+- Align Tiles in last row with previous rows
+
+## 5.29.0
+Tue, 03 Apr 2018 10:16:05 GMT
+
+### Minor changes
+
+- Sets up an example of Shimmer used with DetailsList Component.
 
 ## 5.28.2
 Sat, 31 Mar 2018 17:40:00 GMT
