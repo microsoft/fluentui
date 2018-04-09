@@ -204,10 +204,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     let stickyBottomHeight = 0;
 
     stickyItems.forEach((sticky: Sticky) => {
-      if (sticky.state.isStickyTop && sticky.canStickyTop && sticky.stickyContentTop.value) {
+      if (sticky.state.isStickyTop && sticky.stickyContentTop.value) {
         stickyTopHeight += sticky.stickyContentTop.value.offsetHeight;
       }
-      if (sticky.state.isStickyBottom && sticky.canStickyBottom && sticky.stickyContentBottom.value) {
+      if (sticky.state.isStickyBottom && sticky.stickyContentBottom.value) {
         stickyBottomHeight += sticky.stickyContentBottom.value.offsetHeight;
       }
     });
@@ -227,8 +227,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public getScrollPosition = (): number => {
-    if (this.root) {
-      return this.root.scrollTop;
+    if (this.contentContainer) {
+      return this.contentContainer.scrollTop;
     }
 
     return 0;
