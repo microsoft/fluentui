@@ -135,4 +135,9 @@ export interface INavStyles {
    * Style set for the group name in nav group separator
    */
   navGroupSeparatorGroupName: IStyle;
+
+  /**
+   * Style set for the nav toggler which toggles expanded and slim nav
+   */
+  navToggler: IStyle;
 }

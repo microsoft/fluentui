@@ -149,6 +149,16 @@ export const getStyles = (
       padding: '0 8px',
       color: '#9B9B9B',
       backgroundColor: navBackgroundColor
+    },
+    navToggler: {
+      height: navItemHeight,
+      cursor: 'pointer',
+      selectors: {
+        ':hover': {
+          backgroundColor: navItemHoverColor
+        }
+      },
+      textAlign: 'right'
     }
   });
 };

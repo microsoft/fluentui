@@ -73,10 +73,6 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
   }
 
   private _renderExpandCollapseNavItem(): React.ReactElement<{}> {
-    const style: React.CSSProperties = {
-      textAlign: "right"
-    };
-
     const isNavCollapsed = this.state.isNavCollapsed;
     const { getStyles } = this.props;
     const classNames = getClassNames(getStyles!, {});
@@ -87,14 +83,14 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
         aria-expanded={ isNavCollapsed ? "false" : "true" }
         data-hint="ReactLeftNav"
         data-value="ToggleNavCollapse">
-        <div style={ style } className={ classNames.navItemRoot }>
+        <div className={ classNames.navToggler }>
           <Icon
             className={ classNames.navItemIconColumn }
             iconName="GlobalNavButton"
             aria-hidden="true"
           />
         </div>
-      </a>
+      </a >
     );
   }
 }
