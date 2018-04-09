@@ -154,7 +154,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         <div
           ref={ this._contentContainer }
           className={ classNames.contentContainer }
-          data-is-scrollable={ true }>
+          data-is-scrollable={ true }
+        >
           { this.props.children }
         </div>
       </div>
@@ -199,8 +200,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public updateStickyRefHeights = (): void => {
     const stickyItems = this._stickies;
 
-    let stickyTopHeight: number = 0;
-    let stickyBottomHeight: number = 0;
+    let stickyTopHeight = 0;
+    let stickyBottomHeight = 0;
 
     stickyItems.forEach((sticky: Sticky) => {
       if (sticky.state.isStickyTop && sticky.canStickyTop && sticky.stickyContentTop.value) {
@@ -298,6 +299,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _getStickyContainerStyle = (height: number): React.CSSProperties => {
     return {
       height: height
-    }
+    };
   }
 }

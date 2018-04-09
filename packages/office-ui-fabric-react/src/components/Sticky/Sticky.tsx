@@ -91,7 +91,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         {
           this.canStickyTop &&
           <div
-            data-sticky="top"
             className={ this.props.stickyClassName }
             ref={ this.stickyContentTop }
             style={ this._getStickyStyles(isStickyTop) }
@@ -102,7 +101,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         {
           this.canStickyBottom &&
           <div
-            data-sticky="bottom"
             className={ this.props.stickyClassName }
             ref={ this.stickyContentBottom }
             style={ this._getStickyStyles(isStickyBottom) }
@@ -115,7 +113,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
           className={ isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined }
           style={ {
             backgroundColor: this.props.stickyBackgroundColor
-          } }>
+          } }
+        >
           { this.props.children }
         </div>
       </div>
@@ -138,14 +137,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
       // Add stickyContentTop/stickyContentBottom to ScrollablePane in proper position
       scrollablePane.sortSticky(this);
-      let isStickyTop: boolean = false;
+      let isStickyTop = false;
 
       if (this.canStickyTop) {
         const distanceToStickTop = this.distanceFromTop - this._getStickyDistanceFromTop();
         isStickyTop = distanceToStickTop <= container.scrollTop;
       }
 
-      let isStickyBottom: boolean = false;
+      let isStickyBottom = false;
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= this.distanceFromTop) {
@@ -163,17 +162,16 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _getStickyDistanceFromTop = (): number => {
-    let distance: number = 0;
+    let distance = 0;
     if (this.stickyContentTop.value) {
       distance = this.stickyContentTop.value.offsetTop;
     }
-
 
     return distance;
   }
 
   private _getStickyDistanceFromTopForFooter = (container: HTMLElement, footerStickyVisibleContainer: HTMLElement): number => {
-    let distance: number = 0;
+    let distance = 0;
     if (this.stickyContentBottom.value) {
       distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.value.offsetTop;
     }
@@ -182,7 +180,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _getNonStickyDistanceFromTop = (container: HTMLElement): number => {
-    let distance: number = 0;
+    let distance = 0;
     let currElem = this.root.value;
 
     if (currElem) {

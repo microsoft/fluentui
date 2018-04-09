@@ -22,7 +22,7 @@ export const getStyles = (
   const maxHeightStyles: IStyle = {
     height: 'inherit',
     maxHeight: 'inherit'
-  }
+  };
 
   return ({
     root: [
