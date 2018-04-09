@@ -7,10 +7,9 @@ import {
   getInitials,
   getNativeProps,
   getRTL,
-  styled,
-} from '../../Utilities';
-import { mergeStyles } from '../../Styling';
-import { PersonaPresence } from './PersonaPresence';
+} from '../../../Utilities';
+import { mergeStyles } from '../../../Styling';
+import { PersonaPresence } from '../PersonaPresence';
 import {
   Icon
 } from '../../Icon';
@@ -26,9 +25,8 @@ import {
   IPersonaPresenceProps,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
-} from './Persona.types';
-import { initialsColorPropToColorCode } from './PersonaInitialsColor';
-import { getStyles } from './PersonaCoin.styles';
+} from '../Persona.types';
+import { initialsColorPropToColorCode } from '../PersonaInitialsColor';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>();
 
@@ -83,7 +81,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       className,
       coinProps,
       coinSize,
-      getStyles: getStylesProp, // Use getStyles from props.
+      getStyles,
       imageUrl,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
@@ -103,7 +101,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
 
     // Use getStyles from props, or fall back to getStyles from styles file.
-    const classNames = getClassNames(getStylesProp, {
+    const classNames = getClassNames(getStyles, {
       theme: theme!,
       className: (coinProps && coinProps.className) ? coinProps.className : className,
       size,
@@ -162,7 +160,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   private _onRenderCoin = (props: IPersonaCoinProps): JSX.Element | null => {
     const {
       coinSize,
-      getStyles: getStylesProp,
+      getStyles,
       imageUrl,
       imageAlt,
       imageShouldFadeIn,
@@ -172,7 +170,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const size = this.props.size as PersonaSize;
 
-    const classNames = getClassNames(getStylesProp, {
+    const classNames = getClassNames(getStyles, {
       theme: theme!,
       size
     });
@@ -219,11 +217,3 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     this.props.onPhotoLoadingStateChange && this.props.onPhotoLoadingStateChange(loadState);
   }
 }
-
-/**
- * PersonaCoin is used to render an individual's avatar and presence.
- */
-export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(
-  PersonaCoinBase,
-  getStyles
-);

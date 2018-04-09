@@ -3,9 +3,8 @@ import {
   BaseComponent,
   classNamesFunction,
   customizable,
-  styled,
-} from '../../Utilities';
-import { IStyleSet } from '../../Styling';
+} from '../../../Utilities';
+import { IStyleSet } from '../../../Styling';
 import { Icon } from '../../Icon';
 import {
   IPersonaPresenceProps,
@@ -13,9 +12,8 @@ import {
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
-} from './Persona.types';
-import { sizeBoolean } from './PersonaConsts';
-import { getStyles } from './PersonaPresence.styles';
+} from '../Persona.types';
+import { sizeBoolean } from '../PersonaConsts';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;
@@ -37,7 +35,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   public render(): JSX.Element | null {
     const {
       coinSize,
-      getStyles: getStylesProp, // Use getStyles from props.
+      getStyles, // Use getStyles from props.
       presence,
       theme,
     } = this.props;
@@ -52,7 +50,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
     // Use getStyles from props, or fall back to getStyles from styles file.
-    const classNames = getClassNames(getStylesProp, {
+    const classNames = getClassNames(getStyles, {
       theme: theme!,
       presence,
       size: this.props.size,
@@ -104,11 +102,3 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     }
   }
 }
-
-/**
- * PersonaPresence is used to render an individual's presence.
- */
-export const PersonaPresence = styled<IPersonaPresenceProps, IPersonaPresenceStyleProps, IPersonaPresenceStyles>(
-  PersonaPresenceBase,
-  getStyles
-);

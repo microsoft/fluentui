@@ -2,16 +2,16 @@ import {
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
   PersonaSize,
-} from './Persona.types';
+} from '../Persona.types';
 import {
   HighContrastSelector,
   FontSizes,
   FontWeights,
-} from '../../Styling';
+} from '../../../Styling';
 import {
   personaSize,
   sizeBoolean,
-} from './PersonaConsts';
+} from '../PersonaConsts';
 
 export const getStyles = (
   props: IPersonaCoinStyleProps
