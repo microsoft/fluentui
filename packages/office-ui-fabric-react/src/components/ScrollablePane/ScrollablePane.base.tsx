@@ -187,19 +187,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public sortSticky = (sticky: Sticky): void => {
     if (this.stickyAbove && this.stickyBelow) {
       if (sticky.canStickyTop && sticky.stickyContentTop.value) {
-        if (!this.stickyAbove.children.length) {
-          this.stickyAbove.appendChild(sticky.stickyContentTop.value);
-        } else if (!this.stickyAbove.contains(sticky.stickyContentTop.value)) {
-          this._addToStickyContainer(sticky, this.stickyAbove);
-        }
+        this._addToStickyContainer(sticky, this.stickyAbove, sticky.stickyContentTop.value);
       }
 
       if (sticky.canStickyBottom && sticky.stickyContentBottom.value) {
-        if (!this.stickyBelow.children.length) {
-          this.stickyBelow.appendChild(sticky.stickyContentBottom.value);
-        } else if (!this.stickyBelow.contains(sticky.stickyContentBottom.value)) {
-          this._addToStickyContainer(sticky, this.stickyBelow);
-        }
+        this._addToStickyContainer(sticky, this.stickyBelow, sticky.stickyContentBottom.value);
       }
     }
   }
@@ -241,53 +233,58 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return 0;
   }
 
-  private _addToStickyContainer = (sticky: Sticky, stickyContainer: HTMLDivElement): void => {
-    if (stickyContainer) {
-      const stickyChildrenElements = Array.from(stickyContainer.children) as HTMLElement[];
-      const stickyListSorted = Array.from(this._stickies).sort((a, b) => {
-        return a.distanceFromTop - b.distanceFromTop;
-      }).filter((item) => {
-        const stickyContent = (stickyContainer === this.stickyAbove) ? item.stickyContentTop.value : item.stickyContentBottom.value;
-        if (stickyContent) {
-          return stickyChildrenElements.indexOf(stickyContent) > -1;
-        }
-      }).filter((item) => {
-        if (stickyContainer === this.stickyAbove) {
-          return item.canStickyTop;
-        } else {
-          return item.canStickyBottom;
-        }
-      });
+  private _addToStickyContainer = (sticky: Sticky, stickyContainer: HTMLDivElement, stickyContentToAdd: HTMLDivElement): void => {
+    // If there's no children, append child to list, otherwise, sort though array and append at correct position
+    if (!stickyContainer.children.length) {
+      stickyContainer.appendChild(stickyContentToAdd);
+    } else {
+      // If stickyContentToAdd isn't a child element of target container, then append
+      if (!stickyContainer.contains(stickyContentToAdd)) {
+        const stickyChildrenElements = Array.from(stickyContainer.children);
 
-      const first = stickyListSorted.filter((sticky, idx) => {
-        return sticky.distanceFromTop > sticky.distanceFromTop
-      })[0];
-      let targetContainer: HTMLDivElement | null = null;
-      if (first) {
-        if (stickyContainer === this.stickyAbove) {
-          targetContainer = first.stickyContentTop.value;
-        } else {
-          targetContainer = first.stickyContentBottom.value;
+        // Get stickies.  Filter by canStickyTop/Bottom, then sort by distance from top, and then
+        // filter by elements that are in the stickyContainer already.
+        const stickyListSorted = Array.from(this._stickies).filter((item) => {
+          if (stickyContainer === this.stickyAbove) {
+            return item.canStickyTop;
+          } else {
+            return item.canStickyBottom;
+          }
+        }).sort((a, b) => {
+          return a.distanceFromTop - b.distanceFromTop;
+        }).filter((item) => {
+          const stickyContent = (stickyContainer === this.stickyAbove) ? item.stickyContentTop.value : item.stickyContentBottom.value;
+          if (stickyContent) {
+            return stickyChildrenElements.indexOf(stickyContent) > -1;
+          }
+        });
+
+        // Get first element that has a distance from top that is further than our sticky that is being added
+        let targetStickyToAppendBefore: Sticky | undefined = undefined;
+        for (let i = 0; i < stickyListSorted.length; i++) {
+          if (stickyListSorted[i].distanceFromTop >= sticky.distanceFromTop) {
+            targetStickyToAppendBefore = stickyListSorted[i];
+            break;
+          }
         }
-      }
 
-      let stickyContent: HTMLDivElement | undefined = undefined;
-      if (stickyContainer === this.stickyAbove && sticky.stickyContentTop.value) {
-        stickyContent = sticky.stickyContentTop.value;
-      }
-      if (stickyContainer === this.stickyBelow && sticky.stickyContentBottom.value) {
-        stickyContent = sticky.stickyContentBottom.value;
-      }
-
-      if (stickyContent) {
-        stickyContainer.insertBefore(stickyContent, targetContainer);
+        // If target element to append before is known, then grab respective stickyContentTop/Bottom value and insert before
+        let targetContainer: HTMLDivElement | null = null;
+        if (targetStickyToAppendBefore) {
+          targetContainer = stickyContainer === this.stickyAbove ?
+            targetStickyToAppendBefore.stickyContentTop.value :
+            targetStickyToAppendBefore.stickyContentBottom.value;
+        }
+        stickyContainer.insertBefore(stickyContentToAdd, targetContainer);
       }
     }
   }
 
   private _removeStickyFromContainers = (sticky: Sticky): void => {
-    if (this.stickyAbove && this.stickyBelow && sticky.stickyContentTop.value && sticky.stickyContentBottom.value) {
+    if (this.stickyAbove && sticky.stickyContentTop.value) {
       this.stickyAbove.removeChild(sticky.stickyContentTop.value);
+    }
+    if (this.stickyBelow && sticky.stickyContentBottom.value) {
       this.stickyBelow.removeChild(sticky.stickyContentBottom.value);
     }
   }
