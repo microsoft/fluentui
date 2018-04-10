@@ -21,7 +21,6 @@ export interface IBaseFloatingPickerState {
   queryString: string;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
-  isSearching?: boolean;
   isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
@@ -51,7 +50,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
-      isSearching: false,
       didBind: false,
     };
   }
