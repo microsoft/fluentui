@@ -176,56 +176,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         }) }
       </div >
     );
-  }
-
-  private _editButton(sectionIndex: ComponentPageSection, url?: string): JSX.Element | undefined {
-    if (!url && !this.props.componentUrl) {
-      return undefined;
     }
-
-    // Get section string for URLs and IDs.
-    const section = ComponentPageSection[sectionIndex];
-
-    // Generate edit URL from componentURL
-    let mdUrl: string | undefined = undefined;
-    if (this.props.componentUrl) {
-      mdUrl = `${this.props.componentUrl}/docs/${this.props.componentName}${section}.md`;
-      // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
-      if (mdUrl.includes('/tree/')) {
-        mdUrl = mdUrl.replace('/tree/', '/edit/');
-      } else if (mdUrl.includes('/blob/')) {
-        mdUrl = mdUrl.replace('/blob/', '/edit/');
-      }
-    }
-
-    // Allow generated URL fallback.
-    let editUrl = url || mdUrl;
-
-    if (editUrl) {
-      // Get make section readable for tooltip. Add apostrophe to Don't
-      let readableSection = section;
-      if (sectionIndex === ComponentPageSection.Donts) {
-        readableSection = 'Don\'ts';
-      }
-      return (
-        <TooltipHost
-          content={ `Edit ${this.props.componentName} ${readableSection} on GitHub` }
-          id={ `${this.props.componentName}-${section}-editButtonHost` }
-        >
-          <IconButton
-            key={ `${this.props.componentName}-${section}-editButton` }
-            aria-describedby={ `${this.props.componentName}-${section}-editButtonHost` }
-            iconProps={ {
-              iconName: 'Edit'
-            } }
-            href={ editUrl }
-            target='_blank'
-            rel='noopener noreferrer'
-          />
-        </TooltipHost>
-      );
-    }
-  }
 
   private _getRelatedComponents(): JSX.Element | undefined {
     if (this.props.related) {
@@ -381,5 +332,69 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
 
     return undefined;
+  }
+
+  private _editButton(sectionIndex: ComponentPageSection, url?: string): JSX.Element | undefined {
+    if (!url && !this.props.componentUrl) {
+      return undefined;
+    }
+
+    // Get section string for URLs and IDs.
+    const section = ComponentPageSection[sectionIndex];
+
+    // Generate edit URL from componentURL
+    let mdUrl: string | undefined = undefined;
+    if (this.props.componentUrl) {
+      mdUrl = `${this.props.componentUrl}/docs/${this.props.componentName}${section}.md`;
+      // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
+      if (mdUrl.includes('/tree/')) {
+        mdUrl = mdUrl.replace('/tree/', '/edit/');
+      } else if (mdUrl.includes('/blob/')) {
+        mdUrl = mdUrl.replace('/blob/', '/edit/');
+      }
+    }
+
+    // Allow generated URL fallback.
+    let editUrl = url || mdUrl;
+
+    if (editUrl) {
+      // Get make section readable for tooltip. Add apostrophe to Don't
+      let readableSection = section;
+      if (sectionIndex === ComponentPageSection.Donts) {
+        readableSection = 'Don\'ts';
+      }
+      return (
+        <TooltipHost
+          key={ `${this.props.componentName}-${section}-editButton` }
+          content={ `Edit ${this.props.componentName} ${readableSection} on GitHub` }
+          id={ `${this.props.componentName}-${section}-editButtonHost` }
+        >
+          <IconButton
+            aria-describedby={ `${this.props.componentName}-${section}-editButtonHost` }
+            iconProps={ {
+              iconName: 'Edit'
+            } }
+            href={ editUrl }
+            target='_blank'
+            rel='noopener noreferrer'
+          />
+        </TooltipHost>
+      );
+    }
+  }
+
+  private _getViewLink(): JSX.Element | undefined {
+    if (!this.props.componentUrl) {
+      return undefined;
+    }
+    return (
+      <Link
+        href={ this.props.componentUrl }
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        { `View ${this.props.componentName} On GitHub` }
+      </Link>
+    );
   }
 }
