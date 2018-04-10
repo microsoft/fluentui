@@ -32,7 +32,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     isDataLoaded: false,
     isBaseStyle: false
   };
-  private _classNames: {[key in keyof IShimmerStyles]: string};
+  private _classNames: { [key in keyof IShimmerStyles]: string };
   constructor(props: IShimmerProps) {
     super(props);
   }
@@ -44,7 +44,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
     this._classNames = getClassNames(getStyles!, { width, rowHeight, isDataLoaded, isBaseStyle });
 
-    const renderedElements: JSX.Element[] | JSX.Element = getRenderedElements(lineElements, rowHeight);
+    const renderedElements: React.ReactNode = getRenderedElements(lineElements, rowHeight);
 
     return (
       <div className={ this._classNames.root }>
@@ -62,8 +62,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 }
 
-export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>, rowHeight?: number): JSX.Element[] | JSX.Element {
-  const renderedElements: JSX.Element[] | JSX.Element = lineElements ?
+export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>, rowHeight?: number): React.ReactNode {
+  const renderedElements: React.ReactNode = lineElements ?
     lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
       switch (elem.type) {
         case ShimmerElementType.CIRCLE:
