@@ -215,7 +215,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <IconButton
             key={ `${this.props.componentName}-${section}-editButton` }
             aria-describedby={ `${this.props.componentName}-${section}-editButtonHost` }
-            className={ `ComponentPage-editButton ComponentPage-editButton--${section}` }
             iconProps={ {
               iconName: 'Edit'
             } }

@@ -191,10 +191,6 @@ $dontColor: #A61E22;
     background-color: #e74856;
   }
 
-  .ComponentPage-editButton {
-    color: $ms-color-neutralSecondary;
-  }
-
   @media screen and (min-width: $uhf-screen-min-mobile) {
     .ComponentPage-doSection {
       margin-bottom: -10px; // Trim last list item
