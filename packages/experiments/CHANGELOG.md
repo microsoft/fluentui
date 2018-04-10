@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Apr 2018 17:37:28 GMT and should not be manually modified.
+
+## 5.30.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+
+### Patches
+
+- Tile: exporting an enum to use the values in creating a PlaceholderTile in Shimmer component.
 
 ## 5.29.1
 Thu, 05 Apr 2018 10:15:39 GMT
