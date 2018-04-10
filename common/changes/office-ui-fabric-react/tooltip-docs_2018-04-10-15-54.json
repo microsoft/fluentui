@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "TooltipPage: Add TooltipHost props to docs page.",
+      "packageName": "office-ui-fabric-react",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "lynam.emily@gmail.com"
+}
