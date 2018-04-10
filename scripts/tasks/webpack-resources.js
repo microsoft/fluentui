@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('./merge');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
@@ -168,7 +169,6 @@ function getPlugins(
   const plugins = [];
 
   if (isProduction) {
-
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
@@ -179,6 +179,8 @@ function getPlugins(
         logLevel: 'warn'
       })
     );
+  } else {
+    plugins.push(new ForkTsCheckerWebpackPlugin());
   }
 
   return plugins;

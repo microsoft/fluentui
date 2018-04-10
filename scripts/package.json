@@ -18,6 +18,7 @@
     "command-line-args": "^4.0.7",
     "cpx": "^1.5.0",
     "css-loader": "^0.28.7",
+    "fork-ts-checker-webpack-plugin": "^0.4.1",
     "github": "^7.0.0",
     "glob": "^7.1.2",
     "gzip-size": "^3.0.0",
