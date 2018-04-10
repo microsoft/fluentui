@@ -105,6 +105,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
                   { overview }
+                  { this.props.componentUrl && <p>{ this._getViewLink() }</p> }
                 </div>
                 { this._getRelatedComponents() }
               </div>
@@ -176,7 +177,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         }) }
       </div >
     );
-    }
+  }
 
   private _getRelatedComponents(): JSX.Element | undefined {
     if (this.props.related) {
