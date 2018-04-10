@@ -109,8 +109,8 @@ export function getBorderStyles(elem: ICircle | IGap | ILine, rowHeight?: number
 
   if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.CENTER) {
     borderStyle = {
-      borderBottom: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`,
-      borderTop: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`
+      borderBottom: `${dif ? Math.floor(dif / 2) : 0}px solid ${DefaultPalette.white}`,
+      borderTop: `${dif ? Math.ceil(dif / 2) : 0}px solid ${DefaultPalette.white}`
     };
   } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.TOP) {
     borderStyle = {

@@ -62,10 +62,14 @@ export interface ITilesListDocumentExampleState {
   cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
 }
 
-export class TilesListDocumentExample extends React.Component<{}, ITilesListDocumentExampleState> {
+export interface ITilesListDocumentExampleProps {
+  tileSize: 'large' | 'small';
+}
+
+export class TilesListDocumentExample extends React.Component<ITilesListDocumentExampleProps, ITilesListDocumentExampleState> {
   private _selection: Selection;
 
-  constructor(props: {}) {
+  constructor(props: ITilesListDocumentExampleProps) {
     super(props);
 
     this._selection = new Selection({
@@ -81,9 +85,34 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
       cells: getTileCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
         onRenderHeader: this._onRenderShimmerHeader,
+        size: props.tileSize,
         shimmerMode: true
       })
     };
+  }
+
+  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps) {
+    const { isDataLoaded } = this.state;
+    if (this.props.tileSize !== previousProps.tileSize) {
+      if (!isDataLoaded) {
+        this.setState({
+          cells: getTileCells(SHIMMER_GROUPS, {
+            onRenderCell: this._onRenderShimmerCell,
+            onRenderHeader: this._onRenderShimmerHeader,
+            size: this.props.tileSize,
+            shimmerMode: true
+          })
+        });
+      } else {
+        this.setState({
+          cells: getTileCells(GROUPS, {
+            onRenderCell: this._onRenderDocumentCell,
+            onRenderHeader: this._onRenderHeader,
+            size: this.props.tileSize
+          })
+        });
+      }
+    }
   }
 
   public render(): JSX.Element {
@@ -98,7 +127,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
           offText='Normal'
         />
         <Toggle
-          label='Load Data'
+          label='Load Data Switch'
           checked={ this.state.isDataLoaded }
           onChanged={ this._onToggleIsDataLoaded }
           onText='Loaded'
@@ -125,6 +154,7 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
   }
 
   private _onToggleIsDataLoaded = (checked: boolean): void => {
+    const { tileSize } = this.props;
     const { isDataLoaded } = this.state;
     let { cells } = this.state;
 
@@ -132,18 +162,20 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
       cells = getTileCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
         onRenderHeader: this._onRenderShimmerHeader,
-        shimmerMode: true
+        shimmerMode: true,
+        size: tileSize
       });
     } else {
       cells = getTileCells(GROUPS, {
         onRenderCell: this._onRenderDocumentCell,
-        onRenderHeader: this._onRenderHeader
+        onRenderHeader: this._onRenderHeader,
+        size: tileSize
       });
     }
 
     this.setState({
       isDataLoaded: !isDataLoaded,
-      cells: cells
+      cells: cells,
     });
   }
 
@@ -161,6 +193,9 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
   }
 
   private _onRenderDocumentCell = (item: IExampleItem): JSX.Element => {
+    const { tileSize } = this.props;
+    let imgSize = tileSize === 'large' ? 64 : 48;
+
     return (
       <Tile
         role='listitem'
@@ -173,14 +208,14 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
         foreground={
           <img
             src={
-              `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg`
+              `https://spoprod-a.akamaihd.net/files/odsp-next-prod_2018-04-06_20180406.004/odsp-media/images/itemtypes/${imgSize}/docx.png`
             }
             style={
               {
                 display: 'block',
-                width: '40px',
-                height: '40px',
-                margin: '11px'
+                width: `${imgSize}px`,
+                height: `${imgSize}px`,
+                margin: tileSize === 'large' ? '16px' : '7px'
               }
             }
           />
@@ -188,18 +223,21 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
         showForegroundFrame={ true }
         itemName={ item.name }
         itemActivity={ item.key }
+        tileSize={ tileSize }
       />
     );
   }
 
-  private _onRenderShimmerCell(item: IExampleItem, finalSize: ISize): JSX.Element {
+  private _onRenderShimmerCell = (item: IExampleItem, finalSize: ISize): JSX.Element => {
+    const { tileSize } = this.props;
+
     return (
       <ShimmerTile
         contentSize={ finalSize }
-        itemName={ true } // placeholder
-        itemActivity={ true } // placeholder
-        itemThumbnail={ true } // placeholder
-        tileSize={ 'large' }
+        itemName={ true }
+        itemActivity={ true }
+        itemThumbnail={ true }
+        tileSize={ tileSize }
       />
     );
   }

@@ -88,6 +88,7 @@ export function getTileCells(groups: IExampleGroup[], {
     shimmerMode?: boolean;
   }): (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] {
   const items: (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] = [];
+  const isLargeSize: boolean = size === 'large' ? true : false;
 
   for (const group of groups) {
     const header: ITilesGridItem<IExampleItem> = {
@@ -110,19 +111,19 @@ export function getTileCells(groups: IExampleGroup[], {
           key: item.key,
           content: item,
           desiredSize: group.type === 'document' ? {
-            width: 176,
-            height: 171
+            width: isLargeSize ? 176 : 138,
+            height: isLargeSize ? 171 : 135
           } : {
-              width: 171 * item.aspectRatio,
-              height: 171
+              width: isLargeSize ? 171 * item.aspectRatio : 135 * item.aspectRatio,
+              height: isLargeSize ? 171 : 135
             },
           onRender: onRenderCell,
           isPlaceholder: shimmerMode
         };
       }),
-      spacing: 8,
+      spacing: isLargeSize ? 8 : 12,
       marginBottom: shimmerMode ? 0 : 40,
-      minRowHeight: 171,
+      minRowHeight: isLargeSize ? 171 : 135,
       mode: group.type === 'document' ?
         size === 'small' ?
           TilesGridMode.fillHorizontal :

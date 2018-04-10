@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   ExampleCard,
   IComponentDemoPageProps,
@@ -8,39 +9,62 @@ import {
 } from '@uifabric/example-app-base';
 
 /* tslint:disable:max-line-length */
-// import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
-// const TilesListBasicExampleCode = require(
-//   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx'
-// ) as string;
+import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
+const TilesListBasicExampleCode = require(
+  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx'
+) as string;
 
 import { TilesListDocumentExample } from './examples/TilesList.Document.Example';
 const TilesListDocumentExampleCode = require(
   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Document.Example.tsx'
 ) as string;
 
-// import { TilesListMediaExample } from './examples/TilesList.Media.Example';
+import { TilesListMediaExample } from './examples/TilesList.Media.Example';
 
-// const TilesListMediaExampleCode = require(
-//   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx'
-// ) as string;
+const TilesListMediaExampleCode = require(
+  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx'
+) as string;
 
-export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
+export interface ITilesListPageState {
+  size: 'small' | 'large';
+}
+
+export class TilesListPage extends React.Component<IComponentDemoPageProps, ITilesListPageState> {
+  constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      size: 'large'
+    };
+  }
+
   public render(): JSX.Element {
+    const { size } = this.state;
+
     return (
       <ComponentPage
         title='TilesList'
         componentName='TilesListExample'
         exampleCards={
           <div>
-            {/* <ExampleCard title='TilesList with basic tiles' isOptIn={ true } code={ TilesListBasicExampleCode }>
+            <ExampleCard title='TilesList with basic tiles' isOptIn={ true } code={ TilesListBasicExampleCode }>
               <TilesListBasicExample />
-            </ExampleCard> */}
-            <ExampleCard title='TilesList with document tiles' isOptIn={ true } code={ TilesListDocumentExampleCode }>
-              <TilesListDocumentExample />
             </ExampleCard>
-            {/* <ExampleCard title='TilesList with media tiles' isOptIn={ true } code={ TilesListMediaExampleCode }>
+            <ExampleCard
+              title='TilesList with document tiles and placeholders when data is missing'
+              isOptIn={ true }
+              code={ TilesListDocumentExampleCode }
+            >
+              <Checkbox
+                label='Use large tiles'
+                checked={ size === 'large' }
+                onChange={ this._onIsLargeChanged }
+              />
+              <TilesListDocumentExample tileSize={ size } />
+            </ExampleCard>
+            <ExampleCard title='TilesList with media tiles' isOptIn={ true } code={ TilesListMediaExampleCode }>
               <TilesListMediaExample />
-            </ExampleCard> */}
+            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -82,5 +106,11 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
         isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
+  }
+
+  private _onIsLargeChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      size: checked ? 'large' : 'small'
+    });
   }
 }
