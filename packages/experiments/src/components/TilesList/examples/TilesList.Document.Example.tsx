@@ -91,7 +91,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     };
   }
 
-  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps) {
+  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps): void {
     const { isDataLoaded } = this.state;
     if (this.props.tileSize !== previousProps.tileSize) {
       if (!isDataLoaded) {
@@ -246,6 +246,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     return (
       <div
         role='presentation'
+        // tslint:disable-next-line:jsx-ban-props
         style={
           {
             padding: `${HEADER_VERTICAL_PADDING}px 0`,
