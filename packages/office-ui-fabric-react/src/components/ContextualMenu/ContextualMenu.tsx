@@ -115,6 +115,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
+    this._splitButtonContainers = new Map();
   }
 
   public dismiss = (ev?: any, dismissAll?: boolean) => {
@@ -142,7 +143,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
-    this._splitButtonContainers = new Map();
     if (this.props.onMenuOpened) {
       this.props.onMenuOpened(this.props);
     }
