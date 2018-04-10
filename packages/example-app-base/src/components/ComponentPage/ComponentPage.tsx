@@ -345,7 +345,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     // Generate edit URL from componentURL
     let mdUrl: string | undefined = undefined;
     if (this.props.componentUrl) {
-      mdUrl = `${this.props.componentUrl}/docs/${this.props.componentName}${section}.md`;
+      mdUrl = `${this.props.componentUrl}/docs/${this.props.title}${section}.md`;
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
       if (mdUrl.includes('/tree/')) {
         mdUrl = mdUrl.replace('/tree/', '/edit/');
@@ -365,12 +365,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       }
       return (
         <TooltipHost
-          key={ `${this.props.componentName}-${section}-editButton` }
-          content={ `Edit ${this.props.componentName} ${readableSection} on GitHub` }
-          id={ `${this.props.componentName}-${section}-editButtonHost` }
+          key={ `${this.props.title}-${section}-editButton` }
+          content={ `Edit ${this.props.title} ${readableSection} on GitHub` }
+          id={ `${this.props.title}-${section}-editButtonHost` }
         >
           <IconButton
-            aria-describedby={ `${this.props.componentName}-${section}-editButtonHost` }
+            aria-describedby={ `${this.props.title}-${section}-editButtonHost` }
             iconProps={ {
               iconName: 'Edit'
             } }
