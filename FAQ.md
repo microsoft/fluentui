@@ -14,10 +14,59 @@ These components are also used by third party developers building extensiblity c
 
 Start with our [README](./README.md) document.
 
+To create your first app using Office UI Fabric React read the [Sample App](./OnBoarding/SampleApp.md) document.
+
 ## *Q. Where is the official website located?*
 
 https://developer.microsoft.com/fabric
+
 http://dev.office.com/fabric
+
+## *Q. I am seeing a bug. Where can I open an issue?*
+
+Please open all issues at our [GitHub issues](https://github.com/OfficeDev/office-ui-fabric-react/issues) location.
+
+Things to remember while opening an issue
+
+* Please fill out as many details as you can.
+* We **highly encourage** you to submit PRs for issues.
+
+
+
+```
+  ----------------------------------------------------------------------------------------------
+
+  ### Bug Report
+
+  - __Package version(s)__: (fill this out)
+  - __Browser and OS versions__: (fill this out if relevant)
+
+  #### Priorities and help requested (not applicable if asking question):
+
+  Are you willing to submit a PR to fix? (Yes, No)
+
+  Requested priority: (Blocking, High, Normal, Low)
+
+  Products/sites affected: (if applicable)
+
+  #### Describe the issue:
+
+  <!-- fill this out -->
+
+  #### Actual behavior:
+
+  <!-- fill this out -->
+
+  #### Expected behavior:
+
+  <!-- fill this out -->
+
+  ### If applicable, please provide a codepen repro:
+
+  <!-- See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples -->
+
+  ----------------------------------------------------------------------------------------------
+```
 
 
 ## *Q. Can I contribute to Office UI Fabric React?*
@@ -63,3 +112,19 @@ Please refer to the following documents.
 [**Advanced**](./ghdocs/BestPractices/Advanced.md)
 
 [**Browse Support**](./ghdocs/Testing/BrowserSupport.md)
+
+## *Q. When and how does the issue Triage work?*
+
+The Fabric React core team works hard to stay on top of the open issues. We triage issues at least once a week. Due to an increased volume in the number of issues, we have been triaging more often. Once the issue count is under control, we may go back to the once a week rythm.
+
+### Following issues will qualify as high priority
+
+We try to fix high priority bugs ASAP.
+
+* Is this issue blocking the consumer?
+* Is this a regression? If yes, how and when did it get in?
+* Is this a very serious bug?
+
+Other bugs will qualify as Normal or lower priority and will get fixed as a part of the normal release cadence.
+
+From time to time we do plan to close issues that are very old and have no activity.

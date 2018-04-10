@@ -23,6 +23,8 @@ Following changes should require a **minor** build number change
 
 - When you add new functionality that is backward compatible.
 
+- A new component should qualify as a **minor** change because it is fully backward compatible. In case, you made breaking changes to other generic APIs that are used by developers and can break them.
+
 ### Major
 
 Any changes that are not backward compatible should be qualified as **major** changes.
@@ -30,5 +32,3 @@ Any changes that are not backward compatible should be qualified as **major** ch
 - Any breaking API changes. i.e. API deletions, mandatory new APIs, API renames.
 
 - Addition or removal of functionality in a non backward compatible way.
-
-- A new component should qualify as a **major** change.
