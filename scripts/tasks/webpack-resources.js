@@ -151,7 +151,8 @@ module.exports = {
           new webpack.WatchIgnorePlugin([
             /\.js$/,
             /\.d\.ts$/
-          ])
+          ]),
+          new ForkTsCheckerWebpackPlugin()
         ]
       },
       customConfig
@@ -179,8 +180,6 @@ function getPlugins(
         logLevel: 'warn'
       })
     );
-  } else {
-    plugins.push(new ForkTsCheckerWebpackPlugin());
   }
 
   return plugins;
