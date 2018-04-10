@@ -105,7 +105,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
                   { overview }
-                  { this.props.componentUrl && <p>{ this._getViewLink() }</p> }
                 </div>
                 { this._getRelatedComponents() }
               </div>
@@ -382,20 +381,5 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         </TooltipHost>
       );
     }
-  }
-
-  private _getViewLink(): JSX.Element | undefined {
-    if (!this.props.componentUrl) {
-      return undefined;
-    }
-    return (
-      <Link
-        href={ this.props.componentUrl }
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        { `View ${this.props.componentName} On GitHub` }
-      </Link>
-    );
   }
 }
