@@ -179,6 +179,10 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _editButton(sectionIndex: ComponentPageSection, url?: string): JSX.Element | undefined {
+    if (!url && !this.props.componentUrl) {
+      return undefined;
+    }
+
     // Get section string for URLs and IDs.
     const section = ComponentPageSection[sectionIndex];
 
@@ -222,8 +226,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         </TooltipHost>
       );
     }
-
-    return undefined;
   }
 
   private _getRelatedComponents(): JSX.Element | undefined {
