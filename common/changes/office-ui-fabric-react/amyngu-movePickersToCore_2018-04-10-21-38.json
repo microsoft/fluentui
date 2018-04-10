@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "move ExtendedPicker, FloatingPicker, and SelectedItemsList to fabric core package",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "amyngu@microsoft.com"
+}
