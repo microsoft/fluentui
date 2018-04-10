@@ -164,9 +164,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
         </div> }
-        { this.props.componentUrl && <div className='ComponentPage-navLink'>
-          <Link href={ this.props.componentUrl } target='_blank' rel='noopener noreferrer'>View On Github</Link>
-        </div> }
         { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
           return <div key={ index + 'class' } className='ComponentPage-navLink'>
             <Link
