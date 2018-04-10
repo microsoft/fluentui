@@ -197,7 +197,7 @@ const keytipConfig: IKeytipConfig = {
           content: '3',
           optionalProps: {
             onExecute: (el: HTMLElement) => {
-              el.focus()
+              el.focus();
             }
           }
         }
@@ -223,7 +223,7 @@ const keytipConfig: IKeytipConfig = {
           content: '2',
           optionalProps: {
             onExecute: (el: HTMLElement) => {
-              el.focus()
+              el.focus();
             }
           }
         }
@@ -242,7 +242,7 @@ const keytipConfig: IKeytipConfig = {
           content: '1',
           optionalProps: {
             onExecute: (el: HTMLElement) => {
-              el.focus()
+              el.focus();
             }
           }
         }
