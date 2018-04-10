@@ -2,10 +2,14 @@
 In this tutorial, let's build a simple React app with an Office UI Fabric React DocumentCard.
 
 ## Prerequisites
-### Node.js and npm
-Install [Node.js and npm](https://nodejs.org/en/) if you haven't already installed in your machine. It is recommended you at least install node `version 4.x.x` and npm `version 3.x.x`.
+### Setup
+For this exercise, you don't need to go through all the steps in the [Setup](../Contributing/Setup.md) document.
 
->You can check your node and npm version by running `node -v` and `npm -v` respectively.
+Just these steps are enough
+
+- Install **Node.js LTS 8** or greater from thes **[Node.js website](https://nodejs.org/en/)**.
+- Install **[Git](https://git-scm.com/)**.
+- For code editing we like **[Visual Studio Code ](https://code.visualstudio.com/)**
 
 ### create-react-app package
 We will use [Create React App](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html) to quickly create a React app for this tutorial.
@@ -16,11 +20,6 @@ Once node and npm is installed, type the following command in a console to insta
 npm install -g create-react-app
 ```
 
-### Visual Studio Code
-Download and install [Visual Studio Code](https://code.visualstudio.com/).
-
->We will use Visual Studio Code as our code editor for this tutorial. Feel free to use your favorite code editor of choice if you do not want to use Visual Studio Code.
-
 ## Step 1: Create react app
 In a console, type the following command to create a simple React app.
 
@@ -30,7 +29,7 @@ create-react-app documentcardbasic-demo
 
 This will install the required depedencies and scaffold a simple React app.
 
-![create-react-app command completed](./images/create-react-app-created.png)
+![create-react-app command completed](../images/create-react-app-created.png)
 
 Once its complete, navigate to the `documentcardbasic-demo` folder.
 
@@ -44,7 +43,7 @@ Type the following command to launch the React app in your browser.
 npm start
 ```
 
-![create-react-app preview in browser](./images/create-react-app-preview.png)
+![create-react-app preview in browser](../images/create-react-app-preview.png)
 
 ## Step 2: Install office-ui-fabric-react package
 To use Fabric React in your project, you will need to first install the `office-ui-fabric-react` npm package. Type the following in the console to install the package:
@@ -130,9 +129,9 @@ Load Office UI Fabric styles by linking to the Office UI Fabric CDN. Add the fol
 Save the file.
 
 Copy the following images from GitHub to `src` folder.
-* [avatarkat.png](./images/avatarkat.png)
-* [iconppt.png](./images/iconppt.png)
-* [documentpreview.png](./images/documentpreview.png)
+* [avatarkat.png](../images/avatarkat.png)
+* [iconppt.png](../images/iconppt.png)
+* [documentpreview.png](../images/documentpreview.png)
 
 ## Step 4: Preview document card
 Switch to the console and type the following to preview your app in the browser:
@@ -143,7 +142,7 @@ npm start
 
 You should see the document card component in your app.
 
-![DocumentCard preview](./images/react-app-doccard-preview.png)
+![DocumentCard preview](../images/react-app-doccard-preview.png)
 
 ## Next steps
 Congratulations! You have successfully built a simple React app with an Office UI Fabric React DocumentCard.
