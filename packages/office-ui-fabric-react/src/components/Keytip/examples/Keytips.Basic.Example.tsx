@@ -32,44 +32,36 @@ export class KeytipsBasicExample extends React.Component<{}, IKeytipsBasicExampl
     { key: 'C', text: 'Option 3' },
   ];
 
-  constructor(props: {}) {
-    super(props);
-  }
-
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
   public render(): JSX.Element {
     return (
       <div>
-        <p>Press Alt-Win to enable keytips, Esc to return up a level, and Alt-Win to exit keytip mode</p>
         <Pivot>
-          <PivotItem linkText='Tab A' keytipProps={ keytipMap.Pivot1Keytip } style={ { height: 500 } }>
+          <PivotItem linkText='Pivot 1' keytipProps={ keytipMap.Pivot1Keytip } style={ { height: 150, width: 500 } }>
+            <SpinButton label={ 'Spin Button' } keytipProps={ keytipMap.SpinButtonKeytip } />
+            <Toggle keytipProps={ keytipMap.ToggleKeytip } onText={ 'Yes' } offText={ 'No' } />
+            <p>Go to <Link keytipProps={ keytipMap.LinkKeytip } href={ 'http://www.bing.com' } target='_blank'>Bing</Link></p>
+          </PivotItem>
+          <PivotItem linkText='Pivot 2' keytipProps={ keytipMap.Pivot2Keytip } style={ { height: 150, width: 500 } }>
             <Checkbox
-              keytipProps={ keytipMap.Checkbox1Pivot1Keytip }
-              label={ 'Check Box' }
-            />
-            <Toggle keytipProps={ keytipMap.Toggle1Pivot1Keytip } onText={ 'Toggle On' } offText={ 'Toggle Off' } />
-            <Link keytipProps={ keytipMap.Link1Pivot1Keytip } href={ 'http://www.bing.com' }>This is a link</Link>
-            <ComboBox
-              label={ 'Combo Box' }
-              options={ this._sampleOptions }
-              keytipProps={ keytipMap.ComboBox1Pivot1Keytip }
+              keytipProps={ keytipMap.CheckboxKeytip }
+              label={ 'Checkbox' }
             />
             <Dropdown
               label={ 'Dropdown' }
-              keytipProps={ keytipMap.Dropdown1Pivot1Keytip }
+              keytipProps={ keytipMap.DropdownKeytip }
               options={ this._sampleOptions }
             />
-            <SpinButton label={ 'Spin Button' } keytipProps={ keytipMap.SpinButton1Pivot1Keytip } />
+          </PivotItem>
+          <PivotItem linkText='Pivot 3' keytipProps={ keytipMap.Pivot3Keytip } style={ { height: 150, width: 500 } }>
+            <ComboBox
+              label={ 'Combo Box' }
+              options={ this._sampleOptions }
+              keytipProps={ keytipMap.ComboBoxKeytip }
+            />
           </PivotItem>
         </Pivot>
       </div>
     );
   }
 }
-
-/*
-  <PivotItem linkText='Tab B' keytipProps={ keytipMap.Pivot2Keytip } style={ { height: 500 } }>
-  </PivotItem>
-  <PivotItem linkText='Tab C' keytipProps={ keytipMap.Pivot3Keytip } style={ { height: 500 } }>
-  </PivotItem>
-*/

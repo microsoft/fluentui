@@ -58,7 +58,6 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
         doNotLayer={ true }
         minPagePadding={ 0 }
         getStyles={ offset ? getCalloutOffsetStyles(offset) : getCalloutStyles }
-        directionalHintFixed={ true }
         preventDismissOnScroll={ true }
         target={ keytipTarget }
       >

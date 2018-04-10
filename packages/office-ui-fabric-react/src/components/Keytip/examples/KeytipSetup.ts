@@ -178,6 +178,29 @@ const keytipConfig: IKeytipConfig = {
         onExecute: btnExecute
       },
       children: [
+        {
+          id: 'ToggleKeytip',
+          content: '1',
+          optionalProps: {
+            onExecute: btnExecute
+          }
+        },
+        {
+          id: 'LinkKeytip',
+          content: '2',
+          optionalProps: {
+            onExecute: btnExecute
+          }
+        },
+        {
+          id: 'SpinButtonKeytip',
+          content: '3',
+          optionalProps: {
+            onExecute: (el: HTMLElement) => {
+              el.focus()
+            }
+          }
+        }
       ]
     },
     {
@@ -188,6 +211,22 @@ const keytipConfig: IKeytipConfig = {
         onExecute: btnExecute
       },
       children: [
+        {
+          id: 'CheckboxKeytip',
+          content: '1',
+          optionalProps: {
+            onExecute: btnExecute
+          }
+        },
+        {
+          id: 'DropdownKeytip',
+          content: '2',
+          optionalProps: {
+            onExecute: (el: HTMLElement) => {
+              el.focus()
+            }
+          }
+        }
       ]
     },
     {
@@ -198,6 +237,15 @@ const keytipConfig: IKeytipConfig = {
         onExecute: btnExecute
       },
       children: [
+        {
+          id: 'ComboBoxKeytip',
+          content: '1',
+          optionalProps: {
+            onExecute: (el: HTMLElement) => {
+              el.focus()
+            }
+          }
+        }
       ]
     }
   ]

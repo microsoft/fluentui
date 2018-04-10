@@ -198,8 +198,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   @autobind
   private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
-    // Call processInput
-    ev.preventDefault();
-    this._keytipManager.processInput(ev.key);
+    if (this.state.inKeytipMode) {
+      ev.preventDefault();
+      // Call processInput
+      this._keytipManager.processInput(ev.key.toLocaleLowerCase());
+    }
   }
 }
