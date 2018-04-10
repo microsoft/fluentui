@@ -37,7 +37,8 @@ module.exports = {
           mode: 'development',
           output: {
             filename: `[name].js`,
-            path: path.resolve(process.cwd(), 'dist')
+            path: path.resolve(process.cwd(), 'dist'),
+            pathinfo: false
           },
           resolveLoader,
           module,

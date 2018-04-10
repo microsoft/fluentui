@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server-speedy');
+const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const fs = require('fs');
 const commandLineArgs = require('command-line-args');
@@ -22,18 +22,8 @@ if (options && options.webpackConfig) {
 const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
 
 if (fs.existsSync(configPath)) {
-  const webpackConfig = require(configPath);
+  const webpackDevServerPath = path.resolve(__dirname, './node_modules/webpack-dev-server/bin/webpack-dev-server.js');
+  const execSync = require('./exec-sync');
 
-  const compiler = webpack(webpackConfig);
-  const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-    stats: {
-      colors: true
-    },
-    open: true
-  });
-  const server = new WebpackDevServer(compiler, devServerOptions);
-
-  server.listen(8080, '127.0.0.1', () => {
-    console.log('Starting server on http://localhost:8080');
-  });
+  execSync(`node ${webpackDevServerPath} --config ${configPath} --open`);
 }
