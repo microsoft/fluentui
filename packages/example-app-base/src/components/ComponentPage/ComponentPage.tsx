@@ -190,19 +190,18 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let mdUrl: string | undefined = undefined;
     if (this.props.componentUrl) {
       mdUrl = `${this.props.componentUrl}/docs/${this.props.componentName}${section}.md`;
+      // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
+      if (mdUrl.includes('/tree/')) {
+        mdUrl = mdUrl.replace('/tree/', '/edit/');
+      } else if (mdUrl.includes('/blob/')) {
+        mdUrl = mdUrl.replace('/blob/', '/edit/');
+      }
     }
 
     // Allow generated URL fallback.
     let editUrl = url || mdUrl;
 
     if (editUrl) {
-      // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
-      if (editUrl.includes('/tree/')) {
-        editUrl = editUrl.replace('/tree/', '/edit/');
-      } else if (editUrl.includes('/blob/')) {
-        editUrl = editUrl.replace('/blob/', '/edit/');
-      }
-
       // Get make section readable for tooltip. Add apostrophe to Don't
       let readableSection = section;
       if (sectionIndex === ComponentPageSection.Donts) {
