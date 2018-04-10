@@ -192,15 +192,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
 
     // Allow generated URL fallback.
-    let editUrl: string | undefined = url || mdUrl || undefined;
+    let editUrl = url || mdUrl;
 
     if (editUrl) {
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
       if (editUrl.includes('/tree/')) {
-        editUrl.replace('/tree/', '/edit/');
-      }
-      if (editUrl.includes('/blob/')) {
-        editUrl.replace('/blob/', '/edit/');
+        editUrl = editUrl.replace('/tree/', '/edit/');
+      } else if (editUrl.includes('/blob/')) {
+        editUrl = editUrl.replace('/blob/', '/edit/');
       }
 
       // Get make section readable for tooltip. Add apostrophe to Don't
