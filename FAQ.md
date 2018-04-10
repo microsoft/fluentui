@@ -6,9 +6,9 @@ Fabric React is a responsive, mobile-first, open-source collection of robust com
 
 ## *Q. Who uses Office UI Fabric React?*
 
-React components from Office UI Fabric React are used by many teams accross O365 and Microsoft for building their experiences. Some examples are Sharepoint, OneDrive, Outlook, VisualStudio Online, ...
+React components from Office UI Fabric React are used by many teams accross O365 and Microsoft for building their experiences. Some examples are SharePoint, OneDrive, Outlook, VisualStudio team services, ...
 
-These components are also used by third party developers buiding extensiblity components using the SharePoint Framework.
+These components are also used by third party developers building extensiblity components using the SharePoint Framework.
 
 ## *Q. How do I get started with Office UI Fabric React?*
 
@@ -16,7 +16,9 @@ Start with our [README](./README.md) document.
 
 ## *Q. Where is the official website located?*
 
+https://developer.microsoft.com/fabric
 http://dev.office.com/fabric
+
 
 ## *Q. Can I contribute to Office UI Fabric React?*
 
@@ -24,7 +26,7 @@ Office UI Fabric React is an open-source distributed project. Lots of developers
 
 ## *Q. Why should I contribute?*
 
-Office UI Fabric React is an open-source distributed project. If you are building a new app inside O365 or Microsoft, this project will potentially save you lots of time, resources and headaches. We encourage all developers who use Fabric React to return a small amount to the community. If you notice bugs, we encourage you to not only open an issue on it but also help fix it. If you have a component that you believe others should use, feel motivated and encouraged to contribute that component back to the community. Sharing is caring. Many developers contribute outside their primary job responsibilities. Additionally, there is plenty to learn. We use a lot of best practices used in the industry. Learning those can  help you in your career.
+Office UI Fabric React is an open-source distributed project. If you are building a new app inside O365 or Microsoft, this project will potentially save you lots of time, resources and headaches. We encourage all developers who use Fabric React to return a small amount to the community. If you notice bugs, we encourage you to not only open an issue on it but also help fix it. If you have a component that you believe others should use, feel motivated and encouraged to contribute that component back to the community. Sharing is caring. Many developers contribute outside their primary job responsibilities. Additionally, there is plenty to learn. We use a lot of cutting edge best practices used in the industry. Learning those can help you in your career.
 
 ## *Q. How do I communicate with a Fabric React core team member?*
 
@@ -41,3 +43,23 @@ Yes, you totally can. You will need to help out with reviewing pull requests and
 ## *Q. My pull request has been hanging for a long time. What do I do?*
 
 We are very proactive and work hard to keep the outstanding pull request count low. But if your pull request is non-trivial and stuck for a long time, please feel free to tag the pull request that it has been hanging for long and you need help.
+
+## *Q. Where do I read about specific best practices?*
+
+Please refer to the following documents.
+
+[**Contributing fixes and new components**](./ghdocs/Contributing/Contributing.md)
+
+[**Accessibility**](./ghdocs/BestPractices/Accessibility.md)
+
+[**Component Design**](./ghdocs/BestPractices/ComponentDesign.md)
+
+[**Styling**](./ghdocs/BestPractices/Styling.md)
+
+[**Theming**](./ghdocs/BestPractices/Theming.md)
+
+[**Testing**](./ghdocs/BestPractices/Testing.md)
+
+[**Advanced**](./ghdocs/BestPractices/Advanced.md)
+
+[**Browse Support**](./ghdocs/Testing/BrowserSupport.md)
