@@ -28,7 +28,8 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         overflow: 'inherit',
         padding: 0,
         textAlign: 'left',
-        textOverflow: 'inherit'
+        textOverflow: 'inherit',
+        userSelect: 'text'
       },
       !isButton && {
         textDecoration: 'none'
