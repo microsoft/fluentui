@@ -14,7 +14,7 @@ These components are also used by third party developers building extensiblity c
 
 Start with our [README](./README.md) document.
 
-To create your first app using Office UI Fabric React read the [Sample App](./OnBoarding/SampleApp.md) document.
+To create your first app using Office UI Fabric React read the [Sample App](./ghdocs/OnBoarding/SampleApp.md) document.
 
 ## *Q. Where is the official website located?*
 
@@ -122,8 +122,7 @@ The Fabric React core team works hard to stay on top of the open issues. We tria
 We try to fix high priority bugs ASAP.
 
 * Is this issue blocking the consumer?
-* Is this a regression? If yes, how and when did it get in?
-* Is this a very serious bug?
+* Is this a regression? If yes, how and when did it get in?* Is this a very serious bug?
 
 Other bugs will qualify as Normal or lower priority and will get fixed as a part of the normal release cadence.
 
