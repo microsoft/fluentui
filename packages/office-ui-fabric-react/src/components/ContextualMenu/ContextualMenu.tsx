@@ -639,6 +639,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       checked: item.checked,
       icon: item.icon,
       iconProps: item.iconProps,
+      onMouseEnter: this._onItemMouseEnter.bind(this, item, true /* isSplitButtonPrimary */),
+      onMouseLeave: this._onMouseItemLeave.bind(this, item),
+      onMouseMove: this._onItemMouseMove.bind(this, item, true /* isSplitButtonPrimary */),
       'data-is-focusable': false
     } as IContextualMenuItem;
     return React.createElement('button',
@@ -760,15 +763,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._navigationIdleDelay);
   }
 
-  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>, isSplitButtonPrimary: boolean = false) {
     if (!this._isScrollIdle) {
       return;
     }
 
-    this._updateFocusOnMouseEvent(item, ev);
+    this._updateFocusOnMouseEvent(item, ev, isSplitButtonPrimary);
   }
 
-  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>, isSplitButtonPrimary: boolean = false) {
 
     const targetElement = ev.currentTarget as HTMLElement;
 
@@ -776,7 +779,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return;
     }
 
-    this._updateFocusOnMouseEvent(item, ev);
+    this._updateFocusOnMouseEvent(item, ev, isSplitButtonPrimary);
   }
 
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
@@ -810,7 +813,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    * As part of updating focus, This function will also update
    * the expand/collapse state accordingly.
    */
-  private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+  private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, isSplitButtonPrimary: boolean) {
     const targetElement = ev.currentTarget as HTMLElement;
     const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
 
@@ -829,8 +832,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     // Delay updating expanding/dismissing the submenu
-    // and only set focus if we have not already done so
-    if (hasSubmenu(item)) {
+    // and only set focus if we have not already done so.
+    // Also if we are on the primary portion of a splitButton
+    // (and we know from above that we are not the expanded item)
+    // collapse the submenu
+    if (hasSubmenu(item) && !isSplitButtonPrimary) {
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
         const splitButtonContainer = this._splitButtonContainers.get(item.key);
