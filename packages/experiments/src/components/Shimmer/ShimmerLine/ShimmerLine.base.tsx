@@ -12,7 +12,7 @@ import {
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
-  private _classNames: {[key in keyof IShimmerLineStyles]: string};
+  private _classNames: { [key in keyof IShimmerLineStyles]: string };
 
   constructor(props: IShimmerLineProps) {
     super(props);
