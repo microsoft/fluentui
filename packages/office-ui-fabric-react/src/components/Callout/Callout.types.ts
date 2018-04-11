@@ -239,10 +239,6 @@ export interface ICalloutContentStyleProps {
    */
   overflowYHidden?: boolean;
 
-  /**
-   * Max height applied to the content of a callout.
-   */
-  contentMaxHeight?: number;
 
   /**
    * Background color for the beak and callout.

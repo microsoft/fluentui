@@ -68,7 +68,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
-  private _classNames: {[key in keyof ICalloutContentStyles]: string };
+  private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement = createRef<HTMLDivElement>();
   private _calloutElement = createRef<HTMLDivElement>();
@@ -172,8 +172,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    const contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
+    const getContentMaxHeight: number | undefined = this._getMaxHeight() ? this._getMaxHeight() + this.state.heightOffset! : undefined;
+    const contentMaxHeight: number | undefined = calloutMaxHeight! && getContentMaxHeight && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
     const overflowYHidden = !!finalHeight;
 
     const beakVisible = isBeakVisible && (!!target);
@@ -184,7 +184,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         className,
         overflowYHidden: overflowYHidden,
         calloutWidth,
-        contentMaxHeight,
         positions,
         beakWidth,
         backgroundColor,
@@ -192,7 +191,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       }
     );
 
-    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
+    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden', maxHeight: contentMaxHeight } : { maxHeight: contentMaxHeight };
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
@@ -384,7 +383,11 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+        this._async.requestAnimationFrame(() => {
+          if (this._target) {
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+          }
+        });
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }

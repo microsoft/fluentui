@@ -129,21 +129,30 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
     }
+    if (newProps.hidden !== this.props.hidden) {
+      if (newProps.hidden) {
+        this._onMenuClosed()
+      } else {
+        this._onMenuOpened()
+        this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
+      }
+    }
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
-    this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
+    if (!this.props.hidden) {
+      this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
+    }
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    this._events.on(this._targetWindow, 'resize', this.dismiss);
     this._splitButtonContainers = new Map();
-    if (this.props.onMenuOpened) {
-      this.props.onMenuOpened(this.props);
+    if (!this.props.hidden) {
+      this._onMenuOpened();
     }
   }
 
@@ -270,6 +279,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onScroll={ this._onScroll }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }
+          hidden={ this.props.hidden }
         >
           <div
             role='menu'
@@ -314,6 +324,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       return null;
     }
+  }
+
+  private _onMenuOpened() {
+    this._events.on(this._targetWindow, 'resize', this.dismiss);
+    this.props.onMenuOpened && this.props.onMenuOpened(this.props);
+  }
+
+  private _onMenuClosed() {
+    this._events.off(this._targetWindow, 'resize', this.dismiss);
+    setTimeout(() => this._previousActiveElement!.focus(), 0);
   }
 
   /**

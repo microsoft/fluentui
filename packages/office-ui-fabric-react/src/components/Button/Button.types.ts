@@ -234,6 +234,15 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
   */
   menuTriggerKeyCode?: KeyCodes | null;
+
+
+  /**
+   * Menu will not be created or destroyed when opened or closed, instead it
+   * will be hidden. This will improve perf of the menu opening but could potentially
+   * impact overall perf by having more elemnts in the dom. Should only be used
+   * when perf is important.
+   */
+  persistMenu?: boolean;
 }
 
 export enum ElementType {
