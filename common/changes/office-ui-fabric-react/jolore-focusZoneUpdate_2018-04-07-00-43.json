@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Move sub-components to sub-folders",
+      "comment": "FocusZone: updating to update alignment on click.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jordanjanzen@jordanjanzen.com"
+  "email": "jolore@microsoft.com"
 }
