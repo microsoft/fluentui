@@ -22,7 +22,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ### Using Fabric React
 
-[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
+[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/OnBoarding/SampleApp.md) on how to build a simple React app with an Office UI Fabric React component.
 
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
