@@ -78,11 +78,21 @@ $dontColor: #A61E22;
     }
   }
 
+  .ComponentPage-usageHeader,
   .ComponentPage-overviewSectionHeader,
   .ComponentPage-doSectionHeader {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+  }
+
+  .ComponentPage-usageHeader {
+    margin-top: 10px;
+    margin-bottom: $componentSubHeadMargin;
+
+    .ComponentPage-subHeading {
+      margin: 0;
+    }
   }
 
   .ComponentPage-related {
