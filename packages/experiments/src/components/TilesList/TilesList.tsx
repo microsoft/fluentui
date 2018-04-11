@@ -5,6 +5,7 @@ import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
+import { Shimmer } from '../Shimmer/Shimmer';
 
 // tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
@@ -13,6 +14,8 @@ const MAX_TILE_STRETCH = 1.5;
 const CELLS_PER_PAGE = 100;
 const MIN_ASPECT_RATIO = 0.5;
 const MAX_ASPECT_RATIO = 3;
+
+const ROW_OF_PLACEHOLDER_CELLS = 3;
 
 export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
@@ -26,6 +29,7 @@ export interface ITileGrid {
   marginTop: number;
   marginBottom: number;
   key: string;
+  isPlaceholder?: boolean;
 }
 
 export interface ITileCell<TItem> {
@@ -33,6 +37,7 @@ export interface ITileCell<TItem> {
   content: TItem;
   aspectRatio: number;
   grid: ITileGrid;
+  isPlaceholder?: boolean;
   onRender(content: TItem, finalSize: { width: number; height: number; }): React.ReactNode | React.ReactNode[];
 }
 
@@ -201,9 +206,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     let currentRow: IRowData | undefined;
 
+    let shimmerWrapperWidth = 0;
+
     for (let i = 0; i < endIndex;) {
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
+
+      const isPlaceholder = grid.isPlaceholder;
 
       const renderedCells: React.ReactNode[] = [];
 
@@ -257,21 +266,37 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           }
         }
 
-        renderedCells.push(
-          <div
-            key={ `${grid.key}-item-${cell.key}` }
-            data-item-index={ index }
-            className={ css('ms-List-cell', this._onGetCellClassName(), {
-              [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
-            }) }
-            // tslint:disable-next-line:jsx-ban-props
-            style={
-              this._onGetCellStyle(cell, currentRow)
-            }
-          >
-            { this._onRenderCell(cell, finalSize) }
-          </div>
-        );
+        const renderedCell = (keyOffset?: number): JSX.Element => {
+          return (
+            <div
+              key={ `${grid.key}-item-${cell.key}${keyOffset ? '-' + keyOffset : ''}` }
+              data-item-index={ index }
+              className={ css('ms-List-cell', this._onGetCellClassName(), {
+                [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
+              }) }
+              // tslint:disable-next-line:jsx-ban-props
+              style={
+                {
+                  ...this._onGetCellStyle(cell, currentRow)
+                }
+              }
+            >
+              { this._onRenderCell(cell, finalSize) }
+            </div>
+          );
+        };
+
+        if (cell.isPlaceholder && grid.mode !== TilesGridMode.none) {
+          let cellsPerRow = Math.floor(width / (grid.spacing + finalSize.width));
+          let totalPlaceholderItems = cellsPerRow * ROW_OF_PLACEHOLDER_CELLS;
+          shimmerWrapperWidth = (cellsPerRow * finalSize.width) + (grid.spacing * (cellsPerRow - 1));
+          for (let j = 0; j < totalPlaceholderItems; j++) {
+            renderedCells.push(renderedCell(j));
+          }
+        } else {
+          shimmerWrapperWidth = finalSize.width / 3;
+          renderedCells.push(renderedCell());
+        }
       }
 
       const isOpenStart = previousCell && previousCell.grid === grid;
@@ -279,7 +304,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       const margin = grid.spacing / 2;
 
-      grids.push(
+      const finalGrid: JSX.Element = (
         <div
           key={ grid.key }
           className={ css('ms-TilesList-grid', {
@@ -297,6 +322,20 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         >
           { renderedCells }
         </div>
+      );
+
+      grids.push(
+        isPlaceholder ?
+          (
+            <Shimmer
+              key={ i }
+              isBaseStyle={ true }
+              width={ shimmerWrapperWidth }
+            >
+              { finalGrid }
+            </Shimmer>
+          ) :
+          finalGrid
       );
     }
 
@@ -534,7 +573,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return {
       flex: isFill ? `${itemWidthOverHeight} ${itemWidthOverHeight} ${width}px` : `0 0 ${width}px`,
       maxWidth: `${maxWidth}px`,
-      margin: `${margin}px`
+      margin: !item.isPlaceholder ? `${margin}px` : 0,
+      borderStyle: item.isPlaceholder ? 'solid' : 'none',
+      borderWidth: item.isPlaceholder ? `${margin}px` : 0
     };
   }
 
@@ -564,8 +605,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           mode: item.mode,
           key: `grid-${item.key}`,
           maxScaleFactor: maxScaleFactor,
-          marginTop: marginTop,
-          marginBottom: marginBottom
+          marginTop: item.isPlaceholder ? 0 : marginTop,
+          marginBottom: item.isPlaceholder ? 0 : marginBottom,
+          isPlaceholder: item.isPlaceholder
         };
 
         for (const gridItem of item.items) {
@@ -584,7 +626,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             content: gridItem.content,
             onRender: gridItem.onRender,
             grid: grid,
-            key: gridItem.key
+            key: gridItem.key,
+            isPlaceholder: gridItem.isPlaceholder
           });
         }
       } else {
@@ -600,9 +643,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             key: `grid-header-${item.key}`,
             maxScaleFactor: 1,
             marginBottom: 0,
-            marginTop: 0
+            marginTop: 0,
+            isPlaceholder: item.isPlaceholder
           },
-          key: `header-${item.key}`
+          key: `header-${item.key}`,
+          isPlaceholder: item.isPlaceholder
         });
       }
     }

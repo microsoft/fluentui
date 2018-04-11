@@ -4,17 +4,17 @@ import {
   classNamesFunction,
 } from '../../../Utilities';
 import {
-  IShimmerLineProps,
-  IShimmerLineStyleProps,
-  IShimmerLineStyles
-} from './ShimmerLine.types';
+  IShimmerGapProps,
+  IShimmerGapStyleProps,
+  IShimmerGapStyles
+} from './ShimmerGap.types';
 
-const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
+const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyles>();
 
-export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
-  private _classNames: { [key in keyof IShimmerLineStyles]: string };
+export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
+  private _classNames: {[key in keyof IShimmerGapStyles]: string};
 
-  constructor(props: IShimmerLineProps) {
+  constructor(props: IShimmerGapProps) {
     super(props);
   }
 
