@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.23.0",
+      "tag": "@uifabric/styling_v5.23.0",
+      "date": "Tue, 10 Apr 2018 17:37:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3e514375dff844cdb8182daf53178d3056411b8c",
+            "comment": "Add noWrap style set."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.14.1 <6.0.0` to `>=5.15.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.22.0",
       "tag": "@uifabric/styling_v5.22.0",
       "date": "Thu, 05 Apr 2018 10:15:39 GMT",
