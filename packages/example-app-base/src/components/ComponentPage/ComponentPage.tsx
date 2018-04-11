@@ -352,6 +352,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     // Get section string for URLs and IDs.
     const section = ComponentPageSection[sectionIndex];
     let readableSection = section;
+    let componentName = this.props.title || this.props.componentName;
+    componentName = componentName.replace(/\s/g, '');
 
     // Check if the section contains a function (using PageMarkdown)
     const isMarkdown = {
@@ -364,6 +366,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     switch (sectionIndex) {
       case ComponentPageSection.BestPractices:
         sectionIsMarkdown = isMarkdown.BestPractices;
+        readableSection = 'Best Practices';
         break;
       case ComponentPageSection.Dos:
         sectionIsMarkdown = isMarkdown.Dos;
@@ -386,7 +389,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     // Generate edit URL from componentURL
     let mdUrl: string | undefined = undefined;
     if (this.props.componentUrl) {
-      mdUrl = `${this.props.componentUrl}/docs/${this.props.title}${section}.md`;
+      mdUrl = `${this.props.componentUrl}/docs/${componentName}${section}.md`;
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
       if (mdUrl.includes('/tree/')) {
         mdUrl = mdUrl.replace('/tree/', '/edit/');
@@ -401,12 +404,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (editUrl) {
       return (
         <TooltipHost
-          key={ `${this.props.title}-${section}-editButton` }
-          content={ `Edit ${this.props.title} ${readableSection} on GitHub` }
-          id={ `${this.props.title}-${section}-editButtonHost` }
+          key={ `${componentName}-${section}-editButton` }
+          content={ `Edit ${componentName} ${readableSection} on GitHub` }
+          id={ `${componentName}-${section}-editButtonHost` }
         >
           <IconButton
-            aria-describedby={ `${this.props.title}-${section}-editButtonHost` }
+            aria-describedby={ `${componentName}-${section}-editButtonHost` }
             iconProps={ {
               iconName: 'Edit'
             } }
