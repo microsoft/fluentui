@@ -150,13 +150,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this.props.onMenuOpened(this.props);
     }
 
+    // Due to restraints caused by React 16 where we no can no longer
+    // call the ref values of children component with their own render
+    // function before componentDidMount we have to use this setTimeout
+    // hack to have access to ref. The correct approacj to solve this
+    // problem is to create a comonent for the split button and then
+    // have it add it's own event listener. This is logged on Issue 4522
     setTimeout(() => {
       if (this._splitButtonContainers) {
         this._splitButtonContainers.forEach((value: HTMLDivElement) => {
           this._events.on(value, 'pointerdown', this._onPointerDown, true);
         });
       }
-    }, 0)
+    }, 0);
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
