@@ -27,6 +27,7 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
       <ComponentPage
         title='Tooltip'
         componentName='TooltipExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip'
         exampleCards={
           <LayerHost>
             <ExampleCard title='Default Tooltip' code={ TooltipBasicExampleCode }>

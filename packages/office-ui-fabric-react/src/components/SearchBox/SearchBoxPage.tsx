@@ -24,6 +24,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
       <ComponentPage
         title='SearchBox'
         componentName='SearchBoxExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SearchBox'
         exampleCards={
           <div>
             <ExampleCard
@@ -145,7 +146,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...SearchBoxStatus}
+            { ...SearchBoxStatus }
           />
         }
       />

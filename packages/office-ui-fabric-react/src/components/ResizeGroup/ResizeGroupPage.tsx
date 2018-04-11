@@ -21,6 +21,7 @@ export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, an
       <ComponentPage
         title='ResizeGroup'
         componentName='ResizeGroupExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ResizeGroup'
         exampleCards={
           <LayerHost>
             <ExampleCard title='Use ResizeGroup to move commands into an overflow menu' code={ ResizeGroupBasicExampleCode }>

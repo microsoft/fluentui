@@ -17,6 +17,7 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
       <ComponentPage
         title='Spinner'
         componentName='SpinnerExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Spinner'
         exampleCards={
           <ExampleCard
             title='Various Spinner Types'
@@ -64,7 +65,7 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...SpinnerStatus}
+            { ...SpinnerStatus }
           />
         }
       />

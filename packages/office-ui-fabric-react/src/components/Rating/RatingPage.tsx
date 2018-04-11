@@ -17,6 +17,7 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
       <ComponentPage
         title='Rating'
         componentName='RatingExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating'
         exampleCards={
           <ExampleCard title='Rating' code={ RatingBasicExampleCode }>
             <RatingBasicExample />
@@ -56,7 +57,7 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...RatingStatus}
+            { ...RatingStatus }
           />
         }
       />

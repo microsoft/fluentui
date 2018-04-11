@@ -17,6 +17,7 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
       <ComponentPage
         title='SwatchColorPicker'
         componentName='SwatchColorPickerExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SwatchColorPicker'
         exampleCards={
           <ExampleCard title='SwatchColorPicker' code={ SwatchColorPickerBasicExampleCode }>
             <SwatchColorPickerBasicExample />
@@ -54,7 +55,7 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...SwatchColorPickerStatus}
+            { ...SwatchColorPickerStatus }
           />
         }
       />

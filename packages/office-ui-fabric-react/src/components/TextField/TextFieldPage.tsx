@@ -39,6 +39,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
       <ComponentPage
         title='TextField'
         componentName='TextFieldExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField'
         exampleCards={
           <div>
             <ExampleCard

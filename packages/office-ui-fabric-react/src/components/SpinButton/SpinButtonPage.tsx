@@ -30,6 +30,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
       <ComponentPage
         title='SpinButton'
         componentName='SpinButtonExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SpinButton'
         exampleCards={
           <div>
             <ExampleCard
@@ -115,7 +116,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...SpinButtonStatus}
+            { ...SpinButtonStatus }
           />
         }
       />

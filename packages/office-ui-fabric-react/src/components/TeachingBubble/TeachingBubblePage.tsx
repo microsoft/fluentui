@@ -26,6 +26,7 @@ export class TeachingBubblePage extends React.Component<IComponentDemoPageProps,
       <ComponentPage
         title='TeachingBubble'
         componentName='TeachingBubbleExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble'
         exampleCards={
           <LayerHost>
             <ExampleCard title='TeachingBubble' code={ TeachingBubbleBasicExampleCode }>
@@ -60,7 +61,7 @@ export class TeachingBubblePage extends React.Component<IComponentDemoPageProps,
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...TeachingBubbleStatus}
+            { ...TeachingBubbleStatus }
           />
         }
       />

@@ -20,6 +20,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
       <ComponentPage
         title='ScrollablePane'
         componentName='ScrollablePaneExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ScrollablePane'
         exampleCards={
           <div>
             <ExampleCard title='Default' code={ ScrollablePaneDefaultExampleCode }>

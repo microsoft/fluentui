@@ -34,6 +34,7 @@ $DropDown-item-height: 32px;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
+  height: $DropDown-height;
   position: relative;
   outline: 0;
   user-select: none;
@@ -149,7 +150,7 @@ $DropDown-item-height: 32px;
   border: 1px solid $ms-color-neutralTertiary;
   cursor: pointer;
   display: block;
-  height: $DropDown-height;
+  height: 100%;
   line-height: $DropDown-height - 2px; // height minus the border
   @include padding(0, $DropDown-height, 0, 12px);
   position: relative;

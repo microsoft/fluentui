@@ -20,6 +20,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
       <ComponentPage
         title='Toggle'
         componentName='ToggleExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle'
         exampleCards={
           <div>
             <ExampleCard

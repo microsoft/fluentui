@@ -17,6 +17,7 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
       <ComponentPage
         title={ 'Slider' }
         componentName='SliderExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Slider'
         exampleCards={
           <ExampleCard title={ 'Slider' } code={ SliderBasicExampleCode }>
             <SliderBasicExample />
@@ -66,7 +67,7 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...SliderStatus}
+            { ...SliderStatus }
           />
         }
       />
