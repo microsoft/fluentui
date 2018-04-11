@@ -42,6 +42,13 @@ export interface IComponentPageProps {
   componentUrl?: string;
 
   /**
+   * Link to the BestPractices markdown file on GitHub.
+   * Enables the 'Edit Best Practices' button.
+   * Overrides URL from componentUrl.
+   */
+  editBestPracticesUrl?: string;
+
+  /**
    * Link to the Donts markdown file on GitHub.
    * Enables the 'Edit Don'ts' button.
    * Overrides URL from componentUrl.
@@ -65,8 +72,9 @@ export interface IComponentPageProps {
 
 export enum ComponentPageSection {
   Dos = 0,
-  Donts = 1,
-  Overview = 2,
+  BestPractices = 1,
+  Donts = 2,
+  Overview = 3,
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -234,11 +242,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   private _getDosAndDonts(): JSX.Element | undefined {
     let dosAndDonts: Array<JSX.Element> = [];
-
+    console.log(this.props.bestPractices!.type);
     if (this.props.bestPractices) {
       dosAndDonts.push(
         <div className='ComponentPage-usage' id='BestPractices' key='best-practices'>
-          <h2 className='ComponentPage-subHeading'>Best Practices</h2>
+          <div className='ComponentPage-usageHeader'>
+            <h2 className='ComponentPage-subHeading'>Best Practices</h2>
+            { this._editButton(ComponentPageSection.BestPractices, this.props.editBestPracticesUrl) }
+          </div>
           { this.props.bestPractices }
         </div>
       );
@@ -339,8 +350,31 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       return undefined;
     }
 
-    // Get section string for URLs and IDs.
+    const {
+      bestPractices,
+      dos,
+      donts,
+      overview,
+    } = this.props;
+
+    const foo = this.props.bestPractices!.type.name;
+
+    // // const showEditButton = this.props.bestPractices!.type!.name === 'PageMarkdown';
+
+    // // Get section string for URLs and IDs.
     const section = ComponentPageSection[sectionIndex];
+    const bpType = bestPractices!.type();
+    const doType = dos!.type();
+    const dontType = donts!.type();
+    const overviewType = overview!.type();
+    let sectionIsMarkdown = false;
+    // let foo;
+
+    switch (section) {
+      case 'BestPractices':
+        sectionIsMarkdown = bestPractices!.props.children.length >= 0 ? true : false;
+      // foo = bpType.name;
+    }
 
     // Generate edit URL from componentURL
     let mdUrl: string | undefined = undefined;

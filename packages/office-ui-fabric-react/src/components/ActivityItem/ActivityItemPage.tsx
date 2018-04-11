@@ -49,7 +49,9 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
           </PageMarkdown>
         }
         bestPractices={
-          <div />
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md') }
+          </PageMarkdown>
         }
         dos={
           <PageMarkdown>
