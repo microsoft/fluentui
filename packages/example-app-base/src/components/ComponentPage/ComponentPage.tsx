@@ -199,8 +199,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   private _getNativePropsInfo(): JSX.Element | undefined {
     if (this.props.allowNativeProps) {
-      let elementString: string | string[] | JSX.Element = this.props.nativePropsElement || 'div',
-        componentString: JSX.Element | undefined;
+      let elementString: string | string[] | JSX.Element = this.props.nativePropsElement || 'div';
+      let componentString: JSX.Element | undefined;
       if (typeof elementString === 'object' && elementString.length > 1) {
         const elementArr = elementString.slice();
         for (let _i = 0; _i < elementArr.length; _i++) {
@@ -345,6 +345,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _editButton(sectionIndex: ComponentPageSection, url?: string): JSX.Element | undefined {
+    // return undefined;
     if (!url && !this.props.componentUrl) {
       return undefined;
     }
@@ -355,11 +356,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     const componentName = (this.props.title || this.props.componentName).replace(/\s/g, '');
 
     // Check if the section contains a function (using PageMarkdown)
+    const {
+      bestPractices,
+      dos,
+      donts,
+      overview,
+    } = this.props;
     const isMarkdown = {
-      BestPractices: typeof this.props.bestPractices!.type === 'function',
-      Dos: typeof this.props.dos!.type === 'function',
-      Donts: typeof this.props.donts!.type === 'function',
-      Overview: typeof this.props.overview!.type === 'function',
+      BestPractices: bestPractices ? typeof bestPractices.type === 'function' : false,
+      Dos: dos ? typeof dos.type === 'function' : false,
+      Donts: donts ? typeof donts.type === 'function' : false,
+      Overview: overview ? typeof overview.type === 'function' : false,
     };
     let sectionIsMarkdown = false;
     switch (sectionIndex) {
@@ -390,34 +397,33 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (this.props.componentUrl) {
       mdUrl = `${this.props.componentUrl}/docs/${componentName}${section}.md`;
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
-      if (mdUrl.includes('/tree/')) {
-        mdUrl = mdUrl.replace('/tree/', '/edit/');
-      } else if (mdUrl.includes('/blob/')) {
-        mdUrl = mdUrl.replace('/blob/', '/edit/');
+      if (mdUrl!.includes('/tree/')) {
+        mdUrl = mdUrl!.replace('/tree/', '/edit/');
+      } else if (mdUrl!.includes('/blob/')) {
+        mdUrl = mdUrl!.replace('/blob/', '/edit/');
       }
     }
 
     // Allow generated URL fallback.
-    let editUrl = url || mdUrl;
-
-    if (editUrl) {
-      return (
-        <TooltipHost
-          key={ `${componentName}-${section}-editButton` }
-          content={ `Edit ${componentName} ${readableSection} on GitHub` }
-          id={ `${componentName}-${section}-editButtonHost` }
-        >
-          <IconButton
-            aria-describedby={ `${componentName}-${section}-editButtonHost` }
-            iconProps={ {
-              iconName: 'Edit'
-            } }
-            href={ editUrl }
-            target='_blank'
-            rel='noopener noreferrer'
-          />
-        </TooltipHost>
-      );
+    const editUrl = url || mdUrl;
+    if (!editUrl) {
+      return undefined;
     }
+
+    return (
+      <TooltipHost
+        key={ `${componentName}-${section}-editButton` }
+        content={ `Edit ${componentName} ${readableSection} on GitHub` }
+        id={ `${componentName}-${section}-editButtonHost` }
+      >
+        <IconButton
+          aria-describedby={ `${componentName}-${section}-editButtonHost` }
+          iconProps={ { iconName: 'Edit' } }
+          href={ editUrl }
+          target='_blank'
+          rel='noopener noreferrer'
+        />
+      </TooltipHost>
+    );
   }
 }
