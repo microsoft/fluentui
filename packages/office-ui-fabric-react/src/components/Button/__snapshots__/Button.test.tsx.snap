@@ -571,9 +571,11 @@ exports[`Button renders IconButton correctly 1`] = `
         top: -2px;
       }
       &:hover {
+        background-color: #f4f4f4;
         color: #004578;
       }
       &:active {
+        background-color: #eaeaea;
         color: #0078d4;
       }
   data-is-focusable={true}

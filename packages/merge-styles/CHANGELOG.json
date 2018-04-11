@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.15.0",
+      "tag": "@uifabric/merge-styles_v5.15.0",
+      "date": "Tue, 10 Apr 2018 17:37:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3e514375dff844cdb8182daf53178d3056411b8c",
+            "comment": "Add backgroundClip property definition."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.14.1",
       "tag": "@uifabric/merge-styles_v5.14.1",
       "date": "Fri, 06 Apr 2018 10:25:55 GMT",

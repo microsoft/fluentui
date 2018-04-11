@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 06 Apr 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Apr 2018 17:37:28 GMT and should not be manually modified.
+
+## 5.15.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- Add backgroundClip property definition.
 
 ## 5.14.1
 Fri, 06 Apr 2018 10:25:55 GMT
