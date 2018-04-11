@@ -36,7 +36,7 @@ export interface IComponentPageProps {
   nativePropsElement?: string | string[] | undefined;
 
   /**
-   * Link to the Component on GitHub.
+   * Link to the Component root folder on GitHub.
    * Enables 'View On GitHub' and all 'Edit' buttons.
    */
   componentUrl?: string;
@@ -351,6 +351,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     // Get section string for URLs and IDs.
     const section = ComponentPageSection[sectionIndex];
+    let readableSection = section;
 
     // Check if the section contains a function (using PageMarkdown)
     const isMarkdown = {
@@ -360,19 +361,18 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       Overview: typeof this.props.overview!.type === 'function',
     };
     let sectionIsMarkdown = false;
-    let readableSection = section;
-    switch (readableSection) {
-      case 'BestPractices':
+    switch (sectionIndex) {
+      case ComponentPageSection.BestPractices:
         sectionIsMarkdown = isMarkdown.BestPractices;
         break;
-      case 'Dos':
+      case ComponentPageSection.Dos:
         sectionIsMarkdown = isMarkdown.Dos;
         break;
-      case 'Donts':
+      case ComponentPageSection.Donts:
         sectionIsMarkdown = isMarkdown.Donts;
         readableSection = 'Don\'ts';
         break;
-      case 'Overview':
+      case ComponentPageSection.Overview:
         sectionIsMarkdown = isMarkdown.Overview;
         break;
       default:
