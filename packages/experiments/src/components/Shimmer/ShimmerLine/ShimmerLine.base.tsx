@@ -8,7 +8,6 @@ import {
   IShimmerLineStyleProps,
   IShimmerLineStyles
 } from './ShimmerLine.types';
-import { ShimmerElementVerticalAlign } from '../Shimmer.types';
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
