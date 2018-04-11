@@ -5,22 +5,22 @@ import {
 } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
-export interface IShimmerLine {
+export interface IShimmerGap {
 
 }
 
 /**
- * ShimmerLine component props.
+ * ShimmerGap component props.
  */
-export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Optional callback to access the IShimmerLine interface. Use this instead of ref for accessing
+   * Optional callback to access the IShimmerGap interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerLine | null) => void;
+  componentRef?: (component: IShimmerGap | null) => void;
 
   /**
-   * Sets the height of the rectangle.
+   * Sets the height of the gap.
    * @default 16px
    */
   height?: number;
@@ -38,23 +38,23 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   widthInPixel?: number;
 
   /**
-   * Sets custom styling of the rectangle.
+   * Sets custom styling of the gap.
    */
   borderStyle?: IStyleSet;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerLineStyleProps, IShimmerLineStyles>;
+  getStyles?: IStyleFunction<IShimmerGapStyleProps, IShimmerGapStyles>;
 }
 
-export interface IShimmerLineStyleProps {
+export interface IShimmerGapStyleProps {
   height?: number;
   widthInPercentage?: number;
   widthInPixel?: number;
   borderStyle?: IStyleSet;
 }
 
-export interface IShimmerLineStyles {
+export interface IShimmerGapStyles {
   root?: IStyle;
 }

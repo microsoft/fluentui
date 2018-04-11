@@ -107,20 +107,25 @@ export interface ICircle extends IShimmerElement {
 
 export interface IGap extends IShimmerElement {
   /**
+   * Sets the height of the shimmer gap in pixels.
+   * @default 16px
+   */
+  height?: number;
+  /**
    * The value will be calculated as '%' relative the to shimmer wrapper.
    */
   widthInPercentage?: number;
 
   /**
    * Sets the width of the Gap to an exact value in pixels.
-   * @default 5px
+   * @default 10px
    */
   widthInPixel?: number;
 }
 
 export interface IShimmerStyleProps {
   width?: number;
-  maxHeight?: number;
+  rowHeight?: number;
   isDataLoaded?: boolean;
   isBaseStyle?: boolean;
 }
