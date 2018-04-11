@@ -832,10 +832,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     // Delay updating expanding/dismissing the submenu
-    // and only set focus if we have not already done so.
-    // Also if we are on the primary portion of a splitButton
-    // (and we know from above that we are not the expanded item)
-    // collapse the submenu
+    // and only set focus if we have not already done so
     if (hasSubmenu(item)) {
       ev.stopPropagation();
       this._enterTimerId = this._async.setTimeout(() => {
