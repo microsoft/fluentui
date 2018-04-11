@@ -352,8 +352,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     // Get section string for URLs and IDs.
     const section = ComponentPageSection[sectionIndex];
     let readableSection = section;
-    let componentName = this.props.title || this.props.componentName;
-    componentName = componentName.replace(/\s/g, '');
+    const componentName = (this.props.title || this.props.componentName).replace(/\s/g, '');
 
     // Check if the section contains a function (using PageMarkdown)
     const isMarkdown = {
