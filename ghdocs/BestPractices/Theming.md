@@ -66,7 +66,7 @@ All styles must also be registered through this module instead of being put dire
 See the documentation for more details on implementation.
 
 ### `styling` package
-The new and recommended way is the [styling package](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling) in this repo.
+The new and recommended way is the [styling package](./Styling.md) in this repo.
 Styles are defined in a JSON format and managed in code, avoiding issues like specificity and providing a typesafe surface for customization.
 The theme itself gets passed to the component. As the theme changes, the state of the component changes as well, and it will modify its own CSS to match.
 

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Tile: exporting an enum to use the values in creating a PlaceholderTile in Shimmer component.",
+      "comment": "Shimmer: Application example modified to reflect changes in DetailsList",
       "type": "patch"
     }
   ],

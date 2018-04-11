@@ -4,7 +4,7 @@ import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 
 // Component Dependencies
-import { PositioningContainer } from './PositioningContainer/PositioningContainer';
+import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak } from './Beak/Beak';
 
 // Coachmark
@@ -82,7 +82,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _entityInnerHostElement = createRef<HTMLDivElement>();
   private _translateAnimationContainer = createRef<HTMLDivElement>();
-  private _positioningContainer = createRef<PositioningContainer>();
+  private _positioningContainer = createRef<IPositioningContainer>();
 
   constructor(props: ICoachmarkTypes) {
     super(props);
