@@ -242,7 +242,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   private _getDosAndDonts(): JSX.Element | undefined {
     let dosAndDonts: Array<JSX.Element> = [];
-    console.log(this.props.bestPractices!.type);
     if (this.props.bestPractices) {
       dosAndDonts.push(
         <div className='ComponentPage-usage' id='BestPractices' key='best-practices'>
