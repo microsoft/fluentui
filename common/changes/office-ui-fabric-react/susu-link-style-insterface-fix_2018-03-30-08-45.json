@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Move sub-components to sub-folders",
-      "type": "patch"
+      "comment": "Link: fix the style interface",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jordanjanzen@jordanjanzen.com"
+  "email": "s@warmsea.net"
 }

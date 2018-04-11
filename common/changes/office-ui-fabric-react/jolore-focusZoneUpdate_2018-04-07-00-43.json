@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Make focus wrap in in the menu (to align with dropdwn and customer feedback)_",
+      "comment": "FocusZone: updating to update alignment on click.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "jolore@microsoft.com"
 }
