@@ -144,4 +144,4 @@ The bot sniffs out 'stale' issues in the repository based on date and activity. 
 
 Stale-bot is versatile and has exemption labels, projects, and milestones. As of right now any issues marked 'Priority 0', 'Priority 1', 'Needs: discussion', and 'Needs: revisit' will never be marked stale.
 
-We ask everyone to not abuse these. This cleanup is for better organization of the Fabric React project with the goal to increase visibility and response time on bugs and feature requests and organizing the issues is key to this endeavor. If there is a more semantic label to express, why your issue needs to stick around for multiple months please contact Michael Angotti (v-micang@microsoft.com) so he can factor that into the organization.
+We ask everyone to not abuse these. This cleanup is for better organization of the Fabric React project with the goal to increase visibility and response time on bugs and feature requests and organizing the issues is key to this endeavor. If there is a more semantic label to express, why your issue needs to stick around for multiple months tag the issue as such and we will triage it appropriately.
