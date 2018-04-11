@@ -127,3 +127,21 @@ We try to fix high priority bugs ASAP.
 Other bugs will qualify as Normal or lower priority and will get fixed as a part of the normal release cadence.
 
 From time to time we do plan to close issues that are very old and have no activity.
+
+## *Q. Why do I get the `stale[bot]` messages? Why is my issue marked as stale?*
+
+We have recently configured the [GitHub stale BOT](https://github.com/probot/stale) as a scaling mechanism for us because there have been many issues that simply don't repro anymore or have been fixed without the triaging group seeing them/making the connection between fix->issue. The bot encourages issue openers to follow-up if it's still an active issue, and if it’s not, let’s close them.
+
+### What issues will be automatically resolved?
+
+We plan to resolve all issues before `October 1, 2017` automatically. For issues after that date, we are aggressively triaging them and creating a plan to get them fixed ASAP.
+
+### How does Stale-bot work?
+
+The bot sniffs out 'stale' issues in the repository based on date and activity. If an issue has not had any activity (comments, labels, title change, assignment, etc.) in certain number of (configurable) days, the Stale-bot will add the label 'no-recent-activity', and comment on the issue that it will be closed in 14-days if no further activity occurs. If no activity happens on this issue in the next two weeks, Stale-bot will automatically close the issue. This is intended to provide a reasonable level of cleanup so that valid issues don't get lost in the ocean of no longer relevant issues.
+
+### But my issue is relevant, it’s just a long discussion! What can I do?
+
+Stale-bot is versatile and has exemption labels, projects, and milestones. As of right now any issues marked 'Priority 0', 'Priority 1', 'Needs: discussion', and 'Needs: revisit' will never be marked stale.
+
+We ask everyone to not abuse these. This cleanup is for better organization of the Fabric React project with the goal to increase visibility and response time on bugs and feature requests and organizing the issues is key to this endeavor. If there is a more semantic label to express, why your issue needs to stick around for multiple months please contact Michael Angotti (v-micang@microsoft.com) so he can factor that into the organization.

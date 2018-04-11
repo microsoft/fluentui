@@ -48,13 +48,10 @@ ReactDOM.render(
   document.body.firstChild
 );
 ```
-**[⬆ back to top](#Contents)**
 
 ## Browser support
 
 Fabric React supports many commonly used browsers. See the [browser support doc](./ghdocs/Testing/BrowserSupport.md) for more information.
-
-**[⬆ back to top](#Contents)**
 
 ## Server-side rendering
 
@@ -92,8 +89,6 @@ console.log(
 
 Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
-**[⬆ back to top](#Contents)**
-
 ### Browserless Testing
 
 In unit or end-to-end tests that run in an SSR-like (non-browser) environment such as Node, you'll need to disable style loading.
@@ -128,19 +123,13 @@ In Jest:
   }
 ```
 
-**[⬆ back to top](#Contents)**
-
 ## Advanced usage
 
 For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](./ghdocs/BestPractices/Advanced.md).
 
-**[⬆ back to top](#Contents)**
-
 ## Contribute to Office UI Fabric React
 
 Please take a look at our [contribution guidelines](./ghdocs/Contributing/Contributing.md) for more info. Also read [Contribute Bug fixes](./ghdocs/Contributing/BugFixes.md) and [Contribute New component](./ghdocs/Contributing/NewComponent.md).
-
-**[⬆ back to top](#Contents)**
 
 ## Building the repo
 
@@ -158,13 +147,9 @@ To build and run tests for all packages in the repo, you can run `npm run build`
 
 To build individual packages within the `packages/*/` folders, you can use `npm run build` in each individually. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
 
-**[⬆ back to top](#Contents)**
-
 ## Testing
 
 For testing see our [testing documentation](./ghdocs/BestPractices/Testing.md).
-
-**[⬆ back to top](#Contents)**
 
 ## Advanced building tips
 
@@ -182,15 +167,11 @@ To can also build up to a specific project using the `--to <package>` argument. 
 rush build --to office-ui-fabric-react
 ```
 
-**[⬆ back to top](#Contents)**
-
 ## Licenses
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
 Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
-
-**[⬆ back to top](#Contents)**
 
 ## Changelog
 
@@ -200,4 +181,7 @@ We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to 
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-**[⬆ back to top](#Contents)**
+## Issue management and `Stale-bot`
+
+If you are getting `stale[bot]` messages and/or want to understand how we manage issues, please search for 'issue Triage' and/or 'stale[bot]' in the [FAQ](./FAQ.md).
+

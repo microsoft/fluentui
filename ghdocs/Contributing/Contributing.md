@@ -3,7 +3,7 @@
 
 Please use the following steps to contribute a new component or a bug fix to the Office UI Fabric project.
 
-* Setup your branch using instructions in [GitbranchSetup](./GitBranchSetup.md).
+* Setup your branch using instructions in [Git branch Setup](./Setup.md).
 
 * Read [BugFix](./BugFixes.md) guide for preparing a bug fix and the [New Component](./NewComponent.md) guide for building a new component.
 
