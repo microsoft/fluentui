@@ -243,7 +243,7 @@ export interface ICalloutContentStyleProps {
    * @deprecated will be removed in v6. Do not use.
    * Max height applied to the content of a callout.
    */
-  contentMaxHeight?: number
+  contentMaxHeight?: number;
 
   /**
    * Background color for the beak and callout.

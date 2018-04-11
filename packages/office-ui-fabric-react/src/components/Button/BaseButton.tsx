@@ -419,7 +419,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _openMenu = (): void => {
     if (this.props.menuProps) {
-      let menuProps = this.props.menuProps;
+      const menuProps = this.props.menuProps;
       if (this.props.persistMenu) {
         menuProps.hidden = false;
       }

@@ -54,6 +54,7 @@ export interface ICalloutState {
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
   heightOffset?: number;
+  maxHeight?: number;
 }
 
 @customizable('CalloutContent', ['theme'])
@@ -74,7 +75,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _calloutElement = createRef<HTMLDivElement>();
   private _targetWindow: Window;
   private _bounds: IRectangle;
-  private _maxHeight: number | undefined;
   private _positionAttempts: number;
   private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
@@ -119,11 +119,15 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof (newTarget) === 'string' || newTarget instanceof String) {
-      this._maxHeight = undefined;
+      this.setState({
+        maxHeight: undefined
+      });
       this._setTargetWindowAndElement(newTarget!);
     }
     if (newProps.gapSpace !== this.props.gapSpace || this.props.beakWidth !== newProps.beakWidth) {
-      this._maxHeight = undefined;
+      this.setState({
+        maxHeight: undefined
+      });
     }
 
     if (newProps.finalHeight !== this.props.finalHeight) {
@@ -136,6 +140,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         positions: undefined
       });
     }
+
   }
 
   public componentDidMount() {
@@ -376,7 +381,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _getMaxHeight(): number {
-    if (!this._maxHeight) {
+    if (!this.state.maxHeight) {
       if (this.props.directionalHintFixed && this._target) {
         const beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
         const gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
@@ -385,14 +390,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
-            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+            this.setState({ maxHeight: getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds()) });
           }
         });
       } else {
-        this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
+        this.setState({ maxHeight: this._getBounds().height! - BORDER_WIDTH * 2 });
       }
     }
-    return this._maxHeight!;
+    return this.state.maxHeight!;
   }
 
   private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo) {

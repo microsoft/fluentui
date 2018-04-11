@@ -131,9 +131,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
     if (newProps.hidden !== this.props.hidden) {
       if (newProps.hidden) {
-        this._onMenuClosed()
+        this._onMenuClosed();
       } else {
-        this._onMenuOpened()
+        this._onMenuOpened();
         this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
       }
     }
@@ -333,7 +333,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _onMenuClosed() {
     this._events.off(this._targetWindow, 'resize', this.dismiss);
-    setTimeout(() => this._previousActiveElement!.focus(), 0);
+    this._previousActiveElement && setTimeout(() => this._previousActiveElement!.focus(), 0);
   }
 
   /**
