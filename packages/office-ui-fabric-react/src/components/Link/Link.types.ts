@@ -19,7 +19,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILink) => void;
+  componentRef?: (component: ILink | null) => void;
 
   /**
    * Whether the link is disabled
@@ -29,7 +29,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ILinkProps, ILinkStyles>;
+  getStyles?: IStyleFunction<ILinkStyleProps, ILinkStyles>;
 
   /**
    * Theme (provided through customization.)

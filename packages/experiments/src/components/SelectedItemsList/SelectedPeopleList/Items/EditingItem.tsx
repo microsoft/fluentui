@@ -1,7 +1,15 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, KeyCodes, autobind, getId, getNativeProps, inputProperties } from '../../../../Utilities';
+import {
+  BaseComponent,
+  KeyCodes,
+  getId,
+  getNativeProps,
+  inputProperties,
+  css,
+  createRef
+} from '../../../../Utilities';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
@@ -23,7 +31,7 @@ export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProp
 
 export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
-  private _editingFloatingPicker: FloatingPeoplePicker;
+  private _editingFloatingPicker = createRef<FloatingPeoplePicker>();
   private _onRenderFloatingPicker: (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
   private _floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
 
@@ -35,23 +43,21 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     this._floatingPickerProps = this.props.floatingPickerProps as IBaseFloatingPickerProps<IExtendedPersonaProps>;
   }
 
-  @autobind
   public componentDidMount(): void {
     let getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
     let itemText = getEditingItemText(this.props.item);
-    this._editingFloatingPicker.onQueryStringChanged(itemText);
+    this._editingFloatingPicker.value && this._editingFloatingPicker.value.onQueryStringChanged(itemText);
     this._editingInput.value = itemText;
     this._editingInput.focus();
   }
 
-  @autobind
   public render(): JSX.Element {
     const itemId = getId();
     const nativeProps = getNativeProps(this.props, inputProperties);
     return (
-      <div aria-labelledby={ 'editingItemPersona-' + itemId } className={ 'ms-EditingItem' }>
+      <div aria-labelledby={ 'editingItemPersona-' + itemId } className={ css('ms-EditingItem', styles.editingContainer) }>
         <input
-          { ...nativeProps}
+          { ...nativeProps }
           ref={ this._resolveInputRef }
           autoCapitalize={ 'off' }
           autoComplete={ 'off' }
@@ -67,11 +73,10 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
       </div>);
   }
 
-  @autobind
-  private _renderEditingSuggestions(): JSX.Element {
+  private _renderEditingSuggestions = (): JSX.Element => {
     let onRenderFloatingPicker = this._onRenderFloatingPicker;
     return (onRenderFloatingPicker({
-      componentRef: this._resolveRef('_editingFloatingPicker'),
+      componentRef: this._editingFloatingPicker,
       onChange: this._onSuggestionSelected,
       inputElement: this._editingInput,
       selectedItems: [],
@@ -79,27 +84,25 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     }));
   }
 
-  @autobind
-  private _resolveInputRef(ref: HTMLInputElement): void {
+  private _resolveInputRef = (ref: HTMLInputElement): void => {
     this._editingInput = ref;
 
     this.forceUpdate(() => { this._editingInput.focus(); });
   }
 
-  @autobind
-  private _onInputClick(): void {
-    this._editingFloatingPicker.showPicker();
+  private _onInputClick = (): void => {
+    this._editingFloatingPicker.value && this._editingFloatingPicker.value.showPicker(true /*updatevalue*/);
   }
 
-  @autobind
-  private _onInputBlur(ev: React.FocusEvent<HTMLElement>): void {
-    if (ev.relatedTarget === null || (ev.relatedTarget as HTMLElement).className.indexOf('ms-SearchMore-button') === -1) {
-      this._editingFloatingPicker.forceResolveSuggestion();
+  private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
+    if (this._editingFloatingPicker.value &&
+      (ev.relatedTarget === null || (ev.relatedTarget as HTMLElement).className.indexOf('ms-SearchMore-button') === -1)
+    ) {
+      this._editingFloatingPicker.value.forceResolveSuggestion();
     }
   }
 
-  @autobind
-  private _onInputChange(ev: React.FormEvent<HTMLElement>): void {
+  private _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
     let value: string = (ev.target as HTMLInputElement).value;
 
     if (value === '') {
@@ -107,7 +110,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
         this.props.onRemoveItem();
       }
     } else {
-      this._editingFloatingPicker.onQueryStringChanged(value);
+      this._editingFloatingPicker.value && this._editingFloatingPicker.value.onQueryStringChanged(value);
     }
   }
 
@@ -117,8 +120,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     }
   }
 
-  @autobind
-  private _onSuggestionSelected(item: IExtendedPersonaProps): void {
+  private _onSuggestionSelected = (item: IExtendedPersonaProps): void => {
     this.props.onEditingComplete(this.props.item, item);
   }
 }

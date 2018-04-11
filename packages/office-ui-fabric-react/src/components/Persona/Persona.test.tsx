@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
-import { PersonaInitialsColor } from './Persona.types';
 import { mount, ReactWrapper } from 'enzyme';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -50,6 +49,18 @@ describe('Persona', () => {
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('45');
+      wrapper.unmount();
+
+      wrapper = mount(<Persona primaryText='+1 (555) 6789' />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('');
+      wrapper.unmount();
+
+      wrapper = mount(<Persona primaryText='+1 (555) 6789' allowPhoneInitials={true} />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('16');
       wrapper.unmount();
 
       wrapper = mount(<Persona primaryText='David (The man) Goff' />);

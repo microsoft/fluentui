@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   css
 } from 'office-ui-fabric-react/lib/Utilities';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
@@ -108,19 +107,16 @@ export class App extends React.Component<IAppProps, IAppState> {
     );
   }
 
-  @autobind
-  private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
+  private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
     this.setState({ isMenuVisible });
   }
 
-  @autobind
-  private _onLinkClick(): void {
+  private _onLinkClick = (): void => {
     this.setState({ isMenuVisible: false });
   }
 
-  @autobind
   // tslint:disable-next-line:no-any
-  private _onRenderLink(link: INavLink): any {
+  private _onRenderLink = (link: INavLink): any => {
     return (
       [
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,

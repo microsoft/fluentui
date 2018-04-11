@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   BaseComponent,
   classNamesFunction,
   customizable,
@@ -49,8 +48,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     groups: null
   };
 
-  private _hasExpandButton: boolean;
-
   constructor(props: INavProps) {
     super(props);
 
@@ -67,7 +64,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         }
       }
     }
-    this._hasExpandButton = false;
   }
 
   public componentWillReceiveProps(newProps: INavProps) {
@@ -99,14 +95,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       return null;
     }
 
-    // When groups[x].name is specified or any of the links have children, the expand/collapse
-    // chevron button is shown and different padding is needed. _hasExpandButton marks this condition.
-    this._hasExpandButton = groups.some((group: INavLinkGroup) => {
-      return group ? !!group.name || (group.links && group.links.some((link: INavLink) => {
-        return !!(link && link.links && link.links.length);
-      })) : false;
-    });
-
     const groupElements: React.ReactElement<{}>[] = groups.map(this._renderGroup);
 
     const classNames = getClassNames(getStyles!, { theme: theme!, className, isOnTop, groups });
@@ -116,6 +104,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         <nav
           role='navigation'
           className={ classNames.root }
+          aria-label={ this.props.ariaLabel }
         >
           { groupElements }
         </nav>
@@ -127,8 +116,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     return this.state.selectedKey;
   }
 
-  @autobind
-  private _onRenderLink(link: INavLink) {
+  private _onRenderLink = (link: INavLink): JSX.Element => {
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, { theme: theme!, groups });
     return (<div className={ classNames.linkText }>{ link.name }</div>);
@@ -158,8 +146,8 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         className={ classNames.link }
         styles={ buttonStyles }
         href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
-        iconProps={ { iconName: link.icon || '' } }
-        description={ link.title || link.name }
+        iconProps={ link.iconProps || { iconName: link.icon || '' } }
+        ariaDescription={ link.title || link.name }
         onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
         title={ link.title || link.name }
         target={ link.target }
@@ -229,14 +217,13 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const classNames = getClassNames(getStyles!, { theme: theme!, groups });
 
     return (
-      <ul role='list' aria-label={ this.props.ariaLabel } className={ classNames.navItems }>
+      <ul role='list' className={ classNames.navItems }>
         { linkElements }
       </ul>
     );
   }
 
-  @autobind
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
+  private _renderGroup = (group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> => {
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -305,6 +292,9 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     if (this.props.onLinkClick) {
       this.props.onLinkClick(ev, link);
     }
+    if (!link.url && link.links && link.links.length > 0) {
+      this._onLinkExpandClicked(link, ev);
+    }
 
     this.setState({ selectedKey: link.key });
   }
@@ -312,6 +302,9 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     if (link.onClick) {
       link.onClick(ev, link);
+    }
+    if (!link.url && link.links && link.links.length > 0) {
+      this._onLinkExpandClicked(link, ev);
     }
 
     this.setState({ selectedKey: link.key });

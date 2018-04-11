@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Refactoring Shimmer and adding ShimmerTile + Implements Shimmer in TilesList.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "v-vibr@microsoft.com"
+}

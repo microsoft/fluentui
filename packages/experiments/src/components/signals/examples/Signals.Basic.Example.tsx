@@ -14,12 +14,16 @@ import {
   LiveEditSignal,
   MentionSignal,
   CommentsSignal,
+  UnseenReplySignal,
   UnseenEditSignal,
   ReadOnlySignal,
-  SharedSignal
+  SharedSignal,
+  EmailedSignal,
+  RecordSignal
 } from '../Signals';
-import { ChoiceGroup, IChoiceGroupOption, Checkbox } from 'office-ui-fabric-react';
-import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { lorem } from '@uifabric/example-app-base';
 import * as SignalStylesModule from '../Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
@@ -163,8 +167,20 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
             signal={ <CommentsSignal>2</CommentsSignal> }
           />
           <SignalExample
+            name='Unseen reply'
+            signal={ <UnseenReplySignal /> }
+          />
+          <SignalExample
             name='Unseen edit'
             signal={ <UnseenEditSignal /> }
+          />
+          <SignalExample
+            name='Emailed'
+            signal={ <EmailedSignal /> }
+          />
+          <SignalExample
+            name='Record'
+            signal={ <RecordSignal /> }
           />
           <SignalExample
             name='Read-only'
@@ -179,15 +195,13 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
     );
   }
 
-  @autobind
-  private _onFontSizeChoiceChanged(option: IChoiceGroupOption): void {
+  private _onFontSizeChoiceChanged = (option: IChoiceGroupOption): void => {
     this.setState({
       fontSize: option.key as ISignalsBasicExampleState['fontSize']
     });
   }
 
-  @autobind
-  private _onIsDarkChanged(ev: React.FormEvent<HTMLElement>, checked: boolean): void {
+  private _onIsDarkChanged = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({
       isDark: checked
     });

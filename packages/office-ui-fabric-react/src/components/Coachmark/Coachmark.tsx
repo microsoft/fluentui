@@ -1,10 +1,10 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, autobind } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 
 // Component Dependencies
-import { PositioningContainer } from './PositioningContainer/PositioningContainer';
+import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak } from './Beak/Beak';
 
 // Coachmark
@@ -80,10 +80,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    * The cached HTMLElement reference to the Entity Inner Host
    * element.
    */
-  private _entityInnerHostElement: HTMLElement;
-  private _translateAnimationContainer: HTMLElement;
-  private _entityHost: HTMLElement;
-  private _positioningContainer: PositioningContainer;
+  private _entityInnerHostElement = createRef<HTMLDivElement>();
+  private _translateAnimationContainer = createRef<HTMLDivElement>();
+  private _positioningContainer = createRef<IPositioningContainer>();
 
   constructor(props: ICoachmarkTypes) {
     super(props);
@@ -131,18 +130,18 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       <PositioningContainer
         target={ target }
         offsetFromTarget={ beakHeight }
-        componentRef={ this._resolveRef('_positioningContainer') }
+        componentRef={ this._positioningContainer }
       >
         <div className={ classNames.root }>
           <div className={ classNames.pulsingBeacon } />
           <div
             className={ classNames.translateAnimationContainer }
-            ref={ this._resolveRef('_translateAnimationContainer') }
+            ref={ this._translateAnimationContainer }
           >
             <div className={ classNames.scaleAnimationLayer }>
               <div className={ classNames.rotateAnimationLayer }>
                 {
-                  this._positioningContainer && <Beak
+                  this._positioningContainer.value && <Beak
                     width={ beakWidth }
                     height={ beakHeight }
                     left={ this.state.beakLeft }
@@ -152,13 +151,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                 <FocusZone>
                   <div
                     className={ classNames.entityHost }
-                    ref={ this._resolveRef('_entityHost') }
                     data-is-focusable={ true }
                     onFocus={ this._onFocusHandler }
                   >
                     <div
                       className={ classNames.entityInnerHost }
-                      ref={ this._resolveRef('_entityInnerHostElement') }
+                      ref={ this._entityInnerHostElement }
                     >
                       { children }
                     </div>
@@ -181,7 +179,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
   public componentDidMount(): void {
     this._async.requestAnimationFrame(((): void => {
-      if ((this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
+      if (this._entityInnerHostElement.value && (this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
 
         // @TODO Eventually we need to add the various directions
         const beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
@@ -190,8 +188,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         this.setState({
           isMeasuring: false,
           entityInnerHostRect: {
-            width: this._entityInnerHostElement.offsetWidth,
-            height: this._entityInnerHostElement.offsetHeight
+            width: this._entityInnerHostElement.value.offsetWidth,
+            height: this._entityInnerHostElement.value.offsetHeight
           },
           beakLeft: beakLeft + 'px',
           beakTop: beakTop + 'px'
@@ -207,24 +205,22 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     }));
   }
 
-  @autobind
-  private _onFocusHandler(): void {
+  private _onFocusHandler = (): void => {
     this._openCoachmark();
   }
 
-  @autobind
-  private _openCoachmark(): void {
+  private _openCoachmark = (): void => {
     this.setState({
       collapsed: false
     });
 
-    this._translateAnimationContainer.addEventListener('animationstart', (): void => {
+    this._translateAnimationContainer.value && this._translateAnimationContainer.value.addEventListener('animationstart', (): void => {
       if (this.props.onAnimationOpenStart) {
         this.props.onAnimationOpenStart();
       }
     });
 
-    this._translateAnimationContainer.addEventListener('animationend', (): void => {
+    this._translateAnimationContainer.value && this._translateAnimationContainer.value.addEventListener('animationend', (): void => {
       if (this.props.onAnimationOpenEnd) {
         this.props.onAnimationOpenEnd();
       }
@@ -245,9 +241,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     let targetElementRect: ClientRect;
 
     // Take the initial measure out of the initial render to prevent
-    // an unnessecary render.
+    // an unnecessary render.
     this._async.setTimeout(() => {
-      targetElementRect = this._entityInnerHostElement.getBoundingClientRect();
+      if (this._entityInnerHostElement.value) {
+        targetElementRect = this._entityInnerHostElement.value.getBoundingClientRect();
+      }
 
       // When the window resizes we want to async
       // get the bounding client rectangle.
@@ -260,7 +258,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         });
 
         timeoutIds.push(this._async.setTimeout((): void => {
-          targetElementRect = this._entityInnerHostElement.getBoundingClientRect();
+          if (this._entityInnerHostElement.value) {
+            targetElementRect = this._entityInnerHostElement.value.getBoundingClientRect();
+          }
         }, 100));
       });
     }, 10);

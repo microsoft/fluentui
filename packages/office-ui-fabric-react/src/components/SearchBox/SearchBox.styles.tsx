@@ -1,13 +1,9 @@
 import {
-  FontSizes,
   HighContrastSelector,
-  ScreenWidthMaxMedium,
-  ScreenWidthMaxSmall,
   AnimationVariables,
   normalize
 } from '../../Styling';
-import { SearchBoxBase } from './SearchBox.base';
-import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
+import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput } = props;
@@ -24,7 +20,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'stretch',
-        padding: '0 0 0 8px',
+        // The 1px top and bottom padding ensure the input field does not overlap the border
+        padding: '1px 0 1px 4px',
         border: `1px solid ${palette.neutralTertiary}`,
         height: 32,
         selectors: {
@@ -65,7 +62,9 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       underlined && [
         'is-underlined',
         {
-          borderWidth: '0 0 1px 0'
+          borderWidth: '0 0 1px 0',
+          // Underlined SearchBox has a larger padding left to vertically align with the waffle in product
+          padding: '1px 0 1px 8px'
         }
       ],
       underlined && disabled && {
@@ -129,7 +128,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontFamily: 'inherit',
         fontSize: 'inherit',
         color: palette.neutralPrimary,
-        backgroundColor: 'transparent',
+        backgroundColor: semanticColors.inputBackground,
         flex: '1 1 0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',

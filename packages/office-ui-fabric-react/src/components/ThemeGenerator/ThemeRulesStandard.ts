@@ -95,7 +95,7 @@ export function themeRulesStandardCreator() {
   });
 
   // set default colors for the base colors
-  slotRules[BaseSlots[BaseSlots.primaryColor]].color = getColorFromString('#0078d7');
+  slotRules[BaseSlots[BaseSlots.primaryColor]].color = getColorFromString('#0078d4');
   slotRules[BaseSlots[BaseSlots.backgroundColor]].color = getColorFromString('#fff');
   slotRules[BaseSlots[BaseSlots.foregroundColor]].color = getColorFromString('#333');
 

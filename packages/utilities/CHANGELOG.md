@@ -1,6 +1,132 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+
+## 5.23.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Added IComponentAs as a type for 'render as' props in components
+
+## 5.22.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus.
+
+## 5.22.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Update createRef type
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.20.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing
+
+## 5.19.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- EventGroup.raise: event args are now correctly mixed into the event object.
+
+## 5.19.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Make helper functions getWindow and getDocument accept `null`.
+
+## 5.18.3
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.18.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Revert focus changes
+
+## 5.18.1
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Patches
+
+- Customizable: Fix hoist/customizations import so it doesn't break amd
+
+## 5.18.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator
+
+### Patches
+
+- Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus.
+- Styled: Add display name to styled wrapper
+
+## 5.17.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)
+
+## 5.17.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Add hoistStatics function to withResponsiveMode decorator.
+
+## 5.16.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added hoistStatics function to @customizable decorator so static methods work properly
+
+## 5.15.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Adds createRef polyfil to prepare for object refs.
+
+## 5.14.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.14.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+- Update KeyCodes enum to include all key codes
 
 ## 5.13.0
 Thu, 22 Feb 2018 11:15:23 GMT

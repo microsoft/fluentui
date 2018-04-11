@@ -6,34 +6,54 @@ import {
   doesElementContainFocus,
   getDocument,
   getNativeProps,
-  autobind
+  createRef
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
+
+export interface IPopupState {
+  needsVerticalScrollBar?: boolean;
+}
 
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export class Popup extends BaseComponent<IPopupProps, {}> {
+export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
   };
 
-  public _root: HTMLDivElement;
+  public _root = createRef<HTMLDivElement>();
 
   private _originalFocusedElement: HTMLElement;
   private _containsFocus: boolean;
+
+  public constructor(props: IPopupProps) {
+    super(props);
+    this.state = { needsVerticalScrollBar: false };
+  }
 
   public componentWillMount() {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {
-    this._events.on(this._root, 'focus', this._onFocus, true);
-    this._events.on(this._root, 'blur', this._onBlur, true);
-    if (doesElementContainFocus(this._root)) {
+    if (!this._root.value) {
+      return;
+    }
+
+    this._events.on(this._root.value, 'focus', this._onFocus, true);
+    this._events.on(this._root.value, 'blur', this._onBlur, true);
+
+    if (doesElementContainFocus(this._root.value)) {
       this._containsFocus = true;
     }
+
+    this._updateScrollBarAsync();
+  }
+
+  public componentDidUpdate() {
+    this._updateScrollBarAsync();
   }
 
   public componentWillUnmount(): void {
@@ -54,14 +74,9 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   public render() {
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
-    let needsVerticalScrollBar = false;
-    if (this._root && this._root.firstElementChild) {
-      needsVerticalScrollBar = this._root.firstElementChild.clientHeight > this._root.clientHeight;
-    }
-
     return (
       <div
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
         { ...getNativeProps(this.props, divProperties) }
         className={ className }
         role={ role }
@@ -69,15 +84,14 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
-        style={ { overflowY: needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
+        style={ { overflowY: this.state.needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
       >
         { this.props.children }
       </div>
     );
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.escape:
 
@@ -89,6 +103,25 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         }
 
         break;
+    }
+  }
+
+  private _updateScrollBarAsync() {
+    this._async.requestAnimationFrame(() => {
+      this._getScrollBar();
+    });
+  }
+
+  private _getScrollBar() {
+    let needsVerticalScrollBar = false;
+    if (this._root && this._root.value && this._root.value.firstElementChild) {
+      needsVerticalScrollBar = this._root.value.clientHeight > 0
+          && this._root.value.firstElementChild.clientHeight > this._root.value.clientHeight;
+    }
+    if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
+      this.setState({
+        needsVerticalScrollBar: needsVerticalScrollBar
+      });
     }
   }
 

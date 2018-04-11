@@ -3,11 +3,11 @@ import * as PropTypes from 'prop-types';
 import {
   BaseComponent,
   classNamesFunction,
-  css,
   customizable,
   divProperties,
   getNativeProps,
-  provideContext
+  provideContext,
+  createRef
 } from '../../Utilities';
 import {
   IResizeGroupProps,
@@ -294,8 +294,8 @@ const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupSty
 @customizable('ResizeGroup', ['theme'])
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
-  private _root: HTMLElement;
-  private _measured: HTMLElement;
+  private _root = createRef<HTMLDivElement>();
+  private _measured = createRef<HTMLDivElement>();
 
   constructor(props: IResizeGroupProps) {
     super(props);
@@ -313,11 +313,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     const classNames = getClassNames(getStyles!, { theme: theme!, className });
 
     return (
-      <div { ...divProps } className={ classNames.root } ref={ this._resolveRef('_root') }>
+      <div { ...divProps } className={ classNames.root } ref={ this._root }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div
             style={ { position: 'fixed', visibility: 'hidden' } }
-            ref={ this._resolveRef('_measured') }
+            ref={ this._measured }
           >
             <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>
           </div>
@@ -351,7 +351,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public remeasure(): void {
-    if (this._root) {
+    if (this._root.value) {
       this.setState({ measureContainer: true });
     }
   }
@@ -359,12 +359,12 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   private _afterComponentRendered() {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
-      if (this.state.measureContainer) {
-        containerWidth = this._root.getBoundingClientRect().width;
+      if (this.state.measureContainer && this._root.value) {
+        containerWidth = this._root.value.getBoundingClientRect().width;
       }
       const nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
         this.state,
-        () => this._measured.scrollWidth,
+        () => this._measured.value ? this._measured.value.scrollWidth : 0,
         containerWidth);
 
       if (nextState) {
@@ -374,7 +374,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   private _onResize() {
-    if (this._root) {
+    if (this._root.value) {
       this.setState({ measureContainer: true });
     }
   }

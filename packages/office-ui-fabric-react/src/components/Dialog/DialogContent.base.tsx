@@ -1,15 +1,22 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css,
+  classNamesFunction,
+  customizable,
 } from '../../Utilities';
-import { IDialogContentProps, DialogType } from './DialogContent.types';
+import {
+  DialogType,
+  IDialogContentProps,
+  IDialogContentStyleProps,
+  IDialogContentStyles,
+} from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import * as stylesImport from './Dialog.scss';
-const styles: any = stylesImport;
 
+const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
+
+@customizable('DialogContent', ['theme'])
 @withResponsiveMode
 export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
 
@@ -27,40 +34,42 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
   public render() {
     const {
       showCloseButton,
+      className,
       closeButtonAriaLabel,
       onDismiss,
       subTextId,
       subText,
       titleId,
       title,
-      type
+      type,
+      getStyles,
+      theme,
     } = this.props;
+
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      className,
+      isLargeHeader: type === DialogType.largeHeader,
+      isClose: type === DialogType.close,
+    });
 
     const groupings = this._groupChildren();
     let subTextContent;
     if (subText) {
-      subTextContent = <p className={ css('ms-Dialog-subText', styles.subText) } id={ subTextId }>{ subText }</p>;
+      subTextContent = <p className={ classNames.subText } id={ subTextId }>{ subText }</p>;
     }
 
-    const contentClassName = css(this.props.className, {
-      ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
-      ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
-    });
-
     return (
-      <div className={ css(contentClassName) }>
-        <div className={ css('ms-Dialog-header', styles.header) }>
-          <p className={ css('ms-Dialog-title', styles.title) } id={ titleId } role='heading'>{ title }</p>
-          <div className={ css('ms-Dialog-topButton', styles.topButton) }>
+      <div className={ classNames.content }>
+        <div className={ classNames.header }>
+          <p className={ classNames.title } id={ titleId } role='heading'>{ title }</p>
+          <div className={ classNames.topButton }>
             { this.props.topButtonsProps!.map((props) => (
               <IconButton { ...props } />
             )) }
             { (type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) &&
               <IconButton
-                className={ css(
-                  'ms-Dialog-button ms-Dialog-button--close',
-                  styles.button
-                ) }
+                className={ classNames.button }
                 iconProps={ { iconName: 'Cancel' } }
                 ariaLabel={ closeButtonAriaLabel }
                 onClick={ onDismiss as any }
@@ -68,8 +77,8 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
             }
           </div>
         </div>
-        <div className={ css('ms-Dialog-inner', styles.inner) }>
-          <div className={ css('ms-Dialog-content', styles.content, this.props.className) }>
+        <div className={ classNames.inner }>
+          <div className={ classNames.innerContent }>
             { subTextContent }
             { groupings.contents }
           </div>

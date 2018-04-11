@@ -10,6 +10,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone0"
+    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -40,7 +41,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
         role="list"
       >
         <input
-          aria-activedescendant="sug--1"
+          aria-activedescendant={undefined}
           aria-controls="selected-suggestion-alert"
           aria-expanded={false}
           aria-haspopup="true"
@@ -77,6 +78,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone17"
+    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -107,7 +109,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
         role="list"
       >
         <input
-          aria-activedescendant="sug--1"
+          aria-activedescendant={undefined}
           aria-controls="selected-suggestion-alert"
           aria-expanded={false}
           aria-haspopup="true"

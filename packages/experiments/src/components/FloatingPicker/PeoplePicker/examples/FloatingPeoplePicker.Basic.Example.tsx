@@ -3,12 +3,11 @@ import * as React from 'react';
 /* tslint:enable */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseFloatingPicker } from '../../BaseFloatingPicker.types';
+import { SuggestionsStore } from '../../Suggestions/SuggestionsStore';
+import { IBaseFloatingPicker, IBaseFloatingPickerSuggestionProps } from '../../BaseFloatingPicker.types';
 import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru } from '../../../ExtendedPicker';
@@ -23,19 +22,9 @@ export interface IPeoplePickerExampleState {
   searchValue: string;
 }
 
-const suggestionProps: IBasePickerSuggestionsProps = {
-  suggestionsHeaderText: 'Suggested People',
-  mostRecentlyUsedHeaderText: 'Suggested Contacts',
-  noResultsFoundText: 'No results found',
-  loadingText: 'Loading',
-  showRemoveButtons: true,
-  suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
-};
-
 export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: IBaseFloatingPicker;
-  private _inputElement: HTMLDivElement;
+  private _inputElement: HTMLInputElement;
 
   constructor(props: {}) {
     super(props);
@@ -58,11 +47,12 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   public render(): JSX.Element {
     return (
       <div>
-        <div className='ms-SearchBoxSmallExample' ref={ (ref: HTMLDivElement) => this._inputElement = ref }>
+        <div className='ms-SearchBoxSmallExample' ref={ this._setInputElementRef }>
           <SearchBox
-            labelText={ 'Search a person' }
+            placeholder={ 'Search a person' }
             onChange={ this._onSearchChange }
             value={ this.state.searchValue }
+            onFocus={ this._onFocus }
           />
         </div>
         { this._renderFloatingPicker() }
@@ -70,10 +60,31 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     );
   }
 
+  private _onFocus = (): void => {
+    if (this._picker) {
+      this._picker.showPicker();
+    }
+  }
+
+  private _setInputElementRef = (ref: HTMLDivElement) => {
+    if (ref && ref.getElementsByClassName('ms-SearchBox-field').length > 0) {
+      this._inputElement = ref.getElementsByClassName('ms-SearchBox-field')[0] as HTMLInputElement;
+    }
+  }
+
   private _renderFloatingPicker(): JSX.Element {
+    let suggestionProps: IBaseFloatingPickerSuggestionProps = {
+      footerItemsProps: [{
+        renderItem: () => { return (<div>Showing { this._picker.suggestions.length } results</div>); },
+        shouldShow: () => {
+          return this._picker.suggestions.length > 0;
+        }
+      }],
+    };
+
     return (
       <FloatingPeoplePicker
-        suggestionsController={ new SuggestionsController<IPersonaProps>() }
+        suggestionsStore={ new SuggestionsStore<IPersonaProps>() }
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ this._getTextFromItem }
         pickerSuggestionsProps={ suggestionProps }
@@ -88,27 +99,23 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     );
   }
 
-  @autobind
-  private _setComponentRef(component: IBaseFloatingPicker): void {
+  private _setComponentRef = (component: IBaseFloatingPicker): void => {
     this._picker = component;
   }
 
-  @autobind
-  private _onSearchChange(newValue: string): void {
+  private _onSearchChange = (newValue: string): void => {
     if (newValue !== this.state.searchValue) {
       this.setState({ searchValue: newValue });
       this._picker.onQueryStringChanged(newValue);
     }
   }
 
-  @autobind
-  private _onPickerChange(selectedSuggestion: IPersonaProps): void {
+  private _onPickerChange = (selectedSuggestion: IPersonaProps): void => {
     this.setState({ searchValue: selectedSuggestion.primaryText ? selectedSuggestion.primaryText : '' });
     this._picker.hidePicker();
   }
 
-  @autobind
-  private _onRemoveSuggestion(item: IPersonaProps): void {
+  private _onRemoveSuggestion = (item: IPersonaProps): void => {
     let { peopleList, mostRecentlyUsed: mruState } = this.state;
     let indexPeopleList: number = peopleList.indexOf(item);
     let indexMostRecentlyUsed: number = mruState.indexOf(item);
@@ -124,8 +131,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     }
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] {
+  private _onFilterChanged = (filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -160,8 +166,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
   }
 
-  @autobind
-  private _validateInput(input: string): boolean {
+  private _validateInput = (input: string): boolean => {
     if (input.indexOf('@') !== -1) {
       return true;
     } else if (input.length > 1) {

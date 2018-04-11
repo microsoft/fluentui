@@ -44,6 +44,7 @@ exports[`CommandBar renders commands correctly 1`] = `
               flex-grow: 1;
             }
         data-focuszone-id="FocusZone0"
+        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -70,7 +71,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
@@ -99,6 +100,17 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: 4px;
+                  left: 4px;
+                  outline-color: ButtonText;
+                  right: 4px;
+                  top: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: none;
                 }
                 &:hover {
                   background-color: #eaeaea;
@@ -171,7 +183,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
@@ -200,6 +212,17 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: 4px;
+                  left: 4px;
+                  outline-color: ButtonText;
+                  right: 4px;
+                  top: 4px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: none;
                 }
                 &:hover {
                   background-color: #eaeaea;
@@ -264,6 +287,7 @@ exports[`CommandBar renders commands correctly 1`] = `
               flex-shrink: 0;
             }
         data-focuszone-id="FocusZone7"
+        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

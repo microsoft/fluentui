@@ -11,7 +11,6 @@ import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
-  let tabKeyHit: number;
   function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
   }
@@ -44,7 +43,6 @@ describe('FocusZone', () => {
 
   beforeEach(() => {
     lastFocusedElement = undefined;
-    tabKeyHit = 0;
   });
 
   it('can use arrows vertically', () => {
@@ -731,6 +729,87 @@ describe('FocusZone', () => {
     expect(lastFocusedElement).toBe(buttonA);
   });
 
+  it('click resets focus alignment when bidirectional', () => {
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+    const buttonD = focusZone.querySelector('.d') as HTMLElement;
+
+    // Set up a grid like so:
+    // A B
+    // C D
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonD, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Clicking on b should focus b, and reset the focus alignment to the second column
+    // note that a click in a browser fires mouseDown, focus, then click events
+    ReactTestUtils.Simulate.focus(buttonB);
+    ReactTestUtils.Simulate.click(buttonB);
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing down should go to d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Clicking on c should focus c, and reset the focus alignment to the first column
+    ReactTestUtils.Simulate.focus(buttonC);
+    ReactTestUtils.Simulate.click(buttonC);
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing up should go to a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonA);
+  });
+
   it('correctly skips data-not-focusable elements', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
@@ -1091,7 +1170,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true } }>
           <button className='a'>a</button>
           <button className='b'>b</button>
           <button className='c'>c</button>
@@ -1208,7 +1287,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false }}>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false } }>
           <input type='text' className='a' />
           <button className='b'>b</button>
         </FocusZone>
@@ -1257,6 +1336,51 @@ describe('FocusZone', () => {
 
     // Pressing tab will be the only way for us to exit the focus zone
     ReactTestUtils.Simulate.keyDown(inputA, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonB);
+    expect(inputA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
+  });
+
+  it('focus should leave input box when arrow keys are pressed when tabbing is supported but shouldInputLoseFocusOnArrowKey callback method return true', () => {
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: false, shouldInputLoseFocusOnArrowKey: (element) => { return true; } } }>
+          <input type='text' className='a' />
+          <button className='b'>b</button>
+        </FocusZone>
+      </div >
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // InputA should be focused.
+    inputA.focus();
+    expect(lastFocusedElement).toBe(inputA);
+
+    // Pressing arrow down, input should loose the focus and the button should get the focus
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
     expect(lastFocusedElement).toBe(buttonB);
     expect(inputA.tabIndex).toBe(-1);
     expect(buttonB.tabIndex).toBe(0);

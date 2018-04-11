@@ -1,7 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyleSets } from '../../Styling';
 import { IButtonStyles } from './Button.types';
-import { getStyles } from './BaseButton.styles';
 
 export interface IButtonClassNames {
   root?: string;

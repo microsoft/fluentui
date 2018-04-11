@@ -2,6 +2,276 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.23.0",
+      "tag": "@uifabric/utilities_v5.23.0",
+      "date": "Thu, 05 Apr 2018 10:15:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "bb506d48b28c2bd0bd0be5c11ab1d4f847e6f359",
+            "comment": "Added IComponentAs as a type for 'render as' props in components"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.22.1",
+      "tag": "@uifabric/utilities_v5.22.1",
+      "date": "Sat, 31 Mar 2018 17:40:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0df6c75d24895ffbfa6136409aae6656a6751892",
+            "comment": "asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.22.0",
+      "tag": "@uifabric/utilities_v5.22.0",
+      "date": "Wed, 28 Mar 2018 10:16:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "130511930f8994e0010039781da6e1fdb2968e45",
+            "comment": "The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.21.0",
+      "tag": "@uifabric/utilities_v5.21.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "a0e09698ae1443623e202087360986f65a613559",
+            "comment": "Update createRef type"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.13.0 <6.0.0` to `>=5.14.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.20.0",
+      "tag": "@uifabric/utilities_v5.20.0",
+      "date": "Fri, 23 Mar 2018 01:29:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b152150b7222ff499f2f552ce3117e0d27eb1e23",
+            "comment": "Introduced focusAsync for cheaper element focusing"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.1",
+      "tag": "@uifabric/utilities_v5.19.1",
+      "date": "Wed, 21 Mar 2018 10:18:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d50399a80ffde20e5981c3c9a0f5e080016b342d",
+            "comment": "EventGroup.raise: event args are now correctly mixed into the event object."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.0",
+      "tag": "@uifabric/utilities_v5.19.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "856989f01186c078741a64fb3bf7c6371b6439bd",
+            "comment": "Make helper functions getWindow and getDocument accept `null`."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.3",
+      "tag": "@uifabric/utilities_v5.18.3",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.2",
+      "tag": "@uifabric/utilities_v5.18.2",
+      "date": "Thu, 15 Mar 2018 02:42:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3cd823b02aadb1e66f9b6221d4d32bafbe895386",
+            "comment": "Revert focus changes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.1",
+      "tag": "@uifabric/utilities_v5.18.1",
+      "date": "Tue, 13 Mar 2018 10:17:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "298ac062041a2323afb25027867b70f12870aa8f",
+            "comment": "Customizable: Fix hoist/customizations import so it doesn't break amd"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.18.0",
+      "tag": "@uifabric/utilities_v5.18.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
+            "comment": "Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "feb4db4410cdd49d5df8a50fcef138fbcd324dc2",
+            "comment": "Styled: Add display name to styled wrapper"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "494d1258ce23505c8e5a4d1565ff5a2451048162",
+            "comment": "added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.17.1",
+      "tag": "@uifabric/utilities_v5.17.1",
+      "date": "Fri, 09 Mar 2018 15:07:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "4fc956a30e82d90fe405def0f9434ffdb0d407ab",
+            "comment": "Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.17.0",
+      "tag": "@uifabric/utilities_v5.17.0",
+      "date": "Fri, 09 Mar 2018 11:13:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b410f6b9a328dd4ad24cbaa739156c23880e44e4",
+            "comment": "Add hoistStatics function to withResponsiveMode decorator."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.0",
+      "tag": "@uifabric/utilities_v5.16.0",
+      "date": "Thu, 08 Mar 2018 11:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "61c7a055825c41f828c416e5370212804f71d05c",
+            "comment": "Added hoistStatics function to @customizable decorator so static methods work properly"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.0",
+      "tag": "@uifabric/utilities_v5.15.0",
+      "date": "Tue, 06 Mar 2018 11:13:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "25e736fb4506e1021274c420283338e499388477",
+            "comment": "Adds createRef polyfil to prepare for object refs."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.1",
+      "tag": "@uifabric/utilities_v5.14.1",
+      "date": "Tue, 06 Mar 2018 02:06:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8a4dc859a5f8016b630220775caa98691ddf5345",
+            "comment": "Replaced PureComponent with Component to appease website's UHF react version."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.0",
+      "tag": "@uifabric/utilities_v5.14.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "44ca7b84a94649581e68a693971891fb1a834720",
+            "comment": "Update KeyCodes enum to include all key codes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.2 <6.0.0` to `>=5.13.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.13.0",
       "tag": "@uifabric/utilities_v5.13.0",
       "date": "Thu, 22 Feb 2018 11:15:23 GMT",

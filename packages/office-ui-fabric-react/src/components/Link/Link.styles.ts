@@ -1,6 +1,5 @@
 import {
-  getFocusStyle,
-  HighContrastSelector
+  getFocusStyle
 } from '../../Styling';
 import {
   ILinkStyleProps,
@@ -30,11 +29,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         padding: 0,
         textAlign: 'left',
         textOverflow: 'inherit',
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'Highlight'
-          }
-        }
+        userSelect: 'text'
       },
       !isButton && {
         textDecoration: 'none'

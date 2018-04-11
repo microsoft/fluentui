@@ -2,6 +2,390 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.30.0",
+      "tag": "@uifabric/experiments_v5.30.0",
+      "date": "Tue, 10 Apr 2018 17:37:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "7a3ba05123ffdf79f16c6a428c2cdabee4646e1c",
+            "comment": "FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same "
+          }
+        ],
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "ec704f421a8eb7099a926d5d72ebf370d52fca05",
+            "comment": "Tile: exporting an enum to use the values in creating a PlaceholderTile in Shimmer component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.79.1 <6.0.0` to `>=5.80.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.29.1",
+      "tag": "@uifabric/experiments_v5.29.1",
+      "date": "Thu, 05 Apr 2018 10:15:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "e03ec406dbd59062b9b12ada6fab5db50cafeb66",
+            "comment": "fix suggestion header/footer for more flexibile rendering"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "cb8ba392bbcfa76f1a3af97b3006c9d63f5228fe",
+            "comment": "Align Tiles in last row with previous rows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.78.0 <6.0.0` to `>=5.79.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.29.0",
+      "tag": "@uifabric/experiments_v5.29.0",
+      "date": "Tue, 03 Apr 2018 10:16:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "0771cc20e7f8a3379444ff32355488946d8f9332",
+            "comment": "Sets up an example of Shimmer used with DetailsList Component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.77.0 <6.0.0` to `>=5.78.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.2",
+      "tag": "@uifabric/experiments_v5.28.2",
+      "date": "Sat, 31 Mar 2018 17:40:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "41711f7788981cf4d84495d147d93a74b979113c",
+            "comment": "We need to temporarily remove `sideEffects: false` flag from package.json which will disable w"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5d1646f214c990ebcb6d2ab09f4a5497386a43a8",
+            "comment": "Fix flex styling for SignalField"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5d1646f214c990ebcb6d2ab09f4a5497386a43a8",
+            "comment": "Pass all props to Signal Icon elements"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.74.0 <6.0.0` to `>=5.76.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.7.0 <6.0.0` to `>=5.7.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.1",
+      "tag": "@uifabric/experiments_v5.28.1",
+      "date": "Wed, 28 Mar 2018 21:50:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "f15e7a522d14439f5bab69040fe78cb5786be649",
+            "comment": "Remove root imports of office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.0",
+      "tag": "@uifabric/experiments_v5.28.0",
+      "date": "Tue, 27 Mar 2018 20:22:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "8da21c4d2e485c6070aabf732fa3d80e617a7e60",
+            "comment": "Create new pattern for suggestions for BaseFloatingPicker"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "adae0d4cb00487ebce197fad43d0cf21db985565",
+            "comment": "Fix errors in Signals styles"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.71.0 <6.0.0` to `>=5.72.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.5.0 <6.0.0` to `>=5.6.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.27.0",
+      "tag": "@uifabric/experiments_v5.27.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "a0e09698ae1443623e202087360986f65a613559",
+            "comment": "Update componentRef types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "e81f0d8f3f90ab68048069380459fc7a89d49ae4",
+            "comment": "Add missing icons to Signals and fix colors"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.69.0 <6.0.0` to `>=5.70.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.6.0 <6.0.0` to `>=5.7.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.4.0 <6.0.0` to `>=5.5.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.5.0 <1.0.0` to `>=0.6.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.26.1",
+      "tag": "@uifabric/experiments_v5.26.1",
+      "date": "Thu, 22 Mar 2018 10:14:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "c5245a51bd4f740399d6d9dbd98f2c51ef6f0a59",
+            "comment": "Removes @autobind for arrow functions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.67.0 <6.0.0` to `>=5.68.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.26.0",
+      "tag": "@uifabric/experiments_v5.26.0",
+      "date": "Tue, 20 Mar 2018 10:27:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "afd92f730395e561b36cb0cef36a28a5b5997968",
+            "comment": "Changes in the props and naming."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "afd92f730395e561b36cb0cef36a28a5b5997968",
+            "comment": "Adds a new Shimmer Component to experiments package."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.65.0 <6.0.0` to `>=5.66.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.25.1",
+      "tag": "@uifabric/experiments_v5.25.1",
+      "date": "Mon, 19 Mar 2018 10:27:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "882c389076125182e5703ad5eb64ae178546f6c4",
+            "comment": "Use arrow function properties instead of @autobind"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.64.4 <6.0.0` to `>=5.65.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.3.0 <6.0.0` to `>=5.4.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.25.0",
+      "tag": "@uifabric/experiments_v5.25.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "8fefccb51072642d80de8370c550a3c49d49e45a",
+            "comment": "Adds a new Shimmer Component to experiments package."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.62.1 <6.0.0` to `>=5.63.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.24.1",
+      "tag": "@uifabric/experiments_v5.24.1",
+      "date": "Thu, 08 Mar 2018 11:27:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "ddc5731a85effd6082a93fe3458528224674a70c",
+            "comment": "Add Keytip and KeytipLayer to experiments export"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.60.1 <6.0.0` to `>=5.61.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.24.0",
+      "tag": "@uifabric/experiments_v5.24.0",
+      "date": "Wed, 07 Mar 2018 11:16:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "1b57c33b6ad1e00bdd844461fff3ba3f1acb94cc",
+            "comment": "add clearInput on BaseExtendedPicker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.59.1 <6.0.0` to `>=5.60.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.23.1",
+      "tag": "@uifabric/experiments_v5.23.1",
+      "date": "Tue, 06 Mar 2018 02:06:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "caad61fa2976154001c279b61ea0f597752f1115",
+            "comment": "Add Keytip and KeytipLayer to experiments export"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8a4dc859a5f8016b630220775caa98691ddf5345",
+            "comment": "Replaced PureComponent with Component to appease website's UHF react version."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.59.0 <6.0.0` to `>=5.59.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.23.0",
+      "tag": "@uifabric/experiments_v5.23.0",
+      "date": "Mon, 05 Mar 2018 11:16:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "5e24983e16790428d43d3c8252f361bc32c7f99f",
+            "comment": "Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.58.0 <6.0.0` to `>=5.59.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.22.0",
+      "tag": "@uifabric/experiments_v5.22.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "1340339d7c62eeb1b526f08d9edbd7fe44b398f3",
+            "comment": "BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "44ca7b84a94649581e68a693971891fb1a834720",
+            "comment": "Add initial set of Keytip work"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.57.0 <6.0.0` to `>=5.58.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.2 <6.0.0` to `>=5.5.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.2 <6.0.0` to `>=5.3.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.21.0",
       "tag": "@uifabric/experiments_v5.21.0",
       "date": "Fri, 16 Feb 2018 11:23:28 GMT",

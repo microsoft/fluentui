@@ -8,10 +8,10 @@
       false,
       140
     ],
+    "no-unused-variable": false,
     "no-any": false,
     "typedef": [
       false
-    ],
-    "no-unused-variable": false
+    ]
   }
 }

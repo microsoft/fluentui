@@ -130,7 +130,21 @@ export const getMenuItemStyles = memoizeFunction((
       color: semanticColors.menuIcon,
       selectors: {
         [HighContrastSelector]: {
-          color: 'HighlightText',
+          color: 'inherit',
+        },
+        ['$root:hover &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
+        },
+        ['$root:focus &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
         }
       }
     },
@@ -159,9 +173,12 @@ export const getMenuItemStyles = memoizeFunction((
       height: ContextualMenuItemHeight,
       flexWrap: 'nowrap',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
-    splitButtonSeparator: {}
+    splitButtonSeparator: {},
+    splitButtonFlexContainerFocus: [
+      getFocusStyle(theme)
+    ]
   };
 
   return concatStyleSets(menuItemStyles);

@@ -6,7 +6,6 @@ import {
   IButtonBasicExampleStyles
 } from './Button.Basic.Example.styles';
 import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}> {
   public render() {

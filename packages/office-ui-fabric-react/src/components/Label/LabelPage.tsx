@@ -22,6 +22,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
             <LabelBasicExample />
           </ExampleCard>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -59,7 +60,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...LabelStatus}
+            { ...LabelStatus }
           />
         }
       />

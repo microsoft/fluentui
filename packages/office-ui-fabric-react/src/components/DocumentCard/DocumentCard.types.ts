@@ -5,6 +5,8 @@ import { DocumentCardPreview } from './DocumentCardPreview';
 import { DocumentCardLocation } from './DocumentCardLocation';
 import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
+import { DocumentCardLogo } from './DocumentCardLogo';
+import { DocumentCardStatus } from './DocumentCardStatus';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
@@ -19,7 +21,7 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
    * Optional callback to access the IDocumentCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDocumentCard) => void;
+  componentRef?: (component: IDocumentCard | null) => void;
 
   /**
   * The type of DocumentCard to display.
@@ -144,6 +146,12 @@ export interface IDocumentCardPreviewImage {
    * If provided, icon will be rendered instead of image.
    */
   previewIconProps?: IIconProps;
+
+  /**
+   * The props for the preview icon container classname.
+   * If provided, icon container classname will be used..
+   */
+  previewIconContainerClass?: string;
 }
 
 export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
@@ -162,6 +170,12 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
    * @defaultvalue true
    */
   shouldTruncate?: boolean;
+
+  /**
+   * Whether show as title as secondary title style such as smaller font and lighter color.
+   * @defaultvalue false
+   */
+  showAsSecondaryTitle?: boolean;
 }
 
 export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
@@ -225,6 +239,13 @@ export interface IDocumentCardActivityPerson {
   initials?: string;
 
   /**
+   * Whether initials are calculated for phone numbers and number sequences.
+   * Example: Set property to true to get initials for project names consisting of numbers only.
+   * @defaultvalue false
+   */
+  allowPhoneInitials?: boolean;
+
+  /**
    * The background color when the user's initials are displayed.
    * @defaultvalue PersonaInitialsColor.blue
    */
@@ -246,4 +267,36 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
    * The number of views this document has received.
    */
   views?: Number;
+}
+
+export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+  /**
+   * Describes DocumentCard Logo badge.
+   */
+  logoIcon: string;
+
+  /**
+   * Describe Logo name, optional.
+   */
+  logoName?: string;
+}
+
+export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+  /**
+   * Describes DocumentCard status icon.
+   */
+  statusIcon?: string;
+
+  /**
+   * Describe status information. Required field.
+   */
+  status: string;
 }

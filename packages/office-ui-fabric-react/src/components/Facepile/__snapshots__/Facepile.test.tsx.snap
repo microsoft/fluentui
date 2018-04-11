@@ -8,10 +8,11 @@ exports[`Facepile renders Facepile correctly 1`] = `
     className="ms-Facepile-itemContainer"
   >
     <div
-      aria-describedby="id__0"
+      aria-describedby={undefined}
       aria-labelledby={undefined}
       className="ms-FocusZone ms-Facepile-members"
       data-focuszone-id="FocusZone1"
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -27,15 +28,40 @@ exports[`Facepile renders Facepile correctly 1`] = `
         title="Annie Lindqvist"
       >
         <div
-          className="ms-Persona-coin ms-Persona--size32 undefined"
+          className=
+              ms-Persona-coin
+              ms-Persona--size32
+
           size={11}
         >
           <div
-            className="ms-Persona-imageArea"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  width: 32px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 32px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 32px;
+                  }
               style={
                 Object {
                   "height": 32,
@@ -45,7 +71,22 @@ exports[`Facepile renders Facepile correctly 1`] = `
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -65,15 +106,40 @@ exports[`Facepile renders Facepile correctly 1`] = `
         title="Aaron Reid"
       >
         <div
-          className="ms-Persona-coin ms-Persona--size32 undefined"
+          className=
+              ms-Persona-coin
+              ms-Persona--size32
+
           size={11}
         >
           <div
-            className="ms-Persona-imageArea"
+            className=
+                ms-Persona-imageArea
+                {
+                  flex: 0 0 auto;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  width: 32px;
+                }
             style={undefined}
           >
             <div
-              className="ms-Image ms-Persona-image"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    border-radius: 50%;
+                    border: 0px;
+                    height: 32px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 32px;
+                  }
               style={
                 Object {
                   "height": 32,
@@ -83,7 +149,22 @@ exports[`Facepile renders Facepile correctly 1`] = `
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50% /* @noflip */;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}
@@ -110,7 +191,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               box-sizing: border-box;
               cursor: pointer;
               display: inline-block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               outline: transparent;
@@ -138,6 +219,14 @@ exports[`Facepile renders Facepile correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
         data="75%"
         data-is-focusable={true}
         disabled={undefined}
@@ -160,11 +249,22 @@ exports[`Facepile renders Facepile correctly 1`] = `
               }
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 undefined"
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+
             size={11}
           >
             <div
-              className="ms-Persona-imageArea"
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
               style={undefined}
             >
               <div
@@ -173,6 +273,19 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     ms-Persona-initials
                     {
                       background-color: #1E7145;
+                      border-radius: 50%;
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 32px;
+                      line-height: 32px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      background-color: Window !important;
+                      border: 1px solid WindowText;
+                      box-sizing: border-box;
+                      color: WindowText;
                     }
                 style={undefined}
               >
@@ -181,7 +294,21 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 </span>
               </div>
               <div
-                className="ms-Image ms-Persona-image"
+                className=
+                    ms-Image
+                    ms-Persona-image
+                    {
+                      border-radius: 50%;
+                      border: 0px;
+                      height: 32px;
+                      left: 0px;
+                      margin-right: 10px;
+                      overflow: hidden;
+                      perspective: 1px;
+                      position: absolute;
+                      top: 0px;
+                      width: 32px;
+                    }
                 style={
                   Object {
                     "height": 32,
@@ -191,7 +318,22 @@ exports[`Facepile renders Facepile correctly 1`] = `
               >
                 <img
                   alt=""
-                  className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                  className=
+                      ms-Image-image
+                      ms-Image-image--cover
+                      ms-Image-image--portrait
+                      is-notLoaded
+                      is-fadeIn
+                      {
+                        display: block;
+                        height: auto;
+                        left: 50% /* @noflip */;
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        width: 100%;
+                      }
                   onError={[Function]}
                   onLoad={[Function]}
                   role={undefined}

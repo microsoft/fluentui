@@ -1,6 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
 import { ITheme, mergeStyleSets } from '../../Styling';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
@@ -23,14 +22,13 @@ export interface IMenuItemClassNames {
   subMenuIcon: string;
   label: string;
   splitContainer: string;
+  splitContainerFocus: string;
   splitPrimary: string;
   splitMenu: string;
   linkContentMenu: string;
 }
 
 export const getSplitButtonVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
-  const { semanticColors } = theme;
-  const ContextualMenuDividerColor = semanticColors.bodyDivider;
   return mergeStyleSets(getDividerClassNames(theme), {
     divider: {
       height: 16,
@@ -86,8 +84,6 @@ export const getItemClassNames = memoizeFunction((
   subMenuClassName?: string,
 ): IMenuItemClassNames => {
 
-  const { semanticColors } = theme;
-  const ContextualMenuIconColor = semanticColors.menuIcon;
   const styles = getMenuItemStyles(theme);
 
   return mergeStyleSets({
@@ -203,6 +199,16 @@ export const getItemClassNames = memoizeFunction((
       'ms-ContextualMenu-itemText',
       styles.label
     ],
-    splitContainer: styles.splitButtonFlexContainer,
+    splitContainer: [
+      styles.splitButtonFlexContainer,
+    ],
+    splitContainerFocus: [
+      styles.splitButtonFlexContainerFocus,
+      !disabled && !checked && [{
+        selectors: {
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+        }
+      }]
+    ]
   });
 });

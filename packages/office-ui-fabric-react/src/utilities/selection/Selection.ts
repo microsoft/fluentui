@@ -309,7 +309,6 @@ export class Selection implements ISelection {
     this.setChangeEvents(false);
 
     const isExempt = this._exemptedIndices[index];
-    let hasChanged = false;
     const canSelect = !this._unselectableIndices[index];
 
     if (canSelect) {
@@ -323,7 +322,6 @@ export class Selection implements ISelection {
         (isSelected && this._isAllSelected) ||
         (!isSelected && !this._isAllSelected)
       )) {
-        hasChanged = true;
         delete this._exemptedIndices[index];
         this._exemptedCount--;
       }
@@ -333,7 +331,6 @@ export class Selection implements ISelection {
         (isSelected && !this._isAllSelected) ||
         (!isSelected && this._isAllSelected)
       )) {
-        hasChanged = true;
         this._exemptedIndices[index] = true;
         this._exemptedCount++;
       }

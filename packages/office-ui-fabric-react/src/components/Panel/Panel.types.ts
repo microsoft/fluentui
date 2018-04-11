@@ -20,7 +20,7 @@ export interface IPanelProps extends React.Props<Panel> {
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPanel) => void;
+  componentRef?: (component: IPanel | null) => void;
 
   /**
   * Whether the panel is displayed.
@@ -152,7 +152,7 @@ export interface IPanelProps extends React.Props<Panel> {
   /**
    * Optional custom renderer for header region. Replaces current title
    */
-  onRenderHeader?: IRenderFunction<IPanelProps>;
+  onRenderHeader?: IPanelHeaderRenderer;
 
   /**
    * Optional custom renderer for body region. Replaces any children passed into the component.
@@ -170,9 +170,31 @@ export interface IPanelProps extends React.Props<Panel> {
   onRenderFooterContent?: IRenderFunction<IPanelProps>;
 
   /**
-   * Internal ID passed to render functions.
+   * Deprecated property. Serves no function.
+   * @deprecated
    */
   componentId?: string;
+}
+
+/**
+ * Renderer function which takes an additional parameter, the ID to use for the element containing
+ * the panel's title. This allows the `aria-labelledby` for the panel popup to work correctly.
+ * Note that if `headerTextId` is provided, it **must** be used on an element, or screen readers
+ * will be confused by the reference to a nonexistent ID.
+ */
+export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
+  /**
+   * @param props Props given to the panel
+   * @param defaultRender Default header renderer. If using this renderer in code that does not
+   * assign `headerTextId` to an element elsewhere, it **must** be passed to this function.
+   * @param headerTextId If provided, this **must** be used as the ID of an element containing the
+   * panel's title, because the panel popup uses this ID as its aria-labelledby.
+   */
+  (
+    props?: IPanelProps,
+    defaultRender?: IPanelHeaderRenderer,
+    headerTextId?: string | undefined
+  ): JSX.Element | null;
 }
 
 export enum PanelType {

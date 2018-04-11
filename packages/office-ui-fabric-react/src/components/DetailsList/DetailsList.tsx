@@ -6,11 +6,11 @@ import {
   BaseComponent,
   KeyCodes,
   assign,
-  autobind,
   css,
   elementContains,
   getRTLSafeKeyCode,
-  IRenderFunction
+  IRenderFunction,
+  createRef
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -23,8 +23,9 @@ import {
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
+  ISelectionZone,
   IObjectWithKey,
   ISelection,
   Selection,
@@ -33,8 +34,8 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { GroupedList } from '../../GroupedList';
-import { List, IListProps } from '../../List';
+import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IList, List, IListProps } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
@@ -60,6 +61,9 @@ const ISPADDED_WIDTH = 24;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
+const SHIMMER_INITIAL_ITEMS = 10;
+const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
+
 @withViewport
 export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
@@ -67,17 +71,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     selectionMode: SelectionMode.multiple,
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    enableShimmer: false
   };
 
   // References
-  // tslint:disable-next-line:no-unused-variable
-  private _root: HTMLElement;
-  private _header: IDetailsHeader;
-  private _groupedList: GroupedList;
-  private _list: List;
-  private _focusZone: FocusZone;
-  private _selectionZone: SelectionZone;
+  private _root = createRef<HTMLDivElement>();
+  private _header = createRef<IDetailsHeader>();
+  private _groupedList = createRef<IGroupedList>();
+  private _list = createRef<IList>();
+  private _focusZone = createRef<IFocusZone>();
+  private _selectionZone = createRef<ISelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
@@ -127,8 +131,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
-    this._list && this._list.scrollToIndex(index, measureItem);
-    this._groupedList && this._groupedList.scrollToIndex(index, measureItem);
+    this._list.value && this._list.value.scrollToIndex(index, measureItem);
+    this._groupedList.value && this._groupedList.value.scrollToIndex(index, measureItem);
   }
 
   public focusIndex(
@@ -170,7 +174,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       this.props.items !== prevProps.items &&
       this.props.items.length > 0 &&
       this.state.focusedItemIndex !== -1 &&
-      !elementContains(this._root, document.activeElement as HTMLElement, false)
+      !elementContains(this._root.value, document.activeElement as HTMLElement, false)
     ) {
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,
@@ -211,6 +215,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     if (shouldResetSelection) {
       this._initialFocusedIndex = newProps.initialFocusedIndex;
+      // reset focusedItemIndex when setKey changes
+      this.setState({
+        focusedItemIndex: (this._initialFocusedIndex !== undefined) ? this._initialFocusedIndex : -1
+      });
     }
 
     if (newProps.items !== items) {
@@ -270,7 +278,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey,
       listProps,
       usePageCache,
-      onShouldVirtualize
+      onShouldVirtualize,
+      enableShimmer
     } = this.props;
     const {
       adjustedColumns,
@@ -317,7 +326,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
       <div
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
         className={ css(
           'ms-DetailsList',
           styles.root,
@@ -340,7 +349,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         >
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && onRenderDetailsHeader({
-              componentRef: this._resolveRef('_header'),
+              componentRef: this._header,
               selectionMode: selectionMode!,
               layoutMode: layoutMode!,
               selection: selection,
@@ -362,7 +371,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
-              ref={ this._resolveRef('_focusZone') }
+              componentRef={ this._focusZone }
               className={ styles.focusZone }
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ isRightArrow }
@@ -370,7 +379,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               onBlur={ this._onBlur }
             >
               <SelectionZone
-                ref={ this._resolveRef('_selectionZone') }
+                ref={ this._selectionZone }
                 selection={ selection }
                 selectionPreservedOnEmptyClick={ selectionPreservedOnEmptyClick }
                 selectionMode={ selectionMode }
@@ -380,7 +389,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               >
                 { groups ? (
                   <GroupedList
-                    ref={ this._resolveRef('_groupedList') }
+                    ref={ this._groupedList }
                     groups={ groups }
                     groupProps={ groupProps }
                     items={ items }
@@ -397,9 +406,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   />
                 ) : (
                     <List
-                      ref={ this._resolveRef('_list') }
+                      ref={ this._list }
                       role='presentation'
-                      items={ items }
+                      items={ enableShimmer && !items.length ? SHIMMER_ITEMS : items }
                       onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
@@ -420,19 +429,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._forceListUpdates();
   }
 
-  @autobind
-  protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
     return <DetailsRow { ...props } />;
   }
 
-  @autobind
-  private _onRenderDetailsHeader(detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
+  private _onRenderDetailsHeader = (detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element => {
     return <DetailsHeader { ...detailsHeaderProps } />;
   }
 
-  @autobind
-  private _onRenderListCell(nestingDepth: number)
-    : (item: any, itemIndex: number) => React.ReactNode {
+  private _onRenderListCell = (nestingDepth: number)
+    : (item: any, itemIndex: number) => React.ReactNode => {
     return (item: any, itemIndex: number): React.ReactNode => {
       return this._onRenderCell(nestingDepth, item, itemIndex as number);
     };
@@ -462,15 +468,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       adjustedColumns: columns
     } = this.state;
 
-    if (!item) {
-      if (onRenderMissingItem) {
-        return onRenderMissingItem(index);
-      }
-
-      return null;
-    }
-
-    return onRenderRow({
+    const rowProps: IDetailsRowProps = {
       item: item,
       itemIndex: index,
       compact: compact,
@@ -491,7 +489,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
       checkboxCellClassName: checkboxCellClassName,
-    }, this._onRenderRow);
+    };
+
+    if (!item) {
+      if (onRenderMissingItem) {
+        return onRenderMissingItem(index, rowProps);
+      }
+
+      return null;
+    }
+
+    return onRenderRow(rowProps, this._onRenderRow);
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
@@ -504,7 +512,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.down) {
-      if (this._focusZone && this._focusZone.focus()) {
+      if (this._focusZone.value && this._focusZone.value.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -513,7 +521,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onContentKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.up && !ev.altKey) {
-      if (this._header && this._header.focus()) {
+      if (this._header.value && this._header.value.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -555,8 +563,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false) {
-    if (this._selectionZone) {
-      this._selectionZone.ignoreNextFocus();
+    if (this._selectionZone.value) {
+      this._selectionZone.value.ignoreNextFocus();
     }
     this._async.setTimeout(() => {
       row.focus(forceIntoFirstElement);
@@ -579,19 +587,19 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this.setState({
       isCollapsed: collapsed
     });
-    if (this._groupedList) {
-      this._groupedList.toggleCollapseAll(collapsed);
+    if (this._groupedList.value) {
+      this._groupedList.value.toggleCollapseAll(collapsed);
     }
   }
 
   private _forceListUpdates() {
     this._pendingForceUpdate = false;
 
-    if (this._groupedList) {
-      this._groupedList.forceUpdate();
+    if (this._groupedList.value) {
+      this._groupedList.value.forceUpdate();
     }
-    if (this._list) {
-      this._list.forceUpdate();
+    if (this._list.value) {
+      this._list.value.forceUpdate();
     }
   }
 
@@ -869,7 +877,6 @@ export function buildColumns(
 
   if (items && items.length) {
     const firstItem = items[0];
-    let isFirstColumn = true;
 
     for (const propName in firstItem) {
       if (firstItem.hasOwnProperty(propName)) {
@@ -889,8 +896,6 @@ export function buildColumns(
           onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName
         });
-
-        isFirstColumn = false;
       }
     }
   }

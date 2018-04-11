@@ -44,7 +44,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDetailsList) => void;
+  componentRef?: (component: IDetailsList | null) => void;
 
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
@@ -145,7 +145,13 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
-  onRenderMissingItem?: (index?: number) => React.ReactNode;
+  onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
+
+  /**
+   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
+   * @default false
+   */
+  enableShimmer?: boolean;
 
   /**
    * An override to render the details header.
@@ -329,7 +335,7 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.

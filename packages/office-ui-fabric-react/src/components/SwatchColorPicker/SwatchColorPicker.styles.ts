@@ -2,12 +2,7 @@
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {
-  const {
-    theme,
-    className,
-  } = props;
-
-  const { semanticColors, fonts } = theme;
+  const { className } = props;
 
   return {
     root: {

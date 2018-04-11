@@ -32,7 +32,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
     return (
       <div>
-        <SearchBox labelText='Search icons' value={ searchQuery } onChange={ this._onSearchQueryChanged.bind(this) } className={ styles.searchBox } />
+        <SearchBox placeholder='Search icons' value={ searchQuery } onChange={ this._onSearchQueryChanged.bind(this) } className={ styles.searchBox } />
         <ul className={ styles.grid }>
           { icons
             .filter(icon => icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)

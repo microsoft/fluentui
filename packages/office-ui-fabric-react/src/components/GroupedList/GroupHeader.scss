@@ -84,17 +84,6 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   }
 }
 
-.loading {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility $ms-animation-duration-3, opacity $ms-animation-duration-3;
-
-  &.loadingIsVisible {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
 .dropIcon {
   position: absolute;
   @include ms-left(-26px);

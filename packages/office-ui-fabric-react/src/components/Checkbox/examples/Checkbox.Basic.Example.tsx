@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  Checkbox,
-  ICheckboxStyles,
-  ICheckboxProps
-} from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
@@ -13,16 +9,10 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   constructor(props: {}) {
     super(props);
 
-    this.state = {
-      isChecked: false
-    };
-
     this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
   public render() {
-    const { isChecked } = this.state;
-
     return (
       <div>
         <Checkbox

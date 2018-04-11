@@ -47,7 +47,6 @@
   }
 
   .ms-ContextualMenu-customizationExample-categorySwatch {
-    margin: 6px 8px;
     width: 24px;
     height: 24px;
     vertical-align: top;
@@ -67,5 +66,9 @@
     .ms-ContextualMenu-item {
       height: auto;
     }
+  }
+
+  .ms-ContextualMenu-customizationExample-button {
+    max-width: 50%;
   }
 }

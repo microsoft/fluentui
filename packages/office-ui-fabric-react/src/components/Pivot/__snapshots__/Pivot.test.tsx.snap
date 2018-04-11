@@ -7,6 +7,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
     aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
+    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -39,7 +40,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #333333;
               cursor: pointer;
               display: inline-block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 40px;
@@ -68,11 +69,19 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;
@@ -133,7 +142,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #333333;
               cursor: pointer;
               display: inline-block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 40px;
@@ -162,11 +171,19 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;

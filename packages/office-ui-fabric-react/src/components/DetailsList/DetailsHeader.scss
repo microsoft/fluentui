@@ -85,7 +85,6 @@ $isPaddedMargin: 24px;
   cursor: ew-resize;
   bottom: 0;
   top: 0;
-  margin: 0 -8px;
   overflow: hidden;
   height: inherit;
   background: transparent;
@@ -113,6 +112,15 @@ $isPaddedMargin: 24px;
   &.cellIsResizing:after {
     @include ms-drop-shadow();
   }
+}
+
+.cellSizerStart {
+  margin: 0 -8px;
+}
+
+.cellSizerEnd {
+  margin: 0;
+  @include margin-left(-16px);
 }
 
 .collapseButton {
