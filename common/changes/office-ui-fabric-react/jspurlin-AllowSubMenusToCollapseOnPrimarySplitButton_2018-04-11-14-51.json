@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "SplitButton: Allow the primary portion of a splitButton (when it a menu) to collapse a submenu",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "jspurlin@microsoft.com"
+}
