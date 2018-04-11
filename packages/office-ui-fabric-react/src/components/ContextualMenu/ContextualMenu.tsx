@@ -118,6 +118,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
+    this._splitButtonContainers = new Map();
   }
 
   public dismiss = (ev?: any, dismissAll?: boolean) => {
@@ -145,10 +146,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
-    this._splitButtonContainers = new Map();
     if (this.props.onMenuOpened) {
       this.props.onMenuOpened(this.props);
     }
+
+    setTimeout(() => {
+      if (this._splitButtonContainers) {
+        this._splitButtonContainers.forEach((value: HTMLDivElement) => {
+          this._events.on(value, 'pointerdown', this._onPointerDown, true);
+        });
+      }
+    }, 0)
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -596,9 +604,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div
         ref={ (el: HTMLDivElement) => {
           this._splitButtonContainers.set(item.key, el);
-          if (el && 'onpointerdown' in el) {
-            this._events.on(el, 'pointerdown', this._onPointerDown, true);
-          }
         }
         }
         role={ 'button' }

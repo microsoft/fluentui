@@ -4,7 +4,7 @@ import {
   css,
   KeyCodes
 } from '../../../Utilities';
-import { CommandButton, IButton } from 'office-ui-fabric-react/lib/Button';
+import { IButton } from 'office-ui-fabric-react/lib/Button';
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import {
@@ -42,7 +42,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
     return (
       onExecute ?
         (
-          <CommandButton
+          <button
             id={ id }
             onClick={ onExecute }
             className={ css(
@@ -54,7 +54,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
               }) }
           >
             { renderItem() }
-          </CommandButton>
+          </button>
         ) :
         (
           <div

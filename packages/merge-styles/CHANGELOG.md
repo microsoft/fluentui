@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Apr 2018 10:25:55 GMT and should not be manually modified.
+
+## 5.14.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- mergeStyles: flipping RTL at runtime now resets the keys.
 
 ## 5.14.0
 Sun, 25 Mar 2018 03:08:03 GMT

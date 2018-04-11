@@ -300,9 +300,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       onSelectDate(date);
     }
 
-    this.setState({
-      isDatePickerShown: false,
-    });
+    this._calendarDismissed();
   }
 
   private _onCalloutPositioned = (): void => {
@@ -419,6 +417,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    ev.stopPropagation();
     this._calendarDismissed();
   }
 
