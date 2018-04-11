@@ -350,30 +350,38 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       return undefined;
     }
 
-    const {
-      bestPractices,
-      dos,
-      donts,
-      overview,
-    } = this.props;
-
-    const foo = this.props.bestPractices!.type.name;
-
-    // // const showEditButton = this.props.bestPractices!.type!.name === 'PageMarkdown';
-
-    // // Get section string for URLs and IDs.
+    // Get section string for URLs and IDs.
     const section = ComponentPageSection[sectionIndex];
-    const bpType = bestPractices!.type();
-    const doType = dos!.type();
-    const dontType = donts!.type();
-    const overviewType = overview!.type();
-    let sectionIsMarkdown = false;
-    // let foo;
 
-    switch (section) {
+    // Check if the section contains a function (using PageMarkdown)
+    const isMarkdown = {
+      BestPractices: typeof this.props.bestPractices!.type === 'function',
+      Dos: typeof this.props.dos!.type === 'function',
+      Donts: typeof this.props.donts!.type === 'function',
+      Overview: typeof this.props.overview!.type === 'function',
+    };
+    let sectionIsMarkdown = false;
+    let readableSection = section;
+    switch (readableSection) {
       case 'BestPractices':
-        sectionIsMarkdown = bestPractices!.props.children.length >= 0 ? true : false;
-      // foo = bpType.name;
+        sectionIsMarkdown = isMarkdown.BestPractices;
+        break;
+      case 'Dos':
+        sectionIsMarkdown = isMarkdown.Dos;
+        break;
+      case 'Donts':
+        sectionIsMarkdown = isMarkdown.Donts;
+        readableSection = 'Don\'ts';
+        break;
+      case 'Overview':
+        sectionIsMarkdown = isMarkdown.Overview;
+        break;
+      default:
+        sectionIsMarkdown = false;
+        readableSection = section;
+    }
+    if (sectionIsMarkdown === false) {
+      return undefined;
     }
 
     // Generate edit URL from componentURL
@@ -392,11 +400,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let editUrl = url || mdUrl;
 
     if (editUrl) {
-      // Get make section readable for tooltip. Add apostrophe to Don't
-      let readableSection = section;
-      if (sectionIndex === ComponentPageSection.Donts) {
-        readableSection = 'Don\'ts';
-      }
       return (
         <TooltipHost
           key={ `${this.props.title}-${section}-editButton` }
