@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Remove extra asterisks, includes using TextField's label.",
+      "comment": "SpinButton: Make sure up/down Arrow do not leave the spinButton",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "jspurlin@microsoft.com"
 }
