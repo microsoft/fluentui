@@ -1,30 +1,37 @@
 import * as React from 'react';
-import { loadTheme, FontClassNames, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentDemoPageProps, Highlight } from '@uifabric/example-app-base';
+import {
+  classNamesFunction,
+  customizable,
+} from '../../Utilities';
+import {
+  FontClassNames,
+  IPalette,
+  loadTheme,
+} from 'office-ui-fabric-react/lib/Styling';
+import {
+  ComponentPage,
+  Highlight,
+  IComponentDemoPageProps,
+  PageMarkdown,
+} from '@uifabric/example-app-base';
+import {
+  IThemePageStyleProps,
+  IThemePageStyles,
+  IThemePageState,
+} from './ThemePage.types';
 import { defaultTheme } from './defaultTheme';
+import { getStyles } from './ThemePage.styles';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import './ThemePage.scss';
-const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
-export class ThemePage extends React.Component<IComponentDemoPageProps, {
-  colors: {
-    key: string;
-    name: string;
-    value: string;
-    description: string;
-  }[];
-  colorPickerProps?: {
-    targetElement: HTMLElement;
-    value: any;
-    index: number;
-  };
-}> {
+const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
+
+export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePageState> {
   private _list: DetailsList;
 
-  constructor(props: {}) {
+  constructor(props: IComponentDemoPageProps) {
     super(props);
 
     this._onPickerDismiss = this._onPickerDismiss.bind(this);
@@ -41,71 +48,81 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
   }
 
   public render() {
-    const { colors, colorPickerProps } = this.state;
-
     return (
-      <div className='Themes'>
-        <h1 className={ FontClassNames.xxLarge }>Themes</h1>
-        <p>The entire color palette of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.</p>
-        <p>To override the themes, you need to call <span className='code'>loadTheme()</span> with the appropriate set of overrides:</p>
+      <ComponentPage
+        title='Theme'
+        componentName='ThemeExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Theme'
+        overview={
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemeOverview.md') }
+          </PageMarkdown>
+        }
+        otherSections={ [
+          {
+            title: 'Default Theme Values',
+            section: this._defaultThemeList()
+          }
+        ] }
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
+    );
+  }
 
-        <Highlight className='typescript'>
-          { ThemeCodeExample }
-        </Highlight>
+  private _defaultThemeList = () => {
+    const classNames = getClassNames(getStyles);
+    const { colors, colorPickerProps } = this.state;
+    return (
+      <div>
+        <DetailsList
+          componentRef={ this._createDetailsListRef }
+          items={ colors }
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.fixedColumns }
+          columns={ [
+            {
+              key: 'name',
+              name: 'Name',
+              fieldName: 'name',
+              minWidth: 150,
+              maxWidth: 150
+            },
+            {
+              key: 'color',
+              name: 'Color',
+              fieldName: 'value',
+              minWidth: 200,
+              onRender: (item, index) => (
+                <div className={ classNames.colorSwatch } data-is-focusable='true' onClick={ this._onSwatchClicked.bind(this, item, index) }>
+                  <span className={ classNames.swatch } style={ { backgroundColor: item.value } } />
+                  <span className={ classNames.colorValue }>{ item.value }</span>
+                </div>
+              )
+            },
+            {
+              key: 'desc',
+              name: 'Description',
+              fieldName: 'description',
+              minWidth: 90
+            }
+          ] }
+        />
 
-        <h1 className={ FontClassNames.xLarge }>Define a theme</h1>
-        <div>
-          <DetailsList
-            ref={ this._createDetailsListRef }
-            items={ colors }
-            selectionMode={ SelectionMode.none }
-            layoutMode={ LayoutMode.fixedColumns }
-            columns={ [
-              {
-                key: 'name',
-                name: 'Name',
-                fieldName: 'name',
-                minWidth: 150,
-                maxWidth: 150
-              },
-              {
-                key: 'color',
-                name: 'Color',
-                fieldName: 'value',
-                minWidth: 200,
-                onRender: (item, index) => (
-                  <div className='ThemePage-colorSwatch' data-is-focusable='true' onClick={ this._onSwatchClicked.bind(this, item, index) }>
-                    <span className='ThemePage-swatch' style={ { backgroundColor: item.value } } />
-                    <span className='ThemePage-colorValue'>{ item.value }</span>
-                  </div>
-                )
-              },
-              {
-                key: 'desc',
-                name: 'Description',
-                fieldName: 'description',
-                minWidth: 90
-              }
-            ] }
-          />
+        { colorPickerProps && (
+          <Callout
+            isBeakVisible={ false }
+            gapSpace={ 10 }
+            target={ colorPickerProps.targetElement }
+            onDismiss={ this._onPickerDismiss }
+          >
 
-          { colorPickerProps && (
-            <Callout
-              isBeakVisible={ false }
-              gapSpace={ 10 }
-              target={ colorPickerProps.targetElement }
-              onDismiss={ this._onPickerDismiss }
-            >
+            <ColorPicker
+              color={ colorPickerProps.value }
+              onColorChanged={ this._onColorChanged.bind(this, colorPickerProps.index) }
+            />
 
-              <ColorPicker
-                color={ colorPickerProps.value }
-                onColorChanged={ this._onColorChanged.bind(this, colorPickerProps.index) }
-              />
-
-            </Callout>
-          ) }
-
-        </div>
+          </Callout>
+        ) }
 
       </div>
     );
@@ -149,5 +166,4 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
       colorPickerProps: undefined
     });
   }
-
 }
