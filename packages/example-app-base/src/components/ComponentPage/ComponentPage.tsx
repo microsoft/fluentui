@@ -345,7 +345,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _editButton(sectionIndex: ComponentPageSection, url?: string): JSX.Element | undefined {
-    // return undefined;
     if (!url && !this.props.componentUrl) {
       return undefined;
     }
