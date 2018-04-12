@@ -94,14 +94,14 @@ export class ExcitingNewComponent extends BaseComponent <IExcitingNewComponentPr
       <div>Hello World!</div>
     );
   }
-}; // @todo: this ; needs to be removed
+}
 ```
 
-5. Create a class names file `ExcitingNewComponent.classNames.ts`
+5. Create a class names file `ExcitingNewComponent.styles.ts`
 
 ```ts
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets} from '../../Styling';
+import { mergeStyleSets, IStyle } from '../../Styling';
 
 export interface IExcitingNewComponentStyles {
    /**
@@ -111,16 +111,16 @@ export interface IExcitingNewComponentStyles {
 }
 
 export interface IExcitingNewComponentNames {
-	/**
-	* Root html container for this component.
-	*/
-	root?: string;
+  /**
+   * Root html container for this component.
+   */
+  root?: string;
 }
 
 export const getClassNames = memoizeFunction((): IExcitingNewComponentNames => {
-	return mergeStyleSets({
-		root: []
-	});
+  return mergeStyleSets({
+    root: []
+  });
 });
 ```
 

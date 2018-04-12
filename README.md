@@ -127,7 +127,7 @@ In Jest:
 
 For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](./ghdocs/BestPractices/Advanced.md).
 
-## Contribute to Office UI Fabric React
+## Contribute to Fabric React
 
 Please take a look at our [contribution guidelines](./ghdocs/Contributing/Contributing.md) for more info. Also read [Contribute Bug fixes](./ghdocs/Contributing/BugFixes.md) and [Contribute New component](./ghdocs/Contributing/NewComponent.md).
 
