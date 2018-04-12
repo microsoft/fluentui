@@ -679,6 +679,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
+
+    // With the introduction of touch support for split buttons. We would now open sub-menus on touch, but
+    // we can now longer trigger the primary action. This is correct from an accessibility stand point,
+    // however we're missing the next part which is having a primary action as an option to the sub menu
+    // of the split button. This should be enforced by being dynamically added in our code.
+    // This is logged in Issue 4532
     const itemProps = {
       onClick: this._onSplitItemClick.bind(this, item),
       disabled: this._isItemDisabled(item),
