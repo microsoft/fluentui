@@ -150,16 +150,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this.props.onMenuOpened(this.props);
     }
 
-    // Due to restraints caused by React 16 where we no can no longer
-    // call the ref values of children component with their own render
-    // function before componentDidMount we have to use this setTimeout
-    // hack to have access to ref. The correct approacj to solve this
-    // problem is to create a comonent for the split button and then
-    // have it add it's own event listener. This is logged on Issue 4522
+    // Due to restraints caused by React 16 where we no can no longer call the ref values of
+    // children component with their own render function before componentDidMount we have to
+    // use this setTimeout hack to have access to ref. The correct approach to solve this
+    // problem is to create a component for the split button and then have it add its own event listener.
+    // This is logged on Issue #4522
     this._async.setTimeout(() => {
       if (this._splitButtonContainers) {
-        this._splitButtonContainers.forEach((value: HTMLDivElement) => {
-          this._events.on(value, 'pointerdown', this._onPointerDown, true);
+        this._splitButtonContainers.forEach((splitButtonContainer: HTMLDivElement) => {
+          if ('onpointerdown' in splitButtonContainer) {
+            this._events.on(splitButtonContainer, 'pointerdown', this._onPointerDown, true);
+          }
         });
       }
     }, 0);
@@ -680,11 +681,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
-    // With the introduction of touch support for split buttons. We would now open sub-menus on touch, but
-    // we can now longer trigger the primary action. This is correct from an accessibility stand point,
-    // however we're missing the next part which is having a primary action as an option to the sub menu
-    // of the split button. This should be enforced by being dynamically added in our code.
-    // This is logged in Issue 4532
+    // With the introduction of touch support for split buttons. We would now open sub-menus by touching anywhere
+    // on the split button but we can now longer trigger the primary action. This is correct from an accessibility
+    // stand point, however we're missing the next part which is having a primary action as an option to the sub menu
+    // of the split button. This should be enforced by being dynamically added into our list of sub menu items.
+    // This is logged on Issue #4532
     const itemProps = {
       onClick: this._onSplitItemClick.bind(this, item),
       disabled: this._isItemDisabled(item),

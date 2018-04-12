@@ -197,6 +197,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public componentDidMount() {
+    // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
+    // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
+    // does not support Pointer events yet.
     if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
       this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
     }

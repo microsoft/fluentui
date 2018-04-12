@@ -174,6 +174,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentDidMount() {
+    // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
+    // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
+    // does not support Pointer events yet.
     if (this._comboBoxWrapper.value && 'onpointerdown' in this._comboBoxWrapper.value) {
       this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
     }
