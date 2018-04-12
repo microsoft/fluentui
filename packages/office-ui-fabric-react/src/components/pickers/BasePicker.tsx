@@ -6,14 +6,14 @@ import {
   createRef,
   elementContains
 } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
-import { Autofill } from '../Autofill/Autofill';
+import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
@@ -36,8 +36,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected selection: Selection;
 
   protected root = createRef<HTMLDivElement>();
-  protected input = createRef<Autofill>();
-  protected focusZone = createRef<FocusZone>();
+  protected input = createRef<IAutofill>();
+  protected focusZone = createRef<IFocusZone>();
   protected suggestionElement = createRef<Suggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
