@@ -104,6 +104,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         fieldName: 'name',
         minWidth: 16,
         maxWidth: 16,
+        onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return (
             <img

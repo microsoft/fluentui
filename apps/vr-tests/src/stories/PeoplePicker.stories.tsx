@@ -47,6 +47,56 @@ const people: (IPersonaProps & { key: string | number })[] = [
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     presence: PersonaPresence.offline
+  },
+  {
+    key: 5,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    primaryText: 'Alex Lundberg1',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 6,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    primaryText: 'Alex Lundberg2',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 7,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    primaryText: 'Alex Lundberg2',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 8,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    primaryText: 'Alex Lundberg3',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 9,
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'RK',
+    primaryText: 'Alex Lundberg4',
+    secondaryText: 'Financial Analyst',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
   }
 ];
 
@@ -60,9 +110,9 @@ const suggestionProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-let getTextFromItem = (persona: IPersonaProps): string => persona.primaryText as string;
+const getTextFromItem = (persona: IPersonaProps): string => persona.primaryText as string;
 
-let getPeople = () => people;
+const getPeople = () => people;
 
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('PeoplePicker', module)
@@ -96,7 +146,22 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={ suggestionProps }
       disabled
     />
-  ))
+  )).add('Normal with text', () => (
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .click('.ms-BasePicker-input')
+        .setValue('.ms-BasePicker-input', 'a')
+        .snapshot('suggestion: "a"')
+        .end() }>
+      <NormalPeoplePicker
+        onResolveSuggestions={ getPeople }
+        onEmptyInputFocus={ getPeople }
+        getTextFromItem={ getTextFromItem }
+        className={ 'ms-PeoplePicker' }
+        pickerSuggestionsProps={ suggestionProps }
+      />
+    </Screener>))
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()

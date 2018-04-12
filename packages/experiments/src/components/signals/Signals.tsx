@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Signal, ISignalProps } from './Signal';
 import * as SignalsStyles from './Signals.scss';
@@ -11,9 +11,9 @@ export * from './SignalField';
 
 export const YouCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.youCheckedOut) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.youCheckedOut }
       iconName='checkedoutbyyou12'
     />
   );
@@ -21,9 +21,9 @@ export const YouCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element =>
 
 export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.blocked) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.blocked }
       iconName='blocked12'
     />
   );
@@ -31,9 +31,9 @@ export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.missingMetadata) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.missingMetadata }
       iconName='info'
     />
   );
@@ -41,9 +41,9 @@ export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element 
 
 export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.warning) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.warning }
       iconName='warning12'
     />
   );
@@ -51,9 +51,9 @@ export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.awaitingApproval) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.awaitingApproval }
       iconName='clock'
     />
   );
@@ -61,9 +61,9 @@ export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element
 
 export const TrendingSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.trending) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.trending }
       iconName='market'
     />
   );
@@ -71,9 +71,9 @@ export const TrendingSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.someoneCheckedOut) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.someoneCheckedOut }
       iconName='checkedoutbyother12'
     />
   );
@@ -81,9 +81,9 @@ export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Elemen
 
 export const RecordSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.record) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.record }
       iconName='lock'
     />
   );
@@ -131,9 +131,9 @@ export const LiveEditSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const MentionSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.mention) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.mention }
       iconName='accounts'
     />
   );
@@ -176,9 +176,9 @@ export const CommentsSignal: Signal = (props: ISignalProps): JSX.Element => {
  */
 export const UnseenReplySignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.unseenReply) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.unseenReply }
       iconName='commentprevious'
     />
   );
@@ -186,9 +186,9 @@ export const UnseenReplySignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const UnseenEditSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.unseenEdit) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.unseenEdit }
       iconName='edit'
     />
   );
@@ -196,9 +196,9 @@ export const UnseenEditSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const ReadOnlySignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.readOnly) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.readOnly }
       iconName='uneditablesolid12'
     />
   );
@@ -206,9 +206,9 @@ export const ReadOnlySignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const EmailedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.emailed) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.emailed }
       iconName='mail'
     />
   );
@@ -216,9 +216,9 @@ export const EmailedSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.shared) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.shared }
       iconName='people'
     />
   );
@@ -226,9 +226,9 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.malwareDetected) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.malwareDetected }
       iconName='BlockedSite'
     />
   );
@@ -241,10 +241,37 @@ export const ATPSignal: Signal = MalwareDetectedSignal; // TODO Delete on next m
  */
 export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalsStyles.external) }
+    <IconSignal
+      { ...props }
+      signalClass={ SignalsStyles.external }
       iconName='Globe'
     />
   );
 };
+
+type IIconSignalProps = ISignalProps & Pick<IIconProps, 'iconName'> & {
+  /**
+   * The class name to use for the Signal type.
+   */
+  signalClass: string;
+};
+
+/**
+ * Renders a signal as just an Icon. This is the simplest Signal case.
+ */
+function IconSignal(props: IIconSignalProps): JSX.Element { // tslint:disable-line:function-name
+  const {
+    ariaLabel,
+    className,
+    signalClass,
+    ...spanProps
+  } = props;
+
+  return (
+    <Icon
+      { ...spanProps }
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, signalClass, className) }
+    />
+  );
+}

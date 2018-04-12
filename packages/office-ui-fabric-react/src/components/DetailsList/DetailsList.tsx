@@ -23,8 +23,9 @@ import {
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
+  ISelectionZone,
   IObjectWithKey,
   ISelection,
   Selection,
@@ -33,8 +34,8 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { GroupedList } from '../../GroupedList';
-import { List, IListProps } from '../../List';
+import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IList, List, IListProps } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
@@ -60,6 +61,9 @@ const ISPADDED_WIDTH = 24;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
+const SHIMMER_INITIAL_ITEMS = 10;
+const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
+
 @withViewport
 export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
@@ -67,16 +71,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     selectionMode: SelectionMode.multiple,
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    enableShimmer: false
   };
 
   // References
   private _root = createRef<HTMLDivElement>();
   private _header = createRef<IDetailsHeader>();
-  private _groupedList = createRef<GroupedList>();
-  private _list = createRef<List>();
-  private _focusZone = createRef<FocusZone>();
-  private _selectionZone = createRef<SelectionZone>();
+  private _groupedList = createRef<IGroupedList>();
+  private _list = createRef<IList>();
+  private _focusZone = createRef<IFocusZone>();
+  private _selectionZone = createRef<ISelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
@@ -273,7 +278,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey,
       listProps,
       usePageCache,
-      onShouldVirtualize
+      onShouldVirtualize,
+      enableShimmer
     } = this.props;
     const {
       adjustedColumns,
@@ -402,7 +408,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     <List
                       ref={ this._list }
                       role='presentation'
-                      items={ items }
+                      items={ enableShimmer && !items.length ? SHIMMER_ITEMS : items }
                       onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
@@ -462,15 +468,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       adjustedColumns: columns
     } = this.state;
 
-    if (!item) {
-      if (onRenderMissingItem) {
-        return onRenderMissingItem(index);
-      }
-
-      return null;
-    }
-
-    return onRenderRow({
+    const rowProps: IDetailsRowProps = {
       item: item,
       itemIndex: index,
       compact: compact,
@@ -491,7 +489,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
       checkboxCellClassName: checkboxCellClassName,
-    }, this._onRenderRow);
+    };
+
+    if (!item) {
+      if (onRenderMissingItem) {
+        return onRenderMissingItem(index, rowProps);
+      }
+
+      return null;
+    }
+
+    return onRenderRow(rowProps, this._onRenderRow);
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {

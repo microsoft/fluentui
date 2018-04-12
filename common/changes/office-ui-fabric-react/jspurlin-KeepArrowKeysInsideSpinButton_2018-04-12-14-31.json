@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "OverflowSet: Allow the OverflowSet to not be contained within a FocusZone",
-      "type": "minor"
+      "comment": "SpinButton: Make sure up/down Arrow do not leave the spinButton",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

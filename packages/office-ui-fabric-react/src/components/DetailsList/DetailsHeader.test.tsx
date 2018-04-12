@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DetailsHeader } from './DetailsHeader';
+import { IDetailsHeader, DetailsHeader } from './DetailsHeader';
 import { DetailsListLayoutMode, IColumn } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup, createRef } from '../../Utilities';
@@ -37,7 +37,7 @@ describe('DetailsHeader', () => {
       size: number,
       index: number
     ): { size: number; index: number; } => lastResize = { size, index };
-    const headerRef = createRef<any>();
+    const headerRef = createRef<IDetailsHeader>();
 
     const columns = [];
     const wrapper = mount(

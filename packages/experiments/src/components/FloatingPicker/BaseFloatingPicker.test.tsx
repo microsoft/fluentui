@@ -60,17 +60,17 @@ describe('Pickers', () => {
           suggestionsStore={ new SuggestionsStore<ISimple>() }
         />
       );
-      let tree = component.toJSON();
+      const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('shows zero query options on empty input', () => {
-      let root = document.createElement('div');
-      let input = document.createElement('input');
+      const root = document.createElement('div');
+      const input = document.createElement('input');
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      let picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
@@ -92,12 +92,12 @@ describe('Pickers', () => {
     });
 
     it('updates suggestions on query string changed', () => {
-      let root = document.createElement('div');
-      let input = document.createElement('input');
+      const root = document.createElement('div');
+      const input = document.createElement('input');
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      let picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }

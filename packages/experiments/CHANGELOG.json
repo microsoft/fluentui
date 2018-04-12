@@ -2,6 +2,144 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.31.0",
+      "tag": "@uifabric/experiments_v5.31.0",
+      "date": "Thu, 12 Apr 2018 10:15:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c7eb8c25b50664874db1d3514a4e80defa20bd51",
+            "comment": "Shimmerline import was not correct, fixing import."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "baaab94cba9a6acfc8db4ed7309cce917abf24fa",
+            "comment": "Shimmer: Application example modified to reflect changes in DetailsList"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "757e955a2d49635e1c571d94e043263aed4b6ded",
+            "comment": "Refactoring Shimmer and adding ShimmerTile + Implements Shimmer in TilesList."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.80.0 <6.0.0` to `>=5.81.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.8.0 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.30.0",
+      "tag": "@uifabric/experiments_v5.30.0",
+      "date": "Tue, 10 Apr 2018 17:37:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "7a3ba05123ffdf79f16c6a428c2cdabee4646e1c",
+            "comment": "FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same "
+          }
+        ],
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "ec704f421a8eb7099a926d5d72ebf370d52fca05",
+            "comment": "Tile: exporting an enum to use the values in creating a PlaceholderTile in Shimmer component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.79.1 <6.0.0` to `>=5.80.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.29.1",
+      "tag": "@uifabric/experiments_v5.29.1",
+      "date": "Thu, 05 Apr 2018 10:15:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "e03ec406dbd59062b9b12ada6fab5db50cafeb66",
+            "comment": "fix suggestion header/footer for more flexibile rendering"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "cb8ba392bbcfa76f1a3af97b3006c9d63f5228fe",
+            "comment": "Align Tiles in last row with previous rows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.78.0 <6.0.0` to `>=5.79.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.29.0",
+      "tag": "@uifabric/experiments_v5.29.0",
+      "date": "Tue, 03 Apr 2018 10:16:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "0771cc20e7f8a3379444ff32355488946d8f9332",
+            "comment": "Sets up an example of Shimmer used with DetailsList Component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.77.0 <6.0.0` to `>=5.78.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.2",
+      "tag": "@uifabric/experiments_v5.28.2",
+      "date": "Sat, 31 Mar 2018 17:40:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "41711f7788981cf4d84495d147d93a74b979113c",
+            "comment": "We need to temporarily remove `sideEffects: false` flag from package.json which will disable w"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5d1646f214c990ebcb6d2ab09f4a5497386a43a8",
+            "comment": "Fix flex styling for SignalField"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5d1646f214c990ebcb6d2ab09f4a5497386a43a8",
+            "comment": "Pass all props to Signal Icon elements"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.74.0 <6.0.0` to `>=5.76.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.7.0 <6.0.0` to `>=5.7.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.28.1",
       "tag": "@uifabric/experiments_v5.28.1",
       "date": "Wed, 28 Mar 2018 21:50:01 GMT",

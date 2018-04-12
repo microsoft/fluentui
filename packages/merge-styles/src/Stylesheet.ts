@@ -50,16 +50,15 @@ let _stylesheet: Stylesheet;
  * @public
  */
 export class Stylesheet {
-  private _styleElement!: HTMLStyleElement;
-  private _rules!: string[];
+  private _styleElement?: HTMLStyleElement;
+  private _rules: string[] = [];
   private _config: IStyleSheetConfig;
-  private _rulesToInsert!: string[];
-  private _timerId!: number;
-  private _counter!: number;
-  private _keyToClassName!: { [key: string]: string };
+  private _rulesToInsert: string[] = [];
+  private _counter = 0;
+  private _keyToClassName: { [key: string]: string } = {};
 
   // tslint:disable-next-line:no-any
-  private _classNameToArgs!: { [key: string]: { args: any, rules: string[] } };
+  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } } = {};
 
   /**
    * Gets the singleton instance.
@@ -85,8 +84,6 @@ export class Stylesheet {
       defaultPrefix: 'css',
       ...config
     };
-
-    this.reset();
   }
 
   /**
@@ -208,11 +205,11 @@ export class Stylesheet {
     this._counter = 0;
     this._classNameToArgs = {};
     this._keyToClassName = {};
+  }
 
-    if (this._timerId) {
-      clearTimeout(this._timerId);
-      this._timerId = 0;
-    }
+  // Forces the regeneration of incoming styles without totally resetting the stylesheet.
+  public resetKeys(): void {
+    this._keyToClassName = {};
   }
 
   private _getElement(): HTMLStyleElement | undefined {

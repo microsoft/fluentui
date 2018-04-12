@@ -32,7 +32,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title='CommandBar with non-focusable items' code={ CommandBarNoFocusableItemsExampleCode }>
               <CommandBarNonFocusableItemsExample />
             </ExampleCard>
-            <ExampleCard title='CommandBar with customized renderred items' code={ CommandBarCustomizationExampleCode }>
+            <ExampleCard title='CommandBar with customized rendered items' code={ CommandBarCustomizationExampleCode }>
               <CommandBarCustomizationExample />
             </ExampleCard>
           </div>
