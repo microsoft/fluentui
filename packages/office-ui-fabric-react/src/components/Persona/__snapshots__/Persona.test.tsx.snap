@@ -125,9 +125,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
             color: #333333;
             font-size: 17px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     >
       <div
@@ -148,9 +145,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
             color: #666666;
             font-size: 12px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     />
     <div
@@ -161,9 +155,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
             display: none;
             font-size: 12px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     />
     <div
@@ -174,9 +165,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
             display: none;
             font-size: 12px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     />
   </div>
@@ -334,9 +322,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             color: #333333;
             font-size: 17px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     >
       <div
@@ -357,9 +342,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             color: #666666;
             font-size: 12px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     />
     <div
@@ -370,9 +352,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             display: none;
             font-size: 12px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     />
     <div
@@ -383,9 +362,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             display: none;
             font-size: 12px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
     />
   </div>
