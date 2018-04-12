@@ -70,14 +70,14 @@ Fundamental components are the official React representation of our [Adobe XD To
    * In this example the component will be called `ExcitingNewComponent`.
 3. Create a `ExcitingNewComponent.types.ts` file that will contain an interface for your component props
    * Import React
-     `import * as React from 'react'`;
+     * `import * as React from 'react'`;
    * Import ExcitingNewComponent
-     `import { ExcitingNewComponent } from './ExcitingNewComponent'`;
-     Note: This class and file don't exist yet but they will during step 4 of this small tutorial.
+     * `import { ExcitingNewComponent } from './ExcitingNewComponent'`;
+     * Note: This class and file don't exist yet but they will during step 4 of this small tutorial.
    * Create an empty interface `IExcitingNewComponent`
-     `export interface IExcitingNewComponent {}`
+     * `export interface IExcitingNewComponent {}`
    * Add your props interface to this file.
-     `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
+     * `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
 
 4. Create a react file, `ExcitingNewComponent.tsx`.
 
