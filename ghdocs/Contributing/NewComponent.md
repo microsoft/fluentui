@@ -60,8 +60,8 @@ Fundamental components are the official React representation of our [Adobe XD To
 
 #### Creating a component via the command line
 1. This is the recommended way of creating a new component.
-3. Open a command prompt in the root directory of your project directory.
-2. Run `npm run create-component -- --name ExcitingNewComponent`.
+2. Open a command prompt in the root directory of your project directory.
+3. Run `npm run create-component -- --name ExcitingNewComponent`.
 
 #### Creating a component manually
 1. From the root of the project, navigate to `packages/experiments/src/components/`
@@ -69,17 +69,15 @@ Fundamental components are the official React representation of our [Adobe XD To
    * Our components use the Pascal Case naming convention.
    * In this example the component will be called `ExcitingNewComponent`.
 3. Create a `ExcitingNewComponent.types.ts` file that will contain an interface for your component props
-
-  * Import React
-    * `import * as React from 'react'`;
-  * Import ExcitingNewComponent
-    * `import { ExcitingNewComponent } from './ExcitingNewComponent'`;
-    * Note: This class and file don't exist yet but they will during step 4 of this small tutorial.
-  * Create an empty interface `IExcitingNewComponent`
-    * `export interface IExcitingNewComponent {}`
-  * Add your props interface to this file.
-    * `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
-  * Create and export an interface for ExcitingNewComponent styles.
+   * Import React
+     `import * as React from 'react'`;
+   * Import ExcitingNewComponent
+     `import { ExcitingNewComponent } from './ExcitingNewComponent'`;
+     Note: This class and file don't exist yet but they will during step 4 of this small tutorial.
+   * Create an empty interface `IExcitingNewComponent`
+     `export interface IExcitingNewComponent {}`
+   * Add your props interface to this file.
+     `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
 
 4. Create a react file, `ExcitingNewComponent.tsx`.
 
