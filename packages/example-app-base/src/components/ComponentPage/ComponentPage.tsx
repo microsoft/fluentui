@@ -416,7 +416,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         id={ `${componentName}-${section}-editButtonHost` }
       >
         <IconButton
-          aria-describedby={ `${componentName}-${section}-editButtonHost` }
+          aria-labelledby={ `${componentName}-${section}-editButtonHost` }
           iconProps={ { iconName: 'Edit' } }
           href={ editUrl }
           target='_blank'
