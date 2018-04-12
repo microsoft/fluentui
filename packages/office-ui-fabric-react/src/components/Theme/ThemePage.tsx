@@ -6,8 +6,9 @@ import {
 import {
   FontClassNames,
   IPalette,
+  ISemanticColors,
   loadTheme,
-} from 'office-ui-fabric-react/lib/Styling';
+} from '../../Styling';
 import {
   ComponentPage,
   Highlight,
@@ -15,16 +16,20 @@ import {
   PageMarkdown,
 } from '@uifabric/example-app-base';
 import {
+  IThemePagePalette,
   IThemePageStyleProps,
   IThemePageStyles,
   IThemePageState,
 } from './ThemePage.types';
-import { defaultTheme } from './defaultTheme';
+import {
+  defaultPalette,
+  defaultSemanticColors,
+} from './defaultTheme';
 import { getStyles } from './ThemePage.styles';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
-import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { Callout } from '../Callout';
+import { DetailsList, DetailsListLayoutMode } from '../../DetailsList';
+import { SelectionMode } from '../../Selection';
+import { ColorPicker } from '../ColorPicker';
 
 const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
 
@@ -37,41 +42,45 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     this._onPickerDismiss = this._onPickerDismiss.bind(this);
 
     this.state = {
-      colors: Object.keys(defaultTheme).map(variableName => ({
-        key: variableName,
-        name: variableName,
-        value: (defaultTheme as any)[variableName],
-        description: '',
-        colorPickerProps: undefined
-      }))
+      palette: defaultPalette,
+      semanticColors: defaultSemanticColors,
     };
+
+    this._onColorChanged = this._onColorChanged.bind(this);
   }
 
   public render() {
+    const thisTheme = loadTheme({});
+    const thisSemanticColors = thisTheme.semanticColors;
+    // console.log(thisTheme);
     return (
       <ComponentPage
-        title='Theme'
+        title='Themes'
         componentName='ThemeExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Theme'
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemeOverview.md') }
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemesOverview.md') }
           </PageMarkdown>
         }
         otherSections={ [
           {
-            title: 'Default Theme Values',
-            section: this._defaultThemeList()
-          }
+            title: 'Default Palette',
+            section: this._colorList(this.state.palette, 'palette')
+          },
+          {
+            title: 'Default Semantic Colors',
+            section: this._colorList(this.state.semanticColors, 'semanticColors')
+          },
         ] }
         isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
   }
 
-  private _defaultThemeList = () => {
+  private _colorList = (colors: any, list: 'palette' | 'semanticColors') => {
     const classNames = getClassNames(getStyles);
-    const { colors, colorPickerProps } = this.state;
+    const { colorPickerProps } = this.state;
     return (
       <div>
         <DetailsList
@@ -93,8 +102,18 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
               fieldName: 'value',
               minWidth: 200,
               onRender: (item, index) => (
-                <div className={ classNames.colorSwatch } data-is-focusable='true' onClick={ this._onSwatchClicked.bind(this, item, index) }>
-                  <span className={ classNames.swatch } style={ { backgroundColor: item.value } } />
+                <div
+                  className={ classNames.colorSwatch }
+                  data-is-focusable='true'
+                  onClick={ (ev) => {
+                    this._onSwatchClicked(item, index!, ev);
+                    this.setState({ activeList: list });
+                  } }
+                >
+                  <span
+                    className={ classNames.swatch }
+                    style={ { backgroundColor: item.value } }
+                  />
                   <span className={ classNames.colorValue }>{ item.value }</span>
                 </div>
               )
@@ -137,25 +156,42 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
         value: item.value,
-        index: index
+        index: index,
       }
     });
   }
 
-  private _onColorChanged(index: number, newColor: string) {
-    const { colors } = this.state;
-    const color = colors[index];
-    const palette: Partial<IPalette> = {};
+  private _onColorChanged(
+    index: number,
+    newColor: string,
+  ) {
+    const { palette, semanticColors, activeList } = this.state;
+    const partialPalette: Partial<IPalette> = {};
+    const partialSemanticColors: Partial<ISemanticColors> = {};
 
-    color.value = newColor;
-
-    for (let i = 0; i < colors.length; i++) {
-      const themeColor = colors[i];
-
-      (palette as any)[themeColor.key] = themeColor.value;
+    if (activeList === 'palette') {
+      const paletteColor = palette[index];
+      paletteColor.value = newColor;
+      palette[index] = paletteColor;
+      for (let i = 0; i < palette.length; i++) {
+        (palette as any)[palette[i].key] = palette[i].value;
+      }
+    } else if (activeList === 'semanticColors') {
+      const semanticColor = semanticColors[index];
+      semanticColor.value = newColor;
+      semanticColors[index] = semanticColor;
+      for (let i = 0; i < semanticColors.length; i++) {
+        (semanticColors as any)[semanticColors[i].key] = semanticColors[i].value;
+      }
+    } else {
+      this.setState({ activeList: undefined });
+      return undefined;
     }
 
-    loadTheme({ palette });
+    this.setState({ activeList: undefined });
+    const partialTheme = { ...partialPalette, ...partialSemanticColors };
+
+    loadTheme({ palette: partialTheme });
 
     // The theme has changed values, but color state is the same. Force an update on the list.
     this._list.forceUpdate();

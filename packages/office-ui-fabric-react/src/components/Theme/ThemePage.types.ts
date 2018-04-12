@@ -1,10 +1,22 @@
 import * as React from 'react';
-import { ThemePage } from './ThemePage';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyle } from '../../Styling';
+
+export type IThemePagePalette = {
+  key: string;
+  name: string;
+  value: string;
+  description: string;
+};
 
 export interface IThemePageState {
-  colors: {
+  palette: {
+    key: string;
+    name: string;
+    value: string;
+    description: string;
+  }[];
+
+  semanticColors: {
     key: string;
     name: string;
     value: string;
@@ -16,6 +28,8 @@ export interface IThemePageState {
     value: any;
     index: number;
   };
+
+  activeList?: string;
 }
 
 export interface IThemePageStyleProps { }
