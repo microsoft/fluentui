@@ -149,6 +149,20 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (this.props.onMenuOpened) {
       this.props.onMenuOpened(this.props);
     }
+
+    // Due to restraints caused by React 16 where we no can no longer
+    // call the ref values of children component with their own render
+    // function before componentDidMount we have to use this setTimeout
+    // hack to have access to ref. The correct approacj to solve this
+    // problem is to create a comonent for the split button and then
+    // have it add it's own event listener. This is logged on Issue 4522
+    setTimeout(() => {
+      if (this._splitButtonContainers) {
+        this._splitButtonContainers.forEach((value: HTMLDivElement) => {
+          this._events.on(value, 'pointerdown', this._onPointerDown, true);
+        });
+      }
+    }, 0);
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -596,9 +610,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div
         ref={ (el: HTMLDivElement) => {
           this._splitButtonContainers.set(item.key, el);
-          if (el && 'onpointerdown' in el) {
-            this._events.on(el, 'pointerdown', this._onPointerDown, true);
-          }
         }
         }
         role={ 'button' }
@@ -610,6 +621,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
+        onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
+        onMouseLeave={ this._onMouseItemLeave.bind(this, { ...item, subMenuProps: null, items: null }) }
+        onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
         onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
         onClick={ this._executeItemClick.bind(this, item) }
         onTouchStart={ this._onTouchStart }
@@ -875,6 +889,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // Delay updating expanding/dismissing the submenu
     // and only set focus if we have not already done so
     if (hasSubmenu(item)) {
+      ev.stopPropagation();
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
         const splitButtonContainer = this._splitButtonContainers.get(item.key);

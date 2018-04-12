@@ -14,7 +14,7 @@ const SignalStyles: any = SignalStylesModule;
 const CheckStyles: any = CheckStylesModule;
 // tslint:enable:no-any
 
-const enum TileLayoutValues {
+export const enum TileLayoutValues {
   nameplatePadding = 12,
   largeNameplateNameHeight = 15,
   smallNameplateNameHeight = 12,
@@ -29,7 +29,7 @@ export interface ITileState {
   isModal?: boolean;
 }
 
-const SIZES: {
+export const TileLayoutSizes: {
   [P in TileSize]: {
     nameplatePadding: number;
     nameplateNameHeight: number;
@@ -401,7 +401,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
     nameplateActivityHeight,
     nameplateNameHeight,
     foregroundMargin
-  } = SIZES[tileSize];
+  } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

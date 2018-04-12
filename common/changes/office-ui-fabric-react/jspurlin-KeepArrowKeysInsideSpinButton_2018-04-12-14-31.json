@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Move sub-components to sub-folders",
+      "comment": "SpinButton: Make sure up/down Arrow do not leave the spinButton",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jordanjanzen@jordanjanzen.com"
+  "email": "jspurlin@microsoft.com"
 }
