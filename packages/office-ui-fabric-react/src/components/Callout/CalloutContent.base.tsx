@@ -376,6 +376,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return this._bounds;
   }
 
+  // Max height should remain as synchronous as possible, which is why it is not done using set state.
+  // It needs to be synchronous since it will impact the ultimate position of the callout.
   private _getMaxHeight(): number | undefined {
     if (!this._maxHeight) {
       if (this.props.directionalHintFixed && this._target) {
