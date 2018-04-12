@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.81.1",
+      "tag": "office-ui-fabric-react_v5.81.1",
+      "date": "Thu, 12 Apr 2018 15:59:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "15ae704d7754c25363a65401bb83e9d762fe86e9",
+            "comment": "Coachmark: The pulsing beacon animation moved to the Styling package."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.81.0",
       "tag": "office-ui-fabric-react_v5.81.0",
       "date": "Thu, 12 Apr 2018 10:15:54 GMT",
