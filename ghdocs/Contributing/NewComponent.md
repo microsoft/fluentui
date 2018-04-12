@@ -66,8 +66,8 @@ Fundamental components are the official React representation of our [Adobe XD To
 #### Creating a component manually
 1. From the root of the project, navigate to `packages/experiments/src/components/`
 2. Create a new folder here with your component name
-  * Our components use the Pascal Case naming convention.
-  * In this example the component will be called `ExcitingNewComponent`.
+   * Our components use the Pascal Case naming convention.
+   * In this example the component will be called `ExcitingNewComponent`.
 3. Create a `ExcitingNewComponent.types.ts` file that will contain an interface for your component props
 
   * Import React
@@ -89,7 +89,7 @@ import { BaseComponent } from '../../Utilities';
 import { IExcitingNewComponentProps } from './ExcitingNewComponent.types';
 
 export class ExcitingNewComponent extends BaseComponent <IExcitingNewComponentProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return(
       <div>Hello World!</div>
     );
