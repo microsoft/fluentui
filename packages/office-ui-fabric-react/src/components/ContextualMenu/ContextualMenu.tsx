@@ -156,7 +156,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // hack to have access to ref. The correct approacj to solve this
     // problem is to create a comonent for the split button and then
     // have it add it's own event listener. This is logged on Issue 4522
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       if (this._splitButtonContainers) {
         this._splitButtonContainers.forEach((value: HTMLDivElement) => {
           this._events.on(value, 'pointerdown', this._onPointerDown, true);
@@ -167,13 +167,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    super.componentWillUnmount();
     if (this._isFocusingPreviousElement && this._previousActiveElement) {
 
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
-      setTimeout(() => this._previousActiveElement!.focus(), 0);
+      this._async.setTimeout(() => this._previousActiveElement!.focus(), 0);
     }
 
     if (this.props.onMenuDismissed) {
