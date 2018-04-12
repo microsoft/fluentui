@@ -163,7 +163,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
-      this._async.setTimeout(() => this._previousActiveElement && this._previousActiveElement!.focus(), 0);
+      // Note: Cannot be replaced by this._async.setTimout because those will be removed by the time this is called.
+      setTimeout(() => { this._previousActiveElement && this._previousActiveElement!.focus(); }, 0);
     }
 
     if (this.props.onMenuDismissed) {
@@ -333,7 +334,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _onMenuClosed() {
     this._events.off(this._targetWindow, 'resize', this.dismiss);
-    this._previousActiveElement && this._async.setTimeout(() => this._previousActiveElement && this._previousActiveElement!.focus(), 0);
+    this._previousActiveElement && this._async.setTimeout(() => { this._previousActiveElement && this._previousActiveElement!.focus(); }, 0);
   }
 
   /**
