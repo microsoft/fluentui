@@ -682,7 +682,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderSplitDivider(item: IContextualMenuItem) {
     const getDividerClassnames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
-    return <VerticalDivider aria-hidden={ true } getClassNames={ getDividerClassnames } />;
+    return <VerticalDivider getClassNames={ getDividerClassnames } />;
   }
 
   private _getIconProps(item: IContextualMenuItem): IIconProps {
