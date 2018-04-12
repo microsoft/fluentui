@@ -35,7 +35,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // The wrapping div that gets the hover events
   private _hoverCard = createRef<HTMLDivElement>();
-  private _expandingCard = createRef<ExpandingCard>();
   private _dismissTimerId: number;
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget;
@@ -113,7 +112,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { children }
         { isHoverCardVisible &&
           <ExpandingCard
-            componentRef={ this._expandingCard }
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             trapFocus={ !!this.props.trapFocus }
@@ -140,7 +138,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         return target as HTMLElement;
 
       default:
-        return this._hoverCard.value ? this._hoverCard.value : undefined;
+        return this._hoverCard.value || undefined;
     }
   }
 

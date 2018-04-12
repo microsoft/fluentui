@@ -5,9 +5,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-
-import { Breadcrumb } from './Breadcrumb';
-import { IBreadcrumbItem } from './Breadcrumb.types';
+import { Breadcrumb, IBreadcrumbItem } from './index';
 
 describe('Breadcrumb', () => {
   it('renders breadcumb correctly', () => {
@@ -17,6 +15,8 @@ describe('Breadcrumb', () => {
       { text: 'TestText3', key: 'TestKey3' },
       { text: 'TestText4', key: 'TestKey4' }
     ];
+
+    const divider = () => <span>*</span>;
 
     let component = renderer.create(
       <Breadcrumb
@@ -32,6 +32,17 @@ describe('Breadcrumb', () => {
       <Breadcrumb
         items={ items }
         maxDisplayedItems={ 2 }
+      />
+    );
+
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // With custom divider
+    component = renderer.create(
+      <Breadcrumb
+        items={ items }
+        dividerAs={ divider }
       />
     );
 

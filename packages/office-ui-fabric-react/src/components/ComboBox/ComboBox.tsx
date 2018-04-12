@@ -372,8 +372,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             title={ title }
           />
           <IconButton
-            className={'ms-ComboBox-CaretDown-button'}
-            styles={this._getCaretButtonStyles()}
+            className={ 'ms-ComboBox-CaretDown-button' }
+            styles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden={ isButtonAriaHidden }
             data-is-focusable={ false }
@@ -385,7 +385,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           />
         </div>
 
-        {isOpen && (
+        { isOpen && (
           (onRenderContainer as any)({
             ...this.props,
             onRenderList,
@@ -394,13 +394,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
           },
             this._onRenderContainer)
-        )}
+        ) }
         {
           errorMessage &&
           <div
-            className={this._classNames.errorMessage}
+            className={ this._classNames.errorMessage }
           >
-            {errorMessage}
+            { errorMessage }
           </div>
         }
       </div>
@@ -507,7 +507,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
         displayValues.push(currentPendingValue !== '' ? currentPendingValue : (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : ''));
       } else {
-        for (let idx = 0; selectedIndices && (idx < selectedIndices.length); idx ++) {
+        for (let idx = 0; selectedIndices && (idx < selectedIndices.length); idx++) {
           const index: number = selectedIndices[idx];
           displayValues.push(this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : suggestedDisplayValue);
         }
@@ -959,11 +959,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (
       <Callout
-        isBeakVisible={false}
-        gapSpace={0}
-        doNotLayer={false}
-        directionalHint={DirectionalHint.bottomLeftEdge}
-        directionalHintFixed={true}
+        isBeakVisible={ false }
+        gapSpace={ 0 }
+        doNotLayer={ false }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
+        directionalHintFixed={ true }
         { ...calloutProps }
         className={ css(this._classNames.callout, calloutProps ? calloutProps.className : undefined) }
         target={ this._comboBoxWrapper.value }
@@ -978,7 +978,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._comboBoxMenu }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
-        {onRenderLowerContent(this.props, this._onRenderLowerContent)}
+        { onRenderLowerContent(this.props, this._onRenderLowerContent) }
       </Callout>
     );
   }
@@ -993,12 +993,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     return (
       <div
-        id={id + '-list'}
-        className={this._classNames.optionsContainer}
-        aria-labelledby={id + '-label'}
+        id={ id + '-list' }
+        className={ this._classNames.optionsContainer }
+        aria-labelledby={ id + '-label' }
         role='listbox'
       >
-        {options.map((item) => (onRenderItem as any)(item, this._onRenderItem))}
+        { options.map((item) => (onRenderItem as any)(item, this._onRenderItem)) }
       </div>
     );
   }
@@ -1028,8 +1028,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return (
         <div
           role='separator'
-          key={key}
-          className={this._classNames.divider}
+          key={ key }
+          className={ this._classNames.divider }
         />
       );
     }
@@ -1229,7 +1229,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _onRenderOptionContent = (item: IComboBoxOption): JSX.Element => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    return <span className={optionClassNames.optionText}>{item.text}</span>;
+    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
   }
 
   /**
@@ -1367,7 +1367,30 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentOptions
     } = this.state;
 
-    index = this._getNextSelectableIndex(index, searchDirection);
+    // update index to allow content to wrap
+    if (searchDirection === SearchDirection.forward && index >= currentOptions.length - 1) {
+      index = -1;
+    } else if (searchDirection === SearchDirection.backward && index <= 0) {
+      index = currentOptions.length;
+    }
+
+    // get the next "valid" index
+    const indexUpdate = this._getNextSelectableIndex(index, searchDirection);
+
+    // if the two indicies are equal we didn't move and
+    // we should attempt to get  get the first/last "valid" index to use
+    // (Note, this takes care of the potential cases where the first/last
+    // item is not focusable), otherwise use the updated index
+    if (index === indexUpdate) {
+      if (searchDirection === SearchDirection.forward) {
+        index = this._getNextSelectableIndex(-1, searchDirection);
+      } else if (searchDirection === SearchDirection.backward) {
+        index = this._getNextSelectableIndex(currentOptions.length, searchDirection);
+      }
+    } else {
+      index = indexUpdate;
+    }
+
     if (this._indexWithinBounds(currentOptions, index)) {
       this._setPendingInfoFromIndex(index);
     }
@@ -1504,6 +1527,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // go to the last index
         if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
           index = this.state.currentOptions.length;
+        }
+
+        if ((ev.altKey || ev.metaKey) && isOpen) {
+          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
+          return;
         }
 
         // Go to the previous option
