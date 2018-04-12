@@ -1,4 +1,4 @@
-import { IStyle, IRawStyle, keyframes } from '../../Styling';
+import { IStyle, IRawStyle, keyframes, ZIndexes } from '../../Styling';
 
 export interface ICoachmarkStyleProps {
   /**
@@ -297,7 +297,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         animationName: ContinuousPulse,
         animationIterationCount: '1',
         animationDuration: '14s',
-        zIndex: 1000,
+        zIndex: ZIndexes.Coachmark,
         animationDelay: '2s'
       }
     ],

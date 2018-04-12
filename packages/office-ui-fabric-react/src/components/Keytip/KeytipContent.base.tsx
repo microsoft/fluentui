@@ -34,7 +34,7 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
 
     return (
       <div className={ classNames.container } >
-        <span id={ convertSequencesToKeytipID(keySequences) } className={ classNames.root }>{ content }</span>
+        <span className={ classNames.root }>{ content }</span>
       </div >
     );
   }

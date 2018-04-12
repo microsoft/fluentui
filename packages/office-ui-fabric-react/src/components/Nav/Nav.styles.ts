@@ -5,7 +5,8 @@ import {
   DefaultFontStyles,
   getFocusStyle,
   FontSizes,
-  FontWeights
+  FontWeights,
+  ZIndexes
 } from '../../Styling';
 
 export const buttonStyles: IButtonStyles = {
@@ -167,7 +168,7 @@ export const getStyles = (
           position: 'absolute',
           top: '1px',
           left: `${position}px`,
-          zIndex: 1,
+          zIndex: ZIndexes.Nav,
           padding: 0,
           margin: 0
         }

@@ -24,7 +24,6 @@ describe('getAriaDescribedBy', () => {
     const keySequences: IKeySequence[] = ['b', 'c'];
     const ariaDescribedBy = getAriaDescribedBy(keySequences);
     expect(ariaDescribedBy).toEqual(' ' + ktpLayerId +
-      ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID([keySequences[0]]) +
       ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences));
   });
 
@@ -32,7 +31,6 @@ describe('getAriaDescribedBy', () => {
     const keySequences: IKeySequence[] = ['an', 'cb'];
     const ariaDescribedBy = getAriaDescribedBy(keySequences);
     expect(ariaDescribedBy).toEqual(' ' + ktpLayerId +
-      ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID([keySequences[0]]) +
       ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences));
   });
 });

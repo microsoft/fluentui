@@ -255,6 +255,10 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     }
   }
 
+  /**
+   * Gets the subMenu for an overflow item
+   * Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
+   */
   private _getSubMenuForItem(item: any): any[] | undefined {
     if (this.props.itemSubMenuProvider) {
       return this.props.itemSubMenuProvider(item);

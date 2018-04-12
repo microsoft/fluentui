@@ -80,16 +80,13 @@ export function constructKeytipExecuteTargetFromId(keytipId: string): string {
  * @returns {string} The aria-describedby value to set on the component with this keytip
  */
 export function getAriaDescribedBy(keySequences: IKeySequence[]): string {
-  const describedby = ktpLayerId;
+  const describedby = ' ' + ktpLayerId;
   if (!keySequences.length) {
     // Return just the layer ID
-    return ' ' + describedby;
+    return describedby;
   }
 
-  // Add beginning space so it can be easily appended
-  return ' ' + keySequences.reduce((prevValue: string, sequence: IKeySequence, currentIndex: number): string => {
-    return prevValue + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences.slice(0, currentIndex + 1));
-  }, describedby);
+  return describedby + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences);
 }
 
 /**
@@ -111,7 +108,7 @@ export function getNativeKeytipProps(keytipProps?: IKeytipProps, describedByPrep
     const ktpId = convertSequencesToKeytipID(keySequences);
 
     return {
-      'aria-describedby': (describedByPrepend || '' ) + ariaDescribedBy,
+      'aria-describedby': (describedByPrepend || '') + ariaDescribedBy,
       'data-ktp-target': ktpId,
       'data-ktp-execute-target': ktpId
     };
