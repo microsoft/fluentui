@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Make focus wrap in in the menu (to align with dropdwn and customer feedback)_",
+      "comment": "SpinButton: Make sure up/down Arrow do not leave the spinButton",
       "type": "patch"
     }
   ],

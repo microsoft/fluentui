@@ -23,7 +23,7 @@ The Fabric component is a root wrapper component which solves 2 problems:
 
 2. The focus rectangle visibility is managed through the `is-focusVisible` css class.
 
-## Focus rectangle notes
+## Focus rectangle
 
 Focus rectangles around components should only be shown when the user presses tab or directional keys. When they press mouse buttons, focus rectangles should not be shown. The `Fabric` component that will conditionally add/remove an `is-focusVisible` class, and components rendering focus rectangles should conditionalize their visibility based on the `.ms-Fabric.is-focusVisible` parent selector.
 
