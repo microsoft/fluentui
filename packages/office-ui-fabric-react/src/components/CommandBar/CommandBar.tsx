@@ -9,7 +9,7 @@ import {
   getNativeProps
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -53,7 +53,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _commandSurface = createRef<HTMLDivElement>();
   private _commandBarRegion = createRef<HTMLDivElement>();
   private _farCommandSurface = createRef<HTMLDivElement>();
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _overflow = createRef<HTMLDivElement>();
 
   private _id: string;

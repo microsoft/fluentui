@@ -640,10 +640,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             className={ classNames.splitContainerFocus }
             aria-disabled={ this._isItemDisabled(item) }
             aria-haspopup={ true }
-            aria-describedby={ item.ariaDescription + + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
             aria-checked={ item.isChecked || item.checked }
             aria-posinset={ focusableElementIndex + 1 }
             aria-setsize={ totalItemCount }
+            onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
+            onMouseLeave={ this._onMouseItemLeave.bind(this, { ...item, subMenuProps: null, items: null }) }
+            onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
             onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
             onClick={ this._executeItemClick.bind(this, item) }
             tabIndex={ 0 }
@@ -874,6 +877,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // Delay updating expanding/dismissing the submenu
     // and only set focus if we have not already done so
     if (hasSubmenu(item)) {
+      ev.stopPropagation();
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
         const splitButtonContainer = this._splitButtonContainers.get(item.key);

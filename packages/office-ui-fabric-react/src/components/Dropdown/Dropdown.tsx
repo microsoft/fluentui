@@ -7,7 +7,7 @@ import { Label } from '../../Label';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { Icon } from '../../Icon';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import {
@@ -49,9 +49,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private static Option = 'option';
 
   private _host = createRef<HTMLDivElement>();
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _dropDown = createRef<HTMLDivElement>();
-  private _dropdownLabel = createRef<Label>();
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
@@ -155,7 +154,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._dropdownLabel } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } required={ required }>{ label }</Label>
         ) }
         <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
@@ -166,7 +165,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               id={ id }
               tabIndex={ disabled ? -1 : 0 }
               aria-expanded={ isOpen ? 'true' : 'false' }
-              role='combobox'
+              role='listbox'
               aria-autocomplete='none'
               aria-live={ disabled || isOpen ? 'off' : 'assertive' }
               aria-label={ ariaLabel }

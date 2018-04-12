@@ -6,6 +6,7 @@ exports[`Nav renders Nav correctly 1`] = `
   aria-labelledby={undefined}
   className="ms-FocusZone"
   data-focuszone-id="FocusZone0"
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

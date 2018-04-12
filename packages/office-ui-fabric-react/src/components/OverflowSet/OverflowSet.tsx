@@ -12,7 +12,7 @@ import {
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { KeytipManager } from '../../utilities/keytips';
 import { IKeytipProps } from '../../Keytip';
 import * as stylesImport from './OverflowSet.scss';
@@ -21,7 +21,7 @@ const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
   private _divContainer = createRef<HTMLDivElement>();
