@@ -603,6 +603,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
+        className={ classNames.splitContainer }
         onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
         onMouseLeave={ this._onMouseItemLeave.bind(this, { ...item, subMenuProps: null, items: null }) }
         onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
@@ -610,7 +611,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onClick={ this._executeItemClick.bind(this, item) }
         tabIndex={ 0 }
         data-is-focusable={ true }
-        className={ classNames.splitContainer }
       >
         { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
         { this._renderSplitDivider(item) }
