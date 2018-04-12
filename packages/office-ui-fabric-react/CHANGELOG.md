@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Apr 2018 17:37:28 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Apr 2018 10:15:54 GMT and should not be manually modified.
+
+## 5.81.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- Link: fix the style interface
+
+### Patches
+
+- FocusZone: updating to update alignment on click.
+- SplitButton: Allow the primary portion of a splitButton (when it a menu) to collapse a submenu
+- DatePicker: Remove extra asterisks, includes using TextField's label.
+- Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves.
+- SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border.
 
 ## 5.80.0
 Tue, 10 Apr 2018 17:37:28 GMT

@@ -1,6 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 10 Apr 2018 17:37:28 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Apr 2018 10:15:54 GMT and should not be manually modified.
+
+## 5.31.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- Refactoring Shimmer and adding ShimmerTile + Implements Shimmer in TilesList.
+
+### Patches
+
+- Shimmerline import was not correct, fixing import.
+- Shimmer: Application example modified to reflect changes in DetailsList
 
 ## 5.30.0
 Tue, 10 Apr 2018 17:37:28 GMT

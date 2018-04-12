@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.81.0",
+      "tag": "office-ui-fabric-react_v5.81.0",
+      "date": "Thu, 12 Apr 2018 10:15:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "55e850352e9afe69a659db7ddc3d0436ce3891e1",
+            "comment": "FocusZone: updating to update alignment on click."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "561707a6f21419b8810bd555a203f50006a9aad6",
+            "comment": "SplitButton: Allow the primary portion of a splitButton (when it a menu) to collapse a submenu"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "82e1f0f0f9ae9f3975e61c8a99e2051510a0f12c",
+            "comment": "DatePicker: Remove extra asterisks, includes using TextField's label."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a5eea239e21a0d41bf31e850e23d112aaf2890da",
+            "comment": "Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f1dfd3e38c2521f5f75c4f415181dec1348837ec",
+            "comment": "SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Su Su <s@warmsea.net>",
+            "commit": "013860cd7c4e0be4dd261de26a95b5740ec1c6d5",
+            "comment": "Link: fix the style interface"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.8.0 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.80.0",
       "tag": "office-ui-fabric-react_v5.80.0",
       "date": "Tue, 10 Apr 2018 17:37:28 GMT",
