@@ -86,7 +86,7 @@ OverflowSet/  @micahgodbolt
 # Overlay/
 # Panel/
 # Persona/
-Persona/PersonaCoin.tsx @mtennoe @jakob101
+Persona/PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
 # Pivot/
@@ -143,8 +143,6 @@ OverflowSet/docs/  @micahgodbolt
 # Overlay/docs/
 # Panel/docs/
 # Persona/docs/
-Persona/docs/PersonaCoin.tsx @mtennoe @jakob101
-Persona/docs/PersonaConsts.tsx @mtennoe @jakob101
 pickers/docs/  @joschect
 # Pivot/docs/
 # Popup/docs/
