@@ -177,10 +177,7 @@ export const getMenuItemStyles = memoizeFunction((
         justifyContent: 'center',
         alignItems: 'center'
       }],
-    splitButtonSeparator: {},
-    splitButtonFlexContainerFocus: [
-      getFocusStyle(theme)
-    ]
+    splitButtonSeparator: {}
   };
 
   return concatStyleSets(menuItemStyles);
