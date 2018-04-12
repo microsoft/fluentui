@@ -71,9 +71,9 @@ export interface IComponentPageProps {
 }
 
 export enum ComponentPageSection {
-  Dos = 0,
-  BestPractices = 1,
-  Donts = 2,
+  BestPractices = 0,
+  Donts = 1,
+  Dos = 2,
   Overview = 3,
 }
 
