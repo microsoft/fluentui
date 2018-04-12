@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Apr 2018 10:15:54 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Apr 2018 15:59:01 GMT and should not be manually modified.
+
+## 5.81.1
+Thu, 12 Apr 2018 15:59:01 GMT
+
+### Patches
+
+- Coachmark: The pulsing beacon animation moved to the Styling package.
 
 ## 5.81.0
 Thu, 12 Apr 2018 10:15:54 GMT
