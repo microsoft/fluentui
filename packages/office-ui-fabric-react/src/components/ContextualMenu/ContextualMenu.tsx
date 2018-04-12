@@ -597,13 +597,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         }
         role={ 'button' }
         aria-labelledby={ item.ariaLabel }
+        className={ classNames.splitContainer }
         aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
-        className={ classNames.splitContainer }
         onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
         onMouseLeave={ this._onMouseItemLeave.bind(this, { ...item, subMenuProps: null, items: null }) }
         onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
