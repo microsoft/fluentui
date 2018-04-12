@@ -71,10 +71,10 @@ export interface IComponentPageProps {
 }
 
 export enum ComponentPageSection {
-  BestPractices = 0,
-  Donts = 1,
-  Dos = 2,
-  Overview = 3,
+  BestPractices,
+  Donts,
+  Dos,
+  Overview,
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -262,7 +262,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Do</h3>
               { this._editButton(ComponentPageSection.Dos, this.props.editDosUrl) }
             </div>
-            <hr className='ComponentPage-doSectionHr' />
+            <hr className='ComponentPage-doSectionLine' />
             { this.props.dos }
           </div>
           <div className='ComponentPage-doSection ComponentPage-doSection--dont'>
@@ -270,7 +270,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               <h3>Don&rsquo;t</h3>
               { this._editButton(ComponentPageSection.Donts, this.props.editDontsUrl) }
             </div>
-            <hr className='ComponentPage-doSectionHr' />
+            <hr className='ComponentPage-doSectionLine' />
             { this.props.donts }
           </div>
         </div>
