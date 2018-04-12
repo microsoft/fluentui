@@ -30,9 +30,19 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     items: [],
     maxDisplayedItems: 999
   };
+  private _focusZoneRef: FocusZone;
 
   constructor(props: IBreadcrumbProps) {
     super(props);
+  }
+
+  /**
+   * Sets focus to the first breadcrumb link.
+   */
+  public focus(): void {
+    if (this._focusZoneRef) {
+      this._focusZoneRef.focus();
+    }
   }
 
   public render() {
@@ -93,7 +103,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
         role='navigation'
         aria-label={ ariaLabel }
       >
-        <FocusZone direction={ FocusZoneDirection.horizontal } >
+        <FocusZone componentRef={ (ref: FocusZone) => { this._focusZoneRef = ref } } direction={ FocusZoneDirection.horizontal } >
           <ol className={ css('ms-Breadcrumb-list', styles.list) }>
             { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY }>

@@ -6,7 +6,10 @@ import { IIconProps } from '../Icon';
 import { IRenderFunction, IComponentAs } from '../../Utilities';
 
 export interface IBreadcrumb {
-
+  /**
+   * Sets focus to the first breadcrumb link.
+   */
+  focus(): void;
 }
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
