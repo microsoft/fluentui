@@ -18,7 +18,8 @@ import {
   KeyCodes,
   customizable,
   css,
-  createRef
+  createRef,
+  shallowCompare
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -80,9 +81,6 @@ enum HoverStatus {
 interface IComboBoxOptionWrapperProps extends IComboBoxOption {
   // True if the option is currently selected
   isSelected: boolean;
-
-  // Index signature to allow iteration through props with type safety
-  [index: string]: string | boolean | number | Partial<IComboBoxOptionStyles> | JSX.Element | undefined;
 }
 
 // Internal class that is used to wrap all ComboBox options
@@ -94,12 +92,8 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
   }
 
   public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps) {
-    for (const prop of Object.keys(newProps)) {
-      if (prop !== 'children' && this.props[prop] !== newProps[prop]) {
-        return true;
-      }
-    }
-    return false;
+    // The children will always be different, so we ignore that prop
+    return !shallowCompare({ ...this.props, children: undefined }, { ...newProps, children: undefined });
   }
 }
 
