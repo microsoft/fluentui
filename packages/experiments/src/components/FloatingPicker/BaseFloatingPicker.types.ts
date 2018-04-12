@@ -14,8 +14,10 @@ export interface IBaseFloatingPicker {
   /** Hides the picker */
   hidePicker: () => void;
 
-  /** Shows the picker */
-  showPicker: () => void;
+  /** Shows the picker
+   * @param updateValue optional param to indicate whether to update the query string
+   */
+  showPicker: (updateValue?: boolean) => void;
 
   /** Gets the suggestions */
   // tslint:disable-next-line:no-any
@@ -45,7 +47,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * The input element to listen on events
    */
-  inputElement?: HTMLElement | null;
+  inputElement?: HTMLInputElement | null;
 
   /**
    * Function that specifies how an individual suggestion item will appear.
@@ -76,10 +78,6 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    */
   onChange?: (item: T) => void;
 
-  /**
-   * A callback that gets the rest of the results when a user clicks get more results.
-   */
-  onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
    * ClassName for the picker.
    */
@@ -129,6 +127,16 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * Width for the suggestions callout
    */
   calloutWidth?: number;
+
+  /**
+   * The callback that should be called when the suggestions are shown
+   */
+  onSuggestionsShown?: () => void;
+
+  /**
+   * The callback that should be called when the suggestions are hiden
+   */
+  onSuggestionsHidden?: () => void;
 }
 
 export interface IBaseFloatingPickerSuggestionProps {

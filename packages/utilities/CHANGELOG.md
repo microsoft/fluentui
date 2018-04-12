@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 28 Mar 2018 10:16:39 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+
+## 5.23.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Added IComponentAs as a type for 'render as' props in components
+
+## 5.22.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus.
 
 ## 5.22.0
 Wed, 28 Mar 2018 10:16:39 GMT
