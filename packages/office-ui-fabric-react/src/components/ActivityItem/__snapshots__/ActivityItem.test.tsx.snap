@@ -61,7 +61,16 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
           }
     >
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -73,7 +82,15 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         }
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -82,6 +99,19 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                 ms-Persona-initials
                 {
                   background-color: #2D89EF;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 11px;
+                  font-weight: 400;
+                  height: 16px;
+                  line-height: 16px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
                 }
             style={undefined}
           >
@@ -94,7 +124,16 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -114,9 +153,9 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -487,7 +526,16 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           }
     >
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -499,7 +547,15 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -508,6 +564,19 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Persona-initials
                 {
                   background-color: #2D89EF;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 11px;
+                  font-weight: 400;
+                  height: 16px;
+                  line-height: 16px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
                 }
             style={undefined}
           >
@@ -520,7 +589,16 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -540,9 +618,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -556,7 +634,16 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -568,7 +655,15 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -576,7 +671,16 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -596,9 +700,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -612,7 +716,16 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -624,7 +737,15 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -633,6 +754,19 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Persona-initials
                 {
                   background-color: #00ABA9;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 11px;
+                  font-weight: 400;
+                  height: 16px;
+                  line-height: 16px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
                 }
             style={undefined}
           >
@@ -645,7 +779,16 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -665,9 +808,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -752,12 +895,26 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
           }
     >
       <div
-        className="ms-Persona-coin ms-Persona--size32 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size32
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={11}
         style={undefined}
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 32px;
+                position: relative;
+                text-align: center;
+                width: 32px;
+              }
           style={undefined}
         >
           <div
@@ -766,6 +923,19 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                 ms-Persona-initials
                 {
                   background-color: #2D89EF;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  line-height: 32px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
                 }
             style={undefined}
           >
@@ -778,7 +948,16 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 32px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 32px;
                 }
             style={
               Object {
@@ -798,9 +977,9 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -996,12 +1175,26 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           }
     >
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -1010,6 +1203,19 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Persona-initials
                 {
                   background-color: #2D89EF;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 11px;
+                  font-weight: 400;
+                  height: 16px;
+                  line-height: 16px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
                 }
             style={undefined}
           >
@@ -1022,7 +1228,16 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -1042,9 +1257,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -1058,12 +1273,26 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -1071,7 +1300,16 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -1091,9 +1329,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -1107,12 +1345,26 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -1121,6 +1373,19 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Persona-initials
                 {
                   background-color: #00ABA9;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 11px;
+                  font-weight: 400;
+                  height: 16px;
+                  line-height: 16px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
                 }
             style={undefined}
           >
@@ -1133,7 +1398,16 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -1153,9 +1427,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -1169,12 +1443,26 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: block;
+            }
         size={8}
         style={undefined}
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -1182,7 +1470,16 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -1202,9 +1499,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;

@@ -2,6 +2,152 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.81.0",
+      "tag": "office-ui-fabric-react_v5.81.0",
+      "date": "Thu, 12 Apr 2018 10:15:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "55e850352e9afe69a659db7ddc3d0436ce3891e1",
+            "comment": "FocusZone: updating to update alignment on click."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "561707a6f21419b8810bd555a203f50006a9aad6",
+            "comment": "SplitButton: Allow the primary portion of a splitButton (when it a menu) to collapse a submenu"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "82e1f0f0f9ae9f3975e61c8a99e2051510a0f12c",
+            "comment": "DatePicker: Remove extra asterisks, includes using TextField's label."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a5eea239e21a0d41bf31e850e23d112aaf2890da",
+            "comment": "Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f1dfd3e38c2521f5f75c4f415181dec1348837ec",
+            "comment": "SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Su Su <s@warmsea.net>",
+            "commit": "013860cd7c4e0be4dd261de26a95b5740ec1c6d5",
+            "comment": "Link: fix the style interface"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.8.0 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.80.0",
+      "tag": "office-ui-fabric-react_v5.80.0",
+      "date": "Tue, 10 Apr 2018 17:37:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "0f7ba1a0bde5ed78ad1b99ffc8b3c467ee8bcd91",
+            "comment": "Re-focus DatePicker input after calendar is closed"
+          },
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "2a0183327766e9cb7c9d81b652650ab1e56028bf",
+            "comment": "Contexual Menu: Move SplitButtonContainer to be defined in the constructor instead of ComponentDidMount"
+          },
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "a0705bbc2a10706cf67dce94228522872734d4ed",
+            "comment": "Dropdown: color of caretDown changed to highlighttext on focus"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "18ee1a03206da6f3d2240cbe2cb8517c9ef3d4ee",
+            "comment": "Fix IconButton state styles"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "5eeebc1032eb94714488da4a3a2462418cad7ec2",
+            "comment": "ComboBox: Make focus wrap in in the menu (to align with dropdwn and customer feedback)_"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b8cde7cce81b6b25873f860382a99151db85053c",
+            "comment": "Split PersonaCoin and PersonaPresence files for more consistency."
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b8cde7cce81b6b25873f860382a99151db85053c",
+            "comment": "Move sub-components to sub-folders"
+          },
+          {
+            "author": "akashperfect <akashperfect@gmail.com>",
+            "commit": "cd73f328a2df82b8bf77b7da8e9ee17e280f5d14",
+            "comment": "Fix for tooltip host css changes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "d6dadef74f37aefa4fee75c57713f0e489760e48",
+            "comment": "FocusTrapZone: Add KeyDown callback (in line with FocusZone)"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c8f6d26a262720fd22ab494fbe9d2c1fa76c281e",
+            "comment": "OverflowSet: Add Foucs(firstChild) and focusElement() functions"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3e514375dff844cdb8182daf53178d3056411b8c",
+            "comment": "Convert Persona and PersonaCoin and PersonaPresence to  mergeStyles. Create IPersonaSharedProps for props that apply to Persona and PersonaCoin and PersonaPresence. Other refactors."
+          }
+        ],
+        "none": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "c3f5320d92be28d7ca341ddefd2deb451c2de940",
+            "comment": "TooltipPage: Add TooltipHost props to docs page."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.14.1 <6.0.0` to `>=5.15.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.22.0 <6.0.0` to `>=5.23.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.79.1",
+      "tag": "office-ui-fabric-react_v5.79.1",
+      "date": "Fri, 06 Apr 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "deab9d1c296f455479c861665b696e165f867b74",
+            "comment": "Stops event propagation of Esc keypress on DatePicker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.14.0 <6.0.0` to `>=5.14.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.79.0",
       "tag": "office-ui-fabric-react_v5.79.0",
       "date": "Thu, 05 Apr 2018 10:15:39 GMT",

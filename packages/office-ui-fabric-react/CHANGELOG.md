@@ -1,6 +1,48 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Apr 2018 10:15:54 GMT and should not be manually modified.
+
+## 5.81.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- Link: fix the style interface
+
+### Patches
+
+- FocusZone: updating to update alignment on click.
+- SplitButton: Allow the primary portion of a splitButton (when it a menu) to collapse a submenu
+- DatePicker: Remove extra asterisks, includes using TextField's label.
+- Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves.
+- SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border.
+
+## 5.80.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- FocusTrapZone: Add KeyDown callback (in line with FocusZone)
+- OverflowSet: Add Foucs(firstChild) and focusElement() functions
+- Convert Persona and PersonaCoin and PersonaPresence to  mergeStyles. Create IPersonaSharedProps for props that apply to Persona and PersonaCoin and PersonaPresence. Other refactors.
+
+### Patches
+
+- Re-focus DatePicker input after calendar is closed
+- Contexual Menu: Move SplitButtonContainer to be defined in the constructor instead of ComponentDidMount
+- Dropdown: color of caretDown changed to highlighttext on focus
+- Fix IconButton state styles
+- ComboBox: Make focus wrap in in the menu (to align with dropdwn and customer feedback)_
+- Split PersonaCoin and PersonaPresence files for more consistency.
+- Move sub-components to sub-folders
+- Fix for tooltip host css changes
+
+## 5.79.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- Stops event propagation of Esc keypress on DatePicker
 
 ## 5.79.0
 Thu, 05 Apr 2018 10:15:39 GMT
