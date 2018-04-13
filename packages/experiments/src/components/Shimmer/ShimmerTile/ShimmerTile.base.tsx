@@ -59,7 +59,7 @@ const PLACEHOLDER_SIZES: {
 const getClassNames = classNamesFunction<IShimmerTileStyleProps, IShimmerTileStyles>();
 
 export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
-  private _classNames: {[key in keyof IShimmerTileStyles]: string};
+  private _classNames: { [key in keyof IShimmerTileStyles]: string };
 
   constructor(props: IShimmerTileProps) {
     super(props);
@@ -120,23 +120,23 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
             getRenderedElements(
               [
                 {
-                  type: ElemType.GAP,
+                  type: ElemType.gap,
                   widthInPixel: (contentSize.width - squareWidth) / 2,
                   height: squareHeight
                 },
                 itemThumbnail ?
                   {
-                    type: ElemType.LINE,
+                    type: ElemType.line,
                     widthInPixel: squareWidth,
                     height: squareHeight
                   } :
                   {
-                    type: ElemType.GAP,
+                    type: ElemType.gap,
                     widthInPixel: squareWidth,
                     height: squareHeight
                   },
                 {
-                  type: ElemType.GAP,
+                  type: ElemType.gap,
                   widthInPixel: (contentSize.width - squareWidth) / 2,
                   height: squareHeight
                 }
@@ -161,17 +161,17 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                       getRenderedElements(
                         [
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - nameWidth) / 2,
                             height: nameplateNameHeight
                           },
                           {
-                            type: ElemType.LINE,
+                            type: ElemType.line,
                             widthInPixel: nameWidth,
                             height: nameHeight
                           },
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - nameWidth) / 2,
                             height: nameplateNameHeight
                           }
@@ -190,17 +190,17 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                       getRenderedElements(
                         [
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - activityWidth) / 2,
                             height: nameplateActivityHeight
                           },
                           {
-                            type: ElemType.LINE,
+                            type: ElemType.line,
                             widthInPixel: activityWidth,
                             height: activityHeight
                           },
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - activityWidth) / 2,
                             height: nameplateActivityHeight
                           }

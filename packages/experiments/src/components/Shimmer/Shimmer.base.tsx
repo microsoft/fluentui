@@ -66,7 +66,7 @@ export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>
   const renderedElements: React.ReactNode = lineElements ?
     lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
       switch (elem.type) {
-        case ShimmerElementType.CIRCLE:
+        case ShimmerElementType.circle:
           return (
             <ShimmerCircle
               key={ index }
@@ -74,7 +74,7 @@ export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>
               borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
-        case ShimmerElementType.GAP:
+        case ShimmerElementType.gap:
           return (
             <ShimmerGap
               key={ index }
@@ -82,7 +82,7 @@ export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>
               borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
-        case ShimmerElementType.LINE:
+        case ShimmerElementType.line:
           return (
             <ShimmerLine
               key={ index }
@@ -107,17 +107,17 @@ export function getBorderStyles(elem: ICircle | IGap | ILine, rowHeight?: number
 
   let borderStyle: IStyleSet | undefined;
 
-  if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.CENTER) {
+  if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.center) {
     borderStyle = {
       borderBottom: `${dif ? Math.floor(dif / 2) : 0}px solid ${DefaultPalette.white}`,
       borderTop: `${dif ? Math.ceil(dif / 2) : 0}px solid ${DefaultPalette.white}`
     };
-  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.TOP) {
+  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.top) {
     borderStyle = {
       borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
       borderTop: `0px solid ${DefaultPalette.white}`
     };
-  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.BOTTOM) {
+  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.bottom) {
     borderStyle = {
       borderBottom: `0px solid ${DefaultPalette.white}`,
       borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
@@ -130,15 +130,15 @@ export function getBorderStyles(elem: ICircle | IGap | ILine, rowHeight?: number
 export function findMaxElementHeight(elements: Array<ICircle | IGap | ILine>): number {
   const itemsDefaulted: Array<ICircle | IGap | ILine> = elements.map((elem: ICircle | IGap | ILine): ICircle | IGap | ILine => {
     switch (elem.type) {
-      case ShimmerElementType.CIRCLE:
+      case ShimmerElementType.circle:
         if (!elem.height) {
           elem.height = CIRCLE_DEFAULT_HEIGHT;
         }
-      case ShimmerElementType.LINE:
+      case ShimmerElementType.line:
         if (!elem.height) {
           elem.height = LINE_DEFAULT_HEIGHT;
         }
-      case ShimmerElementType.GAP:
+      case ShimmerElementType.gap:
         if (!elem.height) {
           elem.height = GAP_DEFAULT_HEIGHT;
         }
