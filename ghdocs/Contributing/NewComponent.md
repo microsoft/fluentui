@@ -60,7 +60,7 @@ Fundamental components are the official React representation of our [Adobe XD To
 
 #### Creating a component via the command line
 1. This is the recommended way of creating a new component.
-2. Open a command prompt in the root directory of your project directory.
+2. Open a command prompt in the root directory of your project.
 3. Run `npm run create-component -- --name ExcitingNewComponent`.
 
 #### Creating a component manually
