@@ -8,7 +8,7 @@ import {
 
 import { PositioningContainerBasicExample } from './examples/PositioningContainer.Basic.Example';
 const CoachmarkBasicExampleCode = require
-  ('!raw-loader!@uifabric/experiments/src/components/PositioningContainer/examples/PositioningContainer.Basic.Example.tsx') as string;
+  ('!raw-loader!experiments/src/components/PositioningContainer/examples/PositioningContainer.Basic.Example.tsx') as string;
 
 export class PositioningContainerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,7 +26,7 @@ export class PositioningContainerPage extends React.Component<IComponentDemoPage
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!@uifabric/experiments/src/components/PositioningContainer/PositioningContainer.types.ts')
+              require<string>('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')
             ] }
           />
         }
