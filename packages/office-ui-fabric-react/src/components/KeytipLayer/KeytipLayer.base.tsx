@@ -12,13 +12,15 @@ import {
   ktpLayerId,
   ktpAriaSeparator,
   ktpAriaSeparatorId,
-  classNamesFunction
+  classNamesFunction,
+  convertSequencesToKeytipID
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
   keytips: IKeytipProps[];
+  visibleKeytips: IKeytipProps[];
 }
 
 const defaultStartSequence: IKeytipTransitionKey = {
@@ -50,16 +52,18 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   };
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
-  private _classNames: {[key in keyof IKeytipLayerStyles]: string };
+  private _classNames: { [key in keyof IKeytipLayerStyles]: string };
 
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
 
+    const managerKeytips = [...this._keytipManager.getKeytips()];
     this.state = {
       inKeytipMode: false,
       // Get the initial set of keytips
-      keytips: [...this._keytipManager.getKeytips()],
+      keytips: managerKeytips,
+      visibleKeytips: this._getVisibleKeytips(managerKeytips)
     };
 
     this._keytipManager.init(this);
@@ -71,7 +75,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * @param keytipProps - Keytips to set in this layer
    */
   public setKeytips(keytipProps: IKeytipProps[]) {
-    this.setState({ keytips: keytipProps });
+    this.setState({ keytips: keytipProps, visibleKeytips: this._getVisibleKeytips(keytipProps) });
   }
 
   public render(): JSX.Element {
@@ -81,7 +85,8 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     } = this.props;
 
     const {
-      keytips
+      keytips,
+      visibleKeytips
     } = this.state;
 
     this._classNames = getClassNames(
@@ -93,7 +98,18 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         <span id={ ktpLayerId } className={ this._classNames.innerContent }>{ content }</span>
         <span id={ ktpAriaSeparatorId } className={ this._classNames.innerContent }>{ ktpAriaSeparator }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
-          return <Keytip key={ index } { ...keytipProps } />;
+          return (
+            <span
+              key={ index }
+              id={ convertSequencesToKeytipID(keytipProps.keySequences) }
+              className={ this._classNames.innerContent }
+            >
+              { keytipProps.keySequences.join(', ') }
+            </span>
+          );
+        }) }
+        { visibleKeytips && visibleKeytips.map((visibleKeytipProps: IKeytipProps) => {
+          return <Keytip key={ convertSequencesToKeytipID(visibleKeytipProps.keySequences) } { ...visibleKeytipProps } />;
         }) }
       </Layer>
     );
@@ -101,7 +117,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   public componentDidMount(): void {
     // Add window listeners
-    this._events.on(window, 'mousedown', this._onDismiss);
+    this._events.on(window, 'mousedown', this._onDismiss, true /* useCapture */);
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -110,7 +126,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   public componentWillUnmount(): void {
     // Remove window listeners
-    this._events.off(window, 'mousedown', this._onDismiss);
+    this._events.off(window, 'mousedown', this._onDismiss, true /* useCapture */);
     this._events.off(window, 'resize', this._onDismiss);
     this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -137,6 +153,12 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this.setState({ inKeytipMode: true });
   }
 
+  private _getVisibleKeytips(keytips: IKeytipProps[]): IKeytipProps[] {
+    return keytips.filter((keytip: IKeytipProps) => {
+      return keytip.visible;
+    });
+  }
+
   @autobind
   private _onDismiss(ev?: React.MouseEvent<HTMLElement>): void {
     // if we are in keytip mode, then exit keytip mode
@@ -155,12 +177,20 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       case KeyCodes.tab:
       case KeyCodes.enter:
       case KeyCodes.space:
-        this._keytipManager.exitKeytipMode();
+        if (this.state.inKeytipMode) {
+          this._keytipManager.exitKeytipMode();
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
         break;
       default:
         let key = ev.key;
-        if (key === 'OS' || key === 'Win') {
-          // Special cases for browser-specific keys that are not at standard
+        // Special cases for browser-specific keys that are not at standard
+        // (according to http://www.w3.org/TR/uievents-key/#keys-navigation)
+        if (key === 'Esc') {
+          // Edge: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/5290772/
+          key = 'Escape';
+        } else if (key === 'OS' || key === 'Win') {
           // Firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=1232918
           // Edge: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8860571/
           // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/16424492/
@@ -184,7 +214,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     if (ev.altKey && key !== 'Alt') {
       modifierKeys.push(KeytipTransitionModifier.alt);
     }
-    if (ev.ctrlKey && key !== 'Ctrl') {
+    if (ev.ctrlKey && key !== 'Control') {
       modifierKeys.push(KeytipTransitionModifier.ctrl);
     }
     if (ev.shiftKey && key !== 'Shift') {
@@ -198,8 +228,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   @autobind
   private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
-    // Call processInput
-    ev.preventDefault();
-    this._keytipManager.processInput(ev.key);
+    if (this.state.inKeytipMode) {
+      // Call processInput
+      this._keytipManager.processInput(ev.key.toLocaleLowerCase());
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   }
 }

@@ -80,26 +80,24 @@ export function constructKeytipExecuteTargetFromId(keytipId: string): string {
  * @returns {string} The aria-describedby value to set on the component with this keytip
  */
 export function getAriaDescribedBy(keySequences: IKeySequence[]): string {
-  const describedby = ktpLayerId;
+  const describedby = ' ' + ktpLayerId;
   if (!keySequences.length) {
     // Return just the layer ID
-    return ' ' + describedby;
+    return describedby;
   }
 
-  // Add beginning space so it can be easily appended
-  return ' ' + keySequences.reduce((prevValue: string, sequence: IKeySequence, currentIndex: number): string => {
-    return prevValue + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences.slice(0, currentIndex + 1));
-  }, describedby);
+  return describedby + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences);
 }
 
 /**
  * Gets the native properties to add to the component with this keytip
  *
  * @param keytipProps - If defined, the keytip props for the component
+ * @param describedByPrepend - If defined, string to prepend to our generated aria-describedby
  * @returns {any} Object containing the aria-describedby, data-ktp-target, and data-ktp-execute-target properties
  */
 // tslint:disable-next-line:no-any
-export function getNativeKeytipProps(keytipProps?: IKeytipProps): any {
+export function getNativeKeytipProps(keytipProps?: IKeytipProps, describedByPrepend?: string): any {
   if (keytipProps) {
     // Construct aria-describedby and data-ktp-id attributes and return
     const ariaDescribedBy = getAriaDescribedBy(keytipProps.keySequences);
@@ -110,7 +108,7 @@ export function getNativeKeytipProps(keytipProps?: IKeytipProps): any {
     const ktpId = convertSequencesToKeytipID(keySequences);
 
     return {
-      'aria-describedby': ariaDescribedBy,
+      'aria-describedby': (describedByPrepend || '') + ariaDescribedBy,
       'data-ktp-target': ktpId,
       'data-ktp-execute-target': ktpId
     };

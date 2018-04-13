@@ -213,9 +213,13 @@ export class KeytipManager {
    */
   public exitKeytipMode(): void {
     this.keytipTree.currentKeytip = undefined;
+    this.currentSequence = '';
     // Hide all keytips
     this.showKeytips([]);
     this._layer && this._layer.exitKeytipMode();
+    // Reset the delayed keytips if any
+    this._delayedQueueTimeout && this._async.clearTimeout(this._delayedQueueTimeout);
+    this._delayedKeytipQueue = [];
   }
 
   /**
@@ -306,9 +310,8 @@ export class KeytipManager {
           currKtp = this.keytipTree.currentKeytip;
         }
 
-        // To exit keytipMode after executing keytip we should check if currentKeytip has no children and
-        // if the node doesn't have children nodes
-        if (currKtpChildren.length === 0 && !currKtp.hasChildrenNodes) {
+        // To exit keytipMode after executing the keytip it must not have a menu or have dynamic children
+        if (currKtpChildren.length === 0 && !(currKtp.hasDynamicChildren || currKtp.hasMenu)) {
           this.exitKeytipMode();
         } else {
           // Show all children keytips
@@ -356,15 +359,23 @@ export class KeytipManager {
         this.showKeytips(this._delayedKeytipQueue);
         this._delayedKeytipQueue = [];
       }
-    }, 500);
+    }, 300);
   }
 
   private _removeKeytipFromQueue(keytipID: string) {
     const index = this._delayedKeytipQueue.indexOf(keytipID);
     if (index >= 0) {
+      // Remove keytip
       this._delayedKeytipQueue.splice(index, 1);
       // Clear timeout
       this._delayedQueueTimeout && this._async.clearTimeout(this._delayedQueueTimeout);
+      // Reset timeout
+      this._delayedQueueTimeout = this._async.setTimeout(() => {
+        if (this._delayedKeytipQueue.length) {
+          this.showKeytips(this._delayedKeytipQueue);
+          this._delayedKeytipQueue = [];
+        }
+      }, 300);
     }
   }
 

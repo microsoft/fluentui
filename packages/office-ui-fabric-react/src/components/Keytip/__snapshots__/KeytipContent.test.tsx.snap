@@ -24,7 +24,6 @@ exports[`Keytip renders invisible Keytip correctly 1`] = `
           padding-right: 3px;
           text-align: center;
         }
-    id="ktp-a"
   >
     A
   </span>
@@ -53,7 +52,6 @@ exports[`Keytip renders visible Keytip correctly 1`] = `
           padding-right: 3px;
           text-align: center;
         }
-    id="ktp-a"
   >
     A
   </span>
@@ -83,7 +81,6 @@ exports[`Keytip renders visible disabled Keytip correctly 1`] = `
           padding-right: 3px;
           text-align: center;
         }
-    id="ktp-a"
   >
     A
   </span>

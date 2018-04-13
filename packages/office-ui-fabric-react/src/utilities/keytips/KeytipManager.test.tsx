@@ -152,7 +152,7 @@ describe('KeytipManager', () => {
         });
       });
 
-      it('registerKeytip should correctly take into account the uniqueID', () => {
+      it('should correctly take into account the uniqueID', () => {
         // Register duplicate keytips, but should both be in the keytips array
         // because they will have unique IDs
         const uniqueID1 = ktpMgr.registerKeytip(keytipBProps);
@@ -359,22 +359,20 @@ describe('KeytipManager', () => {
         for (const childrenKeytip of childrenKeytips) {
           expect(childrenKeytip.visible).toEqual(true);
         }
-        // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
-        expect(ktpTree.currentKeytip).toBeDefined();
+        // We haven't exited keytip mode (current keytip is set to the matched keytip)
         expect(ktpTree.currentKeytip.id).toEqual(keytipIdE1);
       });
 
       it('Processing a node which is not leaf but its children are not in the DOM', () => {
         const onExecuteQ: jest.Mock = jest.fn();
-        ktpMgr.updateKeytip({ ...keytipPropsQ, onExecute: onExecuteQ, hasChildrenNodes: true }, uniqueIDQ);
+        ktpMgr.updateKeytip({ ...keytipPropsQ, onExecute: onExecuteQ, hasDynamicChildren: true }, uniqueIDQ);
         ktpTree.currentKeytip = ktpTree.root;
         ktpMgr.processInput('q');
         // Node Q's onExecute should be called
         expect(onExecuteQ).toBeCalled();
         // There is no more buffer in the sequence
         expect(ktpMgr.currentSequence.length).toEqual(0);
-        // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
-        expect(ktpTree.currentKeytip).toBeDefined();
+        // We haven't exited keytip mode (current keytip is set to the matched keytip)
         expect(ktpTree.currentKeytip.id).toEqual(keytipIdQ);
       });
 
