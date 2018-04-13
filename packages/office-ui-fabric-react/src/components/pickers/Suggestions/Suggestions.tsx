@@ -107,7 +107,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
-      isResultsFooterVisible,
+      isResultsFooterVisible = true,
       suggestionsAvailableAlertText,
       suggestionsHeaderText,
     } = this.props;
