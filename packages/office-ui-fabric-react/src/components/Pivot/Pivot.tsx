@@ -3,7 +3,8 @@ import {
   BaseComponent,
   KeyCodes,
   css,
-  getId
+  getId,
+  createRef
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps } from './Pivot.types';
@@ -42,7 +43,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
-  private _focusZoneRef: FocusZone;
+
+  protected focusZone = createRef<FocusZone>();
 
   constructor(props: IPivotProps) {
     super(props);
@@ -94,8 +96,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
    * Sets focus to the first pivot tab.
    */
   public focus(): void {
-    if (this._focusZoneRef) {
-      this._focusZoneRef.focus();
+    if (this.focusZone.value) {
+      this.focusZone.value.focus();
     }
   }
 
@@ -113,7 +115,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
    */
   private _renderPivotLinks() {
     return (
-      <FocusZone componentRef={ (ref: FocusZone) => { this._focusZoneRef = ref } } direction={ FocusZoneDirection.horizontal }>
+      <FocusZone componentRef={ this.focusZone } direction={ FocusZoneDirection.horizontal }>
         <ul
           className={ css('ms-Pivot', styles.root,
             { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
