@@ -84,15 +84,15 @@ describe('Pickers', () => {
           onRenderFloatingPicker={ basicRenderFloatingPicker }
         />
       );
-      let tree = component.toJSON();
+      const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('force resolves to the first suggestion', () => {
-      let root = document.createElement('div');
+      const root = document.createElement('div');
       document.body.appendChild(root);
 
-      let picker: TypedBaseExtendedPicker = ReactDOM.render(
+      const picker: TypedBaseExtendedPicker = ReactDOM.render(
         <BaseExtendedPickerWithType
           floatingPickerProps={ floatingPickerProps }
           selectedItemsListProps={ selectedItemsListProps }
@@ -118,10 +118,10 @@ describe('Pickers', () => {
     });
 
     it('Can hide and show picker', () => {
-      let root = document.createElement('div');
+      const root = document.createElement('div');
       document.body.appendChild(root);
 
-      let picker: TypedBaseExtendedPicker = ReactDOM.render(
+      const picker: TypedBaseExtendedPicker = ReactDOM.render(
         <BaseExtendedPickerWithType
           floatingPickerProps={ floatingPickerProps }
           selectedItemsListProps={ selectedItemsListProps }
@@ -145,10 +145,10 @@ describe('Pickers', () => {
     });
 
     it('Completes the suggestion', () => {
-      let root = document.createElement('div');
+      const root = document.createElement('div');
       document.body.appendChild(root);
 
-      let picker: TypedBaseExtendedPicker = ReactDOM.render(
+      const picker: TypedBaseExtendedPicker = ReactDOM.render(
         <BaseExtendedPickerWithType
           floatingPickerProps={ floatingPickerProps }
           selectedItemsListProps={ selectedItemsListProps }

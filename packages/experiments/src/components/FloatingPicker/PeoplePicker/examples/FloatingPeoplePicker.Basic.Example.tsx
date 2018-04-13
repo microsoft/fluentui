@@ -28,9 +28,9 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   constructor(props: {}) {
     super(props);
-    let peopleList: IPersonaWithMenu[] = [];
+    const peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
-      let target: IPersonaWithMenu = {};
+      const target: IPersonaWithMenu = {};
 
       assign(target, persona);
       peopleList.push(target);
@@ -73,7 +73,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _renderFloatingPicker(): JSX.Element {
-    let suggestionProps: IBaseFloatingPickerSuggestionProps = {
+    const suggestionProps: IBaseFloatingPickerSuggestionProps = {
       footerItemsProps: [{
         renderItem: () => { return (<div>Showing { this._picker.suggestions.length } results</div>); },
         shouldShow: () => {
@@ -116,17 +116,18 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onRemoveSuggestion = (item: IPersonaProps): void => {
-    let { peopleList, mostRecentlyUsed: mruState } = this.state;
-    let indexPeopleList: number = peopleList.indexOf(item);
-    let indexMostRecentlyUsed: number = mruState.indexOf(item);
+    const { peopleList, mostRecentlyUsed: mruState } = this.state;
+    const indexPeopleList: number = peopleList.indexOf(item);
+    const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
     if (indexMostRecentlyUsed >= 0) {
-      let newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
+      const newSuggestedPeople: IPersonaProps[]
+        = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }
