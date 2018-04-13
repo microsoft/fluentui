@@ -27,7 +27,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         Custom Shimmer with elements provided.
         <Shimmer
           lineElements={ [
-            { type: ElemType.CIRCLE },
+            { type: ElemType.circle },
             { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.line },
           ] }
@@ -35,7 +35,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         Notice how the same elements change relative to the shimmer width provided.
         <Shimmer
           lineElements={ [
-            { type: ElemType.CIRCLE, height: 24 },
+            { type: ElemType.circle, height: 24 },
             { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.line, height: 16, widthInPercentage: 20 },
             { type: ElemType.GAP, widthInPercentage: 5 },
@@ -49,7 +49,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <Shimmer
           width={ 70 }
           lineElements={ [
-            { type: ElemType.CIRCLE, height: 24 },
+            { type: ElemType.circle, height: 24 },
             { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.line, height: 16, widthInPercentage: 20 },
             { type: ElemType.GAP, widthInPercentage: 5 },
@@ -63,9 +63,9 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         Variations of vertical alignment for Circles and Lines.
         <Shimmer
           lineElements={ [
-            { type: ElemType.CIRCLE },
+            { type: ElemType.circle },
             { type: ElemType.GAP, widthInPercentage: 2 },
-            { type: ElemType.CIRCLE, height: 15, verticalAlign: ElemVerticalAlign.TOP },
+            { type: ElemType.circle, height: 15, verticalAlign: ElemVerticalAlign.TOP },
             { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.line, verticalAlign: ElemVerticalAlign.BOTTOM, widthInPercentage: 20 },
             { type: ElemType.GAP, widthInPercentage: 2 },

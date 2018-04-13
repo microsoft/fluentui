@@ -66,7 +66,7 @@ export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>
   const renderedElements: React.ReactNode = lineElements ?
     lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
       switch (elem.type) {
-        case ShimmerElementType.CIRCLE:
+        case ShimmerElementType.circle:
           return (
             <ShimmerCircle
               key={ index }
@@ -130,7 +130,7 @@ export function getBorderStyles(elem: ICircle | IGap | ILine, rowHeight?: number
 export function findMaxElementHeight(elements: Array<ICircle | IGap | ILine>): number {
   const itemsDefaulted: Array<ICircle | IGap | ILine> = elements.map((elem: ICircle | IGap | ILine): ICircle | IGap | ILine => {
     switch (elem.type) {
-      case ShimmerElementType.CIRCLE:
+      case ShimmerElementType.circle:
         if (!elem.height) {
           elem.height = CIRCLE_DEFAULT_HEIGHT;
         }
