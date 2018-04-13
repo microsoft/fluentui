@@ -100,7 +100,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
   /**
    * Indicates if the text in resultsFooter or resultsFooterFull should be shown at the end of the suggestion list.
-   * It defaults to true.
+   * @default true.
    */
   isResultsFooterVisible?: boolean;
   /**

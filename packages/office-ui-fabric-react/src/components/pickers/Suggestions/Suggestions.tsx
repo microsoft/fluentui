@@ -126,7 +126,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       headerText = mostRecentlyUsedHeaderText;
     }
     let footerTitle: ((props: ISuggestionsProps<T>) => JSX.Element) | undefined = undefined;
-    if (isResultsFooterVisible !== false) {
+    if (isResultsFooterVisible) {
       footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
     }
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
