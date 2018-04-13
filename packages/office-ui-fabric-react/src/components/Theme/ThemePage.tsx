@@ -100,10 +100,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
                 <div
                   className={ classNames.colorSwatch }
                   data-is-focusable='true'
-                  // onClick={ () => {
                   onClick={ this._onSwatchClicked.bind(this, item, index, list) }
-                //   this.setState({ activeList: list });
-                // } }
                 >
                   <span
                     className={ classNames.swatch }
