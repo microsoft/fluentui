@@ -46,7 +46,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
-    let items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
+    const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
 
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
     this.selection.setItems(items);
@@ -86,8 +86,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public render(): JSX.Element {
-    let { suggestedDisplayValue } = this.state;
-    let {
+    const { suggestedDisplayValue } = this.state;
+    const {
       className,
       inputProps,
       disabled
@@ -148,7 +148,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected renderSuggestions(): JSX.Element {
-    let onRenderFloatingPicker = this.props.onRenderFloatingPicker;
+    const onRenderFloatingPicker = this.props.onRenderFloatingPicker;
     return (onRenderFloatingPicker({
       componentRef: this.floatingPicker,
       onChange: this._onSuggestionSelected,
@@ -159,7 +159,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected renderSelectedItemsList(): JSX.Element {
-    let onRenderSelectedItems = this.props.onRenderSelectedItems;
+    const onRenderSelectedItems = this.props.onRenderSelectedItems;
     return (onRenderSelectedItems({
       componentRef: this.selectedItemsList,
       ...this.selectedItemsListProps
@@ -167,10 +167,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected resetFocus(index?: number): void {
-    let { items } = this.state;
+    const { items } = this.state;
 
     if (items.length && index! >= 0 && this.root.value) {
-      let newEl: HTMLElement = this.root.value
+      const newEl: HTMLElement = this.root.value
         .querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
       if (newEl && this.focusZone.value) {
         this.focusZone.value.focusElement(newEl);
@@ -228,7 +228,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void => {
     if (this.props.onPaste) {
-      let inputText = ev.clipboardData.getData('Text');
+      const inputText = ev.clipboardData.getData('Text');
       ev.preventDefault();
       this.props.onPaste(inputText);
     }

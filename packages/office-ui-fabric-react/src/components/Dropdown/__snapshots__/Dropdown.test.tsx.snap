@@ -20,7 +20,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="combobox"
+    role="listbox"
     tabIndex={0}
   >
     <span
@@ -68,7 +68,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="combobox"
+    role="listbox"
     tabIndex={0}
   >
     <span

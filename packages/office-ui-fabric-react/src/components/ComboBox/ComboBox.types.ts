@@ -26,6 +26,13 @@ export interface IComboBoxOption extends ISelectableOption {
    * the prop comboBoxOptionStyles
    */
   styles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * In scenarios where embedded data is used at the text prop, we will use the ariaLabel prop
+   * to set the aria-label and preview text. Default to false
+   * @default false;
+   */
+  useAriaLabelAsText?: boolean;
 }
 
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
