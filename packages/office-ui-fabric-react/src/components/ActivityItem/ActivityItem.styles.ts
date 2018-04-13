@@ -4,7 +4,6 @@ import {
   getTheme,
   HighContrastSelector,
   keyframes,
-  IRawStyle,
   PulsingBeaconAnimationStyles
 } from '../../Styling';
 import {
@@ -26,7 +25,7 @@ export const getStyles = memoizeFunction((
   customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
 
-  const ContinuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
+  const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
     props.beaconColorOne!,
     props.beaconColorTwo!,
     ANIMATION_INNER_DIMENSION,
@@ -45,7 +44,7 @@ export const getStyles = memoizeFunction((
   });
 
   const continuousPulseAnimation = {
-    animationName: ContinuousPulse,
+    animationName: continuousPulse,
     animationIterationCount: '1',
     animationDuration: '.8s',
     zIndex: 1000

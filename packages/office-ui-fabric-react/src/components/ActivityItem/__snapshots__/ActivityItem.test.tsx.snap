@@ -294,6 +294,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         align-items: center;
+        animation-duration: .5s;
+        animation-iteration-count: 1;
+        animation-name: css-92;
         box-sizing: border-box;
         color: #666666;
         display: flex;
@@ -337,10 +340,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
       className=
           ms-ActivityItem-pulsingBeacon
           {
-            animation-delay: 2s;
-            animation-duration: 14s;
+            animation-duration: .8s;
             animation-iteration-count: 1;
-            animation-name: css-64;
+            animation-name: css-91;
             border-radius: 225px;
             border-style: solid;
             height: 0px;
@@ -350,6 +352,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
             top: 50%;
             transform: translate(-50%, -50%);
             width: 0px;
+            z-index: 1000;
           }
     />
     <div
@@ -366,7 +369,16 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           }
     >
       <div
-        className="ms-Persona-coin ms-Persona--size16 undefined"
+        className=
+            ms-Persona-coin
+            ms-Persona--size16
+            ms-ActivityItem-activityPersona
+            {
+              display: inline-block;
+              min-width: 8px;
+              overflow: visible;
+              width: 8px;
+            }
         size={8}
         style={
           Object {
@@ -378,7 +390,15 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         }
       >
         <div
-          className="ms-Persona-imageArea"
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 16px;
+                position: relative;
+                text-align: center;
+                width: 16px;
+              }
           style={undefined}
         >
           <div
@@ -387,6 +407,19 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                 ms-Persona-initials
                 {
                   background-color: #2D89EF;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 11px;
+                  font-weight: 400;
+                  height: 16px;
+                  line-height: 16px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
                 }
             style={undefined}
           >
@@ -399,7 +432,16 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  border-radius: 50%;
+                  border: 0px;
+                  height: 16px;
+                  left: 0px;
+                  margin-right: 10px;
                   overflow: hidden;
+                  perspective: 1px;
+                  position: absolute;
+                  top: 0px;
+                  width: 16px;
                 }
             style={
               Object {
@@ -419,9 +461,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   {
                     display: block;
                     height: auto;
-                    left: 50%;
+                    left: 50% /* @noflip */;
                     opacity: 0;
-                    position: relative;
+                    position: absolute;
                     top: 50%;
                     transform: translate(-50%,-50%);
                     width: 100%;
@@ -440,6 +482,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
     className=
         ms-ActivityItem-activityContent
         {
+          animation-duration: .5s;
+          animation-iteration-count: 1;
+          animation-name: css-93;
           flex: 1;
           overflow-x: hidden;
           padding-bottom: 0;
