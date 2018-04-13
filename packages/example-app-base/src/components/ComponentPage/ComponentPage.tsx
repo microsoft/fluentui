@@ -6,9 +6,11 @@ import {
 import {
   Link
 } from 'office-ui-fabric-react/lib/Link';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import {
+  EditSection,
+  ComponentPageSection,
+} from '../EditSection';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -70,13 +72,6 @@ export interface IComponentPageProps {
   editOverviewUrl?: string;
 }
 
-export enum ComponentPageSection {
-  BestPractices,
-  Donts,
-  Dos,
-  Overview,
-}
-
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   public static defaultProps: Partial<IComponentPageProps> = {
     isHeaderVisible: true,
@@ -108,7 +103,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             <div className='ComponentPage-overviewSection'>
               <div className='ComponentPage-overviewSectionHeader'>
                 <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
-                { this._editButton(ComponentPageSection.Overview, this.props.editOverviewUrl) }
+                <EditSection
+                  title={ this.props.title }
+                  section={ ComponentPageSection.Overview }
+                  sectionContent={ this.props.overview }
+                  url={ this._getURL('Overview', this.props.editOverviewUrl) }
+                />
               </div>
               <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
@@ -247,7 +247,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         <div className='ComponentPage-usage' id='BestPractices' key='best-practices'>
           <div className='ComponentPage-usageHeader'>
             <h2 className='ComponentPage-subHeading'>Best Practices</h2>
-            { this._editButton(ComponentPageSection.BestPractices, this.props.editBestPracticesUrl) }
+            <EditSection
+              title={ this.props.title }
+              section={ ComponentPageSection.BestPractices }
+              sectionContent={ this.props.bestPractices }
+              url={ this._getURL('BestPractices', this.props.editBestPracticesUrl) }
+            />
           </div>
           { this.props.bestPractices }
         </div>
@@ -260,7 +265,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <div className='ComponentPage-doSection'>
             <div className='ComponentPage-doSectionHeader'>
               <h3>Do</h3>
-              { this._editButton(ComponentPageSection.Dos, this.props.editDosUrl) }
+              <EditSection
+                title={ this.props.title }
+                section={ ComponentPageSection.Dos }
+                sectionContent={ this.props.dos }
+                url={ this._getURL('Dos', this.props.editDosUrl) }
+              />
             </div>
             <hr className='ComponentPage-doSectionLine' />
             { this.props.dos }
@@ -268,7 +278,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <div className='ComponentPage-doSection ComponentPage-doSection--dont'>
             <div className='ComponentPage-doSectionHeader'>
               <h3>Don&rsquo;t</h3>
-              { this._editButton(ComponentPageSection.Donts, this.props.editDontsUrl) }
+              <EditSection
+                title={ this.props.title }
+                section={ ComponentPageSection.Donts }
+                sectionContent={ this.props.donts }
+                url={ this._getURL('Donts', this.props.editDontsUrl) }
+              />
             </div>
             <hr className='ComponentPage-doSectionLine' />
             { this.props.donts }
@@ -344,55 +359,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return undefined;
   }
 
-  private _editButton(sectionIndex: ComponentPageSection, url?: string): JSX.Element | undefined {
-    if (!url && !this.props.componentUrl) {
-      return undefined;
+  private _getURL(section: string, url?: string): string {
+    if (url) {
+      return url;
     }
-
-    // Get section string for URLs and IDs.
-    const section = ComponentPageSection[sectionIndex];
-    let readableSection = section;
     const componentName = (this.props.title || this.props.componentName).replace(/\s/g, '');
-
-    // Check if the section contains a function (using PageMarkdown)
-    const {
-      bestPractices,
-      dos,
-      donts,
-      overview,
-    } = this.props;
-    const isMarkdown = {
-      BestPractices: bestPractices ? typeof bestPractices.type === 'function' : false,
-      Dos: dos ? typeof dos.type === 'function' : false,
-      Donts: donts ? typeof donts.type === 'function' : false,
-      Overview: overview ? typeof overview.type === 'function' : false,
-    };
-    let sectionIsMarkdown = false;
-    switch (sectionIndex) {
-      case ComponentPageSection.BestPractices:
-        sectionIsMarkdown = isMarkdown.BestPractices;
-        readableSection = 'Best Practices';
-        break;
-      case ComponentPageSection.Dos:
-        sectionIsMarkdown = isMarkdown.Dos;
-        break;
-      case ComponentPageSection.Donts:
-        sectionIsMarkdown = isMarkdown.Donts;
-        readableSection = 'Don\'ts';
-        break;
-      case ComponentPageSection.Overview:
-        sectionIsMarkdown = isMarkdown.Overview;
-        break;
-      default:
-        sectionIsMarkdown = false;
-        readableSection = section;
-    }
-    if (sectionIsMarkdown === false) {
-      return undefined;
-    }
-
     // Generate edit URL from componentURL
-    let mdUrl: string | undefined = undefined;
+    let mdUrl;
     if (this.props.componentUrl) {
       mdUrl = `${this.props.componentUrl}/docs/${componentName}${section}.md`;
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
@@ -402,27 +375,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         mdUrl = mdUrl!.replace('/blob/', '/edit/');
       }
     }
-
-    // Allow generated URL fallback.
-    const editUrl = url || mdUrl;
-    if (!editUrl) {
-      return undefined;
-    }
-
-    return (
-      <TooltipHost
-        key={ `${componentName}-${section}-editButton` }
-        content={ `Edit ${componentName} ${readableSection} on GitHub` }
-        id={ `${componentName}-${section}-editButtonHost` }
-      >
-        <IconButton
-          aria-labelledby={ `${componentName}-${section}-editButtonHost` }
-          iconProps={ { iconName: 'Edit' } }
-          href={ editUrl }
-          target='_blank'
-          rel='noopener noreferrer'
-        />
-      </TooltipHost>
-    );
+    return mdUrl;
   }
 }
