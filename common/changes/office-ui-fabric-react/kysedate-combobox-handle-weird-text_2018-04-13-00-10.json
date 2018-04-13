@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding the ability to display the ariaLabel instead of the option text. This is necessary for cases where embedded text is used as the option text",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kysedate@microsoft.com"
+}
