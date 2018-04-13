@@ -253,6 +253,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
           isResultsFooterVisible={ this.state.isResultsFooterVisible }
           refocusSuggestions={ this.refocusSuggestions }
+          removeSuggestionAriaLabel={ this.props.removeButtonAriaLabel }
           { ...this.props.pickerSuggestionsProps as any }
         />
       </Callout>
