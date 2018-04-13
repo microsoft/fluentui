@@ -1,5 +1,5 @@
 
-@import '~office-ui-fabric-react/src/common/common';
+@import '../../../common/common';
 
 .resultContent {
   display: table-row;
@@ -27,5 +27,4 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 7px 12px;
 }
