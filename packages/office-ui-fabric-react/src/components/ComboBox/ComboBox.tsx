@@ -583,10 +583,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.autoComplete === 'on') {
 
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => this._getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0);
       if (items.length > 0) {
+        // use ariaLabel as the value when the option is set
+        const text: string = this._getPreviewText(items[0]);
+
         // If the user typed out the complete option text, we don't need any suggested display text anymore
-        newSuggestedDisplayValue = items[0].text.toLocaleLowerCase() !== updatedValue ? items[0].text : '';
+        newSuggestedDisplayValue = text.toLocaleLowerCase() !== updatedValue ? text : '';
 
         // remember the index of the match we found
         newCurrentPendingValueValidIndex = items[0].index;
@@ -594,7 +597,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else {
 
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
-      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase() === updatedValue);
+      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
       // if we fould a match remember the index
       if (items.length === 1) {
@@ -646,7 +649,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
         // If we found a match, udpdate the state
         if (items.length > 0) {
-          this._setPendingInfo(originalUpdatedValue, items[0].index, items[0].text);
+          this._setPendingInfo(originalUpdatedValue, items[0].index, this._getPreviewText(items[0]));
         }
 
         // Schedule a timeout to clear the pending value after the timeout span
@@ -1040,7 +1043,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onMouseLeave={ this._onOptionMouseLeave }
           role='option'
           aria-selected={ isSelected ? 'true' : 'false' }
-          ariaLabel={ item.text }
+          ariaLabel={ this._getPreviewText(item) }
           disabled={ item.disabled }
         > { <span ref={ isSelected ? this._selectedElement : undefined }>
           { onRenderOption(item, this._onRenderOptionContent) }
@@ -1307,7 +1310,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (index >= 0 && index < currentOptions.length) {
       const option = currentOptions[index];
-      this._setPendingInfo(option.text, index, option.text);
+      this._setPendingInfo(this._getPreviewText(option), index, this._getPreviewText(option));
     } else {
       this._clearPendingInfo();
     }
@@ -1763,5 +1766,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     return retKeys;
+  }
+
+  private _getPreviewText(item: IComboBoxOption): string {
+    return item.useAriaLabelAsText && item.ariaLabel ? item.ariaLabel : item.text;
   }
 }
