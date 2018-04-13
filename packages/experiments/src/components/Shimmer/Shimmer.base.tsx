@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { DefaultPalette, IStyleSet } from '../../Styling';
 import {
   IShimmerProps,
   IShimmerStyleProps,
@@ -13,10 +11,6 @@ import {
   IGap,
   ShimmerElementVerticalAlign,
 } from './Shimmer.types';
-import {
-  DefaultPalette,
-  IStyleSet
-} from '../../Styling';
 import { ShimmerLine } from './ShimmerLine/ShimmerLine';
 import { ShimmerGap } from './ShimmerGap/ShimmerGap';
 import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';

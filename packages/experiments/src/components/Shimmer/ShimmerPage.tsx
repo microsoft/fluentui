@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
-import { ShimmerApplicationExample } from 'experiments/lib/components/Shimmer/examples/Shimmer.Application.Example';
+import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 
 const ShimmerBasicExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
 // tslint:disable-next-line:max-line-length
