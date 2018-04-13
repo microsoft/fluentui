@@ -43,8 +43,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
-
-  protected focusZone = createRef<FocusZone>();
+  private focusZone = createRef<FocusZone>();
 
   constructor(props: IPivotProps) {
     super(props);
