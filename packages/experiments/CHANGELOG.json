@@ -2,6 +2,40 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.31.0",
+      "tag": "@uifabric/experiments_v5.31.0",
+      "date": "Thu, 12 Apr 2018 10:15:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c7eb8c25b50664874db1d3514a4e80defa20bd51",
+            "comment": "Shimmerline import was not correct, fixing import."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "baaab94cba9a6acfc8db4ed7309cce917abf24fa",
+            "comment": "Shimmer: Application example modified to reflect changes in DetailsList"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "757e955a2d49635e1c571d94e043263aed4b6ded",
+            "comment": "Refactoring Shimmer and adding ShimmerTile + Implements Shimmer in TilesList."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.80.0 <6.0.0` to `>=5.81.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.8.0 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.30.0",
       "tag": "@uifabric/experiments_v5.30.0",
       "date": "Tue, 10 Apr 2018 17:37:28 GMT",

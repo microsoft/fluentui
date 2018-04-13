@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "HTML button tags will be overridden with DefaultButton component.",
+      "comment": "Add new APIs for editing sections on GitHub.",
       "type": "minor"
     }
   ],
