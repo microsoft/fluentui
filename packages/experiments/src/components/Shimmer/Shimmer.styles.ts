@@ -1,8 +1,5 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import {
-  keyframes,
-  DefaultPalette
-} from '../../Styling';
+import { keyframes, DefaultPalette } from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {

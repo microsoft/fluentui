@@ -2,10 +2,7 @@ import {
   IShimmerCircleStyleProps,
   IShimmerCircleStyles
 } from './ShimmerCircle.types';
-import {
-  IStyleSet,
-  DefaultPalette
-} from 'office-ui-fabric-react/lib/Styling';
+import { IStyleSet, DefaultPalette } from '../../../Styling';
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
   const {

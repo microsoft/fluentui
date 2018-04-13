@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  IStyle
-} from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface IShimmer {
@@ -136,14 +134,28 @@ export interface IShimmerStyles {
   dataWrapper?: IStyle;
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementType {
   LINE = 'line',
   CIRCLE = 'circle',
-  GAP = 'gap'
+  GAP = 'gap',
+  line = 'line',
+  circle = 'circle',
+  gap = 'gap'
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementVerticalAlign {
   CENTER = 'center',
   BOTTOM = 'bottom',
-  TOP = 'top'
+  TOP = 'top',
+  center = 'center',
+  bottom = 'bottom',
+  top = 'top'
 }
