@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps } from './ComboBox.types';
+import { IComboBoxOption, IComboBoxProps, IComboBoxOptionStyles } from './ComboBox.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -18,7 +18,8 @@ import {
   KeyCodes,
   customizable,
   css,
-  createRef
+  createRef,
+  shallowCompare
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -75,6 +76,25 @@ enum HoverStatus {
   // This is the default "normal" state
   // when no hover has happened or a hover is in progress
   default = -1
+}
+
+interface IComboBoxOptionWrapperProps extends IComboBoxOption {
+  // True if the option is currently selected
+  isSelected: boolean;
+}
+
+// Internal class that is used to wrap all ComboBox options
+// This is used to customize when we want to rerender components,
+// so we don't rerender every option every time render is executed
+class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
+  public render() {
+    return this.props.children;
+  }
+
+  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps) {
+    // The children will always be different, so we ignore that prop
+    return !shallowCompare({ ...this.props, children: undefined }, { ...newProps, children: undefined });
+  }
 }
 
 @customizable('ComboBox', ['theme'])
@@ -1033,47 +1053,63 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
+    const wrapperProps = {
+      key: item.key,
+      index: item.index,
+      styles: optionStyles,
+      disabled: item.disabled,
+      isSelected: isSelected,
+      text: item.text,
+    };
 
     return (
       !this.props.multiSelect ? (
-        <CommandButton
-          id={ id + '-list' + item.index }
-          key={ item.key }
-          data-index={ item.index }
-          styles={ optionStyles }
-          checked={ isSelected }
-          className={ 'ms-ComboBox-option' }
-          onClick={ this._onItemClick(item.index) }
-          onMouseEnter={ this._onOptionMouseEnter.bind(this, item.index) }
-          onMouseMove={ this._onOptionMouseMove.bind(this, item.index) }
-          onMouseLeave={ this._onOptionMouseLeave }
-          role='option'
-          aria-selected={ isSelected ? 'true' : 'false' }
-          ariaLabel={ this._getPreviewText(item) }
-          disabled={ item.disabled }
-        > { <span ref={ isSelected ? this._selectedElement : undefined }>
-          { onRenderOption(item, this._onRenderOptionContent) }
-        </span>
-          }
-        </CommandButton>
-      ) : (
-          <Checkbox
+        <ComboBoxOptionWrapper
+          {...wrapperProps}
+        >
+          <CommandButton
             id={ id + '-list' + item.index }
-            ref={ 'option' + item.index }
-            ariaLabel={ this._getPreviewText(item) }
             key={ item.key }
             data-index={ item.index }
             styles={ optionStyles }
+            checked={ isSelected }
             className={ 'ms-ComboBox-option' }
-            data-is-focusable={ true }
-            onChange={ this._onItemClick(item.index!) }
-            label={ item.text }
+            onClick={ this._onItemClick(item.index) }
+            onMouseEnter={ this._onOptionMouseEnter.bind(this, item.index) }
+            onMouseMove={ this._onOptionMouseMove.bind(this, item.index) }
+            onMouseLeave={ this._onOptionMouseLeave }
             role='option'
             aria-selected={ isSelected ? 'true' : 'false' }
-            checked={ isSelected }
-          >
+            ariaLabel={ item.text }
+            disabled={ item.disabled }
+          > { <span ref={ isSelected ? this._selectedElement : undefined }>
             { onRenderOption(item, this._onRenderOptionContent) }
-          </Checkbox>
+          </span>
+            }
+          </CommandButton>
+        </ComboBoxOptionWrapper >
+      ) : (
+          <ComboBoxOptionWrapper
+            {...wrapperProps}
+          >
+            <Checkbox
+              id={ id + '-list' + item.index }
+              ref={ 'option' + item.index }
+              ariaLabel={ this._getPreviewText(item) }
+              key={ item.key }
+              data-index={ item.index }
+              styles={ optionStyles }
+              className={ 'ms-ComboBox-option' }
+              data-is-focusable={ true }
+              onChange={ this._onItemClick(item.index!) }
+              label={ item.text }
+              role='option'
+              aria-selected={ isSelected ? 'true' : 'false' }
+              checked={ isSelected }
+            >
+              { onRenderOption(item, this._onRenderOptionContent) }
+            </Checkbox>
+          </ComboBoxOptionWrapper >
         )
     );
   }
