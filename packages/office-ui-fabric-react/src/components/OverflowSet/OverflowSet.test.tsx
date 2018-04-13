@@ -76,13 +76,11 @@ describe('OverflowSet', () => {
           content: 'B',
           keySequences: ['b'],
           onExecute: jest.fn()
-
         },
         overflowItemKeytip3: {
           content: 'C',
           keySequences: ['c'],
           onExecute: jest.fn()
-
         },
         overflowItemKeytip4: {
           content: 'D',
@@ -260,6 +258,30 @@ describe('OverflowSet', () => {
         expect(item3OverflowSequence).toBeUndefined();
         item4OverflowSequence = overflowItems[1].keytipProps!.overflowSetSequence;
         expect(fullKeySequencesAreEqual(item4OverflowSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+      });
+
+      it('correctly picks up a disabled keytip and doesn`t call it', () => {
+        overflowItems = [
+          {
+            key: 'item3',
+            name: 'Item 3',
+            disabled: true,
+            keytipProps: overflowKeytips.overflowItemKeytip3
+          },
+          {
+            key: 'item4',
+            name: 'Item 4',
+            keytipProps: overflowKeytips.overflowItemKeytip4
+          },
+        ];
+        overflowSet.setProps({
+          overflowItems: overflowItems
+        });
+        keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
+        keytipManager.processInput('c');
+        // Nothing should happen, the current keytip should still be the root
+        expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.root);
+        expect(overflowKeytips.overflowItemKeytip3.onExecute).not.toBeCalled();
       });
     });
 
