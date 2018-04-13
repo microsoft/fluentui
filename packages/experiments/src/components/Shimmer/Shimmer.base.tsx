@@ -74,7 +74,7 @@ export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>
               borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
-        case ShimmerElementType.GAP:
+        case ShimmerElementType.gap:
           return (
             <ShimmerGap
               key={ index }
@@ -138,7 +138,7 @@ export function findMaxElementHeight(elements: Array<ICircle | IGap | ILine>): n
         if (!elem.height) {
           elem.height = LINE_DEFAULT_HEIGHT;
         }
-      case ShimmerElementType.GAP:
+      case ShimmerElementType.gap:
         if (!elem.height) {
           elem.height = GAP_DEFAULT_HEIGHT;
         }

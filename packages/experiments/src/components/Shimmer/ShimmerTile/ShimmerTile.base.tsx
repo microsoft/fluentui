@@ -120,7 +120,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
             getRenderedElements(
               [
                 {
-                  type: ElemType.GAP,
+                  type: ElemType.gap,
                   widthInPixel: (contentSize.width - squareWidth) / 2,
                   height: squareHeight
                 },
@@ -131,12 +131,12 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                     height: squareHeight
                   } :
                   {
-                    type: ElemType.GAP,
+                    type: ElemType.gap,
                     widthInPixel: squareWidth,
                     height: squareHeight
                   },
                 {
-                  type: ElemType.GAP,
+                  type: ElemType.gap,
                   widthInPixel: (contentSize.width - squareWidth) / 2,
                   height: squareHeight
                 }
@@ -161,7 +161,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                       getRenderedElements(
                         [
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - nameWidth) / 2,
                             height: nameplateNameHeight
                           },
@@ -171,7 +171,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                             height: nameHeight
                           },
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - nameWidth) / 2,
                             height: nameplateNameHeight
                           }
@@ -190,7 +190,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                       getRenderedElements(
                         [
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - activityWidth) / 2,
                             height: nameplateActivityHeight
                           },
@@ -200,7 +200,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                             height: activityHeight
                           },
                           {
-                            type: ElemType.GAP,
+                            type: ElemType.gap,
                             widthInPixel: (contentSize.width - activityWidth) / 2,
                             height: nameplateActivityHeight
                           }
