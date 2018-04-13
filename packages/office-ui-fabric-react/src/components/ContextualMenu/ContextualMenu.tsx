@@ -637,7 +637,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             }
             role={ 'button' }
             aria-labelledby={ item.ariaLabel }
-            className={ classNames.splitContainerFocus }
+            className={ classNames.splitContainer }
             aria-disabled={ this._isItemDisabled(item) }
             aria-haspopup={ true }
             aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
@@ -684,7 +684,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       checked: item.checked,
       icon: item.icon,
       iconProps: item.iconProps,
-      'data-is-focusable': false
+      'data-is-focusable': false,
+      'aria-hidden': true
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
@@ -720,7 +721,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item),
         'data-is-focusable': false,
-        'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target']
+        'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target'],
+        'aria-hidden': true
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );
