@@ -42,7 +42,7 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
 
   /**
   * Whether the dialog is hidden.
-  * @default false
+  * @default true
   */
   hidden?: boolean;
 

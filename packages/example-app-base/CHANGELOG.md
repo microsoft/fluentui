@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Apr 2018 10:15:54 GMT and should not be manually modified.
+
+## 5.9.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- HTML button tags will be overridden with DefaultButton component.
 
 ## 5.8.0
 Thu, 05 Apr 2018 10:15:39 GMT

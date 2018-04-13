@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.9.0",
+      "tag": "@uifabric/example-app-base_v5.9.0",
+      "date": "Thu, 12 Apr 2018 10:15:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "71366a7b297ef9074a92db0f2df7c2410214e820",
+            "comment": "HTML button tags will be overridden with DefaultButton component."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.0",
       "tag": "@uifabric/example-app-base_v5.8.0",
       "date": "Thu, 05 Apr 2018 10:15:39 GMT",

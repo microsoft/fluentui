@@ -11,14 +11,14 @@ import {
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 import * as stylesImport from './OverflowSet.scss';
 const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _divContainer = createRef<HTMLDivElement>();
 
   constructor(props: IOverflowSetProps) {

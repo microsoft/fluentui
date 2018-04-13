@@ -45,7 +45,6 @@ exports[`Callout renders Callout correctly 1`] = `
           ms-Callout-main
           {
             background-color: #ffffff;
-            max-height: 750px;
             overflow-x: hidden;
             overflow-y: auto;
             position: relative;
@@ -55,6 +54,7 @@ exports[`Callout renders Callout correctly 1`] = `
       role={undefined}
       style={
         Object {
+          "maxHeight": 750,
           "overflowY": "auto",
         }
       }

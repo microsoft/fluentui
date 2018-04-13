@@ -78,6 +78,23 @@ $dontColor: #A61E22;
     }
   }
 
+  .ComponentPage-usageHeader,
+  .ComponentPage-overviewSectionHeader,
+  .ComponentPage-doSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ComponentPage-usageHeader {
+    margin-top: 10px;
+    margin-bottom: $componentSubHeadMargin;
+
+    .ComponentPage-subHeading {
+      margin: 0;
+    }
+  }
+
   .ComponentPage-related {
     min-width: 200px;
 
@@ -141,17 +158,7 @@ $dontColor: #A61E22;
     margin-bottom: 20px;
 
     h3 {
-      margin: 16px 0 40px 0;
       @include ms-font-xl;
-
-      &::after {
-        background-color: #a4cf0c;
-        border-radius: 3px;
-        content: '';
-        display: block;
-        height: 8px;
-        margin: 12px 0;
-      }
     }
 
     ul {
@@ -171,9 +178,26 @@ $dontColor: #A61E22;
     &:first-child {
       @include ms-margin-right(120px);
     }
+
+    .ComponentPage-doSectionHeader {
+      margin: 16px 0 0 0;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .ComponentPage-doSectionLine {
+      background-color: #a4cf0c;
+      border-radius: 3px;
+      display: block;
+      height: 8px;
+      margin: 12px 0 40px;
+      border: 0;
+    }
   }
 
-  .ComponentPage-doSection--dont h3::after {
+  .ComponentPage-doSection--dont .ComponentPage-doSectionLine {
     background-color: #e74856;
   }
 
