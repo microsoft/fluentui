@@ -33,6 +33,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private get _isExpanded(): boolean {
+    if (this.props.persistMenu) {
+      return !this.state.menuProps!.hidden;
+    }
     return !!this.state.menuProps;
   }
 
@@ -65,8 +68,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
+    let menuProps = null;
+    if (props.persistMenu && props.menuProps) {
+      menuProps = props.menuProps;
+      menuProps.hidden = true;
+    }
     this.state = {
-      menuProps: null
+      menuProps: menuProps
     };
   }
 
@@ -401,12 +409,21 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _dismissMenu = (): void => {
-    this.setState({ menuProps: null });
+    let menuProps = null;
+    if (this.props.persistMenu && this.state.menuProps) {
+      menuProps = this.state.menuProps;
+      menuProps.hidden = true;
+    }
+    this.setState({ menuProps: menuProps });
   }
 
   private _openMenu = (): void => {
     if (this.props.menuProps) {
-      this.setState({ menuProps: this.props.menuProps });
+      const menuProps = this.props.menuProps;
+      if (this.props.persistMenu) {
+        menuProps.hidden = false;
+      }
+      this.setState({ menuProps: menuProps });
     }
   }
 
@@ -416,7 +433,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
     const { menuProps } = this.props;
     const currentMenuProps = this.state.menuProps;
-    currentMenuProps ? this._dismissMenu() : this._openMenu();
+    if (this.props.persistMenu) {
+      currentMenuProps && currentMenuProps.hidden ? this._openMenu() : this._dismissMenu();
+    } else {
+      currentMenuProps ? this._dismissMenu() : this._openMenu();
+    }
   }
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
@@ -517,7 +538,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-expanded': this._isExpanded,
       'data-is-focusable': false
     };
-    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
+    return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
