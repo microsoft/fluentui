@@ -65,15 +65,15 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
           lineElements={ [
             { type: ElemType.circle },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.circle, height: 15, verticalAlign: ElemVerticalAlign.TOP },
+            { type: ElemType.circle, height: 15, verticalAlign: ElemVerticalAlign.top },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, verticalAlign: ElemVerticalAlign.BOTTOM, widthInPercentage: 20 },
+            { type: ElemType.line, verticalAlign: ElemVerticalAlign.bottom, widthInPercentage: 20 },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 5, verticalAlign: ElemVerticalAlign.TOP, widthInPercentage: 20 },
+            { type: ElemType.line, height: 5, verticalAlign: ElemVerticalAlign.top, widthInPercentage: 20 },
             { type: ElemType.gap, widthInPercentage: 2 },
             { type: ElemType.line, height: 16, widthInPercentage: 15 },
             { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line, height: 10, verticalAlign: ElemVerticalAlign.BOTTOM }
+            { type: ElemType.line, height: 10, verticalAlign: ElemVerticalAlign.bottom }
           ] }
         />
       </div>

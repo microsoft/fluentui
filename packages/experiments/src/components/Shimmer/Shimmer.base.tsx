@@ -107,17 +107,17 @@ export function getBorderStyles(elem: ICircle | IGap | ILine, rowHeight?: number
 
   let borderStyle: IStyleSet | undefined;
 
-  if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.CENTER) {
+  if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.center) {
     borderStyle = {
       borderBottom: `${dif ? Math.floor(dif / 2) : 0}px solid ${DefaultPalette.white}`,
       borderTop: `${dif ? Math.ceil(dif / 2) : 0}px solid ${DefaultPalette.white}`
     };
-  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.TOP) {
+  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.top) {
     borderStyle = {
       borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
       borderTop: `0px solid ${DefaultPalette.white}`
     };
-  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.BOTTOM) {
+  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.bottom) {
     borderStyle = {
       borderBottom: `0px solid ${DefaultPalette.white}`,
       borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
