@@ -9,19 +9,9 @@ export type IThemePagePalette = {
 };
 
 export interface IThemePageState {
-  palette: {
-    key: string;
-    name: string;
-    value: string;
-    description: string;
-  }[];
+  palette: IThemePagePalette[];
 
-  semanticColors: {
-    key: string;
-    name: string;
-    value: string;
-    description: string;
-  }[];
+  semanticColors: IThemePagePalette[];
 
   colorPickerProps?: {
     targetElement: HTMLElement;

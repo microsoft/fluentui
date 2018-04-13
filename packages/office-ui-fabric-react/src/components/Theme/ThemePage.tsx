@@ -45,14 +45,9 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
       palette: defaultPalette,
       semanticColors: defaultSemanticColors,
     };
-
-    this._onColorChanged = this._onColorChanged.bind(this);
   }
 
   public render() {
-    const thisTheme = loadTheme({});
-    const thisSemanticColors = thisTheme.semanticColors;
-    // console.log(thisTheme);
     return (
       <ComponentPage
         title='Themes'
@@ -105,10 +100,10 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
                 <div
                   className={ classNames.colorSwatch }
                   data-is-focusable='true'
-                  onClick={ (ev) => {
-                    this._onSwatchClicked(item, index!, ev);
-                    this.setState({ activeList: list });
-                  } }
+                  // onClick={ () => {
+                  onClick={ this._onSwatchClicked.bind(this, item, index, list) }
+                //   this.setState({ activeList: list });
+                // } }
                 >
                   <span
                     className={ classNames.swatch }
@@ -151,13 +146,14 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     this._list = component;
   }
 
-  private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent<HTMLElement>) {
+  private _onSwatchClicked(item: any, index: number, list: string, ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
         value: item.value,
         index: index,
-      }
+      },
+      activeList: list
     });
   }
 

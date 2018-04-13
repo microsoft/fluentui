@@ -7,7 +7,6 @@ export const defaultPalette = Object.keys(defaultTheme.palette).map(variableName
   name: variableName,
   value: (defaultTheme.palette as any)[variableName],
   description: '',
-  colorPickerProps: undefined
 }));
 
 export const defaultSemanticColors = Object.keys(defaultTheme.semanticColors).map(variableName => ({
@@ -15,5 +14,4 @@ export const defaultSemanticColors = Object.keys(defaultTheme.semanticColors).ma
   name: variableName,
   value: (defaultTheme.semanticColors as any)[variableName],
   description: '',
-  colorPickerProps: undefined
 }));
