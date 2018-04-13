@@ -1,7 +1,7 @@
 import { IPalette } from '../interfaces/index';
 
 // When adding or removing a color, make sure you keep this consistent with IColorClassNames by adding the color variants.
-export const DefaultPalette: IPalette = {
+const palette: IPalette = {
   // Gray
   black: '#000000',
   gray220: '#11100f',
@@ -299,7 +299,13 @@ export const DefaultPalette: IPalette = {
   messageError: '#a80000',
   messageErrorBackground: '#fde7e9',
 
-  // Colors that will be deprecated by Fluent.
+  // Colors that are not part of the design palette. These
+  // should be considered for deprecation.
+  blackTranslucent40: 'rgba(0,0,0,.4)',
+  whiteTranslucent40: 'rgba(255,255,255,.4)',
+  accent: '#0078d7', // Same as CyanBlue60
+
+  // Colors that have direct equivalents in Fluent. These names will be deprecated.
   themeDarker: '#004578',
   themeDark: '#005a9e',
   themeDarkAlt: '#106ebe',
@@ -309,7 +315,6 @@ export const DefaultPalette: IPalette = {
   themeLight: '#c7e0f4',
   themeLighter: '#deecf9',
   themeLighterAlt: '#eff6fc',
-  blackTranslucent40: 'rgba(0,0,0,.4)',
   neutralDark: '#212121',
   neutralPrimary: '#333333',
   neutralPrimaryAlt: '#3c3c3c',
@@ -321,29 +326,75 @@ export const DefaultPalette: IPalette = {
   neutralLight: '#eaeaea',
   neutralLighter: '#f4f4f4',
   neutralLighterAlt: '#f8f8f8',
-  accent: '#0078d4',
-  whiteTranslucent40: 'rgba(255,255,255,.4)',
   yellow: '#ffb900',
   yellowLight: '#fff100',
-  orange: '#d83b01',
-  orangeLight: '#ea4300',
   orangeLighter: '#ff8c00',
   redDark: '#a80000',
   red: '#e81123',
   magentaDark: '#5c005c',
   magenta: '#b4009e',
   magentaLight: '#e3008c',
-  purpleDark: '#32145a',
-  purple: '#5c2d91',
   purpleLight: '#b4a0ff',
-  blueDark: '#002050',
   blueMid: '#00188f',
   blue: '#0078d4',
   blueLight: '#00bcf2',
-  tealDark: '#004b50',
   teal: '#008272',
   tealLight: '#00b294',
-  greenDark: '#004b1c',
   green: '#107c10',
   greenLight: '#bad80a',
+
+  // Colors that have no equivalent in Fluent and will be removed.
+  orange: '#d83b01',
+  orangeLight: '#ea4300',
+  purpleDark: '#32145a',
+  purple: '#5c2d91',
+  blueDark: '#002050',
+  tealDark: '#004b50',
+  greenDark: '#004b1c',
+};
+
+// Override deprecated colors with new values. This allows components
+// to continue to use the old color names for now.
+const overrides: Partial<IPalette> = {
+  themeDarker: palette.communication90,
+  themeDark: palette.communication80,
+  themeDarkAlt: palette.communication70,
+  themePrimary: palette.communication60,
+  themeSecondary: palette.communication50,
+  themeTertiary: palette.communication40,
+  themeLight: palette.communication30,
+  themeLighter: palette.communication20,
+  themeLighterAlt: palette.communication10,
+  neutralDark: palette.gray190,
+  neutralPrimary: palette.gray160,
+  neutralPrimaryAlt: palette.gray150,
+  neutralSecondary: palette.gray130,
+  neutralTertiary: palette.gray90,
+  neutralTertiaryAlt: palette.gray60,
+  neutralQuaternary: palette.gray50,
+  neutralQuaternaryAlt: palette.gray40,
+  neutralLight: palette.gray30,
+  neutralLighter: palette.gray20,
+  neutralLighterAlt: palette.gray10,
+  yellow: palette.orangeYellow30,
+  yellowLight: palette.yellow40,
+  orangeLighter: palette.orange110,
+  redDark: palette.red150,
+  red: palette.red110,
+  magentaDark: palette.magentaPink30,
+  magenta: palette.magenta90,
+  magentaLight: palette.magentaPink30,
+  purpleLight: palette.blueMagenta20,
+  blueMid: palette.blue130,
+  blue: palette.cyanBlue60,
+  blueLight: palette.cyan100,
+  teal: palette.cyan200,
+  tealLight: palette.cyan150,
+  green: palette.green120,
+  greenLight: palette.yellowGreen50,
+};
+
+export const DefaultPalette: IPalette = {
+  ...palette,
+  ...overrides
 };
