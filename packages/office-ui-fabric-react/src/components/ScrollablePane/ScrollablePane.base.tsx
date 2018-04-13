@@ -221,6 +221,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public notifySubscribers = (): void => {
     if (this.contentContainer) {
       this._subscribers.forEach((handle) => {
+        // this.stickyBelow is passed in for calculating distance to determine Sticky status
         handle(this.contentContainer, this.stickyBelow);
       });
     }

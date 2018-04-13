@@ -94,6 +94,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
             className={ this.props.stickyClassName }
             ref={ this.stickyContentTop }
             style={ this._getStickyStyles(isStickyTop) }
+            aria-hidden={ !isStickyTop }
           >
             { this.props.children }
           </div>
@@ -104,6 +105,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
             className={ this.props.stickyClassName }
             ref={ this.stickyContentBottom }
             style={ this._getStickyStyles(isStickyBottom) }
+            aria-hidden={ !isStickyBottom }
           >
             { this.props.children }
           </div>
@@ -111,6 +113,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         <div
           ref={ this.nonStickyContent }
           className={ isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined }
+          aria-hidden={ isStickyTop || isStickyBottom }
           style={ {
             backgroundColor: this.props.stickyBackgroundColor
           } }
