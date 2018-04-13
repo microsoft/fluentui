@@ -583,7 +583,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.autoComplete === 'on') {
 
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => this._getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0);
+      const items = currentOptions.map((item, index) => { return { ...item, index }; })
+        .filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider)
+        .filter((option) => this._getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0);
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
         const text: string = this._getPreviewText(items[0]);
@@ -597,7 +599,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else {
 
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
-      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
+      const items = currentOptions.map((item, index) => { return { ...item, index }; })
+        .filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider)
+        .filter((option) => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
       // if we fould a match remember the index
       if (items.length === 1) {
@@ -645,7 +649,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         updatedValue = updatedValue.toLocaleLowerCase();
 
         // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-        const items = currentOptions.map((item, i) => { return { ...item, index: i }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+        const items = currentOptions.map((item, i) => { return { ...item, index: i }; })
+          .filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider)
+          .filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
         // If we found a match, udpdate the state
         if (items.length > 0) {
@@ -1054,6 +1060,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           <Checkbox
             id={ id + '-list' + item.index }
             ref={ 'option' + item.index }
+            ariaLabel={ this._getPreviewText(item) }
             key={ item.key }
             data-index={ item.index }
             styles={ optionStyles }
@@ -1768,6 +1775,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return retKeys;
   }
 
+  // For scenarios where the option's text prop contains embedded styles, we use the option's
+  // ariaLabel value as the text in the input and for autocomplete matching. We know to use this
+  // when the useAriaLabelAsText prop is set to true
   private _getPreviewText(item: IComboBoxOption): string {
     return item.useAriaLabelAsText && item.ariaLabel ? item.ariaLabel : item.text;
   }
