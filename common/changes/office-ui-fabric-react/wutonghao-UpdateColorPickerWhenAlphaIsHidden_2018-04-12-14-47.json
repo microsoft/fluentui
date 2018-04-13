@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed issue: ColorPicker does not update upon text field changes when alphaSliderHidden=true",
+      "comment": "ColorPicker: text fields now update when `alphaSliderHidden` is `true`.",
       "type": "patch"
     }
   ],
