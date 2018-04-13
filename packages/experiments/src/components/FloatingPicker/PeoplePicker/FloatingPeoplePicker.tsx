@@ -23,7 +23,7 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 
 export function createGenericItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
   // tslint:disable-next-line:no-any
-  let personaToConvert: any = {
+  const personaToConvert: any = {
     key: name,
     primaryText: name,
     imageInitials: '!',

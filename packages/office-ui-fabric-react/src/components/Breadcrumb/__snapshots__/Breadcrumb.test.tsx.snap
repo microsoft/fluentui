@@ -27,6 +27,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
         aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone0"
+        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -171,6 +172,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
         aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone5"
+        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -242,9 +244,11 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     top: -2px;
                   }
                   &:hover {
+                    background-color: #f4f4f4;
                     color: #004578;
                   }
                   &:active {
+                    background-color: #eaeaea;
                     color: #0078d4;
                   }
               data-is-focusable={true}
@@ -380,6 +384,7 @@ exports[`Breadcrumb renders breadcumb correctly 3`] = `
         aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone11"
+        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

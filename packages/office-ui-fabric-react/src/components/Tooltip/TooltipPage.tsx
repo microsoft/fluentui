@@ -50,14 +50,16 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
             ] }
           />
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/Tooltip'>Tooltips</Link>
-            <span> supplement content associated with a specific UI component.</span>
+            <p>Tooltips supplement content associated with a specific UI component. You can use two components, and each has different props:</p>
+            <p>Tooltip: A styled tooltip that you can display on a chosen target.</p>
+            <p>TooltipHost: A tooltip wrapped in a stateful parent. Tooltip will be displayed on hover or focus and removed when focus/hover removed.</p>
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }

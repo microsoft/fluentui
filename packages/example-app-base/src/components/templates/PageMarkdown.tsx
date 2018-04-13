@@ -8,6 +8,7 @@ import {
 } from '../templates';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, IImageProps } from 'office-ui-fabric-react/lib/Image';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import Markdown, { IMarkdownProps } from 'markdown-to-jsx';
 
 function _getImageSetProps(props: React.Props<{}>, markdownProps: IPageMarkdownProps): (IPageImageSetProps | undefined) {
@@ -97,6 +98,9 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
       img: {
         component: Image
       },
+      button: {
+        component: DefaultButton
+      }
     }
   }
 });

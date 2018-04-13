@@ -8,6 +8,7 @@ exports[`DetailsHeader can render 1`] = `
   className="ms-FocusZone ms-DetailsHeader"
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone1"
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -135,7 +136,7 @@ exports[`DetailsHeader can render 1`] = `
       className=""
     >
       <span
-        aria-describedby="header0-a-tooltip"
+        aria-describedby={undefined}
         aria-haspopup={false}
         aria-label={undefined}
         aria-labelledby="header0-a-name "
@@ -183,7 +184,7 @@ exports[`DetailsHeader can render 1`] = `
       className=""
     >
       <span
-        aria-describedby="header0-b-tooltip"
+        aria-describedby={undefined}
         aria-haspopup={false}
         aria-label={undefined}
         aria-labelledby="header0-b-name "

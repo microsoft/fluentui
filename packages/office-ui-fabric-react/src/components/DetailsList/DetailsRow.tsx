@@ -252,7 +252,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         data-is-focusable={ true }
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
-        aria-rowindex={ itemIndex }
+        aria-rowindex={ itemIndex + 1 }
         data-is-draggable={ isDraggable }
         draggable={ isDraggable }
         data-automationid='DetailsRow'

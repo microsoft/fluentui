@@ -121,6 +121,15 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _onKeyboardHandler = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+    }
+
+    // If the default has been prevented, do not process keyboard events.
+    if (ev.isDefaultPrevented()) {
+      return;
+    }
+
     if (ev.which !== KeyCodes.tab) {
       return;
     }

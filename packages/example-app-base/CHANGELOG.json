@@ -2,6 +2,42 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.9.0",
+      "tag": "@uifabric/example-app-base_v5.9.0",
+      "date": "Thu, 12 Apr 2018 10:15:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "71366a7b297ef9074a92db0f2df7c2410214e820",
+            "comment": "HTML button tags will be overridden with DefaultButton component."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.8.0",
+      "tag": "@uifabric/example-app-base_v5.8.0",
+      "date": "Thu, 05 Apr 2018 10:15:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "cb8ba392bbcfa76f1a3af97b3006c9d63f5228fe",
+            "comment": "Add ability to disable scrolling for an ExampleCard"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.21.0 <6.0.0` to `>=5.22.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.22.1 <6.0.0` to `>=5.23.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.1",
       "tag": "@uifabric/example-app-base_v5.7.1",
       "date": "Sat, 31 Mar 2018 17:40:00 GMT",
