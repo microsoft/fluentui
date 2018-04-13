@@ -222,7 +222,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
   const animationOuterDimension = '150px';
   const animationBorderWidth = '10px';
 
-  const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimation(
+  const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimationDouble(
     props.beaconColorOne!,
     props.beaconColorTwo!,
     animationInnerDimension,
