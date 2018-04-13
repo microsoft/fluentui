@@ -618,7 +618,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         }
         role={ 'button' }
         aria-labelledby={ item.ariaLabel }
-        className={ classNames.splitContainerFocus }
+        className={ classNames.splitContainer }
         aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
@@ -633,14 +633,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
-        <span
-          aria-hidden={ true }
-          className={ classNames.splitContainer }
-        >
-          { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-          { this._renderSplitDivider(item) }
-          { this._renderSplitIconButton(item, classNames, index) }
-        </span>
+        { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+        { this._renderSplitDivider(item) }
+        { this._renderSplitIconButton(item, classNames, index) }
       </div >
     );
   }
@@ -663,7 +658,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       checked: item.checked,
       icon: item.icon,
       iconProps: item.iconProps,
-      'data-is-focusable': false
+      'data-is-focusable': false,
+      'aria-hidden': true
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
@@ -698,7 +694,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseLeave: this._onMouseItemLeave.bind(this, item),
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item),
-        'data-is-focusable': false
+        'data-is-focusable': false,
+        'aria-hidden': true
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );
