@@ -59,7 +59,7 @@ const PLACEHOLDER_SIZES: {
 const getClassNames = classNamesFunction<IShimmerTileStyleProps, IShimmerTileStyles>();
 
 export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
-  private _classNames: {[key in keyof IShimmerTileStyles]: string};
+  private _classNames: { [key in keyof IShimmerTileStyles]: string };
 
   constructor(props: IShimmerTileProps) {
     super(props);
@@ -126,7 +126,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                 },
                 itemThumbnail ?
                   {
-                    type: ElemType.LINE,
+                    type: ElemType.line,
                     widthInPixel: squareWidth,
                     height: squareHeight
                   } :
@@ -166,7 +166,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                             height: nameplateNameHeight
                           },
                           {
-                            type: ElemType.LINE,
+                            type: ElemType.line,
                             widthInPixel: nameWidth,
                             height: nameHeight
                           },
@@ -195,7 +195,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                             height: nameplateActivityHeight
                           },
                           {
-                            type: ElemType.LINE,
+                            type: ElemType.line,
                             widthInPixel: activityWidth,
                             height: activityHeight
                           },

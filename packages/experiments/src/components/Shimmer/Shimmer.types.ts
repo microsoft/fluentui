@@ -139,11 +139,17 @@ export interface IShimmerStyles {
 export const enum ShimmerElementType {
   LINE = 'line',
   CIRCLE = 'circle',
-  GAP = 'gap'
+  GAP = 'gap',
+  line = 'line',
+  circle = 'circle',
+  gap = 'gap'
 }
 
 export const enum ShimmerElementVerticalAlign {
   CENTER = 'center',
   BOTTOM = 'bottom',
-  TOP = 'top'
+  TOP = 'top',
+  center = 'center',
+  bottom = 'bottom',
+  top = 'top'
 }

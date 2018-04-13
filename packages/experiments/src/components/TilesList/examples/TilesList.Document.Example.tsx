@@ -267,7 +267,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
         {
           getRenderedElements(
             [
-              { type: ElemType.LINE, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
+              { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
             ],
             HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE
           )
