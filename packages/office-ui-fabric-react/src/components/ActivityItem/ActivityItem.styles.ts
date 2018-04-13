@@ -16,8 +16,8 @@ const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
 const DEFAULT_ICON_SIZE = '16px';
 const COMPACT_ICON_SIZE = '13px';
-const ANIMATION_INNER_DIMENSION = '8px';
-const ANIMATION_OUTER_DIMENSION = '32px';
+const ANIMATION_INNER_DIMENSION = '4px';
+const ANIMATION_OUTER_DIMENSION = '28px';
 const ANIMATION_BORDER_WIDTH = '4px';
 
 export const getStyles = memoizeFunction((
@@ -26,7 +26,7 @@ export const getStyles = memoizeFunction((
   customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
 
-  const ContinuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimation(
+  const ContinuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
     props.beaconColorOne!,
     props.beaconColorTwo!,
     ANIMATION_INNER_DIMENSION,
@@ -34,7 +34,34 @@ export const getStyles = memoizeFunction((
     ANIMATION_BORDER_WIDTH
   );
 
-  const continuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse);
+  const fadeIn: string = keyframes({
+    from: { opacity: 0, },
+    to: { opacity: 1, }
+  });
+
+  const slideIn: string = keyframes({
+    from: { transform: 'translateX(-10px)' },
+    to: { transform: 'translateX(0)' }
+  });
+
+  const continuousPulseAnimation = {
+    animationName: ContinuousPulse,
+    animationIterationCount: '1',
+    animationDuration: '.8s',
+    zIndex: 1000
+  };
+
+  const slideInAnimation = {
+    animationName: slideIn,
+    animationIterationCount: '1',
+    animationDuration: '.5s',
+  };
+
+  const fadeInAnimation = {
+    animationName: fadeIn,
+    animationIterationCount: '1',
+    animationDuration: '.5s',
+  }
 
   const ActivityItemStyles: IActivityItemStyles = {
 
@@ -47,7 +74,8 @@ export const getStyles = memoizeFunction((
         lineHeight: '17px',
         boxSizing: 'border-box',
         color: theme.palette.neutralSecondary
-      }
+      },
+      (props.isCompact && props.animateBeaconSignal) && fadeInAnimation
     ],
 
     pulsingBeacon: [
@@ -139,9 +167,12 @@ export const getStyles = memoizeFunction((
       overflow: 'visible'
     },
 
-    activityContent: {
-      padding: '0 8px'
-    },
+    activityContent: [
+      {
+        padding: '0 8px'
+      },
+      (props.isCompact && props.animateBeaconSignal) && slideInAnimation
+    ],
 
     activityText: {
       display: 'inline'
