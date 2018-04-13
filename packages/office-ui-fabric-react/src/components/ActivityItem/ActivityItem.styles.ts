@@ -60,7 +60,7 @@ export const getStyles = memoizeFunction((
     animationName: fadeIn,
     animationIterationCount: '1',
     animationDuration: '.5s',
-  }
+  };
 
   const ActivityItemStyles: IActivityItemStyles = {
 
