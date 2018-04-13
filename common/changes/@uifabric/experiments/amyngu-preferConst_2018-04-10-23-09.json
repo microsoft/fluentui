@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "prefer const, instead of let, for extendedpicker, floatingpicker, and selecteditemlists",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "amyngu@microsoft.com"
+}

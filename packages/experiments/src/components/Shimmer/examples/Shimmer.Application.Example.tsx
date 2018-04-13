@@ -6,15 +6,17 @@ import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
 import {
   IColumn,
   DetailsList,
   buildColumns,
   SelectionMode,
-  Toggle
+  Toggle,
+  IDetailsRowProps,
+  DetailsRow
 } from 'office-ui-fabric-react';
-import { Shimmer } from 'experiments/lib/Shimmer';
+import { Shimmer } from '../Shimmer';
 import './Shimmer.Example.scss';
 
 export interface IItem {
@@ -98,21 +100,23 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     return (
       <div>
         <div className='shimmerExample-toggleButtons'>
-          <Toggle
-            label='Enable Modal Selection'
-            checked={ isModalSelection }
-            onChanged={ this._onChangeModalSelection }
-            onText='Modal'
-            offText='Normal'
-          />
-          <Toggle
-            label='Enable Compact Mode'
-            checked={ isCompactMode }
-            onChanged={ this._onChangeCompactMode }
-            onText='Compact'
-            offText='Normal'
-          />
-          <p>Toggle the Load data switch to start async simulation.</p>
+          <div className='shimmerExample-flexGroup'>
+            <Toggle
+              label='Enable Modal Selection'
+              checked={ isModalSelection }
+              onChanged={ this._onChangeModalSelection }
+              onText='Modal'
+              offText='Normal'
+            />
+            <Toggle
+              label='Enable Compact Mode'
+              checked={ isCompactMode }
+              onChanged={ this._onChangeCompactMode }
+              onText='Compact'
+              offText='Normal'
+            />
+          </div>
+          <span>Toggle the Load data switch to start async simulation.</span>
           <Toggle
             label='Load data switch'
             checked={ isDataLoaded }
@@ -130,6 +134,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
             onRenderItemColumn={ this._onRenderItemColumn }
             onRenderMissingItem={ this._onRenderMissingItem }
+            enableShimmer={ true }
             listProps={ { renderedWindowsAhead: 0, renderedWindowsBehind: 0 } }
           />
         </div>
@@ -137,12 +142,16 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
-  private _onRenderMissingItem = (index: number): React.ReactNode => {
+  private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
     const { isDataLoaded } = this.state;
     isDataLoaded && this._onDataMiss(index as number);
 
     return (
-      <Shimmer />
+      <Shimmer
+        isBaseStyle={ true }
+      >
+        <DetailsRow { ...rowProps } shimmer={ true } />
+      </Shimmer>
     );
   }
 
@@ -171,15 +180,15 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         item.thumbnail = randomFileType.url;
       });
     }
-    let { isDataLoaded, items } = this.state;
-    isDataLoaded = checked;
-    if (isDataLoaded) {
+
+    let items: IItem[];
+    if (checked) {
       items = _items.slice(0, ITEMS_BATCH_SIZE).concat(new Array(ITEMS_COUNT - ITEMS_BATCH_SIZE));
     } else {
       items = new Array();
     }
     this.setState({
-      isDataLoaded: isDataLoaded,
+      isDataLoaded: checked,
       items: items
     });
   }

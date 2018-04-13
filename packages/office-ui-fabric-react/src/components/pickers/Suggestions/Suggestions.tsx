@@ -107,6 +107,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
+      isResultsFooterVisible = true,
       suggestionsAvailableAlertText,
       suggestionsHeaderText,
     } = this.props;
@@ -124,7 +125,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
       headerText = mostRecentlyUsedHeaderText;
     }
-    const footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+    let footerTitle: ((props: ISuggestionsProps<T>) => JSX.Element) | undefined = undefined;
+    if (isResultsFooterVisible) {
+      footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+    }
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
     return (
       <div
@@ -183,9 +187,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           />) : (null)
         }
         {
-          !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
+          footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
             (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
-              { footerTitle && footerTitle(this.props) }
+              { footerTitle(this.props) }
             </div>) : (null)
         }
         { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
