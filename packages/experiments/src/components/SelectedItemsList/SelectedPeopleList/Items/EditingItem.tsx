@@ -44,8 +44,8 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   public componentDidMount(): void {
-    let getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
-    let itemText = getEditingItemText(this.props.item);
+    const getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
+    const itemText = getEditingItemText(this.props.item);
     this._editingFloatingPicker.value && this._editingFloatingPicker.value.onQueryStringChanged(itemText);
     this._editingInput.value = itemText;
     this._editingInput.focus();
@@ -74,7 +74,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   private _renderEditingSuggestions = (): JSX.Element => {
-    let onRenderFloatingPicker = this._onRenderFloatingPicker;
+    const onRenderFloatingPicker = this._onRenderFloatingPicker;
     return (onRenderFloatingPicker({
       componentRef: this._editingFloatingPicker,
       onChange: this._onSuggestionSelected,
@@ -103,7 +103,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   private _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
-    let value: string = (ev.target as HTMLInputElement).value;
+    const value: string = (ev.target as HTMLInputElement).value;
 
     if (value === '') {
       if (this.props.onRemoveItem) {

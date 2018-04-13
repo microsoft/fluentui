@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusZone: updating to update alignment on click.",
+      "comment": "Fix style and alignment issues with DetailsList headers",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jolore@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }

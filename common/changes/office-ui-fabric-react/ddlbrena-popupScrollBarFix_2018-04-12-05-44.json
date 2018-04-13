@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Link: fix the style interface",
-      "type": "minor"
+      "comment": "Fix scroll bar shows when it should not.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "s@warmsea.net"
+  "email": "ddlbrena@microsoft.com"
 }
