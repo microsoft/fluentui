@@ -27,9 +27,8 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
                   key: 'calendarEvent',
                   name: 'Calendar event',
                   icon: 'Calendar'
-                },
-              ],
-              directionalHintFixed: true
+                }
+              ]
             }
             }
           />

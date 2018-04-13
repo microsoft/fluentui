@@ -4,10 +4,7 @@ import { Pivot } from './Pivot';
 import { PivotItem } from './PivotItem';
 
 export interface IPivot {
-  /**
-   * Sets focus to the first pivot tab.
-   */
-  focus(): void;
+
 }
 
 export interface IPivotProps extends React.Props<Pivot> {

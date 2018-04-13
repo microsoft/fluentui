@@ -54,6 +54,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       &:focus .ms-Checkbox-text {
         color: #000000;
       }
+  data-ktp-execute-target={undefined}
   disabled={undefined}
   id="checkbox-0"
   name={undefined}
@@ -103,6 +104,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             user-select: none;
             width: 20px;
           }
+      data-ktp-target={undefined}
     >
       <i
         aria-hidden={true}

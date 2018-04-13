@@ -22,7 +22,6 @@ export interface ICalloutProps {
    * The target that the Callout should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
-   * It can also be a function which returns a CalloutTarget
    */
   target?: Element | string | MouseEvent | IPoint | null;
 
@@ -241,7 +240,6 @@ export interface ICalloutContentStyleProps {
   overflowYHidden?: boolean;
 
   /**
-   * @deprecated will be removed in v6. Do not use.
    * Max height applied to the content of a callout.
    */
   contentMaxHeight?: number;

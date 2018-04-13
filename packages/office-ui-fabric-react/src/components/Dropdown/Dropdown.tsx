@@ -27,7 +27,7 @@ import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
 import { getTheme } from '../../Styling';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -77,7 +77,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       'selectedKey': 'multiSelect'
     });
 
-    const i = 0;
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
 
@@ -157,7 +156,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         { label && (
           <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } required={ required }>{ label }</Label>
         ) }
-        <KeytipHost keytipProps={ keytipProps }>
+        <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               { ...keytipAttributes }
@@ -166,7 +165,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               id={ id }
               tabIndex={ disabled ? -1 : 0 }
               aria-expanded={ isOpen ? 'true' : 'false' }
-              role='combobox'
+              role='listbox'
               aria-autocomplete='none'
               aria-live={ disabled || isOpen ? 'off' : 'assertive' }
               aria-label={ ariaLabel }
@@ -212,7 +211,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               </span>
             </div>
           ) }
-        </KeytipHost>
+        </KeytipData>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }
@@ -354,6 +353,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderList = this._onRenderList,
       responsiveMode,
       calloutProps,
+      panelProps,
       dropdownWidth
     } = this.props;
 
@@ -363,11 +363,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isSmall ?
         (
           <Panel
-            className={ css('ms-Dropdown-panel', styles.panel) }
+            className={ css('ms-Dropdown-panel', styles.panel, !!panelProps && panelProps.className) }
             isOpen={ true }
             isLightDismiss={ true }
             onDismissed={ this._onDismiss }
             hasCloseButton={ false }
+            { ...panelProps }
           >
             { onRenderList(props, this._onRenderList) }
           </Panel>
@@ -381,7 +382,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHintFixed={ true }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
-            className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
+            className={ css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className) }
             target={ this._dropDown.value }
             onDismiss={ this._onDismiss }
             onScroll={ this._onScroll }

@@ -35,7 +35,7 @@ import {
   VerticalDivider
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -131,29 +131,20 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
     }
-    if (newProps.hidden !== this.props.hidden) {
-      if (newProps.hidden) {
-        this._onMenuClosed();
-      } else {
-        this._onMenuOpened();
-        this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
-      }
-    }
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
-    if (!this.props.hidden) {
-      this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
-    }
+    this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    if (!this.props.hidden) {
-      this._onMenuOpened();
+    this._events.on(this._targetWindow, 'resize', this.dismiss);
+    if (this.props.onMenuOpened) {
+      this.props.onMenuOpened(this.props);
     }
   }
 
@@ -164,8 +155,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
-      // Note: Cannot be replaced by this._async.setTimout because those will be removed by the time this is called.
-      setTimeout(() => { this._previousActiveElement && this._previousActiveElement!.focus(); }, 0);
+      setTimeout(() => this._previousActiveElement!.focus(), 0);
     }
 
     if (this.props.onMenuDismissed) {
@@ -281,7 +271,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onScroll={ this._onScroll }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }
-          hidden={ this.props.hidden }
         >
           <div
             role='menu'
@@ -326,16 +315,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       return null;
     }
-  }
-
-  private _onMenuOpened() {
-    this._events.on(this._targetWindow, 'resize', this.dismiss);
-    this.props.onMenuOpened && this.props.onMenuOpened(this.props);
-  }
-
-  private _onMenuClosed() {
-    this._events.off(this._targetWindow, 'resize', this.dismiss);
-    this._previousActiveElement && this._async.setTimeout(() => { this._previousActiveElement && this._previousActiveElement!.focus(); }, 0);
   }
 
   /**
@@ -504,10 +483,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
     const nativeProps = getNativeProps(item, anchorProperties);
+    const disabled = this._isItemDisabled(item);
 
     return (
       <div>
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+        <KeytipData
+          keytipProps={ item.keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ disabled }
+        >
           { (keytipAttributes: any): JSX.Element => (
             <a
               { ...nativeProps }
@@ -538,7 +522,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
               />
             </a>
           ) }
-        </KeytipHost>
+        </KeytipData>
       </div>);
   }
 
@@ -593,8 +577,20 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       style: item.style
     };
 
+    let { keytipProps } = item;
+    if (keytipProps && itemHasSubmenu) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
-      <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }>
+      <KeytipData
+        keytipProps={ keytipProps }
+        ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }
+        disabled={ this._isItemDisabled(item) }
+      >
         { (keytipAttributes: any): JSX.Element => (
           <button
             { ...buttonNativeProperties }
@@ -610,7 +606,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             />
           </button>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
   }
 
@@ -623,37 +619,50 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean): JSX.Element {
 
+    let { keytipProps } = item;
+    if (keytipProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
-      <div
-        ref={ (el: HTMLDivElement) =>
-          this._splitButtonContainers.set(item.key, el)
-        }
-        role={ 'button' }
-        aria-labelledby={ item.ariaLabel }
-        className={ classNames.splitContainerFocus }
-        aria-disabled={ this._isItemDisabled(item) }
-        aria-haspopup={ true }
-        aria-describedby={ item.ariaDescription }
-        aria-checked={ item.isChecked || item.checked }
-        aria-posinset={ focusableElementIndex + 1 }
-        aria-setsize={ totalItemCount }
-        onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
-        onMouseLeave={ this._onMouseItemLeave.bind(this, { ...item, subMenuProps: null, items: null }) }
-        onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
-        onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
-        onClick={ this._executeItemClick.bind(this, item) }
-        tabIndex={ 0 }
-        data-is-focusable={ true }
-      >
-        <span
-          aria-hidden={ true }
-          className={ classNames.splitContainer }
-        >
-          { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-          { this._renderSplitDivider(item) }
-          { this._renderSplitIconButton(item, classNames, index) }
-        </span>
-      </div >
+      <KeytipData keytipProps={ keytipProps } disabled={ this._isItemDisabled(item) }>
+        { (keytipAttributes: any): JSX.Element => (
+          <div
+            data-ktp-target={ keytipAttributes['data-ktp-target'] }
+            ref={ (el: HTMLDivElement) =>
+              this._splitButtonContainers.set(item.key, el)
+            }
+            role={ 'button' }
+            aria-labelledby={ item.ariaLabel }
+            className={ classNames.splitContainerFocus }
+            aria-disabled={ this._isItemDisabled(item) }
+            aria-haspopup={ true }
+            aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
+            aria-checked={ item.isChecked || item.checked }
+            aria-posinset={ focusableElementIndex + 1 }
+            aria-setsize={ totalItemCount }
+            onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
+            onMouseLeave={ this._onMouseItemLeave.bind(this, { ...item, subMenuProps: null, items: null }) }
+            onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
+            onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
+            onClick={ this._executeItemClick.bind(this, item) }
+            tabIndex={ 0 }
+            data-is-focusable={ true }
+          >
+            <span
+              aria-hidden={ true }
+              className={ classNames.splitContainer }
+            >
+              { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+              { this._renderSplitDivider(item) }
+              { this._renderSplitIconButton(item, classNames, index, keytipAttributes) }
+            </span>
+          </div >
+        ) }
+      </KeytipData>
     );
   }
 
@@ -693,7 +702,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, keytipAttributes: any) {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const itemProps = {
       onClick: this._onSplitItemClick.bind(this, item),
@@ -710,7 +719,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseLeave: this._onMouseItemLeave.bind(this, item),
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item),
-        'data-is-focusable': false
+        'data-is-focusable': false,
+        'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target']
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );

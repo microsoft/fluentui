@@ -2,8 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  getRTL,
-  createRef
+  getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -32,19 +31,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     maxDisplayedItems: 999
   };
 
-  protected focusZone = createRef<FocusZone>();
-
   constructor(props: IBreadcrumbProps) {
     super(props);
-  }
-
-  /**
-   * Sets focus to the first breadcrumb link.
-   */
-  public focus(): void {
-    if (this.focusZone.value) {
-      this.focusZone.value.focus();
-    }
   }
 
   public render() {
@@ -105,7 +93,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
         role='navigation'
         aria-label={ ariaLabel }
       >
-        <FocusZone componentRef={ this.focusZone } direction={ FocusZoneDirection.horizontal } >
+        <FocusZone direction={ FocusZoneDirection.horizontal } >
           <ol className={ css('ms-Breadcrumb-list', styles.list) }>
             { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY }>

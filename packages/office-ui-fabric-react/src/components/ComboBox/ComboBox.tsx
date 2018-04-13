@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps, IComboBoxOptionStyles } from './ComboBox.types';
+import { IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -18,8 +18,7 @@ import {
   KeyCodes,
   customizable,
   css,
-  createRef,
-  shallowCompare
+  createRef
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -32,7 +31,7 @@ import {
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface IComboBoxState {
 
@@ -77,25 +76,6 @@ enum HoverStatus {
   // This is the default "normal" state
   // when no hover has happened or a hover is in progress
   default = -1
-}
-
-interface IComboBoxOptionWrapperProps extends IComboBoxOption {
-  // True if the option is currently selected
-  isSelected: boolean;
-}
-
-// Internal class that is used to wrap all ComboBox options
-// This is used to customize when we want to rerender components,
-// so we don't rerender every option every time render is executed
-class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
-  public render() {
-    return this.props.children;
-  }
-
-  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps) {
-    // The children will always be different, so we ignore that prop
-    return !shallowCompare({ ...this.props, children: undefined }, { ...newProps, children: undefined });
-  }
 }
 
 @customizable('ComboBox', ['theme'])
@@ -334,7 +314,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
-        <KeytipHost keytipProps={ keytipProps }>
+        <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
           { (keytipAttributes: any): JSX.Element => (
             <div
               data-ktp-target={ keytipAttributes['data-ktp-target'] }
@@ -387,7 +367,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               />
             </div>
           ) }
-        </KeytipHost>
+        </KeytipData>
         { isOpen && (
           (onRenderContainer as any)({
             ...this.props,
@@ -612,15 +592,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.autoComplete === 'on') {
 
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-      const items = currentOptions.map((item, index) => { return { ...item, index }; })
-        .filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider)
-        .filter((option) => this._getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0);
+      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
       if (items.length > 0) {
-        // use ariaLabel as the value when the option is set
-        const text: string = this._getPreviewText(items[0]);
-
         // If the user typed out the complete option text, we don't need any suggested display text anymore
-        newSuggestedDisplayValue = text.toLocaleLowerCase() !== updatedValue ? text : '';
+        newSuggestedDisplayValue = items[0].text.toLocaleLowerCase() !== updatedValue ? items[0].text : '';
 
         // remember the index of the match we found
         newCurrentPendingValueValidIndex = items[0].index;
@@ -628,9 +603,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else {
 
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
-      const items = currentOptions.map((item, index) => { return { ...item, index }; })
-        .filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider)
-        .filter((option) => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
+      const items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase() === updatedValue);
 
       // if we fould a match remember the index
       if (items.length === 1) {
@@ -678,13 +651,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         updatedValue = updatedValue.toLocaleLowerCase();
 
         // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-        const items = currentOptions.map((item, i) => { return { ...item, index: i }; })
-          .filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider)
-          .filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+        const items = currentOptions.map((item, i) => { return { ...item, index: i }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
         // If we found a match, udpdate the state
         if (items.length > 0) {
-          this._setPendingInfo(originalUpdatedValue, items[0].index, this._getPreviewText(items[0]));
+          this._setPendingInfo(originalUpdatedValue, items[0].index, items[0].text);
         }
 
         // Schedule a timeout to clear the pending value after the timeout span
@@ -1062,14 +1033,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
-    const wrapperProps = {
-      key: item.key,
-      index: item.index,
-      styles: optionStyles,
-      disabled: item.disabled,
-      isSelected: isSelected,
-      text: item.text,
-    };
 
     return (
       !this.props.multiSelect ? (
@@ -1353,7 +1316,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (index >= 0 && index < currentOptions.length) {
       const option = currentOptions[index];
-      this._setPendingInfo(this._getPreviewText(option), index, this._getPreviewText(option));
+      this._setPendingInfo(option.text, index, option.text);
     } else {
       this._clearPendingInfo();
     }
@@ -1809,12 +1772,5 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     return retKeys;
-  }
-
-  // For scenarios where the option's text prop contains embedded styles, we use the option's
-  // ariaLabel value as the text in the input and for autocomplete matching. We know to use this
-  // when the useAriaLabelAsText prop is set to true
-  private _getPreviewText(item: IComboBoxOption): string {
-    return item.useAriaLabelAsText && item.ariaLabel ? item.ariaLabel : item.text;
   }
 }

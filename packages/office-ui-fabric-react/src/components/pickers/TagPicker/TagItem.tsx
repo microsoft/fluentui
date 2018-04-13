@@ -14,7 +14,6 @@ export const TagItem = (props: IPickerItemProps<ITag>) => (
       styles.root,
       { 'is-selected': props.selected } as IDictionary,
       props.selected && styles.isSelected) }
-    role={ 'listitem' }
     key={ props.index }
     data-selection-index={ props.index }
     data-is-focusable={ !props.disabled && true }

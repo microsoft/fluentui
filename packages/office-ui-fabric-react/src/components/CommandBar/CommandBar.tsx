@@ -21,7 +21,7 @@ import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 import { createRef } from '../../Utilities';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 const styles: any = stylesImport;
 
@@ -201,13 +201,25 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     const hasIcon = !!item.icon || !!item.iconProps;
     const isNameVisible = !!item.name && !item.iconOnly;
     const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : undefined);
+    const itemHasSubmenu = hasSubmenu(item);
+    let { keytipProps } = item;
+    if (keytipProps && itemHasSubmenu) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
 
     let command: React.ReactNode;
     if (item.href) {
       // Allow the disabled property on anchor elements for commandbar
       const nativeProps = getNativeProps(item, anchorProperties.concat(['disabled']));
       command = (
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+        <KeytipData
+          keytipProps={ keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ item.disabled }
+        >
           { (keytipAttributes: any): JSX.Element => (
             <a
               { ...nativeProps }
@@ -219,7 +231,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               title={ '' }
               aria-disabled={ item.inactive }
               data-command-key={ itemKey }
-              aria-haspopup={ hasSubmenu(item) }
+              aria-haspopup={ itemHasSubmenu }
               role='menuitem'
               aria-label={ ariaLabel }
               aria-setsize={ setSize }
@@ -235,12 +247,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               ) }
             </a>
           ) }
-        </KeytipHost>
+        </KeytipData>
       );
     } else if (isLink) {
       const nativeProps = getNativeProps(item, buttonProperties);
       command = (
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
+        <KeytipData
+          keytipProps={ keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ item.disabled }
+        >
           { (keytipAttributes: any): JSX.Element => (
             <button
               { ...nativeProps }
@@ -251,8 +267,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               title={ '' }
               aria-disabled={ item.inactive }
               data-command-key={ itemKey }
-              aria-haspopup={ hasSubmenu(item) }
-              aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
+              aria-haspopup={ itemHasSubmenu }
+              aria-expanded={ itemHasSubmenu ? expandedMenuItemKey === item.key : undefined }
               role='menuitem'
               aria-label={ ariaLabel }
               aria-setsize={ setSize }
@@ -266,46 +282,41 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                   { item.name }
                 </span>
               ) }
-              { hasSubmenu(item) ? (
+              { itemHasSubmenu ? (
                 <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
               ) : (null) }
             </button>
           )
           }
-        </KeytipHost >
+        </KeytipData >
       );
     } else {
       // Allow the disabled property on div elements for commandbar
       const nativeProps = getNativeProps(item, divProperties.concat(['disabled']));
       command = (
-        <KeytipHost keytipProps={ item.keytipProps } ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }>
-          { (keytipAttributes: any): JSX.Element => (
-            <div
-              { ...nativeProps }
-              { ...keytipAttributes }
-              id={ this._id + item.key }
-              className={ className }
-              title={ '' }
-              aria-disabled={ item.inactive }
-              data-command-key={ itemKey }
-              aria-haspopup={ hasSubmenu(item) }
-              aria-label={ ariaLabel }
-              aria-setsize={ setSize }
-              aria-posinset={ posInSet }
+        <div
+          { ...nativeProps }
+          id={ this._id + item.key }
+          className={ className }
+          title={ '' }
+          aria-disabled={ item.inactive }
+          data-command-key={ itemKey }
+          aria-haspopup={ itemHasSubmenu }
+          aria-label={ ariaLabel }
+          aria-setsize={ setSize }
+          aria-posinset={ posInSet }
+        >
+          { (hasIcon) ? this._renderIcon(item) : (null) }
+          { (isNameVisible) && (
+            <span
+              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+              aria-hidden='true'
+              role='presentation'
             >
-              { (hasIcon) ? this._renderIcon(item) : (null) }
-              { (isNameVisible) && (
-                <span
-                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
-                  aria-hidden='true'
-                  role='presentation'
-                >
-                  { item.name }
-                </span>
-              ) }
-            </div>
+              { item.name }
+            </span>
           ) }
-        </KeytipHost>
+        </div>
       );
     }
 

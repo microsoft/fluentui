@@ -1,4 +1,5 @@
 import { ILayerStyleProps, ILayerStyles } from './Layer.types';
+import { ZIndexes } from '../../Styling';
 
 export const getStyles = (
   props: ILayerStyleProps
@@ -15,7 +16,7 @@ export const getStyles = (
         'ms-Layer--fixed',
         {
           position: 'fixed',
-          zIndex: 1000000,
+          zIndex: ZIndexes.Layer,
           top: 0,
           left: 0,
           width: '100vw',

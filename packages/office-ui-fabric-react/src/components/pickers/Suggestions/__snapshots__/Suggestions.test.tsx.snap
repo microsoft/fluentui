@@ -1541,6 +1541,9 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="ms-Suggestions-title"
+  />
 </div>
 `;
 
@@ -3085,5 +3088,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="ms-Suggestions-title"
+  />
 </div>
 `;

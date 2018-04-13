@@ -16,7 +16,7 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { KeytipHost } from '../../Keytip';
+import { KeytipData } from '../../Keytip';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -34,9 +34,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private get _isExpanded(): boolean {
-    if (this.props.persistMenu) {
-      return !this.state.menuProps!.hidden;
-    }
     return !!this.state.menuProps;
   }
 
@@ -69,13 +66,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
-    let menuProps = null;
-    if (props.persistMenu && props.menuProps) {
-      menuProps = props.menuProps;
-      menuProps.hidden = true;
-    }
     this.state = {
-      menuProps: menuProps
+      menuProps: null
     };
   }
 
@@ -235,12 +227,23 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
-      keytipProps
+      disabled
     } = props;
+    let { keytipProps } = props;
+    if (keytipProps && menuProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
 
     const Content = (
       // If we're making a split button, we won't put the keytip here
-      <KeytipHost keytipProps={ !this._isSplitButton ? keytipProps : undefined } ariaDescribedBy={ (buttonProps as any)['aria-describedby'] }>
+      <KeytipData
+        keytipProps={ !this._isSplitButton ? keytipProps : undefined }
+        ariaDescribedBy={ (buttonProps as any)['aria-describedby'] }
+        disabled={ disabled }
+      >
         { (keytipAttributes: any): JSX.Element => (
           <Tag { ...buttonProps } { ...keytipAttributes }>
             <div className={ this._classNames.flexContainer } >
@@ -253,7 +256,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             </div>
           </Tag>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
 
     if (menuProps && menuProps.doNotLayer) {
@@ -416,21 +419,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _dismissMenu = (): void => {
-    let menuProps = null;
-    if (this.props.persistMenu && this.state.menuProps) {
-      menuProps = this.state.menuProps;
-      menuProps.hidden = true;
-    }
-    this.setState({ menuProps: menuProps });
+    this.setState({ menuProps: null });
   }
 
   private _openMenu = (): void => {
     if (this.props.menuProps) {
-      const menuProps = this.props.menuProps;
-      if (this.props.persistMenu) {
-        menuProps.hidden = false;
-      }
-      this.setState({ menuProps: menuProps });
+      this.setState({ menuProps: this.props.menuProps });
     }
   }
 
@@ -440,11 +434,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
     const { menuProps } = this.props;
     const currentMenuProps = this.state.menuProps;
-    if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden ? this._openMenu() : this._dismissMenu();
-    } else {
-      currentMenuProps ? this._dismissMenu() : this._openMenu();
-    }
+    currentMenuProps ? this._dismissMenu() : this._openMenu();
   }
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
@@ -455,8 +445,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       getSplitButtonClassNames,
       onClick,
       primaryDisabled,
-      keytipProps
+      menuProps
     } = this.props;
+    let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames ? getSplitButtonClassNames(
       !!disabled,
@@ -477,8 +468,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
     const ariaDescribedBy = buttonProps.ariaDescription || '';
 
+    if (keytipProps && menuProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
-      <KeytipHost keytipProps={ keytipProps }>
+      <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
         { (keytipAttributes: any): JSX.Element => (
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }
@@ -505,7 +503,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             </span>
           </div>
         ) }
-      </KeytipHost>
+      </KeytipData>
     );
   }
 
@@ -525,7 +523,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes?: any): JSX.Element {
+  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
     let {
       menuIconProps
     } = this.props;
