@@ -136,6 +136,10 @@ export interface IShimmerStyles {
   dataWrapper?: IStyle;
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementType {
   LINE = 'line',
   CIRCLE = 'circle',
@@ -145,6 +149,10 @@ export const enum ShimmerElementType {
   gap = 'gap'
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementVerticalAlign {
   CENTER = 'center',
   BOTTOM = 'bottom',
