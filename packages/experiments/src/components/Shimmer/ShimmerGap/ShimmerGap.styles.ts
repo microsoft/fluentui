@@ -2,7 +2,7 @@ import {
   IShimmerGapStyleProps,
   IShimmerGapStyles
 } from './ShimmerGap.types';
-import { IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleSet, DefaultPalette } from '../../../Styling';
 
 export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
   const {

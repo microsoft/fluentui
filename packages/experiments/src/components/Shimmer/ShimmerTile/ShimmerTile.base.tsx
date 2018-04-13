@@ -8,10 +8,10 @@ import {
   IShimmerTileStyleProps,
   IShimmerTileStyles
 } from './ShimmerTile.types';
-import { TileLayoutSizes, TileSize } from 'experiments/lib/Tile';
+import { TileLayoutSizes, TileSize } from '../../Tile';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
 import { getRenderedElements } from '../Shimmer.base';
-import { ShimmerElementType as ElemType } from 'experiments/lib/Shimmer';
+import { ShimmerElementType as ElemType } from '../Shimmer.types';
 
 const enum ShimmerTileLayoutValues {
   largeSquareWidth = 96,
@@ -59,7 +59,7 @@ const PLACEHOLDER_SIZES: {
 const getClassNames = classNamesFunction<IShimmerTileStyleProps, IShimmerTileStyles>();
 
 export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
-  private _classNames: {[key in keyof IShimmerTileStyles]: string};
+  private _classNames: { [key in keyof IShimmerTileStyles]: string };
 
   constructor(props: IShimmerTileProps) {
     super(props);
