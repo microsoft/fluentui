@@ -107,6 +107,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
+      isResultsFooterVisible,
       suggestionsAvailableAlertText,
       suggestionsHeaderText,
     } = this.props;
@@ -183,7 +184,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           />) : (null)
         }
         {
-          !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
+          isResultsFooterVisible !== false && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
             (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
               { footerTitle && footerTitle(this.props) }
             </div>) : (null)
