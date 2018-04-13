@@ -3,7 +3,7 @@ import {
   Shimmer,
   ShimmerElementType as ElemType,
   ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'experiments/lib/Shimmer';
+} from '@uifabric/experiments/lib/Shimmer';
 
 export class ShimmerBasicExample extends React.Component<{}, {}> {
 
