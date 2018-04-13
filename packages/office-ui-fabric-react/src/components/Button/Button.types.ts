@@ -240,6 +240,15 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Optional keytip for this button
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Menu will not be created or destroyed when opened or closed, instead it
+   * will be hidden. This will improve perf of the menu opening but could potentially
+   * impact overall perf by having more elemnts in the dom. Should only be used
+   * when perf is important.
+   * Note: This may increase the amount of time it takes for the button itself to mount.
+   */
+  persistMenu?: boolean;
 }
 
 export enum ElementType {
@@ -510,9 +519,4 @@ export interface IButtonStyles {
    * Style override for the SplitButton FlexContainer.
    */
   splitButtonFlexContainer?: IStyle;
-
-  /**
-   * Style override for focus on the the SplitButton Container
-   */
-  splitButtonFlexContainerFocus?: IStyle;
 }

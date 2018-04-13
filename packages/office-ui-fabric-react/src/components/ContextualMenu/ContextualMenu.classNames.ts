@@ -22,7 +22,6 @@ export interface IMenuItemClassNames {
   subMenuIcon: string;
   label: string;
   splitContainer: string;
-  splitContainerFocus: string;
   splitPrimary: string;
   splitMenu: string;
   linkContentMenu: string;
@@ -201,9 +200,6 @@ export const getItemClassNames = memoizeFunction((
     ],
     splitContainer: [
       styles.splitButtonFlexContainer,
-    ],
-    splitContainerFocus: [
-      styles.splitButtonFlexContainerFocus,
       !disabled && !checked && [{
         selectors: {
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
