@@ -1,6 +1,6 @@
-import { loadTheme } from '../../Styling';
+import { getTheme } from '../../Styling';
 
-const defaultTheme = loadTheme({});
+const defaultTheme = getTheme(true);
 
 export const defaultPalette = Object.keys(defaultTheme.palette).map(variableName => ({
   key: variableName,
@@ -13,5 +13,5 @@ export const defaultSemanticColors = Object.keys(defaultTheme.semanticColors).ma
   key: variableName,
   name: variableName,
   value: (defaultTheme.semanticColors as any)[variableName],
-  description: '',
+  description: (defaultTheme.semanticColors as any)[variableName].indexOf('@deprecated') >= 0 ? 'Deprecated' : '',
 }));

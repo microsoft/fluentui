@@ -1,13 +1,13 @@
 import { IThemePageStyleProps, IThemePageStyles } from './ThemePage.types';
 import {
   getFocusStyle,
-  loadTheme,
+  getTheme,
 } from '../../Styling';
 
 export const getStyles = (
   props: IThemePageStyleProps
 ): IThemePageStyles => {
-  const theme = loadTheme({});
+  const theme = getTheme();
   return ({
     colorSwatch: [
       'ThemePage-colorSwatch',
