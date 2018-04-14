@@ -22,7 +22,7 @@
     "@types/enzyme": "3.1.5",
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/es6-promise": "0.0.32",
-    "@types/jest": "21.1.8",
+    "@types/jest": "22.2.0",
     "@types/prop-types": "15.5.2",
     "@types/react": "16.0.25",
     "@types/react-dom": "16.0.3",
@@ -42,7 +42,7 @@
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-highlight": "0.10.0",
+    "react-highlight": "^0.10.0",
     "react-test-renderer": "^16.2.0",
     "resemblejs": "~2.2.3",
     "sinon": "^4.1.3"

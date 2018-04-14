@@ -7,7 +7,7 @@ import { Form } from '../../Form';
 import { DEFAULT_DEBOUNCE } from '../../FormBaseInput';
 import { FormDatePicker } from './FormDatePicker';
 
-describe('FormDatePicker Unit Tests', () => {
+describe.skip('FormDatePicker Unit Tests', () => {
   describe('Renders for all combinations of props', () => {
     let renderedForm: Form;
     let renderedInput: HTMLElement;

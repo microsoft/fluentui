@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/webpack-env": "1.13.0",
     "@types/react": "16.0.25",
-    "@types/jest": "21.1.8",
+    "@types/jest": "22.2.0",
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",

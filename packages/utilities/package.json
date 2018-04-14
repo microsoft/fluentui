@@ -22,7 +22,7 @@
     "webpack"
   ],
   "devDependencies": {
-    "@types/jest": "21.1.8",
+    "@types/jest": "22.2.0",
     "@types/enzyme": "3.1.5",
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/prop-types": "15.5.2",

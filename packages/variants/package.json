@@ -19,10 +19,11 @@
   "disabledTasks": [
     "copy",
     "sass",
-    "karma"
+    "karma",
+    "jest"
   ],
   "devDependencies": {
-    "@types/jest": "21.1.8",
+    "@types/jest": "22.2.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
