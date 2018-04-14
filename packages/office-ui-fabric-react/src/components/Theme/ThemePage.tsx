@@ -48,6 +48,9 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
   }
 
   public render() {
+    // Don't mutate state to display lists
+    const palette = [...this.state.palette];
+    const semanticColors = [...this.state.semanticColors];
     return (
       <ComponentPage
         title='Themes'
@@ -61,11 +64,11 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
         otherSections={ [
           {
             title: 'Default Palette',
-            section: this._colorList(this.state.palette, 'palette')
+            section: this._colorList(palette, 'palette')
           },
           {
             title: 'Default Semantic Colors',
-            section: this._colorList(this.state.semanticColors, 'semanticColors')
+            section: this._colorList(semanticColors, 'semanticColors')
           },
         ] }
         isHeaderVisible={ this.props.isHeaderVisible }
@@ -154,15 +157,13 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     });
   }
 
-  private _onColorChanged(
-    index: number,
-    newColor: string,
-  ) {
-    const { palette, semanticColors, activeList } = this.state;
+  private _onColorChanged(index: number, newColor: string) {
+    const { activeList } = this.state;
     const partialPalette: Partial<IPalette> = {};
     const partialSemanticColors: Partial<ISemanticColors> = {};
 
     if (activeList === 'palette') {
+      const palette = [...this.state.palette];
       const paletteColor = palette[index];
       paletteColor.value = newColor;
       palette[index] = paletteColor;
@@ -170,6 +171,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
         (palette as any)[palette[i].key] = palette[i].value;
       }
     } else if (activeList === 'semanticColors') {
+      const semanticColors = [...this.state.semanticColors];
       const semanticColor = semanticColors[index];
       semanticColor.value = newColor;
       semanticColors[index] = semanticColor;
@@ -185,9 +187,6 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     const partialTheme = { ...partialPalette, ...partialSemanticColors };
 
     loadTheme({ palette: partialTheme });
-
-    // The theme has changed values, but color state is the same. Force an update on the list.
-    this._list.forceUpdate();
   }
 
   private _onPickerDismiss() {
