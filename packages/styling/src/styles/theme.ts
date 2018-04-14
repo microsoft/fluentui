@@ -125,7 +125,6 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
 // This does NOT fix deprecated slots.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
-  console.log(depComments);
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
