@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
   "typings": "lib-es2015/index.d.ts",
   "sideEffects": false,
   "scripts": {
