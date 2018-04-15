@@ -49,24 +49,24 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
   };
 
   public replaceItem = (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]): void => {
-    let { items } = this.state;
-    let index: number = items.indexOf(itemToReplace);
+    const { items } = this.state;
+    const index: number = items.indexOf(itemToReplace);
     if (index > -1) {
-      let newItems = items.slice(0, index).concat(itemsToReplaceWith).concat(items.slice(index + 1));
+      const newItems = items.slice(0, index).concat(itemsToReplaceWith).concat(items.slice(index + 1));
       this.updateItems(newItems);
     }
   }
 
   protected renderItems = (): JSX.Element[] => {
-    let { items } = this.state;
+    const { items } = this.state;
     // tslint:disable-next-line:no-any
     return items.map((item: any, index: number) => this._renderItem(item, index));
   }
 
   // tslint:disable-next-line:no-any
   private _renderItem(item: any, index: number): JSX.Element {
-    let { removeButtonAriaLabel } = this.props;
-    let props = {
+    const { removeButtonAriaLabel } = this.props;
+    const props = {
       item,
       index,
       key: item.key ? item.key : index,
@@ -90,8 +90,8 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         />
       );
     } else {
-      let onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
-      let renderedItem = onRenderItem(props);
+      const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
+      const renderedItem = onRenderItem(props);
       return (
         props.menuItems.length > 0 ?
           (
@@ -120,7 +120,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
 
   // tslint:disable-next-line:no-any
   private _createMenuItems(item: any): IContextualMenuItem[] {
-    let menuItems: IContextualMenuItem[] = [];
+    const menuItems: IContextualMenuItem[] = [];
 
     if (this.props.editMenuItemText && this.props.getEditingItemText) {
       menuItems.push({

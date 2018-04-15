@@ -82,6 +82,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * Trap focus or not
    */
   trapFocus?: boolean;
+
+  /**
+   * Should block hover card or not
+   */
+  shouldBlockHoverCard?: () => void;
 }
 
 export interface IHoverCardStyles {

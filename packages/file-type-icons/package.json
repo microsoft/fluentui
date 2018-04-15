@@ -3,7 +3,6 @@
   "version": "0.6.0",
   "description": "Office UI Fabric file type icon set.",
   "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
   "typings": "lib-es2015/index.d.ts",
   "sideEffects": false,
   "repository": {

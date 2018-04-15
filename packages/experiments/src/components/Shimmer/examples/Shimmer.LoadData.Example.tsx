@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Shimmer } from 'experiments/lib/Shimmer';
+import { Shimmer } from '../Shimmer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export interface IShimmerLoadDataExample {
