@@ -28,7 +28,7 @@ describe('SelectedItemsList', () => {
         <BaseSelectedItemsListWithType
         />
       );
-      let tree = component.toJSON();
+      const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
@@ -62,7 +62,7 @@ describe('SelectedItemsList', () => {
         root
       ) as TypedBaseSelectedItemsList;
 
-      let items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
+      const items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
       itemsList.addItems(items);
 
       expect(itemsList.items.length).toEqual(2);

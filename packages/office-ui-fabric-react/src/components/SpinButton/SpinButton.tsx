@@ -415,15 +415,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param event - the keyboardEvent that was fired
    */
   private _handleKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
+
+    // eat the up and down arrow keys to keep focus in the spinButton
+    // (especially when a spinButton is inside of a FocusZone)
+    if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     if (this.props.disabled) {
       this._stop();
-
-      // eat the up and down arrow keys to keep the page from scrolling
-      if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
       return;
     }
 

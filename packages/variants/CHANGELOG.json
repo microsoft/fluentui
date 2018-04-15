@@ -2,6 +2,20 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.3.2",
+      "tag": "@uifabric/variants_v5.3.2",
+      "date": "Mon, 02 Apr 2018 22:15:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f4227ad2577683c8fcfb1181c22d79e09809df12",
+            "comment": "Variants: improve algorithm for generating strong variant that better handles inversion"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.1",
       "tag": "@uifabric/variants_v5.3.1",
       "date": "Thu, 29 Mar 2018 01:39:41 GMT",

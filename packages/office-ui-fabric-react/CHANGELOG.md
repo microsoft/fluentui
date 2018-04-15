@@ -1,6 +1,96 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Apr 2018 15:59:01 GMT and should not be manually modified.
+
+## 5.81.1
+Thu, 12 Apr 2018 15:59:01 GMT
+
+### Patches
+
+- Coachmark: The pulsing beacon animation moved to the Styling package.
+
+## 5.81.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- Link: fix the style interface
+
+### Patches
+
+- FocusZone: updating to update alignment on click.
+- SplitButton: Allow the primary portion of a splitButton (when it a menu) to collapse a submenu
+- DatePicker: Remove extra asterisks, includes using TextField's label.
+- Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves.
+- SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border.
+
+## 5.80.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- FocusTrapZone: Add KeyDown callback (in line with FocusZone)
+- OverflowSet: Add Foucs(firstChild) and focusElement() functions
+- Convert Persona and PersonaCoin and PersonaPresence to  mergeStyles. Create IPersonaSharedProps for props that apply to Persona and PersonaCoin and PersonaPresence. Other refactors.
+
+### Patches
+
+- Re-focus DatePicker input after calendar is closed
+- Contexual Menu: Move SplitButtonContainer to be defined in the constructor instead of ComponentDidMount
+- Dropdown: color of caretDown changed to highlighttext on focus
+- Fix IconButton state styles
+- ComboBox: Make focus wrap in in the menu (to align with dropdwn and customer feedback)_
+- Split PersonaCoin and PersonaPresence files for more consistency.
+- Move sub-components to sub-folders
+- Fix for tooltip host css changes
+
+## 5.79.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- Stops event propagation of Esc keypress on DatePicker
+
+## 5.79.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Added dividerAs prop to Breadcrumb component allowing the user to pass a custom icon to be used as the trail divider icon.
+- Add the ability to use custom props for the panel used to render options on small devices.
+- Panel: pass ID for header text element to custom renderer
+- Callout/Positioning: Improve callout perf with hidden flag and improve repositioning logic
+
+### Patches
+
+- ComboBox: Adding support for Alt or Meta + Up to close menus
+- Fix SearchBox background color.
+- Fixes bug with undefined reference
+- Fixing bug dialog content does not grow fully to take up all the space provided by parent
+- Make the link button selectable.
+
+## 5.78.0
+Tue, 03 Apr 2018 10:16:05 GMT
+
+### Minor changes
+
+- Brings changes to DetailsList, DetailsRow and DetailsRowFields to enable use of a basic Shimmer.
+
+### Patches
+
+- Fix phantom scrollbar in Panel popups in Firefox
+- Adding a longer delay as an option to the tooltip comonent. Before there was only a medium (300ms) or zero (0ms) delay.
+
+## 5.77.0
+Mon, 02 Apr 2018 22:15:06 GMT
+
+### Minor changes
+
+- Make tooltip interactable if given a delay before closing.
+
+### Patches
+
+- Add overflow control to ms-Document-details
 
 ## 5.76.0
 Sat, 31 Mar 2018 17:40:00 GMT

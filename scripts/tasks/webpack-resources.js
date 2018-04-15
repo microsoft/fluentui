@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('./merge');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
@@ -37,7 +38,8 @@ module.exports = {
           mode: 'development',
           output: {
             filename: `[name].js`,
-            path: path.resolve(process.cwd(), 'dist')
+            path: path.resolve(process.cwd(), 'dist'),
+            pathinfo: false
           },
           resolveLoader,
           module,
@@ -88,18 +90,24 @@ module.exports = {
           extensions: ['.ts', '.tsx', '.js']
         },
 
-        devtool: 'source-map',
+        devtool: 'eval',
 
         module: {
           rules: [
             {
               test: [/\.tsx?$/],
-              use: 'ts-loader',
+              use: {
+                loader: 'ts-loader',
+                options: {
+                  experimentalWatchApi: true,
+                  transpileOnly: true
+                }
+              },
               exclude: [
                 /node_modules/,
                 /\.scss.ts$/,
                 /\.test.tsx?$/
-              ]
+              ],
             },
             {
               test: /\.scss$/,
@@ -143,7 +151,8 @@ module.exports = {
           new webpack.WatchIgnorePlugin([
             /\.js$/,
             /\.d\.ts$/
-          ])
+          ]),
+          new ForkTsCheckerWebpackPlugin()
         ]
       },
       customConfig
@@ -161,7 +170,6 @@ function getPlugins(
   const plugins = [];
 
   if (isProduction) {
-
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',

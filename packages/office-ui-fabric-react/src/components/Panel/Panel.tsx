@@ -100,7 +100,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const isLeft = type === PanelType.smallFixedNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
-    const headerTextId = id + '-headerText';
+    const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
@@ -122,11 +122,13 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       );
     }
 
+    const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
+
     return (
       <Layer { ...layerProps }>
         <Popup
           role='dialog'
-          ariaLabelledBy={ headerText && headerTextId }
+          ariaLabelledBy={ header ? headerTextId : undefined }
           onDismiss={ this.dismiss }
           className={
             css(
@@ -173,15 +175,13 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={
-                isLightDismiss || isHiddenOnDismiss || (focusTrapZoneProps && focusTrapZoneProps.isClickableOutsideFocusTrap)
-              }
+              isClickableOutsideFocusTrap={ focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { onRenderNavigation(this.props, this._onRenderNavigation) }
               </div>
               <div className={ css('ms-Panel-contentInner', styles.contentInner) } >
-                { onRenderHeader(this.props, this._onRenderHeader) }
+                { header }
                 { onRenderBody(this.props, this._onRenderBody) }
                 { onRenderFooter(this.props, this._onRenderFooter) }
               </div>
@@ -252,7 +252,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     return null;
   }
 
-  private _onRenderHeader = (props: IPanelProps): JSX.Element | null => {
+  private _onRenderHeader = (
+    props: IPanelProps,
+    defaultRender?: (props?: IPanelProps) => JSX.Element | null,
+    headerTextId?: string | undefined
+  ): JSX.Element | null => {
     const {
       headerText,
       headerClassName = '',
@@ -263,7 +267,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         <div className={ css('ms-Panel-header', styles.header) }>
           <p
             className={ css('ms-Panel-headerText', styles.headerText, headerClassName) }
-            id={ this.state.id + '-headerText' }
+            id={ headerTextId }
             role='heading'
           >
             { headerText }

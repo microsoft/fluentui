@@ -14,6 +14,8 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   }
 
   public render() {
+    const customDivider = () => <span>*</span>;
+
     return (
       <div>
         <Label className={ exampleStyles.exampleLabel }>With no maxDisplayedItems</Label>
@@ -26,6 +28,20 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ] }
+          ariaLabel={ 'Website breadcrumb' }
+        />
+
+        <Label className={ exampleStyles.exampleLabel } style={ { marginTop: '24px' } }>With Custom Divider Icon</Label>
+        <Breadcrumb
+          items={ [
+            { text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
+          ] }
+          dividerAs={ customDivider }
           ariaLabel={ 'Website breadcrumb' }
         />
 

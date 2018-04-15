@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
-import { ShimmerApplicationExample } from 'experiments/lib/components/Shimmer/examples/Shimmer.Application.Example';
+import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 
 const ShimmerBasicExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
 // tslint:disable-next-line:max-line-length
@@ -36,7 +36,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               <ShimmerLoadDataExample />
             </ExampleCard>
             <ExampleCard
-              title='Details List with 1000 items loading in async way.'
+              title='Details List with 500 items loading in async way and having enabled Shimmer.'
               code={ ShimmerApplicationExampleCode }
             >
               <ShimmerApplicationExample />
