@@ -818,7 +818,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // callback shouldInputLoseFocusOnArrowKey
       if (
         isRangeSelected ||
-        (selectionStart > 0 && !isForward) ||
+        (selectionStart! > 0 && !isForward) ||
         (selectionStart !== inputValue.length && isForward) ||
         (!!this.props.handleTabKey && !(this.props.shouldInputLoseFocusOnArrowKey
           && this.props.shouldInputLoseFocusOnArrowKey(element)))

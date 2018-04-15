@@ -37,7 +37,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   private _hoverCard = createRef<HTMLDivElement>();
   private _dismissTimerId: number;
   private _openTimerId: number;
-  private _currentMouseTarget: EventTarget;
+  private _currentMouseTarget: EventTarget | null;
 
   private _styles: IHoverCardStyles;
 

@@ -911,7 +911,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         if (currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
           (autoComplete && pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
             (this._comboBox.value && this._comboBox.value.isValueSelected &&
-              currentPendingValue.length + (this._comboBox.value.selectionEnd - this._comboBox.value.selectionStart) === pendingOptionText.length) ||
+              currentPendingValue.length + (this._comboBox.value.selectionEnd! - this._comboBox.value.selectionStart!) === pendingOptionText.length) ||
             (this._comboBox.value && this._comboBox.value.inputElement && this._comboBox.value.inputElement.value.toLocaleLowerCase() === pendingOptionText)
           )) {
           this._setSelectedIndex(currentPendingValueValidIndex);
