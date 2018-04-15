@@ -44,7 +44,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               flex-grow: 1;
             }
         data-focuszone-id="FocusZone0"
-        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -287,7 +286,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               flex-shrink: 0;
             }
         data-focuszone-id="FocusZone7"
-        onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
