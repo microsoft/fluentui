@@ -146,7 +146,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
-        onClick={ this._onClick }
         onMouseDownCapture={ this._onMouseDown }
       >
         { this.props.children }
@@ -213,33 +212,22 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { onActiveElementChanged } = this.props;
 
-    this._setTargetElement(ev.target, false);
-    if (onActiveElementChanged) {
-      onActiveElementChanged(this._activeElement as HTMLElement, ev);
-    }
-  }
-
-  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._setTargetElement(ev.target, true);
-  }
-
-  private _setTargetElement = (target: EventTarget, forceUpdateAlignment?: boolean): void => {
-    const { onActiveElementChanged } = this.props;
-
-    if (this._isImmediateDescendantOfZone(target as HTMLElement)) {
-      this._activeElement = target as HTMLElement;
-      this._setFocusAlignment(this._activeElement, forceUpdateAlignment, forceUpdateAlignment);
+    if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
+      this._activeElement = ev.target as HTMLElement;
+      this._setFocusAlignment(this._activeElement);
     } else {
-      let parentElement = target as HTMLElement;
+      let parentElement = ev.target as HTMLElement;
 
       while (parentElement && parentElement !== this._root.value) {
         if (isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
           this._activeElement = parentElement;
-          this._setFocusAlignment(this._activeElement, forceUpdateAlignment, forceUpdateAlignment);
           break;
         }
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
       }
+    }
+    if (onActiveElementChanged) {
+      onActiveElementChanged(this._activeElement as HTMLElement, ev);
     }
   }
 
