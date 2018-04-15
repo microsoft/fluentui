@@ -142,9 +142,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     }
   }
 
+  private _shouldBlockHoverCard(): boolean {
+    return !!(this.props.shouldBlockHoverCard && this.props.shouldBlockHoverCard());
+  }
+
   // Show HoverCard
   private _cardOpen = (ev: MouseEvent): void => {
-    if (ev.type === 'keydown' && !(ev.which === KeyCodes.c)) {
+    if (this._shouldBlockHoverCard() || (ev.type === 'keydown' && !(ev.which === KeyCodes.c))) {
       return;
     }
     this._async.clearTimeout(this._dismissTimerId);
