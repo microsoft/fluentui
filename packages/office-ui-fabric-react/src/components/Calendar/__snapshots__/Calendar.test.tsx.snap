@@ -91,7 +91,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               aria-labelledby={undefined}
               className="ms-FocusZone"
               data-focuszone-id="FocusZone12"
-              onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -959,7 +958,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               aria-labelledby={undefined}
               className="ms-FocusZone"
               data-focuszone-id="FocusZone13"
-              onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
