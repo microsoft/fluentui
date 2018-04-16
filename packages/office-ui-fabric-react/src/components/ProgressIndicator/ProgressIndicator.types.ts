@@ -32,12 +32,12 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   /**
    * Label to display above the control.
    */
-  label?: string;
+  label?: React.ReactNode;
 
   /**
    * Text describing or supplementing the operation.
    */
-  description?: string;
+  description?: React.ReactNode;
 
   /**
    * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
