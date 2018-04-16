@@ -2,7 +2,8 @@ import {
   IStyle,
   IRawStyle,
   keyframes,
-  PulsingBeaconAnimationStyles
+  PulsingBeaconAnimationStyles,
+  ZIndexes
 } from '../../Styling';
 
 export interface ICoachmarkStyleProps {
