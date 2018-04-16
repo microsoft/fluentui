@@ -17,7 +17,7 @@ export class StaticListPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/StaticList/StaticList.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/StaticList/StaticList.types.ts')
             ] }
           />
         }

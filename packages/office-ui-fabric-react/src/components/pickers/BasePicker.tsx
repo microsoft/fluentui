@@ -3,16 +3,17 @@ import {
   BaseComponent,
   KeyCodes,
   css,
-  createRef
+  createRef,
+  elementContains
 } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
-import { Autofill } from '../Autofill/Autofill';
+import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
@@ -35,8 +36,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected selection: Selection;
 
   protected root = createRef<HTMLDivElement>();
-  protected input = createRef<Autofill>();
-  protected focusZone = createRef<FocusZone>();
+  protected input = createRef<IAutofill>();
+  protected focusZone = createRef<IFocusZone>();
   protected suggestionElement = createRef<Suggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
@@ -417,30 +418,38 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    this.setState({ isFocused: true });
-    this.selection.setAllSelected(false);
-    if (this.input.value && this.input.value.value === '' && this.props.onEmptyInputFocus) {
-      this.onEmptyInputFocus();
-      this.setState({
-        isMostRecentlyUsedVisible: true,
-        moreSuggestionsAvailable: false,
-        suggestionsVisible: true
-      });
-    } else if (this.input.value && this.input.value.value) {
-      this.setState({
-        isMostRecentlyUsedVisible: false,
-        suggestionsVisible: true
-      });
-    }
-    if (this.props.inputProps && this.props.inputProps.onFocus) {
-      this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+    // Only trigger all of the focus if this component isn't already focused.
+    // For example when an item is selected or removed from the selected list it should be treated
+    // as though the input is still focused.
+    if (!this.state.isFocused) {
+      this.setState({ isFocused: true });
+      this.selection.setAllSelected(false);
+      if (this.input.value && this.input.value.value === '' && this.props.onEmptyInputFocus) {
+        this.onEmptyInputFocus();
+        this.setState({
+          isMostRecentlyUsedVisible: true,
+          moreSuggestionsAvailable: false,
+          suggestionsVisible: true
+        });
+      } else if (this.input.value && this.input.value.value) {
+        this.setState({
+          isMostRecentlyUsedVisible: false,
+          suggestionsVisible: true
+        });
+      }
+      if (this.props.inputProps && this.props.inputProps.onFocus) {
+        this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+      }
     }
   }
 
   protected onInputBlur = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    this.setState({ isFocused: false });
-    if (this.props.inputProps && this.props.inputProps.onBlur) {
-      this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+    // Only blur if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+    if (!elementContains(this.root.value!, ev.relatedTarget as HTMLElement)) {
+      this.setState({ isFocused: false });
+      if (this.props.inputProps && this.props.inputProps.onBlur) {
+        this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+      }
     }
   }
 

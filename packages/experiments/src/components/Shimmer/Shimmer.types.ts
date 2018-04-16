@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  IStyle
-} from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface IShimmer {
@@ -107,20 +105,25 @@ export interface ICircle extends IShimmerElement {
 
 export interface IGap extends IShimmerElement {
   /**
+   * Sets the height of the shimmer gap in pixels.
+   * @default 16px
+   */
+  height?: number;
+  /**
    * The value will be calculated as '%' relative the to shimmer wrapper.
    */
   widthInPercentage?: number;
 
   /**
    * Sets the width of the Gap to an exact value in pixels.
-   * @default 5px
+   * @default 10px
    */
   widthInPixel?: number;
 }
 
 export interface IShimmerStyleProps {
   width?: number;
-  maxHeight?: number;
+  rowHeight?: number;
   isDataLoaded?: boolean;
   isBaseStyle?: boolean;
 }
@@ -131,14 +134,28 @@ export interface IShimmerStyles {
   dataWrapper?: IStyle;
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementType {
   LINE = 'line',
   CIRCLE = 'circle',
-  GAP = 'gap'
+  GAP = 'gap',
+  line = 'line',
+  circle = 'circle',
+  gap = 'gap'
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementVerticalAlign {
   CENTER = 'center',
   BOTTOM = 'bottom',
-  TOP = 'top'
+  TOP = 'top',
+  center = 'center',
+  bottom = 'bottom',
+  top = 'top'
 }

@@ -36,6 +36,10 @@ const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
+export interface ISelectionZone {
+  ignoreNextFocus: () => void;
+}
+
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   componentRef?: () => void;
   selection: ISelection;
@@ -192,6 +196,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else if (target === itemRoot && !this._isShiftPressed && !this._isCtrlPressed) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
+        } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
+          return;
         }
       }
 
@@ -234,6 +240,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else if (target === itemRoot) {
           this._onItemSurfaceClick(ev, index);
           break;
+        } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
+          return;
         }
       }
 

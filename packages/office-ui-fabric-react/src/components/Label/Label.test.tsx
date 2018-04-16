@@ -14,7 +14,7 @@ describe('Label', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <Label>test</Label>
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
 
     expect(renderedDOM.textContent).toEqual('test');
   });

@@ -1,25 +1,30 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css,
+  classNamesFunction,
+  customizable,
   divProperties,
   getNativeProps,
-  IRenderFunction
+  IRenderFunction,
 } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin';
 import {
   IPersonaProps,
+  IPersonaSharedProps,
+  IPersonaStyleProps,
+  IPersonaStyles,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
 } from './Persona.types';
-import {
-  PERSONA_PRESENCE,
-  PERSONA_SIZE
-} from './PersonaConsts';
-import * as stylesImport from './Persona.scss';
-const styles: any = stylesImport;
 
+const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
+
+/**
+ * Persona with no default styles.
+ * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ */
+@customizable('Persona', ['theme'])
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
@@ -35,67 +40,77 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public render() {
     const {
       hidePersonaDetails,
+      onRenderOptionalText,
       onRenderPrimaryText,
       onRenderSecondaryText,
       onRenderTertiaryText,
-      onRenderOptionalText,
     } = this.props;
     const size = this.props.size as PersonaSize;
 
     // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
     const {
+      allowPhoneInitials,
       className,
       coinProps,
       coinSize,
-      imageUrl,
+      getStyles,
       imageAlt,
       imageInitials,
-      initialsColor,
-      allowPhoneInitials,
-      presence,
-      primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      showSecondaryText,
+      imageUrl,
+      initialsColor,
       onPhotoLoadingStateChange,
-      onRenderCoin
+      onRenderCoin,
+      presence,
+      primaryText,
+      showSecondaryText,
+      theme,
     } = this.props;
 
-    const personaCoinProps = {
+    const personaCoinProps: IPersonaSharedProps = {
+      allowPhoneInitials,
       coinProps,
       coinSize,
-      imageUrl,
       imageAlt,
       imageInitials,
-      initialsColor,
-      allowPhoneInitials,
-      presence,
-      primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      size,
+      imageUrl,
+      initialsColor,
       onPhotoLoadingStateChange,
-      onRenderCoin
+      onRenderCoin,
+      presence,
+      primaryText,
+      size,
     };
+
+    const classNames = getClassNames(getStyles, {
+      theme: theme!,
+      className,
+      showSecondaryText,
+      presence,
+      size,
+    });
 
     const divProps = getNativeProps(this.props, divProperties);
     const personaDetails = (
-      <div className={ css('ms-Persona-details', styles.details) }>
+      <div className={ classNames.details }>
         { this._renderElement(
           this.props.primaryText,
-          css('ms-Persona-primaryText', styles.primaryText),
+          classNames.primaryText,
           onRenderPrimaryText) }
         { this._renderElement(
           this.props.secondaryText,
-          css('ms-Persona-secondaryText', styles.secondaryText),
+          classNames.secondaryText,
           onRenderSecondaryText) }
         { this._renderElement(
           this.props.tertiaryText,
-          css('ms-Persona-tertiaryText', styles.tertiaryText),
+          classNames.tertiaryText,
           onRenderTertiaryText) }
         { this._renderElement(
           this.props.optionalText,
-          css('ms-Persona-optionalText', styles.optionalText),
+          classNames.optionalText,
           onRenderOptionalText) }
         { this.props.children }
       </div>
@@ -104,15 +119,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     return (
       <div
         { ...divProps }
-        className={
-          css('ms-Persona',
-            styles.root,
-            className,
-            PERSONA_SIZE[size],
-            PERSONA_PRESENCE[presence as PersonaPresenceEnum],
-            showSecondaryText && styles.showSecondaryText
-          )
-        }
+        className={ classNames.root }
         style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
       >
         <PersonaCoin { ...personaCoinProps } />

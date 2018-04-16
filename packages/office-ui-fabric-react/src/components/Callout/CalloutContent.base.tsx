@@ -68,16 +68,17 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
-  private _classNames: {[key in keyof ICalloutContentStyles]: string };
+  private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement = createRef<HTMLDivElement>();
   private _calloutElement = createRef<HTMLDivElement>();
   private _targetWindow: Window;
   private _bounds: IRectangle;
-  private _maxHeight: number | undefined;
   private _positionAttempts: number;
   private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
+  private _hasListeners = false;
+  private _maxHeight: number | undefined;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -97,7 +98,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   public componentDidUpdate() {
     this._setInitialFocus();
-    this._updateAsyncPosition();
+    if (!this.props.hidden) {
+      if (!this._hasListeners) {
+        this._addListeners();
+      }
+      this._updateAsyncPosition();
+    } else {
+      if (this._hasListeners) {
+        this._removeListeners();
+      }
+    }
   }
 
   public componentWillMount() {
@@ -119,10 +129,20 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (newProps.finalHeight !== this.props.finalHeight) {
       this._setHeightOffsetEveryFrame();
     }
+
+    // if the callout becomes hidden, then remove any positions that were placed on it.
+    if (newProps.hidden && newProps.hidden !== this.props.hidden) {
+      this.setState({
+        positions: undefined
+      });
+    }
+
   }
 
   public componentDidMount() {
-    this._onComponentDidMount();
+    if (!this.props.hidden) {
+      this._onComponentDidMount();
+    }
   }
 
   public render() {
@@ -153,8 +173,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    const contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
+    const getContentMaxHeight: number | undefined = this._getMaxHeight() ? this._getMaxHeight()! + this.state.heightOffset! : undefined;
+    const contentMaxHeight: number | undefined = calloutMaxHeight! && getContentMaxHeight && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
     const overflowYHidden = !!finalHeight;
 
     const beakVisible = isBeakVisible && (!!target);
@@ -165,7 +185,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         className,
         overflowYHidden: overflowYHidden,
         calloutWidth,
-        contentMaxHeight,
         positions,
         beakWidth,
         backgroundColor,
@@ -173,12 +192,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       }
     );
 
-    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
+    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden', maxHeight: contentMaxHeight } : { maxHeight: contentMaxHeight };
+    const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div
         ref={ this._hostElement }
         className={ this._classNames.container }
+        style={ visibilityStyle }
       >
         <div
           className={ css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!]) }
@@ -195,7 +216,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             />) }
           { beakVisible &&
             (<div className={ this._classNames.beakCurtain } />) }
-          <Popup
+          { !this.props.hidden && <Popup
             role={ role }
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
@@ -208,8 +229,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
           >
             { children }
           </Popup>
+          }
         </div>
-      </div>
+      </div >
     );
 
     return content;
@@ -247,11 +269,23 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
       this._didSetInitialFocus = true;
-      focusFirstChild(this._calloutElement.value);
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.value!));
     }
   }
 
   protected _onComponentDidMount = (): void => {
+
+    this._addListeners();
+
+    if (this.props.onLayerMounted) {
+      this.props.onLayerMounted();
+    }
+
+    this._updateAsyncPosition();
+    this._setHeightOffsetEveryFrame();
+  }
+
+  private _addListeners() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -261,14 +295,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+      this._hasListeners = true;
     }, 0);
+  }
 
-    if (this.props.onLayerMounted) {
-      this.props.onLayerMounted();
-    }
-
-    this._updateAsyncPosition();
-    this._setHeightOffsetEveryFrame();
+  private _removeListeners() {
+    this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
+    this._events.off(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.off(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
+    this._events.off(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
+    this._hasListeners = false;
   }
 
   private _updateAsyncPosition() {
@@ -299,7 +335,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement);
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -340,7 +376,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return this._bounds;
   }
 
-  private _getMaxHeight(): number {
+  // Max height should remain as synchronous as possible, which is why it is not done using set state.
+  // It needs to be synchronous since it will impact the ultimate position of the callout.
+  private _getMaxHeight(): number | undefined {
     if (!this._maxHeight) {
       if (this.props.directionalHintFixed && this._target) {
         const beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
@@ -348,7 +386,12 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+        this._async.requestAnimationFrame(() => {
+          if (this._target) {
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+            this.forceUpdate();
+          }
+        });
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }

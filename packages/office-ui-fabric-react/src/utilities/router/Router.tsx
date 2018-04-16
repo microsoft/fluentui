@@ -18,17 +18,13 @@ export class Router extends BaseComponent<IRouterProps, {}> {
   }
 
   public render() {
-    return (
-      <div>
-        { this._resolveRoute() }
-      </div>
-    );
+    return this._resolveRoute();
   }
 
   private _getPath() {
     let path = location.hash;
     const hashIndex = path.lastIndexOf('#'),
-          questionMarkIndex = path.indexOf('?');
+      questionMarkIndex = path.indexOf('?');
 
     // Look for the start of a query in the currentPath, then strip out the query to find the correct page to render
     if (questionMarkIndex > -1) {

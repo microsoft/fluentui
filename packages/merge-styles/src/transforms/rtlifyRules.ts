@@ -1,3 +1,5 @@
+import { Stylesheet } from '../Stylesheet';
+
 const LEFT = 'left';
 const RIGHT = 'right';
 const NO_FLIP = '@noflip';
@@ -17,7 +19,10 @@ let _rtl = getRTL();
  * Sets the current RTL value.
  */
 export function setRTL(isRTL: boolean): void {
-  _rtl = isRTL;
+  if (_rtl !== isRTL) {
+    Stylesheet.getInstance().resetKeys();
+    _rtl = isRTL;
+  }
 }
 
 /**
