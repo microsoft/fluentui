@@ -3,7 +3,9 @@ import {
   BaseComponent,
   KeyCodes,
   css,
-  getId
+  getId,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps } from './Pivot.types';
@@ -90,8 +92,10 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   public render() {
+    const divProps = getNativeProps(this.props, divProperties);
+
     return (
-      <div>
+      <div { ...divProps }>
         { this._renderPivotLinks() }
         { this._renderPivotItem() }
       </div>
@@ -105,7 +109,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul
-          className={ css('ms-Pivot', styles.root, this.props.className,
+          className={ css('ms-Pivot', styles.root,
             { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
             { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
           role='tablist'
@@ -117,7 +121,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderPivotLink = (link: IPivotItemProps): JSX.Element => {
-    const { itemKey, className } = link;
+    const { itemKey } = link;
     const tabId = this._keyToTabIds[itemKey as string];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
@@ -137,8 +141,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
           styles.link,
           {
             ['is-selected ' + styles.linkIsSelected]: this.state.selectedKey === itemKey
-          },
-          className
+          }
         ) }
         onClick={ this._onLinkClick.bind(this, itemKey) }
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
@@ -153,10 +156,10 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderLinkContent = (link: IPivotItemProps): JSX.Element => {
-    const { itemCount, itemIcon, linkText, className } = link;
+    const { itemCount, itemIcon, linkText } = link;
 
     return (
-      <span className={ css('ms-Pivot-link-content', className) }>
+      <span className={ css('ms-Pivot-link-content') }>
         { itemIcon !== undefined && (
           <span className={ css('ms-Pivot-icon', styles.icon) }>
             <Icon iconName={ itemIcon } />
@@ -207,7 +210,6 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         links.push({
           linkText: pivotItem.props.linkText,
           ariaLabel: pivotItem.props.ariaLabel,
-          className: pivotItem.props.className,
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
           itemIcon: pivotItem.props.itemIcon,
