@@ -29,5 +29,11 @@
   "license": "MIT",
   "devDependencies": {
     "@microsoft/rush": "4.3.0"
+  },
+  "dependencies": {
+    "@types/cheerio": "^0.22.7",
+    "@types/htmlparser2": "^3.7.31",
+    "htmlparser": "^1.7.7",
+    "htmlparser2": "^3.9.2"
   }
 }

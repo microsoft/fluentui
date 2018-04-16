@@ -2,7 +2,9 @@ import * as React from 'react';
 import {
   Chiclet,
   ChicletPreview,
-  IChicletPreviewProps
+  ChicletTitle,
+  IChicletPreviewProps,
+  IChicletTitleProps
 } from 'office-ui-fabric-react/lib/Chiclet';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '../../../common/TestImages';
@@ -23,12 +25,16 @@ export class ChicletBasicExample extends React.Component<any, any> {
       ]
     };
 
+    var styles = {
+      "border": "solid",
+    }
+
     return (
-      <div>
-        <meta property="og:title" content="My title" />
+      <div style={ styles }>
         <p>Hello, this is a chiclet!</p>
         <Chiclet>
           <ChicletPreview { ...previewProps } />
+          <ChicletTitle title='6 files were uploaded' />
         </Chiclet>
       </div>
     );
