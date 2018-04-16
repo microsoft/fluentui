@@ -7,7 +7,7 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
   <div
     className="ms-ProgressIndicator-itemName"
   >
-
+    
   </div>
   <div
     className="ms-ProgressIndicator-itemProgress"
@@ -32,7 +32,7 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
   <div
     className="ms-ProgressIndicator-itemDescription"
   >
-
+    
   </div>
 </div>
 `;
@@ -44,7 +44,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
   <div
     className="ms-ProgressIndicator-itemName"
   >
-
+    
   </div>
   <div
     className="ms-ProgressIndicator-itemProgress"
@@ -65,7 +65,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
   <div
     className="ms-ProgressIndicator-itemDescription"
   >
-
+    
   </div>
 </div>
 `;

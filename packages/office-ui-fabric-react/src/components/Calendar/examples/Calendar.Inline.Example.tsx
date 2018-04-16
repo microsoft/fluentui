@@ -199,8 +199,6 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
   private _onSelectDate(date: Date, dateRangeArray: Date[]) {
     this.setState((prevState: ICalendarInlineExampleState) => {
-      prevState.selectedDate = date;
-      prevState.selectedDateRange = dateRangeArray;
       return {
         selectedDate: date,
         selectedDateRange: dateRangeArray
