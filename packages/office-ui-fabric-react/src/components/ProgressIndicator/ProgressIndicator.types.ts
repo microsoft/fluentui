@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ProgressIndicatorBase } from './ProgressIndicator.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction, IRenderFunction } from '../../Utilities';
 
 export interface IProgressIndicator {
   focus: () => void;
@@ -43,6 +43,16 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
    * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
    */
   percentComplete?: number;
+
+  /**
+   * Whether or not to hide the progress state.
+   */
+  progressHidden?: boolean;
+
+  /**
+   * A render override for the progress track.
+   */
+  onRenderProgress?: IRenderFunction<IProgressIndicatorProps>;
 
   /**
    * Text alternative of the progress status, used by screen readers for reading the value of the progress.
