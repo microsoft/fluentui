@@ -1,7 +1,7 @@
 import { IPalette } from '../interfaces/index';
 
 // When adding or removing a color, make sure you keep this consistent with IColorClassNames by adding the color variants.
-const palette: IPalette = {
+export const DefaultPalette: IPalette = {
   // Gray
   black: '#000000',
   gray220: '#11100f',
@@ -353,48 +353,44 @@ const palette: IPalette = {
   greenDark: '#004b1c',
 };
 
-// Override deprecated colors with new values. This allows components
-// to continue to use the old color names for now.
-const overrides: Partial<IPalette> = {
-  themeDarker: palette.communication90,
-  themeDark: palette.communication80,
-  themeDarkAlt: palette.communication70,
-  themePrimary: palette.communication60,
-  themeSecondary: palette.communication50,
-  themeTertiary: palette.communication40,
-  themeLight: palette.communication30,
-  themeLighter: palette.communication20,
-  themeLighterAlt: palette.communication10,
-  neutralDark: palette.gray190,
-  neutralPrimary: palette.gray160,
-  neutralPrimaryAlt: palette.gray150,
-  neutralSecondary: palette.gray130,
-  neutralTertiary: palette.gray90,
-  neutralTertiaryAlt: palette.gray60,
-  neutralQuaternary: palette.gray50,
-  neutralQuaternaryAlt: palette.gray40,
-  neutralLight: palette.gray30,
-  neutralLighter: palette.gray20,
-  neutralLighterAlt: palette.gray10,
-  yellow: palette.orangeYellow30,
-  yellowLight: palette.yellow40,
-  orangeLighter: palette.orange110,
-  redDark: palette.red150,
-  red: palette.red110,
-  magentaDark: palette.magentaPink30,
-  magenta: palette.magenta90,
-  magentaLight: palette.magentaPink30,
-  purpleLight: palette.blueMagenta20,
-  blueMid: palette.blue130,
-  blue: palette.cyanBlue60,
-  blueLight: palette.cyan100,
-  teal: palette.cyan200,
-  tealLight: palette.cyan150,
-  green: palette.green120,
-  greenLight: palette.yellowGreen50,
-};
-
-export const DefaultPalette: IPalette = {
-  ...palette,
-  ...overrides
+// Overrides deprecated colors with the new Fluent colors. This allows for Fluent
+// theming of existing components while we transition to using the new color names.
+export const FluentPalette: IPalette = {
+  ...DefaultPalette,
+  themeDarker: DefaultPalette.communication90,
+  themeDark: DefaultPalette.communication80,
+  themeDarkAlt: DefaultPalette.communication70,
+  themePrimary: DefaultPalette.communication60,
+  themeSecondary: DefaultPalette.communication50,
+  themeTertiary: DefaultPalette.communication40,
+  themeLight: DefaultPalette.communication30,
+  themeLighter: DefaultPalette.communication20,
+  themeLighterAlt: DefaultPalette.communication10,
+  neutralDark: DefaultPalette.gray190,
+  neutralPrimary: DefaultPalette.gray160,
+  neutralPrimaryAlt: DefaultPalette.gray150,
+  neutralSecondary: DefaultPalette.gray130,
+  neutralTertiary: DefaultPalette.gray90,
+  neutralTertiaryAlt: DefaultPalette.gray60,
+  neutralQuaternary: DefaultPalette.gray50,
+  neutralQuaternaryAlt: DefaultPalette.gray40,
+  neutralLight: DefaultPalette.gray30,
+  neutralLighter: DefaultPalette.gray20,
+  neutralLighterAlt: DefaultPalette.gray10,
+  yellow: DefaultPalette.orangeYellow30,
+  yellowLight: DefaultPalette.yellow40,
+  orangeLighter: DefaultPalette.orange110,
+  redDark: DefaultPalette.red150,
+  red: DefaultPalette.red110,
+  magentaDark: DefaultPalette.magentaPink30,
+  magenta: DefaultPalette.magenta90,
+  magentaLight: DefaultPalette.magentaPink30,
+  purpleLight: DefaultPalette.blueMagenta20,
+  blueMid: DefaultPalette.blue130,
+  blue: DefaultPalette.cyanBlue60,
+  blueLight: DefaultPalette.cyan100,
+  teal: DefaultPalette.cyan200,
+  tealLight: DefaultPalette.cyan150,
+  green: DefaultPalette.green120,
+  greenLight: DefaultPalette.yellowGreen50,
 };
