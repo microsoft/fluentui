@@ -8,7 +8,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface IPersona {
-
+  focus: () => void;
 }
 
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
@@ -84,6 +84,17 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
    * @defaultvalue PersonaPresence.none
    */
   presence?: PersonaPresence;
+
+  /**
+   * Name or description of the presence to display in presence tooltip.
+   *
+   * Recommended Uses:
+   * - Localizing the description of each presence
+   * - Setting the tooltip to specific statuses (ie: 'On A Call' or 'In A Meeting')
+   *
+   *  @default Defaults to English values.
+   */
+  presenceDescriptors?: TypedPresenceDescriptors;
 
   /**
    * Secondary text to display, usually the role of the user.
@@ -208,6 +219,10 @@ export interface IPersonaStyles {
   textContent: IStyle;
 }
 
+export interface IPersonaCoin {
+  focus: () => void;
+}
+
 export interface IPersonaCoinProps extends IPersonaSharedProps {
   /**
    * Gets the component ref.
@@ -250,6 +265,10 @@ export interface IPersonaCoinStyles {
   image: IStyle;
   initials: IStyle;
   size10WithoutPresenceIcon: IStyle;
+}
+
+export interface IPersonaPresence {
+  focus: () => void;
 }
 
 export interface IPersonaPresenceProps extends IPersonaSharedProps {
@@ -376,3 +395,16 @@ export enum PersonaInitialsColor {
    */
   transparent = 15,
 }
+
+/**
+ * An object with each Key correlating to a value from PersonaPresence Enum.
+ */
+export type TypedPresenceDescriptors = {
+  [PersonaPresence.none]?: string;
+  [PersonaPresence.online]?: string;
+  [PersonaPresence.offline]?: string;
+  [PersonaPresence.away]?: string;
+  [PersonaPresence.dnd]?: string;
+  [PersonaPresence.busy]?: string;
+  [PersonaPresence.blocked]?: string;
+};
