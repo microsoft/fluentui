@@ -29,7 +29,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ILinkProps, ILinkStyles>;
+  getStyles?: IStyleFunction<ILinkStyleProps, ILinkStyles>;
 
   /**
    * Theme (provided through customization.)

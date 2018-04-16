@@ -10,6 +10,10 @@
   &.hasMediumDelay {
     animation-delay: 300ms;
   }
+
+  &.hasLongDelay {
+    animation-delay: 500ms;
+  }
 }
 
 .content {

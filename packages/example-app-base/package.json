@@ -1,9 +1,8 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "5.7.1",
+  "version": "5.10.0",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
   "typings": "lib-es2015/index.d.ts",
   "sideEffects": true,
   "repository": {
@@ -19,23 +18,23 @@
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/highlight.js": "9.12.2",
-    "@types/react": "16.0.25",
-    "@types/react-dom": "16.0.3",
+    "@types/react": "16.3.10",
+    "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
     "es6-map": "^0.1.5",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.21.0 <6.0.0",
-    "@uifabric/utilities": ">=5.22.1 <6.0.0",
+    "@uifabric/styling": ">=5.23.1 <6.0.0",
+    "@uifabric/utilities": ">=5.24.0 <6.0.0",
     "highlight.js": "^9.12.0",
     "markdown-to-jsx": "^6.6.0",
     "office-ui-fabric-react": ">=5.1.0 <6.0.0",

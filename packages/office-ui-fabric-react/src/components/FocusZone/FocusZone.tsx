@@ -260,7 +260,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       target = path.pop() as HTMLElement;
 
       if (target && isElementTabbable(target)) {
-        this._setActiveElement(target);
+        this._setActiveElement(target, true);
       }
 
       if (isElementFocusZone(target)) {
@@ -270,7 +270,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
-  private _setActiveElement(element: HTMLElement): void {
+  private _setActiveElement(element: HTMLElement, forceAlignemnt?: boolean): void {
     const previousActiveElement = this._activeElement;
 
     this._activeElement = element;
@@ -284,7 +284,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (this._activeElement) {
-      if (!this._focusAlignment) {
+      if (!this._focusAlignment || forceAlignemnt) {
         this._setFocusAlignment(element, true, true);
       }
 
@@ -808,7 +808,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // callback shouldInputLoseFocusOnArrowKey
       if (
         isRangeSelected ||
-        (selectionStart > 0 && !isForward) ||
+        (selectionStart! > 0 && !isForward) ||
         (selectionStart !== inputValue.length && isForward) ||
         (!!this.props.handleTabKey && !(this.props.shouldInputLoseFocusOnArrowKey
           && this.props.shouldInputLoseFocusOnArrowKey(element)))

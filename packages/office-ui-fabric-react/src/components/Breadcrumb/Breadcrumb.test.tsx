@@ -16,6 +16,8 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
+    const divider = () => <span>*</span>;
+
     let component = renderer.create(
       <Breadcrumb
         items={ items }
@@ -30,6 +32,17 @@ describe('Breadcrumb', () => {
       <Breadcrumb
         items={ items }
         maxDisplayedItems={ 2 }
+      />
+    );
+
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // With custom divider
+    component = renderer.create(
+      <Breadcrumb
+        items={ items }
+        dividerAs={ divider }
       />
     );
 
@@ -53,7 +66,7 @@ describe('Breadcrumb', () => {
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
 
     ReactTestUtils.Simulate.click(itemLink!);
@@ -76,7 +89,7 @@ describe('Breadcrumb', () => {
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
 
     expect(itemLink[0].textContent).toEqual('TestText3');

@@ -4,6 +4,7 @@ export { DefaultFontStyles, registerDefaultFontFaces } from './DefaultFontStyles
 export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts';
 export { getFocusStyle, focusClear } from './getFocusStyle';
 export { hiddenContentStyle } from './hiddenContentStyle';
+export { PulsingBeaconAnimationStyles } from './PulsingBeaconAnimationStyles';
 export {
   ThemeSettingName,
   getTheme,
@@ -13,4 +14,4 @@ export {
   removeOnThemeChangeCallback
 } from './theme';
 export * from './CommonStyles';
-export { normalize } from './GeneralStyles';
+export * from './GeneralStyles';

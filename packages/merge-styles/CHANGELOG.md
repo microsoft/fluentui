@@ -1,6 +1,27 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+
+## 5.15.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+
+## 5.15.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- Add backgroundClip property definition.
+
+## 5.14.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- mergeStyles: flipping RTL at runtime now resets the keys.
 
 ## 5.14.0
 Sun, 25 Mar 2018 03:08:03 GMT
