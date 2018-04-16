@@ -150,7 +150,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
+      onRenderDescription = this._onRenderDescription
     } = this.props;
     const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
@@ -192,7 +193,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
-            { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
+            { onRenderDescription(this.props, this._onRenderDescription) }
             { errorMessage &&
               <div aria-live='assertive'>
                 <DelayedRender>
@@ -300,6 +301,15 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     } = props;
     if (label) {
       return (<Label htmlFor={ this._id }>{ label }</Label>);
+    }
+    return null;
+  }
+
+  @autobind
+  private _onRenderDescription(props: ITextFieldProps): JSX.Element | null {
+    const { description } = props;
+    if (description) {
+      return (<span className={ css('ms-TextField-description', styles.description) }>{ description }</span>);
     }
     return null;
   }

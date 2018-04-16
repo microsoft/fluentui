@@ -88,6 +88,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   description?: string;
 
   /**
+   * Optional custom renderer for the description
+   */
+  onRenderDescription?: IRenderFunction<ITextFieldProps>;
+
+  /**
    * @deprecated
    * Deprecated; use prefix instead.
    */
