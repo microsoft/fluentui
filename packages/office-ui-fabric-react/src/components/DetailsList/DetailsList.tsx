@@ -663,9 +663,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
-  private _getFixedColumns(newColumns: IColumn[]): void {
+  private _getFixedColumns(newColumns: IColumn[]): IColumn[] {
     return newColumns.map(column => {
-      const newColumn = assign({}, column, this._columnOverrides[column.key]);
+      const newColumn: IColumn = assign({}, column, this._columnOverrides[column.key]);
 
       if (!newColumn.calculatedWidth) {
         newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
@@ -692,7 +692,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, firstIndex: number): void {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, firstIndex: number): IColumn[] {
     const {
       selectionMode,
       checkboxVisibility,
@@ -903,7 +903,7 @@ export function buildColumns(
   return columns;
 }
 
-function isRightArrow(event: React.KeyboardEvent<HTMLElement>): void {
+function isRightArrow(event: React.KeyboardEvent<HTMLElement>): boolean {
   return event.which === getRTLSafeKeyCode(KeyCodes.right);
 }
 

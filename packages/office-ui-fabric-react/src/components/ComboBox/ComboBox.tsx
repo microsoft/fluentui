@@ -88,11 +88,11 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
 // This is used to customize when we want to rerender components,
 // so we don't rerender every option every time render is executed
 class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
-  public render() {
+  public render(): React.ReactNode {
     return this.props.children;
   }
 
-  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): void {
+  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): boolean {
     // The children will always be different, so we ignore that prop
     return !shallowCompare({ ...this.props, children: undefined }, { ...newProps, children: undefined });
   }

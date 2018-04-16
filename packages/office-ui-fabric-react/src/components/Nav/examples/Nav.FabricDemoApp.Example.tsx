@@ -13,7 +13,7 @@ export class NavFabricDemoAppExample extends React.Component<any, any> {
     );
   }
 
-  private _onRenderLink(link: any): (JSX.Element | null): void {
+  private _onRenderLink = (link: any): JSX.Element | null => {
     return (
       <span>
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>
@@ -23,5 +23,4 @@ export class NavFabricDemoAppExample extends React.Component<any, any> {
       </span>
     );
   }
-
 }

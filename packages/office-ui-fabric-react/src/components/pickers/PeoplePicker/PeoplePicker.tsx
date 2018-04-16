@@ -52,7 +52,13 @@ export class ListPeoplePicker extends MemberListPeoplePicker {
   };
 }
 
-export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean): void {
+export interface IGenericItem {
+  primaryText: string;
+  imageInitials: string;
+  ValidationState: ValidationState;
+}
+
+export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean): IGenericItem & { key: React.Key } {
   const personaToConvert = {
     key: name,
     primaryText: name,

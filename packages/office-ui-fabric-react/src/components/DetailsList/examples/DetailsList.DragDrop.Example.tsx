@@ -80,7 +80,7 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     alert(`Item invoked: ${item.name}`);
   }
 
-  private _onRenderItemColumn(item: any, index: number, column: IColumn): void {
+  private _onRenderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
     if (column.key === 'name') {
       return <Link data-selection-invoke={ true }>{ item[column.key] }</Link>;
     }

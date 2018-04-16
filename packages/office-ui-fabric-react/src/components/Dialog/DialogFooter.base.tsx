@@ -38,9 +38,9 @@ export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
     );
   }
 
-  private _renderChildrenAsActions(): void {
+  private _renderChildrenAsActions(): (JSX.Element | null)[] {
     return React.Children.map(this.props.children, child =>
-      child && <span className={ this._classNames.action }>{ child }</span>
+      child ? <span className={ this._classNames.action }>{ child }</span> : null
     );
   }
 }

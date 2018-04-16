@@ -172,13 +172,13 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     );
   }
 
-  private _getInitialValue(props: IRatingProps): void {
+  private _getInitialValue(props: IRatingProps): number | undefined {
     if (typeof props.rating === 'undefined') {
       return props.min;
     }
 
     if (props.rating === null) {
-      return null;
+      return undefined;
     }
 
     return this._getClampedRating(props.rating);

@@ -289,7 +289,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public shouldComponentUpdate(newProps: IListProps, newState: IListState): void {
+  public shouldComponentUpdate(newProps: IListProps, newState: IListState): boolean {
     const { pages: oldPages } = this.state;
     const { pages: newPages } = newState;
     let shouldComponentUpdate = false;
@@ -639,7 +639,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  private _updatePageMeasurements(pages: IPage[]): void {
+  private _updatePageMeasurements(pages: IPage[]): boolean {
     let heightChanged = false;
 
     // when not in virtualize mode, we render all the items without page measurement

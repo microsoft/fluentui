@@ -37,7 +37,7 @@ export class GroupedListCustomExample extends React.Component {
     );
   }
 
-  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number): void {
+  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
     return (
       <div data-selection-index={ itemIndex }>
         <span className='ms-GroupedListExample-name'>

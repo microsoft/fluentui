@@ -58,7 +58,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
     );
   }
 
-  private _onClick(props: IGroupDividerProps): void {
+  private _onClick(props: IGroupDividerProps): () => void {
     return () => {
       props.onToggleSelectGroup!(props.group!);
     };

@@ -112,7 +112,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Renders the set of links to route between pivots
    */
-  private _renderPivotLinks(): void {
+  private _renderPivotLinks(): JSX.Element {
     return (
       <FocusZone componentRef={ this.focusZone } direction={ FocusZoneDirection.horizontal }>
         <ul
@@ -181,7 +181,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Renders the current Pivot Item
    */
-  private _renderPivotItem(): void {
+  private _renderPivotItem(): JSX.Element | null {
     if (this.props.headersOnly) {
       return null;
     }
@@ -244,7 +244,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * whether the key exists in the pivot items.
    */
-  private _isKeyValid(itemKey: string | undefined): void {
+  private _isKeyValid(itemKey: string | undefined): boolean {
     return itemKey !== undefined && this._keyToIndexMapping[itemKey] !== undefined;
   }
 

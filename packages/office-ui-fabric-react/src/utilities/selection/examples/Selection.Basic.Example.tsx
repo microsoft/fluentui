@@ -113,7 +113,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
     );
   }
 
-  private _alertItem = (item: { name: string }) => alert('item invoked: ' + item.name);
+  private _alertItem = (item: { key?: React.Key, name: React.ReactText }): void => alert('item invoked: ' + item.name);
 
   private _onSelectionChanged(): void {
     if (this._hasMounted) {

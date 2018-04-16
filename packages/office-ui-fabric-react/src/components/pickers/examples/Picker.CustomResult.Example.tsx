@@ -382,11 +382,11 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     });
   }
 
-  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): void {
+  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
     return filterText ? data.filter(item => item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, items)) : [];
   }
 
-  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): void {
+  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean {
     if (!items || !items.length || items.length === 0) {
       return false;
     }

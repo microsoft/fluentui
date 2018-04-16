@@ -58,7 +58,7 @@ export enum SemanticColorSlots {
   disabledText
 }
 
-export function themeRulesStandardCreator(): void {
+export function themeRulesStandardCreator(): IThemeRules {
   const slotRules: IThemeRules = {};
 
   /*** BASE COLORS and their SHADES */

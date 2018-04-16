@@ -382,7 +382,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   }
 
-  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): void {
+  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): JSX.Element {
     return (
       <div
         key={ slotRule.name }

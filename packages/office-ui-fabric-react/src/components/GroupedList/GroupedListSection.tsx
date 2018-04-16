@@ -299,7 +299,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     };
   }
 
-  private _onRenderGroup(renderCount: number): void {
+  private _onRenderGroup(renderCount: number): JSX.Element {
     const {
       group,
       items,
@@ -378,7 +378,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return 1;
   }
 
-  private _getGroupKey(group: any, index: number): void {
+  private _getGroupKey(group: any, index: number): string {
     return 'group-' + ((group && group.key) ? group.key : String(group.level) + String(index));
   }
 

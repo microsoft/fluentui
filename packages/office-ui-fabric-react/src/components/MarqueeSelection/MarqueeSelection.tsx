@@ -125,7 +125,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   /** Determine if the mouse event occured on a scrollbar of the target element. */
-  private _isMouseEventOnScrollbar(ev: MouseEvent): void {
+  private _isMouseEventOnScrollbar(ev: MouseEvent): boolean {
     const targetElement = ev.target as HTMLElement;
     const targetScrollbarWidth = (targetElement.offsetWidth - targetElement.clientWidth);
 
@@ -217,7 +217,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     ev.preventDefault();
   }
 
-  private _onMouseMove(ev: MouseEvent): void {
+  private _onMouseMove(ev: MouseEvent): boolean | undefined {
     if (!this._autoScroll) {
       return;
     }

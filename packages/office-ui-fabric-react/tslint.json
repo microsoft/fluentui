@@ -9,6 +9,9 @@
       140
     ],
     "no-unused-variable": false,
-    "no-any": false
+    "no-any": false,
+    "typedef": [
+      false
+    ]
   }
 }
