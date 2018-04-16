@@ -7,12 +7,12 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SuggestionsStore } from '../../Suggestions/SuggestionsStore';
-import { IBaseFloatingPicker, IBaseFloatingPickerSuggestionProps } from '../../BaseFloatingPicker.types';
-import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
+import { IBaseFloatingPicker, IBaseFloatingPickerSuggestionProps } from '@uifabric/experiments/lib/FloatingPicker';
+import { FloatingPeoplePicker } from '@uifabric/experiments/lib/FloatingPicker';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
-import { people, mru } from '../../../ExtendedPicker';
-import './FloatingPeoplePicker.Basic.Example.scss';
+import { people, mru } from '@uifabric/experiments/lib/ExtendedPicker';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import './FloatingPeoplePicker.Basic.Example.scss';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;

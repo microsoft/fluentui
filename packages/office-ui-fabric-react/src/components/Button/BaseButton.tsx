@@ -570,14 +570,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
-    const { onMenuClick } = this.props;
-    if (onMenuClick) {
-      onMenuClick(ev, this);
-    }
-
     if (!ev.defaultPrevented &&
-      this.props.menuTriggerKeyCode !== null &&
       this._isValidMenuOpenKey(ev)) {
+      const { onMenuClick } = this.props;
+      if (onMenuClick) {
+        onMenuClick(ev, this);
+      }
+
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();

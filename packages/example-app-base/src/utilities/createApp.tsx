@@ -91,7 +91,7 @@ export function createApp(
 
 function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
   return (
-    <div { ...props } />
+    <div { ...props as React.HTMLAttributes<HTMLDivElement> } />
   );
 }
 

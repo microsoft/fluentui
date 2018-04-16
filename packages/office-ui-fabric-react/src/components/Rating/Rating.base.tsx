@@ -54,7 +54,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   };
   private _id: string;
   private _labelId: string;
-  private _classNames: {[key in keyof IRatingStyles]: string };
+  private _classNames: { [key in keyof IRatingStyles]: string };
 
   constructor(props: IRatingProps) {
     super(props);
@@ -108,8 +108,8 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       stars.push(
         <button
           className={ css(this._classNames.ratingButton, {
-            [this._classNames.rootIsLarge]: size === RatingSize.Large,
-            [this._classNames.rootIsSmall]: size !== RatingSize.Large
+            [this._classNames.rootIsLarge!]: size === RatingSize.Large,
+            [this._classNames.rootIsSmall!]: size !== RatingSize.Large
           }) }
           id={ starIds[i - 1] }
           key={ i }
@@ -120,7 +120,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
           type='button'
         >
           { this._getLabel(i) }
-          <RatingStar key={ i + 'rating' }  {...ratingStarProps} />
+          <RatingStar key={ i + 'rating' }  { ...ratingStarProps } />
         </button>
       );
     }

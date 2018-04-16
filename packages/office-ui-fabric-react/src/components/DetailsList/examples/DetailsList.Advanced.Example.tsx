@@ -128,6 +128,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
           groupProps={ groupProps }
+          enterModalSelectionOnTouch={ true }
           onItemInvoked={ this._onItemInvoked }
           onItemContextMenu={ this._onItemContextMenu }
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
@@ -602,7 +603,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
         column.onRender = (item) => (
-          <Link href='#'>{ item.key }</Link>
+          <Link href='https://microsoft.com' target='_blank' rel='noopener'>{ item.key }</Link>
         );
         column.minWidth = 90;
         column.maxWidth = 90;
