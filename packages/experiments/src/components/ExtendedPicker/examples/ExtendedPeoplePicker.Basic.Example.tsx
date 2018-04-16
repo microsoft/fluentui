@@ -11,8 +11,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import { SuggestionsStore, FloatingPeoplePicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from '../../FloatingPicker';
-import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps }
-  from '../../SelectedItemsList';
+import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from '../../SelectedItemsList';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
@@ -33,9 +32,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   constructor(props: {}) {
     super(props);
-    let peopleList: IPersonaWithMenu[] = [];
+    const peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
-      let target: IPersonaWithMenu = {};
+      const target: IPersonaWithMenu = {};
 
       assign(target, persona);
       peopleList.push(target);
@@ -190,17 +189,18 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onRemoveSuggestion = (item: IPersonaProps): void => {
-    let { peopleList, mostRecentlyUsed: mruState } = this.state;
-    let indexPeopleList: number = peopleList.indexOf(item);
-    let indexMostRecentlyUsed: number = mruState.indexOf(item);
+    const { peopleList, mostRecentlyUsed: mruState } = this.state;
+    const indexPeopleList: number = peopleList.indexOf(item);
+    const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
     if (indexMostRecentlyUsed >= 0) {
-      let newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
+      const newSuggestedPeople: IPersonaProps[]
+        = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }

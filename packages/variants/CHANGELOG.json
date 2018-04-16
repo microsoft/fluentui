@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.3.3",
+      "tag": "@uifabric/variants_v5.3.3",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry temporarily. (Will be added back in 6.0.)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.23.0 <6.0.0` to `>=5.23.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.2",
       "tag": "@uifabric/variants_v5.3.2",
       "date": "Mon, 02 Apr 2018 22:15:06 GMT",

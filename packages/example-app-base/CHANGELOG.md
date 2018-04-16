@@ -1,6 +1,25 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Apr 2018 10:23:25 GMT and should not be manually modified.
+
+## 5.10.0
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Minor changes
+
+- Add new APIs for editing sections on GitHub.
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.9.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- HTML button tags will be overridden with DefaultButton component.
 
 ## 5.8.0
 Thu, 05 Apr 2018 10:15:39 GMT

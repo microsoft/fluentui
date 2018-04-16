@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  getRTL
+  getRTL,
+  createRef
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -31,8 +32,19 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     maxDisplayedItems: 999
   };
 
+  protected focusZone = createRef<FocusZone>();
+
   constructor(props: IBreadcrumbProps) {
     super(props);
+  }
+
+  /**
+   * Sets focus to the first breadcrumb link.
+   */
+  public focus(): void {
+    if (this.focusZone.value) {
+      this.focusZone.value.focus();
+    }
   }
 
   public render() {
@@ -93,7 +105,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
         role='navigation'
         aria-label={ ariaLabel }
       >
-        <FocusZone direction={ FocusZoneDirection.horizontal } >
+        <FocusZone componentRef={ this.focusZone } direction={ FocusZoneDirection.horizontal } >
           <ol className={ css('ms-Breadcrumb-list', styles.list) }>
             { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY }>
@@ -137,7 +149,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
         <Link
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
-          aria-current={ item.isCurrentItem ? 'page' : null }
+          aria-current={ item.isCurrentItem ? 'page' : undefined }
           onClick={ this._onBreadcrumbClicked.bind(this, item) }
         >
           <TooltipHost

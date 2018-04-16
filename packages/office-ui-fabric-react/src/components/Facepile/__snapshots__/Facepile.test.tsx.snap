@@ -12,7 +12,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
       aria-labelledby={undefined}
       className="ms-FocusZone ms-Facepile-members"
       data-focuszone-id="FocusZone1"
-      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}

@@ -202,9 +202,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             type='text'
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
-            aria-valuenow={ value }
-            aria-valuemin={ min && String(min) }
-            aria-valuemax={ max && String(max) }
+            aria-valuenow={ !Number.isNaN(Number(value)) ? Number(value) : undefined }
+            aria-valuetext={ Number.isNaN(Number(value)) ? value : undefined }
+            aria-valuemin={ min }
+            aria-valuemax={ max }
             onBlur={ this._onBlur }
             ref={ this._input }
             onFocus={ this._onFocus }
@@ -414,15 +415,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param event - the keyboardEvent that was fired
    */
   private _handleKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
+
+    // eat the up and down arrow keys to keep focus in the spinButton
+    // (especially when a spinButton is inside of a FocusZone)
+    if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     if (this.props.disabled) {
       this._stop();
-
-      // eat the up and down arrow keys to keep the page from scrolling
-      if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
       return;
     }
 

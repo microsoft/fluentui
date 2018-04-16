@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusZone: updating to update alignment on click.",
+      "comment": "Do not call the onMenuClick on every keyDown event",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jolore@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

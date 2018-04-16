@@ -34,8 +34,8 @@ Next, clone and build the code.
 
 ```
 - git clone https://github.com/johndoe/office-ui-fabric-react.git
-- cd packages/office-ui-fabric-react
 - npm install
+- cd packages/office-ui-fabric-react
 - npm run build
 - npm start
 ```
@@ -90,6 +90,7 @@ From time to time, your fork will get out of sync with the upstream remote. Use 
 git fetch upstream
 git checkout master
 git pull upstream master
+git push
 ```
 
 ## Merging upstream master into your current branch
@@ -99,6 +100,7 @@ From time to time, your current branch will get out of sync with the upstream re
 ```
 git fetch upstream
 git pull upstream master
+git push
 ```
 
 All done!

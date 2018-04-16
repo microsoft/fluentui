@@ -8,7 +8,7 @@ import {
 import { FloatingPeoplePickerTypesExample } from '../PeoplePicker/examples/FloatingPeoplePicker.Basic.Example';
 
 const FloatingPeoplePickerBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx'
+  '!raw-loader!@uifabric/experiments/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx'
 ) as string;
 
 export class FloatingPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -27,7 +27,7 @@ export class FloatingPeoplePickerPage extends React.Component<IComponentDemoPage
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/FloatingPicker/BaseFloatingPicker.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/FloatingPicker/BaseFloatingPicker.types.ts')
             ] }
           />
         }

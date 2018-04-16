@@ -160,7 +160,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return this.state.value;
   }
 
-  private _getAriaValueText = (value: number | undefined): string | void => {
+  private _getAriaValueText = (value: number | undefined): string | undefined => {
     if (this.props.ariaValueText && value !== undefined) {
       return this.props.ariaValueText(value);
     }
