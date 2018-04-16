@@ -1,6 +1,11 @@
 /* tslint:disable:no-string-literal */
 
-import { elementContains, getDocument, elementContainsAttribute } from './dom';
+import {
+  elementContainsAttribute,
+  elementContains,
+  getDocument,
+  getWindow
+} from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
@@ -370,18 +375,16 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
 
     targetToFocusOnNextRepaint = element;
 
-    const htmlElement = element as HTMLElement;
-    const view = ((
-      htmlElement.ownerDocument &&
-      htmlElement.ownerDocument.defaultView
-    ) ? htmlElement.ownerDocument.defaultView : window);
+    const win = getWindow(element as Element);
 
-    // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
-    view.requestAnimationFrame(() => {
-      targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+    if (win) {
+      // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
+      win.requestAnimationFrame(() => {
+        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
 
-      // We are done focusing for this frame, so reset the queued focus element
-      targetToFocusOnNextRepaint = undefined;
-    });
+        // We are done focusing for this frame, so reset the queued focus element
+        targetToFocusOnNextRepaint = undefined;
+      });
+    }
   }
 }

@@ -171,7 +171,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
           });
         }
 
-        return {};
+        return prevState;
       });
     }, this.props.cardOpenDelay!);
   }
@@ -205,12 +205,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this.setState((prevState: IHoverCardState) => {
       if (!prevState.isHoverCardVisible) {
-        return ({
+        return {
           isHoverCardVisible: true,
           mode: ExpandingCardMode.expanded
-        });
+        };
       }
-      return {};
+
+      return prevState;
     });
   }
 }

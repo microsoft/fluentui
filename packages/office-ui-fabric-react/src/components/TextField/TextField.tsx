@@ -267,7 +267,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    */
   public setSelectionRange(start: number, end: number) {
     if (this._textElement.value) {
-      this._textElement.value.setSelectionRange(start, end);
+      (this._textElement.value as HTMLInputElement).setSelectionRange(start, end);
     }
   }
 
