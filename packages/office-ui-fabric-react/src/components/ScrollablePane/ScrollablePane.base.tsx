@@ -92,6 +92,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       this.contentContainer.scrollTop = initialScrollPosition;
     }
 
+    // Set sticky distances from top property, then sort in correct order and notify subscribers
+    this.setStickiesDistanceFromTop();
+    this._stickies.forEach((sticky) => {
+      this.sortSticky(sticky);
+    });
     this.notifySubscribers();
   }
 
@@ -162,6 +167,14 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     );
   }
 
+  public setStickiesDistanceFromTop(): void {
+    if (this.contentContainer) {
+      this._stickies.forEach((sticky) => {
+        sticky.setDistanceFromTop(this.contentContainer as HTMLDivElement);
+      });
+    }
+  }
+
   public forceLayoutUpdate() {
     this._onWindowResize();
   }
@@ -176,6 +189,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public addSticky = (sticky: Sticky): void => {
     this._stickies.add(sticky);
+
+    // If ScrollablePane is mounted, then sort sticky in correct place
+    if (this.contentContainer) {
+      sticky.setDistanceFromTop(this.contentContainer);
+      this.sortSticky(sticky);
+    }
     this.notifySubscribers();
   }
 

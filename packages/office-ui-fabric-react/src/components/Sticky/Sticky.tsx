@@ -124,6 +124,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     );
   }
 
+  public setDistanceFromTop(container: HTMLDivElement): void {
+    this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
+  }
+
   private _getStickyStyles = (isSticky: boolean): React.CSSProperties => {
     return {
       visibility: isSticky ? 'visible' : 'hidden',
@@ -137,17 +141,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     if (this.root.value && this.nonStickyContent.value) {
       this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
-
-      // Add stickyContentTop/stickyContentBottom to ScrollablePane in proper position
-      scrollablePane.sortSticky(this);
       let isStickyTop = false;
+      let isStickyBottom = false;
 
       if (this.canStickyTop) {
         const distanceToStickTop = this.distanceFromTop - this._getStickyDistanceFromTop();
         isStickyTop = distanceToStickTop <= container.scrollTop;
       }
-
-      let isStickyBottom = false;
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= this.distanceFromTop) {
