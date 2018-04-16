@@ -4,7 +4,7 @@ import {
   getRenderedElements,
   ShimmerElementType as ElemType,
   ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'experiments/lib/Shimmer';
+} from '@uifabric/experiments/lib/Shimmer';
 import './Shimmer.Example.scss';
 
 export class ShimmerBasicExample extends React.Component<{}, {}> {

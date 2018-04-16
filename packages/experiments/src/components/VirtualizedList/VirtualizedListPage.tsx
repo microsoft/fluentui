@@ -9,9 +9,9 @@ import { VirtualizedListBasicExample } from './examples/VirtualizedList.Basic.Ex
 import { VirtualizedListBasicExample2 } from './examples/VirtualizedList.Basic.Example2';
 
 const VirtualizedListBasicExampleCode =
-  require('!raw-loader!experiments/src/components/VirtualizedList/examples/VirtualizedList.Basic.Example.tsx') as string;
+  require('!raw-loader!@uifabric/experiments/src/components/VirtualizedList/examples/VirtualizedList.Basic.Example.tsx') as string;
 const VirtualizedListBasicExample2Code =
-  require('!raw-loader!experiments/src/components/VirtualizedList/examples/VirtualizedList.Basic.Example2.tsx') as string;
+  require('!raw-loader!@uifabric/experiments/src/components/VirtualizedList/examples/VirtualizedList.Basic.Example2.tsx') as string;
 
 export class VirtualizedListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -33,7 +33,7 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/VirtualizedList/VirtualizedList.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/VirtualizedList/VirtualizedList.types.ts')
             ] }
           />
         }
