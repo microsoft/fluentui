@@ -16,8 +16,8 @@
     "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
-    "@types/react": "16.1.0",
-    "@types/react-dom": "16.0.4",
+    "@types/react": "16.3.10",
+    "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
     "@types/prop-types": "15.5.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"

@@ -3,7 +3,6 @@
   "version": "5.31.0",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
   "typings": "lib-es2015/index.d.ts",
   "sideEffects": true,
   "repository": {
@@ -21,10 +20,10 @@
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/prop-types": "15.5.2",
-    "@types/react": "16.1.0",
+    "@types/react": "16.3.10",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/react-dom": "16.0.4",
+    "@types/react-dom": "16.0.5",
     "@types/resemblejs": "~1.3.28",
     "@types/sinon": "2.2.2",
     "@types/jest": "21.1.8",
@@ -38,9 +37,9 @@
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.3.0",
-    "react-test-renderer": "^16.3.0",
-    "react-dom": "^16.3.0",
+    "react": "^16.3.1",
+    "react-test-renderer": "^16.2.0",
+    "react-dom": "^16.3.1",
     "react-highlight": "0.10.0",
     "sinon": "^4.1.3"
   },

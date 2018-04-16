@@ -62,8 +62,8 @@ const DayPickerStrings = {
 };
 
 export interface ICalendarInlineExampleState {
-  selectedDate: Date | null;
-  selectedDateRange: Date[] | null;
+  selectedDate?: Date | null;
+  selectedDateRange?: Date[] | null;
 }
 
 export interface ICalendarInlineExampleProps {

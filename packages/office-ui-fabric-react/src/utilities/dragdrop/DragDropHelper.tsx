@@ -24,7 +24,7 @@ export class DragDropHelper implements IDragDropHelper {
   private readonly _distanceSquaredForDrag: number;
   private _isDragging: boolean;
   private _dragData: {
-    eventTarget: EventTarget;
+    eventTarget: EventTarget | null;
     clientX: number;
     clientY: number;
     dataTransfer?: DataTransfer;

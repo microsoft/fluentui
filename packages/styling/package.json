@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
-  "module": "lib-es2015/index.js",
   "typings": "lib-es2015/index.d.ts",
   "sideEffects": false,
   "scripts": {
@@ -20,13 +19,13 @@
   },
   "devDependencies": {
     "@types/webpack-env": "1.13.0",
-    "@types/react": "16.1.0",
+    "@types/react": "16.3.10",
     "@types/jest": "21.1.8",
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",

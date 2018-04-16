@@ -249,14 +249,14 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   /**
    * Gets the selection start of the text field
    */
-  public get selectionStart(): number {
+  public get selectionStart(): number | null {
     return this._textElement.value ? this._textElement.value.selectionStart : -1;
   }
 
   /**
    * Gets the selection end of the text field
    */
-  public get selectionEnd(): number {
+  public get selectionEnd(): number | null {
     return this._textElement.value ? this._textElement.value.selectionEnd : -1;
   }
 
