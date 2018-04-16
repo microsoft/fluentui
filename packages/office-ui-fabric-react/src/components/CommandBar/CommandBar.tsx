@@ -417,7 +417,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     });
   }
 
-  private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
+  private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
       if (item.inactive) {
         return;
