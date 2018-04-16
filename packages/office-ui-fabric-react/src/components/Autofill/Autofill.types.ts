@@ -67,7 +67,10 @@ export interface IAutofillProps extends
   enableAutofillOnKeyPress?: KeyCodes[];
 
   /**
-   * the default value to be visible
+   * The default value to be visible. This is different from placeholder
+   * because it actually sets the current value of the picker
+   * Note: This will only be set upon component creation
+   * and will not update with subsequent prop updates.
    */
   defaultVisibleValue?: string;
 

@@ -147,7 +147,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-          'aria-label': 'People Picker'
+          'aria-label': 'People Picker',
+          defaultValue: "wooged"
         } }
         componentRef={ this._resolveRef('_picker') }
         resolveDelay={ 300 }
@@ -170,7 +171,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-          'aria-label': 'People Picker'
+          'aria-label': 'People Picker',
+          defaultVisibleValue: 'an'
         } }
         componentRef={ this._resolveRef('_picker') }
         onInputChange={ this._onInputChange }
