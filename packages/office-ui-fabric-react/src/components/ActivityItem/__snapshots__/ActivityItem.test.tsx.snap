@@ -44,6 +44,9 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         }
         @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
           border: none;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
           margin-top: 0;
         }
   >
@@ -243,6 +246,9 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         }
         @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
           border: none;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
           margin-top: 0;
         }
   >
@@ -296,7 +302,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         align-items: center;
         animation-duration: .5s;
         animation-iteration-count: 1;
-        animation-name: css-92;
+        animation-name: css-93;
         box-sizing: border-box;
         color: #666666;
         display: flex;
@@ -333,6 +339,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         }
         @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
           border: none;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
           margin-top: 0;
         }
   >
@@ -342,7 +351,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           {
             animation-duration: .8s;
             animation-iteration-count: 1;
-            animation-name: css-91;
+            animation-name: css-92;
             border-radius: 225px;
             border-style: solid;
             height: 0px;
@@ -352,7 +361,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
             top: 50%;
             transform: translate(-50%, -50%);
             width: 0px;
-            z-index: 1000;
+            z-index: 1;
           }
     />
     <div
@@ -484,7 +493,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         {
           animation-duration: .5s;
           animation-iteration-count: 1;
-          animation-name: css-93;
+          animation-name: css-94;
           flex: 1;
           overflow-x: hidden;
           padding-bottom: 0;
@@ -554,6 +563,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         }
         @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
           border: none;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
           margin-top: 0;
         }
   >
