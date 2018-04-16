@@ -58,7 +58,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
     </SelectionZone>
   );
 
-  _componentElement = ReactDOM.findDOMNode(_selectionZone);
+  _componentElement = ReactDOM.findDOMNode(_selectionZone) as Element;
   _toggleAll = _componentElement.querySelector('#toggleAll')!;
   _surface0 = _componentElement.querySelector('#surface0')!;
   _invoke0 = _componentElement.querySelector('#invoke0')!;

@@ -7,7 +7,6 @@ exports[`Pivot renders Pivot correctly 1`] = `
     aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
-    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

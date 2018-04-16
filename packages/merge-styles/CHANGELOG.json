@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.15.1",
+      "tag": "@uifabric/merge-styles_v5.15.1",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry temporarily. (Will be added back in 6.0.)"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.0",
       "tag": "@uifabric/merge-styles_v5.15.0",
       "date": "Tue, 10 Apr 2018 17:37:28 GMT",

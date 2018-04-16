@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SpinButton: Make sure up/down Arrow do not leave the spinButton",
+      "comment": "Do not call the onMenuClick on every keyDown event",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

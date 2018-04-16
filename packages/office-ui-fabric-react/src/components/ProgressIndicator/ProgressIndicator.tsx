@@ -57,9 +57,9 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
             ) }
             style={ percentComplete !== undefined ? { width: percentComplete + '%' } : undefined }
             role='progressbar'
-            aria-valuemin='0'
-            aria-valuemax='100'
-            aria-valuenow={ percentComplete && percentComplete.toFixed().toString() }
+            aria-valuemin={ 0 }
+            aria-valuemax={ 100 }
+            aria-valuenow={ percentComplete }
             aria-valuetext={ ariaValueText }
           />
         </div>

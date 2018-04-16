@@ -40,8 +40,8 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
             style={ {
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-              whiteSpace: this.state.overflow && 'nowrap',
-              width: this.state.overflow && '200px',
+              whiteSpace: this.state.overflow ? 'nowrap' : 'inherit',
+              width: this.state.overflow ? '200px' : 'auto',
               border: '1px solid black'
             } }
           >

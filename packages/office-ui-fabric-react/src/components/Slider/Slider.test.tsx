@@ -21,7 +21,7 @@ describe('Slider', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <Slider label='slider' />
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
 
     expect(labelElement.textContent).toEqual('slider');
@@ -38,7 +38,7 @@ describe('Slider', () => {
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
     const sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
 
@@ -75,7 +75,7 @@ describe('Slider', () => {
       <Slider />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const allButtons = renderedDOM.querySelectorAll('button');
 
     for (let i = 0; i < allButtons.length; i++) {
@@ -99,7 +99,7 @@ describe('Slider', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Slider />
     );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     let button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
     let ariaValueText = button.getAttribute('aria-valuetext');
 
@@ -115,7 +115,7 @@ describe('Slider', () => {
         ariaValueText={ getTextValue }
       />
     );
-    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
     ariaValueText = button.getAttribute('aria-valuetext');
 

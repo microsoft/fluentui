@@ -11,8 +11,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import { SuggestionsStore, FloatingPeoplePicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from '../../FloatingPicker';
-import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps }
-  from '../../SelectedItemsList';
+import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from '../../SelectedItemsList';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any

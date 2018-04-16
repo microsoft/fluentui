@@ -14,7 +14,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
       }
   data-focuszone-id="FocusZone3"
   onBlur={[Function]}
-  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

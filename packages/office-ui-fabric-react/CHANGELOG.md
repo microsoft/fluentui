@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Apr 2018 15:59:01 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+
+## 5.82.0
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Minor changes
+
+- Contextual Split Button: Change styling to only have one split button container instead of two
+- Changed Dropdown components role from combobox to dropdown
+- Bring back isResultsFooterVisible that is props but never used.
+- ContextualMenu/Button: Improve perf and add hiddenvariable to buttons
+- Add ability to use Customer to provide a default layer host
+- Fabric component: all logic that was in the component has moved to a helper which is initialized within BaseComponent. This ensures that focus rectangles show up even if you don't use the Fabric wrapper.
+- Set Panel's FocusTrapZone prop isClickableOutsideFocusTrap to true by default to allow click interactions while panel is open
+- Upgrade to TypeScript 2.8.1
+
+### Patches
+
+- Add focus method to Breadcrumb
+- Fix scroll bar shows when it should not.
+- Fix style and alignment issues with DetailsList headers
+- Add new component page prop for editing on GitHub.
+- SpinButton: Make sure up/down Arrow do not leave the spinButton
+- Handling the scenario where embedded text is passed in as the option's text. In This case, the ariaLabel prop will be displayed in the input and used for autocomplete matching. The value rendered in the menu will not change.
+- Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements. 
+- Adds tests for DocumentCardTitle title truncation
+- Add focus method to Pivot.
+- FocusZone: redoing the "reset alignment on mouse down" change in a less intrusive manner, with test coverage.
+- Removing module entry until we change `lib` to output es6 modules in 6.0. If you would like tree shaking to work, please use webpack aliasing to alias `{packageName}/lib` to `{packageName}/lib-es2015`. In 6.0, we will change `lib` to be es6, so that current partners will just get tree shaking out of the box without aliasing.
+- Prevent SelectionZone from interfering with links and buttons
+- Added missing role to TagPicker's TagItem.
+- FocusZone: undoing the "click" change, which was causing non-focusable targets to be tracked as the "active" element. This created side-effects such as elements becoming focusable upon clicking them more than once, leaving behind unexpected focus outlines.
+- Updating build to React 16.3.1.
+- DetailsList: Starting aria-rowIndex from 1 instead of 0 as mentioned in https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex
+- ColorPicker: text fields now update when `alphaSliderHidden` is `true`.
 
 ## 5.81.1
 Thu, 12 Apr 2018 15:59:01 GMT

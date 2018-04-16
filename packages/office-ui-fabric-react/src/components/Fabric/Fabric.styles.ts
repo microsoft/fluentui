@@ -1,11 +1,9 @@
 
 import {
-  memoizeFunction
-} from '../../Utilities';
-import {
   ITheme,
   mergeStyles
 } from '../../Styling';
+import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 const inheritFont = { fontFamily: 'inherit' };
 
@@ -13,16 +11,15 @@ export interface IFabricClassNames {
   root: string;
 }
 
-export const getClassNames = memoizeFunction((
-  theme: ITheme,
-  className: string,
-  isFocusVisible: boolean
-): IFabricClassNames => {
+export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
+  const {
+    theme,
+    className,
+  } = props;
+
   return {
-    root: mergeStyles([
+    root: [
       'ms-Fabric',
-      isFocusVisible && 'is-focusVisible',
-      className,
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,
@@ -34,7 +31,8 @@ export const getClassNames = memoizeFunction((
             overflow: 'visible'
           }
         }
-      }
-    ])
+      },
+      className
+    ]
   };
-});
+};

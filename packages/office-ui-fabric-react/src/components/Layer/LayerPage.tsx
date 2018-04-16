@@ -9,11 +9,13 @@ import {
 } from '@uifabric/example-app-base';
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerHostedExample } from './examples/Layer.Hosted.Example';
+import { LayerCustomizedExample } from './examples/Layer.Customized.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { LayerStatus } from './Layer.checklist';
 
 const LayerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Basic.Example.tsx') as string;
 const LayerHostedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Hosted.Example.tsx') as string;
+const LayerCustomizedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
 
 export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -29,6 +31,9 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='Using LayerHost to control projection' code={ LayerHostedExampleCode }>
               <LayerHostedExample />
+            </ExampleCard>
+            <ExampleCard title='Using Customizer to control the default layer behavior' code={ LayerHostedExampleCode }>
+              <LayerCustomizedExample />
             </ExampleCard>
           </div>
         }
