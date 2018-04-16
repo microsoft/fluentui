@@ -16,6 +16,9 @@ export interface ICalendarProps extends React.Props<Calendar> {
    */
   componentRef?: (component: ICalendar | null) => void;
 
+  /** Optional class name to add to the root element. */
+  className?: string;
+
   /**
   * Callback issued when a date is selected
   * @param date - The date the user selected
