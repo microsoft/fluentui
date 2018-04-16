@@ -18,7 +18,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
   } = props;
 
   return {
-    root: mergeStyles([
+    root: [
       'ms-Fabric',
       theme.fonts.medium,
       {
@@ -33,6 +33,6 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
         }
       },
       className
-    ])
+    ]
   };
 };

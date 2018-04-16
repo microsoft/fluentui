@@ -555,7 +555,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ariaLabel = item.name;
     }
 
-    const isChecked: boolean | null = getIsChecked(item);
+    const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
     const itemHasSubmenu = hasSubmenu(item);
