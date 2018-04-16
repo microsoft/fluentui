@@ -63,6 +63,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onPhotoLoadingStateChange,
       onRenderCoin,
       presence,
+      presenceDescriptors,
       primaryText,
       showSecondaryText,
       theme,
@@ -81,6 +82,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onPhotoLoadingStateChange,
       onRenderCoin,
       presence,
+      presenceDescriptors,
       primaryText,
       size,
     };
