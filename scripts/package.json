@@ -11,7 +11,7 @@
     "@microsoft/api-extractor": "^4.2.6",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=5.15.0 <6.0.0",
+    "@uifabric/merge-styles": ">=5.15.1 <6.0.0",
     "autoprefixer": "^7.1.5",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
@@ -39,7 +39,7 @@
     "ts-loader": "^4.1.0",
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "2.7.2",
+    "typescript": "2.8.1",
     "webpack": "^4.2.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.12",
@@ -50,7 +50,7 @@
   "bundlesize": [
     {
       "path": "../apps/test-bundle-button/dist/test-bundle-button.min.js",
-      "maxSize": "45.8 kB"
+      "maxSize": "46.5 kB"
     }
   ]
 }

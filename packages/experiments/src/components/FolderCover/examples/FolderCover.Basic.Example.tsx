@@ -1,8 +1,12 @@
 
 import * as React from 'react';
-import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../FolderCover';
-import { IFolderCoverProps } from '../FolderCover.types';
-import { ISize, fitContentToBounds } from '../../../Utilities';
+import {
+  FolderCover,
+  getFolderCoverLayout,
+  renderFolderCoverWithLayout,
+  IFolderCoverProps
+} from '@uifabric/experiments/lib/FolderCover';
+import { ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import { SharedSignal } from '../../signals/Signals';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {

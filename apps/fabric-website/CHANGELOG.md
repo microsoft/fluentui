@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+
+## 5.6.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Updating build to React 16.3.1.
 
 ## 5.6.0
 Thu, 05 Apr 2018 10:15:39 GMT

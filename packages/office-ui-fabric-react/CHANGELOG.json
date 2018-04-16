@@ -2,6 +2,173 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.82.1",
+      "tag": "office-ui-fabric-react_v5.82.1",
+      "date": "Mon, 16 Apr 2018 21:49:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "5ab46126a513abf87f63a9447b5cbf960b18265e",
+            "comment": "Do not call the onMenuClick on every keyDown event"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.82.0",
+      "tag": "office-ui-fabric-react_v5.82.0",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Hugo Dolemieux <hugodolemieux@verizon.net>",
+            "commit": "706932515cd11f2f65da2a22210b6990de1681be",
+            "comment": "Add focus method to Breadcrumb"
+          },
+          {
+            "author": "David De La Brena <36862912+ddlbrena@users.noreply.github.com>",
+            "commit": "944bee5f8e150ef80793f44dc485e33ba1259645",
+            "comment": "Fix scroll bar shows when it should not."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "be86d92568d91ccc75731322d148213475214971",
+            "comment": "Fix style and alignment issues with DetailsList headers"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "ebbb57390d6fbaba5106ea5d0ca18aa022348f4b",
+            "comment": "Add new component page prop for editing on GitHub."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "3ab70bd14836c4298784d8733e474073ef37a870",
+            "comment": "SpinButton: Make sure up/down Arrow do not leave the spinButton"
+          },
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "8ef07e5a6fe206a89cbd3291bcecc3c721510e06",
+            "comment": "Handling the scenario where embedded text is passed in as the option's text. In This case, the ariaLabel prop will be displayed in the input and used for autocomplete matching. The value rendered in the menu will not change."
+          },
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "589eb521fa6ec57b6c9b61744b2e81d6f17e7be2",
+            "comment": "Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements. "
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "3628c32bef64366f39f051d95ca6d352dc4b7286",
+            "comment": "Adds tests for DocumentCardTitle title truncation"
+          },
+          {
+            "author": "Hugo Dolemieux <hugodolemieux@verizon.net>",
+            "commit": "e924e27c0442d63556bf53582f6b44eb7364e96f",
+            "comment": "Add focus method to Pivot."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1e2afca81ae952207f798d11c66cb935c847cdbb",
+            "comment": "FocusZone: redoing the \"reset alignment on mouse down\" change in a less intrusive manner, with test coverage."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry until we change `lib` to output es6 modules in 6.0. If you would like tree shaking to work, please use webpack aliasing to alias `{packageName}/lib` to `{packageName}/lib-es2015`. In 6.0, we will change `lib` to be es6, so that current partners will just get tree shaking out of the box without aliasing."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "acc2c4b47318d1ac54be9e22c906c78af0eb3fa5",
+            "comment": "Prevent SelectionZone from interfering with links and buttons"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "547c418585c4b78e6047a61eb78955aaba1cdf91",
+            "comment": "Added missing role to TagPicker's TagItem."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c3d5683deb1309f464e04218a952439e8eb207d8",
+            "comment": "FocusZone: undoing the \"click\" change, which was causing non-focusable targets to be tracked as the \"active\" element. This created side-effects such as elements becoming focusable upon clicking them more than once, leaving behind unexpected focus outlines."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6f8a180ae2ecca66d09be97e48e8e03cc17d4d9e",
+            "comment": "Updating build to React 16.3.1."
+          },
+          {
+            "author": "Preet Sai Mutneja <preetsaimutneja@gmail.com>",
+            "commit": "0803ee2b1dd00b67b7ec61f902f0ebb609c92faf",
+            "comment": "DetailsList: Starting aria-rowIndex from 1 instead of 0 as mentioned in https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex"
+          },
+          {
+            "author": "wutonghao <38301383+wutonghao@users.noreply.github.com>",
+            "commit": "6d4cfa6bd31dbc0b39b78511a5a1505982b0a21f",
+            "comment": "ColorPicker: text fields now update when `alphaSliderHidden` is `true`."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "51e5f2304e859b56007e931a856e046f49b59a6c",
+            "comment": "Contextual Split Button: Change styling to only have one split button container instead of two"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "0e2e8bd053fc2d77341ea03c4d76a25ab9d7c768",
+            "comment": "Changed Dropdown components role from combobox to dropdown"
+          },
+          {
+            "author": "Joe Zhang <zerojozhan@gmail.com>",
+            "commit": "836bffff34d84ae46aab18edde50ca9d4a9e17c6",
+            "comment": "Bring back isResultsFooterVisible that is props but never used."
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "4ea06e597851f76cdf3482dcb4046fc664b2e492",
+            "comment": "ContextualMenu/Button: Improve perf and add hiddenvariable to buttons"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "40b585d6ba42d45a2302c9161612461d8ab2fca9",
+            "comment": "Add ability to use Customer to provide a default layer host"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0c830b2d32319e5455c2c652765b9d4d6cda8268",
+            "comment": "Fabric component: all logic that was in the component has moved to a helper which is initialized within BaseComponent. This ensures that focus rectangles show up even if you don't use the Fabric wrapper."
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "0e488caa96a9ca0d8b48567aa2b87cc04c415e76",
+            "comment": "Set Panel's FocusTrapZone prop isClickableOutsideFocusTrap to true by default to allow click interactions while panel is open"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a79de6bee8a344b392da6308988ce075c0206382",
+            "comment": "Upgrade to TypeScript 2.8.1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.0 <6.0.0` to `>=5.7.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.15.0 <6.0.0` to `>=5.15.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.23.0 <6.0.0` to `>=5.23.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.23.0 <6.0.0` to `>=5.24.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.9.0 <6.0.0` to `>=5.10.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.81.1",
       "tag": "office-ui-fabric-react_v5.81.1",
       "date": "Thu, 12 Apr 2018 15:59:01 GMT",

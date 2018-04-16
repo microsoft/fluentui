@@ -2,7 +2,7 @@ import {
   IShimmerLineStyleProps,
   IShimmerLineStyles
 } from './ShimmerLine.types';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleSet } from '../../../Styling';
 
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const {

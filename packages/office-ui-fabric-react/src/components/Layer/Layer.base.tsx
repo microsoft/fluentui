@@ -23,7 +23,7 @@ let _defaultHostSelector: string | undefined;
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-@customizable('Layer', ['theme'])
+@customizable('Layer', ['theme', 'hostId'])
 export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   public static defaultProps: ILayerProps = {
@@ -116,7 +116,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
         }
 
         this._layerElement = doc.createElement('div');
-        this._layerElement.className = classNames.root;
+        this._layerElement.className = classNames.root!;
 
         host.appendChild(this._layerElement);
         setVirtualParent(this._layerElement, rootElement);

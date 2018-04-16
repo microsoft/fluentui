@@ -8,7 +8,6 @@ exports[`DetailsHeader can render 1`] = `
   className="ms-FocusZone ms-DetailsHeader"
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone1"
-  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
