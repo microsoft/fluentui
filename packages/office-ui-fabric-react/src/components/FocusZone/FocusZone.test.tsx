@@ -56,7 +56,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -152,7 +152,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -196,7 +196,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -295,7 +295,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -407,7 +407,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -513,7 +513,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -631,7 +631,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -740,7 +740,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -815,7 +815,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const divB = focusZone.querySelector('.b') as HTMLElement;
@@ -905,7 +905,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const divB = focusZone.querySelector('.b') as HTMLElement;
@@ -1035,7 +1035,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZoneElement = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZoneElement = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
     const buttonAElement = focusZoneElement.querySelector('.a') as HTMLElement;
 
     // HACK declare that elements are not null at this point.
@@ -1097,7 +1097,7 @@ describe('FocusZone', () => {
       </div >
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -1177,7 +1177,7 @@ describe('FocusZone', () => {
       </div >
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
 
@@ -1213,7 +1213,7 @@ describe('FocusZone', () => {
       </div >
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
 
     const inputA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -1271,7 +1271,7 @@ describe('FocusZone', () => {
       </div >
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
 
     const inputA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;

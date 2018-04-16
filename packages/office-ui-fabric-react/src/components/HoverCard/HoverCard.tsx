@@ -20,9 +20,9 @@ import { ExpandingCardMode, OpenCardMode } from './ExpandingCard.types';
 import { getStyles } from './HoverCard.styles';
 
 export interface IHoverCardState {
-  isHoverCardVisible: boolean;
-  mode: ExpandingCardMode;
-  openMode: OpenCardMode;
+  isHoverCardVisible?: boolean;
+  mode?: ExpandingCardMode;
+  openMode?: OpenCardMode;
 }
 
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
@@ -170,6 +170,8 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
           });
         }
+
+        return {};
       });
     }, this.props.cardOpenDelay!);
   }
@@ -208,6 +210,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
           mode: ExpandingCardMode.expanded
         });
       }
+      return {};
     });
   }
 }
