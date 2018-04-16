@@ -50,7 +50,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     this._labelId = getId('ChoiceGroupLabel');
   }
 
-  public componentWillReceiveProps(newProps: IChoiceGroupProps) {
+  public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
     const oldKeyCheched = this._getKeyChecked(this.props);
 

@@ -48,7 +48,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     };
   }
 
-  public componentWillReceiveProps(newProps: IColorSliderProps) {
+  public componentWillReceiveProps(newProps: IColorSliderProps): void {
     if (newProps && newProps.value) {
       this.setState({ currentValue: newProps.value });
     }

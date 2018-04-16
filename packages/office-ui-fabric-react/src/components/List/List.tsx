@@ -273,7 +273,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public componentWillReceiveProps(newProps: IListProps) {
+  public componentWillReceiveProps(newProps: IListProps): void {
     if (newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||
       newProps.startIndex !== this.props.startIndex) {

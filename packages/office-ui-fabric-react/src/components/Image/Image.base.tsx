@@ -49,7 +49,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: IImageProps) {
+  public componentWillReceiveProps(nextProps: IImageProps): void {
     if (nextProps.src !== this.props.src) {
       this.setState({
         loadState: ImageLoadState.notLoaded

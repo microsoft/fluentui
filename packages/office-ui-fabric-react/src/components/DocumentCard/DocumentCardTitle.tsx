@@ -53,7 +53,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     }
   }
 
-  public componentWillReceiveProps(newProps: IDocumentCardTitleProps) {
+  public componentWillReceiveProps(newProps: IDocumentCardTitleProps): void {
     this._events.off(window, 'resize');
     this._isTruncated = false;
 

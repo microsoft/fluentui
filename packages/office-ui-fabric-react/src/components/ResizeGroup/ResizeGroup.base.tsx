@@ -333,7 +333,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
-  public componentWillReceiveProps(nextProps: IResizeGroupProps) {
+  public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',

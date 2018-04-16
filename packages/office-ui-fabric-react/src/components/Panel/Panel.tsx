@@ -56,7 +56,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._events.on(window, 'resize', this._updateFooterPosition);
 
     if (this.props.isOpen) {
@@ -64,7 +64,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  public componentWillReceiveProps(newProps: IPanelProps) {
+  public componentWillReceiveProps(newProps: IPanelProps): void {
     if (newProps.isOpen !== this.state.isOpen) {
       if (newProps.isOpen) {
         this.open();

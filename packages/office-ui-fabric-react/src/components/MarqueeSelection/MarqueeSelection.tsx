@@ -59,7 +59,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._scrollableParent = findScrollableParent(this._root.value) as HTMLElement;
     this._scrollableSurface = (this._scrollableParent === window as any) ? document.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.

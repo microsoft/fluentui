@@ -96,7 +96,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   }
 
-  public componentWillReceiveProps(newProps: IDropdownProps) {
+  public componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
     const selectedKeyProp: keyof IDropdownProps = this.props.multiSelect ? 'selectedKeys' : 'selectedKey';

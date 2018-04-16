@@ -79,7 +79,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     this.scrollSelected();
     this.activeSelectedElement = this._selectedElement ? this._selectedElement.value : null;
   }
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     // Only scroll to selected element if the selected element has changed. Otherwise do nothing.
     // This prevents some odd behavior where scrolling the active element out of view and clicking on a selected element
     // will trigger a focus event and not give the clicked element the click.
@@ -309,14 +309,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
   }
 
-  public focusSearchForMoreButton() {
+  public focusSearchForMoreButton(): void {
     if (this._searchForMoreButton.value) {
       this._searchForMoreButton.value.focus();
     }
   }
 
   // TODO get the element to scroll into view properly regardless of direction.
-  public scrollSelected() {
+  public scrollSelected(): void {
     if (this._selectedElement.value && this._selectedElement.value.scrollIntoView !== undefined) {
       this._selectedElement.value.scrollIntoView(false);
     }

@@ -125,7 +125,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  public componentWillUpdate(newProps: IContextualMenuProps) {
+  public componentWillUpdate(newProps: IContextualMenuProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);

@@ -66,7 +66,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return this._inputElement.value;
   }
 
-  public componentWillReceiveProps(nextProps: IAutofillProps) {
+  public componentWillReceiveProps(nextProps: IAutofillProps): void {
     let newValue;
 
     if (this.props.updateValueInWillReceiveProps) {

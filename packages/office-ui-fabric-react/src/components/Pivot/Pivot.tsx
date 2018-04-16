@@ -70,7 +70,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     this._renderPivotLink = this._renderPivotLink.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: IPivotProps) {
+  public componentWillReceiveProps(nextProps: IPivotProps): void {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
 
     this.setState((prevState, props) => {

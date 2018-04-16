@@ -46,7 +46,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
     };
   }
 
-  public componentWillReceiveProps(newProps: IModalProps) {
+  public componentWillReceiveProps(newProps: IModalProps): void {
     clearTimeout(this._onModalCloseTimer);
 
     // Opening the dialog

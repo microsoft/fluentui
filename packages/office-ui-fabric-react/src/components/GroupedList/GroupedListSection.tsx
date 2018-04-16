@@ -140,7 +140,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { dragDropHelper, selection } = this.props;
 
     if (dragDropHelper && this._root.value) {

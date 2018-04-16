@@ -54,7 +54,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     this._events.dispose();
   }
 
-  public componentWillReceiveProps(newProps: IColorRectangleProps) {
+  public componentWillReceiveProps(newProps: IColorRectangleProps): void {
     const { color } = newProps;
 
     this.setState({

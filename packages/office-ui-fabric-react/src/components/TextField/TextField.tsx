@@ -108,7 +108,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  public componentWillReceiveProps(newProps: ITextFieldProps) {
+  public componentWillReceiveProps(newProps: ITextFieldProps): void {
     const { onBeforeChange } = this.props;
 
     if (newProps.value !== undefined && newProps.value !== this.state.value) {

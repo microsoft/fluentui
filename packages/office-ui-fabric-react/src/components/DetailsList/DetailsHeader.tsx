@@ -113,7 +113,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._events.on(rootElement, 'keydown', this._onRootKeyDown);
   }
 
-  public componentWillReceiveProps(newProps: IDetailsHeaderProps) {
+  public componentWillReceiveProps(newProps: IDetailsHeaderProps): void {
     const { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {

@@ -67,18 +67,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.items;
   }
 
-  public componentWillUpdate(newProps: P, newState: IBasePickerState) {
+  public componentWillUpdate(newProps: P, newState: IBasePickerState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.selection.setItems(this.state.items);
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  public componentWillReceiveProps(newProps: P) {
+  public componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
     if (newItems) {

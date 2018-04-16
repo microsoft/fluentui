@@ -71,7 +71,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._events.on(this._root.value, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
   }

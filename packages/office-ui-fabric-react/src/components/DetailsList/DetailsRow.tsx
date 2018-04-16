@@ -163,7 +163,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     }
   }
 
-  public componentWillReceiveProps(newProps: IDetailsRowProps) {
+  public componentWillReceiveProps(newProps: IDetailsRowProps): void {
     this.setState({
       selectionState: this._getSelectionState(newProps),
       groupNestingDepth: newProps.groupNestingDepth

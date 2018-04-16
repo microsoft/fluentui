@@ -92,7 +92,7 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
     return this.props.children;
   }
 
-  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps) {
+  public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): void {
     // The children will always be different, so we ignore that prop
     return !shallowCompare({ ...this.props, children: undefined }, { ...newProps, children: undefined });
   }
@@ -193,7 +193,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._events.on(this._comboBoxWrapper.value, 'focus', this._onResolveOptions, true);
   }
 
-  public componentWillReceiveProps(newProps: IComboBoxProps) {
+  public componentWillReceiveProps(newProps: IComboBoxProps): void {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
     if (newProps.selectedKey !== this.props.selectedKey ||

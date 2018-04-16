@@ -29,7 +29,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     this.state = this._getState(props);
   }
 
-  public componentWillReceiveProps(newProps: IDetailsRowFieldsProps) {
+  public componentWillReceiveProps(newProps: IDetailsRowFieldsProps): void {
     this.setState(this._getState(newProps));
   }
 

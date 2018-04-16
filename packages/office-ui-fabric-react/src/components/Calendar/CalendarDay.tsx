@@ -95,7 +95,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayProps) {
+  public componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps)
     });

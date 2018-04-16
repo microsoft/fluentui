@@ -67,7 +67,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     this._labelId = getId('RatingLabel');
   }
 
-  public componentWillReceiveProps(nextProps: IRatingProps) {
+  public componentWillReceiveProps(nextProps: IRatingProps): void {
     if (typeof nextProps.rating !== 'undefined' && nextProps.rating !== this.state.rating) {
       this.setState({
         rating: this._getClampedRating(nextProps.rating)

@@ -73,7 +73,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     this._events.on(window, 'resize', this._updateRenderedItems);
   }
 
-  public componentWillReceiveProps(nextProps: ICommandBarProps) {
+  public componentWillReceiveProps(nextProps: ICommandBarProps): void {
     this.setState(this._getStateFromProps(nextProps));
     this._commandItemWidths = null;
   }

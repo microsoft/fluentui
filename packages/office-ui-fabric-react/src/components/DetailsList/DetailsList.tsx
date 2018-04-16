@@ -197,7 +197,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  public componentWillReceiveProps(newProps: IDetailsListProps) {
+  public componentWillReceiveProps(newProps: IDetailsListProps): void {
     const {
       checkboxVisibility,
       items,

@@ -48,7 +48,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     } as IColorPickerState;
   }
 
-  public componentWillReceiveProps(newProps: IColorPickerProps) {
+  public componentWillReceiveProps(newProps: IColorPickerProps): void {
     if (newProps.color) {
       this._updateColor(getColorFromString(newProps.color));
     }

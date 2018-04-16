@@ -140,7 +140,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillReceiveProps(nextProps: IDatePickerProps) {
+  public componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
     if (compareDates(this.props.minDate!, nextProps.minDate!) &&

@@ -69,7 +69,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     };
   }
 
-  public componentWillReceiveProps(newProps: ISwatchColorPickerProps) {
+  public componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     let newSelectedIndex;
 
     if (newProps.selectedId) {

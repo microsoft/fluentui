@@ -61,7 +61,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  public componentWillReceiveProps(newProps: IGroupedListProps) {
+  public componentWillReceiveProps(newProps: IGroupedListProps): void {
     const {
       groups,
       selectionMode

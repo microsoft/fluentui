@@ -52,7 +52,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  public componentWillReceiveProps(nextProps: IFocusTrapZoneProps) {
+  public componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
     if (elementToFocusOnDismiss && this._previouslyFocusedElement !== elementToFocusOnDismiss) {
       this._previouslyFocusedElement = elementToFocusOnDismiss;
