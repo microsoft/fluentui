@@ -512,9 +512,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           rel={ anchorRel }
           className={ classNames.root }
           role='menuitem'
-          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : null }
-          aria-haspopup={ itemHasSubmenu || null }
-          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : null }
+          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : undefined }
+          aria-haspopup={ itemHasSubmenu || undefined }
+          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
           aria-posinset={ focusableElementIndex + 1 }
           aria-setsize={ totalItemCount }
           aria-disabled={ this._isItemDisabled(item) }
@@ -588,8 +588,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <button
-        { ...buttonNativeProperties }
-        { ...itemButtonProperties }
+        { ...buttonNativeProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
+        { ...itemButtonProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
       >
         <ChildrenRenderer
           item={ item }

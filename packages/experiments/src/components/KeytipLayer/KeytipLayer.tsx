@@ -126,7 +126,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    * @param visible - T/F if the specified Keytips will be visible or not
    */
   public setKeytipVisibility(ids: string[], visible: boolean): void {
-    this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
+    this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerProps) => {
       let currentKeytips: IKeytipProps[] = [...previousState.keytips];
       for (let keytip of currentKeytips) {
         let keytipId = convertSequencesToKeytipID(keytip.keySequences);

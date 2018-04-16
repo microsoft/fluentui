@@ -350,10 +350,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             aria-expanded={ isOpen }
             aria-autocomplete={ this._getAriaAutoCompleteValue() }
             role='combobox'
-            aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
+            aria-readonly={ ((allowFreeform || disabled) ? undefined : 'true') }
             readOnly={ disabled || !allowFreeform }
             aria-labelledby={ (label && (id + '-label')) }
-            aria-label={ ((ariaLabel && !label) && ariaLabel) }
+            aria-label={ ((ariaLabel && !label) ? ariaLabel : undefined) }
             aria-describedby={ (id + '-option') }
             aria-activedescendant={ this._getAriaActiveDescentValue() }
             aria-disabled={ disabled }
@@ -1065,7 +1065,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (
       !this.props.multiSelect ? (
         <ComboBoxOptionWrapper
-          {...wrapperProps}
+          { ...wrapperProps }
         >
           <CommandButton
             id={ id + '-list' + item.index }
@@ -1090,7 +1090,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         </ComboBoxOptionWrapper >
       ) : (
           <ComboBoxOptionWrapper
-            {...wrapperProps}
+            { ...wrapperProps }
           >
             <Checkbox
               id={ id + '-list' + item.index }
@@ -1754,8 +1754,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Get the aria-activedescendant value for the comboxbox.
    * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
    */
-  private _getAriaActiveDescentValue(): string | null {
-    let descendantText = (this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length >= 0 ? (this._id + '-list' + this.state.selectedIndices[0]) : null);
+  private _getAriaActiveDescentValue(): string | undefined {
+    let descendantText = (this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length >= 0 ? (this._id + '-list' + this.state.selectedIndices[0]) : undefined);
     if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
     }
@@ -1767,7 +1767,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from and can
   * dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
   */
-  private _getAriaAutoCompleteValue(): string {
+  private _getAriaAutoCompleteValue(): 'none' | 'inline' | 'list' | 'both' | undefined {
     const autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
     return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
   }
