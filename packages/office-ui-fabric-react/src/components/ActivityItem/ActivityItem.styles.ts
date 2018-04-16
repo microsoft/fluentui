@@ -47,7 +47,7 @@ export const getStyles = memoizeFunction((
     animationName: continuousPulse,
     animationIterationCount: '1',
     animationDuration: '.8s',
-    zIndex: 1000
+    zIndex: 1
   };
 
   const slideInAnimation = {
@@ -140,7 +140,7 @@ export const getStyles = memoizeFunction((
           selectors: {
             [HighContrastSelector]: {
               border: 'none',
-              marginTop: '0'
+              margin: '0'
             }
           }
         }
