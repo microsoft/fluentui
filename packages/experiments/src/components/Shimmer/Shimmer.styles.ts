@@ -6,10 +6,18 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     width,
     rowHeight,
     isDataLoaded,
-    isBaseStyle
+    isBaseStyle,
+    widthInPercentage,
+    widthInPixel
   } = props;
 
   const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
+
+  // TODO redo the logic after the deprecates
+  const ACTUAL_WIDTH =
+    width ? width + '%' :
+      widthInPercentage ? widthInPercentage + '%' :
+        widthInPixel ? widthInPixel + 'px' : '100%';
 
   const shimmerAnimation: string = keyframes({
     '0%': {
@@ -48,7 +56,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         right: '0',
         alignItems: 'center',
         alignContent: 'space-between',
-        width: width ? `${width}%` : '100%',
+        width: ACTUAL_WIDTH,
         height: 'auto',
         boxSizing: 'border-box',
         background: `${DefaultPalette.neutralLighter}
@@ -72,8 +80,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         visibility: 'hidden'
       },
       isBaseStyle && {
-        position: 'static',
-        width: width ? `${width}px` : 'auto'
+        position: 'static'
       }
     ],
     dataWrapper: [
