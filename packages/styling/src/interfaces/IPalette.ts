@@ -2,244 +2,348 @@
  * UI Fabric color palette.
  */
 export interface IPalette {
-  /**
-   * Color code for themeDarker.
-   */
-  themeDarker: string;
-
-  /**
-   * Color code for themeDark.
-   */
-  themeDark: string;
-
-  /**
-   * Color code for themeDarkAlt.
-   */
-  themeDarkAlt: string;
-
-  /**
-   * Color code for themePrimary.
-   */
-  themePrimary: string;
-
-  /**
-   * Color code for themeSecondary.
-   */
-  themeSecondary: string;
-
-  /**
-   * Color code for themeTertiary.
-   */
-  themeTertiary: string;
-
-  /**
-   * Color code for themeLight.
-   */
-  themeLight: string;
-
-  /**
-   * Color code for themeLighter.
-   */
-  themeLighter: string;
-
-  /**
-   * Color code for themeLighterAlt.
-   */
-  themeLighterAlt: string;
-
-  /**
-   * Color code for the strongest color, which is black in the default theme. This is a very light color in inverted themes.
-   */
+  // Grays
   black: string;
-
-  /**
-   * Color code for blackTranslucent40.
-   */
-  blackTranslucent40: string;
-
-  /**
-   * Color code for neutralDark.
-   */
-  neutralDark: string;
-
-  /**
-   * Color code for neutralPrimary.
-   */
-  neutralPrimary: string;
-
-  /**
-   * Color code for neutralPrimaryAlt.
-   */
-  neutralPrimaryAlt: string;
-
-  /**
-   * Color code for neutralSecondary.
-   */
-  neutralSecondary: string;
-
-  /**
-   * Color code for neutralTertiary.
-   */
-  neutralTertiary: string;
-
-  /**
-   * Color code for neutralTertiaryAlt.
-   */
-  neutralTertiaryAlt: string;
-
-  /**
-   * Color code for neutralQuaternary.
-   */
-  neutralQuaternary: string;
-
-  /**
-   * Color code for neutralQuaternaryAlt.
-   */
-  neutralQuaternaryAlt: string;
-
-  /**
-   * Color code for neutralLight.
-   */
-  neutralLight: string;
-
-  /**
-   * Color code for neutralLighter.
-   */
-  neutralLighter: string;
-
-  /**
-   * Color code for neutralLighterAlt.
-   */
-  neutralLighterAlt: string;
-
-  /**
-   * Color code for the accent.
-   */
-  accent: string;
-
-  /**
-   * Color code for the softest color, which is white in the default theme. This is a very dark color in dark themes.
-   * This is the page background.
-   */
+  gray220: string;
+  gray210: string;
+  gray200: string;
+  gray190: string;
+  gray180: string;
+  gray170: string;
+  gray160: string;
+  gray150: string;
+  gray140: string;
+  gray130: string;
+  gray120: string;
+  gray110: string;
+  gray100: string;
+  gray90: string;
+  gray80: string;
+  gray70: string;
+  gray60: string;
+  gray50: string;
+  gray40: string;
+  gray30: string;
+  gray20: string;
+  gray10: string;
   white: string;
 
-  /**
-   * Color code for whiteTranslucent40
-   */
+  // Colors
+  pinkRed40: string;
+  pinkRed30: string;
+  pinkRed20: string;
+  pinkRed10: string;
+  red160: string;
+  red150: string;
+  red140: string;
+  red130: string;
+  red120: string;
+  red110: string;
+  red100: string;
+  red90: string;
+  red80: string;
+  red70: string;
+  red60: string;
+  red50: string;
+  red40: string;
+  red30: string;
+  red20: string;
+  red10: string;
+  redOrange60: string;
+  redOrange50: string;
+  redOrange40: string;
+  redOrange30: string;
+  redOrange20: string;
+  redOrange10: string;
+  orange190: string;
+  orange180: string;
+  orange170: string;
+  orange160: string;
+  orange150: string;
+  orange140: string;
+  orange130: string;
+  orange120: string;
+  orange110: string;
+  orange100: string;
+  orange90: string;
+  orange80: string;
+  orange70: string;
+  orange60: string;
+  orange50: string;
+  orange40: string;
+  orange30: string;
+  orange20: string;
+  orange10: string;
+  orangeYellow60: string;
+  orangeYellow50: string;
+  orangeYellow40: string;
+  orangeYellow30: string;
+  orangeYellow20: string;
+  orangeYellow10: string;
+  yellow50: string;
+  yellow40: string;
+  yellow30: string;
+  yellow20: string;
+  yellow10: string;
+  yellowGreen70: string;
+  yellowGreen60: string;
+  yellowGreen50: string;
+  yellowGreen40: string;
+  yellowGreen30: string;
+  yellowGreen20: string;
+  yellowGreen10: string;
+  green140: string;
+  green130: string;
+  green120: string;
+  green110: string;
+  green100: string;
+  green90: string;
+  green80: string;
+  green70: string;
+  green60: string;
+  green50: string;
+  green40: string;
+  green30: string;
+  green20: string;
+  green10: string;
+  greenCyan180: string;
+  greenCyan170: string;
+  greenCyan160: string;
+  greenCyan150: string;
+  greenCyan140: string;
+  greenCyan130: string;
+  greenCyan120: string;
+  greenCyan110: string;
+  greenCyan100: string;
+  greenCyan90: string;
+  greenCyan80: string;
+  greenCyan70: string;
+  greenCyan60: string;
+  greenCyan50: string;
+  greenCyan40: string;
+  greenCyan30: string;
+  greenCyan20: string;
+  greenCyan10: string;
+  cyan230: string;
+  cyan220: string;
+  cyan210: string;
+  cyan200: string;
+  cyan190: string;
+  cyan180: string;
+  cyan170: string;
+  cyan160: string;
+  cyan150: string;
+  cyan140: string;
+  cyan130: string;
+  cyan120: string;
+  cyan110: string;
+  cyan100: string;
+  cyan90: string;
+  cyan80: string;
+  cyan70: string;
+  cyan60: string;
+  cyan50: string;
+  cyan40: string;
+  cyan30: string;
+  cyan20: string;
+  cyan10: string;
+  cyanBlue100: string;
+  cyanBlue90: string;
+  cyanBlue80: string;
+  cyanBlue70: string;
+  cyanBlue60: string;
+  cyanBlue50: string;
+  cyanBlue40: string;
+  cyanBlue30: string;
+  cyanBlue20: string;
+  cyanBlue10: string;
+  blue150: string;
+  blue140: string;
+  blue130: string;
+  blue120: string;
+  blue110: string;
+  blue100: string;
+  blue90: string;
+  blue80: string;
+  blue70: string;
+  blue60: string;
+  blue50: string;
+  blue40: string;
+  blue30: string;
+  blue20: string;
+  blue10: string;
+  blueMagenta250: string;
+  blueMagenta240: string;
+  blueMagenta230: string;
+  blueMagenta220: string;
+  blueMagenta210: string;
+  blueMagenta200: string;
+  blueMagenta190: string;
+  blueMagenta180: string;
+  blueMagenta170: string;
+  blueMagenta160: string;
+  blueMagenta150: string;
+  blueMagenta140: string;
+  blueMagenta130: string;
+  blueMagenta120: string;
+  blueMagenta110: string;
+  blueMagenta100: string;
+  blueMagenta90: string;
+  blueMagenta80: string;
+  blueMagenta70: string;
+  blueMagenta60: string;
+  blueMagenta50: string;
+  blueMagenta40: string;
+  blueMagenta30: string;
+  blueMagenta20: string;
+  blueMagenta10: string;
+  magenta160: string;
+  magenta150: string;
+  magenta140: string;
+  magenta130: string;
+  magenta120: string;
+  magenta110: string;
+  magenta100: string;
+  magenta90: string;
+  magenta80: string;
+  magenta70: string;
+  magenta60: string;
+  magenta50: string;
+  magenta40: string;
+  magenta30: string;
+  magenta20: string;
+  magenta10: string;
+  magentaPink70: string;
+  magentaPink60: string;
+  magentaPink50: string;
+  magentaPink40: string;
+  magentaPink30: string;
+  magentaPink20: string;
+  magentaPink10: string;
+  pink50: string;
+  pink40: string;
+  pink30: string;
+  pink20: string;
+  pink10: string;
+
+  // Communication
+  communication90: string;
+  communication80: string;
+  communication70: string;
+  communication60: string;
+  communication50: string;
+  communication40: string;
+  communication30: string;
+  communication20: string;
+  communication10: string;
+
+  // Excel
+  excel70: string;
+  excel60: string;
+  excel50: string;
+  excel40: string;
+  excel30: string;
+  excel20: string;
+  excel10: string;
+
+  // PowerPoint
+  powerPoint70: string;
+  powerPoint60: string;
+  powerPoint50: string;
+  powerPoint40: string;
+  powerPoint30: string;
+  powerPoint20: string;
+  powerPoint10: string;
+
+  // Word
+  word70: string;
+  word60: string;
+  word50: string;
+  word40: string;
+  word30: string;
+  word20: string;
+  word10: string;
+
+  // OneNote
+  oneNote80: string;
+  oneNote70: string;
+  oneNote60: string;
+  oneNote50: string;
+  oneNote40: string;
+  oneNote30: string;
+  oneNote20: string;
+  oneNote10: string;
+
+  // Teams
+  teams70: string;
+  teams60: string;
+  teams50: string;
+  teams40: string;
+  teams30: string;
+  teams20: string;
+  teams10: string;
+
+  // High Contrast
+  contrastBlackDisabled: string;
+  contrastWhiteDisabled: string;
+  contrastBlackSelected: string;
+  contrastWhiteSelected: string;
+
+  // Message
+  messageInfo: string;
+  messageInfoBackground: string;
+  messageSuccess: string;
+  messageSuccessBackground: string;
+  messageSevereWarning: string;
+  messageSevereWarningBackground: string;
+  messageError: string;
+  messageErrorBackground: string;
+
+  // Colors that will be deprecated by Fluent.
+  themeDarker: string;
+  themeDark: string;
+  themeDarkAlt: string;
+  themePrimary: string;
+  themeSecondary: string;
+  themeTertiary: string;
+  themeLight: string;
+  themeLighter: string;
+  themeLighterAlt: string;
+  blackTranslucent40: string;
+  neutralDark: string;
+  neutralPrimary: string;
+  neutralPrimaryAlt: string;
+  neutralSecondary: string;
+  neutralTertiary: string;
+  neutralTertiaryAlt: string;
+  neutralQuaternary: string;
+  neutralQuaternaryAlt: string;
+  neutralLight: string;
+  neutralLighter: string;
+  neutralLighterAlt: string;
+  accent: string;
   whiteTranslucent40: string;
-
-  /**
-   * Color code for yellow.
-   */
   yellow: string;
-
-  /**
-   * Color code for yellowLight.
-   */
   yellowLight: string;
-
-  /**
-   * Color code for orange.
-   */
   orange: string;
-
-  /**
-   * Color code for orangeLight.
-   */
   orangeLight: string;
-
-  /**
-   * Color code for orangeLighter.
-   */
   orangeLighter: string;
-
-  /**
-   * Color code for redDark.
-   */
   redDark: string;
-
-  /**
-   * Color code for red.
-   */
   red: string;
-
-  /**
-   * Color code for magentaDark.
-   */
   magentaDark: string;
-
-  /**
-   * Color code for magenta.
-   */
   magenta: string;
-
-  /**
-   * Color code for magentaLight.
-   */
   magentaLight: string;
-
-  /**
-   * Color code for purpleDark.
-   */
   purpleDark: string;
-
-  /**
-   * Color code for purple.
-   */
   purple: string;
-
-  /**
-   * Color code for purpleLight.
-   */
   purpleLight: string;
-
-  /**
-   * Color code for blueDark.
-   */
   blueDark: string;
-
-  /**
-   * Color code for blueMid.
-   */
   blueMid: string;
-
-  /**
-   * Color code for blue.
-   */
   blue: string;
-
-  /**
-   * Color code for blueLight.
-   */
   blueLight: string;
-
-  /**
-   * Color code for tealDark.
-   */
   tealDark: string;
-
-  /**
-   * Color code for teal.
-   */
   teal: string;
-
-  /**
-   * Color code for tealLight.
-   */
   tealLight: string;
-
-  /**
-   * Color code for greenDark.
-   */
   greenDark: string;
-
-  /**
-   * Color code for green.
-   */
   green: string;
-
-  /**
-   * Color code for greenLight.
-   */
   greenLight: string;
 }
