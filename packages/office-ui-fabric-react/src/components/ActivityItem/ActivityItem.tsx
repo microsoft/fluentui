@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-
+import { DefaultPalette } from '../../Styling';
 import { BaseComponent } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.types';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
@@ -10,8 +10,8 @@ import { PersonaSize, PersonaCoin, IPersonaSharedProps } from '../../Persona';
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   public static defaultProps: Partial<IActivityItemProps> = {
-    beaconColorOne: '#00FFEC',
-    beaconColorTwo: '#005EDD'
+    beaconColorOne: DefaultPalette.blueLight,
+    beaconColorTwo: DefaultPalette.themePrimary,
   };
 
   constructor(props: IActivityItemProps) {

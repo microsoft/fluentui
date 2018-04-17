@@ -71,8 +71,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     width: 36,
     height: 36,
-    beaconColorOne: '#00FFEC',
-    beaconColorTwo: '#005EDD',
+    beaconColorOne: DefaultPalette.blueLight,
+    beaconColorTwo: DefaultPalette.themePrimary,
     color: DefaultPalette.themePrimary
   };
 
