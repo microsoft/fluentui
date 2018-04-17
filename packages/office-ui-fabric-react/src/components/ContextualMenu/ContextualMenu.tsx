@@ -793,8 +793,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const targetElement = ev.currentTarget as HTMLElement;
 
-    if (
-      !this._isScrollIdle ||
+    if (!this._isScrollIdle ||
       this._enterTimerId !== undefined ||
       targetElement === this._targetWindow.document.activeElement as HTMLElement) {
       return;
