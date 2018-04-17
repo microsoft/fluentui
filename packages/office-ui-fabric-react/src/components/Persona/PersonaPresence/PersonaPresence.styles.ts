@@ -178,6 +178,7 @@ export const getStyles = (
         fontSize: '6px',
         lineHeight: personaPresenceSizes.size12,
         verticalAlign: 'top',
+        userSelect: 'none',
 
         selectors: {
           [HighContrastSelector]: {

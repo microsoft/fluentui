@@ -44,8 +44,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderPrimaryText,
       onRenderSecondaryText,
       onRenderTertiaryText,
+      size = this.props.size as PersonaSize,
     } = this.props;
-    const size = this.props.size as PersonaSize;
 
     // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
     const {
@@ -96,6 +96,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     });
 
     const divProps = getNativeProps(this.props, divProperties);
+
     const personaDetails = (
       <div className={ classNames.details }>
         { this._renderElement(
