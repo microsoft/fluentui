@@ -9,10 +9,6 @@ import { getStyles } from './ActivityItem.styles';
 import { PersonaSize, PersonaCoin, IPersonaSharedProps } from '../../Persona';
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
-  public static defaultProps: Partial<IActivityItemProps> = {
-    beaconColorOne: DefaultPalette.blueLight,
-    beaconColorTwo: DefaultPalette.themePrimary,
-  };
 
   constructor(props: IActivityItemProps) {
     super(props);

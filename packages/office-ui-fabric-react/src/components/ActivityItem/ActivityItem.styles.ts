@@ -26,8 +26,8 @@ export const getStyles = memoizeFunction((
 ): IActivityItemStyles => {
 
   const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
-    props.beaconColorOne!,
-    props.beaconColorTwo!,
+    props.beaconColorOne ? props.beaconColorOne : theme.palette.themePrimary,
+    props.beaconColorTwo ? props.beaconColorTwo : theme.palette.themeTertiary,
     ANIMATION_INNER_DIMENSION,
     ANIMATION_OUTER_DIMENSION,
     ANIMATION_BORDER_WIDTH
