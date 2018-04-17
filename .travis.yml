@@ -8,7 +8,3 @@ script:
   - npm run buildfast
   - npm run bundlesize
   - npm run vrtest
-cache:
-  bundler: true
-  directories:
-  - node_modules # NPM packages
