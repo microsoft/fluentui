@@ -6,7 +6,7 @@ script:
       npm run checkchange;
     fi
   - npm run buildfast
-#  - npm run bundlesize
+  - npm run bundlesize
   - npm run vrtest
 cache:
   bundler: true
