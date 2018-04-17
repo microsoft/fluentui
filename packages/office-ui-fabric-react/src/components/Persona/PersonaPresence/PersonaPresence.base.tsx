@@ -34,10 +34,10 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
       coinSize,
       getStyles,
       presence = this.props.presence as PersonaPresenceEnum,
-      presenceDescriptors = { ...defaultPresenceDescriptors, ...this.props.presenceDescriptors },
       theme,
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
+    const presenceDescriptors = { ...defaultPresenceDescriptors, ...this.props.presenceDescriptors };
 
     // Render Presence Icon if Persona is above size 32.
     const renderIcon = !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && (coinSize ? coinSize > 32 : true);
