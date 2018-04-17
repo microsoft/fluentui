@@ -12,8 +12,8 @@ import {
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
+  sizeBoolean,
 } from '../Persona.types';
-import { sizeBoolean } from '../PersonaConsts';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;

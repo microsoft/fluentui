@@ -2,16 +2,14 @@ import {
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
   PersonaSize,
+  personaCoinSizes,
+  sizeBoolean,
 } from '../Persona.types';
 import {
   HighContrastSelector,
   FontSizes,
   FontWeights,
 } from '../../../Styling';
-import {
-  personaSize,
-  sizeBoolean,
-} from '../PersonaConsts';
 
 export const getStyles = (
   props: IPersonaCoinStyleProps
@@ -54,8 +52,8 @@ export const getStyles = (
         position: 'relative',
         textAlign: 'center',
         flex: '0 0 auto',
-        height: personaSize.size48,
-        width: personaSize.size48,
+        height: personaCoinSizes.size48,
+        width: personaCoinSizes.size48,
       },
 
       size.isSize10 && {
@@ -66,38 +64,38 @@ export const getStyles = (
       },
 
       size.isSize16 && {
-        height: personaSize.size16,
-        width: personaSize.size16,
+        height: personaCoinSizes.size16,
+        width: personaCoinSizes.size16,
       },
 
       size.isSize24 && {
-        height: personaSize.size24,
-        width: personaSize.size24,
+        height: personaCoinSizes.size24,
+        width: personaCoinSizes.size24,
       },
 
       size.isSize28 && {
-        height: personaSize.size28,
-        width: personaSize.size28,
+        height: personaCoinSizes.size28,
+        width: personaCoinSizes.size28,
       },
 
       size.isSize32 && {
-        height: personaSize.size32,
-        width: personaSize.size32,
+        height: personaCoinSizes.size32,
+        width: personaCoinSizes.size32,
       },
 
       size.isSize40 && {
-        height: personaSize.size40,
-        width: personaSize.size40,
+        height: personaCoinSizes.size40,
+        width: personaCoinSizes.size40,
       },
 
       size.isSize72 && {
-        height: personaSize.size72,
-        width: personaSize.size72,
+        height: personaCoinSizes.size72,
+        width: personaCoinSizes.size72,
       },
 
       size.isSize100 && {
-        height: personaSize.size100,
-        width: personaSize.size100,
+        height: personaCoinSizes.size100,
+        width: personaCoinSizes.size100,
       },
     ],
 
@@ -123,38 +121,38 @@ export const getStyles = (
       },
 
       size.isSize16 && {
-        height: personaSize.size16,
-        width: personaSize.size16,
+        height: personaCoinSizes.size16,
+        width: personaCoinSizes.size16,
       },
 
       size.isSize24 && {
-        height: personaSize.size24,
-        width: personaSize.size24,
+        height: personaCoinSizes.size24,
+        width: personaCoinSizes.size24,
       },
 
       size.isSize28 && {
-        height: personaSize.size28,
-        width: personaSize.size28,
+        height: personaCoinSizes.size28,
+        width: personaCoinSizes.size28,
       },
 
       size.isSize32 && {
-        height: personaSize.size32,
-        width: personaSize.size32,
+        height: personaCoinSizes.size32,
+        width: personaCoinSizes.size32,
       },
 
       size.isSize40 && {
-        height: personaSize.size40,
-        width: personaSize.size40,
+        height: personaCoinSizes.size40,
+        width: personaCoinSizes.size40,
       },
 
       size.isSize72 && {
-        height: personaSize.size72,
-        width: personaSize.size72,
+        height: personaCoinSizes.size72,
+        width: personaCoinSizes.size72,
       },
 
       size.isSize100 && {
-        height: personaSize.size100,
-        width: personaSize.size100,
+        height: personaCoinSizes.size100,
+        width: personaCoinSizes.size100,
       },
     ],
 
@@ -166,7 +164,7 @@ export const getStyles = (
         fontSize: FontSizes.large,
         fontWeight: FontWeights.regular,
         lineHeight: '46px',
-        height: personaSize.size48,
+        height: personaCoinSizes.size48,
 
         selectors: {
           [HighContrastSelector]: {
@@ -184,18 +182,18 @@ export const getStyles = (
       },
 
       size.isSize16 && {
-        height: personaSize.size16,
-        lineHeight: personaSize.size16,
+        height: personaCoinSizes.size16,
+        lineHeight: personaCoinSizes.size16,
       },
 
       size.isSize24 && {
-        height: personaSize.size24,
-        lineHeight: personaSize.size24,
+        height: personaCoinSizes.size24,
+        lineHeight: personaCoinSizes.size24,
       },
 
       size.isSize28 && {
-        height: personaSize.size28,
-        lineHeight: personaSize.size28,
+        height: personaCoinSizes.size28,
+        lineHeight: personaCoinSizes.size28,
       },
 
       (size.isSize32 || size.isSize40) && {
@@ -203,25 +201,25 @@ export const getStyles = (
       },
 
       size.isSize32 && {
-        height: personaSize.size32,
-        lineHeight: personaSize.size32,
+        height: personaCoinSizes.size32,
+        lineHeight: personaCoinSizes.size32,
       },
 
       size.isSize40 && {
-        height: personaSize.size40,
-        lineHeight: personaSize.size40,
+        height: personaCoinSizes.size40,
+        lineHeight: personaCoinSizes.size40,
       },
 
       size.isSize72 && {
         fontSize: FontSizes.xxLarge,
-        height: personaSize.size72,
-        lineHeight: personaSize.size72,
+        height: personaCoinSizes.size72,
+        lineHeight: personaCoinSizes.size72,
       },
 
       size.isSize100 && {
         fontSize: FontSizes.superLarge,
-        height: personaSize.size100,
-        lineHeight: personaSize.size100,
+        height: personaCoinSizes.size100,
+        lineHeight: personaCoinSizes.size100,
       }
     ]
   });
