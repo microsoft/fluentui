@@ -175,9 +175,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={
-                isLightDismiss || isHiddenOnDismiss || (focusTrapZoneProps && focusTrapZoneProps.isClickableOutsideFocusTrap)
-              }
+              isClickableOutsideFocusTrap={ focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { onRenderNavigation(this.props, this._onRenderNavigation) }
@@ -288,7 +286,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     );
 
     return (
-      <div ref={ this._content } className={ contentClass } >
+      <div ref={ this._content } className={ contentClass } data-is-scrollable={ true } >
         { props.children }
       </div>
     );

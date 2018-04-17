@@ -1,0 +1,3 @@
+A Slider is an element used to set a value. It provides a visual indication of adjustable content, as well as the current setting in the total range of content. It is displayed as a horizontal track with options on either side. A knob or lever is dragged to one end or the other to make the choice, indicating the current value. Marks on the Slider bar can show values and users can choose where they want to drag the knob or lever to set the value.
+
+A Slider is a good choice when you know that users think of the value as a relative quantity, not a numeric value. For example, users think about setting their audio volume to low or medium—not about setting the value to two or five.

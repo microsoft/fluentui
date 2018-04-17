@@ -3,6 +3,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
@@ -20,6 +21,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
       <ComponentPage
         title='ScrollablePane'
         componentName='ScrollablePaneExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ScrollablePane'
         exampleCards={
           <div>
             <ExampleCard title='Default' code={ ScrollablePaneDefaultExampleCode }>
@@ -43,16 +45,15 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         overview={
-          <div>
-            <p>
-              ScrollablePane is a helper component designed to use in conjunction with a Sticky component.  Sticky components will "stick" to the top or bottom of a ScrollablePane's scrollable region and remain visible.  ScrollablePane requires a height or max-height set either on the component itself, or on the immediate parent element.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
+<<<<<<< HEAD
           <div>
             <ul>
               <li>Ensure that a parent component has a CSS height, or max-height attribute set (and any intermediary containers have an inherit, or explicit height/max-height set).</li>
@@ -61,13 +62,16 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
               <li>Ensure that the total height of Sticky components do not exceed the height of the ScrollablePane</li>
             </ul>
           </div>
+=======
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md') }
+          </PageMarkdown>
+>>>>>>> 4efff92981d7301ac16bc8a2cbd7624585f9c42b
         }
         donts={
-          <div>
-            <ul>
-              <li>Don't use Sticky on elements with margin top or bottom</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

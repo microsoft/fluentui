@@ -5,6 +5,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
@@ -27,6 +28,7 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
       <ComponentPage
         title='Tooltip'
         componentName='TooltipExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip'
         exampleCards={
           <LayerHost>
             <ExampleCard title='Default Tooltip' code={ TooltipBasicExampleCode }>
@@ -50,15 +52,15 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
             ] }
           />
         }
         overview={
-          <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/Tooltip'>Tooltips</Link>
-            <span> supplement content associated with a specific UI component.</span>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

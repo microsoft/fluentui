@@ -8,7 +8,7 @@ import {
 
 import { PeopleSelectedItemsListExample } from '../examples/SelectedPeopleList.Basic.Example';
 const PeopleSelectedItemsListExampleCode =
-  require('!raw-loader!experiments/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example') as string;
+  require('!raw-loader!@uifabric/experiments/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example') as string;
 
 export class SelectedPeopleListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,7 +26,7 @@ export class SelectedPeopleListPage extends React.Component<IComponentDemoPagePr
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
             ] }
           />
         }

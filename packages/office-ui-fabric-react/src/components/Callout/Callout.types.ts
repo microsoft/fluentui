@@ -240,6 +240,7 @@ export interface ICalloutContentStyleProps {
   overflowYHidden?: boolean;
 
   /**
+   * @deprecated will be removed in v6. Do not use.
    * Max height applied to the content of a callout.
    */
   contentMaxHeight?: number;

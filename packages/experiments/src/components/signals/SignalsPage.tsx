@@ -9,12 +9,12 @@ import {
 /* tslint:disable:max-line-length */
 import { SignalFieldBasicExample } from './examples/SignalField.Basic.Example';
 const SignalFieldBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/signals/examples/SignalField.Basic.Example.tsx'
+  '!raw-loader!@uifabric/experiments/src/components/signals/examples/SignalField.Basic.Example.tsx'
 ) as string;
 
 import { SignalsBasicExample } from './examples/Signals.Basic.Example';
 const SignalsBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/signals/examples/Signals.Basic.Example.tsx'
+  '!raw-loader!@uifabric/experiments/src/components/signals/examples/Signals.Basic.Example.tsx'
 ) as string;
 
 export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -36,7 +36,7 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/signals/Signals.Props.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/signals/Signals.Props.ts')
             ] }
           />
         }

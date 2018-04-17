@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import { IRenderFunction } from '../../../Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 // tslint:disable-next-line:no-any
@@ -76,10 +75,6 @@ export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggesti
    */
   shouldSelectFirstItem?: () => boolean;
   /**
-  * How the "no result found" should look in the suggestion list.
-  */
-  onRenderNoResultFound?: IRenderFunction<void>;
-  /**
    * The callback that should be called when the user attempts to use the input text as as item
    */
   createGenericItem?: () => void;
@@ -87,22 +82,6 @@ export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggesti
    * The CSS classname of the suggestions list.
    */
   className?: string;
-  /**
-   * Used to indicate whether or not the component is searching for more results.
-   */
-  isSearching?: boolean;
-  /**
-   * The text to display while searching for more results in a limited sugesstions list.
-   */
-  searchingText?: string;
-  /**
-   * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
-   */
-  resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
-  /**
-   * A renderer that adds an element at the end of the suggestions list it has fewer items than resultsMaximumNumber.
-   */
-  resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
   /**
    * Completes the suggestion
    */

@@ -1,0 +1,4 @@
+- Ensure that a parent component has a CSS height, or max-height attribute set (and any intermediary containers have an inherit, or explicit height/max-height set)
+- Use Sticky component on block level elements
+- Sticky component are ideally section headers and/or footers
+- Ensure that the total height of Sticky components do not exceed the height of the ScrollablePane

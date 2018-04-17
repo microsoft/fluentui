@@ -10,8 +10,8 @@
   },
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
-    "@types/react": "16.0.25",
-    "@types/react-dom": "16.0.3",
+    "@types/react": "16.3.10",
+    "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
@@ -19,10 +19,10 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "^2.6.4",
-    "office-ui-fabric-react": ">=5.78.0 <6.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "typescript": "2.7.2",
+    "office-ui-fabric-react": ">=5.82.2 <6.0.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "typescript": "2.8.1",
     "tslib": "^1.7.1"
   }
 }

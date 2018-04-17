@@ -1,13 +1,10 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import {
-  keyframes,
-  DefaultPalette
-} from '../../Styling';
+import { keyframes, DefaultPalette } from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     width,
-    maxHeight,
+    rowHeight,
     isDataLoaded,
     isBaseStyle
   } = props;
@@ -31,7 +28,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         margin: '10px',
         width: 'auto',
         boxSizing: 'content-box',
-        minHeight: maxHeight ? `${maxHeight}px` : '16px'
+        minHeight: rowHeight ? `${rowHeight}px` : '16px'
       },
       isBaseStyle && {
         margin: '0',
@@ -46,9 +43,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         display: 'flex',
         position: 'absolute',
         top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
         alignItems: 'center',
         alignContent: 'space-between',
-        width: `${width}%`,
+        width: width ? `${width}%` : '100%',
         height: 'auto',
         boxSizing: 'border-box',
         background: `${DefaultPalette.neutralLighter}
@@ -73,7 +73,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       },
       isBaseStyle && {
         position: 'static',
-        width: 'auto'
+        width: width ? `${width}px` : 'auto'
       }
     ],
     dataWrapper: [

@@ -2,6 +2,175 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.31.2",
+      "tag": "@uifabric/experiments_v5.31.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4dc9071ade20efb98eded9b97aa9124a9232f84a",
+            "comment": "Fix improper imports from index files"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.1 <6.0.0` to `>=5.82.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.1",
+      "tag": "@uifabric/experiments_v5.31.1",
+      "date": "Mon, 16 Apr 2018 10:23:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "7a5e2c39132dad0e66277ea7ae098bc90727e131",
+            "comment": "prefer const, instead of let, for extendedpicker, floatingpicker, and selecteditemlists"
+          },
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "d6f161bad359e580606f95dfec1ce7095a7bbe48",
+            "comment": "M365Nav component as an experiment"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry temporarily. (Will be added back in 6.0.)"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6f8a180ae2ecca66d09be97e48e8e03cc17d4d9e",
+            "comment": "Updating build to React 16.3.1."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "a1d92a6b96a7bfe0c93814dd7a539ce7cc52e0c9",
+            "comment": "Shimmer: Changes casing on enums in Shimmer.types"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c38b371b09a813f345a90739689e391d221a6262",
+            "comment": "Experiments: fixing imports for example pages for better user understanding."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7c9c5c62c5430ae386672012dd1f5ee46d0852bd",
+            "comment": "Shimmer: adding two more examples as per designers request."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "5a67c36391186ce30d25130b69a358525e1f0823",
+            "comment": "Shimmer: imports audited"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.81.1 <6.0.0` to `>=5.82.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.0 <6.0.0` to `>=5.7.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.9.0 <6.0.0` to `>=5.10.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.6.0 <1.0.0` to `>=0.6.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.0",
+      "tag": "@uifabric/experiments_v5.31.0",
+      "date": "Thu, 12 Apr 2018 10:15:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c7eb8c25b50664874db1d3514a4e80defa20bd51",
+            "comment": "Shimmerline import was not correct, fixing import."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "baaab94cba9a6acfc8db4ed7309cce917abf24fa",
+            "comment": "Shimmer: Application example modified to reflect changes in DetailsList"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "757e955a2d49635e1c571d94e043263aed4b6ded",
+            "comment": "Refactoring Shimmer and adding ShimmerTile + Implements Shimmer in TilesList."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.80.0 <6.0.0` to `>=5.81.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.8.0 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.30.0",
+      "tag": "@uifabric/experiments_v5.30.0",
+      "date": "Tue, 10 Apr 2018 17:37:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "7a3ba05123ffdf79f16c6a428c2cdabee4646e1c",
+            "comment": "FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same "
+          }
+        ],
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "ec704f421a8eb7099a926d5d72ebf370d52fca05",
+            "comment": "Tile: exporting an enum to use the values in creating a PlaceholderTile in Shimmer component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.79.1 <6.0.0` to `>=5.80.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.29.1",
+      "tag": "@uifabric/experiments_v5.29.1",
+      "date": "Thu, 05 Apr 2018 10:15:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "e03ec406dbd59062b9b12ada6fab5db50cafeb66",
+            "comment": "fix suggestion header/footer for more flexibile rendering"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "cb8ba392bbcfa76f1a3af97b3006c9d63f5228fe",
+            "comment": "Align Tiles in last row with previous rows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.78.0 <6.0.0` to `>=5.79.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.29.0",
       "tag": "@uifabric/experiments_v5.29.0",
       "date": "Tue, 03 Apr 2018 10:16:05 GMT",
