@@ -253,8 +253,8 @@ describe('Calendar', () => {
       const root = calendarRoot[0];
       expect(root.classList).toBeDefined();
       expect(root.classList.length).toEqual(2);
-      expect(root.classList[0]).toEqual("ms-DatePicker");
-      expect(root.classList[1]).toEqual("CalendarTestClass");
+      expect(root.classList[0]).toEqual('ms-DatePicker');
+      expect(root.classList[1]).toEqual('CalendarTestClass');
     });
   });
 
