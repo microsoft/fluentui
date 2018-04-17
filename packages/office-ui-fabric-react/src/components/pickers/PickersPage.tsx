@@ -4,6 +4,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
@@ -20,6 +21,7 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
       <ComponentPage
         title='Pickers'
         componentName='PickersExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/pickers'
         exampleCards={
           <div>
             <ExampleCard title='Tag Picker' code={ TagPickerExampleCode }>
@@ -38,15 +40,14 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/Pickers'> Pickers </Link>
-            <span> are used to pick recipients.</span>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/docs/PickersOverview.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...PickersStatus}
+            { ...PickersStatus }
           />
         }
       />

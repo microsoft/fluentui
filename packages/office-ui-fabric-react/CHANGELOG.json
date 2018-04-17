@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.82.2",
+      "tag": "office-ui-fabric-react_v5.82.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4dc9071ade20efb98eded9b97aa9124a9232f84a",
+            "comment": "Fix improper imports from index files"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "7ed1f9d2f87a4630cc8e3005a5b9d92e6cd1d5a4",
+            "comment": "Mark Panel content as scrollable"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.15.1 <6.0.0` to `>=5.15.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.82.1",
+      "tag": "office-ui-fabric-react_v5.82.1",
+      "date": "Mon, 16 Apr 2018 21:49:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "5ab46126a513abf87f63a9447b5cbf960b18265e",
+            "comment": "Do not call the onMenuClick on every keyDown event"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.82.0",
       "tag": "office-ui-fabric-react_v5.82.0",
       "date": "Mon, 16 Apr 2018 10:23:26 GMT",

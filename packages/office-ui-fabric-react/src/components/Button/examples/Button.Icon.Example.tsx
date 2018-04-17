@@ -23,6 +23,7 @@ export class ButtonIconExample extends React.Component<IButtonProps> {
           title='Emoji'
           ariaLabel='Emoji'
         />
+        <p>For a list of Icons, visit our <a href='https://developer.microsoft.com/en-us/fabric#/styles/icons'>Icon documentation</a>.</p>
       </div>
     );
   }

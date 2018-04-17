@@ -3,6 +3,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
@@ -19,6 +20,7 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}
       <ComponentPage
         title='GroupedList'
         componentName='GroupedListExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/GroupedList'
         exampleCards={
           <div>
             <ExampleCard title='GroupedList basic example' isOptIn={ true } code={ GroupedListBasicExampleCode }>
@@ -37,12 +39,14 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}
           />
         }
         overview={
-          <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListOverview.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...GroupedListStatus}
+            { ...GroupedListStatus }
           />
         }
       />
