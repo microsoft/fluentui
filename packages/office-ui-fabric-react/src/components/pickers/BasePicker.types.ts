@@ -221,7 +221,7 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
   'aria-label'?: string;
   /**
    * The default value to be visible when the autofill first created.
-   * This is different than placeholder text because the palceholder text will disappear. This
+   * This is different than placeholder text because the placeholder text will disappear and re-appear. This
    * text persists until deleted or changed.
    */
   defaultVisibleValue?: string;
