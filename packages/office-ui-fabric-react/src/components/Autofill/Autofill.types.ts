@@ -76,7 +76,7 @@ export interface IAutofillProps extends
 
   /**
    * Handler for checking and updating the value if needed
-   *  in componentWillReceiveProps
+   * in componentWillReceiveProps
    *
    * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
