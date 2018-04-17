@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.31.2",
+      "tag": "@uifabric/experiments_v5.31.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4dc9071ade20efb98eded9b97aa9124a9232f84a",
+            "comment": "Fix improper imports from index files"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.1 <6.0.0` to `>=5.82.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.1",
       "tag": "@uifabric/experiments_v5.31.1",
       "date": "Mon, 16 Apr 2018 10:23:25 GMT",

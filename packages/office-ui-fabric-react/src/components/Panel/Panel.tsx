@@ -286,7 +286,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     );
 
     return (
-      <div ref={ this._content } className={ contentClass } >
+      <div ref={ this._content } className={ contentClass } data-is-scrollable={ true } >
         { props.children }
       </div>
     );

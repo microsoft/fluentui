@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Do not call the onMenuClick on every keyDown event",
+      "comment": "Passes item when href set onClick for CommandBar control",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com"
+  "email": "keco@microsoft.com"
 }

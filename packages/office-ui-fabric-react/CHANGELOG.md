@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+
+## 5.82.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- Fix improper imports from index files
+- Mark Panel content as scrollable
+
+## 5.82.1
+Mon, 16 Apr 2018 21:49:29 GMT
+
+### Patches
+
+- Do not call the onMenuClick on every keyDown event
 
 ## 5.82.0
 Mon, 16 Apr 2018 10:23:26 GMT
