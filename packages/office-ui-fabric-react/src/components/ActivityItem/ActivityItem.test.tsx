@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { ActivityItem } from './ActivityItem';
-import { Icon } from '../Icon';
+import { Icon } from '../../Icon';
 import { TestImages } from '../../common/TestImages';
 
 const defaultProps = {
