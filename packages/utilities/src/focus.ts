@@ -379,14 +379,12 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
 
     if (win) {
       // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
-      // win.requestAnimationFrame does not actually wait until React elements are fully rendered before firing, should
-      // wait until the next 'thread' available to set the focus because rendering will be fully finished
-      setTimeout(() => {
+      win.requestAnimationFrame(() => {
         targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
 
         // We are done focusing for this frame, so reset the queued focus element
         targetToFocusOnNextRepaint = undefined;
-      }, 0);
+      });
     }
   }
 }
