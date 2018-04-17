@@ -18,7 +18,11 @@ export class TextFieldOnRenderDescriptionExample extends React.Component<{}, {}>
     return (
       <div>
         { props.description }{ ' ' }
-        <a href='#' onClick={ (e) => e.preventDefault() } >Link</a>
+        <a href='#' onClick={ this._onLinkClick } >Link</a>
       </div>);
+  }
+
+  private _onLinkClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
   }
 }
