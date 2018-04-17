@@ -173,7 +173,7 @@ describe('Calendar', () => {
           dateRangeType={ DateRangeType.Week }
           autoNavigateOnSelection={ true }
           onSelectDate={ onSelectDate() }
-          className="CalendarTestClass"
+          className='CalendarTestClass'
         />) as Calendar;
     });
 
