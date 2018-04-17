@@ -141,7 +141,9 @@
 .itemButton {
   height: 100%;
   width: 100%;
-  padding: 7px 12px;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  padding: 7px 12px !important;
 
   @include high-contrast {
     color: WindowText;

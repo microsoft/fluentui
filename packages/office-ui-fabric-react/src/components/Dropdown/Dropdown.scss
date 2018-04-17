@@ -198,7 +198,10 @@ $DropDown-item-height: 32px;
   height: auto;
   min-height: $DropDown-item-height;
   line-height: 20px;
-  padding: 4px 16px;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  padding: 4px 16px !important;
+
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
