@@ -745,7 +745,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
+                aria-activedescendant={ this.state.suggestionsVisible ? 'sug-' + this.suggestionStore.currentIndex : undefined }
                 aria-owns={ this.state.suggestionsVisible ? 'suggestion-list' : undefined }
                 aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
