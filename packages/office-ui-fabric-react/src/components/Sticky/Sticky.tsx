@@ -200,9 +200,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   // Gets background of nearest parent element that has a declared background-color attribute
-  private _getBackground(): string | null {
+  private _getBackground(): string | undefined {
     if (!this.root.value) {
-      return null;
+      return undefined;
     }
 
     let curr: HTMLElement = this.root.value;
@@ -211,7 +211,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {
       if (curr.tagName === 'HTML') {
         // Fallback color if no element has a declared background-color attribute
-        return null;
+        return undefined;
       }
       if (curr.parentElement) {
         curr = curr.parentElement;
