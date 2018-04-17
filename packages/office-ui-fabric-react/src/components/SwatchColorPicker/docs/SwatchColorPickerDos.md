@@ -1,0 +1,2 @@
+- Use a SwatchColorPicker when there are multiple finite choices that can be grouped and/or collapsed under one title.
+- SwatchColorPickers contain a grid of colors.

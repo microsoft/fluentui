@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { NavExample } from './examples/Nav.Example';
 const NavExampleCode =
-  require('!raw-loader!experiments/src/components/Nav/examples/Nav.Example.tsx') as string;
+  require('!raw-loader!@uifabric/experiments/src/components/Nav/examples/Nav.Example.tsx') as string;
 
 export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -25,7 +25,7 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/Nav/Nav.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Nav/Nav.types.ts')
             ] }
             renderOnly={ ['INavProps', 'INavState'] }
           />

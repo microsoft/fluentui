@@ -3,7 +3,8 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  PageMarkdown,
 } from '@uifabric/example-app-base';
 
 import { CoachmarkBasicExample } from './examples/Coachmark.Basic.Example';
@@ -16,6 +17,7 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
       <ComponentPage
         title='Coachmark'
         componentName='Coachmark'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Coachmark'
         exampleCards={
           <div>
             <ExampleCard title='Coachmark Basic' isOptIn={ true } code={ CoachmarkBasicExampleCode }>
@@ -31,35 +33,22 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
           />
         }
         overview={
-          <div>
-            <p>Coachmarks are used to draw a persons attention to a part of the UI, and increase engagement with that element
-               in the product.</p>
-
-            <p>
-              They should be contextual whenever possible, or related to something that will make existing user flows more efficient
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/docs/CoachmarkOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>Only one coachmark + callout combo will be displayed at a time</li>
-              <li>Coachmarks can be stand alone or sequential. Sequential coachmarks should be used sparingly, to walk through complex
-                multi-step interactions. It is recommended that a sequence of coachmakrs does not exceed 3 steps.</li>
-              <li>Coachmarks are designed to only hold Callouts.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/docs/CoachmarkDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Coachmark size, color, and animation should not be altered.</li>
-              <li>Don't show the coachmark more than once even if the user has not completed the action.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/docs/CoachmarkDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />

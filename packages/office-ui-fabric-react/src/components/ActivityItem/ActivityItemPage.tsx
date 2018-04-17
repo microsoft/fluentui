@@ -22,7 +22,7 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
       <ComponentPage
         title='ActivityItem'
         componentName='ActivityItem'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/office-ui-fabric-react/src/components/ActivityItem/'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem'
         exampleCards={
           <div>
             <ExampleCard title='Activity Items with Icons' code={ ActivityItemBasicExampleCode }>
