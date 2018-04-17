@@ -305,8 +305,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return null;
   }
 
-  @autobind
-  private _onRenderDescription(props: ITextFieldProps): JSX.Element | null {
+  private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
     const { description } = props;
     if (description) {
       return (<span className={ css('ms-TextField-description', styles.description) }>{ description }</span>);
