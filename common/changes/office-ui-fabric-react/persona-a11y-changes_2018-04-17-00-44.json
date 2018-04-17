@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add tooltip to PersonaPresence to indicate status.",
+      "comment": "Add tooltip to PersonaPresence to indicate status, using new presenceDescriptors API",
       "type": "minor"
     }
   ],
