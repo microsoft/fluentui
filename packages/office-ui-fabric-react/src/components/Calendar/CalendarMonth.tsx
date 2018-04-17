@@ -23,6 +23,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
+  highlightNavigatedMonth: boolean;
   onHeaderSelect?: (focus: boolean) => void;
   navigationIcons: ICalendarIconStrings;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
@@ -54,7 +55,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    const { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
+    const { navigatedDate, strings, today, highlightCurrentMonth, highlightNavigatedMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
     const leftNavigationIcon = navigationIcons.leftNavigation;
     const rightNavigationIcon = navigationIcons.rightNavigation;
 
@@ -129,7 +130,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   css('ms-DatePicker-monthOption', styles.monthOption,
                     {
                       ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
-                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && isNavigatedMonth,
+                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightNavigatedMonth && isNavigatedMonth,
                       ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
                     })
                 }

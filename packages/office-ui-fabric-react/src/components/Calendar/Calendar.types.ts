@@ -101,6 +101,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   highlightCurrentMonth?: boolean;
 
   /**
+  * Whether the month picker should highlight the selected month
+  * @defaultvalue false
+  */
+  highlightNavigatedMonth?: boolean;
+
+  /**
   * Customize navigation icons using ICalendarIconStrings
   */
   navigationIcons?: ICalendarIconStrings;

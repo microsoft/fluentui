@@ -58,7 +58,8 @@ const DayPickerStrings = {
     'S'
   ],
 
-  goToToday: 'Go to today'
+  goToToday: 'Go to today',
+  weekNumberFormatString: 'Week number {0}',
 };
 
 export interface ICalendarInlineExampleState {
@@ -73,6 +74,7 @@ export interface ICalendarInlineExampleProps {
   showGoToToday: boolean;
   showNavigateButtons?: boolean;
   highlightCurrentMonth?: boolean;
+  highlightNavigatedMonth?: boolean;
   isDayPickerVisible?: boolean;
   showMonthPickerAsOverlay?: boolean;
   showWeekNumbers?: boolean;
@@ -140,6 +142,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           firstDayOfWeek={ this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday }
           strings={ DayPickerStrings }
           highlightCurrentMonth={ this.props.highlightCurrentMonth }
+          highlightNavigatedMonth={ this.props.highlightNavigatedMonth }
           isDayPickerVisible={ this.props.isDayPickerVisible }
           showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
           showWeekNumbers={ this.props.showWeekNumbers }
