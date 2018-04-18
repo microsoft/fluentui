@@ -5,6 +5,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
+import { KeyCodes } from 'src/index.bundle';
 
 export interface IComboBox {
   /**
@@ -53,7 +54,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
    */
-  onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+  onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submittedInput?: KeyCodes) => void;
 
   /**
    * Callback issued when the user changes the pending value in ComboBox
