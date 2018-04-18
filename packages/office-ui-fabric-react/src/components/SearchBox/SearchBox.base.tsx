@@ -151,6 +151,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   private _onClickFocus = () => {
     const inputElement = this._inputElement.value;
     if (inputElement) {
+      this.focus();
       inputElement.selectionStart = inputElement.selectionEnd = 0;
     }
   }
