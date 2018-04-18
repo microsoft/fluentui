@@ -13,7 +13,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
 
   const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
 
-  // TODO redo the logic after the deprecates
+  // TODO reduce the logic after the deprecated value will be removed.
   const ACTUAL_WIDTH =
     width ? width + '%' :
       widthInPercentage ? widthInPercentage + '%' :
