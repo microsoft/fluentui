@@ -751,7 +751,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index to set (or the index to set from if a search direction is provided)
    * @param searchDirection - the direction to search along the options from the given index
    */
-  private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none, submitPendingValueEvent: any) {
+  private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none, submitPendingValueEvent?: any) {
     const { onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
