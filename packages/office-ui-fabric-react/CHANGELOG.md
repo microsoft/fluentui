@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Apr 2018 10:15:04 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Apr 2018 17:02:26 GMT and should not be manually modified.
+
+## 5.82.4
+Wed, 18 Apr 2018 17:02:26 GMT
+
+### Patches
+
+- ContextualMenu: Update mousemove to only do anything if there is not another pending mouse enter/move/leave to improve the snappiness of the updates
 
 ## 5.82.3
 Wed, 18 Apr 2018 10:15:04 GMT

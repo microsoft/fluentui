@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.82.4",
+      "tag": "office-ui-fabric-react_v5.82.4",
+      "date": "Wed, 18 Apr 2018 17:02:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "9cc47f548636e7b952aed80cb75e2adce39a2a32",
+            "comment": "ContextualMenu: Update mousemove to only do anything if there is not another pending mouse enter/move/leave to improve the snappiness of the updates"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.82.3",
       "tag": "office-ui-fabric-react_v5.82.3",
       "date": "Wed, 18 Apr 2018 10:15:04 GMT",
