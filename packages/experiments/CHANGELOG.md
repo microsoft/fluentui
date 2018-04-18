@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Apr 2018 10:15:04 GMT and should not be manually modified.
+
+## 5.31.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Experiments: NavPage bad imports fixed.
 
 ## 5.31.2
 Tue, 17 Apr 2018 18:47:11 GMT
