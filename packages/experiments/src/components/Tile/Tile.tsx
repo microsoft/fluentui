@@ -343,10 +343,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       isSelected: boolean;
     }): JSX.Element {
+    const { toggleSelectionAriaLabel } = this.props;
+
     return (
       <span
         role='checkbox'
-        aria-label={ this.props.toggleSelectionAriaLabel }
+        aria-label={ String(toggleSelectionAriaLabel) }
         className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
           [CheckStyles.hostShowCheck]: this.state.isModal
         }) }

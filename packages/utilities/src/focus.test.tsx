@@ -11,7 +11,7 @@ let _element: HTMLElement | undefined;
 
 function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
   const component = ReactTestUtils.renderIntoDocument(element);
-  const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+  const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
   return renderedDOM as HTMLElement;
 }
 

@@ -18,7 +18,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         }
     data-focuszone-id="FocusZone2"
     data-is-focusable={false}
-    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

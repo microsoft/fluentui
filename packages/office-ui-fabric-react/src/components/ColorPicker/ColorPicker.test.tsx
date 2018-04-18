@@ -58,7 +58,7 @@ describe('ColorPicker', () => {
       <ColorPicker color='#FFFFFF' alphaSliderHidden={ true } />
     ) as ColorPicker;
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const alphaSlider = renderedDOM.querySelector('.is-alpha');
     const alphaTableHeader = renderedDOM.querySelector('.ms-ColorPicker-table > thead > tr > td:nth-child(5)');
     const alphaTableInput = renderedDOM.querySelector('.ms-ColorPicker-table > tbody> tr > td:nth-child(5)');
@@ -73,7 +73,7 @@ describe('ColorPicker', () => {
       <ColorPicker color='#FFFFFF' />
     ) as ColorPicker;
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<HTMLTableDataCellElement>;
 
     const hexTableHeader = tableHeaders[0];
@@ -110,7 +110,7 @@ describe('ColorPicker', () => {
       />
     ) as ColorPicker;
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<HTMLTableDataCellElement>;
 
     const hexTableHeader = tableHeaders[0];
