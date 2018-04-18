@@ -36,7 +36,7 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
   const isPressed = props.isSelected || props.selected;
 
   return (
-    <div
+    <button
       { ...buttonProps }
       role='checkbox'
       className={
@@ -48,10 +48,11 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
       aria-checked={ isPressed }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
+      type='button'
     >
       <Check
         checked={ isPressed }
       />
-    </div>
+    </button>
   );
 };
