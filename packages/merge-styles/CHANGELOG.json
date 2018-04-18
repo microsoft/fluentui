@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.15.2",
+      "tag": "@uifabric/merge-styles_v5.15.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "68acb9b5f356c7b76ef334984ce4a9258a926061",
+            "comment": "mergeStyles: rules are now registered in separate styling objects, improving performance significantly."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.1",
       "tag": "@uifabric/merge-styles_v5.15.1",
       "date": "Mon, 16 Apr 2018 10:23:26 GMT",

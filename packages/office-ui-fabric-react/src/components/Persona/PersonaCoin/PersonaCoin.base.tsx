@@ -9,15 +9,15 @@ import {
   getRTL,
 } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
-import { PersonaPresence } from '../PersonaPresence';
+import { PersonaPresence } from '../PersonaPresence/index';
 import {
   Icon
-} from '../../Icon';
+} from '../../../Icon';
 import {
   Image,
   ImageFit,
   ImageLoadState
-} from '../../Image';
+} from '../../../Image';
 import {
   IPersonaCoinProps,
   IPersonaCoinStyleProps,

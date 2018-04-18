@@ -210,7 +210,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           href={ item.disabled ? undefined : item.href }
-          onClick={ item.onClick }
+          onClick={ this._onItemClick(item) }
           title={ '' }
           aria-disabled={ item.inactive }
           data-command-key={ itemKey }
@@ -417,7 +417,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     });
   }
 
-  private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
+  private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
       if (item.inactive) {
         return;
