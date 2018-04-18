@@ -9,7 +9,8 @@ import {
   divProperties,
   getNativeProps,
   IRenderFunction,
-  createRef
+  createRef,
+  isEqual,
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps } from './List.types';
 
@@ -299,7 +300,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return true;
     }
 
-    if (newProps.items === this.props.items &&
+    if (isEqual(newProps.items, this.props.items) &&
       oldPages!.length === newPages!.length) {
       for (let i = 0; i < oldPages!.length; i++) {
         const oldPage = oldPages![i];
