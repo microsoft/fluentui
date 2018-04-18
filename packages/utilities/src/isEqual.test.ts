@@ -1,28 +1,14 @@
 import { isEqual } from './isEqual';
 
-const arrayBase = ['1', '2', '3'];
-const arrayControl = ['1', '2', '3'];
-const arrayDifferentValues = ['1', '2', '4'];
-const arrayDifferentTypes = ['1', '2', 3];
-const arrayDifferentLength = ['1', '2', '3', '4'];
-
-const objectBase = { a: '1', b: '2' };
-const objectControl = { a: '1', b: '2' };
-const objectDifferentValues = { a: '1', b: '3' };
-const objectDifferentTypes = { a: '1', b: 2 };
-const objectDifferentLength = { a: '1', b: '2', c: '3' };
-
-const numberBase = 123;
-const numberControl = 123;
-const numberDifferentValues = 1234;
-const numberDifferentTypes = '123';
-
-const stringBase = 'This is a string';
-const stringControl = 'This is a string';
-const stringDifferentValues = 'This is a string that isn\'t the same';
-
 describe('isEquals function helper', () => {
-  describe('test indexes', () => {
+  describe('Test indexes', () => {
+    // Set up arrays to compare
+    const arrayBase = ['1', '2', '3'];
+    const arrayControl = ['1', '2', '3'];
+    const arrayDifferentValues = ['1', '2', '4'];
+    const arrayDifferentTypes = ['1', '2', 3];
+    const arrayDifferentLength = ['1', '2', '3', '4'];
+
     it('returns true with arrays with the same values', () => {
       expect(isEqual(arrayBase, arrayControl)).toEqual(true);
     });
@@ -40,7 +26,14 @@ describe('isEquals function helper', () => {
     });
   });
 
-  describe('test objects', () => {
+  describe('Test objects', () => {
+    // Set up objects to compare
+    const objectBase = { a: '1', b: '2' };
+    const objectControl = { a: '1', b: '2' };
+    const objectDifferentValues = { a: '1', b: '3' };
+    const objectDifferentTypes = { a: '1', b: 2 };
+    const objectDifferentLength = { a: '1', b: '2', c: '3' };
+
     it('returns true with objects with the same values', () => {
       expect(isEqual(objectBase, objectControl)).toEqual(true);
     });
@@ -58,7 +51,13 @@ describe('isEquals function helper', () => {
     });
   });
 
-  describe('test numbers', () => {
+  describe('Test numbers', () => {
+    // Set up numbers to compare
+    const numberBase = 123;
+    const numberControl = 123;
+    const numberDifferentValues = 1234;
+    const numberDifferentTypes = '123';
+
     it('returns true with numbers with the same values', () => {
       expect(isEqual(numberBase, numberControl)).toEqual(true);
     });
@@ -72,7 +71,12 @@ describe('isEquals function helper', () => {
     });
   });
 
-  describe('test strings', () => {
+  describe('Test strings', () => {
+    // Set up strings to compare
+    const stringBase = 'This is a string';
+    const stringControl = 'This is a string';
+    const stringDifferentValues = 'This is a string that isn\'t the same';
+
     it('returns true with strings with the same values', () => {
       expect(isEqual(stringBase, stringControl)).toEqual(true);
     });
