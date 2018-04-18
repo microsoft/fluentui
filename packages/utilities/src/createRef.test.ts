@@ -46,5 +46,14 @@ describe('createRef', () => {
 
       expect(refObject.value).toBe(component);
     });
+
+    it('is the same value as current', () => {
+      const component = document.createElement('span');
+      const refObject = createRef();
+
+      refObject(component);
+
+      expect(refObject.value).toBe(refObject.current);
+    });
   });
 });
