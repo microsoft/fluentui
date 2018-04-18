@@ -1,14 +1,8 @@
-import * as React from 'react';
-
-import { IKeytipProps, } from '../../Keytip';
+import { IKeytipProps } from '../../Keytip';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
-import { KeytipLayer } from '../../KeytipLayer';
-import { KeytipManager } from './KeytipManager';
 import {
   IKeySequence,
-  KeytipTransitionModifier,
-  IKeytipTransitionKey,
   ktpSeparator,
   ktpFullPrefix,
   ktpLayerId
@@ -276,9 +270,7 @@ describe('KeytipTree', () => {
     keytipTree.addNode(keytipPropsC, '1');
     keytipTree.addNode(keytipPropsC, '2');
     keytipTree.removeNode(keytipPropsC, '1');
-    // Keytip 'b' should still exist
-    const nodeB = keytipTree.getNode(keytipIdC);
-    // Root should still have 'b' as a child
+    // Root should still have 'c' as a child
     expect(keytipTree.root.children).toHaveLength(1);
     expect(keytipTree.root.children).toContain(keytipIdC);
   });

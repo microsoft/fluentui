@@ -17,7 +17,6 @@ const KeytipsBasicCode = require('!raw-loader!office-ui-fabric-react/src/compone
 const KeytipsButtonCode = require('!raw-loader!office-ui-fabric-react/src/components/Keytip/examples/Keytips.Button.Example.tsx') as string;
 const KeytipsCommandBarCode = require('!raw-loader!office-ui-fabric-react/src/components/Keytip/examples/Keytips.CommandBar.Example.tsx') as string;
 const KeytipsOverflowCode = require('!raw-loader!office-ui-fabric-react/src/components/Keytip/examples/Keytips.Overflow.Example.tsx') as string;
-const KeytipsSetupCode = require('!raw-loader!office-ui-fabric-react/src/components/Keytip/examples/KeytipSetup.ts') as string;
 
 export class KeytipsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

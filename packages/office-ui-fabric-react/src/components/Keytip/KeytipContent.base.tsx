@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, convertSequencesToKeytipID } from '../../Utilities';
+import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
 import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
 /**
@@ -18,7 +18,6 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
       getStyles,
       theme,
       disabled,
-      keySequences,
       visible
     } = this.props;
 

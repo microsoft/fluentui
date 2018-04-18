@@ -13,19 +13,18 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
         opacity: 0.5,
       },
       !visible && {
-        visibility: 'hidden',
-        opacity: 0
+        visibility: 'hidden'
       }
     ],
     root: [{
       textAlign: 'center',
-      paddingLeft: 3,
-      paddingRight: 3,
+      paddingLeft: '3px',
+      paddingRight: '3px',
       backgroundColor: theme.palette.neutralDark,
       color: theme.palette.neutralLight,
-      minWidth: 11,
-      lineHeight: 17,
-      height: 17,
+      minWidth: '11px',
+      lineHeight: '17px',
+      height: '17px',
       display: 'inline-block'
     },
     disabled && {

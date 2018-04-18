@@ -10,18 +10,19 @@ import {
 import { IKeytipProps } from '../../Keytip';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
 
+/**
+ * This class is responsible for handling the parent/child relationships between keytips
+ */
 export class KeytipTree {
   public currentKeytip?: IKeytipTreeNode;
   public root: IKeytipTreeNode;
   public nodeMap: { [nodeId: string]: IKeytipTreeNode } = {};
 
-  private _idSeparator = '::';
-
   /**
    * KeytipTree constructor
    */
   constructor() {
-    // Root has no keytipSequence, we instead check _enableSequences to handle multiple entry points
+    // Root has no keytipSequence
     this.root = {
       id: ktpLayerId,
       children: [],
@@ -41,7 +42,6 @@ export class KeytipTree {
   public addNode(keytipProps: IKeytipProps, uniqueID: string, persisted?: boolean): void {
     const fullSequence = this._getFullSequence(keytipProps);
     const nodeID = convertSequencesToKeytipID(fullSequence);
-    const combinedID = this._generateUniqueID(nodeID, uniqueID);
 
     // This keytip's sequence is the last one defined
     const keytipSequence = fullSequence.pop();
@@ -52,7 +52,7 @@ export class KeytipTree {
     // Create node and add to map
     const node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasDynamicChildren, keytipProps.hasMenu,
       keytipProps.onExecute, keytipProps.onReturn, keytipProps.disabled, persisted);
-    this.nodeMap[combinedID] = node;
+    this.nodeMap[uniqueID] = node;
 
     // Try to add self to parents children, if they exist
     const parent = this.getNode(parentID);
@@ -70,14 +70,13 @@ export class KeytipTree {
   public updateNode(keytipProps: IKeytipProps, uniqueID: string): void {
     const fullSequence = this._getFullSequence(keytipProps);
     const nodeID = convertSequencesToKeytipID(fullSequence);
-    const combinedID = this._generateUniqueID(nodeID, uniqueID);
 
     // This keytip's sequence is the last one defined
     const keytipSequence = fullSequence.pop();
 
     // Parent ID is the root if there aren't any more sequences
     const parentID = this._getParentID(fullSequence);
-    const node = this.nodeMap[combinedID];
+    const node = this.nodeMap[uniqueID];
     if (node) {
       // Update values
       node.id = nodeID;
@@ -99,7 +98,6 @@ export class KeytipTree {
   public removeNode(keytipProps: IKeytipProps, uniqueID: string): void {
     const fullSequence = this._getFullSequence(keytipProps);
     const nodeID = convertSequencesToKeytipID(fullSequence);
-    const combinedID = nodeID + this._idSeparator + uniqueID;
 
     // Take off the last sequence to calculate the parent ID
     fullSequence.pop();
@@ -112,9 +110,9 @@ export class KeytipTree {
       parent.children.splice(parent.children.indexOf(nodeID), 1);
     }
 
-    if (this.nodeMap[combinedID]) {
+    if (this.nodeMap[uniqueID]) {
       // Remove the node from the nodeMap
-      delete this.nodeMap[combinedID];
+      delete this.nodeMap[uniqueID];
     }
   }
 
@@ -219,10 +217,6 @@ export class KeytipTree {
       return this.currentKeytip.id === parentID;
     }
     return false;
-  }
-
-  private _generateUniqueID(nodeID: string, uniqueID: string) {
-    return nodeID + this._idSeparator + uniqueID;
   }
 
   private _getParentID(fullSequence: IKeySequence[]): string {

@@ -11,6 +11,7 @@ import {
   getDocument,
   replaceElement,
   findIndex,
+  find,
   mergeOverflowKeySequences,
   Async
 } from '../../Utilities';
@@ -21,6 +22,10 @@ export interface IUniqueKeytip {
   keytip: IKeytipProps;
 }
 
+/**
+ * This class is responsible for handling registering, updating, and unregistering of keytips
+ * It communicates with the KeytipTree and KeytipLayer to determine what keytips should show
+ */
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
 
@@ -74,12 +79,15 @@ export class KeytipManager {
   public registerKeytip(keytipProps: IKeytipProps): string {
     const keytipTree = this.keytipTree;
 
+    // Add the overflowSetSequence if necessary
+    keytipProps = this.addParentOverflowSequence(keytipProps);
+
     // Create a unique keytip
     const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(keytipProps);
 
     // Add keytip to the Manager, Tree, and Layer
     // Check if trying to register a duplicate keytip, if so just update
-    const keytipIndex = this._findKeytipIndex(uniqueKeytip);
+    const keytipIndex = this._findKeytipIndex(uniqueKeytip.uniqueID);
     if (keytipIndex < 0) {
       // Add
       this.keytips.push(uniqueKeytip);
@@ -96,26 +104,7 @@ export class KeytipManager {
     }
 
     if (this._newCurrentKeytipSequences && fullKeySequencesAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
-      // This keytip should become the currentKeytip and should execute right away
-      let keytipSequence = [...keytipProps.keySequences];
-      if (keytipProps.overflowSetSequence) {
-        keytipSequence = mergeOverflowKeySequences(keytipSequence, keytipProps.overflowSetSequence);
-      }
-
-      // Set currentKeytip
-      keytipTree.currentKeytip = keytipTree.getNode(convertSequencesToKeytipID(keytipSequence));
-      if (keytipTree.currentKeytip) {
-        // Show all children keytips if there
-        const children = keytipTree.getChildren();
-        children.length && this.showKeytips(children);
-
-        if (keytipTree.currentKeytip.onExecute) {
-          keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(keytipTree.currentKeytip.id));
-        }
-      }
-
-      // Unset _newCurrentKeytipSequences
-      this._newCurrentKeytipSequences = undefined;
+      this._triggerKeytipImmediately(keytipProps);
     }
 
     return uniqueKeytip.uniqueID;
@@ -143,7 +132,7 @@ export class KeytipManager {
   public updateKeytip(keytipProps: IKeytipProps, uniqueID: string): void {
     // Update keytip in this.keytips
     const uniqueKeytip = this._constructUniqueKeytip(keytipProps, uniqueID);
-    const keytipIndex = this._findKeytipIndex(uniqueKeytip);
+    const keytipIndex = this._findKeytipIndex(uniqueID);
     if (keytipIndex >= 0) {
       this._updateKeytip(uniqueKeytip, keytipIndex);
     }
@@ -155,12 +144,9 @@ export class KeytipManager {
    * @param keytipToRemove - IKeytipProps of the keytip to remove
    */
   public unregisterKeytip(keytipToRemove: IKeytipProps, uniqueID: string): void {
-    // Add the unique ID to the keytip
-    const uniqueKeytipToRemove = this._constructUniqueKeytip(keytipToRemove, uniqueID);
-
     // Remove keytipToRemove from this.keytips
     this.keytips = this.keytips.filter((uniqueKtp: IUniqueKeytip) => {
-      return !(fullKeySequencesAreEqual(uniqueKtp.keytip.keySequences, keytipToRemove.keySequences) && uniqueKtp.uniqueID === uniqueID);
+      return uniqueKtp.uniqueID !== uniqueID;
     });
 
     // Remove keytip from the delayed queue
@@ -179,7 +165,6 @@ export class KeytipManager {
    * @param uniqueID - Unique ID of this persisted keytip
    */
   public unregisterPersistedKeytip(keytipToRemove: IKeytipProps, uniqueID: string): void {
-    // Add the unique ID to the keytip
     this.keytipTree.removeNode(keytipToRemove, uniqueID);
   }
 
@@ -348,6 +333,29 @@ export class KeytipManager {
     });
   }
 
+  /**
+   * Adds the overflowSetSequence to the keytipProps if its parent keytip also has it
+   *
+   * @param keytipProps - Keytip props to add overflowSetSequence to if necessary
+   * @returns {IKeytipProps} - Modified keytip props, if needed to be modified
+   */
+  public addParentOverflowSequence(keytipProps: IKeytipProps): IKeytipProps {
+    const fullSequence = [...keytipProps.keySequences];
+    fullSequence.pop();
+    if (fullSequence.length !== 0) {
+      const parentKeytip = find(this.getKeytips(), (keytip: IKeytipProps) => {
+        return fullKeySequencesAreEqual(fullSequence, keytip.keySequences);
+      });
+      if (parentKeytip && parentKeytip.overflowSetSequence) {
+        return {
+          ...keytipProps,
+          overflowSetSequence: parentKeytip.overflowSetSequence
+        };
+      }
+    }
+    return keytipProps;
+  }
+
   private _addKeytipToQueue(keytipID: string) {
     // Add keytip
     this._delayedKeytipQueue.push(keytipID);
@@ -405,6 +413,34 @@ export class KeytipManager {
   }
 
   /**
+   * Trigger a keytip immediately and set it as the current keytip
+   *
+   * @param keytipProps - Keytip to trigger immediately
+   */
+  private _triggerKeytipImmediately(keytipProps: IKeytipProps) {
+    // This keytip should become the currentKeytip and should execute right away
+    let keytipSequence = [...keytipProps.keySequences];
+    if (keytipProps.overflowSetSequence) {
+      keytipSequence = mergeOverflowKeySequences(keytipSequence, keytipProps.overflowSetSequence);
+    }
+
+    // Set currentKeytip
+    this.keytipTree.currentKeytip = this.keytipTree.getNode(convertSequencesToKeytipID(keytipSequence));
+    if (this.keytipTree.currentKeytip) {
+      // Show all children keytips if any
+      const children = this.keytipTree.getChildren();
+      children.length && this.showKeytips(children);
+
+      if (this.keytipTree.currentKeytip.onExecute) {
+        this.keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(this.keytipTree.currentKeytip.id));
+      }
+    }
+
+    // Unset _newCurrentKeytipSequences
+    this._newCurrentKeytipSequences = undefined;
+  }
+
+  /**
    * Creates an IUniqueKeytip object
    *
    * @param keytipProps - IKeytipProps
@@ -432,10 +468,9 @@ export class KeytipManager {
    * @param ktpToFind - IUniqueKeytipProps to find
    * @returns {number} Index of the keytip in this.keytips (or -1 if not found)
    */
-  private _findKeytipIndex(ktpToFind: IUniqueKeytip): number {
+  private _findKeytipIndex(uniqueID: string): number {
     return findIndex(this.keytips, (ktp: IUniqueKeytip) => {
-      return fullKeySequencesAreEqual(ktp.keytip.keySequences, ktpToFind.keytip.keySequences) &&
-        ktp.uniqueID === ktpToFind.uniqueID;
+      return ktp.uniqueID === uniqueID;
     });
   }
 }

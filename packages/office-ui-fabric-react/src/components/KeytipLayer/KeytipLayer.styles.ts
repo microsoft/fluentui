@@ -15,8 +15,7 @@ export const getStyles = (props: IKeytipLayerStyleProps): IKeytipLayerStyles => 
   return {
     innerContent: [{
       ...hiddenContentStyle,
-      visibility: 'hidden',
-      opacity: 0
+      visibility: 'hidden'
     }]
   };
 };

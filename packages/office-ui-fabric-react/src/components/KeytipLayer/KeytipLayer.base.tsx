@@ -4,7 +4,6 @@ import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
 import {
-  autobind,
   BaseComponent,
   KeyCodes,
   KeytipTransitionModifier,
@@ -117,7 +116,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   public componentDidMount(): void {
     // Add window listeners
-    this._events.on(window, 'mousedown', this._onDismiss, true /* useCapture */);
+    this._events.on(window, 'mouseup', this._onDismiss, true /* useCapture */);
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -126,7 +125,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   public componentWillUnmount(): void {
     // Remove window listeners
-    this._events.off(window, 'mousedown', this._onDismiss, true /* useCapture */);
+    this._events.off(window, 'mouseup', this._onDismiss, true /* useCapture */);
     this._events.off(window, 'resize', this._onDismiss);
     this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -159,16 +158,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     });
   }
 
-  @autobind
-  private _onDismiss(ev?: React.MouseEvent<HTMLElement>): void {
+  private _onDismiss = (ev?: React.MouseEvent<HTMLElement>): void => {
     // if we are in keytip mode, then exit keytip mode
     if (this.state.inKeytipMode) {
       this._keytipManager.exitKeytipMode();
     }
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.alt:
         // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
@@ -226,8 +223,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     return modifierKeys.length ? modifierKeys : undefined;
   }
 
-  @autobind
-  private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyPress = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (this.state.inKeytipMode) {
       // Call processInput
       this._keytipManager.processInput(ev.key.toLocaleLowerCase());

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton, ActionButton, CompoundButton, CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, CompoundButton } from 'office-ui-fabric-react/lib/Button';
 import { keytipMap } from './KeytipSetup';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
@@ -101,8 +100,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
     );
   }
 
-  @autobind
-  private _toggleDisabled(checked: boolean) {
+  private _toggleDisabled = (checked: boolean) => {
     this.setState({ btnDisabled: !checked });
   }
 }

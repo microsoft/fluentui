@@ -7,8 +7,7 @@ import {
   KeytipTransitionModifier,
   IKeytipTransitionKey,
   ktpSeparator,
-  ktpFullPrefix,
-  ktpLayerId
+  ktpFullPrefix
 } from '../../Utilities';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
@@ -155,8 +154,8 @@ describe('KeytipManager', () => {
       it('should correctly take into account the uniqueID', () => {
         // Register duplicate keytips, but should both be in the keytips array
         // because they will have unique IDs
-        const uniqueID1 = ktpMgr.registerKeytip(keytipBProps);
-        const uniqueID2 = ktpMgr.registerKeytip(keytipBProps);
+        ktpMgr.registerKeytip(keytipBProps);
+        ktpMgr.registerKeytip(keytipBProps);
         expect(ktpMgr.getKeytips()).toHaveLength(2);
       });
     });
@@ -219,13 +218,13 @@ describe('KeytipManager', () => {
   });
 
   describe('input tests', () => {
-    let uniqueIDQ: string, uniqueIDP: string, uniqueIDK: string, uniqueIDE1: string, uniqueIDE2: string;
+    let uniqueIDQ: string, uniqueIDE1: string, uniqueIDE2: string;
 
     beforeEach(() => {
       // Register sample keytips
       uniqueIDQ = ktpMgr.registerKeytip(keytipPropsQ);
-      uniqueIDP = ktpMgr.registerKeytip(keytipPropsP);
-      uniqueIDK = ktpMgr.registerKeytip(keytipPropsK);
+      ktpMgr.registerKeytip(keytipPropsP);
+      ktpMgr.registerKeytip(keytipPropsK);
       uniqueIDE1 = ktpMgr.registerKeytip(keytipPropsE1);
       uniqueIDE2 = ktpMgr.registerKeytip(keytipPropsE2);
     });

@@ -6,7 +6,7 @@ import * as sinon from 'sinon';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 import { CommandBarButton } from '../../Button';
 import { mount, ReactWrapper } from 'enzyme';
-import { convertSequencesToKeytipID, fullKeySequencesAreEqual, IKeySequence } from '../../Utilities';
+import { convertSequencesToKeytipID, fullKeySequencesAreEqual, IKeySequence, find } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager, constructKeytipExecuteTargetFromId, KeytipTree, IKeytipTreeNode } from '../../utilities/keytips';
 
@@ -240,24 +240,44 @@ describe('OverflowSet', () => {
         });
       });
 
-      it('overflowSetSequence gets set and unset correctly on overflowItems keytipProps', () => {
-        // overflowSetSequence should be set on item3 and item4
-        let item3OverflowSequence = overflowItems[0].keytipProps!.overflowSetSequence;
-        expect(fullKeySequencesAreEqual(item3OverflowSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
-        let item4OverflowSequence = overflowItems[1].keytipProps!.overflowSetSequence;
-        expect(fullKeySequencesAreEqual(item4OverflowSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+      it('overflowSetSequence gets set and unset correctly on overflowItems keytipProps when the overflow menu is opened', () => {
+        // Set current keytip at root, like we've entered keytip mode
+        const keytipTree = keytipManager.keytipTree;
+        keytipTree.currentKeytip = keytipTree.root;
+        // Open the overflow menu
+        keytipManager.processInput('x');
 
-        // Add the first overflow item to 'items'
-        overflowSet.setProps({
-          items: items.concat(overflowItems.slice(0, 1)),
-          overflowItems: overflowItems.slice(1, 2)
+        delay(750).then(() => {
+          let managerKeytips = keytipManager.getKeytips();
+          // item3
+          let item3Keytip = find(managerKeytips, (keytip: IKeytipProps) => {
+            return fullKeySequencesAreEqual(overflowKeytips.overflowItemKeytip3.keySequences, keytip.keySequences);
+          });
+          expect(fullKeySequencesAreEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+          // item4
+          let item4Keytip = find(managerKeytips, (keytip: IKeytipProps) => {
+            return fullKeySequencesAreEqual(overflowKeytips.overflowItemKeytip4.keySequences, keytip.keySequences);
+          });
+          expect(fullKeySequencesAreEqual(item4Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+
+          // Add the first overflow item to 'items'
+          overflowSet.setProps({
+            items: items.concat(overflowItems.slice(0, 1)),
+            overflowItems: overflowItems.slice(1, 2)
+          });
+
+          managerKeytips = keytipManager.getKeytips();
+          // item3
+          item3Keytip = find(managerKeytips, (keytip: IKeytipProps) => {
+            return fullKeySequencesAreEqual(overflowKeytips.overflowItemKeytip3.keySequences, keytip.keySequences);
+          });
+          expect(fullKeySequencesAreEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+          // item4
+          item4Keytip = find(managerKeytips, (keytip: IKeytipProps) => {
+            return fullKeySequencesAreEqual(overflowKeytips.overflowItemKeytip4.keySequences, keytip.keySequences);
+          });
+          expect(item4Keytip!.overflowSetSequence).toBeUndefined();
         });
-
-        // overflowSetSequence should not be set on item3, but should be set on item4
-        item3OverflowSequence = overflowItems[0].keytipProps!.overflowSetSequence;
-        expect(item3OverflowSequence).toBeUndefined();
-        item4OverflowSequence = overflowItems[1].keytipProps!.overflowSetSequence;
-        expect(fullKeySequencesAreEqual(item4OverflowSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
       });
 
       it('correctly picks up a disabled keytip and doesn`t call it', () => {
@@ -364,7 +384,7 @@ describe('OverflowSet', () => {
                           name: 'Item 7',
                           keytipProps: {
                             content: 'X',
-                            keySequences: [{ keys: ['d'] }, { keys: ['f'] }, { keys: ['x'] }]
+                            keySequences: ['d', 'f', 'x']
                           }
                         }
                       ]
@@ -378,37 +398,6 @@ describe('OverflowSet', () => {
           overflowSet.setProps({
             overflowItems: overflowItemsWithSubMenuAndKeytips
           });
-        });
-
-        it('subMenuProps overflowSetSequence get set and unset correctly', () => {
-          // subMenuProps overflowSetSequence should be set on item5, item6, and item7
-          // item5
-          let subMenuProps = (overflowItemsWithSubMenuAndKeytips[1] as any).subMenuProps.items;
-          expect(fullKeySequencesAreEqual(subMenuProps[0].keytipProps.overflowSetSequence,
-            overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
-          // item6
-          expect(fullKeySequencesAreEqual(subMenuProps[1].keytipProps.overflowSetSequence,
-            overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
-          // item7
-          let item6SubMenu = subMenuProps[1].subMenuProps!.items as any;
-          expect(fullKeySequencesAreEqual(item6SubMenu[0].keytipProps.overflowSetSequence,
-            overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
-
-          // Move item4 to items
-          overflowSet.setProps({
-            items: items.concat(overflowItemsWithSubMenuAndKeytips.slice(1, 2)),
-            overflowItems: overflowItemsWithSubMenuAndKeytips.slice(0, 1)
-          });
-
-          // subMenuProps overflowSetSequence should be unset on item5, item6, and item7
-          // item5
-          subMenuProps = (overflowItemsWithSubMenuAndKeytips[1] as any).subMenuProps!.items;
-          expect(subMenuProps[0].keytipProps.overflowSetSequence).toBeUndefined();
-          // item6
-          expect(subMenuProps[1].keytipProps.overflowSetSequence).toBeUndefined();
-          // item7
-          item6SubMenu = subMenuProps[1].subMenuProps!.items as any;
-          expect(item6SubMenu[0].keytipProps.overflowSetSequence).toBeUndefined();
         });
 
         it('should open the overflow and submenu when the persisted keytip is triggered', () => {
@@ -425,12 +414,13 @@ describe('OverflowSet', () => {
           expect(subMenu6Keytip).toBeDefined();
 
           delay(750).then(() => {
-            // Those two keytips should now be visible in the Layer
+            // Those two keytips should now be visible in the Layer and have overflowSetSequence set
             const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
               return keytip.content === 'E' || keytip.content === 'F';
             });
             submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
               expect(submenuKeytip.visible).toEqual(true);
+              expect(fullKeySequencesAreEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
             });
           });
         });
@@ -467,7 +457,7 @@ describe('OverflowSet', () => {
                           name: 'Item 7',
                           keytipProps: {
                             content: 'X',
-                            keySequences: [{ keys: ['d'] }, { keys: ['f'] }, { keys: ['x'] }]
+                            keySequences: ['d', 'f', 'x']
                           }
                         }
                       ]
@@ -488,18 +478,21 @@ describe('OverflowSet', () => {
             }
           });
 
-          // Verify that the overflow set sequence is set correctly on item5, item6, and item7
-          // item5
-          const customSubMenu = (overflowItemsWithSubMenuAndKeytips[1] as any).customSubMenu.items;
-          expect(fullKeySequencesAreEqual(customSubMenu[0].keytipProps.overflowSetSequence,
-            overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
-          // item6
-          expect(fullKeySequencesAreEqual(customSubMenu[1].keytipProps.overflowSetSequence,
-            overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
-          // item7
-          const item6SubMenu = customSubMenu[1].customSubMenu!.items as any;
-          expect(fullKeySequencesAreEqual(item6SubMenu[0].keytipProps.overflowSetSequence,
-            overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+          // Open the submenu
+          const keytipTree = keytipManager.keytipTree;
+          keytipTree.currentKeytip = keytipTree.root;
+          keytipManager.processInput('d');
+
+          delay(750).then(() => {
+            // Those two keytips should now be visible in the Layer and have overflowSetSequence set
+            const submenuKeytips = keytipManager.getKeytips().filter((keytip: IKeytipProps) => {
+              return keytip.content === 'E' || keytip.content === 'F';
+            });
+            submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
+              expect(submenuKeytip.visible).toEqual(true);
+              expect(fullKeySequencesAreEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+            });
+          });
         });
       });
     });

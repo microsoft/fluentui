@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { BaseComponent, IRenderComponent } from '../../Utilities';
 import { IKeytipProps } from './Keytip.types';
 import { getNativeKeytipProps, registerKeytip, unregisterKeytip, updateKeytip } from '../../utilities/keytips';

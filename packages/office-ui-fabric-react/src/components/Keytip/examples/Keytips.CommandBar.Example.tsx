@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { keytipMap } from './KeytipSetup';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
@@ -122,26 +121,22 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
     );
   }
 
-  @autobind
-  private _showModal(): void {
+  private _showModal = (): void => {
     this.setState({ showModal: true });
   }
 
-  @autobind
-  private _hideModal(): void {
+  private _hideModal = (): void => {
     this.setState({ showModal: false });
   }
 
-  @autobind
-  private _showMessageBar(): void {
+  private _showMessageBar = (): void => {
     this.setState({ showMessageBar: true });
 
     // Hide the MessageBar after 2 seconds
     setTimeout(this._hideMessageBar, 2000);
   }
 
-  @autobind
-  private _hideMessageBar(): void {
+  private _hideMessageBar = (): void => {
     this.setState({ showMessageBar: false });
   }
 }

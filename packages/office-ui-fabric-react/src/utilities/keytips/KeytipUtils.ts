@@ -99,6 +99,9 @@ export function getAriaDescribedBy(keySequences: IKeySequence[]): string {
 // tslint:disable-next-line:no-any
 export function getNativeKeytipProps(keytipProps?: IKeytipProps, describedByPrepend?: string): any {
   if (keytipProps) {
+    // Add the parent overflow sequence if necessary
+    keytipProps = KeytipManager.getInstance().addParentOverflowSequence(keytipProps);
+
     // Construct aria-describedby and data-ktp-id attributes and return
     const ariaDescribedBy = getAriaDescribedBy(keytipProps.keySequences);
     let keySequences = keytipProps.keySequences;

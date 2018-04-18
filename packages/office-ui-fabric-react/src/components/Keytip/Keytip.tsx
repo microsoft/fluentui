@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IPoint, getDocument, mergeOverflowKeySequences } from '../../Utilities';
+import { BaseComponent, mergeOverflowKeySequences } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';

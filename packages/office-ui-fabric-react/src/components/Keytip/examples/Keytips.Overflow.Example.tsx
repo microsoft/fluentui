@@ -2,7 +2,6 @@ import * as React from 'react';
 import { keytipMap } from './KeytipSetup';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { CommandBarButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IKeytipsOverflowExampleState {
   items: IOverflowSetItemProps[];
@@ -128,8 +127,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
     );
   }
 
-  @autobind
-  private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
+  private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
         menuIconProps={ { iconName: 'More' } }
@@ -139,8 +137,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
     );
   }
 
-  @autobind
-  private _toggleOverflowItems(): void {
+  private _toggleOverflowItems = (): void => {
     this.setState((prevState: IKeytipsOverflowExampleState) => {
       let items = prevState.items;
       let overflowItems = prevState.overflowItems;
@@ -155,13 +152,5 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
       }
       return { items, overflowItems };
     });
-  }
-
-  private _overflowItem1Click = () => {
-    console.log('first overflow item');
-  }
-
-  private _overflowItem2Click = () => {
-    console.log('second overflow item');
   }
 }

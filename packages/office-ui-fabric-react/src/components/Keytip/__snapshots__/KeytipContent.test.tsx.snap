@@ -6,7 +6,6 @@ exports[`Keytip renders invisible Keytip correctly 1`] = `
 
       {
         background-color: #212121;
-        opacity: 0;
         visibility: hidden;
       }
 >
