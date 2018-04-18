@@ -915,7 +915,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               currentPendingValue.length + (this._autofill.value.selectionEnd! - this._autofill.value.selectionStart!) === pendingOptionText.length) ||
             (this._autofill.value && this._autofill.value.inputElement && this._autofill.value.inputElement.value.toLocaleLowerCase() === pendingOptionText)
           )) {
-          this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent, SearchDirection.none);
+          this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
           this._clearPendingInfo();
           return;
         }
@@ -941,10 +941,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
       // to be able to update state
-      this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent, SearchDirection.none);
+      this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
     } else if (currentPendingValueValidIndexOnHover >= 0) {
       // If all else failed and we were hovering over an item, select it
-      this._setSelectedIndex(currentPendingValueValidIndexOnHover, submitPendingValueEvent, SearchDirection.none);
+      this._setSelectedIndex(currentPendingValueValidIndexOnHover, submitPendingValueEvent);
     }
 
     // Finally, clear the pending info
