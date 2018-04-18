@@ -866,6 +866,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
         targetElement.focus();
+        this._enterTimerId = undefined;
       }, timeoutDuration);
     }
   }
