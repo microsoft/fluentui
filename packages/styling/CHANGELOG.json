@@ -2,6 +2,27 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.24.0",
+      "tag": "@uifabric/styling_v5.24.0",
+      "date": "Wed, 18 Apr 2018 10:15:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4efff92981d7301ac16bc8a2cbd7624585f9c42b",
+            "comment": "Add opt-in @deprecated comments"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4efff92981d7301ac16bc8a2cbd7624585f9c42b",
+            "comment": "Fix deprecated semantic slots returning empty strings"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.23.1",
       "tag": "@uifabric/styling_v5.23.1",
       "date": "Mon, 16 Apr 2018 10:23:26 GMT",
