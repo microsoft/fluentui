@@ -249,14 +249,14 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   /**
    * Gets the selection start of the text field
    */
-  public get selectionStart(): number {
+  public get selectionStart(): number | null {
     return this._textElement.value ? this._textElement.value.selectionStart : -1;
   }
 
   /**
    * Gets the selection end of the text field
    */
-  public get selectionEnd(): number {
+  public get selectionEnd(): number | null {
     return this._textElement.value ? this._textElement.value.selectionEnd : -1;
   }
 
@@ -267,7 +267,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    */
   public setSelectionRange(start: number, end: number) {
     if (this._textElement.value) {
-      this._textElement.value.setSelectionRange(start, end);
+      (this._textElement.value as HTMLInputElement).setSelectionRange(start, end);
     }
   }
 
@@ -361,7 +361,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         aria-label={ this.props.ariaLabel }
         onFocus={ this._onFocus }
@@ -384,7 +384,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }

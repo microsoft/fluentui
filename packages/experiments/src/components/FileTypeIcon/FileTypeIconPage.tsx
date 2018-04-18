@@ -8,7 +8,7 @@ import {
 
 import { FileTypeIconBasicExample } from './examples/FileTypeIcon.Basic.Example';
 const FileTypeIconBasicExampleCode =
-  require('!raw-loader!experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx') as string;
+  require('!raw-loader!@uifabric/experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx') as string;
 
 export class FileTypeIconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

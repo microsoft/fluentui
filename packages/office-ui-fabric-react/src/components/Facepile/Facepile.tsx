@@ -116,6 +116,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         imageInitials={ persona.imageInitials }
         imageUrl={ persona.imageUrl }
         initialsColor={ persona.initialsColor }
+        allowPhoneInitials={ persona.allowPhoneInitials }
         primaryText={ persona.personaName }
         size={ personaSize }
         { ...(getPersonaProps ? getPersonaProps(persona) : null) }
@@ -130,6 +131,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         imageInitials={ persona.imageInitials }
         imageUrl={ persona.imageUrl }
         initialsColor={ persona.initialsColor }
+        allowPhoneInitials={ persona.allowPhoneInitials }
         primaryText={ persona.personaName }
         size={ personaSize }
         { ...(getPersonaProps ? getPersonaProps(persona) : null) }

@@ -15,7 +15,15 @@
     cursor: pointer;
   }
 
-  .shimmerExample-application .ms-Shimmer-container{
-    margin-left: 42px;
+  .shimmerExample-flexGroup {
+    display: flex;
+
+    .ms-Toggle {
+      margin-right: 30px;
+    }
+  }
+
+  .shimmerBasicExample-wrapper {
+    margin: 10px;
   }
 }

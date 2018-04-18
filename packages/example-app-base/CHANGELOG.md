@@ -1,6 +1,60 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Apr 2018 10:15:04 GMT and should not be manually modified.
+
+## 5.10.1
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Fix code block line-height
+
+## 5.10.0
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Minor changes
+
+- Add new APIs for editing sections on GitHub.
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.9.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- HTML button tags will be overridden with DefaultButton component.
+
+## 5.8.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add ability to disable scrolling for an ExampleCard
+
+## 5.7.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable w
+
+## 5.7.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
+
+## 5.6.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
 
 ## 5.5.0
 Sun, 25 Mar 2018 03:08:03 GMT

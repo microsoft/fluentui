@@ -20,6 +20,10 @@ export interface ITilesGridItem<TItem> {
    */
   desiredSize?: { width: number; height: number; };
   /**
+   * Set to true if the item is intended to be a placeholder
+   */
+  isPlaceholder?: boolean;
+  /**
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
    */
@@ -88,6 +92,10 @@ export interface ITilesGridSegment<TItem> {
    * The maximum aspect ratio for an item in the grid.
    */
   maxAspectRatio?: number;
+  /**
+   * Set to true if the item is intended to be a placeholder
+   */
+  isPlaceholder?: boolean;
 }
 
 export { ISize as ITileSize };

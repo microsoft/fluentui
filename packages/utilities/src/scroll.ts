@@ -1,8 +1,12 @@
 import { getDocument } from './dom';
-import * as styles from './scroll.scss';
+import { mergeStyles } from '@uifabric/merge-styles/lib/index';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
+
+const DisabledScrollClassName = mergeStyles({
+  overflow: 'hidden !important' as 'hidden'
+});
 
 /**
  * Placing this attribute on scrollable divs optimizes detection to know
@@ -22,7 +26,7 @@ export function disableBodyScroll(): void {
   let doc = getDocument();
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
-    doc.body.classList.add(styles.scrollDisabled);
+    doc.body.classList.add(DisabledScrollClassName);
   }
 
   _bodyScrollDisabledCount++;
@@ -38,7 +42,7 @@ export function enableBodyScroll(): void {
     let doc = getDocument();
 
     if (doc && doc.body && _bodyScrollDisabledCount === 1) {
-      doc.body.classList.remove(styles.scrollDisabled);
+      doc.body.classList.remove(DisabledScrollClassName);
     }
 
     _bodyScrollDisabledCount--;

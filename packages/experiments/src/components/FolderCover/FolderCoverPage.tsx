@@ -8,7 +8,7 @@ import {
 
 import { FolderCoverBasicExample } from './examples/FolderCover.Basic.Example';
 const FolderCoverBasicExampleCode =
-  require('!raw-loader!experiments/src/components/FolderCover/examples/FolderCover.Basic.Example.tsx') as string;
+  require('!raw-loader!@uifabric/experiments/src/components/FolderCover/examples/FolderCover.Basic.Example.tsx') as string;
 
 export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,7 +26,7 @@ export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/FolderCover/FolderCover.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/FolderCover/FolderCover.types.ts')
             ] }
           />
         }

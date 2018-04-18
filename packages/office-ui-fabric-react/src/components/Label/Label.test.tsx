@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { Label } from './Label';
+import { Label } from './index';
 
 describe('Label', () => {
 
@@ -14,7 +14,7 @@ describe('Label', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <Label>test</Label>
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
 
     expect(renderedDOM.textContent).toEqual('test');
   });

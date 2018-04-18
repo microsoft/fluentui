@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VirtualizedList } from '../VirtualizedList';
+import { VirtualizedList } from '@uifabric/experiments/lib/VirtualizedList';
 import { ScrollContainer } from '../../../utilities/scrolling/ScrollContainer';
 
 import * as VirtualizedListExampleStylesModule from './VirtualizedList.Example.scss';

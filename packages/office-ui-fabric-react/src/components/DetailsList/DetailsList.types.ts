@@ -155,7 +155,13 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
-  onRenderMissingItem?: (index?: number) => React.ReactNode;
+  onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
+
+  /**
+   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
+   * @default false
+   */
+  enableShimmer?: boolean;
 
   /**
    * An override to render the details header.

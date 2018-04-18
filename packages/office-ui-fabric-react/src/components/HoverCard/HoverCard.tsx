@@ -20,9 +20,9 @@ import { ExpandingCardMode, OpenCardMode } from './ExpandingCard.types';
 import { getStyles } from './HoverCard.styles';
 
 export interface IHoverCardState {
-  isHoverCardVisible: boolean;
-  mode: ExpandingCardMode;
-  openMode: OpenCardMode;
+  isHoverCardVisible?: boolean;
+  mode?: ExpandingCardMode;
+  openMode?: OpenCardMode;
 }
 
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
@@ -35,10 +35,9 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // The wrapping div that gets the hover events
   private _hoverCard = createRef<HTMLDivElement>();
-  private _expandingCard = createRef<ExpandingCard>();
   private _dismissTimerId: number;
   private _openTimerId: number;
-  private _currentMouseTarget: EventTarget;
+  private _currentMouseTarget: EventTarget | null;
 
   private _styles: IHoverCardStyles;
 
@@ -113,7 +112,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { children }
         { isHoverCardVisible &&
           <ExpandingCard
-            componentRef={ this._expandingCard }
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             trapFocus={ !!this.props.trapFocus }
@@ -140,13 +138,17 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         return target as HTMLElement;
 
       default:
-        return this._hoverCard.value ? this._hoverCard.value : undefined;
+        return this._hoverCard.value || undefined;
     }
+  }
+
+  private _shouldBlockHoverCard(): boolean {
+    return !!(this.props.shouldBlockHoverCard && this.props.shouldBlockHoverCard());
   }
 
   // Show HoverCard
   private _cardOpen = (ev: MouseEvent): void => {
-    if (ev.type === 'keydown' && !(ev.which === KeyCodes.c)) {
+    if (this._shouldBlockHoverCard() || (ev.type === 'keydown' && !(ev.which === KeyCodes.c))) {
       return;
     }
     this._async.clearTimeout(this._dismissTimerId);
@@ -168,6 +170,8 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
           });
         }
+
+        return prevState;
       });
     }, this.props.cardOpenDelay!);
   }
@@ -201,11 +205,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this.setState((prevState: IHoverCardState) => {
       if (!prevState.isHoverCardVisible) {
-        return ({
+        return {
           isHoverCardVisible: true,
           mode: ExpandingCardMode.expanded
-        });
+        };
       }
+
+      return prevState;
     });
   }
 }

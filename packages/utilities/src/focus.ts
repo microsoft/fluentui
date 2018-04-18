@@ -1,6 +1,11 @@
 /* tslint:disable:no-string-literal */
 
-import { elementContains, getDocument, elementContainsAttribute } from './dom';
+import {
+  elementContainsAttribute,
+  elementContains,
+  getDocument,
+  getWindow
+} from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
@@ -352,7 +357,7 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
   return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
 }
 
-let targetToFocusOnNextRepaint: HTMLElement | null | undefined = undefined;
+let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | undefined = undefined;
 
 /**
  * Sets focus to an element asynchronously. The focus will be set at the next browser repaint,
@@ -360,7 +365,7 @@ let targetToFocusOnNextRepaint: HTMLElement | null | undefined = undefined;
  * only the latest called focusAsync element will actually be focused
  * @param element The element to focus
  */
-export function focusAsync(element: HTMLElement | undefined | null): void {
+export function focusAsync(element: HTMLElement | { focus: () => void } | undefined | null): void {
   if (element) {
     // An element was already queued to be focused, so replace that one with the new element
     if (targetToFocusOnNextRepaint) {
@@ -370,12 +375,16 @@ export function focusAsync(element: HTMLElement | undefined | null): void {
 
     targetToFocusOnNextRepaint = element;
 
-    // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
-    element.ownerDocument.defaultView.requestAnimationFrame(() => {
-      targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+    const win = getWindow(element as Element);
 
-      // We are done focusing for this frame, so reset the queued focus element
-      targetToFocusOnNextRepaint = undefined;
-    });
+    if (win) {
+      // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
+      win.requestAnimationFrame(() => {
+        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+
+        // We are done focusing for this frame, so reset the queued focus element
+        targetToFocusOnNextRepaint = undefined;
+      });
+    }
   }
 }

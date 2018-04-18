@@ -1,0 +1,4 @@
+- Use them to display content.
+- Provide useful columns of metadata.
+- Display columns in order of importance left to right or right to left depending on the standards of the culture.
+- Give columns ample default width to display information.

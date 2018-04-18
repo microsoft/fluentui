@@ -1,4 +1,11 @@
-import { IStyle, IRawStyle, keyframes } from '../../Styling';
+import {
+  IStyle,
+  IRawStyle,
+  keyframes,
+  PulsingBeaconAnimationStyles,
+  ITheme,
+  getTheme
+} from '../../Styling';
 
 export interface ICoachmarkStyleProps {
   /**
@@ -96,47 +103,6 @@ export interface ICoachmarkStyles {
    * The styles applied when the coachmark has collapsed.
    */
   collapsed?: IStyle;
-}
-
-function continuousPulseStepOne(beaconColorOne: string): IRawStyle {
-  return {
-    borderColor: beaconColorOne,
-    borderWidth: '0px',
-    width: '35px',
-    height: '35px'
-  };
-}
-
-function continuousPulseStepTwo(): IRawStyle {
-  return {
-    opacity: '1',
-    borderWidth: '10px'
-  };
-}
-
-function continuousPulseStepThree(): IRawStyle {
-  return {
-    opacity: 1
-  };
-}
-
-function continuousPulseStepFour(beaconColorTwo: string): IRawStyle {
-  return {
-    borderWidth: '0',
-    width: '150px',
-    height: '150px',
-    opacity: '0',
-    borderColor: beaconColorTwo
-  };
-}
-
-function continuousPulseStepFive(beaconColorOne: string): IRawStyle {
-  return {
-    ...continuousPulseStepOne(beaconColorOne),
-    ...{
-      opacity: '0'
-    }
-  };
 }
 
 export const translateOne: string = keyframes({
@@ -253,26 +219,21 @@ export const rotateOne: string = keyframes({
   }
 });
 
-export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
-  const ContinuousPulse: string = keyframes({
-    '0%': continuousPulseStepOne(props.beaconColorOne!),
-    '1.42%': continuousPulseStepTwo(),
-    '3.57%': continuousPulseStepThree(),
-    '7.14%': continuousPulseStepFour(props.beaconColorTwo!),
-    '8%': continuousPulseStepFive(props.beaconColorOne!),
-    '29.99%': continuousPulseStepFive(props.beaconColorOne!),
-    '30%': continuousPulseStepOne(props.beaconColorOne!),
-    '31.42%': continuousPulseStepTwo(),
-    '33.57%': continuousPulseStepThree(),
-    '37.14%': continuousPulseStepFour(props.beaconColorTwo!),
-    '38%': continuousPulseStepFive(props.beaconColorOne!),
-    '79.42%': continuousPulseStepFive(props.beaconColorOne!),
-    '79.43': continuousPulseStepOne(props.beaconColorOne!),
-    '81.85': continuousPulseStepTwo(),
-    '83.42': continuousPulseStepThree(),
-    '87%': continuousPulseStepFour(props.beaconColorTwo!),
-    '100%': {}
-  });
+export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(),
+): ICoachmarkStyles {
+  const animationInnerDimension = '35px';
+  const animationOuterDimension = '150px';
+  const animationBorderWidth = '10px';
+
+  const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimationDouble(
+    props.beaconColorOne ? props.beaconColorOne : theme.palette.themePrimary,
+    props.beaconColorTwo ? props.beaconColorTwo : theme.palette.themeTertiary,
+    animationInnerDimension,
+    animationOuterDimension,
+    animationBorderWidth
+  );
+
+  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse);
 
   return {
     root: [
@@ -280,7 +241,6 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         position: 'relative'
       }
     ],
-    // The pulsing beacon
     pulsingBeacon: [
       {
         position: 'absolute',
@@ -293,13 +253,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         borderStyle: 'solid',
         opacity: '0'
       },
-      (props.collapsed && props.isBeaconAnimating) && {
-        animationName: ContinuousPulse,
-        animationIterationCount: '1',
-        animationDuration: '14s',
-        zIndex: 1000,
-        animationDelay: '2s'
-      }
+      (props.collapsed && props.isBeaconAnimating) && ContinuousPulseAnimation
     ],
     // Translate Animation Layer
     translateAnimationContainer: [

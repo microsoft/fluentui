@@ -23,6 +23,11 @@ export const enum ScrollToMode {
 
 export interface IList {
   /**
+   * Force the component to update.
+   */
+  forceUpdate: () => void;
+
+  /**
    * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
    * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
    *
@@ -34,7 +39,7 @@ export interface IList {
    * @param scrollToMode Optional defines the behavior of the scrolling alignment. Defaults to auto.
    *  Note: The scrollToMode requires the measureItem callback is provided to function.
    */
-  scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+  scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
 }
 
 export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {

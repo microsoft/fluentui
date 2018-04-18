@@ -7,13 +7,19 @@ import {
 } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
-import { ShimmerApplicationExample } from 'experiments/lib/components/Shimmer/examples/Shimmer.Application.Example';
+import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 
-const ShimmerBasicExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
-// tslint:disable-next-line:max-line-length
-const ShimmerLoadDataExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
-// tslint:disable-next-line:max-line-length
-const ShimmerApplicationExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+const ShimmerBasicExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx'
+) as string;
+
+const ShimmerLoadDataExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx'
+) as string;
+
+const ShimmerApplicationExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Application.Example.tsx'
+) as string;
 
 export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -36,7 +42,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               <ShimmerLoadDataExample />
             </ExampleCard>
             <ExampleCard
-              title='Details List with 1000 items loading in async way.'
+              title='Details List with 500 items loading in async way and having enabled Shimmer.'
               code={ ShimmerApplicationExampleCode }
             >
               <ShimmerApplicationExample />
@@ -46,7 +52,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/Shimmer/Shimmer.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Shimmer/Shimmer.types.ts')
             ] }
           />
         }

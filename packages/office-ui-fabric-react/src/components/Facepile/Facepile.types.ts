@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
 import {
-  IPersonaProps,
+  IPersonaSharedProps,
   PersonaInitialsColor,
   PersonaSize
 } from '../Persona/index';
@@ -56,7 +56,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   overflowButtonType?: OverflowButtonType;
 
   /** Method to access properties on the underlying Persona control */
-  getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
+  getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
 
   /**
    * Optional class for Facepile root element.
@@ -80,6 +80,13 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
    * @defaultvalue [Derived from personaName]
    */
   imageInitials?: string;
+
+  /**
+   * Whether initials are calculated for phone numbers and number sequences.
+   * Example: Set property to true to get initials for project names consisting of numbers only.
+   * @defaultvalue false
+   */
+  allowPhoneInitials?: boolean;
 
   /**
    * The background color when the user's initials are displayed.
