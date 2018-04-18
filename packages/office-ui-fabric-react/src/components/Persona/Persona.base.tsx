@@ -8,7 +8,7 @@ import {
   IRenderFunction,
 } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
-import { PersonaCoin } from './PersonaCoin';
+import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,
   IPersonaSharedProps,
