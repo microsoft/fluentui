@@ -1,16 +1,26 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css
+  classNamesFunction,
+  customizable,
 } from '../../Utilities';
-import { IProgressIndicatorProps } from './ProgressIndicator.types';
-import * as stylesImport from './ProgressIndicator.scss';
-const styles: any = stylesImport;
+import {
+  IProgressIndicatorProps,
+  IProgressIndicatorStyleProps,
+  IProgressIndicatorStyles,
+} from './ProgressIndicator.types';
+
+const getClassNames = classNamesFunction<IProgressIndicatorStyleProps, IProgressIndicatorStyles>();
 
 // if the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios
 const ZERO_THRESHOLD = 0.01;
 
+/**
+* ProgressIndicator with no default styles.
+* [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+*/
+@customizable('ProgressIndicator', ['theme'])
 export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   public static defaultProps = {
     label: '',
@@ -28,8 +38,25 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
   }
 
   public render() {
-    const { title, description, className, ariaValueText } = this.props;
+    const {
+      ariaValueText,
+      barHeight = 2,
+      className,
+      description,
+      getStyles,
+      theme,
+      title,
+    } = this.props;
+
     let { label, percentComplete } = this.props;
+
+    const classNames = getClassNames(getStyles, {
+      theme: theme!,
+      className,
+      barHeight,
+      smoothTransition: (percentComplete && percentComplete > ZERO_THRESHOLD) ? true : false,
+      indeterminate: !percentComplete ? true : false,
+    });
 
     // Handle deprecated value.
     if (title) {
@@ -41,17 +68,12 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     }
 
     return (
-      <div className={ css('ms-ProgressIndicator', styles.root, className) }>
-        <div className={ css('ms-ProgressIndicator-itemName', styles.itemName) }>{ label }</div>
-        <div className={ css('ms-ProgressIndicator-itemProgress', styles.itemProgress) }>
-          <div className={ css('ms-ProgressIndicator-progressTrack', styles.progressTrack) } />
+      <div className={ classNames.root }>
+        <div className={ classNames.itemName }>{ label }</div>
+        <div className={ classNames.itemProgress }>
+          <div className={ classNames.progressTrack } />
           <div
-            className={ css(
-              'ms-ProgressIndicator-progressBar',
-              styles.progressBar,
-              percentComplete && percentComplete > ZERO_THRESHOLD && 'smoothTransition',
-              percentComplete === undefined && styles.indeterminate
-            ) }
+            className={ classNames.progressBar }
             style={ percentComplete !== undefined ? { width: percentComplete + '%' } : undefined }
             role='progressbar'
             aria-valuemin={ 0 }
@@ -60,7 +82,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
             aria-valuetext={ ariaValueText }
           />
         </div>
-        <div className={ css('ms-ProgressIndicator-itemDescription', styles.itemDescription) }>{ description }</div>
+        <div className={ classNames.itemDescription }>{ description }</div>
       </div>
     );
   }
