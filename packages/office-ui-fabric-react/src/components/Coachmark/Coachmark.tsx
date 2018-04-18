@@ -71,8 +71,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     width: 36,
     height: 36,
-    beaconColorOne: '#00FFEC',
-    beaconColorTwo: '#005EDD',
     color: DefaultPalette.themePrimary
   };
 
@@ -108,9 +106,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       target,
       width,
       height,
-      color,
-      beaconColorOne,
-      beaconColorTwo
+      color
     } = this.props;
 
     const classNames = getClassNames(getStyles, {
@@ -121,9 +117,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       entityHostWidth: this.state.entityInnerHostRect.width + 'px',
       width: width + 'px',
       height: height + 'px',
-      color: color,
-      beaconColorOne: beaconColorOne,
-      beaconColorTwo: beaconColorTwo
+      color: color
     });
 
     return (
