@@ -33,6 +33,7 @@ export interface ITextFieldState {
 
 export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
+    isPassword: false,
     multiline: false,
     resizable: true,
     autoAdjustHeight: false,
@@ -375,7 +376,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <input
-        type={ 'text' }
+        type={ this.props.isPassword === true ? 'password' : 'text' }
         id={ this._id }
         { ...inputProps }
         ref={ this._textElement }

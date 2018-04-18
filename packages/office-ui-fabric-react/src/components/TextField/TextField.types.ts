@@ -43,6 +43,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentRef?: (component: ITextField | null) => void;
 
   /**
+   * Whether or not the textfield is a password textfield.
+   * @default false
+   */
+  isPassword?: boolean;
+
+  /**
    * Whether or not the textfield is a multiline textfield.
    * @default false
    */
