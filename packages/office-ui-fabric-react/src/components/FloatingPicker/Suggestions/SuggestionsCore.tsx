@@ -5,22 +5,22 @@ import {
   autobind
 } from '../../../Utilities';
 import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import { ISuggestionsProps } from './Suggestions.types';
-import * as stylesImport from './Suggestions.scss';
+import { ISuggestionsCoreProps } from './Suggestions.types';
+import * as stylesImport from './SuggestionsCore.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 /**
  * Class when used with SuggestionsStore, renders a basic suggestions control
  */
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
+export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<T> =
   SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
-  constructor(suggestionsProps: ISuggestionsProps<T>) {
+  constructor(suggestionsProps: ISuggestionsCoreProps<T>) {
     super(suggestionsProps);
     this.currentIndex = -1;
   }

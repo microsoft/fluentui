@@ -3,7 +3,7 @@ import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 // tslint:disable-next-line:no-any
-export interface ISuggestionsProps<T> extends React.Props<any> {
+export interface ISuggestionsCoreProps<T> extends React.Props<any> {
   /**
    * Gets the component ref.
    */
@@ -53,7 +53,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 }
 
 // tslint:disable-next-line:no-any
-export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggestionsProps<T> {
+export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggestionsCoreProps<T> {
   /**
    * An ARIA label for the container that is the parent of the suggestions header items.
    */
@@ -74,10 +74,6 @@ export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggesti
    * Whether or not the first selectable item in the suggestions list should be selected
    */
   shouldSelectFirstItem?: () => boolean;
-  /**
-   * The callback that should be called when the user attempts to use the input text as as item
-   */
-  createGenericItem?: () => void;
   /**
    * The CSS classname of the suggestions list.
    */

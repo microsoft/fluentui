@@ -17,11 +17,11 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
   public static defaultProps: any = {
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) => SuggestionItemNormal({ ...props },
       { ...itemProps }),
-    createGenericItem: createGenericItem,
+    createGenericItem: createItem,
   };
 }
 
-export function createGenericItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
+export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
   // tslint:disable-next-line:no-any
   const personaToConvert: any = {
     key: name,

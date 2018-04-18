@@ -9,10 +9,10 @@ import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,
-  ISuggestionsProps,
+  ISuggestionsCoreProps,
   ISuggestionsHeaderFooterProps
 } from './Suggestions.types';
-import { Suggestions } from './Suggestions';
+import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
 
 // tslint:disable-next-line:no-any
@@ -24,7 +24,7 @@ export enum SuggestionItemType {
   footer,
 }
 
-export interface ISuggestionsState {
+export interface ISuggestionsControlState {
   selectedHeaderIndex: number;
   selectedFooterIndex: number;
 }
@@ -72,14 +72,14 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
 /**
  * Class when used with SuggestionsStore, renders a suggestions control with customizable headers and footers
  */
-export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsState> {
+export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState> {
 
   protected _forceResolveButton: IButton;
   protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
-  protected _suggestions: Suggestions<T>;
-  private SuggestionsOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
-  Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  protected _suggestions: SuggestionsCore<T>;
+  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> =
+  SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
@@ -285,7 +285,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     return (
       <TypedSuggestions
         ref={ this._resolveRef('_suggestions') }
-        { ...this.props as ISuggestionsProps<T>}
+        { ...this.props as ISuggestionsCoreProps<T>}
       />);
   }
 
