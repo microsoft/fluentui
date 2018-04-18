@@ -71,3 +71,12 @@ export const isEqual = (itemA: any, itemB: any): boolean => {
   // If nothing failed, return true
   return true;
 };
+
+/**
+ * Checks if the first and second array|object are the NOT same recursively. Use for checking arrays and objects.
+ * @param itemA First array|object to compare to second array|object
+ * @param itemB Second array|object to compare to first array|object
+ */
+export const isNotEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-line no-any
+  return !isEqual(itemA, itemB);
+};
