@@ -2,6 +2,38 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.82.3",
+      "tag": "office-ui-fabric-react_v5.82.3",
+      "date": "Wed, 18 Apr 2018 10:15:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4efff92981d7301ac16bc8a2cbd7624585f9c42b",
+            "comment": "Convert documentation to markdown for HIG."
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4efff92981d7301ac16bc8a2cbd7624585f9c42b",
+            "comment": "Revamp Themes documentation"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "9e838b8674558c1eae4ebfea9278668ad8ad992a",
+            "comment": "Passes item when href set onClick for CommandBar control"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.23.1 <6.0.0` to `>=5.24.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.0 <6.0.0` to `>=5.10.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.82.2",
       "tag": "office-ui-fabric-react_v5.82.2",
       "date": "Tue, 17 Apr 2018 18:47:11 GMT",

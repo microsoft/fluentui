@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Apr 2018 10:15:04 GMT and should not be manually modified.
+
+## 5.82.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Convert documentation to markdown for HIG.
+- Revamp Themes documentation
+- Passes item when href set onClick for CommandBar control
 
 ## 5.82.2
 Tue, 17 Apr 2018 18:47:11 GMT
