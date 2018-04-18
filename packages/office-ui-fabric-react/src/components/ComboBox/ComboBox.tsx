@@ -751,7 +751,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index to set (or the index to set from if a search direction is provided)
    * @param searchDirection - the direction to search along the options from the given index
    */
-  private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none, submitPendingValueEvent: React.KeyboardEvent<any> | React.FocusEvent<any> | React.MouseEvent<any> | React.FormEvent<any>) {
+  private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none, submitPendingValueEvent: any) {
     const { onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
@@ -883,7 +883,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Submit a pending value if there is one
    */
-  private _submitPendingValue(submitPendingValueEvent: React.KeyboardEvent<HTMLElement | Autofill> | React.FocusEvent<HTMLInputElement>) {
+  private _submitPendingValue(submitPendingValueEvent: any) {
     const {
       onChanged,
       allowFreeform,
@@ -1242,7 +1242,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  private _onItemClick(index: number | undefined): (ev: React.MouseEvent<any> | React.FormEvent<any>) => void {
+  private _onItemClick(index: number | undefined): (ev: any) => void {
     return (ev: React.MouseEvent<any> | React.FormEvent<any>): void => {
       this._setSelectedIndex(index as number, undefined, ev);
       if (!this.props.multiSelect) {
