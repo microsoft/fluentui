@@ -2,6 +2,53 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.3.3",
+      "tag": "@uifabric/variants_v5.3.3",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry temporarily. (Will be added back in 6.0.)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.23.0 <6.0.0` to `>=5.23.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.2",
+      "tag": "@uifabric/variants_v5.3.2",
+      "date": "Mon, 02 Apr 2018 22:15:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f4227ad2577683c8fcfb1181c22d79e09809df12",
+            "comment": "Variants: improve algorithm for generating strong variant that better handles inversion"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.1",
+      "tag": "@uifabric/variants_v5.3.1",
+      "date": "Thu, 29 Mar 2018 01:39:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "d8d127d10279c0004ee8297af4cd7f6f745f4f5f",
+            "comment": "fix theme output from variants"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.0",
       "tag": "@uifabric/variants_v5.3.0",
       "date": "Sun, 25 Mar 2018 03:08:03 GMT",

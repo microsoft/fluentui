@@ -4,8 +4,9 @@ import {
   TilesList,
   ITilesGridSegment,
   ITilesGridItem,
-  TilesGridMode
-} from '../../TilesList';
+  TilesGridMode,
+  ITileSize
+} from '@uifabric/experiments/lib/TilesList';
 
 export interface IBasicItem {
   color: string;
@@ -14,7 +15,7 @@ export interface IBasicItem {
 
 const ITEMS: IBasicItem[] = [];
 
-for (let i = 0; i < 500; i++) {
+for (let i = 0; i < 27; i++) {
   ITEMS.push({
     color: ['red', 'blue', 'green', 'yellow', 'orange', 'brown', 'purple', 'gray'][Math.floor(Math.random() * 8)],
     key: `item-${i}`
@@ -60,13 +61,16 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
   }
 }
 
-function renderItem(item: IBasicItem): JSX.Element {
+function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
   return (
     <div
       // tslint:disable-next-line:jsx-ban-props
       style={
         {
           position: 'absolute',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
           top: '0',
           left: '0',
           bottom: '0',
@@ -74,6 +78,8 @@ function renderItem(item: IBasicItem): JSX.Element {
           backgroundColor: item.color
         }
       }
-    />
+    >
+      <span>{ finalSize ? `${finalSize.width.toFixed(1)}x${finalSize.height.toFixed(1)}` : '' }</span>
+    </div>
   );
 }

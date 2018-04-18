@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "PulsingBeaconAnimationStyles: Distinguish between single and double pulse.",
+      "packageName": "@uifabric/styling",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "lynam.emily@gmail.com"
+}

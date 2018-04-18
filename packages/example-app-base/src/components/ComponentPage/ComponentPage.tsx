@@ -7,6 +7,10 @@ import {
   Link
 } from 'office-ui-fabric-react/lib/Link';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
+import {
+  EditSection,
+  ComponentPageSection,
+} from '../EditSection';
 import './ComponentPage.scss';
 
 export interface IComponentPageSection {
@@ -32,6 +36,40 @@ export interface IComponentPageProps {
   otherSections?: IComponentPageSection[];
   allowNativeProps?: boolean | string;
   nativePropsElement?: string | string[] | undefined;
+
+  /**
+   * Link to the Component root folder on GitHub.
+   * Enables 'View On GitHub' and all 'Edit' buttons.
+   */
+  componentUrl?: string;
+
+  /**
+   * Link to the BestPractices markdown file on GitHub.
+   * Enables the 'Edit Best Practices' button.
+   * Overrides URL from componentUrl.
+   */
+  editBestPracticesUrl?: string;
+
+  /**
+   * Link to the Donts markdown file on GitHub.
+   * Enables the 'Edit Don'ts' button.
+   * Overrides URL from componentUrl.
+   */
+  editDontsUrl?: string;
+
+  /**
+   * Link to the Dos markdown file on GitHub.
+   * Enables the 'Edit Dos' button.
+   * Overrides URL from componentUrl.
+   */
+  editDosUrl?: string;
+
+  /**
+   * Link to the Overview markdown file on GitHub.
+   * Enables the 'Edit Overview' button.
+   * Overrides URL from componentUrl.
+   */
+  editOverviewUrl?: string;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -63,7 +101,15 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <div className='ComponentPage-body'>
             { this._getComponentStatusBadges() }
             <div className='ComponentPage-overviewSection'>
-              <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <div className='ComponentPage-overviewSectionHeader'>
+                <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+                <EditSection
+                  title={ this.props.title }
+                  section={ ComponentPageSection.Overview }
+                  sectionContent={ this.props.overview }
+                  url={ this._getURL('Overview', this.props.editOverviewUrl) }
+                />
+              </div>
               <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
                   { overview }
@@ -100,7 +146,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let {
       bestPractices,
       dos,
-      donts
+      donts,
     } = this.props;
 
     if (bestPractices && dos && donts) {
@@ -153,8 +199,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   private _getNativePropsInfo(): JSX.Element | undefined {
     if (this.props.allowNativeProps) {
-      let elementString: string | string[] | JSX.Element = this.props.nativePropsElement || 'div',
-        componentString: JSX.Element | undefined;
+      let elementString: string | string[] | JSX.Element = this.props.nativePropsElement || 'div';
+      let componentString: JSX.Element | undefined;
       if (typeof elementString === 'object' && elementString.length > 1) {
         const elementArr = elementString.slice();
         for (let _i = 0; _i < elementArr.length; _i++) {
@@ -196,11 +242,18 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   private _getDosAndDonts(): JSX.Element | undefined {
     let dosAndDonts: Array<JSX.Element> = [];
-
     if (this.props.bestPractices) {
       dosAndDonts.push(
         <div className='ComponentPage-usage' id='BestPractices' key='best-practices'>
-          <h2 className='ComponentPage-subHeading'>Best Practices</h2>
+          <div className='ComponentPage-usageHeader'>
+            <h2 className='ComponentPage-subHeading'>Best Practices</h2>
+            <EditSection
+              title={ this.props.title }
+              section={ ComponentPageSection.BestPractices }
+              sectionContent={ this.props.bestPractices }
+              url={ this._getURL('BestPractices', this.props.editBestPracticesUrl) }
+            />
+          </div>
           { this.props.bestPractices }
         </div>
       );
@@ -210,11 +263,29 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       dosAndDonts.push(
         <div className='ComponentPage-doSections' key='do-sections'>
           <div className='ComponentPage-doSection'>
-            <h3>Do</h3>
+            <div className='ComponentPage-doSectionHeader'>
+              <h3>Do</h3>
+              <EditSection
+                title={ this.props.title }
+                section={ ComponentPageSection.Dos }
+                sectionContent={ this.props.dos }
+                url={ this._getURL('Dos', this.props.editDosUrl) }
+              />
+            </div>
+            <hr className='ComponentPage-doSectionLine' />
             { this.props.dos }
           </div>
           <div className='ComponentPage-doSection ComponentPage-doSection--dont'>
-            <h3>Don&rsquo;t</h3>
+            <div className='ComponentPage-doSectionHeader'>
+              <h3>Don&rsquo;t</h3>
+              <EditSection
+                title={ this.props.title }
+                section={ ComponentPageSection.Donts }
+                sectionContent={ this.props.donts }
+                url={ this._getURL('Donts', this.props.editDontsUrl) }
+              />
+            </div>
+            <hr className='ComponentPage-doSectionLine' />
             { this.props.donts }
           </div>
         </div>
@@ -286,5 +357,24 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
 
     return undefined;
+  }
+
+  private _getURL(section: string, url?: string): string {
+    if (url) {
+      return url;
+    }
+    const componentName = (this.props.title || this.props.componentName).replace(/\s/g, '');
+    // Generate edit URL from componentURL
+    let mdUrl;
+    if (this.props.componentUrl) {
+      mdUrl = `${this.props.componentUrl}/docs/${componentName}${section}.md`;
+      // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
+      if (mdUrl!.includes('/tree/')) {
+        mdUrl = mdUrl!.replace('/tree/', '/edit/');
+      } else if (mdUrl!.includes('/blob/')) {
+        mdUrl = mdUrl!.replace('/blob/', '/edit/');
+      }
+    }
+    return mdUrl;
   }
 }

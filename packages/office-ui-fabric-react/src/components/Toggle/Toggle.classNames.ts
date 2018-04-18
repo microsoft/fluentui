@@ -45,11 +45,12 @@ export const getClassNames = memoizeFunction((
       checked && 'is-checked',
       !disabled && 'is-enabled',
       disabled && 'is-disabled',
-      className,
+      theme.fonts.medium,
       {
         marginBottom: '8px'
       },
-      styles.root
+      className,
+      styles.root,
     ],
 
     label: [

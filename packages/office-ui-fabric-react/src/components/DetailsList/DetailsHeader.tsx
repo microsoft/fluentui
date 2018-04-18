@@ -253,7 +253,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           className={ css('ms-DetailsHeader-cellTitle', styles.cellTitle) }
                           data-is-focusable={ column.columnActionsMode !== ColumnActionsMode.disabled }
                           role={ column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined }
-                          aria-describedby={ `${this._id}-${column.key}-tooltip` }
+                          aria-describedby={ this.props.onRenderColumnHeaderTooltip ? `${this._id}-${column.key}-tooltip` : undefined }
                           onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                           onClick={ this._onColumnClick.bind(this, column) }
                           aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }

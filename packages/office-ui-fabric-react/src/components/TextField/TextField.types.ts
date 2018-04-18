@@ -26,10 +26,10 @@ export interface ITextField {
   setSelectionRange: (start: number, end: number) => void;
 
   /** Gets the selection start of the text field. Returns -1 if there is no selection. */
-  selectionStart: number;
+  selectionStart: number | null;
 
   /** Gets the selection end of the text field. Returns -1 if there is no selection. */
-  selectionEnd: number;
+  selectionEnd: number | null;
 }
 
 /**

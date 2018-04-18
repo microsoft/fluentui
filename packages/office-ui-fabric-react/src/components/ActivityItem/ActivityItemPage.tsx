@@ -3,7 +3,8 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  PageMarkdown
 } from '@uifabric/example-app-base';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ActivityItemStatus } from './ActivityItem.checklist';
@@ -21,6 +22,7 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
       <ComponentPage
         title='ActivityItem'
         componentName='ActivityItem'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem'
         exampleCards={
           <div>
             <ExampleCard title='Activity Items with Icons' code={ ActivityItemBasicExampleCode }>
@@ -42,34 +44,27 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
           />
         }
         overview={
-          <div>
-            <p>
-              ActivityItems represent individual units of a user's activity, such as making a comment, mentioning someone with an @mention, editing a document, or moving a file.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>Use a list of multiple ActivityItems to indicate a history of events relating to a single file, folder, user, or other entity. Alternatively, use a single ActivityItem to indicate the most recent event on an entity.</li>
-              <li>Group multiple similar events occuring near the same time into single ActivityItems.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Use ActivityItems to render large amounts of body text, they are meant to be concise descriptions of a specific activity.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ActivityItemStatus}
+            { ...ActivityItemStatus }
           />
         }
       />

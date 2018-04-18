@@ -34,6 +34,7 @@ $DropDown-item-height: 32px;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
+  height: $DropDown-height;
   position: relative;
   outline: 0;
   user-select: none;
@@ -77,6 +78,7 @@ $DropDown-item-height: 32px;
       @include highContrastItemAndTitleState();
     }
     .caretDown {
+      color: HighlightText;
       @include highContrastAdjust();
     }
     .titleIsError {
@@ -148,7 +150,7 @@ $DropDown-item-height: 32px;
   border: 1px solid $ms-color-neutralTertiary;
   cursor: pointer;
   display: block;
-  height: $DropDown-height;
+  height: 100%;
   line-height: $DropDown-height - 2px; // height minus the border
   @include padding(0, $DropDown-height, 0, 12px);
   position: relative;
@@ -171,7 +173,7 @@ $DropDown-item-height: 32px;
   }
 }
 
-.callout {
+.callout.callout {
   box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid $ms-color-neutralLight;
 }
@@ -194,10 +196,13 @@ $DropDown-item-height: 32px;
   cursor: pointer;
   display: block;
   width: 100%;
-  height: auto;
   min-height: $DropDown-item-height;
   line-height: 20px;
-  padding: 4px 16px;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  height: auto !important;
+  padding: 4px 16px !important;
+
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
