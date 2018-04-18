@@ -3,7 +3,7 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IRenderFunction, KeyCodes } from '../../Utilities';
+import { IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 
 export interface IComboBox {

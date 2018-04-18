@@ -751,7 +751,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index to set (or the index to set from if a search direction is provided)
    * @param searchDirection - the direction to search along the options from the given index
    */
-  private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none, submitPendingValueEvent?: any) {
+  private _setSelectedIndex(index: number, submitPendingValueEvent: Event, searchDirection: SearchDirection = SearchDirection.none) {
     const { onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
@@ -915,7 +915,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               currentPendingValue.length + (this._autofill.value.selectionEnd! - this._autofill.value.selectionStart!) === pendingOptionText.length) ||
             (this._autofill.value && this._autofill.value.inputElement && this._autofill.value.inputElement.value.toLocaleLowerCase() === pendingOptionText)
           )) {
-          this._setSelectedIndex(currentPendingValueValidIndex, SearchDirection.none, submitPendingValueEvent);
+          this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent, SearchDirection.none);
           this._clearPendingInfo();
           return;
         }
@@ -941,10 +941,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
       // to be able to update state
-      this._setSelectedIndex(currentPendingValueValidIndex, SearchDirection.none, submitPendingValueEvent);
+      this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent, SearchDirection.none);
     } else if (currentPendingValueValidIndexOnHover >= 0) {
       // If all else failed and we were hovering over an item, select it
-      this._setSelectedIndex(currentPendingValueValidIndexOnHover, SearchDirection.none, submitPendingValueEvent);
+      this._setSelectedIndex(currentPendingValueValidIndexOnHover, submitPendingValueEvent, SearchDirection.none);
     }
 
     // Finally, clear the pending info
@@ -1243,8 +1243,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index of the item that was clicked
    */
   private _onItemClick(index: number | undefined): (ev: any) => void {
-    return (ev: React.MouseEvent<any> | React.FormEvent<any>): void => {
-      this._setSelectedIndex(index as number, undefined, ev);
+    return (ev: any): void => {
+      this._setSelectedIndex(index as number, ev);
       if (!this.props.multiSelect) {
         // only close the callout when it's in single-select mode
         this.setState({
