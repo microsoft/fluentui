@@ -129,6 +129,10 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
     :global(.ms-Label) {
       color: $radioButton-text-hover-color;
+
+      @include high-contrast {
+        color: Highlight;
+      }
     }
   }
 
@@ -308,6 +312,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
         @include high-contrast {
           border-color: Highlight;
+          color: Highlight;
         }
 
         &::before {
