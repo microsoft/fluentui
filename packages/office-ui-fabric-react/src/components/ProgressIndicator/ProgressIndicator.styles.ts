@@ -6,6 +6,7 @@ import {
   keyframes,
   noWrap,
 } from '../../Styling';
+import { getRTL } from '../../Utilities';
 import {
   IProgressIndicatorStyleProps,
   IProgressIndicatorStyles,
@@ -14,6 +15,7 @@ import {
 export const getStyles = (
   props: IProgressIndicatorStyleProps
 ): IProgressIndicatorStyles => {
+  const isRTL = getRTL();
   const {
     className,
     indeterminate,
@@ -36,13 +38,14 @@ export const getStyles = (
       left: '100%',
     }
   });
-
-  const indeterminateStyles: IStyle = {
-    position: 'absolute',
-    minWidth: '33%',
-    background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
-    animation: `${indeterminateProgress} 3s infinite`,
-  };
+  const indeterminateProgressRTL = keyframes({
+    '100%': {
+      right: '-30%',
+    },
+    '0%': {
+      right: '100%',
+    }
+  });
 
   const smoothTransitionStyles: IStyle = {
     transitionProperty: 'width',
@@ -63,17 +66,17 @@ export const getStyles = (
       'ms-ProgressIndicator-itemName',
       noWrap,
       {
-        color: palette.neutralPrimary,
+        color: semanticColors.bodyText,
         fontSize: FontSizes.medium,
-        paddingTop: marginBetweenText / 2,
-        lineHeight: textHeight + 2,
+        paddingTop: `${marginBetweenText / 2}px`,
+        lineHeight: `${textHeight + 2}px`,
       }
     ],
 
     itemDescription: [
       'ms-ProgressIndicator-itemDescription',
       {
-        color: palette.neutralSecondary,
+        color: semanticColors.bodySubtext,
         fontSize: FontSizes.xSmall,
         lineHeight: textHeight,
       }
@@ -85,7 +88,7 @@ export const getStyles = (
         position: 'relative',
         overflow: 'hidden',
         height: `${barHeight}px`,
-        padding: `${marginBetweenText} 0`,
+        padding: `${marginBetweenText}px 0`,
       }
     ],
 
@@ -120,7 +123,20 @@ export const getStyles = (
           }
         }
       },
-      indeterminate && indeterminateStyles,
+      indeterminate && [
+        {
+          position: 'absolute',
+          minWidth: '33%',
+          background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
+        },
+        isRTL
+          ? {
+            animation: `${indeterminateProgressRTL} 3s infinite`,
+          } :
+          {
+            animation: `${indeterminateProgress} 3s infinite`,
+          }
+      ],
       smoothTransition && smoothTransitionStyles,
     ],
   });
