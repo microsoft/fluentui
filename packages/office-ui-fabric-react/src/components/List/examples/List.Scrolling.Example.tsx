@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   css
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
@@ -95,12 +94,10 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     return h;
   }
 
-  @autobind
   private _onChangeText(value: any): void {
     this._scroll(parseInt(value, 10) || 0, this.state.scrollToMode);
   }
 
-  @autobind
   private _onDropdownChanged(option: IDropdownOption) {
     let scrollMode = this.state.scrollToMode;
     switch (option.key) {
