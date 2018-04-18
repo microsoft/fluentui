@@ -22,10 +22,10 @@ export function createRef<T>(): RefObject<T> {
 
   // This getter is here to support the deprecated value prop on the refObject.
   Object.defineProperty(refObject, 'value', {
-    get() {
+    get(): T | null {
       return refObject.current;
     }
-  })
+  });
 
   refObject.current = null;
 
