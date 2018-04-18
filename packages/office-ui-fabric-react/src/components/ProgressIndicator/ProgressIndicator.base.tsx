@@ -40,7 +40,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
   public render() {
     const {
       ariaValueText,
-      barHeight = 2,
+      barHeight,
       className,
       description,
       getStyles,
