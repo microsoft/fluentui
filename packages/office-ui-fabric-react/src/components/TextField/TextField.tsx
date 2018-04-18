@@ -136,7 +136,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   public render() {
     const {
       className,
-      label,
       description,
       disabled,
       iconClass,
@@ -171,7 +170,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         <div className={ css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '') }>
-          { label && onRenderLabel(this.props, this._onRenderLabel) }
+          { onRenderLabel(this.props, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css('ms-TextField-prefix', styles.fieldPrefixSuffix) }>
@@ -194,7 +193,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
-            { description && onRenderDescription(this.props, this._onRenderDescription) }
+            { onRenderDescription(this.props, this._onRenderDescription) }
             { errorMessage &&
               <div aria-live='assertive'>
                 <DelayedRender>
@@ -295,12 +294,18 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private _onRenderLabel = (props: ITextFieldProps): JSX.Element => {
-    return (<Label htmlFor={ this._id }>{ props.label }</Label>);
+  private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
+    if (props.label) {
+      return (<Label htmlFor={ this._id }>{ props.label }</Label>);
+    }
+    return null;
   }
 
-  private _onRenderDescription = (props: ITextFieldProps): JSX.Element => {
-    return (<span className={ css('ms-TextField-description', styles.description) }>{ props.description }</span>);
+  private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
+    if (props.description) {
+      return (<span className={ css('ms-TextField-description', styles.description) }>{ props.description }</span>);
+    }
+    return null;
   }
 
   // @deprecated
