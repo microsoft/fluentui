@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.31.3",
+      "tag": "@uifabric/experiments_v5.31.3",
+      "date": "Wed, 18 Apr 2018 10:15:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7dabb13e55f671e3c37df88140e66dbee076e2f1",
+            "comment": "Experiments: NavPage bad imports fixed."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.2 <6.0.0` to `>=5.82.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.0 <6.0.0` to `>=5.10.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.2",
       "tag": "@uifabric/experiments_v5.31.2",
       "date": "Tue, 17 Apr 2018 18:47:11 GMT",

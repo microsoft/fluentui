@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Convert documentation to markdown for HIG.",
+      "comment": "ChoiceGroup: Style polish for focus, high contrast focus, and high contrast hover.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-jojanz@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }
