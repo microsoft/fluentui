@@ -17,11 +17,7 @@ import {
 export const getStyles = (
   props: IPersonaPresenceStyleProps
 ): IPersonaPresenceStyles => {
-  const {
-    className,
-    theme,
-  } = props;
-
+  const { theme } = props;
   const { semanticColors } = theme;
 
   const size = sizeBoolean(props.size as PersonaSize);

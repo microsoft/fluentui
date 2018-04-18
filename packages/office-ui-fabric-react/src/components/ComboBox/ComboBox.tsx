@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps, IComboBoxOptionStyles } from './ComboBox.types';
+import { IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -297,7 +297,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       theme,
       title
     } = this.props;
-    const { isOpen, selectedIndices, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     const divProps = getNativeProps(this.props, divProperties);
@@ -643,7 +643,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValue,
       currentPendingValueValidIndex,
       currentOptions,
-      selectedIndices
     } = this.state;
 
     if (this.props.autoComplete === 'on') {
@@ -1158,7 +1157,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover,
       currentPendingValueValidIndex,
       currentPendingValue,
-      selectedIndices
     } = this.state;
 
     return (
@@ -1197,7 +1195,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       currentPendingValueValidIndex,
       currentPendingValue,
-      selectedIndices
     } = this.state;
 
     if (onScrollToItem) {
@@ -1299,7 +1296,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _resetSelectedIndex() {
     const {
-      selectedIndices,
       currentOptions
     } = this.state;
     if (this._autofill.value) {
@@ -1367,7 +1363,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
     const {
-      isOpen,
       currentOptions
     } = this.state;
 
@@ -1458,8 +1453,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       isOpen,
       currentOptions,
-      currentPendingValueValidIndexOnHover,
-      selectedIndices
+      currentPendingValueValidIndexOnHover
     } = this.state;
 
     if (disabled) {

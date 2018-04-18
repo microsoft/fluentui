@@ -6,7 +6,6 @@ import {
   getNativeProps,
   divProperties,
   focusFirstChild,
-  getFirstFocusable,
   elementContains
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
