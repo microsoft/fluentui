@@ -56,7 +56,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _overflowSet = createRef<IOverflowSet>();
   private _resizeGroup = createRef<IResizeGroup>();
-  private _classNames: {[key in keyof ICommandBarStyles]: string };
+  private _classNames: { [key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
     const {
@@ -134,13 +134,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   }
 
   public focus(): void {
-    const { value: overflowSet } = this._overflowSet;
+    const { current: overflowSet } = this._overflowSet;
 
     overflowSet && overflowSet.focus();
   }
 
   public remeasure(): void {
-    this._resizeGroup.value && this._resizeGroup.value.remeasure();
+    this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {

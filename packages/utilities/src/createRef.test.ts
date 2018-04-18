@@ -3,7 +3,7 @@ import { createRef } from './createRef';
 
 describe('createRef', () => {
   it('to have a value prop that is null on creation', () => {
-    expect(createRef().value).toEqual(null);
+    expect(createRef().current).toEqual(null);
   });
 
   it('when called with ReactElement it sets the value to the passed component', () => {
@@ -12,7 +12,7 @@ describe('createRef', () => {
 
     refObject(component);
 
-    expect(refObject.value).toBe(component);
+    expect(refObject.current).toBe(component);
   });
 
   it('when called with HTMLElement it sets the value to the passed element', () => {
@@ -21,6 +21,6 @@ describe('createRef', () => {
 
     refObject(component);
 
-    expect(refObject.value).toBe(component);
+    expect(refObject.current).toBe(component);
   });
 });

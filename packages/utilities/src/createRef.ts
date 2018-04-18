@@ -1,13 +1,13 @@
 export type RefObject<T> = {
   (component: T | null): void;
-  value: T | null;
+  current: T | null;
 };
 
 export function createRef<T>(): RefObject<T> {
   const refObject = ((element: T | null): void => {
-    refObject.value = element;
+    refObject.current = element;
   }) as RefObject<T>;
-  refObject.value = null;
+  refObject.current = null;
 
   return refObject;
 }

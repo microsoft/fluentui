@@ -42,8 +42,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
    * Sets focus to the first breadcrumb link.
    */
   public focus(): void {
-    if (this.focusZone.value) {
-      this.focusZone.value.focus();
+    if (this.focusZone.current) {
+      this.focusZone.current.focus();
     }
   }
 

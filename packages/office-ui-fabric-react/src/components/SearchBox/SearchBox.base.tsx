@@ -115,8 +115,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
    * Sets focus to the search box input field
    */
   public focus() {
-    if (this._inputElement.value) {
-      this._inputElement.value.focus();
+    if (this._inputElement.current) {
+      this._inputElement.current.focus();
     }
   }
 
@@ -147,7 +147,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       hasFocus: true
     });
 
-    this._events.on(this._rootElement.value, 'blur', this._onBlur, true);
+    this._events.on(this._rootElement.current, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
@@ -197,7 +197,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    this._events.off(this._rootElement.value, 'blur');
+    this._events.off(this._rootElement.current, 'blur');
     this.setState({
       hasFocus: false
     });

@@ -100,7 +100,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   private _getTargetElement(): HTMLElement | undefined {
-    if (!this._tooltipHost.value) {
+    if (!this._tooltipHost.current) {
       return undefined;
     }
 
@@ -111,14 +111,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.value.parentElement!;
+          return this._tooltipHost.current.parentElement!;
 
         case TooltipOverflowMode.Self:
-          return this._tooltipHost.value;
+          return this._tooltipHost.current;
       }
     }
 
-    return this._tooltipHost.value;
+    return this._tooltipHost.current;
   }
 
   // Show Tooltip

@@ -254,7 +254,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   protected _dismissOnLostFocus(ev: Event) {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement.value && !elementContains(this._hostElement.value, target);
+    const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -267,9 +267,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   protected _setInitialFocus = (): void => {
-    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.value!));
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
     }
   }
 
@@ -327,8 +327,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _updatePosition() {
     const { positions } = this.state;
-    const hostElement: HTMLElement | null = this._hostElement.value;
-    const calloutElement: HTMLElement | null = this._calloutElement.value;
+    const hostElement: HTMLElement | null = this._hostElement.current;
+    const calloutElement: HTMLElement | null = this._calloutElement.current;
 
     if (hostElement && calloutElement) {
       let currentProps: IPositionProps | undefined;
@@ -447,9 +447,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _setHeightOffsetEveryFrame(): void {
-    if (this._calloutElement.value && this.props.finalHeight) {
+    if (this._calloutElement.current && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem = this._calloutElement.value && this._calloutElement.value.lastChild as HTMLElement;
+        const calloutMainElem = this._calloutElement.current && this._calloutElement.current.lastChild as HTMLElement;
 
         if (!calloutMainElem) {
           return;

@@ -53,7 +53,7 @@ describe('DetailsHeader', () => {
 
     const rootElement = wrapper.getDOMNode();
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
-    const header: any = headerRef.value;
+    const header: any = headerRef.current;
 
     // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
     EventGroup.raise(

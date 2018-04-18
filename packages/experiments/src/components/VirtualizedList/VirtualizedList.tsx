@@ -212,7 +212,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   private _onFocus(ev: React.FocusEvent<HTMLDivElement>): void {
     let target = ev.target as HTMLElement;
 
-    while (target !== this._root.value) {
+    while (target !== this._root.current) {
       let indexString = target.getAttribute('data-selection-index');
 
       if (indexString) {

@@ -138,7 +138,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         return target as HTMLElement;
 
       default:
-        return this._hoverCard.value || undefined;
+        return this._hoverCard.current || undefined;
     }
   }
 
