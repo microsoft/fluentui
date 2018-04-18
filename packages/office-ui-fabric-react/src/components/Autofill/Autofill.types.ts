@@ -7,7 +7,7 @@ export interface IAutofill {
    * The current index of the cursor in the input area. Returns -1 if the input element
    * is not ready.
    */
-  cursorLocation: number;
+  cursorLocation: number | null;
   /**
    * A boolean for whether or not there is a value selected in the input area.
    */
@@ -20,12 +20,12 @@ export interface IAutofill {
    * The current index of where the selection starts. Returns -1 if the input element
    * is not ready.
    */
-  selectionStart: number;
+  selectionStart: number | null;
   /**
    * the current index of where the selection ends. Returns -1 if the input element
    * is not ready.
    */
-  selectionEnd: number;
+  selectionEnd: number | null;
   /**
    * The current input element.
    */

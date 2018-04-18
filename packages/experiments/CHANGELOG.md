@@ -1,6 +1,34 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Apr 2018 10:15:54 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Apr 2018 10:15:04 GMT and should not be manually modified.
+
+## 5.31.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Experiments: NavPage bad imports fixed.
+
+## 5.31.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- Fix improper imports from index files
+
+## 5.31.1
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Patches
+
+- prefer const, instead of let, for extendedpicker, floatingpicker, and selecteditemlists
+- M365Nav component as an experiment
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+- Shimmer: Changes casing on enums in Shimmer.types
+- Experiments: fixing imports for example pages for better user understanding.
+- Shimmer: adding two more examples as per designers request.
+- Shimmer: imports audited
 
 ## 5.31.0
 Thu, 12 Apr 2018 10:15:54 GMT

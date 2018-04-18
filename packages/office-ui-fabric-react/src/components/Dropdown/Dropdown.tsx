@@ -170,9 +170,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               aria-live={ disabled || isOpen ? 'off' : 'assertive' }
               aria-label={ ariaLabel }
               aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
-              aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : null }
+              aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : undefined }
               aria-disabled={ disabled }
-              aria-owns={ isOpen ? id + '-list' : null }
+              aria-owns={ isOpen ? id + '-list' : undefined }
               { ...divProps }
               className={ css(
                 'ms-Dropdown',
@@ -212,9 +212,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             </div>
           ) }
         </KeytipData>
-        { isOpen && (
-          onRenderContainer(this.props, this._onRenderContainer)
-        ) }
+        {
+          isOpen && (
+            onRenderContainer(this.props, this._onRenderContainer)
+          )
+        }
         {
           errorMessage &&
           <div
@@ -223,7 +225,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             { errorMessage }
           </div>
         }
-      </div>
+      </div >
     );
   }
 

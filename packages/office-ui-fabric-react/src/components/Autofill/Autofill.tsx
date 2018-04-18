@@ -33,7 +33,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     };
   }
 
-  public get cursorLocation(): number {
+  public get cursorLocation(): number | null {
     if (this._inputElement.value) {
       const inputElement = this._inputElement.value;
       if (inputElement.selectionDirection !== SELECTION_FORWARD) {
@@ -54,11 +54,11 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return this._value;
   }
 
-  public get selectionStart(): number {
+  public get selectionStart(): number | null {
     return this._inputElement.value ? this._inputElement.value.selectionStart : -1;
   }
 
-  public get selectionEnd(): number {
+  public get selectionEnd(): number | null {
     return this._inputElement.value ? this._inputElement.value.selectionEnd : -1;
   }
 

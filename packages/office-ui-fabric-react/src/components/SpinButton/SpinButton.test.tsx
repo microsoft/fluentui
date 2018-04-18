@@ -9,7 +9,7 @@ import { KeyCodes } from '../../Utilities';
 describe('SpinButton', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     return renderedDOM as HTMLElement;
   }
 
@@ -452,7 +452,8 @@ describe('SpinButton', () => {
     expect(inputDOM.value).toEqual(String(errorMessage));
     expect(inputDOM.getAttribute('aria-valuemin')).toEqual(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).toEqual(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).toEqual(String(errorMessage));
+    expect(inputDOM.getAttribute('aria-valuenow')).toBeFalsy();
+    expect(inputDOM.getAttribute('aria-valuetext')).toEqual(errorMessage);
   });
 
   it('should have correct value after increment and using defaultValue', () => {

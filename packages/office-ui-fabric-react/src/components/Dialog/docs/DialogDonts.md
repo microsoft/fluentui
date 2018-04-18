@@ -1,0 +1,7 @@
+- Don’t overuse Dialogs. To some extent they can be perceived as interrupting workflow, and too many can be a bad user experience.
+- Avoid "Are you sure?" or confirmation Dialogs unless the user is making an irreversible or destructive choice.
+- Do not use a blocking Dialog unless absolutely necessary because they are very disruptive.
+- Don’t have long sentences or complicated choices.
+- Avoid generic button labels like "Ok" if you can be more specific about the action a user is about to complete.
+- Don't dismiss the Dialog if underlying problem is not fixed. Don't put the user back into a broken/error state.
+- Don't provide the user with more than 3 buttons.

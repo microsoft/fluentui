@@ -6,7 +6,7 @@ import {
   ITilesGridItem,
   TilesGridMode,
   ITileSize
-} from '../../TilesList';
+} from '@uifabric/experiments/lib/TilesList';
 
 export interface IBasicItem {
   color: string;

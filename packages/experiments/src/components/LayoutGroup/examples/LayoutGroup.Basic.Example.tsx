@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { LayoutGroup } from '../LayoutGroup';
+import { LayoutGroup } from '@uifabric/experiments/lib/LayoutGroup';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';

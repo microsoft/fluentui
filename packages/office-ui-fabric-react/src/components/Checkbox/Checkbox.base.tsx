@@ -28,7 +28,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     boxSide: 'start'
   };
 
-  private _checkBox = createRef<HTMLInputElement>();
+  private _checkBox = createRef<HTMLElement>();
   private _id: string;
   private _classNames: ICheckboxClassNames;
 
@@ -146,7 +146,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
+  private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onFocus) {
@@ -154,7 +154,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+  private _onBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onBlur) {
@@ -162,7 +162,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  private _onClick = (ev: React.FormEvent<HTMLButtonElement>): void => {
+  private _onClick = (ev: React.FormEvent<HTMLElement>): void => {
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
     ev.preventDefault();

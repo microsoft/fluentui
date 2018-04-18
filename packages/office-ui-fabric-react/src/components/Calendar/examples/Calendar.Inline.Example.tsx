@@ -62,8 +62,8 @@ const DayPickerStrings = {
 };
 
 export interface ICalendarInlineExampleState {
-  selectedDate: Date | null;
-  selectedDateRange: Date[] | null;
+  selectedDate?: Date | null;
+  selectedDateRange?: Date[] | null;
 }
 
 export interface ICalendarInlineExampleProps {
@@ -178,7 +178,10 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       }
 
       const newSelectedDate = addDays(subtractFrom, -daysToSubtract);
-      return prevState.selectedDate = newSelectedDate;
+
+      return {
+        selectedDate: newSelectedDate
+      };
     });
   }
 
@@ -187,15 +190,19 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       const selectedDate = prevState.selectedDate || new Date();
       const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
       const newSelectedDate = addDays(dateRangeArray.pop()!, 1);
-      return prevState.selectedDate = newSelectedDate;
+
+      return {
+        selectedDate: newSelectedDate
+      };
     });
   }
 
   private _onSelectDate(date: Date, dateRangeArray: Date[]) {
     this.setState((prevState: ICalendarInlineExampleState) => {
-      prevState.selectedDate = date;
-      prevState.selectedDateRange = dateRangeArray;
-      return prevState;
+      return {
+        selectedDate: date,
+        selectedDateRange: dateRangeArray
+      };
     });
   }
 }
