@@ -38,25 +38,19 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
         onKeyDown={ actionable ? this._onKeyDown : undefined }
         onClick={ actionable ? this._onClick : undefined }
         className={
-          css(
-            'ms-ChicletCard',
-            { ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable }
-          )
-        }
+          css('ms-ChicletCard', styles.chicletIsActionable) }
       >
         <div
           className={ css('ms-ChicletCardPreview', styles.preview) }
         >
-          <div className={ css('ms-ChicletCardPreview-iconContainer', styles.previewIconContainer) } >
-            { image ?
-              preview :
-              (<Image
-                src={ TestImages.documentPreviewTwo }
-                role='presentation'
-                alt=''
-              />)
-            }
-          </div>
+          { image ?
+            preview :
+            (<Image
+              src={ TestImages.documentPreviewTwo }
+              role='presentation'
+              alt=''
+            />)
+          }
         </div>
         <div
           className={ css('ms-ChicletCardInfo', styles.info) }
