@@ -151,8 +151,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     ) as React.ReactElement<{}>;
   }
   public focus(): void {
-    if (this._thumb.value) {
-      this._thumb.value.focus();
+    if (this._thumb.current) {
+      this._thumb.current.focus();
     }
   }
 
@@ -185,13 +185,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
-    if (!this._sliderLine.value) {
+    if (!this._sliderLine.current) {
       return;
     }
 
     const { max, min, step } = this.props;
     const steps: number = (max! - min!) / step!;
-    const sliderPositionRect: ClientRect = this._sliderLine.value.getBoundingClientRect();
+    const sliderPositionRect: ClientRect = this._sliderLine.current.getBoundingClientRect();
     const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;

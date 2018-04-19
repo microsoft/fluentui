@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Spinner } from './Spinner';
-import { ITheme, IStyle, IRawStyle } from '../../Styling';
+import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface ISpinner {

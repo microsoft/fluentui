@@ -1,6 +1,5 @@
 import {
   IStyle,
-  IRawStyle,
   keyframes,
   PulsingBeaconAnimationStyles,
   ITheme,
