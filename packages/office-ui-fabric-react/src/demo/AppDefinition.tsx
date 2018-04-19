@@ -126,8 +126,8 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
-          key: 'FloatingPeoplePickerPage',
-          name: 'FloatingPeoplePickerPage',
+          key: 'FloatingPeoplePicker',
+          name: 'FloatingPeoplePicker',
           url: '#examples/floatingpeoplepicker'
         },
         {
