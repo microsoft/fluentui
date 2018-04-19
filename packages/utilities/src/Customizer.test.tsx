@@ -90,5 +90,4 @@ describe('Customizer', () => {
       </Customizer >
     )).toEqual('<div>fieldfield2field3</div>');
   });
-
 });

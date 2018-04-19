@@ -3,6 +3,7 @@ import {
   IPalette,
   ISemanticColors,
   ITheme,
+  IThemeFlags,
   IPartialTheme
 } from '../interfaces/index';
 import {
@@ -13,11 +14,16 @@ import {
 } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
+const defaultThemeFlags: IThemeFlags = {
+  noGlobalClassNames: false,
+};
+
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
-  isInverted: false
+  isInverted: false,
+  flags: defaultThemeFlags,
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -117,8 +123,12 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       ...theme.fonts
     },
     semanticColors: newSemanticColors,
-    isInverted: !!theme.isInverted
-  } as ITheme;
+    isInverted: !!theme.isInverted,
+    flags: {
+      ...defaultThemeFlags,
+      ...theme.flags,
+    }
+  };
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.

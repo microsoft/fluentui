@@ -5,6 +5,7 @@ export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts
 export { getFocusStyle, focusClear } from './getFocusStyle';
 export { hiddenContentStyle } from './hiddenContentStyle';
 export { PulsingBeaconAnimationStyles } from './PulsingBeaconAnimationStyles';
+export { globalClassNamesWhenEnabled } from './globalClassNamesWhenEnabled';
 export {
   ThemeSettingName,
   getTheme,

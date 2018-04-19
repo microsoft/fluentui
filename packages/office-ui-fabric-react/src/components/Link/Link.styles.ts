@@ -1,5 +1,6 @@
 import {
-  getFocusStyle
+  getFocusStyle,
+  globalClassNamesWhenEnabled
 } from '../../Styling';
 import {
   ILinkStyleProps,
@@ -12,7 +13,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
 
   return {
     root: [
-      'ms-Link',
+      globalClassNamesWhenEnabled(theme, ['ms-Link']),
       className,
       getFocusStyle(theme),
       {

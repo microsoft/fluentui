@@ -1,5 +1,8 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom/server';
 import * as renderer from 'react-test-renderer';
+import { Customizer } from '../../Utilities';
+import { createTheme } from '../../Styling'
 
 import { Link } from './Link';
 
@@ -29,4 +32,14 @@ describe('Link', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('can have the global styles for Link component be disabled', () => {
+    const NoClassNamesTheme = createTheme({ flags: { noGlobalClassNames: true } });
+
+    expect(ReactDOM.renderToStaticMarkup(
+      <Customizer settings={ { theme: NoClassNamesTheme } }>
+        <Link href="helloworld.html">My Link</Link>
+      </Customizer >
+    )).toEqual('<a href=\"helloworld.html\" class=\"root-33\">My Link</a>');
+  })
 });

@@ -2,6 +2,7 @@ import {
   IPalette,
   ISemanticColors,
   ITheme,
+  IThemeFlags,
   IPartialTheme
 } from '@uifabric/styling/lib/index';
 import { createTheme } from '@uifabric/styling/lib/index';
@@ -9,12 +10,14 @@ import { createTheme } from '@uifabric/styling/lib/index';
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
   partialPalette: Partial<IPalette>,
-  partialSemantic: Partial<ISemanticColors>): ITheme {
+  partialSemantic: Partial<ISemanticColors>,
+  partialFlags: Partial<IThemeFlags>): ITheme {
   return createTheme({
     ...originalTheme,
     ...{
       palette: { ...originalTheme.palette, ...partialPalette },
-      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
+      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic },
+      flags: { ...partialFlags }
     }
   });
 }
@@ -67,7 +70,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyBackground: p.neutralLighter
   };
 
-  return makeThemeFromPartials(theme, partialPalette, partialSemantic);
+  return makeThemeFromPartials(theme, partialPalette, partialSemantic, partialFlags);
 }
 
 /**
