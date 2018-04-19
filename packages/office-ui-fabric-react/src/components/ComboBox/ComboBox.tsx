@@ -883,7 +883,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Submit a pending value if there is one
    */
-  private _submitPendingValue(submitPendingValueEvent: any) {
+  private _submitPendingValue(submitPendingValueEvent: Event) {
     const {
       onChanged,
       allowFreeform,
