@@ -130,12 +130,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     const { formatDate, value } = props;
 
-    this.state = {
-      selectedDate: value || undefined,
-      formattedDate: (formatDate && value) ? formatDate(value) : '',
-      isDatePickerShown: false,
-      errorMessage: undefined
-    };
+    this.state = this._getDefaultState();
 
     this._preventFocusOpeningPicker = false;
   }
@@ -282,12 +277,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public reset(): void {
-    this.setState({
-      selectedDate: this.props.value || undefined,
-      formattedDate: (this.props.formatDate && this.props.value) ? formatDate(this.props.value) : '',
-      isDatePickerShown: false,
-      errorMessage: undefined
-    });
+    this.setState(this._getDefaultState());
   }
 
   private _onSelectDate = (date: Date): void => {
@@ -506,6 +496,15 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         onSelectDate(date);
       }
     }
+  }
+
+  private _getDefaultState(props: IDatePickerProps = this.props): IDatePickerState {
+    return {
+      selectedDate: props.value || undefined,
+      formattedDate: (props.formatDate && props.value) ? props.formatDate(props.value) : '',
+      isDatePickerShown: false,
+      errorMessage: undefined
+    };
   }
 
   private _isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
