@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import { App, AppDefinition } from './AppDefinition';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
