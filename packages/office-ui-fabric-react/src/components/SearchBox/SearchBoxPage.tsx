@@ -10,7 +10,6 @@ import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example'
 import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
 import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
-import { FontClassNames } from '../../Styling';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { SearchBoxStatus } from './SearchBox.checklist';
 

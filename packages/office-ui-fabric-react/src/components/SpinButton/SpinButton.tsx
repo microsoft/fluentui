@@ -202,8 +202,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             type='text'
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
-            aria-valuenow={ !Number.isNaN(Number(value)) ? Number(value) : undefined }
-            aria-valuetext={ Number.isNaN(Number(value)) ? value : undefined }
+            aria-valuenow={ !isNaN(Number(value)) ? Number(value) : undefined }
+            aria-valuetext={ isNaN(Number(value)) ? value : undefined }
             aria-valuemin={ min }
             aria-valuemax={ max }
             onBlur={ this._onBlur }
@@ -263,14 +263,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   public focus(): void {
-    if (this._input.value) {
-      this._input.value.focus();
+    if (this._input.current) {
+      this._input.current.focus();
     }
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
     // We can't set focus on a non-existing element
-    if (!this._input.value) {
+    if (!this._input.current) {
       return;
     }
 
@@ -278,7 +278,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._stop();
     }
 
-    this._input.value.select();
+    this._input.current.select();
 
     this.setState({ isFocused: true });
 

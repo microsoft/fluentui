@@ -4,12 +4,8 @@ import {
   customizable,
   getNativeProps,
   divProperties,
-  createRef,
   classNamesFunction
 } from '../../Utilities';
-import {
-  ITheme,
-} from '../../Styling';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 

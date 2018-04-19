@@ -12,14 +12,14 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
   private _list = createRef<IList>();
 
   public dismissMenu(): void {
-    if (this._comboBox.value) {
-      return this._comboBox.value.dismissMenu();
+    if (this._comboBox.current) {
+      return this._comboBox.current.dismissMenu();
     }
   }
 
   public focus() {
-    if (this._comboBox.value) {
-      this._comboBox.value.focus();
+    if (this._comboBox.current) {
+      this._comboBox.current.focus();
       return true;
     }
 
@@ -55,6 +55,6 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
 
   protected _onScrollToItem = (itemIndex: number): void => {
     // We are using the List component, call scrollToIndex
-    this._list.value && this._list.value.scrollToIndex(itemIndex);
+    this._list.current && this._list.current.scrollToIndex(itemIndex);
   }
 }

@@ -48,5 +48,3 @@ import { List } from 'office-ui-fabric-react/lib/List';
 ## Using an AMD bundler like r.js
 
 If your project relies on AMD modules, they are dropped in the lib-amd folder. You will need to set up your bundler to handle the imports correctly. This may require you to symlink or copy the folder into your pre-bundle location.
-
-</div>

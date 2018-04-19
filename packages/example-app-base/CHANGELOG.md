@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 16 Apr 2018 10:23:25 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+
+## 5.10.2
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.10.1
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Fix code block line-height
 
 ## 5.10.0
 Mon, 16 Apr 2018 10:23:25 GMT

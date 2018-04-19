@@ -139,7 +139,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { scrollablePane } = this.context;
     const { stickyPosition } = this.props;
 
-    if (this.root.value && this.nonStickyContent.value) {
+    if (this.root.current && this.nonStickyContent.current) {
       this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
       let isStickyTop = false;
       let isStickyBottom = false;
@@ -166,8 +166,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getStickyDistanceFromTop = (): number => {
     let distance = 0;
-    if (this.stickyContentTop.value) {
-      distance = this.stickyContentTop.value.offsetTop;
+    if (this.stickyContentTop.current) {
+      distance = this.stickyContentTop.current.offsetTop;
     }
 
     return distance;
@@ -175,8 +175,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getStickyDistanceFromTopForFooter = (container: HTMLElement, footerStickyVisibleContainer: HTMLElement): number => {
     let distance = 0;
-    if (this.stickyContentBottom.value) {
-      distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.value.offsetTop;
+    if (this.stickyContentBottom.current) {
+      distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.current.offsetTop;
     }
 
     return distance;
@@ -184,7 +184,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getNonStickyDistanceFromTop = (container: HTMLElement): number => {
     let distance = 0;
-    let currElem = this.root.value;
+    let currElem = this.root.current;
 
     if (currElem) {
       while (currElem.offsetParent !== container) {
@@ -201,11 +201,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   // Gets background of nearest parent element that has a declared background-color attribute
   private _getBackground(): string | undefined {
-    if (!this.root.value) {
+    if (!this.root.current) {
       return undefined;
     }
 
-    let curr: HTMLElement = this.root.value;
+    let curr: HTMLElement = this.root.current;
 
     while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
       window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {

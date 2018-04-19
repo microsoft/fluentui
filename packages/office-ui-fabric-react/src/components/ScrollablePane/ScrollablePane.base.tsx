@@ -55,19 +55,19 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public get root(): HTMLDivElement | null {
-    return this._root.value;
+    return this._root.current;
   }
 
   public get stickyAbove(): HTMLDivElement | null {
-    return this._stickyAboveRef.value;
+    return this._stickyAboveRef.current;
   }
 
   public get stickyBelow(): HTMLDivElement | null {
-    return this._stickyBelowRef.value;
+    return this._stickyBelowRef.current;
   }
 
   public get contentContainer(): HTMLDivElement | null {
-    return this._contentContainer.value;
+    return this._contentContainer.current;
   }
 
   public getChildContext() {
@@ -206,12 +206,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public sortSticky = (sticky: Sticky): void => {
     if (this.stickyAbove && this.stickyBelow) {
-      if (sticky.canStickyTop && sticky.stickyContentTop.value) {
-        this._addToStickyContainer(sticky, this.stickyAbove, sticky.stickyContentTop.value);
+      if (sticky.canStickyTop && sticky.stickyContentTop.current) {
+        this._addToStickyContainer(sticky, this.stickyAbove, sticky.stickyContentTop.current);
       }
 
-      if (sticky.canStickyBottom && sticky.stickyContentBottom.value) {
-        this._addToStickyContainer(sticky, this.stickyBelow, sticky.stickyContentBottom.value);
+      if (sticky.canStickyBottom && sticky.stickyContentBottom.current) {
+        this._addToStickyContainer(sticky, this.stickyBelow, sticky.stickyContentBottom.current);
       }
     }
   }
@@ -223,11 +223,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     let stickyBottomHeight = 0;
 
     stickyItems.forEach((sticky: Sticky) => {
-      if (sticky.state.isStickyTop && sticky.stickyContentTop.value) {
-        stickyTopHeight += sticky.stickyContentTop.value.offsetHeight;
+      if (sticky.state.isStickyTop && sticky.stickyContentTop.current) {
+        stickyTopHeight += sticky.stickyContentTop.current.offsetHeight;
       }
-      if (sticky.state.isStickyBottom && sticky.stickyContentBottom.value) {
-        stickyBottomHeight += sticky.stickyContentBottom.value.offsetHeight;
+      if (sticky.state.isStickyBottom && sticky.stickyContentBottom.current) {
+        stickyBottomHeight += sticky.stickyContentBottom.current.offsetHeight;
       }
     });
 
@@ -274,7 +274,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         }).sort((a, b) => {
           return a.distanceFromTop - b.distanceFromTop;
         }).filter((item) => {
-          const stickyContent = (stickyContainer === this.stickyAbove) ? item.stickyContentTop.value : item.stickyContentBottom.value;
+          const stickyContent = (stickyContainer === this.stickyAbove) ? item.stickyContentTop.current : item.stickyContentBottom.current;
           if (stickyContent) {
             return stickyChildrenElements.indexOf(stickyContent) > -1;
           }
@@ -289,12 +289,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           }
         }
 
-        // If target element to append before is known, then grab respective stickyContentTop/Bottom value and insert before
+        // If target element to append before is known, then grab respective stickyContentTop/Bottom element and insert before
         let targetContainer: HTMLDivElement | null = null;
         if (targetStickyToAppendBefore) {
           targetContainer = stickyContainer === this.stickyAbove ?
-            targetStickyToAppendBefore.stickyContentTop.value :
-            targetStickyToAppendBefore.stickyContentBottom.value;
+            targetStickyToAppendBefore.stickyContentTop.current :
+            targetStickyToAppendBefore.stickyContentBottom.current;
         }
         stickyContainer.insertBefore(stickyContentToAdd, targetContainer);
       }
@@ -302,11 +302,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   private _removeStickyFromContainers = (sticky: Sticky): void => {
-    if (this.stickyAbove && sticky.stickyContentTop.value) {
-      this.stickyAbove.removeChild(sticky.stickyContentTop.value);
+    if (this.stickyAbove && sticky.stickyContentTop.current) {
+      this.stickyAbove.removeChild(sticky.stickyContentTop.current);
     }
-    if (this.stickyBelow && sticky.stickyContentBottom.value) {
-      this.stickyBelow.removeChild(sticky.stickyContentBottom.value);
+    if (this.stickyBelow && sticky.stickyContentBottom.current) {
+      this.stickyBelow.removeChild(sticky.stickyContentBottom.current);
     }
   }
 
