@@ -1,5 +1,9 @@
-// tslint:disable-next-line no-any
-export const isEqual = (itemA: any, itemB: any): boolean => {
+/**
+ * Checks if the first and second items are the NOT same recursively. Use for checking arrays and objects.
+ * @param itemA First item to compare to second item
+ * @param itemB Second item to compare to first item
+ */
+export const isEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-line no-any
   if (itemA === itemB) {
     return true;
   }
@@ -20,8 +24,7 @@ export const isEqual = (itemA: any, itemB: any): boolean => {
     return false;
   }
   // Compare two items
-  // tslint:disable-next-line no-any
-  const compare = (item1: any, item2: any) => {
+  const compare = (item1: any, item2: any) => {  // tslint:disable-line no-any
 
     // Get the object type
     const itemType = Object.prototype.toString.call(item1);
@@ -73,9 +76,9 @@ export const isEqual = (itemA: any, itemB: any): boolean => {
 };
 
 /**
- * Checks if the first and second array|object are the NOT same recursively. Use for checking arrays and objects.
- * @param itemA First array|object to compare to second array|object
- * @param itemB Second array|object to compare to first array|object
+ * Checks if the first and second items are the NOT same recursively. Use for checking arrays and objects.
+ * @param itemA First item to compare to second item
+ * @param itemB Second item to compare to first item
  */
 export const isNotEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-line no-any
   return !isEqual(itemA, itemB);
