@@ -55,9 +55,21 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   className?: string;
 
   /**
+   * Function to call when the card is clicked or keyboard Enter/Space is pushed.
+   */
+  onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+
+  /**
+   * A URL to navigate to when the card is clicked. If a function has also been provided,
+   * it will be used instead of the URL.
+   */
+  onClickHref?: string;
+
+  /**
    * OpenGraph props.
    */
   title?: string;
+  ogType?: string;
   description?: string;
   image?: string;
   imageSecureUrl?: string;

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import * as Cheerio from 'cheerio';
-import * as HtmlParser from 'htmlparser2';
 import {
-  BaseComponent
+  BaseComponent,
+  css
 } from '../../Utilities';
+import { ChicletCard } from './ChicletCard';
 import { IChicletProps, IChicletCardProps } from './Chiclet.types';
-//import * as stylesImport from './Chiclet.scss';
+import * as stylesImport from './Chiclet.scss';
+const styles: any = stylesImport;
 
 //var fieldMap: { [property: string]: string; } = {};
 
@@ -14,91 +15,80 @@ export class Chiclet extends BaseComponent<IChicletProps, any> {
     const { /*type, className, title, description, image, imageUrl, imageSecureUrl,
       imageWidth, imageHeight, imageType, url,*/ children, url } = this.props;
 
-    var fieldMap: { [property: string]: string } =
-      {
-        "og:title": "title",
-        "og:type": "type",
-        "og:image": "image",
-        "og:image:url": "image", // og:image and og:image:url are identical
-        "og:image:secure_url": "imageSecureUrl",
-        "og:image:width": "imageWidth",
-        "og:image:height": "imageHeight",
-        "og:description": "description",
-        "og:url": "url"
-      };
+    const html: string = `<html>
+        <!-- This is my comment! -->
+        <head>
+          <meta charset=\"utf-8\" >
+          <link rel=\"ferde\" href=\"https://wsjeiocfn.com">
+          <meta property=\"og:title\" content=\"The Rock\" >
+          <meta property=\"og:type\" content=\"video.movie\" >
+          <meta property=\"og:url\" content=\"http://www.imdb.com/title/tt0117500/\" >
+          <meta name=\"og:title\" content=\"The Rock\" >
+          <meta name=\"og:type\" content=\"video.movie\" >
+          <meta name=\"og:url\" content=\"http://www.imdb.com/title/tt0117500/\" >
+        </head>
+        <body>
+        </body>
+      </html>`;
 
-    // const html: string = `
-    //   <!-- This is my comment! -->
-    //   <head>
-    //     <meta charset=\"utf-8\" />
-    //     <link rel=\"ferde\" href=\"https://wsjeiocfn.com">
-    //     <meta property=\"og:title\" content=\"The Rock\" >
-    //     <meta property=\"og:type\" content=\"video.movie\" >
-    //     <meta property=\"og:url\" content=\"http://www.imdb.com/title/tt0117500/\" >
-    //     <meta name=\"og:title\" content=\"The Rock\" >
-    //     <meta name=\"og:type\" content=\"video.movie\" >
-    //     <meta name=\"og:url\" content=\"http://www.imdb.com/title/tt0117500/\" >
-    //   </head>
-    //   <body>
-    //     <html>
-
-    //     </html>
-    //   </body>`;
-
-    let openGraphObject = this.extractMetaTags(url, fieldMap);
+    let openGraphObject = this.extractMetaTags(html);
 
     return (
-      <div>
-        <div>
-          {/* { openGraphObject.title ? (<div>{ "Title: " + openGraphObject.title }</div>) : (null) }
-          { openGraphObject.url ? (<div>{ "Url: " + openGraphObject.url }</div>) : (null) }
-          { openGraphObject.image ? (<div>{ "Image: " + openGraphObject.image }</div>) : (null) }
-          { openGraphObject.description ? (<div>{ "Description: " + openGraphObject.description }</div>) : (null) }
-          { openGraphObject.type ? (<div>{ "Type: " + openGraphObject.type }</div>) : (null) } */}
-        </div>
+      <div className={ css(styles.root) }>
+        <ChicletCard
+          title={ openGraphObject.title }
+          description={ openGraphObject.description }
+          url={ openGraphObject.url }
+          image={ openGraphObject.image }
+          imageType={ openGraphObject.imageType }
+        />
         { children }
       </div>
     );
   }
 
-  public extractMetaTags(html: string, fieldMap: { [property: string]: string }) {
-    var quickExpr = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/;
-    var str = "<head><meta property=\"og:title\" content=\"La La Land\"><meta property=\"og:title\" content=\"La La Land\"><meta property=\"og:title\" content=\"La La Land\"></head>";
-    if (str.charAt(0) === '<' && str.charAt(str.length - 1) === '>' && str.length >= 3) {
-      //isHtml
+  public extractMetaTags(html: string) {
+    var attributes: IChicletCardProps = {};
+
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "http://localhost:4322", false);
+    xmlHttp.overrideMimeType('text/xml');
+    xmlHttp.send(null);
+    // var xmlDocument = xmlHttp.responseXML;
+    // var responseString = xmlHttp.responseText;
+
+    var metaElements = document.getElementsByTagName("meta");
+    for (var i = 0; i < metaElements.length; i++) {
+      console.log("Content of meta tag: " + metaElements[i].content);
     }
-    var match = quickExpr.exec(str);
-    if (!!(match && match[1])) {
-      //isHtml
-    }
-    // var i = 0;
-    // var metaTags: { [property: string]: string } = {};
-    // while(i < html.length) {
-    //   var c = html.charAt(i);
-    //   if (c === "<"){
-    //     if()
-    //   }
-    // }
 
-    const $ = Cheerio.load(html);
-    const meta = $('meta');
-    let openGraphObject: IChicletCardProps = {}; //{ [property: string]: string } = {};
-
-    for (let key in meta) {
-      if (!(meta[key].attribs && (meta[key].attribs.property || meta[key].attribs.name))) {
-        break;
-      }
-
-      const property = meta[key].attribs.property || meta[key].attribs.name;
-      const content = meta[key].attribs.content || meta[key].attribs.value;
-
-      if (property in fieldMap) {
-        let name: string = fieldMap[property];
-        // openGraphObject["title"] = content;
-      }
-    }
+    let openGraphObject = this._getChildren(metaElements, attributes);
 
     return openGraphObject;
+  }
+
+  public _getChildren(metaElements: NodeListOf<HTMLMetaElement>, attributes: IChicletCardProps): IChicletCardProps {
+    for (var i = 0; i < metaElements.length; i++) {
+      switch (metaElements[i].name) {
+        case "og:title":
+          attributes.title = metaElements[i].content;
+          break;
+        case "og:type":
+          attributes.ogType = metaElements[i].content;
+          break;
+        case "og:image":
+        case "og:image:url":
+          attributes.image = metaElements[i].content;
+          break;
+        case "og:description":
+          attributes.description = metaElements[i].content;
+          break;
+        case "og:url":
+          attributes.url = metaElements[i].content;
+          break;
+      }
+    }
+    return attributes;
   }
 
 }

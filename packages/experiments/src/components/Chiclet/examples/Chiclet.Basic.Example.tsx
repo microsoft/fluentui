@@ -9,15 +9,10 @@ export class ChicletBasicExample extends React.Component<any, any> {
   }
 
   public render() {
-    var styles = {
-      "border": "solid",
-    }
-
     return (
-      <div style={ styles }>
-        <p>Hello, this is a chiclet!</p>
-        <Chiclet url="https://bing.com">
-        </Chiclet>
+      <div>
+        <h2>Hello, this is a chiclet!</h2>
+        <Chiclet url="https://bing.com" />
       </div>
     );
   }

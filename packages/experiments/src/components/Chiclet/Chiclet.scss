@@ -1,0 +1,104 @@
+@import '~office-ui-fabric-react/src/common/common';
+
+.root {
+  -webkit-font-smoothing: antialiased;
+  background-color: $ms-color-white;
+  border: 1px solid $ms-color-neutralLight;
+  //box-sizing: border-box;
+  max-width: 320px;
+  min-width: 206px;
+  //user-select: none;
+  //position: relative;
+}
+
+.root {
+  //display: flex;
+  max-width: 480px;
+  height: 109px;
+  // :global(.ms-DocumentCard-details) {
+  //   display: flex;
+  //   flex-direction: column;
+  //   flex: 1;
+  //   justify-content: space-between;
+  //   overflow: hidden;
+  // }
+}
+
+/* Preview */
+.preview {
+  float: left;
+  border-right: 1px, solid, $ms-color-neutralLight;
+  border-bottom: none;
+  max-height: 100px;
+  max-width: 144px;
+  position: relative;
+  overflow: hidden; // need to fix
+  background-color: $ms-color-neutralLighterAlt;
+}
+
+.previewIconContainer {
+  height: 100%;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center
+}
+
+/* Info */
+.info {
+  display: block;
+  height: 100%;
+  line-height: 21px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+/* Title */
+$ChicletCard-title-lineHeight: 21px;
+.title {
+  padding: 8px 16px 0px;
+  @include ms-font-l;
+  color: $ms-color-neutralPrimary;
+  height: 42px; // Two lines of text, making sure the third line is hidden
+  line-height: $ChicletCard-title-lineHeight;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+/* Link */
+.link {
+  padding: 2px 16px 0px;
+  @include ms-font-l;
+  font-size: 8pt;
+  color: $ms-color-neutralPrimary;
+}
+
+/* Actions */
+$ms-ChicletCardActions-actionSize: 34px;
+$ms-ChicletCardActions-horizontalPadding: 12px;
+$ms-ChicletCardActions-verticalPadding: 2px;
+
+.actions {
+  height: $ms-ChicletCardActions-actionSize;
+  padding: $ms-ChicletCardActions-verticalPadding $ms-ChicletCardActions-horizontalPadding;
+  position: relative;
+}
+
+.action {
+  float: right;
+  @include ms-margin-left(4px);
+  cursor: pointer;
+
+  :global(.ms-Button) {
+    font-size: 16px;
+    height: $ms-ChicletCardActions-actionSize;
+    width: $ms-ChicletCardActions-actionSize;
+    color: #166EBE;
+  }
+
+  :global(.ms-Button:hover) {
+    :global(.ms-Button-icon) {
+      color: $buttonTextColor;
+      cursor: pointer;
+    }
+  }
+}
