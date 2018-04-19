@@ -3,7 +3,6 @@ import {
   BaseComponent,
   classNamesFunction,
   customizable,
-  IClassNames,
 } from '../../Utilities';
 import {
   IProgressIndicatorProps,
@@ -29,31 +28,33 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     width: 180
   };
 
-  private _classNames: IClassNames<IProgressIndicatorStyles>;
-
   constructor(props: IProgressIndicatorProps) {
     super(props);
 
     this._warnDeprecations({
       title: 'label'
     });
-
-    this._classNames = getClassNames(this.props.getStyles, {
-      theme: this.props.theme!,
-      className: this.props.className,
-      barHeight: this.props.barHeight,
-      indeterminate: this.props.percentComplete === undefined ? true : false,
-    });
   }
 
   public render() {
     const {
       ariaValueText,
+      barHeight,
+      className,
       description,
+      getStyles,
+      theme,
       title,
     } = this.props;
 
     let { label, percentComplete } = this.props;
+
+    const classNames = getClassNames(getStyles, {
+      theme: theme!,
+      className,
+      barHeight,
+      indeterminate: percentComplete === undefined ? true : false,
+    });
 
     // Handle deprecated value.
     if (title) {
@@ -70,12 +71,12 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     };
 
     return (
-      <div className={ this._classNames.root }>
-        <div className={ this._classNames.itemName }>{ label }</div>
-        <div className={ this._classNames.itemProgress }>
-          <div className={ this._classNames.progressTrack } />
+      <div className={ classNames.root }>
+        <div className={ classNames.itemName }>{ label }</div>
+        <div className={ classNames.itemProgress }>
+          <div className={ classNames.progressTrack } />
           <div
-            className={ this._classNames.progressBar }
+            className={ classNames.progressBar }
             style={ progressBarStyles }
             role='progressbar'
             aria-valuemin={ 0 }
@@ -84,7 +85,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
             aria-valuetext={ ariaValueText }
           />
         </div>
-        <div className={ this._classNames.itemDescription }>{ description }</div>
+        <div className={ classNames.itemDescription }>{ description }</div>
       </div>
     );
   }

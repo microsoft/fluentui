@@ -11,6 +11,23 @@ import {
   IProgressIndicatorStyles,
 } from './ProgressIndicator.types';
 
+const IndeterminateProgress = keyframes({
+  '0%': {
+    left: '-30%',
+  },
+  '100%': {
+    left: '100%',
+  }
+});
+const IndeterminateProgressRTL = keyframes({
+  '100%': {
+    right: '-30%',
+  },
+  '0%': {
+    right: '100%',
+  }
+});
+
 export const getStyles = (
   props: IProgressIndicatorStyleProps
 ): IProgressIndicatorStyles => {
@@ -27,23 +44,6 @@ export const getStyles = (
   const marginBetweenText = 8;
   const textHeight = 18;
 
-  const indeterminateProgress = keyframes({
-    '0%': {
-      left: '-30%',
-    },
-    '100%': {
-      left: '100%',
-    }
-  });
-  const indeterminateProgressRTL = keyframes({
-    '100%': {
-      right: '-30%',
-    },
-    '0%': {
-      right: '100%',
-    }
-  });
-
   return ({
     root: [
       'ms-ProgressIndicator',
@@ -59,8 +59,8 @@ export const getStyles = (
       {
         color: semanticColors.bodyText,
         fontSize: FontSizes.medium,
-        paddingTop: `${marginBetweenText / 2}px`,
-        lineHeight: `${textHeight + 2}px`,
+        paddingTop: marginBetweenText / 2,
+        lineHeight: textHeight + 2,
       }
     ],
 
@@ -78,7 +78,7 @@ export const getStyles = (
       {
         position: 'relative',
         overflow: 'hidden',
-        height: `${barHeight}px`,
+        height: barHeight,
         padding: `${marginBetweenText}px 0`,
       }
     ],
@@ -88,7 +88,7 @@ export const getStyles = (
       {
         position: 'absolute',
         width: '100%',
-        height: `${barHeight}px`,
+        height: barHeight,
         backgroundColor: palette.neutralLight,
 
         selectors: {
@@ -103,7 +103,7 @@ export const getStyles = (
       'ms-ProgressIndicator-progressBar',
       {
         backgroundColor: palette.themePrimary,
-        height: `${barHeight}px`,
+        height: barHeight,
         position: 'absolute',
         transition: 'width .3s ease',
         width: 0,
@@ -122,9 +122,9 @@ export const getStyles = (
           position: 'absolute',
           minWidth: '33%',
           background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
-          animation: `${indeterminateProgress} 3s infinite`,
+          animation: `${IndeterminateProgress} 3s infinite`,
         },
-        isRTL && { animation: `${indeterminateProgressRTL} 3s infinite` },
+        isRTL && { animation: `${IndeterminateProgressRTL} 3s infinite` },
       ],
     ],
   });
