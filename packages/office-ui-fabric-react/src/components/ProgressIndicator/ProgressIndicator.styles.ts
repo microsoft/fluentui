@@ -122,14 +122,9 @@ export const getStyles = (
           position: 'absolute',
           minWidth: '33%',
           background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
+          animation: `${indeterminateProgress} 3s infinite`,
         },
-        isRTL
-          ? {
-            animation: `${indeterminateProgressRTL} 3s infinite`,
-          } :
-          {
-            animation: `${indeterminateProgress} 3s infinite`,
-          }
+        isRTL && { animation: `${indeterminateProgressRTL} 3s infinite` },
       ],
     ],
   });
