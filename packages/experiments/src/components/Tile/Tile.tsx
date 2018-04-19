@@ -14,7 +14,7 @@ const SignalStyles: any = SignalStylesModule;
 const CheckStyles: any = CheckStylesModule;
 // tslint:enable:no-any
 
-const enum TileLayoutValues {
+export const enum TileLayoutValues {
   nameplatePadding = 12,
   largeNameplateNameHeight = 15,
   smallNameplateNameHeight = 12,
@@ -29,7 +29,7 @@ export interface ITileState {
   isModal?: boolean;
 }
 
-const SIZES: {
+export const TileLayoutSizes: {
   [P in TileSize]: {
     nameplatePadding: number;
     nameplateNameHeight: number;
@@ -343,10 +343,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       isSelected: boolean;
     }): JSX.Element {
+    const { toggleSelectionAriaLabel } = this.props;
+
     return (
       <span
         role='checkbox'
-        aria-label={ this.props.toggleSelectionAriaLabel }
+        aria-label={ String(toggleSelectionAriaLabel) }
         className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
           [CheckStyles.hostShowCheck]: this.state.isModal
         }) }
@@ -401,7 +403,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
     nameplateActivityHeight,
     nameplateNameHeight,
     foregroundMargin
-  } = SIZES[tileSize];
+  } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

@@ -102,7 +102,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   public componentDidMount() {
     const { selection } = this.props;
-    const focusZone = this._root.value;
+    const focusZone = this._root.current;
     const rootElement = findDOMNode(focusZone as any);
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -253,7 +253,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           className={ css('ms-DetailsHeader-cellTitle', styles.cellTitle) }
                           data-is-focusable={ column.columnActionsMode !== ColumnActionsMode.disabled }
                           role={ column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined }
-                          aria-describedby={ `${this._id}-${column.key}-tooltip` }
+                          aria-describedby={ this.props.onRenderColumnHeaderTooltip ? `${this._id}-${column.key}-tooltip` : undefined }
                           onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                           onClick={ this._onColumnClick.bind(this, column) }
                           aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
@@ -326,7 +326,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return Boolean(this._root.value && this._root.value.focus());
+    return Boolean(this._root.current && this._root.current.focus());
   }
 
   private _renderColumnSizer(columnIndex: number) {

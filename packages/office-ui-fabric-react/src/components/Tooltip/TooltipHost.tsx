@@ -54,7 +54,6 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       directionalHintForRTL,
       hostClassName,
       id,
-      overflowMode,
       setAriaDescribedBy = true,
       tooltipProps
     } = this.props;
@@ -67,8 +66,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       <div
         className={ css('ms-TooltipHost',
           styles.host,
-          hostClassName,
-          overflowMode !== undefined && styles.hostOverflow
+          hostClassName
         ) }
         ref={ this._tooltipHost }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
@@ -101,7 +99,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   private _getTargetElement(): HTMLElement | undefined {
-    if (!this._tooltipHost.value) {
+    if (!this._tooltipHost.current) {
       return undefined;
     }
 
@@ -112,14 +110,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.value.parentElement!;
+          return this._tooltipHost.current.parentElement!;
 
         case TooltipOverflowMode.Self:
-          return this._tooltipHost.value;
+          return this._tooltipHost.current;
       }
     }
 
-    return this._tooltipHost.value;
+    return this._tooltipHost.current;
   }
 
   // Show Tooltip

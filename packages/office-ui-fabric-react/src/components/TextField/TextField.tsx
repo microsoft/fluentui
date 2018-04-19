@@ -214,8 +214,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Sets focus on the text field
    */
   public focus() {
-    if (this._textElement.value) {
-      this._textElement.value.focus();
+    if (this._textElement.current) {
+      this._textElement.current.focus();
     }
   }
 
@@ -223,8 +223,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Selects the text field
    */
   public select() {
-    if (this._textElement.value) {
-      this._textElement.value.select();
+    if (this._textElement.current) {
+      this._textElement.current.select();
     }
   }
 
@@ -232,8 +232,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Sets the selection start of the text field to a specified value
    */
   public setSelectionStart(value: number) {
-    if (this._textElement.value) {
-      this._textElement.value.selectionStart = value;
+    if (this._textElement.current) {
+      this._textElement.current.selectionStart = value;
     }
   }
 
@@ -241,23 +241,23 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Sets the selection end of the text field to a specified value
    */
   public setSelectionEnd(value: number) {
-    if (this._textElement.value) {
-      this._textElement.value.selectionEnd = value;
+    if (this._textElement.current) {
+      this._textElement.current.selectionEnd = value;
     }
   }
 
   /**
    * Gets the selection start of the text field
    */
-  public get selectionStart(): number {
-    return this._textElement.value ? this._textElement.value.selectionStart : -1;
+  public get selectionStart(): number | null {
+    return this._textElement.current ? this._textElement.current.selectionStart : -1;
   }
 
   /**
    * Gets the selection end of the text field
    */
-  public get selectionEnd(): number {
-    return this._textElement.value ? this._textElement.value.selectionEnd : -1;
+  public get selectionEnd(): number | null {
+    return this._textElement.current ? this._textElement.current.selectionEnd : -1;
   }
 
   /**
@@ -266,8 +266,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * @param end Index of the end of the selection.
    */
   public setSelectionRange(start: number, end: number) {
-    if (this._textElement.value) {
-      this._textElement.value.setSelectionRange(start, end);
+    if (this._textElement.current) {
+      (this._textElement.current as HTMLInputElement).setSelectionRange(start, end);
     }
   }
 
@@ -361,7 +361,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         aria-label={ this.props.ariaLabel }
         onFocus={ this._onFocus }
@@ -384,7 +384,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
@@ -465,8 +465,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _adjustInputHeight(): void {
-    if (this._textElement.value && this.props.autoAdjustHeight && this.props.multiline) {
-      const textField = this._textElement.value;
+    if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
+      const textField = this._textElement.current;
       textField.style.height = '';
       const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';

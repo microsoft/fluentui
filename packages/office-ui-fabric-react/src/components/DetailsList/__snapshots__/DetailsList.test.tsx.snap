@@ -161,7 +161,7 @@ exports[`DetailsList renders List correctly 1`] = `
               className=""
             >
               <span
-                aria-describedby="header0-key-tooltip"
+                aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
                 aria-labelledby="header0-key-name "

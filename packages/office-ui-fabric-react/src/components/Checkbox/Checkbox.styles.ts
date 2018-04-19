@@ -32,6 +32,7 @@ export const getStyles = memoizeFunction((
   const styles: ICheckboxStyles = {
     root: [
       getFocusStyle(theme, -2),
+      theme.fonts.medium,
       {
         padding: '0',
         border: 'none',

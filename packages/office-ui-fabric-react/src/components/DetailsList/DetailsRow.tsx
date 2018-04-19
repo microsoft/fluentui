@@ -133,8 +133,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
     }
 
-    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.value) {
-      const newWidth = this._cellMeasurer.value.getBoundingClientRect().width;
+    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.current) {
+      const newWidth = this._cellMeasurer.current.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
 
@@ -196,7 +196,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
     const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
-    const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
+    const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
     const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
@@ -252,7 +252,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         data-is-focusable={ true }
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
-        aria-rowindex={ itemIndex }
+        aria-rowindex={ itemIndex + 1 }
         data-is-draggable={ isDraggable }
         draggable={ isDraggable }
         data-automationid='DetailsRow'
@@ -329,7 +329,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(forceIntoFirstElement: boolean = false): boolean {
-    return !!this._focusZone.value && this._focusZone.value.focus(forceIntoFirstElement);
+    return !!this._focusZone.current && this._focusZone.current.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {

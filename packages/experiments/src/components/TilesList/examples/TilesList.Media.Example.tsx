@@ -5,7 +5,7 @@ import {
   ITileSize,
   ITilesGridItem,
   ITilesGridSegment
-} from '../../TilesList';
+} from '@uifabric/experiments/lib/TilesList';
 import { Tile, getTileLayout, renderTileWithLayout } from '../../../Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';

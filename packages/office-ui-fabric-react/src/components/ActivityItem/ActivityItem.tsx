@@ -1,14 +1,13 @@
-/* tslint:disable */
-import * as React from 'react';
-/* tslint:enable */
 
+import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
-import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.types';
+import { IActivityItemProps } from './ActivityItem.types';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
-import { PersonaSize, PersonaCoin, IPersonaProps } from '../../Persona';
+import { PersonaSize, PersonaCoin, IPersonaSharedProps } from '../../Persona';
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
+
   constructor(props: IActivityItemProps) {
     super(props);
   }
@@ -19,7 +18,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
-      styles: customStyles
+      animateBeaconSignal,
+      isCompact
     } = this.props;
 
     const classNames = this._getClassNames(this.props);
@@ -29,6 +29,9 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
         { (this.props.activityPersonas || this.props.activityIcon || this.props.onRenderIcon) &&
           <div className={ classNames.activityTypeIcon }>
+            { animateBeaconSignal && isCompact &&
+              <div className={ classNames.pulsingBeacon } />
+            }
             { onRenderIcon(this.props) }
           </div>
         }
@@ -90,7 +93,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     const classNames = this._getClassNames(props);
 
     let personaElement: JSX.Element | null = null;
-    const activityPersonas = props.activityPersonas as Array<IPersonaProps & { key?: string | number }>;
+    const activityPersonas = props.activityPersonas as Array<IPersonaSharedProps & { key?: string | number }>;
     if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {
       const personaList: Array<JSX.Element> = [];
       const showSize16Personas = (activityPersonas.length > 1 || props.isCompact);
@@ -122,6 +125,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   }
 
   private _getClassNames(props: IActivityItemProps): IActivityItemClassNames {
-    return getClassNames(getStyles(undefined, props.styles), props.className!, props.activityPersonas!, props.isCompact!);
+    return getClassNames(getStyles(props, undefined, props.styles), props.className!, props.activityPersonas!, props.isCompact!);
   }
 }

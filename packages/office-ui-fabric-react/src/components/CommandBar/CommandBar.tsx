@@ -9,7 +9,7 @@ import {
   getNativeProps
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -52,7 +52,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _commandSurface = createRef<HTMLDivElement>();
   private _commandBarRegion = createRef<HTMLDivElement>();
   private _farCommandSurface = createRef<HTMLDivElement>();
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _overflow = createRef<HTMLDivElement>();
 
   private _id: string;
@@ -169,7 +169,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public focus() {
-    const { value: focusZone } = this._focusZone;
+    const { current: focusZone } = this._focusZone;
     focusZone && focusZone.focus();
   }
 
@@ -194,7 +194,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let tooltipContent = '';
 
     if (item.title) {
-        tooltipContent = item.title;
+      tooltipContent = item.title;
     }
 
     const hasIcon = !!item.icon || !!item.iconProps;
@@ -210,9 +210,9 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           href={ item.disabled ? undefined : item.href }
-          onClick={ item.onClick }
-          title={''}
-          aria-disabled={item.inactive}
+          onClick={ this._onItemClick(item) }
+          title={ '' }
+          aria-disabled={ item.inactive }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           role='menuitem'
@@ -237,8 +237,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           id={ this._id + item.key }
           className={ className }
           onClick={ this._onItemClick(item) }
-          title={''}
-          aria-disabled={item.inactive}
+          title={ '' }
+          aria-disabled={ item.inactive }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
@@ -267,8 +267,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           { ...getNativeProps(item, divProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
-          title={''}
-          aria-disabled={item.inactive}
+          title={ '' }
+          aria-disabled={ item.inactive }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-label={ ariaLabel }
@@ -331,7 +331,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _updateItemMeasurements() {
     // the generated width for overflow is 35 in chrome, 38 in IE, but the actual value is 41.5
-    if (this._overflow.value || (this.props.overflowItems && this.props.overflowItems.length)) {
+    if (this._overflow.current || (this.props.overflowItems && this.props.overflowItems.length)) {
       this._overflowWidth = OVERFLOW_WIDTH;
     } else {
       this._overflowWidth = 0;
@@ -356,10 +356,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _updateRenderedItems() {
     const { items, overflowItems } = this.props;
-    const commandSurface = this._commandSurface.value;
-    const farCommandSurface = this._farCommandSurface.value;
-    const commandBarRegion = this._commandBarRegion.value;
-    const searchSurface = this._searchSurface.value;
+    const commandSurface = this._commandSurface.current;
+    const farCommandSurface = this._farCommandSurface.current;
+    const commandBarRegion = this._commandBarRegion.current;
+    const searchSurface = this._searchSurface.current;
     const renderedItems = [...items];
     let renderedOverflowItems = overflowItems;
     let consumedWidth = 0;
@@ -417,7 +417,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     });
   }
 
-  private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
+  private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
       if (item.inactive) {
         return;
@@ -453,7 +453,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _onContextMenuDismiss = (ev?: any) => {
-    const { value: commandSurface } = this._commandSurface;
+    const { current: commandSurface } = this._commandSurface;
 
     if (!ev || !ev.relatedTarget || commandSurface && !commandSurface.contains(ev.relatedTarget as HTMLElement)) {
       const { contextualMenuProps } = this.state;
