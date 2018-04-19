@@ -8,14 +8,20 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: () => void;
 
   /**
-   * The text displayed of each pivot link.
+   * The text displayed of each pivot link - renaming to 'headerText'.
+   * @deprecated
    */
   linkText?: string;
 
   /**
-   * Native props - data-* and aria-* - for each pivot link element
+   * The text displayed of each pivot link.
    */
-  linkNativeProps?: object;
+  headerText?: string;
+
+  /**
+   * Props for the header command button supporting native props - data-* and aria-* - for each pivot header/link element
+   */
+  headerButtonProps?: { [key: string]: string | number | boolean };
 
   /**
    * An required key to uniquely identify a pivot item.

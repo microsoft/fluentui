@@ -11,7 +11,7 @@ export class PivotBasicExample extends React.Component<any, any> {
         <Pivot>
           <PivotItem
             linkText='My Files'
-            linkNativeProps={ {
+            headerButtonProps={ {
               'data-order': 1,
               'data-title': 'My Files Title'
             } }

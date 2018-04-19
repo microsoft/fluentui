@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added linkNativeProps prop to PivotItem to allow passing native props (data-* & aria-*) to the link/CommandButton element.",
+      "comment": "Added headerButtonProps prop to PivotItem to allow passing native props (data-* & aria-*) to the header/link/CommandButton element. Also depricated linkText and added headerText for semantic purposes.",
       "type": "minor"
     }
   ],
