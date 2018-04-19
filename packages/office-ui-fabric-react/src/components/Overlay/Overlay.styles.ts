@@ -1,5 +1,5 @@
 import { IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
-import { HighContrastSelector } from '../../Styling';
+import { HighContrastSelector, globalClassNamesWhenEnabled } from '../../Styling';
 
 export const getStyles = (
   props: IOverlayStyleProps
@@ -15,7 +15,7 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Overlay',
+      globalClassNamesWhenEnabled(theme, ['ms-Overlay']),
       {
         backgroundColor: palette.whiteTranslucent40,
         top: 0,
@@ -36,7 +36,7 @@ export const getStyles = (
       },
 
       isDark && [
-        'ms-Overlay--dark',
+        globalClassNamesWhenEnabled(theme, ['ms-Overlay--dark']),
         {
           backgroundColor: palette.blackTranslucent40,
         }

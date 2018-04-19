@@ -2,6 +2,7 @@ import { IImageStyleProps, IImageStyles } from './Image.types';
 import {
   AnimationClassNames,
   IStyle,
+  globalClassNamesWhenEnabled,
 } from '../../Styling';
 
 export const getStyles = (
@@ -21,7 +22,8 @@ export const getStyles = (
     isCover,
     isNone,
     isError,
-    isNotImageFit
+    isNotImageFit,
+    theme
   } = props;
 
   const ImageFitStyles: IStyle = {
@@ -33,12 +35,12 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Image',
+      globalClassNamesWhenEnabled(theme, ['ms-Image']),
       {
         overflow: 'hidden'
       },
       maximizeFrame && [
-        'ms-Image--maximizeFrame',
+        globalClassNamesWhenEnabled(theme, ['ms-Image--maximizeFrame']),
         {
           height: '100%',
           width: '100%'
@@ -50,7 +52,7 @@ export const getStyles = (
       className
     ],
     image: [
-      'ms-Image-image',
+      globalClassNamesWhenEnabled(theme, ['ms-Image-image']),
       {
         display: 'block',
         opacity: 0
@@ -62,11 +64,11 @@ export const getStyles = (
         }
       ],
       isCenter && [
-        'ms-Image-image--center',
+        globalClassNamesWhenEnabled(theme, ['ms-Image-image--center']),
         ImageFitStyles
       ],
       isContain && [
-        'ms-Image-image--contain',
+        globalClassNamesWhenEnabled(theme, ['ms-Image-image--contain']),
         isLandscape && {
           width: '100%',
           height: 'auto'
@@ -78,7 +80,7 @@ export const getStyles = (
         ImageFitStyles
       ],
       isCover && [
-        'ms-Image-image--cover',
+        globalClassNamesWhenEnabled(theme, ['ms-Image-image--cover']),
         isLandscape && {
           width: 'auto',
           height: '100%'
@@ -90,7 +92,7 @@ export const getStyles = (
         ImageFitStyles
       ],
       isNone && [
-        'ms-Image-image--none',
+        globalClassNamesWhenEnabled(theme, ['ms-Image-image--none']),
         {
           width: 'auto',
           height: 'auto'
@@ -111,8 +113,8 @@ export const getStyles = (
         }
       ],
       isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
-      isLandscape && 'ms-Image-image--landscape',
-      !isLandscape && 'ms-Image-image--portrait',
+      isLandscape && globalClassNamesWhenEnabled(theme, ['ms-Image-image--landscape']),
+      !isLandscape && globalClassNamesWhenEnabled(theme, ['ms-Image-image--portrait']),
       !isLoaded && 'is-notLoaded',
       shouldFadeIn && 'is-fadeIn',
       isError && 'is-error'

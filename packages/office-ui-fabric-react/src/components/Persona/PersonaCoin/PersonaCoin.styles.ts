@@ -7,6 +7,7 @@ import {
   HighContrastSelector,
   FontSizes,
   FontWeights,
+  globalClassNamesWhenEnabled,
 } from '../../../Styling';
 import {
   personaSize,
@@ -27,16 +28,16 @@ export const getStyles = (
 
   return ({
     coin: [
-      'ms-Persona-coin',
-      size.isSize10 && 'ms-Persona--size10',
-      size.isSize16 && 'ms-Persona--size16',
-      size.isSize24 && 'ms-Persona--size24',
-      size.isSize28 && 'ms-Persona--size28',
-      size.isSize32 && 'ms-Persona--size32',
-      size.isSize40 && 'ms-Persona--size40',
-      size.isSize48 && 'ms-Persona--size48',
-      size.isSize72 && 'ms-Persona--size72',
-      size.isSize100 && 'ms-Persona--size100',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-coin']),
+      size.isSize10 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size10']),
+      size.isSize16 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size16']),
+      size.isSize24 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size24']),
+      size.isSize28 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size28']),
+      size.isSize32 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size32']),
+      size.isSize40 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size40']),
+      size.isSize48 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size48']),
+      size.isSize72 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size72']),
+      size.isSize100 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size100']),
       className
     ],
 
@@ -49,7 +50,7 @@ export const getStyles = (
     },
 
     imageArea: [
-      'ms-Persona-imageArea',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-imageArea']),
       {
         position: 'relative',
         textAlign: 'center',
@@ -102,7 +103,7 @@ export const getStyles = (
     ],
 
     image: [
-      'ms-Persona-image',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-image']),
       {
         marginRight: '10px',
         position: 'absolute',
@@ -159,7 +160,7 @@ export const getStyles = (
     ],
 
     initials: [
-      'ms-Persona-initials',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-initials']),
       {
         borderRadius: '50%',
         color: palette.white,

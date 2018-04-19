@@ -2,6 +2,7 @@ import {
   getFocusStyle,
   hiddenContentStyle,
   HighContrastSelector,
+  globalClassNamesWhenEnabled,
 } from '../../Styling';
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
@@ -21,14 +22,14 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
 
   return {
     ratingStar: [
-      'ms-RatingStar-container',
+      globalClassNamesWhenEnabled(theme, ['ms-RatingStar-container']),
       {
         display: 'inline-block',
         position: 'relative'
       }
     ],
     ratingStarBack: [
-      'ms-RatingStar-back',
+      globalClassNamesWhenEnabled(theme, ['ms-RatingStar-back']),
       {
         // TODO: Use a proper semantic color for this
         color: palette.neutralTertiary,
@@ -44,7 +45,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       }
     ],
     ratingStarFront: [
-      'ms-RatingStar-front',
+      globalClassNamesWhenEnabled(theme, ['ms-RatingStar-front']),
       {
         position: 'absolute',
         height: '100 %',
@@ -63,7 +64,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     ],
     ratingButton: [
       getFocusStyle(theme, 0),
-      'ms-Rating-button',
+      globalClassNamesWhenEnabled(theme, ['ms-Rating-button']),
       {
         background: 'none',
         margin: '3px 3px 0px 0px',
@@ -84,25 +85,25 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       },
     ],
     rootIsSmall: [
-      'ms-Rating--small',
+      globalClassNamesWhenEnabled(theme, ['ms-Rating--small']),
       {
         fontSize: ratingSmallIconSize,
         lineHeight: ratingSmallIconSize
       }
     ],
     rootIsLarge: [
-      'ms-Rating--large',
+      globalClassNamesWhenEnabled(theme, ['ms-Rating--large']),
       {
         fontSize: ratingLargeIconSize,
         lineHeight: ratingLargeIconSize
       }
     ],
     labelText: [
-      'ms-Rating-labelText',
+      globalClassNamesWhenEnabled(theme, ['ms-Rating-labelText']),
       hiddenContentStyle
     ],
     ratingFocusZone: [
-      'ms-Rating-focuszone',
+      globalClassNamesWhenEnabled(theme, ['ms-Rating-focuszone']),
       {
         display: 'inline-block',
         paddingBottom: '1px'

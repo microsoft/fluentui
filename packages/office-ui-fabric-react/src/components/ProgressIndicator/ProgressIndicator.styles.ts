@@ -1,40 +1,43 @@
-import { IStyle, keyframes } from '../../Styling';
+import { globalClassNamesWhenEnabled } from '../../Styling';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
 export const getStyles = (
   props: IProgressIndicatorStyleProps
 ): IProgressIndicatorStyles => {
-  const { className } = props;
+  const {
+    className,
+    theme,
+  } = props;
 
   return ({
     root: [
-      'ms-ProgressIndicator',
+      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator']),
       {},
       className
     ],
 
     itemName: [
-      'ms-ProgressIndicator-itemName',
+      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-itemName']),
       {}
     ],
 
     itemDescription: [
-      'ms-ProgressIndicator-itemDescription',
+      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-itemDescription']),
       {}
     ],
 
     itemProgress: [
-      'ms-ProgressIndicator-itemProgress',
+      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-itemProgress']),
       {}
     ],
 
     progressTrack: [
-      'ms-ProgressIndicator-progressTrack',
+      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-progressTrack']),
       {}
     ],
 
     progressBar: [
-      'ms-ProgressIndicator-progressBar',
+      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-progressBar']),
       {},
     ],
   });

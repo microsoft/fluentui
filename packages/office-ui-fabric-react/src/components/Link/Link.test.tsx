@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import * as renderer from 'react-test-renderer';
 import { Customizer } from '../../Utilities';
-import { createTheme } from '../../Styling'
+import { createTheme } from '../../Styling';
 
 import { Link } from './Link';
 
@@ -38,8 +38,8 @@ describe('Link', () => {
 
     expect(ReactDOM.renderToStaticMarkup(
       <Customizer settings={ { theme: NoClassNamesTheme } }>
-        <Link href="helloworld.html">My Link</Link>
+        <Link href='helloworld.html'>My Link</Link>
       </Customizer >
     )).toEqual('<a href=\"helloworld.html\" class=\"root-33\">My Link</a>');
-  })
+  });
 });

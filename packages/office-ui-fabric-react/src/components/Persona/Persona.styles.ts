@@ -10,6 +10,7 @@ import {
   IStyle,
   normalize,
   noWrap,
+  globalClassNamesWhenEnabled,
 } from '../../Styling';
 import {
   personaSize,
@@ -41,7 +42,7 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Persona',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona']),
       normalize,
       {
         color: palette.neutralPrimary,
@@ -69,7 +70,7 @@ export const getStyles = (
       },
 
       size.isSize10 && [
-        'ms-Persona--size10',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size10']),
         {
           height: personaSize.size10,
           minWidth: personaSize.size10,
@@ -77,7 +78,7 @@ export const getStyles = (
       ],
 
       size.isSize16 && [
-        'ms-Persona--size16',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size16']),
         {
           height: personaSize.size16,
           minWidth: personaSize.size16,
@@ -85,7 +86,7 @@ export const getStyles = (
       ],
 
       size.isSize24 && [
-        'ms-Persona--size24',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size24']),
         {
           height: personaSize.size24,
           minWidth: personaSize.size24,
@@ -97,7 +98,7 @@ export const getStyles = (
       },
 
       size.isSize28 && [
-        'ms-Persona--size28',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size28']),
         {
           height: personaSize.size28,
           minWidth: personaSize.size28,
@@ -109,7 +110,7 @@ export const getStyles = (
       },
 
       size.isSize32 && [
-        'ms-Persona--size32',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size32']),
         {
           height: personaSize.size32,
           minWidth: personaSize.size32,
@@ -117,17 +118,17 @@ export const getStyles = (
       ],
 
       size.isSize40 && [
-        'ms-Persona--size40',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size40']),
         {
           height: personaSize.size40,
           minWidth: personaSize.size40,
         }
       ],
 
-      size.isSize48 && 'ms-Persona--size48',
+      size.isSize48 && globalClassNamesWhenEnabled(theme, ['ms-Persona--size48']),
 
       size.isSize72 && [
-        'ms-Persona--size72',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size72']),
         {
           height: personaSize.size72,
           minWidth: personaSize.size72,
@@ -135,7 +136,7 @@ export const getStyles = (
       ],
 
       size.isSize100 && [
-        'ms-Persona--size100',
+        globalClassNamesWhenEnabled(theme, ['ms-Persona--size100']),
         {
           height: personaSize.size100,
           minWidth: personaSize.size100,
@@ -145,17 +146,17 @@ export const getStyles = (
       /**
        * Modifiers: presence
        */
-      presence.isAvailable && 'ms-Persona--online',
-      presence.isAway && 'ms-Persona--away',
-      presence.isBlocked && 'ms-Persona--blocked',
-      presence.isBusy && 'ms-Persona--busy',
-      presence.isDoNotDisturb && 'ms-Persona--donotdisturb',
-      presence.isOffline && 'ms-Persona--offline',
+      presence.isAvailable && globalClassNamesWhenEnabled(theme, ['ms-Persona--online']),
+      presence.isAway && globalClassNamesWhenEnabled(theme, ['ms-Persona--away']),
+      presence.isBlocked && globalClassNamesWhenEnabled(theme, ['ms-Persona--blocked']),
+      presence.isBusy && globalClassNamesWhenEnabled(theme, ['ms-Persona--busy']),
+      presence.isDoNotDisturb && globalClassNamesWhenEnabled(theme, ['ms-Persona--donotdisturb']),
+      presence.isOffline && globalClassNamesWhenEnabled(theme, ['ms-Persona--offline']),
       className,
     ],
 
     details: [
-      'ms-Persona-details',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-details']),
       {
         padding: '0 24px 0 16px',
         minWidth: 0,
@@ -176,7 +177,7 @@ export const getStyles = (
     ],
 
     primaryText: [
-      'ms-Persona-primaryText',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-primaryText']),
       noWrap,
       {
         color: palette.neutralPrimary,
@@ -216,7 +217,7 @@ export const getStyles = (
     ],
 
     secondaryText: [
-      'ms-Persona-secondaryText',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-secondaryText']),
       noWrap,
       sharedTextStyles,
 
@@ -241,7 +242,7 @@ export const getStyles = (
     ],
 
     tertiaryText: [
-      'ms-Persona-tertiaryText',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-tertiaryText']),
       noWrap,
       sharedTextStyles,
       {
@@ -254,7 +255,7 @@ export const getStyles = (
     ],
 
     optionalText: [
-      'ms-Persona-optionalText',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-optionalText']),
       noWrap,
       sharedTextStyles,
       {
@@ -267,7 +268,7 @@ export const getStyles = (
     ],
 
     textContent: [
-      'ms-Persona-textContent',
+      globalClassNamesWhenEnabled(theme, ['ms-Persona-textContent']),
       noWrap
     ],
   });

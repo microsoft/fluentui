@@ -2,6 +2,7 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import {
   HighContrastSelector,
   IStyle,
+  globalClassNamesWhenEnabled,
 } from '../../Styling';
 
 export const getStyles = (
@@ -29,7 +30,7 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Check',
+      globalClassNamesWhenEnabled(theme, ['ms-Check']),
 
       {
         // lineHeight currently needs to be a string to output without 'px'
@@ -83,7 +84,7 @@ export const getStyles = (
     ],
 
     circle: [
-      'ms-Check-circle',
+      globalClassNamesWhenEnabled(theme, ['ms-Check-circle']),
       sharedCircleCheck,
 
       {
@@ -102,7 +103,7 @@ export const getStyles = (
     ],
 
     check: [
-      'ms-Check-check',
+      globalClassNamesWhenEnabled(theme, ['ms-Check-check']),
       sharedCircleCheck,
 
       {

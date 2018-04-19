@@ -5,7 +5,8 @@ import {
   DefaultFontStyles,
   getFocusStyle,
   FontSizes,
-  FontWeights
+  FontWeights,
+  globalClassNamesWhenEnabled
 } from '../../Styling';
 
 export const buttonStyles: IButtonStyles = {
@@ -43,7 +44,7 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Nav',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav']),
       className,
       {
         overflowY: 'auto',
@@ -58,7 +59,7 @@ export const getStyles = (
       ]
     ],
     linkText: [
-      'ms-Nav-linkText',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-linkText']),
       {
         margin: '0 4px',
         overflow: 'hidden',
@@ -67,7 +68,7 @@ export const getStyles = (
       }
     ],
     compositeLink: [
-      'ms-Nav-compositeLink',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-compositeLink']),
       {
         display: 'block',
         position: 'relative',
@@ -78,7 +79,7 @@ export const getStyles = (
       isSelected && 'is-selected'
     ],
     link: [
-      'ms-Nav-link',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-link']),
       getFocusStyle(theme),
       {
         display: 'block',
@@ -120,7 +121,7 @@ export const getStyles = (
       }
     ],
     chevronButton: [
-      'ms-Nav-chevronButton',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-chevronButton']),
       getFocusStyle(theme),
       {
         display: 'block',
@@ -189,7 +190,7 @@ export const getStyles = (
       }
     ],
     chevronIcon: [
-      'ms-Nav-chevron',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-chevron']),
       {
         position: 'absolute',
         left: '8px',
@@ -206,24 +207,24 @@ export const getStyles = (
       }
     ],
     navItem: [
-      'ms-Nav-navItem',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-navItem']),
       {
         padding: 0
       }
     ],
     navItems: [
-      'ms-Nav-navItems',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-navItems']),
       {
         listStyleType: 'none',
         padding: 0
       }
     ],
     group: [
-      'ms-Nav-group',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-group']),
       isExpanded && 'is-expanded'
     ],
     groupContent: [
-      'ms-Nav-groupContent',
+      globalClassNamesWhenEnabled(theme, ['ms-Nav-groupContent']),
       {
         display: 'none',
         marginBottom: '40px'

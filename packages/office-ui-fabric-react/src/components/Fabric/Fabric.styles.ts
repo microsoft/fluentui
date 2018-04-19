@@ -1,8 +1,5 @@
 
-import {
-  ITheme,
-  mergeStyles
-} from '../../Styling';
+import { globalClassNamesWhenEnabled } from '../../Styling';
 import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 const inheritFont = { fontFamily: 'inherit' };
@@ -19,7 +16,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
 
   return {
     root: [
-      'ms-Fabric',
+      globalClassNamesWhenEnabled(theme, ['ms-Fabric']),
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,

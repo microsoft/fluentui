@@ -70,6 +70,8 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyBackground: p.neutralLighter
   };
 
+  const partialFlags = {};
+
   return makeThemeFromPartials(theme, partialPalette, partialSemantic, partialFlags);
 }
 
@@ -128,7 +130,9 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputFocusBorderAlt: p.themePrimary,
   };
 
-  return makeThemeFromPartials(theme, partialPalette, partialSemantic);
+  const partialFlags = {};
+
+  return makeThemeFromPartials(theme, partialPalette, partialSemantic, partialFlags);
 }
 
 /**
