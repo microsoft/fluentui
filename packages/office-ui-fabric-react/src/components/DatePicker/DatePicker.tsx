@@ -112,7 +112,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     showMonthPickerAsOverlay: false,
     strings: DEFAULT_STRINGS,
     highlightCurrentMonth: false,
-    highlightNavigatedMonth: false,
+    highlightSelectedMonth: false,
     borderless: false,
     pickerAriaLabel: 'Calender',
     showWeekNumbers: false,
@@ -262,7 +262,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
-              highlightNavigatedMonth={ this.props.highlightNavigatedMonth }
+              highlightSelectedMonth={ this.props.highlightSelectedMonth }
               showWeekNumbers={ this.props.showWeekNumbers }
               firstWeekOfYear={ this.props.firstWeekOfYear }
               showGoToToday={ this.props.showGoToToday }

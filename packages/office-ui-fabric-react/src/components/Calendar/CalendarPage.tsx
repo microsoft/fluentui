@@ -39,7 +39,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               <CalendarInlineExample
                 showMonthPickerAsOverlay={ true }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
                 showGoToToday={ false }
@@ -53,7 +53,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 showGoToToday={ true }
               />
             </ExampleCard>
@@ -65,7 +65,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 dateRangeType={ DateRangeType.Week }
                 autoNavigateOnSelection={ true }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 showGoToToday={ true }
                 showNavigateButtons={ true }
               />
@@ -78,7 +78,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 dateRangeType={ DateRangeType.Month }
                 autoNavigateOnSelection={ true }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 showGoToToday={ true }
                 showNavigateButtons={ true }
               />
@@ -107,7 +107,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 autoNavigateOnSelection={ false }
                 showGoToToday={ true }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 isDayPickerVisible={ false }
               />
             </ExampleCard>
@@ -119,7 +119,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ true }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 showGoToToday={ false }
                 minDate={ addMonths(today, -1) }
                 maxDate={ addYears(today, 1) }
@@ -134,7 +134,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 firstDayOfWeek={ DayOfWeek.Monday }
                 autoNavigateOnSelection={ true }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 showGoToToday={ true }
                 workWeekDays={ [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday] }
               />
@@ -153,7 +153,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               <CalendarButtonExample
                 isDayPickerVisible={ false }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 buttonString={ 'Click for Month Picker' }
               />
             </ExampleCard>
@@ -164,7 +164,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               <CalendarButtonExample
                 showMonthPickerAsOverlay={ true }
                 highlightCurrentMonth={ false }
-                highlightNavigatedMonth={ true }
+                highlightSelectedMonth={ true }
                 buttonString={ 'Click for Overlayed Day Picker and Month Picker' }
               />
             </ExampleCard>
