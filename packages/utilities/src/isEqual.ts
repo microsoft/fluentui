@@ -74,11 +74,11 @@ export const isEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-
 };
 
 /**
- * Checks if the first and second items are the NOT same, recursively. Use for checking arrays and objects.
+ * Checks if the first and second items are NOT the same, recursively. Use for checking arrays and objects.
  *
  * @param itemA First item to compare to second item
  * @param itemB Second item to compare to first item
- * @returns {boolean} True if items are the NOT same or false if they are.
+ * @returns {boolean} True if items are NOT the same or false if they are.
  */
 export const isNotEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-line no-any
   return !isEqual(itemA, itemB);
