@@ -196,12 +196,12 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     this._textField && this._textField.setSelectionRange(start, end);
   }
 
-  public get selectionStart(): number {
-    return this._textField ? this._textField.selectionStart : -1;
+  public get selectionStart(): number | null {
+    return this._textField && this._textField.selectionStart !== null ? this._textField.selectionStart : -1;
   }
 
-  public get selectionEnd(): number {
-    return this._textField ? this._textField.selectionEnd : -1;
+  public get selectionEnd(): number | null {
+    return this._textField && this._textField.selectionEnd ? this._textField.selectionEnd : -1;
   }
 
   @autobind
@@ -275,8 +275,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     if (this._changeSelectionData === null) {
       this._changeSelectionData = {
         changeType: inputChangeType.default,
-        selectionStart: this._textField.selectionStart,
-        selectionEnd: this._textField.selectionEnd
+        selectionStart: this._textField.selectionStart !== null ? this._textField.selectionStart : -1,
+        selectionEnd: this._textField.selectionEnd !== null ? this._textField.selectionEnd : -1
       };
     }
   }
@@ -381,8 +381,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
           selectionEnd = (event.target as HTMLInputElement).selectionEnd;
 
         // Check if backspace or delete press is valid.
-        if (!(keyCode === KeyCodes.backspace && selectionEnd > 0)
-          && !(keyCode === KeyCodes.del && selectionStart < this._textField.value.length)) {
+        if (!(keyCode === KeyCodes.backspace && selectionEnd && selectionEnd > 0)
+          && !(keyCode === KeyCodes.del && selectionStart !== null && selectionStart < this._textField.value.length)) {
           return;
         }
 
@@ -390,8 +390,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
           changeType: keyCode === KeyCodes.backspace ?
             inputChangeType.backspace :
             inputChangeType.delete,
-          selectionStart,
-          selectionEnd
+          selectionStart: selectionStart !== null ? selectionStart : -1,
+          selectionEnd: selectionEnd !== null ? selectionEnd : -1
         };
       }
     }
@@ -404,8 +404,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     // Store the paste selection range
     this._changeSelectionData = {
       changeType: inputChangeType.textPasted,
-      selectionStart,
-      selectionEnd
+      selectionStart: selectionStart !== null ? selectionStart : -1,
+      selectionEnd: selectionEnd !== null ? selectionEnd : -1
     };
   }
 }
