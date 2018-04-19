@@ -262,11 +262,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     this._updatePages();
     this._measureVersion++;
-    this._scrollElement = findScrollableParent(this._root.value) as HTMLElement;
+    this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
 
     this._events.on(window, 'resize', this._onAsyncResize);
-    if (this._root.value) {
-      this._events.on(this._root.value, 'focus', this._onFocus, true);
+    if (this._root.current) {
+      this._events.on(this._root.current, 'focus', this._onFocus, true);
     }
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
@@ -477,7 +477,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _onFocus(ev: any) {
     let target = ev.target as HTMLElement;
 
-    while (target !== this._surface.value) {
+    while (target !== this._surface.current) {
       const indexString = target.getAttribute('data-list-index');
 
       if (indexString) {
@@ -928,7 +928,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // This needs to be called to recalculate when new pages should be loaded.
     // We check to see how far we've scrolled and if it's further than a third of a page we run it again.
     if (
-      this._surface.value &&
+      this._surface.current &&
       (forceUpdate ||
         !pages ||
         !this._surfaceRect ||
@@ -936,7 +936,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         scrollHeight !== this._scrollHeight ||
         Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3)
     ) {
-      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.value);
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.current);
       this._scrollTop = scrollTop;
     }
 

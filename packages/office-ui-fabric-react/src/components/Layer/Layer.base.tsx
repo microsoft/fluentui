@@ -108,7 +108,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        const rootElement = this._rootElement.value;
+        const rootElement = this._rootElement.current;
         const doc = getDocument(rootElement);
 
         if (!doc || !rootElement) {
@@ -171,7 +171,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   private _getHost(): Node | undefined {
     const { hostId } = this.props;
-    const doc = getDocument(this._rootElement.value);
+    const doc = getDocument(this._rootElement.current);
 
     if (!doc) {
       return undefined;
