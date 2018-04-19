@@ -58,25 +58,14 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
           <div
             className={ css('ms-ChicletCardTitle', styles.title) }
           >
-            { title ? title : "Title goes here and if it's really long it wraps around to the second line but does not make it to the third line" }
+            { title ? title : "Placeholder" }
           </div>
-          { imageType ? (<div>{ imageType }</div>) : (null) }
-          { imageWidth ? (<div>{ imageWidth }</div>) : (null) }
-          { imageHeight ? (<div>{ imageHeight }</div>) : (null) }
           <div
             className={ css('ms-ChicletCardLink', styles.link) }
           >
             { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
           </div>
-          <div className={ css('ms-ChicletCardActions', styles.actions) }>
-            { actions && actions.map((action, index) => {
-              return (
-                <div className={ css('ms-ChicletActions-action', styles.action) } key={ index }>
-                  <IconButton { ...action } />
-                </div>
-              );
-            }) }
-          </div>
+          { this._renderActions(actions) }
         </div>
       </div>
     );
@@ -110,6 +99,20 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
       <div>
         { image }
         { icon }
+      </div>
+    );
+  }
+
+  private _renderActions(actions: IButtonProps[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+    return (
+      <div className={ css('ms-ChicletCardActions', styles.actions) }>
+        { actions && actions.map((action, index) => {
+          return (
+            <div className={ css('ms-ChicletActions-action', styles.action) } key={ index }>
+              <IconButton { ...action } />
+            </div>
+          );
+        }) }
       </div>
     );
   }

@@ -11,7 +11,7 @@ export class ChicletBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Chiclet url="http://localhost:4322" />
+        <Chiclet url="http://localhost:4322" size="medium" />
       </div>
     );
   }

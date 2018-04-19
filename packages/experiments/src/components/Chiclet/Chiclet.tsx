@@ -12,20 +12,46 @@ const styles: any = stylesImport;
 
 export class Chiclet extends BaseComponent<IChicletProps, any> {
   public render() {
-    const { url } = this.props;
+    const { url, size } = this.props;
 
     let chicletCardProps = this.extractMetaTags(url);
 
-    return (
-      <div
-        className={ css(styles.root) }
-      >
-        <ChicletCard
-          { ...chicletCardProps }
-          onClick={ this._onClick }
-        />
-      </div>
-    );
+    switch (size) {
+      case "xsmall":
+        return (
+          <div
+            className={ css(styles.root) }
+          >
+            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
+          </div>
+        );
+      case "small":
+        return (
+          <div
+            className={ css(styles.root) }
+          >
+            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
+          </div>
+        );
+      case "medium":
+      case "large":
+      case "xlarge":
+        return (
+          <div
+            className={ css(styles.root) }
+          >
+            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
+          </div>
+        );
+      default:
+        return (
+          <div
+            className={ css(styles.root) }
+          >
+            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
+          </div>
+        );
+    }
   }
 
   public extractMetaTags(url: string) {

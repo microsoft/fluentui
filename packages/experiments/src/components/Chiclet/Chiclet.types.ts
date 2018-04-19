@@ -34,6 +34,10 @@ export interface IChicletProps extends React.Props<Chiclet> {
    */
   url: string;
 
+  /**
+   * Chiclet size to render
+   */
+  size?: string;
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCard> {
