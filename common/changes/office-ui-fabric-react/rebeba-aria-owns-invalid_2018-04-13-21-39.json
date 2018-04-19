@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updates aria-owns on BasePicker (and snapshot tests) so its only set when suggestions are rendered",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "rebeba@microsoft.com"
+}

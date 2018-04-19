@@ -16,6 +16,7 @@ export interface IActivityItemClassNames {
   activityTypeIcon?: string;
   commentText?: string;
   timeStamp?: string;
+  pulsingBeacon?: string;
 }
 
 export const getClassNames = memoizeFunction((
@@ -30,6 +31,11 @@ export const getClassNames = memoizeFunction((
       className,
       styles.root,
       isCompact && styles.isCompactRoot
+    ),
+
+    pulsingBeacon: mergeStyles(
+      'ms-ActivityItem-pulsingBeacon',
+      styles.pulsingBeacon
     ),
 
     personaContainer: mergeStyles(
