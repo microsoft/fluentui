@@ -208,10 +208,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public focus(): void {
-    if (this._isSplitButton && this._splitButtonContainer.value) {
-      this._splitButtonContainer.value.focus();
-    } else if (this._buttonElement.value) {
-      this._buttonElement.value.focus();
+    if (this._isSplitButton && this._splitButtonContainer.current) {
+      this._splitButtonContainer.current.focus();
+    } else if (this._buttonElement.current) {
+      this._buttonElement.current.focus();
     }
   }
 
@@ -401,7 +401,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={ DirectionalHint.bottomLeftEdge }
         { ...menuProps }
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
-        target={ this._isSplitButton ? this._splitButtonContainer.value : this._buttonElement.value }
+        target={ this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current }
         labelElementId={ this._labelId }
         onDismiss={ onDismiss }
       />
@@ -428,8 +428,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onToggleMenu = (): void => {
-    if (this._splitButtonContainer.value) {
-      this._splitButtonContainer.value.focus();
+    if (this._splitButtonContainer.current) {
+      this._splitButtonContainer.current.focus();
     }
 
     const currentMenuProps = this.state.menuProps;
@@ -550,8 +550,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which === KeyCodes.enter) {
-      if (this._buttonElement.value) {
-        this._buttonElement.value.click();
+      if (this._buttonElement.current) {
+        this._buttonElement.current.click();
         ev.preventDefault();
         ev.stopPropagation();
       }

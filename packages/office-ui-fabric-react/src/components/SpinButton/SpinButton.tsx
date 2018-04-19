@@ -263,14 +263,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   public focus(): void {
-    if (this._input.value) {
-      this._input.value.focus();
+    if (this._input.current) {
+      this._input.current.focus();
     }
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
     // We can't set focus on a non-existing element
-    if (!this._input.value) {
+    if (!this._input.current) {
       return;
     }
 
@@ -278,7 +278,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._stop();
     }
 
-    this._input.value.select();
+    this._input.current.select();
 
     this.setState({ isFocused: true });
 
