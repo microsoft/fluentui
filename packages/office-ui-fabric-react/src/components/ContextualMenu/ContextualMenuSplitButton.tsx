@@ -116,7 +116,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
 
     return React.createElement('button',
       assign({}, getNativeProps(itemProps, buttonProperties), {
-        onMouseEnter: onItemMouseEnter ? onItemMouseEnter.bind(this, item, ) : undefined,
+        onMouseEnter: this._onItemMouseEnter.bind(this, item),
         onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
         onMouseDown: (ev: any) => onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
         onMouseMove: onItemMouseMove ? this._onItemMouseMove.bind(this, item) : undefined,

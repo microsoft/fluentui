@@ -703,7 +703,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._navigationIdleDelay);
   }
 
-  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseEnter = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
     this._onItemMouseEnterBase(item, ev, ev.target as HTMLElement);
   }
 
