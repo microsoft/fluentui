@@ -30,6 +30,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
   };
 
   private _classNames: IClassNames<IProgressIndicatorStyles>;
+
   constructor(props: IProgressIndicatorProps) {
     super(props);
 
@@ -48,11 +49,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
   public render() {
     const {
       ariaValueText,
-      barHeight,
-      className,
       description,
-      getStyles,
-      theme,
       title,
     } = this.props;
 
@@ -70,7 +67,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     const progressBarStyles = {
       width: percentComplete !== undefined ? percentComplete + '%' : undefined,
       transition: (percentComplete !== undefined && percentComplete < ZERO_THRESHOLD) ? 'none' : undefined,
-    }
+    };
 
     return (
       <div className={ this._classNames.root }>

@@ -25,7 +25,6 @@ export const getStyles = (
   const { palette, semanticColors } = theme;
 
   const marginBetweenText = 8;
-  const buttonsWidth = 218;
   const textHeight = 18;
 
   const indeterminateProgress = keyframes({
