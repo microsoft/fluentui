@@ -26,12 +26,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
   private _lastTouchTimeoutId: number | undefined;
   private _splitButton: HTMLDivElement;
 
-  public componentDidMount() {
-    if (this._splitButton && 'onpointerdown' in this._splitButton) {
-      this._events.on(this._splitButton, 'pointerdown', this._onPointerDown, true);
-    }
-  }
-
   public render(): JSX.Element | null {
     const {
       item,
@@ -62,7 +56,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
         onMouseMove={ onItemMouseMove ? this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) : undefined }
         onKeyDown={ this._onItemKeyDown.bind(this, item) }
         onClick={ this._executeItemClick.bind(this, item) }
-        onTouchStart={ this._onTouchStart }
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
@@ -116,11 +109,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       onItemMouseMove
     } = this.props;
 
-    // With the introduction of touch support for split buttons. We would now open sub-menus by touching anywhere
-    // on the split button but we can now longer trigger the primary action. This is correct from an accessibility
-    // stand point, however we're missing the next part which is having a primary action as an option to the sub menu
-    // of the split button. This should be enforced by being dynamically added into our list of sub menu items.
-    // This is logged on Issue #4532
     const itemProps = {
       onClick: this._onSplitItemClick.bind(this, item),
       disabled: isItemDisabled(item),
@@ -141,36 +129,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );
-  }
-
-  private _onTouchStart = (): void => {
-    if (this._splitButton && !('onpointerdown' in this._splitButton)) {
-      this._handleTouchAndPointerEvent();
-    }
-  }
-
-  private _onPointerDown = (ev: PointerEvent): void => {
-    if (ev.pointerType === 'touch') {
-      this._handleTouchAndPointerEvent();
-
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-    }
-  }
-
-  private _handleTouchAndPointerEvent() {
-    // If we already have an existing timeout from a previous touch/pointer event
-    // cancel that timeout so we can set a new one.
-    if (this._lastTouchTimeoutId !== undefined) {
-      this._async.clearTimeout(this._lastTouchTimeoutId);
-      this._lastTouchTimeoutId = undefined;
-    }
-    this._processingTouch = true;
-
-    this._lastTouchTimeoutId = this._async.setTimeout(() => {
-      this._processingTouch = false;
-      this._lastTouchTimeoutId = undefined;
-    }, TouchIdleDelay);
   }
 
   private _onItemMouseEnter = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
@@ -202,10 +160,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
 
     if (item.disabled || item.isDisabled) {
       return;
-    }
-
-    if (this._processingTouch && onItemClick) {
-      return onItemClick(item, ev);
     }
 
     if (executeItemClick) {
