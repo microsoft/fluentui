@@ -3,7 +3,6 @@ import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
-  autobind,
   DelayedRender,
   BaseComponent,
   getId,
