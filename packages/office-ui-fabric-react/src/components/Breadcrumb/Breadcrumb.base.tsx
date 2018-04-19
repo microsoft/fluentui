@@ -75,7 +75,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   private _onReduceData = (data: IBreadCrumbData): IBreadCrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;
-    const { overflowIndex, items } = data.props;
+    const { overflowIndex } = data.props;
 
     const movedItem = renderedItems[overflowIndex!];
     renderedItems = [...renderedItems];
