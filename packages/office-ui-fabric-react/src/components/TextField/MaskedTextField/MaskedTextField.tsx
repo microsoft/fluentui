@@ -207,7 +207,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   @autobind
   private _onFocus(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const {
-      mask,
       onFocus
     } = this.props;
 
@@ -251,10 +250,6 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onMouseUp(event: React.MouseEvent<HTMLInputElement>) {
-    const {
-      mask
-    } = this.props;
-
     // Move the cursor on mouseUp after focusing the textField
     if (this._moveCursorOnMouseUp) {
       this._moveCursorOnMouseUp = false;
