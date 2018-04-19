@@ -12,83 +12,73 @@ const styles: any = stylesImport;
 
 export class Chiclet extends BaseComponent<IChicletProps, any> {
   public render() {
-    const { /*type, className, title, description, image, imageUrl, imageSecureUrl,
-      imageWidth, imageHeight, imageType, url,*/ children, url } = this.props;
+    const { url } = this.props;
 
-    const html: string = `<html>
-        <!-- This is my comment! -->
-        <head>
-          <meta charset=\"utf-8\" >
-          <link rel=\"ferde\" href=\"https://wsjeiocfn.com">
-          <meta property=\"og:title\" content=\"The Rock\" >
-          <meta property=\"og:type\" content=\"video.movie\" >
-          <meta property=\"og:url\" content=\"http://www.imdb.com/title/tt0117500/\" >
-          <meta name=\"og:title\" content=\"The Rock\" >
-          <meta name=\"og:type\" content=\"video.movie\" >
-          <meta name=\"og:url\" content=\"http://www.imdb.com/title/tt0117500/\" >
-        </head>
-        <body>
-        </body>
-      </html>`;
-
-    let openGraphObject = this.extractMetaTags(html);
+    let chicletCardProps = this.extractMetaTags(url);
 
     return (
-      <div className={ css(styles.root) }>
+      <div
+        className={ css(styles.root) }
+      >
         <ChicletCard
-          title={ openGraphObject.title }
-          description={ openGraphObject.description }
-          url={ openGraphObject.url }
-          image={ openGraphObject.image }
-          imageType={ openGraphObject.imageType }
+          { ...chicletCardProps }
+          onClick={ this._onClick }
         />
-        { children }
       </div>
     );
   }
 
-  public extractMetaTags(html: string) {
+  public extractMetaTags(url: string) {
     var attributes: IChicletCardProps = {};
 
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "http://localhost:4322", false);
+    xmlHttp.open("GET", url, false);
     xmlHttp.overrideMimeType('text/xml');
     xmlHttp.send(null);
-    // var xmlDocument = xmlHttp.responseXML;
-    // var responseString = xmlHttp.responseText;
 
     var metaElements = document.getElementsByTagName("meta");
-    for (var i = 0; i < metaElements.length; i++) {
-      console.log("Content of meta tag: " + metaElements[i].content);
-    }
-
-    let openGraphObject = this._getChildren(metaElements, attributes);
+    let openGraphObject = this._getOpenGraphValues(metaElements, attributes);
 
     return openGraphObject;
   }
 
-  public _getChildren(metaElements: NodeListOf<HTMLMetaElement>, attributes: IChicletCardProps): IChicletCardProps {
+  public _getOpenGraphValues(metaElements: NodeListOf<HTMLMetaElement>, attributes: IChicletCardProps): IChicletCardProps {
     for (var i = 0; i < metaElements.length; i++) {
-      switch (metaElements[i].name) {
-        case "og:title":
-          attributes.title = metaElements[i].content;
-          break;
-        case "og:type":
-          attributes.ogType = metaElements[i].content;
-          break;
-        case "og:image":
-        case "og:image:url":
-          attributes.image = metaElements[i].content;
-          break;
-        case "og:description":
-          attributes.description = metaElements[i].content;
-          break;
-        case "og:url":
-          attributes.url = metaElements[i].content;
-          break;
+      if (metaElements[i].attributes != null && metaElements[i].attributes.length >= 2) {
+        switch (metaElements[i].attributes[0].nodeValue) {
+          case "og:title":
+            attributes.title = metaElements[i].content;
+            break;
+          case "og:type":
+            attributes.ogType = metaElements[i].content;
+            break;
+          case "og:image":
+          case "og:image:url":
+            attributes.image = metaElements[i].content;
+            break;
+          case "og:image:type":
+            attributes.imageType = metaElements[i].content;
+            break;
+          case "og:image:width":
+            attributes.imageWidth = metaElements[i].content;
+            break;
+          case "og:image:height":
+            attributes.imageHeight = metaElements[i].content;
+            break;
+          case "og:description":
+            attributes.description = metaElements[i].content;
+            break;
+          case "og:url":
+            attributes.url = metaElements[i].content;
+            break;
+        }
       }
     }
     return attributes;
+  }
+
+  private _onClick(): void {
+    console.log("You clicked the Chiclet");
   }
 
 }

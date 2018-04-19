@@ -11,8 +11,7 @@ export class ChicletBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <h2>Hello, this is a chiclet!</h2>
-        <Chiclet url="https://bing.com" />
+        <Chiclet url="http://localhost:4322" />
       </div>
     );
   }

@@ -10,13 +10,18 @@ import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from 'office-ui-fabric-react/src/common/TestImages';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { ChicletTestImages } from '../../common/TestImages';
 import * as stylesImport from './Chiclet.scss';
 const styles: any = stylesImport;
 
 export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
   public render() {
-    const { title, description, image, imageType, imageWidth, imageHeight, url, onClick, onClickHref } = this.props;
+    const { title, ogType, description, image, imageType, imageWidth, imageHeight, url, onClick, onClickHref } = this.props;
     const actionable = (onClick || onClickHref) ? true : false;
+
+    // if this element is actionable it should have an aria role
+    const role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    const tabIndex = actionable ? 0 : undefined;
 
     var actions: IButtonProps[] = [
       { iconProps: { iconName: 'Breadcrumb' } },
@@ -24,55 +29,94 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
       { iconProps: { iconName: 'Share' } }
     ];
 
+    var preview = this._renderPreviewImage(image, imageHeight, imageWidth, ogType);
+
     return (
-      <FocusZone data-is-focusable={ true } allowFocusRoot>
+      <div
+        tabIndex={ tabIndex }
+        role={ role }
+        onKeyDown={ actionable ? this._onKeyDown : undefined }
+        onClick={ actionable ? this._onClick : undefined }
+        className={
+          css(
+            'ms-ChicletCard',
+            { ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable }
+          )
+        }
+      >
         <div
-          onKeyDown={ actionable ? this._onKeyDown : undefined }
-          onClick={ actionable ? this._onClick : undefined }
+          className={ css('ms-ChicletCardPreview', styles.preview) }
         >
-          <div
-            className={ css('ms-ChicletCardPreview', styles.preview) }
-          >
-            <div className={ css('ms-ChicletCardPreview-iconContainer', styles.previewIconContainer) } >
-              { image ?
-                (<div>{ image }</div>) :
-                (<Image
-                  src={ TestImages.documentPreviewTwo }
-                  role='presentation'
-                  alt=''
-                />)
-              }
-            </div>
-          </div>
-          <div
-            className={ css('ms-ChicletCardInfo', styles.info) }
-          >
-            <div
-              className={ css('ms-ChicletCardTitle', styles.title) }
-            >
-              { title ? title : "Title goes here and if it's really long it wraps around to the second line but does not make it to the third line" }
-            </div>
-            { imageType ? (<div>{ imageType }</div>) : (null) }
-            { imageWidth ? (<div>{ imageWidth }</div>) : (null) }
-            { imageHeight ? (<div>{ imageHeight }</div>) : (null) }
-            <div
-              className={ css('ms-ChicletCardLink', styles.link) }
-            >
-              { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
-            </div>
-            { description ? (<div>{ description }</div>) : (null) }
-            <div className={ css('ms-ChicletCardActions', styles.actions) }>
-              { actions && actions.map((action, index) => {
-                return (
-                  <div className={ css('ms-ChicletActions-action', styles.action) } key={ index }>
-                    <IconButton { ...action } />
-                  </div>
-                );
-              }) }
-            </div>
+          <div className={ css('ms-ChicletCardPreview-iconContainer', styles.previewIconContainer) } >
+            { image ?
+              preview :
+              (<Image
+                src={ TestImages.documentPreviewTwo }
+                role='presentation'
+                alt=''
+              />)
+            }
           </div>
         </div>
-      </FocusZone>
+        <div
+          className={ css('ms-ChicletCardInfo', styles.info) }
+        >
+          <div
+            className={ css('ms-ChicletCardTitle', styles.title) }
+          >
+            { title ? title : "Title goes here and if it's really long it wraps around to the second line but does not make it to the third line" }
+          </div>
+          { imageType ? (<div>{ imageType }</div>) : (null) }
+          { imageWidth ? (<div>{ imageWidth }</div>) : (null) }
+          { imageHeight ? (<div>{ imageHeight }</div>) : (null) }
+          <div
+            className={ css('ms-ChicletCardLink', styles.link) }
+          >
+            { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
+          </div>
+          <div className={ css('ms-ChicletCardActions', styles.actions) }>
+            { actions && actions.map((action, index) => {
+              return (
+                <div className={ css('ms-ChicletActions-action', styles.action) } key={ index }>
+                  <IconButton { ...action } />
+                </div>
+              );
+            }) }
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, ogType?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+    const image = (
+      <Image
+        width={ imageWidth }
+        height={ imageHeight }
+        src={ TestImages.documentPreview }
+        role='presentation'
+        alt=''
+      />
+    );
+
+    let icon;
+    switch (ogType) {
+      case "word":
+        icon = <Icon className={ css('ms-DocumentCardPreview-icon', styles.icon) } iconName='WordDocument' />;
+        break;
+      case "powerpoint":
+        icon = <Icon className={ css('ms-DocumentCardPreview-icon', styles.icon) } iconName='PowerPointDocument' />;
+        break;
+      case "excel":
+        icon = <Icon className={ css('ms-DocumentCardPreview-icon', styles.icon) } iconName='ExcelDocument' />;
+        break;
+    }
+
+    return (
+      <div>
+        { image }
+        { icon }
+      </div>
     );
   }
 

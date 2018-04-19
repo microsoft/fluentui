@@ -44,7 +44,7 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   componentRef?: (component: IChiclet | null) => void;
 
   /**
-  * The type of DocumentCard to display.
+  * The type of Chiclet to display.
   * @default Chiclet.anonymous
   */
   type?: ChicletType;
@@ -81,24 +81,22 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
 
 export enum ChicletType {
   /**
-   * Standard Chiclet for anonymous sharing links.
+   * X-Small Chiclet
    */
-  anonymous = 0,
+  xsmall = 0,
 
   /**
-   * Chiclet for authenticated users.
+   * Small Chiclet
    */
-  authenticated = 1,
-}
+  small = 1,
 
-// export interface OpenGraphObject {
-//   title?: string,
-//   type?: string,
-//   image?: string,
-//   imageUrl?: string,
-//   imageSecureUrl?: string,
-//   imageWidth?: string,
-//   imageHeight?: string,
-//   url?: string,
-//   description?: string
-// }
+  /**
+   * Medium Chiclet
+   */
+  medium = 2,
+
+  /**
+   * Large Chiclet
+   */
+  large = 3
+}
