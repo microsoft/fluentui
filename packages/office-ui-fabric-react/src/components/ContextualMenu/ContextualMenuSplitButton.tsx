@@ -99,7 +99,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
-      onItemMouseEnter,
       onItemMouseLeave,
       onItemMouseDown,
       onItemMouseMove
