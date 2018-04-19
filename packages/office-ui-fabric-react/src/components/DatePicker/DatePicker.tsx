@@ -281,6 +281,15 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
+  public reset(): void {
+    this.setState({
+      selectedDate: this.props.value || undefined,
+      formattedDate: (this.props.formatDate && this.props.value) ? formatDate(this.props.value) : '',
+      isDatePickerShown: false,
+      errorMessage: undefined
+    });
+  }
+
   private _onSelectDate = (date: Date): void => {
     const { formatDate, onSelectDate } = this.props;
 
