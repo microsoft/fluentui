@@ -37,7 +37,7 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
           <ContextualMenu
             items={ this.props.menuItems }
             shouldFocusOnMount={ true }
-            target={ this.itemElement.value }
+            target={ this.itemElement.current }
             onDismiss={ this._onCloseContextualMenu }
             directionalHint={ DirectionalHint.bottomLeftEdge }
           />)

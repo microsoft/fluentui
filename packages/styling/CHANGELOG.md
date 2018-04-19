@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 18 Apr 2018 10:15:04 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 00:17:37 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 19 Apr 2018 00:17:37 GMT
+
+### Minor changes
+
+- PulsingBeaconAnimationStyles: Distinguish between single and double pulse.
 
 ## 5.24.0
 Wed, 18 Apr 2018 10:15:04 GMT

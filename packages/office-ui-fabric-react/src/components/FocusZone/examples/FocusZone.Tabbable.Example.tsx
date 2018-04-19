@@ -1,8 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
-import { DefaultButton, BaseButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './FocusZone.Tabbable.Example.scss';

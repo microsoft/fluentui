@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SearchBox: Clicks on element before input field set cursor to start of input text.",
+      "comment": "TextField: Implemented input masking.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "law@microsoft.com"
 }

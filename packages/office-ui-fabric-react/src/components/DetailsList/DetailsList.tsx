@@ -136,8 +136,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
-    this._list.value && this._list.value.scrollToIndex(index, measureItem, scrollToMode);
-    this._groupedList.value && this._groupedList.value.scrollToIndex(index, measureItem, scrollToMode);
+    this._list.current && this._list.current.scrollToIndex(index, measureItem, scrollToMode);
+    this._groupedList.current && this._groupedList.current.scrollToIndex(index, measureItem, scrollToMode);
   }
 
   public focusIndex(
@@ -180,7 +180,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       this.props.items !== prevProps.items &&
       this.props.items.length > 0 &&
       this.state.focusedItemIndex !== -1 &&
-      !elementContains(this._root.value, document.activeElement as HTMLElement, false)
+      !elementContains(this._root.current, document.activeElement as HTMLElement, false)
     ) {
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,
@@ -518,7 +518,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.down) {
-      if (this._focusZone.value && this._focusZone.value.focus()) {
+      if (this._focusZone.current && this._focusZone.current.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -527,7 +527,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onContentKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.up && !ev.altKey) {
-      if (this._header.value && this._header.value.focus()) {
+      if (this._header.current && this._header.current.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -569,8 +569,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false) {
-    if (this._selectionZone.value) {
-      this._selectionZone.value.ignoreNextFocus();
+    if (this._selectionZone.current) {
+      this._selectionZone.current.ignoreNextFocus();
     }
     this._async.setTimeout(() => {
       row.focus(forceIntoFirstElement);
@@ -593,19 +593,19 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this.setState({
       isCollapsed: collapsed
     });
-    if (this._groupedList.value) {
-      this._groupedList.value.toggleCollapseAll(collapsed);
+    if (this._groupedList.current) {
+      this._groupedList.current.toggleCollapseAll(collapsed);
     }
   }
 
   private _forceListUpdates() {
     this._pendingForceUpdate = false;
 
-    if (this._groupedList.value) {
-      this._groupedList.value.forceUpdate();
+    if (this._groupedList.current) {
+      this._groupedList.current.forceUpdate();
     }
-    if (this._list.value) {
-      this._list.value.forceUpdate();
+    if (this._list.current) {
+      this._list.current.forceUpdate();
     }
   }
 
