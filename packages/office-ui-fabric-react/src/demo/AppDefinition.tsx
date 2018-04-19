@@ -53,12 +53,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/checkbox'
         },
         {
-          component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
-          key: 'Chiclet',
-          name: 'Chiclet',
-          url: '#/examples/chiclet'
-        },
-        {
           component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
           key: 'Coachmark',
           name: 'Coachmark',
