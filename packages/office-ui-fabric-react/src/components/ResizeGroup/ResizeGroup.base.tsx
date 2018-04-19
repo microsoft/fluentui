@@ -351,7 +351,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public remeasure(): void {
-    if (this._root.value) {
+    if (this._root.current) {
       this.setState({ measureContainer: true });
     }
   }
@@ -359,12 +359,12 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   private _afterComponentRendered(): void {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
-      if (this.state.measureContainer && this._root.value) {
-        containerWidth = this._root.value.getBoundingClientRect().width;
+      if (this.state.measureContainer && this._root.current) {
+        containerWidth = this._root.current.getBoundingClientRect().width;
       }
       const nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
         this.state,
-        () => this._measured.value ? this._measured.value.scrollWidth : 0,
+        () => this._measured.current ? this._measured.current.scrollWidth : 0,
         containerWidth);
 
       if (nextState) {
@@ -374,7 +374,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   private _onResize(): void {
-    if (this._root.value) {
+    if (this._root.current) {
       this.setState({ measureContainer: true });
     }
   }

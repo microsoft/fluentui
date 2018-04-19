@@ -8,7 +8,6 @@ import {
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 import { ToggleAriaLabelExample } from './examples/Toggle.AriaLabel.Example';
-import { FontClassNames } from '../../Styling';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ToggleStatus } from './Toggle.checklist';
 

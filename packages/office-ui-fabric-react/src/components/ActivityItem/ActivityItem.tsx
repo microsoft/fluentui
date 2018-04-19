@@ -1,9 +1,7 @@
-/* tslint:disable */
+
 import * as React from 'react';
-/* tslint:enable */
-import { DefaultPalette } from '../../Styling';
 import { BaseComponent } from '../../Utilities';
-import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.types';
+import { IActivityItemProps } from './ActivityItem.types';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
 import { PersonaSize, PersonaCoin, IPersonaSharedProps, IPersonaCoinProps } from '../../Persona';
@@ -22,7 +20,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
-      styles: customStyles,
       animateBeaconSignal,
       isCompact
     } = this.props;

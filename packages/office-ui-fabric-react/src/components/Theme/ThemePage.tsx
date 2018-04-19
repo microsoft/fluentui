@@ -1,22 +1,16 @@
 import * as React from 'react';
+import { classNamesFunction } from '../../Utilities';
 import {
-  classNamesFunction,
-  customizable,
-} from '../../Utilities';
-import {
-  FontClassNames,
   IPalette,
   ISemanticColors,
   loadTheme,
 } from '../../Styling';
 import {
   ComponentPage,
-  Highlight,
   IComponentDemoPageProps,
   PageMarkdown,
 } from '@uifabric/example-app-base';
 import {
-  IThemePagePalette,
   IThemePageStyleProps,
   IThemePageStyles,
   IThemePageState,
@@ -34,8 +28,6 @@ import { ColorPicker } from '../ColorPicker';
 const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
 
 export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePageState> {
-  private _list: DetailsList;
-
   constructor(props: IComponentDemoPageProps) {
     super(props);
 
@@ -82,7 +74,6 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     return (
       <div>
         <DetailsList
-          componentRef={ this._createDetailsListRef }
           items={ colors }
           selectionMode={ SelectionMode.none }
           layoutMode={ DetailsListLayoutMode.fixedColumns }
@@ -140,10 +131,6 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
 
       </div>
     );
-  }
-
-  private _createDetailsListRef = (component: DetailsList) => {
-    this._list = component;
   }
 
   private _onSwatchClicked(item: any, index: number, list: string, ev: React.MouseEvent<HTMLElement>): void {

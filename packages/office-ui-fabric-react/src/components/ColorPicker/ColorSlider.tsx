@@ -85,12 +85,12 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
   }
 
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (!this._root.value) {
+    if (!this._root.current) {
       return;
     }
 
     const { onChanged, minValue, maxValue } = this.props;
-    const rectSize = this._root.value.getBoundingClientRect();
+    const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));

@@ -56,8 +56,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
-    if (this._list.value) {
-      this._list.value.scrollToIndex(index, measureItem);
+    if (this._list.current) {
+      this._list.current.scrollToIndex(index, measureItem);
     }
   }
 
@@ -247,11 +247,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
     const groupCount = groups ? groups.length : 1;
 
-    if (this._list.value) {
-      this._list.value.forceUpdate();
+    if (this._list.current) {
+      this._list.current.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this._list.value.refs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.current.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }

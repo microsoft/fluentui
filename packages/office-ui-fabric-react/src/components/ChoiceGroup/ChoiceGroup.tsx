@@ -137,8 +137,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   }
 
   public focus() {
-    if (this._inputElement.value) {
-      this._inputElement.value.focus();
+    if (this._inputElement.current) {
+      this._inputElement.current.focus();
     }
   }
 

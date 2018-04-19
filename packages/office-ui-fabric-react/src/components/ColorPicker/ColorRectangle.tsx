@@ -86,11 +86,11 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const { color, onSVChanged } = this.props;
 
-    if (!this._root.value) {
+    if (!this._root.current) {
       return;
     }
 
-    const rectSize = this._root.value.getBoundingClientRect();
+    const rectSize = this._root.current.getBoundingClientRect();
 
     const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;

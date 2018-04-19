@@ -32,7 +32,7 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Using LayerHost to control projection' code={ LayerHostedExampleCode }>
               <LayerHostedExample />
             </ExampleCard>
-            <ExampleCard title='Using Customizer to control the default layer behavior' code={ LayerHostedExampleCode }>
+            <ExampleCard title='Using Customizer to control the default layer behavior' code={ LayerCustomizedExampleCode }>
               <LayerCustomizedExample />
             </ExampleCard>
           </div>

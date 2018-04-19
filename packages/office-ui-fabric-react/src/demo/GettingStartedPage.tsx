@@ -1,11 +1,8 @@
-/* tslint:disable:jsx-no-multiline-js */
-
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import './GettingStartedPage.scss';
-import { Highlight, PageMarkdown } from '@uifabric/example-app-base';
+import { PageMarkdown } from '@uifabric/example-app-base';
 
 export class GettingStartedPage extends React.Component<any, any> {
   public render(): JSX.Element {

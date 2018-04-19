@@ -143,8 +143,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   public componentDidMount(): void {
     const { dragDropHelper, selection } = this.props;
 
-    if (dragDropHelper && this._root.value) {
-      this._dragDropSubscription = dragDropHelper.subscribe(this._root.value, this._events, this._getGroupDragDropOptions());
+    if (dragDropHelper && this._root.current) {
+      this._dragDropSubscription = dragDropHelper.subscribe(this._root.current, this._events, this._getGroupDragDropOptions());
     }
 
     if (selection) {
@@ -167,8 +167,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         delete this._dragDropSubscription;
       }
 
-      if (this.props.dragDropHelper && this._root.value) {
-        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root.value, this._events, this._getGroupDragDropOptions());
+      if (this.props.dragDropHelper && this._root.current) {
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root.current, this._events, this._getGroupDragDropOptions());
       }
     }
   }
@@ -248,14 +248,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   public forceListUpdate() {
     const { group } = this.props;
 
-    if (this._list.value) {
-      this._list.value.forceUpdate();
+    if (this._list.current) {
+      this._list.current.forceUpdate();
 
       if (group && group.children && group.children.length > 0) {
         const subGroupCount = group.children.length;
 
         for (let i = 0; i < subGroupCount; i++) {
-          const subGroup = this._list.value.refs['subGroup_' + String(i)] as GroupedListSection;
+          const subGroup = this._list.current.refs['subGroup_' + String(i)] as GroupedListSection;
 
           if (subGroup) {
             subGroup.forceListUpdate();

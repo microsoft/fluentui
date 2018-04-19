@@ -88,7 +88,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
       const { viewport } = this.state;
-      const viewportElement = this._root.value;
+      const viewportElement = this._root.current;
       const scrollElement = findScrollableParent(viewportElement);
       const scrollRect = getRect(scrollElement);
       const clientRect = getRect(viewportElement);

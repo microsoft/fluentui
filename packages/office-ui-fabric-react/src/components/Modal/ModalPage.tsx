@@ -6,7 +6,6 @@ import {
   PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ModalStatus } from './Modal.checklist';

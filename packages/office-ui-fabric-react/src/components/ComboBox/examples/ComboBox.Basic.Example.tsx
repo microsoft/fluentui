@@ -87,7 +87,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
   public render(): JSX.Element {
     const { options, selectedOptionKey, value } = this.state;
-    const { optionsMulti, selectedOptionKeys, valueMulti } = this.state;
+    const { optionsMulti } = this.state;
 
     return (
       <div className='ms-ComboBoxBasicExample'>

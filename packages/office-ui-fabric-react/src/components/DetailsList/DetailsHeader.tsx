@@ -102,7 +102,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   public componentDidMount(): void {
     const { selection } = this.props;
-    const focusZone = this._root.value;
+    const focusZone = this._root.current;
     const rootElement = findDOMNode(focusZone as any);
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -326,7 +326,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return Boolean(this._root.value && this._root.value.focus());
+    return Boolean(this._root.current && this._root.current.focus());
   }
 
   private _renderColumnSizer(columnIndex: number): JSX.Element {

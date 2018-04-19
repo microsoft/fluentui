@@ -9,7 +9,6 @@ import {
 import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
-import { FontClassNames } from '../../Styling';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { FacepileStatus } from './Facepile.checklist';
 

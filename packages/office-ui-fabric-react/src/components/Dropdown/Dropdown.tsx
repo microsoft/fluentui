@@ -110,8 +110,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
-      if (this._dropDown.value) {
-        this._dropDown.value.focus();
+      if (this._dropDown.current) {
+        this._dropDown.current.focus();
       }
 
       if (this.props.onDismiss) {
@@ -220,8 +220,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public focus(shouldOpenOnFocus?: boolean): void {
-    if (this._dropDown.value && this._dropDown.value.tabIndex !== -1) {
-      this._dropDown.value.focus();
+    if (this._dropDown.current && this._dropDown.current.tabIndex !== -1) {
+      this._dropDown.current.focus();
 
       if (shouldOpenOnFocus) {
         this.setState({
@@ -376,11 +376,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
             className={ css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className) }
-            target={ this._dropDown.value }
+            target={ this._dropDown.current }
             onDismiss={ this._onDismiss }
             onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
-            calloutWidth={ dropdownWidth || (this._dropDown.value ? this._dropDown.value.clientWidth : 0) }
+            calloutWidth={ dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0) }
           >
             { onRenderList(props, this._onRenderList) }
           </Callout>
@@ -550,10 +550,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _onPositioned = (): void => {
-    if (this._focusZone.value) {
+    if (this._focusZone.current) {
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
-      this._async.requestAnimationFrame(() => this._focusZone.value!.focus());
+      this._async.requestAnimationFrame(() => this._focusZone.current!.focus());
     }
   }
 
@@ -615,11 +615,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
      * Edge and IE expose a setActive() function for focusable divs that
      * sets the page focus but does not scroll the parent element.
      */
-    if (this._host.value) {
-      if ((this._host.value as any).setActive) {
-        (this._host.value as any).setActive();
+    if (this._host.current) {
+      if ((this._host.current as any).setActive) {
+        (this._host.current as any).setActive();
       } else {
-        this._host.value.focus();
+        this._host.current.focus();
       }
     }
   }
@@ -627,8 +627,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onDismiss = (): void => {
     this.setState({ isOpen: false });
 
-    if (this._dropDown.value) {
-      this._dropDown.value.focus();
+    if (this._dropDown.current) {
+      this._dropDown.current.focus();
     }
   }
 
@@ -803,8 +803,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: false });
         } else {
-          if (this._host.value) {
-            elementToFocus = getLastFocusable(this._host.value, (this._host.value.lastChild as HTMLElement), true);
+          if (this._host.current) {
+            elementToFocus = getLastFocusable(this._host.current, (this._host.current.lastChild as HTMLElement), true);
           }
         }
         break;
@@ -818,8 +818,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        if (this._host.value) {
-          elementToFocus = getFirstFocusable(this._host.value, (this._host.value.firstChild as HTMLElement), true);
+        if (this._host.current) {
+          elementToFocus = getFirstFocusable(this._host.current, (this._host.current.firstChild as HTMLElement), true);
         }
         break;
 

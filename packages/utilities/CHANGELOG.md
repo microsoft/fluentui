@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Minor changes
+
+- Update createRef to match React.createRef api
 
 ## 5.24.0
 Mon, 16 Apr 2018 10:23:26 GMT
