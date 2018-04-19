@@ -8,14 +8,14 @@ import {
 import {
   FocusZone,
   FocusZoneDirection
-} from 'office-ui-fabric-react/lib/FocusZone';
-import { Autofill } from 'office-ui-fabric-react/lib/components/Autofill/Autofill';
-import { IPickerItemProps, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
+} from '../../FocusZone';
+import { Autofill } from '../../Autofill';
+import { IPickerItemProps, IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
 import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
-import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
+import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 

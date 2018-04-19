@@ -3,11 +3,11 @@ import * as React from 'react';
 /* tslint:enable */
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from '../../../Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
 import { SelectedItemWithContextMenu } from './Items/SelectedItemWithContextMenu';
 import { IRenderFunction } from '../../../Utilities';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem } from '../../../ContextualMenu';
 import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem } from './Items/EditingItem';
 

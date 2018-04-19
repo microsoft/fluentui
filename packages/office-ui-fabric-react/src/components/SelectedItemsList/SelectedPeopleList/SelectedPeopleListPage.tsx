@@ -8,7 +8,7 @@ import {
 
 import { PeopleSelectedItemsListExample } from '../examples/SelectedPeopleList.Basic.Example';
 const PeopleSelectedItemsListExampleCode =
-  require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example') as string;
+  require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
 
 export class SelectedPeopleListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -4,8 +4,8 @@ import {
   css,
   KeyCodes
 } from '../../../Utilities';
-import { IButton } from 'office-ui-fabric-react/lib/Button';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { IButton } from '../../../Button';
+import { ISuggestionModel } from '../../../Pickers';
 import {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,

@@ -4,7 +4,7 @@ import {
   css,
   autobind
 } from '../../../Utilities';
-import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
 // tslint:disable-next-line:no-any

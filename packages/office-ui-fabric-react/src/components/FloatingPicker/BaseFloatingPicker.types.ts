@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { ISuggestionModel } from '../../Pickers';
+import { IPersonaProps } from '../../Persona';
 import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 

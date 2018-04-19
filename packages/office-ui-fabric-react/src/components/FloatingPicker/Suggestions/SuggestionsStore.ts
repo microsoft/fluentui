@@ -1,5 +1,5 @@
 import { autobind } from '../../../Utilities';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel } from '../../../Pickers';
 
 export class SuggestionsStore<T> {
   public suggestions: ISuggestionModel<T>[];

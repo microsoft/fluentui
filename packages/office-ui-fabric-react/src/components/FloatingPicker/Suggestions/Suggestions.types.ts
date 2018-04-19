@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { ISuggestionModel } from '../../../Pickers';
+import { IPersonaProps } from '../../../Persona';
 
 // tslint:disable-next-line:no-any
 export interface ISuggestionsCoreProps<T> extends React.Props<any> {
