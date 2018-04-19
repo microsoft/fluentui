@@ -137,7 +137,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
     const { scrollablePane } = this.context;
-    const { stickyPosition } = this.props;
 
     if (this.root.current && this.nonStickyContent.current) {
       this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
