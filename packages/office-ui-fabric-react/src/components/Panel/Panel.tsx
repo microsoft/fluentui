@@ -286,7 +286,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     );
 
     return (
-      <div ref={ this._content } className={ contentClass } >
+      <div ref={ this._content } className={ contentClass } data-is-scrollable={ true } >
         { props.children }
       </div>
     );
@@ -308,7 +308,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   private _updateFooterPosition(): void {
-    const _content = this._content.value;
+    const _content = this._content.current;
     if (_content) {
       const height = _content.clientHeight;
       const innerHeight = _content.scrollHeight;

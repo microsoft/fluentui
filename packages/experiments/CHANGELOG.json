@@ -2,6 +2,69 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.31.4",
+      "tag": "@uifabric/experiments_v5.31.4",
+      "date": "Thu, 19 Apr 2018 18:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "e77a31bee560440bae3737eca6b19fce2c1ae3db",
+            "comment": "Update createRef to match React.createRef api"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.83.0 <6.0.0` to `>=5.84.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.1 <6.0.0` to `>=5.10.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.3",
+      "tag": "@uifabric/experiments_v5.31.3",
+      "date": "Wed, 18 Apr 2018 10:15:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7dabb13e55f671e3c37df88140e66dbee076e2f1",
+            "comment": "Experiments: NavPage bad imports fixed."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.2 <6.0.0` to `>=5.82.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.0 <6.0.0` to `>=5.10.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.2",
+      "tag": "@uifabric/experiments_v5.31.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4dc9071ade20efb98eded9b97aa9124a9232f84a",
+            "comment": "Fix improper imports from index files"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.1 <6.0.0` to `>=5.82.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.1",
       "tag": "@uifabric/experiments_v5.31.1",
       "date": "Mon, 16 Apr 2018 10:23:25 GMT",

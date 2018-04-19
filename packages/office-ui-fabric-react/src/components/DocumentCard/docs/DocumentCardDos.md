@@ -1,0 +1,3 @@
+- Use this control to represent Office documents or other user-relevant files in aggregate views, such as when you are showing the user’s most trending document.
+- Incorporate metadata that is relevant and useful in this particular view. A card can be specialized to be about the document’s latest changes, or about the document’s popularity, as you see fit.
+- Use the DocumentCard when you are illustrating an event that encompasses multiple files. For example, a card can be configured to represent a single upload action that consisted in adding more than one file.

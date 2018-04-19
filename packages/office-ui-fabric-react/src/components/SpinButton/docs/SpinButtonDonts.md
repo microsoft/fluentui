@@ -1,0 +1,3 @@
+- Don’t use a SpinButton if the range of values is large.
+- Don’t use a SpinButton for binary settings.
+- Don't use a SpinButton for a range of three values or less.

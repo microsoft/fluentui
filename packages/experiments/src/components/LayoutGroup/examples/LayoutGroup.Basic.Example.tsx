@@ -37,8 +37,15 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
             }
           />
           <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>
-            <TextField label='TextField with a placeholder' placeholder='Now I am a Placeholder' ariaLabel='Please enter text here' />
-            <TextField label='TextField with an icon' iconProps={ { iconName: 'Calendar' } } />
+            <TextField
+              label='TextField with a placeholder'
+              placeholder='Now I am a Placeholder'
+              ariaLabel='Please enter text here'
+            />
+            <TextField
+              label='TextField with an icon'
+              iconProps={ { iconName: 'Calendar' } }
+            />
           </LayoutGroup>
 
           <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>

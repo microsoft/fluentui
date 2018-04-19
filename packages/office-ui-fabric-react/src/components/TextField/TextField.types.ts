@@ -229,6 +229,32 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoComplete?: 'on' | 'off';
 
   /**
+   * The masking string that defines the mask's behavior.
+   * A backslash will escape any character.
+   * Special format characters are:
+   * '9': [0-9]
+   * 'a': [a-zA-Z]
+   * '*': [a-zA-Z0-9]
+   */
+  mask?: string;
+
+  /**
+   * The character to show in place of unfilled characters of the mask.
+   * @default '_'
+   */
+  maskChar?: string;
+
+  /**
+   * An object defining the format characters and corresponding regexp values.
+   * Default format characters: {
+   *  '9': /[0-9]/,
+   *  'a': /[a-zA-Z]/,
+   *  '*': /[a-zA-Z0-9]/
+   * }
+   */
+  maskFormat?: { [key: string]: RegExp };
+
+  /**
    * Deprecated property. Serves no function.
    * @deprecated
    */

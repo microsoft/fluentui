@@ -246,7 +246,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
-            target={ this._datePickerDiv.value }
+            target={ this._datePickerDiv.current }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
@@ -278,8 +278,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public focus(): void {
-    if (this._textField.value) {
-      this._textField.value.focus();
+    if (this._textField.current) {
+      this._textField.current.focus();
     }
   }
 
@@ -303,8 +303,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   private _onCalloutPositioned = (): void => {
-    if (this._calendar.value) {
-      this._calendar.value.focus();
+    if (this._calendar.current) {
+      this._calendar.current.focus();
     }
   }
 
@@ -410,8 +410,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
 
-    if (this._textField.value) {
-      this._textField.value.focus();
+    if (this._textField.current) {
+      this._textField.current.focus();
     }
   }
 

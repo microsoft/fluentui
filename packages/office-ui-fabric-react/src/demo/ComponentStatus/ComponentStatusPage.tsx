@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { ComponentPage, IComponentPageSection } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  IComponentPageSection,
+  PageMarkdown,
+} from '@uifabric/example-app-base';
 import { Link } from '../../Link';
 import { AllComponentsStatus } from './AllComponents.checklist';
 import { ComponentStatusInfoState, IComponentStatusInfoState, InformationLink } from './ComponentStatusState';
@@ -14,6 +18,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
       <ComponentPage
         title='Components Checklist'
         componentName='Components Checklist'
+        editOverviewUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md'
         overview={ this._renderOverView() }
         otherSections={ sections }
       />
@@ -22,9 +27,9 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
 
   private _renderOverView(): JSX.Element {
     return (
-      <div>
-        Badges are used to track a component's status regarding different criteria. They reflect if a component is localizable, accessible and reliable.
-    </div>
+      <PageMarkdown>
+        { require<string>('!raw-loader!office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md') }
+      </PageMarkdown>
     );
   }
 

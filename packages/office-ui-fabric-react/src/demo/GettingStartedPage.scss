@@ -24,13 +24,18 @@
     margin: -20px;
     margin-bottom: 20px;
     border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    h1 {
-      margin-bottom: 0;
-    }
+    .ms-GettingStartedPage-title {
+      h1 {
+        margin-bottom: 0;
+      }
 
-    h3 {
-      margin-top: 0;
+      h3 {
+        margin-top: 0;
+      }
     }
   }
 
