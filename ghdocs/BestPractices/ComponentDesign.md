@@ -189,9 +189,9 @@ public render() {
 
 Best, use createRef:
 
-The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://github.com/facebook/react/pull/11555). (When Fabric switches over to React 16, we'll use React.createRef instead)
+The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://reactjs.org/docs/refs-and-the-dom.html#creating-refs). (When Fabric switches over to React 16, we'll use React.createRef instead)
 
-`createRef` creates a reference object that has the following type `{ value: T | null }`, where T is the element to reference (either a dom node or a react component). You set the reference by passing the reference object as the `ref` prop. You can then subsequently access the reference through the `.value` property on the reference object elsewhere in your code.
+`createRef` creates a reference object that has the following type `{ current: T | null }`, where T is the element to reference (either a dom node or a react component). You set the reference by passing the reference object as the `ref` prop. You can then subsequently access the reference through the `.current` property on the reference object elsewhere in your code.
 
 ```typescript
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
@@ -206,8 +206,8 @@ class Foo extends BaseComponent<...> {
   }
 
   private _onClick() {
-    // Access the reference through the .value property on the reference object
-    this._root.value.focus();
+    // Access the reference through the .current property on the reference object
+    this._root.current.focus();
   }
 }
 ```

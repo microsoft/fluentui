@@ -133,8 +133,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
     }
 
-    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.value) {
-      const newWidth = this._cellMeasurer.value.getBoundingClientRect().width;
+    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.current) {
+      const newWidth = this._cellMeasurer.current.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
 
@@ -329,7 +329,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(forceIntoFirstElement: boolean = false): boolean {
-    return !!this._focusZone.value && this._focusZone.value.focus(forceIntoFirstElement);
+    return !!this._focusZone.current && this._focusZone.current.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {

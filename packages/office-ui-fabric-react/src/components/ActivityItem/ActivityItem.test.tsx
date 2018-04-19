@@ -100,4 +100,17 @@ describe('ActivityItem', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders compact with animation correctly', () => {
+    const component = renderer.create(
+      <ActivityItem
+        { ...defaultProps }
+        activityPersonas={ [defaultPersonaProps[0]] }
+        isCompact={ true }
+        animateBeaconSignal={ true }
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
 });

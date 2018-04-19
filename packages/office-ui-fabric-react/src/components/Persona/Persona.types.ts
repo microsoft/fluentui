@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { PersonaBase } from './Persona.base';
-import { PersonaCoinBase } from './PersonaCoin/index';
-import { PersonaPresenceBase } from './PersonaPresence/index';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
@@ -449,7 +447,7 @@ export namespace personaPresenceSizes {
 
 /**
  * Returns true or false for the passed size.
- * @param size {PersonaSize}
+ * @param {PersonaSize} size
  */
 export const sizeBoolean = (size: PersonaSize) => ({
   isSize10: size === PersonaSize.size10 || size === PersonaSize.tiny,
@@ -465,7 +463,7 @@ export const sizeBoolean = (size: PersonaSize) => ({
 
 /**
  * Returns true or false for the passed presence.
- * @param presence {PersonaPresence}
+ * @param {PersonaPresence} presence
  */
 export const presenceBoolean = (presence: PersonaPresence) => ({
   isAvailable: presence === PersonaPresence.online,
