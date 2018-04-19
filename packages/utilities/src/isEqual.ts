@@ -4,8 +4,12 @@
  * @param itemB Second item to compare to first item
  */
 export const isEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-line no-any
+  // First, a simple check for strings and numbers
+  if (typeof itemA === 'string' || typeof itemA === 'number') {
   if (itemA === itemB) {
     return true;
+  }
+    return false;
   }
   // Get the value type
   const type = Object.prototype.toString.call(itemA);
