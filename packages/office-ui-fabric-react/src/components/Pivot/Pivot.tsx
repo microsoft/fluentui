@@ -153,7 +153,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderLinkContent = (link: IPivotItemProps): JSX.Element => {
-    const { itemCount, itemIcon, headerText, linkText } = link;
+    const { itemCount, itemIcon, headerText } = link;
 
     return (
       <span className={ css('ms-Pivot-link-content') }>
@@ -162,7 +162,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
             <Icon iconName={ itemIcon } />
           </span>
         ) }
-        { headerText !== undefined ? <span className={ css('ms-Pivot-text', styles.text) }> { link.headerText }</span> : linkText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.linkText }</span> }
+        { headerText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.headerText }</span> }
         { itemCount !== undefined && <span className={ css('ms-Pivot-count', styles.count) } > ({ itemCount })</span> }
       </span>
     );
@@ -205,7 +205,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         const itemKey = pivotItem.props.itemKey || index.toString();
 
         links.push({
-          linkText: pivotItem.props.linkText,
+          headerText: pivotItem.props.headerText || pivotItem.props.linkText,
           headerButtonProps: pivotItem.props.headerButtonProps,
           ariaLabel: pivotItem.props.ariaLabel,
           itemKey: itemKey,

@@ -10,7 +10,8 @@ export class PivotBasicExample extends React.Component<any, any> {
       <div>
         <Pivot>
           <PivotItem
-            linkText='My Files'
+            headerText='My Files'
+            linkText='I am deprecated. "headerText" overwrites me'
             headerButtonProps={ {
               'data-order': 1,
               'data-title': 'My Files Title'
