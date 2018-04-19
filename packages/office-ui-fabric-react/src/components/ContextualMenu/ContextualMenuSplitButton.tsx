@@ -19,11 +19,7 @@ import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.typ
 
 export interface IContextualMenuSplitButtonState { }
 
-const TouchIdleDelay = 500; /* ms */
-
 export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSplitButtonProps, IContextualMenuSplitButtonState> {
-  private _processingTouch: boolean;
-  private _lastTouchTimeoutId: number | undefined;
   private _splitButton: HTMLDivElement;
 
   public render(): JSX.Element | null {
@@ -154,7 +150,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
 
   private _executeItemClick = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const {
-      onItemClick,
       executeItemClick
     } = this.props;
 

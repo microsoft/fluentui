@@ -762,8 +762,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    * As part of updating focus, This function will also update
    * the expand/collapse state accordingly.
    */
-  private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target: HTMLElement) {
-    const targetElement = target;
+  private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement) {
+    const targetElement = target ? target : ev.currentTarget as HTMLElement;
     const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
 
     if (item.key === this.state.expandedMenuItemKey) {
@@ -799,7 +799,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseDown = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
-    if (item.onMouseDown && this._enterTimerId === undefined) {
+    if (item.onMouseDown) {
       item.onMouseDown(item, ev);
     }
   }
