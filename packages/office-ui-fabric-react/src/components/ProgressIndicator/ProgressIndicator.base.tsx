@@ -3,6 +3,7 @@ import {
   BaseComponent,
   classNamesFunction,
   customizable,
+  IClassNames,
 } from '../../Utilities';
 import {
   IProgressIndicatorProps,
@@ -28,6 +29,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     width: 180
   };
 
+  private _classNames: IClassNames<IProgressIndicatorStyles>;
   constructor(props: IProgressIndicatorProps) {
     super(props);
 
@@ -35,6 +37,12 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
       title: 'label'
     });
 
+    this._classNames = getClassNames(this.props.getStyles, {
+      theme: this.props.theme!,
+      className: this.props.className,
+      barHeight: this.props.barHeight,
+      indeterminate: this.props.percentComplete === undefined ? true : false,
+    });
   }
 
   public render() {
@@ -50,14 +58,6 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
 
     let { label, percentComplete } = this.props;
 
-    const classNames = getClassNames(getStyles, {
-      theme: theme!,
-      className,
-      barHeight,
-      smoothTransition: (percentComplete && percentComplete > ZERO_THRESHOLD) ? true : false,
-      indeterminate: !percentComplete ? true : false,
-    });
-
     // Handle deprecated value.
     if (title) {
       label = title;
@@ -67,22 +67,27 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
       percentComplete = Math.min(100, Math.max(0, percentComplete! * 100));
     }
 
+    const progressBarStyles = {
+      width: percentComplete !== undefined ? percentComplete + '%' : undefined,
+      transition: (percentComplete !== undefined && percentComplete < ZERO_THRESHOLD) ? 'none' : undefined,
+    }
+
     return (
-      <div className={ classNames.root }>
-        <div className={ classNames.itemName }>{ label }</div>
-        <div className={ classNames.itemProgress }>
-          <div className={ classNames.progressTrack } />
+      <div className={ this._classNames.root }>
+        <div className={ this._classNames.itemName }>{ label }</div>
+        <div className={ this._classNames.itemProgress }>
+          <div className={ this._classNames.progressTrack } />
           <div
-            className={ classNames.progressBar }
-            style={ percentComplete !== undefined ? { width: percentComplete + '%' } : undefined }
+            className={ this._classNames.progressBar }
+            style={ progressBarStyles }
             role='progressbar'
             aria-valuemin={ 0 }
             aria-valuemax={ 100 }
-            aria-valuenow={ percentComplete }
+            aria-valuenow={ Math.floor(percentComplete!) }
             aria-valuetext={ ariaValueText }
           />
         </div>
-        <div className={ classNames.itemDescription }>{ description }</div>
+        <div className={ this._classNames.itemDescription }>{ description }</div>
       </div>
     );
   }
