@@ -7,7 +7,7 @@ import {
   FocusZoneDirection
 } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
