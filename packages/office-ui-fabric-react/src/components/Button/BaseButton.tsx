@@ -431,7 +431,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this._splitButtonContainer.value) {
       this._splitButtonContainer.value.focus();
     }
-    const { menuProps } = this.props;
+
     const currentMenuProps = this.state.menuProps;
     if (this.props.persistMenu) {
       currentMenuProps && currentMenuProps.hidden ? this._openMenu() : this._dismissMenu();
@@ -446,7 +446,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       checked,
       getSplitButtonClassNames,
-      onClick,
       primaryDisabled
     } = this.props;
 

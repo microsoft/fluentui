@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-
-import { DocumentCard } from './DocumentCard';
 import { DocumentCardTitle } from './DocumentCardTitle';
-import { DocumentCardPreview } from './DocumentCardPreview';
-import { DocumentCardActivity } from './DocumentCardActivity';
 
 const veryLongTitle = 'This is obviously a very very very very very very very very very very loooooooooooooooooooooooooooooooooooooooooooooooong title that will need to be truncated';
 

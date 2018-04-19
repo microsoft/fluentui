@@ -82,8 +82,14 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         className={ classNames.root }
         onFocusCapture={ this._onFocusCapture }
       >
-        <div className={ classNames.iconContainer }>
-          <Icon className={ classNames.icon } iconName='Search' />
+        <div
+          className={ classNames.iconContainer }
+          onClick={ this._onClickFocus }
+        >
+          <Icon
+            className={ classNames.icon }
+            iconName='Search'
+          />
         </div>
         <input
           id={ id }
@@ -139,6 +145,14 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       ev.preventDefault();
 
       this.focus();
+    }
+  }
+
+  private _onClickFocus = () => {
+    const inputElement = this._inputElement.value;
+    if (inputElement) {
+      this.focus();
+      inputElement.selectionStart = inputElement.selectionEnd = 0;
     }
   }
 

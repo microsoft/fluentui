@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  IPositioningContainer,
-  IPositioningContainerTypes
-} from './PositioningContainer.types';
+import { IPositioningContainerTypes } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 

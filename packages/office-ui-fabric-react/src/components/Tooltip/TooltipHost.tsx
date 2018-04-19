@@ -54,7 +54,6 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       directionalHintForRTL,
       hostClassName,
       id,
-      overflowMode,
       setAriaDescribedBy = true,
       tooltipProps
     } = this.props;
