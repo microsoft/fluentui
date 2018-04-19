@@ -85,7 +85,6 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const stars = [];
     const starIds = [];
     const {
-      allowZeroStars,
       disabled,
       getAriaLabel,
       getStyles,
