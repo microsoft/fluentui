@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/utilities": ">=5.24.0 <6.0.0",
+    "@uifabric/utilities": ">=5.25.0 <6.0.0",
     "@uifabric/merge-styles": ">=5.15.2 <6.0.0",
     "tslib": "^1.7.1"
   }
