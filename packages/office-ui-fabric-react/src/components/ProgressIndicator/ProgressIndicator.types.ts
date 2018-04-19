@@ -73,7 +73,6 @@ export interface IProgressIndicatorStyleProps {
    */
   className?: string;
   indeterminate?: boolean;
-  smoothTransition?: boolean;
   barHeight?: number;
 }
 

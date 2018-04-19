@@ -2,7 +2,6 @@ import {
   FontSizes,
   FontWeights,
   HighContrastSelector,
-  IStyle,
   keyframes,
   noWrap,
 } from '../../Styling';
@@ -19,7 +18,6 @@ export const getStyles = (
   const {
     className,
     indeterminate,
-    smoothTransition,
     theme,
     barHeight = 2,
   } = props;
@@ -46,12 +44,6 @@ export const getStyles = (
       right: '100%',
     }
   });
-
-  const smoothTransitionStyles: IStyle = {
-    transitionProperty: 'width',
-    transitionTimingFunction: 'linear',
-    transitionDuration: '150ms',
-  };
 
   return ({
     root: [
@@ -123,6 +115,9 @@ export const getStyles = (
           }
         }
       },
+      !indeterminate && {
+        transition: 'width .15s linear'
+      },
       indeterminate && [
         {
           position: 'absolute',
@@ -137,7 +132,6 @@ export const getStyles = (
             animation: `${indeterminateProgress} 3s infinite`,
           }
       ],
-      smoothTransition && smoothTransitionStyles,
     ],
   });
 };
