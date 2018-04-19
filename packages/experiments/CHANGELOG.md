@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 18 Apr 2018 10:15:04 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+
+## 5.31.4
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
 
 ## 5.31.3
 Wed, 18 Apr 2018 10:15:04 GMT

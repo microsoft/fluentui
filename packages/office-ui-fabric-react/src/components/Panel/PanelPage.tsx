@@ -19,7 +19,6 @@ import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example'
 import { PanelLightDismissCustomExample } from './examples/Panel.LightDismissCustom.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
-import { FontClassNames } from '../../Styling';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { PanelStatus } from './Panel.checklist';
 

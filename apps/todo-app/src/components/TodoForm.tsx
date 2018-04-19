@@ -81,7 +81,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
   private _onSubmit = (event: React.FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    const { value: textField } = this._textField;
+    const { current: textField } = this._textField;
     if (!textField) {
       return;
     }

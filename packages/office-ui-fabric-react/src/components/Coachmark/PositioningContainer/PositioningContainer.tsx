@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  IPositioningContainer,
-  IPositioningContainerTypes
-} from './PositioningContainer.types';
+import { IPositioningContainerTypes } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 
@@ -217,7 +214,7 @@ export class PositioningContainer
 
   protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._positionedHost.value && !elementContains(this._positionedHost.value, target);
+    const clickedOutsideCallout = this._positionedHost.current && !elementContains(this._positionedHost.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -230,9 +227,9 @@ export class PositioningContainer
   }
 
   protected _setInitialFocus = (): void => {
-    if (this._contentHost.value && this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
+    if (this._contentHost.current && this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
       this._didSetInitialFocus = true;
-      focusFirstChild(this._contentHost.value);
+      focusFirstChild(this._contentHost.current);
     }
   }
 
@@ -267,8 +264,8 @@ export class PositioningContainer
       onPositioned
     } = this.props;
 
-    const hostElement = this._positionedHost.value;
-    const positioningContainerElement = this._contentHost.value;
+    const hostElement = this._positionedHost.current;
+    const positioningContainerElement = this._contentHost.current;
 
     if (hostElement && positioningContainerElement) {
       let currentProps: IPositionProps | undefined;
@@ -388,11 +385,11 @@ export class PositioningContainer
   private _setHeightOffsetEveryFrame(): void {
     if (this._contentHost && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        if (!this._contentHost.value) {
+        if (!this._contentHost.current) {
           return;
         }
 
-        const positioningContainerMainElem = this._contentHost.value.lastChild as HTMLElement;
+        const positioningContainerMainElem = this._contentHost.current.lastChild as HTMLElement;
         const cardScrollHeight: number = positioningContainerMainElem.scrollHeight;
         const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;

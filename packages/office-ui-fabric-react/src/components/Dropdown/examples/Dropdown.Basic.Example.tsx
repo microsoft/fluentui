@@ -194,8 +194,8 @@ export class DropdownBasicExample extends BaseComponent<{}, {
   }
 
   private _onSetFocusButtonClicked = (): void => {
-    if (this._basicDropdown.value) {
-      this._basicDropdown.value.focus(true);
+    if (this._basicDropdown.current) {
+      this._basicDropdown.current.focus(true);
     }
   }
 

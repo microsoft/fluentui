@@ -62,7 +62,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   // tslint:disable-next-line:no-any
   public get items(): any {
-    return this.selectedItemsList.value ? this.selectedItemsList.value.items : [];
+    return this.selectedItemsList.current ? this.selectedItemsList.current.items : [];
   }
 
   public componentDidMount(): void {
@@ -70,19 +70,19 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public focus(): void {
-    if (this.focusZone.value) {
-      this.focusZone.value.focus();
+    if (this.focusZone.current) {
+      this.focusZone.current.focus();
     }
   }
 
   public clearInput(): void {
-    if (this.input.value) {
-      this.input.value.clear();
+    if (this.input.current) {
+      this.input.current.clear();
     }
   }
 
   public get inputElement(): HTMLInputElement | null {
-    return this.input.value && this.input.value.inputElement;
+    return this.input.current && this.input.current.inputElement;
   }
 
   public render(): JSX.Element {
@@ -152,8 +152,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     return (onRenderFloatingPicker({
       componentRef: this.floatingPicker,
       onChange: this._onSuggestionSelected,
-      inputElement: this.input.value ? this.input.value.inputElement : undefined,
-      selectedItems: this.selectedItemsList.value ? this.selectedItemsList.value.items : [],
+      inputElement: this.input.current ? this.input.current.inputElement : undefined,
+      selectedItems: this.selectedItemsList.current ? this.selectedItemsList.current.items : [],
       ...this.floatingPickerProps
     }));
   }
@@ -169,35 +169,35 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   protected resetFocus(index?: number): void {
     const { items } = this.state;
 
-    if (items.length && index! >= 0 && this.root.value) {
-      const newEl: HTMLElement = this.root.value
+    if (items.length && index! >= 0 && this.root.current) {
+      const newEl: HTMLElement = this.root.current
         .querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
-      if (newEl && this.focusZone.value) {
-        this.focusZone.value.focusElement(newEl);
+      if (newEl && this.focusZone.current) {
+        this.focusZone.current.focusElement(newEl);
       }
     } else if (!this.canAddItems()) {
       (items[items.length - 1] as IPickerItemProps<T>).selected = true;
       this.resetFocus(items.length - 1);
     } else {
-      if (this.input.value) {
-        this.input.value.focus();
+      if (this.input.current) {
+        this.input.current.focus();
       }
     }
   }
 
   protected onInputChange = (value: string): void => {
-    if (this.floatingPicker.value) {
-      this.floatingPicker.value.onQueryStringChanged(value);
+    if (this.floatingPicker.current) {
+      this.floatingPicker.current.onQueryStringChanged(value);
     }
   }
 
   protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    if (this.selectedItemsList.value) {
-      this.selectedItemsList.value.unselectAll();
+    if (this.selectedItemsList.current) {
+      this.selectedItemsList.current.unselectAll();
     }
 
-    if (this.floatingPicker.value) {
-      this.floatingPicker.value.showPicker(true /*updateValue*/);
+    if (this.floatingPicker.current) {
+      this.floatingPicker.current.showPicker(true /*updateValue*/);
     }
 
     if (this.props.inputProps && this.props.inputProps.onFocus) {
@@ -211,18 +211,18 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     if (ev.which !== KeyCodes.backspace) {
       return;
     }
-    if ((this.state.items.length && !this.input.value) || (this.input.value && !this.input.value.isValueSelected)) {
-      if (this.selectedItemsList.value && (this.input.value as Autofill).cursorLocation === 0) {
-        this.selectedItemsList.value.removeItemAt(this.items.length - 1);
+    if ((this.state.items.length && !this.input.current) || (this.input.current && !this.input.current.isValueSelected)) {
+      if (this.selectedItemsList.current && (this.input.current as Autofill).cursorLocation === 0) {
+        this.selectedItemsList.current.removeItemAt(this.items.length - 1);
         this._onSelectedItemsChanged();
       }
     }
   }
 
   protected onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
-    if (this.selectedItemsList.value) {
+    if (this.selectedItemsList.current) {
       // Pass it down into the selected items list
-      this.selectedItemsList.value.onCopy(ev);
+      this.selectedItemsList.current.onCopy(ev);
     }
   }
 
@@ -236,7 +236,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected _isFocusZoneInnerKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown let up/down keys control them, otherwise allow them through to control the focusZone.
-    if (this.floatingPicker.value && this.floatingPicker.value.isSuggestionsShown) {
+    if (this.floatingPicker.current && this.floatingPicker.current.isSuggestionsShown) {
       switch (ev.which) {
         case KeyCodes.up:
         case KeyCodes.down:
@@ -253,20 +253,20 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected _onSuggestionSelected = (item: T): void => {
-    if (this.selectedItemsList.value) {
-      this.selectedItemsList.value.addItems([item]);
+    if (this.selectedItemsList.current) {
+      this.selectedItemsList.current.addItems([item]);
     }
 
     if (this.props.onItemSelected) {
       this.props.onItemSelected(item);
     }
 
-    if (this.input.value) {
-      this.input.value.clear();
+    if (this.input.current) {
+      this.input.current.clear();
     }
 
-    if (this.floatingPicker.value) {
-      this.floatingPicker.value.hidePicker();
+    if (this.floatingPicker.current) {
+      this.floatingPicker.current.hidePicker();
     }
 
     this.focus();
