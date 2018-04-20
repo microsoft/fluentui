@@ -128,8 +128,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public focus() {
-    if (this._toggleButton.value) {
-      this._toggleButton.value.focus();
+    if (this._toggleButton.current) {
+      this._toggleButton.current.focus();
     }
   }
 

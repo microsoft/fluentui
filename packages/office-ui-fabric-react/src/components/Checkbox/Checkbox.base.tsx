@@ -141,8 +141,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public focus(): void {
-    if (this._checkBox.value) {
-      this._checkBox.value.focus();
+    if (this._checkBox.current) {
+      this._checkBox.current.focus();
     }
   }
 

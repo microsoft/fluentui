@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.10.2",
+      "tag": "@uifabric/example-app-base_v5.10.2",
+      "date": "Thu, 19 Apr 2018 18:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "e77a31bee560440bae3737eca6b19fce2c1ae3db",
+            "comment": "Update createRef to match React.createRef api"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.24.0 <6.0.0` to `>=5.25.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.1",
       "tag": "@uifabric/example-app-base_v5.10.1",
       "date": "Wed, 18 Apr 2018 10:15:04 GMT",

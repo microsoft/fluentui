@@ -4,14 +4,7 @@ import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './Progre
 export const getStyles = (
   props: IProgressIndicatorStyleProps
 ): IProgressIndicatorStyles => {
-  const {
-    className,
-    theme,
-    indeterminate,
-    smoothTransition,
-  } = props;
-
-  const { palette, semanticColors } = theme;
+  const { className } = props;
 
   return ({
     root: [

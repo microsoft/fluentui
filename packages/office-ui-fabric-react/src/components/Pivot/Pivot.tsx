@@ -95,8 +95,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
    * Sets focus to the first pivot tab.
    */
   public focus(): void {
-    if (this.focusZone.value) {
-      this.focusZone.value.focus();
+    if (this.focusZone.current) {
+      this.focusZone.current.focus();
     }
   }
 

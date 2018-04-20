@@ -170,7 +170,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public focus() {
-    const { value: focusZone } = this._focusZone;
+    const { current: focusZone } = this._focusZone;
     focusZone && focusZone.focus();
   }
 
@@ -362,7 +362,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _updateItemMeasurements() {
     // the generated width for overflow is 35 in chrome, 38 in IE, but the actual value is 41.5
-    if (this._overflow.value || (this.props.overflowItems && this.props.overflowItems.length)) {
+    if (this._overflow.current || (this.props.overflowItems && this.props.overflowItems.length)) {
       this._overflowWidth = OVERFLOW_WIDTH;
     } else {
       this._overflowWidth = 0;
@@ -387,10 +387,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _updateRenderedItems() {
     const { items, overflowItems } = this.props;
-    const commandSurface = this._commandSurface.value;
-    const farCommandSurface = this._farCommandSurface.value;
-    const commandBarRegion = this._commandBarRegion.value;
-    const searchSurface = this._searchSurface.value;
+    const commandSurface = this._commandSurface.current;
+    const farCommandSurface = this._farCommandSurface.current;
+    const commandBarRegion = this._commandBarRegion.current;
+    const searchSurface = this._searchSurface.current;
     const renderedItems = [...items];
     let renderedOverflowItems = overflowItems;
     let consumedWidth = 0;
@@ -484,7 +484,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _onContextMenuDismiss = (ev?: any) => {
-    const { value: commandSurface } = this._commandSurface;
+    const { current: commandSurface } = this._commandSurface;
 
     if (!ev || !ev.relatedTarget || commandSurface && !commandSurface.contains(ev.relatedTarget as HTMLElement)) {
       const { contextualMenuProps } = this.state;

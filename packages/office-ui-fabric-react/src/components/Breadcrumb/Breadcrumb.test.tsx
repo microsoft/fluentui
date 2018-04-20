@@ -48,6 +48,18 @@ describe('Breadcrumb', () => {
 
     tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    // With overflow and overflowIndex
+    component = renderer.create(
+      <Breadcrumb
+        items={ items }
+        maxDisplayedItems={ 2 }
+        overflowIndex={ 1 }
+      />
+    );
+
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('can call the callback when an item is clicked', () => {
