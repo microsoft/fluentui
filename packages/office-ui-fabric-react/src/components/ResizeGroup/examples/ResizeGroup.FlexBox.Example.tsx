@@ -81,7 +81,7 @@ function onReduceData(props: ILeftRightBoxSetProps): ILeftRightBoxSetProps | und
 }
 
 export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
-  public render() {
+  public render(): JSX.Element {
     const data: ILeftRightBoxSetProps = { leftCount: 5, rightCount: 5, cacheKey: '10' };
     return (
       <ResizeGroup

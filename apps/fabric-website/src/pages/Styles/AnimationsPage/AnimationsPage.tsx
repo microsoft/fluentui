@@ -7,7 +7,7 @@ const pageStyles: any = require('../../PageStyles.module.scss');
 const animationsData = require('../../../data/animations.json');
 
 export class AnimationsPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ pageStyles.basePage }>
         <PageHeader

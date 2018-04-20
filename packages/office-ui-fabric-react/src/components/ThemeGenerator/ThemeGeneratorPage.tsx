@@ -75,7 +75,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     loadTheme({ palette: themeRules });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
     const fabricThemeSlots =
@@ -382,7 +382,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   }
 
-  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule) {
+  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): JSX.Element {
     return (
       <div
         key={ slotRule.name }
@@ -483,7 +483,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
   private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
     let colorChangeTimeout: number;
 
-    function _onColorChanged(newColor: string) {
+    function _onColorChanged(newColor: string): void {
       if (colorChangeTimeout) {
         clearTimeout(colorChangeTimeout);
       }

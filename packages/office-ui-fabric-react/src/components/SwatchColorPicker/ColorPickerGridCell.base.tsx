@@ -30,7 +30,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
 
   private _classNames: {[key in keyof IColorPickerGridCellStyles]: string };
 
-  public render() {
+  public render(): JSX.Element {
     const {
       item,
       id,

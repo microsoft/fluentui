@@ -16,7 +16,7 @@ export class ListGhostingExample extends React.Component<IListGhostingExamplePro
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items } = this.props;
 
     return (

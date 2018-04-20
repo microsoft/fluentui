@@ -92,7 +92,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     this._focusOnUpdate = false;
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarProps) {
+  public componentWillReceiveProps(nextProps: ICalendarProps): void {
     const { autoNavigateOnSelection, value, today = new Date() } = nextProps;
 
     // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
@@ -109,7 +109,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     });
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     if (this._focusOnUpdate) {
       // if the day picker is shown, focus on it
       if (this._dayPicker.current) {
@@ -121,7 +121,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const rootClass = 'ms-DatePicker';
     const { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons, minDate, maxDate } = this.props;
     const { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;

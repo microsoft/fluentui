@@ -62,4 +62,9 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
   * @default ''
   */
   removeButtonAriaLabel?: string;
+
+  /**
+   * A callback when and item is deleted
+   */
+  onItemDeleted?: (deletedItem: T) => void;
 }

@@ -17,7 +17,7 @@ const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
 
 export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Dropdown'

@@ -52,7 +52,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     this._onSelectMonth = this._onSelectMonth.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
 
     const { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
     const leftNavigationIcon = navigationIcons.leftNavigation;
@@ -157,7 +157,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     }
   }
 
-  private _isCurrentMonth(month: number, year: number, today: Date) {
+  private _isCurrentMonth(month: number, year: number, today: Date): boolean {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 

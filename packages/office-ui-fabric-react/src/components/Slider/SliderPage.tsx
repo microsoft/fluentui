@@ -13,7 +13,7 @@ import { SliderStatus } from './Slider.checklist';
 const SliderBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Slider/examples/Slider.Basic.Example.tsx') as string;
 
 export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title={ 'Slider' }

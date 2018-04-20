@@ -8,7 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pivot';
 
 export class PivotIconCountExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Pivot>

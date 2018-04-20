@@ -48,13 +48,13 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     };
   }
 
-  public componentWillReceiveProps(newProps: IColorSliderProps) {
+  public componentWillReceiveProps(newProps: IColorSliderProps): void {
     if (newProps && newProps.value) {
       this.setState({ currentValue: newProps.value });
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { className, minValue, maxValue, overlayStyle } = this.props;
     const { currentValue, isAdjusting } = this.state;
 

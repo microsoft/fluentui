@@ -66,8 +66,51 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     const { items } = this.state;
     // tslint:disable-next-line:no-any
     if (index > -1) {
+      if (this.props.onItemDeleted) {
+        (this.props.onItemDeleted as (item: T) => void)(items[index]);
+      }
+
       const newItems = items.slice(0, index).concat(items.slice(index + 1));
       this.updateItems(newItems);
+    }
+  }
+
+  public removeItem = (item: ISelectedItemProps<T>): void => {
+    const { items } = this.state;
+    const index: number = items.indexOf(item);
+
+    this.removeItemAt(index);
+  }
+
+  // tslint:disable-next-line:no-any
+  public removeItems = (itemsToRemove: any[]): void => {
+    const { items } = this.state;
+    // tslint:disable-next-line:no-any
+    const newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);
+    const firstItemToRemove = itemsToRemove[0];
+    const index: number = items.indexOf(firstItemToRemove);
+
+    if (this.props.onItemDeleted) {
+      itemsToRemove.forEach((item: T) => {
+        (this.props.onItemDeleted as (item: T) => void)(item);
+      });
+    }
+
+    this.updateItems(newItems, index);
+  }
+
+  /**
+   * Controls what happens whenever there is an action that impacts the selected items.
+   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
+  */
+  public updateItems(items: T[], focusIndex?: number): void {
+    if (this.props.selectedItems) {
+      // If the component is a controlled component then the controlling component will need
+      this.onChange(items);
+    } else {
+      this.setState({ items: items }, () => {
+        this._onSelectedItemsUpdated(items, focusIndex);
+      });
     }
   }
 
@@ -160,27 +203,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
-  protected removeItem = (item: ISelectedItemProps<T>): void => {
-    const { items } = this.state;
-    const index: number = items.indexOf(item);
-
-    if (index >= 0) {
-      const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
-      this.updateItems(newItems);
-    }
-  }
-
-  // tslint:disable-next-line:no-any
-  protected removeItems = (itemsToRemove: any[]): void => {
-    const { items } = this.state;
-    // tslint:disable-next-line:no-any
-    const newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);
-    const firstItemToRemove = itemsToRemove[0];
-    const index: number = items.indexOf(firstItemToRemove);
-
-    this.updateItems(newItems, index);
-  }
-
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
@@ -190,21 +212,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
       } else {
         this.removeItem(this.state.items[this.state.items.length - 1]);
       }
-    }
-  }
-
-  /**
-   * Controls what happens whenever there is an action that impacts the selected items.
-   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
-  */
-  protected updateItems(items: T[], focusIndex?: number): void {
-    if (this.props.selectedItems) {
-      // If the component is a controlled component then the controlling component will need
-      this.onChange(items);
-    } else {
-      this.setState({ items: items }, () => {
-        this._onSelectedItemsUpdated(items, focusIndex);
-      });
     }
   }
 

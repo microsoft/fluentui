@@ -85,7 +85,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { options, selectedOptionKey, value } = this.state;
     const { optionsMulti } = this.state;
 
@@ -407,7 +407,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     this._basicCombobox.focus(true);
   }
 
-  private _basicComboBoxComponentRef = (component: IComboBox) => {
+  private _basicComboBoxComponentRef = (component: IComboBox): void => {
     this._basicCombobox = component;
   }
 }

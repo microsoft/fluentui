@@ -18,7 +18,7 @@ const LayerHostedExampleCode = require('!raw-loader!office-ui-fabric-react/src/c
 const LayerCustomizedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
 
 export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Layer'

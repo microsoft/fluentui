@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
   getNativeProps,
@@ -45,15 +43,15 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._checkNeedsScroll();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._async.dispose();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       targetElement,
       theme,

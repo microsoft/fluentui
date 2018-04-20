@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "yimwu@microsoft.com"
+}

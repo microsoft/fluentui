@@ -5,7 +5,7 @@ import './ContextualMenuExample.scss';
 
 export class ContextualMenuSectionExample extends React.Component<any, any> {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton

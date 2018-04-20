@@ -330,7 +330,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             <Shimmer
               key={ i }
               isBaseStyle={ true }
-              width={ shimmerWrapperWidth }
+              widthInPixel={ shimmerWrapperWidth }
             >
               { finalGrid }
             </Shimmer>

@@ -21,7 +21,7 @@ const CalloutDirectionalExampleCode = require('!raw-loader!office-ui-fabric-reac
 const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Cover.Example.tsx') as string;
 
 export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     const cmdBarParamsTextAndIcons: any = { items: items, farItems: null };
 
     return (
