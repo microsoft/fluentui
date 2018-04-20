@@ -33,6 +33,7 @@ storiesOf('Rating', module)
     <Rating
       allowZeroStars={ 0 }
       max={ 5 }
+      readOnly={ true }
       rating={ 0 }
     />
   )).add('Large', () => (
