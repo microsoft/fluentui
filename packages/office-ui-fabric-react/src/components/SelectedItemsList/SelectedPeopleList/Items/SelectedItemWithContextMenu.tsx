@@ -1,11 +1,9 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, createRef, RefObject } from '../../../../Utilities';
+import { BaseComponent, createRef, RefObject, IBaseProps } from '../../../../Utilities';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
-import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { ContextualMenu, DirectionalHint, IContextualMenuItem } from '../../../../ContextualMenu';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;

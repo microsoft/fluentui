@@ -2,9 +2,9 @@
 import * as React from 'react';
 /* tslint:enable */
 import { css, getId } from '../../../../Utilities';
-import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { IPeoplePickerItemProps } from '../../../ExtendedPicker';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
+import { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
+import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
