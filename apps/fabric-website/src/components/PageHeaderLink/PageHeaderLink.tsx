@@ -15,7 +15,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     link?: HTMLAnchorElement
   } = {};
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._eventListener = this._eventListener.bind(this);
     this._getBreakpoint = this._getBreakpoint.bind(this);
     this._els.link.addEventListener('click', this._eventListener);
@@ -23,7 +23,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     this._getBreakpoint();
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <a ref={ (a) => { this._els.link = a; } } href={ this.props.href } data-title={ this.props.text }>{ this.props.text }</a>
     );
@@ -41,7 +41,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     }
   }
 
-  private _eventListener(event) {
+  private _eventListener(event): void {
     event.preventDefault();
     history.pushState({}, '', this._els.link.getAttribute('href'));
     let navigatorUserAgent = navigator.userAgent.toLowerCase();

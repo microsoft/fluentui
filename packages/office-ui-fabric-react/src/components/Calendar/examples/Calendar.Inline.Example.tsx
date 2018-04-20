@@ -98,7 +98,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this._goPrevious = this._goPrevious.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const divStyle: React.CSSProperties = {
       height: '340px'
     };
@@ -158,13 +158,13 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     );
   }
 
-  private _onDismiss() {
+  private _onDismiss(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       return prevState;
     });
   }
 
-  private _goPrevious() {
+  private _goPrevious(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       const selectedDate = prevState.selectedDate || new Date();
       const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
@@ -185,7 +185,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     });
   }
 
-  private _goNext() {
+  private _goNext(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       const selectedDate = prevState.selectedDate || new Date();
       const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
@@ -197,7 +197,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     });
   }
 
-  private _onSelectDate(date: Date, dateRangeArray: Date[]) {
+  private _onSelectDate(date: Date, dateRangeArray: Date[]): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       return {
         selectedDate: date,

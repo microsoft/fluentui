@@ -13,7 +13,7 @@ import { ColorPickerStatus } from './ColorPicker.checklist';
 const ColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/examples/ColorPicker.Basic.Example.tsx') as string;
 
 export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ColorPicker'

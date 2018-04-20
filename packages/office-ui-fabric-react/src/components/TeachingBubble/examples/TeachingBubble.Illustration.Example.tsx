@@ -21,7 +21,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
     const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
     const examplePrimaryButton: IButtonProps = {
@@ -58,7 +58,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     );
   }
 
-  private _onDismiss(ev: any) {
+  private _onDismiss(ev: any): void {
     this.setState({
       isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
     });

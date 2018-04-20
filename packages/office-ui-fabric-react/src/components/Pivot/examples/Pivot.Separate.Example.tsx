@@ -4,7 +4,7 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 export class PivotSeparateExample extends React.Component<any, any> {
   public state = { selectedKey: 'rectangleRed' };
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <div

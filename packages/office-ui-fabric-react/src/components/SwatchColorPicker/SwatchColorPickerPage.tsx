@@ -13,7 +13,7 @@ import { SwatchColorPickerStatus } from './SwatchColorPicker.checklist';
 const SwatchColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
 
 export class SwatchColorPickerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='SwatchColorPicker'

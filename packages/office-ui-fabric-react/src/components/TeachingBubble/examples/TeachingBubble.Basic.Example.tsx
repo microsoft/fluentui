@@ -20,7 +20,7 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
     const examplePrimaryButton: IButtonProps = {
       children: 'Try it out'
@@ -55,7 +55,7 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
     );
   }
 
-  private _onDismiss(ev: any) {
+  private _onDismiss(ev: any): void {
     this.setState({
       isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
     });

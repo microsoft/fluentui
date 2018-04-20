@@ -19,7 +19,7 @@ const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
 
 export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Icon'

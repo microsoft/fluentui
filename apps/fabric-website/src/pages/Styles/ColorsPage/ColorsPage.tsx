@@ -13,7 +13,7 @@ const neutralColorsData = require('../../../data/colors-neutral.json');
 const themeColorsData = require('../../../data/colors-theme.json');
 
 export class ColorsPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ pageStyles.basePage }>
         <PageHeader

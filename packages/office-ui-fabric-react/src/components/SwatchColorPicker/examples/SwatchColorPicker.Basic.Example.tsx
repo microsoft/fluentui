@@ -19,7 +19,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
       previewColor2: undefined
     };
   }
-  public render() {
+  public render(): JSX.Element {
 
     return (
       <div>

@@ -47,7 +47,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: IImageProps) {
+  public componentWillReceiveProps(nextProps: IImageProps): void {
     if (nextProps.src !== this.props.src) {
       this.setState({
         loadState: ImageLoadState.notLoaded
@@ -65,7 +65,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
     const {
       src,
@@ -161,7 +161,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  private _computeCoverStyle(props: IImageProps) {
+  private _computeCoverStyle(props: IImageProps): void {
     const { imageFit, width, height } = props;
 
     // Do not compute cover style if it was already specified in props

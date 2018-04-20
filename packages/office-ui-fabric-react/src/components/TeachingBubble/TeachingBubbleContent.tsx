@@ -26,7 +26,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline } = this.props;
 
     let imageContent;

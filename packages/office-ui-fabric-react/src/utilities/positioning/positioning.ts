@@ -15,7 +15,8 @@ import {
   IPositionProps,
   ICalloutPositon,
   ICalloutPositionProps,
-  RectangleEdge
+  RectangleEdge,
+  IRelativePositions
 } from './positioning.types';
 
 export class Rectangle extends FullRectangle {
@@ -126,7 +127,7 @@ export namespace positioningFunctions {
     return rect[RectangleEdge[edge]];
   }
 
-  function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number) {
+  function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number): Rectangle {
     rect[RectangleEdge[edge]] = value;
     return rect;
   }
@@ -584,7 +585,7 @@ export namespace positioningFunctions {
     return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
   }
 
-  export function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined) {
+  export function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined): Rectangle {
     let targetRectangle: Rectangle;
     if (target) {
       if ((target as MouseEvent).preventDefault) {
@@ -615,7 +616,7 @@ export namespace positioningFunctions {
   /**
    * If max height is less than zero it returns the bounds height instead.
    */
-  export function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle) {
+  export function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle): number {
     let maxHeight = 0;
 
     switch (targetEdge) {
@@ -720,7 +721,7 @@ export namespace positioningFunctions {
   export function _getRelativePositions(
     props: IPositionProps,
     hostElement: HTMLElement,
-    elementToPosition: HTMLElement) {
+    elementToPosition: HTMLElement): IRelativePositions {
     const positions = _positionCallout(props, hostElement, elementToPosition);
     const beakPosition = positions && positions.beakPosition ? positions.beakPosition.elementPosition : undefined;
     return {
@@ -731,6 +732,7 @@ export namespace positioningFunctions {
     };
   }
 }
+
 /**
  * @deprecated Do not use, this will be removed in 6.0.
  * Use either positionElement, or positionCallout
@@ -743,7 +745,7 @@ export namespace positioningFunctions {
  */
 export function getRelativePositions(props: IPositionProps,
   hostElement: HTMLElement,
-  calloutElement: HTMLElement) {
+  calloutElement: HTMLElement): IRelativePositions {
   return positioningFunctions._getRelativePositions(props, hostElement, calloutElement);
 }
 
@@ -780,7 +782,7 @@ export function positionCallout(props: IPositionProps,
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle): number {
   const mouseTarget: MouseEvent = target as MouseEvent;
   const elementTarget: Element = target as Element;
   const pointTarget: IPoint = target as IPoint;
