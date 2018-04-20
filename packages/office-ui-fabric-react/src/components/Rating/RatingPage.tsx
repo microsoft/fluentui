@@ -7,10 +7,12 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
+import { RatingButtonControlledExample } from './examples/Rating.ButtonControlled.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { RatingStatus } from './Rating.checklist';
 
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
+const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
 export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -20,9 +22,14 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='RatingExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating'
         exampleCards={
-          <ExampleCard title='Rating' code={ RatingBasicExampleCode }>
-            <RatingBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='Rating' code={ RatingBasicExampleCode }>
+              <RatingBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Button Controlled Rating' code={ RatingButtonControlledExampleCode }>
+              <RatingButtonControlledExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet

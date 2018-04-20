@@ -53,18 +53,23 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     max: 5
   };
   private _id: string;
+  private _min: number;
   private _labelId: string;
   private _classNames: { [key in keyof IRatingStyles]: string };
 
   constructor(props: IRatingProps) {
     super(props);
 
+    this._id = getId('Rating');
+    this._min = this.props.allowZeroStars ? 0 : 1;
+    if (this.props.min !== undefined && this.props.min !== 1) {
+      this._min = this.props.min;
+    }
+    this._labelId = getId('RatingLabel');
+
     this.state = {
       rating: this._getInitialValue(props)
     };
-
-    this._id = getId('Rating');
-    this._labelId = getId('RatingLabel');
   }
 
   public componentWillReceiveProps(nextProps: IRatingProps): void {
@@ -84,7 +89,6 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       getAriaLabel,
       getStyles,
       max,
-      min,
       rating,
       readOnly,
       size,
@@ -96,33 +100,35 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       theme: theme!
     });
 
-    for (let i = min as number; i <= (max as number); i++) {
-      const ratingStarProps: IRatingStarProps = {
-        fillPercentage: this._getFillingPercentage(i),
-        disabled: disabled ? true : false,
-        classNames: this._classNames
-      };
+    for (let i = this._min as number; i <= (max as number); i++) {
+      if (i !== 0) {
+        const ratingStarProps: IRatingStarProps = {
+          fillPercentage: this._getFillingPercentage(i),
+          disabled: disabled ? true : false,
+          classNames: this._classNames
+        };
 
-      starIds.push(this._getStarId(i - 1));
+        starIds.push(this._getStarId(i - 1));
 
-      stars.push(
-        <button
-          className={ css(this._classNames.ratingButton, {
-            [this._classNames.rootIsLarge!]: size === RatingSize.Large,
-            [this._classNames.rootIsSmall!]: size !== RatingSize.Large
-          }) }
-          id={ starIds[i - 1] }
-          key={ i }
-          { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
-          onFocus={ this._onFocus.bind(this, i) }
-          disabled={ disabled || readOnly ? true : false }
-          role='presentation'
-          type='button'
-        >
-          { this._getLabel(i) }
-          <RatingStar key={ i + 'rating' }  { ...ratingStarProps } />
-        </button>
-      );
+        stars.push(
+          <button
+            className={ css(this._classNames.ratingButton, {
+              [this._classNames.rootIsLarge]: size === RatingSize.Large,
+              [this._classNames.rootIsSmall]: size !== RatingSize.Large
+            }) }
+            id={ starIds[i - 1] }
+            key={ i }
+            { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
+            onFocus={ this._onFocus.bind(this, i) }
+            disabled={ disabled || readOnly ? true : false }
+            role='presentation'
+            type='button'
+          >
+            { this._getLabel(i) }
+            <RatingStar key={ i + 'rating' }  { ...ratingStarProps } />
+          </button>
+        );
+      }
     }
 
     return (
@@ -174,7 +180,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
   private _getInitialValue(props: IRatingProps): number | undefined {
     if (typeof props.rating === 'undefined') {
-      return props.min;
+      return this._min;
     }
 
     if (props.rating === null) {
@@ -185,7 +191,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getClampedRating(rating: number): number {
-    return Math.min(Math.max(rating, this.props.min as number), this.props.max as number);
+    return Math.min(Math.max(rating, this._min as number), this.props.max as number);
   }
 
   private _getFillingPercentage(starPosition: number): number {
