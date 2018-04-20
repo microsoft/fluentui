@@ -1,74 +1,59 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   css
 } from '../../Utilities';
-import { ChicletCard } from './ChicletCard';
-import { ChicletPicker } from './ChicletPicker';
 import { IChicletProps, IChicletCardProps } from './Chiclet.types';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { ChicletCard } from './ChicletCard';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import * as stylesImport from './Chiclet.scss';
 const styles: any = stylesImport;
 
-//var fieldMap: { [property: string]: string; } = {};
-
-export class Chiclet extends BaseComponent<IChicletProps, any> {
+export class Chiclet extends React.Component<IChicletProps, IChicletCardProps> {
   public render() {
-    const { url, size, actions } = this.props;
+    const { chicletCardProps, size, actions } = this.props;
 
-    let chicletCardProps = this.extractMetaTags(url);
-
-    return (
-      <ChicletPicker chicletCardProps={ chicletCardProps } size={ size ? size : "medium" } actions={ actions } />
-    );
-  }
-
-  public extractMetaTags(url: string) {
-    var attributes: IChicletCardProps = {};
-
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", url, false);
-    xmlHttp.overrideMimeType('text/xml');
-    xmlHttp.send(null);
-
-    var metaElements = document.getElementsByTagName("meta");
-    let openGraphObject = this._getOpenGraphValues(metaElements, attributes);
-
-    return openGraphObject;
-  }
-
-  public _getOpenGraphValues(metaElements: NodeListOf<HTMLMetaElement>, attributes: IChicletCardProps): IChicletCardProps {
-    for (var i = 0; i < metaElements.length; i++) {
-      if (metaElements[i].attributes != null && metaElements[i].attributes.length >= 2) {
-        switch (metaElements[i].attributes[0].nodeValue) {
-          case "og:title":
-            attributes.title = metaElements[i].content;
+    var actionsToIButtonProps: IButtonProps[] = [];
+    if (actions != null) {
+      actions.forEach(function (string) {
+        switch (string) {
+          case "Breadcrumb":
+            actionsToIButtonProps.push({ iconProps: { iconName: 'Breadcrumb' } });
             break;
-          case "og:type":
-            attributes.ogType = metaElements[i].content;
+          case "Save":
+            actionsToIButtonProps.push({ iconProps: { iconName: 'Save' } });
             break;
-          case "og:image":
-          case "og:image:url":
-            attributes.image = metaElements[i].content;
+          case "Share":
+            actionsToIButtonProps.push({ iconProps: { iconName: 'Share' } });
             break;
-          case "og:image:type":
-            attributes.imageType = metaElements[i].content;
-            break;
-          case "og:image:width":
-            attributes.imageWidth = metaElements[i].content;
-            break;
-          case "og:image:height":
-            attributes.imageHeight = metaElements[i].content;
-            break;
-          case "og:description":
-            attributes.description = metaElements[i].content;
-            break;
-          case "og:url":
-            attributes.url = metaElements[i].content;
+          default:
             break;
         }
-      }
+      });
     }
-    return attributes;
+
+    switch (size) {
+      case "xsmall":
+        return (
+          <ChicletCard {...chicletCardProps} className={ css(styles.root) } onClick={ this._onClick } actions={ actionsToIButtonProps } />
+        );
+      case "small":
+        return (
+          <ChicletCard {...chicletCardProps} className={ css(styles.root) } onClick={ this._onClick } actions={ actionsToIButtonProps } />
+        );
+      case "medium":
+      case "large":
+      case "xlarge":
+        return (
+          <ChicletCard {...chicletCardProps} className={ css(styles.root) } onClick={ this._onClick } actions={ actionsToIButtonProps } />
+        );
+      default:
+        return (
+          <ChicletCard {...chicletCardProps} className={ css(styles.root) } onClick={ this._onClick } actions={ actionsToIButtonProps } />
+        );
+    }
+  }
+
+  private _onClick(): void {
+    console.log("You clicked the Chiclet");
   }
 }

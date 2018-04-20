@@ -16,7 +16,7 @@ export interface IChicletStyles {
   root: IStyle;
 }
 
-export interface IChicletProps extends React.Props<Chiclet> {
+export interface IBaseChicletProps extends React.Props<BaseChiclet> {
   /**
    * Optional callback to access the IChiclet interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

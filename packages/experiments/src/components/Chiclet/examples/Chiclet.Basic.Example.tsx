@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  Chiclet
-} from '../Chiclet';
+  BaseChiclet
+} from '../BaseChiclet';
 
 export class ChicletBasicExample extends React.Component<any, any> {
   constructor(props: {}) {
@@ -10,7 +10,7 @@ export class ChicletBasicExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <Chiclet url="http://localhost:4322" size="medium"
+      <BaseChiclet url="http://localhost:4322" size="medium"
         actions={ ["Breadcrumb", "Save", "Share"] }
       />
     );
