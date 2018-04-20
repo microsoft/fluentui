@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
 import { CommandBar } from './CommandBar';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
