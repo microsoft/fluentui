@@ -41,7 +41,7 @@ export interface IChicletProps extends React.Props<Chiclet> {
   /**
    * Action icon buttons to render.
    */
-  actions?: IButtonProps[];
+  actions?: string[];
 }
 
 export interface IChicletPickerProps extends React.Props<ChicletPicker> {
@@ -58,7 +58,7 @@ export interface IChicletPickerProps extends React.Props<ChicletPicker> {
   /**
    * Action icon buttons to render.
    */
-  actions?: IButtonProps[];
+  actions?: string[];
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCard> {

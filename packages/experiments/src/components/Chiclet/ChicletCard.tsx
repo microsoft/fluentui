@@ -23,13 +23,6 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
-    // actions should be based off of what's passed in
-    // var actions: IButtonProps[] = [
-    //   { iconProps: { iconName: 'Breadcrumb' } },
-    //   { iconProps: { iconName: 'Save' } },
-    //   { iconProps: { iconName: 'Share' } }
-    // ];
-
     var preview = this._renderPreviewImage(image, imageHeight, imageWidth, ogType);
 
     return (
