@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { PageMarkdown } from '@uifabric/example-app-base';
 import {
-  defaultPresenceDescriptors,
   IPersonaProps,
   Persona,
   PersonaSize,
   PersonaPresence,
-  TPresenceDescriptors,
 } from '../../Persona';
 import { Checkbox } from '../../Checkbox';
 import { Label } from '../../Label';
