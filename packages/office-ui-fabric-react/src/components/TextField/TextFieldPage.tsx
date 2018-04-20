@@ -20,6 +20,7 @@ import { TextFieldStatus } from './TextField.checklist';
 import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
 import { TextFieldAutoCompleteExample } from './examples/TextField.AutoComplete.Example';
+import { TextFieldOnRenderDescriptionExample } from './examples/TextField.OnRenderDescription.Example';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
@@ -33,6 +34,7 @@ const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabri
 const TextFieldSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Suffix.Example.tsx') as string;
 const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
 const TextFieldAutoCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.AutoComplete.Example.tsx') as string;
+const TextFieldOnRenderDescriptionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.OnRenderDescription.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -112,6 +114,12 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               code={ TextFieldCustomRenderExampleCode }
             >
               <TextFieldCustomRenderExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with custom description'
+              code={ TextFieldOnRenderDescriptionExampleCode }
+            >
+              <TextFieldOnRenderDescriptionExample />
             </ExampleCard>
             <ExampleCard
               title='TextField error message variations'

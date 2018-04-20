@@ -3,7 +3,6 @@ import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
-  autobind,
   DelayedRender,
   BaseComponent,
   getId,
@@ -150,7 +149,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
+      onRenderDescription = this._onRenderDescription
     } = this.props;
     const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
@@ -192,7 +192,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
-            { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
+            { onRenderDescription(this.props, this._onRenderDescription) }
             { errorMessage &&
               <div aria-live='assertive'>
                 <DelayedRender>
@@ -293,13 +293,16 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  @autobind
-  private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
-    const {
-      label
-    } = props;
-    if (label) {
-      return (<Label htmlFor={ this._id }>{ label }</Label>);
+  private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
+    if (props.label) {
+      return (<Label htmlFor={ this._id }>{ props.label }</Label>);
+    }
+    return null;
+  }
+
+  private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
+    if (props.description) {
+      return (<span className={ css('ms-TextField-description', styles.description) }>{ props.description }</span>);
     }
     return null;
   }

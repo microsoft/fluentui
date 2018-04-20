@@ -1,11 +1,11 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import {
   BaseComponent,
   css,
+  divProperties,
   getId,
+  getNativeProps,
   getRTL,
   createRef
 } from '../../Utilities';
@@ -102,6 +102,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
+    const nativeProps = getNativeProps(this.props, divProperties);
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -137,6 +138,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
           }
         >
           <div
+            { ...nativeProps }
             className={
               css(
                 'ms-Panel',
