@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Apr 2018 00:17:37 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+
+## 5.84.0
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Minor changes
+
+- Add the option of collapsing breadcrumb overflow items into a position other than the first one
+- ComboBox: Add Event as additional paramater to onChanged callback for saving pending changes
+
+### Patches
+
+- Remove usage of Number.isNaN from SpinButton.tsx since it doesn't exist in IE11
+- Update createRef to match React.createRef api
+- Remove unused variables and re-enable no-unused-variable for office-ui-fabric-react
 
 ## 5.83.0
 Thu, 19 Apr 2018 00:17:37 GMT

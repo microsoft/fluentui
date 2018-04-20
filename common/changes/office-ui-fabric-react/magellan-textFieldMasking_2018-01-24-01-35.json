@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Update createRef to match React.createRef api",
-      "type": "patch"
+      "comment": "TextField: Implemented input masking.",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com"
+  "email": "law@microsoft.com"
 }
