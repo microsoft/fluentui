@@ -436,10 +436,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
-* @param { IAutofillProps } defaultVisibleValue - the defaultVisibleValue that got passed
-    *  in to the auto fill's componentWillReceiveProps
-* @returns { string } - the updated value to set, if needed
-    */
+   * @param { IAutofillProps } defaultVisibleValue - the defaultVisibleValue that got passed
+   *  in to the auto fill's componentWillReceiveProps
+   * @returns { string } - the updated value to set, if needed
+   */
   private _onUpdateValueInAutofillWillReceiveProps = (): string | null => {
     const comboBox = this._autofill.current;
 
@@ -461,11 +461,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentDidUpdate handler for the auto fill component
    *
- * @param { string } defaultVisibleValue - the current defaultVisibleValue in the auto fill's componentDidUpdate
- * @param { string } suggestedDisplayValue - the current suggestedDisplayValue in the auto fill's componentDidUpdate
- * @returns { boolean } - should the full value of the input be selected?
-      * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
-      */
+   * @param { string } defaultVisibleValue - the current defaultVisibleValue in the auto fill's componentDidUpdate
+   * @param { string } suggestedDisplayValue - the current suggestedDisplayValue in the auto fill's componentDidUpdate
+   * @returns { boolean } - should the full value of the input be selected?
+   * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
+   */
   private _onShouldSelectFullInputValueInAutofillComponentDidUpdate = (): boolean => {
     return this._currentVisibleValue === this.state.suggestedDisplayValue;
   }
@@ -473,8 +473,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Get the correct value to pass to the input
    * to show to the user based off of the current props and state
-* @returns { string } the value to pass to the input
-    */
+   * @returns { string } the value to pass to the input
+   */
   private _getVisibleValue = (): string | undefined => {
     const {
       value,
@@ -714,13 +714,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-  * Walk along the options starting at the index, stepping by the delta (positive or negative)
-  * looking for the next valid selectable index (e.g. skipping headings and dividers)
-  * @param index - the index to get the next selectable index from
-  * @param delta - optional delta to step by when finding the next index, defaults to 0
-     * @returns { number } - the next valid selectable index. If the new index is outside of the bounds,
-          * it will snap to the edge of the options array. If delta == 0 and the given index is not selectable
-          */
+   * Walk along the options starting at the index, stepping by the delta (positive or negative)
+   * looking for the next valid selectable index (e.g. skipping headings and dividers)
+   * @param index - the index to get the next selectable index from
+   * @param delta - optional delta to step by when finding the next index, defaults to 0
+   * @returns { number } - the next valid selectable index. If the new index is outside of the bounds,
+   * it will snap to the edge of the options array. If delta == 0 and the given index is not selectable
+   */
   private _getNextSelectableIndex(index: number, searchDirection: SearchDirection): number {
     const { currentOptions } = this.state;
 

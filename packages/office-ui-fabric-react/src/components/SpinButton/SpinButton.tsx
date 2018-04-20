@@ -199,7 +199,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               data-ktp-target={ keytipAttributes['data-ktp-target'] }
             >
               <input
-                aria-describedby={ keytipAttributes['aria-describedby'] }
                 value={ value }
                 id={ this._inputId }
                 onChange={ this._onChange }
@@ -212,6 +211,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 aria-valuetext={ isNaN(Number(value)) ? value : undefined }
                 aria-valuemin={ min }
                 aria-valuemax={ max }
+                aria-describedby={ keytipAttributes['aria-describedby'] }
                 onBlur={ this._onBlur }
                 ref={ this._input }
                 onFocus={ this._onFocus }

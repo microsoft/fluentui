@@ -225,7 +225,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             { errorMessage }
           </div>
         }
-      </div >
+      </div>
     );
   }
 

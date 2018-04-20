@@ -2,7 +2,8 @@ import { KeytipManager } from './KeytipManager';
 import {
   IKeySequence,
   fullKeySequencesAreEqual,
-  EventGroup
+  EventGroup,
+  KeytipEvents
 } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
@@ -27,7 +28,7 @@ describe('KeytipManager', () => {
     describe('registerKeytip', () => {
       it('adds the keytip to the array and raises a keytipAdded event', () => {
         let eventTriggered = false;
-        events.on(ktpMgr, 'keytipAdded', (eventArgs: any) => {
+        events.on(ktpMgr, KeytipEvents.keytipAdded, (eventArgs: any) => {
           eventTriggered = true;
         });
         ktpMgr.registerKeytip(keytipBProps);
@@ -60,7 +61,7 @@ describe('KeytipManager', () => {
 
       it('raises a keytipUpdated event', () => {
         let eventTriggered = false;
-        events.on(ktpMgr, 'keytipUpdated', (eventArgs: any) => {
+        events.on(ktpMgr, KeytipEvents.keytipUpdated, (eventArgs: any) => {
           eventTriggered = true;
         });
         const uniqueID = ktpMgr.registerKeytip(keytipBProps);
@@ -72,7 +73,7 @@ describe('KeytipManager', () => {
     describe('unregisterKeytip', () => {
       it('removes a keytip from the array and raises a keytipRemoved event', () => {
         let eventTriggered = false;
-        events.on(ktpMgr, 'keytipRemoved', (eventArgs: any) => {
+        events.on(ktpMgr, KeytipEvents.keytipRemoved, (eventArgs: any) => {
           eventTriggered = true;
         });
         const uniqueID = ktpMgr.registerKeytip(keytipBProps);
@@ -85,7 +86,7 @@ describe('KeytipManager', () => {
     describe('registerPersistedKeytip', () => {
       it('adds the keytip to the array and raises a persistedKeytipAdded event', () => {
         let eventTriggered = false;
-        events.on(ktpMgr, 'persistedKeytipAdded', (eventArgs: any) => {
+        events.on(ktpMgr, KeytipEvents.persistedKeytipAdded, (eventArgs: any) => {
           eventTriggered = true;
         });
         ktpMgr.registerPersistedKeytip(keytipBProps);
@@ -97,7 +98,7 @@ describe('KeytipManager', () => {
     describe('unregisterPersistedKeytip', () => {
       it('removes a keytip to the array and raises a persistedKeytipRemoved event', () => {
         let eventTriggered = false;
-        events.on(ktpMgr, 'persistedKeytipRemoved', (eventArgs: any) => {
+        events.on(ktpMgr, KeytipEvents.persistedKeytipRemoved, (eventArgs: any) => {
           eventTriggered = true;
         });
         const uniqueID = ktpMgr.registerPersistedKeytip(keytipBProps);
@@ -125,7 +126,7 @@ describe('KeytipManager', () => {
     describe('persistedKeytipExecute', () => {
       it('raises a persistedKeytipExecute event', () => {
         let eventTriggered = false;
-        events.on(ktpMgr, 'persistedKeytipExecute', (eventArgs: any) => {
+        events.on(ktpMgr, KeytipEvents.persistedKeytipExecute, (eventArgs: any) => {
           eventTriggered = true;
         });
         ktpMgr.persistedKeytipExecute(['x'], ['y']);

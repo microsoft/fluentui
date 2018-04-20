@@ -17,7 +17,8 @@ import {
   fullKeySequencesAreEqual,
   transitionKeysContain,
   mergeOverflowKeySequences,
-  getDocument
+  getDocument,
+  KeytipEvents
 } from '../../Utilities';
 import { KeytipManager, KeytipTree, IKeytipTreeNode, constructKeytipExecuteTargetFromId } from '../../utilities/keytips';
 
@@ -89,12 +90,12 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this.currentSequence = '';
 
     // Add keytip listeners
-    this._events.on(this._keytipManager, 'keytipAdded', this._onKeytipAdded);
-    this._events.on(this._keytipManager, 'keytipUpdated', this._onKeytipUpdated);
-    this._events.on(this._keytipManager, 'keytipRemoved', this._onKeytipRemoved);
-    this._events.on(this._keytipManager, 'persistedKeytipAdded', this._onPersistedKeytipAdded);
-    this._events.on(this._keytipManager, 'persistedKeytipRemoved', this._onPersistedKeytipRemoved);
-    this._events.on(this._keytipManager, 'persistedKeytipExecute', this._onPersistedKeytipExecute);
+    this._events.on(this._keytipManager, KeytipEvents.keytipAdded, this._onKeytipAdded);
+    this._events.on(this._keytipManager, KeytipEvents.keytipUpdated, this._onKeytipUpdated);
+    this._events.on(this._keytipManager, KeytipEvents.keytipRemoved, this._onKeytipRemoved);
+    this._events.on(this._keytipManager, KeytipEvents.persistedKeytipAdded, this._onPersistedKeytipAdded);
+    this._events.on(this._keytipManager, KeytipEvents.persistedKeytipRemoved, this._onPersistedKeytipRemoved);
+    this._events.on(this._keytipManager, KeytipEvents.persistedKeytipExecute, this._onPersistedKeytipExecute);
   }
 
   /**

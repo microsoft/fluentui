@@ -5,7 +5,8 @@ import {
   findIndex,
   find,
   EventGroup,
-  IKeySequence
+  IKeySequence,
+  KeytipEvents
 } from '../../Utilities';
 
 export interface IUniqueKeytip {
@@ -49,8 +50,7 @@ export class KeytipManager {
 
     // Add to array
     this.keytips.push(uniqueKeytip);
-    // TODO: create constants for these events
-    EventGroup.raise(this, 'keytipAdded', {
+    EventGroup.raise(this, KeytipEvents.keytipAdded, {
       keytip: keytipProps,
       uniqueID: uniqueKeytip.uniqueID
     });
@@ -68,7 +68,7 @@ export class KeytipManager {
   public registerPersistedKeytip(keytipProps: IKeytipProps): string {
     const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(keytipProps);
     this.persistedKeytips.push(uniqueKeytip);
-    EventGroup.raise(this, 'persistedKeytipAdded', {
+    EventGroup.raise(this, KeytipEvents.persistedKeytipAdded, {
       keytip: keytipProps,
       uniqueID: uniqueKeytip.uniqueID
     });
@@ -90,7 +90,7 @@ export class KeytipManager {
       // Update keytip in this.keytips
       this.keytips = replaceElement(this.keytips, uniqueKeytip, keytipIndex);
       // Raise event
-      EventGroup.raise(this, 'keytipUpdated', {
+      EventGroup.raise(this, KeytipEvents.keytipUpdated, {
         keytip: uniqueKeytip.keytip,
         uniqueID: uniqueKeytip.uniqueID
       });
@@ -108,7 +108,7 @@ export class KeytipManager {
       return uniqueKtp.uniqueID !== uniqueID;
     });
 
-    EventGroup.raise(this, 'keytipRemoved', {
+    EventGroup.raise(this, KeytipEvents.keytipRemoved, {
       keytip: keytipToRemove,
       uniqueID: uniqueID
     });
@@ -127,7 +127,7 @@ export class KeytipManager {
       return uniqueKtp.uniqueID !== uniqueID;
     });
 
-    EventGroup.raise(this, 'persistedKeytipRemoved', {
+    EventGroup.raise(this, KeytipEvents.persistedKeytipRemoved, {
       keytip: keytipToRemove,
       uniqueID: uniqueID
     });
@@ -174,7 +174,7 @@ export class KeytipManager {
    * @param keytipSequences
    */
   public persistedKeytipExecute(overflowButtonSequences: IKeySequence[], keytipSequences: IKeySequence[]) {
-    EventGroup.raise(this, 'persistedKeytipExecute', {
+    EventGroup.raise(this, KeytipEvents.persistedKeytipExecute, {
       overflowButtonSequences,
       keytipSequences
     });

@@ -9,7 +9,8 @@ import {
   ktpFullPrefix,
   ktpSeparator,
   find,
-  EventGroup
+  EventGroup,
+  KeytipEvents
 } from '../../Utilities';
 
 describe('KeytipLayer', () => {
@@ -388,7 +389,7 @@ describe('KeytipLayer', () => {
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
-      EventGroup.raise(ktpMgr, 'keytipAdded', {
+      EventGroup.raise(ktpMgr, KeytipEvents.keytipAdded, {
         keytip: {
           content: 'X',
           keySequences: ['b', 'x']
