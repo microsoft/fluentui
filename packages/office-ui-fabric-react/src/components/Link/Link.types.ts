@@ -40,7 +40,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
    * Provide an html tag name (one of 'span' | 'a' | 'button' | 'div') to use as the tag
    * returned from the Link component.
    */
-  as?: LinkTagNames,
+  as?: LinkTagNames;
 }
 
 export interface ILinkStyleProps {

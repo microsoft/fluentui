@@ -25,14 +25,14 @@ const tagToPropertiesMap = {
   'a': anchorProperties,
   'button': buttonProperties,
   'span': htmlElementProperties,
-}
+};
 
 @customizable('Link', ['theme', 'getStyles'])
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
   public render(): JSX.Element {
-    const { disabled, children, className, href, theme, getStyles, as } = this.props;
+    const { disabled, children, className, href, theme, getStyles } = this.props;
 
     const classNames = getClassNames(getStyles!, {
       className,
@@ -50,7 +50,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         onClick={ this._onClick }
         ref={ this._link }
         aria-disabled={ disabled }
-        { ...this.additionalPropsForRootType(RootType) }
+        { ...this._additionalPropsForRootType(RootType) }
       >
         { children }
       </RootType>
@@ -73,7 +73,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     }
   }
 
-  private additionalPropsForRootType(RootType: LinkTagNames): { [attribute: string]: string | undefined } {
+  private _additionalPropsForRootType(RootType: LinkTagNames): { [attribute: string]: string | undefined } {
     if (this.props.as === 'a') {
       return {
         target: this.props.target,

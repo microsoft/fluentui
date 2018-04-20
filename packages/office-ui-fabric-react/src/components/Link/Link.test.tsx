@@ -31,7 +31,7 @@ describe('Link', () => {
   });
 
   it('renders Link with as a div element', () => {
-    const component = renderer.create(<Link as="div" className='customClassName'>I'm a div</Link>);
+    const component = renderer.create(<Link as='div' className='customClassName'>I'm a div</Link>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
