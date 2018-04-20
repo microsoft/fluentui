@@ -21,10 +21,10 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         Generic Shimmer with no elements provided.
         <Shimmer />
         <Shimmer
-          width={ 75 }
+          widthInPercentage={ 75 }
         />
         <Shimmer
-          width={ 50 }
+          widthInPercentage={ 50 }
         />
         Custom Shimmer with elements provided.
         <Shimmer
@@ -49,7 +49,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
           ] }
         />
         <Shimmer
-          width={ 70 }
+          widthInPercentage={ 70 }
           lineElements={ [
             { type: ElemType.circle, height: 24 },
             { type: ElemType.gap, widthInPercentage: 2 },
@@ -82,6 +82,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <div className='shimmerBasicExample-wrapper'>
           <Shimmer
             isBaseStyle={ true }
+            widthInPixel={ 350 }
           >
             { getRenderedElements([
               { type: ElemType.line, widthInPixel: 40, height: 40 },
@@ -108,6 +109,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <div className='shimmerBasicExample-wrapper'>
           <Shimmer
             isBaseStyle={ true }
+            widthInPixel={ 550 }
           >
             { getRenderedElements([
               { type: ElemType.circle, height: 40 },
