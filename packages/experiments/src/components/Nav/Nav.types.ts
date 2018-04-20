@@ -141,3 +141,21 @@ export interface INavStyles {
    */
   navToggler: IStyle;
 }
+
+export interface INavLinkProps {
+  id?: string;
+  text?: string;
+  href?: string;
+  target?: string;
+  onClick?: any;
+  dataHint?: string;
+  dataValue?: string;
+  ariaLabel?: string;
+  ariaExpanded?: boolean;
+  role?: string;
+  rootClassName?: string;
+  leftIconName?: string;
+  rightIconName?: string;
+  textClassName?: string;
+  iconClassName?: string;
+}

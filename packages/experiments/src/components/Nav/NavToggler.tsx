@@ -1,5 +1,4 @@
 ﻿/* tslint:disable */
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import * as React from 'react';
 import { Nav } from './Nav';
 import {
@@ -16,6 +15,7 @@ import {
   styled,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
+import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
@@ -78,19 +78,16 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     const classNames = getClassNames(getStyles!, {});
 
     return (
-      <a
+      <NavLink
+        id="ToggleNavCollapse"
         onClick={ this._onNavCollapseClicked.bind(this) }
-        aria-expanded={ isNavCollapsed ? "false" : "true" }
-        data-hint="ReactLeftNav"
-        data-value="ToggleNavCollapse">
-        <div className={ classNames.navToggler }>
-          <Icon
-            className={ classNames.navItemIconColumn }
-            iconName="GlobalNavButton"
-            aria-hidden="true"
-          />
-        </div>
-      </a >
+        ariaExpanded={ !isNavCollapsed }
+        dataHint="ReactLeftNav"
+        dataValue="ToggleNavCollapse"
+        rootClassName={ classNames.navToggler }
+        leftIconName="GlobalNavButton"
+        iconClassName={ classNames.navItemIconColumn }>
+      </NavLink>
     );
   }
 }
