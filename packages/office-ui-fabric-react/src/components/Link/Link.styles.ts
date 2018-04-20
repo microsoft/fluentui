@@ -1,19 +1,25 @@
 import {
   getFocusStyle,
-  globalClassNamesWhenEnabled
+  getGlobalClassNames,
 } from '../../Styling';
 import {
   ILinkStyleProps,
   ILinkStyles
 } from './Link.types';
 
+const GlobalClassNames = {
+  root: 'ms-Link'
+};
+
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   const { className, isButton, isDisabled, theme } = props;
   const { semanticColors } = theme;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return {
     root: [
-      globalClassNamesWhenEnabled(theme, ['ms-Link']),
+      classNames.root,
       className,
       getFocusStyle(theme),
       {

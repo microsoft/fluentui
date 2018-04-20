@@ -1,5 +1,15 @@
-import { globalClassNamesWhenEnabled } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
+import { itemDescription, itemProgress, progressTrack, progressBar } from 'office-ui-fabric-react/lib/components/ProgressIndicator/ProgressIndicator.scss';
+
+const GlobalClassNames = {
+  root: 'ms-ProgressIndicator',
+  itemName: 'ms-ProgressIndicator-itemName',
+  itemDescription: 'ms-ProgressIndicator-itemDescription',
+  itemProgress: 'ms-ProgressIndicator-itemProgress',
+  progressTrack: 'ms-ProgressIndicator-progressTrack',
+  progressBar: 'ms-ProgressIndicator-progressBar',
+};
 
 export const getStyles = (
   props: IProgressIndicatorStyleProps
@@ -9,35 +19,37 @@ export const getStyles = (
     theme,
   } = props;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return ({
     root: [
-      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator']),
+      classNames.root,
       {},
       className
     ],
 
     itemName: [
-      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-itemName']),
+      classNames.itemName,
       {}
     ],
 
     itemDescription: [
-      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-itemDescription']),
+      classNames.itemDescription,
       {}
     ],
 
     itemProgress: [
-      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-itemProgress']),
+      classNames.itemProgress,
       {}
     ],
 
     progressTrack: [
-      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-progressTrack']),
+      classNames.progressTrack,
       {}
     ],
 
     progressBar: [
-      globalClassNamesWhenEnabled(theme, ['ms-ProgressIndicator-progressBar']),
+      classNames.progressBar,
       {},
     ],
   });

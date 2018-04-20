@@ -1,22 +1,22 @@
-import { globalClassNamesWhenEnabled } from './globalClassNamesWhenEnabled';
+import { getGlobalClassNames } from './getGlobalClassNames';
 import { createTheme } from './theme';
 
-describe('globalClassNamesWhenEnabled', () => {
+describe('getGlobalClassNames', () => {
   it('returns an empty string when the global styles are disabled', () => {
     const theme = createTheme({ flags: { noGlobalClassNames: true } });
 
-    expect(globalClassNamesWhenEnabled(theme, ['ms-Link'])).toBe('');
+    expect(getGlobalClassNames({ root: 'ms-Link' }, theme)).toEqual({});
   });
 
   it('returns the correct classNames when global classes are enabled', () => {
     const theme = createTheme({ flags: { noGlobalClassNames: false } });
 
-    expect(globalClassNamesWhenEnabled(theme, ['ms-Link'])).toBe('ms-Link');
+    expect(getGlobalClassNames({ root: 'ms-Link' }, theme)).toEqual({ root: 'ms-Link' });
   });
 
   it('works for multiple global classes', () => {
     const theme = createTheme({ flags: { noGlobalClassNames: false } });
 
-    expect(globalClassNamesWhenEnabled(theme, ['ms-Link', 'my-other-global'])).toBe('ms-Link my-other-global');
+    expect(getGlobalClassNames({ root: 'ms-Link my-other-global' }, theme)).toEqual({ root: 'ms-Link my-other-global' });
   });
 });

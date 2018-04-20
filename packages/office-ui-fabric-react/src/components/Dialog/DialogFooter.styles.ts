@@ -1,5 +1,11 @@
 import { IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
-import { globalClassNamesWhenEnabled } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
+
+const GlobalClassNames = {
+  actions: 'ms-Dialog-actions',
+  action: 'ms-Dialog-action',
+  actionsRight: 'ms-Dialog-actionsRight',
+};
 
 export const getStyles = (
   props: IDialogFooterStyleProps
@@ -9,9 +15,11 @@ export const getStyles = (
     theme,
   } = props;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return ({
     actions: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-actions']),
+      classNames.actions,
       {
         position: 'relative',
         width: '100%',
@@ -30,11 +38,11 @@ export const getStyles = (
     ],
 
     action: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-action']),
+      classNames.action,
     ],
 
     actionsRight: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-actionsRight']),
+      classNames.actionsRight,
       {
         textAlign: 'right',
         marginRight: '-4px',

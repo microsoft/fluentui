@@ -2,8 +2,12 @@ import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePa
 import {
   HighContrastSelector,
   IStyle,
-  globalClassNamesWhenEnabled
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-ScrollablePane',
+};
 
 export const getStyles = (
   props: IScrollablePaneStyleProps
@@ -12,6 +16,8 @@ export const getStyles = (
     className,
     theme,
   } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
@@ -22,7 +28,7 @@ export const getStyles = (
 
   return ({
     root: [
-      globalClassNamesWhenEnabled(theme, ['ms-ScrollablePane']),
+      classNames.root,
       {
         overflowY: 'auto',
         maxHeight: 'inherit',

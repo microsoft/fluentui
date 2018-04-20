@@ -1,5 +1,9 @@
 import { IResizeGroupStyleProps, IResizeGroupStyles } from './ResizeGroup.types';
-import { globalClassNamesWhenEnabled } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-ResizeGroup',
+};
 
 export const getStyles = (
   props: IResizeGroupStyleProps
@@ -9,9 +13,11 @@ export const getStyles = (
     theme,
   } = props;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return ({
     root: [
-      globalClassNamesWhenEnabled(theme, ['ms-ResizeGroup']),
+      classNames.root,
       {
         display: 'block',
         position: 'relative'

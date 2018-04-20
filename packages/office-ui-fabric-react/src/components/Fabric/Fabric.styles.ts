@@ -1,8 +1,12 @@
 
-import { globalClassNamesWhenEnabled } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 const inheritFont = { fontFamily: 'inherit' };
+
+const GlobalClassNames = {
+  root: 'ms-Fabric',
+};
 
 export interface IFabricClassNames {
   root: string;
@@ -14,9 +18,11 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
     className,
   } = props;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return {
     root: [
-      globalClassNamesWhenEnabled(theme, ['ms-Fabric']),
+      classNames.root,
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,

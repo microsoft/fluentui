@@ -2,8 +2,20 @@ import { IImageStyleProps, IImageStyles } from './Image.types';
 import {
   AnimationClassNames,
   IStyle,
-  globalClassNamesWhenEnabled,
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Image',
+  rootMaximizeFrame: 'ms-Image--maximizeFrame',
+  image: 'ms-Image-image',
+  imageCenter: 'ms-Image-image--center',
+  imageContain: 'ms-Image-image--contain',
+  imageCover: 'ms-Image-image--cover',
+  imageNone: 'ms-Image-image--none',
+  imageLandscape: 'ms-Image-image--landscape',
+  imagePortrait: 'ms-Image-image--portrait',
+};
 
 export const getStyles = (
   props: IImageStyleProps
@@ -26,6 +38,8 @@ export const getStyles = (
     theme
   } = props;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   const ImageFitStyles: IStyle = {
     position: 'absolute',
     left: '50% /* @noflip */',
@@ -35,12 +49,12 @@ export const getStyles = (
 
   return ({
     root: [
-      globalClassNamesWhenEnabled(theme, ['ms-Image']),
+      classNames.root,
       {
         overflow: 'hidden'
       },
       maximizeFrame && [
-        globalClassNamesWhenEnabled(theme, ['ms-Image--maximizeFrame']),
+        classNames.rootMaximizeFrame,
         {
           height: '100%',
           width: '100%'
@@ -52,7 +66,7 @@ export const getStyles = (
       className
     ],
     image: [
-      globalClassNamesWhenEnabled(theme, ['ms-Image-image']),
+      classNames.image,
       {
         display: 'block',
         opacity: 0
@@ -64,11 +78,11 @@ export const getStyles = (
         }
       ],
       isCenter && [
-        globalClassNamesWhenEnabled(theme, ['ms-Image-image--center']),
+        classNames.imageCenter,
         ImageFitStyles
       ],
       isContain && [
-        globalClassNamesWhenEnabled(theme, ['ms-Image-image--contain']),
+        classNames.imageContain,
         isLandscape && {
           width: '100%',
           height: 'auto'
@@ -80,7 +94,7 @@ export const getStyles = (
         ImageFitStyles
       ],
       isCover && [
-        globalClassNamesWhenEnabled(theme, ['ms-Image-image--cover']),
+        classNames.imageCover,
         isLandscape && {
           width: 'auto',
           height: '100%'
@@ -92,7 +106,7 @@ export const getStyles = (
         ImageFitStyles
       ],
       isNone && [
-        globalClassNamesWhenEnabled(theme, ['ms-Image-image--none']),
+        classNames.imageNone,
         {
           width: 'auto',
           height: 'auto'
@@ -113,8 +127,8 @@ export const getStyles = (
         }
       ],
       isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
-      isLandscape && globalClassNamesWhenEnabled(theme, ['ms-Image-image--landscape']),
-      !isLandscape && globalClassNamesWhenEnabled(theme, ['ms-Image-image--portrait']),
+      isLandscape && classNames.imageLandscape,
+      !isLandscape && classNames.imagePortrait,
       !isLoaded && 'is-notLoaded',
       shouldFadeIn && 'is-fadeIn',
       isError && 'is-error'

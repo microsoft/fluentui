@@ -4,8 +4,20 @@ import {
 } from './DialogContent.types';
 import {
   FontWeights,
-  globalClassNamesWhenEnabled,
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  contentLgHeader: 'ms-Dialog-lgHeader',
+  close: 'ms-Dialog--close',
+  subText: 'ms-Dialog-subText',
+  header: 'ms-Dialog-header',
+  headerLg: 'ms-Dialog--lgHeader',
+  button: 'ms-Dialog-button ms-Dialog-button--close',
+  inner: 'ms-Dialog-inner',
+  content: 'ms-Dialog-content',
+  title: 'ms-Dialog-title',
+};
 
 export const getStyles = (
   props: IDialogContentStyleProps
@@ -21,10 +33,12 @@ export const getStyles = (
 
   const { palette, fonts } = theme;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return ({
     content: [
-      isLargeHeader && globalClassNamesWhenEnabled(theme, ['ms-Dialog-lgHeader']),
-      isClose && globalClassNamesWhenEnabled(theme, ['ms-Dialog--close']),
+      isLargeHeader && classNames.contentLgHeader,
+      isClose && classNames.close,
       {
         flexGrow: 1
       },
@@ -32,7 +46,7 @@ export const getStyles = (
     ],
 
     subText: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-subText']),
+      classNames.subText,
       isLargeHeader ? fonts.medium : fonts.small,
       {
         margin: '0 0 20px 0',
@@ -45,24 +59,23 @@ export const getStyles = (
     ],
 
     header: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-header']),
+      classNames.header,
       {
         position: 'relative',
         width: '100%',
         boxSizing: 'border-box',
       },
       isLargeHeader && [
-        globalClassNamesWhenEnabled(theme, ['ms-Dialog--lgHeader']),
+        classNames.headerLg,
         {
           backgroundColor: palette.themePrimary,
         }
       ],
-      isClose && globalClassNamesWhenEnabled(theme, ['ms-Dialog--close']),
+      isClose && classNames.close,
     ],
 
     button: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-button']),
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-button--close']),
+      classNames.button,
       hidden && {
         selectors: {
           '.ms-Icon.ms-Icon--Cancel': {
@@ -74,14 +87,14 @@ export const getStyles = (
     ],
 
     inner: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-inner']),
+      classNames.inner,
       {
         padding: isMultiline ? '0 20px 20px' : '0 28px 20px',
       }
     ],
 
     innerContent: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-content']),
+      classNames.content,
       {
         position: 'relative',
         width: '100%',
@@ -102,7 +115,7 @@ export const getStyles = (
     ],
 
     title: [
-      globalClassNamesWhenEnabled(theme, ['ms-Dialog-title']),
+      classNames.title,
       {
         color: palette.neutralPrimary,
         margin: '0',
