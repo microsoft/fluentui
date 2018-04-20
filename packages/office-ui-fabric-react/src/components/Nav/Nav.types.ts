@@ -155,7 +155,8 @@ export interface INavLink {
   icon?: string;
 
   /**
-   * Classname to apply to the icon link.
+   * iconClassName has been deprecated in favor of IIconProps. Use IIconProps.className instead.
+   * @deprecated
    */
   iconClassName?: string;
 
