@@ -128,7 +128,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderPivotLink = (link: IPivotItemProps): JSX.Element => {
-    const { itemKey } = link;
+    const { itemKey, headerButtonProps } = link;
     const tabId = this._keyToTabIds[itemKey as string];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
@@ -141,6 +141,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <CommandButton
+        { ...headerButtonProps }
         id={ tabId }
         key={ itemKey }
         className={ css(
@@ -155,7 +156,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         ariaLabel={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }
-        name={ link.linkText }
+        name={ link.headerText }
       >
         { linkContent }
       </CommandButton>
@@ -163,7 +164,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   private _renderLinkContent = (link: IPivotItemProps): JSX.Element => {
-    const { itemCount, itemIcon, linkText } = link;
+    const { itemCount, itemIcon, headerText } = link;
 
     return (
       <span className={ css('ms-Pivot-link-content') }>
@@ -172,7 +173,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
             <Icon iconName={ itemIcon } />
           </span>
         ) }
-        { linkText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.linkText }</span> }
+        { headerText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.headerText }</span> }
         { itemCount !== undefined && <span className={ css('ms-Pivot-count', styles.count) } > ({ itemCount })</span> }
       </span>
     );
@@ -215,7 +216,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         const itemKey = pivotItem.props.itemKey || index.toString();
 
         links.push({
-          linkText: pivotItem.props.linkText,
+          headerText: pivotItem.props.headerText || pivotItem.props.linkText,
+          headerButtonProps: pivotItem.props.headerButtonProps,
           ariaLabel: pivotItem.props.ariaLabel,
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
