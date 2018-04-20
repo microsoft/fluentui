@@ -1,11 +1,9 @@
 import { IKeytipProps } from '../../Keytip';
 import {
-  convertSequencesToKeytipID,
   fullKeySequencesAreEqual,
   replaceElement,
   findIndex,
   find,
-  mergeOverflowKeySequences,
   EventGroup,
   IKeySequence
 } from '../../Utilities';

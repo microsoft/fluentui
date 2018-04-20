@@ -2,7 +2,6 @@ import {
   IStyle,
   keyframes,
   PulsingBeaconAnimationStyles,
-  ZIndexes,
   ITheme,
   getTheme
 } from '../../Styling';

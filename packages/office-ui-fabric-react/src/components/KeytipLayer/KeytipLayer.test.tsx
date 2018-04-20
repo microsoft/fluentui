@@ -9,8 +9,7 @@ import {
   ktpFullPrefix,
   ktpSeparator,
   find,
-  EventGroup,
-  ktpLayerId
+  EventGroup
 } from '../../Utilities';
 
 describe('KeytipLayer', () => {
@@ -41,7 +40,6 @@ describe('KeytipLayer', () => {
     keySequences: ['c', 'd']
   };
 
-  const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
   const uniqueIdE1 = '4';
   const keytipE1: IKeytipProps = {
     content: 'E1',

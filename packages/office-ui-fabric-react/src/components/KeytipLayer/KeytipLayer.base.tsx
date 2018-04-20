@@ -14,7 +14,6 @@ import {
   classNamesFunction,
   convertSequencesToKeytipID,
   IKeySequence,
-  EventGroup,
   fullKeySequencesAreEqual,
   transitionKeysContain,
   mergeOverflowKeySequences,

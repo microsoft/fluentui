@@ -4,12 +4,12 @@ import { shallow } from 'enzyme';
 import { OverflowSet } from './OverflowSet';
 import * as sinon from 'sinon';
 import { IOverflowSetItemProps } from './OverflowSet.types';
-import { CommandBarButton, IButton } from '../../Button';
+import { CommandBarButton } from '../../Button';
 import { mount, ReactWrapper } from 'enzyme';
-import { convertSequencesToKeytipID, fullKeySequencesAreEqual, IKeySequence, find, createRef } from '../../Utilities';
+import { fullKeySequencesAreEqual, IKeySequence, find, createRef } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
-import { KeytipManager, constructKeytipExecuteTargetFromId, KeytipTree, IKeytipTreeNode, IUniqueKeytip } from '../../utilities/keytips';
+import { KeytipManager, constructKeytipExecuteTargetFromId, IUniqueKeytip } from '../../utilities/keytips';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: IKeySequence[]): IKeytipProps | undefined {
   const ktp = find(keytipManager.keytips, (uniqueKeytip: IUniqueKeytip) => {
@@ -279,7 +279,6 @@ describe('OverflowSet', () => {
         layerRef.value!.processInput('x');
 
         delay(750).then(() => {
-          const managerKeytips = keytipManager.getKeytips();
           // item3
           const item3Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip3.keySequences);
           expect(fullKeySequencesAreEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);

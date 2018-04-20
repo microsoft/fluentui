@@ -294,12 +294,10 @@ describe('KeytipTree', () => {
     const keytipPropsQ = createKeytipProps(keytipSequenceQ);
 
     // Node K
-    const keytipIdK = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'k';
     const keytipSequenceK: IKeySequence[] = ['e1', 'k'];
     const keytipPropsK = createKeytipProps(keytipSequenceK);
 
     // Node P
-    const keytipIdP = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'p';
     const keytipSequenceP: IKeySequence[] = ['e1', 'p'];
     const keytipPropsP = createKeytipProps(keytipSequenceP);
 
