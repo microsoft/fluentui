@@ -3,7 +3,7 @@ import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 
 // tslint:disable:jsx-no-lambda
 export class SpinButtonStatefulExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     const suffix = ' cm';
 
     return (

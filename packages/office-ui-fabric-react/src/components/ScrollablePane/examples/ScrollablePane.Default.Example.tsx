@@ -6,7 +6,7 @@ import './ScrollablePane.Example.scss';
 
 export class ScrollablePaneDefaultExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     const contentAreas: JSX.Element[] = [];
     for (let i = 0; i < 4; i++) {
       contentAreas.push(this._createContentArea(i));
@@ -21,7 +21,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
     );
   }
 
-  private _getRandomColor() {
+  private _getRandomColor(): string {
     const letters = 'BCDEF'.split('');
     let color = '#';
     for (let i = 0; i < 6; i++) {
@@ -30,7 +30,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
     return color;
   }
 
-  private _createContentArea(index: number) {
+  private _createContentArea(index: number): JSX.Element {
     const style = this._getRandomColor();
 
     return (

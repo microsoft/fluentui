@@ -135,7 +135,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillReceiveProps(nextProps: IDatePickerProps) {
+  public componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
     if (compareDates(this.props.minDate!, nextProps.minDate!) &&
@@ -178,7 +178,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       firstDayOfWeek,
       strings,
@@ -380,7 +380,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._onTextFieldClick(ev);
   }
 
-  private _showDatePickerPopup() {
+  private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
       this.setState({

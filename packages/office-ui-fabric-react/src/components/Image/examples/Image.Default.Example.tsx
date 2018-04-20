@@ -3,7 +3,7 @@ import { Image } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ImageDefaultExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <p>With no imageFit property set, the width and height props control the size of the frame. Depending on which of those props is used, the image may scale to fit the frame.</p>

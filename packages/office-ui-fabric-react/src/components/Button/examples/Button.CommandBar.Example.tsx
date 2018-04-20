@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
     return (

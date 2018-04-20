@@ -5,7 +5,7 @@ const styles: any = stylesImport;
 const pageStyles: any = require('../PageStyles.module.scss');
 
 export class AngularJSPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ pageStyles.basePage }>
         <div className={ styles.header }>

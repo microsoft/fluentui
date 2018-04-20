@@ -3,7 +3,7 @@ import { ReactWrapper } from 'enzyme';
 export const findNodes = (wrapper: ReactWrapper<any, any>, className: string): ReactWrapper<any, any> => (
   wrapper
     .find(className)
-    .filterWhere((node => typeof node.type() === 'string'))
+    .filterWhere(((node: ReactWrapper<any, any>) => typeof node.type() === 'string'))
 );
 
 export const expectNodes = (wrapper: ReactWrapper<any, any>, className: string, n: number): void => (

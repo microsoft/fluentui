@@ -30,7 +30,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       items,
       overflowItems,

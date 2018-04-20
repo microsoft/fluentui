@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { BaseComponent, css } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { ITeachingBubbleProps } from './TeachingBubble.types';

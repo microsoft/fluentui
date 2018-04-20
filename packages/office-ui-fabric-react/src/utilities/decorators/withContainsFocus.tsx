@@ -20,11 +20,11 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
       this._handleBlur = this._handleBlur.bind(this);
     }
 
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
       this._async.dispose();
     }
 
-    public render() {
+    public render(): JSX.Element {
       const { containsFocus } = this.state;
 
       return (
@@ -38,21 +38,21 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
       );
     }
 
-    public forceUpdate() {
+    public forceUpdate(): void {
       this._composedComponentInstance.forceUpdate();
     }
 
-    private _handleFocus(ev: React.FocusEvent<HTMLDivElement>) {
+    private _handleFocus(ev: React.FocusEvent<HTMLDivElement>): void {
       this._newContainsFocus = true;
       this._delayedSetContainsFocus();
     }
 
-    private _handleBlur(ev: React.FocusEvent<HTMLDivElement>) {
+    private _handleBlur(ev: React.FocusEvent<HTMLDivElement>): void {
       this._newContainsFocus = false;
       this._delayedSetContainsFocus();
     }
 
-    private _setContainsFocus() {
+    private _setContainsFocus(): void {
       if (this.state.containsFocus !== this._newContainsFocus) {
         this.setState({ containsFocus: this._newContainsFocus });
       }
