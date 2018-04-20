@@ -33,7 +33,6 @@ exports[`Link renders Link correctly 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
@@ -73,10 +72,63 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
+`;
+
+exports[`Link renders Link with as a div element 1`] = `
+<div
+  aria-disabled={undefined}
+  className=
+      ms-Link
+      customClassName
+      {
+        background: none;
+        border: none;
+        color: #0078d4;
+        cursor: pointer;
+        display: inline;
+        font-size: inherit;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        outline: transparent;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        text-align: left;
+        text-overflow: inherit;
+        user-select: text;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      &:active, &:hover, &:active:hover {
+        color: #004578;
+      }
+      &:focus {
+        color: #0078d4;
+      }
+  onClick={[Function]}
+>
+  I'm a div
+</div>
 `;
 
 exports[`Link renders Link with no href as a button 1`] = `
@@ -164,7 +216,6 @@ exports[`Link renders disabled Link correctly 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a disabled link
 </a>
