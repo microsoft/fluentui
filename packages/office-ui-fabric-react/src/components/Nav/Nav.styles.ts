@@ -110,7 +110,7 @@ export const getStyles = (
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
         selectors: {
-          '.ms-Nav-compositeLink:hover &': {
+          '$compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
             color: semanticColors.bodyText
           },
