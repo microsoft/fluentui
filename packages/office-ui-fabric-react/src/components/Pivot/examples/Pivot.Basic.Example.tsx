@@ -5,11 +5,18 @@ import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
 export class PivotBasicExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Pivot>
-          <PivotItem linkText='My Files'>
+          <PivotItem
+            headerText='My Files'
+            linkText='I am deprecated. "headerText" overwrites me'
+            headerButtonProps={ {
+              'data-order': 1,
+              'data-title': 'My Files Title'
+            } }
+          >
             <Label className={ exampleStyles.exampleLabel }>Pivot #1</Label>
           </PivotItem>
           <PivotItem linkText='Recent'>

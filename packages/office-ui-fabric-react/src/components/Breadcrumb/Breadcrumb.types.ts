@@ -1,12 +1,13 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Breadcrumb, IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../Icon';
 import { IRenderFunction, IComponentAs } from '../../Utilities';
 
 export interface IBreadcrumb {
-
+  /**
+   * Sets focus to the first breadcrumb link.
+   */
+  focus(): void;
 }
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
@@ -38,6 +39,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   maxDisplayedItems?: number;
 
   /** Method to call when trying to render an item. */
+
   onRenderItem?: IRenderFunction<IBreadcrumbItem>;
 
   /**
@@ -55,6 +57,11 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Optional name to use for aria label on overflow button.
    */
   overflowAriaLabel?: string;
+
+  /**
+   * Optional index where overflow items will be collapsed. Defaults to 0.
+   */
+  overflowIndex?: number;
 }
 
 export interface IBreadcrumbItem {

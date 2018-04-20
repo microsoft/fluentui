@@ -6,7 +6,6 @@ import {
   getNativeProps,
   divProperties,
   focusFirstChild,
-  getFirstFocusable,
   elementContains
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
@@ -31,7 +30,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       items,
       overflowItems,
@@ -87,11 +86,11 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     let focusSucceeded = false;
 
     if (this.props.doNotContainWithinFocusZone) {
-      if (this._divContainer.value) {
-        focusSucceeded = focusFirstChild(this._divContainer.value);
+      if (this._divContainer.current) {
+        focusSucceeded = focusFirstChild(this._divContainer.current);
       }
-    } else if (this._focusZone.value) {
-      focusSucceeded = this._focusZone.value.focus(forceIntoFirstElement);
+    } else if (this._focusZone.current) {
+      focusSucceeded = this._focusZone.current.focus(forceIntoFirstElement);
     }
 
     return focusSucceeded;
@@ -110,12 +109,12 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     }
 
     if (this.props.doNotContainWithinFocusZone) {
-      if (this._divContainer.value && elementContains(this._divContainer.value, childElement)) {
+      if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
         childElement.focus();
         focusSucceeded = document.activeElement === childElement;
       }
-    } else if (this._focusZone.value) {
-      focusSucceeded = this._focusZone.value.focusElement(childElement);
+    } else if (this._focusZone.current) {
+      focusSucceeded = this._focusZone.current.focusElement(childElement);
     }
 
     return focusSucceeded;

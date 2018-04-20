@@ -1,153 +1,184 @@
 import * as React from 'react';
-import { loadTheme, FontClassNames, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentDemoPageProps, Highlight } from '@uifabric/example-app-base';
-import { defaultTheme } from './defaultTheme';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
-import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import './ThemePage.scss';
-const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
+import { classNamesFunction } from '../../Utilities';
+import {
+  IPalette,
+  ISemanticColors,
+  loadTheme,
+} from '../../Styling';
+import {
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+} from '@uifabric/example-app-base';
+import {
+  IThemePageStyleProps,
+  IThemePageStyles,
+  IThemePageState,
+} from './ThemePage.types';
+import {
+  defaultPalette,
+  defaultSemanticColors,
+} from './defaultTheme';
+import { getStyles } from './ThemePage.styles';
+import { Callout } from '../Callout';
+import { DetailsList, DetailsListLayoutMode } from '../../DetailsList';
+import { SelectionMode } from '../../Selection';
+import { ColorPicker } from '../ColorPicker';
 
-export class ThemePage extends React.Component<IComponentDemoPageProps, {
-  colors: {
-    key: string;
-    name: string;
-    value: string;
-    description: string;
-  }[];
-  colorPickerProps?: {
-    targetElement: HTMLElement;
-    value: any;
-    index: number;
-  };
-}> {
-  private _list: DetailsList;
+const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
 
-  constructor(props: {}) {
+export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePageState> {
+  constructor(props: IComponentDemoPageProps) {
     super(props);
 
     this._onPickerDismiss = this._onPickerDismiss.bind(this);
 
     this.state = {
-      colors: Object.keys(defaultTheme).map(variableName => ({
-        key: variableName,
-        name: variableName,
-        value: (defaultTheme as any)[variableName],
-        description: '',
-        colorPickerProps: undefined
-      }))
+      palette: defaultPalette,
+      semanticColors: defaultSemanticColors,
     };
   }
 
-  public render() {
-    const { colors, colorPickerProps } = this.state;
-
+  public render(): JSX.Element {
+    // Don't mutate state to display lists
+    const palette = [...this.state.palette];
+    const semanticColors = [...this.state.semanticColors];
     return (
-      <div className='Themes'>
-        <h1 className={ FontClassNames.xxLarge }>Themes</h1>
-        <p>The entire color palette of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.</p>
-        <p>To override the themes, you need to call <span className='code'>loadTheme()</span> with the appropriate set of overrides:</p>
+      <ComponentPage
+        title='Themes'
+        componentName='ThemeExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Theme'
+        overview={
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemesOverview.md') }
+          </PageMarkdown>
+        }
+        otherSections={ [
+          {
+            title: 'Default Palette',
+            section: this._colorList(palette, 'palette')
+          },
+          {
+            title: 'Default Semantic Colors',
+            section: this._colorList(semanticColors, 'semanticColors')
+          },
+        ] }
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
+    );
+  }
 
-        <Highlight className='typescript'>
-          { ThemeCodeExample }
-        </Highlight>
+  private _colorList = (colors: any, list: 'palette' | 'semanticColors') => {
+    const classNames = getClassNames(getStyles);
+    const { colorPickerProps } = this.state;
+    return (
+      <div>
+        <DetailsList
+          items={ colors }
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.fixedColumns }
+          columns={ [
+            {
+              key: 'name',
+              name: 'Name',
+              fieldName: 'name',
+              minWidth: 150,
+              maxWidth: 150
+            },
+            {
+              key: 'color',
+              name: 'Color',
+              fieldName: 'value',
+              minWidth: 200,
+              onRender: (item, index) => (
+                <div
+                  className={ classNames.colorSwatch }
+                  data-is-focusable='true'
+                  onClick={ this._onSwatchClicked.bind(this, item, index, list) }
+                >
+                  <span
+                    className={ classNames.swatch }
+                    style={ { backgroundColor: item.value } }
+                  />
+                  <span className={ classNames.colorValue }>{ item.value }</span>
+                </div>
+              )
+            },
+            {
+              key: 'desc',
+              name: 'Description',
+              fieldName: 'description',
+              minWidth: 90
+            }
+          ] }
+        />
 
-        <h1 className={ FontClassNames.xLarge }>Define a theme</h1>
-        <div>
-          <DetailsList
-            ref={ this._createDetailsListRef }
-            items={ colors }
-            selectionMode={ SelectionMode.none }
-            layoutMode={ LayoutMode.fixedColumns }
-            columns={ [
-              {
-                key: 'name',
-                name: 'Name',
-                fieldName: 'name',
-                minWidth: 150,
-                maxWidth: 150
-              },
-              {
-                key: 'color',
-                name: 'Color',
-                fieldName: 'value',
-                minWidth: 200,
-                onRender: (item, index) => (
-                  <div className='ThemePage-colorSwatch' data-is-focusable='true' onClick={ this._onSwatchClicked.bind(this, item, index) }>
-                    <span className='ThemePage-swatch' style={ { backgroundColor: item.value } } />
-                    <span className='ThemePage-colorValue'>{ item.value }</span>
-                  </div>
-                )
-              },
-              {
-                key: 'desc',
-                name: 'Description',
-                fieldName: 'description',
-                minWidth: 90
-              }
-            ] }
-          />
+        { colorPickerProps && (
+          <Callout
+            isBeakVisible={ false }
+            gapSpace={ 10 }
+            target={ colorPickerProps.targetElement }
+            onDismiss={ this._onPickerDismiss }
+          >
 
-          { colorPickerProps && (
-            <Callout
-              isBeakVisible={ false }
-              gapSpace={ 10 }
-              target={ colorPickerProps.targetElement }
-              onDismiss={ this._onPickerDismiss }
-            >
+            <ColorPicker
+              color={ colorPickerProps.value }
+              onColorChanged={ this._onColorChanged.bind(this, colorPickerProps.index) }
+            />
 
-              <ColorPicker
-                color={ colorPickerProps.value }
-                onColorChanged={ this._onColorChanged.bind(this, colorPickerProps.index) }
-              />
-
-            </Callout>
-          ) }
-
-        </div>
+          </Callout>
+        ) }
 
       </div>
     );
   }
 
-  private _createDetailsListRef = (component: DetailsList) => {
-    this._list = component;
-  }
-
-  private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent<HTMLElement>) {
+  private _onSwatchClicked(item: any, index: number, list: string, ev: React.MouseEvent<HTMLElement>): void {
     this.setState({
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
         value: item.value,
-        index: index
-      }
+        index: index,
+      },
+      activeList: list
     });
   }
 
-  private _onColorChanged(index: number, newColor: string) {
-    const { colors } = this.state;
-    const color = colors[index];
-    const palette: Partial<IPalette> = {};
+  private _onColorChanged(index: number, newColor: string): void {
+    const { activeList } = this.state;
+    const partialPalette: Partial<IPalette> = {};
+    const partialSemanticColors: Partial<ISemanticColors> = {};
 
-    color.value = newColor;
-
-    for (let i = 0; i < colors.length; i++) {
-      const themeColor = colors[i];
-
-      (palette as any)[themeColor.key] = themeColor.value;
+    if (activeList === 'palette') {
+      const palette = [...this.state.palette];
+      const paletteColor = palette[index];
+      paletteColor.value = newColor;
+      palette[index] = paletteColor;
+      for (let i = 0; i < palette.length; i++) {
+        (palette as any)[palette[i].key] = palette[i].value;
+      }
+    } else if (activeList === 'semanticColors') {
+      const semanticColors = [...this.state.semanticColors];
+      const semanticColor = semanticColors[index];
+      semanticColor.value = newColor;
+      semanticColors[index] = semanticColor;
+      for (let i = 0; i < semanticColors.length; i++) {
+        (semanticColors as any)[semanticColors[i].key] = semanticColors[i].value;
+      }
+    } else {
+      this.setState({ activeList: undefined });
+      return undefined;
     }
 
-    loadTheme({ palette });
+    this.setState({ activeList: undefined });
+    const partialTheme = { ...partialPalette, ...partialSemanticColors };
 
-    // The theme has changed values, but color state is the same. Force an update on the list.
-    this._list.forceUpdate();
+    loadTheme({ palette: partialTheme });
   }
 
-  private _onPickerDismiss() {
+  private _onPickerDismiss(): void {
     this.setState({
       colorPickerProps: undefined
     });
   }
-
 }

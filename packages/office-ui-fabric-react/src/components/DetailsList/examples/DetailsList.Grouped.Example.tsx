@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
   createRef
@@ -122,8 +120,8 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
         color: 'blue'
       }])
     }, () => {
-      if (this._root.value) {
-        this._root.value.focusIndex(items.length, true);
+      if (this._root.current) {
+        this._root.current.focusIndex(items.length, true);
       }
     });
   }

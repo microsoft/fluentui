@@ -7,7 +7,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import './Spinner.Basic.Example.scss';
 
 export class SpinnerBasicExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-BasicSpinnersExample'>
         <Label>Extra Small Spinner</Label>

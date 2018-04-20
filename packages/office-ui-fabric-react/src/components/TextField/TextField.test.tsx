@@ -9,7 +9,7 @@ import { TextField } from './TextField';
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     return renderedDOM as HTMLElement;
   }
 

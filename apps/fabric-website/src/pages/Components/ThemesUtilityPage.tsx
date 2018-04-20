@@ -5,7 +5,7 @@ import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
 
 export class ThemesUtilityPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div ref='pageElement' className={ pageStyles.basePage }>
         <ComponentPage>

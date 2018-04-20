@@ -1,6 +1,26 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Minor changes
+
+- Update createRef to match React.createRef api
+
+## 5.24.0
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Minor changes
+
+- Adding some helpers which ensure that `ms-Fabric.is-focusVisible` class name is added to the document body when focus rectangles should be fixible. Also ensuring that the `documentElement` has a `dir` attribute.
+- Upgrade to TypeScript 2.8.1
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
 
 ## 5.23.0
 Thu, 05 Apr 2018 10:15:39 GMT

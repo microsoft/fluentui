@@ -1,8 +1,9 @@
 import {
   IStyle,
-  IRawStyle,
   keyframes,
-  PulsingBeaconAnimationStyles
+  PulsingBeaconAnimationStyles,
+  ITheme,
+  getTheme
 } from '../../Styling';
 
 export interface ICoachmarkStyleProps {
@@ -217,14 +218,15 @@ export const rotateOne: string = keyframes({
   }
 });
 
-export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
+export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(),
+): ICoachmarkStyles {
   const animationInnerDimension = '35px';
   const animationOuterDimension = '150px';
   const animationBorderWidth = '10px';
 
-  const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimation(
-    props.beaconColorOne!,
-    props.beaconColorTwo!,
+  const ContinuousPulse: string = PulsingBeaconAnimationStyles.continuousPulseAnimationDouble(
+    props.beaconColorOne ? props.beaconColorOne : theme.palette.themePrimary,
+    props.beaconColorTwo ? props.beaconColorTwo : theme.palette.themeTertiary,
     animationInnerDimension,
     animationOuterDimension,
     animationBorderWidth

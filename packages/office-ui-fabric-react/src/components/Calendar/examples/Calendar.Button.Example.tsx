@@ -96,7 +96,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     this._onSelectDate = this._onSelectDate.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn! }>
@@ -134,21 +134,21 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     );
   }
 
-  private _onClick(event: any) {
+  private _onClick(event: any): void {
     this.setState((prevState: ICalendarButtonExampleState) => {
       prevState.showCalendar = !prevState.showCalendar;
       return prevState;
     });
   }
 
-  private _onDismiss() {
+  private _onDismiss(): void {
     this.setState((prevState: ICalendarButtonExampleState) => {
       prevState.showCalendar = false;
       return prevState;
     });
   }
 
-  private _onSelectDate(date: Date) {
+  private _onSelectDate(date: Date): void {
     this.setState((prevState: ICalendarButtonExampleState) => {
       prevState.showCalendar = false;
       prevState.selectedDate = date;

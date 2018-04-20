@@ -31,8 +31,8 @@ export class Highlight extends BaseComponent<IHighlightProps, {}> {
   }
 
   public componentDidMount(): void {
-    if (this._codeElement.value) {
-      highlightBlock(this._codeElement.value);
+    if (this._codeElement.current) {
+      highlightBlock(this._codeElement.current);
     }
   }
 }

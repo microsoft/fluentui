@@ -54,7 +54,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   };
   private _id: string;
   private _labelId: string;
-  private _classNames: {[key in keyof IRatingStyles]: string };
+  private _classNames: { [key in keyof IRatingStyles]: string };
 
   constructor(props: IRatingProps) {
     super(props);
@@ -67,7 +67,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     this._labelId = getId('RatingLabel');
   }
 
-  public componentWillReceiveProps(nextProps: IRatingProps) {
+  public componentWillReceiveProps(nextProps: IRatingProps): void {
     if (typeof nextProps.rating !== 'undefined' && nextProps.rating !== this.state.rating) {
       this.setState({
         rating: this._getClampedRating(nextProps.rating)
@@ -75,7 +75,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const id = this._id;
     const stars = [];
     const starIds = [];
@@ -108,8 +108,8 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       stars.push(
         <button
           className={ css(this._classNames.ratingButton, {
-            [this._classNames.rootIsLarge]: size === RatingSize.Large,
-            [this._classNames.rootIsSmall]: size !== RatingSize.Large
+            [this._classNames.rootIsLarge!]: size === RatingSize.Large,
+            [this._classNames.rootIsSmall!]: size !== RatingSize.Large
           }) }
           id={ starIds[i - 1] }
           key={ i }
@@ -120,7 +120,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
           type='button'
         >
           { this._getLabel(i) }
-          <RatingStar key={ i + 'rating' }  {...ratingStarProps} />
+          <RatingStar key={ i + 'rating' }  { ...ratingStarProps } />
         </button>
       );
     }
@@ -172,13 +172,13 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     );
   }
 
-  private _getInitialValue(props: IRatingProps) {
+  private _getInitialValue(props: IRatingProps): number | undefined {
     if (typeof props.rating === 'undefined') {
       return props.min;
     }
 
     if (props.rating === null) {
-      return null;
+      return undefined;
     }
 
     return this._getClampedRating(props.rating);

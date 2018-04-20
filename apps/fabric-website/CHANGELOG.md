@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 05 Apr 2018 10:15:39 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+
+## 5.7.0
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Minor changes
+
+- GetStarted page: Give titles links to their corresponding pages.
+
+## 5.6.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Updating build to React 16.3.1.
 
 ## 5.6.0
 Thu, 05 Apr 2018 10:15:39 GMT

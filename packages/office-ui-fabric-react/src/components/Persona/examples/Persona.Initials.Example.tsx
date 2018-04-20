@@ -18,7 +18,7 @@ const personaWithInitials = {
 };
 
 export class PersonaInitialsExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-PersonaExample'>
         <Persona

@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -31,7 +29,7 @@ describe('Rating', () => {
       threwException = true;
     }
     expect(threwException).toEqual(false);
-    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance) as Element;
 
     const ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
     const ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
@@ -72,7 +70,7 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance) as Element;
 
     const ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
 
@@ -106,7 +104,7 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance) as Element;
     const ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
 
     const checkState = (ratingToCheck: number, state: string) => {
@@ -138,7 +136,7 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
     expect((ratingButtons[0] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[1] as HTMLButtonElement).disabled).toEqual(true);
@@ -165,7 +163,7 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
     expect((ratingButtons[0] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[1] as HTMLButtonElement).disabled).toEqual(true);

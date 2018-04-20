@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  IStyle
-} from 'office-ui-fabric-react/lib/Styling';
-import {
-  ISize,
-  IStyleFunction
-} from 'office-ui-fabric-react/lib/Utilities';
-import { TileSize } from 'experiments/lib/Tile';
+import { IStyle } from '../../../Styling';
+import { ISize, IStyleFunction } from '../../../Utilities';
+import { TileSize } from '../../Tile';
 
 export interface IShimmerTile {
 

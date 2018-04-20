@@ -2,6 +2,44 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.7.0",
+      "tag": "@uifabric/fabric-website_v5.7.0",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8829b1fde1bbe2e6920b5e619727835184a15b45",
+            "comment": "GetStarted page: Give titles links to their corresponding pages."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.1 <6.0.0` to `>=5.82.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.1",
+      "tag": "@uifabric/fabric-website_v5.6.1",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6f8a180ae2ecca66d09be97e48e8e03cc17d4d9e",
+            "comment": "Updating build to React 16.3.1."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.81.1 <6.0.0` to `>=5.82.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.0",
       "tag": "@uifabric/fabric-website_v5.6.0",
       "date": "Thu, 05 Apr 2018 10:15:39 GMT",

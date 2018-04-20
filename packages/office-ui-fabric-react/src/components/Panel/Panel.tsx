@@ -1,11 +1,11 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import {
   BaseComponent,
   css,
+  divProperties,
   getId,
+  getNativeProps,
   getRTL,
   createRef
 } from '../../Utilities';
@@ -56,7 +56,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._events.on(window, 'resize', this._updateFooterPosition);
 
     if (this.props.isOpen) {
@@ -64,7 +64,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  public componentWillReceiveProps(newProps: IPanelProps) {
+  public componentWillReceiveProps(newProps: IPanelProps): void {
     if (newProps.isOpen !== this.state.isOpen) {
       if (newProps.isOpen) {
         this.open();
@@ -74,7 +74,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     const {
       className = '',
       elementToFocusOnDismiss,
@@ -102,6 +102,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
+    const nativeProps = getNativeProps(this.props, divProperties);
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -137,6 +138,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
           }
         >
           <div
+            { ...nativeProps }
             className={
               css(
                 'ms-Panel',
@@ -175,9 +177,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={
-                isLightDismiss || isHiddenOnDismiss || (focusTrapZoneProps && focusTrapZoneProps.isClickableOutsideFocusTrap)
-              }
+              isClickableOutsideFocusTrap={ focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { onRenderNavigation(this.props, this._onRenderNavigation) }
@@ -288,7 +288,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     );
 
     return (
-      <div ref={ this._content } className={ contentClass } >
+      <div ref={ this._content } className={ contentClass } data-is-scrollable={ true } >
         { props.children }
       </div>
     );
@@ -310,7 +310,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   private _updateFooterPosition(): void {
-    const _content = this._content.value;
+    const _content = this._content.current;
     if (_content) {
       const height = _content.clientHeight;
       const innerHeight = _content.scrollHeight;
