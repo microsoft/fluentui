@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.86.0",
+      "tag": "office-ui-fabric-react_v5.86.0",
+      "date": "Fri, 20 Apr 2018 23:06:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "5ee5b0000642c73ee99110a888360f4b6f99fa56",
+            "comment": "Callout.Basic.Example: Fix example so callout positions properly"
+          },
+          {
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "1c60faec279be119ddd0d952958570c81edb8ca5",
+            "comment": "Propagate onRenderInitials correctly from Persona to PersonaCoin"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "bcfcbd31d10874a8c560273be82d4a7087d37aa4",
+            "comment": "Added support for zero star situations in the Rating component.  Before it would write out a star for  the number zero showing 6 stars when there should be 5."
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "d8c8e6fc0be8766ce6625aefc4a512e0abfe4e7f",
+            "comment": "Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.25.0 <6.0.0` to `>=5.26.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.85.0",
       "tag": "office-ui-fabric-react_v5.85.0",
       "date": "Fri, 20 Apr 2018 10:12:34 GMT",

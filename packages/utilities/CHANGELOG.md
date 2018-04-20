@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Apr 2018 23:06:06 GMT and should not be manually modified.
+
+## 5.26.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- InputMask: Added inputMask utilitiy and tests
 
 ## 5.25.0
 Thu, 19 Apr 2018 18:25:59 GMT
