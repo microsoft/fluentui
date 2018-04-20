@@ -43,6 +43,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         title='Panel'
         componentName='PanelExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel'
+        allowNativeProps={ true }
         exampleCards={
           <div>
             <ExampleCard title='Panel - Small Panel, Anchored Right, Fixed Width' code={ PanelSmallRightExampleCode }>
