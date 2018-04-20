@@ -65,7 +65,9 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
 
     return (
       <div>
-        <div className={ styles.buttonArea }>
+        <div
+          className={ styles.buttonArea }
+          ref={ (c) => this._menuButtonElement = c }>
           <DefaultButton
             id='toggleCallout'
             onClick={ this._onShowMenuClicked }
