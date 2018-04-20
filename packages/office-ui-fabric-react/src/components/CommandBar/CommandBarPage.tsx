@@ -1,25 +1,26 @@
 import * as React from 'react';
+
 import {
+  ComponentPage,
   ExampleCard,
   IComponentDemoPageProps,
-  ComponentPage,
-  PropertiesTableSet,
   PageMarkdown,
+  PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { items, overflowItems, farItems } from './examples/data';
-import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
-import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
-import { CommandBarCustomizationExample } from './examples/CommandBar.Customization.Example';
+
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { CommandBarStatus } from './CommandBar.checklist';
+import { ICommandBarProps } from './CommandBar.types';
+import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
+import { farItems, items, overflowItems } from './examples/data';
 
-const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
-const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.NonFocusable.Example.tsx') as string;
-const CommandBarCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Customization.Example.tsx') as string;
+const CommandBarBasicExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx'
+) as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
-    const cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
+    const cmdBarParamsTextAndIcons: ICommandBarProps = { items, overflowItems, farItems };
 
     return (
       <ComponentPage
@@ -30,12 +31,6 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
           <div>
             <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
               <CommandBarBasicExample { ...cmdBarParamsTextAndIcons } />
-            </ExampleCard>
-            <ExampleCard title='CommandBar with non-focusable items' code={ CommandBarNoFocusableItemsExampleCode }>
-              <CommandBarNonFocusableItemsExample />
-            </ExampleCard>
-            <ExampleCard title='CommandBar with customized rendered items' code={ CommandBarCustomizationExampleCode }>
-              <CommandBarCustomizationExample />
             </ExampleCard>
           </div>
         }
@@ -64,6 +59,9 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
           <PageMarkdown>
             { require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md') }
           </PageMarkdown>
+        }
+        related={
+          <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
