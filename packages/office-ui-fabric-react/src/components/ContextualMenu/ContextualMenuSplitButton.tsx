@@ -121,7 +121,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       onMouseMove: onItemMouseMove ? this._onItemMouseMove.bind(this, item) : undefined,
       'data-is-focusable': false,
       'aria-hidden': true
-    })
+    });
 
     return (
       <button {...buttonProp} >
