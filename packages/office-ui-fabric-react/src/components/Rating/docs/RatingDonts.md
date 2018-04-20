@@ -1,0 +1,1 @@
+- Don’t use the rating component for data that has a continuous range, such as the brightness of a photo. Instead, use a slider.

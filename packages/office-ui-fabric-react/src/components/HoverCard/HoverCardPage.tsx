@@ -4,6 +4,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
@@ -22,6 +23,7 @@ export class HoverCardPage extends React.Component<IComponentDemoPageProps, any>
       <ComponentPage
         title='HoverCard'
         componentName='HoverCardExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/HoverCard'
         exampleCards={
           <LayerHost>
             <ExampleCard title='HoverCard' code={ HoverCardBasicExampleCode }>
@@ -42,9 +44,9 @@ export class HoverCardPage extends React.Component<IComponentDemoPageProps, any>
           />
         }
         overview={
-          <div>
-            <p>HoverCards supplement content associated with a specific data element.</p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md') }
+          </PageMarkdown>
         }
         componentStatus={
           <ComponentStatus

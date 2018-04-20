@@ -8,7 +8,7 @@ import {
   IShimmerTileStyleProps,
   IShimmerTileStyles
 } from './ShimmerTile.types';
-import { TileLayoutSizes, TileSize } from '../../Tile';
+import { TileLayoutSizes, TileSize } from '../../../Tile';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
 import { getRenderedElements } from '../Shimmer.base';
 import { ShimmerElementType as ElemType } from '../Shimmer.types';

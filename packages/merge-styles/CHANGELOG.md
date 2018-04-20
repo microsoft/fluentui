@@ -1,6 +1,20 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 10 Apr 2018 17:37:28 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+
+## 5.15.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- mergeStyles: rules are now registered in separate styling objects, improving performance significantly.
+
+## 5.15.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
 
 ## 5.15.0
 Tue, 10 Apr 2018 17:37:28 GMT

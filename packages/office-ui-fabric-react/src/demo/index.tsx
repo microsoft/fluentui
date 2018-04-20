@@ -6,7 +6,6 @@ import { App, AppDefinition } from './AppDefinition';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { GettingStartedPage } from './GettingStartedPage';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { ComponentPage } from '@uifabric/example-app-base';
 
 import './index.scss';
@@ -41,11 +40,9 @@ function _onLoad() {
   rootElement = rootElement || document.getElementById('content');
 
   ReactDOM.render(
-    <Fabric>
-      <Router onNewRouteLoaded={ _scrollAnchorLink }>
-        { _getRoutes() }
-      </Router>
-    </Fabric>,
+    <Router onNewRouteLoaded={ _scrollAnchorLink }>
+      { _getRoutes() }
+    </Router>,
     rootElement);
 }
 

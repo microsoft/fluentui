@@ -20,6 +20,13 @@ module.exports = resources.createConfig(
     externals: [
       { 'react': 'React' },
       { 'react-dom': 'ReactDOM' }
-    ]
+    ],
+
+    resolve: {
+      alias: {
+        '@uifabric/experiments/src': path.join(__dirname, 'src'),
+        '@uifabric/experiments/lib': path.join(__dirname, 'lib')
+      }
+    }
   }
 );

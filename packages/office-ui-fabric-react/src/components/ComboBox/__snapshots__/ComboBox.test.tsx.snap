@@ -106,7 +106,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
     id="ComboBox0wrapper"
   >
     <input
-      aria-activedescendant={null}
+      aria-activedescendant={undefined}
       aria-autocomplete="both"
       aria-describedby="ComboBox0-option"
       aria-disabled={undefined}

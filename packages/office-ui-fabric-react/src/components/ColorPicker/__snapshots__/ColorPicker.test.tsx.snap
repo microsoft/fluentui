@@ -122,7 +122,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   className="ms-TextField-fieldGroup"
                 >
                   <input
-                    aria-describedby={null}
+                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label={undefined}
                     className="ms-TextField-field"
@@ -156,7 +156,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   className="ms-TextField-fieldGroup"
                 >
                   <input
-                    aria-describedby={null}
+                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label={undefined}
                     className="ms-TextField-field"
@@ -190,7 +190,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   className="ms-TextField-fieldGroup"
                 >
                   <input
-                    aria-describedby={null}
+                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label={undefined}
                     className="ms-TextField-field"
@@ -224,7 +224,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   className="ms-TextField-fieldGroup"
                 >
                   <input
-                    aria-describedby={null}
+                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label={undefined}
                     className="ms-TextField-field"
@@ -258,7 +258,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   className="ms-TextField-fieldGroup"
                 >
                   <input
-                    aria-describedby={null}
+                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label={undefined}
                     className="ms-TextField-field"

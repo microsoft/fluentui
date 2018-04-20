@@ -48,6 +48,18 @@ describe('Breadcrumb', () => {
 
     tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    // With overflow and overflowIndex
+    component = renderer.create(
+      <Breadcrumb
+        items={ items }
+        maxDisplayedItems={ 2 }
+        overflowIndex={ 1 }
+      />
+    );
+
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('can call the callback when an item is clicked', () => {
@@ -66,7 +78,7 @@ describe('Breadcrumb', () => {
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
 
     ReactTestUtils.Simulate.click(itemLink!);
@@ -89,7 +101,7 @@ describe('Breadcrumb', () => {
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
 
     expect(itemLink[0].textContent).toEqual('TestText3');

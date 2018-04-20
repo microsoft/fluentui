@@ -41,6 +41,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   maxDisplayedItems?: number;
 
   /** Method to call when trying to render an item. */
+
   onRenderItem?: IRenderFunction<IBreadcrumbItem>;
 
   /**
@@ -58,6 +59,11 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Optional name to use for aria label on overflow button.
    */
   overflowAriaLabel?: string;
+
+  /**
+   * Optional index where overflow items will be collapsed. Defaults to 0.
+   */
+  overflowIndex?: number;
 }
 
 export interface IBreadcrumbItem {

@@ -26,10 +26,10 @@ export interface ITextField {
   setSelectionRange: (start: number, end: number) => void;
 
   /** Gets the selection start of the text field. Returns -1 if there is no selection. */
-  selectionStart: number;
+  selectionStart: number | null;
 
   /** Gets the selection end of the text field. Returns -1 if there is no selection. */
-  selectionEnd: number;
+  selectionEnd: number | null;
 }
 
 /**
@@ -227,6 +227,32 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * This tells the browser to display options based on earlier typed values.
    */
   autoComplete?: 'on' | 'off';
+
+  /**
+   * The masking string that defines the mask's behavior.
+   * A backslash will escape any character.
+   * Special format characters are:
+   * '9': [0-9]
+   * 'a': [a-zA-Z]
+   * '*': [a-zA-Z0-9]
+   */
+  mask?: string;
+
+  /**
+   * The character to show in place of unfilled characters of the mask.
+   * @default '_'
+   */
+  maskChar?: string;
+
+  /**
+   * An object defining the format characters and corresponding regexp values.
+   * Default format characters: {
+   *  '9': /[0-9]/,
+   *  'a': /[a-zA-Z]/,
+   *  '*': /[a-zA-Z0-9]/
+   * }
+   */
+  maskFormat?: { [key: string]: RegExp };
 
   /**
    * Deprecated property. Serves no function.

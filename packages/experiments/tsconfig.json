@@ -24,7 +24,7 @@
       "webpack-env"
     ],
     "paths": {
-      "experiments/lib/*": [
+      "@uifabric/experiments/lib/*": [
         "./src/*"
       ]
     }
