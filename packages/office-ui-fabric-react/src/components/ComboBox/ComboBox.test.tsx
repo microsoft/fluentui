@@ -45,6 +45,24 @@ describe('ComboBox', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a ComboBox with a Keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const createNodeMock = (el: React.ReactElement<{}>) => {
+      return {
+        __events__: {}
+      };
+    };
+    const component = renderer.create(
+      <ComboBox options={ DEFAULT_OPTIONS } keytipProps={ keytipProps } />,
+      { createNodeMock }
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Can flip between enabled and disabled.', () => {
     let wrapper = mount(
       <ComboBox

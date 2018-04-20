@@ -66,6 +66,8 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _delayedKeytipQueue: string[] = [];
   private _delayedQueueTimeout: number;
 
+  private _keyHandled = false;
+
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
@@ -214,10 +216,12 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     const currKtp = this.keytipTree.currentKeytip;
     if (transitionKeysContain(this.props.keytipExitSequences!, transitionKey) && currKtp) {
       // If key sequence is in 'exit sequences', exit keytip mode
+      this._keyHandled = true;
       this.exitKeytipMode();
     } else if (transitionKeysContain(this.props.keytipReturnSequences!, transitionKey)) {
       // If key sequence is in return sequences, move currentKeytip to parent (or if currentKeytip is the root, exit)
       if (currKtp) {
+        this._keyHandled = true;
         if (currKtp.id === this.keytipTree.root.id) {
           // We are at the root, exit keytip mode
           this.exitKeytipMode();
@@ -237,6 +241,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       }
     } else if (transitionKeysContain(this.props.keytipStartSequences!, transitionKey) && !currKtp) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, we enter keytip mode
+      this._keyHandled = true;
       this.enterKeytipMode();
     }
   }
@@ -348,6 +353,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    this._keyHandled = false;
     switch (ev.which) {
       case KeyCodes.alt:
         // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
@@ -357,6 +363,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       case KeyCodes.enter:
       case KeyCodes.space:
         if (this.state.inKeytipMode) {
+          this._keyHandled = true;
           this.exitKeytipMode();
           ev.preventDefault();
           ev.stopPropagation();
@@ -406,7 +413,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   }
 
   private _onKeyPress = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (this.state.inKeytipMode) {
+    if (this.state.inKeytipMode && !this._keyHandled) {
       // Call processInput
       this.processInput(ev.key.toLocaleLowerCase());
       ev.preventDefault();
