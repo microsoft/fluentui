@@ -70,7 +70,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     this._renderPivotLink = this._renderPivotLink.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: IPivotProps) {
+  public componentWillReceiveProps(nextProps: IPivotProps): void {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
 
     this.setState((prevState, props) => {
@@ -100,7 +100,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         { this._renderPivotLinks() }
@@ -112,7 +112,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Renders the set of links to route between pivots
    */
-  private _renderPivotLinks() {
+  private _renderPivotLinks(): JSX.Element {
     return (
       <FocusZone componentRef={ this.focusZone } direction={ FocusZoneDirection.horizontal }>
         <ul
@@ -182,7 +182,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Renders the current Pivot Item
    */
-  private _renderPivotItem() {
+  private _renderPivotItem(): JSX.Element | null {
     if (this.props.headersOnly) {
       return null;
     }
@@ -246,14 +246,14 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * whether the key exists in the pivot items.
    */
-  private _isKeyValid(itemKey: string | undefined) {
+  private _isKeyValid(itemKey: string | undefined): boolean {
     return itemKey !== undefined && this._keyToIndexMapping[itemKey] !== undefined;
   }
 
   /**
    * Handles the onClick event on PivotLinks
    */
-  private _onLinkClick(itemKey: string, ev: React.MouseEvent<HTMLElement>) {
+  private _onLinkClick(itemKey: string, ev: React.MouseEvent<HTMLElement>): void {
     ev.preventDefault();
     this._updateSelectedItem(itemKey, ev);
   }
@@ -261,7 +261,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Handle the onKeyPress eventon the PivotLinks
    */
-  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
     ev.preventDefault();
     if (ev.which === KeyCodes.enter) {
       this._updateSelectedItem(itemKey);
@@ -271,7 +271,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Updates the state with the new selected index
    */
-  private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent<HTMLElement>) {
+  private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent<HTMLElement>): void {
     this.setState({
       selectedKey: itemKey,
       selectedTabId: this._keyToTabIds[itemKey]

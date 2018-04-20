@@ -5,7 +5,7 @@ import {
 
 export class BreadcrumbStaticExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div style={ { display: 'inline-block' } }>
         <Breadcrumb
@@ -26,7 +26,7 @@ export class BreadcrumbStaticExample extends React.Component {
     );
   }
 
-  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
+  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem): void => {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
 

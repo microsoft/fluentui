@@ -7,24 +7,25 @@ import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
-  public render() {
+  public render(): JSX.Element | null {
     const { activity, people } = this.props;
 
+    if (!people || people.length === 0) {
+      return null;
+    }
+
     return (
-      people && people.length > 0 &&
-      (
-        <div
-          className={ css('ms-DocumentCardActivity', styles.activity, {
-            ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
-          }) }
-        >
-          { this._renderAvatars(people) }
-          <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
-            <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>
-            <span className={ css('ms-DocumentCardActivity-activity', styles.activityActivity) }>{ activity }</span>
-          </div>
+      <div
+        className={ css('ms-DocumentCardActivity', styles.activity, {
+          ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
+        }) }
+      >
+        { this._renderAvatars(people) }
+        <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
+          <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>
+          <span className={ css('ms-DocumentCardActivity-activity', styles.activityActivity) }>{ activity }</span>
         </div>
-      )
+      </div>
     );
   }
 
@@ -37,7 +38,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
     );
   }
 
-  private _renderAvatar(person: IDocumentCardActivityPerson) {
+  private _renderAvatar(person: IDocumentCardActivityPerson): JSX.Element {
 
     return (
       <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>

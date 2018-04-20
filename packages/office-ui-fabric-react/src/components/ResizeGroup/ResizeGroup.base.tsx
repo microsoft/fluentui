@@ -306,7 +306,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { onRenderData, className, getStyles, theme } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
@@ -328,12 +328,12 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._afterComponentRendered();
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
-  public componentWillReceiveProps(nextProps: IResizeGroupProps) {
+  public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',
@@ -356,7 +356,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     }
   }
 
-  private _afterComponentRendered() {
+  private _afterComponentRendered(): void {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
       if (this.state.measureContainer && this._root.current) {
@@ -373,7 +373,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     });
   }
 
-  private _onResize() {
+  private _onResize(): void {
     if (this._root.current) {
       this.setState({ measureContainer: true });
     }

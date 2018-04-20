@@ -37,7 +37,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       hidePersonaDetails,
       onRenderOptionalText,

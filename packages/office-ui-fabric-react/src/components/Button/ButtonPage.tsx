@@ -67,7 +67,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Button'
@@ -163,13 +163,13 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
     );
   }
 
-  private _onDisabledChanged(ev: React.MouseEvent<HTMLElement>, disabled: boolean) {
+  private _onDisabledChanged(ev: React.MouseEvent<HTMLElement>, disabled: boolean): void {
     this.setState({
       areButtonsDisabled: disabled
     });
   }
 
-  private _onToggledChanged(ev: React.MouseEvent<HTMLElement>, toggled: boolean) {
+  private _onToggledChanged(ev: React.MouseEvent<HTMLElement>, toggled: boolean): void {
     this.setState({
       areButtonsChecked: toggled
     });

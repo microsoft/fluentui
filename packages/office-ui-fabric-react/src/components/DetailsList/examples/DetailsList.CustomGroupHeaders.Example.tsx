@@ -19,7 +19,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
     _groups = _groups || createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DetailsList
@@ -56,7 +56,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
     );
   }
 
-  private _onClick(props: IGroupDividerProps) {
+  private _onClick(props: IGroupDividerProps): () => void {
     return () => {
       props.onToggleSelectGroup!(props.group!);
     };

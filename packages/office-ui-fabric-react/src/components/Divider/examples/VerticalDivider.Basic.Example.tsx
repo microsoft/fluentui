@@ -28,7 +28,7 @@ const getExampleClassNames = memoizeFunction((): IBasicDividerExampleClassNames 
 });
 
 export class VerticalDividerBasicExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     const classNames = getExampleClassNames();
     return (
       <div className={ classNames.wrapper }>

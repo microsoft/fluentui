@@ -17,7 +17,7 @@ export class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const content = (
       <CalloutContent { ...this.props } />
     );

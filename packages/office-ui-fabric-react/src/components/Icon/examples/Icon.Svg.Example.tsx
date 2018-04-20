@@ -73,7 +73,7 @@ const BorderBlindsIcon = (props: { col1?: string, col2?: string, col3?: string }
 };
 
 export class IconSvgExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Icon iconName='onedrive-svg' className='ms-IconExample' />

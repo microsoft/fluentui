@@ -67,7 +67,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     this._labelId = getId('RatingLabel');
   }
 
-  public componentWillReceiveProps(nextProps: IRatingProps) {
+  public componentWillReceiveProps(nextProps: IRatingProps): void {
     if (typeof nextProps.rating !== 'undefined' && nextProps.rating !== this.state.rating) {
       this.setState({
         rating: this._getClampedRating(nextProps.rating)
@@ -75,7 +75,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const id = this._id;
     const stars = [];
     const starIds = [];
@@ -172,13 +172,13 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     );
   }
 
-  private _getInitialValue(props: IRatingProps) {
+  private _getInitialValue(props: IRatingProps): number | undefined {
     if (typeof props.rating === 'undefined') {
       return props.min;
     }
 
     if (props.rating === null) {
-      return null;
+      return undefined;
     }
 
     return this._getClampedRating(props.rating);
