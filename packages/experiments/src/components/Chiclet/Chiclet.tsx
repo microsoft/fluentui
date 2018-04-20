@@ -4,7 +4,9 @@ import {
   css
 } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
+import { ChicletPicker } from './ChicletPicker';
 import { IChicletProps, IChicletCardProps } from './Chiclet.types';
+import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import * as stylesImport from './Chiclet.scss';
 const styles: any = stylesImport;
 
@@ -12,46 +14,13 @@ const styles: any = stylesImport;
 
 export class Chiclet extends BaseComponent<IChicletProps, any> {
   public render() {
-    const { url, size } = this.props;
+    const { url, size, actions } = this.props;
 
     let chicletCardProps = this.extractMetaTags(url);
 
-    switch (size) {
-      case "xsmall":
-        return (
-          <div
-            className={ css(styles.root) }
-          >
-            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
-          </div>
-        );
-      case "small":
-        return (
-          <div
-            className={ css(styles.root) }
-          >
-            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
-          </div>
-        );
-      case "medium":
-      case "large":
-      case "xlarge":
-        return (
-          <div
-            className={ css(styles.root) }
-          >
-            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
-          </div>
-        );
-      default:
-        return (
-          <div
-            className={ css(styles.root) }
-          >
-            <ChicletCard {...chicletCardProps} onClick={ this._onClick } />
-          </div>
-        );
-    }
+    return (
+      <ChicletPicker chicletCardProps={ chicletCardProps } size={ size ? size : "medium" } actions={ actions } />
+    );
   }
 
   public extractMetaTags(url: string) {
@@ -102,9 +71,4 @@ export class Chiclet extends BaseComponent<IChicletProps, any> {
     }
     return attributes;
   }
-
-  private _onClick(): void {
-    console.log("You clicked the Chiclet");
-  }
-
 }

@@ -10,9 +10,13 @@ export class ChicletBasicExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <div>
-        <Chiclet url="http://localhost:4322" size="medium" />
-      </div>
+      <Chiclet url="http://localhost:4322" size="medium"
+        actions={ [
+          { iconProps: { iconName: 'Breadcrumb' } },
+          { iconProps: { iconName: 'Save' } },
+          { iconProps: { iconName: 'Share' } }
+        ] }
+      />
     );
   }
 

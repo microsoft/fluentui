@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Chiclet } from './Chiclet';
 import { ChicletCard } from './ChicletCard';
+import { ChicletPicker } from './ChicletPicker';
 import { IStyle } from '../../Styling';
-//import { IStyleFunction } from '../../Utilities';
-//import { ImageFit } from '../../../office-ui-fabric-react/src/components/Image';
-//import { IIconProps } from '../../Icon';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export interface IChiclet {
 
@@ -38,6 +37,28 @@ export interface IChicletProps extends React.Props<Chiclet> {
    * Chiclet size to render
    */
   size?: string;
+
+  /**
+   * Action icon buttons to render.
+   */
+  actions?: IButtonProps[];
+}
+
+export interface IChicletPickerProps extends React.Props<ChicletPicker> {
+  /**
+   * Props to render in the chosen ChicletCard
+   */
+  chicletCardProps?: IChicletCardProps | undefined;
+
+  /**
+   * Chiclet size to render
+   */
+  size?: string;
+
+  /**
+   * Action icon buttons to render.
+   */
+  actions?: IButtonProps[];
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCard> {
@@ -68,6 +89,11 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
    * it will be used instead of the URL.
    */
   onClickHref?: string;
+
+  /**
+   * Action icon buttons to render.
+   */
+  actions?: IButtonProps[] | undefined;
 
   /**
    * OpenGraph props.

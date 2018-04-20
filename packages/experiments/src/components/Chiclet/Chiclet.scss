@@ -6,15 +6,14 @@
   border: 1px solid $ms-color-neutralLight;
   box-sizing: border-box;
   max-width: 320px;
-  min-width: 206px;
+  min-width: 540px;
+  height: 109px;
   user-select: none;
   position: relative;
-}
-
-.root {
-  //display: flex;
-  max-width: 540px;
-  height: 109px;
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $ms-color-neutralTertiaryAlt;
+  }
 }
 
 .icon {
@@ -24,33 +23,9 @@
   color: #166EBE;
 }
 
-.chicletIsActionable {
-  position: relative;
-  display: block;
-}
-
-.chicletIsActionable:hover {
-  cursor: pointer;
-  border-color: $ms-color-neutralTertiaryAlt;
-
-  // Place a heavier border within the chiclet card
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 1px solid $ms-color-neutralTertiaryAlt;
-    pointer-events: none;
-  }
-}
-
 /* Preview */
 .preview {
   float: left;
-  border-right: 1px, solid, $ms-color-neutralLight;
-  border-bottom: none;
   max-height: 107px;
   max-width: 160px;
   position: relative;
@@ -61,7 +36,6 @@
 
 /* Info */
 .info {
-  //float: right;
   position: relative;
   display: block;
   height: 100%;

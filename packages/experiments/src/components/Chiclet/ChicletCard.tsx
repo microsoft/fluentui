@@ -16,18 +16,19 @@ const styles: any = stylesImport;
 
 export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
   public render() {
-    const { title, ogType, description, image, imageType, imageWidth, imageHeight, url, onClick, onClickHref } = this.props;
+    const { title, ogType, description, image, imageType, imageWidth, imageHeight, url, onClick, onClickHref, className, actions } = this.props;
     const actionable = (onClick || onClickHref) ? true : false;
 
     // if this element is actionable it should have an aria role
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
-    var actions: IButtonProps[] = [
-      { iconProps: { iconName: 'Breadcrumb' } },
-      { iconProps: { iconName: 'Save' } },
-      { iconProps: { iconName: 'Share' } }
-    ];
+    // actions should be based off of what's passed in
+    // var actions: IButtonProps[] = [
+    //   { iconProps: { iconName: 'Breadcrumb' } },
+    //   { iconProps: { iconName: 'Save' } },
+    //   { iconProps: { iconName: 'Share' } }
+    // ];
 
     var preview = this._renderPreviewImage(image, imageHeight, imageWidth, ogType);
 
@@ -38,7 +39,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
         onKeyDown={ actionable ? this._onKeyDown : undefined }
         onClick={ actionable ? this._onClick : undefined }
         className={
-          css('ms-ChicletCard', styles.chicletIsActionable) }
+          css('ms-ChicletCard', className) }
       >
         <div
           className={ css('ms-ChicletCardPreview', styles.preview) }
@@ -65,7 +66,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
           >
             { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
           </div>
-          { this._renderActions(actions) }
+          { actions ? this._renderFooter(actions) : (null) }
         </div>
       </div>
     );
@@ -103,12 +104,12 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
     );
   }
 
-  private _renderActions(actions: IButtonProps[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderFooter(actions: IButtonProps[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     return (
-      <div className={ css('ms-ChicletCardActions', styles.actions) }>
+      <div className={ css('ms-ChicletCardFooter', styles.actions) }>
         { actions && actions.map((action, index) => {
           return (
-            <div className={ css('ms-ChicletActions-action', styles.action) } key={ index }>
+            <div className={ css('ms-ChicletFooter-action', styles.action) } key={ index }>
               <IconButton { ...action } />
             </div>
           );
