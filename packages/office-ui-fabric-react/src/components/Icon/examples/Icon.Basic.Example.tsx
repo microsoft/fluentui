@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './IconExample.scss';
 

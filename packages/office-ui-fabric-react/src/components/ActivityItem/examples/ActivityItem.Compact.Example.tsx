@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { css, classNamesFunction } from '../../../Utilities';
 import { ActivityItem } from '../ActivityItem';
 import { IActivityItemProps } from '../ActivityItem.types';

@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   Breadcrumb, IBreadcrumbItem
 } from 'office-ui-fabric-react/lib/Breadcrumb';

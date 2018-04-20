@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
