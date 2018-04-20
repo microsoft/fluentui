@@ -34,7 +34,7 @@ describe('Link', () => {
   });
 
   it('can have the global styles for Link component be disabled', () => {
-    const NoClassNamesTheme = createTheme({ flags: { noGlobalClassNames: true } });
+    const NoClassNamesTheme = createTheme({ flags: { disableGlobalClassNames: true } });
 
     expect(ReactDOM.renderToStaticMarkup(
       <Customizer settings={ { theme: NoClassNamesTheme } }>

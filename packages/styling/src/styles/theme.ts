@@ -15,7 +15,7 @@ import {
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 const defaultThemeFlags: IThemeFlags = {
-  noGlobalClassNames: false,
+  disableGlobalClassNames: false,
 };
 
 let _theme: ITheme = {

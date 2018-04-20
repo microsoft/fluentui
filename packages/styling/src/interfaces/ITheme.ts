@@ -3,7 +3,7 @@ import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 
 export interface IThemeFlags {
-  noGlobalClassNames: boolean;
+  disableGlobalClassNames: boolean;
 }
 
 export interface ITheme {
