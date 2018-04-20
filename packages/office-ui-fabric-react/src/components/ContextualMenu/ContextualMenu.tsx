@@ -704,7 +704,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseEnter = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
-    this._onItemMouseEnterBase(item, ev, ev.target as HTMLElement);
+    this._onItemMouseEnterBase(item, ev, ev.currentTarget as HTMLElement);
   }
 
   private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
@@ -716,7 +716,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
-    this._onItemMouseMoveBase(item, ev, ev.target as HTMLElement);
+    this._onItemMouseMoveBase(item, ev, ev.currentTarget as HTMLElement);
   }
 
   private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {

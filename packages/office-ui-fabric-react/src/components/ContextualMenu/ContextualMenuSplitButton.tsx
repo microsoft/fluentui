@@ -31,7 +31,8 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       totalItemCount,
       hasCheckmarks,
       hasIcons,
-      onItemMouseLeave
+      onItemMouseLeave,
+      onItemMouseMove
     } = this.props;
 
     return (
@@ -46,11 +47,11 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
-        onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
+        onMouseEnter={ this._onItemMouseEnter.bind({ ...item, subMenuProps: null, items: null }) }
         onMouseLeave={ onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined }
-        onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
-        onKeyDown={ this._onItemKeyDown }
-        onClick={ this._executeItemClick }
+        onMouseMove={ onItemMouseMove ? this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) : undefined }
+        onKeyDown={ this._onItemKeyDown.bind(this, item) }
+        onClick={ this._executeItemClick.bind(this, item) }
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
@@ -100,7 +101,8 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
-      onItemMouseDown
+      onItemMouseDown,
+      onItemMouseMove
     } = this.props;
 
     const itemProps = {
@@ -112,31 +114,31 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       split: true,
     } as IContextualMenuItem;
 
-    const buttonProps = assign({}, getNativeProps(itemProps, buttonProperties), {
+    const buttonProp = assign({}, getNativeProps(itemProps, buttonProperties), {
       onMouseEnter: this._onItemMouseEnter,
       onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
       onMouseDown: (ev: any) => onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
-      onMouseMove: this._onItemMouseMove.bind(this, item),
+      onMouseMove: onItemMouseMove ? this._onItemMouseMove.bind(this, item) : undefined,
       'data-is-focusable': false,
       'aria-hidden': true
-    });
+    })
 
     return (
-      <button {...buttonProps} >
+      <button {...buttonProp} >
         <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
       </button >
     );
   }
 
-  private _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemMouseEnter } = this.props;
+  private _onItemMouseEnter = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
+    const { onItemMouseEnter } = this.props;
     if (onItemMouseEnter) {
       onItemMouseEnter(item, ev, this._splitButton);
     }
   }
 
-  private _onItemMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemMouseMove } = this.props;
+  private _onItemMouseMove = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
+    const { onItemMouseMove } = this.props;
     if (onItemMouseMove) {
       onItemMouseMove(item, ev, this._splitButton);
     }
@@ -149,10 +151,9 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _executeItemClick = (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+  private _executeItemClick = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const {
-      executeItemClick,
-      item
+      executeItemClick
     } = this.props;
 
     if (item.disabled || item.isDisabled) {
@@ -164,10 +165,10 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { item, onItemKeyDown } = this.props;
+  private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
+    const { onItemKeyDown } = this.props;
     if (ev.which === KeyCodes.enter) {
-      this._executeItemClick(ev);
+      this._executeItemClick(item, ev);
       ev.preventDefault();
       ev.stopPropagation();
     } else if (onItemKeyDown) {
