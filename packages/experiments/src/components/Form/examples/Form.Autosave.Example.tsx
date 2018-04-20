@@ -32,7 +32,7 @@ export class FormAutosaveExample extends React.Component<{}, IFormAutosaveExampl
             inputKey='date'
             validators={ [(value: Date) => {
               if (value) {
-                let date = new Date();
+                const date = new Date();
                 date.setDate(date.getDate() - 1);
                 if (value.getTime() < date.getTime()) {
                   return 'Date must be today or later';
@@ -53,7 +53,7 @@ export class FormAutosaveExample extends React.Component<{}, IFormAutosaveExampl
   }
 
   private _onUpdate = (key: string, value: any): void => {
-    let newFormResults = this.state && this.state.formResults ? { ...this.state.formResults } : {};
+    const newFormResults = this.state && this.state.formResults ? { ...this.state.formResults } : {};
     newFormResults[key] = value;
     this.setState({ formResults: newFormResults });
   }

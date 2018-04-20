@@ -194,7 +194,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
 
   private _onRenderDocumentCell = (item: IExampleItem): JSX.Element => {
     const { tileSize } = this.props;
-    let imgSize = tileSize === 'large' ? 64 : 48;
+    const imgSize = tileSize === 'large' ? 64 : 48;
 
     return (
       <Tile
