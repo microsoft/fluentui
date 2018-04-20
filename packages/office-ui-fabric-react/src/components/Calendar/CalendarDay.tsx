@@ -79,8 +79,8 @@ interface IWeekCorners {
 }
 
 export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
-  navigatedDay: HTMLElement | null;
-  days: { [key: string]: HTMLElement | null } = {};
+  private navigatedDay: HTMLElement | null;
+  private days: { [key: string]: HTMLElement | null } = {};
 
   public constructor(props: ICalendarDayProps) {
     super(props);
@@ -208,12 +208,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </thead>
             <tbody
               onMouseLeave={ dateRangeType === DateRangeType.Month ? this._onTableMouseLeave : undefined }
-              onMouseUp={ dateRangeType === DateRangeType.Month ? this._onTableMouseUp : undefined }>
+              onMouseUp={ dateRangeType === DateRangeType.Month ? this._onTableMouseUp : undefined }
+            >
               { weeks!.map((week, weekIndex) =>
                 <tr
                   key={ weekNumbers ? weekNumbers[weekIndex] : weekIndex }
                   role='row'
-                  className={ (dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek) ? styles.weekHover : undefined }>
+                  className={ (dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek) ? styles.weekHover : undefined }
+                >
                   { showWeekNumbers && weekNumbers &&
                     <th
                       className={ css('ms-DatePicker-weekNumbers', styles.weekNumbers) }
@@ -242,6 +244,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                       className={ css(
                         {
                           ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && (dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek),
+                          ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
                           ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
                         }) }
                     >
@@ -264,7 +267,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         id={ isNavigatedDate ? activeDescendantId : undefined }
                         aria-selected={ day.isInBounds ? day.isSelected : undefined }
                         data-is-focusable={ day.isInBounds ? true : undefined }
-                        ref={ element => this.setDayRef(element, day, isNavigatedDate) }
+                        ref={ element => this._setDayRef(element, day, isNavigatedDate) }
                         onMouseOver={ dateRangeType === DateRangeType.Month ? this._onDayMouseOver(day.originalDate, weekIndex, dayIndex) : undefined }
                         onMouseLeave={ dateRangeType === DateRangeType.Month ? this._onDayMouseLeave(day.originalDate, weekIndex, dayIndex) : undefined }
                         onMouseDown={ dateRangeType === DateRangeType.Month ? this._onDayMouseDown(day.originalDate, weekIndex, dayIndex) : undefined }
@@ -290,7 +293,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private setDayRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
+  private _setDayRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
     if (isNavigatedDate) {
       this.navigatedDay = element;
     }
@@ -430,7 +433,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // set the press styling
       this._applyFunctionToDayRefs((ref, day) => {
-        if (ref && day.originalDate.getMonth() == originalDate.getMonth()) {
+        if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
           ref.classList.add(styles.monthPress);
         }
       });
@@ -442,7 +445,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // remove press styling
       this._applyFunctionToDayRefs((ref, day) => {
-        if (ref && day.originalDate.getMonth() == originalDate.getMonth()) {
+        if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
           ref.classList.remove(styles.monthPress);
         }
       });
@@ -454,7 +457,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // set the hover styling on every day in the same month
       this._applyFunctionToDayRefs((ref, day) => {
-        if (ref && day.originalDate.getMonth() == originalDate.getMonth()) {
+        if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
           ref.classList.add(styles.monthHover);
         }
       });
@@ -466,7 +469,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // remove the hover and pressed styling
       this._applyFunctionToDayRefs((ref, day) => {
-        if (ref && day.originalDate.getMonth() == originalDate.getMonth()) {
+        if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
           ref.classList.remove(styles.monthHover);
         }
       });
@@ -499,7 +502,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo) => void) {
-    if (this.state.weeks && this.props.dateRangeType == DateRangeType.Month) {
+    if (this.state.weeks && this.props.dateRangeType === DateRangeType.Month) {
       this.state.weeks.map(week => {
         week.map(day => {
           const ref = this.days[day.key];
@@ -596,7 +599,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let isAllDaysOfWeekOutOfMonth = false;
 
     // in work week view we want to select the whole week
-    const selectedDateRangeType = dateRangeType == DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
+    const selectedDateRangeType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
     let selectedDates = getDateRangeArray(selectedDate, selectedDateRangeType, firstDayOfWeek, workWeekDays);
     if (dateRangeType !== DateRangeType.Day) {
       selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
