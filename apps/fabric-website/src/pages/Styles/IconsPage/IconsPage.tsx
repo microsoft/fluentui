@@ -10,7 +10,7 @@ const pageStyles: any = require('../../PageStyles.module.scss');
 const iconData = require('../../../../node_modules/office-ui-fabric-core/src/data/icons.json');
 
 export class IconsPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ css(pageStyles.basePage, styles.iconsPage) }>
         <PageHeader

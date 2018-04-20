@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.85.0",
+      "tag": "office-ui-fabric-react_v5.85.0",
+      "date": "Fri, 20 Apr 2018 10:12:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b6c5fde0d4ede388e05014b2f1f480610b8aef17",
+            "comment": "DetailsRow: applying `flex-shrink:0` to the check cell to prevent it from squishing in the flex layout."
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "ef0cfe45e059432b609973bdc710b3e0aaf2534b",
+            "comment": "Revert unintended changes to Dropdown styles from #4512"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "bd2e7b195acadb05c7a98381017df4b1bee4df09",
+            "comment": "TextField: Implemented input masking."
+          },
+          {
+            "author": "Chris Mohr <chrismohr@users.noreply.github.com>",
+            "commit": "5cab1cf94fb150c78e059c4158410df8d57d4e9f",
+            "comment": "add onRenderDescription to TextField"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "ffd046eb362ce46c9f9ef4dc7c22ee5db00167c2",
+            "comment": "Added support for native props on Panel for the root div with class ms-Panel"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "f2dc9cbc3b00abe1af545917f9908ce7e08a5b9b",
+            "comment": "Added headerButtonProps prop to PivotItem to allow passing native props (data-* & aria-*) to the header/link/CommandButton element. Also depricated linkText and added headerText for semantic purposes."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.84.0",
       "tag": "office-ui-fabric-react_v5.84.0",
       "date": "Thu, 19 Apr 2018 18:25:59 GMT",

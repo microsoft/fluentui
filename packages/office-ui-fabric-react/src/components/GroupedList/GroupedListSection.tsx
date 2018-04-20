@@ -140,7 +140,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { dragDropHelper, selection } = this.props;
 
     if (dragDropHelper && this._root.current) {
@@ -283,7 +283,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return <GroupFooter { ...props } />;
   }
 
-  private _onSelectionChange() {
+  private _onSelectionChange(): void {
     const { group, selection } = this.props;
     const isSelected = selection!.isRangeSelected(group!.startIndex, group!.count);
 
@@ -299,7 +299,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     };
   }
 
-  private _onRenderGroup(renderCount: number) {
+  private _onRenderGroup(renderCount: number): JSX.Element {
     const {
       group,
       items,
@@ -378,7 +378,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return 1;
   }
 
-  private _getGroupKey(group: any, index: number) {
+  private _getGroupKey(group: any, index: number): string {
     return 'group-' + ((group && group.key) ? group.key : String(group.level) + String(index));
   }
 

@@ -12,7 +12,7 @@ const corePackageData = require('../../../node_modules/office-ui-fabric-core/pac
 const corePackageVersion: string = corePackageData && corePackageData.version || '9.2.0';
 
 export class GetStartedPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div id='design' className={ pageStyles.basePage }>
         <PageHeader

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Revert unintended changes to Dropdown styles from #4512",
+      "comment": "Callout.Basic.Example: Fix example so callout positions properly",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-jojanz@microsoft.com"
+  "email": "joschect@microsoft.com"
 }

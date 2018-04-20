@@ -200,12 +200,12 @@ class Foo extends BaseComponent<...> {
   // Create the reference object that will be used for setting and accessing the reference
   private _root = createRef<HTMLButtonElement>();
 
-  public render() {
+  public render(): JSX.Element {
     // Set the reference by passing the reference object as the ref prop
     return <button ref={ _root } onClick={this._onClick} />;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     // Access the reference through the .current property on the reference object
     this._root.current.focus();
   }
@@ -436,7 +436,7 @@ class Foo extends React.Component {
     return <div onClick={ this._onClick }>{ `Foo ${ this._fooRocks ? 'rocks' : 'rolls' }</div>;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     this._fooRocks = !this._fooRocks;
     this.forceUpdate();
   }
@@ -457,7 +457,7 @@ class Foo extends React.Component {
     return <div onClick={ this._onClick }>{ `Foo ${ this.state.fooRocks ? 'rocks' : 'rolls' }</div>;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     this.setState({
       fooRocks: !this.state.fooRocks
     });

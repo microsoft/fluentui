@@ -68,13 +68,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     this._id = getId('CommandBar');
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // Asynchronously update command bar layout to eliminate forced synchronous reflow
     this._asyncMeasure();
     this._events.on(window, 'resize', this._updateRenderedItems);
   }
 
-  public componentWillReceiveProps(nextProps: ICommandBarProps) {
+  public componentWillReceiveProps(nextProps: ICommandBarProps): void {
     this.setState(this._getStateFromProps(nextProps));
     this._commandItemWidths = null;
   }
@@ -86,7 +86,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
     const { renderedItems, contextualMenuProps, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
@@ -174,7 +174,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     focusZone && focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+  private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean): JSX.Element {
     if (item.onRender) {
       return (
         <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
@@ -341,7 +341,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     );
   }
 
-  private _renderIcon(item: IContextualMenuItem) {
+  private _renderIcon(item: IContextualMenuItem): JSX.Element {
     // Only present to allow continued use of item.icon which is deprecated.
     const iconProps: IIconProps = item.iconProps ? item.iconProps : {
       iconName: item.icon
@@ -353,14 +353,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     return <Icon { ...iconProps } className={ iconClassName } />;
   }
 
-  private _asyncMeasure() {
+  private _asyncMeasure(): void {
     this._async.requestAnimationFrame(() => {
       this._updateItemMeasurements();
       this._updateRenderedItems();
     });
   }
 
-  private _updateItemMeasurements() {
+  private _updateItemMeasurements(): void {
     // the generated width for overflow is 35 in chrome, 38 in IE, but the actual value is 41.5
     if (this._overflow.current || (this.props.overflowItems && this.props.overflowItems.length)) {
       this._overflowWidth = OVERFLOW_WIDTH;
@@ -385,7 +385,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
   }
 
-  private _updateRenderedItems() {
+  private _updateRenderedItems(): void {
     const { items, overflowItems } = this.props;
     const commandSurface = this._commandSurface.current;
     const farCommandSurface = this._farCommandSurface.current;
@@ -514,7 +514,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     };
   }
 
-  private _getContextualMenuPropsAfterUpdate(renderedItems: IContextualMenuItem[], overflowItems: IContextualMenuItem[]) {
+  private _getContextualMenuPropsAfterUpdate(renderedItems: IContextualMenuItem[], overflowItems: IContextualMenuItem[]): IContextualMenuProps | undefined {
     if (this.state && this.state.expandedMenuItemKey) {
       if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
         // Keep the overflow menu open
@@ -529,10 +529,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       }
     }
 
-    return null;
+    return;
   }
 
-  private _getContextualMenuPropsFromItem(item: IContextualMenuItem) {
+  private _getContextualMenuPropsFromItem(item: IContextualMenuItem): IContextualMenuProps | undefined {
     return item.subMenuProps || (item.items && { items: item.items });
   }
 }

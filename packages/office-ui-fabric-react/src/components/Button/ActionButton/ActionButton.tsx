@@ -12,7 +12,7 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
    */
   protected _shouldUpdateComponentRef = false;
 
-  public render() {
+  public render(): JSX.Element {
     const { styles, theme } = this.props;
 
     return (

@@ -126,7 +126,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  public componentWillUpdate(newProps: IContextualMenuProps) {
+  public componentWillUpdate(newProps: IContextualMenuProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
@@ -151,7 +151,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (!this.props.hidden) {
       this._onMenuOpened();
     }

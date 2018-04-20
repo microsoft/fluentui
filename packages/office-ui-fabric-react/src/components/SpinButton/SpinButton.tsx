@@ -130,7 +130,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       disabled,
       label,
@@ -340,7 +340,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return String(newValue);
   }
 
-  private _onChange() {
+  private _onChange(): void {
     /**
      * A noop input change handler.
      * https://github.com/facebook/react/issues/7027.

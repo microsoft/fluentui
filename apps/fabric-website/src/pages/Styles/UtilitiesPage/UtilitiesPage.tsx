@@ -6,7 +6,7 @@ const pageStyles: any = require('../../PageStyles.module.scss');
 const utilitiesData = require('../../../data/utilities.json');
 
 export class UtilitiesPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ pageStyles.basePage }>
         <PageHeader pageTitle='Utilities' backgroundColor='#006f94' />

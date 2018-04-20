@@ -26,7 +26,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
     this.state = { contextualMenuVisible: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       item,
       onRemoveItem,

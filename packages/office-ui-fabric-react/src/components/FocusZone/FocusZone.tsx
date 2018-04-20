@@ -84,7 +84,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     this._processingTabKey = false;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     _allInstances[this._id] = this;
     if (this._root.current) {
       const windowElement = this._root.current.ownerDocument.defaultView;
