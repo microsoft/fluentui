@@ -109,9 +109,9 @@ ShallowWrapper {
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
-          onMouseEnter={undefined}
+          onMouseEnter={[Function]}
           onMouseLeave={undefined}
-          onMouseMove={undefined}
+          onMouseMove={[Function]}
         >
           <Unknown
             classNames={
@@ -151,7 +151,7 @@ ShallowWrapper {
       "onKeyDown": [Function],
       "onMouseEnter": [Function],
       "onMouseLeave": undefined,
-      "onMouseMove": undefined,
+      "onMouseMove": [Function],
       "role": "button",
       "tabIndex": 0,
     },
@@ -306,9 +306,9 @@ ShallowWrapper {
           "disabled": false,
           "onClick": [Function],
           "onMouseDown": [Function],
-          "onMouseEnter": undefined,
+          "onMouseEnter": [Function],
           "onMouseLeave": undefined,
-          "onMouseMove": undefined,
+          "onMouseMove": [Function],
         },
         "ref": null,
         "rendered": Object {
@@ -423,9 +423,9 @@ ShallowWrapper {
             disabled={false}
             onClick={[Function]}
             onMouseDown={[Function]}
-            onMouseEnter={undefined}
+            onMouseEnter={[Function]}
             onMouseLeave={undefined}
-            onMouseMove={undefined}
+            onMouseMove={[Function]}
           >
             <Unknown
               classNames={
@@ -465,7 +465,7 @@ ShallowWrapper {
         "onKeyDown": [Function],
         "onMouseEnter": [Function],
         "onMouseLeave": undefined,
-        "onMouseMove": undefined,
+        "onMouseMove": [Function],
         "role": "button",
         "tabIndex": 0,
       },
@@ -620,9 +620,9 @@ ShallowWrapper {
             "disabled": false,
             "onClick": [Function],
             "onMouseDown": [Function],
-            "onMouseEnter": undefined,
+            "onMouseEnter": [Function],
             "onMouseLeave": undefined,
-            "onMouseMove": undefined,
+            "onMouseMove": [Function],
           },
           "ref": null,
           "rendered": Object {

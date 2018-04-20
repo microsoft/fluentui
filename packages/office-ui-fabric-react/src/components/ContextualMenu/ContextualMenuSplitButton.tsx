@@ -31,8 +31,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       totalItemCount,
       hasCheckmarks,
       hasIcons,
-      onItemMouseLeave,
-      onItemMouseMove
+      onItemMouseLeave
     } = this.props;
 
     return (
@@ -49,9 +48,9 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
         aria-setsize={ totalItemCount }
         onMouseEnter={ this._onItemMouseEnter.bind(this, { ...item, subMenuProps: null, items: null }) }
         onMouseLeave={ onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined }
-        onMouseMove={ onItemMouseMove ? this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) : undefined }
-        onKeyDown={ this._onItemKeyDown.bind(this, item) }
-        onClick={ this._executeItemClick.bind(this, item) }
+        onMouseMove={ this._onItemMouseMove.bind(this, { ...item, subMenuProps: null, items: null }) }
+        onKeyDown={ this._onItemKeyDown }
+        onClick={ this._executeItemClick }
         tabIndex={ 0 }
         data-is-focusable={ true }
       >
@@ -85,9 +84,10 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       'data-is-focusable': false,
       'aria-hidden': true
     } as IContextualMenuItem;
-    return React.createElement('button',
-      getNativeProps(itemProps, buttonProperties),
-      <ChildrenRenderer data-is-focusable={ false } item={ itemProps } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined } hasIcons={ hasIcons } />,
+    return (
+      <button {...getNativeProps(itemProps, buttonProperties) }>
+        <ChildrenRenderer data-is-focusable={ false } item={ itemProps } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined } hasIcons={ hasIcons } />
+      </button>
     );
   }
 
@@ -100,8 +100,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
-      onItemMouseDown,
-      onItemMouseMove
+      onItemMouseDown
     } = this.props;
 
     const itemProps = {
@@ -113,28 +112,31 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       split: true,
     } as IContextualMenuItem;
 
-    return React.createElement('button',
-      assign({}, getNativeProps(itemProps, buttonProperties), {
-        onMouseEnter: this._onItemMouseEnter.bind(this, item),
-        onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
-        onMouseDown: (ev: any) => onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
-        onMouseMove: onItemMouseMove ? this._onItemMouseMove.bind(this, item) : undefined,
-        'data-is-focusable': false,
-        'aria-hidden': true
-      }),
-      <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
+    const buttonProps = assign({}, getNativeProps(itemProps, buttonProperties), {
+      onMouseEnter: this._onItemMouseEnter,
+      onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
+      onMouseDown: (ev: any) => onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
+      onMouseMove: this._onItemMouseMove.bind(this, item),
+      'data-is-focusable': false,
+      'aria-hidden': true
+    });
+
+    return (
+      <button {...buttonProps} >
+        <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
+      </button >
     );
   }
 
-  private _onItemMouseEnter = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
-    const { onItemMouseEnter } = this.props;
+  private _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { item, onItemMouseEnter } = this.props;
     if (onItemMouseEnter) {
       onItemMouseEnter(item, ev, this._splitButton);
     }
   }
 
-  private _onItemMouseMove = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
-    const { onItemMouseMove } = this.props;
+  private _onItemMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { item, onItemMouseMove } = this.props;
     if (onItemMouseMove) {
       onItemMouseMove(item, ev, this._splitButton);
     }
@@ -147,9 +149,10 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _executeItemClick = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+  private _executeItemClick = (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const {
-      executeItemClick
+      executeItemClick,
+      item
     } = this.props;
 
     if (item.disabled || item.isDisabled) {
@@ -161,10 +164,10 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { onItemKeyDown } = this.props;
+  private _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const { item, onItemKeyDown } = this.props;
     if (ev.which === KeyCodes.enter) {
-      this._executeItemClick(item, ev);
+      this._executeItemClick(ev);
       ev.preventDefault();
       ev.stopPropagation();
     } else if (onItemKeyDown) {
