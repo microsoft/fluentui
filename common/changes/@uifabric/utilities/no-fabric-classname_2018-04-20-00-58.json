@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/utilities",
       "comment": "The focus styling no longer adds \"ms-Fabric\" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/utilities",
