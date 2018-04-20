@@ -10,7 +10,7 @@ const styles: any = stylesImport;
 
 export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
   public render(): JSX.Element | null {
-    let { group, groupLevel, footerText } = this.props;
+    const { group, groupLevel, footerText } = this.props;
 
     if (group && footerText) {
       return (

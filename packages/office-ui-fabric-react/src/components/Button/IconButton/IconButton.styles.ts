@@ -15,9 +15,10 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let iconButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const { palette, semanticColors } = theme;
+  const iconButtonStyles: IButtonStyles = {
     root: {
       padding: '0 4px',
       width: '32px',
@@ -26,27 +27,29 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
-      color: theme.palette.themeDarker
+      color: palette.themeDarker,
+      backgroundColor: semanticColors.buttonBackground,
     },
 
     rootPressed: {
-      color: theme.palette.themePrimary
+      color: palette.themePrimary,
+      backgroundColor: semanticColors.buttonBackgroundHovered,
     },
 
     rootExpanded: {
-      color: theme.palette.themePrimary
+      color: palette.themePrimary
     },
 
     rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
+      backgroundColor: semanticColors.buttonBackgroundChecked,
     },
 
     rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralLight
+      backgroundColor: semanticColors.buttonBackgroundHovered,
     },
 
     rootDisabled: {
-      color: theme.palette.neutralTertiary
+      color: semanticColors.disabledText,
     }
   };
 

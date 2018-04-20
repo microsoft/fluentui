@@ -6,8 +6,10 @@ import {
   BaseComponent,
   getId,
   KeyCodes,
-  autobind,
-  customizable
+  customizable,
+  calculatePrecision,
+  precisionRound,
+  createRef
 } from '../../Utilities';
 import {
   ISpinButton,
@@ -40,6 +42,11 @@ export interface ISpinButtonState {
    * as active when up/down arrow is pressed
    */
   keyboardSpinDirection: KeyboardSpinDirection;
+
+  /**
+   * The calculated precision for the value.
+   */
+  precision: number;
 }
 
 @customizable('SpinButton', ['theme'])
@@ -56,7 +63,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
-  private _input: HTMLInputElement;
+  private _input = createRef<HTMLInputElement>();
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
@@ -77,13 +84,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       'value': 'defaultValue'
     });
 
-    let value = props.value || props.defaultValue || String(props.min) || '0';
+    const value = props.value || props.defaultValue || String(props.min) || '0';
     this._lastValidValue = value;
+
+    // Ensure that the autocalculated precision is not negative.
+    const precision = props.precision || Math.max(calculatePrecision(props.step!), 0);
 
     this.state = {
       isFocused: false,
       value: value,
-      keyboardSpinDirection: KeyboardSpinDirection.notSpinning
+      keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
+      precision
     };
 
     this._currentStepFunctionHandle = -1;
@@ -113,11 +124,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
 
     this.setState({
-      value: value
+      value: value,
+      precision: newProps.precision || this.state.precision
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       disabled,
       label,
@@ -134,7 +146,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
-      theme
+      theme,
+      ariaPositionInSet,
+      ariaSetSize
     } = this.props;
 
     const {
@@ -143,13 +157,20 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       keyboardSpinDirection
     } = this.state;
 
-    const classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      !!disabled,
-      !!isFocused,
-      keyboardSpinDirection,
-      labelPosition
-    );
+    const classNames = this.props.getClassNames ?
+      this.props.getClassNames(
+        theme!,
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition
+      ) : getClassNames(
+        getStyles(theme!, customStyles),
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition
+      );
 
     return (
       <div className={ classNames.root }>
@@ -169,6 +190,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           className={ classNames.spinButtonWrapper }
           title={ title && title }
           aria-label={ ariaLabel && ariaLabel }
+          aria-posinset={ ariaPositionInSet }
+          aria-setsize={ ariaSetSize }
         >
           <input
             value={ value }
@@ -179,11 +202,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             type='text'
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
-            aria-valuenow={ value }
-            aria-valuemin={ min && String(min) }
-            aria-valuemax={ max && String(max) }
+            aria-valuenow={ !isNaN(Number(value)) ? Number(value) : undefined }
+            aria-valuetext={ isNaN(Number(value)) ? value : undefined }
+            aria-valuemin={ min }
+            aria-valuemax={ max }
             onBlur={ this._onBlur }
-            ref={ this._resolveRef('_input') }
+            ref={ this._input }
             onFocus={ this._onFocus }
             onKeyDown={ this._handleKeyDown }
             onKeyUp={ this._handleKeyUp }
@@ -204,6 +228,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseUp={ this._stop }
               tabIndex={ -1 }
               ariaLabel={ incrementButtonAriaLabel }
+              data-is-focusable={ false }
             />
             <IconButton
               styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
@@ -216,6 +241,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseUp={ this._stop }
               tabIndex={ -1 }
               ariaLabel={ decrementButtonAriaLabel }
+              data-is-focusable={ false }
             />
           </span>
         </div>
@@ -237,18 +263,22 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   public focus(): void {
-    if (this._input) {
-      this._input.focus();
+    if (this._input.current) {
+      this._input.current.focus();
     }
   }
 
-  @autobind
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement>) {
+  private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
+    // We can't set focus on a non-existing element
+    if (!this._input.current) {
+      return;
+    }
+
     if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
 
-    this._input.select();
+    this._input.current.select();
 
     this.setState({ isFocused: true });
 
@@ -257,8 +287,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
   }
 
-  @autobind
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this._validate(ev);
     this.setState({ isFocused: false });
     if (this.props.onBlur) {
@@ -287,20 +316,22 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Increment function to use if one is not passed in
    */
-  private _defaultOnIncrement = (value: string) => {
-    let newValue = Math.min(Number(value) + (this.props.step as number), this.props.max as number);
+  private _defaultOnIncrement = (value: string): string | void => {
+    let newValue: number = Math.min(Number(value) + Number(this.props.step)!, this.props.max!);
+    newValue = precisionRound(newValue, this.state.precision);
     return String(newValue);
   }
 
   /**
    * Increment function to use if one is not passed in
    */
-  private _defaultOnDecrement = (value: string) => {
-    let newValue = Math.max(Number(value) - (this.props.step as number), this.props.min as number);
+  private _defaultOnDecrement = (value: string): string | void => {
+    let newValue: number = Math.max(Number(value) - Number(this.props.step)!, this.props.min!);
+    newValue = precisionRound(newValue, this.state.precision);
     return String(newValue);
   }
 
-  private _onChange() {
+  private _onChange(): void {
     /**
      * A noop input change handler.
      * https://github.com/facebook/react/issues/7027.
@@ -315,8 +346,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * in the input (not when changed via the buttons)
    * @param event - the event that fired
    */
-  @autobind
-  private _validate(event: React.FocusEvent<HTMLInputElement>) {
+  private _validate = (event: React.FocusEvent<HTMLInputElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     if (this.state.value) {
@@ -333,8 +363,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * without this our value will never change (and validation will not have the correct number)
    * @param event - the event that was fired
    */
-  @autobind
-  private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
 
@@ -349,9 +378,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    */
-  @autobind
-  private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string: string) => string | void) {
-    const newValue = stepFunction(this.state.value as string);
+  private _updateValue = (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
+    const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
@@ -369,8 +397,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Stop spinning (clear any currently pending update and set spinning to false)
    */
-  @autobind
-  private _stop() {
+  private _stop = (): void => {
     if (this._currentStepFunctionHandle >= 0) {
       this._async.clearTimeout(this._currentStepFunctionHandle);
       this._currentStepFunctionHandle = -1;
@@ -387,17 +414,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * the value when up or down arrow are depressed
    * @param event - the keyboardEvent that was fired
    */
-  @autobind
-  private _handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+  private _handleKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
+
+    // eat the up and down arrow keys to keep focus in the spinButton
+    // (especially when a spinButton is inside of a FocusZone)
+    if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     if (this.props.disabled) {
       this._stop();
-
-      // eat the up and down arrow keys to keep the page from scrolling
-      if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
       return;
     }
 
@@ -432,22 +459,18 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * if the up or down arrow fired this event
    * @param event stop spinning if we
    */
-  @autobind
-  private _handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
-
+  private _handleKeyUp = (event: React.KeyboardEvent<HTMLElement>): void => {
     if (this.props.disabled || event.which === KeyCodes.up || event.which === KeyCodes.down) {
       this._stop();
       return;
     }
   }
 
-  @autobind
-  private _onIncrementMouseDown() {
+  private _onIncrementMouseDown = (): void => {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
   }
 
-  @autobind
-  private _onDecrementMouseDown() {
+  private _onDecrementMouseDown = (): void => {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
   }
 }

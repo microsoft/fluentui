@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { ISize, css, BaseComponent, autobind, getId } from '../../Utilities';
+import { ISize, css, BaseComponent, getId } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
@@ -14,7 +14,7 @@ const SignalStyles: any = SignalStylesModule;
 const CheckStyles: any = CheckStylesModule;
 // tslint:enable:no-any
 
-const enum TileLayoutValues {
+export const enum TileLayoutValues {
   nameplatePadding = 12,
   largeNameplateNameHeight = 15,
   smallNameplateNameHeight = 12,
@@ -29,7 +29,7 @@ export interface ITileState {
   isModal?: boolean;
 }
 
-const SIZES: {
+export const TileLayoutSizes: {
   [P in TileSize]: {
     nameplatePadding: number;
     nameplateNameHeight: number;
@@ -343,10 +343,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       isSelected: boolean;
     }): JSX.Element {
+    const { toggleSelectionAriaLabel } = this.props;
+
     return (
       <span
         role='checkbox'
-        aria-label={ this.props.toggleSelectionAriaLabel }
+        aria-label={ String(toggleSelectionAriaLabel) }
         className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
           [CheckStyles.hostShowCheck]: this.state.isModal
         }) }
@@ -360,8 +362,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     );
   }
 
-  @autobind
-  private _onSelectionChange(): void {
+  private _onSelectionChange = (): void => {
     const {
       selection,
       selectionIndex = -1
@@ -402,7 +403,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
     nameplateActivityHeight,
     nameplateNameHeight,
     foregroundMargin
-  } = SIZES[tileSize];
+  } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

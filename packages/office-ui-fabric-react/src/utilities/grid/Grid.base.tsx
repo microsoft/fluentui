@@ -21,8 +21,8 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     this._id = getId();
   }
 
-  public render() {
-    let {
+  public render(): JSX.Element {
+    const {
       items,
       columnCount,
       onRenderItem,
@@ -36,11 +36,11 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
 
     // Array to store the cells in the correct row index
-    let rowsOfItems: any[][] = toMatrix(items, columnCount);
+    const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
-    let content = (
+    const content = (
       <table
-        {...htmlProps}
+        { ...htmlProps }
         aria-posinset={ positionInSet }
         aria-setsize={ setSize }
         id={ this._id }
@@ -49,13 +49,13 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       >
         <tbody>
           {
-            rowsOfItems.map((rows: any[], rowIndex) => {
+            rowsOfItems.map((rows: any[], rowIndex: number) => {
               return (
                 <tr
                   role={ 'row' }
                   key={ this._id + '-' + rowIndex + '-row' }
                 >
-                  { rows.map((cell, cellIndex) => {
+                  { rows.map((cell: any, cellIndex: number) => {
                     return (
                       <td
                         role={ 'presentation' }

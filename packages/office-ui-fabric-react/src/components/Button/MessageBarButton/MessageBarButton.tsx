@@ -7,8 +7,8 @@ import { getStyles } from './MessageBarButton.styles';
 @customizable('MessageBarButton', ['theme'])
 export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
 
-  public render() {
-    let { styles, theme } = this.props;
+  public render(): JSX.Element {
+    const { styles, theme } = this.props;
 
     return (
       <DefaultButton

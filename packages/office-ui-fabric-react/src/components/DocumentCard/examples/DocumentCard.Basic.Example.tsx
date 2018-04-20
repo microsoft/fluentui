@@ -11,8 +11,8 @@ import { TestImages } from '../../../common/TestImages';
 import './DocumentCard.Example.scss';
 
 export class DocumentCardBasicExample extends React.Component<any, any> {
-  public render() {
-    let previewProps: IDocumentCardPreviewProps = {
+  public render(): JSX.Element {
+    const previewProps: IDocumentCardPreviewProps = {
       previewImages: [
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',

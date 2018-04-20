@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -13,34 +11,34 @@ describe('Slider', () => {
 
   it('renders Slider correctly', () => {
     const component = renderer.create(<Slider />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a slider', () => {
-    let component = ReactTestUtils.renderIntoDocument(
+    const component = ReactTestUtils.renderIntoDocument(
       <Slider label='slider' />
     );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
 
     expect(labelElement.textContent).toEqual('slider');
   });
 
   it('can slide to default min/max and execute onChange', () => {
     let changedValue;
-    let onChange = (val: any) => {
+    const onChange = (val: any) => {
       changedValue = val;
     };
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Slider
         onChange={ onChange }
       />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
-    let sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
+    const sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
 
     sliderLine.getBoundingClientRect = () => ({
       left: 0,
@@ -71,22 +69,22 @@ describe('Slider', () => {
   });
 
   it('has type=button on all buttons', () => {
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Slider />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let allButtons = renderedDOM.querySelectorAll('button');
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const allButtons = renderedDOM.querySelectorAll('button');
 
     for (let i = 0; i < allButtons.length; i++) {
-      let button = allButtons[i];
+      const button = allButtons[i];
 
       expect(button.getAttribute('type')).toEqual('button');
     }
   });
 
   it('can read the current value', () => {
-    let slider: ISlider | undefined;
+    let slider: ISlider | null;
 
     ReactTestUtils.renderIntoDocument(
       // tslint:disable-next-line:jsx-no-lambda
@@ -99,7 +97,7 @@ describe('Slider', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Slider />
     );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     let button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
     let ariaValueText = button.getAttribute('aria-valuetext');
 
@@ -115,7 +113,7 @@ describe('Slider', () => {
         ariaValueText={ getTextValue }
       />
     );
-    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
     ariaValueText = button.getAttribute('aria-valuetext');
 

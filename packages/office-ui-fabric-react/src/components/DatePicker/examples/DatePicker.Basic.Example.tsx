@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -75,11 +75,18 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
   }
 
   public render() {
-    let { firstDayOfWeek } = this.state;
+    const { firstDayOfWeek } = this.state;
 
     return (
-      <div>
-        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+      <div className='docs-DatePickerExample'>
+        <DatePicker
+          firstDayOfWeek={ firstDayOfWeek }
+          strings={ DayPickerStrings }
+          placeholder='Select a date...'
+          // tslint:disable:jsx-no-lambda
+          onAfterMenuDismiss={ () => console.log('onAfterMenuDismiss called') }
+        // tslint:enable:jsx-no-lambda
+        />
         <Dropdown
           label='Select the first day of the week'
           options={ [
@@ -119,8 +126,7 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
     );
   }
 
-  @autobind
-  private _onDropdownChanged(option: IDropdownOption) {
+  private _onDropdownChanged = (option: IDropdownOption): void => {
     this.setState({
       firstDayOfWeek: (DayOfWeek as any)[option.key]
     });

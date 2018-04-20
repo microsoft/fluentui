@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { autobind, BaseComponent } from '../../../Utilities';
+import { BaseComponent, createRef } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends BaseComponent<{}, {
   selectedItem?: { key: string | number | undefined },
   selectedItems: string[]
 }> {
-  private _basicDropdown: IDropdown;
+  private _basicDropdown = createRef<IDropdown>();
 
   constructor(props: {}) {
     super(props);
@@ -19,7 +19,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
   }
 
   public render() {
-    let { selectedItem, selectedItems } = this.state;
+    const { selectedItem, selectedItems } = this.state;
 
     return (
       <div className='docs-DropdownExample'>
@@ -47,7 +47,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
           }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
-          componentRef={ this._resolveRef('_basicDropdown') }
+          componentRef={ this._basicDropdown }
         />
         <PrimaryButton
           text='Set focus'
@@ -163,21 +163,19 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     );
   }
 
-  @autobind
-  public changeState(item: IDropdownOption) {
+  public changeState = (item: IDropdownOption): void => {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     this.setState({ selectedItem: item });
   }
 
-  @autobind
-  public onChangeMultiSelect(item: IDropdownOption) {
-    let updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
+  public onChangeMultiSelect = (item: IDropdownOption): void => {
+    const updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
     if (item.selected) {
       // add the option if it's checked
       updatedSelectedItem.push(item.key);
     } else {
       // remove the option if it's unchecked
-      let currIndex = updatedSelectedItem.indexOf(item.key);
+      const currIndex = updatedSelectedItem.indexOf(item.key);
       if (currIndex > -1) {
         updatedSelectedItem.splice(currIndex, 1);
       }
@@ -187,18 +185,17 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     });
   }
 
-  public copyArray(array: any[]): any[] {
-    let newArray: any[] = [];
+  public copyArray = (array: any[]): any[] => {
+    const newArray: any[] = [];
     for (let i = 0; i < array.length; i++) {
       newArray[i] = array[i];
     }
     return newArray;
   }
 
-  @autobind
-  private _onSetFocusButtonClicked() {
-    if (this._basicDropdown) {
-      this._basicDropdown.focus(true);
+  private _onSetFocusButtonClicked = (): void => {
+    if (this._basicDropdown.current) {
+      this._basicDropdown.current.focus(true);
     }
   }
 

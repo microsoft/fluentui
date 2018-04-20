@@ -23,7 +23,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICheckbox) => void;
+  componentRef?: (component: ICheckbox | null) => void;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
@@ -90,6 +90,16 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * ID for element that provides extended information for the checkbox.
    */
   ariaDescribedBy?: string;
+
+  /**
+   * The position in the parent set (if in a set) for aria-posinset.
+   */
+  ariaPositionInSet?: number;
+
+  /**
+  * The total size of the parent set (if in a set) for aria-setsize.
+  */
+  ariaSetSize?: number;
 
   /**
    * Custom styles for this component

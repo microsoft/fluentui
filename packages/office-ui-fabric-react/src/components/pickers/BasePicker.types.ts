@@ -20,7 +20,7 @@ export interface IBasePicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBasePicker<T>) => void;
+  componentRef?: (component?: IBasePicker<T> | null) => void;
 
   /**
    * Function that specifies how the selected item will appear.
@@ -33,8 +33,15 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
+   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+  /**
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been cahnged.
+   * e.g. If a second input change happens within the resolveDelay time, the timer will start over.
+   * Only until after the timer completes will onResolveSuggestions be called.
+   */
+  resolveDelay?: number;
   /**
    * A callback for what should happen when a user clicks the input.
    */
@@ -112,9 +119,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   removeButtonAriaLabel?: string;
   /**
-   * A callback to process a selection after the user selects something from the picker.
+   * A callback to process a selection after the user selects something from the picker. If the callback returns null,
+   * the item will not be added to the picker.
    */
-  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
    */
@@ -162,6 +170,10 @@ export interface IBasePickerSuggestionsProps {
    * The text that should appear on the button to search for more.
    */
   searchForMoreText?: string;
+  /**
+   * The text that appears indicating to the use to force resolve the input
+   */
+  forceResolveText?: string;
   /**
    * The text to display while the results are loading.
    */

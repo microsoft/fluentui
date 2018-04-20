@@ -6,10 +6,11 @@ import './SearchBox.Small.Example.scss';
 
 // tslint:disable:jsx-no-lambda
 export class SearchBoxSmallExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-SearchBoxSmallExample'>
         <SearchBox
+          placeholder='Search'
           onEscape={ (ev) => {
             console.log('Custom onEscape Called');
           } }

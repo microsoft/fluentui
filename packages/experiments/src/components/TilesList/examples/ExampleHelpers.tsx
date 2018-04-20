@@ -78,23 +78,29 @@ export function createGroup(items: IExampleItem[], type: 'document' | 'media', i
 
 export function getTileCells(groups: IExampleGroup[], {
   onRenderCell,
-  onRenderHeader
+  onRenderHeader,
+  size = 'large',
+  shimmerMode = false
 }: {
     onRenderHeader: (item: IExampleItem) => JSX.Element;
     onRenderCell: (item: IExampleItem, finalSize?: ITileSize) => JSX.Element;
+    size?: 'large' | 'small';
+    shimmerMode?: boolean;
   }): (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] {
   const items: (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] = [];
+  const isLargeSize: boolean = size === 'large' ? true : false;
 
   for (const group of groups) {
     const header: ITilesGridItem<IExampleItem> = {
       key: `header-${group.key}`,
       content: {
-        key: '',
+        key: group.key,
         aspectRatio: 1,
-        name: lorem(6),
+        name: group.name,
         index: group.index
       },
-      onRender: onRenderHeader
+      onRender: onRenderHeader,
+      isPlaceholder: shimmerMode
     };
 
     items.push(header);
@@ -105,24 +111,43 @@ export function getTileCells(groups: IExampleGroup[], {
           key: item.key,
           content: item,
           desiredSize: group.type === 'document' ? {
-            width: 176,
-            height: 171
+            width: isLargeSize ? 176 : 138,
+            height: isLargeSize ? 171 : 135
           } : {
-              width: 171 * item.aspectRatio,
-              height: 171
+              width: isLargeSize ? 171 * item.aspectRatio : 135 * item.aspectRatio,
+              height: isLargeSize ? 171 : 135
             },
-          onRender: onRenderCell
+          onRender: onRenderCell,
+          isPlaceholder: shimmerMode
         };
       }),
-      spacing: 8,
-      marginBottom: 40,
-      minRowHeight: 171,
+      spacing: isLargeSize ? 8 : 12,
+      marginBottom: shimmerMode ? 0 : 40,
+      minRowHeight: isLargeSize ? 171 : 135,
       mode: group.type === 'document' ?
-        TilesGridMode.stack :
+        size === 'small' ?
+          TilesGridMode.fillHorizontal :
+          TilesGridMode.stack :
         TilesGridMode.fill,
-      key: group.key
+      key: group.key,
+      isPlaceholder: shimmerMode
     });
   }
 
   return items;
+}
+
+export function createShimmerGroups(type: 'document' | 'media', index: number): IExampleGroup[] {
+  return [{
+    items: [{
+      key: `shimmerItem-${index}`,
+      name: lorem(4),
+      index: index,
+      aspectRatio: 1
+    }],
+    index: index,
+    name: lorem(4),
+    key: `shimmerGroup-${index}`,
+    type: type
+  }];
 }

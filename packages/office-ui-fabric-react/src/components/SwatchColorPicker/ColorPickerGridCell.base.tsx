@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  autobind,
-  customizable
-} from '../../Utilities';
+import { customizable } from '../../Utilities';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,
@@ -33,15 +30,24 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
 
   private _classNames: {[key in keyof IColorPickerGridCellStyles]: string };
 
-  public render() {
-    let {
+  public render(): JSX.Element {
+    const {
       item,
       id,
       selected,
       disabled,
       getStyles,
       theme,
-      circle
+      circle,
+      color,
+      onClick,
+      onHover,
+      onFocus,
+      onMouseEnter,
+      onMouseMove,
+      onMouseLeave,
+      onWheel,
+      onKeyDown
     } = this.props;
 
     this._classNames = getClassNames(
@@ -51,25 +57,31 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         disabled,
         selected,
         circle,
-        isWhite: this._isWhiteCell(this.props.color)
+        isWhite: this._isWhiteCell(color)
       }
     );
 
     return (
       <ColorCell
         item={ item }
-        id={ id }
+        id={ `${id}-${item.id}-${item.index}` }
         key={ item.id }
         disabled={ disabled }
         role={ 'gridcell' }
         onRenderItem={ this._onRenderColorOption }
         selected={ selected }
-        onClick={ this.props.onClick }
-        onHover={ this.props.onHover }
-        onFocus={ this.props.onFocus }
+        onClick={ onClick }
+        onHover={ onHover }
+        onFocus={ onFocus }
         label={ item.label }
         className={ this._classNames.colorCell }
         getClassNames={ this._getClassNames }
+        index={ item.index }
+        onMouseEnter={ onMouseEnter }
+        onMouseMove={ onMouseMove }
+        onMouseLeave={ onMouseLeave }
+        onWheel={ onWheel }
+        onKeyDown={ onKeyDown }
       />
     );
   }
@@ -78,8 +90,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
  * Render the core of a color cell
  * @returns {JSX.Element} - Element representing the core of the item
  */
-  @autobind
-  private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
+  private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties
     return (
       <svg className={ this._classNames.svg } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
@@ -93,10 +104,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   }
 
   /**
-* Validate if the cell's color is white or not to apply whiteCell style
-* @param inputColor - The color of the current cell
-* @returns - Whether the cell's color is white or not.
-*/
+   * Validate if the cell's color is white or not to apply whiteCell style
+   * @param inputColor - The color of the current cell
+   * @returns - Whether the cell's color is white or not.
+   */
   private _isWhiteCell(inputColor: string | undefined): boolean {
     return inputColor!.toLocaleLowerCase() === '#ffffff';
   }
@@ -104,8 +115,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   /**
    * Method to override the getClassNames func in a button.
    */
-  @autobind
-  private _getClassNames(
+  private _getClassNames = (
     theme: ITheme,
     className: string,
     variantClassName: string,
@@ -114,8 +124,8 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined): IButtonClassNames {
-    let styles = getActionButtonStyles(theme);
+    isSplit: boolean | undefined): IButtonClassNames => {
+    const styles = getActionButtonStyles(theme);
     return mergeStyleSets(this._classNames as {}, {
       root: [
         'ms-Button',

@@ -15,7 +15,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: 32px;
@@ -23,17 +23,19 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        padding-bottom: 0;
-        padding-left: 8px;
+        padding-bottom: 1px;
+        padding-left: 4px;
         padding-right: 0;
-        padding-top: 0;
+        padding-top: 1px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border: 1px solid WindowText;
       }
       &:hover {
-        $label: [object Object];
         border-color: #212121;
+      }
+      &:hover $iconContainer {
+        color: #005a9e;
       }
   onFocusCapture={[Function]}
 >
@@ -41,7 +43,8 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     className=
         ms-SearchBox-iconContainer
         {
-          color: #0078d7;
+          color: #0078d4;
+          cursor: text;
           display: flex;
           flex-direction: column;
           flex-shrink: 0;
@@ -51,10 +54,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           transition: width 0.167s;
           width: 32px;
         }
+    onClick={[Function]}
   >
     <i
       aria-hidden={true}
-      aria-label={undefined}
       className=
           ms-SearchBox-icon
           {
@@ -69,11 +72,11 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     />
   </div>
   <input
-    aria-label="Search"
+    aria-label={undefined}
     className=
         ms-SearchBox-field
         {
-          background-color: transparent;
+          background-color: #ffffff;
           border: none;
           box-shadow: none;
           box-sizing: border-box;
@@ -109,7 +112,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
-    placeholder="Search"
+    placeholder={undefined}
     value=""
   />
 </div>

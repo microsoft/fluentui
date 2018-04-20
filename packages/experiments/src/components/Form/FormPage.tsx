@@ -8,9 +8,15 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
-const FormAutosaveExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Autosave.Example.tsx') as string;
-const FormBasicExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Basic.Example.tsx') as string;
-const FormValidationExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Validation.Example.tsx') as string;
+const FormAutosaveExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/Form/examples/Form.Autosave.Example.tsx'
+) as string;
+
+const FormBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Form/examples/Form.Basic.Example.tsx') as string;
+
+const FormValidationExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/Form/examples/Form.Validation.Example.tsx'
+) as string;
 
 import { FormAutosaveExample } from './examples/Form.Autosave.Example';
 import { FormBasicExample } from './examples/Form.Basic.Example';
@@ -38,8 +44,8 @@ export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/Form/Form.types.ts'),
-              require<string>('!raw-loader!experiments/src/components/Form/FormBaseInput.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Form/Form.types.ts'),
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Form/FormBaseInput.types.ts')
             ] }
           />
         }

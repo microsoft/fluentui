@@ -27,6 +27,16 @@ export interface IDetailsList extends IList {
    * call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.
    */
   forceUpdate: () => void;
+
+  /**
+   * Scroll to and focus the item at the given index. focusIndex will call scrollToIndex on the specified index.
+   *
+   * @param index Index of item to scroll to
+   * @param forceIntoFirstElement If true, focus will be set to the first focusable child element of the item rather
+   *  than the item itself.
+   * @param measureItem Optional callback to measure the height of an individual item
+   */
+  focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number) => void;
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
@@ -34,7 +44,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDetailsList) => void;
+  componentRef?: (component: IDetailsList | null) => void;
 
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
@@ -135,7 +145,13 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
-  onRenderMissingItem?: (index?: number) => React.ReactNode;
+  onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
+
+  /**
+   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
+   * @default false
+   */
+  enableShimmer?: boolean;
 
   /**
    * An override to render the details header.
@@ -161,6 +177,9 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
 
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
+
+  /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
+  getRowAriaDescribedBy?: (item: any) => string;
 
   /** Optional callback to get the item key, to be used in the selection and on render. */
   getKey?: (item: any, index?: number) => string;
@@ -316,7 +335,7 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.

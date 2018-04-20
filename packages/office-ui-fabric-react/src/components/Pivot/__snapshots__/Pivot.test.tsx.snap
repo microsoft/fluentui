@@ -24,11 +24,11 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-selected={true}
         className=
             ms-Button
-            ms-Button--action
-            ms-Button--command
             ms-Pivot-link
             is-selected
             undefined
+            ms-Button--action
+            ms-Button--command
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -39,7 +39,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #333333;
               cursor: pointer;
               display: inline-block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 40px;
@@ -68,11 +68,19 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;
@@ -83,6 +91,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
         data-is-focusable={true}
         disabled={undefined}
         id="Pivot0-Tab0"
+        name=""
         onClick={[Function]}
         onKeyPress={[Function]}
         role="tab"
@@ -119,9 +128,9 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-selected={false}
         className=
             ms-Button
+            ms-Pivot-link
             ms-Button--action
             ms-Button--command
-            ms-Pivot-link
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -132,7 +141,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #333333;
               cursor: pointer;
               display: inline-block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 40px;
@@ -161,11 +170,19 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:hover .ms-Button-icon {
-              color: #0078d7;
+              color: #0078d4;
             }
             &:active {
               color: #000000;
@@ -176,6 +193,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
         data-is-focusable={true}
         disabled={undefined}
         id="Pivot0-Tab1"
+        name=""
         onClick={[Function]}
         onKeyPress={[Function]}
         role="tab"

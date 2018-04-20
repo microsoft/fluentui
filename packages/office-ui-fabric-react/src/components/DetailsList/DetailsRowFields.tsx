@@ -15,6 +15,7 @@ export interface IDetailsRowFieldsProps {
   columns: IColumn[];
   compact?: boolean;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  shimmer?: boolean;
 }
 
 export interface IDetailsRowFieldsState {
@@ -28,13 +29,13 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     this.state = this._getState(props);
   }
 
-  public componentWillReceiveProps(newProps: IDetailsRowFieldsProps) {
+  public componentWillReceiveProps(newProps: IDetailsRowFieldsProps): void {
     this.setState(this._getState(newProps));
   }
 
-  public render() {
-    let { columns, columnStartIndex } = this.props;
-    let { cellContent } = this.state;
+  public render(): JSX.Element {
+    const { columns, columnStartIndex, shimmer } = this.props;
+    const { cellContent } = this.state;
 
     return (
       <div
@@ -52,6 +53,8 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               column.isRowHeader && styles.isRowHeader,
               column.isPadded && styles.isPadded,
               column.isMultiline && styles.isMultiline,
+              (column.isIconOnly && shimmer) && styles.shimmerIconPlaceholder,
+              shimmer && styles.shimmer
             ) }
             style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
@@ -64,17 +67,17 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     );
   }
 
-  private _getState(props: IDetailsRowFieldsProps) {
-    let { item, itemIndex, onRenderItemColumn } = props;
+  private _getState(props: IDetailsRowFieldsProps): IDetailsRowFieldsState {
+    const { item, itemIndex, onRenderItemColumn, shimmer } = props;
 
     return {
       cellContent: props.columns.map((column) => {
         let cellContent;
 
         try {
-          let render = column.onRender || onRenderItemColumn;
+          const render = column.onRender || onRenderItemColumn;
 
-          cellContent = render ? render(item, itemIndex, column) : this._getCellText(item, column);
+          cellContent = render && !shimmer ? render(item, itemIndex, column) : this._getCellText(item, column);
         } catch (e) { /* no-op */ }
 
         return cellContent;
@@ -82,7 +85,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     };
   }
 
-  private _getCellText(item: any, column: IColumn) {
+  private _getCellText(item: any, column: IColumn): void {
     let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
 
     if (value === null || value === undefined) {
@@ -91,5 +94,4 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
 
     return value;
   }
-
 }

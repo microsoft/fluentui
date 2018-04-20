@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonContextualMenuExample extends React.Component<IButtonProps, {}> {
-  public render() {
-    let { disabled, checked } = this.props;
+  public render(): JSX.Element {
+    const { disabled, checked } = this.props;
 
     return (
       <div className='ms-ContextualMenuButtonsExample'>
@@ -27,8 +27,9 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
                   key: 'calendarEvent',
                   name: 'Calendar event',
                   icon: 'Calendar'
-                }
-              ]
+                },
+              ],
+              directionalHintFixed: true
             }
             }
           />

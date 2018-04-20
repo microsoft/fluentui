@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IPersonaProps,
   Persona,
   PersonaSize,
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { TestImages } from '../../../common/TestImages';
 import './PersonaExample.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
@@ -22,7 +20,7 @@ const examplePersona = {
 
 export class PersonaCustomCoinRenderExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-PersonaExample'>
         <div className={ exampleStyles.exampleLabel }>Custom functional element in place of persona coin's image</div>
@@ -38,9 +36,8 @@ export class PersonaCustomCoinRenderExample extends React.Component {
     );
   }
 
-  @autobind
-  private _onRenderCoin(props: IPersonaProps): JSX.Element {
-    let {
+  private _onRenderCoin = (props: IPersonaProps): JSX.Element => {
+    const {
       coinSize,
       imageUrl,
       imageAlt,

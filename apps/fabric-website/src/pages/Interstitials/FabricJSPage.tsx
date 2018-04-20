@@ -4,7 +4,7 @@ import * as stylesImport from './Interstitials.module.scss';
 const styles: any = stylesImport;
 
 export class FabricJSPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <div className={ styles.header }>

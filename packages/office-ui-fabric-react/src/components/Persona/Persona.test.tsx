@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
-import { PersonaInitialsColor } from './Persona.types';
 import { mount, ReactWrapper } from 'enzyme';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -22,13 +21,13 @@ describe('Persona', () => {
 
   it('renders Persona correctly with initials', () => {
     const component = renderer.create(<Persona primaryText='Kat Larrson' />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona correctly with image', () => {
     const component = renderer.create(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -46,10 +45,22 @@ describe('Persona', () => {
       expect(result.text()).toEqual('DZ');
       wrapper.unmount();
 
-      wrapper = mount(<Persona primaryText='4lex 4loo' />);
+      wrapper = mount(<Persona primaryText='4lex 5loo' />);
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('44');
+      expect(result.text()).toEqual('45');
+      wrapper.unmount();
+
+      wrapper = mount(<Persona primaryText='+1 (555) 6789' />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('');
+      wrapper.unmount();
+
+      wrapper = mount(<Persona primaryText='+1 (555) 6789' allowPhoneInitials={true} />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('16');
       wrapper.unmount();
 
       wrapper = mount(<Persona primaryText='David (The man) Goff' />);
@@ -61,7 +72,7 @@ describe('Persona', () => {
     it('calculates an expected initials in RTL if one was not specified', () => {
       setRTL(true);
       const wrapper = mount(<Persona primaryText='Kat Larrson' />);
-      let result = wrapper.find(STYLES.initials);
+      const result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('LK');
 
@@ -71,7 +82,7 @@ describe('Persona', () => {
     it('uses provided initial', () => {
       setRTL(true);
       const wrapper = mount(<Persona primaryText='Kat Larrson' imageInitials='AT' />);
-      let result = wrapper.find(STYLES.initials);
+      const result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('AT');
 
@@ -82,14 +93,14 @@ describe('Persona', () => {
   describe('image', () => {
     it('renders empty alt text by default', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } />);
-      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
+      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('');
     });
 
     it('renders its given alt text', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } imageAlt='ALT TEXT' />);
-      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
+      const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('ALT TEXT');
     });

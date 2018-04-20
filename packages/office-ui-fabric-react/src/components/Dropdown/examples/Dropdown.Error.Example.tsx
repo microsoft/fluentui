@@ -1,17 +1,14 @@
 import * as React from 'react';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { autobind, BaseComponent } from '../../../Utilities';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownErrorExample extends BaseComponent<{}, {}> {
-  private _basicDropdown: IDropdown;
-
   constructor(props: {}) {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-DropdownExample'>
         <Dropdown
@@ -28,7 +25,6 @@ export class DropdownErrorExample extends BaseComponent<{}, {}> {
               { key: 'E', text: 'Option e' },
             ]
           }
-          componentRef={ this._resolveRef('_basicDropdown') }
           errorMessage='Error message'
         />
       </div>

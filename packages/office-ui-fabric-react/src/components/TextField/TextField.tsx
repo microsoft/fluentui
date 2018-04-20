@@ -9,7 +9,8 @@ import {
   css,
   getNativeProps,
   inputProperties,
-  textAreaProperties
+  textAreaProperties,
+  createRef
 } from '../../Utilities';
 import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
@@ -55,7 +56,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
-  private _textElement: HTMLTextAreaElement;
+  private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -73,8 +74,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this._id = getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
 
+    this._latestValue = props.value || props.defaultValue || '';
+
     this.state = {
-      value: props.value || props.defaultValue || '',
+      value: this._latestValue,
       isFocused: false,
       errorMessage: ''
     };
@@ -95,7 +98,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return this.state.value;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._isMounted = true;
     this._adjustInputHeight();
 
@@ -104,7 +107,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  public componentWillReceiveProps(newProps: ITextFieldProps) {
+  public componentWillReceiveProps(newProps: ITextFieldProps): void {
     const { onBeforeChange } = this.props;
 
     if (newProps.value !== undefined && newProps.value !== this.state.value) {
@@ -116,18 +119,21 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       this.setState({
         value: newProps.value,
         errorMessage: ''
-      } as ITextFieldState);
+      } as ITextFieldState,
+        () => {
+          this._adjustInputHeight();
+        });
 
       this._delayedValidate(newProps.value);
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._isMounted = false;
   }
 
-  public render() {
-    let {
+  public render(): JSX.Element {
+    const {
       className,
       description,
       disabled,
@@ -143,12 +149,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
+      onRenderDescription = this._onRenderDescription
     } = this.props;
-    let { isFocused } = this.state;
+    const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
-    const renderProps: ITextFieldProps = { ...this.props, componentId: this._id };
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
@@ -163,7 +169,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         <div className={ css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '') }>
-          { onRenderLabel(renderProps, this._onRenderLabel) }
+          { onRenderLabel(this.props, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css('ms-TextField-prefix', styles.fieldPrefixSuffix) }>
@@ -186,14 +192,14 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
-            { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
+            { onRenderDescription(this.props, this._onRenderDescription) }
             { errorMessage &&
-              <div>
+              <div aria-live='assertive'>
                 <DelayedRender>
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
                   >
-                    <span aria-live='assertive' className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
+                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>
@@ -208,8 +214,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Sets focus on the text field
    */
   public focus() {
-    if (this._textElement) {
-      this._textElement.focus();
+    if (this._textElement.current) {
+      this._textElement.current.focus();
     }
   }
 
@@ -217,41 +223,41 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Selects the text field
    */
   public select() {
-    if (this._textElement) {
-      this._textElement.select();
+    if (this._textElement.current) {
+      this._textElement.current.select();
     }
   }
 
   /**
    * Sets the selection start of the text field to a specified value
    */
-  public setSelectionStart(value: number) {
-    if (this._textElement) {
-      this._textElement.selectionStart = value;
+  public setSelectionStart(value: number): void {
+    if (this._textElement.current) {
+      this._textElement.current.selectionStart = value;
     }
   }
 
   /**
    * Sets the selection end of the text field to a specified value
    */
-  public setSelectionEnd(value: number) {
-    if (this._textElement) {
-      this._textElement.selectionEnd = value;
+  public setSelectionEnd(value: number): void {
+    if (this._textElement.current) {
+      this._textElement.current.selectionEnd = value;
     }
   }
 
   /**
    * Gets the selection start of the text field
    */
-  public get selectionStart(): number {
-    return this._textElement ? this._textElement.selectionStart : -1;
+  public get selectionStart(): number | null {
+    return this._textElement.current ? this._textElement.current.selectionStart : -1;
   }
 
   /**
    * Gets the selection end of the text field
    */
-  public get selectionEnd(): number {
-    return this._textElement ? this._textElement.selectionEnd : -1;
+  public get selectionEnd(): number | null {
+    return this._textElement.current ? this._textElement.current.selectionEnd : -1;
   }
 
   /**
@@ -259,13 +265,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * @param start Index of the start of the selection.
    * @param end Index of the end of the selection.
    */
-  public setSelectionRange(start: number, end: number) {
-    if (this._textElement) {
-      this._textElement.setSelectionRange(start, end);
+  public setSelectionRange(start: number, end: number): void {
+    if (this._textElement.current) {
+      (this._textElement.current as HTMLInputElement).setSelectionRange(start, end);
     }
   }
 
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     if (this.props.onFocus) {
       this.props.onFocus(ev);
     }
@@ -276,7 +282,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
@@ -287,34 +293,37 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
-    const {
-      label,
-      componentId
-     } = props;
-    if (label) {
-      return (<Label htmlFor={ componentId }>{ label }</Label>);
+  private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
+    if (props.label) {
+      return (<Label htmlFor={ this._id }>{ props.label }</Label>);
+    }
+    return null;
+  }
+
+  private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
+    if (props.description) {
+      return (<span className={ css('ms-TextField-description', styles.description) }>{ props.description }</span>);
     }
     return null;
   }
 
   // @deprecated
   private _onRenderAddon(props: ITextFieldProps): JSX.Element {
-    let { addonString } = props;
+    const { addonString } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ addonString }</span>
     );
   }
 
   private _onRenderPrefix(props: ITextFieldProps): JSX.Element {
-    let { prefix } = props;
+    const { prefix } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ prefix }</span>
     );
   }
 
   private _onRenderSuffix(props: ITextFieldProps): JSX.Element {
-    let { suffix } = props;
+    const { suffix } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ suffix }</span>
     );
@@ -344,18 +353,18 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
+    const textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
     return (
       <textarea
         id={ this._id }
         { ...textAreaProps }
-        ref={ this._resolveRef('_textElement') }
+        ref={ this._textElement }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         aria-label={ this.props.ariaLabel }
         onFocus={ this._onFocus }
@@ -365,20 +374,20 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
         type={ 'text' }
         id={ this._id }
         { ...inputProps }
-        ref={ this._resolveRef('_textElement') }
+        ref={ this._textElement }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
@@ -418,14 +427,16 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _validate(value: string | undefined): void {
+    const { validateOnFocusIn, validateOnFocusOut } = this.props;
+
     // In case of _validate called multi-times during executing validate logic with promise return.
-    if (this._latestValidateValue === value) {
+    if (this._latestValidateValue === value && !(validateOnFocusIn || validateOnFocusOut)) {
       return;
     }
 
     this._latestValidateValue = value;
-    let onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
-    let result = onGetErrorMessage(value || '');
+    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
+    const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {
       if (typeof result === 'string') {
@@ -434,7 +445,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         } as ITextFieldState);
         this._notifyAfterValidate(value, result);
       } else {
-        let currentValidation: number = ++this._lastValidation;
+        const currentValidation: number = ++this._lastValidation;
 
         result.then((errorMessage: string) => {
           if (this._isMounted && currentValidation === this._lastValidation) {
@@ -457,10 +468,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _adjustInputHeight(): void {
-    if (this._textElement && this.props.autoAdjustHeight && this.props.multiline) {
-      const textField = this._textElement as HTMLElement;
+    if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
+      const textField = this._textElement.current;
       textField.style.height = '';
-      let scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
+      const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';
     }
   }

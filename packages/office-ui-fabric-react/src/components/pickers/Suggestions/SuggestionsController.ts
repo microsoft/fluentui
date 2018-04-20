@@ -1,5 +1,3 @@
-import { autobind } from '../../../Utilities';
-
 export interface ISuggestionModel<T> {
   item: T;
   selected: boolean;
@@ -16,7 +14,7 @@ export class SuggestionsController<T> {
     this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
+  public updateSuggestions(newSuggestions: T[], selectedIndex?: number): void {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
@@ -81,12 +79,12 @@ export class SuggestionsController<T> {
     return this.currentSuggestion ? true : false;
   }
 
-  public removeSuggestion(index: number) {
+  public removeSuggestion(index: number): void {
     this.suggestions.splice(index, 1);
   }
 
-  public createGenericSuggestion(itemToConvert: ISuggestionModel<T>) {
-    let itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
+  public createGenericSuggestion(itemToConvert: ISuggestionModel<T>): void {
+    const itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
     this.currentSuggestion = itemToAdd;
   }
 
@@ -97,8 +95,10 @@ export class SuggestionsController<T> {
   }
 
   public deselectAllSuggestions(): void {
-    this.currentIndex = -1;
-    this.suggestions[this.currentIndex].selected = false;
+    if (this.currentIndex > -1) {
+      this.suggestions[this.currentIndex].selected = false;
+      this.currentIndex = -1;
+    }
   }
 
   public setSelectedSuggestion(index: number): void {
@@ -117,17 +117,15 @@ export class SuggestionsController<T> {
     }
   }
 
-  @autobind
-  private _isSuggestionModel(
+  private _isSuggestionModel = (
     value: ISuggestionModel<T> | T
-    ): value is ISuggestionModel<T> {
+  ): value is ISuggestionModel<T> => {
     return (<ISuggestionModel<T>>value).item !== undefined;
   }
 
-  @autobind
-  private _ensureSuggestionModel(
+  private _ensureSuggestionModel = (
     suggestion: ISuggestionModel<T> | T
-    ): ISuggestionModel<T> {
+  ): ISuggestionModel<T> => {
     if (this._isSuggestionModel(suggestion)) {
       return suggestion as ISuggestionModel<T>;
     } else {

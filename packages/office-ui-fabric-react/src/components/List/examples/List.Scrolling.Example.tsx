@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  css,
-  autobind
+  css
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
   FocusZone,
@@ -36,7 +35,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   }
 
   public render() {
-    let { items } = this.props;
+    const { items } = this.props;
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
@@ -77,8 +76,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     return h;
   }
 
-  @autobind
-  private _onChangeText(value: any): void {
+  private _onChangeText = (value: any): void => {
     this._scroll(parseInt(value, 10) || 0);
   }
 
@@ -114,8 +112,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     });
   }
 
-  @autobind
-  private _resolveList(list: List) {
+  private _resolveList = (list: List): void => {
     this._list = list;
   }
 }

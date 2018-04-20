@@ -27,8 +27,8 @@ export class PersonaAlternateExample extends React.Component<{}, {
     };
   }
 
-  public render() {
-    let { renderPersonaDetails } = this.state;
+  public render(): JSX.Element {
+    const { renderPersonaDetails } = this.state;
 
     return (
       <div className='ms-PersonaExample'>

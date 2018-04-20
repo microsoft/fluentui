@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IImage {
 
@@ -9,7 +11,23 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IImage) => void;
+  componentRef?: (component: IImage | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  getStyles?: IStyleFunction<IImageStyleProps, IImageStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Component
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * If true, fades the image in when loaded.
@@ -23,11 +41,6 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
    * @defaultvalue false;
    */
   shouldStartVisible?: boolean;
-
-  /**
-   * If provided, adds the indicated css class to the image.
-   */
-  className?: string;
 
   /**
    * Used to determine how the image is scaled and cropped to fit the frame.
@@ -129,4 +142,83 @@ export enum ImageLoadState {
    * @deprecated
    */
   errorLoaded = 3
+}
+
+export interface IImageStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  /**
+   * If true, the image frame will expand to fill its parent container.
+   */
+  maximizeFrame?: boolean;
+
+  /**
+   * If true, the image is loaded
+   */
+  isLoaded?: boolean;
+
+  /**
+   * If true, fades the image in when loaded.
+   * @defaultvalue true
+   */
+  shouldFadeIn?: boolean;
+
+  /**
+   * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until
+   * it is successfully loaded. This disables shouldFadeIn.
+   * @defaultvalue false;
+   */
+  shouldStartVisible?: boolean;
+
+  /**
+   * If true the image is coverStyle landscape instead of portrait
+   */
+  isLandscape?: boolean;
+
+  /**
+   * ImageFit booleans for center, cover, contain, none
+   */
+  isCenter?: boolean;
+  isContain?: boolean;
+  isCover?: boolean;
+  isNone?: boolean;
+
+  /**
+   * if true image load is in error
+   */
+  isError?: boolean;
+
+  /**
+   * if true, imageFit is undefined
+   */
+  isNotImageFit?: boolean;
+
+  /**
+   * Image width valye
+   */
+  width?: number | string;
+
+  /**
+   * Image height valye
+   */
+  height?: number | string;
+}
+
+export interface IImageStyles {
+  /**
+   * Style set for the root div element.
+   */
+  root: IStyle;
+  /**
+   * Style set for the img element.
+   */
+  image: IStyle;
 }

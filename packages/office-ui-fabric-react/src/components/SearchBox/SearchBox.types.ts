@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
+import { IButtonProps } from '../Button';
 
 export interface ISearchBox {
   /**
    * Sets focus inside the search input box.
    */
   focus(): void;
+
+  /**
+   * Returns whether or not the SearchBox has focus
+   */
+  hasFocus(): boolean;
 }
 
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -14,11 +20,16 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISearchBox) => void;
+  componentRef?: (component: ISearchBox | null) => void;
 
   /**
-  * Label text for the SearchBox.
-  * @default "Search"
+   * Placeholder for the search box.
+   */
+  placeholder?: string;
+
+  /**
+  * Deprecated. Use placeholder instead.
+  * @deprecated
   */
   labelText?: string;
 
@@ -49,9 +60,17 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onChanged?: (newValue: any) => void;
 
   /**
-  * The value of the text in the SearchBox.
-  */
+   * The value of the text in the SearchBox.
+   */
   value?: string;
+
+  /**
+   * The default value of the text in the SearchBox, in the case of an uncontrolled component.
+   * Up till now, this has not been implemented, deprecating. Will re-implement if uncontrolled
+   * component behavior is implemented.
+   * @deprecated
+   */
+  defaultValue?: string;
 
   /**
   * CSS class to apply to the SearchBox.
@@ -60,9 +79,14 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The aria label of the SearchBox for the benefit of screen readers.
-   * @defaultvalue labelText
+   * @defaultvalue placeholder
    */
   ariaLabel?: string;
+
+  /**
+   * The props for the clear button.
+   */
+  clearButtonProps?: IButtonProps;
 
   /**
    * Whether or not the SearchBox is underlined.
@@ -78,7 +102,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ISearchBoxProps, ISearchBoxStyles>;
+  getStyles?: IStyleFunction<ISearchBoxStyleProps, ISearchBoxStyles>;
 }
 
 export interface ISearchBoxStyleProps {

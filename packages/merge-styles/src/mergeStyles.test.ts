@@ -33,6 +33,16 @@ describe('mergeStyles', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{right:10px;}');
   });
 
+  it('can re-register rules when rtl is flipped', () => {
+    const result1 = mergeStyles({ left: 10 });
+    expect(_stylesheet.getRules()).toEqual('.css-0{left:10px;}');
+    expect(result1).toEqual('css-0');
+    setRTL(true);
+    const result2 = mergeStyles({ left: 10 });
+    expect(_stylesheet.getRules()).toEqual('.css-0{left:10px;}.css-1{right:10px;}');
+    expect(result2).toEqual('css-1');
+  });
+
   it('can join strings', () => {
     expect(mergeStyles('a', false, null, undefined, 'b')).toEqual('a b');
   });
@@ -77,6 +87,22 @@ describe('mergeStyles', () => {
     expect(_stylesheet.getRules()).toEqual(
       '.css-0{background:red;}' +
       '.css-1{background:green;}'
+    );
+  });
+
+  it('can register media queries', () => {
+    mergeStyles({
+      background: 'red',
+      selectors: {
+        '@media screen and (max-width: 100px)': {
+          background: 'green'
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:red;}' +
+      '@media screen and (max-width: 100px){.css-0{background:green;}}'
     );
   });
 

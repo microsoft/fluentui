@@ -1,6 +1,99 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+
+## 5.10.2
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.10.1
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Fix code block line-height
+
+## 5.10.0
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Minor changes
+
+- Add new APIs for editing sections on GitHub.
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.9.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- HTML button tags will be overridden with DefaultButton component.
+
+## 5.8.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add ability to disable scrolling for an ExampleCard
+
+## 5.7.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable w
+
+## 5.7.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
+
+## 5.6.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
+
+## 5.5.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.4.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.3.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+
+## 5.2.2
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- Tweaking css for example pages.
 
 ## 5.2.1
 Mon, 22 Jan 2018 11:14:27 GMT

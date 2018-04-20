@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   getId,
   inputProperties,
-  getNativeProps
+  getNativeProps,
+  createRef
 } from '../../Utilities';
 import {
   IToggleProps,
@@ -24,7 +24,7 @@ export interface IToggleState {
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
-  private _toggleButton: HTMLButtonElement;
+  private _toggleButton = createRef<HTMLButtonElement>();
 
   constructor(props: IToggleProps) {
     super(props);
@@ -46,7 +46,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     return this.state.isChecked;
   }
 
-  public componentWillReceiveProps(newProps: IToggleProps) {
+  public componentWillReceiveProps(newProps: IToggleProps): void {
     if (newProps.checked !== undefined) {
       this.setState({
         isChecked: !!newProps.checked // convert null to false
@@ -54,14 +54,14 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     // This control is using an input element for more universal accessibility support.
     // Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
     // However, JAWS and VoiceOver did not announce anything when the toggle was checked or unchecked.
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
-    let {
+    const {
       className,
       theme,
       styles: customStyles,
@@ -71,9 +71,9 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
       offText,
       onAriaLabel,
       onText
-      } = this.props;
-    let { isChecked } = this.state;
-    let stateText = isChecked ? onText : offText;
+    } = this.props;
+    const { isChecked } = this.state;
+    const stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = getClassNames(
@@ -98,7 +98,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             disabled={ disabled }
             id={ this._id }
             type='button'
-            ref={ this._resolveRef('_toggleButton') }
+            ref={ this._toggleButton }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
             aria-label={ ariaLabel ? ariaLabel : label }
@@ -117,15 +117,14 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public focus() {
-    if (this._toggleButton) {
-      this._toggleButton.focus();
+    if (this._toggleButton.current) {
+      this._toggleButton.current.focus();
     }
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>) {
-    let { disabled, checked, onChanged, onClick } = this.props;
-    let { isChecked } = this.state;
+  private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
+    const { disabled, checked, onChanged, onClick } = this.props;
+    const { isChecked } = this.state;
 
     if (!disabled) {
       // Only update the state if the user hasn't provided it.

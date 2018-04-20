@@ -1,7 +1,6 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Form, FormDatePicker, FormTextInput, Validators } from '../../Form';
+import { Form, FormDatePicker, FormTextInput, Validators } from '@uifabric/experiments/lib/Form';
 
 export interface IFormAutosaveExampleState {
   formResults: any;
@@ -53,8 +52,7 @@ export class FormAutosaveExample extends React.Component<{}, IFormAutosaveExampl
     );
   }
 
-  @autobind
-  private _onUpdate(key: string, value: any): void {
+  private _onUpdate = (key: string, value: any): void => {
     let newFormResults = this.state && this.state.formResults ? { ...this.state.formResults } : {};
     newFormResults[key] = value;
     this.setState({ formResults: newFormResults });

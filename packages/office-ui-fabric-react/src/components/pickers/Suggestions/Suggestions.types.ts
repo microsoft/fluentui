@@ -42,6 +42,18 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   onGetMoreResults?: () => void;
   /**
+   * The text that appears indicating to the use to force resolve the input
+   */
+  forceResolveText?: string;
+  /**
+   * The callback that should be called to see if the force resolve command should be shown
+   */
+  showForceResolve?: () => boolean;
+  /**
+   * The callback that should be called when the user attempts to use the input text as as item
+   */
+  createGenericItem?: () => void;
+  /**
    * The CSS classname of the suggestions list.
    */
   className?: string;
@@ -88,6 +100,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
   /**
    * Indicates if the text in resultsFooter or resultsFooterFull should be shown at the end of the suggestion list.
+   * @default true.
    */
   isResultsFooterVisible?: boolean;
   /**
@@ -129,4 +142,5 @@ export interface ISuggestionItemProps<T> {
   className?: string;
   id?: string;
   showRemoveButton?: boolean;
+  isSelectedOverride?: boolean;
 }

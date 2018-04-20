@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Nav } from '../Nav/Nav';
@@ -28,7 +27,7 @@ export class App extends React.Component<IAppProps, any> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     window.addEventListener('scroll', this._handleNavPositioning);
     window.addEventListener('resize', this._handleNavPositioning);
 
@@ -36,19 +35,17 @@ export class App extends React.Component<IAppProps, any> {
     this._handleNavPositioning();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     window.removeEventListener('scroll', this._handleNavPositioning);
     window.removeEventListener('resize', this._handleNavPositioning);
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { navHeight } = this.state;
-    let appContentTop = this._appContentRect ? this._appContentRect.top : 100;
-    // Using appContentTop as a reference to match instead of 'unset' because it does not work in IE.
-    let navTop: string = this.state.isAttached ? '0' : appContentTop.toString();
+    let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute';
     let navStyle = {
-      top: navTop,
-      height: navHeight
+      height: navHeight,
+      position: navPosition
     };
 
     return (
@@ -77,10 +74,9 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
-  @autobind
-  private _handleNavPositioning() {
+  private _handleNavPositioning = () => {
     let { isAttached, navHeight } = this.state;
-    this._appContentRect = this._appContent.getBoundingClientRect();
+    this._appContentRect = this._appContent && this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;
     isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
     navHeight = this._calculateNavHeight(viewPortHeight, this._appContentRect, navHeight);

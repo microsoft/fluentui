@@ -1,10 +1,11 @@
 import { IPalette } from '../interfaces/index';
 
+// When adding or removing a color, make sure you keep this consistent with IColorClassNames by adding the color variants.
 export const DefaultPalette: IPalette = {
   themeDarker: '#004578',
   themeDark: '#005a9e',
   themeDarkAlt: '#106ebe',
-  themePrimary: '#0078d7',
+  themePrimary: '#0078d4',
   themeSecondary: '#2b88d8',
   themeTertiary: '#71afe5',
   themeLight: '#c7e0f4',
@@ -23,8 +24,9 @@ export const DefaultPalette: IPalette = {
   neutralLight: '#eaeaea',
   neutralLighter: '#f4f4f4',
   neutralLighterAlt: '#f8f8f8',
-  accent: '#0078d7',
+  accent: '#0078d4',
   white: '#ffffff',
+  whiteTranslucent40: 'rgba(255,255,255,.4)',
   yellow: '#ffb900',
   yellowLight: '#fff100',
   orange: '#d83b01',
@@ -40,7 +42,7 @@ export const DefaultPalette: IPalette = {
   purpleLight: '#b4a0ff',
   blueDark: '#002050',
   blueMid: '#00188f',
-  blue: '#0078d7',
+  blue: '#0078d4',
   blueLight: '#00bcf2',
   tealDark: '#004b50',
   teal: '#008272',

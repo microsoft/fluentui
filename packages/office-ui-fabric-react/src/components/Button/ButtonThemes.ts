@@ -2,17 +2,16 @@ import { IButtonStyles } from './Button.types';
 import { ITheme, HighContrastSelector } from '../../Styling';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
-  let s = theme.semanticColors;
+  const s = theme.semanticColors;
 
-  let buttonBackground = s.buttonBackground;
-  let buttonBackgroundChecked = s.buttonBackgroundChecked;
-  let buttonBackgroundHovered = s.buttonBackgroundHovered;
-  let buttonBackgroundCheckedHovered = s.buttonBackgroundCheckedHovered;
+  const buttonBackground = s.buttonBackground;
+  const buttonBackgroundChecked = s.buttonBackgroundChecked;
+  const buttonBackgroundHovered = s.buttonBackgroundHovered;
 
-  let buttonText = s.buttonText;
-  let buttonTextHovered = s.buttonTextHovered;
-  let buttonTextChecked = s.buttonTextChecked;
-  let buttonTextCheckedHovered = s.buttonTextCheckedHovered;
+  const buttonText = s.buttonText;
+  const buttonTextHovered = s.buttonTextHovered;
+  const buttonTextChecked = s.buttonTextChecked;
+  const buttonTextCheckedHovered = s.buttonTextCheckedHovered;
 
   return {
     root: {
@@ -46,7 +45,13 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {},
+    splitButtonContainer: {
+      selectors: {
+        [HighContrastSelector]: {
+          border: 'none'
+        }
+      }
+    },
 
     splitButtonMenuButton: {
       color: theme.palette.white,
@@ -153,7 +158,13 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {},
+    splitButtonContainer: {
+      selectors: {
+        [HighContrastSelector]: {
+          border: 'none'
+        }
+      }
+    },
 
     splitButtonDivider: {
       backgroundColor: theme.palette.themeLighter

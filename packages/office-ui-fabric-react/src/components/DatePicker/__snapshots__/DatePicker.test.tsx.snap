@@ -15,7 +15,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           className="ms-TextField-fieldGroup"
         >
           <input
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-expanded={false}
             aria-haspopup="true"
             aria-invalid={false}
@@ -38,7 +38,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           />
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-DatePicker-event--without-label
                 {

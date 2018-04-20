@@ -1,15 +1,12 @@
 import * as React from 'react';
-import {
-  ProgressIndicator
-} from 'office-ui-fabric-react/lib/ProgressIndicator';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 
 export class ProgressIndicatorIndeterminateExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <ProgressIndicator
         label='Example title'

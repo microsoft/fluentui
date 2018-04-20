@@ -2,14 +2,18 @@
 import * as React from 'react';
 /* tslint:enable */
 import {
-  BaseComponent,
-  autobind
+  BaseComponent
 } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IExtendedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
+import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
+import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
+import * as styles from './SelectedPeopleList.Basic.Example.scss';
 
 export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
@@ -41,17 +45,34 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
         copyMenuItemText={ 'Copy' }
         removeMenuItemText={ 'Remove' }
         selection={ this.selection }
+        onRenderItem={ this._onRenderItem }
       />
     );
   }
 
-  @autobind
-  private _setComponentRef(component: SelectedPeopleList): void {
+  private _onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
+    return (
+      <ExtendedSelectedItem
+        { ...props }
+        renderPersonaCoin={ this._renderPersonaElement }
+      />
+    );
+  }
+
+  private _renderPersonaElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
+    return (
+      <Icon
+        iconName={ 'Contact' }
+        className={ styles.persona }
+      />
+    );
+  }
+
+  private _setComponentRef = (component: SelectedPeopleList): void => {
     this._selectionList = component;
   }
 
-  @autobind
-  private _onAddItemButtonClicked(): void {
+  private _onAddItemButtonClicked = (): void => {
     if (this._selectionList) {
       if (!this.index) {
         this.index = 0;
@@ -61,10 +82,9 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     }
   }
 
-  @autobind
-  private _onExpandItem(item: IExtendedPersonaProps): void {
+  private _onExpandItem = (item: IExtendedPersonaProps): void => {
     // tslint:disable-next-line:no-any
-    this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
+    this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
   }
 
   private _onSelectionChange(): void {

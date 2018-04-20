@@ -5,7 +5,7 @@ export interface IStickyProps extends React.Props<Sticky> {
   /**
    * Gets ref to component interface.
    */
-  componentRef?: (component: IStickyProps) => void;
+  componentRef?: (component: IStickyProps | null) => void;
 
   /**
    * Class name to apply to the sticky element if component is sticky.
@@ -13,7 +13,13 @@ export interface IStickyProps extends React.Props<Sticky> {
   stickyClassName?: string;
 
   /**
-   * Region to render sticky component in.  Defaults to Both.
+   * color to apply as 'background-color' style for sticky element.
+  */
+  stickyBackgroundColor?: string;
+
+  /**
+   * Region to render sticky component in.
+   * @default Both
    */
   stickyPosition?: StickyPositionType;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
@@ -18,10 +18,10 @@ export interface IOverflowData {
 
 function generateData(count: number, cachingEnabled: boolean, checked: boolean): IOverflowData {
   const icons = ['Add', 'Share', 'Upload'];
-  let dataItems = [];
+  const dataItems = [];
   let cacheKey = '';
   for (let index = 0; index < count; index++) {
-    let item = {
+    const item = {
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
@@ -69,9 +69,9 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     };
   }
 
-  public render() {
-    let { numberOfItems, cachingEnabled, buttonsChecked, short, onGrowDataEnabled } = this.state;
-    let dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
+  public render(): JSX.Element {
+    const { numberOfItems, cachingEnabled, buttonsChecked, short, onGrowDataEnabled } = this.state;
+    const dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
     return (
       <div className={ short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
@@ -131,14 +131,13 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     );
   }
 
-  @autobind
-  private _onReduceData(currentData: any): any {
+  private _onReduceData = (currentData: any): any => {
     if (currentData.primary.length === 0) {
       return undefined;
     }
 
-    let overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
-    let primary = currentData.primary.slice(0, -1);
+    const overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
+    const primary = currentData.primary.slice(0, -1);
 
     let cacheKey = undefined;
     if (this.state.cachingEnabled) {
@@ -147,14 +146,13 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     return { primary, overflow, cacheKey };
   }
 
-  @autobind
-  private _onGrowData(currentData: any): any {
+  private _onGrowData = (currentData: any): any => {
     if (currentData.overflow.length === 0) {
       return undefined;
     }
 
-    let overflow = currentData.overflow.slice(1);
-    let primary = [...currentData.primary, ...currentData.overflow.slice(0, 1)];
+    const overflow = currentData.overflow.slice(1);
+    const primary = [...currentData.primary, ...currentData.overflow.slice(0, 1)];
 
     let cacheKey = undefined;
     if (this.state.cachingEnabled) {
@@ -163,23 +161,19 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     return { primary, overflow, cacheKey };
   }
 
-  @autobind
-  private _onCachingEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
+  private _onCachingEnabledChanged = (_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ cachingEnabled: checked });
   }
 
-  @autobind
-  private _onGrowDataEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
+  private _onGrowDataEnabledChanged = (_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ onGrowDataEnabled: checked });
   }
 
-  @autobind
-  private _onButtonsCheckedChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
+  private _onButtonsCheckedChanged = (_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ buttonsChecked: checked });
   }
 
-  @autobind
-  private _onNumberOfItemsChanged(option: IDropdownOption) {
+  private _onNumberOfItemsChanged = (option: IDropdownOption): void => {
     this.setState({ numberOfItems: parseInt(option.text, 10) });
   }
 }

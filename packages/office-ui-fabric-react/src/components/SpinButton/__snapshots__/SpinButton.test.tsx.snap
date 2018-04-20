@@ -8,10 +8,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         font-size: 14px;
         min-width: 86px;
         outline: none;
-        padding-bottom: 2px;
-        padding-left: 2px;
-        padding-right: 2px;
-        padding-top: 2px;
         width: 100%;
       }
 >
@@ -52,18 +48,21 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
   </div>
   <div
     aria-label={undefined}
+    aria-posinset={undefined}
+    aria-setsize={undefined}
     className=
 
         {
-          border-color: #c8c8c8;
+          border-color: #a6a6a6;
           border-style: solid;
           border-width: 1px;
+          box-sizing: border-box;
           display: flex;
-          height: 26px;
+          height: 32px;
           min-width: 86px;
         }
         &:hover {
-          border-color: #666666;
+          border-color: #212121;
           outline: 2px dashed transparent;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
@@ -74,9 +73,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     <input
       aria-disabled={false}
       aria-labelledby="Label0"
-      aria-valuemax="100"
+      aria-valuemax={100}
       aria-valuemin={0}
-      aria-valuenow="0"
+      aria-valuenow={0}
+      aria-valuetext={undefined}
       className=
           ms-spinButton-input
           {
@@ -96,16 +96,16 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             min-width: 72px;
             outline: 0;
             overflow: hidden;
-            padding-bottom: 4px;
-            padding-left: 4px;
-            padding-right: 3px;
-            padding-top: 3px;
+            padding-bottom: 0;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 0;
             text-overflow: ellipsis;
             user-select: text;
             width: calc(100% - 14px);
           }
           &::selection {
-            background-color: #0078d7;
+            background-color: #0078d4;
             color: #ffffff;
           }
           @media screen and (-ms-high-contrast: active){&::selection {
@@ -152,8 +152,8 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-UpButton
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -164,7 +164,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               color: #333333;
               cursor: default;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 50%;
@@ -194,19 +194,27 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #004578;
+              color: #000000;
             }
             &:active {
-              background-color: #0078d7;
-              color: #ffffff;
+              background-color: #c8c8c8;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={true}
+        data-is-focusable={false}
         disabled={undefined}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
@@ -227,7 +235,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         >
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-Button-icon
                 {
@@ -258,8 +265,8 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-DownButton
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -270,7 +277,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               color: #333333;
               cursor: default;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 50%;
@@ -300,19 +307,27 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #004578;
+              color: #000000;
             }
             &:active {
-              background-color: #0078d7;
-              color: #ffffff;
+              background-color: #c8c8c8;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
-        data-is-focusable={true}
+        data-is-focusable={false}
         disabled={undefined}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
@@ -333,7 +348,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         >
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-Button-icon
                 {

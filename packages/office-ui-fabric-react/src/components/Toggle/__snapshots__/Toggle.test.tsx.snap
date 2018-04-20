@@ -6,6 +6,11 @@ exports[`Toggle renders toggle correctly 1`] = `
       ms-Toggle
       is-enabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 8px;
       }
 >
@@ -48,6 +53,7 @@ exports[`Toggle renders toggle correctly 1`] = `
       className=
           ms-Toggle-background
           {
+            align-items: center;
             background: #ffffff;
             border-color: #666666;
             border-radius: 1em;
@@ -55,10 +61,14 @@ exports[`Toggle renders toggle correctly 1`] = `
             border-width: 1px;
             box-sizing: border-box;
             cursor: pointer;
+            display: flex;
             font-size: 20px;
             height: 1em;
-            line-height: 1em;
             outline: transparent;
+            padding-bottom: 0;
+            padding-left: .2em;
+            padding-right: .2em;
+            padding-top: 0;
             position: relative;
             transition: all 0.1s ease;
             width: 2.2em;
@@ -98,9 +108,6 @@ exports[`Toggle renders toggle correctly 1`] = `
               border-width: .28em;
               box-sizing: border-box;
               height: .5em;
-              left: .2em;
-              position: absolute;
-              top: .18em;
               transition: all 0.1s ease;
               width: .5em;
             }

@@ -1,11 +1,9 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
 
-import { Dialog } from './Dialog';
+import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types';
 
@@ -14,7 +12,7 @@ import { DialogType } from './DialogContent.types';
 describe('Dialog', () => {
   it('renders Dialog correctly', () => {
     const component = renderer.create(<DialogContent />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -26,7 +24,7 @@ describe('Dialog', () => {
     };
 
     const wrapper = mount(
-      <Dialog
+      <DialogBase
         hidden={ false }
         modalProps={ { onDismissed: handleDismissed } }
       />
@@ -51,7 +49,7 @@ describe('Dialog', () => {
 
   it('Properly attaches auto-generated aria attributes IDs', () => {
     const wrapper = mount(
-      <Dialog
+      <DialogBase
         hidden={ false }
         modalProps={ { onDismissed: () => {/* no-op */ } } }
         dialogContentProps={ {
@@ -72,7 +70,7 @@ describe('Dialog', () => {
   it('Properly attaches IDs when aria-describedby is passed', () => {
     const subTextAriaId = 'subtextariaid';
     const wrapper = mount(
-      <Dialog
+      <DialogBase
         hidden={ false }
         modalProps={ {
           onDismissed: () => {/* no-op */ },
@@ -96,7 +94,7 @@ describe('Dialog', () => {
   it('Properly attaches IDs when aria-labelledby is passed', () => {
     const titleAriaId = 'titleariaid';
     const wrapper = mount(
-      <Dialog
+      <DialogBase
         hidden={ false }
         modalProps={ {
           onDismissed: () => {/* no-op */ },

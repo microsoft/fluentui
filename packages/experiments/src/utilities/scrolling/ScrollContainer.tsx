@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { IScrollContainerProps } from './ScrollContainer.types';
-import { BaseComponent, autobind, css } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 
 import * as ScrollContainerStyles from './ScrollContainer.scss';
 
@@ -79,16 +79,14 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     }
   }
 
-  @autobind
-  private _resolveRoot(element: HTMLDivElement): void {
+  private _resolveRoot = (element: HTMLDivElement): void => {
     if (element) {
       this._root = element;
       this._init();
     }
   }
 
-  @autobind
-  private _onIntersection(entries: IntersectionObserverEntry[], observer: IntersectionObserver): void {
+  private _onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
     for (const entry of entries) {
       // tslint:disable-next-line:no-any
       if ((entry as any).isIntersecting || entry.intersectionRatio > 0) {
@@ -142,8 +140,7 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     }
   }
 
-  @autobind
-  private _onScroll(): void {
+  private _onScroll = (): void => {
     const scrollTop = this._root.scrollTop;
 
     for (const callback of this._callbacks) {

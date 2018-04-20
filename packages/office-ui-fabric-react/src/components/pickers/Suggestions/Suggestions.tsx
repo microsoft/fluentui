@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  autobind,
-  KeyCodes
+  KeyCodes,
+  createRef
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
@@ -11,14 +11,25 @@ import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
 
+export enum SuggestionActionType {
+  none,
+  forceResolve,
+  searchMore,
+}
+
+export interface ISuggestionsState {
+  selectedActionType: SuggestionActionType;
+}
+
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
-  public render() {
-    let {
+  public render(): JSX.Element {
+    const {
       suggestionModel,
       RenderSuggestion,
       onClick,
       className,
-      onRemoveItem
+      onRemoveItem,
+      isSelectedOverride
     } = this.props;
     return (
       <div
@@ -26,7 +37,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           'ms-Suggestions-item',
           styles.suggestionsItem,
           {
-            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
+            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected || isSelectedOverride
           },
           className
         ) }
@@ -51,22 +62,36 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
   }
 }
 
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
+export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
 
-  protected _searchForMoreButton: IButton;
-  protected _selectedElement: HTMLDivElement;
+  protected _forceResolveButton = createRef<IButton>();
+  protected _searchForMoreButton = createRef<IButton>();
+  protected _selectedElement = createRef<HTMLDivElement>();
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
-
+  private activeSelectedElement: HTMLDivElement | null;
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
+    this.state = {
+      selectedActionType: SuggestionActionType.none,
+    };
   }
-
-  public componentDidUpdate() {
+  public componentDidMount(): void {
     this.scrollSelected();
+    this.activeSelectedElement = this._selectedElement ? this._selectedElement.current : null;
+  }
+  public componentDidUpdate(): void {
+    // Only scroll to selected element if the selected element has changed. Otherwise do nothing.
+    // This prevents some odd behavior where scrolling the active element out of view and clicking on a selected element
+    // will trigger a focus event and not give the clicked element the click.
+    if (this.activeSelectedElement && this._selectedElement.current && this.activeSelectedElement !== this._selectedElement.current) {
+      this.scrollSelected();
+      this.activeSelectedElement = this._selectedElement.current;
+    }
   }
 
-  public render() {
-    let {
+  public render(): JSX.Element {
+    const {
+      forceResolveText,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -82,11 +107,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
+      isResultsFooterVisible = true,
       suggestionsAvailableAlertText,
-      suggestionsHeaderText
+      suggestionsHeaderText,
     } = this.props;
 
-    let noResults = () => {
+    const noResults = () => {
       return noResultsFoundText ?
         (
           <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
@@ -99,7 +125,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
       headerText = mostRecentlyUsedHeaderText;
     }
-    let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+    let footerTitle: ((props: ISuggestionsProps<T>) => JSX.Element) | undefined = undefined;
+    if (isResultsFooterVisible) {
+      footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+    }
+    const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
     return (
       <div
         className={ css(
@@ -111,22 +141,41 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
             { headerText }
           </div>) : (null) }
+        { forceResolveText && this._shouldShowForceResolve() && (
+          <CommandButton
+            componentRef={ this._forceResolveButton }
+            className={ css(
+              'ms-forceResolve-button',
+              styles.actionButton,
+              {
+                ['is-selected ' + styles.buttonSelected]:
+                  this.state.selectedActionType === SuggestionActionType.forceResolve
+              }) }
+            onClick={ this._forceResolve }
+          >
+            { forceResolveText }
+          </CommandButton>
+        ) }
         { isLoading && (
           <Spinner
             className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
             label={ loadingText }
           />) }
-        { (!suggestions || !suggestions.length) && !isLoading ?
+        { hasNoSuggestions ?
           (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) :
           this._renderSuggestions()
         }
         { searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
-            componentRef={ this._resolveRef('_searchForMoreButton') }
-            className={ css('ms-SearchMore-button', styles.searchMoreButton) }
+            componentRef={ this._searchForMoreButton }
+            className={ css('ms-SearchMore-button',
+              styles.actionButton,
+              {
+                ['is-selected ' + styles.buttonSelected]:
+                  this.state.selectedActionType === SuggestionActionType.searchMore
+              }) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults }
-            onKeyDown={ this._onKeyDown }
           >
             { searchForMoreText }
           </CommandButton>
@@ -138,9 +187,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           />) : (null)
         }
         {
-          !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
+          footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
             (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
-              { footerTitle && footerTitle(this.props) }
+              { footerTitle(this.props) }
             </div>) : (null)
         }
         { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
@@ -155,28 +204,133 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     );
   }
 
-  public focusSearchForMoreButton() {
-    if (this._searchForMoreButton) {
-      this._searchForMoreButton.focus();
+  /**
+   * Returns true if the event was handled, false otherwise
+   */
+  public tryHandleKeyDown = (keyCode: number, currentSuggestionIndex: number): boolean => {
+    let isEventHandled = false;
+    let newSelectedActionType = null;
+    const currentSelectedAction = this.state.selectedActionType;
+    const suggestionLength = this.props.suggestions.length;
+    if (keyCode === KeyCodes.down) {
+      switch (currentSelectedAction) {
+        case SuggestionActionType.forceResolve:
+          if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          } else if (this._searchForMoreButton.current) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          } else {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          }
+          break;
+        case SuggestionActionType.searchMore:
+          if (this._forceResolveButton.current) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          } else if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          } else {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          }
+          break;
+        case SuggestionActionType.none:
+          if (currentSuggestionIndex === -1 && this._forceResolveButton.current) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          }
+          break;
+      }
+    } else if (keyCode === KeyCodes.up) {
+      switch (currentSelectedAction) {
+        case SuggestionActionType.forceResolve:
+          if (this._searchForMoreButton.current) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          } else if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          }
+          break;
+        case SuggestionActionType.searchMore:
+          if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          } else if (this._forceResolveButton.current) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          }
+          break;
+        case SuggestionActionType.none:
+          if (currentSuggestionIndex === -1 && this._searchForMoreButton.current) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          }
+          break;
+      }
+    }
+
+    if (newSelectedActionType !== null) {
+      this.setState({ selectedActionType: newSelectedActionType });
+      isEventHandled = true;
+    }
+
+    return isEventHandled;
+  }
+
+  public hasSuggestedAction(): boolean {
+    return this._searchForMoreButton.current !== undefined || this._forceResolveButton.current !== undefined;
+  }
+
+  public hasSuggestedActionSelected(): boolean {
+    return (this.state.selectedActionType !== SuggestionActionType.none);
+  }
+
+  public executeSelectedAction(): void {
+    switch (this.state.selectedActionType) {
+      case SuggestionActionType.forceResolve:
+        this._forceResolve();
+        break;
+      case SuggestionActionType.searchMore:
+        this._getMoreResults();
+        break;
+    }
+  }
+
+  public focusAboveSuggestions(): void {
+    if (this._forceResolveButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.forceResolve });
+    } else if (this._searchForMoreButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    }
+  }
+
+  public focusBelowSuggestions(): void {
+    if (this._searchForMoreButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    } else if (this._forceResolveButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.forceResolve });
+    }
+  }
+
+  public focusSearchForMoreButton(): void {
+    if (this._searchForMoreButton.current) {
+      this._searchForMoreButton.current.focus();
     }
   }
 
   // TODO get the element to scroll into view properly regardless of direction.
-  public scrollSelected() {
-    if (this._selectedElement) {
-      this._selectedElement.scrollIntoView(false);
+  public scrollSelected(): void {
+    if (this._selectedElement.current && this._selectedElement.current.scrollIntoView !== undefined) {
+      this._selectedElement.current.scrollIntoView(false);
     }
   }
 
   private _renderSuggestions(): JSX.Element {
-    let {
-      suggestions,
+    const {
       onRenderSuggestion,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
       suggestionsContainerAriaLabel } = this.props;
-    let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+    let { suggestions } = this.props;
+    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
       suggestions = suggestions.slice(0, resultsMaximumNumber);
@@ -191,7 +345,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       >
         { suggestions.map((suggestion, index) =>
           <div
-            ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
+            ref={ suggestion.selected ? this._selectedElement : '' }
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
@@ -211,31 +365,37 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       </div>);
   }
 
-  @autobind
-  private _getMoreResults() {
+  private _getMoreResults = (): void => {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
     }
   }
 
-  @autobind
-  private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _forceResolve = (): void => {
+    if (this.props.createGenericItem) {
+      this.props.createGenericItem();
+    }
+  }
+
+  private _shouldShowForceResolve = (): boolean => {
+    return this.props.showForceResolve ? this.props.showForceResolve() : false;
+  }
+
+  private _onClickTypedSuggestionsItem = (item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       this.props.onSuggestionClick(ev, item, index);
     };
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
-    if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
-      this.props.refocusSuggestions(ev.keyCode);
+  private _refocusOnSuggestions = (keyCode: number): void => {
+    if (typeof this.props.refocusSuggestions === 'function') {
+      this.props.refocusSuggestions(keyCode);
     }
   }
 
-  @autobind
-  private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onRemoveTypedSuggestionsItem = (item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
-      let onSuggestionRemove = this.props.onSuggestionRemove!;
+      const onSuggestionRemove = this.props.onSuggestionRemove!;
       onSuggestionRemove(ev, item, index);
       ev.stopPropagation();
     };

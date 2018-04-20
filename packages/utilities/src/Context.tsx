@@ -5,8 +5,8 @@ import * as PropTypes from 'prop-types';
 export function provideContext<TContext, TProps>(
   contextTypes: PropTypes.ValidationMap<TContext>,
   mapPropsToContext: (props: TProps) => TContext
-): React.ComponentType<TProps & React.Props<{}>> {
-  class Provider extends React.PureComponent<TProps> {
+): React.ComponentType<TProps> {
+  class Provider extends React.Component<TProps> {
     public static readonly childContextTypes: PropTypes.ValidationMap<TContext> = contextTypes;
 
     public getChildContext(): TContext {

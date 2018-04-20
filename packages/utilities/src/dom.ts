@@ -151,7 +151,7 @@ export function setSSR(isEnabled: boolean): void {
  *
  * @public
  */
-export function getWindow(rootElement?: HTMLElement): Window | undefined {
+export function getWindow(rootElement?: Element | null): Window | undefined {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
@@ -170,7 +170,7 @@ export function getWindow(rootElement?: HTMLElement): Window | undefined {
  *
  * @public
  */
-export function getDocument(rootElement?: HTMLElement): Document | undefined {
+export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {
@@ -202,6 +202,31 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
   }
 
   return rect;
+}
+
+/**
+ * Finds the first parent element where the matchFunction returns true
+ * @param element element to start searching at
+ * @param matchFunction the function that determines if the element is a match
+ * @returns the matched element or null no match was found
+ */
+export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null {
+  if (!element || element === document.body) {
+    return null;
+  }
+
+  return matchFunction(element) ? element : findElementRecursive(getParent(element), matchFunction);
+}
+
+/**
+ * Determines if an element, or any of its ancestors, contian the given attribute
+ * @param element - element to start searching at
+ * @param attribute - the attribute to search for
+ * @returns the value of the first instance found
+ */
+export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null {
+  let elementMatch = findElementRecursive(element, (testElement: HTMLElement) => testElement.hasAttribute(attribute));
+  return elementMatch && elementMatch.getAttribute(attribute);
 }
 
 /**

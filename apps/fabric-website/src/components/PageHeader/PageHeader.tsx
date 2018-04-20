@@ -2,8 +2,8 @@ import * as React from 'react';
 import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './PageHeader.module.scss';
 const styles: any = stylesImport;
-import { getPageRouteFromState } from '../../utilities/pageroute';
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
+import { getPathMinusLastHash } from '../../utilities/pageroute';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
@@ -71,7 +71,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
 
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
 
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
@@ -81,12 +81,9 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { pageTitle, links, backgroundColor, backgroundImage } = this.props;
     let { isAttached } = this.state;
-    let baseRoute: string = getPageRouteFromState(
-      this.props.pageTitle
-    );
     let inPageNav;
     let backgroundStyle = {
       bottom: this.state.headerBottom,
@@ -102,7 +99,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
             <ul>
               { links.map((link, linkIndex) => (
                 <li key={ linkIndex }>
-                  <PageHeaderLink href={ baseRoute + '#' + link.location } text={ link.text } />
+                  <PageHeaderLink href={ this._getPagePath(link) } text={ link.text } />
                 </li>
               )) }
             </ul>
@@ -142,5 +139,13 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
       headerBottom: headerBottom,
       headerTop: headerTop
     });
+  }
+
+  private _getPagePath(link): string {
+    let path = location.hash;
+    // This makes sure that location hash changes don't append
+    path = getPathMinusLastHash(path);
+
+    return path + '#' + link.location;
   }
 }

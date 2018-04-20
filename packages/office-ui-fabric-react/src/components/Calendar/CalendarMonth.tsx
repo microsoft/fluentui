@@ -4,7 +4,6 @@ import {
   KeyCodes,
   css,
   getRTL,
-  autobind
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
@@ -13,8 +12,12 @@ import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
+export interface ICalendarMonth {
+  focus(): void;
+}
+
 export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
-  componentRef?: () => void;
+  componentRef?: (c: ICalendarMonth) => void;
   navigatedDate: Date;
   strings: ICalendarStrings;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
@@ -33,7 +36,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     navigatedMonth: HTMLElement;
   };
 
-  private _selectMonthCallbacks: (() => void) [];
+  private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: ICalendarMonthProps) {
     super(props);
@@ -49,11 +52,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     this._onSelectMonth = this._onSelectMonth.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
-    let leftNavigationIcon = navigationIcons.leftNavigation;
-    let rightNavigationIcon = navigationIcons.rightNavigation;
+    const { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
+    const leftNavigationIcon = navigationIcons.leftNavigation;
+    const rightNavigationIcon = navigationIcons.rightNavigation;
 
     // determine if previous/next years are in bounds
     const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
@@ -154,42 +157,36 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     }
   }
 
-  private _isCurrentMonth(month: number, year: number, today: Date) {
+  private _isCurrentMonth(month: number, year: number, today: Date): boolean {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 
-  @autobind
-  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (callback: () => void, ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
 
-  @autobind
-  private _onSelectNextYear() {
-    let { navigatedDate, onNavigateDate } = this.props;
+  private _onSelectNextYear = (): void => {
+    const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
   }
 
-  @autobind
-  private _onSelectNextYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onSelectNextYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectNextYear, ev);
   }
 
-  @autobind
-  private _onSelectPrevYear() {
-    let { navigatedDate, onNavigateDate } = this.props;
+  private _onSelectPrevYear = (): void => {
+    const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
   }
 
-  @autobind
-  private _onSelectPrevYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onSelectPrevYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectPrevYear, ev);
   }
 
-  @autobind
-  private _onSelectMonth(newMonth: number) {
-    let { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
+  private _onSelectMonth = (newMonth: number): void => {
+    const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
 
     // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
     if (onHeaderSelect) {
@@ -198,17 +195,15 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
 
-  @autobind
-  private _onHeaderSelect() {
-    let { onHeaderSelect } = this.props;
+  private _onHeaderSelect = (): void => {
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
       onHeaderSelect(true);
     }
   }
 
-  @autobind
-  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let { onHeaderSelect } = this.props;
+  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }

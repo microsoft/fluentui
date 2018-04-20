@@ -18,7 +18,7 @@ const personaWithInitials = {
 };
 
 export class PersonaInitialsExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-PersonaExample'>
         <Persona
@@ -27,7 +27,28 @@ export class PersonaInitialsExample extends React.Component<any, any> {
         />
         <Persona
           { ...examplePersona  }
+          primaryText='Annie'
+        />
+        <Persona
+          { ...examplePersona  }
           primaryText='Annie Lindqvist'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='Annie Boyl Lindqvist'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='Annie Boyl Carrie Lindqvist'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='+1 (555) 123-4567 X4567'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='+1 (555) 123-4567 X4567'
+          allowPhoneInitials={true}
         />
         <Persona
           { ...examplePersona  }

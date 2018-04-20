@@ -71,7 +71,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -100,6 +100,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -171,19 +179,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={0}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-a-0"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -255,7 +264,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -284,6 +293,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -355,19 +372,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={1}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-b-1"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -439,7 +457,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -468,6 +486,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -539,19 +565,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={2}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-c-2"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -623,7 +650,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -652,6 +679,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -723,19 +758,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={3}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-d-3"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -811,7 +847,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -840,6 +876,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -911,19 +955,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={4}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-g-4"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -995,7 +1040,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -1024,6 +1069,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -1095,19 +1148,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={5}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-h-5"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -1179,7 +1233,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -1208,6 +1262,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -1279,19 +1341,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={6}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-i-6"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -1363,7 +1426,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -1392,6 +1455,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -1463,19 +1534,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={7}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-j-7"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -1551,7 +1623,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -1580,6 +1652,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -1651,19 +1731,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={8}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-k-8"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="black"
             type="button"
@@ -1735,7 +1816,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -1764,6 +1845,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -1835,19 +1924,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={9}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-l-9"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="grey"
             type="button"
@@ -1919,7 +2009,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -1948,6 +2038,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -2019,19 +2117,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={10}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-m-10"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="purple"
             type="button"
@@ -2103,7 +2202,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   color: #333333;
                   cursor: pointer;
                   display: inline-block;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
@@ -2132,6 +2231,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: 0px;
                   top: 0px;
                   z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -2203,19 +2310,20 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border-radius: 100%;
                 }
                 &:hover {
-                  color: #0078d7;
+                  color: #0078d4;
                 }
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={11}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-n-11"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="yellow"
             type="button"

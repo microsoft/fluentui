@@ -1,71 +1,9 @@
-import * as React from 'react';
-import {
-  BaseComponent,
-  anchorProperties,
-  autobind,
-  buttonProperties,
-  css,
-  getNativeProps
-} from '../../Utilities';
-import { ILink, ILinkProps } from './Link.types';
-import * as stylesImport from './Link.scss';
-const styles: any = stylesImport;
+import { styled } from '../../Utilities';
+import { LinkBase } from './Link.base';
+import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
+import { getStyles } from './Link.styles';
 
-export class Link extends BaseComponent<ILinkProps, any> implements ILink {
-  private _link: HTMLElement;
-
-  public render() {
-    let { disabled, children, className, href } = this.props;
-
-    return (
-      href ? (
-        <a
-          { ...getNativeProps(this.props, anchorProperties) }
-          className={ css(
-            'ms-Link',
-            styles.root,
-            className,
-            disabled && ('is-disabled ' + styles.isDisabled),
-            !disabled && styles.isEnabled
-          ) }
-          onClick={ this._onClick }
-          ref={ this._resolveRef('_link') }
-          target={ this.props.target }
-          aria-disabled={ disabled }
-        >
-          { children }
-        </a>
-      ) : (
-          <button
-            { ...getNativeProps(this.props, buttonProperties) }
-            className={ css(
-              'ms-Link',
-              styles.root,
-              className,
-              disabled && ('is-disabled ' + styles.isDisabled),
-              !disabled && styles.isEnabled
-            ) }
-            onClick={ this._onClick }
-            ref={ this._resolveRef('_link') }
-            aria-disabled={ disabled }
-          >
-            { children }
-          </button>
-        ));
-  }
-
-  public focus() {
-    if (this._link) {
-      this._link.focus();
-    }
-  }
-
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    let { onClick } = this.props;
-
-    if (onClick) {
-      onClick(ev);
-    }
-  }
-}
+export const Link = styled<ILinkProps, ILinkStyleProps, ILinkStyles>(
+  LinkBase,
+  getStyles
+);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { getWindow } from '../../Utilities';
+import { getWindow, hoistStatics } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -29,13 +29,13 @@ let _defaultMode: ResponsiveMode | undefined;
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
  */
-export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined) {
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void {
   _defaultMode = responsiveMode;
 }
 
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
 
-  return class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
+  const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
 
     constructor(props: TProps) {
       super(props);
@@ -46,9 +46,9 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       };
     }
 
-    public componentDidMount() {
+    public componentDidMount(): void {
       this._events.on(window, 'resize', () => {
-        let responsiveMode = this._getResponsiveMode();
+        const responsiveMode = this._getResponsiveMode();
 
         if (responsiveMode !== this.state.responsiveMode) {
           this.setState({
@@ -58,12 +58,12 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       });
     }
 
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
       this._events.dispose();
     }
 
-    public render() {
-      let { responsiveMode } = this.state;
+    public render(): JSX.Element {
+      const { responsiveMode } = this.state;
 
       return (
         <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props as any } />
@@ -72,7 +72,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
     private _getResponsiveMode(): ResponsiveMode {
       let responsiveMode = ResponsiveMode.small;
-      let win = getWindow();
+      const win = getWindow();
 
       if (typeof win !== 'undefined') {
         try {
@@ -96,5 +96,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
       return responsiveMode;
     }
+
   };
+  return hoistStatics(ComposedComponent, resultClass);
 }

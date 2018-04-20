@@ -3,7 +3,6 @@ import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css
 } from '../../Utilities';
 import * as stylesImport from './DocumentCard.scss';
@@ -22,9 +21,9 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     });
   }
 
-  public render() {
-    let { onClick, onClickHref, children, className, type, accentColor } = this.props;
-    let actionable = (onClick || onClickHref) ? true : false;
+  public render(): JSX.Element {
+    const { onClick, onClickHref, children, className, type, accentColor } = this.props;
+    const actionable = (onClick || onClickHref) ? true : false;
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
@@ -35,8 +34,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     }
 
     // if this element is actionable it should have an aria role
-    let role = actionable ? (onClick ? 'button' : 'link') : undefined;
-    let tabIndex = actionable ? 0 : undefined;
+    const role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    const tabIndex = actionable ? 0 : undefined;
 
     return (
       <div
@@ -62,21 +61,18 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     );
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
+  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
     this._onAction(ev);
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       this._onAction(ev);
     }
   }
 
-  @autobind
-  private _onAction(ev: React.SyntheticEvent<HTMLElement>): void {
-    let { onClick, onClickHref } = this.props;
+  private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
+    const { onClick, onClickHref } = this.props;
 
     if (onClick) {
       onClick(ev);

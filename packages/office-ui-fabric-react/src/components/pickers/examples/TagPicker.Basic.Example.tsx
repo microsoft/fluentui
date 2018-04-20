@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
+import {
+  BaseComponent
+} from '../../../Utilities';
 import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-let _testTags = [
+const _testTags = [
   'black',
   'blue',
   'brown',
@@ -24,7 +26,9 @@ let _testTags = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
-export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
+export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageState> {
+  private _picker: TagPicker;
+
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -41,9 +45,30 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
           checked={ this.state.isPickerDisabled }
           onChange={ this._onDisabledButtonClick }
         />
+        Filter items in suggestions: This picker will filter added items from the search suggestions.
         <TagPicker
-          ref='tagPicker'
           onResolveSuggestions={ this._onFilterChanged }
+          getTextFromItem={ this._getTextFromItem }
+          pickerSuggestionsProps={
+            {
+              suggestionsHeaderText: 'Suggested Tags',
+              noResultsFoundText: 'No Color Tags Found'
+            }
+          }
+          itemLimit={ 2 }
+          disabled={ this.state.isPickerDisabled }
+          inputProps={ {
+            onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+            'aria-label': 'Tag Picker'
+          } }
+        />
+        <br />
+        Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
+        <TagPicker
+          componentRef={ this._resolveRef('_picker') }
+          onResolveSuggestions={ this._onFilterChangedNoFilter }
+          onItemSelected={ this._onItemSelected }
           getTextFromItem={ this._getTextFromItem }
           pickerSuggestionsProps={
             {
@@ -67,16 +92,26 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
     return item.name;
   }
 
-  @autobind
-  private _onDisabledButtonClick(): void {
+  private _onDisabledButtonClick = (): void => {
     this.setState({
       isPickerDisabled: !this.state.isPickerDisabled
     });
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, tagList: { key: string, name: string }[]) {
-    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, tagList)) : [];
+  private _onFilterChanged = (filterText: string, tagList: { key: string, name: string }[]): { key: string, name: string }[] => {
+    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+      .filter(tag => !this._listContainsDocument(tag, tagList)) : [];
+  }
+
+  private _onFilterChangedNoFilter = (filterText: string, tagList: { key: string, name: string }[]): { key: string, name: string }[] => {
+    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+  }
+
+  private _onItemSelected = (item: { key: string, name: string }): { key: string, name: string } | null => {
+    if (this._listContainsDocument(item, this._picker.items)) {
+      return null;
+    }
+    return item;
   }
 
   private _listContainsDocument(tag: { key: string, name: string }, tagList: { key: string, name: string }[]) {

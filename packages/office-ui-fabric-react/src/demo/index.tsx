@@ -1,13 +1,10 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import { App, AppDefinition } from './AppDefinition';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { GettingStartedPage } from './GettingStartedPage';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { ComponentPage } from '@uifabric/example-app-base';
+import { ComponentPage, IAppLink, IAppLinkGroup } from '@uifabric/example-app-base';
 
 import './index.scss';
 import './ColorStyles.scss';
@@ -22,41 +19,39 @@ ComponentPage.defaultProps.areBadgesVisible = true;
 let rootElement: HTMLElement | null;
 
 // Return the anchor link from the URL without the hash
-function _extractAnchorLink(path: string) {
-  let index = path.lastIndexOf('#');
+function _extractAnchorLink(path: string): string {
+  const index = path.lastIndexOf('#');
   if (index >= 0) {
     path = path.substr(index + 1, path.length - index);
   }
   return path;
 }
 
-function _scrollAnchorLink() {
+function _scrollAnchorLink(): void {
   if ((window.location.hash.match(/#/g) || []).length > 1) {
-    let anchor = _extractAnchorLink(window.location.hash);
+    const anchor = _extractAnchorLink(window.location.hash);
     document.getElementById(anchor)!.scrollIntoView();
   }
 }
 
-function _onLoad() {
+function _onLoad(): void {
   rootElement = rootElement || document.getElementById('content');
 
   ReactDOM.render(
-    <Fabric>
-      <Router onNewRouteLoaded={ _scrollAnchorLink }>
-        { _getRoutes() }
-      </Router>
-    </Fabric>,
+    <Router onNewRouteLoaded={ _scrollAnchorLink }>
+      { _getRoutes() }
+    </Router>,
     rootElement);
 }
 
-function _getRoutes() {
-  let routes = AppDefinition.testPages.map(page => <Route key={ page.key } path={ page.url } component={ page.component } />);
-  let appRoutes: JSX.Element[] = [];
+function _getRoutes(): JSX.Element[] {
+  const routes = AppDefinition.testPages.map((page: IAppLink) => <Route key={ page.key } path={ page.url } component={ page.component } />);
+  const appRoutes: JSX.Element[] = [];
 
-  AppDefinition.examplePages.forEach(group => {
+  AppDefinition.examplePages.forEach((group: IAppLinkGroup) => {
     group.links
-      .filter(link => link.hasOwnProperty('component') || link.hasOwnProperty('getComponent'))
-      .forEach((link, linkIndex) => {
+      .filter((link: IAppLink) => link.hasOwnProperty('component') || link.hasOwnProperty('getComponent'))
+      .forEach((link: IAppLink, linkIndex: number) => {
         const { component, getComponent } = link;
 
         appRoutes.push(
@@ -83,13 +78,13 @@ function _getRoutes() {
   return routes;
 }
 
-function _onUnload() {
+function _onUnload(): void {
   if (rootElement) {
     ReactDOM.unmountComponentAtNode(rootElement);
   }
 }
 
-let isReady = document.readyState === 'interactive' || document.readyState === 'complete';
+const isReady = document.readyState === 'interactive' || document.readyState === 'complete';
 
 if (isReady) {
   _onLoad();

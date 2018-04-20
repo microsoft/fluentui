@@ -2,11 +2,11 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css,
   getId,
   getRTL,
-  getRTLSafeKeyCode
+  getRTLSafeKeyCode,
+  createRef
 } from '../../Utilities';
 import { ISliderProps, ISlider } from './Slider.types';
 import { Label } from '../../Label';
@@ -34,13 +34,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     buttonProps: {}
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance,
-    root: HTMLElement,
-    sliderLine: HTMLElement,
-    thumb: HTMLElement
-  };
-
+  private _sliderLine = createRef<HTMLDivElement>();
+  private _thumb = createRef<HTMLSpanElement>();
   private _id: string;
 
   constructor(props: ISliderProps) {
@@ -52,7 +47,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
     this._id = getId('Slider');
 
-    let value = props.value || props.defaultValue || props.min;
+    const value = props.value || props.defaultValue || props.min;
 
     this.state = {
       value: value,
@@ -66,7 +61,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   public componentWillReceiveProps(newProps: ISliderProps): void {
 
     if (newProps.value !== undefined) {
-      let value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
+      const value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
 
       this.setState({
         value: value,
@@ -102,7 +97,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
           ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
           ['ms-Slider-column ' + styles.rootIsVertical]: vertical
         }) }
-        ref='root'
       >
         { label && (
           <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
@@ -133,11 +127,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             role='slider'
           >
             <div
-              ref='sliderLine'
+              ref={ this._sliderLine }
               className={ css('ms-Slider-line', styles.line) }
             >
               <span
-                ref='thumb'
+                ref={ this._thumb }
                 className={ css('ms-Slider-thumb', styles.thumb) }
                 style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
@@ -157,8 +151,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     ) as React.ReactElement<{}>;
   }
   public focus(): void {
-    if (this.refs.thumb) {
-      this.refs.thumb.focus();
+    if (this._thumb.current) {
+      this._thumb.current.focus();
     }
   }
 
@@ -166,22 +160,20 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return this.state.value;
   }
 
-  @autobind
-  private _getAriaValueText(value: number | undefined): string | void {
+  private _getAriaValueText = (value: number | undefined): string | undefined => {
     if (this.props.ariaValueText && value !== undefined) {
       return this.props.ariaValueText(value);
     }
   }
 
   private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
-    let direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
+    const direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
     return {
       [direction]: thumbOffsetPercent + '%'
     };
   }
 
-  @autobind
-  private _onMouseDownOrTouchStart(event: MouseEvent | TouchEvent): void {
+  private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
       this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
       this._events.on(window, 'mouseup', this._onMouseUpOrTouchEnd, true);
@@ -192,22 +184,25 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     this._onMouseMoveOrTouchMove(event, true);
   }
 
-  @autobind
-  private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
+  private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
+    if (!this._sliderLine.current) {
+      return;
+    }
+
     const { max, min, step } = this.props;
     const steps: number = (max! - min!) / step!;
-    const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
+    const sliderPositionRect: ClientRect = this._sliderLine.current.getBoundingClientRect();
     const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;
     let distance: number | undefined;
 
     if (!this.props.vertical) {
-      let left: number | undefined = this._getPosition(event, this.props.vertical);
+      const left: number | undefined = this._getPosition(event, this.props.vertical);
       distance = getRTL() ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
       currentSteps = distance / stepLength;
     } else {
-      let bottom: number | undefined = this._getPosition(event, this.props.vertical);
+      const bottom: number | undefined = this._getPosition(event, this.props.vertical);
       distance = sliderPositionRect.bottom - bottom!;
       currentSteps = distance / stepLength;
     }
@@ -247,12 +242,12 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
     return currentPosition;
   }
-  private _updateValue(value: number, renderedValue: number) {
-    let interval: number = 1.0 / this.props.step!;
+  private _updateValue(value: number, renderedValue: number): void {
+    const interval: number = 1.0 / this.props.step!;
     // Make sure value has correct number of decimal places based on steps without JS's floating point issues
-    let roundedValue: number = Math.round(value * interval) / interval;
+    const roundedValue: number = Math.round(value * interval) / interval;
 
-    let valueChanged = roundedValue !== this.state.value;
+    const valueChanged = roundedValue !== this.state.value;
 
     this.setState({
       value: roundedValue,
@@ -264,8 +259,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     });
   }
 
-  @autobind
-  private _onMouseUpOrTouchEnd(): void {
+  private _onMouseUpOrTouchEnd = (): void => {
     // Synchronize the renderedValue to the actual value.
     this.setState({
       renderedValue: this.state.value
@@ -274,8 +268,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     this._events.off();
   }
 
-  @autobind
-  private _onKeyDown(event: KeyboardEvent): void {
+  private _onKeyDown = (event: KeyboardEvent): void => {
     let value: number | undefined = this.state.value;
     const { max, min, step } = this.props;
 
@@ -310,5 +303,4 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     event.preventDefault();
     event.stopPropagation();
   }
-
 }

@@ -1,6 +1,212 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Minor changes
+
+- Update createRef to match React.createRef api
+
+## 5.24.0
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Minor changes
+
+- Adding some helpers which ensure that `ms-Fabric.is-focusVisible` class name is added to the document body when focus rectangles should be fixible. Also ensuring that the `documentElement` has a `dir` attribute.
+- Upgrade to TypeScript 2.8.1
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.23.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Added IComponentAs as a type for 'render as' props in components
+
+## 5.22.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus.
+
+## 5.22.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Update createRef type
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.20.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing
+
+## 5.19.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- EventGroup.raise: event args are now correctly mixed into the event object.
+
+## 5.19.0
+Tue, 20 Mar 2018 10:27:37 GMT
+
+### Minor changes
+
+- Make helper functions getWindow and getDocument accept `null`.
+
+## 5.18.3
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.18.2
+Thu, 15 Mar 2018 02:42:27 GMT
+
+### Patches
+
+- Revert focus changes
+
+## 5.18.1
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Patches
+
+- Customizable: Fix hoist/customizations import so it doesn't break amd
+
+## 5.18.0
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Minor changes
+
+- added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator
+
+### Patches
+
+- Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus.
+- Styled: Add display name to styled wrapper
+
+## 5.17.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)
+
+## 5.17.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Add hoistStatics function to withResponsiveMode decorator.
+
+## 5.16.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added hoistStatics function to @customizable decorator so static methods work properly
+
+## 5.15.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Adds createRef polyfil to prepare for object refs.
+
+## 5.14.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.14.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+- Update KeyCodes enum to include all key codes
+
+## 5.13.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true
+
+## 5.12.1
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- fix bug in IE that IE does not support Number.IsInteger
+
+## 5.12.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added a triangle abstraction class
+
+### Patches
+
+- Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found
+
+## 5.11.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling.
+
+## 5.10.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Export IClassNames fro Utilities for creating private getClassNames methods
+
+## 5.10.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.10.1
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+
+## 5.10.0
+Mon, 05 Feb 2018 11:24:23 GMT
+
+### Minor changes
+
+- [Math] implemented precision rounding functions
 
 ## 5.9.0
 Mon, 29 Jan 2018 11:23:40 GMT

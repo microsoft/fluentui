@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
+import { ISpinButtonClassNames } from './SpinButton.classNames';
+import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 
 export interface ISpinButton {
@@ -22,7 +24,7 @@ export interface ISpinButtonProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component?: ISpinButton) => void;
+  componentRef?: (component?: ISpinButton | null) => void;
 
   /**
    * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.
@@ -51,6 +53,9 @@ export interface ISpinButtonProps {
 
   /**
    * The difference between the two adjacent values of the SpinButton.
+   * This value is sued to calculate the precision of the input if no
+   * precision is given. The precision calculated this way will always
+   * be >= 0.
    * @default 1
    */
   step?: number;
@@ -134,6 +139,18 @@ export interface ISpinButtonProps {
   styles?: Partial<ISpinButtonStyles>;
 
   /**
+   * Custom function for providing the classNames for the spinbutton. Can be used to provide
+   * all styles for the component instead of applying them on top of the default styles.
+   */
+  getClassNames?: (
+    theme: ITheme,
+    disabled: boolean,
+    isFocused: boolean,
+    keyboardSpinDirection: KeyboardSpinDirection,
+    labelPosition?: Position
+  ) => ISpinButtonClassNames;
+
+  /**
    * Custom styles for the upArrow button.
    *
    * Note: The buttons are in a checked state when arrow keys are used to
@@ -157,14 +174,31 @@ export interface ISpinButtonProps {
   theme?: ITheme;
 
   /**
-   * Accessibility label text for the increment button for the benefit of the screen reader.
+   * Accessibile label text for the increment button for the benefit of the screen reader.
    */
   incrementButtonAriaLabel?: string;
 
   /**
-   * Accessibility label text for the decrement button for the benefit of the screen reader.
+   * Accessibile label text for the decrement button for the benefit of the screen reader.
    */
   decrementButtonAriaLabel?: string;
+
+  /**
+   * To how many decimal places the value should be rounded to.
+   * The default value is calculated based on the precision of step.
+   * IE: if step = 1, precision = 0. step = 0.0089, precision = 4. step = 300, precision = 2. step = 23.00, precision = 2.
+   */
+  precision?: number;
+
+  /**
+   * The position in the parent set (if in a set) for aria-posinset.
+   */
+  ariaPositionInSet?: number;
+
+  /**
+  * The total size of the parent set (if in a set) for aria-setsize.
+  */
+  ariaSetSize?: number;
 }
 
 export interface ISpinButtonStyles {

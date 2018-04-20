@@ -11,6 +11,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -21,6 +22,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -31,6 +33,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.dnd
   },
   {
@@ -41,6 +44,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.offline
   },
   {
@@ -51,6 +55,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Sr. Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -61,6 +66,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -71,6 +77,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.away
   },
   {
@@ -81,6 +88,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -91,6 +99,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.dnd
   },
   {
@@ -101,6 +110,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.offline
   },
   {
@@ -111,6 +121,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.none
 
   },
@@ -122,6 +133,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Sr. Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -132,6 +144,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -142,6 +155,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.blocked
   },
   {
@@ -152,6 +166,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'SDE',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.blocked
   },
   {
@@ -162,6 +177,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'SE',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.away
   },
   {
@@ -172,6 +188,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'SDET',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -182,6 +199,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Senior Manager of SDET',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.offline
   },
   {
@@ -192,6 +210,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Junior Manager of Software',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.away
   },
   {
@@ -202,6 +221,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.blocked
   },
   {
@@ -212,6 +232,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -222,6 +243,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -232,6 +254,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.blocked
   },
   {
@@ -242,6 +265,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.offline
   },
   {
@@ -252,6 +276,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 3:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -262,6 +287,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 3:00pm',
+    isValid: true,
     presence: PersonaPresence.away
   },
   {
@@ -272,6 +298,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -282,6 +309,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -292,6 +320,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -302,6 +331,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.dnd
   },
   {
@@ -312,6 +342,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.blocked
   },
   {
@@ -322,6 +353,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -332,6 +364,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.away
   },
   {
@@ -342,6 +375,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.offline
   },
   {
@@ -352,6 +386,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -362,6 +397,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.busy
   },
   {
@@ -372,6 +408,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.offline
   },
   {
@@ -382,6 +419,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -392,6 +430,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.dnd
   },
   {
@@ -402,6 +441,7 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    isValid: true,
     presence: PersonaPresence.online
   },
   {
@@ -409,12 +449,14 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     imageInitials: 'GO',
     primaryText: 'Group One',
     canExpand: true,
+    isValid: true,
   },
   {
     key: 42,
     imageInitials: 'GT',
     primaryText: 'Group Two',
     canExpand: true,
+    isValid: true,
   },
 ];
 

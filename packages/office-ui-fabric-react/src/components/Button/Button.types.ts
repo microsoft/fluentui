@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, KeyCodes } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -18,14 +18,19 @@ export interface IButton {
    * If there is a menu associated with this button and it is visible, this will dismiss the menu
    */
   dismissMenu: () => void;
+
+  /**
+   * If there is a menu associated with this button and it is visible, this will open the menu
+   */
+  openMenu: () => void;
 }
 
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
+export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IButton) => void;
+  componentRef?: (component: IButton | null) => void;
 
   /**
    * If provided, this component will be rendered as an anchor.
@@ -223,6 +228,21 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   getSplitButtonClassNames?: (disabled: boolean,
     expanded: boolean,
     checked: boolean) => ISplitButtonClassNames;
+
+  /**
+  * Provides a custom KeyCode that can be used to open the button menu.
+  * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
+  */
+  menuTriggerKeyCode?: KeyCodes | null;
+
+  /**
+   * Menu will not be created or destroyed when opened or closed, instead it
+   * will be hidden. This will improve perf of the menu opening but could potentially
+   * impact overall perf by having more elemnts in the dom. Should only be used
+   * when perf is important.
+   * Note: This may increase the amount of time it takes for the button itself to mount.
+   */
+  persistMenu?: boolean;
 }
 
 export enum ElementType {

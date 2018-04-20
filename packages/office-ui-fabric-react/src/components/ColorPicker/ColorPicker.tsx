@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css
 } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
@@ -49,14 +48,14 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     } as IColorPickerState;
   }
 
-  public componentWillReceiveProps(newProps: IColorPickerProps) {
+  public componentWillReceiveProps(newProps: IColorPickerProps): void {
     if (newProps.color) {
       this._updateColor(getColorFromString(newProps.color));
     }
   }
 
-  public render() {
-    let { color } = this.state;
+  public render(): JSX.Element {
+    const { color } = this.state;
 
     return (
       <div className={ css('ms-ColorPicker', styles.root) }>
@@ -146,42 +145,37 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     );
   }
 
-  @autobind
-  private _onSVChanged(s: number, v: number) {
+  private _onSVChanged = (s: number, v: number): void => {
     this._updateColor(updateSV(this.state.color, s, v));
   }
 
-  @autobind
-  private _onHChanged(h: number) {
+  private _onHChanged = (h: number): void => {
     this._updateColor(updateH(this.state.color, h));
   }
 
-  @autobind
-  private _onAChanged(a: number) {
+  private _onAChanged = (a: number): void => {
     this._updateColor(updateA(this.state.color, a));
   }
 
-  @autobind
-  private _onHexChanged() {
+  private _onHexChanged = (): void => {
     this._updateColor(getColorFromString('#' + this.hexText.value));
   }
 
-  @autobind
-  private _onRGBAChanged() {
+  private _onRGBAChanged = (): void => {
     this._updateColor(getColorFromRGBA({
       r: Number(this.rText.value),
       g: Number(this.gText.value),
       b: Number(this.bText.value),
-      a: Number(this.aText.value)
+      a: Number((this.aText && this.aText.value) || 100)
     }));
   }
 
-  private _updateColor(newColor?: IColor) {
+  private _updateColor(newColor?: IColor): void {
     if (!newColor) {
       return;
     }
 
-    let { onColorChanged } = this.props;
+    const { onColorChanged } = this.props;
 
     if (newColor.str !== this.state.color.str) {
       this.setState({

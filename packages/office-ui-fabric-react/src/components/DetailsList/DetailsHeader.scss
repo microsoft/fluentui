@@ -18,6 +18,7 @@ $isPaddedMargin: 24px;
   height: $rowHeight;
   line-height: $rowHeight;
   white-space: nowrap;
+  box-sizing: content-box;
   padding-bottom: 1px;
   border-bottom: 1px solid $bodyDividerColor;
   cursor: default;
@@ -63,11 +64,11 @@ $isPaddedMargin: 24px;
 
     &:hover {
       color: $bodyTextColor;
-      background: $bodyBackgroundColor;
+      background: $listItemHeaderHoveredColor;
     }
 
     &:active {
-      background: $listItemBackgroundHoveredColor;
+      background: $listItemHeaderActivatedColor;
     }
   }
 
@@ -84,7 +85,6 @@ $isPaddedMargin: 24px;
   cursor: ew-resize;
   bottom: 0;
   top: 0;
-  margin: 0 -8px;
   overflow: hidden;
   height: inherit;
   background: transparent;
@@ -112,6 +112,15 @@ $isPaddedMargin: 24px;
   &.cellIsResizing:after {
     @include ms-drop-shadow();
   }
+}
+
+.cellSizerStart {
+  margin: 0 -8px;
+}
+
+.cellSizerEnd {
+  margin: 0;
+  @include margin-left(-16px);
 }
 
 .collapseButton {
@@ -152,14 +161,21 @@ $isPaddedMargin: 24px;
 }
 
 .cellTitle {
-  display: block;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
   overflow: hidden;
-  @include focus-border($position: absolute);
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  max-width: 100%;
+  @include focus-border($position: auto);
   padding: 0 8px;
+}
+
+.cellName {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 :global(.ms-TooltipHost).checkTooltip {

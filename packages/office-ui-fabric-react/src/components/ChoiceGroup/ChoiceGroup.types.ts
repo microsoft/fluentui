@@ -11,7 +11,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IChoiceGroup) => void;
+  componentRef?: (component: IChoiceGroup | null) => void;
 
   /**
    * The options for the choice group.
@@ -89,6 +89,7 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
 
   /**
    * The width and height of the image in px for choice field.
+   * @default { width: 32, height: 32 }
    */
   imageSize?: { width: number, height: number };
 

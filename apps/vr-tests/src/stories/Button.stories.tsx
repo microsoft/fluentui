@@ -22,12 +22,16 @@ const commandProps: IButtonProps = {
       {
         key: 'emailMessage',
         name: 'Email message',
-        icon: 'Mail'
+        iconProps: {
+          iconName: 'Mail'
+        }
       },
       {
         key: 'calendarEvent',
         name: 'Calendar event',
-        icon: 'Calendar'
+        iconProps: {
+          iconName: 'Calendar'
+        }
       }
     ]
   }
@@ -137,6 +141,7 @@ storiesOf('Button Split', module)
         .mouseDown('.ms-Button:nth-child(1)')
         .snapshot('pressed main', { cropTo: '.testWrapper' })
         .hover('.ms-Button') // reset mouseDown
+        .mouseUp('.ms-Button:nth-child(2)')
         .mouseDown('.ms-Button:nth-child(2)')
         .snapshot('pressed split', { cropTo: '.testWrapper' })
         .click('.ms-Button:nth-child(2)')

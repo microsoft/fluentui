@@ -19,13 +19,13 @@ const alertClicked = (): void => { /*noop*/ };
 describe('Button', () => {
   it('renders DefaultButton correctly', () => {
     const component = renderer.create(<DefaultButton text='Button' />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders ActionButton correctly', () => {
     const component = renderer.create(<ActionButton>Button</ActionButton>);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -49,7 +49,7 @@ describe('Button', () => {
           ]
         } }
       />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -58,7 +58,7 @@ describe('Button', () => {
       <CompoundButton description='You can create a new account here.'>
         Create account
     </CompoundButton>);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -69,14 +69,14 @@ describe('Button', () => {
         title='Emoji'
         ariaLabel='Emoji'
       />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   describe('DefaultButton', () => {
     function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
       const component = ReactTestUtils.renderIntoDocument(element);
-      const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
       return renderedDOM as HTMLElement;
     }
 
@@ -84,17 +84,17 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
     it('can render with an onClick.', () => {
-      let onClick: () => null = () => null;
+      const onClick: () => null = () => null;
 
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton onClick={ onClick }>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
@@ -102,7 +102,7 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('A');
     });
 
@@ -259,8 +259,73 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).not.toEqual('DIV');
+    });
+
+    it('Providing onKeyDown and menuProps still fires provided onKeyDown', () => {
+      const keyDownSpy = jest.fn();
+
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          onKeyDown={ keyDownSpy }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM, { which: KeyCodes.enter });
+
+      expect(keyDownSpy).toHaveBeenCalled();
+    });
+
+    it('Providing onKeyDown, menuProps and setting splitButton to true fires provided onKeyDown on both buttons', () => {
+      const keyDownSpy = jest.fn();
+
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          onKeyDown={ keyDownSpy }
+          split={ true }
+          onClick={ alertClicked }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const primaryButtonDOM: HTMLDivElement = renderedDOM.getElementsByTagName('div')[0] as HTMLDivElement;
+
+      ReactTestUtils.Simulate.keyDown(primaryButtonDOM, { which: KeyCodes.enter });
+
+      expect(keyDownSpy).toHaveBeenCalled();
     });
 
     it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
@@ -286,7 +351,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('DIV');
     });
 
@@ -313,10 +378,78 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+    });
+
+    it('If menu trigger is disabled, pressing down does not trigger menu', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          menuTriggerKeyCode={ null }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
+        {
+          which: KeyCodes.down
+        });
+      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
+    });
+
+    it('If menu trigger is specefied, default key is overridden', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          menuTriggerKeyCode={ KeyCodes.right }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
+        {
+          which: KeyCodes.down
+        });
+      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
+
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
+        {
+          which: KeyCodes.right
+        });
+      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
     describe('Response to click event', () => {
@@ -358,7 +491,7 @@ describe('Button', () => {
         expect(didClick).toEqual(true);
       });
 
-      it('Pressing down on SplitButton triggers menu', () => {
+      it('Pressing alt + down on SplitButton triggers menu', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
             data-automation-id='test'
@@ -386,7 +519,8 @@ describe('Button', () => {
 
         ReactTestUtils.Simulate.keyDown(menuButtonElement,
           {
-            which: KeyCodes.down
+            which: KeyCodes.down,
+            altKey: true
           });
         expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
       });

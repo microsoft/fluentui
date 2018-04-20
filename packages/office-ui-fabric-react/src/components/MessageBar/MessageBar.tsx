@@ -3,7 +3,6 @@ import {
   BaseComponent,
   DelayedRender,
   css,
-  autobind,
   getId
 } from '../../Utilities';
 import { IconButton } from '../../Button';
@@ -47,7 +46,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   }
 
   public render(): JSX.Element {
-    let { isMultiline } = this.props;
+    const { isMultiline } = this.props;
 
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
   }
@@ -114,7 +113,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
             className={ css('ms-MessageBar-expand', styles.expand) }
             onClick={ this._onClick }
             iconProps={ { iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' } }
-            ariaLabel={ this.props.dismissButtonAriaLabel }
+            ariaLabel={ this.props.overflowButtonAriaLabel }
           />
         </div>
       );
@@ -170,9 +169,9 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           { this._getIconSpan() }
           { this._renderInnerText() }
           { this._getExpandSingleLine() }
+          { this._getActionsDiv() }
           { this._getDismissSingleLine() }
         </div>
-        { this._getActionsDiv() }
       </div >
     );
   }
@@ -196,7 +195,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     );
   }
 
-  private _getAnnouncementPriority(): string {
+  private _getAnnouncementPriority(): 'assertive' | 'polite' {
     switch (this.props.messageBarType) {
       case MessageBarType.blocked:
       case MessageBarType.error:
@@ -206,8 +205,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     return 'polite';
   }
 
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+  private _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     this.setState({ expandSingleLine: !this.state.expandSingleLine });
   }
 }

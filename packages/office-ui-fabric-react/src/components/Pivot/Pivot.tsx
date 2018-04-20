@@ -4,7 +4,7 @@ import {
   KeyCodes,
   css,
   getId,
-  autobind
+  createRef
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps } from './Pivot.types';
@@ -43,6 +43,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
+  private focusZone = createRef<FocusZone>();
 
   constructor(props: IPivotProps) {
     super(props);
@@ -66,10 +67,10 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
       selectedTabId: this._keyToTabIds[selectedKey!],
     } as IPivotState;
 
-    this._renderLink = this._renderLink.bind(this);
+    this._renderPivotLink = this._renderPivotLink.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: IPivotProps) {
+  public componentWillReceiveProps(nextProps: IPivotProps): void {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
 
     this.setState((prevState, props) => {
@@ -90,7 +91,16 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     });
   }
 
-  public render() {
+  /**
+   * Sets focus to the first pivot tab.
+   */
+  public focus(): void {
+    if (this.focusZone.current) {
+      this.focusZone.current.focus();
+    }
+  }
+
+  public render(): JSX.Element {
     return (
       <div>
         { this._renderPivotLinks() }
@@ -102,27 +112,23 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Renders the set of links to route between pivots
    */
-  private _renderPivotLinks() {
+  private _renderPivotLinks(): JSX.Element {
     return (
-      <FocusZone direction={ FocusZoneDirection.horizontal }>
+      <FocusZone componentRef={ this.focusZone } direction={ FocusZoneDirection.horizontal }>
         <ul
           className={ css('ms-Pivot', styles.root,
             { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
             { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
           role='tablist'
         >
-          { this.state.links.map(this._renderLink) }
+          { this.state.links.map(this._renderPivotLink) }
         </ul>
       </FocusZone>
     );
   }
 
-  /**
-   * Renders a pivot link
-   */
-  @autobind
-  private _renderLink(link: IPivotItemProps) {
-    const { itemKey } = link;
+  private _renderPivotLink = (link: IPivotItemProps): JSX.Element => {
+    const { itemKey, headerButtonProps } = link;
     const tabId = this._keyToTabIds[itemKey as string];
     const { onRenderItemLink } = link;
     let linkContent: JSX.Element | null;
@@ -135,6 +141,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <CommandButton
+        { ...headerButtonProps }
         id={ tabId }
         key={ itemKey }
         className={ css(
@@ -149,15 +156,15 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         ariaLabel={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }
+        name={ link.headerText }
       >
         { linkContent }
       </CommandButton>
     );
   }
 
-  @autobind
-  private _renderLinkContent(link: IPivotItemProps): JSX.Element {
-    const { itemCount, itemIcon, linkText } = link;
+  private _renderLinkContent = (link: IPivotItemProps): JSX.Element => {
+    const { itemCount, itemIcon, headerText } = link;
 
     return (
       <span className={ css('ms-Pivot-link-content') }>
@@ -166,7 +173,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
             <Icon iconName={ itemIcon } />
           </span>
         ) }
-        { linkText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.linkText }</span> }
+        { headerText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.headerText }</span> }
         { itemCount !== undefined && <span className={ css('ms-Pivot-count', styles.count) } > ({ itemCount })</span> }
       </span>
     );
@@ -175,14 +182,14 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Renders the current Pivot Item
    */
-  private _renderPivotItem() {
+  private _renderPivotItem(): JSX.Element | null {
     if (this.props.headersOnly) {
       return null;
     }
 
     const itemKey: string = this.state.selectedKey;
     const index = this._keyToIndexMapping[itemKey];
-    let { selectedTabId } = this.state;
+    const { selectedTabId } = this.state;
 
     return (
       <div
@@ -209,7 +216,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         const itemKey = pivotItem.props.itemKey || index.toString();
 
         links.push({
-          linkText: pivotItem.props.linkText,
+          headerText: pivotItem.props.headerText || pivotItem.props.linkText,
+          headerButtonProps: pivotItem.props.headerButtonProps,
           ariaLabel: pivotItem.props.ariaLabel,
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
@@ -238,14 +246,14 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * whether the key exists in the pivot items.
    */
-  private _isKeyValid(itemKey: string | undefined) {
+  private _isKeyValid(itemKey: string | undefined): boolean {
     return itemKey !== undefined && this._keyToIndexMapping[itemKey] !== undefined;
   }
 
   /**
    * Handles the onClick event on PivotLinks
    */
-  private _onLinkClick(itemKey: string, ev: React.MouseEvent<HTMLElement>) {
+  private _onLinkClick(itemKey: string, ev: React.MouseEvent<HTMLElement>): void {
     ev.preventDefault();
     this._updateSelectedItem(itemKey, ev);
   }
@@ -253,7 +261,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Handle the onKeyPress eventon the PivotLinks
    */
-  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
     ev.preventDefault();
     if (ev.which === KeyCodes.enter) {
       this._updateSelectedItem(itemKey);
@@ -263,7 +271,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Updates the state with the new selected index
    */
-  private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent<HTMLElement>) {
+  private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent<HTMLElement>): void {
     this.setState({
       selectedKey: itemKey,
       selectedTabId: this._keyToTabIds[itemKey]

@@ -20,12 +20,13 @@ $warningHighlightColor: "[theme:warningHighlight, default: #ffb900]";
 $successBackgroundColor: "[theme:successBackground, default: rgba(186,216,10,.2)]";
 
 /* Input controls */
+$inputBackgroundColor: "[theme:inputBackground, default: #ffffff]";
 $inputBorderColor: "[theme:inputBorder, default: #a6a6a6]";
 $inputBorderHoveredColor: "[theme:inputBorderHovered, default: #212121]";
-$inputBackgroundCheckedColor: "[theme:inputBackgroundChecked, default: #0078d7]";
+$inputBackgroundCheckedColor: "[theme:inputBackgroundChecked, default: #0078d4]";
 $inputBackgroundCheckedHoveredColor: "[theme:inputBackgroundCheckedHovered, default: #106ebe]";
 $inputForegroundCheckedColor: "[theme:inputForegroundChecked, default: #ffffff]";
-$inputFocusBorderAltColor: "[theme:inputFocusBorderAlt, default: #0078d7]";
+$inputFocusBorderAltColor: "[theme:inputFocusBorderAlt, default: #0078d4]";
 $smallInputBorderColor: "[theme:inputBorder, default: #666666]";
 $inputPlaceholderTextColor: "[theme:inputPlaceholderText, default: #666666]";
 
@@ -43,12 +44,14 @@ $buttonTextCheckedHoveredColor: "[theme:buttonTextCheckedHovered, default: #0000
 /* Menus */
 $menuItemBackgroundHoveredColor: "[theme:menuItemBackgroundHovered, default: #f8f8f8]";
 $menuItemBackgroundCheckedColor: "[theme:menuItemBackgroundChecked, default: #eaeaea]";
-$menuIconColor: "[theme:menuIcon, default: #0078d7]";
-$menuHeaderColor: "[theme:menuHeader, default: #0078d7]";
+$menuIconColor: "[theme:menuIcon, default: #0078d4]";
+$menuHeaderColor: "[theme:menuHeader, default: #0078d4]";
 
 /* Lists */
 $listBackgroundColor: "[theme:listBackground, default: #ffffff]";
 $listTextColor: "[theme:listText, default: #333333]";
+$listItemHeaderHoveredColor: "[theme:listItemHeaderHovered, default: #f4f4f4]";
+$listItemHeaderActivatedColor: "[theme:listItemActivatedHovered, default: #eaeaea]";
 $listItemBackgroundHoveredColor: "[theme:listItemBackgroundHovered, default: #f8f8f8]";
 $listItemBackgroundCheckedColor: "[theme:listItemBackgroundChecked, default: #eaeaea]";
 $listItemBackgroundCheckedHoveredColor: "[theme:listItemBackgroundCheckedHovered, default: #d0d0d0]";

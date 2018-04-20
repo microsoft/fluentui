@@ -28,8 +28,8 @@ describe('getInitials', () => {
   });
 
   it('calculates an expected initials in LTR with numbers', () => {
-    let result = getInitials('4lex 4loo', false);
-    expect(result).toEqual('44');
+    let result = getInitials('4lex 5loo', false);
+    expect(result).toEqual('45');
   });
 
   it('calculates an expected initials in LTR with parentheses', () => {
@@ -99,4 +99,41 @@ describe('getInitials', () => {
     expect(result).toEqual('');
   });
 
+  it('calculates expected initials for phone numbers', () => {
+    let result = getInitials('12345678', false);
+    expect(result).toEqual('');
+
+    result = getInitials('+1 (555) 123-4567 ext.4567', false);
+    expect(result).toEqual('');
+
+    result = getInitials('+47 12 34 56 78 (X 5678)', false);
+    expect(result).toEqual('');
+
+    result = getInitials('+47 12 34 56 78 (X 5678)', false, true);
+    expect(result).toEqual('4');
+
+    result = getInitials('47 12 34', false, true);
+    expect(result).toEqual('43');
+
+    result = getInitials('47 12', false, true);
+    expect(result).toEqual('41');
+
+    result = getInitials('1 Ext 2', false);
+    expect(result).toEqual('');
+
+    result = getInitials('James Ext 2', false);
+    expect(result).toEqual('J2');
+
+    result = getInitials('1x1', false);
+    expect(result).toEqual('');
+
+    result = getInitials('1y1', false);
+    expect(result).toEqual('1');
+
+    result = getInitials('1', false);
+    expect(result).toEqual('1');
+
+    result = getInitials('A 2', false);
+    expect(result).toEqual('A2');
+  });
 });

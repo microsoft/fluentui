@@ -12,7 +12,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFocusTrapZone) => void;
+  componentRef?: (component: IFocusTrapZone | null) => void;
 
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
@@ -53,4 +53,9 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * @default false
    */
   disableFirstFocus?: boolean;
+
+  /**
+   * Optional, onKeyDown event handler
+   */
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }

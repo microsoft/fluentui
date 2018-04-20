@@ -19,6 +19,12 @@ export interface IHSV {
   v: number;
 }
 
+export interface IHSL {
+  h: number;
+  s: number;
+  l: number;
+}
+
 export interface IColor extends IRGB, IHSV {
   hex: string;
   str: string;
@@ -156,14 +162,14 @@ export function hsv2rgb(h: number, s: number, v: number): IRGB {
 }
 
 export function getColorFromString(inputColor: string): IColor | undefined {
-  let color = cssColor(inputColor);
+  const color = cssColor(inputColor);
 
   if (!color) {
     return;
   }
 
-  let { a, b, g, r } = color;
-  let { h, s, v } = rgb2hsv(r, g, b);
+  const { a, b, g, r } = color;
+  const { h, s, v } = rgb2hsv(r, g, b);
 
   return {
     a: a,
@@ -179,10 +185,10 @@ export function getColorFromString(inputColor: string): IColor | undefined {
 }
 
 export function getColorFromRGBA(rgba: { r: number, g: number, b: number, a: number }): IColor {
-  let { a, b, g, r } = rgba;
-  let { h, s, v } = rgb2hsv(r, g, b);
+  const { a, b, g, r } = rgba;
+  const { h, s, v } = rgb2hsv(r, g, b);
 
-  let hex = rgb2hex(r, g, b);
+  const hex = rgb2hex(r, g, b);
   return {
     a: a,
     b: b,
@@ -201,8 +207,8 @@ export function getFullColorString(color: IColor): string {
 }
 
 export function updateSV(color: IColor, s: number, v: number): IColor {
-  let { r, g, b } = hsv2rgb(color.h, s, v);
-  let hex = rgb2hex(r, g, b);
+  const { r, g, b } = hsv2rgb(color.h, s, v);
+  const hex = rgb2hex(r, g, b);
 
   return {
     a: color.a,
@@ -218,8 +224,8 @@ export function updateSV(color: IColor, s: number, v: number): IColor {
 }
 
 export function updateH(color: IColor, h: number): IColor {
-  let { r, g, b } = hsv2rgb(h, color.s, color.v);
-  let hex = rgb2hex(r, g, b);
+  const { r, g, b } = hsv2rgb(h, color.s, color.v);
+  const hex = rgb2hex(r, g, b);
 
   return {
     a: color.a,
@@ -241,13 +247,13 @@ export function updateA(color: IColor, a: number): IColor {
   });
 }
 
-function _numberToPaddedHex(num: number) {
+function _numberToPaddedHex(num: number): string {
   const hex = num.toString(16);
 
   return hex.length === 1 ? '0' + hex : hex;
 }
 
-function _named(str: string) {
+function _named(str: string): IRGB | undefined {
   const c = (COLOR_VALUES as any)[str.toLowerCase()];
 
   if (c) {
@@ -260,7 +266,7 @@ function _named(str: string) {
   }
 }
 
-function _rgb(str: string) {
+function _rgb(str: string): IRGB | undefined {
   if (0 === str.indexOf('rgb(')) {
     str = (str.match(/rgb\(([^)]+)\)/)!)[1];
 
@@ -275,7 +281,7 @@ function _rgb(str: string) {
   }
 }
 
-function _rgba(str: string) {
+function _rgba(str: string): IRGB | undefined {
   if (str.indexOf('rgba(') === 0) {
     str = (str.match(/rgba\(([^)]+)\)/)!)[1];
 
@@ -290,7 +296,7 @@ function _rgba(str: string) {
   }
 }
 
-function _hex6(str: string) {
+function _hex6(str: string): IRGB | undefined {
   if ('#' === str[0] && 7 === str.length) {
     return {
       r: parseInt(str.slice(1, 3), 16),
@@ -301,7 +307,7 @@ function _hex6(str: string) {
   }
 }
 
-function _hex3(str: string) {
+function _hex3(str: string): IRGB | undefined {
   if ('#' === str[0] && 4 === str.length) {
     return {
       r: parseInt(str[1] + str[1], 16),
@@ -312,7 +318,7 @@ function _hex3(str: string) {
   }
 }
 
-function _hsl(str: string) {
+function _hsl(str: string): IRGB | undefined {
   if (str.indexOf('hsl(') === 0) {
     str = (str.match(/hsl\(([^)]+)\)/)!)[1];
     const parts = str.split(/ *, */);
@@ -328,7 +334,7 @@ function _hsl(str: string) {
   }
 }
 
-function _hsla(str: string) {
+function _hsla(str: string): IRGB | undefined {
   if (str.indexOf('hsla(') === 0) {
     str = (str.match(/hsla\(([^)]+)\)/)!)[1];
 

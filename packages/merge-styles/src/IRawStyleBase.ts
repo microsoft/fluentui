@@ -174,6 +174,11 @@ export interface IRawStyleBase extends IRawFontStyle {
   WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
 
   /**
+   * (Webkit specific) momentum scrolling on iOS devices
+   */
+  WebkitOverflowScrolling?: 'auto' | 'touch';
+
+  /**
    * Aligns a flex container's lines within the flex container when there is extra space
    * in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
@@ -287,6 +292,16 @@ export interface IRawStyleBase extends IRawFontStyle {
    * used value by repeating the list of values until there are enough.
    */
   backgroundBlendMode?: ICSSRule | string;
+
+  /**
+   * The background-clip CSS property specifies if an element's background, whether a
+   * <color> or an <image>, extends underneath its border.
+   *
+   * \* Does not work in IE
+   *
+   * \* The `text` value is experimental and should not be used in production code.
+   */
+  backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
 
   /**
    * Sets the background color of an element.

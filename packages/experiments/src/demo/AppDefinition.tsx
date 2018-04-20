@@ -11,18 +11,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
-          key: 'PositioningContainer',
-          name: 'PositioningContainer',
-          url: '#/examples/PositioningContainer'
-        },
-        {
-          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
-          key: 'Coachmark',
-          name: 'Coachmark',
-          url: '#/examples/coachmark'
-        },
-        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',
@@ -47,6 +35,18 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/filetypeicon'
         },
         {
+          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
+          key: 'Keytip',
+          name: 'Keytip',
+          url: '#/examples/keytip'
+        },
+        {
+          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
+          key: 'KeytipLayer',
+          name: 'KeytipLayer',
+          url: '#/examples/keytipLayer'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
@@ -69,6 +69,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist'
+        },
+        {
+          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
+          key: 'Shimmer',
+          name: 'Shimmer',
+          url: '#/examples/shimmer'
         },
         {
           component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
@@ -99,6 +105,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'StaticList',
           name: 'StaticList',
           url: '#/examples/staticlist'
+        },
+        {
+          component: require<any>('../components/Nav/NavPage').NavPage,
+          key: 'Nav',
+          name: 'Nav',
+          url: '#/examples/nav'
         }
       ]
     }

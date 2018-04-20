@@ -15,21 +15,24 @@
 # users just like we do for commit author emails.
 # docs/  docs@example.com
 
+#### Core build stuff
+scripts/ @dzearing
+
 #### Apps
 # component-demo/
 # fabric-website/
 # ssr-tests/
-# test-bundle-button/
+# test-bundle-button/ @dzearing
 # todo-app/
 
 #### Packages
 # packages/example-app-base/
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp
+packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
 # packages/office-ui-fabric-react-tslint/
-packages/styling/  @dzearing
+packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
@@ -42,23 +45,23 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @johannao76 lorejoh12@gmail.com jolore@microsoft.com
-dateValues/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+dateMath/     @lorejoh12 @sathi23
+dateValues/   @lorejoh12 @sathi23
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+Calendar/   @lorejoh12 @sathi23
 Callout/  @joschect
 # Check/
 # Checkbox/
-# ChoiceGroup/
+ChoiceGroup/   @srideshpande
 # ColorPicker/
 # ComboBox/
 CommandBar/   @micahgodbolt
 ContextualMenu/  @joschect
-DatePicker/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+DatePicker/   @lorejoh12 @sathi23
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
@@ -83,7 +86,7 @@ OverflowSet/  @micahgodbolt
 # Overlay/
 # Panel/
 # Persona/
-Persona/PersonaCoin.tsx @mtennoe @jakob101
+Persona/PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
 # Pivot/
@@ -101,5 +104,60 @@ TeachingBubble/   @micahgodbolt
 # Theme/
 Toggle/  @phkuo
 Tooltip/  @micahgodbolt
+
+## Docs
+# ActivityItem/docs/
+# Breadcrumb/docs/
+# Button/docs/
+Calendar/docs/   @lorejoh12 @sathi23
+Callout/docs/  @joschect
+# Check/docs/
+# Checkbox/docs/
+ChoiceGroup/docs/   @srideshpande
+# ColorPicker/docs/
+# ComboBox/docs/
+CommandBar/docs/   @micahgodbolt
+ContextualMenu/docs/  @joschect
+DatePicker/docs/   @lorejoh12 @sathi23
+# DetailsList/docs/
+# Dialog/docs/
+DocumentCard/docs/ @yiminwu @mikewheaton
+# Dropdown/docs/
+# Fabric/docs/
+# FacePile/docs/
+# FocusTrapZone/docs/
+# FocusZone/docs/
+GroupedList/docs/  @aditima
+HoverCard/docs/   @atneik @Jahnp
+# Icon/docs/
+# Image/docs/
+# Label/docs/
+Layer/docs/  @ThomasMichon
+# Link/docs/
+List/docs/  @cschleiden
+# MarqueeSelection/docs/
+# MessageBar/docs/
+# Modal/docs/
+# Nav/docs/
+OverflowSet/docs/  @micahgodbolt
+# Overlay/docs/
+# Panel/docs/
+# Persona/docs/
+pickers/docs/  @joschect
+# Pivot/docs/
+# Popup/docs/
+# ProgressIndicator/docs/
+Rating/docs/  @cschleiden
+ResizeGroup/docs/  @micahgodbolt
+# SearchBox/docs/
+# Slider/docs/
+# SpinButton/docs/
+# Spinner/docs/
+# SwatchColorPicker/docs/
+TeachingBubble/docs/   @micahgodbolt
+# TextField/docs/
+# Theme/docs/
+Toggle/docs/  @phkuo
+Tooltip/docs/  @micahgodbolt
 
 

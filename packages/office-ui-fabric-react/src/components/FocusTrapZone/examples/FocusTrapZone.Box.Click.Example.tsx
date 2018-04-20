@@ -1,8 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
-import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -26,7 +23,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
   }
 
   public render() {
-    let { isToggled } = this.state;
+    const { isToggled } = this.state;
 
     return (
       <div>
@@ -56,7 +53,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
   }
 
   private _internalContents() {
-    let { isToggled } = this.state;
+    const { isToggled } = this.state;
 
     return (
       <div className='ms-FocusTrapZoneBoxExample'>
@@ -85,29 +82,25 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
     );
   }
 
-  @autobind
-  private _onButtonClickHandler() {
+  private _onButtonClickHandler = (): void => {
     this.setState({
       isToggled: true
     });
   }
 
-  @autobind
-  private _onExitButtonClickHandler() {
+  private _onExitButtonClickHandler = (): void => {
     this.setState({
       isToggled: false
     });
   }
 
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isToggled: boolean) {
+  private _onFocusTrapZoneToggleChanged = (isToggled: boolean): void => {
     this.setState({
       isToggled: isToggled
     }, () => this._toggle.focus());
   }
 
-  @autobind
-  private _setRef(toggle: IToggle): void {
+  private _setRef = (toggle: IToggle): void => {
     this._toggle = toggle;
   }
 }

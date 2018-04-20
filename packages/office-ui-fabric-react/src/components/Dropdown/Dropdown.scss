@@ -12,8 +12,8 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 $DropDown-height: 32px;
 $DropDown-item-height: 32px;
 
-// Mixin for high contrast mode link states
-@mixin highContrastListItemState {
+// Mixin for high contrast mode states
+@mixin highContrastItemAndTitleState {
   @include high-contrast {
     background-color: Highlight;
     border-color: Highlight;
@@ -21,6 +21,12 @@ $DropDown-item-height: 32px;
   }
 
   @include highContrastAdjust();
+}
+
+@mixin highContrastBorderState {
+  @include high-contrast {
+    border-color: Highlight;
+  }
 }
 
 .root {
@@ -38,11 +44,6 @@ $DropDown-item-height: 32px;
     .title,
     .caretDown {
       color: $ms-color-neutralDark;
-
-      @include high-contrast {
-        // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
-        color: Highlight;
-      }
     }
 
     .titleIsPlaceHolder {
@@ -53,6 +54,7 @@ $DropDown-item-height: 32px;
   &:hover {
     .title {
       border-color: $ms-color-neutralDark;
+      @include highContrastBorderState();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -62,6 +64,7 @@ $DropDown-item-height: 32px;
   &:active {
     .title {
       border-color: $ms-color-themeDark;
+      @include highContrastBorderState();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -71,6 +74,11 @@ $DropDown-item-height: 32px;
   &:focus {
     .title {
       border-color: $ms-color-themePrimary;
+      @include highContrastItemAndTitleState();
+    }
+    .caretDown {
+      color: HighlightText;
+      @include highContrastAdjust();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -164,7 +172,7 @@ $DropDown-item-height: 32px;
   }
 }
 
-.callout {
+.callout.callout {
   box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid $ms-color-neutralLight;
 }
@@ -187,10 +195,13 @@ $DropDown-item-height: 32px;
   cursor: pointer;
   display: block;
   width: 100%;
-  height: auto;
   min-height: $DropDown-item-height;
   line-height: 20px;
-  padding: 4px 16px;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  height: auto !important;
+  padding: 4px 16px !important;
+
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
@@ -207,7 +218,7 @@ $DropDown-item-height: 32px;
 
   &:focus {
     background-color: $ms-color-neutralLighter;
-    @include highContrastListItemState;
+    @include highContrastItemAndTitleState;
   }
 
   &:active {
@@ -229,7 +240,7 @@ $DropDown-item-height: 32px;
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
 
-  @include highContrastListItemState;
+  @include highContrastItemAndTitleState;
 
   &.itemIsDisabled {
     color: $ms-color-neutralTertiary;

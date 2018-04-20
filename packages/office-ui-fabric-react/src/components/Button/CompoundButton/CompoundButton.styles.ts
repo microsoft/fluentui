@@ -22,9 +22,9 @@ export const getStyles = memoizeFunction((
   customStyles?: IButtonStyles,
   primary?: boolean
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let compoundButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const compoundButtonStyles: IButtonStyles = {
     root: {
       maxWidth: '280px',
       minHeight: '72px',
@@ -66,7 +66,7 @@ export const getStyles = memoizeFunction((
 
   };
 
-  let standardCompoundTheme: IButtonStyles = {
+  const standardCompoundTheme: IButtonStyles = {
 
     description: {
       color: theme.palette.neutralSecondary,
@@ -89,7 +89,7 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  let primaryCompoundTheme: IButtonStyles = {
+  const primaryCompoundTheme: IButtonStyles = {
 
     description: {
       color: theme.palette.white,

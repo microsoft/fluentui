@@ -33,8 +33,6 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
       onKeyDownCapture={[Function]}
       onMouseDown={[Function]}
       onMouseDownCapture={[Function]}
-      onTouchEndCapture={[Function]}
-      onTouchStartCapture={[Function]}
       role="presentation"
     >
       <div
@@ -42,11 +40,11 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
         role="list"
       >
         <input
-          aria-activedescendant="sug--1"
+          aria-activedescendant={undefined}
           aria-controls="selected-suggestion-alert"
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
+          aria-owns={undefined}
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
@@ -58,6 +56,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
           onFocus={[Function]}
+          onInput={[Function]}
           onKeyDown={[Function]}
           role="combobox"
           value=""
@@ -101,8 +100,6 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
       onKeyDownCapture={[Function]}
       onMouseDown={[Function]}
       onMouseDownCapture={[Function]}
-      onTouchEndCapture={[Function]}
-      onTouchStartCapture={[Function]}
       role="presentation"
     >
       <div
@@ -110,11 +107,11 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
         role="list"
       >
         <input
-          aria-activedescendant="sug--1"
+          aria-activedescendant={undefined}
           aria-controls="selected-suggestion-alert"
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
+          aria-owns={undefined}
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
@@ -126,6 +123,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
           onCompositionEnd={[Function]}
           onCompositionStart={[Function]}
           onFocus={[Function]}
+          onInput={[Function]}
           onKeyDown={[Function]}
           role="combobox"
           value=""

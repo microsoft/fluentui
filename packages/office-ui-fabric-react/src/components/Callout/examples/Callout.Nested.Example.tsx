@@ -23,8 +23,8 @@ export class CalloutNestedExample extends React.Component<ICalloutNestedExampleP
     };
   }
 
-  public render() {
-    let { isCalloutVisible } = this.state;
+  public render(): JSX.Element {
+    const { isCalloutVisible } = this.state;
 
     return (
       <div className='ms-CalloutExample'>
@@ -65,7 +65,7 @@ export class CalloutNestedExample extends React.Component<ICalloutNestedExampleP
     );
   }
 
-  private _onDismiss(ev: any) {
+  private _onDismiss(ev: any): void {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });

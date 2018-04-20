@@ -6,37 +6,54 @@ import {
   doesElementContainFocus,
   getDocument,
   getNativeProps,
-  autobind
+  createRef
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
+
+export interface IPopupState {
+  needsVerticalScrollBar?: boolean;
+}
 
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export class Popup extends BaseComponent<IPopupProps, {}> {
+export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
+  public _root = createRef<HTMLDivElement>();
 
   private _originalFocusedElement: HTMLElement;
   private _containsFocus: boolean;
 
-  public componentWillMount() {
+  public constructor(props: IPopupProps) {
+    super(props);
+    this.state = { needsVerticalScrollBar: false };
+  }
+
+  public componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {
-    this._events.on(this.refs.root, 'focus', this._onFocus, true);
-    this._events.on(this.refs.root, 'blur', this._onBlur, true);
-    if (doesElementContainFocus(this.refs.root)) {
+    if (!this._root.current) {
+      return;
+    }
+
+    this._events.on(this._root.current, 'focus', this._onFocus, true);
+    this._events.on(this._root.current, 'blur', this._onBlur, true);
+
+    if (doesElementContainFocus(this._root.current)) {
       this._containsFocus = true;
     }
+
+    this._updateScrollBarAsync();
+  }
+
+  public componentDidUpdate() {
+    this._updateScrollBarAsync();
   }
 
   public componentWillUnmount(): void {
@@ -54,17 +71,12 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     }
   }
 
-  public render() {
-    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
-
-    let needsVerticalScrollBar = false;
-    if (this.refs.root && this.refs.root.firstElementChild) {
-      needsVerticalScrollBar = this.refs.root.firstElementChild.clientHeight > this.refs.root.clientHeight;
-    }
+  public render(): JSX.Element {
+    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
     return (
       <div
-        ref='root'
+        ref={ this._root }
         { ...getNativeProps(this.props, divProperties) }
         className={ className }
         role={ role }
@@ -72,15 +84,14 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
-        style={ { overflowY: needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
+        style={ { overflowY: this.state.needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
       >
         { this.props.children }
       </div>
     );
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.escape:
 
@@ -95,11 +106,42 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     }
   }
 
-  private _onFocus() {
+  private _updateScrollBarAsync(): void {
+    this._async.requestAnimationFrame(() => {
+      this._getScrollBar();
+    });
+  }
+
+  private _getScrollBar(): void {
+    let needsVerticalScrollBar = false;
+    if (this._root && this._root.current && this._root.current.firstElementChild) {
+      // ClientHeight returns the client height of an element rounded to an
+      // integer. On some browsers at different zoom levels this rounding
+      // can generate different results for the root container and child even
+      // though they are the same height. This causes us to show a scroll bar
+      // when not needed. Ideally we would use BoundingClientRect().height
+      // instead however seems that the API is 90% slower than using ClientHeight.
+      // Therefore instead we will calculate the difference between heights and
+      // allow for a 1px difference to still be considered ok and not show the
+      // scroll bar.
+      const rootHeight = this._root.current.clientHeight;
+      const firstChildHeight = this._root.current.firstElementChild.clientHeight;
+      if (rootHeight > 0 && firstChildHeight > rootHeight) {
+        needsVerticalScrollBar = (firstChildHeight - rootHeight) > 1;
+      }
+    }
+    if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
+      this.setState({
+        needsVerticalScrollBar: needsVerticalScrollBar
+      });
+    }
+  }
+
+  private _onFocus(): void {
     this._containsFocus = true;
   }
 
-  private _onBlur() {
+  private _onBlur(): void {
     this._containsFocus = false;
   }
 }

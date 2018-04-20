@@ -1,7 +1,12 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Form, FormConditionalSubmitButton, FormDatePicker, FormTextInput, Validators } from '../../Form';
+import {
+  Form,
+  FormConditionalSubmitButton,
+  FormDatePicker,
+  FormTextInput,
+  Validators
+} from '@uifabric/experiments/lib/Form';
 
 export interface IFormValidationExampleState {
   formResults: any;
@@ -54,8 +59,7 @@ export class FormValidationExample extends React.Component<{}, IFormValidationEx
     );
   }
 
-  @autobind
-  private _onSubmit(values: { [key: string]: any }): void {
+  private _onSubmit = (values: { [key: string]: any }): void => {
     this.setState({ formResults: values });
   }
 }

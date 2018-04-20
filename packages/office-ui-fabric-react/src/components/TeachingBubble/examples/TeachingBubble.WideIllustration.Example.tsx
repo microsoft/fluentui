@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -24,13 +22,13 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     };
   }
 
-  public render() {
-    let { isTeachingBubbleVisible } = this.state;
-    let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
-    let examplePrimaryButton: IButtonProps = {
+  public render(): JSX.Element {
+    const { isTeachingBubbleVisible } = this.state;
+    const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
+    const examplePrimaryButton: IButtonProps = {
       children: 'Try it out',
     };
-    let exampleSecondaryButtonProps: IButtonProps = {
+    const exampleSecondaryButtonProps: IButtonProps = {
       children: 'May be later',
       onClick: this._onDismiss
     };
@@ -65,7 +63,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     );
   }
 
-  private _onDismiss(ev: any) {
+  private _onDismiss(ev: any): void {
     this.setState({
       isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
     });

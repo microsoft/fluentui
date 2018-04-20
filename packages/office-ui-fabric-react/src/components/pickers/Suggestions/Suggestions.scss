@@ -61,7 +61,7 @@
   }
 }
 
-.searchMoreButton {
+.actionButton {
   background: none;
   border: 0;
   cursor: pointer;
@@ -91,6 +91,10 @@
   :global(.ms-Button-label) {
     @include margin(0, 4px, 0, 9px);
   }
+}
+
+.buttonSelected {
+  background-color: $ms-color-themeLight;
 }
 
 .suggestionsTitle {
@@ -134,9 +138,11 @@
   }
 }
 
-.itemButton {
-  height: 100%;
+.itemButton.itemButton {
   width: 100%;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  height: 100%;
   padding: 7px 12px;
 
   @include high-contrast {
@@ -144,7 +150,8 @@
   }
 }
 
-.closeButton {
+.closeButton.closeButton {
+  /* once this is converted to js css, then specificity won't be an issue. */
   padding: 0 4px;
   height: auto;
   width: 32px;

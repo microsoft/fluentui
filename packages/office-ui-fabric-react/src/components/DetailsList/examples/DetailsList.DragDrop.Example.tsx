@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
@@ -13,7 +11,7 @@ import { createListItems } from '@uifabric/example-app-base';
 import './DetailsList.DragDrop.Example.scss';
 
 let _draggedItem: any = null;
-let _draggedIndex: number = -1;
+let _draggedIndex = -1;
 
 export class DetailsListDragDropExample extends React.Component<{}, {
   items: {}[];
@@ -33,8 +31,8 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     };
   }
 
-  public render() {
-    let { items, selectionDetails } = this.state;
+  public render(): JSX.Element {
+    const { items, selectionDetails } = this.state;
 
     return (
       <div className='detailsListDragDropExample'>
@@ -80,7 +78,7 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     alert(`Item invoked: ${item.name}`);
   }
 
-  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
+  private _onRenderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
     if (column.key === 'name') {
       return <Link data-selection-invoke={ true }>{ item[column.key] }</Link>;
     }
@@ -88,10 +86,10 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     return item[column.key];
   }
 
-  private _insertBeforeItem(item: any) {
-    let draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+  private _insertBeforeItem(item: any): void {
+    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
-    let items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.

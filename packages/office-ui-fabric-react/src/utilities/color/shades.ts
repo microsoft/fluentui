@@ -3,6 +3,7 @@
  * and the desired shade enum, this will return an appropriate shade of that color.
  */
 import {
+  IHSL,
   IColor,
   MAX_COLOR_RGBA
 } from './colors';
@@ -19,12 +20,12 @@ const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // whi
 const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black fg
 const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light (strongen all)
 const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark (soften all)
-const ColorTintTable = [.050, .100, .200, .42, .90]; // default soften
-const ColorShadeTable = [.90, .70, .550]; // default strongen
+const ColorTintTable = [.07, .18, .436, .751, .956]; // default soften
+const ColorShadeTable = [.90, .64, .550]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
-const c_LuminanceLow = 0.2;
-const c_LuminanceHigh = 0.8;
+const LowLuminanceThreshold = 0.2;
+const HighLuminanceThreshold = 0.8;
 
 /** Shades of a given color, from softest to strongest. */
 export enum Shade {
@@ -57,7 +58,7 @@ function _isWhite(color: IColor): boolean {
   return color.r === MAX_COLOR_RGBA && color.g === MAX_COLOR_RGBA && color.b === MAX_COLOR_RGBA;
 }
 
-function _darken(hsl: { h: number, s: number, l: number }, factor: number) {
+function _darken(hsl: IHSL, factor: number): IHSL {
   return {
     h: hsl.h,
     s: hsl.s,
@@ -65,7 +66,7 @@ function _darken(hsl: { h: number, s: number, l: number }, factor: number) {
   };
 }
 
-function _lighten(hsl: { h: number, s: number, l: number }, factor: number) {
+function _lighten(hsl: IHSL, factor: number): IHSL {
   return {
     h: hsl.h,
     s: hsl.s,
@@ -73,7 +74,7 @@ function _lighten(hsl: { h: number, s: number, l: number }, factor: number) {
   };
 }
 
-export function isDark(color: IColor) {
+export function isDark(color: IColor): boolean {
   return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
 }
 
@@ -94,7 +95,7 @@ export function isDark(color: IColor) {
  * @param {Shade} shade The shade of the base color to compute
  * @param {Boolean} isInverted Default false. Whether the given theme is inverted (reverse strongen/soften logic)
  */
-export function getShade(color: IColor, shade: Shade, isInverted = false) {
+export function getShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
   'use strict';
   if (!color) {
     return null;
@@ -105,7 +106,7 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
   }
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
-  let tableIndex = shade - 1;
+  const tableIndex = shade - 1;
   let _soften = _lighten;
   let _strongen = _darken;
   if (isInverted) {
@@ -117,9 +118,9 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
     hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
   } else if (_isBlack(color)) { // black
     hsl = _lighten(hsl, BlackTintTable[tableIndex]);
-  } else if (hsl.l / 100 > c_LuminanceHigh) { // light
+  } else if (hsl.l / 100 > HighLuminanceThreshold) { // light
     hsl = _strongen(hsl, LumShadeTable[tableIndex]);
-  } else if (hsl.l / 100 < c_LuminanceLow) { // dark
+  } else if (hsl.l / 100 < LowLuminanceThreshold) { // dark
     hsl = _soften(hsl, LumTintTable[tableIndex]);
   } else { // default
     if (tableIndex < ColorTintTable.length) {
@@ -135,7 +136,7 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
 // Background shades/tints are generated differently. The provided color will be guaranteed
 //   to be the darkest or lightest one. If it is <50% luminance, it will always be the darkest,
 //   otherwise it will always be the lightest.
-export function getBackgroundShade(color: IColor, shade: Shade, isInverted = false) {
+export function getBackgroundShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
   'use strict';
   if (!color) {
     return null;
@@ -146,7 +147,7 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted = fal
   }
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
-  let tableIndex = shade - 1;
+  const tableIndex = shade - 1;
   if (!isInverted) { // lightish
     hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
   } else { // default: if (hsl.l / 100 < .5) { // darkish
@@ -160,12 +161,12 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted = fal
  * color pairs meet minimum accessibility requirements.
  * See: https://www.w3.org/TR/WCAG20/ section 1.4.3
  */
-export function getContrastRatio(color1: IColor, color2: IColor) {
+export function getContrastRatio(color1: IColor, color2: IColor): number {
   // Formula defined by: http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
   // relative luminance: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
 
   /* calculate the intermediate value needed to calculating relative luminance */
-  function _getThing(x: number) {
+  function _getThing(x: number): number {
     if (x <= .03928) {
       return x / 12.92;
     } else {
@@ -173,15 +174,15 @@ export function getContrastRatio(color1: IColor, color2: IColor) {
     }
   }
 
-  let r1 = _getThing(color1.r / MAX_COLOR_RGBA);
-  let g1 = _getThing(color1.g / MAX_COLOR_RGBA);
-  let b1 = _getThing(color1.b / MAX_COLOR_RGBA);
+  const r1 = _getThing(color1.r / MAX_COLOR_RGBA);
+  const g1 = _getThing(color1.g / MAX_COLOR_RGBA);
+  const b1 = _getThing(color1.b / MAX_COLOR_RGBA);
   let L1 = (.2126 * r1) + (.7152 * g1) + (.0722 * b1); // relative luminance of first color
   L1 += .05;
 
-  let r2 = _getThing(color2.r / MAX_COLOR_RGBA);
-  let g2 = _getThing(color2.g / MAX_COLOR_RGBA);
-  let b2 = _getThing(color2.b / MAX_COLOR_RGBA);
+  const r2 = _getThing(color2.r / MAX_COLOR_RGBA);
+  const g2 = _getThing(color2.g / MAX_COLOR_RGBA);
+  const b2 = _getThing(color2.b / MAX_COLOR_RGBA);
   let L2 = (.2126 * r2) + (.7152 * g2) + (.0722 * b2); // relative luminance of second color
   L2 += .05;
 

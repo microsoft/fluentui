@@ -4,7 +4,7 @@ import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.types';
 import { SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import './PeoplePicker.scss';
-import { ValidationState, IBasePickerSuggestionsProps, ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps, ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {
 }
@@ -21,16 +21,16 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
   };
 }
 
-export function createGenericItem(name: string, currentValidationState: ValidationState): ISuggestionModel<IPersonaProps> {
+export function createGenericItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
   // tslint:disable-next-line:no-any
-  let personaToConvert: any = {
+  const personaToConvert: any = {
     key: name,
     primaryText: name,
     imageInitials: '!',
-    ValidationState: currentValidationState
+    isValid: isValid
   };
 
-  if (currentValidationState !== ValidationState.warning) {
+  if (!isValid) {
     personaToConvert.imageInitials = getInitials(name, getRTL());
   }
 

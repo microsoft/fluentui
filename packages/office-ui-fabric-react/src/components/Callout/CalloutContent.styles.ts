@@ -1,26 +1,11 @@
 import {
   HighContrastSelector,
-  AnimationStyles,
   IRawStyle,
   focusClear
 } from '../../Styling';
-import {
-  ICalloutPositionedInfo,
-  RectangleEdge
-} from '../../utilities/positioning';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
-const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-
-const ANIMATIONS: { [key: number]: IRawStyle; } = {
-  [RectangleEdge.top]: AnimationStyles.slideUpIn20,
-  [RectangleEdge.bottom]: AnimationStyles.slideDownIn20,
-  [RectangleEdge.left]: AnimationStyles.slideLeftIn20,
-  [RectangleEdge.right]: AnimationStyles.slideRightIn20,
-};
-
-function getBeakStylePosition(positions?: ICalloutPositionedInfo,
-  beakWidth?: number,
+function getBeakStyle(beakWidth?: number,
   beakStyle?: string): IRawStyle {
   let beakStyleWidth = beakWidth;
 
@@ -30,17 +15,10 @@ function getBeakStylePosition(positions?: ICalloutPositionedInfo,
     beakStyleWidth = 16;
   }
 
-  let beakReactStyle: IRawStyle = {
-    ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
+  return {
+    height: beakStyleWidth,
+    width: beakStyleWidth
   };
-  beakReactStyle.height = beakStyleWidth;
-  beakReactStyle.width = beakStyleWidth;
-  if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
-    beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
-    beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
-  }
-
-  return beakReactStyle;
 }
 
 export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
@@ -50,7 +28,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     overflowYHidden,
     calloutWidth,
     contentMaxHeight,
-    positions,
     beakWidth,
     backgroundColor,
     beakStyle
@@ -83,16 +60,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       },
       focusClear(),
       className,
-      positions && positions.targetEdge && ANIMATIONS[positions.targetEdge],
-      // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
-      // To help ensure that edge will respect the offscreen style opacity
-      // filter needs to be added as an additional way to set opacity.
-      !positions && {
-        opacity: 0,
-        filter: 'opacity(0)',
-      },
-      positions && { ...positions.elementPosition },
-      !!calloutWidth && { width: calloutWidth },
+      !!calloutWidth && { width: calloutWidth }
     ],
     beak: [
       'ms-Callout-beak',
@@ -104,7 +72,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         boxSizing: 'border-box',
         transform: 'rotate(45deg)'
       },
-      getBeakStylePosition(positions, beakWidth, beakStyle),
+      getBeakStyle(beakWidth, beakStyle),
       backgroundColor && {
         backgroundColor: backgroundColor
       }
@@ -129,7 +97,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         position: 'relative',
         maxHeight: contentMaxHeight
       },
-      !!calloutWidth && { width: calloutWidth },
       overflowYHidden && {
         overflowY: 'hidden'
       },

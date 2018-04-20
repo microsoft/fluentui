@@ -3,9 +3,7 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import {
-  Layer
-} from './Layer';
+import { LayerBase } from './Layer.base';
 import { ILayerHostProps } from './LayerHost.types';
 
 export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
@@ -14,15 +12,15 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
     return false;
   }
 
-  public componentDidMount() {
-    Layer.notifyHostChanged(this.props.id!);
+  public componentDidMount(): void {
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
-  public componentWillUnmount() {
-    Layer.notifyHostChanged(this.props.id!);
+  public componentWillUnmount(): void {
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div { ...this.props } className={ css('ms-LayerHost', this.props.className) } />
     );

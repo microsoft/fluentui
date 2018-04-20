@@ -37,7 +37,7 @@ const getVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalD
 });
 
 export class VerticalDividerCustomExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     const exampleClassNames = getExampleClassNames();
     return (
       <div className={ exampleClassNames.wrapper }>

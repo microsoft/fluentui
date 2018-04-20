@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
 import * as DetailsRowCheckStyles from './DetailsRowCheck.scss';
@@ -33,7 +31,7 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
     ...buttonProps
   } = props;
 
-  let isPressed = props.isSelected || props.selected;
+  const isPressed = props.isSelected || props.selected;
 
   return (
     <div

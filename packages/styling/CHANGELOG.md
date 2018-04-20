@@ -1,6 +1,92 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 00:17:37 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 19 Apr 2018 00:17:37 GMT
+
+### Minor changes
+
+- PulsingBeaconAnimationStyles: Distinguish between single and double pulse.
+
+## 5.24.0
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Minor changes
+
+- Add opt-in @deprecated comments
+
+### Patches
+
+- Fix deprecated semantic slots returning empty strings
+
+## 5.23.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.23.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- Add noWrap style set.
+
+## 5.22.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- New pulsing beacon animation moved in from Coachmark for reuse.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.20.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- High contrast mode for focus styling.
+
+## 5.19.1
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Patches
+
+- By default, try to use the system font before downloading a web font
+
+## 5.19.0
+Fri, 23 Feb 2018 03:05:53 GMT
+
+### Minor changes
+
+- add preliminary support for variant theming, add bodyLink slot
+
+## 5.18.1
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Patches
+
+- Add whiteTranslucent40 to palette
+
+## 5.18.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- Adjusting IColorClassNames and IFontStyles to remove the optional part for the members, to make the interfaces easier to consume.
 
 ## 5.17.0
 Thu, 25 Jan 2018 11:23:06 GMT

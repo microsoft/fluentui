@@ -10,7 +10,7 @@
 @import '../Label/LabelMixins.scss';
 
 // component slots
-$field-background-color: $bodyBackgroundColor;
+$field-background-color: $inputBackgroundColor;
 $field-background-disabled-color: $disabledBackgroundColor;
 
 $field-border-color: $inputBorderColor;
@@ -27,6 +27,17 @@ $field-placeholder-disabled-color: $disabledTextColor;
 
 $field-description-color: $bodySubtextColor;
 $field-error-color: $errorTextColor;
+
+// Mixin for focus border, including high contrast
+@mixin fieldFocusBorder {
+  border-color: $field-border-focus-color;
+  @include high-contrast {
+    border-width: 2px;
+    .field {
+      @include ms-padding(0, 11px, 0, 11px);
+    }
+  }
+}
 
 // the box containing the label and input field
 .root {
@@ -54,7 +65,7 @@ $field-error-color: $errorTextColor;
   }
 
   &.fieldGroupIsFocused {
-    border-color: $field-border-focus-color;
+    @include fieldFocusBorder();
   }
 
   &.fieldGroupIsFocused {
@@ -66,8 +77,6 @@ $field-error-color: $errorTextColor;
   .rootIsDisabled & {
     background-color: $field-background-disabled-color;
     border-color: $field-border-disabled-color;
-    pointer-events: none;
-    cursor: default;
   }
 
   &:hover,
@@ -93,8 +102,6 @@ $field-error-color: $errorTextColor;
   :global(.field) {
     background-color: $field-background-disabled-color;
     border-color: $field-border-disabled-color;
-    pointer-events: none;
-    cursor: default;
   }
 }
 
@@ -117,6 +124,12 @@ $field-error-color: $errorTextColor;
   color: $field-text-color;
   @include ms-padding(0, 12px, 0, 12px);
   width: 100%;
+  /**
+   * min-width is set to 1 in order to tell the browser to ignore the
+   * default value calculated from the size attribute and respect the
+   * width set on parent elements.
+   */
+  min-width: 0;
   text-overflow: ellipsis;
   outline: 0;
   &:active,
@@ -131,8 +144,6 @@ $field-error-color: $errorTextColor;
   &[disabled] {
     background-color: transparent;
     border-color: transparent;
-    pointer-events: none;
-    cursor: default;
   }
 
   .field {
@@ -163,7 +174,7 @@ $field-error-color: $errorTextColor;
 
 //= State: An active textfield
 .root.rootIsActive {
-  border-color: $field-border-focus-color;
+  @include fieldFocusBorder();
 }
 
 .icon {
@@ -241,7 +252,7 @@ $field-error-color: $errorTextColor;
   }
 
   &.rootIsActive {
-    border-color: $field-border-focus-color;
+    @include fieldFocusBorder();
   }
 
   &:hover:not(.rootIsDisabled),

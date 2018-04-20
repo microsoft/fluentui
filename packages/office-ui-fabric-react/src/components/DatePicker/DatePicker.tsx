@@ -5,17 +5,18 @@ import {
 } from './DatePicker.types';
 import {
   Calendar,
+  ICalendar,
   DayOfWeek
 } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { TextField } from '../../TextField';
+import { TextField, ITextField } from '../../TextField';
 import {
-  autobind,
   BaseComponent,
   KeyCodes,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import * as stylesImport from './DatePicker.scss';
@@ -119,17 +120,15 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     dateTimeFormatter: undefined
   };
 
-  private _root: HTMLElement;
-  private _calendar: Calendar;
-  private _datepicker: HTMLDivElement;
-  private _textField: TextField;
+  private _calendar = createRef<ICalendar>();
+  private _datePickerDiv = createRef<HTMLDivElement>();
+  private _textField = createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
-  private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
     super(props);
 
-    let { formatDate, value } = props;
+    const { formatDate, value } = props;
 
     this.state = {
       selectedDate: value || undefined,
@@ -141,8 +140,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillReceiveProps(nextProps: IDatePickerProps) {
-    let { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
+  public componentWillReceiveProps(nextProps: IDatePickerProps): void {
+    const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
     if (compareDates(this.props.minDate!, nextProps.minDate!) &&
       compareDates(this.props.maxDate!, nextProps.maxDate!) &&
@@ -153,10 +152,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       return;
     }
 
-    let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined;
+    let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || ' ') : undefined;
 
     if (!errorMessage && value) {
-      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || '*' : undefined;
+      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
     }
 
     // Set error message
@@ -168,7 +167,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     // passed in or if the formatting function was modified. We only update the selected date if either of these
     // had a legit change. Note tha the bug will still repro when only the formatDate was passed in props and this
     // is the result of the onSelectDate callback, but this should be a rare scenario.
-    let oldValue = this.state.selectedDate;
+    const oldValue = this.state.selectedDate;
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
         selectedDate: value || undefined,
@@ -177,7 +176,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  public render() {
+  public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState) {
+    // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
+    if (this.props.onAfterMenuDismiss && prevState.isDatePickerShown && !this.state.isDatePickerShown) {
+      this.props.onAfterMenuDismiss();
+    }
+  }
+
+  public render(): JSX.Element {
     const {
       firstDayOfWeek,
       strings,
@@ -198,9 +204,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root, className) } ref={ this._resolveRef('_root') }>
-        <div ref={ this._resolveRef('_datepicker') }>
+      <div className={ css('ms-DatePicker', styles.root, isDatePickerShown && 'is-open', className) }>
+        <div ref={ this._datePickerDiv }>
           <TextField
+            label={ label }
             className={ styles.textField }
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
@@ -213,7 +220,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             onClick={ this._onTextFieldClick }
             onChanged={ this._onTextFieldChanged }
             errorMessage={ errorMessage }
-            label={ label }
             placeholder={ placeholder }
             borderless={ borderless }
             iconProps={ {
@@ -227,7 +233,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            ref={ this._resolveRef('_textField') }
+            componentRef={ this._textField }
             role={ allowTextInput ? 'combobox' : 'menu' }
           />
         </div>
@@ -239,7 +245,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
-            target={ this._datepicker }
+            target={ this._datePickerDiv.current }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
@@ -261,7 +267,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               dateTimeFormatter={ this.props.dateTimeFormatter }
               minDate={ minDate }
               maxDate={ maxDate }
-              ref={ this._resolveRef('_calendar') }
+              componentRef={ this._calendar }
             />
           </Callout>
         ) }
@@ -269,28 +275,38 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     );
   }
 
-  @autobind
-  private _onSelectDate(date: Date) {
-    let { formatDate, onSelectDate } = this.props;
+  public focus(): void {
+    if (this._textField.current) {
+      this._textField.current.focus();
+    }
+  }
+
+  private _onSelectDate = (date: Date): void => {
+    const { formatDate, onSelectDate } = this.props;
+
+    if (this.props.calendarProps && this.props.calendarProps.onSelectDate) {
+      this.props.calendarProps.onSelectDate(date);
+    }
 
     this.setState({
       selectedDate: date,
-      isDatePickerShown: false,
       formattedDate: formatDate && date ? formatDate(date) : '',
-    }, () => {
-      if (onSelectDate) {
-        onSelectDate(date);
-      }
     });
+
+    if (onSelectDate) {
+      onSelectDate(date);
+    }
+
+    this._calendarDismissed();
   }
 
-  @autobind
-  private _onCalloutPositioned() {
-    this._calendar.focus();
+  private _onCalloutPositioned = (): void => {
+    if (this._calendar.current) {
+      this._calendar.current.focus();
+    }
   }
 
-  @autobind
-  private _onTextFieldFocus(ev: React.FocusEvent<HTMLElement>) {
+  private _onTextFieldFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     if (this.props.disableAutoFocus) {
       return;
     }
@@ -304,29 +320,26 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onTextFieldBlur(ev: React.FocusEvent<HTMLElement>) {
+  private _onTextFieldBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     this._validateTextInput();
   }
 
-  @autobind
-  private _onTextFieldChanged(newValue: string) {
+  private _onTextFieldChanged = (newValue: string): void => {
     if (this.props.allowTextInput) {
       if (this.state.isDatePickerShown) {
         this._dismissDatePickerPopup();
       }
 
-      let { isRequired, value, strings } = this.props;
+      const { isRequired, value, strings } = this.props;
 
       this.setState({
-        errorMessage: (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined,
+        errorMessage: (isRequired && !value) ? (strings!.isRequiredErrorMessage || ' ') : undefined,
         formattedDate: newValue
       });
     }
   }
 
-  @autobind
-  private _onTextFieldKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onTextFieldKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -351,8 +364,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onTextFieldClick = (ev: React.MouseEvent<HTMLElement>): void => {
     if (!this.state.isDatePickerShown && !this.props.disabled) {
       this._showDatePickerPopup();
     } else {
@@ -364,16 +376,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _onIconClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
     ev.stopPropagation();
     this._onTextFieldClick(ev);
   }
 
-  private _showDatePickerPopup() {
+  private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
-      this._focusOnSelectedDateOnUpdate = true;
       this.setState({
         isDatePickerShown: true,
         errorMessage: ''
@@ -381,8 +391,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
-  private _dismissDatePickerPopup() {
+  private _dismissDatePickerPopup = (): void => {
     if (this.state.isDatePickerShown) {
       this.setState({
         isDatePickerShown: false
@@ -395,23 +404,21 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   /**
    * Callback for closing the calendar callout
    */
-  @autobind
-  private _calendarDismissed() {
+  private _calendarDismissed = (): void => {
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
 
-    if (this._textField) {
-      this._textField.focus();
+    if (this._textField.current) {
+      this._textField.current.focus();
     }
   }
 
-  @autobind
-  private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
+  private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    ev.stopPropagation();
     this._calendarDismissed();
   }
 
-  @autobind
-  private _validateTextInput() {
+  private _validateTextInput = (): void => {
     const { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate, minDate, maxDate } = this.props;
     const inputValue = this.state.formattedDate;
 
@@ -423,9 +430,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     // Check when DatePicker is a required field but has NO input value
     if (isRequired && !inputValue) {
       this.setState({
-        // Since fabic react doesn't have loc support yet
-        // use the symbol '*' to represent error message
-        errorMessage: strings!.isRequiredErrorMessage || '*'
+        errorMessage: strings!.isRequiredErrorMessage || ' '
       });
       return;
     }
@@ -453,14 +458,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             }
 
             this.setState({
-              errorMessage: strings!.invalidInputErrorMessage || '*'
+              errorMessage: strings!.invalidInputErrorMessage || ' '
             });
 
           } else {
             // Check against optional date boundaries
             if (this._isDateOutOfBounds(date, minDate, maxDate)) {
               this.setState({
-                errorMessage: strings!.isOutOfBoundsErrorMessage || '*'
+                errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
               });
             } else {
               this.setState({

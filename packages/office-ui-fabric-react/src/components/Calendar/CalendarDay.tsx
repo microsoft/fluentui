@@ -2,14 +2,13 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  autobind,
   css,
   getId,
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
-import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import {
@@ -25,7 +24,6 @@ import {
   getMonthStart,
   getMonthEnd
 } from '../../utilities/dateMath/DateMath';
-import TimeConstants from '../../utilities/dateValues/TimeConstants';
 
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
@@ -43,8 +41,12 @@ export interface IDayInfo {
   onSelected: () => void;
 }
 
+export interface ICalendarDay {
+  focus(): void;
+}
+
 export interface ICalendarDayProps extends React.Props<CalendarDay> {
-  componentRef?: () => void;
+  componentRef?: (c: ICalendarDay) => void;
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;
@@ -93,21 +95,21 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayProps) {
+  public componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps)
     });
   }
 
-  public render() {
-    let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate } = this.props;
-    let dayPickerId = getId('DatePickerDay-dayPicker');
-    let monthAndYearId = getId('DatePickerDay-monthAndYear');
-    let leftNavigationIcon = navigationIcons.leftNavigation;
-    let rightNavigationIcon = navigationIcons.rightNavigation;
-    let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
-    let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
+  public render(): JSX.Element {
+    const { activeDescendantId, weeks } = this.state;
+    const { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate } = this.props;
+    const dayPickerId = getId('DatePickerDay-dayPicker');
+    const monthAndYearId = getId('DatePickerDay-monthAndYear');
+    const leftNavigationIcon = navigationIcons.leftNavigation;
+    const rightNavigationIcon = navigationIcons.rightNavigation;
+    const weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
+    const selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -286,13 +288,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _findCornerIndexes(week: IDayInfo[]) {
+  private _findCornerIndexes(week: IDayInfo[]): number[] {
 
-    let cornerIndexes = [];
+    const cornerIndexes = [];
 
     for (let i = 0, length = week.length; i < length; i++) {
 
-      let day = week[i];
+      const day = week[i];
       if (day.isInMonth) {
         cornerIndexes.push(i);
       }
@@ -312,9 +314,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     cornerIndexes: number[],
     singleCornerStyle: string,
     leftCornerStyle: string,
-    rightCornerStyle: string) {
+    rightCornerStyle: string): void {
 
-    let cornersLength = cornerIndexes.length;
+    const cornersLength = cornerIndexes.length;
     if (cornersLength > 0) {
 
       if (cornersLength === 1) {
@@ -337,7 +339,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       } else {
 
         // Assume we are on the last week. Check if second-to-last week needs corner styles
-        let lastDayIndex = DAYS_IN_WEEK - 1;
+        const lastDayIndex = DAYS_IN_WEEK - 1;
         if (cornerIndexes[cornersLength - 1] !== lastDayIndex) {
           weekCornersStyled[(weekIndex - 1) + '_' + lastDayIndex] = rightCornerStyle;
         }
@@ -345,12 +347,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _getWeekCornerStyles(weeks: IDayInfo[][]) {
+  private _getWeekCornerStyles(weeks: IDayInfo[][]): IWeekCorners {
 
-    let weekCornersStyled: any = {};
-    let numberOfWeeks = weeks.length;
-    let indexesFirstWeek = this._findCornerIndexes(weeks[0]);
-    let indexesLastWeek = this._findCornerIndexes(weeks[numberOfWeeks - 1]);
+    const weekCornersStyled: any = {};
+    const numberOfWeeks = weeks.length;
+    const indexesFirstWeek = this._findCornerIndexes(weeks[0]);
+    const indexesLastWeek = this._findCornerIndexes(weeks[numberOfWeeks - 1]);
 
     this._populateCornerStyles(
       weekCornersStyled,
@@ -373,13 +375,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return weekCornersStyled;
   }
 
-  private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number) {
-    let cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
+  private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
+    const cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
 
     return cornerStyle;
   }
 
-  private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number) {
+  private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number): void {
     const { minDate, maxDate } = this.props;
     let targetDate: Date | undefined = undefined;
 
@@ -400,24 +402,21 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  @autobind
-  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown = (callback: () => void, ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
 
-  @autobind
-  private _onDayKeyDown(originalDate: Date, weekIndex: number, dayIndex: number)
-    : (ev: React.KeyboardEvent<HTMLElement>) => void {
+  private _onDayKeyDown = (originalDate: Date, weekIndex: number, dayIndex: number)
+    : (ev: React.KeyboardEvent<HTMLElement>) => void => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
     };
   }
 
-  @autobind
-  private _onSelectDate(selectedDate: Date) {
-    let {
+  private _onSelectDate = (selectedDate: Date): void => {
+    const {
       onSelectDate,
       dateRangeType,
       firstDayOfWeek,
@@ -439,7 +438,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     // Navigate to next or previous month if needed
     if (autoNavigateOnSelection && selectedDate.getMonth() !== navigatedDate.getMonth()) {
-      let compareResult = compareDatePart(selectedDate, navigatedDate);
+      const compareResult = compareDatePart(selectedDate, navigatedDate);
       if (compareResult < 0) {
         this._onSelectPrevMonth();
       } else if (compareResult > 0) {
@@ -448,44 +447,38 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  @autobind
-  private _onSelectNextMonth() {
+  private _onSelectNextMonth = (): void => {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, 1), false);
   }
 
-  @autobind
-  private _onSelectPrevMonth() {
+  private _onSelectPrevMonth = (): void => {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
   }
 
-  @autobind
-  private _onHeaderSelect() {
-    let { onHeaderSelect } = this.props;
+  private _onHeaderSelect = (): void => {
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
       onHeaderSelect(true);
     }
   }
 
-  @autobind
-  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let { onHeaderSelect } = this.props;
+  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }
   }
 
-  @autobind
-  private _onPrevMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onPrevMonthKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectPrevMonth, ev);
   }
 
-  @autobind
-  private _onNextMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onNextMonthKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectNextMonth, ev);
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    let {
+    const {
       navigatedDate,
       selectedDate,
       dateRangeType,
@@ -496,9 +489,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       showSixWeeksByDefault,
       workWeekDays
     } = propsToUse;
-    let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
-    let todaysDate = today || new Date();
-    let weeks: IDayInfo[][] = [];
+    const date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
+    const todaysDate = today || new Date();
+    const weeks: IDayInfo[][] = [];
 
     // Cycle the date backwards to get to the first day of the week.
     while (date.getDay() !== firstDayOfWeek) {
@@ -516,13 +509,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let shouldGetWeeks = true;
 
     for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
-      let week: IDayInfo[] = [];
+      const week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        let originalDate = new Date(date.toString());
-        let dayInfo: IDayInfo = {
+        const originalDate = new Date(date.toString());
+        const dayInfo: IDayInfo = {
           key: date.toString(),
           date: date.getDate().toString(),
           originalDate: originalDate,

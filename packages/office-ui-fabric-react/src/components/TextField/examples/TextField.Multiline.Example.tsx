@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
+import { lorem } from '@uifabric/example-app-base';
 
 export class TextFieldMultilineExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-TextFieldExample'>
         <TextField
@@ -16,6 +17,7 @@ export class TextFieldMultilineExample extends React.Component<any, any> {
           multiline
           rows={ 4 }
           disabled={ true }
+          value={ lorem(100) }
         />
         <TextField
           label='Required'

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import './TextField.Examples.scss';
@@ -19,7 +18,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-TextFieldExample'>
         <TextField onRenderLabel={ this._onRenderLabel } />
@@ -27,10 +26,9 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _onRenderLabel(props: ITextFieldProps): JSX.Element {
+  private _onRenderLabel = (props: ITextFieldProps): JSX.Element => {
 
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
     return (
       <div className='ms-CustomRenderExample' style={ { display: 'flex', alignItems: 'center' } }>
         <span>TextField with custom label render</span>
@@ -56,15 +54,13 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
 
   }
 
-  @autobind
-  private _onClick(): void {
+  private _onClick = (): void => {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
   }
 
-  @autobind
-  private _onDismiss() {
+  private _onDismiss = (): void => {
     this.setState({
       isCalloutVisible: false
     });

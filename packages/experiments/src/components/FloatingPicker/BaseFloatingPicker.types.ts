@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel, ValidationState, IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
+import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -12,8 +14,17 @@ export interface IBaseFloatingPicker {
   /** Hides the picker */
   hidePicker: () => void;
 
-  /** Shows the picker */
-  showPicker: () => void;
+  /** Shows the picker
+   * @param updateValue optional param to indicate whether to update the query string
+   */
+  showPicker: (updateValue?: boolean) => void;
+
+  /** Gets the suggestions */
+  // tslint:disable-next-line:no-any
+  suggestions: any[];
+
+  /** Gets the input text */
+  inputText: string;
 }
 
 // Type T is the type of the item that is displayed
@@ -21,10 +32,12 @@ export interface IBaseFloatingPicker {
 // displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
 export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseFloatingPicker) => void;
+  componentRef?: (component?: IBaseFloatingPicker | null) => void;
 
-  /** The suggestions controller */
-  suggestionsController: SuggestionsController<T>;
+  /**
+   * The suggestions store
+   */
+  suggestionsStore: SuggestionsStore<T>;
 
   /**
    * The suggestions to show on zero query
@@ -34,7 +47,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * The input element to listen on events
    */
-  inputElement?: HTMLElement;
+  inputElement?: HTMLInputElement | null;
 
   /**
    * Function that specifies how an individual suggestion item will appear.
@@ -46,7 +59,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * Returns the already selected items so the resolver can filter them out.
    * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
    */
-  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
 
   /**
    * A callback for when the input has been changed
@@ -66,17 +79,13 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   onChange?: (item: T) => void;
 
   /**
-   * A callback that gets the rest of the results when a user clicks get more results.
-   */
-  onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
-  /**
    * ClassName for the picker.
    */
   className?: string;
   /**
    * The properties that will get passed to the Suggestions component.
    */
-  pickerSuggestionsProps?: IBasePickerSuggestionsProps;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
@@ -84,7 +93,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * A function used to validate if raw text entered into the well can be added
    */
-  onValidateInput?: (input: string) => ValidationState;
+  onValidateInput?: (input: string) => boolean;
   /**
    * The text to display while searching for more results in a limited suggestions list
    */
@@ -95,8 +104,13 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    */
   createGenericItem?: (
     input: string,
-    ValidationState: ValidationState
+    isValid: boolean
   ) => ISuggestionModel<T>;
+
+  /**
+   * The callback that should be called to see if the force resolve command should be shown
+   */
+  showForceResolve?: () => boolean;
 
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled
@@ -113,4 +127,30 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * Width for the suggestions callout
    */
   calloutWidth?: number;
+
+  /**
+   * The callback that should be called when the suggestions are shown
+   */
+  onSuggestionsShown?: () => void;
+
+  /**
+   * The callback that should be called when the suggestions are hiden
+   */
+  onSuggestionsHidden?: () => void;
+}
+
+export interface IBaseFloatingPickerSuggestionProps {
+  /**
+   * Whether or not the first selectable item in the suggestions list should be selected
+   */
+  shouldSelectFirstItem?: () => boolean;
+
+  /**
+ * The header items props
+ */
+  headerItemsProps?: ISuggestionsHeaderFooterProps[];
+  /**
+   * The footer items props
+   */
+  footerItemsProps?: ISuggestionsHeaderFooterProps[];
 }

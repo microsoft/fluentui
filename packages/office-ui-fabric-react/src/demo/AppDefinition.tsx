@@ -53,6 +53,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/checkbox'
         },
         {
+          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
+          key: 'Coachmark',
+          name: 'Coachmark',
+          url: '#/examples/coachmark'
+        },
+        {
           component: require<any>('../components/ChoiceGroup/ChoiceGroupPage').ChoiceGroupPage,
           key: 'ChoiceGroup',
           name: 'ChoiceGroup',
@@ -353,8 +359,8 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('../components/ThemeGenerator/ThemeGeneratorPage').ThemeGeneratorPage,
           key: 'Theme Generator',
-          name: 'Beta Theme Generator',
-          url: '#examples/themeGenerator'
+          name: 'Theme Generator',
+          url: '#examples/themegenerator'
         },
         {
           component: require<any>('./ComponentStatus/ComponentStatusPage').ComponentStatusPage,

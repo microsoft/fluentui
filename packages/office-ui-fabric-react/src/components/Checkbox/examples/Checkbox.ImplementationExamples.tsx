@@ -8,7 +8,6 @@ import {
   Persona,
   PersonaSize
 } from 'office-ui-fabric-react/lib/Persona';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
@@ -26,10 +25,10 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
-  public render() {
-    let { isChecked } = this.state;
+  public render(): JSX.Element {
+    const { isChecked } = this.state;
 
-    let styles: ICheckboxStyles = {
+    const styles: ICheckboxStyles = {
       root: {
         marginTop: '10px'
       }
@@ -92,16 +91,15 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     );
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
     console.log(`The option has been changed to ${isChecked}.`);
   }
 
-  @autobind
-  private _onControlledCheckboxChange(ev: React.FormEvent<HTMLElement>, checked: boolean): void {
+  private _onControlledCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isChecked: checked! });
   }
 
-  private _renderPersonaLabel(props: ICheckboxProps) {
+  private _renderPersonaLabel(props: ICheckboxProps): JSX.Element {
     const DEFAULT_IMAGE_URL = '/_layouts/15/userphoto.aspx?size=S&accountname=';
     return <Persona primaryText={ props.label } imageUrl={ DEFAULT_IMAGE_URL } size={ PersonaSize.size32 } />;
   }

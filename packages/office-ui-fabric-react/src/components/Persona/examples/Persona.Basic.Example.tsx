@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   Persona,
   PersonaSize,
@@ -31,8 +30,8 @@ export class PersonaBasicExample extends React.Component<{}, {
     };
   }
 
-  public render() {
-    let { renderPersonaDetails } = this.state;
+  public render(): JSX.Element {
+    const { renderPersonaDetails } = this.state;
 
     return (
       <div>
@@ -111,8 +110,7 @@ export class PersonaBasicExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked: boolean | undefined): void {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked: boolean | undefined): void => {
     this.setState({ renderPersonaDetails: checked });
   }
 }

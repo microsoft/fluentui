@@ -2,6 +2,7 @@ import * as React from 'react';
 import { registerLanguage, highlightBlock } from 'highlight.js';
 import * as javascript from 'highlight.js/lib/languages/javascript';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { createRef } from '@uifabric/utilities/lib/createRef';
 
 registerLanguage('javascript', javascript);
 
@@ -10,13 +11,13 @@ export interface IHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export class Highlight extends BaseComponent<IHighlightProps, {}> {
-  private _codeElement: HTMLElement;
+  private _codeElement = createRef<HTMLElement>();
 
   public render(): JSX.Element {
     return (
       <pre>
         <code
-          ref={ this._resolveRef('_codeElement') }
+          ref={ this._codeElement }
           className='javascript'
         >
           { this.props.children }
@@ -30,6 +31,8 @@ export class Highlight extends BaseComponent<IHighlightProps, {}> {
   }
 
   public componentDidMount(): void {
-    highlightBlock(this._codeElement);
+    if (this._codeElement.current) {
+      highlightBlock(this._codeElement.current);
+    }
   }
 }

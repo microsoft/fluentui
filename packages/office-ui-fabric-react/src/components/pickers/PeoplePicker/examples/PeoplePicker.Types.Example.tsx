@@ -3,8 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import {
   BaseComponent,
-  assign,
-  autobind
+  assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -55,9 +54,9 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   constructor(props: {}) {
     super(props);
-    let peopleList: IPersonaWithMenu[] = [];
+    const peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
-      let target: IPersonaWithMenu = {};
+      const target: IPersonaWithMenu = {};
 
       assign(target, persona);
       peopleList.push(target);
@@ -151,6 +150,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -174,6 +174,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         } }
         componentRef={ this._resolveRef('_picker') }
         onInputChange={ this._onInputChange }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -194,6 +195,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -216,6 +218,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -238,6 +241,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
@@ -260,14 +264,15 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
+        resolveDelay={ 300 }
       />
     );
   }
 
   private _renderControlledPicker() {
-    let controlledItems = [];
+    const controlledItems = [];
     for (let i = 0; i < 5; i++) {
-      let item = this.state.peopleList[i];
+      const item = this.state.peopleList[i];
       if (this.state.currentSelectedItems!.indexOf(item) === -1) {
         controlledItems.push(this.state.peopleList[i]);
       }
@@ -287,9 +292,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
           } }
           componentRef={ this._resolveRef('_picker') }
+          resolveDelay={ 300 }
         />
         <label> Click to Add a person </label>
-        { controlledItems.map(item => <div>
+        { controlledItems.map((item, index) => <div key={ index }>
           <DefaultButton
             className='controlledPickerButton'
             // tslint:disable-next-line:jsx-no-lambda
@@ -299,58 +305,52 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
               });
             } }
           >
-            <Persona { ...item} />
+            <Persona { ...item } />
           </DefaultButton>
         </div>) }
       </div>
     );
   }
 
-  @autobind
-  private _onItemsChange(items: any[]) {
+  private _onItemsChange = (items: any[]): void => {
     this.setState({
       currentSelectedItems: items
     });
   }
 
-  @autobind
-  private _onSetFocusButtonClicked() {
+  private _onSetFocusButtonClicked = (): void => {
     if (this._picker) {
       this._picker.focusInput();
     }
   }
 
-  @autobind
-  private _renderFooterText(): JSX.Element {
+  private _renderFooterText = (): JSX.Element => {
     return <div>No additional results</div>;
   }
 
-  @autobind
-  private _onRemoveSuggestion(item: IPersonaProps): void {
-    let { peopleList, mostRecentlyUsed: mruState } = this.state;
-    let indexPeopleList: number = peopleList.indexOf(item);
-    let indexMostRecentlyUsed: number = mruState.indexOf(item);
+  private _onRemoveSuggestion = (item: IPersonaProps): void => {
+    const { peopleList, mostRecentlyUsed: mruState } = this.state;
+    const indexPeopleList: number = peopleList.indexOf(item);
+    const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
     if (indexMostRecentlyUsed >= 0) {
-      let newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
+      const newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }
 
-  @autobind
-  private _onItemSelected(item: IPersonaProps) {
+  private _onItemSelected = (item: IPersonaProps): Promise<IPersonaProps> => {
     const processedItem = Object.assign({}, item);
     processedItem.primaryText = `${item.primaryText} (selected)`;
     return new Promise<IPersonaProps>((resolve, reject) => setTimeout(() => resolve(processedItem), 250));
   }
 
-  @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
+  private _onFilterChanged = (filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -362,23 +362,20 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
   }
 
-  @autobind
-  private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
     return this._filterPromise(mostRecentlyUsed);
   }
 
-  @autobind
-  private _returnMostRecentlyUsedWithLimit(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _returnMostRecentlyUsedWithLimit = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
     mostRecentlyUsed = mostRecentlyUsed.splice(0, 3);
     return this._filterPromise(mostRecentlyUsed);
   }
 
-  @autobind
-  private _onFilterChangedWithLimit(filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+  private _onFilterChangedWithLimit = (filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     return this._onFilterChanged(filterText, currentPersonas, 3);
   }
 
@@ -413,18 +410,15 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
   }
 
-  @autobind
-  private _toggleDelayResultsChange(toggleState: boolean) {
+  private _toggleDelayResultsChange = (toggleState: boolean): void => {
     this.setState({ delayResults: toggleState });
   }
 
-  @autobind
-  private _dropDownSelected(option: IDropdownOption) {
+  private _dropDownSelected = (option: IDropdownOption): void => {
     this.setState({ currentPicker: option.key });
   }
 
-  @autobind
-  private _validateInput(input: string) {
+  private _validateInput = (input: string): ValidationState => {
     if (input.indexOf('@') !== -1) {
       return ValidationState.valid;
     } else if (input.length > 1) {

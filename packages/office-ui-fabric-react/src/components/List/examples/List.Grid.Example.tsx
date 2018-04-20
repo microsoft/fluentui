@@ -3,7 +3,6 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Grid.Example.scss';
 import { IRectangle } from '../../../Utilities';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IListGridExampleProps {
   items: any[];
@@ -13,7 +12,6 @@ const ROWS_PER_PAGE = 3;
 const MAX_ROW_HEIGHT = 250;
 
 export class ListGridExample extends React.Component<IListGridExampleProps> {
-  private _positions: any;
   private _columnCount: number;
   private _columnWidth: number;
   private _rowHeight: number;
@@ -21,12 +19,11 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
   constructor(props: IListGridExampleProps) {
     super(props);
 
-    this._positions = {};
     this._getItemCountForPage = this._getItemCountForPage.bind(this);
     this._getPageHeight = this._getPageHeight.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <FocusZone>
         <List
@@ -41,7 +38,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
     );
   }
 
-  private _getItemCountForPage(itemIndex: number, surfaceRect: IRectangle) {
+  private _getItemCountForPage(itemIndex: number, surfaceRect: IRectangle): number {
     if (itemIndex === 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
@@ -51,12 +48,11 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
     return this._columnCount * ROWS_PER_PAGE;
   }
 
-  private _getPageHeight(itemIndex: number, surfaceRect: IRectangle) {
+  private _getPageHeight(itemIndex: number, surfaceRect: IRectangle): number {
     return this._rowHeight * ROWS_PER_PAGE;
   }
 
-  @autobind
-  private _onRenderCell(item: any, index: number | undefined): JSX.Element {
+  private _onRenderCell = (item: any, index: number | undefined): JSX.Element => {
     return (
       <div
         className='ms-ListGridExample-tile'

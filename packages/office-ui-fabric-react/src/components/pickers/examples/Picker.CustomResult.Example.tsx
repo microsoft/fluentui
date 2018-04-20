@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import {
   IDocumentCardActionsProps,
   IDocumentCardPreviewProps,
@@ -282,7 +281,7 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
 };
 
 export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
-  let {
+  const {
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
@@ -297,13 +296,13 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
 };
 
 export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
-  let {
+  const {
     documentActionsProps,
     documentPreviewProps,
     documentActivityProps,
     documentTitleProps
   } = documentProps.item;
-  let actions: IButtonProps[] = [];
+  const actions: IButtonProps[] = [];
   if (documentActionsProps) {
     documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
     actions.push({
@@ -342,7 +341,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Checkbox
@@ -377,22 +376,21 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     return props.documentTitleProps.title;
   }
 
-  @autobind
-  private _onDisabledButtonClick(): void {
+  private _onDisabledButtonClick = (): void => {
     this.setState({
       isPickerDisabled: !this.state.isPickerDisabled
     });
   }
 
-  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]) {
+  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
     return filterText ? data.filter(item => item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, items)) : [];
   }
 
-  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]) {
+  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean {
     if (!items || !items.length || items.length === 0) {
       return false;
     }
-    let documentTitle = document.documentTitleProps && document.documentTitleProps.title;
+    const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
     return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
   }
 }

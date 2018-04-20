@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,9 +22,15 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-13"`,
-      src: `url('${baseUrl}fabric-icons-13-02c4bea1.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-13-be3ab2c9.woff') format('woff')`,
     },
     icons: {
+      'PaddingTop': '\uF519',
+      'PaddingBottom': '\uF51A',
+      'PaddingLeft': '\uF51B',
+      'PaddingRight': '\uF51C',
+      'NavigationFlipper': '\uF51D',
+      'AlignJustify': '\uF51E',
       'TextOverflow': '\uF51F',
       'VisualsFolder': '\uF520',
       'VisualsStore': '\uF521',
@@ -102,6 +108,7 @@ export function initializeIcons(
       'SquareShapeSolid': '\uF63D',
       'TriangleShapeSolid': '\uF63E',
       'DropShapeSolid': '\uF63F',
+      'RectangleShapeSolid': '\uF640',
       'InsertColumnsLeft': '\uF64A',
       'InsertColumnsRight': '\uF64B',
       'InsertRowsAbove': '\uF64C',
@@ -110,17 +117,14 @@ export function initializeIcons(
       'DeleteRows': '\uF64F',
       'DeleteRowsMirrored': '\uF650',
       'DeleteTable': '\uF651',
-      'GitLogo': '\uF65D',
-      'GitHubLogo': '\uF65E',
-      'ApacheMavenLogo': '\uF65F',
-      'NPMLogo': '\uF660',
-      'GitFork': '\uF661',
-      'SVNLogo': '\uF662',
-      'JenkinsLogo': '\uF663',
       'VersionControlPush': '\uF664',
       'ExternalGit': '\uF665',
+      'WhiteBoardApp16': '\uF673',
+      'WhiteBoardApp32': '\uF674',
       'InsertSignatureLine': '\uF677',
-      'ArrangeByFrom': '\uF678'
+      'ArrangeByFrom': '\uF678',
+      'Phishing': '\uF679',
+      'CreateMailRule': '\uF67A'
     }
   };
 

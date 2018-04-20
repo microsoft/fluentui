@@ -21,15 +21,19 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
         className="ms-CommandBarItem"
       >
         <button
+          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
           aria-label={undefined}
+          aria-posinset={1}
+          aria-setsize={1}
           className="ms-CommandBarItem-link undefined"
           data-command-key="TestKey1"
           id="CommandBar0TestKey1"
           name="TestText 1"
           onClick={[Function]}
           role="menuitem"
+          title=""
         >
           <span
             className="ms-CommandBarItem-commandText"
@@ -38,7 +42,6 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
           </span>
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-CommandBarItem-chevronDown
                 {

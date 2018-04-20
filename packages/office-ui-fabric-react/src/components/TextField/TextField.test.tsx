@@ -9,7 +9,7 @@ import { TextField } from './TextField';
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     return renderedDOM as HTMLElement;
   }
 
@@ -26,13 +26,13 @@ describe('TextField', () => {
 
   it('renders TextField correctly', () => {
     const component = renderer.create(<TextField label='Label' />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should render label and value to input element', () => {
-    const exampleLabel: string = 'this is label';
-    const exampleValue: string = 'this is value';
+    const exampleLabel = 'this is label';
+    const exampleValue = 'this is value';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -51,7 +51,7 @@ describe('TextField', () => {
   });
 
   it('should render prefix in input element', () => {
-    const examplePrefix: string = 'this is a prefix';
+    const examplePrefix = 'this is a prefix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -65,7 +65,7 @@ describe('TextField', () => {
   });
 
   it('should render suffix in input element', () => {
-    const exampleSuffix: string = 'this is a suffix';
+    const exampleSuffix = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -79,12 +79,12 @@ describe('TextField', () => {
   });
 
   it('should render both prefix and suffix in input element', () => {
-    const examplePrefix: string = 'this is a prefix';
-    const exampleSuffix: string = 'this is a suffix';
+    const examplePrefix = 'this is a prefix';
+    const exampleSuffix = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
-        prefix={ examplePrefix}
+        prefix={ examplePrefix }
         suffix={ exampleSuffix }
       />
     );
@@ -133,7 +133,7 @@ describe('TextField', () => {
   });
 
   describe('error message', () => {
-    const errorMessage: string = 'The string is too long, should not exceed 3 characters.';
+    const errorMessage = 'The string is too long, should not exceed 3 characters.';
 
     function assertErrorMessage(renderedDOM: HTMLElement, expectedErrorMessage: string | boolean): void {
       const errorMessageDOM: HTMLElement =
@@ -268,7 +268,7 @@ describe('TextField', () => {
 
     it('should trigger validation only on focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -287,11 +287,16 @@ describe('TextField', () => {
 
       ReactTestUtils.Simulate.focus(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input '));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).toEqual(3);
     });
 
     it('should trigger validation only on blur', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -305,17 +310,22 @@ describe('TextField', () => {
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-      ReactTestUtils.Simulate.focus(inputDOM);
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
       expect(validationCallCount).toEqual(1);
 
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input va'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
+
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).toEqual(3);
     });
 
     it('should trigger validation on both blur and focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -335,14 +345,25 @@ describe('TextField', () => {
 
       ReactTestUtils.Simulate.focus(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before foc'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before focus'));
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).toEqual(3);
+
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
       ReactTestUtils.Simulate.blur(inputDOM);
-      expect(validationCallCount).toEqual(3);
+      expect(validationCallCount).toEqual(4);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before bl'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).toEqual(5);
     });
 
     it('should not trigger validation on component mount', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return '';
       };
@@ -381,7 +402,7 @@ describe('TextField', () => {
 
   it('should call onChanged handler for input change', () => {
     let callCount = 0;
-    let onChangedSpy = (value: string) => { callCount++; };
+    const onChangedSpy = (value: string) => { callCount++; };
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -402,6 +423,24 @@ describe('TextField', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).toEqual(2);
+  });
+
+  it('should not call onChanged when initial value is undefined and input change is an empty string', () => {
+    let callCount = 0;
+    const onChangedSpy = (value: string) => { callCount++; };
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        onChanged={ onChangedSpy }
+      />
+    );
+
+    expect(callCount).toEqual(0);
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
+    expect(callCount).toEqual(0);
   });
 
   it('should select a range of text', () => {

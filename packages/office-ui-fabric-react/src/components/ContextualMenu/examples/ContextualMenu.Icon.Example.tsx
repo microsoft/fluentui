@@ -13,8 +13,8 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
     };
   }
 
-  public render() {
-    let { showCallout } = this.state;
+  public render(): JSX.Element {
+    const { showCallout } = this.state;
 
     return (
       <div>

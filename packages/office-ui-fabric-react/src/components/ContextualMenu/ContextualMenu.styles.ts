@@ -130,7 +130,21 @@ export const getMenuItemStyles = memoizeFunction((
       color: semanticColors.menuIcon,
       selectors: {
         [HighContrastSelector]: {
-          color: 'HighlightText',
+          color: 'inherit',
+        },
+        ['$root:hover &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
+        },
+        ['$root:focus &']: {
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
         }
       }
     },
@@ -154,13 +168,15 @@ export const getMenuItemStyles = memoizeFunction((
       flexShrink: '0',
       fontSize: FontSizes.mini
     },
-    splitButtonFlexContainer: {
-      display: 'flex',
-      height: ContextualMenuItemHeight,
-      flexWrap: 'nowrap',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
+    splitButtonFlexContainer: [
+      getFocusStyle(theme),
+      {
+        display: 'flex',
+        height: ContextualMenuItemHeight,
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }],
     splitButtonSeparator: {}
   };
 

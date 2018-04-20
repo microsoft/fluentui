@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallowUntilTarget } from '../../common/shallowUntilTarget';
 
-import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
+import { ResizeGroup } from './ResizeGroup';
+import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
@@ -16,7 +17,7 @@ function onReduceScalingData(data: ITestScalingData): ITestScalingData {
   };
 }
 
-function getRequiredResizeGroupProps() {
+function getRequiredResizeGroupProps(): { data: {}, onReduceData: sinon.SinonStub, onRenderData: sinon.SinonStub } {
   return {
     data: {},
     onReduceData: sinon.stub(),
@@ -44,13 +45,13 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
 
-    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
+    const wrapper = shallowUntilTarget<IResizeGroupProps, IResizeGroupState>(
       <ResizeGroup
         data={ initialData }
         onReduceData={ onReduceScalingData }
         onRenderData={ onRenderData }
       />
-    );
+      , 'ResizeGroupBase');
 
     expect(wrapper.containsMatchingElement(onRenderData(initialData))).toEqual(true);
   });
@@ -62,7 +63,7 @@ describe('ResizeGroup', () => {
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub);
 
@@ -78,7 +79,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         50);
@@ -101,7 +102,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         10);
@@ -117,7 +118,7 @@ describe('ResizeGroup', () => {
     it('does not call getMeasuredElementBounds when the data has already been cached', () => {
       const dataToMeasure = { index: 5, cacheKey: 'foo' };
 
-      let measurementCache = getMeasurementCache();
+      const measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataToMeasure, 40);
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
@@ -125,7 +126,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
       const measuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         measuredElementWidthStub,
         100);
@@ -144,7 +145,7 @@ describe('ResizeGroup', () => {
       { cacheKey: '4' },
       { cacheKey: '3' }];
 
-      let measurementCache = getMeasurementCache();
+      const measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 50);
       measurementCache.addMeasurementToCache(dataArray[1], 40);
       measurementCache.addMeasurementToCache(dataArray[2], 5);
@@ -157,7 +158,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
       const measuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         measuredElementWidthStub,
         10);
@@ -175,7 +176,7 @@ describe('ResizeGroup', () => {
       const dataArray = [{ cacheKey: '5' },
       { cacheKey: '4' }];
 
-      let measurementCache = getMeasurementCache();
+      const measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 50);
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
@@ -185,7 +186,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
       const measuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         measuredElementWidthStub,
         10);
@@ -210,7 +211,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         10);
@@ -228,7 +229,7 @@ describe('ResizeGroup', () => {
       const dataArray = [{ cacheKey: '5' },
       { cacheKey: '4' }];
 
-      let measurementCache = getMeasurementCache();
+      const measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 50);
       measurementCache.addMeasurementToCache(dataArray[1], 40);
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
@@ -240,7 +241,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
       const measuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         measuredElementWidthStub,
         10);
@@ -259,7 +260,7 @@ describe('ResizeGroup', () => {
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         {},
         getMeasuredElementWidthStub,
         50);
@@ -285,11 +286,11 @@ describe('ResizeGroup', () => {
         initialWidth);
 
       // Pass in a state that reflects some rendered data
-      let currentState = {
+      const currentState = {
         renderedData: renderedData
       };
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         currentState,
         getMeasuredElementWidthStub,
         reducedWidth);
@@ -320,11 +321,11 @@ describe('ResizeGroup', () => {
         initialWidth);
 
       // Pass in a state that reflects some rendered data
-      let currentState = {
+      const currentState = {
         renderedData: renderedData
       };
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         currentState,
         getMeasuredElementWidthStub,
         increasedWidth);
@@ -346,7 +347,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         50);
@@ -369,7 +370,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(100);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         72);
@@ -393,7 +394,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         50);
@@ -416,7 +417,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(75);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         40);
@@ -441,7 +442,7 @@ describe('ResizeGroup', () => {
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         getMeasuredElementWidthStub,
         40);
@@ -474,11 +475,11 @@ describe('ResizeGroup', () => {
         initialWidth);
 
       // Pass in a state that reflects some rendered data
-      let currentState = {
+      const currentState = {
         renderedData: renderedData
       };
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         currentState,
         getMeasuredElementWidthStub,
         increasedWidth);
@@ -505,7 +506,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
       const measuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         measuredElementWidthStub,
         100);
@@ -538,7 +539,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
       const measuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         measuredElementWidthStub,
         100);
@@ -555,7 +556,7 @@ describe('ResizeGroup', () => {
       const dataArray = [{ cacheKey: '5' },
       { cacheKey: '6' }];
 
-      let measurementCache = getMeasurementCache();
+      const measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 40);
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
@@ -566,7 +567,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
       const measuredElementWidthStub = sinon.stub();
 
-      let result = getNextResizeGroupState(resizeGroupProps,
+      const result = getNextResizeGroupState(resizeGroupProps,
         resizeGroupState,
         measuredElementWidthStub,
         100);
@@ -595,7 +596,7 @@ describe('ResizeGroup', () => {
       initialWidth);
 
     // Pass in a state that reflects some rendered data
-    let currentState: IResizeGroupState = {
+    const currentState: IResizeGroupState = {
       renderedData: renderedData,
       dataToMeasure: { index: 8 },
       resizeDirection: 'grow'
@@ -603,7 +604,7 @@ describe('ResizeGroup', () => {
 
     resizeGroupProps.onReduceData.returns({ index: 7 });
 
-    let result = getNextResizeGroupState(resizeGroupProps,
+    const result = getNextResizeGroupState(resizeGroupProps,
       currentState,
       getMeasuredElementWidthStub,
       initialWidth);
@@ -623,7 +624,7 @@ describe('ResizeGroup', () => {
   it('does not render to the hidden div when there is no dataToMeasure', () => {
     const resizeGroupStateProvider = getNextResizeGroupStateProvider();
 
-    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(undefined);
+    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(undefined);
 
     expect(result).toEqual(false);
   });
@@ -631,18 +632,18 @@ describe('ResizeGroup', () => {
   it('does render to the hidden div when there is dataToMeasure', () => {
     const resizeGroupStateProvider = getNextResizeGroupStateProvider();
 
-    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv({ index: 18 });
+    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv({ index: 18 });
 
     expect(result).toEqual(true);
   });
 
   it('does not render to the hidden div when there is dataToMeasure that is in the cache', () => {
-    let data = { index: 8, cacheKey: 'myCoolCacheKey' };
+    const data = { index: 8, cacheKey: 'myCoolCacheKey' };
     const measurementCache = getMeasurementCache();
     measurementCache.addMeasurementToCache(data, 12);
     const resizeGroupStateProvider = getNextResizeGroupStateProvider(measurementCache);
 
-    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(data);
+    const result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(data);
 
     expect(result).toEqual(false);
   });

@@ -1,6 +1,87 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+
+## 5.7.0
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Minor changes
+
+- GetStarted page: Give titles links to their corresponding pages.
+
+## 5.6.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Updating build to React 16.3.1.
+
+## 5.6.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add Office Add-ins Toolkit
+
+## 5.5.2
+Tue, 27 Mar 2018 10:14:02 GMT
+
+### Patches
+
+- Adds missing neutralQuaternary and neutralQuaternaryAlt to document colors page
+
+## 5.5.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- Updated OfficeUIFabric Toolkit link to v4.0.0.
+
+## 5.5.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- Use arrow function properties instead of @autobind
+
+## 5.4.0
+Wed, 14 Mar 2018 10:28:26 GMT
+
+### Minor changes
+
+- Theme generator: exposing to the website.
+
+## 5.3.4
+Tue, 13 Mar 2018 20:00:06 GMT
+
+### Patches
+
+- Hide left nav on mobile.
+
+## 5.3.3
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Patches
+
+- Fixed in page nav so that the left nav links will display properly.
+
+## 5.3.2
+Thu, 01 Mar 2018 00:05:10 GMT
+
+### Patches
+
+- Improved left nav scroll behavior and added fix to webpack so that we can load component pages from our local machines with the UHF.
+
+## 5.3.1
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Patches
+
+- Left nav: Less jittery and component pages load in full height.
 
 ## 5.3.0
 Mon, 22 Jan 2018 11:14:27 GMT

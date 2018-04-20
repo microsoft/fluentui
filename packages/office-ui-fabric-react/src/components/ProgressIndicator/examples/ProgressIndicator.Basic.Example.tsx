@@ -8,9 +8,9 @@ export interface IProgressIndicatorBasicExampleState {
   percentComplete: number;
 }
 
-const INTERVAL_DELAY: number = 100;
-const INTERVAL_INCREMENT: number = .01;
-const RESTART_WAIT_TIME: number = 2000;
+const INTERVAL_DELAY = 100;
+const INTERVAL_INCREMENT = .01;
+const RESTART_WAIT_TIME = 2000;
 
 export class ProgressIndicatorBasicExample extends React.Component<{}, IProgressIndicatorBasicExampleState> {
 
@@ -28,16 +28,16 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     this._startProgressDemo = this._startProgressDemo.bind(this);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._startProgressDemo();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._async.dispose();
   }
 
-  public render() {
-    let { percentComplete } = this.state;
+  public render(): JSX.Element {
+    const { percentComplete } = this.state;
 
     return (
       <ProgressIndicator
@@ -48,7 +48,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     );
   }
 
-  private _startProgressDemo() {
+  private _startProgressDemo(): void {
     // reset the demo
     this.setState({
       percentComplete: 0

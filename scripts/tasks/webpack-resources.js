@@ -1,6 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('./merge');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+const webpackVersion = require('webpack/package.json').version;
+console.log(`Webpack version: ${webpackVersion}`);
 
 module.exports = {
   webpack,
@@ -16,33 +20,29 @@ module.exports = {
 
     const module = {
       noParse: [/autoit.js/],
-      loaders: [
+      rules: [
         {
           test: /\.js$/,
-          loader: 'source-map-loader',
+          use: 'source-map-loader',
           enforce: 'pre'
-        },
-        {
-          test: /\.json$/,
-          loader: 'json-loader'
         }
       ]
     };
 
-    const stats = 'errors-only';
     const devtool = 'source-map';
     const configs = [];
 
     if (!onlyProduction) {
       configs.push(merge(
         {
+          mode: 'development',
           output: {
             filename: `[name].js`,
-            path: path.resolve(process.cwd(), 'dist')
+            path: path.resolve(process.cwd(), 'dist'),
+            pathinfo: false
           },
           resolveLoader,
           module,
-          stats,
           devtool,
           plugins: getPlugins(packageName, false)
         },
@@ -52,13 +52,14 @@ module.exports = {
 
     if (isProduction) {
       configs.push(merge({
+        mode: 'production',
         output: {
           filename: `[name].min.js`,
           path: path.resolve(process.cwd(), 'dist')
         },
+
         resolveLoader,
         module,
-        stats,
         devtool,
         plugins: getPlugins(packageName, true)
       }, customConfig));
@@ -74,8 +75,10 @@ module.exports = {
       {
         devServer: {
           inline: true,
-          port: 4322,
+          port: 4322
         },
+
+        mode: 'development',
 
         resolveLoader: {
           modules: [
@@ -83,30 +86,28 @@ module.exports = {
             path.resolve(process.cwd(), 'node_modules')
           ]
         },
-
         resolve: {
           extensions: ['.ts', '.tsx', '.js']
         },
 
-        devtool: 'source-map',
+        devtool: 'eval',
 
         module: {
-          loaders: [
-            {
-              test: [/\.json$/],
-              enforce: 'pre',
-              loader: 'json-loader',
-              exclude: [
-                /node_modules/
-              ]
-            },
+          rules: [
             {
               test: [/\.tsx?$/],
-              loader: 'awesome-typescript-loader',
+              use: {
+                loader: 'ts-loader',
+                options: {
+                  experimentalWatchApi: true,
+                  transpileOnly: true
+                }
+              },
               exclude: [
                 /node_modules/,
-                /\.scss.ts$/
-              ]
+                /\.scss.ts$/,
+                /\.test.tsx?$/
+              ],
             },
             {
               test: /\.scss$/,
@@ -116,10 +117,10 @@ module.exports = {
               ],
               use: [
                 {
-                  loader: "@microsoft/loader-load-themed-styles", // creates style nodes from JS strings
+                  loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
                 },
                 {
-                  loader: "css-loader", // translates CSS into CommonJS
+                  loader: 'css-loader', // translates CSS into CommonJS
                   options: {
                     modules: true,
                     importLoaders: 2,
@@ -129,7 +130,6 @@ module.exports = {
                 },
                 {
                   loader: 'postcss-loader',
-
                   options: {
                     plugins: function () {
                       return [
@@ -139,7 +139,7 @@ module.exports = {
                   }
                 },
                 {
-                  loader: 'sass-loader',
+                  loader: 'sass-loader'
                 }
               ]
             }
@@ -147,7 +147,12 @@ module.exports = {
         },
 
         plugins: [
-          new WebpackNotifierPlugin()
+          new WebpackNotifierPlugin(),
+          new webpack.WatchIgnorePlugin([
+            /\.js$/,
+            /\.d\.ts$/
+          ]),
+          new ForkTsCheckerWebpackPlugin()
         ]
       },
       customConfig
@@ -160,21 +165,12 @@ function getPlugins(
   bundleName,
   isProduction
 ) {
-  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
   const plugins = [];
 
   if (isProduction) {
     plugins.push(
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
-      }),
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: true,
-          warnings: false
-        }
-      }),
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: bundleName + '.stats.html',

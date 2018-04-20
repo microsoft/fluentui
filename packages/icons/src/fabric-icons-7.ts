@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-7"`,
-      src: `url('${baseUrl}fabric-icons-7-143895dd.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-7-3ac670e6.woff') format('woff')`,
     },
     icons: {
       'LandscapeOrientation': '\uEF6B',
@@ -68,12 +68,14 @@ export function initializeIcons(
       'ZipFolder': '\uF012',
       'SurveyQuestions': '\uF01B',
       'TextDocument': '\uF029',
+      'TextDocumentShared': '\uF02B',
       'PageCheckedOut': '\uF02C',
       'SaveAndClose': '\uF038',
       'Script': '\uF03A',
       'Archive': '\uF03F',
       'ActivityFeed': '\uF056',
       'EventDate': '\uF059',
+      'ArrowUpRight': '\uF069',
       'CaretRight': '\uF06B',
       'SetAction': '\uF071',
       'CaretSolidLeft': '\uF08D',
@@ -109,6 +111,7 @@ export function initializeIcons(
       'CannedChat': '\uF0F2',
       'SkypeForBusinessLogo': '\uF0FC',
       'PageCheckedin': '\uF104',
+      'ReadOutLoud': '\uF112',
       'CaretBottomLeftSolid8': '\uF121',
       'CaretBottomRightSolid8': '\uF122',
       'FolderHorizontal': '\uF12B',
@@ -116,13 +119,12 @@ export function initializeIcons(
       'GiftboxOpen': '\uF133',
       'StatusCircleOuter': '\uF136',
       'StatusCircleInner': '\uF137',
-      'Toll': '\uF160',
-      'ExploreContentSingle': '\uF164',
-      'CollapseContent': '\uF165',
-      'CollapseContentSingle': '\uF166',
-      'InfoSolid': '\uF167',
-      'ProgressRingDots': '\uF16A',
-      'CaloriesAdd': '\uF172'
+      'StatusCircleRing': '\uF138',
+      'StatusTriangleOuter': '\uF139',
+      'StatusTriangleInner': '\uF13A',
+      'StatusTriangleExclamation': '\uF13B',
+      'StatusCircleExclamation': '\uF13C',
+      'StatusCircleErrorX': '\uF13D'
     }
   };
 

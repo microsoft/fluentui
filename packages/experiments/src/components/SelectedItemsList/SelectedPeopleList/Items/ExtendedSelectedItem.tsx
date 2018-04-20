@@ -1,12 +1,10 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
-import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { BaseComponent, css, getId, createRef } from '../../../../Utilities';
+import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import * as stylesImport from './ExtendedSelectedItem.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
@@ -16,7 +14,7 @@ export interface IPeoplePickerItemState {
 }
 
 export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
-  protected persona: HTMLElement;
+  protected persona = createRef<HTMLDivElement>();
 
   constructor(props: ISelectedPeopleItemProps) {
     super(props);
@@ -24,7 +22,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
   }
 
   public render(): JSX.Element {
-    let {
+    const {
       item,
       onExpandItem,
       onRemoveItem,
@@ -35,24 +33,23 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
     const itemId = getId();
     return (
       <div
-        ref={ this._resolveRef('persona') }
+        ref={ this.persona }
         className={ css(
           'ms-PickerPersona-container',
           styles.personaContainer,
           { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-          { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
+          { ['is-invalid ' + styles.validationError]: !item.isValid }
         ) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
         data-selection-index={ index }
         role={ 'listitem' }
         aria-labelledby={ 'selectedItemPersona-' + itemId }
-        onContextMenu={ this._onClick }
       >
         <div hidden={ !item.canExpand || onExpandItem === undefined }>
           <IconButton
-            onClick={ this.onClickIconButton(onExpandItem) }
-            iconProps={ { iconName: 'Add', style: { fontSize: '12px' } } }
+            onClick={ this._onClickIconButton(onExpandItem) }
+            iconProps={ { iconName: 'Add', style: { fontSize: '14px' } } }
             className={ css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />
@@ -64,46 +61,28 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           >
             <Persona
               { ...item }
-              presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
-              size={ PersonaSize.size28 }
+              onRenderCoin={ this.props.renderPersonaCoin }
+              onRenderPrimaryText={ this.props.renderPrimaryText }
+              size={ PersonaSize.size32 }
             />
           </div>
           <IconButton
-            onClick={ this.onClickIconButton(onRemoveItem) }
-            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
+            onClick={ this._onClickIconButton(onRemoveItem) }
+            iconProps={ { iconName: 'Cancel', style: { fontSize: '14px' } } }
             className={ css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />
         </div >
-        { this.state.contextualMenuVisible ? (
-          <ContextualMenu
-            items={ this.props.menuItems }
-            shouldFocusOnMount={ true }
-            target={ this.persona }
-            onDismiss={ this._onCloseContextualMenu }
-            directionalHint={ DirectionalHint.bottomAutoEdge }
-          />)
-          : null
-        }
       </div >);
   }
 
-  private onClickIconButton = (action: (() => void) | undefined): () => void => {
-    return (): void => {
+  private _onClickIconButton(action: (() => void) | undefined): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
+    return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
+      ev.stopPropagation();
+      ev.preventDefault();
       if (action) {
         action();
       }
     };
-  }
-
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
-    ev.preventDefault();
-    this.setState({ contextualMenuVisible: true });
-  }
-
-  @autobind
-  private _onCloseContextualMenu(ev: Event): void {
-    this.setState({ contextualMenuVisible: false });
   }
 }
