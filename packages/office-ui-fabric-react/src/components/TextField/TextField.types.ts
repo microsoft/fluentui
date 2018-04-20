@@ -78,7 +78,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   label?: string;
 
   /**
-   * Optional custom renderer for the label
+   * Optional custom renderer for the label.
    */
   onRenderLabel?: IRenderFunction<ITextFieldProps>;
 
@@ -86,6 +86,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * The textfield input description
    */
   description?: string;
+
+  /**
+   * Optional custom renderer for the description.
+   */
+  onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
    * @deprecated
@@ -110,12 +115,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
   /**
-  * Custom render function for prefix
+  * Custom render function for prefix.
   */
   onRenderPrefix?: IRenderFunction<ITextFieldProps>;
 
   /**
-  * Custom render function for suffix
+  * Custom render function for suffix.
   */
   onRenderSuffix?: IRenderFunction<ITextFieldProps>;
 
