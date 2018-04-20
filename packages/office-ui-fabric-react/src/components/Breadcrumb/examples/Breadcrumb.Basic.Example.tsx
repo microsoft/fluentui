@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   Breadcrumb, IBreadcrumbItem
 } from 'office-ui-fabric-react/lib/Breadcrumb';
@@ -13,7 +11,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const customDivider = () => <span>*</span>;
 
     return (
@@ -74,7 +72,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
+  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem): void => {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
 

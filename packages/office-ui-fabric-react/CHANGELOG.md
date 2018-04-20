@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Apr 2018 10:12:34 GMT and should not be manually modified.
+
+## 5.85.0
+Fri, 20 Apr 2018 10:12:34 GMT
+
+### Minor changes
+
+- TextField: Implemented input masking.
+- add onRenderDescription to TextField
+- Added support for native props on Panel for the root div with class ms-Panel
+- Added headerButtonProps prop to PivotItem to allow passing native props (data-* & aria-*) to the header/link/CommandButton element. Also depricated linkText and added headerText for semantic purposes.
+
+### Patches
+
+- DetailsRow: applying `flex-shrink:0` to the check cell to prevent it from squishing in the flex layout.
+- Revert unintended changes to Dropdown styles from #4512
 
 ## 5.84.0
 Thu, 19 Apr 2018 18:25:59 GMT

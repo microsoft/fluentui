@@ -37,7 +37,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       hidePersonaDetails,
       onRenderOptionalText,
@@ -62,6 +62,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       initialsColor,
       onPhotoLoadingStateChange,
       onRenderCoin,
+      onRenderInitials,
       presence,
       primaryText,
       showSecondaryText,
@@ -80,6 +81,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       initialsColor,
       onPhotoLoadingStateChange,
       onRenderCoin,
+      onRenderInitials,
       presence,
       primaryText,
       size,

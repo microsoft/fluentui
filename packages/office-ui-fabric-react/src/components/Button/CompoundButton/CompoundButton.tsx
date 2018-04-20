@@ -11,7 +11,7 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
    */
   protected _shouldUpdateComponentRef = false;
 
-  public render() {
+  public render(): JSX.Element {
     const { primary = false, styles, theme } = this.props;
     return (
       <BaseButton

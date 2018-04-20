@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 
 export class SpinButtonBasicWithIconDisabledExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div style={ { width: '400px' } }>
         <SpinButton

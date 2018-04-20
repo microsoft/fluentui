@@ -59,7 +59,7 @@ function _hasAnchorLink(path: string): boolean {
   return (path.match(/#/g) || []).length > 1;
 }
 
-function _extractAnchorLink(path) {
+function _extractAnchorLink(path): string {
   let split = path.split('#');
   let cleanedSplit = split.filter((value) => {
     if (value === '') {
@@ -136,7 +136,7 @@ if (isReady) {
 
 window.onunload = _onUnload;
 
-function addCSSToHeader(fileName: string) {
+function addCSSToHeader(fileName: string): void {
   let headEl = document.head;
   let linkEl = document.createElement('link');
 

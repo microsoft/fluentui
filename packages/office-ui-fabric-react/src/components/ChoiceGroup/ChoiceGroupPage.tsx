@@ -19,7 +19,7 @@ const ChoiceGroupImageExampleCode = require('!raw-loader!office-ui-fabric-react/
 const ChoiceGroupIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
 
 export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ChoiceGroup'
