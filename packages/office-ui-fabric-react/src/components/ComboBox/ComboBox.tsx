@@ -13,6 +13,7 @@ import {
   BaseComponent,
   divProperties,
   findIndex,
+  focusAsync,
   getId,
   getNativeProps,
   KeyCodes,
@@ -240,7 +241,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         focused &&
         this._comboBox.value &&
         document.activeElement !== this._comboBox.value.inputElement)) {
-      this.focus();
+      this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
 
     // If we should focusAfterClose AND
@@ -404,9 +405,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Set focus on the input
    */
-  public focus = (shouldOpenOnFocus?: boolean): void => {
+  public focus = (shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void => {
     if (this._comboBox.value) {
-      this._comboBox.value.focus();
+      if (useFocusAsync) {
+        focusAsync(this._comboBox.value);
+      } else {
+        this._comboBox.value.focus();
+      }
+
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
