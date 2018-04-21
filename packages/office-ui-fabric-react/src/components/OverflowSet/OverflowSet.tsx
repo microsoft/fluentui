@@ -10,7 +10,6 @@ import {
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
-import { IContextualMenuItem } from '../../ContextualMenu';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 import * as stylesImport from './OverflowSet.scss';
