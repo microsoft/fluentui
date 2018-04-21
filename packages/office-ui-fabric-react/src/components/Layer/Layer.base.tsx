@@ -73,11 +73,11 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.componentDidUpdate();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._removeLayerElement();
 
     if (this.props.hostId) {
@@ -88,7 +88,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     const host = this._getHost();
 
     const { className, getStyles, theme } = this.props;
@@ -146,7 +146,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <span
         className='ms-Layer'
@@ -155,7 +155,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     );
   }
 
-  private _removeLayerElement() {
+  private _removeLayerElement(): void {
     if (this._layerElement) {
       this.props.onLayerWillUnmount!();
 

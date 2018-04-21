@@ -28,15 +28,15 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     this._startProgressDemo = this._startProgressDemo.bind(this);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._startProgressDemo();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._async.dispose();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { percentComplete } = this.state;
 
     return (
@@ -48,7 +48,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     );
   }
 
-  private _startProgressDemo() {
+  private _startProgressDemo(): void {
     // reset the demo
     this.setState({
       percentComplete: 0

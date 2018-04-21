@@ -5,7 +5,7 @@ import './SearchBox.Examples.scss';
 // tslint:disable:jsx-no-lambda
 export class SearchBoxDisabledExample extends React.Component<any, any> {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-SearchBoxExample'>
         <SearchBox

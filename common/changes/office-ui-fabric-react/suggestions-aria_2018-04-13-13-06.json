@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Implemented input masking.",
+      "comment": "Plumb ARIA label for picker suggestion remove button",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "law@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }

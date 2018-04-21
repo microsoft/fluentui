@@ -94,13 +94,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayProps) {
+  public componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps)
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { activeDescendantId, weeks } = this.state;
     const { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate } = this.props;
     const dayPickerId = getId('DatePickerDay-dayPicker');
@@ -301,8 +301,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this.days[day.key] = element;
   }
 
-  private _findCornerIndexes(week: IDayInfo[]) {
-
+  private _findCornerIndexes(week: IDayInfo[]): number[] {
     const cornerIndexes = [];
 
     for (let i = 0, length = week.length; i < length; i++) {
@@ -327,7 +326,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     cornerIndexes: number[],
     singleCornerStyle: string,
     leftCornerStyle: string,
-    rightCornerStyle: string) {
+    rightCornerStyle: string): void {
 
     const cornersLength = cornerIndexes.length;
     if (cornersLength > 0) {
@@ -360,7 +359,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _getWeekCornerStyles(weeks: IDayInfo[][]) {
+  private _getWeekCornerStyles(weeks: IDayInfo[][]): IWeekCorners {
 
     const weekCornersStyled: any = {};
     const numberOfWeeks = weeks.length;
@@ -388,13 +387,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return weekCornersStyled;
   }
 
-  private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number) {
+  private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
     const cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
 
     return cornerStyle;
   }
 
-  private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number) {
+  private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number): void {
     const { minDate, maxDate } = this.props;
     let targetDate: Date | undefined = undefined;
 

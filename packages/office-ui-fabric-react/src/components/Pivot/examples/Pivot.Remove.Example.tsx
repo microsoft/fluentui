@@ -26,7 +26,7 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
 
     this._handleClick = this._handleClick.bind(this);
   }
-  public render() {
+  public render(): JSX.Element {
     let pivotArray: React.ReactElement<IPivotItemProps>[] = [];
 
     if (this.state.shouldShowFirstPivotItem) {

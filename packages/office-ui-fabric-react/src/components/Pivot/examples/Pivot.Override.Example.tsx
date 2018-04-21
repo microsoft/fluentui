@@ -17,7 +17,7 @@ export class PivotOverrideExample extends React.Component<any, any> {
     this._handleClick = this._handleClick.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Pivot selectedKey={ `${this.state.selectedKey}` }>

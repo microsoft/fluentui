@@ -3,7 +3,7 @@ import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { itemsNonFocusable, farItemsNonFocusable } from './data-nonFocusable';
 
 export class CommandBarNonFocusableItemsExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <CommandBar

@@ -61,7 +61,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  public componentWillReceiveProps(newProps: IGroupedListProps) {
+  public componentWillReceiveProps(newProps: IGroupedListProps): void {
     const {
       groups,
       selectionMode
@@ -121,7 +121,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     this._forceListUpdates();
   }
 
-  public toggleCollapseAll(allCollapsed: boolean) {
+  public toggleCollapseAll(allCollapsed: boolean): void {
     const { groups } = this.state;
     const { groupProps } = this.props;
     const onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
@@ -242,7 +242,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  private _forceListUpdates(groups?: IGroup[]) {
+  private _forceListUpdates(groups?: IGroup[]): void {
     groups = groups || this.state.groups;
 
     const groupCount = groups ? groups.length : 1;
@@ -293,7 +293,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     return !!(groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed));
   }
 
-  private _updateIsSomeGroupExpanded() {
+  private _updateIsSomeGroupExpanded(): void {
     const { groups } = this.state;
     const { onGroupExpandStateChanged } = this.props;
 

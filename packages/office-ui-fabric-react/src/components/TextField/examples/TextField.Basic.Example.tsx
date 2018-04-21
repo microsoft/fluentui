@@ -6,7 +6,7 @@ import {
 import './TextField.Examples.scss';
 
 export class TextFieldBasicExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-TextFieldExample'>
         <TextField

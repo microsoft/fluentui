@@ -17,7 +17,7 @@ const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react
 const DialogBlockingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
 
 export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Dialog'

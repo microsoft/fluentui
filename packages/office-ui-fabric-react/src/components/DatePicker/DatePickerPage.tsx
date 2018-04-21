@@ -25,7 +25,7 @@ const DatePickerBoundedExampleCode = require
   ('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Bounded.Example.tsx') as string;
 
 export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='DatePicker'
