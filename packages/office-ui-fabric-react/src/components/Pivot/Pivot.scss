@@ -107,7 +107,7 @@
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .link {
+:global(.ms-Fabric--isFocusVisible) .link {
   &:focus {
     outline: 1px solid $ms-color-neutralSecondaryAlt;
   }
@@ -216,7 +216,7 @@
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .root.rootIsTabs .link:focus {
+:global(.ms-Fabric--isFocusVisible) .root.rootIsTabs .link:focus {
   &:before {
     height: auto;
     background: transparent;
