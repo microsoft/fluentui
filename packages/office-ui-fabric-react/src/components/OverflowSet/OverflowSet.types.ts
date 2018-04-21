@@ -2,7 +2,6 @@ import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
 import { IFocusZoneProps } from '../../FocusZone';
-import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface IOverflowSet {
   /**
