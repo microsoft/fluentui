@@ -1,13 +1,8 @@
 import * as React from 'react';
 import {
-  anchorProperties,
   BaseComponent,
-  buttonProperties,
-  divProperties,
-  htmlElementProperties,
   classNamesFunction,
   customizable,
-  getNativeProps,
   createRef
 } from '../../Utilities';
 import {
@@ -15,24 +10,23 @@ import {
   ILinkProps,
   ILinkStyleProps,
   ILinkStyles,
-  LinkTagNames
 } from './Link.types';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
-
-const tagToPropertiesMap = {
-  'div': divProperties,
-  'a': anchorProperties,
-  'button': buttonProperties,
-  'span': htmlElementProperties,
-};
 
 @customizable('Link', ['theme', 'getStyles'])
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
   public render(): JSX.Element {
-    const { disabled, children, className, href, theme, getStyles } = this.props;
+    const {
+      disabled,
+      children,
+      className,
+      href,
+      theme,
+      getStyles,
+    } = this.props;
 
     const classNames = getClassNames(getStyles!, {
       className,
@@ -41,16 +35,15 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       theme: theme!
     });
 
-    const RootType = getRootType(this.props);
+    const RootType = this._getRootType(this.props);
 
     return (
       <RootType
-        { ...getNativeProps(this.props, tagToPropertiesMap[RootType]) }
+        { ...this._removeInvalidPropsForRootType(RootType, this.props) }
         className={ classNames.root }
         onClick={ this._onClick }
         ref={ this._link }
         aria-disabled={ disabled }
-        { ...this._additionalPropsForRootType(RootType) }
       >
         { children }
       </RootType>
@@ -73,26 +66,49 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     }
   }
 
-  private _additionalPropsForRootType(RootType: LinkTagNames): { [attribute: string]: string | undefined } {
-    if (this.props.as === 'a') {
-      return {
-        target: this.props.target,
-        href: this.props.href,
-      };
+  private _removeInvalidPropsForRootType(RootType: string | React.ComponentClass | React.StatelessComponent, props: ILinkProps): Partial<ILinkProps> {
+    // Deconstruct the props so we remove props like `renderAs`, `theme` and `getStyles`
+    // as those will always be removed. We also take some props that are optional
+    // based on the RootType.
+    const {
+      children,
+      renderAs,
+      disabled,
+      target,
+      href,
+      theme,
+      getStyles,
+      ...restProps
+    } = this.props;
+
+    // RootType will be a string if we're dealing with an html component
+    if (typeof RootType === 'string') {
+      // Remove the disabled prop for anchor elements
+      if (RootType === 'a') {
+        return {
+          target,
+          href,
+          ...restProps,
+        };
+      }
+
+      // Remove the target and href props for non anchor elements
+      return { ...restProps, disabled };
     }
 
-    return {};
-  }
-}
-
-function getRootType(props: ILinkProps): LinkTagNames {
-  if (props.as) {
-    return props.as;
+    // Retain all props except 'as' for ReactComponents
+    return { target, href, disabled, ...restProps };
   }
 
-  if (props.href) {
-    return 'a';
-  }
+  private _getRootType(props: ILinkProps): string | React.ComponentClass | React.StatelessComponent {
+    if (props.renderAs) {
+      return props.renderAs;
+    }
 
-  return 'button';
+    if (props.href) {
+      return 'a';
+    }
+
+    return 'button';
+  }
 }

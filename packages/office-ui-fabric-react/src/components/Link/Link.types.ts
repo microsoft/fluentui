@@ -12,8 +12,6 @@ export interface ILink {
   focus(): void;
 }
 
-export type LinkTagNames = 'span' | 'a' | 'button' | 'div';
-
 export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
@@ -40,7 +38,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
    * Provide an html tag name (one of 'span' | 'a' | 'button' | 'div') to use as the tag
    * returned from the Link component.
    */
-  as?: LinkTagNames;
+  renderAs?: string | React.ComponentClass | React.StatelessComponent;
 }
 
 export interface ILinkStyleProps {

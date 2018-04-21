@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { Link } from './Link';
 
@@ -30,9 +31,18 @@ describe('Link', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders Link with as a div element', () => {
-    const component = renderer.create(<Link as='div' className='customClassName'>I'm a div</Link>);
+  it('renders Link with "as=div" a div element', () => {
+    const component = renderer.create(<Link renderAs='div' className='customClassName'>I'm a div</Link>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Link with "as=Route" a Route element', () => {
+    class Route extends React.Component {
+      public render() { return null; }
+    }
+    const component = mount(<Link renderAs={ Route } className='customClassName'>I'm a Route</Link>);
+
+    expect(component.find(Route).props()).toMatchSnapshot();
   });
 });
