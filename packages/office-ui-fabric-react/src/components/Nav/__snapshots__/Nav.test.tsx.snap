@@ -136,7 +136,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
-                    $compositeLink:hover & {
+                    .ms-Nav-compositeLink:hover & {
                       background-color: #f8f8f8;
                       color: #333333;
                     }
