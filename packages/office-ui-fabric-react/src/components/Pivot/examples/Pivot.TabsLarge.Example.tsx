@@ -8,7 +8,7 @@ import {
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class PivotTabsLargeExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Pivot linkFormat={ PivotLinkFormat.tabs } linkSize={ PivotLinkSize.large }>

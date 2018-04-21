@@ -49,7 +49,7 @@ export class CodeBlock extends React.Component<ICodeBlockProps, ICodeBlockState>
     this._onToggleClicked = this._onToggleClicked.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { language, isCollapsible, isLightTheme, children } = this.props;
     let { isOpen } = this.state;
 

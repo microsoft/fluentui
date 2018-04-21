@@ -4,6 +4,7 @@ import {
   DayOfWeek,
   IDatePickerStrings
 } from 'office-ui-fabric-react/lib/DatePicker';
+import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -80,13 +81,14 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { firstDayOfWeek } = this.state;
 
     return (
-      <div>
+      <div className='docs-DatePickerExample'>
         <p>Validation will happen when Date Picker loses focus.</p>
-        <DatePicker label='Date required' isRequired={ true } firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+        <DatePicker label='Date required (with label)' isRequired={ true } firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+        <DatePicker isRequired={ true } firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Date required with no label...' />
       </div>
     );
   }

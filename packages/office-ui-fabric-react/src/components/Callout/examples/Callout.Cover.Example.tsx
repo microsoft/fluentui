@@ -42,7 +42,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isCalloutVisible, directionalHint } = this.state;
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
@@ -90,17 +90,17 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
     );
   }
 
-  private _onDismiss() {
+  private _onDismiss(): void {
     this.setState({ isCalloutVisible: false });
   }
 
-  private _onShowMenuClicked() {
+  private _onShowMenuClicked(): void {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
   }
 
-  private _onDirectionalChanged(option: IDropdownOption) {
+  private _onDirectionalChanged(option: IDropdownOption): void {
     this.setState({
       directionalHint: option.key as number
     });

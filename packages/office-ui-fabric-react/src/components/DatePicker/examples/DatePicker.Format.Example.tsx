@@ -5,6 +5,7 @@ import {
   DayOfWeek,
   IDatePickerStrings
 } from 'office-ui-fabric-react/lib/DatePicker';
+import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -78,12 +79,12 @@ export class DatePickerFormatExample extends React.Component<
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { firstDayOfWeek, value } = this.state;
     const desc =
       'This field is required. One of the support input formats is year dash month dash day.';
     return (
-      <div>
+      <div className='docs-DatePickerExample'>
         <p>
           Applications can customize how dates are formatted and parsed.
           Formatted dates can be ambiguous, so the control will avoid parsing

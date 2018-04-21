@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
-import { SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -57,24 +57,24 @@ describe('Pickers', () => {
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
+          suggestionsStore={ new SuggestionsStore<ISimple>() }
         />
       );
-      let tree = component.toJSON();
+      const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('shows zero query options on empty input', () => {
-      let root = document.createElement('div');
-      let input = document.createElement('input');
+      const root = document.createElement('div');
+      const input = document.createElement('input');
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      let picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
+          suggestionsStore={ new SuggestionsStore<ISimple>() }
           onZeroQuerySuggestion={ onZeroQuerySuggestion }
           inputElement={ input }
         />,
@@ -92,16 +92,16 @@ describe('Pickers', () => {
     });
 
     it('updates suggestions on query string changed', () => {
-      let root = document.createElement('div');
-      let input = document.createElement('input');
+      const root = document.createElement('div');
+      const input = document.createElement('input');
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      let picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
+          suggestionsStore={ new SuggestionsStore<ISimple>() }
           inputElement={ input }
         />,
         root

@@ -13,7 +13,7 @@ export class DropdownCustomExample extends React.Component {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-DropdownExample'>
 
@@ -23,7 +23,7 @@ export class DropdownCustomExample extends React.Component {
           id='Customdrop1'
           ariaLabel='Custom dropdown example'
           onRenderPlaceHolder={ this._onRenderPlaceHolder }
-          onRenderTitle={ this._onRenderOption }
+          onRenderTitle={ this._onRenderTitle }
           onRenderOption={ this._onRenderOption }
           onRenderCaretDown={ this._onRenderCaretDown }
           options={
@@ -51,6 +51,24 @@ export class DropdownCustomExample extends React.Component {
   }
 
   private _onRenderOption = (option: IDropdownOption): JSX.Element => {
+    return (
+      <div className='dropdownExample-option'>
+        { option.data && option.data.icon &&
+          <Icon
+            style={ { marginRight: '8px' } }
+            iconName={ option.data.icon }
+            aria-hidden='true'
+            title={ option.data.icon }
+          />
+        }
+        <span>{ option.text }</span>
+      </div>
+    );
+  }
+
+  private _onRenderTitle = (options: IDropdownOption[]): JSX.Element => {
+    const option = options[0];
+
     return (
       <div className='dropdownExample-option'>
         { option.data && option.data.icon &&

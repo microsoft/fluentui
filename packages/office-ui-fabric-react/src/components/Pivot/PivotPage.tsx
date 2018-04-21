@@ -3,6 +3,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
@@ -30,11 +31,12 @@ const PivotOverrideExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Separate.Example.tsx') as string;
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Pivot'
         componentName='PivotExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot'
         exampleCards={
           <div>
             <ExampleCard title='Default Pivot' code={ PivotBasicExampleCode }>
@@ -79,43 +81,22 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-            <p>
-              The Pivot control and related tabs pattern are used for navigating frequently accessed, distinct content categories. Pivots allow for navigation between two or more content views and relies on text headers to articulate the different sections of content.
-            </p>
-
-            <ul>
-              <li>Tapping on a pivot item header navigates to that header's section content.</li>
-              <li>Swiping left or right on a pivot item header navigates to the adjacent section.</li>
-              <li>Swiping left or right on section content navigates to the adjacent section. </li>
-              <li>Pivots are stationary when all pivot headers fit within the allowed space.</li>
-              <li>Pivots carousel when all pivot headers don't fit within the allowed space.</li>
-            </ul>
-
-            <p>
-              Tabs are a visual variant of Pivot that use a combination of icons and text or just icons to articulate section content.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>Use on content-heavy pages that require a significant amount of scrolling to access the various sections.</li>
-              <li>Be concise on the navigation labels, ideally one or two words rather than a phrase.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Don’t use on pages which doesn’t scroll.</li>
-              <li>Don’t use the Pivot to link to a new page.</li>
-              <li>Don’t use the Pivot to link to hidden content.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

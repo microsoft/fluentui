@@ -3,6 +3,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { VerticalDividerBasicExample } from './examples/VerticalDivider.Basic.Example';
@@ -15,11 +16,12 @@ const VerticalDividerBasicExampleCode = require('!raw-loader!office-ui-fabric-re
 const VerticalDividerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/VerticalDivider.Custom.Example.tsx') as string;
 
 export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Divider'
         componentName='DividerExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Divider'
         exampleCards={
           <div>
             <ExampleCard title='Vertical Divider' code={ VerticalDividerBasicExampleCode }>
@@ -38,47 +40,30 @@ export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-            <p>
-              A Divider is a line that is used to visually differentiate different parts of a UI. They are commonly used in headers and command bars. This divider automatically center algins itself within the parent container and can be customized to be shown in different heights and colors.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
-          <div>
-            <p>
-              Use a divider component to show a sectional or continuity change in the content between two blocks of information. The spacing around the divider is generally determined by the content surrounding it.
-            </p>
-            <p>
-              There are two recommended divider color combinations:
-              <ol>
-                <li>#C8C8C8/neutralTertiaryAlt divider when used within an #F4F4F4/neutralLighter layout</li>
-                <li> #EAEAEA/neutralLight divider when used within an #FFFFFF/white layout</li>
-              </ol>
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md') }
+          </PageMarkdown>
         }
         dos={
-          <div>
-            <ul>
-              <li>Use a divider to separate sections that may not otherwise have a clear beginning or end.</li>
-              <li>Use a divider to separate information blocks where the context or continuity changes between the blocks.</li>
-              <li>When the divider is used to change the look of the page but does not have all the functional, interactive, or structural relevance implied by the element type, or may be used to provide for an accessible fallback in older browsers that do not support WAI-ARIA use role="presentation".</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Do not use dividers for graphic decoration.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md') }
+          </PageMarkdown>
 
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...DividerStatus}
+            { ...DividerStatus }
           />
         }
       />

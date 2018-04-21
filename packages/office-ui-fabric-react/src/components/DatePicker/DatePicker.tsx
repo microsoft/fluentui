@@ -12,7 +12,6 @@ import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField, ITextField } from '../../TextField';
-import { Label } from '../../Label';
 import {
   BaseComponent,
   KeyCodes,
@@ -141,7 +140,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillReceiveProps(nextProps: IDatePickerProps) {
+  public componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
     if (compareDates(this.props.minDate!, nextProps.minDate!) &&
@@ -153,10 +152,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       return;
     }
 
-    let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined;
+    let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || ' ') : undefined;
 
     if (!errorMessage && value) {
-      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || '*' : undefined;
+      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
     }
 
     // Set error message
@@ -184,7 +183,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       firstDayOfWeek,
       strings,
@@ -206,11 +205,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     return (
       <div className={ css('ms-DatePicker', styles.root, isDatePickerShown && 'is-open', className) }>
-        { label && (
-          <Label required={ isRequired }>{ label }</Label>
-        ) }
         <div ref={ this._datePickerDiv }>
           <TextField
+            label={ label }
             className={ styles.textField }
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
@@ -248,7 +245,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
-            target={ this._datePickerDiv.value }
+            target={ this._datePickerDiv.current }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
@@ -279,8 +276,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public focus(): void {
-    if (this._textField.value) {
-      this._textField.value.focus();
+    if (this._textField.current) {
+      this._textField.current.focus();
     }
   }
 
@@ -300,14 +297,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       onSelectDate(date);
     }
 
-    this.setState({
-      isDatePickerShown: false,
-    });
+    this._calendarDismissed();
   }
 
   private _onCalloutPositioned = (): void => {
-    if (this._calendar.value) {
-      this._calendar.value.focus();
+    if (this._calendar.current) {
+      this._calendar.current.focus();
     }
   }
 
@@ -338,7 +333,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       const { isRequired, value, strings } = this.props;
 
       this.setState({
-        errorMessage: (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined,
+        errorMessage: (isRequired && !value) ? (strings!.isRequiredErrorMessage || ' ') : undefined,
         formattedDate: newValue
       });
     }
@@ -386,7 +381,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._onTextFieldClick(ev);
   }
 
-  private _showDatePickerPopup() {
+  private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
       this.setState({
@@ -413,12 +408,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
 
-    if (this._textField.value) {
-      this._textField.value.focus();
+    if (this._textField.current) {
+      this._textField.current.focus();
     }
   }
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    ev.stopPropagation();
     this._calendarDismissed();
   }
 
@@ -434,9 +430,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     // Check when DatePicker is a required field but has NO input value
     if (isRequired && !inputValue) {
       this.setState({
-        // Since fabic react doesn't have loc support yet
-        // use the symbol '*' to represent error message
-        errorMessage: strings!.isRequiredErrorMessage || '*'
+        errorMessage: strings!.isRequiredErrorMessage || ' '
       });
       return;
     }
@@ -464,14 +458,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             }
 
             this.setState({
-              errorMessage: strings!.invalidInputErrorMessage || '*'
+              errorMessage: strings!.invalidInputErrorMessage || ' '
             });
 
           } else {
             // Check against optional date boundaries
             if (this._isDateOutOfBounds(date, minDate, maxDate)) {
               this.setState({
-                errorMessage: strings!.isOutOfBoundsErrorMessage || '*'
+                errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
               });
             } else {
               this.setState({

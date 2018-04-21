@@ -66,7 +66,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       containerClassName,

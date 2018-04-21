@@ -33,7 +33,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenu) => void;
+  componentRef?: (component: IContextualMenu | null) => void;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -242,6 +242,15 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default {direction: FocusZoneDirection.vertical}
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * If specified, renders the ContextualMenu in a hidden state.
+   * Use this flag, rather than rendering a ContextualMenu conditionally based on visibility,
+   * to improve rendering performance when it becomes visible.
+   * Note: When ContextualMenu is hidden its content will not be rendered. It will only render
+   * once the ContextualMenu is visible.
+   */
+  hidden?: boolean;
 }
 
 export interface IContextualMenuItem {
@@ -261,6 +270,11 @@ export interface IContextualMenuItem {
    * Props that go to the IconComponent
    */
   iconProps?: IIconProps;
+
+  /**
+   * Custom render function for the menu item icon
+   */
+  onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 
   /**
    * Props that go to the IconComponent used for the chevron.

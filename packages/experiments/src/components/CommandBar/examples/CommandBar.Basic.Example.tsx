@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CommandBar } from '../CommandBar';
-import { ICommandBarProps } from './../CommandBar.types';
+
+import { CommandBar, ICommandBarProps } from '@uifabric/experiments/lib/CommandBar';
 
 export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
 
@@ -13,7 +13,7 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
   }
 
   public render(): JSX.Element {
-    let { items, overflowItems, farItems } = this.props;
+    const { items, overflowItems, farItems } = this.props;
 
     return (
       <div>

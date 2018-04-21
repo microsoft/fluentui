@@ -33,9 +33,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     };
   }
 
-  public get cursorLocation(): number {
-    if (this._inputElement.value) {
-      const inputElement = this._inputElement.value;
+  public get cursorLocation(): number | null {
+    if (this._inputElement.current) {
+      const inputElement = this._inputElement.current;
       if (inputElement.selectionDirection !== SELECTION_FORWARD) {
         return inputElement.selectionEnd;
       } else {
@@ -54,19 +54,19 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return this._value;
   }
 
-  public get selectionStart(): number {
-    return this._inputElement.value ? this._inputElement.value.selectionStart : -1;
+  public get selectionStart(): number | null {
+    return this._inputElement.current ? this._inputElement.current.selectionStart : -1;
   }
 
-  public get selectionEnd(): number {
-    return this._inputElement.value ? this._inputElement.value.selectionEnd : -1;
+  public get selectionEnd(): number | null {
+    return this._inputElement.current ? this._inputElement.current.selectionEnd : -1;
   }
 
   public get inputElement(): HTMLInputElement | null {
-    return this._inputElement.value;
+    return this._inputElement.current;
   }
 
-  public componentWillReceiveProps(nextProps: IAutofillProps) {
+  public componentWillReceiveProps(nextProps: IAutofillProps): void {
     let newValue;
 
     if (this.props.updateValueInWillReceiveProps) {
@@ -95,20 +95,20 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
 
-      if (shouldSelectFullRange && this._inputElement.value) {
-        this._inputElement.value.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      if (shouldSelectFullRange && this._inputElement.current) {
+        this._inputElement.current.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
       } else {
         while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
           differenceIndex++;
         }
-        if (differenceIndex > 0 && this._inputElement.value) {
-          this._inputElement.value.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+        if (differenceIndex > 0 && this._inputElement.current) {
+          this._inputElement.current.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
         }
       }
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       displayValue
     } = this.state;
@@ -133,13 +133,13 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   public focus() {
-    this._inputElement.value && this._inputElement.value.focus();
+    this._inputElement.current && this._inputElement.current.focus();
   }
 
   public clear() {
     this._autoFillEnabled = true;
     this._updateValue('');
-    this._inputElement.value && this._inputElement.value.setSelectionRange(0, 0);
+    this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);
   }
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
@@ -230,18 +230,18 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * @param isComposing if true then the text is actively being composed and it has not completed.
    * @param isComposed if the text is a composed text value.
    */
-  private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean) {
+  private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean): void {
     if (!isComposing
       && newValue
-      && this._inputElement.value
-      && this._inputElement.value.selectionStart === newValue.length
+      && this._inputElement.current
+      && this._inputElement.current.selectionStart === newValue.length
       && !this._autoFillEnabled
       && (newValue.length > oldValue.length || isComposed)) {
       this._autoFillEnabled = true;
     }
   }
 
-  private _notifyInputChange(newValue: string) {
+  private _notifyInputChange(newValue: string): void {
     if (this.props.onInputValueChange) {
       this.props.onInputValueChange(newValue);
     }
@@ -265,7 +265,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * @param inputValue the value that the input currently has.
    * @param suggestedDisplayValue the possible full value
    */
-  private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string) {
+  private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
     if (suggestedDisplayValue
       && inputValue
@@ -276,7 +276,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return displayValue;
   }
 
-  private _doesTextStartWith(text: string, startWith: string) {
+  private _doesTextStartWith(text: string, startWith: string): boolean {
     if (!text || !startWith) {
       return false;
     }

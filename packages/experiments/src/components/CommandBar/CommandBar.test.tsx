@@ -1,10 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
-import { CommandBarBase } from './CommandBar.base';
-import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 describe('CommandBar', () => {
@@ -31,7 +28,7 @@ describe('CommandBar', () => {
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
-    const commandBar = mount<CommandBarBase>(
+    const commandBar = mount(
       <CommandBar
         items={ [
           {
@@ -82,7 +79,7 @@ describe('CommandBar', () => {
       />
     );
 
-    let menuItem = commandBar.find('button');
+    const menuItem = commandBar.find('button');
 
     menuItem.simulate('click');
 
@@ -124,7 +121,7 @@ describe('CommandBar', () => {
       />
     );
 
-    let menuItem = commandBar.find('button');
+    const menuItem = commandBar.find('button');
 
     menuItem.simulate('click');
 
@@ -141,7 +138,7 @@ describe('CommandBar', () => {
   });
 
   it('updates menu after update if item is still present', () => {
-    let items = [
+    const items = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
@@ -163,7 +160,7 @@ describe('CommandBar', () => {
       />
     );
 
-    let menuItem = commandBar.find('button');
+    const menuItem = commandBar.find('button');
 
     menuItem.simulate('click');
 

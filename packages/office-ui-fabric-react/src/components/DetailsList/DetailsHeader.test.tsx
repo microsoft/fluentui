@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DetailsHeader } from './DetailsHeader';
+import { IDetailsHeader, DetailsHeader } from './DetailsHeader';
 import { DetailsListLayoutMode, IColumn } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup, createRef } from '../../Utilities';
@@ -37,9 +37,8 @@ describe('DetailsHeader', () => {
       size: number,
       index: number
     ): { size: number; index: number; } => lastResize = { size, index };
-    const headerRef = createRef<any>();
+    const headerRef = createRef<IDetailsHeader>();
 
-    const columns = [];
     const wrapper = mount(
       <DetailsHeader
         componentRef={ headerRef }
@@ -51,9 +50,8 @@ describe('DetailsHeader', () => {
       />
     );
 
-    const rootElement = wrapper.getDOMNode();
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
-    const header: any = headerRef.value;
+    const header: any = headerRef.current;
 
     // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
     EventGroup.raise(
@@ -78,9 +76,9 @@ describe('DetailsHeader', () => {
     header._onSizerMouseMove({ clientX: 100 });
     expect(lastResize).toEqual({ index: 0, size: 300 });
 
-    // Mouse move 300 pixels to the right (should be capped at 400px width
+    // Mouse move 300 pixels to the right, should be 500.
     header._onSizerMouseMove({ clientX: 300 });
-    expect(lastResize).toEqual({ index: 0, size: 400 });
+    expect(lastResize).toEqual({ index: 0, size: 500 });
 
     // Complete sizing.
     header._onSizerMouseUp();

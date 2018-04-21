@@ -1,13 +1,11 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { SelectionZone } from './SelectionZone';
 import { Selection } from './Selection';
-import { SelectionMode } from './interfaces';
+import { SelectionMode, IObjectWithKey } from './interfaces';
 
 import { KeyCodes } from '../../Utilities';
 
@@ -26,7 +24,7 @@ let _surface3: Element;
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
 
-function _initializeSelection(selectionMode = SelectionMode.multiple) {
+function _initializeSelection(selectionMode = SelectionMode.multiple): void {
   _selection = new Selection();
   _selection.setItems([{ key: 'a', }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
   _selectionZone = ReactTestUtils.renderIntoDocument(
@@ -34,7 +32,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
       selection={ _selection }
       selectionMode={ selectionMode }
       // tslint:disable-next-line:jsx-no-lambda
-      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
+      onItemInvoked={ (item: IObjectWithKey) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
     >
 
       <button id='toggleAll' data-selection-all-toggle={ true }>Toggle all selected</button>
@@ -58,7 +56,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
     </SelectionZone>
   );
 
-  _componentElement = ReactDOM.findDOMNode(_selectionZone);
+  _componentElement = ReactDOM.findDOMNode(_selectionZone) as Element;
   _toggleAll = _componentElement.querySelector('#toggleAll')!;
   _surface0 = _componentElement.querySelector('#surface0')!;
   _invoke0 = _componentElement.querySelector('#invoke0')!;
@@ -155,7 +153,7 @@ describe('SelectionZone', () => {
     expect(_selection.getSelectedCount()).toEqual(0);
   });
 
-  it('suports mouse shift click range select scenarios', () => {
+  it('supports mouse shift click range select scenarios', () => {
     _simulateClick(_surface1);
     expect(_selection.getSelectedCount()).toEqual(1);
 
@@ -232,7 +230,7 @@ describe('SelectionZone', () => {
   });
 });
 
-function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData) {
+function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData): void {
   ReactTestUtils.Simulate.mouseDown(el, eventData);
   ReactTestUtils.Simulate.focus(el, eventData);
   ReactTestUtils.Simulate.click(el, eventData);

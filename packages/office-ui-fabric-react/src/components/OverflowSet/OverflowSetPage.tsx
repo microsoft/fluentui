@@ -4,6 +4,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
@@ -17,18 +18,16 @@ const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/
 const OverflowSetVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
 
 export class OverflowSetPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='OverflowSet'
         componentName='OverflowSetExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet'
         overview={
-          <div>
-            <p>
-              The OverflowSet is a flexible container component that is useful for displaying a primary set of content with additional content in an overflow callout.
-              Note that the example below is only an example of how to render the component, not a specific use case.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md') }
+          </PageMarkdown>
         }
         exampleCards={
           <LayerHost>
@@ -52,7 +51,7 @@ export class OverflowSetPage extends React.Component<IComponentDemoPageProps, an
         }
         componentStatus={
           <ComponentStatus
-            {...OverflowSetStatus}
+            { ...OverflowSetStatus }
           />
         }
         isHeaderVisible={ this.props.isHeaderVisible }

@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { LayoutGroup } from '../LayoutGroup';
+import { LayoutGroup } from '@uifabric/experiments/lib/LayoutGroup';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -37,8 +37,15 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
             }
           />
           <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>
-            <TextField label='TextField with a placeholder' placeholder='Now I am a Placeholder' ariaLabel='Please enter text here' />
-            <TextField label='TextField with an icon' iconProps={ { iconName: 'Calendar' } } />
+            <TextField
+              label='TextField with a placeholder'
+              placeholder='Now I am a Placeholder'
+              ariaLabel='Please enter text here'
+            />
+            <TextField
+              label='TextField with an icon'
+              iconProps={ { iconName: 'Calendar' } }
+            />
           </LayoutGroup>
 
           <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>

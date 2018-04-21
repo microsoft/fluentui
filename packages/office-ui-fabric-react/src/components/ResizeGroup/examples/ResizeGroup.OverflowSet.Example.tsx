@@ -69,7 +69,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { numberOfItems, cachingEnabled, buttonsChecked, short, onGrowDataEnabled } = this.state;
     const dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
     return (

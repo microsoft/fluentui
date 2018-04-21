@@ -76,7 +76,7 @@ describe('Button', () => {
   describe('DefaultButton', () => {
     function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
       const component = ReactTestUtils.renderIntoDocument(element);
-      const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
       return renderedDOM as HTMLElement;
     }
 
@@ -84,7 +84,7 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
@@ -94,7 +94,7 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton onClick={ onClick }>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
@@ -102,7 +102,7 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('A');
     });
 
@@ -259,7 +259,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).not.toEqual('DIV');
     });
 
@@ -287,7 +287,7 @@ describe('Button', () => {
           } }
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM, { which: KeyCodes.enter });
 
@@ -320,7 +320,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const primaryButtonDOM: HTMLDivElement = renderedDOM.getElementsByTagName('div')[0] as HTMLDivElement;
 
       ReactTestUtils.Simulate.keyDown(primaryButtonDOM, { which: KeyCodes.enter });
@@ -351,7 +351,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('DIV');
     });
 
@@ -378,7 +378,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
@@ -406,7 +406,7 @@ describe('Button', () => {
           } }
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM,
         {
@@ -437,7 +437,7 @@ describe('Button', () => {
           } }
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM,
         {

@@ -33,12 +33,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private get _isExpanded(): boolean {
+    if (this.props.persistMenu) {
+      return !this.state.menuProps!.hidden;
+    }
     return !!this.state.menuProps;
   }
 
-  public static defaultProps = {
+  public static defaultProps: Partial<IBaseButtonProps> = {
     baseClassName: 'ms-Button',
-    classNames: {},
     styles: {},
     split: false,
   };
@@ -65,8 +67,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
+    let menuProps = null;
+    if (props.persistMenu && props.menuProps) {
+      menuProps = props.menuProps;
+      menuProps.hidden = true;
+    }
     this.state = {
-      menuProps: null
+      menuProps: menuProps
     };
   }
 
@@ -200,10 +207,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public focus(): void {
-    if (this._isSplitButton && this._splitButtonContainer.value) {
-      this._splitButtonContainer.value.focus();
-    } else if (this._buttonElement.value) {
-      this._buttonElement.value.focus();
+    if (this._isSplitButton && this._splitButtonContainer.current) {
+      this._splitButtonContainer.current.focus();
+    } else if (this._buttonElement.current) {
+      this._buttonElement.current.focus();
     }
   }
 
@@ -393,7 +400,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={ DirectionalHint.bottomLeftEdge }
         { ...menuProps }
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
-        target={ this._isSplitButton ? this._splitButtonContainer.value : this._buttonElement.value }
+        target={ this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current }
         labelElementId={ this._labelId }
         onDismiss={ onDismiss }
       />
@@ -401,22 +408,35 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _dismissMenu = (): void => {
-    this.setState({ menuProps: null });
+    let menuProps = null;
+    if (this.props.persistMenu && this.state.menuProps) {
+      menuProps = this.state.menuProps;
+      menuProps.hidden = true;
+    }
+    this.setState({ menuProps: menuProps });
   }
 
   private _openMenu = (): void => {
     if (this.props.menuProps) {
-      this.setState({ menuProps: this.props.menuProps });
+      const menuProps = this.props.menuProps;
+      if (this.props.persistMenu) {
+        menuProps.hidden = false;
+      }
+      this.setState({ menuProps: menuProps });
     }
   }
 
   private _onToggleMenu = (): void => {
-    if (this._splitButtonContainer.value) {
-      this._splitButtonContainer.value.focus();
+    if (this._splitButtonContainer.current) {
+      this._splitButtonContainer.current.focus();
     }
-    const { menuProps } = this.props;
+
     const currentMenuProps = this.state.menuProps;
-    currentMenuProps ? this._dismissMenu() : this._openMenu();
+    if (this.props.persistMenu) {
+      currentMenuProps && currentMenuProps.hidden ? this._openMenu() : this._dismissMenu();
+    } else {
+      currentMenuProps ? this._dismissMenu() : this._openMenu();
+    }
   }
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
@@ -425,7 +445,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       checked,
       getSplitButtonClassNames,
-      onClick,
       primaryDisabled
     } = this.props;
 
@@ -460,7 +479,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onKeyDown={ this._onSplitButtonContainerKeyDown }
         ref={ this._splitButtonContainer }
         data-is-focusable={ true }
-        onClick={ !disabled && !primaryDisabled ? onClick : undefined }
+        onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
         tabIndex={ !disabled ? 0 : undefined }
       >
         <span
@@ -472,6 +491,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         </span>
       </div>
     );
+  }
+
+  private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
+    if (this._isExpanded) {
+      this._dismissMenu();
+    }
+    if (this.props.onClick) {
+      this.props.onClick(ev);
+    }
   }
 
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
@@ -508,7 +536,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-expanded': this._isExpanded,
       'data-is-focusable': false
     };
-    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
+    return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {
@@ -521,8 +549,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.which === KeyCodes.enter) {
-      if (this._buttonElement.value) {
-        this._buttonElement.value.click();
+      if (this._buttonElement.current) {
+        this._buttonElement.current.click();
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -540,14 +568,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
-    const { onMenuClick } = this.props;
-    if (onMenuClick) {
-      onMenuClick(ev, this);
-    }
-
     if (!ev.defaultPrevented &&
-      this.props.menuTriggerKeyCode !== null &&
       this._isValidMenuOpenKey(ev)) {
+      const { onMenuClick } = this.props;
+      if (onMenuClick) {
+        onMenuClick(ev, this);
+      }
+
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();

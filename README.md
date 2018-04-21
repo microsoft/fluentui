@@ -22,7 +22,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ### Using Fabric React
 
-[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
+[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/OnBoarding/SampleApp.md) on how to build a simple React app with an Office UI Fabric React component.
 
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
@@ -51,7 +51,7 @@ ReactDOM.render(
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
+Fabric React supports many commonly used browsers. See the [browser support doc](./ghdocs/Testing/BrowserSupport.md) for more information.
 
 ## Server-side rendering
 
@@ -89,17 +89,51 @@ console.log(
 
 Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
+### Browserless Testing
+
+In unit or end-to-end tests that run in an SSR-like (non-browser) environment such as Node, you'll need to disable style loading.
+
+```typescript
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+initializeIcons('dist/');
+
+// Configure load-themed-styles to avoid registering styles.
+let themeLoader = require('@microsoft/load-themed-styles');
+themeLoader.configureLoadStyles((styles) => {
+  // noop
+});
+
+// Set ssr mode to true, and rtl to false.
+let library = require('office-ui-fabric-react/lib/Utilities');
+library.setSSR(true);
+library.setRTL(false);
+
+// Assume a large screen.
+let responsiveLib = require('office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode');
+responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
+```
+
+You'll also want to mock out requiring `.scss` files.
+In Jest:
+
+```js
+  moduleNameMapper: {
+    // jest-style-mock.js should just contain module.exports = {};
+    '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
+  }
+```
+
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](./ghdocs/BestPractices/Advanced.md).
 
 ## Contribute to Fabric React
 
-Please take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/CONTRIBUTING.md) for more info.
+Please take a look at our [contribution guidelines](./ghdocs/Contributing/Contributing.md) for more info. Also read [Contribute Bug fixes](./ghdocs/Contributing/BugFixes.md) and [Contribute New component](./ghdocs/Contributing/NewComponent.md).
 
 ## Building the repo
 
-Before you get started, **make sure you have [node.js](https://nodejs.org/) and [git](https://git-scm.com/) installed.**
+Before you get started, **make sure you have read the [Git branch setup instrucions](./ghdocs/Contributing/Setup.md)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
@@ -115,7 +149,7 @@ To build individual packages within the `packages/*/` folders, you can use `npm 
 
 ## Testing
 
-For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
+For testing see our [testing documentation](./ghdocs/BestPractices/Testing.md).
 
 ## Advanced building tips
 
@@ -139,7 +173,6 @@ All files on the Office UI Fabric React GitHub repository are subject to the MIT
 
 Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
 
-
 ## Changelog
 
 We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/OfficeDev/office-ui-fabric-react/releases) page.
@@ -147,3 +180,8 @@ We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to 
 - - -
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Issue management and `Stale-bot`
+
+If you are getting `stale[bot]` messages and/or want to understand how we manage issues, please search for 'issue Triage' and/or 'stale[bot]' in the [FAQ](./FAQ.md).
+

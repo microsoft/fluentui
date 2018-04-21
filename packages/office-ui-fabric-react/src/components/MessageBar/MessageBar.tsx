@@ -169,9 +169,9 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           { this._getIconSpan() }
           { this._renderInnerText() }
           { this._getExpandSingleLine() }
+          { this._getActionsDiv() }
           { this._getDismissSingleLine() }
         </div>
-        { this._getActionsDiv() }
       </div >
     );
   }
@@ -195,7 +195,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     );
   }
 
-  private _getAnnouncementPriority(): string {
+  private _getAnnouncementPriority(): 'assertive' | 'polite' {
     switch (this.props.messageBarType) {
       case MessageBarType.blocked:
       case MessageBarType.error:

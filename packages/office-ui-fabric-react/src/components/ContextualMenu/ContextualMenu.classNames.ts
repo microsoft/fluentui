@@ -205,6 +205,6 @@ export const getItemClassNames = memoizeFunction((
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
         }
       }]
-    ],
+    ]
   });
 });

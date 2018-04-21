@@ -1,6 +1,53 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Apr 2018 00:17:37 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 19 Apr 2018 00:17:37 GMT
+
+### Minor changes
+
+- PulsingBeaconAnimationStyles: Distinguish between single and double pulse.
+
+## 5.24.0
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Minor changes
+
+- Add opt-in @deprecated comments
+
+### Patches
+
+- Fix deprecated semantic slots returning empty strings
+
+## 5.23.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.23.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- Add noWrap style set.
+
+## 5.22.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- New pulsing beacon animation moved in from Coachmark for reuse.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
 
 ## 5.20.0
 Mon, 19 Mar 2018 10:27:55 GMT

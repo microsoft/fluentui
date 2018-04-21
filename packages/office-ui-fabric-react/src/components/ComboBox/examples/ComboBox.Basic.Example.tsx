@@ -13,22 +13,22 @@ import { IComboBox } from '../ComboBox.types';
 import { PrimaryButton } from '../../../Button';
 
 const INITIAL_OPTIONS =
-[
-  { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
-  { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
-  { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
-  { key: 'C1', text: 'Calibri', fontFamily: 'Calibri, Calibri_MSFontService, sans-serif' },
-  { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-  { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'D', text: 'Option d' },
-  { key: 'E', text: 'Option e' },
-  { key: 'F', text: 'Option f' },
-  { key: 'G', text: 'Option g' },
-  { key: 'H', text: 'Option h' },
-  { key: 'I', text: 'Option i' },
-  { key: 'J', text: 'Option j' }
-];
+  [
+    { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
+    { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
+    { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
+    { key: 'C1', text: 'Calibri', fontFamily: 'Calibri, Calibri_MSFontService, sans-serif' },
+    { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+    { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'D', text: 'Option d' },
+    { key: 'E', text: 'Option e' },
+    { key: 'F', text: 'Option f' },
+    { key: 'G', text: 'Option g' },
+    { key: 'H', text: 'Option h' },
+    { key: 'I', text: 'Option i' },
+    { key: 'J', text: 'Option j' }
+  ];
 
 export class ComboBoxBasicExample extends React.Component<{}, {
   // For controled single select
@@ -73,7 +73,8 @@ export class ComboBoxBasicExample extends React.Component<{}, {
       options: [],
       optionsMulti: [],
       selectedOptionKey: undefined,
-      value: 'Calibri'
+      value: 'Calibri',
+      valueMulti: 'Calibri'
     };
 
     for (let i = 0; i < 1000; i++) {
@@ -84,9 +85,9 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { options, selectedOptionKey, value } = this.state;
-    const { optionsMulti, selectedOptionKeys, valueMulti } = this.state;
+    const { optionsMulti } = this.state;
 
     return (
       <div className='ms-ComboBoxBasicExample'>
@@ -128,7 +129,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-          // tslint:enable:jsx-no-lambda
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -285,7 +286,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-          // tslint:enable:jsx-no-lambda
+        // tslint:enable:jsx-no-lambda
         />
       </div>
 
@@ -332,22 +333,23 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     return INITIAL_OPTIONS;
   }
 
-  private _getOptionsMulti(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
+  private _getOptionsMulti = (currentOptions: IComboBoxOption[]): IComboBoxOption[] => {
 
-    if (this.state.options.length > 0) {
+    if (this.state.optionsMulti.length > 0) {
       return this.state.optionsMulti;
     }
 
     this.setState({
       optionsMulti: INITIAL_OPTIONS,
-      selectedOptionKeys: [ 'C1' ],
-      value: undefined
+      selectedOptionKeys: ['C1'],
+      valueMulti: undefined
     });
 
     return INITIAL_OPTIONS;
   }
 
   private _onChanged = (option: IComboBoxOption, index: number, value: string): void => {
+    console.log('_onChanged() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
@@ -370,6 +372,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   }
 
   private _onChangedMulti = (option: IComboBoxOption, index: number, value: string) => {
+    console.log('_onChangedMulti() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       // User selected/de-selected an existing option
       this.setState({
@@ -404,7 +407,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     this._basicCombobox.focus(true);
   }
 
-  private _basicComboBoxComponentRef = (component: IComboBox) => {
+  private _basicComboBoxComponentRef = (component: IComboBox): void => {
     this._basicCombobox = component;
   }
 }

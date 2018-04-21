@@ -8,7 +8,7 @@ import {
 import { ExtendedPeoplePickerTypesExample } from '../examples/ExtendedPeoplePicker.Basic.Example';
 
 const ExtendedPeoplePickerBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx'
+  '!raw-loader!@uifabric/experiments/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx'
 ) as string;
 
 export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -27,7 +27,7 @@ export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPage
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/ExtendedPicker/BaseExtendedPicker.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/ExtendedPicker/BaseExtendedPicker.types.ts')
             ] }
           />
         }

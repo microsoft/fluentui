@@ -7,9 +7,14 @@ import {
 } from '@uifabric/example-app-base';
 
 /* tslint:disable:max-line-length */
+import { SignalFieldBasicExample } from './examples/SignalField.Basic.Example';
+const SignalFieldBasicExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/signals/examples/SignalField.Basic.Example.tsx'
+) as string;
+
 import { SignalsBasicExample } from './examples/Signals.Basic.Example';
 const SignalsBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/signals/examples/Signals.Basic.Example.tsx'
+  '!raw-loader!@uifabric/experiments/src/components/signals/examples/Signals.Basic.Example.tsx'
 ) as string;
 
 export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -17,10 +22,13 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
     return (
       <ComponentPage
         title='Signals'
-        componentName='SignalsBasicExample'
+        componentName='SignalField'
         exampleCards={
           <div>
-            <ExampleCard title='Basic signals usage' isOptIn={ true } code={ SignalsBasicExampleCode }>
+            <ExampleCard title='Controlling Signal alignment' isOptIn={ true } code={ SignalFieldBasicExampleCode }>
+              <SignalFieldBasicExample />
+            </ExampleCard>
+            <ExampleCard title='All Signal types' isOptIn={ true } code={ SignalsBasicExampleCode }>
               <SignalsBasicExample />
             </ExampleCard>
           </div>
@@ -28,7 +36,7 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/signals/Signals.Props.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/signals/Signals.Props.ts')
             ] }
           />
         }

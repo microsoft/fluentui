@@ -8,7 +8,7 @@ import {
 
 import { LayoutGroupBasicExample } from './examples/LayoutGroup.Basic.Example';
 const LayoutGroupBasicExampleCode =
-  require('!raw-loader!experiments/src/components/LayoutGroup/examples/LayoutGroup.Basic.Example.tsx') as string;
+  require('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/examples/LayoutGroup.Basic.Example.tsx') as string;
 
 export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,7 +26,7 @@ export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/LayoutGroup/LayoutGroup.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/LayoutGroup.types.ts')
             ] }
           />
         }

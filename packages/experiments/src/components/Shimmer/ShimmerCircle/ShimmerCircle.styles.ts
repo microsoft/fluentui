@@ -2,22 +2,19 @@ import {
   IShimmerCircleStyleProps,
   IShimmerCircleStyles
 } from './ShimmerCircle.types';
-import {
-  IStyleSet,
-  DefaultPalette
-} from 'office-ui-fabric-react';
+import { IStyleSet, DefaultPalette } from '../../../Styling';
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
   const {
     height,
-    borderAlignStyle
+    borderStyle
   } = props;
 
-  const styles: IStyleSet = !!borderAlignStyle ? borderAlignStyle : {};
+  const styles: IStyleSet = !!borderStyle ? borderStyle : {};
 
   return {
     root: [
-      'ms-ShimmerCircle-wrapper',
+      'ms-ShimmerCircle-root',
       {
         width: `${height}px`,
         height: `${height}px`,

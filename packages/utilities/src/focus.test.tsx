@@ -11,7 +11,7 @@ let _element: HTMLElement | undefined;
 
 function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
   const component = ReactTestUtils.renderIntoDocument(element);
-  const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+  const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
   return renderedDOM as HTMLElement;
 }
 
@@ -141,7 +141,6 @@ describe('focusAsync', () => {
     );
 
     const container = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-
     const buttonA = container.querySelector('.a') as HTMLElement;
     const buttonB = container.querySelector('.b') as HTMLElement;
     const buttonC = container.querySelector('.c') as HTMLElement;
@@ -160,5 +159,16 @@ describe('focusAsync', () => {
     });
 
     jest.runAllTimers();
+  });
+
+  it('can focus a component which implements focus()', () => {
+    let calledFocus = false;
+    const fakeComponent = {
+      focus: () => calledFocus = true
+    };
+
+    focusAsync(fakeComponent);
+    jest.runAllTimers();
+    expect(calledFocus).toEqual(true);
   });
 });

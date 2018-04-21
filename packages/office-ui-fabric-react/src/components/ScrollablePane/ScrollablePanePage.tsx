@@ -3,6 +3,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
@@ -15,11 +16,12 @@ const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-r
 const ScrollablePaneDetailsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
 
 export class ScrollablePanePage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ScrollablePane'
         componentName='ScrollablePaneExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ScrollablePane'
         exampleCards={
           <div>
             <ExampleCard title='Default' code={ ScrollablePaneDefaultExampleCode }>
@@ -43,30 +45,22 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         overview={
-          <div>
-            <p>
-              ScrollablePane is a helper component designed to use in conjunction with a Sticky component.  Sticky components will "stick" to the top or bottom of a ScrollablePane's scrollable region and remain visible.  ScrollablePane requires a height or max-height set either on the component itself, or on the immediate parent element.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>Ensure that a parent component has a CSS height, or max-height attribute set (and any intermediary containers have an inherit, or explicit height/max-height set).</li>
-              <li>Use Sticky component on block level elements</li>
-              <li>Sticky component are ideally section headers and/or footers</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Don't use Sticky on elements with margin top or bottom</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

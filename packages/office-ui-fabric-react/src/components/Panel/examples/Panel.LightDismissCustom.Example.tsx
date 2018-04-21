@@ -14,7 +14,7 @@ export class PanelLightDismissCustomExample extends React.Component<{}, {
     this.state = { showPanel: false, hideDialog: true };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton
