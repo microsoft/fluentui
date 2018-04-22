@@ -42,6 +42,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _contentContainer = createRef<HTMLDivElement>();
   private _subscribers: Set<Function>;
   private _stickies: Set<Sticky>;
+  private _mutationObserver: MutationObserver;
 
   constructor(props: IScrollablePaneProps) {
     super(props);
@@ -98,11 +99,50 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       this.sortSticky(sticky);
     });
     this.notifySubscribers();
+
+    if ("MutationObserver" in window) {
+      this._mutationObserver = new MutationObserver(mutation => {
+        // Function to check if mutation is occuring in stickyAbove or stickyBelow
+        function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
+          if (this.stickyAbove !== null && this.stickyBelow !== null) {
+            return this.stickyAbove.contains(mutationRecord.target) || this.stickyBelow.contains(mutationRecord.target);
+          }
+          return false;
+        }
+
+        // If mutation occurs in sticky header or footer, then update sticky top/bottom heights
+        if (mutation.some(checkIfMutationIsSticky.bind(this))) {
+          this.updateStickyRefHeights();
+        } else {
+          // Else if mutation occurs in scrollable region, then find sticky it belongs to and force update
+          let stickyList = Array.from(this._stickies).filter((sticky) => {
+            if (sticky.root.current) {
+              return sticky.root.current.contains(mutation[0].target);
+            }
+          });
+          if (stickyList.length) {
+            stickyList.forEach((sticky) => {
+              sticky.forceUpdate();
+            });
+          }
+        }
+      });
+
+      if (this.root) {
+        this._mutationObserver.observe(this.root, {
+          childList: true,
+          attributes: true,
+          subtree: true,
+          characterData: true
+        });
+      }
+    }
   }
 
   public componentWillUnmount() {
     this._events.off(this.contentContainer);
     this._events.off(window);
+    this._mutationObserver.disconnect();
   }
 
   // Only updates if props/state change, just to prevent excessive setState with updateStickyRefHeights
@@ -223,11 +263,15 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     let stickyBottomHeight = 0;
 
     stickyItems.forEach((sticky: Sticky) => {
-      if (sticky.state.isStickyTop && sticky.stickyContentTop.current) {
-        stickyTopHeight += sticky.stickyContentTop.current.offsetHeight;
-      }
-      if (sticky.state.isStickyBottom && sticky.stickyContentBottom.current) {
-        stickyBottomHeight += sticky.stickyContentBottom.current.offsetHeight;
+      const { isStickyTop, isStickyBottom } = sticky.state;
+      if (sticky.nonStickyContent.current) {
+        if (isStickyTop) {
+          stickyTopHeight += sticky.nonStickyContent.current.offsetHeight
+        }
+        if (isStickyBottom) {
+          stickyBottomHeight += sticky.nonStickyContent.current.offsetHeight
+        }
+        this._checkStickyStatus(sticky);
       }
     });
 
@@ -252,6 +296,24 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
 
     return 0;
+  }
+
+  private _checkStickyStatus(sticky: Sticky): void {
+    if (this.stickyAbove && this.stickyBelow && this.contentContainer && sticky.nonStickyContent.current) {
+      // If sticky is sticky, then append content to appropriate container
+      if (sticky.state.isStickyTop || sticky.state.isStickyBottom) {
+        if (sticky.state.isStickyTop && !this.stickyAbove.contains(sticky.nonStickyContent.current) && sticky.stickyContentTop.current) {
+          sticky.addSticky(sticky.stickyContentTop.current);
+        }
+
+        if (sticky.state.isStickyBottom && !this.stickyBelow.contains(sticky.nonStickyContent.current) && sticky.stickyContentBottom.current) {
+          sticky.addSticky(sticky.stickyContentBottom.current);
+        }
+      } else if (!this.contentContainer.contains(sticky.nonStickyContent.current)) {
+        // Reset sticky if it's not sticky and not in the contentContainer element
+        sticky.resetSticky();
+      }
+    }
   }
 
   private _addToStickyContainer = (sticky: Sticky, stickyContainer: HTMLDivElement, stickyContentToAdd: HTMLDivElement): void => {
