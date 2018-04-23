@@ -127,9 +127,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   constructor(props: IDatePickerProps) {
     super(props);
-
-    const { formatDate, value } = props;
-
     this.state = this._getDefaultState();
 
     this._preventFocusOpeningPicker = false;
