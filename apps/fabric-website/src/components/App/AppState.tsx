@@ -261,11 +261,16 @@ export const AppState: IAppState = {
         {
           title: 'DetailsList',
           url: '#/components/detailslist',
-          component: () => <LoadingComponent title="DetailsList" />,
-          getComponent: cb =>
-            require.ensure([], require =>
-              cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListComponentPage)
-            )
+          component: () => <LoadingComponent title='DetailsList' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListComponentPage)),
+          pages: [
+            {
+              title: 'SUB-DetailsList',
+              url: '#/components/detailslist',
+              component: () => <LoadingComponent title='DetailsList' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListComponentPage))
+            }
+          ]
         },
         {
           title: 'Dialog',
