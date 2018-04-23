@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/experiments",
       "comment": "Remove wordWrap setting.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
