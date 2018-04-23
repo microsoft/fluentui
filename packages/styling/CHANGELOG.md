@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 19 Apr 2018 00:17:37 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+
+## 5.26.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The getFocusStyle helper has been adjusted to use the `ms-Fabric--isFocusEnabled` class name, rather than `ms-Fabric.is-focusEnabled`.
 
 ## 5.25.0
 Thu, 19 Apr 2018 00:17:37 GMT
