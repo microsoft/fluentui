@@ -40,6 +40,13 @@
 
   &:hover {
     cursor: pointer;
+
+    @include high-contrast {
+      &::before {
+        box-sizing: border-box;
+        border-bottom: 2px solid WindowText;
+      }
+    }
   }
 
   &:focus {
@@ -72,7 +79,6 @@
   .text,
   .count {
     display: inline-block;
-
     vertical-align: top;
   }
 
@@ -90,13 +96,17 @@
   &.linkIsSelected {
     font-weight: $ms-font-weight-semibold;
 
+    @include high-contrast {
+      color: Highlight;
+    }
+
     // Show the underline
     &::before {
       box-sizing: border-box;
       border-bottom: 2px solid $ms-color-themePrimary;
 
       @include high-contrast {
-        border-bottom-color: WindowText;
+        border-bottom-color: Highlight;
       }
     }
   }
