@@ -2,8 +2,6 @@ import * as React from 'react';
 import { PivotBase } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
-
-import { Pivot } from './Pivot';
 import { PivotItem } from './PivotItem';
 
 export interface IPivot {
