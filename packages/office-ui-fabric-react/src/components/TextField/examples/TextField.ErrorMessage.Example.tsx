@@ -12,7 +12,7 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
     this._getErrorMessagePromise = this._getErrorMessagePromise.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-TextFieldErrorExample'>
         <TextField

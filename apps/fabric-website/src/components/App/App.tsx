@@ -27,7 +27,7 @@ export class App extends React.Component<IAppProps, any> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     window.addEventListener('scroll', this._handleNavPositioning);
     window.addEventListener('resize', this._handleNavPositioning);
 
@@ -35,12 +35,12 @@ export class App extends React.Component<IAppProps, any> {
     this._handleNavPositioning();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     window.removeEventListener('scroll', this._handleNavPositioning);
     window.removeEventListener('resize', this._handleNavPositioning);
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { navHeight } = this.state;
     let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute';
     let navStyle = {

@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import {
   BaseComponent,
@@ -42,7 +40,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { title, shouldTruncate, showAsSecondaryTitle } = this.props;
     const miniLength = showAsSecondaryTitle ? TRUNCATION_MINI_LENGTH_SECONDARY : TRUNCATION_MINIMUM_LENGTH;
     if (shouldTruncate && title && title.length > miniLength) {
@@ -53,7 +51,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     }
   }
 
-  public componentWillReceiveProps(newProps: IDocumentCardTitleProps) {
+  public componentWillReceiveProps(newProps: IDocumentCardTitleProps): void {
     this._events.off(window, 'resize');
     this._isTruncated = false;
 
@@ -64,14 +62,14 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     // If we're truncating, make sure the title fits
     if (this.props.shouldTruncate) {
       this._shrinkTitle();
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { title, shouldTruncate, showAsSecondaryTitle } = this.props;
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
 
@@ -119,13 +117,13 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     }
 
     // Save the width we just started truncation at, so that later we will only update truncation if necessary
-    if (this._titleElement.value) {
-      this._truncatedTitleAtWidth = this._titleElement.value.clientWidth;
+    if (this._titleElement.current) {
+      this._truncatedTitleAtWidth = this._titleElement.current.clientWidth;
     }
 
   }
 
-  private _shrinkTitle() {
+  private _shrinkTitle(): void {
     if (this._doesTitleOverflow()) {
       const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
       this._isTruncated = true;
@@ -142,7 +140,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
   }
 
   private _doesTitleOverflow(): boolean {
-    const titleElement = this._titleElement.value;
+    const titleElement = this._titleElement.current;
 
     if (!titleElement) {
       return false;
@@ -151,9 +149,9 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     return titleElement.scrollHeight > titleElement.clientHeight + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD || titleElement.scrollWidth > titleElement.clientWidth;
   }
 
-  private _updateTruncation() {
+  private _updateTruncation(): void {
     // Only update truncation if the title's size has changed since the last time we truncated
-    if (this._titleElement.value && (this._titleElement.value.clientWidth !== this._truncatedTitleAtWidth)) {
+    if (this._titleElement.current && (this._titleElement.current.clientWidth !== this._truncatedTitleAtWidth)) {
       // Throttle truncation so that it doesn't happen during a window resize
       clearTimeout(this._scrollTimerId);
       this._scrollTimerId = this._async.setTimeout(this._startTruncation.bind(this, this.props), 250);

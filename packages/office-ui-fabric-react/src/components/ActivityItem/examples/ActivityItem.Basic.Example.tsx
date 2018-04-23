@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { css, classNamesFunction } from '../../../Utilities';
 import { ActivityItem } from '../ActivityItem';
 import {
@@ -12,7 +10,7 @@ import { Icon } from '../../../Icon';
 import { Link } from '../../../Link';
 
 export class ActivityItemBasicExample extends React.Component<React.Props<ActivityItemBasicExample>, {}> {
-  public render() {
+  public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
     const classNames = getClassNames(getStyles);
 
@@ -57,10 +55,10 @@ export class ActivityItemBasicExample extends React.Component<React.Props<Activi
     ];
 
     const activityExampleList: Array<JSX.Element> = [];
-    activityItemExamples.forEach((item) => {
+    activityItemExamples.forEach((item: { key: string | number }) => {
       const props = item;
       activityExampleList.push(
-        <ActivityItem {...props} key={ item.key } className={ css(classNames.exampleRoot) } />
+        <ActivityItem { ...props } key={ item.key } className={ css(classNames.exampleRoot) } />
       );
     });
 

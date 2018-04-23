@@ -27,7 +27,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { numberOfFaces, personaSize } = this.state;
     const facepileProps: IFacepileProps = {
       personaSize: personaSize,

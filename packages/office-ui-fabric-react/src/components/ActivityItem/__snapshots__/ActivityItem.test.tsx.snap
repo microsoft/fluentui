@@ -302,7 +302,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         align-items: center;
         animation-duration: .5s;
         animation-iteration-count: 1;
-        animation-name: css-93;
+        animation-name: keyframes from{opacity:0;}to{opacity:1;};
         box-sizing: border-box;
         color: #666666;
         display: flex;
@@ -351,7 +351,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           {
             animation-duration: .8s;
             animation-iteration-count: 1;
-            animation-name: css-92;
+            animation-name: keyframes 0%{border-color:#0078d4;border-width:0px;width:4px;height:4px;}14.2%{opacity:1;border-width:4px;}35.7%{opacity:1;}71.4%{border-width:0;width:28px;height:28px;opacity:0;border-color:#71afe5;}100%{};
             border-radius: 225px;
             border-style: solid;
             height: 0px;
@@ -493,7 +493,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         {
           animation-duration: .5s;
           animation-iteration-count: 1;
-          animation-name: css-94;
+          animation-name: keyframes from{transform:translateX(-10px);}to{transform:translateX(0);};
           flex: 1;
           overflow-x: hidden;
           padding-bottom: 0;

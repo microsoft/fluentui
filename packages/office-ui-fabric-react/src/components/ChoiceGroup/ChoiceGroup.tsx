@@ -50,7 +50,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     this._labelId = getId('ChoiceGroupLabel');
   }
 
-  public componentWillReceiveProps(newProps: IChoiceGroupProps) {
+  public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
     const oldKeyCheched = this._getKeyChecked(this.props);
 
@@ -61,7 +61,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { label, options, className, required } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
@@ -137,8 +137,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   }
 
   public focus() {
-    if (this._inputElement.value) {
-      this._inputElement.value.focus();
+    if (this._inputElement.current) {
+      this._inputElement.current.focus();
     }
   }
 
@@ -156,7 +156,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     });
   }
 
-  private _onRenderField(option: IChoiceGroupOption) {
+  private _onRenderField(option: IChoiceGroupOption): JSX.Element {
 
     const { onRenderLabel } = option;
     const imageSize = option.imageSize ? option.imageSize : { width: 32, height: 32 };
@@ -242,7 +242,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     );
   }
 
-  private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>) {
+  private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>): void {
     const { onChanged, onChange, selectedKey } = this.props;
 
     // Only manage state in uncontrolled scenarios.

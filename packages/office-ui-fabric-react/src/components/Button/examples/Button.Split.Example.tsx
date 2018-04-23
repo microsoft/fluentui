@@ -15,7 +15,7 @@ const alertClicked = (): void => {
 
 export class ButtonSplitExample extends React.Component<IButtonProps> {
 
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
@@ -139,7 +139,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
 
 export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
 
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
     const customSplitButtonStyles = getCustomSplitButtonStyles();
 

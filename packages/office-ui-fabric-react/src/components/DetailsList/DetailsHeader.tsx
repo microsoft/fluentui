@@ -100,9 +100,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._id = getId('header');
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { selection } = this.props;
-    const focusZone = this._root.value;
+    const focusZone = this._root.current;
     const rootElement = findDOMNode(focusZone as any);
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -113,7 +113,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._events.on(rootElement, 'keydown', this._onRootKeyDown);
   }
 
-  public componentWillReceiveProps(newProps: IDetailsHeaderProps) {
+  public componentWillReceiveProps(newProps: IDetailsHeaderProps): void {
     const { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
@@ -121,7 +121,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
@@ -326,10 +326,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return Boolean(this._root.value && this._root.value.focus());
+    return Boolean(this._root.current && this._root.current.focus());
   }
 
-  private _renderColumnSizer(columnIndex: number) {
+  private _renderColumnSizer(columnIndex: number): JSX.Element {
     const { columns } = this.props;
     const column = this.props.columns[columnIndex];
     const { columnResizeDetails } = this.state;
@@ -371,7 +371,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @param {number} columnIndex (index of the column user double clicked)
    * @param {React.MouseEvent} ev (mouse double click event)
    */
-  private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>) {
+  private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnAutoResized, columns } = this.props;
     if (onColumnAutoResized) {
       onColumnAutoResized(columns[columnIndex], columnIndex);
@@ -556,7 +556,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onSelectionChanged() {
+  private _onSelectionChanged(): void {
     const isAllSelected = this.props.selection.isAllSelected();
 
     if (this.state.isAllSelected !== isAllSelected) {
@@ -566,7 +566,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
@@ -578,7 +578,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
+  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnContextMenu } = this.props;
 
     if (column.onColumnContextMenu) {
@@ -594,7 +594,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onToggleCollapseAll() {
+  private _onToggleCollapseAll(): void {
     const { onToggleCollapseAll } = this.props;
     const newCollapsed = !this.state.isAllCollapsed;
     this.setState({
@@ -606,6 +606,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 }
 
-function stopPropagation(ev: React.MouseEvent<HTMLElement>) {
+function stopPropagation(ev: React.MouseEvent<HTMLElement>): void {
   ev.stopPropagation();
 }

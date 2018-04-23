@@ -18,7 +18,7 @@ const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 const HoverCardTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
 
 export class HoverCardPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='HoverCard'
