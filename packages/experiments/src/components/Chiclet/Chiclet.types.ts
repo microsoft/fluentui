@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Chiclet } from './Chiclet';
+import { BaseChiclet } from './BaseChiclet';
 import { ChicletCard } from './ChicletCard';
-import { ChicletPicker } from './ChicletPicker';
+import { Chiclet } from './Chiclet';
 import { IStyle } from '../../Styling';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
@@ -44,7 +44,7 @@ export interface IBaseChicletProps extends React.Props<BaseChiclet> {
   actions?: string[];
 }
 
-export interface IChicletPickerProps extends React.Props<ChicletPicker> {
+export interface IChicletProps extends React.Props<Chiclet> {
   /**
    * Props to render in the chosen ChicletCard
    */
