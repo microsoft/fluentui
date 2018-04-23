@@ -115,8 +115,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
             <div style={ this._getStickyPlaceholderHeight(isStickyBottom) } />
           </div>
         }
-        <div style={ this._getNonStickyPlaceholderHeight() }
-        />
+        <div style={ this._getNonStickyPlaceholderHeight() } />
         <div
           ref={ this.nonStickyContent }
           className={ isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined }
@@ -147,7 +146,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _getContentStyles(): React.CSSProperties {
     return {
       backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-    }
+    };
   }
 
   private _getStickyPlaceholderHeight(isSticky: boolean): React.CSSProperties {
@@ -170,8 +169,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
-    const { scrollablePane } = this.context;
-
     if (this.root.current && this.nonStickyContent.current) {
       this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
       let isStickyTop = false;
@@ -209,7 +206,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.current.offsetTop;
     }
 
-<<<<<<< HEAD
     return distance;
   }
 
@@ -221,11 +217,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       while (currElem.offsetParent !== container) {
         distance += currElem.offsetTop;
         currElem = currElem.offsetParent as HTMLDivElement;
-=======
-    setTimeout((): void => {
-      if (this.props.stickyClassName) {
-        this.content.children[0].classList.remove(this.props.stickyClassName);
->>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
       }
 
       if (currElem.offsetParent === container) {

@@ -100,7 +100,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     });
     this.notifySubscribers();
 
-    if ("MutationObserver" in window) {
+    if ('MutationObserver' in window) {
       this._mutationObserver = new MutationObserver(mutation => {
         // Function to check if mutation is occuring in stickyAbove or stickyBelow
         function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
@@ -115,7 +115,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           this.updateStickyRefHeights();
         } else {
           // Else if mutation occurs in scrollable region, then find sticky it belongs to and force update
-          let stickyList = Array.from(this._stickies).filter((sticky) => {
+          const stickyList = Array.from(this._stickies).filter((sticky) => {
             if (sticky.root.current) {
               return sticky.root.current.contains(mutation[0].target);
             }
@@ -266,10 +266,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       const { isStickyTop, isStickyBottom } = sticky.state;
       if (sticky.nonStickyContent.current) {
         if (isStickyTop) {
-          stickyTopHeight += sticky.nonStickyContent.current.offsetHeight
+          stickyTopHeight += sticky.nonStickyContent.current.offsetHeight;
         }
         if (isStickyBottom) {
-          stickyBottomHeight += sticky.nonStickyContent.current.offsetHeight
+          stickyBottomHeight += sticky.nonStickyContent.current.offsetHeight;
         }
         this._checkStickyStatus(sticky);
       }

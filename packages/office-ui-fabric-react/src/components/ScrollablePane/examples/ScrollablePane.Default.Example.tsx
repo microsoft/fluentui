@@ -24,11 +24,12 @@ export class ScrollablePaneDefaultExample extends React.Component {
     }
 
     return (
-      <div style={ {
-        height: '900px',
-        position: 'relative',
-        maxHeight: 'inherit'
-      } }>
+      <div
+        style={ {
+          height: '900px',
+          position: 'relative',
+          maxHeight: 'inherit'
+        } }>
         <ScrollablePane className='scrollablePaneDefaultExample'>
           { contentAreas.map((ele) => {
             return ele;
@@ -38,20 +39,12 @@ export class ScrollablePaneDefaultExample extends React.Component {
     );
   }
 
-  private _getRandomColor(): string {
-    const letters = 'BCDEF'.split('');
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * letters.length)];
-    }
-    return color;
-  }
-
   private _createContentArea(index: number) {
     const color = colors.splice(Math.floor(Math.random() * colors.length), 1)[0];
 
     return (
-      <div key={ index }
+      <div
+        key={ index }
         style={ {
           backgroundColor: color
         } }
