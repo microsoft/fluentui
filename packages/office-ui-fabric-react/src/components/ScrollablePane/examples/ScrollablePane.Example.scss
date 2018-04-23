@@ -10,24 +10,8 @@
     @include ms-fontColor-neutralDark;
     padding: 5px 20px 5px 10px;
     font-size: 13px;
-    -webkit-transition: font-size ease 0.3s;
-    -moz-transition: font-size ease 0.3s;
-    -o-transition: font-size ease 0.3s;
-    -ms-transition: font-size ease 0.3s;
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: font-size;
     border-top: 1px solid $ms-color-black;
     border-bottom: 1px solid $ms-color-black;
-  }
-
-  .largeFont {
-    .sticky {
-      font-size: 20px;
-    }
   }
 
   .textContent {
