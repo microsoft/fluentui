@@ -30,12 +30,12 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   className?: string;
 
   /**
-   * Label to display above the control.
+   * Label to display above the control. May be a string or React virtual elements.
    */
   label?: React.ReactNode;
 
   /**
-   * Text describing or supplementing the operation.
+   * Text describing or supplementing the operation. May be a string or React virtual elements.
    */
   description?: React.ReactNode;
 
