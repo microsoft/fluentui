@@ -369,7 +369,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus .choiceFieldWrapper {
+:global(.ms-Fabric--isFocusVisible) .choiceFieldIsInFocus .choiceFieldWrapper {
   @include focus-border(-2px, $ms-color-neutralPrimary, 1px, false);
 
   @include high-contrast {
@@ -377,7 +377,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
+:global(.ms-Fabric--isFocusVisible) .choiceFieldIsInFocus {
   &.choiceFieldIsImage .choiceFieldWrapper,
   &.choiceFieldIsIcon .choiceFieldWrapper {
     @include focus-border(-2px, $ms-color-neutralSecondary, 1px, false);

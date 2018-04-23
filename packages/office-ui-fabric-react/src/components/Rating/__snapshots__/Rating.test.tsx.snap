@@ -46,7 +46,11 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
+<<<<<<< HEAD
           .undefined &:focus:after {
+=======
+          .ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -166,7 +170,11 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
+<<<<<<< HEAD
           .undefined &:focus:after {
+=======
+          .ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -285,7 +293,11 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
+<<<<<<< HEAD
           .undefined &:focus:after {
+=======
+          .ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -404,7 +416,11 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
+<<<<<<< HEAD
           .undefined &:focus:after {
+=======
+          .ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -523,7 +539,11 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
+<<<<<<< HEAD
           .undefined &:focus:after {
+=======
+          .ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";

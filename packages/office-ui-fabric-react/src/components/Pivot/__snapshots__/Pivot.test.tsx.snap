@@ -57,7 +57,11 @@ exports[`Pivot renders Pivot correctly 1`] = `
             &::-moz-focus-inner {
               border: 0;
             }
+<<<<<<< HEAD
             .undefined &:focus:after {
+=======
+            .ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
               border: 1px solid #ffffff;
               bottom: 0px;
               content: "";
@@ -68,7 +72,11 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+<<<<<<< HEAD
             @media screen and (-ms-high-contrast: active){.undefined &:focus:after {
+=======
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
               border: none;
               bottom: -2px;
               left: -2px;
@@ -159,7 +167,11 @@ exports[`Pivot renders Pivot correctly 1`] = `
             &::-moz-focus-inner {
               border: 0;
             }
+<<<<<<< HEAD
             .undefined &:focus:after {
+=======
+            .ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
               border: 1px solid #ffffff;
               bottom: 0px;
               content: "";
@@ -170,7 +182,11 @@ exports[`Pivot renders Pivot correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
+<<<<<<< HEAD
             @media screen and (-ms-high-contrast: active){.undefined &:focus:after {
+=======
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
               border: none;
               bottom: -2px;
               left: -2px;
