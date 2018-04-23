@@ -17,7 +17,6 @@ const colors = [
 ];
 
 export class ScrollablePaneDefaultExample extends React.Component {
-
   public render() {
     const contentAreas: JSX.Element[] = [];
     for (let i = 0; i < 5; i++) {
@@ -49,10 +48,12 @@ export class ScrollablePaneDefaultExample extends React.Component {
   }
 
   private _createContentArea(index: number) {
+    const color = colors.splice(Math.floor(Math.random() * colors.length), 1)[0];
+
     return (
       <div key={ index }
         style={ {
-          backgroundColor: colors[Math.floor(Math.random() * colors.length)]
+          backgroundColor: color
         } }
       >
         <Sticky
