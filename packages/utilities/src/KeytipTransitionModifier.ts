@@ -1,6 +1,8 @@
+import { KeyCodes } from './KeyCodes';
+
 export enum KeytipTransitionModifier {
-  shift = 16,
-  ctrl = 17,
-  alt = 18,
-  meta = 91
+  shift = KeyCodes.shift,
+  ctrl = KeyCodes.ctrl,
+  alt = KeyCodes.alt,
+  meta = KeyCodes.leftWindow
 }

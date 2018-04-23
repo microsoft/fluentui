@@ -113,3 +113,22 @@ export function flatten<T>(array: (T | T[])[]): T[] {
   array.forEach((item: T | T[]): T[] => (result = result.concat(item)));
   return result;
 }
+
+/**
+ * Given two arrays returns T/F if the elements in the array are the same
+ *
+ * @param array1 - First array
+ * @param array2 - Second array
+ * @returns {boolean} - T/F if the elements in the array are the same and the arrays are the same length
+ */
+export function arraysAreEqual<T>(array1: T[], array2: T[]): boolean {
+  if (array1.length !== array2.length) {
+    return false;
+  }
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] !== array2[i]) {
+      return false;
+    }
+  }
+  return true;
+}

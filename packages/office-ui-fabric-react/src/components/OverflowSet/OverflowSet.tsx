@@ -11,7 +11,7 @@ import {
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { KeytipManager } from '../../utilities/keytips';
+import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IKeytipProps } from '../../Keytip';
 import * as stylesImport from './OverflowSet.scss';
 

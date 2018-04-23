@@ -1,4 +1,3 @@
-import { IKeySequence } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
 export interface IKeytipConfig {
@@ -10,7 +9,7 @@ export interface IKeytipConfigItem {
    * Key Sequence for this keytip only
    * If sequence is not defined it will be derived from the content string
    */
-  sequence?: IKeySequence;
+  sequence?: string;
 
   /**
    * Content for the keytip
@@ -57,10 +56,10 @@ export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap {
  * Constructs a keytip from an IKeytipConfigItem and puts it in the configMap
  *
  * @param configMap - IKeytipConfigMap to store the keytip in
- * @param parentSequence - IKeySequence of the parent keytip
+ * @param parentSequence - string of the parent keytip
  * @param keytip - IKeytipConfigItem data
  */
-export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: IKeySequence[], keytip: IKeytipConfigItem): void {
+export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: string[], keytip: IKeytipConfigItem): void {
   // Compute full key sequence
   const sequence = keytip.sequence ? keytip.sequence : keytip.content.toLocaleLowerCase();
   const keytipSequence = parentSequence.concat(sequence);

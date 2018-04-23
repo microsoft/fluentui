@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeytipManager, KeytipTree } from '../../utilities/keytips';
+import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
 import { IKeytipProps } from '../../Keytip';
@@ -12,6 +12,7 @@ import {
   EventGroup,
   KeytipEvents
 } from '../../Utilities';
+import { KeytipTree } from './KeytipTree';
 
 describe('KeytipLayer', () => {
   const ktpMgr = KeytipManager.getInstance();

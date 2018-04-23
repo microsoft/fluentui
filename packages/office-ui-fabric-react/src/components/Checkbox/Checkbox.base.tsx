@@ -15,7 +15,7 @@ import {
   getClassNames
 } from './Checkbox.classNames';
 import { getStyles } from './Checkbox.styles';
-import { KeytipData } from '../../Keytip';
+import { KeytipData } from '../../KeytipData';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */

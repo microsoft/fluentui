@@ -2,7 +2,6 @@ import { IKeytipProps } from '../../Keytip';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
 import {
-  IKeySequence,
   ktpSeparator,
   ktpFullPrefix,
   ktpLayerId
@@ -24,24 +23,29 @@ let keytipTree = new KeytipTree();
 
 // Node B
 const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-const keytipSequenceB: IKeySequence[] = ['c', 'b'];
+const keytipSequenceB: string[] = ['c', 'b'];
 const keytipPropsB = createKeytipProps(keytipSequenceB);
+const uniqueIdB = '1';
 // Node C
 const keytipIdC = ktpFullPrefix + 'c';
-const keytipSequenceC: IKeySequence[] = ['c'];
+const keytipSequenceC: string[] = ['c'];
 const keytipPropsC = createKeytipProps(keytipSequenceC);
+const uniqueIdC = '2';
 // Node D
 const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + 'd';
-const keytipSequenceD: IKeySequence[] = ['e', 'd'];
+const keytipSequenceD: string[] = ['e', 'd'];
 const keytipPropsD = createKeytipProps(keytipSequenceD);
+const uniqueIdD = '3';
 // Node E
 const keytipIdE = ktpFullPrefix + 'e';
-const keytipSequenceE: IKeySequence[] = ['e'];
+const keytipSequenceE: string[] = ['e'];
 const keytipPropsE = createKeytipProps(keytipSequenceE);
+const uniqueIdE = '4';
 // Node F
 const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + 'f';
-const keytipSequenceF: IKeySequence[] = ['e', 'f'];
+const keytipSequenceF: string[] = ['e', 'f'];
 const keytipPropsF = createKeytipProps(keytipSequenceF);
+const uniqueIdF = '5';
 
 function verifySampleTree() {
   const nodeB = keytipTree.getNode(keytipIdB)!;
@@ -75,7 +79,7 @@ function verifySampleTree() {
   expect(keytipTree.root.children).toContain(keytipIdE);
 }
 
-function createKeytipProps(keySequences: IKeySequence[]): IKeytipProps {
+function createKeytipProps(keySequences: string[]): IKeytipProps {
   return {
     keySequences,
     // Just add empty content since it's required in IKeytipProps, but not needed for these tests
@@ -116,8 +120,8 @@ describe('KeytipTree', () => {
     });
 
     it('two levels from root', () => {
-      keytipTree.addNode(keytipPropsC, '1');
-      keytipTree.addNode(keytipPropsB, '2');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
       // Test B was added to C's children
       const nodeC = keytipTree.getNode(keytipIdC)!;
       expect(nodeC.children).toHaveLength(1);
@@ -131,14 +135,14 @@ describe('KeytipTree', () => {
     });
 
     it('add a child node before its parent', () => {
-      keytipTree.addNode(keytipPropsB, '1');
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
       const nodeB = keytipTree.getNode(keytipIdB)!;
       // Test B has C set as parent
       expect(nodeB.parent).toEqual(keytipIdC);
       // Test root still has no children
       expect(keytipTree.root.children).toHaveLength(0);
       // Add parent C
-      keytipTree.addNode(keytipPropsC, '2');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
       const nodeC = keytipTree.getNode(keytipIdC)!;
       // Test C has B as its child
       expect(nodeC.children).toHaveLength(1);
@@ -149,20 +153,20 @@ describe('KeytipTree', () => {
     });
 
     it('creates a correct Tree when many nodes are added in order', () => {
-      keytipTree.addNode(keytipPropsC, '1');
-      keytipTree.addNode(keytipPropsE, '2');
-      keytipTree.addNode(keytipPropsB, '3');
-      keytipTree.addNode(keytipPropsD, '4');
-      keytipTree.addNode(keytipPropsF, '5');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
       verifySampleTree();
     });
 
     it('creates a correct Tree when many nodes are added out of order', () => {
-      keytipTree.addNode(keytipPropsF, '1');
-      keytipTree.addNode(keytipPropsC, '2');
-      keytipTree.addNode(keytipPropsB, '3');
-      keytipTree.addNode(keytipPropsD, '4');
-      keytipTree.addNode(keytipPropsE, '5');
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
       verifySampleTree();
     });
 
@@ -171,8 +175,8 @@ describe('KeytipTree', () => {
         ...keytipPropsE,
         overflowSetSequence: keytipSequenceC
       };
-      keytipTree.addNode(keytipPropsC, '1');
-      keytipTree.addNode(keytipPropsEWithOverflow, '2');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsEWithOverflow, uniqueIdE);
       const nodeE = keytipTree.getNode('ktp-c-e')!;
       expect(nodeE.parent).toEqual(keytipIdC);
       expect(keytipTree.getNode(keytipIdE)).toBeUndefined();
@@ -181,13 +185,13 @@ describe('KeytipTree', () => {
 
   describe('updateNode', () => {
     it('correctly updates node attributes', () => {
-      keytipTree.addNode(keytipPropsB, '1');
+      keytipTree.addNode(keytipPropsB, uniqueIdC);
       const updatedKeytipProps = {
         ...keytipPropsB,
         disabled: true,
         hasDynamicChildren: true
       };
-      keytipTree.updateNode(updatedKeytipProps, '1');
+      keytipTree.updateNode(updatedKeytipProps, uniqueIdC);
       const nodeB = keytipTree.getNode(keytipIdB)!;
       expect(nodeB.disabled).toEqual(true);
       expect(nodeB.hasDynamicChildren).toEqual(true);
@@ -196,9 +200,9 @@ describe('KeytipTree', () => {
 
   describe('removeNode', () => {
     it('removes a child node of root and has no children', () => {
-      keytipTree.addNode(keytipPropsC, '1');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
       // Remove C from the tree
-      keytipTree.removeNode(keytipPropsC, '1');
+      keytipTree.removeNode(keytipPropsC, uniqueIdC);
       // Verify that C is not in the node map
       expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
       // Verify that root has no children
@@ -206,17 +210,17 @@ describe('KeytipTree', () => {
     });
 
     it('removes multiple nodes in order correctly', () => {
-      keytipTree.addNode(keytipPropsC, '1');
-      keytipTree.addNode(keytipPropsB, '2');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
       // Remove B
-      keytipTree.removeNode(keytipPropsB, '2');
+      keytipTree.removeNode(keytipPropsB, uniqueIdB);
       // Verify that B is not in the node map
       expect(keytipTree.getNode(keytipIdB)).toBeUndefined();
       // Verify C has no children
       const nodeC = keytipTree.getNode(keytipIdC)!;
       expect(nodeC.children).toHaveLength(0);
       // Remove C
-      keytipTree.removeNode(keytipPropsC, '1');
+      keytipTree.removeNode(keytipPropsC, uniqueIdC);
       // Verify that C is not in the node map
       expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
       // Verify that root has no children
@@ -224,10 +228,10 @@ describe('KeytipTree', () => {
     });
 
     it('removed node will be able to be re-added in place', () => {
-      keytipTree.addNode(keytipPropsC, '1');
-      keytipTree.addNode(keytipPropsB, '2');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
       // Remove C
-      keytipTree.removeNode(keytipPropsC, '1');
+      keytipTree.removeNode(keytipPropsC, uniqueIdC);
       // Verify that C is not in the node map
       expect(keytipTree.getNode(keytipIdC)).toBeUndefined();
       // Verify that B still has C as its parent
@@ -235,7 +239,7 @@ describe('KeytipTree', () => {
       // Verify that root has no children
       expect(keytipTree.root.children).toHaveLength(0);
       // Re-add C
-      keytipTree.addNode(keytipPropsC, '1');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
       // Verify that C is in the node map
       const nodeC = keytipTree.getNode(keytipIdC)!;
       // Verify that C's parent is the root
@@ -255,10 +259,10 @@ describe('KeytipTree', () => {
         ...keytipPropsE,
         overflowSetSequence: keytipSequenceC
       };
-      keytipTree.addNode(keytipPropsC, '1');
-      keytipTree.addNode(keytipPropsEWithOverflow, '2');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsEWithOverflow, uniqueIdE);
       // Remove E
-      keytipTree.removeNode(keytipPropsEWithOverflow, '2');
+      keytipTree.removeNode(keytipPropsEWithOverflow, uniqueIdE);
       const nodeE = keytipTree.getNode('ktp-c-e');
       expect(nodeE).toBeUndefined();
       const nodeC = keytipTree.getNode(keytipIdC)!;
@@ -267,9 +271,9 @@ describe('KeytipTree', () => {
   });
 
   it('adding and removing out of order (simulate mounting/unmounting) handled correctly', () => {
-    keytipTree.addNode(keytipPropsC, '1');
+    keytipTree.addNode(keytipPropsC, uniqueIdC);
     keytipTree.addNode(keytipPropsC, '2');
-    keytipTree.removeNode(keytipPropsC, '1');
+    keytipTree.removeNode(keytipPropsC, uniqueIdC);
     // Root should still have 'c' as a child
     expect(keytipTree.root.children).toHaveLength(1);
     expect(keytipTree.root.children).toContain(keytipIdC);
@@ -290,33 +294,38 @@ describe('KeytipTree', () => {
 
     // Node Q
     const keytipIdQ = ktpFullPrefix + 'q';
-    const keytipSequenceQ: IKeySequence[] = ['q'];
+    const keytipSequenceQ: string[] = ['q'];
     const keytipPropsQ = createKeytipProps(keytipSequenceQ);
+    const uniqueIdQ = '1';
 
     // Node K
-    const keytipSequenceK: IKeySequence[] = ['e1', 'k'];
+    const keytipSequenceK: string[] = ['e1', 'k'];
     const keytipPropsK = createKeytipProps(keytipSequenceK);
+    const uniqueIdK = '2';
 
     // Node P
-    const keytipSequenceP: IKeySequence[] = ['e1', 'p'];
+    const keytipSequenceP: string[] = ['e1', 'p'];
     const keytipPropsP = createKeytipProps(keytipSequenceP);
+    const uniqueIdP = '3';
 
     // Node E1
     const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
-    const keytipSequenceE1: IKeySequence[] = ['e1'];
+    const keytipSequenceE1: string[] = ['e1'];
     const keytipPropsE1 = createKeytipProps(keytipSequenceE1);
+    const uniqueIdE1 = '4';
 
     // Node E2
     const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
-    const keytipSequenceE2: IKeySequence[] = ['e2'];
+    const keytipSequenceE2: string[] = ['e2'];
     const keytipPropsE2 = createKeytipProps(keytipSequenceE2);
+    const uniqueIdE2 = '5';
 
     beforeEach(() => {
-      keytipTree.addNode(keytipPropsQ, '1');
-      keytipTree.addNode(keytipPropsK, '2');
-      keytipTree.addNode(keytipPropsP, '3');
-      keytipTree.addNode(keytipPropsE1, '4');
-      keytipTree.addNode(keytipPropsE2, '5');
+      keytipTree.addNode(keytipPropsQ, uniqueIdQ);
+      keytipTree.addNode(keytipPropsK, uniqueIdK);
+      keytipTree.addNode(keytipPropsP, uniqueIdP);
+      keytipTree.addNode(keytipPropsE1, uniqueIdE1);
+      keytipTree.addNode(keytipPropsE2, uniqueIdE2);
     });
 
     describe('getExactMatchedNode', () => {
@@ -331,7 +340,7 @@ describe('KeytipTree', () => {
           ...keytipPropsQ,
           disabled: true
         };
-        keytipTree.updateNode(disabledQ, '1');
+        keytipTree.updateNode(disabledQ, uniqueIdQ);
         expect(keytipTree.getExactMatchedNode('q', keytipTree.root)).toBeUndefined();
       });
 
@@ -341,12 +350,28 @@ describe('KeytipTree', () => {
         nodeQ.persisted = true;
         expect(keytipTree.getExactMatchedNode('q', keytipTree.root)).toBeDefined();
       });
+
+      it('tries to match all nodes when none are initally returned because of an overflow sequence', () => {
+        // Overflow node P
+        const overflowP = {
+          ...keytipPropsP,
+          overflowSetSequence: ['e1', 'x']
+        };
+        keytipTree.updateNode(overflowP, uniqueIdP);
+        // Add a new node that will be a child of P
+        const pChild = {
+          content: 'N',
+          keySequences: ['e1', 'p', 'n']
+        };
+        keytipTree.addNode(pChild, 'unique-id');
+        const matchedNode = keytipTree.getExactMatchedNode('n', keytipTree.getNode('ktp-e-1-x-p')!);
+        expect(matchedNode).toBeDefined();
+      });
     });
 
     describe('getPartiallyMatchedNodes', () => {
       it('gets the correct list of matching nodes', () => {
         expect(keytipTree.getPartiallyMatchedNodes('n', keytipTree.root)).toHaveLength(0);
-        expect(keytipTree.getPartiallyMatchedNodes('', keytipTree.root)).toHaveLength(0);
         const matchingENodes = keytipTree.getPartiallyMatchedNodes('e', keytipTree.root);
         expect(matchingENodes).toHaveLength(2);
         const matchingNodeIDs = matchingENodes.map((node: IKeytipTreeNode) => {
@@ -362,7 +387,7 @@ describe('KeytipTree', () => {
           ...keytipPropsE1,
           disabled: true
         };
-        keytipTree.updateNode(disabledE1, '4');
+        keytipTree.updateNode(disabledE1, uniqueIdE1);
         const matchedNodes = keytipTree.getPartiallyMatchedNodes('e', keytipTree.root);
         expect(matchedNodes.length).toEqual(1);
         expect(matchedNodes[0].id).toEqual(keytipIdE2);
@@ -380,16 +405,33 @@ describe('KeytipTree', () => {
         expect(matchingNodeIDs).toContain(keytipIdE1);
         expect(matchingNodeIDs).toContain(keytipIdE2);
       });
+
+      it('tries to match all nodes when none are initally returned because of an overflow sequence', () => {
+        // Overflow node P
+        const overflowP = {
+          ...keytipPropsP,
+          overflowSetSequence: ['e1', 'x']
+        };
+        keytipTree.updateNode(overflowP, uniqueIdP);
+        // Add a new node that will be a child of P
+        const pChild = {
+          content: 'N',
+          keySequences: ['e1', 'p', 'n']
+        };
+        keytipTree.addNode(pChild, 'unique-id');
+        const matchedNodes = keytipTree.getPartiallyMatchedNodes('n', keytipTree.getNode('ktp-e-1-x-p')!);
+        expect(matchedNodes).toHaveLength(1);
+      });
     });
   });
 
   describe('getChildren', () => {
     beforeEach(() => {
-      keytipTree.addNode(keytipPropsC, '1');
-      keytipTree.addNode(keytipPropsE, '2');
-      keytipTree.addNode(keytipPropsB, '3');
-      keytipTree.addNode(keytipPropsD, '4');
-      keytipTree.addNode(keytipPropsF, '5');
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
     });
 
     it('works for a passed in node', () => {
@@ -414,6 +456,43 @@ describe('KeytipTree', () => {
       const childrenOfA = keytipTree.getChildren(keytipTree.getNode(keytipIdE));
       expect(childrenOfA).toHaveLength(1);
       expect(childrenOfA).toContain(keytipIdF);
+    });
+  });
+
+  describe('isCurrentKeytipParent', () => {
+    it('matches the root', () => {
+      keytipTree.currentKeytip = keytipTree.root;
+      expect(keytipTree.isCurrentKeytipParent(keytipPropsC)).toEqual(true);
+    });
+
+    it('matches a keytip to its parent', () => {
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.currentKeytip = keytipTree.getNode(keytipIdC);
+      expect(keytipTree.isCurrentKeytipParent(keytipPropsB)).toEqual(true);
+    });
+
+    it('matches a keytip when both it and its parent have an overflowSetSequence', () => {
+      const cWithOverflow = {
+        ...keytipPropsC,
+        overflowSetSequence: ['x']
+      };
+      const bWithOverflow = {
+        ...keytipPropsB,
+        overflowSetSequence: ['x']
+      };
+      keytipTree.addNode(cWithOverflow, uniqueIdC);
+      keytipTree.currentKeytip = keytipTree.getNode('ktp-x-c');
+      expect(keytipTree.isCurrentKeytipParent(bWithOverflow)).toEqual(true);
+    });
+
+    it('matches a keytip when the currentKeytip has an overflowSetSequence but the passed in one doesn`t', () => {
+      const cWithOverflow = {
+        ...keytipPropsC,
+        overflowSetSequence: ['x']
+      };
+      keytipTree.addNode(cWithOverflow, uniqueIdC);
+      keytipTree.currentKeytip = keytipTree.getNode('ktp-x-c');
+      expect(keytipTree.isCurrentKeytipParent(keytipPropsB)).toEqual(true);
     });
   });
 });

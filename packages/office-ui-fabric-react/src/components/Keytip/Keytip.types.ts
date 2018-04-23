@@ -1,6 +1,6 @@
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction, IKeySequence, IPoint } from '../../Utilities';
+import { IStyleFunction, IPoint } from '../../Utilities';
 
 export interface IKeytip {
 }
@@ -60,16 +60,16 @@ export interface IKeytipProps {
    * Array of KeySequences which is the full key sequence to trigger this keytip
    * Should not include initial 'start' key sequence
    *
-   * @type {IKeySequence[]}
+   * @type {string[]}
    */
-  keySequences: IKeySequence[];
+  keySequences: string[];
 
   /**
    * Full KeySequence of the overflow set button, will be set automatically if this keytip is inside an overflow
    *
-   * @type {IKeySequence[]}
+   * @type {string[]}
    */
-  overflowSetSequence?: IKeySequence[];
+  overflowSetSequence?: string[];
 
   /**
    * ICalloutProps to pass to the callout element

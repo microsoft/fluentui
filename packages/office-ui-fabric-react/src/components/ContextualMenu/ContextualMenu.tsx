@@ -35,7 +35,7 @@ import {
   VerticalDivider
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
-import { KeytipData } from '../../Keytip';
+import { KeytipData } from '../../KeytipData';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;

@@ -13,14 +13,16 @@ import {
   ktpAriaSeparatorId,
   classNamesFunction,
   convertSequencesToKeytipID,
-  IKeySequence,
-  fullKeySequencesAreEqual,
   transitionKeysContain,
   mergeOverflowKeySequences,
   getDocument,
-  KeytipEvents
+  KeytipEvents,
+  constructKeytipExecuteTargetFromId,
+  arraysAreEqual
 } from '../../Utilities';
-import { KeytipManager, KeytipTree, IKeytipTreeNode, constructKeytipExecuteTargetFromId } from '../../utilities/keytips';
+import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import { KeytipTree } from './KeytipTree';
+import { IKeytipTreeNode } from './IKeytipTreeNode';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -57,11 +59,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   };
 
   public keytipTree: KeytipTree;
-  public currentSequence: IKeySequence;
+  public currentSequence: string;
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
   private _classNames: { [key in keyof IKeytipLayerStyles]: string };
-  private _newCurrentKeytipSequences?: IKeySequence[];
+  private _newCurrentKeytipSequences?: string[];
 
   private _delayedKeytipQueue: string[] = [];
   private _delayedQueueTimeout: number;
@@ -253,7 +255,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   public processInput(key: string): void {
     // Concat the input key with the current sequence
-    const currSequence: IKeySequence = this.currentSequence + key;
+    const currSequence: string = this.currentSequence + key;
     let currKtp = this.keytipTree.currentKeytip;
 
     // currentKeytip must be defined, otherwise we haven't entered keytip mode yet
@@ -328,7 +330,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * @param overflowButtonSequences - The overflow button sequence to execute
    * @param keytipSequences - The keytip that should become the 'currentKeytip' when it is registered
    */
-  private _persistedKeytipExecute(overflowButtonSequences: IKeySequence[], keytipSequences: IKeySequence[]) {
+  private _persistedKeytipExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
     // Save newCurrentKeytip for later
     this._newCurrentKeytipSequences = keytipSequences;
 
@@ -433,7 +435,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       this._addKeytipToQueue(convertSequencesToKeytipID(keytipProps.keySequences));
     }
 
-    if (this._newCurrentKeytipSequences && fullKeySequencesAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
+    if (this._newCurrentKeytipSequences && arraysAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
       this._triggerKeytipImmediately(keytipProps);
     }
   }

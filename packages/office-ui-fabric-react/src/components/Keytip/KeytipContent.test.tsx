@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IKeySequence } from '../../Utilities';
 import { KeytipContent } from './KeytipContent';
 
-const sequence: IKeySequence[] = ['a'];
+const sequence: string[] = ['a'];
 const keyCont = 'A';
 
 describe('Keytip', () => {

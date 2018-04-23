@@ -1,5 +1,3 @@
-import { IKeySequence } from '../../Utilities';
-
 export interface IKeytipTreeNode {
   /**
    * ID of the <Keytip> DOM element. Needed to locate the correct keytip in the KeytipLayer's 'keytip' state array
@@ -9,7 +7,12 @@ export interface IKeytipTreeNode {
   /**
    * KeySequence that invokes this KeytipTreeNode's onExecute function
    */
-  keytipSequence: IKeySequence;
+  keySequences: string[];
+
+  /**
+   * Overflow set sequence for this keytip
+   */
+  overflowSetSequence?: string[];
 
   /**
    * Control's execute function for when keytip is invoked, passed from the component to the Manager in the IKeytipProps

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
-import { IRenderFunction, IKeySequence } from '../../Utilities';
+import { IRenderFunction } from '../../Utilities';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
 
@@ -84,7 +84,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   /**
    * Optional full keytip sequence for the overflow button, if it will have a keytip
    */
-  keytipSequences?: IKeySequence[];
+  keytipSequences?: string[];
 
   /**
    * Function that will take in an IOverflowSetItemProps and return the subMenu for that item

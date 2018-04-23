@@ -15,7 +15,7 @@ import {
   customizable
 } from '../../Utilities';
 import { getClassNames } from './Toggle.classNames';
-import { KeytipData } from '../../Keytip';
+import { KeytipData } from '../../KeytipData';
 
 export interface IToggleState {
   isChecked: boolean;

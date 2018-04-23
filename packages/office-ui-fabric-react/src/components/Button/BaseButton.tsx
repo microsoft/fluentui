@@ -16,7 +16,7 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { KeytipData } from '../../Keytip';
+import { KeytipData } from '../../KeytipData';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;

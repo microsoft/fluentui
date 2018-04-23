@@ -14,7 +14,7 @@ import {
   ILinkStyleProps,
   ILinkStyles
 } from './Link.types';
-import { KeytipData } from '../../Keytip';
+import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 

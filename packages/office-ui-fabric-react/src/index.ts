@@ -29,6 +29,7 @@ export * from './HoverCard';
 export * from './Icon';
 export * from './Image';
 export * from './Keytip';
+export * from './KeytipData';
 export * from './KeytipLayer';
 export * from './Label';
 export * from './Layer';

@@ -1,11 +1,10 @@
 import { IKeytipProps } from '../../Keytip';
 import {
-  fullKeySequencesAreEqual,
+  arraysAreEqual,
   replaceElement,
   findIndex,
   find,
   EventGroup,
-  IKeySequence,
   KeytipEvents
 } from '../../Utilities';
 
@@ -16,7 +15,6 @@ export interface IUniqueKeytip {
 
 /**
  * This class is responsible for handling registering, updating, and unregistering of keytips
- * It communicates with the KeytipTree and KeytipLayer to determine what keytips should show
  */
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
@@ -60,7 +58,6 @@ export class KeytipManager {
 
   /**
    * Register a persisted keytip
-   * This means just adding a KeytipTreeNode
    *
    * @param keytipProps - Persisted Keytip to register
    * @returns {string} Unique ID for this persisted keytip
@@ -116,7 +113,6 @@ export class KeytipManager {
 
   /**
    * Unegister a persisted keytip
-   * This means just removing it from the KeytipTree
    *
    * @param keytipToRemove - Persisted keytip to remove
    * @param uniqueID - Unique ID of this persisted keytip
@@ -155,7 +151,7 @@ export class KeytipManager {
     fullSequence.pop();
     if (fullSequence.length !== 0) {
       const parentKeytip = find(this.getKeytips(), (keytip: IKeytipProps) => {
-        return fullKeySequencesAreEqual(fullSequence, keytip.keySequences);
+        return arraysAreEqual(fullSequence, keytip.keySequences);
       });
       if (parentKeytip && parentKeytip.overflowSetSequence) {
         return {
@@ -173,7 +169,7 @@ export class KeytipManager {
    * @param overflowButtonSequences
    * @param keytipSequences
    */
-  public persistedKeytipExecute(overflowButtonSequences: IKeySequence[], keytipSequences: IKeySequence[]) {
+  public persistedKeytipExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
     EventGroup.raise(this, KeytipEvents.persistedKeytipExecute, {
       overflowButtonSequences,
       keytipSequences

@@ -21,7 +21,7 @@ import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 import { createRef } from '../../Utilities';
-import { KeytipData } from '../../Keytip';
+import { KeytipData } from '../../KeytipData';
 
 const styles: any = stylesImport;
 
