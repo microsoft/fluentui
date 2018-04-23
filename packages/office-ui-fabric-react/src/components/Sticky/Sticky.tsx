@@ -120,6 +120,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         <div
           ref={ this.nonStickyContent }
           className={ isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined }
+          style={ this._getContentStyles() }
         >
           { this.props.children }
         </div>
@@ -139,9 +140,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
   }
 
-
   public setDistanceFromTop(container: HTMLDivElement): void {
     this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
+  }
+
+  private _getContentStyles(): React.CSSProperties {
+    return {
+      backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
+    }
   }
 
   private _getStickyPlaceholderHeight(isSticky: boolean): React.CSSProperties {

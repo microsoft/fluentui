@@ -8,8 +8,8 @@
 
   .sticky {
     @include ms-fontColor-neutralDark;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 5px 20px 5px 10px;
+    font-size: 13px;
     -webkit-transition: font-size ease 0.3s;
     -moz-transition: font-size ease 0.3s;
     -o-transition: font-size ease 0.3s;

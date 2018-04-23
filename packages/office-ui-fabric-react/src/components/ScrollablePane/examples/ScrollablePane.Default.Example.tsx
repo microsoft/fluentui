@@ -4,6 +4,18 @@ import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
+const colors = [
+  '#eaeaea',
+  '#dadada',
+  '#d0d0d0',
+  '#c8c8c8',
+  '#a6a6a6',
+  '#c7e0f4',
+  '#71afe5',
+  '#eff6fc',
+  '#deecf9'
+];
+
 export class ScrollablePaneDefaultExample extends React.Component {
 
   public render() {
@@ -13,11 +25,17 @@ export class ScrollablePaneDefaultExample extends React.Component {
     }
 
     return (
-      <ScrollablePane className='scrollablePaneDefaultExample'>
-        { contentAreas.map((ele) => {
-          return ele;
-        }) }
-      </ScrollablePane>
+      <div style={ {
+        height: '900px',
+        position: 'relative',
+        maxHeight: 'inherit'
+      } }>
+        <ScrollablePane className='scrollablePaneDefaultExample'>
+          { contentAreas.map((ele) => {
+            return ele;
+          }) }
+        </ScrollablePane>
+      </div>
     );
   }
 
@@ -31,13 +49,14 @@ export class ScrollablePaneDefaultExample extends React.Component {
   }
 
   private _createContentArea(index: number) {
-    const style = this._getRandomColor();
-
     return (
-      <div key={ index }>
+      <div key={ index }
+        style={ {
+          backgroundColor: colors[Math.floor(Math.random() * colors.length)]
+        } }
+      >
         <Sticky
           stickyPosition={ StickyPositionType.Both }
-          stickyBackgroundColor={ style }
         >
           <div className='sticky'>
             Sticky Component #{ index + 1 }
