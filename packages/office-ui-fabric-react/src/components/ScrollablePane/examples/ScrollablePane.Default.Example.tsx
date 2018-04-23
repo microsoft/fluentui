@@ -38,7 +38,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
     );
   }
 
-  private _getRandomColor() {
+  private _getRandomColor(): string {
     const letters = 'BCDEF'.split('');
     let color = '#';
     for (let i = 0; i < 6; i++) {

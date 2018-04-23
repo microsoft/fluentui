@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.26.0",
+      "tag": "@uifabric/utilities_v5.26.0",
+      "date": "Fri, 20 Apr 2018 23:06:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "65c2b22952582b1e83d68e109101116a6255d074",
+            "comment": "InputMask: Added inputMask utilitiy and tests"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.25.0",
       "tag": "@uifabric/utilities_v5.25.0",
       "date": "Thu, 19 Apr 2018 18:25:59 GMT",

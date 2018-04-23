@@ -81,7 +81,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
     return (

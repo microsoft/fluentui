@@ -26,7 +26,7 @@ const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui
 const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
 
 export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='SpinButton'

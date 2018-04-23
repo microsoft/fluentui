@@ -209,6 +209,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.current.offsetTop;
     }
 
+<<<<<<< HEAD
     return distance;
   }
 
@@ -220,6 +221,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       while (currElem.offsetParent !== container) {
         distance += currElem.offsetTop;
         currElem = currElem.offsetParent as HTMLDivElement;
+=======
+    setTimeout((): void => {
+      if (this.props.stickyClassName) {
+        this.content.children[0].classList.remove(this.props.stickyClassName);
+>>>>>>> 57d14eb7535d07348628c034bff03646c0851bd2
       }
 
       if (currElem.offsetParent === container) {

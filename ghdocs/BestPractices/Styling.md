@@ -56,7 +56,7 @@ Within the component implementation, when we need to convert these styles into c
 const getClassNames = classNameFunction<ICompStyleProps, ICompStyles>();
 
 class Comp extends React.Component {
-  public render() {
+  public render(): JSX.Element {
     const { getStyles, theme } = this.props;
     const classNames = getClassNames(getStyles, { /* style props */ });
 
@@ -150,7 +150,7 @@ import { IComponentNameProps } from ='./ComponentName.props';
 const getClassNames = classNameFunction<IComponentNameStyleProps, IComponentNameStyles>();
 
 export class ComponentName extends React.Component<...> {
-  public render() {
+  public render(): JSX.Element {
     const { getStyles, theme } = this.props;
     const classNames = getClassNames(getStyles, { theme: theme! });
 

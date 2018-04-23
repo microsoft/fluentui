@@ -3,6 +3,7 @@
  * and the desired shade enum, this will return an appropriate shade of that color.
  */
 import {
+  IHSL,
   IColor,
   MAX_COLOR_RGBA
 } from './colors';
@@ -57,7 +58,7 @@ function _isWhite(color: IColor): boolean {
   return color.r === MAX_COLOR_RGBA && color.g === MAX_COLOR_RGBA && color.b === MAX_COLOR_RGBA;
 }
 
-function _darken(hsl: { h: number, s: number, l: number }, factor: number) {
+function _darken(hsl: IHSL, factor: number): IHSL {
   return {
     h: hsl.h,
     s: hsl.s,
@@ -65,7 +66,7 @@ function _darken(hsl: { h: number, s: number, l: number }, factor: number) {
   };
 }
 
-function _lighten(hsl: { h: number, s: number, l: number }, factor: number) {
+function _lighten(hsl: IHSL, factor: number): IHSL {
   return {
     h: hsl.h,
     s: hsl.s,
@@ -73,7 +74,7 @@ function _lighten(hsl: { h: number, s: number, l: number }, factor: number) {
   };
 }
 
-export function isDark(color: IColor) {
+export function isDark(color: IColor): boolean {
   return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
 }
 
@@ -94,7 +95,7 @@ export function isDark(color: IColor) {
  * @param {Shade} shade The shade of the base color to compute
  * @param {Boolean} isInverted Default false. Whether the given theme is inverted (reverse strongen/soften logic)
  */
-export function getShade(color: IColor, shade: Shade, isInverted = false) {
+export function getShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
   'use strict';
   if (!color) {
     return null;
@@ -135,7 +136,7 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
 // Background shades/tints are generated differently. The provided color will be guaranteed
 //   to be the darkest or lightest one. If it is <50% luminance, it will always be the darkest,
 //   otherwise it will always be the lightest.
-export function getBackgroundShade(color: IColor, shade: Shade, isInverted = false) {
+export function getBackgroundShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
   'use strict';
   if (!color) {
     return null;
@@ -160,12 +161,12 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted = fal
  * color pairs meet minimum accessibility requirements.
  * See: https://www.w3.org/TR/WCAG20/ section 1.4.3
  */
-export function getContrastRatio(color1: IColor, color2: IColor) {
+export function getContrastRatio(color1: IColor, color2: IColor): number {
   // Formula defined by: http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
   // relative luminance: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
 
   /* calculate the intermediate value needed to calculating relative luminance */
-  function _getThing(x: number) {
+  function _getThing(x: number): number {
     if (x <= .03928) {
       return x / 12.92;
     } else {

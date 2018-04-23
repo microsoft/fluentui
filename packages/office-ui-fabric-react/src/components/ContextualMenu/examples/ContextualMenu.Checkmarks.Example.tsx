@@ -21,7 +21,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { selection } = this.state;
 
     return (
@@ -169,7 +169,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
     );
   }
 
-  private _onToggleSelect(ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem) {
+  private _onToggleSelect(ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem): void {
     const { selection } = this.state;
     ev!.preventDefault();
     selection![item!.key] = !selection![item!.key];

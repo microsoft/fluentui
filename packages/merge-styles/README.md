@@ -177,7 +177,7 @@ In some cases, you may need to use parent or child selectors. To do so, you can 
 {
   selectors: {
     // selector relative to parent
-    '.ms-Fabric.is-focusVisible &': {
+    '.ms-Fabric--isFocusVisible &': {
       background: 'red'
     }
     // selector for child
@@ -191,7 +191,7 @@ In some cases, you may need to use parent or child selectors. To do so, you can 
 This would register the rules:
 
 ```css
-.ms-Fabric.is-focusVisible .css-0 { background: red; }
+.ms-Fabric--isFocusVisible .css-0 { background: red; }
 .css-0 .child { background: green; }
 ```
 

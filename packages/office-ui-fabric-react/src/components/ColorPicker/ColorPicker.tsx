@@ -48,13 +48,13 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     } as IColorPickerState;
   }
 
-  public componentWillReceiveProps(newProps: IColorPickerProps) {
+  public componentWillReceiveProps(newProps: IColorPickerProps): void {
     if (newProps.color) {
       this._updateColor(getColorFromString(newProps.color));
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { color } = this.state;
 
     return (
@@ -170,7 +170,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     }));
   }
 
-  private _updateColor(newColor?: IColor) {
+  private _updateColor(newColor?: IColor): void {
     if (!newColor) {
       return;
     }

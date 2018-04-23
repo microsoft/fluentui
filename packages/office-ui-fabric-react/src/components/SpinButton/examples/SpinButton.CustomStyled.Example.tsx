@@ -27,7 +27,7 @@ const downArrowButtonStyles: Partial<IButtonStyles> = {
 };
 
 export class SpinButtonCustomStyledExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <SpinButton

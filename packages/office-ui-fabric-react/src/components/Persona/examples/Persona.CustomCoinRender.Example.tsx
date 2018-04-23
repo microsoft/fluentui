@@ -20,7 +20,7 @@ const examplePersona = {
 
 export class PersonaCustomCoinRenderExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-PersonaExample'>
         <div className={ exampleStyles.exampleLabel }>Custom functional element in place of persona coin's image</div>

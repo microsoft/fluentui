@@ -22,7 +22,7 @@ export class OverlayLightExample extends React.Component<{}, {
     this.state = { isOverlayVisible: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isOverlayVisible } = this.state;
     const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
     const classNames = getClassNames(getStyles);

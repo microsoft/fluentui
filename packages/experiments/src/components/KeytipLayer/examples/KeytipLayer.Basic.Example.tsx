@@ -94,7 +94,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
   public render(): JSX.Element {
-    let divStyle = {
+    const divStyle = {
       width: '50%',
       display: 'inline-block',
       verticalAlign: 'top'
@@ -206,7 +206,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
   public componentDidMount(): void {
     // Manually add keytips to the KeytipManager for now
     // This should really be done in each component
-    for (let component of Object.keys(this.keytipMap)) {
+    for (const component of Object.keys(this.keytipMap)) {
       registerKeytip(this.keytipMap[component]);
     }
   }

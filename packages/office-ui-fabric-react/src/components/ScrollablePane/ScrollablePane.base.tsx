@@ -166,7 +166,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { className, theme, getStyles } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(getStyles!,

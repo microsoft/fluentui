@@ -69,7 +69,7 @@ export namespace Validators {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {
-        let match = expression.exec(value);
+        const match = expression.exec(value);
         if (match === null || match === undefined) {
           return errorMessage;
         }
@@ -86,7 +86,7 @@ export namespace Validators {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {
-        let intValue: number = Number(value);
+        const intValue: number = Number(value);
         if (!isNaN(intValue) && intValue < bound) {
           return formatError(intValue);
         }
@@ -103,7 +103,7 @@ export namespace Validators {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {
-        let intValue: number = Number(value);
+        const intValue: number = Number(value);
         if (!isNaN(intValue) && intValue > bound) {
           return formatError(intValue);
         }
