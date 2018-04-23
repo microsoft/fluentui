@@ -33,7 +33,7 @@ describe('FormCheckBox Unit Tests', () => {
     });
 
     it('Null name throws error', () => {
-      let errorFunction = () => {
+      const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
           <Form
             onSubmit={ undefined }
@@ -82,7 +82,7 @@ describe('FormCheckBox Unit Tests', () => {
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Checkbox') as HTMLElement;
-      let form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toBeTruthy();
@@ -102,8 +102,8 @@ describe('FormCheckBox Unit Tests', () => {
     });
 
     it('Checkbox is leading and trailing debounced', () => {
-      let updateStub: sinon.SinonStub = sandbox.stub();
-      let renderedForm = ReactTestUtils.renderIntoDocument(
+      const updateStub: sinon.SinonStub = sandbox.stub();
+      const renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
           onUpdated={ updateStub }
         >
@@ -114,7 +114,7 @@ describe('FormCheckBox Unit Tests', () => {
         </Form>
       ) as Form;
 
-      let checkBox: ExtendsCheckbox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsCheckbox);
+      const checkBox: ExtendsCheckbox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsCheckbox);
       checkBox.setValue(true);
       expect(updateStub.callCount).toEqual(1);
       checkBox.setValue(false);

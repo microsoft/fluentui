@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { CommandBar } from './CommandBar';
 import * as renderer from 'react-test-renderer';
+
+import { CommandBar } from './CommandBar';
 import { mount } from 'enzyme';
 
 describe('CommandBar', () => {
@@ -78,7 +79,7 @@ describe('CommandBar', () => {
       />
     );
 
-    let menuItem = commandBar.find('button');
+    const menuItem = commandBar.find('button');
 
     menuItem.simulate('click');
 
@@ -120,7 +121,7 @@ describe('CommandBar', () => {
       />
     );
 
-    let menuItem = commandBar.find('button');
+    const menuItem = commandBar.find('button');
 
     menuItem.simulate('click');
 
@@ -137,7 +138,7 @@ describe('CommandBar', () => {
   });
 
   it('updates menu after update if item is still present', () => {
-    let items = [
+    const items = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
@@ -159,7 +160,7 @@ describe('CommandBar', () => {
       />
     );
 
-    let menuItem = commandBar.find('button');
+    const menuItem = commandBar.find('button');
 
     menuItem.simulate('click');
 

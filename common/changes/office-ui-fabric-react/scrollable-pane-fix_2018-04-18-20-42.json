@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Propagate onRenderInitials correctly from Persona to PersonaCoin",
+      "comment": "Use `data-is-scrollable` attribute on correct ScrollablePane div",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "ivdijan@microsoft.com"
+  "email": "spelliot@microsoft.com"
 }
