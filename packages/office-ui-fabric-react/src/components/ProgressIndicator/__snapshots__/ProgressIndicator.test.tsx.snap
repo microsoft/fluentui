@@ -146,7 +146,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
       className=
           ms-ProgressIndicator-progressBar
           {
-            animation: css-41 3s infinite;
+            animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
             background: linear-gradient(to right, transparent 0%, #0078d4 50%, transparent 100%);
             height: 2px;
