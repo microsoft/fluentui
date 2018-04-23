@@ -1,6 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 20 Apr 2018 23:06:06 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+
+## 5.33.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+### Patches
+
+- Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package.
+- Fix index import
 
 ## 5.32.0
 Fri, 20 Apr 2018 23:06:06 GMT
