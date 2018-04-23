@@ -160,8 +160,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       this.contentContainer.scrollTop = initialScrollPosition;
     }
 
-    // Update subscribers when DOM changes
-    if (prevProps.children !== this.props.children) {
+    // Update subscribers when stickyTopHeight/stickyBottomHeight changes
+    if (prevState.stickyTopHeight !== this.state.stickyTopHeight || prevState.stickyBottomHeight !== this.state.stickyBottomHeight) {
       this.notifySubscribers();
     }
   }
