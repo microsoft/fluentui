@@ -147,7 +147,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
                 ? <PersonaPresence { ...personaPresenceProps } />
                 : // Just render Contact Icon if there isn't a Presence prop.
                 <Icon
-                  iconName='Contact'
+                  name='Contact'
                   className={ classNames.size10WithoutPresenceIcon }
                 />
             )
@@ -204,7 +204,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     return (
       imageInitials !== ''
         ? <span>{ imageInitials }</span>
-        : <Icon iconName='Contact' />
+        : <Icon name='Contact' />
     );
   }
 

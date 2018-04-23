@@ -146,7 +146,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         className={ classNames.link }
         styles={ buttonStyles }
         href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
-        iconProps={ link.iconProps || { iconName: link.icon || '' } }
+        iconProps={ link.iconProps || { name: link.icon || '' } }
         ariaDescription={ link.title || link.name }
         onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
         title={ link.title || link.name }
@@ -185,7 +185,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
           >
             <Icon
               className={ classNames.chevronIcon }
-              iconName='ChevronDown'
+              name='ChevronDown'
             />
           </button> : null
         ) }
@@ -244,7 +244,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
           >
             <Icon
               className={ classNames.chevronIcon }
-              iconName='ChevronDown'
+              name='ChevronDown'
             />
             { group.name }
           </button> : null)

@@ -36,7 +36,7 @@ export class PivotIconCountExample extends React.Component<any, any> {
     return (
       <span>
         { defaultRenderer(link) }
-        <Icon iconName='Airplane' style={ { 'color': 'red' } } />
+        <Icon name='Airplane' style={ { 'color': 'red' } } />
       </span>
     );
   }

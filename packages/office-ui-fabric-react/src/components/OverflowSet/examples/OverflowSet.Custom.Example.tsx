@@ -123,7 +123,7 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
     }
     return (
       <DefaultButton
-        iconProps={ { iconName: item.icon } }
+        iconProps={ { name: item.icon } }
         menuProps={ item.subMenuProps }
         text={ item.name }
       />
@@ -134,7 +134,7 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
     return (
       <DefaultButton
         className={ css(styles.overflowButton) }
-        menuIconProps={ { iconName: 'More' } }
+        menuIconProps={ { name: 'More' } }
         menuProps={ { items: overflowItems! } }
       />
     );

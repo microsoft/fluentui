@@ -106,7 +106,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' }
+    buttonIconProps: { name: 'ChevronDown' }
   };
 
   private _root = createRef<HTMLDivElement>();

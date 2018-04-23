@@ -76,7 +76,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
                 {
                   key: keys[5],
                   iconProps: {
-                    iconName: 'MusicInCollectionFill'
+                    name: 'MusicInCollectionFill'
                   },
                   subMenuProps: {
                     items: [
@@ -105,7 +105,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
                 {
                   key: keys[8],
                   iconProps: {
-                    iconName: 'MusicInCollectionFill'
+                    name: 'MusicInCollectionFill'
                   },
                   subMenuProps: {
                     items: [
@@ -135,7 +135,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
                 {
                   key: keys[11],
                   iconProps: {
-                    iconName: 'MusicInCollectionFill'
+                    name: 'MusicInCollectionFill'
                   },
                   subMenuProps: {
                     directionalHint: DirectionalHint.leftCenter,

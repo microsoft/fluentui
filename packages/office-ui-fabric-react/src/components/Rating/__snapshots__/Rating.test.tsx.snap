@@ -46,7 +46,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .undefined &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -109,10 +109,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
                 color: #a6a6a6;
+                display: inline-block;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -123,10 +121,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
                 color: #000000;
+                display: inline-block;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
@@ -170,7 +166,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .undefined &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -232,10 +228,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
                 color: #a6a6a6;
+                display: inline-block;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -246,10 +240,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
                 color: #000000;
+                display: inline-block;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
@@ -293,7 +285,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .undefined &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -355,10 +347,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
                 color: #a6a6a6;
+                display: inline-block;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -369,10 +359,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
                 color: #000000;
+                display: inline-block;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
@@ -416,7 +404,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .undefined &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -478,10 +466,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
                 color: #a6a6a6;
+                display: inline-block;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -492,10 +478,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
                 color: #000000;
+                display: inline-block;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
@@ -539,7 +523,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .undefined &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -601,10 +585,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
                 color: #a6a6a6;
+                display: inline-block;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -615,10 +597,8 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
                 color: #000000;
+                display: inline-block;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;

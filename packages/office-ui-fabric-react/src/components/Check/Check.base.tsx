@@ -35,8 +35,8 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
 
     return (
       <div className={ classNames.root } >
-        <Icon iconName='CircleRing' className={ classNames.circle } />
-        <Icon iconName='StatusCircleCheckmark' className={ classNames.check } />
+        <Icon name='CircleRing' className={ classNames.circle } />
+        <Icon name='StatusCircleCheckmark' className={ classNames.check } />
       </div>
     );
   }

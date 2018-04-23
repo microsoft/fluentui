@@ -80,7 +80,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
     const previewPropsUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
-          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: '#ffffff' } } },
+          previewIconProps: { name: 'OpenFile', styles: { root: { fontSize: 42, color: '#ffffff' } } },
           width: 318,
           height: 196
         }
@@ -113,7 +113,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
             actions={
               [
                 {
-                  iconProps: { iconName: 'Share' },
+                  iconProps: { name: 'Share' },
                   onClick: (ev: any) => {
                     console.log('You clicked the share action.');
                     ev.preventDefault();
@@ -122,7 +122,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
                   ariaLabel: 'share action'
                 },
                 {
-                  iconProps: { iconName: 'Pin' },
+                  iconProps: { name: 'Pin' },
                   onClick: (ev: any) => {
                     console.log('You clicked the pin action.');
                     ev.preventDefault();
@@ -131,7 +131,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
                   ariaLabel: 'pin action'
                 },
                 {
-                  iconProps: { iconName: 'Ringer' },
+                  iconProps: { name: 'Ringer' },
                   onClick: (ev: any) => {
                     console.log('You clicked the ringer action.');
                     ev.preventDefault();

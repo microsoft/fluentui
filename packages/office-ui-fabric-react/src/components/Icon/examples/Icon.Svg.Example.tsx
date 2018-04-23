@@ -47,7 +47,7 @@ const BorderBlindsIcon = (props: { col1?: string, col2?: string, col3?: string }
 
   return (
     <Icon
-      iconName='borderblinds-svg'
+      name='borderblinds-svg'
       className={
         mergeStyles(
           'ms-IconExample',
@@ -76,9 +76,9 @@ export class IconSvgExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Icon iconName='onedrive-svg' className='ms-IconExample' />
+        <Icon name='onedrive-svg' className='ms-IconExample' />
         <Icon
-          iconName='yammer-svg'
+          name='yammer-svg'
           className={
             mergeStyles(
               'ms-IconExample',

@@ -34,7 +34,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
         <span>TextField with custom label render</span>
         <span className='ms-CustomRenderExample-labelIconArea' ref={ (menuButton) => this._iconButtonElement = menuButton! }>
           <IconButton
-            iconProps={ { iconName: 'Info' } }
+            iconProps={ { name: 'Info' } }
             title='Info'
             ariaLabel='Info'
             onClick={ this._onClick }

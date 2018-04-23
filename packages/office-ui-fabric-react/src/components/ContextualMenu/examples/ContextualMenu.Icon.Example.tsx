@@ -34,8 +34,8 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                 onRenderIcon: (props: IContextualMenuItemProps) => {
                   return (
                     <span className={ styles.iconContainer }>
-                      <Icon iconName={ 'WordLogoFill16' } className={ styles.logoFillIcon } />
-                      <Icon iconName={ 'WordLogo16' } className={ styles.logoIcon } />
+                      <Icon name={ 'WordLogoFill16' } className={ styles.logoFillIcon } />
+                      <Icon name={ 'WordLogo16' } className={ styles.logoIcon } />
                     </span>
                   );
                 }
@@ -43,7 +43,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
               {
                 key: 'newItem',
                 iconProps: {
-                  iconName: 'Add'
+                  name: 'Add'
                 },
                 name: 'New'
               },
@@ -53,7 +53,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                   this.setState({ showCallout: true });
                 },
                 iconProps: {
-                  iconName: 'Upload',
+                  name: 'Upload',
                   style: {
                     color: 'salmon'
                   }
@@ -68,21 +68,21 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
               {
                 key: 'share',
                 iconProps: {
-                  iconName: 'Share'
+                  name: 'Share'
                 },
                 name: 'Share'
               },
               {
                 key: 'print',
                 iconProps: {
-                  iconName: 'Print'
+                  name: 'Print'
                 },
                 name: 'Print'
               },
               {
                 key: 'music',
                 iconProps: {
-                  iconName: 'MusicInCollectionFill'
+                  name: 'MusicInCollectionFill'
                 },
                 name: 'Music',
               }

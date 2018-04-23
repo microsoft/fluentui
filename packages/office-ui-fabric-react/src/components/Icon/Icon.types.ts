@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
 import { IStyle } from '../../Styling';
-import { IBaseProps } from '../../Utilities';
+import { IBaseProps, IStyleFunction } from '../../Utilities';
 
 // Please keep alphabetized
 export enum IconType {
@@ -29,17 +29,11 @@ export enum IconType {
   Image = 100001
 }
 
-export interface IIconStyles {
-  root?: IStyle;
-  rootHasPlaceHolder?: IStyle;
-  imageContainer?: IStyle;
-}
-
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
    */
-  iconName?: string;
+  name?: string;
 
   /**
    * Optional styling for the elements within the Icon.
@@ -71,4 +65,24 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    * If rendering an image icon, this function callback will be invoked in the event loading the image errors.
    */
   imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
+
+  /** Gets the styles for an Icon. */
+  getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
+
+  /**
+ * @deprecated. Use name instead.
+ */
+  iconName?: string;
+
+}
+
+export interface IIconStyleProps {
+  className?: string;
+  isPlaceholder: boolean;
+  isImage: boolean;
+}
+
+export interface IIconStyles {
+  root: IStyle;
+  imageContainer?: IStyle;
 }

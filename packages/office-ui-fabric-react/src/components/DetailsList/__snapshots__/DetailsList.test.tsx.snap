@@ -92,10 +92,8 @@ exports[`DetailsList renders List correctly 1`] = `
                     className=
                         ms-Check-circle
                         {
-                          display: inline-block;
-                        }
-                        {
                           color: #c8c8c8;
+                          display: inline-block;
                           font-size: 18px;
                           height: 18px;
                           left: 0px;
@@ -116,10 +114,8 @@ exports[`DetailsList renders List correctly 1`] = `
                     className=
                         ms-Check-check
                         {
-                          display: inline-block;
-                        }
-                        {
                           color: #c8c8c8;
+                          display: inline-block;
                           font-size: 16px;
                           height: 18px;
                           left: .5px;

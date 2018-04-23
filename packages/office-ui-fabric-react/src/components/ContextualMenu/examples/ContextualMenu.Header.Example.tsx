@@ -22,7 +22,7 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
               {
                 key: 'upload',
                 iconProps: {
-                  iconName: 'Upload',
+                  name: 'Upload',
                   style: {
                     color: 'salmon'
                   }
@@ -37,7 +37,7 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
               {
                 key: 'share',
                 iconProps: {
-                  iconName: 'Share'
+                  name: 'Share'
                 },
                 subMenuProps: {
                   items: [
@@ -45,7 +45,7 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
                       key: 'sharetoemail',
                       name: 'Share to Email',
                       iconProps: {
-                        iconName: 'Mail'
+                        name: 'Mail'
                       },
                     },
                     {
@@ -56,7 +56,7 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
                       key: 'sharetotwitter',
                       name: 'Share to Twitter',
                       iconProps: {
-                        iconName: 'Share'
+                        name: 'Share'
                       },
                     },
                   ],
@@ -75,7 +75,7 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
               {
                 key: 'print',
                 iconProps: {
-                  iconName: 'Print'
+                  name: 'Print'
                 },
                 name: 'Print'
               },

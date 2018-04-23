@@ -73,7 +73,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   private _onRenderIcon = (className?: string, styles?: IStyleSet): JSX.Element => (
     <Icon
       className={ className }
-      iconName={ this._determineIcon() }
+      name={ this._determineIcon() }
       style={ styles }
     />
   )

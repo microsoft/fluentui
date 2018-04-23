@@ -367,7 +367,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       (this.state.expandedMenuItemKey === item.key),
       !!getIsChecked(item),
       !!item.href,
-      (iconProps.iconName !== 'None'),
+      (iconProps.name !== 'None'),
       item.className,
       dividerClassName,
       iconProps.className,
@@ -708,7 +708,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _getIconProps(item: IContextualMenuItem): IIconProps {
     const iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: item.icon
+      name: item.icon
     };
     return iconProps;
   }

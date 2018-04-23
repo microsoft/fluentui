@@ -35,7 +35,7 @@ describe('ActivityItem', () => {
     const component = renderer.create(
       <ActivityItem
         { ...defaultProps }
-        activityIcon={ <Icon iconName={ 'Message' } /> }
+        activityIcon={ <Icon name={ 'Message' } /> }
       />
     );
     const tree = component.toJSON();
@@ -68,7 +68,7 @@ describe('ActivityItem', () => {
     const component = renderer.create(
       <ActivityItem
         { ...defaultProps }
-        activityIcon={ <Icon iconName={ 'Message' } /> }
+        activityIcon={ <Icon name={ 'Message' } /> }
         isCompact={ true }
       />
     );

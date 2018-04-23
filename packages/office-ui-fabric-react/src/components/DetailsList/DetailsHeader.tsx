@@ -210,7 +210,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   styles.collapseButton,
                   isAllCollapsed && ('is-collapsed ' + styles.collapseButtonIsCollapsed)
                 ) }
-                iconName='ChevronDown'
+                name='ChevronDown'
               />
             </div>
           ) : (null)
@@ -266,28 +266,28 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                               }) }
                           >
                             { (column.iconName || column.iconClassName) && (
-                              <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                              <Icon className={ css(styles.nearIcon, column.iconClassName) } name={ column.iconName } />
                             ) }
 
                             { !column.isIconOnly ? column.name : undefined }
                           </span>
 
                           { column.isFiltered && (
-                            <Icon className={ styles.nearIcon } iconName='Filter' />
+                            <Icon className={ styles.nearIcon } name='Filter' />
                           ) }
 
                           { column.isSorted && (
-                            <Icon className={ css(styles.nearIcon, styles.sortIcon) } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
+                            <Icon className={ css(styles.nearIcon, styles.sortIcon) } name={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
                           ) }
 
                           { column.isGrouped && (
-                            <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
+                            <Icon className={ styles.nearIcon } name='GroupedDescending' />
                           ) }
 
                           { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
                             <Icon
                               className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
-                              iconName='ChevronDown'
+                              name='ChevronDown'
                             />
                           ) }
                         </span>

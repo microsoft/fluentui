@@ -51,7 +51,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
         </CommandButton>
         { this.props.showRemoveButton ? (
           <IconButton
-            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
+            iconProps={ { name: 'Cancel', style: { fontSize: '12px' } } }
             title={ removeButtonAriaLabel }
             ariaLabel={ removeButtonAriaLabel }
             onClick={ onRemoveItem }
@@ -175,7 +175,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
                 ['is-selected ' + styles.buttonSelected]:
                   this.state.selectedActionType === SuggestionActionType.searchMore
               }) }
-            iconProps={ { iconName: 'Search' } }
+            iconProps={ { name: 'Search' } }
             onClick={ this._getMoreResults }
           >
             { searchForMoreText }

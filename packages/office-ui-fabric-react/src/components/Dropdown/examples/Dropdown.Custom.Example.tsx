@@ -56,7 +56,7 @@ export class DropdownCustomExample extends React.Component {
         { option.data && option.data.icon &&
           <Icon
             style={ { marginRight: '8px' } }
-            iconName={ option.data.icon }
+            name={ option.data.icon }
             aria-hidden='true'
             title={ option.data.icon }
           />
@@ -74,7 +74,7 @@ export class DropdownCustomExample extends React.Component {
         { option.data && option.data.icon &&
           <Icon
             style={ { marginRight: '8px' } }
-            iconName={ option.data.icon }
+            name={ option.data.icon }
             aria-hidden='true'
             title={ option.data.icon }
           />
@@ -89,7 +89,7 @@ export class DropdownCustomExample extends React.Component {
       <div className='dropdownExample-placeholder'>
         <Icon
           style={ { marginRight: '8px' } }
-          iconName={ 'MessageFill' }
+          name={ 'MessageFill' }
           aria-hidden='true'
         />
         <span>{ props.placeHolder }</span>
@@ -99,7 +99,7 @@ export class DropdownCustomExample extends React.Component {
 
   private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
     return (
-      <Icon iconName='CirclePlus' />
+      <Icon name='CirclePlus' />
     );
   }
 

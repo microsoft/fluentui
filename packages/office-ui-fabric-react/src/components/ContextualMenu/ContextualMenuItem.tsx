@@ -28,7 +28,7 @@ const renderItemIcon = (props: IContextualMenuItemProps) => {
     return <Icon { ...iconProps } className={ classNames.icon } />;
   }
 
-  return <Icon iconName={ icon } className={ classNames.icon } />;
+  return <Icon name={ icon } className={ classNames.icon } />;
 };
 
 const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {
@@ -38,7 +38,7 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
 
     return (
       <Icon
-        iconName={ isItemChecked ? 'CheckMark' : '' }
+        name={ isItemChecked ? 'CheckMark' : '' }
         className={ classNames.checkmarkIcon }
         onClick={ onClick }
       />
@@ -58,7 +58,7 @@ const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
     return (
       <Icon
-        iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+        name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
         { ...item.submenuIconProps }
         className={ classNames.subMenuIcon }
       />

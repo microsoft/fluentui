@@ -302,7 +302,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         align-items: center;
         animation-duration: .5s;
         animation-iteration-count: 1;
-        animation-name: css-93;
+        animation-name: css-91;
         box-sizing: border-box;
         color: #666666;
         display: flex;
@@ -351,7 +351,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           {
             animation-duration: .8s;
             animation-iteration-count: 1;
-            animation-name: css-92;
+            animation-name: css-90;
             border-radius: 225px;
             border-style: solid;
             height: 0px;
@@ -493,7 +493,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         {
           animation-duration: .5s;
           animation-iteration-count: 1;
-          animation-name: css-94;
+          animation-name: css-92;
           flex: 1;
           overflow-x: hidden;
           padding-bottom: 0;

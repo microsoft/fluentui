@@ -183,7 +183,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             &::-moz-focus-inner {
               border: 0;
             }
-            .ms-Fabric.is-focusVisible &:focus:after {
+            .undefined &:focus:after {
               border: 1px solid #ffffff;
               bottom: 0px;
               content: "";
@@ -194,7 +194,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active){.undefined &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -239,8 +239,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
-                }
-                {
                   flex-shrink: 0;
                   font-size: 6px;
                   height: 16px;
@@ -296,7 +294,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             &::-moz-focus-inner {
               border: 0;
             }
-            .ms-Fabric.is-focusVisible &:focus:after {
+            .undefined &:focus:after {
               border: 1px solid #ffffff;
               bottom: 0px;
               content: "";
@@ -307,7 +305,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               top: 0px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active){.undefined &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -352,8 +350,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
-                }
-                {
                   flex-shrink: 0;
                   font-size: 6px;
                   height: 16px;

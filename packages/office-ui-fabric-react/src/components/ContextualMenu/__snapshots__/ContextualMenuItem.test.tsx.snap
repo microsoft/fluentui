@@ -43,9 +43,9 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Icon
+        <StyledIconBase
           className="checkmarkIcon"
-          iconName=""
+          name=""
           onClick={[Function]}
         />,
         null,
@@ -59,10 +59,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "checkmarkIcon",
-          "iconName": "",
+          "name": "",
           "onClick": [Function],
         },
         "ref": null,
@@ -82,9 +82,9 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Icon
+          <StyledIconBase
             className="checkmarkIcon"
-            iconName=""
+            name=""
             onClick={[Function]}
           />,
           null,
@@ -98,10 +98,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "checkmarkIcon",
-            "iconName": "",
+            "name": "",
             "onClick": [Function],
           },
           "ref": null,
@@ -170,13 +170,13 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
         />,
         null,
-        <Icon
+        <StyledIconBase
           className="subMenuIcon"
-          iconName="ChevronRight"
+          name="ChevronRight"
         />,
       ],
       "className": "linkContent",
@@ -187,7 +187,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "icon",
         },
@@ -199,10 +199,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "subMenuIcon",
-          "iconName": "ChevronRight",
+          "name": "ChevronRight",
         },
         "ref": null,
         "rendered": null,
@@ -219,13 +219,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
           />,
           null,
-          <Icon
+          <StyledIconBase
             className="subMenuIcon"
-            iconName="ChevronRight"
+            name="ChevronRight"
           />,
         ],
         "className": "linkContent",
@@ -236,7 +236,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "icon",
           },
@@ -248,10 +248,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "subMenuIcon",
-            "iconName": "ChevronRight",
+            "name": "ChevronRight",
           },
           "ref": null,
           "rendered": null,
@@ -315,7 +315,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
         />,
         null,
@@ -329,7 +329,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "icon",
         },
@@ -350,7 +350,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
           />,
           null,
@@ -364,7 +364,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "icon",
           },
@@ -433,9 +433,9 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
-          iconName="itemIcon"
+          name="itemIcon"
         />,
         <span
           className="label"
@@ -452,10 +452,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "icon",
-          "iconName": "itemIcon",
+          "name": "itemIcon",
         },
         "ref": null,
         "rendered": null,
@@ -485,9 +485,9 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
-            iconName="itemIcon"
+            name="itemIcon"
           />,
           <span
             className="label"
@@ -504,10 +504,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "icon",
-            "iconName": "itemIcon",
+            "name": "itemIcon",
           },
           "ref": null,
           "rendered": null,

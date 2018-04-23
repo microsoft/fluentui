@@ -150,7 +150,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
           data-automation-id='test'
           disabled={ disabled }
           checked={ checked }
-          iconProps={ { iconName: 'Upload' } }
+          iconProps={ { name: 'Upload' } }
           text='Create account'
           onClick={ alertClicked }
           split={ true }

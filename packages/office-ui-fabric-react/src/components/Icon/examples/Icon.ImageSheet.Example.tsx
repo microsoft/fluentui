@@ -8,7 +8,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
     return (
       <div>
         <Icon
-          iconName={ 'None' }
+          name={ 'None' }
           iconType={ IconType.image }
           className={ 'ms-IconImageSheetExample-one' }
           imageProps={ {
@@ -17,7 +17,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
           } }
         />
         <Icon
-          iconName={ 'None' }
+          name={ 'None' }
           iconType={ IconType.image }
           className={ 'ms-IconImageSheetExample-check' }
           imageProps={ {
@@ -26,7 +26,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
           } }
         />
         <Icon
-          iconName={ 'None' }
+          name={ 'None' }
           iconType={ IconType.image }
           className={ 'ms-IconImageSheetExample-lock' }
           imageProps={ {

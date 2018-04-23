@@ -8,7 +8,7 @@ export class TextFieldIconExample extends React.Component<any, any> {
       <div className='docs-TextFieldExample'>
         <TextField
           label='TextField with an icon'
-          iconProps={ { iconName: 'Calendar' } }
+          iconProps={ { name: 'Calendar' } }
           onChanged={ this._onChanged }
         />
       </div>

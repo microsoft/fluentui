@@ -199,7 +199,7 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
     return (
       <IconButton
         { ...item }
-        iconProps={ { iconName: item.name } }
+        iconProps={ { name: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
         onClick={ dismissMenu }

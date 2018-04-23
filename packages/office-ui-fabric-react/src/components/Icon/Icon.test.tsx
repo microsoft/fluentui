@@ -5,7 +5,7 @@ import { Icon } from './index';
 
 describe('Icon', () => {
   it('renders Icon correctly', () => {
-    const component = renderer.create(<Icon iconName='CompassNW' />);
+    const component = renderer.create(<Icon name='CompassNW' />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

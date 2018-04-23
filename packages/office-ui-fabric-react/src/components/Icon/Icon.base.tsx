@@ -1,23 +1,25 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { IIconProps, IconType } from './Icon.types';
+import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
 import { Image } from '../Image/Image';
 import { ImageLoadState } from '../Image/Image.types';
 import {
   css,
   getNativeProps,
   htmlElementProperties,
-  BaseComponent
+  BaseComponent,
+  classNamesFunction
 } from '../../Utilities';
 import { getIcon } from '../../Styling';
-import { getClassNames } from './Icon.classNames';
 
 export interface IIconState {
   imageLoadError: boolean;
 }
 
-export class Icon extends BaseComponent<IIconProps, IIconState> {
+const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
+
+export class IconBase extends BaseComponent<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
@@ -25,79 +27,65 @@ export class Icon extends BaseComponent<IIconProps, IIconState> {
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     const {
       ariaLabel,
       className,
-      styles,
+      getStyles,
       iconName,
       imageErrorAs,
     } = this.props;
-    const classNames = getClassNames(
-      styles
-    );
+    const { name = iconName } = this.props;
+    const isPlaceholder = typeof name === 'string' && name.length === 0;
+    const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
+    const classNames = getClassNames(getStyles, { className, isPlaceholder, isImage });
 
-    const containerProps = ariaLabel ? { 'aria-label': ariaLabel, 'data-icon-name': iconName, } : {
+    const containerProps = ariaLabel ? { 'aria-label': ariaLabel, 'data-icon-name': name, } : {
       role: 'presentation',
       'aria-hidden': true,
-      'data-icon-name': iconName,
+      'data-icon-name': name,
     };
 
     if (this.props.iconType === IconType.image || this.props.iconType === IconType.Image) {
-      const containerClassName = css(
-        'ms-Icon-imageContainer',
-        classNames.root,
-        classNames.imageContainer,
-        className
-      );
+
       const { imageLoadError } = this.state;
       const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
       const ImageType = imageLoadError && imageErrorAs || Image;
       return (
         <div
           { ...containerProps }
-          className={
-            css(
-              containerClassName,
-              classNames.root
-            ) }
+          className={ classNames.root }
         >
           <ImageType { ...imageProps } />
         </div>
       );
-    } else if (typeof iconName === 'string' && iconName.length === 0) {
-      return (
-        <i
-          { ...containerProps }
-          { ...getNativeProps(this.props, htmlElementProperties) }
-          className={
-            css(
-              'ms-Icon-placeHolder',
-              classNames.rootHasPlaceHolder,
-              this.props.className
-            ) }
-        />
-      );
     } else {
-      const iconDefinition = getIcon(iconName) || {
-        subset: {
-          className: undefined
-        },
-        code: undefined
-      };
+      let children: string | undefined = undefined;
+      let iconClassName: string | undefined = undefined;
+
+      if (!isPlaceholder) {
+        const iconDefinition = getIcon(name) || {
+          subset: {
+            className: undefined
+          },
+          code: undefined
+        };
+
+        children = iconDefinition.code;
+        iconClassName = iconDefinition.subset.className;
+      }
 
       return (
         <i
           { ...containerProps }
-          { ...getNativeProps(this.props, htmlElementProperties) }
+          { ...getNativeProps(this.props, htmlElementProperties, ['name']) }
           className={
             css(
-              iconDefinition.subset.className,
+              iconClassName,
               classNames.root,
-              this.props.className
             ) }
         >
-          { iconDefinition.code }
+          { children }
         </i>
       );
     }

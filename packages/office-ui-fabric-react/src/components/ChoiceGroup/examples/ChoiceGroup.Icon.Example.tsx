@@ -9,17 +9,17 @@ export class ChoiceGroupIconExample extends React.Component<any, any> {
         options={ [
           {
             key: 'day',
-            iconProps: { iconName: 'CalendarDay' },
+            iconProps: { name: 'CalendarDay' },
             text: 'Day'
           },
           {
             key: 'week',
-            iconProps: { iconName: 'CalendarWeek' },
+            iconProps: { name: 'CalendarWeek' },
             text: 'Week'
           },
           {
             key: 'month',
-            iconProps: { iconName: 'Calendar' },
+            iconProps: { name: 'Calendar' },
             text: 'Month',
             disabled: true
           }

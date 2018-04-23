@@ -170,7 +170,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
       <span className={ css('ms-Pivot-link-content') }>
         { itemIcon !== undefined && (
           <span className={ css('ms-Pivot-icon', styles.icon) }>
-            <Icon iconName={ itemIcon } />
+            <Icon name={ itemIcon } />
           </span>
         ) }
         { headerText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.headerText }</span> }

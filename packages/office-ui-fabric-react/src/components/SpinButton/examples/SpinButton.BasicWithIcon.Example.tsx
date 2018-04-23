@@ -7,7 +7,7 @@ export class SpinButtonBasicWithIconExample extends React.Component<any, any> {
       <div style={ { width: '400px' } }>
         <SpinButton
           defaultValue='0'
-          iconProps={ { iconName: 'IncreaseIndentLegacy' } }
+          iconProps={ { name: 'IncreaseIndentLegacy' } }
           label={ 'Basic SpinButton:' }
           min={ 0 }
           max={ 100 }

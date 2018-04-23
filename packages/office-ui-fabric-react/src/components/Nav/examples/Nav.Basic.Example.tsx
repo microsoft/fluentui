@@ -46,7 +46,7 @@ export class NavBasicExample extends React.Component<any, any> {
                     name: 'Delete',
                     url: 'http://cnn.com',
                     onClick: this._onClickHandler2,
-                    iconProps: { iconName: 'Delete' },
+                    iconProps: { name: 'Delete' },
                     key: 'key9'
                   }
                 ]

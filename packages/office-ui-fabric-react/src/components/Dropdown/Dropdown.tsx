@@ -391,7 +391,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Render Caret Down Icon
   private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
     return (
-      <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
+      <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } name='ChevronDown' />
     );
   }
 

@@ -267,7 +267,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (): JSX.Element => {
       return (
         <Icon
-          iconName={ iconName }
+          name={ iconName }
           className={ overflowButton ? styles.overflowInitialsIcon : '' }
         />
       );

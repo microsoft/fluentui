@@ -72,7 +72,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
         </div>
         <Icon
           className='ms-ListBasicExample-chevron'
-          iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+          name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
         />
       </div>
     );

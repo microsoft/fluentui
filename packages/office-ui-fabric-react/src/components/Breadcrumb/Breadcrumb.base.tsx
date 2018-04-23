@@ -118,7 +118,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           { onRenderItem(item, this._onRenderItem) }
           { index !== lastItemIndex && <Divider
             className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
           /> }
         </li>
       ));
@@ -128,7 +128,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
         <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY }>
           <IconButton
             className={ css('ms-Breadcrumb-overflowButton', styles.overflowButton) }
-            iconProps={ { iconName: 'More' } }
+            iconProps={ { name: 'More' } }
             role='button'
             aria-haspopup='true'
             ariaLabel={ overflowAriaLabel }
@@ -140,7 +140,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           />
           <Divider
             className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
           />
         </li>
       ));

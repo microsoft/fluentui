@@ -57,7 +57,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
           <span key={ 1 } className={ css(classNames.nameText) }>Sabrina De Luca</span>,
           <span key={ 2 }> added this file</span>
         ],
-        activityIcon: <Icon iconName={ 'Add' } />,
+        activityIcon: <Icon name={ 'Add' } />,
         isCompact: true
       },
       {
@@ -66,7 +66,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
           <span key={ 1 } className={ css(classNames.nameText) }>Chuan Rojumanong</span>,
           <span key={ 2 }> shared this file</span>
         ],
-        activityIcon: <Icon iconName={ 'Share' } />,
+        activityIcon: <Icon name={ 'Share' } />,
         isCompact: true
       }
     ];

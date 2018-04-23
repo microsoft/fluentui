@@ -223,7 +223,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             placeholder={ placeholder }
             borderless={ borderless }
             iconProps={ {
-              iconName: 'Calendar',
+              name: 'Calendar',
               onClick: this._onIconClick,
               className: css(
                 disabled && styles.msDatePickerDisabled,

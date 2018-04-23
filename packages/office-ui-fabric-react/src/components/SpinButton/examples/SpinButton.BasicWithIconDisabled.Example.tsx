@@ -8,7 +8,7 @@ export class SpinButtonBasicWithIconDisabledExample extends React.Component<any,
         <SpinButton
           defaultValue='0'
           disabled={ true }
-          iconProps={ { iconName: 'IncreaseIndentLegacy' } }
+          iconProps={ { name: 'IncreaseIndentLegacy' } }
           label={ 'Basic SpinButton:' }
           min={ 0 }
           max={ 100 }

@@ -76,7 +76,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               role='button'
               tabIndex={ 0 }
             >
-              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
+              <Icon name={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </button>
             <button
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
@@ -88,7 +88,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               role='button'
               tabIndex={ 0 }
             >
-              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
+              <Icon name={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </button>
           </div>
         </div>

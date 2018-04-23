@@ -90,7 +90,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                   return (
                     <DefaultButton
                       text={ item.name }
-                      iconProps={ { iconName: item.icon } }
+                      iconProps={ { name: item.icon } }
                       onClick={ item.onClick }
                       checked={ item.checked }
                     />

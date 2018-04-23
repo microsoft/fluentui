@@ -22,7 +22,7 @@ export class ActivityItemBasicExample extends React.Component<React.Props<Activi
           <Link key={ 1 } className={ css(classNames.nameText) } onClick={ () => { alert('A name was clicked.'); } } >Philippe Lampros</Link>,
           <span key={ 2 }> commented</span>
         ],
-        activityIcon: <Icon iconName={ 'Message' } />,
+        activityIcon: <Icon name={ 'Message' } />,
         comments: [
           <span key={ 1 }>Hello! I am making a comment and mentioning </span>,
           <Link key={ 2 } className={ css(classNames.nameText) } onClick={ () => { alert('An @mentioned name was clicked.'); } } >@Anđela Debeljak</Link>,
@@ -37,7 +37,7 @@ export class ActivityItemBasicExample extends React.Component<React.Props<Activi
           <span key={ 2 }> deleted </span>,
           <span key={ 3 } className={ css(classNames.nameText) }>DocumentTitle.docx</span>
         ],
-        activityIcon: <Icon iconName={ 'Trash' } />,
+        activityIcon: <Icon name={ 'Trash' } />,
         timeStamp: '2 hours ago'
       },
       {
@@ -49,7 +49,7 @@ export class ActivityItemBasicExample extends React.Component<React.Props<Activi
           <span key={ 4 }> to </span>,
           <Link key={ 5 } className={ css(classNames.nameText) } onClick={ () => { alert('A folder was clicked.'); } } >Destination Folder</Link>
         ],
-        activityIcon: <Icon iconName={ 'FabricMovetoFolder' } />,
+        activityIcon: <Icon name={ 'FabricMovetoFolder' } />,
         timeStamp: 'Yesterday'
       }
     ];

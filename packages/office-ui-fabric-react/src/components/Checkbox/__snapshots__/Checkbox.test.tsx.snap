@@ -36,7 +36,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .undefined &:focus:after {
         border: 1px solid #ffffff;
         bottom: -1px;
         content: "";
@@ -114,10 +114,8 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         className=
 
             {
-              display: inline-block;
-            }
-            {
               color: #ffffff;
+              display: inline-block;
               opacity: 0;
             }
         data-icon-name="CheckMark"

@@ -62,8 +62,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           ms-SearchBox-icon
           {
             display: inline-block;
-          }
-          {
             opacity: 1;
             transition: opacity 0.167s 0s;
           }
