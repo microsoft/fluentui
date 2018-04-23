@@ -2,6 +2,67 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.33.0",
+      "tag": "@uifabric/experiments_v5.33.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "edf45906e38be620dd26401b05b9bda10322027f",
+            "comment": "Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "cf2fcbcb9ed19793090d86186042cc8e463659c8",
+            "comment": "Fix index import"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.86.0 <6.0.0` to `>=5.87.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.2 <6.0.0` to `>=5.11.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.32.0",
+      "tag": "@uifabric/experiments_v5.32.0",
+      "date": "Fri, 20 Apr 2018 23:06:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "602a5b9fe30e8df5bf22342288f7b97dc8bd3c6e",
+            "comment": "Add delete callback, expose item change methods on SelectedItemsList"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "703efd38ae346d2b0b1be7c6082c2aad492b1d31",
+            "comment": "Shimmer: adding two new props and deprecating another one."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.85.0 <6.0.0` to `>=5.86.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.4",
       "tag": "@uifabric/experiments_v5.31.4",
       "date": "Thu, 19 Apr 2018 18:25:59 GMT",

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Callout.Basic.Example: Fix example so callout positions properly",
+      "comment": "Use `data-is-scrollable` attribute on correct ScrollablePane div",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "spelliot@microsoft.com"
 }

@@ -116,8 +116,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
         }
       }],
     ],
@@ -135,8 +135,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],
@@ -157,8 +157,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],
@@ -202,7 +202,7 @@ export const getItemClassNames = memoizeFunction((
       styles.splitButtonFlexContainer,
       !disabled && !checked && [{
         selectors: {
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
         }
       }]
     ]

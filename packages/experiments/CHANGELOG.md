@@ -1,6 +1,26 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+
+## 5.33.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+### Patches
+
+- Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package.
+- Fix index import
+
+## 5.32.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- Add delete callback, expose item change methods on SelectedItemsList
+- Shimmer: adding two new props and deprecating another one.
 
 ## 5.31.4
 Thu, 19 Apr 2018 18:25:59 GMT

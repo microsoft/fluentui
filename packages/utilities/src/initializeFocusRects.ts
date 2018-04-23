@@ -2,8 +2,7 @@ import { getWindow } from './dom';
 import { KeyCodes } from './KeyCodes';
 import { KeyboardEvent } from '../../../common/temp/node_modules/@types/react';
 
-export const FabricClassName = 'ms-Fabric';
-export const IsFocusVisibleClassName = 'is-focusVisible';
+export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
 const DirectionalKeyCodes = [
   KeyCodes.up,
   KeyCodes.down,
@@ -35,10 +34,6 @@ export function initializeFocusRects(window?: Window): void {
 
   if (win && !win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;
-    const { classList } = win.document.body;
-
-    classList.toggle(FabricClassName, true);
-
     win.addEventListener('mousedown', _onMouseDown, true);
     win.addEventListener('keydown', _onKeyDown as () => void, true);
   }
