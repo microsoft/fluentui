@@ -1,24 +1,24 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { INavLinkProps } from './Nav.types';
+import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export const NavLink: React.SFC<INavLinkProps> = (props) => {
+export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
   if (!props) {
     return null;
   }
 
-  let linkTextStyle: React.CSSProperties = {};
+  let computedTextWidth: IStyle = {
+    // 100px to accomodate left and right icons (50px each)
+    width: 'calc(100% - 100px)'
+  };
 
   if (!props.rightIconName && !props.leftIconName) {
-    linkTextStyle.width = '100%';
-  }
-  else if (!props.leftIconName || !props.rightIconName) {
+    // no icons, take full with to text
+    computedTextWidth.width = '100%';
+  } else if (!props.leftIconName || !props.rightIconName) {
     // 50px to the left or right icon
-    linkTextStyle.width = 'calc(100% - 50px)';
-  }
-  else {
-    // 50px each to left and right icon
-    linkTextStyle.width = 'calc(100% - 100px)';
+    computedTextWidth.width = 'calc(100% - 50px)';
   }
 
   return (
@@ -28,22 +28,24 @@ export const NavLink: React.SFC<INavLinkProps> = (props) => {
       target={ props.target }
       onClick={ props.onClick }
       data-hint={ props.dataHint }
-      data-value={ props.ariaLabel }
+      data-value={ props.dataValue }
       aria-label={ props.ariaLabel }
       aria-expanded={ props.ariaExpanded }
-      role={ props.role }>
-      <div className={ props.rootClassName } aria-hidden="true">
+      role={ props.role }
+    >
+      <div className={ props.rootClassName } aria-hidden='true'>
         {
           props.leftIconName ?
             <Icon
               iconName={ props.leftIconName }
-              className={ props.iconClassName } />
+              className={ props.iconClassName }
+            />
             : null
         }
         {
-          props.text ?
-            <div className={ props.textClassName } style={ linkTextStyle }>
-              { props.text }
+          props.content ?
+            <div className={ mergeStyles(props.textClassName, computedTextWidth) }>
+              { props.content }
             </div>
             : null
         }
@@ -56,6 +58,6 @@ export const NavLink: React.SFC<INavLinkProps> = (props) => {
             : null
         }
       </div>
-    </a>
+    </a >
   );
-}
+};

@@ -116,7 +116,7 @@ class SlimNavComponent extends NavBase {
     return (
       <NavLink
         id={ link.key }
-        text={ link.name }
+        content={ link.name }
         href={ link.url }
         target={ link.target }
         dataHint="SlimReactLeftNav"

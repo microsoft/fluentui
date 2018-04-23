@@ -104,7 +104,7 @@ class NavComponent extends NavBase {
     return (
       <NavLink
         id={ link.key }
-        text={ link.name }
+        content={ link.name }
         href={ link.url }
         target={ link.target }
         onClick={ this._onLinkClicked.bind(this, link) }
