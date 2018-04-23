@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Icon: code has been cleaned up, memoizeFunction usage has been removed. You can also now provide `name` rather than `iconName` as a cleaner API surface. Still backwards compatible, nothing should break.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com"
+}
