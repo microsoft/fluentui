@@ -1,9 +1,3 @@
-import {
-  mergeStyleSets
-} from '../../Styling';
-import {
-  memoizeFunction
-} from '../../Utilities';
 import { IIconStyleProps, IIconStyles } from './Icon.types';
 
 export const getStyles = (props: IIconStyleProps): IIconStyles => {
