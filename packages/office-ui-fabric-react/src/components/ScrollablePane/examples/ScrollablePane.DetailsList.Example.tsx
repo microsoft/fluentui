@@ -84,11 +84,13 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
     const { items, selectionDetails } = this.state;
 
     return (
-      <div style={ {
-        height: '10000px',
-        position: 'relative',
-        maxHeight: 'inherit'
-      } }>
+      <div
+        style={ {
+          height: '10000px',
+          position: 'relative',
+          maxHeight: 'inherit'
+        } }
+      >
         <ScrollablePane>
           <Sticky stickyPosition={ StickyPositionType.Header }>{ selectionDetails }</Sticky>
           <TextField

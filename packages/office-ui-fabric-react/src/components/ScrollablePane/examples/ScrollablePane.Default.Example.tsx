@@ -29,7 +29,8 @@ export class ScrollablePaneDefaultExample extends React.Component {
           height: '900px',
           position: 'relative',
           maxHeight: 'inherit'
-        } }>
+        } }
+      >
         <ScrollablePane className='scrollablePaneDefaultExample'>
           { contentAreas.map((ele) => {
             return ele;
