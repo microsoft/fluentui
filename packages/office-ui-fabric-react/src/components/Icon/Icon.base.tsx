@@ -5,7 +5,6 @@ import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types
 import { Image } from '../Image/Image';
 import { ImageLoadState } from '../Image/Image.types';
 import {
-  css,
   getNativeProps,
   htmlElementProperties,
   BaseComponent,
@@ -38,7 +37,7 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     const { name = iconName } = this.props;
     const isPlaceholder = typeof name === 'string' && name.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
-    const { iconClassName, children } = this.getIconContent(name);
+    const { iconClassName, children } = this._getIconContent(name);
 
     const classNames = getClassNames(getStyles, { className, isPlaceholder, isImage, iconClassName });
 
@@ -83,7 +82,7 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     }
   }
 
-  private getIconContent(name?: string) {
+  private _getIconContent(name?: string) {
     const iconDefinition = getIcon(name) || {
       subset: {
         className: undefined
