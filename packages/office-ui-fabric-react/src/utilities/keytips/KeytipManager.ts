@@ -41,15 +41,15 @@ export class KeytipManager {
    */
   public registerKeytip(keytipProps: IKeytipProps): string {
     // Add the overflowSetSequence if necessary
-    keytipProps = this.addParentOverflowSequence(keytipProps);
+    const newKeytipProps = this.addParentOverflowSequence(keytipProps);
 
     // Create a unique keytip
-    const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(keytipProps);
+    const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(newKeytipProps);
 
     // Add to array
     this.keytips.push(uniqueKeytip);
     EventGroup.raise(this, KeytipEvents.keytipAdded, {
-      keytip: keytipProps,
+      keytip: newKeytipProps,
       uniqueID: uniqueKeytip.uniqueID
     });
 
@@ -79,7 +79,8 @@ export class KeytipManager {
    * @param uniqueID - Unique ID of this keytip
    */
   public updateKeytip(keytipProps: IKeytipProps, uniqueID: string): void {
-    const uniqueKeytip = this._constructUniqueKeytip(keytipProps, uniqueID);
+    const newKeytipProps = this.addParentOverflowSequence(keytipProps);
+    const uniqueKeytip = this._constructUniqueKeytip(newKeytipProps, uniqueID);
     const keytipIndex = this._findKeytipIndex(uniqueID);
     if (keytipIndex >= 0) {
       // Update everything except 'visible'

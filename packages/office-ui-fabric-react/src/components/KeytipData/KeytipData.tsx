@@ -66,13 +66,13 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
   private _getNativeKeytipProps(keytipProps: IKeytipProps, describedByPrepend?: string): any {
     if (keytipProps) {
       // Add the parent overflow sequence if necessary
-      keytipProps = this._keytipManager.addParentOverflowSequence(keytipProps);
+      const newKeytipProps = this._keytipManager.addParentOverflowSequence(keytipProps);
 
       // Construct aria-describedby and data-ktp-id attributes and return
-      const ariaDescribedBy = getAriaDescribedBy(keytipProps.keySequences);
-      let keySequences = keytipProps.keySequences;
-      if (keytipProps.overflowSetSequence) {
-        keySequences = mergeOverflowKeySequences(keySequences, keytipProps.overflowSetSequence);
+      const ariaDescribedBy = getAriaDescribedBy(newKeytipProps.keySequences);
+      let keySequences = [...newKeytipProps.keySequences];
+      if (newKeytipProps.overflowSetSequence) {
+        keySequences = mergeOverflowKeySequences(keySequences, newKeytipProps.overflowSetSequence);
       }
       const ktpId = convertSequencesToKeytipID(keySequences);
 
