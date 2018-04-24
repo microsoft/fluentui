@@ -101,6 +101,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   highlightCurrentMonth?: boolean;
 
   /**
+  * Whether the month picker should highlight the selected month
+  * @defaultvalue false
+  */
+  highlightSelectedMonth?: boolean;
+
+  /**
   * Customize navigation icons using ICalendarIconStrings
   */
   navigationIcons?: ICalendarIconStrings;
@@ -195,6 +201,11 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
+   */
+  weekNumberFormatString?: string;
 
 }
 
