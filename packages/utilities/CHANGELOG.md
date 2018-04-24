@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 20 Apr 2018 23:06:06 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+
+## 5.27.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The focus styling no longer adds "ms-Fabric" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code.
 
 ## 5.26.0
 Fri, 20 Apr 2018 23:06:06 GMT

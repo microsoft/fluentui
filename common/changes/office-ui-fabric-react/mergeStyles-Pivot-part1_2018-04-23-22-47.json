@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Plumb ARIA label for picker suggestion remove button",
+      "comment": "Begin converting Pivot to mergeStyles",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "v-jojanz@microsoft.com"
 }

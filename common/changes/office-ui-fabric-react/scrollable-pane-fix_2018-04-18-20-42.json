@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Deprecates INavLink.iconClassName in favor of IIconProps.className.",
+      "comment": "Use `data-is-scrollable` attribute on correct ScrollablePane div",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "spelliot@microsoft.com"
 }

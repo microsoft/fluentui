@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix index import",
-      "type": "patch"
+      "comment": "Remove wordWrap setting.",
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com"
+  "email": "v-jojanz@microsoft.com"
 }

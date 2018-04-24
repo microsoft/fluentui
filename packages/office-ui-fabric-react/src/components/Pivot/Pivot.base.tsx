@@ -1,18 +1,37 @@
-import { styled } from '../../Utilities';
+import * as React from 'react';
 import {
-  IPivotProps,
-  IPivotStyleProps,
-  IPivotStyles
-} from './Pivot.types';
-import { PivotBase } from './Pivot.base';
-import { getStyles } from './Pivot.styles';
+  BaseComponent,
+  KeyCodes,
+  css,
+  getId,
+  createRef
+} from '../../Utilities';
+import { CommandButton } from '../../Button';
+import { IPivotProps } from './Pivot.types';
+import { IPivotItemProps } from './PivotItem.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { PivotItem } from './PivotItem';
+import { PivotLinkFormat } from './Pivot.types';
+import { PivotLinkSize } from './Pivot.types';
+import { Icon } from '../../Icon';
+import * as stylesImport from './Pivot.scss';
+const styles: any = stylesImport;
 
 /**
- * The Pivot control and related tabs pattern are used for navigating frequently accessed,
- * distinct content categories. Pivots allow for navigation between two or more content
- * views and relies on text headers to articulate the different sections of content.
+ *  Usage:
+ *
+ *   <Pivot>
+ *     <PivotItem linkText="Foo">
+ *       <Label>Pivot #1</Label>
+ *     </PivotItem>
+ *     <PivotItem linkText="Bar">
+ *       <Label>Pivot #2</Label>
+ *     </PivotItem>
+ *     <PivotItem linkText="Bas">
+ *       <Label>Pivot #3</Label>
+ *     </PivotItem>
+ *   </Pivot>
  */
-<<<<<<< HEAD
 
 export interface IPivotState {
   links: IPivotItemProps[];
@@ -20,7 +39,7 @@ export interface IPivotState {
   selectedTabId: string;
 }
 
-export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
+export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
@@ -151,7 +170,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
       <span className={ css('ms-Pivot-link-content') }>
         { itemIcon !== undefined && (
           <span className={ css('ms-Pivot-icon', styles.icon) }>
-            <Icon name={ itemIcon } />
+            <Icon iconName={ itemIcon } />
           </span>
         ) }
         { headerText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.headerText }</span> }
@@ -270,9 +289,3 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     }
   }
 }
-=======
-export const Pivot = styled<IPivotProps, IPivotStyleProps, IPivotStyles>(
-  PivotBase,
-  getStyles
-);
->>>>>>> a15bb064e6ec7551c593730e266b09f0873784dc
