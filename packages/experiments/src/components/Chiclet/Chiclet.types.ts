@@ -99,6 +99,13 @@ export interface IChicletProps extends React.Props<Chiclet> {
    * Action icon buttons to render.
    */
   actions?: string[];
+
+  /**
+   * Styling for the Chiclet.
+   */
+  styles?: IChicletStyles;
+
+  theme?: ITheme;
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCard> {

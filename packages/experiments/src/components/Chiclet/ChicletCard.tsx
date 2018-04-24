@@ -48,7 +48,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
           css('ms-ChicletCard', className) }
       >
         <div
-          className={ css('ms-ChicletCardPreview', oldstyles.preview) }
+          className={ mergeStyles(this._classNames.preview) }
         >
           { image ?
             preview :
@@ -60,15 +60,15 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
           }
         </div>
         <div
-          className={ css('ms-ChicletCardInfo', oldstyles.info) }
+          className={ mergeStyles(this._classNames.info) }
         >
           <div
-            className={ css('ms-ChicletCardTitle', oldstyles.title) }
+            className={ mergeStyles(this._classNames.title) }
           >
             { title ? title : "Placeholder" }
           </div>
           <div
-            className={ css('ms-ChicletCardLink', oldstyles.link) }
+            className={ mergeStyles(this._classNames.link) }
           >
             { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
           </div>
@@ -92,13 +92,13 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
     let icon;
     switch (ogType) {
       case "word":
-        icon = <Icon className={ css('ms-DocumentCardPreview-icon', oldstyles.icon) } iconName='WordDocument' />;
+        icon = <Icon className={ mergeStyles(this._classNames.icon) } iconName='WordDocument' />;
         break;
       case "powerpoint":
-        icon = <Icon className={ css('ms-DocumentCardPreview-icon', oldstyles.icon) } iconName='PowerPointDocument' />;
+        icon = <Icon className={ mergeStyles(this._classNames.icon) } iconName='PowerPointDocument' />;
         break;
       case "excel":
-        icon = <Icon className={ css('ms-DocumentCardPreview-icon', oldstyles.icon) } iconName='ExcelDocument' />;
+        icon = <Icon className={ mergeStyles(this._classNames.icon) } iconName='ExcelDocument' />;
         break;
     }
 
@@ -115,7 +115,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
       <div className={ mergeStyles(this._classNames.actions) }>
         { actions && actions.map((action, index) => {
           return (
-            <div className={ css('ms-ChicletFooter-action', oldstyles.action) } key={ index }>
+            <div className={ mergeStyles(this._classNames.action) } key={ index }>
               <IconButton { ...action } />
             </div>
           );
