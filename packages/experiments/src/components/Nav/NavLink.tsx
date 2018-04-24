@@ -3,6 +3,9 @@ import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { INavLinkProps } from './Nav.types';
 import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
+/**
+ * Represents a composed link in the Nav component.
+ */
 export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
   if (!props) {
     return null;

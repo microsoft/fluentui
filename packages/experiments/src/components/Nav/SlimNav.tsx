@@ -122,6 +122,7 @@ class SlimNavComponent extends NavBase {
         dataHint={ this.props.dataHint }
         dataValue={ link.key }
         ariaLabel={ link.name }
+        role="menu"
         onClick={ this._onLinkClicked.bind(this, link) }
         rootClassName={ classNames.navFloatingItemRoot }
         rightIconName={ rightIconName }
@@ -217,6 +218,7 @@ class SlimNavComponent extends NavBase {
           target={ link.target }
           dataHint={ this.props.dataHint }
           dataValue={ link.key }
+          role="menu"
           onClick={ this._onLinkClicked.bind(this, link) }
           rootClassName={ classNames.navItemRoot }
           leftIconName={ link.icon }
