@@ -35,8 +35,11 @@ const dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
 };
 
 export interface ICalendarState {
-  /** The currently focused date in the calendar, but not necessarily selected */
-  navigatedDate?: Date;
+  /** The currently focused date in the day picker, but not necessarily selected */
+  navigatedDayDate?: Date;
+
+  /** The currently focused date in the month picker, but not necessarily selected */
+  navigatedMonthDate?: Date;
 
   /** The currently selected date in the calendar */
   selectedDate?: Date;
@@ -83,7 +86,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
     this.state = {
       selectedDate: currentDate,
-      navigatedDate: currentDate,
+      navigatedDayDate: currentDate,
+      navigatedMonthDate: currentDate,
 
       /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props (These props permanently set the visibility of their respective calendars). */
       isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
@@ -101,7 +105,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const overrideNavigatedDate = (autoNavigateOnSelection && !compareDates(value!, this.props.value!));
     if (overrideNavigatedDate) {
       this.setState({
-        navigatedDate: value
+        navigatedMonthDate: value,
+        navigatedDayDate: value
       });
     }
 
@@ -125,7 +130,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   public render(): JSX.Element {
     const rootClass = 'ms-DatePicker';
     const { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, highlightSelectedMonth, navigationIcons, minDate, maxDate } = this.props;
-    const { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
+    const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
@@ -149,10 +154,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
               <div className={ css('ms-DatePicker-wrap', styles.wrap, showGoToToday && styles.goTodaySpacing) }>
                 { isDayPickerVisible && <CalendarDay
                   selectedDate={ selectedDate! }
-                  navigatedDate={ navigatedDate! }
+                  navigatedDate={ navigatedDayDate! }
                   today={ this.props.today }
                   onSelectDate={ this._onSelectDate }
-                  onNavigateDate={ this._onNavigateDate }
+                  onNavigateDate={ this._onNavigateDayDate }
                   onDismiss={ this.props.onDismiss }
                   firstDayOfWeek={ firstDayOfWeek! }
                   dateRangeType={ dateRangeType! }
@@ -172,10 +177,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                 }
 
                 { isMonthPickerVisible && <CalendarMonth
-                  navigatedDate={ navigatedDate! }
+                  navigatedDate={ navigatedMonthDate! }
                   selectedDate={ selectedDate! }
                   strings={ strings! }
-                  onNavigateDate={ this._onNavigateDate }
+                  onNavigateDate={ this._onNavigateMonthDate }
                   today={ this.props.today }
                   highlightCurrentMonth={ highlightCurrentMonth! }
                   highlightSelectedMonth={ highlightSelectedMonth! }
@@ -190,7 +195,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                 { showGoToToday &&
                   <button
                     role='button'
-                    className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
+                    className={ css('ms-DatePicker-goToday js-goToday', styles.goToday, {
+                      [styles.goTodayInlineMonth]: isMonthPickerVisible
+                    }) }
                     onClick={ this._onGotoToday }
                     onKeyDown={ this._onGotoTodayKeyDown }
                     tabIndex={ 0 }
@@ -212,19 +219,34 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  private _navigateDay = (date: Date): void => {
+  private _navigateDayPickerDay = (date: Date): void => {
     this.setState({
-      navigatedDate: date
+      navigatedDayDate: date,
+      navigatedMonthDate: date
     });
   }
 
-  private _onNavigateDate = (date: Date, focusOnNavigatedDay: boolean): void => {
-    if (this.props.isDayPickerVisible || (!this.props.isDayPickerVisible && !focusOnNavigatedDay)) {
-      this._navigateDay(date);
+  private _navigateMonthPickerDay = (date: Date): void => {
+    this.setState({
+      navigatedMonthDate: date
+    });
+  }
+
+  private _onNavigateDayDate = (date: Date, focusOnNavigatedDay: boolean): void => {
+    this._navigateDayPickerDay(date);
+    this._focusOnUpdate = focusOnNavigatedDay;
+  }
+
+  private _onNavigateMonthDate = (date: Date, focusOnNavigatedDay: boolean): void => {
+    if (!focusOnNavigatedDay) {
+      this._navigateMonthPickerDay(date);
       this._focusOnUpdate = focusOnNavigatedDay;
-    } else {
-      // if only the month picker is shown, select the chosen month
+      return;
+    }
+    if (!this.state.isDayPickerVisible) {
       this._onSelectDate(date);
+    } else {
+      this._navigateDayPickerDay(date);
     }
   }
 
@@ -257,6 +279,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
     this._onSelectDate(today!, dates);
+    this._navigateDayPickerDay(today!);
   }
 
   private _onGotoTodayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
