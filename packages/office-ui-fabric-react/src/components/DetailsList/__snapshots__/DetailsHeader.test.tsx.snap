@@ -82,7 +82,9 @@ exports[`DetailsHeader can render 1`] = `
                 }
             data-icon-name="CircleRing"
             role="presentation"
-          />
+          >
+            
+          </i>
           <i
             aria-hidden={true}
             className=
@@ -108,7 +110,9 @@ exports[`DetailsHeader can render 1`] = `
                 }
             data-icon-name="StatusCircleCheckmark"
             role="presentation"
-          />
+          >
+            
+          </i>
         </div>
       </div>
     </span>

@@ -42,7 +42,9 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
             }
         data-icon-name="ChevronDown"
         role="presentation"
-      />
+      >
+        
+      </i>
     </span>
   </div>
 </div>
@@ -90,7 +92,9 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
             }
         data-icon-name="ChevronDown"
         role="presentation"
-      />
+      >
+        
+      </i>
     </span>
   </div>
 </div>

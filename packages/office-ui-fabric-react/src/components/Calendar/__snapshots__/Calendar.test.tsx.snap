@@ -46,7 +46,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         }
                     data-icon-name="Up"
                     role="presentation"
-                  />
+                  >
+                    
+                  </i>
                 </button>
                 <button
                   aria-controls="DatePickerDay-dayPicker10"
@@ -66,7 +68,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         }
                     data-icon-name="Down"
                     role="presentation"
-                  />
+                  >
+                    
+                  </i>
                 </button>
               </div>
             </div>
@@ -921,7 +925,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         }
                     data-icon-name="Up"
                     role="presentation"
-                  />
+                  >
+                    
+                  </i>
                 </button>
                 <button
                   aria-label={undefined}
@@ -940,7 +946,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         }
                     data-icon-name="Down"
                     role="presentation"
-                  />
+                  >
+                    
+                  </i>
                 </button>
               </div>
             </div>

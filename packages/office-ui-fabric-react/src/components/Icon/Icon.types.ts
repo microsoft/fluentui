@@ -78,6 +78,7 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
 
 export interface IIconStyleProps {
   className?: string;
+  iconClassName?: string;
   isPlaceholder: boolean;
   isImage: boolean;
 }

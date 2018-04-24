@@ -21,7 +21,9 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             }
         data-icon-name="Info"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
     <div
       className="ms-MessageBar-text"

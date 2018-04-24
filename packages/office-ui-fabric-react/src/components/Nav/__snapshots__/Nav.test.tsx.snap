@@ -34,7 +34,7 @@ exports[`Nav renders Nav correctly 1`] = `
             {
               animation-duration: 0.367s;
               animation-fill-mode: both;
-              animation-name: css-0,css-13;
+              animation-name: css-33,css-46;
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
               display: block;
               margin-bottom: 40px;

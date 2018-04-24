@@ -265,7 +265,9 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
               }
           data-icon-name="ChevronDown"
           role="presentation"
-        />
+        >
+          
+        </i>
       </div>
     </button>
   </div>

@@ -67,7 +67,9 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           }
       data-icon-name="Search"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
   <input
     aria-label={undefined}

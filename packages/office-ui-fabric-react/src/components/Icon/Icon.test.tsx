@@ -9,4 +9,11 @@ describe('Icon', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders Icon correctly using iconName', () => {
+    const component = renderer.create(<Icon iconName='Upload' />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
 });

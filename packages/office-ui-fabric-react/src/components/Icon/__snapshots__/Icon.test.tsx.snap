@@ -10,5 +10,22 @@ exports[`Icon renders Icon correctly 1`] = `
       }
   data-icon-name="CompassNW"
   role="presentation"
-/>
+>
+  
+</i>
+`;
+
+exports[`Icon renders Icon correctly using iconName 1`] = `
+<i
+  aria-hidden={true}
+  className=
+
+      {
+        display: inline-block;
+      }
+  data-icon-name="Upload"
+  role="presentation"
+>
+  
+</i>
 `;

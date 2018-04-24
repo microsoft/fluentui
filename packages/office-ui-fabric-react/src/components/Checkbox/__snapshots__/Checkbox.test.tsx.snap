@@ -120,7 +120,9 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             }
         data-icon-name="CheckMark"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
     <span
       className=

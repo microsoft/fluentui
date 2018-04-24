@@ -261,7 +261,9 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
           }
       data-icon-name="Message"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
   <div
     className=
@@ -1139,7 +1141,9 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
           }
       data-icon-name="Message"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
   <div
     className=

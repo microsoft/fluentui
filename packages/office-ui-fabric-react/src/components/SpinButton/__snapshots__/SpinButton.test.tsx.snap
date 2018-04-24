@@ -252,7 +252,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 }
             data-icon-name="ChevronUpSmall"
             role="presentation"
-          />
+          >
+            
+          </i>
         </div>
       </button>
       <button
@@ -363,7 +365,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 }
             data-icon-name="ChevronDownSmall"
             role="presentation"
-          />
+          >
+            
+          </i>
         </div>
       </button>
     </span>

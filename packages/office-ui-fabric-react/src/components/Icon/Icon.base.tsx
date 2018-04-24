@@ -38,7 +38,9 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     const { name = iconName } = this.props;
     const isPlaceholder = typeof name === 'string' && name.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
-    const classNames = getClassNames(getStyles, { className, isPlaceholder, isImage });
+    const { iconClassName, children } = this.getIconContent(name);
+
+    const classNames = getClassNames(getStyles, { className, isPlaceholder, isImage, iconClassName });
 
     const containerProps = ariaLabel ? { 'aria-label': ariaLabel, 'data-icon-name': name, } : {
       role: 'presentation',
@@ -60,30 +62,11 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
         </div>
       );
     } else {
-      let children: string | undefined = undefined;
-      let iconClassName: string | undefined = undefined;
-
-      if (!isPlaceholder) {
-        const iconDefinition = getIcon(name) || {
-          subset: {
-            className: undefined
-          },
-          code: undefined
-        };
-
-        children = iconDefinition.code;
-        iconClassName = iconDefinition.subset.className;
-      }
-
       return (
         <i
           { ...containerProps }
           { ...getNativeProps(this.props, htmlElementProperties, ['name']) }
-          className={
-            css(
-              iconClassName,
-              classNames.root,
-            ) }
+          className={ classNames.root }
         >
           { children }
         </i>
@@ -98,5 +81,19 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     if (state === ImageLoadState.error) {
       this.setState({ imageLoadError: true });
     }
+  }
+
+  private getIconContent(name?: string) {
+    const iconDefinition = getIcon(name) || {
+      subset: {
+        className: undefined
+      },
+      code: undefined
+    };
+
+    return {
+      children: iconDefinition.code,
+      iconClassName: iconDefinition.subset.className
+    };
   }
 }

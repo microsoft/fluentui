@@ -61,7 +61,9 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className="ms-Breadcrumb-listItem"
@@ -89,7 +91,9 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className="ms-Breadcrumb-listItem"
@@ -117,7 +121,9 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className="ms-Breadcrumb-listItem"
@@ -286,7 +292,9 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                       }
                   data-icon-name="More"
                   role="presentation"
-                />
+                >
+                  
+                </i>
               </div>
             </button>
             <i
@@ -298,7 +306,9 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className="ms-Breadcrumb-listItem"
@@ -326,7 +336,9 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className="ms-Breadcrumb-listItem"
@@ -537,7 +549,9 @@ exports[`Breadcrumb renders breadcumb correctly 4`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className="ms-Breadcrumb-overflow"
@@ -646,7 +660,9 @@ exports[`Breadcrumb renders breadcumb correctly 4`] = `
                       }
                   data-icon-name="More"
                   role="presentation"
-                />
+                >
+                  
+                </i>
               </div>
             </button>
             <i
@@ -658,7 +674,9 @@ exports[`Breadcrumb renders breadcumb correctly 4`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className="ms-Breadcrumb-listItem"

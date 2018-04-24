@@ -49,7 +49,9 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
                 }
             data-icon-name="ChevronDown"
             role="presentation"
-          />
+          >
+            
+          </i>
         </button>
       </div>
     </div>

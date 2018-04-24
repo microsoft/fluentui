@@ -79,7 +79,9 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     }
                 data-icon-name="Contact"
                 role="presentation"
-              />
+              >
+                
+              </i>
             </div>
             <div
               className=

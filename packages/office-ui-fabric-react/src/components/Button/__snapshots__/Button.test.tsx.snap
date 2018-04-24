@@ -217,7 +217,9 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           }
       data-icon-name="Add"
       role="presentation"
-    />
+    >
+      
+    </i>
     <div
       className=
           ms-Button-textContainer
@@ -261,7 +263,9 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           }
       data-icon-name="ChevronDown"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
 </button>
 `;
@@ -609,7 +613,9 @@ exports[`Button renders IconButton correctly 1`] = `
           }
       data-icon-name="Emoji2"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
 </button>
 `;
