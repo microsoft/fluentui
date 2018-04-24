@@ -8,7 +8,7 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     return null;
   }
 
-  let computedTextWidth: IStyle = {
+  const computedTextWidth: IStyle = {
     // 100px to accomodate left and right icons (50px each)
     width: 'calc(100% - 100px)'
   };

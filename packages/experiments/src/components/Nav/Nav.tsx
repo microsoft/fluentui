@@ -108,8 +108,8 @@ class NavComponent extends NavBase {
         href={ link.url }
         target={ link.target }
         onClick={ this._onLinkClicked.bind(this, link) }
-        dataHint="ReactLeftNav"
-        dataValue={ link.name }
+        dataHint={ this.props.dataHint }
+        dataValue={ link.key }
         ariaLabel={ link.name }
         role="menu"
         rootClassName={ classNames.navItemRoot }

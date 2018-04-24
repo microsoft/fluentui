@@ -41,6 +41,11 @@ export interface INavProps {
   getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
 
   /**
+   * Used for telemetry
+   */
+  dataHint?: string;
+
+  /**
    * (Optional) callback for the parent component when the nav component is toggled between expanded and collapsed state
    */
   onNavCollapsedCallback?(isCollapsed: boolean): void;

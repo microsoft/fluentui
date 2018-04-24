@@ -47,11 +47,13 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
             <SlimNav
               groups={ this.props.groups }
               selectedKey={ this.props.selectedKey }
-              navScrollerId={ this.props.navScrollerId } />
+              navScrollerId={ this.props.navScrollerId }
+              dataHint={ this.props.dataHint } />
             :
             <Nav
               groups={ this.props.groups }
-              selectedKey={ this.props.selectedKey } />
+              selectedKey={ this.props.selectedKey }
+              dataHint={ this.props.dataHint } />
         }
       </div>
     );
@@ -82,7 +84,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
         id="ToggleNavCollapse"
         onClick={ this._onNavCollapseClicked.bind(this) }
         ariaExpanded={ !isNavCollapsed }
-        dataHint="ReactLeftNav"
+        dataHint={ this.props.dataHint }
         dataValue="ToggleNavCollapse"
         rootClassName={ classNames.navToggler }
         leftIconName="GlobalNavButton"

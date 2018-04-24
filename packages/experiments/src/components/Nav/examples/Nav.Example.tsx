@@ -55,7 +55,7 @@ export class NavExample extends React.Component<{}, {}> {
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } />
+        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' />
       </div>
     );
   }

@@ -119,8 +119,8 @@ class SlimNavComponent extends NavBase {
         content={ link.name }
         href={ link.url }
         target={ link.target }
-        dataHint="SlimReactLeftNav"
-        dataValue={ link.name }
+        dataHint={ this.props.dataHint }
+        dataValue={ link.key }
         ariaLabel={ link.name }
         onClick={ this._onLinkClicked.bind(this, link) }
         rootClassName={ classNames.navFloatingItemRoot }
@@ -215,8 +215,8 @@ class SlimNavComponent extends NavBase {
           id={ link.key }
           href={ link.url }
           target={ link.target }
-          dataHint="SlimReactLeftNav"
-          dataValue={ link.name }
+          dataHint={ this.props.dataHint }
+          dataValue={ link.key }
           onClick={ this._onLinkClicked.bind(this, link) }
           rootClassName={ classNames.navItemRoot }
           leftIconName={ link.icon }
