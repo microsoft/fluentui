@@ -2,8 +2,9 @@ import * as React from 'react';
 import { BaseChiclet } from './BaseChiclet';
 import { ChicletCard } from './ChicletCard';
 import { Chiclet } from './Chiclet';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IChiclet {
 
@@ -13,7 +14,46 @@ export interface IChicletStyles {
   /**
    * Style for the root element.
    */
-  root: IStyle;
+  root?: IStyle;
+
+  /**
+   * Style for the icon that overlays the file preview image.
+   */
+  icon?: IStyle;
+
+  /**
+   * Style for the file preview image.
+   */
+  preview?: IStyle;
+
+  /**
+   * Style for preview information about the file, such as title and link.
+   */
+  info?: IStyle;
+
+  /**
+   * Style for the title of the file.
+   */
+  title?: IStyle;
+
+  /**
+   * Style for the link to the file.
+   */
+  link?: IStyle;
+
+  /**
+   * Style for the collective actions in the lower right of the component.
+   */
+  actions?: IStyle;
+
+  /**
+   * Style for the individual actions in the lower right of the component.
+   */
+  action?: IStyle;
+}
+
+export interface IChicletStyleProps {
+
 }
 
 export interface IBaseChicletProps extends React.Props<BaseChiclet> {
@@ -69,13 +109,7 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   componentRef?: (component: IChiclet | null) => void;
 
   /**
-  * The type of Chiclet to display.
-  * @default Chiclet.anonymous
-  */
-  type?: ChicletType;
-
-  /**
-   * Optional class for chiclet.
+   * Optional class for ChicletCard.
    */
   className?: string;
 
@@ -94,6 +128,13 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
    * Action icon buttons to render.
    */
   actions?: IButtonProps[] | undefined;
+
+  /**
+   * Styling for the ChicletCard.
+   */
+  styles?: IChicletStyles;
+
+  theme?: ITheme;
 
   /**
    * OpenGraph props.

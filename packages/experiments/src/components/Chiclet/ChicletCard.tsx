@@ -2,9 +2,18 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  css
+  css,
+  classNamesFunction
 } from '../../Utilities';
-import { IChicletCardProps } from './Chiclet.types';
+import {
+  IChicletCardProps,
+  IChicletStyles,
+  IChicletStyleProps
+} from './Chiclet.types';
+import { mergeStyles } from '../../Styling';
+import {
+  getClassNames
+} from './Chiclet.styles';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Image } from 'office-ui-fabric-react/lib/Image';
@@ -12,12 +21,16 @@ import { TestImages } from 'office-ui-fabric-react/src/common/TestImages';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { ChicletTestImages } from '../../common/TestImages';
 import * as stylesImport from './Chiclet.scss';
-const styles: any = stylesImport;
+const oldstyles: any = stylesImport;
 
 export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
+  private _classNames: IChicletStyles = {};
+
   public render() {
-    const { title, ogType, description, image, imageType, imageWidth, imageHeight, url, onClick, onClickHref, className, actions } = this.props;
+    const { styles: customStyles, title, ogType, description, image, imageType, imageWidth, imageHeight, url, onClick, onClickHref, className, actions, theme } = this.props;
     const actionable = (onClick || onClickHref) ? true : false;
+
+    this._classNames = getClassNames(theme!, customStyles);
 
     // if this element is actionable it should have an aria role
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
@@ -35,7 +48,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
           css('ms-ChicletCard', className) }
       >
         <div
-          className={ css('ms-ChicletCardPreview', styles.preview) }
+          className={ css('ms-ChicletCardPreview', oldstyles.preview) }
         >
           { image ?
             preview :
@@ -47,15 +60,15 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
           }
         </div>
         <div
-          className={ css('ms-ChicletCardInfo', styles.info) }
+          className={ css('ms-ChicletCardInfo', oldstyles.info) }
         >
           <div
-            className={ css('ms-ChicletCardTitle', styles.title) }
+            className={ css('ms-ChicletCardTitle', oldstyles.title) }
           >
             { title ? title : "Placeholder" }
           </div>
           <div
-            className={ css('ms-ChicletCardLink', styles.link) }
+            className={ css('ms-ChicletCardLink', oldstyles.link) }
           >
             { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
           </div>
@@ -79,13 +92,13 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
     let icon;
     switch (ogType) {
       case "word":
-        icon = <Icon className={ css('ms-DocumentCardPreview-icon', styles.icon) } iconName='WordDocument' />;
+        icon = <Icon className={ css('ms-DocumentCardPreview-icon', oldstyles.icon) } iconName='WordDocument' />;
         break;
       case "powerpoint":
-        icon = <Icon className={ css('ms-DocumentCardPreview-icon', styles.icon) } iconName='PowerPointDocument' />;
+        icon = <Icon className={ css('ms-DocumentCardPreview-icon', oldstyles.icon) } iconName='PowerPointDocument' />;
         break;
       case "excel":
-        icon = <Icon className={ css('ms-DocumentCardPreview-icon', styles.icon) } iconName='ExcelDocument' />;
+        icon = <Icon className={ css('ms-DocumentCardPreview-icon', oldstyles.icon) } iconName='ExcelDocument' />;
         break;
     }
 
@@ -99,10 +112,10 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
 
   private _renderFooter(actions: IButtonProps[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     return (
-      <div className={ css('ms-ChicletCardFooter', styles.actions) }>
+      <div className={ mergeStyles(this._classNames.actions) }>
         { actions && actions.map((action, index) => {
           return (
-            <div className={ css('ms-ChicletFooter-action', styles.action) } key={ index }>
+            <div className={ css('ms-ChicletFooter-action', oldstyles.action) } key={ index }>
               <IconButton { ...action } />
             </div>
           );

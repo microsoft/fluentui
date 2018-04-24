@@ -51,6 +51,9 @@ export class BaseChiclet extends BaseComponent<IBaseChicletProps, any> {
           case "og:image:url":
             attributes.image = metaElements[i].content;
             break;
+          case "og:image:secure_url":
+            attributes.imageSecureUrl = metaElements[i].content;
+            break;
           case "og:image:type":
             attributes.imageType = metaElements[i].content;
             break;
