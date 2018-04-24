@@ -125,6 +125,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         target={ target }
         offsetFromTarget={ beakHeight }
         componentRef={ this._positioningContainer }
+        doNotLayer={ true }
       >
         <div className={ classNames.root }>
           <div className={ classNames.pulsingBeacon } />

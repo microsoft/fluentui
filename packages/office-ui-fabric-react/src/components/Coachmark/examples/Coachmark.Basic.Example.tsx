@@ -53,7 +53,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
     const classNames = getClassNames(() => {
       return {
-        root: {},
+        root: {
+          padding: '20px 0'
+        },
         buttonContainer: {
           display: 'inline-block'
         }

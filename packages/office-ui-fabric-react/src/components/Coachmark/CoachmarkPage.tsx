@@ -20,7 +20,7 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Coachmark'
         exampleCards={
           <div>
-            <ExampleCard title='Coachmark Basic' isOptIn={ true } code={ CoachmarkBasicExampleCode }>
+            <ExampleCard isScrollable={ false } title='Coachmark Basic' isOptIn={ true } code={ CoachmarkBasicExampleCode }>
               <CoachmarkBasicExample />
             </ExampleCard>
           </div>
