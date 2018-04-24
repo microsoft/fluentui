@@ -204,7 +204,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
    */
   private _validateProps(props: IBreadcrumbProps): void {
     const { items, overflowIndex } = props;
-    if (overflowIndex! < 0 || overflowIndex! > items.length - 1) {
+    if (overflowIndex! < 0 || overflowIndex! > items.length) {
       throw new Error('Breadcrumb: overflowIndex out of range');
     }
   }
