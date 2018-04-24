@@ -272,6 +272,16 @@ export interface ISemanticColors {
   listItemBackgroundCheckedHovered: string;
 
   /**
+   * The background color for a hovered list header.
+   */
+  listHeaderBackgroundHovered: string;
+
+  /**
+   * The background color for a pressed list header.
+   */
+  listHeaderBackgroundPressed: string;
+
+  /**
    * The color of a link.
    */
   link: string;
