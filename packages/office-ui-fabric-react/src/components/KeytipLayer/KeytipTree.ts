@@ -124,21 +124,9 @@ export class KeytipTree {
    */
   public getExactMatchedNode(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     const possibleNodes = this.getNodes(currentKeytip.children);
-    const matchedNode = find(possibleNodes, (node: IKeytipTreeNode) => {
+    return find(possibleNodes, (node: IKeytipTreeNode) => {
       return this._getNodeSequence(node) === keySequence && !node.disabled;
     });
-    if (!matchedNode && currentKeytip.overflowSetSequence) {
-      // An overflow node might have generated other DOM, try to match nodes that aren't the children
-      // The parent must equal currentKeytip's ID without their overflowSetSequence
-      const currKeytipIdWithoutOverflow = convertSequencesToKeytipID(currentKeytip.keySequences);
-      return find(values<IKeytipTreeNode>(this.nodeMap), (node: IKeytipTreeNode) => {
-        return this._getNodeSequence(node) === keySequence &&
-          !node.disabled &&
-          node.parent === currKeytipIdWithoutOverflow;
-      });
-    } else {
-      return matchedNode;
-    }
   }
 
   /**
@@ -152,25 +140,9 @@ export class KeytipTree {
   public getPartiallyMatchedNodes(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
     // Get children that are persisted
     const possibleNodes = this.getNodes(currentKeytip.children);
-    const matchedNodes = possibleNodes.filter((node: IKeytipTreeNode) => {
+    return possibleNodes.filter((node: IKeytipTreeNode) => {
       return this._getNodeSequence(node).indexOf(keySequence) === 0 && !node.disabled;
     });
-    if (!matchedNodes.length && currentKeytip.overflowSetSequence) {
-      // An overflow node might have generated other DOM, try to match nodes that aren't the children
-      // The parent must equal currentKeytip's ID without their overflowSetSequence
-      const currKeytipIdWithoutOverflow = convertSequencesToKeytipID(currentKeytip.keySequences);
-      return values<IKeytipTreeNode>(this.nodeMap).filter((node: IKeytipTreeNode): boolean => {
-        if (!node.keySequences.length) {
-          // Account for root
-          return false;
-        }
-        return this._getNodeSequence(node).indexOf(keySequence) === 0 &&
-          !node.disabled &&
-          node.parent === currKeytipIdWithoutOverflow;
-      });
-    } else {
-      return matchedNodes;
-    }
   }
 
   /**

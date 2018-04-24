@@ -5,7 +5,7 @@ import {
   convertSequencesToKeytipID,
   getAriaDescribedBy
 } from '../../Utilities';
-import { IKeytipProps } from '.';
+import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 
 export interface IKeytipDataProps {

@@ -438,6 +438,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     if (this._newCurrentKeytipSequences && arraysAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
       this._triggerKeytipImmediately(keytipProps);
     }
+
+    if (this._isCurrentKeytipAnAlias(keytipProps)) {
+      let keytipSequence = keytipProps.keySequences;
+      if (keytipProps.overflowSetSequence) {
+        keytipSequence = mergeOverflowKeySequences(keytipSequence, keytipProps.overflowSetSequence);
+      }
+      this.keytipTree.currentKeytip = this.keytipTree.getNode(convertSequencesToKeytipID(keytipSequence));
+    }
   }
 
   private _onKeytipUpdated = (eventArgs: any) => {
@@ -545,5 +553,20 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _getKeytipDOMElement(keytipId: string): HTMLElement | null {
     const dataKtpExecuteTarget = constructKeytipExecuteTargetFromId(keytipId);
     return getDocument()!.querySelector(dataKtpExecuteTarget);
+  }
+
+  /**
+   * Returns T/F if the keytipProps keySequences match the currentKeytip, and the currentKeytip is in an overflow well
+   * This will make 'keytipProps' the new currentKeytip
+   *
+   * @param keytipProps - Keytip props to check
+   * @returns {boolean} - T/F if this keytip should become the currentKeytip
+   */
+  private _isCurrentKeytipAnAlias(keytipProps: IKeytipProps): boolean {
+    const currKtp = this.keytipTree.currentKeytip;
+    if (currKtp && (currKtp.overflowSetSequence || currKtp.persisted) && arraysAreEqual(keytipProps.keySequences, currKtp.keySequences)) {
+      return true;
+    }
+    return false;
   }
 }

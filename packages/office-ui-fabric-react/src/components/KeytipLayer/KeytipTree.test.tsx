@@ -350,23 +350,6 @@ describe('KeytipTree', () => {
         nodeQ.persisted = true;
         expect(keytipTree.getExactMatchedNode('q', keytipTree.root)).toBeDefined();
       });
-
-      it('tries to match all nodes when none are initally returned because of an overflow sequence', () => {
-        // Overflow node P
-        const overflowP = {
-          ...keytipPropsP,
-          overflowSetSequence: ['e1', 'x']
-        };
-        keytipTree.updateNode(overflowP, uniqueIdP);
-        // Add a new node that will be a child of P
-        const pChild = {
-          content: 'N',
-          keySequences: ['e1', 'p', 'n']
-        };
-        keytipTree.addNode(pChild, 'unique-id');
-        const matchedNode = keytipTree.getExactMatchedNode('n', keytipTree.getNode('ktp-e-1-x-p')!);
-        expect(matchedNode).toBeDefined();
-      });
     });
 
     describe('getPartiallyMatchedNodes', () => {
@@ -404,23 +387,6 @@ describe('KeytipTree', () => {
         });
         expect(matchingNodeIDs).toContain(keytipIdE1);
         expect(matchingNodeIDs).toContain(keytipIdE2);
-      });
-
-      it('tries to match all nodes when none are initally returned because of an overflow sequence', () => {
-        // Overflow node P
-        const overflowP = {
-          ...keytipPropsP,
-          overflowSetSequence: ['e1', 'x']
-        };
-        keytipTree.updateNode(overflowP, uniqueIdP);
-        // Add a new node that will be a child of P
-        const pChild = {
-          content: 'N',
-          keySequences: ['e1', 'p', 'n']
-        };
-        keytipTree.addNode(pChild, 'unique-id');
-        const matchedNodes = keytipTree.getPartiallyMatchedNodes('n', keytipTree.getNode('ktp-e-1-x-p')!);
-        expect(matchedNodes).toHaveLength(1);
       });
     });
   });
