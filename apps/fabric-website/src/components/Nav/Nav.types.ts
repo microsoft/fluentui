@@ -61,4 +61,6 @@ export interface INavPage {
    * @default false
    */
   isUhfLink?: boolean;
+
+  name?: string;
 }

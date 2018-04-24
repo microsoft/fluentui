@@ -202,10 +202,42 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListComponentPage)),
           pages: [
             {
-              title: 'SUB-DetailsList',
-              url: '#/components/detailslist',
-              component: () => <LoadingComponent title='DetailsList' />,
-              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListComponentPage))
+              title: 'Compact',
+              url: '#/components/detailslist#compact',
+              name: 'compact'
+            },
+            {
+              title: 'Grouped',
+              url: '#/components/detailslist#grouped',
+              name: 'grouped'
+            },
+            {
+              title: 'Custom Item Columns',
+              url: '#/components/detailslist#custom-item-columns'
+            },
+            {
+              title: 'Custom Item Rows',
+              url: '#/components/detailslist#custom-item-rows'
+            },
+            {
+              title: 'Custom Group Headers',
+              url: '#/components/detailslist#custom-group-headers'
+            },
+            {
+              title: 'Variable Row Heights',
+              url: '#/components/detailslist#variable-row-heights'
+            },
+            {
+              title: 'Drag & Drop',
+              url: '#/components/detailslist#drag-and-drop'
+            },
+            {
+              title: 'Inner Navigation',
+              url: '#/components/detailslist#inner-navigation'
+            },
+            {
+              title: 'API Reference',
+              url: '#/components/detailslist#api-reference'
             }
           ]
         },
