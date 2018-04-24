@@ -36,21 +36,21 @@ storiesOf('SpinButton', module)
     </Screener>
   )).add('Root', () => (
     <SpinButton
-      {...props}
+      { ...props }
     />
   )).add('Disabled', () => (
     <SpinButton
-      {...props}
+      { ...props }
       disabled
     />
   )).add('With icon', () => (
     <SpinButton
-      {...props}
-      iconProps={ { iconName: 'IncreaseIndentLegacy' } }
+      { ...props }
+      iconProps={ { name: 'IncreaseIndentLegacy', } }
     />
   )).add('Label at end', () => (
     <SpinButton
-      {...props}
+      { ...props }
       labelPosition={ Position.end }
     />
   ));
