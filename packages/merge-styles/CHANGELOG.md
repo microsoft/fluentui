@@ -1,6 +1,17 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+
+## 5.16.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating how keyframe classes are cached to aid with jest snapshot testing.
+
+### Patches
+
+- Updating documentation.
 
 ## 5.15.2
 Tue, 17 Apr 2018 18:47:11 GMT

@@ -24,7 +24,7 @@ let rootElement: HTMLElement | null;
 
 // Return the anchor link from the URL without the hash
 function _extractAnchorLink(path: string): string {
-  let index = path.lastIndexOf('#');
+  const index = path.lastIndexOf('#');
   if (index >= 0) {
     path = path.substr(index + 1, path.length - index);
   }
@@ -33,7 +33,7 @@ function _extractAnchorLink(path: string): string {
 
 function _scrollAnchorLink(): void {
   if ((window.location.hash.match(/#/g) || []).length > 1) {
-    let anchor = _extractAnchorLink(window.location.hash);
+    const anchor = _extractAnchorLink(window.location.hash);
     document.getElementById(anchor)!.scrollIntoView();
   }
 }
@@ -51,8 +51,8 @@ function _onLoad(): void {
 }
 
 function _getRoutes(): JSX.Element[] {
-  let routes = AppDefinition.testPages.map((page: IAppLink) => <Route key={ page.key } path={ page.url } component={ page.component } />);
-  let appRoutes: JSX.Element[] = [];
+  const routes = AppDefinition.testPages.map((page: IAppLink) => <Route key={ page.key } path={ page.url } component={ page.component } />);
+  const appRoutes: JSX.Element[] = [];
 
   AppDefinition.examplePages.forEach((group: IAppLinkGroup) => {
     group.links
@@ -90,7 +90,7 @@ function _onUnload(): void {
   }
 }
 
-let isReady = document.readyState === 'interactive' || document.readyState === 'complete';
+const isReady = document.readyState === 'interactive' || document.readyState === 'complete';
 
 if (isReady) {
   _onLoad();

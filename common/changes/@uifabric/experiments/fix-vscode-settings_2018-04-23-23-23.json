@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Remove wordWrap setting.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "v-jojanz@microsoft.com"
+}

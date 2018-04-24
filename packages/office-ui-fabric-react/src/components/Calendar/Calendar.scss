@@ -169,6 +169,11 @@ $Calendar-dayPicker-margin: 10px;
 
 .dayIsFocused:active,
 .dayIsHighlighted {
+  background: $ms-color-themeLight;
+}
+
+.dayIsFocused:active,
+.dayIsHighlighted {
   &.day {
     color: $ms-color-neutralPrimary;
     font-weight: $ms-font-weight-semibold;
@@ -652,6 +657,7 @@ $Calendar-dayPicker-margin: 10px;
 .nextMonth,
 .nextYear {
   margin-left: 3px;
+  margin-right: 2px;
 }
 
 .monthIsHighlighted {

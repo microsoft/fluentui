@@ -23,7 +23,7 @@ describe('FormDatePicker Unit Tests', () => {
     });
 
     it('Null name throws error', () => {
-      let errorFunction = () => {
+      const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
           <Form
             onSubmit={ undefined }
@@ -60,7 +60,7 @@ describe('FormDatePicker Unit Tests', () => {
 
     it('With initial value', () => {
       let result: any;
-      let now: Date = new Date();
+      const now: Date = new Date();
       renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
           onSubmit={ (value: any) => { result = value; } }
@@ -73,7 +73,7 @@ describe('FormDatePicker Unit Tests', () => {
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-DatePicker') as HTMLElement;
-      let form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toEqual(now);
@@ -96,8 +96,8 @@ describe('FormDatePicker Unit Tests', () => {
     });
 
     it('DatePicker is leading and trailing debounced', () => {
-      let updateStub: sinon.SinonStub = sinon.stub();
-      let renderedForm = ReactTestUtils.renderIntoDocument(
+      const updateStub: sinon.SinonStub = sinon.stub();
+      const renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
           onUpdated={ updateStub }
         >
@@ -108,7 +108,7 @@ describe('FormDatePicker Unit Tests', () => {
         </Form>
       ) as Form;
 
-      let datePicker: ExtendsDatePicker = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsDatePicker);
+      const datePicker: ExtendsDatePicker = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsDatePicker);
       datePicker.setValue(new Date('2015-05-05'));
       expect(updateStub.callCount).toEqual(1);
       datePicker.setValue(new Date('2014-05-05'));
