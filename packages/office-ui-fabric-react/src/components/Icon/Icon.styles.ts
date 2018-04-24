@@ -1,7 +1,7 @@
 import { IIconStyleProps, IIconStyles } from './Icon.types';
 
 export const getStyles = (props: IIconStyleProps): IIconStyles => {
-  const { className, isPlaceholder, isImage } = props;
+  const { className, iconClassName, isPlaceholder, isImage } = props;
 
   return {
     root: [
@@ -16,6 +16,7 @@ export const getStyles = (props: IIconStyleProps): IIconStyles => {
       isImage && {
         overflow: 'hidden'
       },
+      iconClassName,
       className
     ],
   };

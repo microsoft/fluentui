@@ -64,7 +64,7 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
       return (
         <i
           { ...containerProps }
-          { ...getNativeProps(this.props, htmlElementProperties, ['name']) }
+          { ...getNativeProps(this.props, htmlElementProperties, ['name', 'iconName']) }
           className={ classNames.root }
         >
           { children }
