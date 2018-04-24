@@ -9,8 +9,6 @@ import { IChicletProps, IChicletCardProps, IChicletStyles } from './Chiclet.type
 import { mergeStyles } from '../../Styling';
 import { ChicletCard } from './ChicletCard';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import * as stylesImport from './Chiclet.scss';
-const styles: any = stylesImport;
 
 export class Chiclet extends React.Component<IChicletProps, IChicletCardProps> {
   private _classNames: IChicletStyles = {};

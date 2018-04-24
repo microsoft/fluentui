@@ -7,10 +7,6 @@ import { ChicletCard } from './ChicletCard';
 import { Chiclet } from './Chiclet';
 import { IBaseChicletProps, IChicletCardProps } from './Chiclet.types';
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import * as stylesImport from './Chiclet.scss';
-const styles: any = stylesImport;
-
-//var fieldMap: { [property: string]: string; } = {};
 
 export class BaseChiclet extends BaseComponent<IBaseChicletProps, any> {
   public render() {

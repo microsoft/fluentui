@@ -20,8 +20,6 @@ import { Image } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from 'office-ui-fabric-react/src/common/TestImages';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { ChicletTestImages } from '../../common/TestImages';
-import * as stylesImport from './Chiclet.scss';
-const oldstyles: any = stylesImport;
 
 export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
   private _classNames: IChicletStyles = {};

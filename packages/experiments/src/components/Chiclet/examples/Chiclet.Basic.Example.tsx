@@ -17,9 +17,3 @@ export class ChicletBasicExample extends React.Component<any, any> {
   }
 
 }
-
-// actions={ [
-//   { iconProps: { iconName: 'Breadcrumb' } },
-//   { iconProps: { iconName: 'Save' } },
-//   { iconProps: { iconName: 'Share' } }
-// ] }
