@@ -35,8 +35,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
   theme?: ITheme;
 
   /**
-   * Provide an html tag name (one of 'span' | 'a' | 'button' | 'div') to use as the tag
-   * returned from the Link component.
+   * A component that should be used as the root element of the link returned from the Link component.
    */
   renderAs?: string | React.ComponentClass | React.StatelessComponent;
 }
