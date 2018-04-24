@@ -251,15 +251,21 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           className=
               ms-Button-icon
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: inline-block;
                 flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
                 font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
+                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }

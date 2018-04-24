@@ -61,8 +61,14 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       className=
           ms-SearchBox-icon
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-style: normal;
+            font-weight: normal;
             opacity: 1;
+            speak: none;
             transition: opacity 0.167s 0s;
           }
       data-icon-name="Search"

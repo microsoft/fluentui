@@ -57,7 +57,13 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
               data-icon-name="ChevronRight"
               role="presentation"
@@ -87,7 +93,13 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
               data-icon-name="ChevronRight"
               role="presentation"
@@ -117,7 +129,13 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
               data-icon-name="ChevronRight"
               role="presentation"
@@ -278,15 +296,21 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   className=
                       ms-Button-icon
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         display: inline-block;
                         flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
                         font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
+                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -302,7 +326,13 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
               data-icon-name="ChevronRight"
               role="presentation"
@@ -332,7 +362,13 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
               data-icon-name="ChevronRight"
               role="presentation"
@@ -545,7 +581,13 @@ exports[`Breadcrumb renders breadcumb correctly 4`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
               data-icon-name="ChevronRight"
               role="presentation"
@@ -646,15 +688,21 @@ exports[`Breadcrumb renders breadcumb correctly 4`] = `
                   className=
                       ms-Button-icon
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         display: inline-block;
                         flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
                         font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
+                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -670,7 +718,13 @@ exports[`Breadcrumb renders breadcumb correctly 4`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
               data-icon-name="ChevronRight"
               role="presentation"

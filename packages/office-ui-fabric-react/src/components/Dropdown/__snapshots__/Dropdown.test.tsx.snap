@@ -38,7 +38,13 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
         className=
             ms-Dropdown-caretDown
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
             }
         data-icon-name="ChevronDown"
         role="presentation"
@@ -88,7 +94,13 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
         className=
             ms-Dropdown-caretDown
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
             }
         data-icon-name="ChevronDown"
         role="presentation"

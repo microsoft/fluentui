@@ -257,7 +257,13 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
+            font-family: "FabricMDL2Icons-1";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
           }
       data-icon-name="Message"
       role="presentation"
@@ -1137,7 +1143,13 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
+            font-family: "FabricMDL2Icons-1";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
           }
       data-icon-name="Message"
       role="presentation"

@@ -109,8 +109,14 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -123,12 +129,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -232,8 +244,14 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -246,12 +264,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -355,8 +379,14 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -369,12 +399,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -478,8 +514,14 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -492,12 +534,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -601,8 +649,14 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -615,12 +669,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-front
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
                 display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
