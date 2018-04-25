@@ -1,8 +1,3 @@
-
-import {
-  ITheme,
-  mergeStyles
-} from '../../Styling';
 import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 const inheritFont = { fontFamily: 'inherit' };

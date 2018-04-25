@@ -1,4 +1,3 @@
-import { IStyle, keyframes } from '../../Styling';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
 export const getStyles = (
