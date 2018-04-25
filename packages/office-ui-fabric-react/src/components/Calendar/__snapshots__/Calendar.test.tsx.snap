@@ -176,7 +176,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   onMouseUp={undefined}
                 >
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
@@ -194,10 +193,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -222,10 +217,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -250,10 +241,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id="DatePickerDay-active9"
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -278,10 +265,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -306,10 +289,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -334,10 +313,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -362,10 +337,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -377,7 +348,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
@@ -395,10 +365,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -423,10 +389,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -451,10 +413,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -479,10 +437,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -507,10 +461,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -535,10 +485,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -563,10 +509,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -578,7 +520,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
@@ -596,10 +537,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -624,10 +561,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -652,10 +585,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -680,10 +609,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -708,10 +633,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -736,10 +657,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -764,10 +681,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -779,7 +692,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
@@ -797,10 +709,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -825,10 +733,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -853,10 +757,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -881,10 +781,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -909,10 +805,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -937,10 +829,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -965,10 +853,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -980,7 +864,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
@@ -998,10 +881,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1026,10 +905,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1054,10 +929,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1082,10 +953,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1110,10 +977,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1138,10 +1001,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1166,10 +1025,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         data-is-focusable={true}
                         id={undefined}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
