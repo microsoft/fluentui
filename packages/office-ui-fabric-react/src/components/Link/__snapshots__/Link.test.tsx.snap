@@ -86,6 +86,7 @@ exports[`Link renders Link with no href as a button 1`] = `
       ms-Link
       {
         background: none;
+        background-color: transparent;
         border: none;
         color: #0078d4;
         cursor: pointer;
@@ -178,6 +179,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       is-disabled
       {
         background: none;
+        background-color: transparent;
         border: none;
         color: #a6a6a6;
         cursor: default;

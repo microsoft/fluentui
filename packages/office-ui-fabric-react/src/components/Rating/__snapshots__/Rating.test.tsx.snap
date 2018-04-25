@@ -30,6 +30,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
@@ -94,7 +95,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-1"
       >
-        
+
       </span>
       <div
         className=
@@ -154,6 +155,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
@@ -217,7 +219,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-2"
       >
-        
+
       </span>
       <div
         className=
@@ -277,6 +279,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
@@ -340,7 +343,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-3"
       >
-        
+
       </span>
       <div
         className=
@@ -400,6 +403,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
@@ -463,7 +467,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-4"
       >
-        
+
       </span>
       <div
         className=
@@ -523,6 +527,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
@@ -586,7 +591,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-5"
       >
-        
+
       </span>
       <div
         className=
