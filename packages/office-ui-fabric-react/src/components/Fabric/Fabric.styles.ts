@@ -15,11 +15,13 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
   const {
     theme,
     className,
+    isFocusVisible
   } = props;
 
   return {
     root: [
       'ms-Fabric',
+      isFocusVisible && 'is-focusVisible',
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,

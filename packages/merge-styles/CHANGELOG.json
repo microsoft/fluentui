@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.16.1",
+      "tag": "@uifabric/merge-styles_v5.16.1",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1d305b55114bffaece2841500c8476ba3996d2b2",
+            "comment": "merge-styles: `style` elements which are created on the fly now \"bunch\" together, avoiding unpredictability in specificity."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.16.0",
       "tag": "@uifabric/merge-styles_v5.16.0",
       "date": "Mon, 23 Apr 2018 10:24:54 GMT",
