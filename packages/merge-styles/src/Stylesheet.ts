@@ -168,10 +168,11 @@ export class Stylesheet {
           const { sheet } = element!;
 
           try {
-            // tslint:disable-next-line:no-any
-            (sheet as any).insertRule(rule, (sheet as any).cssRules.length);
+            (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
           } catch (e) {
-            /* no-op on errors */
+            // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
+            // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
+            // which could be slower and bulkier.
           }
           break;
 
