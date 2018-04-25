@@ -71,7 +71,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._events.on(this._root.current, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
   }
@@ -88,7 +88,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { className, theme, getStyles } = this.props;
     const classNames = getClassNames(getStyles!,
       {
@@ -102,12 +102,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
         { ...getNativeProps(this.props, divProperties) }
         ref={ this._root }
         className={ classNames.root }
+        data-is-scrollable={ true }
       >
         <div ref={ this._stickyAboveRef } className={ classNames.stickyAbove } />
         <div ref={ this._stickyBelowRef } className={ classNames.stickyBelow } />
-        <div data-is-scrollable={ true }>
-          { this.props.children }
-        </div>
+        { this.props.children }
       </div>
     );
   }
@@ -170,7 +169,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     return 0;
   }
 
-  private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, addStickyToContainer: () => void) {
+  private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, addStickyToContainer: () => void): void {
     if (!stickyList.has(sticky)) {
       stickyList.add(sticky);
       addStickyToContainer();
@@ -188,7 +187,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     }
   }
 
-  private _removeSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement | null) {
+  private _removeSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement | null): void {
     if (container && stickyList.has(sticky)) {
       sticky.content.removeEventListener('transitionend',
         this._setPlaceholderHeights.bind(null, stickyList, container));
@@ -196,7 +195,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     }
   }
 
-  private _onWindowResize() {
+  private _onWindowResize(): void {
     this._async.setTimeout(() => {
       this.notifySubscribers();
       this._setPlaceholderHeights(this._stickyAbove);

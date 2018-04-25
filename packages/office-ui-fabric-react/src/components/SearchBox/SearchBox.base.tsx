@@ -43,7 +43,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     };
   }
 
-  public componentWillReceiveProps(newProps: ISearchBoxProps) {
+  public componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
       this.setState({

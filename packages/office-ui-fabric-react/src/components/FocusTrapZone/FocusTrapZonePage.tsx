@@ -19,7 +19,7 @@ import FocusTrapZoneNestedExample from './examples/FocusTrapZone.Nested.Example'
 const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 
 export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='FocusTrapZone'

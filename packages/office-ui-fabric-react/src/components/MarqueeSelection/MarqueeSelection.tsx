@@ -59,7 +59,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._scrollableParent = findScrollableParent(this._root.current) as HTMLElement;
     this._scrollableSurface = (this._scrollableParent === window as any) ? document.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.
@@ -82,7 +82,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       true);
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._autoScroll) {
       this._autoScroll.dispose();
     }
@@ -125,7 +125,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   /** Determine if the mouse event occured on a scrollbar of the target element. */
-  private _isMouseEventOnScrollbar(ev: MouseEvent) {
+  private _isMouseEventOnScrollbar(ev: MouseEvent): boolean {
     const targetElement = ev.target as HTMLElement;
     const targetScrollbarWidth = (targetElement.offsetWidth - targetElement.clientWidth);
 
@@ -208,7 +208,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     };
   }
 
-  private _onAsyncMouseMove(ev: MouseEvent) {
+  private _onAsyncMouseMove(ev: MouseEvent): void {
     this._async.requestAnimationFrame(() => {
       this._onMouseMove(ev);
     });
@@ -217,7 +217,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     ev.preventDefault();
   }
 
-  private _onMouseMove(ev: MouseEvent) {
+  private _onMouseMove(ev: MouseEvent): boolean | undefined {
     if (!this._autoScroll) {
       return;
     }
@@ -269,7 +269,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return false;
   }
 
-  private _onMouseUp(ev: MouseEvent) {
+  private _onMouseUp(ev: MouseEvent): void {
     this._events.off(window);
     this._events.off(this._scrollableParent, 'scroll');
 
@@ -336,7 +336,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return false;
   }
 
-  private _evaluateSelection(dragRect: IRectangle, rootRect: IRectangle) {
+  private _evaluateSelection(dragRect: IRectangle, rootRect: IRectangle): void {
     // Break early if we don't need to evaluate.
     if (!dragRect || !this._root.current) {
       return;

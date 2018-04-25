@@ -37,7 +37,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { displayedPersonas, overflowButtonType } = this.state;
     facepileProps.maxDisplayablePersonas = displayedPersonas;
     facepileProps.overflowButtonType = overflowButtonType;

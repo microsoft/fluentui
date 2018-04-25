@@ -2,6 +2,27 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.16.0",
+      "tag": "@uifabric/merge-styles_v5.16.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf655ceeaf161fd5ee3cc4dc5a4e55a82dea03e5",
+            "comment": "Updating how keyframe classes are cached to aid with jest snapshot testing."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating documentation."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.2",
       "tag": "@uifabric/merge-styles_v5.15.2",
       "date": "Tue, 17 Apr 2018 18:47:11 GMT",

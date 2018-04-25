@@ -4,19 +4,18 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as sinon from 'sinon';
 
-// Controls
-import { Form } from './Form';
-import { IFormProps } from './Form.types';
 import { DEFAULT_DEBOUNCE } from './FormBaseInput';
+import { Form } from './Form';
 import { FormTextInput } from './inputs/textInput/FormTextInput';
+import { IFormProps } from './Form.types';
 import { IFormTextInputProps } from './inputs/textInput/FormTextInput.types';
 import { Validators } from './validators/Validators';
 
 describe('Form', () => {
   let formProps: IFormProps;
   let formTextInputProps: IFormTextInputProps;
-  let formRequiredTestMessage = 'This field is required';
-  let formTextBoxValidatorTestMessage = 'Error message for number field';
+  const formRequiredTestMessage = 'This field is required';
+  const formTextBoxValidatorTestMessage = 'Error message for number field';
 
   describe('Form renders for different props', () => {
     let renderedForm: Form;
@@ -58,7 +57,7 @@ describe('Form', () => {
         </Form>
       ) as Form;
 
-      let textInput: Element = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-TextField');
+      const textInput: Element = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-TextField');
       expect(textInput).toBeTruthy();
     });
 
@@ -76,7 +75,7 @@ describe('Form', () => {
         </Form>
       ) as Form;
 
-      let textInputs: Element[] = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedForm, 'ms-TextField');
+      const textInputs: Element[] = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedForm, 'ms-TextField');
       expect(textInputs.length).toEqual(2);
     });
 
@@ -92,7 +91,7 @@ describe('Form', () => {
         </Form>
       ) as Form;
 
-      let textInput: HTMLInputElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'input') as HTMLInputElement;
+      const textInput: HTMLInputElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'input') as HTMLInputElement;
       expect(textInput.value).toEqual('Value');
     });
   });
@@ -120,7 +119,7 @@ describe('Form', () => {
 
     it('Valid values are returned correctly', () => {
       let result: any;
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
           onSubmit={ (value: any) => { result = value; } }
         >
@@ -136,7 +135,7 @@ describe('Form', () => {
           />
         </Form>
       ) as Form;
-      let form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['field']).toEqual('Value');
@@ -144,7 +143,7 @@ describe('Form', () => {
     });
 
     it('Invalid values are not returned', () => {
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form onSubmit={ (value: any) => { /*stub*/ } }>
           <FormTextInput
             inputKey='field'
@@ -160,16 +159,16 @@ describe('Form', () => {
         </Form>
       ) as Form;
 
-      let form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
-      let textBox: FormTextInput[] = ReactTestUtils.scryRenderedComponentsWithType(renderedForm, FormTextInput);
+      const textBox: FormTextInput[] = ReactTestUtils.scryRenderedComponentsWithType(renderedForm, FormTextInput);
       expect(textBox[0].state.currentError).toEqual(formRequiredTestMessage);
       expect(textBox[1].state.currentError).toEqual(formTextBoxValidatorTestMessage);
     });
 
     it('Number fields with initial value of 0 are displayed properly', () => {
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
           onSubmit={ (value: any) => { /*stub*/ } }
         >
@@ -179,15 +178,15 @@ describe('Form', () => {
           />
         </Form>
       ) as Form;
-      let numberField: HTMLDivElement =
+      const numberField: HTMLDivElement =
         ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedForm, 'ms-TextField')[0] as HTMLDivElement;
-      let input: HTMLInputElement = numberField.getElementsByTagName('input')[0];
+      const input: HTMLInputElement = numberField.getElementsByTagName('input')[0];
       expect(input.getAttribute('value')).toEqual('0');
     });
 
     it('OnUpdated callback is called without submitting form', () => {
-      let updateCallback: sinon.SinonStub = sinon.stub();
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const updateCallback: sinon.SinonStub = sinon.stub();
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
           onUpdated={ updateCallback }
         >
@@ -197,14 +196,14 @@ describe('Form', () => {
           />
         </Form>
       ) as Form;
-      let textBox: ExtendsTextBox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextBox);
+      const textBox: ExtendsTextBox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextBox);
       textBox.setValue('1');
       clock.tick(DEFAULT_DEBOUNCE);
       expect(updateCallback.calledOnce).toBeTruthy();
     });
 
     it('Errors are hidden when pristine', () => {
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form>
           <ExtendsTextBox
             inputKey='field'
@@ -215,13 +214,13 @@ describe('Form', () => {
       // Error message is gated behind <DelayedRender>, tick the clock to make it show up
       clock.tick(DEFAULT_DEBOUNCE);
 
-      let errors: HTMLElement[] =
+      const errors: HTMLElement[] =
         ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedForm, 'ms-TextField-errorMessage') as HTMLElement[];
       expect(errors.length).toEqual(0);
     });
 
     it('Errors are shown when pristine and prop is set', () => {
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
           showErrorsWhenPristine={ true }
         >
@@ -234,14 +233,14 @@ describe('Form', () => {
       // Error message is gated behind <DelayedRender>, tick the clock to make it show up
       clock.tick(DEFAULT_DEBOUNCE);
 
-      let errors: HTMLElement[] =
+      const errors: HTMLElement[] =
         ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedForm, 'ms-TextField-errorMessage') as HTMLElement[];
       expect(errors.length).toEqual(1);
     });
 
     it('Debounce interval can be changed', () => {
-      let updateCallback: sinon.SinonStub = sinon.stub();
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const updateCallback: sinon.SinonStub = sinon.stub();
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
           onUpdated={ updateCallback }
         >
@@ -252,7 +251,7 @@ describe('Form', () => {
           />
         </Form>
       ) as Form;
-      let textBox: ExtendsTextBox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextBox);
+      const textBox: ExtendsTextBox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextBox);
       textBox.setValue('1');
       clock.tick(DEFAULT_DEBOUNCE);
       expect(updateCallback.calledOnce).toBeFalsy();

@@ -7,7 +7,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pivot';
 
 export class PivotLargeExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Pivot linkSize={ PivotLinkSize.large }>

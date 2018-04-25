@@ -12,7 +12,8 @@ import {
 } from '../../Utilities';
 import {
   ISelection,
-  SelectionMode
+  SelectionMode,
+  IObjectWithKey
 } from './interfaces';
 
 // Selection definitions:
@@ -51,7 +52,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selectionPreservedOnEmptyClick?: boolean;
   enterModalOnTouch?: boolean;
   isSelectedOnFocus?: boolean;
-  onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
+  onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
@@ -71,7 +72,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isTouch: boolean;
   private _isTouchTimeoutId: number | undefined;
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const win = getWindow(this._root.current);
     const scrollElement = findScrollableParent(this._root.current);
 
@@ -82,7 +83,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div
         className='ms-SelectionZone'
@@ -392,7 +393,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>): void {
     const { selection } = this.props;
 
     const selectionMode = this._getSelectionMode();
@@ -404,7 +405,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onToggleClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
+  private _onToggleClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
     const { selection } = this.props;
 
     const selectionMode = this._getSelectionMode();
@@ -435,7 +436,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // for checkboxes if you use a checkbox for the toggle.
   }
 
-  private _onInvokeClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
+  private _onInvokeClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
     const { selection, onItemInvoked } = this.props;
 
     if (onItemInvoked) {
@@ -445,7 +446,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onItemSurfaceClick(ev: React.SyntheticEvent<HTMLElement>, index: number) {
+  private _onItemSurfaceClick(ev: React.SyntheticEvent<HTMLElement>, index: number): void {
     const { selection } = this.props;
     const isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
@@ -464,7 +465,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onInvokeMouseDown(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
+  private _onInvokeMouseDown(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
     const { selection } = this.props;
 
     // Only do work if item is not selected.
@@ -475,7 +476,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._clearAndSelectIndex(index);
   }
 
-  private _tryClearOnEmptyClick(ev: MouseEvent) {
+  private _tryClearOnEmptyClick(ev: MouseEvent): void {
     if (
       !this.props.selectionPreservedOnEmptyClick &&
       this._isNonHandledClick(ev.target as HTMLElement)
@@ -484,7 +485,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _clearAndSelectIndex(index: number) {
+  private _clearAndSelectIndex(index: number): void {
     const { selection } = this.props;
     const isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
 
@@ -504,7 +505,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * We need to track the modifier key states so that when focus events occur, which do not contain
    * modifier states in the Event object, we know how to behave.
    */
-  private _updateModifiers(ev: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>) {
+  private _updateModifiers(ev: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>): void {
     this._isShiftPressed = ev.shiftKey;
     this._isCtrlPressed = ev.ctrlKey;
     this._isMetaPressed = ev.metaKey;
@@ -566,7 +567,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return true;
   }
 
-  private _handleNextFocus(handleFocus: boolean) {
+  private _handleNextFocus(handleFocus: boolean): void {
     if (this._shouldHandleFocusTimeoutId) {
       this._async.clearTimeout(this._shouldHandleFocusTimeoutId);
       this._shouldHandleFocusTimeoutId = undefined;
@@ -581,7 +582,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _setIsTouch(isTouch: boolean) {
+  private _setIsTouch(isTouch: boolean): void {
     if (this._isTouchTimeoutId) {
       this._async.clearTimeout(this._isTouchTimeoutId);
       this._isTouchTimeoutId = undefined;

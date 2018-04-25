@@ -43,34 +43,34 @@ describe('KeytipManager', () => {
   describe('getAriaDescribedBy', () => {
 
     it('returns just the layer ID when an empty sequence is passed in', () => {
-      let keySequence: IKeySequence[] = [];
-      let ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
+      const keySequence: IKeySequence[] = [];
+      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
       expect(ariaDescribedBy).toEqual(layerID);
     });
 
     it('for one singular key sequence', () => {
-      let keySequence: IKeySequence[] = [{ keys: ['b'] }];
-      let ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
+      const keySequence: IKeySequence[] = [{ keys: ['b'] }];
+      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
       expect(ariaDescribedBy).toEqual(layerID + ' ' + convertSequencesToKeytipID(keySequence));
     });
 
     it('for one complex key sequence', () => {
-      let keySequence: IKeySequence[] = [{ keys: ['b', 'c'] }];
-      let ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
+      const keySequence: IKeySequence[] = [{ keys: ['b', 'c'] }];
+      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
       expect(ariaDescribedBy).toEqual(layerID + ' ' + convertSequencesToKeytipID(keySequence));
     });
 
     it('for multiple singular key sequences', () => {
-      let keySequences: IKeySequence[] = [{ keys: ['b'] }, { keys: ['c'] }];
-      let ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
+      const keySequences: IKeySequence[] = [{ keys: ['b'] }, { keys: ['c'] }];
+      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
       expect(ariaDescribedBy).toEqual(layerID +
         ' ' + convertSequencesToKeytipID([keySequences[0]]) +
         ' ' + convertSequencesToKeytipID(keySequences));
     });
 
     it('for multiple complex key sequences', () => {
-      let keySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
-      let ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
+      const keySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
+      const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
       expect(ariaDescribedBy).toEqual(layerID +
         ' ' + convertSequencesToKeytipID([keySequences[0]]) +
         ' ' + convertSequencesToKeytipID(keySequences));
@@ -147,8 +147,8 @@ describe('KeytipManager', () => {
       // There is no more buffer in the sequence
       expect(keytipManager.currentSequence.keys.length).toEqual(0);
       // Children keytips should be visible
-      let childrenKeytips = getKeytips(defaultKeytipLayer, keytipManager.keytipTree.currentKeytip.children);
-      for (let childrenKeytip of childrenKeytips) {
+      const childrenKeytips = getKeytips(defaultKeytipLayer, keytipManager.keytipTree.currentKeytip.children);
+      for (const childrenKeytip of childrenKeytips) {
         expect(childrenKeytip.visible).toEqual(true);
       }
       // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
@@ -170,7 +170,7 @@ describe('KeytipManager', () => {
 
     it('Processing a node with with a keytipLink should make currentKeytip its link', () => {
       const onExecuteOM: jest.Mock = jest.fn();
-      let nodeOverflowM = keytipManager.keytipTree.nodeMap[keytipOverflowIdM];
+      const nodeOverflowM = keytipManager.keytipTree.nodeMap[keytipOverflowIdM];
       nodeOverflowM.onExecute = onExecuteOM;
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
       keytipManager.processInput('m');
@@ -203,7 +203,7 @@ describe('KeytipManager', () => {
       keytipManager.registerKeytip(keytipGProps);
 
       // G should now be visible in the layer
-      let keytipG = getKeytips(defaultKeytipLayer, [keytipIdG]);
+      const keytipG = getKeytips(defaultKeytipLayer, [keytipIdG]);
       expect(keytipG).toHaveLength(1);
       expect(keytipG[0].visible).toEqual(true);
     });
@@ -243,7 +243,7 @@ describe('KeytipManager', () => {
 });
 
 function getKeytips(keytipLayer: ReactWrapper, keytipIDs?: string[]): IKeytipProps[] {
-  let currentKeytips: IKeytipProps[] = keytipLayer.state('keytips');
+  const currentKeytips: IKeytipProps[] = keytipLayer.state('keytips');
   if (keytipIDs) {
     return currentKeytips.filter((currentKeytip: IKeytipProps) => {
       return keytipIDs.indexOf(convertSequencesToKeytipID(currentKeytip.keySequences)) !== -1;
@@ -291,15 +291,15 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   const keytipIdM = ktpFullPrefix + 'm';
   const keytipSeqM: IKeySequence = { keys: ['m'] };
 
-  let nodeB = createTreeNode(keytipIdB, rootId, [], keytipSequenceB, true /* hasChildrenNodes*/);
-  let nodeC = createTreeNode(keytipIdC, rootId, [], keytipSequenceC);
-  let nodeE1 = createTreeNode(keytipIdE1, rootId, [keytipIdD, keytipIdF], keytipSequenceE1);
-  let nodeE2 = createTreeNode(keytipIdE2, rootId, [keytipIdD, keytipIdF], keytipSequenceE2);
-  let nodeD = createTreeNode(keytipIdD, keytipIdE1, [], keytipSequenceD);
-  let nodeF = createTreeNode(keytipIdF, keytipIdE1, [], keytipSequenceF);
-  let nodeO = createTreeNode(keytipIdO, rootId, [keytipOverflowIdM], keytipOverflowSeq, true);
-  let nodeOM = createTreeNode(keytipOverflowIdM, keytipIdO, [], keytipSeqM);
-  let nodeM = createTreeNode(keytipIdM, rootId, [], keytipSeqM);
+  const nodeB = createTreeNode(keytipIdB, rootId, [], keytipSequenceB, true /* hasChildrenNodes*/);
+  const nodeC = createTreeNode(keytipIdC, rootId, [], keytipSequenceC);
+  const nodeE1 = createTreeNode(keytipIdE1, rootId, [keytipIdD, keytipIdF], keytipSequenceE1);
+  const nodeE2 = createTreeNode(keytipIdE2, rootId, [keytipIdD, keytipIdF], keytipSequenceE2);
+  const nodeD = createTreeNode(keytipIdD, keytipIdE1, [], keytipSequenceD);
+  const nodeF = createTreeNode(keytipIdF, keytipIdE1, [], keytipSequenceF);
+  const nodeO = createTreeNode(keytipIdO, rootId, [keytipOverflowIdM], keytipOverflowSeq, true);
+  const nodeOM = createTreeNode(keytipOverflowIdM, keytipIdO, [], keytipSeqM);
+  const nodeM = createTreeNode(keytipIdM, rootId, [], keytipSeqM);
   nodeM.keytipLink = nodeOM;
   keytipTree.nodeMap[rootId].children.push(keytipIdB, keytipIdC, keytipIdE1, keytipIdE2, keytipIdO, keytipIdM);
   keytipTree.nodeMap[keytipIdB] = nodeB;

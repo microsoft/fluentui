@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import {
@@ -637,8 +635,8 @@ describe('ContextualMenu', () => {
 
     // Alter the Layer's prototype so that we can confirm that it mounts before the contextualmenu mounts.
     /* tslint:disable:no-function-expression */
-    Layer.prototype.componentDidMount = function (componentDidMount) {
-      return function () {
+    Layer.prototype.componentDidMount = function (componentDidMount): () => void {
+      return function (): void {
         if (menuMounted) {
           menuMountedFirst = true;
         }

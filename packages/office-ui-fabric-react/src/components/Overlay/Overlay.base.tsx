@@ -19,15 +19,15 @@ const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 @customizable('Overlay', ['theme'])
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     disableBodyScroll();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     enableBodyScroll();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       isDarkThemed: isDark,
       className,
