@@ -114,7 +114,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       split: true,
     } as IContextualMenuItem;
 
-    const buttonProp = assign({}, getNativeProps(itemProps, buttonProperties), {
+    const buttonProps = assign({}, getNativeProps(itemProps, buttonProperties), {
       onMouseEnter: this._onItemMouseEnter,
       onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
       onMouseDown: (ev: any) => onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
@@ -124,7 +124,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     });
 
     return (
-      <button {...buttonProp} >
+      <button {...buttonProps} >
         <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
       </button >
     );
