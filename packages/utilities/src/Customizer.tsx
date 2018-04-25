@@ -7,7 +7,14 @@ export interface ICustomizerContext {
   customizations: ICustomizations;
 }
 
-export type ICustomizerProps = Partial<ICustomizations> & IBaseProps;
+// tslint:disable-next-line:no-any
+export type Settings = { [key: string]: any };
+export type SettingsFunction = (settings: Settings) => Settings;
+
+export type ICustomizerProps = Partial<{
+  settings: Settings | SettingsFunction;
+  scopedSettings: Settings | SettingsFunction
+}> & IBaseProps;
 
 /**
  * The Customizer component allows for default props to be mixed into components which
@@ -25,8 +32,8 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerConte
   public static contextTypes: {
     customizations: PropTypes.Requireable<{}>;
   } = {
-    customizations: PropTypes.object
-  };
+      customizations: PropTypes.object
+    };
 
   public static childContextTypes: {
     customizations: PropTypes.Requireable<{}>;
@@ -56,30 +63,49 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerConte
     props: ICustomizerProps,
     context: ICustomizerContext
   ): ICustomizerContext {
-    let {
-      settings = {},
-      scopedSettings = {}
-    } = props;
-    let {
+    const {
       customizations = { settings: {}, scopedSettings: {} }
     } = context;
 
-    let newScopedSettings = { ...scopedSettings };
-
-    for (let name in customizations.scopedSettings) {
-      if (customizations.scopedSettings.hasOwnProperty(name)) {
-        newScopedSettings[name] = { ...scopedSettings[name], ...customizations.scopedSettings[name] };
-      }
-    }
-
     return {
       customizations: {
-        settings: {
-          ...settings,
-          ...customizations.settings
-        },
-        scopedSettings: newScopedSettings
+        settings: mergeSettings(customizations.settings, props.settings),
+        scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings),
       }
     };
   }
+}
+
+function mergeSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
+  const mergeSettingsWith = isSettingsFunction(newSettings) ? newSettings : settingsMergeWith(newSettings);
+
+  return mergeSettingsWith(oldSettings);
+}
+
+function mergeScopedSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
+  const mergeSettingsWith = isSettingsFunction(newSettings) ? newSettings : scopedSettingsMergeWith(newSettings);
+
+  return mergeSettingsWith(oldSettings);
+}
+
+function isSettingsFunction(settings?: Settings | SettingsFunction): settings is SettingsFunction {
+  return typeof settings === 'function';
+}
+
+function settingsMergeWith(newSettings?: object): (settings: Settings) => Settings {
+  return (settings: Settings) => newSettings ? { ...newSettings, ...settings } : settings;
+}
+
+function scopedSettingsMergeWith(scopedSettingsFromProps: Settings = {}): (scopedSettings: Settings) => Settings {
+  return (oldScopedSettings: Settings): Settings => {
+    const newScopedSettings: Settings = { ...oldScopedSettings };
+
+    for (let scopeName in scopedSettingsFromProps) {
+      if (scopedSettingsFromProps.hasOwnProperty(scopeName)) {
+        newScopedSettings[scopeName] = { ...oldScopedSettings[scopeName], ...scopedSettingsFromProps[scopeName] };
+      }
+    }
+
+    return newScopedSettings;
+  };
 }
