@@ -127,7 +127,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+    if (ev.which === KeyCodes.enter) {
       this._onAction(ev);
     }
   }
