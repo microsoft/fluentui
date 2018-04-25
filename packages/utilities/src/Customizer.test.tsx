@@ -108,10 +108,15 @@ describe('Customizer', () => {
     )).toEqual('<div>fieldfield2field3</div>');
   });
 
-  it('it maintains other scope settings to specific components when merging with a function', () => {
+  it('it allows scopedSettings to be merged when a function is passed', () => {
     expect(ReactDOM.renderToStaticMarkup(
       <Customizer scopedSettings={ { Foo: { field: 'scopedToFoo' } } }>
-        <Customizer scopedSettings={ { Bar: { field: 'scopedToBar' } } }>
+        <Customizer
+          scopedSettings={
+            // tslint:disable-next-line:jsx-no-lambda
+            (settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })
+          }
+        >
           <div>
             <Foo />
             <Bar />
@@ -131,13 +136,28 @@ describe('Customizer', () => {
     )).toEqual('<div>field1</div>');
   });
 
+  it('overrides the old settings when the parameter is ignored', () => {
+    expect(ReactDOM.renderToStaticMarkup(
+      <Customizer settings={ { field: 'field1' } }>
+        <Customizer
+          settings={
+            // tslint:disable-next-line:jsx-no-lambda
+            (settings: { field: string }) => ({ field: 'field2' })
+          }
+        >
+          <Bar />
+        </Customizer >
+      </Customizer >
+    )).toEqual('<div>field2</div>');
+  });
+
   it('can use a function to merge settings', () => {
     expect(ReactDOM.renderToStaticMarkup(
       <Customizer settings={ { field: 'field1' } }>
         <Customizer
           settings={
             // tslint:disable-next-line:jsx-no-lambda
-            (settings: { field: string }) => ({ ...settings, field: settings.field + 'field2' })
+            (settings: { field: string }) => ({ field: settings.field + 'field2' })
           }
         >
           <Bar />
