@@ -4,6 +4,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
@@ -17,11 +18,12 @@ const LayerHostedExampleCode = require('!raw-loader!office-ui-fabric-react/src/c
 const LayerCustomizedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
 
 export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Layer'
         componentName='LayerExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Layer'
         exampleCards={
           <div>
             <ExampleCard title='Basic layered content' code={ LayerBasicExampleCode }>
@@ -30,7 +32,7 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Using LayerHost to control projection' code={ LayerHostedExampleCode }>
               <LayerHostedExample />
             </ExampleCard>
-            <ExampleCard title='Using Customizer to control the default layer behavior' code={ LayerHostedExampleCode }>
+            <ExampleCard title='Using Customizer to control the default layer behavior' code={ LayerCustomizedExampleCode }>
               <LayerCustomizedExample />
             </ExampleCard>
           </div>
@@ -43,37 +45,22 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-            <p>
-              A Layer is a technical component that does not have specific Design guidance.
-            </p>
-            <p>
-              { `Layers are used to render content outside of a DOM tree, at the end of the document. This allows content to escape traditional boundaries caused by "overflow: hidden" css rules and keeps it on the top without using z-index rules. This is useful for example in ContextualMenu and Tooltip scenarios, where the content should always overlay everything else.` }
-            </p>
-            <p>{
-              `There are some special considerations. Due to the nature of rendering content elsewhere asynchronously, React refs within content will not be resolvable synchronously at the time the Layer is mounted. Therefore, to use refs correctly, use functional refs ( ref={ (el) => { this._root = el; } ) rather than string refs ( ref='root' ). Additionally measuring the physical Layer element will not include any of the children, since it won't render it. Events that propgate from within the content will not go through the Layer element as well.`
-            }</p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>{
-                'Use functional refs ( ref={ (el) => { this._root = el; } ).'
-              }
-              </li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>{ 'Don\'t use string refs ( ref=\'root\' ).' }</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

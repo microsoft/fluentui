@@ -5,7 +5,7 @@ import {
   customizable,
 } from '../../../Utilities';
 import { IStyleSet } from '../../../Styling';
-import { Icon } from '../../Icon';
+import { Icon } from '../../../Icon';
 import {
   IPersonaPresenceProps,
   IPersonaPresenceStyleProps,

@@ -71,8 +71,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     width: 36,
     height: 36,
-    beaconColorOne: '#00FFEC',
-    beaconColorTwo: '#005EDD',
     color: DefaultPalette.themePrimary
   };
 
@@ -108,9 +106,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       target,
       width,
       height,
-      color,
-      beaconColorOne,
-      beaconColorTwo
+      color
     } = this.props;
 
     const classNames = getClassNames(getStyles, {
@@ -121,9 +117,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       entityHostWidth: this.state.entityInnerHostRect.width + 'px',
       width: width + 'px',
       height: height + 'px',
-      color: color,
-      beaconColorOne: beaconColorOne,
-      beaconColorTwo: beaconColorTwo
+      color: color
     });
 
     return (
@@ -141,7 +135,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             <div className={ classNames.scaleAnimationLayer }>
               <div className={ classNames.rotateAnimationLayer }>
                 {
-                  this._positioningContainer.value && <Beak
+                  this._positioningContainer.current && <Beak
                     width={ beakWidth }
                     height={ beakHeight }
                     left={ this.state.beakLeft }
@@ -179,7 +173,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
   public componentDidMount(): void {
     this._async.requestAnimationFrame(((): void => {
-      if (this._entityInnerHostElement.value && (this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
+      if (this._entityInnerHostElement.current && (this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
 
         // @TODO Eventually we need to add the various directions
         const beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
@@ -188,8 +182,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         this.setState({
           isMeasuring: false,
           entityInnerHostRect: {
-            width: this._entityInnerHostElement.value.offsetWidth,
-            height: this._entityInnerHostElement.value.offsetHeight
+            width: this._entityInnerHostElement.current.offsetWidth,
+            height: this._entityInnerHostElement.current.offsetHeight
           },
           beakLeft: beakLeft + 'px',
           beakTop: beakTop + 'px'
@@ -214,13 +208,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       collapsed: false
     });
 
-    this._translateAnimationContainer.value && this._translateAnimationContainer.value.addEventListener('animationstart', (): void => {
+    this._translateAnimationContainer.current && this._translateAnimationContainer.current.addEventListener('animationstart', (): void => {
       if (this.props.onAnimationOpenStart) {
         this.props.onAnimationOpenStart();
       }
     });
 
-    this._translateAnimationContainer.value && this._translateAnimationContainer.value.addEventListener('animationend', (): void => {
+    this._translateAnimationContainer.current && this._translateAnimationContainer.current.addEventListener('animationend', (): void => {
       if (this.props.onAnimationOpenEnd) {
         this.props.onAnimationOpenEnd();
       }
@@ -243,8 +237,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     // Take the initial measure out of the initial render to prevent
     // an unnecessary render.
     this._async.setTimeout(() => {
-      if (this._entityInnerHostElement.value) {
-        targetElementRect = this._entityInnerHostElement.value.getBoundingClientRect();
+      if (this._entityInnerHostElement.current) {
+        targetElementRect = this._entityInnerHostElement.current.getBoundingClientRect();
       }
 
       // When the window resizes we want to async
@@ -258,8 +252,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         });
 
         timeoutIds.push(this._async.setTimeout((): void => {
-          if (this._entityInnerHostElement.value) {
-            targetElementRect = this._entityInnerHostElement.value.getBoundingClientRect();
+          if (this._entityInnerHostElement.current) {
+            targetElementRect = this._entityInnerHostElement.current.getBoundingClientRect();
           }
         }, 100));
       });

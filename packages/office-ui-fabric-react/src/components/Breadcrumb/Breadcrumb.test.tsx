@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -43,6 +41,18 @@ describe('Breadcrumb', () => {
       <Breadcrumb
         items={ items }
         dividerAs={ divider }
+      />
+    );
+
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // With overflow and overflowIndex
+    component = renderer.create(
+      <Breadcrumb
+        items={ items }
+        maxDisplayedItems={ 2 }
+        overflowIndex={ 1 }
       />
     );
 

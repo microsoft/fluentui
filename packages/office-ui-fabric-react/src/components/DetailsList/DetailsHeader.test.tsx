@@ -39,7 +39,6 @@ describe('DetailsHeader', () => {
     ): { size: number; index: number; } => lastResize = { size, index };
     const headerRef = createRef<IDetailsHeader>();
 
-    const columns = [];
     const wrapper = mount(
       <DetailsHeader
         componentRef={ headerRef }
@@ -51,9 +50,8 @@ describe('DetailsHeader', () => {
       />
     );
 
-    const rootElement = wrapper.getDOMNode();
     const sizerElement = wrapper.find('[data-sizer-index=0]').getDOMNode();
-    const header: any = headerRef.value;
+    const header: any = headerRef.current;
 
     // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
     EventGroup.raise(

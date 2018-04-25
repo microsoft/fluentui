@@ -9,7 +9,7 @@ export interface IBasicColorPickerExampleState {
 
 export class ColorPickerBasicExample extends React.Component<any, IBasicColorPickerExampleState> {
 
-  public render() {
+  public render(): JSX.Element {
 
     return (
       <ColorPicker color='#FFFFFF' />

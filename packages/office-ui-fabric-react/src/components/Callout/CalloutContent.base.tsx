@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   ICalloutProps,
   ICalloutContentStyleProps,
@@ -114,7 +112,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._setTargetWindowAndElement(this._getTarget());
   }
 
-  public componentWillUpdate(newProps: ICalloutProps) {
+  public componentWillUpdate(newProps: ICalloutProps): void {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
@@ -139,13 +137,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (!this.props.hidden) {
       this._onComponentDidMount();
     }
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!this._targetWindow) {
       return null;
@@ -254,7 +252,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   protected _dismissOnLostFocus(ev: Event) {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement.value && !elementContains(this._hostElement.value, target);
+    const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -267,9 +265,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   protected _setInitialFocus = (): void => {
-    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.value) {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
-      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.value!));
+      this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
     }
   }
 
@@ -307,7 +305,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._hasListeners = false;
   }
 
-  private _updateAsyncPosition() {
+  private _updateAsyncPosition(): void {
     this._async.requestAnimationFrame(() => this._updatePosition());
   }
 
@@ -325,10 +323,10 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return beakPostionStyle;
   }
 
-  private _updatePosition() {
+  private _updatePosition(): void {
     const { positions } = this.state;
-    const hostElement: HTMLElement | null = this._hostElement.value;
-    const calloutElement: HTMLElement | null = this._calloutElement.value;
+    const hostElement: HTMLElement | null = this._hostElement.current;
+    const calloutElement: HTMLElement | null = this._calloutElement.current;
 
     if (hostElement && calloutElement) {
       let currentProps: IPositionProps | undefined;
@@ -399,12 +397,12 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return this._maxHeight!;
   }
 
-  private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo) {
+  private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
     return this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
       this._comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition);
   }
 
-  private _comparePositions(oldPositions: IPosition, newPositions: IPosition) {
+  private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
     for (const key in newPositions) {
       // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {
@@ -447,9 +445,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _setHeightOffsetEveryFrame(): void {
-    if (this._calloutElement.value && this.props.finalHeight) {
+    if (this._calloutElement.current && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem = this._calloutElement.value && this._calloutElement.value.lastChild as HTMLElement;
+        const calloutMainElem = this._calloutElement.current && this._calloutElement.current.lastChild as HTMLElement;
 
         if (!calloutMainElem) {
           return;

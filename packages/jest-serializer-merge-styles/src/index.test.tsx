@@ -1,5 +1,7 @@
 import { print, test } from './index';
-import { Stylesheet, InjectionMode, mergeStyles } from '@uifabric/merge-styles';
+import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@uifabric/merge-styles';
+
+const indent = (val: string): string => '    ' + val;
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
@@ -24,7 +26,6 @@ describe('print', () => {
 
   it('can format, sort, and indent the class names', () => {
 
-    const indent = (val: string): string => '    ' + val;
     const classNames = mergeStyles(
       'ms-GlobalClassName',
       {
@@ -53,6 +54,31 @@ describe('print', () => {
       indent('}'),
       indent('&:hover {'),
       indent('  background: green;'),
+      indent('}'),
+    ].join('\n'));
+  });
+
+  it('can expand animation class names', () => {
+    const fadeInClassName = keyframes({
+      from: { opacity: 0 },
+      to: { opacity: 1 }
+    });
+
+    const className = mergeStyles({
+      animationName: fadeInClassName
+    });
+
+    expect(
+      print(
+        className,
+        () => '',
+        indent
+      )
+    ).toEqual([
+      '',
+      '',
+      indent('{'),
+      indent('  animation-name: keyframes from{opacity:0;}to{opacity:1;};'),
       indent('}'),
     ].join('\n'));
   });

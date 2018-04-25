@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
@@ -22,11 +22,12 @@ const TooltipInteractiveExampleCode = require('!raw-loader!office-ui-fabric-reac
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Tooltip'
         componentName='TooltipExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip'
         exampleCards={
           <LayerHost>
             <ExampleCard title='Default Tooltip' code={ TooltipBasicExampleCode }>
@@ -56,11 +57,9 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
           />
         }
         overview={
-          <div>
-            <p>Tooltips supplement content associated with a specific UI component. You can use two components, and each has different props:</p>
-            <p>Tooltip: A styled tooltip that you can display on a chosen target.</p>
-            <p>TooltipHost: A tooltip wrapped in a stateful parent. Tooltip will be displayed on hover or focus and removed when focus/hover removed.</p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

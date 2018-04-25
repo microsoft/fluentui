@@ -7,7 +7,7 @@ import {
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ImageContainExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     const imageProps: IImageProps = {
       src: 'http://placehold.it/700x300',
       imageFit: ImageFit.contain

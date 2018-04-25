@@ -27,11 +27,11 @@ export class LayerContentExample extends BaseComponent<{}, {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._async.setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 }>
         <div className='LayerExample-textContent'>{ this.context.message }</div>
@@ -62,7 +62,7 @@ export class LayerBasicExample extends BaseComponent<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { showLayer } = this.state;
 
     return (

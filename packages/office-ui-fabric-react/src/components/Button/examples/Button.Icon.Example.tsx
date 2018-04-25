@@ -8,7 +8,7 @@ import {
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonIconExample extends React.Component<IButtonProps> {
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
@@ -23,6 +23,7 @@ export class ButtonIconExample extends React.Component<IButtonProps> {
           title='Emoji'
           ariaLabel='Emoji'
         />
+        <p>For a list of Icons, visit our <a href='https://developer.microsoft.com/en-us/fabric#/styles/icons'>Icon documentation</a>.</p>
       </div>
     );
   }

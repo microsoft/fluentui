@@ -125,7 +125,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  public componentWillUpdate(newProps: IContextualMenuProps) {
+  public componentWillUpdate(newProps: IContextualMenuProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
@@ -150,7 +150,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (!this.props.hidden) {
       this._onMenuOpened();
     }
@@ -793,7 +793,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const targetElement = ev.currentTarget as HTMLElement;
 
-    if (!this._isScrollIdle || targetElement === this._targetWindow.document.activeElement as HTMLElement) {
+    if (!this._isScrollIdle ||
+      this._enterTimerId !== undefined ||
+      targetElement === this._targetWindow.document.activeElement as HTMLElement) {
       return;
     }
 
@@ -858,11 +860,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         const splitButtonContainer = this._splitButtonContainers.get(item.key);
         this._onItemSubMenuExpand(item,
           ((item.split && splitButtonContainer) ? splitButtonContainer : targetElement) as HTMLElement);
+        this._enterTimerId = undefined;
       }, this._navigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
         targetElement.focus();
+        this._enterTimerId = undefined;
       }, timeoutDuration);
     }
   }

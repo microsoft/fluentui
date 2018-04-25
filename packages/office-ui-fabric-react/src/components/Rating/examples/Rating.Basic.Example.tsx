@@ -36,7 +36,7 @@ export class RatingBasicExample extends React.Component<{}, {
   }
 
   // tslint:disable:jsx-no-lambda
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-RatingBasicExample'>
         Large Stars:
@@ -142,9 +142,7 @@ export class RatingBasicExample extends React.Component<{}, {
     });
   }
 
-  private _getRatingComponentAriaLabel(rating: number, maxRating: number) {
-
-    return 'Rating value is ' + rating + ' of ' + maxRating;
-
+  private _getRatingComponentAriaLabel(rating: number, maxRating: number): string {
+    return `Rating value is ${rating} of ${maxRating}`;
   }
 }

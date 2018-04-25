@@ -1,6 +1,54 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 16 Apr 2018 10:23:25 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+
+## 5.33.1
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Patches
+
+- Fix bad aria-label prop in Tile
+
+## 5.33.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+### Patches
+
+- Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package.
+- Fix index import
+
+## 5.32.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- Add delete callback, expose item change methods on SelectedItemsList
+- Shimmer: adding two new props and deprecating another one.
+
+## 5.31.4
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.31.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Experiments: NavPage bad imports fixed.
+
+## 5.31.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- Fix improper imports from index files
 
 ## 5.31.1
 Mon, 16 Apr 2018 10:23:25 GMT

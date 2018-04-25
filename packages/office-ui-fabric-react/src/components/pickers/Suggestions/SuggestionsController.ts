@@ -14,7 +14,7 @@ export class SuggestionsController<T> {
     this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
+  public updateSuggestions(newSuggestions: T[], selectedIndex?: number): void {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
@@ -79,7 +79,7 @@ export class SuggestionsController<T> {
     return this.currentSuggestion ? true : false;
   }
 
-  public removeSuggestion(index: number) {
+  public removeSuggestion(index: number): void {
     this.suggestions.splice(index, 1);
   }
 

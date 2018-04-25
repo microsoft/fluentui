@@ -58,8 +58,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.content = document.createElement('div');
     this.content.style.background = this.props.stickyBackgroundColor || this._getBackground();
     ReactDOM.render(<div>{ this.props.children }</div>, this.content);
-    if (this.root.value) {
-      this.root.value.appendChild(this.content);
+    if (this.root.current) {
+      this.root.current.appendChild(this.content);
     }
     this.context.scrollablePane.notifySubscribers(true);
   }
@@ -135,11 +135,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _onScrollEvent = (headerBound: ClientRect, footerBound: ClientRect): void => {
-    if (!this.root.value) {
+    if (!this.root.current) {
       return;
     }
 
-    const { top, bottom } = this.root.value.getBoundingClientRect();
+    const { top, bottom } = this.root.current.getBoundingClientRect();
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyPosition } = this.props;
     const canStickyHeader = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Header;
@@ -159,11 +159,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _resetSticky(callback: () => void): void {
-    if (this.root.value) {
-      this.root.value.appendChild(this.content);
+    if (this.root.current) {
+      this.root.current.appendChild(this.content);
     }
 
-    setTimeout(() => {
+    setTimeout((): void => {
       if (this.props.stickyClassName) {
         this.content.children[0].classList.remove(this.props.stickyClassName);
       }
@@ -173,11 +173,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   // Gets background of nearest parent element that has a declared background-color attribute
   private _getBackground(): string | null {
-    if (!this.root.value) {
+    if (!this.root.current) {
       return null;
     }
 
-    let curr: HTMLElement = this.root.value;
+    let curr: HTMLElement = this.root.current;
 
     while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
       window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {

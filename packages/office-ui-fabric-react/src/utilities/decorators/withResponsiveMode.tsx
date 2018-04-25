@@ -29,7 +29,7 @@ let _defaultMode: ResponsiveMode | undefined;
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
  */
-export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined) {
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void {
   _defaultMode = responsiveMode;
 }
 
@@ -46,7 +46,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       };
     }
 
-    public componentDidMount() {
+    public componentDidMount(): void {
       this._events.on(window, 'resize', () => {
         const responsiveMode = this._getResponsiveMode();
 
@@ -58,11 +58,11 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       });
     }
 
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
       this._events.dispose();
     }
 
-    public render() {
+    public render(): JSX.Element {
       const { responsiveMode } = this.state;
 
       return (

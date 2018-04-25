@@ -46,7 +46,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     return this.state.isChecked;
   }
 
-  public componentWillReceiveProps(newProps: IToggleProps) {
+  public componentWillReceiveProps(newProps: IToggleProps): void {
     if (newProps.checked !== undefined) {
       this.setState({
         isChecked: !!newProps.checked // convert null to false
@@ -54,7 +54,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     // This control is using an input element for more universal accessibility support.
     // Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
     // However, JAWS and VoiceOver did not announce anything when the toggle was checked or unchecked.
@@ -117,8 +117,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public focus() {
-    if (this._toggleButton.value) {
-      this._toggleButton.value.focus();
+    if (this._toggleButton.current) {
+      this._toggleButton.current.focus();
     }
   }
 

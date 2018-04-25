@@ -15,7 +15,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, overflowItems, farItems } = this.props;
     const {
       isSearchBoxVisible: searchBoxVisible,
