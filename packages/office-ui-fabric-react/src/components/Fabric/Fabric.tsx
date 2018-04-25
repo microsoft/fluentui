@@ -26,7 +26,6 @@ export class Fabric extends BaseComponent<IFabricProps, {
   }
 
   public render() {
-
     const classNames = getClassNames(getStyles,
       {
         ...this.props as IFabricStyleProps,
