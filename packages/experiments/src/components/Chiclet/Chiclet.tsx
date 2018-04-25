@@ -5,7 +5,7 @@ import {
 import {
   getClassNames
 } from './Chiclet.styles';
-import { IChicletProps, IChicletCardProps, IChicletStyles } from './Chiclet.types';
+import { IChicletProps, IChicletCardProps, IChicletStyles, ChicletType } from './Chiclet.types';
 import { mergeStyles } from '../../Styling';
 import { ChicletCard } from './ChicletCard';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -37,17 +37,16 @@ export class Chiclet extends React.Component<IChicletProps, IChicletCardProps> {
     }
 
     switch (size) {
-      case "xsmall":
+      case ChicletType.xsmall:
         return (
           <ChicletCard {...chicletCardProps} className={ mergeStyles(this._classNames.root) } onClick={ this._onClick } actions={ actionsToIButtonProps } />
         );
-      case "small":
+      case ChicletType.small:
         return (
           <ChicletCard {...chicletCardProps} className={ mergeStyles(this._classNames.root) } onClick={ this._onClick } actions={ actionsToIButtonProps } />
         );
-      case "medium":
-      case "large":
-      case "xlarge":
+      case ChicletType.medium:
+      case ChicletType.large:
         return (
           <ChicletCard {...chicletCardProps} className={ mergeStyles(this._classNames.root) } onClick={ this._onClick } actions={ actionsToIButtonProps } />
         );

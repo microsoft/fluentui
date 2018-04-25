@@ -10,7 +10,7 @@ export class ChicletBasicExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <BaseChiclet url="http://localhost:4322" size="medium"
+      <BaseChiclet url="http://localhost:4322" size={ 2 }
         actions={ ["Breadcrumb", "Save", "Share"] }
       />
     );

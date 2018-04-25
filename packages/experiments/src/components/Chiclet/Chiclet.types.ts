@@ -76,7 +76,7 @@ export interface IBaseChicletProps extends React.Props<BaseChiclet> {
   /**
    * Chiclet size to render
    */
-  size?: string;
+  size?: ChicletType;
 
   /**
    * Action icon buttons to render.
@@ -93,7 +93,7 @@ export interface IChicletProps extends React.Props<Chiclet> {
   /**
    * Chiclet size to render
    */
-  size?: string;
+  size?: ChicletType;
 
   /**
    * Action icon buttons to render.
