@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Begin converting Pivot to mergeStyles",
+      "comment": "Fix theme slots for DetailsList header colors",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-jojanz@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }
