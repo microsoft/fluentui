@@ -173,7 +173,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     const overflowKeytipSequences = this.props.keytipSequences;
-    const newOverflowItems: any[] = [];
+    let newOverflowItems: any[] = [];
 
     if (overflowKeytipSequences) {
       items.forEach((overflowItem) => {
@@ -212,6 +212,8 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
           newOverflowItems.push(overflowItem);
         }
       });
+    } else {
+      newOverflowItems = items;
     }
     return (
       <div { ...wrapperDivProps }>
