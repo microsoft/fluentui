@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+
+## 5.27.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Add theme slots for DetailsList header colors
 
 ## 5.26.0
 Mon, 23 Apr 2018 10:24:54 GMT

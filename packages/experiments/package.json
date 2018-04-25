@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "5.33.0",
+  "version": "5.33.1",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib-es2015/index.d.ts",
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "office-ui-fabric-react": ">=5.88.0 <6.0.0",
+    "office-ui-fabric-react": ">=5.89.0 <6.0.0",
     "@uifabric/icons": ">=5.7.1 <6.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+
+## 5.16.1
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Patches
+
+- merge-styles: `style` elements which are created on the fly now "bunch" together, avoiding unpredictability in specificity.
 
 ## 5.16.0
 Mon, 23 Apr 2018 10:24:54 GMT

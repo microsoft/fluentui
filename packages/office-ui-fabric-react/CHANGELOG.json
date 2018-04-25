@@ -2,6 +2,41 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.89.0",
+      "tag": "office-ui-fabric-react_v5.89.0",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6bfddc1c44aa7afcdf053467985490027eb5edcd",
+            "comment": "Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "802a2c0847830acfbf47e2dd058da54d9dfb15ae",
+            "comment": "Fix theme slots for DetailsList header colors"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "127d4d9deeca7e38a4ae6df6bd4d92ea5a978432",
+            "comment": "Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.0 <6.0.0` to `>=5.16.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.27.0 <6.0.0` to `>=5.28.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.88.0",
       "tag": "office-ui-fabric-react_v5.88.0",
       "date": "Tue, 24 Apr 2018 10:12:58 GMT",
