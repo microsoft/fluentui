@@ -25,7 +25,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
   private _classNames: IChicletStyles = {};
 
   public render() {
-    const { styles: customStyles, title, ogType, description, image, imageType, imageWidth, imageHeight, url, onClick, onClickHref, className, actions, theme } = this.props;
+    const { styles: customStyles, title, ogType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, onClickHref, className, actions, theme } = this.props;
     const actionable = (onClick || onClickHref) ? true : false;
 
     this._classNames = getClassNames(theme!, customStyles);
@@ -76,14 +76,14 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
     );
   }
 
-  private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, ogType?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, ogType?: string, imageAlt?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const image = (
       <Image
         width={ imageWidth }
         height={ imageHeight }
         src={ TestImages.documentPreview }
         role='presentation'
-        alt=''
+        alt={ imageAlt ? imageAlt : "Preview image for the file" }
       />
     );
 

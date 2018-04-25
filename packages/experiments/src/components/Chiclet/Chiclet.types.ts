@@ -154,6 +154,7 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   imageWidth?: string;
   imageHeight?: string;
   imageType?: string;
+  imageAlt?: string;
   url?: string;
 }
 
