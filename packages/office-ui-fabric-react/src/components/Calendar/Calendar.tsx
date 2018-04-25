@@ -178,7 +178,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
                 { isMonthPickerVisible && <CalendarMonth
                   navigatedDate={ navigatedMonthDate! }
-                  selectedDate={ selectedDate! }
+                  selectedDate={ navigatedDayDate! }
                   strings={ strings! }
                   onNavigateDate={ this._onNavigateMonthDate }
                   today={ this.props.today }
@@ -245,9 +245,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
     if (!this.state.isDayPickerVisible) {
       this._onSelectDate(date);
-    } else {
-      this._navigateDayPickerDay(date);
     }
+
+    this._navigateDayPickerDay(date);
   }
 
   private _onSelectDate = (date: Date, selectedDateRangeArray?: Date[]): void => {
