@@ -114,38 +114,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           * We use that API to identify the most prominent background and foreground colors, and the accent color,
           * and generate a theme based off of those.
           * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-          * key in _makeThemeFromImg() below. Then, just uncomment this section. */}
-        {/*
-          private _imgUrl: string;
-          const BackgroundImageUriKey = 'backgroundImageUri';
-          const BackgroundOverlayKey = 'backgroundOverlay';
-
-          private _makeThemeFromImg = (): void => {
-            this._imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
-            (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
-
-            if (this._imgUrl) {
-              const xhr = new XMLHttpRequest();
-              xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
-              // you may need to change the URL here
-              xhr.open('POST', 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
-              xhr.setRequestHeader('Content-Type', 'application/json');
-              alert('You forgot to set the subscription key!');
-              xhr.setRequestHeader('Ocp-Apim-Subscription-Key', 'YourSubscriptionKeyHere'); // put your subscription key here
-              xhr.send('{ "url": "' + this._imgUrl + '" }');
-            } else {
-              // remove related properties from theme
-              const { themeRules } = this.state;
-              if (themeRules.hasOwnProperty(BackgroundImageUriKey)) {
-                delete themeRules[BackgroundImageUriKey];
-              }
-              if (themeRules.hasOwnProperty(BackgroundOverlayKey)) {
-                delete themeRules[BackgroundOverlayKey];
-              }
-              this.setState({ themeRules: themeRules }, this._makeNewTheme);
-            }
-          }
-        */}
+          * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
+          * Then, just uncomment this section. */}
         {/*}
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
