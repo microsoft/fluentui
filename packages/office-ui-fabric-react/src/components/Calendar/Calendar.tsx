@@ -117,12 +117,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public componentDidUpdate(): void {
     if (this._focusOnUpdate) {
-      // if the day picker is shown, focus on it
-      if (this._dayPicker.current) {
-        this._dayPicker.current.focus();
-      } else if (this._monthPicker.current) {
-        this._monthPicker.current.focus();
-      }
+      this.focus();
       this._focusOnUpdate = false;
     }
   }
@@ -214,8 +209,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public focus() {
-    if (this._dayPicker.current) {
+    if (this.state.isDayPickerVisible && this._dayPicker.current) {
       this._dayPicker.current.focus();
+    } else if (this.state.isMonthPickerVisible && this._monthPicker.current) {
+      this._monthPicker.current.focus();
     }
   }
 

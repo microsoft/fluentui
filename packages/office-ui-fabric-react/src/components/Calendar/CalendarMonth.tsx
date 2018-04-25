@@ -140,6 +140,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 }
                 key={ index }
                 onClick={ isInBounds ? this._selectMonthCallbacks[index] : undefined }
+                onKeyDown={ this._onSelectMonthKeyDown(index) }
                 aria-label={ dateTimeFormatter.formatMonthYear(indexedMonth, strings) }
                 aria-selected={ isCurrentMonth || isNavigatedMonth }
                 data-is-focusable={ isInBounds ? true : undefined }
@@ -188,6 +189,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   private _onSelectPrevYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._onKeyDown(this._onSelectPrevYear, ev);
+  }
+
+  private _onSelectMonthKeyDown = (index: number): (ev: React.KeyboardEvent<HTMLElement>) => void => {
+    return (ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(() => this._onSelectMonth(index), ev);
   }
 
   private _onSelectMonth = (newMonth: number): void => {
