@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+
+## 5.33.1
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Patches
+
+- Fix bad aria-label prop in Tile
 
 ## 5.33.0
 Mon, 23 Apr 2018 10:24:54 GMT

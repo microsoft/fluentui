@@ -1,6 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+
+## 5.89.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types.
+- Fix theme slots for DetailsList header colors
+- Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false
+
+## 5.88.0
+Tue, 24 Apr 2018 10:12:58 GMT
+
+### Minor changes
+
+- fixing selection bugs in Calendar component, updating styling for new designs
+- Begin converting Pivot to mergeStyles
+
+### Patches
+
+- Use `data-is-scrollable` attribute on correct ScrollablePane div
 
 ## 5.87.0
 Mon, 23 Apr 2018 10:24:54 GMT
