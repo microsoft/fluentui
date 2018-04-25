@@ -31,6 +31,7 @@ export * from './hoist';
 export * from './hoistStatics';
 export * from './initializeFocusRects';
 export * from './initials';
+export * from './keyboard';
 export * from './language';
 export * from './math';
 export * from './memoize';
