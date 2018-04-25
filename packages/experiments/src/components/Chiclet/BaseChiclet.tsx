@@ -15,7 +15,7 @@ export class BaseChiclet extends BaseComponent<IBaseChicletProps, any> {
     let chicletCardProps = this.extractMetaTags(url);
 
     return (
-      <Chiclet chicletCardProps={ chicletCardProps } size={ size ? size : "medium" } actions={ actions } />
+      <Chiclet chicletCardProps={ chicletCardProps } size={ size ? size : 2 } actions={ actions } />
     );
   }
 
@@ -58,6 +58,9 @@ export class BaseChiclet extends BaseComponent<IBaseChicletProps, any> {
             break;
           case "og:image:height":
             attributes.imageHeight = metaElements[i].content;
+            break;
+          case "og:image:alt":
+            attributes.imageAlt = metaElements[i].content;
             break;
           case "og:description":
             attributes.description = metaElements[i].content;
