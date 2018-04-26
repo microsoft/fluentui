@@ -272,6 +272,11 @@ export interface IContextualMenuItem {
   iconProps?: IIconProps;
 
   /**
+   * Custom render function for the menu item icon
+   */
+  onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
+
+  /**
    * Props that go to the IconComponent used for the chevron.
    */
   submenuIconProps?: IIconProps;

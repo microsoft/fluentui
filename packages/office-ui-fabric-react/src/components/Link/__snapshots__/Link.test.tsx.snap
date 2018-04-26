@@ -14,7 +14,7 @@ exports[`Link renders Link correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -165,7 +165,7 @@ exports[`Link renders Link with a custom class name 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -220,7 +220,7 @@ exports[`Link renders Link with no href as a button 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -260,7 +260,7 @@ exports[`Link renders disabled Link correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -313,7 +313,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
