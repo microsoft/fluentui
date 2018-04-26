@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Convert documentation to markdown for HIG.",
+      "comment": "Remove usage of Number.isNaN from SpinButton.tsx since it doesn't exist in IE11",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-jojanz@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

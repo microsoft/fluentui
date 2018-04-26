@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Experiments: NavPage bad imports fixed.",
+      "comment": "Update createRef to match React.createRef api",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "v-vibr@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

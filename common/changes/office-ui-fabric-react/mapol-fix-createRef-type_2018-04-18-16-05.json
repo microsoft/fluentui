@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Revamp Themes documentation",
+      "comment": "Update createRef to match React.createRef api",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jordanjanzen@jordanjanzen.com"
+  "email": "mark@thedutchies.com"
 }

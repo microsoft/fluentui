@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Fix code block line-height",
+      "comment": "Update createRef to match React.createRef api",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/example-app-base",
-  "email": "v-jojanz@microsoft.com"
+  "email": "mark@thedutchies.com"
 }
