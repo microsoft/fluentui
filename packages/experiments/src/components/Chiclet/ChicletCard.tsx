@@ -2,13 +2,11 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  css,
-  classNamesFunction
+  css
 } from '../../Utilities';
 import {
-  IChicletStyles,
-  IChicletStyleProps
-} from './Chiclet.types';
+  IChicletCardStyles
+} from './ChicletCard.types';
 import { IChicletCardProps } from './ChicletCard.types';
 import { mergeStyles } from '../../Styling';
 import {
@@ -18,11 +16,9 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from 'office-ui-fabric-react/src/common/TestImages';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { ChicletTestImages } from '../../common/TestImages';
 
 export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
-  private _classNames: IChicletStyles = {};
+  private _classNames: IChicletCardStyles = {};
 
   public render() {
     const { styles: customStyles, title, ogType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, onClickHref, className, actions, theme } = this.props;
@@ -43,7 +39,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
         onKeyDown={ actionable ? this._onKeyDown : undefined }
         onClick={ actionable ? this._onClick : undefined }
         className={
-          css('ms-ChicletCard', className) }
+          css('ms-ChicletCard', className, mergeStyles(this._classNames.root)) }
       >
         <div
           className={ mergeStyles(this._classNames.preview) }

@@ -1,12 +1,10 @@
 import { memoizeFunction } from '../../Utilities';
 import {
-  mergeStyleSets,
-  IStyle,
   ITheme,
   concatStyleSets,
   getTheme
 } from '../../Styling';
-import { IChicletStyles } from './Chiclet.types';
+import { IChicletCardStyles } from './ChicletCard.types';
 
 const ChicletCardTitleLineHeight = '21px';
 
@@ -17,9 +15,9 @@ const msChicletCardActionsVerticalPadding = '2px';
 
 export const getClassNames = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles?: IChicletStyles
-): IChicletStyles => {
-  const styles: IChicletStyles = {
+  customStyles?: IChicletCardStyles
+): IChicletCardStyles => {
+  const styles: IChicletCardStyles = {
     root: {
       WebkitFontSmoothing: 'antialiased',
       backgroundColor: 'white',
