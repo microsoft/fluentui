@@ -5,7 +5,8 @@ import {
 } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
 import { Chiclet } from './Chiclet';
-import { IBaseChicletProps, IChicletCardProps } from './Chiclet.types';
+import { IBaseChicletProps } from './Chiclet.types';
+import { IChicletCardProps } from './ChicletCard.types';
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class BaseChiclet extends BaseComponent<IBaseChicletProps, any> {

@@ -6,10 +6,10 @@ import {
   classNamesFunction
 } from '../../Utilities';
 import {
-  IChicletCardProps,
   IChicletStyles,
   IChicletStyleProps
 } from './Chiclet.types';
+import { IChicletCardProps } from './ChicletCard.types';
 import { mergeStyles } from '../../Styling';
 import {
   getClassNames

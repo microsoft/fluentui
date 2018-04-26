@@ -33,14 +33,14 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
         dos={
           <div>
             <ul>
-              <li>Use them to represent a large collection of items visually.</li>
+              <li>Use them to represent an item in a card with relevant metadata.</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>Use them for general layout of components that are not part of the same set.</li>
+              <li></li>
             </ul>
           </div>
         }
