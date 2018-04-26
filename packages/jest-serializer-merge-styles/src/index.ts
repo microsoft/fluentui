@@ -40,6 +40,7 @@ export function test(val: string): boolean {
 
 function _serializeRules(rules: string[], indent: (val: string) => string): string {
   const ruleStrings: string[] = [];
+  const stylesheet = Stylesheet.getInstance();
 
   for (let i = 0; i < rules.length; i += 2) {
     const selector = rules[i];
@@ -50,7 +51,21 @@ function _serializeRules(rules: string[], indent: (val: string) => string): stri
 
       insertedRules.split(';').sort().forEach((rule: string) => {
         if (rule) {
-          ruleStrings.push(indent('  ' + rule.replace(':', ': ') + ';'));
+          const [name, value] = rule.split(':');
+          const valueParts = value.split(' ');
+          let result: string[] = [];
+
+          for (const part of valueParts) {
+            const ruleSet = stylesheet.insertedRulesFromClassName(part);
+
+            if (ruleSet) {
+              result = result.concat(ruleSet);
+            } else {
+              result.push(part);
+            }
+          }
+
+          ruleStrings.push(indent(`  ${name}: ${result.join(' ')};`));
         }
       });
 

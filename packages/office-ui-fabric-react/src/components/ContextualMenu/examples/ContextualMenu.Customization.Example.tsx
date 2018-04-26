@@ -5,7 +5,7 @@ import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuCustomizationExample extends React.Component<{}, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <DefaultButton
         className='ContextualMenuButton3'
@@ -197,7 +197,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
     );
   }
 
-  private _renderCategoriesList(item: any) {
+  private _renderCategoriesList(item: any): JSX.Element {
     return (
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>

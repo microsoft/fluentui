@@ -123,6 +123,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   highlightCurrentMonth?: boolean;
 
   /**
+  * Whether the month picker should highlight the selected month
+  * @defaultvalue false
+  */
+  highlightSelectedMonth?: boolean;
+
+  /**
   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
   * @defaultvalue false
   */

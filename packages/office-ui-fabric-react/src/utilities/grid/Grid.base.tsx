@@ -21,7 +21,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     this._id = getId();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       items,
       columnCount,
@@ -40,7 +40,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
 
     const content = (
       <table
-        {...htmlProps}
+        { ...htmlProps }
         aria-posinset={ positionInSet }
         aria-setsize={ setSize }
         id={ this._id }
@@ -49,13 +49,13 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       >
         <tbody>
           {
-            rowsOfItems.map((rows: any[], rowIndex: any) => {
+            rowsOfItems.map((rows: any[], rowIndex: number) => {
               return (
                 <tr
                   role={ 'row' }
                   key={ this._id + '-' + rowIndex + '-row' }
                 >
-                  { rows.map((cell, cellIndex) => {
+                  { rows.map((cell: any, cellIndex: number) => {
                     return (
                       <td
                         role={ 'presentation' }

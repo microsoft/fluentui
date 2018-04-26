@@ -1,7 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
 import {
-  BaseComponent,
   css
 } from '../../../Utilities';
 /* tslint:enable */

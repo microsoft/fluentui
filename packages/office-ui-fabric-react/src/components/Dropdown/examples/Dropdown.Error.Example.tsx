@@ -8,7 +8,7 @@ export class DropdownErrorExample extends BaseComponent<{}, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-DropdownExample'>
         <Dropdown

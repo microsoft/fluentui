@@ -10,7 +10,7 @@ export class AnimationCell extends React.Component<IAnimationCellProps, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const name = this.props.data[0].value;
     const animClass = this.props.data[1].value;
 

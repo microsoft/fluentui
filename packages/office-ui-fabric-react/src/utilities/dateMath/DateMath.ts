@@ -224,7 +224,7 @@ export function getWeekNumbersInMonth(
   weeksInMonth: number,
   firstDayOfWeek: DayOfWeek,
   firstWeekOfYear: FirstWeekOfYear,
-  navigatedDate: Date) {
+  navigatedDate: Date): number[] {
   const selectedYear = navigatedDate.getFullYear();
   const selectedMonth = navigatedDate.getMonth();
   let dayOfMonth = 1;
@@ -253,7 +253,7 @@ export function getWeekNumbersInMonth(
  * @param {firstWeekOfYear} firstWeekOfYear - The first week of the year (1-2)
  * @return {Number} The week's number in the year.
  */
-export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear) {
+export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number {
   // First four-day week of the year - minumum days count
   const fourDayWeek = 4;
 
@@ -297,7 +297,7 @@ function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
 /**
  * Helper function to assist in date comparisons
  */
-function getDatePartHashValue(date: Date) {
+function getDatePartHashValue(date: Date): number {
   // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
   /* tslint:disable:no-bitwise */
   return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
@@ -312,7 +312,7 @@ function getDatePartHashValue(date: Date) {
 * @param {numberOfFullDays} number - week settings.
 * @return {Number} The week's number in the year.
 */
-function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFullDays: number) {
+function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFullDays: number): number {
   const dayOfYear = getDayOfYear(date) - 1;
   let num = (date.getDay()) - (dayOfYear % TimeConstants.DaysInOneWeek);
 
@@ -345,7 +345,7 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
 * @param {firstDayOfWeek} DayOfWeek - The first day of week (0-6, Sunday = 0)
 * @return {Number} The week's number in the year.
 */
-function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number) {
+function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number): number {
   const num = getDayOfYear(date) - 1;
   const num2 = (date.getDay()) - (num % TimeConstants.DaysInOneWeek);
   const num3 = ((num2 - firstDayOfWeek) + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
@@ -361,7 +361,7 @@ function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number) {
 * @param {dateWeekDay} DayOfWeek - shifts number forward to 1 week in case passed as true
 * @return {DayOfWeek} The day of week adjusted to firstDayOfWeek. E.g. when FirstDyOfWeek is Monday (1), Sunday becomes = 7 (7 > 1).
 */
-function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek) {
+function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek): number {
   return (firstDayOfWeek !== DayOfWeek.Sunday && dateWeekDay < firstDayOfWeek) ? dateWeekDay + TimeConstants.DaysInOneWeek : dateWeekDay;
 }
 
@@ -371,7 +371,7 @@ function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek) {
  * @param {Date} date - A date to find the day number for.
  * @return {Number} The day's number in the year.
  */
-function getDayOfYear(date: Date) {
+function getDayOfYear(date: Date): number {
   const month = date.getMonth();
   const year = date.getFullYear();
   let daysUntilDate = 0;
@@ -391,6 +391,6 @@ function getDayOfYear(date: Date) {
  * @param {number} year - The year to target.
  * @return {Number} The number of days in the month.
  */
-function daysInMonth(month: number, year: number) {
+function daysInMonth(month: number, year: number): number {
   return new Date(year, month, 0).getDate();
 }

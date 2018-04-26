@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove usage of Number.isNaN from SpinButton.tsx since it doesn't exist in IE11",
+      "comment": "Fix props validation for Breadcrumb",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "tmichon@microsoft.com"
 }

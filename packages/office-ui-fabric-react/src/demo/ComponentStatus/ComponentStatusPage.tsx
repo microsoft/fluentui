@@ -11,7 +11,7 @@ import { ComponentStatus } from './ComponentStatus';
 import './ComponentStatusPage.scss';
 
 export class ComponentStatusPage extends React.Component<{}, {}> {
-  public render() {
+  public render(): JSX.Element {
     const sections: IComponentPageSection[] = [{ title: 'Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
 
     return (
@@ -38,7 +38,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
       <div>
         <table className='componentTable'>
           <tbody>
-            { Object.keys(AllComponentsStatus).map((componentName, index) => {
+            { Object.keys(AllComponentsStatus).map((componentName: string, index: number) => {
               return this._renderComponent(componentName);
             }) }
           </tbody>
@@ -59,7 +59,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
     );
   }
 
-  private _renderStatusesInfo() {
+  private _renderStatusesInfo(): JSX.Element {
     return (
       <div>
         <table className='componentTable'>
@@ -69,7 +69,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
               <th className='componentCells'>Description</th>
               <th className='componentCells'>Success</th>
             </tr>
-            { ComponentStatusInfoState.map((name) => {
+            { ComponentStatusInfoState.map((name: IComponentStatusInfoState) => {
               return this._renderStatusInfo(name);
             }) }
           </tbody>
@@ -78,7 +78,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
     );
   }
 
-  private _renderStatusInfo(statusInfo: IComponentStatusInfoState) {
+  private _renderStatusInfo(statusInfo: IComponentStatusInfoState): JSX.Element {
     return (
       <tr key={ statusInfo.name + '-key' }>
         <th className='componentCells'> { statusInfo.name } </th>

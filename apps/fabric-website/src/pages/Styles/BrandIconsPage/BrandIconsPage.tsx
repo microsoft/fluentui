@@ -15,7 +15,7 @@ const documentIconsData = require('../../../data/brand-icons-documents.json');
 const monochromeIconsData = require('../../../data/brand-icons-monochrome.json');
 
 export class BrandIconsPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     let productIcons = productIconsData;
     let documentIcons = documentIconsData;
 
