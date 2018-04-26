@@ -9,7 +9,7 @@ const keyCont = 'A';
 describe('Keytip', () => {
   it('renders visible Keytip correctly', () => {
     const componentContent = renderer.create(<KeytipContent visible={ true } content={ keyCont } keySequences={ sequence } />);
-    let tree = componentContent.toJSON();
+    const tree = componentContent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -21,13 +21,13 @@ describe('Keytip', () => {
         content={ keyCont }
         keySequences={ sequence }
       />);
-    let tree = componentContent.toJSON();
+    const tree = componentContent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders invisible Keytip correctly', () => {
     const componentContent = renderer.create(<KeytipContent visible={ false } content={ keyCont } keySequences={ sequence } />);
-    let tree = componentContent.toJSON();
+    const tree = componentContent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

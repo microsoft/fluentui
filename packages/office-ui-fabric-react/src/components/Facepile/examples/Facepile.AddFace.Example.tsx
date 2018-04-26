@@ -20,7 +20,7 @@ export class FacepileAddFaceExample extends React.Component<{}, IFacepileAddFace
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { numberOfFaces } = this.state;
     const facepileProps: IFacepileProps = {
       personas: facepilePersonas.slice(0, numberOfFaces),

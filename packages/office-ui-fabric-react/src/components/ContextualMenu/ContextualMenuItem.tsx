@@ -4,12 +4,24 @@ import { getRTL } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
-const renderItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemProps) => {
+const renderItemIcon = (props: IContextualMenuItemProps) => {
+  const {
+    item,
+    hasIcons,
+    classNames
+  } = props;
+
   // Only present to allow continued use of item.icon which is deprecated.
   const { iconProps, icon } = item;
 
   if (!hasIcons) {
     return null;
+  }
+
+  if (item.onRenderIcon) {
+    return (
+      item.onRenderIcon(props)
+    );
   }
 
   if (iconProps) {

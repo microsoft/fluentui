@@ -8,15 +8,14 @@ export class NavBasicExample extends React.Component<any, any> {
     this._onClickHandler = this._onClickHandler.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-NavExample-LeftPane'>
         <Nav
           groups={
             [
               {
-                links:
-                [
+                links: [
                   {
                     name: 'Home',
                     url: 'http://example.com',
@@ -62,12 +61,12 @@ export class NavBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _onClickHandler(e: React.MouseEvent<HTMLElement>) {
+  private _onClickHandler(e: React.MouseEvent<HTMLElement>): false {
     alert('test');
     return false;
   }
 
-  private _onClickHandler2(e: React.MouseEvent<HTMLElement>) {
+  private _onClickHandler2(e: React.MouseEvent<HTMLElement>): false {
     return false;
   }
 }

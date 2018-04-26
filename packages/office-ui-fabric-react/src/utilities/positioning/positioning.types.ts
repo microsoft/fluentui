@@ -131,3 +131,10 @@ export interface IPositionDirectionalHintData {
 export interface IPositionedData extends IPositionDirectionalHintData {
 
 }
+
+export interface IRelativePositions {
+  calloutPosition: ICalloutPositon;
+  beakPosition: { position: IPosition | undefined, display: 'block' };
+  directionalClassName: string;
+  submenuDirection: DirectionalHint;
+}

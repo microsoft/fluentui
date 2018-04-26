@@ -12,7 +12,7 @@ export class ContextualMenuBasicExample extends React.Component {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton

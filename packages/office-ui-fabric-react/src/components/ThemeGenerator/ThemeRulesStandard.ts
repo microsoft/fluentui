@@ -58,7 +58,7 @@ export enum SemanticColorSlots {
   disabledText
 }
 
-export function themeRulesStandardCreator() {
+export function themeRulesStandardCreator(): IThemeRules {
   const slotRules: IThemeRules = {};
 
   /*** BASE COLORS and their SHADES */
@@ -119,7 +119,7 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#212121');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
-  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false) {
+  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false): void {
     const inherits = slotRules[BaseSlots[inheritedBase]];
     const thisSlotRule = {
       name: slotName,
@@ -196,7 +196,7 @@ export function themeRulesStandardCreator() {
 
   /*** SEMANTIC SLOTS */
   // create the SlotRule for a semantic slot
-  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots) {
+  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
     const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
     const thisSlotRule = {
       name: SemanticColorSlots[semanticSlot],

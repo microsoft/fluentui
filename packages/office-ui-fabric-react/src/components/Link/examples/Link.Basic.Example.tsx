@@ -3,7 +3,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import './Link.Example.scss';
 
 export class LinkBasicExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-LinkExample'>
         <span>When a link has an href, </span>

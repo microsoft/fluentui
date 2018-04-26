@@ -66,7 +66,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     }
   }
 
-  public componentWillReceiveProps(newProps: INavProps) {
+  public componentWillReceiveProps(newProps: INavProps): void {
     const newGroups = newProps.groups || [];
     const isGroupCollapsed = this.state.isGroupCollapsed!;
 
@@ -122,7 +122,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     return (<div className={ classNames.linkText }>{ link.name }</div>);
   }
 
-  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
+  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
     const {
       getStyles,
       groups,

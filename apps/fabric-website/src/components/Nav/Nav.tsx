@@ -14,7 +14,7 @@ export interface INavState {
 
 export class Nav extends React.Component<INavProps, INavState> {
 
-  public render() {
+  public render(): JSX.Element {
     let { pages } = this.props;
 
     if (!pages) {

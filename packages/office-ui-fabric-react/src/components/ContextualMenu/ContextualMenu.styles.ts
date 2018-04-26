@@ -50,8 +50,8 @@ export const getMenuItemStyles = memoizeFunction((
     },
     root: [
       getFocusStyle(theme),
+      fonts.medium,
       {
-        font: 'inherit',
         color: 'inherit',
         backgroundColor: 'transparent',
         border: 'none',

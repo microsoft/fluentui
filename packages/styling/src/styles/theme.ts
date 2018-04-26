@@ -188,6 +188,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
 
+    listHeaderBackgroundHovered: p.neutralLighter,
+    listHeaderBackgroundPressed: p.neutralLight,
+
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 

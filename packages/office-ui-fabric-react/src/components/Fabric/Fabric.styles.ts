@@ -1,4 +1,3 @@
-
 import { getGlobalClassNames } from '../../Styling';
 import { IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
@@ -16,6 +15,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
   const {
     theme,
     className,
+    isFocusVisible
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -23,6 +23,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
   return {
     root: [
       classNames.root,
+      isFocusVisible && 'is-focusVisible',
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,

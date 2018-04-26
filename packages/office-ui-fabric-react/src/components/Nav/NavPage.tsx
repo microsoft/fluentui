@@ -19,7 +19,7 @@ const NavNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 const NavByKeysExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.ByKeys.Example.tsx') as string;
 
 export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Nav'

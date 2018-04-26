@@ -72,3 +72,21 @@
     max-width: 50%;
   }
 }
+
+.iconContainer {
+  position: relative;
+  margin: 0 4px;
+  height: 32px;
+  width: 14px;
+}
+
+.logoFillIcon, .logoIcon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: $ms-color-themeDarkAlt;
+}
+
+.logoFillIcon {
+  color: #FFFFFF;
+}
