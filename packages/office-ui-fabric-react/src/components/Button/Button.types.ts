@@ -55,6 +55,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   disabled?: boolean;
 
   /**
+   * Whether the button can have focus in disabled mode
+   */
+  allowDisabledFocus?: boolean;
+
+  /**
    * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
    */
   primaryDisabled?: boolean;
@@ -215,6 +220,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     iconClassName: string | undefined,
     menuIconClassName: string | undefined,
     disabled: boolean,
+    allowDisabledFocus: boolean,
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined) => IButtonClassNames;

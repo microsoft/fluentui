@@ -78,6 +78,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       className,
       description,
       disabled,
+      allowDisabledFocus,
       primaryDisabled,
       href,
       iconProps,
@@ -100,6 +101,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName!,
       iconProps && iconProps.className,
       menuIconProps && menuIconProps.className,
+      allowDisabledFocus!,
       isPrimaryButtonDisabled!,
       checked!,
       !!menuProps,
@@ -117,6 +119,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // anchor button as normal button
     const renderAsAnchor: boolean = !isPrimaryButtonDisabled && !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
+
     const nativeProps = getNativeProps(
       assign(
         renderAsAnchor ? {} : { type: 'button' },
@@ -126,6 +129,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       [
         'disabled' // let disabled buttons be focused and styled as disabled.
       ]);
+
+    // if (allowDisabledFocus) {
+    // this.props.disabled = undefined;
+    // }
 
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
@@ -159,7 +166,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       {
         className: this._classNames.root,
         ref: this._buttonElement,
-        'disabled': isPrimaryButtonDisabled,
+        // 'disabled': isPrimaryButtonDisabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
@@ -517,7 +524,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-expanded': this._isExpanded,
       'data-is-focusable': false
     };
-    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
+    return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {

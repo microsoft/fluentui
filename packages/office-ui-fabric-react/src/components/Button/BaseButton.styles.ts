@@ -62,16 +62,19 @@ export const getStyles = memoizeFunction((
       }
     ],
 
-    rootDisabled: {
-      backgroundColor: disabledBackground,
-      color: disabledText,
-      cursor: 'default',
-      pointerEvents: 'none',
-      selectors: {
-        ':hover': noOutline,
-        ':focus': noOutline
+    rootDisabled: [
+      getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+      {
+        backgroundColor: disabledBackground,
+        color: disabledText,
+        cursor: 'default',
+        pointerEvents: 'none',
+        selectors: {
+          ':hover': noOutline,
+          ':focus': noOutline
+        }
       }
-    },
+    ],
 
     iconDisabled: {
       color: disabledText
