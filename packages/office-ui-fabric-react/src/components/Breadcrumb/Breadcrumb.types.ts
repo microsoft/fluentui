@@ -30,7 +30,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   /**
    * Render a custom divider in place of the default chevron '>'
    */
-  dividerAs?: IComponentAs<IIconProps>;
+  dividerAs?: IComponentAs<IDividerAsProps>;
 
   /**
    * The maximum number of breadcrumbs to display before coalescing.
@@ -90,4 +90,12 @@ export interface IBreadcrumbItem {
    * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this breadcrumb link
    */
   isCurrentItem?: boolean;
+}
+
+export interface IDividerAsProps extends IIconProps {
+  /**
+   * Optional breadcrumb item corresponds to left of the divider to be passed for custom rendering.
+   * For overflowed items, it will be last item in the list
+   */
+  item?: IBreadcrumbItem;
 }
