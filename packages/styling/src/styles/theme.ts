@@ -3,7 +3,6 @@ import {
   IPalette,
   ISemanticColors,
   ITheme,
-  IThemeFlags,
   IPartialTheme
 } from '../interfaces/index';
 import {
@@ -14,16 +13,12 @@ import {
 } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
-const defaultThemeFlags: IThemeFlags = {
-  disableGlobalClassNames: false,
-};
-
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
-  flags: defaultThemeFlags,
+  disableGlobalClassNames: false,
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -124,10 +119,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
-    flags: {
-      ...defaultThemeFlags,
-      ...theme.flags,
-    }
+    disableGlobalClassNames: !!theme.disableGlobalClassNames,
   };
 }
 
