@@ -19,6 +19,7 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
       <div>
         <CommandBar
           elipisisAriaLabel='More options'
+          ariaDescribedByText='Use left and right arrow keys to navigate between commands'
           items={ items }
           overflowItems={ overflowItems }
           farItems={ farItems }

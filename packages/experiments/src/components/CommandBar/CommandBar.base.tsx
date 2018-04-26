@@ -14,9 +14,11 @@ import {
 } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IResizeGroup, ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   classNamesFunction,
-  createRef
+  createRef,
+  getId
 } from '../../Utilities';
 
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
@@ -59,6 +61,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   private _overflowSet = createRef<IOverflowSet>();
   private _resizeGroup = createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
+  private _ariaDescriptionId: string;
+
+  constructor(props: ICommandBarProps) {
+    super(props);
+
+    this._ariaDescriptionId = getId();
+  }
 
   public render(): JSX.Element {
     const {
@@ -67,6 +76,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       items,
       overflowItems,
       farItems,
+      ariaDescribedByText,
       elipisisAriaLabel,
       elipisisIconProps,
       overflowMenuProps,
@@ -98,12 +108,19 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         // tslint:disable-next-line:jsx-no-lambda
         onRenderData={ (data: ICommandBarData) => {
           return (
-            <div className={ css(this._classNames.root) }>
-
+            <FocusZone
+              className={ css(this._classNames.root) }
+              direction={ FocusZoneDirection.horizontal }
+              role={ 'menubar' }
+              ariaDescribedBy={ ariaDescribedByText && this._ariaDescriptionId }
+            >
+              { this._onRenderAriaDescription() }
               {/*Primary Items*/ }
               <OverflowSet
                 componentRef={ this._overflowSet }
                 className={ css(this._classNames.primarySet) }
+                doNotContainWithinFocusZone={ true }
+                role={ 'presentation' }
                 items={ data.primaryItems }
                 overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
                 onRenderItem={ this._onRenderItems }
@@ -124,11 +141,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
               {/*Secondary Items*/ }
               <OverflowSet
                 className={ css(this._classNames.secondarySet) }
+                doNotContainWithinFocusZone={ true }
+                role={ 'presentation' }
                 items={ data.farItems }
                 onRenderItem={ this._onRenderItems }
                 onRenderOverflowButton={ () => null }
               />
-            </div>
+            </FocusZone>
           );
         } }
       />
@@ -238,5 +257,17 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   private _onRenderButton = (props: ICommandBarItemProps): JSX.Element => {
     // tslint:disable-next-line:no-any
     return <CommandBarButton { ...props as any } />;
+  }
+
+  private _onRenderAriaDescription = (): JSX.Element | null => {
+    const {
+      ariaDescribedByText
+    } = this.props;
+    
+    return ariaDescribedByText ? (
+      <span className={ 'ms-screenReaderOnly' } id={ this._ariaDescriptionId }>{ ariaDescribedByText }</span>
+    ) : (
+      null
+    );
   }
 }

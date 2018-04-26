@@ -109,6 +109,12 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Accessibility text to be read by the screen reader when the user's
+   * focus is within the command bar.
+   */
+  ariaDescribedByText?: string;
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
