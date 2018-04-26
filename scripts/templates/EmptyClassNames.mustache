@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets} from '../../Styling';
+import { mergeStyleSets, IStyle } from '../../Styling';
 
 export interface I{{componentName}}Styles {
    /**
@@ -9,14 +9,14 @@ export interface I{{componentName}}Styles {
 }
 
 export interface I{{componentName}}Names {
-	/**
-	* Root html container for this component.
-	*/
-	root?: string;
+  /**
+   * Root html container for this component.
+   */
+  root?: string;
 }
 
 export const getClassNames = memoizeFunction((): I{{componentName}}Names => {
-	return mergeStyleSets({
-		root: []
-	});
+  return mergeStyleSets({
+    root: []
+  });
 });

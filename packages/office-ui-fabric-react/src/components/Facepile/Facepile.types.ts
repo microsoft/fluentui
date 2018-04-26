@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
 import {
-  IPersonaProps,
+  IPersonaSharedProps,
   PersonaInitialsColor,
   PersonaSize
 } from '../Persona/index';
@@ -56,7 +56,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   overflowButtonType?: OverflowButtonType;
 
   /** Method to access properties on the underlying Persona control */
-  getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
+  getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
 
   /**
    * Optional class for Facepile root element.

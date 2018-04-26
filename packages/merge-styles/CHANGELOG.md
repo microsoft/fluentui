@@ -1,6 +1,52 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 06 Apr 2018 10:25:55 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Apr 2018 10:12:34 GMT and should not be manually modified.
+
+## 5.17.0
+Thu, 26 Apr 2018 10:12:34 GMT
+
+### Minor changes
+
+- Add `animation` to `IRawStyleBase` for use in style sets.
+
+## 5.16.1
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Patches
+
+- merge-styles: `style` elements which are created on the fly now "bunch" together, avoiding unpredictability in specificity.
+
+## 5.16.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating how keyframe classes are cached to aid with jest snapshot testing.
+
+### Patches
+
+- Updating documentation.
+
+## 5.15.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- mergeStyles: rules are now registered in separate styling objects, improving performance significantly.
+
+## 5.15.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+
+## 5.15.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- Add backgroundClip property definition.
 
 ## 5.14.1
 Fri, 06 Apr 2018 10:25:55 GMT

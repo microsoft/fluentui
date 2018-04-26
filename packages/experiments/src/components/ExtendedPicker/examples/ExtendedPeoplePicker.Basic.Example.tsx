@@ -11,8 +11,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import { SuggestionsStore, FloatingPeoplePicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from '../../FloatingPicker';
-import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps }
-  from '../../SelectedItemsList';
+import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from '../../SelectedItemsList';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
@@ -33,9 +32,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   constructor(props: {}) {
     super(props);
-    let peopleList: IPersonaWithMenu[] = [];
+    const peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
-      let target: IPersonaWithMenu = {};
+      const target: IPersonaWithMenu = {};
 
       assign(target, persona);
       peopleList.push(target);
@@ -62,8 +61,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
             && this._picker.inputElement.value.indexOf('@') > -1;
         },
         onExecute: () => {
-          if (this._picker.floatingPicker.value !== null) {
-            this._picker.floatingPicker.value.forceResolveSuggestion();
+          if (this._picker.floatingPicker.current !== null) {
+            this._picker.floatingPicker.current.forceResolveSuggestion();
           }
         }
       },
@@ -85,8 +84,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
         shouldShow: () => {
           return this._picker !== undefined
             && this._picker.floatingPicker !== undefined
-            && this._picker.floatingPicker.value !== null
-            && this._picker.floatingPicker.value.suggestions.length === 0;
+            && this._picker.floatingPicker.current !== null
+            && this._picker.floatingPicker.current.suggestions.length === 0;
         }
       },
       {
@@ -183,24 +182,25 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onExpandItem = (item: IExtendedPersonaProps): void => {
-    if (this._picker.selectedItemsList.value) {
+    if (this._picker.selectedItemsList.current) {
       // tslint:disable-next-line:no-any
-      (this._picker.selectedItemsList.value as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+      (this._picker.selectedItemsList.current as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
     }
   }
 
   private _onRemoveSuggestion = (item: IPersonaProps): void => {
-    let { peopleList, mostRecentlyUsed: mruState } = this.state;
-    let indexPeopleList: number = peopleList.indexOf(item);
-    let indexMostRecentlyUsed: number = mruState.indexOf(item);
+    const { peopleList, mostRecentlyUsed: mruState } = this.state;
+    const indexPeopleList: number = peopleList.indexOf(item);
+    const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
     if (indexMostRecentlyUsed >= 0) {
-      let newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
+      const newSuggestedPeople: IPersonaProps[]
+        = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }
@@ -239,9 +239,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   private _shouldShowForceResolve = (): boolean => {
     return Boolean(
-      this._picker.floatingPicker.value &&
-      this._validateInput(this._picker.floatingPicker.value.inputText) &&
-      this._picker.floatingPicker.value.suggestions.length === 0
+      this._picker.floatingPicker.current &&
+      this._validateInput(this._picker.floatingPicker.current.inputText) &&
+      this._picker.floatingPicker.current.suggestions.length === 0
     );
   }
 

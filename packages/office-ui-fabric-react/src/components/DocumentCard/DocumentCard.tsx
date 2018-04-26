@@ -21,7 +21,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { onClick, onClickHref, children, className, type, accentColor } = this.props;
     const actionable = (onClick || onClickHref) ? true : false;
 

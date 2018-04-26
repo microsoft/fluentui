@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { BaseComponent, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
@@ -26,7 +24,7 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
   }
 
   // tslint:disable:jsx-no-lambda
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton onClick={ () => this.setState({ overflow: !this.state.overflow }) }>Toggle showing overflow</DefaultButton>
@@ -40,8 +38,8 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
             style={ {
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-              whiteSpace: this.state.overflow && 'nowrap',
-              width: this.state.overflow && '200px',
+              whiteSpace: this.state.overflow ? 'nowrap' : 'inherit',
+              width: this.state.overflow ? '200px' : 'auto',
               border: '1px solid black'
             } }
           >
@@ -49,7 +47,7 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
               content='This is the tooltip'
               id={ this.tooltipId }
               overflowMode={ TooltipOverflowMode.Parent }
-              onTooltipToggle={ isTooltipVisible => this.setState({ isTooltipVisible }) }
+              onTooltipToggle={ (isTooltipVisible: boolean) => this.setState({ isTooltipVisible }) }
             >
               <span aria-describedby={ this.state.isTooltipVisible ? this.tooltipId : undefined }>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat lectus ut magna sodales, sit amet accumsan arcu accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
             </TooltipHost>

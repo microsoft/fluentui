@@ -20,7 +20,7 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
     checked: false
   };
 
-  public shouldComponentUpdate(newProps: ICheckProps) {
+  public shouldComponentUpdate(newProps: ICheckProps): boolean {
     return this.props.checked !== newProps.checked;
   }
 

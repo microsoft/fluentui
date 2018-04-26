@@ -7,7 +7,7 @@ const styles: any = stylesImport;
 const blogData = require('../../data/blog-posts.json');
 
 export class BlogPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <PageHeader pageTitle='Blog' backgroundColor='#73aa24' />

@@ -5,6 +5,7 @@ import {
   IDatePickerStrings
 } from 'office-ui-fabric-react/lib/DatePicker';
 import { addMonths, addYears } from '../../../utilities/dateMath/DateMath';
+import './DatePicker.Examples.scss';
 
 const today: Date = new Date(Date.now());
 const minDate: Date = addMonths(today, -1);
@@ -89,11 +90,11 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { firstDayOfWeek } = this.state;
 
     return (
-      <div>
+      <div className='docs-DatePickerExample'>
         <p>{ description }</p>
         <DatePicker
           isRequired={ false }

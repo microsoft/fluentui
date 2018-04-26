@@ -14,7 +14,7 @@ import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
 
   public render(): JSX.Element {
-    let {
+    const {
       content,
       getStyles,
       theme,
@@ -24,7 +24,7 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
       } = this.props;
 
     const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
-    let classNames = getClassNames(
+    const classNames = getClassNames(
       getStyles!,
       {
         theme: theme!,

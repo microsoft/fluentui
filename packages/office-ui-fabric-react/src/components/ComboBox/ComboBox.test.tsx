@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
@@ -9,6 +6,7 @@ import { KeyCodes } from '../../Utilities';
 
 import { ComboBox } from './ComboBox';
 import { IComboBox, IComboBoxOption } from './ComboBox.types';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { expectOne, expectMissing } from '../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
@@ -18,6 +16,12 @@ const DEFAULT_OPTIONS: IComboBoxOption[] = [
 ];
 
 const DEFAULT_OPTIONS2: IComboBoxOption[] = [
+  { key: '1', text: 'One' },
+  { key: '2', text: 'Foo' },
+  { key: '3', text: 'Bar' }
+];
+const DEFAULT_OPTIONS3: IComboBoxOption[] = [
+  { key: '0', text: 'Zero', itemType: SelectableOptionMenuItemType.Header },
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
   { key: '3', text: 'Bar' }
@@ -266,6 +270,42 @@ describe('ComboBox', () => {
     wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
+  });
+
+  it('Can change selected option with keyboard, looping from top to bottom', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS2 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('Bar');
+  });
+
+  it('Can change selected option with keyboard, looping from bottom to top', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='3'
+        options={ DEFAULT_OPTIONS2 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('One');
+  });
+
+  it('Can change selected option with keyboard, looping from top to bottom', () => {
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS3 }
+      />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('Bar');
   });
 
   it('Cannot insert text while disabled', () => {

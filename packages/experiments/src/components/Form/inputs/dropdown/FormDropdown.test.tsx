@@ -24,7 +24,7 @@ describe('FormDropdown Unit Tests', () => {
     });
 
     it('Null name throws error', () => {
-      let errorFunction = () => {
+      const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
           <Form
             onSubmit={ undefined }
@@ -79,7 +79,7 @@ describe('FormDropdown Unit Tests', () => {
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Dropdown') as HTMLElement;
-      let form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toEqual(0);
@@ -103,8 +103,8 @@ describe('FormDropdown Unit Tests', () => {
     });
 
     it('Dropdown is leading and trailing debounced', () => {
-      let updateStub: sinon.SinonStub = sinon.stub();
-      let renderedForm = ReactTestUtils.renderIntoDocument(
+      const updateStub: sinon.SinonStub = sinon.stub();
+      const renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
           onUpdated={ updateStub }
         >
@@ -127,7 +127,7 @@ describe('FormDropdown Unit Tests', () => {
         </Form>
       ) as Form;
 
-      let datePicker: ExtendsDropdown = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsDropdown);
+      const datePicker: ExtendsDropdown = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsDropdown);
       datePicker.setValue(0);
       expect(updateStub.callCount).toEqual(1);
       datePicker.setValue(1);

@@ -4,6 +4,11 @@ import { List } from './List';
 
 export interface IList {
   /**
+   * Force the component to update.
+   */
+  forceUpdate: () => void;
+
+  /**
    * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
    * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
    *
@@ -13,7 +18,7 @@ export interface IList {
    * @param index Index of item to scroll to
    * @param measureItem Optional callback to measure the height of an individual item
    */
-  scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void;
+  scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number) => void;
 }
 
 export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {

@@ -71,7 +71,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
 
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
 
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
@@ -81,7 +81,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { pageTitle, links, backgroundColor, backgroundImage } = this.props;
     let { isAttached } = this.state;
     let inPageNav;

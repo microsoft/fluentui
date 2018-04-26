@@ -13,10 +13,15 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       ms-Checkbox
       is-enabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background: none;
         border: none;
         cursor: pointer;
         display: block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0;
         margin-left: 0;
         margin-right: 0;
@@ -31,7 +36,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: -1px;
         content: "";

@@ -16,7 +16,7 @@ export class ButtonCompoundExample extends React.Component<IButtonProps> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();

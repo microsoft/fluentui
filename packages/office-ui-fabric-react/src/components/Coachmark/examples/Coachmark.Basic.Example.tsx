@@ -73,7 +73,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         </div>
         { isVisible && (
           <Coachmark
-            target={ this._targetButton.value }
+            target={ this._targetButton.current }
           >
             <TeachingBubbleContent
               headline='Example Title'

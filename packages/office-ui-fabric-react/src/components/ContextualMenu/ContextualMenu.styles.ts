@@ -50,8 +50,8 @@ export const getMenuItemStyles = memoizeFunction((
     },
     root: [
       getFocusStyle(theme),
+      fonts.medium,
       {
-        font: 'inherit',
         color: 'inherit',
         backgroundColor: 'transparent',
         border: 'none',
@@ -168,17 +168,16 @@ export const getMenuItemStyles = memoizeFunction((
       flexShrink: '0',
       fontSize: FontSizes.mini
     },
-    splitButtonFlexContainer: {
-      display: 'flex',
-      height: ContextualMenuItemHeight,
-      flexWrap: 'nowrap',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    splitButtonSeparator: {},
-    splitButtonFlexContainerFocus: [
-      getFocusStyle(theme)
-    ]
+    splitButtonFlexContainer: [
+      getFocusStyle(theme),
+      {
+        display: 'flex',
+        height: ContextualMenuItemHeight,
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }],
+    splitButtonSeparator: {}
   };
 
   return concatStyleSets(menuItemStyles);

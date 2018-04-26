@@ -1,6 +1,12 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
-import { Form, FormConditionalSubmitButton, FormDatePicker, FormTextInput, Validators } from '../../Form';
+import {
+  Form,
+  FormConditionalSubmitButton,
+  FormDatePicker,
+  FormTextInput,
+  Validators
+} from '@uifabric/experiments/lib/Form';
 
 export interface IFormValidationExampleState {
   formResults: any;
@@ -32,7 +38,7 @@ export class FormValidationExample extends React.Component<{}, IFormValidationEx
             inputKey='date'
             validators={ [(value: Date) => {
               if (value) {
-                let date = new Date();
+                const date = new Date();
                 date.setDate(date.getDate() - 1);
                 if (value.getTime() < date.getTime()) {
                   return 'Date must be today or later';

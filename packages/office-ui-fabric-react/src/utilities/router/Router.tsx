@@ -13,22 +13,18 @@ export interface IRouterProps {
 }
 
 export class Router extends BaseComponent<IRouterProps, {}> {
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._events.on(window, 'hashchange', () => this.forceUpdate());
   }
 
-  public render() {
-    return (
-      <div>
-        { this._resolveRoute() }
-      </div>
-    );
+  public render(): JSX.Element | null {
+    return this._resolveRoute();
   }
 
-  private _getPath() {
+  private _getPath(): string {
     let path = location.hash;
     const hashIndex = path.lastIndexOf('#'),
-          questionMarkIndex = path.indexOf('?');
+      questionMarkIndex = path.indexOf('?');
 
     // Look for the start of a query in the currentPath, then strip out the query to find the correct page to render
     if (questionMarkIndex > -1) {

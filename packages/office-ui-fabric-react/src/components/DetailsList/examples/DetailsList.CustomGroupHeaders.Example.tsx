@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups } from '@uifabric/example-app-base';
@@ -21,7 +19,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
     _groups = _groups || createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DetailsList
@@ -58,7 +56,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
     );
   }
 
-  private _onClick(props: IGroupDividerProps) {
+  private _onClick(props: IGroupDividerProps): () => void {
     return () => {
       props.onToggleSelectGroup!(props.group!);
     };
