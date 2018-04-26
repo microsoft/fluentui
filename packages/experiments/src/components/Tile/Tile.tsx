@@ -348,7 +348,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     return (
       <span
         role='checkbox'
-        aria-label={ String(toggleSelectionAriaLabel) }
+        aria-label={ toggleSelectionAriaLabel }
         className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
           [CheckStyles.hostShowCheck]: this.state.isModal
         }) }

@@ -12,7 +12,7 @@ export interface IBlogItem {
 }
 
 export class BlogItem extends React.Component<IBlogItem, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='BlogItem'>
         <div className='BlogItem-dateColumn'>
@@ -33,7 +33,7 @@ export class BlogItem extends React.Component<IBlogItem, {}> {
             { this.props.title }
           </h2>
           <p className='BlogItem-author'>
-            Posted by {this.props.author}
+            Posted by { this.props.author }
           </p>
           <p className='BlogItem-previewDescription'>
             { this.props.previewDescription }

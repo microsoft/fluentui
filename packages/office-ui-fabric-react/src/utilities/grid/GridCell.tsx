@@ -13,7 +13,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     id: getId('gridCell')
   };
 
-  public render() {
+  public render(): JSX.Element {
     const {
       item,
       id,

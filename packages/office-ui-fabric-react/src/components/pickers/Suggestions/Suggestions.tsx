@@ -22,14 +22,15 @@ export interface ISuggestionsState {
 }
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
-  public render() {
+  public render(): JSX.Element {
     const {
       suggestionModel,
       RenderSuggestion,
       onClick,
       className,
       onRemoveItem,
-      isSelectedOverride
+      isSelectedOverride,
+      removeButtonAriaLabel
     } = this.props;
     return (
       <div
@@ -51,8 +52,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
         { this.props.showRemoveButton ? (
           <IconButton
             iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
-            title='Remove'
-            ariaLabel='Remove'
+            title={ removeButtonAriaLabel }
+            ariaLabel={ removeButtonAriaLabel }
             onClick={ onRemoveItem }
             className={ css('ms-Suggestions-closeButton', styles.closeButton) }
           />) : (null)
@@ -75,11 +76,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       selectedActionType: SuggestionActionType.none,
     };
   }
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.scrollSelected();
     this.activeSelectedElement = this._selectedElement ? this._selectedElement.current : null;
   }
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     // Only scroll to selected element if the selected element has changed. Otherwise do nothing.
     // This prevents some odd behavior where scrolling the active element out of view and clicking on a selected element
     // will trigger a focus event and not give the clicked element the click.
@@ -89,7 +90,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,
@@ -309,14 +310,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
   }
 
-  public focusSearchForMoreButton() {
+  public focusSearchForMoreButton(): void {
     if (this._searchForMoreButton.current) {
       this._searchForMoreButton.current.focus();
     }
   }
 
   // TODO get the element to scroll into view properly regardless of direction.
-  public scrollSelected() {
+  public scrollSelected(): void {
     if (this._selectedElement.current && this._selectedElement.current.scrollIntoView !== undefined) {
       this._selectedElement.current.scrollIntoView(false);
     }
@@ -325,6 +326,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   private _renderSuggestions(): JSX.Element {
     const {
       onRenderSuggestion,
+      removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
@@ -359,6 +361,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }
               className={ suggestionsItemClassName }
               showRemoveButton={ showRemoveButtons }
+              removeButtonAriaLabel={ removeSuggestionAriaLabel }
               onRemoveItem={ this._onRemoveTypedSuggestionsItem(suggestion.item, index) }
             />
           </div>) }

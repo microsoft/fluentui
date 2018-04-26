@@ -258,7 +258,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
 
     this._updatePages();
     this._measureVersion++;
@@ -274,7 +274,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public componentWillReceiveProps(newProps: IListProps) {
+  public componentWillReceiveProps(newProps: IListProps): void {
     if (newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||
       newProps.startIndex !== this.props.startIndex) {
@@ -290,7 +290,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
+  public shouldComponentUpdate(newProps: IListProps, newState: IListState): boolean {
     const { pages: oldPages } = this.state;
     const { pages: newPages } = newState;
     let shouldComponentUpdate = false;
@@ -319,7 +319,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     return shouldComponentUpdate;
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     this._invalidatePageCache();
     // Ensure that when the list is force updated we update the pages first before render.
     this._updateRenderRects(this.props, true);
@@ -329,7 +329,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     super.forceUpdate();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       role
@@ -368,7 +368,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   /**
    * when props.items change or forceUpdate called, throw away cached pages
    */
-  private _invalidatePageCache() {
+  private _invalidatePageCache(): void {
     this._pageCache = {};
   }
 
@@ -474,7 +474,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Track the last item index focused so that we ensure we keep it rendered. */
-  private _onFocus(ev: any) {
+  private _onFocus(ev: any): void {
     let target = ev.target as HTMLElement;
 
     while (target !== this._surface.current) {
@@ -493,7 +493,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * Called synchronously to reset the required render range to 0 on scrolling. After async scroll has executed,
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
-  private _onScroll() {
+  private _onScroll(): void {
     if (!this.state.isScrolling) {
       this.setState({ isScrolling: true });
     }
@@ -501,7 +501,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._onScrollingDone();
   }
 
-  private _resetRequiredWindows() {
+  private _resetRequiredWindows(): void {
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
   }
@@ -509,7 +509,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   /**
    * Debounced method to asynchronously update the visible region on a scroll event.
    */
-  private _onAsyncScroll() {
+  private _onAsyncScroll(): void {
     this._updateRenderRects();
 
     // Only update pages when the visible rect falls outside of the materialized rect.
@@ -524,7 +524,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * This is an async debounced method that will try and increment the windows we render. If we can increment
    * either, we increase the amount we render and re-evaluate.
    */
-  private _onAsyncIdle() {
+  private _onAsyncIdle(): void {
     const { renderedWindowsAhead, renderedWindowsBehind } = this.props;
     const {
       _requiredWindowsAhead: requiredWindowsAhead,
@@ -553,15 +553,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * Function to call when the list is done scrolling.
    * This function is debounced.
    */
-  private _onScrollingDone() {
+  private _onScrollingDone(): void {
     this.setState({ isScrolling: false });
   }
 
-  private _onAsyncResize() {
+  private _onAsyncResize(): void {
     this.forceUpdate();
   }
 
-  private _updatePages(props: IListProps = this.props) {
+  private _updatePages(props: IListProps = this.props): void {
     // console.log('updating pages');
 
     if (!this._requiredRect) {
@@ -605,7 +605,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * @param newPages The new pages
    * @param props The props to use
    */
-  private _notifyPageChanges(oldPages: IPage[], newPages: IPage[], props: IListProps = this.props) {
+  private _notifyPageChanges(oldPages: IPage[], newPages: IPage[], props: IListProps = this.props): void {
     const {
       onPageAdded,
       onPageRemoved
@@ -640,7 +640,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  private _updatePageMeasurements(pages: IPage[]) {
+  private _updatePageMeasurements(pages: IPage[]): boolean {
     let heightChanged = false;
 
     // when not in virtualize mode, we render all the items without page measurement
@@ -700,7 +700,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Called when a page has been added to the DOM. */
-  private _onPageAdded(page: IPage) {
+  private _onPageAdded(page: IPage): void {
     const { onPageAdded } = this.props;
 
     // console.log('page added', page.startIndex, this.state.pages.map(page => page.key).join(', '));
@@ -711,7 +711,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Called when a page has been removed from the DOM. */
-  private _onPageRemoved(page: IPage) {
+  private _onPageRemoved(page: IPage): void {
     const { onPageRemoved } = this.props;
 
     // console.log('  --- page removed', page.startIndex, this.state.pages.map(page => page.key).join(', '));
@@ -911,7 +911,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
-  private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
+  private _updateRenderRects(props?: IListProps, forceUpdate?: boolean): void {
     props = props || this.props;
     const { renderedWindowsAhead, renderedWindowsBehind } = props;
     const { pages } = this.state;

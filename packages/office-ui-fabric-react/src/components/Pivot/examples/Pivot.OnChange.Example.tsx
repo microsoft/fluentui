@@ -8,7 +8,7 @@ import {
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class PivotOnChangeExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Pivot linkSize={ PivotLinkSize.large } linkFormat={ PivotLinkFormat.tabs } onLinkClick={ this.onLinkClick }>

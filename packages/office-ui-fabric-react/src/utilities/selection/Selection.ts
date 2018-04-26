@@ -68,7 +68,7 @@ export class Selection implements ISelection {
       '';
   }
 
-  public setChangeEvents(isEnabled: boolean, suppressChange?: boolean) {
+  public setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void {
     this._changeEventSuppressionCount += isEnabled ? -1 : 1;
 
     if (this._changeEventSuppressionCount === 0 && this._hasChanged) {
@@ -106,7 +106,7 @@ export class Selection implements ISelection {
    * Otherwise, shouldClear should be set to true, so that selection is
    * cleared.
    */
-  public setItems(items: IObjectWithKey[], shouldClear = true) {
+  public setItems(items: IObjectWithKey[], shouldClear: boolean = true): void {
     const newKeyToIndexMap: { [key: string]: number } = {};
     const newUnselectableIndices: { [key: string]: boolean } = {};
     let hasSelectionChanged = false;

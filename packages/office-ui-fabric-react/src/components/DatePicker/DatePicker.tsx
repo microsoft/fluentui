@@ -112,6 +112,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     showMonthPickerAsOverlay: false,
     strings: DEFAULT_STRINGS,
     highlightCurrentMonth: false,
+    highlightSelectedMonth: false,
     borderless: false,
     pickerAriaLabel: 'Calender',
     showWeekNumbers: false,
@@ -140,7 +141,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillReceiveProps(nextProps: IDatePickerProps) {
+  public componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
     if (compareDates(this.props.minDate!, nextProps.minDate!) &&
@@ -183,7 +184,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       firstDayOfWeek,
       strings,
@@ -234,7 +235,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             readOnly={ !allowTextInput }
             value={ formattedDate }
             componentRef={ this._textField }
-            role={ allowTextInput ? 'combobox' : 'menu' }
+            role={ 'button' }
           />
         </div>
         { isDatePickerShown && (
@@ -261,6 +262,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
+              highlightSelectedMonth={ this.props.highlightSelectedMonth }
               showWeekNumbers={ this.props.showWeekNumbers }
               firstWeekOfYear={ this.props.firstWeekOfYear }
               showGoToToday={ this.props.showGoToToday }
@@ -381,7 +383,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._onTextFieldClick(ev);
   }
 
-  private _showDatePickerPopup() {
+  private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
       this.setState({
