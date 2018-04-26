@@ -71,7 +71,7 @@ Object {
     &::-moz-focus-inner {
       border: 0;
     }
-    .ms-Fabric.is-focusVisible &:focus:after {
+    .ms-Fabric--isFocusVisible &:focus:after {
       border: 1px solid #ffffff;
       bottom: 1px;
       content: "";
@@ -126,7 +126,7 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
