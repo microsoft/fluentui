@@ -160,12 +160,6 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/CoachmarkComponentPage').CoachmarkComponentPage))
         },
         {
-          title: 'Chiclet',
-          url: '#/components/chiclet',
-          component: () => <LoadingComponent title='Chiclet' />,
-          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ChicletComponentPage').ChicletComponentPage))
-        },
-        {
           title: 'ChoiceGroup',
           url: '#/components/choicegroup',
           component: () => <LoadingComponent title='ChoiceGroup' />,
