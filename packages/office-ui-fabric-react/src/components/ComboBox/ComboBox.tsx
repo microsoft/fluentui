@@ -1,40 +1,40 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps, IComboBoxOptionStyles } from './ComboBox.types';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout } from '../../Callout';
-import { Label } from '../../Label';
-import { Checkbox } from '../../Checkbox';
+
 import {
   CommandButton,
-  IconButton,
-  IButtonStyles
+  IButtonStyles,
+  IconButton
 } from '../../Button';
-import { IAutofill, Autofill } from '../Autofill/index';
+import { Callout } from '../../Callout';
+import { Checkbox } from '../../Checkbox';
+import { KeytipData } from '../../KeytipData';
+import { Label } from '../../Label';
 import {
   BaseComponent,
+  KeyCodes,
+  createRef,
+  css,
+  customizable,
   divProperties,
   findIndex,
   getId,
   getNativeProps,
-  KeyCodes,
-  customizable,
-  css,
-  createRef,
   shallowCompare
 } from '../../Utilities';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import {
-  getStyles,
-  getOptionStyles,
-  getCaretDownButtonStyles
-} from './ComboBox.styles';
+import { Autofill, IAutofill } from '../Autofill/index';
 import {
   IComboBoxClassNames,
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
-import { KeytipData } from '../../KeytipData';
-import { BaseButton, Button } from 'src/index.bundle';
+import {
+  getCaretDownButtonStyles,
+  getOptionStyles,
+  getStyles
+} from './ComboBox.styles';
+import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
 
 export interface IComboBoxState {
 

@@ -7,8 +7,6 @@ import {
   IOverflowSetItemProps,
   OverflowSet
 } from 'office-ui-fabric-react/lib/OverflowSet';
-/* tslint:disable-next-line:no-unused-variable */
-import * as stylesImport from './OverflowSet.Example.scss';
 
 export class OverflowSetVerticalExample extends BaseComponent<any, any> {
 

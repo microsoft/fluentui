@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.33.1",
+      "tag": "@uifabric/experiments_v5.33.1",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "a15bb064e6ec7551c593730e266b09f0873784dc",
+            "comment": "Remove wordWrap setting."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "56c4cfb63266ef8b1952d967598bf4044a7eed7a",
+            "comment": "Fix bad aria-label prop in Tile"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.88.0 <6.0.0` to `>=5.89.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.0",
       "tag": "@uifabric/experiments_v5.33.0",
       "date": "Mon, 23 Apr 2018 10:24:54 GMT",

@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.28.0",
+      "tag": "@uifabric/utilities_v5.28.0",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6bfddc1c44aa7afcdf053467985490027eb5edcd",
+            "comment": "Adding `isDirectionalKeyCode` helper."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.0 <6.0.0` to `>=5.16.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.27.0",
       "tag": "@uifabric/utilities_v5.27.0",
       "date": "Mon, 23 Apr 2018 10:24:54 GMT",
