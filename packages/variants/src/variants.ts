@@ -14,7 +14,7 @@ function makeThemeFromPartials(
     ...originalTheme,
     ...{
       palette: { ...originalTheme.palette, ...partialPalette },
-      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
+      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic },
     }
   });
 }
