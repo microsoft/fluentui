@@ -8,9 +8,9 @@ import {
   KeyCodes,
   KeytipTransitionModifier,
   IKeytipTransitionKey,
-  ktpLayerId,
-  ktpAriaSeparator,
-  ktpAriaSeparatorId,
+  KTP_LAYER_ID,
+  KTP_ARIA_SEPERATOR,
+  KTP_ARIA_SEPERATOR_ID,
   classNamesFunction,
   convertSequencesToKeytipID,
   transitionKeysContain,
@@ -94,12 +94,12 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this.currentSequence = '';
 
     // Add keytip listeners
-    this._events.on(this._keytipManager, KeytipEvents.keytipAdded, this._onKeytipAdded);
-    this._events.on(this._keytipManager, KeytipEvents.keytipUpdated, this._onKeytipUpdated);
-    this._events.on(this._keytipManager, KeytipEvents.keytipRemoved, this._onKeytipRemoved);
-    this._events.on(this._keytipManager, KeytipEvents.persistedKeytipAdded, this._onPersistedKeytipAdded);
-    this._events.on(this._keytipManager, KeytipEvents.persistedKeytipRemoved, this._onPersistedKeytipRemoved);
-    this._events.on(this._keytipManager, KeytipEvents.persistedKeytipExecute, this._onPersistedKeytipExecute);
+    this._events.on(this._keytipManager, KeytipEvents.KEYTIP_ADDED, this._onKeytipAdded);
+    this._events.on(this._keytipManager, KeytipEvents.KEYTIP_UPDATED, this._onKeytipUpdated);
+    this._events.on(this._keytipManager, KeytipEvents.KEYTIP_REMOVED, this._onKeytipRemoved);
+    this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_ADDED, this._onPersistedKeytipAdded);
+    this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_REMOVED, this._onPersistedKeytipRemoved);
+    this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
   }
 
   /**
@@ -128,8 +128,8 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
     return (
       <Layer getStyles={ getLayerStyles }>
-        <span id={ ktpLayerId } className={ this._classNames.innerContent }>{ content }</span>
-        <span id={ ktpAriaSeparatorId } className={ this._classNames.innerContent }>{ ktpAriaSeparator }</span>
+        <span id={ KTP_LAYER_ID } className={ this._classNames.innerContent }>{ content }</span>
+        <span id={ KTP_ARIA_SEPERATOR_ID } className={ this._classNames.innerContent }>{ KTP_ARIA_SEPERATOR }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return (
             <span

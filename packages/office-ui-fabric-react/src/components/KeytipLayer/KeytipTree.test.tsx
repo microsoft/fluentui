@@ -2,9 +2,9 @@ import { IKeytipProps } from '../../Keytip';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
 import {
-  ktpSeparator,
-  ktpFullPrefix,
-  ktpLayerId
+  KTP_ARIA_SEPERATOR,
+  KTP_FULL_PREFIX,
+  KTP_LAYER_ID
 } from '../../Utilities';
 
 let keytipTree = new KeytipTree();
@@ -22,27 +22,27 @@ let keytipTree = new KeytipTree();
  */
 
 // Node B
-const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
+const keytipIdB = KTP_FULL_PREFIX + 'c' + KTP_ARIA_SEPERATOR + 'b';
 const keytipSequenceB: string[] = ['c', 'b'];
 const keytipPropsB = createKeytipProps(keytipSequenceB);
 const uniqueIdB = '1';
 // Node C
-const keytipIdC = ktpFullPrefix + 'c';
+const keytipIdC = KTP_FULL_PREFIX + 'c';
 const keytipSequenceC: string[] = ['c'];
 const keytipPropsC = createKeytipProps(keytipSequenceC);
 const uniqueIdC = '2';
 // Node D
-const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + 'd';
+const keytipIdD = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + 'd';
 const keytipSequenceD: string[] = ['e', 'd'];
 const keytipPropsD = createKeytipProps(keytipSequenceD);
 const uniqueIdD = '3';
 // Node E
-const keytipIdE = ktpFullPrefix + 'e';
+const keytipIdE = KTP_FULL_PREFIX + 'e';
 const keytipSequenceE: string[] = ['e'];
 const keytipPropsE = createKeytipProps(keytipSequenceE);
 const uniqueIdE = '4';
 // Node F
-const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + 'f';
+const keytipIdF = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + 'f';
 const keytipSequenceF: string[] = ['e', 'f'];
 const keytipPropsF = createKeytipProps(keytipSequenceF);
 const uniqueIdF = '5';
@@ -58,14 +58,14 @@ function verifySampleTree() {
   expect(nodeB.parent).toEqual(keytipIdC);
   expect(nodeB.children).toHaveLength(0);
 
-  expect(nodeC.parent).toEqual(ktpLayerId);
+  expect(nodeC.parent).toEqual(KTP_LAYER_ID);
   expect(nodeC.children).toHaveLength(1);
   expect(nodeC.children).toContain(keytipIdB);
 
   expect(nodeD.parent).toEqual(keytipIdE);
   expect(nodeD.children).toHaveLength(0);
 
-  expect(nodeE.parent).toEqual(ktpLayerId);
+  expect(nodeE.parent).toEqual(KTP_LAYER_ID);
   expect(nodeE.children).toHaveLength(2);
   expect(nodeE.children).toContain(keytipIdD);
   expect(nodeE.children).toContain(keytipIdF);
@@ -96,11 +96,11 @@ describe('KeytipTree', () => {
 
   it('constructor creates a root node', () => {
     // Tree root ID should be the layer's ID
-    expect(keytipTree.root.id).toEqual(ktpLayerId);
+    expect(keytipTree.root.id).toEqual(KTP_LAYER_ID);
     // Tree root should not have any children
     expect(keytipTree.root.children).toHaveLength(0);
     // Only the root should be specified in the nodeMap
-    expect(keytipTree.getNode(ktpLayerId)).toBeDefined();
+    expect(keytipTree.getNode(KTP_LAYER_ID)).toBeDefined();
     expect(Object.keys(keytipTree.nodeMap)).toHaveLength(1);
   });
 
@@ -116,7 +116,7 @@ describe('KeytipTree', () => {
       // Test TreeNode C properties
       expect(nodeC.id).toEqual(keytipIdC);
       expect(nodeC.children).toHaveLength(0);
-      expect(nodeC.parent).toEqual(ktpLayerId);
+      expect(nodeC.parent).toEqual(KTP_LAYER_ID);
     });
 
     it('two levels from root', () => {
@@ -243,7 +243,7 @@ describe('KeytipTree', () => {
       // Verify that C is in the node map
       const nodeC = keytipTree.getNode(keytipIdC)!;
       // Verify that C's parent is the root
-      expect(nodeC.parent).toEqual(ktpLayerId);
+      expect(nodeC.parent).toEqual(KTP_LAYER_ID);
       // Verify that the root has C as a child
       expect(keytipTree.root.children).toHaveLength(1);
       expect(keytipTree.root.children).toContain(keytipIdC);
@@ -293,7 +293,7 @@ describe('KeytipTree', () => {
      */
 
     // Node Q
-    const keytipIdQ = ktpFullPrefix + 'q';
+    const keytipIdQ = KTP_FULL_PREFIX + 'q';
     const keytipSequenceQ: string[] = ['q'];
     const keytipPropsQ = createKeytipProps(keytipSequenceQ);
     const uniqueIdQ = '1';
@@ -309,13 +309,13 @@ describe('KeytipTree', () => {
     const uniqueIdP = '3';
 
     // Node E1
-    const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
+    const keytipIdE1 = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + '1';
     const keytipSequenceE1: string[] = ['e1'];
     const keytipPropsE1 = createKeytipProps(keytipSequenceE1);
     const uniqueIdE1 = '4';
 
     // Node E2
-    const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+    const keytipIdE2 = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + '2';
     const keytipSequenceE2: string[] = ['e2'];
     const keytipPropsE2 = createKeytipProps(keytipSequenceE2);
     const uniqueIdE2 = '5';

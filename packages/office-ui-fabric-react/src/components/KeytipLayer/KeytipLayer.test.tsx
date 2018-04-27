@@ -6,8 +6,8 @@ import { IKeytipProps } from '../../Keytip';
 import {
   KeytipTransitionModifier,
   createRef,
-  ktpFullPrefix,
-  ktpSeparator,
+  KTP_FULL_PREFIX,
+  KTP_ARIA_SEPERATOR,
   find,
   EventGroup,
   KeytipEvents
@@ -21,21 +21,21 @@ describe('KeytipLayer', () => {
   let ktpTree: KeytipTree;
 
   // Sample keytips
-  const keytipIdB = ktpFullPrefix + 'b';
+  const keytipIdB = KTP_FULL_PREFIX + 'b';
   const uniqueIdB = '1';
   const keytipB: IKeytipProps = {
     content: 'B',
     keySequences: ['b']
   };
 
-  const keytipIdC = ktpFullPrefix + 'c';
+  const keytipIdC = KTP_FULL_PREFIX + 'c';
   const uniqueIdC = '2';
   const keytipC: IKeytipProps = {
     content: 'C',
     keySequences: ['c']
   };
 
-  const keytipIdD = ktpFullPrefix + 'c' + ktpSeparator + 'd';
+  const keytipIdD = KTP_FULL_PREFIX + 'c' + KTP_ARIA_SEPERATOR + 'd';
   const uniqueIdD = '3';
   const keytipD: IKeytipProps = {
     content: 'D',
@@ -48,14 +48,14 @@ describe('KeytipLayer', () => {
     keySequences: ['e1']
   };
 
-  const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+  const keytipIdE2 = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + '2';
   const uniqueIdE2 = '5';
   const keytipE2: IKeytipProps = {
     content: 'E2',
     keySequences: ['e2']
   };
 
-  const keytipIdG = ktpFullPrefix + 'g';
+  const keytipIdG = KTP_FULL_PREFIX + 'g';
   const uniqueIdG = '6';
   const keytipG: IKeytipProps = {
     content: 'G',
@@ -390,7 +390,7 @@ describe('KeytipLayer', () => {
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
-      EventGroup.raise(ktpMgr, KeytipEvents.keytipAdded, {
+      EventGroup.raise(ktpMgr, KeytipEvents.KEYTIP_ADDED, {
         keytip: {
           content: 'X',
           keySequences: ['b', 'x']
