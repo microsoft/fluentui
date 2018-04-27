@@ -55,7 +55,7 @@ export class DetailsListCompactComponentPage extends React.Component<any, any> {
         componentName='DetailsListCompactExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
-          <ExampleCard title='Compact DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } /*code={ DetailsListCompactExampleCode }*/>
+          <ExampleCard title='Compact DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListCompactExampleCode }>
             <DetailsListCompactExample />
           </ExampleCard>
         }
