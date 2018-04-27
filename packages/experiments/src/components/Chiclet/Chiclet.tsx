@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChicletProps, ChicletType } from './Chiclet.types';
+import { IChicletProps, ChicletSize } from './Chiclet.types';
 import { IChicletCardProps } from './ChicletCard.types';
 import { ChicletCard } from './ChicletCard';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -28,7 +28,7 @@ export class Chiclet extends React.Component<IChicletProps, IChicletCardProps> {
     }
 
     switch (size) {
-      case ChicletType.medium:
+      case ChicletSize.medium:
         return (
           <ChicletCard {...chicletCardProps} onClick={ this._onClick } actions={ actionsToIButtonProps } />
         );
@@ -40,7 +40,7 @@ export class Chiclet extends React.Component<IChicletProps, IChicletCardProps> {
     }
   }
 
-  private _onClick(): void {
+  private _onClick(): void { // @todo: default click handler
     console.log("You clicked the Chiclet");
   }
 }

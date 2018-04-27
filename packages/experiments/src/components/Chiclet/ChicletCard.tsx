@@ -21,8 +21,8 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
   private _classNames: IChicletCardStyles = {};
 
   public render() {
-    const { styles: customStyles, title, ogType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, onClickHref, className, actions, theme } = this.props;
-    const actionable = (onClick || onClickHref) ? true : false;
+    const { styles: customStyles, title, ogType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, className, actions, theme } = this.props;
+    const actionable = (onClick) ? true : false;
 
     this._classNames = getClassNames(theme!, customStyles);
 
@@ -79,7 +79,7 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
         height={ imageHeight }
         src={ TestImages.documentPreview }
         role='presentation'
-        alt={ imageAlt ? imageAlt : "Preview image for the file" }
+        alt={ imageAlt ? imageAlt : undefined }
       />
     );
 
@@ -119,25 +119,9 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._onAction(ev);
-  }
-
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter) {
-      this._onAction(ev);
-    }
-  }
-
-  private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
-    const { onClick, onClickHref } = this.props;
-
+    const { onClick } = this.props;
     if (onClick) {
       onClick(ev);
-    } else if (!onClick && onClickHref) {
-      // If no onClick Function was provided and we do have an onClickHref, redirect to the onClickHref
-      window.location.href = onClickHref;
-      ev.preventDefault();
-      ev.stopPropagation();
     }
   }
 

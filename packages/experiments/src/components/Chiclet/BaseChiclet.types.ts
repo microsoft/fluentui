@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseChiclet } from './BaseChiclet';
-import { ChicletType } from './Chiclet.types';
+import { ChicletSize } from './Chiclet.types';
 
 export interface IBaseChiclet {
 
@@ -26,7 +26,7 @@ export interface IBaseChicletProps extends React.Props<BaseChiclet> {
   /**
    * Chiclet size to render
    */
-  size?: ChicletType;
+  size?: ChicletSize;
 
   /**
    * Action icon buttons to render.

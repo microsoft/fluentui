@@ -15,7 +15,7 @@ export interface IChicletProps extends React.Props<Chiclet> {
   /**
    * Chiclet size to render
    */
-  size?: ChicletType;
+  size?: ChicletSize;
 
   /**
    * Action icon buttons to render.
@@ -23,7 +23,7 @@ export interface IChicletProps extends React.Props<Chiclet> {
   actions?: string[];
 }
 
-export enum ChicletType {
+export enum ChicletSize {
   /**
    * X-Small Chiclet
    */

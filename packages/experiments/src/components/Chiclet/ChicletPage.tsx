@@ -37,7 +37,7 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        donts={
+        donts={ // @todo: fill in description
           <div>
             <ul>
               <li></li>
