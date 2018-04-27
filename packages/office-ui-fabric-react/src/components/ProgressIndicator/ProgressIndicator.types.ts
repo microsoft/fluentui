@@ -54,6 +54,12 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
    * @deprecated
    */
   title?: string;
+
+  /**
+   * Height of the ProgressIndicator
+   * @default 2
+   */
+  barHeight?: number;
 }
 
 export interface IProgressIndicatorStyleProps {
@@ -67,7 +73,7 @@ export interface IProgressIndicatorStyleProps {
    */
   className?: string;
   indeterminate?: boolean;
-  smoothTransition?: boolean;
+  barHeight?: number;
 }
 
 export interface IProgressIndicatorStyles {

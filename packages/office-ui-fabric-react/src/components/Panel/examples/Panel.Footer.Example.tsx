@@ -11,7 +11,7 @@ export class PanelFooterExample extends React.Component<{}, {
     this.state = { showPanel: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton

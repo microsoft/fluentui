@@ -18,7 +18,7 @@ const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/
 const OverflowSetVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
 
 export class OverflowSetPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='OverflowSet'
@@ -29,6 +29,7 @@ export class OverflowSetPage extends React.Component<IComponentDemoPageProps, an
             { require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md') }
           </PageMarkdown>
         }
+        allowNativeProps={ true }
         exampleCards={
           <LayerHost>
             <ExampleCard title='OverflowSet Basic Example' code={ OverflowSetBasicExampleCode }>

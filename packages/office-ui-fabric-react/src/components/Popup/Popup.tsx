@@ -33,7 +33,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
@@ -71,7 +71,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
     return (
@@ -106,13 +106,13 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  private _updateScrollBarAsync() {
+  private _updateScrollBarAsync(): void {
     this._async.requestAnimationFrame(() => {
       this._getScrollBar();
     });
   }
 
-  private _getScrollBar() {
+  private _getScrollBar(): void {
     let needsVerticalScrollBar = false;
     if (this._root && this._root.current && this._root.current.firstElementChild) {
       // ClientHeight returns the client height of an element rounded to an
@@ -137,11 +137,11 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  private _onFocus() {
+  private _onFocus(): void {
     this._containsFocus = true;
   }
 
-  private _onBlur() {
+  private _onBlur(): void {
     this._containsFocus = false;
   }
 }

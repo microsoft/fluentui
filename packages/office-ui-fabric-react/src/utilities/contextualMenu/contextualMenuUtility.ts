@@ -25,7 +25,7 @@ export function getIsChecked(item: IContextualMenuItem): boolean | null {
   return null;
 }
 
-export function hasSubmenu(item: IContextualMenuItem) {
+export function hasSubmenu(item: IContextualMenuItem): boolean {
   return !!(item.subMenuProps || item.items);
 }
 

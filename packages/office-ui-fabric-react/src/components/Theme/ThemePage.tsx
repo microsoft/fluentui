@@ -39,7 +39,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     // Don't mutate state to display lists
     const palette = [...this.state.palette];
     const semanticColors = [...this.state.semanticColors];
@@ -133,7 +133,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     );
   }
 
-  private _onSwatchClicked(item: any, index: number, list: string, ev: React.MouseEvent<HTMLElement>) {
+  private _onSwatchClicked(item: any, index: number, list: string, ev: React.MouseEvent<HTMLElement>): void {
     this.setState({
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
@@ -144,7 +144,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     });
   }
 
-  private _onColorChanged(index: number, newColor: string) {
+  private _onColorChanged(index: number, newColor: string): void {
     const { activeList } = this.state;
     const partialPalette: Partial<IPalette> = {};
     const partialSemanticColors: Partial<ISemanticColors> = {};
@@ -176,7 +176,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
     loadTheme({ palette: partialTheme });
   }
 
-  private _onPickerDismiss() {
+  private _onPickerDismiss(): void {
     this.setState({
       colorPickerProps: undefined
     });

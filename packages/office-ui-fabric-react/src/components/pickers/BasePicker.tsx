@@ -67,18 +67,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.items;
   }
 
-  public componentWillUpdate(newProps: P, newState: IBasePickerState) {
+  public componentWillUpdate(newProps: P, newState: IBasePickerState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.selection.setItems(this.state.items);
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  public componentWillReceiveProps(newProps: P) {
+  public componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
     if (newItems) {
@@ -166,7 +166,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { suggestedDisplayValue } = this.state;
     const {
       className,
@@ -253,6 +253,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
           isResultsFooterVisible={ this.state.isResultsFooterVisible }
           refocusSuggestions={ this.refocusSuggestions }
+          removeSuggestionAriaLabel={ this.props.removeButtonAriaLabel }
           { ...this.props.pickerSuggestionsProps as any }
         />
       </Callout>
@@ -444,11 +445,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onInputBlur = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    // Only blur if an unrelated element gets focus. Otherwise treat it as though it still has focus.
-    if (!elementContains(this.root.current!, ev.relatedTarget as HTMLElement)) {
+    if (this.props.inputProps && this.props.inputProps.onBlur) {
+      this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+    }
+    // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+    if (!elementContains(this.root.value!, ev.relatedTarget as HTMLElement)) {
       this.setState({ isFocused: false });
-      if (this.props.inputProps && this.props.inputProps.onBlur) {
-        this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+      if (this.props.onBlur) {
+        this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
       }
     }
   }
@@ -675,7 +679,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
    */
-  private _updateSelectedItems(items: T[], focusIndex?: number) {
+  private _updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
       this.onChange(items);
@@ -686,7 +690,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number) {
+  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
     this.resetFocus(focusIndex);
     this.onChange(items);
   }
@@ -699,7 +703,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  private _onValidateInput() {
+  private _onValidateInput(): void {
     if (this.props.onValidateInput && this.input.current && (this.props.onValidateInput as any)(this.input.current.value) !== ValidationState.invalid && this.props.createGenericItem) {
       const itemToConvert = this.props.createGenericItem(this.input.current.value, this.props.onValidateInput(this.input.current.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
@@ -717,7 +721,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 }
 
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
-  public render() {
+  public render(): JSX.Element {
     const { suggestedDisplayValue } = this.state;
     const {
       className,

@@ -129,7 +129,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       disabled,
       label,
@@ -202,8 +202,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             type='text'
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
-            aria-valuenow={ !Number.isNaN(Number(value)) ? Number(value) : undefined }
-            aria-valuetext={ Number.isNaN(Number(value)) ? value : undefined }
+            aria-valuenow={ !isNaN(Number(value)) ? Number(value) : undefined }
+            aria-valuetext={ isNaN(Number(value)) ? value : undefined }
             aria-valuemin={ min }
             aria-valuemax={ max }
             onBlur={ this._onBlur }
@@ -331,7 +331,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return String(newValue);
   }
 
-  private _onChange() {
+  private _onChange(): void {
     /**
      * A noop input change handler.
      * https://github.com/facebook/react/issues/7027.

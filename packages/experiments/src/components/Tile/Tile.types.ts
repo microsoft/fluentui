@@ -120,10 +120,10 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
   /**
    * The accessible label for the selection checkbox.
    *
-   * @type {string | boolean}
+   * @type {string}
    * @memberof ITileProps
    */
-  toggleSelectionAriaLabel?: string | boolean;
+  toggleSelectionAriaLabel?: string;
 
   /**
    * Link ref

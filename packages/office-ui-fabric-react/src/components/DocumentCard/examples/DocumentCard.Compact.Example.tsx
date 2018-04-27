@@ -10,7 +10,7 @@ import {
 import { TestImages } from '../../../common/TestImages';
 
 export class DocumentCardCompactExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     const previewProps: IDocumentCardPreviewProps = {
       getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
       previewImages: [

@@ -145,7 +145,7 @@
     "no-trailing-whitespace": true,
     "no-unnecessary-semicolons": true,
     "no-unused-expression": false,
-    "no-unused-variable": true,
+    "no-unused-variable": false, // defer to typescript's no unused local instead
     "no-use-before-declare": true,
     "no-with-statement": true,
     "no-var-keyword": true,

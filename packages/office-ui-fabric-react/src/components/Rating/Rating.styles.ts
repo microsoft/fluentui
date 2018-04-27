@@ -66,6 +66,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       'ms-Rating-button',
       {
         background: 'none',
+        backgroundColor: 'transparent',
         margin: '3px 3px 0px 0px',
         padding: '0px',
         border: 'none',

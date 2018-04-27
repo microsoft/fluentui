@@ -19,6 +19,12 @@ export interface IHSV {
   v: number;
 }
 
+export interface IHSL {
+  h: number;
+  s: number;
+  l: number;
+}
+
 export interface IColor extends IRGB, IHSV {
   hex: string;
   str: string;
@@ -241,13 +247,13 @@ export function updateA(color: IColor, a: number): IColor {
   });
 }
 
-function _numberToPaddedHex(num: number) {
+function _numberToPaddedHex(num: number): string {
   const hex = num.toString(16);
 
   return hex.length === 1 ? '0' + hex : hex;
 }
 
-function _named(str: string) {
+function _named(str: string): IRGB | undefined {
   const c = (COLOR_VALUES as any)[str.toLowerCase()];
 
   if (c) {
@@ -260,7 +266,7 @@ function _named(str: string) {
   }
 }
 
-function _rgb(str: string) {
+function _rgb(str: string): IRGB | undefined {
   if (0 === str.indexOf('rgb(')) {
     str = (str.match(/rgb\(([^)]+)\)/)!)[1];
 
@@ -275,7 +281,7 @@ function _rgb(str: string) {
   }
 }
 
-function _rgba(str: string) {
+function _rgba(str: string): IRGB | undefined {
   if (str.indexOf('rgba(') === 0) {
     str = (str.match(/rgba\(([^)]+)\)/)!)[1];
 
@@ -290,7 +296,7 @@ function _rgba(str: string) {
   }
 }
 
-function _hex6(str: string) {
+function _hex6(str: string): IRGB | undefined {
   if ('#' === str[0] && 7 === str.length) {
     return {
       r: parseInt(str.slice(1, 3), 16),
@@ -301,7 +307,7 @@ function _hex6(str: string) {
   }
 }
 
-function _hex3(str: string) {
+function _hex3(str: string): IRGB | undefined {
   if ('#' === str[0] && 4 === str.length) {
     return {
       r: parseInt(str[1] + str[1], 16),
@@ -312,7 +318,7 @@ function _hex3(str: string) {
   }
 }
 
-function _hsl(str: string) {
+function _hsl(str: string): IRGB | undefined {
   if (str.indexOf('hsl(') === 0) {
     str = (str.match(/hsl\(([^)]+)\)/)!)[1];
     const parts = str.split(/ *, */);
@@ -328,7 +334,7 @@ function _hsl(str: string) {
   }
 }
 
-function _hsla(str: string) {
+function _hsla(str: string): IRGB | undefined {
   if (str.indexOf('hsla(') === 0) {
     str = (str.match(/hsla\(([^)]+)\)/)!)[1];
 

@@ -12,15 +12,15 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
     return false;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     LayerBase.notifyHostChanged(this.props.id!);
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     LayerBase.notifyHostChanged(this.props.id!);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div { ...this.props } className={ css('ms-LayerHost', this.props.className) } />
     );

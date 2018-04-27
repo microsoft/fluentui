@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/experiments",
-      "comment": "Update createRef to match React.createRef api",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "mark@thedutchies.com"
+  "email": "vibailly@microsoft.com"
 }

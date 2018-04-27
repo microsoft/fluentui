@@ -96,7 +96,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   }
 
-  public componentWillReceiveProps(newProps: IDropdownProps) {
+  public componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
     const selectedKeyProp: keyof IDropdownProps = this.props.multiSelect ? 'selectedKeys' : 'selectedKey';
@@ -121,7 +121,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Primary Render
-  public render() {
+  public render(): JSX.Element {
     const id = this._id;
     let {
       disabled
@@ -219,9 +219,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  public focus(shouldOpenOnFocus?: boolean) {
+  public focus(shouldOpenOnFocus?: boolean): void {
     if (this._dropDown.current && this._dropDown.current.tabIndex !== -1) {
       this._dropDown.current.focus();
+
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
@@ -230,7 +231,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
-  public setSelectedIndex(index: number) {
+  public setSelectedIndex(index: number): void {
     const { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
@@ -585,7 +586,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
   }
 
-  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
     if (!this._isScrollIdle) {
       return;
     }
@@ -594,7 +595,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     targetElement.focus();
   }
 
-  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
 
     if (!this._isScrollIdle || document.activeElement === targetElement) {
@@ -654,7 +655,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Get all selected options for multi-select mode
-  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]) {
+  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]): IDropdownOption[] {
     const selectedOptions: IDropdownOption[] = [];
     for (const index of selectedIndices) {
       const option = options[index];
