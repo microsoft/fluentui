@@ -88,7 +88,7 @@ describe('Breadcrumb', () => {
       { text: 'TestText', key: 'TestKey', onClick: clickCallback }
     ];
 
-    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const component = ReactTestUtils.renderIntoDocument(
       <Breadcrumb
         items={ items }
       />
@@ -110,7 +110,7 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
-    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const component = ReactTestUtils.renderIntoDocument(
       <Breadcrumb
         items={ items }
         maxDisplayedItems={ 2 }
