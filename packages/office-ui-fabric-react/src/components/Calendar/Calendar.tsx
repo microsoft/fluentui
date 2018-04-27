@@ -170,22 +170,23 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   componentRef={ this._dayPicker }
                 />
                 }
-
-                { isMonthPickerVisible && <CalendarMonth
-                  navigatedDate={ navigatedMonthDate! }
-                  selectedDate={ navigatedDayDate! }
-                  strings={ strings! }
-                  onNavigateDate={ this._onNavigateMonthDate }
-                  today={ this.props.today }
-                  highlightCurrentMonth={ highlightCurrentMonth! }
-                  highlightSelectedMonth={ highlightSelectedMonth! }
-                  onHeaderSelect={ onHeaderSelect }
-                  navigationIcons={ navigationIcons! }
-                  dateTimeFormatter={ this.props.dateTimeFormatter! }
-                  minDate={ minDate }
-                  maxDate={ maxDate }
-                  componentRef={ this._monthPicker }
-                /> }
+                { isDayPickerVisible && isMonthPickerVisible && <div className={ styles.divider } /> }
+                { isMonthPickerVisible &&
+                  <CalendarMonth
+                    navigatedDate={ navigatedMonthDate! }
+                    selectedDate={ navigatedDayDate! }
+                    strings={ strings! }
+                    onNavigateDate={ this._onNavigateMonthDate }
+                    today={ this.props.today }
+                    highlightCurrentMonth={ highlightCurrentMonth! }
+                    highlightSelectedMonth={ highlightSelectedMonth! }
+                    onHeaderSelect={ onHeaderSelect }
+                    navigationIcons={ navigationIcons! }
+                    dateTimeFormatter={ this.props.dateTimeFormatter! }
+                    minDate={ minDate }
+                    maxDate={ maxDate }
+                    componentRef={ this._monthPicker }
+                  /> }
 
                 { showGoToToday &&
                   <button
@@ -283,12 +284,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       ev.preventDefault();
       this._onGotoToday();
-    } else if (ev.which === KeyCodes.tab && !ev.shiftKey) {
-      if (this.props.onDismiss) {
-        ev.stopPropagation();
-        ev.preventDefault();
-        this.props.onDismiss();
-      }
     }
   }
 

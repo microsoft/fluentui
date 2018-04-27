@@ -20,6 +20,7 @@ import {
 } from '../../Utilities';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import * as stylesImport from './DatePicker.scss';
+import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 const styles: any = stylesImport;
 
 export interface IDatePickerState {
@@ -251,26 +252,28 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
           >
-            <Calendar
-              { ...calendarProps }
-              onSelectDate={ this._onSelectDate }
-              onDismiss={ this._calendarDismissed }
-              isMonthPickerVisible={ this.props.isMonthPickerVisible }
-              showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
-              today={ this.props.today }
-              value={ selectedDate || initialPickerDate }
-              firstDayOfWeek={ firstDayOfWeek }
-              strings={ strings! }
-              highlightCurrentMonth={ this.props.highlightCurrentMonth }
-              highlightSelectedMonth={ this.props.highlightSelectedMonth }
-              showWeekNumbers={ this.props.showWeekNumbers }
-              firstWeekOfYear={ this.props.firstWeekOfYear }
-              showGoToToday={ this.props.showGoToToday }
-              dateTimeFormatter={ this.props.dateTimeFormatter }
-              minDate={ minDate }
-              maxDate={ maxDate }
-              componentRef={ this._calendar }
-            />
+            <FocusTrapZone isClickableOutsideFocusTrap={ true }>
+              <Calendar
+                { ...calendarProps }
+                onSelectDate={ this._onSelectDate }
+                onDismiss={ this._calendarDismissed }
+                isMonthPickerVisible={ this.props.isMonthPickerVisible }
+                showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
+                today={ this.props.today }
+                value={ selectedDate || initialPickerDate }
+                firstDayOfWeek={ firstDayOfWeek }
+                strings={ strings! }
+                highlightCurrentMonth={ this.props.highlightCurrentMonth }
+                highlightSelectedMonth={ this.props.highlightSelectedMonth }
+                showWeekNumbers={ this.props.showWeekNumbers }
+                firstWeekOfYear={ this.props.firstWeekOfYear }
+                showGoToToday={ this.props.showGoToToday }
+                dateTimeFormatter={ this.props.dateTimeFormatter }
+                minDate={ minDate }
+                maxDate={ maxDate }
+                componentRef={ this._calendar }
+              />
+            </FocusTrapZone>
           </Callout>
         ) }
       </div>
@@ -409,10 +412,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _calendarDismissed = (): void => {
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
-
-    if (this._textField.current) {
-      this._textField.current.focus();
-    }
+    // don't need to focus the text box, if necessary the focusTrapZone will do it
   }
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {

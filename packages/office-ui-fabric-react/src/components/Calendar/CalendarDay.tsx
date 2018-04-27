@@ -152,12 +152,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     ['ms-DatePicker-prevMonth--disabled ' + styles.prevMonthIsDisabled]: !prevMonthInBounds
                   }
                 ) }
-                onClick={ this._onSelectPrevMonth }
-                onKeyDown={ this._onPrevMonthKeyDown }
+                disabled={ !prevMonthInBounds }
+                onClick={ prevMonthInBounds ? this._onSelectPrevMonth : undefined }
+                onKeyDown={ prevMonthInBounds ? this._onPrevMonthKeyDown : undefined }
                 aria-controls={ dayPickerId }
                 aria-label={ strings.prevMonthAriaLabel ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()] : undefined }
                 role='button'
-                tabIndex={ 0 }
               >
                 <Icon iconName={ leftNavigationIcon } />
               </button >
@@ -166,12 +166,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   {
                     ['ms-DatePicker-nextMonth--disabled ' + styles.nextMonthIsDisabled]: !nextMonthInBounds
                   }) }
-                onClick={ this._onSelectNextMonth }
-                onKeyDown={ this._onNextMonthKeyDown }
+                disabled={ !nextMonthInBounds }
+                onClick={ nextMonthInBounds ? this._onSelectNextMonth : undefined }
+                onKeyDown={ nextMonthInBounds ? this._onNextMonthKeyDown : undefined }
                 aria-controls={ dayPickerId }
                 aria-label={ strings.nextMonthAriaLabel ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()] : undefined }
                 role='button'
-                tabIndex={ 0 }
               >
                 <Icon iconName={ rightNavigationIcon } />
               </button >

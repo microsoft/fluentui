@@ -8,6 +8,14 @@ $Calendar-day:28px;
 $Calendar-dayPicker-margin: 10px;
 .root {
   @include ms-normalize;
+
+  * {
+    @include focus-border();
+
+    @include high-contrast {
+       @include focus-border(0, WindowText, 2px, false);
+    }
+  }
 }
 
 // Base wrapper for the date picker.
@@ -39,13 +47,15 @@ $Calendar-dayPicker-margin: 10px;
 // The frame and wrap work together to ensure that
 // clicks within the picker don’t reach the holder.
 .frame {
-  padding: 1px;
   position: relative;
 }
 
 .wrap {
-  margin: -1px;
-  padding: 9px;
+  &.goTodaySpacing {
+    min-height: 228px;
+  }
+  min-height: 212px;
+  padding: 12px;
   display: flex;
 }
 
@@ -63,6 +73,13 @@ $Calendar-dayPicker-margin: 10px;
   width: 100%;
 }
 
+.divider {
+  top: 0;
+  margin-top: -12px;
+  margin-bottom: -12px;
+  @include border-right(1px, solid, $ms-color-neutralLight);
+}
+
 // The month and year labels.
 .monthAndYear,
 .year {
@@ -70,7 +87,6 @@ $Calendar-dayPicker-margin: 10px;
   flex-grow: 1;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
-  margin-top: -1px;
   font-weight: $ms-font-weight-semibold;
   padding: 0 5px;
 }
@@ -111,6 +127,14 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  * {
+    @include focus-border(-2px);
+
+    @include high-contrast {
+       @include focus-border(-2px, WindowText, 2px, false);
+    }
+  }
 }
 
 .day {
@@ -149,13 +173,6 @@ $Calendar-dayPicker-margin: 10px;
   cursor: pointer;
   background: $ms-color-neutralLight;
   color: $ms-color-neutralDark;
-}
-
-.day.dayIsHighlighted.dayIsFocused {
-  @include focus-border(1px, $ms-color-white);
-  @include high-contrast {
-    @include focus-border(1px, WindowText);
-  }
 }
 
 // Highlighted and hovered/focused dates.
@@ -212,7 +229,7 @@ $Calendar-dayPicker-margin: 10px;
 .dayIsHighlighted, .dayIsHighlighted:hover, .dayIsHighlighted:active,
 .weekBackground, .weekBackground:hover, .weekBackground:active {
   background: $ms-color-themeLight;
-  color: $ms-color-neutralDark;
+  color: $ms-color-neutralPrimary;
   font-weight: $ms-font-weight-semibold;
 }
 
@@ -291,8 +308,8 @@ $Calendar-dayPicker-margin: 10px;
   text-align: center;
   font-size: $ms-icon-size-s;
   color: $ms-color-neutralPrimary;
+  border-radius: 2px;
   position: relative;
-  top: 2px;
   background-color: transparent;
   border: none;
   padding: 0;
@@ -309,11 +326,18 @@ $Calendar-dayPicker-margin: 10px;
 .nextYearIsDisabled,
 .prevDecadeIsDisabled,
 .nextDecadeIsDisabled {
-  visibility: hidden;
+  color: $ms-color-neutralTertiaryAlt;
+  pointer-events: none;
 }
 
 // Without modifying the Pickadate JS, this transparent
 // button is necessary to toggle the month view.
+.headerToggleView {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+}
+
 .headerToggleView:hover {
   color: $ms-color-black;
   cursor: pointer;
@@ -378,7 +402,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // Button to navigate to the current date.
 .goToday {
-  bottom: 9px;
+  bottom: 0;
   color: $ms-color-themePrimary;
   cursor: pointer;
   @include ms-font-s;
@@ -401,12 +425,12 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .goTodayInlineMonth {
-  top: 208px;
+  top: 212px;
 }
 
-// Additional 30px margin needed when "Go to today" button is visible
+// Additional 28px padding needed when "Go to today" button is visible
 .wrap.goTodaySpacing {
-  margin-bottom: 30px;
+  padding-bottom: 28px;
 }
 
 // State: The picker is showing the year components.
@@ -502,7 +526,6 @@ $Calendar-dayPicker-margin: 10px;
     } // Contains the calendar view for picking a day.
     .dayPicker {
       @include ms-borderBox;
-      @include border-right(1px, solid, $ms-color-neutralLight);
       width: 212px;
       min-height: 200px;
     } // Show the month picker.
@@ -521,7 +544,7 @@ $Calendar-dayPicker-margin: 10px;
       font-size: $ms-font-size-m;
       margin: 0;
       height: $Calendar-day;
-      line-height: 26px;
+      line-height: $Calendar-day;
       display: inline-block;
     } // Reduce the size of the month buttons.
     .monthOption,
@@ -546,10 +569,7 @@ $Calendar-dayPicker-margin: 10px;
       @include ms-right(8px);
       @include text-align(right);
     } // When date and month picker are side-by-side and "Go to today" button is visible no additional margin is needed
-    .wrap.goTodaySpacing {
-      margin-bottom: 12px;
-      min-height: 212px;
-    } // State: The picker is showing the year components.
+    // State: The picker is showing the year components.
     // On larger screens the calendar will remain and the years
     // will replace the months.
     .root.isPickingYears {
@@ -581,25 +601,25 @@ $Calendar-dayPicker-margin: 10px;
       width: auto;
     }
     .monthPicker {
-      @include margin-left(13px);
+      @include margin-left(12px);
     }
     .goToday {
-      @include ms-right(13px);
+      @include ms-right(14px);
       padding: 0 10px;
     }
     .monthComponents {
-      @include margin-right(10px);
+      @include margin-right(12px);
     }
   } //when month picker is only visible
   .monthPickerOnly {
     .wrap {
-      padding: 10px;
+      padding: 12px;
     }
   }
   .monthPickerAsOverlay {
     .wrap {
-      padding-top: 4px;
-      padding-bottom: 4px;
+      padding-bottom: 28px;
+      margin-bottom: 6px;
     }
     .holder {
       height: 240px;
@@ -627,12 +647,6 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-// Custom CSS for fabric-React
-.wrap span:focus,
-.wrap div:focus {
-  @include focus-border(1px, $ms-color-neutralSecondary);
-}
-
 .goToday {
   width: auto;
 }
@@ -642,7 +656,6 @@ $Calendar-dayPicker-margin: 10px;
 .nextYear,
 .prevYear {
   display: inline-block;
-  color: $ms-color-neutralPrimary;
 
   &:hover {
     background-color: $ms-color-neutralLight;
@@ -650,20 +663,13 @@ $Calendar-dayPicker-margin: 10px;
   }
   &:active {
     background-color: $ms-color-themeLight;
-    color: $ms-color-neutralDark;
   }
-}
-
-.nextMonth,
-.nextYear {
-  margin-left: 3px;
-  margin-right: 2px;
 }
 
 .monthIsHighlighted {
   font-weight: $ms-font-weight-semibold;
   background-color: $ms-color-themeLight;
-  color: $ms-color-neutralDark;
+  color: $ms-color-neutralPrimary;
   &.monthOption:hover {
     background-color: $ms-color-themeLight;
   }
