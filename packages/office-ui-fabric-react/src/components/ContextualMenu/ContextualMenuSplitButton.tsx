@@ -31,8 +31,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       totalItemCount,
       hasCheckmarks,
       hasIcons,
-      onItemMouseLeave,
-      onItemMouseMove
+      onItemMouseLeave
     } = this.props;
 
     return (
@@ -101,8 +100,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
-      onItemMouseDown,
-      onItemMouseMove
+      onItemMouseDown
     } = this.props;
 
     const itemProps = {
