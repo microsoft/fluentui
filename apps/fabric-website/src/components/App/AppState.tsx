@@ -202,9 +202,14 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListComponentPage)),
           pages: [
             {
+              title: 'Basic',
+              url: '#/components/detailslist/basic',
+              component: () => <LoadingComponent title='DetailsList - Basic' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListBasicComponentPage))
+            },
+            {
               title: 'Compact',
               url: '#/components/detailslist/compact',
-              name: 'compact',
               component: () => <LoadingComponent title='DetailsList - Compact' />,
               getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListCompactComponentPage))
             },
