@@ -20,6 +20,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       },
       isButton && {
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         cursor: 'pointer',
         display: 'inline',
