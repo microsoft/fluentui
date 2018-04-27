@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "tslib": "^1.7.1",
-    "@uifabric/styling": ">=5.26.0 <6.0.0"
+    "@uifabric/styling": ">=5.27.0 <6.0.0"
   }
 }

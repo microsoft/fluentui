@@ -50,6 +50,7 @@ let _stylesheet: Stylesheet;
  * @public
  */
 export class Stylesheet {
+  private _lastStyleElement?: HTMLStyleElement;
   private _styleElement?: HTMLStyleElement;
   private _rules: string[] = [];
   private _config: IStyleSheetConfig;
@@ -158,28 +159,29 @@ export class Stylesheet {
   public insertRule(
     rule: string
   ): void {
-    const element = this._getElement();
-    const injectionMode = element ? this._config.injectionMode : InjectionMode.none;
+    const { injectionMode } = this._config;
+    const element = injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
 
-    switch (injectionMode) {
-      case InjectionMode.insertNode:
-        const { sheet } = element!;
+    if (element) {
+      switch (this._config.injectionMode) {
+        case InjectionMode.insertNode:
+          const { sheet } = element!;
 
-        try {
-          // tslint:disable-next-line:no-any
-          (sheet as any).insertRule(rule, (sheet as any).cssRules.length);
-        } catch (e) {
-          /* no-op on errors */
-        }
-        break;
+          try {
+            (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
+          } catch (e) {
+            // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
+            // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
+            // which could be slower and bulkier.
+          }
+          break;
 
-      case InjectionMode.appendChild:
-        _createStyleElement(rule);
-        break;
-
-      default:
-        this._rules.push(rule);
-        break;
+        case InjectionMode.appendChild:
+          element.appendChild(document.createTextNode(rule));
+          break;
+      }
+    } else {
+      this._rules.push(rule);
     }
 
     if (this._config.onInsertRule) {
@@ -212,9 +214,9 @@ export class Stylesheet {
     this._keyToClassName = {};
   }
 
-  private _getElement(): HTMLStyleElement | undefined {
+  private _getStyleElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
-      this._styleElement = _createStyleElement();
+      this._styleElement = this._createStyleElement();
 
       // Reset the style element on the next frame.
       window.requestAnimationFrame(() => {
@@ -223,17 +225,21 @@ export class Stylesheet {
     }
     return this._styleElement;
   }
-}
 
-function _createStyleElement(content?: string): HTMLStyleElement {
-  const styleElement = document.createElement('style');
+  private _createStyleElement(): HTMLStyleElement {
+    const styleElement = document.createElement('style');
 
-  styleElement.setAttribute('data-merge-styles', 'true');
-  styleElement.type = 'text/css';
-  if (content) {
-    styleElement.appendChild(document.createTextNode(content));
+    styleElement.setAttribute('data-merge-styles', 'true');
+    styleElement.type = 'text/css';
+
+    if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
+      document.head.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
+    } else {
+      document.head.appendChild(styleElement);
+    }
+    this._lastStyleElement = styleElement;
+
+    return styleElement;
   }
-  document.head.appendChild(styleElement);
 
-  return styleElement;
 }

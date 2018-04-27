@@ -34,7 +34,6 @@ import {
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
 import { KeytipData } from '../../KeytipData';
-import { BaseButton, Button } from 'src/index.bundle';
 
 export interface IComboBoxState {
 

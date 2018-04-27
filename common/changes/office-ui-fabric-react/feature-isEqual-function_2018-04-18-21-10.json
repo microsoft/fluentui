@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix theme slots for DetailsList header colors",
-      "type": "minor"
+      "comment": "Fix #3607",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "v-jojanz@microsoft.com"
 }
