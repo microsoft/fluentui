@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Apr 2018 10:12:34 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Apr 2018 10:15:52 GMT and should not be manually modified.
+
+## 5.91.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Added optional className property to Calendar
+
+### Patches
+
+- Fix #3607
+- Add a option for custom dividerAs to get item information while rendering
 
 ## 5.90.0
 Thu, 26 Apr 2018 10:12:34 GMT

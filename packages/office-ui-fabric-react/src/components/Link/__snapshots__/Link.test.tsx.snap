@@ -85,6 +85,7 @@ exports[`Link renders Link with no href as a button 1`] = `
   className=
       ms-Link
       {
+        background-color: transparent;
         background: none;
         border: none;
         color: #0078d4;
@@ -177,6 +178,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       ms-Link
       is-disabled
       {
+        background-color: transparent;
         background: none;
         border: none;
         color: #a6a6a6;

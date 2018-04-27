@@ -4,12 +4,22 @@ import {
   HighContrastSelector,
   keyframes,
   noWrap,
+  getGlobalClassNames,
 } from '../../Styling';
 import { getRTL } from '../../Utilities';
 import {
   IProgressIndicatorStyleProps,
   IProgressIndicatorStyles,
 } from './ProgressIndicator.types';
+
+const GlobalClassNames = {
+  root: 'ms-ProgressIndicator',
+  itemName: 'ms-ProgressIndicator-itemName',
+  itemDescription: 'ms-ProgressIndicator-itemDescription',
+  itemProgress: 'ms-ProgressIndicator-itemProgress',
+  progressTrack: 'ms-ProgressIndicator-progressTrack',
+  progressBar: 'ms-ProgressIndicator-progressBar',
+};
 
 const IndeterminateProgress = keyframes({
   '0%': {
@@ -40,13 +50,14 @@ export const getStyles = (
   } = props;
 
   const { palette, semanticColors } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const marginBetweenText = 8;
   const textHeight = 18;
 
   return ({
     root: [
-      'ms-ProgressIndicator',
+      classNames.root,
       {
         fontWeight: FontWeights.regular,
       },
@@ -54,7 +65,7 @@ export const getStyles = (
     ],
 
     itemName: [
-      'ms-ProgressIndicator-itemName',
+      classNames.itemName,
       noWrap,
       {
         color: semanticColors.bodyText,
@@ -65,7 +76,7 @@ export const getStyles = (
     ],
 
     itemDescription: [
-      'ms-ProgressIndicator-itemDescription',
+      classNames.itemDescription,
       {
         color: semanticColors.bodySubtext,
         fontSize: FontSizes.xSmall,
@@ -74,7 +85,7 @@ export const getStyles = (
     ],
 
     itemProgress: [
-      'ms-ProgressIndicator-itemProgress',
+      classNames.itemProgress,
       {
         position: 'relative',
         overflow: 'hidden',
@@ -84,7 +95,7 @@ export const getStyles = (
     ],
 
     progressTrack: [
-      'ms-ProgressIndicator-progressTrack',
+      classNames.progressTrack,
       {
         position: 'absolute',
         width: '100%',
@@ -100,7 +111,7 @@ export const getStyles = (
     ],
 
     progressBar: [
-      'ms-ProgressIndicator-progressBar',
+      classNames.progressBar,
       {
         backgroundColor: palette.themePrimary,
         height: barHeight,
