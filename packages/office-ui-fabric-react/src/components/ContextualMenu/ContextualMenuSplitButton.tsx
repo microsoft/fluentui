@@ -106,7 +106,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     } = this.props;
 
     const itemProps = {
-      onClick: this._onSplitItemClick,
+      onClick: this._onIconItemClick,
       disabled: isItemDisabled(item),
       className: classNames.splitMenu,
       subMenuProps: item.subMenuProps,
@@ -115,10 +115,10 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     } as IContextualMenuItem;
 
     const buttonProps = assign({}, getNativeProps(itemProps, buttonProperties), {
-      onMouseEnter: this._onItemMouseEnterSecondary,
+      onMouseEnter: this._onItemMouseEnterIcon,
       onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
       onMouseDown: (ev: any) => onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
-      onMouseMove: this._onItemMouseMoveSecondary,
+      onMouseMove: this._onItemMouseMoveIcon,
       'data-is-focusable': false,
       'aria-hidden': true
     });
@@ -140,7 +140,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _onItemMouseEnterSecondary = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _onItemMouseEnterIcon = (ev: React.MouseEvent<HTMLElement>): void => {
     const { item, onItemMouseEnter } = this.props;
     if (onItemMouseEnter) {
       onItemMouseEnter(item, ev, this._splitButton);
@@ -157,7 +157,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _onItemMouseMoveSecondary = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _onItemMouseMoveIcon = (ev: React.MouseEvent<HTMLElement>): void => {
     const {
       item,
       onItemMouseMove
@@ -167,7 +167,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _onSplitItemClick = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _onIconItemClick = (ev: React.MouseEvent<HTMLElement>): void => {
     const { item, onItemClickBase } = this.props;
     if (onItemClickBase) {
       onItemClickBase(item, ev, (this._splitButton ? this._splitButton : ev.currentTarget) as HTMLElement);
