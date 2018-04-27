@@ -9,27 +9,6 @@ import {
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DetailsListStatus } from './DetailsList.checklist';
 
-import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
-const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
-
-import { DetailsListCustomRowsExample } from './examples/DetailsList.CustomRows.Example';
-const DetailsListCustomRowsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomRows.Example.tsx') as string;
-
-import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
-const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
-
-import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
-const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
-
-import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
-const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
-
-import { DetailsListDocumentsExample } from './examples/DetailsList.Documents.Example';
-const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
-
-import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
-const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
-
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
