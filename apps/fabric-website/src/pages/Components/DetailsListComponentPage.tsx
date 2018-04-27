@@ -1,14 +1,22 @@
 import * as React from 'react';
 import { DetailsListPage } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsListPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
-import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 const pageStyles: any = require('../PageStyles.module.scss');
+import { ComponentPage as DummyComponentPage } from '../../components/ComponentPage/ComponentPage';
+
+// @TODO(keco): Refactor these to live under Fabric instead of website package??
+import {
+  ExampleCard,
+  ComponentPage
+} from '@uifabric/example-app-base';
+import { DetailsListCompactExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example';
+const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
 
 export class DetailsListComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div ref='pageElement' className={ pageStyles.basePage }>
-        <ComponentPage>
+        <DummyComponentPage>
           <PageHeader pageTitle='DetailsList' backgroundColor='#038387'
             links={
               [
@@ -31,8 +39,27 @@ export class DetailsListComponentPage extends React.Component<any, any> {
               ]
             } />
           <DetailsListPage isHeaderVisible={ false } />
-        </ComponentPage>
+        </DummyComponentPage>
       </div>
+    );
+  }
+}
+
+export class DetailsListCompactComponentPage extends React.Component<any, any> {
+  public render(): JSX.Element {
+    return (
+      <ComponentPage
+        title='DetailsList'
+        componentName='DetailsListExample'
+        overview={
+          <div />
+        }
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
+        exampleCards={
+          <ExampleCard title='Compact DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } /*code={ DetailsListCompactExampleCode }*/>
+            <DetailsListCompactExample />
+          </ExampleCard>
+        } />
     );
   }
 }

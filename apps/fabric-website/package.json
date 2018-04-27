@@ -25,6 +25,7 @@
     "@types/react": "16.3.10",
     "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
+    "@uifabric/example-app-base": ">=5.11.0 <6.0.0",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.12.0",
