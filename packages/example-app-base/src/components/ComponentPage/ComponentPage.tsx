@@ -27,7 +27,7 @@ export interface IComponentPageProps {
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
   donts?: JSX.Element;
-  overview: JSX.Element;
+  overview?: JSX.Element;
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
