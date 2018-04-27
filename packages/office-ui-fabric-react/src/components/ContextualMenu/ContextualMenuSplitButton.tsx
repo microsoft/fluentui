@@ -92,7 +92,8 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
           classNames={ classNames }
           index={ index }
           onCheckmarkClick={ hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined }
-          hasIcons={ hasIcons } />
+          hasIcons={ hasIcons }
+        />
       </button>
     );
   }
