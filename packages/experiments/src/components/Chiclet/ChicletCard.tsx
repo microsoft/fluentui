@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  KeyCodes,
   css
 } from '../../Utilities';
 import {
   IChicletCardStyles
 } from './ChicletCard.types';
-import { IChicletCardProps } from './ChicletCard.types';
+import { IChicletCardProps, IChicletAction } from './ChicletCard.types';
 import { mergeStyles } from '../../Styling';
 import {
   getClassNames
@@ -36,7 +35,6 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
       <div
         tabIndex={ tabIndex }
         role={ role }
-        onKeyDown={ actionable ? this._onKeyDown : undefined }
         onClick={ actionable ? this._onClick : undefined }
         className={
           css('ms-ChicletCard', className, mergeStyles(this._classNames.root)) }
@@ -104,13 +102,13 @@ export class ChicletCard extends BaseComponent<IChicletCardProps, any> {
     );
   }
 
-  private _renderFooter(actions: IButtonProps[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderFooter(actions: IChicletAction[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     return (
       <div className={ mergeStyles(this._classNames.actions) }>
         { actions && actions.map((action, index) => {
           return (
             <div className={ mergeStyles(this._classNames.action) } key={ index }>
-              <IconButton { ...action } />
+              <IconButton { ...action.buttonProps } />
             </div>
           );
         }) }

@@ -1,25 +1,24 @@
 import * as React from 'react';
 import { IChicletProps, ChicletSize } from './Chiclet.types';
-import { IChicletCardProps } from './ChicletCard.types';
+import { IChicletCardProps, IChicletAction } from './ChicletCard.types';
 import { ChicletCard } from './ChicletCard';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class Chiclet extends React.Component<IChicletProps, IChicletCardProps> {
   public render() {
     const { chicletCardProps, size, actions } = this.props;
 
-    var actionsToIButtonProps: IButtonProps[] = [];
+    var actionsToIChicletActionProps: IChicletAction[] = [];
     if (actions != null) {
       actions.forEach(function (string) {
         switch (string) {
           case "Breadcrumb":
-            actionsToIButtonProps.push({ iconProps: { iconName: 'Breadcrumb' } });
+            actionsToIChicletActionProps.push({ buttonProps: { iconProps: { iconName: 'Breadcrumb' } } });
             break;
           case "Save":
-            actionsToIButtonProps.push({ iconProps: { iconName: 'Save' } });
+            actionsToIChicletActionProps.push({ buttonProps: { iconProps: { iconName: 'Save' } } });
             break;
           case "Share":
-            actionsToIButtonProps.push({ iconProps: { iconName: 'Share' } });
+            actionsToIChicletActionProps.push({ buttonProps: { iconProps: { iconName: 'Share' } } });
             break;
           default:
             break;
@@ -30,12 +29,12 @@ export class Chiclet extends React.Component<IChicletProps, IChicletCardProps> {
     switch (size) {
       case ChicletSize.medium:
         return (
-          <ChicletCard {...chicletCardProps} onClick={ this._onClick } actions={ actionsToIButtonProps } />
+          <ChicletCard {...chicletCardProps} onClick={ this._onClick } actions={ actionsToIChicletActionProps } />
         );
       // @todo: handle other types of chiclets
       default:
         return (
-          <ChicletCard {...chicletCardProps} onClick={ this._onClick } actions={ actionsToIButtonProps } />
+          <ChicletCard {...chicletCardProps} onClick={ this._onClick } actions={ actionsToIChicletActionProps } />
         );
     }
   }

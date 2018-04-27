@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ChicletCard } from './ChicletCard';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IChicletAction } from './'
 
 export interface IChicletCard {
 
@@ -67,9 +68,9 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Action icon buttons to render.
+   * Actions to render
    */
-  actions?: IButtonProps[] | undefined;
+  actions?: IChicletAction[] | undefined;
 
   /**
    * Styling for the ChicletCard.
@@ -94,4 +95,16 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   imageType?: string;
   imageAlt?: string;
   url?: string;
+}
+
+export interface IChicletAction {
+  /**
+   * Icon to render
+   */
+  buttonProps: IButtonProps;
+
+  /**
+   * Function to call when the action is clicked.
+   */
+  onClick?: (ev?: any) => void;
 }
