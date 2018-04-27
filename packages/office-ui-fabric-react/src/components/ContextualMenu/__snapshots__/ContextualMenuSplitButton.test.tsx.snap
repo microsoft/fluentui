@@ -111,7 +111,7 @@ ShallowWrapper {
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={undefined}
-          onMouseMove={undefined}
+          onMouseMove={[Function]}
         >
           <Unknown
             classNames={
@@ -151,7 +151,7 @@ ShallowWrapper {
       "onKeyDown": [Function],
       "onMouseEnter": [Function],
       "onMouseLeave": undefined,
-      "onMouseMove": undefined,
+      "onMouseMove": [Function],
       "role": "button",
       "tabIndex": 0,
     },
@@ -308,7 +308,7 @@ ShallowWrapper {
           "onMouseDown": [Function],
           "onMouseEnter": [Function],
           "onMouseLeave": undefined,
-          "onMouseMove": undefined,
+          "onMouseMove": [Function],
         },
         "ref": null,
         "rendered": Object {
@@ -425,7 +425,7 @@ ShallowWrapper {
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={undefined}
-            onMouseMove={undefined}
+            onMouseMove={[Function]}
           >
             <Unknown
               classNames={
@@ -465,7 +465,7 @@ ShallowWrapper {
         "onKeyDown": [Function],
         "onMouseEnter": [Function],
         "onMouseLeave": undefined,
-        "onMouseMove": undefined,
+        "onMouseMove": [Function],
         "role": "button",
         "tabIndex": 0,
       },
@@ -622,7 +622,7 @@ ShallowWrapper {
             "onMouseDown": [Function],
             "onMouseEnter": [Function],
             "onMouseLeave": undefined,
-            "onMouseMove": undefined,
+            "onMouseMove": [Function],
           },
           "ref": null,
           "rendered": Object {
