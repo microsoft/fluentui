@@ -14,6 +14,12 @@ import {
 import { DetailsListCompactExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example';
 const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
 
+import { DetailsListGroupedExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example';
+const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
+
+import { DetailsListCustomColumnsExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomColumns.Example';
+const DetailsListCustomColumnsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
+
 export class DetailsListComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
@@ -71,3 +77,68 @@ export class DetailsListCompactComponentPage extends React.Component<any, any> {
     );
   }
 }
+
+export class DetailsListGroupedComponentPage extends React.Component<any, any> {
+  public render(): JSX.Element {
+    return (
+      <ComponentPage
+        title='Grouped DetailsListExample'
+        componentName='DetailsListGroupedExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList' // @TODO(keco): UPDATE
+        exampleCards={
+          <ExampleCard title='Simple Grouped DetailsList' isOptIn={ true } code={ DetailsListGroupedExampleCode }>
+            <DetailsListGroupedExample />
+          </ExampleCard>
+        }
+        propertiesTables={
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
+            ] }
+          />
+        }
+        isHeaderVisible={ false }
+      />
+    );
+  }
+}
+
+export class DetailsListCustomColumnsComponentPage extends React.Component<any, any> {
+}
+
+export class DetailsListCustomRowsComponentPage extends React.Component<any, any> {
+}
+
+export class DetailsListCustomGroupHeadersComponentPage extends React.Component<any, any> {
+}
+
+export class DetailsListAdvancedComponentPage extends React.Component<any, any> {
+}
+
+export class DetailsListDragDropComponentPage extends React.Component<any, any> {
+}
+
+export class DetailsListNavigatingFocusComponentPage extends React.Component<any, any> {
+}
+
+{/* <ExampleCard id='simple' title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
+<DetailsListBasicExample />
+</ExampleCard>
+<ExampleCard title='Rendering custom item columns with sorting' isOptIn={ true } code={ DetailsListCustomColumnsExampleCode }>
+<DetailsListCustomColumnsExample />
+</ExampleCard>
+<ExampleCard title='Rendering custom item rows' isOptIn={ true } code={ DetailsListCustomRowsExampleCode }>
+<DetailsListCustomRowsExample />
+</ExampleCard>,
+<ExampleCard title='Rendering custom group headers' isOptIn={ true } code={ DetailsListCustomGroupHeadersExampleCode }>
+<DetailsListCustomGroupHeadersExample />
+</ExampleCard>
+<ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
+<DetailsListAdvancedExample />
+</ExampleCard>
+<ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
+<DetailsListDragDropExample />
+</ExampleCard>
+<ExampleCard title='Navigating to new content preserving keyboard focus with initialFocusedIndex' isOptIn={ true } code={ DetailsListNavigatingFocusExampleCode }>
+<DetailsListNavigatingFocusExample />
+</ExampleCard> */}

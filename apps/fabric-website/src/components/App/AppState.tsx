@@ -212,36 +212,43 @@ export const AppState: IAppState = {
               title: 'Grouped',
               url: '#/components/detailslist/grouped',
               component: () => <LoadingComponent title='DetailsList - Grouped' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListGroupedComponentPage))
             },
             {
               title: 'Custom Item Columns',
               url: '#/components/detailslist/custom-item-columns',
               component: () => <LoadingComponent title='DetailsList - Custom Item Columns' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListCustomColumnsComponentPage))
             },
             {
               title: 'Custom Item Rows',
               url: '#/components/detailslist/custom-item-rows',
               component: () => <LoadingComponent title='DetailsList - Custom Item Rows' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListCustomRowsComponentPage))
             },
             {
               title: 'Custom Group Headers',
               url: '#/components/detailslist/custom-group-headers',
               component: () => <LoadingComponent title='DetailsList - Custom Group Headers' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListCustomGroupHeadersComponentPage))
             },
             {
               title: 'Variable Row Heights',
               url: '#/components/detailslist/variable-row-heights',
               component: () => <LoadingComponent title='DetailsList - Variable Row Heights' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListAdvancedComponentPage))
             },
             {
               title: 'Drag & Drop',
               url: '#/components/detailslist/drag-and-drop',
               component: () => <LoadingComponent title='DetailsList - Drag & Drop' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListDragDropComponentPage))
             },
             {
               title: 'Inner Navigation',
               url: '#/components/detailslist/inner-navigation',
               component: () => <LoadingComponent title='DetailsList - Inner Navigation' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListNavigatingFocusComponentPage))
             }
           ]
         },
