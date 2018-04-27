@@ -61,10 +61,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   private _resizeGroup = createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
 
-  constructor(props: ICommandBarProps) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const {
       className,
