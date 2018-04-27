@@ -445,11 +445,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onInputBlur = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    // Only blur if an unrelated element gets focus. Otherwise treat it as though it still has focus.
-    if (!elementContains(this.root.current!, ev.relatedTarget as HTMLElement)) {
+    if (this.props.inputProps && this.props.inputProps.onBlur) {
+      this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+    }
+    // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+    if (!elementContains(this.root.value!, ev.relatedTarget as HTMLElement)) {
       this.setState({ isFocused: false });
-      if (this.props.inputProps && this.props.inputProps.onBlur) {
-        this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+      if (this.props.onBlur) {
+        this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
       }
     }
   }

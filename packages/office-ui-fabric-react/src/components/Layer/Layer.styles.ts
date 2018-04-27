@@ -1,18 +1,28 @@
 import { ILayerStyleProps, ILayerStyles } from './Layer.types';
+import { getGlobalClassNames } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Layer',
+  rootNoHost: 'ms-Layer--fixed',
+  content: 'ms-Layer-content',
+};
 
 export const getStyles = (
   props: ILayerStyleProps
 ): ILayerStyles => {
   const {
     className,
-    isNotHost
+    isNotHost,
+    theme
   } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return ({
     root: [
-      'ms-Layer',
+      classNames.root,
       isNotHost && [
-        'ms-Layer--fixed',
+        classNames.rootNoHost,
         {
           position: 'fixed',
           zIndex: 1000000,
@@ -26,7 +36,7 @@ export const getStyles = (
       className
     ],
     content: [
-      'ms-Layer-content',
+      classNames.content,
       {
         visibility: 'visible'
       }

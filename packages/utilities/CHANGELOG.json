@@ -2,6 +2,65 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.29.0",
+      "tag": "@uifabric/utilities_v5.29.0",
+      "date": "Fri, 27 Apr 2018 10:15:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "23d8cfda750315abbb64aaffe22a56c1d536043e",
+            "comment": "Add isEqual and isNotEqual utilities"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "84b34b9d11a9cd053f21bcf7ee620e9d07cde1ca",
+            "comment": "Allow a function to be passed to the Customizers props"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.0",
+      "tag": "@uifabric/utilities_v5.28.0",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6bfddc1c44aa7afcdf053467985490027eb5edcd",
+            "comment": "Adding `isDirectionalKeyCode` helper."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.0 <6.0.0` to `>=5.16.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.27.0",
+      "tag": "@uifabric/utilities_v5.27.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "The focus styling no longer adds \"ms-Fabric\" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.15.2 <6.0.0` to `>=5.16.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.26.0",
       "tag": "@uifabric/utilities_v5.26.0",
       "date": "Fri, 20 Apr 2018 23:06:06 GMT",

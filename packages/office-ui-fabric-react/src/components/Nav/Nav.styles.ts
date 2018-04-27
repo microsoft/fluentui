@@ -5,8 +5,22 @@ import {
   DefaultFontStyles,
   getFocusStyle,
   FontSizes,
-  FontWeights
+  FontWeights,
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Nav',
+  linkText: 'ms-Nav-linkText',
+  compositeLink: 'ms-Nav-compositeLink',
+  link: 'ms-Nav-link',
+  chevronButton: 'ms-Nav-chevronButton',
+  chevronIcon: 'ms-Nav-chevron',
+  navItem: 'ms-Nav-navItem',
+  navItems: 'ms-Nav-navItems',
+  group: 'ms-Nav-group',
+  groupContent: 'ms-Nav-groupContent',
+};
 
 export const buttonStyles: IButtonStyles = {
   textContainer: {
@@ -41,9 +55,11 @@ export const getStyles = (
 
   const { palette, semanticColors } = theme;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return ({
     root: [
-      'ms-Nav',
+      classNames.root,
       className,
       {
         overflowY: 'auto',
@@ -58,7 +74,7 @@ export const getStyles = (
       ]
     ],
     linkText: [
-      'ms-Nav-linkText',
+      classNames.linkText,
       {
         margin: '0 4px',
         overflow: 'hidden',
@@ -67,7 +83,7 @@ export const getStyles = (
       }
     ],
     compositeLink: [
-      'ms-Nav-compositeLink',
+      classNames.compositeLink,
       {
         display: 'block',
         position: 'relative',
@@ -78,7 +94,7 @@ export const getStyles = (
       isSelected && 'is-selected'
     ],
     link: [
-      'ms-Nav-link',
+      classNames.link,
       getFocusStyle(theme),
       {
         display: 'block',
@@ -120,7 +136,7 @@ export const getStyles = (
       }
     ],
     chevronButton: [
-      'ms-Nav-chevronButton',
+      classNames.chevronButton,
       getFocusStyle(theme),
       {
         display: 'block',
@@ -189,7 +205,7 @@ export const getStyles = (
       }
     ],
     chevronIcon: [
-      'ms-Nav-chevron',
+      classNames.chevronIcon,
       {
         position: 'absolute',
         left: '8px',
@@ -206,24 +222,24 @@ export const getStyles = (
       }
     ],
     navItem: [
-      'ms-Nav-navItem',
+      classNames.navItem,
       {
         padding: 0
       }
     ],
     navItems: [
-      'ms-Nav-navItems',
+      classNames.navItems,
       {
         listStyleType: 'none',
         padding: 0
       }
     ],
     group: [
-      'ms-Nav-group',
+      classNames.group,
       isExpanded && 'is-expanded'
     ],
     groupContent: [
-      'ms-Nav-groupContent',
+      classNames.groupContent,
       {
         display: 'none',
         marginBottom: '40px'
