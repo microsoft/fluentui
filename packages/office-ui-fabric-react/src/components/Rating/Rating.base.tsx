@@ -19,6 +19,7 @@ const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   fillPercentage: number;
   disabled: boolean;
+  readOnly: boolean;
   classNames: IClassNames<IRatingStyles>;
 }
 
@@ -97,6 +98,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     this._classNames = getClassNames(getStyles!, {
       disabled,
+      readOnly,
       theme: theme!
     });
 
@@ -105,6 +107,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         const ratingStarProps: IRatingStarProps = {
           fillPercentage: this._getFillingPercentage(i),
           disabled: disabled ? true : false,
+          readOnly: readOnly ? true : false,
           classNames: this._classNames
         };
 
@@ -133,7 +136,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     return (
       <div
-        className={ 'ms-Rating-star' }
+        className={ css('ms-Rating-star', this._classNames.root) }
         aria-label={ getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
         id={ id }
       >

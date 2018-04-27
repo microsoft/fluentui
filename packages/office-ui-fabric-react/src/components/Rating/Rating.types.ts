@@ -96,10 +96,12 @@ export enum RatingSize {
 
 export interface IRatingStyleProps {
   disabled?: boolean;
+  readOnly?: boolean;
   theme: ITheme;
 }
 
 export interface IRatingStyles {
+  root: IStyle;
   ratingStar: IStyle;
   ratingStarBack: IStyle;
   ratingStarFront: IStyle;
