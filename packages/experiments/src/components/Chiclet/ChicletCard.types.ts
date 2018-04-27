@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ChicletCard } from './ChicletCard';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { IChicletAction } from './'
 
 export interface IChicletCard {
 
@@ -52,7 +51,7 @@ export interface IChicletCardStyles {
 
 export interface IChicletCardProps extends React.Props<ChicletCard> {
   /**
-   * Optional callback to access the IChiclet interface. Use this instead of ref for accessing
+   * Optional callback to access the IChicletCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IChicletCard | null) => void;
@@ -63,7 +62,7 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   className?: string;
 
   /**
-   * Function to call when the card is clicked or keyboard Enter/Space is pushed.
+   * Function to call when the card is clicked.
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
 

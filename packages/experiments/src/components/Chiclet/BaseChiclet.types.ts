@@ -8,7 +8,7 @@ export interface IBaseChiclet {
 
 export interface IBaseChicletProps extends React.Props<BaseChiclet> {
   /**
-   * Optional callback to access the IChiclet interface. Use this instead of ref for accessing
+   * Optional callback to access the IBaseChiclet interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IBaseChiclet | null) => void;
