@@ -6,21 +6,21 @@ import * as sinon from 'sinon';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 import { CommandBarButton } from '../../Button';
 import { mount, ReactWrapper } from 'enzyme';
-import { arraysAreEqual, find, createRef, constructKeytipExecuteTargetFromId } from '../../Utilities';
+import { isEqual, find, createRef, constructKeytipExecuteTargetFromId } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { KeytipManager, IUniqueKeytip } from '../../utilities/keytips';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(keytipManager.keytips, (uniqueKeytip: IUniqueKeytip) => {
-    return arraysAreEqual(uniqueKeytip.keytip.keySequences, keySequences);
+    return isEqual(uniqueKeytip.keytip.keySequences, keySequences);
   });
   return ktp ? ktp.keytip : undefined;
 }
 
 function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(keytipManager.persistedKeytips, (uniqueKeytip: IUniqueKeytip) => {
-    return arraysAreEqual(uniqueKeytip.keytip.keySequences, keySequences);
+    return isEqual(uniqueKeytip.keytip.keySequences, keySequences);
   });
   return ktp ? ktp.keytip : undefined;
 }
@@ -281,10 +281,10 @@ describe('OverflowSet', () => {
         delay(750).then(() => {
           // item3
           const item3Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip3.keySequences);
-          expect(arraysAreEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+          expect(isEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
           // item4
           const item4Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip4.keySequences);
-          expect(arraysAreEqual(item4Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+          expect(isEqual(item4Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
         });
       });
 
@@ -471,7 +471,7 @@ describe('OverflowSet', () => {
             const submenuKeytips = layerRef.value!.state.visibleKeytips;
             submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
               expect(submenuKeytip.visible).toEqual(true);
-              expect(arraysAreEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+              expect(isEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
             });
           });
         });
@@ -555,7 +555,7 @@ describe('OverflowSet', () => {
             const submenuKeytips = layerRef.value!.state.visibleKeytips;
             submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
               expect(submenuKeytip.visible).toEqual(true);
-              expect(arraysAreEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+              expect(isEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
             });
           });
         });

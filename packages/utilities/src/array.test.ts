@@ -159,8 +159,4 @@ describe('array utils tests', () => {
       expect(result).toEqual([1, 2, 3, 4, 6, 8, 20, 22, 25, 26, 28]);
     });
   });
-
-  describe('arraysAreEqual', () => {
-    // TODO:
-  });
 });

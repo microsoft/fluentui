@@ -29,7 +29,7 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
       display: 'inline-block'
     },
     disabled && {
-      color: theme.semanticColors.keytipDisabled
+      color: theme.semanticColors.keytipBackgroundDisabled
     }]
   };
 };

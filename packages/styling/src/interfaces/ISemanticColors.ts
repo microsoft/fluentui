@@ -298,9 +298,9 @@ export interface ISemanticColors {
   //// Keytips
 
   /**
-   * The color for a disabled keytip
+   * The background color for a disabled keytip.
    */
-  keytipDisabled: string;
+  keytipBackgroundDisabled: string;
 
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
