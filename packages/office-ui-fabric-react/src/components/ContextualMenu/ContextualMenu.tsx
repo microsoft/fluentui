@@ -707,7 +707,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._onItemMouseEnterBase(item, ev, ev.currentTarget as HTMLElement);
   }
 
-  private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
+  private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
     if (!this._isScrollIdle) {
       return;
     }
