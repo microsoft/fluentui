@@ -12,6 +12,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
+// @TODO(keco): Refactor to individual files?
 import { DetailsListCompactExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example';
 const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
 
