@@ -269,6 +269,7 @@ export const AppState: IAppState = {
               url: '#/components/detailslist/compact',
               name: 'compact',
               component: () => <LoadingComponent title='DetailsList - Compact' />,
+              getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListCompactComponentPage))
             },
             {
               title: 'Grouped',
