@@ -72,7 +72,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       items,
       overflowItems,
       farItems,
-      ariaDescribedByText,
+      ariaLabel,
       elipisisAriaLabel,
       elipisisIconProps,
       overflowMenuProps,
@@ -108,7 +108,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
               className={ css(this._classNames.root) }
               direction={ FocusZoneDirection.horizontal }
               role={ 'menubar' }
-              aria-label={ ariaDescribedByText }
+              aria-label={ ariaLabel }
             >
               {/*Primary Items*/ }
               <OverflowSet
