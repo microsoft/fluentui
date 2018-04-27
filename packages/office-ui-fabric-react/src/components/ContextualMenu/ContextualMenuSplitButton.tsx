@@ -86,14 +86,20 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     } as IContextualMenuItem;
     return (
       <button {...getNativeProps(itemProps, buttonProperties) }>
-        <ChildrenRenderer data-is-focusable={ false } item={ itemProps } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined } hasIcons={ hasIcons } />
+        <ChildrenRenderer
+          data-is-focusable={ false }
+          item={ itemProps }
+          classNames={ classNames }
+          index={ index }
+          onCheckmarkClick={ hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined }
+          hasIcons={ hasIcons } />
       </button>
     );
   }
 
   private _renderSplitDivider(item: IContextualMenuItem) {
-    const getDividerClassnames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
-    return <VerticalDivider getClassNames={ getDividerClassnames } />;
+    const getDividerClassNames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
+    return <VerticalDivider getClassNames={ getDividerClassNames } />;
   }
 
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
