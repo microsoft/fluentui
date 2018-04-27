@@ -39,7 +39,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   items?: IOverflowSetItemProps[];
 
   /**
-   * Change item layout direction to vertical/stacked
+   * Change item layout direction to vertical/stacked.
    * @default false
   */
   vertical?: boolean;
@@ -63,7 +63,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   /**
    * Custom properties for OverflowSet's FocusZone.
    * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
-   * Use one or the other
+   * Use one or the other.
    */
   focusZoneProps?: IFocusZoneProps;
 
@@ -71,7 +71,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * If true do not contain the OverflowSet inside of a FocusZone,
    * otherwise the OverflowSet will contain a FocusZone.
    * If this is set to true focusZoneProps will be ignored.
-   * Use one or the other
+   * Use one or the other.
    */
   doNotContainWithinFocusZone?: boolean;
 
@@ -82,26 +82,26 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   role?: string;
 
   /**
-   * Optional full keytip sequence for the overflow button, if it will have a keytip
+   * Optional full keytip sequence for the overflow button, if it will have a keytip.
    */
   keytipSequences?: string[];
 
   /**
-   * Function that will take in an IOverflowSetItemProps and return the subMenu for that item
-   * If not provided, will use 'item.subMenuProps.items' by default
-   * This is only used if your overflow set has keytips
+   * Function that will take in an IOverflowSetItemProps and return the subMenu for that item.
+   * If not provided, will use 'item.subMenuProps.items' by default.
+   * This is only used if your overflow set has keytips.
    */
   itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
 }
 
 export interface IOverflowSetItemProps {
   /**
-   * Unique id to identify the item
+   * Unique id to identify the item.
    */
   key: string;
 
   /**
-   * Optional keytip for the overflowSetItem
+   * Optional keytip for the overflowSetItem.
    */
   keytipProps?: IKeytipProps;
 

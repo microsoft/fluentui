@@ -1,7 +1,7 @@
 import {
   convertSequencesToKeytipID,
   find,
-  ktpLayerId,
+  KTP_LAYER_ID,
   mergeOverflowKeySequences,
   values
 } from '../../Utilities';
@@ -22,7 +22,7 @@ export class KeytipTree {
   constructor() {
     // Root has no keytipSequence
     this.root = {
-      id: ktpLayerId,
+      id: KTP_LAYER_ID,
       children: [],
       parent: '',
       keySequences: []

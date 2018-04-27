@@ -48,7 +48,7 @@ export class KeytipManager {
 
     // Add to array
     this.keytips.push(uniqueKeytip);
-    EventGroup.raise(this, KeytipEvents.keytipAdded, {
+    EventGroup.raise(this, KeytipEvents.KEYTIP_ADDED, {
       keytip: newKeytipProps,
       uniqueID: uniqueKeytip.uniqueID
     });
@@ -65,7 +65,7 @@ export class KeytipManager {
   public registerPersistedKeytip(keytipProps: IKeytipProps): string {
     const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(keytipProps);
     this.persistedKeytips.push(uniqueKeytip);
-    EventGroup.raise(this, KeytipEvents.persistedKeytipAdded, {
+    EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_ADDED, {
       keytip: keytipProps,
       uniqueID: uniqueKeytip.uniqueID
     });
@@ -88,7 +88,7 @@ export class KeytipManager {
       // Update keytip in this.keytips
       this.keytips = replaceElement(this.keytips, uniqueKeytip, keytipIndex);
       // Raise event
-      EventGroup.raise(this, KeytipEvents.keytipUpdated, {
+      EventGroup.raise(this, KeytipEvents.KEYTIP_UPDATED, {
         keytip: uniqueKeytip.keytip,
         uniqueID: uniqueKeytip.uniqueID
       });
@@ -106,7 +106,7 @@ export class KeytipManager {
       return uniqueKtp.uniqueID !== uniqueID;
     });
 
-    EventGroup.raise(this, KeytipEvents.keytipRemoved, {
+    EventGroup.raise(this, KeytipEvents.KEYTIP_REMOVED, {
       keytip: keytipToRemove,
       uniqueID: uniqueID
     });
@@ -124,7 +124,7 @@ export class KeytipManager {
       return uniqueKtp.uniqueID !== uniqueID;
     });
 
-    EventGroup.raise(this, KeytipEvents.persistedKeytipRemoved, {
+    EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_REMOVED, {
       keytip: keytipToRemove,
       uniqueID: uniqueID
     });
@@ -171,7 +171,7 @@ export class KeytipManager {
    * @param keytipSequences
    */
   public persistedKeytipExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
-    EventGroup.raise(this, KeytipEvents.persistedKeytipExecute, {
+    EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, {
       overflowButtonSequences,
       keytipSequences
     });
