@@ -30,6 +30,11 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           },
           ':hover': {
             borderColor: palette.neutralDark,
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight'
+              },
+            }
           },
           ':hover $iconContainer': {
             color: palette.themeDark
