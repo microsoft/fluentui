@@ -12,13 +12,13 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render(): JSX.Element {
-    const { styles, theme } = this.props;
+    const { styles, theme, primary } = this.props;
 
     return (
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--icon'
-        styles={ getStyles(theme!, styles) }
+        styles={ getStyles(theme!, styles, primary) }
         onRenderText={ nullRender }
         onRenderDescription={ nullRender }
       />

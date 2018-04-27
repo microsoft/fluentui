@@ -10,10 +10,15 @@ import {
 import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
+import {
+  primaryStyles,
+  standardStyles
+} from 'office-ui-fabric-react/lib/components/Button/ButtonThemes';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: IButtonStyles
+  customStyles?: IButtonStyles,
+  primary: boolean = false
 ): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
@@ -53,5 +58,11 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return concatStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
+  return concatStyleSets(
+    baseButtonStyles,
+    iconButtonStyles,
+    primary ? primaryStyles(theme) : standardStyles(theme),
+    splitButtonStyles,
+    customStyles
+  )!;
 });
