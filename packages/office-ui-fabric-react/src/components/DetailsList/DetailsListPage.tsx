@@ -9,6 +9,9 @@ import {
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DetailsListStatus } from './DetailsList.checklist';
 
+import { DetailsListDocumentsExample } from './examples/DetailsList.Documents.Example';
+const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
+
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
