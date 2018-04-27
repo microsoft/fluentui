@@ -36,9 +36,6 @@ const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-rea
 import { DetailsListDragDropExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
-import { DetailsListDocumentsExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example';
-const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
-
 import { DetailsListNavigatingFocusExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example';
 const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
