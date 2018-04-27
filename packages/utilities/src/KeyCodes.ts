@@ -27,5 +27,7 @@ export const enum KeyCodes {
   nine = 57,
   a = 65,
   c = 67,
-  leftWindow = 91
+  leftWindow = 91,
+  semicolon = 186,
+  comma = 188
 }

@@ -1,10 +1,10 @@
 import {
   KTP_PREFIX,
-  KTP_SEPERATOR,
+  KTP_SEPARATOR,
   DATAKTP_TARGET,
   DATAKTP_EXECUTE_TARGET,
   KTP_LAYER_ID,
-  KTP_ARIA_SEPERATOR_ID
+  KTP_ARIA_SEPARATOR_ID
 } from './KeytipConstants';
 import { addElementAtIndex } from './array';
 
@@ -17,7 +17,7 @@ import { addElementAtIndex } from './array';
  */
 export function convertSequencesToKeytipID(keySequences: string[]): string {
   return keySequences.reduce((prevValue: string, keySequence: string): string => {
-    return prevValue + KTP_SEPERATOR + keySequence.split('').join(KTP_SEPERATOR);
+    return prevValue + KTP_SEPARATOR + keySequence.split('').join(KTP_SEPARATOR);
   }, KTP_PREFIX);
 }
 
@@ -68,5 +68,5 @@ export function getAriaDescribedBy(keySequences: string[]): string {
     return describedby;
   }
 
-  return describedby + ' ' + KTP_ARIA_SEPERATOR_ID + ' ' + convertSequencesToKeytipID(keySequences);
+  return describedby + ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + convertSequencesToKeytipID(keySequences);
 }

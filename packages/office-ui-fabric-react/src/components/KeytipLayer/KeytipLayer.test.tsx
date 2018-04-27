@@ -7,7 +7,7 @@ import {
   KeytipTransitionModifier,
   createRef,
   KTP_FULL_PREFIX,
-  KTP_ARIA_SEPERATOR,
+  KTP_SEPARATOR,
   find,
   EventGroup,
   KeytipEvents
@@ -35,7 +35,7 @@ describe('KeytipLayer', () => {
     keySequences: ['c']
   };
 
-  const keytipIdD = KTP_FULL_PREFIX + 'c' + KTP_ARIA_SEPERATOR + 'd';
+  const keytipIdD = KTP_FULL_PREFIX + 'c' + KTP_SEPARATOR + 'd';
   const uniqueIdD = '3';
   const keytipD: IKeytipProps = {
     content: 'D',
@@ -48,7 +48,7 @@ describe('KeytipLayer', () => {
     keySequences: ['e1']
   };
 
-  const keytipIdE2 = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + '2';
+  const keytipIdE2 = KTP_FULL_PREFIX + 'e' + KTP_SEPARATOR + '2';
   const uniqueIdE2 = '5';
   const keytipE2: IKeytipProps = {
     content: 'E2',
@@ -149,7 +149,7 @@ describe('KeytipLayer', () => {
       visibleKeytips = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(0);
 
-      expect(layerRef.value!.currentSequence).toEqual('');
+      expect(layerRef.value!.getCurrentSequence()).toEqual('');
       expect(ktpTree.currentKeytip).toBeUndefined();
     });
   });
@@ -269,7 +269,7 @@ describe('KeytipLayer', () => {
         layerValue.processInput('b');
         expect(onExecute).toBeCalled();
         expect(onExit).toBeCalled();
-        expect(layerValue.currentSequence.length).toEqual(0);
+        expect(layerValue.getCurrentSequence().length).toEqual(0);
       });
 
       it('Processing a node with two keys should save sequence and wait for second key', () => {
@@ -278,10 +278,10 @@ describe('KeytipLayer', () => {
         ktpTree.currentKeytip = ktpTree.root;
         layerValue.processInput('e');
         // We are still waiting for second key
-        expect(layerValue.currentSequence.length).toEqual(1);
+        expect(layerValue.getCurrentSequence().length).toEqual(1);
         layerValue.processInput('2');
         expect(onExecuteE2).toBeCalled();
-        expect(layerValue.currentSequence.length).toEqual(0);
+        expect(layerValue.getCurrentSequence().length).toEqual(0);
         expect(onExit).toBeCalled();
       });
 
@@ -293,7 +293,7 @@ describe('KeytipLayer', () => {
         // Node B's onExecute should be called
         expect(onExecute).toBeCalled();
         // There is no more buffer in the sequence
-        expect(layerValue.currentSequence.length).toEqual(0);
+        expect(layerValue.getCurrentSequence().length).toEqual(0);
         // We haven't exited keytip mode (current keytip is set to the matched keytip)
         expect(ktpTree.currentKeytip.id).toEqual(keytipIdB);
       });

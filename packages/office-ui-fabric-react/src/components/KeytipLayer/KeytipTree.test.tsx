@@ -2,7 +2,7 @@ import { IKeytipProps } from '../../Keytip';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
 import {
-  KTP_ARIA_SEPERATOR,
+  KTP_SEPARATOR,
   KTP_FULL_PREFIX,
   KTP_LAYER_ID
 } from '../../Utilities';
@@ -22,7 +22,7 @@ let keytipTree = new KeytipTree();
  */
 
 // Node B
-const keytipIdB = KTP_FULL_PREFIX + 'c' + KTP_ARIA_SEPERATOR + 'b';
+const keytipIdB = KTP_FULL_PREFIX + 'c' + KTP_SEPARATOR + 'b';
 const keytipSequenceB: string[] = ['c', 'b'];
 const keytipPropsB = createKeytipProps(keytipSequenceB);
 const uniqueIdB = '1';
@@ -32,7 +32,7 @@ const keytipSequenceC: string[] = ['c'];
 const keytipPropsC = createKeytipProps(keytipSequenceC);
 const uniqueIdC = '2';
 // Node D
-const keytipIdD = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + 'd';
+const keytipIdD = KTP_FULL_PREFIX + 'e' + KTP_SEPARATOR + 'd';
 const keytipSequenceD: string[] = ['e', 'd'];
 const keytipPropsD = createKeytipProps(keytipSequenceD);
 const uniqueIdD = '3';
@@ -42,7 +42,7 @@ const keytipSequenceE: string[] = ['e'];
 const keytipPropsE = createKeytipProps(keytipSequenceE);
 const uniqueIdE = '4';
 // Node F
-const keytipIdF = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + 'f';
+const keytipIdF = KTP_FULL_PREFIX + 'e' + KTP_SEPARATOR + 'f';
 const keytipSequenceF: string[] = ['e', 'f'];
 const keytipPropsF = createKeytipProps(keytipSequenceF);
 const uniqueIdF = '5';
@@ -309,13 +309,13 @@ describe('KeytipTree', () => {
     const uniqueIdP = '3';
 
     // Node E1
-    const keytipIdE1 = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + '1';
+    const keytipIdE1 = KTP_FULL_PREFIX + 'e' + KTP_SEPARATOR + '1';
     const keytipSequenceE1: string[] = ['e1'];
     const keytipPropsE1 = createKeytipProps(keytipSequenceE1);
     const uniqueIdE1 = '4';
 
     // Node E2
-    const keytipIdE2 = KTP_FULL_PREFIX + 'e' + KTP_ARIA_SEPERATOR + '2';
+    const keytipIdE2 = KTP_FULL_PREFIX + 'e' + KTP_SEPARATOR + '2';
     const keytipSequenceE2: string[] = ['e2'];
     const keytipPropsE2 = createKeytipProps(keytipSequenceE2);
     const uniqueIdE2 = '5';

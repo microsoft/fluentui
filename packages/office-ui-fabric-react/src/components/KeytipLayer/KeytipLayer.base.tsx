@@ -9,8 +9,8 @@ import {
   KeytipTransitionModifier,
   IKeytipTransitionKey,
   KTP_LAYER_ID,
-  KTP_ARIA_SEPERATOR,
-  KTP_ARIA_SEPERATOR_ID,
+  KTP_ARIA_SEPARATOR,
+  KTP_ARIA_SEPARATOR_ID,
   classNamesFunction,
   convertSequencesToKeytipID,
   transitionKeysContain,
@@ -30,17 +30,21 @@ export interface IKeytipLayerState {
   visibleKeytips: IKeytipProps[];
 }
 
+const isMac = typeof navigator !== 'undefined' && navigator.userAgent.indexOf('Macintosh') >= 0;
+
+// Default sequence is Alt-Windows (Alt-Meta) in Windows, Option-Control (Alt-Control) in Mac
 const defaultStartSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt]
+  key: isMac ? 'Control' : 'Meta', modifierKeys: [KeytipTransitionModifier.alt]
 };
 
-const defaultExitSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt]
-};
+// Default exit sequence is the same as the start sequence
+const defaultExitSequence: IKeytipTransitionKey = defaultStartSequence;
 
+// Default return sequence is Escape
 const defaultReturnSequence: IKeytipTransitionKey = {
   key: 'Escape'
 };
+
 const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>();
 
 /**
@@ -55,14 +59,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    content: 'Alt Windows'
+    content: ''
   };
 
   public keytipTree: KeytipTree;
-  public currentSequence: string;
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
   private _classNames: { [key in keyof IKeytipLayerStyles]: string };
+  private _currentSequence: string;
   private _newCurrentKeytipSequences?: string[];
 
   private _delayedKeytipQueue: string[] = [];
@@ -91,7 +95,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       this.keytipTree.addNode(uniquePersistedKeytip.keytip, uniquePersistedKeytip.uniqueID);
     }
 
-    this.currentSequence = '';
+    this._currentSequence = '';
 
     // Add keytip listeners
     this._events.on(this._keytipManager, KeytipEvents.KEYTIP_ADDED, this._onKeytipAdded);
@@ -109,6 +113,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   public setKeytips(keytipProps: IKeytipProps[] = this._keytipManager.getKeytips()) {
     this.setState({ keytips: keytipProps, visibleKeytips: this._getVisibleKeytips(keytipProps) });
+  }
+
+  public getCurrentSequence(): string {
+    return this._currentSequence;
   }
 
   public render(): JSX.Element {
@@ -129,7 +137,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     return (
       <Layer getStyles={ getLayerStyles }>
         <span id={ KTP_LAYER_ID } className={ this._classNames.innerContent }>{ content }</span>
-        <span id={ KTP_ARIA_SEPERATOR_ID } className={ this._classNames.innerContent }>{ KTP_ARIA_SEPERATOR }</span>
+        <span id={ KTP_ARIA_SEPARATOR_ID } className={ this._classNames.innerContent }>{ KTP_ARIA_SEPARATOR }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return (
             <span
@@ -194,7 +202,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   public exitKeytipMode(): void {
     this.keytipTree.currentKeytip = undefined;
-    this.currentSequence = '';
+    this._currentSequence = '';
     // Hide all keytips
     this.showKeytips([]);
 
@@ -234,7 +242,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
           }
 
           // Reset currentSequence
-          this.currentSequence = '';
+          this._currentSequence = '';
           // Return pointer to its parent
           this.keytipTree.currentKeytip = this.keytipTree.getNode(currKtp.parent);
           // Show children keytips of the new currentKeytip
@@ -255,7 +263,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   public processInput(key: string): void {
     // Concat the input key with the current sequence
-    const currSequence: string = this.currentSequence + key;
+    const currSequence: string = this._currentSequence + key;
     let currKtp = this.keytipTree.currentKeytip;
 
     // currentKeytip must be defined, otherwise we haven't entered keytip mode yet
@@ -281,7 +289,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         }
 
         // Clear currentSequence
-        this.currentSequence = '';
+        this._currentSequence = '';
         return;
       }
 
@@ -295,7 +303,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         this.showKeytips(ids);
 
         // Save currentSequence
-        this.currentSequence = currSequence;
+        this._currentSequence = currSequence;
       }
     }
   }
