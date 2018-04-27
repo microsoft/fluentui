@@ -20,6 +20,7 @@ exports[`CommandBar renders commands correctly 1`] = `
   >
     <div
       aria-describedby={undefined}
+      aria-label={undefined}
       aria-labelledby={undefined}
       className=
           ms-FocusZone

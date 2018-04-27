@@ -17,8 +17,7 @@ import { IResizeGroup, ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGrou
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   classNamesFunction,
-  createRef,
-  getId
+  createRef
 } from '../../Utilities';
 
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
@@ -61,12 +60,9 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   private _overflowSet = createRef<IOverflowSet>();
   private _resizeGroup = createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
-  private _ariaDescriptionId: string;
 
   constructor(props: ICommandBarProps) {
     super(props);
-
-    this._ariaDescriptionId = getId();
   }
 
   public render(): JSX.Element {
@@ -112,9 +108,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
               className={ css(this._classNames.root) }
               direction={ FocusZoneDirection.horizontal }
               role={ 'menubar' }
-              ariaDescribedBy={ ariaDescribedByText && this._ariaDescriptionId }
+              aria-label={ ariaDescribedByText }
             >
-              { this._onRenderAriaDescription() }
               {/*Primary Items*/ }
               <OverflowSet
                 componentRef={ this._overflowSet }
@@ -257,17 +252,5 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   private _onRenderButton = (props: ICommandBarItemProps): JSX.Element => {
     // tslint:disable-next-line:no-any
     return <CommandBarButton { ...props as any } />;
-  }
-
-  private _onRenderAriaDescription = (): JSX.Element | null => {
-    const {
-      ariaDescribedByText
-    } = this.props;
-    
-    return ariaDescribedByText ? (
-      <span className={ 'ms-screenReaderOnly' } id={ this._ariaDescriptionId }>{ ariaDescribedByText }</span>
-    ) : (
-      null
-    );
   }
 }
