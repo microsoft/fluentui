@@ -1,18 +1,18 @@
-export const ktpPrefix = 'ktp';
-export const ktpSeparator = '-';
-export const ktpFullPrefix = ktpPrefix + ktpSeparator;
-export const dataKtpTarget = 'data-ktp-target';
-export const dataKtpExecuteTarget = 'data-ktp-execute-target';
-export const ktpLayerId = 'ktp-layer-id';
-export const ktpAriaSeparator = ', ';
-export const ktpAriaSeparatorId = 'ktp-aria-separator-id';
+export const KTP_PREFIX = 'ktp';
+export const KTP_SEPERATOR = '-';
+export const KTP_FULL_PREFIX = KTP_PREFIX + KTP_SEPERATOR;
+export const DATAKTP_TARGET = 'data-ktp-target';
+export const DATAKTP_EXECUTE_TARGET = 'data-ktp-execute-target';
+export const KTP_LAYER_ID = 'ktp-layer-id';
+export const KTP_ARIA_SEPERATOR = ', ';
+export const KTP_ARIA_SEPERATOR_ID = 'ktp-aria-separator-id';
 
 // Events
 export namespace KeytipEvents {
-  export const keytipAdded = 'keytipAdded';
-  export const keytipRemoved = 'keytipRemoved';
-  export const keytipUpdated = 'keytipUpdated';
-  export const persistedKeytipAdded = 'persistedKeytipAdded';
-  export const persistedKeytipRemoved = 'persistedKeytipRemoved';
-  export const persistedKeytipExecute = 'persistedKeytipExecute';
+  export const KEYTIP_ADDED = 'keytipAdded';
+  export const KEYTIP_REMOVED = 'keytipRemoved';
+  export const KEYTIP_UPDATED = 'keytipUpdated';
+  export const PERSISTED_KEYTIP_ADDED = 'persistedKeytipAdded';
+  export const PERSISTED_KEYTIP_REMOVED = 'persistedKeytipRemoved';
+  export const PERSISTED_KEYTIP_EXECUTE = 'persistedKeytipExecute';
 }

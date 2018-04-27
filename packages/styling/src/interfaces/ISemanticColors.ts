@@ -298,7 +298,7 @@ export interface ISemanticColors {
   //// Keytips
 
   /**
-   * The color for a disabled keytip
+   * The color for a disabled keytip.
    */
   keytipDisabled: string;
 

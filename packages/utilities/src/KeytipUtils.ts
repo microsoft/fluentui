@@ -1,10 +1,10 @@
 import {
-  ktpPrefix,
-  ktpSeparator,
-  dataKtpTarget,
-  dataKtpExecuteTarget,
-  ktpLayerId,
-  ktpAriaSeparatorId
+  KTP_PREFIX,
+  KTP_SEPERATOR,
+  DATAKTP_TARGET,
+  DATAKTP_EXECUTE_TARGET,
+  KTP_LAYER_ID,
+  KTP_ARIA_SEPERATOR_ID
 } from './KeytipConstants';
 import { addElementAtIndex } from './array';
 
@@ -17,8 +17,8 @@ import { addElementAtIndex } from './array';
  */
 export function convertSequencesToKeytipID(keySequences: string[]): string {
   return keySequences.reduce((prevValue: string, keySequence: string): string => {
-    return prevValue + ktpSeparator + keySequence.split('').join(ktpSeparator);
-  }, ktpPrefix);
+    return prevValue + KTP_SEPERATOR + keySequence.split('').join(KTP_SEPERATOR);
+  }, KTP_PREFIX);
 }
 
 /**
@@ -42,7 +42,7 @@ export function mergeOverflowKeySequences(keySequences: string[], overflowKeySeq
  * @returns {string} String selector to use to query for the keytip target
  */
 export function constructKeytipTargetFromSequences(keySequences: string[]): string {
-  return '[' + dataKtpTarget + '="' + convertSequencesToKeytipID(keySequences) + '"]';
+  return '[' + DATAKTP_TARGET + '="' + convertSequencesToKeytipID(keySequences) + '"]';
 }
 
 /**
@@ -52,7 +52,7 @@ export function constructKeytipTargetFromSequences(keySequences: string[]): stri
  * @returns {string} String selector to use to query for the keytip execute target
  */
 export function constructKeytipExecuteTargetFromId(keytipId: string): string {
-  return '[' + dataKtpExecuteTarget + '="' + keytipId + '"]';
+  return '[' + DATAKTP_EXECUTE_TARGET + '="' + keytipId + '"]';
 }
 
 /**
@@ -62,11 +62,11 @@ export function constructKeytipExecuteTargetFromId(keytipId: string): string {
  * @returns {string} The aria-describedby value to set on the component with this keytip
  */
 export function getAriaDescribedBy(keySequences: string[]): string {
-  const describedby = ' ' + ktpLayerId;
+  const describedby = ' ' + KTP_LAYER_ID;
   if (!keySequences.length) {
     // Return just the layer ID
     return describedby;
   }
 
-  return describedby + ' ' + ktpAriaSeparatorId + ' ' + convertSequencesToKeytipID(keySequences);
+  return describedby + ' ' + KTP_ARIA_SEPERATOR_ID + ' ' + convertSequencesToKeytipID(keySequences);
 }
