@@ -295,7 +295,7 @@ Scenarios like "make this area of the screen use a different theme" become reall
 
 If a button has 20 different possible states, using scss you must load the css for all 20 of the states pre-emptively, so you end up loading way more rules than you will ever actually use. There is no "plt1 styles vs delay loaded styles". The best you can do is to partition your css to specific modules, and delay load the modules. But in this model, you will still preempt loading a lot of rules that aren't used.
 
-Sass also encourages "mixins" as a way to have one definition of styles that can be used in multiple places. This completely fights against bundle size, since mixins simply stamp duplicates copies of the same rules whereever they're used, resulting in bloated (but highly compressable) style definitions. The compression helps but all of this could be avoided by using a different approach to defining our styling.
+Sass also encourages "mixins" as a way to have one definition of styles that can be used in multiple places. This completely fights against bundle size, since mixins simply stamp duplicates copies of the same rules wherever they're used, resulting in bloated (but highly compressible) style definitions. The compression helps but all of this could be avoided by using a different approach to defining our styling.
 
 ## Constant battle with specificity
 

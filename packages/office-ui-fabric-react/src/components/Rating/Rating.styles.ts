@@ -80,6 +80,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       classNames.ratingButton,
       {
         background: 'none',
+        backgroundColor: 'transparent',
         margin: '3px 3px 0px 0px',
         padding: '0px',
         border: 'none',
