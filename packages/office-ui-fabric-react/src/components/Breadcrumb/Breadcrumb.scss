@@ -118,6 +118,10 @@ $Breadcrumb-chevron-sm: 8px;
     background-color: $menuItemBackgroundHoveredColor;
     color: initial;
     cursor: pointer;
+
+    @include high-contrast {
+      color: Highlight;
+    }
   }
 
   &:focus {
