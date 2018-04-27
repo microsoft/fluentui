@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Created link component for Nav",
-      "type": "patch"
+      "comment": "Nav: Refactored out a NavLink component.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
