@@ -203,41 +203,44 @@ export const AppState: IAppState = {
           pages: [
             {
               title: 'Compact',
-              url: '#/components/detailslist#compact',
-              name: 'compact'
+              url: '#/components/detailslist/compact',
+              name: 'compact',
+              component: () => <LoadingComponent title='DetailsList - Compact' />,
             },
             {
               title: 'Grouped',
-              url: '#/components/detailslist#grouped',
-              name: 'grouped'
+              url: '#/components/detailslist/grouped',
+              component: () => <LoadingComponent title='DetailsList - Grouped' />,
             },
             {
               title: 'Custom Item Columns',
-              url: '#/components/detailslist#custom-item-columns'
+              url: '#/components/detailslist/custom-item-columns',
+              component: () => <LoadingComponent title='DetailsList - Custom Item Columns' />,
             },
             {
               title: 'Custom Item Rows',
-              url: '#/components/detailslist#custom-item-rows'
+              url: '#/components/detailslist/custom-item-rows',
+              component: () => <LoadingComponent title='DetailsList - Custom Item Rows' />,
             },
             {
               title: 'Custom Group Headers',
-              url: '#/components/detailslist#custom-group-headers'
+              url: '#/components/detailslist/custom-group-headers',
+              component: () => <LoadingComponent title='DetailsList - Custom Group Headers' />,
             },
             {
               title: 'Variable Row Heights',
-              url: '#/components/detailslist#variable-row-heights'
+              url: '#/components/detailslist/variable-row-heights',
+              component: () => <LoadingComponent title='DetailsList - Variable Row Heights' />,
             },
             {
               title: 'Drag & Drop',
-              url: '#/components/detailslist#drag-and-drop'
+              url: '#/components/detailslist/drag-and-drop',
+              component: () => <LoadingComponent title='DetailsList - Drag & Drop' />,
             },
             {
               title: 'Inner Navigation',
-              url: '#/components/detailslist#inner-navigation'
-            },
-            {
-              title: 'API Reference',
-              url: '#/components/detailslist#api-reference'
+              url: '#/components/detailslist/inner-navigation',
+              component: () => <LoadingComponent title='DetailsList - Inner Navigation' />,
             }
           ]
         },
