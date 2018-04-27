@@ -3,7 +3,14 @@
 exports[`Rating Renders Rating correctly 1`] = `
 <div
   aria-label=""
-  className="ms-Rating-star"
+  className=
+      ms-Rating-star
+      &:hover .ms-RatingStar-back {
+        color: #000000;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
+        color: Highlight;
+      }
   id="Rating0"
 >
   <div
@@ -30,18 +37,17 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background-color: transparent;
-            background: none;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
@@ -63,6 +69,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
           &[disabled] {
             cursor: default;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
           }
           {
             font-size: 16px;
@@ -155,18 +173,17 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background-color: transparent;
-            background: none;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
@@ -188,6 +205,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
           &[disabled] {
             cursor: default;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
           }
           {
             font-size: 16px;
@@ -279,18 +308,17 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background-color: transparent;
-            background: none;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
@@ -312,6 +340,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
           &[disabled] {
             cursor: default;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
           }
           {
             font-size: 16px;
@@ -403,18 +443,17 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background-color: transparent;
-            background: none;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
@@ -436,6 +475,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
           &[disabled] {
             cursor: default;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
           }
           {
             font-size: 16px;
@@ -527,18 +578,17 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating--small
           {
             background-color: transparent;
-            background: none;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
@@ -560,6 +610,18 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
           &[disabled] {
             cursor: default;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
           }
           {
             font-size: 16px;

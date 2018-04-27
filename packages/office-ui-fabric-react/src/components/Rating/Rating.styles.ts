@@ -16,6 +16,7 @@ const GlobalClassNames = {
   labelText: 'ms-Rating-labelText',
   ratingFocusZone: 'ms-Rating-focuszone',
 };
+
 function _getColorWithHighContrast(color: string, highContrastColor: string) {
   return {
     color: color,
@@ -24,7 +25,7 @@ function _getColorWithHighContrast(color: string, highContrastColor: string) {
         color: highContrastColor
       }
     }
-  }
+  };
 }
 
 export function getStyles(props: IRatingStyleProps): IRatingStyles {
@@ -94,7 +95,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       getFocusStyle(theme, 0),
       classNames.ratingButton,
       {
-        background: 'transparent',
+        backgroundColor: 'transparent',
         padding: '3px 3px 0px 0px',
         margin: '0px',
         border: 'none',
