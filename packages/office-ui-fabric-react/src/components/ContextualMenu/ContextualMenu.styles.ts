@@ -219,6 +219,7 @@ export const getStyles = memoizeFunction((
         fontWeight: FontWeights.semibold,
         color: ContextualMenuHeaderColor,
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         height: ContextualMenuItemHeight,
         lineHeight: ContextualMenuItemHeight,

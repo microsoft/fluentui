@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.29.0",
+      "tag": "@uifabric/utilities_v5.29.0",
+      "date": "Fri, 27 Apr 2018 10:15:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "23d8cfda750315abbb64aaffe22a56c1d536043e",
+            "comment": "Add isEqual and isNotEqual utilities"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "84b34b9d11a9cd053f21bcf7ee620e9d07cde1ca",
+            "comment": "Allow a function to be passed to the Customizers props"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.28.0",
       "tag": "@uifabric/utilities_v5.28.0",
       "date": "Wed, 25 Apr 2018 05:32:09 GMT",

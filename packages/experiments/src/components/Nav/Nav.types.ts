@@ -41,6 +41,11 @@ export interface INavProps {
   getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
 
   /**
+   * Used for telemetry
+   */
+  dataHint?: string;
+
+  /**
    * (Optional) callback for the parent component when the nav component is toggled between expanded and collapsed state
    */
   onNavCollapsedCallback?(isCollapsed: boolean): void;
@@ -140,4 +145,51 @@ export interface INavStyles {
    * Style set for the nav toggler which toggles expanded and slim nav
    */
   navToggler: IStyle;
+}
+
+export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
+  /**
+   * Used for telemetry
+   */
+  dataHint?: string;
+
+  /**
+   * Used for telemetry
+   */
+  dataValue?: string;
+
+  /**
+   * Used by the screen reader to describe the nav link
+   */
+  ariaLabel?: string;
+
+  /**
+   * True means the nav link is currently expanded (visible), false means the nav link is currently collapsed (invisible)
+   */
+  ariaExpanded?: boolean;
+
+  /**
+   * CSS class for the nav link container
+   */
+  rootClassName?: string;
+
+  /**
+   * Icon name for the icon shown on the left side of the nav link
+   */
+  leftIconName?: string;
+
+  /**
+   * Icon name for the icon shown on the right side of the nav link
+   */
+  rightIconName?: string;
+
+  /**
+   * CSS class for the text part of the nav link
+   */
+  textClassName?: string;
+
+  /**
+   * CSS class for the icon part of the nav link
+   */
+  iconClassName?: string;
 }

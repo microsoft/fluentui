@@ -135,6 +135,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
           { index !== lastItemIndex && <Divider
             className={ this._classNames.chevron }
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            item={ item }
           /> }
         </li>
       ));
@@ -157,6 +158,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
           <Divider
             className={ this._classNames.chevron }
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            item={ renderedOverflowItems[renderedOverflowItems.length - 1] }
           />
         </li>
       ));

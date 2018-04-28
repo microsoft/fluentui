@@ -2,8 +2,20 @@ import {
   getFocusStyle,
   hiddenContentStyle,
   HighContrastSelector,
+  getGlobalClassNames,
 } from '../../Styling';
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
+
+const GlobalClassNames = {
+  ratingStar: 'ms-RatingStar-container',
+  ratingStarBack: 'ms-RatingStar-back',
+  ratingStarFront: 'ms-RatingStar-front',
+  ratingButton: 'ms-Rating-button',
+  rootIsSmall: 'ms-Rating--small',
+  rootIsLarge: 'ms-Rating--large',
+  labelText: 'ms-Rating-labelText',
+  ratingFocusZone: 'ms-Rating-focuszone',
+};
 
 export function getStyles(props: IRatingStyleProps): IRatingStyles {
   const {
@@ -16,19 +28,21 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     palette
   } = theme;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   const ratingSmallIconSize = '16px';
   const ratingLargeIconSize = '20px';
 
   return {
     ratingStar: [
-      'ms-RatingStar-container',
+      classNames.ratingStar,
       {
         display: 'inline-block',
         position: 'relative'
       }
     ],
     ratingStarBack: [
-      'ms-RatingStar-back',
+      classNames.ratingStarBack,
       {
         // TODO: Use a proper semantic color for this
         color: palette.neutralTertiary,
@@ -44,7 +58,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       }
     ],
     ratingStarFront: [
-      'ms-RatingStar-front',
+      classNames.ratingStarFront,
       {
         position: 'absolute',
         height: '100 %',
@@ -63,9 +77,10 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     ],
     ratingButton: [
       getFocusStyle(theme, 0),
-      'ms-Rating-button',
+      classNames.ratingButton,
       {
         background: 'none',
+        backgroundColor: 'transparent',
         margin: '3px 3px 0px 0px',
         padding: '0px',
         border: 'none',
@@ -84,25 +99,25 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       },
     ],
     rootIsSmall: [
-      'ms-Rating--small',
+      classNames.rootIsSmall,
       {
         fontSize: ratingSmallIconSize,
         lineHeight: ratingSmallIconSize
       }
     ],
     rootIsLarge: [
-      'ms-Rating--large',
+      classNames.rootIsLarge,
       {
         fontSize: ratingLargeIconSize,
         lineHeight: ratingLargeIconSize
       }
     ],
     labelText: [
-      'ms-Rating-labelText',
+      classNames.labelText,
       hiddenContentStyle
     ],
     ratingFocusZone: [
-      'ms-Rating-focuszone',
+      classNames.ratingFocusZone,
       {
         display: 'inline-block',
         paddingBottom: '1px'
