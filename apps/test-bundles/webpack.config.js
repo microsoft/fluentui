@@ -81,6 +81,6 @@ module.exports = resources.createConfig(
       '@microsoft/load-themed-styles': 'LoadThemedStyles',
       'tslib': 'tslib'
     }
-
   },
+  true
 );
