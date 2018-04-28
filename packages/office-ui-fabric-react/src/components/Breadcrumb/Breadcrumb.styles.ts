@@ -1,11 +1,18 @@
-import { IStyle, ITheme } from '../../Styling';
-import * as stylesImport from './Breadcrumb.scss';
-
-const styles: any = stylesImport;
+import {
+  HighContrastSelector,
+  IRawStyle,
+  IStyle,
+  ITheme,
+  ScreenWidthMaxMedium,
+  ScreenWidthMaxSmall,
+  ScreenWidthMinMedium,
+  getFocusStyle,
+  getScreenSelector
+} from '../../Styling';
 
 export interface IBreadcrumbStyleProps {
   className?: string;
-  theme?: ITheme;
+  theme: ITheme;
 }
 export interface IBreadcrumbStyles {
   root: IStyle;
@@ -18,8 +25,26 @@ export interface IBreadcrumbStyles {
   item: IStyle;
 }
 
+const SingleLineTextStyle: IRawStyle = {
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden'
+};
+
+export function getScreenSelector(min: number, max: number): string {
+  return `@media only screen and (min-width: ${min}px) and (max-width: ${max}px)`;
+}
+
+const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
+const MediumScreenSelector = getScreenSelector(ScreenWidthMinMedium, ScreenWidthMaxMedium);
+
 export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
-  const { className } = props;
+  const { className, theme } = props;
+
+  const overflowButtonFontSize = 16;
+  const itemMaxWidth = 160;
+  const itemMaxWidthSmall = 116;
+  const chevronSmallFontSize = 8;
 
   return {
     root: [
@@ -50,13 +75,27 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         display: 'flex',
         position: 'relative',
         alignItems: 'center'
-      },
-      styles.listItem
+      }
     ],
 
     chevron: [
       'ms-Breadcrumb-chevron',
-      styles.chevron
+      {
+        color: theme.palette.neutralSecondary,
+        fontSize: theme.fonts.small.fontSize,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'WindowText',
+            MsHighContrastAdjust: 'none'
+          },
+          [MediumScreenSelector]: {
+            fontSize: chevronSmallFontSize
+          },
+          [MinimumScreenSelector]: {
+            fontSize: chevronSmallFontSize
+          }
+        }
+      }
     ],
 
     overflow: [
@@ -65,30 +104,88 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         position: 'relative',
         display: 'flex',
         alignItems: 'center'
-      },
-      styles.overflow
+      }
     ],
 
     overflowButton: [
       'ms-Breadcrumb-overflowButton',
-      styles.overflowButton
+      getFocusStyle(theme),
+      SingleLineTextStyle,
+      {
+        fontSize: overflowButtonFontSize,
+        height: '100%',
+        cursor: 'pointer',
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.palette.neutralLighter
+          },
+          ':active': {
+            backgroundColor: theme.palette.neutralTertiaryAlt,
+            color: theme.semanticColors.bodyText
+          },
+          ':hover:active': {
+            // This seems unnecessary.
+            backgroundColor: theme.palette.neutralQuaternary
+          },
+          [MinimumScreenSelector]: {
+            padding: '4px 6px'
+          },
+          [MediumScreenSelector]: {
+            fontSize: theme.fonts.mediumPlus.fontSize
+          }
+        }
+      }
     ],
 
     itemLink: [
       'ms-Breadcrumb-itemLink',
-      styles.itemLink
+      getFocusStyle(theme),
+      SingleLineTextStyle,
+      theme.fonts.xLarge,
+      {
+        textDecoration: 'none',
+        color: theme.semanticColors.bodyText,
+        padding: '0 8px',
+        maxWidth: itemMaxWidth,
+
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.semanticColors.menuItemBackgroundHovered,
+            color: 'initial',
+            cursor: 'pointer'
+          },
+          ':focus': {
+            color: theme.palette.neutralDark
+          },
+          ':active': {
+            backgroundColor: theme.palette.neutralTertiaryAlt,
+            color: theme.palette.neutralPrimary
+          },
+          [MediumScreenSelector]: theme.fonts.large,
+          [MinimumScreenSelector]: [
+            theme.fonts.medium,
+            {
+              maxWidth: itemMaxWidthSmall
+            }
+          ]
+        }
+      }
     ],
 
     item: [
       'ms-Breadcrumb-item',
+      theme.fonts.xLarge,
       {
+        color: theme.semanticColors.bodyText,
+        padding: '0 8px',
+        maxWidth: itemMaxWidth,
+
         selectors: {
           ':hover': {
             cursor: 'default'
           }
         }
-      },
-      styles.item
+      }
     ]
   };
 };

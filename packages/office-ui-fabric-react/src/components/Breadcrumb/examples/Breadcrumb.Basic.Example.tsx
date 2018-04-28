@@ -12,7 +12,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   }
 
   public render(): JSX.Element {
-    const customDivider = () => <span>*</span>;
+    const customDivider = () => <span>/</span>;
 
     return (
       <div>

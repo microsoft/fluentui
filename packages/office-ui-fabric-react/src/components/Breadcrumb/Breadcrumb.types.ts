@@ -3,6 +3,7 @@ import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../Icon';
 import { IRenderFunction, IStyleFunction, IComponentAs } from '../../Utilities';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
+import { ITheme } from '../../Styling';
 
 export interface IBreadcrumb {
   /**
@@ -65,6 +66,7 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
   overflowIndex?: number;
 
   getStyles?: IStyleFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+  theme?: ITheme;
 }
 
 export interface IBreadcrumbItem {

@@ -13,7 +13,6 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       'ms-Link',
-      className,
       getFocusStyle(theme),
       {
         color: semanticColors.link,
@@ -46,7 +45,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
               pointerEvents: 'none'
             }
           }
-        }
+        },
       ],
       !isDisabled && {
         selectors: {
@@ -57,7 +56,8 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             color: semanticColors.link
           }
         }
-      }
+      },
+      className
     ]
   };
 };

@@ -10,6 +10,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
+import { customizable } from '../../Utilities';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
@@ -27,6 +28,7 @@ export interface IBreadCrumbData {
 const OverflowKey = 'overflow';
 const NullFunction = (): null => null;
 
+@customizable('Breadcrumb', ['theme'])
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
@@ -59,6 +61,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       maxDisplayedItems,
       items,
       className,
+      theme,
       getStyles
     } = this.props;
     const renderedItems = [...items];
@@ -69,7 +72,10 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       renderedOverflowItems
     };
 
-    this._classNames = getClassNames(getStyles, { className });
+    this._classNames = getClassNames(getStyles, {
+      className,
+      theme: theme!
+    });
 
     return (
       <ResizeGroup
