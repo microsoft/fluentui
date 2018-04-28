@@ -41,7 +41,10 @@
     ],
     "max-line-length": [
       true,
-      140
+      {
+        "limit": 140,
+        "ignore-pattern": "require\\(|https?:\\/\\/"
+      }
     ],
     "no-arg": true,
     "radix": true,
