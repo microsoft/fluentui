@@ -56,7 +56,8 @@
     "quotemark": [
       true,
       "single",
-      "jsx-single"
+      "jsx-double",
+      "avoid-escape"
     ],
     "no-inferrable-types": [
       true,

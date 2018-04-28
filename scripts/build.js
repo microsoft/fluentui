@@ -14,6 +14,7 @@ const isProduction = process.argv.indexOf('--production') > -1;
 let tasks = [
   'copy',
   'sass',
+  'prettier',
   'tslint',
   'ts',
   'jest',
