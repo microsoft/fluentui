@@ -105,6 +105,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "test-bundles",
+      "projectFolder": "apps/test-bundles",
+      "shouldPublish": false
+    },
+    {
       "packageName": "office-ui-fabric-react-tslint",
       "projectFolder": "packages/office-ui-fabric-react-tslint",
       "shouldPublish": false

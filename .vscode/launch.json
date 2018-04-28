@@ -52,7 +52,7 @@
         "--",
         "--production"
       ],
-      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "cwd": "${workspaceRoot}/apps/test-bundles",
       "runtimeExecutable": null,
       "runtimeArgs": [
         "--nolazy",
