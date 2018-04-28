@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
+    "prettier": "prettier --write **/*.{ts,tsx}",
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
     "start-test": "node ../../scripts/start-test.js",
@@ -52,11 +53,18 @@
     "@uifabric/merge-styles": ">=5.17.0 <6.0.0",
     "@uifabric/styling": ">=5.27.0 <6.0.0",
     "@uifabric/utilities": ">=5.29.0 <6.0.0",
+    "prettier": "^1.12.1",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+  },
+  "prettier": {
+    "printWidth": 140,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "parser": "typescript"
   }
 }

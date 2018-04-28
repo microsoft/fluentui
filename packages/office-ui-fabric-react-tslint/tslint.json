@@ -24,7 +24,7 @@
     "jsx-key": true,
     "jsx-no-lambda": true,
     "jsx-self-close": true,
-    "jsx-wrap-multiline": true,
+    "jsx-wrap-multiline": false,
     "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
     "jsx-ban-props": [
@@ -159,7 +159,8 @@
     ],
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "typedef-whitespace": [
       true,
