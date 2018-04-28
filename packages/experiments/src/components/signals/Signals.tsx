@@ -259,7 +259,8 @@ type IIconSignalProps = ISignalProps & Pick<IIconProps, 'iconName'> & {
 /**
  * Renders a signal as just an Icon. This is the simplest Signal case.
  */
-function IconSignal(props: IIconSignalProps): JSX.Element { // tslint:disable-line:function-name
+// tslint:disable-next-line:function-name
+function IconSignal(props: IIconSignalProps): JSX.Element {
   const {
     ariaLabel,
     className,
