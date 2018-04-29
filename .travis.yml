@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - '8'
 script:
-  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$TRAVIS_PULL_REQUEST, BRANCH=$BRANCH"
   - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
     then npm run checkchange;
     fi
