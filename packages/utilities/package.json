@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
+    "check": "node ../../scripts/check.js",
     "clean": "node ../../scripts/clean.js",
     "start-test": "node ../../scripts/start-test.js"
   },
