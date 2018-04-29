@@ -5,6 +5,7 @@
   "scripts": {
     "clean": "",
     "build": "node -v",
+    "code-style": "node -v",
     "bundlesize": "bundlesize --debug"
   },
   "devDependencies": {
