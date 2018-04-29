@@ -20,7 +20,6 @@ runTsLintOnFilesGroupedPerPackage(groupFilesByPackage(files));
  */
 function groupFilesByPackage(files) {
   const packagesDirectory = path.join(path.resolve(__dirname, '..', '..'), 'packages', path.sep);
-  console.log(packagesDirectory);
 
   return files
     .map((fileName) => [fileName.replace(packagesDirectory, '').split(path.sep)[0], fileName])
@@ -39,6 +38,9 @@ function groupFilesByPackage(files) {
  * @param {[packageName: string]: string[]} filesGroupedByPackage
  */
 function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
+  // Log an empty line on error to make the tslint output look better
+  console.log('');
+
   for (let [package, files] of Object.entries(filesGroupedByPackage)) {
     const tslintConfig = path.join(path.resolve(__dirname, '..', '..'), 'packages', path.sep, package, 'tslint.json');
 
