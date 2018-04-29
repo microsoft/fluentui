@@ -7,6 +7,14 @@
         "build",
         "rebuild"
       ]
+    },
+    "--lint": {
+      "optionType": "flag",
+      "description": "Builds with linting.",
+      "associatedCommands": [
+        "build",
+        "rebuild"
+      ]
     }
   }
 }
