@@ -119,6 +119,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           { index !== lastItemIndex && <Divider
             className={ css('ms-Breadcrumb-chevron', styles.chevron) }
             name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            item={ item }
           /> }
         </li>
       ));
@@ -141,6 +142,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           <Divider
             className={ css('ms-Breadcrumb-chevron', styles.chevron) }
             name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            item={ renderedOverflowItems[renderedOverflowItems.length - 1] }
           />
         </li>
       ));
@@ -203,8 +205,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
    * @param props Props to validate
    */
   private _validateProps(props: IBreadcrumbProps): void {
-    const { items, overflowIndex } = props;
-    if (overflowIndex! < 0 || overflowIndex! > items.length - 1) {
+    const { maxDisplayedItems, overflowIndex, items } = props;
+    if (overflowIndex! < 0 ||
+      maxDisplayedItems! > 1 && overflowIndex! > maxDisplayedItems! - 1 ||
+      items.length > 0 && overflowIndex! > items.length - 1) {
       throw new Error('Breadcrumb: overflowIndex out of range');
     }
   }

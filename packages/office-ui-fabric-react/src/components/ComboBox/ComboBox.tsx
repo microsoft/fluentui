@@ -33,7 +33,6 @@ import {
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
-import { BaseButton, Button } from 'src/index.bundle';
 
 export interface IComboBoxState {
 

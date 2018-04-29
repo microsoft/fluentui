@@ -566,11 +566,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _onPrevMonthKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    this._onKeyDown(this._onSelectPrevMonth, ev);
+    if (ev.which === KeyCodes.enter) {
+      this._onKeyDown(this._onSelectPrevMonth, ev);
+    }
   }
 
   private _onNextMonthKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    this._onKeyDown(this._onSelectNextMonth, ev);
+    if (ev.which === KeyCodes.enter) {
+      this._onKeyDown(this._onSelectNextMonth, ev);
+    }
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {

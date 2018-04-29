@@ -15,6 +15,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        background-color: transparent;
         background: none;
         border: none;
         cursor: pointer;

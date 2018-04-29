@@ -7,6 +7,7 @@ import {
 import {
   FontSizes,
   HighContrastSelector,
+  getGlobalClassNames,
 } from '../../../Styling';
 import {
   personaPresenceSize,
@@ -14,11 +15,18 @@ import {
   sizeBoolean,
 } from '../PersonaConsts';
 
+const GlobalClassNames = {
+  presence: 'ms-Persona-presence',
+  presenceIcon: 'ms-Persona-presenceIcon',
+};
+
 export const getStyles = (
   props: IPersonaPresenceStyleProps
 ): IPersonaPresenceStyles => {
   const { theme } = props;
   const { semanticColors } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const size = sizeBoolean(props.size as PersonaSize);
   const presence = presenceBoolean(props.presence as PersonaPresence);
@@ -32,7 +40,7 @@ export const getStyles = (
 
   return ({
     presence: [
-      'ms-Persona-presence',
+      classNames.presence,
       {
         position: 'absolute',
         height: personaPresenceSize.size12,
@@ -170,7 +178,7 @@ export const getStyles = (
     ],
 
     presenceIcon: [
-      'ms-Persona-presenceIcon',
+      classNames.presenceIcon,
       {
         color: semanticColors.bodyBackground,
         fontSize: '6px',

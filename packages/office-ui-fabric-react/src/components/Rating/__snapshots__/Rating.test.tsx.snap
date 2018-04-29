@@ -29,6 +29,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
+            background-color: transparent;
             background: none;
             border: none;
             cursor: pointer;
@@ -165,6 +166,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
+            background-color: transparent;
             background: none;
             border: none;
             cursor: pointer;
@@ -300,6 +302,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
+            background-color: transparent;
             background: none;
             border: none;
             cursor: pointer;
@@ -435,6 +438,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
+            background-color: transparent;
             background: none;
             border: none;
             cursor: pointer;
@@ -570,6 +574,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
+            background-color: transparent;
             background: none;
             border: none;
             cursor: pointer;

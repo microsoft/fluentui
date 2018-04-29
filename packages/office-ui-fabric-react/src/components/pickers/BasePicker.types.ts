@@ -112,7 +112,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
-  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
+  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
    * Aria label for the "X" button in the selected item component.
    * @default ''
@@ -219,4 +219,11 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
    * Screen reader label to apply to an input element.
    */
   'aria-label'?: string;
+  /**
+   * The default value to be visible when the autofill first created.
+   * This is different than placeholder text because the placeholder text will disappear and re-appear. This
+   * text persists until deleted or changed.
+   */
+  defaultVisibleValue?: string;
+
 }
