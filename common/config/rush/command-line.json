@@ -1,4 +1,12 @@
 {
+  "customCommands": [
+    {
+      "name": "code-style",
+      "summary": "Runs prettier and tslint.",
+      "documentation": "Runs prettier and tslint for each of the packages that have a code-style task.",
+      "parallelized": true
+    }
+  ],
   "customOptions": {
     "--production": {
       "optionType": "flag",

@@ -5,7 +5,8 @@
   "main": "tslint.json",
   "scripts": {
     "clean": "",
-    "build": "node -v"
+    "build": "node -v",
+    "code-style": "node -v"
   },
   "devDependencies": {
     "tslint-react": "^3.2.0"
