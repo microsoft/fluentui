@@ -52,7 +52,6 @@
     "@uifabric/merge-styles": ">=5.17.0 <6.0.0",
     "@uifabric/styling": ">=5.27.0 <6.0.0",
     "@uifabric/utilities": ">=5.29.0 <6.0.0",
-    "prettier": "^1.12.1",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
