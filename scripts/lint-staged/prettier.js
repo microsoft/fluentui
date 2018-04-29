@@ -1,10 +1,8 @@
 const prettier = require('prettier');
 const path = require('path');
-const execSync = require('./exec-sync');
+const execSync = require('../exec-sync');
 
 const files = process.argv.slice(2);
-const configMap = new Map();
-const prettierPath = 'node ' + path.resolve(path.join(__dirname, 'node_modules', 'prettier', 'bin-prettier.js'));
 
 runPrettierOnStagedFiles(files);
 
@@ -42,6 +40,8 @@ async function getPrettierConfig(configPath) {
  * @param {string[]} files Staged files passed in by lint-staged
  */
 async function runPrettierOnStagedFiles(files) {
+  const prettierPath = 'node ' + path.resolve(path.join(__dirname, 'node_modules', 'prettier', 'bin-prettier.js'));
+
   // Get the config from office-ui-fabric-react-tslint
   const prettierConfigPath = getPrettierConfigPath();
   const prettierConfig = await getPrettierConfig(prettierConfigPath);

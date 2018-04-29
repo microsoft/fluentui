@@ -35,7 +35,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "node ./scripts/prettier-staged",
+      "node ./scripts/lint-staged/prettier",
+      "node ./scripts/lint-staged/tslint",
       "git add"
     ]
   }
