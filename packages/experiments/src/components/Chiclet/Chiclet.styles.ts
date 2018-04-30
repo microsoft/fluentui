@@ -20,26 +20,24 @@ export const getClassNames = memoizeFunction((
   const styles: IChicletCardStyles = {
     root: {
       WebkitFontSmoothing: 'antialiased',
-      backgroundColor: 'white',
-      border: `1px solid ${theme.palette.neutralLight}`,
-      boxSizing: 'border-box',
-      maxWidth: '320px',
-      minWidth: '540px',
-      height: '109px',
+      backgroundColor: theme.palette.white,
+      borderRadius: '2px',
+      boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
+      width: '600px',
+      height: '126px',
       userSelect: 'none',
       position: 'relative',
       selectors: {
         ':hover': {
-          cursor: 'pointer',
-          border: `1px solid ${theme.palette.neutralTertiaryAlt}`
+          cursor: 'pointer'
         }
       }
     },
     icon: [
       'ms-DocumentCardPreview-icon',
       {
-        marginLeft: '10px',
-        bottom: '10px',
+        padding: '10px 166px 8px 8px',
+        //bottom: '10px',
         position: 'absolute',
         color: '#166EBE'
       }
@@ -48,12 +46,14 @@ export const getClassNames = memoizeFunction((
       'ms-ChicletCardPreview',
       {
         float: 'left',
-        maxHeight: '107px',
-        maxWidth: '160px',
+        height: '122px',
+        width: '198px',
         position: 'relative',
+        //opacity: '0.02',
         overflow: 'hidden', // need to fix
-        backgroundColor: theme.palette.neutralLighterAlt,
-        display: 'block'
+        backgroundColor: theme.palette.white,
+        display: 'block',
+        padding: '2px 0px 2px 2px',
       }
     ],
     info: [
@@ -62,32 +62,45 @@ export const getClassNames = memoizeFunction((
         position: 'relative',
         display: 'block',
         height: '100%',
-        lineHeight: '21px',
+        //lineHeight: '21px',
         overflow: 'hidden',
-        wordWrap: 'break-word'
+        wordWrap: 'break-word',
+        weight: '400px'
       }
     ],
     title: [
       'ms-ChicletCardTitle',
       {
-        padding: '8px 16px 0px',
-        font: theme.fonts.large,
+        padding: '9px 26px 5px 11px',
+        //font: theme.fonts.large,
+        fontSize: '16px',
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        fontStretch: 'normal',
         color: theme.palette.neutralPrimary,
-        height: '42px', // Two lines of text, making sure the third line is hidden
-        lineHeight: ChicletCardTitleLineHeight,
+        letterSpacing: 'normal',
+        textAlign: 'left',
+        height: '41px', // Two lines of text, making sure the third line is hidden
+        width: '363px',
+        lineHeight: '1.25',
         overflow: 'hidden',
-        wordWrap: 'break-word',
-        fontWeight: '400'
+        wordWrap: 'break-word'
       }
     ],
     link: [
       'ms-ChicletCardLink',
       {
-        padding: '4px 16px 0px',
-        fontSize: '8pt',
-        color: theme.palette.neutralTertiaryAlt,
-        lineHeight: '14px',
-        height: '14px',
+        padding: '0px 16px 25px 11px',
+        fontSize: '12px',
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        fontStretch: 'normal',
+        lineHeight: '1.33',
+        letterSpacing: 'normal',
+        textAlign: 'left',
+        color: '#797671',
+        width: '248px',
+        height: '16px',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'
@@ -96,8 +109,8 @@ export const getClassNames = memoizeFunction((
     actions: [
       'ms-ChicletFooter',
       {
-        height: msChicletCardActionsActionSize,
-        padding: `${msChicletCardActionsVerticalPadding} ${msChicletCardActionsHorizontalPadding}`,
+        paddingRight: '6px',
+        height: '24px',
         position: 'relative'
       }
     ],
@@ -105,8 +118,11 @@ export const getClassNames = memoizeFunction((
       'ms-ChicletFooter-action',
       {
         float: 'right',
-        marginLeft: '4px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        width: '32px',
+        height: '32px',
+        backgroundColor: theme.palette.white,
+        color: '#0078D7'
       }
     ]
   };
