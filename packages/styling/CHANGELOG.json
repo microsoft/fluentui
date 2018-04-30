@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.28.0",
+      "tag": "@uifabric/styling_v5.28.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "660800656c40963e73450fddafb9d621ce089f4a",
+            "comment": "Adds flags to theme to support controlling global class names"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.27.0",
       "tag": "@uifabric/styling_v5.27.0",
       "date": "Wed, 25 Apr 2018 05:32:09 GMT",
