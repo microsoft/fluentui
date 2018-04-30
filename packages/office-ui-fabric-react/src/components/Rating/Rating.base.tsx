@@ -156,13 +156,15 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
-    this.setState({
-      rating: value
-    } as IRatingState);
+    if (this.state.rating !== value) {
+      this.setState({
+        rating: value
+      } as IRatingState);
 
-    const { onChanged } = this.props;
-    if (onChanged) {
-      onChanged(value);
+      const { onChanged } = this.props;
+      if (onChanged) {
+        onChanged(value);
+      }
     }
   }
 
