@@ -622,6 +622,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onItemClick={ this._onItemClick }
         onItemClickBase={ this._onItemClickBase }
         onItemKeyDown={ this._onItemKeyDown }
+        cancelExistingTimers={ this.cancelSubMenuTimer }
       />
     );
   }
@@ -811,10 +812,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     // Cancel a async menu item hover timeout action from being taken and instead
     // just trigger the click event instead.
-    if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-    }
+    this.cancelSubMenuTimer();
+
     if (!hasSubmenu(item) && (!items || !items.length)) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
     } else {
@@ -855,6 +854,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
+    }
+  }
+
+  // Cancel a async menu item hover timeout action from being taken and instead
+  // do new upcoming behavior
+  private cancelSubMenuTimer = () => {
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
     }
   }
 
