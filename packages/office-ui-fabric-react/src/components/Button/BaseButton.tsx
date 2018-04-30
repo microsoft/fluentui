@@ -137,10 +137,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'disabled' // let disabled buttons be focused and styled as disabled.
       ]);
 
-    // if (allowDisabledFocus) {
-    // this.props.disabled = undefined;
-    // }
-
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
     let ariaDescribedBy;
