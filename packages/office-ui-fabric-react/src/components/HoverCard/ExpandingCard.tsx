@@ -52,7 +52,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   public render(): JSX.Element {
-    console.log('ExpandingCard props', this.props);
     const {
       targetElement,
       theme,
