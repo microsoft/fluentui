@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import {
+  TextField,
+  MaskedTextField
+} from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
 export class TextFieldBasicExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-TextFieldExample'>
         <TextField
@@ -20,6 +23,10 @@ export class TextFieldBasicExample extends React.Component<any, any> {
         <TextField
           label='With error message'
           errorMessage='Error message'
+        />
+        <MaskedTextField
+          label='With input mask'
+          mask='m\ask: (999) 999 - 9999'
         />
       </div>
     );

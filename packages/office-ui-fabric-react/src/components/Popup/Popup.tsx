@@ -33,19 +33,19 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {
-    if (!this._root.value) {
+    if (!this._root.current) {
       return;
     }
 
-    this._events.on(this._root.value, 'focus', this._onFocus, true);
-    this._events.on(this._root.value, 'blur', this._onBlur, true);
+    this._events.on(this._root.current, 'focus', this._onFocus, true);
+    this._events.on(this._root.current, 'blur', this._onBlur, true);
 
-    if (doesElementContainFocus(this._root.value)) {
+    if (doesElementContainFocus(this._root.current)) {
       this._containsFocus = true;
     }
 
@@ -71,7 +71,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
     return (
@@ -106,15 +106,15 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  private _updateScrollBarAsync() {
+  private _updateScrollBarAsync(): void {
     this._async.requestAnimationFrame(() => {
       this._getScrollBar();
     });
   }
 
-  private _getScrollBar() {
+  private _getScrollBar(): void {
     let needsVerticalScrollBar = false;
-    if (this._root && this._root.value && this._root.value.firstElementChild) {
+    if (this._root && this._root.current && this._root.current.firstElementChild) {
       // ClientHeight returns the client height of an element rounded to an
       // integer. On some browsers at different zoom levels this rounding
       // can generate different results for the root container and child even
@@ -124,8 +124,8 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
       // Therefore instead we will calculate the difference between heights and
       // allow for a 1px difference to still be considered ok and not show the
       // scroll bar.
-      const rootHeight = this._root.value.clientHeight;
-      const firstChildHeight = this._root.value.firstElementChild.clientHeight;
+      const rootHeight = this._root.current.clientHeight;
+      const firstChildHeight = this._root.current.firstElementChild.clientHeight;
       if (rootHeight > 0 && firstChildHeight > rootHeight) {
         needsVerticalScrollBar = (firstChildHeight - rootHeight) > 1;
       }
@@ -137,11 +137,11 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  private _onFocus() {
+  private _onFocus(): void {
     this._containsFocus = true;
   }
 
-  private _onBlur() {
+  private _onBlur(): void {
     this._containsFocus = false;
   }
 }

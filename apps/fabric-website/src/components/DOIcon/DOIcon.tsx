@@ -12,7 +12,7 @@ export class DOIcon extends React.Component<IDOIconProps, {}> {
     ariaHidden: true
   };
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <i
         className={ 'od-Icon od-Icon--' + this.props.iconClass + ' ms-bgColor-' + this.props.bgColor }

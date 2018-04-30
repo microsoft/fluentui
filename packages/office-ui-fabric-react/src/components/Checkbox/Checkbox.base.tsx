@@ -49,7 +49,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     };
   }
 
-  public componentWillReceiveProps(newProps: ICheckboxProps) {
+  public componentWillReceiveProps(newProps: ICheckboxProps): void {
     if (newProps.checked !== undefined) {
       this.setState({
         isChecked: !!newProps.checked // convert null to false
@@ -131,8 +131,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public focus(): void {
-    if (this._checkBox.value) {
-      this._checkBox.value.focus();
+    if (this._checkBox.current) {
+      this._checkBox.current.focus();
     }
   }
 

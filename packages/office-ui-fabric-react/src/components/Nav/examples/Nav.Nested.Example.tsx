@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
 export class NavNestedExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <Nav
         groups={ [{

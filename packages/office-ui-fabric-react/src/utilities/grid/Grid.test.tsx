@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import { GridBase } from './Grid.base';
 import { getStyles } from './Grid.styles';
 import { DefaultButton } from '../../Button';

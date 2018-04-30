@@ -1,11 +1,9 @@
 import * as React from 'react';
 import {
-  Link
-} from 'office-ui-fabric-react/lib/Link';
-import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
@@ -21,11 +19,12 @@ import FocusTrapZoneNestedExample from './examples/FocusTrapZone.Nested.Example'
 const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 
 export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='FocusTrapZone'
         componentName='FocusTrapZoneExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FocusTrapZone'
         exampleCards={
           <div>
             <ExampleCard title='Simple Box' code={ FocusTrapZoneBoxExampleCode }>
@@ -51,10 +50,9 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
           />
         }
         overview={
-          <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/utilities/FocusTrapZone'>FocusTrapZone</Link>
-            <span> is used to trap the focus in any html element. Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone.</span>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />

@@ -83,7 +83,7 @@ controlling the disabled state of the input element.)
 
 |BAD|GOOD|Notes|
 |---|----|-----|
-|isChecked|checked|There is an HTML precidence for checked.|
+|isChecked|checked|There is an HTML precedence for checked.|
 |isVisible|visible|
 |isSelected|selected|
 |isEnabled|disabled|If the state is enabled by default, it should be named for the exceptional case.|
@@ -173,25 +173,11 @@ public render() {
 }
 ```
 
-Acceptable:
-```typescript
-private _root: HTMLElement;
-private _resolveRoot: (element: HTMLElement) => any;
+Good:
 
-constructor() {
-  this._resolveRoot = (el: HTMLElement) => this._root = el;
-}
+The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://reactjs.org/docs/refs-and-the-dom.html#creating-refs). (When Fabric switches over to React 16, we'll use React.createRef instead)
 
-public render() {
-  return <div ref={ this._resolveRoot } />
-}
-```
-
-Best, use createRef:
-
-The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://github.com/facebook/react/pull/11555). (When Fabric switches over to React 16, we'll use React.createRef instead)
-
-`createRef` creates a reference object that has the following type `{ value: T | null }`, where T is the element to reference (either a dom node or a react component). You set the reference by passing the reference object as the `ref` prop. You can then subsequently access the reference through the `.value` property on the reference object elsewhere in your code.
+`createRef` creates a reference object that has the following type `{ current: T | null }`, where T is the element to reference (either a dom node or a react component). You set the reference by passing the reference object as the `ref` prop. You can then subsequently access the reference through the `.current` property on the reference object elsewhere in your code.
 
 ```typescript
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
@@ -200,14 +186,14 @@ class Foo extends BaseComponent<...> {
   // Create the reference object that will be used for setting and accessing the reference
   private _root = createRef<HTMLButtonElement>();
 
-  public render() {
+  public render(): JSX.Element {
     // Set the reference by passing the reference object as the ref prop
     return <button ref={ _root } onClick={this._onClick} />;
   }
 
-  private _onClick() {
-    // Access the reference through the .value property on the reference object
-    this._root.value.focus();
+  private _onClick(): void {
+    // Access the reference through the .current property on the reference object
+    this._root.current.focus();
   }
 }
 ```
@@ -436,7 +422,7 @@ class Foo extends React.Component {
     return <div onClick={ this._onClick }>{ `Foo ${ this._fooRocks ? 'rocks' : 'rolls' }</div>;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     this._fooRocks = !this._fooRocks;
     this.forceUpdate();
   }
@@ -457,16 +443,16 @@ class Foo extends React.Component {
     return <div onClick={ this._onClick }>{ `Foo ${ this.state.fooRocks ? 'rocks' : 'rolls' }</div>;
   }
 
-  private _onClick() {
+  private _onClick(): void {
     this.setState({
       fooRocks: !this.state.fooRocks
     });
   }
 ```
 
-## Experimental: Use a store for storing shared state within a component heirachy which must be shared across objects
+## Experimental: Use a store for storing shared state within a component hierarchy which must be shared across objects
 
-While React state management is very useful for simple, private state, it becomes unweildy when many things share that state
+While React state management is very useful for simple, private state, it becomes unwieldy when many things share that state
 and you start ending up with many owners of the same state value. In these cases it may drive you towards a flux solution, but
 before we jump there, lets call out a few things.
 
@@ -571,7 +557,7 @@ html[dir=rtl] .ms-Foo {
 }
 ```
 
-Additionaly try to have symetrical paddings rather than using padding-right or left specifics.
+Additionally try to have symmetrical paddings rather than using padding-right or left specifics.
 
 ## Do not use core fabric classnames, but instead use core fabric scss mixins.
 

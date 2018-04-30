@@ -21,7 +21,7 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
-  public render() {
+  public render(): JSX.Element {
     const { disabled, children, className, href, theme, getStyles } = this.props;
 
     const classNames = getClassNames(getStyles!, {
@@ -60,8 +60,8 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   }
 
   public focus() {
-    if (this._link.value) {
-      this._link.value.focus();
+    if (this._link.current) {
+      this._link.current.focus();
     }
   }
 

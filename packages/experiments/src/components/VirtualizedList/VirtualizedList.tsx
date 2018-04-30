@@ -94,7 +94,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
       itemOverdraw = 2
     } = this.props;
 
-    let ranges: IRange[] = [];
+    const ranges: IRange[] = [];
 
     // Calculate visible range
     const startIndex = Math.floor(
@@ -212,8 +212,8 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   private _onFocus(ev: React.FocusEvent<HTMLDivElement>): void {
     let target = ev.target as HTMLElement;
 
-    while (target !== this._root.value) {
-      let indexString = target.getAttribute('data-selection-index');
+    while (target !== this._root.current) {
+      const indexString = target.getAttribute('data-selection-index');
 
       if (indexString) {
         this._focusedIndex = Number(indexString);

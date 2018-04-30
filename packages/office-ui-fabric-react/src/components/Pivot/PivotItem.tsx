@@ -8,7 +8,7 @@ import { IPivotItemProps } from './PivotItem.types';
 
 export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div
         { ...getNativeProps(this.props, divProperties) }

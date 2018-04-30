@@ -7,7 +7,7 @@ const corePackageData = require('../../../node_modules/office-ui-fabric-core/pac
 const reactPackageData = require('../../../node_modules/office-ui-fabric-react/package.json');
 
 export class HomePage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <div className={ styles.hero }>

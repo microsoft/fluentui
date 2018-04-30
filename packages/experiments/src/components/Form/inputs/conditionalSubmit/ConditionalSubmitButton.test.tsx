@@ -25,7 +25,7 @@ describe('FormSubmitButton Unit Tests', () => {
   });
 
   it('Button is disabled when form is invalid and enabled when form is valid', () => {
-    let renderedForm = ReactTestUtils.renderIntoDocument(
+    const renderedForm = ReactTestUtils.renderIntoDocument(
       <Form>
         <ExtendsTextBox
           inputKey='name'
@@ -36,8 +36,8 @@ describe('FormSubmitButton Unit Tests', () => {
       </Form>
     ) as Form;
 
-    let button: HTMLButtonElement = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Button') as HTMLButtonElement;
-    let textBox: ExtendsTextBox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextBox);
+    const button: HTMLButtonElement = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Button') as HTMLButtonElement;
+    const textBox: ExtendsTextBox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextBox);
 
     expect(button.getAttribute('disabled')).toEqual('');
     textBox.setValue('Value');

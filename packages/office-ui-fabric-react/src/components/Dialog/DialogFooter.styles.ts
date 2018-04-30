@@ -1,15 +1,25 @@
 import { IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
+import { getGlobalClassNames } from '../../Styling';
+
+const GlobalClassNames = {
+  actions: 'ms-Dialog-actions',
+  action: 'ms-Dialog-action',
+  actionsRight: 'ms-Dialog-actionsRight',
+};
 
 export const getStyles = (
   props: IDialogFooterStyleProps
 ): IDialogFooterStyles => {
   const {
     className,
+    theme,
   } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return ({
     actions: [
-      'ms-Dialog-actions',
+      classNames.actions,
       {
         position: 'relative',
         width: '100%',
@@ -28,11 +38,11 @@ export const getStyles = (
     ],
 
     action: [
-      'ms-Dialog-action',
+      classNames.action,
     ],
 
     actionsRight: [
-      'ms-Dialog-actionsRight',
+      classNames.actionsRight,
       {
         textAlign: 'right',
         marginRight: '-4px',
