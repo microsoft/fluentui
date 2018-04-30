@@ -6,6 +6,11 @@ exports[`Toggle renders toggle correctly 1`] = `
       ms-Toggle
       is-enabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 8px;
       }
 >
@@ -71,7 +76,7 @@ exports[`Toggle renders toggle correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
             bottom: -2px;
             content: "";

@@ -1,13 +1,17 @@
 import * as React from 'react';
-
-import { Pivot } from './Pivot';
+import { PivotBase } from './Pivot.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 import { PivotItem } from './PivotItem';
 
 export interface IPivot {
-
+  /**
+   * Sets focus to the first pivot tab.
+   */
+  focus(): void;
 }
 
-export interface IPivotProps extends React.Props<Pivot> {
+export interface IPivotProps extends React.Props<PivotBase> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -15,16 +19,27 @@ export interface IPivotProps extends React.Props<Pivot> {
   componentRef?: (component: IPivot | null) => void;
 
   /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<IPivotStyleProps, IPivotStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Pivot
+   * @defaultvalue undefined
+   */
+  className?: string;
+
+  /**
    * The index of the pivot item initially selected.
    *
    * It only works when initialSelectedKey is not defined. You must not use them together.
    */
   initialSelectedIndex?: number;
-
-  /**
-   * Optional root classname for the root pivot element.
-   */
-  className?: string;
 
   /**
    * The key of the pivot item initially selected.
@@ -67,6 +82,36 @@ export interface IPivotProps extends React.Props<Pivot> {
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
+}
+
+export interface IPivotStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+  linkIsSelected?: boolean;
+  linkIsDisabled?: boolean;
+  linkIsOverflow?: boolean;
+  rootIsLarge?: boolean;
+  rootIsTabs?: boolean;
+}
+
+export interface IPivotStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  links: IStyle;
+  link: IStyle;
+  text: IStyle;
+  count: IStyle;
+  icon: IStyle;
+  ellipsis: IStyle;
 }
 
 export enum PivotLinkFormat {

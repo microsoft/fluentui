@@ -55,7 +55,7 @@ export class KeytipManager {
    * @returns {string} String to use for the aria-describedby property for the element with this Keytip
    */
   public getAriaDescribedBy(keySequences: IKeySequence[]): string {
-    let describedby = this._layer.props.id;
+    const describedby = this._layer.props.id;
     if (!keySequences.length) {
       // Return just the layer ID
       return describedby;
@@ -85,8 +85,8 @@ export class KeytipManager {
     this.keytipTree.addNode(keytipProps);
 
     // Construct aria-describedby and data-ktp-id attributes and return
-    let ariaDescribedBy = this.getAriaDescribedBy(keytipProps.keySequences);
-    let ktpId = convertSequencesToKeytipID(keytipProps.keySequences);
+    const ariaDescribedBy = this.getAriaDescribedBy(keytipProps.keySequences);
+    const ktpId = convertSequencesToKeytipID(keytipProps.keySequences);
 
     return {
       'aria-describedby': ariaDescribedBy,
@@ -121,7 +121,7 @@ export class KeytipManager {
    */
   public hideKeytips(ids?: string[]): void {
     // We can either hide keytips from the supplied array of ids, or all keytips.
-    let keysToHide = ids ? ids : Object.keys(this.keytipTree.nodeMap);
+    const keysToHide = ids ? ids : Object.keys(this.keytipTree.nodeMap);
     this._changeKeytipVisibility(keysToHide, false /* visible */);
   }
 
@@ -157,7 +157,7 @@ export class KeytipManager {
         } else {
           // If this keytip has a onReturn prop, we execute the func.
           if (this.keytipTree.currentKeytip.onReturn) {
-            let domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
+            const domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
             this.keytipTree.currentKeytip.onReturn(domEl);
           }
 
@@ -189,18 +189,18 @@ export class KeytipManager {
    */
   public processInput(key: string): void {
     // Concat the input key with the current sequence
-    let currentSequence: IKeySequence = { keys: [...this.currentSequence.keys, ...[key]] };
+    const currentSequence: IKeySequence = { keys: [...this.currentSequence.keys, ...[key]] };
 
     // currentKeytip must be defined, otherwise we haven't entered keytip mode yet
     if (this.keytipTree.currentKeytip) {
-      let node = this.keytipTree.getExactMatchedNode(currentSequence, this.keytipTree.currentKeytip);
+      const node = this.keytipTree.getExactMatchedNode(currentSequence, this.keytipTree.currentKeytip);
       if (node) {
         // If this is a persisted keytip, then we use its keytipLink
         this.keytipTree.currentKeytip = node.keytipLink ? node.keytipLink : node;
 
         // Execute this node's onExecute if defined
         if (this.keytipTree.currentKeytip.onExecute) {
-          let domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
+          const domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
           this.keytipTree.currentKeytip.onExecute(domEl);
         }
 
@@ -219,11 +219,11 @@ export class KeytipManager {
         return;
       }
 
-      let partialNodes = this.keytipTree.getPartiallyMatchedNodes(currentSequence, this.keytipTree.currentKeytip);
+      const partialNodes = this.keytipTree.getPartiallyMatchedNodes(currentSequence, this.keytipTree.currentKeytip);
       if (partialNodes.length > 0) {
         // We found nodes that partially match the sequence, so we show only those.
         this.hideKeytips();
-        let ids = partialNodes.map((partialNode: IKeytipTreeNode) => { return partialNode.id; });
+        const ids = partialNodes.map((partialNode: IKeytipTreeNode) => { return partialNode.id; });
         this.showKeytips(ids);
         // Save currentSequence
         this.currentSequence = currentSequence;
@@ -244,11 +244,11 @@ export class KeytipManager {
    */
   private _isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
     if (this.keytipTree.currentKeytip) {
-      let fullSequence = [...keytipProps.keySequences];
+      const fullSequence = [...keytipProps.keySequences];
       // Take off the last sequence to calculate the parent ID
       fullSequence.pop();
       // Parent ID is the root if there aren't any more sequences
-      let parentID = fullSequence.length === 0 ? this.keytipTree.root.id : convertSequencesToKeytipID(fullSequence);
+      const parentID = fullSequence.length === 0 ? this.keytipTree.root.id : convertSequencesToKeytipID(fullSequence);
       return this.keytipTree.currentKeytip.id === parentID;
     }
     return false;
@@ -261,7 +261,7 @@ export class KeytipManager {
    * @return {HTMLElement} DOM element of the keytip
    */
   private _getKeytipDOMElement(keytipId: string): HTMLElement {
-    let dataKeytipId = constructKeytipTargetFromId(keytipId);
+    const dataKeytipId = constructKeytipTargetFromId(keytipId);
     return document.querySelector(dataKeytipId) as HTMLElement;
   }
 }

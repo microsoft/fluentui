@@ -63,6 +63,7 @@
 
 .actionButton {
   background: none;
+  background-color: transparent;
   border: 0;
   cursor: pointer;
   margin: 0;
@@ -138,9 +139,11 @@
   }
 }
 
-.itemButton {
-  height: 100%;
+.itemButton.itemButton {
   width: 100%;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  height: 100%;
   padding: 7px 12px;
 
   @include high-contrast {
@@ -148,7 +151,8 @@
   }
 }
 
-.closeButton {
+.closeButton.closeButton {
+  /* once this is converted to js css, then specificity won't be an issue. */
   padding: 0 4px;
   height: auto;
   width: 32px;

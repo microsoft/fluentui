@@ -15,7 +15,8 @@ import {
   IPositionProps,
   ICalloutPositon,
   ICalloutPositionProps,
-  RectangleEdge
+  RectangleEdge,
+  IRelativePositions
 } from './positioning.types';
 
 export class Rectangle extends FullRectangle {
@@ -126,7 +127,7 @@ export namespace positioningFunctions {
     return rect[RectangleEdge[edge]];
   }
 
-  function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number) {
+  function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number): Rectangle {
     rect[RectangleEdge[edge]] = value;
     return rect;
   }
@@ -451,8 +452,16 @@ export namespace positioningFunctions {
    */
   export function _getPositionData(
     directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
-    directionalHintForRTL?: DirectionalHint
+    directionalHintForRTL?: DirectionalHint,
+    previousPositions?: IPositionedData
   ): IPositionDirectionalHintData {
+    if (previousPositions) {
+      return {
+        alignmentEdge: previousPositions.alignmentEdge,
+        isAuto: previousPositions.isAuto,
+        targetEdge: previousPositions.targetEdge
+      };
+    }
     const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
     if (getRTL()) {
 
@@ -576,7 +585,7 @@ export namespace positioningFunctions {
     return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
   }
 
-  export function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined) {
+  export function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined): Rectangle {
     let targetRectangle: Rectangle;
     if (target) {
       if ((target as MouseEvent).preventDefault) {
@@ -607,7 +616,7 @@ export namespace positioningFunctions {
   /**
    * If max height is less than zero it returns the bounds height instead.
    */
-  export function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle) {
+  export function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle): number {
     let maxHeight = 0;
 
     switch (targetEdge) {
@@ -634,14 +643,15 @@ export namespace positioningFunctions {
   export function _positionElementRelative(
     props: IPositionProps,
     hostElement: HTMLElement,
-    elementToPosition: HTMLElement): IElementPositionInfo {
+    elementToPosition: HTMLElement,
+    previousPositions?: IPositionedData): IElementPositionInfo {
     const gap: number = props.gapSpace ? props.gapSpace : 0;
     const boundingRect: Rectangle = props.bounds ?
       _getRectangleFromIRect(props.bounds) :
       new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
     const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
     const positionData: IPositionDirectionalHintData = _getAlignmentData(
-      _getPositionData(props.directionalHint, props.directionalHintForRTL)!,
+      _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
       targetRect,
       boundingRect,
       props.coverTarget);
@@ -656,7 +666,7 @@ export namespace positioningFunctions {
     return { ...positionedElement, targetRectangle: targetRect };
   }
 
-  export function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement) {
+  export function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement): IPositionedData {
     const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
       positionedElement.elementRectangle,
       hostElement,
@@ -664,25 +674,28 @@ export namespace positioningFunctions {
       positionedElement.alignmentEdge);
     return {
       elementPosition: finalizedElement,
-      targetEdge: positionedElement.targetEdge
+      targetEdge: positionedElement.targetEdge,
+      alignmentEdge: positionedElement.alignmentEdge
     };
   }
   export function _positionElement(
     props: IPositionProps,
     hostElement: HTMLElement,
-    elementToPosition: HTMLElement): IPositionedData {
-    const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition);
+    elementToPosition: HTMLElement,
+    previousPositions?: IPositionedData): IPositionedData {
+    const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition, previousPositions);
     return _finalizePositionData(positionedElement, hostElement);
   }
 
   export function _positionCallout(props: ICalloutPositionProps,
     hostElement: HTMLElement,
-    callout: HTMLElement): ICalloutPositionedInfo {
+    callout: HTMLElement,
+    previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo {
     const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
     const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
     const positionProps: IPositionProps = props;
     positionProps.gapSpace = gap;
-    const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout);
+    const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout, previousPositions);
     const beakPositioned: Rectangle = _positionBeak(
       beakWidth,
       positionedElement);
@@ -708,7 +721,7 @@ export namespace positioningFunctions {
   export function _getRelativePositions(
     props: IPositionProps,
     hostElement: HTMLElement,
-    elementToPosition: HTMLElement) {
+    elementToPosition: HTMLElement): IRelativePositions {
     const positions = _positionCallout(props, hostElement, elementToPosition);
     const beakPosition = positions && positions.beakPosition ? positions.beakPosition.elementPosition : undefined;
     return {
@@ -719,6 +732,7 @@ export namespace positioningFunctions {
     };
   }
 }
+
 /**
  * @deprecated Do not use, this will be removed in 6.0.
  * Use either positionElement, or positionCallout
@@ -731,29 +745,35 @@ export namespace positioningFunctions {
  */
 export function getRelativePositions(props: IPositionProps,
   hostElement: HTMLElement,
-  calloutElement: HTMLElement) {
+  calloutElement: HTMLElement): IRelativePositions {
   return positioningFunctions._getRelativePositions(props, hostElement, calloutElement);
 }
 
 /**
  * Used to position an element relative to the given positioning props.
+ * If positioning has been completed before, previousPositioningData
+ * can be passed to ensure that the positioning element repositions based on
+ * its previous targets rather than starting with directionalhint.
  *
  * @export
  * @param {IPositionProps} props
  * @param {HTMLElement} hostElement
  * @param {HTMLElement} elementToPosition
+ * @param {IPositionedData} previousPositions
  * @returns
  */
 export function positionElement(props: IPositionProps,
   hostElement: HTMLElement,
-  elementToPosition: HTMLElement): IPositionedData {
-  return positioningFunctions._positionElement(props, hostElement, elementToPosition);
+  elementToPosition: HTMLElement,
+  previousPositions?: IPositionedData): IPositionedData {
+  return positioningFunctions._positionElement(props, hostElement, elementToPosition, previousPositions);
 }
 
 export function positionCallout(props: IPositionProps,
   hostElement: HTMLElement,
-  elementToPosition: HTMLElement): ICalloutPositionedInfo {
-  return positioningFunctions._positionCallout(props, hostElement, elementToPosition);
+  elementToPosition: HTMLElement,
+  previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo {
+  return positioningFunctions._positionCallout(props, hostElement, elementToPosition, previousPositions);
 }
 
 /**
@@ -762,7 +782,7 @@ export function positionCallout(props: IPositionProps,
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle): number {
   const mouseTarget: MouseEvent = target as MouseEvent;
   const elementTarget: Element = target as Element;
   const pointTarget: IPoint = target as IPoint;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IKeytipProps, Keytip } from '../../Keytip';
+import { IKeytipProps, Keytip } from '@uifabric/experiments/lib/Keytip';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { convertSequencesToKeytipID } from '../../../utilities/keysequence/IKeySequence';
 
@@ -13,7 +13,7 @@ export interface IKeytipMap {
 
 export function onKeytipButtonClick(): void {
   this.setState((previousState: IKeytipExampleState) => {
-    let currentKeytipVisible = !previousState.keytipVisible;
+    const currentKeytipVisible = !previousState.keytipVisible;
     return { keytipVisible: currentKeytipVisible };
   });
 }
@@ -37,7 +37,7 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
 
   /* tslint:disable:jsx-ban-props */
   public render(): JSX.Element {
-    let btnClick = onKeytipButtonClick.bind(this);
+    const btnClick = onKeytipButtonClick.bind(this);
 
     return (
       <div>

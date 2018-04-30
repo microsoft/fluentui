@@ -12,7 +12,7 @@ import { SpinnerBasicExample } from '../../Spinner/examples/Spinner.Basic.Exampl
 import { PersonaBasicExample } from '../../Persona/examples/Persona.Basic.Example';
 
 export class PivotFabricExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Pivot linkFormat={ PivotLinkFormat.links } linkSize={ PivotLinkSize.normal }>

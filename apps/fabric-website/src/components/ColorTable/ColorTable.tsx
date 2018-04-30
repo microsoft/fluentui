@@ -14,7 +14,7 @@ export interface IColorTableState {
 }
 
 export class ColorTable extends React.Component<IColorTableProps, IColorTableState> {
-  public render() {
+  public render(): JSX.Element {
     let { content } = this.props;
 
     return (

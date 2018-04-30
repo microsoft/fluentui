@@ -7,7 +7,7 @@ import { Label } from '../../Label';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { Icon } from '../../Icon';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import {
@@ -48,9 +48,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private static Option = 'option';
 
   private _host = createRef<HTMLDivElement>();
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _dropDown = createRef<HTMLDivElement>();
-  private _dropdownLabel = createRef<Label>();
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
@@ -97,7 +96,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   }
 
-  public componentWillReceiveProps(newProps: IDropdownProps) {
+  public componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
     const selectedKeyProp: keyof IDropdownProps = this.props.multiSelect ? 'selectedKeys' : 'selectedKey';
@@ -111,8 +110,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
-      if (this._dropDown.value) {
-        this._dropDown.value.focus();
+      if (this._dropDown.current) {
+        this._dropDown.current.focus();
       }
 
       if (this.props.onDismiss) {
@@ -122,7 +121,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Primary Render
-  public render() {
+  public render(): JSX.Element {
     const id = this._id;
     let {
       disabled
@@ -152,7 +151,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._dropdownLabel } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }
@@ -160,14 +159,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='combobox'
+          role='listbox'
           aria-autocomplete='none'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
-          aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : null }
+          aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : undefined }
           aria-disabled={ disabled }
-          aria-owns={ isOpen ? id + '-list' : null }
+          aria-owns={ isOpen ? id + '-list' : undefined }
           { ...divProps }
           className={ css(
             'ms-Dropdown',
@@ -220,9 +219,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  public focus(shouldOpenOnFocus?: boolean) {
-    if (this._dropDown.value && this._dropDown.value.tabIndex !== -1) {
-      this._dropDown.value.focus();
+  public focus(shouldOpenOnFocus?: boolean): void {
+    if (this._dropDown.current && this._dropDown.current.tabIndex !== -1) {
+      this._dropDown.current.focus();
+
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
@@ -231,7 +231,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
-  public setSelectedIndex(index: number) {
+  public setSelectedIndex(index: number): void {
     const { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
@@ -346,6 +346,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderList = this._onRenderList,
       responsiveMode,
       calloutProps,
+      panelProps,
       dropdownWidth
     } = this.props;
 
@@ -355,11 +356,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isSmall ?
         (
           <Panel
-            className={ css('ms-Dropdown-panel', styles.panel) }
+            className={ css('ms-Dropdown-panel', styles.panel, !!panelProps && panelProps.className) }
             isOpen={ true }
             isLightDismiss={ true }
             onDismissed={ this._onDismiss }
             hasCloseButton={ false }
+            { ...panelProps }
           >
             { onRenderList(props, this._onRenderList) }
           </Panel>
@@ -373,12 +375,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHintFixed={ true }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
-            className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
-            target={ this._dropDown.value }
+            className={ css('ms-Dropdown-callout', styles.callout, !!calloutProps && calloutProps.className) }
+            target={ this._dropDown.current }
             onDismiss={ this._onDismiss }
             onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
-            calloutWidth={ dropdownWidth || (this._dropDown.value ? this._dropDown.value.clientWidth : 0) }
+            calloutWidth={ dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0) }
           >
             { onRenderList(props, this._onRenderList) }
           </Callout>
@@ -548,8 +550,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _onPositioned = (): void => {
-    if (this._focusZone.value) {
-      this._focusZone.value.focus();
+    if (this._focusZone.current) {
+      // Focusing an element can trigger a reflow. Making this wait until there is an animation
+      // frame can improve perf significantly.
+      this._async.requestAnimationFrame(() => this._focusZone.current!.focus());
     }
   }
 
@@ -582,7 +586,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
   }
 
-  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>): void {
     if (!this._isScrollIdle) {
       return;
     }
@@ -591,7 +595,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     targetElement.focus();
   }
 
-  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
     const targetElement = ev.currentTarget as HTMLElement;
 
     if (!this._isScrollIdle || document.activeElement === targetElement) {
@@ -611,11 +615,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
      * Edge and IE expose a setActive() function for focusable divs that
      * sets the page focus but does not scroll the parent element.
      */
-    if (this._host.value) {
-      if ((this._host.value as any).setActive) {
-        (this._host.value as any).setActive();
+    if (this._host.current) {
+      if ((this._host.current as any).setActive) {
+        (this._host.current as any).setActive();
       } else {
-        this._host.value.focus();
+        this._host.current.focus();
       }
     }
   }
@@ -623,8 +627,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onDismiss = (): void => {
     this.setState({ isOpen: false });
 
-    if (this._dropDown.value) {
-      this._dropDown.value.focus();
+    if (this._dropDown.current) {
+      this._dropDown.current.focus();
     }
   }
 
@@ -651,7 +655,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Get all selected options for multi-select mode
-  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]) {
+  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]): IDropdownOption[] {
     const selectedOptions: IDropdownOption[] = [];
     for (const index of selectedIndices) {
       const option = options[index];
@@ -799,8 +803,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: false });
         } else {
-          if (this._host.value) {
-            elementToFocus = getLastFocusable(this._host.value, (this._host.value.lastChild as HTMLElement), true);
+          if (this._host.current) {
+            elementToFocus = getLastFocusable(this._host.current, (this._host.current.lastChild as HTMLElement), true);
           }
         }
         break;
@@ -814,8 +818,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        if (this._host.value) {
-          elementToFocus = getFirstFocusable(this._host.value, (this._host.value.firstChild as HTMLElement), true);
+        if (this._host.current) {
+          elementToFocus = getFirstFocusable(this._host.current, (this._host.current.firstChild as HTMLElement), true);
         }
         break;
 

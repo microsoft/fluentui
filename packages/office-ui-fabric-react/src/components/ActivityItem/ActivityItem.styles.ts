@@ -2,22 +2,66 @@ import {
   concatStyleSets,
   ITheme,
   getTheme,
-  HighContrastSelector
+  HighContrastSelector,
+  keyframes,
+  PulsingBeaconAnimationStyles
 } from '../../Styling';
 import {
   memoizeFunction
 } from '../../Utilities';
-import { IActivityItemStyles } from './ActivityItem.types';
+import { IActivityItemStyles, IActivityItemProps } from './ActivityItem.types';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
 const DEFAULT_ICON_SIZE = '16px';
 const COMPACT_ICON_SIZE = '13px';
+const ANIMATION_INNER_DIMENSION = '4px';
+const ANIMATION_OUTER_DIMENSION = '28px';
+const ANIMATION_BORDER_WIDTH = '4px';
 
 export const getStyles = memoizeFunction((
+  props: IActivityItemProps,
   theme: ITheme = getTheme(),
   customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
+
+  const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
+    props.beaconColorOne ? props.beaconColorOne : theme.palette.themePrimary,
+    props.beaconColorTwo ? props.beaconColorTwo : theme.palette.themeTertiary,
+    ANIMATION_INNER_DIMENSION,
+    ANIMATION_OUTER_DIMENSION,
+    ANIMATION_BORDER_WIDTH
+  );
+
+  const fadeIn: string = keyframes({
+    from: { opacity: 0, },
+    to: { opacity: 1, }
+  });
+
+  const slideIn: string = keyframes({
+    from: { transform: 'translateX(-10px)' },
+    to: { transform: 'translateX(0)' }
+  });
+
+  const continuousPulseAnimation = {
+    animationName: continuousPulse,
+    animationIterationCount: '1',
+    animationDuration: '.8s',
+    zIndex: 1
+  };
+
+  const slideInAnimation = {
+    animationName: slideIn,
+    animationIterationCount: '1',
+    animationDuration: '.5s',
+  };
+
+  const fadeInAnimation = {
+    animationName: fadeIn,
+    animationIterationCount: '1',
+    animationDuration: '.5s',
+  };
+
   const ActivityItemStyles: IActivityItemStyles = {
 
     root: [
@@ -29,7 +73,23 @@ export const getStyles = memoizeFunction((
         lineHeight: '17px',
         boxSizing: 'border-box',
         color: theme.palette.neutralSecondary
-      }
+      },
+      (props.isCompact && props.animateBeaconSignal) && fadeInAnimation
+    ],
+
+    pulsingBeacon: [
+      {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '0px',
+        height: '0px',
+        borderRadius: '225px',
+        borderStyle: 'solid',
+        opacity: 0
+      },
+      (props.isCompact && props.animateBeaconSignal) && continuousPulseAnimation
     ],
 
     isCompactRoot: {
@@ -63,19 +123,24 @@ export const getStyles = memoizeFunction((
 
     isCompactIcon: {
       height: COMPACT_PERSONA_SIZE,
+      minWidth: COMPACT_PERSONA_SIZE,
       fontSize: COMPACT_ICON_SIZE,
       lineHeight: COMPACT_ICON_SIZE,
       color: theme.palette.themePrimary,
       marginTop: '1px',
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       selectors: {
         '.ms-Persona-imageArea': {
-          marginTop: '-2px',
+          margin: '-2px 0 0 -2px',
           border: '2px solid' + theme.palette.white,
           borderRadius: '50%',
           selectors: {
             [HighContrastSelector]: {
               border: 'none',
-              marginTop: '0'
+              margin: '0'
             }
           }
         }
@@ -101,9 +166,12 @@ export const getStyles = memoizeFunction((
       overflow: 'visible'
     },
 
-    activityContent: {
-      padding: '0 8px'
-    },
+    activityContent: [
+      {
+        padding: '0 8px'
+      },
+      (props.isCompact && props.animateBeaconSignal) && slideInAnimation
+    ],
 
     activityText: {
       display: 'inline'

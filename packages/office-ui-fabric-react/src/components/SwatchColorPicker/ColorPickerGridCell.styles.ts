@@ -43,8 +43,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         height: 40,
         selectors: {
           [HighContrastSelector]: { border: 'none' },
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after': { border: 'none' },
-          '.ms-Fabric.is-focusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after': { border: 'none' },
+          '.ms-Fabric--isFocusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
           ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, true),
           ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
           ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR, false),

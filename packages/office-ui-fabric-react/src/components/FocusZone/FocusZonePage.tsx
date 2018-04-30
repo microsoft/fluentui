@@ -3,6 +3,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
@@ -16,11 +17,12 @@ const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react
 const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
 
 export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='FocusZone'
         componentName='FocusZoneExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FocusZone'
         exampleCards={
           <div>
             <ExampleCard title='Non-uniform photos within bidirectional FocusZone' code={ FocusZonePhotosExampleCode }>
@@ -46,11 +48,9 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
           />
         }
         overview={
-          <div>
-            <p>FocusZones abstract arrow key navigation behaviors. Tabbable elements (buttons, anchors, and elements with data-is-focusable='true' attributes) are considered when pressing directional arrow keys and focus is moved appropriately. Tabbing to a zone sets focus only to the current "active" element, making it simple to use the tab key to transition from one zone to the next, rather than through every focusable element.</p>
-
-            <p>Using a FocusZone is simple. Just wrap a bunch of content inside of a FocusZone, and arrows and tabbling will be handled for you! See examples below.</p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/docs/FocusZoneOverview.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />

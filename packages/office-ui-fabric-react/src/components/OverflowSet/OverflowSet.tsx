@@ -5,18 +5,19 @@ import {
   createRef,
   getNativeProps,
   divProperties,
-  focusFirstChild
+  focusFirstChild,
+  elementContains
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 import * as stylesImport from './OverflowSet.scss';
 const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = createRef<IFocusZone>();
   private _divContainer = createRef<HTMLDivElement>();
 
   constructor(props: IOverflowSetProps) {
@@ -29,7 +30,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       items,
       overflowItems,
@@ -52,6 +53,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     } else {
       Tag = FocusZone;
       uniqueComponentProps = {
+        ...getNativeProps(this.props, divProperties),
         ...focusZoneProps,
         componentRef: this._focusZone,
         direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
@@ -75,18 +77,48 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     );
   }
 
-  public focus() {
+  /**
+   * Sets focus to the first tabbable item in the OverflowSet.
+   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element,
+   * even if focus is already in theOverflowSet
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focus(forceIntoFirstElement?: boolean): boolean {
+    let focusSucceeded = false;
+
     if (this.props.doNotContainWithinFocusZone) {
-      if (this._divContainer.value) {
-        focusFirstChild(this._divContainer.value);
+      if (this._divContainer.current) {
+        focusSucceeded = focusFirstChild(this._divContainer.current);
       }
-
-      return;
+    } else if (this._focusZone.current) {
+      focusSucceeded = this._focusZone.current.focus(forceIntoFirstElement);
     }
 
-    if (this._focusZone.value) {
-      this._focusZone.value.focus();
+    return focusSucceeded;
+  }
+
+  /**
+   * Sets focus to a specific child element within the OverflowSet.
+   * @param {HTMLElement} childElement The child element within the zone to focus.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focusElement(childElement?: HTMLElement): boolean {
+    let focusSucceeded = false;
+
+    if (!childElement) {
+      return false;
     }
+
+    if (this.props.doNotContainWithinFocusZone) {
+      if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
+        childElement.focus();
+        focusSucceeded = document.activeElement === childElement;
+      }
+    } else if (this._focusZone.current) {
+      focusSucceeded = this._focusZone.current.focusElement(childElement);
+    }
+
+    return focusSucceeded;
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {

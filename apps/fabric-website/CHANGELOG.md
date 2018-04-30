@@ -1,6 +1,34 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 27 Mar 2018 10:14:02 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Apr 2018 10:16:44 GMT and should not be manually modified.
+
+## 5.7.1
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Patches
+
+- Removing unused refs.
+
+## 5.7.0
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Minor changes
+
+- GetStarted page: Give titles links to their corresponding pages.
+
+## 5.6.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Updating build to React 16.3.1.
+
+## 5.6.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add Office Add-ins Toolkit
 
 ## 5.5.2
 Tue, 27 Mar 2018 10:14:02 GMT

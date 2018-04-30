@@ -1,7 +1,7 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Form, FormTextInput } from '../../Form';
+import { Form, FormTextInput } from '@uifabric/experiments/lib/Form';
 
 export interface IFormBasicExampleState {
   formResults: any;

@@ -15,9 +15,10 @@ import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
-  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false),
+  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
-  isInverted: false
+  isInverted: false,
+  disableGlobalClassNames: false,
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -37,9 +38,13 @@ if (!Customizations.getSettings([ThemeSettingName]).theme) {
 }
 
 /**
- * Gets the theme object.
+ * Gets the theme object
+ * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
-export function getTheme(): ITheme {
+export function getTheme(depComments: boolean = false): ITheme {
+  if (depComments === true) {
+    _theme = createTheme({}, depComments);
+  }
   return _theme;
 }
 
@@ -69,9 +74,11 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
 
 /**
  * Applies the theme, while filling in missing slots.
+ * @param {object} theme - Partial theme object.
+ * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
-export function loadTheme(theme: IPartialTheme): ITheme {
-  _theme = createTheme(theme);
+export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
+  _theme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
@@ -91,8 +98,10 @@ export function loadTheme(theme: IPartialTheme): ITheme {
 
 /**
  * Creates a custom theme definition which can be used with the Customizer.
+ * @param {object} theme - Partial theme object.
+ * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
-export function createTheme(theme: IPartialTheme): ITheme {
+export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   let newPalette = { ...DefaultPalette, ...theme.palette };
 
   if (!theme.palette || !theme.palette.accent) {
@@ -100,8 +109,7 @@ export function createTheme(theme: IPartialTheme): ITheme {
   }
 
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
-  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted), ...theme.semanticColors };
-  newSemanticColors = { ..._fixDeprecatedSlots(newSemanticColors), ...theme.semanticColors };
+  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments), ...theme.semanticColors };
 
   return {
     palette: newPalette,
@@ -110,14 +118,15 @@ export function createTheme(theme: IPartialTheme): ITheme {
       ...theme.fonts
     },
     semanticColors: newSemanticColors,
-    isInverted: !!theme.isInverted
-  } as ITheme;
+    isInverted: !!theme.isInverted,
+    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+  };
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
 // This does NOT fix deprecated slots.
-function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISemanticColors {
+function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
@@ -171,18 +180,30 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
 
+    listHeaderBackgroundHovered: p.neutralLighter,
+    listHeaderBackgroundPressed: p.neutralLight,
+
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
     // Deprecated slots, fixed by _fixDeprecatedSlots()
+    /**
+     * Deprecated. Use `listText` instead.
+     * @deprecated
+     */
     listTextColor: ''
   };
 
-  return toReturn;
+  return _fixDeprecatedSlots(toReturn, depComments!);
 }
 
-function _fixDeprecatedSlots(s: ISemanticColors): ISemanticColors {
-  s.listTextColor = s.listText;
+function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanticColors {
+  // Add @deprecated tag as comment if enabled
+  let dep = '';
+  if (depComments === true) {
+    dep = ' /* @deprecated */';
+  }
 
+  s.listTextColor = s.listText + dep;
   return s;
 }

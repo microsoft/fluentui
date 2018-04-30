@@ -39,7 +39,7 @@ export class GroupedListBasicExample extends React.Component {
     this._selection.setItems(_items);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <FocusZone>
         <SelectionZone
@@ -58,7 +58,7 @@ export class GroupedListBasicExample extends React.Component {
     );
   }
 
-  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
+  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
     const {
       _selection: selection
     } = this;

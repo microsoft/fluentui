@@ -56,12 +56,12 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
-    if (this._list.value) {
-      this._list.value.scrollToIndex(index, measureItem);
+    if (this._list.current) {
+      this._list.current.scrollToIndex(index, measureItem);
     }
   }
 
-  public componentWillReceiveProps(newProps: IGroupedListProps) {
+  public componentWillReceiveProps(newProps: IGroupedListProps): void {
     const {
       groups,
       selectionMode
@@ -121,7 +121,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     this._forceListUpdates();
   }
 
-  public toggleCollapseAll(allCollapsed: boolean) {
+  public toggleCollapseAll(allCollapsed: boolean): void {
     const { groups } = this.state;
     const { groupProps } = this.props;
     const onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
@@ -242,16 +242,16 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  private _forceListUpdates(groups?: IGroup[]) {
+  private _forceListUpdates(groups?: IGroup[]): void {
     groups = groups || this.state.groups;
 
     const groupCount = groups ? groups.length : 1;
 
-    if (this._list.value) {
-      this._list.value.forceUpdate();
+    if (this._list.current) {
+      this._list.current.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this._list.value.refs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.current.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
@@ -293,7 +293,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     return !!(groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed));
   }
 
-  private _updateIsSomeGroupExpanded() {
+  private _updateIsSomeGroupExpanded(): void {
     const { groups } = this.state;
     const { onGroupExpandStateChanged } = this.props;
 

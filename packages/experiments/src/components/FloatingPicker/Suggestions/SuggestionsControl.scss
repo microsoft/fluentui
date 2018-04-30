@@ -7,14 +7,12 @@
 
 .actionButton {
   background: none;
+  background-color: transparent;
   border: 0;
   cursor: pointer;
   margin: 0;
-  @include ms-padding-left(8px);
+  padding: 0px;
   position: relative;
-  border-top: 1px solid $ms-color-neutralLight;
-  border-bottom: 1px solid $ms-color-neutralLight;
-  height: 40px;
   @include ms-text-align(left);
   width: 100%;
   font-size: 12px;
@@ -48,11 +46,7 @@
 }
 
 .suggestionsTitle {
-  padding: 0 12px;
   font-size: $ms-font-size-s;
-  line-height: 40px;
-  border-top: 1px solid $ms-color-neutralLight;
-  border-bottom: 1px solid $ms-color-neutralLight;
 }
 
 .suggestionsSpinner {

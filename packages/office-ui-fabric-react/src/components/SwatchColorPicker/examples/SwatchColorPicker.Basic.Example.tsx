@@ -19,7 +19,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
       previewColor2: undefined
     };
   }
-  public render() {
+  public render(): JSX.Element {
 
     return (
       <div>
@@ -52,7 +52,14 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           }
         />
         <div>Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:</div>
-        <div style={ { color: this.state.previewColor ? this.state.previewColor : this.state.color ? this.state.color : null, fontSize: '24px' } } >Sample Text</div>
+        <div
+          style={ {
+            color: this.state.previewColor ? this.state.previewColor : this.state.color ? this.state.color : undefined,
+            fontSize: '24px'
+          } }
+        >
+          Sample Text
+        </div>
         <SwatchColorPicker
           // tslint:disable:jsx-no-lambda
           onCellHovered={ (id, color) => this.setState({ previewColor: color! }) }
@@ -96,7 +103,14 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         />
         <div id='foo' tab-index='-1'>
           <div>Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:</div>
-          <div style={ { color: this.state.previewColor2 ? this.state.previewColor2 : this.state.color2 ? this.state.color2 : null, fontSize: '24px' } } >Sample Text</div>
+          <div
+            style={ {
+              color: this.state.previewColor2 ? this.state.previewColor2 : this.state.color2 ? this.state.color2 : undefined,
+              fontSize: '24px'
+            } }
+          >
+            Sample Text
+          </div>
           <SwatchColorPicker
             focusOnHover={ true }
             mouseLeaveParentSelector={ '#foo' }

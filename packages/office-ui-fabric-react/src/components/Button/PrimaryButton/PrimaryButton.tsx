@@ -10,7 +10,7 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
    */
   protected _shouldUpdateComponentRef = false;
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <DefaultButton
         { ...this.props }

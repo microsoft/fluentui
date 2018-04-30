@@ -43,7 +43,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     };
   }
 
-  public componentWillReceiveProps(newProps: ISearchBoxProps) {
+  public componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
       this.setState({
@@ -82,8 +82,14 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         className={ classNames.root }
         onFocusCapture={ this._onFocusCapture }
       >
-        <div className={ classNames.iconContainer }>
-          <Icon className={ classNames.icon } iconName='Search' />
+        <div
+          className={ classNames.iconContainer }
+          onClick={ this._onClickFocus }
+        >
+          <Icon
+            className={ classNames.icon }
+            iconName='Search'
+          />
         </div>
         <input
           id={ id }
@@ -115,8 +121,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
    * Sets focus to the search box input field
    */
   public focus() {
-    if (this._inputElement.value) {
-      this._inputElement.value.focus();
+    if (this._inputElement.current) {
+      this._inputElement.current.focus();
     }
   }
 
@@ -142,12 +148,20 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
+  private _onClickFocus = () => {
+    const inputElement = this._inputElement.value;
+    if (inputElement) {
+      this.focus();
+      inputElement.selectionStart = inputElement.selectionEnd = 0;
+    }
+  }
+
   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
     this.setState({
       hasFocus: true
     });
 
-    this._events.on(this._rootElement.value, 'blur', this._onBlur, true);
+    this._events.on(this._rootElement.current, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
@@ -197,7 +211,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    this._events.off(this._rootElement.value, 'blur');
+    this._events.off(this._rootElement.current, 'blur');
     this.setState({
       hasFocus: false
     });

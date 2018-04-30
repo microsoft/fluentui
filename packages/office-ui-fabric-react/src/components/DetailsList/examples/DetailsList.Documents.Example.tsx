@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import {
@@ -104,6 +102,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         fieldName: 'name',
         minWidth: 16,
         maxWidth: 16,
+        onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return (
             <img

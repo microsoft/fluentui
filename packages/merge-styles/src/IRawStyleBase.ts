@@ -214,6 +214,14 @@ export interface IRawStyleBase extends IRawFontStyle {
   alignmentBaseline?: ICSSRule | string;
 
   /**
+   * The animation CSS property is a shorthand property for the various animation properties:
+   * `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`,
+   * `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, and
+   * `animation-play-state`.
+   */
+  animation?: ICSSRule | string;
+
+  /**
    * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
    */
   animationDelay?: ICSSRule | string;
@@ -292,6 +300,16 @@ export interface IRawStyleBase extends IRawFontStyle {
    * used value by repeating the list of values until there are enough.
    */
   backgroundBlendMode?: ICSSRule | string;
+
+  /**
+   * The background-clip CSS property specifies if an element's background, whether a
+   * <color> or an <image>, extends underneath its border.
+   *
+   * \* Does not work in IE
+   *
+   * \* The `text` value is experimental and should not be used in production code.
+   */
+  backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
 
   /**
    * Sets the background color of an element.

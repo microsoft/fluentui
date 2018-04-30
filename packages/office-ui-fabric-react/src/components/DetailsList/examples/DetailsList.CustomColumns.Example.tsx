@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { createListItems } from '@uifabric/example-app-base';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';

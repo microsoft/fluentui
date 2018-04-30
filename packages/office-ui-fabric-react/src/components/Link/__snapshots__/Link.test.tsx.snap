@@ -14,7 +14,7 @@ exports[`Link renders Link correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -54,7 +54,7 @@ exports[`Link renders Link with a custom class name 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -85,6 +85,7 @@ exports[`Link renders Link with no href as a button 1`] = `
   className=
       ms-Link
       {
+        background-color: transparent;
         background: none;
         border: none;
         color: #0078d4;
@@ -104,11 +105,12 @@ exports[`Link renders Link with no href as a button 1`] = `
         position: relative;
         text-align: left;
         text-overflow: inherit;
+        user-select: text;
       }
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -147,7 +149,7 @@ exports[`Link renders disabled Link correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";
@@ -176,6 +178,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       ms-Link
       is-disabled
       {
+        background-color: transparent;
         background: none;
         border: none;
         color: #a6a6a6;
@@ -195,11 +198,12 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         position: relative;
         text-align: left;
         text-overflow: inherit;
+        user-select: text;
       }
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 1px;
         content: "";

@@ -17,7 +17,7 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <TextField value={ String(this.state.hoverDelay) } onChanged={ this._onHoverDelayChanged } />
