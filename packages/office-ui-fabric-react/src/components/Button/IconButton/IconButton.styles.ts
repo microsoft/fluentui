@@ -10,7 +10,7 @@ import {
 import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
-import { primaryStyles } from 'office-ui-fabric-react/lib/components/Button/ButtonThemes';
+import { primaryStyles } from '../ButtonThemes';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
