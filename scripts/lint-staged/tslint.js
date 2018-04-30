@@ -19,10 +19,17 @@ runTsLintOnFilesGroupedPerPackage(groupFilesByPackage(files));
  * @returns {[packageName: string]: string[]}
  */
 function groupFilesByPackage(files) {
-  const packagesDirectory = path.join(path.resolve(__dirname, '..', '..'), 'packages', path.sep);
+  const rootDirectory = path.join(path.resolve(__dirname, '..', '..'), path.sep);
+
+
 
   return files
-    .map((fileName) => [fileName.replace(packagesDirectory, '').split(path.sep)[0], fileName])
+    .map((fileName) => {
+      const parts = fileName.replace(rootDirectory, '').split(path.sep);
+      const packageRoot = [parts[0], parts[1]].join(path.sep);
+
+      return [packageRoot, fileName];
+    })
     .reduce((acc, [package, file]) => {
       if (!acc[package]) {
         acc[package] = [];
@@ -42,7 +49,7 @@ function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
   console.log('');
 
   for (let [package, files] of Object.entries(filesGroupedByPackage)) {
-    const tslintConfig = path.join(path.resolve(__dirname, '..', '..'), 'packages', path.sep, package, 'tslint.json');
+    const tslintConfig = path.join(path.resolve(__dirname, '..', '..'), package, 'tslint.json');
 
     execSync(`${tslintPath} --config ${tslintConfig} -t stylish -r ${rulesPath} ${files.join(' ')}`);
   }
