@@ -10,7 +10,6 @@ import {
   getNativeProps,
   IRenderFunction,
   createRef,
-  isEqual,
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps } from './List.types';
 
@@ -300,7 +299,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return true;
     }
 
-    if (isEqual(newProps.items, this.props.items) &&
+    if (newProps.items === this.props.items &&
       oldPages!.length === newPages!.length) {
       for (let i = 0; i < oldPages!.length; i++) {
         const oldPage = oldPages![i];
