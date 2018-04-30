@@ -20,8 +20,6 @@ const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
 @customizable('Tooltip', ['theme'])
 export class TooltipBase extends BaseComponent<ITooltipProps, any> {
-  private _classNames: IClassNames<ITooltipStyles>;
-
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {
     directionalHint: DirectionalHint.topCenter,
@@ -35,6 +33,8 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
       doNotLayer: false
     }
   };
+
+  private _classNames: IClassNames<ITooltipStyles>;
 
   public render(): JSX.Element {
     const {
