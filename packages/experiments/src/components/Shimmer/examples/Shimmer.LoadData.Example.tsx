@@ -7,7 +7,6 @@ export interface IShimmerLoadDataExample {
 }
 
 export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadDataExample> {
-
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -16,25 +15,21 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
   }
 
   public render(): JSX.Element {
-    const {
-      isDataLoaded: dataLoaded,
-    } = this.state;
+    const { isDataLoaded: dataLoaded } = this.state;
 
     return (
       // tslint:disable-next-line:jsx-ban-props
-      <div style={ { padding: '2px' } }>
-        <Shimmer
-          isDataLoaded={ dataLoaded }
-        >
+      <div style={{ padding: '2px' }}>
+        <Shimmer isDataLoaded={dataLoaded}>
           <div>Data Loaded Data Loaded Data Loaded Data Loaded Data Loaded Data Loaded Data Loaded</div>
         </Shimmer>
         <Toggle
-          label='Load data switch'
-          checked={ dataLoaded }
+          label="Load data switch"
+          checked={dataLoaded}
           // tslint:disable-next-line:jsx-no-lambda
-          onChanged={ (isDataLoaded: boolean) => this.setState({ isDataLoaded }) }
-          onText='Loaded'
-          offText='Loading...'
+          onChanged={(isDataLoaded: boolean) => this.setState({ isDataLoaded })}
+          onText="Loaded"
+          offText="Loading..."
         />
       </div>
     );

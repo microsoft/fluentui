@@ -1,13 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-} from '../../../Utilities';
-import {
-  IShimmerLineProps,
-  IShimmerLineStyleProps,
-  IShimmerLineStyles
-} from './ShimmerLine.types';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
@@ -23,8 +16,6 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
 
     this._classNames = getClassNames(getStyles!, { height, widthInPixel, widthInPercentage, borderStyle });
 
-    return (
-      <div className={ this._classNames.root } />
-    );
+    return <div className={this._classNames.root} />;
   }
 }

@@ -17,10 +17,10 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
   id: string;
 
   /**
-  * List of key sequences that will start keytips mode
-  *
-  * @type {KeySequence}
-  */
+   * List of key sequences that will start keytips mode
+   *
+   * @type {KeySequence}
+   */
   keytipStartSequences?: IKeytipTransitionKey[];
 
   /**

@@ -19,7 +19,6 @@ export interface IKeytipMap {
 }
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
-
   private startingKeySequence: IKeytipTransitionKey = { key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] };
   private keytipMap: IKeytipMap = {};
 
@@ -104,101 +103,85 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
       <div>
         <p>Press Alt-Win to enable keytips, Esc to return up a level, and Alt-Win to exit keytip mode</p>
         <div>
-          <div style={ divStyle }>
+          <div style={divStyle}>
             <div>
-              <ActionButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Pivot1Keytip.keySequences) }
-                text='Mock Pivot 1'
-              />
+              <ActionButton data-ktp-id={convertSequencesToKeytipID(this.keytipMap.Pivot1Keytip.keySequences)} text="Mock Pivot 1" />
             </div>
             <div>
               <DefaultButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button1Pivot1Keytip.keySequences) }
-                text='Test Button 1'
-                onClick={ () => { alert('Button 1'); } }
+                data-ktp-id={convertSequencesToKeytipID(this.keytipMap.Button1Pivot1Keytip.keySequences)}
+                text="Test Button 1"
+                onClick={() => {
+                  alert('Button 1');
+                }}
               />
               <DefaultButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button2Pivot1Keytip.keySequences) }
-                text='Test Button 2'
-                onClick={ () => { alert('Button 2'); } }
+                data-ktp-id={convertSequencesToKeytipID(this.keytipMap.Button2Pivot1Keytip.keySequences)}
+                text="Test Button 2"
+                onClick={() => {
+                  alert('Button 2');
+                }}
               />
               <DefaultButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button3Pivot1Keytip.keySequences) }
-                text='Test Button 3'
-                onClick={ () => { alert('Button 3'); } }
+                data-ktp-id={convertSequencesToKeytipID(this.keytipMap.Button3Pivot1Keytip.keySequences)}
+                text="Test Button 3"
+                onClick={() => {
+                  alert('Button 3');
+                }}
               />
             </div>
           </div>
-          <div style={ divStyle }>
+          <div style={divStyle}>
             <div>
-              <ActionButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Pivot2Keytip.keySequences) }
-                text='Mock Pivot 2'
-              />
+              <ActionButton data-ktp-id={convertSequencesToKeytipID(this.keytipMap.Pivot2Keytip.keySequences)} text="Mock Pivot 2" />
             </div>
             <CommandBar
-              items={
-                [
-                  {
-                    key: 'commandBarItem1',
-                    name: 'New',
-                    icon: 'Add',
-                    onClick: this._showModal,
-                    ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton1Pivot2Keytip.keySequences)
-                  },
-                  {
-                    key: 'commandBarItem2',
-                    name: 'Upload',
-                    icon: 'Upload',
-                    onClick: this._showMessageBar,
-                    ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton2Pivot2Keytip.keySequences)
+              items={[
+                {
+                  key: 'commandBarItem1',
+                  name: 'New',
+                  icon: 'Add',
+                  onClick: this._showModal,
+                  ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton1Pivot2Keytip.keySequences)
+                },
+                {
+                  key: 'commandBarItem2',
+                  name: 'Upload',
+                  icon: 'Upload',
+                  onClick: this._showMessageBar,
+                  ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton2Pivot2Keytip.keySequences)
+                }
+              ]}
+              farItems={[
+                {
+                  key: 'farItem1',
+                  name: 'SubMenu',
+                  icon: 'SortLines',
+                  ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton3Pivot2Keytip.keySequences),
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: 'emailMessage',
+                        name: 'Email message',
+                        icon: 'Mail'
+                      },
+                      {
+                        key: 'calendarEvent',
+                        name: 'Calendar event',
+                        icon: 'Calendar'
+                      }
+                    ]
                   }
-                ]
-              }
-              farItems={
-                [
-                  {
-                    key: 'farItem1',
-                    name: 'SubMenu',
-                    icon: 'SortLines',
-                    ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton3Pivot2Keytip.keySequences),
-                    subMenuProps: {
-                      items: [
-                        {
-                          key: 'emailMessage',
-                          name: 'Email message',
-                          icon: 'Mail',
-                        },
-                        {
-                          key: 'calendarEvent',
-                          name: 'Calendar event',
-                          icon: 'Calendar'
-                        }
-                      ],
-                    },
-                  }
-                ]
-              }
+                }
+              ]}
             />
           </div>
         </div>
-        { this.state.showMessageBar &&
-          <MessageBar messageBarType={ MessageBarType.success }>
-            Success Uploading
-          </MessageBar>
-        }
-        <Modal
-          isOpen={ this.state.showModal }
-          onDismiss={ this._hideModal }
-          isBlocking={ false }
-        >
+        {this.state.showMessageBar && <MessageBar messageBarType={MessageBarType.success}>Success Uploading</MessageBar>}
+        <Modal isOpen={this.state.showModal} onDismiss={this._hideModal} isBlocking={false}>
           <h2>Hello this is a Modal</h2>
         </Modal>
-        <KeytipLayer
-          keytipStartSequences={ [this.startingKeySequence] }
-          keytipExitSequences={ [this.startingKeySequence] }
-          id={ 'test-id' }
-        />
+        <KeytipLayer keytipStartSequences={[this.startingKeySequence]} keytipExitSequences={[this.startingKeySequence]} id={'test-id'} />
       </div>
     );
   }
@@ -213,20 +196,20 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
   private _showModal = (): void => {
     this.setState({ showModal: true });
-  }
+  };
 
   private _hideModal = (): void => {
     this.setState({ showModal: false });
-  }
+  };
 
   private _showMessageBar = (): void => {
     this.setState({ showMessageBar: true });
 
     // Hide the MessageBar after 2 seconds
     setTimeout(this._hideMessageBar, 2000);
-  }
+  };
 
   private _hideMessageBar = (): void => {
     this.setState({ showMessageBar: false });
-  }
+  };
 }

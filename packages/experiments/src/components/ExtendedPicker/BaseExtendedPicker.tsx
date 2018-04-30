@@ -1,14 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  css,
-  createRef
-} from '../../Utilities';
-import {
-  FocusZone,
-  FocusZoneDirection
-} from 'office-ui-fabric-react/lib/FocusZone';
+import { BaseComponent, KeyCodes, css, createRef } from '../../Utilities';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Autofill } from 'office-ui-fabric-react/lib/components/Autofill/Autofill';
 import { IPickerItemProps, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
@@ -53,7 +45,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     this.state = {
       items: items ? items : [],
-      suggestedDisplayValue: '',
+      suggestedDisplayValue: ''
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -87,59 +79,52 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   public render(): JSX.Element {
     const { suggestedDisplayValue } = this.state;
-    const {
-      className,
-      inputProps,
-      disabled
-    } = this.props;
+    const { className, inputProps, disabled } = this.props;
 
     return (
-      <div
-        ref={ this.root }
-        className={ css(
-          'ms-BasePicker',
-          className ? className : '') }
-      >
+      <div ref={this.root} className={css('ms-BasePicker', className ? className : '')}>
         <FocusZone
-          componentRef={ this.focusZone }
-          direction={ FocusZoneDirection.bidirectional }
-          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
-          onKeyDown={ this.onBackspace }
-          onCopy={ this.onCopy }
+          componentRef={this.focusZone}
+          direction={FocusZoneDirection.bidirectional}
+          isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+          onKeyDown={this.onBackspace}
+          onCopy={this.onCopy}
         >
-          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
-              { this.props.headerComponent }
-              { this.renderSelectedItemsList() }
-              { this.canAddItems() && (<Autofill
-                { ...inputProps as IInputProps }
-                className={ css('ms-BasePicker-input', styles.pickerInput) }
-                ref={ this.input }
-                onFocus={ this.onInputFocus }
-                onInputValueChange={ this.onInputChange }
-                suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ 'sug-' + this.state.items.length }
-                aria-owns='suggestion-list'
-                aria-expanded='true'
-                aria-haspopup='true'
-                autoCapitalize='off'
-                autoComplete='off'
-                role='combobox'
-                disabled={ disabled }
-                aria-controls='selected-suggestion-alert'
-                onPaste={ this.onPaste }
-              />) }
+          <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
+            <div className={css('ms-BasePicker-text', styles.pickerText)} role={'list'}>
+              {this.props.headerComponent}
+              {this.renderSelectedItemsList()}
+              {this.canAddItems() && (
+                <Autofill
+                  {...inputProps as IInputProps}
+                  className={css('ms-BasePicker-input', styles.pickerInput)}
+                  ref={this.input}
+                  onFocus={this.onInputFocus}
+                  onInputValueChange={this.onInputChange}
+                  suggestedDisplayValue={suggestedDisplayValue}
+                  aria-activedescendant={'sug-' + this.state.items.length}
+                  aria-owns="suggestion-list"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  autoCapitalize="off"
+                  autoComplete="off"
+                  role="combobox"
+                  disabled={disabled}
+                  aria-controls="selected-suggestion-alert"
+                  onPaste={this.onPaste}
+                />
+              )}
             </div>
           </SelectionZone>
         </FocusZone>
-        { this.renderSuggestions() }
+        {this.renderSuggestions()}
       </div>
     );
   }
 
   protected onSelectionChange = (): void => {
     this.forceUpdate();
-  }
+  };
 
   protected canAddItems(): boolean {
     const { items } = this.state;
@@ -149,29 +134,30 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   protected renderSuggestions(): JSX.Element {
     const onRenderFloatingPicker = this.props.onRenderFloatingPicker;
-    return (onRenderFloatingPicker({
+    return onRenderFloatingPicker({
       componentRef: this.floatingPicker,
       onChange: this._onSuggestionSelected,
       inputElement: this.input.current ? this.input.current.inputElement : undefined,
       selectedItems: this.selectedItemsList.current ? this.selectedItemsList.current.items : [],
       ...this.floatingPickerProps
-    }));
+    });
   }
 
   protected renderSelectedItemsList(): JSX.Element {
     const onRenderSelectedItems = this.props.onRenderSelectedItems;
-    return (onRenderSelectedItems({
+    return onRenderSelectedItems({
       componentRef: this.selectedItemsList,
       ...this.selectedItemsListProps
-    }));
+    });
   }
 
   protected resetFocus(index?: number): void {
     const { items } = this.state;
 
     if (items.length && index! >= 0 && this.root.current) {
-      const newEl: HTMLElement = this.root.current
-        .querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
+      const newEl: HTMLElement = this.root.current.querySelectorAll('[data-selection-index]')[
+        Math.min(index!, items.length - 1)
+      ] as HTMLElement;
       if (newEl && this.focusZone.current) {
         this.focusZone.current.focusElement(newEl);
       }
@@ -189,7 +175,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     if (this.floatingPicker.current) {
       this.floatingPicker.current.onQueryStringChanged(value);
     }
-  }
+  };
 
   protected onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
     if (this.selectedItemsList.current) {
@@ -203,7 +189,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     if (this.props.inputProps && this.props.inputProps.onFocus) {
       this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
-  }
+  };
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
@@ -217,14 +203,14 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         this._onSelectedItemsChanged();
       }
     }
-  }
+  };
 
   protected onCopy = (ev: React.ClipboardEvent<HTMLElement>): void => {
     if (this.selectedItemsList.current) {
       // Pass it down into the selected items list
       this.selectedItemsList.current.onCopy(ev);
     }
-  }
+  };
 
   protected onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void => {
     if (this.props.onPaste) {
@@ -232,7 +218,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       ev.preventDefault();
       this.props.onPaste(inputText);
     }
-  }
+  };
 
   protected _isFocusZoneInnerKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown let up/down keys control them, otherwise allow them through to control the focusZone.
@@ -250,7 +236,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     return false;
-  }
+  };
 
   protected _onSuggestionSelected = (item: T): void => {
     if (this.selectedItemsList.current) {
@@ -270,9 +256,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     this.focus();
-  }
+  };
 
   protected _onSelectedItemsChanged = (): void => {
     this.focus();
-  }
+  };
 }

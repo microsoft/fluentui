@@ -5,7 +5,6 @@ import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
 export class ScrollablePaneDefaultExample extends React.Component {
-
   public render(): JSX.Element {
     const contentAreas: JSX.Element[] = [];
     for (let i = 0; i < 4; i++) {
@@ -13,10 +12,10 @@ export class ScrollablePaneDefaultExample extends React.Component {
     }
 
     return (
-      <ScrollablePane className='scrollablePaneDefaultExample'>
-        { contentAreas.map((ele) => {
+      <ScrollablePane className="scrollablePaneDefaultExample">
+        {contentAreas.map(ele => {
           return ele;
-        }) }
+        })}
       </ScrollablePane>
     );
   }
@@ -34,19 +33,11 @@ export class ScrollablePaneDefaultExample extends React.Component {
     const style = this._getRandomColor();
 
     return (
-      <div key={ index }>
-        <Sticky
-          stickyPosition={ StickyPositionType.Both }
-          stickyClassName='largeFont'
-          stickyBackgroundColor={ style }
-        >
-          <div className='sticky'>
-            Sticky Component #{ index + 1 }
-          </div>
+      <div key={index}>
+        <Sticky stickyPosition={StickyPositionType.Both} stickyClassName="largeFont" stickyBackgroundColor={style}>
+          <div className="sticky">Sticky Component #{index + 1}</div>
         </Sticky>
-        <div className='textContent'>
-          { lorem(200) }
-        </div>
+        <div className="textContent">{lorem(200)}</div>
       </div>
     );
   }

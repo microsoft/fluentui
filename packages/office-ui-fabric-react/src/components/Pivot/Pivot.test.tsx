@@ -8,9 +8,10 @@ describe('Pivot', () => {
   it('renders Pivot correctly', () => {
     const component = renderer.create(
       <Pivot>
-        <PivotItem linkText='' />
-        <PivotItem linkText='' />
-      </Pivot>);
+        <PivotItem linkText="" />
+        <PivotItem linkText="" />
+      </Pivot>
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

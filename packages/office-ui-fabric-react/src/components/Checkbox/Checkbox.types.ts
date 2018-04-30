@@ -97,8 +97,8 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   ariaPositionInSet?: number;
 
   /**
-  * The total size of the parent set (if in a set) for aria-setsize.
-  */
+   * The total size of the parent set (if in a set) for aria-setsize.
+   */
   ariaSetSize?: number;
 
   /**
@@ -110,11 +110,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Custom function for providing the classNames for the checkbox. Can be used to provide
    * all styles for the component instead of applying them on top of the default styles.
    */
-  getClassNames?: (theme: ITheme,
-    disabled: boolean,
-    isChecked: boolean,
-    isReversed: boolean,
-    className?: string) => ICheckboxClassNames;
+  getClassNames?: (theme: ITheme, disabled: boolean, isChecked: boolean, isReversed: boolean, className?: string) => ICheckboxClassNames;
 
   /**
    * Custom render function for the label.
@@ -204,8 +200,8 @@ export interface ICheckboxStyles {
   checkmarkDisabled?: IStyle;
 
   /**
- * Style override for checkmark when disabled/checked.
- */
+   * Style override for checkmark when disabled/checked.
+   */
   checkmarkCheckedDisabled?: IStyle;
 
   /**

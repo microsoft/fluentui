@@ -8,11 +8,8 @@ export class Label extends BaseComponent<ILabelProps, {}> {
   public render(): JSX.Element {
     const { disabled, required, children, className, theme } = this.props;
     return (
-      <label
-        { ...getNativeProps(this.props, divProperties) }
-        className={ getLabelClassNames(theme!, className, !!disabled, !!required).root }
-      >
-        { children }
+      <label {...getNativeProps(this.props, divProperties)} className={getLabelClassNames(theme!, className, !!disabled, !!required).root}>
+        {children}
       </label>
     );
   }

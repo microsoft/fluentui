@@ -3,9 +3,7 @@ import { LayerBase } from './Layer.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
-export interface ILayer {
-
-}
+export interface ILayer {}
 
 export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
   /**
@@ -65,7 +63,7 @@ export interface ILayerStyleProps {
 
   /**
    * Check if Host
-  */
+   */
   isNotHost?: boolean;
 }
 

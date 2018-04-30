@@ -8,12 +8,9 @@ import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
-export interface IDialog {
-
-}
+export interface IDialog {}
 
 export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
-
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -31,38 +28,38 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   theme?: ITheme;
 
   /**
-  * Props to be passed through to Dialog Content
-  */
+   * Props to be passed through to Dialog Content
+   */
   dialogContentProps?: IDialogContentProps;
 
   /**
-  * A callback function for when the Dialog is dismissed from the close button or light dismiss. Can also be specified separately in content and modal.
-  */
+   * A callback function for when the Dialog is dismissed from the close button or light dismiss. Can also be specified separately in content and modal.
+   */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
-  * Whether the dialog is hidden.
-  * @default true
-  */
+   * Whether the dialog is hidden.
+   * @default true
+   */
   hidden?: boolean;
 
   /**
-  * Props to be passed through to Modal
-  */
+   * Props to be passed through to Modal
+   */
   modalProps?: IModalProps;
 
   /**
-  * Whether the dialog is displayed.
-  * @default false
-  * @deprecated Use hidden instead
-  */
+   * Whether the dialog is displayed.
+   * @default false
+   * @deprecated Use hidden instead
+   */
   isOpen?: boolean;
 
   /**
-  * Whether the overlay is dark themed.
-  * @default true
-  * @deprecated Pass through via modalProps instead
-  */
+   * Whether the overlay is dark themed.
+   * @default true
+   * @deprecated Pass through via modalProps instead
+   */
   isDarkOverlay?: boolean;
 
   /**
@@ -72,10 +69,10 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   onDismissed?: () => any;
 
   /**
-  * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-  * @default false
-  * @deprecated Pass through via modalProps instead
-  */
+   * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
+   * @default false
+   * @deprecated Pass through via modalProps instead
+   */
   isBlocking?: boolean;
 
   /**
@@ -85,9 +82,9 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   className?: string;
 
   /**
-  * Optional override for container class
-  * @deprecated Pass through via modalProps.className instead
-  */
+   * Optional override for container class
+   * @deprecated Pass through via modalProps.className instead
+   */
   containerClassName?: string;
 
   /**
@@ -97,34 +94,34 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   onLayerDidMount?: () => void;
 
   /**
- * Deprecated at 0.81.2, use 'onLayerDidMount' instead.
- * @deprecated
- */
+   * Deprecated at 0.81.2, use 'onLayerDidMount' instead.
+   * @deprecated
+   */
   onLayerMounted?: () => void;
 
   /**
-  * The type of Dialog to display.
-  * @default DialogType.normal
-  * @deprecated Pass through via dialogContentProps instead
-  */
+   * The type of Dialog to display.
+   * @default DialogType.normal
+   * @deprecated Pass through via dialogContentProps instead
+   */
   type?: DialogType;
 
   /**
-  * The title text to display at the top of the dialog.
-  * @deprecated Pass through via dialogContentProps instead
-  */
+   * The title text to display at the top of the dialog.
+   * @deprecated Pass through via dialogContentProps instead
+   */
   title?: string;
 
   /**
-  * The subtext to display in the dialog.
-  * @deprecated Pass through via dialogContentProps instead
-  */
+   * The subtext to display in the dialog.
+   * @deprecated Pass through via dialogContentProps instead
+   */
   subText?: string;
 
   /**
-  * Optional override content class
-  * @deprecated Pass through via dialogContentProps instead as className
-  */
+   * Optional override content class
+   * @deprecated Pass through via dialogContentProps instead as className
+   */
   contentClassName?: string;
 
   /**
@@ -134,15 +131,15 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   topButtonsProps?: IButtonProps[];
 
   /**
-  * Optional id for aria-LabelledBy
-  * @deprecated Pass through via modalProps.titleAriaId instead
-  */
+   * Optional id for aria-LabelledBy
+   * @deprecated Pass through via modalProps.titleAriaId instead
+   */
   ariaLabelledById?: string;
 
   /**
-  * Optional id for aria-DescribedBy
-  * @deprecated Pass through via modalProps.subtitleAriaId instead
-  */
+   * Optional id for aria-DescribedBy
+   * @deprecated Pass through via modalProps.subtitleAriaId instead
+   */
   ariaDescribedById?: string;
 }
 
@@ -158,21 +155,21 @@ export interface IDialogStyleProps {
   className?: string;
 
   /**
-  * Optional override for container class
-  * @deprecated Pass through via modalProps.className instead
-  */
+   * Optional override for container class
+   * @deprecated Pass through via modalProps.className instead
+   */
   containerClassName?: string;
 
   /**
-  * Optional override content class
-  * @deprecated Pass through via dialogContentProps instead as className
-  */
+   * Optional override content class
+   * @deprecated Pass through via dialogContentProps instead as className
+   */
   contentClassName?: string;
 
   /**
-  * Whether the dialog is hidden.
-  * @default false
-  */
+   * Whether the dialog is hidden.
+   * @default false
+   */
   hidden?: boolean;
 
   /**

@@ -5,10 +5,11 @@ export interface ILabelClassNames {
   root: string;
 }
 
-export const getLabelClassNames = memoizeFunction((theme: ITheme, className: string | undefined, disabled: boolean, required: boolean): ILabelClassNames => {
-  return mergeStyleSets({
-    root:
-      ['ms-Label',
+export const getLabelClassNames = memoizeFunction(
+  (theme: ITheme, className: string | undefined, disabled: boolean, required: boolean): ILabelClassNames => {
+    return mergeStyleSets({
+      root: [
+        'ms-Label',
         {
           color: theme.semanticColors.bodyText,
           boxSizing: 'border-box',
@@ -17,7 +18,7 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
           display: 'block',
           padding: '5px 0',
           wordWrap: 'break-word',
-          overflowWrap: 'break-word',
+          overflowWrap: 'break-word'
         },
         disabled && {
           color: theme.semanticColors.disabledBodyText,
@@ -36,6 +37,8 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
             }
           }
         },
-        className]
-  });
-});
+        className
+      ]
+    });
+  }
+);

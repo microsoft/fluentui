@@ -1,59 +1,51 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 /* tslint:disable:max-line-length */
 import { SignalFieldBasicExample } from './examples/SignalField.Basic.Example';
-const SignalFieldBasicExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/signals/examples/SignalField.Basic.Example.tsx'
-) as string;
+const SignalFieldBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/signals/examples/SignalField.Basic.Example.tsx') as string;
 
 import { SignalsBasicExample } from './examples/Signals.Basic.Example';
-const SignalsBasicExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/signals/examples/Signals.Basic.Example.tsx'
-) as string;
+const SignalsBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/signals/examples/Signals.Basic.Example.tsx') as string;
 
 export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Signals'
-        componentName='SignalField'
+        title="Signals"
+        componentName="SignalField"
         exampleCards={
           <div>
-            <ExampleCard title='Controlling Signal alignment' isOptIn={ true } code={ SignalFieldBasicExampleCode }>
+            <ExampleCard title="Controlling Signal alignment" isOptIn={true} code={SignalFieldBasicExampleCode}>
               <SignalFieldBasicExample />
             </ExampleCard>
-            <ExampleCard title='All Signal types' isOptIn={ true } code={ SignalsBasicExampleCode }>
+            <ExampleCard title="All Signal types" isOptIn={true} code={SignalsBasicExampleCode}>
               <SignalsBasicExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!@uifabric/experiments/src/components/signals/Signals.Props.ts')
-            ] }
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/signals/Signals.Props.ts')]} />
         }
         overview={
           <div>
-            <p>A <code>Signal</code> is a combination of an <code>Icon</code> with a color and optional metadata which carries a standardized, semantic meaning.</p>
-            <p>A <code>SignalField</code> is a layout component which nicely arranges <code>Signal</code> and text elements for presentation.</p>
+            <p>
+              A <code>Signal</code> is a combination of an <code>Icon</code> with a color and optional metadata which carries a
+              standardized, semantic meaning.
+            </p>
+            <p>
+              A <code>SignalField</code> is a layout component which nicely arranges <code>Signal</code> and text elements for presentation.
+            </p>
           </div>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <div>
             <ul>
               <li>Use them to associate a document with a specific state.</li>
-              <li>Assign localized <code>aria-label</code> attributes to the <code>Signal</code> elements which align with their meaning.</li>
+              <li>
+                Assign localized <code>aria-label</code> attributes to the <code>Signal</code> elements which align with their meaning.
+              </li>
             </ul>
           </div>
         }
@@ -64,7 +56,7 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }

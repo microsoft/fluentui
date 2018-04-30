@@ -3,20 +3,10 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/compon
 import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import * as React from 'react';
-import {
-  INavProps,
-  INavLink,
-  INavStyleProps,
-  INavStyles
-} from './Nav.types';
-import {
-  getStyles
-} from './Nav.styles';
+import { INavProps, INavLink, INavStyleProps, INavStyles } from './Nav.types';
+import { getStyles } from './Nav.styles';
 import { NavBase } from './NavBase';
-import {
-  styled,
-  classNamesFunction
-} from 'office-ui-fabric-react/lib/Utilities';
+import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
@@ -41,13 +31,11 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation'>
-          {
-            this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this._renderGroup(group, groupIndex);
-            })
-          }
+      <FocusZone direction={FocusZoneDirection.vertical}>
+        <nav role="navigation">
+          {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
+            return this._renderGroup(group, groupIndex);
+          })}
         </nav>
       </FocusZone>
     );
@@ -89,7 +77,6 @@ class SlimNavComponent extends NavBase {
     return undefined;
   }
 
-
   private _onLinkMouseEnterOrLeave(link: INavLink, ev: React.SyntheticEvent<HTMLElement>): void {
     link.scrollTop = this._getScrollTop();
     this.setState({ isLinkExpandStateChanged: true });
@@ -115,20 +102,20 @@ class SlimNavComponent extends NavBase {
 
     return (
       <NavLink
-        id={ link.key }
-        content={ link.name }
-        href={ link.url }
-        target={ link.target }
-        dataHint={ this.props.dataHint }
-        dataValue={ link.key }
-        ariaLabel={ link.name }
+        id={link.key}
+        content={link.name}
+        href={link.url}
+        target={link.target}
+        dataHint={this.props.dataHint}
+        dataValue={link.key}
+        ariaLabel={link.name}
         role="menu"
-        onClick={ this._onLinkClicked.bind(this, link) }
-        rootClassName={ classNames.navFloatingItemRoot }
-        rightIconName={ rightIconName }
-        textClassName={ classNames.navItemNameColumn }
-        iconClassName={ classNames.navItemIconColumn }>
-      </NavLink>
+        onClick={this._onLinkClicked.bind(this, link)}
+        rootClassName={classNames.navFloatingItemRoot}
+        rightIconName={rightIconName}
+        textClassName={classNames.navItemNameColumn}
+        iconClassName={classNames.navItemIconColumn}
+      />
     );
   }
 
@@ -138,26 +125,13 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <li
-        role='listitem'
-        key={ link.key || linkIndex }
-        title={ link.name }>
-        {
-          this._renderCompositeLink(link, linkIndex, nestingLevel)
-        }
-        {
-          // show child links
-          // 1. only for the first level
-          nestingLevel == 0 ?
-            <div>
-              {
-                this._renderFloatingLinks(link.links as INavLink[], ++nestingLevel)
-              }
-            </div>
-            : null
-        }
+      <li role="listitem" key={link.key || linkIndex} title={link.name}>
+        {this._renderCompositeLink(link, linkIndex, nestingLevel)}
+        {// show child links
+        // 1. only for the first level
+        nestingLevel == 0 ? <div>{this._renderFloatingLinks(link.links as INavLink[], ++nestingLevel)}</div> : null}
       </li>
-    )
+    );
   }
 
   private _renderFloatingLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> | null {
@@ -166,12 +140,10 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <ul role='list'>
-        {
-          links.map((link: INavLink, linkIndex: number) => {
-            return this._renderFloatingLink(link, linkIndex, nestingLevel);
-          })
-        }
+      <ul role="list">
+        {links.map((link: INavLink, linkIndex: number) => {
+          return this._renderFloatingLink(link, linkIndex, nestingLevel);
+        })}
       </ul>
     );
   }
@@ -181,17 +153,11 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
-    const hasChildren = (!!link.links && link.links.length > 0);
+    const hasChildren = !!link.links && link.links.length > 0;
     const { getStyles } = this.props;
     const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
 
-    return (
-      <div className={ classNames.navFloatingRoot }>
-        {
-          this._renderFloatingLinks([link], 0 /* nestingLevel */)
-        }
-      </div>
-    );
+    return <div className={classNames.navFloatingRoot}>{this._renderFloatingLinks([link], 0 /* nestingLevel */)}</div>;
   }
 
   private _renderLink(link: INavLink, linkIndex: number, _nestingLevel: number): React.ReactElement<{}> | null {
@@ -200,33 +166,32 @@ class SlimNavComponent extends NavBase {
     }
 
     const isSelected = this.isLinkSelected(link, true /* includeChildren */);
-    const hasChildren = (!!link.links && link.links.length > 0);
+    const hasChildren = !!link.links && link.links.length > 0;
     const { getStyles } = this.props;
     const classNames = getClassNames(getStyles!, { isSelected, hasChildren });
 
     return (
       <li
-        role='listitem'
-        key={ link.key || linkIndex }
-        onMouseEnter={ this._onLinkMouseEnterOrLeave.bind(this, link) }
-        onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
-        title={ link.name }
-        className={ classNames.navSlimItemRoot }>
+        role="listitem"
+        key={link.key || linkIndex}
+        onMouseEnter={this._onLinkMouseEnterOrLeave.bind(this, link)}
+        onMouseLeave={this._onLinkMouseEnterOrLeave.bind(this, link)}
+        title={link.name}
+        className={classNames.navSlimItemRoot}
+      >
         <NavLink
-          id={ link.key }
-          href={ link.url }
-          target={ link.target }
-          dataHint={ this.props.dataHint }
-          dataValue={ link.key }
+          id={link.key}
+          href={link.url}
+          target={link.target}
+          dataHint={this.props.dataHint}
+          dataValue={link.key}
           role="menu"
-          onClick={ this._onLinkClicked.bind(this, link) }
-          rootClassName={ classNames.navItemRoot }
-          leftIconName={ link.icon }
-          iconClassName={ classNames.navItemIconColumn }>
-        </NavLink>
-        {
-          this._renderFloatingNav(link, linkIndex)
-        }
+          onClick={this._onLinkClicked.bind(this, link)}
+          rootClassName={classNames.navItemRoot}
+          leftIconName={link.icon}
+          iconClassName={classNames.navItemIconColumn}
+        />
+        {this._renderFloatingNav(link, linkIndex)}
       </li>
     );
   }
@@ -237,12 +202,10 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <ul role='list'>
-        {
-          links.map((link: INavLink, linkIndex: number) => {
-            return this._renderLink(link, linkIndex, nestingLevel);
-          })
-        }
+      <ul role="list">
+        {links.map((link: INavLink, linkIndex: number) => {
+          return this._renderLink(link, linkIndex, nestingLevel);
+        })}
       </ul>
     );
   }
@@ -256,26 +219,18 @@ class SlimNavComponent extends NavBase {
     const classNames = getClassNames(getStyles!, {});
 
     return (
-      <div key={ groupIndex }>
-        {
-          // do not render group header for the first group
-          groupIndex > 0 && group.name ?
-            <div className={ classNames.navGroupSeparatorRoot }>
-              <div className={ classNames.navGroupSeparatorHrLine }>
-              </div>
-            </div>
-            : null
-        }
-        {
-          this._renderLinks(group.links, 0 /* nestingLevel */)
-        }
+      <div key={groupIndex}>
+        {// do not render group header for the first group
+        groupIndex > 0 && group.name ? (
+          <div className={classNames.navGroupSeparatorRoot}>
+            <div className={classNames.navGroupSeparatorHrLine} />
+          </div>
+        ) : null}
+        {this._renderLinks(group.links, 0 /* nestingLevel */)}
       </div>
     );
   }
 }
 
-export const SlimNav = styled<INavProps, INavStyleProps, INavStyles>(
-  SlimNavComponent,
-  getStyles
-);
+export const SlimNav = styled<INavProps, INavStyleProps, INavStyles>(SlimNavComponent, getStyles);
 /* tslint:enable */

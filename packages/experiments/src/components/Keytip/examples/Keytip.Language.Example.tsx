@@ -15,13 +15,13 @@ export class KeytipLanguageExample extends React.Component<{}, IKeytipExampleSta
     super(props);
 
     this.state = {
-      keytipVisible: false,
+      keytipVisible: false
     };
 
     // Setup keytips
     this.keytipMap.Keytip1 = {
       content: 'ы ñ خ',
-      keySequences: [{ keys: ['c'] }],
+      keySequences: [{ keys: ['c'] }]
     } as IKeytipProps;
   }
 
@@ -32,14 +32,14 @@ export class KeytipLanguageExample extends React.Component<{}, IKeytipExampleSta
       <div>
         <p>Keytips can support displaying and processing keys for any unicode language</p>
         <DefaultButton
-          text='Click to toggle keytip'
-          data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
-          onClick={ btnClick }
+          text="Click to toggle keytip"
+          data-ktp-id={convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences)}
+          onClick={btnClick}
         />
         <Keytip
-          content={ this.keytipMap.Keytip1.content }
-          keySequences={ this.keytipMap.Keytip1.keySequences }
-          visible={ this.state.keytipVisible }
+          content={this.keytipMap.Keytip1.content}
+          keySequences={this.keytipMap.Keytip1.keySequences}
+          visible={this.state.keytipVisible}
         />
       </div>
     );

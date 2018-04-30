@@ -4,9 +4,7 @@ import { ICalloutProps } from '../../Callout';
 import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
-export interface ITooltip {
-
-}
+export interface ITooltip {}
 
 /**
  * Tooltip component props.

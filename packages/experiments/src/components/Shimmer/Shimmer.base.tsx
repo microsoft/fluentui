@@ -9,7 +9,7 @@ import {
   ICircle,
   ILine,
   IGap,
-  ShimmerElementVerticalAlign,
+  ShimmerElementVerticalAlign
 } from './Shimmer.types';
 import { ShimmerLine } from './ShimmerLine/ShimmerLine';
 import { ShimmerGap } from './ShimmerGap/ShimmerGap';
@@ -32,75 +32,46 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 
   public render(): JSX.Element {
-    const {
-      getStyles,
-      width,
-      lineElements,
-      children,
-      isDataLoaded,
-      isBaseStyle,
-      widthInPercentage,
-      widthInPixel
-    } = this.props;
+    const { getStyles, width, lineElements, children, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel } = this.props;
 
     const rowHeight: number | undefined = lineElements ? findMaxElementHeight(lineElements) : undefined;
 
     this._classNames = getClassNames(getStyles!, {
-      width, rowHeight, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel
+      width,
+      rowHeight,
+      isDataLoaded,
+      isBaseStyle,
+      widthInPercentage,
+      widthInPixel
     });
 
     const renderedElements: React.ReactNode = getRenderedElements(lineElements, rowHeight);
 
     return (
-      <div className={ this._classNames.root }>
-        <div className={ this._classNames.shimmerWrapper }>
-          { !!isBaseStyle ? children : renderedElements }
-        </div>
+      <div className={this._classNames.root}>
+        <div className={this._classNames.shimmerWrapper}>{!!isBaseStyle ? children : renderedElements}</div>
 
-        { !!isDataLoaded &&
-          <div className={ this._classNames.dataWrapper }>
-            { !!children ? children : null }
-          </div>
-        }
+        {!!isDataLoaded && <div className={this._classNames.dataWrapper}>{!!children ? children : null}</div>}
       </div>
     );
   }
 }
 
 export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>, rowHeight?: number): React.ReactNode {
-  const renderedElements: React.ReactNode = lineElements ?
+  const renderedElements: React.ReactNode = lineElements ? (
     lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
       switch (elem.type) {
         case ShimmerElementType.circle:
-          return (
-            <ShimmerCircle
-              key={ index }
-              { ...elem }
-              borderStyle={ getBorderStyles(elem, rowHeight) }
-            />
-          );
+          return <ShimmerCircle key={index} {...elem} borderStyle={getBorderStyles(elem, rowHeight)} />;
         case ShimmerElementType.gap:
-          return (
-            <ShimmerGap
-              key={ index }
-              { ...elem }
-              borderStyle={ getBorderStyles(elem, rowHeight) }
-            />
-          );
+          return <ShimmerGap key={index} {...elem} borderStyle={getBorderStyles(elem, rowHeight)} />;
         case ShimmerElementType.line:
-          return (
-            <ShimmerLine
-              key={ index }
-              { ...elem }
-              borderStyle={ getBorderStyles(elem, rowHeight) }
-            />
-          );
+          return <ShimmerLine key={index} {...elem} borderStyle={getBorderStyles(elem, rowHeight)} />;
       }
-    }) : (
-      <ShimmerLine
-        height={ LINE_DEFAULT_HEIGHT }
-      />
-    );
+    })
+  ) : (
+    <ShimmerLine height={LINE_DEFAULT_HEIGHT} />
+  );
 
   return renderedElements;
 }
@@ -152,9 +123,7 @@ export function findMaxElementHeight(elements: Array<ICircle | IGap | ILine>): n
   });
 
   const rowHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
-    return next.height ?
-      next.height > acc ? next.height : acc
-      : acc;
+    return next.height ? (next.height > acc ? next.height : acc) : acc;
   }, 0);
 
   return rowHeight;

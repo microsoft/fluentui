@@ -5,7 +5,7 @@ import { ProgressIndicator } from './ProgressIndicator';
 
 describe('ProgressIndicator', () => {
   it('renders ProgressIndicator correctly', () => {
-    const component = renderer.create(<ProgressIndicator percentComplete={ 0.75 } />);
+    const component = renderer.create(<ProgressIndicator percentComplete={0.75} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

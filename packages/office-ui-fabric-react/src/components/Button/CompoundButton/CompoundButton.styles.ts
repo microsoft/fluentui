@@ -1,27 +1,11 @@
 import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets,
-  FontWeights,
-  HighContrastSelector
-} from '../../../Styling';
+import { ITheme, concatStyleSets, FontWeights, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
-import {
-  getStyles as getSplitButtonStyles
-} from '../SplitButton/SplitButton.styles';
-import {
-  primaryStyles,
-  standardStyles
-} from '../ButtonThemes';
+import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
+import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
+import { primaryStyles, standardStyles } from '../ButtonThemes';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles,
-  primary?: boolean
-): IButtonStyles => {
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonStyles, primary?: boolean): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   const compoundButtonStyles: IButtonStyles = {
@@ -62,14 +46,12 @@ export const getStyles = memoizeFunction((
       {
         lineHeight: '100%'
       }
-    ],
-
+    ]
   };
 
   const standardCompoundTheme: IButtonStyles = {
-
     description: {
-      color: theme.palette.neutralSecondary,
+      color: theme.palette.neutralSecondary
     },
 
     descriptionHovered: {
@@ -90,7 +72,6 @@ export const getStyles = memoizeFunction((
   };
 
   const primaryCompoundTheme: IButtonStyles = {
-
     description: {
       color: theme.palette.white,
       selectors: {
@@ -100,7 +81,6 @@ export const getStyles = memoizeFunction((
           MsHighContrastAdjust: 'none'
         }
       }
-
     },
 
     descriptionHovered: {
@@ -135,5 +115,4 @@ export const getStyles = memoizeFunction((
     splitButtonStyles,
     customStyles
   )!;
-
 });

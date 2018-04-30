@@ -74,10 +74,7 @@ export function getVirtualParent(child: HTMLElement): HTMLElement | undefined {
  * @public
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
-  return child && (
-    allowVirtualParents && getVirtualParent(child) ||
-    child.parentNode && child.parentNode as HTMLElement
-  );
+  return child && ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)));
 }
 
 /**
@@ -155,13 +152,9 @@ export function getWindow(rootElement?: Element | null): Window | undefined {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
-    return (
-      rootElement &&
-        rootElement.ownerDocument &&
-        rootElement.ownerDocument.defaultView ?
-        rootElement.ownerDocument.defaultView :
-        window
-    );
+    return rootElement && rootElement.ownerDocument && rootElement.ownerDocument.defaultView
+      ? rootElement.ownerDocument.defaultView
+      : window;
   }
 }
 

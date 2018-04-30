@@ -1,23 +1,10 @@
 import * as React from 'react';
 
-import {
-  BaseComponent,
-  css,
-  customizable
-} from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ICommandBar,
-  ICommandBarItemProps,
-  ICommandBarProps,
-  ICommandBarStyleProps,
-  ICommandBarStyles
-} from './CommandBar.types';
+import { BaseComponent, css, customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IResizeGroup, ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import {
-  classNamesFunction,
-  createRef
-} from '../../Utilities';
+import { classNamesFunction, createRef } from '../../Utilities';
 
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
@@ -75,7 +62,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       theme,
       onRenderButton = this._onRenderButton,
       onReduceData = this._onReduceData,
-      onGrowData = this._onGrowData,
+      onGrowData = this._onGrowData
     } = this.props;
 
     const commandBardata: ICommandBarData = {
@@ -83,54 +70,51 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
       farItems,
-      cacheKey: '',
+      cacheKey: ''
     };
 
     this._classNames = getClassNames(getStyles!, { theme: theme!, className, endAligned });
 
     return (
       <ResizeGroup
-        componentRef={ this._resizeGroup }
-        className={ className }
-        data={ commandBardata }
-        onReduceData={ onReduceData }
-        onGrowData={ onGrowData }
+        componentRef={this._resizeGroup}
+        className={className}
+        data={commandBardata}
+        onReduceData={onReduceData}
+        onGrowData={onGrowData}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderData={ (data: ICommandBarData) => {
+        onRenderData={(data: ICommandBarData) => {
           return (
-            <div className={ css(this._classNames.root) }>
-
-              {/*Primary Items*/ }
+            <div className={css(this._classNames.root)}>
+              {/*Primary Items*/}
               <OverflowSet
-                componentRef={ this._overflowSet }
-                className={ css(this._classNames.primarySet) }
-                items={ data.primaryItems }
-                overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
-                onRenderItem={ this._onRenderItems }
-                onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
-                  return (
-                    onRenderButton({
-                      key: 'oveflowButton',
-                      styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
-                      ariaLabel: elipisisAriaLabel,
-                      className: css('ms-CommandBar-overflowButton'),
-                      menuProps: { ...overflowMenuProps, items: renderedOverflowItems },
-                      menuIconProps: elipisisIconProps,
-                    })
-                  );
-                } }
+                componentRef={this._overflowSet}
+                className={css(this._classNames.primarySet)}
+                items={data.primaryItems}
+                overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
+                onRenderItem={this._onRenderItems}
+                onRenderOverflowButton={(renderedOverflowItems: ICommandBarItemProps[]) => {
+                  return onRenderButton({
+                    key: 'oveflowButton',
+                    styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
+                    ariaLabel: elipisisAriaLabel,
+                    className: css('ms-CommandBar-overflowButton'),
+                    menuProps: { ...overflowMenuProps, items: renderedOverflowItems },
+                    menuIconProps: elipisisIconProps
+                  });
+                }}
               />
 
-              {/*Secondary Items*/ }
+              {/*Secondary Items*/}
               <OverflowSet
-                className={ css(this._classNames.secondarySet) }
-                items={ data.farItems }
-                onRenderItem={ this._onRenderItems }
-                onRenderOverflowButton={ () => null }
+                className={css(this._classNames.secondarySet)}
+                items={data.farItems}
+                onRenderItem={this._onRenderItems}
+                onRenderOverflowButton={() => null}
               />
             </div>
           );
-        } }
+        }}
       />
     );
   }
@@ -181,7 +165,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
 
     return undefined;
-  }
+  };
 
   private _onGrowData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { endAligned, onDataGrown } = this.props;
@@ -206,7 +190,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
 
     return undefined;
-  }
+  };
 
   private _onRenderItems = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
     const { buttonStyles } = this.props;
@@ -221,22 +205,18 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       styles: { root: { height: '100%' }, ...item.buttonStyles, ...buttonStyles },
       className: css(item.className),
       text: !item.iconOnly ? item.name : '',
-      menuProps: item.subMenuProps,
+      menuProps: item.subMenuProps
     };
 
     if (item.iconOnly && item.name !== undefined) {
-      return (
-        <TooltipHost content={ item.name } >
-          { this._onRenderButton(commandButtonProps) }
-        </TooltipHost>
-      );
+      return <TooltipHost content={item.name}>{this._onRenderButton(commandButtonProps)}</TooltipHost>;
     }
 
     return this._onRenderButton(commandButtonProps);
-  }
+  };
 
   private _onRenderButton = (props: ICommandBarItemProps): JSX.Element => {
     // tslint:disable-next-line:no-any
-    return <CommandBarButton { ...props as any } />;
-  }
+    return <CommandBarButton {...props as any} />;
+  };
 }

@@ -1,17 +1,5 @@
-export {
-  buildClassMap
-} from './buildClassMap';
+export { buildClassMap } from './buildClassMap';
 
-export {
-  IIconRecord,
-  IIconSubset,
-  IIconOptions,
-  getIcon,
-  registerIcons,
-  registerIconAlias,
-  setIconOptions
-} from './icons';
+export { IIconRecord, IIconSubset, IIconOptions, getIcon, registerIcons, registerIconAlias, setIconOptions } from './icons';
 
-export {
-  getIconClassName
-} from './getIconClassName';
+export { getIconClassName } from './getIconClassName';

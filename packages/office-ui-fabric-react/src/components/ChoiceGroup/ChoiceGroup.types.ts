@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { IRenderFunction } from '../../Utilities';
 
-export interface IChoiceGroup {
-
-}
+export interface IChoiceGroup {}
 
 export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
@@ -91,7 +89,7 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * The width and height of the image in px for choice field.
    * @default { width: 32, height: 32 }
    */
-  imageSize?: { width: number, height: number };
+  imageSize?: { width: number; height: number };
 
   /**
    * Whether or not the option is disabled.

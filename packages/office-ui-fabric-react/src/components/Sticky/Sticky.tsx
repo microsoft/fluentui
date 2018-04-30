@@ -35,7 +35,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       addStickyFooter: (sticky: Sticky) => void;
       removeStickyFooter: (sticky: Sticky) => void;
       notifySubscribers: (sort?: boolean) => void;
-    }
+    };
   };
 
   public content: HTMLElement;
@@ -57,7 +57,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     scrollablePane.subscribe(this._onScrollEvent);
     this.content = document.createElement('div');
     this.content.style.background = this.props.stickyBackgroundColor || this._getBackground();
-    ReactDOM.render(<div>{ this.props.children }</div>, this.content);
+    ReactDOM.render(<div>{this.props.children}</div>, this.content);
     if (this.root.current) {
       this.root.current.appendChild(this.content);
     }
@@ -85,7 +85,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { scrollablePane } = this.context;
 
     if (this.props.children !== prevProps.children) {
-      ReactDOM.render(<div>{ this.props.children }</div>, this.content);
+      ReactDOM.render(<div>{this.props.children}</div>, this.content);
     }
 
     if (isStickyTop && !prevState.isStickyTop) {
@@ -111,10 +111,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
     const { isStickyTop, isStickyBottom, placeholderHeight } = this.state;
-    return isStickyTop !== nextState.isStickyTop ||
+    return (
+      isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       placeholderHeight !== nextState.placeholderHeight ||
-      this.props.children !== nextProps.children;
+      this.props.children !== nextProps.children
+    );
   }
 
   public setPlaceholderHeight(height: number): void {
@@ -128,8 +130,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const isSticky = isStickyTop || isStickyBottom;
 
     return (
-      <div ref={ this.root }>
-        <div style={ { height: (isSticky ? placeholderHeight : 0) } } />
+      <div ref={this.root}>
+        <div style={{ height: isSticky ? placeholderHeight : 0 }} />
       </div>
     );
   }
@@ -146,10 +148,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const canStickyFooter = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Footer;
 
     this.setState({
-      isStickyTop: canStickyHeader && ((top <= headerBound.bottom) || (isStickyTop && bottom < headerBound.bottom)),
-      isStickyBottom: canStickyFooter && ((bottom >= footerBound.top) || (isStickyBottom && top > footerBound.top))
+      isStickyTop: canStickyHeader && (top <= headerBound.bottom || (isStickyTop && bottom < headerBound.bottom)),
+      isStickyBottom: canStickyFooter && (bottom >= footerBound.top || (isStickyBottom && top > footerBound.top))
     });
-  }
+  };
 
   private _setSticky(callback: () => void): void {
     if (this.content.parentElement) {
@@ -179,8 +181,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     let curr: HTMLElement = this.root.current;
 
-    while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
-      window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {
+    while (
+      window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
+      window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent'
+    ) {
       if (curr.tagName === 'HTML') {
         // Fallback color if no element has a declared background-color attribute
         return null;

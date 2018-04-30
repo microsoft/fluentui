@@ -10,7 +10,7 @@ export interface IMaskValue {
 
 export const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
   '9': /[0-9]/,
-  'a': /[a-zA-Z]/,
+  a: /[a-zA-Z]/,
   '*': /[a-zA-Z0-9]/
 };
 
@@ -28,9 +28,7 @@ export const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
  * @param mask The string use to define the format of the displayed maskedValue.
  * @param formatChars An object defining how certain characters in the mask should accept input.
  */
-export function parseMask(
-  mask: string | undefined,
-  formatChars: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): IMaskValue[] {
+export function parseMask(mask: string | undefined, formatChars: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): IMaskValue[] {
   if (!mask) {
     return [];
   }
@@ -117,8 +115,7 @@ export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValu
     }
 
     // Insert the character into the maskdisplay at its corresponding index
-    maskDisplay = maskDisplay.slice(0, charData.displayIndex) + nextChar +
-      maskDisplay.slice(charData.displayIndex + 1);
+    maskDisplay = maskDisplay.slice(0, charData.displayIndex) + nextChar + maskDisplay.slice(charData.displayIndex + 1);
   }
 
   // Cut off all mask characters after the last filled format value

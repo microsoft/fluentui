@@ -2,11 +2,7 @@
 /* This utility module is used with theming. Given a color to shade, whether the theme is inverted (i.e. is a dark color),
  * and the desired shade enum, this will return an appropriate shade of that color.
  */
-import {
-  IHSL,
-  IColor,
-  MAX_COLOR_RGBA
-} from './colors';
+import { IHSL, IColor, MAX_COLOR_RGBA } from './colors';
 import * as Colors from './colors';
 import { assign } from '../../Utilities';
 
@@ -14,14 +10,14 @@ import { assign } from '../../Utilities';
 // Strongen: opposite of soften
 
 // Luminance multiplier constants for generating shades of a given color
-const WhiteShadeTableBG = [.973, .957, .918, .855, .816, .784, .651, .463]; // white bg
-const BlackTintTableBG = [.463, .55, .651, .784, .816, .855, .918, .957]; // black bg
-const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // white fg
-const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black fg
-const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light (strongen all)
-const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark (soften all)
-const ColorTintTable = [.07, .18, .436, .751, .956]; // default soften
-const ColorShadeTable = [.90, .64, .550]; // default strongen
+const WhiteShadeTableBG = [0.973, 0.957, 0.918, 0.855, 0.816, 0.784, 0.651, 0.463]; // white bg
+const BlackTintTableBG = [0.463, 0.55, 0.651, 0.784, 0.816, 0.855, 0.918, 0.957]; // black bg
+const WhiteShadeTable = [0.463, 0.651, 0.784, 0.816, 0.855, 0.918, 0.957, 0.973]; // white fg
+const BlackTintTable = [0.463, 0.55, 0.651, 0.784, 0.816, 0.855, 0.918, 0.957]; // black fg
+const LumTintTable = [0.12, 0.23, 0.34, 0.45, 0.56, 0.67, 0.78, 0.89]; // light (strongen all)
+const LumShadeTable = [0.89, 0.78, 0.67, 0.56, 0.45, 0.34, 0.23, 0.12]; // dark (soften all)
+const ColorTintTable = [0.07, 0.18, 0.436, 0.751, 0.956]; // default soften
+const ColorShadeTable = [0.9, 0.64, 0.55]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
 const LowLuminanceThreshold = 0.2;
@@ -37,7 +33,7 @@ export enum Shade {
   Shade5 = 5,
   Shade6 = 6,
   Shade7 = 7,
-  Shade8 = 8,
+  Shade8 = 8
   // remember to update isValidShade()!
 }
 
@@ -47,7 +43,7 @@ export enum Shade {
  */
 export function isValidShade(shade?: Shade): boolean {
   'use strict';
-  return (typeof shade === 'number') && (shade >= Shade.Unshaded) && (shade <= Shade.Shade8);
+  return typeof shade === 'number' && shade >= Shade.Unshaded && shade <= Shade.Shade8;
 }
 
 function _isBlack(color: IColor): boolean {
@@ -70,7 +66,7 @@ function _lighten(hsl: IHSL, factor: number): IHSL {
   return {
     h: hsl.h,
     s: hsl.s,
-    l: hsl.l * factor + (100 * (1 - factor))
+    l: hsl.l * factor + 100 * (1 - factor)
   };
 }
 
@@ -114,15 +110,20 @@ export function getShade(color: IColor, shade: Shade, isInverted: boolean = fals
     _soften = _darken;
     _strongen = _lighten;
   }
-  if (_isWhite(color)) { // white
+  if (_isWhite(color)) {
+    // white
     hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
-  } else if (_isBlack(color)) { // black
+  } else if (_isBlack(color)) {
+    // black
     hsl = _lighten(hsl, BlackTintTable[tableIndex]);
-  } else if (hsl.l / 100 > HighLuminanceThreshold) { // light
+  } else if (hsl.l / 100 > HighLuminanceThreshold) {
+    // light
     hsl = _strongen(hsl, LumShadeTable[tableIndex]);
-  } else if (hsl.l / 100 < LowLuminanceThreshold) { // dark
+  } else if (hsl.l / 100 < LowLuminanceThreshold) {
+    // dark
     hsl = _soften(hsl, LumTintTable[tableIndex]);
-  } else { // default
+  } else {
+    // default
     if (tableIndex < ColorTintTable.length) {
       hsl = _soften(hsl, ColorTintTable[tableIndex]);
     } else {
@@ -148,9 +149,11 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted: bool
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   const tableIndex = shade - 1;
-  if (!isInverted) { // lightish
+  if (!isInverted) {
+    // lightish
     hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
-  } else { // default: if (hsl.l / 100 < .5) { // darkish
+  } else {
+    // default: if (hsl.l / 100 < .5) { // darkish
     hsl = _lighten(hsl, BlackTintTableBG[BlackTintTable.length - 1 - tableIndex]);
   }
 
@@ -167,26 +170,25 @@ export function getContrastRatio(color1: IColor, color2: IColor): number {
 
   /* calculate the intermediate value needed to calculating relative luminance */
   function _getThing(x: number): number {
-    if (x <= .03928) {
+    if (x <= 0.03928) {
       return x / 12.92;
     } else {
-      return Math.pow((x + .055) / 1.055, 2.4);
+      return Math.pow((x + 0.055) / 1.055, 2.4);
     }
   }
 
   const r1 = _getThing(color1.r / MAX_COLOR_RGBA);
   const g1 = _getThing(color1.g / MAX_COLOR_RGBA);
   const b1 = _getThing(color1.b / MAX_COLOR_RGBA);
-  let L1 = (.2126 * r1) + (.7152 * g1) + (.0722 * b1); // relative luminance of first color
-  L1 += .05;
+  let L1 = 0.2126 * r1 + 0.7152 * g1 + 0.0722 * b1; // relative luminance of first color
+  L1 += 0.05;
 
   const r2 = _getThing(color2.r / MAX_COLOR_RGBA);
   const g2 = _getThing(color2.g / MAX_COLOR_RGBA);
   const b2 = _getThing(color2.b / MAX_COLOR_RGBA);
-  let L2 = (.2126 * r2) + (.7152 * g2) + (.0722 * b2); // relative luminance of second color
-  L2 += .05;
+  let L2 = 0.2126 * r2 + 0.7152 * g2 + 0.0722 * b2; // relative luminance of second color
+  L2 += 0.05;
 
   // return the lighter color divided by darker
-  return L1 / L2 > 1 ?
-    L1 / L2 : L2 / L1;
+  return L1 / L2 > 1 ? L1 / L2 : L2 / L1;
 }

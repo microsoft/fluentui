@@ -1,23 +1,11 @@
 import * as React from 'react';
-import {
-  IDatePickerProps,
-  IDatePickerStrings
-} from './DatePicker.types';
-import {
-  Calendar,
-  ICalendar,
-  DayOfWeek
-} from '../../Calendar';
+import { IDatePickerProps, IDatePickerStrings } from './DatePicker.types';
+import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField, ITextField } from '../../TextField';
-import {
-  BaseComponent,
-  KeyCodes,
-  css,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef } from '../../Utilities';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import * as stylesImport from './DatePicker.scss';
 const styles: any = stylesImport;
@@ -30,55 +18,13 @@ export interface IDatePickerState {
 }
 
 const DEFAULT_STRINGS: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
@@ -133,7 +79,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     this.state = {
       selectedDate: value || undefined,
-      formattedDate: (formatDate && value) ? formatDate(value) : '',
+      formattedDate: formatDate && value ? formatDate(value) : '',
       isDatePickerShown: false,
       errorMessage: undefined
     };
@@ -144,16 +90,18 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   public componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
 
-    if (compareDates(this.props.minDate!, nextProps.minDate!) &&
+    if (
+      compareDates(this.props.minDate!, nextProps.minDate!) &&
       compareDates(this.props.maxDate!, nextProps.maxDate!) &&
       this.props.isRequired === nextProps.isRequired &&
       compareDates(this.state.selectedDate!, value!) &&
-      this.props.formatDate === formatDate) {
+      this.props.formatDate === formatDate
+    ) {
       // if the props we care about haven't changed, don't run validation or updates
       return;
     }
 
-    let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || ' ') : undefined;
+    let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
 
     if (!errorMessage && value) {
       errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
@@ -172,7 +120,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
         selectedDate: value || undefined,
-        formattedDate: (formatDate && value) ? formatDate(value) : '',
+        formattedDate: formatDate && value ? formatDate(value) : ''
       });
     }
   }
@@ -205,25 +153,25 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root, isDatePickerShown && 'is-open', className) }>
-        <div ref={ this._datePickerDiv }>
+      <div className={css('ms-DatePicker', styles.root, isDatePickerShown && 'is-open', className)}>
+        <div ref={this._datePickerDiv}>
           <TextField
-            label={ label }
-            className={ styles.textField }
-            ariaLabel={ ariaLabel }
-            aria-haspopup='true'
-            aria-expanded={ isDatePickerShown }
-            required={ isRequired }
-            disabled={ disabled }
-            onKeyDown={ this._onTextFieldKeyDown }
-            onFocus={ this._onTextFieldFocus }
-            onBlur={ this._onTextFieldBlur }
-            onClick={ this._onTextFieldClick }
-            onChanged={ this._onTextFieldChanged }
-            errorMessage={ errorMessage }
-            placeholder={ placeholder }
-            borderless={ borderless }
-            iconProps={ {
+            label={label}
+            className={styles.textField}
+            ariaLabel={ariaLabel}
+            aria-haspopup="true"
+            aria-expanded={isDatePickerShown}
+            required={isRequired}
+            disabled={disabled}
+            onKeyDown={this._onTextFieldKeyDown}
+            onFocus={this._onTextFieldFocus}
+            onBlur={this._onTextFieldBlur}
+            onClick={this._onTextFieldClick}
+            onChanged={this._onTextFieldChanged}
+            errorMessage={errorMessage}
+            placeholder={placeholder}
+            borderless={borderless}
+            iconProps={{
               iconName: 'Calendar',
               onClick: this._onIconClick,
               className: css(
@@ -231,48 +179,48 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
                 label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
                 label ? styles.eventWithLabel : styles.eventWithoutLabel
               )
-            } }
-            readOnly={ !allowTextInput }
-            value={ formattedDate }
-            componentRef={ this._textField }
-            role={ 'button' }
+            }}
+            readOnly={!allowTextInput}
+            value={formattedDate}
+            componentRef={this._textField}
+            role={'button'}
           />
         </div>
-        { isDatePickerShown && (
+        {isDatePickerShown && (
           <Callout
-            role='dialog'
-            ariaLabel={ pickerAriaLabel }
-            isBeakVisible={ false }
-            className={ css('ms-DatePicker-callout') }
-            gapSpace={ 0 }
-            doNotLayer={ false }
-            target={ this._datePickerDiv.current }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._calendarDismissed }
-            onPositioned={ this._onCalloutPositioned }
+            role="dialog"
+            ariaLabel={pickerAriaLabel}
+            isBeakVisible={false}
+            className={css('ms-DatePicker-callout')}
+            gapSpace={0}
+            doNotLayer={false}
+            target={this._datePickerDiv.current}
+            directionalHint={DirectionalHint.bottomLeftEdge}
+            onDismiss={this._calendarDismissed}
+            onPositioned={this._onCalloutPositioned}
           >
             <Calendar
-              { ...calendarProps }
-              onSelectDate={ this._onSelectDate }
-              onDismiss={ this._calendarDismissed }
-              isMonthPickerVisible={ this.props.isMonthPickerVisible }
-              showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
-              today={ this.props.today }
-              value={ selectedDate || initialPickerDate }
-              firstDayOfWeek={ firstDayOfWeek }
-              strings={ strings! }
-              highlightCurrentMonth={ this.props.highlightCurrentMonth }
-              highlightSelectedMonth={ this.props.highlightSelectedMonth }
-              showWeekNumbers={ this.props.showWeekNumbers }
-              firstWeekOfYear={ this.props.firstWeekOfYear }
-              showGoToToday={ this.props.showGoToToday }
-              dateTimeFormatter={ this.props.dateTimeFormatter }
-              minDate={ minDate }
-              maxDate={ maxDate }
-              componentRef={ this._calendar }
+              {...calendarProps}
+              onSelectDate={this._onSelectDate}
+              onDismiss={this._calendarDismissed}
+              isMonthPickerVisible={this.props.isMonthPickerVisible}
+              showMonthPickerAsOverlay={this.props.showMonthPickerAsOverlay}
+              today={this.props.today}
+              value={selectedDate || initialPickerDate}
+              firstDayOfWeek={firstDayOfWeek}
+              strings={strings!}
+              highlightCurrentMonth={this.props.highlightCurrentMonth}
+              highlightSelectedMonth={this.props.highlightSelectedMonth}
+              showWeekNumbers={this.props.showWeekNumbers}
+              firstWeekOfYear={this.props.firstWeekOfYear}
+              showGoToToday={this.props.showGoToToday}
+              dateTimeFormatter={this.props.dateTimeFormatter}
+              minDate={minDate}
+              maxDate={maxDate}
+              componentRef={this._calendar}
             />
           </Callout>
-        ) }
+        )}
       </div>
     );
   }
@@ -292,7 +240,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     this.setState({
       selectedDate: date,
-      formattedDate: formatDate && date ? formatDate(date) : '',
+      formattedDate: formatDate && date ? formatDate(date) : ''
     });
 
     if (onSelectDate) {
@@ -300,13 +248,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
 
     this._calendarDismissed();
-  }
+  };
 
   private _onCalloutPositioned = (): void => {
     if (this._calendar.current) {
       this._calendar.current.focus();
     }
-  }
+  };
 
   private _onTextFieldFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     if (this.props.disableAutoFocus) {
@@ -320,11 +268,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         this._preventFocusOpeningPicker = false;
       }
     }
-  }
+  };
 
   private _onTextFieldBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     this._validateTextInput();
-  }
+  };
 
   private _onTextFieldChanged = (newValue: string): void => {
     if (this.props.allowTextInput) {
@@ -335,11 +283,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       const { isRequired, value, strings } = this.props;
 
       this.setState({
-        errorMessage: (isRequired && !value) ? (strings!.isRequiredErrorMessage || ' ') : undefined,
+        errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined,
         formattedDate: newValue
       });
     }
-  }
+  };
 
   private _onTextFieldKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
@@ -364,7 +312,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       default:
         break;
     }
-  }
+  };
 
   private _onTextFieldClick = (ev: React.MouseEvent<HTMLElement>): void => {
     if (!this.state.isDatePickerShown && !this.props.disabled) {
@@ -376,12 +324,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         });
       }
     }
-  }
+  };
 
   private _onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
     ev.stopPropagation();
     this._onTextFieldClick(ev);
-  }
+  };
 
   private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
@@ -401,7 +349,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
       this._validateTextInput();
     }
-  }
+  };
 
   /**
    * Callback for closing the calendar callout
@@ -413,12 +361,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (this._textField.current) {
       this._textField.current.focus();
     }
-  }
+  };
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
     ev.stopPropagation();
     this._calendarDismissed();
-  }
+  };
 
   private _validateTextInput = (): void => {
     const { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate, minDate, maxDate } = this.props;
@@ -450,7 +398,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
           // Check if date is null, or date is Invalid Date
           if (!date || isNaN(date.getTime())) {
-
             // Reset invalid input field, if formatting is available
             if (formatDate) {
               date = this.state.selectedDate;
@@ -462,7 +409,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             this.setState({
               errorMessage: strings!.invalidInputErrorMessage || ' '
             });
-
           } else {
             // Check against optional date boundaries
             if (this._isDateOutOfBounds(date, minDate, maxDate)) {
@@ -499,9 +445,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         onSelectDate(date);
       }
     }
-  }
+  };
 
   private _isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
-    return ((!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0));
+    return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
   }
 }

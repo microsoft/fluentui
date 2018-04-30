@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { ITheme } from '../../Styling';
 
-export interface ILabel {
-
-}
+export interface ILabel {}
 
 export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   /**
@@ -24,7 +22,7 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
   disabled?: boolean;
 
   /**
- * Theme provided by HOC.
- */
+   * Theme provided by HOC.
+   */
   theme?: ITheme;
 }

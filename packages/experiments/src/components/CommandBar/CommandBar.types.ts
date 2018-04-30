@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { IContextualMenuItem, IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -32,8 +31,8 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   items: ICommandBarItemProps[];
 
   /**
- * Items to render on the right side (or left, in RTL).
- */
+   * Items to render on the right side (or left, in RTL).
+   */
   farItems?: ICommandBarItemProps[];
 
   /**
@@ -47,24 +46,24 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   elipisisAriaLabel?: string;
 
   /**
-  * Icon props to be passed to overflow elipsis
-  */
+   * Icon props to be passed to overflow elipsis
+   */
   elipisisIconProps?: IIconProps;
 
   /**
-  * Menu props to be passed to overflow elipsis
-  */
+   * Menu props to be passed to overflow elipsis
+   */
   overflowMenuProps?: Partial<IContextualMenuProps>;
 
   /**
-  * If endAligned, all icons will be aligned to the far side of the commandbar, and overflow items
-  * will be taking from the starting side
-  */
+   * If endAligned, all icons will be aligned to the far side of the commandbar, and overflow items
+   * will be taking from the starting side
+   */
   endAligned?: boolean;
 
   /**
-  * Call to provide customized styling that will layer on top of the variant rules
-  */
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
   getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
@@ -112,7 +111,6 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
-
   /**
    * Remove text when button is not in the overflow
    * @defaultvalue false
@@ -134,7 +132,6 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * This value is controlled by the component and useful for adjusting onRender function
    */
   renderedInOverflow?: boolean;
-
 }
 
 export interface ICommandBarStyleProps {

@@ -21,10 +21,10 @@ describe('KeytipTree', () => {
     // Create layer
     ReactTestUtils.renderIntoDocument(
       <KeytipLayer
-        id={ layerID }
-        keytipStartSequences={ keytipStartSequences }
-        keytipReturnSequences={ keytipReturnSequences }
-        keytipExitSequences={ keytipExitSequences }
+        id={layerID}
+        keytipStartSequences={keytipStartSequences}
+        keytipReturnSequences={keytipReturnSequences}
+        keytipExitSequences={keytipExitSequences}
       />
     );
   });

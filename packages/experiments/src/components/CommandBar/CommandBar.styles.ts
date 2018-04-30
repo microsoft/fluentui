@@ -1,11 +1,10 @@
 import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 
 export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
-
   const { className, theme, endAligned } = props;
   const { palette } = theme;
 
-  return ({
+  return {
     root: [
       'ms-CommandBar',
       {
@@ -20,7 +19,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
       {
         flexGrow: '1',
         display: 'flex',
-        alignItems: 'stretch',
+        alignItems: 'stretch'
       },
       endAligned && { justifyContent: 'flex-end' }
     ],
@@ -28,8 +27,8 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
       {
         flexShrink: '0',
         display: 'flex',
-        alignItems: 'stretch',
+        alignItems: 'stretch'
       }
     ]
-  });
+  };
 };

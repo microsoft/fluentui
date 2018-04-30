@@ -1,15 +1,9 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
-import {
-  IPersonaSharedProps,
-  PersonaInitialsColor,
-  PersonaSize
-} from '../Persona/index';
+import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../Persona/index';
 
-export interface IFacepile {
-
-}
+export interface IFacepile {}
 
 export interface IFacepileProps extends React.Props<Facepile> {
   /**

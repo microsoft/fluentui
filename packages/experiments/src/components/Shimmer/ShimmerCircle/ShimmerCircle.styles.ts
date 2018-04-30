@@ -1,14 +1,8 @@
-import {
-  IShimmerCircleStyleProps,
-  IShimmerCircleStyles
-} from './ShimmerCircle.types';
+import { IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
 import { IStyleSet, DefaultPalette } from '../../../Styling';
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
-  const {
-    height,
-    borderStyle
-  } = props;
+  const { height, borderStyle } = props;
 
   const styles: IStyleSet = !!borderStyle ? borderStyle : {};
 
@@ -17,7 +11,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
       'ms-ShimmerCircle-root',
       {
         width: `${height}px`,
-        height: `${height}px`,
+        height: `${height}px`
       },
       styles
     ],

@@ -1,10 +1,4 @@
-import {
-  FontSizes,
-  IRawStyle,
-  ITheme,
-  concatStyleSets,
-  HighContrastSelector
-} from '../../Styling';
+import { FontSizes, IRawStyle, ITheme, concatStyleSets, HighContrastSelector } from '../../Styling';
 
 import { IButtonStyles } from '../../Button';
 import { ISpinButtonStyles } from './SpinButton.types';
@@ -30,97 +24,85 @@ const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   };
 });
 
-export const getArrowButtonStyles = memoizeFunction((
-  theme: ITheme,
-  isUpArrow: boolean,
-  customSpecificArrowStyles?: Partial<IButtonStyles>,
-): IButtonStyles => {
+export const getArrowButtonStyles = memoizeFunction(
+  (theme: ITheme, isUpArrow: boolean, customSpecificArrowStyles?: Partial<IButtonStyles>): IButtonStyles => {
+    const { semanticColors } = theme;
 
-  const {
-    semanticColors
-  } = theme;
+    const ArrowButtonTextColor = semanticColors.buttonText;
+    const ArrowButtonTextColorHovered = semanticColors.buttonTextHovered;
+    const ArrowButtonTextColorPressed = semanticColors.buttonTextChecked;
 
-  const ArrowButtonTextColor = semanticColors.buttonText;
-  const ArrowButtonTextColorHovered = semanticColors.buttonTextHovered;
-  const ArrowButtonTextColorPressed = semanticColors.buttonTextChecked;
+    const ArrowButtonBackgroundHovered = semanticColors.buttonBackgroundHovered;
+    const ArrowButtonBackgroundPressed = semanticColors.buttonBackgroundChecked;
 
-  const ArrowButtonBackgroundHovered = semanticColors.buttonBackgroundHovered;
-  const ArrowButtonBackgroundPressed = semanticColors.buttonBackgroundChecked;
-
-  const defaultArrowButtonStyles: IButtonStyles = {
-    root: {
-      outline: 'none',
-      display: 'block',
-      height: '50%',
-      width: '14px',
-      padding: '0',
-      backgroundColor: 'transparent',
-      textAlign: 'center',
-      cursor: 'default',
-      color: ArrowButtonTextColor
-    },
-    rootHovered: {
-      backgroundColor: ArrowButtonBackgroundHovered,
-      color: ArrowButtonTextColorHovered
-    },
-    rootChecked: {
-      backgroundColor: ArrowButtonBackgroundPressed,
-      color: ArrowButtonTextColorPressed,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'Highlight',
-          color: 'HighlightText'
+    const defaultArrowButtonStyles: IButtonStyles = {
+      root: {
+        outline: 'none',
+        display: 'block',
+        height: '50%',
+        width: '14px',
+        padding: '0',
+        backgroundColor: 'transparent',
+        textAlign: 'center',
+        cursor: 'default',
+        color: ArrowButtonTextColor
+      },
+      rootHovered: {
+        backgroundColor: ArrowButtonBackgroundHovered,
+        color: ArrowButtonTextColorHovered
+      },
+      rootChecked: {
+        backgroundColor: ArrowButtonBackgroundPressed,
+        color: ArrowButtonTextColorPressed,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Highlight',
+            color: 'HighlightText'
+          }
         }
-      }
-    },
-    rootPressed: {
-      backgroundColor: ArrowButtonBackgroundPressed,
-      color: ArrowButtonTextColorPressed,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'Highlight',
-          color: 'HighlightText'
+      },
+      rootPressed: {
+        backgroundColor: ArrowButtonBackgroundPressed,
+        color: ArrowButtonTextColorPressed,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Highlight',
+            color: 'HighlightText'
+          }
         }
-      }
-    },
-    rootDisabled: {
-      opacity: 0.5,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'GrayText',
-          opacity: 1,
+      },
+      rootDisabled: {
+        opacity: 0.5,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            opacity: 1
+          }
         }
+      },
+      icon: {
+        fontSize: '6px',
+        marginTop: '0',
+        marginRight: '0',
+        marginBottom: '0',
+        marginLeft: '0'
       }
-    },
-    icon: {
-      fontSize: '6px',
-      marginTop: '0',
-      marginRight: '0',
-      marginBottom: '0',
-      marginLeft: '0'
-    }
-  };
+    };
 
-  // No specific styles needed as of now.
-  const defaultUpArrowButtonStyles: Partial<IButtonStyles> = {
+    // No specific styles needed as of now.
+    const defaultUpArrowButtonStyles: Partial<IButtonStyles> = {};
 
-  };
+    const defaultDownArrowButtonStyles: Partial<IButtonStyles> = {};
 
-  const defaultDownArrowButtonStyles: Partial<IButtonStyles> = {
+    return concatStyleSets(
+      defaultArrowButtonStyles,
+      isUpArrow ? defaultUpArrowButtonStyles : defaultDownArrowButtonStyles,
+      customSpecificArrowStyles
+    ) as IButtonStyles;
+  }
+);
 
-  };
-
-  return concatStyleSets(
-    defaultArrowButtonStyles,
-    isUpArrow ? defaultUpArrowButtonStyles : defaultDownArrowButtonStyles,
-    customSpecificArrowStyles
-  ) as IButtonStyles;
-});
-
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: Partial<ISpinButtonStyles>
-): ISpinButtonStyles => {
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: Partial<ISpinButtonStyles>): ISpinButtonStyles => {
   const { palette, semanticColors } = theme;
 
   const SpinButtonRootBorderColor = semanticColors.inputBorder;
@@ -167,7 +149,7 @@ export const getStyles = memoizeFunction((
     },
     label: {
       pointerEvents: 'none',
-      padding: '2px 0',
+      padding: '2px 0'
     },
     labelDisabled: {
       cursor: 'default',
@@ -185,7 +167,7 @@ export const getStyles = memoizeFunction((
       minWidth: '86px',
       borderWidth: '1px',
       borderStyle: 'solid',
-      borderColor: SpinButtonRootBorderColor,
+      borderColor: SpinButtonRootBorderColor
     },
     spinButtonWrapperTopBottom: {
       width: '100%'
@@ -238,7 +220,7 @@ export const getStyles = memoizeFunction((
         [HighContrastSelector]: {
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
-          color: 'HighlightText',
+          color: 'HighlightText'
         }
       }
     },
@@ -253,7 +235,7 @@ export const getStyles = memoizeFunction((
       padding: '0',
       boxSizing: 'border-box'
     },
-    arrowButtonsContainerDisabled: _getDisabledStyles(theme),
+    arrowButtonsContainerDisabled: _getDisabledStyles(theme)
   };
   return concatStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
 });

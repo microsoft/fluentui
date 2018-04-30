@@ -4,7 +4,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component {
-
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -16,9 +15,9 @@ export class ContextualMenuBasicExample extends React.Component {
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton1'
-          text='Click for ContextualMenu'
-          menuProps={ {
+          id="ContextualMenuButton1"
+          text="Click for ContextualMenu"
+          menuProps={{
             shouldFocusOnMount: true,
             items: [
               {
@@ -63,7 +62,7 @@ export class ContextualMenuBasicExample extends React.Component {
                 onClick: () => console.error('Disabled item should not be clickable.')
               }
             ]
-          } }
+          }}
         />
       </div>
     );

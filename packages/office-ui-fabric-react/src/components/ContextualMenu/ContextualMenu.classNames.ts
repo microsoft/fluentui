@@ -31,16 +31,12 @@ export const getSplitButtonVerticalDividerClassNames = memoizeFunction((theme: I
   return mergeStyleSets(getDividerClassNames(theme), {
     divider: {
       height: 16,
-      width: 1,
+      width: 1
     }
   });
 });
 
-export const getContextualMenuClassNames = memoizeFunction((
-  theme: ITheme,
-  className?: string
-): IContextualMenuClassNames => {
-
+export const getContextualMenuClassNames = memoizeFunction((theme: ITheme, className?: string): IContextualMenuClassNames => {
   const styles = getContextualMenuStyles(theme);
 
   return mergeStyleSets({
@@ -48,163 +44,127 @@ export const getContextualMenuClassNames = memoizeFunction((
       'ms-ContextualMenu-container',
       styles.container,
       className,
-      [{
-        selectors: {
-          ':focus': { outline: 0 }
+      [
+        {
+          selectors: {
+            ':focus': { outline: 0 }
+          }
         }
-      }]
+      ]
     ],
-    root: [
-      'ms-ContextualMenu is-open',
-      styles.root
-    ],
-    list: [
-      'ms-ContextualMenu-list is-open',
-      styles.list
-    ],
-    header: [
-      'ms-ContextualMenu-header',
-      styles.header
-    ],
+    root: ['ms-ContextualMenu is-open', styles.root],
+    list: ['ms-ContextualMenu-list is-open', styles.list],
+    header: ['ms-ContextualMenu-header', styles.header],
     title: styles.title
   });
 });
 
-export const getItemClassNames = memoizeFunction((
-  theme: ITheme,
-  disabled: boolean,
-  expanded: boolean,
-  checked: boolean,
-  isAnchorLink: boolean,
-  knownIcon: boolean,
-  itemClassName?: string,
-  dividerClassName?: string,
-  iconClassName?: string,
-  subMenuClassName?: string,
-): IMenuItemClassNames => {
+export const getItemClassNames = memoizeFunction(
+  (
+    theme: ITheme,
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    isAnchorLink: boolean,
+    knownIcon: boolean,
+    itemClassName?: string,
+    dividerClassName?: string,
+    iconClassName?: string,
+    subMenuClassName?: string
+  ): IMenuItemClassNames => {
+    const styles = getMenuItemStyles(theme);
 
-  const styles = getMenuItemStyles(theme);
-
-  return mergeStyleSets({
-    item: [
-      'ms-ContextualMenu-item',
-      styles.item,
-      itemClassName,
-    ],
-    divider: [
-      'ms-ContextualMenu-divider',
-      styles.divider,
-      dividerClassName,
-    ],
-    root: [
-      'ms-ContextualMenu-link',
-      styles.root,
-      checked && [
-        'is-checked',
-        styles.rootChecked
+    return mergeStyleSets({
+      item: ['ms-ContextualMenu-item', styles.item, itemClassName],
+      divider: ['ms-ContextualMenu-divider', styles.divider, dividerClassName],
+      root: [
+        'ms-ContextualMenu-link',
+        styles.root,
+        checked && ['is-checked', styles.rootChecked],
+        isAnchorLink && styles.anchorLink,
+        expanded && ['is-expanded', styles.rootExpanded],
+        disabled && ['is-disabled', styles.rootDisabled],
+        !disabled &&
+          !expanded && [
+            {
+              selectors: {
+                ':hover': styles.rootHovered,
+                ':active': styles.rootPressed,
+                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+              }
+            }
+          ]
       ],
-      isAnchorLink && styles.anchorLink,
-      expanded && [
-        'is-expanded',
-        styles.rootExpanded
+      splitPrimary: [
+        styles.root,
+        checked && ['is-checked', styles.rootChecked],
+        disabled && ['is-disabled', styles.rootDisabled],
+        !disabled &&
+          !checked && [
+            {
+              selectors: {
+                ':hover': styles.rootHovered,
+                ':active': styles.rootPressed,
+                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+              }
+            }
+          ]
       ],
-      disabled && [
-        'is-disabled',
-        styles.rootDisabled
+      splitMenu: [
+        styles.root,
+        {
+          width: 32
+        },
+        expanded && ['is-expanded', styles.rootExpanded],
+        disabled && ['is-disabled', styles.rootDisabled],
+        !disabled &&
+          !expanded && [
+            {
+              selectors: {
+                ':hover': styles.rootHovered,
+                ':active': styles.rootPressed,
+                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+                '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+              }
+            }
+          ]
       ],
-      !disabled && !expanded && [{
-        selectors: {
-          ':hover': styles.rootHovered,
-          ':active': styles.rootPressed,
-          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
+      linkContent: ['ms-ContextualMenu-linkContent', styles.linkContent],
+      linkContentMenu: [
+        'ms-ContextualMenu-linkContent',
+        styles.linkContent,
+        {
+          justifyContent: 'center'
         }
-      }],
-    ],
-    splitPrimary: [
-      styles.root,
-      checked && [
-        'is-checked',
-        styles.rootChecked
       ],
-      disabled && [
-        'is-disabled',
-        styles.rootDisabled
+      icon: [
+        'ms-ContextualMenu-icon',
+        knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
+        styles.icon,
+        iconClassName,
+        disabled && ['is-disabled', styles.iconDisabled]
       ],
-      !disabled && !checked && [{
-        selectors: {
-          ':hover': styles.rootHovered,
-          ':active': styles.rootPressed,
-          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
-        }
-      }]
-    ],
-    splitMenu: [
-      styles.root,
-      {
-        width: 32
-      },
-      expanded && [
-        'is-expanded',
-        styles.rootExpanded
+      checkmarkIcon: [
+        'ms-ContextualMenu-checkmarkIcon',
+        knownIcon && 'ms-ContextualMenu-checkmarkIcon ' && styles.checkmarkIcon,
+        styles.icon,
+        iconClassName
       ],
-      disabled && [
-        'is-disabled',
-        styles.rootDisabled
-      ],
-      !disabled && !expanded && [{
-        selectors: {
-          ':hover': styles.rootHovered,
-          ':active': styles.rootPressed,
-          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
-        }
-      }]
-    ],
-    linkContent: [
-      'ms-ContextualMenu-linkContent',
-      styles.linkContent
-    ],
-    linkContentMenu: [
-      'ms-ContextualMenu-linkContent',
-      styles.linkContent,
-      {
-        justifyContent: 'center',
-      }
-    ],
-    icon: [
-      'ms-ContextualMenu-icon',
-      knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
-      styles.icon,
-      iconClassName,
-      disabled && [
-        'is-disabled',
-        styles.iconDisabled
+      subMenuIcon: ['ms-ContextualMenu-submenuIcon', styles.subMenuIcon, subMenuClassName],
+      label: ['ms-ContextualMenu-itemText', styles.label],
+      splitContainer: [
+        styles.splitButtonFlexContainer,
+        !disabled &&
+          !checked && [
+            {
+              selectors: {
+                '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused
+              }
+            }
+          ]
       ]
-    ],
-    checkmarkIcon: [
-      'ms-ContextualMenu-checkmarkIcon',
-      knownIcon && 'ms-ContextualMenu-checkmarkIcon ' && styles.checkmarkIcon,
-      styles.icon,
-      iconClassName,
-    ],
-    subMenuIcon: [
-      'ms-ContextualMenu-submenuIcon',
-      styles.subMenuIcon,
-      subMenuClassName,
-    ],
-    label: [
-      'ms-ContextualMenu-itemText',
-      styles.label
-    ],
-    splitContainer: [
-      styles.splitButtonFlexContainer,
-      !disabled && !checked && [{
-        selectors: {
-          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
-        }
-      }]
-    ]
-  });
-});
+    });
+  }
+);

@@ -1,8 +1,4 @@
-import {
-  HighContrastSelector,
-  AnimationVariables,
-  normalize
-} from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
@@ -29,7 +25,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             border: '1px solid WindowText'
           },
           ':hover': {
-            borderColor: palette.neutralDark,
+            borderColor: palette.neutralDark
           },
           ':hover $iconContainer': {
             color: palette.themeDark
@@ -42,7 +38,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.themePrimary,
           selectors: {
             ':hover': {
-              borderColor: palette.themePrimary,
+              borderColor: palette.themePrimary
             },
             [HighContrastSelector]: {
               borderColor: 'Highlight'
@@ -56,7 +52,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.neutralLighter,
           backgroundColor: palette.neutralLighter,
           pointerEvents: 'none',
-          cursor: 'default',
+          cursor: 'default'
         }
       ],
       underlined && [
@@ -67,9 +63,10 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           padding: '1px 0 1px 8px'
         }
       ],
-      underlined && disabled && {
-        backgroundColor: 'transparent'
-      },
+      underlined &&
+        disabled && {
+          backgroundColor: 'transparent'
+        },
       hasInput && 'can-clear',
       className
     ],
@@ -116,7 +113,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary,
+        color: palette.themePrimary
       }
     ],
     field: [

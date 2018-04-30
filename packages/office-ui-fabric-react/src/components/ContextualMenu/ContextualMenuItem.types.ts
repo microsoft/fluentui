@@ -1,9 +1,7 @@
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 
-export interface IContextualMenuItemProps
-  extends React.HTMLAttributes<IContextualMenuItemProps> {
-
+export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextualMenuItemProps> {
   /**
    * The item to display
    */

@@ -52,7 +52,6 @@ export interface IScrollablePaneStyleProps {
   className?: string;
 
   // Insert ScrollablePane style props below
-
 }
 
 export interface IScrollablePaneStyles {

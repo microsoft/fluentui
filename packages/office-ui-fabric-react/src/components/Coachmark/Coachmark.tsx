@@ -99,15 +99,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public render(): JSX.Element {
-    const {
-      children,
-      beakWidth,
-      beakHeight,
-      target,
-      width,
-      height,
-      color
-    } = this.props;
+    const { children, beakWidth, beakHeight, target, width, height, color } = this.props;
 
     const classNames = getClassNames(getStyles, {
       collapsed: this.state.collapsed,
@@ -121,38 +113,19 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     });
 
     return (
-      <PositioningContainer
-        target={ target }
-        offsetFromTarget={ beakHeight }
-        componentRef={ this._positioningContainer }
-      >
-        <div className={ classNames.root }>
-          <div className={ classNames.pulsingBeacon } />
-          <div
-            className={ classNames.translateAnimationContainer }
-            ref={ this._translateAnimationContainer }
-          >
-            <div className={ classNames.scaleAnimationLayer }>
-              <div className={ classNames.rotateAnimationLayer }>
-                {
-                  this._positioningContainer.current && <Beak
-                    width={ beakWidth }
-                    height={ beakHeight }
-                    left={ this.state.beakLeft }
-                    top={ this.state.beakTop }
-                  />
-                }
+      <PositioningContainer target={target} offsetFromTarget={beakHeight} componentRef={this._positioningContainer}>
+        <div className={classNames.root}>
+          <div className={classNames.pulsingBeacon} />
+          <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
+            <div className={classNames.scaleAnimationLayer}>
+              <div className={classNames.rotateAnimationLayer}>
+                {this._positioningContainer.current && (
+                  <Beak width={beakWidth} height={beakHeight} left={this.state.beakLeft} top={this.state.beakTop} />
+                )}
                 <FocusZone>
-                  <div
-                    className={ classNames.entityHost }
-                    data-is-focusable={ true }
-                    onFocus={ this._onFocusHandler }
-                  >
-                    <div
-                      className={ classNames.entityInnerHost }
-                      ref={ this._entityInnerHostElement }
-                    >
-                      { children }
+                  <div className={classNames.entityHost} data-is-focusable={true} onFocus={this._onFocusHandler}>
+                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
+                      {children}
                     </div>
                   </div>
                 </FocusZone>
@@ -172,11 +145,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentDidMount(): void {
-    this._async.requestAnimationFrame(((): void => {
-      if (this._entityInnerHostElement.current && (this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
-
+    this._async.requestAnimationFrame((): void => {
+      if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
         // @TODO Eventually we need to add the various directions
-        const beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
+        const beakLeft = this.props.width! / 2 - this.props.beakWidth! / 2;
         const beakTop = 0;
 
         this.setState({
@@ -196,30 +168,32 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       this._async.setTimeout(() => {
         this._addProximityHandler(100);
       }, this.props.delayBeforeMouseOpen!);
-    }));
+    });
   }
 
   private _onFocusHandler = (): void => {
     this._openCoachmark();
-  }
+  };
 
   private _openCoachmark = (): void => {
     this.setState({
       collapsed: false
     });
 
-    this._translateAnimationContainer.current && this._translateAnimationContainer.current.addEventListener('animationstart', (): void => {
-      if (this.props.onAnimationOpenStart) {
-        this.props.onAnimationOpenStart();
-      }
-    });
+    this._translateAnimationContainer.current &&
+      this._translateAnimationContainer.current.addEventListener('animationstart', (): void => {
+        if (this.props.onAnimationOpenStart) {
+          this.props.onAnimationOpenStart();
+        }
+      });
 
-    this._translateAnimationContainer.current && this._translateAnimationContainer.current.addEventListener('animationend', (): void => {
-      if (this.props.onAnimationOpenEnd) {
-        this.props.onAnimationOpenEnd();
-      }
-    });
-  }
+    this._translateAnimationContainer.current &&
+      this._translateAnimationContainer.current.addEventListener('animationend', (): void => {
+        if (this.props.onAnimationOpenEnd) {
+          this.props.onAnimationOpenEnd();
+        }
+      });
+  };
 
   private _addProximityHandler(mouseProximityOffset: number = 0): void {
     /**
@@ -251,11 +225,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           clearInterval(value);
         });
 
-        timeoutIds.push(this._async.setTimeout((): void => {
-          if (this._entityInnerHostElement.current) {
-            targetElementRect = this._entityInnerHostElement.current.getBoundingClientRect();
-          }
-        }, 100));
+        timeoutIds.push(
+          this._async.setTimeout((): void => {
+            if (this._entityInnerHostElement.current) {
+              targetElementRect = this._entityInnerHostElement.current.getBoundingClientRect();
+            }
+          }, 100)
+        );
       });
     }, 10);
 
@@ -283,9 +259,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _isInsideElement(mouseX: number, mouseY: number, elementRect: ClientRect, mouseProximityOffset: number = 0): boolean {
-    return mouseX > (elementRect.left - mouseProximityOffset) &&
-      mouseX < ((elementRect.left + elementRect.width) + mouseProximityOffset) &&
-      mouseY > (elementRect.top - mouseProximityOffset) &&
-      mouseY < ((elementRect.top + elementRect.height) + mouseProximityOffset);
+    return (
+      mouseX > elementRect.left - mouseProximityOffset &&
+      mouseX < elementRect.left + elementRect.width + mouseProximityOffset &&
+      mouseY > elementRect.top - mouseProximityOffset &&
+      mouseY < elementRect.top + elementRect.height + mouseProximityOffset
+    );
   }
 }

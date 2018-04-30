@@ -7,22 +7,16 @@ import * as renderer from 'react-test-renderer';
 import { Label } from './index';
 
 describe('Label', () => {
-
   it('renders a label', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <Label>test</Label>
-    );
+    const component = ReactTestUtils.renderIntoDocument(<Label>test</Label>);
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
 
     expect(renderedDOM.textContent).toEqual('test');
   });
 
   it('renders label correctly', () => {
-    const component = renderer.create(
-      <Label>test</Label>
-    );
+    const component = renderer.create(<Label>test</Label>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-
 });

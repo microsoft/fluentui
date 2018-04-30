@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
@@ -40,128 +34,79 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='TextField'
-        componentName='TextFieldExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField'
+        title="TextField"
+        componentName="TextFieldExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField"
         exampleCards={
           <div>
-            <ExampleCard
-              title='Default TextField with Label'
-              code={ TextFieldBasicExampleCode }
-            >
+            <ExampleCard title="Default TextField with Label" code={TextFieldBasicExampleCode}>
               <TextFieldBasicExample />
             </ExampleCard>
-            <ExampleCard
-              title='TextField with Placeholder'
-              code={ TextFieldPlaceholderExampleCode }
-            >
+            <ExampleCard title="TextField with Placeholder" code={TextFieldPlaceholderExampleCode}>
               <TextFieldPlaceholderExample />
             </ExampleCard>
-            <ExampleCard
-              title='Multiline TextField'
-              code={ TextFieldMultilineExampleCode }
-            >
+            <ExampleCard title="Multiline TextField" code={TextFieldMultilineExampleCode}>
               <TextFieldMultilineExample />
             </ExampleCard>
-            <ExampleCard
-              title='Underlined TextField'
-              code={ TextFieldUnderlinedExampleCode }
-            >
+            <ExampleCard title="Underlined TextField" code={TextFieldUnderlinedExampleCode}>
               <TextFieldUnderlinedExample />
             </ExampleCard>
-            <ExampleCard
-              title='Borderless TextField'
-              code={ TextFieldBorderlessExampleCode }
-            >
+            <ExampleCard title="Borderless TextField" code={TextFieldBorderlessExampleCode}>
               <TextFieldBorderlessExample />
             </ExampleCard>
-            <ExampleCard
-              title='TextField with browser AutoComplete'
-              code={ TextFieldAutoCompleteExampleCode }
-            >
+            <ExampleCard title="TextField with browser AutoComplete" code={TextFieldAutoCompleteExampleCode}>
               <TextFieldAutoCompleteExample />
             </ExampleCard>
           </div>
         }
         implementationExampleCards={
           <div>
-            <ExampleCard
-              title='Textfield with a prefix'
-              code={ TextFieldPrefixExampleCode }
-            >
+            <ExampleCard title="Textfield with a prefix" code={TextFieldPrefixExampleCode}>
               <TextFieldPrefixExample />
             </ExampleCard>
-            <ExampleCard
-              title='Textfield with a suffix'
-              code={ TextFieldSuffixExampleCode }
-            >
+            <ExampleCard title="Textfield with a suffix" code={TextFieldSuffixExampleCode}>
               <TextFieldSuffixExample />
             </ExampleCard>
-            <ExampleCard
-              title='Textfield with a prefix and a suffix'
-              code={ TextFieldPrefixAndSuffixExampleCode }
-            >
+            <ExampleCard title="Textfield with a prefix and a suffix" code={TextFieldPrefixAndSuffixExampleCode}>
               <TextFieldPrefixAndSuffixExample />
             </ExampleCard>
-            <ExampleCard
-              title='TextField with an icon'
-              code={ TextFieldIconExampleCode }
-            >
+            <ExampleCard title="TextField with an icon" code={TextFieldIconExampleCode}>
               <TextFieldIconExample />
             </ExampleCard>
-            <ExampleCard
-              title='TextField with custom Label'
-              code={ TextFieldCustomRenderExampleCode }
-            >
+            <ExampleCard title="TextField with custom Label" code={TextFieldCustomRenderExampleCode}>
               <TextFieldCustomRenderExample />
             </ExampleCard>
-            <ExampleCard
-              title='TextField with custom description'
-              code={ TextFieldOnRenderDescriptionExampleCode }
-            >
+            <ExampleCard title="TextField with custom description" code={TextFieldOnRenderDescriptionExampleCode}>
               <TextFieldOnRenderDescriptionExample />
             </ExampleCard>
-            <ExampleCard
-              title='TextField error message variations'
-              code={ TextFieldErrorMessageExampleCode }
-            >
+            <ExampleCard title="TextField error message variations" code={TextFieldErrorMessageExampleCode}>
               <TextFieldErrorMessageExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
-        nativePropsElement={ ['input', 'textarea'] }
+        allowNativeProps={true}
+        nativePropsElement={['input', 'textarea']}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md') }
-          </PageMarkdown>
+          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md')}</PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...TextFieldStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...TextFieldStatus} />}
       />
     );
   }

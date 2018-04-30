@@ -1,34 +1,24 @@
-
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@uifabric/example-app-base';
 
 import { FileTypeIconBasicExample } from './examples/FileTypeIcon.Basic.Example';
-const FileTypeIconBasicExampleCode =
-  require('!raw-loader!@uifabric/experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx') as string;
+const FileTypeIconBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx') as string;
 
 export class FileTypeIconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='FileTypeIcon'
-        componentName='FileTypeIcon'
+        title="FileTypeIcon"
+        componentName="FileTypeIcon"
         exampleCards={
           <div>
-            <ExampleCard title='File Type Icon' isOptIn={ true } code={ FileTypeIconBasicExampleCode }>
+            <ExampleCard title="File Type Icon" isOptIn={true} code={FileTypeIconBasicExampleCode}>
               <FileTypeIconBasicExample />
             </ExampleCard>
           </div>
         }
-        overview={
-          <div />
-        }
-        bestPractices={
-          <div />
-        }
+        overview={<div />}
+        bestPractices={<div />}
         dos={
           <div>
             <ul>
@@ -44,7 +34,7 @@ export class FileTypeIconPage extends React.Component<IComponentDemoPageProps, {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }

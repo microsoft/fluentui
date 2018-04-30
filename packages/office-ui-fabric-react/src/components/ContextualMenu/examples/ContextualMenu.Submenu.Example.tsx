@@ -8,7 +8,6 @@ export interface IContextualMenuSubmenuExampleState {
 }
 
 export class ContextualMenuSubmenuExample extends React.Component<any, IContextualMenuSubmenuExampleState> {
-
   constructor(props: any) {
     super(props);
 
@@ -20,11 +19,11 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
   public render(): JSX.Element {
     return (
       <div>
-        <TextField value={ String(this.state.hoverDelay) } onChanged={ this._onHoverDelayChanged } />
+        <TextField value={String(this.state.hoverDelay)} onChanged={this._onHoverDelayChanged} />
         <DefaultButton
-          id='ContextualMenuButton2'
-          text='Click for ContextualMenu'
-          menuProps={ {
+          id="ContextualMenuButton2"
+          text="Click for ContextualMenu"
+          menuProps={{
             shouldFocusOnMount: true,
             subMenuHoverDelay: this.state.hoverDelay,
             items: [
@@ -40,9 +39,9 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                     {
                       key: 'calendarEvent',
                       name: 'Calendar event',
-                      title: 'Create a calendar event',
+                      title: 'Create a calendar event'
                     }
-                  ],
+                  ]
                 },
                 href: 'https://bing.com',
                 name: 'New'
@@ -53,11 +52,11 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                   items: [
                     {
                       key: 'sharetotwitter',
-                      name: 'Share to Twitter',
+                      name: 'Share to Twitter'
                     },
                     {
                       key: 'sharetofacebook',
-                      name: 'Share to Facebook',
+                      name: 'Share to Facebook'
                     },
                     {
                       key: 'sharetoemail',
@@ -67,17 +66,17 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                           {
                             key: 'sharetooutlook_1',
                             name: 'Share to Outlook',
-                            title: 'Share to Outlook',
+                            title: 'Share to Outlook'
                           },
                           {
                             key: 'sharetogmail_1',
                             name: 'Share to Gmail',
-                            title: 'Share to Gmail',
+                            title: 'Share to Gmail'
                           }
-                        ],
-                      },
-                    },
-                  ],
+                        ]
+                      }
+                    }
+                  ]
                 },
                 name: 'Share'
               },
@@ -89,11 +88,11 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                   items: [
                     {
                       key: 'sharetotwittersplit',
-                      name: 'Share to Twitter',
+                      name: 'Share to Twitter'
                     },
                     {
                       key: 'sharetofacebooksplit',
-                      name: 'Share to Facebook',
+                      name: 'Share to Facebook'
                     },
                     {
                       key: 'sharetoemailsplit',
@@ -103,23 +102,22 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                           {
                             key: 'sharetooutlooksplit_1',
                             name: 'Share to Outlook',
-                            title: 'Share to Outlook',
+                            title: 'Share to Outlook'
                           },
                           {
                             key: 'sharetogmailsplit_1',
                             name: 'Share to Gmail',
-                            title: 'Share to Gmail',
+                            title: 'Share to Gmail'
                           }
-                        ],
-                      },
-                    },
-                  ],
+                        ]
+                      }
+                    }
+                  ]
                 },
                 name: 'Share w/ Split'
               }
             ]
-          }
-          }
+          }}
         />
       </div>
     );
@@ -129,5 +127,5 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
     this.setState({
       hoverDelay: +newValue
     });
-  }
+  };
 }

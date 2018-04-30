@@ -3,10 +3,12 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './Dialog.Basic.Example.scss';
 
-export class DialogBasicExample extends React.Component<{}, {
-  hideDialog: boolean
-}> {
-
+export class DialogBasicExample extends React.Component<
+  {},
+  {
+    hideDialog: boolean;
+  }
+> {
   constructor(props: {}) {
     super(props);
 
@@ -18,33 +20,33 @@ export class DialogBasicExample extends React.Component<{}, {
   public render() {
     return (
       <div>
-        <DefaultButton
-          description='Opens the Sample Dialog'
-          onClick={ this._showDialog }
-          text='Open Dialog'
-        />
-        <label id='myLabelId' className='screenReaderOnly'>My sample Label</label>
-        <label id='mySubTextId' className='screenReaderOnly'>My Sample description</label>
+        <DefaultButton description="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
+        <label id="myLabelId" className="screenReaderOnly">
+          My sample Label
+        </label>
+        <label id="mySubTextId" className="screenReaderOnly">
+          My Sample description
+        </label>
 
         <Dialog
-          hidden={ this.state.hideDialog }
-          onDismiss={ this._closeDialog }
-          dialogContentProps={ {
+          hidden={this.state.hideDialog}
+          onDismiss={this._closeDialog}
+          dialogContentProps={{
             type: DialogType.normal,
             title: 'All emails together',
             subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          } }
-          modalProps={ {
+          }}
+          modalProps={{
             titleAriaId: 'myLabelId',
             subtitleAriaId: 'mySubTextId',
             isBlocking: false,
             containerClassName: 'ms-dialogMainOverride'
-          } }
+          }}
         >
-          { null /** You can also include null values as the result of conditionals */ }
+          {null /** You can also include null values as the result of conditionals */}
           <DialogFooter>
-            <PrimaryButton onClick={ this._closeDialog } text='Save' />
-            <DefaultButton onClick={ this._closeDialog } text='Cancel' />
+            <PrimaryButton onClick={this._closeDialog} text="Save" />
+            <DefaultButton onClick={this._closeDialog} text="Cancel" />
           </DialogFooter>
         </Dialog>
       </div>
@@ -53,9 +55,9 @@ export class DialogBasicExample extends React.Component<{}, {
 
   private _showDialog = (): void => {
     this.setState({ hideDialog: false });
-  }
+  };
 
   private _closeDialog = (): void => {
     this.setState({ hideDialog: true });
-  }
+  };
 }

@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, IStyleSet } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
-export interface IShimmerCircle {
-
-}
+export interface IShimmerCircle {}
 
 /**
  * ShimmerCircle component props.

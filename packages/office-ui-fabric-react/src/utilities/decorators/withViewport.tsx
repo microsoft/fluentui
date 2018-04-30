@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import {
-  findScrollableParent,
-  getRect,
-  createRef
-} from '../../Utilities';
+import { findScrollableParent, getRect, createRef } from '../../Utilities';
 
 export interface IViewport {
   width: number;
@@ -22,8 +18,9 @@ export interface IWithViewportProps {
 const RESIZE_DELAY = 500;
 const MAX_RESIZE_ATTEMPTS = 3;
 
-export function withViewport<TProps extends { viewport?: IViewport }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
-
+export function withViewport<TProps extends { viewport?: IViewport }, TState>(
+  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
+): any {
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
     private _root = createRef<HTMLDivElement>();
     private _resizeAttempts: number;
@@ -41,17 +38,12 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
     }
 
     public componentDidMount(): void {
-      this._onAsyncResize = this._async.debounce(
-        this._onAsyncResize,
-        RESIZE_DELAY,
-        {
-          leading: false
-        });
+      this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
+        leading: false
+      });
 
       this._events.on(window, 'resize', this._onAsyncResize);
-      const {
-        skipViewportMeasures
-      } = this.props as IWithViewportProps;
+      const { skipViewportMeasures } = this.props as IWithViewportProps;
       if (!skipViewportMeasures) {
         this._updateViewport();
       }
@@ -63,16 +55,12 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
 
     public render(): JSX.Element {
       const { viewport } = this.state;
-      const {
-        skipViewportMeasures
-      } = this.props as IWithViewportProps;
+      const { skipViewportMeasures } = this.props as IWithViewportProps;
       const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
-        <div className='ms-Viewport' ref={ this._root } style={ { minWidth: 1, minHeight: 1 } }>
-          { isViewportVisible && (
-            <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props as any } />
-          ) }
+        <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
+          {isViewportVisible && <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />}
         </div>
       );
     }
@@ -98,22 +86,25 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
         }
       };
 
-      const isSizeChanged = (
-        (clientRect && clientRect.width) !== viewport!.width ||
-        (scrollRect && scrollRect.height) !== viewport!.height);
+      const isSizeChanged = (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
 
       if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;
-        this.setState({
-          viewport: {
-            width: clientRect.width,
-            height: scrollRect.height
+        this.setState(
+          {
+            viewport: {
+              width: clientRect.width,
+              height: scrollRect.height
+            }
+          },
+          () => {
+            this._updateViewport(withForceUpdate);
           }
-        }, () => { this._updateViewport(withForceUpdate); });
+        );
       } else {
         this._resizeAttempts = 0;
         updateComponent();
       }
-    }
+    };
   };
 }

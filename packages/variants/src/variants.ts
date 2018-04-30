@@ -1,20 +1,16 @@
-import {
-  IPalette,
-  ISemanticColors,
-  ITheme,
-  IPartialTheme
-} from '@uifabric/styling/lib/index';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '@uifabric/styling/lib/index';
 import { createTheme } from '@uifabric/styling/lib/index';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
   partialPalette: Partial<IPalette>,
-  partialSemantic: Partial<ISemanticColors>): ITheme {
+  partialSemantic: Partial<ISemanticColors>
+): ITheme {
   return createTheme({
     ...originalTheme,
     ...{
       palette: { ...originalTheme.palette, ...partialPalette },
-      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic },
+      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
     }
   });
 }
@@ -121,7 +117,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     inputBackground: p.themeLighter,
     // inputBackgroundChecked: p.themePrimary,
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.themeLighterAlt,
+    inputForegroundChecked: p.themeLighterAlt
     // inputFocusBorderAlt: p.themePrimary,
   };
 
@@ -187,7 +183,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     inputBackground: p.themeDark,
     inputBackgroundChecked: p.white,
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.themeDark,
+    inputForegroundChecked: p.themeDark
     // inputFocusBorderAlt: p.themePrimary,
   };
 

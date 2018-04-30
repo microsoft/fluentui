@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  css
-} from 'office-ui-fabric-react/lib/Utilities';
-import {
-  FocusZone,
-  FocusZoneDirection
-} from 'office-ui-fabric-react/lib/FocusZone';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -38,29 +33,21 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     const { items } = this.props;
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
+      <FocusZone direction={FocusZoneDirection.vertical}>
         <div>
-          <DefaultButton onClick={ this._scrollRelative(-10) }>-10</DefaultButton>
-          <DefaultButton onClick={ this._scrollRelative(-1) }>-1</DefaultButton>
-          <DefaultButton onClick={ this._scrollRelative(1) }>+1</DefaultButton>
-          <DefaultButton onClick={ this._scrollRelative(10) }>+10</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(-10)}>-10</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(-1)}>-1</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(1)}>+1</DefaultButton>
+          <DefaultButton onClick={this._scrollRelative(10)}>+10</DefaultButton>
         </div>
 
         <div>
           Scroll item index:
-          <TextField
-            value={ this.state.selectedIndex.toString(10) }
-            onChanged={ this._onChangeText }
-          />
+          <TextField value={this.state.selectedIndex.toString(10)} onChanged={this._onChangeText} />
         </div>
 
-        <div className='ms-ListScrollingExample-container' data-is-scrollable={ true }>
-          <List
-            ref={ this._resolveList }
-            items={ items }
-            getPageHeight={ this._getPageHeight }
-            onRenderCell={ this._onRenderCell }
-          />
+        <div className="ms-ListScrollingExample-container" data-is-scrollable={true}>
+          <List ref={this._resolveList} items={items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
     );
@@ -78,19 +65,19 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
   private _onChangeText = (value: any): void => {
     this._scroll(parseInt(value, 10) || 0);
-  }
+  };
 
   private _onRenderCell(item: any, index: number): JSX.Element {
     return (
-      <div className='ms-ListScrollingExample-itemCell' data-is-focusable={ true }>
+      <div className="ms-ListScrollingExample-itemCell" data-is-focusable={true}>
         <div
-          className={ css(
+          className={css(
             'ms-ListScrollingExample-itemContent',
-            (index % 2 === 0) && 'ms-ListScrollingExample-itemContent-even',
-            (index % 2 === 1) && 'ms-ListScrollingExample-itemContent-odd'
-          ) }
+            index % 2 === 0 && 'ms-ListScrollingExample-itemContent-even',
+            index % 2 === 1 && 'ms-ListScrollingExample-itemContent-odd'
+          )}
         >
-          { index } &nbsp; { item.name }
+          {index} &nbsp; {item.name}
         </div>
       </div>
     );
@@ -105,14 +92,17 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   private _scroll(index: number) {
     const updatedSelectedIndex = Math.min(Math.max(index, 0), this.props.items.length - 1);
 
-    this.setState({
-      selectedIndex: updatedSelectedIndex
-    }, () => {
-      this._list.scrollToIndex(updatedSelectedIndex, (idx) => idx % 2 === 0 ? evenItemHeight : oddItemHeight);
-    });
+    this.setState(
+      {
+        selectedIndex: updatedSelectedIndex
+      },
+      () => {
+        this._list.scrollToIndex(updatedSelectedIndex, idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight));
+      }
+    );
   }
 
   private _resolveList = (list: List): void => {
     this._list = list;
-  }
+  };
 }

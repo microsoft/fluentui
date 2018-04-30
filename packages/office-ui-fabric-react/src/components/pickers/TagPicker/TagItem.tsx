@@ -10,20 +10,19 @@ const styles: any = stylesImport;
 
 export const TagItem = (props: IPickerItemProps<ITag>) => (
   <div
-    className={ css('ms-TagItem',
-      styles.root,
-      { 'is-selected': props.selected } as IDictionary,
-      props.selected && styles.isSelected) }
-    role={ 'listitem' }
-    key={ props.index }
-    data-selection-index={ props.index }
-    data-is-focusable={ !props.disabled && true }
+    className={css('ms-TagItem', styles.root, { 'is-selected': props.selected } as IDictionary, props.selected && styles.isSelected)}
+    role={'listitem'}
+    key={props.index}
+    data-selection-index={props.index}
+    data-is-focusable={!props.disabled && true}
   >
-    <span className={ css('ms-TagItem-text', styles.tagItemText) } aria-label={ props.children as string }>{ props.children }</span>
-    { !props.disabled &&
-      <span className={ css('ms-TagItem-close', styles.tagItemClose) } onClick={ props.onRemoveItem }>
-        <Icon iconName='Cancel' />
+    <span className={css('ms-TagItem-text', styles.tagItemText)} aria-label={props.children as string}>
+      {props.children}
+    </span>
+    {!props.disabled && (
+      <span className={css('ms-TagItem-close', styles.tagItemClose)} onClick={props.onRemoveItem}>
+        <Icon iconName="Cancel" />
       </span>
-    }
+    )}
   </div>
 );

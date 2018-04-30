@@ -1,9 +1,5 @@
-import {
-  mergeStyleSets
-} from '../../Styling';
-import {
-  memoizeFunction
-} from '../../Utilities';
+import { mergeStyleSets } from '../../Styling';
+import { memoizeFunction } from '../../Utilities';
 import { IIconStyles } from './Icon.types';
 
 export interface IIconClassNames {
@@ -12,10 +8,7 @@ export interface IIconClassNames {
   imageContainer?: string;
 }
 
-export const getClassNames = memoizeFunction((
-  customStyles?: IIconStyles
-): IIconClassNames => {
-
+export const getClassNames = memoizeFunction((customStyles?: IIconStyles): IIconClassNames => {
   return mergeStyleSets(
     {
       root: {

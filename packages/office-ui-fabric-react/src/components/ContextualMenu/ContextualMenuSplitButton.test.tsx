@@ -15,13 +15,7 @@ describe('ContextualMenuSplitButton', () => {
       menuItem = { key: '123' };
       menuClassNames = getMenuItemClassNames();
       wrapper = shallow(
-        <ContextualMenuSplitButton
-          item={ menuItem }
-          classNames={ menuClassNames }
-          index={ 0 }
-          focusableElementIndex={ 0 }
-          totalItemCount={ 1 }
-        />
+        <ContextualMenuSplitButton item={menuItem} classNames={menuClassNames} index={0} focusableElementIndex={0} totalItemCount={1} />
       );
     });
 
@@ -44,6 +38,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu',
+    linkContentMenu: 'linkContentMenu'
   };
 }

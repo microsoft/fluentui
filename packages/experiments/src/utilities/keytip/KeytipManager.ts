@@ -1,14 +1,8 @@
 import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
-import {
-  IKeySequence,
-  convertSequencesToKeytipID,
-} from '../../utilities/keysequence/IKeySequence';
-import {
-  transitionKeysContain,
-  IKeytipTransitionKey
-} from '../../utilities/keysequence/IKeytipTransitionKey';
+import { IKeySequence, convertSequencesToKeytipID } from '../../utilities/keysequence/IKeySequence';
+import { transitionKeysContain, IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { constructKeytipTargetFromId } from '../../utilities/keytip/KeytipUtils';
 
 export class KeytipManager {
@@ -223,7 +217,9 @@ export class KeytipManager {
       if (partialNodes.length > 0) {
         // We found nodes that partially match the sequence, so we show only those.
         this.hideKeytips();
-        const ids = partialNodes.map((partialNode: IKeytipTreeNode) => { return partialNode.id; });
+        const ids = partialNodes.map((partialNode: IKeytipTreeNode) => {
+          return partialNode.id;
+        });
         this.showKeytips(ids);
         // Save currentSequence
         this.currentSequence = currentSequence;

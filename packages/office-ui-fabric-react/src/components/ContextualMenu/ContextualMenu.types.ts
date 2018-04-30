@@ -6,11 +6,7 @@ import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import {
-  IPoint,
-  IRectangle,
-  IRenderFunction
-} from '../../Utilities';
+import { IPoint, IRectangle, IRenderFunction } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -24,9 +20,7 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
-export interface IContextualMenu {
-
-}
+export interface IContextualMenu {}
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWithResponsiveModeState {
   /**
@@ -224,16 +218,14 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
-  */
+   */
   subMenuHoverDelay?: number;
 
   /**
    * Method to override the render of the individual menu items
    * @default ContextualMenuItem
    */
-  contextualMenuItemAs?:
-  React.ComponentClass<IContextualMenuItemProps> |
-  React.StatelessComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -375,11 +367,12 @@ export interface IContextualMenuItem {
   subMenuProps?: IContextualMenuProps;
 
   /**
-  * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
-  * defined in ContextualMenu.classnames.
-  * @default getItemClassNames
-  */
-  getItemClassNames?: (theme: ITheme,
+   * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
+   * defined in ContextualMenu.classnames.
+   * @default getItemClassNames
+   */
+  getItemClassNames?: (
+    theme: ITheme,
     disabled: boolean,
     expanded: boolean,
     checked: boolean,
@@ -388,12 +381,13 @@ export interface IContextualMenuItem {
     itemClassName?: string,
     dividerClassName?: string,
     iconClassName?: string,
-    subMenuClassName?: string) => IMenuItemClassNames;
+    subMenuClassName?: string
+  ) => IMenuItemClassNames;
 
   /**
-  * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
-  * @default getSplitButtonVerticalDividerClassNames
-  */
+   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
+   * @default getSplitButtonVerticalDividerClassNames
+   */
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**
@@ -465,11 +459,9 @@ export interface IContextualMenuItem {
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
   inactive?: boolean;
-
 }
 
 export interface IContextualMenuSection extends React.Props<ContextualMenu> {
-
   /**
    * The items to include inside the section.
    */
@@ -523,8 +515,8 @@ export interface IMenuItemStyles extends IButtonStyles {
   subMenuIcon: IStyle;
 
   /**
-  * Styles for a divider item of a ConextualMenu.
-  */
+   * Styles for a divider item of a ConextualMenu.
+   */
   divider: IStyle;
 
   /**
@@ -535,7 +527,6 @@ export interface IMenuItemStyles extends IButtonStyles {
 }
 
 export interface IContextualMenuStyles {
-
   /**
    * Style override for the contextual menu title.
    */

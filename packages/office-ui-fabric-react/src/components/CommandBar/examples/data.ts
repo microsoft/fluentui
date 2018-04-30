@@ -18,8 +18,8 @@ export const items = [
           name: 'Calendar event',
           icon: 'Calendar'
         }
-      ],
-    },
+      ]
+    }
   },
   {
     key: 'upload',
@@ -32,18 +32,20 @@ export const items = [
     key: 'share',
     name: 'Share',
     icon: 'Share',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'download',
     name: 'Download',
-    icon: 'Download',
+    icon: 'Download'
   },
   {
     key: 'link',
     name: 'Link',
     icon: 'WindowsLogo',
-    href: 'https://microsoft.com',
+    href: 'https://microsoft.com'
   }
 ];
 
@@ -51,17 +53,23 @@ export const textOnlyItems = [
   {
     key: 'upload',
     name: 'Upload',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'share',
     name: 'Share',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'download',
     name: 'Download',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   }
 ];
 
@@ -70,43 +78,57 @@ export const iconOnlyItems = [
     key: 'upload',
     name: '',
     icon: 'Upload',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'share',
     name: '',
     icon: 'Share',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'download',
     name: '',
     icon: 'Download',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'move',
     name: '',
     icon: 'MoveToFolder',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'copy',
     name: '',
     icon: 'Copy',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'rename',
     name: '',
     icon: 'Edit',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'disabled',
     icon: 'Cancel',
     disabled: true,
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   }
 ];
 
@@ -133,18 +155,24 @@ export const farItems = [
     key: 'sort',
     name: 'Sort',
     icon: 'SortLines',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'tile',
     name: 'Grid view',
     icon: 'Tiles',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'info',
     name: 'Info',
     icon: 'Info',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   }
 ];

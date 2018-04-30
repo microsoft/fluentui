@@ -391,7 +391,6 @@ export const AppDefinition: IAppDefinition = {
       url: 'http://www.github.com/officedev'
     }
   ]
-
 };
 
-export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;
+export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;

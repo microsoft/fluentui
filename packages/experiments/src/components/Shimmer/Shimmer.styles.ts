@@ -2,22 +2,12 @@ import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { keyframes, DefaultPalette } from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
-  const {
-    width,
-    rowHeight,
-    isDataLoaded,
-    isBaseStyle,
-    widthInPercentage,
-    widthInPixel
-  } = props;
+  const { width, rowHeight, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel } = props;
 
   const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
 
   // TODO reduce the logic after the deprecated value will be removed.
-  const ACTUAL_WIDTH =
-    width ? width + '%' :
-      widthInPercentage ? widthInPercentage + '%' :
-        widthInPixel ? widthInPixel + 'px' : '100%';
+  const ACTUAL_WIDTH = width ? width + '%' : widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
   const shimmerAnimation: string = keyframes({
     '0%': {

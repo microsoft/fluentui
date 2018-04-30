@@ -1,20 +1,10 @@
 ﻿/* tslint:disable */
 import * as React from 'react';
 import { Nav } from './Nav';
-import {
-  INavProps,
-  INavState,
-  INavStyleProps,
-  INavStyles
-} from "./Nav.types";
+import { INavProps, INavState, INavStyleProps, INavStyles } from './Nav.types';
 import { SlimNav } from './SlimNav';
-import {
-  getStyles
-} from './Nav.styles';
-import {
-  styled,
-  classNamesFunction
-} from 'office-ui-fabric-react/lib/Utilities';
+import { getStyles } from './Nav.styles';
+import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
@@ -38,23 +28,18 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     const classNames = getClassNames(getStyles!, { isCollapsed });
 
     return (
-      <div className={ classNames.root }>
-        {
-          this._renderExpandCollapseNavItem()
-        }
-        {
-          isCollapsed ?
-            <SlimNav
-              groups={ this.props.groups }
-              selectedKey={ this.props.selectedKey }
-              navScrollerId={ this.props.navScrollerId }
-              dataHint={ this.props.dataHint } />
-            :
-            <Nav
-              groups={ this.props.groups }
-              selectedKey={ this.props.selectedKey }
-              dataHint={ this.props.dataHint } />
-        }
+      <div className={classNames.root}>
+        {this._renderExpandCollapseNavItem()}
+        {isCollapsed ? (
+          <SlimNav
+            groups={this.props.groups}
+            selectedKey={this.props.selectedKey}
+            navScrollerId={this.props.navScrollerId}
+            dataHint={this.props.dataHint}
+          />
+        ) : (
+          <Nav groups={this.props.groups} selectedKey={this.props.selectedKey} dataHint={this.props.dataHint} />
+        )}
       </div>
     );
   }
@@ -82,20 +67,17 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     return (
       <NavLink
         id="ToggleNavCollapse"
-        onClick={ this._onNavCollapseClicked.bind(this) }
-        ariaExpanded={ !isNavCollapsed }
-        dataHint={ this.props.dataHint }
+        onClick={this._onNavCollapseClicked.bind(this)}
+        ariaExpanded={!isNavCollapsed}
+        dataHint={this.props.dataHint}
         dataValue="ToggleNavCollapse"
-        rootClassName={ classNames.navToggler }
+        rootClassName={classNames.navToggler}
         leftIconName="GlobalNavButton"
-        iconClassName={ classNames.navItemIconColumn }>
-      </NavLink>
+        iconClassName={classNames.navItemIconColumn}
+      />
     );
   }
 }
 
-export const NavToggler = styled<INavProps, INavStyleProps, INavStyles>(
-  NavTogglerComponent,
-  getStyles
-);
+export const NavToggler = styled<INavProps, INavStyleProps, INavStyles>(NavTogglerComponent, getStyles);
 /* tslint:enable */

@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PropertiesTableSet,
-  PageMarkdown
-} from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ActivityItemStatus } from './ActivityItem.checklist';
 import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example';
@@ -20,55 +14,46 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='ActivityItem'
-        componentName='ActivityItem'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem'
+        title="ActivityItem"
+        componentName="ActivityItem"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem"
         exampleCards={
           <div>
-            <ExampleCard title='Activity Items with Icons' code={ ActivityItemBasicExampleCode }>
+            <ExampleCard title="Activity Items with Icons" code={ActivityItemBasicExampleCode}>
               <ActivityItemBasicExample />
             </ExampleCard>
-            <ExampleCard title='Activity Items with Personas' code={ ActivityItemPersonaExampleCode }>
+            <ExampleCard title="Activity Items with Personas" code={ActivityItemPersonaExampleCode}>
               <ActivityItemPersonaExample />
             </ExampleCard>
-            <ExampleCard title='Compact Activity Items' code={ ActivityItemCompactExampleCode }>
+            <ExampleCard title="Compact Activity Items" code={ActivityItemCompactExampleCode}>
               <ActivityItemCompactExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItem.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItem.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ActivityItemStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...ActivityItemStatus} />}
       />
     );
   }
-
 }

@@ -1,20 +1,10 @@
 import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets
-} from '../../../Styling';
+import { ITheme, concatStyleSets } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
-import {
-  getStyles as getSplitButtonStyles
-} from '../SplitButton/SplitButton.styles';
+import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
+import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles
-): IButtonStyles => {
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   const { palette, semanticColors } = theme;
@@ -28,12 +18,12 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       color: palette.themeDarker,
-      backgroundColor: semanticColors.buttonBackground,
+      backgroundColor: semanticColors.buttonBackground
     },
 
     rootPressed: {
       color: palette.themePrimary,
-      backgroundColor: semanticColors.buttonBackgroundHovered,
+      backgroundColor: semanticColors.buttonBackgroundHovered
     },
 
     rootExpanded: {
@@ -41,15 +31,15 @@ export const getStyles = memoizeFunction((
     },
 
     rootChecked: {
-      backgroundColor: semanticColors.buttonBackgroundChecked,
+      backgroundColor: semanticColors.buttonBackgroundChecked
     },
 
     rootCheckedHovered: {
-      backgroundColor: semanticColors.buttonBackgroundHovered,
+      backgroundColor: semanticColors.buttonBackgroundHovered
     },
 
     rootDisabled: {
-      color: semanticColors.disabledText,
+      color: semanticColors.disabledText
     }
   };
 

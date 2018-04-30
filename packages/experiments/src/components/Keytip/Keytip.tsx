@@ -15,7 +15,6 @@ import { constructKeytipTargetFromSequences } from '../../utilities/keytip/Keyti
  * @extends {BaseComponent<IKeytipProps, {}}>}
  */
 export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
-
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipProps, context: any) {
     super(props, context);
@@ -30,14 +29,14 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
 
     return (
       <Callout
-        { ...calloutProps }
-        gapSpace={ offset }
-        isBeakVisible={ false }
-        doNotLayer={ true }
-        directionalHint={ DirectionalHint.bottomCenter }
-        target={ constructKeytipTargetFromSequences(keySequences) }
-        getStyles={ getCalloutStyles }
-        preventDismissOnScroll={ true }
+        {...calloutProps}
+        gapSpace={offset}
+        isBeakVisible={false}
+        doNotLayer={true}
+        directionalHint={DirectionalHint.bottomCenter}
+        target={constructKeytipTargetFromSequences(keySequences)}
+        getStyles={getCalloutStyles}
+        preventDismissOnScroll={true}
       >
         <KeytipContent {...this.props} />
       </Callout>

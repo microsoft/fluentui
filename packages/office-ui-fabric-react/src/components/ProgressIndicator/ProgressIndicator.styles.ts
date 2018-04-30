@@ -1,16 +1,6 @@
-import {
-  FontSizes,
-  FontWeights,
-  HighContrastSelector,
-  keyframes,
-  noWrap,
-  getGlobalClassNames,
-} from '../../Styling';
+import { FontSizes, FontWeights, HighContrastSelector, keyframes, noWrap, getGlobalClassNames } from '../../Styling';
 import { getRTL } from '../../Utilities';
-import {
-  IProgressIndicatorStyleProps,
-  IProgressIndicatorStyles,
-} from './ProgressIndicator.types';
+import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
 const GlobalClassNames = {
   root: 'ms-ProgressIndicator',
@@ -18,36 +8,29 @@ const GlobalClassNames = {
   itemDescription: 'ms-ProgressIndicator-itemDescription',
   itemProgress: 'ms-ProgressIndicator-itemProgress',
   progressTrack: 'ms-ProgressIndicator-progressTrack',
-  progressBar: 'ms-ProgressIndicator-progressBar',
+  progressBar: 'ms-ProgressIndicator-progressBar'
 };
 
 const IndeterminateProgress = keyframes({
   '0%': {
-    left: '-30%',
+    left: '-30%'
   },
   '100%': {
-    left: '100%',
+    left: '100%'
   }
 });
 const IndeterminateProgressRTL = keyframes({
   '100%': {
-    right: '-30%',
+    right: '-30%'
   },
   '0%': {
-    right: '100%',
+    right: '100%'
   }
 });
 
-export const getStyles = (
-  props: IProgressIndicatorStyleProps
-): IProgressIndicatorStyles => {
+export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicatorStyles => {
   const isRTL = getRTL();
-  const {
-    className,
-    indeterminate,
-    theme,
-    barHeight = 2,
-  } = props;
+  const { className, indeterminate, theme, barHeight = 2 } = props;
 
   const { palette, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -55,11 +38,11 @@ export const getStyles = (
   const marginBetweenText = 8;
   const textHeight = 18;
 
-  return ({
+  return {
     root: [
       classNames.root,
       {
-        fontWeight: FontWeights.regular,
+        fontWeight: FontWeights.regular
       },
       className
     ],
@@ -71,7 +54,7 @@ export const getStyles = (
         color: semanticColors.bodyText,
         fontSize: FontSizes.medium,
         paddingTop: marginBetweenText / 2,
-        lineHeight: textHeight + 2,
+        lineHeight: textHeight + 2
       }
     ],
 
@@ -80,7 +63,7 @@ export const getStyles = (
       {
         color: semanticColors.bodySubtext,
         fontSize: FontSizes.xSmall,
-        lineHeight: textHeight,
+        lineHeight: textHeight
       }
     ],
 
@@ -90,7 +73,7 @@ export const getStyles = (
         position: 'relative',
         overflow: 'hidden',
         height: barHeight,
-        padding: `${marginBetweenText}px 0`,
+        padding: `${marginBetweenText}px 0`
       }
     ],
 
@@ -104,7 +87,7 @@ export const getStyles = (
 
         selectors: {
           [HighContrastSelector]: {
-            borderBottom: '1px solid WindowText',
+            borderBottom: '1px solid WindowText'
           }
         }
       }
@@ -121,7 +104,7 @@ export const getStyles = (
 
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText',
+            backgroundColor: 'WindowText'
           }
         }
       },
@@ -133,10 +116,10 @@ export const getStyles = (
           position: 'absolute',
           minWidth: '33%',
           background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
-          animation: `${IndeterminateProgress} 3s infinite`,
+          animation: `${IndeterminateProgress} 3s infinite`
         },
-        isRTL && { animation: `${IndeterminateProgressRTL} 3s infinite` },
-      ],
-    ],
-  });
+        isRTL && { animation: `${IndeterminateProgressRTL} 3s infinite` }
+      ]
+    ]
+  };
 };

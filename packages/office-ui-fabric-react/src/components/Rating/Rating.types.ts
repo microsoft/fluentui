@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {
-  IStyle,
-  ITheme
-} from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
-export interface IRating {
-
-}
+export interface IRating {}
 
 /**
  * Rating component props.

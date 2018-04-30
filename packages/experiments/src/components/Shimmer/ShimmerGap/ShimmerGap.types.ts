@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, IStyleSet } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
-export interface IShimmerGap {
-
-}
+export interface IShimmerGap {}
 
 /**
  * ShimmerGap component props.

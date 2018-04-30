@@ -13,7 +13,11 @@ export class NavExample extends React.Component<{}, {}> {
         name: 'default group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: true, icon: 'Home', key: 'key1',
+            name: 'Home - no action supported',
+            url: 'http://example.com',
+            isExpanded: true,
+            icon: 'Home',
+            key: 'key1',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key2' },
               { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key3' }
@@ -27,14 +31,18 @@ export class NavExample extends React.Component<{}, {}> {
             target: '_blank',
             key: 'key6',
             icon: 'DietPlanNotebook'
-          },
+          }
         ]
       },
       {
         name: 'named menu group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: false, icon: 'Home', key: 'key7',
+            name: 'Home - no action supported',
+            url: 'http://example.com',
+            isExpanded: false,
+            icon: 'Home',
+            key: 'key7',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key8' },
               { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key9' }
@@ -48,14 +56,14 @@ export class NavExample extends React.Component<{}, {}> {
             target: '_blank',
             key: 'key12',
             icon: 'DietPlanNotebook'
-          },
+          }
         ]
       }
     ];
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' />
+        <NavToggler groups={navLinkGroups} dataHint="LeftNav" />
       </div>
     );
   }

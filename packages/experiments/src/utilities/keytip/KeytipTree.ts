@@ -71,7 +71,6 @@ export class KeytipTree {
    * @param rootId - Layer ID to create the root node of the tree
    */
   constructor(rootId: string) {
-
     // Root has no keytipSequence, we instead check _enableSequences to handle multiple entry points
     this.root = {
       id: rootId,
@@ -132,8 +131,16 @@ export class KeytipTree {
       node.disabled = keytipProps.disabled;
     } else {
       // If node doesn't exist, add node
-      node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasChildrenNodes,
-        keytipProps.onExecute, keytipProps.onReturn, keytipProps.disabled);
+      node = this._createNode(
+        nodeID,
+        keytipSequence!,
+        parentID,
+        [],
+        keytipProps.hasChildrenNodes,
+        keytipProps.onExecute,
+        keytipProps.onReturn,
+        keytipProps.disabled
+      );
       node.keytipLink = overflowNode;
       this.nodeMap[nodeID] = node;
     }
@@ -242,7 +249,8 @@ export class KeytipTree {
     hasChildrenNodes?: boolean,
     onExecute?: (el: HTMLElement) => void,
     onReturn?: (el: HTMLElement) => void,
-    disabled?: boolean): IKeytipTreeNode {
+    disabled?: boolean
+  ): IKeytipTreeNode {
     return {
       id,
       keytipSequence: sequence,

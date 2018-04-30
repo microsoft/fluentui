@@ -3,7 +3,6 @@ import * as React from 'react';
 import { CommandBar, ICommandBarProps } from '@uifabric/experiments/lib/CommandBar';
 
 export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
-
   constructor(props: ICommandBarProps) {
     super(props);
     this.state = {
@@ -17,12 +16,7 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
 
     return (
       <div>
-        <CommandBar
-          elipisisAriaLabel='More options'
-          items={ items }
-          overflowItems={ overflowItems }
-          farItems={ farItems }
-        />
+        <CommandBar elipisisAriaLabel="More options" items={items} overflowItems={overflowItems} farItems={farItems} />
       </div>
     );
   }
