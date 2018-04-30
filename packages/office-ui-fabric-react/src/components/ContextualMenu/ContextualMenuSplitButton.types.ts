@@ -94,8 +94,10 @@ export interface IContextualMenuSplitButtonProps extends React.Props<IContextual
 
   /**
    * Hack to get around the event ordering of Edge/IE where onMouseEnter gets called
-   * before onPointer/click events as opposed to Chrome/Firefox causing different behaviors
-   * of submenu opening and then closing on touch
+   * between onPointer and onClick events as opposed to Chrome/Firefox. This different ordering causes
+   * submenus to open and then close on touch
+   *
+   * Callback to cancel any existing timers for touch/pointer events
    */
   cancelExistingTimers?: () => void;
 }

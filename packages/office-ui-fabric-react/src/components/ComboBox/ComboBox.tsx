@@ -194,14 +194,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentDidMount(): void {
-    // TODO what is current
-    // hook up resolving the options if needed on focus
-    this._events.on(this._comboBoxWrapper.current, 'focus', this._onResolveOptions, true);
-    // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
-    // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
-    // does not support Pointer events yet.
-    if (this._comboBoxWrapper.current && 'onpointerdown' in this._comboBoxWrapper.current) {
-      this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+    if (this._comboBoxWrapper.current) {
+      // hook up resolving the options if needed on focus
+      this._events.on(this._comboBoxWrapper.current, 'focus', this._onResolveOptions, true);
+      if ('onpointerdown' in this._comboBoxWrapper.current) {
+        // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
+        // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
+        // does not support Pointer events yet.
+        this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+      }
     }
   }
 

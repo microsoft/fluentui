@@ -240,8 +240,8 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
 
   private _handleTouchAndPointerEvent() {
     // Hack to get around the event ordering of Edge/IE where onMouseEnter gets called
-    // between onPointer but onClick events as opposed to Chrome/Firefox. This different ordering causes
-    // submenus to  open and then close on touch
+    // between onPointer and onClick events as opposed to Chrome/Firefox. This different ordering causes
+    // submenus to open and then close on touch
     if (this.props.cancelExistingTimers) {
       this.props.cancelExistingTimers();
     }
