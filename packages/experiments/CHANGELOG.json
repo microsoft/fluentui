@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.34.0",
+      "tag": "@uifabric/experiments_v5.34.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "84e6ff3b20bd8533471a6073f5ecce39621dc889",
+            "comment": "Nav: Refactored out a NavLink component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.1",
       "tag": "@uifabric/experiments_v5.33.1",
       "date": "Wed, 25 Apr 2018 05:32:09 GMT",
