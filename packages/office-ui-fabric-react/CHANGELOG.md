@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 30 Apr 2018 10:16:44 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Apr 2018 21:22:55 GMT and should not be manually modified.
+
+## 5.92.1
+Mon, 30 Apr 2018 21:22:55 GMT
+
+### Patches
+
+- Revert isEqual check in List.
 
 ## 5.92.0
 Mon, 30 Apr 2018 10:16:44 GMT
