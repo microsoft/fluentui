@@ -21,6 +21,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
           <Label>Standard</Label>
           <DefaultButton
             data-automation-id='test'
+            allowDisabledFocus={ true }
             disabled={ disabled }
             checked={ checked }
             text='Button'

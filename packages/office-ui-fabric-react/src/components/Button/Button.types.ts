@@ -232,6 +232,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   * @default getBaseSplitButtonClassNames
   */
   getSplitButtonClassNames?: (disabled: boolean,
+    allowDisabledFocus: boolean,
     expanded: boolean,
     checked: boolean) => ISplitButtonClassNames;
 

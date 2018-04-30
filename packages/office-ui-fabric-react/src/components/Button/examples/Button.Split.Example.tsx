@@ -111,6 +111,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             primary
             data-automation-id='test'
             disabled={ true }
+            allowDisabledFocus={ true }
             checked={ checked }
             text='Create account'
             onClick={ alertClicked }
