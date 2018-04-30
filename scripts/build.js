@@ -1,6 +1,6 @@
 const runTasks = require('./run-task');
 
-const withFormattingAndLinting = process.argv.indexOf('--lint') > -1
+const withFormattingAndLinting = process.argv.indexOf('--lint') > -1;
 
 let tasks = [
   'copy',
