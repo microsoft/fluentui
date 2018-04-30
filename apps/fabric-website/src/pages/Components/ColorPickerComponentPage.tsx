@@ -7,7 +7,7 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class ColorPickerComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div ref='pageElement' className={ pageStyles.basePage }>
+      <div className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='ColorPicker' backgroundColor='#038387'
             links={
