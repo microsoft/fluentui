@@ -1,13 +1,15 @@
 import * as React from 'react';
+
 import {
+  ComponentPage,
   ExampleCard,
   IComponentDemoPageProps,
-  ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { items, overflowItems, farItems } from './examples/data';
-import { ICommandBarProps } from './CommandBar.types';
+import { farItems, items, overflowItems } from './examples/data';
+
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
+import { ICommandBarProps } from './CommandBar.types';
 
 const CommandBarBasicExampleCode = require(
   '!raw-loader!@uifabric/experiments/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx'
@@ -15,7 +17,7 @@ const CommandBarBasicExampleCode = require(
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
-    let cmdBarParamsTextAndIcons: ICommandBarProps = { items, overflowItems, farItems };
+    const cmdBarParamsTextAndIcons: ICommandBarProps = { items, overflowItems, farItems };
 
     return (
       <ComponentPage
@@ -24,7 +26,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         exampleCards={
           <div>
             <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
-              <CommandBarBasicExample {...cmdBarParamsTextAndIcons} />
+              <CommandBarBasicExample { ...cmdBarParamsTextAndIcons } />
             </ExampleCard>
           </div>
         }

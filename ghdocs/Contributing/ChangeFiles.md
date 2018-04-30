@@ -5,7 +5,7 @@ When we publish new releases, we need to know what major, minor or patch changes
 
 ## Writing a change description
 
-Please write a change desription such that it is easy for the release manager to understand the impact of the change. When we ship out new releases, we need to build a cumulative set of **Release notes**. Those release notes are a summation of individual changes checked in. Hence, it is important that developers write clear and understandable change descriptions.
+Please write a change description such that it is easy for the release manager to understand the impact of the change. When we ship out new releases, we need to build a cumulative set of **Release notes**. Those release notes are a summation of individual changes checked in. Hence, it is important that developers write clear and understandable change descriptions.
 
 ## Change annotation
 

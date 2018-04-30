@@ -2,6 +2,252 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.92.0",
+      "tag": "office-ui-fabric-react_v5.92.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "175597d6e4ba9f9c3306c81ea940724d4d21f171",
+            "comment": "Contextual Menu: moved out the split button to be its own component, ContextualMenuSplitButton"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "660800656c40963e73450fddafb9d621ce089f4a",
+            "comment": "Use theme flag to control global classes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.27.0 <6.0.0` to `>=5.28.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.91.0",
+      "tag": "office-ui-fabric-react_v5.91.0",
+      "date": "Fri, 27 Apr 2018 10:15:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Lars Fernhomberg <aur@gmx.de>",
+            "commit": "52b8ced1176ee8c662baa763361fd0c0f0f7dbd7",
+            "comment": "Added optional className property to Calendar"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "23d8cfda750315abbb64aaffe22a56c1d536043e",
+            "comment": "Fix #3607"
+          },
+          {
+            "author": "Karthik Balasubramanian <karthikb87@gmail.com>",
+            "commit": "963e125151c41334d1b32cd4a49c07587dc6176a",
+            "comment": "Add a option for custom dividerAs to get item information while rendering"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.28.0 <6.0.0` to `>=5.29.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.90.0",
+      "tag": "office-ui-fabric-react_v5.90.0",
+      "date": "Thu, 26 Apr 2018 10:12:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5e99f2d4dd3de753aca40d7e5991d6ffb394bd89",
+            "comment": "Fix props validation for Breadcrumb"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "0ee2136ddb49447faa1e0a5cdb0211ea68fe068b",
+            "comment": "Gate calendar month, year, and today keydowns for only ENTER as onClick handles space with button nodes to fix double date change regression."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b9f6e845720daf7536a299a84be96ec4793ae57a",
+            "comment": "Complete ProgressIndicator conversion to mergeStyles. Add `barHeight` to enable changing height of progress bar."
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "a59edf95f45e5192907f9fa3faf8d566e5cafc93",
+            "comment": "Pickers: Several fixes regarding certain props"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.1 <6.0.0` to `>=5.17.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.89.0",
+      "tag": "office-ui-fabric-react_v5.89.0",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6bfddc1c44aa7afcdf053467985490027eb5edcd",
+            "comment": "Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "802a2c0847830acfbf47e2dd058da54d9dfb15ae",
+            "comment": "Fix theme slots for DetailsList header colors"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "127d4d9deeca7e38a4ae6df6bd4d92ea5a978432",
+            "comment": "Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.0 <6.0.0` to `>=5.16.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.27.0 <6.0.0` to `>=5.28.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.88.0",
+      "tag": "office-ui-fabric-react_v5.88.0",
+      "date": "Tue, 24 Apr 2018 10:12:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "829a5263d7ed4e4decb759cfad9cdf32aad5f86e",
+            "comment": "fixing selection bugs in Calendar component, updating styling for new designs"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "707e5387e0a469fa6f09b188c27d4c8e73636625",
+            "comment": "Begin converting Pivot to mergeStyles"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Spencer Elliott <me@elliottsj.com>",
+            "commit": "8d297e2a0f7c6cd9bd44a492f313381a0aee40c0",
+            "comment": "Use `data-is-scrollable` attribute on correct ScrollablePane div"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.87.0",
+      "tag": "office-ui-fabric-react_v5.87.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "57d14eb7535d07348628c034bff03646c0851bd2",
+            "comment": "ContextualMenu: in item root styling, replaced `font: inherit` with the appropriate font style from the theme."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf655ceeaf161fd5ee3cc4dc5a4e55a82dea03e5",
+            "comment": "Updating a snapshot test."
+          },
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "af62e60a594673e79f50acd1db0c27c5b7be32a0",
+            "comment": "Adding check to focusTrapZone to only restore focus on close if focus was still inside the focusTrapZone"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "6f66dfa52f97226641778eebc2df91ff98c92828",
+            "comment": "Deprecates INavLink.iconClassName in favor of IIconProps.className."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisible` classname. This is one step closer towards removing the `Fabric` component wrapper requirement."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "0a91cdca0f3dddc89d17b581c95cb879a7901a01",
+            "comment": "Plumb ARIA label for picker suggestion remove button"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.15.2 <6.0.0` to `>=5.16.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.25.0 <6.0.0` to `>=5.26.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.2 <6.0.0` to `>=5.11.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.86.0",
+      "tag": "office-ui-fabric-react_v5.86.0",
+      "date": "Fri, 20 Apr 2018 23:06:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "5ee5b0000642c73ee99110a888360f4b6f99fa56",
+            "comment": "Callout.Basic.Example: Fix example so callout positions properly"
+          },
+          {
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "1c60faec279be119ddd0d952958570c81edb8ca5",
+            "comment": "Propagate onRenderInitials correctly from Persona to PersonaCoin"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "bcfcbd31d10874a8c560273be82d4a7087d37aa4",
+            "comment": "Added support for zero star situations in the Rating component.  Before it would write out a star for  the number zero showing 6 stars when there should be 5."
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "d8c8e6fc0be8766ce6625aefc4a512e0abfe4e7f",
+            "comment": "Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.25.0 <6.0.0` to `>=5.26.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.85.0",
       "tag": "office-ui-fabric-react_v5.85.0",
       "date": "Fri, 20 Apr 2018 10:12:34 GMT",

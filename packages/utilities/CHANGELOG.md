@@ -1,6 +1,38 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Apr 2018 10:15:52 GMT and should not be manually modified.
+
+## 5.29.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Allow a function to be passed to the Customizers props
+
+### Patches
+
+- Add isEqual and isNotEqual utilities
+
+## 5.28.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Adding `isDirectionalKeyCode` helper.
+
+## 5.27.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The focus styling no longer adds "ms-Fabric" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code.
+
+## 5.26.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- InputMask: Added inputMask utilitiy and tests
 
 ## 5.25.0
 Thu, 19 Apr 2018 18:25:59 GMT
