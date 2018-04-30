@@ -93,11 +93,7 @@ export interface IContextualMenuSplitButtonProps extends React.Props<IContextual
   onItemKeyDown?: (item: IContextualMenuItem, ev: React.KeyboardEvent<HTMLElement>) => void;
 
   /**
-   * Hack to get around the event ordering of Edge/IE where onMouseEnter gets called
-   * between onPointer and onClick events as opposed to Chrome/Firefox. This different ordering causes
-   * submenus to open and then close on touch
-   *
-   * Callback to cancel any existing timers for touch/pointer events
+   * Callback for touch/pointer events on the split button.
    */
-  cancelExistingTimers?: () => void;
+  onTap?: () => void;
 }
