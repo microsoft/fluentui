@@ -27,7 +27,7 @@ export interface ISelection {
   // Read selection methods.
 
   getSelection(): IObjectWithKey[];
-  getSelectedIndices?(): number[]; // TODO make non-optional on next breaking change
+  getSelectedIndices(): number[]; // TODO make non-optional on next breaking change
   getSelectedCount(): number;
   isRangeSelected(fromIndex: number, count: number): boolean;
 
