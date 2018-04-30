@@ -95,5 +95,5 @@ export interface IContextualMenuSplitButtonProps extends React.Props<IContextual
   /**
    * Callback for touch/pointer events on the split button.
    */
-  onTap?: () => void;
+  onTap?: (ev: React.TouchEvent<HTMLElement> | PointerEvent) => void;
 }

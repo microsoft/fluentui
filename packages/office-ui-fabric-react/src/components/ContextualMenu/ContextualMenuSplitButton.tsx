@@ -224,27 +224,27 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _onTouchStart = (): void => {
+  private _onTouchStart = (ev: React.TouchEvent<HTMLElement>): void => {
     if (this._splitButton && !('onpointerdown' in this._splitButton)) {
-      this._handleTouchAndPointerEvent();
+      this._handleTouchAndPointerEvent(ev);
     }
   }
 
   private _onPointerDown = (ev: PointerEvent): void => {
     if (ev.pointerType === 'touch') {
-      this._handleTouchAndPointerEvent();
+      this._handleTouchAndPointerEvent(ev);
       ev.preventDefault();
       ev.stopImmediatePropagation();
     }
   }
 
-  private _handleTouchAndPointerEvent() {
+  private _handleTouchAndPointerEvent(ev: React.TouchEvent<HTMLElement> | PointerEvent) {
     const {
       onTap
     } = this.props;
 
     if (onTap) {
-      onTap();
+      onTap(ev);
     }
     // If we already have an existing timeout from a previous touch/pointer event
     // cancel that timeout so we can set a new one.

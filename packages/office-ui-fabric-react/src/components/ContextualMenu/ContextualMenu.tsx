@@ -622,7 +622,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onItemClick={ this._onItemClick }
         onItemClickBase={ this._onItemClickBase }
         onItemKeyDown={ this._onItemKeyDown }
-        onTap={ this._cancelSubMenuTimer }
+        onTap={ this._onPointerAndTouchEvent }
       />
     );
   }
@@ -973,5 +973,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     return subMenuId;
+  }
+
+  private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
+    this._cancelSubMenuTimer()
   }
 }
