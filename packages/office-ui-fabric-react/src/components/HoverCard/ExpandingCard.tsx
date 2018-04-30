@@ -52,6 +52,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   public render(): JSX.Element {
+    console.log('ExpandingCard props', this.props);
     const {
       targetElement,
       theme,
@@ -90,7 +91,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         minPagePadding={ 24 }
         onDismiss={ this.props.onLeave }
         gapSpace={ this.props.gapSpace }
-        setInitialFocus={ this.props.firstFocus }
       >
         { this.props.trapFocus ?
           <FocusTrapZone forceFocusInsideTrap={ false } isClickableOutsideFocusTrap={ true } disableFirstFocus={ !firstFocus }>
