@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Apr 2018 10:16:44 GMT and should not be manually modified.
+
+## 5.28.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Adds flags to theme to support controlling global class names
 
 ## 5.27.0
 Wed, 25 Apr 2018 05:32:09 GMT
