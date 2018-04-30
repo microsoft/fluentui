@@ -1,13 +1,6 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
 import { IButtonStyles } from '../../Button';
-import {
-  AnimationClassNames,
-  DefaultFontStyles,
-  getFocusStyle,
-  FontSizes,
-  FontWeights,
-  getGlobalClassNames,
-} from '../../Styling';
+import { AnimationClassNames, DefaultFontStyles, getFocusStyle, FontSizes, FontWeights, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -19,12 +12,12 @@ const GlobalClassNames = {
   navItem: 'ms-Nav-navItem',
   navItems: 'ms-Nav-navItems',
   group: 'ms-Nav-group',
-  groupContent: 'ms-Nav-groupContent',
+  groupContent: 'ms-Nav-groupContent'
 };
 
 export const buttonStyles: IButtonStyles = {
   textContainer: {
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   label: {
     whiteSpace: 'nowrap',
@@ -34,9 +27,7 @@ export const buttonStyles: IButtonStyles = {
   }
 };
 
-export const getStyles = (
-  props: INavStyleProps
-): INavStyles => {
+export const getStyles = (props: INavStyleProps): INavStyles => {
   const {
     className,
     theme,
@@ -57,7 +48,7 @@ export const getStyles = (
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  return ({
+  return {
     root: [
       classNames.root,
       className,
@@ -88,7 +79,7 @@ export const getStyles = (
         display: 'block',
         position: 'relative',
         color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.bodyBackground
       },
       isExpanded && 'is-expanded',
       isSelected && 'is-selected'
@@ -113,8 +104,8 @@ export const getStyles = (
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
             color: semanticColors.bodyText
-          },
-        },
+          }
+        }
       },
       isSelected && {
         color: palette.themePrimary,
@@ -164,7 +155,7 @@ export const getStyles = (
           '$compositeLink:hover &': {
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
-          },
+          }
         }
       },
       isGroup && [
@@ -212,7 +203,7 @@ export const getStyles = (
         height: `${navHeight}px`,
         lineHeight: `${navHeight}px`,
         fontSize: '12px',
-        transition: 'transform .1s linear',
+        transition: 'transform .1s linear'
       },
       isExpanded && {
         transform: 'rotate(-180deg)'
@@ -234,10 +225,7 @@ export const getStyles = (
         padding: 0
       }
     ],
-    group: [
-      classNames.group,
-      isExpanded && 'is-expanded'
-    ],
+    group: [classNames.group, isExpanded && 'is-expanded'],
     groupContent: [
       classNames.groupContent,
       {
@@ -249,5 +237,5 @@ export const getStyles = (
         display: 'block'
       }
     ]
-  });
+  };
 };

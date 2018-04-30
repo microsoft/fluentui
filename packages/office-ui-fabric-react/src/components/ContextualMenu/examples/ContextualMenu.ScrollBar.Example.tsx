@@ -3,10 +3,12 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
-export class ContextualMenuWithScrollBarExample extends React.Component<{}, {
-  showCallout: boolean;
-}> {
-
+export class ContextualMenuWithScrollBarExample extends React.Component<
+  {},
+  {
+    showCallout: boolean;
+  }
+> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -18,9 +20,9 @@ export class ContextualMenuWithScrollBarExample extends React.Component<{}, {
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton1'
-          text='Click for ContextualMenu'
-          menuProps={ {
+          id="ContextualMenuButton1"
+          text="Click for ContextualMenu"
+          menuProps={{
             shouldFocusOnMount: true,
             directionalHint: DirectionalHint.bottomRightEdge,
             directionalHintFixed: true,
@@ -50,7 +52,7 @@ export class ContextualMenuWithScrollBarExample extends React.Component<{}, {
             calloutProps: {
               calloutMaxHeight: 65
             }
-          } }
+          }}
         />
       </div>
     );

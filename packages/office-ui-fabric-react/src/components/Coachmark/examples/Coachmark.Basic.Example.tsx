@@ -4,11 +4,7 @@ import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IStyle } from '../../../Styling';
-import {
-  BaseComponent,
-  classNamesFunction,
-  createRef
-} from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, classNamesFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
@@ -61,28 +57,17 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     });
 
     return (
-      <div className={ classNames.root }>
-        <div
-          className={ classNames.buttonContainer }
-          ref={ this._targetButton }
-        >
-          <DefaultButton
-            onClick={ this._onShowMenuClicked }
-            text={ isVisible ? 'Hide Coachmark' : 'Show Coachmark' }
-          />
+      <div className={classNames.root}>
+        <div className={classNames.buttonContainer} ref={this._targetButton}>
+          <DefaultButton onClick={this._onShowMenuClicked} text={isVisible ? 'Hide Coachmark' : 'Show Coachmark'} />
         </div>
-        { isVisible && (
-          <Coachmark
-            target={ this._targetButton.current }
-          >
-            <TeachingBubbleContent
-              headline='Example Title'
-              calloutProps={ calloutProps }
-            >
+        {isVisible && (
+          <Coachmark target={this._targetButton.current}>
+            <TeachingBubbleContent headline="Example Title" calloutProps={calloutProps}>
               Welcome to the land of coachmarks
             </TeachingBubbleContent>
           </Coachmark>
-        ) }
+        )}
       </div>
     );
   }

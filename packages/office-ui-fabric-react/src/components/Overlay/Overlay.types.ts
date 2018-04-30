@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
-export interface IOverlay {
-
-}
+export interface IOverlay {}
 
 export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**

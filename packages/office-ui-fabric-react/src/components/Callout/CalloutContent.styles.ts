@@ -1,13 +1,7 @@
-import {
-  HighContrastSelector,
-  IRawStyle,
-  focusClear,
-  getGlobalClassNames,
-} from '../../Styling';
+import { HighContrastSelector, IRawStyle, focusClear, getGlobalClassNames } from '../../Styling';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
-function getBeakStyle(beakWidth?: number,
-  beakStyle?: string): IRawStyle {
+function getBeakStyle(beakWidth?: number, beakStyle?: string): IRawStyle {
   let beakStyleWidth = beakWidth;
 
   // This is here to support the old way of setting the beak size until version 1.0.0.
@@ -27,20 +21,11 @@ const GlobalClassNames = {
   root: 'ms-Callout',
   beak: 'ms-Callout-beak',
   beakCurtain: 'ms-Callout-beakCurtain',
-  calloutMain: 'ms-Callout-main',
+  calloutMain: 'ms-Callout-main'
 };
 
 export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
-  const {
-    theme,
-    className,
-    overflowYHidden,
-    calloutWidth,
-    contentMaxHeight,
-    beakWidth,
-    backgroundColor,
-    beakStyle
-  } = props;
+  const { theme, className, overflowYHidden, calloutWidth, contentMaxHeight, beakWidth, backgroundColor, beakStyle } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -49,7 +34,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     container: [
       classNames.container,
       {
-        position: 'relative',
+        position: 'relative'
       }
     ],
     root: [
@@ -65,7 +50,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
           [HighContrastSelector]: {
             borderWidth: 1,
             borderStyle: 'solid',
-            borderColor: 'WindowText',
+            borderColor: 'WindowText'
           }
         }
       },
@@ -96,7 +81,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         right: 0,
         bottom: 0,
         left: 0,
-        backgroundColor: palette.white,
+        backgroundColor: palette.white
       }
     ],
     calloutMain: [
@@ -114,6 +99,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       backgroundColor && {
         backgroundColor: backgroundColor
       }
-    ],
+    ]
   };
 };

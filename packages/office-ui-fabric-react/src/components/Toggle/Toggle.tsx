@@ -1,19 +1,8 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  getId,
-  inputProperties,
-  getNativeProps,
-  createRef
-} from '../../Utilities';
-import {
-  IToggleProps,
-  IToggle
-} from './Toggle.types';
+import { BaseComponent, getId, inputProperties, getNativeProps, createRef } from '../../Utilities';
+import { IToggleProps, IToggle } from './Toggle.types';
 import { Label } from '../../Label';
-import {
-  customizable
-} from '../../Utilities';
+import { customizable } from '../../Utilities';
 import { getClassNames } from './Toggle.classNames';
 
 export interface IToggleState {
@@ -22,7 +11,6 @@ export interface IToggleState {
 
 @customizable('Toggle', ['theme'])
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
-
   private _id: string;
   private _toggleButton = createRef<HTMLButtonElement>();
 
@@ -61,58 +49,45 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
-    const {
-      className,
-      theme,
-      styles: customStyles,
-      disabled,
-      label,
-      offAriaLabel,
-      offText,
-      onAriaLabel,
-      onText
-    } = this.props;
+    const { className, theme, styles: customStyles, disabled, label, offAriaLabel, offText, onAriaLabel, onText } = this.props;
     const { isChecked } = this.state;
     const stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
-    const classNames = getClassNames(
-      theme!,
-      customStyles!,
-      className!,
-      disabled!,
-      isChecked
-    );
+    const classNames = getClassNames(theme!, customStyles!, className!, disabled!, isChecked);
 
     return (
-      <div className={ classNames.root }>
+      <div className={classNames.root}>
+        {label && (
+          <Label htmlFor={this._id} className={classNames.label}>
+            {label}
+          </Label>
+        )}
 
-        { label && (
-          <Label htmlFor={ this._id } className={ classNames.label }>{ label }</Label>
-        ) }
-
-        <div className={ classNames.container } >
+        <div className={classNames.container}>
           <button
-            { ...toggleNativeProps }
-            className={ classNames.pill }
-            disabled={ disabled }
-            id={ this._id }
-            type='button'
-            ref={ this._toggleButton }
-            aria-disabled={ disabled }
-            aria-pressed={ isChecked }
-            aria-label={ ariaLabel ? ariaLabel : label }
-            data-is-focusable={ true }
-            onChange={ this._noop }
-            onClick={ this._onClick }
+            {...toggleNativeProps}
+            className={classNames.pill}
+            disabled={disabled}
+            id={this._id}
+            type="button"
+            ref={this._toggleButton}
+            aria-disabled={disabled}
+            aria-pressed={isChecked}
+            aria-label={ariaLabel ? ariaLabel : label}
+            data-is-focusable={true}
+            onChange={this._noop}
+            onClick={this._onClick}
           >
-            <div className={ classNames.thumb } />
+            <div className={classNames.thumb} />
           </button>
-          { stateText && (
-            <Label htmlFor={ this._id } className={ classNames.text }>{ stateText }</Label>
-          ) }
+          {stateText && (
+            <Label htmlFor={this._id} className={classNames.text}>
+              {stateText}
+            </Label>
+          )}
         </div>
-      </div >
+      </div>
     );
   }
 
@@ -142,10 +117,9 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         onClick(ev);
       }
     }
-  }
+  };
 
   private _noop(): void {
     /* no-op */
   }
-
 }

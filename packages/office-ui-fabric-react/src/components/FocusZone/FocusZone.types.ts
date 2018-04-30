@@ -136,7 +136,6 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 }
 
 export const enum FocusZoneTabbableElements {
-
   /** Tabbing is not allowed */
   none = 0,
 

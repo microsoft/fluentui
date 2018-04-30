@@ -79,8 +79,8 @@ export interface ISliderProps {
   disabled?: boolean;
 
   /**
-  * Optional className to attach to the slider root element.
-  */
+   * Optional className to attach to the slider root element.
+   */
   className?: string;
 
   /**

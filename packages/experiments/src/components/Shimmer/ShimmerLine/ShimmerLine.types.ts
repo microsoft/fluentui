@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, IStyleSet } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
-export interface IShimmerLine {
-
-}
+export interface IShimmerLine {}
 
 /**
  * ShimmerLine component props.

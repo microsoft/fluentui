@@ -33,23 +33,15 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
   getBaseStyles: (props: TStyleProps) => TStyles,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>
 ): (props: TComponentProps) => JSX.Element {
-
   const Wrapped = ((componentProps: TComponentProps) => {
-    const getStyles = (
-      styleProps: TStyleProps
-    ) => concatStyleSets(
-      getBaseStyles && getBaseStyles(styleProps),
-      componentProps && componentProps.getStyles && componentProps.getStyles(styleProps)
-    );
+    const getStyles = (styleProps: TStyleProps) =>
+      concatStyleSets(
+        getBaseStyles && getBaseStyles(styleProps),
+        componentProps && componentProps.getStyles && componentProps.getStyles(styleProps)
+      );
     const additionalProps = getProps ? getProps(componentProps) : {};
 
-    return (
-      <Component
-        { ...additionalProps }
-        { ...componentProps }
-        getStyles={ getStyles }
-      />
-    );
+    return <Component {...additionalProps} {...componentProps} getStyles={getStyles} />;
   }) as IWrappedComponent<TComponentProps>;
 
   Wrapped.displayName = `Styled${Component.displayName || Component.name}`;

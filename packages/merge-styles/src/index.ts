@@ -1,39 +1,17 @@
-export {
-  IRawStyle,
-  IStyle
-} from './IStyle';
+export { IRawStyle, IStyle } from './IStyle';
 
-export {
-  IStyleSet
-} from './IStyleSet';
+export { IStyleSet } from './IStyleSet';
 
-export {
-  IFontFace,
-  IFontWeight
-} from './IRawStyleBase';
+export { IFontFace, IFontWeight } from './IRawStyleBase';
 
-export {
-  mergeStyles
-} from './mergeStyles';
+export { mergeStyles } from './mergeStyles';
 
-export {
-  mergeStyleSets
-} from './mergeStyleSets';
+export { mergeStyleSets } from './mergeStyleSets';
 
-export {
-  concatStyleSets
-} from './concatStyleSets';
+export { concatStyleSets } from './concatStyleSets';
 
-export {
-  fontFace
-} from './fontFace';
+export { fontFace } from './fontFace';
 
-export {
-  keyframes
-} from './keyframes';
+export { keyframes } from './keyframes';
 
-export {
-  IStyleSheetConfig,
-  InjectionMode,
-  Stylesheet
-} from './Stylesheet';
+export { IStyleSheetConfig, InjectionMode, Stylesheet } from './Stylesheet';

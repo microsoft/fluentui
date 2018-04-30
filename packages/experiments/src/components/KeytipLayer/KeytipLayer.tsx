@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { IKeytipLayerProps } from './KeytipLayer.types';
 import { Keytip, IKeytipProps, KeytipTransitionModifier } from '../Keytip';
-import {
-  BaseComponent
-} from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { KeyCodes, findIndex } from '../../Utilities';
 import { convertSequencesToKeytipID, fullKeySequencesAreEqual } from '../../utilities/keysequence/IKeySequence';
@@ -17,11 +15,13 @@ export interface IKeytipLayerState {
 }
 
 const defaultStartSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt]
+  key: 'Meta',
+  modifierKeys: [KeytipTransitionModifier.alt]
 };
 
 const defaultExitSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt]
+  key: 'Meta',
+  modifierKeys: [KeytipTransitionModifier.alt]
 };
 
 const defaultReturnSequence: IKeytipTransitionKey = {
@@ -126,7 +126,6 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    * @param visible - T/F if the specified Keytips will be visible or not
    */
   public setKeytipVisibility(ids: string[], visible: boolean): void {
-
     this.setState((previousState: IKeytipLayerState) => {
       const currentKeytips: IKeytipProps[] = [...previousState.keytips];
       for (const keytip of currentKeytips) {
@@ -140,19 +139,16 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   }
 
   public render(): JSX.Element {
-    const {
-      id
-    } = this.props;
+    const { id } = this.props;
 
-    const {
-      keytips
-    } = this.state;
+    const { keytips } = this.state;
 
     return (
-      <Layer id={ id }>
-        { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
-          return <Keytip key={ index } { ...keytipProps } />;
-        }) }
+      <Layer id={id}>
+        {keytips &&
+          keytips.map((keytipProps: IKeytipProps, index: number) => {
+            return <Keytip key={index} {...keytipProps} />;
+          })}
       </Layer>
     );
   }
@@ -164,11 +160,15 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
 
     // Add handler to remove Keytips when we scroll the page
-    window.addEventListener('scroll', (): void => {
-      if (this.state.inKeytipMode) {
-        this._keytipManager.exitKeytipMode();
-      }
-    }, { capture: true });
+    window.addEventListener(
+      'scroll',
+      (): void => {
+        if (this.state.inKeytipMode) {
+          this._keytipManager.exitKeytipMode();
+        }
+      },
+      { capture: true }
+    );
   }
 
   /**
@@ -196,7 +196,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     if (this.state.inKeytipMode) {
       this._keytipManager.exitKeytipMode();
     }
-  }
+  };
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
@@ -215,7 +215,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         this._keytipManager.processTransitionInput(transitionKey);
         break;
     }
-  }
+  };
 
   /**
    * Gets the ModifierKeyCodes based on the keyboard event
@@ -241,5 +241,5 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   private _onKeyPress = (ev: React.KeyboardEvent<HTMLElement>): void => {
     // Call processInput
     this._keytipManager.processInput(ev.key);
-  }
+  };
 }

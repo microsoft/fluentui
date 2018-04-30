@@ -27,10 +27,7 @@ describe('FormSubmitButton Unit Tests', () => {
   it('Button is disabled when form is invalid and enabled when form is valid', () => {
     const renderedForm = ReactTestUtils.renderIntoDocument(
       <Form>
-        <ExtendsTextBox
-          inputKey='name'
-          validators={ [Validators.required('Error')] }
-        />
+        <ExtendsTextBox inputKey="name" validators={[Validators.required('Error')]} />
 
         <FormConditionalSubmitButton />
       </Form>

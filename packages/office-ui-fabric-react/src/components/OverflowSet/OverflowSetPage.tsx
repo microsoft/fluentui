@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
 import { OverflowSetVerticalExample } from './examples/OverflowSet.Vertical.Example';
@@ -21,41 +15,35 @@ export class OverflowSetPage extends React.Component<IComponentDemoPageProps, an
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='OverflowSet'
-        componentName='OverflowSetExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet'
+        title="OverflowSet"
+        componentName="OverflowSetExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet"
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md')}
           </PageMarkdown>
         }
-        allowNativeProps={ true }
+        allowNativeProps={true}
         exampleCards={
           <LayerHost>
-            <ExampleCard title='OverflowSet Basic Example' code={ OverflowSetBasicExampleCode }>
+            <ExampleCard title="OverflowSet Basic Example" code={OverflowSetBasicExampleCode}>
               <OverflowSetBasicExample />
             </ExampleCard>
-            <ExampleCard title='OverflowSet Vertical Example' code={ OverflowSetVerticalExampleCode }>
+            <ExampleCard title="OverflowSet Vertical Example" code={OverflowSetVerticalExampleCode}>
               <OverflowSetVerticalExample />
             </ExampleCard>
-            <ExampleCard title='OverflowSet Custom Example' code={ OverflowSetCustomExampleCode }>
+            <ExampleCard title="OverflowSet Custom Example" code={OverflowSetCustomExampleCode}>
               <OverflowSetCustomExample />
             </ExampleCard>
           </LayerHost>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/OverflowSet.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/OverflowSet.types.ts')]}
           />
         }
-        componentStatus={
-          <ComponentStatus
-            { ...OverflowSetStatus }
-          />
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={<ComponentStatus {...OverflowSetStatus} />}
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }

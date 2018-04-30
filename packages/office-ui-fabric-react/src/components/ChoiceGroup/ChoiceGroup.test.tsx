@@ -17,34 +17,18 @@ const TEST_OPTIONS: IChoiceGroupOption[] = [
 const QUERY_SELECTOR = '.ms-ChoiceField-input';
 
 describe('ChoiceGroup', () => {
-
   it('renders ChoiceGroup correctly', () => {
-    const component = renderer.create(
-      <ChoiceGroup
-        options={ TEST_OPTIONS }
-        required
-      />
-    );
+    const component = renderer.create(<ChoiceGroup options={TEST_OPTIONS} required />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('can change options', () => {
-    const options: IChoiceGroupOption[] = [
-      { key: '1', text: '1' },
-      { key: '2', text: '2' },
-      { key: '3', text: '3' }
-    ];
+    const options: IChoiceGroupOption[] = [{ key: '1', text: '1' }, { key: '2', text: '2' }, { key: '3', text: '3' }];
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
-        <ChoiceGroup
-          label='testgroup'
-          options={ options }
-          required={ true }
-        />
-      );
+      choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(<ChoiceGroup label="testgroup" options={options} required={true} />);
     } catch (e) {
       threwException = true;
     }
@@ -77,21 +61,11 @@ describe('ChoiceGroup', () => {
   });
 
   it('An individual choice option can be disabled', () => {
-    const options: IChoiceGroupOption[] = [
-      { key: '1', text: '1', disabled: true },
-      { key: '2', text: '2' },
-      { key: '3', text: '3' }
-    ];
+    const options: IChoiceGroupOption[] = [{ key: '1', text: '1', disabled: true }, { key: '2', text: '2' }, { key: '3', text: '3' }];
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
-        <ChoiceGroup
-          label='testgroup'
-          options={ options }
-          required={ true }
-        />
-      );
+      choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(<ChoiceGroup label="testgroup" options={options} required={true} />);
     } catch (e) {
       threwException = true;
     }
@@ -106,21 +80,12 @@ describe('ChoiceGroup', () => {
   });
 
   it('renders all choice options as disabled when disabled', () => {
-    const options: IChoiceGroupOption[] = [
-      { key: '1', text: '1' },
-      { key: '2', text: '2' },
-      { key: '3', text: '3' }
-    ];
+    const options: IChoiceGroupOption[] = [{ key: '1', text: '1' }, { key: '2', text: '2' }, { key: '3', text: '3' }];
     let threwException = false;
     let choiceGroup;
     try {
       choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
-        <ChoiceGroup
-          label='testgroup'
-          options={ options }
-          required={ true }
-          disabled={ true }
-        />
+        <ChoiceGroup label="testgroup" options={options} required={true} disabled={true} />
       );
     } catch (e) {
       threwException = true;
@@ -136,12 +101,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('can act as an uncontrolled component', () => {
-    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
-      <ChoiceGroup
-        defaultSelectedKey='1'
-        options={ TEST_OPTIONS }
-      />
-    );
+    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(<ChoiceGroup defaultSelectedKey="1" options={TEST_OPTIONS} />);
     const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
@@ -159,11 +119,7 @@ describe('ChoiceGroup', () => {
     };
 
     const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
-      <ChoiceGroup
-        selectedKey='1'
-        options={ TEST_OPTIONS }
-        onChange={ onChange }
-      />
+      <ChoiceGroup selectedKey="1" options={TEST_OPTIONS} onChange={onChange} />
     );
     const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
@@ -181,12 +137,7 @@ describe('ChoiceGroup', () => {
   it('extra <input> attributes appear in dom if specified', () => {
     const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
 
-    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
-      <ChoiceGroup
-        options={ TEST_OPTIONS }
-        onChange={ onChange }
-      />
-    );
+    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(<ChoiceGroup options={TEST_OPTIONS} onChange={onChange} />);
     const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 

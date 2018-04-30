@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  KeyCodes
-} from '../../../Utilities';
+import { BaseComponent, css, KeyCodes } from '../../../Utilities';
 import { IButton } from 'office-ui-fabric-react/lib/Button';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import {
@@ -21,7 +17,7 @@ const styles: any = stylesImport;
 export enum SuggestionItemType {
   header,
   suggestion,
-  footer,
+  footer
 }
 
 export interface ISuggestionsState {
@@ -31,40 +27,21 @@ export interface ISuggestionsState {
 
 export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
   public render(): JSX.Element {
-    const {
-      renderItem,
-      onExecute,
-      isSelected,
-      id,
-
-    } = this.props;
-    return (
-      onExecute ?
-        (
-          <button
-            id={ id }
-            onClick={ onExecute }
-            className={ css(
-              'ms-Suggestions-sectionButton',
-              styles.actionButton,
-              {
-                ['is-selected ' + styles.buttonSelected]:
-                isSelected
-              }) }
-          >
-            { renderItem() }
-          </button>
-        ) :
-        (
-          <div
-            id={ id }
-            className={ css(
-              'ms-Suggestions-section',
-              styles.suggestionsTitle) }
-          >
-            { renderItem() }
-          </div>
-        )
+    const { renderItem, onExecute, isSelected, id } = this.props;
+    return onExecute ? (
+      <button
+        id={id}
+        onClick={onExecute}
+        className={css('ms-Suggestions-sectionButton', styles.actionButton, {
+          ['is-selected ' + styles.buttonSelected]: isSelected
+        })}
+      >
+        {renderItem()}
+      </button>
+    ) : (
+      <div id={id} className={css('ms-Suggestions-section', styles.suggestionsTitle)}>
+        {renderItem()}
+      </div>
     );
   }
 }
@@ -73,20 +50,20 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
  * Class when used with SuggestionsStore, renders a suggestions control with customizable headers and footers
  */
 export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsState> {
-
   protected _forceResolveButton: IButton;
   protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   protected _suggestions: Suggestions<T>;
-  private SuggestionsOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
-  Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  private SuggestionsOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> = Suggestions as new (
+    props: ISuggestionsProps<T>
+  ) => Suggestions<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
 
     this.state = {
       selectedHeaderIndex: -1,
-      selectedFooterIndex: -1,
+      selectedFooterIndex: -1
     };
   }
 
@@ -107,22 +84,13 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public render(): JSX.Element {
-    const {
-      className,
-      headerItemsProps,
-      footerItemsProps
-    } = this.props;
+    const { className, headerItemsProps, footerItemsProps } = this.props;
 
     return (
-      <div
-        className={ css(
-          'ms-Suggestions',
-          className ? className : '',
-          styles.root) }
-      >
-        { headerItemsProps && this.renderHeaderItems() }
-        { this._renderSuggestions() }
-        { footerItemsProps && this.renderFooterItems() }
+      <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
+        {headerItemsProps && this.renderHeaderItems()}
+        {this._renderSuggestions()}
+        {footerItemsProps && this.renderFooterItems()}
       </div>
     );
   }
@@ -196,8 +164,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         this.selectPreviousItem(SuggestionItemType.footer);
         isKeyDownHandled = true;
       }
-    } else if (keyCode === KeyCodes.enter
-      || keyCode === KeyCodes.tab) {
+    } else if (keyCode === KeyCodes.enter || keyCode === KeyCodes.tab) {
       if (this.hasSelection()) {
         this.executeSelectedAction();
         isKeyDownHandled = true;
@@ -220,31 +187,32 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     return headerItemsProps ? (
       <div
-        className={ css('ms-Suggestions-headerContainer', styles.suggestionsContainer) }
-        id='suggestionHeader-list'
-        role='list'
-        aria-label={ suggestionsHeaderContainerAriaLabel }
+        className={css('ms-Suggestions-headerContainer', styles.suggestionsContainer)}
+        id="suggestionHeader-list"
+        role="list"
+        aria-label={suggestionsHeaderContainerAriaLabel}
       >
-        { headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+        {headerItemsProps.map((headerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
           const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
-          return (
-            headerItemProps.shouldShow() ? <div
-              ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }
-              id={ 'sug-header' + index }
-              role='listitem'
-              aria-label={ headerItemProps.ariaLabel }
+          return headerItemProps.shouldShow() ? (
+            <div
+              ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
+              id={'sug-header' + index}
+              role="listitem"
+              aria-label={headerItemProps.ariaLabel}
             >
               <SuggestionsHeaderFooterItem
-                id={ 'sug-header-item' + index }
-                isSelected={ isSelected }
-                renderItem={ headerItemProps.renderItem }
-                onExecute={ headerItemProps.onExecute }
-                className={ headerItemProps.className }
+                id={'sug-header-item' + index}
+                isSelected={isSelected}
+                renderItem={headerItemProps.renderItem}
+                onExecute={headerItemProps.onExecute}
+                className={headerItemProps.className}
               />
-            </div> : null
-          );
-        }) }
-      </div>) : null;
+            </div>
+          ) : null;
+        })}
+      </div>
+    ) : null;
   }
 
   protected renderFooterItems(): JSX.Element | null {
@@ -252,41 +220,38 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     const { selectedFooterIndex } = this.state;
     return footerItemsProps ? (
       <div
-        className={ css('ms-Suggestions-footerContainer', styles.suggestionsContainer) }
-        id='suggestionFooter-list'
-        role='list'
-        aria-label={ suggestionsFooterContainerAriaLabel }
+        className={css('ms-Suggestions-footerContainer', styles.suggestionsContainer)}
+        id="suggestionFooter-list"
+        role="list"
+        aria-label={suggestionsFooterContainerAriaLabel}
       >
-        { footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
+        {footerItemsProps.map((footerItemProps: ISuggestionsHeaderFooterProps, index: number) => {
           const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
-          return (
-            footerItemProps.shouldShow() ? <div
-              ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }
-              id={ 'sug-footer' + index }
-              role='listitem'
-              aria-label={ footerItemProps.ariaLabel }
+          return footerItemProps.shouldShow() ? (
+            <div
+              ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
+              id={'sug-footer' + index}
+              role="listitem"
+              aria-label={footerItemProps.ariaLabel}
             >
               <SuggestionsHeaderFooterItem
-                id={ 'sug-footer-item' + index }
-                isSelected={ isSelected }
-                renderItem={ footerItemProps.renderItem }
-                onExecute={ footerItemProps.onExecute }
-                className={ footerItemProps.className }
+                id={'sug-footer-item' + index}
+                isSelected={isSelected}
+                renderItem={footerItemProps.renderItem}
+                onExecute={footerItemProps.onExecute}
+                className={footerItemProps.className}
               />
-            </div> : null
-          );
-        }) }
-      </div>) : null;
+            </div>
+          ) : null;
+        })}
+      </div>
+    ) : null;
   }
 
   protected _renderSuggestions(): JSX.Element {
     const TypedSuggestions = this.SuggestionsOfProperType;
 
-    return (
-      <TypedSuggestions
-        ref={ this._resolveRef('_suggestions') }
-        { ...this.props as ISuggestionsProps<T>}
-      />);
+    return <TypedSuggestions ref={this._resolveRef('_suggestions')} {...this.props as ISuggestionsProps<T>} />;
   }
 
   /**
@@ -307,11 +272,11 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // If this is the original item type, use the current index
     const selectionChanged = this._selectNextItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined);
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+    );
 
     // If the selection did not change, try to select from the next suggestion type group
     if (!selectionChanged) {
-
       this.selectNextItem(this._getNextItemSectionType(itemType), startedItemType);
     }
   }
@@ -333,11 +298,11 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // Try to set the selection to the previous selectable item, of the same suggestion item type group
     const selectionChanged = this._selectPreviousItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined);
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+    );
 
     // If the selection did not change, try to select from the previous suggestion type group
     if (!selectionChanged) {
-
       this.selectPreviousItem(this._getPreviousItemSectionType(itemType), startedItemType);
     }
   }
@@ -419,11 +384,11 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   /**
- * Selects the previous item in the suggestion item type group, given the current index
- * If none is able to be selected, returns false, otherwise returns true
- * @param itemType The suggestion item type
- * @param currentIndex The current index. If none is provided, the default is the items length of specified type
- */
+   * Selects the previous item in the suggestion item type group, given the current index
+   * If none is able to be selected, returns false, otherwise returns true
+   * @param itemType The suggestion item type
+   * @param currentIndex The current index. If none is provided, the default is the items length of specified type
+   */
   private _selectPreviousItemOfItemType(itemType: SuggestionItemType, currentIndex?: number): boolean {
     if (itemType === SuggestionItemType.suggestion) {
       const index = currentIndex !== undefined ? currentIndex : this.props.suggestions.length;

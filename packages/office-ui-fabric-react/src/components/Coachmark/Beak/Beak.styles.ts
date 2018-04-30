@@ -22,10 +22,11 @@ export function getStyles(props: IBeakStylesProps): IBeakStyles {
         width: props.width,
         height: props.height
       },
-      (props.left && props.top) && {
-        left: props.left,
-        top: props.top
-      }
+      props.left &&
+        props.top && {
+          left: props.left,
+          top: props.top
+        }
     ],
     beak: {
       fill: DefaultPalette.themePrimary,

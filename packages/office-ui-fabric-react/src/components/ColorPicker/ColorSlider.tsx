@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, css, createRef } from '../../Utilities';
 import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -22,7 +18,7 @@ export interface IColorSliderProps {
 
 export interface IColorSliderState {
   isAdjusting?: boolean;
-  origin?: { x: number, originalValue: number };
+  origin?: { x: number; originalValue: number };
   currentValue?: number;
 }
 
@@ -62,17 +58,15 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     return (
       <div
-        ref={ this._root }
-        className={ css(
-          'ms-ColorPicker-slider',
-          styles.slider,
-          className,
-          isAdjusting && 'is-adjusting'
-        ) }
-        onMouseDown={ this._onMouseDown }
+        ref={this._root}
+        className={css('ms-ColorPicker-slider', styles.slider, className, isAdjusting && 'is-adjusting')}
+        onMouseDown={this._onMouseDown}
       >
-        <div className={ css('ms-ColorPicker-sliderOverlay', styles.sliderOverlay) } style={ overlayStyle } />
-        <div className={ css('ms-ColorPicker-thumb is-slider', styles.thumb, styles.thumbIsSlider) } style={ { left: currentPercentage + '%' } } />
+        <div className={css('ms-ColorPicker-sliderOverlay', styles.sliderOverlay)} style={overlayStyle} />
+        <div
+          className={css('ms-ColorPicker-thumb is-slider', styles.thumb, styles.thumbIsSlider)}
+          style={{ left: currentPercentage + '%' }}
+        />
       </div>
     );
   }
@@ -82,7 +76,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     this._events.on(window, 'mouseup', this._onMouseUp, true);
 
     this._onMouseMove(ev);
-  }
+  };
 
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     if (!this._root.current) {
@@ -106,7 +100,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     ev.preventDefault();
     ev.stopPropagation();
-  }
+  };
 
   private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.off();
@@ -115,6 +109,5 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
       isAdjusting: false,
       origin: undefined
     });
-  }
-
+  };
 }

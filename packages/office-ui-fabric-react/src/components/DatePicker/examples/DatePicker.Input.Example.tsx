@@ -4,55 +4,13 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
@@ -71,7 +29,6 @@ export interface IDatePickerInputExampleState {
 }
 
 export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
-
   constructor(props: {}) {
     super(props);
 
@@ -85,28 +42,31 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
     const { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
     return (
-      <div className='docs-DatePickerExample'>
-        <p>Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker, click the TextField again will dismiss the DatePicker and allow text input.</p>
+      <div className="docs-DatePickerExample">
+        <p>
+          Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker, click the TextField
+          again will dismiss the DatePicker and allow text input.
+        </p>
         <DatePicker
-          label='Start date'
-          isRequired={ false }
-          allowTextInput={ true }
-          ariaLabel={ desc }
-          firstDayOfWeek={ firstDayOfWeek }
-          strings={ DayPickerStrings }
-          value={ value! }
-          onSelectDate={ this._onSelectDate }
+          label="Start date"
+          isRequired={false}
+          allowTextInput={true}
+          ariaLabel={desc}
+          firstDayOfWeek={firstDayOfWeek}
+          strings={DayPickerStrings}
+          value={value!}
+          onSelectDate={this._onSelectDate}
         />
-        <DefaultButton onClick={ this._onClick } text='Clear' />
+        <DefaultButton onClick={this._onClick} text="Clear" />
       </div>
     );
   }
 
   private _onSelectDate = (date: Date | null | undefined): void => {
     this.setState({ value: date });
-  }
+  };
 
   private _onClick = (): void => {
     this.setState({ value: null });
-  }
+  };
 }

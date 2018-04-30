@@ -1,16 +1,8 @@
 import { IExpandingCardStyles } from './ExpandingCard.types';
 import { memoizeFunction } from '../../Utilities';
-import {
-  concatStyleSets,
-  ITheme,
-  HighContrastSelector
-} from '../../Styling';
+import { concatStyleSets, ITheme, HighContrastSelector } from '../../Styling';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IExpandingCardStyles
-): IExpandingCardStyles => {
-
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IExpandingCardStyles): IExpandingCardStyles => {
   const styles: IExpandingCardStyles = {
     root: {
       width: '340px',
@@ -21,7 +13,7 @@ export const getStyles = memoizeFunction((
           border: 'none',
           selectors: {
             [HighContrastSelector]: {
-              border: '1px solid WindowText',
+              border: '1px solid WindowText'
             }
           }
         }

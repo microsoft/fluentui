@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  classNamesFunction
-} from '../../../Utilities';
+import { BaseComponent, css, classNamesFunction } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
@@ -19,12 +15,7 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
   }
 
   public render(): JSX.Element {
-    const {
-      height = 18,
-      width = 18,
-      left,
-      top
-    } = this.props;
+    const { height = 18, width = 18, left, top } = this.props;
 
     const getClassNames = classNamesFunction<IBeakStylesProps, IBeakStyles>();
     const classNames = getClassNames(getStyles, {
@@ -39,15 +30,9 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
     const pointThree = 0 + ',' + height;
 
     return (
-      <div
-        className={ css('ms-Beak', classNames.root) }
-      >
-        <svg
-          height={ height }
-          width={ width }
-          className={ classNames.beak }
-        >
-          <polygon points={ pointOne + ' ' + pointTwo + ' ' + pointThree } />
+      <div className={css('ms-Beak', classNames.root)}>
+        <svg height={height} width={width} className={classNames.beak}>
+          <polygon points={pointOne + ' ' + pointTwo + ' ' + pointThree} />
         </svg>
       </div>
     );

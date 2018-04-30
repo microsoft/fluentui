@@ -1,20 +1,12 @@
 import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets
-} from '../../../Styling';
+import { ITheme, concatStyleSets } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
+import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles
-): IButtonStyles => {
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const actionButtonStyles: IButtonStyles = {
     root: {
@@ -25,7 +17,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
-      color: theme.palette.themePrimary,
+      color: theme.palette.themePrimary
     },
 
     iconHovered: {
@@ -33,7 +25,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootPressed: {
-      color: theme.palette.black,
+      color: theme.palette.black
     },
 
     rootExpanded: {
@@ -50,7 +42,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootChecked: {
-      color: theme.palette.black,
+      color: theme.palette.black
     },
 
     iconChecked: {
@@ -76,7 +68,6 @@ export const getStyles = memoizeFunction((
     textContainer: {
       flexGrow: 0
     }
-
   };
 
   return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;

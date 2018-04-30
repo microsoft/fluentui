@@ -1,15 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import {
-  BaseComponent,
-  KeyCodes,
-  getId,
-  getNativeProps,
-  inputProperties,
-  css,
-  createRef
-} from '../../../../Utilities';
+import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, css, createRef } from '../../../../Utilities';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
@@ -38,8 +30,9 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   constructor(props: IEditingSelectedPeopleItemProps) {
     super(props);
     this.state = { contextualMenuVisible: false };
-    this._onRenderFloatingPicker = this.props.onRenderFloatingPicker as
-      (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
+    this._onRenderFloatingPicker = this.props.onRenderFloatingPicker as (
+      props: IBaseFloatingPickerProps<IExtendedPersonaProps>
+    ) => JSX.Element;
     this._floatingPickerProps = this.props.floatingPickerProps as IBaseFloatingPickerProps<IExtendedPersonaProps>;
   }
 
@@ -55,52 +48,56 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     const itemId = getId();
     const nativeProps = getNativeProps(this.props, inputProperties);
     return (
-      <div aria-labelledby={ 'editingItemPersona-' + itemId } className={ css('ms-EditingItem', styles.editingContainer) }>
+      <div aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
         <input
-          { ...nativeProps }
-          ref={ this._resolveInputRef }
-          autoCapitalize={ 'off' }
-          autoComplete={ 'off' }
-          onChange={ this._onInputChange }
-          onKeyDown={ this._onInputKeyDown }
-          onBlur={ this._onInputBlur }
-          onClick={ this._onInputClick }
-          data-lpignore={ true }
-          className={ styles.editingInput }
-          id={ itemId }
+          {...nativeProps}
+          ref={this._resolveInputRef}
+          autoCapitalize={'off'}
+          autoComplete={'off'}
+          onChange={this._onInputChange}
+          onKeyDown={this._onInputKeyDown}
+          onBlur={this._onInputBlur}
+          onClick={this._onInputClick}
+          data-lpignore={true}
+          className={styles.editingInput}
+          id={itemId}
         />
-        { this._renderEditingSuggestions() }
-      </div>);
+        {this._renderEditingSuggestions()}
+      </div>
+    );
   }
 
   private _renderEditingSuggestions = (): JSX.Element => {
     const onRenderFloatingPicker = this._onRenderFloatingPicker;
-    return (onRenderFloatingPicker({
+    return onRenderFloatingPicker({
       componentRef: this._editingFloatingPicker,
       onChange: this._onSuggestionSelected,
       inputElement: this._editingInput,
       selectedItems: [],
       ...this._floatingPickerProps
-    }));
-  }
+    });
+  };
 
   private _resolveInputRef = (ref: HTMLInputElement): void => {
     this._editingInput = ref;
 
-    this.forceUpdate(() => { this._editingInput.focus(); });
-  }
+    this.forceUpdate(() => {
+      this._editingInput.focus();
+    });
+  };
 
   private _onInputClick = (): void => {
     this._editingFloatingPicker.current && this._editingFloatingPicker.current.showPicker(true /*updatevalue*/);
-  }
+  };
 
   private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (this._editingFloatingPicker.current &&
+    if (
+      this._editingFloatingPicker.current &&
       (ev.relatedTarget === null || (ev.relatedTarget as HTMLElement).className.indexOf('ms-SearchMore-button') === -1)
     ) {
       this._editingFloatingPicker.current.forceResolveSuggestion();
     }
-  }
+  };
 
   private _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
     const value: string = (ev.target as HTMLInputElement).value;
@@ -112,7 +109,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     } else {
       this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(value);
     }
-  }
+  };
 
   private _onInputKeyDown(ev: React.KeyboardEvent<HTMLInputElement>): void {
     if (ev.which === KeyCodes.backspace || ev.which === KeyCodes.del) {
@@ -122,5 +119,5 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
 
   private _onSuggestionSelected = (item: IExtendedPersonaProps): void => {
     this.props.onEditingComplete(this.props.item, item);
-  }
+  };
 }

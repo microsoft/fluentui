@@ -2,20 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  HoverCard,
-  IExpandingCardProps
-} from 'office-ui-fabric-react/lib/HoverCard';
+import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
-import {
-  IColumn,
-  DetailsList,
-  buildColumns,
-  SelectionMode,
-  Toggle,
-  IDetailsRowProps,
-  DetailsRow
-} from 'office-ui-fabric-react';
+import { IColumn, DetailsList, buildColumns, SelectionMode, Toggle, IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react';
 import { Shimmer } from '@uifabric/experiments/lib/Shimmer';
 import './Shimmer.Example.scss';
 
@@ -32,30 +21,30 @@ export interface IItem {
   height: number;
 }
 
-const fileIcons: { name: string; }[] = [
-  { 'name': 'accdb' },
-  { 'name': 'csv' },
-  { 'name': 'docx' },
-  { 'name': 'dotx' },
-  { 'name': 'mpp' },
-  { 'name': 'mpt' },
-  { 'name': 'odp' },
-  { 'name': 'ods' },
-  { 'name': 'odt' },
-  { 'name': 'one' },
-  { 'name': 'onepkg' },
-  { 'name': 'onetoc' },
-  { 'name': 'potx' },
-  { 'name': 'ppsx' },
-  { 'name': 'pptx' },
-  { 'name': 'pub' },
-  { 'name': 'vsdx' },
-  { 'name': 'vssx' },
-  { 'name': 'vstx' },
-  { 'name': 'xls' },
-  { 'name': 'xlsx' },
-  { 'name': 'xltx' },
-  { 'name': 'xsn' }
+const fileIcons: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpp' },
+  { name: 'mpt' },
+  { name: 'odp' },
+  { name: 'ods' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'potx' },
+  { name: 'ppsx' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'vssx' },
+  { name: 'vstx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xltx' },
+  { name: 'xsn' }
 ];
 
 const ITEMS_COUNT = 500;
@@ -89,53 +78,41 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      columns,
-      isDataLoaded,
-      isModalSelection,
-      isCompactMode
-    } = this.state;
+    const { items, columns, isDataLoaded, isModalSelection, isCompactMode } = this.state;
 
     return (
       <div>
-        <div className='shimmerExample-toggleButtons'>
-          <div className='shimmerExample-flexGroup'>
+        <div className="shimmerExample-toggleButtons">
+          <div className="shimmerExample-flexGroup">
             <Toggle
-              label='Enable Modal Selection'
-              checked={ isModalSelection }
-              onChanged={ this._onChangeModalSelection }
-              onText='Modal'
-              offText='Normal'
+              label="Enable Modal Selection"
+              checked={isModalSelection}
+              onChanged={this._onChangeModalSelection}
+              onText="Modal"
+              offText="Normal"
             />
             <Toggle
-              label='Enable Compact Mode'
-              checked={ isCompactMode }
-              onChanged={ this._onChangeCompactMode }
-              onText='Compact'
-              offText='Normal'
+              label="Enable Compact Mode"
+              checked={isCompactMode}
+              onChanged={this._onChangeCompactMode}
+              onText="Compact"
+              offText="Normal"
             />
           </div>
           <span>Toggle the Load data switch to start async simulation.</span>
-          <Toggle
-            label='Load data switch'
-            checked={ isDataLoaded }
-            onChanged={ this._onLoadData }
-            onText='Loaded'
-            offText='Loading...'
-          />
+          <Toggle label="Load data switch" checked={isDataLoaded} onChanged={this._onLoadData} onText="Loaded" offText="Loading..." />
         </div>
-        <div className='shimmerExample-application'>
+        <div className="shimmerExample-application">
           <DetailsList
-            setKey='items'
-            items={ items! }
-            columns={ columns }
-            compact={ isCompactMode }
-            selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
-            onRenderItemColumn={ this._onRenderItemColumn }
-            onRenderMissingItem={ this._onRenderMissingItem }
-            enableShimmer={ true }
-            listProps={ { renderedWindowsAhead: 0, renderedWindowsBehind: 0 } }
+            setKey="items"
+            items={items!}
+            columns={columns}
+            compact={isCompactMode}
+            selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            onRenderItemColumn={this._onRenderItemColumn}
+            onRenderMissingItem={this._onRenderMissingItem}
+            enableShimmer={true}
+            listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
           />
         </div>
       </div>
@@ -147,13 +124,11 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     isDataLoaded && this._onDataMiss(index as number);
 
     return (
-      <Shimmer
-        isBaseStyle={ true }
-      >
-        <DetailsRow { ...rowProps } shimmer={ true } />
+      <Shimmer isBaseStyle={true}>
+        <DetailsRow {...rowProps} shimmer={true} />
       </Shimmer>
     );
-  }
+  };
 
   // Simulating asynchronus data loading each 2.5 sec
   private _onDataMiss = (index: number): void => {
@@ -170,7 +145,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         });
       }, PAGING_DELAY);
     }
-  }
+  };
 
   private _onLoadData = (checked: boolean): void => {
     if (!_items) {
@@ -191,15 +166,15 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       isDataLoaded: checked,
       items: items
     });
-  }
+  };
 
   private _onChangeModalSelection = (checked: boolean): void => {
     this.setState({ isModalSelection: checked });
-  }
+  };
 
   private _onChangeCompactMode = (checked: boolean): void => {
     this.setState({ isCompactMode: checked });
-  }
+  };
 
   private _onRenderItemColumn = (item: IItem, index: number, column: IColumn): JSX.Element | string | number => {
     const expandingCardProps: IExpandingCardProps = {
@@ -210,50 +185,40 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
 
     if (column.key === 'key') {
       return (
-        <HoverCard id='myID1' expandingCardProps={ expandingCardProps } instantOpenOnClick={ true }>
-          <div className='HoverCard-item'>
-            { item.key }
-          </div>
+        <HoverCard id="myID1" expandingCardProps={expandingCardProps} instantOpenOnClick={true}>
+          <div className="HoverCard-item">{item.key}</div>
         </HoverCard>
       );
     }
 
     if (column.key === 'thumbnail') {
-      return (
-        <img
-          src={ item.thumbnail }
-        />
-      );
+      return <img src={item.thumbnail} />;
     }
 
     return item[column.key];
-  }
+  };
 
   private _onRenderCompactCard = (item: IItem): JSX.Element => {
     return (
-      <div className='hoverCardExample-compactCard'>
-        <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
-          { item.location }
+      <div className="hoverCardExample-compactCard">
+        <a target="_blank" href={`http://wikipedia.org/wiki/${item.location}`}>
+          {item.location}
         </a>
       </div>
     );
-  }
+  };
 
   private _onRenderExpandedCard = (item: IItem): JSX.Element => {
     const { items, columns } = this.state;
     return (
-      <div className='hoverCardExample-expandedCard'>
-        { item.description }
-        <DetailsList
-          setKey='expandedCardSet'
-          items={ items! }
-          columns={ columns }
-        />
+      <div className="hoverCardExample-expandedCard">
+        {item.description}
+        <DetailsList setKey="expandedCardSet" items={items!} columns={columns} />
       </div>
     );
-  }
+  };
 
-  private _randomFileIcon(): { docType: string; url: string; } {
+  private _randomFileIcon(): { docType: string; url: string } {
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,

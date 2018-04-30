@@ -5,7 +5,6 @@ import { CommandBar } from './CommandBar';
 import { mount } from 'enzyme';
 
 describe('CommandBar', () => {
-
   afterEach(() => {
     for (let i = 0; i < document.body.children.length; i++) {
       if (document.body.children[i].tagName === 'DIV') {
@@ -16,21 +15,15 @@ describe('CommandBar', () => {
   });
 
   it('renders commands correctly', () => {
-    expect(renderer.create(
-      <CommandBar
-        items={ [
-          { key: '1', name: 'asdf' },
-          { key: '2', name: 'asdf' }
-        ] }
-        className={ 'TestClassName' }
-      />
-    ).toJSON()).toMatchSnapshot();
+    expect(
+      renderer.create(<CommandBar items={[{ key: '1', name: 'asdf' }, { key: '2', name: 'asdf' }]} className={'TestClassName'} />).toJSON()
+    ).toMatchSnapshot();
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
     const commandBar = mount(
       <CommandBar
-        items={ [
+        items={[
           {
             name: 'TestText 1',
             key: 'TestKey1',
@@ -44,8 +37,8 @@ describe('CommandBar', () => {
                 }
               ]
             }
-          },
-        ] }
+          }
+        ]}
       />
     );
 
@@ -61,7 +54,7 @@ describe('CommandBar', () => {
   it('keeps menu open after update if item is still present', () => {
     const commandBar = mount(
       <CommandBar
-        items={ [
+        items={[
           {
             name: 'TestText 1',
             key: 'TestKey1',
@@ -74,8 +67,8 @@ describe('CommandBar', () => {
                 }
               ]
             }
-          },
-        ] }
+          }
+        ]}
       />
     );
 
@@ -103,7 +96,7 @@ describe('CommandBar', () => {
   it('closes menu after update if item is not longer present', () => {
     const commandBar = mount(
       <CommandBar
-        items={ [
+        items={[
           {
             name: 'TestText 1',
             key: 'TestKey1',
@@ -116,8 +109,8 @@ describe('CommandBar', () => {
                 }
               ]
             }
-          },
-        ] }
+          }
+        ]}
       />
     );
 
@@ -151,14 +144,10 @@ describe('CommandBar', () => {
             }
           ]
         }
-      },
+      }
     ];
 
-    const commandBar = mount(
-      <CommandBar
-        items={ items }
-      />
-    );
+    const commandBar = mount(<CommandBar items={items} />);
 
     const menuItem = commandBar.find('button');
 
@@ -178,5 +167,4 @@ describe('CommandBar', () => {
     // Make sure the menu is still open after the re-render
     expect(document.querySelector('.SubMenuClassUpdate')).toBeDefined();
   });
-
 });

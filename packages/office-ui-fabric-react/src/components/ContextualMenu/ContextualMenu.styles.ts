@@ -1,12 +1,4 @@
-import {
-  FontSizes,
-  FontWeights,
-  IRawStyle,
-  ITheme,
-  concatStyleSets,
-  getFocusStyle,
-  HighContrastSelector
-} from '../../Styling';
+import { FontSizes, FontWeights, IRawStyle, ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 
 import { memoizeFunction } from '../../Utilities';
@@ -22,13 +14,11 @@ const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
         color: 'HighlightText',
         MsHighContrastAdjust: 'none'
       }
-    },
+    }
   };
 });
 
-export const getMenuItemStyles = memoizeFunction((
-  theme: ITheme,
-): IMenuItemStyles => {
+export const getMenuItemStyles = memoizeFunction((theme: ITheme): IMenuItemStyles => {
   const { semanticColors, fonts } = theme;
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
@@ -40,8 +30,9 @@ export const getMenuItemStyles = memoizeFunction((
       {
         color: semanticColors.bodyText,
         position: 'relative',
-        boxSizing: 'border-box',
-      }],
+        boxSizing: 'border-box'
+      }
+    ],
     divider: {
       display: 'block',
       height: '1px',
@@ -61,13 +52,13 @@ export const getMenuItemStyles = memoizeFunction((
         display: 'block',
         cursor: 'pointer',
         padding: '0px 6px',
-        textAlign: 'left',
-      },
+        textAlign: 'left'
+      }
     ],
     rootDisabled: {
       color: semanticColors.disabledBodyText,
       cursor: 'default',
-      pointerEvents: 'none',
+      pointerEvents: 'none'
     },
     rootHovered: {
       backgroundColor: ContextualMenuItemBackgroundHoverColor,
@@ -124,13 +115,13 @@ export const getMenuItemStyles = memoizeFunction((
       width: '14px',
       margin: '0 4px',
       verticalAlign: 'middle',
-      flexShrink: '0',
+      flexShrink: '0'
     },
     iconColor: {
       color: semanticColors.menuIcon,
       selectors: {
         [HighContrastSelector]: {
-          color: 'inherit',
+          color: 'inherit'
         },
         ['$root:hover &']: {
           selectors: {
@@ -149,13 +140,13 @@ export const getMenuItemStyles = memoizeFunction((
       }
     },
     iconDisabled: {
-      color: semanticColors.disabledBodyText,
+      color: semanticColors.disabledBodyText
     },
     checkmarkIcon: {
       color: semanticColors.bodySubtext,
       selectors: {
         [HighContrastSelector]: {
-          color: 'HighlightText',
+          color: 'HighlightText'
         }
       }
     },
@@ -176,16 +167,15 @@ export const getMenuItemStyles = memoizeFunction((
         flexWrap: 'nowrap',
         justifyContent: 'center',
         alignItems: 'center'
-      }],
+      }
+    ],
     splitButtonSeparator: {}
   };
 
   return concatStyleSets(menuItemStyles);
 });
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-): IContextualMenuStyles => {
+export const getStyles = memoizeFunction((theme: ITheme): IContextualMenuStyles => {
   const { semanticColors, fonts } = theme;
 
   const ContextualMenuBackground = semanticColors.bodyBackground;
@@ -194,16 +184,14 @@ export const getStyles = memoizeFunction((
   const styles: IContextualMenuStyles = {
     root: {
       backgroundColor: ContextualMenuBackground,
-      minWidth: '180px',
+      minWidth: '180px'
     },
-    container: {
-
-    },
+    container: {},
     list: {
       listStyleType: 'none',
       margin: '0',
       padding: '0',
-      lineHeight: '0',
+      lineHeight: '0'
     },
     title: {
       fontSize: '16px',
@@ -226,9 +214,9 @@ export const getStyles = memoizeFunction((
         cursor: 'default',
         padding: '0px 6px',
         userSelect: 'none',
-        textAlign: 'left',
+        textAlign: 'left'
       }
-    ],
+    ]
   };
   return concatStyleSets(styles);
 });

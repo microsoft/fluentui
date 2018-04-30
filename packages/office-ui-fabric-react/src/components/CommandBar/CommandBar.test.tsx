@@ -8,7 +8,6 @@ import { CommandBar } from './CommandBar';
 import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.types';
 
 describe('CommandBar', () => {
-
   afterEach(() => {
     for (let i = 0; i < document.body.children.length; i++) {
       if (document.body.children[i].tagName === 'DIV') {
@@ -32,11 +31,9 @@ describe('CommandBar', () => {
             }
           ]
         }
-      },
+      }
     ];
-    const component = renderer.create(
-      <CommandBar items={ items } />
-    );
+    const component = renderer.create(<CommandBar items={items} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -60,20 +57,16 @@ describe('CommandBar', () => {
       {
         name: 'TestText 2',
         key: 'TestKey2',
-        className: 'item2',
+        className: 'item2'
       },
       {
         name: 'TestText 3',
         key: 'TestKey3',
-        className: 'item3',
-      },
+        className: 'item3'
+      }
     ];
 
-    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
-      <CommandBar
-        items={ items }
-      />
-    ) as React.Component<CommandBar, {}>;
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(<CommandBar items={items} />) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent) as Element);
 
     const [item1, item2, item3] = ['.item1', '.item2', '.item3'].map(i => document.querySelector(i)!.children[0]);
@@ -97,14 +90,10 @@ describe('CommandBar', () => {
             className: 'SubMenuClass'
           }
         ]
-      },
+      }
     ];
 
-    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
-      <CommandBar
-        items={ items }
-      />
-    ) as React.Component<CommandBar, {}>;
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(<CommandBar items={items} />) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent) as Element);
 
     const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
@@ -127,14 +116,10 @@ describe('CommandBar', () => {
             }
           ]
         }
-      },
+      }
     ];
 
-    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
-      <CommandBar
-        items={ items }
-      />
-    ) as React.Component<CommandBar, {}>;
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(<CommandBar items={items} />) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent) as Element);
 
     const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
@@ -161,15 +146,10 @@ describe('CommandBar', () => {
               }
             ]
           }
-        },
+        }
       ];
 
-      let renderedContent = ReactDOM.render(
-        <CommandBar
-          items={ items }
-        />,
-        renderContainer
-      ) as React.Component<CommandBar, {}>;
+      let renderedContent = ReactDOM.render(<CommandBar items={items} />, renderContainer) as React.Component<CommandBar, {}>;
 
       const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuItem);
@@ -183,12 +163,7 @@ describe('CommandBar', () => {
         key: 'TestKey2'
       });
 
-      renderedContent = ReactDOM.render(
-        <CommandBar
-          items={ items }
-        />,
-        renderContainer
-      ) as React.Component<CommandBar, {}>;
+      renderedContent = ReactDOM.render(<CommandBar items={items} />, renderContainer) as React.Component<CommandBar, {}>;
 
       // Make sure the menu is still open after the re-render
       expect(document.querySelector('.SubMenuClass')).toBeDefined();
@@ -216,15 +191,10 @@ describe('CommandBar', () => {
               }
             ]
           }
-        },
+        }
       ];
 
-      let renderedContent = ReactDOM.render(
-        <CommandBar
-          items={ items }
-        />,
-        renderContainer
-      ) as React.Component<CommandBar, {}>;
+      let renderedContent = ReactDOM.render(<CommandBar items={items} />, renderContainer) as React.Component<CommandBar, {}>;
 
       const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuItem);
@@ -233,17 +203,14 @@ describe('CommandBar', () => {
       expect(document.querySelector('.SubMenuClass')).toBeDefined();
 
       // Update the props, and re-render
-      items = [{
-        name: 'Test Key 2',
-        key: 'TestKey2'
-      }];
+      items = [
+        {
+          name: 'Test Key 2',
+          key: 'TestKey2'
+        }
+      ];
 
-      renderedContent = ReactDOM.render(
-        <CommandBar
-          items={ items }
-        />,
-        renderContainer
-      ) as React.Component<CommandBar, {}>;
+      renderedContent = ReactDOM.render(<CommandBar items={items} />, renderContainer) as React.Component<CommandBar, {}>;
 
       // Make sure the menu is still open after the re-render
       expect(document.querySelector('.SubMenuClass')).toBeNull();
@@ -271,15 +238,10 @@ describe('CommandBar', () => {
               }
             ]
           }
-        },
+        }
       ];
 
-      let renderedContent = ReactDOM.render(
-        <CommandBar
-          items={ items }
-        />,
-        renderContainer
-      ) as React.Component<CommandBar, {}>;
+      let renderedContent = ReactDOM.render(<CommandBar items={items} />, renderContainer) as React.Component<CommandBar, {}>;
 
       const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuItem);
@@ -290,12 +252,7 @@ describe('CommandBar', () => {
       // Update the props, and re-render
       items[0].subMenuProps!.items[0].className = 'SubMenuClassUpdate';
 
-      renderedContent = ReactDOM.render(
-        <CommandBar
-          items={ items }
-        />,
-        renderContainer
-      ) as React.Component<CommandBar, {}>;
+      renderedContent = ReactDOM.render(<CommandBar items={items} />, renderContainer) as React.Component<CommandBar, {}>;
 
       // Make sure the menu is still open after the re-render
       expect(document.querySelector('.SubMenuClass')).toBeNull();
@@ -314,14 +271,13 @@ describe('CommandBar', () => {
         subMenuProps: {
           items: []
         }
-      },
+      }
     ];
 
-    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
-      <CommandBar
-        items={ menuWithNoSubmenu }
-      />
-    ) as React.Component<CommandBar, {}>;
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(<CommandBar items={menuWithNoSubmenu} />) as React.Component<
+      CommandBar,
+      {}
+    >;
     const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
 
     expect(menuItem.querySelector('.ms-CommandBarItem-chevronDown')).not.toEqual(null);
@@ -345,11 +301,10 @@ describe('CommandBar', () => {
       }
     ];
 
-    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
-      <CommandBar
-        items={ menuWithEmptySubMenu }
-      />
-    ) as React.Component<CommandBar, {}>;
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(<CommandBar items={menuWithEmptySubMenu} />) as React.Component<
+      CommandBar,
+      {}
+    >;
 
     const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
 
@@ -357,5 +312,4 @@ describe('CommandBar', () => {
 
     expect(subMenuOpened).toEqual(true);
   });
-
 });

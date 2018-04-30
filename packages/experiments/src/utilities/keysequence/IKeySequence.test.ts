@@ -9,7 +9,6 @@ import {
 import { ktpFullPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 
 describe('IKeySequence', () => {
-
   describe('keySequencesAreEqual', () => {
     it('empty key', () => {
       const seq1: IKeySequence = { keys: ['a'] };
@@ -130,9 +129,7 @@ describe('IKeySequence', () => {
     it('for multiple complex key sequences', () => {
       const complexKeySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
       const keytipID = convertSequencesToKeytipID(complexKeySequences);
-      expect(keytipID).toEqual(ktpFullPrefix + 'a' +
-        ktpSeparator + 'n' + ktpSeparator +
-        'c' + ktpSeparator + 'b');
+      expect(keytipID).toEqual(ktpFullPrefix + 'a' + ktpSeparator + 'n' + ktpSeparator + 'c' + ktpSeparator + 'b');
     });
   });
 

@@ -6,13 +6,8 @@ export class CommandBarNonFocusableItemsExample extends React.Component<any, any
   public render(): JSX.Element {
     return (
       <div>
-        <CommandBar
-          isSearchBoxVisible={ false }
-          items={ itemsNonFocusable }
-          farItems={ farItemsNonFocusable }
-        />
+        <CommandBar isSearchBoxVisible={false} items={itemsNonFocusable} farItems={farItemsNonFocusable} />
       </div>
     );
   }
-
 }

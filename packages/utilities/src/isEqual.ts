@@ -5,7 +5,8 @@
  * @param itemB Second item to compare to first item.
  * @returns {boolean} True if items are the same or false if not.
  */
-export const isEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-line no-any
+// tslint:disable-next-line:no-any
+export const isEqual = (itemA: any, itemB: any): boolean => {
   // First, a simple check for strings and numbers
   if (typeof itemA === 'string' || typeof itemA === 'number') {
     if (itemA === itemB) {
@@ -30,7 +31,8 @@ export const isEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-
     return false;
   }
   // Compare two items
-  const compare = (item1: any, item2: any) => {  // tslint:disable-line no-any
+  // tslint:disable-next-line:no-any
+  const compare = (item1: any, item2: any) => {
     // Get the object type
     const itemType = Object.prototype.toString.call(item1);
     // If an object or array, compare recursively
@@ -80,6 +82,7 @@ export const isEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-
  * @param itemB Second item to compare to first item.
  * @returns {boolean} True if items are NOT the same or false if they are.
  */
-export const isNotEqual = (itemA: any, itemB: any): boolean => { // tslint:disable-line no-any
+// tslint:disable-next-line:no-any
+export const isNotEqual = (itemA: any, itemB: any): boolean => {
   return !isEqual(itemA, itemB);
 };

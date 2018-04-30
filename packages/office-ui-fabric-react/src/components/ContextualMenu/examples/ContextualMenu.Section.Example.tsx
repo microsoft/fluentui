@@ -4,16 +4,14 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuSectionExample extends React.Component<any, any> {
-
   public render(): JSX.Element {
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton1'
-          text='Click for ContextualMenu'
-          menuProps={ {
-            items:
-            [
+          id="ContextualMenuButton1"
+          text="Click for ContextualMenu"
+          menuProps={{
+            items: [
               {
                 key: 'section',
                 itemType: ContextualMenuItemType.Section,
@@ -24,11 +22,11 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                   items: [
                     {
                       key: 'newItem',
-                      name: 'New',
+                      name: 'New'
                     },
                     {
                       key: 'deleteItem',
-                      name: 'Delete',
+                      name: 'Delete'
                     }
                   ]
                 }
@@ -49,8 +47,8 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                     },
                     {
                       key: 'music',
-                      name: 'Music',
-                    },
+                      name: 'Music'
+                    }
                   ]
                 }
               },
@@ -69,8 +67,7 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                 }
               }
             ]
-          }
-          }
+          }}
         />
       </div>
     );

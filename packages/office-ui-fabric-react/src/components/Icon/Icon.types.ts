@@ -5,7 +5,6 @@ import { IBaseProps } from '../../Utilities';
 
 // Please keep alphabetized
 export enum IconType {
-
   /**
    * Render using the fabric icon font.
    */

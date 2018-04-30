@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  css,
-  BaseComponent,
-  createRef,
-  getNativeProps,
-  divProperties,
-  focusFirstChild,
-  elementContains
-} from '../../Utilities';
+import { css, BaseComponent, createRef, getNativeProps, divProperties, focusFirstChild, elementContains } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -16,7 +8,6 @@ import * as stylesImport from './OverflowSet.scss';
 const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
-
   private _focusZone = createRef<IFocusZone>();
   private _divContainer = createRef<HTMLDivElement>();
 
@@ -25,21 +16,13 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
     if (props.doNotContainWithinFocusZone) {
       this._warnMutuallyExclusive({
-        'doNotContainWithinFocusZone': 'focusZoneProps'
+        doNotContainWithinFocusZone: 'focusZoneProps'
       });
     }
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      overflowItems,
-      className,
-      focusZoneProps,
-      vertical = false,
-      role = 'menubar',
-      doNotContainWithinFocusZone
-    } = this.props;
+    const { items, overflowItems, className, focusZoneProps, vertical = false, role = 'menubar', doNotContainWithinFocusZone } = this.props;
 
     let Tag;
     let uniqueComponentProps;
@@ -62,17 +45,12 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
     return (
       <Tag
-        { ...uniqueComponentProps }
-        className={ mergeStyles(
-          'ms-OverflowSet',
-          styles.root,
-          vertical && styles.rootVertical,
-          className
-        ) }
-        role={ role }
+        {...uniqueComponentProps}
+        className={mergeStyles('ms-OverflowSet', styles.root, vertical && styles.rootVertical, className)}
+        role={role}
       >
-        { items && this._onRenderItems(items) }
-        { overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems) }
+        {items && this._onRenderItems(items)}
+        {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
       </Tag>
     );
   }
@@ -126,20 +104,15 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
 
       return (
-        <div key={ item.key } { ...wrapperDivProps }>
-          { this.props.onRenderItem(item) }
+        <div key={item.key} {...wrapperDivProps}>
+          {this.props.onRenderItem(item)}
         </div>
       );
     });
-  }
+  };
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
-    return (
-      <div { ...wrapperDivProps }>
-        { this.props.onRenderOverflowButton(items) }
-      </div>
-    );
-  }
-
+    return <div {...wrapperDivProps}>{this.props.onRenderOverflowButton(items)}</div>;
+  };
 }

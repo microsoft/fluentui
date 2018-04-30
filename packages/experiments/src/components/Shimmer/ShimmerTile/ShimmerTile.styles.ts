@@ -1,11 +1,7 @@
-import {
-  IShimmerTileStyleProps,
-  IShimmerTileStyles
-} from './ShimmerTile.types';
+import { IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 
 export function getStyles(props: IShimmerTileStyleProps): IShimmerTileStyles {
-  const {
-  } = props;
+  const {} = props;
 
   return {
     root: [
@@ -15,7 +11,7 @@ export function getStyles(props: IShimmerTileStyleProps): IShimmerTileStyles {
         height: '100%',
         display: 'flex',
         flexDirection: 'column'
-      },
+      }
     ],
     flexDiv: [
       'ms-ShimmerTile-flexRow',

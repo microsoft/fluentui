@@ -1,4 +1,3 @@
-
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPoint } from './positioning.types';
 import { IRectangle } from '../../Utilities';
@@ -28,9 +27,9 @@ export interface IPositionProps {
   /** The gap between the callout and the target */
   gapSpace?: number;
   /**
-  * @deprecated this will be removed in 6.0 and will only be available in ICalloutPositionProps.
-  * The width of the beak.
-  */
+   * @deprecated this will be removed in 6.0 and will only be available in ICalloutPositionProps.
+   * The width of the beak.
+   */
   beakWidth?: number;
   /**
    * The bounding rectangle for which  the contextual menu can appear in.
@@ -56,8 +55,8 @@ export interface IPositionProps {
 
 export interface ICalloutPositionProps extends IPositionProps {
   /**
-  * The width of the beak.
-  */
+   * The width of the beak.
+   */
   beakWidth?: number;
   /**
    * @deprecated this will be removed in 6.0 and will only be available in ICalloutPositionProps.
@@ -110,8 +109,7 @@ export interface IPosition {
  * @deprecated use IPosition instead.
  * This will be removed in 6.0
  */
-export interface ICalloutPositon extends IPosition {
-}
+export interface ICalloutPositon extends IPosition {}
 
 export interface IPoint {
   x: number;
@@ -128,13 +126,11 @@ export interface IPositionDirectionalHintData {
  * @deprecated Do not use this will be removed in 6.0.
  * Use IPositionDirectionalHintData instead
  */
-export interface IPositionedData extends IPositionDirectionalHintData {
-
-}
+export interface IPositionedData extends IPositionDirectionalHintData {}
 
 export interface IRelativePositions {
   calloutPosition: ICalloutPositon;
-  beakPosition: { position: IPosition | undefined, display: 'block' };
+  beakPosition: { position: IPosition | undefined; display: 'block' };
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }

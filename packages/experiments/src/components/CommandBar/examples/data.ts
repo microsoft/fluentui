@@ -4,7 +4,7 @@ export const items = [
     name: 'New',
     cacheKey: 'myCacheKey',
     iconProps: {
-      iconName: 'Add',
+      iconName: 'Add'
     },
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
@@ -14,7 +14,7 @@ export const items = [
           key: 'emailMessage',
           name: 'Email message',
           iconProps: {
-            iconName: 'Mail',
+            iconName: 'Mail'
           },
           ['data-automation-id']: 'newEmailButton'
         },
@@ -23,16 +23,16 @@ export const items = [
           name: 'Calendar event',
           iconProps: {
             iconName: 'Calendar'
-          },
+          }
         }
-      ],
-    },
+      ]
+    }
   },
   {
     key: 'upload',
     name: 'Upload',
     iconProps: {
-      iconName: 'Upload',
+      iconName: 'Upload'
     },
     href: 'https://dev.office.com/fabric',
     ['data-automation-id']: 'uploadButton'
@@ -41,17 +41,21 @@ export const items = [
     key: 'share',
     name: 'Share',
     iconProps: {
-      iconName: 'Share',
+      iconName: 'Share'
     },
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'download',
     name: 'Download',
     iconProps: {
-      iconName: 'Download',
+      iconName: 'Download'
     },
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   }
 ];
 
@@ -61,21 +65,21 @@ export const overflowItems = [
     name: 'Move to...',
     iconProps: {
       iconName: 'MoveToFolder'
-    },
+    }
   },
   {
     key: 'copy',
     name: 'Copy to...',
     iconProps: {
       iconName: 'Copy'
-    },
+    }
   },
   {
     key: 'rename',
     name: 'Rename...',
     iconProps: {
       iconName: 'Edit'
-    },
+    }
   }
 ];
 
@@ -84,26 +88,32 @@ export const farItems = [
     key: 'sort',
     name: 'Sort',
     iconProps: {
-      iconName: 'SortLines',
+      iconName: 'SortLines'
     },
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'tile',
     name: 'Grid view',
     iconProps: {
-      iconName: 'Tiles',
+      iconName: 'Tiles'
     },
     iconOnly: true,
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   },
   {
     key: 'info',
     name: 'Info',
     iconProps: {
-      iconName: 'Info',
+      iconName: 'Info'
     },
     iconOnly: true,
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   }
 ];

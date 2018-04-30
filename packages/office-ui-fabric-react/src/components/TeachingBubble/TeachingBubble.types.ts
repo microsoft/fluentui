@@ -6,9 +6,7 @@ import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
 
-export interface ITeachingBubble {
-
-}
+export interface ITeachingBubble {}
 
 /**
  * TeachingBubble component props.

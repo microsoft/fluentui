@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { LinkBase } from './Link.base';
 
-import {
-  IStyle,
-  ITheme
-} from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface ILink {

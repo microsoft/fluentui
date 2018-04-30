@@ -1,7 +1,6 @@
 import { memoize, memoizeFunction } from './memoize';
 
 describe('memoizeFunction', () => {
-
   it('can return a cached result with a no args function', () => {
     let _timesCalled = 0;
     let memoizeFunctiondTimesCalled = memoizeFunction(() => ++_timesCalled);
@@ -13,7 +12,7 @@ describe('memoizeFunction', () => {
   it('can return a cached result with a 2 arg function', () => {
     let _timesCalled = 0;
     // tslint:disable-next-line:no-any
-    let combine = memoizeFunction((obj1: any, obj2: any) => (obj1.val + obj2.val + ++_timesCalled));
+    let combine = memoizeFunction((obj1: any, obj2: any) => obj1.val + obj2.val + ++_timesCalled);
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -28,7 +27,7 @@ describe('memoizeFunction', () => {
   it('can return a cached result with falsy args', () => {
     let _timesCalled = 0;
     // tslint:disable-next-line:no-any
-    let combine = memoizeFunction((obj1: any, obj2: any) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
+    let combine = memoizeFunction((obj1: any, obj2: any) => (obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled);
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -40,10 +39,7 @@ describe('memoizeFunction', () => {
 
   it('works if you pass less arguments on subsequent calls', () => {
     let count = 0;
-    let func = memoizeFunction((
-      a: string = '',
-      b: string = ''
-    ) => a + b + count++);
+    let func = memoizeFunction((a: string = '', b: string = '') => a + b + count++);
 
     expect(func('hi', 'world')).toEqual('hiworld0');
     expect(func('hi', 'world')).toEqual('hiworld0');
@@ -55,10 +51,7 @@ describe('memoizeFunction', () => {
 
   it('works if you pass more arguments on subsequent calls', () => {
     let count = 0;
-    let func = memoizeFunction((
-      a: string = '',
-      b: string = ''
-    ) => a + b + count++);
+    let func = memoizeFunction((a: string = '', b: string = '') => a + b + count++);
 
     expect(func()).toEqual('0');
     expect(func()).toEqual('0');
@@ -70,9 +63,7 @@ describe('memoizeFunction', () => {
 
   it('resets after resetCount limit is reached.', () => {
     let count = 0;
-    let func = memoizeFunction((
-      a: string
-    ) => a + count++, 1);
+    let func = memoizeFunction((a: string) => a + count++, 1);
 
     expect(func('a')).toEqual('a0');
     expect(func('a')).toEqual('a0');
@@ -83,16 +74,13 @@ describe('memoizeFunction', () => {
     expect(func('a')).toEqual('a4');
     expect(func('a')).toEqual('a4');
   });
-
 });
 
 describe('memoize', () => {
-
   it('can work on multiple instances of a class', () => {
     let _count = 0;
 
     class Foo {
-
       @memoize
       public bar(val: string): string {
         return val + _count++;
@@ -106,5 +94,4 @@ describe('memoize', () => {
     expect(f.bar('bye')).toEqual('bye1');
     expect(f.bar('bye')).toEqual('bye1');
   });
-
 });

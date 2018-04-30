@@ -1,11 +1,6 @@
 /* tslint:disable:no-string-literal */
 
-import {
-  elementContainsAttribute,
-  elementContains,
-  getDocument,
-  getWindow
-} from './dom';
+import { elementContainsAttribute, elementContains, getDocument, getWindow } from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
@@ -20,8 +15,8 @@ const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 export function getFirstFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement | null {
-
+  includeElementsInFocusZones?: boolean
+): HTMLElement | null {
   return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
 }
 
@@ -33,8 +28,8 @@ export function getFirstFocusable(
 export function getLastFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement | null {
-
+  includeElementsInFocusZones?: boolean
+): HTMLElement | null {
   return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
 }
 
@@ -46,8 +41,8 @@ export function getLastFocusable(
 export function getLastTabbable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement | null {
-
+  includeElementsInFocusZones?: boolean
+): HTMLElement | null {
   return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones, false, true);
 }
 
@@ -58,8 +53,7 @@ export function getLastTabbable(
  * @param rootElement - Element to start the search for a focusable child.
  * @returns True if focus was set, false if it was not.
  */
-export function focusFirstChild(
-  rootElement: HTMLElement): boolean {
+export function focusFirstChild(rootElement: HTMLElement): boolean {
   let element: HTMLElement | null = getNextElement(rootElement, rootElement, true, false, false, true);
 
   if (element) {
@@ -82,18 +76,20 @@ export function getPreviousElement(
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean,
-  tabbable?: boolean): HTMLElement | null {
-
-  if (!currentElement ||
-    (!allowFocusRoot && currentElement === rootElement)) {
+  tabbable?: boolean
+): HTMLElement | null {
+  if (!currentElement || (!allowFocusRoot && currentElement === rootElement)) {
     return null;
   }
 
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check its children.
-  if (traverseChildren && isCurrentElementVisible &&
-    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))) {
+  if (
+    traverseChildren &&
+    isCurrentElementVisible &&
+    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))
+  ) {
     const childMatch = getPreviousElement(
       rootElement,
       currentElement.lastElementChild as HTMLElement,
@@ -102,10 +98,11 @@ export function getPreviousElement(
       true,
       includeElementsInFocusZones,
       allowFocusRoot,
-      tabbable);
+      tabbable
+    );
 
     if (childMatch) {
-      if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
+      if ((tabbable && isElementTabbable(childMatch, true)) || !tabbable) {
         return childMatch;
       }
 
@@ -164,7 +161,8 @@ export function getPreviousElement(
     true,
     includeElementsInFocusZones,
     allowFocusRoot,
-    tabbable);
+    tabbable
+  );
 
   if (siblingMatch) {
     return siblingMatch;
@@ -172,8 +170,16 @@ export function getPreviousElement(
 
   // Check its parent.
   if (!suppressParentTraversal) {
-    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones,
-      allowFocusRoot, tabbable);
+    return getPreviousElement(
+      rootElement,
+      currentElement.parentElement,
+      true,
+      false,
+      false,
+      includeElementsInFocusZones,
+      allowFocusRoot,
+      tabbable
+    );
   }
 
   return null;
@@ -191,11 +197,9 @@ export function getNextElement(
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
   includeElementsInFocusZones?: boolean,
-  allowFocusRoot?: boolean): HTMLElement | null {
-
-  if (
-    !currentElement ||
-    (currentElement === rootElement && suppressChildTraversal && !allowFocusRoot)) {
+  allowFocusRoot?: boolean
+): HTMLElement | null {
+  if (!currentElement || (currentElement === rootElement && suppressChildTraversal && !allowFocusRoot)) {
     return null;
   }
 
@@ -207,8 +211,11 @@ export function getNextElement(
   }
 
   // Check its children.
-  if (!suppressChildTraversal && isCurrentElementVisible &&
-    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))) {
+  if (
+    !suppressChildTraversal &&
+    isCurrentElementVisible &&
+    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))
+  ) {
     const childMatch = getNextElement(
       rootElement,
       currentElement.firstElementChild as HTMLElement,
@@ -216,7 +223,8 @@ export function getNextElement(
       true,
       false,
       includeElementsInFocusZones,
-      allowFocusRoot);
+      allowFocusRoot
+    );
 
     if (childMatch) {
       return childMatch;
@@ -235,15 +243,15 @@ export function getNextElement(
     true,
     false,
     includeElementsInFocusZones,
-    allowFocusRoot);
+    allowFocusRoot
+  );
 
   if (siblingMatch) {
     return siblingMatch;
   }
 
   if (!suppressParentTraversal) {
-    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones,
-      allowFocusRoot);
+    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones, allowFocusRoot);
   }
 
   return null;
@@ -268,10 +276,12 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
   }
 
   // Fallback to other methods of determining actual visibility.
-  return (element.offsetHeight !== 0 ||
+  return (
+    element.offsetHeight !== 0 ||
     element.offsetParent !== null ||
     // tslint:disable-next-line:no-any
-    (element as any).isVisible === true); // used as a workaround for testing.
+    (element as any).isVisible === true
+  ); // used as a workaround for testing.
 }
 
 /**
@@ -280,7 +290,6 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
  * @public
  */
 export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean): boolean {
-
   // If this element is null or is disabled, it is not considered tabbable.
   if (!element || (element as HTMLButtonElement).disabled) {
     return false;
@@ -300,18 +309,18 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
   let isFocusableAttribute = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
   let isTabIndexSet = tabIndexAttributeValue !== null && tabIndex >= 0;
 
-  const result = !!element &&
+  const result =
+    !!element &&
     isFocusableAttribute !== 'false' &&
     (element.tagName === 'A' ||
-      (element.tagName === 'BUTTON') ||
-      (element.tagName === 'INPUT') ||
-      (element.tagName === 'TEXTAREA') ||
+      element.tagName === 'BUTTON' ||
+      element.tagName === 'INPUT' ||
+      element.tagName === 'TEXTAREA' ||
       isFocusableAttribute === 'true' ||
       isTabIndexSet ||
-      element.getAttribute && element.getAttribute('role') === 'button'
-    );
+      (element.getAttribute && element.getAttribute('role') === 'button'));
 
-  return checkTabIndex ? (tabIndex !== -1) && result : result;
+  return checkTabIndex ? tabIndex !== -1 && result : result;
 }
 
 /**
@@ -339,7 +348,7 @@ export function isElementFocusSubZone(element?: HTMLElement): boolean {
  */
 export function doesElementContainFocus(element: HTMLElement): boolean {
   let document = getDocument(element);
-  let currentActiveElement: HTMLElement | undefined = document && document.activeElement as HTMLElement;
+  let currentActiveElement: HTMLElement | undefined = document && (document.activeElement as HTMLElement);
   if (currentActiveElement && elementContains(element, currentActiveElement)) {
     return true;
   }
@@ -353,7 +362,6 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
  * @returns true if focus should wrap, false otherwise
  */
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
-
   return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
 }
 

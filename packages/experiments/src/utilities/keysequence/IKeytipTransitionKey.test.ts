@@ -2,7 +2,6 @@ import { IKeytipTransitionKey, transitionKeysAreEqual, transitionKeysContain } f
 import { KeytipTransitionModifier } from '../../Keytip';
 
 describe('IKeytipTransitionKey', () => {
-
   describe('transitionKeysAreEqual', () => {
     it('key only equality', () => {
       const key1: IKeytipTransitionKey = { key: 'a' };

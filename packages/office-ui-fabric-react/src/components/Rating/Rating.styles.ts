@@ -1,9 +1,4 @@
-import {
-  getFocusStyle,
-  hiddenContentStyle,
-  HighContrastSelector,
-  getGlobalClassNames,
-} from '../../Styling';
+import { getFocusStyle, hiddenContentStyle, HighContrastSelector, getGlobalClassNames } from '../../Styling';
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const GlobalClassNames = {
@@ -14,19 +9,13 @@ const GlobalClassNames = {
   rootIsSmall: 'ms-Rating--small',
   rootIsLarge: 'ms-Rating--large',
   labelText: 'ms-Rating-labelText',
-  ratingFocusZone: 'ms-Rating-focuszone',
+  ratingFocusZone: 'ms-Rating-focuszone'
 };
 
 export function getStyles(props: IRatingStyleProps): IRatingStyles {
-  const {
-    disabled,
-    theme
-  } = props;
+  const { disabled, theme } = props;
 
-  const {
-    semanticColors,
-    palette
-  } = theme;
+  const { semanticColors, palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -70,7 +59,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         color: semanticColors.bodyTextChecked,
         selectors: {
           [HighContrastSelector]: {
-            'color': 'Highlight'
+            color: 'Highlight'
           }
         }
       }
@@ -96,7 +85,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       },
       disabled && {
         cursor: 'default'
-      },
+      }
     ],
     rootIsSmall: [
       classNames.rootIsSmall,
@@ -112,10 +101,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         lineHeight: ratingLargeIconSize
       }
     ],
-    labelText: [
-      classNames.labelText,
-      hiddenContentStyle
-    ],
+    labelText: [classNames.labelText, hiddenContentStyle],
     ratingFocusZone: [
       classNames.ratingFocusZone,
       {

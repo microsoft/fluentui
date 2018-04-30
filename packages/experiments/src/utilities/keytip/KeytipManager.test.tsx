@@ -30,18 +30,17 @@ describe('KeytipManager', () => {
     // Create layer
     defaultKeytipLayer = mount(
       <KeytipLayer
-        id={ layerID }
-        keytipStartSequences={ keytipStartSequences }
-        keytipReturnSequences={ keytipReturnSequences }
-        keytipExitSequences={ keytipExitSequences }
-        onEnterKeytipMode={ onEnterKeytipMode }
-        onExitKeytipMode={ onExitKeytipMode }
+        id={layerID}
+        keytipStartSequences={keytipStartSequences}
+        keytipReturnSequences={keytipReturnSequences}
+        keytipExitSequences={keytipExitSequences}
+        onEnterKeytipMode={onEnterKeytipMode}
+        onExitKeytipMode={onExitKeytipMode}
       />
     );
   });
 
   describe('getAriaDescribedBy', () => {
-
     it('returns just the layer ID when an empty sequence is passed in', () => {
       const keySequence: IKeySequence[] = [];
       const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequence);
@@ -63,22 +62,21 @@ describe('KeytipManager', () => {
     it('for multiple singular key sequences', () => {
       const keySequences: IKeySequence[] = [{ keys: ['b'] }, { keys: ['c'] }];
       const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
-      expect(ariaDescribedBy).toEqual(layerID +
-        ' ' + convertSequencesToKeytipID([keySequences[0]]) +
-        ' ' + convertSequencesToKeytipID(keySequences));
+      expect(ariaDescribedBy).toEqual(
+        layerID + ' ' + convertSequencesToKeytipID([keySequences[0]]) + ' ' + convertSequencesToKeytipID(keySequences)
+      );
     });
 
     it('for multiple complex key sequences', () => {
       const keySequences: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
       const ariaDescribedBy = keytipManager.getAriaDescribedBy(keySequences);
-      expect(ariaDescribedBy).toEqual(layerID +
-        ' ' + convertSequencesToKeytipID([keySequences[0]]) +
-        ' ' + convertSequencesToKeytipID(keySequences));
+      expect(ariaDescribedBy).toEqual(
+        layerID + ' ' + convertSequencesToKeytipID([keySequences[0]]) + ' ' + convertSequencesToKeytipID(keySequences)
+      );
     });
   });
 
   describe('processInput tests', () => {
-
     beforeEach(() => {
       keytipManager.keytipTree = populateTreeMap(keytipManager.keytipTree, layerID);
     });
@@ -180,7 +178,6 @@ describe('KeytipManager', () => {
   });
 
   describe('registerKeytip', () => {
-
     it('should automatically show Keytip when currentKeytip is its parent', () => {
       // Create keytip b
       const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
@@ -314,8 +311,13 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   return keytipTree;
 }
 
-function createTreeNode(id: string, parentId: string, childrenIds: string[],
-  sequence: IKeySequence, hasChildren?: boolean): IKeytipTreeNode {
+function createTreeNode(
+  id: string,
+  parentId: string,
+  childrenIds: string[],
+  sequence: IKeySequence,
+  hasChildren?: boolean
+): IKeytipTreeNode {
   return {
     id,
     parent: parentId,

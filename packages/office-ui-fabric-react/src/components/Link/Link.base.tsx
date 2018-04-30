@@ -8,12 +8,7 @@ import {
   getNativeProps,
   createRef
 } from '../../Utilities';
-import {
-  ILink,
-  ILinkProps,
-  ILinkStyleProps,
-  ILinkStyles
-} from './Link.types';
+import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
@@ -33,26 +28,26 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 
     const anchorElement: JSX.Element = (
       <a
-        { ...getNativeProps(this.props, anchorProperties) }
-        className={ classNames.root }
-        onClick={ this._onClick }
-        ref={ this._link }
-        target={ this.props.target }
-        aria-disabled={ disabled }
+        {...getNativeProps(this.props, anchorProperties)}
+        className={classNames.root}
+        onClick={this._onClick}
+        ref={this._link}
+        target={this.props.target}
+        aria-disabled={disabled}
       >
-        { children }
+        {children}
       </a>
     );
 
     const buttonElement: JSX.Element = (
       <button
-        { ...getNativeProps(this.props, buttonProperties) }
-        className={ classNames.root }
-        onClick={ this._onClick }
-        ref={ this._link }
-        aria-disabled={ disabled }
+        {...getNativeProps(this.props, buttonProperties)}
+        className={classNames.root}
+        onClick={this._onClick}
+        ref={this._link}
+        aria-disabled={disabled}
       >
-        { children }
+        {children}
       </button>
     );
 
@@ -73,5 +68,5 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     } else if (onClick) {
       onClick(ev);
     }
-  }
+  };
 }

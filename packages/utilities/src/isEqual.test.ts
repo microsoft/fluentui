@@ -104,7 +104,7 @@ describe('isEquals and isNotEquals function helper', () => {
     // Set up strings to compare
     const stringBase = 'This is a string';
     const stringControl = 'This is a string';
-    const stringDifferentValues = 'This is a string that isn\'t the same';
+    const stringDifferentValues = "This is a string that isn't the same";
 
     describe('isEqual', () => {
       it('returns true with strings with the same values', () => {

@@ -65,7 +65,6 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
 }
 
 export interface IBreadcrumbItem {
-
   /**
    * Text to display to the user for the breadcrumb
    */

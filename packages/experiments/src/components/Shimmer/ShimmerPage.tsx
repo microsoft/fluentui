@@ -1,77 +1,52 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
 import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 
-const ShimmerBasicExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx'
-) as string;
+const ShimmerBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
 
-const ShimmerLoadDataExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx'
-) as string;
+const ShimmerLoadDataExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
-const ShimmerApplicationExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Application.Example.tsx'
-) as string;
+const ShimmerApplicationExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 
 export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Shimmer'
-        componentName='ShimmerExample'
+        title="Shimmer"
+        componentName="ShimmerExample"
         exampleCards={
           <div>
-            <ExampleCard
-              title='Basic Shimmer'
-              code={ ShimmerBasicExampleCode }
-            >
+            <ExampleCard title="Basic Shimmer" code={ShimmerBasicExampleCode}>
               <ShimmerBasicExample />
             </ExampleCard>
-            <ExampleCard
-              title='Enabling Data Shimmer'
-              code={ ShimmerLoadDataExampleCode }
-            >
+            <ExampleCard title="Enabling Data Shimmer" code={ShimmerLoadDataExampleCode}>
               <ShimmerLoadDataExample />
             </ExampleCard>
             <ExampleCard
-              title='Details List with 500 items loading in async way and having enabled Shimmer.'
-              code={ ShimmerApplicationExampleCode }
+              title="Details List with 500 items loading in async way and having enabled Shimmer."
+              code={ShimmerApplicationExampleCode}
             >
               <ShimmerApplicationExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Shimmer/Shimmer.types.ts')
-            ] }
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Shimmer/Shimmer.types.ts')]} />
         }
         overview={
           <div>
-            <p>
-              Shimmer is a temporary animation placeholder for the upcoming data from an API call
-            </p>
+            <p>Shimmer is a temporary animation placeholder for the upcoming data from an API call</p>
           </div>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <div>
             <ul>
               <li>
-                When construncting a shimmer line using different elements like Circle, Line or Gap, best if providing widths for each
-                of them to experience a better layout looking as close as possible to real data it is replacing.
+                When construncting a shimmer line using different elements like Circle, Line or Gap, best if providing widths for each of
+                them to experience a better layout looking as close as possible to real data it is replacing.
               </li>
               <li>
                 Try avoiding multiple shimmer lines of different widths. Each shimmer line is it's own animation and it is dependent on the
@@ -83,13 +58,11 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div>
             <ul>
-              <li>
-                Do not try using on the same element both types of widths. It will always default to just one of them.
-              </li>
+              <li>Do not try using on the same element both types of widths. It will always default to just one of them.</li>
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }

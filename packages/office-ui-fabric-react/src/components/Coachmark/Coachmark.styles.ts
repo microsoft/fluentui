@@ -1,10 +1,4 @@
-import {
-  IStyle,
-  keyframes,
-  PulsingBeaconAnimationStyles,
-  ITheme,
-  getTheme
-} from '../../Styling';
+import { IStyle, keyframes, PulsingBeaconAnimationStyles, ITheme, getTheme } from '../../Styling';
 
 export interface ICoachmarkStyleProps {
   /**
@@ -61,8 +55,8 @@ export interface ICoachmarkStyleProps {
 
 export interface ICoachmarkStyles {
   /**
-  * Style for the root element in the default enabled/unchecked state.
-  */
+   * Style for the root element in the default enabled/unchecked state.
+   */
   root?: IStyle;
 
   /**
@@ -218,8 +212,7 @@ export const rotateOne: string = keyframes({
   }
 });
 
-export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(),
-): ICoachmarkStyles {
+export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme()): ICoachmarkStyles {
   const animationInnerDimension = '35px';
   const animationOuterDimension = '150px';
   const animationBorderWidth = '10px';
@@ -252,7 +245,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         borderStyle: 'solid',
         opacity: '0'
       },
-      (props.collapsed && props.isBeaconAnimating) && ContinuousPulseAnimation
+      props.collapsed && props.isBeaconAnimating && ContinuousPulseAnimation
     ],
     // Translate Animation Layer
     translateAnimationContainer: [
@@ -270,7 +263,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         animationName: translateOne,
         transition: 'opacity 0.5s ease-in-out'
       },
-      (!props.collapsed) && {
+      !props.collapsed && {
         opacity: '1'
       }
     ],
@@ -339,13 +332,13 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         transformOrigin: 'top left',
         transform: 'scale(0)'
       },
-      (!props.collapsed) && {
+      !props.collapsed && {
         width: props.entityHostWidth,
         height: props.entityHostHeight,
         transform: 'scale(1)'
       },
-      (!props.isMeasuring) && {
-        visibility: 'visible',
+      !props.isMeasuring && {
+        visibility: 'visible'
       }
     ]
   };

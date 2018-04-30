@@ -4,7 +4,9 @@ export const itemsNonFocusable = [
     name: 'New',
     icon: 'Add',
     ariaLabel: 'New. Use left and right arrow keys to navigate',
-    onClick: () => { return; },
+    onClick: () => {
+      return;
+    },
     items: [
       {
         key: 'emailMessage',
@@ -22,7 +24,9 @@ export const itemsNonFocusable = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    onClick: () => { return; },
+    onClick: () => {
+      return;
+    },
     ['data-automation-id']: 'uploadNonFocusButton'
   }
 ];
@@ -38,6 +42,8 @@ export const farItemsNonFocusable = [
     key: 'publish',
     name: 'Publish',
     icon: 'ReadingMode',
-    onClick: () => { return; }
+    onClick: () => {
+      return;
+    }
   }
 ];

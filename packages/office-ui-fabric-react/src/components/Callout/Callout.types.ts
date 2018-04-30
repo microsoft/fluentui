@@ -1,15 +1,10 @@
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import {
-  IPoint,
-  IRectangle
-} from '../../Utilities';
+import { IPoint, IRectangle } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { IStyleFunction } from '../../Utilities';
 
-export interface ICallout {
-
-}
+export interface ICallout {}
 
 export interface ICalloutProps {
   /**
@@ -176,9 +171,9 @@ export interface ICalloutProps {
   setInitialFocus?: boolean;
 
   /**
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    * @deprecated
-    */
+   * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+   * @deprecated
+   */
   beakStyle?: string;
 
   /**
@@ -224,8 +219,8 @@ export interface ICalloutContentStyleProps {
   calloutWidth?: number;
 
   /**
- * CSS class to apply to the callout.
- */
+   * CSS class to apply to the callout.
+   */
   className?: string;
 
   /**
@@ -256,9 +251,9 @@ export interface ICalloutContentStyleProps {
   beakWidth?: number;
 
   /**
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    * @deprecated
-    */
+   * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+   * @deprecated
+   */
   beakStyle?: string;
 }
 
@@ -269,22 +264,22 @@ export interface ICalloutContentStyles {
   container: IStyle;
 
   /**
-  * Style for callout container root element.
-  */
+   * Style for callout container root element.
+   */
   root: IStyle;
 
   /**
-  * Style for callout beak.
-  */
+   * Style for callout beak.
+   */
   beak: IStyle;
 
   /**
-  * Style for callout beak curtain.
-  */
+   * Style for callout beak curtain.
+   */
   beakCurtain: IStyle;
 
   /**
-  * Style for content component of the callout.
-  */
+   * Style for content component of the callout.
+   */
   calloutMain: IStyle;
 }

@@ -1,20 +1,12 @@
 import { ICheckboxStyles } from './Checkbox.types';
-import {
-  ITheme,
-  concatStyleSets,
-  getFocusStyle,
-  FontSizes
-} from '../../Styling';
+import { ITheme, concatStyleSets, getFocusStyle, FontSizes } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
 const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
 const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: ICheckboxStyles
-): ICheckboxStyles => {
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: ICheckboxStyles): ICheckboxStyles => {
   const { semanticColors, palette } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
@@ -41,7 +33,7 @@ export const getStyles = memoizeFunction((
         margin: '0',
         outline: 'none',
         display: 'block',
-        cursor: 'pointer',
+        cursor: 'pointer'
       }
     ],
     label: {
@@ -80,10 +72,10 @@ export const getStyles = memoizeFunction((
       overflow: 'hidden'
     },
     checkboxHovered: {
-      borderColor: checkboxBorderHoveredColor,
+      borderColor: checkboxBorderHoveredColor
     },
     checkboxFocused: {
-      borderColor: checkboxBorderHoveredColor,
+      borderColor: checkboxBorderHoveredColor
     },
     checkboxChecked: {
       background: checkboxBackgroundChecked,
@@ -111,11 +103,10 @@ export const getStyles = memoizeFunction((
     checkmarkChecked: {
       opacity: '1'
     },
-    checkmarkDisabled: {
-    },
+    checkmarkDisabled: {},
     checkmarkCheckedDisabled: {
       opacity: '1',
-      color: checkmarkFontColorCheckedDisabled,
+      color: checkmarkFontColorCheckedDisabled
     },
     text: {
       color: checkboxTextColor,
@@ -123,13 +114,13 @@ export const getStyles = memoizeFunction((
       fontSize: FontSizes.medium
     },
     textHovered: {
-      color: palette.black,
+      color: palette.black
     },
     textFocused: {
-      color: palette.black,
+      color: palette.black
     },
     textDisabled: {
-      color: checkboxTextColorDisabled,   // ms-fontColor-neutralTertiary
+      color: checkboxTextColorDisabled // ms-fontColor-neutralTertiary
     }
   };
 

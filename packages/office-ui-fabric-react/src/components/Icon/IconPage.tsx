@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 import { IconBasicExample } from './examples/Icon.Basic.Example';
 import { IconSvgExample } from './examples/Icon.Svg.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
@@ -22,57 +16,37 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Icon'
-        componentName='IconExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Icon'
+        title="Icon"
+        componentName="IconExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Icon"
         exampleCards={
           <div>
-            <ExampleCard title='Icon' code={ IconBasicExampleCode }>
+            <ExampleCard title="Icon" code={IconBasicExampleCode}>
               <IconBasicExample />
             </ExampleCard>
-            <ExampleCard title='Icon with custom color' code={ IconColorExampleCode }>
+            <ExampleCard title="Icon with custom color" code={IconColorExampleCode}>
               <IconColorExample />
             </ExampleCard>
-            <ExampleCard title='Icon using custom svg' code={ IconSvgExampleCode }>
+            <ExampleCard title="Icon using custom svg" code={IconSvgExampleCode}>
               <IconSvgExample />
             </ExampleCard>
-            <ExampleCard title='Icon using image sheet' code={ IconImageSheetExampleCode }>
+            <ExampleCard title="Icon using image sheet" code={IconImageSheetExampleCode}>
               <IconImageSheetExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
+        allowNativeProps={true}
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')
-            ] }
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')]} />
         }
         overview={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md') }
-          </PageMarkdown>
+          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md')}</PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
-        dos={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md') }
-          </PageMarkdown>
-        }
-        donts={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md') }
-          </PageMarkdown>
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...IconStatus }
-          />
-        }
+        bestPractices={<div />}
+        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md')}</PageMarkdown>}
+        donts={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md')}</PageMarkdown>}
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...IconStatus} />}
       />
     );
   }

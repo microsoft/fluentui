@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ComponentPage,
-  ExampleCard,
-  IComponentDemoPageProps,
-  PropertiesTableSet,
-  PageMarkdown,
-} from '@uifabric/example-app-base';
+import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
 import { items } from '../CommandBar/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
@@ -26,59 +20,46 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
 
     return (
       <ComponentPage
-        title='Callout'
-        componentName='CalloutExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Callout'
+        title="Callout"
+        componentName="CalloutExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Callout"
         exampleCards={
           <div>
-            <ExampleCard title='Default Callout' code={ CalloutBasicExampleCode }>
+            <ExampleCard title="Default Callout" code={CalloutBasicExampleCode}>
               <CalloutBasicExample />
             </ExampleCard>
-            <ExampleCard title='Nested Callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
-              <CalloutNestedExample { ...cmdBarParamsTextAndIcons } />
+            <ExampleCard title="Nested Callout... Callout with a commandbar with a sub menu" code={CalloutNestedExampleCode}>
+              <CalloutNestedExample {...cmdBarParamsTextAndIcons} />
             </ExampleCard>
-            <ExampleCard title='Callout with directional hint' code={ CalloutDirectionalExampleCode }>
+            <ExampleCard title="Callout with directional hint" code={CalloutDirectionalExampleCode}>
               <CalloutDirectionalExample />
             </ExampleCard>
-            <ExampleCard title='Callout with cover' code={ CalloutCoverExampleCode }>
+            <ExampleCard title="Callout with cover" code={CalloutCoverExampleCode}>
               <CalloutCoverExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <div>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
-              ] }
-            />
-            <p>Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
+            <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')]} />
+            <p>
+              Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and{' '}
+              <code>a</code> components accept.
+            </p>
           </div>
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
-        dos={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md') }
-          </PageMarkdown>
-        }
+        bestPractices={<div />}
+        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md')}</PageMarkdown>}
         donts={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md') }
-          </PageMarkdown>
+          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md')}</PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...CalloutStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...CalloutStatus} />}
       />
     );
   }

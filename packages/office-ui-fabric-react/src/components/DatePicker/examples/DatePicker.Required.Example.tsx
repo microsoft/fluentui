@@ -1,61 +1,15 @@
 import * as React from 'react';
-import {
-  DatePicker,
-  DayOfWeek,
-  IDatePickerStrings
-} from 'office-ui-fabric-react/lib/DatePicker';
+import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
@@ -85,10 +39,21 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
     const { firstDayOfWeek } = this.state;
 
     return (
-      <div className='docs-DatePickerExample'>
+      <div className="docs-DatePickerExample">
         <p>Validation will happen when Date Picker loses focus.</p>
-        <DatePicker label='Date required (with label)' isRequired={ true } firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
-        <DatePicker isRequired={ true } firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Date required with no label...' />
+        <DatePicker
+          label="Date required (with label)"
+          isRequired={true}
+          firstDayOfWeek={firstDayOfWeek}
+          strings={DayPickerStrings}
+          placeholder="Select a date..."
+        />
+        <DatePicker
+          isRequired={true}
+          firstDayOfWeek={firstDayOfWeek}
+          strings={DayPickerStrings}
+          placeholder="Date required with no label..."
+        />
       </div>
     );
   }

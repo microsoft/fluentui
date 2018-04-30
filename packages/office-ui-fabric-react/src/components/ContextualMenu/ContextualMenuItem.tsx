@@ -5,11 +5,7 @@ import { Icon } from '../../Icon';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 const renderItemIcon = (props: IContextualMenuItemProps) => {
-  const {
-    item,
-    hasIcons,
-    classNames
-  } = props;
+  const { item, hasIcons, classNames } = props;
 
   // Only present to allow continued use of item.icon which is deprecated.
   const { iconProps, icon } = item;
@@ -19,16 +15,14 @@ const renderItemIcon = (props: IContextualMenuItemProps) => {
   }
 
   if (item.onRenderIcon) {
-    return (
-      item.onRenderIcon(props)
-    );
+    return item.onRenderIcon(props);
   }
 
   if (iconProps) {
-    return <Icon { ...iconProps } className={ classNames.icon } />;
+    return <Icon {...iconProps} className={classNames.icon} />;
   }
 
-  return <Icon iconName={ icon } className={ classNames.icon } />;
+  return <Icon iconName={icon} className={classNames.icon} />;
 };
 
 const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {
@@ -36,50 +30,34 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
   if (onCheckmarkClick) {
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
 
-    return (
-      <Icon
-        iconName={ isItemChecked ? 'CheckMark' : '' }
-        className={ classNames.checkmarkIcon }
-        onClick={ onClick }
-      />
-    );
+    return <Icon iconName={isItemChecked ? 'CheckMark' : ''} className={classNames.checkmarkIcon} onClick={onClick} />;
   }
   return null;
 };
 
 const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
   if (item.name) {
-    return <span className={ classNames.label }>{ item.name }</span>;
+    return <span className={classNames.label}>{item.name}</span>;
   }
   return null;
 };
 
 const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
-    return (
-      <Icon
-        iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-        { ...item.submenuIconProps }
-        className={ classNames.subMenuIcon }
-      />
-    );
+    return <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} {...item.submenuIconProps} className={classNames.subMenuIcon} />;
   }
   return null;
 };
 
-export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemProps> = (props) => {
+export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemProps> = props => {
   const { item, classNames } = props;
 
   return (
-    <div
-      className={
-        item.split ? classNames.linkContentMenu : classNames.linkContent
-      }
-    >
-      { renderCheckMarkIcon(props) }
-      { renderItemIcon(props) }
-      { renderItemName(props) }
-      { renderSubMenuIcon(props) }
+    <div className={item.split ? classNames.linkContentMenu : classNames.linkContent}>
+      {renderCheckMarkIcon(props)}
+      {renderItemIcon(props)}
+      {renderItemName(props)}
+      {renderSubMenuIcon(props)}
     </div>
   );
 };

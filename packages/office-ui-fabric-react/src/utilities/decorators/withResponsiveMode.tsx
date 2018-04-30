@@ -15,14 +15,7 @@ export enum ResponsiveMode {
   xxxLarge = 5
 }
 
-const RESPONSIVE_MAX_CONSTRAINT = [
-  479,
-  639,
-  1023,
-  1365,
-  1919,
-  99999999
-];
+const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
 
 let _defaultMode: ResponsiveMode | undefined;
 
@@ -33,10 +26,10 @@ export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): v
   _defaultMode = responsiveMode;
 }
 
-export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
-
+export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
+  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
+): any {
   const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
-
     constructor(props: TProps) {
       super(props);
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
@@ -65,9 +58,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
     public render(): JSX.Element {
       const { responsiveMode } = this.state;
 
-      return (
-        <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props as any } />
-      );
+      return <ComposedComponent ref={this._updateComposedComponentRef} responsiveMode={responsiveMode} {...this.props as any} />;
     }
 
     private _getResponsiveMode(): ResponsiveMode {
@@ -89,14 +80,13 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
         } else {
           throw new Error(
             'Content was rendered in a server environment without providing a default responsive mode. ' +
-            'Call setResponsiveMode to define what the responsive mode is.'
+              'Call setResponsiveMode to define what the responsive mode is.'
           );
         }
       }
 
       return responsiveMode;
     }
-
   };
   return hoistStatics(ComposedComponent, resultClass);
 }

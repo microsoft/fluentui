@@ -40,10 +40,11 @@ export class VerticalDividerCustomExample extends React.Component<any, any> {
   public render(): JSX.Element {
     const exampleClassNames = getExampleClassNames();
     return (
-      <div className={ exampleClassNames.wrapper }>
-        <p className={ exampleClassNames.text }> Some text before the divider. </p>
-        <VerticalDivider getClassNames={ getVerticalDividerClassNames } />
-        <p className={ exampleClassNames.text }>Some text after the divider. </p>
-      </div>);
+      <div className={exampleClassNames.wrapper}>
+        <p className={exampleClassNames.text}> Some text before the divider. </p>
+        <VerticalDivider getClassNames={getVerticalDividerClassNames} />
+        <p className={exampleClassNames.text}>Some text after the divider. </p>
+      </div>
+    );
   }
 }

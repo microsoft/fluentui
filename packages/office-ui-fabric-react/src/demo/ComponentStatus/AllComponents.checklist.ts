@@ -1,4 +1,3 @@
-
 import { IComponentStatusProps } from './ComponentStatus.types';
 export interface IComponentStatusState {
   [key: string]: IComponentStatusProps;
@@ -51,5 +50,5 @@ export const AllComponentsStatus: IComponentStatusState = {
   TeachingBubble: require<any>('../../components/TeachingBubble/TeachingBubble.checklist').TeachingBubbleStatus,
   TextField: require<any>('../../components/TextField/TextField.checklist').TextFieldStatus,
   Toggle: require<any>('../../components/Toggle/Toggle.checklist').ToggleStatus,
-  Tooltip: require<any>('../../components/Tooltip/Tooltip.checklist').TooltipStatus,
+  Tooltip: require<any>('../../components/Tooltip/Tooltip.checklist').TooltipStatus
 };

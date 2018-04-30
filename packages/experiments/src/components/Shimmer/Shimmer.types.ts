@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
-export interface IShimmer {
-
-}
+export interface IShimmer {}
 
 /**
  * Shimmer component props.

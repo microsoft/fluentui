@@ -4,8 +4,8 @@ import { IStyle } from '../../../Styling';
 
 export interface IPositioningContainerStyles {
   /**
-  * Style for the root element in the default enabled/unchecked state.
-  */
+   * Style for the root element in the default enabled/unchecked state.
+   */
   root?: IStyle;
 }
 
@@ -38,7 +38,7 @@ export function focusClear(): any {
     '&': {
       outline: 'transparent'
     }
-  }
+  };
 }
 /* tslint:enable */
 
@@ -48,9 +48,12 @@ export const getClassNames = memoizeFunction((): IPositioningContainerNames => {
       position: 'absolute',
       boxSizing: 'border-box',
       border: '1px solid ${}',
-      selectors: Object.assign(highContrastActive({
-        border: '1px solid WindowText',
-      }), focusClear()),
+      selectors: Object.assign(
+        highContrastActive({
+          border: '1px solid WindowText'
+        }),
+        focusClear()
+      )
     },
     container: {
       position: 'relative'

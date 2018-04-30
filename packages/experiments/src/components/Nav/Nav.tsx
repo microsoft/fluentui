@@ -4,20 +4,10 @@ import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import {
-  INavProps,
-  INavLink,
-  INavStyleProps,
-  INavStyles
-} from './Nav.types';
-import {
-  getStyles
-} from './Nav.styles';
+import { INavProps, INavLink, INavStyleProps, INavStyles } from './Nav.types';
+import { getStyles } from './Nav.styles';
 import { NavBase } from './NavBase';
-import {
-  styled,
-  classNamesFunction
-} from 'office-ui-fabric-react/lib/Utilities';
+import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
@@ -38,13 +28,11 @@ class NavComponent extends NavBase {
     }
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation'>
-          {
-            this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this._renderGroup(group, groupIndex);
-            })
-          }
+      <FocusZone direction={FocusZoneDirection.vertical}>
+        <nav role="navigation">
+          {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
+            return this._renderGroup(group, groupIndex);
+          })}
         </nav>
       </FocusZone>
     );
@@ -61,8 +49,7 @@ class NavComponent extends NavBase {
       // show child links
       link.isExpanded = !link.isExpanded;
       nextState.isLinkExpandStateChanged = true;
-    }
-    else if (link.onClick) {
+    } else if (link.onClick) {
       // if there is a onClick defined, call it
       link.onClick(ev, link);
     }
@@ -85,9 +72,8 @@ class NavComponent extends NavBase {
     let rightIconName = undefined;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
-      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
-    }
-    else if (link.url && link.target && link.target === '_blank') {
+      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
+    } else if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
       rightIconName = 'OpenInNewWindow';
     }
@@ -103,21 +89,21 @@ class NavComponent extends NavBase {
 
     return (
       <NavLink
-        id={ link.key }
-        content={ link.name }
-        href={ link.url }
-        target={ link.target }
-        onClick={ this._onLinkClicked.bind(this, link) }
-        dataHint={ this.props.dataHint }
-        dataValue={ link.key }
-        ariaLabel={ link.name }
+        id={link.key}
+        content={link.name}
+        href={link.url}
+        target={link.target}
+        onClick={this._onLinkClicked.bind(this, link)}
+        dataHint={this.props.dataHint}
+        dataValue={link.key}
+        ariaLabel={link.name}
         role="menu"
-        rootClassName={ classNames.navItemRoot }
-        leftIconName={ leftIconName }
-        rightIconName={ rightIconName }
-        textClassName={ classNames.navItemNameColumn }
-        iconClassName={ classNames.navItemIconColumn }>
-      </NavLink>
+        rootClassName={classNames.navItemRoot}
+        leftIconName={leftIconName}
+        rightIconName={rightIconName}
+        textClassName={classNames.navItemNameColumn}
+        iconClassName={classNames.navItemIconColumn}
+      />
     );
   }
 
@@ -127,25 +113,14 @@ class NavComponent extends NavBase {
     }
 
     return (
-      <li
-        role='listitem'
-        key={ link.key || linkIndex }
-        title={ link.name }>
-        {
-          this._renderCompositeLink(link, linkIndex, nestingLevel)
-        }
-        {
-          // show child links
-          // 1. only for the first level and
-          // 2. if the link is expanded
-          nestingLevel == 0 && link.isExpanded ?
-            <div className={ AnimationClassNames.slideDownIn20 }>
-              {
-                this._renderLinks(link.links as INavLink[], ++nestingLevel)
-              }
-            </div>
-            : null
-        }
+      <li role="listitem" key={link.key || linkIndex} title={link.name}>
+        {this._renderCompositeLink(link, linkIndex, nestingLevel)}
+        {// show child links
+        // 1. only for the first level and
+        // 2. if the link is expanded
+        nestingLevel == 0 && link.isExpanded ? (
+          <div className={AnimationClassNames.slideDownIn20}>{this._renderLinks(link.links as INavLink[], ++nestingLevel)}</div>
+        ) : null}
       </li>
     );
   }
@@ -156,12 +131,10 @@ class NavComponent extends NavBase {
     }
 
     return (
-      <ul role='list'>
-        {
-          links.map((link: INavLink, linkIndex: number) => {
-            return this._renderLink(link, linkIndex, nestingLevel);
-          })
-        }
+      <ul role="list">
+        {links.map((link: INavLink, linkIndex: number) => {
+          return this._renderLink(link, linkIndex, nestingLevel);
+        })}
       </ul>
     );
   }
@@ -175,30 +148,20 @@ class NavComponent extends NavBase {
     const classNames = getClassNames(getStyles!, {});
 
     return (
-      <div key={ groupIndex }>
-        {
-          groupIndex > 0 && group.name ?
-            <div className={ classNames.navGroupSeparatorRoot }>
-              <div className={ classNames.navGroupSeparatorHrLine }>
-                {
-                  <span className={ classNames.navGroupSeparatorGroupName }>
-                    {
-                      group.name
-                    }
-                  </span>
-                }
-              </div>
-            </div> : null
-        }
-        { this._renderLinks(group.links, 0 /* nestingLevel */) }
+      <div key={groupIndex}>
+        {groupIndex > 0 && group.name ? (
+          <div className={classNames.navGroupSeparatorRoot}>
+            <div className={classNames.navGroupSeparatorHrLine}>
+              {<span className={classNames.navGroupSeparatorGroupName}>{group.name}</span>}
+            </div>
+          </div>
+        ) : null}
+        {this._renderLinks(group.links, 0 /* nestingLevel */)}
       </div>
     );
   }
 }
 
-export const Nav = styled<INavProps, INavStyleProps, INavStyles>(
-  NavComponent,
-  getStyles
-);
+export const Nav = styled<INavProps, INavStyleProps, INavStyles>(NavComponent, getStyles);
 
 /* tslint:enable */

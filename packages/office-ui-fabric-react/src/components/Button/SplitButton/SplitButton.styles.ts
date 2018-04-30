@@ -1,15 +1,8 @@
 import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets,
-  getFocusStyle
-} from '../../../Styling';
+import { ITheme, concatStyleSets, getFocusStyle } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles
-): IButtonStyles => {
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
   const buttonHighContrastFocus = {
     left: -2,
     top: -2,
@@ -26,25 +19,24 @@ export const getStyles = memoizeFunction((
       }
     ],
     splitButtonContainerFocused: {
-      outline: 'none!important',
+      outline: 'none!important'
     },
-    splitButtonMenuButton:
-      {
-        padding: 6,
-        height: 'auto',
-        boxSizing: 'border-box',
-        border: 0,
-        borderRadius: 0,
-        outline: 'transparent',
-        userSelect: 'none',
-        display: 'inline-block',
-        textDecoration: 'none',
-        textAlign: 'center',
-        cursor: 'pointer',
-        verticalAlign: 'top',
-        width: 32,
-        marginLeft: -1
-      },
+    splitButtonMenuButton: {
+      padding: 6,
+      height: 'auto',
+      boxSizing: 'border-box',
+      border: 0,
+      borderRadius: 0,
+      outline: 'transparent',
+      userSelect: 'none',
+      display: 'inline-block',
+      textDecoration: 'none',
+      textAlign: 'center',
+      cursor: 'pointer',
+      verticalAlign: 'top',
+      width: 32,
+      marginLeft: -1
+    },
 
     splitButtonDivider: {
       position: 'absolute',

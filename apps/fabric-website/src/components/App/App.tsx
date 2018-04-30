@@ -5,8 +5,7 @@ import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Nav } from '../Nav/Nav';
 
-export interface IAppProps extends React.Props<App> {
-}
+export interface IAppProps extends React.Props<App> {}
 
 export interface IAppState {
   isAttached: boolean;
@@ -14,7 +13,6 @@ export interface IAppState {
 }
 
 export class App extends React.Component<IAppProps, any> {
-
   private _attachedScrollThreshold: number;
   private _appContent: HTMLDivElement;
   private _appContentRect: ClientRect;
@@ -49,25 +47,13 @@ export class App extends React.Component<IAppProps, any> {
     };
 
     return (
-      <Fabric
-        className='App'
-      >
-        <div className='App-wrapper'>
-          <div
-            className='App-nav'
-            style={ navStyle }
-          >
-            <Nav
-              pages={ AppState.pages }
-            />
+      <Fabric className="App">
+        <div className="App-wrapper">
+          <div className="App-nav" style={navStyle}>
+            <Nav pages={AppState.pages} />
           </div>
-          <div
-            className='App-content'
-            data-is-scrollable='true'
-            ref={ (el) => this._appContent = el }
-            data-app-content-div='true'
-          >
-            { this.props.children }
+          <div className="App-content" data-is-scrollable="true" ref={el => (this._appContent = el)} data-app-content-div="true">
+            {this.props.children}
           </div>
         </div>
       </Fabric>
@@ -84,7 +70,7 @@ export class App extends React.Component<IAppProps, any> {
       isAttached: isAttached,
       navHeight: navHeight
     });
-  }
+  };
 
   private _calculateNavHeight(viewPortHeight: number, appContentRect: ClientRect, height: number): number {
     if (!appContentRect) {

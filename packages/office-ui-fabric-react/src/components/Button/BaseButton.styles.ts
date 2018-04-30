@@ -1,12 +1,6 @@
 import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
-import {
-  ITheme,
-  IRawStyle,
-  getFocusStyle,
-  FontSizes,
-  hiddenContentStyle
-} from '../../Styling';
+import { ITheme, IRawStyle, getFocusStyle, FontSizes, hiddenContentStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
   outline: 0
@@ -27,9 +21,7 @@ const iconStyle = {
  * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
  * mixing class names together.
  */
-export const getStyles = memoizeFunction((
-  theme: ITheme
-): IButtonStyles => {
+export const getStyles = memoizeFunction((theme: ITheme): IButtonStyles => {
   const { semanticColors } = theme;
 
   const border = semanticColors.buttonBorder;

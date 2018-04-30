@@ -9,25 +9,19 @@ import { ColorPicker } from './ColorPicker';
 
 describe('ColorPicker', () => {
   it('renders ColorPicker correctly', () => {
-    const component = renderer.create(
-      <ColorPicker color='#FFFFFF' />
-    );
+    const component = renderer.create(<ColorPicker color="#FFFFFF" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('Props are correctly parsed', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color='#FFFFFF' />
-    ) as ColorPicker;
+    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" />) as ColorPicker;
 
     expect(component.state.color.hex).toEqual('ffffff');
   });
 
   it('Reacts to props changes', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color='#FFFFFF' />
-    ) as ColorPicker;
+    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" />) as ColorPicker;
 
     component.componentWillReceiveProps({ color: '#AEAEAE' });
     expect(component.state.color.hex).toEqual('aeaeae');
@@ -39,12 +33,7 @@ describe('ColorPicker', () => {
       color = str;
     };
 
-    const component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker
-        color={ color }
-        onColorChanged={ onColorChanged }
-      />
-    ) as ColorPicker;
+    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color={color} onColorChanged={onColorChanged} />) as ColorPicker;
 
     const newColor = '#AEAEAE';
     component.componentWillReceiveProps({ color: newColor });
@@ -54,9 +43,7 @@ describe('ColorPicker', () => {
   });
 
   it('Hides alpha control slider', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color='#FFFFFF' alphaSliderHidden={ true } />
-    ) as ColorPicker;
+    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />) as ColorPicker;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const alphaSlider = renderedDOM.querySelector('.is-alpha');
@@ -69,9 +56,7 @@ describe('ColorPicker', () => {
   });
 
   it('Renders default RGBA/Hex strings', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color='#FFFFFF' />
-    ) as ColorPicker;
+    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" />) as ColorPicker;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<HTMLTableDataCellElement>;
@@ -101,12 +86,12 @@ describe('ColorPicker', () => {
 
     const component = ReactTestUtils.renderIntoDocument(
       <ColorPicker
-        color='#FFFFFF'
-        hexLabel={ customHexLabel }
-        redLabel={ customRedLabel }
-        greenLabel={ customGreenLabel }
-        blueLabel={ customBlueLabel }
-        alphaLabel={ customAlphaLabel }
+        color="#FFFFFF"
+        hexLabel={customHexLabel}
+        redLabel={customRedLabel}
+        greenLabel={customGreenLabel}
+        blueLabel={customBlueLabel}
+        alphaLabel={customAlphaLabel}
       />
     ) as ColorPicker;
 

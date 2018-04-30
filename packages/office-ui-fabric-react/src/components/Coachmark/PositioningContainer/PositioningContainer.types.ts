@@ -1,26 +1,22 @@
 import * as React from 'react';
 import { PositioningContainer } from './PositioningContainer';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import {
-  IPoint,
-  IRectangle
-} from '../../../Utilities';
+import { IPoint, IRectangle } from '../../../Utilities';
 import { ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-export interface IPositioningContainer {
-}
+export interface IPositioningContainer {}
 
 export interface IPositionInfo {
   calloutPosition: ICalloutPositon;
-  beakPosition: { position: ICalloutPositon, display: string };
+  beakPosition: { position: ICalloutPositon; display: string };
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }
 
 export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {
   /**
-  * All props for your component are to be defined here.
-  */
+   * All props for your component are to be defined here.
+   */
   componentRef?: (component: IPositioningContainer | null) => void;
   /**
    * The target that the positioningContainer should try to position itself based on.

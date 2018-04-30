@@ -49,7 +49,6 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     }
 
     // check if the link or any of the child link is selected
-    return link.key === selectedKey ||
-      (includeChildren && this.isChildLinkSelected(link));
+    return link.key === selectedKey || (includeChildren && this.isChildLinkSelected(link));
   }
 }

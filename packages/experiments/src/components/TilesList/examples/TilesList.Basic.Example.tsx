@@ -1,12 +1,5 @@
-
 import * as React from 'react';
-import {
-  TilesList,
-  ITilesGridSegment,
-  ITilesGridItem,
-  TilesGridMode,
-  ITileSize
-} from '@uifabric/experiments/lib/TilesList';
+import { TilesList, ITilesGridSegment, ITilesGridItem, TilesGridMode, ITileSize } from '@uifabric/experiments/lib/TilesList';
 
 export interface IBasicItem {
   color: string;
@@ -51,13 +44,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
       spacing: 10
     };
 
-    return (
-      <TilesList
-        items={
-          [gridSegment]
-        }
-      />
-    );
+    return <TilesList items={[gridSegment]} />;
   }
 }
 
@@ -65,21 +52,19 @@ function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
   return (
     <div
       // tslint:disable-next-line:jsx-ban-props
-      style={
-        {
-          position: 'absolute',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          top: '0',
-          left: '0',
-          bottom: '0',
-          right: '0',
-          backgroundColor: item.color
-        }
-      }
+      style={{
+        position: 'absolute',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        top: '0',
+        left: '0',
+        bottom: '0',
+        right: '0',
+        backgroundColor: item.color
+      }}
     >
-      <span>{ finalSize ? `${finalSize.width.toFixed(1)}x${finalSize.height.toFixed(1)}` : '' }</span>
+      <span>{finalSize ? `${finalSize.width.toFixed(1)}x${finalSize.height.toFixed(1)}` : ''}</span>
     </div>
   );
 }

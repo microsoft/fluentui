@@ -42,12 +42,8 @@ describe('FormTextInput Unit Tests', () => {
     it('Null name throws error', () => {
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
-          <Form
-            { ...formProps }
-          >
-            <FormTextInput
-              { ...formTextInputProps }
-            />
+          <Form {...formProps}>
+            <FormTextInput {...formTextInputProps} />
           </Form>
         );
       };
@@ -61,12 +57,8 @@ describe('FormTextInput Unit Tests', () => {
     it('Null props still render', () => {
       formTextInputProps.inputKey = 'name';
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          { ...formProps }
-        >
-          <FormTextInput
-            { ...formTextInputProps }
-          />
+        <Form {...formProps}>
+          <FormTextInput {...formTextInputProps} />
         </Form>
       ) as Form;
 
@@ -77,12 +69,8 @@ describe('FormTextInput Unit Tests', () => {
       formTextInputProps.inputKey = 'name';
       formTextInputProps.value = 'Value';
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          { ...formProps }
-        >
-          <FormTextInput
-            { ...formTextInputProps }
-          />
+        <Form {...formProps}>
+          <FormTextInput {...formTextInputProps} />
         </Form>
       ) as Form;
 
@@ -96,15 +84,11 @@ describe('FormTextInput Unit Tests', () => {
 
       const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
-          onSubmit={ (value: any) => { result = value; } }
+          onSubmit={(value: any) => {
+            result = value;
+          }}
         >
-          <FormTextInput
-            inputKey='field'
-            value=''
-            validators={ [
-              Validators.required('Message')
-            ] }
-          />
+          <FormTextInput inputKey="field" value="" validators={[Validators.required('Message')]} />
         </Form>
       ) as Form;
 
@@ -137,13 +121,8 @@ describe('FormTextInput Unit Tests', () => {
     it('TextInput is only trailing debounced', () => {
       const updateStub: sinon.SinonStub = sinon.stub();
       const renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onUpdated={ updateStub }
-        >
-          <ExtendsTextInput
-            inputKey='name'
-            value={ '' }
-          />
+        <Form onUpdated={updateStub}>
+          <ExtendsTextInput inputKey="name" value={''} />
         </Form>
       ) as Form;
 
@@ -161,22 +140,18 @@ describe('FormTextInput Unit Tests', () => {
       const parent = document.createElement('div');
       let renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ 'old value' }
-          />
-        </Form>, parent) as Form;
+          <FormTextInput inputKey="name" key="key" value={'old value'} />
+        </Form>,
+        parent
+      ) as Form;
       const textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
       const propsUpdateSpy = sinon.spy(textboxElement, 'componentWillReceiveProps');
       renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ updatedValue }
-          />
-        </Form >, parent) as Form;
+          <FormTextInput inputKey="name" key="key" value={updatedValue} />
+        </Form>,
+        parent
+      ) as Form;
 
       expect(textboxElement.state.currentValue).toEqual(updatedValue);
       expect(propsUpdateSpy.callCount).toEqual(1);
@@ -187,22 +162,18 @@ describe('FormTextInput Unit Tests', () => {
       const parent = document.createElement('div');
       let renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ oldValue }
-          />
-        </Form>, parent) as Form;
+          <FormTextInput inputKey="name" key="key" value={oldValue} />
+        </Form>,
+        parent
+      ) as Form;
       const textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
       const setStateSpy = sinon.spy(textboxElement, 'setState');
       renderedForm = ReactDom.render(
         <Form>
-          <FormTextInput
-            inputKey='name'
-            key='key'
-            value={ oldValue }
-          />
-        </Form>, parent) as Form;
+          <FormTextInput inputKey="name" key="key" value={oldValue} />
+        </Form>,
+        parent
+      ) as Form;
 
       expect(setStateSpy.callCount).toEqual(0);
     });

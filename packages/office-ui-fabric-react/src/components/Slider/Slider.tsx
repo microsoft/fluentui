@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  css,
-  getId,
-  getRTL,
-  getRTLSafeKeyCode,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, createRef } from '../../Utilities';
 import { ISliderProps, ISlider } from './Slider.types';
 import { Label } from '../../Label';
 import * as stylesImport from './Slider.scss';
@@ -42,7 +34,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     super(props);
 
     this._warnMutuallyExclusive({
-      'value': 'defaultValue'
+      value: 'defaultValue'
     });
 
     this._id = getId('Slider');
@@ -59,7 +51,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
   public componentWillReceiveProps(newProps: ISliderProps): void {
-
     if (newProps.value !== undefined) {
       const value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
 
@@ -71,17 +62,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   public render(): React.ReactElement<{}> {
-    const {
-      ariaLabel,
-      className,
-      disabled,
-      label,
-      max,
-      min,
-      showValue,
-      buttonProps,
-      vertical
-    } = this.props;
+    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = (renderedValue! - min!) / (max! - min!) * 100;
     const lengthString = vertical ? 'height' : 'width';
@@ -91,61 +72,58 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
     return (
       <div
-        className={ css('ms-Slider', styles.root, className, {
+        className={css('ms-Slider', styles.root, className, {
           ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
           ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled,
           ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
           ['ms-Slider-column ' + styles.rootIsVertical]: vertical
-        }) }
+        })}
       >
-        { label && (
-          <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
-            { label }
+        {label && (
+          <Label className={styles.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })}>
+            {label}
           </Label>
-        ) }
-        <div className={ css('ms-Slider-container', styles.container) }>
+        )}
+        <div className={css('ms-Slider-container', styles.container)}>
           <button
-            aria-valuenow={ value }
-            aria-valuemin={ min }
-            aria-valuemax={ max }
-            aria-valuetext={ this._getAriaValueText(value) }
-            aria-label={ ariaLabel || label }
-            { ...onMouseDownProp }
-            { ...onTouchStartProp }
-            { ...onKeyDownProp }
-            { ...buttonProps }
-            className={ css(
+            aria-valuenow={value}
+            aria-valuemin={min}
+            aria-valuemax={max}
+            aria-valuetext={this._getAriaValueText(value)}
+            aria-label={ariaLabel || label}
+            {...onMouseDownProp}
+            {...onTouchStartProp}
+            {...onKeyDownProp}
+            {...buttonProps}
+            className={css(
               'ms-Slider-slideBox',
               styles.slideBox,
               buttonProps!.className,
               !!showValue && 'ms-Slider-showValue',
-              (renderedValue === value) && ('ms-Slider-showTransitions ' + styles.showTransitions)
-            ) }
-            id={ this._id }
-            disabled={ disabled }
-            type='button'
-            role='slider'
+              renderedValue === value && 'ms-Slider-showTransitions ' + styles.showTransitions
+            )}
+            id={this._id}
+            disabled={disabled}
+            type="button"
+            role="slider"
           >
-            <div
-              ref={ this._sliderLine }
-              className={ css('ms-Slider-line', styles.line) }
-            >
+            <div ref={this._sliderLine} className={css('ms-Slider-line', styles.line)}>
               <span
-                ref={ this._thumb }
-                className={ css('ms-Slider-thumb', styles.thumb) }
-                style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
+                ref={this._thumb}
+                className={css('ms-Slider-thumb', styles.thumb)}
+                style={this._getThumbStyle(vertical, thumbOffsetPercent)}
               />
               <span
-                className={ css('ms-Slider-active', styles.lineContainer, styles.activeSection) }
-                style={ { [lengthString]: thumbOffsetPercent + '%' } }
+                className={css('ms-Slider-active', styles.lineContainer, styles.activeSection)}
+                style={{ [lengthString]: thumbOffsetPercent + '%' }}
               />
               <span
-                className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) }
-                style={ { [lengthString]: (100 - thumbOffsetPercent) + '%' } }
+                className={css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection)}
+                style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
               />
             </div>
           </button>
-          { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
+          {showValue && <Label className={css('ms-Slider-value', styles.valueLabel)}>{value}</Label>}
         </div>
       </div>
     ) as React.ReactElement<{}>;
@@ -164,10 +142,10 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     if (this.props.ariaValueText && value !== undefined) {
       return this.props.ariaValueText(value);
     }
-  }
+  };
 
   private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
-    const direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
+    const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
     return {
       [direction]: thumbOffsetPercent + '%'
     };
@@ -182,7 +160,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
     }
     this._onMouseMoveOrTouchMove(event, true);
-  }
+  };
 
   private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
     if (!this._sliderLine.current) {
@@ -226,7 +204,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       event.preventDefault();
       event.stopPropagation();
     }
-  }
+  };
 
   private _getPosition(event: MouseEvent | TouchEvent, vertical: boolean | undefined): number | undefined {
     let currentPosition: number | undefined;
@@ -249,14 +227,17 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
     const valueChanged = roundedValue !== this.state.value;
 
-    this.setState({
-      value: roundedValue,
-      renderedValue
-    }, () => {
-      if (valueChanged && this.props.onChange) {
-        this.props.onChange(this.state.value as number);
+    this.setState(
+      {
+        value: roundedValue,
+        renderedValue
+      },
+      () => {
+        if (valueChanged && this.props.onChange) {
+          this.props.onChange(this.state.value as number);
+        }
       }
-    });
+    );
   }
 
   private _onMouseUpOrTouchEnd = (): void => {
@@ -266,7 +247,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     });
 
     this._events.off();
-  }
+  };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
     let value: number | undefined = this.state.value;
@@ -302,5 +283,5 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
     event.preventDefault();
     event.stopPropagation();
-  }
+  };
 }

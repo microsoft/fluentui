@@ -2,14 +2,8 @@ import * as React from 'react';
 import './ThemeGeneratorPage.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
-import {
-  loadTheme
-} from 'office-ui-fabric-react/lib/Styling';
-import {
-  IColor,
-  getContrastRatio,
-  isDark,
-} from 'office-ui-fabric-react/lib/utilities/color/index';
+import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import { IColor, getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/index';
 
 import {
   ThemeGenerator,
@@ -72,8 +66,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
   public render(): JSX.Element {
     const { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
-    const fabricThemeSlots =
-      [this._fabricSlotWidget(FabricSlots.themeDarker),
+    const fabricThemeSlots = [
+      this._fabricSlotWidget(FabricSlots.themeDarker),
       this._fabricSlotWidget(FabricSlots.themeDark),
       this._fabricSlotWidget(FabricSlots.themeDarkAlt),
       this._fabricSlotWidget(FabricSlots.themePrimary),
@@ -81,32 +75,42 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this._fabricSlotWidget(FabricSlots.themeTertiary),
       this._fabricSlotWidget(FabricSlots.themeLight),
       this._fabricSlotWidget(FabricSlots.themeLighter),
-      this._fabricSlotWidget(FabricSlots.themeLighterAlt)];
-    const fabricNeutralForegroundSlots =
-      [this._fabricSlotWidget(FabricSlots.black),
+      this._fabricSlotWidget(FabricSlots.themeLighterAlt)
+    ];
+    const fabricNeutralForegroundSlots = [
+      this._fabricSlotWidget(FabricSlots.black),
       this._fabricSlotWidget(FabricSlots.neutralDark),
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
       this._fabricSlotWidget(FabricSlots.neutralPrimaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
       this._fabricSlotWidget(FabricSlots.neutralTertiary)
-      ];
-    const fabricNeutralBackgroundSlots =
-      [this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
+    ];
+    const fabricNeutralBackgroundSlots = [
+      this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralQuaternary),
       this._fabricSlotWidget(FabricSlots.neutralQuaternaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralLight),
       this._fabricSlotWidget(FabricSlots.neutralLighter),
       this._fabricSlotWidget(FabricSlots.neutralLighterAlt),
-      this._fabricSlotWidget(FabricSlots.white)];
+      this._fabricSlotWidget(FabricSlots.white)
+    ];
+
+    const stylingUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling';
 
     return (
-      <div className='ms-themer'>
-        <div className='overview'>
-          <h2 id='Overview'>Overview</h2>
-          <p>This tool helps you easily create all the shades and slots for a custom theme.
-          The theme can be used by Fabric React's styling package, see the <a className={ 'themeGeneratorPageLink' } href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
-          <br />
-            As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.</p>
+      <div className="ms-themer">
+        <div className="overview">
+          <h2 id="Overview">Overview</h2>
+          <p>
+            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by Fabric React's styling
+            package, see the{' '}
+            <a className={'themeGeneratorPageLink'} href={stylingUrl}>
+              documentation
+            </a>.
+            <br />
+            As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each
+            individual slot below as well.
+          </p>
         </div>
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
           * Cognitive Vision API, documented here:
@@ -126,104 +130,113 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
         {*/}
 
-        {/* the shared popup color picker for slots */ }
-        { colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement &&
-          <Callout
-            key={ colorPickerSlotRule.name }
-            gapSpace={ 10 }
-            target={ colorPickerElement }
-            setInitialFocus={ true }
-            onDismiss={ this._colorPickerOnDismiss }
-          >
-            <ColorPicker
-              color={ colorPickerSlotRule.color!.str }
-              onColorChanged={ this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule) }
-            />
-          </Callout>
-        }
+        {/* the shared popup color picker for slots */}
+        {colorPickerVisible &&
+          colorPickerSlotRule !== null &&
+          colorPickerSlotRule !== undefined &&
+          colorPickerElement && (
+            <Callout
+              key={colorPickerSlotRule.name}
+              gapSpace={10}
+              target={colorPickerElement}
+              setInitialFocus={true}
+              onDismiss={this._colorPickerOnDismiss}
+            >
+              <ColorPicker
+                color={colorPickerSlotRule.color!.str}
+                onColorChanged={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
+              />
+            </Callout>
+          )}
 
-        {/* the three base slots, prominently displayed at the top of the page */ }
-        <div style={ { display: 'flex' } }>
-          { [this._baseColorSlotPicker(BaseSlots.primaryColor, 'Primary theme color'),
-          this._baseColorSlotPicker(BaseSlots.foregroundColor, 'Body text color'),
-          this._baseColorSlotPicker(BaseSlots.backgroundColor, 'Body background color')] }
+        {/* the three base slots, prominently displayed at the top of the page */}
+        <div style={{ display: 'flex' }}>
+          {[
+            this._baseColorSlotPicker(BaseSlots.primaryColor, 'Primary theme color'),
+            this._baseColorSlotPicker(BaseSlots.foregroundColor, 'Body text color'),
+            this._baseColorSlotPicker(BaseSlots.backgroundColor, 'Body background color')
+          ]}
         </div>
         <br />
 
-        { this._outputSection() }
+        {this._outputSection()}
         <br />
 
-        <h2 id='Fabric palette'>Fabric palette</h2>
-        <p>The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint of a base color.</p>
-        <div className={ 'ms-themer-fabricPalette-root' }>
-          <div>{ fabricThemeSlots }</div>
+        <h2 id="Fabric palette">Fabric palette</h2>
+        <p>
+          The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint of a base color.
+        </p>
+        <div className={'ms-themer-fabricPalette-root'}>
+          <div>{fabricThemeSlots}</div>
           <div>
             <p>generally used for text and foregrounds</p>
-            { fabricNeutralForegroundSlots }
+            {fabricNeutralForegroundSlots}
           </div>
           <div>
             <p>generally used for backgrounds</p>
-            { fabricNeutralBackgroundSlots }
+            {fabricNeutralBackgroundSlots}
           </div>
         </div>
         <br />
 
-        <h2 id='Samples'>Samples</h2>
-        { <div style={ { display: 'flex', flexDirection: 'row' } }>
-          <div className='ms-themer-example'>
-            <TextFieldBasicExample />
+        <h2 id="Samples">Samples</h2>
+        {
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div className="ms-themer-example">
+              <TextFieldBasicExample />
+            </div>
+            <div className="ms-themer-example">
+              <ToggleBasicExample />
+              <ChoiceGroup
+                options={[
+                  {
+                    key: 'A',
+                    text: 'Option A'
+                  },
+                  {
+                    key: 'B',
+                    text: 'Option B',
+                    checked: true
+                  }
+                ]}
+                label="Pick one"
+                required={true}
+              />
+              <ChoiceGroup
+                options={[
+                  {
+                    key: 'C',
+                    text: 'Option C',
+                    disabled: true
+                  },
+                  {
+                    key: 'D',
+                    text: 'Option D',
+                    checked: true,
+                    disabled: true
+                  }
+                ]}
+                label="Pick one"
+                required={true}
+              />
+            </div>
+            <div className="ms-themer-example">
+              <TeachingBubbleBasicExample />
+              <br />
+              <ProgressIndicatorBasicExample />
+            </div>
           </div>
-          <div className='ms-themer-example'>
-            <ToggleBasicExample />
-            <ChoiceGroup
-              options={ [
-                {
-                  key: 'A',
-                  text: 'Option A'
-                },
-                {
-                  key: 'B',
-                  text: 'Option B',
-                  checked: true
-                }] }
-              label='Pick one'
-              required={ true }
-            />
-            <ChoiceGroup
-              options={ [
-                {
-                  key: 'C',
-                  text: 'Option C',
-                  disabled: true
-                },
-                {
-                  key: 'D',
-                  text: 'Option D',
-                  checked: true,
-                  disabled: true
-                }] }
-              label='Pick one'
-              required={ true }
-            />
-          </div>
-          <div className='ms-themer-example'>
-            <TeachingBubbleBasicExample />
-            <br />
-            <ProgressIndicatorBasicExample />
-          </div>
-        </div> }
+        }
 
-        <h2 id='Accessibility'>Accessibility</h2>
+        <h2 id="Accessibility">Accessibility</h2>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5.</p>
-        <table className='ms-themer-accessibilityTable'>
+        <table className="ms-themer-accessibilityTable">
           <thead>
             <td>Sample text</td>
             <td>Contrast ratio</td>
             <td>Slot pair</td>
           </thead>
-          <tbody>
-            { [this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white)] }
-          </tbody>
+          <tbody>{[this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white)]}</tbody>
         </table>
       </div>
     );
@@ -231,7 +244,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
   private _colorPickerOnDismiss = (): void => {
     this.setState({ colorPickerVisible: false });
-  }
+  };
 
   private _semanticSlotRuleChanged = (slotRule: IThemeSlotRule, color: string): void => {
     if (this._semanticSlotColorChangeTimeout) {
@@ -245,43 +258,49 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
     // but high enough that quick changes don't get bogged down by a million changes inbetween
-  }
+  };
 
   private _onSwatchClick = (slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>): void => {
     const { colorPickerSlotRule, colorPickerElement } = this.state;
 
-    if (colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && !!colorPickerElement && colorPickerSlotRule === slotRule && colorPickerElement === ev.target) { // same one, close it
+    if (
+      colorPickerSlotRule !== null &&
+      colorPickerSlotRule !== undefined &&
+      !!colorPickerElement &&
+      colorPickerSlotRule === slotRule &&
+      colorPickerElement === ev.target
+    ) {
+      // same one, close it
       this.setState({ colorPickerVisible: false, colorPickerSlotRule: null, colorPickerElement: null });
-    } else { // new one, open it
+    } else {
+      // new one, open it
       this.setState({ colorPickerVisible: true, colorPickerSlotRule: slotRule, colorPickerElement: ev.target as HTMLElement });
     }
-  }
+  };
 
   private _slotWidget = (slotRule: IThemeSlotRule): JSX.Element => {
     return (
-      <div key={ slotRule.name } className='ms-themer-slot'>
-        { this._colorSquareSwatchWidget(slotRule) }
+      <div key={slotRule.name} className="ms-themer-slot">
+        {this._colorSquareSwatchWidget(slotRule)}
         <div>
-          <div>{ slotRule.name }</div>
-          { !slotRule.isCustomized ?
-            <div>Inherits from: { slotRule.inherits!.name }</div>
-            : <div>Customized</div> }
+          <div>{slotRule.name}</div>
+          {!slotRule.isCustomized ? <div>Inherits from: {slotRule.inherits!.name}</div> : <div>Customized</div>}
         </div>
       </div>
     );
-  }
+  };
 
   private _fabricSlotWidget = (fabricSlot: FabricSlots): JSX.Element => {
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
-  }
+  };
 
   private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): JSX.Element {
     return (
       <div
-        key={ slotRule.name }
-        className='ms-themer-swatch'
-        style={ { backgroundColor: slotRule.color!.str } }
-        onClick={ this._onSwatchClick.bind(this, slotRule) }
+        key={slotRule.name}
+        className="ms-themer-swatch"
+        style={{ backgroundColor: slotRule.color!.str }}
+        onClick={this._onSwatchClick.bind(this, slotRule)}
       />
     );
   }
@@ -299,13 +318,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
 
     return (
-      <tr key={ String(foreground) + String(background) }>
-        <td style={ { backgroundColor: bgc.str, color: fgc.str } }>The quick brown fox jumps over the lazy dog.</td>
-        <td>{ contrastRatioString }</td>
-        <td>{ FabricSlots[foreground] + ' + ' + FabricSlots[background] }</td>
+      <tr key={String(foreground) + String(background)}>
+        <td style={{ backgroundColor: bgc.str, color: fgc.str }}>The quick brown fox jumps over the lazy dog.</td>
+        <td>{contrastRatioString}</td>
+        <td>{FabricSlots[foreground] + ' + ' + FabricSlots[background]}</td>
       </tr>
     );
-  }
+  };
 
   private _outputSection = (): JSX.Element => {
     const themeRules = this.state.themeRules;
@@ -314,7 +333,12 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     const abridgedTheme: IThemeRules = {};
     for (const ruleName in themeRules) {
       if (themeRules.hasOwnProperty(ruleName)) {
-        if (ruleName.indexOf('ColorShade') === -1 && ruleName !== 'primaryColor' && ruleName !== 'backgroundColor' && ruleName !== 'foregroundColor') {
+        if (
+          ruleName.indexOf('ColorShade') === -1 &&
+          ruleName !== 'primaryColor' &&
+          ruleName !== 'backgroundColor' &&
+          ruleName !== 'foregroundColor'
+        ) {
           abridgedTheme[ruleName] = themeRules[ruleName];
         }
       }
@@ -322,36 +346,24 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     return (
       <div>
-        <h2 id='Output'>Output</h2>
-        <div className={ 'ms-themer-output-root' }>
+        <h2 id="Output">Output</h2>
+        <div className={'ms-themer-output-root'}>
           <div>
             <h3>JSON</h3>
-            <textarea
-              readOnly={ true }
-              spellCheck={ false }
-              value={ JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2) }
-            />
+            <textarea readOnly={true} spellCheck={false} value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)} />
           </div>
           <div>
             <h3>SASS</h3>
-            <textarea
-              readOnly={ true }
-              spellCheck={ false }
-              value={ ThemeGenerator.getThemeAsSass(abridgedTheme) }
-            />
+            <textarea readOnly={true} spellCheck={false} value={ThemeGenerator.getThemeAsSass(abridgedTheme)} />
           </div>
           <div>
             <h3>PowerShell</h3>
-            <textarea
-              readOnly={ true }
-              spellCheck={ false }
-              value={ ThemeGenerator.getThemeForPowerShell(abridgedTheme) }
-            />
+            <textarea readOnly={true} spellCheck={false} value={ThemeGenerator.getThemeForPowerShell(abridgedTheme)} />
           </div>
         </div>
       </div>
     );
-  }
+  };
 
   private _makeNewTheme = (): void => {
     const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
@@ -371,7 +383,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     document.body.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
     document.body.style.color = finalTheme.semanticColors.bodyText;
     console.log('New theme:', finalTheme);
-  }
+  };
 
   private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
     let colorChangeTimeout: number;
@@ -383,12 +395,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
         const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-        ThemeGenerator.setSlot(
-          themeRules[BaseSlots[baseSlot]],
-          newColor,
-          currentIsDark,
-          true,
-          true);
+        ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
         if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
           // isInverted got swapped, so need to refresh slots with new shading rules
           ThemeGenerator.insureSlots(themeRules, !currentIsDark);
@@ -400,29 +407,31 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
 
     return (
-      <div className='ms-themer-paletteSlot' key={ baseSlot }>
-        <h3>{ title }</h3>
+      <div className="ms-themer-paletteSlot" key={baseSlot}>
+        <h3>{title}</h3>
         <div>
           <ColorPicker
-            key={ 'baseslotcolorpicker' + baseSlot }
-            color={ this.state.themeRules[BaseSlots[baseSlot]].color!.str }
+            key={'baseslotcolorpicker' + baseSlot}
+            color={this.state.themeRules[BaseSlots[baseSlot]].color!.str}
             /* tslint:disable:jsx-no-bind */
-            onColorChanged={ _onColorChanged.bind(this) }
-          /* tslint:enable:jsx-no-bind */
+            onColorChanged={_onColorChanged.bind(this)}
+            /* tslint:enable:jsx-no-bind */
           />
         </div>
-        <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str } }>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str } } />
-          { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade3']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade4']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade5']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade6']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade7']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade8'])] }
+        <div className="ms-themer-swatchBg" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}>
+          <div className="ms-themer-swatch" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }} />
+          {[
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade3']),
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade4']),
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade5']),
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade6']),
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade7']),
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade8'])
+          ]}
         </div>
       </div>
     );
-  }
+  };
 }

@@ -12,31 +12,22 @@ import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
  */
 @customizable('KeytipContent', ['theme'])
 export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
-
   public render(): JSX.Element {
-    const {
-      content,
-      getStyles,
-      theme,
-      disabled,
-      keySequences,
-      visible
-      } = this.props;
+    const { content, getStyles, theme, disabled, keySequences, visible } = this.props;
 
     const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
-    const classNames = getClassNames(
-      getStyles!,
-      {
-        theme: theme!,
-        disabled,
-        visible
-      }
-    );
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      disabled,
+      visible
+    });
 
     return (
-      <div className={ classNames.container } >
-        <span id={ convertSequencesToKeytipID(keySequences) } className={ classNames.root }>{ content }</span>
-      </div >
+      <div className={classNames.container}>
+        <span id={convertSequencesToKeytipID(keySequences)} className={classNames.root}>
+          {content}
+        </span>
+      </div>
     );
   }
 }

@@ -5,6 +5,7 @@ script:
   - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
     then npm run checkchange;
     fi
-  - npm run buildfast
+  - npm run buildfast -- -- --lint
   - npm run bundlesize
   - npm run vrtest
+  - npm run check-for-changed-files

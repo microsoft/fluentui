@@ -24,7 +24,6 @@ export function getFocusStyle(
     position,
 
     selectors: {
-
       '::-moz-focus-inner': {
         border: '0'
       },
@@ -43,7 +42,6 @@ export function getFocusStyle(
           [HighContrastSelector]: highContrastStyle
         }
       }
-
     }
   };
 }

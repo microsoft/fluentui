@@ -6,15 +6,11 @@ import { IStyleFunction } from './IStyleFunction';
  * Creates a getClassNames function which calls getStyles given the props, and injects them
  * into mergeStyleSets.
  */
-export function classNamesFunction<TStyleProps extends {}, TStyles extends {[P in keyof TStyles]: IStyle}>(): (
+export function classNamesFunction<TStyleProps extends {}, TStyles extends { [P in keyof TStyles]: IStyle }>(): (
   getStyles?: IStyleFunction<TStyleProps, TStyles>,
   styleProps?: TStyleProps
 ) => IClassNames<TStyles> {
-
   // TODO: memoize.
-  return (
-    getStyles?: IStyleFunction<TStyleProps, TStyles>,
-    styleProps?: TStyleProps
-  ): IClassNames<TStyles> => mergeStyleSets(getStyles && getStyles(styleProps!)
-  );
+  return (getStyles?: IStyleFunction<TStyleProps, TStyles>, styleProps?: TStyleProps): IClassNames<TStyles> =>
+    mergeStyleSets(getStyles && getStyles(styleProps!));
 }

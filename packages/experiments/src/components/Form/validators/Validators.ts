@@ -23,7 +23,7 @@ export namespace Validators {
   export function length(desiredLength: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = ((value !== null && value !== undefined) ? value : '');
+      value = value !== null && value !== undefined ? value : '';
       if (value.length !== desiredLength) {
         return formatError(value.length);
       }
@@ -38,7 +38,7 @@ export namespace Validators {
   export function minLength(lengthBound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = ((value !== null && value !== undefined) ? value : '');
+      value = value !== null && value !== undefined ? value : '';
       if (value.length < lengthBound) {
         return formatError(value.length);
       }
@@ -53,7 +53,7 @@ export namespace Validators {
   export function maxLength(lengthBound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = ((value !== null && value !== undefined) ? value : '');
+      value = value !== null && value !== undefined ? value : '';
       if (value.length > lengthBound) {
         return formatError(value.length);
       }

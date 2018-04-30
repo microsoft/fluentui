@@ -35,13 +35,8 @@ describe('FormCheckBox Unit Tests', () => {
     it('Null name throws error', () => {
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
-          <Form
-            onSubmit={ undefined }
-          >
-            <FormCheckBox
-              inputKey={ null as any }
-              value={ undefined }
-            />
+          <Form onSubmit={undefined}>
+            <FormCheckBox inputKey={null as any} value={undefined} />
           </Form>
         );
       };
@@ -54,14 +49,8 @@ describe('FormCheckBox Unit Tests', () => {
 
     it('Null props still render', () => {
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onSubmit={ undefined }
-        >
-          <FormCheckBox
-            inputKey='name'
-            value={ undefined }
-            validators={ undefined }
-          />
+        <Form onSubmit={undefined}>
+          <FormCheckBox inputKey="name" value={undefined} validators={undefined} />
         </Form>
       ) as Form;
 
@@ -72,12 +61,11 @@ describe('FormCheckBox Unit Tests', () => {
       let result: any;
       renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
-          onSubmit={ (value: any) => { result = value; } }
+          onSubmit={(value: any) => {
+            result = value;
+          }}
         >
-          <FormCheckBox
-            inputKey='name'
-            value={ true }
-          />
+          <FormCheckBox inputKey="name" value={true} />
         </Form>
       ) as Form;
 
@@ -104,13 +92,8 @@ describe('FormCheckBox Unit Tests', () => {
     it('Checkbox is leading and trailing debounced', () => {
       const updateStub: sinon.SinonStub = sandbox.stub();
       const renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onUpdated={ updateStub }
-        >
-          <ExtendsCheckbox
-            inputKey='name'
-            value={ true }
-          />
+        <Form onUpdated={updateStub}>
+          <ExtendsCheckbox inputKey="name" value={true} />
         </Form>
       ) as Form;
 

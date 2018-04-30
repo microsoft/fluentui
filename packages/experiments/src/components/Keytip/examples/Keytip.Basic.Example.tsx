@@ -25,13 +25,13 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
     super(props);
 
     this.state = {
-      keytipVisible: false,
+      keytipVisible: false
     };
 
     // Setup keytips
     this.keytipMap.Keytip1 = {
       content: 'A',
-      keySequences: [{ keys: ['a'] }],
+      keySequences: [{ keys: ['a'] }]
     } as IKeytipProps;
   }
 
@@ -42,15 +42,15 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
     return (
       <div>
         <DefaultButton
-          text='Click to toggle keytip'
-          data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
-          onClick={ btnClick }
+          text="Click to toggle keytip"
+          data-ktp-id={convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences)}
+          onClick={btnClick}
         />
         <Keytip
-          content={ this.keytipMap.Keytip1.content }
-          offset={ -8 }
-          keySequences={ this.keytipMap.Keytip1.keySequences }
-          visible={ this.state.keytipVisible }
+          content={this.keytipMap.Keytip1.content}
+          offset={-8}
+          keySequences={this.keytipMap.Keytip1.keySequences}
+          visible={this.state.keytipVisible}
         />
       </div>
     );

@@ -16,11 +16,8 @@ export class Highlight extends BaseComponent<IHighlightProps, {}> {
   public render(): JSX.Element {
     return (
       <pre>
-        <code
-          ref={ this._codeElement }
-          className='javascript'
-        >
-          { this.props.children }
+        <code ref={this._codeElement} className="javascript">
+          {this.props.children}
         </code>
       </pre>
     );
