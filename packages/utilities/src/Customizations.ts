@@ -5,11 +5,13 @@ import {
   EventGroup
 } from './EventGroup';
 
+// tslint:disable-next-line:no-any
+export type Settings = { [key: string]: any };
+export type SettingsFunction = (settings: Settings) => Settings;
+
 export interface ICustomizations {
-  // tslint:disable-next-line:no-any
-  settings: { [key: string]: any };
-  // tslint:disable-next-line:no-any
-  scopedSettings: { [key: string]: { [key: string]: any } };
+  settings: Settings;
+  scopedSettings: { [key: string]: Settings };
 }
 
 const CustomizationsGlobalKey = 'customizations';
@@ -29,13 +31,13 @@ export class Customizations {
   }
 
   // tslint:disable-next-line:no-any
-  public static applySettings(settings: { [key: string]: any }): void {
+  public static applySettings(settings: Settings): void {
     _allSettings.settings = { ..._allSettings.settings, ...settings };
     Customizations._raiseChange();
   }
 
   // tslint:disable-next-line:no-any
-  public static applyScopedSettings(scopeName: string, settings: { [key: string]: any }): void {
+  public static applyScopedSettings(scopeName: string, settings: Settings): void {
     _allSettings.scopedSettings[scopeName] = { ..._allSettings.scopedSettings[scopeName], ...settings };
     Customizations._raiseChange();
   }
@@ -47,7 +49,7 @@ export class Customizations {
     // tslint:disable-next-line:no-any
   ): any {
     // tslint:disable-next-line:no-any
-    const settings: { [key: string]: any } = {};
+    const settings: Settings = {};
     const localScopedSettings = (scopeName && localSettings.scopedSettings[scopeName]) || {};
     const globalScopedSettings = (scopeName && _allSettings.scopedSettings[scopeName]) || {};
 

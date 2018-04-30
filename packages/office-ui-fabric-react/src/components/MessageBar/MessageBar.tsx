@@ -195,7 +195,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     );
   }
 
-  private _getAnnouncementPriority(): string {
+  private _getAnnouncementPriority(): 'assertive' | 'polite' {
     switch (this.props.messageBarType) {
       case MessageBarType.blocked:
       case MessageBarType.error:

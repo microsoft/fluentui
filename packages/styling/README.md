@@ -96,7 +96,7 @@ import {
   loadTheme({
     palette: {
       themePrimary: 'red',
-      themeSeconary: 'blue'
+      themeSecondary: 'blue'
     }
   });
 }

@@ -60,26 +60,24 @@ Fundamental components are the official React representation of our [Adobe XD To
 
 #### Creating a component via the command line
 1. This is the recommended way of creating a new component.
-3. Open a command prompt in the root directory of your project directory.
-2. Run `npm run create-component -- --name ExcitingNewComponent`.
+2. Open a command prompt in the root directory of your project.
+3. Run `npm run create-component -- --name ExcitingNewComponent`.
 
 #### Creating a component manually
 1. From the root of the project, navigate to `packages/experiments/src/components/`
 2. Create a new folder here with your component name
-  * Our components use the Pascal Case naming convention.
-  * In this example the component will be called `ExcitingNewComponent`.
+   * Our components use the Pascal Case naming convention.
+   * In this example the component will be called `ExcitingNewComponent`.
 3. Create a `ExcitingNewComponent.types.ts` file that will contain an interface for your component props
-
-  * Import React
-    * `import * as React from 'react'`;
-  * Import ExcitingNewComponent
-    * `import { ExcitingNewComponent } from './ExcitingNewComponent'`;
-    * Note: This class and file don't exist yet but they will during step 4 of this small tutorial.
-  * Create an empty interface `IExcitingNewComponent`
-    * `export interface IExcitingNewComponent {}`
-  * Add your props interface to this file.
-    * `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
-  * Create and export an interface for ExcitingNewComponent styles.
+   * Import React
+     * `import * as React from 'react'`;
+   * Import ExcitingNewComponent
+     * `import { ExcitingNewComponent } from './ExcitingNewComponent'`;
+     * Note: This class and file don't exist yet but they will during step 4 of this small tutorial.
+   * Create an empty interface `IExcitingNewComponent`
+     * `export interface IExcitingNewComponent {}`
+   * Add your props interface to this file.
+     * `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
 
 4. Create a react file, `ExcitingNewComponent.tsx`.
 
@@ -89,19 +87,19 @@ import { BaseComponent } from '../../Utilities';
 import { IExcitingNewComponentProps } from './ExcitingNewComponent.types';
 
 export class ExcitingNewComponent extends BaseComponent <IExcitingNewComponentProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return(
       <div>Hello World!</div>
     );
   }
-}; // @todo: this ; needs to be removed
+}
 ```
 
-5. Create a class names file `ExcitingNewComponent.classNames.ts`
+5. Create a class names file `ExcitingNewComponent.styles.ts`
 
 ```ts
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets} from '../../Styling';
+import { mergeStyleSets, IStyle } from '../../Styling';
 
 export interface IExcitingNewComponentStyles {
    /**
@@ -111,16 +109,16 @@ export interface IExcitingNewComponentStyles {
 }
 
 export interface IExcitingNewComponentNames {
-	/**
-	* Root html container for this component.
-	*/
-	root?: string;
+  /**
+   * Root html container for this component.
+   */
+  root?: string;
 }
 
 export const getClassNames = memoizeFunction((): IExcitingNewComponentNames => {
-	return mergeStyleSets({
-		root: []
-	});
+  return mergeStyleSets({
+    root: []
+  });
 });
 ```
 
@@ -137,4 +135,4 @@ For any new component you should think of adding **Unit tests**, **React functio
 
 ### Code Owners
 
-Add yourself to the [Code owners file](../../,github/CODEOWNERS).
+Add yourself to the [Code owners file](../../.github/CODEOWNERS).

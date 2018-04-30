@@ -1,1 +1,1 @@
-export * from './components/CommandBar';
+export * from './components/CommandBar/index';

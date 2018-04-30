@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -27,7 +25,7 @@ describe('TeachingBubble', () => {
         headline='Title'
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const titleElement = renderedDOM.querySelector('.ms-TeachingBubble-headline');
 
     expect(titleElement!.textContent).toEqual('Title');

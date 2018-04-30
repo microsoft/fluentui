@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  IStyle
-} from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface IShimmer {
@@ -20,9 +18,23 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Sets the width of the shimmer wave wrapper in percentages.
+   * Deprecated, use a more specific width like widthInPixel or widthInPercentage.
    * @default 100%
+   * @deprecated
    */
   width?: number;
+
+  /**
+   * Sets the width of the shimmer wave wrapper in percentages relative to the containig parent element.
+   * @default 100%
+   */
+  widthInPercentage?: number;
+
+  /**
+   * Sets the width of the shimmer wave wrapper to an exact value in pixels.
+   * If none of the widths provided, it defaults to 100%.
+   */
+  widthInPixel?: number;
 
   /**
    * Controls when the shimmer is swapped with actual data through an animated transition.
@@ -54,19 +66,19 @@ export interface IShimmerElement {
   type: ShimmerElementType;
 
   /**
-   * The hight of the element in pixels (ICircle, ILine).
+   * The height of the element (ICircle, ILine) in pixels.
    * Read more details for each specific element.
    */
   height?: number;
 
   /**
-   * The width of the element in pixels (ILine, IGap).
+   * The width of the element (ILine, IGap) in pixels.
    * Read more details for each specific element.
    */
   widthInPixel?: number;
 
   /**
-   * The width of the element in pixels (ILine, IGap).
+   * The width of the element (ILine, IGap) in pixels.
    * Read more details for each specific element.
    */
   widthInPercentage?: number;
@@ -86,13 +98,14 @@ export interface ILine extends IShimmerElement {
   height?: number;
 
   /**
-   * The value provided will represent the width as '%' relative to the shimmer wrapper.
+   * The value provided will represent the width as '%' relative to shimmer wrapper.
+   * @default 100%
    */
   widthInPercentage?: number;
 
   /**
    * Sets the width of the Line to an exact value in pixels.
-   * @default 50px
+   * If none of the widths provided, it defaults to 100%.
    */
   widthInPixel?: number;
 }
@@ -100,6 +113,7 @@ export interface ILine extends IShimmerElement {
 export interface ICircle extends IShimmerElement {
   /**
    * Sets the height of the shimmer circle in pixels.
+   * Minimum supported 10px.
    * @default 24px
    */
   height?: number;
@@ -112,7 +126,8 @@ export interface IGap extends IShimmerElement {
    */
   height?: number;
   /**
-   * The value will be calculated as '%' relative the to shimmer wrapper.
+   * The value provided will represent the width as '%' relative to shimmer wrapper.
+   * If none of the widths provided, it defaults to 10px.
    */
   widthInPercentage?: number;
 
@@ -126,6 +141,8 @@ export interface IGap extends IShimmerElement {
 export interface IShimmerStyleProps {
   width?: number;
   rowHeight?: number;
+  widthInPercentage?: number;
+  widthInPixel?: number;
   isDataLoaded?: boolean;
   isBaseStyle?: boolean;
 }
@@ -136,14 +153,28 @@ export interface IShimmerStyles {
   dataWrapper?: IStyle;
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementType {
   LINE = 'line',
   CIRCLE = 'circle',
-  GAP = 'gap'
+  GAP = 'gap',
+  line = 'line',
+  circle = 'circle',
+  gap = 'gap'
 }
 
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
 export const enum ShimmerElementVerticalAlign {
   CENTER = 'center',
   BOTTOM = 'bottom',
-  TOP = 'top'
+  TOP = 'top',
+  center = 'center',
+  bottom = 'bottom',
+  top = 'top'
 }

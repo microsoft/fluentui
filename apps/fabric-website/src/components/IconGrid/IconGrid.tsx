@@ -26,7 +26,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { icons } = this.props;
     let { searchQuery } = this.state;
 
@@ -57,7 +57,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     );
   }
 
-  private _onSearchQueryChanged(newValue) {
+  private _onSearchQueryChanged(newValue): void {
     this.setState({
       'searchQuery': newValue
     });

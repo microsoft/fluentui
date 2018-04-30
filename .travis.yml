@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - '8'
 script:
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "true" ]; then
-      npm run checkchange;
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
+    then npm run checkchange;
     fi
   - npm run buildfast
   - npm run bundlesize

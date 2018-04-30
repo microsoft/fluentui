@@ -4,7 +4,7 @@ import { ThemeGeneratorPage } from 'office-ui-fabric-react/lib/components/ThemeG
 const pageStyles: any = require('../../PageStyles.module.scss');
 
 export class ThemeGeneratorToolPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div
         className={ pageStyles.basePage }

@@ -84,7 +84,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         width: 32,
         textAlign: 'center',
         transition: `width ${AnimationVariables.durationValue1}`,
-        color: palette.themePrimary
+        color: palette.themePrimary,
+        cursor: 'text'
       },
       hasFocus && {
         width: 4,

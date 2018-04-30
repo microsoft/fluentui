@@ -2,6 +2,100 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.11.0",
+      "tag": "@uifabric/example-app-base_v5.11.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.25.0 <6.0.0` to `>=5.26.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.2",
+      "tag": "@uifabric/example-app-base_v5.10.2",
+      "date": "Thu, 19 Apr 2018 18:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "e77a31bee560440bae3737eca6b19fce2c1ae3db",
+            "comment": "Update createRef to match React.createRef api"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.24.0 <6.0.0` to `>=5.25.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.1",
+      "tag": "@uifabric/example-app-base_v5.10.1",
+      "date": "Wed, 18 Apr 2018 10:15:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4efff92981d7301ac16bc8a2cbd7624585f9c42b",
+            "comment": "Fix code block line-height"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.23.1 <6.0.0` to `>=5.24.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.0",
+      "tag": "@uifabric/example-app-base_v5.10.0",
+      "date": "Mon, 16 Apr 2018 10:23:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "ebbb57390d6fbaba5106ea5d0ca18aa022348f4b",
+            "comment": "Add new APIs for editing sections on GitHub."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry temporarily. (Will be added back in 6.0.)"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6f8a180ae2ecca66d09be97e48e8e03cc17d4d9e",
+            "comment": "Updating build to React 16.3.1."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.23.0 <6.0.0` to `>=5.23.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.23.0 <6.0.0` to `>=5.24.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.0",
       "tag": "@uifabric/example-app-base_v5.9.0",
       "date": "Thu, 12 Apr 2018 10:15:54 GMT",

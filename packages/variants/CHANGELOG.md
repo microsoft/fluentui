@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 02 Apr 2018 22:15:06 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+
+## 5.3.3
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
 
 ## 5.3.2
 Mon, 02 Apr 2018 22:15:06 GMT

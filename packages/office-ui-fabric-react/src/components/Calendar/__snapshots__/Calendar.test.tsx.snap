@@ -23,60 +23,13 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             id="DatePickerDay-dayPicker10"
           >
             <div
-              className="ms-DatePicker-monthComponents"
-            >
-              <div
-                className="ms-DatePicker-navContainer"
-              >
-                <button
-                  aria-controls="DatePickerDay-dayPicker10"
-                  aria-label={undefined}
-                  className="ms-DatePicker-prevMonth js-prevMonth"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-
-                        {
-                          display: inline-block;
-                        }
-                    data-icon-name="Up"
-                    role="presentation"
-                  />
-                </button>
-                <button
-                  aria-controls="DatePickerDay-dayPicker10"
-                  aria-label={undefined}
-                  className="ms-DatePicker-nextMonth js-nextMonth"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-
-                        {
-                          display: inline-block;
-                        }
-                    data-icon-name="Down"
-                    role="presentation"
-                  />
-                </button>
-              </div>
-            </div>
-            <div
               className="ms-DatePicker-header"
             >
               <div
                 aria-atomic="true"
                 aria-live="polite"
                 aria-relevant="text"
+                className={undefined}
                 id="DatePickerDay-monthAndYear11"
               >
                 <div
@@ -85,13 +38,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   February 2000
                 </div>
               </div>
+              <div
+                className="ms-DatePicker-monthComponents"
+              >
+                <div
+                  className="ms-DatePicker-navContainer"
+                >
+                  <button
+                    aria-controls="DatePickerDay-dayPicker10"
+                    aria-label={undefined}
+                    className="ms-DatePicker-prevMonth js-prevMonth"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+
+                          {
+                            display: inline-block;
+                          }
+                      data-icon-name="Up"
+                      role="presentation"
+                    />
+                  </button>
+                  <button
+                    aria-controls="DatePickerDay-dayPicker10"
+                    aria-label={undefined}
+                    className="ms-DatePicker-nextMonth js-nextMonth"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+
+                          {
+                            display: inline-block;
+                          }
+                      data-icon-name="Down"
+                      role="presentation"
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
             <div
               aria-describedby={undefined}
               aria-labelledby={undefined}
               className="ms-FocusZone"
               data-focuszone-id="FocusZone12"
-              onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -171,8 +171,12 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody
+                  onMouseLeave={undefined}
+                  onMouseUp={undefined}
+                >
                   <tr
+                    className={undefined}
                     role="row"
                   >
                     <td
@@ -186,6 +190,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -206,6 +214,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -226,6 +238,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id="DatePickerDay-active9"
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -246,6 +262,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -266,6 +286,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -286,6 +310,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -306,6 +334,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -317,6 +349,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
+                    className={undefined}
                     role="row"
                   >
                     <td
@@ -330,6 +363,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -350,6 +387,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -370,6 +411,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -390,6 +435,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -410,6 +459,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -430,6 +483,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -450,6 +507,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -461,6 +522,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
+                    className={undefined}
                     role="row"
                   >
                     <td
@@ -474,6 +536,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -494,6 +560,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -514,6 +584,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -534,6 +608,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -554,6 +632,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -574,6 +656,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -594,6 +680,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -605,6 +695,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
+                    className={undefined}
                     role="row"
                   >
                     <td
@@ -618,6 +709,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -638,6 +733,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -658,6 +757,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -678,6 +781,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -698,6 +805,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -718,6 +829,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -738,6 +853,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -749,6 +868,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
+                    className={undefined}
                     role="row"
                   >
                     <td
@@ -762,6 +882,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -782,6 +906,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -802,6 +930,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -822,6 +954,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -842,6 +978,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -862,6 +1002,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -882,6 +1026,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        onMouseDown={undefined}
+                        onMouseLeave={undefined}
+                        onMouseOver={undefined}
+                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -900,52 +1048,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             className="ms-DatePicker-monthPicker"
           >
             <div
-              className="ms-DatePicker-yearComponents"
-            >
-              <div
-                className="ms-DatePicker-navContainer"
-              >
-                <button
-                  aria-label={undefined}
-                  className="ms-DatePicker-prevYear js-prevYear"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-
-                        {
-                          display: inline-block;
-                        }
-                    data-icon-name="Up"
-                    role="presentation"
-                  />
-                </button>
-                <button
-                  aria-label={undefined}
-                  className="ms-DatePicker-nextYear js-nextYear"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-
-                        {
-                          display: inline-block;
-                        }
-                    data-icon-name="Down"
-                    role="presentation"
-                  />
-                </button>
-              </div>
-            </div>
-            <div
               className="ms-DatePicker-header"
             >
               <div
@@ -953,13 +1055,58 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               >
                 2000
               </div>
+              <div
+                className="ms-DatePicker-yearComponents"
+              >
+                <div
+                  className="ms-DatePicker-navContainer"
+                >
+                  <button
+                    aria-label={undefined}
+                    className="ms-DatePicker-prevYear js-prevYear"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+
+                          {
+                            display: inline-block;
+                          }
+                      data-icon-name="Up"
+                      role="presentation"
+                    />
+                  </button>
+                  <button
+                    aria-label={undefined}
+                    className="ms-DatePicker-nextYear js-nextYear"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+
+                          {
+                            display: inline-block;
+                          }
+                      data-icon-name="Down"
+                      role="presentation"
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
             <div
               aria-describedby={undefined}
               aria-labelledby={undefined}
               className="ms-FocusZone"
               data-focuszone-id="FocusZone13"
-              onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

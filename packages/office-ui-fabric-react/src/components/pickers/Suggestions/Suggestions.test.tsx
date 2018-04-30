@@ -1,13 +1,8 @@
 
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { Suggestions } from './Suggestions';
-import { ISuggestionItemProps } from './Suggestions.types';
 import { ISuggestionModel } from './SuggestionsController';
 
 const suggestions = [

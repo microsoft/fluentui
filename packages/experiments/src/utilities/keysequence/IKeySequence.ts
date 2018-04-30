@@ -13,8 +13,8 @@ export interface IKeySequence {
  * @returns {boolean} T/F if the two sequences are equal
  */
 export function keySequencesAreEqual(seq1: IKeySequence, seq2: IKeySequence): boolean {
-  let keyCodes1 = seq1.keys.join();
-  let keyCodes2 = seq2.keys.join();
+  const keyCodes1 = seq1.keys.join();
+  const keyCodes2 = seq2.keys.join();
   return keyCodes1 === keyCodes2;
 }
 
@@ -61,8 +61,8 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
  * @returns {boolean} T/F if seq1 starts with seq2, or vice versa
  */
 export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): boolean {
-  let keyCodes1 = seq1.keys.join();
-  let keyCodes2 = seq2.keys.join();
+  const keyCodes1 = seq1.keys.join();
+  const keyCodes2 = seq2.keys.join();
   if (keyCodes1.length === 0 || keyCodes2.length === 0) {
     return false;
   }

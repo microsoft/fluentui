@@ -1,18 +1,23 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import {
-  keyframes,
-  DefaultPalette
-} from '../../Styling';
+import { keyframes, DefaultPalette } from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     width,
     rowHeight,
     isDataLoaded,
-    isBaseStyle
+    isBaseStyle,
+    widthInPercentage,
+    widthInPixel
   } = props;
 
   const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
+
+  // TODO reduce the logic after the deprecated value will be removed.
+  const ACTUAL_WIDTH =
+    width ? width + '%' :
+      widthInPercentage ? widthInPercentage + '%' :
+        widthInPixel ? widthInPixel + 'px' : '100%';
 
   const shimmerAnimation: string = keyframes({
     '0%': {
@@ -51,7 +56,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         right: '0',
         alignItems: 'center',
         alignContent: 'space-between',
-        width: width ? `${width}%` : '100%',
+        width: ACTUAL_WIDTH,
         height: 'auto',
         boxSizing: 'border-box',
         background: `${DefaultPalette.neutralLighter}
@@ -75,8 +80,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         visibility: 'hidden'
       },
       isBaseStyle && {
-        position: 'static',
-        width: width ? `${width}px` : 'auto'
+        position: 'static'
       }
     ],
     dataWrapper: [
@@ -85,6 +89,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         opacity: '0',
         lineHeight: '1',
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         transition: 'opacity 200ms'
       },

@@ -7,7 +7,7 @@ export interface IAutofill {
    * The current index of the cursor in the input area. Returns -1 if the input element
    * is not ready.
    */
-  cursorLocation: number;
+  cursorLocation: number | null;
   /**
    * A boolean for whether or not there is a value selected in the input area.
    */
@@ -20,12 +20,12 @@ export interface IAutofill {
    * The current index of where the selection starts. Returns -1 if the input element
    * is not ready.
    */
-  selectionStart: number;
+  selectionStart: number | null;
   /**
    * the current index of where the selection ends. Returns -1 if the input element
    * is not ready.
    */
-  selectionEnd: number;
+  selectionEnd: number | null;
   /**
    * The current input element.
    */
@@ -67,13 +67,16 @@ export interface IAutofillProps extends
   enableAutofillOnKeyPress?: KeyCodes[];
 
   /**
-   * the default value to be visible
+   * The default value to be visible. This is different from placeholder
+   * because it actually sets the current value of the picker
+   * Note: This will only be set upon component creation
+   * and will not update with subsequent prop updates.
    */
   defaultVisibleValue?: string;
 
   /**
    * Handler for checking and updating the value if needed
-   *  in componentWillReceiveProps
+   * in componentWillReceiveProps
    *
    * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps

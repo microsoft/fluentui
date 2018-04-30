@@ -22,7 +22,6 @@ export interface IMenuItemClassNames {
   subMenuIcon: string;
   label: string;
   splitContainer: string;
-  splitContainerFocus: string;
   splitPrimary: string;
   splitMenu: string;
   linkContentMenu: string;
@@ -117,8 +116,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
         }
       }],
     ],
@@ -136,8 +135,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],
@@ -158,8 +157,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],
@@ -201,12 +200,9 @@ export const getItemClassNames = memoizeFunction((
     ],
     splitContainer: [
       styles.splitButtonFlexContainer,
-    ],
-    splitContainerFocus: [
-      styles.splitButtonFlexContainerFocus,
       !disabled && !checked && [{
         selectors: {
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover': styles.rootFocused,
         }
       }]
     ]

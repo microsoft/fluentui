@@ -1,6 +1,4 @@
-import {
-  styled
-} from '../../../Utilities';
+import { styled } from '../../../Utilities';
 import {
   IShimmerLineProps,
   IShimmerLineStyleProps,

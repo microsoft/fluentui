@@ -6,7 +6,7 @@ import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { createListItems } from '@uifabric/example-app-base';
+import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
 import {
   IColumn,
   DetailsList,
@@ -16,7 +16,7 @@ import {
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react';
-import { Shimmer } from 'experiments/lib/Shimmer';
+import { Shimmer } from '@uifabric/experiments/lib/Shimmer';
 import './Shimmer.Example.scss';
 
 export interface IItem {

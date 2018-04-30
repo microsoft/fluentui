@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { mount } from 'enzyme';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -17,7 +15,7 @@ describe('Toggle', () => {
         label='Label'
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const labelElement = renderedDOM.querySelector('.ms-Toggle-label') as Element;
 
     expect(labelElement.textContent).toEqual('Label');
@@ -40,7 +38,7 @@ describe('Toggle', () => {
         offAriaLabel='offLabel'
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const labelElement = renderedDOM.querySelector('button') as Element;
 
     expect(labelElement.getAttribute('aria-label')).toEqual('offLabel');
@@ -61,7 +59,7 @@ describe('Toggle', () => {
         onChanged={ callback }
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const button = renderedDOM.querySelector('button') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.click(button);
@@ -80,7 +78,7 @@ describe('Toggle', () => {
         checked={ false }
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const button = renderedDOM.querySelector('button') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.click(button);
@@ -94,7 +92,7 @@ describe('Toggle', () => {
         checked={ false }
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const label = renderedDOM.querySelector('label');
 
     // tslint:disable-next-line:no-unused-expression

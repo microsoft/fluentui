@@ -1,16 +1,31 @@
-export interface IProgressIndicator {
+import * as React from 'react';
+import { ProgressIndicatorBase } from './ProgressIndicator.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
+export interface IProgressIndicator {
+  focus: () => void;
 }
 
-export interface IProgressIndicatorProps {
+export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
   /**
-   * Optional callback to access the IProgressIndicator interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Gets the component ref.
    */
-  componentRef?: (component: IProgressIndicator | null) => void;
+  componentRef?: (component: IProgressIndicatorProps | null) => void;
 
   /**
-   * Class name to apply to the root in addition to ms-ProgressIndicator.
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the ProgressIndicator
+   * @defaultvalue undefined
    */
   className?: string;
 
@@ -39,4 +54,36 @@ export interface IProgressIndicatorProps {
    * @deprecated
    */
   title?: string;
+
+  /**
+   * Height of the ProgressIndicator
+   * @default 2
+   */
+  barHeight?: number;
+}
+
+export interface IProgressIndicatorStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+  indeterminate?: boolean;
+  barHeight?: number;
+}
+
+export interface IProgressIndicatorStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  itemName: IStyle;
+  itemDescription: IStyle;
+  itemProgress: IStyle;
+  progressTrack: IStyle;
+  progressBar: IStyle;
 }

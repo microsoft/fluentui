@@ -45,7 +45,7 @@ function _continuousPulseStepFive(beaconColorOne: string, innerDimension: string
   };
 }
 
-function _continuousPulseAnimation(
+function _continuousPulseAnimationDouble(
   beaconColorOne: string,
   beaconColorTwo: string,
   innerDimension: string,
@@ -73,8 +73,24 @@ function _continuousPulseAnimation(
   });
 }
 
+function _continuousPulseAnimationSingle(
+  beaconColorOne: string,
+  beaconColorTwo: string,
+  innerDimension: string,
+  outerDimension: string,
+  borderWidth: string
+): string {
+  return keyframes({
+    '0%': _continuousPulseStepOne(beaconColorOne, innerDimension),
+    '14.2%': _continuousPulseStepTwo(borderWidth),
+    '35.7%': _continuousPulseStepThree(),
+    '71.4%': _continuousPulseStepFour(beaconColorTwo, outerDimension),
+    '100%': {}
+  });
+}
+
 function _createDefaultAnimation(
-  animationName: string,
+  animationName: string
 ): IRawStyle {
   return {
     animationName,
@@ -85,6 +101,7 @@ function _createDefaultAnimation(
 }
 
 export const PulsingBeaconAnimationStyles = {
-  continuousPulseAnimation: _continuousPulseAnimation,
-  createDefaultAnimation: _createDefaultAnimation
+  continuousPulseAnimationDouble: _continuousPulseAnimationDouble,
+  continuousPulseAnimationSingle: _continuousPulseAnimationSingle,
+  createDefaultAnimation: _createDefaultAnimation,
 };

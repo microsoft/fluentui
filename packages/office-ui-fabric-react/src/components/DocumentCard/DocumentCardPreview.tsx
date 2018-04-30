@@ -12,7 +12,7 @@ const styles: any = stylesImport;
 const LIST_ITEM_COUNT = 3;
 
 export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps, any> {
-  public render() {
+  public render(): JSX.Element {
     const { previewImages } = this.props;
     let style, preview;
     let isFileList = false;

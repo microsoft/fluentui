@@ -6,7 +6,6 @@ exports[`Nav renders Nav correctly 1`] = `
   aria-labelledby={undefined}
   className="ms-FocusZone"
   data-focuszone-id="FocusZone0"
-  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -118,7 +117,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                    .ms-Fabric.is-focusVisible &:focus:after {
+                    .ms-Fabric--isFocusVisible &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -129,7 +128,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                       border: none;
                       bottom: -2px;
                       left: -2px;

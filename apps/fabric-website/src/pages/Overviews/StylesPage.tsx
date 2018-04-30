@@ -5,7 +5,7 @@ import * as stylesImport from './Overviews.module.scss';
 const styles: any = stylesImport;
 
 export class StylesPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <PageHeader pageTitle='Styles' backgroundColor='#006f94' />
