@@ -400,6 +400,16 @@ describe('TextField', () => {
     expect(renderedDOM.querySelector('textarea')!.value).toEqual('initial value');
   });
 
+  it('can render a custom description', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        description='A custom description'
+      />
+    );
+
+    expect(renderedDOM.querySelector('.ms-TextField-description')!.textContent).toEqual('A custom description');
+  });
+
   it('should call onChanged handler for input change', () => {
     let callCount = 0;
     const onChangedSpy = (value: string) => { callCount++; };
