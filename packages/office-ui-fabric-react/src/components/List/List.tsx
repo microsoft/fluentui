@@ -374,7 +374,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         role={ (role === undefined) ? 'list' : role }
         className={ css('ms-List', className) }
       >
-        \ref={ this._surface } className={ css('ms-List-surface') } role='presentation'>
+        <div
+          ref={ this._surface }
+          className={ css('ms-List-surface') }
+          role='presentation'
+        >
           { pageElements }
         </div>
       </div>
