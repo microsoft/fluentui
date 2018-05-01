@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  IDatePicker,
   IDatePickerProps,
   IDatePickerStrings
 } from './DatePicker.types';
@@ -87,7 +88,7 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   nextYearAriaLabel: 'Go to next year'
 };
 
-export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
+export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
     formatDate: (date: Date) => {
