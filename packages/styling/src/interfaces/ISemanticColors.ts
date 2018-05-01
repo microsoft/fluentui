@@ -295,13 +295,6 @@ export interface ISemanticColors {
    */
   linkHovered: string;
 
-  //// Keytips
-
-  /**
-   * The text color for a disabled keytip.
-   */
-  keytipDisabledText: string;
-
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
 

@@ -35,7 +35,7 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
       display: 'inline-block'
     },
     disabled && {
-      color: theme.semanticColors.keytipDisabledText
+      color: theme.palette.neutralTertiaryAlt
     }]
   };
 };
