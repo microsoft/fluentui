@@ -414,8 +414,8 @@ describe('TextField', () => {
     let callCount = 0;
     const onRenderDescription = () => {
       callCount++;
-      return (<strong>A custom description</strong>)
-    }
+      return (<strong>A custom description</strong>);
+    };
 
     renderIntoDocument(
       <TextField
