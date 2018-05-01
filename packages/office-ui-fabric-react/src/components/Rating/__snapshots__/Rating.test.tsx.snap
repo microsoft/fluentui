@@ -89,6 +89,7 @@ exports[`Rating Renders Rating correctly 1`] = `
       data-is-current={true}
       disabled={false}
       id="Rating0-star-0"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -224,6 +225,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
       disabled={false}
       id="Rating0-star-1"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -359,6 +361,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
       disabled={false}
       id="Rating0-star-2"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -494,6 +497,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
       disabled={false}
       id="Rating0-star-3"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -629,6 +633,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
       disabled={false}
       id="Rating0-star-4"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"

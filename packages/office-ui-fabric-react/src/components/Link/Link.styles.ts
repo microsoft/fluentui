@@ -20,7 +20,6 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
-      className,
       getFocusStyle(theme),
       {
         color: semanticColors.link,
@@ -54,7 +53,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
               pointerEvents: 'none'
             }
           }
-        }
+        },
       ],
       !isDisabled && {
         selectors: {
@@ -65,7 +64,9 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             color: semanticColors.link
           }
         }
-      }
+      },
+      classNames.root,
+      className
     ]
   };
 };

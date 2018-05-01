@@ -1,6 +1,37 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Apr 2018 10:15:52 GMT and should not be manually modified.
+This log was last generated on Tue, 01 May 2018 10:23:32 GMT and should not be manually modified.
+
+## 5.93.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- DatePicker: Add a reset function to the public `IDatePicker` interface.
+- move extendedPicker, floatingPicker, and selectedItemsList to OUFR
+- Tooltip: updated to use customizable styling via `getStyles`.
+- List: Added list scrolling modes
+
+### Patches
+
+- Breadcrumb: Updating breadcrumb to user js styling.
+- Added onClick handler to rating star in the Rating component that calls _onFocus redundently for support with Firefox & Safari on OSX.
+- details link contrast issue
+
+## 5.92.1
+Mon, 30 Apr 2018 21:22:55 GMT
+
+### Patches
+
+- Revert isEqual check in List.
+
+## 5.92.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Contextual Menu: moved out the split button to be its own component, ContextualMenuSplitButton
+- Use theme flag to control global classes
 
 ## 5.91.0
 Fri, 27 Apr 2018 10:15:52 GMT
