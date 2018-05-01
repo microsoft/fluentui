@@ -482,6 +482,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
                   }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
               data-is-focusable={true}
               disabled={undefined}
               onClick={[Function]}
@@ -1172,6 +1176,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
                   }
               data-is-focusable={true}
               disabled={undefined}

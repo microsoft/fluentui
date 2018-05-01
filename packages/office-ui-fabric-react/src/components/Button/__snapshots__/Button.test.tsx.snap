@@ -60,6 +60,10 @@ exports[`Button renders ActionButton correctly 1`] = `
       &:hover {
         color: #0078d4;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:hover .ms-Button-icon {
         color: #0078d4;
       }
@@ -175,6 +179,9 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       &:hover {
         background-color: #eaeaea;
         color: #212121;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: Highlight;
       }
       &:active {
         background-color: #dadada;
@@ -332,6 +339,10 @@ exports[`Button renders CompoundButton correctly 1`] = `
         background-color: #eaeaea;
         color: #000000;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:hover .ms-Button-description {
         color: #212121;
       }
@@ -468,6 +479,10 @@ exports[`Button renders DefaultButton correctly 1`] = `
         background-color: #eaeaea;
         color: #000000;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:active {
         background-color: #c8c8c8;
         color: #212121;
@@ -573,6 +588,10 @@ exports[`Button renders IconButton correctly 1`] = `
       &:hover {
         background-color: #f4f4f4;
         color: #004578;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
       }
       &:active {
         background-color: #eaeaea;

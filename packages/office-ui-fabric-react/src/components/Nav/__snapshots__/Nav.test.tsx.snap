@@ -143,6 +143,10 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:hover {
                       color: #0078d4;
                     }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
+                    }
                     &:hover .ms-Button-icon {
                       color: #0078d4;
                     }
