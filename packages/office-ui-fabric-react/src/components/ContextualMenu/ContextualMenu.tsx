@@ -278,13 +278,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         >
           <div
             role='menu'
-            aria-label={ ariaLabel }
-            aria-labelledby={ labelElementId }
             style={ contextMenuStyle }
             ref={ (host: HTMLDivElement) => this._host = host }
             id={ id }
             className={ this._classNames.container }
-            tabIndex={ 0 }
             onKeyDown={ this._onMenuKeyDown }
           >
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
@@ -296,9 +293,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 handleTabKey={ FocusZoneTabbableElements.all }
               >
                 <ul
-                  role='presentation'
                   className={ this._classNames.list }
                   onKeyDown={ this._onKeyDown }
+                  aria-label={ ariaLabel }
+                  aria-labelledby={ labelElementId }
                 >
                   { items.map((item, index) => {
                     const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
