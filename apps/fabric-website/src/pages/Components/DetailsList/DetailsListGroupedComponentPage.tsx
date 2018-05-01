@@ -10,7 +10,7 @@ export class DetailsListGroupedComponentPage extends React.Component<any, any> {
       <ComponentPage
         title='Grouped DetailsListExample'
         componentName='DetailsListGroupedExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList' // @TODO(keco): UPDATE
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
           <ExampleCard title='Simple Grouped DetailsList' isOptIn={ true } code={ DetailsListGroupedExampleCode }>
             <DetailsListGroupedExample />
