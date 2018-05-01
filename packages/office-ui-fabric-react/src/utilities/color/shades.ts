@@ -14,14 +14,14 @@ import { assign } from '../../Utilities';
 // Strongen: opposite of soften
 
 // Luminance multiplier constants for generating shades of a given color
-const WhiteShadeTableBG = [.973, .957, .918, .855, .816, .784, .651, .463]; // white bg
-const BlackTintTableBG = [.463, .55, .651, .784, .816, .855, .918, .957]; // black bg
-const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // white fg
-const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black fg
-const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light (strongen all)
-const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark (soften all)
-const ColorTintTable = [.07, .18, .436, .751, .956]; // default soften
-const ColorShadeTable = [.90, .64, .550]; // default strongen
+const WhiteShadeTableBG = [.027, .043, .082, .145, .184, .216, .349, .537]; // white bg
+const BlackTintTableBG = [.537, .45, .349, .216, .184, .145, .082, .043]; // black bg
+const WhiteShadeTable = [.537, .349, .216, .184, .145, .082, .043, .027]; // white fg
+const BlackTintTable = [.537, .45, .349, .216, .184, .145, .082, .043]; // black fg
+const LumTintTable = [.88, .77, .66, .55, .44, .33, .22, .11]; // light (strongen all)
+const LumShadeTable = [.11, .22, .33, .44, .55, .66, .77, .88]; // dark (soften all)
+const ColorTintTable = [.960, .840, .700, .400, .120]; // default soften
+const ColorShadeTable = [.100, .240, .440]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
 const LowLuminanceThreshold = 0.2;
@@ -59,7 +59,6 @@ function _isWhite(color: IColor): boolean {
 }
 
 function _darken(hsv: IHSV, factor: number): IHSV {
-  factor = 1 - factor;
   return {
     h: hsv.h,
     s: hsv.s,
@@ -68,7 +67,6 @@ function _darken(hsv: IHSV, factor: number): IHSV {
 }
 
 function _lighten(hsv: IHSV, factor: number): IHSV {
-  factor = 1 - factor;
   return {
     h: hsv.h,
     s: _clamp(hsv.s - (hsv.s * factor), 0, 100),
@@ -117,7 +115,6 @@ export function getShade(color: IColor, shade: Shade, isInverted: boolean = fals
   let _soften = _lighten;
   let _strongen = _darken;
   if (isInverted) {
-    // tableIndex = LumTintTable.length - 1 - tableIndex;
     _soften = _darken;
     _strongen = _lighten;
   }
