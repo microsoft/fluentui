@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add a reset function to the DatePicker ",
+      "comment": "DatePicker: Add a reset function to the public `IDatePicker` interface.",
       "type": "minor"
     }
   ],
