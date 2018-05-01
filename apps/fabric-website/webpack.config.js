@@ -1,4 +1,4 @@
-module.exports = function(argv) {
+module.exports = function (argv) {
   const path = require('path');
   const resources = require('../../scripts/tasks/webpack-resources');
   const version = require('./package.json').version;
@@ -23,8 +23,7 @@ module.exports = function(argv) {
 
   return resources.createConfig(
     entryPointName,
-    isProductionArg,
-    {
+    isProductionArg, {
       entry: {
         [entryPointName]: './lib/root.js'
       },
@@ -34,13 +33,12 @@ module.exports = function(argv) {
         chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
       },
 
-      externals: [
-        {
-          react: 'React'
-        },
-        {
-          'react-dom': 'ReactDOM'
-        }
+      externals: [{
+        'react': 'React'
+      },
+      {
+        'react-dom': 'ReactDOM'
+      }
       ],
 
       resolve: {
@@ -52,4 +50,4 @@ module.exports = function(argv) {
     },
     isProductionArg /* only production */
   );
-};
+}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentPage, ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
 import { DetailsListCompactExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Compact.Example';
-const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
+const DetailsListCompactExampleCode = require('raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
 
 export class DetailsListCompactComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
