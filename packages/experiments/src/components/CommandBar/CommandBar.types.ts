@@ -42,6 +42,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowItems?: ICommandBarItemProps[];
 
   /**
+   * Accessibility text to be read by the screen reader when the user's
+   * focus enters the command bar. The screen reader will read this text
+   * after reading information about the first focusable item in the command
+   * bar.
+   */
+  ariaLabel?: string;
+
+  /**
    * Text to be read by screen readers if there are overflow items and focus is on elipsis button
    */
   elipisisAriaLabel?: string;
