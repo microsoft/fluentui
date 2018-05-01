@@ -12,9 +12,9 @@ const packageName = package.name;
 const isProduction = process.argv.indexOf('--production') > -1;
 
 let taskList = [
-  ['copy', 'sass', 'tslint'],
+  ['copy', 'sass'],
   ['ts'],
-  ['jest', 'webpack']
+  ['tslint', 'jest', 'webpack']
 ]
   .map(removeDisabledTasks(package.disabledTasks))
 

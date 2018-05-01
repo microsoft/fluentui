@@ -1,5 +1,5 @@
 module.exports = function (options) {
-  const execSync = require('../exec-sync');
+  const exec = require('../exec');
   const path = require('path');
   const fs = require('fs');
   const msCustomRulesMain = require.resolve('tslint-microsoft-contrib');
@@ -8,5 +8,5 @@ module.exports = function (options) {
   const sourcePath = path.resolve(process.cwd(), 'src/**/*.ts*');
   const tslintPath = 'node ' + path.resolve(__dirname, '../node_modules/tslint/lib/tslint-cli');
 
-  execSync(`${tslintPath} --project ${projectPath} -t stylish -r ${rulesPath}`);
+  return exec(`${tslintPath} --project ${projectPath} -t stylish -r ${rulesPath}`, process);
 };
