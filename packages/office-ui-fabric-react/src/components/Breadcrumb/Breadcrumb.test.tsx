@@ -1,7 +1,5 @@
 import * as React from 'react';
-
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
 
@@ -88,16 +86,14 @@ describe('Breadcrumb', () => {
       { text: 'TestText', key: 'TestKey', onClick: clickCallback }
     ];
 
-    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const wrapper = mount(
       <Breadcrumb
         items={ items }
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
+    wrapper.find('.ms-Breadcrumb-itemLink').first().simulate('click');
 
-    ReactTestUtils.Simulate.click(itemLink!);
     expect(callbackValue).toEqual('TestKey');
   });
 
@@ -110,17 +106,14 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
-    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const wrapper = mount(
       <Breadcrumb
         items={ items }
         maxDisplayedItems={ 2 }
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
-
-    expect(itemLink[0].textContent).toEqual('TestText3');
+    expect(wrapper.find('.ms-Breadcrumb-item').first().text()).toEqual('TestText3');
   });
 
 });

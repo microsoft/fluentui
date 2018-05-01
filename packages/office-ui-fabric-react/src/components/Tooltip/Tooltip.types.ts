@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Tooltip } from './Tooltip';
+import { TooltipBase } from './Tooltip.base';
 import { ICalloutProps } from '../../Callout';
 import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ITooltip {
 
@@ -11,7 +13,7 @@ export interface ITooltip {
 /**
  * Tooltip component props.
  */
-export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Tooltip> {
+export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
   /**
    * Optional callback to access the ITooltip interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -20,6 +22,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
+   * @default isBeakVisible: true, beakWidth: 16, gapSpace: 0, setInitialFocus: true, doNotLayer: false
    */
   calloutProps?: ICalloutProps;
 
@@ -61,10 +64,59 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
    * If not specified, a mirror of `directionalHint` will be used instead
    */
   directionalHintForRTL?: DirectionalHint;
+
+  /**
+   * Theme to apply to the component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ITooltipStyleProps, ITooltipStyles>;
 }
 
 export enum TooltipDelay {
   zero = 0,
   medium = 1,
   long = 2
+}
+
+export interface ITooltipStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  /**
+   * Delay before tooltip appears.
+   */
+  delay?: TooltipDelay;
+
+  /**
+   * Maximum width of tooltip.
+   */
+  maxWidth?: string;
+}
+
+export interface ITooltipStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+
+  /**
+   * Style for the content element.
+   */
+  content: IStyle;
+
+  /**
+   * Style for the subtext element.
+   */
+  subText: IStyle;
 }
