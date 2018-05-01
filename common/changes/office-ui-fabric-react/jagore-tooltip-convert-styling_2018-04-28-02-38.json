@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Convert Tooltip to new styling method. Also fixes issues related to customzed styling.",
+      "comment": "Tooltip: updated to use customizable styling via `getStyles`. Also fixes issues related to customized styling.",
       "type": "minor"
     }
   ],
