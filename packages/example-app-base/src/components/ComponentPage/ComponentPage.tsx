@@ -106,13 +106,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
                 <EditSection
                   title={ this.props.title }
                   section={ ComponentPageSection.Overview }
-                  sectionContent={ this.props.overview || <div /> }
+                  sectionContent={ this.props.overview }
                   url={ this._getURL('Overview', this.props.editOverviewUrl) }
                 />
               </div>
               <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
-                  { this.props.overview }
+                  { overview }
                 </div>
                 { this._getRelatedComponents() }
               </div>
