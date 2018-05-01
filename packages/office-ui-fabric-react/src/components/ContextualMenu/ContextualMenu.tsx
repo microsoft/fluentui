@@ -278,7 +278,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           hidden={ this.props.hidden }
         >
           <div
-            role={ shouldFocusOnContainer ? 'menu' : 'group' }
+            role={ shouldFocusOnContainer ? 'menu' : undefined }
             aria-label={ ariaLabel }
             aria-labelledby={ labelElementId }
             style={ contextMenuStyle }

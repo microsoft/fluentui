@@ -21,7 +21,7 @@ export class ContextualMenuBasicExample extends React.Component {
           menuProps={ {
             shouldFocusOnMount: true,
             ariaLabel: 'Hi there Rebecca Ballantyne',
-            shouldFocusOnContainer: true,
+            shouldFocusOnContainer: false,
             items: [
               {
                 key: 'newItem',
