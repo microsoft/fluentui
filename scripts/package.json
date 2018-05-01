@@ -49,8 +49,224 @@
   },
   "bundlesize": [
     {
-      "path": "../apps/test-bundle-button/dist/test-bundle-button.min.js",
-      "maxSize": "47.6 kB"
+      "path": "../apps/test-bundles/dist/ActivityItem.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Breadcrumb.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Button.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Calendar.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Callout.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Check.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Checkbox.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/ChoiceGroup.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/ColorPicker.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/ComboBox.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/CommandBar.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/ContextualMenu.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/DatePicker.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/DetailsList.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Dialog.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/DocumentCard.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Dropdown.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Fabric.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Facepile.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/FocusTrapZone.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/FocusZone.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/GroupedList.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/HoverCard.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Icon.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Image.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Label.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Layer.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Link.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/List.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/MessageBar.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/MarqueeSelection.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Nav.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/OverflowSet.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Overlay.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Panel.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Pickers.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Persona.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/PersonaCoin.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Pivot.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/ProgressIndicator.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Rating.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/ResizeGroup.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/ScrollablePane.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/SearchBox.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Slider.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/SpinButton.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Spinner.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Sticky.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Styling.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/SwatchColorPicker.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/TeachingBubble.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/TextField.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Toggle.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Tooltip.min.js",
+      "maxSize": "30.0 kB"
+    },
+    {
+      "path": "../apps/test-bundles/dist/Utilities.min.js",
+      "maxSize": "30.0 kB"
     }
   ]
 }

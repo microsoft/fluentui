@@ -3,13 +3,15 @@ const resources = require('../../scripts/tasks/webpack-resources');
 
 const PACKAGE_NAME = 'test-bundle-button';
 
+const entry = {
+  'Button': './node_modules/office-ui-fabric-react/lib/Button.js'
+};
+
 module.exports = resources.createConfig(
   PACKAGE_NAME,
   true,
   {
-    entry: {
-      [PACKAGE_NAME]: './lib/index.js',
-    },
+    entry,
 
     externals: {
       'react': 'React',

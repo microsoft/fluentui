@@ -78,5 +78,6 @@ function getFileSize(size) {
   } else {
     sizeString = (Math.round(1000 * size / 1024) / 1000) + ' KB'
   }
-  return chalk.cyan(sizeString);
+  // return chalk.cyan(sizeString);
+  return size;
 }
