@@ -22,6 +22,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
+   * @default isBeakVisible: true, beakWidth: 16, gapSpace: 0, setInitialFocus: true, doNotLayer: false
    */
   calloutProps?: ICalloutProps;
 
