@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  IDatePicker,
   IDatePickerProps,
   IDatePickerStrings
 } from './DatePicker.types';
@@ -87,7 +88,7 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   nextYearAriaLabel: 'Go to next year'
 };
 
-export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
+export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
     formatDate: (date: Date) => {
@@ -128,15 +129,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   constructor(props: IDatePickerProps) {
     super(props);
-
-    const { formatDate, value } = props;
-
-    this.state = {
-      selectedDate: value || undefined,
-      formattedDate: (formatDate && value) ? formatDate(value) : '',
-      isDatePickerShown: false,
-      errorMessage: undefined
-    };
+    this.state = this._getDefaultState();
 
     this._preventFocusOpeningPicker = false;
   }
@@ -281,6 +274,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (this._textField.current) {
       this._textField.current.focus();
     }
+  }
+
+  public reset(): void {
+    this.setState(this._getDefaultState());
   }
 
   private _onSelectDate = (date: Date): void => {
@@ -499,6 +496,15 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         onSelectDate(date);
       }
     }
+  }
+
+  private _getDefaultState(props: IDatePickerProps = this.props): IDatePickerState {
+    return {
+      selectedDate: props.value || undefined,
+      formattedDate: (props.formatDate && props.value) ? props.formatDate(props.value) : '',
+      isDatePickerShown: false,
+      errorMessage: undefined
+    };
   }
 
   private _isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {

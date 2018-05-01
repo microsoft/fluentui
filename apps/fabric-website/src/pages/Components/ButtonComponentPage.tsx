@@ -8,7 +8,7 @@ export class ButtonComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
 
-      <div ref='pageElement' className={ pageStyles.basePage }>
+      <div className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='Button' backgroundColor='#038387'
             links={

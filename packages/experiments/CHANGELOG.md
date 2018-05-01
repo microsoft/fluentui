@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Apr 2018 10:16:44 GMT and should not be manually modified.
+
+## 5.34.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Nav: Refactored out a NavLink component.
 
 ## 5.33.1
 Wed, 25 Apr 2018 05:32:09 GMT

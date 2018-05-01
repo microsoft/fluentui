@@ -120,6 +120,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
             key={ i }
             { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
             onFocus={ this._onFocus.bind(this, i) }
+            onClick={ this._onFocus.bind(this, i) } // For Safari & Firefox on OSX
             disabled={ disabled || readOnly ? true : false }
             role='presentation'
             type='button'
@@ -155,13 +156,15 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
-    this.setState({
-      rating: value
-    } as IRatingState);
+    if (this.state.rating !== value) {
+      this.setState({
+        rating: value
+      } as IRatingState);
 
-    const { onChanged } = this.props;
-    if (onChanged) {
-      onChanged(value);
+      const { onChanged } = this.props;
+      if (onChanged) {
+        onChanged(value);
+      }
     }
   }
 
