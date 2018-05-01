@@ -1,4 +1,4 @@
-import { findIndex, find, createArray, removeIndex, flatten, replaceElement, addElementAtIndex, arraysAreEqual } from './array';
+import { findIndex, find, createArray, removeIndex, flatten, replaceElement, addElementAtIndex, arraysEqual } from './array';
 
 describe('array utils tests', () => {
   describe('findIndex tests', () => {
@@ -160,29 +160,29 @@ describe('array utils tests', () => {
     });
   });
 
-  describe('arraysAreEqual tests', () => {
+  describe('arraysEqual tests', () => {
     it('two empty arrays are equal', () => {
       const arr1: number[] = [];
       const arr2: number[] = [];
-      expect(arraysAreEqual(arr1, arr2)).toEqual(true);
+      expect(arraysEqual(arr1, arr2)).toEqual(true);
     });
 
     it('different length arrays are not equal', () => {
       const arr1: number[] = [1, 2];
       const arr2: number[] = [1];
-      expect(arraysAreEqual(arr1, arr2)).toEqual(false);
+      expect(arraysEqual(arr1, arr2)).toEqual(false);
     });
 
     it('different value arrays are not equal', () => {
       const arr1: number[] = [1, 2];
       const arr2: number[] = [1, 3];
-      expect(arraysAreEqual(arr1, arr2)).toEqual(false);
+      expect(arraysEqual(arr1, arr2)).toEqual(false);
     });
 
     it('two exact arrays are equal', () => {
       const arr1: number[] = [1, 2, 3];
       const arr2: number[] = [1, 2, 3];
-      expect(arraysAreEqual(arr1, arr2)).toEqual(true);
+      expect(arraysEqual(arr1, arr2)).toEqual(true);
     });
   });
 });

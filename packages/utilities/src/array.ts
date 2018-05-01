@@ -121,7 +121,7 @@ export function flatten<T>(array: (T | T[])[]): T[] {
  * @param array2 - Second array to compare
  * @returns {boolean} True if the arrays are the same length and have the same values in the same positions, false otherwise.
  */
-export function arraysAreEqual<T>(array1: T[], array2: T[]): boolean {
+export function arraysEqual<T>(array1: T[], array2: T[]): boolean {
   if (array1.length !== array2.length) {
     return false;
   }

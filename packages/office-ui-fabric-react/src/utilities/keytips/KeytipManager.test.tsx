@@ -1,6 +1,6 @@
 import { KeytipManager } from './KeytipManager';
 import {
-  arraysAreEqual,
+  arraysEqual,
   EventGroup,
 } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
@@ -33,7 +33,7 @@ describe('KeytipManager', () => {
         ktpMgr.register(keytipBProps);
         const keytips = ktpMgr.getKeytips();
         expect(keytips).toHaveLength(1);
-        expect(arraysAreEqual(keytips[0].keySequences, keytipSequenceB)).toEqual(true);
+        expect(arraysEqual(keytips[0].keySequences, keytipSequenceB)).toEqual(true);
         expect(eventTriggered).toEqual(true);
       });
 

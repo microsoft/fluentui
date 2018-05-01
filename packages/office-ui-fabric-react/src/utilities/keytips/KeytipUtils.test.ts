@@ -4,7 +4,7 @@ import {
   getAriaDescribedBy
 } from './KeytipUtils';
 import { KTP_FULL_PREFIX, KTP_SEPARATOR, KTP_LAYER_ID, KTP_ARIA_SEPARATOR_ID } from './KeytipConstants';
-import { arraysAreEqual } from '../../Utilities';
+import { arraysEqual } from '../../Utilities';
 
 describe('KeytipUtils', () => {
   describe('sequencesToID', () => {
@@ -40,14 +40,14 @@ describe('KeytipUtils', () => {
       const overflowSequence = ['01'];
       const keySequences = ['x', 'c'];
       const newKeySequence = mergeOverflows(keySequences, overflowSequence);
-      expect(arraysAreEqual(newKeySequence, ['01', 'x', 'c'])).toEqual(true);
+      expect(arraysEqual(newKeySequence, ['01', 'x', 'c'])).toEqual(true);
     });
 
     it('when overflowSequence is in the middle', () => {
       const overflowSequence = ['h', '01'];
       const keySequences = ['h', 'x', 'c'];
       const newKeySequence = mergeOverflows(keySequences, overflowSequence);
-      expect(arraysAreEqual(newKeySequence,
+      expect(arraysEqual(newKeySequence,
         ['h', '01', 'x', 'c'])).toEqual(true);
     });
   });

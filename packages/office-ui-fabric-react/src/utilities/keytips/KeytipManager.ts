@@ -1,6 +1,6 @@
 import { IKeytipProps } from '../../Keytip';
 import {
-  arraysAreEqual,
+  arraysEqual,
   replaceElement,
   findIndex,
   find,
@@ -133,7 +133,7 @@ export class KeytipManager {
     fullSequence.pop();
     if (fullSequence.length !== 0) {
       const parentKeytip = find(this.getKeytips(), (keytip: IKeytipProps) => {
-        return arraysAreEqual(fullSequence, keytip.keySequences);
+        return arraysEqual(fullSequence, keytip.keySequences);
       });
       if (parentKeytip && parentKeytip.overflowSetSequence) {
         return {
