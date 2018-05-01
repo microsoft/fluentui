@@ -3,7 +3,8 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  PageMarkdown,
 } from '@uifabric/example-app-base';
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
@@ -18,11 +19,12 @@ const ChoiceGroupImageExampleCode = require('!raw-loader!office-ui-fabric-react/
 const ChoiceGroupIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
 
 export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
-        title={ 'ChoiceGroup' }
+        title='ChoiceGroup'
         componentName='ChoiceGroupExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ChoiceGroup'
         exampleCards={
           <div>
             <ExampleCard title='Default ChoiceGroup' code={ ChoiceGroupBasicExampleCode }>
@@ -49,43 +51,22 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
           />
         }
         overview={
-          <div>
-            <p>
-              The ChoiceGroup component, also known as radio buttons, let users select one option from two or more choices. Each option is represented by one ChoiceGroup button; a user can select only one ChoiceGroup in a button group.
-            </p>
-
-            <p>
-              ChoiceGroup emphasize all options equally, and that may draw more attention to the options than necessary. Consider using other controls, unless the options deserve extra attention from the user. For example, if the default option is recommended for most users in most situations, use a Dropdown component instead.
-            </p>
-
-            <p>
-              If there are only two mutually exclusive options, combine them into a single Checkbox or Toggle switch. For example, use a Checkbox for "I agree" instead of ChoiceGroup buttons for "I agree" and "I don't agree."
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>Use when there are 2-7 options, if you have enough screen space and the options are important enough to be a good use of that screen space. Otherwise, use a Checkbox or Dropdown list. </li>
-              <li>Use on wizard pages to make the alternatives clear, even if a Checkbox is otherwise acceptable.</li>
-              <li>List the options in a logical order, such as most likely to be selected to least, simplest operation to most complex, or least risk to most. Alphabetical ordering is not recommended because it is language dependent and therefore not localizable.</li>
-              <li>If none of the options is a valid choice, add another option to reflect this choice, such as "None" or "Does not apply".</li>
-              <li>Select the safest (to prevent loss of data or system access) and most secure and private option as the default. If safety and security aren't factors, select the most likely or convenient option.</li>
-              <li>Align radio buttons vertically instead of horizontally, if possible. Horizontal alignment is harder to read and localize.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Use when the options are numbers that have fixed steps, like 10, 20, 30. Use a Slider component instead.</li>
-              <li>Use if there are more than 7 options, use a Dropdown instead.</li>
-              <li>Nest with other ChoiceGroup or CheckBoxes. If possible, keep all the options at the same level.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

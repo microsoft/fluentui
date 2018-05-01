@@ -121,6 +121,7 @@ $field-error-color: $errorTextColor;
   border-radius: 0;
   border: none;
   background: none;
+  background-color: transparent;
   color: $field-text-color;
   @include ms-padding(0, 12px, 0, 12px);
   width: 100%;

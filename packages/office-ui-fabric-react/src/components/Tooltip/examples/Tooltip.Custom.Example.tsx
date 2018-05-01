@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
@@ -11,7 +9,7 @@ import {
 
 export class TooltipCustomExample extends BaseComponent<any, any> {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <TooltipHost
         calloutProps={ { gapSpace: 20 } }

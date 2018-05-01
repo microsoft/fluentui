@@ -50,11 +50,11 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     };
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._events.dispose();
   }
 
-  public componentWillReceiveProps(newProps: IColorRectangleProps) {
+  public componentWillReceiveProps(newProps: IColorRectangleProps): void {
     const { color } = newProps;
 
     this.setState({
@@ -63,7 +63,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { minSize } = this.props;
     const { color, fullColorString } = this.state;
 
@@ -86,11 +86,11 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const { color, onSVChanged } = this.props;
 
-    if (!this._root.value) {
+    if (!this._root.current) {
       return;
     }
 
-    const rectSize = this._root.value.getBoundingClientRect();
+    const rectSize = this._root.current.getBoundingClientRect();
 
     const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;

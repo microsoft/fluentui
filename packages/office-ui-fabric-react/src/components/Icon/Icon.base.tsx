@@ -25,7 +25,7 @@ export class Icon extends BaseComponent<IIconProps, IIconState> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       ariaLabel,
       className,

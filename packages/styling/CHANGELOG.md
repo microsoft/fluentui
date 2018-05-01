@@ -1,6 +1,67 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Apr 2018 10:16:44 GMT and should not be manually modified.
+
+## 5.28.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Adds flags to theme to support controlling global class names
+
+## 5.27.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Add theme slots for DetailsList header colors
+
+## 5.26.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The getFocusStyle helper has been adjusted to use the `ms-Fabric--isFocusEnabled` class name, rather than `ms-Fabric.is-focusEnabled`.
+
+## 5.25.0
+Thu, 19 Apr 2018 00:17:37 GMT
+
+### Minor changes
+
+- PulsingBeaconAnimationStyles: Distinguish between single and double pulse.
+
+## 5.24.0
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Minor changes
+
+- Add opt-in @deprecated comments
+
+### Patches
+
+- Fix deprecated semantic slots returning empty strings
+
+## 5.23.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.23.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- Add noWrap style set.
+
+## 5.22.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- New pulsing beacon animation moved in from Coachmark for reuse.
 
 ## 5.21.0
 Sun, 25 Mar 2018 03:08:03 GMT

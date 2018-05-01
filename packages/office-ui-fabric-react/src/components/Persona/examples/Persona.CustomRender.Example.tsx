@@ -22,7 +22,7 @@ const examplePersona = {
 
 export class PersonaCustomRenderExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-PersonaExample'>
         <div className={ exampleStyles.exampleLabel }>Custom icon in secondary text</div>

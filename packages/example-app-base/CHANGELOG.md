@@ -1,6 +1,53 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Sat, 31 Mar 2018 17:40:00 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+
+## 5.11.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+## 5.10.2
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.10.1
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Fix code block line-height
+
+## 5.10.0
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Minor changes
+
+- Add new APIs for editing sections on GitHub.
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.9.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- HTML button tags will be overridden with DefaultButton component.
+
+## 5.8.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add ability to disable scrolling for an ExampleCard
 
 ## 5.7.1
 Sat, 31 Mar 2018 17:40:00 GMT

@@ -12,7 +12,7 @@ const corePackageData = require('../../../node_modules/office-ui-fabric-core/pac
 const corePackageVersion: string = corePackageData && corePackageData.version || '9.2.0';
 
 export class GetStartedPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div id='design' className={ pageStyles.basePage }>
         <PageHeader
@@ -49,26 +49,31 @@ export class GetStartedPage extends React.Component<any, any> {
           <div className='ms-Grid ms-Grid--wide'>
             <div className={ css('ms-Grid-row', styles.contentInGrid) }>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
-                <div className={ styles.title }>Styles</div>
+                <div className={ styles.featureImage } >
+                  <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
+                </div>
+                <a className={ styles.title } href={ '#/styles' }>Styles</a>
                 <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
-                <div className={ styles.title }>Icons</div>
+                <div className={ styles.featureImage } >
+                  <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
+                </div>
+                <a className={ styles.title } href={ '#/styles/icons' }>Icons</a>
                 <div className={ styles.description }>Fabric includes Office&rsquo;s official product icons. Fabric also provides a suite of product and document symbols, so you can use the same metaphors we use.</div>
               </div>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg' } alt='Illustration of Components' />
-                <div className={ styles.title }>Components</div>
+                <div className={ styles.featureImage } >
+                  <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg' } alt='Illustration of Components' />
+                </div>
+                <a className={ styles.title } href={ '#/components' }>Components</a>
                 <div className={ styles.description }>Components are the building blocks of your UI. Fabric has a variety of components, including navigation, commands, containers, and content.</div>
               </div>
             </div>
           </div>
           <div id='toolkit'>
-            <span className={ styles.title }>Design Toolkit</span>
+            <a className={ styles.title } href='#/resources'>Design Toolkit</a>
             <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Office experiences.</span>
-            <a className={ styles.getStartedLink } href='#/resources'>Learn more</a>
           </div>
         </div>
 

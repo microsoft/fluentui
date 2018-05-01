@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
@@ -176,7 +173,8 @@ describe('Facepile', () => {
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
     wrapper.find(PersonaCoin).forEach((node) => {
-      expect(node.dive().hasClass('ms-Persona--size24')).toBeTruthy();
+      // Need multiple Dives since PersonaCoin is decorated
+      expect(node.dive().dive().dive().hasClass('ms-Persona--size24')).toBeTruthy();
     });
 
     // Test small size renders
@@ -188,7 +186,8 @@ describe('Facepile', () => {
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
     wrapper.find(PersonaCoin).forEach((node) => {
-      expect(node.dive().hasClass('ms-Persona--size40')).toBeTruthy();
+      // Need multiple Dives since PersonaCoin is decorated
+      expect(node.dive().dive().dive().hasClass('ms-Persona--size40')).toBeTruthy();
     });
   });
 

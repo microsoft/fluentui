@@ -83,14 +83,14 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    */
   public addKeytip(keytipProps: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
-      let previousKeytips: IKeytipProps[] = previousState.keytips;
+      const previousKeytips: IKeytipProps[] = previousState.keytips;
 
       // Try to find keytipProps in previousKeytips to update
-      let keytipToUpdateIndex = findIndex(previousKeytips, (previousKeytip: IKeytipProps) => {
+      const keytipToUpdateIndex = findIndex(previousKeytips, (previousKeytip: IKeytipProps) => {
         return fullKeySequencesAreEqual(keytipProps.keySequences, previousKeytip.keySequences);
       });
 
-      let currentKeytips = [...previousState.keytips];
+      const currentKeytips = [...previousState.keytips];
       if (keytipToUpdateIndex >= 0) {
         // Replace the keytip props
         currentKeytips.splice(keytipToUpdateIndex, 1, keytipProps);
@@ -110,9 +110,9 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    */
   public removeKeytip(keytipToRemove: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
-      let currentKeytips = previousState.keytips;
+      const currentKeytips = previousState.keytips;
       // Filter out keytips that don't equal the one to remove
-      let filteredKeytips: IKeytipProps[] = currentKeytips.filter((currentKeytip: IKeytipProps) => {
+      const filteredKeytips: IKeytipProps[] = currentKeytips.filter((currentKeytip: IKeytipProps) => {
         return !fullKeySequencesAreEqual(currentKeytip.keySequences, keytipToRemove.keySequences);
       });
       return { ...previousState, keytips: filteredKeytips };
@@ -126,10 +126,11 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    * @param visible - T/F if the specified Keytips will be visible or not
    */
   public setKeytipVisibility(ids: string[], visible: boolean): void {
-    this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
-      let currentKeytips: IKeytipProps[] = [...previousState.keytips];
-      for (let keytip of currentKeytips) {
-        let keytipId = convertSequencesToKeytipID(keytip.keySequences);
+
+    this.setState((previousState: IKeytipLayerState) => {
+      const currentKeytips: IKeytipProps[] = [...previousState.keytips];
+      for (const keytip of currentKeytips) {
+        const keytipId = convertSequencesToKeytipID(keytip.keySequences);
         if (ids.indexOf(keytipId) >= 0) {
           keytip.visible = visible;
         }
@@ -209,7 +210,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         this._keytipManager.exitKeytipMode();
         break;
       default:
-        let transitionKey: IKeytipTransitionKey = { key: ev.key };
+        const transitionKey: IKeytipTransitionKey = { key: ev.key };
         transitionKey.modifierKeys = this._getModifierKey(ev);
         this._keytipManager.processTransitionInput(transitionKey);
         break;
@@ -223,7 +224,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    * @returns List of ModifierKeyCodes that were pressed
    */
   private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): KeytipTransitionModifier[] | undefined {
-    let modifierKeys = [];
+    const modifierKeys = [];
     if (ev.altKey) {
       modifierKeys.push(KeytipTransitionModifier.alt);
     }

@@ -26,6 +26,13 @@ export interface IComboBoxOption extends ISelectableOption {
    * the prop comboBoxOptionStyles
    */
   styles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * In scenarios where embedded data is used at the text prop, we will use the ariaLabel prop
+   * to set the aria-label and preview text. Default to false
+   * @default false;
+   */
+  useAriaLabelAsText?: boolean;
 }
 
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
@@ -46,7 +53,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
    */
-  onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+  onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
 
   /**
    * Callback issued when the user changes the pending value in ComboBox

@@ -58,12 +58,13 @@ const DayPickerStrings = {
     'S'
   ],
 
-  goToToday: 'Go to today'
+  goToToday: 'Go to today',
+  weekNumberFormatString: 'Week number {0}',
 };
 
 export interface ICalendarInlineExampleState {
-  selectedDate: Date | null;
-  selectedDateRange: Date[] | null;
+  selectedDate?: Date | null;
+  selectedDateRange?: Date[] | null;
 }
 
 export interface ICalendarInlineExampleProps {
@@ -73,6 +74,7 @@ export interface ICalendarInlineExampleProps {
   showGoToToday: boolean;
   showNavigateButtons?: boolean;
   highlightCurrentMonth?: boolean;
+  highlightSelectedMonth?: boolean;
   isDayPickerVisible?: boolean;
   showMonthPickerAsOverlay?: boolean;
   showWeekNumbers?: boolean;
@@ -98,7 +100,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this._goPrevious = this._goPrevious.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const divStyle: React.CSSProperties = {
       height: '340px'
     };
@@ -140,6 +142,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           firstDayOfWeek={ this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday }
           strings={ DayPickerStrings }
           highlightCurrentMonth={ this.props.highlightCurrentMonth }
+          highlightSelectedMonth={ this.props.highlightSelectedMonth }
           isDayPickerVisible={ this.props.isDayPickerVisible }
           showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
           showWeekNumbers={ this.props.showWeekNumbers }
@@ -158,13 +161,13 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     );
   }
 
-  private _onDismiss() {
+  private _onDismiss(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       return prevState;
     });
   }
 
-  private _goPrevious() {
+  private _goPrevious(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       const selectedDate = prevState.selectedDate || new Date();
       const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
@@ -178,24 +181,31 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       }
 
       const newSelectedDate = addDays(subtractFrom, -daysToSubtract);
-      return prevState.selectedDate = newSelectedDate;
+
+      return {
+        selectedDate: newSelectedDate
+      };
     });
   }
 
-  private _goNext() {
+  private _goNext(): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
       const selectedDate = prevState.selectedDate || new Date();
       const dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
       const newSelectedDate = addDays(dateRangeArray.pop()!, 1);
-      return prevState.selectedDate = newSelectedDate;
+
+      return {
+        selectedDate: newSelectedDate
+      };
     });
   }
 
-  private _onSelectDate(date: Date, dateRangeArray: Date[]) {
+  private _onSelectDate(date: Date, dateRangeArray: Date[]): void {
     this.setState((prevState: ICalendarInlineExampleState) => {
-      prevState.selectedDate = date;
-      prevState.selectedDateRange = dateRangeArray;
-      return prevState;
+      return {
+        selectedDate: date,
+        selectedDateRange: dateRangeArray
+      };
     });
   }
 }

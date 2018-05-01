@@ -107,13 +107,13 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
       validators = []
     } = this.props;
 
-    let validationResult: IFormValidationResult = {
+    const validationResult: IFormValidationResult = {
       isValid: true,
       component: this
     };
 
-    for (let validator of (validators as any)) {
-      let error: string = validator(this.state.currentValue);
+    for (const validator of (validators as any)) {
+      const error: string = validator(this.state.currentValue);
       if (error) {
         validationResult.isValid = false;
         validationResult.errorMessage = error;

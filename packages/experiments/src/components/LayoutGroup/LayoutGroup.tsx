@@ -23,7 +23,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
       justify,
     } = this.props;
 
-    let divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps(this.props, divProperties);
 
     const numberOfChildren = React.Children.count(children);
 

@@ -22,7 +22,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
   }
 
   public render(): JSX.Element {
-    let {
+    const {
       item,
       onExpandItem,
       onRemoveItem,

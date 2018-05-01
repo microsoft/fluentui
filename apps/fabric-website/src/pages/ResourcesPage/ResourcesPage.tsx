@@ -6,7 +6,7 @@ const styles: any = stylesImport;
 const pageStyles: any = require('../PageStyles.module.scss');
 
 export class ResourcesPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ pageStyles.basePage }>
         <PageHeader
@@ -44,7 +44,7 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h3>Fabric Design Toolkit</h3>
                 <p>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Office experiences.</p>
                 <ul>
-                  <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/officeuifabric_v4.0.0.zip'>Adobe XD Toolkit</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/fabric-toolkit'>Adobe XD Toolkit</a></li>
                   <li><a className={ styles.relatedLink } href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97'>Adobe XD Toolkit (Microsoft employees)</a></li>
                 </ul>
 
@@ -52,6 +52,12 @@ export class ResourcesPage extends React.Component<any, any> {
                 <p>The SharePoint design toolkit provides everything you need to design your web parts. The toolkit contains page grids for Team and Communication sites, outlines for columns on the grid to help you make your design responsive, and a sample web part.</p>
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/sharepoint_toolkit.zip'>SharePoint XD Toolkit</a></li>
+                </ul>
+
+                <h3>Office Add-ins Design Toolkit</h3>
+                <p>The Add-ins design toolkit provides layouts for interface elements and commonly used UX patterns in Word, Excel, and PowerPoint. Use it together with the Fabric design toolkit to create an add-in that fits seamlessly with Office.</p>
+                <ul>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/addins_toolkit'>Add-ins XD Toolkit</a></li>
                 </ul>
 
                 <h3>Fonts</h3>

@@ -14,4 +14,16 @@
     text-decoration: underline;
     cursor: pointer;
   }
+
+  .shimmerExample-flexGroup {
+    display: flex;
+
+    .ms-Toggle {
+      margin-right: 30px;
+    }
+  }
+
+  .shimmerBasicExample-wrapper {
+    margin: 10px;
+  }
 }

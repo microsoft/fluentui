@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPickerBase } from './SwatchColorPicker.base';

@@ -40,7 +40,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       };
     }
 
-    public componentDidMount() {
+    public componentDidMount(): void {
       this._onAsyncResize = this._async.debounce(
         this._onAsyncResize,
         RESIZE_DELAY,
@@ -57,11 +57,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       }
     }
 
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
       this._events.dispose();
     }
 
-    public render() {
+    public render(): JSX.Element {
       const { viewport } = this.state;
       const {
         skipViewportMeasures
@@ -77,18 +77,18 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       );
     }
 
-    public forceUpdate() {
+    public forceUpdate(): void {
       this._updateViewport(true);
     }
 
-    private _onAsyncResize() {
+    private _onAsyncResize(): void {
       this._updateViewport();
     }
 
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
       const { viewport } = this.state;
-      const viewportElement = this._root.value;
+      const viewportElement = this._root.current;
       const scrollElement = findScrollableParent(viewportElement);
       const scrollRect = getRect(scrollElement);
       const clientRect = getRect(viewportElement);

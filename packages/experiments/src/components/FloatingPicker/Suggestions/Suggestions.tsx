@@ -29,7 +29,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
    * Increments the selected suggestion index
    */
   public nextSuggestion(): boolean {
-    let { suggestions } = this.props;
+    const { suggestions } = this.props;
 
     if (suggestions && suggestions.length > 0) {
       if (this.currentIndex === -1) {
@@ -51,7 +51,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
    * Decrements the selected suggestion index
    */
   public previousSuggestion(): boolean {
-    let { suggestions } = this.props;
+    const { suggestions } = this.props;
 
     if (suggestions && suggestions.length > 0) {
       if (this.currentIndex === -1) {
@@ -94,7 +94,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   public setSelectedSuggestion(index: number): void {
-    let { suggestions } = this.props;
+    const { suggestions } = this.props;
 
     if (index > suggestions.length - 1 || index < 0) {
       this.currentIndex = 0;
@@ -165,7 +165,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   // TODO get the element to scroll into view properly regardless of direction.
   public scrollSelected(): void {
-    if (this._selectedElement) {
+    if (this._selectedElement && this._selectedElement.scrollIntoView !== undefined) {
       this._selectedElement.scrollIntoView(false);
     }
   }

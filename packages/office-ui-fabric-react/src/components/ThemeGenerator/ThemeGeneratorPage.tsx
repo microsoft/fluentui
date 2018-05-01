@@ -8,9 +8,7 @@ import {
 import {
   IColor,
   getContrastRatio,
-  updateA,
   isDark,
-  getColorFromString
 } from 'office-ui-fabric-react/lib/utilities/color/index';
 
 import {
@@ -38,12 +36,8 @@ export interface IThemeGeneratorPageState {
   colorPickerVisible: boolean;
 }
 
-const BackgroundImageUriKey = 'backgroundImageUri';
-const BackgroundOverlayKey = 'backgroundOverlay';
-
 export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageState> {
   private _semanticSlotColorChangeTimeout: number;
-  private _imgUrl: string;
 
   constructor(props: {}) {
     super(props);
@@ -75,7 +69,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     loadTheme({ palette: themeRules });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
     const fabricThemeSlots =
@@ -120,7 +114,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           * We use that API to identify the most prominent background and foreground colors, and the accent color,
           * and generate a theme based off of those.
           * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-          * key in _makeThemeFromImg() below. Then, just uncomment this section. */}
+          * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
+          * Then, just uncomment this section. */}
         {/*}
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
@@ -234,108 +229,6 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     );
   }
 
-  /* tslint:disable:no-unused-variable */
-  private _makeThemeFromImg = (): void => {
-    /* tslint:enable:no-unused-variable */
-    this._imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
-    (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
-
-    if (this._imgUrl) {
-      const xhr = new XMLHttpRequest();
-      xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
-      // you may need to change the URL here
-      xhr.open('POST', 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      alert('You forgot to set the subscription key!');
-      xhr.setRequestHeader('Ocp-Apim-Subscription-Key', 'YourSubscriptionKeyHere'); // put your subscription key here
-      xhr.send('{ "url": "' + this._imgUrl + '" }');
-    } else {
-      // remove related properties from theme
-      const { themeRules } = this.state;
-      if (themeRules.hasOwnProperty(BackgroundImageUriKey)) {
-        delete themeRules[BackgroundImageUriKey];
-      }
-      if (themeRules.hasOwnProperty(BackgroundOverlayKey)) {
-        delete themeRules[BackgroundOverlayKey];
-      }
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
-    }
-  }
-
-  private _cognitiveVisionCallback = (e: any): void => {
-    const xhr = e.target;
-    if (xhr.status === 200) {
-      const response = JSON.parse(xhr.response);
-
-      document.getElementById('imageDescription')!.innerHTML = response.description.captions[0].text;
-
-      /* API returns:
-       response.color.accentColor
-       response.color.dominantColorBackground
-       response.color.dominantColorForeground */
-
-      // converts a returned color from a word into a hex value conforming to our palette
-      const getHexFromColor = (color: string, isBg: boolean) => {
-        // todo: could use more logic based on isInverted and isBg
-        switch (color.toLowerCase()) {
-          case 'black': return '#1f1f1f';
-          case 'blue': return '#0078d4';
-          case 'brown': return '#754d12';
-          case 'gray':
-          case 'grey': return isBg ? '#444' : '#ccc';
-          case 'green': return '#107c10';
-          case 'orange': return '#ff8c00';
-          case 'pink': return '#e3008c';
-          case 'purple': return '#5c2d91';
-          case 'red': return '#e81123';
-          case 'teal': return '#008272';
-          case 'white': return '#fff';
-          case 'yellow': return '#fff100';
-        }
-        alert('Error: Unexpected color passed to getHexFromColor(): ' + color);
-        return '#fff';
-      };
-
-      const { themeRules } = this.state;
-      const bgColor = getHexFromColor(response.color.dominantColorBackground, true);
-      const bgColorIsDark = isDark(getColorFromString(bgColor)!);
-      ThemeGenerator.setSlot(
-        themeRules[BaseSlots[BaseSlots.backgroundColor]],
-        bgColor,
-        bgColorIsDark,
-        true,
-        true);
-      ThemeGenerator.setSlot(
-        themeRules[BaseSlots[BaseSlots.primaryColor]],
-        '#' + response.color.accentColor,
-        bgColorIsDark,
-        true,
-        true);
-      ThemeGenerator.setSlot(
-        themeRules[BaseSlots[BaseSlots.foregroundColor]],
-        getHexFromColor(response.color.dominantColorForeground, false),
-        bgColorIsDark,
-        true,
-        true);
-
-      themeRules[BackgroundImageUriKey] = {
-        name: BackgroundImageUriKey,
-        value: 'url(\'' + this._imgUrl + '\')',
-        dependentRules: []
-      };
-      themeRules[BackgroundOverlayKey] = {
-        name: BackgroundOverlayKey,
-        color: updateA((themeRules[BaseSlots[BaseSlots.backgroundColor]]).color!, 50),
-        dependentRules: []
-      };
-
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
-
-    } else {
-      alert('Error ' + xhr.status + ': ' + xhr.statusText);
-    }
-  }
-
   private _colorPickerOnDismiss = (): void => {
     this.setState({ colorPickerVisible: false });
   }
@@ -382,7 +275,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   }
 
-  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule) {
+  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): JSX.Element {
     return (
       <div
         key={ slotRule.name }
@@ -483,7 +376,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
   private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
     let colorChangeTimeout: number;
 
-    function _onColorChanged(newColor: string) {
+    function _onColorChanged(newColor: string): void {
       if (colorChangeTimeout) {
         clearTimeout(colorChangeTimeout);
       }

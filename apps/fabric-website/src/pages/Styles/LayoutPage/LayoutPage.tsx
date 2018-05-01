@@ -10,7 +10,7 @@ const visibilityData = require('../../../data/layout-visibility.json');
 const breakpointsData = require('../../../data/responsive-breakpoints.json');
 
 export class LayoutPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ pageStyles.basePage }>
         <PageHeader

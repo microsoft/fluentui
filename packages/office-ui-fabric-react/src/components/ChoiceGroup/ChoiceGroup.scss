@@ -121,10 +121,18 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   &:focus {
     &::before {
       border-color: $radioButton-border-hover-color;
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
     }
 
     :global(.ms-Label) {
       color: $radioButton-text-hover-color;
+
+      @include high-contrast {
+        color: Highlight;
+      }
     }
   }
 
@@ -302,6 +310,11 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       &:focus {
         border-color: $ms-color-neutralTertiaryAlt;
 
+        @include high-contrast {
+          border-color: Highlight;
+          color: Highlight;
+        }
+
         &::before {
           opacity: 1;
         }
@@ -356,7 +369,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus .choiceFieldWrapper {
+:global(.ms-Fabric--isFocusVisible) .choiceFieldIsInFocus .choiceFieldWrapper {
   @include focus-border(-2px, $ms-color-neutralPrimary, 1px, false);
 
   @include high-contrast {
@@ -364,13 +377,13 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
+:global(.ms-Fabric--isFocusVisible) .choiceFieldIsInFocus {
   &.choiceFieldIsImage .choiceFieldWrapper,
   &.choiceFieldIsIcon .choiceFieldWrapper {
-    @include focus-border(1px, $ms-color-neutralPrimary, 2px, false);
+    @include focus-border(-2px, $ms-color-neutralSecondary, 1px, false);
 
     @include high-contrast {
-      @include focus-border(1px, WindowText, 2px, false);
+      @include focus-border(-2px, WindowText, 1px, false);
     }
   }
 }

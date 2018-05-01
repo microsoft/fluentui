@@ -44,9 +44,9 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   public componentDidMount(): void {
-    let getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
-    let itemText = getEditingItemText(this.props.item);
-    this._editingFloatingPicker.value && this._editingFloatingPicker.value.onQueryStringChanged(itemText);
+    const getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
+    const itemText = getEditingItemText(this.props.item);
+    this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(itemText);
     this._editingInput.value = itemText;
     this._editingInput.focus();
   }
@@ -74,7 +74,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   private _renderEditingSuggestions = (): JSX.Element => {
-    let onRenderFloatingPicker = this._onRenderFloatingPicker;
+    const onRenderFloatingPicker = this._onRenderFloatingPicker;
     return (onRenderFloatingPicker({
       componentRef: this._editingFloatingPicker,
       onChange: this._onSuggestionSelected,
@@ -91,26 +91,26 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   private _onInputClick = (): void => {
-    this._editingFloatingPicker.value && this._editingFloatingPicker.value.showPicker();
+    this._editingFloatingPicker.current && this._editingFloatingPicker.current.showPicker(true /*updatevalue*/);
   }
 
   private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (this._editingFloatingPicker.value &&
+    if (this._editingFloatingPicker.current &&
       (ev.relatedTarget === null || (ev.relatedTarget as HTMLElement).className.indexOf('ms-SearchMore-button') === -1)
     ) {
-      this._editingFloatingPicker.value.forceResolveSuggestion();
+      this._editingFloatingPicker.current.forceResolveSuggestion();
     }
   }
 
   private _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
-    let value: string = (ev.target as HTMLInputElement).value;
+    const value: string = (ev.target as HTMLInputElement).value;
 
     if (value === '') {
       if (this.props.onRemoveItem) {
         this.props.onRemoveItem();
       }
     } else {
-      this._editingFloatingPicker.value && this._editingFloatingPicker.value.onQueryStringChanged(value);
+      this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(value);
     }
   }
 

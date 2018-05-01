@@ -111,6 +111,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'StaticList',
           name: 'StaticList',
           url: '#/examples/staticlist'
+        },
+        {
+          component: require<any>('../components/Nav/NavPage').NavPage,
+          key: 'Nav',
+          name: 'Nav',
+          url: '#/examples/nav'
         }
       ]
     }
