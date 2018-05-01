@@ -12,7 +12,6 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   return {
     root: [
       'ms-Tooltip',
-      className,
       AnimationClassNames.fadeIn200,
       {
         background: palette.white,
@@ -29,7 +28,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         {
           animationDelay: '500ms'
         }
-      ]
+      ],
+      className
     ],
     content: [
       'ms-Tooltip-content',
