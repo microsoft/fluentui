@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { ComponentPage } from '../../../components/ComponentPage/ComponentPage';
-import { ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
-
+import { ComponentPage, ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
 
@@ -12,6 +10,7 @@ export class DetailsListBasicComponentPage extends React.Component<any, any> {
         title='Grouped DetailsListExample'
         componentName='DetailsListNavigatingFocusExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
+        overview={ <div /> }
         exampleCards={
           <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
             <DetailsListBasicExample />
