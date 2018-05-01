@@ -2,6 +2,49 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.35.0",
+      "tag": "@uifabric/experiments_v5.35.0",
+      "date": "Tue, 01 May 2018 10:23:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "2b20cab52ead58a3c93ba26e9ed2e6550311a236",
+            "comment": "remove extendedPicker, floatingPicker, and selectedItemsList from experiments"
+          },
+          {
+            "author": "KatherineThayerMicrosoft <kathayer@microsoft.com>",
+            "commit": "8de19959324dc82ffb22fb340618cf4edfb45e4e",
+            "comment": "Command bar accessibility: one tab stop with aria label"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.92.1 <6.0.0` to `>=5.93.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.0",
+      "tag": "@uifabric/experiments_v5.34.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "84e6ff3b20bd8533471a6073f5ecce39621dc889",
+            "comment": "Nav: Refactored out a NavLink component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.1",
       "tag": "@uifabric/experiments_v5.33.1",
       "date": "Wed, 25 Apr 2018 05:32:09 GMT",

@@ -43,8 +43,8 @@ const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fab
 export class DetailsListComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div ref='pageElement' className={ pageStyles.basePage }>
-        <DummyComponentPage>
+      <div className={ pageStyles.basePage }>
+        <ComponentPage>
           <PageHeader pageTitle='DetailsList' backgroundColor='#038387'
             links={
               [
@@ -67,7 +67,7 @@ export class DetailsListComponentPage extends React.Component<any, any> {
               ]
             } />
           <DetailsListPage isHeaderVisible={ false } />
-        </DummyComponentPage>
+        </ComponentPage>
       </div>
     );
   }

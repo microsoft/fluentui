@@ -173,21 +173,7 @@ public render() {
 }
 ```
 
-Acceptable:
-```typescript
-private _root: HTMLElement;
-private _resolveRoot: (element: HTMLElement) => any;
-
-constructor() {
-  this._resolveRoot = (el: HTMLElement) => this._root = el;
-}
-
-public render() {
-  return <div ref={ this._resolveRoot } />
-}
-```
-
-Best, use createRef:
+Good:
 
 The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://reactjs.org/docs/refs-and-the-dom.html#creating-refs). (When Fabric switches over to React 16, we'll use React.createRef instead)
 
