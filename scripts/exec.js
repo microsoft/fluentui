@@ -1,5 +1,6 @@
 const path = require('path');
-const exec = require('child_process').exec;
+const promisify = require('util').promisify;
+const exec = promisify(require('child_process').exec);
 const chalk = require('chalk');
 const { logStatus } = require('./logging');
 
@@ -11,14 +12,13 @@ env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
 module.exports = function (cmd, displayName, cwd = process.cwd()) {
   logStatus(chalk.gray('Executing: ') + chalk.cyan(displayName || cmd));
 
-  return new Promise((resolve, reject) => {
-    const resolveOnExit0 = (exitCode) => exitCode === 0 ? resolve() : reject();
+  const execOptions = {
+    cwd,
+    env: env,
+  };
 
-    exec(cmd, {
-      cwd,
-      env: env,
-      stdio: 'inherit'
-    })
-      .on("close", resolveOnExit0);
-  });
+  return exec(
+    cmd,
+    execOptions
+  );
 }
