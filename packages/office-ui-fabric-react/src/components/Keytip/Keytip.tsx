@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, mergeOverflows, ktpTargetFromSequences } from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
+import { mergeOverflows, ktpTargetFromSequences } from '../../utilities/keytips/KeytipUtils';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';

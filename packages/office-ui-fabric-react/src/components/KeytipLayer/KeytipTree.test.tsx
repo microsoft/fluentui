@@ -5,7 +5,7 @@ import {
   KTP_SEPARATOR,
   KTP_FULL_PREFIX,
   KTP_LAYER_ID
-} from '../../Utilities';
+} from '../../utilities/keytips/KeytipConstants';
 
 let keytipTree = new KeytipTree();
 

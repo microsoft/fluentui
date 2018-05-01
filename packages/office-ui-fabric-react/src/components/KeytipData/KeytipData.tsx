@@ -1,13 +1,11 @@
 import {
   BaseComponent,
   IRenderComponent,
-  mergeOverflows,
-  sequencesToID,
-  getAriaDescribedBy
 } from '../../Utilities';
 import { IKeytipDataProps } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import { mergeOverflows, sequencesToID, getAriaDescribedBy } from '../../utilities/keytips/KeytipUtils';
 
 /**
  * A small element to help the target component correctly read out its aria-describedby for its Keytip

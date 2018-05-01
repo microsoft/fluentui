@@ -6,23 +6,29 @@ import { Layer } from '../../Layer';
 import {
   BaseComponent,
   KeyCodes,
-  KeytipTransitionModifier,
-  IKeytipTransitionKey,
-  KTP_LAYER_ID,
-  KTP_ARIA_SEPARATOR,
-  KTP_ARIA_SEPARATOR_ID,
   classNamesFunction,
-  sequencesToID,
-  transitionKeysContain,
-  mergeOverflows,
   getDocument,
-  KeytipEvents,
-  ktpTargetFromId,
   isEqual
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
+import {
+  ktpTargetFromId,
+  sequencesToID,
+  mergeOverflows
+} from '../../utilities/keytips/KeytipUtils';
+import {
+  transitionKeysContain,
+  KeytipTransitionModifier,
+  IKeytipTransitionKey
+} from '../../utilities/keytips/IKeytipTransitionKey';
+import {
+  KeytipEvents,
+  KTP_LAYER_ID,
+  KTP_ARIA_SEPARATOR_ID,
+  KTP_ARIA_SEPARATOR
+} from '../../utilities/keytips/KeytipConstants';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;

@@ -1,7 +1,7 @@
 import { IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { IStyleFunction, IPoint } from '../../Utilities';
-import { mergeStyleSets } from '../../Styling';
+import { mergeStyleSets, HighContrastSelector } from '../../Styling';
 
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
   const { theme, disabled, visible } = props;
@@ -12,6 +12,12 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
       },
       disabled && {
         opacity: 0.5,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            opacity: 1
+          },
+        }
       },
       !visible && {
         visibility: 'hidden'
@@ -29,7 +35,7 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
       display: 'inline-block'
     },
     disabled && {
-      color: theme.semanticColors.keytipBackgroundDisabled
+      color: theme.semanticColors.keytipDisabledText
     }]
   };
 };

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IKeytipTransitionKey, IStyleFunction } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 import { IStyle } from '../../Styling';
+import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
 export interface IKeytipLayer {
 }

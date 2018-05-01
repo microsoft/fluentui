@@ -5,9 +5,9 @@ import {
   findIndex,
   find,
   EventGroup,
-  KeytipEvents,
   getId
 } from '../../Utilities';
+import { KeytipEvents } from '../../utilities/keytips/KeytipConstants';
 
 export interface IUniqueKeytip {
   uniqueID: string;

@@ -4,7 +4,7 @@ import {
   getAriaDescribedBy
 } from './KeytipUtils';
 import { KTP_FULL_PREFIX, KTP_SEPARATOR, KTP_LAYER_ID, KTP_ARIA_SEPARATOR_ID } from './KeytipConstants';
-import { isEqual } from './isEqual';
+import { isEqual } from '../../Utilities';
 
 describe('KeytipUtils', () => {
   describe('sequencesToID', () => {

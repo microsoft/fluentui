@@ -1,12 +1,8 @@
-import {
-  sequencesToID,
-  find,
-  KTP_LAYER_ID,
-  mergeOverflows,
-  values
-} from '../../Utilities';
+import { find, values } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
+import { mergeOverflows, sequencesToID } from '../../utilities/keytips/KeytipUtils';
+import { KTP_LAYER_ID } from '../../utilities/keytips/KeytipConstants';
 
 /**
  * This class is responsible for handling the parent/child relationships between keytips

@@ -1,5 +1,11 @@
-import { KeytipTransitionModifier } from './KeytipTransitionModifier';
-import { find } from './array';
+import { find, KeyCodes } from '../../Utilities';
+
+export enum KeytipTransitionModifier {
+  shift = KeyCodes.shift,
+  ctrl = KeyCodes.ctrl,
+  alt = KeyCodes.alt,
+  meta = KeyCodes.leftWindow
+}
 
 export interface IKeytipTransitionKey {
   key: string;

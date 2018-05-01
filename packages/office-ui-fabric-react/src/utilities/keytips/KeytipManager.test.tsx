@@ -2,9 +2,9 @@ import { KeytipManager } from './KeytipManager';
 import {
   isEqual,
   EventGroup,
-  KeytipEvents
 } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
+import { KeytipEvents } from '../../utilities/keytips/KeytipConstants';
 
 let ktpMgr: KeytipManager;
 const events = new EventGroup(this);

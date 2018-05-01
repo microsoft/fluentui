@@ -1,12 +1,12 @@
 import {
-  KTP_PREFIX,
   KTP_SEPARATOR,
+  KTP_PREFIX,
   DATAKTP_TARGET,
   DATAKTP_EXECUTE_TARGET,
   KTP_LAYER_ID,
   KTP_ARIA_SEPARATOR_ID
 } from './KeytipConstants';
-import { addElementAtIndex } from './array';
+import { addElementAtIndex } from '../../Utilities';
 
 /**
  * Converts a whole set of KeySequences into one keytip ID, which will be the ID for the last keytip sequence specified

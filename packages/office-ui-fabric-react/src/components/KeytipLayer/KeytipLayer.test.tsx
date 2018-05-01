@@ -4,15 +4,17 @@ import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
 import { IKeytipProps } from '../../Keytip';
 import {
-  KeytipTransitionModifier,
   createRef,
-  KTP_FULL_PREFIX,
-  KTP_SEPARATOR,
   find,
   EventGroup,
-  KeytipEvents
 } from '../../Utilities';
 import { KeytipTree } from './KeytipTree';
+import {
+  KTP_FULL_PREFIX,
+  KTP_SEPARATOR,
+  KeytipEvents
+} from '../../utilities/keytips/KeytipConstants';
+import { KeytipTransitionModifier } from '../../utilities/keytips/IKeytipTransitionKey';
 
 describe('KeytipLayer', () => {
   const ktpMgr = KeytipManager.getInstance();

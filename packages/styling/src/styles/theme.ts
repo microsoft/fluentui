@@ -186,7 +186,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
-    keytipBackgroundDisabled: !isInverted ? '#b1b1b1' : '#4e4e4e',
+    keytipDisabledText: !isInverted ? '#b1b1b1' : '#4e4e4e',
 
     // Deprecated slots, fixed by _fixDeprecatedSlots()
     /**

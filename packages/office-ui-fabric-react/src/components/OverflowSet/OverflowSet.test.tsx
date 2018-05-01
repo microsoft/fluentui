@@ -6,10 +6,10 @@ import * as sinon from 'sinon';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 import { CommandBarButton } from '../../Button';
 import { mount, ReactWrapper } from 'enzyme';
-import { isEqual, find, createRef, ktpTargetFromId } from '../../Utilities';
+import { isEqual, find, createRef } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
-import { KeytipManager, IUniqueKeytip } from '../../utilities/keytips';
+import { KeytipManager, IUniqueKeytip, ktpTargetFromId } from '../../utilities/keytips';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(keytipManager.keytips, (uniqueKeytip: IUniqueKeytip) => {
