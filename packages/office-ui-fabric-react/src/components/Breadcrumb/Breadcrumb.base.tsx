@@ -25,8 +25,8 @@ export interface IBreadCrumbData {
   renderedOverflowItems: IBreadcrumbItem[];
 }
 
-const OverflowKey = 'overflow';
-const NullFunction = (): null => null;
+const OVERFLOW_KEY = 'overflow';
+const nullFunction = (): null => null;
 
 @customizable('Breadcrumb', ['theme'])
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
@@ -142,14 +142,14 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
 
     if (renderedOverflowItems && renderedOverflowItems.length !== 0) {
       itemElements.splice(overflowIndex!, 0, (
-        <li className={ this._classNames.overflow } key={ OverflowKey }>
+        <li className={ this._classNames.overflow } key={ OVERFLOW_KEY }>
           <IconButton
             className={ this._classNames.overflowButton }
             iconProps={ { iconName: 'More' } }
             role='button'
             aria-haspopup='true'
             ariaLabel={ overflowAriaLabel }
-            onRenderMenuIcon={ NullFunction }
+            onRenderMenuIcon={ nullFunction }
             menuProps={ {
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge
