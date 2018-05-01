@@ -568,12 +568,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
-    if (!ev.defaultPrevented &&
-      this._isValidMenuOpenKey(ev)) {
+    if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
       const { onMenuClick } = this.props;
       if (onMenuClick) {
         onMenuClick(ev, this);
       }
+
+      const menuProps = this.props.menuProps;
+      if (menuProps) {
+        menuProps.shouldFocusOnContainer = false;
+      }
+      this.setState({ menuProps: menuProps });
 
       this._onToggleMenu();
       ev.preventDefault();
@@ -590,7 +595,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
     } else {
-      return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
+      if (this._isSplitButton) {
+        return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
+      } else {
+        return ev.which === KeyCodes.enter;
+      }
     }
   }
 
@@ -601,6 +610,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     if (!ev.defaultPrevented) {
+      const menuProps = this.props.menuProps;
+      if (menuProps) {
+        menuProps.shouldFocusOnContainer = true;
+      }
+      this.setState({ menuProps: menuProps });
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();

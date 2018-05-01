@@ -129,7 +129,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
-   * @default false
+   * @default null
    */
   shouldFocusOnContainer?: boolean;
 
