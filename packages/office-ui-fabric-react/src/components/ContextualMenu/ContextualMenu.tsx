@@ -194,6 +194,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       useTargetAsMinWidth,
       directionalHintFixed,
       shouldFocusOnMount,
+      shouldFocusOnContainer,
       title,
       theme,
       calloutProps,
@@ -277,11 +278,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           hidden={ this.props.hidden }
         >
           <div
-            role='menu'
+            role={ shouldFocusOnContainer ? 'menu' : 'group' }
+            aria-label={ ariaLabel }
+            aria-labelledby={ labelElementId }
             style={ contextMenuStyle }
             ref={ (host: HTMLDivElement) => this._host = host }
             id={ id }
             className={ this._classNames.container }
+            tabIndex={ shouldFocusOnContainer ? 0 : undefined }
             onKeyDown={ this._onMenuKeyDown }
           >
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
@@ -295,8 +299,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 <ul
                   className={ this._classNames.list }
                   onKeyDown={ this._onKeyDown }
-                  aria-label={ ariaLabel }
-                  aria-labelledby={ labelElementId }
                 >
                   { items.map((item, index) => {
                     const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
