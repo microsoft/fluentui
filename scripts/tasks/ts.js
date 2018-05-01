@@ -22,7 +22,7 @@ module.exports = function (options) {
   function logFirstStdOutAndRethrow(process) {
     if (!hasLoggedErrors) {
       hasLoggedErrors = true;
-      console.log(process.stdout);
+      console.log(process.stdout.toString('utf8'));
     }
     return Promise.reject(process);
   }

@@ -11,30 +11,32 @@ if (!package) {
 const packageName = package.name;
 const isProduction = process.argv.indexOf('--production') > -1;
 
-let tasks = [
-  'copy',
-  'sass',
-  'tslint',
-  'ts',
-  'jest',
-  'webpack'
-];
+let taskList = [
+  ['copy', 'sass', 'tslint'],
+  ['ts'],
+  ['jest', 'webpack']
+]
+  .map(removeDisabledTasks(package.disabledTasks))
 
 // Filter disabled tasks if specified in the package.json.
-if (package.disabledTasks) {
-  tasks = tasks.filter(task => package.disabledTasks.indexOf(task) < 0);
+function removeDisabledTasks(disabledTasks) {
+  return tasks => tasks.filter(task => disabledTasks.indexOf(task) < 0);
 }
 
+console.log(taskList);
+
 if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
-  tasks = [process.argv[2]];
+  throw `Special case encountered! ${process.argv[2]}`
+  taskList = [process.argv[2]];
 }
 
 let promise = Promise.resolve();
 let hasFailures = false;
 let buildStartTime = new Date().getTime();
 
-tasks.forEach(task => {
-  promise = promise.then(() => runTask(task));
+taskList.forEach(tasks => {
+  // Run the tasks in parallel
+  promise = promise.then(() => Promise.all(tasks.map((task) => runTask(task))));
 });
 
 promise.then(() => {
