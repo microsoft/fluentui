@@ -21,7 +21,7 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
           <div>
-            <ExampleCard id='default' title='Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
+            <ExampleCard title='Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
               <DetailsListDocumentsExample />
             </ExampleCard>
           </div>
