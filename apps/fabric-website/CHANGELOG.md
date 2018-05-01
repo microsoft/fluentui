@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Apr 2018 10:16:44 GMT and should not be manually modified.
+
+## 5.7.1
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Patches
+
+- Removing unused refs.
 
 ## 5.7.0
 Tue, 17 Apr 2018 18:47:11 GMT

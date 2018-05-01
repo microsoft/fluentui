@@ -29,6 +29,7 @@ export class OverflowSetPage extends React.Component<IComponentDemoPageProps, an
             { require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md') }
           </PageMarkdown>
         }
+        allowNativeProps={ true }
         exampleCards={
           <LayerHost>
             <ExampleCard title='OverflowSet Basic Example' code={ OverflowSetBasicExampleCode }>

@@ -1,6 +1,5 @@
 ﻿/* tslint:disable */
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
@@ -19,6 +18,7 @@ import {
   styled,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
+import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
@@ -82,7 +82,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    let rightIconName = null;
+    let rightIconName = undefined;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
       rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
@@ -93,63 +93,31 @@ class NavComponent extends NavBase {
     }
 
     // show nav icon for the first level only
-    const leftIconName = nestingLevel === 0 ? link.icon : null;
-
-    let linkTextStyle: React.CSSProperties = {};
-    if (!rightIconName && !leftIconName) {
-      linkTextStyle.width = '100%';
-    }
-    else if (!leftIconName || !rightIconName) {
-      linkTextStyle.width = 'calc(100% - 50px)';
-    }
-    else {
-      // leave 50px to the icon on the right
-      linkTextStyle.width = 'calc(100% - 100px)';
-    }
-
+    const leftIconName = nestingLevel === 0 ? link.icon : undefined;
     const isLinkSelected = this.isLinkSelected(link, false /* includeChildren */);
     const isChildLinkSelected = this.isChildLinkSelected(link);
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
-
     const { getStyles } = this.props;
     const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
 
     return (
-      <a
-        href={ link.url ? link.url : undefined }
-        target={ link.target ? link.target : undefined }
-        key={ link.key || linkIndex }
+      <NavLink
+        id={ link.key }
+        content={ link.name }
+        href={ link.url }
+        target={ link.target }
         onClick={ this._onLinkClicked.bind(this, link) }
-        data-hint='ReactLeftNav'
-        data-value={ link.name }
-        aria-label={ link.name }
-        role='menu'>
-        <div className={ classNames.navItemRoot } aria-hidden='true'>
-          {
-
-            leftIconName ?
-              <Icon
-                className={ classNames.navItemIconColumn }
-                iconName={ leftIconName }
-              />
-              : null
-          }
-          {
-            <div className={ classNames.navItemNameColumn } style={ linkTextStyle }>
-              { link.name }
-            </div>
-          }
-          {
-            rightIconName ?
-              <Icon
-                className={ classNames.navItemIconColumn }
-                iconName={ rightIconName }
-              />
-              : null
-          }
-        </div>
-      </a>
+        dataHint={ this.props.dataHint }
+        dataValue={ link.key }
+        ariaLabel={ link.name }
+        role="menu"
+        rootClassName={ classNames.navItemRoot }
+        leftIconName={ leftIconName }
+        rightIconName={ rightIconName }
+        textClassName={ classNames.navItemNameColumn }
+        iconClassName={ classNames.navItemIconColumn }>
+      </NavLink>
     );
   }
 

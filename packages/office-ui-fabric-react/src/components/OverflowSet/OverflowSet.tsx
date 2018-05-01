@@ -53,6 +53,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     } else {
       Tag = FocusZone;
       uniqueComponentProps = {
+        ...getNativeProps(this.props, divProperties),
         ...focusZoneProps,
         componentRef: this._focusZone,
         direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal

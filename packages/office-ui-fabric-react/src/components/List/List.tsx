@@ -9,7 +9,7 @@ import {
   divProperties,
   getNativeProps,
   IRenderFunction,
-  createRef
+  createRef,
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps } from './List.types';
 

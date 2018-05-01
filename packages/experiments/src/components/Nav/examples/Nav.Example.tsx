@@ -13,19 +13,19 @@ export class NavExample extends React.Component<{}, {}> {
         name: 'default group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: true, icon: 'Home',
+            name: 'Home - no action supported', url: 'http://example.com', isExpanded: true, icon: 'Home', key: 'key1',
             links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key1' },
-              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key2' }
+              { name: 'Activity', url: 'http://msn.com', key: 'key2' },
+              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key3' }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key3', icon: 'Document' },
-          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key4', icon: 'Page' },
+          { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document' },
+          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key5', icon: 'Page' },
           {
             name: 'Notebook - test with long name to show ellipse',
             url: 'http://msn.com',
             target: '_blank',
-            key: 'key5',
+            key: 'key6',
             icon: 'DietPlanNotebook'
           },
         ]
@@ -34,19 +34,19 @@ export class NavExample extends React.Component<{}, {}> {
         name: 'named menu group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: false, icon: 'Home',
+            name: 'Home - no action supported', url: 'http://example.com', isExpanded: false, icon: 'Home', key: 'key7',
             links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key6' },
-              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key7' }
+              { name: 'Activity', url: 'http://msn.com', key: 'key8' },
+              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key9' }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key8', icon: 'Document' },
-          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key9', icon: 'Page' },
+          { name: 'Documents', url: 'http://example.com', key: 'key10', icon: 'Document' },
+          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key11', icon: 'Page' },
           {
             name: 'Notebook - test with long name to show ellipse',
             url: 'http://msn.com',
             target: '_blank',
-            key: 'key10',
+            key: 'key12',
             icon: 'DietPlanNotebook'
           },
         ]
@@ -55,7 +55,7 @@ export class NavExample extends React.Component<{}, {}> {
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } />
+        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' />
       </div>
     );
   }

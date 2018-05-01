@@ -64,11 +64,11 @@ $isPaddedMargin: 24px;
 
     &:hover {
       color: $bodyTextColor;
-      background: $listItemHeaderHoveredColor;
+      background: $listHeaderBackgroundHoveredColor;
     }
 
     &:active {
-      background: $listItemHeaderActivatedColor;
+      background: $listHeaderBackgroundPressedColor;
     }
   }
 
