@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 May 2018 10:23:32 GMT and should not be manually modified.
+This log was last generated on Tue, 01 May 2018 19:26:35 GMT and should not be manually modified.
+
+## 5.94.0
+Tue, 01 May 2018 19:26:35 GMT
+
+### Minor changes
+
+- Theme Generator: use HSV for generating shades/tints
 
 ## 5.93.0
 Tue, 01 May 2018 10:23:32 GMT
