@@ -27,7 +27,7 @@ export interface IComponentPageProps {
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
   donts?: JSX.Element;
-  overview?: JSX.Element;
+  overview: JSX.Element;
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
@@ -100,7 +100,23 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           { this._pageHeader() }
           <div className='ComponentPage-body'>
             { this._getComponentStatusBadges() }
-            { this._getOverview() }
+            <div className='ComponentPage-overviewSection'>
+              <div className='ComponentPage-overviewSectionHeader'>
+                <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+                <EditSection
+                  title={ this.props.title }
+                  section={ ComponentPageSection.Overview }
+                  sectionContent={ this.props.overview || <div /> }
+                  url={ this._getURL('Overview', this.props.editOverviewUrl) }
+                />
+              </div>
+              <div className='ComponentPage-overviewSectionContent'>
+                <div className='ComponentPage-overview'>
+                  { this.props.overview }
+                </div>
+                { this._getRelatedComponents() }
+              </div>
+            </div>
             { this._getDosAndDonts() }
             { this._getVariants() }
             { this._getImplementationExamples() }
@@ -222,30 +238,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         </div>
       );
     }
-  }
-
-  private _getOverview(): JSX.Element | undefined {
-    if (this.props.overview) {
-      <div className='ComponentPage-overviewSection'>
-        <div className='ComponentPage-overviewSectionHeader'>
-          <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
-          <EditSection
-            title={ this.props.title }
-            section={ ComponentPageSection.Overview }
-            sectionContent={ this.props.overview || <div /> }
-            url={ this._getURL('Overview', this.props.editOverviewUrl) }
-          />
-        </div>
-        <div className='ComponentPage-overviewSectionContent'>
-          <div className='ComponentPage-overview'>
-            { this.props.overview }
-          </div>
-          { this._getRelatedComponents() }
-        </div>
-      </div>
-    }
-
-    return undefined;
   }
 
   private _getDosAndDonts(): JSX.Element | undefined {

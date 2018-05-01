@@ -13,7 +13,6 @@ export interface IExampleCardProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   isScrollable?: boolean;
-  id?: string;
 }
 
 export interface IExampleCardState {
@@ -33,14 +32,14 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   }
 
   public render(): JSX.Element {
-    const { title, code, children, isRightAligned = false, isScrollable = true, id } = this.props;
+    const { title, code, children, isRightAligned = false, isScrollable = true } = this.props;
     const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
     return (
       <div className={ rootClass }>
         <div className='ExampleCard-header'>
-          <h3 id={ id } className='ExampleCard-title ms-font-l'>{ 'WEEEEEEEEEEEE' + title }</h3>
+          <span className='ExampleCard-title ms-font-l'>{ title }</span>
           <div className='ExampleCard-toggleButtons ms-font-l'>
             { code ? (
               <CommandButton
