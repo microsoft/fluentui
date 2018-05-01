@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ComponentPage } from '../../../components/ComponentPage/ComponentPage';
+import { ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { DetailsListDragDropExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;

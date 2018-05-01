@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ComponentPage } from '../../../components/ComponentPage/ComponentPage';
+import { ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { DetailsListGroupedExample } from 'office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
