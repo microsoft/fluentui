@@ -8,7 +8,7 @@ import {
   KeyCodes,
   classNamesFunction,
   getDocument,
-  isEqual
+  arraysAreEqual
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
@@ -449,7 +449,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
     }
 
-    if (this._newCurrentKeytipSequences && isEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
+    if (this._newCurrentKeytipSequences && arraysAreEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
       this._triggerKeytipImmediately(keytipProps);
     }
 
@@ -578,7 +578,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _isCurrentKeytipAnAlias(keytipProps: IKeytipProps): boolean {
     const currKtp = this.keytipTree.currentKeytip;
-    if (currKtp && (currKtp.overflowSetSequence || currKtp.persisted) && isEqual(keytipProps.keySequences, currKtp.keySequences)) {
+    if (currKtp && (currKtp.overflowSetSequence || currKtp.persisted) && arraysAreEqual(keytipProps.keySequences, currKtp.keySequences)) {
       return true;
     }
     return false;
