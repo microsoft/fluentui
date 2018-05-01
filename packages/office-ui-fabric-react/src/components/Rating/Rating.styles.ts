@@ -7,12 +7,15 @@ import {
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const GlobalClassNames = {
+  root: 'ms-RatingStar-root',
+  rootIsSmall: 'ms-RatingStar-root--small',
+  rootIsLarge: 'ms-RatingStar-root--large',
   ratingStar: 'ms-RatingStar-container',
   ratingStarBack: 'ms-RatingStar-back',
   ratingStarFront: 'ms-RatingStar-front',
   ratingButton: 'ms-Rating-button',
-  rootIsSmall: 'ms-Rating--small',
-  rootIsLarge: 'ms-Rating--large',
+  ratingStarIsSmall: 'ms-Rating--small',
+  ratingStartIsLarge: 'ms-Rating--large',
   labelText: 'ms-Rating-labelText',
   ratingFocusZone: 'ms-Rating-focuszone',
 };
@@ -42,8 +45,9 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const ratingSmallIconSize = '16px';
-  const ratingLargeIconSize = '20px';
+  const ratingSmallIconSize = 16;
+  const ratingLargeIconSize = 20;
+  const ratingPadding = 3;
 
   const ratingStarUncheckedColor = palette.neutralTertiary;
   const ratingStarCheckedColor = semanticColors.bodyTextChecked;
@@ -51,6 +55,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
 
   return {
     root: [
+      classNames.root,
       !disabled && !readOnly && {
         selectors: {
           // This is part 1 of highlighting all stars up to the one the user is hovering over
@@ -60,6 +65,18 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
             }
           }
         }
+      }
+    ],
+    rootIsSmall: [
+      classNames.rootIsSmall,
+      {
+        height: ratingSmallIconSize + (ratingPadding * 2) + 'px'
+      }
+    ],
+    rootIsLarge: [
+      classNames.rootIsLarge,
+      {
+        height: ratingLargeIconSize + (ratingPadding * 2) + 'px'
       }
     ],
     ratingStar: [
@@ -96,7 +113,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       classNames.ratingButton,
       {
         backgroundColor: 'transparent',
-        padding: '3px 3px 0px 0px',
+        padding: `${ratingPadding}px ${ratingPadding}px ${ratingPadding}px 0px`,
         margin: '0px',
         border: 'none',
         cursor: 'pointer',
@@ -124,18 +141,18 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         cursor: 'default'
       },
     ],
-    rootIsSmall: [
-      classNames.rootIsSmall,
+    ratingStarIsSmall: [
+      classNames.ratingStarIsSmall,
       {
-        fontSize: ratingSmallIconSize,
-        lineHeight: ratingSmallIconSize
+        fontSize: ratingSmallIconSize + 'px',
+        lineHeight: ratingSmallIconSize + 'px'
       }
     ],
-    rootIsLarge: [
-      classNames.rootIsLarge,
+    ratingStarIsLarge: [
+      classNames.ratingStartIsLarge,
       {
-        fontSize: ratingLargeIconSize,
-        lineHeight: ratingLargeIconSize
+        fontSize: ratingLargeIconSize + 'px',
+        lineHeight: ratingLargeIconSize + 'px'
       }
     ],
     labelText: [

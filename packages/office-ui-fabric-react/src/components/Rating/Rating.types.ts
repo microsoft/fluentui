@@ -106,6 +106,8 @@ export interface IRatingStyles {
   ratingStarBack: IStyle;
   ratingStarFront: IStyle;
   ratingButton: IStyle;
+  ratingStarIsSmall: IStyle;
+  ratingStarIsLarge: IStyle;
   rootIsSmall: IStyle;
   rootIsLarge: IStyle;
   labelText: IStyle;
