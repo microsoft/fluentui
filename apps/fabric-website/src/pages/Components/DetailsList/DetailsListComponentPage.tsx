@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DetailsListPage } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsListPage';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 const pageStyles: any = require('../PageStyles.module.scss');
-import { ComponentPage, ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ComponentPage } from '@uifabric/example-app-base';
 
 export class DetailsListComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
