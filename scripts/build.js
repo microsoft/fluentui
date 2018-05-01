@@ -19,7 +19,7 @@ let taskList = [
   .map(removeDisabledTasks(package.disabledTasks))
 
 // Filter disabled tasks if specified in the package.json.
-function removeDisabledTasks(disabledTasks) {
+function removeDisabledTasks(disabledTasks = []) {
   return tasks => tasks.filter(task => disabledTasks.indexOf(task) < 0);
 }
 
