@@ -10,7 +10,7 @@ export class DetailsListAdvancedComponentPage extends React.Component<any, any> 
       <ComponentPage
         title='Advanced'
         componentName='DetailsListAdvancedExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList' // @TODO(keco): UPDATE
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
           <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
             <DetailsListAdvancedExample />

@@ -10,7 +10,7 @@ export class DetailsListCustomColumnsComponentPage extends React.Component<any, 
       <ComponentPage
         title='Custom Item Columns'
         componentName='DetailsListCustomColumnsExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList' // @TODO(keco): UPDATE
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
           <ExampleCard title='Rendering custom item columns with sorting' isOptIn={ true } code={ DetailsListCustomColumnsExampleCode }>
             <DetailsListCustomColumnsExample />
@@ -19,7 +19,7 @@ export class DetailsListCustomColumnsComponentPage extends React.Component<any, 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts') // @TODO(keco): Worth inferring somehow if child component?
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
             ] }
           />
         }

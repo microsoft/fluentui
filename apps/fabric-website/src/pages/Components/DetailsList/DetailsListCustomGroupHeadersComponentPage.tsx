@@ -10,7 +10,7 @@ export class DetailsListCustomGroupHeadersComponentPage extends React.Component<
       <ComponentPage
         title='Custom Group Headers'
         componentName='DetailsListCustomGroupHeadersExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList' // @TODO(keco): UPDATE
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
           <ExampleCard title='Rendering custom group headers' isOptIn={ true } code={ DetailsListCustomGroupHeadersExampleCode }>
             <DetailsListCustomGroupHeadersExample />
