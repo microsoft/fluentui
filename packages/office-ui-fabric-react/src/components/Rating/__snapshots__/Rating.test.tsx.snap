@@ -5,11 +5,16 @@ exports[`Rating Renders Rating correctly 1`] = `
   aria-label=""
   className=
       ms-Rating-star
+      ms-RatingStar-root
+      ms-RatingStar-root--small
       &:hover .ms-RatingStar-back {
         color: #000000;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
         color: Highlight;
+      }
+      {
+        height: 22px;
       }
   id="Rating0"
 >
@@ -19,9 +24,13 @@ exports[`Rating Renders Rating correctly 1`] = `
     className=
         ms-FocusZone
         ms-Rating-focuszone
+        ms-RatingStar-root--small
         {
           display: inline-block;
           padding-bottom: 1px;
+        }
+        {
+          height: 22px;
         }
     data-focuszone-id="FocusZone2"
     data-is-focusable={false}
@@ -44,7 +53,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
             padding-right: 3px;
             padding-top: 3px;
@@ -181,7 +190,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
             padding-right: 3px;
             padding-top: 3px;
@@ -317,7 +326,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
             padding-right: 3px;
             padding-top: 3px;
@@ -453,7 +462,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
             padding-right: 3px;
             padding-top: 3px;
@@ -589,7 +598,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
             padding-right: 3px;
             padding-top: 3px;
