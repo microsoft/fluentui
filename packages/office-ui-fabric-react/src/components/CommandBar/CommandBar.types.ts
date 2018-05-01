@@ -1,11 +1,10 @@
 
 import * as React from 'react';
-import { IContextualMenuItem, IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu';
+import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction, IComponentAs } from '../../Utilities';
 
 export interface ICommandBar {
   /**
@@ -42,14 +41,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowItems?: ICommandBarItemProps[];
 
   /**
-   * Text to be read by screen readers if there are overflow items and focus is on elipsis button
+   * Props to be passed to overflow button
    */
-  elipisisAriaLabel?: string;
+  overflowButtonProps?: IButtonProps;
 
   /**
-  * Icon props to be passed to overflow elipsis
+  * Custom button to be used as oveflow button
   */
-  elipisisIconProps?: IIconProps;
+  overflowButtonAs?: IComponentAs<IButtonProps>;
 
   /**
   * Menu props to be passed to overflow elipsis
@@ -57,30 +56,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowMenuProps?: Partial<IContextualMenuProps>;
 
   /**
-  * If endAligned, all icons will be aligned to the far side of the commandbar, and overflow items
-  * will be taking from the starting side
+  * Custom button to be used as near and far items
   */
-  endAligned?: boolean;
+  buttonAs?: IComponentAs<ICommandBarItemProps>;
 
   /**
-  * Call to provide customized styling that will layer on top of the variant rules
+  * When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow
   */
-  getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
-
-  /**
-   * Custom styles to be mixed into individual button styles
-   */
-  buttonStyles?: IButtonStyles;
-
-  /**
-   * Theme provided by HOC.
-   */
-  theme?: ITheme;
-
-  /**
-   * Custom render function for all non contextual menu buttons.
-   */
-  onRenderButton?: (item: ICommandBarItemProps) => JSX.Element;
+  shiftOnReduce?: Boolean;
 
   /**
    * Custom function to reduce data if items do not fit in given space. Return `undefined`
@@ -109,6 +92,16 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+  * Call to provide customized styling that will layer on top of the variant rules
+  */
+  getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {

@@ -17,6 +17,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
       className
     ],
     primarySet: [
+      'ms-CommandBar-primaryCommand',
       {
         flexGrow: '1',
         display: 'flex',
@@ -25,6 +26,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
       endAligned && { justifyContent: 'flex-end' }
     ],
     secondarySet: [
+      'ms-CommandBar-secondaryCommand',
       {
         flexShrink: '0',
         display: 'flex',
