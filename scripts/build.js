@@ -11,24 +11,9 @@ if (!package) {
 const packageName = package.name;
 const isProduction = process.argv.indexOf('--production') > -1;
 
-let taskList = [
-  ['copy', 'sass'],
-  ['ts'],
-  ['tslint', 'jest', 'webpack']
-]
-  .map(removeDisabledTasks(package.disabledTasks))
+const { taskList, taskMap } = getTaskListAndTaskMap(process);
 
-// Filter disabled tasks if specified in the package.json.
-function removeDisabledTasks(disabledTasks = []) {
-  return tasks => tasks.filter(task => disabledTasks.indexOf(task) < 0);
-}
-
-console.log(taskList);
-
-if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
-  throw `Special case encountered! ${process.argv[2]}`
-  taskList = [process.argv[2]];
-}
+console.log('taskList', taskList);
 
 let promise = Promise.resolve();
 let hasFailures = false;
@@ -52,7 +37,7 @@ function runTask(task) {
   return Promise.resolve()
     .then(() => !hasFailures && Promise.resolve()
       .then(() => logStartTask(packageName, task))
-      .then(() => require('./tasks/' + task)({ isProduction, argv: process.argv }))
+      .then(() => taskMap[task]({ isProduction, argv: process.argv }))
       .then(() => logEndTask(packageName, task, taskStartTime))
       .catch((e) => {
         hasFailures = true;
@@ -68,4 +53,54 @@ function getPackage() {
   }
 
   return undefined;
+}
+
+function loadTaskFunctions(tasks) {
+  return flatten(tasks)
+    .reduce((acc, taskName) => {
+      acc[taskName] = require('./tasks/' + taskName);
+      return acc;
+    }, {});
+}
+
+function flatten(list) {
+  return list.reduce((acc, tasks) => acc.concat(tasks));
+}
+
+// Filter disabled tasks if specified in the package.json.
+function removeDisabledTasks(disabledTasks = []) {
+  return tasks => tasks.filter(task => disabledTasks.indexOf(task) < 0);
+}
+
+function getTaskListAndTaskMap(process) {
+  const allTasks = [
+    ['copy', 'sass'],
+    ['ts'],
+    ['tslint', 'jest', 'webpack']
+  ];
+
+  // Pre require all tasks functions so we do not do that when running the tasks
+  const taskMap = loadTaskFunctions(allTasks);
+
+  let taskList;
+
+  // Checks if the user passed specific tasks to the build step.
+  // This can be done as follows `npm run build -- copy sass`
+  // In this case we reset the default task list and run only the
+  // provided tasks.
+  if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
+    const tasksToRun = process.argv.slice(2);
+    const disabledTasks = flatten(allTasks).filter(task => tasksToRun.indexOf(task) === -1);
+    console.log('disabled', disabledTasks);
+    taskList = allTasks.map(removeDisabledTasks(disabledTasks));
+  } else {
+    // If no options were provided we'll run all the default tasks, unless they have been disabled.
+    taskList = allTasks
+      .map(removeDisabledTasks(package.disabledTasks))
+  }
+
+  return {
+    taskList,
+    taskMap
+  };
 }
