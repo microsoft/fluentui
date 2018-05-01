@@ -145,7 +145,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _registerPersistedKeytips() {
     Object.keys(this._persistedKeytips).forEach((key: string) => {
       const keytip = this._persistedKeytips[key];
-      const uniqueID = this._keytipManager.registerPersistedKeytip(keytip);
+      const uniqueID = this._keytipManager.register(keytip, true);
       // Update map
       this._persistedKeytips[uniqueID] = keytip;
       delete this._persistedKeytips[key];
@@ -155,7 +155,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _unregisterPersistedKeytips() {
     // Delete all persisted keytips saved
     Object.keys(this._persistedKeytips).forEach((uniqueID: string) => {
-      this._keytipManager.unregisterPersistedKeytip(this._persistedKeytips[uniqueID], uniqueID);
+      this._keytipManager.unregister(this._persistedKeytips[uniqueID], uniqueID, true);
     });
     this._persistedKeytips = {};
   }
@@ -189,7 +189,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
 
           if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
             // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
-            persistedKeytip.onExecute = this._keytipManager.persistedKeytipExecute.bind(this._keytipManager, overflowKeytipSequences, overflowItem.keytipProps.keySequences);
+            persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(this._keytipManager, overflowKeytipSequences, overflowItem.keytipProps.keySequences);
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
             persistedKeytip.onExecute = keytip.onExecute;

@@ -5,7 +5,8 @@ import {
   findIndex,
   find,
   EventGroup,
-  KeytipEvents
+  KeytipEvents,
+  getId
 } from '../../Utilities';
 
 export interface IUniqueKeytip {
@@ -22,8 +23,6 @@ export class KeytipManager {
   public keytips: IUniqueKeytip[] = [];
   public persistedKeytips: IUniqueKeytip[] = [];
 
-  private _keytipIDCounter = 0;
-
   /**
    * Static function to get singleton KeytipManager instance
    *
@@ -37,38 +36,26 @@ export class KeytipManager {
    * Registers a keytip
    *
    * @param keytipProps - Keytip to register
+   * @param persisted - T/F if this keytip should be persisted, default is false
    * @returns {string} Unique ID for this keytip
    */
-  public registerKeytip(keytipProps: IKeytipProps): string {
-    // Add the overflowSetSequence if necessary
-    const newKeytipProps = this.addParentOverflowSequence(keytipProps);
-
+  public register(keytipProps: IKeytipProps, persisted: boolean = false): string {
+    let props: IKeytipProps = keytipProps;
+    if (!persisted) {
+      // Add the overflowSetSequence if necessary
+      props = this.addParentOverflow(keytipProps);
+    }
     // Create a unique keytip
-    const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(newKeytipProps);
-
+    const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props);
     // Add to array
-    this.keytips.push(uniqueKeytip);
-    EventGroup.raise(this, KeytipEvents.KEYTIP_ADDED, {
-      keytip: newKeytipProps,
+    persisted ? this.persistedKeytips.push(uniqueKeytip) : this.keytips.push(uniqueKeytip);
+
+    const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_ADDED : KeytipEvents.KEYTIP_ADDED;
+    EventGroup.raise(this, event, {
+      keytip: props,
       uniqueID: uniqueKeytip.uniqueID
     });
 
-    return uniqueKeytip.uniqueID;
-  }
-
-  /**
-   * Register a persisted keytip
-   *
-   * @param keytipProps - Persisted Keytip to register
-   * @returns {string} Unique ID for this persisted keytip
-   */
-  public registerPersistedKeytip(keytipProps: IKeytipProps): string {
-    const uniqueKeytip: IUniqueKeytip = this._constructUniqueKeytip(keytipProps);
-    this.persistedKeytips.push(uniqueKeytip);
-    EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_ADDED, {
-      keytip: keytipProps,
-      uniqueID: uniqueKeytip.uniqueID
-    });
     return uniqueKeytip.uniqueID;
   }
 
@@ -78,10 +65,12 @@ export class KeytipManager {
    * @param keytipProps - Keytip to update
    * @param uniqueID - Unique ID of this keytip
    */
-  public updateKeytip(keytipProps: IKeytipProps, uniqueID: string): void {
-    const newKeytipProps = this.addParentOverflowSequence(keytipProps);
-    const uniqueKeytip = this._constructUniqueKeytip(newKeytipProps, uniqueID);
-    const keytipIndex = this._findKeytipIndex(uniqueID);
+  public update(keytipProps: IKeytipProps, uniqueID: string): void {
+    const newKeytipProps = this.addParentOverflow(keytipProps);
+    const uniqueKeytip = this._getUniqueKtp(newKeytipProps, uniqueID);
+    const keytipIndex = findIndex(this.keytips, (ktp: IUniqueKeytip) => {
+      return ktp.uniqueID === uniqueID;
+    });
     if (keytipIndex >= 0) {
       // Update everything except 'visible'
       uniqueKeytip.keytip.visible = this.keytips[keytipIndex].keytip.visible;
@@ -99,32 +88,24 @@ export class KeytipManager {
    * Unregisters a keytip
    *
    * @param keytipToRemove - IKeytipProps of the keytip to remove
+   * @param uniqueID - Unique ID of this keytip
+   * @param persisted - T/F if this keytip should be persisted, default is false
    */
-  public unregisterKeytip(keytipToRemove: IKeytipProps, uniqueID: string): void {
-    // Remove keytipToRemove from this.keytips
-    this.keytips = this.keytips.filter((uniqueKtp: IUniqueKeytip) => {
-      return uniqueKtp.uniqueID !== uniqueID;
-    });
+  public unregister(keytipToRemove: IKeytipProps, uniqueID: string, persisted: boolean = false): void {
+    if (persisted) {
+      // Remove keytip from this.persistedKeytips
+      this.persistedKeytips = this.persistedKeytips.filter((uniqueKtp: IUniqueKeytip) => {
+        return uniqueKtp.uniqueID !== uniqueID;
+      });
+    } else {
+      // Remove keytip from this.keytips
+      this.keytips = this.keytips.filter((uniqueKtp: IUniqueKeytip) => {
+        return uniqueKtp.uniqueID !== uniqueID;
+      });
+    }
 
-    EventGroup.raise(this, KeytipEvents.KEYTIP_REMOVED, {
-      keytip: keytipToRemove,
-      uniqueID: uniqueID
-    });
-  }
-
-  /**
-   * Unegister a persisted keytip
-   *
-   * @param keytipToRemove - Persisted keytip to remove
-   * @param uniqueID - Unique ID of this persisted keytip
-   */
-  public unregisterPersistedKeytip(keytipToRemove: IKeytipProps, uniqueID: string): void {
-    // Remove persisted keytip from this.persistedKeytips
-    this.persistedKeytips = this.persistedKeytips.filter((uniqueKtp: IUniqueKeytip) => {
-      return uniqueKtp.uniqueID !== uniqueID;
-    });
-
-    EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_REMOVED, {
+    const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_REMOVED : KeytipEvents.KEYTIP_REMOVED;
+    EventGroup.raise(this, event, {
       keytip: keytipToRemove,
       uniqueID: uniqueID
     });
@@ -147,7 +128,7 @@ export class KeytipManager {
    * @param keytipProps - Keytip props to add overflowSetSequence to if necessary
    * @returns {IKeytipProps} - Modified keytip props, if needed to be modified
    */
-  public addParentOverflowSequence(keytipProps: IKeytipProps): IKeytipProps {
+  public addParentOverflow(keytipProps: IKeytipProps): IKeytipProps {
     const fullSequence = [...keytipProps.keySequences];
     fullSequence.pop();
     if (fullSequence.length !== 0) {
@@ -170,20 +151,11 @@ export class KeytipManager {
    * @param overflowButtonSequences
    * @param keytipSequences
    */
-  public persistedKeytipExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
+  public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
     EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, {
       overflowButtonSequences,
       keytipSequences
     });
-  }
-
-  /**
-   * Generates the next unique ID for a keytip
-   *
-   * @returns {string} A unique ID for a keytip
-   */
-  private _getNextUniqueID(): string {
-    return (++this._keytipIDCounter).toString();
   }
 
   /**
@@ -193,19 +165,7 @@ export class KeytipManager {
    * @param uniqueID - Unique ID, will default to the next unique ID if not passed
    * @returns {IUniqueKeytip} IUniqueKeytip object
    */
-  private _constructUniqueKeytip(keytipProps: IKeytipProps, uniqueID: string = this._getNextUniqueID()): IUniqueKeytip {
+  private _getUniqueKtp(keytipProps: IKeytipProps, uniqueID: string = getId()): IUniqueKeytip {
     return { keytip: { ...keytipProps }, uniqueID };
-  }
-
-  /**
-   * Find a keytip in this.keytips
-   *
-   * @param ktpToFind - IUniqueKeytipProps to find
-   * @returns {number} Index of the keytip in this.keytips (or -1 if not found)
-   */
-  private _findKeytipIndex(uniqueID: string): number {
-    return findIndex(this.keytips, (ktp: IUniqueKeytip) => {
-      return ktp.uniqueID === uniqueID;
-    });
   }
 }

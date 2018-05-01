@@ -12,12 +12,12 @@ import {
   KTP_ARIA_SEPARATOR,
   KTP_ARIA_SEPARATOR_ID,
   classNamesFunction,
-  convertSequencesToKeytipID,
+  sequencesToID,
   transitionKeysContain,
-  mergeOverflowKeySequences,
+  mergeOverflows,
   getDocument,
   KeytipEvents,
-  constructKeytipExecuteTargetFromId,
+  ktpTargetFromId,
   isEqual
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
@@ -142,7 +142,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
           return (
             <span
               key={ index }
-              id={ convertSequencesToKeytipID(keytipProps.keySequences) }
+              id={ sequencesToID(keytipProps.keySequences) }
               className={ this._classNames.innerContent }
             >
               { keytipProps.keySequences.join(', ') }
@@ -150,7 +150,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
           );
         }) }
         { visibleKeytips && visibleKeytips.map((visibleKeytipProps: IKeytipProps) => {
-          return <Keytip key={ convertSequencesToKeytipID(visibleKeytipProps.keySequences) } { ...visibleKeytipProps } />;
+          return <Keytip key={ sequencesToID(visibleKeytipProps.keySequences) } { ...visibleKeytipProps } />;
         }) }
       </Layer>
     );
@@ -316,12 +316,12 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public showKeytips(ids: string[]): void {
     // Update the visible prop in the manager
     for (const keytip of this._keytipManager.getKeytips()) {
-      const keytipId = convertSequencesToKeytipID(keytip.keySequences);
+      const keytipId = sequencesToID(keytip.keySequences);
       if (ids.indexOf(keytipId) >= 0) {
         keytip.visible = true;
       } else if (keytip.overflowSetSequence && ids.indexOf(
-        convertSequencesToKeytipID(
-          mergeOverflowKeySequences(keytip.keySequences, keytip.overflowSetSequence))) >= 0) {
+        sequencesToID(
+          mergeOverflows(keytip.keySequences, keytip.overflowSetSequence))) >= 0) {
         // Check if the ID with the overflow is the keytip we're looking for
         keytip.visible = true;
       } else {
@@ -343,7 +343,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this._newCurrentKeytipSequences = keytipSequences;
 
     // Execute the overflow button's onExecute
-    const overflowKeytipNode = this.keytipTree.getNode(convertSequencesToKeytipID(overflowButtonSequences));
+    const overflowKeytipNode = this.keytipTree.getNode(sequencesToID(overflowButtonSequences));
     if (overflowKeytipNode && overflowKeytipNode.onExecute) {
       overflowKeytipNode.onExecute(this._getKeytipDOMElement(overflowKeytipNode.id));
     }
@@ -440,7 +440,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
     // Add the keytip to the queue to show later
     if (this.keytipTree.isCurrentKeytipParent(keytipProps)) {
-      this._addKeytipToQueue(convertSequencesToKeytipID(keytipProps.keySequences));
+      this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
     }
 
     if (this._newCurrentKeytipSequences && isEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
@@ -450,9 +450,9 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     if (this._isCurrentKeytipAnAlias(keytipProps)) {
       let keytipSequence = keytipProps.keySequences;
       if (keytipProps.overflowSetSequence) {
-        keytipSequence = mergeOverflowKeySequences(keytipSequence, keytipProps.overflowSetSequence);
+        keytipSequence = mergeOverflows(keytipSequence, keytipProps.overflowSetSequence);
       }
-      this.keytipTree.currentKeytip = this.keytipTree.getNode(convertSequencesToKeytipID(keytipSequence));
+      this.keytipTree.currentKeytip = this.keytipTree.getNode(sequencesToID(keytipSequence));
     }
   }
 
@@ -468,7 +468,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     const uniqueID = eventArgs.uniqueID;
 
     // Remove keytip from the delayed queue
-    this._removeKeytipFromQueue(convertSequencesToKeytipID(keytipProps.keySequences));
+    this._removeKeytipFromQueue(sequencesToID(keytipProps.keySequences));
 
     // Remove the node from the Tree
     this.keytipTree.removeNode(keytipProps, uniqueID);
@@ -500,11 +500,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // This keytip should become the currentKeytip and should execute right away
     let keytipSequence = [...keytipProps.keySequences];
     if (keytipProps.overflowSetSequence) {
-      keytipSequence = mergeOverflowKeySequences(keytipSequence, keytipProps.overflowSetSequence);
+      keytipSequence = mergeOverflows(keytipSequence, keytipProps.overflowSetSequence);
     }
 
     // Set currentKeytip
-    this.keytipTree.currentKeytip = this.keytipTree.getNode(convertSequencesToKeytipID(keytipSequence));
+    this.keytipTree.currentKeytip = this.keytipTree.getNode(sequencesToID(keytipSequence));
     if (this.keytipTree.currentKeytip) {
       // Show all children keytips if any
       const children = this.keytipTree.getChildren();
@@ -559,7 +559,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * @returns {HTMLElement | null} DOM element of the keytip if found
    */
   private _getKeytipDOMElement(keytipId: string): HTMLElement | null {
-    const dataKtpExecuteTarget = constructKeytipExecuteTargetFromId(keytipId);
+    const dataKtpExecuteTarget = ktpTargetFromId(keytipId);
     return getDocument()!.querySelector(dataKtpExecuteTarget);
   }
 

@@ -6,7 +6,7 @@ import * as sinon from 'sinon';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 import { CommandBarButton } from '../../Button';
 import { mount, ReactWrapper } from 'enzyme';
-import { isEqual, find, createRef, constructKeytipExecuteTargetFromId } from '../../Utilities';
+import { isEqual, find, createRef, ktpTargetFromId } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { KeytipManager, IUniqueKeytip } from '../../utilities/keytips';
@@ -113,7 +113,7 @@ describe('OverflowSet', () => {
           keySequences: ['x'],
           onExecute: (el: HTMLElement) => {
             // Find the overflow button and manually click it to open the overflow menu
-            overflowSet.find(constructKeytipExecuteTargetFromId('ktp-x')).simulate('click');
+            overflowSet.find(ktpTargetFromId('ktp-x')).simulate('click');
           }
         }
       };

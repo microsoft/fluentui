@@ -15,7 +15,7 @@ import { addElementAtIndex } from './array';
  * @param keySequences - Full path of IKeySequences for one keytip.
  * @returns {string} String to use for the keytip ID.
  */
-export function convertSequencesToKeytipID(keySequences: string[]): string {
+export function sequencesToID(keySequences: string[]): string {
   return keySequences.reduce((prevValue: string, keySequence: string): string => {
     return prevValue + KTP_SEPARATOR + keySequence.split('').join(KTP_SEPARATOR);
   }, KTP_PREFIX);
@@ -28,7 +28,7 @@ export function convertSequencesToKeytipID(keySequences: string[]): string {
  * @param overflowKeySequences - Full overflow keytip sequence.
  * @returns {string[]} Sequence that will be used by the keytip when in the overflow.
  */
-export function mergeOverflowKeySequences(keySequences: string[], overflowKeySequences: string[]): string[] {
+export function mergeOverflows(keySequences: string[], overflowKeySequences: string[]): string[] {
   const overflowSequenceLen = overflowKeySequences.length;
   const overflowSequence = [...overflowKeySequences].pop();
   const newKeySequences = [...keySequences];
@@ -41,8 +41,8 @@ export function mergeOverflowKeySequences(keySequences: string[], overflowKeySeq
  * @param keySequences - Full string[] for a Keytip.
  * @returns {string} String selector to use to query for the keytip target.
  */
-export function constructKeytipTargetFromSequences(keySequences: string[]): string {
-  return '[' + DATAKTP_TARGET + '="' + convertSequencesToKeytipID(keySequences) + '"]';
+export function ktpTargetFromSequences(keySequences: string[]): string {
+  return '[' + DATAKTP_TARGET + '="' + sequencesToID(keySequences) + '"]';
 }
 
 /**
@@ -51,7 +51,7 @@ export function constructKeytipTargetFromSequences(keySequences: string[]): stri
  * @param keytipId - ID of the Keytip.
  * @returns {string} String selector to use to query for the keytip execute target.
  */
-export function constructKeytipExecuteTargetFromId(keytipId: string): string {
+export function ktpTargetFromId(keytipId: string): string {
   return '[' + DATAKTP_EXECUTE_TARGET + '="' + keytipId + '"]';
 }
 
@@ -68,5 +68,5 @@ export function getAriaDescribedBy(keySequences: string[]): string {
     return describedby;
   }
 
-  return describedby + ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + convertSequencesToKeytipID(keySequences);
+  return describedby + ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + sequencesToID(keySequences);
 }

@@ -30,7 +30,7 @@ describe('KeytipManager', () => {
         events.on(ktpMgr, KeytipEvents.KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
         });
-        ktpMgr.registerKeytip(keytipBProps);
+        ktpMgr.register(keytipBProps);
         const keytips = ktpMgr.getKeytips();
         expect(keytips).toHaveLength(1);
         expect(isEqual(keytips[0].keySequences, keytipSequenceB)).toEqual(true);
@@ -38,8 +38,8 @@ describe('KeytipManager', () => {
       });
 
       it('adds a duplicate keytip because their unique IDs are different', () => {
-        const uniqueID1 = ktpMgr.registerKeytip(keytipBProps);
-        const uniqueID2 = ktpMgr.registerKeytip(keytipBProps);
+        const uniqueID1 = ktpMgr.register(keytipBProps);
+        const uniqueID2 = ktpMgr.register(keytipBProps);
         expect(uniqueID1).not.toEqual(uniqueID2);
         expect(ktpMgr.getKeytips()).toHaveLength(2);
       });
@@ -47,11 +47,11 @@ describe('KeytipManager', () => {
 
     describe('updateKeytip', () => {
       it('updates the keytip if it has the same unique ID', () => {
-        const uniqueID = ktpMgr.registerKeytip(keytipBProps);
+        const uniqueID = ktpMgr.register(keytipBProps);
         // Update some props
         keytipBProps.disabled = true;
         keytipBProps.onExecute = jest.fn();
-        ktpMgr.updateKeytip(keytipBProps, uniqueID);
+        ktpMgr.update(keytipBProps, uniqueID);
         const keytips = ktpMgr.getKeytips();
         expect(keytips).toHaveLength(1);
         expect(keytips[0].disabled).toEqual(true);
@@ -63,8 +63,8 @@ describe('KeytipManager', () => {
         events.on(ktpMgr, KeytipEvents.KEYTIP_UPDATED, (eventArgs: any) => {
           eventTriggered = true;
         });
-        const uniqueID = ktpMgr.registerKeytip(keytipBProps);
-        ktpMgr.updateKeytip(keytipBProps, uniqueID);
+        const uniqueID = ktpMgr.register(keytipBProps);
+        ktpMgr.update(keytipBProps, uniqueID);
         expect(eventTriggered).toEqual(true);
       });
     });
@@ -75,8 +75,8 @@ describe('KeytipManager', () => {
         events.on(ktpMgr, KeytipEvents.KEYTIP_REMOVED, (eventArgs: any) => {
           eventTriggered = true;
         });
-        const uniqueID = ktpMgr.registerKeytip(keytipBProps);
-        ktpMgr.unregisterKeytip(keytipBProps, uniqueID);
+        const uniqueID = ktpMgr.register(keytipBProps);
+        ktpMgr.unregister(keytipBProps, uniqueID);
         expect(ktpMgr.getKeytips()).toHaveLength(0);
         expect(eventTriggered).toEqual(true);
       });
@@ -88,7 +88,7 @@ describe('KeytipManager', () => {
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
         });
-        ktpMgr.registerPersistedKeytip(keytipBProps);
+        ktpMgr.register(keytipBProps, true);
         expect(ktpMgr.persistedKeytips).toHaveLength(1);
         expect(eventTriggered).toEqual(true);
       });
@@ -100,8 +100,8 @@ describe('KeytipManager', () => {
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_REMOVED, (eventArgs: any) => {
           eventTriggered = true;
         });
-        const uniqueID = ktpMgr.registerPersistedKeytip(keytipBProps);
-        ktpMgr.unregisterPersistedKeytip(keytipBProps, uniqueID);
+        const uniqueID = ktpMgr.register(keytipBProps, true);
+        ktpMgr.unregister(keytipBProps, uniqueID, true);
         expect(ktpMgr.persistedKeytips).toHaveLength(0);
         expect(eventTriggered).toEqual(true);
       });
@@ -116,8 +116,8 @@ describe('KeytipManager', () => {
         };
         // Add overflowSetSequence to B
         keytipBProps.overflowSetSequence = ['x'];
-        ktpMgr.registerKeytip(keytipBProps);
-        keytipCProps = ktpMgr.addParentOverflowSequence(keytipCProps);
+        ktpMgr.register(keytipBProps);
+        keytipCProps = ktpMgr.addParentOverflow(keytipCProps);
         expect(keytipCProps.overflowSetSequence).toHaveLength(1);
       });
     });
@@ -128,7 +128,7 @@ describe('KeytipManager', () => {
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, (eventArgs: any) => {
           eventTriggered = true;
         });
-        ktpMgr.persistedKeytipExecute(['x'], ['y']);
+        ktpMgr.menuExecute(['x'], ['y']);
         expect(eventTriggered).toEqual(true);
       });
     });
