@@ -33,8 +33,8 @@
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.27.0 <6.0.0",
-    "@uifabric/utilities": ">=5.28.0 <6.0.0",
+    "@uifabric/styling": ">=5.29.0 <6.0.0",
+    "@uifabric/utilities": ">=5.29.0 <6.0.0",
     "highlight.js": "^9.12.0",
     "markdown-to-jsx": "^6.6.0",
     "office-ui-fabric-react": ">=5.1.0 <6.0.0",

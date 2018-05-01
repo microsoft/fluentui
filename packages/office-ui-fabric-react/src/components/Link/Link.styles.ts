@@ -1,5 +1,6 @@
 import {
   getFocusStyle,
+  getGlobalClassNames,
   HighContrastSelector
 } from '../../Styling';
 import {
@@ -7,20 +8,26 @@ import {
   ILinkStyles
 } from './Link.types';
 
+const GlobalClassNames = {
+  root: 'ms-Link'
+};
+
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   const { className, isButton, isDisabled, theme } = props;
   const { semanticColors } = theme;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return {
     root: [
-      'ms-Link',
-      className,
+      classNames.root,
       getFocusStyle(theme),
       {
         color: semanticColors.link,
       },
       isButton && {
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         cursor: 'pointer',
         display: 'inline',
@@ -47,7 +54,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
               pointerEvents: 'none'
             }
           }
-        }
+        },
       ],
       !isDisabled && {
         selectors: {
@@ -63,7 +70,9 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             color: semanticColors.link
           }
         }
-      }
+      },
+      classNames.root,
+      className
     ]
   };
 };

@@ -2,7 +2,14 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import {
   HighContrastSelector,
   IStyle,
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Check',
+  circle: 'ms-Check-circle',
+  check: 'ms-Check-check',
+};
 
 export const getStyles = (
   props: ICheckStyleProps
@@ -15,6 +22,8 @@ export const getStyles = (
   } = props;
 
   const { palette, semanticColors } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const sharedCircleCheck: IStyle = {
     fontSize: checkBoxHeight,
@@ -29,8 +38,7 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Check',
-
+      classNames.root,
       {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',
@@ -83,7 +91,7 @@ export const getStyles = (
     ],
 
     circle: [
-      'ms-Check-circle',
+      classNames.circle,
       sharedCircleCheck,
 
       {
@@ -102,7 +110,7 @@ export const getStyles = (
     ],
 
     check: [
-      'ms-Check-check',
+      classNames.check,
       sharedCircleCheck,
 
       {

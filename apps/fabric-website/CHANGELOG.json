@@ -2,6 +2,51 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.7.2",
+      "tag": "@uifabric/fabric-website_v5.7.2",
+      "date": "Tue, 01 May 2018 19:26:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2d89229b5623713af268b537e1bd72ce476354c4",
+            "comment": "LocalizationPage: Only show icon names on hover so they don't overlap."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.93.0 <6.0.0` to `>=5.94.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.1",
+      "tag": "@uifabric/fabric-website_v5.7.1",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c3769b65c2596d3f9dea0d9f25a0715cf23914ea",
+            "comment": "Removing unused refs."
+          }
+        ],
+        "none": [
+          {
+            "author": "VincentBailly <vincentbaill@gmail.com>",
+            "commit": "88e043f28db97e59b0cbb25aca26ffbd606121af",
+            "comment": "fix corner case bug with Safari"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "@uifabric/fabric-website_v5.7.0",
       "date": "Tue, 17 Apr 2018 18:47:11 GMT",

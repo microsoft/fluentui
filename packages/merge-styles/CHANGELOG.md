@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Apr 2018 10:12:34 GMT and should not be manually modified.
+
+## 5.17.0
+Thu, 26 Apr 2018 10:12:34 GMT
+
+### Minor changes
+
+- Add `animation` to `IRawStyleBase` for use in style sets.
 
 ## 5.16.1
 Wed, 25 Apr 2018 05:32:09 GMT
