@@ -44,7 +44,7 @@
     @include high-contrast {
       &::before {
         box-sizing: border-box;
-        border-bottom: 2px solid WindowText;
+        border-bottom: 2px solid Highlight;
       }
     }
   }
