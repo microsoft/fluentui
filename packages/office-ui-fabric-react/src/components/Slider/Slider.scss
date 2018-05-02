@@ -1,37 +1,4 @@
 @import '../../common/common';
-// Enabled Variant
-.rootIsEnabled {
-  .slideBox:hover,
-  .slideBox:active {
-    .thumb {
-      border: 2px solid $ms-color-themePrimary;
-      @include high-contrast {
-        border-color: Highlight;
-      }
-    }
-    .activeSection {
-      background-color: $ms-color-themePrimary;
-      @include high-contrast {
-        background-color: Highlight;
-      }
-    }
-    .inactiveSection {
-      background-color: $ms-color-themeLight;
-      @include high-contrast {
-        border-color: Highlight;
-      }
-    }
-  }
-  .slideBox:active {
-    .thumb {
-      border: 2px solid $ms-color-themeDarkAlt;
-    }
-    .activeSection {
-      background-color: $ms-color-themeDarkAlt;
-    }
-  }
-}
-
 // Disabled Variant
 .rootIsDisabled {
   .thumb {

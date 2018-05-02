@@ -95,6 +95,50 @@ export const getStyles = (
           padding: '0 8px'
         }
       ],
+      !disabled && [
+        {
+          selectors: {
+            ':hover, :active': { // @TODO(keco): Doesn't seem to work w/ .thumb?
+              selectors: {
+                '.thumb': {
+                  border: `2px solid ${palette.themePrimary}`,
+                  selectors: {
+                    [HighContrastSelector]: {
+                      borderColor: 'Highlight'
+                    }
+                  }
+                },
+                '.ms-Slider-active': { // @TODO(keco): Used ms- prefix instead of .activeSection
+                  backgroundColor: palette.themePrimary,
+                  selectors: {
+                    [HighContrastSelector]: {
+                      borderColor: 'Highlight'
+                    }
+                  }
+                },
+                '.ms-Slider-inactive': { // @TODO(keco): Used ms-prefix instead of .inactiveSection
+                  backgroundColor: palette.themeLight,
+                  selectors: {
+                    [HighContrastSelector]: {
+                      borderColor: 'Highlight'
+                    }
+                  }
+                }
+              }
+            },
+            ':active': {
+              selectors: {
+                '.thumb': {
+                  border: `2px solid ${palette.themeDarkAlt}`
+                },
+                '.activeSection': {
+                  backgroundColor: palette.themeDarkAlt
+                }
+              }
+            }
+          }
+        }
+      ],
       buttonClassName,
       showValue && 'ms-Slider-showValue'
     ],
