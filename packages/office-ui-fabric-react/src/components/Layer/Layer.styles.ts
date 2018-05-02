@@ -1,5 +1,5 @@
 import { ILayerStyleProps, ILayerStyles } from './Layer.types';
-import { getGlobalClassNames } from '../../Styling';
+import { ZIndexes, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Layer',
@@ -25,7 +25,7 @@ export const getStyles = (
         classNames.rootNoHost,
         {
           position: 'fixed',
-          zIndex: 1000000,
+          zIndex: ZIndexes.Layer,
           top: 0,
           left: 0,
           width: '100vw',
