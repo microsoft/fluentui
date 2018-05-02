@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
@@ -39,6 +36,24 @@ describe('ComboBox', () => {
     };
     const component = renderer.create(
       <ComboBox options={ DEFAULT_OPTIONS } />,
+      { createNodeMock }
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a ComboBox with a Keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const createNodeMock = (el: React.ReactElement<{}>) => {
+      return {
+        __events__: {}
+      };
+    };
+    const component = renderer.create(
+      <ComboBox options={ DEFAULT_OPTIONS } keytipProps={ keytipProps } />,
       { createNodeMock }
     );
     const tree = component.toJSON();

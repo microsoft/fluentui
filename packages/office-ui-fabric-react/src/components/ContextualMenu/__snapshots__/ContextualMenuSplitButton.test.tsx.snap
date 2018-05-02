@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContextualMenuSplitButton creates a normal split button renders the contextual menu split button correctly 1`] = `
+<div
+  aria-checked={undefined}
+  aria-describedby="undefined"
+  aria-disabled={false}
+  aria-haspopup={true}
+  aria-labelledby={undefined}
+  aria-posinset={1}
+  aria-setsize={1}
+  className="splitContainer"
+  data-is-focusable={true}
+  data-ktp-target={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={undefined}
+  onMouseMove={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <button
+    aria-hidden={true}
+    checked={undefined}
+    className="splitPrimary"
+    data-is-focusable={false}
+    disabled={undefined}
+    icon={undefined}
+    name={undefined}
+    role="menuitem"
+  >
+    <div
+      className="linkContent"
+    />
+  </button>
+  <span
+    className=
+
+        {
+          align-items: center;
+          display: inline-flex;
+          height: 100%;
+        }
+  >
+    <span
+      className=
+
+          {
+            background-color: #c8c8c8;
+            height: 16px;
+            width: 1px;
+          }
+    />
+  </span>
+  <button
+    aria-hidden={true}
+    className="splitMenu"
+    data-is-focusable={false}
+    data-ktp-execute-target={undefined}
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={undefined}
+    onMouseMove={[Function]}
+  >
+    <div
+      className="linkContentMenu"
+    />
+  </button>
+</div>
+`;

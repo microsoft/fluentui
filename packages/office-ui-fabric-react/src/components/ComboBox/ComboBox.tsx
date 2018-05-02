@@ -1,39 +1,40 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps, IComboBoxOptionStyles } from './ComboBox.types';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout } from '../../Callout';
-import { Label } from '../../Label';
-import { Checkbox } from '../../Checkbox';
+
 import {
   CommandButton,
-  IconButton,
-  IButtonStyles
+  IButtonStyles,
+  IconButton
 } from '../../Button';
-import { IAutofill, Autofill } from '../Autofill/index';
+import { Callout } from '../../Callout';
+import { Checkbox } from '../../Checkbox';
+import { KeytipData } from '../../KeytipData';
+import { Label } from '../../Label';
 import {
   BaseComponent,
+  KeyCodes,
+  createRef,
+  css,
+  customizable,
   divProperties,
   findIndex,
   getId,
   getNativeProps,
-  KeyCodes,
-  customizable,
-  css,
-  createRef,
   shallowCompare
 } from '../../Utilities';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import {
-  getStyles,
-  getOptionStyles,
-  getCaretDownButtonStyles
-} from './ComboBox.styles';
+import { Autofill, IAutofill } from '../Autofill/index';
 import {
   IComboBoxClassNames,
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
-import { BaseButton, Button } from 'src/index.bundle';
+import {
+  getCaretDownButtonStyles,
+  getOptionStyles,
+  getStyles
+} from './ComboBox.styles';
+import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
 
 export interface IComboBoxState {
 
@@ -297,7 +298,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       isButtonAriaHidden = true,
       styles: customStyles,
       theme,
-      title
+      title,
+      keytipProps
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -327,60 +329,67 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         !!hasErrorMessage
       );
 
+    const describedBy = id + '-option';
+
     return (
       <div { ...divProps } ref={ this._root } className={ this._classNames.container }>
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
-        <div
-          ref={ this._comboBoxWrapper }
-          id={ id + 'wrapper' }
-          className={ this._classNames.root }
-        >
-          <Autofill
-            data-is-interactable={ !disabled }
-            componentRef={ this._autofill }
-            id={ id + '-input' }
-            className={ this._classNames.input }
-            type='text'
-            onFocus={ this._select }
-            onBlur={ this._onBlur }
-            onKeyDown={ this._onInputKeyDown }
-            onKeyUp={ this._onInputKeyUp }
-            onClick={ this._onAutofillClick }
-            onInputValueChange={ this._onInputChange }
-            aria-expanded={ isOpen }
-            aria-autocomplete={ this._getAriaAutoCompleteValue() }
-            role='combobox'
-            aria-readonly={ ((allowFreeform || disabled) ? undefined : 'true') }
-            readOnly={ disabled || !allowFreeform }
-            aria-labelledby={ (label && (id + '-label')) }
-            aria-label={ ((ariaLabel && !label) ? ariaLabel : undefined) }
-            aria-describedby={ (id + '-option') }
-            aria-activedescendant={ this._getAriaActiveDescentValue() }
-            aria-disabled={ disabled }
-            aria-owns={ (id + '-list') }
-            spellCheck={ false }
-            defaultVisibleValue={ this._currentVisibleValue }
-            suggestedDisplayValue={ suggestedDisplayValue }
-            updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
-            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
-            title={ title }
-          />
-          <IconButton
-            className={ 'ms-ComboBox-CaretDown-button' }
-            styles={ this._getCaretButtonStyles() }
-            role='presentation'
-            aria-hidden={ isButtonAriaHidden }
-            data-is-focusable={ false }
-            tabIndex={ -1 }
-            onClick={ this._onComboBoxClick }
-            iconProps={ buttonIconProps }
-            disabled={ disabled }
-            checked={ isOpen }
-          />
-        </div>
-
+        <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
+          { (keytipAttributes: any): JSX.Element => (
+            <div
+              data-ktp-target={ keytipAttributes['data-ktp-target'] }
+              ref={ this._comboBoxWrapper }
+              id={ id + 'wrapper' }
+              className={ this._classNames.root }
+            >
+              <Autofill
+                data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
+                data-is-interactable={ !disabled }
+                componentRef={ this._autofill }
+                id={ id + '-input' }
+                className={ this._classNames.input }
+                type='text'
+                onFocus={ this._select }
+                onBlur={ this._onBlur }
+                onKeyDown={ this._onInputKeyDown }
+                onKeyUp={ this._onInputKeyUp }
+                onClick={ this._onAutofillClick }
+                onInputValueChange={ this._onInputChange }
+                aria-expanded={ isOpen }
+                aria-autocomplete={ this._getAriaAutoCompleteValue() }
+                role='combobox'
+                aria-readonly={ ((allowFreeform || disabled) ? undefined : 'true') }
+                readOnly={ disabled || !allowFreeform }
+                aria-labelledby={ (label && (id + '-label')) }
+                aria-label={ ((ariaLabel && !label) ? ariaLabel : undefined) }
+                aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+                aria-activedescendant={ this._getAriaActiveDescentValue() }
+                aria-disabled={ disabled }
+                aria-owns={ (id + '-list') }
+                spellCheck={ false }
+                defaultVisibleValue={ this._currentVisibleValue }
+                suggestedDisplayValue={ suggestedDisplayValue }
+                updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
+                shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
+                title={ title }
+              />
+              <IconButton
+                className={ 'ms-ComboBox-CaretDown-button' }
+                styles={ this._getCaretButtonStyles() }
+                role='presentation'
+                aria-hidden={ isButtonAriaHidden }
+                data-is-focusable={ false }
+                tabIndex={ -1 }
+                onClick={ this._onComboBoxClick }
+                iconProps={ buttonIconProps }
+                disabled={ disabled }
+                checked={ isOpen }
+              />
+            </div>
+          ) }
+        </KeytipData>
         { isOpen && (
           (onRenderContainer as any)({
             ...this.props,
@@ -428,9 +437,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
-   * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
+   * @param { IAutofillProps } defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
-   * @returns {string} - the updated value to set, if needed
+   * @returns { string } - the updated value to set, if needed
    */
   private _onUpdateValueInAutofillWillReceiveProps = (): string | null => {
     const comboBox = this._autofill.current;
@@ -455,7 +464,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    *
    * @param { string } defaultVisibleValue - the current defaultVisibleValue in the auto fill's componentDidUpdate
    * @param { string } suggestedDisplayValue - the current suggestedDisplayValue in the auto fill's componentDidUpdate
-   * @returns {boolean} - should the full value of the input be selected?
+   * @returns { boolean } - should the full value of the input be selected?
    * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
    */
   private _onShouldSelectFullInputValueInAutofillComponentDidUpdate = (): boolean => {
@@ -465,7 +474,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * Get the correct value to pass to the input
    * to show to the user based off of the current props and state
-   * @returns {string} the value to pass to the input
+   * @returns { string } the value to pass to the input
    */
   private _getVisibleValue = (): string | undefined => {
     const {
@@ -554,8 +563,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Is the index within the bounds of the array?
    * @param options - options to check if the index is valid for
    * @param index - the index to check
-   * @returns {boolean} - true if the index is valid for the given options, false otherwise
-   */
+     * @returns { boolean } - true if the index is valid for the given options, false otherwise
+          */
   private _indexWithinBounds(options: IComboBoxOption[] | undefined, index: number): boolean {
     if (!options) {
       return false;
@@ -710,7 +719,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * looking for the next valid selectable index (e.g. skipping headings and dividers)
    * @param index - the index to get the next selectable index from
    * @param delta - optional delta to step by when finding the next index, defaults to 0
-   * @returns {number} - the next valid selectable index. If the new index is outside of the bounds,
+   * @returns { number } - the next valid selectable index. If the new index is outside of the bounds,
    * it will snap to the edge of the options array. If delta == 0 and the given index is not selectable
    */
   private _getNextSelectableIndex(index: number, searchDirection: SearchDirection): number {

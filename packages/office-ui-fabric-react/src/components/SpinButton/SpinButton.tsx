@@ -18,6 +18,7 @@ import {
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
+import { KeytipData } from '../../KeytipData';
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -148,7 +149,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       downArrowButtonStyles: customDownArrowButtonStyles,
       theme,
       ariaPositionInSet,
-      ariaSetSize
+      ariaSetSize,
+      keytipProps
     } = this.props;
 
     const {
@@ -186,65 +188,72 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             </Label>
           }
         </div> }
-        <div
-          className={ classNames.spinButtonWrapper }
-          title={ title && title }
-          aria-label={ ariaLabel && ariaLabel }
-          aria-posinset={ ariaPositionInSet }
-          aria-setsize={ ariaSetSize }
-        >
-          <input
-            value={ value }
-            id={ this._inputId }
-            onChange={ this._onChange }
-            onInput={ this._onInputChange }
-            className={ classNames.input }
-            type='text'
-            role='spinbutton'
-            aria-labelledby={ label && this._labelId }
-            aria-valuenow={ !isNaN(Number(value)) ? Number(value) : undefined }
-            aria-valuetext={ isNaN(Number(value)) ? value : undefined }
-            aria-valuemin={ min }
-            aria-valuemax={ max }
-            onBlur={ this._onBlur }
-            ref={ this._input }
-            onFocus={ this._onFocus }
-            onKeyDown={ this._handleKeyDown }
-            onKeyUp={ this._handleKeyUp }
-            readOnly={ disabled }
-            disabled={ disabled }
-            aria-disabled={ disabled }
-            data-lpignore={ true }
-          />
-          <span className={ classNames.arrowBox }>
-            <IconButton
-              styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
-              className={ 'ms-UpButton' }
-              checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
-              disabled={ disabled }
-              iconProps={ incrementButtonIcon }
-              onMouseDown={ this._onIncrementMouseDown }
-              onMouseLeave={ this._stop }
-              onMouseUp={ this._stop }
-              tabIndex={ -1 }
-              ariaLabel={ incrementButtonAriaLabel }
-              data-is-focusable={ false }
-            />
-            <IconButton
-              styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
-              className={ 'ms-DownButton' }
-              checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
-              disabled={ disabled }
-              iconProps={ decrementButtonIcon }
-              onMouseDown={ this._onDecrementMouseDown }
-              onMouseLeave={ this._stop }
-              onMouseUp={ this._stop }
-              tabIndex={ -1 }
-              ariaLabel={ decrementButtonAriaLabel }
-              data-is-focusable={ false }
-            />
-          </span>
-        </div>
+        <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
+          { (keytipAttributes: any): JSX.Element => (
+            <div
+              className={ classNames.spinButtonWrapper }
+              title={ title && title }
+              aria-label={ ariaLabel && ariaLabel }
+              aria-posinset={ ariaPositionInSet }
+              aria-setsize={ ariaSetSize }
+              data-ktp-target={ keytipAttributes['data-ktp-target'] }
+            >
+              <input
+                value={ value }
+                id={ this._inputId }
+                onChange={ this._onChange }
+                onInput={ this._onInputChange }
+                className={ classNames.input }
+                type='text'
+                role='spinbutton'
+                aria-labelledby={ label && this._labelId }
+                aria-valuenow={ !isNaN(Number(value)) ? Number(value) : undefined }
+                aria-valuetext={ isNaN(Number(value)) ? value : undefined }
+                aria-valuemin={ min }
+                aria-valuemax={ max }
+                aria-describedby={ keytipAttributes['aria-describedby'] }
+                onBlur={ this._onBlur }
+                ref={ this._input }
+                onFocus={ this._onFocus }
+                onKeyDown={ this._handleKeyDown }
+                onKeyUp={ this._handleKeyUp }
+                readOnly={ disabled }
+                disabled={ disabled }
+                aria-disabled={ disabled }
+                data-lpignore={ true }
+                data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
+              />
+              <span className={ classNames.arrowBox }>
+                <IconButton
+                  styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
+                  className={ 'ms-UpButton' }
+                  checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
+                  disabled={ disabled }
+                  iconProps={ incrementButtonIcon }
+                  onMouseDown={ this._onIncrementMouseDown }
+                  onMouseLeave={ this._stop }
+                  onMouseUp={ this._stop }
+                  tabIndex={ -1 }
+                  ariaLabel={ incrementButtonAriaLabel }
+                  data-is-focusable={ false }
+                />
+                <IconButton
+                  styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
+                  className={ 'ms-DownButton' }
+                  checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
+                  disabled={ disabled }
+                  iconProps={ decrementButtonIcon }
+                  onMouseDown={ this._onDecrementMouseDown }
+                  onMouseLeave={ this._stop }
+                  onMouseUp={ this._stop }
+                  tabIndex={ -1 }
+                  ariaLabel={ decrementButtonAriaLabel }
+                  data-is-focusable={ false }
+                />
+              </span>
+            </div>
+          ) }
+        </KeytipData>
         { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
           { label &&

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Tue, 01 May 2018 10:23:32 GMT and should not be manually modified.
+
+## 5.29.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- Adding helper to derive a media query.
+
+## 5.28.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Adds flags to theme to support controlling global class names
+
+## 5.27.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Add theme slots for DetailsList header colors
 
 ## 5.26.0
 Mon, 23 Apr 2018 10:24:54 GMT

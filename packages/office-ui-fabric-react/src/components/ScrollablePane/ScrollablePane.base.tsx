@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as PropTypes from 'prop-types';
 import {
   BaseComponent,
@@ -183,6 +180,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         className={ classNames.root }
       >
         <div
+          ref={ this._contentContainer }
+          className={ classNames.contentContainer }
+          data-is-scrollable={ true }
+        >
+          { this.props.children }
+        </div>
+        <div
           ref={ this._stickyAboveRef }
           className={ classNames.stickyAbove }
           style={ this._getStickyContainerStyle(stickyTopHeight) }
@@ -195,13 +199,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
             ref={ this._stickyBelowRef }
             className={ classNames.stickyBelowItems }
           />
-        </div>
-        <div
-          ref={ this._contentContainer }
-          className={ classNames.contentContainer }
-          data-is-scrollable={ true }
-        >
-          { this.props.children }
         </div>
       </div>
     );
