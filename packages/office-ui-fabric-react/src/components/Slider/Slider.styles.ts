@@ -1,17 +1,28 @@
-import { ISliderStyleProps, ISliderStyles, getFocusStyle, AnimationVariables } from '../..';
+import { ISliderStyleProps, ISliderStyles, getFocusStyle, AnimationVariables, getGlobalClassNames } from '../..';
 import { HighContrastSelector } from '@uifabric/styling';
 
-export const getStyles = (
-  props: ISliderStyleProps
-): ISliderStyles => {
+const GlobalClassNames = {
+  root: 'ms-Slider',
+  container: 'ms-Slider-container',
+  showTransitions: 'ms-Slider-showTransitions',
+  slideBox: 'ms-Slider-slideBox',
+  line: 'ms-Slider-line',
+  thumb: 'ms-Slider-thumb',
+  active: 'ms-Slider-active',
+  inactive: 'ms-Slider-inactive',
+  value: 'ms-Slider-value'
+};
+
+export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
 
   const { className, theme, vertical, buttonClassName, showValue, disabled } = props;
   const { palette } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // @TODO(keco): Do we need to apply .rootIsDisabled / .rootIsEnabled classes for backwards-compat?
   return ({
     root: [
-      'ms-Slider',
+      classNames.root,
       {
         userSelect: 'none',
         selectors: {
@@ -65,7 +76,7 @@ export const getStyles = (
     ],
 
     container: [
-      'ms-Slider-container',
+      classNames.container,
       {
         display: 'flex',
         flexWrap: 'nowrap',
@@ -83,7 +94,7 @@ export const getStyles = (
 
     showTransitions: [
       // @TODO(keco): Make sure this is conditionally applied
-      'ms-Slider-showTransitions',
+      classNames.showTransitions,
       {
         selectors: {
           '.thumb': {
@@ -108,7 +119,7 @@ export const getStyles = (
     ],
 
     slideBox: [
-      'ms-Slider-slideBox',
+      classNames.slideBox,
       getFocusStyle(theme),
       {
         background: 'transparent',
@@ -179,7 +190,7 @@ export const getStyles = (
     ],
 
     line: [
-      'ms-Slider-line',
+      classNames.line,
       {
         display: 'flex',
         position: 'relative',
@@ -225,7 +236,7 @@ export const getStyles = (
     ],
 
     thumb: [
-      'ms-Slider-thumb',
+      classNames.thumb,
       {
         border: `2px solid ${palette.neutralSecondary}`,
         boxSizing: 'border-box',
@@ -262,7 +273,7 @@ export const getStyles = (
     ],
 
     active: [
-      'ms-Slider-active',
+      classNames.active,
       {
         background: palette.neutralSecondary,
         selectors: {
@@ -285,7 +296,7 @@ export const getStyles = (
     ],
 
     inactive: [
-      'ms-Slider-inactive',
+      classNames.inactive,
       {
         background: palette.neutralTertiaryAlt,
         selectors: {
@@ -308,7 +319,7 @@ export const getStyles = (
     ],
 
     value: [
-      'ms-Slider-value',
+      classNames.value,
       {
         flexShrink: 1,
         width: 30,
