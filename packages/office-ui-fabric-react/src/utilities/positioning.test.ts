@@ -1,5 +1,5 @@
 import { Rectangle } from '../Utilities';
-import { positioningFunctions } from './positioning';
+import { positioningFunctions, RectangleEdge } from './positioning';
 import { DirectionalHint } from '../common/DirectionalHint';
 interface ITestValidation {
   callout: Rectangle;
@@ -146,5 +146,40 @@ describe('Callout Positioning', () => {
     testMax = getMaxHeight(targetRectangle, DirectionalHint.rightCenter, gapSpace, bounds);
     // Test for maxHeight from top of target to bottom of bounds
     expect(testMax).toBe(1000 - targetTop - gapSpace);
+  });
+
+  it('Correctly determines the correct edges to return', () => {
+    // Create a dummy host, this isn't the part that we care about for this test
+    const host = {
+      getBoundingClientRect: () => {
+        return {
+          bottom: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          width: 0,
+          height: 0
+        };
+      }
+    };
+    let pos: positioningFunctions.IElementPosition = {
+      elementRectangle: new Rectangle(0, 100, 0, 100),
+      targetEdge: RectangleEdge.top,
+      alignmentEdge: RectangleEdge.left
+    };
+
+    // Normal positioning should target the alignment edge and the opposite of the target edge.
+    // In this case, that's left (alignment) and bottom (opposite of target)
+    let finalizedPosition = positioningFunctions._finalizePositionData(pos, host as any);
+    expect(finalizedPosition.elementPosition.left).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeUndefined();
+
+    // Cover positioning should target the alignment edge and the target edge.
+    // In this case, that's left (alignment) and top (target)
+    finalizedPosition = positioningFunctions._finalizePositionData(pos, host as any, true);
+    expect(finalizedPosition.elementPosition.left).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeUndefined();
   });
 });
