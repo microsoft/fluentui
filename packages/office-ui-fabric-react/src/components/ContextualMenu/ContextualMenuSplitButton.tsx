@@ -13,7 +13,7 @@ import {
 } from './ContextualMenu.classNames';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { KeytipData } from '../../KeytipData';
-import { getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
+import { getIsChecked, isItemDisabled, hasSubmenu } from '../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../Divider';
 import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.types';
 
@@ -72,6 +72,24 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
         ) }
       </KeytipData>
     );
+  }
+
+  public openSubMenu = (): void => {
+    if (hasSubmenu(this.props.item) && this.props.openSubMenu && this._splitButton) {
+      this.props.openSubMenu(this.props.item, this._splitButton);
+    }
+  }
+
+  public dismissSubMenu = (): void => {
+    if (hasSubmenu(this.props.item) && this.props.dismissSubMenu) {
+      this.props.dismissSubMenu();
+    }
+  }
+
+  public dismissMenu = (dismissAll?: boolean): void => {
+    if (this.props.dismissMenu) {
+      this.props.dismissMenu(dismissAll);
+    }
   }
 
   private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {

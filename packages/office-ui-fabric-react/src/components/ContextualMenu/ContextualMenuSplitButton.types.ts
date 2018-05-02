@@ -1,15 +1,14 @@
 
-import { IContextualMenuItem } from '../../ContextualMenu';
+import { IContextualMenuItem, IContextualMenuRenderItem } from '../../ContextualMenu';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
-import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 
 export interface IContextualMenuSplitButtonProps extends React.Props<IContextualMenuItem> {
   /**
    * Optional callback to access the ContextualmenuSplitButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ContextualMenuSplitButton | null) => void;
+  componentRef?: (component: IContextualMenuRenderItem | null) => void;
 
   /**
    * The item that is used to render the split button.
@@ -91,4 +90,20 @@ export interface IContextualMenuSplitButtonProps extends React.Props<IContextual
    * Callback for keyboard events on the split button.
    */
   onItemKeyDown?: (item: IContextualMenuItem, ev: React.KeyboardEvent<HTMLElement>) => void;
+
+  /**
+   * This prop will get set by ContextualMenu and can be called to open this item's subMenu, if present.
+   */
+  openSubMenu?: (item: any, target: HTMLElement) => void;
+
+  /**
+   * This prop will get set by ContextualMenu and can be called to close this item's subMenu, if present.
+   */
+  dismissSubMenu?: () => void;
+
+  /**
+   * This props will get set by ContextualMenu and can be called to close the menu this item belongs to.
+   * If dismissAll is true, all menus will be closed.
+   */
+  dismissMenu?: (dismissAll?: boolean) => void;
 }

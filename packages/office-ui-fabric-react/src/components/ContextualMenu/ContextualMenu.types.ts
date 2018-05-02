@@ -15,7 +15,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
@@ -463,6 +463,12 @@ export interface IContextualMenuItem {
   keytipProps?: IKeytipProps;
 
   /**
+   * Optional callback to access the IContextualMenuRenderItem interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  renderItemComponentRef?: (component: IContextualMenuRenderItem | null) => void;
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
@@ -471,7 +477,6 @@ export interface IContextualMenuItem {
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
   inactive?: boolean;
-
 }
 
 export interface IContextualMenuSection extends React.Props<ContextualMenu> {

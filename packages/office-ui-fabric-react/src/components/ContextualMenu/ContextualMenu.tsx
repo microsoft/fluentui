@@ -24,7 +24,8 @@ import {
   getFirstFocusable,
   getLastFocusable,
   css,
-  shouldWrapFocus
+  shouldWrapFocus,
+  createRef
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -499,6 +500,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const itemHasSubmenu = hasSubmenu(item);
     const nativeProps = getNativeProps(item, anchorProperties);
     const disabled = isItemDisabled(item);
+    const anchorRef = createRef<HTMLAnchorElement>();
+    const openSubMenu = this._onItemSubMenuExpand.bind(this);
+    const dismissSubMenu = this._onSubMenuDismiss.bind(this);
+    const dismissMenu = this.dismiss.bind(this, undefined);
 
     return (
       <div>
@@ -511,6 +516,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             <a
               { ...nativeProps }
               { ...keytipAttributes }
+              ref={ anchorRef }
               href={ item.href }
               target={ item.target }
               rel={ anchorRel }
@@ -534,6 +540,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 index={ index }
                 onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
                 hasIcons={ hasIcons }
+                componentRef={ item.renderItemComponentRef }
+                openSubMenu={ openSubMenu }
+                dismissSubMenu={ dismissSubMenu }
+                dismissMenu={ dismissMenu }
+                subMenuTargetRef={ anchorRef }
               />
             </a>
           ) }
@@ -599,6 +610,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         hasMenu: true
       };
     }
+    const btnRef = createRef<HTMLButtonElement>();
+    const openSubMenu = this._onItemSubMenuExpand.bind(this);
+    const dismissSubMenu = this._onSubMenuDismiss.bind(this);
+    const dismissMenu = this.dismiss.bind(this, undefined);
 
     return (
       <KeytipData
@@ -608,6 +623,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       >
         { (keytipAttributes: any): JSX.Element => (
           <button
+            ref={ btnRef }
             { ...buttonNativeProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
             { ...itemButtonProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
             { ...keytipAttributes }
@@ -618,6 +634,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
               index={ index }
               onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
               hasIcons={ hasIcons }
+              componentRef={ item.renderItemComponentRef }
+              openSubMenu={ openSubMenu }
+              dismissSubMenu={ dismissSubMenu }
+              dismissMenu={ dismissMenu }
+              subMenuTargetRef={ btnRef }
             />
           </button>
         ) }
@@ -634,6 +655,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean): JSX.Element {
     const { contextualMenuItemAs } = this.props;
+
+    const openSubMenu = this._onItemSubMenuExpand.bind(this);
+    const dismissSubMenu = this._onSubMenuDismiss.bind(this);
+    const dismissMenu = this.dismiss.bind(this, undefined);
 
     return (
       <ContextualMenuSplitButton
@@ -653,6 +678,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onItemClick={ this._onItemClick }
         onItemClickBase={ this._onItemClickBase }
         onItemKeyDown={ this._onItemKeyDown }
+        openSubMenu={ openSubMenu }
+        dismissSubMenu={ dismissSubMenu }
+        dismissMenu={ dismissMenu }
+        componentRef={ item.renderItemComponentRef }
       />
     );
   }
