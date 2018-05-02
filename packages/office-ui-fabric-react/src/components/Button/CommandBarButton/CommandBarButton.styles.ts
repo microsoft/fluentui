@@ -47,12 +47,7 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.neutralDark,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'Highlight'
-        }
-      }
+      color: theme.palette.neutralDark
     },
 
     rootPressed: {

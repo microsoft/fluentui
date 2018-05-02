@@ -180,9 +180,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         background-color: #eaeaea;
         color: #212121;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        color: Highlight;
-      }
       &:active {
         background-color: #dadada;
         color: #000000;
