@@ -155,13 +155,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
   }
 
-  private _getContentStyles(isSticky: boolean): React.CSSProperties | undefined {
-    if (this.root) {
-      return {
-        backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
-        width: isSticky ? this.root.offsetWidth : 'auto'
-      };
-    }
+  private _getContentStyles(isSticky: boolean): React.CSSProperties {
+    return {
+      backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
+    };
   }
 
   private _getStickyPlaceholderHeight(isSticky: boolean): React.CSSProperties {
