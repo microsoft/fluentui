@@ -162,7 +162,7 @@ describe('Callout Positioning', () => {
         };
       }
     };
-    let pos: positioningFunctions.IElementPosition = {
+    const pos: positioningFunctions.IElementPosition = {
       elementRectangle: new Rectangle(0, 100, 0, 100),
       targetEdge: RectangleEdge.top,
       alignmentEdge: RectangleEdge.left

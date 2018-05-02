@@ -411,6 +411,7 @@ export namespace positioningFunctions {
    * @param {HTMLElement} hostElement
    * @param {RectangleEdge} targetEdge
    * @param {RectangleEdge} [alignmentEdge]
+   * @param {boolean} coverTarget
    * @returns {IPartialIRectangle}
    */
   function _finalizeElementPosition(
