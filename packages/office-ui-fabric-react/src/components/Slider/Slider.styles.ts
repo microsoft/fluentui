@@ -144,7 +144,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       !disabled && [
         {
           selectors: {
-            ':hover, :active': { // @TODO(keco): Doesn't seem to work w/ .thumb?
+            ':hover': {
               selectors: {
                 '.thumb': {
                   border: `2px solid ${palette.themePrimary}`,
@@ -175,10 +175,30 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             ':active': {
               selectors: {
                 '.thumb': {
-                  border: `2px solid ${palette.themeDarkAlt}`
+                  border: `2px solid ${palette.themePrimary}`,
+                  // border: `2px solid ${palette.themeDarkAlt}` @TODO(keco): check this
+                  selectors: {
+                    [HighContrastSelector]: {
+                      borderColor: 'Highlight'
+                    }
+                  }
                 },
-                '.activeSection': {
-                  backgroundColor: palette.themeDarkAlt
+                '.ms-Slider-active': { // @TODO(keco): Used ms- prefix instead of .activeSection
+                  backgroundColor: palette.themePrimary,
+                  // backgroundColor: palette.themeDarkAlt @TODO(keco): check this
+                  selectors: {
+                    [HighContrastSelector]: {
+                      borderColor: 'Highlight'
+                    }
+                  }
+                },
+                '.ms-Slider-inactive': { // @TODO(keco): Used ms-prefix instead of .inactiveSection
+                  backgroundColor: palette.themeLight,
+                  selectors: {
+                    [HighContrastSelector]: {
+                      borderColor: 'Highlight'
+                    }
+                  }
                 }
               }
             }
