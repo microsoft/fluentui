@@ -2,6 +2,113 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.29.0",
+      "tag": "@uifabric/styling_v5.29.0",
+      "date": "Tue, 01 May 2018 10:23:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7a422cefe94fabc13aba23dcca5c7d69f8e63b28",
+            "comment": "Adding helper to derive a media query."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.0",
+      "tag": "@uifabric/styling_v5.28.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "660800656c40963e73450fddafb9d621ce089f4a",
+            "comment": "Adds flags to theme to support controlling global class names"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.27.0",
+      "tag": "@uifabric/styling_v5.27.0",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "802a2c0847830acfbf47e2dd058da54d9dfb15ae",
+            "comment": "Add theme slots for DetailsList header colors"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.27.0 <6.0.0` to `>=5.28.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.0 <6.0.0` to `>=5.16.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.26.0",
+      "tag": "@uifabric/styling_v5.26.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "The getFocusStyle helper has been adjusted to use the `ms-Fabric--isFocusEnabled` class name, rather than `ms-Fabric.is-focusEnabled`."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.15.2 <6.0.0` to `>=5.16.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.25.0",
+      "tag": "@uifabric/styling_v5.25.0",
+      "date": "Thu, 19 Apr 2018 00:17:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "7d066299cd2f3a13014ff2a43a2b2f76a0efb0d7",
+            "comment": "PulsingBeaconAnimationStyles: Distinguish between single and double pulse."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.24.0",
+      "tag": "@uifabric/styling_v5.24.0",
+      "date": "Wed, 18 Apr 2018 10:15:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4efff92981d7301ac16bc8a2cbd7624585f9c42b",
+            "comment": "Add opt-in @deprecated comments"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4efff92981d7301ac16bc8a2cbd7624585f9c42b",
+            "comment": "Fix deprecated semantic slots returning empty strings"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.23.1",
       "tag": "@uifabric/styling_v5.23.1",
       "date": "Mon, 16 Apr 2018 10:23:26 GMT",

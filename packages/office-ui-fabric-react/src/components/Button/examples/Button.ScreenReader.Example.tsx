@@ -8,7 +8,7 @@ import {
 import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();

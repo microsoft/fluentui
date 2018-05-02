@@ -1,6 +1,192 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+This log was last generated on Tue, 01 May 2018 19:26:35 GMT and should not be manually modified.
+
+## 5.94.0
+Tue, 01 May 2018 19:26:35 GMT
+
+### Minor changes
+
+- Theme Generator: use HSV for generating shades/tints
+
+## 5.93.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- DatePicker: Add a reset function to the public `IDatePicker` interface.
+- move extendedPicker, floatingPicker, and selectedItemsList to OUFR
+- Tooltip: updated to use customizable styling via `getStyles`.
+- List: Added list scrolling modes
+
+### Patches
+
+- Breadcrumb: Updating breadcrumb to user js styling.
+- Added onClick handler to rating star in the Rating component that calls _onFocus redundently for support with Firefox & Safari on OSX.
+- details link contrast issue
+
+## 5.92.1
+Mon, 30 Apr 2018 21:22:55 GMT
+
+### Patches
+
+- Revert isEqual check in List.
+
+## 5.92.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Contextual Menu: moved out the split button to be its own component, ContextualMenuSplitButton
+- Use theme flag to control global classes
+
+## 5.91.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Added optional className property to Calendar
+
+### Patches
+
+- Fix #3607
+- Add a option for custom dividerAs to get item information while rendering
+
+## 5.90.0
+Thu, 26 Apr 2018 10:12:34 GMT
+
+### Minor changes
+
+- Complete ProgressIndicator conversion to mergeStyles. Add `barHeight` to enable changing height of progress bar.
+- Pickers: Several fixes regarding certain props
+
+### Patches
+
+- Fix props validation for Breadcrumb
+- Gate calendar month, year, and today keydowns for only ENTER as onClick handles space with button nodes to fix double date change regression.
+
+## 5.89.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types.
+- Fix theme slots for DetailsList header colors
+- Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false
+
+## 5.88.0
+Tue, 24 Apr 2018 10:12:58 GMT
+
+### Minor changes
+
+- fixing selection bugs in Calendar component, updating styling for new designs
+- Begin converting Pivot to mergeStyles
+
+### Patches
+
+- Use `data-is-scrollable` attribute on correct ScrollablePane div
+
+## 5.87.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisible` classname. This is one step closer towards removing the `Fabric` component wrapper requirement.
+- Plumb ARIA label for picker suggestion remove button
+
+### Patches
+
+- ContextualMenu: in item root styling, replaced `font: inherit` with the appropriate font style from the theme.
+- Updating a snapshot test.
+- Adding check to focusTrapZone to only restore focus on close if focus was still inside the focusTrapZone
+- Deprecates INavLink.iconClassName in favor of IIconProps.className.
+
+## 5.86.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- Added support for zero star situations in the Rating component.  Before it would write out a star for  the number zero showing 6 stars when there should be 5.
+- Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem.
+
+### Patches
+
+- Callout.Basic.Example: Fix example so callout positions properly
+- Propagate onRenderInitials correctly from Persona to PersonaCoin
+
+## 5.85.0
+Fri, 20 Apr 2018 10:12:34 GMT
+
+### Minor changes
+
+- TextField: Implemented input masking.
+- add onRenderDescription to TextField
+- Added support for native props on Panel for the root div with class ms-Panel
+- Added headerButtonProps prop to PivotItem to allow passing native props (data-* & aria-*) to the header/link/CommandButton element. Also depricated linkText and added headerText for semantic purposes.
+
+### Patches
+
+- DetailsRow: applying `flex-shrink:0` to the check cell to prevent it from squishing in the flex layout.
+- Revert unintended changes to Dropdown styles from #4512
+
+## 5.84.0
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Minor changes
+
+- Add the option of collapsing breadcrumb overflow items into a position other than the first one
+- ComboBox: Add Event as additional paramater to onChanged callback for saving pending changes
+
+### Patches
+
+- Remove usage of Number.isNaN from SpinButton.tsx since it doesn't exist in IE11
+- Update createRef to match React.createRef api
+- Remove unused variables and re-enable no-unused-variable for office-ui-fabric-react
+
+## 5.83.0
+Thu, 19 Apr 2018 00:17:37 GMT
+
+### Minor changes
+
+- ActivityItem: Added the pulsing beacon animation for the compact size.
+- SearchBox: Clicks on element before input field set cursor to start of input text.
+
+### Patches
+
+- ChoiceGroup: Style polish for focus, high contrast focus, and high contrast hover.
+- Fix PersonaCoin index import
+- Updates aria-owns on BasePicker (and snapshot tests) so its only set when suggestions are rendered
+
+## 5.82.4
+Wed, 18 Apr 2018 17:02:26 GMT
+
+### Patches
+
+- ContextualMenu: Update mousemove to only do anything if there is not another pending mouse enter/move/leave to improve the snappiness of the updates
+
+## 5.82.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Convert documentation to markdown for HIG.
+- Revamp Themes documentation
+- Passes item when href set onClick for CommandBar control
+
+## 5.82.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- Fix improper imports from index files
+- Mark Panel content as scrollable
+
+## 5.82.1
+Mon, 16 Apr 2018 21:49:29 GMT
+
+### Patches
+
+- Do not call the onMenuClick on every keyDown event
 
 ## 5.82.0
 Mon, 16 Apr 2018 10:23:26 GMT

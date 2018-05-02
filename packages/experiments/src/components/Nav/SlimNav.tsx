@@ -1,6 +1,5 @@
 ﻿/* tslint:disable */
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import * as React from 'react';
@@ -18,6 +17,7 @@ import {
   styled,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
+import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
@@ -103,19 +103,10 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
-    let rightIconName = null;
+    let rightIconName = undefined;
     if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
       rightIconName = 'OpenInNewWindow';
-    }
-
-    let linkTextStyle: React.CSSProperties = {};
-    if (!rightIconName) {
-      linkTextStyle.width = '100%';
-    }
-    else {
-      // leave 50px to the icon on the right
-      linkTextStyle.width = 'calc(100% - 50px)';
     }
 
     const isSelected = nestingLevel > 0 && this.isLinkSelected(link, false /* includeChildren */);
@@ -123,30 +114,21 @@ class SlimNavComponent extends NavBase {
     const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
 
     return (
-      <a
-        href={ link.url ? link.url : undefined }
-        target={ link.target ? link.target : undefined }
-        key={ link.key || linkIndex }
-        data-hint='SlimReactLeftNav'
-        data-value={ link.name }
-        aria-label={ link.name }
-        onClick={ this._onLinkClicked.bind(this, link) }>
-        <div className={ classNames.navFloatingItemRoot }>
-          {
-            <div className={ classNames.navItemNameColumn } style={ linkTextStyle }>
-              { link.name }
-            </div>
-          }
-          {
-            rightIconName ?
-              <Icon
-                className={ classNames.navItemIconColumn }
-                iconName={ rightIconName }
-              />
-              : null
-          }
-        </div>
-      </a>
+      <NavLink
+        id={ link.key }
+        content={ link.name }
+        href={ link.url }
+        target={ link.target }
+        dataHint={ this.props.dataHint }
+        dataValue={ link.key }
+        ariaLabel={ link.name }
+        role="menu"
+        onClick={ this._onLinkClicked.bind(this, link) }
+        rootClassName={ classNames.navFloatingItemRoot }
+        rightIconName={ rightIconName }
+        textClassName={ classNames.navItemNameColumn }
+        iconClassName={ classNames.navItemIconColumn }>
+      </NavLink>
     );
   }
 
@@ -230,20 +212,18 @@ class SlimNavComponent extends NavBase {
         onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
         title={ link.name }
         className={ classNames.navSlimItemRoot }>
-        <a
-          href={ link.url ? link.url : undefined }
-          target={ link.target ? link.target : undefined }
-          key={ link.key || linkIndex }
-          data-hint='SlimReactLeftNav'
-          data-value={ link.name }
-          onClick={ this._onLinkClicked.bind(this, link) }>
-          <div className={ classNames.navItemRoot }>
-            <Icon
-              className={ classNames.navItemIconColumn }
-              iconName={ link.icon }
-            />
-          </div>
-        </a>
+        <NavLink
+          id={ link.key }
+          href={ link.url }
+          target={ link.target }
+          dataHint={ this.props.dataHint }
+          dataValue={ link.key }
+          role="menu"
+          onClick={ this._onLinkClicked.bind(this, link) }
+          rootClassName={ classNames.navItemRoot }
+          leftIconName={ link.icon }
+          iconClassName={ classNames.navItemIconColumn }>
+        </NavLink>
         {
           this._renderFloatingNav(link, linkIndex)
         }

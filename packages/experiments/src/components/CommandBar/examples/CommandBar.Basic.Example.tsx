@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { CommandBar, ICommandBarProps } from '@uifabric/experiments/lib/CommandBar';
 
 export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
@@ -12,11 +13,12 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
   }
 
   public render(): JSX.Element {
-    let { items, overflowItems, farItems } = this.props;
+    const { items, overflowItems, farItems } = this.props;
 
     return (
       <div>
         <CommandBar
+          ariaLabel='Use left and right arrow keys to navigate between commands'
           elipisisAriaLabel='More options'
           items={ items }
           overflowItems={ overflowItems }

@@ -4,6 +4,7 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
@@ -21,11 +22,12 @@ const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!office-ui
 const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.SmallHeadline.Example.tsx') as string;
 
 export class TeachingBubblePage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='TeachingBubble'
         componentName='TeachingBubbleExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble'
         exampleCards={
           <LayerHost>
             <ExampleCard title='TeachingBubble' code={ TeachingBubbleBasicExampleCode }>
@@ -53,14 +55,14 @@ export class TeachingBubblePage extends React.Component<IComponentDemoPageProps,
           />
         }
         overview={
-          <div>
-            <p>TeachingBubbles allow the user to display important hints on their web pages with a callout box.</p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...TeachingBubbleStatus}
+            { ...TeachingBubbleStatus }
           />
         }
       />

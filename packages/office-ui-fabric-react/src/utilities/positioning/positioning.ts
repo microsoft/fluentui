@@ -15,7 +15,8 @@ import {
   IPositionProps,
   ICalloutPositon,
   ICalloutPositionProps,
-  RectangleEdge
+  RectangleEdge,
+  IRelativePositions
 } from './positioning.types';
 
 export class Rectangle extends FullRectangle {
@@ -746,6 +747,7 @@ export function _getRelativePositions(
     submenuDirection: (positions.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
   };
 }
+
 /**
  * @deprecated Do not use, this will be removed in 6.0.
  * Use either positionElement, or positionCallout
@@ -795,7 +797,7 @@ export function positionCallout(props: IPositionProps,
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle): number {
   const mouseTarget: MouseEvent = target as MouseEvent;
   const elementTarget: Element = target as Element;
   const pointTarget: IPoint = target as IPoint;

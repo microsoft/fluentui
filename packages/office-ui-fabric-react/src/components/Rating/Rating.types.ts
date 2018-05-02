@@ -26,6 +26,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Minimum rating, defaults to 1, has to be >= 0
+   * @deprecated
    */
   min?: number;
 
@@ -33,6 +34,11 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
    * Maximum rating, defaults to 5, has to be >= min
    */
   max?: number;
+
+  /**
+   * Allow the rating value to be set to 0 instead of a minimum of 1.
+   */
+  allowZeroStars?: boolean;
 
   /**
    * Custom icon, defaults to FavoriteStar
@@ -94,12 +100,12 @@ export interface IRatingStyleProps {
 }
 
 export interface IRatingStyles {
-  ratingStar?: IStyle;
-  ratingStarBack?: IStyle;
-  ratingStarFront?: IStyle;
-  ratingButton?: IStyle;
-  rootIsSmall?: IStyle;
-  rootIsLarge?: IStyle;
-  labelText?: IStyle;
-  ratingFocusZone?: IStyle;
+  ratingStar: IStyle;
+  ratingStarBack: IStyle;
+  ratingStarFront: IStyle;
+  ratingButton: IStyle;
+  rootIsSmall: IStyle;
+  rootIsLarge: IStyle;
+  labelText: IStyle;
+  ratingFocusZone: IStyle;
 }

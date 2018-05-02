@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   BaseComponent,
   css,
@@ -6,19 +7,21 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
   ICommandBar,
-  ICommandBarProps,
   ICommandBarItemProps,
+  ICommandBarProps,
   ICommandBarStyleProps,
   ICommandBarStyles
 } from './CommandBar.types';
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
-import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { ResizeGroup, IResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { IOverflowSet, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IResizeGroup, ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   classNamesFunction,
   createRef
 } from '../../Utilities';
+
+import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
@@ -56,7 +59,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _overflowSet = createRef<IOverflowSet>();
   private _resizeGroup = createRef<IResizeGroup>();
-  private _classNames: {[key in keyof ICommandBarStyles]: string };
+  private _classNames: { [key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
     const {
@@ -65,6 +68,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       items,
       overflowItems,
       farItems,
+      ariaLabel,
       elipisisAriaLabel,
       elipisisIconProps,
       overflowMenuProps,
@@ -76,7 +80,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       onGrowData = this._onGrowData,
     } = this.props;
 
-    let commandBardata: ICommandBarData = {
+    const commandBardata: ICommandBarData = {
       primaryItems: [...items],
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
@@ -96,12 +100,18 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         // tslint:disable-next-line:jsx-no-lambda
         onRenderData={ (data: ICommandBarData) => {
           return (
-            <div className={ css(this._classNames.root) }>
-
+            <FocusZone
+              className={ css(this._classNames.root) }
+              direction={ FocusZoneDirection.horizontal }
+              role={ 'menubar' }
+              aria-label={ ariaLabel }
+            >
               {/*Primary Items*/ }
               <OverflowSet
                 componentRef={ this._overflowSet }
                 className={ css(this._classNames.primarySet) }
+                doNotContainWithinFocusZone={ true }
+                role={ 'presentation' }
                 items={ data.primaryItems }
                 overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
                 onRenderItem={ this._onRenderItems }
@@ -122,11 +132,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
               {/*Secondary Items*/ }
               <OverflowSet
                 className={ css(this._classNames.secondarySet) }
+                doNotContainWithinFocusZone={ true }
+                role={ 'presentation' }
                 items={ data.farItems }
                 onRenderItem={ this._onRenderItems }
                 onRenderOverflowButton={ () => null }
               />
-            </div>
+            </FocusZone>
           );
         } }
       />
@@ -134,13 +146,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   }
 
   public focus(): void {
-    const { value: overflowSet } = this._overflowSet;
+    const { current: overflowSet } = this._overflowSet;
 
     overflowSet && overflowSet.focus();
   }
 
   public remeasure(): void {
-    this._resizeGroup.value && this._resizeGroup.value.remeasure();
+    this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
@@ -158,10 +170,11 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onReduceData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { endAligned, onDataReduced } = this.props;
-    let { primaryItems, overflowItems, cacheKey, farItems } = data;
+    const { farItems } = data;
+    let { primaryItems, overflowItems, cacheKey } = data;
 
     // Use first item if endAligned, otherwise use last item
-    let movedItem = primaryItems[endAligned ? 0 : primaryItems.length - 1];
+    const movedItem = primaryItems[endAligned ? 0 : primaryItems.length - 1];
 
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
@@ -182,7 +195,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onGrowData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { endAligned, onDataGrown } = this.props;
-    let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
+    const { minimumOverflowItems, farItems } = data;
+    let { primaryItems, overflowItems, cacheKey } = data;
     const movedItem = overflowItems[0];
 
     // Make sure that moved item exists and is not one of the original overflow items
@@ -205,7 +219,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   }
 
   private _onRenderItems = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
-    let { buttonStyles } = this.props;
+    const { buttonStyles } = this.props;
 
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to

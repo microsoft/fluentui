@@ -3,6 +3,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
@@ -25,11 +26,12 @@ const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui
 const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
 
 export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='SpinButton'
         componentName='SpinButtonExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SpinButton'
         exampleCards={
           <div>
             <ExampleCard
@@ -85,37 +87,27 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           />
         }
         overview={
-          <div>
-            <p>
-              A SpinButton allows the user to incrementaly adjust a value in small steps. It is mainly used for numeric values, but other values are supported too.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>Use a SpinButton when changing a value with precise control.</li>
-              <li>Use a SpinButton when values are tied to a unit.</li>
-              <li>Include a label indicating what value the SpinButton changes.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Don’t use a SpinButton if the range of values is large.</li>
-              <li>Don’t use a SpinButton for binary settings.</li>
-              <li>Don't use a SpinButton for a range of three values or less.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...SpinButtonStatus}
+            { ...SpinButtonStatus }
           />
         }
       />

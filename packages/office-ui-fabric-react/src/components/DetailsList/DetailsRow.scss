@@ -131,7 +131,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
       background: Highlight;
       color: HighlightText;
       -ms-high-contrast-adjust: none;
-      > a {
+      a {
         color: HighlightText;
       }
     }
@@ -228,6 +228,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     // cause other items to be deselected.
     padding-top: 1px;
     margin-top: -1px;
+    flex-shrink: 0;
   }
 
   & > button {

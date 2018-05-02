@@ -15,7 +15,7 @@ import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '../../../common/TestImages';
 
 export class DocumentCardCompleteExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     const previewProps: IDocumentCardPreviewProps = {
       getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
       previewImages: [

@@ -46,7 +46,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
     };
   }
 
-  public componentWillReceiveProps(newProps: IModalProps) {
+  public componentWillReceiveProps(newProps: IModalProps): void {
     clearTimeout(this._onModalCloseTimer);
 
     // Opening the dialog
@@ -142,13 +142,13 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
   }
 
   public focus() {
-    if (this._focusTrapZone.value) {
-      this._focusTrapZone.value.focus();
+    if (this._focusTrapZone.current) {
+      this._focusTrapZone.current.focus();
     }
   }
 
   // Watch for completed animations and set the state
-  private _onModalClose() {
+  private _onModalClose(): void {
     this.setState({
       isOpen: false
     });

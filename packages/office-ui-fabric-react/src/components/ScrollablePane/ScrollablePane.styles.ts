@@ -1,24 +1,35 @@
 import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
 import {
   HighContrastSelector,
-  IStyle
+  IStyle,
+  ZIndexes,
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-ScrollablePane',
+};
 
 export const getStyles = (
   props: IScrollablePaneStyleProps
 ): IScrollablePaneStyles => {
-  const { className } = props;
+  const {
+    className,
+    theme,
+  } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
     pointerEvents: 'auto',
     width: '100%',
-    zIndex: 1
+    zIndex: ZIndexes.ScrollablePane
   };
 
   return ({
     root: [
-      'ms-ScrollablePane',
+      classNames.root,
       {
         overflowY: 'auto',
         maxHeight: 'inherit',

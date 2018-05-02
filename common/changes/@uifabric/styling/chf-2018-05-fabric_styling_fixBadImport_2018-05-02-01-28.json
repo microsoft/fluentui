@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "fix bad import in styling package",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "chf@microsoft.com"
+}

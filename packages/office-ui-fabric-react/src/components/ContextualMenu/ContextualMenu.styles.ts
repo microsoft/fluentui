@@ -50,8 +50,8 @@ export const getMenuItemStyles = memoizeFunction((
     },
     root: [
       getFocusStyle(theme),
+      fonts.medium,
       {
-        font: 'inherit',
         color: 'inherit',
         backgroundColor: 'transparent',
         border: 'none',
@@ -219,6 +219,7 @@ export const getStyles = memoizeFunction((
         fontWeight: FontWeights.semibold,
         color: ContextualMenuHeaderColor,
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         height: ContextualMenuItemHeight,
         lineHeight: ContextualMenuItemHeight,

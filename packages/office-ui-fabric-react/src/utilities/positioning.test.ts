@@ -13,7 +13,7 @@ interface ITestValues {
   beakWidth: number;
 }
 
-function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
+function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation): void {
   const { callout, target, bounds, beakWidth } = testValues;
   const gap: number = __positioningTestPackage._calculateActualBeakWidthInPixels(beakWidth) / 2;
   const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(callout, target, bounds, __positioningTestPackage._getPositionData(alignment), gap);
@@ -32,7 +32,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
   }
 }
 
-function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
+function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation): void {
   const { callout, target, bounds, beakWidth } = testValues;
   const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(callout, target, bounds, __positioningTestPackage._getPositionData(alignment), beakWidth);
 

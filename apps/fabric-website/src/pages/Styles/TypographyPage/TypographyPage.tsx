@@ -11,7 +11,7 @@ const typeSizeData = require('../../../data/type-sizes.json');
 const typeWeightData = require('../../../data/type-weights.json');
 
 export class TypographyPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ css(pageStyles.basePage, styles.typographyPage) }>
         <PageHeader

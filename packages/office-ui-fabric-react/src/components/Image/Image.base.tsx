@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
   classNamesFunction,
@@ -49,7 +47,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: IImageProps) {
+  public componentWillReceiveProps(nextProps: IImageProps): void {
     if (nextProps.src !== this.props.src) {
       this.setState({
         loadState: ImageLoadState.notLoaded
@@ -67,7 +65,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
     const {
       src,
@@ -151,8 +149,8 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       // .complete, because .complete will also be set to true if the image breaks. However,
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
-      const isLoaded: boolean = this._imageElement.value ? src && (this._imageElement.value.naturalWidth > 0 && this._imageElement.value.naturalHeight > 0) ||
-        (this._imageElement.value.complete && ImageBase._svgRegex.test(src!)) : false;
+      const isLoaded: boolean = this._imageElement.current ? src && (this._imageElement.current.naturalWidth > 0 && this._imageElement.current.naturalHeight > 0) ||
+        (this._imageElement.current.complete && ImageBase._svgRegex.test(src!)) : false;
 
       if (isLoaded) {
         this._computeCoverStyle(this.props);
@@ -163,25 +161,25 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  private _computeCoverStyle(props: IImageProps) {
+  private _computeCoverStyle(props: IImageProps): void {
     const { imageFit, width, height } = props;
 
     // Do not compute cover style if it was already specified in props
     if ((imageFit === ImageFit.cover || imageFit === ImageFit.contain) &&
       this.props.coverStyle === undefined &&
-      this._imageElement.value &&
-      this._frameElement.value) {
+      this._imageElement.current &&
+      this._frameElement.current) {
       // Determine the desired ratio using the width and height props.
       // If those props aren't available, measure measure the frame.
       let desiredRatio;
       if (!!width && !!height) {
         desiredRatio = (width as number) / (height as number);
       } else {
-        desiredRatio = this._frameElement.value.clientWidth / this._frameElement.value.clientHeight;
+        desiredRatio = this._frameElement.current.clientWidth / this._frameElement.current.clientHeight;
       }
 
       // Examine the source image to determine its original ratio.
-      const naturalRatio = this._imageElement.value.naturalWidth / this._imageElement.value.naturalHeight;
+      const naturalRatio = this._imageElement.current.naturalWidth / this._imageElement.current.naturalHeight;
 
       // Should we crop from the top or the sides?
       if (naturalRatio > desiredRatio) {

@@ -37,6 +37,7 @@ export const getStyles = memoizeFunction((
         padding: '0',
         border: 'none',
         background: 'none',
+        backgroundColor: 'transparent',
         margin: '0',
         outline: 'none',
         display: 'block',

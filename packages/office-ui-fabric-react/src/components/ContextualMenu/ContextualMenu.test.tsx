@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import {
@@ -176,6 +174,42 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
+  });
+
+  it('opens a splitbutton submenu item on touch start', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        split: true,
+        onClick: () => { alert('test'); },
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    const menuItem = document.getElementsByName('TestText 1')[0] as HTMLButtonElement;
+
+    // in a normal scenario, when we do a touchstart we would also cause a
+    // click event to fire. This doesn't happen in the simulator so we're
+    // manually adding this in.
+    ReactTestUtils.Simulate.touchStart(menuItem);
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(document.querySelector('.is-expanded')).toBeDefined();
   });
 
   it('sets the correct aria-owns attribute for the submenu', () => {
@@ -637,8 +671,8 @@ describe('ContextualMenu', () => {
 
     // Alter the Layer's prototype so that we can confirm that it mounts before the contextualmenu mounts.
     /* tslint:disable:no-function-expression */
-    Layer.prototype.componentDidMount = function (componentDidMount) {
-      return function () {
+    Layer.prototype.componentDidMount = function (componentDidMount): () => void {
+      return function (): void {
         if (menuMounted) {
           menuMountedFirst = true;
         }

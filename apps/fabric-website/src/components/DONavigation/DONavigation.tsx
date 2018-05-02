@@ -31,7 +31,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
   private headerel;
   private navcontainerel;
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     let currentButton;
     let submenu;
     let currentContainer;
@@ -76,7 +76,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     this._processResize();
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='od-Navigation'>
         <div className='od-Navigation-searchContainer'>
@@ -174,7 +174,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     return linkElements;
   }
 
-  private _mouseMoveHandler(e) {
+  private _mouseMoveHandler(e): void {
     let linkContainer = document.querySelector(this.OPEN_LINK_CONTAINER);
     let subMenuContainer;
     let targetHeight;
@@ -240,7 +240,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private _processHamburger(e, isKeyEvent?: boolean) {
+  private _processHamburger(e, isKeyEvent?: boolean): void {
     let linkEL: HTMLElement;
     if (!this.hbuttonel.classList.contains(this.HAMBURGER_OPEN_STATE)) {
       this.hbuttonel.classList.add(this.HAMBURGER_OPEN_STATE);
@@ -256,7 +256,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private _closeDropdownHandler(e) {
+  private _closeDropdownHandler(e): void {
     if (!this._isDescendant(this.headerel, document.activeElement)) {
       this._removeDropdown();
     }
@@ -278,7 +278,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private _hamburgerHandler(e: any) {
+  private _hamburgerHandler(e: any): void {
     if (e.keyCode) {
       if (e.keyCode === 13) {
         this._processHamburger(e, true);
@@ -290,7 +290,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private _processMenuToggle(e) {
+  private _processMenuToggle(e): void {
     let ancestor;
     if (e.target.classList.contains(this.CONTAINER_CLASS)) {
 
@@ -316,7 +316,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private _toggleMenuHandler(e) {
+  private _toggleMenuHandler(e): void {
     if (e.keyCode) {
       if (e.keyCode === 13) {
         this._processMenuToggle(e);
@@ -328,7 +328,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private _isDescendant(parent, child) {
+  private _isDescendant(parent, child): boolean {
     let node = child.parentNode;
     while (node) {
       if (node === parent) {
@@ -345,7 +345,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private _findAncestor(el, cls) {
+  private _findAncestor(el, cls): void {
     let newCLS = cls.replace('.', '');
     let newEL = el;
 

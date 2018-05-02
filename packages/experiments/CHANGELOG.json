@@ -2,6 +2,199 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.35.0",
+      "tag": "@uifabric/experiments_v5.35.0",
+      "date": "Tue, 01 May 2018 10:23:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "2b20cab52ead58a3c93ba26e9ed2e6550311a236",
+            "comment": "remove extendedPicker, floatingPicker, and selectedItemsList from experiments"
+          },
+          {
+            "author": "KatherineThayerMicrosoft <kathayer@microsoft.com>",
+            "commit": "8de19959324dc82ffb22fb340618cf4edfb45e4e",
+            "comment": "Command bar accessibility: one tab stop with aria label"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.92.1 <6.0.0` to `>=5.93.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.0",
+      "tag": "@uifabric/experiments_v5.34.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "84e6ff3b20bd8533471a6073f5ecce39621dc889",
+            "comment": "Nav: Refactored out a NavLink component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.1",
+      "tag": "@uifabric/experiments_v5.33.1",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "a15bb064e6ec7551c593730e266b09f0873784dc",
+            "comment": "Remove wordWrap setting."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "56c4cfb63266ef8b1952d967598bf4044a7eed7a",
+            "comment": "Fix bad aria-label prop in Tile"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.88.0 <6.0.0` to `>=5.89.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.0",
+      "tag": "@uifabric/experiments_v5.33.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "edf45906e38be620dd26401b05b9bda10322027f",
+            "comment": "Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "cf2fcbcb9ed19793090d86186042cc8e463659c8",
+            "comment": "Fix index import"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.86.0 <6.0.0` to `>=5.87.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.2 <6.0.0` to `>=5.11.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.32.0",
+      "tag": "@uifabric/experiments_v5.32.0",
+      "date": "Fri, 20 Apr 2018 23:06:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "602a5b9fe30e8df5bf22342288f7b97dc8bd3c6e",
+            "comment": "Add delete callback, expose item change methods on SelectedItemsList"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "703efd38ae346d2b0b1be7c6082c2aad492b1d31",
+            "comment": "Shimmer: adding two new props and deprecating another one."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.85.0 <6.0.0` to `>=5.86.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.4",
+      "tag": "@uifabric/experiments_v5.31.4",
+      "date": "Thu, 19 Apr 2018 18:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "e77a31bee560440bae3737eca6b19fce2c1ae3db",
+            "comment": "Update createRef to match React.createRef api"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.83.0 <6.0.0` to `>=5.84.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.1 <6.0.0` to `>=5.10.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.3",
+      "tag": "@uifabric/experiments_v5.31.3",
+      "date": "Wed, 18 Apr 2018 10:15:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7dabb13e55f671e3c37df88140e66dbee076e2f1",
+            "comment": "Experiments: NavPage bad imports fixed."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.2 <6.0.0` to `>=5.82.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.0 <6.0.0` to `>=5.10.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.2",
+      "tag": "@uifabric/experiments_v5.31.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4dc9071ade20efb98eded9b97aa9124a9232f84a",
+            "comment": "Fix improper imports from index files"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.1 <6.0.0` to `>=5.82.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.1",
       "tag": "@uifabric/experiments_v5.31.1",
       "date": "Mon, 16 Apr 2018 10:23:25 GMT",

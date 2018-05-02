@@ -17,12 +17,12 @@ const ActivityItemPersonaExampleCode = require('!raw-loader!office-ui-fabric-rea
 const ActivityItemCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Compact.Example.tsx') as string;
 
 export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ActivityItem'
         componentName='ActivityItem'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/office-ui-fabric-react/src/components/ActivityItem/'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem'
         exampleCards={
           <div>
             <ExampleCard title='Activity Items with Icons' code={ ActivityItemBasicExampleCode }>

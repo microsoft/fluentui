@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
   divProperties,
@@ -52,7 +50,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const target = this._getTargetElement();
 
     this._events.on(target, 'mouseenter', this._cardOpen);
@@ -90,7 +88,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   }
 
   // Render
-  public render() {
+  public render(): JSX.Element {
     const {
       expandingCardProps,
       children,
@@ -115,7 +113,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             trapFocus={ !!this.props.trapFocus }
-            firstFocus={ openMode === OpenCardMode.hotKey }
+            firstFocus={ openMode === OpenCardMode.hotKey || openMode === OpenCardMode.hover }
             targetElement={ this._getTargetElement() }
             onEnter={ this._cardOpen }
             onLeave={ this._executeCardDimiss }
@@ -138,7 +136,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         return target as HTMLElement;
 
       default:
-        return this._hoverCard.value || undefined;
+        return this._hoverCard.current || undefined;
     }
   }
 
