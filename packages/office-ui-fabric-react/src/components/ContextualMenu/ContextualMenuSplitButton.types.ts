@@ -102,7 +102,7 @@ export interface IContextualMenuSplitButtonProps extends React.Props<IContextual
   dismissSubMenu?: () => void;
 
   /**
-   * This props will get set by ContextualMenu and can be called to close the menu this item belongs to.
+   * This prop will get set by ContextualMenu and can be called to close the menu this item belongs to.
    * If dismissAll is true, all menus will be closed.
    */
   dismissMenu?: (dismissAll?: boolean) => void;
