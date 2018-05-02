@@ -217,11 +217,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         selectors: {
           '.lineContainer': {
             borderRadius: 4,
-            boxSizing: 'border-box',
-          },
-          // @TODO(keco): Verify
-          '.line .lineContainer': {
-            borderRadius: 4,
             boxSizing: 'border-box'
           }
         }
@@ -231,26 +226,13 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           height: '100%',
           width: 4,
           margin: '0 auto',
-          flexDirection: 'column-reverse',
-          selectors: {
-            // @TODO(keco): Verify
-            '.line .lineContainer': {
-              width: 4,
-              height: '100%'
-            }
-          }
+          flexDirection: 'column-reverse'
         }
       ],
       !vertical && [
         {
           height: 4,
-          width: '100%',
-          selectors: {
-            // @TODO(keco): Verify
-            '.line .lineContainer': {
-              height: 4
-            }
-          }
+          width: '100%'
         }
       ]
     ],
