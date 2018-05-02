@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Refactors String.prototype.includes usage in favor of  String.prototype.indexOf for IE compat.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "keco@microsoft.com"
+}
