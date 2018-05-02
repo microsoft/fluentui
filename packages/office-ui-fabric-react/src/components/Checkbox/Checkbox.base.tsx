@@ -96,37 +96,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       );
 
     return (
-<<<<<<< HEAD
-      <button
-        { ...inputProps }
-        { ...(checked !== undefined && { checked }) }
-        { ...(defaultChecked !== undefined && { defaultChecked }) }
-        disabled={ disabled }
-        ref={ this._checkBox }
-        name={ name }
-        id={ this._id }
-        role='checkbox'
-        type='button'
-        className={ this._classNames.root }
-        onClick={ this._onClick }
-        onFocus={ this._onFocus }
-        onBlur={ this._onBlur }
-        aria-checked={ isChecked }
-        aria-disabled={ disabled }
-        aria-label={ ariaLabel }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
-        aria-posinset={ ariaPositionInSet }
-        aria-setsize={ ariaSetSize }
-      >
-        <label className={ this._classNames.label } htmlFor={ this._id } >
-          <div className={ this._classNames.checkbox }>
-            <Icon name='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
-          </div>
-          { onRenderLabel(this.props, this._onRenderLabel) }
-        </label>
-      </button>
-=======
       <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
         { (keytipAttributes: any): JSX.Element => (
           <button
@@ -157,14 +126,13 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
                 className={ this._classNames.checkbox }
                 data-ktp-target={ keytipAttributes['data-ktp-target'] }
               >
-                <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
+                <Icon name='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
               </div>
               { onRenderLabel(this.props, this._onRenderLabel) }
             </label>
           </button>
         ) }
       </KeytipData>
->>>>>>> fa95634d8b77aef46e78f76470887bee5ced1647
     );
   }
 

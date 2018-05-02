@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/prop-types": "15.5.2",
-    "@types/react": "16.3.10",
+    "@types/react": "16.3.13",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-dom": "16.0.5",
@@ -37,9 +37,9 @@
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.3.1",
+    "react": "^16.3.2",
     "react-test-renderer": "^16.2.0",
-    "react-dom": "^16.3.1",
+    "react-dom": "^16.3.2",
     "react-highlight": "0.10.0",
     "sinon": "^4.1.3"
   },

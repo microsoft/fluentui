@@ -66,14 +66,20 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    */
   imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
 
-  /** Gets the styles for an Icon. */
+  /**
+   * Gets the styles for an Icon.
+   */
   getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
 
   /**
- * @deprecated. Use name instead.
- */
-  iconName?: string;
+   * An abstract item passed in by the caller for passthrough scenarios.
+   */
+  item?: {};
 
+  /**
+   * @deprecated. Use name instead.
+   */
+  iconName?: string;
 }
 
 export interface IIconStyleProps {

@@ -274,15 +274,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               aria-setsize={ setSize }
               aria-posinset={ posInSet }
             >
-<<<<<<< HEAD
-              { item.name }
-            </span>
-          ) }
-          { hasSubmenu(item) ? (
-            <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } name='ChevronDown' />
-          ) : (null) }
-        </button>
-=======
               { (hasIcon) ? this._renderIcon(item) : (null) }
               { isNameVisible && (
                 <span
@@ -292,13 +283,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 </span>
               ) }
               { itemHasSubmenu ? (
-                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
+                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } name='ChevronDown' />
               ) : (null) }
             </button>
           )
           }
         </KeytipData >
->>>>>>> fa95634d8b77aef46e78f76470887bee5ced1647
       );
     } else {
       // Allow the disabled property on div elements for commandbar
