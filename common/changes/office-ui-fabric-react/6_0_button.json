@@ -9,6 +9,11 @@
       "packageName": "office-ui-fabric-react",
       "comment": "Selection utility: getSelectedIndices is now a mandatory member of the `ISelection` interface.",
       "type": "major"
+    },
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Command Bar component has been replaced with the one from the experiments package.",
+      "type": "major"
     }
   ],
   "packageName": "office-ui-fabric-react",
