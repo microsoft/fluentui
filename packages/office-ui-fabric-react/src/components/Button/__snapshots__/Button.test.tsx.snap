@@ -700,6 +700,10 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         background-color: #eaeaea;
         color: #000000;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:active {
         background-color: #c8c8c8;
         color: #212121;

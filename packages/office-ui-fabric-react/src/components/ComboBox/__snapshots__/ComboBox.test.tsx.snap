@@ -506,6 +506,10 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             color: #212121;
             cursor: pointer;
           }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
           &:active {
             background-color: #eaeaea;
             color: #212121;
