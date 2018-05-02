@@ -39,7 +39,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       disabled && [
         {
           selectors: {
-            '.thumb': {
+            '.ms-Slider-thumb': {
               borderColor: palette.neutralTertiaryAlt,
               selectors: {
                 [HighContrastSelector]: {
@@ -93,11 +93,10 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
 
     showTransitions: [
-      // @TODO(keco): Make sure this is conditionally applied
       classNames.showTransitions,
       {
         selectors: {
-          '.thumb': {
+          '.ms-Slider-thumb': {
             transition: 'left',
             transitionDuration: AnimationVariables.durationValue3,
             transitionTimingFunction: AnimationVariables.easeFunction1
@@ -146,7 +145,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           selectors: {
             ':hover': {
               selectors: {
-                '.thumb': {
+                '.ms-Slider-thumb': {
                   border: `2px solid ${palette.themePrimary}`,
                   selectors: {
                     [HighContrastSelector]: {
@@ -174,7 +173,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             },
             ':active': {
               selectors: {
-                '.thumb': {
+                '.ms-Slider-thumb': {
                   border: `2px solid ${palette.themePrimary}`,
                   // border: `2px solid ${palette.themeDarkAlt}` @TODO(keco): check this
                   selectors: {
