@@ -33,11 +33,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
   };
 
+  public distanceFromTop: number;
   private _root = createRef<HTMLDivElement>();
   private _stickyContentTop = createRef<HTMLDivElement>();
   private _stickyContentBottom = createRef<HTMLDivElement>();
   private _nonStickyContent = createRef<HTMLDivElement>();
-  public distanceFromTop: number;
 
   constructor(props: IStickyProps) {
     super(props);
