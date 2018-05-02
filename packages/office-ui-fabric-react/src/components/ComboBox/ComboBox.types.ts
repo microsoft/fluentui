@@ -5,6 +5,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IComboBox {
   /**
@@ -171,6 +172,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default true
    */
   isButtonAriaHidden?: boolean;
+
+  /**
+   * Optional keytip for this combo box
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface IComboBoxStyles {
