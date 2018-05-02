@@ -8,6 +8,7 @@ export const getStyles = (
   const { className, theme, vertical, buttonClassName, showValue, disabled } = props;
   const { palette } = theme;
 
+  // @TODO(keco): Do we need to apply .rootIsDisabled / .rootIsEnabled classes for backwards-compat?
   return ({
     root: [
       'ms-Slider',
@@ -22,6 +23,40 @@ export const getStyles = (
       vertical && [
         {
           marginRight: 8
+        }
+      ],
+      disabled && [
+        {
+          selectors: {
+            '.thumb': {
+              borderColor: palette.neutralTertiaryAlt,
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'GrayText'
+                }
+              }
+            },
+            // @TODO(keco): Is this OK or should we still target .activeSection
+            '.ms-Slider-active': {
+              background: palette.neutralTertiaryAlt,
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: 'GrayText',
+                  borderColor: 'GrayText'
+                }
+              }
+            },
+            // @TODO(keco): Is this OK or should we still target .inactiveSection
+            '.ms-Slider-inactive': {
+              background: palette.neutralLight,
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: 'GrayText',
+                  borderColor: 'GrayText'
+                }
+              }
+            }
+          }
         }
       ],
       className,
