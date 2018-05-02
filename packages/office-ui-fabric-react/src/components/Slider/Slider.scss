@@ -1,25 +1,4 @@
 @import '../../common/common';
-// This shared between active and inactive spans. Need to create common and spread. Invert and use selectors: (?) https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling
-.line .lineContainer {
-  border-radius: 4px;
-  box-sizing: border-box;
-}
- 
-// Horizontal Variant
-.rootIsHorizontal {
-  .line .lineContainer {
-    height: 4px;
-  }
-}
-
-// Vertical Variant
-.rootIsVertical {
-  .line .lineContainer {
-    width: 4px;
-    height: 100%;
-  }
-}
-
 .showTransitions {
   .thumb {
     transition: left $ms-animation-duration-3 $ms-animation-ease-1;

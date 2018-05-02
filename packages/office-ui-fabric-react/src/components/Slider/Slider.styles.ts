@@ -82,6 +82,11 @@ export const getStyles = (
           '.lineContainer': {
             borderRadius: 4,
             boxSizing: 'border-box',
+          },
+          // @TODO(keco): Verify
+          '.line .lineContainer': {
+            borderRadius: 4,
+            boxSizing: 'border-box'
           }
         }
       },
@@ -90,12 +95,25 @@ export const getStyles = (
           height: '100%',
           width: 4,
           margin: '0 auto',
-          flexDirection: 'column-reverse'
+          flexDirection: 'column-reverse',
+          selectors: {
+            // @TODO(keco): Verify
+            '.line .lineContainer': {
+              width: 4,
+              height: '100%'
+            }
+          }
         }
       ],
       !vertical && [
         {
-          width: '100%'
+          width: '100%',
+          selectors: {
+            // @TODO(keco): Verify
+            '.line .lineContainer': {
+              height: 4
+            }
+          }
         }
       ]
     ],
