@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICheckboxClassNames } from './Checkbox.classNames';
 import { IKeytipProps } from '../../Keytip';
 
 /**
@@ -120,7 +119,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled: boolean,
     isChecked: boolean,
     isReversed: boolean,
-    className?: string) => ICheckboxClassNames;
+    className?: string) => {[key in keyof ICheckboxStyles]: string };
 
   /**
    * Custom render function for the label.
