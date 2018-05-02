@@ -1,14 +1,4 @@
 @import '../../common/common';
-.showTransitions {
-  .thumb {
-    transition: left $ms-animation-duration-3 $ms-animation-ease-1;
-  }
-  .activeSection,
-  .inactiveSection {
-    transition: width $ms-animation-duration-3 $ms-animation-ease-1;
-  }
-}
-
 // Enabled Variant
 .rootIsEnabled {
   .slideBox:hover,

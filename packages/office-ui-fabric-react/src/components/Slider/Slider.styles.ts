@@ -1,4 +1,4 @@
-import { ISliderStyleProps, ISliderStyles, getFocusStyle } from '../..';
+import { ISliderStyleProps, ISliderStyles, getFocusStyle, AnimationVariables } from '../..';
 import { HighContrastSelector } from '@uifabric/styling';
 
 export const getStyles = (
@@ -44,6 +44,31 @@ export const getStyles = (
           margin: '8px 0'
         }
       ]
+    ],
+
+    showTransitions: [
+      'ms-Slider-showTransitions',
+      {
+        selectors: {
+          '.thumb': {
+            transition: 'left',
+            transitionDuration: AnimationVariables.durationValue3,
+            transitionTimingFunction: AnimationVariables.easeFunction1
+          },
+          // @TODO(keco): Is this OK or should we still target .activeSection
+          '.ms-Slider-active': {
+            transition: 'width',
+            transitionDuration: AnimationVariables.durationValue3,
+            transitionTimingFunction: AnimationVariables.easeFunction1
+          },
+          // @TODO(keco): Is this OK or should we still target .inactiveSection
+          '.ms-Slider-inactive': {
+            transition: 'width',
+            transitionDuration: AnimationVariables.durationValue3,
+            transitionTimingFunction: AnimationVariables.easeFunction1
+          }
+        }
+      }
     ],
 
     slideBox: [
@@ -143,6 +168,16 @@ export const getStyles = (
           top: -6,
           transform: 'translateX(-50%)' // @TODO(keco): JS method alternative?
         }
+      ],
+      disabled && [
+        {
+          borderColor: palette.neutralTertiaryAlt,
+          selectors: {
+            [HighContrastSelector]: {
+              borderColor: 'GrayText'
+            }
+          }
+        }
       ]
     ],
 
@@ -156,6 +191,17 @@ export const getStyles = (
           }
         }
       },
+      disabled && [
+        {
+          background: palette.neutralTertiaryAlt,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'GrayText',
+              borderColor: 'GrayText'
+            }
+          }
+        }
+      ]
     ],
 
     inactive: [
@@ -168,6 +214,17 @@ export const getStyles = (
           }
         }
       },
+      disabled && [
+        {
+          background: palette.neutralLight,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'GrayText',
+              borderColor: 'GrayText'
+            }
+          }
+        }
+      ]
     ],
 
     value: [

@@ -69,6 +69,10 @@ export interface ISliderStyles {
    * Style for the slider's value element.
    */
   value: IStyle;
+  /**
+   * Style for the slider's transition animations.
+   */
+  showTransitions: IStyle;
 }
 
 export interface ISliderProps extends React.Props<SliderBase> {
