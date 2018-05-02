@@ -72,11 +72,6 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
 
   /**
-   * An abstract item passed in by the caller for passthrough scenarios.
-   */
-  item?: {};
-
-  /**
    * @deprecated. Use name instead.
    */
   iconName?: string;

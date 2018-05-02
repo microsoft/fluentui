@@ -11,7 +11,7 @@ import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
 import { customizable } from '../../Utilities';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.types';
+import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
@@ -108,7 +108,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
     const {
       ariaLabel,
-      dividerAs: DividerType = Icon,
+      dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
       overflowIndex
