@@ -410,8 +410,8 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
               aria-pressed={undefined}
               className=
                   ms-Button
-                  ms-Breadcrumb-overflowButton
                   ms-Button--icon
+                  ms-Breadcrumb-overflowButton
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -467,8 +467,8 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     color: #004578;
                   }
                   &:active {
-                    background-color: #eaeaea;
-                    color: #0078d4;
+                    background-color: #c8c8c8;
+                    color: #333333;
                   }
                   &:hover:active {
                     background-color: #d0d0d0;
@@ -1101,8 +1101,8 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
               aria-pressed={undefined}
               className=
                   ms-Button
-                  ms-Breadcrumb-overflowButton
                   ms-Button--icon
+                  ms-Breadcrumb-overflowButton
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -1158,8 +1158,8 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     color: #004578;
                   }
                   &:active {
-                    background-color: #eaeaea;
-                    color: #0078d4;
+                    background-color: #c8c8c8;
+                    color: #333333;
                   }
                   &:hover:active {
                     background-color: #d0d0d0;
