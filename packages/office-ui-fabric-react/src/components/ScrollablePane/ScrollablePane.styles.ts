@@ -2,6 +2,7 @@ import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePa
 import {
   HighContrastSelector,
   IStyle,
+  ZIndexes,
   getGlobalClassNames,
 } from '../../Styling';
 
@@ -23,7 +24,7 @@ export const getStyles = (
     position: 'absolute',
     pointerEvents: 'auto',
     width: '100%',
-    zIndex: 1
+    zIndex: ZIndexes.ScrollablePane
   };
 
   return ({

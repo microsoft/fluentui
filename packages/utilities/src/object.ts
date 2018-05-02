@@ -108,3 +108,16 @@ export function mapEnumByName<T>(
       }
     }).filter((v: T | undefined) => !!v); // only return elements with values
 }
+
+/**
+ * Get all values in an object dictionary
+ *
+ * @param obj - The dictionary to get values for
+ */
+// tslint:disable-next-line:no-any
+export function values<T>(obj: any): T[] {
+  return Object.keys(obj).reduce((arr: T[], key: string): T[] => {
+    arr.push(obj[key]);
+    return arr;
+  }, []);
+}
