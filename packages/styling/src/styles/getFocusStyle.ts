@@ -1,7 +1,7 @@
 import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 import { ITheme } from '../interfaces/index';
 import { HighContrastSelector } from './CommonStyles';
-import { IsFocusVisibleClassName } from '@uifabric/utilities/lib/index';
+import { IsFocusVisibleClassName } from '@uifabric/utilities/lib/initializeFocusRects';
 /**
  * Generates a focus style which can be used to define an :after focus border.
  *
