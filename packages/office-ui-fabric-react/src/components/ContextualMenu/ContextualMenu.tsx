@@ -828,7 +828,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
         this.setState({
-          expandedByMouseClick: true
+          expandedByMouseClick: (ev.nativeEvent.detail !== 0)
         });
         this._onItemSubMenuExpand(item, target);
       }
