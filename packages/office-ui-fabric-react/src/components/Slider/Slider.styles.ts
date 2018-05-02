@@ -47,6 +47,7 @@ export const getStyles = (
     ],
 
     showTransitions: [
+      // @TODO(keco): Make sure this is conditionally applied
       'ms-Slider-showTransitions',
       {
         selectors: {
