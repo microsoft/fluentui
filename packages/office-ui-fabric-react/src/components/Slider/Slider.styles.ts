@@ -124,7 +124,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         background: 'transparent',
         border: 'none',
         flexGrow: 1,
-        lineHeight: 28
+        lineHeight: 28,
+        cursor: 'pointer' // @TODO(keco): No longer inheriting from common button styles?
         // (renderedValue === value) && ('ms-Slider-showTransitions ' + styles.showTransitions)
       },
       vertical && [
