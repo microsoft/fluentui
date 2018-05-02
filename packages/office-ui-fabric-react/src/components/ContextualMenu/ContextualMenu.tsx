@@ -35,6 +35,7 @@ import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
+  expandedByMouseClick?: boolean;
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: Element;
@@ -786,6 +787,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ev.stopPropagation();
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
+        this.setState({
+          expandedByMouseClick: true
+        });
         this._onItemSubMenuExpand(item, targetElement);
         this._enterTimerId = undefined;
       }, this._navigationIdleDelay);
@@ -823,6 +827,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
+        this.setState({
+          expandedByMouseClick: true
+        });
         this._onItemSubMenuExpand(item, target);
       }
     }
@@ -852,9 +859,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    let openKey;
+    if (item.split) {
+      openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    } else {
+      openKey = KeyCodes.enter;
+    }
 
     if (ev.which === openKey && !item.disabled) {
+      this.setState({
+        expandedByMouseClick: false
+      });
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
     }
@@ -889,6 +904,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         isSubMenu: true,
         id: this.state.subMenuId,
         shouldFocusOnMount: true,
+        shouldFocusOnContainer: this.state.expandedByMouseClick,
         directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className: this.props.className,
         gapSpace: 0,

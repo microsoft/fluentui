@@ -612,7 +612,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (!ev.defaultPrevented) {
       const menuProps = this.props.menuProps;
       if (menuProps) {
-        menuProps.shouldFocusOnContainer = true;
+        // When Edge + Narrator are used together, pressing "Enter" on a button fires this method and not
+        // _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates between a real click event and a
+        // keypress event.
+        menuProps.shouldFocusOnContainer = (ev.nativeEvent.detail !== 0);
       }
       this.setState({ menuProps: menuProps });
       this._onToggleMenu();
