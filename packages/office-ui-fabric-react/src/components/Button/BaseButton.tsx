@@ -16,6 +16,7 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import { KeytipData } from '../../KeytipData';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -232,20 +233,37 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
-      onRenderMenuIcon = this._onRenderMenuIcon
+      onRenderMenuIcon = this._onRenderMenuIcon,
+      disabled
     } = props;
+    let { keytipProps } = props;
+    if (keytipProps && menuProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
 
     const Content = (
-      <Tag { ...buttonProps }>
-        <div className={ this._classNames.flexContainer } >
-          { onRenderIcon(props, this._onRenderIcon) }
-          { this._onRenderTextContents() }
-          { onRenderAriaDescription(props, this._onRenderAriaDescription) }
-          { onRenderChildren(props, this._onRenderChildren) }
-          { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
-          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
-        </div>
-      </Tag>
+      // If we're making a split button, we won't put the keytip here
+      <KeytipData
+        keytipProps={ !this._isSplitButton ? keytipProps : undefined }
+        ariaDescribedBy={ (buttonProps as any)['aria-describedby'] }
+        disabled={ disabled }
+      >
+        { (keytipAttributes: any): JSX.Element => (
+          <Tag { ...buttonProps } { ...keytipAttributes }>
+            <div className={ this._classNames.flexContainer } >
+              { onRenderIcon(props, this._onRenderIcon) }
+              { this._onRenderTextContents() }
+              { onRenderAriaDescription(props, this._onRenderAriaDescription) }
+              { onRenderChildren(props, this._onRenderChildren) }
+              { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
+              { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
+            </div>
+          </Tag>
+        ) }
+      </KeytipData>
     );
 
     if (menuProps && menuProps.doNotLayer) {
@@ -445,8 +463,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       checked,
       getSplitButtonClassNames,
-      primaryDisabled
+      primaryDisabled,
+      menuProps
     } = this.props;
+    let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames ? getSplitButtonClassNames(
       !!disabled,
@@ -465,31 +485,44 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'data-is-focusable': false
       }
     );
+    const ariaDescribedBy = buttonProps.ariaDescription || '';
+
+    if (keytipProps && menuProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
 
     return (
-      <div
-        role={ 'button' }
-        aria-labelledby={ buttonProps.ariaLabel }
-        aria-disabled={ disabled }
-        aria-haspopup={ true }
-        aria-expanded={ this._isExpanded }
-        aria-pressed={ this.props.checked }
-        aria-describedby={ buttonProps.ariaDescription }
-        className={ classNames && classNames.splitButtonContainer }
-        onKeyDown={ this._onSplitButtonContainerKeyDown }
-        ref={ this._splitButtonContainer }
-        data-is-focusable={ true }
-        onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
-        tabIndex={ !disabled ? 0 : undefined }
-      >
-        <span
-          style={ { 'display': 'flex' } }
-        >
-          { this._onRenderContent(tag, buttonProps) }
-          { this._onRenderSplitButtonMenuButton(classNames) }
-          { this._onRenderSplitButtonDivider(classNames) }
-        </span>
-      </div>
+      <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
+        { (keytipAttributes: any): JSX.Element => (
+          <div
+            data-ktp-target={ keytipAttributes['data-ktp-target'] }
+            role={ 'button' }
+            aria-labelledby={ buttonProps.ariaLabel }
+            aria-disabled={ disabled }
+            aria-haspopup={ true }
+            aria-expanded={ this._isExpanded }
+            aria-pressed={ this.props.checked }
+            aria-describedby={ ariaDescribedBy + (keytipAttributes['aria-describedby'] || '') }
+            className={ classNames && classNames.splitButtonContainer }
+            onKeyDown={ this._onSplitButtonContainerKeyDown }
+            ref={ this._splitButtonContainer }
+            data-is-focusable={ true }
+            onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
+            tabIndex={ !disabled ? 0 : undefined }
+          >
+            <span
+              style={ { 'display': 'flex' } }
+            >
+              { this._onRenderContent(tag, buttonProps) }
+              { this._onRenderSplitButtonMenuButton(classNames, keytipAttributes) }
+              { this._onRenderSplitButtonDivider(classNames) }
+            </span>
+          </div>
+        ) }
+      </KeytipData>
     );
   }
 
@@ -509,9 +542,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined): JSX.Element {
+  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
     let {
-      menuIconProps,
+      menuIconProps
     } = this.props;
 
     const {
@@ -536,7 +569,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-expanded': this._isExpanded,
       'data-is-focusable': false
     };
-    return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
+
+    // Add data-ktp-execute-target to the split button if the keytip is defined
+    return (
+      <BaseButton
+        { ...splitButtonProps }
+        data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
+        onMouseDown={ this._onMouseDown }
+        tabIndex={ -1 }
+      />
+    );
+
   }
 
   private _onMouseDown = (ev: React.MouseEvent<BaseButton>) => {

@@ -68,9 +68,11 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
         }
+    data-ktp-target={undefined}
     title={undefined}
   >
     <input
+      aria-describedby={undefined}
       aria-disabled={false}
       aria-labelledby="Label0"
       aria-valuemax={100}
@@ -113,6 +115,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-ktp-execute-target={undefined}
       data-lpignore={true}
       disabled={false}
       id="input1"

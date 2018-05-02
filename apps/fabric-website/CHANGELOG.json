@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.7.2",
+      "tag": "@uifabric/fabric-website_v5.7.2",
+      "date": "Tue, 01 May 2018 19:26:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2d89229b5623713af268b537e1bd72ce476354c4",
+            "comment": "LocalizationPage: Only show icon names on hover so they don't overlap."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.93.0 <6.0.0` to `>=5.94.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.1",
       "tag": "@uifabric/fabric-website_v5.7.1",
       "date": "Mon, 30 Apr 2018 10:16:44 GMT",

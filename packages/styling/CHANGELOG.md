@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 30 Apr 2018 10:16:44 GMT and should not be manually modified.
+This log was last generated on Tue, 01 May 2018 10:23:32 GMT and should not be manually modified.
+
+## 5.29.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- Adding helper to derive a media query.
 
 ## 5.28.0
 Mon, 30 Apr 2018 10:16:44 GMT
