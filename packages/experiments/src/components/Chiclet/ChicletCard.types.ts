@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ChicletCard } from './ChicletCard';
+import { ChicletCardBase } from './ChicletCard.base';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IChicletCard {
 
@@ -49,12 +50,15 @@ export interface IChicletCardStyles {
   action?: IStyle;
 }
 
-export interface IChicletCardProps extends React.Props<ChicletCard> {
+export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   /**
    * Optional callback to access the IChicletCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IChicletCard | null) => void;
+
+  /** @todo: description */
+  getStyles?: IStyleFunction<IChicletCardStyleProps, IChicletCardStyles>;
 
   /**
    * Optional class for ChicletCard.
@@ -94,6 +98,18 @@ export interface IChicletCardProps extends React.Props<ChicletCard> {
   imageType?: string;
   imageAlt?: string;
   url?: string;
+}
+
+export interface IChicletCardStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme?: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
 }
 
 export interface IChicletAction {

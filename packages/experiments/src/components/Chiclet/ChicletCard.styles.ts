@@ -1,43 +1,40 @@
-import { memoizeFunction } from '../../Utilities';
 import {
-  ITheme,
-  concatStyleSets,
-  getTheme
+  normalize
 } from '../../Styling';
-import { IChicletCardStyles } from './ChicletCard.types';
+import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
-const ChicletCardTitleLineHeight = '21px';
-
-/* Actions */
-const msChicletCardActionsActionSize = '34px';
-const msChicletCardActionsHorizontalPadding = '12px';
-const msChicletCardActionsVerticalPadding = '2px';
-
-export const getClassNames = memoizeFunction((
-  theme: ITheme = getTheme(),
-  customStyles?: IChicletCardStyles
+export const getStyles = (
+  props: IChicletCardStyleProps
 ): IChicletCardStyles => {
-  const styles: IChicletCardStyles = {
-    root: {
-      WebkitFontSmoothing: 'antialiased',
-      backgroundColor: theme.palette.white,
-      borderRadius: '2px',
-      boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
-      width: '600px',
-      height: '126px',
-      userSelect: 'none',
-      position: 'relative',
-      selectors: {
-        ':hover': {
-          cursor: 'pointer'
+  const { theme } = props;
+  const { palette } = theme;
+
+  return ({
+    root: [
+      'ms-Chiclet',
+      normalize,
+      {
+        WebkitFontSmoothing: 'antialiased',
+        backgroundColor: palette.white,
+        borderRadius: '2px',
+        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
+        width: '600px',
+        height: '126px',
+        userSelect: 'none',
+        position: 'relative',
+        selectors: {
+          ':hover': {
+            cursor: 'pointer'
+          }
         }
       }
-    },
+    ],
     icon: [
-      'ms-DocumentCardPreview-icon',
+      'ms-ChicletCardPreview-icon',
       {
-        padding: '10px 166px 8px 8px',
-        //bottom: '10px',
+        //padding: '10px 166px 8px 8px',
+        left: '10px',
+        bottom: '10px',
         position: 'absolute',
         color: '#166EBE'
       }
@@ -51,7 +48,7 @@ export const getClassNames = memoizeFunction((
         position: 'relative',
         //opacity: '0.02',
         overflow: 'hidden', // need to fix
-        backgroundColor: theme.palette.white,
+        backgroundColor: palette.white,
         display: 'block',
         padding: '2px 0px 2px 2px',
       }
@@ -65,7 +62,7 @@ export const getClassNames = memoizeFunction((
         //lineHeight: '21px',
         overflow: 'hidden',
         wordWrap: 'break-word',
-        weight: '400px'
+        width: '400px'
       }
     ],
     title: [
@@ -77,7 +74,7 @@ export const getClassNames = memoizeFunction((
         fontWeight: 'normal',
         fontStyle: 'normal',
         fontStretch: 'normal',
-        color: theme.palette.neutralPrimary,
+        color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
         height: '41px', // Two lines of text, making sure the third line is hidden
@@ -121,12 +118,9 @@ export const getClassNames = memoizeFunction((
         cursor: 'pointer',
         width: '32px',
         height: '32px',
-        backgroundColor: theme.palette.white,
+        backgroundColor: palette.white,
         color: '#0078D7'
       }
     ]
-  };
-
-  return concatStyleSets(styles, customStyles)!;
-
-});
+  });
+};
