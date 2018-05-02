@@ -107,6 +107,7 @@ export const getStyles = (
       ],
       !vertical && [
         {
+          height: 4,
           width: '100%',
           selectors: {
             // @TODO(keco): Verify
