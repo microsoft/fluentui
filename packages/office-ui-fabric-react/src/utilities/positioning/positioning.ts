@@ -417,12 +417,13 @@ export namespace positioningFunctions {
     elementRectangle: Rectangle,
     hostElement: HTMLElement,
     targetEdge: RectangleEdge,
-    alignmentEdge?: RectangleEdge
+    alignmentEdge?: RectangleEdge,
+    coverTarget?: boolean
   ): IPartialIRectangle {
     const returnValue: IPartialIRectangle = {};
 
     const hostRect: Rectangle = _getRectangleFromElement(hostElement);
-    const elementEdge = targetEdge * -1;
+    const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
     const elementEdgeString = RectangleEdge[elementEdge];
     const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
 
@@ -665,12 +666,14 @@ export namespace positioningFunctions {
     return { ...positionedElement, targetRectangle: targetRect };
   }
 
-  export function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement): IPositionedData {
+  export function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement, coverTarget?: boolean): IPositionedData {
     const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
       positionedElement.elementRectangle,
       hostElement,
       positionedElement.targetEdge,
-      positionedElement.alignmentEdge);
+      positionedElement.alignmentEdge,
+      coverTarget
+    );
     return {
       elementPosition: finalizedElement,
       targetEdge: positionedElement.targetEdge,
@@ -683,7 +686,7 @@ export namespace positioningFunctions {
     elementToPosition: HTMLElement,
     previousPositions?: IPositionedData): IPositionedData {
     const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition, previousPositions);
-    return _finalizePositionData(positionedElement, hostElement);
+    return _finalizePositionData(positionedElement, hostElement, props.coverTarget);
   }
 
   export function _positionCallout(props: ICalloutPositionProps,
@@ -703,7 +706,7 @@ export namespace positioningFunctions {
       beakPositioned
     );
     return {
-      ..._finalizePositionData(positionedElement, hostElement),
+      ..._finalizePositionData(positionedElement, hostElement, props.coverTarget),
       beakPosition: finalizedBeakPosition
     };
   }
