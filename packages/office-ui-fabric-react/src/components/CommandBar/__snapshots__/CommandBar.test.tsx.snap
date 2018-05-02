@@ -57,10 +57,12 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-describedby={null}
             aria-label={undefined}
             aria-labelledby={null}
+            aria-posinset={1}
             aria-pressed={undefined}
+            aria-setsize={2}
             className=
                 ms-Button
-                ms-CommandBarItem-overflowlink
+                ms-CommandBarItem-link
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -170,10 +172,12 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-describedby={null}
             aria-label={undefined}
             aria-labelledby={null}
+            aria-posinset={2}
             aria-pressed={undefined}
+            aria-setsize={2}
             className=
                 ms-Button
-                ms-CommandBarItem-overflowlink
+                ms-CommandBarItem-link
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
