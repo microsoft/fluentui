@@ -837,7 +837,7 @@ describe('ContextualMenu', () => {
         {
           name: 'Test1',
           key: 'Test1',
-          renderItemComponentRef: contextualItem,
+          renderItemRef: contextualItem,
           subMenuProps: {
             items: [
               {

@@ -75,20 +75,23 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
   }
 
   public openSubMenu = (): void => {
-    if (hasSubmenu(this.props.item) && this.props.openSubMenu && this._splitButton) {
-      this.props.openSubMenu(this.props.item, this._splitButton);
+    const { item, openSubMenu } = this.props;
+    if (hasSubmenu(item) && openSubMenu && this._splitButton) {
+      openSubMenu(item, this._splitButton);
     }
   }
 
   public dismissSubMenu = (): void => {
-    if (hasSubmenu(this.props.item) && this.props.dismissSubMenu) {
-      this.props.dismissSubMenu();
+    const { item, dismissSubMenu } = this.props;
+    if (hasSubmenu(item) && dismissSubMenu) {
+      dismissSubMenu();
     }
   }
 
   public dismissMenu = (dismissAll?: boolean): void => {
-    if (this.props.dismissMenu) {
-      this.props.dismissMenu(dismissAll);
+    const { dismissMenu } = this.props;
+    if (dismissMenu) {
+      dismissMenu(dismissAll);
     }
   }
 

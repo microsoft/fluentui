@@ -501,8 +501,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const nativeProps = getNativeProps(item, anchorProperties);
     const disabled = isItemDisabled(item);
     const anchorRef = createRef<HTMLAnchorElement>();
-    const openSubMenu = this._onItemSubMenuExpand.bind(this);
-    const dismissSubMenu = this._onSubMenuDismiss.bind(this);
     const dismissMenu = this.dismiss.bind(this, undefined);
 
     return (
@@ -540,9 +538,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 index={ index }
                 onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
                 hasIcons={ hasIcons }
-                componentRef={ item.renderItemComponentRef }
-                openSubMenu={ openSubMenu }
-                dismissSubMenu={ dismissSubMenu }
+                componentRef={ item.renderItemRef }
+                openSubMenu={ this._onItemSubMenuExpand }
+                dismissSubMenu={ this._onSubMenuDismiss }
                 dismissMenu={ dismissMenu }
                 subMenuTargetRef={ anchorRef }
               />
@@ -611,8 +609,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       };
     }
     const btnRef = createRef<HTMLButtonElement>();
-    const openSubMenu = this._onItemSubMenuExpand.bind(this);
-    const dismissSubMenu = this._onSubMenuDismiss.bind(this);
     const dismissMenu = this.dismiss.bind(this, undefined);
 
     return (
@@ -634,9 +630,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
               index={ index }
               onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
               hasIcons={ hasIcons }
-              componentRef={ item.renderItemComponentRef }
-              openSubMenu={ openSubMenu }
-              dismissSubMenu={ dismissSubMenu }
+              componentRef={ item.renderItemRef }
+              openSubMenu={ this._onItemSubMenuExpand }
+              dismissSubMenu={ this._onSubMenuDismiss }
               dismissMenu={ dismissMenu }
               subMenuTargetRef={ btnRef }
             />
@@ -681,7 +677,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         openSubMenu={ openSubMenu }
         dismissSubMenu={ dismissSubMenu }
         dismissMenu={ dismissMenu }
-        componentRef={ item.renderItemComponentRef }
+        componentRef={ item.renderItemRef }
       />
     );
   }
@@ -918,7 +914,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onItemSubMenuExpand(item: IContextualMenuItem, target: HTMLElement) {
+  private _onItemSubMenuExpand = (item: IContextualMenuItem, target: HTMLElement): void => {
     if (this.state.expandedMenuItemKey !== item.key) {
 
       if (this.state.expandedMenuItemKey) {

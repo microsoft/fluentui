@@ -463,10 +463,9 @@ export interface IContextualMenuItem {
   keytipProps?: IKeytipProps;
 
   /**
-   * Optional callback to access the IContextualMenuRenderItem interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to the item that renders the ContextualMenuItem.
    */
-  renderItemComponentRef?: (component: IContextualMenuRenderItem | null) => void;
+  renderItemRef?: (component: IContextualMenuRenderItem | null) => void;
 
   /**
    * Any additional properties to use when custom rendering menu items.
