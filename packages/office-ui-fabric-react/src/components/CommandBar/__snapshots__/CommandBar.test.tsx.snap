@@ -62,8 +62,8 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-setsize={2}
             className=
                 ms-Button
-                ms-CommandBarItem-link
                 ms-Button--commandBar
+                ms-CommandBarItem-link
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -118,6 +118,9 @@ exports[`CommandBar renders commands correctly 1`] = `
                 &:hover {
                   background-color: #eaeaea;
                   color: #212121;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  color: Highlight;
                 }
                 &:active {
                   background-color: #dadada;
@@ -177,8 +180,8 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-setsize={2}
             className=
                 ms-Button
-                ms-CommandBarItem-link
                 ms-Button--commandBar
+                ms-CommandBarItem-link
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -233,6 +236,9 @@ exports[`CommandBar renders commands correctly 1`] = `
                 &:hover {
                   background-color: #eaeaea;
                   color: #212121;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  color: Highlight;
                 }
                 &:active {
                   background-color: #dadada;
