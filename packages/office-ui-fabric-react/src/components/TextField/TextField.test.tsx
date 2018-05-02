@@ -132,6 +132,32 @@ describe('TextField', () => {
     expect(inputDOM.disabled).toEqual(true);
   });
 
+  it('should render a value of 0 when given the number 0', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        value={ 0 as any }
+      />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    // Assert on the input element.
+    expect(inputDOM.value).toEqual('0');
+  });
+
+  it('should render a default value of 0 when given the number 0', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue={ 0 as any }
+      />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    // Assert on the input element.
+    expect(inputDOM.defaultValue).toEqual('0');
+  });
+
   describe('error message', () => {
     const errorMessage = 'The string is too long, should not exceed 3 characters.';
 

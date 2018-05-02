@@ -12,7 +12,7 @@ import {
   getSplitButtonVerticalDividerClassNames
 } from './ContextualMenu.classNames';
 import { ContextualMenuItem } from './ContextualMenuItem';
-
+import { KeytipData } from '../../KeytipData';
 import { getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../Divider';
 import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.types';
@@ -34,30 +34,43 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       onItemMouseLeave
     } = this.props;
 
+    let { keytipProps } = item;
+    if (keytipProps) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
-      <div
-        ref={ (splitButton: HTMLDivElement) => this._splitButton = splitButton }
-        role={ 'button' }
-        aria-labelledby={ item.ariaLabel }
-        className={ classNames.splitContainer }
-        aria-disabled={ isItemDisabled(item) }
-        aria-haspopup={ true }
-        aria-describedby={ item.ariaDescription }
-        aria-checked={ item.isChecked || item.checked }
-        aria-posinset={ focusableElementIndex + 1 }
-        aria-setsize={ totalItemCount }
-        onMouseEnter={ this._onItemMouseEnterPrimary }
-        onMouseLeave={ onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined }
-        onMouseMove={ this._onItemMouseMovePrimary }
-        onKeyDown={ this._onItemKeyDown }
-        onClick={ this._executeItemClick }
-        tabIndex={ 0 }
-        data-is-focusable={ true }
-      >
-        { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-        { this._renderSplitDivider(item) }
-        { this._renderSplitIconButton(item, classNames, index) }
-      </div >
+      <KeytipData keytipProps={ keytipProps } disabled={ isItemDisabled(item) }>
+        { (keytipAttributes: any): JSX.Element => (
+          <div
+            data-ktp-target={ keytipAttributes['data-ktp-target'] }
+            ref={ (splitButton: HTMLDivElement) => this._splitButton = splitButton }
+            role={ 'button' }
+            aria-labelledby={ item.ariaLabel }
+            className={ classNames.splitContainer }
+            aria-disabled={ isItemDisabled(item) }
+            aria-haspopup={ true }
+            aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
+            aria-checked={ item.isChecked || item.checked }
+            aria-posinset={ focusableElementIndex + 1 }
+            aria-setsize={ totalItemCount }
+            onMouseEnter={ this._onItemMouseEnterPrimary }
+            onMouseLeave={ onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined }
+            onMouseMove={ this._onItemMouseMovePrimary }
+            onKeyDown={ this._onItemKeyDown }
+            onClick={ this._executeItemClick }
+            tabIndex={ 0 }
+            data-is-focusable={ true }
+          >
+            { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+            { this._renderSplitDivider(item) }
+            { this._renderSplitIconButton(item, classNames, index, keytipAttributes) }
+          </div >
+        ) }
+      </KeytipData>
     );
   }
 
@@ -85,7 +98,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       'aria-hidden': true
     } as IContextualMenuItem;
     return (
-      <button {...getNativeProps(itemProps, buttonProperties) }>
+      <button { ...getNativeProps(itemProps, buttonProperties) }>
         <ChildrenRenderer
           data-is-focusable={ false }
           item={ itemProps }
@@ -103,7 +116,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     return <VerticalDivider getClassNames={ getDividerClassNames } />;
   }
 
-  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, keytipAttributes: any) {
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
@@ -125,11 +138,12 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       onMouseDown: (ev: any) => onItemMouseDown ? onItemMouseDown(item, ev) : undefined,
       onMouseMove: this._onItemMouseMoveIcon,
       'data-is-focusable': false,
+      'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target'],
       'aria-hidden': true
     });
 
     return (
-      <button {...buttonProps} >
+      <button { ...buttonProps } >
         <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
       </button >
     );

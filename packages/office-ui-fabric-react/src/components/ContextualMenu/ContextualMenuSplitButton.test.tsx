@@ -1,32 +1,30 @@
 import * as React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
-import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.types';
 
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {
     let menuItem: IContextualMenuItem;
     let menuClassNames: IMenuItemClassNames;
 
-    let wrapper: ShallowWrapper<IContextualMenuSplitButtonProps, {}>;
     beforeEach(() => {
       menuItem = { key: '123' };
       menuClassNames = getMenuItemClassNames();
-      wrapper = shallow(
+    });
+
+    it('renders the contextual menu split button correctly', () => {
+      const component = renderer.create(
         <ContextualMenuSplitButton
           item={ menuItem }
           classNames={ menuClassNames }
           index={ 0 }
           focusableElementIndex={ 0 }
           totalItemCount={ 1 }
-        />
-      );
-    });
-
-    it('renders the contextual menu split button correctly', () => {
-      expect(wrapper).toMatchSnapshot();
+        />);
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
     });
   });
 });

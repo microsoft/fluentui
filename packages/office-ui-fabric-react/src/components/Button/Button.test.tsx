@@ -29,6 +29,16 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a DefaultButton with a keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const component = renderer.create(<DefaultButton text='Button' keytipProps={ keytipProps } />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders CommandBarButton correctly', () => {
     const component = renderer.create(
       <CommandBarButton
