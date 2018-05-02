@@ -112,15 +112,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
-                  }
-                  {
-                    color: #666666;
-                    font-size: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -194,15 +192,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
-                  }
-                  {
-                    color: #666666;
-                    font-size: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -276,15 +272,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
-                  }
-                  {
-                    color: #666666;
-                    font-size: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -561,15 +555,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
-                  }
-                  {
-                    color: #666666;
-                    font-size: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -643,15 +635,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
-                  }
-                  {
-                    color: #666666;
-                    font-size: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -1110,15 +1100,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
-                  }
-                  {
-                    color: #666666;
-                    font-size: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -1282,15 +1270,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    color: #666666;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
-                  }
-                  {
-                    color: #666666;
-                    font-size: 12px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
