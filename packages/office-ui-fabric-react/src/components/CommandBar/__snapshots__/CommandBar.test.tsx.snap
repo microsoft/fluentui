@@ -119,6 +119,9 @@ exports[`CommandBar renders commands correctly 1`] = `
                   background-color: #eaeaea;
                   color: #212121;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  color: Highlight;
+                }
                 &:active {
                   background-color: #dadada;
                   color: #000000;
@@ -233,6 +236,9 @@ exports[`CommandBar renders commands correctly 1`] = `
                 &:hover {
                   background-color: #eaeaea;
                   color: #212121;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  color: Highlight;
                 }
                 &:active {
                   background-color: #dadada;
