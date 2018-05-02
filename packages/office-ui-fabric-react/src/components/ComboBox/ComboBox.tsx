@@ -1104,7 +1104,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           >
             <Checkbox
               id={ id + '-list' + item.index }
-              ref={ 'option' + item.index }
               ariaLabel={ this._getPreviewText(item) }
               key={ item.key }
               data-index={ item.index }
