@@ -33,10 +33,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
   };
 
-  public root = createRef<HTMLDivElement>();
-  public stickyContentTop = createRef<HTMLDivElement>();
-  public stickyContentBottom = createRef<HTMLDivElement>();
-  public nonStickyContent = createRef<HTMLDivElement>();
+  private _root = createRef<HTMLDivElement>();
+  private _stickyContentTop = createRef<HTMLDivElement>();
+  private _stickyContentBottom = createRef<HTMLDivElement>();
+  private _nonStickyContent = createRef<HTMLDivElement>();
   public distanceFromTop: number;
 
   constructor(props: IStickyProps) {
@@ -46,6 +46,22 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom: false
     };
     this.distanceFromTop = 0;
+  }
+
+  public get root(): HTMLDivElement | null {
+    return this._root.current;
+  }
+
+  public get stickyContentTop(): HTMLDivElement | null {
+    return this._stickyContentTop.current;
+  }
+
+  public get stickyContentBottom(): HTMLDivElement | null {
+    return this._stickyContentBottom.current;
+  }
+
+  public get nonStickyContent(): HTMLDivElement | null {
+    return this._nonStickyContent.current;
   }
 
   public get canStickyTop(): boolean {
@@ -90,12 +106,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyTop, isStickyBottom } = this.state;
 
     return (
-      <div ref={ this.root }>
+      <div ref={ this._root }>
         {
           this.canStickyTop &&
           <div
             className={ this.props.stickyClassName }
-            ref={ this.stickyContentTop }
+            ref={ this._stickyContentTop }
             aria-hidden={ !isStickyTop }
           >
             <div style={ this._getStickyPlaceholderHeight(isStickyTop) } />
@@ -105,7 +121,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
           this.canStickyBottom &&
           <div
             className={ this.props.stickyClassName }
-            ref={ this.stickyContentBottom }
+            ref={ this._stickyContentBottom }
             aria-hidden={ !isStickyBottom }
           >
             <div style={ this._getStickyPlaceholderHeight(isStickyBottom) } />
@@ -113,9 +129,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         }
         <div style={ this._getNonStickyPlaceholderHeight() } />
         <div
-          ref={ this.nonStickyContent }
+          ref={ this._nonStickyContent }
           className={ isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined }
-          style={ this._getContentStyles() }
+          style={ this._getContentStyles(isStickyTop || isStickyBottom) }
         >
           { this.props.children }
         </div>
@@ -124,14 +140,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public addSticky(stickyContent: HTMLDivElement): void {
-    if (this.nonStickyContent.current) {
-      stickyContent.appendChild(this.nonStickyContent.current);
+    if (this.nonStickyContent) {
+      stickyContent.appendChild(this.nonStickyContent);
     }
   }
 
   public resetSticky(): void {
-    if (this.nonStickyContent.current && this.root.current) {
-      this.root.current.appendChild(this.nonStickyContent.current);
+    if (this.nonStickyContent && this.root) {
+      this.root.appendChild(this.nonStickyContent);
     }
   }
 
@@ -139,14 +155,17 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
   }
 
-  private _getContentStyles(): React.CSSProperties {
-    return {
-      backgroundColor: this.props.stickyBackgroundColor || this._getBackground()
-    };
+  private _getContentStyles(isSticky: boolean): React.CSSProperties | undefined {
+    if (this.root) {
+      return {
+        backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
+        width: isSticky ? this.root.offsetWidth : 'auto'
+      };
+    }
   }
 
   private _getStickyPlaceholderHeight(isSticky: boolean): React.CSSProperties {
-    const height = this.nonStickyContent.current ? this.nonStickyContent.current.offsetHeight : 0;
+    const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
 
     return {
       visibility: isSticky ? 'hidden' : 'visible',
@@ -156,7 +175,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getNonStickyPlaceholderHeight(): React.CSSProperties {
     const { isStickyTop, isStickyBottom, } = this.state;
-    const height = this.nonStickyContent.current ? this.nonStickyContent.current.offsetHeight : 0;
+    const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
 
     return {
       display: isStickyTop || isStickyBottom ? 'block' : 'none',
@@ -165,14 +184,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
-    if (this.root.current && this.nonStickyContent.current) {
+    if (this.root && this.nonStickyContent) {
       this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
       let isStickyTop = false;
       let isStickyBottom = false;
 
       if (this.canStickyTop) {
         const distanceToStickTop = this.distanceFromTop - this._getStickyDistanceFromTop();
-        isStickyTop = distanceToStickTop <= container.scrollTop;
+        isStickyTop = distanceToStickTop < container.scrollTop;
       }
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
@@ -189,8 +208,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getStickyDistanceFromTop = (): number => {
     let distance = 0;
-    if (this.stickyContentTop.current) {
-      distance = this.stickyContentTop.current.offsetTop;
+    if (this.stickyContentTop) {
+      distance = this.stickyContentTop.offsetTop;
     }
 
     return distance;
@@ -198,8 +217,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getStickyDistanceFromTopForFooter = (container: HTMLElement, footerStickyVisibleContainer: HTMLElement): number => {
     let distance = 0;
-    if (this.stickyContentBottom.current) {
-      distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.current.offsetTop;
+    if (this.stickyContentBottom) {
+      distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.offsetTop;
     }
 
     return distance;
@@ -207,7 +226,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getNonStickyDistanceFromTop = (container: HTMLElement): number => {
     let distance = 0;
-    let currElem = this.root.current;
+    let currElem = this.root;
 
     if (currElem) {
       while (currElem.offsetParent !== container) {
@@ -224,11 +243,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   // Gets background of nearest parent element that has a declared background-color attribute
   private _getBackground(): string | undefined {
-    if (!this.root.current) {
+    if (!this.root) {
       return undefined;
     }
 
-    let curr: HTMLElement = this.root.current;
+    let curr: HTMLElement = this.root;
 
     while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
       window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {

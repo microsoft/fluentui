@@ -26,7 +26,6 @@ export const getStyles = (
     pointerEvents: 'auto',
     width: '100%',
     zIndex: ZIndexes.ScrollablePane,
-    background: '#ffffff',
     overflowY: 'hidden',
     overflowX: 'auto'
   };
