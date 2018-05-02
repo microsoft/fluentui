@@ -106,4 +106,9 @@ export interface IContextualMenuSplitButtonProps extends React.Props<IContextual
    * If dismissAll is true, all menus will be closed.
    */
   dismissMenu?: (dismissAll?: boolean) => void;
+
+  /**
+   * Callback for touch/pointer events on the split button.
+   */
+  onTap?: (ev: React.TouchEvent<HTMLElement> | PointerEvent) => void;
 }

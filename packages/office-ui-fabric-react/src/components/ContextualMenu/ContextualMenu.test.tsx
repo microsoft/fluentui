@@ -178,6 +178,42 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
+  it('opens a splitbutton submenu item on touch start', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        split: true,
+        onClick: () => { alert('test'); },
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    const menuItem = document.getElementsByName('TestText 1')[0] as HTMLButtonElement;
+
+    // in a normal scenario, when we do a touchstart we would also cause a
+    // click event to fire. This doesn't happen in the simulator so we're
+    // manually adding this in.
+    ReactTestUtils.Simulate.touchStart(menuItem);
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(document.querySelector('.is-expanded')).toBeDefined();
+  });
+
   it('sets the correct aria-owns attribute for the submenu', () => {
     const submenuId = 'testSubmenuId';
     const items: IContextualMenuItem[] = [
