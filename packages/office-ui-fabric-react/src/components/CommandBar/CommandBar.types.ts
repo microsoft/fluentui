@@ -94,6 +94,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 
   /**
+   * Accessibility text to be read by the screen reader when the user's
+   * focus enters the command bar. The screen reader will read this text
+   * after reading information about the first focusable item in the command
+   * bar.
+   */
+  ariaLabel?: string;
+
+  /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
   getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
