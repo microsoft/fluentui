@@ -277,6 +277,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.active,
       {
         background: palette.neutralSecondary,
+        borderRadius: 4, // @TODO(keco): Refactor back to shared .line-container
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -300,6 +301,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.inactive,
       {
         background: palette.neutralTertiaryAlt,
+        borderRadius: 4, // @TODO(keco): Refactor back to shared .line-container
         selectors: {
           [HighContrastSelector]: {
             border: `1px solid WindowText`
