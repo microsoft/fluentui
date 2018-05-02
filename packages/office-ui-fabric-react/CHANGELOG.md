@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 May 2018 19:26:35 GMT and should not be manually modified.
+This log was last generated on Wed, 02 May 2018 23:55:40 GMT and should not be manually modified.
+
+## 5.95.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- SplitButton/ComboBox: added onTouch support for menu expansion.
+- Add Keytip, KeytipLayer, and KeytipData component
+
+### Patches
+
+- If firstFocus on HoverCard is set then propagate it to setInitialFocus in ExpandingCard. This enables focusing the card on render.
+- TextField can now render the numeric value 0
 
 ## 5.94.0
 Tue, 01 May 2018 19:26:35 GMT

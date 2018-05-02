@@ -2,6 +2,28 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.11.1",
+      "tag": "@uifabric/example-app-base_v5.11.1",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "809c04b6d3702f247d6d442e6502fa1b793170e6",
+            "comment": "Refactors String.prototype.includes usage in favor of  String.prototype.indexOf for IE compat."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.0",
       "tag": "@uifabric/example-app-base_v5.11.0",
       "date": "Mon, 23 Apr 2018 10:24:54 GMT",
