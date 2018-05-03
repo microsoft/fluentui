@@ -64,6 +64,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
   private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
+  private _classNames: IClassNames<ITextFieldStyles>;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -289,8 +290,6 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       (this._textElement.current as HTMLInputElement).setSelectionRange(start, end);
     }
   }
-
-  private _classNames: IClassNames<ITextFieldStyles>;
 
   private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     if (this.props.onFocus) {
