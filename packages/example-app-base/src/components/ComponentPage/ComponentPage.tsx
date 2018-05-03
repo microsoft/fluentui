@@ -286,7 +286,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getVariants(): JSX.Element | undefined {
-    const hasVariants = !!this.props.exampleCards!.props.children.length;
+    const hasVariants = this.props.isHeaderVisible || !!this.props.exampleCards!.props.children.length;
     const headerText = hasVariants ? 'Variants' : this.props.title;
 
     if (this.props.exampleCards) {
