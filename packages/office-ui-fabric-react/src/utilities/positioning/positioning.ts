@@ -587,7 +587,7 @@ function _getRectangleFromIRect(rect: IRectangle): Rectangle {
   return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
 }
 
-function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined) {
+function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined): Rectangle {
   let targetRectangle: Rectangle;
   if (target) {
     if ((target as MouseEvent).preventDefault) {
@@ -682,6 +682,7 @@ function _finalizePositionData(positionedElement: IElementPosition, hostElement:
     alignmentEdge: positionedElement.alignmentEdge
   };
 }
+
 function _positionElement(
   props: IPositionProps,
   hostElement: HTMLElement,
@@ -737,7 +738,7 @@ export const __positioningTestPackage = {
 export function _getRelativePositions(
   props: IPositionProps,
   hostElement: HTMLElement,
-  elementToPosition: HTMLElement) {
+  elementToPosition: HTMLElement): IRelativePositions {
   const positions = _positionCallout(props, hostElement, elementToPosition);
   const beakPosition = positions && positions.beakPosition ? positions.beakPosition.elementPosition : undefined;
   return {
@@ -760,7 +761,7 @@ export function _getRelativePositions(
  */
 export function getRelativePositions(props: IPositionProps,
   hostElement: HTMLElement,
-  calloutElement: HTMLElement) {
+  calloutElement: HTMLElement): IRelativePositions {
   return _getRelativePositions(props, hostElement, calloutElement);
 }
 
