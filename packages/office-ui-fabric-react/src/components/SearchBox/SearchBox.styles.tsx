@@ -33,7 +33,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             selectors: {
               [HighContrastSelector]: {
                 borderColor: 'Highlight'
-              },
+              }
             }
           },
           ':hover $iconContainer': {
@@ -61,7 +61,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.neutralLighter,
           backgroundColor: palette.neutralLighter,
           pointerEvents: 'none',
-          cursor: 'default',
+          cursor: 'default'
         }
       ],
       underlined && [
@@ -121,7 +121,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary,
+        color: palette.themePrimary
       }
     ],
     field: [
