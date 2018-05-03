@@ -7,13 +7,14 @@ import {
 import { IStyleSet } from '../../../Styling';
 import { Icon } from '../../../Icon';
 import {
+  defaultPresenceDescriptors,
   IPersonaPresenceProps,
   IPersonaPresenceStyleProps,
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
+  sizeBoolean,
 } from '../Persona.types';
-import { sizeBoolean } from '../PersonaConsts';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;
@@ -28,18 +29,15 @@ const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPre
  */
 @customizable('PersonaPresence', ['theme'])
 export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}> {
-  constructor(props: IPersonaPresenceProps) {
-    super(props);
-  }
-
   public render(): JSX.Element | null {
     const {
       coinSize,
-      getStyles, // Use getStyles from props.
-      presence,
+      getStyles,
+      presence = this.props.presence as PersonaPresenceEnum,
       theme,
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
+    const presenceDescriptors = { ...defaultPresenceDescriptors, ...this.props.presenceDescriptors };
 
     // Render Presence Icon if Persona is above size 32.
     const renderIcon = !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && (coinSize ? coinSize > 32 : true);
@@ -64,6 +62,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
       <div
         className={ classNames.presence }
         style={ coinSizeWithPresenceStyle }
+        title={ presenceDescriptors![presence] }
       >
         { renderIcon && this._onRenderIcon(classNames.presenceIcon, coinSizeWithPresenceIconStyle) }
       </div>

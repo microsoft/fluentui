@@ -2,7 +2,10 @@ import {
   IPersonaStyleProps,
   IPersonaStyles,
   PersonaPresence,
-  PersonaSize
+  PersonaSize,
+  personaCoinSizes,
+  presenceBoolean,
+  sizeBoolean,
 } from './Persona.types';
 import {
   FontSizes,
@@ -12,11 +15,6 @@ import {
   noWrap,
   getGlobalClassNames,
 } from '../../Styling';
-import {
-  personaSize,
-  presenceBoolean,
-  sizeBoolean,
-} from './PersonaConsts';
 
 const GlobalClassNames = {
   root: 'ms-Persona',
@@ -76,8 +74,8 @@ export const getStyles = (
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.regular,
         position: 'relative',
-        height: personaSize.size48,
-        minWidth: personaSize.size48,
+        height: personaCoinSizes.size48,
+        minWidth: personaCoinSizes.size48,
         display: 'flex',
         alignItems: 'center',
 
@@ -99,24 +97,24 @@ export const getStyles = (
       size.isSize10 && [
         classNames.size10,
         {
-          height: personaSize.size10,
-          minWidth: personaSize.size10,
+          height: personaCoinSizes.size10,
+          minWidth: personaCoinSizes.size10,
         }
       ],
 
       size.isSize16 && [
         classNames.size16,
         {
-          height: personaSize.size16,
-          minWidth: personaSize.size16,
+          height: personaCoinSizes.size16,
+          minWidth: personaCoinSizes.size16,
         }
       ],
 
       size.isSize24 && [
         classNames.size24,
         {
-          height: personaSize.size24,
-          minWidth: personaSize.size24,
+          height: personaCoinSizes.size24,
+          minWidth: personaCoinSizes.size24,
         }
       ],
 
@@ -127,8 +125,8 @@ export const getStyles = (
       size.isSize28 && [
         classNames.size28,
         {
-          height: personaSize.size28,
-          minWidth: personaSize.size28,
+          height: personaCoinSizes.size28,
+          minWidth: personaCoinSizes.size28,
         }
       ],
 
@@ -139,16 +137,16 @@ export const getStyles = (
       size.isSize32 && [
         classNames.size32,
         {
-          height: personaSize.size32,
-          minWidth: personaSize.size32,
+          height: personaCoinSizes.size32,
+          minWidth: personaCoinSizes.size32,
         }
       ],
 
       size.isSize40 && [
         classNames.size40,
         {
-          height: personaSize.size40,
-          minWidth: personaSize.size40,
+          height: personaCoinSizes.size40,
+          minWidth: personaCoinSizes.size40,
         }
       ],
 
@@ -157,16 +155,16 @@ export const getStyles = (
       size.isSize72 && [
         classNames.size72,
         {
-          height: personaSize.size72,
-          minWidth: personaSize.size72,
+          height: personaCoinSizes.size72,
+          minWidth: personaCoinSizes.size72,
         }
       ],
 
       size.isSize100 && [
         classNames.size100,
         {
-          height: personaSize.size100,
-          minWidth: personaSize.size100,
+          height: personaCoinSizes.size100,
+          minWidth: personaCoinSizes.size100,
         }
       ],
 
@@ -220,7 +218,7 @@ export const getStyles = (
 
       size.isSize10 && {
         fontSize: FontSizes.small,
-        lineHeight: personaSize.size10,
+        lineHeight: personaCoinSizes.size10,
       },
 
       (size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40) && {
@@ -228,7 +226,7 @@ export const getStyles = (
       },
 
       size.isSize16 && {
-        lineHeight: personaSize.size28,
+        lineHeight: personaCoinSizes.size28,
       },
 
       size.isSize24 && showSecondaryText && { height: '18px' },
