@@ -1,28 +1,19 @@
-import { memoizeFunction } from '../../Utilities';
 import {
-  ITheme,
-  mergeStyleSets,
-  getFocusStyle,
-  HighContrastSelector
+  HighContrastSelector,
+  getFocusStyle
 } from '../../Styling';
-import { IToggleStyles } from './Toggle.types';
+import {
+  IToggleStyleProps,
+  IToggleStyles
+} from './Toggle.types';
 
-export interface IToggleClassNames {
-  root?: string;
-  label?: string;
-  container?: string;
-  pill?: string;
-  thumb?: string;
-  text?: string;
-}
-
-export const getClassNames = memoizeFunction((
-  theme: ITheme,
-  styles: IToggleStyles,
-  className: string,
-  disabled: boolean,
-  checked: boolean
-): IToggleClassNames => {
+export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
+  const {
+    theme,
+    className,
+    disabled,
+    checked
+  } = props;
   const { semanticColors } = theme;
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
@@ -37,9 +28,7 @@ export const getClassNames = memoizeFunction((
   const pillBorderDisabledColor = semanticColors.disabledBodyText;
   const textDisabledColor = semanticColors.disabledText;
 
-  styles = styles || {};
-
-  return mergeStyleSets({
+  return {
     root: [
       'ms-Toggle',
       checked && 'is-checked',
@@ -50,12 +39,10 @@ export const getClassNames = memoizeFunction((
         marginBottom: '8px'
       },
       className,
-      styles.root,
     ],
 
     label: [
       'ms-Toggle-label',
-      styles.label,
       disabled && {
         color: textDisabledColor,
         selectors: {
@@ -71,8 +58,7 @@ export const getClassNames = memoizeFunction((
       {
         display: 'inline-flex',
         position: 'relative',
-      },
-      styles.container
+      }
     ],
 
     pill: [
@@ -94,17 +80,14 @@ export const getClassNames = memoizeFunction((
         alignItems: 'center',
         padding: '0 .2em'
       },
-      styles.pill,
       !disabled && [
         !checked && {
           selectors: {
             ':hover': [
               {
                 borderColor: pillBorderHoveredColor
-              },
-              styles.pillHovered
-            ],
-            ':hover .ms-Toggle-thumb': styles.thumbHovered
+              }
+            ]
           }
         },
         checked && [
@@ -113,18 +96,13 @@ export const getClassNames = memoizeFunction((
             borderColor: 'transparent',
             justifyContent: 'flex-end'
           },
-          styles.pillChecked,
           {
             selectors: {
               ':hover': [
                 {
                   backgroundColor: pillCheckedHoveredBackground,
                   borderColor: 'transparent'
-                },
-                styles.pillCheckedHovered
-              ],
-              ':hover .ms-Toggle-thumb': [
-                styles.thumbCheckedHovered
+                }
               ],
               [HighContrastSelector]: {
                 backgroundColor: 'WindowText'
@@ -140,16 +118,14 @@ export const getClassNames = memoizeFunction((
         !checked && [
           {
             borderColor: pillBorderDisabledColor
-          },
-          styles.pillDisabled
+          }
         ],
         checked && [
           {
             backgroundColor: pillCheckedDisabledBackground,
             borderColor: 'transparent',
             justifyContent: 'flex-end'
-          },
-          styles.pillCheckedDisabled
+          }
         ],
       ]
     ],
@@ -168,7 +144,6 @@ export const getClassNames = memoizeFunction((
         borderStyle: 'solid',
         boxSizing: 'border-box'
       },
-      styles.thumb,
       !disabled && checked && [
         {
           backgroundColor: thumbCheckedBackground,
@@ -178,21 +153,18 @@ export const getClassNames = memoizeFunction((
               borderColor: 'Window'
             }
           }
-        },
-        styles.thumbChecked,
+        }
       ],
       disabled && [
         !checked && [
           {
             backgroundColor: thumbDisabledBackground,
-          },
-          styles.thumbDisabled
+          }
         ],
         checked && [
           {
             backgroundColor: thumbCheckedDisabledBackground,
-          },
-          styles.thumbCheckedDisabled
+          }
         ]
       ]
     ],
@@ -220,9 +192,7 @@ export const getClassNames = memoizeFunction((
             }
           }
         }
-      },
-      styles.text
+      }
     ]
-  });
-
-});
+  };
+};
