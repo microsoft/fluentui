@@ -10,7 +10,6 @@ export class DetailsListBasicComponentPage extends React.Component<any, any> {
         title='Grouped DetailsListExample'
         componentName='DetailsListNavigatingFocusExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
-        overview={ <div /> }
         exampleCards={
           <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
             <DetailsListBasicExample />
