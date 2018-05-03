@@ -50,6 +50,8 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   const ratingPadding = 3;
 
   const ratingStarUncheckedColor = palette.neutralTertiary;
+  const ratingStarUncheckedHoverColor = palette.themePrimary;
+  const ratingStarUncheckedHoverSelectedColor = palette.themeDark;
   const ratingStarCheckedColor = semanticColors.bodyTextChecked;
   const ratingStarDisabledColor = semanticColors.disabledBodyText;
 
@@ -133,6 +135,16 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
             selectors: {
               '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
               '.ms-RatingStar-front': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
+            }
+          },
+          '&:hover': {
+            selectors: {
+              '.ms-RatingStar-back': {
+                color: ratingStarUncheckedHoverColor
+              },
+              '.ms-RatingStar-front': {
+                color: ratingStarUncheckedHoverSelectedColor
+              }
             }
           }
         }
