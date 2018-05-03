@@ -325,23 +325,25 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   private _getOverview(): JSX.Element | undefined {
     if (this.props.overview) {
-      <div className='ComponentPage-overviewSection'>
-        <div className='ComponentPage-overviewSectionHeader'>
-          <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
-          <EditSection
-            title={ this.props.title }
-            section={ ComponentPageSection.Overview }
-            sectionContent={ this.props.overview }
-            url={ this._getURL('Overview', this.props.editOverviewUrl) }
-          />
-        </div>
-        <div className='ComponentPage-overviewSectionContent'>
-          <div className='ComponentPage-overview'>
-            { this.props.overview }
+      return (
+        <div className='ComponentPage-overviewSection'>
+          <div className='ComponentPage-overviewSectionHeader'>
+            <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+            <EditSection
+              title={ this.props.title }
+              section={ ComponentPageSection.Overview }
+              sectionContent={ this.props.overview }
+              url={ this._getURL('Overview', this.props.editOverviewUrl) }
+            />
           </div>
-          { this._getRelatedComponents() }
+          <div className='ComponentPage-overviewSectionContent'>
+            <div className='ComponentPage-overview'>
+              { this.props.overview }
+            </div>
+            { this._getRelatedComponents() }
+          </div>
         </div>
-      </div>
+      );
     }
 
     return undefined;
