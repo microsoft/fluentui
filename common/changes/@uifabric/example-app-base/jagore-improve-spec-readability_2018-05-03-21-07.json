@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/example-app-base",
       "comment": "Modify documentation columns for improved readability.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/example-app-base",
