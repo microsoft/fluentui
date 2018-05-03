@@ -12,9 +12,13 @@ import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { CalendarStatus } from './Calendar.checklist';
 import { addMonths, addYears } from '../../utilities/dateMath/DateMath';
+import { YearPickerExample } from "./examples/YearPicker.Example";
+import { YearPickerHeaderSelectExample } from "./examples/YearPicker.HeaderSelect.Example";
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
+const YearPickerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/YearPicker.Example.tsx') as string;
+const YearPickerHeaderSelectExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/YearPicker.HeaderSelect.Example.tsx') as string;
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   public render(): JSX.Element {
@@ -169,6 +173,12 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 highlightSelectedMonth={ true }
                 buttonString={ 'Click for Overlayed Day Picker and Month Picker' }
               />
+            </ExampleCard>
+            <ExampleCard title="Year Picker" code={ YearPickerExampleCode }>
+              <YearPickerExample />
+            </ExampleCard>
+            <ExampleCard title="Year Picker with Header Select" code={ YearPickerHeaderSelectExampleCode }>
+              <YearPickerHeaderSelectExample />
             </ExampleCard>
           </div>
         }
