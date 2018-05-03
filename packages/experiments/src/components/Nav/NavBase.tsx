@@ -1,7 +1,6 @@
 /* tslint:disable */
-import { INavLink, INavProps } from './Nav.types';
+import { INavLink, INavProps, INavState } from './Nav.types';
 import { INav } from 'office-ui-fabric-react/lib/components/Nav';
-import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import * as React from 'react';
 /* tslint:enable */
 
@@ -51,5 +50,18 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // check if the link or any of the child link is selected
     return link.key === selectedKey ||
       (includeChildren && this.isChildLinkSelected(link));
+  }
+
+  protected getLinkText(link: INavLink, showMore?: boolean): string | undefined {
+    if (!link) {
+      return undefined;
+    }
+
+    if (link.isShowMoreLink && !showMore && link.showMoreText) {
+      // if the link is show more/less link, based on the showMore state; return "Show more" localized text
+      return link.showMoreText;
+    }
+
+    return link.name;
   }
 }

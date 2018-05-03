@@ -19,6 +19,7 @@ const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   fillPercentage: number;
   disabled: boolean;
+  readOnly: boolean;
   classNames: IClassNames<IRatingStyles>;
 }
 
@@ -97,6 +98,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     this._classNames = getClassNames(getStyles!, {
       disabled,
+      readOnly,
       theme: theme!
     });
 
@@ -105,6 +107,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         const ratingStarProps: IRatingStarProps = {
           fillPercentage: this._getFillingPercentage(i),
           disabled: disabled ? true : false,
+          readOnly: readOnly ? true : false,
           classNames: this._classNames
         };
 
@@ -113,8 +116,8 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         stars.push(
           <button
             className={ css(this._classNames.ratingButton, {
-              [this._classNames.rootIsLarge]: size === RatingSize.Large,
-              [this._classNames.rootIsSmall]: size !== RatingSize.Large
+              [this._classNames.ratingStarIsLarge]: size === RatingSize.Large,
+              [this._classNames.ratingStarIsSmall]: size !== RatingSize.Large
             }) }
             id={ starIds[i - 1] }
             key={ i }
@@ -134,14 +137,20 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     return (
       <div
-        className={ 'ms-Rating-star' }
+        className={ css('ms-Rating-star', this._classNames.root, {
+          [this._classNames.rootIsLarge]: size === RatingSize.Large,
+          [this._classNames.rootIsSmall]: size !== RatingSize.Large
+        }) }
         aria-label={ getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
         id={ id }
       >
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
           tabIndex={ readOnly ? 0 : -1 }
-          className={ this._classNames.ratingFocusZone }
+          className={ css(this._classNames.ratingFocusZone, {
+            [this._classNames.rootIsLarge]: size === RatingSize.Large,
+            [this._classNames.rootIsSmall]: size !== RatingSize.Large
+          }) }
           data-is-focusable={ readOnly ? true : false }
           defaultActiveElement={ rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined }
         >
