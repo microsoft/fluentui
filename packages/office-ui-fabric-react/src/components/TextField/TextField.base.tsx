@@ -55,6 +55,9 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     validateOnLoad: true,
   };
 
+  // Marking this as private causes TSLint to warn unused?
+  protected _classNames: IClassNames<ITextFieldStyles>;
+
   private _id: string;
   private _descriptionId: string;
   private _delayedValidate: (value: string | undefined) => void;
@@ -64,7 +67,6 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
   private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
-  private _classNames: IClassNames<ITextFieldStyles>;
 
   public constructor(props: ITextFieldProps) {
     super(props);
