@@ -243,7 +243,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           { onRenderAriaDescription(props, this._onRenderAriaDescription) }
           { onRenderChildren(props, this._onRenderChildren) }
           { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
-          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(this.state.menuProps, this._onRenderMenu) }
+          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
         </div>
       </Tag>
     );
@@ -399,6 +399,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         { ...menuProps }
+        shouldFocusOnContainer={ this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined }
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current }
         labelElementId={ this._labelId }
