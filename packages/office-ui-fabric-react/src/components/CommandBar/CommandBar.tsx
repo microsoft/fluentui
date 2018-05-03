@@ -21,6 +21,7 @@ import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 import { createRef } from '../../Utilities';
+import { KeytipData } from '../../KeytipData';
 
 const styles: any = stylesImport;
 
@@ -200,77 +201,107 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     const hasIcon = !!item.icon || !!item.iconProps;
     const isNameVisible = !!item.name && !item.iconOnly;
     const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : undefined);
+    const itemHasSubmenu = hasSubmenu(item);
+    let { keytipProps } = item;
+    if (keytipProps && itemHasSubmenu) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
 
     let command: React.ReactNode;
     if (item.href) {
       // Allow the disabled property on anchor elements for commandbar
+      const nativeProps = getNativeProps(item, anchorProperties.concat(['disabled']));
       command = (
-        <a
-          { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
-          id={ this._id + item.key }
-          className={ className }
-          href={ item.disabled ? undefined : item.href }
-          onClick={ this._onItemClick(item) }
-          title={ '' }
-          aria-disabled={ item.inactive }
-          data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
-          role='menuitem'
-          aria-label={ ariaLabel }
-          aria-setsize={ setSize }
-          aria-posinset={ posInSet }
+        <KeytipData
+          keytipProps={ keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ item.disabled }
         >
-          { (hasIcon) ? this._renderIcon(item) : (null) }
-          { isNameVisible && (
-            <span
-              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+          { (keytipAttributes: any): JSX.Element => (
+            <a
+              { ...nativeProps }
+              { ...keytipAttributes }
+              id={ this._id + item.key }
+              className={ className }
+              href={ item.disabled ? undefined : item.href }
+              onClick={ this._onItemClick(item) }
+              title={ '' }
+              aria-disabled={ item.inactive }
+              data-command-key={ itemKey }
+              aria-haspopup={ itemHasSubmenu }
+              role='menuitem'
+              aria-label={ ariaLabel }
+              aria-setsize={ setSize }
+              aria-posinset={ posInSet }
             >
-              { item.name }
-            </span>
+              { (hasIcon) ? this._renderIcon(item) : (null) }
+              { isNameVisible && (
+                <span
+                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                >
+                  { item.name }
+                </span>
+              ) }
+            </a>
           ) }
-        </a>
+        </KeytipData>
       );
     } else if (isLink) {
+      const nativeProps = getNativeProps(item, buttonProperties);
       command = (
-        <button
-          { ...getNativeProps(item, buttonProperties) }
-          id={ this._id + item.key }
-          className={ className }
-          onClick={ this._onItemClick(item) }
-          title={ '' }
-          aria-disabled={ item.inactive }
-          data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
-          aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
-          role='menuitem'
-          aria-label={ ariaLabel }
-          aria-setsize={ setSize }
-          aria-posinset={ posInSet }
+        <KeytipData
+          keytipProps={ keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ item.disabled }
         >
-          { (hasIcon) ? this._renderIcon(item) : (null) }
-          { isNameVisible && (
-            <span
-              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+          { (keytipAttributes: any): JSX.Element => (
+            <button
+              { ...nativeProps }
+              { ...keytipAttributes }
+              id={ this._id + item.key }
+              className={ className }
+              onClick={ this._onItemClick(item) }
+              title={ '' }
+              aria-disabled={ item.inactive }
+              data-command-key={ itemKey }
+              aria-haspopup={ itemHasSubmenu }
+              aria-expanded={ itemHasSubmenu ? expandedMenuItemKey === item.key : undefined }
+              role='menuitem'
+              aria-label={ ariaLabel }
+              aria-setsize={ setSize }
+              aria-posinset={ posInSet }
             >
-              { item.name }
-            </span>
-          ) }
-          { hasSubmenu(item) ? (
-            <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
-          ) : (null) }
-        </button>
+              { (hasIcon) ? this._renderIcon(item) : (null) }
+              { isNameVisible && (
+                <span
+                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                >
+                  { item.name }
+                </span>
+              ) }
+              { itemHasSubmenu ? (
+                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
+              ) : (null) }
+            </button>
+          )
+          }
+        </KeytipData >
       );
     } else {
       // Allow the disabled property on div elements for commandbar
+      const nativeProps = getNativeProps(item, divProperties.concat(['disabled']));
       command = (
         <div
-          { ...getNativeProps(item, divProperties.concat(['disabled'])) }
+          { ...nativeProps }
           id={ this._id + item.key }
           className={ className }
           title={ '' }
           aria-disabled={ item.inactive }
           data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenu(item) }
+          aria-haspopup={ itemHasSubmenu }
           aria-label={ ariaLabel }
           aria-setsize={ setSize }
           aria-posinset={ posInSet }

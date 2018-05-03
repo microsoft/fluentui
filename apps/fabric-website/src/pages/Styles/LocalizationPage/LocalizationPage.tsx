@@ -56,11 +56,11 @@ export class LocalizationPage extends React.Component<any, any> {
             <li className={ styles.directionalIconPair } key={ pairIndex }>
               <div className={ styles.directionalIcon }>
                 <i className={ 'ms-Icon ms-Icon--' + pair[0] } />
-                { pair[0] }
+                <span>{ pair[0] }</span>
               </div>
               <div className={ styles.directionalIcon }>
                 <i className={ 'ms-Icon ms-Icon--' + pair[1] } />
-                { pair[1] }
+                <span>{ pair[1] }</span>
               </div>
             </li>
           )) }

@@ -15,6 +15,7 @@ import {
   getClassNames
 } from './Checkbox.classNames';
 import { getStyles } from './Checkbox.styles';
+import { KeytipData } from '../../KeytipData';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
@@ -77,7 +78,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       onRenderLabel = this._onRenderLabel,
       checkmarkIconProps,
       ariaPositionInSet,
-      ariaSetSize
+      ariaSetSize,
+      keytipProps
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
@@ -94,35 +96,43 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       );
 
     return (
-      <button
-        { ...inputProps }
-        { ...(checked !== undefined && { checked }) }
-        { ...(defaultChecked !== undefined && { defaultChecked }) }
-        disabled={ disabled }
-        ref={ this._checkBox }
-        name={ name }
-        id={ this._id }
-        role='checkbox'
-        type='button'
-        className={ this._classNames.root }
-        onClick={ this._onClick }
-        onFocus={ this._onFocus }
-        onBlur={ this._onBlur }
-        aria-checked={ isChecked }
-        aria-disabled={ disabled }
-        aria-label={ ariaLabel }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
-        aria-posinset={ ariaPositionInSet }
-        aria-setsize={ ariaSetSize }
-      >
-        <label className={ this._classNames.label } htmlFor={ this._id } >
-          <div className={ this._classNames.checkbox }>
-            <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
-          </div>
-          { onRenderLabel(this.props, this._onRenderLabel) }
-        </label>
-      </button>
+      <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
+        { (keytipAttributes: any): JSX.Element => (
+          <button
+            { ...inputProps }
+            data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
+            { ...(checked !== undefined && { checked }) }
+            { ...(defaultChecked !== undefined && { defaultChecked }) }
+            disabled={ disabled }
+            ref={ this._checkBox }
+            name={ name }
+            id={ this._id }
+            role='checkbox'
+            type='button'
+            className={ this._classNames.root }
+            onClick={ this._onClick }
+            onFocus={ this._onFocus }
+            onBlur={ this._onBlur }
+            aria-checked={ isChecked }
+            aria-disabled={ disabled }
+            aria-label={ ariaLabel }
+            aria-labelledby={ ariaLabelledBy }
+            aria-describedby={ (ariaDescribedBy || '') + (keytipAttributes['aria-describedby'] || '') }
+            aria-posinset={ ariaPositionInSet }
+            aria-setsize={ ariaSetSize }
+          >
+            <label className={ this._classNames.label } htmlFor={ this._id } >
+              <div
+                className={ this._classNames.checkbox }
+                data-ktp-target={ keytipAttributes['data-ktp-target'] }
+              >
+                <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
+              </div>
+              { onRenderLabel(this.props, this._onRenderLabel) }
+            </label>
+          </button>
+        ) }
+      </KeytipData>
     );
   }
 

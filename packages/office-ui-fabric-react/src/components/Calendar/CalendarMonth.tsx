@@ -180,7 +180,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _onSelectNextYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    this._onKeyDown(this._onSelectNextYear, ev);
+    if (ev.which === KeyCodes.enter) {
+      this._onKeyDown(this._onSelectNextYear, ev);
+    }
   }
 
   private _onSelectPrevYear = (): void => {
@@ -189,7 +191,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _onSelectPrevYearKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    this._onKeyDown(this._onSelectPrevYear, ev);
+    if (ev.which === KeyCodes.enter) {
+      this._onKeyDown(this._onSelectPrevYear, ev);
+    }
   }
 
   private _onSelectMonthKeyDown = (index: number): (ev: React.KeyboardEvent<HTMLElement>) => void => {

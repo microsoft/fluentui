@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Breadcrumb renders breadcumb correctly 1`] = `
+exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
 <div
   className=
       ms-ResizeGroup
@@ -19,7 +19,1311 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
   >
     <div
       aria-label={undefined}
-      className="ms-Breadcrumb"
+      className=
+          ms-Breadcrumb
+          {
+            margin-bottom: 1px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 23px;
+          }
+      role="navigation"
+    >
+      <div
+        aria-describedby={undefined}
+        aria-labelledby={undefined}
+        className="ms-FocusZone"
+        data-focuszone-id="FocusZone1"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <ol
+          className=
+              ms-Breadcrumb-list
+              {
+                align-items: stretch;
+                display: flex;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                white-space: nowrap;
+              }
+        >
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText1
+              </div>
+            </span>
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Breadcrumb-chevron
+                  {
+                    display: inline-block;
+                  }
+                  {
+                    color: #666666;
+                    font-size: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    color: WindowText;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 8px;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    font-size: 8px;
+                  }
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText2
+              </div>
+            </span>
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Breadcrumb-chevron
+                  {
+                    display: inline-block;
+                  }
+                  {
+                    color: #666666;
+                    font-size: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    color: WindowText;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 8px;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    font-size: 8px;
+                  }
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText3
+              </div>
+            </span>
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Breadcrumb-chevron
+                  {
+                    display: inline-block;
+                  }
+                  {
+                    color: #666666;
+                    font-size: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    color: WindowText;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 8px;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    font-size: 8px;
+                  }
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText4
+              </div>
+            </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
+<div
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
+>
+  <div
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
+  >
+    <div
+      aria-label={undefined}
+      className=
+          ms-Breadcrumb
+          {
+            margin-bottom: 1px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 23px;
+          }
+      role="navigation"
+    >
+      <div
+        aria-describedby={undefined}
+        aria-labelledby={undefined}
+        className="ms-FocusZone"
+        data-focuszone-id="FocusZone6"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <ol
+          className=
+              ms-Breadcrumb-list
+              {
+                align-items: stretch;
+                display: flex;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                white-space: nowrap;
+              }
+        >
+          <li
+            className=
+                ms-Breadcrumb-overflow
+                {
+                  align-items: center;
+                  display: flex;
+                  position: relative;
+                }
+          >
+            <button
+              aria-describedby={null}
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-label={undefined}
+              aria-labelledby={null}
+              aria-owns={null}
+              aria-pressed={undefined}
+              className=
+                  ms-Button
+                  ms-Breadcrumb-overflowButton
+                  ms-Button--icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 16px;
+                    font-weight: 400;
+                    height: 100%;
+                    outline: transparent;
+                    overflow: hidden;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    text-overflow: ellipsis;
+                    user-select: none;
+                    vertical-align: top;
+                    white-space: nowrap;
+                    width: 32px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:hover {
+                    background-color: #f4f4f4;
+                    color: #004578;
+                  }
+                  &:active {
+                    background-color: #eaeaea;
+                    color: #0078d4;
+                  }
+                  &:hover:active {
+                    background-color: #d0d0d0;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    padding-bottom: 4px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 4px;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 15px;
+                  }
+              data-is-focusable={true}
+              disabled={undefined}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
+                      {
+                        flex-shrink: 0;
+                        font-size: 16px;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="More"
+                  role="presentation"
+                />
+              </div>
+            </button>
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Breadcrumb-chevron
+                  {
+                    display: inline-block;
+                  }
+                  {
+                    color: #666666;
+                    font-size: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    color: WindowText;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 8px;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    font-size: 8px;
+                  }
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText3
+              </div>
+            </span>
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Breadcrumb-chevron
+                  {
+                    display: inline-block;
+                  }
+                  {
+                    color: #666666;
+                    font-size: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    color: WindowText;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 8px;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    font-size: 8px;
+                  }
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText4
+              </div>
+            </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
+<div
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
+>
+  <div
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
+  >
+    <div
+      aria-label={undefined}
+      className=
+          ms-Breadcrumb
+          {
+            margin-bottom: 1px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 23px;
+          }
+      role="navigation"
+    >
+      <div
+        aria-describedby={undefined}
+        aria-labelledby={undefined}
+        className="ms-FocusZone"
+        data-focuszone-id="FocusZone12"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <ol
+          className=
+              ms-Breadcrumb-list
+              {
+                align-items: stretch;
+                display: flex;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                white-space: nowrap;
+              }
+        >
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText1
+              </div>
+            </span>
+            <span>
+              *
+            </span>
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText2
+              </div>
+            </span>
+            <span>
+              *
+            </span>
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText3
+              </div>
+            </span>
+            <span>
+              *
+            </span>
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText4
+              </div>
+            </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
+<div
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
+>
+  <div
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
+  >
+    <div
+      aria-label={undefined}
+      className=
+          ms-Breadcrumb
+          {
+            margin-bottom: 1px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 23px;
+          }
+      role="navigation"
+    >
+      <div
+        aria-describedby={undefined}
+        aria-labelledby={undefined}
+        className="ms-FocusZone"
+        data-focuszone-id="FocusZone17"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <ol
+          className=
+              ms-Breadcrumb-list
+              {
+                align-items: stretch;
+                display: flex;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                white-space: nowrap;
+              }
+        >
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText1
+              </div>
+            </span>
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Breadcrumb-chevron
+                  {
+                    display: inline-block;
+                  }
+                  {
+                    color: #666666;
+                    font-size: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    color: WindowText;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 8px;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    font-size: 8px;
+                  }
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-overflow
+                {
+                  align-items: center;
+                  display: flex;
+                  position: relative;
+                }
+          >
+            <button
+              aria-describedby={null}
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-label={undefined}
+              aria-labelledby={null}
+              aria-owns={null}
+              aria-pressed={undefined}
+              className=
+                  ms-Button
+                  ms-Breadcrumb-overflowButton
+                  ms-Button--icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 16px;
+                    font-weight: 400;
+                    height: 100%;
+                    outline: transparent;
+                    overflow: hidden;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    text-overflow: ellipsis;
+                    user-select: none;
+                    vertical-align: top;
+                    white-space: nowrap;
+                    width: 32px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:hover {
+                    background-color: #f4f4f4;
+                    color: #004578;
+                  }
+                  &:active {
+                    background-color: #eaeaea;
+                    color: #0078d4;
+                  }
+                  &:hover:active {
+                    background-color: #d0d0d0;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    padding-bottom: 4px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 4px;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 15px;
+                  }
+              data-is-focusable={true}
+              disabled={undefined}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
+                      {
+                        flex-shrink: 0;
+                        font-size: 16px;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="More"
+                  role="presentation"
+                />
+              </div>
+            </button>
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Breadcrumb-chevron
+                  {
+                    display: inline-block;
+                  }
+                  {
+                    color: #666666;
+                    font-size: 12px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    -ms-high-contrast-adjust: none;
+                    color: WindowText;
+                  }
+                  @media only screen and (min-width: 480px) and (max-width: 639px){& {
+                    font-size: 8px;
+                  }
+                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
+                    font-size: 8px;
+                  }
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className=
+                ms-Breadcrumb-listItem
+                {
+                  align-items: center;
+                  display: flex;
+                  list-style-type: none;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  position: relative;
+                }
+          >
+            <span
+              className=
+                  ms-Breadcrumb-item
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #333333;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 21px;
+                    font-weight: 100;
+                    max-width: 160px;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                  }
+                  &:hover {
+                    cursor: default;
+                  }
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                TestText4
+              </div>
+            </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumb renders empty breadcrumb 1`] = `
+<div
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
+>
+  <div
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
+  >
+    <div
+      aria-label={undefined}
+      className=
+          ms-Breadcrumb
+          {
+            margin-bottom: 1px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 23px;
+          }
       role="navigation"
     >
       <div
@@ -33,656 +1337,22 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
         role="presentation"
       >
         <ol
-          className="ms-Breadcrumb-list"
-        >
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText1
-              </div>
-            </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText2
-              </div>
-            </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText3
-              </div>
-            </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText4
-              </div>
-            </span>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Breadcrumb renders breadcumb correctly 2`] = `
-<div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
->
-  <div
-    style={
-      Object {
-        "position": "fixed",
-        "visibility": "hidden",
-      }
-    }
-  >
-    <div
-      aria-label={undefined}
-      className="ms-Breadcrumb"
-      role="navigation"
-    >
-      <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
-        className="ms-FocusZone"
-        data-focuszone-id="FocusZone5"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="presentation"
-      >
-        <ol
-          className="ms-Breadcrumb-list"
-        >
-          <li
-            className="ms-Breadcrumb-overflow"
-          >
-            <button
-              aria-describedby={null}
-              aria-expanded={false}
-              aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={null}
-              aria-owns={null}
-              aria-pressed={undefined}
-              className=
-                  ms-Button
-                  ms-Breadcrumb-overflowButton
-                  ms-Button--icon
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 0px;
-                    border: 1px solid transparent;
-                    box-sizing: border-box;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 32px;
-                    outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
-                    padding-top: 0;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 32px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ButtonText;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:hover {
-                    background-color: #f4f4f4;
-                    color: #004578;
-                  }
-                  &:active {
-                    background-color: #eaeaea;
-                    color: #0078d4;
-                  }
-              data-is-focusable={true}
-              disabled={undefined}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              role="button"
-              type="button"
-            >
-              <div
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-                      ms-Button-icon
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        flex-shrink: 0;
-                        font-size: 16px;
-                        height: 16px;
-                        line-height: 16px;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                        text-align: center;
-                        vertical-align: middle;
-                      }
-                  data-icon-name="More"
-                  role="presentation"
-                />
-              </div>
-            </button>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText3
-              </div>
-            </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText4
-              </div>
-            </span>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Breadcrumb renders breadcumb correctly 3`] = `
-<div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
->
-  <div
-    style={
-      Object {
-        "position": "fixed",
-        "visibility": "hidden",
-      }
-    }
-  >
-    <div
-      aria-label={undefined}
-      className="ms-Breadcrumb"
-      role="navigation"
-    >
-      <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
-        className="ms-FocusZone"
-        data-focuszone-id="FocusZone11"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="presentation"
-      >
-        <ol
-          className="ms-Breadcrumb-list"
-        >
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText1
-              </div>
-            </span>
-            <span>
-              *
-            </span>
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText2
-              </div>
-            </span>
-            <span>
-              *
-            </span>
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText3
-              </div>
-            </span>
-            <span>
-              *
-            </span>
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText4
-              </div>
-            </span>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Breadcrumb renders breadcumb correctly 4`] = `
-<div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
->
-  <div
-    style={
-      Object {
-        "position": "fixed",
-        "visibility": "hidden",
-      }
-    }
-  >
-    <div
-      aria-label={undefined}
-      className="ms-Breadcrumb"
-      role="navigation"
-    >
-      <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
-        className="ms-FocusZone"
-        data-focuszone-id="FocusZone16"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="presentation"
-      >
-        <ol
-          className="ms-Breadcrumb-list"
-        >
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText1
-              </div>
-            </span>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
-          </li>
-          <li
-            className="ms-Breadcrumb-overflow"
-          >
-            <button
-              aria-describedby={null}
-              aria-expanded={false}
-              aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={null}
-              aria-owns={null}
-              aria-pressed={undefined}
-              className=
-                  ms-Button
-                  ms-Breadcrumb-overflowButton
-                  ms-Button--icon
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 0px;
-                    border: 1px solid transparent;
-                    box-sizing: border-box;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 32px;
-                    outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
-                    padding-top: 0;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 32px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ButtonText;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:hover {
-                    background-color: #f4f4f4;
-                    color: #004578;
-                  }
-                  &:active {
-                    background-color: #eaeaea;
-                    color: #0078d4;
-                  }
-              data-is-focusable={true}
-              disabled={undefined}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              role="button"
-              type="button"
-            >
-              <div
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
-                    }
-              >
-                <i
-                  aria-hidden={true}
-                  className=
-                      ms-Button-icon
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        flex-shrink: 0;
-                        font-size: 16px;
-                        height: 16px;
-                        line-height: 16px;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                        text-align: center;
-                        vertical-align: middle;
-                      }
-                  data-icon-name="More"
-                  role="presentation"
-                />
-              </div>
-            </button>
-            <i
-              aria-hidden={true}
-              className=
-                  ms-Breadcrumb-chevron
-                  {
-                    display: inline-block;
-                  }
-              data-icon-name="ChevronRight"
-              role="presentation"
-            />
-          </li>
-          <li
-            className="ms-Breadcrumb-listItem"
-          >
-            <span
-              className="ms-Breadcrumb-item"
-            >
-              <div
-                aria-describedby={undefined}
-                className="ms-TooltipHost"
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                TestText4
-              </div>
-            </span>
-          </li>
-        </ol>
+          className=
+              ms-Breadcrumb-list
+              {
+                align-items: stretch;
+                display: flex;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+                white-space: nowrap;
+              }
+        />
       </div>
     </div>
   </div>

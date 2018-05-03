@@ -2,6 +2,65 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.30.0",
+      "tag": "@uifabric/utilities_v5.30.0",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "97c9717fee948a383084ab0caedc66b0d5a441bd",
+            "comment": "Backing out `isEqual` change which is broken."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "920a06d0cd2c37298cd48c156b43bf1fd88fef83",
+            "comment": "Add accompanying utilities work for Keytips"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.29.0",
+      "tag": "@uifabric/utilities_v5.29.0",
+      "date": "Fri, 27 Apr 2018 10:15:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "23d8cfda750315abbb64aaffe22a56c1d536043e",
+            "comment": "Add isEqual and isNotEqual utilities"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "84b34b9d11a9cd053f21bcf7ee620e9d07cde1ca",
+            "comment": "Allow a function to be passed to the Customizers props"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.0",
+      "tag": "@uifabric/utilities_v5.28.0",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6bfddc1c44aa7afcdf053467985490027eb5edcd",
+            "comment": "Adding `isDirectionalKeyCode` helper."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.0 <6.0.0` to `>=5.16.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.27.0",
       "tag": "@uifabric/utilities_v5.27.0",
       "date": "Mon, 23 Apr 2018 10:24:54 GMT",

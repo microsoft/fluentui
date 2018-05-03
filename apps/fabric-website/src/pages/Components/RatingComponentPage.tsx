@@ -7,7 +7,7 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class RatingComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div ref='pageElement' className={ pageStyles.basePage }>
+      <div className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='Rating' backgroundColor='#038387'
             links={
