@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add Keytip, KeytipLayer, and KeytipData component",
+      "comment": "Rating: Hover states in regular and high contrast mode.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keyou@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }
