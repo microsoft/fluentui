@@ -1,3 +1,4 @@
+/* tslint:disable:no-any */
 export const FluentColors: any = {
   // Gray
   black: '#000000',

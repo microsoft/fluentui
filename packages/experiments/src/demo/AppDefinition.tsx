@@ -83,10 +83,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/nav'
         },
         {
-          component: require<any>("../components/fluent/theme/FluentThemePage").FluentThemePage,
-          key: "FluentTheme",
-          name: "Fluent Theme",
-          url: "#/examples/fluenttheme"
+          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
+          key: 'FluentTheme',
+          name: 'Fluent Theme',
+          url: '#/examples/fluenttheme'
         }
       ]
     }

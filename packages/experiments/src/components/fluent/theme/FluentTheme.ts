@@ -1,5 +1,5 @@
-import { createTheme, ITheme } from "office-ui-fabric-react";
-import { FluentColors } from "@uifabric/experiments/lib/components/fluent/theme/FluentColors";
+import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { FluentColors } from '@uifabric/experiments/lib/components/fluent/theme/FluentColors';
 
 const FluentTheme: ITheme = createTheme({
   palette: {
