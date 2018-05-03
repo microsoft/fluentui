@@ -13,14 +13,14 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const { semanticColors, palette } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
-  const checkboxBorderColor = semanticColors.inputBorder;
+  const checkboxBorderColor = semanticColors.smallInputBorder;
   const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
-  const checkboxBorderColorDisabled = semanticColors.disabledText;
+  const checkboxBorderColorDisabled = semanticColors.disabledBodyText;
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxBackgroundDisabled = semanticColors.disabledText;
+  const checkboxBackgroundDisabledChecked = semanticColors.disabledBodyText;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
@@ -104,7 +104,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
         transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
-        /* incase the icon is bigger than the box */
+        /* in case the icon is bigger than the box */
         overflow: 'hidden'
       },
       !disabled && checked && {
@@ -112,11 +112,10 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         borderColor: checkboxBorderColorChecked
       },
       disabled && {
-        background: checkboxBackgroundDisabled,
         borderColor: checkboxBorderColorDisabled
       },
       checked && disabled && {
-        background: checkboxBackgroundDisabled,
+        background: checkboxBackgroundDisabledChecked,
         borderColor: checkboxBorderColorDisabled
       }
     ],
