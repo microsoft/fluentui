@@ -41,11 +41,10 @@
   &:hover {
     cursor: pointer;
 
-    @include high-contrast {
-      &::before {
-        box-sizing: border-box;
-        border-bottom: 2px solid Highlight;
-      }
+    // For high contrast mode. Works in Firefox:
+    &::before {
+      box-sizing: border-box;
+      border-bottom: 2px solid transparent;
     }
   }
 
