@@ -412,6 +412,7 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge, 
  * @param {HTMLElement} hostElement
  * @param {RectangleEdge} targetEdge
  * @param {RectangleEdge} [alignmentEdge]
+ * @param {boolean} coverTarget
  * @returns {IPartialIRectangle}
  */
 function _finalizeElementPosition(
@@ -680,6 +681,7 @@ function _finalizePositionData(positionedElement: IElementPosition, hostElement:
     alignmentEdge: positionedElement.alignmentEdge
   };
 }
+
 function _positionElement(
   props: IPositionProps,
   hostElement: HTMLElement,
