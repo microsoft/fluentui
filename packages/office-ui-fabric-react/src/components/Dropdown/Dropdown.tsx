@@ -483,7 +483,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
     const checkboxStyles = () => {
       return getCheckboxStyles({
-        theme: getTheme()
+        theme: getTheme(),
+        checked: isItemSelected,
+        disabled: item.disabled
       });
     };
 
