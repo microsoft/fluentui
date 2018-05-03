@@ -243,7 +243,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           { onRenderAriaDescription(props, this._onRenderAriaDescription) }
           { onRenderChildren(props, this._onRenderChildren) }
           { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
-          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
+          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(this.state.menuProps, this._onRenderMenu) }
         </div>
       </Tag>
     );
@@ -416,9 +416,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: menuProps });
   }
 
-  private _openMenu = (): void => {
+  private _openMenu = (shouldFocusOnContainer?: boolean): void => {
     if (this.props.menuProps) {
-      const menuProps = this.props.menuProps;
+      const menuProps = {...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
       if (this.props.persistMenu) {
         menuProps.hidden = false;
       }
@@ -426,16 +426,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  private _onToggleMenu = (): void => {
+  private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
     if (this._splitButtonContainer.current) {
       this._splitButtonContainer.current.focus();
     }
 
     const currentMenuProps = this.state.menuProps;
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden ? this._openMenu() : this._dismissMenu();
+      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer) : this._dismissMenu();
     } else {
-      currentMenuProps ? this._dismissMenu() : this._openMenu();
+      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer);
     }
   }
 
@@ -574,13 +574,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onMenuClick(ev, this);
       }
 
-      const menuProps = this.props.menuProps;
-      if (menuProps) {
-        menuProps.shouldFocusOnContainer = false;
-      }
-      this.setState({ menuProps: menuProps });
-
-      this._onToggleMenu();
+      this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -610,15 +604,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     if (!ev.defaultPrevented) {
-      const menuProps = this.props.menuProps;
-      if (menuProps) {
-        // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
-        // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-        // between a real click event and a keypress event.
-        menuProps.shouldFocusOnContainer = (ev.nativeEvent.detail !== 0);
-      }
-      this.setState({ menuProps: menuProps });
-      this._onToggleMenu();
+      // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
+      // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
+      // between a real click event and a keypress event.
+      const shouldFocusOnContainer = ev.nativeEvent.detail !== 0;
+      this._onToggleMenu(shouldFocusOnContainer);
       ev.preventDefault();
       ev.stopPropagation();
     }
