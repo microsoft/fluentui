@@ -135,6 +135,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback to override the default behavior of adding the selected suggestion on dismiss.
    */
   onDismiss?: (ev?: any, selectedItem?: T) => void;
+  /**
+   * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below, as it
+   * enables proper screen reader behavior for each suggestion. It should not be set for modern browsers (Edge, Chrome).
+   * @default false
+   */
+  enableSelectedSuggestionAlert?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {
