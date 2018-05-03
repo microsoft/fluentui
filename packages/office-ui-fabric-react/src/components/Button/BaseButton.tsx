@@ -27,6 +27,8 @@ export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
+const TouchIdleDelay = 500; /* ms */
+
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   private get _isSplitButton(): boolean {
@@ -52,6 +54,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _descriptionId: string;
   private _ariaDescriptionId: string;
   private _classNames: IButtonClassNames;
+  private _processingTouch: boolean;
+  private _lastTouchTimeoutId: number | undefined;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -198,6 +202,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return this._onRenderContent(tag, buttonProps);
+  }
+
+  public componentDidMount() {
+    // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
+    // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
+    // does not support Pointer events yet.
+    if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
+      this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
+    }
   }
 
   public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
@@ -508,6 +521,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-describedby={ ariaDescribedBy + (keytipAttributes['aria-describedby'] || '') }
             className={ classNames && classNames.splitButtonContainer }
             onKeyDown={ this._onSplitButtonContainerKeyDown }
+            onTouchStart={ this._onTouchStart }
             ref={ this._splitButtonContainer }
             data-is-focusable={ true }
             onClick={ !disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined }
@@ -530,8 +544,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this._isExpanded) {
       this._dismissMenu();
     }
-    if (this.props.onClick) {
+
+    if (!this._processingTouch && this.props.onClick) {
       this.props.onClick(ev);
+    } else if (this._processingTouch) {
+      this._onMenuClick(ev);
     }
   }
 
@@ -624,6 +641,36 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
+  private _onTouchStart: () => void = () => {
+    if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
+      this._handleTouchAndPointerEvent();
+    }
+  }
+
+  private _onPointerDown(ev: PointerEvent) {
+    if (ev.pointerType === 'touch') {
+      this._handleTouchAndPointerEvent();
+
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+    }
+  }
+
+  private _handleTouchAndPointerEvent() {
+    // If we already have an existing timeeout from a previous touch and pointer event
+    // cancel that timeout so we can set a nwe one.
+    if (this._lastTouchTimeoutId !== undefined) {
+      this._async.clearTimeout(this._lastTouchTimeoutId);
+      this._lastTouchTimeoutId = undefined;
+    }
+    this._processingTouch = true;
+
+    this._lastTouchTimeoutId = this._async.setTimeout(() => {
+      this._processingTouch = false;
+      this._lastTouchTimeoutId = undefined;
+    }, TouchIdleDelay);
+  }
+
   /**
    * Returns if the user hits a valid keyboard key to open the menu
    * @param ev - the keyboard event
@@ -637,7 +684,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  private _onMenuClick = (ev: React.MouseEvent<HTMLAnchorElement>) => {
+  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);

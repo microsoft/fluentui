@@ -1,6 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 01 May 2018 10:23:32 GMT and should not be manually modified.
+This log was last generated on Wed, 02 May 2018 23:55:40 GMT and should not be manually modified.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Add accompanying styling work for Keytips
+
+### Patches
+
+- fix bad import in styling package
 
 ## 5.29.0
 Tue, 01 May 2018 10:23:32 GMT

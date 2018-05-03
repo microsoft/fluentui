@@ -205,6 +205,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 onInput={ this._onInputChange }
                 className={ classNames.input }
                 type='text'
+                autoComplete='off'
                 role='spinbutton'
                 aria-labelledby={ label && this._labelId }
                 aria-valuenow={ !isNaN(Number(value)) ? Number(value) : undefined }

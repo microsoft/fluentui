@@ -68,6 +68,8 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
   });
 }
 
+const NavigationIdleDelay = 250 /* ms */;
+
 @customizable('ContextualMenu', ['theme'])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -89,7 +91,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _target: Element | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
-  private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
@@ -165,9 +166,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
     }
-
-    this._events.dispose();
-    this._async.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -653,6 +651,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onItemClick={ this._onItemClick }
         onItemClickBase={ this._onItemClickBase }
         onItemKeyDown={ this._onItemKeyDown }
+        onTap={ this._onPointerAndTouchEvent }
       />
     );
   }
@@ -729,7 +728,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._navigationIdleDelay);
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, NavigationIdleDelay);
   }
 
   private _onItemMouseEnter = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
@@ -793,7 +792,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement) {
     const targetElement = target ? target : ev.currentTarget as HTMLElement;
-    const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
+    const { subMenuHoverDelay: timeoutDuration = NavigationIdleDelay } = this.props;
 
     if (item.key === this.state.expandedMenuItemKey) {
       return;
@@ -817,7 +816,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         targetElement.focus();
         this._onItemSubMenuExpand(item, targetElement);
         this._enterTimerId = undefined;
-      }, this._navigationIdleDelay);
+      }, NavigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
@@ -842,10 +841,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     // Cancel a async menu item hover timeout action from being taken and instead
     // just trigger the click event instead.
-    if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-    }
+    this._cancelSubMenuTimer();
+
     if (!hasSubmenu(item) && (!items || !items.length)) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
     } else {
@@ -886,6 +883,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
+    }
+  }
+
+  // Cancel a async menu item hover timeout action from being taken and instead
+  // do new upcoming behavior
+  private _cancelSubMenuTimer = () => {
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
     }
   }
 
@@ -996,5 +1002,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     return subMenuId;
+  }
+
+  private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
+    this._cancelSubMenuTimer();
   }
 }
