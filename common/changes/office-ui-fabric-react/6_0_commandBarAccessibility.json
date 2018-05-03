@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Port CommandBar accessibility fixes to 6.0",
+      "comment": "Port CommandBar accessibility fixes (PR #4686) to 6.0",
       "type": "patch"
     }
   ],
