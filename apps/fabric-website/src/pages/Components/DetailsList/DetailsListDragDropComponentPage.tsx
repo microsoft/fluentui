@@ -10,18 +10,10 @@ export class DetailsListDragDropComponentPage extends React.Component<any, any> 
         title='Drag & Drop'
         componentName='DetailsListDragDropExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
-        overview={ <div /> }
         exampleCards={
           <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
             <DetailsListDragDropExample />
           </ExampleCard>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
-            ] }
-          />
         }
         isHeaderVisible={ false }
       />

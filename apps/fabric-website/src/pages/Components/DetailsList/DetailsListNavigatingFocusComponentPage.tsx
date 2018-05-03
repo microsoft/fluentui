@@ -10,18 +10,10 @@ export class DetailsListNavigatingFocusComponentPage extends React.Component<any
         title='Grouped DetailsListExample'
         componentName='DetailsListNavigatingFocusExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
-        overview={ <div /> }
         exampleCards={
           <ExampleCard title='Navigating to new content preserving keyboard focus with initialFocusedIndex' isOptIn={ true } code={ DetailsListNavigatingFocusExampleCode }>
             <DetailsListNavigatingFocusExample />
           </ExampleCard>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
-            ] }
-          />
         }
         isHeaderVisible={ false }
       />
