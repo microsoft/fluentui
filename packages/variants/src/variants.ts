@@ -2,9 +2,9 @@ import {
   IPalette,
   ISemanticColors,
   ITheme,
-  IPartialTheme
-} from '@uifabric/styling/lib/index';
-import { createTheme } from '@uifabric/styling/lib/index';
+  IPartialTheme,
+  createTheme
+} from 'office-ui-fabric-react/lib/Styling'; // '@uifabric/styling/lib/index';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
