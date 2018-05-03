@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IIconProps } from '../../Icon';
-import { ITheme } from '../..';
+import { ITheme, IStyle } from '../..';
 
 export interface ITextField {
   /** Gets the current value of the input. */
@@ -278,9 +278,47 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 }
 
 export interface ITextFieldStyleProps {
-
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+  /**
+   * Accept custom classNames.
+   */
+  className?: string;
 }
 
 export interface ITextFieldStyles {
-
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  /**
+   * Style for the wrapper element.
+   */
+  wrapper: IStyle;
+  /**
+   * Style for the field group element.
+   */
+  fieldGroup: IStyle;
+  /**
+   * Style for the prefix element.
+   */
+  prefix: IStyle;
+  /**
+   * Style for the suffix element.
+   */
+  suffix: IStyle;
+  /**
+   * Style for the error message element.
+   */
+  errorMessage: IStyle;
+  /**
+   * Style for the description element.
+   */
+  description: IStyle;
+  /**
+   * Style for the field element.
+   */
+  field: IStyle;
 }
