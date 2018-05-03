@@ -10,7 +10,7 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-normalize;
 
   * {
-    @include focus-border();
+    @include focus-border($color: $ms-color-neutralSecondary);
 
     @include high-contrast {
        @include focus-border(0, WindowText, 2px, false);
@@ -129,7 +129,7 @@ $Calendar-dayPicker-margin: 10px;
   align-items: center;
 
   * {
-    @include focus-border(-2px);
+    @include focus-border(-2px, $color: $ms-color-neutralSecondary);
 
     @include high-contrast {
        @include focus-border(-2px, WindowText, 2px, false);

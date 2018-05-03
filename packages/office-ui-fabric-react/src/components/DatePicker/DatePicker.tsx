@@ -252,7 +252,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
           >
-            <FocusTrapZone isClickableOutsideFocusTrap={ true }>
+            <FocusTrapZone isClickableOutsideFocusTrap={ true } disableFirstFocus={ this.props.disableAutoFocus }>
               <Calendar
                 { ...calendarProps }
                 onSelectDate={ this._onSelectDate }
@@ -306,7 +306,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   private _onCalloutPositioned = (): void => {
-    if (this._calendar.current) {
+    if (this._calendar.current && !this.props.disableAutoFocus) {
       this._calendar.current.focus();
     }
   }
