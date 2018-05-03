@@ -286,10 +286,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getVariants(): JSX.Element | undefined {
+    const hasVariants = !!this.props.exampleCards!.props.children.length;
+    const headerText = hasVariants ? 'Variants' : this.props.title;
+
     if (this.props.exampleCards) {
       return (
         <div className='ComponentPage-variantsSection'>
-          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
+          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>{ headerText }</h2>
           { this.props.exampleCards }
         </div>
       );
