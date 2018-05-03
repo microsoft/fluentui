@@ -96,7 +96,6 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
           strings={ DayPickerStrings }
           value={ value! }
           onSelectDate={ this._onSelectDate }
-          disableAutoFocus={ true }
         />
         <DefaultButton onClick={ this._onClick } text='Clear' />
       </div>
