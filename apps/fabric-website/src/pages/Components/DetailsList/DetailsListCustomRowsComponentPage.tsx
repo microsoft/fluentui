@@ -10,18 +10,10 @@ export class DetailsListCustomRowsComponentPage extends React.Component<any, any
         title='Custom Item Rows'
         componentName='DetailsListCustomRowsExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
-        overview={ <div /> }
         exampleCards={
           <ExampleCard title='Rendering custom item rows' isOptIn={ true } code={ DetailsListCustomRowsExampleCode }>
             <DetailsListCustomRowsExample />
           </ExampleCard>
-        }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
-            ] }
-          />
         }
         isHeaderVisible={ false }
       />

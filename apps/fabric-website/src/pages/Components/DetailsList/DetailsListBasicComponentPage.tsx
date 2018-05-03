@@ -15,13 +15,6 @@ export class DetailsListBasicComponentPage extends React.Component<any, any> {
             <DetailsListBasicExample />
           </ExampleCard>
         }
-        propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
-            ] }
-          />
-        }
         isHeaderVisible={ false }
       />
     );
