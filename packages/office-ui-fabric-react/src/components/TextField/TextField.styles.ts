@@ -13,7 +13,7 @@ const GlobalClassNames = {
 
 export const getStyles = (props: ITextFieldStyleProps): ITextFieldStyles => {
   const { className, theme } = props;
-  const { palette } = theme;
+  // const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
