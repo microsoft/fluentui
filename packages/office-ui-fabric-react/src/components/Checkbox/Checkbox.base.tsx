@@ -85,15 +85,13 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    this._classNames = this.props.getClassNames ?
-      this.props.getClassNames(theme!, !!disabled, !!isChecked, !!isReversed, className)
-      : getClassNames(getStyles!, {
-        theme: theme!,
-        className,
-        disabled,
-        checked: isChecked,
-        reversed: isReversed
-      });
+    this._classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      className,
+      disabled,
+      checked: isChecked,
+      reversed: isReversed
+    });
 
     return (
       <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
