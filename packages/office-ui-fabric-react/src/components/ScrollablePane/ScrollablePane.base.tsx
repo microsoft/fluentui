@@ -84,7 +84,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public componentDidMount() {
     const { initialScrollPosition } = this.props;
-    this._events.on(this.contentContainer, 'scroll', this.notifySubscribers);
+    this._events.on(this.contentContainer, 'scroll', this._async.throttle(this.notifySubscribers, 50));
     this._events.on(window, 'resize', this._onWindowResize);
     if (this.contentContainer && initialScrollPosition) {
       this.contentContainer.scrollTop = initialScrollPosition;

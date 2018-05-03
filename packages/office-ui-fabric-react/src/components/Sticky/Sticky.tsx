@@ -172,12 +172,16 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getNonStickyPlaceholderHeight(): React.CSSProperties {
     const { isStickyTop, isStickyBottom, } = this.state;
-    const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
-
-    return {
-      display: isStickyTop || isStickyBottom ? 'block' : 'none',
-      height: height
-    };
+    if (isStickyTop || isStickyBottom) {
+      const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
+      return {
+        height: height
+      };
+    } else {
+      return {
+        position: 'absolute'
+      };
+    }
   }
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {

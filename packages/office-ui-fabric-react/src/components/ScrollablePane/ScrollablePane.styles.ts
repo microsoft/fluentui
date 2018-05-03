@@ -30,34 +30,28 @@ export const getStyles = (
     overflowX: 'auto'
   };
 
-  const maxHeightStyles: IStyle = {
-    height: 'inherit',
-    maxHeight: 'inherit',
-    zIndex: ZIndexes.ScrollablePane
+  const positioningStyle: IStyle = {
+    zIndex: ZIndexes.ScrollablePane,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    WebkitOverflowScrolling: 'touch'
   };
 
   return ({
     root: [
       classNames.root,
-      {
-        WebkitOverflowScrolling: 'touch',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-      },
-      maxHeightStyles,
+      positioningStyle,
       className
     ],
     contentContainer: [
       classNames.contentContainer,
       {
-        overflowY: 'auto',
-        position: 'relative',
-        WebkitOverflowScrolling: 'touch'
+        overflowY: 'auto'
       },
-      maxHeightStyles
+      positioningStyle
     ],
     stickyAbove: [
       {
