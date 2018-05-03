@@ -1,6 +1,5 @@
 /* tslint:disable:no-any */
-export const FluentColors: any = {
-  // Gray
+export const GrayColors: any = {
   black: '#000000',
   gray220: '#11100f',
   gray210: '#161514',
@@ -24,9 +23,10 @@ export const FluentColors: any = {
   gray30: '#edebe9',
   gray20: '#f3f2f1',
   gray10: '#faf9f8',
-  white: '#ffffff',
+  white: '#ffffff'
+};
 
-  // Illustration
+export const IllustrationColors: any = {
   pinkRed40: '#750b1c',
   pinkRed30: '#761721',
   pinkRed20: '#e6808a',
@@ -222,9 +222,10 @@ export const FluentColors: any = {
   pink40: '#c30052',
   pink30: '#ea005e',
   pink20: '#ee3f86',
-  pink10: '#edbed3',
+  pink10: '#edbed3'
+}
 
-  // Communication
+export const CommunicationColors: any = {
   communication90: '#004578',
   communication80: '#005a9e',
   communication70: '#106ebe',
@@ -233,36 +234,40 @@ export const FluentColors: any = {
   communication40: '#71afe5',
   communication30: '#c7e0f4',
   communication20: '#deecf9',
-  communication10: '#eff6fc',
+  communication10: '#eff6fc'
+};
 
-  // Excel
+export const ExcelColors: any = {
   excel70: '#002901',
   excel60: '#0b4218',
   excel50: '#165a2f',
   excel40: '#217346',
   excel30: '#4c916c',
   excel20: '#77b091',
-  excel10: '#a2ceb7',
+  excel10: '#a2ceb7'
+};
 
-  // PowerPoint
+export const PowerPointColors: any = {
   powerPoint70: '#620000',
   powerPoint60: '#7e180e',
   powerPoint50: '#9b2f1c',
   powerPoint40: '#b7472a',
   powerPoint30: '#c96c54',
   powerPoint20: '#dc927e',
-  powerPoint10: '#eeb7a9',
+  powerPoint10: '#eeb7a9'
+};
 
-  // Word
+export const WordColors: any = {
   word70: '#001b59',
   word60: '#0e2f6f',
   word50: '#1d4384',
   word40: '#2b579a',
   word30: '#557bb3',
   word20: '#7f9ecc',
-  word10: '#a9c2e6',
+  word10: '#a9c2e6'
+};
 
-  // OneNote
+export const OneNoteColors: any = {
   oneNote80: '#4c0f6c',
   oneNote70: '#5c1384',
   oneNote60: '#7719aa',
@@ -270,18 +275,20 @@ export const FluentColors: any = {
   oneNote40: '#d0afe2',
   oneNote30: '#ddc5ec',
   oneNote20: '#efdffa',
-  oneNote10: '#f5edfd',
+  oneNote10: '#f5edfd'
+};
 
-  // Teams
+export const TeamsColors: any = {
   teams70: '#001765',
   teams60: '#1c2d7e',
   teams50: '#394296',
   teams40: '#5558af',
   teams30: '#787bc3',
   teams20: '#9b9dd8',
-  teams10: '#bec0ec',
+  teams10: '#bec0ec'
+};
 
-  // High contrast
+export const HighContrastColors: any = {
   contrastBlackDisabled: '#00ff00',
   contrastWhiteDisabled: '#600000',
   contrastBlackSelected: '#1aebff',
