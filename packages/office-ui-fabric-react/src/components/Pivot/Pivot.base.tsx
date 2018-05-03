@@ -212,7 +212,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     this._keyToTabIds = {};
 
     React.Children.map(props.children, (child: any, index: number) => {
-      if (typeof child === 'object' && child.type === PivotItem) {
+      if (typeof child === 'object' && child.type.name === PivotItem.prototype.className) {
         const pivotItem = child as PivotItem;
         const itemKey = pivotItem.props.itemKey || index.toString();
 
