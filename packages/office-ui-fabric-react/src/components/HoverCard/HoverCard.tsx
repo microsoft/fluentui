@@ -113,7 +113,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             trapFocus={ !!this.props.trapFocus }
-            firstFocus={ openMode === OpenCardMode.hotKey }
+            firstFocus={ openMode === OpenCardMode.hotKey || openMode === OpenCardMode.hover }
             targetElement={ this._getTargetElement() }
             onEnter={ this._cardOpen }
             onLeave={ this._executeCardDimiss }

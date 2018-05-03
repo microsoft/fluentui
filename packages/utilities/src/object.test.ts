@@ -1,4 +1,4 @@
-import { assign, filteredAssign, mapEnumByName } from './object';
+import { assign, filteredAssign, mapEnumByName, values } from './object';
 
 describe('assign', () => {
   it('can copy an object', () => {
@@ -51,5 +51,20 @@ describe('mapEnumByName', () => {
     });
 
     expect(result).toEqual(['first', 'second', 'third', 'fourth']);
+  });
+});
+
+describe('values', () => {
+  it('gets all values in a dictionary object', () => {
+    const obj = {
+      'test': 1,
+      'ing': 2,
+      '123': 3
+    };
+    const objValues = values<number>(obj);
+    expect(objValues).toHaveLength(3);
+    expect(objValues).toContain(1);
+    expect(objValues).toContain(2);
+    expect(objValues).toContain(3);
   });
 });

@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.30.0",
+      "tag": "@uifabric/utilities_v5.30.0",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "97c9717fee948a383084ab0caedc66b0d5a441bd",
+            "comment": "Backing out `isEqual` change which is broken."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "920a06d0cd2c37298cd48c156b43bf1fd88fef83",
+            "comment": "Add accompanying utilities work for Keytips"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.29.0",
       "tag": "@uifabric/utilities_v5.29.0",
       "date": "Fri, 27 Apr 2018 10:15:52 GMT",
