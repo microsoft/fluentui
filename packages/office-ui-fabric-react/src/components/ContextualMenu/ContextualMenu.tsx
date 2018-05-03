@@ -828,6 +828,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
         this.setState({
+          // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
+          // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
+          // between a real click event and a keypress event.
           expandedByMouseClick: (ev.nativeEvent.detail !== 0)
         });
         this._onItemSubMenuExpand(item, target);
