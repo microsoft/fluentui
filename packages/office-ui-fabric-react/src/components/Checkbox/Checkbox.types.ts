@@ -102,11 +102,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   ariaSetSize?: number;
 
   /**
-   * Custom styles for the component
-   */
-  styles?: ICheckboxStyles;
-
-  /**
   * Call to provide customized styling that will layer on top of the variant rules.
   */
   getStyles?: IStyleFunction<ICheckboxStyleProps, ICheckboxStyles>;
