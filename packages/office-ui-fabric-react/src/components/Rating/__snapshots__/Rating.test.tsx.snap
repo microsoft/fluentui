@@ -91,6 +91,12 @@ exports[`Rating Renders Rating correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
@@ -228,6 +234,12 @@ exports[`Rating Renders Rating correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
@@ -363,6 +375,12 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
+          }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
           }
           {
             font-size: 16px;
@@ -500,6 +518,12 @@ exports[`Rating Renders Rating correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
@@ -635,6 +659,12 @@ exports[`Rating Renders Rating correctly 1`] = `
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
+          }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
           }
           {
             font-size: 16px;
