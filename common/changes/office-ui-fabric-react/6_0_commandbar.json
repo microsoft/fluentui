@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBarButton: High contrast hover state.",
-      "type": "patch"
+      "comment": "CommandBarButton: Supports custom styling and button aliasing. Interface improvements.",
+      "type": "major"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "micahgodbolt@gmail.com"
 }
