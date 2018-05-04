@@ -23,7 +23,8 @@ module.exports = function (argv) {
 
   return resources.createConfig(
     entryPointName,
-    isProductionArg, {
+    isProductionArg,
+    {
       entry: {
         [entryPointName]: './lib/root.js'
       },
@@ -33,12 +34,13 @@ module.exports = function (argv) {
         chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
       },
 
-      externals: [{
-        'react': 'React'
-      },
-      {
-        'react-dom': 'ReactDOM'
-      }
+      externals: [
+        {
+          'react': 'React'
+        },
+        {
+          'react-dom': 'ReactDOM'
+        },
       ],
 
       resolve: {
