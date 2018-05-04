@@ -41,6 +41,7 @@ export const enum IconNames {
   Share = 'Share',
   Lock = 'Lock',
   BlockedSite = 'BlockedSite',
+  BlockedSiteSolid12 = 'BlockedSiteSolid12',
   ReportHacked = 'ReportHacked',
   EMI = 'EMI',
   MiniLink = 'MiniLink',

@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -38,6 +38,7 @@ export function initializeIcons(
       'Search': '\uE721',
       'Share': '\uE72D',
       'BlockedSite': '\uE72F',
+      'BlockedSiteSolid12': '\uF70A',
       'FavoriteStar': '\uE734',
       'FavoriteStarFill': '\uE735',
       'CheckMark': '\uE73E',
