@@ -484,6 +484,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     background-color: #f4f4f4;
                     color: #004578;
                   }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
                   &:active {
                     background-color: #c8c8c8;
                     color: #333333;
@@ -499,10 +503,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   }
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
                   }
               data-is-focusable={true}
               disabled={undefined}
@@ -1203,6 +1203,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     background-color: #f4f4f4;
                     color: #004578;
                   }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
                   &:active {
                     background-color: #c8c8c8;
                     color: #333333;
@@ -1218,10 +1222,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
                   @media only screen and (min-width: 480px) and (max-width: 639px){& {
                     font-size: 15px;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
                   }
               data-is-focusable={true}
               disabled={undefined}
