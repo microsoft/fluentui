@@ -28,6 +28,9 @@ exports[`Link renders Link correctly 1`] = `
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
+      }
       &:focus {
         color: #0078d4;
       }
@@ -67,6 +70,9 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
+      }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
       }
       &:focus {
         color: #0078d4;
@@ -123,6 +129,9 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
+      }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
       }
       &:focus {
         color: #0078d4;

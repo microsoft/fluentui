@@ -34,6 +34,9 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       &:hover {
         border-color: #212121;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+      }
       &:hover $iconContainer {
         color: #005a9e;
       }
