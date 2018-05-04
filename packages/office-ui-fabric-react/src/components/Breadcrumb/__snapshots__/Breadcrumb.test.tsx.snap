@@ -110,11 +110,15 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
-                    display: inline-block;
-                  }
-                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
                     font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -128,7 +132,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className=
@@ -184,11 +190,15 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
-                    display: inline-block;
-                  }
-                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
                     font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -202,7 +212,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className=
@@ -258,11 +270,15 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
-                    display: inline-block;
-                  }
-                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
                     font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -276,7 +292,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className=
@@ -509,23 +527,29 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   className=
                       ms-Button-icon
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         display: inline-block;
-                      }
-                      {
                         flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
                         font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
+                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
                   data-icon-name="More"
                   role="presentation"
-                />
+                >
+                  
+                </i>
               </div>
             </button>
             <i
@@ -533,11 +557,15 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
-                    display: inline-block;
-                  }
-                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
                     font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -551,7 +579,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className=
@@ -607,11 +637,15 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
-                    display: inline-block;
-                  }
-                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
                     font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -625,7 +659,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className=
@@ -1066,11 +1102,15 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
-                    display: inline-block;
-                  }
-                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
                     font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -1084,7 +1124,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className=
@@ -1204,23 +1246,29 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   className=
                       ms-Button-icon
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         display: inline-block;
-                      }
-                      {
                         flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
                         font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
+                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
                   data-icon-name="More"
                   role="presentation"
-                />
+                >
+                  
+                </i>
               </div>
             </button>
             <i
@@ -1228,11 +1276,15 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
               className=
                   ms-Breadcrumb-chevron
                   {
-                    display: inline-block;
-                  }
-                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #666666;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
                     font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    speak: none;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
@@ -1246,7 +1298,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
               data-icon-name="ChevronRight"
               role="presentation"
-            />
+            >
+              
+            </i>
           </li>
           <li
             className=

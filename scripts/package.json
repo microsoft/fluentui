@@ -50,7 +50,7 @@
   "bundlesize": [
     {
       "path": "../apps/test-bundle-button/dist/test-bundle-button.min.js",
-      "maxSize": "51 kB"
+      "maxSize": "51.0 kB"
     }
   ]
 }
