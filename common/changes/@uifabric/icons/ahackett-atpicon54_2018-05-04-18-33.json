@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "add BlockedSiteSolid12 icon",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "ahackett@microsoft.com"
+}
