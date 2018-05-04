@@ -12,7 +12,7 @@ import {
   getSplitButtonVerticalDividerClassNames
 } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../KeytipData';
-import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { getIsChecked, isItemDisabled } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../Divider';
 import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.types';
 
@@ -84,27 +84,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     );
   }
 
-  public openSubMenu = (): void => {
-    const { item, openSubMenu } = this.props;
-    if (hasSubmenu(item) && openSubMenu && this._splitButton) {
-      openSubMenu(item, this._splitButton);
-    }
-  }
-
-  public dismissSubMenu = (): void => {
-    const { item, dismissSubMenu } = this.props;
-    if (hasSubmenu(item) && dismissSubMenu) {
-      dismissSubMenu();
-    }
-  }
-
-  public dismissMenu = (dismissAll?: boolean): void => {
-    const { dismissMenu } = this.props;
-    if (dismissMenu) {
-      dismissMenu(dismissAll);
-    }
-  }
-
   private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
@@ -151,7 +130,10 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
-      onItemMouseDown
+      onItemMouseDown,
+      openSubMenu,
+      dismissSubMenu,
+      dismissMenu
     } = this.props;
 
     const itemProps = {
@@ -161,6 +143,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps,
       split: true,
+      key: item.key
     } as IContextualMenuItem;
 
     const buttonProps = assign({}, getNativeProps(itemProps, buttonProperties), {
@@ -175,7 +158,17 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
 
     return (
       <button { ...buttonProps } >
-        <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
+        <ChildrenRenderer
+          componentRef={ item.componentRef }
+          item={ itemProps }
+          classNames={ classNames }
+          index={ index }
+          hasIcons={ false }
+          openSubMenu={ openSubMenu }
+          dismissSubMenu={ dismissSubMenu }
+          dismissMenu={ dismissMenu }
+          getContainerElement={ this._getContainerElement }
+        />
       </button >
     );
   }
@@ -291,5 +284,9 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
     }, TouchIdleDelay);
+  }
+
+  private _getContainerElement = (): HTMLElement | undefined => {
+    return this._splitButton;
   }
 }

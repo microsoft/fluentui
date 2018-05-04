@@ -1,30 +1,7 @@
 import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 
-export interface IContextualMenuItemWrapper {
-  /**
-   * Function to open this item's subMenu, if present.
-   */
-  openSubMenu: () => void;
-
-  /**
-   * Function to close this item's subMenu, if present.
-   */
-  dismissSubMenu: () => void;
-
-  /**
-   * Dismiss the menu this item belongs to.
-   */
-  dismissMenu: (dismissAll?: boolean) => void;
-}
-
 export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
-  /**
-   * Optional callback to access the IContextualMenuRenderItem interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: (component: IContextualMenuItemWrapper | null) => void;
-
   /**
    * The IContextualMenuItem that is used to render the item in the menu.
    */
@@ -36,12 +13,12 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   classNames: IMenuItemClassNames;
 
   /**
-   * The index number of the split button among all items in the contextual menu including things like dividers and headers.
+   * The index number of the wrapper among all items in the contextual menu including things like dividers and headers.
    */
   index: number;
 
   /**
-   * The index number of the split button among all items in the contextual menu excluding dividers and headers.
+   * The index number of the wrapper among all items in the contextual menu excluding dividers and headers.
    */
   focusableElementIndex: number;
 
@@ -51,12 +28,12 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   totalItemCount: number;
 
   /**
-   * Whether or not if the item for the split button uses checkmarks.
+   * Whether or not if the item for the wrapper uses checkmarks.
    */
   hasCheckmarks?: boolean;
 
   /**
-   * Whether or not the item for the split button uses icons.
+   * Whether or not the item for the wrapper uses icons.
    */
   hasIcons?: boolean;
 
@@ -67,22 +44,22 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
-   * Callback for when the user's mouse enters the split button.
+   * Callback for when the user's mouse enters the wrapper.
    */
   onItemMouseEnter?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target: HTMLElement) => boolean | void;
 
   /**
-   * Callback for when the user's mouse leaves the split button.
+   * Callback for when the user's mouse leaves the wrapper.
    */
   onItemMouseLeave?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Callback for when the user's mouse moves in the split button.
+   * Callback for when the user's mouse moves in the wrapper.
    */
   onItemMouseMove?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target: HTMLElement) => void;
 
   /**
-   * Callback for the mousedown event on the icon button in the split menu.
+   * Callback for the mousedown event on the icon button in the wrapper.
    */
   onItemMouseDown?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) => void;
 
@@ -92,7 +69,7 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   executeItemClick?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 
   /**
-   * Callback for when the click event on the icon button from the split button.
+   * Callback for when the click event on the icon button from the wrapper.
    */
   onItemClick?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 
@@ -102,7 +79,7 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   onItemClickBase?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, target: HTMLElement) => void;
 
   /**
-   * Callback for keyboard events on the split button.
+   * Callback for keyboard events on the wrapper.
    */
   onItemKeyDown?: (item: IContextualMenuItem, ev: React.KeyboardEvent<HTMLElement>) => void;
 

@@ -3,6 +3,7 @@ import {
   BaseComponent,
   buttonProperties,
   getNativeProps,
+  createRef
 } from '../../../Utilities';
 import { IContextualMenuButtonProps } from './ContextualMenuButton.types';
 import { KeytipData } from '../../KeytipData';
@@ -10,7 +11,7 @@ import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/con
 import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
 
 export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonProps, {}> {
-  private _btn: HTMLButtonElement;
+  private _btn = createRef<HTMLButtonElement>();
 
   public render() {
     const {
@@ -24,16 +25,11 @@ export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonPro
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       expandedMenuItemKey,
       onItemMouseDown,
-      onItemClick
+      onItemClick,
+      openSubMenu,
+      dismissSubMenu,
+      dismissMenu
     } = this.props;
-
-    let { keytipProps } = item;
-    if (keytipProps) {
-      keytipProps = {
-        ...keytipProps,
-        hasMenu: true
-      };
-    }
 
     const subMenuId = this._getSubMenuId(item);
     let ariaLabel = '';
@@ -75,6 +71,14 @@ export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonPro
       style: item.style
     };
 
+    let { keytipProps } = item;
+    if (keytipProps && itemHasSubmenu) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
       <KeytipData
         keytipProps={ keytipProps }
@@ -83,43 +87,27 @@ export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonPro
       >
         { (keytipAttributes: any): JSX.Element => (
           <button
-            ref={ (btn: HTMLButtonElement) => this._btn = btn }
+            ref={ this._btn }
             { ...buttonNativeProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
             { ...itemButtonProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
             { ...keytipAttributes }
           >
             <ChildrenRenderer
+              componentRef={ item.componentRef }
               item={ item }
               classNames={ classNames }
               index={ index }
               onCheckmarkClick={ hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined }
               hasIcons={ hasIcons }
+              openSubMenu={ openSubMenu }
+              dismissSubMenu={ dismissSubMenu }
+              dismissMenu={ dismissMenu }
+              getContainerElement={ this._getContainerElement }
             />
           </button>
         ) }
       </KeytipData>
     );
-  }
-
-  public openSubMenu = (): void => {
-    const { item, openSubMenu } = this.props;
-    if (hasSubmenu(item) && openSubMenu && this._btn) {
-      openSubMenu(item, this._btn);
-    }
-  }
-
-  public dismissSubMenu = (): void => {
-    const { item, dismissSubMenu } = this.props;
-    if (hasSubmenu(item) && dismissSubMenu) {
-      dismissSubMenu();
-    }
-  }
-
-  public dismissMenu = (dismissAll?: boolean): void => {
-    const { dismissMenu } = this.props;
-    if (dismissMenu) {
-      dismissMenu(dismissAll);
-    }
   }
 
   private _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -162,5 +150,9 @@ export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonPro
     if (getSubMenuId) {
       return getSubMenuId(item);
     }
+  }
+
+  private _getContainerElement = (): HTMLElement | undefined => {
+    return this._btn.current ? this._btn.current : undefined;
   }
 }

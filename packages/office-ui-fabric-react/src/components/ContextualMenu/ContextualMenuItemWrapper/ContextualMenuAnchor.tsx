@@ -3,6 +3,7 @@ import {
   BaseComponent,
   anchorProperties,
   getNativeProps,
+  createRef
 } from '../../../Utilities';
 import { IContextualMenuAnchorProps } from './ContextualMenuAnchor.types';
 import { KeytipData } from '../../KeytipData';
@@ -10,7 +11,7 @@ import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/in
 import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
 
 export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorProps, {}> {
-  private _anchor: HTMLAnchorElement;
+  private _anchor = createRef<HTMLAnchorElement>();
 
   public render() {
     const {
@@ -23,7 +24,10 @@ export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorPro
       hasIcons,
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       expandedMenuItemKey,
-      onItemClick
+      onItemClick,
+      openSubMenu,
+      dismissSubMenu,
+      dismissMenu
     } = this.props;
 
     let anchorRel = item.rel;
@@ -36,6 +40,14 @@ export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorPro
     const nativeProps = getNativeProps(item, anchorProperties);
     const disabled = isItemDisabled(item);
 
+    let { keytipProps } = item;
+    if (keytipProps && itemHasSubmenu) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
       <div>
         <KeytipData
@@ -47,7 +59,7 @@ export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorPro
             <a
               { ...nativeProps }
               { ...keytipAttributes }
-              ref={ (anchor: HTMLAnchorElement) => this._anchor = anchor }
+              ref={ this._anchor }
               href={ item.href }
               target={ item.target }
               rel={ anchorRel }
@@ -66,37 +78,21 @@ export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorPro
               onKeyDown={ itemHasSubmenu ? this._onItemKeyDown : null }
             >
               <ChildrenRenderer
+                componentRef={ item.componentRef }
                 item={ item }
                 classNames={ classNames }
                 index={ index }
                 onCheckmarkClick={ hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined }
                 hasIcons={ hasIcons }
+                openSubMenu={ openSubMenu }
+                dismissSubMenu={ dismissSubMenu }
+                dismissMenu={ dismissMenu }
+                getContainerElement={ this._getContainerElement }
               />
             </a>
           ) }
         </KeytipData>
       </div>);
-  }
-
-  public openSubMenu = (): void => {
-    const { item, openSubMenu } = this.props;
-    if (hasSubmenu(item) && openSubMenu && this._anchor) {
-      openSubMenu(item, this._anchor);
-    }
-  }
-
-  public dismissSubMenu = (): void => {
-    const { item, dismissSubMenu } = this.props;
-    if (hasSubmenu(item) && dismissSubMenu) {
-      dismissSubMenu();
-    }
-  }
-
-  public dismissMenu = (dismissAll?: boolean): void => {
-    const { dismissMenu } = this.props;
-    if (dismissMenu) {
-      dismissMenu(dismissAll);
-    }
   }
 
   private _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -132,5 +128,9 @@ export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorPro
     if (getSubMenuId) {
       return getSubMenuId(item);
     }
+  }
+
+  private _getContainerElement = (): HTMLElement | undefined => {
+    return this._anchor.current ? this._anchor.current : undefined;
   }
 }

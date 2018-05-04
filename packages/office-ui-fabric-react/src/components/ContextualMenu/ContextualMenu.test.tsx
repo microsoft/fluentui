@@ -9,7 +9,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
-import { IContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
+import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
 import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {
@@ -863,59 +863,160 @@ describe('ContextualMenu', () => {
   });
 
   describe('IContextualMenuRenderItem function tests', () => {
-    const contextualItem = createRef<IContextualMenuItemWrapper>();
+    const contextualItem = createRef<IContextualMenuRenderItem>();
     let menuDismissed: boolean;
     const onDismiss = (ev?: any, dismissAll?: boolean) => { menuDismissed = true; };
 
-    beforeEach(() => {
-      menuDismissed = false;
-      const menu: IContextualMenuItem[] = [
-        {
-          name: 'Test1',
-          key: 'Test1',
-          componentRef: contextualItem,
-          subMenuProps: {
-            items: [
-              {
-                name: 'Test2',
-                key: 'Test2',
-                className: 'SubMenuClass'
-              },
-              {
-                name: 'Test3',
-                key: 'Test3',
-                className: 'SubMenuClass'
-              }
-            ],
+    describe('for a button element', () => {
+      beforeEach(() => {
+        menuDismissed = false;
+        const menu: IContextualMenuItem[] = [
+          {
+            name: 'Test1',
+            key: 'Test1',
+            componentRef: contextualItem,
+            subMenuProps: {
+              items: [
+                {
+                  name: 'Test2',
+                  key: 'Test2',
+                  className: 'SubMenuClass'
+                },
+                {
+                  name: 'Test3',
+                  key: 'Test3',
+                  className: 'SubMenuClass'
+                }
+              ],
+            }
           }
-        }
-      ];
+        ];
+        ReactTestUtils.renderIntoDocument<ContextualMenu>(
+          <ContextualMenu
+            onDismiss={ onDismiss }
+            items={ menu }
+          />
+        );
+      });
 
-      ReactTestUtils.renderIntoDocument<ContextualMenu>(
-        <ContextualMenu
-          onDismiss={ onDismiss }
-          items={ menu }
-        />
-      );
+      it('openSubMenu will open the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+      });
+
+      it('dismissSubMenu will close the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+        contextualItem.value!.dismissSubMenu();
+        expect(document.querySelector('.SubMenuClass')).toEqual(null);
+      });
+
+      it('dismissMenu will close the item`s menu', () => {
+        contextualItem.value!.dismissMenu();
+        expect(menuDismissed).toEqual(true);
+      });
     });
 
-    it('openSubMenu will open the item`s submenu if present', () => {
-      contextualItem.value!.openSubMenu();
-      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+    describe('for a split button element', () => {
+      beforeEach(() => {
+        menuDismissed = false;
+        const menu: IContextualMenuItem[] = [
+          {
+            name: 'Test1',
+            key: 'Test1',
+            componentRef: contextualItem,
+            split: true,
+            subMenuProps: {
+              items: [
+                {
+                  name: 'Test2',
+                  key: 'Test2',
+                  className: 'SubMenuClass'
+                },
+                {
+                  name: 'Test3',
+                  key: 'Test3',
+                  className: 'SubMenuClass'
+                }
+              ],
+            }
+          }
+        ];
+        ReactTestUtils.renderIntoDocument<ContextualMenu>(
+          <ContextualMenu
+            onDismiss={ onDismiss }
+            items={ menu }
+          />
+        );
+      });
+
+      it('openSubMenu will open the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+      });
+
+      it('dismissSubMenu will close the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+        contextualItem.value!.dismissSubMenu();
+        expect(document.querySelector('.SubMenuClass')).toEqual(null);
+      });
+
+      it('dismissMenu will close the item`s menu', () => {
+        contextualItem.value!.dismissMenu();
+        expect(menuDismissed).toEqual(true);
+      });
     });
 
-    it('dismissSubMenu will close the item`s submenu if present', () => {
-      // Open the submenu with a click
-      const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-      ReactTestUtils.Simulate.click(menuItem);
-      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
-      contextualItem.value!.dismissSubMenu();
-      expect(document.querySelector('.SubMenuClass')).toEqual(null);
-    });
+    describe('for an anchor element', () => {
+      beforeEach(() => {
+        menuDismissed = false;
+        const menu: IContextualMenuItem[] = [
+          {
+            name: 'Test1',
+            key: 'Test1',
+            componentRef: contextualItem,
+            href: '#test',
+            subMenuProps: {
+              items: [
+                {
+                  name: 'Test2',
+                  key: 'Test2',
+                  className: 'SubMenuClass'
+                },
+                {
+                  name: 'Test3',
+                  key: 'Test3',
+                  className: 'SubMenuClass'
+                }
+              ],
+            }
+          }
+        ];
+        ReactTestUtils.renderIntoDocument<ContextualMenu>(
+          <ContextualMenu
+            onDismiss={ onDismiss }
+            items={ menu }
+          />
+        );
+      });
 
-    it('dismissMenu will close the item`s menu', () => {
-      contextualItem.value!.dismissMenu();
-      expect(menuDismissed).toEqual(true);
+      it('openSubMenu will open the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+      });
+
+      it('dismissSubMenu will close the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+        contextualItem.value!.dismissSubMenu();
+        expect(document.querySelector('.SubMenuClass')).toEqual(null);
+      });
+
+      it('dismissMenu will close the item`s menu', () => {
+        contextualItem.value!.dismissMenu();
+        expect(menuDismissed).toEqual(true);
+      });
     });
   });
 });

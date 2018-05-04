@@ -15,8 +15,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
-import { IContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
+import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
@@ -257,9 +256,9 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
 export interface IContextualMenuItem {
   /**
-   * Optional callback to access the IContextualMenuItemWrapper interface. This will get passed down to the item that renders the ContextualMenuItem.
+   * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
    */
-  componentRef?: (component: IContextualMenuItemWrapper | null) => void;
+  componentRef?: (component: IContextualMenuRenderItem | null) => void;
 
   /**
    * Unique id to identify the item

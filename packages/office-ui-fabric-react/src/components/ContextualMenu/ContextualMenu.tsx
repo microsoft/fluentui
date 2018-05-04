@@ -506,7 +506,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
         dismissMenu={ dismissMenu }
-        componentRef={ item.componentRef }
       />
     );
   }
@@ -546,7 +545,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
         dismissMenu={ dismissMenu }
-        componentRef={ item.componentRef }
       />
     );
   }
@@ -583,7 +581,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
         dismissMenu={ dismissMenu }
-        componentRef={ item.componentRef }
         onTap={ this._onPointerAndTouchEvent }
       />
     );
