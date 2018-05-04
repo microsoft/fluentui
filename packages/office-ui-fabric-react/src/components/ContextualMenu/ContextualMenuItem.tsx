@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
-import { BaseComponent, getRTL } from '../../Utilities';
+import { getRTL } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
@@ -67,42 +67,19 @@ const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   return null;
 };
 
-export class ContextualMenuItem extends BaseComponent<IContextualMenuItemProps, {}> {
-  public render() {
-    const { item, classNames } = this.props;
+export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemProps> = (props) => {
+  const { item, classNames } = props;
 
-    return (
-      <div
-        className={
-          item.split ? classNames.linkContentMenu : classNames.linkContent
-        }
-      >
-        { renderCheckMarkIcon(this.props) }
-        { renderItemIcon(this.props) }
-        { renderItemName(this.props) }
-        { renderSubMenuIcon(this.props) }
-      </div>
-    );
-  }
-
-  public openSubMenu = (): void => {
-    const { item, openSubMenu, subMenuTargetRef } = this.props;
-    if (hasSubmenu(item) && openSubMenu && subMenuTargetRef && subMenuTargetRef.current) {
-      openSubMenu(item, subMenuTargetRef.current);
-    }
-  }
-
-  public dismissSubMenu = (): void => {
-    const { item, dismissSubMenu } = this.props;
-    if (hasSubmenu(item) && dismissSubMenu) {
-      dismissSubMenu();
-    }
-  }
-
-  public dismissMenu = (dismissAll?: boolean): void => {
-    const { dismissMenu } = this.props;
-    if (dismissMenu) {
-      dismissMenu(dismissAll);
-    }
-  }
-}
+  return (
+    <div
+      className={
+        item.split ? classNames.linkContentMenu : classNames.linkContent
+      }
+    >
+      { renderCheckMarkIcon(props) }
+      { renderItemIcon(props) }
+      { renderItemName(props) }
+      { renderSubMenuIcon(props) }
+    </div>
+  );
+};

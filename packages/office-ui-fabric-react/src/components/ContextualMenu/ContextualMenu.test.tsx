@@ -9,7 +9,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
-import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import { IContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {
@@ -863,7 +863,7 @@ describe('ContextualMenu', () => {
   });
 
   describe('IContextualMenuRenderItem function tests', () => {
-    const contextualItem = createRef<IContextualMenuRenderItem>();
+    const contextualItem = createRef<IContextualMenuItemWrapper>();
     let menuDismissed: boolean;
     const onDismiss = (ev?: any, dismissAll?: boolean) => { menuDismissed = true; };
 
@@ -873,7 +873,7 @@ describe('ContextualMenu', () => {
         {
           name: 'Test1',
           key: 'Test1',
-          renderItemRef: contextualItem,
+          componentRef: contextualItem,
           subMenuProps: {
             items: [
               {

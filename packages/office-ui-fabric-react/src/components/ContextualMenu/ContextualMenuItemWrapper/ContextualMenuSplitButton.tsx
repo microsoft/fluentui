@@ -5,15 +5,14 @@ import {
   buttonProperties,
   getNativeProps,
   KeyCodes
-} from '../../Utilities';
-import { IContextualMenuItem } from '../../ContextualMenu';
+} from '../../../Utilities';
+import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
 import {
   IMenuItemClassNames,
   getSplitButtonVerticalDividerClassNames
-} from './ContextualMenu.classNames';
-import { ContextualMenuItem } from './ContextualMenuItem';
+} from '../ContextualMenu.classNames';
 import { KeytipData } from '../../KeytipData';
-import { getIsChecked, isItemDisabled, hasSubmenu } from '../../utilities/contextualMenu/index';
+import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../Divider';
 import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.types';
 
