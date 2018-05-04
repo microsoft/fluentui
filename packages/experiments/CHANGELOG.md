@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 02 May 2018 23:55:40 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:38 GMT and should not be manually modified.
+
+## 5.37.0
+Fri, 04 May 2018 15:58:38 GMT
+
+### Minor changes
+
+- Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links
+
+### Patches
+
+- Updating React build version.
 
 ## 5.36.0
 Wed, 02 May 2018 23:55:40 GMT
