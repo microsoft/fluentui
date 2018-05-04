@@ -2,6 +2,68 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.96.0",
+      "tag": "office-ui-fabric-react_v5.96.0",
+      "date": "Fri, 04 May 2018 15:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "5404c2eed65ab753a4c4c28909de58bbababeba2",
+            "comment": "Fix ensureSuggestionModel null ref, get rid of unneeded FocusZone in BaseExtendedPicker, remove requirement in BaseExtendedPicker that suggestions are shown when input is focused (only clicked)"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "f08f29301255a7c27e57157ea543b464dfedb9af",
+            "comment": "Positioning: Fix cover positioning so it returns the correct edge to handle menu shrinkage"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a241eecc8d55a60a533629f222d4065cacdbb965",
+            "comment": "Fix TooltipHost mutation of calloutProps."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "f491118a364113dfab214530089d9fa72dc1c31c",
+            "comment": "SpinButton: Remove browser autocomplete"
+          },
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "2aee0d6d6f2e7a2734920ebaec2ad22f13e0fc37",
+            "comment": "Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. "
+          }
+        ],
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "34683b19a79bd2bd7b7bf83a196a2e83313780c0",
+            "comment": "ScrollablePane: Optimizations on how component functions.  Change positioning from inheriting height/maxHeight of parent element to use position: absolute"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Icon: code has been cleaned up, memoizeFunction usage has been removed."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d80042096c2646d5fdc3e85af37d12541c4b2aab",
+            "comment": "Rating: Hover states in regular and high contrast mode."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.1 <6.0.0` to `>=5.11.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.95.0",
       "tag": "office-ui-fabric-react_v5.95.0",
       "date": "Wed, 02 May 2018 23:55:40 GMT",

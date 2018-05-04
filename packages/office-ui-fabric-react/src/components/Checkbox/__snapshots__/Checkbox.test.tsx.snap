@@ -117,15 +117,21 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         className=
 
             {
-              display: inline-block;
-            }
-            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #ffffff;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
               opacity: 0;
+              speak: none;
             }
         data-icon-name="CheckMark"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
     <span
       className=

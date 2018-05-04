@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.30.1",
+      "tag": "@uifabric/utilities_v5.30.1",
+      "date": "Fri, 04 May 2018 15:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.30.0",
       "tag": "@uifabric/utilities_v5.30.0",
       "date": "Wed, 02 May 2018 23:55:40 GMT",
