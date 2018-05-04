@@ -120,6 +120,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       color: color
     });
 
+    console.log('TARGET', this.props.target);
+
     return (
       <PositioningContainer
         target={ target }
