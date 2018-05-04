@@ -32,10 +32,12 @@ export const getStyles = memoizeFunction((
   const styles: ICheckboxStyles = {
     root: [
       getFocusStyle(theme, -2),
+      theme.fonts.medium,
       {
         padding: '0',
         border: 'none',
         background: 'none',
+        backgroundColor: 'transparent',
         margin: '0',
         outline: 'none',
         display: 'block',
@@ -48,7 +50,6 @@ export const getStyles = memoizeFunction((
       alignItems: 'center',
       cursor: 'pointer',
       position: 'relative',
-      userSelect: 'none',
       textAlign: 'left'
     },
     labelReversed: {
@@ -73,6 +74,7 @@ export const getStyles = memoizeFunction((
       transitionProperty: 'background, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
+      userSelect: 'none',
 
       /* incase the icon is bigger than the box */
       overflow: 'hidden'

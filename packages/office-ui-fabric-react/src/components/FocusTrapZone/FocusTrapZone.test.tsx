@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -9,9 +7,16 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 
+// rAF does not exist in node - let's mock it
+window.requestAnimationFrame = (callback: FrameRequestCallback) => {
+  return window.setTimeout(callback, 16);
+};
+
+jest.useFakeTimers();
+
 describe('FocusTrapZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
-  function _onFocus(ev: any) {
+  function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
   }
 
@@ -139,15 +144,23 @@ describe('FocusTrapZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    expect(lastFocusedElement).toBe(buttonA);
+    window.requestAnimationFrame(() => {
+      expect(lastFocusedElement).toBe(buttonA);
 
-    // Pressing shift + tab should go to d.
-    ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab, shiftKey: true });
-    expect(lastFocusedElement).toBe(buttonD);
+      // Pressing shift + tab should go to d.
+      ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab, shiftKey: true });
+      window.requestAnimationFrame(() => {
+        expect(lastFocusedElement).toBe(buttonD);
 
-    // Pressing tab should go to a.
-    ReactTestUtils.Simulate.keyDown(buttonD, { which: KeyCodes.tab });
-    expect(lastFocusedElement).toBe(buttonA);
+        // Pressing tab should go to a.
+        ReactTestUtils.Simulate.keyDown(buttonD, { which: KeyCodes.tab });
+        window.requestAnimationFrame(() => {
+          expect(lastFocusedElement).toBe(buttonA);
+        });
+      });
+    });
+
+    jest.runAllTimers();
   });
 
   it('can tab across a FocusZone with different button structures', () => {
@@ -229,14 +242,22 @@ describe('FocusTrapZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonX);
-    expect(lastFocusedElement).toBe(buttonX);
+    window.requestAnimationFrame(() => {
+      expect(lastFocusedElement).toBe(buttonX);
 
-    // Pressing shift + tab should go to a.
-    ReactTestUtils.Simulate.keyDown(buttonX, { which: KeyCodes.tab, shiftKey: true });
-    expect(lastFocusedElement).toBe(buttonA);
+      // Pressing shift + tab should go to a.
+      ReactTestUtils.Simulate.keyDown(buttonX, { which: KeyCodes.tab, shiftKey: true });
+      window.requestAnimationFrame(() => {
+        expect(lastFocusedElement).toBe(buttonA);
 
-    // Pressing tab should go to x.
-    ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab });
-    expect(lastFocusedElement).toBe(buttonX);
+        // Pressing tab should go to x.
+        ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.tab });
+        window.requestAnimationFrame(() => {
+          expect(lastFocusedElement).toBe(buttonX);
+        });
+      });
+    });
+
+    jest.runAllTimers();
   });
 });

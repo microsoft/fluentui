@@ -1,9 +1,9 @@
 
 import * as React from 'react';
-import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
+import { Tile, getTileLayout, renderTileWithLayout } from '@uifabric/experiments/lib/Tile';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
+import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import {
   SignalField,
   Signal,
@@ -11,7 +11,7 @@ import {
   SharedSignal,
   MentionSignal
 } from '../../signals/Signals';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '@uifabric/example-app-base/lib/utilities/data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 const ITEMS: { name: string; activity: string; }[] = [
@@ -220,8 +220,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
     );
   }
 
-  @autobind
-  private _onImagesLoadedChanged(event: React.FormEvent<HTMLInputElement>, checked: boolean): void {
+  private _onImagesLoadedChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
       imagesLoaded: checked
     });

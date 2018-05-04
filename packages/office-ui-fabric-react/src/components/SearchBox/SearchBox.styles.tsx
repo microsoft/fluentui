@@ -20,7 +20,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'stretch',
-        padding: '0 0 0 8px',
+        // The 1px top and bottom padding ensure the input field does not overlap the border
+        padding: '1px 0 1px 4px',
         border: `1px solid ${palette.neutralTertiary}`,
         height: 32,
         selectors: {
@@ -29,6 +30,11 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           },
           ':hover': {
             borderColor: palette.neutralDark,
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight'
+              }
+            }
           },
           ':hover $iconContainer': {
             color: palette.themeDark
@@ -55,13 +61,15 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.neutralLighter,
           backgroundColor: palette.neutralLighter,
           pointerEvents: 'none',
-          cursor: 'default',
+          cursor: 'default'
         }
       ],
       underlined && [
         'is-underlined',
         {
-          borderWidth: '0 0 1px 0'
+          borderWidth: '0 0 1px 0',
+          // Underlined SearchBox has a larger padding left to vertically align with the waffle in product
+          padding: '1px 0 1px 8px'
         }
       ],
       underlined && disabled && {
@@ -81,7 +89,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         width: 32,
         textAlign: 'center',
         transition: `width ${AnimationVariables.durationValue1}`,
-        color: palette.themePrimary
+        color: palette.themePrimary,
+        cursor: 'text'
       },
       hasFocus && {
         width: 4,
@@ -112,7 +121,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary,
+        color: palette.themePrimary
       }
     ],
     field: [
@@ -125,7 +134,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontFamily: 'inherit',
         fontSize: 'inherit',
         color: palette.neutralPrimary,
-        backgroundColor: 'transparent',
+        backgroundColor: semanticColors.inputBackground,
         flex: '1 1 0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',

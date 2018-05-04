@@ -2,11 +2,10 @@ import * as React from 'react';
 import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuCustomizationExample extends React.Component<{}, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <DefaultButton
         className='ContextualMenuButton3'
@@ -187,8 +186,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
     );
   }
 
-  @autobind
-  private _renderCharmMenuItem(item: any, dismissMenu: () => void) {
+  private _renderCharmMenuItem = (item: any, dismissMenu: () => void): JSX.Element => {
     return (
       <IconButton
         iconProps={ { iconName: item.name } }
@@ -199,7 +197,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
     );
   }
 
-  private _renderCategoriesList(item: any) {
+  private _renderCategoriesList(item: any): JSX.Element {
     return (
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>

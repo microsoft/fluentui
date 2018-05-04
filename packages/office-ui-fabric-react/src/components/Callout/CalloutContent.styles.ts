@@ -1,7 +1,8 @@
 import {
   HighContrastSelector,
   IRawStyle,
-  focusClear
+  focusClear,
+  getGlobalClassNames,
 } from '../../Styling';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
@@ -21,6 +22,14 @@ function getBeakStyle(beakWidth?: number,
   };
 }
 
+const GlobalClassNames = {
+  container: 'ms-Callout-container',
+  root: 'ms-Callout',
+  beak: 'ms-Callout-beak',
+  beakCurtain: 'ms-Callout-beakCurtain',
+  calloutMain: 'ms-Callout-main',
+};
+
 export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
   const {
     theme,
@@ -33,16 +42,18 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     beakStyle
   } = props;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   const { palette } = theme;
   return {
     container: [
-      'ms-Callout-container',
+      classNames.container,
       {
         position: 'relative',
       }
     ],
     root: [
-      'ms-Callout',
+      classNames.root,
       {
         position: 'absolute',
         boxSizing: 'border-box',
@@ -63,7 +74,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       !!calloutWidth && { width: calloutWidth }
     ],
     beak: [
-      'ms-Callout-beak',
+      classNames.beak,
       {
         position: 'absolute',
         backgroundColor: palette.white,
@@ -78,7 +89,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       }
     ],
     beakCurtain: [
-      'ms-Callout-beakCurtain',
+      classNames.beakCurtain,
       {
         position: 'absolute',
         top: 0,
@@ -89,7 +100,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       }
     ],
     calloutMain: [
-      'ms-Callout-main',
+      classNames.calloutMain,
       {
         backgroundColor: palette.white,
         overflowX: 'hidden',

@@ -50,8 +50,8 @@ export const getMenuItemStyles = memoizeFunction((
     },
     root: [
       getFocusStyle(theme),
+      fonts.medium,
       {
-        font: 'inherit',
         color: 'inherit',
         backgroundColor: 'transparent',
         border: 'none',
@@ -168,13 +168,15 @@ export const getMenuItemStyles = memoizeFunction((
       flexShrink: '0',
       fontSize: FontSizes.mini
     },
-    splitButtonFlexContainer: {
-      display: 'flex',
-      height: ContextualMenuItemHeight,
-      flexWrap: 'nowrap',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
+    splitButtonFlexContainer: [
+      getFocusStyle(theme),
+      {
+        display: 'flex',
+        height: ContextualMenuItemHeight,
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }],
     splitButtonSeparator: {}
   };
 
@@ -217,6 +219,7 @@ export const getStyles = memoizeFunction((
         fontWeight: FontWeights.semibold,
         color: ContextualMenuHeaderColor,
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         height: ContextualMenuItemHeight,
         lineHeight: ContextualMenuItemHeight,

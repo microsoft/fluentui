@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { autobind, BaseComponent, createRef } from '../../../Utilities';
+import { BaseComponent, createRef } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends BaseComponent<{}, {
@@ -163,14 +163,12 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     );
   }
 
-  @autobind
-  public changeState(item: IDropdownOption) {
+  public changeState = (item: IDropdownOption): void => {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     this.setState({ selectedItem: item });
   }
 
-  @autobind
-  public onChangeMultiSelect(item: IDropdownOption) {
+  public onChangeMultiSelect = (item: IDropdownOption): void => {
     const updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
     if (item.selected) {
       // add the option if it's checked
@@ -187,7 +185,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     });
   }
 
-  public copyArray(array: any[]): any[] {
+  public copyArray = (array: any[]): any[] => {
     const newArray: any[] = [];
     for (let i = 0; i < array.length; i++) {
       newArray[i] = array[i];
@@ -195,10 +193,9 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     return newArray;
   }
 
-  @autobind
-  private _onSetFocusButtonClicked() {
-    if (this._basicDropdown.value) {
-      this._basicDropdown.value.focus(true);
+  private _onSetFocusButtonClicked = (): void => {
+    if (this._basicDropdown.current) {
+      this._basicDropdown.current.focus(true);
     }
   }
 

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MaskedTextField renders TextField correctly 1`] = `
+<div
+  className="ms-TextField"
+>
+  <div
+    className="ms-TextField-wrapper"
+  >
+    <label
+      className=
+          ms-Label
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="TextField0"
+    >
+      With input mask
+    </label>
+    <div
+      className="ms-TextField-fieldGroup"
+    >
+      <input
+        aria-describedby={undefined}
+        aria-invalid={false}
+        aria-label={undefined}
+        className="ms-TextField-field"
+        id="TextField0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        onPaste={[Function]}
+        type="text"
+        value="mask: (___) ___ - ____"
+      />
+    </div>
+  </div>
+</div>
+`;

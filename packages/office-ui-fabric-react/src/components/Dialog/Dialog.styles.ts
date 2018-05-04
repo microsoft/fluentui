@@ -1,7 +1,12 @@
 import { IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import {
   ScreenWidthMinMedium,
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-Dialog',
+};
 
 export const getStyles = (
   props: IDialogStyleProps
@@ -12,11 +17,14 @@ export const getStyles = (
     dialogDefaultMinWidth = '288px',
     dialogDefaultMaxWidth = '340px',
     hidden,
+    theme
   } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return ({
     root: [
-      'ms-Dialog',
+      classNames.root,
       className,
     ],
 

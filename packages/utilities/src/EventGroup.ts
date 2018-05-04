@@ -1,4 +1,5 @@
 /* tslint:disable:no-string-literal */
+import { assign } from './object';
 
 /**
  * EventRecord interface.
@@ -85,8 +86,9 @@ export class EventGroup {
         let ev = document.createEvent('HTMLEvents');
 
         ev.initEvent(eventName, bubbleEvent || false, true);
-        // tslint:disable-next-line:no-any
-        (ev as any)['args'] = eventArgs;
+
+        assign(ev, eventArgs);
+
         retVal = target.dispatchEvent(ev);
         // tslint:disable-next-line:no-any
       } else if ((document as any)['createEventObject']) { // IE8

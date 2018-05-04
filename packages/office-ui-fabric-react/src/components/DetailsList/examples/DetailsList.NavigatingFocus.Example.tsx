@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './DetailsListExample.scss';
 
 export interface IDetailsListNavigatingFocusExampleState {
@@ -36,7 +35,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     } as IColumn
   ];
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <DetailsList
         items={ this.state.items }
@@ -46,8 +45,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     );
   }
 
-  @autobind
-  private _navigate(name: string): () => void {
+  private _navigate = (name: string): () => void => {
     return (): void => {
       this.setState({
         items: generateItems(name + '/'),
@@ -57,6 +55,6 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
   }
 }
 
-function generateItems(parent: string) {
+function generateItems(parent: string): void {
   return Array.prototype.map.call('abcdefghi', (name: string) => parent + name);
 }

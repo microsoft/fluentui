@@ -61,7 +61,9 @@ describe('DetailsList', () => {
     expect(component).toBeDefined();
     (component as IDetailsList).focusIndex(2);
     setTimeout(() => {
-      expect(document.activeElement.textContent).toEqual('2');
+      expect(
+        document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent
+      ).toEqual('2');
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
@@ -97,7 +99,9 @@ describe('DetailsList', () => {
     expect(component).toBeDefined();
     (component as IDetailsList).focusIndex(3);
     setTimeout(() => {
-      expect(document.activeElement.textContent).toEqual('3');
+      expect(
+        document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent
+      ).toEqual('3');
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
@@ -115,6 +119,45 @@ describe('DetailsList', () => {
     setTimeout(() => {
       expect(document.activeElement.textContent).toEqual('4');
       expect(document.activeElement.className.split(' ')).toContain('test-column');
+    }, 0);
+    jest.runOnlyPendingTimers();
+  });
+
+  it('reset focusedItemIndex when setKey updates', () => {
+    jest.useFakeTimers();
+
+    let component: any;
+    const detailsList = mount(
+      <DetailsList
+        items={ mockItems(5) }
+        setKey={ 'key1' }
+        initialFocusedIndex={ 0 }
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ ref => component = ref }
+        skipViewportMeasures={ true }
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={ () => false }
+      />);
+
+    expect(component).toBeDefined();
+    component.setState({ focusedItemIndex: 3 });
+    setTimeout(() => {
+      expect(component.state.focusedItemIndex).toEqual(3);
+    }, 0);
+    jest.runOnlyPendingTimers();
+
+    // update props to new setKey
+    const newProps = { items: mockItems(7), setKey: 'set2', initialFocusedIndex: 0 };
+    detailsList.setProps(newProps);
+    detailsList.update();
+
+    // verify that focusedItemIndex is reset to 0 and 0th row is focused
+    setTimeout(() => {
+      expect(component.state.focusedItemIndex).toEqual(0);
+      expect(
+        document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent
+      ).toEqual('0');
+      expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
   });

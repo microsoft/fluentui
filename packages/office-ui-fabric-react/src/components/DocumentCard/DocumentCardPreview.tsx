@@ -12,7 +12,7 @@ const styles: any = stylesImport;
 const LIST_ITEM_COUNT = 3;
 
 export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps, any> {
-  public render() {
+  public render(): JSX.Element {
     const { previewImages } = this.props;
     let style, preview;
     let isFileList = false;
@@ -44,11 +44,12 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
   }
 
   private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    const { width, height, imageFit, previewIconProps } = previewImage;
+    const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
+    const iconContainerClass = previewIconContainerClass ? previewIconContainerClass : 'ms-DocumentCardPreview-iconContainer';
 
     if (previewIconProps) {
       return (
-        <div className={ css('ms-DocumentCardPreview-iconContainer', styles.previewIconContainer) } style={ { width: width, height: height } } >
+        <div className={ css(iconContainerClass, styles.previewIconContainer) } style={ { width: width, height: height } } >
           <Icon { ...previewIconProps } />
         </div>
       );

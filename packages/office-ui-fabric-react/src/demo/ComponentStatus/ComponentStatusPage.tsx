@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { ComponentPage, IComponentPageSection } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  IComponentPageSection,
+  PageMarkdown,
+} from '@uifabric/example-app-base';
 import { Link } from '../../Link';
 import { AllComponentsStatus } from './AllComponents.checklist';
 import { ComponentStatusInfoState, IComponentStatusInfoState, InformationLink } from './ComponentStatusState';
@@ -7,13 +11,14 @@ import { ComponentStatus } from './ComponentStatus';
 import './ComponentStatusPage.scss';
 
 export class ComponentStatusPage extends React.Component<{}, {}> {
-  public render() {
+  public render(): JSX.Element {
     const sections: IComponentPageSection[] = [{ title: 'Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
 
     return (
       <ComponentPage
         title='Components Checklist'
         componentName='Components Checklist'
+        editOverviewUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md'
         overview={ this._renderOverView() }
         otherSections={ sections }
       />
@@ -22,9 +27,9 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
 
   private _renderOverView(): JSX.Element {
     return (
-      <div>
-        Badges are used to track a component's status regarding different criteria. They reflect if a component is localizable, accessible and reliable.
-    </div>
+      <PageMarkdown>
+        { require<string>('!raw-loader!office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md') }
+      </PageMarkdown>
     );
   }
 
@@ -33,7 +38,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
       <div>
         <table className='componentTable'>
           <tbody>
-            { Object.keys(AllComponentsStatus).map((componentName, index) => {
+            { Object.keys(AllComponentsStatus).map((componentName: string, index: number) => {
               return this._renderComponent(componentName);
             }) }
           </tbody>
@@ -54,7 +59,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
     );
   }
 
-  private _renderStatusesInfo() {
+  private _renderStatusesInfo(): JSX.Element {
     return (
       <div>
         <table className='componentTable'>
@@ -64,7 +69,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
               <th className='componentCells'>Description</th>
               <th className='componentCells'>Success</th>
             </tr>
-            { ComponentStatusInfoState.map((name) => {
+            { ComponentStatusInfoState.map((name: IComponentStatusInfoState) => {
               return this._renderStatusInfo(name);
             }) }
           </tbody>
@@ -73,7 +78,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
     );
   }
 
-  private _renderStatusInfo(statusInfo: IComponentStatusInfoState) {
+  private _renderStatusInfo(statusInfo: IComponentStatusInfoState): JSX.Element {
     return (
       <tr key={ statusInfo.name + '-key' }>
         <th className='componentCells'> { statusInfo.name } </th>

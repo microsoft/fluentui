@@ -125,6 +125,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/facepile'
         },
         {
+          component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
+          key: 'FloatingPeoplePicker',
+          name: 'FloatingPeoplePicker',
+          url: '#examples/floatingpeoplepicker'
+        },
+        {
           component: require<any>('../components/HoverCard/HoverCardPage').HoverCardPage,
           key: 'HoverCard',
           name: 'HoverCard',
@@ -135,6 +141,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Icon',
           name: 'Icon',
           url: '#/examples/icon'
+        },
+        {
+          component: require<any>('../components/Keytip/KeytipsPage').KeytipsPage,
+          key: 'Keytips',
+          name: 'Keytips',
+          url: '#/examples/keytips'
         },
         {
           component: require<any>('../components/Label/LabelPage').LabelPage,
@@ -239,6 +251,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/searchbox'
         },
         {
+          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
+          key: 'SelectedPeopleList',
+          name: 'SelectedPeopleList',
+          url: '#examples/selectedpeoplelist'
+        },
+        {
           component: require<any>('../components/SpinButton/SpinButtonPage').SpinButtonPage,
           key: 'SpinButton',
           name: 'SpinButton',
@@ -290,6 +308,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'ColorPicker',
           name: 'ColorPicker',
           url: '#/examples/colorpicker'
+        },
+        {
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
+          key: 'ExtendedPeoplePicker',
+          name: 'ExtendedPeoplePicker',
+          url: '#examples/extendedpeoplepicker'
         },
         {
           component: require<any>('../components/GroupedList/GroupedListPage').GroupedListPage,

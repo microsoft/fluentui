@@ -5,7 +5,7 @@ import {
   DayOfWeek,
   IDatePickerStrings
 } from 'office-ui-fabric-react/lib/DatePicker';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -79,12 +79,12 @@ export class DatePickerFormatExample extends React.Component<
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { firstDayOfWeek, value } = this.state;
     const desc =
       'This field is required. One of the support input formats is year dash month dash day.';
     return (
-      <div>
+      <div className='docs-DatePickerExample'>
         <p>
           Applications can customize how dates are formatted and parsed.
           Formatted dates can be ambiguous, so the control will avoid parsing
@@ -110,18 +110,15 @@ export class DatePickerFormatExample extends React.Component<
     );
   }
 
-  @autobind
-  private _onSelectDate(date: Date | null | undefined): void {
+  private _onSelectDate = (date: Date | null | undefined): void => {
     this.setState({ value: date });
   }
 
-  @autobind
-  private _onClick(): void {
+  private _onClick = (): void => {
     this.setState({ value: null });
   }
 
-  @autobind
-  private _onFormatDate(date: Date): string {
+  private _onFormatDate = (date: Date): string => {
     return (
       date.getDate() +
       '/' +
@@ -131,8 +128,7 @@ export class DatePickerFormatExample extends React.Component<
     );
   }
 
-  @autobind
-  private _onParseDateFromString(value: string): Date {
+  private _onParseDateFromString = (value: string): Date => {
     const date = this.state.value || new Date();
     const values = (value || '').trim().split('/');
     const day =

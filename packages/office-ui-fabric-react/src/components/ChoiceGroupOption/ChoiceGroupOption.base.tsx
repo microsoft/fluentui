@@ -31,7 +31,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       focused,
       required,
@@ -83,7 +83,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     );
   }
 
-  private _onChange(props: IChoiceGroupOptionProps, evt: React.FormEvent<HTMLInputElement>) {
+  private _onChange(props: IChoiceGroupOptionProps, evt: React.FormEvent<HTMLInputElement>): void {
     const { onChange } = props;
     if (onChange) {
       onChange(evt, props);
@@ -104,7 +104,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     }
   }
 
-  private _onRenderField = (props: IChoiceGroupOptionProps) => {
+  private _onRenderField = (props: IChoiceGroupOptionProps): JSX.Element => {
     const {
       onRenderLabel = this._onRenderLabel,
       id,

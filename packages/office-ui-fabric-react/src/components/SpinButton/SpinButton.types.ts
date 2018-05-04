@@ -5,6 +5,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { ISpinButtonClassNames } from './SpinButton.classNames';
 import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
+import { IKeytipProps } from '../../Keytip';
 
 export interface ISpinButton {
   /**
@@ -24,7 +25,7 @@ export interface ISpinButtonProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component?: ISpinButton) => void;
+  componentRef?: (component?: ISpinButton | null) => void;
 
   /**
    * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.
@@ -199,6 +200,11 @@ export interface ISpinButtonProps {
   * The total size of the parent set (if in a set) for aria-setsize.
   */
   ariaSetSize?: number;
+
+  /**
+   * Optional keytip for this spin button
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface ISpinButtonStyles {

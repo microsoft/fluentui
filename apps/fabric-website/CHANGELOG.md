@@ -1,6 +1,63 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 19 Mar 2018 10:27:55 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+
+## 5.7.3
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Add fabric sketch toolkit
+- Updating React build version.
+
+## 5.7.2
+Tue, 01 May 2018 19:26:35 GMT
+
+### Patches
+
+- LocalizationPage: Only show icon names on hover so they don't overlap.
+
+## 5.7.1
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Patches
+
+- Removing unused refs.
+
+## 5.7.0
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Minor changes
+
+- GetStarted page: Give titles links to their corresponding pages.
+
+## 5.6.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Updating build to React 16.3.1.
+
+## 5.6.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add Office Add-ins Toolkit
+
+## 5.5.2
+Tue, 27 Mar 2018 10:14:02 GMT
+
+### Patches
+
+- Adds missing neutralQuaternary and neutralQuaternaryAlt to document colors page
+
+## 5.5.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- Updated OfficeUIFabric Toolkit link to v4.0.0.
 
 ## 5.5.0
 Mon, 19 Mar 2018 10:27:55 GMT

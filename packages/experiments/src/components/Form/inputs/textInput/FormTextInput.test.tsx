@@ -40,7 +40,7 @@ describe('FormTextInput Unit Tests', () => {
     });
 
     it('Null name throws error', () => {
-      let errorFunction = () => {
+      const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
           <Form
             { ...formProps }
@@ -94,7 +94,7 @@ describe('FormTextInput Unit Tests', () => {
     xit('Validators run properly', () => {
       let result: any;
 
-      let renderedForm: Form = ReactTestUtils.renderIntoDocument(
+      const renderedForm: Form = ReactTestUtils.renderIntoDocument(
         <Form
           onSubmit={ (value: any) => { result = value; } }
         >
@@ -108,11 +108,11 @@ describe('FormTextInput Unit Tests', () => {
         </Form>
       ) as Form;
 
-      let form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       // Find the TextField component
-      let field = ReactTestUtils.findRenderedComponentWithType(renderedForm, TextField);
+      const field = ReactTestUtils.findRenderedComponentWithType(renderedForm, TextField);
       expect(field.state.errorMessage).toBeTruthy();
       expect(result).toBeFalsy();
     });
@@ -135,8 +135,8 @@ describe('FormTextInput Unit Tests', () => {
     });
 
     it('TextInput is only trailing debounced', () => {
-      let updateStub: sinon.SinonStub = sinon.stub();
-      let renderedForm = ReactTestUtils.renderIntoDocument(
+      const updateStub: sinon.SinonStub = sinon.stub();
+      const renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
           onUpdated={ updateStub }
         >
@@ -147,7 +147,7 @@ describe('FormTextInput Unit Tests', () => {
         </Form>
       ) as Form;
 
-      let datePicker: ExtendsTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextInput);
+      const datePicker: ExtendsTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextInput);
       datePicker.setValue('0');
       expect(updateStub.callCount).toEqual(0);
       datePicker.setValue('1');
@@ -157,8 +157,8 @@ describe('FormTextInput Unit Tests', () => {
     });
 
     it('TextInput state updates from props value change', () => {
-      let updatedValue = 'updated';
-      let parent = document.createElement('div');
+      const updatedValue = 'updated';
+      const parent = document.createElement('div');
       let renderedForm = ReactDom.render(
         <Form>
           <FormTextInput
@@ -167,8 +167,8 @@ describe('FormTextInput Unit Tests', () => {
             value={ 'old value' }
           />
         </Form>, parent) as Form;
-      let textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
-      let propsUpdateSpy = sinon.spy(textboxElement, 'componentWillReceiveProps');
+      const textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
+      const propsUpdateSpy = sinon.spy(textboxElement, 'componentWillReceiveProps');
       renderedForm = ReactDom.render(
         <Form>
           <FormTextInput
@@ -183,8 +183,8 @@ describe('FormTextInput Unit Tests', () => {
     });
 
     it(`TextInput state doesn't update with no new props value`, () => {
-      let oldValue = 'old value';
-      let parent = document.createElement('div');
+      const oldValue = 'old value';
+      const parent = document.createElement('div');
       let renderedForm = ReactDom.render(
         <Form>
           <FormTextInput
@@ -193,8 +193,8 @@ describe('FormTextInput Unit Tests', () => {
             value={ oldValue }
           />
         </Form>, parent) as Form;
-      let textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
-      let setStateSpy = sinon.spy(textboxElement, 'setState');
+      const textboxElement: FormTextInput = ReactTestUtils.findRenderedComponentWithType(renderedForm, FormTextInput);
+      const setStateSpy = sinon.spy(textboxElement, 'setState');
       renderedForm = ReactDom.render(
         <Form>
           <FormTextInput

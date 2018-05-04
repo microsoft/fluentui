@@ -16,7 +16,11 @@ import {
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
-import { IList, IListProps } from '../List/index';
+import {
+  IList,
+  IListProps,
+  ScrollToMode
+} from '../List/index';
 
 export { IDetailsHeaderProps };
 
@@ -35,8 +39,14 @@ export interface IDetailsList extends IList {
    * @param forceIntoFirstElement If true, focus will be set to the first focusable child element of the item rather
    *  than the item itself.
    * @param measureItem Optional callback to measure the height of an individual item
+   * @param scrollToMode Optional setting to determine where in the window the item should be scrolled to when focused.
    */
-  focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number) => void;
+  focusIndex: (
+    index: number,
+    forceIntoFirstElement?: boolean,
+    measureItem?: (itemIndex: number) => number,
+    scrollToMode?: ScrollToMode
+  ) => void;
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
@@ -44,7 +54,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDetailsList) => void;
+  componentRef?: (component: IDetailsList | null) => void;
 
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
@@ -145,7 +155,13 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
-  onRenderMissingItem?: (index?: number) => React.ReactNode;
+  onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
+
+  /**
+   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
+   * @default false
+   */
+  enableShimmer?: boolean;
 
   /**
    * An override to render the details header.

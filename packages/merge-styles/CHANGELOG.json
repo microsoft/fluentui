@@ -2,6 +2,125 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.17.0",
+      "tag": "@uifabric/merge-styles_v5.17.0",
+      "date": "Thu, 26 Apr 2018 10:12:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b9f6e845720daf7536a299a84be96ec4793ae57a",
+            "comment": "Add `animation` to `IRawStyleBase` for use in style sets."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.1",
+      "tag": "@uifabric/merge-styles_v5.16.1",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1d305b55114bffaece2841500c8476ba3996d2b2",
+            "comment": "merge-styles: `style` elements which are created on the fly now \"bunch\" together, avoiding unpredictability in specificity."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.0",
+      "tag": "@uifabric/merge-styles_v5.16.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf655ceeaf161fd5ee3cc4dc5a4e55a82dea03e5",
+            "comment": "Updating how keyframe classes are cached to aid with jest snapshot testing."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating documentation."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.2",
+      "tag": "@uifabric/merge-styles_v5.15.2",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "68acb9b5f356c7b76ef334984ce4a9258a926061",
+            "comment": "mergeStyles: rules are now registered in separate styling objects, improving performance significantly."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.1",
+      "tag": "@uifabric/merge-styles_v5.15.1",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4b856fc9e1734edd3986c28f25e9211a3edf96d4",
+            "comment": "Removing module entry temporarily. (Will be added back in 6.0.)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.0",
+      "tag": "@uifabric/merge-styles_v5.15.0",
+      "date": "Tue, 10 Apr 2018 17:37:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3e514375dff844cdb8182daf53178d3056411b8c",
+            "comment": "Add backgroundClip property definition."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.1",
+      "tag": "@uifabric/merge-styles_v5.14.1",
+      "date": "Fri, 06 Apr 2018 10:25:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "22604406e2cba799fca243348ac8ec87ae0f6102",
+            "comment": "mergeStyles: flipping RTL at runtime now resets the keys."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.0",
+      "tag": "@uifabric/merge-styles_v5.14.0",
+      "date": "Sun, 25 Mar 2018 03:08:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "38089072c6e7f877d572cd2248b8d67adfefb963",
+            "comment": "Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.13.0",
       "tag": "@uifabric/merge-styles_v5.13.0",
       "date": "Fri, 02 Mar 2018 11:25:35 GMT",

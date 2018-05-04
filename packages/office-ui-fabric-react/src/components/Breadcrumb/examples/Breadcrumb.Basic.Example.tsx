@@ -1,14 +1,10 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
-  Breadcrumb, IBreadcrumbItem
+  Breadcrumb, IBreadcrumbItem, IDividerAsProps
 } from 'office-ui-fabric-react/lib/Breadcrumb';
-import {
-  autobind
-} from '../../../Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 const exampleStyles: any = exampleStylesImport;
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
@@ -16,7 +12,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Label className={ exampleStyles.exampleLabel }>With no maxDisplayedItems</Label>
@@ -29,6 +25,20 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ] }
+          ariaLabel={ 'Website breadcrumb' }
+        />
+
+        <Label className={ exampleStyles.exampleLabel } style={ { marginTop: '24px' } }>With Custom Divider Icon</Label>
+        <Breadcrumb
+          items={ [
+            { text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
+          ] }
+          dividerAs={ this._getCustomDivider }
           ariaLabel={ 'Website breadcrumb' }
         />
 
@@ -45,13 +55,33 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           maxDisplayedItems={ 3 }
           ariaLabel={ 'Website breadcrumb' }
         />
+
+        <Label className={ exampleStyles.exampleLabel } style={ { marginTop: '24px' } }>With maxDisplayedItems set to three and overflowIndex set to 1 (second element)</Label>
+        <Breadcrumb
+          items={ [
+            { text: 'TestText1', key: 'TestKey1' },
+            { text: 'TestText2', key: 'TestKey2' },
+            { text: 'TestText3', key: 'TestKey3' },
+            { text: 'TestText4', key: 'TestKey4' }
+          ] }
+          maxDisplayedItems={ 2 }
+          overflowIndex={ 1 }
+        />
       </div >
     );
   }
 
-  @autobind
-  private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
+  private _onBreadcrumbItemClicked = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem): void => {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
+  }
+
+  private _getCustomDivider = (dividerProps: IDividerAsProps): JSX.Element => {
+    const tooltipText = dividerProps.item ? dividerProps.item.text : '';
+    return (
+      <TooltipHost content={ `Show ${tooltipText} contents` } id='myID' calloutProps={ { gapSpace: 0 } }>
+        <span style={ { cursor: 'pointer' } } >/</span>
+      </TooltipHost>
+    );
   }
 
 }

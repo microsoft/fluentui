@@ -6,17 +6,18 @@ import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from '@uifabric/example-app-base';
-import './Shimmer.Example.scss';
+import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
 import {
-  Shimmer,
-} from 'experiments/lib/Shimmer';
-import { IColumn, DetailsList, buildColumns } from 'office-ui-fabric-react';
-
-const PAGING_DELAY = 3000;
-const ITEMS_COUNT = 1000;
-const PAGING_SIZE = 10;
+  IColumn,
+  DetailsList,
+  buildColumns,
+  SelectionMode,
+  Toggle,
+  IDetailsRowProps,
+  DetailsRow
+} from 'office-ui-fabric-react';
+import { Shimmer } from '@uifabric/experiments/lib/Shimmer';
+import './Shimmer.Example.scss';
 
 export interface IItem {
   [index: string]: string | number;
@@ -30,13 +31,6 @@ export interface IItem {
   width: number;
   height: number;
 }
-
-export interface IShimmerElem {
-  [index: string]: HTMLElement;
-}
-
-// tslint:disable-next-line:no-any
-let _items: any[];
 
 const fileIcons: { name: string; }[] = [
   { 'name': 'accdb' },
@@ -64,9 +58,19 @@ const fileIcons: { name: string; }[] = [
   { 'name': 'xsn' }
 ];
 
+const ITEMS_COUNT = 500;
+const ITEMS_BATCH_SIZE = 10;
+const PAGING_DELAY = 2500;
+
+// tslint:disable-next-line:no-any
+let _items: any[];
+
 export interface IShimmerApplicationExampleState {
   items?: IItem[];
   columns?: IColumn[];
+  isDataLoaded?: boolean;
+  isModalSelection?: boolean;
+  isCompactMode?: boolean;
 }
 
 export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
@@ -75,6 +79,100 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   constructor(props: {}) {
     super(props);
 
+    this.state = {
+      items: new Array(),
+      columns: _buildColumns(),
+      isDataLoaded: false,
+      isModalSelection: false,
+      isCompactMode: false
+    };
+  }
+
+  public render(): JSX.Element {
+    const {
+      items,
+      columns,
+      isDataLoaded,
+      isModalSelection,
+      isCompactMode
+    } = this.state;
+
+    return (
+      <div>
+        <div className='shimmerExample-toggleButtons'>
+          <div className='shimmerExample-flexGroup'>
+            <Toggle
+              label='Enable Modal Selection'
+              checked={ isModalSelection }
+              onChanged={ this._onChangeModalSelection }
+              onText='Modal'
+              offText='Normal'
+            />
+            <Toggle
+              label='Enable Compact Mode'
+              checked={ isCompactMode }
+              onChanged={ this._onChangeCompactMode }
+              onText='Compact'
+              offText='Normal'
+            />
+          </div>
+          <span>Toggle the Load data switch to start async simulation.</span>
+          <Toggle
+            label='Load data switch'
+            checked={ isDataLoaded }
+            onChanged={ this._onLoadData }
+            onText='Loaded'
+            offText='Loading...'
+          />
+        </div>
+        <div className='shimmerExample-application'>
+          <DetailsList
+            setKey='items'
+            items={ items! }
+            columns={ columns }
+            compact={ isCompactMode }
+            selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
+            onRenderItemColumn={ this._onRenderItemColumn }
+            onRenderMissingItem={ this._onRenderMissingItem }
+            enableShimmer={ true }
+            listProps={ { renderedWindowsAhead: 0, renderedWindowsBehind: 0 } }
+          />
+        </div>
+      </div>
+    );
+  }
+
+  private _onRenderMissingItem = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
+    const { isDataLoaded } = this.state;
+    isDataLoaded && this._onDataMiss(index as number);
+
+    return (
+      <Shimmer
+        isBaseStyle={ true }
+      >
+        <DetailsRow { ...rowProps } shimmer={ true } />
+      </Shimmer>
+    );
+  }
+
+  // Simulating asynchronus data loading each 2.5 sec
+  private _onDataMiss = (index: number): void => {
+    index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
+    if (!this._isFetchingItems) {
+      this._isFetchingItems = true;
+      setTimeout(() => {
+        this._isFetchingItems = false;
+        // tslint:disable-next-line:no-any
+        const itemsCopy = ([] as any[]).concat(this.state.items);
+        itemsCopy.splice.apply(itemsCopy, [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE)));
+        this.setState({
+          items: itemsCopy
+        });
+      }, PAGING_DELAY);
+    }
+  }
+
+  private _onLoadData = (checked: boolean): void => {
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);
       _items.map((item: IItem) => {
@@ -83,59 +181,27 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       });
     }
 
-    this.state = {
-      items: _items.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)),
-      columns: _buildColumns()
-    };
-  }
-
-  public render(): JSX.Element {
-    const { items, columns } = this.state;
-
-    return (
-      <div className='shimmerExample-application'>
-        <p> Hover over location of a row item to see the card </p>
-        <DetailsList
-          setKey='items'
-          items={ items! }
-          columns={ columns }
-          onRenderItemColumn={ this._onRenderItemColumn }
-          onRenderMissingItem={ this._onRenderMissingItem }
-        />
-      </div>
-    );
-  }
-
-  @autobind
-  private _onRenderMissingItem(index: number): JSX.Element {
-    this._onDataMiss(index as number);
-    return (
-      <Shimmer />
-    );
-  }
-
-  private _onDataMiss(index: number): void {
-    index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
-
-    if (!this._isFetchingItems) {
-
-      this._isFetchingItems = true;
-
-      setTimeout(() => {
-        this._isFetchingItems = false;
-        // tslint:disable-next-line:no-any
-        const itemsCopy = ([] as any[]).concat(this.state.items);
-        itemsCopy.splice.apply(itemsCopy, [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE)));
-
-        this.setState({
-          items: itemsCopy
-        });
-      }, PAGING_DELAY);
+    let items: IItem[];
+    if (checked) {
+      items = _items.slice(0, ITEMS_BATCH_SIZE).concat(new Array(ITEMS_COUNT - ITEMS_BATCH_SIZE));
+    } else {
+      items = new Array();
     }
+    this.setState({
+      isDataLoaded: checked,
+      items: items
+    });
   }
 
-  @autobind
-  private _onRenderItemColumn(item: IItem, index: number, column: IColumn): JSX.Element | string | number {
+  private _onChangeModalSelection = (checked: boolean): void => {
+    this.setState({ isModalSelection: checked });
+  }
+
+  private _onChangeCompactMode = (checked: boolean): void => {
+    this.setState({ isCompactMode: checked });
+  }
+
+  private _onRenderItemColumn = (item: IItem, index: number, column: IColumn): JSX.Element | string | number => {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
@@ -163,8 +229,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     return item[column.key];
   }
 
-  @autobind
-  private _onRenderCompactCard(item: IItem): JSX.Element {
+  private _onRenderCompactCard = (item: IItem): JSX.Element => {
     return (
       <div className='hoverCardExample-compactCard'>
         <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
@@ -174,8 +239,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     );
   }
 
-  @autobind
-  private _onRenderExpandedCard(item: IItem): JSX.Element {
+  private _onRenderExpandedCard = (item: IItem): JSX.Element => {
     const { items, columns } = this.state;
     return (
       <div className='hoverCardExample-expandedCard'>
@@ -199,7 +263,8 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
 }
 
 function _buildColumns(): IColumn[] {
-  const columns: IColumn[] = buildColumns(_items);
+  const _item = createListItems(1);
+  const columns: IColumn[] = buildColumns(_item);
 
   columns.forEach((column: IColumn) => {
     if (column.key === 'thumbnail') {

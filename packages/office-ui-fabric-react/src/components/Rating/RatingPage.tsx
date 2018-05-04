@@ -3,24 +3,33 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
+  PageMarkdown,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
+import { RatingButtonControlledExample } from './examples/Rating.ButtonControlled.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { RatingStatus } from './Rating.checklist';
 
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
+const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
 export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Rating'
         componentName='RatingExample'
+        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating'
         exampleCards={
-          <ExampleCard title='Rating' code={ RatingBasicExampleCode }>
-            <RatingBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='Rating' code={ RatingBasicExampleCode }>
+              <RatingBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Button Controlled Rating' code={ RatingButtonControlledExampleCode }>
+              <RatingButtonControlledExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet
@@ -30,33 +39,27 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-            <p>
-              Ratings provide insight regarding others’ opinions and experiences with a product, helping users make more-informed purchasing decisions. Users can also rate products they’ve purchased.
-            </p>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md') }
+          </PageMarkdown>
         }
         bestPractices={
           <div />
         }
         dos={
-          <div>
-            <ul>
-              <li>Make it clear which product the rating pertains to by making sure the layout and grouping are clear when several products are on the page.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md') }
+          </PageMarkdown>
         }
         donts={
-          <div>
-            <ul>
-              <li>Don’t use the rating component for data that has a continuous range, such as the brightness of a photo. Instead, use a slider.</li>
-            </ul>
-          </div>
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md') }
+          </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...RatingStatus}
+            { ...RatingStatus }
           />
         }
       />

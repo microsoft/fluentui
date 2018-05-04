@@ -24,7 +24,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITooltipHost) => void;
+  componentRef?: (component: ITooltipHost | null) => void;
 
   /**
    * Additional properties to pass through for Callout, reference detail properties in ICalloutProps
@@ -75,6 +75,14 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Optional class name to apply to tooltip host.
    */
   hostClassName?: string;
+
+  /**
+   * Optionally a number of milliseconds to delay closing the tooltip, so that
+   * the user has time to hover over the tooltip and interact with it. Hovering
+   * over the tooltip will count as hovering over the host, so that the tooltip
+   * will stay open if the user is actively interacting with it.
+   */
+  closeDelay?: number;
 
   /**
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.

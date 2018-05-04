@@ -14,7 +14,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICalendar) => void;
+  componentRef?: (component: ICalendar | null) => void;
+
+  /**
+   * Optional class name to add to the root element.
+   */
+  className?: string;
 
   /**
   * Callback issued when a date is selected
@@ -99,6 +104,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * @defaultvalue false
   */
   highlightCurrentMonth?: boolean;
+
+  /**
+  * Whether the month picker should highlight the selected month
+  * @defaultvalue false
+  */
+  highlightSelectedMonth?: boolean;
 
   /**
   * Customize navigation icons using ICalendarIconStrings
@@ -195,6 +206,11 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
+   */
+  weekNumberFormatString?: string;
 
 }
 

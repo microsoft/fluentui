@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  IStyle,
-  IStyleSet
-} from '../../../Styling';
+import { IStyle, IStyleSet } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
 export interface IShimmerCircle {
@@ -17,7 +14,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
    * Optional callback to access the IShimmerCircle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerCircle) => void;
+  componentRef?: (component: IShimmerCircle | null) => void;
 
   /**
    * Sets the height of the circle.
@@ -28,7 +25,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   /**
    * Used to
    */
-  borderAlignStyle?: IStyleSet;
+  borderStyle?: IStyleSet;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -38,7 +35,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 
 export interface IShimmerCircleStyleProps {
   height?: number;
-  borderAlignStyle?: IStyleSet;
+  borderStyle?: IStyleSet;
 }
 
 export interface IShimmerCircleStyles {

@@ -24,7 +24,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional callback to access the ICommandBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICommandBar) => void;
+  componentRef?: (component: ICommandBar | null) => void;
 
   /**
    * Items to render
@@ -40,6 +40,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Default items to have in the overflow menu
    */
   overflowItems?: ICommandBarItemProps[];
+
+  /**
+   * Accessibility text to be read by the screen reader when the user's
+   * focus enters the command bar. The screen reader will read this text
+   * after reading information about the first focusable item in the command
+   * bar.
+   */
+  ariaLabel?: string;
 
   /**
    * Text to be read by screen readers if there are overflow items and focus is on elipsis button

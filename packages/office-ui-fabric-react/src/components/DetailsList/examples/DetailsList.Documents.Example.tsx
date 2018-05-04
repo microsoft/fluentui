@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import {
@@ -10,7 +8,6 @@ import {
   SelectionMode,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';
@@ -105,6 +102,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         fieldName: 'name',
         minWidth: 16,
         maxWidth: 16,
+        onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return (
             <img
@@ -252,18 +250,15 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     }
   }
 
-  @autobind
-  private _onChangeCompactMode(checked: boolean): void {
+  private _onChangeCompactMode = (checked: boolean): void => {
     this.setState({ isCompactMode: checked });
   }
 
-  @autobind
-  private _onChangeModalSelection(checked: boolean): void {
+  private _onChangeModalSelection = (checked: boolean): void => {
     this.setState({ isModalSelection: checked });
   }
 
-  @autobind
-  private _onChangeText(text: any): void {
+  private _onChangeText = (text: any): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   }
 
@@ -309,8 +304,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     }
   }
 
-  @autobind
-  private _onColumnClick(ev: React.MouseEvent<HTMLElement>, column: IColumn) {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns, items } = this.state;
     let newItems: IDocument[] = items.slice();
     const newColumns: IColumn[] = columns.slice();
@@ -333,8 +327,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     });
   }
 
-  @autobind
-  private _sortItems(items: IDocument[], sortBy: string, descending = false): IDocument[] {
+  private _sortItems = (items: IDocument[], sortBy: string, descending = false): IDocument[] => {
     if (descending) {
       return items.sort((a: IDocument, b: IDocument) => {
         if (a[sortBy] < b[sortBy]) {

@@ -9,7 +9,7 @@ import { TextField } from './TextField';
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     return renderedDOM as HTMLElement;
   }
 
@@ -130,6 +130,32 @@ describe('TextField', () => {
     // Assert the input box is disabled.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     expect(inputDOM.disabled).toEqual(true);
+  });
+
+  it('should render a value of 0 when given the number 0', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        value={ 0 as any }
+      />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    // Assert on the input element.
+    expect(inputDOM.value).toEqual('0');
+  });
+
+  it('should render a default value of 0 when given the number 0', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue={ 0 as any }
+      />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    // Assert on the input element.
+    expect(inputDOM.defaultValue).toEqual('0');
   });
 
   describe('error message', () => {

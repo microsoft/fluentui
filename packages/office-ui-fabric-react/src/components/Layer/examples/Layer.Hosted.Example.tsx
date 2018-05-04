@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import { Checkbox } from '../../../Checkbox';
 import { Layer } from '../Layer';
 import { LayerHost } from '../LayerHost';
@@ -24,7 +23,7 @@ export class LayerHostedExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { showLayer, showLayerNoId, showHost } = this.state;
     const content = (
       <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 } >
@@ -98,18 +97,15 @@ export class LayerHostedExample extends React.Component<{}, {
     };
   }
 
-  @autobind
-  private _onChangeCheckbox(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChangeCheckbox = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ showLayer: checked });
   }
 
-  @autobind
-  private _onChangeCheckboxNoId(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChangeCheckboxNoId = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ showLayerNoId: checked });
   }
 
-  @autobind
-  private _onChangeToggle(checked: boolean): void {
+  private _onChangeToggle = (checked: boolean): void => {
     this.setState({ showHost: checked });
   }
 }

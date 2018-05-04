@@ -1,6 +1,185 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:38 GMT and should not be manually modified.
+
+## 5.37.0
+Fri, 04 May 2018 15:58:38 GMT
+
+### Minor changes
+
+- Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links
+
+### Patches
+
+- Updating React build version.
+
+## 5.36.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Remove Keytips from experiments package
+
+## 5.35.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- remove extendedPicker, floatingPicker, and selectedItemsList from experiments
+- Command bar accessibility: one tab stop with aria label
+
+## 5.34.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Nav: Refactored out a NavLink component.
+
+## 5.33.1
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Patches
+
+- Fix bad aria-label prop in Tile
+
+## 5.33.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+### Patches
+
+- Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package.
+- Fix index import
+
+## 5.32.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- Add delete callback, expose item change methods on SelectedItemsList
+- Shimmer: adding two new props and deprecating another one.
+
+## 5.31.4
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.31.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Experiments: NavPage bad imports fixed.
+
+## 5.31.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- Fix improper imports from index files
+
+## 5.31.1
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Patches
+
+- prefer const, instead of let, for extendedpicker, floatingpicker, and selecteditemlists
+- M365Nav component as an experiment
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+- Shimmer: Changes casing on enums in Shimmer.types
+- Experiments: fixing imports for example pages for better user understanding.
+- Shimmer: adding two more examples as per designers request.
+- Shimmer: imports audited
+
+## 5.31.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- Refactoring Shimmer and adding ShimmerTile + Implements Shimmer in TilesList.
+
+### Patches
+
+- Shimmerline import was not correct, fixing import.
+- Shimmer: Application example modified to reflect changes in DetailsList
+
+## 5.30.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+
+### Patches
+
+- Tile: exporting an enum to use the values in creating a PlaceholderTile in Shimmer component.
+
+## 5.29.1
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Patches
+
+- fix suggestion header/footer for more flexibile rendering
+- Align Tiles in last row with previous rows
+
+## 5.29.0
+Tue, 03 Apr 2018 10:16:05 GMT
+
+### Minor changes
+
+- Sets up an example of Shimmer used with DetailsList Component.
+
+## 5.28.2
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable w
+- Fix flex styling for SignalField
+- Pass all props to Signal Icon elements
+
+## 5.28.1
+Wed, 28 Mar 2018 21:50:01 GMT
+
+### Patches
+
+- Remove root imports of office-ui-fabric-react
+
+## 5.28.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- Create new pattern for suggestions for BaseFloatingPicker
+
+### Patches
+
+- Fix errors in Signals styles
+
+## 5.27.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Add missing icons to Signals and fix colors
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+### Patches
+
+- Update componentRef types
+
+## 5.26.1
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Patches
+
+- Removes @autobind for arrow functions
 
 ## 5.26.0
 Tue, 20 Mar 2018 10:27:37 GMT

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IPersonaProps,
   Persona,
@@ -23,7 +22,7 @@ const examplePersona = {
 
 export class PersonaCustomRenderExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-PersonaExample'>
         <div className={ exampleStyles.exampleLabel }>Custom icon in secondary text</div>
@@ -37,8 +36,7 @@ export class PersonaCustomRenderExample extends React.Component {
     );
   }
 
-  @autobind
-  private _onRenderSecondaryText(props: IPersonaProps): JSX.Element {
+  private _onRenderSecondaryText = (props: IPersonaProps): JSX.Element => {
     return (
       <div>
         <Icon iconName={ 'Suitcase' } className={ 'ms-JobIconExample' } />

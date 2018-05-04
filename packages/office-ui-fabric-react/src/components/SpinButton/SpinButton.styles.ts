@@ -195,7 +195,8 @@ export const getStyles = memoizeFunction((
       outline: '2px dashed transparent',
       selectors: {
         [HighContrastSelector]: {
-          borderColor: 'Highlight'
+          borderColor: 'Highlight',
+          outline: 'none'
         }
       }
     },
@@ -204,7 +205,8 @@ export const getStyles = memoizeFunction((
       outline: '2px dashed transparent',
       selectors: {
         [HighContrastSelector]: {
-          borderColor: 'Highlight'
+          borderColor: 'Highlight',
+          outline: 'none'
         }
       }
     },

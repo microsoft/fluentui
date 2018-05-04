@@ -50,7 +50,7 @@ describe('ChoiceGroup', () => {
     }
     expect(threwException).toEqual(false);
 
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
@@ -97,7 +97,7 @@ describe('ChoiceGroup', () => {
     }
     expect(threwException).toEqual(false);
 
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
@@ -127,7 +127,7 @@ describe('ChoiceGroup', () => {
     }
     expect(threwException).toEqual(false);
 
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
@@ -142,7 +142,7 @@ describe('ChoiceGroup', () => {
         options={ TEST_OPTIONS }
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
@@ -165,7 +165,7 @@ describe('ChoiceGroup', () => {
         onChange={ onChange }
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
@@ -187,7 +187,7 @@ describe('ChoiceGroup', () => {
         onChange={ onChange }
       />
     );
-    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     const extraAttributeGetter: (index: number) => string | null = (index: number): string | null => {

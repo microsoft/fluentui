@@ -15,7 +15,7 @@ const alertClicked = (): void => {
 
 export class ButtonSplitExample extends React.Component<IButtonProps> {
 
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
@@ -105,6 +105,33 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             } }
           />
         </div>
+        <div>
+          <Label>Button Disabled</Label>
+          <DefaultButton
+            primary
+            data-automation-id='test'
+            disabled={ true }
+            checked={ checked }
+            text='Create account'
+            onClick={ alertClicked }
+            split={ true }
+            style={ { height: '35px' } }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
       </div>
     );
   }
@@ -112,7 +139,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
 
 export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
 
-  public render() {
+  public render(): JSX.Element {
     const { disabled, checked } = this.props;
     const customSplitButtonStyles = getCustomSplitButtonStyles();
 

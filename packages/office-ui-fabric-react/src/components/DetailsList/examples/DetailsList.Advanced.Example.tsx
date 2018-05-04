@@ -8,7 +8,6 @@ import {
   DirectionalHint,
   ContextualMenu,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -80,7 +79,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       checkboxVisibility,
       columns,
@@ -129,6 +128,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
           groupProps={ groupProps }
+          enterModalSelectionOnTouch={ true }
           onItemInvoked={ this._onItemInvoked }
           onItemContextMenu={ this._onItemContextMenu }
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
@@ -144,7 +144,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     );
   }
 
-  private _onDataMiss(index: number) {
+  private _onDataMiss(index: number): void {
     index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
 
     if (!this._isFetchingItems) {
@@ -164,14 +164,12 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     }
   }
 
-  @autobind
-  private _onRenderMissingItem(index: number): null {
+  private _onRenderMissingItem = (index: number): null => {
     this._onDataMiss(index as number);
     return null;
   }
 
-  @autobind
-  private _onToggleLazyLoad() {
+  private _onToggleLazyLoad = (): void => {
     let { isLazyLoaded } = this.state;
 
     isLazyLoaded = !isLazyLoaded;
@@ -182,8 +180,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   }
 
-  @autobind
-  private _onToggleResizing() {
+  private _onToggleResizing = (): void => {
     const { items, sortedColumnKey, isSortedDescending } = this.state;
     let { canResizeColumns } = this.state;
 
@@ -195,29 +192,25 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   }
 
-  @autobind
-  private _onLayoutChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
+  private _onLayoutChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       layoutMode: menuItem.data
     });
   }
 
-  @autobind
-  private _onConstrainModeChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
+  private _onConstrainModeChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       constrainMode: menuItem.data
     });
   }
 
-  @autobind
-  private _onSelectionChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
+  private _onSelectionChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       selectionMode: menuItem.data
     });
   }
 
-  @autobind
-  private _onItemLimitChanged(value: string) {
+  private _onItemLimitChanged = (value: string): void => {
     let newValue = parseInt(value, 10);
     if (isNaN(newValue)) {
       newValue = DEFAULT_ITEM_LIMIT;
@@ -227,7 +220,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   }
 
-  private _getCommandItems(): IContextualMenuItem[] {
+  private _getCommandItems = (): IContextualMenuItem[] => {
     const {
       canResizeColumns,
       checkboxVisibility,
@@ -437,21 +430,19 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     };
   }
 
-  @autobind
-  private _onItemInvoked(item: any, index: number) {
+  private _onItemInvoked = (item: any, index: number): void => {
     console.log('Item invoked', item, index);
   }
 
-  @autobind
-  private _onItemContextMenu(item: any, index: number, ev: MouseEvent) {
+  private _onItemContextMenu = (item: any, index: number, ev: MouseEvent): boolean => {
     if ((ev.target as HTMLElement).nodeName === 'A') {
       return true;
     }
     console.log('Item context menu invoked', item, index);
+    return false;
   }
 
-  @autobind
-  private _onColumnClick(ev: React.MouseEvent<HTMLElement>, column: IColumn) {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       this.setState({
         contextualMenuProps: this._getContextualMenuProps(ev, column)
@@ -459,8 +450,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     }
   }
 
-  @autobind
-  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
+  private _onColumnContextMenu = (column: IColumn, ev: React.MouseEvent<HTMLElement>): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       this.setState({
         contextualMenuProps: this._getContextualMenuProps(ev, column)
@@ -468,15 +458,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     }
   }
 
-  @autobind
-  private _onContextualMenuDismissed() {
+  private _onContextualMenuDismissed = (): void => {
     this.setState({
       contextualMenuProps: undefined
     });
   }
 
-  @autobind
-  private _onSortColumn(key: string, isSortedDescending: boolean) {
+  private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
     const sortedItems = _items.slice(0).sort((a: any, b: any) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
 
     this.setState({
@@ -495,8 +483,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   }
 
-  @autobind
-  private _onGroupByColumn(column: IColumn) {
+  private _onGroupByColumn = (column: IColumn): void => {
     const { key, isGrouped } = column;
     const { sortedColumnKey, isSortedDescending, groups, items, columns } = this.state;
 
@@ -578,15 +565,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     return leafKey;
   }
 
-  @autobind
-  private _onAddRow() {
+  private _onAddRow = (): void => {
     this.setState({
       items: createListItems(1).concat(this.state.items)
     });
   }
 
-  @autobind
-  private _onDeleteRow() {
+  private _onDeleteRow = (): void => {
     this.setState({
       items: this.state.items!.slice(1)
     });
@@ -618,7 +603,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
         column.onRender = (item) => (
-          <Link href='#'>{ item.key }</Link>
+          <Link href='https://microsoft.com' target='_blank' rel='noopener'>{ item.key }</Link>
         );
         column.minWidth = 90;
         column.maxWidth = 90;

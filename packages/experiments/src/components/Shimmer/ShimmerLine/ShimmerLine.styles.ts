@@ -2,24 +2,23 @@ import {
   IShimmerLineStyleProps,
   IShimmerLineStyles
 } from './ShimmerLine.types';
-import { IStyleSet } from 'office-ui-fabric-react';
+import { IStyleSet } from '../../../Styling';
 
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const {
     height,
     widthInPercentage,
     widthInPixel,
-    borderAlignStyle
+    borderStyle
   } = props;
 
-  const styles: IStyleSet = !!borderAlignStyle ? borderAlignStyle : {};
+  const styles: IStyleSet = !!borderStyle ? borderStyle : {};
   const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
   return {
     root: [
-      'ms-ShimmerLine-line',
+      'ms-ShimmerLine-root',
       {
-        color: 'transparent',
         width: ACTUAL_WIDTH,
         height: `${height}px`,
         boxSizing: 'content-box',

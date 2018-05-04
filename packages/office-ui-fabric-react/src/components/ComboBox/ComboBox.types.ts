@@ -5,6 +5,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IComboBox {
   /**
@@ -26,6 +27,13 @@ export interface IComboBoxOption extends ISelectableOption {
    * the prop comboBoxOptionStyles
    */
   styles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * In scenarios where embedded data is used at the text prop, we will use the ariaLabel prop
+   * to set the aria-label and preview text. Default to false
+   * @default false;
+   */
+  useAriaLabelAsText?: boolean;
 }
 
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
@@ -33,7 +41,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IComboBox) => void;
+  componentRef?: (component: IComboBox | null) => void;
 
   /**
    * Collection of options for this ComboBox
@@ -46,7 +54,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
    */
-  onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+  onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
 
   /**
    * Callback issued when the user changes the pending value in ComboBox
@@ -155,10 +163,20 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   useComboBoxAsMenuWidth?: boolean;
 
   /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiSelect?: boolean;
+
+  /**
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.
    * @default true
    */
   isButtonAriaHidden?: boolean;
+
+  /**
+   * Optional keytip for this combo box
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface IComboBoxStyles {

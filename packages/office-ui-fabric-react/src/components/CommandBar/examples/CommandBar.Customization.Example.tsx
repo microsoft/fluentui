@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as styles from './CommandBar.Example.scss';
 import { IContextualMenuItem } from '../../ContextualMenu';
 
@@ -17,7 +17,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
     this.state = { isContextMenuShown: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <CommandBar
@@ -53,8 +53,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
     );
   }
 
-  @autobind
-  private _renderSplitButtonMenuItem(item: IContextualMenuItem) {
+  private _renderSplitButtonMenuItem = (item: IContextualMenuItem): JSX.Element => {
     const darkerBG = this.state.isContextMenuShown && styles.darkerBG;
 
     const dropDownButtonClass = css(
@@ -95,14 +94,12 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
     );
   }
 
-  @autobind
-  private _onClickChevron(ev: any) {
+  private _onClickChevron = (ev: any): void => {
     ev.stopPropagation();
     this._toggleDropDownMenuShown(ev);
   }
 
-  @autobind
-  private _toggleDropDownMenuShown(ev: any) {
+  private _toggleDropDownMenuShown = (ev: any): void => {
     this.setState({
       isContextMenuShown: !this.state.isContextMenuShown
     });

@@ -16,7 +16,7 @@ export interface ICalloutProps {
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICallout) => void;
+  componentRef?: (component: ICallout | null) => void;
 
   /**
    * The target that the Callout should try to position itself based on.
@@ -198,9 +198,18 @@ export interface ICalloutProps {
   theme?: ITheme;
 
   /**
-  * Optional styles for the component.
-  */
+   * Optional styles for the component.
+   */
   getStyles?: IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles>;
+
+  /**
+   * If specified, renders the Callout in a hidden state.
+   * Use this flag, rather than rendering a callout conditionally based on visibility,
+   * to improve rendering performance when it becomes visible.
+   * Note: When callout is hidden its content will not be rendered. It will only render
+   * once the callout is visible.
+   */
+  hidden?: boolean;
 }
 
 export interface ICalloutContentStyleProps {
@@ -231,6 +240,7 @@ export interface ICalloutContentStyleProps {
   overflowYHidden?: boolean;
 
   /**
+   * @deprecated will be removed in v6. Do not use.
    * Max height applied to the content of a callout.
    */
   contentMaxHeight?: number;

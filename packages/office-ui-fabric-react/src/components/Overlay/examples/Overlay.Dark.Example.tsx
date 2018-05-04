@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   IStyleFunction,
   classNamesFunction
 } from '../../../Utilities';
@@ -23,7 +22,7 @@ export class OverlayDarkExample extends React.Component<{}, {
     this.state = { isOverlayVisible: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isOverlayVisible } = this.state;
     const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
     const classNames = getClassNames(getStyles);
@@ -48,13 +47,11 @@ export class OverlayDarkExample extends React.Component<{}, {
     );
   }
 
-  @autobind
-  private _setVisibilityFalse(): void {
+  private _setVisibilityFalse = (): void => {
     this.setState({ isOverlayVisible: false });
   }
 
-  @autobind
-  private _toggleOverlay(): void {
+  private _toggleOverlay = (): void => {
     this.setState({ isOverlayVisible: !this.state.isOverlayVisible });
   }
 }

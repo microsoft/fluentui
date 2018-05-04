@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './TextField.Examples.scss';
 
 export class TextFieldIconExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-TextFieldExample'>
         <TextField
@@ -16,8 +15,7 @@ export class TextFieldIconExample extends React.Component<any, any> {
     );
   }
 
-  @autobind
-  private _onChanged(text: string) {
+  private _onChanged = (text: string): void => {
     console.log(text);
   }
 }

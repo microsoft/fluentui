@@ -1,9 +1,6 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import {
-  autobind,
   css,
   createArray
 } from 'office-ui-fabric-react/lib/Utilities';
@@ -56,11 +53,11 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     this._selection.setItems(PHOTOS);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._isMounted = true;
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <MarqueeSelection selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
         <Checkbox
@@ -97,8 +94,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     };
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void => {
     this.setState({ isMarqueeEnabled: isMarqueeEnabled! });
   }
 }

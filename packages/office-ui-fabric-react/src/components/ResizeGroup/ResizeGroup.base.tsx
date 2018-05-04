@@ -306,7 +306,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { onRenderData, className, getStyles, theme } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
@@ -328,12 +328,12 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._afterComponentRendered();
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
-  public componentWillReceiveProps(nextProps: IResizeGroupProps) {
+  public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',
@@ -351,20 +351,20 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public remeasure(): void {
-    if (this._root.value) {
+    if (this._root.current) {
       this.setState({ measureContainer: true });
     }
   }
 
-  private _afterComponentRendered() {
+  private _afterComponentRendered(): void {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
-      if (this.state.measureContainer && this._root.value) {
-        containerWidth = this._root.value.getBoundingClientRect().width;
+      if (this.state.measureContainer && this._root.current) {
+        containerWidth = this._root.current.getBoundingClientRect().width;
       }
       const nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
         this.state,
-        () => this._measured.value ? this._measured.value.scrollWidth : 0,
+        () => this._measured.current ? this._measured.current.scrollWidth : 0,
         containerWidth);
 
       if (nextState) {
@@ -373,8 +373,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     });
   }
 
-  private _onResize() {
-    if (this._root.value) {
+  private _onResize(): void {
+    if (this._root.current) {
       this.setState({ measureContainer: true });
     }
   }

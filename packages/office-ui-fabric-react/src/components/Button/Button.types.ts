@@ -7,6 +7,7 @@ import { IRenderFunction, KeyCodes } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IButton {
   /**
@@ -30,7 +31,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IButton) => void;
+  componentRef?: (component: IButton | null) => void;
 
   /**
    * If provided, this component will be rendered as an anchor.
@@ -234,6 +235,20 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
   */
   menuTriggerKeyCode?: KeyCodes | null;
+
+  /**
+   * Optional keytip for this button
+   */
+  keytipProps?: IKeytipProps;
+
+  /**
+   * Menu will not be created or destroyed when opened or closed, instead it
+   * will be hidden. This will improve perf of the menu opening but could potentially
+   * impact overall perf by having more elemnts in the dom. Should only be used
+   * when perf is important.
+   * Note: This may increase the amount of time it takes for the button itself to mount.
+   */
+  persistMenu?: boolean;
 }
 
 export enum ElementType {

@@ -1,14 +1,11 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  autobind,
   createRef
 } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsList, DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import './DetailsList.Grouped.Example.scss';
 
 const _columns = [
@@ -59,7 +56,7 @@ const _items = [
 export class DetailsListGroupedExample extends BaseComponent<{}, {
   items: {}[];
 }> {
-  private _root = createRef<DetailsList>();
+  private _root = createRef<IDetailsList>();
 
   constructor(props: {}) {
     super(props);
@@ -113,8 +110,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
     );
   }
 
-  @autobind
-  private _addItem() {
+  private _addItem = (): void => {
     const items = this.state.items;
 
     this.setState({
@@ -124,8 +120,8 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
         color: 'blue'
       }])
     }, () => {
-      if (this._root.value) {
-        this._root.value.focusIndex(items.length, true);
+      if (this._root.current) {
+        this._root.current.focusIndex(items.length, true);
       }
     });
   }

@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -63,6 +61,21 @@ export const MessageBarBasicExample = () => (
       isMultiline={ false }
     >
       Success lorem ipsum dolor sit amet. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Warning MessageBar - single line, with dismiss and action buttons</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.warning }
+      isMultiline={ false }
+      onDismiss={ log('test') }
+      dismissButtonAriaLabel='Close'
+      actions={
+        <div>
+          <MessageBarButton>Action</MessageBarButton>
+        </div>
+      }
+    >
+      Warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
     </MessageBar>
 
     <Label>Warning MessageBar - defaults to multiline, with dismiss and action buttons</Label>

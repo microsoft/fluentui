@@ -151,8 +151,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     ) as React.ReactElement<{}>;
   }
   public focus(): void {
-    if (this._thumb.value) {
-      this._thumb.value.focus();
+    if (this._thumb.current) {
+      this._thumb.current.focus();
     }
   }
 
@@ -160,7 +160,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return this.state.value;
   }
 
-  private _getAriaValueText = (value: number | undefined): string | void => {
+  private _getAriaValueText = (value: number | undefined): string | undefined => {
     if (this.props.ariaValueText && value !== undefined) {
       return this.props.ariaValueText(value);
     }
@@ -185,13 +185,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
-    if (!this._sliderLine.value) {
+    if (!this._sliderLine.current) {
       return;
     }
 
     const { max, min, step } = this.props;
     const steps: number = (max! - min!) / step!;
-    const sliderPositionRect: ClientRect = this._sliderLine.value.getBoundingClientRect();
+    const sliderPositionRect: ClientRect = this._sliderLine.current.getBoundingClientRect();
     const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;
@@ -242,7 +242,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
     return currentPosition;
   }
-  private _updateValue(value: number, renderedValue: number) {
+  private _updateValue(value: number, renderedValue: number): void {
     const interval: number = 1.0 / this.props.step!;
     // Make sure value has correct number of decimal places based on steps without JS's floating point issues
     const roundedValue: number = Math.round(value * interval) / interval;

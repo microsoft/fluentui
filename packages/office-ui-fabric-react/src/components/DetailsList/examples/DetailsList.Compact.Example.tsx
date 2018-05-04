@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
@@ -8,7 +6,6 @@ import {
   Selection
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: {
   key: number,
@@ -65,7 +62,7 @@ export class DetailsListCompactExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, selectionDetails } = this.state;
 
     return (
@@ -104,8 +101,7 @@ export class DetailsListCompactExample extends React.Component<{}, {
     }
   }
 
-  @autobind
-  private _onChanged(text: any): void {
+  private _onChanged = (text: any): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   }
 

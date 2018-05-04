@@ -16,6 +16,7 @@ import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -33,7 +34,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IContextualMenu) => void;
+  componentRef?: (component: IContextualMenu | null) => void;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -138,7 +139,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * menu item.
    * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * CSS class to apply to the context menu.
@@ -242,6 +243,15 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default {direction: FocusZoneDirection.vertical}
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * If specified, renders the ContextualMenu in a hidden state.
+   * Use this flag, rather than rendering a ContextualMenu conditionally based on visibility,
+   * to improve rendering performance when it becomes visible.
+   * Note: When ContextualMenu is hidden its content will not be rendered. It will only render
+   * once the ContextualMenu is visible.
+   */
+  hidden?: boolean;
 }
 
 export interface IContextualMenuItem {
@@ -261,6 +271,11 @@ export interface IContextualMenuItem {
    * Props that go to the IconComponent
    */
   iconProps?: IIconProps;
+
+  /**
+   * Custom render function for the menu item icon
+   */
+  onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 
   /**
    * Props that go to the IconComponent used for the chevron.
@@ -329,7 +344,7 @@ export interface IContextualMenuItem {
    * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu.
    * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * An optional URL to navigate to upon selection
@@ -441,6 +456,11 @@ export interface IContextualMenuItem {
    * the length of the custom list. It is up to the user to increment the count for their list.
    */
   customOnRenderListLength?: number;
+
+  /**
+   * Keytip for this contextual menu item
+   */
+  keytipProps?: IKeytipProps;
 
   /**
    * Any additional properties to use when custom rendering menu items.

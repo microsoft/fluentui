@@ -90,7 +90,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -101,7 +101,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -112,10 +112,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -180,6 +180,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -283,7 +287,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -294,7 +298,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -305,10 +309,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -373,6 +377,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -476,7 +484,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -487,7 +495,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -498,10 +506,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -566,6 +574,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -669,7 +681,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -680,7 +692,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -691,10 +703,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -759,6 +771,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -866,7 +882,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -877,7 +893,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -888,10 +904,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -956,6 +972,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1059,7 +1079,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -1070,7 +1090,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1081,10 +1101,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -1149,6 +1169,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1252,7 +1276,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -1263,7 +1287,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1274,10 +1298,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -1342,6 +1366,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1445,7 +1473,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -1456,7 +1484,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1467,10 +1495,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -1535,6 +1563,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1642,7 +1674,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -1653,7 +1685,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1664,10 +1696,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -1732,6 +1764,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1835,7 +1871,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -1846,7 +1882,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1857,10 +1893,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -1925,6 +1961,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -2028,7 +2068,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -2039,7 +2079,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -2050,10 +2090,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -2118,6 +2158,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -2221,7 +2265,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -2232,7 +2276,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -2243,10 +2287,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after {
+                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
                   border: none;
                 }
-                .ms-Fabric.is-focusVisible &:focus $svg {
+                .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
                   box-shadow: 0 0 0 1px #969696;
@@ -2311,6 +2355,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;

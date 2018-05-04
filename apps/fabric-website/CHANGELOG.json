@@ -2,6 +2,170 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.7.3",
+      "tag": "@uifabric/fabric-website_v5.7.3",
+      "date": "Fri, 04 May 2018 15:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "097a1c9680161fe7faae9573f1e12fd21295eda6",
+            "comment": "Add fabric sketch toolkit"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.95.0 <6.0.0` to `>=5.96.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.2",
+      "tag": "@uifabric/fabric-website_v5.7.2",
+      "date": "Tue, 01 May 2018 19:26:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2d89229b5623713af268b537e1bd72ce476354c4",
+            "comment": "LocalizationPage: Only show icon names on hover so they don't overlap."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.93.0 <6.0.0` to `>=5.94.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.1",
+      "tag": "@uifabric/fabric-website_v5.7.1",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c3769b65c2596d3f9dea0d9f25a0715cf23914ea",
+            "comment": "Removing unused refs."
+          }
+        ],
+        "none": [
+          {
+            "author": "VincentBailly <vincentbaill@gmail.com>",
+            "commit": "88e043f28db97e59b0cbb25aca26ffbd606121af",
+            "comment": "fix corner case bug with Safari"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/fabric-website_v5.7.0",
+      "date": "Tue, 17 Apr 2018 18:47:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8829b1fde1bbe2e6920b5e619727835184a15b45",
+            "comment": "GetStarted page: Give titles links to their corresponding pages."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.82.1 <6.0.0` to `>=5.82.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.1",
+      "tag": "@uifabric/fabric-website_v5.6.1",
+      "date": "Mon, 16 Apr 2018 10:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6f8a180ae2ecca66d09be97e48e8e03cc17d4d9e",
+            "comment": "Updating build to React 16.3.1."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.81.1 <6.0.0` to `>=5.82.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/fabric-website_v5.6.0",
+      "date": "Thu, 05 Apr 2018 10:15:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "d81862b0f09f206cfb7e7661c7699ddffe7acccd",
+            "comment": "Add Office Add-ins Toolkit"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.78.0 <6.0.0` to `>=5.79.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.2",
+      "tag": "@uifabric/fabric-website_v5.5.2",
+      "date": "Tue, 27 Mar 2018 10:14:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "ccf2163bda809f6033fff3892b494c004fe0ff13",
+            "comment": "Adds missing neutralQuaternary and neutralQuaternaryAlt to document colors page"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.70.0 <6.0.0` to `>=5.71.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.1",
+      "tag": "@uifabric/fabric-website_v5.5.1",
+      "date": "Wed, 21 Mar 2018 10:18:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "5fbbac6c535b5db98eaf8167f4ecd8fe2b882990",
+            "comment": "Updated OfficeUIFabric Toolkit link to v4.0.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.66.0 <6.0.0` to `>=5.67.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "@uifabric/fabric-website_v5.5.0",
       "date": "Mon, 19 Mar 2018 10:27:55 GMT",

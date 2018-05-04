@@ -1,6 +1,116 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+
+## 5.30.1
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Backing out `isEqual` change which is broken.
+- Add accompanying utilities work for Keytips
+
+## 5.29.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Allow a function to be passed to the Customizers props
+
+### Patches
+
+- Add isEqual and isNotEqual utilities
+
+## 5.28.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Adding `isDirectionalKeyCode` helper.
+
+## 5.27.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The focus styling no longer adds "ms-Fabric" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code.
+
+## 5.26.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- InputMask: Added inputMask utilitiy and tests
+
+## 5.25.0
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Minor changes
+
+- Update createRef to match React.createRef api
+
+## 5.24.0
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Minor changes
+
+- Adding some helpers which ensure that `ms-Fabric.is-focusVisible` class name is added to the document body when focus rectangles should be fixible. Also ensuring that the `documentElement` has a `dir` attribute.
+- Upgrade to TypeScript 2.8.1
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.23.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Added IComponentAs as a type for 'render as' props in components
+
+## 5.22.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- asyncFocus: passing a component which has a focus method, but no `ownerDocument`, should still call focus.
+
+## 5.22.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- The initials logic used in calculating Persona initials now takes in a `allowPhoneInitials` param to allow for translating phone text to initials.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Update createRef type
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.20.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing
+
+## 5.19.1
+Wed, 21 Mar 2018 10:18:29 GMT
+
+### Patches
+
+- EventGroup.raise: event args are now correctly mixed into the event object.
 
 ## 5.19.0
 Tue, 20 Mar 2018 10:27:37 GMT

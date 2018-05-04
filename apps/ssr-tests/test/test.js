@@ -1,7 +1,12 @@
 'use strict';
 
+
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 
+// Treat warnings as failures.
+console.warn = (message) => { throw new Error(message); };
+
+// Initialize icons.
 initializeIcons('dist/');
 
 // Configure load-themed-styles to avoid registering styles.
@@ -33,7 +38,6 @@ describe('Fabric components', () => {
     }
   }
 });
-
 
 function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, (done) => {

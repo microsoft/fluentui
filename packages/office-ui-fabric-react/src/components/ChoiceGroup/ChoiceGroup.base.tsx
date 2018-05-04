@@ -53,7 +53,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     this._labelId = getId('ChoiceGroupLabel');
   }
 
-  public componentWillReceiveProps(newProps: IChoiceGroupProps) {
+  public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
     const oldKeyCheched = this._getKeyChecked(this.props);
 
@@ -64,7 +64,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       theme,
@@ -120,8 +120,8 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public focus() {
-    if (this._inputElement.value) {
-      this._inputElement.value.focus();
+    if (this._inputElement.current) {
+      this._inputElement.current.focus();
     }
   }
 

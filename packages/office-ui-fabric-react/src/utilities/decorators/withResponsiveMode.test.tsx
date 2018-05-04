@@ -5,7 +5,7 @@ import { setSSR } from '../../Utilities';
 
 @withResponsiveMode
 class Example extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return <div />;
   }
 }

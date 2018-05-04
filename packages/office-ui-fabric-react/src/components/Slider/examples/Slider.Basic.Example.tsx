@@ -13,7 +13,7 @@ export class SliderBasicExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-basicSlider'>
         <div className='ms-SliderBasicExample'>

@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
@@ -33,7 +31,7 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, selectionDetails } = this.state;
 
     return (
@@ -80,7 +78,7 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     alert(`Item invoked: ${item.name}`);
   }
 
-  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
+  private _onRenderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
     if (column.key === 'name') {
       return <Link data-selection-invoke={ true }>{ item[column.key] }</Link>;
     }
@@ -88,7 +86,7 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     return item[column.key];
   }
 
-  private _insertBeforeItem(item: any) {
+  private _insertBeforeItem(item: any): void {
     const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
     const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);

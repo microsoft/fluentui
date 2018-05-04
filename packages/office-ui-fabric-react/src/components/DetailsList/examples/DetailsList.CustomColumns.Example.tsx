@@ -1,8 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { createListItems } from '@uifabric/example-app-base';
-import { autobind } from '../../../Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import {
@@ -47,8 +44,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     );
   }
 
-  @autobind
-  private _onColumnClick(event: React.MouseEvent<HTMLElement>, column: IColumn) {
+  private _onColumnClick = (event: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns } = this.state;
     let { sortedItems } = this.state;
     let isSortedDescending = column.isSortedDescending;

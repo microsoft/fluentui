@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { LinkBase } from './Link.base';
 
 import {
@@ -8,6 +6,7 @@ import {
   ITheme
 } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
+import { IKeytipProps } from '../../Keytip';
 
 export interface ILink {
   /** Sets focus to the link. */
@@ -19,7 +18,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILink) => void;
+  componentRef?: (component: ILink | null) => void;
 
   /**
    * Whether the link is disabled
@@ -29,12 +28,17 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ILinkProps, ILinkStyles>;
+  getStyles?: IStyleFunction<ILinkStyleProps, ILinkStyles>;
 
   /**
    * Theme (provided through customization.)
    */
   theme?: ITheme;
+
+  /**
+   * Optional keytip for this Link
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface ILinkStyleProps {

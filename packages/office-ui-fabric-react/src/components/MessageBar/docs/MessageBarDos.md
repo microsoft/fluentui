@@ -1,0 +1,4 @@
+- Place the message bar near the top of the relevant view, in a highly visible but unobtrusive location.
+- Keep the text very brief. Be succinct and your users are more likely to read everything you say.
+- Consider how localization may affect the message. Translation to other languages may add up to 33% more characters to the string length.
+- Use the right variant for the type and urgency of the particular message (see variants)

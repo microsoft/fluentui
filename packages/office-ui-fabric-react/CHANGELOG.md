@@ -1,6 +1,466 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Mar 2018 10:27:37 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+
+## 5.96.0
+Fri, 04 May 2018 15:58:39 GMT
+
+### Minor changes
+
+- ScrollablePane: Optimizations on how component functions.  Change positioning from inheriting height/maxHeight of parent element to use position: absolute
+- Icon: code has been cleaned up, memoizeFunction usage has been removed.
+- Rating: Hover states in regular and high contrast mode.
+
+### Patches
+
+- Fix ensureSuggestionModel null ref, get rid of unneeded FocusZone in BaseExtendedPicker, remove requirement in BaseExtendedPicker that suggestions are shown when input is focused (only clicked)
+- Positioning: Fix cover positioning so it returns the correct edge to handle menu shrinkage
+- Fix TooltipHost mutation of calloutProps.
+- SpinButton: Remove browser autocomplete
+- Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. 
+
+## 5.95.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- SplitButton/ComboBox: added onTouch support for menu expansion.
+- Add Keytip, KeytipLayer, and KeytipData component
+
+### Patches
+
+- If firstFocus on HoverCard is set then propagate it to setInitialFocus in ExpandingCard. This enables focusing the card on render.
+- TextField can now render the numeric value 0
+
+## 5.94.0
+Tue, 01 May 2018 19:26:35 GMT
+
+### Minor changes
+
+- Theme Generator: use HSV for generating shades/tints
+
+## 5.93.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- DatePicker: Add a reset function to the public `IDatePicker` interface.
+- move extendedPicker, floatingPicker, and selectedItemsList to OUFR
+- Tooltip: updated to use customizable styling via `getStyles`.
+- List: Added list scrolling modes
+
+### Patches
+
+- Breadcrumb: Updating breadcrumb to user js styling.
+- Added onClick handler to rating star in the Rating component that calls _onFocus redundently for support with Firefox & Safari on OSX.
+- details link contrast issue
+
+## 5.92.1
+Mon, 30 Apr 2018 21:22:55 GMT
+
+### Patches
+
+- Revert isEqual check in List.
+
+## 5.92.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Contextual Menu: moved out the split button to be its own component, ContextualMenuSplitButton
+- Use theme flag to control global classes
+
+## 5.91.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Added optional className property to Calendar
+
+### Patches
+
+- Fix #3607
+- Add a option for custom dividerAs to get item information while rendering
+
+## 5.90.0
+Thu, 26 Apr 2018 10:12:34 GMT
+
+### Minor changes
+
+- Complete ProgressIndicator conversion to mergeStyles. Add `barHeight` to enable changing height of progress bar.
+- Pickers: Several fixes regarding certain props
+
+### Patches
+
+- Fix props validation for Breadcrumb
+- Gate calendar month, year, and today keydowns for only ENTER as onClick handles space with button nodes to fix double date change regression.
+
+## 5.89.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types.
+- Fix theme slots for DetailsList header colors
+- Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false
+
+## 5.88.0
+Tue, 24 Apr 2018 10:12:58 GMT
+
+### Minor changes
+
+- fixing selection bugs in Calendar component, updating styling for new designs
+- Begin converting Pivot to mergeStyles
+
+### Patches
+
+- Use `data-is-scrollable` attribute on correct ScrollablePane div
+
+## 5.87.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisible` classname. This is one step closer towards removing the `Fabric` component wrapper requirement.
+- Plumb ARIA label for picker suggestion remove button
+
+### Patches
+
+- ContextualMenu: in item root styling, replaced `font: inherit` with the appropriate font style from the theme.
+- Updating a snapshot test.
+- Adding check to focusTrapZone to only restore focus on close if focus was still inside the focusTrapZone
+- Deprecates INavLink.iconClassName in favor of IIconProps.className.
+
+## 5.86.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- Added support for zero star situations in the Rating component.  Before it would write out a star for  the number zero showing 6 stars when there should be 5.
+- Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem.
+
+### Patches
+
+- Callout.Basic.Example: Fix example so callout positions properly
+- Propagate onRenderInitials correctly from Persona to PersonaCoin
+
+## 5.85.0
+Fri, 20 Apr 2018 10:12:34 GMT
+
+### Minor changes
+
+- TextField: Implemented input masking.
+- add onRenderDescription to TextField
+- Added support for native props on Panel for the root div with class ms-Panel
+- Added headerButtonProps prop to PivotItem to allow passing native props (data-* & aria-*) to the header/link/CommandButton element. Also depricated linkText and added headerText for semantic purposes.
+
+### Patches
+
+- DetailsRow: applying `flex-shrink:0` to the check cell to prevent it from squishing in the flex layout.
+- Revert unintended changes to Dropdown styles from #4512
+
+## 5.84.0
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Minor changes
+
+- Add the option of collapsing breadcrumb overflow items into a position other than the first one
+- ComboBox: Add Event as additional paramater to onChanged callback for saving pending changes
+
+### Patches
+
+- Remove usage of Number.isNaN from SpinButton.tsx since it doesn't exist in IE11
+- Update createRef to match React.createRef api
+- Remove unused variables and re-enable no-unused-variable for office-ui-fabric-react
+
+## 5.83.0
+Thu, 19 Apr 2018 00:17:37 GMT
+
+### Minor changes
+
+- ActivityItem: Added the pulsing beacon animation for the compact size.
+- SearchBox: Clicks on element before input field set cursor to start of input text.
+
+### Patches
+
+- ChoiceGroup: Style polish for focus, high contrast focus, and high contrast hover.
+- Fix PersonaCoin index import
+- Updates aria-owns on BasePicker (and snapshot tests) so its only set when suggestions are rendered
+
+## 5.82.4
+Wed, 18 Apr 2018 17:02:26 GMT
+
+### Patches
+
+- ContextualMenu: Update mousemove to only do anything if there is not another pending mouse enter/move/leave to improve the snappiness of the updates
+
+## 5.82.3
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Convert documentation to markdown for HIG.
+- Revamp Themes documentation
+- Passes item when href set onClick for CommandBar control
+
+## 5.82.2
+Tue, 17 Apr 2018 18:47:11 GMT
+
+### Patches
+
+- Fix improper imports from index files
+- Mark Panel content as scrollable
+
+## 5.82.1
+Mon, 16 Apr 2018 21:49:29 GMT
+
+### Patches
+
+- Do not call the onMenuClick on every keyDown event
+
+## 5.82.0
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Minor changes
+
+- Contextual Split Button: Change styling to only have one split button container instead of two
+- Changed Dropdown components role from combobox to dropdown
+- Bring back isResultsFooterVisible that is props but never used.
+- ContextualMenu/Button: Improve perf and add hiddenvariable to buttons
+- Add ability to use Customer to provide a default layer host
+- Fabric component: all logic that was in the component has moved to a helper which is initialized within BaseComponent. This ensures that focus rectangles show up even if you don't use the Fabric wrapper.
+- Set Panel's FocusTrapZone prop isClickableOutsideFocusTrap to true by default to allow click interactions while panel is open
+- Upgrade to TypeScript 2.8.1
+
+### Patches
+
+- Add focus method to Breadcrumb
+- Fix scroll bar shows when it should not.
+- Fix style and alignment issues with DetailsList headers
+- Add new component page prop for editing on GitHub.
+- SpinButton: Make sure up/down Arrow do not leave the spinButton
+- Handling the scenario where embedded text is passed in as the option's text. In This case, the ariaLabel prop will be displayed in the input and used for autocomplete matching. The value rendered in the menu will not change.
+- Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements. 
+- Adds tests for DocumentCardTitle title truncation
+- Add focus method to Pivot.
+- FocusZone: redoing the "reset alignment on mouse down" change in a less intrusive manner, with test coverage.
+- Removing module entry until we change `lib` to output es6 modules in 6.0. If you would like tree shaking to work, please use webpack aliasing to alias `{packageName}/lib` to `{packageName}/lib-es2015`. In 6.0, we will change `lib` to be es6, so that current partners will just get tree shaking out of the box without aliasing.
+- Prevent SelectionZone from interfering with links and buttons
+- Added missing role to TagPicker's TagItem.
+- FocusZone: undoing the "click" change, which was causing non-focusable targets to be tracked as the "active" element. This created side-effects such as elements becoming focusable upon clicking them more than once, leaving behind unexpected focus outlines.
+- Updating build to React 16.3.1.
+- DetailsList: Starting aria-rowIndex from 1 instead of 0 as mentioned in https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex
+- ColorPicker: text fields now update when `alphaSliderHidden` is `true`.
+
+## 5.81.1
+Thu, 12 Apr 2018 15:59:01 GMT
+
+### Patches
+
+- Coachmark: The pulsing beacon animation moved to the Styling package.
+
+## 5.81.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- Link: fix the style interface
+
+### Patches
+
+- FocusZone: updating to update alignment on click.
+- SplitButton: Allow the primary portion of a splitButton (when it a menu) to collapse a submenu
+- DatePicker: Remove extra asterisks, includes using TextField's label.
+- Updating various `componentRef` values to refer to the component public interfaces, rather than to the components themselves.
+- SearchBox: Fix padding left and add padding top and bottom to fix the field overlapping the border.
+
+## 5.80.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- FocusTrapZone: Add KeyDown callback (in line with FocusZone)
+- OverflowSet: Add Foucs(firstChild) and focusElement() functions
+- Convert Persona and PersonaCoin and PersonaPresence to  mergeStyles. Create IPersonaSharedProps for props that apply to Persona and PersonaCoin and PersonaPresence. Other refactors.
+
+### Patches
+
+- Re-focus DatePicker input after calendar is closed
+- Contexual Menu: Move SplitButtonContainer to be defined in the constructor instead of ComponentDidMount
+- Dropdown: color of caretDown changed to highlighttext on focus
+- Fix IconButton state styles
+- ComboBox: Make focus wrap in in the menu (to align with dropdwn and customer feedback)_
+- Split PersonaCoin and PersonaPresence files for more consistency.
+- Move sub-components to sub-folders
+- Fix for tooltip host css changes
+
+## 5.79.1
+Fri, 06 Apr 2018 10:25:55 GMT
+
+### Patches
+
+- Stops event propagation of Esc keypress on DatePicker
+
+## 5.79.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Added dividerAs prop to Breadcrumb component allowing the user to pass a custom icon to be used as the trail divider icon.
+- Add the ability to use custom props for the panel used to render options on small devices.
+- Panel: pass ID for header text element to custom renderer
+- Callout/Positioning: Improve callout perf with hidden flag and improve repositioning logic
+
+### Patches
+
+- ComboBox: Adding support for Alt or Meta + Up to close menus
+- Fix SearchBox background color.
+- Fixes bug with undefined reference
+- Fixing bug dialog content does not grow fully to take up all the space provided by parent
+- Make the link button selectable.
+
+## 5.78.0
+Tue, 03 Apr 2018 10:16:05 GMT
+
+### Minor changes
+
+- Brings changes to DetailsList, DetailsRow and DetailsRowFields to enable use of a basic Shimmer.
+
+### Patches
+
+- Fix phantom scrollbar in Panel popups in Firefox
+- Adding a longer delay as an option to the tooltip comonent. Before there was only a medium (300ms) or zero (0ms) delay.
+
+## 5.77.0
+Mon, 02 Apr 2018 22:15:06 GMT
+
+### Minor changes
+
+- Make tooltip interactable if given a delay before closing.
+
+### Patches
+
+- Add overflow control to ms-Document-details
+
+## 5.76.0
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Minor changes
+
+- OverflowSet: Allow the OverflowSet to not be contained within a FocusZone
+
+### Patches
+
+- DetailsList: link color too close to selected background in high-contrast-white
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable webpack 4 tree shaking until we can identify a good fix for it to not shake out the scss files.
+- Dropdown: aria role is `listbox` instead of `textbox`
+- Pickers: fix bug where suggestions wouldn't have correct value selected
+- Updating the split button to close the menu when the primary button is executed.
+- Pickers: Fix focus problems and scroll issues
+
+## 5.74.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Use markdown-to-jsx for ActivityItem documentation
+
+## 5.73.0
+Wed, 28 Mar 2018 10:16:39 GMT
+
+### Minor changes
+
+- Persona: adding `allowPhoneInitials` prop to allow for calculating initials from phone numbers.
+
+### Patches
+
+- ContextualMenu: SplitButtons in ContextualMenus are incorrectly using the menuLauncher portion of the splitButton for the tagrate when the  menuLauncher portion is  activated. This can lead to weird overhangs of the parent menu even if  directionalHintFixed is not true (e.g. it will overlap the primary portion of the  splitButton and potentially other items in the parent menu)
+
+## 5.72.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- add isSelectedOverride to suggestionItemProps
+- ContextualMenu / Split Button: Fixed styling problems For centered button content.
+- Use markdown-to-jsx for ActivityItem documentation
+
+### Patches
+
+- Checkbox: label text should be selectable, but not the checkmark icons.
+
+## 5.71.0
+Tue, 27 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- Deprecate SearchBox defaultValue prop.
+
+### Patches
+
+- Dropdown: do not select disabled items on keydown
+- FocusZone: Align props to HTMLElement to be consistent
+- TextField, Panel: Deprecated componentId prop.
+- BasePicker: suggestions should not be shown in BasePicker when input does not exist.
+- In Panel component, isClickableOutsideFocusTrap should not be overriden back to false if it's already set to true in focusTrapZoneProps.
+- MessageBar: For single line, put dismiss button after action buttons.
+- ComboBox: Removed a redundant property from the basic example.
+
+## 5.70.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` flags on all applicable packages.
+
+### Patches
+
+- DetailsHeader: reverting how maxWidth is handled to previous behavior.
+- Fix bug in combo box where _selectedElement ref wasn't being set conditionally
+- Update componentRef types
+- ComboBox: Add some code comments. Minor bug fixes to the example page.
+
+## 5.69.0
+Fri, 23 Mar 2018 01:29:21 GMT
+
+### Minor changes
+
+- Introduced focusAsync for cheaper element focusing, and made FocusTrapZone utilize it
+- Add multiSelect capability for ComboBox
+
+### Patches
+
+- DetailsList: reset focusedItemIndex after setKey changes to fix scrolling after folder navigation
+- Dropdown: onKeydown should check for defaultPrevented, not preventDefault.
+- Removed focusability on buttons for split buttons and spin buttons
+- Remove the redundant tooltip in a Dropdown command button
+
+## 5.68.0
+Thu, 22 Mar 2018 10:14:03 GMT
+
+### Minor changes
+
+- ,
+
+### Patches
+
+- Provide compact timestamp style for ActivityItem
+- Removes @autobind from examples
+- Removing empty callout when tooltip content is empty
+
+## 5.67.0
+Wed, 21 Mar 2018 10:18:30 GMT
+
+### Minor changes
+
+- Reordered the logic in CommandBar that decides to render an anchor or button tag so that the anchor tag can have both an href and onclick attribute.
+- Add `hasFocus` api in `SearchBox` that returns a flag indicating whether `SearchBox` has focus or not.
+
+### Patches
+
+- DetailsList: headers now resize correctly and respect maxWidth.
+- Toggle: Updating to use flexbox positioning
+- TextField: Fixing issue with promise based error message not being announced by firefox + NVDA
 
 ## 5.66.0
 Tue, 20 Mar 2018 10:27:37 GMT
