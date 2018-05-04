@@ -38,7 +38,6 @@ export function initializeIcons(
       'Search': '\uE721',
       'Share': '\uE72D',
       'BlockedSite': '\uE72F',
-      'BlockedSiteSolid12': '\uF70A',
       'FavoriteStar': '\uE734',
       'FavoriteStarFill': '\uE735',
       'CheckMark': '\uE73E',
