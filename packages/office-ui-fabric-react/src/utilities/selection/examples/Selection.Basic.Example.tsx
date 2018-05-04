@@ -196,7 +196,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
       {
         key: 'selectAll',
         name: 'Select All',
-        icon: 'CheckMark',
+        iconProps: { iconName: 'CheckMark' },
         onClick: this._onToggleSelectAll
       },
       {

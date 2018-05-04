@@ -206,7 +206,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     function itemsHaveIcons(contextualMenuItems: IContextualMenuItem[]): boolean {
       for (const item of contextualMenuItems) {
-        if (!!item.icon || !!item.iconProps) {
+        if (!!item.iconProps) {
           return true;
         }
 
@@ -348,7 +348,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     const renderedItems: React.ReactNode[] = [];
-    const iconProps = this._getIconProps(item);
+    const iconProps = item.iconProps || { iconName: 'None' };
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
@@ -653,13 +653,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onTap={ this._onPointerAndTouchEvent }
       />
     );
-  }
-
-  private _getIconProps(item: IContextualMenuItem): IIconProps {
-    const iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: item.icon
-    };
-    return iconProps;
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {

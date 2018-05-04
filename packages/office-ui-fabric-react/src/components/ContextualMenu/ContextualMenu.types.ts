@@ -278,12 +278,6 @@ export interface IContextualMenuItem {
   submenuIconProps?: IIconProps;
 
   /**
-   * Deprecated at v0.69.0 and will no longer exist after 1.0 use IconProps instead.
-   * @deprecated
-   */
-  icon?: string;
-
-  /**
    * Whether the menu item is disabled
    * @defaultvalue false
    */
