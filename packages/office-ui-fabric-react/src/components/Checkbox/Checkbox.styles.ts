@@ -1,7 +1,8 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import {
   getFocusStyle,
-  FontSizes
+  FontSizes,
+  HighContrastSelector
 } from '../../Styling';
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
@@ -42,7 +43,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         margin: '0',
         outline: 'none',
         display: 'block',
-        cursor: 'pointer',
+        cursor: 'pointer'
       },
       !disabled && [
         !checked && {
@@ -64,6 +65,18 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             ':focus .ms-Checkbox-checkbox': {
               background: checkboxBackgroundCheckedHovered,
               borderColor: checkboxBorderColorCheckedHovered
+            },
+            [HighContrastSelector]: {
+              selectors: {
+                ':hover .ms-Checkbox-checkbox': {
+                  background: 'WindowText',
+                  borderColor: 'WindowText'
+                },
+                ':focus .ms-Checkbox-checkbox': {
+                  background: 'WindowText',
+                  borderColor: 'WindowText'
+                }
+              }
             }
           }
         },
@@ -115,7 +128,13 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       },
       !disabled && checked && {
         background: checkboxBackgroundChecked,
-        borderColor: checkboxBorderColorChecked
+        borderColor: checkboxBorderColorChecked,
+        selectors: {
+          [HighContrastSelector]: {
+            background: 'WindowText',
+            borderColor: 'WindowText',
+          }
+        }
       },
       disabled && {
         borderColor: checkboxBorderColorDisabled
@@ -129,7 +148,13 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       'ms-Checkbox-checkmark',
       {
         opacity: checked ? '1' : '0',
-        color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor
+        color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor,
+        selectors: {
+          [HighContrastSelector]: {
+            color: disabled ? 'InactiveBorder' : 'Window',
+            MsHighContrastAdjust: 'none',
+          }
+        }
       }
     ],
     text: [
