@@ -11,7 +11,6 @@ const renderItemIcon = (props: IContextualMenuItemProps) => {
     classNames
   } = props;
 
-  // Only present to allow continued use of item.icon which is deprecated.
   const { iconProps } = item;
 
   if (!hasIcons) {
