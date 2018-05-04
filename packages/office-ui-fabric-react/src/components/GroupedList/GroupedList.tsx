@@ -15,7 +15,8 @@ import {
   GroupedListSection
 } from './GroupedListSection';
 import {
-  List
+  List,
+  ScrollToMode
 } from '../../List';
 import {
   SelectionMode
@@ -55,9 +56,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     };
   }
 
-  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
     if (this._list.current) {
-      this._list.current.scrollToIndex(index, measureItem);
+      this._list.current.scrollToIndex(index, measureItem, scrollToMode);
     }
   }
 

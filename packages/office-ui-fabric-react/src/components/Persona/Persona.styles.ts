@@ -10,12 +10,38 @@ import {
   IStyle,
   normalize,
   noWrap,
+  getGlobalClassNames,
 } from '../../Styling';
 import {
   personaSize,
   presenceBoolean,
   sizeBoolean,
 } from './PersonaConsts';
+
+const GlobalClassNames = {
+  root: 'ms-Persona',
+  size10: 'ms-Persona--size10',
+  size16: 'ms-Persona--size16',
+  size24: 'ms-Persona--size24',
+  size28: 'ms-Persona--size28',
+  size32: 'ms-Persona--size32',
+  size40: 'ms-Persona--size40',
+  size48: 'ms-Persona--size48',
+  size72: 'ms-Persona--size72',
+  size100: 'ms-Persona--size100',
+  available: 'ms-Persona--online',
+  away: 'ms-Persona--away',
+  blocked: 'ms-Persona--blocked',
+  busy: 'ms-Persona--busy',
+  doNotDisturb: 'ms-Persona--donotdisturb',
+  offline: 'ms-Persona--offline',
+  details: 'ms-Persona-details',
+  primaryText: 'ms-Persona-primaryText',
+  secondaryText: 'ms-Persona-secondaryText',
+  tertiaryText: 'ms-Persona-tertiaryText',
+  optionalText: 'ms-Persona-optionalText',
+  textContent: 'ms-Persona-textContent',
+};
 
 export const getStyles = (
   props: IPersonaStyleProps
@@ -27,6 +53,8 @@ export const getStyles = (
   } = props;
 
   const { palette } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const size = sizeBoolean(props.size as PersonaSize);
   const presence = presenceBoolean(props.presence as PersonaPresence);
@@ -41,7 +69,7 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Persona',
+      classNames.root,
       normalize,
       {
         color: palette.neutralPrimary,
@@ -69,7 +97,7 @@ export const getStyles = (
       },
 
       size.isSize10 && [
-        'ms-Persona--size10',
+        classNames.size10,
         {
           height: personaSize.size10,
           minWidth: personaSize.size10,
@@ -77,7 +105,7 @@ export const getStyles = (
       ],
 
       size.isSize16 && [
-        'ms-Persona--size16',
+        classNames.size16,
         {
           height: personaSize.size16,
           minWidth: personaSize.size16,
@@ -85,7 +113,7 @@ export const getStyles = (
       ],
 
       size.isSize24 && [
-        'ms-Persona--size24',
+        classNames.size24,
         {
           height: personaSize.size24,
           minWidth: personaSize.size24,
@@ -97,7 +125,7 @@ export const getStyles = (
       },
 
       size.isSize28 && [
-        'ms-Persona--size28',
+        classNames.size28,
         {
           height: personaSize.size28,
           minWidth: personaSize.size28,
@@ -109,7 +137,7 @@ export const getStyles = (
       },
 
       size.isSize32 && [
-        'ms-Persona--size32',
+        classNames.size32,
         {
           height: personaSize.size32,
           minWidth: personaSize.size32,
@@ -117,17 +145,17 @@ export const getStyles = (
       ],
 
       size.isSize40 && [
-        'ms-Persona--size40',
+        classNames.size40,
         {
           height: personaSize.size40,
           minWidth: personaSize.size40,
         }
       ],
 
-      size.isSize48 && 'ms-Persona--size48',
+      size.isSize48 && classNames.size48,
 
       size.isSize72 && [
-        'ms-Persona--size72',
+        classNames.size72,
         {
           height: personaSize.size72,
           minWidth: personaSize.size72,
@@ -135,7 +163,7 @@ export const getStyles = (
       ],
 
       size.isSize100 && [
-        'ms-Persona--size100',
+        classNames.size100,
         {
           height: personaSize.size100,
           minWidth: personaSize.size100,
@@ -145,17 +173,17 @@ export const getStyles = (
       /**
        * Modifiers: presence
        */
-      presence.isAvailable && 'ms-Persona--online',
-      presence.isAway && 'ms-Persona--away',
-      presence.isBlocked && 'ms-Persona--blocked',
-      presence.isBusy && 'ms-Persona--busy',
-      presence.isDoNotDisturb && 'ms-Persona--donotdisturb',
-      presence.isOffline && 'ms-Persona--offline',
+      presence.isAvailable && classNames.available,
+      presence.isAway && classNames.away,
+      presence.isBlocked && classNames.blocked,
+      presence.isBusy && classNames.busy,
+      presence.isDoNotDisturb && classNames.doNotDisturb,
+      presence.isOffline && classNames.offline,
       className,
     ],
 
     details: [
-      'ms-Persona-details',
+      classNames.details,
       {
         padding: '0 24px 0 16px',
         minWidth: 0,
@@ -176,7 +204,7 @@ export const getStyles = (
     ],
 
     primaryText: [
-      'ms-Persona-primaryText',
+      classNames.primaryText,
       noWrap,
       {
         color: palette.neutralPrimary,
@@ -216,7 +244,7 @@ export const getStyles = (
     ],
 
     secondaryText: [
-      'ms-Persona-secondaryText',
+      classNames.secondaryText,
       noWrap,
       sharedTextStyles,
 
@@ -241,7 +269,7 @@ export const getStyles = (
     ],
 
     tertiaryText: [
-      'ms-Persona-tertiaryText',
+      classNames.tertiaryText,
       noWrap,
       sharedTextStyles,
       {
@@ -254,7 +282,7 @@ export const getStyles = (
     ],
 
     optionalText: [
-      'ms-Persona-optionalText',
+      classNames.optionalText,
       noWrap,
       sharedTextStyles,
       {
@@ -267,7 +295,7 @@ export const getStyles = (
     ],
 
     textContent: [
-      'ms-Persona-textContent',
+      classNames.textContent,
       noWrap
     ],
   });

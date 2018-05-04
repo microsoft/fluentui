@@ -36,14 +36,39 @@ export interface INavProps {
   navScrollerId?: string;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules
+   * (Optional) Call to provide customized styling that will layer on top of the variant rules
    */
   getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+
+  /**
+   * (Optional) Used for telemetry
+   */
+  dataHint?: string;
+
+  /**
+   * (Optional) When enabled
+   * 1. Links will consider isHidden property to show/hide itself.
+   * 2. There will be a customization group with show more/less link to show/hide hidden links.
+   * 3. There will also be an edit nav link button. This is for the partner to implement the UX which
+   * will customize the isHidden property of the nav link (possibly through a flyout and refresh the Nav component).
+   */
+  enableCustomization?: boolean;
+
+  /**
+   * Used to override isHidden property of the Nav link when the "Show More" link is clicked
+   */
+  showMore?: boolean;
 
   /**
    * (Optional) callback for the parent component when the nav component is toggled between expanded and collapsed state
    */
   onNavCollapsedCallback?(isCollapsed: boolean): void;
+
+  /**
+   * (Optional) callback for the Nav and SlimNav component when the "Show more" / "Show less" nav link is clicked.
+   * The state "showMore" stays in the parent NavToggler component to keep show more/less state of Nav and SlimNav component in sync.
+   */
+  onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>): void;
 }
 
 export interface INavState extends INavState {
@@ -51,11 +76,41 @@ export interface INavState extends INavState {
    * Used to toggle the nav component between expanded and collapsed state.
    */
   isNavCollapsed?: boolean;
+
+  /**
+   * Used to override isHidden property of the Nav link when the "Show More" link is clicked
+   */
+  showMore?: boolean;
 }
 
 export interface INavLink extends INavLink {
-  /* used to adjust the floating nav when the scrollbar appears */
+  /**
+   * (Optional) Used to adjust the floating nav when the scrollbar appears
+   */
   scrollTop?: number;
+
+  /**
+   * (Optional) Show / hide the nav link
+   */
+  isHidden?: boolean;
+
+  /**
+   * (Optional) Localized "Show more" nav link text.
+   */
+  showMoreText?: string;
+
+  /**
+   * (Optional) To identify whether this link is show more/less and
+   * provide internal implementation to show/hide nav links based on isHidden property.
+   */
+  isShowMoreLink?: boolean;
+}
+
+export interface INavLinkGroup extends INavLinkGroup {
+  /**
+   * (Optional) Used to identify whether the nav group is for customization or not.
+   */
+  isCustomizationGroup?: boolean;
 }
 
 export interface INavStyleProps {
@@ -140,4 +195,51 @@ export interface INavStyles {
    * Style set for the nav toggler which toggles expanded and slim nav
    */
   navToggler: IStyle;
+}
+
+export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
+  /**
+   * Used for telemetry
+   */
+  dataHint?: string;
+
+  /**
+   * Used for telemetry
+   */
+  dataValue?: string;
+
+  /**
+   * Used by the screen reader to describe the nav link
+   */
+  ariaLabel?: string;
+
+  /**
+   * True means the nav link is currently expanded (visible), false means the nav link is currently collapsed (invisible)
+   */
+  ariaExpanded?: boolean;
+
+  /**
+   * CSS class for the nav link container
+   */
+  rootClassName?: string;
+
+  /**
+   * Icon name for the icon shown on the left side of the nav link
+   */
+  leftIconName?: string;
+
+  /**
+   * Icon name for the icon shown on the right side of the nav link
+   */
+  rightIconName?: string;
+
+  /**
+   * CSS class for the text part of the nav link
+   */
+  textClassName?: string;
+
+  /**
+   * CSS class for the icon part of the nav link
+   */
+  iconClassName?: string;
 }

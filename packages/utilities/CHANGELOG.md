@@ -1,6 +1,39 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+
+## 5.30.1
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Backing out `isEqual` change which is broken.
+- Add accompanying utilities work for Keytips
+
+## 5.29.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Allow a function to be passed to the Customizers props
+
+### Patches
+
+- Add isEqual and isNotEqual utilities
+
+## 5.28.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Adding `isDirectionalKeyCode` helper.
 
 ## 5.27.0
 Mon, 23 Apr 2018 10:24:54 GMT

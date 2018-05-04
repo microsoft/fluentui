@@ -89,6 +89,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         opacity: '0',
         lineHeight: '1',
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         transition: 'opacity 200ms'
       },

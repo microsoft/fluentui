@@ -17,7 +17,8 @@ let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
-  isInverted: false
+  isInverted: false,
+  disableGlobalClassNames: false,
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -117,8 +118,9 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       ...theme.fonts
     },
     semanticColors: newSemanticColors,
-    isInverted: !!theme.isInverted
-  } as ITheme;
+    isInverted: !!theme.isInverted,
+    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+  };
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
@@ -177,6 +179,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listItemBackgroundHovered: p.neutralLighter,
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
+
+    listHeaderBackgroundHovered: p.neutralLighter,
+    listHeaderBackgroundPressed: p.neutralLight,
 
     link: p.themePrimary,
     linkHovered: p.themeDarker,
