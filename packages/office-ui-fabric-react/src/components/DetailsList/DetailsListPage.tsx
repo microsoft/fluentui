@@ -10,6 +10,7 @@ import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DetailsListStatus } from './DetailsList.checklist';
 
 import { DetailsListDocumentsExample } from './examples/DetailsList.Documents.Example';
+import { Link } from '../..';
 const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -24,6 +25,18 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             <ExampleCard title='Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
               <DetailsListDocumentsExample />
             </ExampleCard>
+            <h3>Other examples</h3>
+            <ul>
+              <li><Link href='/#/components/detailslist/basic'>Basic</Link></li>
+              <li><Link href='/#/components/detailslist/compact'>Compact</Link></li>
+              <li><Link href='/#/components/detailslist/grouped'>Grouped</Link></li>
+              <li><Link href='/#/components/detailslist/customitemcolumns'>Custom Item Columns</Link></li>
+              <li><Link href='/#/components/detailslist/customitemrows'>Custom Item Rows</Link></li>
+              <li><Link href='/#/components/detailslist/customgroupheaders'>Custom Group Headers</Link></li>
+              <li><Link href='/#/components/detailslist/variablerowheights'>Variable Row Heights</Link></li>
+              <li><Link href='/#/components/detailslist/draganddrop'>Drag &amp; Drop</Link></li>
+              <li><Link href='/#/components/detailslist/innernavigation'>Inner Navigation</Link></li>
+            </ul>
           </div>
         }
         propertiesTables={
