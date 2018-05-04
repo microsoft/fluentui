@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed styles and getClassNames from the `ICheckboxProps` interface.",
+      "comment": "Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed `styles` and `getClassNames` from the `ICheckboxProps` interface, made the checkmark visible on hover.",
       "type": "major"
     }
   ],
