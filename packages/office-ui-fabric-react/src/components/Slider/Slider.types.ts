@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { SliderBase } from './Slider.base';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ISlider {
   value: number | undefined;
@@ -6,12 +9,88 @@ export interface ISlider {
   focus: () => void;
 }
 
-export interface ISliderProps {
+/**
+ * Props which alter Slider base styles.
+ */
+export interface ISliderStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+  /**
+   * Accept custom classNames.
+   */
+  className?: string;
+  /**
+   * Accept the orientation of the slider.
+   */
+  vertical?: boolean;
+
+  buttonClassName?: string;
+
+  showValue?: boolean;
+
+  disabled?: boolean;
+}
+
+/**
+ * Available element styles.
+ */
+export interface ISliderStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  /**
+   * Style for the slider container element.
+   */
+  container: IStyle;
+  /**
+   * Style for the slide box element.
+   */
+  slideBox: IStyle;
+  /**
+   * Style for the slider's line (track) element.
+   */
+  line: IStyle;
+  /**
+   * Style for the slider's thumb draggable element.
+   */
+  thumb: IStyle;
+  /**
+   * Style for the slider's active state element.
+   */
+  active: IStyle;
+  /**
+   * Style for the slider's inactive state element.
+   */
+  inactive: IStyle;
+  /**
+   * Style for the slider's value element.
+   */
+  value: IStyle;
+  /**
+   * Style for the slider's transition animations.
+   */
+  showTransitions: IStyle;
+}
+
+export interface ISliderProps extends React.Props<SliderBase> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: ISlider | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ISliderStyleProps, ISliderStyles>;
+
+  /**
+   * Theme to apply to the component.
+   */
+  theme?: ITheme;
 
   /**
    * Description label of the Slider
