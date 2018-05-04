@@ -24,8 +24,8 @@
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": ">=16.3.1-0 <17.0.0",
-    "react-dom": ">16.3.1-0 <17.0.0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
