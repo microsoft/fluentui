@@ -7,7 +7,7 @@ export class DetailsListDragDropComponentPage extends React.Component<any, any> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Drag & Drop'
+        title='Drag &amp; Drop DetailsList'
         componentName='DetailsListDragDropExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={

@@ -7,7 +7,7 @@ export class DetailsListAdvancedComponentPage extends React.Component<any, any> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Advanced'
+        title='Advanced DetailsList'
         componentName='DetailsListAdvancedExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={

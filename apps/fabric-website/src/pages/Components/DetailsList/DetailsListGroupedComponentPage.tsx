@@ -7,7 +7,7 @@ export class DetailsListGroupedComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Grouped DetailsListExample'
+        title='Grouped DetailsList'
         componentName='DetailsListGroupedExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
