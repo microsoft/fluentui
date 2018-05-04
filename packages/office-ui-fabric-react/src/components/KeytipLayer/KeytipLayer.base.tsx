@@ -374,6 +374,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       case 'Alt':
         // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
         // It can be used as a modifier
+        // new changes
         break;
       case 'Tab':
       case 'Enter':
