@@ -26,7 +26,7 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
               <DetailsListDocumentsExample />
             </ExampleCard>
             <h3>Additional Variants</h3>
-            <ul>
+            <ul className='ComponentPage-variantsList'>
               <li><Link href='/#/components/detailslist/basic'>Basic</Link></li>
               <li><Link href='/#/components/detailslist/compact'>Compact</Link></li>
               <li><Link href='/#/components/detailslist/grouped'>Grouped</Link></li>

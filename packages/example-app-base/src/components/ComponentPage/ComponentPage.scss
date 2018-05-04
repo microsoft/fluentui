@@ -146,10 +146,9 @@ $dontColor: #A61E22;
     }
   }
 
-  .ComponentPage-variantsSection {
-    ul {
-      @include ms-padding-left(18px);
-    }
+  .ComponentPage-variantsList {
+    @include ms-padding-left(18px);
+
     li {
       list-style: disc;
     }
