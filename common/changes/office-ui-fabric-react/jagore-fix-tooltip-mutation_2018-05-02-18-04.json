@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add Keytip, KeytipLayer, and KeytipData component",
-      "type": "minor"
+      "comment": "Fix TooltipHost mutation of calloutProps.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keyou@microsoft.com"
+  "email": "jagore@microsoft.com"
 }
