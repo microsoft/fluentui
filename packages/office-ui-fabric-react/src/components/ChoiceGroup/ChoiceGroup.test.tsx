@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
-import { IChoiceGroupOption } from './ChoiceGroup.types';
+import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.types';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1' } as IChoiceGroupOption,
@@ -38,7 +38,7 @@ describe('ChoiceGroup', () => {
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+      choiceGroup = ReactTestUtils.renderIntoDocument<IChoiceGroupProps>(
         <ChoiceGroup
           label='testgroup'
           options={ options }
@@ -85,7 +85,7 @@ describe('ChoiceGroup', () => {
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+      choiceGroup = ReactTestUtils.renderIntoDocument<IChoiceGroupProps>(
         <ChoiceGroup
           label='testgroup'
           options={ options }
@@ -114,7 +114,7 @@ describe('ChoiceGroup', () => {
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+      choiceGroup = ReactTestUtils.renderIntoDocument<IChoiceGroupProps>(
         <ChoiceGroup
           label='testgroup'
           options={ options }
@@ -136,7 +136,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('can act as an uncontrolled component', () => {
-    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+    const choiceGroup = ReactTestUtils.renderIntoDocument<IChoiceGroupProps>(
       <ChoiceGroup
         defaultSelectedKey='1'
         options={ TEST_OPTIONS }
@@ -158,7 +158,7 @@ describe('ChoiceGroup', () => {
       _selectedItem = item;
     };
 
-    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+    const choiceGroup = ReactTestUtils.renderIntoDocument<IChoiceGroupProps>(
       <ChoiceGroup
         selectedKey='1'
         options={ TEST_OPTIONS }
@@ -181,7 +181,7 @@ describe('ChoiceGroup', () => {
   it('extra <input> attributes appear in dom if specified', () => {
     const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
 
-    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+    const choiceGroup = ReactTestUtils.renderIntoDocument<IChoiceGroupProps>(
       <ChoiceGroup
         options={ TEST_OPTIONS }
         onChange={ onChange }

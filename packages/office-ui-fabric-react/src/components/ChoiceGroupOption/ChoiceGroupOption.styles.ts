@@ -1,0 +1,336 @@
+import { FontSizes, FontWeights, HighContrastSelector, getFocusStyle, IStyle } from '../../Styling';
+import {
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles
+} from './ChoiceGroupOption.types';
+import { SemanticColorSlots } from 'office-ui-fabric-react/lib/ThemeGenerator';
+
+const labelWrapperLineHeight = 15;
+const iconSize = 32;
+const choiceFieldSize = 20;
+const choiceFieldTransitionDuration = '200ms';
+const choiceFieldTransitionTiming = 'cubic-bezier(.4, 0, .23, 1)';
+const radioButtonSpacing = 3;
+const radioButtonInnerSize = 5;
+
+function getImageWrapperStyle(isSelectedImageWrapper: boolean, checked?: boolean): IStyle {
+  return [
+    'ms-ChoiceField-imageWrapper',
+    {
+      paddingBottom: 2,
+      transitionProperty: 'opacity',
+      transitionDuration: choiceFieldTransitionDuration,
+      transitionTimingFunction: 'ease',
+      selectors: {
+        '.ms-Image': {
+          display: 'inline-block',
+          borderStyle: 'none'
+        }
+      }
+    },
+    (checked ? !isSelectedImageWrapper : isSelectedImageWrapper) && [
+      'is-hidden',
+      {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+        opacity: 0
+      }
+    ]
+  ];
+}
+
+export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
+  const {
+    theme,
+    hasIcon,
+    hasImage,
+    checked,
+    disabled,
+    imageIsLarge,
+    focused
+  } = props;
+  const { palette, semanticColors } = theme;
+
+  const fieldHoverOrFocusProperties = {
+    selectors: {
+      '.ms-Label': {
+        color: semanticColors.bodyTextChecked
+      },
+      ':before': {
+        borderColor: checked ? semanticColors.inputBackgroundCheckedHovered : semanticColors.inputBorderHovered
+      }
+    }
+  };
+
+  const enabledFieldWithImageHoverOrFocusProperties = {
+    borderColor: checked ? palette.themeDark : palette.neutralTertiaryAlt,
+    selectors: {
+      ':before': {
+        opacity: 1,
+        borderColor: checked ? palette.themeDark : semanticColors.inputBorderHovered
+      }
+    }
+  };
+
+  const circleAreaProperties: IStyle = [
+    {
+      content: '""',
+      display: 'inline-block',
+      backgroundColor: semanticColors.bodyBackground,
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: semanticColors.smallInputBorder,
+      width: choiceFieldSize,
+      height: choiceFieldSize,
+      fontWeight: 'normal',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      boxSizing: 'border-box',
+      transitionProperty: 'border-color',
+      transitionDuration: choiceFieldTransitionDuration,
+      transitionTimingFunction: choiceFieldTransitionTiming,
+      borderRadius: '50%',
+    },
+    disabled && {
+      backgroundColor: checked ? semanticColors.bodyBackground : semanticColors.disabledText,
+      borderColor: semanticColors.disabledText,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
+    },
+    checked && {
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: semanticColors.inputBackgroundChecked,
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'Highlight'
+        }
+      }
+    },
+    (hasIcon || hasImage) && {
+      top: radioButtonSpacing,
+      right: radioButtonSpacing,
+      left: 'auto', // To reset the value of 'left' to its default value, so that 'right' works
+      opacity: !disabled && checked ? 1 : 0,
+    }
+  ];
+
+  const dotAreaProperties: IStyle = [
+    {
+      content: '""',
+      width: 0,
+      height: 0,
+      borderRadius: '50%',
+      position: 'absolute',
+      left: choiceFieldSize / 2,
+      right: 0,
+      transitionProperty: 'border-width',
+      transitionDuration: choiceFieldTransitionDuration,
+      transitionTimingFunction: choiceFieldTransitionTiming,
+      boxSizing: 'border-box'
+    },
+    checked && {
+      borderWidth: 5,
+      borderStyle: 'solid',
+      borderColor: semanticColors.inputBackgroundChecked,
+      left: 5,
+      top: 5,
+      width: 10,
+      height: 10,
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'Highlight'
+        }
+      }
+    },
+    checked && (hasIcon || hasImage) && {
+      top: radioButtonSpacing + radioButtonInnerSize,
+      right: radioButtonSpacing + radioButtonInnerSize,
+      left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+    }
+  ]
+
+  return {
+    root: [
+      'ms-ChoiceField',
+      {
+        display: 'flex',
+        alignItems: 'center',
+        boxSizing: 'border-box',
+        color: semanticColors.bodyText,
+        fontSize: FontSizes.medium,
+        fontWeight: FontWeights.regular,
+        minHeight: 26,
+        border: 'none',
+        position: 'relative',
+        marginTop: 8,
+        selectors: {
+          '.ms-Label': {
+            fontSize: FontSizes.medium,
+            padding: '0 0 0 26px',
+            display: 'inline-block'
+          }
+        }
+      },
+      hasImage && 'ms-ChoiceField--image',
+      hasIcon && 'ms-ChoiceField--icon',
+      (hasIcon || hasImage) && {
+        display: 'inline-flex',
+        fontSize: 0,
+        margin: '0, 4px, 4px, 0',
+        paddingLeft: 0,
+        backgroundColor: palette.neutralLighter,
+        height: '100%'
+      },
+      focused && [
+        'is-inFocus',
+        {
+          selectors: {
+            '.ms-Fabric.is-focusVisible &': {
+              border: '1px solid ' + theme.palette.white,
+              outline: '1px solid ' + theme.palette.neutralSecondary,
+            }
+          },
+        },
+      ]
+    ],
+    choiceFieldWrapper: 'ms-ChoiceField-wrapper',
+
+    // The hidden input
+    input: [
+      'ms-ChoiceField-input',
+      {
+        position: 'absolute',
+        opacity: 0,
+        top: 8,
+      },
+      (hasIcon || hasImage) && {
+        top: 0,
+        right: 0,
+        opacity: 0,
+        width: '100%',
+        height: '100%',
+        margin: 0
+      }
+    ],
+    field: [
+      'ms-ChoiceField-field',
+      {
+        display: 'inline-block',
+        cursor: 'pointer',
+        marginTop: 0,
+        position: 'relative',
+        verticalAlign: 'top',
+        userSelect: 'none',
+        minHeight: 20,
+        selectors: {
+          ':hover': !disabled && fieldHoverOrFocusProperties,
+          ':focus': !disabled && fieldHoverOrFocusProperties,
+
+          // The circle
+          ':before': circleAreaProperties,
+
+          // The dot
+          ':after': dotAreaProperties
+        }
+      },
+      hasIcon && 'ms-ChoiceField-field--image',
+      hasImage && 'ms-ChoiceField--icon',
+      (hasIcon || hasImage) && {
+        boxSizing: 'content-box',
+        cursor: 'pointer',
+        paddingTop: 22,
+        margin: 0,
+        textAlign: 'center',
+        transitionProperty: 'all',
+        transitionDuration: choiceFieldTransitionDuration,
+        transitionTimingFunction: 'ease',
+        border: '2px solid transparent',
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      checked && {
+        borderColor: palette.themePrimary
+      },
+      (hasIcon || hasImage) && !disabled && {
+        selectors: {
+          ':hover': enabledFieldWithImageHoverOrFocusProperties,
+          ':focus': enabledFieldWithImageHoverOrFocusProperties
+        }
+      },
+      disabled && {
+        cursor: 'default',
+        selectors: {
+          '.ms-Label': {
+            color: semanticColors.disabledBodyText
+          },
+          [HighContrastSelector]: {
+            color: 'GrayText'
+          }
+        }
+      }
+    ],
+    innerField: [
+      'ms-ChoiceField-innerField',
+      (hasIcon || hasImage) && {
+        position: 'relative',
+        display: 'inline-block',
+        paddingLeft: 30,
+        paddingRight: 30
+      },
+      (hasIcon || hasImage) && imageIsLarge && {
+        paddingLeft: 24,
+        paddingRight: 24
+      },
+      (hasIcon || hasImage) && disabled && {
+        opacity: 0.25,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            opacity: 1
+          }
+        }
+      }
+    ],
+    imageWrapper: getImageWrapperStyle(false, checked),
+    selectedImageWrapper: getImageWrapperStyle(true, checked),
+    iconWrapper: [
+      'ms-ChoiceField-iconWrapper',
+      {
+        fontSize: iconSize,
+        lineHeight: iconSize,
+        height: iconSize
+      }
+    ],
+    labelWrapper: [
+      'ms-ChoiceField-labelWrapper',
+      (hasIcon || hasImage) && {
+        display: 'block',
+        position: 'relative',
+        margin: '4px 8px',
+        height: labelWrapperLineHeight * 2,
+        lineHeight: labelWrapperLineHeight,
+        overflow: 'hidden',
+        whiteSpace: 'pre-wrap',
+        textOverflow: 'ellipsis',
+        fontSize: FontSizes.medium,
+        fontWeight: FontWeights.regular,
+        selectors: {
+          '.ms-Label': {
+            padding: 0
+          }
+        }
+      }
+    ]
+  };
+};
