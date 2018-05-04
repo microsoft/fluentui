@@ -1,6 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 02 May 2018 23:55:40 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+
+## 5.96.0
+Fri, 04 May 2018 15:58:39 GMT
+
+### Minor changes
+
+- ScrollablePane: Optimizations on how component functions.  Change positioning from inheriting height/maxHeight of parent element to use position: absolute
+- Icon: code has been cleaned up, memoizeFunction usage has been removed.
+- Rating: Hover states in regular and high contrast mode.
+
+### Patches
+
+- Fix ensureSuggestionModel null ref, get rid of unneeded FocusZone in BaseExtendedPicker, remove requirement in BaseExtendedPicker that suggestions are shown when input is focused (only clicked)
+- Positioning: Fix cover positioning so it returns the correct edge to handle menu shrinkage
+- Fix TooltipHost mutation of calloutProps.
+- SpinButton: Remove browser autocomplete
+- Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. 
 
 ## 5.95.0
 Wed, 02 May 2018 23:55:40 GMT

@@ -79,4 +79,37 @@ describe('TooltipHost', () => {
       expect(tooltip.prop(key)).toEqual(tooltipProps[key]);
     });
   });
+
+  it('does not mutate calloutProps', () => {
+    const calloutProps: ICalloutProps = {
+      isBeakVisible: false,
+      beakWidth: 0,
+      gapSpace: 10,
+      setInitialFocus: false,
+      doNotLayer: true
+    };
+    const content = 'test content';
+    let onTooltipToggleCalled = false;
+
+    const calloutPropsBefore = assign({}, calloutProps);
+
+    const component = mount(
+      <TooltipHost
+        calloutProps={ calloutProps }
+        content={ content }
+        onTooltipToggle={
+          () => {
+            onTooltipToggleCalled = true;
+            return null;
+          }
+        }
+      />
+    );
+
+    // simulate mouse enter to trigger use of calloutProps
+    component.find('div').simulate('mouseenter');
+
+    expect(onTooltipToggleCalled).toEqual(true);
+    expect(calloutPropsBefore).toEqual(calloutProps);
+  });
 });

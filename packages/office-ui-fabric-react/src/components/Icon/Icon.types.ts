@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
 import { IStyle } from '../../Styling';
-import { IBaseProps } from '../../Utilities';
+import { IBaseProps, IStyleFunction } from '../../Utilities';
 
 // Please keep alphabetized
 export enum IconType {
@@ -27,12 +27,6 @@ export enum IconType {
    * @deprecated
    */
   Image = 100001
-}
-
-export interface IIconStyles {
-  root?: IStyle;
-  rootHasPlaceHolder?: IStyle;
-  imageContainer?: IStyle;
 }
 
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
@@ -71,4 +65,21 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    * If rendering an image icon, this function callback will be invoked in the event loading the image errors.
    */
   imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
+
+  /**
+   * Gets the styles for an Icon.
+   */
+  getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
+}
+
+export interface IIconStyleProps {
+  className?: string;
+  iconClassName?: string;
+  isPlaceholder: boolean;
+  isImage: boolean;
+}
+
+export interface IIconStyles {
+  root: IStyle;
+  imageContainer?: IStyle;
 }

@@ -177,7 +177,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return (
       <div className={ classNames.root }>
         { labelPosition !== Position.bottom && <div className={ classNames.labelWrapper }>
-          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
+          { iconProps && <Icon { ...iconProps } className={ classNames.icon } aria-hidden='true' /> }
           { label &&
             <Label
               id={ this._labelId }
@@ -205,6 +205,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 onInput={ this._onInputChange }
                 className={ classNames.input }
                 type='text'
+                autoComplete='off'
                 role='spinbutton'
                 aria-labelledby={ label && this._labelId }
                 aria-valuenow={ !isNaN(Number(value)) ? Number(value) : undefined }

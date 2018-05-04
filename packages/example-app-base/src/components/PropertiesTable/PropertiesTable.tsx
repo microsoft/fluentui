@@ -41,7 +41,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     minWidth: 130,
     maxWidth: 150,
     isCollapsable: false,
-    isResizable: true
+    isResizable: true,
+    isMultiline: true
   },
   {
     key: 'defaultValue',
@@ -50,7 +51,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     minWidth: 130,
     maxWidth: 150,
     isCollapsable: false,
-    isResizable: true
+    isResizable: true,
+    isMultiline: true
   }, {
     key: 'description',
     name: 'Description',
