@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IIconProps } from '../../Icon';
+import { ITheme, IStyle } from '../..';
 
 export interface ITextField {
   /** Gets the current value of the input. */
@@ -41,6 +42,16 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * the public methods and properties of the component.
    */
   componentRef?: (component: ITextField | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ITextFieldStyleProps, ITextFieldStyles>;
+
+  /**
+   * Theme to apply to the component.
+   */
+  theme?: ITheme;
 
   /**
    * Whether or not the textfield is a multiline textfield.
@@ -264,4 +275,50 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * @deprecated
    */
   componentId?: string;
+}
+
+export interface ITextFieldStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+  /**
+   * Accept custom classNames.
+   */
+  className?: string;
+}
+
+export interface ITextFieldStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  /**
+   * Style for the wrapper element.
+   */
+  wrapper: IStyle;
+  /**
+   * Style for the field group element.
+   */
+  fieldGroup: IStyle;
+  /**
+   * Style for the prefix element.
+   */
+  prefix: IStyle;
+  /**
+   * Style for the suffix element.
+   */
+  suffix: IStyle;
+  /**
+   * Style for the error message element.
+   */
+  errorMessage: IStyle;
+  /**
+   * Style for the description element.
+   */
+  description: IStyle;
+  /**
+   * Style for the field element.
+   */
+  field: IStyle;
 }

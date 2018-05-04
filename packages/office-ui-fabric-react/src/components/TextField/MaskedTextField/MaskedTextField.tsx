@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextField } from '../TextField';
+import { TextFieldBase } from '../TextField.base';
 import {
   ITextField,
   ITextFieldProps
@@ -126,7 +126,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   public render() {
     return (
-      <TextField
+      <TextFieldBase
         { ...this.props }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }

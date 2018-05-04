@@ -4,7 +4,7 @@ import {
   css
 } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
-import { TextField } from '../../TextField';
+import { TextFieldBase } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
@@ -34,11 +34,11 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     alphaLabel: 'Alpha'
   };
 
-  private hexText: TextField;
-  private rText: TextField;
-  private gText: TextField;
-  private bText: TextField;
-  private aText: TextField;
+  private hexText: TextFieldBase;
+  private rText: TextFieldBase;
+  private gText: TextFieldBase;
+  private bText: TextFieldBase;
+  private aText: TextFieldBase;
 
   constructor(props: IColorPickerProps) {
     super(props);
@@ -91,7 +91,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
             <tbody>
               <tr>
                 <td>
-                  <TextField
+                  <TextFieldBase
                     className={ css('ms-ColorPicker-input', styles.input) }
                     value={ color.hex }
                     ref={ (ref) => this.hexText = ref! }
@@ -100,7 +100,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <TextField
+                  <TextFieldBase
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
@@ -109,7 +109,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <TextField
+                  <TextFieldBase
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
@@ -118,7 +118,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <TextField
+                  <TextFieldBase
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
@@ -128,7 +128,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                 </td>
                 { !this.props.alphaSliderHidden && (
                   <td style={ { width: '18%' } }>
-                    <TextField
+                    <TextFieldBase
                       className={ css('ms-ColorPicker-input', styles.input) }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
