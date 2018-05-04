@@ -127,7 +127,18 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             justifyContent: 'flex-end'
           }
         ],
-      ]
+      ],
+      !disabled && {
+        selectors: {
+          '&:hover': {
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight'
+              }
+            }
+          }
+        }
+      }
     ],
 
     thumb: [

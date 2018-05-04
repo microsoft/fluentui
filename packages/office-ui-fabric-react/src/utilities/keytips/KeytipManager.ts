@@ -23,6 +23,10 @@ export class KeytipManager {
   public keytips: IUniqueKeytip[] = [];
   public persistedKeytips: IUniqueKeytip[] = [];
 
+  // This is (and should be) updated and kept in sync
+  // with the inKeytipMode in KeytipLayer.
+  public inKeytipMode = false;
+
   /**
    * Static function to get singleton KeytipManager instance
    *

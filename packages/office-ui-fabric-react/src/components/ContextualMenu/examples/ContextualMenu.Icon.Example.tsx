@@ -30,7 +30,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
             items: [
               {
                 key: 'openInWord',
-                name: 'Open in Word',
+                iconName: 'Open in Word',
                 onRenderIcon: (props: IContextualMenuItemProps) => {
                   return (
                     <span className={ styles.iconContainer }>
@@ -45,7 +45,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                 iconProps: {
                   iconName: 'Add'
                 },
-                name: 'New'
+                iconName: 'New'
               },
               {
                 key: 'upload',
@@ -58,7 +58,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                     color: 'salmon'
                   }
                 },
-                name: 'Upload (Click for popup)',
+                iconName: 'Upload (Click for popup)',
                 title: 'Upload a file'
               },
               {
@@ -70,21 +70,21 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                 iconProps: {
                   iconName: 'Share'
                 },
-                name: 'Share'
+                iconName: 'Share'
               },
               {
                 key: 'print',
                 iconProps: {
                   iconName: 'Print'
                 },
-                name: 'Print'
+                iconName: 'Print'
               },
               {
                 key: 'music',
                 iconProps: {
                   iconName: 'MusicInCollectionFill'
                 },
-                name: 'Music',
+                iconName: 'Music',
               }
             ]
           }

@@ -148,7 +148,12 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
           ':hover': {
             backgroundColor: theme.semanticColors.menuItemBackgroundHovered,
             color: 'initial',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'Highlight'
+              }
+            }
           },
           ':focus': {
             color: theme.palette.neutralDark
