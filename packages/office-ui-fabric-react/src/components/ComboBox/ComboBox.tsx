@@ -1104,7 +1104,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onMouseLeave={ this._onOptionMouseLeave }
             role='option'
             aria-selected={ isSelected ? 'true' : 'false' }
-            ariaLabel={ item.text }
+            ariaLabel={ this._getPreviewText(item) }
             disabled={ item.disabled }
           > { <span ref={ isSelected ? this._selectedElement : undefined }>
             { onRenderOption(item, this._onRenderOptionContent) }
