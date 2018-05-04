@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "office-ui-fabric-react": ">=5.95.0 <6.0.0",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "react": ">=16.3.1-0 <17.0.0",
+    "react-dom": ">16.3.1-0 <17.0.0",
     "typescript": "2.8.1",
     "tslib": "^1.7.1"
   }
