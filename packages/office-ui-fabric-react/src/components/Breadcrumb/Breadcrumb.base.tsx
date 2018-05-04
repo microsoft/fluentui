@@ -11,7 +11,7 @@ import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
 import { customizable } from '../../Utilities';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.types';
+import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
@@ -108,7 +108,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
     const {
       ariaLabel,
-      dividerAs: Divider = Icon,
+      dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
       overflowIndex
@@ -132,11 +132,13 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       (item, index) => (
         <li className={ this._classNames.listItem } key={ item.key || String(index) }>
           { onRenderItem(item, this._onRenderItem) }
-          { index !== lastItemIndex && <Divider
-            className={ this._classNames.chevron }
-            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-            item={ item }
-          /> }
+          { index !== lastItemIndex && (
+            <DividerType
+              className={ this._classNames.chevron }
+              iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+              item={ item }
+            />
+          ) }
         </li>
       ));
 
@@ -155,7 +157,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
               directionalHint: DirectionalHint.bottomLeftEdge
             } }
           />
-          <Divider
+          <DividerType
             className={ this._classNames.chevron }
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
             item={ renderedOverflowItems[renderedOverflowItems.length - 1] }
