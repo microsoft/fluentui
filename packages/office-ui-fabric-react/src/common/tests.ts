@@ -1,6 +1,6 @@
 /** Jest test setup file. */
 
-import { setIconOptions } from 'office-ui-fabric-react/lib/Styling';
+import { setIconOptions } from '@uifabric/styling';
 import { configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 

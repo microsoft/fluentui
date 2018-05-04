@@ -2,7 +2,9 @@
   "name": "test-bundle-button",
   "version": "5.0.1",
   "description": "Testing the button for bundling.",
-  "main": "lib/index.js",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": false,
   "typings": "lib/index.d.ts",
   "private": true,
   "repository": {

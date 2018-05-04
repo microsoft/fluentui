@@ -19,8 +19,8 @@
     "**/.git": true,
     "**/node_modules": true,
     "**/lib": true,
+    "**/lib-commonjs": true,
     "**/lib-amd": true,
-    "/**lib-es2015": true,
     "**/temp": true,
     "**/dist": true,
     "**/*.scss.ts": true,
@@ -32,7 +32,7 @@
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,
-    "**/lib-es2015": true,
+    "**/lib-commonjs": true,
     "**/dist": true,
     "**/*.scss.ts": true
   },

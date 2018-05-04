@@ -3,8 +3,8 @@ import {
   ISemanticColors,
   ITheme,
   IPartialTheme
-} from '@uifabric/styling/lib/index';
-import { createTheme } from '@uifabric/styling/lib/index';
+} from '@uifabric/styling';
+import { createTheme } from '@uifabric/styling';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,

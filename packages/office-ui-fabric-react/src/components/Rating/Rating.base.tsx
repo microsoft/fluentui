@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  IClassNames,
   classNamesFunction,
   css,
   customizable,
   format,
   getId
 } from '../../Utilities';
-import {
-  IClassNames
-} from '@uifabric/utilities/lib/IClassNames';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
