@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Wed, 02 May 2018 23:55:40 GMT and should not be manually modified.
+
+## 5.11.1
+Wed, 02 May 2018 23:55:40 GMT
+
+### Patches
+
+- Refactors String.prototype.includes usage in favor of  String.prototype.indexOf for IE compat.
 
 ## 5.11.0
 Mon, 23 Apr 2018 10:24:54 GMT

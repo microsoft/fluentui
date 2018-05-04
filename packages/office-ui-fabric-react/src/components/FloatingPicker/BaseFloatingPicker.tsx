@@ -391,6 +391,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   private _onValidateInput = (): void => {
     if (
+      this.state.queryString &&
       this.props.onValidateInput &&
       this.props.createGenericItem
     ) {

@@ -8,6 +8,7 @@ import {
 
 const GlobalClassNames = {
   root: 'ms-ScrollablePane',
+  contentContainer: 'ms-ScrollablePane--contentContainer'
 };
 
 export const getStyles = (
@@ -24,19 +25,33 @@ export const getStyles = (
     position: 'absolute',
     pointerEvents: 'auto',
     width: '100%',
-    zIndex: ZIndexes.ScrollablePane
+    zIndex: ZIndexes.ScrollablePane,
+    overflowY: 'hidden',
+    overflowX: 'auto'
+  };
+
+  const positioningStyle: IStyle = {
+    zIndex: ZIndexes.ScrollablePane,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    WebkitOverflowScrolling: 'touch'
   };
 
   return ({
     root: [
       classNames.root,
-      {
-        overflowY: 'auto',
-        maxHeight: 'inherit',
-        height: 'inherit',
-        WebkitOverflowScrolling: 'touch'
-      },
+      positioningStyle,
       className
+    ],
+    contentContainer: [
+      classNames.contentContainer,
+      {
+        overflowY: 'auto'
+      },
+      positioningStyle
     ],
     stickyAbove: [
       {
@@ -57,6 +72,12 @@ export const getStyles = (
             borderTop: '1px solid WindowText'
           }
         }
+      },
+      AboveAndBelowStyles
+    ],
+    stickyBelowItems: [
+      {
+        bottom: 0
       },
       AboveAndBelowStyles
     ]

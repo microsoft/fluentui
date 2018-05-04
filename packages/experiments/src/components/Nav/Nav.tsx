@@ -1,12 +1,12 @@
 ﻿/* tslint:disable */
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
-import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
-import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import {
   INavProps,
+  INavState,
   INavLink,
+  INavLinkGroup,
   INavStyleProps,
   INavStyles
 } from './Nav.types';
@@ -98,19 +98,26 @@ class NavComponent extends NavBase {
     const isChildLinkSelected = this.isChildLinkSelected(link);
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
-    const { getStyles } = this.props;
+    const {
+      getStyles,
+      showMore,
+      onShowMoreLinkClicked,
+      dataHint
+    } = this.props;
     const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const linkText = this.getLinkText(link, showMore);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
       <NavLink
         id={ link.key }
-        content={ link.name }
+        content={ linkText }
         href={ link.url }
         target={ link.target }
-        onClick={ this._onLinkClicked.bind(this, link) }
-        dataHint={ this.props.dataHint }
+        onClick={ onClickHandler }
+        dataHint={ dataHint }
         dataValue={ link.key }
-        ariaLabel={ link.name }
+        ariaLabel={ linkText }
         role="menu"
         rootClassName={ classNames.navItemRoot }
         leftIconName={ leftIconName }
@@ -126,11 +133,13 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    const linkText = this.getLinkText(link, this.props.showMore);
+
     return (
       <li
         role='listitem'
         key={ link.key || linkIndex }
-        title={ link.name }>
+        title={ linkText }>
         {
           this._renderCompositeLink(link, linkIndex, nestingLevel)
         }
@@ -155,11 +164,22 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    const {
+      enableCustomization,
+      showMore
+    } = this.props;
+
     return (
       <ul role='list'>
         {
           links.map((link: INavLink, linkIndex: number) => {
-            return this._renderLink(link, linkIndex, nestingLevel);
+            if (enableCustomization && link.isHidden && !showMore) {
+              // "Show more" overrides isHidden property
+              return null;
+            }
+            else {
+              return this._renderLink(link, linkIndex, nestingLevel);
+            }
           })
         }
       </ul>
@@ -171,21 +191,32 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const { getStyles } = this.props;
+    const {
+      getStyles,
+      enableCustomization
+    } = this.props;
+
+    // skip customization group if customization is not enabled
+    if (!enableCustomization && group.isCustomizationGroup) {
+      return null;
+    }
+
     const classNames = getClassNames(getStyles!, {});
 
     return (
       <div key={ groupIndex }>
         {
-          groupIndex > 0 && group.name ?
+          groupIndex > 0 ?
             <div className={ classNames.navGroupSeparatorRoot }>
               <div className={ classNames.navGroupSeparatorHrLine }>
                 {
-                  <span className={ classNames.navGroupSeparatorGroupName }>
-                    {
-                      group.name
-                    }
-                  </span>
+                  group.name ?
+                    <span className={ classNames.navGroupSeparatorGroupName }>
+                      {
+                        group.name
+                      }
+                    </span>
+                    : null
                 }
               </div>
             </div> : null
