@@ -135,7 +135,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
           { index !== lastItemIndex && (
             <DividerType
               className={ this._classNames.chevron }
-              name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+              iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
               item={ item }
             />
           ) }
@@ -147,7 +147,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
         <li className={ this._classNames.overflow } key={ OVERFLOW_KEY }>
           <IconButton
             className={ this._classNames.overflowButton }
-            iconProps={ { name: 'More' } }
+            iconProps={ { iconName: 'More' } }
             role='button'
             aria-haspopup='true'
             ariaLabel={ overflowAriaLabel }
@@ -159,7 +159,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
           />
           <DividerType
             className={ this._classNames.chevron }
-            name={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
             item={ renderedOverflowItems[renderedOverflowItems.length - 1] }
           />
         </li>

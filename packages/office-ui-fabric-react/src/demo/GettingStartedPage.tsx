@@ -30,7 +30,7 @@ export class GettingStartedPage extends React.Component<any, any> {
       >
         <IconButton
           aria-describedby={ `GettingStartedPage-editButtonHost` }
-          iconProps={ { name: 'Edit' } }
+          iconProps={ { iconName: 'Edit' } }
           href='https://github.com/OfficeDev/office-ui-fabric-react/edit/master/packages/office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md'
           target='_blank'
           rel='noopener noreferrer'

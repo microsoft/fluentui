@@ -33,13 +33,13 @@ const RatingStar = (props: IRatingStarProps, ) => (
   >
     <Icon
       className={ props.classNames.ratingStarBack }
-      name='FavoriteStarFill'
+      iconName='FavoriteStarFill'
     />
     {
       !props.disabled &&
       <Icon
         className={ props.classNames.ratingStarFront }
-        name='FavoriteStarFill'
+        iconName='FavoriteStarFill'
         style={ { width: props.fillPercentage + '%' } }
       />
     }

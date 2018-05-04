@@ -11,7 +11,7 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
           min={ 0 }
           max={ 100 }
           step={ 1 }
-          iconProps={ { name: 'IncreaseIndentLegacy' } }
+          iconProps={ { iconName: 'IncreaseIndentLegacy' } }
 
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }

@@ -25,7 +25,7 @@ export class ButtonActionExample extends React.Component<IButtonProps> {
       <div className={ css(classNames.example) }>
         <ActionButton
           data-automation-id='test'
-          iconProps={ { name: 'AddFriend' } }
+          iconProps={ { iconName: 'AddFriend' } }
           disabled={ disabled }
           checked={ checked }
         >

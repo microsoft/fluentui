@@ -189,7 +189,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
   private _renderCharmMenuItem = (item: any, dismissMenu: () => void): JSX.Element => {
     return (
       <IconButton
-        iconProps={ { name: item.name } }
+        iconProps={ { iconName: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
         onClick={ dismissMenu }

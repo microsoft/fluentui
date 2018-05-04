@@ -43,13 +43,13 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
           </div>
           <div ref={ this._ellipsisRef } className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
-              iconProps={ { name: 'More' } }
+              iconProps={ { iconName: 'More' } }
               onClick={ this._onContextualMenu }
             />
           </div>
           <div className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
-              iconProps={ { name: 'Cancel' } }
+              iconProps={ { iconName: 'Cancel' } }
               onClick={ onRemoveItem }
               ariaLabel={ removeButtonAriaLabel }
             />

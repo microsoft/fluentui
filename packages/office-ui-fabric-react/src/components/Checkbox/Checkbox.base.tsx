@@ -126,7 +126,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
                 className={ this._classNames.checkbox }
                 data-ktp-target={ keytipAttributes['data-ktp-target'] }
               >
-                <Icon name='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
+                <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
               </div>
               { onRenderLabel(this.props, this._onRenderLabel) }
             </label>

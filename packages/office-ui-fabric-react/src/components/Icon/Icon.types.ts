@@ -33,7 +33,7 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   /**
    * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
    */
-  name?: string;
+  iconName?: string;
 
   /**
    * Optional styling for the elements within the Icon.
@@ -70,11 +70,6 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    * Gets the styles for an Icon.
    */
   getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
-
-  /**
-   * @deprecated. Use name instead.
-   */
-  iconName?: string;
 }
 
 export interface IIconStyleProps {

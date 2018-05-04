@@ -11,7 +11,7 @@ export class DocumentCardLogo extends BaseComponent<IDocumentCardLogoProps, any>
 
     return (
       <div className={ css('ms-DocumentCardLogo', styles.logo) }>
-        <Icon name={ logoIcon } />
+        <Icon iconName={ logoIcon } />
       </div>
     );
   }

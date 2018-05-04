@@ -100,7 +100,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper',
               styles.searchIconWrapper, styles.searchIconSearchWrapper) }
           >
-            { <Icon name={ 'Search' } /> }
+            { <Icon iconName={ 'Search' } /> }
           </div>
           <div
             className={ css(
@@ -110,7 +110,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               styles.searchIconClearWrapper
             ) }
           >
-            <Icon name='cancel' />
+            <Icon iconName='cancel' />
           </div>
         </div>
       );
@@ -143,7 +143,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                   aria-posinset={ posInSet++ }
                   data-automation-id='commandBarOverflow'
                 >
-                  <Icon className={ css('ms-CommandBarItem-overflow', styles.itemOverflow) } name='more' />
+                  <Icon className={ css('ms-CommandBarItem-overflow', styles.itemOverflow) } iconName='more' />
                 </button>
               </div>
             ] : []) }
@@ -283,7 +283,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 </span>
               ) }
               { itemHasSubmenu ? (
-                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } name='ChevronDown' />
+                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
               ) : (null) }
             </button>
           )
@@ -344,10 +344,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _renderIcon(item: IContextualMenuItem): JSX.Element {
     // Only present to allow continued use of item.icon which is deprecated.
     const iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      name: item.icon
+      iconName: item.icon
     };
     // Use the default icon color for the known icon names
-    const iconColorClassName = iconProps.name === 'None' ? '' : ('ms-CommandBarItem-iconColor ' + styles.itemIconColor);
+    const iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-CommandBarItem-iconColor ' + styles.itemIconColor);
     const iconClassName = css('ms-CommandBarItem-icon', styles.itemIcon, iconColorClassName, iconProps.className);
 
     return <Icon { ...iconProps } className={ iconClassName } />;

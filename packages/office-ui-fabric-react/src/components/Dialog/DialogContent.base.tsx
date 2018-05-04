@@ -70,7 +70,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
             { (type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) &&
               <IconButton
                 className={ classNames.button }
-                iconProps={ { name: 'Cancel' } }
+                iconProps={ { iconName: 'Cancel' } }
                 ariaLabel={ closeButtonAriaLabel }
                 onClick={ onDismiss as any }
               />

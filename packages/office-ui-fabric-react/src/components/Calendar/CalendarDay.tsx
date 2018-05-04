@@ -163,7 +163,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 role='button'
                 tabIndex={ 0 }
               >
-                <Icon name={ leftNavigationIcon } />
+                <Icon iconName={ leftNavigationIcon } />
               </button >
               <button
                 className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth,
@@ -177,7 +177,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 role='button'
                 tabIndex={ 0 }
               >
-                <Icon name={ rightNavigationIcon } />
+                <Icon iconName={ rightNavigationIcon } />
               </button >
             </div >
           </div >

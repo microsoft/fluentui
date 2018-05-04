@@ -34,17 +34,16 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
       iconName,
       imageErrorAs,
     } = this.props;
-    const { name = iconName } = this.props;
-    const isPlaceholder = typeof name === 'string' && name.length === 0;
+    const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
-    const { iconClassName, children } = this._getIconContent(name);
+    const { iconClassName, children } = this._getIconContent(iconName);
 
     const classNames = getClassNames(getStyles, { className, isPlaceholder, isImage, iconClassName });
 
-    const containerProps = ariaLabel ? { 'aria-label': ariaLabel, 'data-icon-name': name, } : {
+    const containerProps = ariaLabel ? { 'aria-label': ariaLabel, 'data-icon-name': iconName, } : {
       role: 'presentation',
       'aria-hidden': true,
-      'data-icon-name': name,
+      'data-icon-name': iconName,
     };
 
     if (this.props.iconType === IconType.image || this.props.iconType === IconType.Image) {

@@ -12,7 +12,7 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            iconProps={ { name: 'Add' } }
+            iconProps={ { iconName: 'Add' } }
             text='Create account'
             menuProps={ {
               items: [
@@ -33,7 +33,7 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
             data-automation-id='test2'
             disabled={ disabled }
             checked={ checked }
-            iconProps={ { name: 'Mail' } }
+            iconProps={ { iconName: 'Mail' } }
             text='Send Mail'
           />
         </div>

@@ -39,7 +39,7 @@ export class PersonaCustomRenderExample extends React.Component {
   private _onRenderSecondaryText = (props: IPersonaProps): JSX.Element => {
     return (
       <div>
-        <Icon name={ 'Suitcase' } className={ 'ms-JobIconExample' } />
+        <Icon iconName={ 'Suitcase' } className={ 'ms-JobIconExample' } />
         { props.secondaryText }
       </div>
     );

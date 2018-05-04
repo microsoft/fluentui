@@ -12,7 +12,7 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            iconProps={ { name: 'Add' } }
+            iconProps={ { iconName: 'Add' } }
             text='New'
             // tslint:disable-next-line:jsx-no-lambda
             onMenuClick={ (ev) => { console.log(ev); } }

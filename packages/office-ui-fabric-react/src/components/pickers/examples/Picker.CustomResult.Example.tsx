@@ -64,7 +64,7 @@ const data: IFullDocumentCardProps[] = [
       actions:
         [
           {
-            iconProps: { name: 'Share' },
+            iconProps: { iconName: 'Share' },
             onClick: (ev: any) => {
               console.log('You clicked the share action.');
               ev.preventDefault();
@@ -72,7 +72,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Pin' },
+            iconProps: { iconName: 'Pin' },
             onClick: (ev: any) => {
               console.log('You clicked the pin action.');
               ev.preventDefault();
@@ -80,7 +80,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Ringer' },
+            iconProps: { iconName: 'Ringer' },
             onClick: (ev: any) => {
               console.log('You clicked the Ringer action.');
               ev.preventDefault();
@@ -121,7 +121,7 @@ const data: IFullDocumentCardProps[] = [
       actions:
         [
           {
-            iconProps: { name: 'Share' },
+            iconProps: { iconName: 'Share' },
             onClick: (ev: any) => {
               console.log('You clicked the share action.');
               ev.preventDefault();
@@ -129,7 +129,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Pin' },
+            iconProps: { iconName: 'Pin' },
             onClick: (ev: any) => {
               console.log('You clicked the pin action.');
               ev.preventDefault();
@@ -137,7 +137,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Ringer' },
+            iconProps: { iconName: 'Ringer' },
             onClick: (ev: any) => {
               console.log('You clicked the Ringer action.');
               ev.preventDefault();
@@ -178,7 +178,7 @@ const data: IFullDocumentCardProps[] = [
       actions:
         [
           {
-            iconProps: { name: 'Share' },
+            iconProps: { iconName: 'Share' },
             onClick: (ev: any) => {
               console.log('You clicked the share action.');
               ev.preventDefault();
@@ -186,7 +186,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Pin' },
+            iconProps: { iconName: 'Pin' },
             onClick: (ev: any) => {
               console.log('You clicked the pin action.');
               ev.preventDefault();
@@ -194,7 +194,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Ringer' },
+            iconProps: { iconName: 'Ringer' },
             onClick: (ev: any) => {
               console.log('You clicked the Ringer action.');
               ev.preventDefault();
@@ -235,7 +235,7 @@ const data: IFullDocumentCardProps[] = [
       actions:
         [
           {
-            iconProps: { name: 'Share' },
+            iconProps: { iconName: 'Share' },
             onClick: (ev: any) => {
               console.log('You clicked the share action.');
               ev.preventDefault();
@@ -243,7 +243,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Pin' },
+            iconProps: { iconName: 'Pin' },
             onClick: (ev: any) => {
               console.log('You clicked the pin action.');
               ev.preventDefault();
@@ -251,7 +251,7 @@ const data: IFullDocumentCardProps[] = [
             }
           },
           {
-            iconProps: { name: 'Ringer' },
+            iconProps: { iconName: 'Ringer' },
             onClick: (ev: any) => {
               console.log('You clicked the Ringer action.');
               ev.preventDefault();
@@ -306,7 +306,7 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   if (documentActionsProps) {
     documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
     actions.push({
-      iconProps: { name: 'Cancel' },
+      iconProps: { iconName: 'Cancel' },
       onClick: (ev: any) => {
         if (documentProps.onRemoveItem) {
           documentProps.onRemoveItem();

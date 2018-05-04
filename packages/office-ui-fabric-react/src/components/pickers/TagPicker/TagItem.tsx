@@ -22,7 +22,7 @@ export const TagItem = (props: IPickerItemProps<ITag>) => (
     <span className={ css('ms-TagItem-text', styles.tagItemText) } aria-label={ props.children as string }>{ props.children }</span>
     { !props.disabled &&
       <span className={ css('ms-TagItem-close', styles.tagItemClose) } onClick={ props.onRemoveItem }>
-        <Icon name='Cancel' />
+        <Icon iconName='Cancel' />
       </span>
     }
   </div>

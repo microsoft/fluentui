@@ -42,7 +42,7 @@ describe('Button', () => {
   it('renders CommandBarButton correctly', () => {
     const component = renderer.create(
       <CommandBarButton
-        iconProps={ { name: 'Add' } }
+        iconProps={ { iconName: 'Add' } }
         text='Create account'
         menuProps={ {
           items: [
@@ -75,7 +75,7 @@ describe('Button', () => {
   it('renders IconButton correctly', () => {
     const component = renderer.create(
       <IconButton
-        iconProps={ { name: 'Emoji2' } }
+        iconProps={ { iconName: 'Emoji2' } }
         title='Emoji'
         ariaLabel='Emoji'
       />);
@@ -178,7 +178,7 @@ describe('Button', () => {
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <IconButton
-          iconProps={ { name: 'Emoji2' } }
+          iconProps={ { iconName: 'Emoji2' } }
           ariaDescription='Description on icon button'
           styles={ { screenReaderText: 'some-screenreader-class' } }
         />
@@ -237,7 +237,7 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuIconProps={ { name: 'fontColor' } }>Hello</DefaultButton>
+          <DefaultButton menuIconProps={ { iconName: 'fontColor' } }>Hello</DefaultButton>
         ) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });

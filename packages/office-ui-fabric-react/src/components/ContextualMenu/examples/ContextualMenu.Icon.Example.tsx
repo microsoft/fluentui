@@ -30,12 +30,12 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
             items: [
               {
                 key: 'openInWord',
-                name: 'Open in Word',
+                iconName: 'Open in Word',
                 onRenderIcon: (props: IContextualMenuItemProps) => {
                   return (
                     <span className={ styles.iconContainer }>
-                      <Icon name={ 'WordLogoFill16' } className={ styles.logoFillIcon } />
-                      <Icon name={ 'WordLogo16' } className={ styles.logoIcon } />
+                      <Icon iconName={ 'WordLogoFill16' } className={ styles.logoFillIcon } />
+                      <Icon iconName={ 'WordLogo16' } className={ styles.logoIcon } />
                     </span>
                   );
                 }
@@ -43,9 +43,9 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
               {
                 key: 'newItem',
                 iconProps: {
-                  name: 'Add'
+                  iconName: 'Add'
                 },
-                name: 'New'
+                iconName: 'New'
               },
               {
                 key: 'upload',
@@ -53,12 +53,12 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                   this.setState({ showCallout: true });
                 },
                 iconProps: {
-                  name: 'Upload',
+                  iconName: 'Upload',
                   style: {
                     color: 'salmon'
                   }
                 },
-                name: 'Upload (Click for popup)',
+                iconName: 'Upload (Click for popup)',
                 title: 'Upload a file'
               },
               {
@@ -68,23 +68,23 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
               {
                 key: 'share',
                 iconProps: {
-                  name: 'Share'
+                  iconName: 'Share'
                 },
-                name: 'Share'
+                iconName: 'Share'
               },
               {
                 key: 'print',
                 iconProps: {
-                  name: 'Print'
+                  iconName: 'Print'
                 },
-                name: 'Print'
+                iconName: 'Print'
               },
               {
                 key: 'music',
                 iconProps: {
-                  name: 'MusicInCollectionFill'
+                  iconName: 'MusicInCollectionFill'
                 },
-                name: 'Music',
+                iconName: 'Music',
               }
             ]
           }

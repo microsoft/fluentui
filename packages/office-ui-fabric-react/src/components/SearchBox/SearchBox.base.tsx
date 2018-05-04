@@ -88,7 +88,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         >
           <Icon
             className={ classNames.icon }
-            name='Search'
+            iconName='Search'
           />
         </div>
         <input
@@ -107,7 +107,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           <div className={ classNames.clearButton }>
             <IconButton
               styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
-              iconProps={ { name: 'Clear' } }
+              iconProps={ { iconName: 'Clear' } }
               { ...clearButtonProps }
               onClick={ this._onClearClick }
             />

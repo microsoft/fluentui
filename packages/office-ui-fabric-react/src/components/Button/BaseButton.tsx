@@ -401,7 +401,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return (
 
       <Icon
-        name='ChevronDown'
+        iconName='ChevronDown'
         { ...menuIconProps }
         className={ this._classNames.menuIcon }
       />
@@ -553,7 +553,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (menuIconProps === undefined) {
       menuIconProps = {
-        name: 'ChevronDown'
+        iconName: 'ChevronDown'
       };
     }
 

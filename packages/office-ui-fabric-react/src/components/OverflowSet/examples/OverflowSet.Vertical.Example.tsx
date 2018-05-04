@@ -65,7 +65,7 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
       >
         <CommandBarButton
           styles={ { root: { padding: '10px' } } }
-          iconProps={ { name: item.icon } }
+          iconProps={ { iconName: item.icon } }
           onClick={ item.onClick }
         />
       </TooltipHost>
@@ -76,7 +76,7 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
     return (
       <CommandBarButton
         styles={ { root: { padding: '10px' }, menuIcon: { fontSize: '16px' } } }
-        menuIconProps={ { name: 'More' } }
+        menuIconProps={ { iconName: 'More' } }
         menuProps={ { items: overflowItems! } }
       />
     );

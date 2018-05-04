@@ -23,7 +23,7 @@ export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps
 
         { views! > 0 && (
           <div className={ css('ms-DocumentCardActions-views', styles.views) }>
-            <Icon name='View' />
+            <Icon iconName='View' />
             { views }
           </div>
         ) }

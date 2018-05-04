@@ -94,7 +94,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
           { GroupSpacer({ count: groupLevel as number }) }
 
           <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) }>
-            <Icon name='Tag' />
+            <Icon iconName='Tag' />
           </div>
           <button
             type='button'
@@ -105,7 +105,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
               className={ css(
                 isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)
               ) }
-              name='ChevronDown'
+              iconName='ChevronDown'
             />
           </button>
 

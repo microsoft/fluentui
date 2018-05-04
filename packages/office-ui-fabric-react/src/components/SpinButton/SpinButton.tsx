@@ -60,8 +60,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     disabled: false,
     labelPosition: Position.start,
     label: '',
-    incrementButtonIcon: { name: 'ChevronUpSmall' },
-    decrementButtonIcon: { name: 'ChevronDownSmall' }
+    incrementButtonIcon: { iconName: 'ChevronUpSmall' },
+    decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
   private _input = createRef<HTMLInputElement>();
@@ -255,7 +255,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           ) }
         </KeytipData>
         { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
-          { iconProps && <Icon name={ iconProps.name } className={ classNames.icon } aria-hidden='true' /> }
+          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
           { label &&
             <Label
               id={ this._labelId }

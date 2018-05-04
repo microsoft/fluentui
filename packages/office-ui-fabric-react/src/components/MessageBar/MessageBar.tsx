@@ -85,7 +85,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           disabled={ false }
           className={ css('ms-MessageBar-dismissal', styles.dismissal) }
           onClick={ this.props.onDismiss }
-          iconProps={ { name: 'Clear' } }
+          iconProps={ { iconName: 'Clear' } }
           ariaLabel={ this.props.dismissButtonAriaLabel }
         />
       );
@@ -112,7 +112,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
             disabled={ false }
             className={ css('ms-MessageBar-expand', styles.expand) }
             onClick={ this._onClick }
-            iconProps={ { name: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' } }
+            iconProps={ { iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' } }
             ariaLabel={ this.props.overflowButtonAriaLabel }
           />
         </div>
@@ -124,7 +124,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   private _getIconSpan(): JSX.Element {
     return (
       <div className={ css('ms-MessageBar-icon', styles.icon) }>
-        <Icon name={ this.ICON_MAP[this.props.messageBarType!] } />
+        <Icon iconName={ this.ICON_MAP[this.props.messageBarType!] } />
       </div>
     );
   }
