@@ -81,6 +81,12 @@ enum HoverStatus {
   default = -1
 }
 
+const ScrollIdleDelay = 250 /* ms */;
+const TouchIdleDelay = 500; /* ms */
+
+// This is used to clear any pending autocomplete
+// text (used when autocomplete is true and allowFreeform is false)
+const ReadOnlyPendingAutoCompleteTimeout = 1000 /* ms */;
 interface IComboBoxOptionWrapperProps extends IComboBoxOption {
   // True if the option is currently selected
   isSelected: boolean;
@@ -127,10 +133,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // The base id for the comboBox
   private _id: string;
 
-  // This is used to clear any pending autocomplete
-  // text (used when autocomplete is true and allowFreeform is false)
-  private readonly _readOnlyPendingAutoCompleteTimeout: number = 1000 /* ms */;
-
   // After a character is inserted when autocomplete is true and
   // allowFreeform is false, remember the task that will clear
   // the pending string of characters
@@ -148,9 +150,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _hasPendingValue: boolean;
 
-  private readonly _scrollIdleDelay: number = 250 /* ms */;
-
   private _scrollIdleTimeoutId: number | undefined;
+
+  private _processingTouch: boolean;
+
+  private _lastTouchTimeoutId: number | undefined;
 
   // Determines if we should be setting
   // focus back to the input when the menu closes.
@@ -175,6 +179,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const selectedKeys: (string | number)[] = this._getSelectedKeys(props.defaultSelectedKey, props.selectedKey);
 
     this._isScrollIdle = true;
+    this._processingTouch = false;
 
     const initialSelectedIndices: number[] = this._getSelectedIndices(props.options, selectedKeys);
 
@@ -191,8 +196,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentDidMount(): void {
-    // hook up resolving the options if needed on focus
-    this._events.on(this._comboBoxWrapper.current, 'focus', this._onResolveOptions, true);
+    if (this._comboBoxWrapper.current) {
+      // hook up resolving the options if needed on focus
+      this._events.on(this._comboBoxWrapper.current, 'focus', this._onResolveOptions, true);
+      if ('onpointerdown' in this._comboBoxWrapper.current) {
+        // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
+        // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
+        // does not support Pointer events yet.
+        this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+      }
+    }
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps): void {
@@ -356,6 +369,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 onKeyDown={ this._onInputKeyDown }
                 onKeyUp={ this._onInputKeyUp }
                 onClick={ this._onAutofillClick }
+                onTouchStart={ this._onTouchStart }
                 onInputValueChange={ this._onInputChange }
                 aria-expanded={ isOpen }
                 aria-autocomplete={ this._getAriaAutoCompleteValue() }
@@ -692,7 +706,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         this._lastReadOnlyAutoCompleteChangeTimeoutId =
           this._async.setTimeout(
             () => { this._lastReadOnlyAutoCompleteChangeTimeoutId = undefined; },
-            this._readOnlyPendingAutoCompleteTimeout
+            ReadOnlyPendingAutoCompleteTimeout
           );
         return;
       }
@@ -1193,7 +1207,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, ScrollIdleDelay);
   }
 
   /**
@@ -1731,10 +1745,40 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _onAutofillClick = (): void => {
     if (this.props.allowFreeform) {
-      this.focus(this.state.isOpen);
+      this.focus(this.state.isOpen || this._processingTouch);
     } else {
       this._onComboBoxClick();
     }
+  }
+
+  private _onTouchStart: () => void = () => {
+    if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
+      this._handleTouchAndPointerEvent();
+    }
+  }
+
+  private _onPointerDown = (ev: PointerEvent): void => {
+    if (ev.pointerType === 'touch') {
+      this._handleTouchAndPointerEvent();
+
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+    }
+  }
+
+  private _handleTouchAndPointerEvent() {
+    // If we already have an existing timeeout from a previous touch and pointer event
+    // cancel that timeout so we can set a nwe one.
+    if (this._lastTouchTimeoutId !== undefined) {
+      this._async.clearTimeout(this._lastTouchTimeoutId);
+      this._lastTouchTimeoutId = undefined;
+    }
+    this._processingTouch = true;
+
+    this._lastTouchTimeoutId = this._async.setTimeout(() => {
+      this._processingTouch = false;
+      this._lastTouchTimeoutId = undefined;
+    }, TouchIdleDelay);
   }
 
   /**

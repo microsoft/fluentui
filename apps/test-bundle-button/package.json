@@ -23,9 +23,9 @@
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
-    "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "office-ui-fabric-react": ">=5.94.0 <6.0.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
+    "office-ui-fabric-react": ">=5.95.0 <6.0.0",
     "tslib": "^1.7.1"
   }
 }

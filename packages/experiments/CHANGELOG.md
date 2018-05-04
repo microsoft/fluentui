@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 01 May 2018 10:23:32 GMT and should not be manually modified.
+This log was last generated on Wed, 02 May 2018 23:55:40 GMT and should not be manually modified.
+
+## 5.36.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Remove Keytips from experiments package
 
 ## 5.35.0
 Tue, 01 May 2018 10:23:32 GMT

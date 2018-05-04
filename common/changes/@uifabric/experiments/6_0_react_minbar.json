@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Remove Keytips from experiments package",
-      "type": "minor"
+      "comment": "Minimum React version is now 16.3.2.",
+      "type": "major"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "keyou@microsoft.com"
+  "email": "cliff.koh@microsoft.com"
 }

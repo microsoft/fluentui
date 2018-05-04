@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "5.94.0",
+  "version": "5.95.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib-es2015/index.d.ts",
@@ -30,7 +30,7 @@
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.13.0",
     "@uifabric/jest-serializer-merge-styles": ">=5.2.0 <6.0.0",
-    "@uifabric/example-app-base": ">=5.11.0 <6.0.0",
+    "@uifabric/example-app-base": ">=5.11.1 <6.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "es6-promise": "^4.1.0",
@@ -39,8 +39,8 @@
     "highlight.js": "^9.12.0",
     "office-ui-fabric-core": ">=9.0.0 <10.0.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
     "react-highlight": "0.10.0",
     "react-test-renderer": "^16.3.0",
     "resemblejs": "~2.2.3",
@@ -50,13 +50,13 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/icons": ">=5.7.1 <6.0.0",
     "@uifabric/merge-styles": ">=5.17.0 <6.0.0",
-    "@uifabric/styling": ">=5.29.0 <6.0.0",
-    "@uifabric/utilities": ">=5.29.0 <6.0.0",
+    "@uifabric/styling": ">=5.30.0 <6.0.0",
+    "@uifabric/utilities": ">=5.30.0 <6.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
-    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
-    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   }
 }

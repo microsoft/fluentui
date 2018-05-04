@@ -15,6 +15,7 @@ import {
 } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
   classNamesFunction,
   createRef
@@ -127,12 +128,19 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
     return (
-      <div className={ css(this._classNames.root) }>
+      <FocusZone
+        className={ css(this._classNames.root) }
+        direction={ FocusZoneDirection.horizontal }
+        role={ 'menubar' }
+        aria-label={ this.props.ariaLabel }
+      >
 
         {/*Primary Items*/ }
         <OverflowSet
           componentRef={ this._resolveRef('_overflowSet') }
           className={ css(this._classNames.primarySet) }
+          doNotContainWithinFocusZone={ true }
+          role={ 'presentation' }
           items={ data.primaryItems }
           overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
           onRenderItem={ this._onRenderItem }
@@ -142,11 +150,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         {/*Secondary Items*/ }
         { data.farItems && <OverflowSet
           className={ css(this._classNames.secondarySet) }
+          doNotContainWithinFocusZone={ true }
+          role={ 'presentation' }
           items={ data.farItems }
           onRenderItem={ this._onRenderItem }
           onRenderOverflowButton={ nullRender }
         /> }
-      </div>
+      </FocusZone>
     );
   }
 

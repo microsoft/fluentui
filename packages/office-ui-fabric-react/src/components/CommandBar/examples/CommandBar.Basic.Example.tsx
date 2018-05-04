@@ -21,6 +21,7 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
           items={ items }
           overflowItems={ overflowItems }
           farItems={ farItems }
+          ariaLabel={ 'Use left and right arrow keys to navigate between commands' }
         />
       </div>
     );
