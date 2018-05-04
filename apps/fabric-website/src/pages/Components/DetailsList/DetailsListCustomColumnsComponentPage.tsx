@@ -7,7 +7,7 @@ export class DetailsListCustomColumnsComponentPage extends React.Component<any, 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Custom Item Columns'
+        title='Custom Item Columns DetailsList'
         componentName='DetailsListCustomColumnsExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={

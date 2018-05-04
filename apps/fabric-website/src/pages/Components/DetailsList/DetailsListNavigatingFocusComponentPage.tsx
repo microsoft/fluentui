@@ -7,7 +7,7 @@ export class DetailsListNavigatingFocusComponentPage extends React.Component<any
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Grouped DetailsListExample'
+        title='Inner Navigation DetailsList'
         componentName='DetailsListNavigatingFocusExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={

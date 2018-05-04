@@ -7,7 +7,7 @@ export class DetailsListCompactComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Compact DetailsListExample'
+        title='Compact DetailsList'
         componentName='DetailsListCompactExample'
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList'
         exampleCards={
