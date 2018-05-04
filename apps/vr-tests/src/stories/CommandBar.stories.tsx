@@ -105,28 +105,18 @@ storiesOf('CommandBar', module)
   ))
   .add('Root', () => (
     <CommandBar
-      isSearchBoxVisible
-      items={ items }
-      farItems={ farItems }
-    />
-  ))
-  .add('Without search bar', () => (
-    <CommandBar
-      isSearchBoxVisible={ false }
       items={ items }
       farItems={ farItems }
     />
   ))
   .add('Text only', () => (
     <CommandBar
-      isSearchBoxVisible={ false }
       items={ items.map(item => ({ ...item, iconProps: undefined })) }
       farItems={ farItems.map(item => ({ ...item, iconProps: undefined })) }
     />
   ))
   .add('Icons only', () => (
     <CommandBar
-      isSearchBoxVisible={ false }
       items={ items.map(item => ({ ...item, name: '' })) }
       farItems={ farItems.map(item => ({ ...item, name: '' })) }
     />

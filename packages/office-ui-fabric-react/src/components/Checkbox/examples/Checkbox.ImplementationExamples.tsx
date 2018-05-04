@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Checkbox,
-  ICheckboxStyles,
   ICheckboxProps
 } from 'office-ui-fabric-react/lib/Checkbox';
 import {
@@ -28,10 +27,12 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
   public render(): JSX.Element {
     const { isChecked } = this.state;
 
-    const styles: ICheckboxStyles = {
-      root: {
-        marginTop: '10px'
-      }
+    const checkboxStyles = () => {
+      return {
+        root: {
+          marginTop: '10px'
+        }
+      };
     };
 
     return (
@@ -43,7 +44,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
             onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
           } }
-          styles={ styles }
+          getStyles={ checkboxStyles }
           ariaDescribedBy={ 'descriptionID' }
         />
         <label id='descriptionID' className='screenReaderOnly'>Uncontroller checkbox description</label>
@@ -52,13 +53,13 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
           label='Uncontrolled checkbox with defaultChecked true'
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          styles={ styles }
+          getStyles={ checkboxStyles }
         />
 
         <Checkbox
           label='Disabled uncontrolled checkbox'
           disabled={ true }
-          styles={ styles }
+          getStyles={ checkboxStyles }
         />
 
         <Checkbox
@@ -66,25 +67,25 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
           disabled={ true }
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          styles={ styles }
+          getStyles={ checkboxStyles }
         />
 
         <Checkbox
           label='Controlled checkbox'
           checked={ isChecked }
           onChange={ this._onControlledCheckboxChange }
-          styles={ styles }
+          getStyles={ checkboxStyles }
         />
 
         <Checkbox
           label='Checkbox rendered with boxSide "end"'
           boxSide='end'
-          styles={ styles }
+          getStyles={ checkboxStyles }
         />
 
         <Checkbox
           label='Persona Checkbox'
-          styles={ styles }
+          getStyles={ checkboxStyles }
           onRenderLabel={ this._renderPersonaLabel }
         />
       </div>

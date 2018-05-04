@@ -1,21 +1,16 @@
-import { ICheckboxStyles } from './Checkbox.types';
+import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import {
-  ITheme,
-  concatStyleSets,
   getFocusStyle,
   FontSizes
 } from '../../Styling';
-import { memoizeFunction } from '../../Utilities';
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
 const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
 const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: ICheckboxStyles
-): ICheckboxStyles => {
-  const { semanticColors, palette } = theme;
+export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
+  const { className, theme, reversed, checked, disabled } = props;
+  const { semanticColors } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
   const checkboxBorderColor = semanticColors.smallInputBorder;
@@ -25,113 +20,117 @@ export const getStyles = memoizeFunction((
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxBackgroundDisabled = semanticColors.disabledBodyText;
+  const checkboxHoveredTextColor = semanticColors.bodyText;
+  const checkboxBackgroundDisabledChecked = semanticColors.disabledBodyText;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
-  const styles: ICheckboxStyles = {
+  return ({
     root: [
-      getFocusStyle(theme, -2),
+      'ms-Checkbox',
+      reversed && 'reversed',
+      checked && 'is-checked',
+      !disabled && 'is-enabled',
+      disabled && 'is-disabled',
+      getFocusStyle(theme, -3),
       theme.fonts.medium,
       {
         padding: '0',
         border: 'none',
         background: 'none',
-        backgroundColor: 'transparent',
         margin: '0',
         outline: 'none',
         display: 'block',
         cursor: 'pointer',
+      },
+      !disabled && [
+        !checked && {
+          selectors: {
+            ':hover .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
+            ':focus .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor }
+          }
+        },
+        checked && {
+          selectors: {
+            ':hover .ms-Checkbox-checkbox': {
+              background: checkboxBackgroundCheckedHovered,
+              borderColor: checkboxBorderColorCheckedHovered
+            },
+            ':focus .ms-Checkbox-checkbox': {
+              background: checkboxBackgroundCheckedHovered,
+              borderColor: checkboxBorderColorCheckedHovered
+            }
+          }
+        },
+        {
+          selectors: {
+            ':hover .ms-Checkbox-text': { color: checkboxHoveredTextColor },
+            ':focus .ms-Checkbox-text': { color: checkboxHoveredTextColor }
+          }
+        }
+      ],
+      className,
+    ],
+    label: [
+      'ms-Checkbox-label',
+      {
+        display: 'inline-flex',
+        margin: '0 -4px',
+        alignItems: 'center',
+        cursor: disabled ? 'default' : 'pointer',
+        position: 'relative',
+        userSelect: 'none',
+        textAlign: 'left'
+      },
+      reversed && {
+        flexDirection: 'row-reverse',
+        justifyContent: 'flex-end'
       }
     ],
-    label: {
-      display: 'inline-flex',
-      margin: '0 -4px',
-      alignItems: 'center',
-      cursor: 'pointer',
-      position: 'relative',
-      textAlign: 'left'
-    },
-    labelReversed: {
-      flexDirection: 'row-reverse',
-      justifyContent: 'flex-end'
-    },
-    labelDisabled: {
-      cursor: 'default'
-    },
-    checkbox: {
-      display: 'flex',
-      flexShrink: 0,
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: MS_CHECKBOX_LABEL_SIZE,
-      width: MS_CHECKBOX_LABEL_SIZE,
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: checkboxBorderColor,
-      margin: '0 4px',
-      boxSizing: 'border-box',
-      transitionProperty: 'background, border, border-color',
-      transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
-      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
-      userSelect: 'none',
+    checkbox: [
+      'ms-Checkbox-checkbox',
+      {
+        display: 'flex',
+        flexShrink: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: MS_CHECKBOX_LABEL_SIZE,
+        width: MS_CHECKBOX_LABEL_SIZE,
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: checkboxBorderColor,
+        margin: '0 4px',
+        boxSizing: 'border-box',
+        transitionProperty: 'background, border, border-color',
+        transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
+        transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
-      /* incase the icon is bigger than the box */
-      overflow: 'hidden'
-    },
-    checkboxHovered: {
-      borderColor: checkboxBorderHoveredColor,
-    },
-    checkboxFocused: {
-      borderColor: checkboxBorderHoveredColor,
-    },
-    checkboxChecked: {
-      background: checkboxBackgroundChecked,
-      borderColor: checkboxBorderColorChecked
-    },
-    checkboxCheckedHovered: {
-      background: checkboxBackgroundCheckedHovered,
-      borderColor: checkboxBorderColorCheckedHovered
-    },
-    checkboxCheckedFocused: {
-      background: checkboxBackgroundCheckedHovered,
-      borderColor: checkboxBorderColorCheckedHovered
-    },
-    checkboxDisabled: {
-      borderColor: checkboxBorderColorDisabled
-    },
-    checkboxCheckedDisabled: {
-      background: checkboxBackgroundDisabled,
-      borderColor: checkboxBorderColorDisabled
-    },
+        /* in case the icon is bigger than the box */
+        overflow: 'hidden'
+      },
+      !disabled && checked && {
+        background: checkboxBackgroundChecked,
+        borderColor: checkboxBorderColorChecked
+      },
+      disabled && {
+        borderColor: checkboxBorderColorDisabled
+      },
+      checked && disabled && {
+        background: checkboxBackgroundDisabledChecked,
+        borderColor: checkboxBorderColorDisabled
+      }
+    ],
     checkmark: {
-      opacity: '0',
-      color: checkmarkFontColor
+      opacity: checked ? '1' : '0',
+      color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor
     },
-    checkmarkChecked: {
-      opacity: '1'
-    },
-    checkmarkDisabled: {
-    },
-    checkmarkCheckedDisabled: {
-      opacity: '1',
-      color: checkmarkFontColorCheckedDisabled,
-    },
-    text: {
-      color: checkboxTextColor,
-      margin: '0 4px',
-      fontSize: FontSizes.medium
-    },
-    textHovered: {
-      color: palette.black,
-    },
-    textFocused: {
-      color: palette.black,
-    },
-    textDisabled: {
-      color: checkboxTextColorDisabled,   // ms-fontColor-neutralTertiary
-    }
-  };
-
-  return concatStyleSets(styles, customStyles)!;
-});
+    text: [
+      'ms-Checkbox-text',
+      {
+        color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
+        margin: '0 4px',
+        fontSize: FontSizes.medium
+      }
+    ]
+  });
+};
