@@ -126,6 +126,10 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
               color: #ffffff;
               opacity: 0;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: Window;
+            }
         data-icon-name="CheckMark"
         role="presentation"
       />
