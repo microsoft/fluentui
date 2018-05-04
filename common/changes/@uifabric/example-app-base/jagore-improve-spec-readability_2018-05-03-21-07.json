@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/example-app-base",
+      "comment": "Modify documentation columns for improved readability.",
       "type": "none"
     }
   ],
   "packageName": "@uifabric/example-app-base",
-  "email": "vibailly@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

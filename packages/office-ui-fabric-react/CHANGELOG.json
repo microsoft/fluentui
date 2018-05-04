@@ -2,6 +2,48 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.95.0",
+      "tag": "office-ui-fabric-react_v5.95.0",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "f526bfe62b033ee98eba26517af113d33fbb71dd",
+            "comment": "SplitButton/ComboBox: added onTouch support for menu expansion."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "920a06d0cd2c37298cd48c156b43bf1fd88fef83",
+            "comment": "Add Keytip, KeytipLayer, and KeytipData component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "0f0a9fa47e601c3018cb1b484c5267f5df046c0d",
+            "comment": "If firstFocus on HoverCard is set then propagate it to setInitialFocus in ExpandingCard. This enables focusing the card on render."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "fa95634d8b77aef46e78f76470887bee5ced1647",
+            "comment": "TextField can now render the numeric value 0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.0 <6.0.0` to `>=5.11.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.94.0",
       "tag": "office-ui-fabric-react_v5.94.0",
       "date": "Tue, 01 May 2018 19:26:35 GMT",

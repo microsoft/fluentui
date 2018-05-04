@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 27 Apr 2018 10:15:52 GMT and should not be manually modified.
+This log was last generated on Wed, 02 May 2018 23:55:40 GMT and should not be manually modified.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Backing out `isEqual` change which is broken.
+- Add accompanying utilities work for Keytips
 
 ## 5.29.0
 Fri, 27 Apr 2018 10:15:52 GMT
