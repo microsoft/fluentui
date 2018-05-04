@@ -3,7 +3,7 @@ import {
   mergeOverflows,
   getAriaDescribedBy
 } from './KeytipUtils';
-import { KTP_FULL_PREFIX, KTP_SEPARATOR, KTP_LAYER_ID, KTP_ARIA_SEPARATOR_ID } from './KeytipConstants';
+import { KTP_FULL_PREFIX, KTP_SEPARATOR, KTP_LAYER_ID } from './KeytipConstants';
 import { arraysEqual } from '../../Utilities';
 
 describe('KeytipUtils', () => {
@@ -61,27 +61,25 @@ describe('KeytipUtils', () => {
     it('for one singular key sequence', () => {
       const keySequence: string[] = ['b'];
       const ariaDescribedBy = getAriaDescribedBy(keySequence);
-      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID + ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + sequencesToID(keySequence));
+      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID + ' ' + sequencesToID(keySequence));
     });
 
     it('for one complex key sequence', () => {
       const keySequence: string[] = ['bc'];
       const ariaDescribedBy = getAriaDescribedBy(keySequence);
-      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID + ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + sequencesToID(keySequence));
+      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID + ' ' + sequencesToID(keySequence));
     });
 
     it('for multiple singular key sequences', () => {
       const keySequences: string[] = ['b', 'c'];
       const ariaDescribedBy = getAriaDescribedBy(keySequences);
-      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID +
-        ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + sequencesToID(keySequences));
+      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID + ' ' + sequencesToID(keySequences));
     });
 
     it('for multiple complex key sequences', () => {
       const keySequences: string[] = ['an', 'cb'];
       const ariaDescribedBy = getAriaDescribedBy(keySequences);
-      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID +
-        ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + sequencesToID(keySequences));
+      expect(ariaDescribedBy).toEqual(' ' + KTP_LAYER_ID + ' ' + sequencesToID(keySequences));
     });
   });
 });

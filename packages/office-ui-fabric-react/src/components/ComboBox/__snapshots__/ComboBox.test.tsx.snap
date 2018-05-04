@@ -386,7 +386,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     <input
       aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby="ComboBox4-option ktp-layer-id ktp-aria-separator-id ktp-a"
+      aria-describedby="ComboBox4-option ktp-layer-id ktp-a"
       aria-disabled={undefined}
       aria-expanded={false}
       aria-label={undefined}

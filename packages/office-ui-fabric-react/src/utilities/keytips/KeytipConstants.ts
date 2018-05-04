@@ -5,7 +5,6 @@ export const DATAKTP_TARGET = 'data-ktp-target';
 export const DATAKTP_EXECUTE_TARGET = 'data-ktp-execute-target';
 export const KTP_LAYER_ID = 'ktp-layer-id';
 export const KTP_ARIA_SEPARATOR = ', ';
-export const KTP_ARIA_SEPARATOR_ID = 'ktp-aria-separator-id';
 
 // Events
 export namespace KeytipEvents {
