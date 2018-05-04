@@ -10,7 +10,7 @@ const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
 export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const { className, theme, reversed, checked, disabled } = props;
-  const { semanticColors, palette } = theme;
+  const { semanticColors } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
   const checkboxBorderColor = semanticColors.smallInputBorder;
@@ -20,6 +20,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+  const checkboxHoveredTextColor = semanticColors.bodyText;
   const checkboxBackgroundDisabledChecked = semanticColors.disabledBodyText;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
@@ -63,8 +64,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         },
         {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: palette.black },
-            ':focus .ms-Checkbox-text': { color: palette.black }
+            ':hover .ms-Checkbox-text': { color: checkboxHoveredTextColor },
+            ':focus .ms-Checkbox-text': { color: checkboxHoveredTextColor }
           }
         }
       ],
