@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
+import { getIsChecked, hasSubmenu } from '../../utilities/contextualMenu/index';
 import { getRTL } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
@@ -54,6 +54,14 @@ const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
   return null;
 };
 
+
+const renderSecondaryText = ({ item, classNames }: IContextualMenuItemProps) => {
+  if (item.secondaryText) {
+    return <span className={ classNames.secondaryText }>{ item.secondaryText }</span>;
+  }
+  return null;
+};
+
 const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
     return (
@@ -79,6 +87,7 @@ export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemPro
       { renderCheckMarkIcon(props) }
       { renderItemIcon(props) }
       { renderItemName(props) }
+      { renderSecondaryText(props) }
       { renderSubMenuIcon(props) }
     </div>
   );
