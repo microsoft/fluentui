@@ -55,7 +55,7 @@ describe('ContextMenuItemChildren', () => {
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
-        menuItem = { key: '123', icon: 'itemIcon', name: 'menuItem' };
+        menuItem = { key: '123', iconProps: { iconName: 'itemIcon' }, name: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
         wrapper = shallow(
