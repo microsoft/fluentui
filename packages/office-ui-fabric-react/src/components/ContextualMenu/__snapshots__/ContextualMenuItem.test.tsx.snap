@@ -45,7 +45,7 @@ ShallowWrapper {
       "children": Array [
         <StyledIconBase
           className="checkmarkIcon"
-          name=""
+          iconName=""
           onClick={[Function]}
         />,
         null,
@@ -62,7 +62,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "className": "checkmarkIcon",
-          "name": "",
+          "iconName": "",
           "onClick": [Function],
         },
         "ref": null,
@@ -84,7 +84,7 @@ ShallowWrapper {
         "children": Array [
           <StyledIconBase
             className="checkmarkIcon"
-            name=""
+            iconName=""
             onClick={[Function]}
           />,
           null,
@@ -101,7 +101,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "className": "checkmarkIcon",
-            "name": "",
+            "iconName": "",
             "onClick": [Function],
           },
           "ref": null,
@@ -176,7 +176,7 @@ ShallowWrapper {
         null,
         <StyledIconBase
           className="subMenuIcon"
-          name="ChevronRight"
+          iconName="ChevronRight"
         />,
       ],
       "className": "linkContent",
@@ -202,7 +202,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "className": "subMenuIcon",
-          "name": "ChevronRight",
+          "iconName": "ChevronRight",
         },
         "ref": null,
         "rendered": null,
@@ -225,7 +225,7 @@ ShallowWrapper {
           null,
           <StyledIconBase
             className="subMenuIcon"
-            name="ChevronRight"
+            iconName="ChevronRight"
           />,
         ],
         "className": "linkContent",
@@ -251,7 +251,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "className": "subMenuIcon",
-            "name": "ChevronRight",
+            "iconName": "ChevronRight",
           },
           "ref": null,
           "rendered": null,
@@ -435,7 +435,7 @@ ShallowWrapper {
         null,
         <StyledIconBase
           className="icon"
-          name="itemIcon"
+          iconName="itemIcon"
         />,
         <span
           className="label"
@@ -455,7 +455,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "className": "icon",
-          "name": "itemIcon",
+          "iconName": "itemIcon",
         },
         "ref": null,
         "rendered": null,
@@ -487,7 +487,7 @@ ShallowWrapper {
           null,
           <StyledIconBase
             className="icon"
-            name="itemIcon"
+            iconName="itemIcon"
           />,
           <span
             className="label"
@@ -507,7 +507,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "className": "icon",
-            "name": "itemIcon",
+            "iconName": "itemIcon",
           },
           "ref": null,
           "rendered": null,
