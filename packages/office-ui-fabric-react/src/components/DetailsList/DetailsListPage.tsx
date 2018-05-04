@@ -25,7 +25,7 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             <ExampleCard title='Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
               <DetailsListDocumentsExample />
             </ExampleCard>
-            <h3>Other examples</h3>
+            <h3>Additional Variants</h3>
             <ul>
               <li><Link href='/#/components/detailslist/basic'>Basic</Link></li>
               <li><Link href='/#/components/detailslist/compact'>Compact</Link></li>
