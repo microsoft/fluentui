@@ -206,7 +206,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     function itemsHaveIcons(contextualMenuItems: IContextualMenuItem[]): boolean {
       for (const item of contextualMenuItems) {
-        if (!!item.icon || !!item.iconProps) {
+        if (!!item.iconProps) {
           return true;
         }
 
@@ -657,7 +657,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _getIconProps(item: IContextualMenuItem): IIconProps {
     const iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: item.icon
+      iconName: 'None'
     };
     return iconProps;
   }

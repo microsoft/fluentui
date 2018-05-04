@@ -27,7 +27,6 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
     className="splitPrimary"
     data-is-focusable={false}
     disabled={undefined}
-    icon={undefined}
     name={undefined}
     role="menuitem"
   >
