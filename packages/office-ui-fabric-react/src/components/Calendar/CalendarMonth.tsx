@@ -151,7 +151,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             ) }
           </div>
         </FocusZone>
-      </div >
+      </div>
     );
   }
 
