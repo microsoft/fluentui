@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Rating: Hover states in regular and high contrast mode.",
-      "type": "minor"
+      "comment": "High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

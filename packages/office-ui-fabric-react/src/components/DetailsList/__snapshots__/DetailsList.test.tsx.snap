@@ -92,14 +92,18 @@ exports[`DetailsList renders List correctly 1`] = `
                     className=
                         ms-Check-circle
                         {
-                          display: inline-block;
-                        }
-                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
                           color: #c8c8c8;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
                           font-size: 18px;
+                          font-style: normal;
+                          font-weight: normal;
                           height: 18px;
                           left: 0px;
                           position: absolute;
+                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -110,21 +114,27 @@ exports[`DetailsList renders List correctly 1`] = `
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
-                  />
+                  >
+                    
+                  </i>
                   <i
                     aria-hidden={true}
                     className=
                         ms-Check-check
                         {
-                          display: inline-block;
-                        }
-                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
                           color: #c8c8c8;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
                           font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
+                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -138,7 +148,9 @@ exports[`DetailsList renders List correctly 1`] = `
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
-                  />
+                  >
+                    
+                  </i>
                 </div>
               </div>
             </span>

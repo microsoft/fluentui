@@ -11,8 +11,7 @@ const renderItemIcon = (props: IContextualMenuItemProps) => {
     classNames
   } = props;
 
-  // Only present to allow continued use of item.icon which is deprecated.
-  const { iconProps, icon } = item;
+  const { iconProps } = item;
 
   if (!hasIcons) {
     return null;
@@ -24,11 +23,7 @@ const renderItemIcon = (props: IContextualMenuItemProps) => {
     );
   }
 
-  if (iconProps) {
-    return <Icon { ...iconProps } className={ classNames.icon } />;
-  }
-
-  return <Icon iconName={ icon } className={ classNames.icon } />;
+  return <Icon { ...iconProps } className={ classNames.icon } />;
 };
 
 const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {

@@ -235,19 +235,19 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       {
         key: 'addRow',
         name: 'Insert row',
-        icon: 'Add',
+        iconProps: { iconName: 'Add' },
         onClick: this._onAddRow
       },
       {
         key: 'deleteRow',
         name: 'Delete row',
-        icon: 'Delete',
+        iconProps: { iconName: 'Delete' },
         onClick: this._onDeleteRow
       },
       {
         key: 'configure',
         name: 'Configure',
-        icon: 'Settings',
+        iconProps: { iconName: 'Settings' },
         subMenuProps: {
           items: [
             {
@@ -396,7 +396,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       {
         key: 'aToZ',
         name: 'A to Z',
-        icon: 'SortUp',
+        iconProps: { iconName: 'SortUp' },
         canCheck: true,
         checked: column.isSorted && !column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, false)
@@ -404,7 +404,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       {
         key: 'zToA',
         name: 'Z to A',
-        icon: 'SortDown',
+        iconProps: { iconName: 'SortDown' },
         canCheck: true,
         checked: column.isSorted && column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, true)
@@ -414,7 +414,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       items.push({
         key: 'groupBy',
         name: 'Group By ' + column.name,
-        icon: 'GroupedDescending',
+        iconProps: { iconName: 'GroupedDescending' },
         canCheck: true,
         checked: column.isGrouped,
         onClick: () => this._onGroupByColumn(column)

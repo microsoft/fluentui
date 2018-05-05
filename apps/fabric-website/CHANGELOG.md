@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 01 May 2018 19:26:35 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+
+## 5.7.3
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Add fabric sketch toolkit
+- Updating React build version.
 
 ## 5.7.2
 Tue, 01 May 2018 19:26:35 GMT

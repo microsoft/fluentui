@@ -28,14 +28,18 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
               {
                 key: 'commandBarItem1',
                 name: 'New',
-                icon: 'Add',
+                iconProps: {
+                  iconName: 'Add',
+                },
                 onClick: this._showModal,
                 keytipProps: keytipMap.CommandButton1Keytip
               },
               {
                 key: 'commandBarItem2',
                 name: 'Upload',
-                icon: 'Upload',
+                iconProps: {
+                  iconName: 'Upload',
+                },
                 onClick: this._showMessageBar,
                 keytipProps: keytipMap.CommandButton2Keytip
               }
@@ -46,21 +50,27 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
               {
                 key: 'farItem1',
                 name: 'Options',
-                icon: 'SortLines',
+                iconProps: {
+                  iconName: 'SortLines',
+                },
                 keytipProps: keytipMap.CommandButton3Keytip,
                 subMenuProps: {
                   items: [
                     {
                       key: 'emailMessage',
                       name: 'Send Email',
-                      icon: 'Mail',
+                      iconProps: {
+                        iconName: 'Mail',
+                      },
                       keytipProps: keytipMap.SubmenuKeytip1,
                       onClick: () => { console.log('test1'); }
                     },
                     {
                       key: 'calendarEvent',
                       name: 'Make Calendar Event',
-                      icon: 'Calendar',
+                      iconProps: {
+                        iconName: 'Calendar',
+                      },
                       keytipProps: keytipMap.SubmenuKeytip2,
                       onClick: () => { console.log('test2'); },
                       subMenuProps: {

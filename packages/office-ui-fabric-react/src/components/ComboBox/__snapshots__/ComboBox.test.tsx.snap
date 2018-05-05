@@ -227,6 +227,10 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: #212121;
             cursor: pointer;
           }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
           &:active {
             background-color: #eaeaea;
             color: #212121;
@@ -254,23 +258,29 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           className=
               ms-Button-icon
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: inline-block;
-              }
-              {
                 flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
                 font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
+                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
-        />
+        >
+          
+        </i>
       </div>
     </button>
   </div>
@@ -386,7 +396,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     <input
       aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby="ComboBox4-option ktp-layer-id ktp-aria-separator-id ktp-a"
+      aria-describedby="ComboBox4-option ktp-layer-id ktp-a"
       aria-disabled={undefined}
       aria-expanded={false}
       aria-label={undefined}
@@ -504,6 +514,10 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             color: #212121;
             cursor: pointer;
           }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
           &:active {
             background-color: #eaeaea;
             color: #212121;
@@ -531,23 +545,29 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
           className=
               ms-Button-icon
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 display: inline-block;
-              }
-              {
                 flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
                 font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
+                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
           role="presentation"
-        />
+        >
+          
+        </i>
       </div>
     </button>
   </div>

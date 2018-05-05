@@ -39,12 +39,12 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
                 {
                   key: 'emailMessage',
                   name: 'Email message',
-                  icon: 'Mail'
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
                   name: 'Calendar event',
-                  icon: 'Calendar'
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -66,12 +66,12 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
                 {
                   key: 'emailMessage',
                   name: 'Email message',
-                  icon: 'Mail'
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
                   name: 'Calendar event',
-                  icon: 'Calendar'
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -94,12 +94,12 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
                 {
                   key: 'emailMessage',
                   name: 'Email message',
-                  icon: 'Mail'
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
                   name: 'Calendar event',
-                  icon: 'Calendar'
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -121,12 +121,12 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
                 {
                   key: 'emailMessage',
                   name: 'Email message',
-                  icon: 'Mail'
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
                   name: 'Calendar event',
-                  icon: 'Calendar'
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -160,12 +160,12 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
               {
                 key: 'emailMessage',
                 name: 'Email message',
-                icon: 'Mail'
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
                 name: 'Calendar event',
-                icon: 'Calendar'
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }

@@ -103,7 +103,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
-      icon: item.icon,
       iconProps: item.iconProps,
       'data-is-focusable': false,
       'aria-hidden': true
