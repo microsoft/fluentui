@@ -1,6 +1,6 @@
 {
   "name": "ssr-tests",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "private": true,
   "repository": {

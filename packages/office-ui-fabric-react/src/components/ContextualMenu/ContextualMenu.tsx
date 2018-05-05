@@ -29,7 +29,6 @@ import {
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
-import { IIconProps } from '../../Icon';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { KeytipData } from '../../KeytipData';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
