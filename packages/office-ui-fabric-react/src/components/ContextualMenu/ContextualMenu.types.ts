@@ -2,16 +2,21 @@ import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
-import { IButtonStyles } from '../../Button';
-import { ICalloutProps } from '../../Callout';
-import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 import { IIconProps } from '../Icon/Icon.types';
-import { IPoint, IRectangle, IRenderFunction } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+import { ICalloutProps } from '../../Callout';
+import { ITheme, IStyle } from '../../Styling';
+import { IButtonStyles } from '../../Button';
+import {
+  IPoint,
+  IRectangle,
+  IRenderFunction
+} from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -456,6 +461,11 @@ export interface IContextualMenuItem {
    * the length of the custom list. It is up to the user to increment the count for their list.
    */
   customOnRenderListLength?: number;
+
+  /**
+   * Keytip for this contextual menu item
+   */
+  keytipProps?: IKeytipProps;
 
   /**
    * Any additional properties to use when custom rendering menu items.
