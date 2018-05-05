@@ -5,7 +5,6 @@ import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
 import {
   BaseComponent,
-  KeyCodes,
   classNamesFunction,
   getDocument,
   arraysEqual
@@ -26,7 +25,6 @@ import {
 import {
   KeytipEvents,
   KTP_LAYER_ID,
-  KTP_ARIA_SEPARATOR_ID,
   KTP_ARIA_SEPARATOR
 } from '../../utilities/keytips/KeytipConstants';
 
@@ -142,8 +140,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
     return (
       <Layer getStyles={ getLayerStyles }>
-        <span id={ KTP_LAYER_ID } className={ this._classNames.innerContent }>{ content }</span>
-        <span id={ KTP_ARIA_SEPARATOR_ID } className={ this._classNames.innerContent }>{ KTP_ARIA_SEPARATOR }</span>
+        <span id={ KTP_LAYER_ID } className={ this._classNames.innerContent }>{ `${content}${KTP_ARIA_SEPARATOR}` }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return (
             <span
@@ -196,7 +193,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // Show children of root
     this.showKeytips(this.keytipTree.getChildren());
 
-    this.setState({ inKeytipMode: true });
+    this._setInKeytipMode(true /* inKeytipMode */);
 
     if (this.props.onEnterKeytipMode) {
       this.props.onEnterKeytipMode();
@@ -216,7 +213,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this._delayedQueueTimeout && this._async.clearTimeout(this._delayedQueueTimeout);
     this._delayedKeytipQueue = [];
 
-    this.setState({ inKeytipMode: false });
+    this._setInKeytipMode(false /* inKeytipMode */);
 
     if (this.props.onExitKeytipMode) {
       this.props.onExitKeytipMode();
@@ -370,14 +367,26 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     this._keyHandled = false;
-    switch (ev.which) {
-      case KeyCodes.alt:
+    // using key since which has been deprecated and key is now widely suporrted.
+    // See: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/which
+    let key = ev.key;
+    switch (key) {
+      case 'Alt':
         // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
         // It can be used as a modifier
         break;
-      case KeyCodes.tab:
-      case KeyCodes.enter:
-      case KeyCodes.space:
+      case 'Tab':
+      case 'Enter':
+      case 'Spacebar':
+      case ' ':
+      case 'ArrowUp':
+      case 'Up':
+      case 'ArrowDown':
+      case 'Down':
+      case 'ArrowLeft':
+      case 'Left':
+      case 'ArrowRight':
+      case 'Right':
         if (this.state.inKeytipMode) {
           this._keyHandled = true;
           this.exitKeytipMode();
@@ -386,7 +395,6 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         }
         break;
       default:
-        let key = ev.key;
         // Special cases for browser-specific keys that are not at standard
         // (according to http://www.w3.org/TR/uievents-key/#keys-navigation)
         if (key === 'Esc') {
@@ -582,5 +590,16 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       return true;
     }
     return false;
+  }
+
+  /**
+   * Sets if we are in keytip mode.
+   * Note, this sets both the state for the layer as well as
+   * the value that the manager will expose externally.
+   * @param inKeytipMode - Boolean so set whether we are in keytip mode or not
+   */
+  private _setInKeytipMode = (inKeytipMode: boolean): void => {
+    this.setState({ inKeytipMode: inKeytipMode });
+    this._keytipManager.inKeytipMode = inKeytipMode;
   }
 }

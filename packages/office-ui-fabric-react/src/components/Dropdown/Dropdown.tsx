@@ -481,7 +481,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { selectedIndices = [] } = this.state;
     const id = this._id;
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
-    const checkboxStyles = getCheckboxStyles(getTheme());
+    const checkboxStyles = () => {
+      return getCheckboxStyles({
+        theme: getTheme(),
+        checked: isItemSelected,
+        disabled: item.disabled
+      });
+    };
 
     return (
       !this.props.multiSelect ?
@@ -512,7 +518,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -538,11 +543,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             checked={ isItemSelected }
             // Hover is being handled by focus styles
             // so clear out the explicit hover styles
-            styles={ {
-              checkboxHovered: checkboxStyles.checkbox,
-              checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-              textHovered: checkboxStyles.text
-            } }
+            getStyles={ checkboxStyles }
           />
         )
     );

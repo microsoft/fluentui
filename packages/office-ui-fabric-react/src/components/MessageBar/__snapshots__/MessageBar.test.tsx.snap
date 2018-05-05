@@ -17,11 +17,19 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
+              speak: none;
             }
         data-icon-name="Info"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
     <div
       className="ms-MessageBar-text"

@@ -144,28 +144,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -180,7 +190,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "100%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -286,28 +298,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -322,7 +344,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -428,28 +452,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -464,7 +498,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -570,28 +606,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -606,7 +652,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -712,28 +760,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -748,7 +806,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
   </div>
