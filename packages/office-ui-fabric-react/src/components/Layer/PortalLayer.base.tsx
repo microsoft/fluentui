@@ -56,6 +56,8 @@ export class PortalLayerBase extends BaseComponent<ILayerProps, {}> {
   }
 
   public componentDidMount(): void {
+    this._setVirtualParent();
+
     const { onLayerDidMount, onLayerMounted } = this.props;
     if (onLayerMounted) {
       onLayerMounted();
@@ -80,9 +82,7 @@ export class PortalLayerBase extends BaseComponent<ILayerProps, {}> {
   }
 
   public componentDidUpdate(): void {
-    if (this._rootElement && this._rootElement.current && this._layerElement) {
-      setVirtualParent(this._layerElement, this._rootElement.current);
-    }
+    this._setVirtualParent();
   }
 
   public render(): React.ReactNode {
@@ -115,6 +115,12 @@ export class PortalLayerBase extends BaseComponent<ILayerProps, {}> {
     );
 
     return classNames;
+  }
+
+  private _setVirtualParent() {
+    if (this._rootElement && this._rootElement.current && this._layerElement) {
+      setVirtualParent(this._layerElement, this._rootElement.current);
+    }
   }
 
   private _getLayerElement(): HTMLElement | undefined {
