@@ -66,7 +66,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
-  private _classNames: { [key in keyof ICalloutContentStyles]: string };
+  private _classNames: {[key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement = createRef<HTMLDivElement>();
   private _calloutElement = createRef<HTMLDivElement>();
@@ -330,7 +330,11 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     const hostElement: HTMLElement | null = this._hostElement.current;
     const calloutElement: HTMLElement | null = this._calloutElement.current;
 
-    if (hostElement && calloutElement && this._target) {
+    // If we expect a target element to position against, we need to wait until `this._target` is resolved. Otherwise
+    // we can try to position.
+    const expectsTarget = !!this.props.target;
+
+    if (hostElement && calloutElement && (!expectsTarget || this._target)) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
