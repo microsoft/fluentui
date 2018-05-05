@@ -2,14 +2,17 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
+  createRef,
   customizable,
   divProperties,
   getNativeProps,
   IRenderFunction,
 } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
+import { FocusZone } from '../FocusZone';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
+  IPersona,
   IPersonaProps,
   IPersonaSharedProps,
   IPersonaStyleProps,
@@ -25,7 +28,7 @@ const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
  * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
 @customizable('Persona', ['theme'])
-export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
+export class PersonaBase extends BaseComponent<IPersonaProps, {}> implements IPersona {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.size48,
@@ -33,8 +36,16 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     imageAlt: ''
   };
 
+  private _focusZone = createRef<FocusZone>();
+
   constructor(props: IPersonaProps) {
     super(props);
+  }
+
+  public focus(): void {
+    if (this._focusZone.current) {
+      this._focusZone.current.focus();
+    }
   }
 
   public render(): JSX.Element {
@@ -119,14 +130,17 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     );
 
     return (
-      <div
-        { ...divProps }
-        className={ classNames.root }
-        style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
-      >
-        <PersonaCoin { ...personaCoinProps } />
-        { (!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails }
-      </div>
+      <FocusZone componentRef={ this._focusZone } >
+        <div
+          { ...divProps }
+          className={ classNames.root }
+          style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
+          tabIndex={ 0 }
+        >
+          <PersonaCoin { ...personaCoinProps } />
+          { (!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails }
+        </div>
+      </FocusZone>
     );
   }
 
