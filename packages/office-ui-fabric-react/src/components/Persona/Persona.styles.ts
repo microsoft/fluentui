@@ -82,7 +82,6 @@ export const getStyles = (
         minWidth: personaSize.size48,
         display: 'flex',
         alignItems: 'center',
-        outline: 'transparent',
 
         selectors: {
           ':hover': {
