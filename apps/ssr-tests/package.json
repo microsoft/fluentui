@@ -25,7 +25,7 @@
     "raw-loader": "^0.5.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "webpack": "^4.2.0"
+    "webpack": "^4.7.0"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
