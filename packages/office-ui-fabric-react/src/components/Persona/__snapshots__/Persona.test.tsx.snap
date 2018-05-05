@@ -29,14 +29,26 @@ exports[`Persona renders Persona correctly with image 1`] = `
           margin-right: 0px;
           margin-top: 0px;
           min-width: 48px;
+          outline: transparent;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
           padding-top: 0px;
           position: relative;
         }
-        & .contextualHost {
-          display: none;
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -1px;
+          content: "";
+          left: -1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
         }
         &:hover $primaryText {
           color: #212121;
@@ -224,14 +236,26 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           margin-right: 0px;
           margin-top: 0px;
           min-width: 48px;
+          outline: transparent;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
           padding-top: 0px;
           position: relative;
         }
-        & .contextualHost {
-          display: none;
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -1px;
+          content: "";
+          left: -1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
         }
         &:hover $primaryText {
           color: #212121;
