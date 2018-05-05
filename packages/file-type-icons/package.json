@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/react": "16.3.13",
     "@types/react-dom": "16.0.5",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0"
   },

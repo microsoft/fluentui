@@ -36,7 +36,7 @@
     "es6-weak-map": "^2.0.2",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-test-renderer": "^16.2.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
