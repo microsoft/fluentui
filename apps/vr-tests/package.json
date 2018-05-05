@@ -1,7 +1,7 @@
 {
   "name": "vr-tests",
   "description": "Visual Regression Tests for Office UI Fabric React",
-  "version": "6.0",
+  "version": "6.0.0",
   "private": true,
   "scripts": {
     "build": "",

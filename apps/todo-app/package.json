@@ -1,7 +1,7 @@
 {
   "name": "todo-app",
   "description": "Sample todo app using office-ui-fabric-react.",
-  "version": "6.0",
+  "version": "6.0.0",
   "private": true,
   "scripts": {
     "build": "node ../../scripts/build.js",
