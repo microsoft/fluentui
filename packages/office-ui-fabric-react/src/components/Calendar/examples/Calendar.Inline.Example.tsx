@@ -69,6 +69,7 @@ export interface ICalendarInlineExampleState {
 
 export interface ICalendarInlineExampleProps {
   isMonthPickerVisible?: boolean;
+  isYearPickerEnabled?: boolean;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
   showGoToToday: boolean;
@@ -150,6 +151,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           maxDate={ this.props.maxDate }
           showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
           workWeekDays={ this.props.workWeekDays }
+          isYearPickerEnabled={ this.props.isYearPickerEnabled }
         />
         { this.props.showNavigateButtons &&
           <div>

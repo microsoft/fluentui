@@ -2,14 +2,14 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  getRTL
+  getRTL,
+  createRef
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { ICalendarIconStrings } from "./Calendar.types";
-import { IYearPickerStyles, getStyles } from './YearPicker.styles';
-import { IYearPickerClassNames, getClassNames } from "./YearPicker.classNames";
-import { ITheme } from "../../Styling";
+import * as stylesImport from './Calendar.scss';
+const styles: any = stylesImport;
 
 const cellCount = 12;
 
@@ -22,92 +22,90 @@ interface IYearRangeStringFunc {
   (from: number, to: number): string;
 }
 
-interface IYearPickerStrings {
+interface ICalendarYearStrings {
   prevRangeAriaLabel?: string | IYearRangeStringFunc
   nextRangeAriaLabel?: string | IYearRangeStringFunc
 }
 
-const DefaultYearPickerStrings: IYearPickerStrings = {
+const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: "Previous Year Range",
   nextRangeAriaLabel: "Next Year Range"
 };
 
-interface IYearPicker {
+interface ICalendarYear {
   focus(): void;
 }
 
-interface IYearPickerProps {
-  componentRef?: (c: IYearPicker) => void;
+interface ICalendarYearProps {
+  componentRef?: (c: ICalendarYear) => void;
   navigationIcons?: ICalendarIconStrings;
   selectedYear?: number;
   minYear?: number;
   maxYear?: number;
   onYearSelect?: (year: number) => void;
-  styles?: IYearPickerStyles;
   className?: string;
-  theme?: ITheme;
-  strings?: IYearPickerStrings;
+  strings?: ICalendarYearStrings;
   onHeaderSelect?: (focus: boolean) => void;
 }
 
-interface IYearPickerState {
+interface ICalendarYearState {
   fromYear: number;
   selectedYear?: number;
 }
 
-interface IYearPickerGridCellProps {
+interface ICalendarYearGridCellProps {
   year: number;
   current?: boolean;
   selected?: boolean;
   disabled?: boolean;
-  className?: string;
   onYearSelect?: (year: number) => void;
 }
 
-interface IYearPickerGridCell {
+interface ICalendarYearGridCell {
   focus(): void;
 }
 
-class YearPickerGridCell extends React.Component<IYearPickerGridCellProps, any> implements IYearPickerGridCell {
-  private _ref: HTMLButtonElement;
-  private _onRef = (ref: HTMLButtonElement) => {
-    this._ref = ref;
-  }
+class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, any> implements ICalendarYearGridCell {
+  private _buttonRef = createRef<HTMLButtonElement>();
   private _onClick = () => {
     if (this.props.onYearSelect) {
       this.props.onYearSelect(this.props.year);
     }
   }
   render() {
-    const { year, current, selected, disabled, className, onYearSelect } = this.props;
+    const { year, current, selected, disabled, onYearSelect } = this.props;
     return (
-      <button type="button"
+      <button
+        className={ css('ms-DatePicker-yearOption', styles.yearOption, {
+          ['ms-DatePicker-year--current ' + styles.yearIsCurrentYear]: current,
+          ['ms-DatePicker-day--highlighted ' + styles.yearIsHighlighted]: selected,
+          ['ms-DatePicker-yearOption--disabled ' + styles.yearOptionIsDisabled]: disabled
+        }) }
+        type="button"
         role="gridcell"
-        className={ css(className, { current: current ? true : false, selected: selected ? true : false, disabled: disabled ? true : false }) }
         onClick={ onYearSelect ? this._onClick : undefined }
         disabled={ disabled }
-        ref={ this._onRef }>
+        ref={ this._buttonRef }>
         { year }
       </ button>
     )
   }
   focus() {
-    if (this._ref) {
-      this._ref.focus();
+    if (this._buttonRef && this._buttonRef.current) {
+      this._buttonRef.current.focus();
     }
   }
 }
 
-class YearPicker extends BaseComponent<IYearPickerProps, IYearPickerState> implements IYearPicker {
-  private _classNames: IYearPickerClassNames;
-  private _strings: IYearPickerStrings;
+class CalendarYear extends BaseComponent<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
+  private _strings: ICalendarYearStrings;
   private _iconStrings: ICalendarIconStrings;
-  private _selectedCellRef: IYearPickerGridCell;
-  constructor(props: IYearPickerProps) {
+  private _selectedCell = createRef<ICalendarYearGridCell>();
+  constructor(props: ICalendarYearProps) {
     super(props);
     this.state = this._getState(this.props);
   }
-  private _getState(props: IYearPickerProps) {
+  private _getState(props: ICalendarYearProps) {
     const navigationYear = props.selectedYear !== undefined ? props.selectedYear : new Date().getFullYear();
     const fromYear = Math.floor(navigationYear / 10) * 10;
     return {
@@ -115,7 +113,7 @@ class YearPicker extends BaseComponent<IYearPickerProps, IYearPickerState> imple
       selectedYear: props.selectedYear
     };
   }
-  componentWillReceiveProps(nextProps: IYearPickerProps) {
+  componentWillReceiveProps(nextProps: ICalendarYearProps) {
     this.setState(this._getState(nextProps));
   }
   private _onClickPrev = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -130,7 +128,9 @@ class YearPicker extends BaseComponent<IYearPickerProps, IYearPickerState> imple
     const { minYear } = this.props;
     const disabled = minYear !== undefined && this.state.fromYear < minYear;
     return (
-      <button className={ css(this._classNames.navPrev, { disabled: disabled }) }
+      <button className={ css('ms-DatePicker-prevDecade', styles.prevDecade, {
+        ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: disabled
+      }) }
         onClick={ this._onClickPrev }
         type="button"
         tabIndex={ 0 }
@@ -147,7 +147,9 @@ class YearPicker extends BaseComponent<IYearPickerProps, IYearPickerState> imple
     const { maxYear } = this.props;
     const disabled = maxYear !== undefined && this.state.fromYear + cellCount > maxYear;
     return (
-      <button className={ css(this._classNames.navNext, { disabled: disabled }) }
+      <button className={ css('ms-DatePicker-nextDecade', styles.nextDecade, {
+        ['ms-DatePicker-nextDecade--disabled ' + styles.nextDecadeIsDisabled]: disabled
+      }) }
         onClick={ this._onClickNext }
         type="button"
         tabIndex={ 0 }
@@ -160,9 +162,11 @@ class YearPicker extends BaseComponent<IYearPickerProps, IYearPickerState> imple
   }
   private _renderNavContainer(): React.ReactNode {
     return (
-      <div className={ this._classNames.navContainer }>
-        { this._renderNavPrev() }
-        { this._renderNavNext() }
+      <div className={ css('ms-DatePicker-decadeComponents', styles.decadeComponents) }>
+        <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
+          { this._renderNavPrev() }
+          { this._renderNavNext() }
+        </div>
       </div>
     );
   }
@@ -175,58 +179,52 @@ class YearPicker extends BaseComponent<IYearPickerProps, IYearPickerState> imple
     const content = `${this.state.fromYear} - ${this.state.fromYear + cellCount - 1}`;
     if (this.props.onHeaderSelect) {
       return (
-        <button className={ css(this._classNames.title, { selectable: true }) }
+        <div className={ css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade, styles.headerToggleView, { selectable: true }) }
           onClick={ this._onHeaderSelect }
           aria-label={ content }
-          type="button"
+          role="button"
           tabIndex={ 0 }
         >
           { content }
-        </button>
+        </div>
       );
     }
     return (
-      <div className={ this._classNames.title }>
+      <div className={ css('ms-DatePicker-currentDecade', styles.currentDecade) }>
         { content }
       </div>
     )
   }
   private _renderHeader(): React.ReactNode {
     return (
-      <div className={ this._classNames.header }>
+      <div className={ css('ms-DatePicker-header', styles.header) }>
         { this._renderTitle() }
         { this._renderNavContainer() }
       </div>
     );
   }
   private _onYearSelect = (year: number) => {
-    if (year !== this.state.selectedYear) {
-      this.setState({ selectedYear: year });
-      if (this.props.onYearSelect) {
-        this.props.onYearSelect(year);
-      }
+    this.setState({ selectedYear: year });
+    if (this.props.onYearSelect) {
+      this.props.onYearSelect(year);
     }
-  }
-  private _onYearGridCellRef = (ref: YearPickerGridCell) => {
-    this._selectedCellRef = ref as IYearPickerGridCell;
   }
   private _renderYearCell(year: number): React.ReactNode {
     const selected = year === this.state.selectedYear;
     const { minYear, maxYear } = this.props;
     const disabled = (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
     return (
-      <YearPickerGridCell
+      <CalendarYearGridCell
         key={ year }
         year={ year }
         selected={ selected }
         current={ year === new Date().getFullYear() }
         disabled={ disabled }
-        className={ this._classNames.optionGridCell }
         onYearSelect={ this._onYearSelect }
-        ref={ selected ? this._onYearGridCellRef : undefined } />
+        ref={ selected ? this._selectedCell : undefined } />
     );
   }
-  private _renderBody(): React.ReactNode {
+  private _renderGrid(): React.ReactNode {
     const { fromYear } = this.state;
     const toYear = fromYear + cellCount - 1;
     let year = fromYear;
@@ -236,42 +234,37 @@ class YearPicker extends BaseComponent<IYearPickerProps, IYearPickerState> imple
       year++;
     }
     return (
-      <FocusZone>
-        <div className={ this._classNames.optionGrid } role="grid">
-          { cells }
-        </div>
-      </FocusZone>
+      <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) } role='grid'>
+        { cells }
+      </div>
     );
   }
   render() {
-    const { navigationIcons, strings, styles, theme } = this.props;
-    this._classNames = getClassNames(getStyles(theme!, styles));
-    this._strings = strings || DefaultYearPickerStrings;
+    const { navigationIcons, strings } = this.props;
+    this._strings = strings || DefaultCalendarYearStrings;
     this._iconStrings = navigationIcons || DefaultIconStrings;
 
     return (
-      <div className={ this._classNames.root }>
-        <div className={ this._classNames.header }>
-          { this._renderHeader() }
-        </div>
-        <div className={ this._classNames.body }>
-          { this._renderBody() }
-        </div>
+      <div className={ css('ms-DatePicker-yearPicker', styles.yearPicker) }>
+        { this._renderHeader() }
+        <FocusZone>
+          { this._renderGrid() }
+        </FocusZone>
       </ div>
     );
   }
   focus() {
-    if (this._selectedCellRef) {
-      this._selectedCellRef.focus();
+    if (this._selectedCell && this._selectedCell.current) {
+      this._selectedCell.current.focus();
     }
   }
 }
 
 export {
-  IYearPickerStrings,
+  ICalendarYearStrings,
   IYearRangeStringFunc,
-  IYearPicker,
-  IYearPickerProps,
-  IYearPickerState,
-  YearPicker
+  ICalendarYear,
+  ICalendarYearProps,
+  ICalendarYearState,
+  CalendarYear
 }
