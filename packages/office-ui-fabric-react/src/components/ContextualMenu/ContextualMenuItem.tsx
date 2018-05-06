@@ -54,7 +54,6 @@ const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
   return null;
 };
 
-
 const renderSecondaryText = ({ item, classNames }: IContextualMenuItemProps) => {
   if (item.secondaryText) {
     return <span className={ classNames.secondaryText }>{ item.secondaryText }</span>;

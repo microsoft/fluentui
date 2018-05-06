@@ -1,12 +1,5 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import * as stylesImport from './ContextualMenuExample.scss';
-
-// tslint:disable-next-line:no-any
-const styles: any = stylesImport;
 
 export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, { showCallout: boolean }> {
 
@@ -18,8 +11,6 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
   }
 
   public render(): JSX.Element {
-    const { showCallout } = this.state;
-
     return (
       <div>
         <DefaultButton
@@ -64,19 +55,6 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
           }
           }
         />
-        { showCallout && (
-          <Callout
-            setInitialFocus={ true }
-            // tslint:disable-next-line:jsx-no-lambda
-            onDismiss={ () => this.setState({ showCallout: false }) }
-          >
-            <DefaultButton
-              // tslint:disable-next-line:jsx-no-lambda
-              onClick={ () => this.setState({ showCallout: false }) }
-              text='Hello Popup'
-            />
-          </Callout>
-        ) }
       </div>
     );
   }

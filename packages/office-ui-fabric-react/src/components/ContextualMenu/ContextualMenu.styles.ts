@@ -10,7 +10,6 @@ import {
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 
-
 const ContextualMenuItemHeight = '32px';
 
 const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
