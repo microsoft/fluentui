@@ -136,6 +136,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
+    console.log("-- Is Year Picker Visible: " + isYearPickerVisible);
+
     return (
       <div className={ css(rootClass, styles.root, className) } role='application'>
         <div
@@ -191,6 +193,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   minDate={ minDate }
                   maxDate={ maxDate }
+                  isYearPickerEnabled={ isYearPickerEnabled }
                   componentRef={ this._monthPicker }
                 /> }
 
@@ -267,6 +270,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   private _onMonthHeaderSelect = (focus: boolean) => {
+    console.log("-- On Month Header Select");
     if (this.props.isYearPickerEnabled) {
       this.setState({
         isMonthPickerVisible: !this.state.isMonthPickerVisible,
@@ -307,7 +311,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       });
     } else {
       this.setState({
-        isYearPickerVisible: false
+        isMonthPickerVisible: !this.state.isMonthPickerVisible,
+        isYearPickerVisible: !this.state.isYearPickerVisible
       });
     }
   }

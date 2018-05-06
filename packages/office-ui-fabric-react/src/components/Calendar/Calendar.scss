@@ -622,7 +622,9 @@ $Calendar-dayPicker-margin: 10px;
 .nextMonth,
 .prevMonth,
 .nextYear,
-.prevYear {
+.prevYear,
+.nextDecade,
+.prevDecade {
   display: inline-block;
   &:hover {
     background-color: $ms-color-neutralLight;
@@ -633,7 +635,8 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .nextMonth,
-.nextYear {
+.nextYear,
+.nextDecade {
   margin-left: 3px;
   margin-right: 2px;
 }

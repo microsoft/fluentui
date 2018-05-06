@@ -30,6 +30,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   dateTimeFormatter: ICalendarFormatDateCallbacks;
   minDate?: Date;
   maxDate?: Date;
+  isYearPickerEnabled?: boolean;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -200,7 +201,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
 
     // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
-    if (onHeaderSelect) {
+    if (onHeaderSelect && !this.props.isYearPickerEnabled) {
       onHeaderSelect(true);
     }
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
