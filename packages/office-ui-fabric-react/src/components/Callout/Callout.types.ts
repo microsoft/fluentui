@@ -73,19 +73,6 @@ export interface ICalloutProps {
   minPagePadding?: number;
 
   /**
-   * If true use a point rather than rectangle to position the Callout.
-   * For example it can be used to position based on a click.
-   * @deprecated Use 'target' instead
-   */
-  useTargetPoint?: boolean;
-
-  /**
-   * Point used to position the Callout
-   * @deprecated Use 'target' instead
-   */
-  targetPoint?: IPoint;
-
-  /**
    * If true then the beak is visible. If false it will not be shown.
    * @default true
    */
@@ -176,12 +163,6 @@ export interface ICalloutProps {
   setInitialFocus?: boolean;
 
   /**
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    * @deprecated
-    */
-  beakStyle?: string;
-
-  /**
    * Set max height of callout
    * When not set the callout will expand with contents up to the bottom of the screen
    */
@@ -240,12 +221,6 @@ export interface ICalloutContentStyleProps {
   overflowYHidden?: boolean;
 
   /**
-   * @deprecated will be removed in v6. Do not use.
-   * Max height applied to the content of a callout.
-   */
-  contentMaxHeight?: number;
-
-  /**
    * Background color for the beak and callout.
    */
   backgroundColor?: string;
@@ -254,12 +229,6 @@ export interface ICalloutContentStyleProps {
    * Width of Callout beak
    */
   beakWidth?: number;
-
-  /**
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    * @deprecated
-    */
-  beakStyle?: string;
 }
 
 export interface ICalloutContentStyles {

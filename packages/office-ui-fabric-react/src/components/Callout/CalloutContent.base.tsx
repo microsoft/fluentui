@@ -81,8 +81,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   constructor(props: ICalloutProps) {
     super(props);
 
-    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
-
     this._didSetInitialFocus = false;
     this.state = {
       positions: undefined,
@@ -159,7 +157,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       ariaLabelledBy,
       className,
       isBeakVisible,
-      beakStyle,
       children,
       beakWidth,
       calloutWidth,
@@ -185,8 +182,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         calloutWidth,
         positions,
         beakWidth,
-        backgroundColor,
-        beakStyle
+        backgroundColor
       }
     );
 
@@ -471,7 +467,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
-    const { useTargetPoint, targetPoint, target } = props;
-    return useTargetPoint ? targetPoint! : target!;
+    const { target } = props;
+    return target!;
   }
 }

@@ -13,10 +13,8 @@ import {
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,
-  ICalloutPositon,
   ICalloutPositionProps,
-  RectangleEdge,
-  IRelativePositions
+  RectangleEdge
 } from './positioning.types';
 
 export class Rectangle extends FullRectangle {
@@ -52,15 +50,6 @@ const DirectionalDictionary: { [key: number]: IPositionDirectionalHintData } = {
   [DirectionalHint.rightBottomEdge]: _createPositionData(RectangleEdge.right, RectangleEdge.bottom)
 };
 
-/**
- * @deprecated will be removed in 6.0.
- */
-const SLIDE_ANIMATIONS: { [key: number]: string; } = {
-  [RectangleEdge.top]: 'slideUpIn20',
-  [RectangleEdge.bottom]: 'slideDownIn20',
-  [RectangleEdge.left]: 'slideLeftIn20',
-  [RectangleEdge.right]: 'slideRightIn20'
-};
 /**
  * Do not call methods from this directly, use either positionCallout or positionElement or make another function that
  * utilizes them.
@@ -455,7 +444,7 @@ function _calculateActualBeakWidthInPixels(beakWidth: number): number {
 function _getPositionData(
   directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
   directionalHintForRTL?: DirectionalHint,
-  previousPositions?: IPositionedData
+  previousPositions?: IPositionDirectionalHintData
 ): IPositionDirectionalHintData {
   if (previousPositions) {
     return {
@@ -696,7 +685,7 @@ function _positionCallout(props: ICalloutPositionProps,
   hostElement: HTMLElement,
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo {
-  const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
+  const beakWidth: number = props.beakWidth || 0;
   const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
@@ -725,45 +714,6 @@ export const __positioningTestPackage = {
   _getMaxHeightFromTargetRectangle
 };
 /* tslint:enable:variable-name */
-
-/**
- * @deprecated Do not use, this will be removed in 6.0
- * use either _positionCallout or _positionElement.
- * @export
- * @param {IPositionProps} props
- * @param {HTMLElement} hostElement
- * @param {HTMLElement} elementToPosition
- * @returns
- */
-export function _getRelativePositions(
-  props: IPositionProps,
-  hostElement: HTMLElement,
-  elementToPosition: HTMLElement): IRelativePositions {
-  const positions = _positionCallout(props, hostElement, elementToPosition);
-  const beakPosition = positions && positions.beakPosition ? positions.beakPosition.elementPosition : undefined;
-  return {
-    calloutPosition: positions.elementPosition as ICalloutPositon,
-    beakPosition: { position: { ...beakPosition }, display: 'block' },
-    directionalClassName: SLIDE_ANIMATIONS[positions.targetEdge],
-    submenuDirection: (positions.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
-  };
-}
-
-/**
- * @deprecated Do not use, this will be removed in 6.0.
- * Use either positionElement, or positionCallout
- *
- * @export
- * @param {IPositionProps} props
- * @param {HTMLElement} hostElement
- * @param {HTMLElement} calloutElement
- * @returns
- */
-export function getRelativePositions(props: IPositionProps,
-  hostElement: HTMLElement,
-  calloutElement: HTMLElement): IRelativePositions {
-  return _getRelativePositions(props, hostElement, calloutElement);
-}
 
 /**
  * Used to position an element relative to the given positioning props.

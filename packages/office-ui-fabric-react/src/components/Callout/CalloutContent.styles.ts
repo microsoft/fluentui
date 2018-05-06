@@ -6,15 +6,8 @@ import {
 } from '../../Styling';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
-function getBeakStyle(beakWidth?: number,
-  beakStyle?: string): IRawStyle {
+function getBeakStyle(beakWidth?: number): IRawStyle {
   let beakStyleWidth = beakWidth;
-
-  // This is here to support the old way of setting the beak size until version 1.0.0.
-  // beakStyle is now deprecated and will be be removed at version 1.0.0
-  if (beakStyle === 'ms-Callout-smallbeak') {
-    beakStyleWidth = 16;
-  }
 
   return {
     height: beakStyleWidth,
@@ -36,10 +29,8 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     className,
     overflowYHidden,
     calloutWidth,
-    contentMaxHeight,
     beakWidth,
-    backgroundColor,
-    beakStyle
+    backgroundColor
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -83,7 +74,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         boxSizing: 'border-box',
         transform: 'rotate(45deg)'
       },
-      getBeakStyle(beakWidth, beakStyle),
+      getBeakStyle(beakWidth),
       backgroundColor && {
         backgroundColor: backgroundColor
       }
@@ -105,8 +96,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         backgroundColor: palette.white,
         overflowX: 'hidden',
         overflowY: 'auto',
-        position: 'relative',
-        maxHeight: contentMaxHeight
+        position: 'relative'
       },
       overflowYHidden && {
         overflowY: 'hidden'

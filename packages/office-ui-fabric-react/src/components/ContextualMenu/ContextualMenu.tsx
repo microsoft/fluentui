@@ -102,12 +102,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       subMenuId: getId('ContextualMenu')
     };
 
-    this._warnDeprecations({
-      'targetPoint': 'target',
-      'useTargetPoint': 'target',
-      'arrowDirection': 'focusZoneProps'
-    });
-
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
   }
@@ -176,8 +170,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       items,
       labelElementId,
       id,
-      targetPoint,
-      useTargetPoint,
       beakWidth,
       directionalHint,
       directionalHintForRTL,
@@ -257,7 +249,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return (
         <Callout
           { ...calloutProps }
-          target={ useTargetPoint ? targetPoint : target }
+          target={ target }
           isBeakVisible={ isBeakVisible }
           beakWidth={ beakWidth }
           directionalHint={ directionalHint }
@@ -334,11 +326,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _getFocusZoneDirection() {
     const {
-      arrowDirection,
       focusZoneProps
     } = this.props;
-    return arrowDirection !== undefined ? arrowDirection :
-      focusZoneProps && focusZoneProps.direction !== undefined ? focusZoneProps.direction : FocusZoneDirection.vertical;
+    return focusZoneProps && focusZoneProps.direction !== undefined ? focusZoneProps.direction : FocusZoneDirection.vertical;
   }
 
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
