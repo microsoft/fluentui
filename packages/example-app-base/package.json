@@ -2,9 +2,10 @@
   "name": "@uifabric/example-app-base",
   "version": "5.11.2",
   "description": "Office UI Fabric example app base utilities for building example sites.",
-  "main": "lib/index.js",
-  "typings": "lib-es2015/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
   "sideEffects": true,
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"

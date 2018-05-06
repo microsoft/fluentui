@@ -35,7 +35,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             padding-right: 16px;
             padding-top: 0;
           }
-      data-focuszone-id="FocusZone0"
+      data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -158,7 +158,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__1"
+                  id="id__2"
                 >
                   asdf
                 </div>
@@ -273,7 +273,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__4"
+                  id="id__5"
                 >
                   asdf
                 </div>

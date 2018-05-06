@@ -7,9 +7,10 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "license": "MIT",
-  "main": "lib/index.js",
-  "typings": "lib-es2015/index.d.ts",
-  "sideEffects": false,
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": true,
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",

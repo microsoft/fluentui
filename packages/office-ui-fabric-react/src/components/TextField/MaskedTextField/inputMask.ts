@@ -35,7 +35,7 @@ export function parseMask(
     return [];
   }
 
-  let maskCharData: IMaskValue[] = [];
+  const maskCharData: IMaskValue[] = [];
   // Count the escape characters in the mask string.
   let escapedChars = 0;
   for (let i = 0; i + escapedChars < mask.length; i++) {
@@ -103,7 +103,7 @@ export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValu
    * For each input value, replace the character in the maskDisplay with the value.
    * If there is no value set for the format character, use the maskChar.
    */
-  for (let charData of maskCharData) {
+  for (const charData of maskCharData) {
     let nextChar = ' ';
     if (charData.value) {
       nextChar = charData.value;

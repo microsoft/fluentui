@@ -2,7 +2,9 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "version": "5.2.0",
   "description": "Jest serializer for merge-styles.",
-  "main": "lib/index.js",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": false,
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",

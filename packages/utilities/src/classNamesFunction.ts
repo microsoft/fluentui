@@ -1,4 +1,4 @@
-import { mergeStyleSets, IStyle } from '@uifabric/merge-styles/lib/index';
+import { mergeStyleSets, IStyle } from '@uifabric/merge-styles';
 import { IClassNames } from './IClassNames';
 import { IStyleFunction } from './IStyleFunction';
 

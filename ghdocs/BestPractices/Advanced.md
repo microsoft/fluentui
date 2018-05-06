@@ -2,19 +2,29 @@
 
 ## Notes on module vs path-based imports
 
-While it is possible to import all components as named imports from the main module entry point, it is not recommended to do so without using a bundler that supports es6 tree shaking. In other words, if you import the Button component like this:
+We highly recommend using Webpack 4+. If you use Webpack 4 or Rollup.js, you can take advantage of tree-shaking to create smaller bundles. This allows you to imports the parts you need in a natural way:
 
 ```typescript
 import { Button } from 'office-ui-fabric-react';
 ```
 
-...this would work, but then unless you are using a tree-shaking bundler such as Rollup.js or Webpack 2, Webpack will assume you want every module exported from the main entry file to be included in your final bundle, which produces unnecessary large bundles and slows your page load down. Instead you can import the specific paths to trim down your bundle size:
+This import will include the Button, plus the dependent modules. It should not include any modules that are unrelated.
+
+## For Webpack < 4 or Browserify
+
+If you are using a non-tree-shaking bundler, you may accrue larger bundle sizes by importing from the package entry point `office-ui-fabric-react`. By default bundlers will include every module referenced from that entry point, even if you don't use them.
+
+To address this friction, we also offer "top level imports" which help scope the graph to only the component and its dependencies.
 
 ```typescript
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { List } from 'office-ui-fabric-react/lib/List';
 ```
+
+For a full list of top level imports, see the source here:
+
+https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src
 
 ## Using an AMD bundler like r.js
 

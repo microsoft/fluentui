@@ -37,7 +37,7 @@ function resetValues(charData: IMaskValue[], maxIndex: number = Infinity): void 
 
 describe('inputMask', () => {
   it('parses mask sucessfully', () => {
-    let result = parseMask(inputMask);
+    const result = parseMask(inputMask);
     expect(result.length).toEqual(values.length);
 
     for (let i = 0; i < values.length; i++) {
@@ -46,7 +46,7 @@ describe('inputMask', () => {
   });
 
   it('parsing ignores escaped format characters', () => {
-    let result = parseMask('Esc\\aped some ch\\ar\\acters: (999) 999 - 9999 \\*');
+    const result = parseMask('Esc\\aped some ch\\ar\\acters: (999) 999 - 9999 \\*');
     expect(result.length).toEqual(values.length);
   });
 
@@ -149,7 +149,7 @@ describe('inputMask', () => {
 
   it('insertString works as intended', () => {
     resetValues(values, 5);
-    let result = insertString(values, 23, '89asdf0asdf98');
+    const result = insertString(values, 23, '89asdf0asdf98');
     expect(values[3].value).toEqual('8');
     expect(values[4].value).toEqual('9');
     expect(values[5].value).toEqual('0');
