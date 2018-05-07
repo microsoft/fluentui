@@ -19,7 +19,7 @@ export class SearchBoxFullSizeExample extends React.Component<any, any> {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onChange={ () => console.log('onChange called') }
-          disableAnimation={ true }
+          disableAnimation
         />
       </div>
     );
