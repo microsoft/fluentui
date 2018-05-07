@@ -32,6 +32,7 @@ import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor }
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
+  expandedByMouseClick?: boolean;
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: Element;
@@ -189,6 +190,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       useTargetAsMinWidth,
       directionalHintFixed,
       shouldFocusOnMount,
+      shouldFocusOnContainer,
       title,
       theme,
       calloutProps,
@@ -272,14 +274,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           hidden={ this.props.hidden }
         >
           <div
-            role='menu'
+            role={ shouldFocusOnContainer ? 'menu' : undefined }
             aria-label={ ariaLabel }
             aria-labelledby={ labelElementId }
             style={ contextMenuStyle }
             ref={ (host: HTMLDivElement) => this._host = host }
             id={ id }
             className={ this._classNames.container }
-            tabIndex={ 0 }
+            tabIndex={ shouldFocusOnContainer ? 0 : undefined }
             onKeyDown={ this._onMenuKeyDown }
           >
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
@@ -291,7 +293,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 handleTabKey={ FocusZoneTabbableElements.all }
               >
                 <ul
-                  role='presentation'
                   className={ this._classNames.list }
                   onKeyDown={ this._onKeyDown }
                 >
@@ -733,6 +734,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ev.stopPropagation();
       this._enterTimerId = this._async.setTimeout(() => {
         targetElement.focus();
+        this.setState({
+          expandedByMouseClick: true
+        });
         this._onItemSubMenuExpand(item, targetElement);
         this._enterTimerId = undefined;
       }, NavigationIdleDelay);
@@ -768,6 +772,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
+        this.setState({
+          // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
+          // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
+          // between a real click event and a keypress event.
+          expandedByMouseClick: (ev.nativeEvent.detail !== 0)
+        });
         this._onItemSubMenuExpand(item, target);
       }
     }
@@ -797,9 +807,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    let openKey;
+    if (item.split) {
+      openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    } else {
+      openKey = KeyCodes.enter;
+    }
 
     if (ev.which === openKey && !item.disabled) {
+      this.setState({
+        expandedByMouseClick: false
+      });
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
     }
@@ -843,6 +861,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         isSubMenu: true,
         id: this.state.subMenuId,
         shouldFocusOnMount: true,
+        shouldFocusOnContainer: this.state.expandedByMouseClick,
         directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className: this.props.className,
         gapSpace: 0,

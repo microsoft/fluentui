@@ -430,6 +430,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         { ...menuProps }
+        shouldFocusOnContainer={ this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined }
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current }
         labelElementId={ this._labelId }
@@ -447,9 +448,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: menuProps });
   }
 
-  private _openMenu = (): void => {
+  private _openMenu = (shouldFocusOnContainer?: boolean): void => {
     if (this.props.menuProps) {
-      const menuProps = this.props.menuProps;
+      const menuProps = {...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
       if (this.props.persistMenu) {
         menuProps.hidden = false;
       }
@@ -457,16 +458,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  private _onToggleMenu = (): void => {
+  private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
     if (this._splitButtonContainer.current) {
       this._splitButtonContainer.current.focus();
     }
 
     const currentMenuProps = this.state.menuProps;
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden ? this._openMenu() : this._dismissMenu();
+      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer) : this._dismissMenu();
     } else {
-      currentMenuProps ? this._dismissMenu() : this._openMenu();
+      currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer);
     }
   }
 
@@ -628,14 +629,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
-    if (!ev.defaultPrevented &&
-      this._isValidMenuOpenKey(ev)) {
+    if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
       const { onMenuClick } = this.props;
       if (onMenuClick) {
         onMenuClick(ev, this);
       }
 
-      this._onToggleMenu();
+      this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -680,7 +680,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
     } else {
-      return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
+      if (this._isSplitButton) {
+        return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
+      } else {
+        return ev.which === KeyCodes.enter;
+      }
     }
   }
 
@@ -691,7 +695,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     if (!ev.defaultPrevented) {
-      this._onToggleMenu();
+      // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
+      // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
+      // between a real click event and a keypress event.
+      const shouldFocusOnContainer = ev.nativeEvent.detail !== 0;
+      this._onToggleMenu(shouldFocusOnContainer);
       ev.preventDefault();
       ev.stopPropagation();
     }
