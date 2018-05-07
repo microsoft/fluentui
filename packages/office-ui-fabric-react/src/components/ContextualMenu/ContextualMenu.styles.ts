@@ -176,8 +176,7 @@ export const getMenuItemStyles = memoizeFunction((
         flexWrap: 'nowrap',
         justifyContent: 'center',
         alignItems: 'center'
-      }],
-    splitButtonSeparator: {}
+      }]
   };
 
   return concatStyleSets(menuItemStyles);

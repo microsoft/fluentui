@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
+import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';

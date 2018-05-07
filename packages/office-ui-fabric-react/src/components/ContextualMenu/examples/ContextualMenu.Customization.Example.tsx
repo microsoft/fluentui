@@ -34,7 +34,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
                   name: 'Charm',
                   className: 'Charm-List',
                   subMenuProps: {
-                    arrowDirection: FocusZoneDirection.bidirectional,
+                    focusZoneProps: { direction: FocusZoneDirection.bidirectional },
                     items: [
                       {
                         key: 'none',
