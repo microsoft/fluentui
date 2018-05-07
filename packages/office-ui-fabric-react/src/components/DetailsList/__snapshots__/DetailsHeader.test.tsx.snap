@@ -24,7 +24,7 @@ exports[`DetailsHeader can render 1`] = `
     <span
       className=""
     >
-      <div
+      <button
         aria-checked={undefined}
         aria-describedby="header0-checkTooltip"
         aria-label={undefined}
@@ -34,6 +34,7 @@ exports[`DetailsHeader can render 1`] = `
         data-selection-toggle={true}
         id="header0-check"
         role="checkbox"
+        type="button"
       >
         <div
           className=
@@ -126,7 +127,7 @@ exports[`DetailsHeader can render 1`] = `
             
           </i>
         </div>
-      </div>
+      </button>
     </span>
   </div>
   <div

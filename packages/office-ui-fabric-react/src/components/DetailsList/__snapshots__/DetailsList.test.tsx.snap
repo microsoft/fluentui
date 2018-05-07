@@ -50,7 +50,7 @@ exports[`DetailsList renders List correctly 1`] = `
             <span
               className=""
             >
-              <div
+              <button
                 aria-checked={undefined}
                 aria-describedby="header0-checkTooltip"
                 aria-label={undefined}
@@ -60,6 +60,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 data-selection-toggle={true}
                 id="header0-check"
                 role="checkbox"
+                type="button"
               >
                 <div
                   className=
@@ -152,7 +153,7 @@ exports[`DetailsList renders List correctly 1`] = `
                     
                   </i>
                 </div>
-              </div>
+              </button>
             </span>
           </div>
           <div
