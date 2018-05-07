@@ -237,57 +237,6 @@ export const CommunicationColors: any = {
   communication10: '#eff6fc'
 };
 
-export const ExcelColors: any = {
-  excel70: '#002901',
-  excel60: '#0b4218',
-  excel50: '#165a2f',
-  excel40: '#217346',
-  excel30: '#4c916c',
-  excel20: '#77b091',
-  excel10: '#a2ceb7'
-};
-
-export const PowerPointColors: any = {
-  powerPoint70: '#620000',
-  powerPoint60: '#7e180e',
-  powerPoint50: '#9b2f1c',
-  powerPoint40: '#b7472a',
-  powerPoint30: '#c96c54',
-  powerPoint20: '#dc927e',
-  powerPoint10: '#eeb7a9'
-};
-
-export const WordColors: any = {
-  word70: '#001b59',
-  word60: '#0e2f6f',
-  word50: '#1d4384',
-  word40: '#2b579a',
-  word30: '#557bb3',
-  word20: '#7f9ecc',
-  word10: '#a9c2e6'
-};
-
-export const OneNoteColors: any = {
-  oneNote80: '#4c0f6c',
-  oneNote70: '#5c1384',
-  oneNote60: '#7719aa',
-  oneNote50: '#9953c0',
-  oneNote40: '#d0afe2',
-  oneNote30: '#ddc5ec',
-  oneNote20: '#efdffa',
-  oneNote10: '#f5edfd'
-};
-
-export const TeamsColors: any = {
-  teams70: '#001765',
-  teams60: '#1c2d7e',
-  teams50: '#394296',
-  teams40: '#5558af',
-  teams30: '#787bc3',
-  teams20: '#9b9dd8',
-  teams10: '#bec0ec'
-};
-
 export const HighContrastColors: any = {
   contrastBlackDisabled: '#00ff00',
   contrastWhiteDisabled: '#600000',
