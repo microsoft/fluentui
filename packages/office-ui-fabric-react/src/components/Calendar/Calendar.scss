@@ -257,6 +257,10 @@ $Calendar-dayPicker-margin: 10px;
   @include margin-right(20px);
 }
 
+.decadeComponents {
+  @include margin-right(20px);
+}
+
 .prevMonth,
 .nextMonth,
 .prevYear,

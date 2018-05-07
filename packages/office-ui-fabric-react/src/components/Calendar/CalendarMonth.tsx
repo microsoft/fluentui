@@ -22,6 +22,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   selectedDate: Date;
   strings: ICalendarStrings;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+  onSelectMonth?: (month: number) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
   highlightSelectedMonth: boolean;
@@ -198,13 +199,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _onSelectMonth = (newMonth: number): void => {
-    const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
+    const { onSelectMonth } = this.props;
 
-    // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
-    if (onHeaderSelect && !this.props.isYearPickerEnabled) {
-      onHeaderSelect(true);
+    if (onSelectMonth) {
+      onSelectMonth(newMonth);
     }
-    onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
 
   private _onHeaderSelect = (): void => {

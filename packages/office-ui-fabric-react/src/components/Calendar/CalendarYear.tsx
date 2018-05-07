@@ -42,7 +42,7 @@ interface ICalendarYearProps {
   selectedYear?: number;
   minYear?: number;
   maxYear?: number;
-  onYearSelect?: (year: number) => void;
+  onSelectYear?: (year: number) => void;
   className?: string;
   strings?: ICalendarYearStrings;
   onHeaderSelect?: (focus: boolean) => void;
@@ -205,8 +205,8 @@ class CalendarYear extends BaseComponent<ICalendarYearProps, ICalendarYearState>
   }
   private _onYearSelect = (year: number) => {
     this.setState({ selectedYear: year });
-    if (this.props.onYearSelect) {
-      this.props.onYearSelect(year);
+    if (this.props.onSelectYear) {
+      this.props.onSelectYear(year);
     }
   }
   private _renderYearCell(year: number): React.ReactNode {

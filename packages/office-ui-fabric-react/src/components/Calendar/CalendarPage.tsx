@@ -198,6 +198,20 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 maxDate={ addYears(today, 1) }
               />
             </ExampleCard>
+            <ExampleCard
+              title='Inline Calendar with overlayed month picker and year picker enabled'
+              code={ CalendarInlineExampleCode }
+            >
+              <CalendarInlineExample
+                isYearPickerEnabled={ true }
+                showMonthPickerAsOverlay={ true }
+                highlightCurrentMonth={ false }
+                highlightSelectedMonth={ true }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ false }
+                showGoToToday={ false }
+              />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
