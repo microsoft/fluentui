@@ -24,7 +24,7 @@ export interface ISearchBoxState {
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
     animateIcon: true
-  }
+  };
 
   private _rootElement = createRef<HTMLDivElement>();
   private _inputElement = createRef<HTMLInputElement>();
