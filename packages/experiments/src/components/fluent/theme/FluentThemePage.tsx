@@ -32,7 +32,11 @@ export class FluentThemePage extends React.Component<
                 mergeStyles
               </a>, the Customizer component can be used to apply the theme. See
               the examples below. For all other components (including your app's
-              custom components), use the loadTheme() function.
+              custom components), use the
+              <a href='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/styles/theme.ts#L80'>
+                loadTheme()
+              </a>
+              function.
             </p>
           </div>
         }
