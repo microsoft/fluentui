@@ -74,7 +74,7 @@ module.exports = function (options) {
     const source = [
       `/* tslint:disable */`,
       `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-      `loadStyles(${JSON.stringify(splitStyles(css))});`
+      `window.document && loadStyles(${JSON.stringify(splitStyles(css))});`
     ];
 
     const map = _fileNameToClassMap[fileName];
