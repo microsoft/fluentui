@@ -1,27 +1,25 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   assign,
   buttonProperties,
   getNativeProps,
   KeyCodes
-} from '../../Utilities';
-import { IContextualMenuItem } from '../../ContextualMenu';
+} from '../../../Utilities';
+import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
 import {
   IMenuItemClassNames,
   getSplitButtonVerticalDividerClassNames
-} from './ContextualMenu.classNames';
-import { ContextualMenuItem } from './ContextualMenuItem';
+} from '../ContextualMenu.classNames';
 import { KeytipData } from '../../KeytipData';
-import { getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
+import { getIsChecked, isItemDisabled } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../Divider';
-import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.types';
+import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
 export interface IContextualMenuSplitButtonState { }
 
 const TouchIdleDelay = 500; /* ms */
 
-export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSplitButtonProps, IContextualMenuSplitButtonState> {
+export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _splitButton: HTMLDivElement;
   private _lastTouchTimeoutId: number | undefined;
   private _processingTouch: boolean;
@@ -85,6 +83,21 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     );
   }
 
+  protected _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const { item, onItemKeyDown } = this.props;
+    if (ev.which === KeyCodes.enter) {
+      this._executeItemClick(ev);
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else if (onItemKeyDown) {
+      onItemKeyDown(item, ev);
+    }
+  }
+
+  protected _getSubmenuTarget = (): HTMLElement | undefined => {
+    return this._splitButton;
+  }
+
   private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
@@ -131,7 +144,10 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
-      onItemMouseDown
+      onItemMouseDown,
+      openSubMenu,
+      dismissSubMenu,
+      dismissMenu
     } = this.props;
 
     const itemProps = {
@@ -141,6 +157,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps,
       split: true,
+      key: item.key
     } as IContextualMenuItem;
 
     const buttonProps = assign({}, getNativeProps(itemProps, buttonProperties), {
@@ -155,7 +172,17 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
 
     return (
       <button { ...buttonProps } >
-        <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
+        <ChildrenRenderer
+          componentRef={ item.componentRef }
+          item={ itemProps }
+          classNames={ classNames }
+          index={ index }
+          hasIcons={ false }
+          openSubMenu={ openSubMenu }
+          dismissSubMenu={ dismissSubMenu }
+          dismissMenu={ dismissMenu }
+          getSubmenuTarget={ this._getSubmenuTarget }
+        />
       </button >
     );
   }
@@ -224,17 +251,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
 
     if (executeItemClick) {
       executeItemClick(item, ev);
-    }
-  }
-
-  private _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { item, onItemKeyDown } = this.props;
-    if (ev.which === KeyCodes.enter) {
-      this._executeItemClick(ev);
-      ev.preventDefault();
-      ev.stopPropagation();
-    } else if (onItemKeyDown) {
-      onItemKeyDown(item, ev);
     }
   }
 

@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove keytip positioning workaround since Callout positioning was fixed",
-      "type": "patch"
+      "comment": "Add ContextualMenuItem functions to open and close menus",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
