@@ -24,6 +24,10 @@ exports[`Button renders ActionButton correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 40px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         outline: transparent;
         padding-bottom: 0;
         padding-left: 4px;
@@ -139,6 +143,10 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         min-width: 40px;
         outline: transparent;
         padding-bottom: 0;
@@ -309,6 +317,10 @@ exports[`Button renders CompoundButton correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: auto;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         max-width: 280px;
         min-height: 72px;
         outline: transparent;
@@ -450,6 +462,10 @@ exports[`Button renders DefaultButton correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 32px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         min-width: 80px;
         outline: transparent;
         padding-bottom: 0;
@@ -560,6 +576,10 @@ exports[`Button renders IconButton correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 32px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         outline: transparent;
         padding-bottom: 0;
         padding-left: 4px;
@@ -677,6 +697,10 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 32px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         min-width: 80px;
         outline: transparent;
         padding-bottom: 0;

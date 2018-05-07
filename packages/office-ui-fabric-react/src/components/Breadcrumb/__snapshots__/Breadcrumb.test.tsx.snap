@@ -443,6 +443,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     font-size: 16px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     overflow: hidden;
                     padding-bottom: 0;
@@ -1162,6 +1166,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     font-size: 16px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     overflow: hidden;
                     padding-bottom: 0;
