@@ -223,7 +223,7 @@ export const IllustrationColors: any = {
   pink30: '#ea005e',
   pink20: '#ee3f86',
   pink10: '#edbed3'
-}
+};
 
 export const CommunicationColors: any = {
   communication90: '#004578',
