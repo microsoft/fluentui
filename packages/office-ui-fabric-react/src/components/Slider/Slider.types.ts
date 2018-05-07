@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { SliderBase } from './Slider.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ISlider {
   value: number | undefined;
@@ -6,12 +9,22 @@ export interface ISlider {
   focus: () => void;
 }
 
-export interface ISliderProps {
+export interface ISliderProps extends React.Props<SliderBase> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: ISlider | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ISliderStyleProps, ISliderStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
 
   /**
    * Description label of the Slider
@@ -87,4 +100,26 @@ export interface ISliderProps {
    * Optional mixin for additional props on the thumb button within the slider.
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+}
+
+export interface ISliderStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+  /**
+   * Accept custom classNames.
+   */
+  className?: string;
+}
+
+export interface ISliderStyles {
+  root: IStyle,
+  container: IStyle,
+  slideBox: IStyle,
+  line: IStyle,
+  thumb: IStyle,
+  active: IStyle,
+  inactive: IStyle,
+  value: IStyle
 }
