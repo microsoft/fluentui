@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   assign,
   buttonProperties,
   getNativeProps,
@@ -14,13 +13,13 @@ import {
 import { KeytipData } from '../../KeytipData';
 import { getIsChecked, isItemDisabled } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../Divider';
-import { IContextualMenuSplitButtonProps } from './ContextualMenuSplitButton.types';
+import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
 export interface IContextualMenuSplitButtonState { }
 
 const TouchIdleDelay = 500; /* ms */
 
-export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSplitButtonProps, IContextualMenuSplitButtonState> {
+export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _splitButton: HTMLDivElement;
   private _lastTouchTimeoutId: number | undefined;
   private _processingTouch: boolean;
@@ -82,6 +81,21 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
         ) }
       </KeytipData>
     );
+  }
+
+  protected _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    const { item, onItemKeyDown } = this.props;
+    if (ev.which === KeyCodes.enter) {
+      this._executeItemClick(ev);
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else if (onItemKeyDown) {
+      onItemKeyDown(item, ev);
+    }
+  }
+
+  protected _getSubmenuTarget = (): HTMLElement | undefined => {
+    return this._splitButton;
   }
 
   private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
@@ -167,7 +181,7 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
           openSubMenu={ openSubMenu }
           dismissSubMenu={ dismissSubMenu }
           dismissMenu={ dismissMenu }
-          getContainerElement={ this._getContainerElement }
+          getSubmenuTarget={ this._getSubmenuTarget }
         />
       </button >
     );
@@ -240,17 +254,6 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
     }
   }
 
-  private _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { item, onItemKeyDown } = this.props;
-    if (ev.which === KeyCodes.enter) {
-      this._executeItemClick(ev);
-      ev.preventDefault();
-      ev.stopPropagation();
-    } else if (onItemKeyDown) {
-      onItemKeyDown(item, ev);
-    }
-  }
-
   private _onTouchStart = (ev: React.TouchEvent<HTMLElement>): void => {
     if (this._splitButton && !('onpointerdown' in this._splitButton)) {
       this._handleTouchAndPointerEvent(ev);
@@ -284,9 +287,5 @@ export class ContextualMenuSplitButton extends BaseComponent<IContextualMenuSpli
       this._processingTouch = false;
       this._lastTouchTimeoutId = undefined;
     }, TouchIdleDelay);
-  }
-
-  private _getContainerElement = (): HTMLElement | undefined => {
-    return this._splitButton;
   }
 }

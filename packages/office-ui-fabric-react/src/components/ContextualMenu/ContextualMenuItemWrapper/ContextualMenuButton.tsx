@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   buttonProperties,
   getNativeProps,
   createRef
 } from '../../../Utilities';
-import { IContextualMenuButtonProps } from './ContextualMenuButton.types';
+import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
-import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItem } from '../../ContextualMenu';
 
-export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonProps, {}> {
+export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = createRef<HTMLButtonElement>();
 
   public render() {
@@ -102,7 +101,7 @@ export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonPro
               openSubMenu={ openSubMenu }
               dismissSubMenu={ dismissSubMenu }
               dismissMenu={ dismissMenu }
-              getContainerElement={ this._getContainerElement }
+              getSubmenuTarget={ this._getSubmenuTarget }
             />
           </button>
         ) }
@@ -110,49 +109,7 @@ export class ContextualMenuButton extends BaseComponent<IContextualMenuButtonPro
     );
   }
 
-  private _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemMouseEnter } = this.props;
-    if (onItemMouseEnter) {
-      onItemMouseEnter(item, ev, ev.currentTarget as HTMLElement);
-    }
-  }
-
-  private _onItemMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemMouseMove } = this.props;
-    if (onItemMouseMove) {
-      onItemMouseMove(item, ev, ev.currentTarget as HTMLElement);
-    }
-  }
-
-  private _onItemClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemClickBase } = this.props;
-    if (onItemClickBase) {
-      onItemClickBase(item, ev, ev.currentTarget as HTMLElement);
-    }
-  }
-
-  private _onItemMouseLeave = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemMouseLeave } = this.props;
-    if (onItemMouseLeave) {
-      onItemMouseLeave(item, ev);
-    }
-  }
-
-  private _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { item, onItemKeyDown } = this.props;
-    if (onItemKeyDown) {
-      onItemKeyDown(item, ev);
-    }
-  }
-
-  private _getSubMenuId = (item: IContextualMenuItem): string | undefined => {
-    const { getSubMenuId } = this.props;
-    if (getSubMenuId) {
-      return getSubMenuId(item);
-    }
-  }
-
-  private _getContainerElement = (): HTMLElement | undefined => {
+  protected _getSubmenuTarget = (): HTMLElement | undefined => {
     return this._btn.current ? this._btn.current : undefined;
   }
 }

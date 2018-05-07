@@ -70,5 +70,5 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
    * This prop will get set by the wrapping component and will return the element that wraps this ContextualMenuItem.
    * Used for openSubMenu.
    */
-  getContainerElement?: () => HTMLElement | undefined;
+  getSubmenuTarget?: () => HTMLElement | undefined;
 }

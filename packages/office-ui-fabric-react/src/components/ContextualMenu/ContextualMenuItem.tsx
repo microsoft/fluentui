@@ -87,9 +87,9 @@ export class ContextualMenuItem extends BaseComponent<IContextualMenuItemProps, 
   }
 
   public openSubMenu = (): void => {
-    const { item, openSubMenu, getContainerElement } = this.props;
-    if (getContainerElement) {
-      const containerElement = getContainerElement();
+    const { item, openSubMenu, getSubmenuTarget } = this.props;
+    if (getSubmenuTarget) {
+      const containerElement = getSubmenuTarget();
       if (hasSubmenu(item) && openSubMenu && containerElement) {
         openSubMenu(item, containerElement);
       }

@@ -1,7 +1,14 @@
 import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
+import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
 export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
+  /**
+   * Optional callback to access the ContextualMenuSplitButton interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ContextualMenuItemWrapper | null) => void;
+
   /**
    * The IContextualMenuItem that is used to render the item in the menu.
    */
@@ -82,6 +89,21 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
    * Callback for keyboard events on the wrapper.
    */
   onItemKeyDown?: (item: IContextualMenuItem, ev: React.KeyboardEvent<HTMLElement>) => void;
+
+  /**
+   * Callback to get the subMenu ID for an IContextualMenuItem.
+   */
+  getSubMenuId?: (item: IContextualMenuItem) => string | undefined;
+
+  /**
+   * Key of the currently expanded subMenu.
+   */
+  expandedMenuItemKey?: string;
+
+  /**
+   * Callback for touch/pointer events on the split button.
+   */
+  onTap?: (ev: React.TouchEvent<HTMLElement> | PointerEvent) => void;
 
   /**
    * This prop will get set by ContextualMenu and can be called to open this item's subMenu, if present.

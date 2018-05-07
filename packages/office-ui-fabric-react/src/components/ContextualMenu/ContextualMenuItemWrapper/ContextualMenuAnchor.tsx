@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   anchorProperties,
   getNativeProps,
   createRef
 } from '../../../Utilities';
-import { IContextualMenuAnchorProps } from './ContextualMenuAnchor.types';
+import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
-import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItem } from '../../ContextualMenu';
 
-export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorProps, {}> {
+export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = createRef<HTMLAnchorElement>();
 
   public render() {
@@ -87,7 +86,7 @@ export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorPro
                 openSubMenu={ openSubMenu }
                 dismissSubMenu={ dismissSubMenu }
                 dismissMenu={ dismissMenu }
-                getContainerElement={ this._getContainerElement }
+                getSubmenuTarget={ this._getSubmenuTarget }
               />
             </a>
           ) }
@@ -95,42 +94,7 @@ export class ContextualMenuAnchor extends BaseComponent<IContextualMenuAnchorPro
       </div>);
   }
 
-  private _onItemMouseEnter = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemMouseEnter } = this.props;
-    if (onItemMouseEnter) {
-      onItemMouseEnter(item, ev, ev.currentTarget as HTMLElement);
-    }
-  }
-
-  private _onItemClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemClick } = this.props;
-    if (onItemClick) {
-      onItemClick(item, ev);
-    }
-  }
-
-  private _onItemMouseLeave = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { item, onItemMouseLeave } = this.props;
-    if (onItemMouseLeave) {
-      onItemMouseLeave(item, ev);
-    }
-  }
-
-  private _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { item, onItemKeyDown } = this.props;
-    if (onItemKeyDown) {
-      onItemKeyDown(item, ev);
-    }
-  }
-
-  private _getSubMenuId = (item: IContextualMenuItem): string | undefined => {
-    const { getSubMenuId } = this.props;
-    if (getSubMenuId) {
-      return getSubMenuId(item);
-    }
-  }
-
-  private _getContainerElement = (): HTMLElement | undefined => {
+  protected _getSubmenuTarget = (): HTMLElement | undefined => {
     return this._anchor.current ? this._anchor.current : undefined;
   }
 }
