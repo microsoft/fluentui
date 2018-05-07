@@ -17,7 +17,7 @@ describe('Slider', () => {
   });
 
   it('renders a slider', () => {
-    const component = ReactTestUtils.renderIntoDocument(
+    const component = ReactTestUtils.renderIntoDocument<SliderBase>(
       <SliderBase getStyles={ getStyles } label='slider' />
     );
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
@@ -31,7 +31,7 @@ describe('Slider', () => {
     const onChange = (val: any) => {
       changedValue = val;
     };
-    const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    const component = ReactTestUtils.renderIntoDocument<SliderBase>(
       <SliderBase
         getStyles={ getStyles }
         onChange={ onChange }
@@ -71,7 +71,7 @@ describe('Slider', () => {
   });
 
   it('has type=button on all buttons', () => {
-    const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    const component = ReactTestUtils.renderIntoDocument<SliderBase>(
       <SliderBase getStyles={ getStyles } />
     );
 
@@ -88,7 +88,7 @@ describe('Slider', () => {
   it('can read the current value', () => {
     let slider: ISlider | null;
 
-    ReactTestUtils.renderIntoDocument(
+    ReactTestUtils.renderIntoDocument<SliderBase>(
       // tslint:disable-next-line:jsx-no-lambda
       <SliderBase getStyles={ getStyles } label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
@@ -96,7 +96,7 @@ describe('Slider', () => {
   });
 
   it('renders correct aria-valuetext', () => {
-    let component = ReactTestUtils.renderIntoDocument(
+    let component = ReactTestUtils.renderIntoDocument<SliderBase>(
       <SliderBase getStyles={ getStyles } />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
@@ -109,7 +109,7 @@ describe('Slider', () => {
     const selected = 1;
     const getTextValue = (value: number) => values[value];
 
-    component = ReactTestUtils.renderIntoDocument(
+    component = ReactTestUtils.renderIntoDocument<SliderBase>(
       <SliderBase
         getStyles={ getStyles }
         value={ selected }
