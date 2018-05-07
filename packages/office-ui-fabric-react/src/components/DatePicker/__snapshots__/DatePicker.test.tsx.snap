@@ -41,12 +41,20 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             className=
                 ms-DatePicker-event--without-label
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
             role="presentation"
-          />
+          >
+            
+          </i>
         </div>
       </div>
     </div>

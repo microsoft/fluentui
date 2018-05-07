@@ -31,6 +31,7 @@ import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/w
 import { Callout } from '../../Callout';
 import { IIconProps } from '../../Icon';
 import { ContextualMenuItem } from './ContextualMenuItem';
+import { KeytipData } from '../../KeytipData';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 
 export interface IContextualMenuState {
@@ -67,6 +68,8 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
   });
 }
 
+const NavigationIdleDelay = 250 /* ms */;
+
 @customizable('ContextualMenu', ['theme'])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -88,7 +91,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _target: Element | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
-  private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
@@ -164,9 +166,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
     }
-
-    this._events.dispose();
-    this._async.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -496,36 +495,47 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
+    const nativeProps = getNativeProps(item, anchorProperties);
+    const disabled = isItemDisabled(item);
 
     return (
       <div>
-        <a
-          { ...getNativeProps(item, anchorProperties) }
-          href={ item.href }
-          target={ item.target }
-          rel={ anchorRel }
-          className={ classNames.root }
-          role='menuitem'
-          aria-owns={ item.key === expandedMenuItemKey ? subMenuId : undefined }
-          aria-haspopup={ itemHasSubmenu || undefined }
-          aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
-          aria-posinset={ focusableElementIndex + 1 }
-          aria-setsize={ totalItemCount }
-          aria-disabled={ isItemDisabled(item) }
-          style={ item.style }
-          onClick={ this._onAnchorClick.bind(this, item) }
-          onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
-          onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
-          onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
+        <KeytipData
+          keytipProps={ item.keytipProps }
+          ariaDescribedBy={ (nativeProps as any)['aria-describedby'] }
+          disabled={ disabled }
         >
-          <ChildrenRenderer
-            item={ item }
-            classNames={ classNames }
-            index={ index }
-            onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
-            hasIcons={ hasIcons }
-          />
-        </a>
+          { (keytipAttributes: any): JSX.Element => (
+            <a
+              { ...nativeProps }
+              { ...keytipAttributes }
+              href={ item.href }
+              target={ item.target }
+              rel={ anchorRel }
+              className={ classNames.root }
+              role='menuitem'
+              aria-owns={ item.key === expandedMenuItemKey ? subMenuId : undefined }
+              aria-haspopup={ itemHasSubmenu || undefined }
+              aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
+              aria-posinset={ focusableElementIndex + 1 }
+              aria-setsize={ totalItemCount }
+              aria-disabled={ isItemDisabled(item) }
+              style={ item.style }
+              onClick={ this._onAnchorClick.bind(this, item) }
+              onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+              onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+              onKeyDown={ itemHasSubmenu ? this._onItemKeyDown.bind(this, item) : null }
+            >
+              <ChildrenRenderer
+                item={ item }
+                classNames={ classNames }
+                index={ index }
+                onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+                hasIcons={ hasIcons }
+              />
+            </a>
+          ) }
+        </KeytipData>
       </div>);
   }
 
@@ -580,19 +590,36 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       style: item.style
     };
 
+    let { keytipProps } = item;
+    if (keytipProps && itemHasSubmenu) {
+      keytipProps = {
+        ...keytipProps,
+        hasMenu: true
+      };
+    }
+
     return (
-      <button
-        { ...buttonNativeProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
-        { ...itemButtonProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
+      <KeytipData
+        keytipProps={ keytipProps }
+        ariaDescribedBy={ (buttonNativeProperties as any)['aria-describedby'] }
+        disabled={ isItemDisabled(item) }
       >
-        <ChildrenRenderer
-          item={ item }
-          classNames={ classNames }
-          index={ index }
-          onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
-          hasIcons={ hasIcons }
-        />
-      </button>
+        { (keytipAttributes: any): JSX.Element => (
+          <button
+            { ...buttonNativeProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
+            { ...itemButtonProperties as React.ButtonHTMLAttributes<HTMLButtonElement> }
+            { ...keytipAttributes }
+          >
+            <ChildrenRenderer
+              item={ item }
+              classNames={ classNames }
+              index={ index }
+              onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+              hasIcons={ hasIcons }
+            />
+          </button>
+        ) }
+      </KeytipData>
     );
   }
 
@@ -624,6 +651,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onItemClick={ this._onItemClick }
         onItemClickBase={ this._onItemClickBase }
         onItemKeyDown={ this._onItemKeyDown }
+        onTap={ this._onPointerAndTouchEvent }
       />
     );
   }
@@ -700,7 +728,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._navigationIdleDelay);
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, NavigationIdleDelay);
   }
 
   private _onItemMouseEnter = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
@@ -764,7 +792,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement) {
     const targetElement = target ? target : ev.currentTarget as HTMLElement;
-    const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
+    const { subMenuHoverDelay: timeoutDuration = NavigationIdleDelay } = this.props;
 
     if (item.key === this.state.expandedMenuItemKey) {
       return;
@@ -788,7 +816,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         targetElement.focus();
         this._onItemSubMenuExpand(item, targetElement);
         this._enterTimerId = undefined;
-      }, this._navigationIdleDelay);
+      }, NavigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
@@ -813,10 +841,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     // Cancel a async menu item hover timeout action from being taken and instead
     // just trigger the click event instead.
-    if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-    }
+    this._cancelSubMenuTimer();
+
     if (!hasSubmenu(item) && (!items || !items.length)) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
     } else {
@@ -857,6 +883,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
+    }
+  }
+
+  // Cancel a async menu item hover timeout action from being taken and instead
+  // do new upcoming behavior
+  private _cancelSubMenuTimer = () => {
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
     }
   }
 
@@ -967,5 +1002,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     return subMenuId;
+  }
+
+  private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
+    this._cancelSubMenuTimer();
   }
 }

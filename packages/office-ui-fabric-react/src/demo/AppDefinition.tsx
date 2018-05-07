@@ -143,6 +143,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/icon'
         },
         {
+          component: require<any>('../components/Keytip/KeytipsPage').KeytipsPage,
+          key: 'Keytips',
+          name: 'Keytips',
+          url: '#/examples/keytips'
+        },
+        {
           component: require<any>('../components/Label/LabelPage').LabelPage,
           key: 'Label',
           name: 'Label',

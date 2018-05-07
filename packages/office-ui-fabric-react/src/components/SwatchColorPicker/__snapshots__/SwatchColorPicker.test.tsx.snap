@@ -181,6 +181,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
                 &:active {
                   color: #000000;
                 }
@@ -373,6 +377,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -567,6 +575,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
                 &:active {
                   color: #000000;
                 }
@@ -759,6 +771,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -957,6 +973,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
                 &:active {
                   color: #000000;
                 }
@@ -1149,6 +1169,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1343,6 +1367,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
                 &:active {
                   color: #000000;
                 }
@@ -1535,6 +1563,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1733,6 +1765,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
                 &:active {
                   color: #000000;
                 }
@@ -1925,6 +1961,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -2119,6 +2159,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d4;
                 }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
                 &:active {
                   color: #000000;
                 }
@@ -2311,6 +2355,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;

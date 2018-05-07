@@ -4,6 +4,4 @@ export { FolderCover } from './FolderCover';
 export { Tile } from './Tile';
 export { TilesList } from './TilesList';
 export { CommandBar as ExperimentCommandBar } from './CommandBar';
-export { Keytip } from './Keytip';
-export { KeytipLayer } from './KeytipLayer';
 export { Shimmer } from './Shimmer';
