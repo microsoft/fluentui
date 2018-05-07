@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Popup: Added check for onBlur to prevent focus setting focus to be disabled",
+      "comment": "Popup: Added check for onBlur to prevent focus setting focus to be disabled in chrome",
       "type": "patch"
     }
   ],

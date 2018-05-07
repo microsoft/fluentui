@@ -34,7 +34,7 @@ exports[`TextField renders TextField correctly 1`] = `
       className="ms-TextField-fieldGroup"
     >
       <input
-        aria-describedby={null}
+        aria-describedby={undefined}
         aria-invalid={false}
         aria-label={undefined}
         className="ms-TextField-field"

@@ -4,10 +4,10 @@ import {
   TilesList,
   ITilesGridItem,
   ITilesGridSegment
-} from '../../TilesList';
+} from '@uifabric/experiments/lib/TilesList';
 import {
   Tile
-} from '../../../Tile';
+} from '@uifabric/experiments/lib/Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
@@ -20,12 +20,12 @@ import {
   getTileCells,
   createShimmerGroups
 } from './ExampleHelpers';
-import { ISize } from 'experiments/lib/Utilities';
-import { ShimmerTile } from '../../Shimmer/ShimmerTile/ShimmerTile';
-import { getRenderedElements } from '../../Shimmer/Shimmer.base';
+import { ISize } from '@uifabric/experiments/lib/Utilities';
 import {
+  ShimmerTile,
   ShimmerElementType as ElemType,
-} from 'experiments/lib/Shimmer';
+  getRenderedElements
+} from '@uifabric/experiments/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;
@@ -194,7 +194,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
 
   private _onRenderDocumentCell = (item: IExampleItem): JSX.Element => {
     const { tileSize } = this.props;
-    let imgSize = tileSize === 'large' ? 64 : 48;
+    const imgSize = tileSize === 'large' ? 64 : 48;
 
     return (
       <Tile

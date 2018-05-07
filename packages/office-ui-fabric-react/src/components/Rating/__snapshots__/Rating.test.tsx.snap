@@ -3,7 +3,19 @@
 exports[`Rating Renders Rating correctly 1`] = `
 <div
   aria-label=""
-  className="ms-Rating-star"
+  className=
+      ms-Rating-star
+      ms-RatingStar-root
+      ms-RatingStar-root--small
+      &:hover .ms-RatingStar-back {
+        color: #000000;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
+        color: Highlight;
+      }
+      {
+        height: 22px;
+      }
   id="Rating0"
 >
   <div
@@ -12,13 +24,16 @@ exports[`Rating Renders Rating correctly 1`] = `
     className=
         ms-FocusZone
         ms-Rating-focuszone
+        ms-RatingStar-root--small
         {
           display: inline-block;
           padding-bottom: 1px;
         }
+        {
+          height: 22px;
+        }
     data-focuszone-id="FocusZone2"
     data-is-focusable={false}
-    onClick={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -30,24 +45,24 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
-            background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -64,6 +79,24 @@ exports[`Rating Renders Rating correctly 1`] = `
           &[disabled] {
             cursor: default;
           }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
+          }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
@@ -71,6 +104,7 @@ exports[`Rating Renders Rating correctly 1`] = `
       data-is-current={true}
       disabled={false}
       id="Rating0-star-0"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -110,28 +144,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -146,7 +190,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "100%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -154,24 +200,24 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
-            background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -188,12 +234,31 @@ exports[`Rating Renders Rating correctly 1`] = `
           &[disabled] {
             cursor: default;
           }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
+          }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
           }
       disabled={false}
       id="Rating0-star-1"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -233,28 +298,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -269,7 +344,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -277,24 +354,24 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
-            background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -311,12 +388,31 @@ exports[`Rating Renders Rating correctly 1`] = `
           &[disabled] {
             cursor: default;
           }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
+          }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
           }
       disabled={false}
       id="Rating0-star-2"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -356,28 +452,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -392,7 +498,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -400,24 +508,24 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
-            background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -434,12 +542,31 @@ exports[`Rating Renders Rating correctly 1`] = `
           &[disabled] {
             cursor: default;
           }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
+          }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
           }
       disabled={false}
       id="Rating0-star-3"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -479,28 +606,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -515,7 +652,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -523,24 +662,24 @@ exports[`Rating Renders Rating correctly 1`] = `
           ms-Rating-button
           ms-Rating--small
           {
-            background: none;
+            background-color: transparent;
             border: none;
             cursor: pointer;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 3px;
-            margin-top: 3px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
             padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-right: 3px;
+            padding-top: 3px;
             position: relative;
           }
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -557,12 +696,31 @@ exports[`Rating Renders Rating correctly 1`] = `
           &[disabled] {
             cursor: default;
           }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+            color: WindowText;
+          }
+          &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: #a6a6a6;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+            color: WindowText;
+          }
+          &:hover .ms-RatingStar-back {
+            color: #0078d4;
+          }
+          &:hover .ms-RatingStar-front {
+            color: #005a9e;
+          }
           {
             font-size: 16px;
             line-height: 16px;
           }
       disabled={false}
       id="Rating0-star-4"
+      onClick={[Function]}
       onFocus={[Function]}
       role="presentation"
       type="button"
@@ -602,28 +760,38 @@ exports[`Rating Renders Rating correctly 1`] = `
           className=
               ms-RatingStar-back
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
-        />
+        >
+          
+        </i>
         <i
           aria-hidden={true}
           className=
               ms-RatingStar-front
               {
-                display: inline-block;
-              }
-              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #000000;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
                 height: 100 %;
                 left: 0;
                 overflow: hidden;
                 position: absolute;
+                speak: none;
                 text-align: center;
                 top: 0;
                 vertical-align: middle;
@@ -638,7 +806,9 @@ exports[`Rating Renders Rating correctly 1`] = `
               "width": "0%",
             }
           }
-        />
+        >
+          
+        </i>
       </div>
     </button>
   </div>

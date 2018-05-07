@@ -15,6 +15,7 @@ import {
   getClassNames
 } from './Checkbox.classNames';
 import { getStyles } from './Checkbox.styles';
+import { KeytipData } from '../../KeytipData';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
@@ -27,7 +28,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     boxSide: 'start'
   };
 
-  private _checkBox = createRef<HTMLInputElement>();
+  private _checkBox = createRef<HTMLElement>();
   private _id: string;
   private _classNames: ICheckboxClassNames;
 
@@ -49,7 +50,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     };
   }
 
-  public componentWillReceiveProps(newProps: ICheckboxProps) {
+  public componentWillReceiveProps(newProps: ICheckboxProps): void {
     if (newProps.checked !== undefined) {
       this.setState({
         isChecked: !!newProps.checked // convert null to false
@@ -77,7 +78,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       onRenderLabel = this._onRenderLabel,
       checkmarkIconProps,
       ariaPositionInSet,
-      ariaSetSize
+      ariaSetSize,
+      keytipProps
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
@@ -94,35 +96,43 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       );
 
     return (
-      <button
-        { ...inputProps }
-        { ...(checked !== undefined && { checked }) }
-        { ...(defaultChecked !== undefined && { defaultChecked }) }
-        disabled={ disabled }
-        ref={ this._checkBox }
-        name={ name }
-        id={ this._id }
-        role='checkbox'
-        type='button'
-        className={ this._classNames.root }
-        onClick={ this._onClick }
-        onFocus={ this._onFocus }
-        onBlur={ this._onBlur }
-        aria-checked={ isChecked }
-        aria-disabled={ disabled }
-        aria-label={ ariaLabel }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
-        aria-posinset={ ariaPositionInSet }
-        aria-setsize={ ariaSetSize }
-      >
-        <label className={ this._classNames.label } htmlFor={ this._id } >
-          <div className={ this._classNames.checkbox }>
-            <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
-          </div>
-          { onRenderLabel(this.props, this._onRenderLabel) }
-        </label>
-      </button>
+      <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
+        { (keytipAttributes: any): JSX.Element => (
+          <button
+            { ...inputProps }
+            data-ktp-execute-target={ keytipAttributes['data-ktp-execute-target'] }
+            { ...(checked !== undefined && { checked }) }
+            { ...(defaultChecked !== undefined && { defaultChecked }) }
+            disabled={ disabled }
+            ref={ this._checkBox }
+            name={ name }
+            id={ this._id }
+            role='checkbox'
+            type='button'
+            className={ this._classNames.root }
+            onClick={ this._onClick }
+            onFocus={ this._onFocus }
+            onBlur={ this._onBlur }
+            aria-checked={ isChecked }
+            aria-disabled={ disabled }
+            aria-label={ ariaLabel }
+            aria-labelledby={ ariaLabelledBy }
+            aria-describedby={ (ariaDescribedBy || '') + (keytipAttributes['aria-describedby'] || '') }
+            aria-posinset={ ariaPositionInSet }
+            aria-setsize={ ariaSetSize }
+          >
+            <label className={ this._classNames.label } htmlFor={ this._id } >
+              <div
+                className={ this._classNames.checkbox }
+                data-ktp-target={ keytipAttributes['data-ktp-target'] }
+              >
+                <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
+              </div>
+              { onRenderLabel(this.props, this._onRenderLabel) }
+            </label>
+          </button>
+        ) }
+      </KeytipData>
     );
   }
 
@@ -131,12 +141,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public focus(): void {
-    if (this._checkBox.value) {
-      this._checkBox.value.focus();
+    if (this._checkBox.current) {
+      this._checkBox.current.focus();
     }
   }
 
-  private _onFocus = (ev: React.FocusEvent<HTMLInputElement>): void => {
+  private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onFocus) {
@@ -144,7 +154,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
+  private _onBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     const { inputProps } = this.props;
 
     if (inputProps && inputProps.onBlur) {
@@ -152,7 +162,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  private _onClick = (ev: React.FormEvent<HTMLButtonElement>): void => {
+  private _onClick = (ev: React.FormEvent<HTMLElement>): void => {
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
     ev.preventDefault();

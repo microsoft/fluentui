@@ -49,7 +49,7 @@ export class FocusZoneListExample extends React.Component {
     this._selection.setItems(ITEMS);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <FocusZone
         className='ms-FocusZoneListExample'

@@ -99,7 +99,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     this._onToggleSelection = this._onToggleSelection.bind(this);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
@@ -133,8 +133,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
     }
 
-    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.value) {
-      const newWidth = this._cellMeasurer.value.getBoundingClientRect().width;
+    if (columnMeasureInfo && columnMeasureInfo.index >= 0 && this._cellMeasurer.current) {
+      const newWidth = this._cellMeasurer.current.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
 
@@ -149,7 +149,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     const { item, onWillUnmount } = this.props;
 
     // Only call the onWillUnmount callback if we have an item.
@@ -163,14 +163,14 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     }
   }
 
-  public componentWillReceiveProps(newProps: IDetailsRowProps) {
+  public componentWillReceiveProps(newProps: IDetailsRowProps): void {
     this.setState({
       selectionState: this._getSelectionState(newProps),
       groupNestingDepth: newProps.groupNestingDepth
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       columns,
@@ -196,7 +196,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
     const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
-    const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
+    const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
     const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
@@ -311,7 +311,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
    * @param {number} index (the cell index)
    * @param {(width: number) => void} onMeasureDone (the call back function when finish measure)
    */
-  public measureCell(index: number, onMeasureDone: (width: number) => void) {
+  public measureCell(index: number, onMeasureDone: (width: number) => void): void {
     const column = assign({}, this.props.columns[index]) as IColumn;
 
     column.minWidth = 0;
@@ -329,7 +329,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(forceIntoFirstElement: boolean = false): boolean {
-    return !!this._focusZone.value && this._focusZone.value.focus(forceIntoFirstElement);
+    return !!this._focusZone.current && this._focusZone.current.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
@@ -345,7 +345,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     };
   }
 
-  private _onSelectionChanged() {
+  private _onSelectionChanged(): void {
     const selectionState = this._getSelectionState(this.props);
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
@@ -355,7 +355,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     }
   }
 
-  private _onToggleSelection() {
+  private _onToggleSelection(): void {
     const { selection } = this.props;
 
     selection.toggleIndexSelected(this.props.itemIndex);
@@ -404,7 +404,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
    * @param {boolean} newValue (new isDropping state value)
    * @param {DragEvent} event (the event trigger dropping state change which can be dragenter, dragleave etc)
    */
-  private _updateDroppingState(newValue: boolean, event: DragEvent) {
+  private _updateDroppingState(newValue: boolean, event: DragEvent): void {
     const { selectionState, isDropping } = this.state;
     const { dragDropEvents, item } = this.props;
 

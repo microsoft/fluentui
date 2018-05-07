@@ -1,0 +1,314 @@
+﻿/* tslint:disable */
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
+import * as React from 'react';
+import {
+  INavProps,
+  INavState,
+  INavLink,
+  INavLinkGroup,
+  INavStyleProps,
+  INavStyles
+} from './Nav.types';
+import {
+  getStyles
+} from './Nav.styles';
+import { NavBase } from './NavBase';
+import {
+  styled,
+  classNamesFunction
+} from 'office-ui-fabric-react/lib/Utilities';
+import { NavLink } from './NavLink';
+
+const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
+
+class SlimNavComponent extends NavBase {
+  constructor(props: INavProps) {
+    super(props);
+
+    this.state = {
+      isLinkExpandStateChanged: false,
+      selectedKey: props.initialSelectedKey || props.selectedKey
+    };
+  }
+
+  public get selectedKey(): string | undefined {
+    return this.state.selectedKey;
+  }
+
+  public render() {
+    if (!this.props.groups || this.props.groups.length === 0) {
+      return null;
+    }
+
+    return (
+      <FocusZone direction={ FocusZoneDirection.vertical }>
+        <nav role='navigation'>
+          {
+            this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
+              return this._renderGroup(group, groupIndex);
+            })
+          }
+        </nav>
+      </FocusZone>
+    );
+  }
+
+  private _onLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    // set selected node
+    const nextState: INavState = {
+      selectedKey: link.key
+    };
+    this.setState(nextState);
+
+    const hasChildren = link.links && link.links.length > 0;
+
+    // if there is no children and onClick handler is defined, call it
+    if (!hasChildren && link.onClick) {
+      link.onClick(ev, link);
+    }
+
+    // prevent url action on anchor tag if the node has a children or if the onClick handler is defined
+    if (hasChildren || link.onClick) {
+      ev.preventDefault();
+    }
+
+    ev.stopPropagation();
+  }
+
+  private _getScrollTop(): number | undefined {
+    if (!this.props.navScrollerId) {
+      return undefined;
+    }
+
+    const navScroller = document.getElementById(this.props.navScrollerId) as HTMLElement;
+
+    if (navScroller && navScroller.scrollTop > 0) {
+      return navScroller.scrollTop;
+    }
+
+    return undefined;
+  }
+
+  private _onLinkMouseEnterOrLeave(link: INavLink, ev: React.SyntheticEvent<HTMLElement>): void {
+    link.scrollTop = this._getScrollTop();
+    this.setState({ isLinkExpandStateChanged: true });
+
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+
+  private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+    if (!link) {
+      return null;
+    }
+
+    let rightIconName = undefined;
+    if (link.url && link.target && link.target === '_blank') {
+      // for external links, show an icon
+      rightIconName = 'OpenInNewWindow';
+    }
+
+    const isSelected = nestingLevel > 0 && this.isLinkSelected(link, false /* includeChildren */);
+    const {
+      getStyles,
+      showMore,
+      dataHint
+    } = this.props;
+    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const linkText = this.getLinkText(link, showMore);
+
+    return (
+      <NavLink
+        id={ link.key }
+        content={ linkText }
+        href={ link.url }
+        target={ link.target }
+        dataHint={ dataHint }
+        dataValue={ link.key }
+        ariaLabel={ linkText }
+        role="menu"
+        onClick={ this._onLinkClicked.bind(this, link) }
+        rootClassName={ classNames.navFloatingItemRoot }
+        rightIconName={ rightIconName }
+        textClassName={ classNames.navItemNameColumn }
+        iconClassName={ classNames.navItemIconColumn }>
+      </NavLink>
+    );
+  }
+
+  private _renderFloatingLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+    if (!link) {
+      return null;
+    }
+
+    const linkText = this.getLinkText(link, this.props.showMore);
+
+    return (
+      <li
+        role='listitem'
+        key={ link.key || linkIndex }
+        title={ linkText }>
+        {
+          this._renderCompositeLink(link, linkIndex, nestingLevel)
+        }
+        {
+          // show child links
+          // 1. only for the first level
+          nestingLevel == 0 ?
+            <div>
+              {
+                this._renderFloatingLinks(link.links as INavLink[], ++nestingLevel)
+              }
+            </div>
+            : null
+        }
+      </li>
+    )
+  }
+
+  private _renderFloatingLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> | null {
+    if (!links || links.length === 0) {
+      return null;
+    }
+
+    return (
+      <ul role='list'>
+        {
+          links.map((link: INavLink, linkIndex: number) => {
+            return this._renderFloatingLink(link, linkIndex, nestingLevel);
+          })
+        }
+      </ul>
+    );
+  }
+
+  private _renderFloatingNav(link: INavLink, _linkIndex: number): React.ReactElement<{}> | null {
+    if (!link) {
+      return null;
+    }
+
+    const hasChildren = (!!link.links && link.links.length > 0);
+    const { getStyles } = this.props;
+    const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
+
+    return (
+      <div className={ classNames.navFloatingRoot }>
+        {
+          this._renderFloatingLinks([link], 0 /* nestingLevel */)
+        }
+      </div>
+    );
+  }
+
+  private _renderLink(link: INavLink, linkIndex: number, _nestingLevel: number): React.ReactElement<{}> | null {
+    if (!link) {
+      return null;
+    }
+
+    const isSelected = this.isLinkSelected(link, true /* includeChildren */);
+    const hasChildren = (!!link.links && link.links.length > 0);
+    const {
+      getStyles,
+      showMore,
+      onShowMoreLinkClicked,
+      dataHint
+    } = this.props;
+    const classNames = getClassNames(getStyles!, { isSelected, hasChildren });
+    const linkText = this.getLinkText(link, showMore);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
+
+    return (
+      <li
+        role='listitem'
+        key={ link.key || linkIndex }
+        onMouseEnter={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        title={ linkText }
+        className={ classNames.navSlimItemRoot }>
+        <NavLink
+          id={ link.key }
+          href={ link.url }
+          target={ link.target }
+          dataHint={ dataHint }
+          dataValue={ link.key }
+          role="menu"
+          onClick={ onClickHandler }
+          rootClassName={ classNames.navItemRoot }
+          leftIconName={ link.icon }
+          iconClassName={ classNames.navItemIconColumn }>
+        </NavLink>
+        {
+          this._renderFloatingNav(link, linkIndex)
+        }
+      </li>
+    );
+  }
+
+  private _renderLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> | null {
+    if (!links || links.length === 0) {
+      return null;
+    }
+
+    const {
+      enableCustomization,
+      showMore
+    } = this.props;
+
+    return (
+      <ul role='list'>
+        {
+          links.map((link: INavLink, linkIndex: number) => {
+            if (enableCustomization && link.isHidden && !showMore) {
+              // "Show more" overrides isHidden property
+              return null;
+            }
+            else {
+              return this._renderLink(link, linkIndex, nestingLevel);
+            }
+          })
+        }
+      </ul>
+    );
+  }
+
+  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+    if (!group || !group.links || group.links.length === 0) {
+      return null;
+    }
+
+    const {
+      getStyles,
+      enableCustomization
+    } = this.props;
+
+    // skip customization group if customization is not enabled
+    if (!enableCustomization && group.isCustomizationGroup) {
+      return null;
+    }
+
+    const classNames = getClassNames(getStyles!, {});
+
+    return (
+      <div key={ groupIndex }>
+        {
+          // do not render group header for the first group
+          groupIndex > 0 ?
+            <div className={ classNames.navGroupSeparatorRoot }>
+              <div className={ classNames.navGroupSeparatorHrLine }>
+              </div>
+            </div>
+            : null
+        }
+        {
+          this._renderLinks(group.links, 0 /* nestingLevel */)
+        }
+      </div>
+    );
+  }
+}
+
+export const SlimNav = styled<INavProps, INavStyleProps, INavStyles>(
+  SlimNavComponent,
+  getStyles
+);
+/* tslint:enable */

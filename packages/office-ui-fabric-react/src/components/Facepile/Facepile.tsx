@@ -100,7 +100,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  private _onRenderVisiblePersonas(personas: IFacepilePersona[], singlePersona: boolean) {
+  private _onRenderVisiblePersonas(personas: IFacepilePersona[], singlePersona: boolean): JSX.Element[] {
     return personas.map((persona: IFacepilePersona, index: number) => {
       const personaControl: JSX.Element = singlePersona ? this._getPersonaControl(persona) : this._getPersonaCoinControl(persona);
       return persona.onClick ?
@@ -162,7 +162,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  private _getElementProps(persona: IFacepilePersona, index: number) {
+  private _getElementProps(persona: IFacepilePersona, index: number): { key: React.Key, ['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
     return {
       key: (!!persona.imageUrl ? 'i' : '') + index,
       'data-is-focusable': true,

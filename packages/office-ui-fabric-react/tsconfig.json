@@ -9,7 +9,7 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,

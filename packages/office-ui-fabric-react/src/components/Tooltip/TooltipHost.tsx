@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
   css,
@@ -44,7 +42,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Render
-  public render() {
+  public render(): JSX.Element {
     const {
       calloutProps,
       children,
@@ -54,7 +52,6 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       directionalHintForRTL,
       hostClassName,
       id,
-      overflowMode,
       setAriaDescribedBy = true,
       tooltipProps
     } = this.props;
@@ -85,10 +82,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             targetElement={ this._getTargetElement() }
             directionalHint={ directionalHint }
             directionalHintForRTL={ directionalHintForRTL }
-            calloutProps={ assign(calloutProps, {
-              onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave
-            }) }
+            calloutProps={ assign({},
+              calloutProps, {
+                onMouseEnter: this._onTooltipMouseEnter,
+                onMouseLeave: this._onTooltipMouseLeave
+              }) }
             onMouseEnter={ this._onTooltipMouseEnter }
             onMouseLeave={ this._onTooltipMouseLeave }
             { ...getNativeProps(this.props, divProperties) }
@@ -100,7 +98,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   private _getTargetElement(): HTMLElement | undefined {
-    if (!this._tooltipHost.value) {
+    if (!this._tooltipHost.current) {
       return undefined;
     }
 
@@ -111,14 +109,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.value.parentElement!;
+          return this._tooltipHost.current.parentElement!;
 
         case TooltipOverflowMode.Self:
-          return this._tooltipHost.value;
+          return this._tooltipHost.current;
       }
     }
 
-    return this._tooltipHost.value;
+    return this._tooltipHost.current;
   }
 
   // Show Tooltip
@@ -158,7 +156,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     this._toggleTooltip(false);
   }
 
-  private _toggleTooltip(isTooltipVisible: boolean) {
+  private _toggleTooltip(isTooltipVisible: boolean): void {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState(
         { isTooltipVisible },

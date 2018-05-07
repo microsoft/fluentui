@@ -3,7 +3,7 @@ import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export class SpinButtonBasicWithEndPositionExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div style={ { width: '400px' } }>
         <SpinButton

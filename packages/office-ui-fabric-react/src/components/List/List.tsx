@@ -9,9 +9,15 @@ import {
   divProperties,
   getNativeProps,
   IRenderFunction,
-  createRef
+  createRef,
 } from '../../Utilities';
-import { IList, IListProps, IPage, IPageProps } from './List.types';
+import {
+  IList,
+  IListProps,
+  IPage,
+  IPageProps,
+  ScrollToMode
+} from './List.types';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -185,8 +191,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    *
    * @param index Index of item to scroll to
    * @param measureItem Optional callback to measure the height of an individual item
+   * @param scrollToMode Optional defines where in the window the item should be positioned to when scrolling
    */
-  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode: ScrollToMode = ScrollToMode.auto): void {
     const startIndex = this.props.startIndex as number;
     const renderCount = this._getRenderCount();
     const endIndex = startIndex + renderCount;
@@ -207,6 +214,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in just
         // the given item, otherwise we'll only bring the page into view
         if (measureItem) {
+          const scrollRect = _measureScrollRect(this._scrollElement);
+          const scrollWindow = {
+            top: this._scrollElement.scrollTop,
+            bottom: this._scrollElement.scrollTop + scrollRect.height
+          };
+
           // Adjust for actual item position within page
           const itemPositionWithinPage = index - itemIndex;
           for (let itemIndexInPage = 0; itemIndexInPage < itemPositionWithinPage; ++itemIndexInPage) {
@@ -214,11 +227,22 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           }
           const scrollBottom = scrollTop + measureItem(index);
 
-          const scrollRect = _measureScrollRect(this._scrollElement);
-          const scrollWindow = {
-            top: this._scrollElement.scrollTop,
-            bottom: this._scrollElement.scrollTop + scrollRect.height
-          };
+          // If scrollToMode is set to something other than auto, we always want to
+          // scroll the item into a specific position on the page.
+          switch (scrollToMode) {
+            case ScrollToMode.top:
+              this._scrollElement.scrollTop = scrollTop;
+              return;
+            case ScrollToMode.bottom:
+              this._scrollElement.scrollTop = scrollBottom - scrollRect.height;
+              return;
+            case ScrollToMode.center:
+              this._scrollElement.scrollTop = (scrollTop + scrollBottom - scrollRect.height) / 2;
+              return;
+            case ScrollToMode.auto:
+            default:
+              break;
+          }
 
           const itemIsFullyVisible = scrollTop >= scrollWindow.top && scrollBottom <= scrollWindow.bottom;
           if (itemIsFullyVisible) {
@@ -230,42 +254,42 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           const itemIsPartiallyBelow = scrollBottom > scrollWindow.bottom;
 
           if (itemIsPartiallyAbove) {
-            // We will just scroll to 'scrollTop'
-            //  ______
-            // |Item  |   - scrollTop
-            // |  ____|_
-            // |_|____| | - scrollWindow.top
-            //   |      |
-            //   |______|
+            //  We will just scroll to 'scrollTop'
+            //  .------.   - scrollTop
+            //  |Item  |
+            //  | .----|-. - scrollWindow.top
+            //  '------' |
+            //    |      |
+            //    '------'
           } else if (itemIsPartiallyBelow) {
-            // Adjust scrollTop position to just bring in the element
-            //  ______   - scrollTop
+            //  Adjust scrollTop position to just bring in the element
+            // .------.  - scrollTop
             // |      |
-            // |  ____|_  - scrollWindow.bottom
-            // |_|____| |
+            // | .------.
+            // '-|----' | - scrollWindow.bottom
             //   | Item |
-            //   |______| - scrollBottom
-            scrollTop = this._scrollElement.scrollTop + (scrollBottom - scrollWindow.bottom);
+            //   '------' - scrollBottom
+            scrollTop = scrollBottom - scrollRect.height;
           }
         }
 
         this._scrollElement.scrollTop = scrollTop;
-        break;
+        return;
       }
 
       scrollTop += pageHeight;
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
 
     this._updatePages();
     this._measureVersion++;
-    this._scrollElement = findScrollableParent(this._root.value) as HTMLElement;
+    this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
 
     this._events.on(window, 'resize', this._onAsyncResize);
-    if (this._root.value) {
-      this._events.on(this._root.value, 'focus', this._onFocus, true);
+    if (this._root.current) {
+      this._events.on(this._root.current, 'focus', this._onFocus, true);
     }
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
@@ -273,7 +297,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public componentWillReceiveProps(newProps: IListProps) {
+  public componentWillReceiveProps(newProps: IListProps): void {
     if (newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||
       newProps.startIndex !== this.props.startIndex) {
@@ -289,7 +313,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
+  public shouldComponentUpdate(newProps: IListProps, newState: IListState): boolean {
     const { pages: oldPages } = this.state;
     const { pages: newPages } = newState;
     let shouldComponentUpdate = false;
@@ -318,7 +342,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     return shouldComponentUpdate;
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     this._invalidatePageCache();
     // Ensure that when the list is force updated we update the pages first before render.
     this._updateRenderRects(this.props, true);
@@ -328,7 +352,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     super.forceUpdate();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       role
@@ -350,7 +374,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         role={ (role === undefined) ? 'list' : role }
         className={ css('ms-List', className) }
       >
-        <div ref={ this._surface } className={ css('ms-List-surface') } role='presentation'>
+        <div
+          ref={ this._surface }
+          className={ css('ms-List-surface') }
+          role='presentation'
+        >
           { pageElements }
         </div>
       </div>
@@ -367,7 +395,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   /**
    * when props.items change or forceUpdate called, throw away cached pages
    */
-  private _invalidatePageCache() {
+  private _invalidatePageCache(): void {
     this._pageCache = {};
   }
 
@@ -473,10 +501,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Track the last item index focused so that we ensure we keep it rendered. */
-  private _onFocus(ev: any) {
+  private _onFocus(ev: any): void {
     let target = ev.target as HTMLElement;
 
-    while (target !== this._surface.value) {
+    while (target !== this._surface.current) {
       const indexString = target.getAttribute('data-list-index');
 
       if (indexString) {
@@ -492,7 +520,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * Called synchronously to reset the required render range to 0 on scrolling. After async scroll has executed,
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
-  private _onScroll() {
+  private _onScroll(): void {
     if (!this.state.isScrolling) {
       this.setState({ isScrolling: true });
     }
@@ -500,7 +528,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._onScrollingDone();
   }
 
-  private _resetRequiredWindows() {
+  private _resetRequiredWindows(): void {
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
   }
@@ -508,7 +536,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   /**
    * Debounced method to asynchronously update the visible region on a scroll event.
    */
-  private _onAsyncScroll() {
+  private _onAsyncScroll(): void {
     this._updateRenderRects();
 
     // Only update pages when the visible rect falls outside of the materialized rect.
@@ -523,7 +551,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * This is an async debounced method that will try and increment the windows we render. If we can increment
    * either, we increase the amount we render and re-evaluate.
    */
-  private _onAsyncIdle() {
+  private _onAsyncIdle(): void {
     const { renderedWindowsAhead, renderedWindowsBehind } = this.props;
     const {
       _requiredWindowsAhead: requiredWindowsAhead,
@@ -552,15 +580,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * Function to call when the list is done scrolling.
    * This function is debounced.
    */
-  private _onScrollingDone() {
+  private _onScrollingDone(): void {
     this.setState({ isScrolling: false });
   }
 
-  private _onAsyncResize() {
+  private _onAsyncResize(): void {
     this.forceUpdate();
   }
 
-  private _updatePages(props: IListProps = this.props) {
+  private _updatePages(props: IListProps = this.props): void {
     // console.log('updating pages');
 
     if (!this._requiredRect) {
@@ -604,7 +632,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * @param newPages The new pages
    * @param props The props to use
    */
-  private _notifyPageChanges(oldPages: IPage[], newPages: IPage[], props: IListProps = this.props) {
+  private _notifyPageChanges(oldPages: IPage[], newPages: IPage[], props: IListProps = this.props): void {
     const {
       onPageAdded,
       onPageRemoved
@@ -639,7 +667,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  private _updatePageMeasurements(pages: IPage[]) {
+  private _updatePageMeasurements(pages: IPage[]): boolean {
     let heightChanged = false;
 
     // when not in virtualize mode, we render all the items without page measurement
@@ -699,7 +727,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Called when a page has been added to the DOM. */
-  private _onPageAdded(page: IPage) {
+  private _onPageAdded(page: IPage): void {
     const { onPageAdded } = this.props;
 
     // console.log('page added', page.startIndex, this.state.pages.map(page => page.key).join(', '));
@@ -710,7 +738,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Called when a page has been removed from the DOM. */
-  private _onPageRemoved(page: IPage) {
+  private _onPageRemoved(page: IPage): void {
     const { onPageRemoved } = this.props;
 
     // console.log('  --- page removed', page.startIndex, this.state.pages.map(page => page.key).join(', '));
@@ -910,7 +938,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
-  private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
+  private _updateRenderRects(props?: IListProps, forceUpdate?: boolean): void {
     props = props || this.props;
     const { renderedWindowsAhead, renderedWindowsBehind } = props;
     const { pages } = this.state;
@@ -927,7 +955,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // This needs to be called to recalculate when new pages should be loaded.
     // We check to see how far we've scrolled and if it's further than a third of a page we run it again.
     if (
-      this._surface.value &&
+      this._surface.current &&
       (forceUpdate ||
         !pages ||
         !this._surfaceRect ||
@@ -935,7 +963,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         scrollHeight !== this._scrollHeight ||
         Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3)
     ) {
-      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.value);
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.current);
       this._scrollTop = scrollTop;
     }
 

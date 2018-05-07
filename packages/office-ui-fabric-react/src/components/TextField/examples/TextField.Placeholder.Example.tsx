@@ -3,7 +3,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
 export class TextFieldPlaceholderExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='docs-TextFieldExample'>
         <TextField

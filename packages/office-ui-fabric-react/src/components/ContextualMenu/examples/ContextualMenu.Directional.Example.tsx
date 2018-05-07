@@ -49,7 +49,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       beakWidth,
       directionalHint,

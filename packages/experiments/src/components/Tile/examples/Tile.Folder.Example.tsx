@@ -8,10 +8,14 @@ import {
   CommentsSignal,
   SharedSignal
 } from '../../signals/Signals';
-import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../../FolderCover/FolderCover';
-import { FolderCoverType } from '../../FolderCover/FolderCover.types';
-import { lorem } from '@uifabric/example-app-base';
-import { css, ISize, fitContentToBounds } from '../../../Utilities';
+import {
+  FolderCover,
+  getFolderCoverLayout,
+  renderFolderCoverWithLayout,
+  FolderCoverType
+} from '@uifabric/experiments/lib/FolderCover';
+import { lorem } from '@uifabric/example-app-base/lib/utilities/data';
+import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any

@@ -24,7 +24,7 @@ describe('Layer', () => {
 
       public context: any;
 
-      public render() {
+      public render(): JSX.Element {
         return (
           <div id='child'>{ this.context.foo }</div>
         );
@@ -42,7 +42,7 @@ describe('Layer', () => {
         };
       }
 
-      public render() {
+      public render(): JSX.Element {
         return (
           <div id='parent'>
             <Layer hostId='foo'>
@@ -55,7 +55,7 @@ describe('Layer', () => {
 
     class App extends React.Component<{}, {}> {
 
-      public render() {
+      public render(): JSX.Element {
         return (
           <div id='app'>
             <Parent />

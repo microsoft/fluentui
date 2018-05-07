@@ -25,7 +25,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isChecked } = this.state;
 
     const styles: ICheckboxStyles = {
@@ -91,7 +91,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     );
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
+  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
     console.log(`The option has been changed to ${isChecked}.`);
   }
 
@@ -99,7 +99,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     this.setState({ isChecked: checked! });
   }
 
-  private _renderPersonaLabel(props: ICheckboxProps) {
+  private _renderPersonaLabel(props: ICheckboxProps): JSX.Element {
     const DEFAULT_IMAGE_URL = '/_layouts/15/userphoto.aspx?size=S&accountname=';
     return <Persona primaryText={ props.label } imageUrl={ DEFAULT_IMAGE_URL } size={ PersonaSize.size32 } />;
   }

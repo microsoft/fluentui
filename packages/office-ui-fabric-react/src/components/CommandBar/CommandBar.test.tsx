@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
@@ -76,7 +74,7 @@ describe('CommandBar', () => {
         items={ items }
       />
     ) as React.Component<CommandBar, {}>;
-    document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
+    document.body.appendChild(ReactDOM.findDOMNode(renderedContent) as Element);
 
     const [item1, item2, item3] = ['.item1', '.item2', '.item3'].map(i => document.querySelector(i)!.children[0]);
     expect(item1.getAttribute('aria-setsize')).toBe('3');
@@ -107,7 +105,7 @@ describe('CommandBar', () => {
         items={ items }
       />
     ) as React.Component<CommandBar, {}>;
-    document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
+    document.body.appendChild(ReactDOM.findDOMNode(renderedContent) as Element);
 
     const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
@@ -137,7 +135,7 @@ describe('CommandBar', () => {
         items={ items }
       />
     ) as React.Component<CommandBar, {}>;
-    document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
+    document.body.appendChild(ReactDOM.findDOMNode(renderedContent) as Element);
 
     const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);

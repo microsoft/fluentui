@@ -16,7 +16,7 @@ import {
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react';
-import { Shimmer } from '../Shimmer';
+import { Shimmer } from '@uifabric/experiments/lib/Shimmer';
 import './Shimmer.Example.scss';
 
 export interface IItem {

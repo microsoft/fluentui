@@ -7,7 +7,7 @@ import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
-  public render() {
+  public render(): JSX.Element {
     const { actions, views } = this.props;
 
     return (

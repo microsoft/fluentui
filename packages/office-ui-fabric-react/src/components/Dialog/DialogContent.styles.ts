@@ -4,7 +4,20 @@ import {
 } from './DialogContent.types';
 import {
   FontWeights,
+  getGlobalClassNames,
 } from '../../Styling';
+
+const GlobalClassNames = {
+  contentLgHeader: 'ms-Dialog-lgHeader',
+  close: 'ms-Dialog--close',
+  subText: 'ms-Dialog-subText',
+  header: 'ms-Dialog-header',
+  headerLg: 'ms-Dialog--lgHeader',
+  button: 'ms-Dialog-button ms-Dialog-button--close',
+  inner: 'ms-Dialog-inner',
+  content: 'ms-Dialog-content',
+  title: 'ms-Dialog-title',
+};
 
 export const getStyles = (
   props: IDialogContentStyleProps
@@ -20,10 +33,12 @@ export const getStyles = (
 
   const { palette, fonts } = theme;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return ({
     content: [
-      isLargeHeader && 'ms-Dialog-lgHeader',
-      isClose && 'ms-Dialog--close',
+      isLargeHeader && classNames.contentLgHeader,
+      isClose && classNames.close,
       {
         flexGrow: 1
       },
@@ -31,7 +46,7 @@ export const getStyles = (
     ],
 
     subText: [
-      'ms-Dialog-subText',
+      classNames.subText,
       isLargeHeader ? fonts.medium : fonts.small,
       {
         margin: '0 0 20px 0',
@@ -44,24 +59,23 @@ export const getStyles = (
     ],
 
     header: [
-      'ms-Dialog-header',
+      classNames.header,
       {
         position: 'relative',
         width: '100%',
         boxSizing: 'border-box',
       },
       isLargeHeader && [
-        'ms-Dialog--lgHeader',
+        classNames.headerLg,
         {
           backgroundColor: palette.themePrimary,
         }
       ],
-      isClose && 'ms-Dialog--close',
+      isClose && classNames.close,
     ],
 
     button: [
-      'ms-Dialog-button',
-      'ms-Dialog-button--close',
+      classNames.button,
       hidden && {
         selectors: {
           '.ms-Icon.ms-Icon--Cancel': {
@@ -73,14 +87,14 @@ export const getStyles = (
     ],
 
     inner: [
-      'ms-Dialog-inner',
+      classNames.inner,
       {
         padding: isMultiline ? '0 20px 20px' : '0 28px 20px',
       }
     ],
 
     innerContent: [
-      'ms-Dialog-content',
+      classNames.content,
       {
         position: 'relative',
         width: '100%',
@@ -101,7 +115,7 @@ export const getStyles = (
     ],
 
     title: [
-      'ms-Dialog-title',
+      classNames.title,
       {
         color: palette.neutralPrimary,
         margin: '0',

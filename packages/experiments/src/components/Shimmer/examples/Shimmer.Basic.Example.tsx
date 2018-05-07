@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {
   Shimmer,
+  getRenderedElements,
   ShimmerElementType as ElemType,
   ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'experiments/lib/Shimmer';
+} from '@uifabric/experiments/lib/Shimmer';
+import './Shimmer.Example.scss';
 
 export class ShimmerBasicExample extends React.Component<{}, {}> {
 
@@ -19,10 +21,10 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         Generic Shimmer with no elements provided.
         <Shimmer />
         <Shimmer
-          width={ 75 }
+          widthInPercentage={ 75 }
         />
         <Shimmer
-          width={ 50 }
+          widthInPercentage={ 50 }
         />
         Custom Shimmer with elements provided.
         <Shimmer
@@ -47,7 +49,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
           ] }
         />
         <Shimmer
-          width={ 70 }
+          widthInPercentage={ 70 }
           lineElements={ [
             { type: ElemType.circle, height: 24 },
             { type: ElemType.gap, widthInPercentage: 2 },
@@ -76,6 +78,61 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 10, verticalAlign: ElemVerticalAlign.bottom }
           ] }
         />
+        Split line examples.
+        <div className='shimmerBasicExample-wrapper'>
+          <Shimmer
+            isBaseStyle={ true }
+            widthInPixel={ 350 }
+          >
+            { getRenderedElements([
+              { type: ElemType.line, widthInPixel: 40, height: 40 },
+              { type: ElemType.gap, widthInPixel: 10, height: 40 }
+            ], 40) }
+            <div
+              // tslint:disable-next-line:jsx-ban-props
+              style={
+                {
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  width: '300px'
+                }
+              }
+            >
+              { getRenderedElements([
+                { type: ElemType.line, widthInPixel: 300, height: 10 },
+                { type: ElemType.line, widthInPixel: 200, height: 10 },
+                { type: ElemType.gap, widthInPixel: 100, height: 20 }
+              ], 20) }
+            </div>
+          </Shimmer>
+        </div>
+        <div className='shimmerBasicExample-wrapper'>
+          <Shimmer
+            isBaseStyle={ true }
+            widthInPixel={ 550 }
+          >
+            { getRenderedElements([
+              { type: ElemType.circle, height: 40 },
+              { type: ElemType.gap, widthInPixel: 10, height: 40 }
+            ], 40) }
+            <div
+              // tslint:disable-next-line:jsx-ban-props
+              style={
+                {
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  width: '500px'
+                }
+              }
+            >
+              { getRenderedElements([
+                { type: ElemType.line, widthInPixel: 400, height: 10 },
+                { type: ElemType.gap, widthInPixel: 100, height: 20 },
+                { type: ElemType.line, widthInPixel: 500, height: 10 }
+              ], 20) }
+            </div>
+          </Shimmer>
+        </div>
       </div>
     );
   }

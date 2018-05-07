@@ -19,7 +19,11 @@ exports[`CommandBar renders commands correctly 1`] = `
     }
   >
     <div
+      aria-describedby={undefined}
+      aria-label={undefined}
+      aria-labelledby={undefined}
       className=
+          ms-FocusZone
           ms-CommandBar
           TestClassName
           {
@@ -31,24 +35,21 @@ exports[`CommandBar renders commands correctly 1`] = `
             padding-right: 16px;
             padding-top: 0;
           }
+      data-focuszone-id="FocusZone0"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="menubar"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className=
-            ms-FocusZone
             ms-OverflowSet
             {
               align-items: stretch;
               display: flex;
               flex-grow: 1;
             }
-        data-focuszone-id="FocusZone0"
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="menubar"
+        role="presentation"
       >
         <div
           className="ms-OverflowSet-item"
@@ -90,7 +91,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -101,7 +102,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -202,7 +203,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                 &::-moz-focus-inner {
                   border: 0;
                 }
-                .ms-Fabric.is-focusVisible &:focus:after {
+                .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: 0px;
                   content: "";
@@ -213,7 +214,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric.is-focusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -276,22 +277,14 @@ exports[`CommandBar renders commands correctly 1`] = `
         </div>
       </div>
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className=
-            ms-FocusZone
             ms-OverflowSet
             {
               align-items: stretch;
               display: flex;
               flex-shrink: 0;
             }
-        data-focuszone-id="FocusZone7"
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="menubar"
+        role="presentation"
       />
     </div>
   </div>

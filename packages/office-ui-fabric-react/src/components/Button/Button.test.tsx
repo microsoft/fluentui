@@ -29,6 +29,16 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a DefaultButton with a keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const component = renderer.create(<DefaultButton text='Button' keytipProps={ keytipProps } />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders CommandBarButton correctly', () => {
     const component = renderer.create(
       <CommandBarButton
@@ -76,7 +86,7 @@ describe('Button', () => {
   describe('DefaultButton', () => {
     function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
       const component = ReactTestUtils.renderIntoDocument(element);
-      const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
       return renderedDOM as HTMLElement;
     }
 
@@ -84,7 +94,7 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
@@ -94,7 +104,7 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton onClick={ onClick }>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
@@ -102,7 +112,7 @@ describe('Button', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('A');
     });
 
@@ -259,7 +269,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).not.toEqual('DIV');
     });
 
@@ -287,7 +297,7 @@ describe('Button', () => {
           } }
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM, { which: KeyCodes.enter });
 
@@ -320,7 +330,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const primaryButtonDOM: HTMLDivElement = renderedDOM.getElementsByTagName('div')[0] as HTMLDivElement;
 
       ReactTestUtils.Simulate.keyDown(primaryButtonDOM, { which: KeyCodes.enter });
@@ -351,7 +361,7 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('DIV');
     });
 
@@ -378,9 +388,43 @@ describe('Button', () => {
           } }
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
+      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+    });
+
+    it('Touch Start on primary button of SplitButton expands menu', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          split={ true }
+          onClick={ alertClicked }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const primaryButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
+
+      // in a normal scenario, when we do a touchstart we would also cause a
+      // click event to fire. This doesn't happen in the simulator so we're
+      // manually adding this in.
+      ReactTestUtils.Simulate.touchStart(primaryButtonDOM);
+      ReactTestUtils.Simulate.click(primaryButtonDOM);
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
@@ -406,7 +450,7 @@ describe('Button', () => {
           } }
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM,
         {
@@ -437,7 +481,7 @@ describe('Button', () => {
           } }
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM,
         {

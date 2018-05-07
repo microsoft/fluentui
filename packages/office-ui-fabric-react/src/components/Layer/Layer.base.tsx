@@ -73,11 +73,11 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.componentDidUpdate();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._removeLayerElement();
 
     if (this.props.hostId) {
@@ -88,7 +88,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     const host = this._getHost();
 
     const { className, getStyles, theme } = this.props;
@@ -108,7 +108,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        const rootElement = this._rootElement.value;
+        const rootElement = this._rootElement.current;
         const doc = getDocument(rootElement);
 
         if (!doc || !rootElement) {
@@ -116,7 +116,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
         }
 
         this._layerElement = doc.createElement('div');
-        this._layerElement.className = classNames.root;
+        this._layerElement.className = classNames.root!;
 
         host.appendChild(this._layerElement);
         setVirtualParent(this._layerElement, rootElement);
@@ -146,7 +146,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <span
         className='ms-Layer'
@@ -155,7 +155,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     );
   }
 
-  private _removeLayerElement() {
+  private _removeLayerElement(): void {
     if (this._layerElement) {
       this.props.onLayerWillUnmount!();
 
@@ -171,7 +171,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   private _getHost(): Node | undefined {
     const { hostId } = this.props;
-    const doc = getDocument(this._rootElement.value);
+    const doc = getDocument(this._rootElement.current);
 
     if (!doc) {
       return undefined;

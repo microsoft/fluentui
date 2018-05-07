@@ -1,6 +1,21 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Sun, 25 Mar 2018 03:08:03 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+
+## 0.6.2
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version
+
+## 0.6.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
 
 ## 0.6.0
 Sun, 25 Mar 2018 03:08:03 GMT

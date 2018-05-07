@@ -3,6 +3,8 @@ import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
 import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
+import { initializeFocusRects } from './initializeFocusRects';
+import { initializeDir } from './initializeDir';
 
 /**
  * BaseProps interface.
@@ -49,6 +51,10 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
   // tslint:disable-next-line:no-any
   constructor(props: P, context?: any) {
     super(props, context);
+
+    // Ensure basic assumptions about the environment.
+    initializeFocusRects();
+    initializeDir();
 
     this._shouldUpdateComponentRef = true;
 
