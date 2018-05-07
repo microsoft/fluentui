@@ -3,7 +3,7 @@
  * and the desired shade enum, this will return an appropriate shade of that color.
  */
 import {
-  IHSL,
+  IHSV,
   IColor,
   MAX_COLOR_RGBA
 } from './colors';
@@ -14,14 +14,14 @@ import { assign } from '../../Utilities';
 // Strongen: opposite of soften
 
 // Luminance multiplier constants for generating shades of a given color
-const WhiteShadeTableBG = [.973, .957, .918, .855, .816, .784, .651, .463]; // white bg
-const BlackTintTableBG = [.463, .55, .651, .784, .816, .855, .918, .957]; // black bg
-const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // white fg
-const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black fg
-const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light (strongen all)
-const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark (soften all)
-const ColorTintTable = [.07, .18, .436, .751, .956]; // default soften
-const ColorShadeTable = [.90, .64, .550]; // default strongen
+const WhiteShadeTableBG = [.027, .043, .082, .145, .184, .216, .349, .537]; // white bg
+const BlackTintTableBG = [.537, .45, .349, .216, .184, .145, .082, .043]; // black bg
+const WhiteShadeTable = [.537, .349, .216, .184, .145, .082, .043, .027]; // white fg
+const BlackTintTable = [.537, .45, .349, .216, .184, .145, .082, .043]; // black fg
+const LumTintTable = [.88, .77, .66, .55, .44, .33, .22, .11]; // light (strongen all)
+const LumShadeTable = [.11, .22, .33, .44, .55, .66, .77, .88]; // dark (soften all)
+const ColorTintTable = [.960, .840, .700, .400, .120]; // default soften
+const ColorShadeTable = [.100, .240, .440]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
 const LowLuminanceThreshold = 0.2;
@@ -58,20 +58,24 @@ function _isWhite(color: IColor): boolean {
   return color.r === MAX_COLOR_RGBA && color.g === MAX_COLOR_RGBA && color.b === MAX_COLOR_RGBA;
 }
 
-function _darken(hsl: IHSL, factor: number): IHSL {
+function _darken(hsv: IHSV, factor: number): IHSV {
   return {
-    h: hsl.h,
-    s: hsl.s,
-    l: hsl.l * factor
+    h: hsv.h,
+    s: hsv.s,
+    v: _clamp(hsv.v - (hsv.v * factor), 0, 100)
   };
 }
 
-function _lighten(hsl: IHSL, factor: number): IHSL {
+function _lighten(hsv: IHSV, factor: number): IHSV {
   return {
-    h: hsl.h,
-    s: hsl.s,
-    l: hsl.l * factor + (100 * (1 - factor))
+    h: hsv.h,
+    s: _clamp(hsv.s - (hsv.s * factor), 0, 100),
+    v: _clamp(hsv.v + ((100 - hsv.v) * factor), 0, 100)
   };
+}
+
+function _clamp(n: number, min: number, max: number) {
+  return n; // Math.max(min, Math.min(n, max));
 }
 
 export function isDark(color: IColor): boolean {
@@ -105,32 +109,32 @@ export function getShade(color: IColor, shade: Shade, isInverted: boolean = fals
     return color;
   }
 
-  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  const hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  let hsv = { h: color.h, s: color.s, v: color.v };
   const tableIndex = shade - 1;
   let _soften = _lighten;
   let _strongen = _darken;
   if (isInverted) {
-    // tableIndex = LumTintTable.length - 1 - tableIndex;
     _soften = _darken;
     _strongen = _lighten;
   }
   if (_isWhite(color)) { // white
-    hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
+    hsv = _darken(hsv, WhiteShadeTable[tableIndex]);
   } else if (_isBlack(color)) { // black
-    hsl = _lighten(hsl, BlackTintTable[tableIndex]);
+    hsv = _lighten(hsv, BlackTintTable[tableIndex]);
   } else if (hsl.l / 100 > HighLuminanceThreshold) { // light
-    hsl = _strongen(hsl, LumShadeTable[tableIndex]);
+    hsv = _strongen(hsv, LumShadeTable[tableIndex]);
   } else if (hsl.l / 100 < LowLuminanceThreshold) { // dark
-    hsl = _soften(hsl, LumTintTable[tableIndex]);
+    hsv = _soften(hsv, LumTintTable[tableIndex]);
   } else { // default
     if (tableIndex < ColorTintTable.length) {
-      hsl = _soften(hsl, ColorTintTable[tableIndex]);
+      hsv = _soften(hsv, ColorTintTable[tableIndex]);
     } else {
-      hsl = _strongen(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
+      hsv = _strongen(hsv, ColorShadeTable[tableIndex - ColorTintTable.length]);
     }
   }
 
-  return Colors.getColorFromRGBA(assign(Colors.hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
+  return Colors.getColorFromRGBA(assign(Colors.hsv2rgb(hsv.h, hsv.s, hsv.v), { a: color.a }));
 }
 
 // Background shades/tints are generated differently. The provided color will be guaranteed
@@ -146,15 +150,15 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted: bool
     return color;
   }
 
-  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  let hsv = { h: color.h, s: color.s, v: color.v };
   const tableIndex = shade - 1;
   if (!isInverted) { // lightish
-    hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
+    hsv = _darken(hsv, WhiteShadeTableBG[tableIndex]);
   } else { // default: if (hsl.l / 100 < .5) { // darkish
-    hsl = _lighten(hsl, BlackTintTableBG[BlackTintTable.length - 1 - tableIndex]);
+    hsv = _lighten(hsv, BlackTintTableBG[BlackTintTable.length - 1 - tableIndex]);
   }
 
-  return Colors.getColorFromRGBA(assign(Colors.hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
+  return Colors.getColorFromRGBA(assign(Colors.hsv2rgb(hsv.h, hsv.s, hsv.v), { a: color.a }));
 }
 
 /* Calculates the contrast ratio between two colors. Used for verifying

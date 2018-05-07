@@ -1,7 +1,8 @@
 import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
-  concatStyleSets
+  concatStyleSets,
+  HighContrastSelector
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -26,6 +27,12 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       color: theme.palette.themePrimary,
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'Highlight',
+          color: 'Highlight'
+        }
+      }
     },
 
     iconHovered: {

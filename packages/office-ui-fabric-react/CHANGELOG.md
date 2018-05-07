@@ -1,6 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 May 2018 10:23:32 GMT and should not be manually modified.
+This log was last generated on Mon, 07 May 2018 10:28:20 GMT and should not be manually modified.
+
+## 5.96.1
+Mon, 07 May 2018 10:28:20 GMT
+
+### Patches
+
+- High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle.
+- Keytips: Minor update to improve behavior
+- Remove keytip positioning workaround since Callout positioning was fixed
+- In the TextField component, The code setting the 'errorMessage' state to an empty string in the _onInputChange member function was removed do to causing the message to flicker.
+
+## 5.96.0
+Fri, 04 May 2018 15:58:39 GMT
+
+### Minor changes
+
+- ScrollablePane: Optimizations on how component functions.  Change positioning from inheriting height/maxHeight of parent element to use position: absolute
+- Icon: code has been cleaned up, memoizeFunction usage has been removed.
+- Rating: Hover states in regular and high contrast mode.
+
+### Patches
+
+- Fix ensureSuggestionModel null ref, get rid of unneeded FocusZone in BaseExtendedPicker, remove requirement in BaseExtendedPicker that suggestions are shown when input is focused (only clicked)
+- Positioning: Fix cover positioning so it returns the correct edge to handle menu shrinkage
+- Fix TooltipHost mutation of calloutProps.
+- SpinButton: Remove browser autocomplete
+- Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. 
+
+## 5.95.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- SplitButton/ComboBox: added onTouch support for menu expansion.
+- Add Keytip, KeytipLayer, and KeytipData component
+
+### Patches
+
+- If firstFocus on HoverCard is set then propagate it to setInitialFocus in ExpandingCard. This enables focusing the card on render.
+- TextField can now render the numeric value 0
+
+## 5.94.0
+Tue, 01 May 2018 19:26:35 GMT
+
+### Minor changes
+
+- Theme Generator: use HSV for generating shades/tints
 
 ## 5.93.0
 Tue, 01 May 2018 10:23:32 GMT

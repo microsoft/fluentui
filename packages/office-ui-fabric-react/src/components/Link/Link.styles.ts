@@ -1,6 +1,7 @@
 import {
   getFocusStyle,
   getGlobalClassNames,
+  HighContrastSelector
 } from '../../Styling';
 import {
   ILinkStyleProps,
@@ -58,7 +59,12 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            color: semanticColors.linkHovered
+            color: semanticColors.linkHovered,
+            selectors: {
+              [HighContrastSelector]: {
+                textDecoration: 'underline'
+              }
+            }
           },
           '&:focus': {
             color: semanticColors.link
