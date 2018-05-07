@@ -86,7 +86,7 @@ describe('Selection', () => {
     expect(selection.isAllSelected()).toEqual(true);
   });
 
-  it("doesn't react when suppressing change events", () => {
+  it('doesn\'t react when suppressing change events', () => {
     let changed = false;
     const changeHandler = () => {
       changed = true;
@@ -94,10 +94,10 @@ describe('Selection', () => {
     const selection = new Selection({ onSelectionChanged: changeHandler });
     selection.setChangeEvents(false, true);
     selection.setItems(setA);
-    selection.setKeySelected("a", true, false);
+    selection.setKeySelected('a', true, false);
     expect(changed).toEqual(false);
     selection.setChangeEvents(true, false);
     expect(changed).toEqual(true);
-  })
+  });
 
 });

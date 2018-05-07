@@ -200,7 +200,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                 /> }
 
                 { isYearPickerVisible && <CalendarYear
-                  selectedYear={ navigatedDate ? navigatedDate.getFullYear() : undefined }
+                  navigatedDate={ navigatedDate }
+                  selectedDate={ selectedDate }
                   minYear={ minDate ? minDate.getFullYear() : undefined }
                   maxYear={ maxDate ? maxDate.getFullYear() : undefined }
                   onHeaderSelect={ this._onYearHeaderSelect }
