@@ -7,11 +7,9 @@ import {
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
 function getBeakStyle(beakWidth?: number): IRawStyle {
-  let beakStyleWidth = beakWidth;
-
   return {
-    height: beakStyleWidth,
-    width: beakStyleWidth
+    height: beakWidth,
+    width: beakWidth
   };
 }
 
