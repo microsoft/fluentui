@@ -37,7 +37,7 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox without animation correctly', () => {
-    const component = renderer.create(<SearchBox animateIcon={ false } />);
+    const component = renderer.create(<SearchBox disableAnimation={ true } />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

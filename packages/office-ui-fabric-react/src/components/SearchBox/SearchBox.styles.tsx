@@ -6,7 +6,7 @@ import {
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
-  const { theme, underlined, disabled, hasFocus, className, hasInput, animateIcon } = props;
+  const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors } = theme;
 
   return {
@@ -97,7 +97,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       disabled && {
         color: palette.neutralTertiary
       },
-      animateIcon && {
+      !disableAnimation && {
         transition: `width ${AnimationVariables.durationValue1}`
       }
     ],
@@ -109,7 +109,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       hasFocus && {
         opacity: 0
       },
-      animateIcon && {
+      !disableAnimation && {
         transition: `opacity ${AnimationVariables.durationValue1} 0s`
       }
     ],
