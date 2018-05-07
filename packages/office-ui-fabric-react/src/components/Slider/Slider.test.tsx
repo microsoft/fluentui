@@ -4,20 +4,21 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { Slider } from './Slider';
+import { SliderBase } from './Slider.base';
+import { getStyles } from './Slider.styles';
 import { ISlider } from './Slider.types';
 
 describe('Slider', () => {
 
   it('renders Slider correctly', () => {
-    const component = renderer.create(<Slider />);
+    const component = renderer.create(<SliderBase getStyles={ getStyles } />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a slider', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <Slider label='slider' />
+      <SliderBase getStyles={ getStyles } label='slider' />
     );
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
@@ -31,7 +32,8 @@ describe('Slider', () => {
       changedValue = val;
     };
     const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
-      <Slider
+      <SliderBase
+        getStyles={ getStyles }
         onChange={ onChange }
       />
     );
@@ -70,7 +72,7 @@ describe('Slider', () => {
 
   it('has type=button on all buttons', () => {
     const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
-      <Slider />
+      <SliderBase getStyles={ getStyles } />
     );
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
@@ -88,14 +90,14 @@ describe('Slider', () => {
 
     ReactTestUtils.renderIntoDocument(
       // tslint:disable-next-line:jsx-no-lambda
-      <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
+      <SliderBase getStyles={ getStyles } label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
     expect(slider!.value).toEqual(12);
   });
 
   it('renders correct aria-valuetext', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <Slider />
+      <SliderBase getStyles={ getStyles } />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     let button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
@@ -108,7 +110,8 @@ describe('Slider', () => {
     const getTextValue = (value: number) => values[value];
 
     component = ReactTestUtils.renderIntoDocument(
-      <Slider
+      <SliderBase
+        getStyles={ getStyles }
         value={ selected }
         ariaValueText={ getTextValue }
       />
