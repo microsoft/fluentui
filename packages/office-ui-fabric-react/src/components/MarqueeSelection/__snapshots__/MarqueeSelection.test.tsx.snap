@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
+<div
+  className=
+
+      {
+        cursor: default;
+        position: relative;
+      }
+/>
+`;
