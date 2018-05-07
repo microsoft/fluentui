@@ -169,7 +169,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _onKeyDown = (callback: () => void, ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+    if (ev.which === KeyCodes.enter) {
       callback();
     }
   }
