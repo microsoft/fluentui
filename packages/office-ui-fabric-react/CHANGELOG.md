@@ -1,6 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+This log was last generated on Mon, 07 May 2018 10:28:20 GMT and should not be manually modified.
+
+## 5.96.1
+Mon, 07 May 2018 10:28:20 GMT
+
+### Patches
+
+- High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle.
+- Keytips: Minor update to improve behavior
+- Remove keytip positioning workaround since Callout positioning was fixed
+- In the TextField component, The code setting the 'errorMessage' state to an empty string in the _onInputChange member function was removed do to causing the message to flicker.
 
 ## 5.96.0
 Fri, 04 May 2018 15:58:39 GMT
