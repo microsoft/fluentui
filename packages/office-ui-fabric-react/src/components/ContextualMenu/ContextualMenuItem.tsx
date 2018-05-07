@@ -89,9 +89,9 @@ export class ContextualMenuItem extends BaseComponent<IContextualMenuItemProps, 
   public openSubMenu = (): void => {
     const { item, openSubMenu, getSubmenuTarget } = this.props;
     if (getSubmenuTarget) {
-      const containerElement = getSubmenuTarget();
-      if (hasSubmenu(item) && openSubMenu && containerElement) {
-        openSubMenu(item, containerElement);
+      const submenuTarget = getSubmenuTarget();
+      if (hasSubmenu(item) && openSubMenu && submenuTarget) {
+        openSubMenu(item, submenuTarget);
       }
     }
   }
@@ -106,7 +106,7 @@ export class ContextualMenuItem extends BaseComponent<IContextualMenuItemProps, 
   public dismissMenu = (dismissAll?: boolean): void => {
     const { dismissMenu } = this.props;
     if (dismissMenu) {
-      dismissMenu(dismissAll);
+      dismissMenu(undefined /* ev */, dismissAll);
     }
   }
 }

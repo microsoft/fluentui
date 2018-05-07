@@ -482,7 +482,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     const { contextualMenuItemAs } = this.props;
-    const dismissMenu = this.dismiss.bind(this, undefined);
     const { expandedMenuItemKey } = this.state;
     return (
       <ContextualMenuAnchor
@@ -505,7 +504,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey={ expandedMenuItemKey }
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
-        dismissMenu={ dismissMenu }
+        dismissMenu={ this.dismiss }
       />
     );
   }
@@ -519,7 +518,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean) {
     const { contextualMenuItemAs } = this.props;
-    const dismissMenu = this.dismiss.bind(this, undefined);
     const { expandedMenuItemKey } = this.state;
 
     return (
@@ -544,7 +542,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey={ expandedMenuItemKey }
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
-        dismissMenu={ dismissMenu }
+        dismissMenu={ this.dismiss }
       />
     );
   }
@@ -558,7 +556,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean): JSX.Element {
     const { contextualMenuItemAs } = this.props;
-    const dismissMenu = this.dismiss.bind(this, undefined);
 
     return (
       <ContextualMenuSplitButton
@@ -580,7 +577,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onItemKeyDown={ this._onItemKeyDown }
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
-        dismissMenu={ dismissMenu }
+        dismissMenu={ this.dismiss }
         onTap={ this._onPointerAndTouchEvent }
       />
     );
