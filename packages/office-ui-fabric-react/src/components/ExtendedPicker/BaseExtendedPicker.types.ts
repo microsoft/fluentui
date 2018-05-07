@@ -98,7 +98,7 @@ export interface IBaseExtendedPickerProps<T> {
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
 
   /**
-   * Deprecated at 5.96.0. Use defaultSelectedItems in selectedItemsListProps instead.
+   * Deprecated at 5.96.0. Use defaultSelectedItems or selectedItems in selectedItemsListProps instead.
    * @deprecated
    */
   selectedItems?: T[];
