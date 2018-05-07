@@ -15,7 +15,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
@@ -114,6 +114,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default true
    */
   shouldFocusOnMount?: boolean;
+
+  /**
+   * Whether to focus on the contextual menu container (as opposed to the first menu item).
+   * @default null
+   */
+  shouldFocusOnContainer?: boolean;
 
   /**
    * Callback when the ContextualMenu tries to close. If dismissAll is true then all
@@ -231,6 +237,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 }
 
 export interface IContextualMenuItem {
+  /**
+   * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
+   */
+  componentRef?: (component: IContextualMenuRenderItem | null) => void;
+
   /**
    * Unique id to identify the item
    */
@@ -423,7 +434,6 @@ export interface IContextualMenuItem {
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
   inactive?: boolean;
-
 }
 
 export interface IContextualMenuSection extends React.Props<ContextualMenu> {

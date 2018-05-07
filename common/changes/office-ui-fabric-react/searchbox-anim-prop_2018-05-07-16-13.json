@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle.",
-      "type": "patch"
+      "comment": "SearchBox: New prop for turning off icon animation.",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
