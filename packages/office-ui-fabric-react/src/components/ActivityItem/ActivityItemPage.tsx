@@ -45,7 +45,7 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md') }
+            { require<string>('./docs/ActivityItemOverview.md') }
           </PageMarkdown>
         }
         bestPractices={
@@ -53,12 +53,12 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
         }
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md') }
+            { require<string>('./docs/ActivityItemDos.md') }
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md') }
+            { require<string>('./docs/ActivityItemDonts.md') }
           </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
