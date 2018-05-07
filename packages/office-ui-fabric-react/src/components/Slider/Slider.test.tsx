@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
+import { Slider } from './Slider';
 import { SliderBase } from './Slider.base';
 import { getStyles } from './Slider.styles';
 import { ISlider } from './Slider.types';
@@ -11,7 +12,7 @@ import { ISlider } from './Slider.types';
 describe('Slider', () => {
 
   it('renders Slider correctly', () => {
-    const component = renderer.create(<SliderBase getStyles={ getStyles } />);
+    const component = renderer.create(<Slider />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
