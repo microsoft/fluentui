@@ -111,15 +111,22 @@ export interface ISliderStyleProps {
    * Accept custom classNames.
    */
   className?: string;
+  titleLabel?: string;
+  rootIsEnabled?: boolean;
+  rootIsDisabled?: boolean;
+  rootIsHorizontal?: boolean;
+  rootIsVertical?: boolean;
+  showTransitions?: boolean;
 }
 
 export interface ISliderStyles {
-  root: IStyle,
-  container: IStyle,
-  slideBox: IStyle,
-  line: IStyle,
-  thumb: IStyle,
-  active: IStyle,
-  inactive: IStyle,
-  value: IStyle
+  root: IStyle;
+  container: IStyle;
+  slideBox: IStyle;
+  line: IStyle;
+  thumb: IStyle;
+  lineContainer: IStyle;
+  activeSection: IStyle;
+  inactiveSection: IStyle;
+  valueLabel: IStyle;
 }

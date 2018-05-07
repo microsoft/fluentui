@@ -7,9 +7,9 @@ const GlobalClassNames = {
   slideBox: 'ms-Slider-slideBox',
   line: 'ms-Slider-line',
   thumb: 'ms-Slider-thumb',
-  active: 'ms-Slider-active',
-  inactive: 'ms-Slider-inactive',
-  value: 'ms-Slider-value'
+  activeSection: 'ms-Slider-active',
+  inactiveSection: 'ms-Slider-inactive',
+  valueLabel: 'ms-Slider-value'
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
@@ -39,16 +39,19 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.thumb,
       {}
     ],
-    active: [
-      classNames.active,
+    lineContainer: [
       {}
     ],
-    inactive: [
-      classNames.inactive,
+    activeSection: [
+      classNames.activeSection,
       {}
     ],
-    value: [
-      classNames.value,
+    inactiveSection: [
+      classNames.inactiveSection,
+      {}
+    ],
+    valueLabel: [
+      classNames.valueLabel,
       {}
     ]
   });
