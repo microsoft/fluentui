@@ -81,6 +81,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Nav',
           name: 'Nav',
           url: '#/examples/nav'
+        },
+        {
+          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
+          key: 'FluentTheme',
+          name: 'Fluent Theme',
+          url: '#/examples/fluenttheme'
         }
       ]
     }
