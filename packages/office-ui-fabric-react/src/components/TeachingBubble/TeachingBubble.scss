@@ -112,14 +112,6 @@
   font-weight: $ms-font-weight-semilight;
 }
 
-.root .closeButton {
-  position: absolute;
-  @include ms-right(0);
-  top: 0;
-  color: $ms-color-white;
-  font-size: $ms-icon-size-s;
-}
-
 .closeButton {
   position: absolute;
   @include ms-right(0);

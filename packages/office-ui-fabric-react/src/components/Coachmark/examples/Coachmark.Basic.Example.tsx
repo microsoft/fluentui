@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Coachmark } from '../Coachmark';
+import { Coachmark, COACHMARK_ATTRIBUTE_NAME } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
@@ -41,7 +41,6 @@ export interface ICoachmarkBasicExampleStyles {
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
 
   private _targetButton = createRef<HTMLDivElement>();
-  private _targetCoachmark = createRef<HTMLDivElement>();
   private _filteredItems: IContextualMenuItem[] = [
     {
       key: 'newItem',
@@ -82,16 +81,8 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       key: 'download',
       name: 'Download',
       icon: 'Download',
-      onRender: () => {
-        return (
-          <div
-            onClick={ this._onShowMenuClicked }
-            ref={ this._targetCoachmark }
-          >
-            test
-          </div>
-        );
-      }
+      [COACHMARK_ATTRIBUTE_NAME]: 'testing',
+      onClick: () => this._onShowMenuClicked()
     },
     {
       key: 'link',
@@ -134,8 +125,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         }
       };
     });
-
-    console.log(this._targetCoachmark.current);
 
     const buttonProps: IButtonProps = {
       text: 'Try it'
@@ -218,7 +207,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
         { isCBTargetVisible && (
           <Coachmark
-            target={ this._targetCoachmark.current }
+            target={ '[data-coachmarkid="testing"]' }
           >
             {
               <TeachingBubbleContent

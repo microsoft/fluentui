@@ -518,15 +518,20 @@ function _positionElementWithinBounds(
   directionalHintFixed?: boolean,
   coverTarget?: boolean): IElementPosition {
   const estimatedElementPosition: Rectangle = _estimatePosition(elementToPosition, target, positionData, gap, coverTarget);
-  if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
-    return {
-      elementRectangle: estimatedElementPosition,
-      targetEdge: positionData.targetEdge,
-      alignmentEdge: positionData.alignmentEdge
-    };
-  } else {
-    return _adjustFitWithinBounds(elementToPosition, target, bounding, positionData, gap, directionalHintFixed, coverTarget);
-  }
+  return {
+    elementRectangle: estimatedElementPosition,
+    targetEdge: positionData.targetEdge,
+    alignmentEdge: positionData.alignmentEdge
+  };
+  // if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
+  //   return {
+  //     elementRectangle: estimatedElementPosition,
+  //     targetEdge: positionData.targetEdge,
+  //     alignmentEdge: positionData.alignmentEdge
+  //   };
+  // } else {
+  //   return _adjustFitWithinBounds(elementToPosition, target, bounding, positionData, gap, directionalHintFixed, coverTarget);
+  // }
 }
 
 function _finalizeBeakPosition(elementPosition: IElementPosition,
@@ -595,19 +600,21 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint
       targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
     } else if ((target as Element).getBoundingClientRect) {
       targetRectangle = _getRectangleFromElement(target as Element);
+      console.log(targetRectangle);
+      console.log((target as Element).getBoundingClientRect());
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
       const point: IPoint = target as IPoint;
       targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
     }
 
-    if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
-      const outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
+    // if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
+    //   const outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
 
-      for (const direction of outOfBounds) {
-        (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
-      }
-    }
+    //   for (const direction of outOfBounds) {
+    //     (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
+    //   }
+    // }
   } else {
     targetRectangle = new Rectangle(0, 0, 0, 0);
   }
