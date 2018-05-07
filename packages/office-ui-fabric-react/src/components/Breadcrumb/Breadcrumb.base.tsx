@@ -133,7 +133,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       (item, index) => (
         <li className={ this._classNames.listItem } key={ item.key || String(index) }>
           { onRenderItem(item, this._onRenderItem) }
-          { (index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
+          { (index !== lastItemIndex || (hasOverflowItems && index === (overflowIndex! - 1))) && (
             <DividerType
               className={ this._classNames.chevron }
               iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
