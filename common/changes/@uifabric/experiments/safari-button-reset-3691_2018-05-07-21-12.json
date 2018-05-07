@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Set 'margin 0' reset style for buttons in Safari and updated snapshots in experiments",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "v-brgarl@microsoft.com"
+}
