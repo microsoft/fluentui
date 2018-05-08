@@ -5,13 +5,13 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
+import { mount } from 'enzyme';
+import EnzymeToJson from 'enzyme-to-json';
 
 describe('TeachingBubble', () => {
-
   it('renders TeachingBubble correctly', () => {
-    const component = renderer.create(<TeachingBubble>Content</TeachingBubble>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const component = mount(<TeachingBubble>Content</TeachingBubble>);
+    expect(EnzymeToJson(component)).toMatchSnapshot();
 
     const componentContent = renderer.create(<TeachingBubbleContent headline='Title'>Content</TeachingBubbleContent>);
     const treeContent = componentContent.toJSON();

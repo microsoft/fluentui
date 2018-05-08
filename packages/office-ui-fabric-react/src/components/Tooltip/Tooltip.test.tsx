@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
@@ -21,8 +21,8 @@ const defaultCalloutProps: ICalloutProps = {
 
 describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {
-    const component = renderer.create(<TooltipBase />);
-    const tree = component.toJSON();
+    const component = mount(<TooltipBase />);
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 
