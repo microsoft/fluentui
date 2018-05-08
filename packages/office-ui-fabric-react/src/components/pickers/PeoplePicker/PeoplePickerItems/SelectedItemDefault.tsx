@@ -14,7 +14,6 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
     item,
     onRemoveItem,
     index,
-    selected,
     removeButtonAriaLabel
   } = peoplePickerItemProps;
 
@@ -32,11 +31,8 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       className={ css(
         'ms-PickerPersona-container',
         styles.personaContainer,
-        { ['is-selected ' + styles.personaContainerIsSelected]: selected },
         { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
       ) }
-      data-is-focusable={ true }
-      data-is-sub-focuszone={ true }
       data-selection-index={ index }
       role={ 'listitem' }
       aria-labelledby={ 'selectedItemPersona-' + itemId }
