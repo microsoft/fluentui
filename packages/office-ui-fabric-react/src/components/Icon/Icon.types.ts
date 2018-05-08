@@ -36,11 +36,6 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   iconName?: string;
 
   /**
-   * Optional styling for the elements within the Icon.
-   */
-  styles?: IIconStyles;
-
-  /**
    * The aria label of the button for the benefit of screen readers.
    */
   ariaLabel?: string;
@@ -70,6 +65,12 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    * Gets the styles for an Icon.
    */
   getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
+
+  /**
+   * Deprecated: use getStyles.
+   * @deprecated
+   */
+  styles?: IIconStyles;
 }
 
 export interface IIconStyleProps {
@@ -77,9 +78,15 @@ export interface IIconStyleProps {
   iconClassName?: string;
   isPlaceholder: boolean;
   isImage: boolean;
+  styles?: Partial<IIconStyles>;
 }
 
 export interface IIconStyles {
-  root: IStyle;
+  root?: IStyle;
+
+  /**
+   * Deprecated. Use 'root'.
+   * @deprecated
+   */
   imageContainer?: IStyle;
 }

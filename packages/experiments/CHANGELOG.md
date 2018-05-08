@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 04 May 2018 15:58:38 GMT and should not be manually modified.
+This log was last generated on Tue, 08 May 2018 10:17:01 GMT and should not be manually modified.
+
+## 5.38.0
+Tue, 08 May 2018 10:17:01 GMT
+
+### Minor changes
+
+- Adds a Fluent theme experiment
 
 ## 5.37.0
 Fri, 04 May 2018 15:58:38 GMT
