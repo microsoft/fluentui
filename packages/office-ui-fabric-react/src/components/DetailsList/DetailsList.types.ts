@@ -93,9 +93,9 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   layoutMode?: DetailsListLayoutMode;
 
   /**
-   * Controls the visibility of selection check box.
-   * @default CheckboxVisibility.onHover
-   */
+     * Controls the visibility of selection check box.
+     * @default CheckboxVisibility.onHover
+     */
   checkboxVisibility?: CheckboxVisibility;
 
   /**
@@ -241,6 +241,12 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * On horizontal scroll event listener
    */
   onScroll?: (e?: Event) => void;
+
+  /**
+   * Options for column re-order using drag and drop
+   *
+   */
+  columnReorderOptions?: IColumnReorderOptions;
 }
 
 export interface IColumn {
@@ -434,6 +440,19 @@ export enum ConstrainMode {
    * If specified, constrains the list to the given layout space.
    */
   horizontalConstrained = 1
+}
+
+export interface IColumnReorderOptions {
+  /** Specifies the number columns with position fixed from left(0th index))
+   * @default 0
+   */
+  frozenColumnCount?: number;
+
+  /** Callback to handle the column reorder
+   * draggaedIndex is the source column index, that need to be placed in targetIndex
+   */
+  handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;
+
 }
 
 export enum DetailsListLayoutMode {
