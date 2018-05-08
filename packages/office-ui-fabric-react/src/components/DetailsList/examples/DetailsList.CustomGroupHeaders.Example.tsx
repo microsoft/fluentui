@@ -65,6 +65,6 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
   private _onToggleCollapse(props: IGroupDividerProps): () => void {
     return () => {
       props!.onToggleCollapse!(props!.group!);
-    }
+    };
   }
 }
