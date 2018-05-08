@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PortalLayerBase } from './PortalLayer.base';
+import { LayerBase } from './Layer.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
@@ -7,7 +7,7 @@ export interface ILayer {
 
 }
 
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | PortalLayerBase> {
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
   /**
    * Optional callback to access the ILayer interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

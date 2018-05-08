@@ -22,7 +22,7 @@ import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notifi
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 @customizable('Layer', ['theme', 'hostId'])
-export class PortalLayerBase extends BaseComponent<ILayerProps, {}> {
+export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
