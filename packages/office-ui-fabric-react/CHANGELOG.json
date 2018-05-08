@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.97.1",
+      "tag": "office-ui-fabric-react_v5.97.1",
+      "date": "Tue, 08 May 2018 18:18:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "be99bf8e02cc50a6c6f9c94df51b9a6ffcfa530c",
+            "comment": "BaseButton: Allow Alt + Down on menu buttons to open the menu"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.97.0",
       "tag": "office-ui-fabric-react_v5.97.0",
       "date": "Tue, 08 May 2018 10:17:01 GMT",
