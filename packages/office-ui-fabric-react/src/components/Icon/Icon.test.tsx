@@ -5,7 +5,7 @@ import { Icon } from './index';
 
 describe('Icon', () => {
   it('renders Icon correctly', () => {
-    const component = renderer.create(<Icon iconName='CompassNW' />);
+    const component = renderer.create(<Icon iconName='CompassNW' ariaLabel='asdf' />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -16,4 +16,26 @@ describe('Icon', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders Icon with custom styles', () => {
+    const component = renderer.create(
+      <Icon
+        iconName='Upload'
+        styles={ { root: 'root', imageContainer: 'imageContainer' } }
+      />
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders Icon with getStyles', () => {
+    const customStyles = (props: {}) => ({ root: 'root', imageContainer: 'imageContainer' });
+
+    const component = renderer.create(
+      <Icon
+        className='className'
+        iconName='Upload'
+        getStyles={ customStyles }
+      />
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

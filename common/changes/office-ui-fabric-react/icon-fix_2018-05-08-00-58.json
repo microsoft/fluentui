@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Icon: undoing breaking change with regards to making `IIconStyles.root` required, adding tests to ensure backwards compatibility.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com"
+}

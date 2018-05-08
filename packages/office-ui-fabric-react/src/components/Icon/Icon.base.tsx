@@ -33,43 +33,48 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
       getStyles,
       iconName,
       imageErrorAs,
+      styles,
     } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
     const { iconClassName, children } = this._getIconContent(iconName);
 
-    const classNames = getClassNames(getStyles, { className, isPlaceholder, isImage, iconClassName });
+    const classNames = getClassNames(getStyles, {
+      className,
+      iconClassName,
+      isImage,
+      isPlaceholder,
+      styles
+    });
 
-    const containerProps = ariaLabel ? { 'aria-label': ariaLabel, 'data-icon-name': iconName, } : {
-      role: 'presentation',
-      'aria-hidden': true,
-      'data-icon-name': iconName,
-    };
+    const containerProps = ariaLabel ?
+      {
+        'aria-label': ariaLabel,
+      } : {
+        role: 'presentation',
+        'aria-hidden': true,
+      };
 
-    if (this.props.iconType === IconType.image || this.props.iconType === IconType.Image) {
+    const RootType = isImage ? 'div' : 'i';
+    const nativeProps = getNativeProps(this.props, htmlElementProperties);
+    const { imageLoadError } = this.state;
+    const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
+    const ImageType = imageLoadError && imageErrorAs || Image;
 
-      const { imageLoadError } = this.state;
-      const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
-      const ImageType = imageLoadError && imageErrorAs || Image;
-      return (
-        <div
-          { ...containerProps }
-          className={ classNames.root }
-        >
+    return (
+      <RootType
+        data-icon-name={ iconName }
+        { ...nativeProps }
+        { ...containerProps }
+        className={ classNames.root }
+      >
+        { isImage ? (
           <ImageType { ...imageProps } />
-        </div>
-      );
-    } else {
-      return (
-        <i
-          { ...containerProps }
-          { ...getNativeProps(this.props, htmlElementProperties, ['name', 'iconName']) }
-          className={ classNames.root }
-        >
-          { children }
-        </i>
-      );
-    }
+        ) : (
+            children
+          ) }
+      </RootType>
+    );
   }
 
   private onImageLoadingStateChange = (state: ImageLoadState): void => {
