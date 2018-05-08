@@ -156,7 +156,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         </FocusZone>
         { (contextualMenuProps) ?
           (<ContextualMenu
-            className={ css('ms-CommandBar-menuHost') }
+            className={ 'ms-CommandBar-menuHost' }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             { ...contextualMenuProps }
             target={ contextualMenuTarget }
@@ -386,7 +386,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _updateRenderedItems(): void {
-    const { items, overflowItems } = this.props;
+    const { items, overflowItems, overflowMenuProps } = this.props;
     const commandSurface = this._commandSurface.current;
     const farCommandSurface = this._farCommandSurface.current;
     const commandBarRegion = this._commandBarRegion.current;
@@ -436,8 +436,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     const renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
-      renderedItems.concat(this.state.renderedFarItems!),
-      renderedOverflowItems!);
+        renderedItems.concat(this.state.renderedFarItems!),
+        renderedOverflowItems!,
+        overflowMenuProps!
+      );
 
     this.setState({
       renderedItems: renderedItems,
@@ -477,7 +479,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: OVERFLOW_KEY,
-        contextualMenuProps: { items: this.state.renderedOverflowItems! },
+        contextualMenuProps: { ...this.props.overflowMenuProps!, items: this.state.renderedOverflowItems! },
         contextualMenuTarget: ev.currentTarget
       });
     }
@@ -490,7 +492,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       const { contextualMenuProps } = this.state;
 
       if (contextualMenuProps && contextualMenuProps.onDismiss) {
-        this.state.contextualMenuProps!.onDismiss!(ev);
+        contextualMenuProps!.onDismiss!(ev);
       }
 
       this.setState({
@@ -509,16 +511,17 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       renderedItems: nextProps.items || [],
       contextualMenuProps: this._getContextualMenuPropsAfterUpdate(
         nextProps.items.concat(nextProps.farItems!),
-        nextProps.overflowItems!)!,
+        nextProps.overflowItems!,
+        nextProps.overflowMenuProps!)!,
       renderedFarItems: nextProps.farItems || undefined
     };
   }
 
-  private _getContextualMenuPropsAfterUpdate(renderedItems: IContextualMenuItem[], overflowItems: IContextualMenuItem[]): IContextualMenuProps | undefined {
+  private _getContextualMenuPropsAfterUpdate(renderedItems: IContextualMenuItem[], overflowItems: IContextualMenuItem[], overflowMenuProps: Partial<IContextualMenuProps>): IContextualMenuProps | undefined {
     if (this.state && this.state.expandedMenuItemKey) {
       if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
         // Keep the overflow menu open
-        return { items: overflowItems };
+        return { ...overflowMenuProps, items: overflowItems };
       } else {
         // Find the currently open key in the new props
         const matchingItem = renderedItems.filter(item => item.key === this.state.expandedMenuItemKey);
