@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 08 May 2018 10:17:01 GMT and should not be manually modified.
+This log was last generated on Tue, 08 May 2018 18:18:47 GMT and should not be manually modified.
+
+## 5.97.1
+Tue, 08 May 2018 18:18:47 GMT
+
+### Patches
+
+- BaseButton: Allow Alt + Down on menu buttons to open the menu
 
 ## 5.97.0
 Tue, 08 May 2018 10:17:01 GMT
