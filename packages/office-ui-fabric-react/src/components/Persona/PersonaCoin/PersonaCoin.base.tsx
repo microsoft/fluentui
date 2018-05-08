@@ -80,6 +80,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const {
       className,
       coinProps,
+      showUnknownPersonaCoin,
       coinSize,
       getStyles,
       imageUrl,
@@ -105,6 +106,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       theme: theme!,
       className: (coinProps && coinProps.className) ? coinProps.className : className,
       size,
+      showUnknownPersonaCoin,
     });
 
     return (
@@ -128,9 +130,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
                     <div
                       className={ mergeStyles(
                         classNames.initials,
-                        {
-                          backgroundColor: initialsColorPropToColorCode(this.props)
-                        }
+                        !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
                       ) }
                       style={ coinSizeStyle }
                       aria-hidden='true'
@@ -166,13 +166,15 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       imageShouldFadeIn,
       imageShouldStartVisible,
       theme,
+      showUnknownPersonaCoin,
     } = this.props;
 
     const size = this.props.size as PersonaSize;
 
     const classNames = getClassNames(getStyles, {
       theme: theme!,
-      size
+      size,
+      showUnknownPersonaCoin
     });
 
     return (
@@ -195,11 +197,12 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const {
       allowPhoneInitials,
       primaryText,
+      showUnknownPersonaCoin
     } = props;
 
     const isRTL = getRTL();
 
-    imageInitials = imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
+    imageInitials = (showUnknownPersonaCoin && '?') || imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
 
     return (
       imageInitials !== ''
