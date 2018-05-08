@@ -16,6 +16,15 @@ An example PR following these steps can be found here:
 1. Optionally, temporarily comment out old prop to help find all uses throughout code base and change. Take care that as of writing some uses are not covered by TypeScript as part of build, such as some objects created in tests without type declaration and Screener tests in `apps/vr-tests`.
     - If you use VS Code, there is a task available to help aid called `Typescript (vr-tests) watch` which you can run via `Tasks -> Run Task`. You may have to rebuild occasionally to get the types reflected across packages correctly.
 1. Move deprecated prop to end of interface, update comments with deprecation description and add @deprecated.
+
+    ```tsx
+    /**
+    * Primary text to display, usually the name of the person.
+    * @deprecated Use 'text' instead.
+    */
+    primaryText?: string;
+    ```
+
 1. Update component as needed to support both deprecated and new props.
 1. Make sure old and new tests pass.
 1. Add call to warnDeprecations in constructor, like:
