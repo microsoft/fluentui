@@ -86,6 +86,7 @@ export interface IIconStyles {
 
   /**
    * Deprecated. Use 'root'.
+   * @deprecated
    */
   imageContainer?: IStyle;
 }
