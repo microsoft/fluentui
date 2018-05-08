@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Positioning/Callout/ContextualMenu: Remove all deprecated props",
-      "type": "minor"
+      "type": "major"
     }
   ],
   "packageName": "office-ui-fabric-react",
