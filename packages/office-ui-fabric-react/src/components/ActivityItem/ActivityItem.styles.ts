@@ -20,14 +20,17 @@ const ANIMATION_OUTER_DIMENSION = '28px';
 const ANIMATION_BORDER_WIDTH = '4px';
 
 export const getStyles = memoizeFunction((
-  props: IActivityItemProps,
   theme: ITheme = getTheme(),
-  customStyles?: IActivityItemStyles
+  customStyles?: IActivityItemStyles,
+  animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'],
+  beaconColorOne?: IActivityItemProps['beaconColorOne'],
+  beaconColorTwo?: IActivityItemProps['beaconColorTwo'],
+  isCompact?: IActivityItemProps['isCompact']
 ): IActivityItemStyles => {
 
   const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
-    props.beaconColorOne ? props.beaconColorOne : theme.palette.themePrimary,
-    props.beaconColorTwo ? props.beaconColorTwo : theme.palette.themeTertiary,
+    beaconColorOne ? beaconColorOne : theme.palette.themePrimary,
+    beaconColorTwo ? beaconColorTwo : theme.palette.themeTertiary,
     ANIMATION_INNER_DIMENSION,
     ANIMATION_OUTER_DIMENSION,
     ANIMATION_BORDER_WIDTH
@@ -74,7 +77,7 @@ export const getStyles = memoizeFunction((
         boxSizing: 'border-box',
         color: theme.palette.neutralSecondary
       },
-      (props.isCompact && props.animateBeaconSignal) && fadeInAnimation
+      (isCompact && animateBeaconSignal) && fadeInAnimation
     ],
 
     pulsingBeacon: [
@@ -89,7 +92,7 @@ export const getStyles = memoizeFunction((
         borderStyle: 'solid',
         opacity: 0
       },
-      (props.isCompact && props.animateBeaconSignal) && continuousPulseAnimation
+      (isCompact && animateBeaconSignal) && continuousPulseAnimation
     ],
 
     isCompactRoot: {
@@ -170,7 +173,7 @@ export const getStyles = memoizeFunction((
       {
         padding: '0 8px'
       },
-      (props.isCompact && props.animateBeaconSignal) && slideInAnimation
+      (isCompact && animateBeaconSignal) && slideInAnimation
     ],
 
     activityText: {

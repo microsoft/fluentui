@@ -369,9 +369,9 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (this.props.componentUrl) {
       mdUrl = `${this.props.componentUrl}/docs/${componentName}${section}.md`;
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
-      if (mdUrl!.includes('/tree/')) {
+      if (mdUrl!.indexOf('/tree/') !== -1) {
         mdUrl = mdUrl!.replace('/tree/', '/edit/');
-      } else if (mdUrl!.includes('/blob/')) {
+      } else if (mdUrl!.indexOf('/blob/') !== -1) {
         mdUrl = mdUrl!.replace('/blob/', '/edit/');
       }
     }

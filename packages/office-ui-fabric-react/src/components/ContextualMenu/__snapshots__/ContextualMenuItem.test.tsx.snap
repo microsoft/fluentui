@@ -4,7 +4,7 @@ exports[`ContextMenuItemChildren when a checkmark icon renders the component wit
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -43,7 +43,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Icon
+        <StyledIconBase
           className="checkmarkIcon"
           iconName=""
           onClick={[Function]}
@@ -59,7 +59,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "checkmarkIcon",
           "iconName": "",
@@ -82,7 +82,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Icon
+          <StyledIconBase
             className="checkmarkIcon"
             iconName=""
             onClick={[Function]}
@@ -98,7 +98,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "checkmarkIcon",
             "iconName": "",
@@ -129,7 +129,7 @@ exports[`ContextMenuItemChildren when it has a sub menu renders the menu icon 1`
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -170,11 +170,11 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
         />,
         null,
-        <Icon
+        <StyledIconBase
           className="subMenuIcon"
           iconName="ChevronRight"
         />,
@@ -187,7 +187,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "icon",
         },
@@ -199,7 +199,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "subMenuIcon",
           "iconName": "ChevronRight",
@@ -219,11 +219,11 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
           />,
           null,
-          <Icon
+          <StyledIconBase
             className="subMenuIcon"
             iconName="ChevronRight"
           />,
@@ -236,7 +236,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "icon",
           },
@@ -248,7 +248,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "subMenuIcon",
             "iconName": "ChevronRight",
@@ -275,7 +275,7 @@ exports[`ContextMenuItemChildren when it has icons when it doesnt have iconProps
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -315,7 +315,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
         />,
         null,
@@ -329,7 +329,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "icon",
         },
@@ -350,7 +350,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
           />,
           null,
@@ -364,7 +364,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "icon",
           },
@@ -392,7 +392,7 @@ exports[`ContextMenuItemChildren when it has icons when it has iconProps renders
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -433,7 +433,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
           iconName="itemIcon"
         />,
@@ -452,7 +452,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "className": "icon",
           "iconName": "itemIcon",
@@ -485,7 +485,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
             iconName="itemIcon"
           />,
@@ -504,7 +504,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "className": "icon",
             "iconName": "itemIcon",
