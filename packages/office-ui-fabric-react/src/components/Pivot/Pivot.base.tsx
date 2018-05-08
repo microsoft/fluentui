@@ -106,7 +106,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     const divProps = getNativeProps(this.props, divProperties);
 
     return (
-      <div { ...divProps } >
+      <div { ...divProps }>
         { this._renderPivotLinks() }
         { this._renderPivotItem() }
       </div>
