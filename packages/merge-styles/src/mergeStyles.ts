@@ -3,7 +3,7 @@ import { styleToClassName } from './styleToClassName';
 import { extractStyleParts } from './extractStyleParts';
 
 /**
- * Concatination helper, which can merge class names together. Skips over falsey values.
+ * Concatenation helper, which can merge class names together. Skips over falsy values.
  *
  * @public
  */
