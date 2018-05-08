@@ -685,6 +685,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } else if (this.props.menuProps) {
       return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
+    return false;
   }
 
   private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
