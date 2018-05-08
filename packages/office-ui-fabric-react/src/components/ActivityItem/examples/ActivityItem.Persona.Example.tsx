@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, classNamesFunction } from '../../../Utilities';
-import { ActivityItem } from '../ActivityItem';
+import { ActivityItem, IActivityItemProps } from '..';
 import {
   getStyles,
   IActivityItemExampleStyleProps,
@@ -15,7 +15,7 @@ export class ActivityItemPersonaExample extends React.Component<React.Props<Acti
     const classNames = getClassNames(getStyles);
 
     // tslint:disable:jsx-no-lambda
-    const activityItemExamples = [
+    const activityItemExamples: (IActivityItemProps & { key: string | number })[] = [
       {
         key: 1,
         activityDescription: [
@@ -43,7 +43,7 @@ export class ActivityItemPersonaExample extends React.Component<React.Props<Acti
         activityPersonas: [
           {
             imageInitials: 'JM',
-            primaryText: 'Javiera Márquez'
+            text: 'Javiera Márquez'
           },
           {
             imageUrl: TestImages.personaFemale
@@ -62,7 +62,7 @@ export class ActivityItemPersonaExample extends React.Component<React.Props<Acti
         activityPersonas: [
           {
             imageInitials: 'RL',
-            primaryText: 'Robert Larsson'
+            text: 'Robert Larsson'
           },
           {
             imageUrl: TestImages.personaMale
@@ -84,14 +84,14 @@ export class ActivityItemPersonaExample extends React.Component<React.Props<Acti
         activityPersonas: [
           {
             imageInitials: 'JC',
-            primaryText: 'Jin Cheng'
+            text: 'Jin Cheng'
           },
           {
             imageUrl: TestImages.personaMale
           },
           {
             imageInitials: 'AL',
-            primaryText: 'Annie Lindqvist'
+            text: 'Annie Lindqvist'
           },
           {
             imageUrl: TestImages.personaFemale
