@@ -171,6 +171,7 @@ describe('Calendar', () => {
           dateRangeType={ DateRangeType.Week }
           autoNavigateOnSelection={ true }
           onSelectDate={ onSelectDate() }
+          className='CalendarTestClass'
         />) as Calendar;
     });
 
@@ -243,6 +244,17 @@ describe('Calendar', () => {
       expect(lastSelectedDateRange).not.toBeNull();
       expect(lastSelectedDateRange!.length).toEqual(7);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).toEqual(true));
+    });
+
+    it('Verify class name', () => {
+      const calendarRoot = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'CalendarTestClass');
+      expect(calendarRoot).toBeDefined();
+      expect(calendarRoot.length).toEqual(1);
+      const root = calendarRoot[0];
+      expect(root.classList).toBeDefined();
+      expect(root.classList.length).toEqual(2);
+      expect(root.classList[0]).toEqual('ms-DatePicker');
+      expect(root.classList[1]).toEqual('CalendarTestClass');
     });
   });
 

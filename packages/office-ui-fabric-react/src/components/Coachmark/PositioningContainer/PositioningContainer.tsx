@@ -63,7 +63,7 @@ export class PositioningContainer
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomAutoEdge
+    directionalHint: DirectionalHint.bottomLeftEdge
   };
 
   private _didSetInitialFocus: boolean;
@@ -152,6 +152,9 @@ export class PositioningContainer
       positioningContainerMaxHeight,
       children } = this.props;
     const { positions } = this.state;
+    if (positions) {
+      console.log('POSITIONS', positions, positions.elementPosition);
+    }
 
     const styles = getClassNames();
 
@@ -166,6 +169,9 @@ export class PositioningContainer
       <div
         ref={ this._positionedHost }
         className={ css('ms-PositioningContainer', styles.container) }
+        style={ {
+          outline: '1px solid blue'
+        } }
       >
         <div
           className={
@@ -182,10 +188,14 @@ export class PositioningContainer
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._contentHost }
         >
-          { children }
-          { // @TODO apply to the content container
-            contentMaxHeight
-          }
+          <div style={ {
+            outline: '1px solid red'
+          } }>
+            { children }
+            { // @TODO apply to the content container
+              contentMaxHeight
+            }
+          </div>
         </div>
       </div>
     );
@@ -272,8 +282,10 @@ export class PositioningContainer
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
+      console.log('GET BOUNDING CLIEN TRECT', (this._target! as HTMLElement).getBoundingClientRect());
       currentProps!.gapSpace = offsetFromTarget;
       const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
+      console.log('new postiions', newPositions);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -358,6 +370,7 @@ export class PositioningContainer
   }
 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+    debugger;
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;

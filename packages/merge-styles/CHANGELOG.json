@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.17.0",
+      "tag": "@uifabric/merge-styles_v5.17.0",
+      "date": "Thu, 26 Apr 2018 10:12:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b9f6e845720daf7536a299a84be96ec4793ae57a",
+            "comment": "Add `animation` to `IRawStyleBase` for use in style sets."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.16.1",
       "tag": "@uifabric/merge-styles_v5.16.1",
       "date": "Wed, 25 Apr 2018 05:32:09 GMT",

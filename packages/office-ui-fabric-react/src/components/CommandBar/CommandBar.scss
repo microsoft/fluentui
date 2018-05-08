@@ -98,6 +98,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
   position: relative;
   background: none;
+  background-color: transparent;
   border: none;
   line-height: $CommandBarItem-height;
   min-width: 20px;
@@ -172,7 +173,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &.itemLinkIsExpanded:hover {
     background-color: $ms-color-neutralQuaternary;
   }
-  
+
   &.inactive {
     color: $ms-color-neutralTertiaryAlt;
     cursor: default;

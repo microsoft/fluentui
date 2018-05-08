@@ -15,6 +15,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        background-color: transparent;
         background: none;
         border: none;
         cursor: pointer;
@@ -59,6 +60,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       &:focus .ms-Checkbox-text {
         color: #000000;
       }
+  data-ktp-execute-target={undefined}
   disabled={undefined}
   id="checkbox-0"
   name={undefined}
@@ -108,21 +110,28 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             user-select: none;
             width: 20px;
           }
+      data-ktp-target={undefined}
     >
       <i
         aria-hidden={true}
         className=
 
             {
-              display: inline-block;
-            }
-            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #ffffff;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-style: normal;
+              font-weight: normal;
               opacity: 0;
+              speak: none;
             }
         data-icon-name="CheckMark"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
     <span
       className=

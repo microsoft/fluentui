@@ -4,41 +4,54 @@ import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
-export class ScrollablePaneDefaultExample extends React.Component {
+const colors = [
+  '#eaeaea',
+  '#dadada',
+  '#d0d0d0',
+  '#c8c8c8',
+  '#a6a6a6',
+  '#c7e0f4',
+  '#71afe5',
+  '#eff6fc',
+  '#deecf9'
+];
 
-  public render(): JSX.Element {
+export class ScrollablePaneDefaultExample extends React.Component {
+  public render() {
     const contentAreas: JSX.Element[] = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       contentAreas.push(this._createContentArea(i));
     }
 
     return (
-      <ScrollablePane className='scrollablePaneDefaultExample'>
-        { contentAreas.map((ele) => {
-          return ele;
-        }) }
-      </ScrollablePane>
+      <div
+        style={ {
+          height: '900px',
+          position: 'relative',
+          maxHeight: 'inherit'
+        } }
+      >
+        <ScrollablePane className='scrollablePaneDefaultExample'>
+          { contentAreas.map((ele) => {
+            return ele;
+          }) }
+        </ScrollablePane>
+      </div>
     );
   }
 
-  private _getRandomColor(): string {
-    const letters = 'BCDEF'.split('');
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * letters.length)];
-    }
-    return color;
-  }
-
-  private _createContentArea(index: number): JSX.Element {
-    const style = this._getRandomColor();
+  private _createContentArea(index: number) {
+    const color = colors.splice(Math.floor(Math.random() * colors.length), 1)[0];
 
     return (
-      <div key={ index }>
+      <div
+        key={ index }
+        style={ {
+          backgroundColor: color
+        } }
+      >
         <Sticky
           stickyPosition={ StickyPositionType.Both }
-          stickyClassName='largeFont'
-          stickyBackgroundColor={ style }
         >
           <div className='sticky'>
             Sticky Component #{ index + 1 }

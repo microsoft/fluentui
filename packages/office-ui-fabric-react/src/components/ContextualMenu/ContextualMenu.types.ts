@@ -16,6 +16,7 @@ import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -455,6 +456,11 @@ export interface IContextualMenuItem {
    * the length of the custom list. It is up to the user to increment the count for their list.
    */
   customOnRenderListLength?: number;
+
+  /**
+   * Keytip for this contextual menu item
+   */
+  keytipProps?: IKeytipProps;
 
   /**
    * Any additional properties to use when custom rendering menu items.

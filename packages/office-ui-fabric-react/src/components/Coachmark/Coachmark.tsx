@@ -14,6 +14,8 @@ import { FocusZone } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
+export const COACHMARK_ATTRIBUTE_NAME = 'data-coachmarkid';
+
 /**
  * An interface for the cached dimensions of entity inner host.
  */
@@ -119,6 +121,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       height: height + 'px',
       color: color
     });
+
+    console.log('TARGET', this.props.target);
 
     return (
       <PositioningContainer

@@ -1,5 +1,4 @@
 ﻿/* tslint:disable */
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
 import * as React from 'react';
 import { Nav } from './Nav';
 import {
@@ -16,6 +15,7 @@ import {
   styled,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
+import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
@@ -24,8 +24,11 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     super(props);
 
     this.state = {
-      isNavCollapsed: props.isNavCollapsed ? props.isNavCollapsed : false
+      isNavCollapsed: props.isNavCollapsed ? props.isNavCollapsed : false,
+      showMore: props.showMore ? props.showMore : false
     };
+
+    this._onShowMoreLinkClicked = this._onShowMoreLinkClicked.bind(this);
   }
 
   public render() {
@@ -33,9 +36,13 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
       return null;
     }
 
-    const isCollapsed = this.state.isNavCollapsed;
+    const {
+      isNavCollapsed,
+      showMore
+    } = this.state;
+
     const { getStyles } = this.props;
-    const classNames = getClassNames(getStyles!, { isCollapsed });
+    const classNames = getClassNames(getStyles!, { isCollapsed: isNavCollapsed });
 
     return (
       <div className={ classNames.root }>
@@ -43,15 +50,23 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
           this._renderExpandCollapseNavItem()
         }
         {
-          isCollapsed ?
+          isNavCollapsed ?
             <SlimNav
               groups={ this.props.groups }
               selectedKey={ this.props.selectedKey }
-              navScrollerId={ this.props.navScrollerId } />
+              navScrollerId={ this.props.navScrollerId }
+              dataHint={ this.props.dataHint }
+              enableCustomization={ this.props.enableCustomization }
+              showMore={ showMore }
+              onShowMoreLinkClicked={ this._onShowMoreLinkClicked } />
             :
             <Nav
               groups={ this.props.groups }
-              selectedKey={ this.props.selectedKey } />
+              selectedKey={ this.props.selectedKey }
+              dataHint={ this.props.dataHint }
+              enableCustomization={ this.props.enableCustomization }
+              showMore={ showMore }
+              onShowMoreLinkClicked={ this._onShowMoreLinkClicked } />
         }
       </div>
     );
@@ -68,7 +83,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
 
       return {
         isNavCollapsed: isNavCollapsed
-      } as INavState;
+      };
     });
   }
 
@@ -78,20 +93,28 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     const classNames = getClassNames(getStyles!, {});
 
     return (
-      <a
+      <NavLink
+        id="ToggleNavCollapse"
         onClick={ this._onNavCollapseClicked.bind(this) }
-        aria-expanded={ isNavCollapsed ? "false" : "true" }
-        data-hint="ReactLeftNav"
-        data-value="ToggleNavCollapse">
-        <div className={ classNames.navToggler }>
-          <Icon
-            className={ classNames.navItemIconColumn }
-            iconName="GlobalNavButton"
-            aria-hidden="true"
-          />
-        </div>
-      </a >
+        ariaExpanded={ !isNavCollapsed }
+        dataHint={ this.props.dataHint }
+        dataValue="ToggleNavCollapse"
+        rootClassName={ classNames.navToggler }
+        leftIconName="GlobalNavButton"
+        iconClassName={ classNames.navItemIconColumn }>
+      </NavLink>
     );
+  }
+
+  private _onShowMoreLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
+    this.setState((prevState: INavState) => {
+      return {
+        showMore: !prevState.showMore
+      };
+    });
+
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 }
 
