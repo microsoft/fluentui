@@ -2,6 +2,10 @@
 
 This guide outlines recommendations for deprecating API behavior, particularly related to component props.
 
+An example PR following these steps can be found here:
+**https://github.com/OfficeDev/office-ui-fabric-react/pull/4811**
+
+## Deprecation Steps
 1. Make sure snapshot tests exist covering existing props functionality as a reference check against deprecation changes.
     - Make sure the prop you're changing has representation in the snapshot output. Sometimes this may require getting the component under test into a certain state.
 1. Keep the tests using deprecated props named in a file with deprecated suffix, such as `Persona.test.tsx` -> `Persona.deprecated.test.tsx`.
