@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "ActivityItem: Fix a previous breaking change in getStyles. Passing specific props at the end instead of general props at the beginning.",
+      "packageName": "office-ui-fabric-react",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "lynam.emily@gmail.com"
+}
