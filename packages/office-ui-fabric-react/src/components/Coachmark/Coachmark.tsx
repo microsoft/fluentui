@@ -6,6 +6,8 @@ import { DefaultPalette } from '../../Styling';
 // Component Dependencies
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak } from './Beak/Beak';
+import { BeakDirection } from './Beak/Beak.types';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
@@ -56,23 +58,23 @@ export interface ICoachmarkState {
   /**
    * The left position of the beak
    */
-  beakLeft?: string | null;
+  beakLeft?: string;
 
   /**
    * The right position of the beak
    */
-  beakTop?: string | null;
+  beakTop?: string;
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public static defaultProps: Partial<ICoachmarkTypes> = {
     collapsed: true,
     mouseProximityOffset: 100,
-    beakWidth: 26,
-    beakHeight: 12,
+    beakWidth: 16,
+    beakHeight: 8,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
-    width: 36,
-    height: 36,
+    width: 30,
+    height: 30,
     color: DefaultPalette.themePrimary
   };
 
@@ -98,6 +100,45 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       },
       isMouseInProximity: false
     };
+
+    const mycanvas = document.createElement("canvas");
+    mycanvas.id = "mycanvas";
+    mycanvas.width = window.innerWidth;
+    mycanvas.height = window.innerHeight;
+    mycanvas.style.position = 'relative';
+    mycanvas.style.zIndex = '1000';
+    document.body.appendChild(mycanvas);
+    window.mycanvas = mycanvas;
+  }
+
+  private _getBeakDirection(): BeakDirection {
+    const { positioningContainerProps } = this.props;
+    console.log(positioningContainerProps);
+    if (!positioningContainerProps || positioningContainerProps!.directionalHint === undefined) {
+      return BeakDirection.Top;
+    }
+
+    switch (positioningContainerProps.directionalHint) {
+      case DirectionalHint.topLeftEdge:
+      case DirectionalHint.topCenter:
+      case DirectionalHint.topRightEdge:
+      case DirectionalHint.topAutoEdge:
+        return BeakDirection.Bottom;
+      case DirectionalHint.leftTopEdge:
+      case DirectionalHint.leftCenter:
+      case DirectionalHint.leftBottomEdge:
+        return BeakDirection.Right;
+      case DirectionalHint.rightTopEdge:
+      case DirectionalHint.rightCenter:
+      case DirectionalHint.rightBottomEdge:
+        return BeakDirection.Left;
+      case DirectionalHint.bottomLeftEdge:
+      case DirectionalHint.bottomCenter:
+      case DirectionalHint.bottomRightEdge:
+      case DirectionalHint.bottomAutoEdge:
+      default:
+        return BeakDirection.Top;
+    }
   }
 
   public render(): JSX.Element {
@@ -108,7 +149,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       target,
       width,
       height,
-      color
+      color,
+      positioningContainerProps
     } = this.props;
 
     const classNames = getClassNames(getStyles, {
@@ -122,14 +164,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       color: color
     });
 
-    console.log('TARGET', this.props.target);
-
     return (
       <PositioningContainer
         target={ target }
         offsetFromTarget={ beakHeight }
         componentRef={ this._positioningContainer }
         doNotLayer={ true }
+        { ...positioningContainerProps }
       >
         <div className={ classNames.root }>
           <div className={ classNames.pulsingBeacon } />
@@ -141,10 +182,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
               <div className={ classNames.rotateAnimationLayer }>
                 {
                   this._positioningContainer.current && <Beak
-                    width={ beakWidth }
-                    height={ beakHeight }
                     left={ this.state.beakLeft }
                     top={ this.state.beakTop }
+                    direction={ this._getBeakDirection() }
                   />
                 }
                 <FocusZone>

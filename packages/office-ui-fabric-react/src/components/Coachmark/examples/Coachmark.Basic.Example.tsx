@@ -6,6 +6,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import {
@@ -208,6 +209,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         { isCBTargetVisible && (
           <Coachmark
             target={ '[data-coachmarkid="testing"]' }
+            positioningContainerProps={ {
+              directionalHint: DirectionalHint.bottomLeftEdge
+            } }
           >
             {
               <TeachingBubbleContent

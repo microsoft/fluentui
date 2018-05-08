@@ -3,23 +3,18 @@ import { Beak } from './Beak';
 
 export interface IBeak { }
 
+export enum BeakDirection {
+  Top,
+  Right,
+  Bottom,
+  Left
+}
+
 export interface IBeakProps extends React.Props<Beak> {
   /**
   * All props for your component are to be defined here.
   */
   componentRef?: (component: IBeak | null) => void;
-
-  /**
-   * Beak width.
-   * @default 18
-   */
-  width?: number;
-
-  /**
-   * Beak height.
-   * @default 18
-   */
-  height?: number;
 
   /**
    * Color of the beak
@@ -29,17 +24,22 @@ export interface IBeakProps extends React.Props<Beak> {
   /**
    * Left position of the beak
    */
-  left?: string | null;
+  left?: string;
 
   /**
    * Top position of the beak
    */
-  top?: string | null;
+  top?: string;
+
+  direction?: BeakDirection;
 }
 
 export interface IBeakStylesProps {
-  left?: string | null;
-  top?: string | null;
+  left?: string | undefined;
+  top?: string | undefined;
+  bottom?: string | undefined;
+  right?: string | undefined;
   width?: string;
   height?: string;
+  transform?: string;
 }

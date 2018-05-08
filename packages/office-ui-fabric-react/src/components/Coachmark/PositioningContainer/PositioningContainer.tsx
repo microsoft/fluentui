@@ -282,10 +282,9 @@ export class PositioningContainer
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      console.log('GET BOUNDING CLIEN TRECT', (this._target! as HTMLElement).getBoundingClientRect());
       currentProps!.gapSpace = offsetFromTarget;
       const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-      console.log('new postiions', newPositions);
+      // console.log('new postiions', newPositions);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -370,7 +369,6 @@ export class PositioningContainer
   }
 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
-    debugger;
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;

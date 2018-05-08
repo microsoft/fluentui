@@ -524,7 +524,7 @@ function _positionElementWithinBounds(
     alignmentEdge: positionData.alignmentEdge
   };
   // if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
-  //   return {
+  //   return {_isRectangleWithinBounds
   //     elementRectangle: estimatedElementPosition,
   //     targetEdge: positionData.targetEdge,
   //     alignmentEdge: positionData.alignmentEdge
@@ -600,8 +600,6 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint
       targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
     } else if ((target as Element).getBoundingClientRect) {
       targetRectangle = _getRectangleFromElement(target as Element);
-      console.log(targetRectangle);
-      console.log((target as Element).getBoundingClientRect());
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
       const point: IPoint = target as IPoint;
@@ -659,6 +657,8 @@ function _positionElementRelative(
     _getRectangleFromIRect(props.bounds) :
     new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
+  (window.mycanvas as HTMLCanvasElement).getContext('2d').rect(targetRect.left, targetRect.top, targetRect.width, targetRect.height);
+  (window.mycanvas as HTMLCanvasElement).getContext('2d').stroke();
   const positionData: IPositionDirectionalHintData = _getAlignmentData(
     _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
     targetRect,
