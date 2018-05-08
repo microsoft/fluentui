@@ -36,7 +36,8 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   iconName?: string;
 
   /**
-   * Optional styling for the elements within the Icon.
+   * Deprecated: use getStyles.
+   * @deprecated
    */
   styles?: IIconStyles;
 
@@ -77,9 +78,14 @@ export interface IIconStyleProps {
   iconClassName?: string;
   isPlaceholder: boolean;
   isImage: boolean;
+  styles?: Partial<IIconStyles>;
 }
 
 export interface IIconStyles {
   root: IStyle;
+
+  /**
+   * Deprecated. Use 'root'.
+   */
   imageContainer?: IStyle;
 }
