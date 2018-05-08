@@ -639,9 +639,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ev.preventDefault();
       ev.stopPropagation();
     }
-
-    // Note: When enter is pressed, we will let the event continue to propagate
-    // to trigger the onClick event on the button
   }
 
   private _onTouchStart: () => void = () => {
@@ -685,6 +682,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } else if (this.props.menuProps) {
       return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
+
+    // Note: When enter is pressed, we will let the event continue to propagate
+    // to trigger the onClick event on the button
     return false;
   }
 
