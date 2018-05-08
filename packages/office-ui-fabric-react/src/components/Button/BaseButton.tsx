@@ -450,7 +450,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _openMenu = (shouldFocusOnContainer?: boolean): void => {
     if (this.props.menuProps) {
-      const menuProps = {...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
+      const menuProps = { ...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
       if (this.props.persistMenu) {
         menuProps.hidden = false;
       }
@@ -679,13 +679,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _isValidMenuOpenKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
-    } else {
-      if (this._isSplitButton) {
-        return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
-      } else {
-        return ev.which === KeyCodes.enter;
-      }
+    } else if (this.props.menuProps) {
+      return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
+
+    // Note: When enter is pressed, we will let the event continue to propagate
+    // to trigger the onClick event on the button
+    return false;
   }
 
   private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
