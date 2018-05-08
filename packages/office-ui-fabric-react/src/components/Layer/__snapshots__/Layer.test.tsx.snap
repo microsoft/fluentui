@@ -7,7 +7,7 @@ exports[`Layer renders Layer correctly 1`] = `
     onLayerDidMount={[Function]}
     onLayerWillUnmount={[Function]}
   >
-    <PortalLayerBase
+    <LayerBase
       getStyles={[Function]}
       onLayerDidMount={[Function]}
       onLayerWillUnmount={[Function]}
@@ -432,7 +432,7 @@ exports[`Layer renders Layer correctly 1`] = `
           </Fabric>
         </CustomizedFabric>
       </span>
-    </PortalLayerBase>
+    </LayerBase>
   </CustomizedLayer>
 </StyledCustomizedLayer>
 `;

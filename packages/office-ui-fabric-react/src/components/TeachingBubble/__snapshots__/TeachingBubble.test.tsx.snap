@@ -26,7 +26,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
         onLayerDidMount={[Function]}
         onLayerWillUnmount={[Function]}
       >
-        <PortalLayerBase
+        <LayerBase
           getStyles={[Function]}
           onLayerDidMount={[Function]}
           onLayerWillUnmount={[Function]}
@@ -782,7 +782,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
               </Fabric>
             </CustomizedFabric>
           </span>
-        </PortalLayerBase>
+        </LayerBase>
       </CustomizedLayer>
     </StyledCustomizedLayer>
   </Callout>
