@@ -1,18 +1,24 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 
+const ReactDOM = require('react-dom');
+
 describe('Layer', () => {
   it('renders Layer correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
     const component = renderer.create(<Layer>Content</Layer>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    ReactDOM.createPortal.mockClear();
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {

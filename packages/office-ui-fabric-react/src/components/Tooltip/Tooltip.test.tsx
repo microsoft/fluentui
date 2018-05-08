@@ -21,9 +21,17 @@ const defaultCalloutProps: ICalloutProps = {
 
 describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
     const component = renderer.create(<TooltipBase />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    ReactDOM.createPortal.mockClear();
   });
 
   it('uses default documented properties', () => {
