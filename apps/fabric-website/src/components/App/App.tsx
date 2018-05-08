@@ -40,7 +40,7 @@ export class App extends React.Component<IAppProps, any> {
     window.removeEventListener('resize', this._handleNavPositioning);
   }
 
-  public componentWillReceiveProps(nextProps): void {
+  public componentWillReceiveProps(nextProps: IAppProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
