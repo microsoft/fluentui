@@ -1,55 +1,91 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import {
   IDragDropEvents,
   IDragDropContext
 } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { createListItems } from '@uifabric/example-app-base';
 import './DetailsList.DragDrop.Example.scss';
+import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/components/DetailsList';
 
 let _draggedItem: any = null;
 let _draggedIndex = -1;
-
-export class DetailsListDragDropExample extends React.Component<{}, {
-  items: {}[];
-  selectionDetails?: string;
-}> {
+let _items: any[];
+let _columns: IColumn[];
+export class DetailsListDragDropExample extends React.Component<
+  {},
+  {
+    items: {}[];
+    selectionDetails?: string;
+    columns: IColumn[];
+    frozenColumnCount: number;
+  }
+> {
   private _selection: Selection;
 
   constructor(props: {}) {
     super(props);
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
+    this._handleDragDrop = this._handleDragDrop.bind(this);
+    this._getColumnReorderOptions = this._getColumnReorderOptions.bind(this);
 
     this._selection = new Selection();
 
+    _items = _items || createListItems(10, 0);
+    _columns = _buildColumns();
+
     this.state = {
-      items: createListItems(10)
+      items: createListItems(10),
+      columns: _columns,
+      frozenColumnCount: 1
     };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails } = this.state;
+    const { items, selectionDetails, columns } = this.state;
 
     return (
       <div className='detailsListDragDropExample'>
-        <div>{ selectionDetails }</div>
-        <MarqueeSelection selection={ this._selection }>
-          <DetailsList
-            setKey='items'
-            items={ items }
-            selection={ this._selection }
-            selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ this._onItemInvoked }
-            onRenderItemColumn={ this._onRenderItemColumn }
-            dragDropEvents={ this._getDragDropEvents() }
-          />
-        </MarqueeSelection>
+        <div>{selectionDetails}</div>
+        {/* <MarqueeSelection selection={ this._selection }>*/}
+        <DetailsList
+          setKey='items'
+          items={items}
+          columns={columns}
+          selection={this._selection}
+          selectionPreservedOnEmptyClick={true}
+          onItemInvoked={this._onItemInvoked}
+          onRenderItemColumn={this._onRenderItemColumn}
+          dragDropEvents={this._getDragDropEvents()}
+          columnReorderOptions={this._getColumnReorderOptions()}
+        />
+        {/* </MarqueeSelection> */}
       </div>
     );
+  }
+
+  private _handleDragDrop = (draggedIndex: number, targetIndex: number) => {
+    const draggedItems = this.state.columns[draggedIndex];
+    const newColumns: IColumn[] = [...this.state.columns];
+
+    // insert before the dropped item
+    newColumns.splice(draggedIndex, 1);
+    if (draggedIndex < targetIndex) {
+      targetIndex--;
+    }
+    newColumns.splice(targetIndex, 0, draggedItems);
+    this.setState({ columns: newColumns });
+  }
+
+  private _getColumnReorderOptions(): IColumnReorderOptions {
+    return {
+      frozenColumnCount: 1,
+      handleColumnReorder: this._handleDragDrop
+    };
   }
 
   private _getDragDropEvents(): IDragDropEvents {
@@ -101,4 +137,9 @@ export class DetailsListDragDropExample extends React.Component<{}, {
 
     this.setState({ items: items });
   }
+}
+
+function _buildColumns() {
+  const columns = buildColumns(_items, true);
+  return columns;
 }
