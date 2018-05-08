@@ -10,7 +10,6 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
-import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {
 
@@ -663,59 +662,6 @@ describe('ContextualMenu', () => {
       done();
       resolve();
     }).catch(done());
-  });
-
-  it('ContextualMenu menuOpened callback is called only when menu is available', () => {
-    let layerMounted = false;
-    let menuMounted = false;
-    let menuMountedFirst = false;
-    let layerMountedFirst = false;
-
-    // Alter the Layer's prototype so that we can confirm that it mounts before the contextualmenu mounts.
-    /* tslint:disable:no-function-expression */
-    Layer.prototype.componentDidMount = function (componentDidMount): () => void {
-      return function (): void {
-        if (menuMounted) {
-          menuMountedFirst = true;
-        }
-        layerMounted = true;
-        return componentDidMount.call(this);
-      };
-    }(Layer.prototype.componentDidMount);
-    /* tslint:enable:no-function-expression */
-
-    const items: IContextualMenuItem[] = [
-      {
-        name: 'TestText 1',
-        key: 'TestKey1',
-        className: 'testkey1'
-      },
-      {
-        name: 'TestText 2',
-        key: 'TestKey2'
-      },
-    ];
-
-    const onMenuOpened = (): void => {
-      if (layerMounted) {
-        layerMountedFirst = true;
-      }
-      menuMounted = true;
-    };
-
-    ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-      <div>
-        <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
-        <ContextualMenu
-          target='#target'
-          items={ items }
-          onMenuOpened={ onMenuOpened }
-        />
-      </div>
-    );
-    expect(menuMounted).toEqual(true);
-    expect(layerMountedFirst).toEqual(true);
-    expect(menuMountedFirst).toEqual(false);
   });
 
   it('merges callout classNames', () => {
