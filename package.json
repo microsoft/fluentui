@@ -29,8 +29,5 @@
   "license": "MIT",
   "devDependencies": {
     "@microsoft/rush": "4.3.0"
-  },
-  "dependencies": {
-    "jest": "^22.4.3"
   }
 }
