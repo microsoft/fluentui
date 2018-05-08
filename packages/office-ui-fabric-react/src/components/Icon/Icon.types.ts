@@ -36,12 +36,6 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   iconName?: string;
 
   /**
-   * Deprecated: use getStyles.
-   * @deprecated
-   */
-  styles?: IIconStyles;
-
-  /**
    * The aria label of the button for the benefit of screen readers.
    */
   ariaLabel?: string;
@@ -71,6 +65,12 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    * Gets the styles for an Icon.
    */
   getStyles?: IStyleFunction<IIconStyleProps, IIconStyles>;
+
+  /**
+   * Deprecated: use getStyles.
+   * @deprecated
+   */
+  styles?: IIconStyles;
 }
 
 export interface IIconStyleProps {
