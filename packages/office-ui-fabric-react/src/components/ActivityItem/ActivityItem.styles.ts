@@ -22,10 +22,10 @@ const ANIMATION_BORDER_WIDTH = '4px';
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
   customStyles?: IActivityItemStyles,
-  animateBeaconSignal?: IActivityItemProps["animateBeaconSignal"],
-  beaconColorOne?: IActivityItemProps["beaconColorOne"],
-  beaconColorTwo?: IActivityItemProps["beaconColorTwo"],
-  isCompact?: IActivityItemProps["isCompact"]
+  animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'],
+  beaconColorOne?: IActivityItemProps['beaconColorOne'],
+  beaconColorTwo?: IActivityItemProps['beaconColorTwo'],
+  isCompact?: IActivityItemProps['isCompact']
 ): IActivityItemStyles => {
 
   const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
