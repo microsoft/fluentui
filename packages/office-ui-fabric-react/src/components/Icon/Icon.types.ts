@@ -82,7 +82,7 @@ export interface IIconStyleProps {
 }
 
 export interface IIconStyles {
-  root: IStyle;
+  root?: IStyle;
 
   /**
    * Deprecated. Use 'root'.
