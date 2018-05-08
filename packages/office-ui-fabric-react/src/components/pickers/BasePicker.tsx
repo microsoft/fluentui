@@ -9,6 +9,7 @@ import {
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
+import { format } from '../../utilities/string/StringHelper';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
@@ -273,7 +274,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       onRemoveItem: () => this.removeItem(item),
       disabled: disabled,
       onItemChange: this.onItemChange,
-      removeButtonAriaLabel: removeButtonAriaLabel
+      removeButtonAriaLabel: format(removeButtonAriaLabel, item.primaryText)
     }));
   }
 
