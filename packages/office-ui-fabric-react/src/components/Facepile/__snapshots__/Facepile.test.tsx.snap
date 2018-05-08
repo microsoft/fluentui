@@ -227,7 +227,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               top: -2px;
             }
         data="75%"
-        data-is-focusable={false}
+        data-is-focusable={true}
         disabled={undefined}
         onClick={[Function]}
         onMouseMove={[Function]}

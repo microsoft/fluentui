@@ -88,7 +88,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
             &:active .ms-Button-icon {
               color: #004578;
             }
-        data-is-focusable={false}
+        data-is-focusable={true}
         disabled={undefined}
         id="Pivot0-Tab0"
         name=""
@@ -114,8 +114,8 @@ exports[`Pivot renders Pivot correctly 1`] = `
             <span
               className="ms-Pivot-text"
             >
-               
-              
+
+
             </span>
           </span>
         </div>
@@ -190,7 +190,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
             &:active .ms-Button-icon {
               color: #004578;
             }
-        data-is-focusable={false}
+        data-is-focusable={true}
         disabled={undefined}
         id="Pivot0-Tab1"
         name=""
@@ -216,8 +216,8 @@ exports[`Pivot renders Pivot correctly 1`] = `
             <span
               className="ms-Pivot-text"
             >
-               
-              
+
+
             </span>
           </span>
         </div>

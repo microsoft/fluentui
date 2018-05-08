@@ -249,7 +249,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     background-color: #eaeaea;
                     color: #0078d4;
                   }
-              data-is-focusable={false}
+              data-is-focusable={true}
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -611,7 +611,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     background-color: #eaeaea;
                     color: #0078d4;
                   }
-              data-is-focusable={false}
+              data-is-focusable={true}
               disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}

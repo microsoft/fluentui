@@ -87,7 +87,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -104,9 +104,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               black
-               
+
             </div>
           </div>
         </button>
@@ -189,7 +189,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -206,9 +206,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               blue
-               
+
             </div>
           </div>
         </button>
@@ -291,7 +291,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -308,9 +308,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               brown
-               
+
             </div>
           </div>
         </button>
@@ -393,7 +393,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -410,9 +410,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               cyan
-               
+
             </div>
           </div>
         </button>
@@ -495,7 +495,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -512,9 +512,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               green
-               
+
             </div>
           </div>
         </button>
@@ -597,7 +597,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -614,9 +614,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               magenta
-               
+
             </div>
           </div>
         </button>
@@ -699,7 +699,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -716,9 +716,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               mauve
-               
+
             </div>
           </div>
         </button>
@@ -801,7 +801,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -818,9 +818,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               orange
-               
+
             </div>
           </div>
         </button>
@@ -903,7 +903,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -920,9 +920,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               pink
-               
+
             </div>
           </div>
         </button>
@@ -1005,7 +1005,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1022,9 +1022,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               purple
-               
+
             </div>
           </div>
         </button>
@@ -1107,7 +1107,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1124,9 +1124,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               red
-               
+
             </div>
           </div>
         </button>
@@ -1209,7 +1209,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1226,9 +1226,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               rose
-               
+
             </div>
           </div>
         </button>
@@ -1311,7 +1311,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1328,9 +1328,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               violet
-               
+
             </div>
           </div>
         </button>
@@ -1413,7 +1413,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1430,9 +1430,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               white
-               
+
             </div>
           </div>
         </button>
@@ -1515,7 +1515,7 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1532,9 +1532,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 }
           >
             <div>
-               
+
               yellow
-               
+
             </div>
           </div>
         </button>
@@ -1631,7 +1631,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1648,9 +1648,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               black
-               
+
             </div>
           </div>
         </button>
@@ -1733,7 +1733,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1750,9 +1750,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               blue
-               
+
             </div>
           </div>
         </button>
@@ -1835,7 +1835,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1852,9 +1852,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               brown
-               
+
             </div>
           </div>
         </button>
@@ -1937,7 +1937,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -1954,9 +1954,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               cyan
-               
+
             </div>
           </div>
         </button>
@@ -2039,7 +2039,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2056,9 +2056,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               green
-               
+
             </div>
           </div>
         </button>
@@ -2141,7 +2141,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2158,9 +2158,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               magenta
-               
+
             </div>
           </div>
         </button>
@@ -2243,7 +2243,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2260,9 +2260,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               mauve
-               
+
             </div>
           </div>
         </button>
@@ -2345,7 +2345,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2362,9 +2362,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               orange
-               
+
             </div>
           </div>
         </button>
@@ -2447,7 +2447,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2464,9 +2464,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               pink
-               
+
             </div>
           </div>
         </button>
@@ -2549,7 +2549,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2566,9 +2566,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               purple
-               
+
             </div>
           </div>
         </button>
@@ -2651,7 +2651,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2668,9 +2668,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               red
-               
+
             </div>
           </div>
         </button>
@@ -2753,7 +2753,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2770,9 +2770,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               rose
-               
+
             </div>
           </div>
         </button>
@@ -2855,7 +2855,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2872,9 +2872,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               violet
-               
+
             </div>
           </div>
         </button>
@@ -2957,7 +2957,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -2974,9 +2974,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               white
-               
+
             </div>
           </div>
         </button>
@@ -3059,7 +3059,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-          data-is-focusable={false}
+          data-is-focusable={true}
           disabled={undefined}
           onClick={[Function]}
           type="button"
@@ -3076,9 +3076,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 }
           >
             <div>
-               
+
               yellow
-               
+
             </div>
           </div>
         </button>

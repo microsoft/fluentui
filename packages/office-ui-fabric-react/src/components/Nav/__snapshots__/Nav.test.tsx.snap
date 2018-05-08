@@ -152,7 +152,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
-                data-is-focusable={false}
+                data-is-focusable={true}
                 disabled={undefined}
                 onClick={[Function]}
                 rel={undefined}
@@ -207,7 +207,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           vertical-align: middle;
                         }
                   >
-                    
+
                   </div>
                 </div>
               </button>
