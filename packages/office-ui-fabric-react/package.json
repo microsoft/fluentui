@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "5.96.0",
+  "version": "5.96.1",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib-es2015/index.d.ts",
@@ -33,8 +33,9 @@
     "@uifabric/example-app-base": ">=5.11.2 <6.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "es6-promise": "^4.1.0",
+    "enzyme-to-json": "^3.3.3",
     "es6-map": "^0.1.5",
+    "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.12.0",
     "office-ui-fabric-core": ">=9.0.0 <10.0.0",

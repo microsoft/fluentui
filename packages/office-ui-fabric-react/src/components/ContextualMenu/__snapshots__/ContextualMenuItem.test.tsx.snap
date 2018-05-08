@@ -4,7 +4,7 @@ exports[`ContextMenuItemChildren when a checkmark icon renders the component wit
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -134,7 +134,7 @@ exports[`ContextMenuItemChildren when it has a sub menu renders the menu icon 1`
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -285,7 +285,7 @@ exports[`ContextMenuItemChildren when it has icons when it doesnt have iconProps
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -407,7 +407,7 @@ exports[`ContextMenuItemChildren when it has icons when it has iconProps renders
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItem
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",

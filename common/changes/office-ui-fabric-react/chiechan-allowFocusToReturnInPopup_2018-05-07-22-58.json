@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove keytip positioning workaround since Callout positioning was fixed",
+      "comment": "Popup: Added check for onBlur to prevent focus setting focus to be disabled in chrome",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keyou@microsoft.com"
+  "email": "chiechan@microsoft.com"
 }

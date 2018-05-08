@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.96.1",
+      "tag": "office-ui-fabric-react_v5.96.1",
+      "date": "Mon, 07 May 2018 10:28:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "7a6b18c3d7d1edcdf32e16b8c182201e6218d2ed",
+            "comment": "High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "ed172777805802c75f51155564938135995fa88e",
+            "comment": "Keytips: Minor update to improve behavior"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "21f8f5f25e7592af08e9caf45e01fc004721739d",
+            "comment": "Remove keytip positioning workaround since Callout positioning was fixed"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "2ea373d0f35d2ebba56084455987f829e6e72188",
+            "comment": "In the TextField component, The code setting the 'errorMessage' state to an empty string in the _onInputChange member function was removed do to causing the message to flicker."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.96.0",
       "tag": "office-ui-fabric-react_v5.96.0",
       "date": "Fri, 04 May 2018 15:58:39 GMT",

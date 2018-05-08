@@ -87,7 +87,7 @@ export class LayerBasicExample extends BaseComponent<{}, {
     );
   }
 
-  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ showLayer: checked });
   }
 }
