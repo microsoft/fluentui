@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import { MarqueeSelection } from './MarqueeSelection';
 import { Selection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
@@ -17,9 +17,10 @@ describe('MarqueeSelection', () => {
     top.dispatchEvent(dragStart);
     const dragEnd = new MouseEvent('mousedown', { button: 0, buttons: 1, clientX: 100, clientY: 100 });
     top.dispatchEvent(dragEnd);
+    component.update();
 
-    // Create a React element to use for snapshot testing.
-    const tree = renderer.create(React.createElement(component.html()));
+    // Run snapshot test.
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 });
