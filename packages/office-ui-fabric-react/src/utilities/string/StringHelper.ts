@@ -3,7 +3,7 @@ const FORMAT_REGEX = /\{(\d+)\}/g;
 
 /**
  * String Format is like C# string format. Usage Example: "hello {0}!".format("world")
- * will return "hello world". Calling format on a string with less arguments than
+ * will return "hello world!". Calling format on a string with less arguments than
  * specified in the format will substitute "undefined"
  */
 export function format(template: string | undefined, ...values: any[]): string {

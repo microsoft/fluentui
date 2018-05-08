@@ -114,7 +114,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
-   * Aria label for the "X" button in the selected item component.
+   * Aria label for the "X" button in the selected item component.If a format string (for example, "Remove {0}")
+   * is provided, then the primary text of the selected item will be used to fill the string. In this example,
+   * if the selected item is Annie Lindqvest, then the completed aria label would be "Remove Annie Lindqvest".
    * @default ''
    */
   removeButtonAriaLabel?: string;
