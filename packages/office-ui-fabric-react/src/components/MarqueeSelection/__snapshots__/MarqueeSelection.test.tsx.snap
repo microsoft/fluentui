@@ -1,12 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
-<div
-  className=
-
-      {
-        cursor: default;
-        position: relative;
-      }
-/>
-`;
+exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `<<div class="root-33"><div class="dragMask-34"></div><div class="box-35" style="left: 0px; top: 0px; width: 100px; height: 100px;"><div class="boxFill-36"></div></div></div> />`;
