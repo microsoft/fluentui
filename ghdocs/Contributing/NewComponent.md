@@ -135,4 +135,4 @@ For any new component you should think of adding **Unit tests**, **React functio
 
 ### Code Owners
 
-Add yourself to the [Code owners file](../../,github/CODEOWNERS).
+Add yourself to the [Code owners file](../../.github/CODEOWNERS).

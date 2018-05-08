@@ -3,6 +3,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICheckboxClassNames } from './Checkbox.classNames';
+import { IKeytipProps } from '../../Keytip';
 
 /**
  * Checkbox class interface.
@@ -125,6 +126,11 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Custom icon props for the check mark rendered by the checkbox
    */
   checkmarkIconProps?: IIconProps;
+
+  /**
+   * Optional keytip for this checkbox
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface ICheckboxStyles {

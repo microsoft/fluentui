@@ -7,6 +7,9 @@ import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 export interface IDatePicker {
   /** Sets focus to the text field */
   focus(): void;
+
+  /** Reset the state of the picker to the default */
+  reset(): void;
 }
 
 export interface IDatePickerProps extends React.Props<DatePicker> {
@@ -121,6 +124,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   * @defaultvalue false
   */
   highlightCurrentMonth?: boolean;
+
+  /**
+  * Whether the month picker should highlight the selected month
+  * @defaultvalue false
+  */
+  highlightSelectedMonth?: boolean;
 
   /**
   * Whether the calendar should show the week number (weeks 1 to 53) before each week row

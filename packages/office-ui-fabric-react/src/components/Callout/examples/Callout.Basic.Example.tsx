@@ -2,6 +2,9 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import {
+  createRef
+} from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 export interface ICalloutBasicExampleState {
@@ -50,7 +53,7 @@ const styles = mergeStyleSets({
 
 // Example code
 export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampleState> {
-  private _menuButtonElement: HTMLElement | null;
+  private _menuButtonElement = createRef<HTMLElement>();
 
   public constructor(props: {}) {
     super(props);
@@ -65,7 +68,10 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
 
     return (
       <div>
-        <div className={ styles.buttonArea }>
+        <div
+          className={ styles.buttonArea }
+          ref={ this._menuButtonElement }
+        >
           <DefaultButton
             id='toggleCallout'
             onClick={ this._onShowMenuClicked }
@@ -78,7 +84,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
           ariaDescribedBy={ 'callout-description-1' }
           role={ 'alertdialog' }
           gapSpace={ 0 }
-          target={ this._menuButtonElement }
+          target={ this._menuButtonElement.value }
           onDismiss={ this._onCalloutDismiss }
           setInitialFocus={ true }
           hidden={ !this.state.isCalloutVisible }

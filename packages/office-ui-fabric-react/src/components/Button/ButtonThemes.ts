@@ -21,7 +21,13 @@ export function standardStyles(theme: ITheme): IButtonStyles {
 
     rootHovered: {
       backgroundColor: buttonBackgroundHovered,
-      color: buttonTextHovered
+      color: buttonTextHovered,
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'Highlight',
+          color: 'Highlight'
+        }
+      }
     },
 
     rootPressed: {
@@ -58,7 +64,12 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.neutralLighter,
       selectors: {
         ':hover': {
-          backgroundColor: theme.palette.neutralLight
+          backgroundColor: theme.palette.neutralLight,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'Highlight'
+            }
+          }
         }
       },
     },
@@ -114,8 +125,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
-          backgroundColor: 'WindowText',
-          MsHighContrastAdjust: 'none'
+          backgroundColor: 'Highlight'
         }
       }
     },
@@ -175,7 +185,12 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       color: theme.palette.white,
       selectors: {
         ':hover': {
-          backgroundColor: theme.palette.themeDark
+          backgroundColor: theme.palette.themeDark,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'Highlight'
+            }
+          }
         }
       },
     },

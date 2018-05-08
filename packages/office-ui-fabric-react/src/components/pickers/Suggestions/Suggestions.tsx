@@ -29,7 +29,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       onClick,
       className,
       onRemoveItem,
-      isSelectedOverride
+      isSelectedOverride,
+      removeButtonAriaLabel
     } = this.props;
     return (
       <div
@@ -51,8 +52,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
         { this.props.showRemoveButton ? (
           <IconButton
             iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
-            title='Remove'
-            ariaLabel='Remove'
+            title={ removeButtonAriaLabel }
+            ariaLabel={ removeButtonAriaLabel }
             onClick={ onRemoveItem }
             className={ css('ms-Suggestions-closeButton', styles.closeButton) }
           />) : (null)
@@ -325,6 +326,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   private _renderSuggestions(): JSX.Element {
     const {
       onRenderSuggestion,
+      removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
@@ -359,6 +361,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }
               className={ suggestionsItemClassName }
               showRemoveButton={ showRemoveButtons }
+              removeButtonAriaLabel={ removeSuggestionAriaLabel }
               onRemoveItem={ this._onRemoveTypedSuggestionsItem(suggestion.item, index) }
             />
           </div>) }

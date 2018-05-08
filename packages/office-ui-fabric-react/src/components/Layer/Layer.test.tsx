@@ -3,16 +3,16 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 /* tslint:enable:no-unused-variable */
-import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 
 describe('Layer', () => {
   it('renders Layer correctly', () => {
-    const component = renderer.create(<Layer>Content</Layer>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const component = mount(<Layer>Content</Layer>);
+    expect(toJson(component)).toMatchSnapshot();
   });
 
   it('can render in a targeted LayerHost and pass context through', () => {

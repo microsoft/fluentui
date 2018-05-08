@@ -38,7 +38,7 @@ export class FormValidationExample extends React.Component<{}, IFormValidationEx
             inputKey='date'
             validators={ [(value: Date) => {
               if (value) {
-                let date = new Date();
+                const date = new Date();
                 date.setDate(date.getDate() - 1);
                 if (value.getTime() < date.getTime()) {
                   return 'Date must be today or later';

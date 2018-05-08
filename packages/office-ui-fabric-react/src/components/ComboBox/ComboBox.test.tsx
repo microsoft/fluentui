@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
@@ -39,6 +36,24 @@ describe('ComboBox', () => {
     };
     const component = renderer.create(
       <ComboBox options={ DEFAULT_OPTIONS } />,
+      { createNodeMock }
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a ComboBox with a Keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const createNodeMock = (el: React.ReactElement<{}>) => {
+      return {
+        __events__: {}
+      };
+    };
+    const component = renderer.create(
+      <ComboBox options={ DEFAULT_OPTIONS } keytipProps={ keytipProps } />,
       { createNodeMock }
     );
     const tree = component.toJSON();
@@ -381,6 +396,32 @@ describe('ComboBox', () => {
     buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
     expect(returnUndefined.mock.calls.length).toBe(1);
+  });
+
+  it('Call onMenuOpened when touch start on the input', () => {
+    let comboBoxRoot;
+    let inputElement;
+    const returnUndefined = jest.fn();
+
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS2 }
+        onMenuOpen={ returnUndefined }
+        allowFreeform={ true }
+      />);
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+
+    inputElement = comboBoxRoot.find('input');
+
+    // in a normal scenario, when we do a touchstart we would also cause a
+    // click event to fire. This doesn't happen in the simulator so we're
+    // manually adding this in.
+    inputElement.simulate('touchstart');
+    inputElement.simulate('click');
+
+    expect(wrapper.find('.is-open').length).toEqual(1);
   });
 
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {

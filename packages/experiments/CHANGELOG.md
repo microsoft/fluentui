@@ -1,6 +1,66 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+This log was last generated on Fri, 04 May 2018 15:58:38 GMT and should not be manually modified.
+
+## 5.37.0
+Fri, 04 May 2018 15:58:38 GMT
+
+### Minor changes
+
+- Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links
+
+### Patches
+
+- Updating React build version.
+
+## 5.36.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Remove Keytips from experiments package
+
+## 5.35.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- remove extendedPicker, floatingPicker, and selectedItemsList from experiments
+- Command bar accessibility: one tab stop with aria label
+
+## 5.34.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Nav: Refactored out a NavLink component.
+
+## 5.33.1
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Patches
+
+- Fix bad aria-label prop in Tile
+
+## 5.33.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+### Patches
+
+- Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package.
+- Fix index import
+
+## 5.32.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- Add delete callback, expose item change methods on SelectedItemsList
+- Shimmer: adding two new props and deprecating another one.
 
 ## 5.31.4
 Thu, 19 Apr 2018 18:25:59 GMT

@@ -197,7 +197,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const cells: ITileCell<TItem>[] = items || [];
 
-    let grids: React.ReactNode[] = [];
+    const grids: React.ReactNode[] = [];
 
     const previousCell = this.state.cells[page.startIndex - 1];
     const nextCell = this.state.cells[page.startIndex + page.itemCount];
@@ -287,8 +287,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         };
 
         if (cell.isPlaceholder && grid.mode !== TilesGridMode.none) {
-          let cellsPerRow = Math.floor(width / (grid.spacing + finalSize.width));
-          let totalPlaceholderItems = cellsPerRow * ROW_OF_PLACEHOLDER_CELLS;
+          const cellsPerRow = Math.floor(width / (grid.spacing + finalSize.width));
+          const totalPlaceholderItems = cellsPerRow * ROW_OF_PLACEHOLDER_CELLS;
           shimmerWrapperWidth = (cellsPerRow * finalSize.width) + (grid.spacing * (cellsPerRow - 1));
           for (let j = 0; j < totalPlaceholderItems; j++) {
             renderedCells.push(renderedCell(j));
@@ -330,7 +330,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             <Shimmer
               key={ i }
               isBaseStyle={ true }
-              width={ shimmerWrapperWidth }
+              widthInPixel={ shimmerWrapperWidth }
             >
               { finalGrid }
             </Shimmer>
