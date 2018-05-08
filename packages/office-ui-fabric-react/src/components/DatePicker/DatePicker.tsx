@@ -21,7 +21,7 @@ import {
 } from '../../Utilities';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import * as stylesImport from './DatePicker.scss';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 const styles: any = stylesImport;
 
 export interface IDatePickerState {
