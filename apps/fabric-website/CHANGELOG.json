@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.7.4",
+      "tag": "@uifabric/fabric-website_v5.7.4",
+      "date": "Tue, 08 May 2018 16:02:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d3a85ba759d58bd74e4a1741ab73b729c96fa637",
+            "comment": "When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.3",
       "tag": "@uifabric/fabric-website_v5.7.3",
       "date": "Fri, 04 May 2018 15:58:39 GMT",
