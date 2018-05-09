@@ -55,10 +55,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     return (
       <div className={ this._classNames.root }>
         <div className={ this._classNames.shimmerWrapper }>
-          { !!isBaseStyle ? children : renderedElements }
+          { isBaseStyle ? children : renderedElements }
         </div>
-
-        { !!isDataLoaded &&
+        { isDataLoaded &&
           <div className={ this._classNames.dataWrapper }>
             { !!children ? children : null }
           </div>

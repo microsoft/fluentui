@@ -36,9 +36,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         position: 'relative',
         minHeight: rowHeight ? `${rowHeight}px` : '16px'
       },
-      isBaseStyle && {
-        minHeight: 'inherit'
-      },
       className
     ],
     shimmerWrapper: [
