@@ -176,6 +176,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
 
   /**
+   * Callback for when the contextualmenu is being closed (removing from the DOM)
+   */
+  onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
+
+  /**
    * Pass in custom callout props
    */
   calloutProps?: ICalloutProps;
