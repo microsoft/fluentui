@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ChicletCardBase } from './ChicletCard.base';
 import { ITheme, IStyle } from '../../Styling';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IStyleFunction } from '../../Utilities';
 
 export interface IChicletCard {
@@ -71,14 +70,9 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Actions to render
+   * Footer to render for the component.
    */
-  actions?: IChicletAction[] | undefined;
-
-  /**
-   * Styling for the ChicletCard.
-   */
-  styles?: IChicletCardStyles;
+  footer?: React.ReactElement<any>;
 
   /**
    * Theme for the component.
@@ -110,16 +104,4 @@ export interface IChicletCardStyleProps {
    * Accept custom classNames
    */
   className?: string;
-}
-
-export interface IChicletAction {
-  /**
-   * Icon to render
-   */
-  buttonProps: IButtonProps;
-
-  /**
-   * Function to call when the action is clicked.
-   */
-  onClick?: (ev?: any) => void;
 }

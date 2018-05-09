@@ -5,10 +5,9 @@ import {
   customizable,
   classNamesFunction
 } from '../../Utilities';
-import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps, IChicletAction } from './ChicletCard.types';
+import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
 import { mergeStyles } from '../../Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from 'office-ui-fabric-react/src/common/TestImages';
 
@@ -16,10 +15,10 @@ const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardSty
 
 @customizable('ChicletCardBase', ['theme'])
 export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
-  private _classNames: {[key in keyof IChicletCardStyles]: string};
+  private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render() {
-    const { styles: customStyles, title, ogType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, className, actions, theme, getStyles } = this.props;
+    const { title, ogType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, getStyles } = this.props;
     const actionable = (onClick) ? true : false;
 
     this._classNames = getClassNames(getStyles, { theme: theme! });
@@ -63,7 +62,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
           >
             { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
           </div>
-          { actions ? this._renderFooter(actions) : (null) }
+          { footer }
         </div>
       </div>
     );
@@ -97,20 +96,6 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
       <div>
         { image }
         { icon }
-      </div>
-    );
-  }
-
-  private _renderFooter(actions: IChicletAction[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    return (
-      <div className={ mergeStyles(this._classNames.actions) }>
-        { actions && actions.map((action, index) => {
-          return (
-            <div className={ mergeStyles(this._classNames.action) } key={ index }>
-              <IconButton { ...action.buttonProps } />
-            </div>
-          );
-        }) }
       </div>
     );
   }

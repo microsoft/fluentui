@@ -1,0 +1,16 @@
+@import '~office-ui-fabric-react/src/common/common';
+
+.footer {
+  padding-right: 6px;
+  height: 24px;
+  position: relative;
+}
+
+.action {
+  float: right;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  color: #0078D7;
+}

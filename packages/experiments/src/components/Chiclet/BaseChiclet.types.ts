@@ -37,9 +37,9 @@ export interface IBaseChicletProps extends React.Props<BaseChicletBase> {
   size?: ChicletSize;
 
   /**
-   * Action icon buttons to render.
+   * Footer to render for the component.
    */
-  actions?: string[];
+  footer?: React.ReactElement<any>
 
   /**
    * Theme for the component.

@@ -102,25 +102,6 @@ export const getStyles = (
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'
       }
-    ],
-    actions: [
-      'ms-ChicletFooter',
-      {
-        paddingRight: '6px',
-        height: '24px',
-        position: 'relative'
-      }
-    ],
-    action: [
-      'ms-ChicletFooter-action',
-      {
-        float: 'right',
-        cursor: 'pointer',
-        width: '32px',
-        height: '32px',
-        backgroundColor: palette.white,
-        color: '#0078D7'
-      }
     ]
   });
 };
