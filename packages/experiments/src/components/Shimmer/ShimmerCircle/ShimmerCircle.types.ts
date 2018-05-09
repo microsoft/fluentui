@@ -30,7 +30,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IShimmerCircleStyleProps, IShimmerCircleStyles>;
+  getStyles?: IStyleFunctionOrObject<IShimmerCircleStyleProps, IShimmerCircleStyles>;
 }
 
 export interface IShimmerCircleStyleProps {

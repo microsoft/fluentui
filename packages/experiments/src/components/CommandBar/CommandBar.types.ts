@@ -73,7 +73,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
-  styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
+  getStyles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
    * Custom styles to be mixed into individual button styles
