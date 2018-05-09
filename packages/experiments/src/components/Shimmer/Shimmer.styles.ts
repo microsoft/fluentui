@@ -8,7 +8,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     isDataLoaded,
     isBaseStyle,
     widthInPercentage,
-    widthInPixel
+    widthInPixel,
+    className
   } = props;
 
   const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
@@ -33,17 +34,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       'ms-Shimmer-container',
       {
         position: 'relative',
-        margin: '10px',
-        width: 'auto',
-        boxSizing: 'content-box',
         minHeight: rowHeight ? `${rowHeight}px` : '16px'
       },
       isBaseStyle && {
-        margin: '0',
-        minHeight: 'inherit',
-        display: 'flex',
-        alignItems: 'center'
-      }
+        minHeight: 'inherit'
+      },
+      className
     ],
     shimmerWrapper: [
       'ms-Shimmer-shimmerWrapper',
@@ -57,7 +53,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         alignItems: 'center',
         alignContent: 'space-between',
         width: ACTUAL_WIDTH,
-        height: 'auto',
         boxSizing: 'border-box',
         background: `${DefaultPalette.neutralLighter}
                     linear-gradient(

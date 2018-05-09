@@ -1,10 +1,12 @@
 import * as React from 'react';
+
 import {
   Shimmer,
   getRenderedElements,
   ShimmerElementType as ElemType,
   ShimmerElementVerticalAlign as ElemVerticalAlign
 } from '@uifabric/experiments/lib/Shimmer';
+
 import './Shimmer.Example.scss';
 
 export class ShimmerBasicExample extends React.Component<{}, {}> {
@@ -16,8 +18,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
 
     return (
-      // tslint:disable-next-line:jsx-ban-props
-      <div style={ { padding: '2px' } }>
+      <div className='shimmerBasicExample-container'>
         Generic Shimmer with no elements provided.
         <Shimmer />
         <Shimmer
@@ -79,7 +80,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
           ] }
         />
         Split line examples.
-        <div className='shimmerBasicExample-wrapper'>
+        <div>
           <Shimmer
             isBaseStyle={ true }
             widthInPixel={ 350 }
@@ -106,7 +107,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             </div>
           </Shimmer>
         </div>
-        <div className='shimmerBasicExample-wrapper'>
+        <div>
           <Shimmer
             isBaseStyle={ true }
             widthInPixel={ 550 }

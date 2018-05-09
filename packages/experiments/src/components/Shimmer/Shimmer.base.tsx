@@ -40,13 +40,14 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       isDataLoaded,
       isBaseStyle,
       widthInPercentage,
-      widthInPixel
+      widthInPixel,
+      className
     } = this.props;
 
     const rowHeight: number | undefined = lineElements ? findMaxElementHeight(lineElements) : undefined;
 
     this._classNames = getClassNames(getStyles!, {
-      width, rowHeight, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel
+      width, rowHeight, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel, className
     });
 
     const renderedElements: React.ReactNode = getRenderedElements(lineElements, rowHeight);

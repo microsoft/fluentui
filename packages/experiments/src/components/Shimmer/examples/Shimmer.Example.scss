@@ -1,4 +1,12 @@
 :global {
+  .shimmerBasicExample-container {
+    padding: 2px;
+
+    .ms-Shimmer-container {
+      margin: 10px 0;
+    }
+  }
+
   .hoverCardExample-compactCard {
     display: flex;
     align-items: center;
@@ -21,9 +29,5 @@
     .ms-Toggle {
       margin-right: 30px;
     }
-  }
-
-  .shimmerBasicExample-wrapper {
-    margin: 10px;
   }
 }
