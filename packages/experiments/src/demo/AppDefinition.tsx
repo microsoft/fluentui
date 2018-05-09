@@ -11,12 +11,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
-          key: 'CommandBar',
-          name: 'CommandBar',
-          url: '#/examples/commandbar'
-        },
-        {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
           key: 'FolderCover',
           name: 'FolderCover',
