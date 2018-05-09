@@ -196,7 +196,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={ this._targetButton.current }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.leftTopEdge
+              directionalHint: DirectionalHint.topAutoEdge
             } }
           >
             <TeachingBubbleContent
@@ -213,7 +213,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={ '[data-coachmarkid="testing"]' }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.rightTopEdge
+              directionalHint: DirectionalHint.topRightEdge
             } }
           >
             {

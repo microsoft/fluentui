@@ -3,6 +3,11 @@ import * as React from 'react';
 import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 
+import {
+  IPositionedData,
+  RectangleEdge
+} from 'office-ui-fabric-react/lib/utilities/positioning';
+
 // Component Dependencies
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
@@ -74,6 +79,8 @@ export interface ICoachmarkState {
    * The bottom position of the beak
    */
   beakBottom?: string;
+
+  targetAlignment?: RectangleEdge;
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
@@ -85,7 +92,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     width: 32,
     height: 32,
-    color: DefaultPalette.themePrimary
+    color: DefaultPalette.themePrimary,
+    positioningContainerProps: {
+      directionalHint: DirectionalHint.bottomAutoEdge
+    }
   };
 
   /**
@@ -95,6 +105,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   private _entityInnerHostElement = createRef<HTMLDivElement>();
   private _translateAnimationContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
+  private _targetAlignment: RectangleEdge | undefined;
 
   constructor(props: ICoachmarkTypes) {
     super(props);
@@ -175,12 +186,18 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       color: color
     });
 
+    const finalHeight = (this._entityInnerHostElement && this._entityInnerHostElement.current) ?
+      this._entityInnerHostElement.current.offsetHeight :
+      0;
+
     return (
       <PositioningContainer
         target={ target }
         offsetFromTarget={ beakHeight }
         componentRef={ this._positioningContainer }
         doNotLayer={ true }
+        finalHeight={ finalHeight }
+        onPositioned={ this._onPositioned }
         { ...positioningContainerProps }
       >
         <div className={ classNames.root }>
@@ -225,39 +242,48 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public componentWillReceiveProps(newProps: ICoachmarkTypes): void {
     if (this.props.collapsed && !newProps.collapsed) {
       // The coachmark is about to open
-      // this._openCoachmark();
+      this._openCoachmark();
     }
   }
 
   public componentDidMount(): void {
     this._async.requestAnimationFrame(((): void => {
       if (this._entityInnerHostElement.current && (this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
-
-
         let beakLeft;
         let beakTop;
         let beakRight;
         let beakBottom;
-        // @TODO Eventually we need to add the various directions
 
         const distanceAdjustment = 3;
 
         switch (this._beakDirection) {
           case BeakDirection.Top:
-            beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
-            beakTop = distanceAdjustment;
-            break;
-          case BeakDirection.Left:
-            beakTop = (this.props.width! / 2) - (this.props.beakWidth! / 2);
-            beakLeft = distanceAdjustment;
+            if (!this._targetAlignment) {
+              beakLeft = `calc(50% - ${BEAK_WIDTH / 2}px)`
+            } else if (this._targetAlignment === RectangleEdge.left) {
+              beakLeft = `calc(${this.props.width! / 2}px - ${BEAK_WIDTH / 2}px)`;
+            } else {
+              beakRight = `calc(${this.props.width! / 2}px - ${BEAK_WIDTH / 2}px)`;
+            }
+            beakTop = distanceAdjustment + 'px';
             break;
           case BeakDirection.Bottom:
-            beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
-            beakBottom = distanceAdjustment;
+            if (!this._targetAlignment) {
+              beakLeft = `calc(50% - ${BEAK_WIDTH / 2}px)`
+            } else if (this._targetAlignment === RectangleEdge.left) {
+              beakLeft = `calc(${this.props.width! / 2}px - ${BEAK_WIDTH / 2}px)`;
+            } else {
+              beakRight = `calc(${this.props.width! / 2}px - ${BEAK_WIDTH / 2}px)`;
+            }
+            beakBottom = distanceAdjustment + 'px';
+            break;
+          case BeakDirection.Left:
+            beakTop = `calc(50% - ${BEAK_WIDTH / 2}px)`;
+            beakLeft = distanceAdjustment + 'px';
             break;
           case BeakDirection.Right:
-            beakTop = (this.props.width! / 2) - (this.props.beakWidth! / 2);
-            beakRight = distanceAdjustment;
+            beakTop = `calc(50% - ${BEAK_WIDTH / 2}px)`;
+            beakRight = distanceAdjustment + 'px';
             break;
         }
 
@@ -267,12 +293,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             width: this._entityInnerHostElement.current.offsetWidth,
             height: this._entityInnerHostElement.current.offsetHeight
           },
-          beakLeft: !!beakLeft ? (beakLeft + 'px') : '',
-          beakTop: !!beakTop ? (beakTop + 'px') : '',
-          beakBottom: !!beakBottom ? (beakBottom + 'px') : '',
-          beakRight: !!beakRight ? (beakRight + 'px') : ''
-        }, () => {
-          console.log(this.state);
+          beakLeft: beakLeft,
+          beakRight: beakRight,
+          beakBottom: beakBottom,
+          beakTop: beakTop
         });
 
         this.forceUpdate();
@@ -286,7 +310,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _onFocusHandler = (): void => {
-    // this._openCoachmark();
+    this._openCoachmark();
+  }
+
+  private _onPositioned = (positionData: IPositionedData): void => {
+    this._targetAlignment = positionData.alignmentEdge;
   }
 
   private _openCoachmark = (): void => {

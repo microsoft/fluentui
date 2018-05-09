@@ -169,9 +169,6 @@ export class PositioningContainer
       <div
         ref={ this._positionedHost }
         className={ css('ms-PositioningContainer', styles.container) }
-        style={ {
-          outline: '1px solid blue'
-        } }
       >
         <div
           className={
@@ -297,11 +294,15 @@ export class PositioningContainer
         this._positionAttempts++;
         this.setState({
           positions: newPositions
+        }, () => {
+          if (onPositioned) {
+            onPositioned(newPositions);
+          }
         });
       } else {
         this._positionAttempts = 0;
         if (onPositioned) {
-          onPositioned();
+          onPositioned(newPositions);
         }
       }
     }
@@ -407,7 +408,7 @@ export class PositioningContainer
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff
+          // heightOffset: this.state.heightOffset! + scrollDiff
         });
 
         if (positioningContainerMainElem.offsetHeight < this.props.finalHeight!) {

@@ -5,7 +5,7 @@ import {
   IPoint,
   IRectangle
 } from '../../../Utilities';
-import { ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ICalloutPositon, IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IPositioningContainer {
 }
@@ -130,7 +130,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   /**
    * Optional callback that is called once the positioningContainer has been correctly positioned.
    */
-  onPositioned?: () => void;
+  onPositioned?: (positiong: IPositionedData) => void;
 
   /**
    * Callback when the positioningContainer tries to close.
