@@ -87,6 +87,15 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
               {
                 borderColor: pillBorderHoveredColor
               }
+            ],
+            ':hover .ms-Toggle-thumb': [
+              {
+                selectors: {
+                  [HighContrastSelector]: {
+                    borderColor: 'Highlight'
+                  }
+                }
+              }
             ]
           }
         },
@@ -101,7 +110,12 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
               ':hover': [
                 {
                   backgroundColor: pillCheckedHoveredBackground,
-                  borderColor: 'transparent'
+                  borderColor: 'transparent',
+                  selectors: {
+                    [HighContrastSelector]: {
+                      backgroundColor: 'Highlight'
+                    }
+                  }
                 }
               ],
               [HighContrastSelector]: {
