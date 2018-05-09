@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 May 2018 10:28:20 GMT and should not be manually modified.
+This log was last generated on Tue, 08 May 2018 18:18:47 GMT and should not be manually modified.
+
+## 5.97.1
+Tue, 08 May 2018 18:18:47 GMT
+
+### Patches
+
+- BaseButton: Allow Alt + Down on menu buttons to open the menu
+
+## 5.97.0
+Tue, 08 May 2018 10:17:01 GMT
+
+### Minor changes
+
+- Remove redundant defaultSelectedItem prop for BaseExtendedPicker
+- Icon: undoing breaking change with regards to making `IIconStyles.root` required, adding tests to ensure backwards compatibility.
+- Mark Slider's ValuePosition enum as deprecated as it is unused.
+- Add ContextualMenuItem functions to open and close menus
+- Fixes issue where focus isn't displayed correctly on the contextual mneu
+- SearchBox: New prop for turning off icon animation.
+- Layer: Use React Portals if available
+
+### Patches
+
+- Popup: Added check for onBlur to prevent focus setting focus to be disabled in chrome
+- Fix breadcrumb rendering issue when overflow index is at last
 
 ## 5.96.1
 Mon, 07 May 2018 10:28:20 GMT

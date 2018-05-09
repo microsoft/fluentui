@@ -2,6 +2,88 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.97.1",
+      "tag": "office-ui-fabric-react_v5.97.1",
+      "date": "Tue, 08 May 2018 18:18:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "be99bf8e02cc50a6c6f9c94df51b9a6ffcfa530c",
+            "comment": "BaseButton: Allow Alt + Down on menu buttons to open the menu"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.97.0",
+      "tag": "office-ui-fabric-react_v5.97.0",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "494ed863f267a642d00e6f982f38d6971a6a59f9",
+            "comment": "ActivityItem: Fix a previous breaking change in getStyles. Passing specific props at the end instead of general props at the beginning."
+          }
+        ],
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "4fe46b80ebb61c25519617c2cedd1e756c6487f0",
+            "comment": "Remove redundant defaultSelectedItem prop for BaseExtendedPicker"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2220e7507f7d32a73c270409457c5681ca505e3b",
+            "comment": "Icon: undoing breaking change with regards to making `IIconStyles.root` required, adding tests to ensure backwards compatibility."
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "38edb8e411d9938499836f0cd591270bf1eef5b7",
+            "comment": "Mark Slider's ValuePosition enum as deprecated as it is unused."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "daa7b6966c7fc0e52cdfd9e7ac8ab902a3810f9d",
+            "comment": "Add ContextualMenuItem functions to open and close menus"
+          },
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "8b36d24d49c2581bbf67bceeabbdd252fca77844",
+            "comment": "Fixes issue where focus isn't displayed correctly on the contextual mneu"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "24ce65466c9c0a64a98042b96c7129bc3737d0c4",
+            "comment": "SearchBox: New prop for turning off icon animation."
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "0283f2a4f9465a7aad3039ce6f8d98848f9a2521",
+            "comment": "Layer: Use React Portals if available"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "c6b758901e9515c404e50675b1fde8ed6fc1db93",
+            "comment": "Popup: Added check for onBlur to prevent focus setting focus to be disabled in chrome"
+          },
+          {
+            "author": "Karthik Balasubramanian <karthikb87@gmail.com>",
+            "commit": "3ba4f92926b02ea6992145d970e8ba46f4888ca8",
+            "comment": "Fix breadcrumb rendering issue when overflow index is at last"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.2 <6.0.0` to `>=5.11.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.96.1",
       "tag": "office-ui-fabric-react_v5.96.1",
       "date": "Mon, 07 May 2018 10:28:20 GMT",
