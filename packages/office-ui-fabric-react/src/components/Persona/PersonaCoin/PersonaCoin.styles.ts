@@ -187,7 +187,7 @@ export const getStyles = (
         borderRadius: '50%',
         color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
         fontSize: FontSizes.large,
-        fontWeight: props.showUnknownPersonaCoin ? FontWeights.semibold : FontWeights.regular,
+        fontWeight: FontWeights.regular,
         lineHeight: '46px',
         height: personaSize.size48,
 

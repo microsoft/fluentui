@@ -46,7 +46,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Rendering custom coin' code={ PersonaCustomCoinRenderExampleCode }>
               <PersonaCustomCoinRenderExample />
             </ExampleCard>
-            <ExampleCard title='Rendering custom coin' code={ UnknownPersonaExampleCode }>
+            <ExampleCard title='Rendering unknown persona coin' code={ UnknownPersonaExampleCode }>
               <UnknownPersonaExample />
             </ExampleCard>
           </div>

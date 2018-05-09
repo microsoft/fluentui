@@ -54,8 +54,6 @@ export interface IPersonaState {
   isImageError?: boolean;
 }
 
-const unknownPersonaInitialsText = '?';
-
 /**
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
@@ -202,9 +200,13 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     } = props;
 
+    if (showUnknownPersonaCoin) {
+      return <Icon iconName='Help' />;
+    }
+
     const isRTL = getRTL();
 
-    imageInitials = (showUnknownPersonaCoin && unknownPersonaInitialsText) || imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
+    imageInitials = imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
 
     return (
       imageInitials !== ''

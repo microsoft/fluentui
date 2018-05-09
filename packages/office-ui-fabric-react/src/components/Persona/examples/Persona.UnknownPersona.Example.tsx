@@ -10,11 +10,12 @@ export class UnknownPersonaExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div className='ms-PersonaExample'>
-          <Persona
-            showUnknownPersonaCoin={true}
-            primaryText='Maor Sharett'
-            secondaryText='Designer'
-          />
+        <Persona
+          showUnknownPersonaCoin={true}
+          primaryText='Maor Sharett'
+          secondaryText='Designer'
+          size={PersonaSize.size40}
+        />
 
         <Persona
           showUnknownPersonaCoin={true}
