@@ -3,7 +3,6 @@ import * as React from 'react';
 import { CommandBar, ICommandBarProps } from 'office-ui-fabric-react/lib/CommandBar';
 import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-
 export class CommandBarButtonAsExample extends React.Component<ICommandBarProps, {}> {
 
   constructor(props: ICommandBarProps) {
