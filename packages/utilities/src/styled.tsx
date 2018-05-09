@@ -2,8 +2,10 @@ import * as React from 'react';
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { IStyleFunction } from './IStyleFunction';
 
+export type IStyleFunctionOrObject<TStyleProps, TStyles> = IStyleFunction<TStyleProps, TStyles> | TStyles;
+
 export interface IPropsWithStyles<TStyleProps, TStyles> {
-  getStyles?: IStyleFunction<TStyleProps, TStyles>;
+  getStyles?: IStyleFunctionOrObject<TStyleProps, TStyles>;
   subComponents?: {
     [key: string]: IStyleFunction<{}, {}>;
   };
@@ -39,7 +41,11 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
       styleProps: TStyleProps
     ) => concatStyleSets(
       getBaseStyles && getBaseStyles(styleProps),
-      componentProps && componentProps.getStyles && componentProps.getStyles(styleProps)
+      componentProps && componentProps.getStyles && (
+        typeof componentProps.getStyles === 'function' ?
+          componentProps.getStyles(styleProps)
+          : componentProps.getStyles
+      )
     );
     const additionalProps = getProps ? getProps(componentProps) : {};
 

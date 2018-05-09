@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../Icon';
-import { IRenderFunction, IStyleFunction, IComponentAs } from '../../Utilities';
+import { IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
 import { ITheme } from '../../Styling';
 
@@ -65,7 +65,7 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
    */
   overflowIndex?: number;
 
-  getStyles?: IStyleFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+  getStyles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
   theme?: ITheme;
 }
 

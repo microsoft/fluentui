@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IColorPickerGridCellProps {
   /**
@@ -67,7 +67,7 @@ export interface IColorPickerGridCellProps {
   /**
   * Optional styles for the component.
   */
-  getStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+  getStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
    * Optional, mouseEnter handler.

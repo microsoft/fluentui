@@ -2,10 +2,10 @@ import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
+  IStyleFunctionOrObject
 } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
-import { IStyleFunction } from '../../Utilities';
 
 export interface ICallout {
 
@@ -181,7 +181,7 @@ export interface ICalloutProps {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles>;
+  getStyles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
 
   /**
    * If specified, renders the Callout in a hidden state.

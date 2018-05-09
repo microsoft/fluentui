@@ -1,6 +1,6 @@
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction, IPoint } from '../../Utilities';
+import { IStyleFunctionOrObject, IPoint } from '../../Utilities';
 
 export interface IKeytip {
 }
@@ -81,9 +81,9 @@ export interface IKeytipProps {
   /**
    * Optional styles for the component.
    *
-   * @type {IStyleFunction<IKeytipStyleProps, IKeytipStyles>}
+   * @type {IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>}
    */
-  getStyles?: IStyleFunction<IKeytipStyleProps, IKeytipStyles>;
+  getStyles?: IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>;
 
   /**
    * Offset x and y for the keytip, added from the top-left corner

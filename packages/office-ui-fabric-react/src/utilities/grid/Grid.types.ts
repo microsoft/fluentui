@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IGrid { }
 
@@ -66,7 +66,7 @@ export interface IGridProps {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
+  getStyles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
 }
 
 /**

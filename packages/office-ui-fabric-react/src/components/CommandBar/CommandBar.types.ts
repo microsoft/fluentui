@@ -4,7 +4,7 @@ import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu'
 import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction, IComponentAs } from '../../Utilities';
+import { IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 
 export interface ICommandBar {
   /**
@@ -104,7 +104,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
-  getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
+  getStyles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
    * Theme provided by HOC.

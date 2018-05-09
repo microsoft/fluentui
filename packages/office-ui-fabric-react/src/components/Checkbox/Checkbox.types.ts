@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 import { IKeytipProps } from '../../Keytip';
 
@@ -104,7 +104,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   /**
   * Call to provide customized styling that will layer on top of the variant rules.
   */
-  getStyles?: IStyleFunction<ICheckboxStyleProps, ICheckboxStyles>;
+  getStyles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
 
   /**
    * Custom render function for the label.

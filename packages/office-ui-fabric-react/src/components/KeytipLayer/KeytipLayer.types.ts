@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle } from '../../Styling';
 import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
@@ -59,7 +59,7 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   /**
    * getStyles function for KeytipLayer
    */
-  getStyles?: IStyleFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>;
+  getStyles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
 
 export interface IKeytipLayerStyles {

@@ -33,7 +33,6 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
       getStyles,
       iconName,
       imageErrorAs,
-      styles,
     } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
@@ -44,7 +43,6 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
       iconClassName,
       isImage,
       isPlaceholder,
-      styles
     });
 
     const containerProps = ariaLabel ?

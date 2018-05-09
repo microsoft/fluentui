@@ -3,7 +3,7 @@ import { IRenderFunction } from '../../Utilities';
 import { PersonaBase } from './Persona.base';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IPersona {
 
@@ -139,7 +139,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of variant rules
    */
-  getStyles?: IStyleFunction<IPersonaStyleProps, IPersonaStyles>;
+  getStyles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
 
   /**
    * Optional custom renderer for the primary text.
@@ -215,7 +215,7 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>;
+  getStyles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
 
   /**
    * Additional css class to apply to the PersonaCoin
@@ -259,7 +259,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
+  getStyles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
 }
 
 export interface IPersonaPresenceStyleProps {
