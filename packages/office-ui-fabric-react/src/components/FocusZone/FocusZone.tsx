@@ -192,7 +192,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   public focusElement(element: HTMLElement): boolean {
     const { onBeforeFocus } = this.props;
-    // const { onBeforeFocus, onActiveElementChanged } = this.props;
 
     if (onBeforeFocus && !onBeforeFocus(element)) {
       return false;

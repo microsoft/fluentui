@@ -134,6 +134,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    */
   checkForNoWrap?: boolean;
 
+  /**
+   * Whether the FocusZone should allow focus events to propagate past the FocusZone
+   */
   doNotAllowFocusEventToPropagate?: boolean;
 }
 
