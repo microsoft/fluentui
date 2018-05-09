@@ -133,6 +133,8 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * @default false
    */
   checkForNoWrap?: boolean;
+
+  doNotAllowFocusEventToPropagate?: boolean;
 }
 
 export const enum FocusZoneTabbableElements {

@@ -192,6 +192,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   public focusElement(element: HTMLElement): boolean {
     const { onBeforeFocus } = this.props;
+    // const { onBeforeFocus, onActiveElementChanged } = this.props;
 
     if (onBeforeFocus && !onBeforeFocus(element)) {
       return false;
@@ -210,7 +211,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
-    const { onActiveElementChanged } = this.props;
+    const { doNotAllowFocusEventToPropagate } = this.props;
 
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
       this._activeElement = ev.target as HTMLElement;
@@ -226,8 +227,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
       }
     }
-    if (onActiveElementChanged) {
-      onActiveElementChanged(this._activeElement as HTMLElement, ev);
+
+    if (doNotAllowFocusEventToPropagate) {
+      ev.stopPropagation();
     }
   }
 
