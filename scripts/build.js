@@ -74,7 +74,8 @@ function removeDisabledTasks(disabledTasks = []) {
 
 function getTaskListAndTaskMap(process) {
   const allTasks = [
-    ['copy', 'sass'],
+    ['copy'],
+    ['sass'],
     ['ts'],
     ['tslint', 'jest', 'webpack']
   ];
