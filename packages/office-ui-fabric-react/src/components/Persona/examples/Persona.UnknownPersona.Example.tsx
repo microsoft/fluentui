@@ -5,7 +5,6 @@ import {
 } from 'office-ui-fabric-react/lib/Persona';
 import './PersonaExample.scss';
 
-
 export class UnknownPersonaExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
