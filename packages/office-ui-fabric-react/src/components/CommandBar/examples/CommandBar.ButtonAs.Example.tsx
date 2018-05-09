@@ -12,15 +12,19 @@ export class CommandBarButtonAsExample extends React.Component<ICommandBarProps,
 
   public render(): JSX.Element {
 
-    const customButton = (props: IButtonProps) =>
-      <CommandBarButton
-        onMouseEnter={ () => console.log(`${props.text} hovered`) }
-        { ...props }
-        styles={ {
-          ...props.styles,
-          icon: { color: 'red' }
-        } }
-      />;
+    const customButton = (props: IButtonProps) => {
+      const buttonOnMouseEnter = () => console.log(`${props.text} hovered`);
+      return (
+        <CommandBarButton
+          onMouseEnter={ buttonOnMouseEnter }
+          { ...props }
+          styles={ {
+            ...props.styles,
+            icon: { color: 'red' }
+          } }
+        />
+      );
+    };
 
     const { items, overflowItems, farItems } = this.props;
 
