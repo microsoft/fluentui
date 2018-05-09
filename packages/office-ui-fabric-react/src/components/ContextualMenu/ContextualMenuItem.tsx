@@ -54,6 +54,13 @@ const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
   return null;
 };
 
+const renderSecondaryText = ({ item, classNames }: IContextualMenuItemProps) => {
+  if (item.secondaryText) {
+    return <span className={ classNames.secondaryText }>{ item.secondaryText }</span>;
+  }
+  return null;
+};
+
 const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
     return (
@@ -81,6 +88,7 @@ export class ContextualMenuItem extends BaseComponent<IContextualMenuItemProps, 
         { renderCheckMarkIcon(this.props) }
         { renderItemIcon(this.props) }
         { renderItemName(this.props) }
+        { renderSecondaryText(this.props) }
         { renderSubMenuIcon(this.props) }
       </div>
     );

@@ -276,6 +276,11 @@ export interface IContextualMenuItem {
    */
   name?: string;
 
+  /**
+   * Seconday description for the menu item to display
+   */
+  secondaryText?: string;
+
   itemType?: ContextualMenuItemType;
 
   /**
