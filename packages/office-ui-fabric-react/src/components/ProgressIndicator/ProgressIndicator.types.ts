@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ProgressIndicatorBase } from './ProgressIndicator.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IProgressIndicator {
   focus: () => void;
@@ -16,7 +16,7 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
+  getStyles?: IStyleFunctionOrObject<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
 
   /**
    * Theme provided by High-Order Component.

@@ -4,7 +4,7 @@ import {
   ITheme,
   IStyle,
 } from '../../Styling';
-import { IComponentAs, IStyleFunction } from '../../Utilities';
+import { IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ILabel {
 
@@ -41,7 +41,7 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
   /**
    * Styles for the label.
    */
-  getStyles?: IStyleFunction<ILabelStyleProps, ILabelStyles>;
+  getStyles?: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
 }
 
 export interface ILabelStyles {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IComponentAs, IStyleFunction } from '../../Utilities';
+import { IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
 export interface IToggle {
@@ -75,7 +75,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunction<IToggleStyleProps, IToggleStyles>;
+  getStyles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
 
   /**
    * Optional keytip for this toggle

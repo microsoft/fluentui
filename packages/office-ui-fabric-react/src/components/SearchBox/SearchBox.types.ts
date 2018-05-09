@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from '../Button';
 
 export interface ISearchBox {
@@ -102,7 +102,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ISearchBoxStyleProps, ISearchBoxStyles>;
+  getStyles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
 
   /**
    * Whether or not to animate the SearchBox icon on focus.

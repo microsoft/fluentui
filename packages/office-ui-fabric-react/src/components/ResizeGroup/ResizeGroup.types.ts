@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ResizeGroupBase } from './ResizeGroup.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 export interface IResizeGroup {
   /**
    * Remeasures the available space.
@@ -20,7 +20,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IResizeGroupStyleProps, IResizeGroupStyles>;
+  getStyles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
 
   /**
    * Theme provided by HOC.

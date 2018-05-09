@@ -3,7 +3,7 @@ import {
   IStyle,
   ITheme
 } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IRating {
 
@@ -81,7 +81,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IRatingStyleProps, IRatingStyles>;
+  getStyles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
 
   /**
    * Theme (provided through customization.)

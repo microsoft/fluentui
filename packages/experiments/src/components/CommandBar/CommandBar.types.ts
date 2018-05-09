@@ -5,7 +5,7 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ICommandBar {
   /**
@@ -73,7 +73,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
-  getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
+  styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
    * Custom styles to be mixed into individual button styles
