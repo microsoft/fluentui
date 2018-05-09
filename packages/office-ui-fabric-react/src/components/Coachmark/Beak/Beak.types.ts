@@ -31,6 +31,16 @@ export interface IBeakProps extends React.Props<Beak> {
    */
   top?: string;
 
+  /**
+   * Right position of the beak
+   */
+  right?: string;
+
+  /**
+   * Bottom position of the beak
+   */
+  bottom?: string;
+
   direction?: BeakDirection;
 }
 

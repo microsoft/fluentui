@@ -189,7 +189,7 @@ export class PositioningContainer
           ref={ this._contentHost }
         >
           <div style={ {
-            outline: '1px solid red'
+            // outline: '1px solid red'
           } }>
             { children }
             { // @TODO apply to the content container
@@ -207,11 +207,12 @@ export class PositioningContainer
     );
   }
 
-  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+  public onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
-
     if (onDismiss) {
       onDismiss(ev);
+    } else {
+      this._updateAsyncPosition();
     }
   }
 
@@ -232,7 +233,7 @@ export class PositioningContainer
       clickedOutsideCallout &&
       ((this._target as MouseEvent).stopPropagation ||
         (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))) {
-      this.dismiss(ev);
+      this.onResize(ev);
     }
   }
 
@@ -250,7 +251,7 @@ export class PositioningContainer
     // the target changing focus quickly prior to rendering the positioningContainer.
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-      this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'resize', this.onResize, true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
     }, 0);

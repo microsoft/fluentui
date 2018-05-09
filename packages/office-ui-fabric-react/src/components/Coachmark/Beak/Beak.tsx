@@ -8,15 +8,10 @@ import { IBeakProps, BeakDirection } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
 
-export interface IBeakState {
-  left: string | undefined;
-  top: string | undefined;
-}
+export const BEAK_HEIGHT = 10;
+export const BEAK_WIDTH = 18;
 
-const BEAK_HEIGHT = 8;
-const BEAK_WIDTH = 16;
-
-export class Beak extends BaseComponent<IBeakProps, IBeakState> {
+export class Beak extends BaseComponent<IBeakProps, {}> {
   constructor(props: IBeakProps) {
     super(props);
   }
@@ -25,6 +20,8 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
     const {
       left,
       top,
+      bottom,
+      right,
       direction = BeakDirection.Top
     } = this.props;
 
@@ -39,41 +36,50 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
       svgWidth = BEAK_HEIGHT;
     }
 
-    const getClassNames = classNamesFunction<IBeakStylesProps, IBeakStyles>();
-    const classNames = getClassNames(getStyles, {
-      left,
-      top,
-      height: `${svgHeight}px`,
-      width: `${svgWidth}px`
-    });
 
     let pointOne: string;
     let pointTwo: string;
     let pointThree: string;
+    let transform: string;
 
     switch (direction) {
       case BeakDirection.Top:
       default:
-        pointOne = `${BEAK_HEIGHT}, 0`;
+        pointOne = `${BEAK_WIDTH / 2}, 0`;
         pointTwo = `${BEAK_WIDTH}, ${BEAK_HEIGHT}`;
         pointThree = `0, ${BEAK_HEIGHT}`;
+        transform = 'translateY(-100%)';
         break;
       case BeakDirection.Right:
         pointOne = `0, 0`;
         pointTwo = `${BEAK_HEIGHT}, ${BEAK_HEIGHT}`;
         pointThree = `0, ${BEAK_WIDTH}`;
+        transform = 'translateX(100%)';
         break;
       case BeakDirection.Bottom:
         pointOne = `0, 0`;
         pointTwo = `${BEAK_WIDTH}, 0`;
         pointThree = `${BEAK_HEIGHT}, ${BEAK_HEIGHT}`;
+        transform = 'translateY(100%)';
         break;
       case BeakDirection.Left:
         pointOne = `${BEAK_HEIGHT}, 0`;
         pointTwo = `0, ${BEAK_HEIGHT}`;
         pointThree = `${BEAK_HEIGHT}, ${BEAK_WIDTH}`;
+        transform = 'translateX(-100%)';
         break;
     }
+
+    const getClassNames = classNamesFunction<IBeakStylesProps, IBeakStyles>();
+    const classNames = getClassNames(getStyles, {
+      left,
+      top,
+      bottom,
+      right,
+      height: `${svgHeight}px`,
+      width: `${svgWidth}px`,
+      transform: transform
+    });
 
     return (
       <div
