@@ -12,10 +12,15 @@ import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { CommandBarStatus } from './CommandBar.checklist';
 import { ICommandBarProps } from './CommandBar.types';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
+import { CommandBarButtonAsExample } from './examples/CommandBar.ButtonAs.Example';
 import { farItems, items, overflowItems } from './examples/data';
 
 const CommandBarBasicExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx'
+) as string;
+
+const CommandBarButtonAsExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.ButtonAs.Example.tsx'
 ) as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -29,8 +34,11 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/CommandBar'
         exampleCards={
           <div>
-            <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
+            <ExampleCard title='CommandBar with overflowing menu items' code={ CommandBarBasicExampleCode }>
               <CommandBarBasicExample { ...cmdBarParamsTextAndIcons } />
+            </ExampleCard>
+            <ExampleCard title='CommandBar custom buttons' code={ CommandBarButtonAsExampleCode }>
+              <CommandBarButtonAsExample { ...cmdBarParamsTextAndIcons } />
             </ExampleCard>
           </div>
         }

@@ -58,7 +58,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
   * Custom button to be used as near and far items
   */
-  buttonAs?: IComponentAs<ICommandBarItemProps>;
+  buttonAs?: IComponentAs<IButtonProps>;
 
   /**
   * When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow

@@ -181,12 +181,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     if (item.iconOnly && item.name !== undefined) {
       return (
         <TooltipHost content={ item.name } >
-          <CommandButtonType { ...commandButtonProps } />
+          <CommandButtonType { ...commandButtonProps as IButtonProps } />
         </TooltipHost>
       );
     }
 
-    return <CommandButtonType { ...commandButtonProps } />;
+    return <CommandButtonType { ...commandButtonProps as IButtonProps } />;
   }
 
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
