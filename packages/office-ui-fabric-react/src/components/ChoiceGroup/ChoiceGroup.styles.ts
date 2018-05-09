@@ -1,9 +1,7 @@
-import { FontSizes, FontWeights } from '../../Styling';
 import { IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 
 export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => {
-  const { theme, className, optionsContainIconOrImage } = props;
-  const { palette, semanticColors } = theme;
+  const { className, optionsContainIconOrImage } = props;
 
   return {
     applicationRole: className,

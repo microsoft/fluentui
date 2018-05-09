@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Image } from '../../Image';
-import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import { IClassNames } from '@uifabric/utilities/lib/IClassNames';
 import {
@@ -15,7 +14,6 @@ import {
   getNativeProps,
   inputProperties,
   createRef,
-  getId
 } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
@@ -23,8 +21,6 @@ const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGr
 @customizable('ChoiceGroupOption', ['theme'])
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
   private _inputElement = createRef<HTMLInputElement>();
-  private _id: string;
-  private _labelId: string;
   private _classNames: IClassNames<IChoiceGroupOptionStyles>;
 
   constructor(props: IChoiceGroupOptionProps) {
@@ -38,14 +34,13 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       theme,
       iconProps,
       imageSrc,
-      imageAlt,
-      selectedImageSrc,
       imageSize,
       disabled,
       checked,
       id,
       labelId,
       getStyles,
+      name,
       onRenderField = this._onRenderField,
     } = this.props;
 
@@ -68,7 +63,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             id={ id }
             className={ this._classNames.input }
             type='radio'
-            name={ name || this._id }
+            name={ name }
             disabled={ disabled }
             checked={ checked }
             required={ required }
@@ -109,18 +104,14 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       onRenderLabel = this._onRenderLabel,
       id,
       imageSrc,
-      checked,
       imageAlt,
       selectedImageSrc,
       iconProps,
-      theme,
-      getStyles
     } = props;
 
     const imageSize = props.imageSize
       ? props.imageSize
       : { width: 32, height: 32 };
-    const imageIsLarge: boolean = imageSize.width > 71 || imageSize.height > 71;
 
     return (
       <label htmlFor={ id } className={ this._classNames.field }>

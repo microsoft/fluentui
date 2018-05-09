@@ -1,9 +1,8 @@
-import { FontSizes, FontWeights, HighContrastSelector, getFocusStyle, IStyle } from '../../Styling';
+import { FontSizes, FontWeights, HighContrastSelector, IStyle, IPalette } from '../../Styling';
 import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from './ChoiceGroupOption.types';
-import { SemanticColorSlots } from 'office-ui-fabric-react/lib/ThemeGenerator';
 
 const labelWrapperLineHeight = 15;
 const iconSize = 32;
@@ -12,6 +11,41 @@ const choiceFieldTransitionDuration = '200ms';
 const choiceFieldTransitionTiming = 'cubic-bezier(.4, 0, .23, 1)';
 const radioButtonSpacing = 3;
 const radioButtonInnerSize = 5;
+
+function getChoiceGroupFocusStyle(palette: Partial<IPalette>, hasIconOrImage?: boolean): IStyle {
+  return [
+    'is-inFocus',
+    {
+      selectors: {
+        '.ms-Fabric.is-focusVisible &': {
+          position: 'relative',
+          outline: 'transparent',
+          selectors: {
+            '::-moz-focus-inner': {
+              border: 0
+            },
+            ':after': {
+              content: '""',
+              top: -2,
+              right: -2,
+              bottom: -2,
+              left: -2,
+              pointerEvents: 'none',
+              border: '1px solid ' + (hasIconOrImage ? palette.neutralSecondary : palette.neutralPrimary),
+              position: 'absolute',
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: 'WindowText',
+                  borderWidth: hasIconOrImage ? 1 : 2
+                }
+              }
+            }
+          }
+        }
+      },
+    },
+  ];
+}
 
 function getImageWrapperStyle(isSelectedImageWrapper: boolean, checked?: boolean): IStyle {
   return [
@@ -156,7 +190,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       right: radioButtonSpacing + radioButtonInnerSize,
       left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
     }
-  ]
+  ];
 
   return {
     root: [
@@ -185,25 +219,16 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       (hasIcon || hasImage) && {
         display: 'inline-flex',
         fontSize: 0,
-        margin: '0, 4px, 4px, 0',
+        margin: '0 4px 4px 0',
         paddingLeft: 0,
         backgroundColor: palette.neutralLighter,
         height: '100%'
       },
-      focused && [
-        'is-inFocus',
-        {
-          selectors: {
-            '.ms-Fabric.is-focusVisible &': {
-              border: '1px solid ' + theme.palette.white,
-              outline: '1px solid ' + theme.palette.neutralSecondary,
-            }
-          },
-        },
-      ]
     ],
-    choiceFieldWrapper: 'ms-ChoiceField-wrapper',
-
+    choiceFieldWrapper: [
+      'ms-ChoiceField-wrapper',
+      focused && getChoiceGroupFocusStyle(palette, hasIcon || hasImage)
+    ],
     // The hidden input
     input: [
       'ms-ChoiceField-input',
@@ -242,8 +267,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
           ':after': dotAreaProperties
         }
       },
-      hasIcon && 'ms-ChoiceField-field--image',
-      hasImage && 'ms-ChoiceField--icon',
+      hasIcon && 'ms-ChoiceField--icon',
+      hasImage && 'ms-ChoiceField-field--image',
       (hasIcon || hasImage) && {
         boxSizing: 'content-box',
         cursor: 'pointer',

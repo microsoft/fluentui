@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { Image } from '../../Image';
 import { Label } from '../../Label';
-import { Icon } from '../../Icon';
 import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from '../../ChoiceGroupOption';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import {
-  assign,
   BaseComponent,
   customizable,
   classNamesFunction,
@@ -73,6 +70,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       label,
       required,
       disabled,
+      name
     } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
@@ -94,13 +92,15 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           <div className={ classNames.flexContainer }>
             { options!.map((option: IChoiceGroupOption) => {
 
-              assign(option, {
+              let innerOptionProps = {
+                ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,
-              });
+                name: name || this._id
+              };
 
               return (
                 <ChoiceGroupOption
@@ -108,7 +108,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
                   onBlur={ this._onBlur }
                   onFocus={ this._onFocus(option.key) }
                   onChange={ this._onChange(option.key) }
-                  { ...option }
+                  { ...innerOptionProps }
                 />
               );
             }) }
@@ -145,7 +145,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   private _onChange = (key: string) =>
     this.changedVars[key] ? this.changedVars[key] : this.changedVars[key] =
-      (evt, option) => {
+      (evt, option: IChoiceGroupOption) => {
         const { onChanged, onChange, selectedKey } = this.props;
 
         // Only manage state in uncontrolled scenarios.
@@ -157,9 +157,9 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
         // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
         if (onChange) {
-          onChange(evt, option && { key, text: option!.text });
+          onChange(evt, option && { key, ...option });
         } else if (onChanged) {
-          onChanged(option!);
+          onChanged(option);
         }
       }
 

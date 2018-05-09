@@ -4,12 +4,10 @@ import { ITheme, IStyle } from '../../Styling';
 import { IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IChoiceGroupOption } from '../ChoiceGroup/ChoiceGroup.types';
 
-
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
 
-export interface IChoiceGroupOptionProps
-  extends IChoiceGroupOption {
+export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
 
   /**
    * A required key to uniquely identify the option.
@@ -117,6 +115,11 @@ export interface IChoiceGroupOptionProps
   getStyles?: IStyleFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 
   required?: boolean;
+
+  /**
+   * This value is used to group each ChoiceGroupOption into the same logical ChoiceGroup
+   */
+  name?: string;
 }
 
 export interface IChoiceGroupOptionStyleProps {

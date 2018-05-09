@@ -3,4 +3,4 @@ import { ChoiceGroupBase } from './ChoiceGroup.base';
 import { IChoiceGroupProps } from './ChoiceGroup.types';
 import { getStyles } from './ChoiceGroup.styles';
 
-export const ChoiceGroup = styled(ChoiceGroupBase, getStyles);
+export const ChoiceGroup: (props: IChoiceGroupProps) => JSX.Element = styled(ChoiceGroupBase, getStyles);
