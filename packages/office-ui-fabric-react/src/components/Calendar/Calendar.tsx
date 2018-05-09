@@ -3,7 +3,7 @@ import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICal
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
-import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
+import { compareDates, getDateRangeArray, setMonth } from '../../utilities/dateMath/DateMath';
 import {
   css,
   BaseComponent,
@@ -11,6 +11,7 @@ import {
   createRef
 } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
+import { CalendarYear, ICalendarYear } from 'office-ui-fabric-react/lib/components/Calendar/CalendarYear';
 const styles: any = stylesImport;
 
 const leftArrow = 'Up';
@@ -46,6 +47,9 @@ export interface ICalendarState {
 
   /** State used to show/hide day picker */
   isDayPickerVisible?: boolean;
+
+  /** State used to show/hide year picker */
+  isYearPickerVisible?: boolean;
 }
 
 export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
@@ -74,6 +78,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   private _dayPicker = createRef<ICalendarDay>();
   private _monthPicker = createRef<ICalendarMonth>();
+  private _yearPicker = createRef<ICalendarYear>();
 
   private _focusOnUpdate: boolean;
 
@@ -87,7 +92,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
       /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props (These props permanently set the visibility of their respective calendars). */
       isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
-      isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible
+      isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible,
+      isYearPickerVisible: false
     };
 
     this._focusOnUpdate = false;
@@ -117,6 +123,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
         this._dayPicker.current.focus();
       } else if (this._monthPicker.current) {
         this._monthPicker.current.focus();
+      } else if (this._yearPicker && this._yearPicker.current) {
+        this._yearPicker.current.focus();
       }
       this._focusOnUpdate = false;
     }
@@ -124,9 +132,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render(): JSX.Element {
     const rootClass = 'ms-DatePicker';
-    const { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, highlightSelectedMonth, navigationIcons, minDate, maxDate, className } = this.props;
-    const { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
-    const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
+    const { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, highlightSelectedMonth, navigationIcons, minDate, maxDate, className, isYearPickerEnabled } = this.props;
+    const { selectedDate, navigatedDate, isYearPickerVisible, isMonthPickerVisible, isDayPickerVisible } = this.state;
+    const onDayHeaderSelect = showMonthPickerAsOverlay ? this._onDayHeaderSelect : undefined;
+    const onMonthHeaderSelect = showMonthPickerAsOverlay || isYearPickerEnabled ? this._onMonthHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
@@ -138,8 +147,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
             styles.picker,
             styles.pickerIsOpened,
             styles.pickerIsFocused,
+            isYearPickerVisible && ('ms-DatePicker-yearPickerVisible ' + styles.yearPickerVisible),
             isMonthPickerVisible && ('ms-DatePicker-monthPickerVisible ' + styles.monthPickerVisible),
-            isMonthPickerVisible && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
+            (isMonthPickerVisible || isYearPickerVisible) && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
             monthPickerOnly && ('ms-DatePicker-monthPickerOnly ' + styles.monthPickerOnly),
             showMonthPickerAsOverlay && ('ms-DatePicker-monthPickerAsOverlay ' + styles.monthPickerAsOverlay),
           ) }
@@ -158,7 +168,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateRangeType={ dateRangeType! }
                   autoNavigateOnSelection={ autoNavigateOnSelection! }
                   strings={ strings! }
-                  onHeaderSelect={ onHeaderSelect }
+                  onHeaderSelect={ onDayHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   showWeekNumbers={ this.props.showWeekNumbers }
                   firstWeekOfYear={ this.props.firstWeekOfYear! }
@@ -176,15 +186,27 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   selectedDate={ selectedDate! }
                   strings={ strings! }
                   onNavigateDate={ this._onNavigateDate }
+                  onSelectMonth={ this._onSelectMonth }
                   today={ this.props.today }
                   highlightCurrentMonth={ highlightCurrentMonth! }
                   highlightSelectedMonth={ highlightSelectedMonth! }
-                  onHeaderSelect={ onHeaderSelect }
+                  onHeaderSelect={ onMonthHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   minDate={ minDate }
                   maxDate={ maxDate }
+                  isYearPickerEnabled={ isYearPickerEnabled }
                   componentRef={ this._monthPicker }
+                /> }
+
+                { isYearPickerVisible && <CalendarYear
+                  navigatedDate={ navigatedDate }
+                  selectedDate={ selectedDate }
+                  minYear={ minDate ? minDate.getFullYear() : undefined }
+                  maxYear={ maxDate ? maxDate.getFullYear() : undefined }
+                  onHeaderSelect={ this._onYearHeaderSelect }
+                  onSelectYear={ this._onSelectYear }
+                  componentRef={ this._yearPicker }
                 /> }
 
                 { showGoToToday &&
@@ -218,6 +240,22 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     });
   }
 
+  private _onSelectMonth = (month: number): void => {
+    const { showMonthPickerAsOverlay } = this.props;
+    const d = setMonth(this.state.navigatedDate!, month);
+    if (showMonthPickerAsOverlay) {
+      this.setState({
+        navigatedDate: d,
+        isDayPickerVisible: !this.state.isDayPickerVisible,
+        isMonthPickerVisible: !this.state.isMonthPickerVisible
+      });
+    } else {
+      this._navigateDay(d);
+    }
+
+    this._focusOnUpdate = true;
+  }
+
   private _onNavigateDate = (date: Date, focusOnNavigatedDay: boolean): void => {
     if (this.props.isDayPickerVisible || (!this.props.isDayPickerVisible && !focusOnNavigatedDay)) {
       this._navigateDay(date);
@@ -240,7 +278,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
   }
 
-  private _onHeaderSelect = (focus: boolean): void => {
+  private _onDayHeaderSelect = (focus: boolean) => {
     this.setState({
       isDayPickerVisible: !this.state.isDayPickerVisible,
       isMonthPickerVisible: !this.state.isMonthPickerVisible
@@ -249,6 +287,56 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     if (focus) {
       this._focusOnUpdate = true;
     }
+  }
+
+  private _onMonthHeaderSelect = (focus: boolean) => {
+    const { isYearPickerEnabled } = this.props;
+    if (isYearPickerEnabled) {
+      this.setState({
+        isMonthPickerVisible: !this.state.isMonthPickerVisible,
+        isYearPickerVisible: !this.state.isYearPickerVisible
+      });
+    } else {
+      this.setState({
+        isDayPickerVisible: !this.state.isDayPickerVisible,
+        isMonthPickerVisible: !this.state.isMonthPickerVisible
+      });
+    }
+
+    if (focus) {
+      this._focusOnUpdate = true;
+    }
+  }
+
+  private _onYearHeaderSelect = (focus: boolean) => {
+    this.setState({
+      isMonthPickerVisible: !this.state.isMonthPickerVisible,
+      isYearPickerVisible: !this.state.isYearPickerVisible
+    });
+
+    if (focus) {
+      this._focusOnUpdate = true;
+    }
+  }
+
+  private _onSelectYear = (year: number) => {
+    const navigatedDate = this.state.navigatedDate;
+    if (navigatedDate && navigatedDate.getFullYear() !== year) {
+      const d = new Date(navigatedDate);
+      d.setFullYear(year);
+      this.setState({
+        navigatedDate: d,
+        isMonthPickerVisible: !this.state.isMonthPickerVisible,
+        isYearPickerVisible: !this.state.isYearPickerVisible
+      });
+    } else {
+      this.setState({
+        isMonthPickerVisible: !this.state.isMonthPickerVisible,
+        isYearPickerVisible: !this.state.isYearPickerVisible
+      });
+    }
+
+    this._focusOnUpdate = true;
   }
 
   private _onGotoToday = (): void => {

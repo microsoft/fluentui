@@ -68,6 +68,7 @@ export interface ICalendarButtonExampleState {
 export interface ICalendarButtonExampleProps {
   isDayPickerVisible?: boolean;
   isMonthPickerVisible?: boolean;
+  isYearPickerEnabled?: boolean;
   highlightCurrentMonth?: boolean;
   highlightSelectedMonth?: boolean;
   buttonString?: string;
@@ -128,6 +129,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
               highlightSelectedMonth={ this.props.highlightSelectedMonth }
               showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
+              isYearPickerEnabled={ this.props.isYearPickerEnabled }
             />
           </Callout>
         )
