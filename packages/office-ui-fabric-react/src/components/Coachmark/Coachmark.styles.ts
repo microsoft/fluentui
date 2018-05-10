@@ -6,8 +6,8 @@ import {
   getTheme
 } from '../../Styling';
 
-export const COACHMARK_WIDTH: number = 32;
-export const COACHMARK_HEIGHT: number = 32;
+export const COACHMARK_WIDTH = 32;
+export const COACHMARK_HEIGHT = 32;
 
 export interface ICoachmarkStyleProps {
   /**

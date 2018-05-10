@@ -28,14 +28,13 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
     let svgHeight: number;
     let svgWidth: number;
 
-    if (direction == BeakDirection.Top || direction == BeakDirection.Bottom) {
+    if (direction === BeakDirection.Top || direction === BeakDirection.Bottom) {
       svgHeight = BEAK_HEIGHT;
       svgWidth = BEAK_WIDTH;
     } else {
       svgHeight = BEAK_WIDTH;
       svgWidth = BEAK_HEIGHT;
     }
-
 
     let pointOne: string;
     let pointTwo: string;

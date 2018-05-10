@@ -518,20 +518,15 @@ function _positionElementWithinBounds(
   directionalHintFixed?: boolean,
   coverTarget?: boolean): IElementPosition {
   const estimatedElementPosition: Rectangle = _estimatePosition(elementToPosition, target, positionData, gap, coverTarget);
-  return {
-    elementRectangle: estimatedElementPosition,
-    targetEdge: positionData.targetEdge,
-    alignmentEdge: positionData.alignmentEdge
-  };
-  // if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
-  //   return {_isRectangleWithinBounds
-  //     elementRectangle: estimatedElementPosition,
-  //     targetEdge: positionData.targetEdge,
-  //     alignmentEdge: positionData.alignmentEdge
-  //   };
-  // } else {
-  //   return _adjustFitWithinBounds(elementToPosition, target, bounding, positionData, gap, directionalHintFixed, coverTarget);
-  // }
+  if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
+    return {
+      elementRectangle: estimatedElementPosition,
+      targetEdge: positionData.targetEdge,
+      alignmentEdge: positionData.alignmentEdge
+    };
+  } else {
+    return _adjustFitWithinBounds(elementToPosition, target, bounding, positionData, gap, directionalHintFixed, coverTarget);
+  }
 }
 
 function _finalizeBeakPosition(elementPosition: IElementPosition,
@@ -606,13 +601,13 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint
       targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
     }
 
-    // if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
-    //   const outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
+    if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
+      const outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
 
-    //   for (const direction of outOfBounds) {
-    //     (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
-    //   }
-    // }
+      for (const direction of outOfBounds) {
+        (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
+      }
+    }
   } else {
     targetRectangle = new Rectangle(0, 0, 0, 0);
   }

@@ -181,9 +181,7 @@ export class PositioningContainer
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._contentHost }
         >
-          <div style={ {
-            // outline: '1px solid red'
-          } }>
+          <div>
             { children }
             { // @TODO apply to the content container
               contentMaxHeight
@@ -403,7 +401,7 @@ export class PositioningContainer
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
-          // heightOffset: this.state.heightOffset! + scrollDiff
+          heightOffset: this.state.heightOffset! + scrollDiff
         });
 
         if (positioningContainerMainElem.offsetHeight < this.props.finalHeight!) {
