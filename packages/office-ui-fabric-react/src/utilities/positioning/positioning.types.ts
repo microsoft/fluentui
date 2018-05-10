@@ -49,6 +49,11 @@ export interface ICalloutPositionProps extends IPositionProps {
   * The width of the beak.
   */
   beakWidth?: number;
+
+  /**
+   * Whether or not the beak is visible
+   */
+  isBeakVisible?: boolean;
 }
 
 export interface IPositionedData {
