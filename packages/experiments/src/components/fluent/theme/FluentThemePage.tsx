@@ -6,7 +6,7 @@ import {
 } from '@uifabric/example-app-base';
 
 import { FluentThemeBasicExample } from './examples/FluentTheme.Basic.Example';
-import FluentTheme from './FluentTheme';
+
 const FluentThemeBasicExampleCode =
   require('!raw-loader!@uifabric/experiments/src/components/fluent/theme/examples/FluentTheme.Basic.Example.tsx') as string;
 
