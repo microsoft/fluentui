@@ -5,7 +5,8 @@ import {
   ExampleCard
 } from '@uifabric/example-app-base';
 
-import { FluentThemeBasicExample } from '@uifabric/experiments/lib/components/fluent/theme/examples/FluentTheme.Basic.Example';
+import { FluentThemeBasicExample } from './examples/FluentTheme.Basic.Example';
+import FluentTheme from './FluentTheme';
 const FluentThemeBasicExampleCode =
   require('!raw-loader!@uifabric/experiments/src/components/fluent/theme/examples/FluentTheme.Basic.Example.tsx') as string;
 
@@ -14,6 +15,9 @@ export class FluentThemePage extends React.Component<
   {}
   > {
   public render(): JSX.Element {
+
+    console.log(FluentTheme.palette);
+
     return (
       <ComponentPage
         title='Fluent Theme'
