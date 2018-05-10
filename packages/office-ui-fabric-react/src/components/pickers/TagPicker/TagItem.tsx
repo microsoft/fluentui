@@ -17,7 +17,7 @@ export const TagItem = (props: IPickerItemProps<ITag>) => (
     role={ 'listitem' }
     key={ props.index }
     data-selection-index={ props.index }
-    data-is-focusable={ !props.disabled && true }
+    data-is-focusable={ (props.enableTagFocusInDisabledPicker || !props.disabled) && true }
   >
     <span className={ css('ms-TagItem-text', styles.tagItemText) } aria-label={ props.children as string }>{ props.children }</span>
     { !props.disabled &&
