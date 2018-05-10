@@ -293,6 +293,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 handleTabKey={ FocusZoneTabbableElements.all }
               >
                 <ul
+                  role={ shouldFocusOnContainer ? undefined : 'menu' }
                   className={ this._classNames.list }
                   onKeyDown={ this._onKeyDown }
                 >
