@@ -488,7 +488,7 @@ export interface IContextualMenuItem {
   inactive?: boolean;
 }
 
-export interface IContextualMenuSection extends React.Props<ContextualMenu> {
+export interface IContextualMenuSection extends React.Props<any> {
 
   /**
    * The items to include inside the section.
