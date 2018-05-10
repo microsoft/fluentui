@@ -516,9 +516,10 @@ function _positionElementWithinBounds(
   positionData: IPositionDirectionalHintData,
   gap: number,
   directionalHintFixed?: boolean,
-  coverTarget?: boolean): IElementPosition {
+  coverTarget?: boolean,
+  allowOutOfBounds?: boolean): IElementPosition {
   const estimatedElementPosition: Rectangle = _estimatePosition(elementToPosition, target, positionData, gap, coverTarget);
-  if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
+  if (_isRectangleWithinBounds(estimatedElementPosition, bounding) || allowOutOfBounds) {
     return {
       elementRectangle: estimatedElementPosition,
       targetEdge: positionData.targetEdge,
@@ -646,7 +647,8 @@ function _positionElementRelative(
   props: IPositionProps,
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
-  previousPositions?: IPositionedData): IElementPositionInfo {
+  previousPositions?: IPositionedData,
+  allowOutOfBounds?: boolean): IElementPositionInfo {
   const gap: number = props.gapSpace ? props.gapSpace : 0;
   const boundingRect: Rectangle = props.bounds ?
     _getRectangleFromIRect(props.bounds) :
@@ -664,7 +666,8 @@ function _positionElementRelative(
     positionData,
     gap,
     props.directionalHintFixed,
-    props.coverTarget);
+    props.coverTarget,
+    allowOutOfBounds);
   return { ...positionedElement, targetRectangle: targetRect };
 }
 
@@ -687,8 +690,9 @@ function _positionElement(
   props: IPositionProps,
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
-  previousPositions?: IPositionedData): IPositionedData {
-  const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition, previousPositions);
+  previousPositions?: IPositionedData,
+  allowOutOfBounds?: boolean): IPositionedData {
+  const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition, previousPositions, allowOutOfBounds);
   return _finalizePositionData(positionedElement, hostElement, props.coverTarget);
 }
 
@@ -776,13 +780,15 @@ export function getRelativePositions(props: IPositionProps,
  * @param {HTMLElement} hostElement
  * @param {HTMLElement} elementToPosition
  * @param {IPositionedData} previousPositions
+ * @param {boolean} allowOutOfBounds
  * @returns
  */
 export function positionElement(props: IPositionProps,
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
-  previousPositions?: IPositionedData): IPositionedData {
-  return _positionElement(props, hostElement, elementToPosition, previousPositions);
+  previousPositions?: IPositionedData,
+  allowOutOfBounds?: boolean): IPositionedData {
+  return _positionElement(props, hostElement, elementToPosition, previousPositions, allowOutOfBounds);
 }
 
 export function positionCallout(props: IPositionProps,

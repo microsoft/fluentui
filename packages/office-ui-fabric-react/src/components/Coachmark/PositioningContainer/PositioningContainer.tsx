@@ -275,7 +275,7 @@ export class PositioningContainer
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
       currentProps!.gapSpace = offsetFromTarget;
-      const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
+      const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement, undefined, true);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
       // The position should not change if the position is within 2 decimal places.
