@@ -37,12 +37,21 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className="ms-ChoiceField-field"
             htmlFor="ChoiceGroup0-1"
           >
-            <span
-              className="ms-Label"
-              id="ChoiceGroupLabel1-1"
+            <div
+              aria-describedby={undefined}
+              className="ms-TooltipHost"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              1
-            </span>
+              <span
+                className="ms-Label"
+                id="ChoiceGroupLabel1-1"
+              >
+                1
+              </span>
+            </div>
           </label>
         </div>
       </div>
@@ -69,12 +78,21 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className="ms-ChoiceField-field"
             htmlFor="ChoiceGroup0-2"
           >
-            <span
-              className="ms-Label"
-              id="ChoiceGroupLabel1-2"
+            <div
+              aria-describedby={undefined}
+              className="ms-TooltipHost"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              2
-            </span>
+              <span
+                className="ms-Label"
+                id="ChoiceGroupLabel1-2"
+              >
+                2
+              </span>
+            </div>
           </label>
         </div>
       </div>
@@ -101,12 +119,21 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className="ms-ChoiceField-field"
             htmlFor="ChoiceGroup0-3"
           >
-            <span
-              className="ms-Label"
-              id="ChoiceGroupLabel1-3"
+            <div
+              aria-describedby={undefined}
+              className="ms-TooltipHost"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              3
-            </span>
+              <span
+                className="ms-Label"
+                id="ChoiceGroupLabel1-3"
+              >
+                3
+              </span>
+            </div>
           </label>
         </div>
       </div>

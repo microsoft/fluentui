@@ -24,6 +24,9 @@ $radioButton-background-unselected-disabled-color: $disabledTextColor;
 $radioButton-dot-disabled-color: $radioButton-background-unselected-disabled-color;
 $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-color;
 
+$radioButtonSpacing: 3px;
+$radioButtonInnerSize: 5px;
+
 //
 // --------------------------------------------------
 // ChoiceField styles
@@ -210,9 +213,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include ms-bgColor-neutralLighter;
   height: 100%;
 
-  $radioButtonSpacing: 3px;
-  $radioButtonInnerSize: 5px;
-
   .fieldIsImage, .fieldIsIcon {
 
     display: inline-block;
@@ -277,19 +277,25 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
     .labelWrapper {
       $lineHeight: 15px;
-      display: block;
+      display: flex;
+      flex-direction: row;
       position: relative;
       margin: 4px 8px;
-      height: $lineHeight*2;
+      height: $lineHeight*2 + 1; // The +1 is to avoid cutting off too much text descender
       line-height: $lineHeight;
       overflow: hidden;
-      white-space: pre-wrap;
-      text-overflow: ellipsis;
+      word-break: break-all;
       @include ms-font-m;
 
       :global(.ms-Label) {
         padding: 0;
       }
+    }
+
+    .labelOverflowWrapper {
+      display: inline-block;
+      align-self: flex-end;
+      padding-bottom: 2px;
     }
 
     &::before {

@@ -10,9 +10,11 @@ import {
   getId,
   getNativeProps,
   inputProperties,
-  createRef
+  createRef,
+  hasOverflow
 } from '../../Utilities';
 import * as stylesImport from './ChoiceGroup.scss';
+import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
 const styles: any = stylesImport;
 
 export interface IChoiceGroupState {
@@ -30,6 +32,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   private _id: string;
   private _labelId: string;
   private _inputElement = createRef<HTMLInputElement>();
+  private _labelWrapperElementList: HTMLDivElement[] = [];
 
   constructor(props: IChoiceGroupProps, ) {
     super(props);
@@ -59,6 +62,10 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         keyChecked: newKeyChecked!,
       });
     }
+  }
+
+  public componentDidMount(): void {
+    this._calculateLabelTextOverflow();
   }
 
   public render(): JSX.Element {
@@ -156,7 +163,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     });
   }
 
-  private _onRenderField(option: IChoiceGroupOption): JSX.Element {
+  private _onRenderField = (option: IChoiceGroupOption): JSX.Element => {
 
     const { onRenderLabel } = option;
     const imageSize = option.imageSize ? option.imageSize : { width: 32, height: 32 };
@@ -226,9 +233,11 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
             ? (
               <div
                 className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }
-                style={ { maxWidth: imageSize.width * 2 } }
+                style={ { maxWidth: imageSize.width * 2 + 8 } }
               >
-                { onRenderLabel!(option) }
+                <div ref={ (el) => { this._onLabelWrapperRef(el, option); } }>
+                  { onRenderLabel!(option) }
+                </div>
               </div>
             ) : onRenderLabel!(option)
         }
@@ -236,9 +245,48 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     );
   }
 
-  private _onRenderLabel(option: IChoiceGroupOption): JSX.Element {
+  private _onLabelWrapperRef(element: HTMLDivElement | null, option: IChoiceGroupOption): void {
+    if (element) {
+      const labelWrapperElement = createRef<HTMLDivElement>();
+      labelWrapperElement.current = element;
+      this._labelWrapperElementList.push(labelWrapperElement.current);
+    }
+  }
+
+  private _calculateLabelTextOverflow = (): void => {
+    if (!this._labelWrapperElementList) {
+      return;
+    }
+    for (let labelListIndex = 0; labelListIndex < this._labelWrapperElementList.length; labelListIndex++) {
+      const labelElement = this._labelWrapperElementList[labelListIndex];
+      if (labelElement && hasOverflow(labelElement)) {
+        const node = document.createElement('span');
+        const textNode = document.createTextNode('...');
+        node.appendChild(textNode);
+        node.classList.add(styles.labelOverflowWrapper);
+        labelElement.insertAdjacentElement('afterend', node);
+      }
+    }
+  }
+
+  private _onRenderLabel = (option: IChoiceGroupOption, imageIsLarge: boolean): JSX.Element => {
+    const imageSize = option.imageSize;
+    let gapSpace = 60;
+
+    if (imageSize) {
+      const imageHeight = imageSize.height ? imageSize.height : 32;
+      const paddingBorderTop = 28; // includes padding, border, margin from styles
+      gapSpace = paddingBorderTop + imageHeight;
+    }
+
     return (
-      <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
+      <TooltipHost
+        overflowMode={ TooltipOverflowMode.Parent }
+        calloutProps={ { gapSpace: gapSpace } }
+        content={ option.text }
+      >
+        <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
+      </TooltipHost>
     );
   }
 

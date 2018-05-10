@@ -35,7 +35,7 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
               imageAlt: 'Bar chart icon',
               selectedImageSrc: TestImages.choiceGroupBarSelected,
               imageSize: { width: 32, height: 32 },
-              text: 'Clustered bar chart' // This text is long to show text wrapping.
+              text: 'Clustered bar chart example' // This text is long in order to show text wrapping and overflow.
             },
             {
               key: 'pie',
