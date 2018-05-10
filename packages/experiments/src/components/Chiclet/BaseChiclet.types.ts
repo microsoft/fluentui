@@ -18,7 +18,9 @@ export interface IBaseChicletProps extends React.Props<BaseChicletBase> {
    */
   componentRef?: (component: IBaseChiclet | null) => void;
 
-  /** @todo: description */
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
   getStyles?: IStyleFunction<IBaseChicletStyleProps, IBaseChicletStyles>;
 
   /**

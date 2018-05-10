@@ -55,12 +55,12 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
           <div
             className={ mergeStyles(this._classNames.title) }
           >
-            { title ? title : "Placeholder" }
+            { title ? title : (null) }
           </div>
           <div
             className={ mergeStyles(this._classNames.link) }
           >
-            { url ? url : "https://onedrive.com/files/v-lygi/39192908430" }
+            { url ? url : (null) }
           </div>
           { footer }
         </div>

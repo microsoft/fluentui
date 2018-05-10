@@ -8,7 +8,7 @@ export class ChicletBase extends React.Component<IChicletProps, IChicletCardProp
     const { chicletCardProps, size, footer } = this.props;
 
     switch (size) {
-      case ChicletSize.medium:
+      case ChicletSize.Medium:
         return (
           <ChicletCard { ...chicletCardProps } onClick={ this._onClick } footer={ footer } />
         );

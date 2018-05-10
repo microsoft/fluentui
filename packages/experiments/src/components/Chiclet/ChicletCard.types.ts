@@ -56,7 +56,9 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
    */
   componentRef?: (component: IChicletCard | null) => void;
 
-  /** @todo: description */
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
   getStyles?: IStyleFunction<IChicletCardStyleProps, IChicletCardStyles>;
 
   /**

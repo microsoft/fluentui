@@ -29,7 +29,7 @@ export class BaseChicletBase extends BaseComponent<IBaseChicletProps, any> {
     this._classNames = getClassNames(getStyles, { theme: theme! });
 
     return (
-      <Chiclet chicletCardProps={ chicletCardProps } size={ size ? size : ChicletSize.medium } footer={ footer } />
+      <Chiclet chicletCardProps={ chicletCardProps } size={ size ? size : ChicletSize.Medium } footer={ footer } />
     );
   }
 

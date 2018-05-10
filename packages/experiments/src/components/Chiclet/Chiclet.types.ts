@@ -21,7 +21,9 @@ export interface IChicletProps extends React.Props<Chiclet> {
    */
   chicletCardProps?: IChicletCardProps | undefined;
 
-  /** @todo: description */
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
   getStyles?: IStyleFunction<IChicletCardStyleProps, IChicletCardStyles>;
 
   /**
@@ -39,22 +41,22 @@ export enum ChicletSize {
   /**
    * X-Small Chiclet
    */
-  xsmall = 0,
+  XSmall = 0,
 
   /**
    * Small Chiclet
    */
-  small = 1,
+  Small = 1,
 
   /**
    * Medium Chiclet
    */
-  medium = 2,
+  Medium = 2,
 
   /**
    * Large Chiclet
    */
-  large = 3
+  Large = 3
 }
 
 export interface IChicletStyleProps {
