@@ -1,6 +1,21 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 01 May 2018 19:26:35 GMT and should not be manually modified.
+This log was last generated on Tue, 08 May 2018 16:02:16 GMT and should not be manually modified.
+
+## 5.7.4
+Tue, 08 May 2018 16:02:16 GMT
+
+### Patches
+
+- When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on.
+
+## 5.7.3
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Add fabric sketch toolkit
+- Updating React build version.
 
 ## 5.7.2
 Tue, 01 May 2018 19:26:35 GMT

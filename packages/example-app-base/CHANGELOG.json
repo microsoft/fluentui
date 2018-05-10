@@ -2,6 +2,71 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.11.3",
+      "tag": "@uifabric/example-app-base_v5.11.3",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "0283f2a4f9465a7aad3039ce6f8d98848f9a2521",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.2",
+      "tag": "@uifabric/example-app-base_v5.11.2",
+      "date": "Fri, 04 May 2018 15:58:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7b6a2b2ce6abe32aa5ac02f013e3f30ddef912ac",
+            "comment": "Modify documentation columns for improved readability."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.1",
+      "tag": "@uifabric/example-app-base_v5.11.1",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "809c04b6d3702f247d6d442e6502fa1b793170e6",
+            "comment": "Refactors String.prototype.includes usage in favor of  String.prototype.indexOf for IE compat."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.0",
       "tag": "@uifabric/example-app-base_v5.11.0",
       "date": "Mon, 23 Apr 2018 10:24:54 GMT",

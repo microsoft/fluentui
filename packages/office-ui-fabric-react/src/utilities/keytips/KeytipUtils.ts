@@ -3,8 +3,7 @@ import {
   KTP_PREFIX,
   DATAKTP_TARGET,
   DATAKTP_EXECUTE_TARGET,
-  KTP_LAYER_ID,
-  KTP_ARIA_SEPARATOR_ID
+  KTP_LAYER_ID
 } from './KeytipConstants';
 import { addElementAtIndex } from '../../Utilities';
 
@@ -68,5 +67,5 @@ export function getAriaDescribedBy(keySequences: string[]): string {
     return describedby;
   }
 
-  return describedby + ' ' + KTP_ARIA_SEPARATOR_ID + ' ' + sequencesToID(keySequences);
+  return describedby + ' ' + sequencesToID(keySequences);
 }

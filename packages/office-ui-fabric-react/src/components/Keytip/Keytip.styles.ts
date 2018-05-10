@@ -63,9 +63,7 @@ export const getCalloutOffsetStyles = (offset: IPoint): IStyleFunction<ICalloutC
     return mergeStyleSets(getCalloutStyles(props), {
       root: [{
         marginLeft: offset.x,
-        // Reverse the margin from the bottom so the callout positioning
-        // doesn't auto-correct it
-        marginBottom: -1 * offset.y
+        marginTop: offset.y
       }]
     });
   };

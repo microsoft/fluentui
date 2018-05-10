@@ -64,7 +64,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   public forceResolveSuggestion(): void {
-    if (this.suggestionsControl.hasSuggestionSelected()) {
+    if (this.suggestionsControl && this.suggestionsControl.hasSuggestionSelected()) {
       this.completeSuggestion();
     } else {
       this._onValidateInput();
@@ -141,7 +141,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   public completeSuggestion = (): void => {
-    if (this.suggestionsControl.hasSuggestionSelected()) {
+    if (this.suggestionsControl && this.suggestionsControl.hasSuggestionSelected()) {
       this.onChange(this.suggestionsControl.currentSuggestion!.item);
     }
   }
@@ -284,7 +284,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.updateSuggestions(suggestions);
     let itemValue: string | undefined = undefined;
 
-    if (this.suggestionsControl.currentSuggestion) {
+    if (this.suggestionsControl && this.suggestionsControl.currentSuggestion) {
       itemValue = this._getTextFromItem(
         this.suggestionsControl.currentSuggestion.item,
         updatedValue
@@ -321,7 +321,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     if (this.props.onRemoveSuggestion) {
       (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
-    this.suggestionsControl.removeSuggestion(index);
+
+    if (this.suggestionsControl) {
+      this.suggestionsControl.removeSuggestion(index);
+    }
   }
 
   protected onKeyDown = (ev: MouseEvent): void => {
@@ -353,6 +356,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
       case KeyCodes.del:
         if (this.props.onRemoveSuggestion
+          && this.suggestionsControl
           && this.suggestionsControl.hasSuggestionSelected
           && this.suggestionsControl.currentSuggestion) {
           (this.props.onRemoveSuggestion as ((item: T) => void))(
@@ -391,6 +395,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   private _onValidateInput = (): void => {
     if (
+      this.state.queryString &&
       this.props.onValidateInput &&
       this.props.createGenericItem
     ) {

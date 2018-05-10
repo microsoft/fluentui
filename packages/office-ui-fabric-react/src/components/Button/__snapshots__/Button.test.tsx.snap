@@ -60,6 +60,10 @@ exports[`Button renders ActionButton correctly 1`] = `
       &:hover {
         color: #0078d4;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:hover .ms-Button-icon {
         color: #0078d4;
       }
@@ -202,24 +206,30 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       className=
           ms-Button-icon
           {
-            display: inline-block;
-          }
-          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #106ebe;
+            display: inline-block;
             flex-shrink: 0;
+            font-family: "FabricMDL2Icons";
             font-size: 16px;
+            font-style: normal;
+            font-weight: normal;
             height: 16px;
             line-height: 16px;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
+            speak: none;
             text-align: center;
             vertical-align: middle;
           }
       data-icon-name="Add"
       role="presentation"
-    />
+    >
+      
+    </i>
     <div
       className=
           ms-Button-textContainer
@@ -248,24 +258,30 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       className=
           ms-Button-menuIcon
           {
-            display: inline-block;
-          }
-          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #666666;
+            display: inline-block;
             flex-shrink: 0;
+            font-family: "FabricMDL2Icons";
             font-size: 12px;
+            font-style: normal;
+            font-weight: normal;
             height: 16px;
             line-height: 16px;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
+            speak: none;
             text-align: center;
             vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
 </button>
 `;
@@ -331,6 +347,10 @@ exports[`Button renders CompoundButton correctly 1`] = `
       &:hover {
         background-color: #eaeaea;
         color: #000000;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
       }
       &:hover .ms-Button-description {
         color: #212121;
@@ -468,6 +488,10 @@ exports[`Button renders DefaultButton correctly 1`] = `
         background-color: #eaeaea;
         color: #000000;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:active {
         background-color: #c8c8c8;
         color: #212121;
@@ -574,6 +598,10 @@ exports[`Button renders IconButton correctly 1`] = `
         background-color: #f4f4f4;
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:active {
         background-color: #eaeaea;
         color: #0078d4;
@@ -599,30 +627,36 @@ exports[`Button renders IconButton correctly 1`] = `
       className=
           ms-Button-icon
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
-          }
-          {
             flex-shrink: 0;
+            font-family: "FabricMDL2Icons-0";
             font-size: 16px;
+            font-style: normal;
+            font-weight: normal;
             height: 16px;
             line-height: 16px;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
+            speak: none;
             text-align: center;
             vertical-align: middle;
           }
       data-icon-name="Emoji2"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
 </button>
 `;
 
 exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
 <button
-  aria-describedby=" ktp-layer-id ktp-aria-separator-id ktp-a"
+  aria-describedby=" ktp-layer-id ktp-a"
   aria-label={undefined}
   aria-labelledby={null}
   aria-pressed={undefined}
@@ -680,6 +714,10 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
       &:hover {
         background-color: #eaeaea;
         color: #000000;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
       }
       &:active {
         background-color: #c8c8c8;

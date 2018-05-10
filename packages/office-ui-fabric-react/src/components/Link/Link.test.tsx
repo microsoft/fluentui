@@ -40,6 +40,6 @@ describe('Link', () => {
       <Customizer settings={ { theme: NoClassNamesTheme } }>
         <Link href='helloworld.html'>My Link</Link>
       </Customizer >
-    )).toEqual('<a href=\"helloworld.html\" class=\"root-33\">My Link</a>');
+    ).indexOf('ms-Link')).toEqual(-1);
   });
 });

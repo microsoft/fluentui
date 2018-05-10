@@ -2,6 +2,44 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.7.4",
+      "tag": "@uifabric/fabric-website_v5.7.4",
+      "date": "Tue, 08 May 2018 16:02:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d3a85ba759d58bd74e4a1741ab73b729c96fa637",
+            "comment": "When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.3",
+      "tag": "@uifabric/fabric-website_v5.7.3",
+      "date": "Fri, 04 May 2018 15:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "097a1c9680161fe7faae9573f1e12fd21295eda6",
+            "comment": "Add fabric sketch toolkit"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.95.0 <6.0.0` to `>=5.96.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.2",
       "tag": "@uifabric/fabric-website_v5.7.2",
       "date": "Tue, 01 May 2018 19:26:35 GMT",
