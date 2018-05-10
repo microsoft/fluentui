@@ -94,7 +94,7 @@ export interface ICoachmarkState {
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public static defaultProps: Partial<ICoachmarkTypes> = {
     collapsed: true,
-    mouseProximityOffset: 100,
+    mouseProximityOffset: 10,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     color: DefaultPalette.themePrimary,
     positioningContainerProps: {
@@ -335,7 +335,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
       // We dont want to the user to immediatley trigger the coachmark when it's opened
       this._async.setTimeout(() => {
-        this._addProximityHandler(100);
+        this._addProximityHandler(this.props.mouseProximityOffset);
       }, this.props.delayBeforeMouseOpen!);
     }));
   }
@@ -382,8 +382,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     // Take the initial measure out of the initial render to prevent
     // an unnecessary render.
     this._async.setTimeout(() => {
-      if (this._entityInnerHostElement.current) {
-        targetElementRect = this._entityInnerHostElement.current.getBoundingClientRect();
+      if (this._translateAnimationContainer.current) {
+        targetElementRect = this._translateAnimationContainer.current.getBoundingClientRect();
       }
 
       // When the window resizes we want to async
@@ -397,8 +397,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         });
 
         timeoutIds.push(this._async.setTimeout((): void => {
-          if (this._entityInnerHostElement.current) {
-            targetElementRect = this._entityInnerHostElement.current.getBoundingClientRect();
+          if (this._translateAnimationContainer.current) {
+            targetElementRect = this._translateAnimationContainer.current.getBoundingClientRect();
           }
         }, 100));
       });
@@ -413,11 +413,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       const isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
-        // We don't want to update the isMouseInProximtiy state because
+        // We don't want to update the isMouseInProximity state because
         // The coachmark only opens and does not collapse.
         // Setting isMouseInProximity here will cause the coachmark to open and close
         this.setState({
-          // collapsed: !isMouseInProximity
+          collapsed: !isMouseInProximity
         });
       }
 

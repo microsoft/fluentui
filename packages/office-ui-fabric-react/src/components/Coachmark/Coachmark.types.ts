@@ -31,7 +31,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
    * The distance in pixels the mouse is located
    * before opening up the coachmark.
-   * @default 100
+   * @default 10
    */
   mouseProximityOffset?: number;
 

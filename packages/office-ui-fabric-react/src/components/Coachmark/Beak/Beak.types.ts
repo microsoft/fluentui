@@ -17,11 +17,6 @@ export interface IBeakProps extends React.Props<Beak> {
   componentRef?: (component: IBeak | null) => void;
 
   /**
-   * Color of the beak
-   */
-  color?: string;
-
-  /**
    * Left position of the beak
    */
   left?: string;
@@ -41,6 +36,9 @@ export interface IBeakProps extends React.Props<Beak> {
    */
   bottom?: string;
 
+  /**
+   * Direction of beak
+   */
   direction?: BeakDirection;
 }
 
