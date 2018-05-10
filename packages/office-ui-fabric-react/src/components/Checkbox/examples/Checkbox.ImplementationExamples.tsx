@@ -102,6 +102,6 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
 
   private _renderPersonaLabel(props: ICheckboxProps): JSX.Element {
     const DEFAULT_IMAGE_URL = '/_layouts/15/userphoto.aspx?size=S&accountname=';
-    return <Persona primaryText={ props.label } imageUrl={ DEFAULT_IMAGE_URL } size={ PersonaSize.size32 } />;
+    return <Persona text={ props.label } imageUrl={ DEFAULT_IMAGE_URL } size={ PersonaSize.size32 } />;
   }
 }
