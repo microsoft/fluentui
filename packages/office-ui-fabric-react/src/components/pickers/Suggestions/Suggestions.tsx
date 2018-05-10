@@ -194,7 +194,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             </div>) : (null)
         }
         {
-          (<span role='alert' aria-live='polite'
+          (<span
+            role='alert'
+            aria-live='polite'
             className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }
           >
             { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
