@@ -657,8 +657,6 @@ function _positionElementRelative(
     _getRectangleFromIRect(props.bounds) :
     new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
-  (window.mycanvas as HTMLCanvasElement).getContext('2d').rect(targetRect.left, targetRect.top, targetRect.width, targetRect.height);
-  (window.mycanvas as HTMLCanvasElement).getContext('2d').stroke();
   const positionData: IPositionDirectionalHintData = _getAlignmentData(
     _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
     targetRect,

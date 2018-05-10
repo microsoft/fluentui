@@ -46,16 +46,6 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   onAnimationOpenEnd?: () => void;
 
   /**
-   * The width of the beak component.
-   */
-  beakWidth?: number;
-
-  /**
-   * The height of the beak component
-   */
-  beakHeight?: number;
-
-  /**
    * Delay before allowing mouse movements to open
    * the Coachmark
    */
@@ -65,16 +55,6 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * Runs every time the mouse moves
    */
   onMouseMove?: (e: MouseEvent) => void;
-
-  /**
-   * The width of the coachmark
-   */
-  width?: number;
-
-  /**
-   * The height of the coachmark
-   */
-  height?: number;
 
   /**
    * Color

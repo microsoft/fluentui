@@ -6,6 +6,9 @@ import {
   getTheme
 } from '../../Styling';
 
+export const COACHMARK_WIDTH: number = 32;
+export const COACHMARK_HEIGHT: number = 32;
+
 export interface ICoachmarkStyleProps {
   /**
    * Is the Coachmark collapsed
@@ -57,6 +60,11 @@ export interface ICoachmarkStyleProps {
    * Beacon color two
    */
   beaconColorTwo?: string;
+
+  /**
+   * Transform origin for teaching bubble content
+   */
+  transformOrigin?: string;
 }
 
 export interface ICoachmarkStyles {
@@ -317,13 +325,13 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         outline: 'none',
         overflow: 'hidden',
         backgroundColor: props.color,
-        borderRadius: props.width,
+        borderRadius: COACHMARK_WIDTH,
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
         visibility: 'hidden'
       },
       !props.isMeasuring && {
-        width: props.width,
-        height: props.height,
+        width: COACHMARK_WIDTH,
+        height: COACHMARK_HEIGHT,
         visibility: 'visible'
       },
       !props.collapsed && {
@@ -336,7 +344,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     entityInnerHost: [
       {
         transition: 'transform 500ms cubic-bezier(0.5, 0, 0, 1)',
-        transformOrigin: 'top left',
+        transformOrigin: props.transformOrigin,
         transform: 'scale(0)'
       },
       (!props.collapsed) && {

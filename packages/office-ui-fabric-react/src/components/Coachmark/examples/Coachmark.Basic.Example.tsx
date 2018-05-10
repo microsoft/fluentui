@@ -131,6 +131,10 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       text: 'Try it'
     };
 
+    const buttonProps2: IButtonProps = {
+      text: 'Try it again'
+    };
+
     return (
       <div className={ classNames.root }>
         <div
@@ -196,7 +200,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={ this._targetButton.current }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.topAutoEdge
+              directionalHint: DirectionalHint.topLeftEdge
             } }
           >
             <TeachingBubbleContent
@@ -211,9 +215,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
         { isCBTargetVisible && (
           <Coachmark
-            target={ '[data-coachmarkid="testing"]' }
+            target={ `[${COACHMARK_ATTRIBUTE_NAME}="testing"]` }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.topRightEdge
+              directionalHint: DirectionalHint.bottomRightEdge
             } }
           >
             {
@@ -224,6 +228,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
                 closeButtonAriaLabel='Close'
                 onDismiss={ this._onDismiss }
                 primaryButtonProps={ buttonProps }
+                secondaryButtonProps={ buttonProps2 }
               >
                 test
               </TeachingBubbleContent>

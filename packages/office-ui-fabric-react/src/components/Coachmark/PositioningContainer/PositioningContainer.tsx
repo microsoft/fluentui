@@ -152,10 +152,6 @@ export class PositioningContainer
       positioningContainerMaxHeight,
       children } = this.props;
     const { positions } = this.state;
-    if (positions) {
-      console.log('POSITIONS', positions, positions.elementPosition);
-    }
-
     const styles = getClassNames();
 
     const directionalClassName = (positions && positions.targetEdge)
@@ -282,7 +278,6 @@ export class PositioningContainer
       currentProps!.target = this._target!;
       currentProps!.gapSpace = offsetFromTarget;
       const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-      // console.log('new postiions', newPositions);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
       // The position should not change if the position is within 2 decimal places.
