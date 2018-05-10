@@ -15,9 +15,6 @@ export class FluentThemePage extends React.Component<
   {}
   > {
   public render(): JSX.Element {
-
-    console.log(FluentTheme.palette);
-
     return (
       <ComponentPage
         title='Fluent Theme'
