@@ -85,7 +85,7 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
    * OpenGraph props.
    */
   title?: string;
-  ogType?: string;
+  openGraphType?: string;
   description?: string;
   image?: string;
   imageSecureUrl?: string;

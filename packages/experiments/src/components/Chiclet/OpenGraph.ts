@@ -5,10 +5,13 @@ export function extractMetaTags(url: string) {
 
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("GET", url, false);
-  xmlHttp.overrideMimeType('text/xml');
+  xmlHttp.overrideMimeType('application/xml');
   xmlHttp.send(null);
 
-  var metaElements = document.getElementsByTagName("meta");
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(xmlHttp.responseText, "text/html");
+
+  var metaElements = doc.getElementsByTagName("meta");
   let openGraphObject = _getOpenGraphValues(metaElements, attributes);
 
   return openGraphObject;
@@ -22,7 +25,7 @@ function _getOpenGraphValues(metaElements: NodeListOf<HTMLMetaElement>, attribut
           attributes.title = metaElements[i].content;
           break;
         case "og:type":
-          attributes.ogType = metaElements[i].content;
+          attributes.openGraphType = metaElements[i].content;
           break;
         case "og:image":
         case "og:image:url":

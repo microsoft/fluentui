@@ -32,11 +32,9 @@ export const getStyles = (
     icon: [
       'ms-ChicletCardPreview-icon',
       {
-        //padding: '10px 166px 8px 8px',
         left: '10px',
         bottom: '10px',
-        position: 'absolute',
-        color: '#166EBE'
+        position: 'absolute'
       }
     ],
     preview: [
@@ -46,8 +44,6 @@ export const getStyles = (
         height: '122px',
         width: '198px',
         position: 'relative',
-        //opacity: '0.02',
-        overflow: 'hidden', // need to fix
         backgroundColor: palette.white,
         display: 'block',
         padding: '2px 0px 2px 2px',
@@ -59,7 +55,6 @@ export const getStyles = (
         position: 'relative',
         display: 'block',
         height: '100%',
-        //lineHeight: '21px',
         overflow: 'hidden',
         wordWrap: 'break-word',
         width: '400px'
@@ -69,7 +64,6 @@ export const getStyles = (
       'ms-ChicletCardTitle',
       {
         padding: '9px 26px 5px 11px',
-        //font: theme.fonts.large,
         fontSize: '16px',
         fontWeight: 'normal',
         fontStyle: 'normal',
