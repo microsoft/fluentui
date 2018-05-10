@@ -8,7 +8,8 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  createRef
+  createRef,
+  css
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -431,7 +432,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={ DirectionalHint.bottomLeftEdge }
         { ...menuProps }
         shouldFocusOnContainer={ this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined }
-        className={ 'ms-BaseButton-menuhost ' + menuProps.className }
+        className={ css('ms-BaseButton-menuhost', menuProps.className) }
         target={ this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current }
         labelElementId={ this._labelId }
         onDismiss={ onDismiss }
@@ -685,6 +686,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } else if (this.props.menuProps) {
       return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
+
+    // Note: When enter is pressed, we will let the event continue to propagate
+    // to trigger the onClick event on the button
+    return false;
   }
 
   private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {

@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Adds a Fluent theme experiment",
-      "type": "minor"
+      "comment": "Fix Fluent palette color names",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
