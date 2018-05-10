@@ -491,7 +491,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _onTableMouseLeave = (ev: React.MouseEvent<HTMLElement>): void => {
-    if ((ev.target as HTMLElement).contains && (ev.target as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
+    if ((ev.target as HTMLElement).contains && (ev.relatedTarget as HTMLElement).contains && (ev.target as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
       return;
     }
 
@@ -504,7 +504,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _onTableMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
-    if ((ev.target as HTMLElement).contains && (ev.target as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
+    if ((ev.target as HTMLElement).contains && (ev.relatedTarget as HTMLElement).contains && (ev.target as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
       return;
     }
 

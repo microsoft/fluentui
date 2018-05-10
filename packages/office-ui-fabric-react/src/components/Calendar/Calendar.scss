@@ -247,6 +247,7 @@ $Calendar-dayPicker-margin: 10px;
     border-right: 1px solid $ms-color-neutralLight;
     box-sizing: border-box;
     width: 28x;
+    padding: 0;
     .dayWrapper {
       color: $ms-color-neutralSecondary;
       &.weekIsHighlighted {
