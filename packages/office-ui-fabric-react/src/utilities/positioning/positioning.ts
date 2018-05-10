@@ -685,7 +685,7 @@ function _positionCallout(props: ICalloutPositionProps,
   hostElement: HTMLElement,
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo {
-  const beakWidth: number = props.beakWidth || 0;
+  const beakWidth: number = props.isBeakVisible ? props.beakWidth || 0 : 0;
   const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
