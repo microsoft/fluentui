@@ -33,6 +33,7 @@
     "@uifabric/example-app-base": ">=5.11.3 <6.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.3.3",
     "es6-promise": "^4.1.0",
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
