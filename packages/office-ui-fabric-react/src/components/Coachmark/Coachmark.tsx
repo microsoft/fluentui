@@ -36,7 +36,7 @@ export interface ICoachmarkState {
    * Is the Coachmark currently collapsed into
    * a tear drop shape
    */
-  collapsed: boolean;
+  isCollapsed: boolean;
 
   /**
    * Enables/Disables the beacon that radiates
@@ -93,7 +93,7 @@ export interface ICoachmarkState {
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public static defaultProps: Partial<ICoachmarkTypes> = {
-    collapsed: true,
+    isCollapsed: true,
     mouseProximityOffset: 10,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     color: DefaultPalette.themePrimary,
@@ -116,7 +116,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     // Set defaults for state
     this.state = {
-      collapsed: props.collapsed!,
+      isCollapsed: props.isCollapsed!,
       isBeaconAnimating: true,
       isMeasuring: true,
       entityInnerHostRect: {
@@ -169,7 +169,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       beakTop,
       beakRight,
       beakBottom,
-      collapsed,
+      isCollapsed,
       isBeaconAnimating,
       isMeasuring,
       entityInnerHostRect,
@@ -177,20 +177,22 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     } = this.state;
 
     const classNames = getClassNames(getStyles, {
-      collapsed: collapsed,
+      isCollapsed: isCollapsed,
       isBeaconAnimating: isBeaconAnimating,
       isMeasuring: isMeasuring,
-      entityHostHeight: entityInnerHostRect.height + 'px',
-      entityHostWidth: entityInnerHostRect.width + 'px',
-      width: COACHMARK_WIDTH + 'px',
-      height: COACHMARK_HEIGHT + 'px',
+      entityHostHeight: `${entityInnerHostRect.height}px`,
+      entityHostWidth: `${entityInnerHostRect.width}px`,
+      width: `${COACHMARK_WIDTH}px`,
+      height: `${COACHMARK_HEIGHT}px`,
       color: color,
       transformOrigin: transformOrigin
     });
 
-    const finalHeight = (this._entityInnerHostElement && this._entityInnerHostElement.current) ?
-      this._entityInnerHostElement.current.offsetHeight :
-      0;
+    let finalHeight = COACHMARK_HEIGHT;
+
+    if (!isCollapsed && (this._entityInnerHostElement && this._entityInnerHostElement.current)) {
+      finalHeight = this._entityInnerHostElement.current.offsetHeight
+    }
 
     return (
       <PositioningContainer
@@ -242,7 +244,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentWillReceiveProps(newProps: ICoachmarkTypes): void {
-    if (this.props.collapsed && !newProps.collapsed) {
+    if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
       this._openCoachmark();
     }
@@ -350,7 +352,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
   private _openCoachmark = (): void => {
     this.setState({
-      collapsed: false
+      isCollapsed: false
     });
 
     this._translateAnimationContainer.current && this._translateAnimationContainer.current.addEventListener('animationstart', (): void => {
@@ -408,22 +410,24 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     // we want to check if inside of an element and
     // set the state with the result.
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
-      const mouseY = e.pageY;
-      const mouseX = e.pageX;
-      const isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
+      if (this.state.isCollapsed) {
+        const mouseY = e.pageY;
+        const mouseX = e.pageX;
+        const isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
 
-      if (isMouseInProximity !== this.state.isMouseInProximity) {
-        // We don't want to update the isMouseInProximity state because
-        // The coachmark only opens and does not collapse.
-        // Setting isMouseInProximity here will cause the coachmark to open and close
-        this.setState({
-          collapsed: !isMouseInProximity
-        });
+        if (isMouseInProximity !== this.state.isMouseInProximity) {
+          // We don't want to update the isMouseInProximity state because
+          // The coachmark only opens and does not collapse.
+          // Setting isMouseInProximity here will cause the coachmark to open and close
+          this.setState({
+            isCollapsed: !isMouseInProximity
+          });
+        }
       }
 
       if (this.props.onMouseMove) {
         this.props.onMouseMove(e);
-      }
+      };
     });
   }
 

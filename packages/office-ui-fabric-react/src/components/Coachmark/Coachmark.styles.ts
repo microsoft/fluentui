@@ -13,7 +13,7 @@ export interface ICoachmarkStyleProps {
   /**
    * Is the Coachmark collapsed
    */
-  collapsed: boolean;
+  isCollapsed: boolean;
 
   /**
    * Is the beacon currently animating.
@@ -260,7 +260,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         borderStyle: 'solid',
         opacity: '0'
       },
-      (props.collapsed && props.isBeaconAnimating) && ContinuousPulseAnimation
+      (props.isCollapsed && props.isBeaconAnimating) && ContinuousPulseAnimation
     ],
     // Translate Animation Layer
     translateAnimationContainer: [
@@ -268,7 +268,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -278,7 +278,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         animationName: translateOne,
         transition: 'opacity 0.5s ease-in-out'
       },
-      (!props.collapsed) && {
+      (!props.isCollapsed) && {
         opacity: '1'
       }
     ],
@@ -288,7 +288,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -305,7 +305,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         height: '100%',
         opacity: '0.8'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -314,7 +314,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         animationFillMode: 'forwards',
         animationName: rotateOne
       },
-      !props.collapsed && {
+      !props.isCollapsed && {
         opacity: '1'
       }
     ],
@@ -334,7 +334,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         height: COACHMARK_HEIGHT,
         visibility: 'visible'
       },
-      !props.collapsed && {
+      !props.isCollapsed && {
         borderRadius: '1px',
         opacity: '1',
         width: props.entityHostWidth,
@@ -347,7 +347,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         transformOrigin: props.transformOrigin,
         transform: 'scale(0)'
       },
-      (!props.collapsed) && {
+      (!props.isCollapsed) && {
         width: props.entityHostWidth,
         height: props.entityHostHeight,
         transform: 'scale(1)'

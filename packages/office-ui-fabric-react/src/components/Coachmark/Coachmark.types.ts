@@ -26,7 +26,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * The starting collapsed state for the Coachmark?
    * @default true
    */
-  collapsed?: boolean;
+  isCollapsed?: boolean;
 
   /**
    * The distance in pixels the mouse is located
