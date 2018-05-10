@@ -154,7 +154,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           });
         }
 
-        const originalOption = options!.find((value: IChoiceGroupOption) => value.key == key);
+        const originalOption = options!.find((value: IChoiceGroupOption) => value.key === key);
 
         // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
         if (onChange) {

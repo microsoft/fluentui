@@ -70,7 +70,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('An individual choice option can be disabled', () => {
-    let options = { ...TEST_OPTIONS };
+    const options = { ...TEST_OPTIONS };
     options[0].disabled = true;
 
     const choiceGroup = mount(
