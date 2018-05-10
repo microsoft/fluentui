@@ -9,6 +9,7 @@ import {
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
+import { format } from '../../utilities/string/StringHelper';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
@@ -22,6 +23,7 @@ const styles: any = stylesImport;
 export interface IBasePickerState {
   items?: any;
   suggestedDisplayValue?: string;
+  removedItemAlertText?: string;
   moreSuggestionsAvailable?: boolean;
   isFocused?: boolean;
   isSearching?: boolean;
@@ -193,6 +195,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
           <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
+          <div className={ styles.screenReaderOnly } role='alert' id='suggestion-removed-alert' aria-live='assertive'>{ this.state.removedItemAlertText }</div>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }
@@ -273,7 +276,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       onRemoveItem: () => this.removeItem(item),
       disabled: disabled,
       onItemChange: this.onItemChange,
-      removeButtonAriaLabel: removeButtonAriaLabel
+      removeButtonAriaLabel: format(removeButtonAriaLabel, item.primaryText)
     }));
   }
 
@@ -634,6 +637,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (index >= 0) {
       const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
       this._updateSelectedItems(newItems);
+      this.setState({ removedItemAlertText: format(this.props.singularItemRemovalText, items[index].primaryText) });
     }
   }
 
@@ -644,6 +648,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const index: number = items.indexOf(firstItemToRemove);
 
     this._updateSelectedItems(newItems, index);
+    if (itemsToRemove.length === 1) {
+      this.setState({ removedItemAlertText: format(this.props.singularItemRemovalText, firstItemToRemove.primaryText) });
+    } else {
+      this.setState({ removedItemAlertText: format(this.props.pluralItemRemovalText, itemsToRemove.length) });
+    }
   }
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
