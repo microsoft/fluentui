@@ -1,19 +1,27 @@
 import { IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
+import { getGlobalClassNames } from '../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-ChoiceFieldGroup',
+  flexContainer: 'ms-ChoiceFieldGroup-flexContainer'
+};
 
 export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => {
-  const { className, optionsContainIconOrImage } = props;
+  const { className, optionsContainIconOrImage, theme } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     applicationRole: className,
     root: [
-      'ms-ChoiceFieldGroup',
+      classNames.root,
       {
         display: 'block'
       }
     ],
     label: className,
     flexContainer: [
-      'ms-ChoiceFieldGroup-flexContainer',
+      classNames.flexContainer,
       optionsContainIconOrImage && {
         display: 'flex',
         flexDirection: 'row',

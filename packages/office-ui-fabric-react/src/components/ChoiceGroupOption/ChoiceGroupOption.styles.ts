@@ -1,8 +1,19 @@
-import { FontSizes, FontWeights, HighContrastSelector, IStyle, IPalette } from '../../Styling';
+import { FontSizes, FontWeights, HighContrastSelector, IStyle, IPalette, getGlobalClassNames } from '../../Styling';
 import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles
 } from './ChoiceGroupOption.types';
+
+const GlobalClassNames = {
+  root: 'ms-ChoiceField',
+  choiceFieldWrapper: 'ms-ChoiceField-wrapper',
+  input: 'ms-ChoiceField-input',
+  field: 'ms-ChoiceField-field',
+  innerField: 'ms-ChoiceField-innerField',
+  imageWrapper: 'ms-ChoiceField-imageWrapper',
+  iconWrapper: 'ms-ChoiceField-iconWrapper',
+  labelWrapper: 'ms-ChoiceField-labelWrapper'
+};
 
 const labelWrapperLineHeight = 15;
 const iconSize = 32;
@@ -47,9 +58,9 @@ function getChoiceGroupFocusStyle(palette: Partial<IPalette>, hasIconOrImage?: b
   ];
 }
 
-function getImageWrapperStyle(isSelectedImageWrapper: boolean, checked?: boolean): IStyle {
+function getImageWrapperStyle(isSelectedImageWrapper: boolean, className?: string, checked?: boolean): IStyle {
   return [
-    'ms-ChoiceField-imageWrapper',
+    className,
     {
       paddingBottom: 2,
       transitionProperty: 'opacity',
@@ -88,6 +99,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     focused
   } = props;
   const { palette, semanticColors } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const fieldHoverOrFocusProperties = {
     selectors: {
@@ -194,7 +207,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
 
   return {
     root: [
-      'ms-ChoiceField',
+      classNames.root,
       {
         display: 'flex',
         alignItems: 'center',
@@ -226,12 +239,12 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       },
     ],
     choiceFieldWrapper: [
-      'ms-ChoiceField-wrapper',
+      classNames.choiceFieldWrapper,
       focused && getChoiceGroupFocusStyle(palette, hasIcon || hasImage)
     ],
     // The hidden input
     input: [
-      'ms-ChoiceField-input',
+      classNames.input,
       {
         position: 'absolute',
         opacity: 0,
@@ -247,7 +260,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       }
     ],
     field: [
-      'ms-ChoiceField-field',
+      classNames.field,
       {
         display: 'inline-block',
         cursor: 'pointer',
@@ -306,7 +319,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       }
     ],
     innerField: [
-      'ms-ChoiceField-innerField',
+      classNames.innerField,
       (hasIcon || hasImage) && {
         position: 'relative',
         display: 'inline-block',
@@ -327,10 +340,10 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         }
       }
     ],
-    imageWrapper: getImageWrapperStyle(false, checked),
-    selectedImageWrapper: getImageWrapperStyle(true, checked),
+    imageWrapper: getImageWrapperStyle(false, classNames.imageWrapper, checked),
+    selectedImageWrapper: getImageWrapperStyle(true, classNames.imageWrapper, checked),
     iconWrapper: [
-      'ms-ChoiceField-iconWrapper',
+      classNames.iconWrapper,
       {
         fontSize: iconSize,
         lineHeight: iconSize,
@@ -338,7 +351,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       }
     ],
     labelWrapper: [
-      'ms-ChoiceField-labelWrapper',
+      classNames.labelWrapper,
       (hasIcon || hasImage) && {
         display: 'block',
         position: 'relative',

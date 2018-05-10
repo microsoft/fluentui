@@ -92,14 +92,15 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           <div className={ classNames.flexContainer }>
             { options!.map((option: IChoiceGroupOption) => {
 
-              let innerOptionProps = {
+              const innerOptionProps = {
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,
-                name: name || this._id
+                name: name || this._id,
+                required
               };
 
               return (
@@ -141,12 +142,10 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     });
   }
 
-  // (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption)
-
   private _onChange = (key: string) =>
     this.changedVars[key] ? this.changedVars[key] : this.changedVars[key] =
       (evt, option: IChoiceGroupOption) => {
-        const { onChanged, onChange, selectedKey } = this.props;
+        const { onChanged, onChange, selectedKey, options } = this.props;
 
         // Only manage state in uncontrolled scenarios.
         if (selectedKey === undefined) {
@@ -155,11 +154,13 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           });
         }
 
+        const originalOption = options!.find((value: IChoiceGroupOption) => value.key == key);
+
         // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
         if (onChange) {
-          onChange(evt, option && { key, ...option });
+          onChange(evt, originalOption);
         } else if (onChanged) {
-          onChanged(option);
+          onChanged(originalOption!);
         }
       }
 

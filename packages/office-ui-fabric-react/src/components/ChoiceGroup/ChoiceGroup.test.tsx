@@ -1,14 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import { mount } from 'enzyme';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
-import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.types';
-import { IChoiceGroupOptionProps } from '../ChoiceGroupOption/ChoiceGroupOption.types';
+import { IChoiceGroupOption } from './ChoiceGroup.types';
 import { resetIds } from '../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
@@ -25,17 +23,6 @@ describe('ChoiceGroup', () => {
     resetIds();
   });
 
-  it('renders choicegroup (enzyme)', () => {
-    const choiceGroup = mount(
-      <ChoiceGroup
-        options={ TEST_OPTIONS }
-        required
-      />
-    );
-
-    expect(choiceGroup.getDOMNode().querySelector(QUERY_SELECTOR)).toBeTruthy();
-  });
-
   it('renders ChoiceGroup correctly', () => {
     const component = renderer.create(
       <ChoiceGroup
@@ -47,175 +34,137 @@ describe('ChoiceGroup', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  // it('can change options', () => {
-  //   const options: IChoiceGroupOptionProps[] = [
-  //     { key: '1', text: '1' },
-  //     { key: '2', text: '2' },
-  //     { key: '3', text: '3' }
-  //   ];
-  //   let threwException = false;
-  //   let choiceGroup;
-  //   try {
-  //     choiceGroup = ReactTestUtils.renderIntoDocument(
-  //       <ChoiceGroup
-  //         label='testgroup'
-  //         options={ options }
-  //         required={ true }
-  //       />
-  //     );
-  //   } catch (e) {
-  //     console.log(e);
-  //     threwException = true;
-  //   }
-  //   expect(threwException).toEqual(false);
+  it('can change options', () => {
+    const choiceGroup = mount(
+      <ChoiceGroup
+        label='testgroup'
+        options={ TEST_OPTIONS }
+        required={ true }
+      />);
 
-  //   const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
-  //   console.log(renderedDOM);
-  //   const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
-  //   expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
-  //   expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
-  //   expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+    expect(choiceOptions.length).toBe(3);
 
-  //   ReactTestUtils.Simulate.change(choiceOptions[0]);
+    expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
 
-  //   expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
-  //   expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
-  //   expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+    ReactTestUtils.Simulate.change(choiceOptions[0]);
 
-  //   ReactTestUtils.Simulate.change(choiceOptions[1]);
+    expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
+    expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
 
-  //   expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
-  //   expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(true);
-  //   expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+    ReactTestUtils.Simulate.change(choiceOptions[1]);
 
-  //   ReactTestUtils.Simulate.change(choiceOptions[0]);
+    expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(true);
+    expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
 
-  //   expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
-  //   expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
-  //   expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-  // });
+    ReactTestUtils.Simulate.change(choiceOptions[0]);
 
-  // it('An individual choice option can be disabled', () => {
-  //   const options: IChoiceGroupOption[] = [
-  //     { key: '1', text: '1', disabled: true },
-  //     { key: '2', text: '2' },
-  //     { key: '3', text: '3' }
-  //   ];
-  //   let threwException = false;
-  //   let choiceGroup;
-  //   try {
-  //     choiceGroup = ReactTestUtils.renderIntoDocument(
-  //       <ChoiceGroup
-  //         label='testgroup'
-  //         options={ options }
-  //         required={ true }
-  //       />
-  //     );
-  //   } catch (e) {
-  //     threwException = true;
-  //   }
-  //   expect(threwException).toEqual(false);
+    expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
+    expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
+    expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
+  });
 
-  //   const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
-  //   const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
+  it('An individual choice option can be disabled', () => {
+    let options = { ...TEST_OPTIONS };
+    options[0].disabled = true;
 
-  //   expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
-  //   expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(false);
-  //   expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(false);
-  // });
+    const choiceGroup = mount(
+      <ChoiceGroup
+        label='testgroup'
+        options={ TEST_OPTIONS }
+        required={ true }
+      />);
 
-  // it('renders all choice options as disabled when disabled', () => {
-  //   const options: IChoiceGroupOption[] = [
-  //     { key: '1', text: '1' },
-  //     { key: '2', text: '2' },
-  //     { key: '3', text: '3' }
-  //   ];
-  //   let threwException = false;
-  //   let choiceGroup;
-  //   try {
-  //     choiceGroup = ReactTestUtils.renderIntoDocument(
-  //       <ChoiceGroup
-  //         label='testgroup'
-  //         options={ options }
-  //         required={ true }
-  //         disabled={ true }
-  //       />
-  //     );
-  //   } catch (e) {
-  //     threwException = true;
-  //   }
-  //   expect(threwException).toEqual(false);
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
-  //   const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
-  //   const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
+    expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
+    expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(false);
+    expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(false);
+  });
 
-  //   expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
-  //   expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(true);
-  //   expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(true);
-  // });
+  it('renders all choice options as disabled when disabled', () => {
+    const choiceGroup = mount(
+      <ChoiceGroup
+        label='testgroup'
+        options={ TEST_OPTIONS }
+        required={ true }
+        disabled={ true }
+      />
+    );
 
-  // it('can act as an uncontrolled component', () => {
-  //   const choiceGroup = ReactTestUtils.renderIntoDocument(
-  //     <ChoiceGroup
-  //       defaultSelectedKey='1'
-  //       options={ TEST_OPTIONS }
-  //     />
-  //   );
-  //   const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
-  //   const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
-  //   expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
+    expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
+    expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(true);
+    expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(true);
+  });
 
-  //   ReactTestUtils.Simulate.change(choiceOptions[1]);
+  it('can act as an uncontrolled component', () => {
+    const choiceGroup = mount(
+      <ChoiceGroup
+        defaultSelectedKey='1'
+        options={ TEST_OPTIONS }
+      />
+    );
 
-  //   expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(true);
-  // });
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
-  // it('can render as a controlled component', () => {
-  //   let _selectedItem;
-  //   const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
-  //     _selectedItem = item;
-  //   };
+    expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
 
-  //   const choiceGroup = ReactTestUtils.renderIntoDocument(
-  //     <ChoiceGroup
-  //       selectedKey='1'
-  //       options={ TEST_OPTIONS }
-  //       onChange={ onChange }
-  //     />
-  //   );
-  //   const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
-  //   const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
+    ReactTestUtils.Simulate.change(choiceOptions[1]);
 
-  //   expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
+    expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(true);
+  });
 
-  //   ReactTestUtils.Simulate.change(choiceOptions[1]);
+  it('can render as a controlled component', () => {
+    let _selectedItem;
+    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
+      _selectedItem = item;
+    };
 
-  //   expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
-  //   expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
+    const choiceGroup = mount(
+      <ChoiceGroup
+        selectedKey='1'
+        options={ TEST_OPTIONS }
+        onChange={ onChange }
+      />
+    );
 
-  //   expect(_selectedItem).toEqual(TEST_OPTIONS[1]);
-  // });
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
-  // it('extra <input> attributes appear in dom if specified', () => {
-  //   const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
+    expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
 
-  //   const choiceGroup = ReactTestUtils.renderIntoDocument(
-  //     <ChoiceGroup
-  //       options={ TEST_OPTIONS }
-  //       onChange={ onChange }
-  //     />
-  //   );
-  //   const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance) as Element;
-  //   const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
+    ReactTestUtils.Simulate.change(choiceOptions[1]);
 
-  //   const extraAttributeGetter: (index: number) => string | null = (index: number): string | null => {
-  //     const input: HTMLInputElement = choiceOptions[index] as HTMLInputElement;
-  //     return input.getAttribute('data-automation-id');
-  //   };
+    expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
+    expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
 
-  //   expect(extraAttributeGetter(0)).toEqual('auto1');
-  //   expect(extraAttributeGetter(1)).toBeNull();
-  // });
+    expect(_selectedItem).toEqual(TEST_OPTIONS[1]);
+  });
+
+  it('extra <input> attributes appear in dom if specified', () => {
+    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
+
+    const choiceGroup = mount(
+      <ChoiceGroup
+        options={ TEST_OPTIONS }
+        onChange={ onChange }
+      />
+    );
+
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+
+    const extraAttributeGetter: (index: number) => string | null = (index: number): string | null => {
+      const input: HTMLInputElement = choiceOptions[index] as HTMLInputElement;
+      return input.getAttribute('data-automation-id');
+    };
+
+    expect(extraAttributeGetter(0)).toEqual('auto1');
+    expect(extraAttributeGetter(1)).toBeNull();
+  });
 });
