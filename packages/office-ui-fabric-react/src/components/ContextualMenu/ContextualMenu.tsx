@@ -27,7 +27,7 @@ import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contex
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
-import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper';
+import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;

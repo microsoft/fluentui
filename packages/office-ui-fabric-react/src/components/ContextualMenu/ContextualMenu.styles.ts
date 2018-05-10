@@ -1,14 +1,13 @@
 import {
+  concatStyleSets,
   FontSizes,
   FontWeights,
-  IRawStyle,
-  ITheme,
-  concatStyleSets,
   getFocusStyle,
-  HighContrastSelector
+  HighContrastSelector,
+  IRawStyle,
+  ITheme
 } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
-
 import { memoizeFunction } from '../../Utilities';
 
 const ContextualMenuItemHeight = '32px';
@@ -116,6 +115,11 @@ export const getMenuItemStyles = memoizeFunction((
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap'
+    },
+    secondaryText: {
+      color: theme.palette.neutralTertiary,
+      paddingLeft: '20px',
+      textAlign: 'right',
     },
     icon: {
       display: 'inline-block',

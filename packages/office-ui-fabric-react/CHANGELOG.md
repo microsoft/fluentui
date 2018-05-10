@@ -1,6 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 May 2018 10:28:20 GMT and should not be manually modified.
+This log was last generated on Thu, 10 May 2018 10:27:25 GMT and should not be manually modified.
+
+## 5.99.0
+Thu, 10 May 2018 10:27:25 GMT
+
+### Minor changes
+
+- Add secondaryText to ContextualMenuItem to render on the right of item.name (text)
+- MarqueeSelection: Added `getStyles` function.
+- Added overflowMenuProps property to CommandBar
+
+### Patches
+
+- Even if a ComboBoxOptionWrapper component doesn't update (shouldComponentUpdate returns false), children functions are still being executed unnecessarily, which can cause performance issues. This can be avoided by passing in a reference to a function that returns the children elements, instead of returning the elements themselves.
+- Fix index import
+
+## 5.98.0
+Wed, 09 May 2018 15:42:02 GMT
+
+### Minor changes
+
+- FocusZone: Add a prop to allow a FocusZone to not let focus events propagate outside of the FocusZone
+- Added support for special casing UnknownPersona coin
+
+## 5.97.1
+Tue, 08 May 2018 18:18:47 GMT
+
+### Patches
+
+- BaseButton: Allow Alt + Down on menu buttons to open the menu
+
+## 5.97.0
+Tue, 08 May 2018 10:17:01 GMT
+
+### Minor changes
+
+- Remove redundant defaultSelectedItem prop for BaseExtendedPicker
+- Icon: undoing breaking change with regards to making `IIconStyles.root` required, adding tests to ensure backwards compatibility.
+- Mark Slider's ValuePosition enum as deprecated as it is unused.
+- Add ContextualMenuItem functions to open and close menus
+- Fixes issue where focus isn't displayed correctly on the contextual mneu
+- SearchBox: New prop for turning off icon animation.
+- Layer: Use React Portals if available
+
+### Patches
+
+- Popup: Added check for onBlur to prevent focus setting focus to be disabled in chrome
+- Fix breadcrumb rendering issue when overflow index is at last
 
 ## 5.96.1
 Mon, 07 May 2018 10:28:20 GMT

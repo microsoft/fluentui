@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.11.3",
+      "tag": "@uifabric/example-app-base_v5.11.3",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "0283f2a4f9465a7aad3039ce6f8d98848f9a2521",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.2",
       "tag": "@uifabric/example-app-base_v5.11.2",
       "date": "Fri, 04 May 2018 15:58:38 GMT",

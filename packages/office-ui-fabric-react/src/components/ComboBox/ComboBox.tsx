@@ -90,6 +90,11 @@ const ReadOnlyPendingAutoCompleteTimeout = 1000 /* ms */;
 interface IComboBoxOptionWrapperProps extends IComboBoxOption {
   // True if the option is currently selected
   isSelected: boolean;
+
+  // A function that returns the children of the OptionWrapper. We pass this in as a function to ensure that
+  // children methods don't get called unnecessarily if the component doesn't need to be updated. This leads
+  // to a significant performance increase in ComboBoxes with many options and/or complex onRenderOption functions
+  render: () => JSX.Element;
 }
 
 // Internal class that is used to wrap all ComboBox options
@@ -97,12 +102,12 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
 // so we don't rerender every option every time render is executed
 class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
   public render(): React.ReactNode {
-    return this.props.children;
+    return this.props.render();
   }
 
   public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): boolean {
-    // The children will always be different, so we ignore that prop
-    return !shallowCompare({ ...this.props, children: undefined }, { ...newProps, children: undefined });
+    // The render function will always be different, so we ignore that prop
+    return !shallowCompare({ ...this.props, render: undefined }, { ...newProps, render: undefined });
   }
 }
 
@@ -1080,25 +1085,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const checkboxStyles = () => {
       return optionStyles;
     };
-    const wrapperProps = {
-      key: item.key,
-      index: item.index,
-      styles: optionStyles,
-      disabled: item.disabled,
-      isSelected: isSelected,
-      text: item.text,
-    };
 
-    return (
-      !this.props.multiSelect ? (
-        <ComboBoxOptionWrapper
-          { ...wrapperProps }
-        >
+    const getOptionComponent = () => {
+      return (
+        !this.props.multiSelect ? (
           <CommandButton
             id={ id + '-list' + item.index }
             key={ item.key }
             data-index={ item.index }
-            styles={ optionStyles }
+            styles={ this._getCurrentOptionStyles(item) }
             checked={ isSelected }
             className={ 'ms-ComboBox-option' }
             onClick={ this._onItemClick(item.index) }
@@ -1114,11 +1109,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           </span>
             }
           </CommandButton>
-        </ComboBoxOptionWrapper >
-      ) : (
-          <ComboBoxOptionWrapper
-            { ...wrapperProps }
-          >
+        ) : (
             <Checkbox
               id={ id + '-list' + item.index }
               ariaLabel={ this._getPreviewText(item) }
@@ -1135,8 +1126,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             >
               { onRenderOption(item, this._onRenderOptionContent) }
             </Checkbox>
-          </ComboBoxOptionWrapper >
-        )
+          )
+      );
+    };
+
+    return (
+      <ComboBoxOptionWrapper
+        key={ item.key }
+        index={ item.index }
+        disabled={ item.disabled }
+        isSelected={ isSelected }
+        text={ item.text }
+        render={ getOptionComponent }
+      />
     );
   }
 
