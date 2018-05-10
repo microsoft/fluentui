@@ -193,13 +193,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               { footerTitle(this.props) }
             </div>) : (null)
         }
-        { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
-          (<span
-            role='alert'
+        {
+          (<span role='alert' aria-live='polite'
             className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }
           >
-            { suggestionsAvailableAlertText }
-          </span>) : (null)
+            { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
+              suggestionsAvailableAlertText : null
+            }
+          </span>)
         }
       </div>
     );
