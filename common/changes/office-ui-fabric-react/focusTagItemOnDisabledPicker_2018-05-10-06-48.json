@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "veloiya@microsoft.com"
+}
