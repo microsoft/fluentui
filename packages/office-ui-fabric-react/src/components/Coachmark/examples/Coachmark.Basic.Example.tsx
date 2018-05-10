@@ -62,11 +62,11 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
     const primaryButtonProps: IButtonProps = {
       text: 'OK'
-    }
+    };
 
     const secondaryButtonProps: IButtonProps = {
       text: 'Cancel'
-    }
+    };
 
     return (
       <div className={ classNames.root }>
