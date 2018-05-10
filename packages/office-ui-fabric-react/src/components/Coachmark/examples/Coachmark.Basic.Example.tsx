@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonProps, IBaseButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IStyle } from '../../../Styling';
 import {
   BaseComponent,
@@ -60,6 +60,14 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       };
     });
 
+    const primaryButtonProps: IButtonProps = {
+      text: 'OK'
+    }
+
+    const secondaryButtonProps: IButtonProps = {
+      text: 'Cancel'
+    }
+
     return (
       <div className={ classNames.root }>
         <div
@@ -78,6 +86,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             <TeachingBubbleContent
               headline='Example Title'
               calloutProps={ calloutProps }
+              hasCloseIcon={ true }
+              primaryButtonProps={ primaryButtonProps }
+              secondaryButtonProps={ secondaryButtonProps }
             >
               Welcome to the land of coachmarks
             </TeachingBubbleContent>

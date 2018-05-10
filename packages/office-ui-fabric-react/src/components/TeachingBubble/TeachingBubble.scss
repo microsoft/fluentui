@@ -112,12 +112,16 @@
   font-weight: $ms-font-weight-semilight;
 }
 
-.root .closeButton {
+.closeButton {
   position: absolute;
   @include ms-right(0);
   top: 0;
   color: $ms-color-white;
   font-size: $ms-icon-size-s;
+
+  &:hover {
+    background: transparent;
+  }
 }
 
 .footer {
@@ -155,7 +159,7 @@
 }
 
 //Primary button style override
-.root .primaryButton {
+.primaryButton {
   background-color: $ms-color-white;
   border-color: $ms-color-white;
 
@@ -181,7 +185,7 @@
 }
 
 //Secondary button style override
-.root .secondaryButton {
+.secondaryButton {
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-white;
 
