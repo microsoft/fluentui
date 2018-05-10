@@ -38,6 +38,12 @@ describe('Persona', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders Persona correctly with UnknownPersona coin', () => {
+    const component = renderer.create(<Persona text='Kat Larrson' showUnknownPersonaCoin={ true } />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   describe('initials and colors', () => {
     it('calculates an expected initials in LTR if one was not specified', () => {
       let wrapper = mount(<Persona text='Kat Larrson' />);

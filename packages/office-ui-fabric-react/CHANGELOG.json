@@ -2,6 +2,75 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.99.0",
+      "tag": "office-ui-fabric-react_v5.99.0",
+      "date": "Thu, 10 May 2018 10:27:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "76e7918dd9f2585a2356efc98b172f61a22408de",
+            "comment": "Even if a ComboBoxOptionWrapper component doesn't update (shouldComponentUpdate returns false), children functions are still being executed unnecessarily, which can cause performance issues. This can be avoided by passing in a reference to a function that returns the children elements, instead of returning the elements themselves."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "67d8b44244f4e40b9fe05f282c1b9dfe7aadf91c",
+            "comment": "Fix index import"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Maximus <maximus12793@users.noreply.github.com>",
+            "commit": "5eaf2e19cbe0c5dc8487dfcb73a869c24e339e3f",
+            "comment": "Add secondaryText to ContextualMenuItem to render on the right of item.name (text)"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "fcd64118b21107448116e2234eda9c16d350d9ff",
+            "comment": "MarqueeSelection: Added `getStyles` function."
+          },
+          {
+            "author": "Adrian Tran <adtran@microsoft.com>",
+            "commit": "09b459a6f1324449dcd4763cdfeb91dc63b3c4ad",
+            "comment": "Added overflowMenuProps property to CommandBar"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.98.0",
+      "tag": "office-ui-fabric-react_v5.98.0",
+      "date": "Wed, 09 May 2018 15:42:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "42c097e2e29c34c1a6a03e44f07d4ffad75c98aa",
+            "comment": "FocusZone: Add a prop to allow a FocusZone to not let focus events propagate outside of the FocusZone"
+          },
+          {
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "1ff2126c39cb77633d9c802fda05abe3393fc507",
+            "comment": "Added support for special casing UnknownPersona coin"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.97.1",
+      "tag": "office-ui-fabric-react_v5.97.1",
+      "date": "Tue, 08 May 2018 18:18:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "be99bf8e02cc50a6c6f9c94df51b9a6ffcfa530c",
+            "comment": "BaseButton: Allow Alt + Down on menu buttons to open the menu"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.97.0",
       "tag": "office-ui-fabric-react_v5.97.0",
       "date": "Tue, 08 May 2018 10:17:01 GMT",

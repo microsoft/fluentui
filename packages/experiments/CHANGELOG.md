@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 08 May 2018 10:17:01 GMT and should not be manually modified.
+This log was last generated on Thu, 10 May 2018 10:27:25 GMT and should not be manually modified.
+
+## 5.38.1
+Thu, 10 May 2018 10:27:25 GMT
+
+### Patches
+
+- Update Fluent theme to use relative imports
 
 ## 5.38.0
 Tue, 08 May 2018 10:17:01 GMT

@@ -109,6 +109,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   showSecondaryText?: boolean;
 
   /**
+   * If true, show the special coin for unknown persona.
+   * It has '?' in place of initials, with static font and background colors
+   */
+  showUnknownPersonaCoin?: boolean;
+
+  /**
    * Optional custom persona coin size in pixel.
    */
   coinSize?: number;
@@ -246,6 +252,11 @@ export interface IPersonaCoinStyleProps {
    * @defaultvalue PersonaSize.size48
    */
   size?: PersonaSize;
+
+  /**
+   * Decides whether to display coin for unknown persona
+   */
+  showUnknownPersonaCoin?: boolean;
 }
 
 export interface IPersonaCoinStyles {
