@@ -89,6 +89,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               hasCloseIcon={ true }
               primaryButtonProps={ primaryButtonProps }
               secondaryButtonProps={ secondaryButtonProps }
+              onDismiss={ this._onCalloutDismiss }
             >
               Welcome to the land of coachmarks
             </TeachingBubbleContent>
