@@ -5,6 +5,7 @@ import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
+import * as WarnUtil from '@uifabric/utilities/lib/warn';
 
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';
@@ -17,6 +18,15 @@ import { KeyCodes } from '../../Utilities';
 const alertClicked = (): void => { /*noop*/ };
 
 describe('Button', () => {
+  beforeAll(() => {
+    // Prevent warn deprecations from failing test
+    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => { /** no impl **/ });
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   it('renders DefaultButton correctly', () => {
     const component = renderer.create(<DefaultButton text='Button' />);
     const tree = component.toJSON();
@@ -65,7 +75,7 @@ describe('Button', () => {
 
   it('renders CompoundButton correctly', () => {
     const component = renderer.create(
-      <CompoundButton secondaryText='You can create a new account here.'>
+      <CompoundButton description='You can create a new account here.'>
         Create account
     </CompoundButton>);
     const tree = component.toJSON();
@@ -190,7 +200,7 @@ describe('Button', () => {
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <CompoundButton
-          secondaryText='Some awesome description'
+          description='Some awesome description'
           ariaDescription='Description on icon button'
         >
           And this is the label

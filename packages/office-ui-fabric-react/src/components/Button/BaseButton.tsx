@@ -68,7 +68,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
 
     this._warnDeprecations({
-      rootProps: undefined
+      rootProps: undefined,
+      'description': 'secondaryText'
     });
     this._labelId = getId();
     this._descriptionId = getId();
@@ -92,6 +93,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       description,
       disabled,
       primaryDisabled,
+      secondaryText,
       href,
       iconProps,
       menuIconProps,
@@ -145,7 +147,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let ariaDescribedBy;
     if (ariaDescription) {
       ariaDescribedBy = _ariaDescriptionId;
-    } else if (description) {
+    } else if (secondaryText || description) {
       ariaDescribedBy = _descriptionId;
     } else if ((nativeProps as any)['aria-describedby']) {
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];
@@ -313,11 +315,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       text,
       children,
       description,
+      secondaryText,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription
     } = this.props;
 
-    if (text || typeof (children) === 'string' || description) {
+    if (text || typeof (children) === 'string' || secondaryText || description) {
       return (
         <div
           className={ this._classNames.textContainer }
@@ -375,18 +378,19 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderDescription = (props: IButtonProps) => {
     const {
-      description
+      description,
+      secondaryText
     } = props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
-    return description ? (
+    return (secondaryText || description) ? (
       <div
         key={ this._descriptionId }
         className={ this._classNames.description }
         id={ this._descriptionId }
       >
-        { description }
+        { secondaryText || description }
       </div>
     ) : (
         null
