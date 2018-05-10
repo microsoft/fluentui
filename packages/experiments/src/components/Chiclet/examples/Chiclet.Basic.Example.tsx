@@ -13,7 +13,7 @@ export class ChicletBasicExample extends React.Component<any, any> {
   }
 
   public render() {
-    var footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'Breadcrumb' } }, { iconProps: { iconName: 'Save' } }, { iconProps: { iconName: 'Share' } }];
+    var footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'Save' } }, { iconProps: { iconName: 'Share' } }];
     var footer = <FooterComponent buttonProps={ footerButtonProps } />
     return (
       <BaseChiclet url="http://localhost:4322" size={ ChicletSize.Medium } footer={ footer }
