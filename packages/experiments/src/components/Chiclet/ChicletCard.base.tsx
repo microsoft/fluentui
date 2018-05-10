@@ -18,7 +18,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render() {
-    const { title, ogType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, getStyles } = this.props;
+    const { title, openGraphType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, getStyles } = this.props;
     const actionable = (onClick) ? true : false;
 
     this._classNames = getClassNames(getStyles, { theme: theme! });
@@ -27,7 +27,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
-    var preview = this._renderPreviewImage(image, imageHeight, imageWidth, ogType);
+    var preview = this._renderPreviewImage(image, imageHeight, imageWidth, openGraphType);
 
     return (
       <div
@@ -68,7 +68,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
     );
   }
 
-  private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, ogType?: string, imageAlt?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, openGraphType?: string, imageAlt?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const image = (
       <Image
         width={ imageWidth }
@@ -80,7 +80,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
     );
 
     let icon;
-    switch (ogType) {
+    switch (openGraphType) {
       case "word":
         icon = <Icon className={ mergeStyles(this._classNames.icon) } iconName='WordDocument' />;
         break;
