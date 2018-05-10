@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
-import { DefaultButton, IButtonProps, IBaseButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { IStyle } from '../../../Styling';
 import {
   BaseComponent,
