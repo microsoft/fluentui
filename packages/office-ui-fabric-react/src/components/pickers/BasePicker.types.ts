@@ -114,12 +114,22 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
-   * Aria label for the "X" button in the selected item component.If a format string (for example, "Remove {0}")
+   * Aria label for the "X" button in the selected item component. If a format string (for example, "Remove {0}")
    * is provided, then the primary text of the selected item will be used to fill the string. In this example,
    * if the selected item is Annie Lindqvest, then the completed aria label would be "Remove Annie Lindqvest".
    * @default ''
    */
   removeButtonAriaLabel?: string;
+  /**
+   * Text that is read after successful removal of selected item. If a format string is provided, then the
+   * primary text of the selected item will be used to fill the string.
+   */
+  singularItemRemovalText?: string;
+  /**
+   * Text that is read after successful removal of multiple selected items. If a format string is provided, then
+   * the number of items removed will be used to fill the string.
+   */
+  pluralItemRemovalText?: string;
   /**
    * A callback to process a selection after the user selects something from the picker. If the callback returns null,
    * the item will not be added to the picker.

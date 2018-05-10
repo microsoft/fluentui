@@ -167,6 +167,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
         removeButtonAriaLabel={ 'Remove {0}' }
+        singularItemRemovalText={ 'Removed {0}' }
+        pluralItemRemovalText={ 'Removed {0} people' }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
