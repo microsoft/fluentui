@@ -184,3 +184,9 @@ export const enum ShimmerElementVerticalAlign {
   bottom = 'bottom',
   top = 'top'
 }
+
+export const enum ShimmerElementsDefaultHeights {
+  line = 16,
+  gap = 16,
+  circle = 24
+}

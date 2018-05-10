@@ -24,8 +24,8 @@ import { ISize } from '@uifabric/experiments/lib/Utilities';
 import {
   ShimmerTile,
   ShimmerElementType as ElemType,
-  getRenderedElements
 } from '@uifabric/experiments/lib/Shimmer';
+import { ShimmerElementsGroup } from '../../Shimmer/ShimmerElementsGroup';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;
@@ -263,16 +263,14 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
 
   private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
     return (
-      <div>
-        {
-          getRenderedElements(
-            [
-              { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
-            ],
-            HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE
-          )
+      <ShimmerElementsGroup
+        lineElements={
+          [
+            { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
+          ]
         }
-      </div>
+        rowHeight={ HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE }
+      />
     );
   }
 }

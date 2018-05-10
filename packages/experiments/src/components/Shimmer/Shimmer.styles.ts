@@ -41,16 +41,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     shimmerWrapper: [
       'ms-Shimmer-shimmerWrapper',
       {
-        display: 'flex',
         position: 'absolute',
         top: '0',
         bottom: '0',
         left: '0',
         right: '0',
-        alignItems: 'center',
-        alignContent: 'space-between',
         width: ACTUAL_WIDTH,
-        boxSizing: 'border-box',
         background: `${DefaultPalette.neutralLighter}
                     linear-gradient(
                       to right,
@@ -58,8 +54,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                       ${DefaultPalette.neutralLight} 50%,
                       ${DefaultPalette.neutralLighter} 100%)
                     0 0 / 90% 100%
-                    no-repeat
-                    content-box`,
+                    no-repeat`,
         animationDuration: '2s',
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',

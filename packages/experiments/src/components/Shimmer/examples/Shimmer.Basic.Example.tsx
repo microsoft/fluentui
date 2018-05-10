@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import {
   Shimmer,
-  getRenderedElements,
   ShimmerElementType as ElemType,
   ShimmerElementVerticalAlign as ElemVerticalAlign
 } from '@uifabric/experiments/lib/Shimmer';
@@ -80,7 +79,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
           ] }
         />
         Split line examples.
-        <div>
+        {/* <div>
           <Shimmer
             isBaseStyle={ true }
             widthInPixel={ 350 }
@@ -133,7 +132,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
               ], 20) }
             </div>
           </Shimmer>
-        </div>
+        </div> */}
       </div>
     );
   }
