@@ -257,6 +257,10 @@ $Calendar-dayPicker-margin: 10px;
   @include margin-right(20px);
 }
 
+.decadeComponents {
+  @include margin-right(20px);
+}
+
 .prevMonth,
 .nextMonth,
 .prevYear,
@@ -408,7 +412,8 @@ $Calendar-dayPicker-margin: 10px;
     padding: 9px 8px;
   } // Update the spacing and text for the day and month pickers
   .dayPicker,
-  .monthPicker {
+  .monthPicker,
+  .yearPicker {
     min-height: 214px;
   }
   .header {
@@ -465,7 +470,7 @@ $Calendar-dayPicker-margin: 10px;
       }
     }
   } // Show month picker, if enabled
-  .monthPickerVisible {
+  .monthPickerVisible, .yearPickerVisible {
     .wrap {
       padding: 10px;
     } // Swap margin for padding so that the border extends the full height.
@@ -555,7 +560,7 @@ $Calendar-dayPicker-margin: 10px;
     .dayPicker {
       width: auto;
     }
-    .monthPicker {
+    .monthPicker, .yearPicker {
       @include margin-left(13px);
     }
     .goToday {
@@ -621,7 +626,9 @@ $Calendar-dayPicker-margin: 10px;
 .nextMonth,
 .prevMonth,
 .nextYear,
-.prevYear {
+.prevYear,
+.nextDecade,
+.prevDecade {
   display: inline-block;
   &:hover {
     background-color: $ms-color-neutralLight;
@@ -632,7 +639,8 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .nextMonth,
-.nextYear {
+.nextYear,
+.nextDecade {
   margin-left: 3px;
   margin-right: 2px;
 }
@@ -657,6 +665,29 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .monthOption:active {
+  background-color: $ms-color-themeLight;
+}
+
+.yearIsHighlighted {
+  font-weight: $ms-font-weight-semibold;
+  background-color: $ms-color-themeLight;
+  &.yearOption:hover {
+    background-color: $ms-color-themeLight;
+  }
+}
+
+.yearIsCurrentYear {
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-white;
+  background-color: $ms-color-themePrimary;
+  &.yearOption:hover {
+    font-weight: $ms-font-weight-semibold;
+    color: $ms-color-white;
+    background-color: $ms-color-themePrimary;
+  }
+}
+
+.yearOption:active {
   background-color: $ms-color-themeLight;
 }
 

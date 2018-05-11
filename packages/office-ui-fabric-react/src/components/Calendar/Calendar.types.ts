@@ -52,6 +52,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showMonthPickerAsOverlay?: boolean;
 
   /**
+   * Whether the year picker is enabled - applies to the month selector.
+   * @defaultValue false
+   */
+  isYearPickerEnabled?: boolean;
+
+  /**
     * Value of today. If null, current time in client machine will be used.
     */
   today?: Date;
