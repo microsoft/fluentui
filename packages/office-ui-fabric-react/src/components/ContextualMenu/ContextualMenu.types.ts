@@ -28,6 +28,9 @@ export interface IContextualMenu {
 
 }
 
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
 export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
@@ -488,6 +491,9 @@ export interface IContextualMenuItem {
   inactive?: boolean;
 }
 
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
 export interface IContextualMenuSection extends React.Props<any> {
 
   /**
