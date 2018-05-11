@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 10 May 2018 10:27:25 GMT and should not be manually modified.
+This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+
+## 5.100.0
+Fri, 11 May 2018 04:21:29 GMT
+
+### Minor changes
+
+- Deprecate Persona's primaryText prop and add replacement text prop.
+- Puts additional alert on selected suggestions behind a prop
+
+### Patches
+
+- Revert change to use React.createPortal, until event leaking issues can be resolved
 
 ## 5.99.0
 Thu, 10 May 2018 10:27:25 GMT
