@@ -111,6 +111,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   private _positioningContainer = createRef<IPositioningContainer>();
   private _targetAlignment: RectangleEdge | undefined;
 
+  /**
+   * The target element the mouse would be in
+   * proximity to
+   */
+  private _targetElementRect: ClientRect;
+
   constructor(props: ICoachmarkTypes) {
     super(props);
 
@@ -346,7 +352,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _onPositioned = (positionData: IPositionedData): void => {
-    console.log(positionData);
     this._targetAlignment = positionData.alignmentEdge;
   }
 
@@ -375,18 +380,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
      */
     const timeoutIds: number[] = [];
 
-    /**
-     * The target element the mouse would be in
-     * proximity to
-     */
-    let targetElementRect: ClientRect;
-
     // Take the initial measure out of the initial render to prevent
     // an unnecessary render.
     this._async.setTimeout(() => {
-      if (this._translateAnimationContainer.current) {
-        targetElementRect = this._translateAnimationContainer.current.getBoundingClientRect();
-      }
+      this._setTargetElementRect();
 
       // When the window resizes we want to async
       // get the bounding client rectangle.
@@ -399,9 +396,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         });
 
         timeoutIds.push(this._async.setTimeout((): void => {
-          if (this._translateAnimationContainer.current) {
-            targetElementRect = this._translateAnimationContainer.current.getBoundingClientRect();
-          }
+          this._setTargetElementRect();
         }, 100));
       });
     }, 10);
@@ -413,7 +408,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       if (this.state.isCollapsed) {
         const mouseY = e.pageY;
         const mouseX = e.pageX;
-        const isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
+        this._setTargetElementRect();
+        const isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
 
         if (isMouseInProximity !== this.state.isMouseInProximity) {
           // We don't want to update the isMouseInProximity state because
@@ -431,10 +427,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     });
   }
 
-  private _isInsideElement(mouseX: number, mouseY: number, elementRect: ClientRect, mouseProximityOffset: number = 0): boolean {
-    return mouseX > (elementRect.left - mouseProximityOffset) &&
-      mouseX < ((elementRect.left + elementRect.width) + mouseProximityOffset) &&
-      mouseY > (elementRect.top - mouseProximityOffset) &&
-      mouseY < ((elementRect.top + elementRect.height) + mouseProximityOffset);
+  private _setTargetElementRect(): void {
+    if (this._translateAnimationContainer && this._translateAnimationContainer.current) {
+      this._targetElementRect = this._translateAnimationContainer!.current!.getBoundingClientRect();
+    }
+  }
+
+  private _isInsideElement(mouseX: number, mouseY: number, mouseProximityOffset: number = 0): boolean {
+    return mouseX > (this._targetElementRect.left - mouseProximityOffset) &&
+      mouseX < ((this._targetElementRect.left + this._targetElementRect.width) + mouseProximityOffset) &&
+      mouseY > (this._targetElementRect.top - mouseProximityOffset) &&
+      mouseY < ((this._targetElementRect.top + this._targetElementRect.height) + mouseProximityOffset);
   }
 }

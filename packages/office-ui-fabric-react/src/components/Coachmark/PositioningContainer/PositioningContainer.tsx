@@ -329,7 +329,7 @@ export class PositioningContainer
           right: Infinity,
           width: Infinity,
           height: Infinity
-        }
+        };
       }
       this._positioningBounds = currentBounds;
     }

@@ -199,9 +199,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           />
         </Panel>
 
-        <div
-          style={ {
-          } }>
+        <div>
           <CommandBar
             searchPlaceholderText='Search...'
             elipisisAriaLabel='More options'
