@@ -1,8 +1,24 @@
 @import '~office-ui-fabric-react/src/common/common';
 
 .footer {
-  padding-right: 6px;
   height: 24px;
+  padding-left: 11px;
+}
+
+.activities {
+  width: 184px;
+  height: 16px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.83;
+  letter-spacing: normal;
+  float: left;
+}
+
+.actions {
+  padding-right: 6px;
   position: relative;
 }
 
