@@ -353,7 +353,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       <div
         role='combobox'
         aria-haspopup='listbox'
-        aria-owns={ isOpen ? (id + '-list') : null }
+        aria-owns={ isOpen ? (id + '-list') : undefined }
         aria-expanded={ isOpen }
         { ...divProps }
         ref={ this._root }
@@ -393,7 +393,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
                 aria-activedescendant={ this._getAriaActiveDescentValue() }
                 aria-disabled={ disabled }
-                aria-controls={ isOpen ? (id + '-list') : null }
+                aria-controls={ isOpen ? (id + '-list') : undefined }
                 spellCheck={ false }
                 defaultVisibleValue={ this._currentVisibleValue }
                 suggestedDisplayValue={ suggestedDisplayValue }
