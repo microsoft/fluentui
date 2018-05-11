@@ -1,19 +1,20 @@
 import * as React from 'react';
 import {
+  IPersonaSharedProps,
   Persona,
   PersonaInitialsColor,
 } from 'office-ui-fabric-react/lib/Persona';
 import './PersonaExample.scss';
 
-const examplePersona = {
+const examplePersona: IPersonaSharedProps = {
   secondaryText: 'Designer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm'
 };
 
-const personaWithInitials = {
+const personaWithInitials: IPersonaSharedProps = {
   ...examplePersona,
-  primaryText: 'Maor Sharett',
+  text: 'Maor Sharett',
   imageInitials: 'MS'
 };
 
@@ -22,52 +23,52 @@ export class PersonaInitialsExample extends React.Component<any, any> {
     return (
       <div className='ms-PersonaExample'>
         <Persona
-          { ...examplePersona  }
-          primaryText='Kat Larrson'
+          { ...examplePersona }
+          text='Kat Larrson'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='Annie'
+          { ...examplePersona }
+          text='Annie'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='Annie Lindqvist'
+          { ...examplePersona }
+          text='Annie Lindqvist'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='Annie Boyl Lindqvist'
+          { ...examplePersona }
+          text='Annie Boyl Lindqvist'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='Annie Boyl Carrie Lindqvist'
+          { ...examplePersona }
+          text='Annie Boyl Carrie Lindqvist'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='+1 (555) 123-4567 X4567'
+          { ...examplePersona }
+          text='+1 (555) 123-4567 X4567'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='+1 (555) 123-4567 X4567'
-          allowPhoneInitials={true}
+          { ...examplePersona }
+          text='+1 (555) 123-4567 X4567'
+          allowPhoneInitials={ true }
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='宋智洋'
+          { ...examplePersona }
+          text='宋智洋'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='남궁 성종'
+          { ...examplePersona }
+          text='남궁 성종'
         />
         <Persona
-          { ...examplePersona  }
-          primaryText='خسرو رحیمی'
+          { ...examplePersona }
+          text='خسرو رحیمی'
         />
         <Persona
-          { ...personaWithInitials  }
+          { ...personaWithInitials }
           initialsColor={ PersonaInitialsColor.lightBlue }
         />
         <Persona
-          { ...personaWithInitials  }
+          { ...personaWithInitials }
           initialsColor={ PersonaInitialsColor.teal }
         />
       </div>

@@ -2,6 +2,34 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.11.4",
+      "tag": "@uifabric/example-app-base_v5.11.4",
+      "date": "Fri, 11 May 2018 04:21:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f6bc8fc6b3267db36c0ce6382b6fc8bfdbd64f3d",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.3",
+      "tag": "@uifabric/example-app-base_v5.11.3",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "0283f2a4f9465a7aad3039ce6f8d98848f9a2521",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.2",
       "tag": "@uifabric/example-app-base_v5.11.2",
       "date": "Fri, 04 May 2018 15:58:38 GMT",

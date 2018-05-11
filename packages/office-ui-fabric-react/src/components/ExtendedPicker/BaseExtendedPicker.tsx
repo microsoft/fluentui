@@ -41,13 +41,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
-    const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
-
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
-    this.selection.setItems(items);
 
     this.state = {
-      items: items ? items : [],
+      items: this.props.selectedItemsListProps.selectedItems ? this.props.selectedItemsListProps.selectedItems : [],
       suggestedDisplayValue: '',
     };
 
