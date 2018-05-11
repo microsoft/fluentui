@@ -134,19 +134,23 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     }
 
     switch (positioningContainerProps.directionalHint) {
+      // If Coachmark exists above target, then beak points to bottom
       case DirectionalHint.topLeftEdge:
       case DirectionalHint.topCenter:
       case DirectionalHint.topRightEdge:
       case DirectionalHint.topAutoEdge:
         return BeakDirection.Bottom;
+      // If Coachmark exists to left of target, then beak points to right
       case DirectionalHint.leftTopEdge:
       case DirectionalHint.leftCenter:
       case DirectionalHint.leftBottomEdge:
         return BeakDirection.Right;
+      // If Coachmark exists to right of target, then beak points to left
       case DirectionalHint.rightTopEdge:
       case DirectionalHint.rightCenter:
       case DirectionalHint.rightBottomEdge:
         return BeakDirection.Left;
+      // If Coachmark exists below target, then beak points to top
       case DirectionalHint.bottomLeftEdge:
       case DirectionalHint.bottomCenter:
       case DirectionalHint.bottomRightEdge:

@@ -63,7 +63,8 @@ export class PositioningContainer
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomLeftEdge
+    directionalHint: DirectionalHint.bottomLeftEdge,
+    allowOutOfBounds: true
   };
 
   private _didSetInitialFocus: boolean;
@@ -309,8 +310,9 @@ export class PositioningContainer
   private _getBounds(): IRectangle {
     if (!this._positioningBounds) {
       let currentBounds = this.props.bounds;
+      const { allowOutOfBounds } = this.props;
 
-      if (!currentBounds) {
+      if (!currentBounds && !allowOutOfBounds) {
         currentBounds = {
           top: 0 + this.props.minPagePadding!,
           left: 0 + this.props.minPagePadding!,
@@ -319,6 +321,15 @@ export class PositioningContainer
           width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
           height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2
         };
+      } else {
+        currentBounds = {
+          top: -Infinity,
+          bottom: Infinity,
+          left: -Infinity,
+          right: Infinity,
+          width: Infinity,
+          height: Infinity
+        }
       }
       this._positioningBounds = currentBounds;
     }

@@ -60,9 +60,15 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   backgroundColor?: string;
 
   /**
-   * The bounding rectangle for which  the contextual menu can appear in.
+   * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
+
+  /**
+   * If true then allow positioned target to exist outside of window bounds
+   * @default true
+   */
+  allowOutOfBounds?: boolean;
 
   /**
    * The minimum distance the positioningContainer will be away from the edge of the screen.
