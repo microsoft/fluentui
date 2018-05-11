@@ -89,8 +89,11 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       key: 'link',
       name: 'Link',
       icon: 'WindowsLogo',
+      [COACHMARK_ATTRIBUTE_NAME]: 'test2'
     }
   ];
+
+  private item: HTMLElement | null;
 
   public constructor(props: {}) {
     super(props);
@@ -106,6 +109,14 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       isCoachmarkCollapsed: true,
       showPanel: false
     };
+  }
+
+  public componentDidMount(): void {
+    this.item = document.body.querySelector('.ms-Nav-compositeLink.is-selected');
+    console.log(document.body.querySelector('.ms-Nav-compositeLink.is-selected'));
+    setTimeout(() => {
+      this.forceUpdate();
+    }, 200);
   }
 
   public render(): JSX.Element {
@@ -188,7 +199,9 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           />
         </Panel>
 
-        <div>
+        <div
+          style={ {
+          } }>
           <CommandBar
             searchPlaceholderText='Search...'
             elipisisAriaLabel='More options'
@@ -235,6 +248,47 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             }
           </Coachmark>
         ) }
+
+        {
+          <Coachmark
+            target={ this.item }
+            positioningContainerProps={ {
+              directionalHint: DirectionalHint.rightCenter
+            } }
+          >
+            <TeachingBubbleContent
+              headline={ 'Need help tracking deadlines?' }
+              calloutProps={ calloutProps }
+              hasCloseIcon={ true }
+              closeButtonAriaLabel='Close'
+              onDismiss={ this._onDismiss }
+              primaryButtonProps={ buttonProps }
+              secondaryButtonProps={ buttonProps2 }
+            >
+              test
+            </TeachingBubbleContent>
+          </Coachmark>
+        }
+        {
+          <Coachmark
+            target={ `[${COACHMARK_ATTRIBUTE_NAME}="test2"]` }
+            positioningContainerProps={ {
+              directionalHint: DirectionalHint.rightCenter
+            } }
+          >
+            <TeachingBubbleContent
+              headline={ 'Need help tracking deadlines?' }
+              calloutProps={ calloutProps }
+              hasCloseIcon={ true }
+              closeButtonAriaLabel='Close'
+              onDismiss={ this._onDismiss }
+              primaryButtonProps={ buttonProps }
+              secondaryButtonProps={ buttonProps2 }
+            >
+              test
+            </TeachingBubbleContent>
+          </Coachmark>
+        }
       </div>
     );
   }

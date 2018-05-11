@@ -188,18 +188,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       transformOrigin: transformOrigin
     });
 
-    let finalHeight = COACHMARK_HEIGHT;
-
-    if (!isCollapsed && (this._entityInnerHostElement && this._entityInnerHostElement.current)) {
-      finalHeight = this._entityInnerHostElement.current.offsetHeight;
-    }
+    const finalHeight: number = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
 
     return (
       <PositioningContainer
         target={ target }
         offsetFromTarget={ BEAK_HEIGHT }
         componentRef={ this._positioningContainer }
-        doNotLayer={ true }
         finalHeight={ finalHeight }
         onPositioned={ this._onPositioned }
         { ...positioningContainerProps }
@@ -347,6 +342,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _onPositioned = (positionData: IPositionedData): void => {
+    console.log(positionData);
     this._targetAlignment = positionData.alignmentEdge;
   }
 

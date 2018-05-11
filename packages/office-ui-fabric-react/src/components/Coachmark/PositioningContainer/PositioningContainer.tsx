@@ -274,29 +274,34 @@ export class PositioningContainer
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      currentProps!.gapSpace = offsetFromTarget;
-      const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement, undefined, true);
-
-      // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
-      // The position should not change if the position is within 2 decimal places.
-      if ((!positions && newPositions) ||
-        (positions && newPositions && !this._arePositionsEqual(positions, newPositions)
-          && this._positionAttempts < 5)) {
-        // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
-        // and we should stop trying to reposition to prevent a stack overflow.
-        this._positionAttempts++;
-        this.setState({
-          positions: newPositions
-        }, () => {
+      if (document.body.contains(currentProps!.target as Node)) {
+        currentProps!.gapSpace = offsetFromTarget;
+        const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
+        // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
+        // The position should not change if the position is within 2 decimal places.
+        if ((!positions && newPositions) ||
+          (positions && newPositions && !this._arePositionsEqual(positions, newPositions)
+            && this._positionAttempts < 5)) {
+          // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
+          // and we should stop trying to reposition to prevent a stack overflow.
+          this._positionAttempts++;
+          this.setState({
+            positions: newPositions
+          }, () => {
+            if (onPositioned) {
+              onPositioned(newPositions);
+            }
+          });
+        } else {
+          this._positionAttempts = 0;
           if (onPositioned) {
             onPositioned(newPositions);
           }
-        });
-      } else {
-        this._positionAttempts = 0;
-        if (onPositioned) {
-          onPositioned(newPositions);
         }
+      } else if (positions !== undefined) {
+        this.setState({
+          positions: undefined
+        });
       }
     }
   }
