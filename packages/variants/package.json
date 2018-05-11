@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/variants",
-  "version": "5.4.0",
+  "version": "6.0.0-beta3",
   "description": "Office UI Fabric subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,10 +23,10 @@
   ],
   "devDependencies": {
     "@types/jest": "21.1.8",
-    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
+    "office-ui-fabric-react-tslint": "6.0.0-beta3"
   },
   "dependencies": {
     "tslib": "^1.7.1",
-    "@uifabric/styling": ">=5.30.1 <6.0.0"
+    "@uifabric/styling": "6.0.0-beta3"
   }
 }
