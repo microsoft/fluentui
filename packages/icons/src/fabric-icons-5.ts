@@ -22,9 +22,11 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-5a61f6fb.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-5-caebf13c.woff') format('woff')`
     },
     icons: {
+      'Feedback': '\uED15',
+      'SharepointLogoInverse': '\uED18',
       'YammerLogo': '\uED19',
       'Hide': '\uED1A',
       'Uneditable': '\uED1D',
@@ -122,9 +124,7 @@ export function initializeIcons(
       'CaretDown8': '\uEDD8',
       'CaretLeftSolid8': '\uEDD9',
       'CaretRightSolid8': '\uEDDA',
-      'CaretUpSolid8': '\uEDDB',
-      'CaretDownSolid8': '\uEDDC',
-      'ClearFormatting': '\uEDDD'
+      'CaretUpSolid8': '\uEDDB'
     }
   };
 

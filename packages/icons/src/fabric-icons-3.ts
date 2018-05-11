@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-39ed3795.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-3-f179661b.woff') format('woff')`
     },
     icons: {
       'TimeSheet': '\uEA05',
@@ -93,6 +93,7 @@ export function initializeIcons(
       'Weights': '\uEADB',
       'Trackers': '\uEADF',
       'AddNotes': '\uEAE3',
+      'AllCurrency': '\uEAE4',
       'BarChart4': '\uEAE7',
       'CirclePlus': '\uEAEE',
       'Coffee': '\uEAEF',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'SubstitutionsIn': '\uEB31',
       'Tennis': '\uEB33',
       'Arrivals': '\uEB34',
-      'Design': '\uEB3C',
-      'Website': '\uEB41'
+      'Design': '\uEB3C'
     }
   };
 

@@ -22,11 +22,9 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-2"`,
-      src: `url('${baseUrl}fabric-icons-2-e49d4cfd.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-2-61d9643b.woff') format('woff')`
     },
     icons: {
-      'World': '\uE909',
-      'Comment': '\uE90A',
       'DockLeft': '\uE90C',
       'DockRight': '\uE90D',
       'Repair': '\uE90F',
@@ -36,6 +34,7 @@ export function initializeIcons(
       'Clock': '\uE917',
       'WorldClock': '\uE918',
       'AlarmClock': '\uE919',
+      'Photo': '\uE91B',
       'Hospital': '\uE91D',
       'Timer': '\uE91E',
       'FullCircleMask': '\uE91F',
@@ -54,7 +53,7 @@ export function initializeIcons(
       'MiniContract': '\uE93B',
       'Streaming': '\uE93E',
       'MusicInCollection': '\uE940',
-      'OneDrive': '\uE941',
+      'OneDriveLogo': '\uE941',
       'CompassNW': '\uE942',
       'Code': '\uE943',
       'LightningBolt': '\uE945',
@@ -86,6 +85,7 @@ export function initializeIcons(
       'Volume3': '\uE995',
       'Chart': '\uE999',
       'Robot': '\uE99A',
+      'Manufacturing': '\uE99C',
       'LockSolid': '\uE9A2',
       'BidiLtr': '\uE9AA',
       'BidiRtl': '\uE9AB',

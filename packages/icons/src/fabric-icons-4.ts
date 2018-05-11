@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-0838b5e4.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-4-7d895e08.woff') format('woff')`
     },
     icons: {
+      'Website': '\uEB41',
       'Drop': '\uEB42',
       'SkiResorts': '\uEB45',
       'Snowflake': '\uEB46',
@@ -122,9 +123,8 @@ export function initializeIcons(
       'FangBody': '\uECEB',
       'ChatInviteFriend': '\uECFE',
       'Crown': '\uED01',
-      'ScaleUp': '\uED09',
-      'Feedback': '\uED15',
-      'SharepointLogoInverse': '\uED18'
+      'Diamond': '\uED02',
+      'ScaleUp': '\uED09'
     }
   };
 

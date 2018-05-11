@@ -2,12 +2,49 @@
 	"fontName": "fabric-icons-12",
 	"fontFamilyName": "FabricMDL2Icons-12",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "ExternalTFVC",
+			"unicode": "F446"
+		},
+		{
+			"name": "ExternalXAML",
+			"unicode": "F447"
+		},
+		{
+			"name": "IssueSolid",
+			"unicode": "F448"
+		},
+		{
+			"name": "DefectSolid",
+			"unicode": "F449"
+		},
+		{
+			"name": "LadybugSolid",
+			"unicode": "F44A"
+		},
+		{
+			"name": "NugetLogo",
+			"unicode": "F44C"
+		},
+		{
+			"name": "TFVCLogo",
+			"unicode": "F44D"
+		},
+		{
+			"name": "ProjectLogo32",
+			"unicode": "F47E"
+		},
+		{
+			"name": "ProjectLogoFill32",
+			"unicode": "F47F"
+		},
 		{
 			"name": "ProjectLogo16",
 			"unicode": "F480"
@@ -91,10 +128,6 @@
 		{
 			"name": "ProtectionCenterLogo32",
 			"unicode": "F494"
-		},
-		{
-			"name": "NonprofitLogo32",
-			"unicode": "F495"
 		},
 		{
 			"name": "GallatinLogo",
@@ -375,38 +408,6 @@
 		{
 			"name": "MediaAdd",
 			"unicode": "F510"
-		},
-		{
-			"name": "AnchorLock",
-			"unicode": "F511"
-		},
-		{
-			"name": "AutoHeight",
-			"unicode": "F512"
-		},
-		{
-			"name": "ChartSeries",
-			"unicode": "F513"
-		},
-		{
-			"name": "ChartXAngle",
-			"unicode": "F514"
-		},
-		{
-			"name": "ChartYAngle",
-			"unicode": "F515"
-		},
-		{
-			"name": "Combobox",
-			"unicode": "F516"
-		},
-		{
-			"name": "LineSpacing",
-			"unicode": "F517"
-		},
-		{
-			"name": "Padding",
-			"unicode": "F518"
 		}
 	]
 }

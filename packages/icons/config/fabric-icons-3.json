@@ -2,6 +2,7 @@
 	"fontName": "fabric-icons-3",
 	"fontFamilyName": "FabricMDL2Icons-3",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
@@ -281,6 +282,10 @@
 			"unicode": "EAE3"
 		},
 		{
+			"name": "AllCurrency",
+			"unicode": "EAE4"
+		},
+		{
 			"name": "BarChart4",
 			"unicode": "EAE7"
 		},
@@ -403,10 +408,6 @@
 		{
 			"name": "Design",
 			"unicode": "EB3C"
-		},
-		{
-			"name": "Website",
-			"unicode": "EB41"
 		}
 	]
 }

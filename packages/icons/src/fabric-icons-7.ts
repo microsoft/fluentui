@@ -22,9 +22,13 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-7"`,
-      src: `url('${baseUrl}fabric-icons-7-3ac670e6.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-7-a5d789d9.woff') format('woff')`
     },
     icons: {
+      'ExpandMenu': '\uEF67',
+      'Boards': '\uEF68',
+      'SunAdd': '\uEF69',
+      'SunQuestionMark': '\uEF6A',
       'LandscapeOrientation': '\uEF6B',
       'DocumentSearch': '\uEF6C',
       'PublicCalendar': '\uEF6D',
@@ -120,11 +124,7 @@ export function initializeIcons(
       'StatusCircleOuter': '\uF136',
       'StatusCircleInner': '\uF137',
       'StatusCircleRing': '\uF138',
-      'StatusTriangleOuter': '\uF139',
-      'StatusTriangleInner': '\uF13A',
-      'StatusTriangleExclamation': '\uF13B',
-      'StatusCircleExclamation': '\uF13C',
-      'StatusCircleErrorX': '\uF13D'
+      'StatusTriangleOuter': '\uF139'
     }
   };
 
