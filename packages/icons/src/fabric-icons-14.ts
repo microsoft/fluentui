@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -29,7 +29,8 @@ export function initializeIcons(
       'DictionaryRemove': '\uF69A',
       'UserRemove': '\uF69B',
       'UserEvent': '\uF69C',
-      'Encryption': '\uF69D'
+      'Encryption': '\uF69D',
+      'BlockedSiteSolid12': '\uF70A'
     }
   };
 
