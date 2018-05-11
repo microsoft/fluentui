@@ -17,7 +17,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
+  styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
 
   /**
    * Theme provided by HOC.

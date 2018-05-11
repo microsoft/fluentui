@@ -75,7 +75,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
+  styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
 
   /**
    * Optional keytip for this toggle

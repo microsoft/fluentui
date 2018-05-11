@@ -23,7 +23,7 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IDialogStyleProps, IDialogStyles>;
+  styles?: IStyleFunctionOrObject<IDialogStyleProps, IDialogStyles>;
 
   /**
    * Theme provided by HOC.

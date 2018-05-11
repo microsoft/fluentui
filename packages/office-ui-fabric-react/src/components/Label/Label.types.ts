@@ -41,7 +41,7 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
   /**
    * Styles for the label.
    */
-  getStyles?: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+  styles?: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
 }
 
 export interface ILabelStyles {

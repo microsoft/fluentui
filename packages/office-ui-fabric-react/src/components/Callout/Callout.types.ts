@@ -181,7 +181,7 @@ export interface ICalloutProps {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+  styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
 
   /**
    * If specified, renders the Callout in a hidden state.

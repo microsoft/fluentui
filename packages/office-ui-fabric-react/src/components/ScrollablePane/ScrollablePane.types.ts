@@ -21,7 +21,7 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
+  styles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
 
   /**
    * Theme provided by HOC.

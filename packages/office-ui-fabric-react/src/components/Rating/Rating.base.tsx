@@ -86,7 +86,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const {
       disabled,
       getAriaLabel,
-      getStyles,
+      styles,
       max,
       rating,
       readOnly,
@@ -94,7 +94,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       theme
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       disabled,
       readOnly,
       theme: theme!

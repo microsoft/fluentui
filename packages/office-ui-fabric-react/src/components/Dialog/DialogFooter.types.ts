@@ -12,7 +12,7 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
+  styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
 
   /**
    * Theme provided by HOC.

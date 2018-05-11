@@ -15,7 +15,7 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IOverlayStyleProps, IOverlayStyles>;
+  styles?: IStyleFunctionOrObject<IOverlayStyleProps, IOverlayStyles>;
 
   /**
    * Theme provided by HOC.

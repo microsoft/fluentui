@@ -16,7 +16,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IImageStyleProps, IImageStyles>;
+  styles?: IStyleFunctionOrObject<IImageStyleProps, IImageStyles>;
 
   /**
    * Theme provided by HOC.

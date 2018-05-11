@@ -65,7 +65,7 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
    */
   overflowIndex?: number;
 
-  getStyles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+  styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
   theme?: ITheme;
 }
 

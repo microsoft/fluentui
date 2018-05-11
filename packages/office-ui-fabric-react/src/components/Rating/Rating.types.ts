@@ -81,7 +81,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
+  styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
 
   /**
    * Theme (provided through customization.)

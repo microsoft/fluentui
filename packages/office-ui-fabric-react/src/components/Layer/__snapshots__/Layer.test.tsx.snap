@@ -3,14 +3,14 @@
 exports[`Layer renders Layer correctly 1`] = `
 <StyledCustomizedLayer>
   <CustomizedLayer
-    getStyles={[Function]}
     onLayerDidMount={[Function]}
     onLayerWillUnmount={[Function]}
+    styles={[Function]}
   >
     <LayerBase
-      getStyles={[Function]}
       onLayerDidMount={[Function]}
       onLayerWillUnmount={[Function]}
+      styles={[Function]}
       theme={
         Object {
           "disableGlobalClassNames": false,

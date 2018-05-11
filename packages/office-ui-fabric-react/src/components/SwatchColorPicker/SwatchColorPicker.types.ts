@@ -95,7 +95,7 @@ export interface ISwatchColorPickerProps {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
+  styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
 
   /**
   * Optional styles for the component.

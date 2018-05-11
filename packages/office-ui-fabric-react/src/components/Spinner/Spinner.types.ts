@@ -55,7 +55,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
+  styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
 }
 
 export enum SpinnerSize {

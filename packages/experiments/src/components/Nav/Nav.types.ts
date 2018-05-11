@@ -38,7 +38,7 @@ export interface INavProps {
   /**
    * (Optional) Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * (Optional) Used for telemetry

@@ -20,7 +20,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
+  styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
 
   /**
    * Theme provided by HOC.

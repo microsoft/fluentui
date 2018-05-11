@@ -5,7 +5,7 @@ import { IStyleFunction } from './IStyleFunction';
 export type IStyleFunctionOrObject<TStyleProps, TStyles> = IStyleFunction<TStyleProps, TStyles> | TStyles;
 
 export interface IPropsWithStyles<TStyleProps, TStyles> {
-  getStyles?: IStyleFunctionOrObject<TStyleProps, TStyles>;
+  styles?: IStyleFunctionOrObject<TStyleProps, TStyles>;
   subComponents?: {
     [key: string]: IStyleFunction<{}, {}>;
   };
@@ -41,10 +41,10 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
       styleProps: TStyleProps
     ) => concatStyleSets(
       getBaseStyles && getBaseStyles(styleProps),
-      componentProps && componentProps.getStyles && (
-        typeof componentProps.getStyles === 'function' ?
-          componentProps.getStyles(styleProps)
-          : componentProps.getStyles
+      componentProps && componentProps.styles && (
+        typeof componentProps.styles === 'function' ?
+          componentProps.styles(styleProps)
+          : componentProps.styles
       )
     );
     const additionalProps = getProps ? getProps(componentProps) : {};
@@ -53,7 +53,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
       <Component
         { ...additionalProps }
         { ...componentProps }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />
     );
   }) as IWrappedComponent<TComponentProps>;

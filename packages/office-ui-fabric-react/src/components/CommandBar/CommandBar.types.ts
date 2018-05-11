@@ -104,7 +104,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
-  getStyles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
+  styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
    * Theme provided by HOC.

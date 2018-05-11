@@ -67,7 +67,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
 
   public render(): JSX.Element {
     const {
-      getStyles,
+      styles,
       contentSize = { width: 176, height: 171 },
       itemActivity = true,
       itemName = true,
@@ -103,7 +103,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
       }
     }
 
-    this._classNames = getClassNames(getStyles!, {});
+    this._classNames = getClassNames(styles!, {});
 
     return (
       <div

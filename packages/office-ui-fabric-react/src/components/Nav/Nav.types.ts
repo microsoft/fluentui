@@ -23,7 +23,7 @@ export interface INavProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * Theme provided by HOC.

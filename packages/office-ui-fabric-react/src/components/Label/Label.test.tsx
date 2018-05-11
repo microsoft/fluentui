@@ -11,7 +11,7 @@ describe('Label', () => {
 
   it('renders a label', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <LabelBase getStyles={ getStyles }>test</LabelBase>
+      <LabelBase styles={ getStyles }>test</LabelBase>
     );
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
 
@@ -20,7 +20,7 @@ describe('Label', () => {
 
   it('renders label correctly', () => {
     const component = renderer.create(
-      <LabelBase getStyles={ getStyles }>test</LabelBase>
+      <LabelBase styles={ getStyles }>test</LabelBase>
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

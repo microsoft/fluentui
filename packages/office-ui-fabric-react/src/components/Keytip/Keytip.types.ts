@@ -83,7 +83,7 @@ export interface IKeytipProps {
    *
    * @type {IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>}
    */
-  getStyles?: IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>;
+  styles?: IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>;
 
   /**
    * Offset x and y for the keytip, added from the top-left corner

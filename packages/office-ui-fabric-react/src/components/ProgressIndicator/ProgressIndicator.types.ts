@@ -16,7 +16,7 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
+  styles?: IStyleFunctionOrObject<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
 
   /**
    * Theme provided by High-Order Component.

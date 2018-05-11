@@ -68,14 +68,14 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       offText,
       onAriaLabel,
       onText,
-      getStyles
+      styles
     } = this.props;
     const { checked } = this.state;
     const stateText = checked ? onText : offText;
     const ariaLabel = checked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = getClassNames(
-      getStyles!,
+      styles!,
       {
         theme: theme!,
         className,

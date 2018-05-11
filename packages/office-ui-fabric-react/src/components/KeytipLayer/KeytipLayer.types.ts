@@ -59,7 +59,7 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   /**
    * getStyles function for KeytipLayer
    */
-  getStyles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
+  styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
 
 export interface IKeytipLayerStyles {

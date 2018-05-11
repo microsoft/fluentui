@@ -67,7 +67,7 @@ export interface IColorPickerGridCellProps {
   /**
   * Optional styles for the component.
   */
-  getStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+  styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
    * Optional, mouseEnter handler.

@@ -1115,7 +1115,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               ariaLabel={ this._getPreviewText(item) }
               key={ item.key }
               data-index={ item.index }
-              getStyles={ checkboxStyles }
+              styles={ checkboxStyles }
               className={ 'ms-ComboBox-option' }
               data-is-focusable={ true }
               onChange={ this._onItemClick(item.index!) }

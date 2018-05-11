@@ -22,7 +22,7 @@ const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
 /**
  * Persona with no default styles.
- * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
 @customizable('Persona', ['theme'])
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
@@ -54,7 +54,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       coinProps,
       showUnknownPersonaCoin,
       coinSize,
-      getStyles,
+      styles,
       imageAlt,
       imageInitials,
       imageShouldFadeIn,
@@ -89,7 +89,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       size,
     };
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className,
       showSecondaryText,

@@ -13,7 +13,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
    * Get styles method.
    */
-  getStyles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
+  styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
 
   /**
    * The target that the TeachingBubble should try to position itself based on.

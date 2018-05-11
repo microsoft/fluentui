@@ -30,7 +30,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
 
   private _checkBox = createRef<HTMLElement>();
   private _id: string;
-  private _classNames: {[key in keyof ICheckboxStyles]: string };
+  private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   /**
    * Initialize a new instance of the TopHeaderV2
@@ -74,7 +74,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
       ariaLabel,
       ariaLabelledBy,
       ariaDescribedBy,
-      getStyles,
+      styles,
       onRenderLabel = this._onRenderLabel,
       checkmarkIconProps,
       ariaPositionInSet,
@@ -85,7 +85,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       disabled,
