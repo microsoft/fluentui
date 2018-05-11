@@ -110,11 +110,11 @@ class SlimNavComponent extends NavBase {
 
     const isSelected = nestingLevel > 0 && this.isLinkSelected(link, false /* includeChildren */);
     const {
-      getStyles,
+      styles,
       showMore,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
 
     return (
@@ -188,8 +188,8 @@ class SlimNavComponent extends NavBase {
     }
 
     const hasChildren = (!!link.links && link.links.length > 0);
-    const { getStyles } = this.props;
-    const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
+    const { styles } = this.props;
+    const classNames = getClassNames(styles!, { hasChildren, scrollTop: link.scrollTop });
 
     return (
       <div className={ classNames.navFloatingRoot }>
@@ -208,12 +208,12 @@ class SlimNavComponent extends NavBase {
     const isSelected = this.isLinkSelected(link, true /* includeChildren */);
     const hasChildren = (!!link.links && link.links.length > 0);
     const {
-      getStyles,
+      styles,
       showMore,
       onShowMoreLinkClicked,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, hasChildren });
+    const classNames = getClassNames(styles!, { isSelected, hasChildren });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -277,7 +277,7 @@ class SlimNavComponent extends NavBase {
     }
 
     const {
-      getStyles,
+      styles,
       enableCustomization
     } = this.props;
 
@@ -286,7 +286,7 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
 
     return (
       <div key={ groupIndex }>

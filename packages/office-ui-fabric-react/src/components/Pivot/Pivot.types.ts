@@ -21,7 +21,7 @@ export interface IPivotProps extends React.Props<PivotBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+  styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
 
   /**
    * Theme provided by High-Order Component.

@@ -19,7 +19,7 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IDialogContentStyleProps, IDialogContentStyles>;
+  styles?: IStyleFunctionOrObject<IDialogContentStyleProps, IDialogContentStyles>;
 
   /**
    * Theme provided by HOC.

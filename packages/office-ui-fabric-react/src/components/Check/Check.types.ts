@@ -18,7 +18,7 @@ export interface ICheckProps extends React.Props<CheckBase> {
   /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
-  getStyles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
+  styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
 
   /**
    * Flag to always show the check icon. Not currently working.

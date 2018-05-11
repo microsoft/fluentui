@@ -543,7 +543,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             checked={ isItemSelected }
             // Hover is being handled by focus styles
             // so clear out the explicit hover styles
-            getStyles={ checkboxStyles }
+            styles={ checkboxStyles }
           />
         )
     );

@@ -20,7 +20,7 @@ describe('Icon', () => {
     const component = renderer.create(
       <Icon
         iconName='Upload'
-        getStyles={ { root: 'root', imageContainer: 'imageContainer' } }
+        styles={ { root: 'root', imageContainer: 'imageContainer' } }
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
@@ -33,7 +33,7 @@ describe('Icon', () => {
       <Icon
         className='className'
         iconName='Upload'
-        getStyles={ customStyles }
+        styles={ customStyles }
       />
     );
     expect(component.toJSON()).toMatchSnapshot();

@@ -225,14 +225,14 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
     >
       <StyledCustomizedLayer>
         <CustomizedLayer
-          getStyles={[Function]}
           onLayerDidMount={[Function]}
           onLayerWillUnmount={[Function]}
+          styles={[Function]}
         >
           <LayerBase
-            getStyles={[Function]}
             onLayerDidMount={[Function]}
             onLayerWillUnmount={[Function]}
+            styles={[Function]}
             theme={
               Object {
                 "disableGlobalClassNames": false,
@@ -662,22 +662,22 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
                         directionalHint={1}
                         doNotLayer={false}
                         gapSpace={0}
-                        getStyles={[Function]}
                         isBeakVisible={true}
                         minPagePadding={8}
                         preventDismissOnScroll={false}
                         setInitialFocus={true}
+                        styles={[Function]}
                       >
                         <CalloutContentBase
                           beakWidth={16}
                           directionalHint={1}
                           doNotLayer={false}
                           gapSpace={0}
-                          getStyles={[Function]}
                           isBeakVisible={true}
                           minPagePadding={8}
                           preventDismissOnScroll={false}
                           setInitialFocus={true}
+                          styles={[Function]}
                           theme={
                             Object {
                               "disableGlobalClassNames": false,

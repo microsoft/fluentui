@@ -12,12 +12,12 @@ export class LabelBase extends BaseComponent<ILabelProps, {}> {
       children,
       className,
       disabled,
-      getStyles,
+      styles,
       required,
       theme
     } = this.props;
     const classNames = getClassNames(
-      getStyles,
+      styles,
       {
         className,
         disabled,

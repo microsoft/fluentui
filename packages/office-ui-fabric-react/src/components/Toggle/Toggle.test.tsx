@@ -13,7 +13,7 @@ describe('Toggle', () => {
   it('renders a label', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <ToggleBase
-        getStyles={ getStyles }
+        styles={ getStyles }
         label='Label'
       />
     );
@@ -26,7 +26,7 @@ describe('Toggle', () => {
   it('renders toggle correctly', () => {
     const component = renderer.create(
       <ToggleBase
-        getStyles={ getStyles }
+        styles={ getStyles }
         label='Label'
       />
     );
@@ -37,7 +37,7 @@ describe('Toggle', () => {
   it('renders aria-label', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <ToggleBase
-        getStyles={ getStyles }
+        styles={ getStyles }
         label='Label'
         offAriaLabel='offLabel'
       />
@@ -57,7 +57,7 @@ describe('Toggle', () => {
 
     ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <ToggleBase
-        getStyles={ getStyles }
+        styles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         label='Label'
@@ -77,7 +77,7 @@ describe('Toggle', () => {
 
     ReactTestUtils.renderIntoDocument(
       <ToggleBase
-        getStyles={ getStyles }
+        styles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         label='Label'
@@ -95,7 +95,7 @@ describe('Toggle', () => {
   it(`doesn't render a label element if none is provided`, () => {
     const component = ReactTestUtils.renderIntoDocument(
       <ToggleBase
-        getStyles={ getStyles }
+        styles={ getStyles }
         checked={ false }
       />
     );
@@ -120,7 +120,7 @@ describe('Toggle', () => {
         } }
       >
         <ToggleBase
-          getStyles={ getStyles }
+          styles={ getStyles }
           // tslint:disable-next-line:jsx-no-lambda
           componentRef={ ref => component = ref }
           label='Label'

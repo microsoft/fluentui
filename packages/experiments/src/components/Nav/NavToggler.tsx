@@ -41,8 +41,8 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
       showMore
     } = this.state;
 
-    const { getStyles } = this.props;
-    const classNames = getClassNames(getStyles!, { isCollapsed: isNavCollapsed });
+    const { styles } = this.props;
+    const classNames = getClassNames(styles!, { isCollapsed: isNavCollapsed });
 
     return (
       <div className={ classNames.root }>
@@ -89,8 +89,8 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
 
   private _renderExpandCollapseNavItem(): React.ReactElement<{}> {
     const isNavCollapsed = this.state.isNavCollapsed;
-    const { getStyles } = this.props;
-    const classNames = getClassNames(getStyles!, {});
+    const { styles } = this.props;
+    const classNames = getClassNames(styles!, {});
 
     return (
       <NavLink

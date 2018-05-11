@@ -66,7 +66,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
-  private _classNames: {[key in keyof ICalloutContentStyles]: string };
+  private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement = createRef<HTMLDivElement>();
   private _calloutElement = createRef<HTMLDivElement>();
@@ -149,7 +149,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       target
     } = this.props;
     const {
-      getStyles,
+      styles,
       role,
       ariaLabel,
       ariaDescribedBy,
@@ -173,7 +173,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
     const beakVisible = isBeakVisible && (!!target);
     this._classNames = getClassNames(
-      getStyles!,
+      styles!,
       {
         theme: this.props.theme!,
         className,

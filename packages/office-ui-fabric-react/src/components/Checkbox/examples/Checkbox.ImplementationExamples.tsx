@@ -44,7 +44,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
             onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
           } }
-          getStyles={ checkboxStyles }
+          styles={ checkboxStyles }
           ariaDescribedBy={ 'descriptionID' }
         />
         <label id='descriptionID' className='screenReaderOnly'>Uncontroller checkbox description</label>
@@ -53,13 +53,13 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
           label='Uncontrolled checkbox with defaultChecked true'
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          getStyles={ checkboxStyles }
+          styles={ checkboxStyles }
         />
 
         <Checkbox
           label='Disabled uncontrolled checkbox'
           disabled={ true }
-          getStyles={ checkboxStyles }
+          styles={ checkboxStyles }
         />
 
         <Checkbox
@@ -67,25 +67,25 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
           disabled={ true }
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          getStyles={ checkboxStyles }
+          styles={ checkboxStyles }
         />
 
         <Checkbox
           label='Controlled checkbox'
           checked={ isChecked }
           onChange={ this._onControlledCheckboxChange }
-          getStyles={ checkboxStyles }
+          styles={ checkboxStyles }
         />
 
         <Checkbox
           label='Checkbox rendered with boxSide "end"'
           boxSide='end'
-          getStyles={ checkboxStyles }
+          styles={ checkboxStyles }
         />
 
         <Checkbox
           label='Persona Checkbox'
-          getStyles={ checkboxStyles }
+          styles={ checkboxStyles }
           onRenderLabel={ this._renderPersonaLabel }
         />
       </div>

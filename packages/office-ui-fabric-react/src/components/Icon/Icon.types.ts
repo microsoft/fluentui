@@ -64,7 +64,7 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   /**
    * Gets the styles for an Icon.
    */
-  getStyles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
+  styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
 }
 
 export interface IIconStyleProps {

@@ -67,7 +67,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       items,
       overflowItems,
       farItems,
-      getStyles,
+      styles,
       theme,
       onReduceData = this._onReduceData,
       onGrowData = this._onGrowData,
@@ -82,7 +82,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     };
 
     this._setAriaPosinset(commandBarData);
-    this._classNames = getClassNames(getStyles!, { theme: theme!, className });
+    this._classNames = getClassNames(styles!, { theme: theme!, className });
 
     return (
       <ResizeGroup

@@ -151,7 +151,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
+  styles?: IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>;
 
   /**
    * Optional custom renderer for the primary text.
@@ -227,7 +227,7 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
+  styles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
 
   /**
    * Additional css class to apply to the PersonaCoin
@@ -276,7 +276,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
+  styles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
 }
 
 export interface IPersonaPresenceStyleProps {

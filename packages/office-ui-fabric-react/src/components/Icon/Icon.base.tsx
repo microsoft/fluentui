@@ -30,7 +30,7 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     const {
       ariaLabel,
       className,
-      getStyles,
+      styles,
       iconName,
       imageErrorAs,
     } = this.props;
@@ -38,7 +38,7 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
     const { iconClassName, children } = this._getIconContent(iconName);
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       className,
       iconClassName,
       isImage,

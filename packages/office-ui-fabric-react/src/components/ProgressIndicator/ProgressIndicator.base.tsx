@@ -42,14 +42,14 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
       barHeight,
       className,
       description,
-      getStyles,
+      styles,
       theme,
       title,
     } = this.props;
 
     let { label, percentComplete } = this.props;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className,
       barHeight,

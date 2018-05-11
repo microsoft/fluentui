@@ -49,7 +49,7 @@ export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<IShimmerTileStyleProps, IShimmerTileStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerTileStyleProps, IShimmerTileStyles>;
 }
 
 export interface IShimmerTileStyleProps {
