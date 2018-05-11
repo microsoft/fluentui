@@ -37,16 +37,6 @@ export interface IChicletCardStyles {
    * Style for the link to the file.
    */
   link?: IStyle;
-
-  /**
-   * Style for the collective actions in the lower right of the component.
-   */
-  actions?: IStyle;
-
-  /**
-   * Style for the individual actions in the lower right of the component.
-   */
-  action?: IStyle;
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCardBase> {

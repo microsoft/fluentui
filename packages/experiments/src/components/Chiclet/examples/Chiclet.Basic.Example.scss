@@ -1,7 +1,7 @@
 @import '~office-ui-fabric-react/src/common/common';
 
 .footer {
-  height: 24px;
+  height: 36px;
   padding-left: 11px;
 }
 
@@ -15,6 +15,8 @@
   line-height: 1.83;
   letter-spacing: normal;
   float: left;
+  padding-top: 8px;
+  padding-bottom: 12px;
 }
 
 .actions {
@@ -26,7 +28,7 @@
   float: right;
   cursor: pointer;
   width: 32px;
-  height: 32px;
+  height: 36px;
   background-color: white;
   color: #0078D7;
 }

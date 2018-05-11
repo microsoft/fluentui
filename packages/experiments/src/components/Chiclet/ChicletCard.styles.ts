@@ -81,7 +81,7 @@ export const getStyles = (
     link: [
       'ms-ChicletCardLink',
       {
-        padding: '0px 16px 25px 11px',
+        padding: '0px 16px 17px 11px',
         fontSize: '12px',
         fontWeight: 'normal',
         fontStyle: 'normal',
