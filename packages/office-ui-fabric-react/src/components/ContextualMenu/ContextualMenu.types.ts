@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
@@ -29,7 +28,7 @@ export interface IContextualMenu {
 
 }
 
-export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -489,7 +488,7 @@ export interface IContextualMenuItem {
   inactive?: boolean;
 }
 
-export interface IContextualMenuSection extends React.Props<ContextualMenu> {
+export interface IContextualMenuSection extends React.Props<any> {
 
   /**
    * The items to include inside the section.
