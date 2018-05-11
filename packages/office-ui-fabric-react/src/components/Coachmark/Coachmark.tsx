@@ -191,7 +191,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     let finalHeight = COACHMARK_HEIGHT;
 
     if (!isCollapsed && (this._entityInnerHostElement && this._entityInnerHostElement.current)) {
-      finalHeight = this._entityInnerHostElement.current.offsetHeight
+      finalHeight = this._entityInnerHostElement.current.offsetHeight;
     }
 
     return (
@@ -427,7 +427,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
       if (this.props.onMouseMove) {
         this.props.onMouseMove(e);
-      };
+      }
     });
   }
 
