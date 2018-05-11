@@ -227,7 +227,7 @@ describe('Calendar', () => {
 
     it('Verify navigate to different week in same month', () => {
       lastSelectedDateRange = null;
-      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-Calendar-dayWrapper');
+      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
       const day = days[8]; // 03/08/2017
       ReactTestUtils.Simulate.click(day);
       expect(lastSelectedDateRange).not.toBeNull();
@@ -237,7 +237,7 @@ describe('Calendar', () => {
 
     it('Verify navigate to day in different month', () => {
       lastSelectedDateRange = null;
-      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-Calendar-dayWrapper');
+      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
       const day = days[34]; // 04/03/2017
       const firstDate = new Date(2017, 2, 28);
       ReactTestUtils.Simulate.click(day);
@@ -273,7 +273,7 @@ describe('Calendar', () => {
           maxDate={ maxDate }
         />) as Calendar;
 
-      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-Calendar-dayWrapper');
+      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
 
       expect(days.slice(0, 7).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
       expect(days.slice(8, 26).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(false);
@@ -301,7 +301,7 @@ describe('Calendar', () => {
           onSelectDate={ onSelectDate() }
         />) as Calendar;
 
-      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-Calendar-dayWrapper');
+      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
       ReactTestUtils.Simulate.click(days[18]);
       expect(lastSelectedDateRange!.length).toEqual(19);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(minDate, i))).toEqual(true));

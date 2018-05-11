@@ -195,7 +195,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -219,7 +219,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -243,7 +243,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -267,7 +267,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -291,7 +291,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -315,7 +315,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -339,7 +339,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -367,7 +367,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -391,7 +391,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -415,7 +415,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -439,7 +439,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -463,7 +463,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -487,7 +487,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -511,7 +511,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -539,7 +539,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -563,7 +563,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -587,7 +587,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -611,7 +611,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -635,7 +635,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -659,7 +659,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -683,7 +683,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -711,7 +711,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -735,7 +735,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -759,7 +759,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -783,7 +783,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -807,7 +807,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -831,7 +831,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -855,7 +855,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -883,7 +883,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -907,7 +907,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -931,7 +931,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -955,7 +955,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -979,7 +979,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -1003,7 +1003,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
@@ -1027,7 +1027,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-Calendar-dayWrapper ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
