@@ -35,18 +35,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/filetypeicon'
         },
         {
-          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
-          key: 'Keytip',
-          name: 'Keytip',
-          url: '#/examples/keytip'
-        },
-        {
-          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
-          key: 'KeytipLayer',
-          name: 'KeytipLayer',
-          url: '#/examples/keytipLayer'
-        },
-        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
@@ -93,6 +81,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Nav',
           name: 'Nav',
           url: '#/examples/nav'
+        },
+        {
+          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
+          key: 'FluentTheme',
+          name: 'Fluent Theme',
+          url: '#/examples/fluenttheme'
         }
       ]
     }

@@ -17,9 +17,7 @@ import {
   setVirtualParent,
   createRef
 } from '../../Utilities';
-
-const _layersByHostId: { [hostId: string]: LayerBase[] } = {};
-let _defaultHostSelector: string | undefined;
+import { getDefaultTarget, registerLayer, unregisterLayer, setDefaultTarget, notifyHostChanged } from './Layer.notification';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
@@ -35,14 +33,14 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   private _host: Node;
   private _layerElement: HTMLElement | undefined;
   private _hasMounted: boolean;
+
   /**
    * Used for notifying applicable Layers that a host is available/unavailable and to re-evaluate Layers that
    * care about the specific host.
+   * @deprecated
    */
   public static notifyHostChanged(id: string) {
-    if (_layersByHostId[id]) {
-      _layersByHostId[id].forEach(layer => layer.forceUpdate());
-    }
+    notifyHostChanged(id);
   }
 
   /**
@@ -52,9 +50,10 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
    *
    * Passing in a falsey value will clear the default target and reset back to
    * using a created element at the end of document body.
+   * @deprecated
    */
   public static setDefaultTarget(selector?: string) {
-    _defaultHostSelector = selector;
+    setDefaultTarget(selector);
   }
 
   constructor(props: ILayerProps) {
@@ -65,11 +64,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     });
 
     if (this.props.hostId) {
-      if (!_layersByHostId[this.props.hostId]) {
-        _layersByHostId[this.props.hostId] = [];
-      }
-
-      _layersByHostId[this.props.hostId].push(this);
+      registerLayer(this.props.hostId, this);
     }
   }
 
@@ -81,10 +76,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     this._removeLayerElement();
 
     if (this.props.hostId) {
-      _layersByHostId[this.props.hostId] = _layersByHostId[this.props.hostId].filter(layer => layer !== this);
-      if (!_layersByHostId[this.props.hostId].length) {
-        delete _layersByHostId[this.props.hostId];
-      }
+      unregisterLayer(this.props.hostId, this);
     }
   }
 
@@ -180,8 +172,8 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     if (hostId) {
       return doc.getElementById(hostId) as Node;
     } else {
-      return _defaultHostSelector ? doc.querySelector(_defaultHostSelector) as Node : doc.body;
+      const defaultHostSelector = getDefaultTarget();
+      return defaultHostSelector ? doc.querySelector(defaultHostSelector) as Node : doc.body;
     }
   }
-
 }

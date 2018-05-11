@@ -7,6 +7,7 @@ import { IRenderFunction, KeyCodes } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IButton {
   /**
@@ -234,6 +235,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
   */
   menuTriggerKeyCode?: KeyCodes | null;
+
+  /**
+   * Optional keytip for this button
+   */
+  keytipProps?: IKeytipProps;
 
   /**
    * Menu will not be created or destroyed when opened or closed, instead it

@@ -108,7 +108,7 @@ export const getStyles = memoizeFunction((
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
-          backgroundColor: 'WindowText',
+          backgroundColor: 'Highlight',
           MsHighContrastAdjust: 'none'
         }
       }

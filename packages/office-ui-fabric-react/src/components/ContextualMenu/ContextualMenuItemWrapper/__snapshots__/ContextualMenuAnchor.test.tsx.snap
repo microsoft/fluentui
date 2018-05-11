@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContextualMenuButton creates a normal button renders the contextual menu split button correctly 1`] = `
+<div>
+  <a
+    aria-disabled={false}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    aria-owns={undefined}
+    aria-posinset={1}
+    aria-setsize={1}
+    className="root"
+    href={undefined}
+    onClick={[Function]}
+    onKeyDown={null}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    rel={undefined}
+    role="menuitem"
+    style={undefined}
+    target={undefined}
+  >
+    <div
+      className="linkContent"
+    />
+  </a>
+</div>
+`;
