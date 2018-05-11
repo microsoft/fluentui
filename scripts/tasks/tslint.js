@@ -8,5 +8,5 @@ module.exports = function (options) {
   const sourcePath = path.resolve(process.cwd(), 'src/**/*.ts*');
   const tslintPath = 'node ' + path.resolve(__dirname, '../node_modules/tslint/lib/tslint-cli');
 
-  return exec(`${tslintPath} --project ${projectPath} -t stylish -r ${rulesPath}`, process);
+  return exec(`${tslintPath} --project ${projectPath} -t stylish -r ${rulesPath}`, undefined, undefined, process);
 };
