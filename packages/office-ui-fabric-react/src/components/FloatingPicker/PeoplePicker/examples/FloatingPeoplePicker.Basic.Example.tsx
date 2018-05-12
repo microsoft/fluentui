@@ -110,7 +110,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onPickerChange = (selectedSuggestion: IPersonaProps): void => {
-    this.setState({ searchValue: selectedSuggestion.primaryText ? selectedSuggestion.primaryText : '' });
+    this.setState({ searchValue: selectedSuggestion.text ? selectedSuggestion.text : '' });
     this._picker.hidePicker();
   }
 
@@ -144,18 +144,18 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _getTextFromItem(persona: IPersonaProps): string {
-    return persona.primaryText as string;
+    return persona.text as string;
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {
     if (!personas || !personas.length || personas.length === 0) {
       return false;
     }
-    return personas.filter((item: IPersonaProps) => item.primaryText === persona.primaryText).length > 0;
+    return personas.filter((item: IPersonaProps) => item.text === persona.text).length > 0;
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.primaryText as string, filterText));
+    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.text as string, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {

@@ -11,7 +11,7 @@ import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
 import { customizable } from '../../Utilities';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.types';
+import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
@@ -108,7 +108,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
     const {
       ariaLabel,
-      dividerAs: Divider = Icon,
+      dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
       overflowIndex
@@ -127,20 +127,23 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     // Find index of last rendered item so the divider icon
     // knows not to render on that item
     const lastItemIndex = renderedItems.length - 1;
+    const hasOverflowItems = renderedOverflowItems && renderedOverflowItems.length !== 0;
 
     const itemElements: JSX.Element[] = renderedItems.map(
       (item, index) => (
         <li className={ this._classNames.listItem } key={ item.key || String(index) }>
           { onRenderItem(item, this._onRenderItem) }
-          { index !== lastItemIndex && <Divider
-            className={ this._classNames.chevron }
-            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-            item={ item }
-          /> }
+          { (index !== lastItemIndex || (hasOverflowItems && index === (overflowIndex! - 1))) && (
+            <DividerType
+              className={ this._classNames.chevron }
+              iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+              item={ item }
+            />
+          ) }
         </li>
       ));
 
-    if (renderedOverflowItems && renderedOverflowItems.length !== 0) {
+    if (hasOverflowItems) {
       itemElements.splice(overflowIndex!, 0, (
         <li className={ this._classNames.overflow } key={ OVERFLOW_KEY }>
           <IconButton
@@ -155,11 +158,13 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
               directionalHint: DirectionalHint.bottomLeftEdge
             } }
           />
-          <Divider
-            className={ this._classNames.chevron }
-            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-            item={ renderedOverflowItems[renderedOverflowItems.length - 1] }
-          />
+          { overflowIndex !== lastItemIndex + 1 && (
+            <DividerType
+              className={ this._classNames.chevron }
+              iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+              item={ renderedOverflowItems[renderedOverflowItems.length - 1] }
+            />
+          ) }
         </li>
       ));
     }

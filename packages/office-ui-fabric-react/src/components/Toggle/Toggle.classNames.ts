@@ -104,7 +104,16 @@ export const getClassNames = memoizeFunction((
               },
               styles.pillHovered
             ],
-            ':hover .ms-Toggle-thumb': styles.thumbHovered
+            ':hover .ms-Toggle-thumb': [
+              styles.thumbHovered,
+              {
+                selectors: {
+                  [HighContrastSelector]: {
+                    borderColor: 'Highlight'
+                  }
+                }
+              }
+            ]
           }
         },
         checked && [
@@ -119,7 +128,12 @@ export const getClassNames = memoizeFunction((
               ':hover': [
                 {
                   backgroundColor: pillCheckedHoveredBackground,
-                  borderColor: 'transparent'
+                  borderColor: 'transparent',
+                  selectors: {
+                    [HighContrastSelector]: {
+                      backgroundColor: 'Highlight'
+                    }
+                  }
                 },
                 styles.pillCheckedHovered
               ],
@@ -151,7 +165,18 @@ export const getClassNames = memoizeFunction((
           },
           styles.pillCheckedDisabled
         ],
-      ]
+      ],
+      !disabled && {
+        selectors: {
+          '&:hover': {
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight'
+              }
+            }
+          }
+        }
+      }
     ],
 
     thumb: [

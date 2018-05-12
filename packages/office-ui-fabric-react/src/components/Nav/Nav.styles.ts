@@ -6,6 +6,7 @@ import {
   getFocusStyle,
   FontSizes,
   FontWeights,
+  ZIndexes,
   getGlobalClassNames,
 } from '../../Styling';
 
@@ -183,7 +184,7 @@ export const getStyles = (
           position: 'absolute',
           top: '1px',
           left: `${position}px`,
-          zIndex: 1,
+          zIndex: ZIndexes.Nav,
           padding: 0,
           margin: 0
         }

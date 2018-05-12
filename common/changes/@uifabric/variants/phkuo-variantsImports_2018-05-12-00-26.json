@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "have variants use OUFR instead of Styling as a dependency to ease bundling optimizations",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "phkuo@microsoft.com"
+}

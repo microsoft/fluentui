@@ -34,7 +34,7 @@ exports[`Nav renders Nav correctly 1`] = `
             {
               animation-duration: 0.367s;
               animation-fill-mode: both;
-              animation-name: css-0,css-13;
+              animation-name: css-33,css-46;
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
               display: block;
               margin-bottom: 40px;
@@ -143,6 +143,10 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:hover {
                       color: #0078d4;
                     }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
+                    }
                     &:hover .ms-Button-icon {
                       color: #0078d4;
                     }
@@ -176,10 +180,8 @@ exports[`Nav renders Nav correctly 1`] = `
                         ms-Icon-placeHolder
                         ms-Button-icon
                         {
-                          width: 1em;
-                        }
-                        {
                           color: #106ebe;
+                          display: inline-block;
                           flex-shrink: 0;
                           font-size: 16px;
                           height: 16px;
@@ -190,6 +192,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           margin-top: 0;
                           text-align: center;
                           vertical-align: middle;
+                          width: 1em;
                         }
                     data-icon-name=""
                     role="presentation"

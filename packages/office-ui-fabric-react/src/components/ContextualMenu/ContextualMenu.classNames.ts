@@ -1,8 +1,8 @@
-import { memoizeFunction } from '../../Utilities';
-import { ITheme, mergeStyleSets } from '../../Styling';
-import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
+import { getMenuItemStyles, getStyles as getContextualMenuStyles } from './ContextualMenu.styles';
+import { ITheme, mergeStyleSets } from '../../Styling';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+import { memoizeFunction } from '../../Utilities';
 
 export interface IContextualMenuClassNames {
   container: string;
@@ -21,6 +21,7 @@ export interface IMenuItemClassNames {
   checkmarkIcon: string;
   subMenuIcon: string;
   label: string;
+  secondaryText: string;
   splitContainer: string;
   splitPrimary: string;
   splitMenu: string;
@@ -197,6 +198,10 @@ export const getItemClassNames = memoizeFunction((
     label: [
       'ms-ContextualMenu-itemText',
       styles.label
+    ],
+    secondaryText: [
+      'ms-ContextualMenu-secondaryText',
+      styles.secondaryText
     ],
     splitContainer: [
       styles.splitButtonFlexContainer,

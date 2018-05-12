@@ -90,6 +90,12 @@ exports[`Toggle renders toggle correctly 1`] = `
           &:hover {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+            border-color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+          }
       data-is-focusable={true}
       disabled={undefined}
       id="Toggle1"
