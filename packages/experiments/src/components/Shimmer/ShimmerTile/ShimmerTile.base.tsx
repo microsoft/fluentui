@@ -114,7 +114,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
           height={ contentSize.height - squareHeight - nameplateHeight }
         />
         <ShimmerElementsGroup
-          lineElements={
+          shimmerElements={
             [
               {
                 type: ElemType.gap,
@@ -151,7 +151,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
               {
                 itemName ?
                   <ShimmerElementsGroup
-                    lineElements={
+                    shimmerElements={
                       [
                         {
                           type: ElemType.gap,
@@ -176,7 +176,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
               {
                 itemActivity ?
                   <ShimmerElementsGroup
-                    lineElements={
+                    shimmerElements={
                       [
                         {
                           type: ElemType.gap,

@@ -6,7 +6,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     width,
     rowHeight,
     isDataLoaded,
-    isBaseStyle,
     widthInPercentage,
     widthInPixel,
     className
@@ -41,11 +40,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     shimmerWrapper: [
       'ms-Shimmer-shimmerWrapper',
       {
-        position: 'absolute',
-        top: '0',
-        bottom: '0',
-        left: '0',
-        right: '0',
         width: ACTUAL_WIDTH,
         background: `${DefaultPalette.neutralLighter}
                     linear-gradient(
@@ -60,25 +54,26 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
         animationName: shimmerAnimation,
-        transition: 'opacity 200ms, visibility 200ms'
+        transition: 'opacity 2000ms'
       },
       isDataLoaded && {
-        opacity: '0',
-        visibility: 'hidden'
-      },
-      isBaseStyle && {
-        position: 'static'
+        opacity: '0'
       }
     ],
     dataWrapper: [
       'ms-Shimmer-dataWrapper',
       {
+        position: 'absolute',
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
         opacity: '0',
         lineHeight: '1',
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
-        transition: 'opacity 200ms'
+        transition: 'opacity 2000ms'
       },
       isDataLoaded && {
         opacity: '1'

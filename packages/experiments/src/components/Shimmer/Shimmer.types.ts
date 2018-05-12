@@ -18,9 +18,9 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Sets the width of the shimmer wave wrapper in percentages.
-   * Deprecated, use a more specific width like widthInPixel or widthInPercentage.
+   * Deprecated, use a more specific width like 'widthInPixel' or 'widthInPercentage'.
    * @default 100%
-   * @deprecated
+   * @deprecated Use a more specific width like 'widthInPixel' or 'widthInPercentage'.
    */
   width?: number;
 
@@ -43,15 +43,29 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   isDataLoaded?: boolean;
 
   /**
-   * Provide when Shimmer is intended to be used when using 'onRenderMissingItem' optional callback of the DetailsList Fabric Component.
+   * Use when providing custom skeleton as children wrapped by shimmer.
+   * Deprecated in favor of 'onRenderCustomElements'
    * @default false
+   * @deprecated Use 'onRenderCustomElements' instead.
    */
   isBaseStyle?: boolean;
 
   /**
    * Elements to render in one line of the Shimmer.
+   * Deprecated, use 'shimmerElements' for better semantic meaning.
+   * @deprecated Use 'shimmerElements' instead.
    */
-  lineElements?: Array<ICircle | IGap | ILine>;
+  lineElements?: IShimmerElement[];
+
+  /**
+   * Elements to render in one line of the Shimmer.
+   */
+  shimmerElements?: IShimmerElement[];
+
+  /**
+   * Optional custom renderer when need to build complex placeholder skeletons.
+   */
+  onRenderCustomElements?: () => React.ReactNode;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -64,6 +78,9 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   className?: string;
 }
 
+/**
+ * Shimmer Elements Interface
+ */
 export interface IShimmerElement {
   /**
    * Required for every element you intend to use.
@@ -149,7 +166,6 @@ export interface IShimmerStyleProps {
   widthInPercentage?: number;
   widthInPixel?: number;
   isDataLoaded?: boolean;
-  isBaseStyle?: boolean;
   className?: string;
 }
 

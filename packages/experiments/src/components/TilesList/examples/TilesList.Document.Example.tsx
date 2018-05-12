@@ -264,7 +264,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
   private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
     return (
       <ShimmerElementsGroup
-        lineElements={
+        shimmerElements={
           [
             { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
           ]

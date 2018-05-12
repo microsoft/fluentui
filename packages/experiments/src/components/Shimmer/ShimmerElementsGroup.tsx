@@ -3,42 +3,41 @@ import * as React from 'react';
 import { DefaultPalette, IStyleSet } from '../../Styling';
 import {
   ShimmerElementType,
-  ICircle,
-  ILine,
-  IGap,
   ShimmerElementVerticalAlign,
-  ShimmerElementsDefaultHeights
+  ShimmerElementsDefaultHeights,
+  IShimmerElement
 } from './Shimmer.types';
 import { ShimmerLine } from './ShimmerLine/ShimmerLine';
 import { ShimmerGap } from './ShimmerGap/ShimmerGap';
 import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
 
 export interface IShimmerElementsGroupProps {
-  lineElements?: Array<ICircle | IGap | ILine>;
+  shimmerElements?: IShimmerElement[];
   rowHeight?: number;
 }
 
-export function ShimmerElementsGroup(props: IShimmerElementsGroupProps): JSX.Element {
-  const { lineElements, rowHeight } = props;
+export type ShimmerElementsGroup = React.StatelessComponent<IShimmerElementsGroupProps>;
+
+export const ShimmerElementsGroup: ShimmerElementsGroup = (props: IShimmerElementsGroupProps): JSX.Element => {
+  const { shimmerElements, rowHeight } = props;
 
   return (
     <div
       style={
         {
           display: 'flex',
-          alignItems: 'center',
-          alignContent: 'space-between'
+          alignItems: 'center'
         }
       }
     >
-      { getRenderedElements(lineElements, rowHeight) }
+      { getRenderedElements(shimmerElements, rowHeight) }
     </div>
   );
-}
+};
 
-function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>, rowHeight?: number): React.ReactNode {
-  const renderedElements: React.ReactNode = lineElements ?
-    lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
+function getRenderedElements(shimmerElements?: IShimmerElement[], rowHeight?: number): React.ReactNode {
+  const renderedElements: React.ReactNode = shimmerElements ?
+    shimmerElements.map((elem: IShimmerElement, index: number): JSX.Element => {
       switch (elem.type) {
         case ShimmerElementType.circle:
           return (
@@ -74,7 +73,7 @@ function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>, rowHe
   return renderedElements;
 }
 
-function getBorderStyles(elem: ICircle | IGap | ILine, rowHeight?: number): IStyleSet | undefined {
+function getBorderStyles(elem: IShimmerElement, rowHeight?: number): IStyleSet | undefined {
   const elemHeight: number | undefined = elem.height;
 
   const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;

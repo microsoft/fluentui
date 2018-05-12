@@ -5,10 +5,8 @@ import {
   IShimmerStyleProps,
   IShimmerStyles,
   ShimmerElementType,
-  ICircle,
-  ILine,
-  IGap,
   ShimmerElementsDefaultHeights,
+  IShimmerElement,
 } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup';
 
@@ -22,6 +20,18 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   private _classNames: { [key in keyof IShimmerStyles]: string };
   constructor(props: IShimmerProps) {
     super(props);
+
+    this._warnDeprecations({
+      'isBaseStyle': 'onRenderCustomElement',
+      'width': 'widthInPercentage or widthInPixel',
+      'lineElements': 'shimmerElements'
+    });
+
+    this._warnMutuallyExclusive({
+      'widthInPixel': 'widthInPercentage',
+      'lineElements': 'shimmerElements',
+      'onRenderCustomElements': 'lineElements'
+    });
   }
 
   public render(): JSX.Element {
@@ -29,41 +39,47 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       getStyles,
       width,
       lineElements,
+      shimmerElements,
       children,
       isDataLoaded,
       isBaseStyle,
       widthInPercentage,
       widthInPixel,
-      className
+      className,
+      onRenderCustomElements
     } = this.props;
 
-    const rowHeight: number | undefined = lineElements ? this._findMaxElementHeight(lineElements) : undefined;
+    // lineElements is a deprecated prop so need to check which one was used.
+    const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
+    const rowHeight: number | undefined = elements ? this._findMaxElementHeight(elements) : undefined;
 
     this._classNames = getClassNames(getStyles!, {
-      width, rowHeight, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel, className
+      width, rowHeight, isDataLoaded, widthInPercentage, widthInPixel, className
     });
 
     return (
       <div className={ this._classNames.root }>
         <div className={ this._classNames.shimmerWrapper }>
-          { isBaseStyle ? children :
-            <ShimmerElementsGroup
-              lineElements={ lineElements }
-              rowHeight={ rowHeight }
-            />
+          { isBaseStyle ? children : // isBaseStyle prop is deprecated and this check needs to be removed in the future
+            onRenderCustomElements ? onRenderCustomElements() :
+              <ShimmerElementsGroup
+                shimmerElements={ elements }
+                rowHeight={ rowHeight }
+              />
           }
         </div>
-        { isDataLoaded &&
+        { !isBaseStyle && // same in here... this check needs to be removed in the future
           <div className={ this._classNames.dataWrapper }>
-            { !!children ? children : null }
+            { children ? children : null }
           </div>
         }
       </div>
     );
   }
 
-  private _findMaxElementHeight(elements: Array<ICircle | IGap | ILine>): number {
-    const itemsDefaulted: Array<ICircle | IGap | ILine> = elements.map((elem: ICircle | IGap | ILine): ICircle | IGap | ILine => {
+  // User should not worry to provide which of the elements is the highest, we do the calculation for him.
+  private _findMaxElementHeight(elements: IShimmerElement[]): number {
+    const itemsDefaulted: IShimmerElement[] = elements.map((elem: IShimmerElement): IShimmerElement => {
       switch (elem.type) {
         case ShimmerElementType.circle:
           if (!elem.height) {
@@ -81,7 +97,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       return elem;
     });
 
-    const rowHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
+    const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
       return next.height ?
         next.height > acc ? next.height : acc
         : acc;
