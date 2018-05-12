@@ -45,11 +45,19 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
             className=
                 ms-CommandBarItem-chevronDown
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
                 }
             data-icon-name="ChevronDown"
             role="presentation"
-          />
+          >
+            
+          </i>
         </button>
       </div>
     </div>

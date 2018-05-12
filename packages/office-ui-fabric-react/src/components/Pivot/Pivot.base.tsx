@@ -161,6 +161,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }
         name={ link.headerText }
+        keytipProps={ link.keytipProps }
       >
         { linkContent }
       </CommandButton>
@@ -226,7 +227,8 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
           itemIcon: pivotItem.props.itemIcon,
-          onRenderItemLink: pivotItem.props.onRenderItemLink
+          onRenderItemLink: pivotItem.props.onRenderItemLink,
+          keytipProps: pivotItem.props.keytipProps
         });
         this._keyToIndexMapping[itemKey] = index;
         this._keyToTabIds[itemKey] = this._getTabId(itemKey, index);

@@ -7,6 +7,7 @@ import { IRenderFunction, KeyCodes } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IButton {
   /**
@@ -236,6 +237,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuTriggerKeyCode?: KeyCodes | null;
 
   /**
+   * Optional keytip for this button
+   */
+  keytipProps?: IKeytipProps;
+
+  /**
    * Menu will not be created or destroyed when opened or closed, instead it
    * will be hidden. This will improve perf of the menu opening but could potentially
    * impact overall perf by having more elemnts in the dom. Should only be used
@@ -417,6 +423,11 @@ export interface IButtonStyles {
    * Style for the description text if applicable (for compound buttons.)
    */
   description?: IStyle;
+
+  /**
+   * Style for the description text if applicable (for compound buttons.)
+   */
+  secondaryText?: IStyle;
 
   /**
    * Style override for the description text when the button is hovered.

@@ -5,6 +5,7 @@ import {
   keyframes,
   noWrap,
   getGlobalClassNames,
+  IRawStyle
 } from '../../Styling';
 import { getRTL } from '../../Utilities';
 import {
@@ -111,7 +112,6 @@ export const getStyles = (
     ],
 
     progressBar: [
-      classNames.progressBar,
       {
         backgroundColor: palette.themePrimary,
         height: barHeight,
@@ -125,18 +125,16 @@ export const getStyles = (
           }
         }
       },
-      !indeterminate && {
+
+      indeterminate ? {
+        position: 'absolute',
+        minWidth: '33%',
+        background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
+        animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`,
+      } as IRawStyle : {
         transition: 'width .15s linear'
-      },
-      indeterminate && [
-        {
-          position: 'absolute',
-          minWidth: '33%',
-          background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
-          animation: `${IndeterminateProgress} 3s infinite`,
-        },
-        isRTL && { animation: `${IndeterminateProgressRTL} 3s infinite` },
-      ],
+      } as IRawStyle,
+      classNames.progressBar,
     ],
   });
 };

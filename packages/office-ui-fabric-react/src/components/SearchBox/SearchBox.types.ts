@@ -103,6 +103,12 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   getStyles?: IStyleFunction<ISearchBoxStyleProps, ISearchBoxStyles>;
+
+  /**
+   * Whether or not to animate the SearchBox icon on focus.
+   * @default false
+   */
+  disableAnimation?: boolean;
 }
 
 export interface ISearchBoxStyleProps {
@@ -112,6 +118,7 @@ export interface ISearchBoxStyleProps {
   hasFocus?: boolean;
   underlined?: boolean;
   hasInput?: boolean;
+  disableAnimation?: boolean;
 }
 
 export interface ISearchBoxStyles {
