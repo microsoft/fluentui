@@ -54,8 +54,7 @@
     "@uifabric/styling": ">=5.30.1 <6.0.0",
     "@uifabric/utilities": ">=5.30.1 <6.0.0",
     "prop-types": "^15.5.10",
-    "tslib": "^1.7.1",
-    "@uifabric/variants": "*"
+    "tslib": "^1.7.1"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
