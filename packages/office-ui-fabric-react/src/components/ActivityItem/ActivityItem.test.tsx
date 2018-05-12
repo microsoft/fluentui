@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { ActivityItem } from './ActivityItem';
 import { Icon } from '../../Icon';
 import { TestImages } from '../../common/TestImages';
+import { IPersonaSharedProps } from '../Persona';
 
 const defaultProps = {
   key: 1,
@@ -12,17 +13,17 @@ const defaultProps = {
   timeStamp: 'timestamp text'
 };
 
-const defaultPersonaProps = [
+const defaultPersonaProps: IPersonaSharedProps[] = [
   {
     imageInitials: 'TN',
-    primaryText: 'Test Name'
+    text: 'Test Name'
   },
   {
     imageUrl: TestImages.personaFemale
   },
   {
     imageInitials: 'AN',
-    primaryText: 'Another Name'
+    text: 'Another Name'
   },
   {
     imageUrl: TestImages.personaMale

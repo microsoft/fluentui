@@ -425,6 +425,11 @@ export interface IButtonStyles {
   description?: IStyle;
 
   /**
+   * Style for the description text if applicable (for compound buttons.)
+   */
+  secondaryText?: IStyle;
+
+  /**
    * Style override for the description text when the button is hovered.
    */
   descriptionHovered?: IStyle;

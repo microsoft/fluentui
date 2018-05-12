@@ -289,7 +289,7 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
   return (
     <Persona
       imageUrl={ documentPreviewProps && documentPreviewProps.previewImages[0].previewImageSrc }
-      primaryText={ documentTitleProps && documentTitleProps.title }
+      text={ documentTitleProps && documentTitleProps.title }
       size={ PersonaSize.size40 }
     />
   );

@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 08 May 2018 18:18:47 GMT and should not be manually modified.
+This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+
+## 5.100.0
+Fri, 11 May 2018 04:21:29 GMT
+
+### Minor changes
+
+- Deprecate Persona's primaryText prop and add replacement text prop.
+- Puts additional alert on selected suggestions behind a prop
+
+### Patches
+
+- Revert change to use React.createPortal, until event leaking issues can be resolved
+
+## 5.99.0
+Thu, 10 May 2018 10:27:25 GMT
+
+### Minor changes
+
+- Add secondaryText to ContextualMenuItem to render on the right of item.name (text)
+- MarqueeSelection: Added `getStyles` function.
+- Added overflowMenuProps property to CommandBar
+
+### Patches
+
+- Even if a ComboBoxOptionWrapper component doesn't update (shouldComponentUpdate returns false), children functions are still being executed unnecessarily, which can cause performance issues. This can be avoided by passing in a reference to a function that returns the children elements, instead of returning the elements themselves.
+- Fix index import
+
+## 5.98.0
+Wed, 09 May 2018 15:42:02 GMT
+
+### Minor changes
+
+- FocusZone: Add a prop to allow a FocusZone to not let focus events propagate outside of the FocusZone
+- Added support for special casing UnknownPersona coin
 
 ## 5.97.1
 Tue, 08 May 2018 18:18:47 GMT
