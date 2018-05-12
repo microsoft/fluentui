@@ -59,10 +59,7 @@
       "packageName": "@uifabric/variants",
       "projectFolder": "packages/variants",
       "versionPolicyName": "lockedMajor",
-      "shouldPublish": true,
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react"
-      ]
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/file-type-icons",

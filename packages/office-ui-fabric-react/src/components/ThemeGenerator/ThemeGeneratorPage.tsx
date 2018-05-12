@@ -29,8 +29,6 @@ import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Exa
 import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
 
-import { getStrongVariant } from '@uifabric/variants';
-
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;
   colorPickerSlotRule: IThemeSlotRule | null;
@@ -359,10 +357,10 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
 
-    const finalTheme = loadTheme(getStrongVariant({
+    const finalTheme = loadTheme({
       ...{ palette: themeAsJson },
       isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
-    }));
+    });
 
     const root = document.querySelector('.App-content') as HTMLElement;
     if (root) {
