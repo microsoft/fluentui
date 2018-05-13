@@ -131,7 +131,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   private _getTextFromItem(persona: IPersonaProps): string {
-    return persona.primaryText as string;
+    return persona.text as string;
   }
   private _renderListPicker() {
     return (
@@ -346,7 +346,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   private _onItemSelected = (item: IPersonaProps): Promise<IPersonaProps> => {
     const processedItem = Object.assign({}, item);
-    processedItem.primaryText = `${item.primaryText} (selected)`;
+    processedItem.text = `${item.text} (selected)`;
     return new Promise<IPersonaProps>((resolve, reject) => setTimeout(() => resolve(processedItem), 250));
   }
 
@@ -391,11 +391,11 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     if (!personas || !personas.length || personas.length === 0) {
       return false;
     }
-    return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
+    return personas.filter(item => item.text === persona.text).length > 0;
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter(item => this._doesTextStartWith(item.primaryText as string, filterText));
+    return this.state.peopleList.filter(item => this._doesTextStartWith(item.text as string, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {

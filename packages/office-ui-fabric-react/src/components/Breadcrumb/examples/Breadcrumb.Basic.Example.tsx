@@ -56,7 +56,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           ariaLabel={ 'Website breadcrumb' }
         />
 
-        <Label className={ exampleStyles.exampleLabel } style={ { marginTop: '24px' } }>With maxDisplayedItems set to three and overflowIndex set to 1 (second element)</Label>
+        <Label className={ exampleStyles.exampleLabel } style={ { marginTop: '24px' } }>With maxDisplayedItems set to two and overflowIndex set to 1 (second element)</Label>
         <Breadcrumb
           items={ [
             { text: 'TestText1', key: 'TestKey1' },

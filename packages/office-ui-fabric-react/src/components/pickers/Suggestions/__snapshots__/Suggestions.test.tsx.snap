@@ -1601,6 +1601,11 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-live="polite"
+    className="ms-Suggestions-suggestionsAvailable"
+    role="alert"
+  />
 </div>
 `;
 
@@ -3205,5 +3210,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-live="polite"
+    className="ms-Suggestions-suggestionsAvailable"
+    role="alert"
+  />
 </div>
 `;

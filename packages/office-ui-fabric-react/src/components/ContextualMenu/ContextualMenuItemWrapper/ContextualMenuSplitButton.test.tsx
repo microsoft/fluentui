@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IContextualMenuItem } from './ContextualMenu.types';
-import { IMenuItemClassNames } from './ContextualMenu.classNames';
+import { IContextualMenuItem } from '../ContextualMenu.types';
+import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 
 describe('ContextualMenuSplitButton', () => {
@@ -39,6 +39,7 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     checkmarkIcon: 'checkmarkIcon',
     subMenuIcon: 'subMenuIcon',
     label: 'label',
+    secondaryText: 'secondaryText',
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',

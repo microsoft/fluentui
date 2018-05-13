@@ -44,6 +44,10 @@ export const getStyles = (
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
+  // Static colors used when displaying 'unknown persona' coin
+  const unknownPersonaBackgroundColor = palette.neutralLight;
+  const unknownPersonaFontColor = palette.redDark;
+
   return ({
     coin: [
       classNames.coin,
@@ -181,7 +185,7 @@ export const getStyles = (
       classNames.initials,
       {
         borderRadius: '50%',
-        color: palette.white,
+        color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
         fontSize: FontSizes.large,
         fontWeight: FontWeights.regular,
         lineHeight: '46px',
@@ -196,6 +200,10 @@ export const getStyles = (
             backgroundColor: 'Window !important',
           }
         }
+      },
+
+      props.showUnknownPersonaCoin && {
+        backgroundColor: unknownPersonaBackgroundColor
       },
 
       (size.isSize16 || size.isSize24 || size.isSize28) && {

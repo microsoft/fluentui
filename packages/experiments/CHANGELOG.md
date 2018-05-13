@@ -1,6 +1,27 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 04 May 2018 15:58:38 GMT and should not be manually modified.
+This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+
+## 5.38.2
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Fix Fluent palette color names
+
+## 5.38.1
+Thu, 10 May 2018 10:27:25 GMT
+
+### Patches
+
+- Update Fluent theme to use relative imports
+
+## 5.38.0
+Tue, 08 May 2018 10:17:01 GMT
+
+### Minor changes
+
+- Adds a Fluent theme experiment
 
 ## 5.37.0
 Fri, 04 May 2018 15:58:38 GMT
