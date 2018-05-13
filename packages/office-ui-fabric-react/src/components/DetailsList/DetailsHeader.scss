@@ -123,6 +123,21 @@ $isPaddedMargin: 24px;
   @include margin-left(-16px);
 }
 
+.dropHint {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  top: 100;
+  overflow: hidden;
+  height: inherit;
+  width: 2px;
+  z-index:100;
+
+  &.isDropping {
+    background: rgb(82, 79, 79);
+  }
+}
+
 .collapseButton {
   text-align: center;
   transform: rotate(-180deg);

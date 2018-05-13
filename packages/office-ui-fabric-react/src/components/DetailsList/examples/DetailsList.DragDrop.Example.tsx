@@ -51,7 +51,7 @@ export class DetailsListDragDropExample extends React.Component<
     return (
       <div className='detailsListDragDropExample'>
         <div>{selectionDetails}</div>
-        {/* <MarqueeSelection selection={ this._selection }>*/}
+        {/* <MarqueeSelection selection={ this._selection }> */}
         <DetailsList
           setKey='items'
           items={items}
