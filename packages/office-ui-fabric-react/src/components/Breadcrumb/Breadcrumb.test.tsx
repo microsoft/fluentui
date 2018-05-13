@@ -1,7 +1,5 @@
 import * as React from 'react';
-
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
 
@@ -76,6 +74,34 @@ describe('Breadcrumb', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+
+    it('renders breadcumb correctly 5', () => {
+      // With maxDisplayedItems and overflowIndex
+      const component = renderer.create(
+        <Breadcrumb
+          items={ items }
+          maxDisplayedItems={ 1 }
+          overflowIndex={ 1 }
+        />
+      );
+
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('renders breadcumb correctly 6', () => {
+      // With maxDisplayedItems and overflowIndex as 0
+      const component = renderer.create(
+        <Breadcrumb
+          items={ items }
+          maxDisplayedItems={ 0 }
+          overflowIndex={ 0 }
+        />
+      );
+
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   it('can call the callback when an item is clicked', () => {
@@ -88,16 +114,14 @@ describe('Breadcrumb', () => {
       { text: 'TestText', key: 'TestKey', onClick: clickCallback }
     ];
 
-    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const wrapper = mount(
       <Breadcrumb
         items={ items }
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
+    wrapper.find('.ms-Breadcrumb-itemLink').first().simulate('click');
 
-    ReactTestUtils.Simulate.click(itemLink!);
     expect(callbackValue).toEqual('TestKey');
   });
 
@@ -110,17 +134,14 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
-    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const wrapper = mount(
       <Breadcrumb
         items={ items }
         maxDisplayedItems={ 2 }
       />
     );
 
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
-
-    expect(itemLink[0].textContent).toEqual('TestText3');
+    expect(wrapper.find('.ms-Breadcrumb-item').first().text()).toEqual('TestText3');
   });
 
 });

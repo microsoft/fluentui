@@ -2,12 +2,39 @@ import {
   getFocusStyle,
   hiddenContentStyle,
   HighContrastSelector,
+  getGlobalClassNames,
 } from '../../Styling';
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
+
+const GlobalClassNames = {
+  root: 'ms-RatingStar-root',
+  rootIsSmall: 'ms-RatingStar-root--small',
+  rootIsLarge: 'ms-RatingStar-root--large',
+  ratingStar: 'ms-RatingStar-container',
+  ratingStarBack: 'ms-RatingStar-back',
+  ratingStarFront: 'ms-RatingStar-front',
+  ratingButton: 'ms-Rating-button',
+  ratingStarIsSmall: 'ms-Rating--small',
+  ratingStartIsLarge: 'ms-Rating--large',
+  labelText: 'ms-Rating-labelText',
+  ratingFocusZone: 'ms-Rating-focuszone',
+};
+
+function _getColorWithHighContrast(color: string, highContrastColor: string) {
+  return {
+    color: color,
+    selectors: {
+      [HighContrastSelector]: {
+        color: highContrastColor
+      }
+    }
+  };
+}
 
 export function getStyles(props: IRatingStyleProps): IRatingStyles {
   const {
     disabled,
+    readOnly,
     theme
   } = props;
 
@@ -16,35 +43,62 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     palette
   } = theme;
 
-  const ratingSmallIconSize = '16px';
-  const ratingLargeIconSize = '20px';
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const ratingSmallIconSize = 16;
+  const ratingLargeIconSize = 20;
+  const ratingPadding = 3;
+
+  const ratingStarUncheckedColor = palette.neutralTertiary;
+  const ratingStarUncheckedHoverColor = palette.themePrimary;
+  const ratingStarUncheckedHoverSelectedColor = palette.themeDark;
+  const ratingStarCheckedColor = semanticColors.bodyTextChecked;
+  const ratingStarDisabledColor = semanticColors.disabledBodyText;
 
   return {
+    root: [
+      classNames.root,
+      !disabled && !readOnly && {
+        selectors: {
+          // This is part 1 of highlighting all stars up to the one the user is hovering over
+          '&:hover': {
+            selectors: {
+              '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight'),
+            }
+          }
+        }
+      }
+    ],
+    rootIsSmall: [
+      classNames.rootIsSmall,
+      {
+        height: ratingSmallIconSize + (ratingPadding * 2) + 'px'
+      }
+    ],
+    rootIsLarge: [
+      classNames.rootIsLarge,
+      {
+        height: ratingLargeIconSize + (ratingPadding * 2) + 'px'
+      }
+    ],
     ratingStar: [
-      'ms-RatingStar-container',
+      classNames.ratingStar,
       {
         display: 'inline-block',
         position: 'relative'
       }
     ],
     ratingStarBack: [
-      'ms-RatingStar-back',
+      classNames.ratingStarBack,
       {
         // TODO: Use a proper semantic color for this
-        color: palette.neutralTertiary,
+        color: ratingStarUncheckedColor,
         width: '100%'
       },
-      disabled && {
-        color: semanticColors.disabledBodyText,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'GrayText'
-          }
-        }
-      }
+      disabled && _getColorWithHighContrast(ratingStarDisabledColor, 'GrayText')
     ],
     ratingStarFront: [
-      'ms-RatingStar-front',
+      classNames.ratingStarFront,
       {
         position: 'absolute',
         height: '100 %',
@@ -53,21 +107,16 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         textAlign: 'center',
         verticalAlign: 'middle',
         overflow: 'hidden',
-        color: semanticColors.bodyTextChecked,
-        selectors: {
-          [HighContrastSelector]: {
-            'color': 'Highlight'
-          }
-        }
-      }
+      },
+      _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
     ],
     ratingButton: [
       getFocusStyle(theme, 0),
-      'ms-Rating-button',
+      classNames.ratingButton,
       {
-        background: 'none',
-        margin: '3px 3px 0px 0px',
-        padding: '0px',
+        backgroundColor: 'transparent',
+        padding: `${ratingPadding}px ${ratingPadding}px ${ratingPadding}px 0px`,
+        margin: '0px',
         border: 'none',
         cursor: 'pointer',
         selectors: {
@@ -79,30 +128,51 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
           }
         }
       },
+      !disabled && !readOnly && {
+        selectors: {
+          // This is part 2 of highlighting all stars up to the one the user is hovering over
+          '&:hover ~ .ms-Rating-button': {
+            selectors: {
+              '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
+              '.ms-RatingStar-front': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
+            }
+          },
+          '&:hover': {
+            selectors: {
+              '.ms-RatingStar-back': {
+                color: ratingStarUncheckedHoverColor
+              },
+              '.ms-RatingStar-front': {
+                color: ratingStarUncheckedHoverSelectedColor
+              }
+            }
+          }
+        }
+      },
       disabled && {
         cursor: 'default'
       },
     ],
-    rootIsSmall: [
-      'ms-Rating--small',
+    ratingStarIsSmall: [
+      classNames.ratingStarIsSmall,
       {
-        fontSize: ratingSmallIconSize,
-        lineHeight: ratingSmallIconSize
+        fontSize: ratingSmallIconSize + 'px',
+        lineHeight: ratingSmallIconSize + 'px'
       }
     ],
-    rootIsLarge: [
-      'ms-Rating--large',
+    ratingStarIsLarge: [
+      classNames.ratingStartIsLarge,
       {
-        fontSize: ratingLargeIconSize,
-        lineHeight: ratingLargeIconSize
+        fontSize: ratingLargeIconSize + 'px',
+        lineHeight: ratingLargeIconSize + 'px'
       }
     ],
     labelText: [
-      'ms-Rating-labelText',
+      classNames.labelText,
       hiddenContentStyle
     ],
     ratingFocusZone: [
-      'ms-Rating-focuszone',
+      classNames.ratingFocusZone,
       {
         display: 'inline-block',
         paddingBottom: '1px'

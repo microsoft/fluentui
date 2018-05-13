@@ -6,6 +6,7 @@ import {
   ITheme
 } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
+import { IKeytipProps } from '../../Keytip';
 
 export interface ILink {
   /** Sets focus to the link. */
@@ -37,7 +38,12 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
   /**
    * A component that should be used as the root element of the link returned from the Link component.
    */
-  renderAs?: string | React.ComponentClass | React.StatelessComponent;
+  as?: string | React.ComponentClass | React.StatelessComponent;
+
+  /**
+   * Optional keytip for this Link
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface ILinkStyleProps {

@@ -7,7 +7,7 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class ToggleComponentPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div ref='pageElement' className={ pageStyles.basePage }>
+      <div className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='Toggle' backgroundColor='#038387'
             links={

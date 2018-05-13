@@ -1,13 +1,12 @@
 ﻿/* tslint:disable */
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
-import { Icon } from 'office-ui-fabric-react/lib/components/Icon';
-import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
-import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import {
   INavProps,
+  INavState,
   INavLink,
+  INavLinkGroup,
   INavStyleProps,
   INavStyles
 } from './Nav.types';
@@ -19,6 +18,7 @@ import {
   styled,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
+import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
@@ -82,7 +82,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    let rightIconName = null;
+    let rightIconName = undefined;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
       rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
@@ -93,63 +93,38 @@ class NavComponent extends NavBase {
     }
 
     // show nav icon for the first level only
-    const leftIconName = nestingLevel === 0 ? link.icon : null;
-
-    let linkTextStyle: React.CSSProperties = {};
-    if (!rightIconName && !leftIconName) {
-      linkTextStyle.width = '100%';
-    }
-    else if (!leftIconName || !rightIconName) {
-      linkTextStyle.width = 'calc(100% - 50px)';
-    }
-    else {
-      // leave 50px to the icon on the right
-      linkTextStyle.width = 'calc(100% - 100px)';
-    }
-
+    const leftIconName = nestingLevel === 0 ? link.icon : undefined;
     const isLinkSelected = this.isLinkSelected(link, false /* includeChildren */);
     const isChildLinkSelected = this.isChildLinkSelected(link);
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
-
-    const { getStyles } = this.props;
+    const {
+      getStyles,
+      showMore,
+      onShowMoreLinkClicked,
+      dataHint
+    } = this.props;
     const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const linkText = this.getLinkText(link, showMore);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
-      <a
-        href={ link.url ? link.url : undefined }
-        target={ link.target ? link.target : undefined }
-        key={ link.key || linkIndex }
-        onClick={ this._onLinkClicked.bind(this, link) }
-        data-hint='ReactLeftNav'
-        data-value={ link.name }
-        aria-label={ link.name }
-        role='menu'>
-        <div className={ classNames.navItemRoot } aria-hidden='true'>
-          {
-
-            leftIconName ?
-              <Icon
-                className={ classNames.navItemIconColumn }
-                iconName={ leftIconName }
-              />
-              : null
-          }
-          {
-            <div className={ classNames.navItemNameColumn } style={ linkTextStyle }>
-              { link.name }
-            </div>
-          }
-          {
-            rightIconName ?
-              <Icon
-                className={ classNames.navItemIconColumn }
-                iconName={ rightIconName }
-              />
-              : null
-          }
-        </div>
-      </a>
+      <NavLink
+        id={ link.key }
+        content={ linkText }
+        href={ link.url }
+        target={ link.target }
+        onClick={ onClickHandler }
+        dataHint={ dataHint }
+        dataValue={ link.key }
+        ariaLabel={ linkText }
+        role="menu"
+        rootClassName={ classNames.navItemRoot }
+        leftIconName={ leftIconName }
+        rightIconName={ rightIconName }
+        textClassName={ classNames.navItemNameColumn }
+        iconClassName={ classNames.navItemIconColumn }>
+      </NavLink>
     );
   }
 
@@ -158,11 +133,13 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    const linkText = this.getLinkText(link, this.props.showMore);
+
     return (
       <li
         role='listitem'
         key={ link.key || linkIndex }
-        title={ link.name }>
+        title={ linkText }>
         {
           this._renderCompositeLink(link, linkIndex, nestingLevel)
         }
@@ -187,11 +164,22 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    const {
+      enableCustomization,
+      showMore
+    } = this.props;
+
     return (
       <ul role='list'>
         {
           links.map((link: INavLink, linkIndex: number) => {
-            return this._renderLink(link, linkIndex, nestingLevel);
+            if (enableCustomization && link.isHidden && !showMore) {
+              // "Show more" overrides isHidden property
+              return null;
+            }
+            else {
+              return this._renderLink(link, linkIndex, nestingLevel);
+            }
           })
         }
       </ul>
@@ -203,21 +191,32 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const { getStyles } = this.props;
+    const {
+      getStyles,
+      enableCustomization
+    } = this.props;
+
+    // skip customization group if customization is not enabled
+    if (!enableCustomization && group.isCustomizationGroup) {
+      return null;
+    }
+
     const classNames = getClassNames(getStyles!, {});
 
     return (
       <div key={ groupIndex }>
         {
-          groupIndex > 0 && group.name ?
+          groupIndex > 0 ?
             <div className={ classNames.navGroupSeparatorRoot }>
               <div className={ classNames.navGroupSeparatorHrLine }>
                 {
-                  <span className={ classNames.navGroupSeparatorGroupName }>
-                    {
-                      group.name
-                    }
-                  </span>
+                  group.name ?
+                    <span className={ classNames.navGroupSeparatorGroupName }>
+                      {
+                        group.name
+                      }
+                    </span>
+                    : null
                 }
               </div>
             </div> : null

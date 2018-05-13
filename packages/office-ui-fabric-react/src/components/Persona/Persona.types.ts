@@ -13,7 +13,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Primary text to display, usually the name of the person.
    */
-  primaryText?: string;
+  text?: string;
 
   /**
    * Decides the size of the control.
@@ -50,7 +50,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
 
   /**
    * The user's initials to display in the image area when there is no image.
-   * @defaultvalue [Derived from primaryText]
+   * @defaultvalue [Derived from text]
    */
   imageInitials?: string;
 
@@ -73,7 +73,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
 
   /**
    * The background color when the user's initials are displayed.
-   * @defaultvalue [Derived from primaryText]
+   * @defaultvalue [Derived from text]
    */
   initialsColor?: PersonaInitialsColor | string;
 
@@ -109,6 +109,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   showSecondaryText?: boolean;
 
   /**
+   * If true, show the special coin for unknown persona.
+   * It has '?' in place of initials, with static font and background colors
+   */
+  showUnknownPersonaCoin?: boolean;
+
+  /**
    * Optional custom persona coin size in pixel.
    */
   coinSize?: number;
@@ -122,6 +128,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
+
+  /**
+   * Primary text to display, usually the name of the person.
+   * @deprecated Use 'text' instead.
+   */
+  primaryText?: string;
 }
 
 export interface IPersonaProps extends IPersonaSharedProps {
@@ -240,6 +252,11 @@ export interface IPersonaCoinStyleProps {
    * @defaultvalue PersonaSize.size48
    */
   size?: PersonaSize;
+
+  /**
+   * Decides whether to display coin for unknown persona
+   */
+  showUnknownPersonaCoin?: boolean;
 }
 
 export interface IPersonaCoinStyles {

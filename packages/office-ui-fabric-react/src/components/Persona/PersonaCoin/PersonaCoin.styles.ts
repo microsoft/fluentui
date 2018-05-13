@@ -7,11 +7,28 @@ import {
   HighContrastSelector,
   FontSizes,
   FontWeights,
+  getGlobalClassNames,
 } from '../../../Styling';
 import {
   personaSize,
   sizeBoolean,
 } from '../PersonaConsts';
+
+const GlobalClassNames = {
+  coin: 'ms-Persona-coin',
+  imageArea: 'ms-Persona-imageArea',
+  image: 'ms-Persona-image',
+  initials: 'ms-Persona-initials',
+  size10: 'ms-Persona--size10',
+  size16: 'ms-Persona--size16',
+  size24: 'ms-Persona--size24',
+  size28: 'ms-Persona--size28',
+  size32: 'ms-Persona--size32',
+  size40: 'ms-Persona--size40',
+  size48: 'ms-Persona--size48',
+  size72: 'ms-Persona--size72',
+  size100: 'ms-Persona--size100',
+};
 
 export const getStyles = (
   props: IPersonaCoinStyleProps
@@ -25,18 +42,24 @@ export const getStyles = (
 
   const size = sizeBoolean(props.size as PersonaSize);
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  // Static colors used when displaying 'unknown persona' coin
+  const unknownPersonaBackgroundColor = palette.neutralLight;
+  const unknownPersonaFontColor = palette.redDark;
+
   return ({
     coin: [
-      'ms-Persona-coin',
-      size.isSize10 && 'ms-Persona--size10',
-      size.isSize16 && 'ms-Persona--size16',
-      size.isSize24 && 'ms-Persona--size24',
-      size.isSize28 && 'ms-Persona--size28',
-      size.isSize32 && 'ms-Persona--size32',
-      size.isSize40 && 'ms-Persona--size40',
-      size.isSize48 && 'ms-Persona--size48',
-      size.isSize72 && 'ms-Persona--size72',
-      size.isSize100 && 'ms-Persona--size100',
+      classNames.coin,
+      size.isSize10 && classNames.size10,
+      size.isSize16 && classNames.size16,
+      size.isSize24 && classNames.size24,
+      size.isSize28 && classNames.size28,
+      size.isSize32 && classNames.size32,
+      size.isSize40 && classNames.size40,
+      size.isSize48 && classNames.size48,
+      size.isSize72 && classNames.size72,
+      size.isSize100 && classNames.size100,
       className
     ],
 
@@ -49,7 +72,7 @@ export const getStyles = (
     },
 
     imageArea: [
-      'ms-Persona-imageArea',
+      classNames.imageArea,
       {
         position: 'relative',
         textAlign: 'center',
@@ -102,7 +125,7 @@ export const getStyles = (
     ],
 
     image: [
-      'ms-Persona-image',
+      classNames.image,
       {
         marginRight: '10px',
         position: 'absolute',
@@ -159,10 +182,10 @@ export const getStyles = (
     ],
 
     initials: [
-      'ms-Persona-initials',
+      classNames.initials,
       {
         borderRadius: '50%',
-        color: palette.white,
+        color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
         fontSize: FontSizes.large,
         fontWeight: FontWeights.regular,
         lineHeight: '46px',
@@ -177,6 +200,10 @@ export const getStyles = (
             backgroundColor: 'Window !important',
           }
         }
+      },
+
+      props.showUnknownPersonaCoin && {
+        backgroundColor: unknownPersonaBackgroundColor
       },
 
       (size.isSize16 || size.isSize24 || size.isSize28) && {

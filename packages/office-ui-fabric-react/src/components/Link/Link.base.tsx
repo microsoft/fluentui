@@ -11,6 +11,7 @@ import {
   ILinkStyleProps,
   ILinkStyles,
 } from './Link.types';
+import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
@@ -19,14 +20,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
   public render(): JSX.Element {
-    const {
-      disabled,
-      children,
-      className,
-      href,
-      theme,
-      getStyles,
-    } = this.props;
+    const { disabled, children, className, href, theme, getStyles, keytipProps } = this.props;
 
     const classNames = getClassNames(getStyles!, {
       className,
@@ -38,15 +32,24 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     const RootType = this._getRootType(this.props);
 
     return (
-      <RootType
-        { ...this._removeInvalidPropsForRootType(RootType, this.props) }
-        className={ classNames.root }
-        onClick={ this._onClick }
-        ref={ this._link }
-        aria-disabled={ disabled }
+      <KeytipData
+        keytipProps={ keytipProps }
+        ariaDescribedBy={ (this.props as { 'aria-describedby': string })['aria-describedby'] }
+        disabled={ disabled }
       >
-        { children }
-      </RootType>
+        { (keytipAttributes: any): JSX.Element => (
+          <RootType
+            { ...keytipAttributes }
+            { ...this._removeInvalidPropsForRootType(RootType, this.props) }
+            className={ classNames.root }
+            onClick={ this._onClick }
+            ref={ this._link }
+            aria-disabled={ disabled }
+          >
+            { children }
+          </RootType>
+        ) }
+      </KeytipData>
     );
   }
 
@@ -67,12 +70,12 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   }
 
   private _removeInvalidPropsForRootType(RootType: string | React.ComponentClass | React.StatelessComponent, props: ILinkProps): Partial<ILinkProps> {
-    // Deconstruct the props so we remove props like `renderAs`, `theme` and `getStyles`
+    // Deconstruct the props so we remove props like `as`, `theme` and `getStyles`
     // as those will always be removed. We also take some props that are optional
     // based on the RootType.
     const {
       children,
-      renderAs,
+      as,
       disabled,
       target,
       href,
@@ -101,8 +104,8 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   }
 
   private _getRootType(props: ILinkProps): string | React.ComponentClass | React.StatelessComponent {
-    if (props.renderAs) {
-      return props.renderAs;
+    if (props.as) {
+      return props.as;
     }
 
     if (props.href) {

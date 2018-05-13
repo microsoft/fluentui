@@ -9,9 +9,15 @@ import {
   divProperties,
   getNativeProps,
   IRenderFunction,
-  createRef
+  createRef,
 } from '../../Utilities';
-import { IList, IListProps, IPage, IPageProps } from './List.types';
+import {
+  IList,
+  IListProps,
+  IPage,
+  IPageProps,
+  ScrollToMode
+} from './List.types';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -185,8 +191,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    *
    * @param index Index of item to scroll to
    * @param measureItem Optional callback to measure the height of an individual item
+   * @param scrollToMode Optional defines where in the window the item should be positioned to when scrolling
    */
-  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode: ScrollToMode = ScrollToMode.auto): void {
     const startIndex = this.props.startIndex as number;
     const renderCount = this._getRenderCount();
     const endIndex = startIndex + renderCount;
@@ -207,6 +214,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in just
         // the given item, otherwise we'll only bring the page into view
         if (measureItem) {
+          const scrollRect = _measureScrollRect(this._scrollElement);
+          const scrollWindow = {
+            top: this._scrollElement.scrollTop,
+            bottom: this._scrollElement.scrollTop + scrollRect.height
+          };
+
           // Adjust for actual item position within page
           const itemPositionWithinPage = index - itemIndex;
           for (let itemIndexInPage = 0; itemIndexInPage < itemPositionWithinPage; ++itemIndexInPage) {
@@ -214,11 +227,22 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           }
           const scrollBottom = scrollTop + measureItem(index);
 
-          const scrollRect = _measureScrollRect(this._scrollElement);
-          const scrollWindow = {
-            top: this._scrollElement.scrollTop,
-            bottom: this._scrollElement.scrollTop + scrollRect.height
-          };
+          // If scrollToMode is set to something other than auto, we always want to
+          // scroll the item into a specific position on the page.
+          switch (scrollToMode) {
+            case ScrollToMode.top:
+              this._scrollElement.scrollTop = scrollTop;
+              return;
+            case ScrollToMode.bottom:
+              this._scrollElement.scrollTop = scrollBottom - scrollRect.height;
+              return;
+            case ScrollToMode.center:
+              this._scrollElement.scrollTop = (scrollTop + scrollBottom - scrollRect.height) / 2;
+              return;
+            case ScrollToMode.auto:
+            default:
+              break;
+          }
 
           const itemIsFullyVisible = scrollTop >= scrollWindow.top && scrollBottom <= scrollWindow.bottom;
           if (itemIsFullyVisible) {
@@ -230,27 +254,27 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           const itemIsPartiallyBelow = scrollBottom > scrollWindow.bottom;
 
           if (itemIsPartiallyAbove) {
-            // We will just scroll to 'scrollTop'
-            //  ______
-            // |Item  |   - scrollTop
-            // |  ____|_
-            // |_|____| | - scrollWindow.top
-            //   |      |
-            //   |______|
+            //  We will just scroll to 'scrollTop'
+            //  .------.   - scrollTop
+            //  |Item  |
+            //  | .----|-. - scrollWindow.top
+            //  '------' |
+            //    |      |
+            //    '------'
           } else if (itemIsPartiallyBelow) {
-            // Adjust scrollTop position to just bring in the element
-            //  ______   - scrollTop
+            //  Adjust scrollTop position to just bring in the element
+            // .------.  - scrollTop
             // |      |
-            // |  ____|_  - scrollWindow.bottom
-            // |_|____| |
+            // | .------.
+            // '-|----' | - scrollWindow.bottom
             //   | Item |
-            //   |______| - scrollBottom
-            scrollTop = this._scrollElement.scrollTop + (scrollBottom - scrollWindow.bottom);
+            //   '------' - scrollBottom
+            scrollTop = scrollBottom - scrollRect.height;
           }
         }
 
         this._scrollElement.scrollTop = scrollTop;
-        break;
+        return;
       }
 
       scrollTop += pageHeight;
@@ -350,7 +374,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         role={ (role === undefined) ? 'list' : role }
         className={ css('ms-List', className) }
       >
-        <div ref={ this._surface } className={ css('ms-List-surface') } role='presentation'>
+        <div
+          ref={ this._surface }
+          className={ css('ms-List-surface') }
+          role='presentation'
+        >
           { pageElements }
         </div>
       </div>

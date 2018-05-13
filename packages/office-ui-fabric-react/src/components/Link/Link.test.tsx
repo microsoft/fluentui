@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom/server';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { Customizer } from '../../Utilities';
+import { createTheme } from '../../Styling';
 
 import { Link } from './Link';
 
@@ -32,7 +34,7 @@ describe('Link', () => {
   });
 
   it('renders Link with "as=div" a div element', () => {
-    const component = renderer.create(<Link renderAs='div' className='customClassName'>I'm a div</Link>);
+    const component = renderer.create(<Link as='div' className='customClassName'>I'm a div</Link>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -41,8 +43,18 @@ describe('Link', () => {
     class Route extends React.Component {
       public render() { return null; }
     }
-    const component = mount(<Link renderAs={ Route } className='customClassName'>I'm a Route</Link>);
 
-    expect(component.find(Route).props()).toMatchSnapshot();
+    const component = renderer.create(<Link as={ Route } className='customClassName'>I'm a Route</Link>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('can have the global styles for Link component be disabled', () => {
+    const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
+
+    expect(ReactDOM.renderToStaticMarkup(
+      <Customizer settings={ { theme: NoClassNamesTheme } }>
+        <Link href='helloworld.html'>My Link</Link>
+      </Customizer >
+    ).indexOf('ms-Link')).toEqual(-1);
   });
 });

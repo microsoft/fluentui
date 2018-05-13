@@ -35,4 +35,10 @@ describe('SearchBox', () => {
 
     expect(component.find('input').prop('value')).toEqual('');
   });
+
+  it('renders SearchBox without animation correctly', () => {
+    const component = renderer.create(<SearchBox disableAnimation={ true } />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

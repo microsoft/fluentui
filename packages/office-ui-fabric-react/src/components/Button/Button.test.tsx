@@ -29,6 +29,16 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a DefaultButton with a keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const component = renderer.create(<DefaultButton text='Button' keytipProps={ keytipProps } />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders CommandBarButton correctly', () => {
     const component = renderer.create(
       <CommandBarButton
@@ -381,6 +391,40 @@ describe('Button', () => {
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
+      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+    });
+
+    it('Touch Start on primary button of SplitButton expands menu', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          split={ true }
+          onClick={ alertClicked }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const primaryButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
+
+      // in a normal scenario, when we do a touchstart we would also cause a
+      // click event to fire. This doesn't happen in the simulator so we're
+      // manually adding this in.
+      ReactTestUtils.Simulate.touchStart(primaryButtonDOM);
+      ReactTestUtils.Simulate.click(primaryButtonDOM);
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
