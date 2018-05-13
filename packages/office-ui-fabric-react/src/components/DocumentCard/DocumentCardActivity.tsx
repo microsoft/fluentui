@@ -44,7 +44,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
       <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>
         <PersonaCoin
           imageInitials={ person.initials }
-          primaryText={ person.name }
+          text={ person.name }
           imageUrl={ person.profileImageSrc }
           initialsColor={ person.initialsColor }
           allowPhoneInitials={ person.allowPhoneInitials }

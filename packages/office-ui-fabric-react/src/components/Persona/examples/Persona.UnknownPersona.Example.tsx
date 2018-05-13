@@ -10,18 +10,18 @@ export class UnknownPersonaExample extends React.Component<any, any> {
     return (
       <div className='ms-PersonaExample'>
         <Persona
-          showUnknownPersonaCoin={true}
-          primaryText='Maor Sharett'
+          showUnknownPersonaCoin={ true }
+          text='Maor Sharett'
           secondaryText='Designer'
-          size={PersonaSize.size40}
+          size={ PersonaSize.size40 }
         />
 
         <Persona
-          showUnknownPersonaCoin={true}
-          primaryText='Kat Larrson'
+          showUnknownPersonaCoin={ true }
+          text='Kat Larrson'
           secondaryText='Designer'
           tertiaryText='Unverified sender'
-          size={PersonaSize.size72}
+          size={ PersonaSize.size72 }
         />
       </div>
     );
