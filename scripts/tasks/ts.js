@@ -6,12 +6,6 @@ module.exports = function (options) {
   const srcPath = path.resolve(process.cwd(), 'src');
   const extraParams = '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
 
-  // Flag to keep track of if we already logged errors.
-  // Since we run the ts builds in parallel, we do not want
-  // to flood the user with the same error messages for
-  // each process.
-  let hasLoggedErrors = false;
-
   // We wait for all compilations to be done to report success
   return Promise.all([
     runTscFor('lib', 'commonjs', extraParams),
@@ -19,6 +13,11 @@ module.exports = function (options) {
     options.isProduction ? runTscFor('lib-amd', 'amd', extraParams) : Promise.resolve()
   ]);
 
+  // Flag to keep track of if we already logged errors.
+  // Since we run the ts builds in parallel, we do not want
+  // to flood the user with the same error messages for
+  // each process.
+  let hasLoggedErrors = false;
   function logFirstStdOutAndRethrow(process) {
     if (!hasLoggedErrors) {
       hasLoggedErrors = true;
