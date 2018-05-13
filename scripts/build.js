@@ -11,18 +11,33 @@ if (!package) {
 const packageName = package.name;
 const isProduction = process.argv.indexOf('--production') > -1;
 
+/**
+ * The taskMap maps names to task functions from the /tasks folder.
+ * This makes it easy to get tasks by name.
+ *
+ * The taskList is a list of lists containing tasks to run. Each entry
+ * the list is run sequentially, but the tasks in the inner lists
+ * are run in parallel.
+ *
+ * ```
+ * [
+ *  // All the following will run in sequence
+ *  ['sass'],
+ *  ['copy'],
+ *  ['webpack, 'tslint'] // <-- These two will run in parallel after 'copy' is complete
+ * ]
+ * ```
+ */
 const { taskList, taskMap } = getTaskListAndTaskMap(process);
-
-let promise = Promise.resolve();
+const buildStartTime = new Date().getTime();
 let hasFailures = false;
-let buildStartTime = new Date().getTime();
 
-taskList.forEach(tasks => {
-  // Run the tasks in parallel
-  promise = promise.then(() => Promise.all(tasks.map((task) => runTask(task))));
-});
+const tasksComplete = taskList.reduce((promise, tasks) => {
+  // Run the `tasks` in parallel and wait for all of them them to complete using Promise.all
+  return promise.then(() => Promise.all(tasks.map((task) => runTask(task))));
+}, Promise.resolve());
 
-promise.then(() => {
+tasksComplete.then(() => {
   if (hasFailures) {
     process.exitCode = 1;
   }
