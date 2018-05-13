@@ -170,6 +170,13 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     });
   }
 
+  public shouldComponentUpdate(
+    nextProps: IDetailsRowProps,
+    nextState: IDetailsRowState
+  ): boolean {
+    return !shallowCompare(this.props, nextProps);
+  }
+
   public render(): JSX.Element {
     const {
       className,
