@@ -45,8 +45,8 @@ describe('Link', () => {
     }
 
     const component = renderer.create(<Link as={ Route } className='customClassName'>I'm a Route</Link>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const testInstance = component.root;
+    expect(() => testInstance.findByType(Route)).not.toThrow();
   });
   it('can have the global styles for Link component be disabled', () => {
     const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });

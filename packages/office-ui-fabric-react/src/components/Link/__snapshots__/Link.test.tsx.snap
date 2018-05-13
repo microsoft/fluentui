@@ -42,62 +42,6 @@ exports[`Link renders Link correctly 1`] = `
 </a>
 `;
 
-exports[`Link renders Link with "as=Route" a Route element 1`] = `
-Object {
-  "aria-disabled": undefined,
-  "children": "I'm a Route",
-  "className": 
-    ms-Link
-    customClassName
-    {
-      background: none;
-      border: none;
-      color: #0078d4;
-      cursor: pointer;
-      display: inline;
-      font-size: inherit;
-      margin-bottom: 0px;
-      margin-left: 0px;
-      margin-right: 0px;
-      margin-top: 0px;
-      outline: transparent;
-      overflow: inherit;
-      padding-bottom: 0px;
-      padding-left: 0px;
-      padding-right: 0px;
-      padding-top: 0px;
-      position: relative;
-      text-align: left;
-      text-overflow: inherit;
-      user-select: text;
-    }
-    &::-moz-focus-inner {
-      border: 0;
-    }
-    .ms-Fabric--isFocusVisible &:focus:after {
-      border: 1px solid #ffffff;
-      bottom: 1px;
-      content: "";
-      left: 1px;
-      outline: 1px solid #666666;
-      position: absolute;
-      right: 1px;
-      top: 1px;
-      z-index: 1;
-    }
-    &:active, &:hover, &:active:hover {
-      color: #004578;
-    }
-    &:focus {
-      color: #0078d4;
-    },
-  "disabled": undefined,
-  "href": undefined,
-  "onClick": [Function],
-  "target": undefined,
-}
-`;
-
 exports[`Link renders Link with "as=div" a div element 1`] = `
 <div
   aria-disabled={undefined}
@@ -105,6 +49,7 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       ms-Link
       customClassName
       {
+        background-color: transparent;
         background: none;
         border: none;
         color: #0078d4;
@@ -142,6 +87,9 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
+      }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
       }
       &:focus {
         color: #0078d4;
