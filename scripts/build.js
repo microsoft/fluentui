@@ -13,8 +13,6 @@ const isProduction = process.argv.indexOf('--production') > -1;
 
 const { taskList, taskMap } = getTaskListAndTaskMap(process);
 
-console.log('taskList', taskList);
-
 let promise = Promise.resolve();
 let hasFailures = false;
 let buildStartTime = new Date().getTime();
