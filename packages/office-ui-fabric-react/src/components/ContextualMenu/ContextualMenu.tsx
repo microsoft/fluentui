@@ -274,7 +274,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           hidden={ this.props.hidden }
         >
           <div
-            role={ shouldFocusOnContainer ? 'menu' : undefined }
+            role={ 'menu' }
             aria-label={ ariaLabel }
             aria-labelledby={ labelElementId }
             style={ contextMenuStyle }
@@ -807,14 +807,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    let openKey;
-    if (item.split) {
-      openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
-    } else {
-      openKey = KeyCodes.enter;
-    }
+    const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-    if (ev.which === openKey && !item.disabled) {
+    if ((ev.which === openKey || ev.which === KeyCodes.enter) && !item.disabled) {
       this.setState({
         expandedByMouseClick: false
       });
