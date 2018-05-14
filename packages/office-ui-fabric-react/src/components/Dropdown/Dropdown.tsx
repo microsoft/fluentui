@@ -160,7 +160,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='listbox'
-          aria-autocomplete='none'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
@@ -191,7 +190,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             }
             aria-atomic={ true }
             role='listbox'
-            aria-readonly='true'
           >
             { // If option is selected render title, otherwise render the placeholder text
               selectedOptions.length ? (
