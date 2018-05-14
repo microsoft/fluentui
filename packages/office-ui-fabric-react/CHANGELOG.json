@@ -2,6 +2,63 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.101.0",
+      "tag": "office-ui-fabric-react_v5.101.0",
+      "date": "Mon, 14 May 2018 10:14:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Pramod Chandoria <39146718+pchandoria@users.noreply.github.com>",
+            "commit": "8e91d0c8745202d23f4f230b4d503fe6ce2456b7",
+            "comment": "Breaking BaseButton Types dependency from ContextualMenu class"
+          }
+        ],
+        "minor": [
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "3cae9bf1eb6f390bbd1e701555ecebe417cb2982",
+            "comment": "Pivot: include className in props to override styles"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "00927819176c5a147ac2fa43852b90b9b69aaa7f",
+            "comment": "Add more customization hooks to ProgressIndicator"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.100.0",
+      "tag": "office-ui-fabric-react_v5.100.0",
+      "date": "Fri, 11 May 2018 04:21:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "84d82e8233895a24965dd46765d57a92e8959971",
+            "comment": "Deprecate Persona's primaryText prop and add replacement text prop."
+          },
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "bb7a1888863224b2825dc5538cb73ab5eb920b07",
+            "comment": "Puts additional alert on selected suggestions behind a prop"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f6bc8fc6b3267db36c0ce6382b6fc8bfdbd64f3d",
+            "comment": "Revert change to use React.createPortal, until event leaking issues can be resolved"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.3 <6.0.0` to `>=5.11.4 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.99.0",
       "tag": "office-ui-fabric-react_v5.99.0",
       "date": "Thu, 10 May 2018 10:27:25 GMT",
