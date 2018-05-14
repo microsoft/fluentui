@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.101.1",
+      "tag": "office-ui-fabric-react_v5.101.1",
+      "date": "Mon, 14 May 2018 19:35:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Nabeelah Ali <nabeelah@gmail.com>",
+            "commit": "c6a335ff1f2507af975a9fd687acec79c2e8f852",
+            "comment": "Ensure subMenuHoverDelay is respected by the ContextualMenu for expanding and dismissing submenus"
+          },
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "32ab5c16784fedbd36ed66d42ad6095f368e00e6",
+            "comment": "Fixes issue where expanding sub menu via arrow keys was broken, and adds aria label of \"menu\" to item when keyboarded"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.101.0",
       "tag": "office-ui-fabric-react_v5.101.0",
       "date": "Mon, 14 May 2018 10:14:42 GMT",

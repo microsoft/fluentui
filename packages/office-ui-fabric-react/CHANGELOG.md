@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 14 May 2018 10:14:42 GMT and should not be manually modified.
+This log was last generated on Mon, 14 May 2018 19:35:51 GMT and should not be manually modified.
+
+## 5.101.1
+Mon, 14 May 2018 19:35:51 GMT
+
+### Patches
+
+- Ensure subMenuHoverDelay is respected by the ContextualMenu for expanding and dismissing submenus
+- Fixes issue where expanding sub menu via arrow keys was broken, and adds aria label of "menu" to item when keyboarded
 
 ## 5.101.0
 Mon, 14 May 2018 10:14:42 GMT
