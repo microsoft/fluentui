@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 14 May 2018 19:35:51 GMT and should not be manually modified.
+This log was last generated on Mon, 14 May 2018 20:46:25 GMT and should not be manually modified.
+
+## 5.101.2
+Mon, 14 May 2018 20:46:25 GMT
+
+### Patches
+
+- fixes type comparing in Pivot
 
 ## 5.101.1
 Mon, 14 May 2018 19:35:51 GMT

@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.101.2",
+      "tag": "office-ui-fabric-react_v5.101.2",
+      "date": "Mon, 14 May 2018 20:46:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Daniel Gut <daniel.gut@solarproject.ch>",
+            "commit": "3e5cbf4319b28194d6bbde7b490c5f9d62d20d75",
+            "comment": "fixes type comparing in Pivot"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.101.1",
       "tag": "office-ui-fabric-react_v5.101.1",
       "date": "Mon, 14 May 2018 19:35:51 GMT",
