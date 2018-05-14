@@ -1,3 +1,4 @@
+import * as ReactDOM from 'react-dom';
 import { styled } from '../../Utilities';
 import {
   ILayerProps,
@@ -5,9 +6,12 @@ import {
   ILayerStyles
 } from './Layer.types';
 import { LayerBase } from './Layer.base';
+import { PortalLayerBase } from './PortalLayer.base';
 import { getStyles } from './Layer.styles';
 
+const portalSupport: boolean = !!ReactDOM.createPortal;
+
 export const Layer = styled<ILayerProps, ILayerStyleProps, ILayerStyles>(
-  LayerBase,
+  portalSupport ? PortalLayerBase : LayerBase,
   getStyles
 );

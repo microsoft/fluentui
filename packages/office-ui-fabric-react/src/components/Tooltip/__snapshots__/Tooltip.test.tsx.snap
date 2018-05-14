@@ -229,7 +229,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           onLayerWillUnmount={[Function]}
           styles={[Function]}
         >
-          <LayerBase
+          <PortalLayerBase
             onLayerDidMount={[Function]}
             onLayerWillUnmount={[Function]}
             styles={[Function]}
@@ -950,7 +950,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
                 </Fabric>
               </CustomizedFabric>
             </span>
-          </LayerBase>
+          </PortalLayerBase>
         </CustomizedLayer>
       </StyledCustomizedLayer>
     </Callout>
