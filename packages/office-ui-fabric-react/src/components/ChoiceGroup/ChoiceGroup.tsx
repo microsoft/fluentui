@@ -14,7 +14,7 @@ import {
   hasOverflow
 } from '../../Utilities';
 import * as stylesImport from './ChoiceGroup.scss';
-import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 const styles: any = stylesImport;
 
 export interface IChoiceGroupState {
