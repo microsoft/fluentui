@@ -14,6 +14,7 @@ import {
 } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IResizeGroup, ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   classNamesFunction,
   createRef
@@ -67,6 +68,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       items,
       overflowItems,
       farItems,
+      ariaLabel,
       elipisisAriaLabel,
       elipisisIconProps,
       overflowMenuProps,
@@ -98,12 +100,18 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         // tslint:disable-next-line:jsx-no-lambda
         onRenderData={ (data: ICommandBarData) => {
           return (
-            <div className={ css(this._classNames.root) }>
-
+            <FocusZone
+              className={ css(this._classNames.root) }
+              direction={ FocusZoneDirection.horizontal }
+              role={ 'menubar' }
+              aria-label={ ariaLabel }
+            >
               {/*Primary Items*/ }
               <OverflowSet
                 componentRef={ this._overflowSet }
                 className={ css(this._classNames.primarySet) }
+                doNotContainWithinFocusZone={ true }
+                role={ 'presentation' }
                 items={ data.primaryItems }
                 overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
                 onRenderItem={ this._onRenderItems }
@@ -124,11 +132,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
               {/*Secondary Items*/ }
               <OverflowSet
                 className={ css(this._classNames.secondarySet) }
+                doNotContainWithinFocusZone={ true }
+                role={ 'presentation' }
                 items={ data.farItems }
                 onRenderItem={ this._onRenderItems }
                 onRenderOverflowButton={ () => null }
               />
-            </div>
+            </FocusZone>
           );
         } }
       />

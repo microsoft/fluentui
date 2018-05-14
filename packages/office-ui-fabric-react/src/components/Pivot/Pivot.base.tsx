@@ -4,6 +4,8 @@ import {
   KeyCodes,
   css,
   getId,
+  getNativeProps,
+  divProperties,
   createRef
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
@@ -101,8 +103,10 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   public render(): JSX.Element {
+    const divProps = getNativeProps(this.props, divProperties);
+
     return (
-      <div>
+      <div { ...divProps }>
         { this._renderPivotLinks() }
         { this._renderPivotItem() }
       </div>
@@ -157,6 +161,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }
         name={ link.headerText }
+        keytipProps={ link.keytipProps }
       >
         { linkContent }
       </CommandButton>
@@ -211,7 +216,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     this._keyToTabIds = {};
 
     React.Children.map(props.children, (child: any, index: number) => {
-      if (typeof child === 'object' && child.type === PivotItem) {
+      if (typeof child === 'object' && child.type.name === PivotItem.prototype.className) {
         const pivotItem = child as PivotItem;
         const itemKey = pivotItem.props.itemKey || index.toString();
 
@@ -222,7 +227,8 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
           itemIcon: pivotItem.props.itemIcon,
-          onRenderItemLink: pivotItem.props.onRenderItemLink
+          onRenderItemLink: pivotItem.props.onRenderItemLink,
+          keytipProps: pivotItem.props.keytipProps
         });
         this._keyToIndexMapping[itemKey] = index;
         this._keyToTabIds[itemKey] = this._getTabId(itemKey, index);
