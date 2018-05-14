@@ -8,7 +8,11 @@ import { ITag } from './TagPicker';
 import * as stylesImport from './TagItem.scss';
 const styles: any = stylesImport;
 
-export const TagItem = (props: IPickerItemProps<ITag>) => (
+export interface ITagItemProps extends IPickerItemProps<ITag> {
+  enableTagFocusInDisabledPicker?: boolean;
+}
+
+export const TagItem = (props: ITagItemProps) => (
   <div
     className={ css('ms-TagItem',
       styles.root,
