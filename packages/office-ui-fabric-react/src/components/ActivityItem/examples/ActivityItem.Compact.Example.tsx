@@ -39,14 +39,14 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
         activityPersonas: [
           {
             imageInitials: 'PT',
-            primaryText: 'Robert Larsson'
+            text: 'Robert Larsson'
           },
           {
             imageUrl: TestImages.personaMale
           },
           {
             imageInitials: 'EC',
-            primaryText: 'Eduarda Costa'
+            text: 'Eduarda Costa'
           }
         ],
         isCompact: true
