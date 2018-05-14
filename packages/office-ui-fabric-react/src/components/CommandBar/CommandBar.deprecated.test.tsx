@@ -23,8 +23,8 @@ describe('CommandBar', () => {
     expect(renderer.create(
       <CommandBar
         items={ [
-          { key: '1', text: 'asdf' },
-          { key: '2', text: 'asdf' }
+          { key: '1', name: 'asdf' },
+          { key: '2', name: 'asdf' }
         ] }
         className={ 'TestClassName' }
       />
@@ -34,13 +34,13 @@ describe('CommandBar', () => {
   it('adds the correct aria-setsize and -posinset attributes to the command bar items.', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         className: 'item1',
         subMenuProps: {
           items: [
             {
-              text: 'SubmenuText 1',
+              name: 'SubmenuText 1',
               key: 'SubmenuKey1',
               className: 'SubMenuClass'
             }
@@ -48,12 +48,12 @@ describe('CommandBar', () => {
         }
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey2',
         className: 'item2',
       },
       {
-        text: 'TestText 3',
+        name: 'TestText 3',
         key: 'TestKey3',
         className: 'item3',
       },
@@ -80,13 +80,13 @@ describe('CommandBar', () => {
       <CommandBar
         items={ [
           {
-            text: 'TestText 1',
+            name: 'TestText 1',
             key: 'TestKey1',
             className: 'MenuItem',
             subMenuProps: {
               items: [
                 {
-                  text: 'SubmenuText 1',
+                  name: 'SubmenuText 1',
                   key: 'SubmenuKey1',
                   className: 'SubMenuClass'
                 }
@@ -111,12 +111,12 @@ describe('CommandBar', () => {
       <CommandBar
         items={ [
           {
-            text: 'TestText 1',
+            name: 'TestText 1',
             key: 'TestKey1',
             subMenuProps: {
               items: [
                 {
-                  text: 'SubmenuText 1',
+                  name: 'SubmenuText 1',
                   key: 'SubmenuKey1',
                   className: 'SubMenuClass'
                 }
@@ -153,12 +153,12 @@ describe('CommandBar', () => {
       <CommandBar
         items={ [
           {
-            text: 'TestText 1',
+            name: 'TestText 1',
             key: 'TestKey1',
             subMenuProps: {
               items: [
                 {
-                  text: 'SubmenuText 1',
+                  name: 'SubmenuText 1',
                   key: 'SubmenuKey1',
                   className: 'SubMenuClass'
                 }

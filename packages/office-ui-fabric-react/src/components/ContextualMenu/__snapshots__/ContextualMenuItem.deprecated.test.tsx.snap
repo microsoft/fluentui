@@ -433,7 +433,7 @@ ShallowWrapper {
           "iconName": "itemIcon",
         },
         "key": "123",
-        "text": "menuItem",
+        "name": "menuItem",
       }
     }
   />,

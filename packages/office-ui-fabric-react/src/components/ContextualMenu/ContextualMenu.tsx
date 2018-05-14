@@ -356,7 +356,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       subMenuIconClassName
     );
 
-    if (item.name === '-') {
+    if (item.text === '-' || item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;
     }
     switch (item.itemType) {
@@ -391,7 +391,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       const headerContextualMenuItem: IContextualMenuItem = {
         key: `section-${section.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        name: section.title,
+        text: section.title,
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }

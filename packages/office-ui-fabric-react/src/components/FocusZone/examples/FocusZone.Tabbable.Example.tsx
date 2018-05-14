@@ -26,12 +26,12 @@ export const FocusZoneTabbableExample = () => (
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]

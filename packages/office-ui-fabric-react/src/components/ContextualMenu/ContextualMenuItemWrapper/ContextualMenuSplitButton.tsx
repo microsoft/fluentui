@@ -111,6 +111,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
+      text: item.text || item.name,
       className: classNames.splitPrimary,
       role: item.role || defaultRole,
       canCheck: item.canCheck,

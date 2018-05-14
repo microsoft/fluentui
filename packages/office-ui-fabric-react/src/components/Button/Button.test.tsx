@@ -48,12 +48,12 @@ describe('Button', () => {
           items: [
             {
               key: 'emailMessage',
-              name: 'Email message',
+              text: 'Email message',
               iconProps: { iconName: 'Mail' }
             },
             {
               key: 'calendarEvent',
-              name: 'Calendar event',
+              text: 'Calendar event',
               iconProps: { iconName: 'Calendar' }
             }
           ]
@@ -207,7 +207,7 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuProps={ { items: [{ key: 'item', name: 'Item' }] } }>Hello</DefaultButton>
+          <DefaultButton menuProps={ { items: [{ key: 'item', text: 'Item' }] } }>Hello</DefaultButton>
         ) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
@@ -257,12 +257,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -285,12 +285,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -318,12 +318,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -349,12 +349,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -376,12 +376,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -405,12 +405,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -438,12 +438,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -469,12 +469,12 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
+                text: 'Email message',
                 iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
+                text: 'Calendar event',
                 iconProps: { iconName: 'Calendar' }
               }
             ]
@@ -517,12 +517,12 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
+                  text: 'Email message',
                   iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
+                  text: 'Calendar event',
                   iconProps: { iconName: 'Calendar' }
                 }
               ]
@@ -546,12 +546,12 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
+                  text: 'Email message',
                   iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
+                  text: 'Calendar event',
                   iconProps: { iconName: 'Calendar' }
                 }
               ]
@@ -584,12 +584,12 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
+                  text: 'Email message',
                   iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
+                  text: 'Calendar event',
                   iconProps: { iconName: 'Calendar' }
                 }
               ]
@@ -619,12 +619,12 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
+                  text: 'Email message',
                   iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
+                  text: 'Calendar event',
                   iconProps: { iconName: 'Calendar' }
                 }
               ]

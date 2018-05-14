@@ -255,7 +255,7 @@ export interface IContextualMenuItem {
   /**
    * Text description for the menu item to display
    */
-  name?: string;
+  text?: string;
 
   /**
    * Seconday description for the menu item to display
@@ -444,6 +444,12 @@ export interface IContextualMenuItem {
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
   inactive?: boolean;
+
+  /**
+   * Text description for the menu item to display
+   * @deprecated Use 'text' instead.
+   */
+  name?: string;
 }
 
 export interface IContextualMenuSection extends React.Props<ContextualMenu> {
