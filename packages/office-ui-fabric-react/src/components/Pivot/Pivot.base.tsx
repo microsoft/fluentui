@@ -4,6 +4,8 @@ import {
   KeyCodes,
   css,
   getId,
+  getNativeProps,
+  divProperties,
   createRef
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
@@ -101,8 +103,10 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   }
 
   public render(): JSX.Element {
+    const divProps = getNativeProps(this.props, divProperties);
+
     return (
-      <div>
+      <div { ...divProps }>
         { this._renderPivotLinks() }
         { this._renderPivotItem() }
       </div>
