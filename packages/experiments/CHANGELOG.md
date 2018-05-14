@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 10 May 2018 10:27:25 GMT and should not be manually modified.
+This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+
+## 5.38.2
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Fix Fluent palette color names
 
 ## 5.38.1
 Thu, 10 May 2018 10:27:25 GMT

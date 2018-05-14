@@ -94,7 +94,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
     let copyText = '';
     items.forEach((item: IExtendedPersonaProps, index: number) => {
-      copyText += item.primaryText;
+      copyText += item.text;
 
       if (index < items.length - 1) {
         copyText += ', ';
@@ -105,7 +105,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   }
 
   private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
-    switch (item.primaryText) {
+    switch (item.text) {
       case 'Group One':
         return groupOne;
       case 'Group Two':

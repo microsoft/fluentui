@@ -739,7 +739,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         });
         this._onItemSubMenuExpand(item, targetElement);
         this._enterTimerId = undefined;
-      }, NavigationIdleDelay);
+      }, timeoutDuration);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);

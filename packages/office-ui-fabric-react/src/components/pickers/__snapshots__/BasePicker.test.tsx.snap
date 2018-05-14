@@ -16,14 +16,6 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-live="assertive"
-      className={undefined}
-      id="selected-suggestion-alert"
-      role="alert"
-    >
-       
-    </div>
-    <div
       className="ms-SelectionZone"
       onClick={[Function]}
       onContextMenu={[Function]}
@@ -82,14 +74,6 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <div
-      aria-live="assertive"
-      className={undefined}
-      id="selected-suggestion-alert"
-      role="alert"
-    >
-       
-    </div>
     <div
       className="ms-SelectionZone"
       onClick={[Function]}
