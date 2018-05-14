@@ -141,7 +141,6 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
 export interface ICommandBarStyleProps {
   theme: ITheme;
   className?: string;
-  endAligned?: boolean;
 }
 
 export interface ICommandBarStyles {

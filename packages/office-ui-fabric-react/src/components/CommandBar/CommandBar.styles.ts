@@ -22,8 +22,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
         flexGrow: '1',
         display: 'flex',
         alignItems: 'stretch',
-      },
-      endAligned && { justifyContent: 'flex-end' }
+      }
     ],
     secondarySet: [
       'ms-CommandBar-secondaryCommand',
