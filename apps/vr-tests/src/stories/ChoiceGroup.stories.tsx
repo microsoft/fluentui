@@ -35,8 +35,6 @@ storiesOf('ChoiceGroup', module)
         .click('div.ms-ChoiceField:nth-of-type(1)')
         .hover('div.ms-ChoiceField:nth-of-type(1)')
         .snapshot('hover selected', { cropTo: '.testWrapper' })
-        .hover('span.ms-Label:nth-of-type(1)')
-        .snapshot('hover selected', { cropTo: '.testWrapper' })
         .end()
       }
     >
