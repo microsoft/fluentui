@@ -102,9 +102,9 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   layoutMode?: DetailsListLayoutMode;
 
   /**
-     * Controls the visibility of selection check box.
-     * @default CheckboxVisibility.onHover
-     */
+   * Controls the visibility of selection check box.
+   * @default CheckboxVisibility.onHover
+   */
   checkboxVisibility?: CheckboxVisibility;
 
   /**
