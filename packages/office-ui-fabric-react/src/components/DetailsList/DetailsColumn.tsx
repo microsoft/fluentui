@@ -154,7 +154,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (this._dragDropSubscription) {
       this._dragDropSubscription.dispose();
       delete this._dragDropSubscription;
@@ -165,7 +165,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._dragDropSubscription) {
       this._dragDropSubscription.dispose();
       delete this._dragDropSubscription;

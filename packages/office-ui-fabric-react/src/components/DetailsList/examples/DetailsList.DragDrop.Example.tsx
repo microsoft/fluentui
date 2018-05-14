@@ -149,7 +149,7 @@ export class DetailsListDragDropExample extends React.Component<
   }
 }
 
-function _buildColumns() {
+function _buildColumns(): IColumn[] {
   const columns = buildColumns(_items, true);
   return columns;
 }
