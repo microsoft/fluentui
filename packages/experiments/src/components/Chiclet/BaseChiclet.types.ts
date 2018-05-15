@@ -62,5 +62,8 @@ export interface IBaseChicletStyleProps {
 }
 
 export interface IBaseChicletStyles {
+  /**
+   * Style for the root element when fixed.
+   */
   root?: IStyle;
 }

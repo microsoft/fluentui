@@ -7,14 +7,20 @@ import {
 } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
 import { mergeStyles } from '../../Styling';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from 'office-ui-fabric-react/src/common/TestImages';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
+const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets';
+
 @customizable('ChicletCardBase', ['theme'])
 export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
+  public static defaultProps: IChicletCardProps = {
+    imageWidth: '198px',
+    imageHeight: '122px'
+  };
+
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render() {
@@ -79,16 +85,22 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
       />
     );
 
-    let icon;
-    switch (openGraphType) {
+    let src;
+    if (openGraphType != null) {
+      src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + openGraphType + `_16x1_5.svg`;
+    }
+    let icon = <img className={ mergeStyles(this._classNames.icon) } src={ src } />;
+    switch (openGraphType) { // for "hero" apps, we'll use the app icons
       case "word":
-        icon = <Icon className={ mergeStyles(this._classNames.icon) } iconName='WordDocument' />;
+      case "docx":
+        icon = <img className={ mergeStyles(this._classNames.icon) } src={ `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg` } />;
         break;
       case "powerpoint":
-        icon = <Icon className={ mergeStyles(this._classNames.icon) } iconName='PowerPointDocument' />;
+      case "pptx":
+        icon = <img className={ mergeStyles(this._classNames.icon) } src={ `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg` } />;
         break;
       case "excel":
-        icon = <Icon className={ mergeStyles(this._classNames.icon) } iconName='ExcelDocument' />;
+        icon = <img className={ mergeStyles(this._classNames.icon) } src={ `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg` } />;
         break;
     }
 
