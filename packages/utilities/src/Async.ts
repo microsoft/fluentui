@@ -16,12 +16,12 @@ export class Async {
   private _intervalIds: { [id: number]: boolean } | null = null;
   private _animationFrameIds: { [id: number]: boolean } | null = null;
   private _isDisposed: boolean;
-  private _parent: React.ReactNode | null;
+  private _parent: object | null;
   // tslint:disable-next-line:no-any
   private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: () => void;
   // tslint:disable-next-line:no-any
-  constructor(parent?: React.ReactNode, onError?: (e: any) => void) {
+  constructor(parent?: object, onError?: (e: any) => void) {
     this._isDisposed = false;
     this._parent = parent || null;
     this._onErrorHandler = onError;
