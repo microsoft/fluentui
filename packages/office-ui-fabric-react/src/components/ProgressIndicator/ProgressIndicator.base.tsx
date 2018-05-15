@@ -106,6 +106,10 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
       transition: (percentComplete !== undefined && percentComplete < ZERO_THRESHOLD) ? 'none' : undefined,
     };
 
+    const ariaValueMin = percentComplete !== undefined ? 0 : undefined;
+    const ariaValueMax = percentComplete !== undefined ? 100 : undefined;
+    const ariaValueNow = percentComplete !== undefined ? Math.floor(percentComplete!) : undefined;
+
     return (
       <div className={ classNames.itemProgress }>
         <div className={ classNames.progressTrack } />
@@ -113,9 +117,9 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
           className={ classNames.progressBar }
           style={ progressBarStyles }
           role='progressbar'
-          aria-valuemin={ 0 }
-          aria-valuemax={ 100 }
-          aria-valuenow={ Math.floor(percentComplete!) }
+          aria-valuemin={ ariaValueMin }
+          aria-valuemax={ ariaValueMax }
+          aria-valuenow={ ariaValueNow }
           aria-valuetext={ ariaValueText }
         />
       </div>
