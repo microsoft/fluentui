@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breaking BaseButton Types dependency from ContextualMenu class",
+      "comment": "Finishing the rest of the Calendar style updates",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "pramod.chandoria@hotmail.com"
+  "email": "jolore@microsoft.com"
 }
