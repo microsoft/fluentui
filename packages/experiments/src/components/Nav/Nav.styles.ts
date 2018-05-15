@@ -67,7 +67,12 @@ export const getStyles = (
         },
         a: {
           color: `${navTextColor} !important`,
-          outline: 'none'
+          outline: 'none',
+          selectors: {
+            ':focus': {
+              backgroundColor: navItemHoverColor
+            }
+          }
         }
       }
     },
@@ -153,6 +158,7 @@ export const getStyles = (
     navToggler: {
       height: navItemHeight,
       cursor: 'pointer',
+      backgroundColor: 'inherit',
       selectors: {
         ':hover': {
           backgroundColor: navItemHoverColor

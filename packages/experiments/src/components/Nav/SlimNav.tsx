@@ -1,5 +1,4 @@
-﻿/* tslint:disable */
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
+/* tslint:disable */
 import * as React from 'react';
 import {
   INavProps,
@@ -41,15 +40,13 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation'>
-          {
-            this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this._renderGroup(group, groupIndex);
-            })
-          }
-        </nav>
-      </FocusZone>
+      <nav role='navigation'>
+        {
+          this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
+            return this._renderGroup(group, groupIndex);
+          })
+        }
+      </nav>
     );
   }
 
