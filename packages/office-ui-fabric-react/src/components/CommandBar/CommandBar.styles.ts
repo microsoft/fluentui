@@ -2,7 +2,7 @@ import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 
 export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
 
-  const { className, theme, endAligned } = props;
+  const { className, theme } = props;
   const { palette } = theme;
 
   return ({
@@ -22,8 +22,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
         flexGrow: '1',
         display: 'flex',
         alignItems: 'stretch',
-      },
-      endAligned && { justifyContent: 'flex-end' }
+      }
     ],
     secondarySet: [
       'ms-CommandBar-secondaryCommand',
