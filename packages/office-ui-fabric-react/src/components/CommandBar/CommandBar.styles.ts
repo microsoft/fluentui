@@ -2,7 +2,7 @@ import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 
 export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
 
-  const { className, theme, endAligned } = props;
+  const { className, theme } = props;
   const { palette } = theme;
 
   return ({
