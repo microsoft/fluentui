@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   ExampleCard,
   IComponentDemoPageProps,
-  ComponentPage
+  ComponentPage,
+  PropertiesTableSet
 } from '@uifabric/example-app-base';
 
 import { ChicletBasicExample } from './examples/Chiclet.Basic.Example';
@@ -27,7 +28,11 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <div />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Chiclet/Chiclet.types.ts')
+            ] }
+          />
         }
         overview={
           <div />
