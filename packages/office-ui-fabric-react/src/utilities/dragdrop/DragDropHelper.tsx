@@ -373,6 +373,7 @@ export class DragDropHelper implements IDragDropHelper {
           this._events.on(activeTarget.target.root, 'mouseleave', this._onMouseLeave.bind(this, activeTarget.target));
         }
       }
+      event.stopPropagation();
     } else {
       this._dragData = null;
     }

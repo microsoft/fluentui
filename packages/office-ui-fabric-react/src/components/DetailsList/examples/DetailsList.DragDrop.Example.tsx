@@ -10,6 +10,7 @@ import {
 import { createListItems } from '@uifabric/example-app-base';
 import './DetailsList.DragDrop.Example.scss';
 import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/components/DetailsList';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/components/MarqueeSelection/MarqueeSelection';
 
 let _draggedItem: any = null;
 let _draggedIndex = -1;
@@ -51,19 +52,19 @@ export class DetailsListDragDropExample extends React.Component<
     return (
       <div className='detailsListDragDropExample'>
         <div>{selectionDetails}</div>
-        {/* <MarqueeSelection selection={ this._selection }> */}
-        <DetailsList
-          setKey='items'
-          items={items}
-          columns={columns}
-          selection={this._selection}
-          selectionPreservedOnEmptyClick={true}
-          onItemInvoked={this._onItemInvoked}
-          onRenderItemColumn={this._onRenderItemColumn}
-          dragDropEvents={this._getDragDropEvents()}
-          columnReorderOptions={this._getColumnReorderOptions()}
-        />
-        {/* </MarqueeSelection> */}
+        <MarqueeSelection selection={this._selection}>
+          <DetailsList
+            setKey='items'
+            items={items}
+            columns={columns}
+            selection={this._selection}
+            selectionPreservedOnEmptyClick={true}
+            onItemInvoked={this._onItemInvoked}
+            onRenderItemColumn={this._onRenderItemColumn}
+            dragDropEvents={this._getDragDropEvents()}
+            columnReorderOptions={this._getColumnReorderOptions()}
+          />
+        </MarqueeSelection>
       </div>
     );
   }

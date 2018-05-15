@@ -124,8 +124,19 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     this._events.on(rootElement, 'keydown', this._onRootKeyDown);
 
-    if (this.props.dragDropColumnEvents) {
-      this._dragDropHelper!.subscribe(rootElement as HTMLElement, this._events, this._getHeaderDragDropOptions());
+    if (columnReorderOptions) {
+      this._getDropHintPositions(rootElement);
+      this._dragDropHelper!.subscribe(rootElement, this._events, this._getHeaderDragDropOptions());
+    }
+  }
+
+  public componentDidUpdate(): void {
+    const { columnReorderOptions } = this.props;
+    const focusZone = this._root.value;
+    const rootElement = findDOMNode(focusZone as any) as HTMLElement;
+
+    if (columnReorderOptions) {
+      this._getDropHintPositions(rootElement);
     }
   }
 
@@ -137,8 +148,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
     }
@@ -419,10 +429,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       context: { data: dataContext, index: 1 },
       canDrag: () => false,
       canDrop: () => true,
-      onDragStart: () => undefined,
+      onDragStart: this._dragDropColumnEvents!.onDragStart,
       updateDropState: this._updateDroppingState,
-      onDrop: dragDropColumnEvents!.onDrop,
-      onDragEnd: () => undefined
+      onDrop: this._dragDropColumnEvents!.onDrop,
+      onDragEnd: () => undefined,
+      onDragOver: this._dragDropColumnEvents!.onDragOver
     };
     return options;
   }
@@ -458,16 +469,19 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               break;
             }
           }
-          targetIndex = (this.props.selectionMode !== SelectionMode.none) ? i : i + 1;
-          if (_draggedColumnIndex !== targetIndex) {
-            this.props.columnReorderOptions!.handleColumnReorder(_draggedColumnIndex!, targetIndex);
-            _draggedColumnIndex = -1;
+          if (i != this.state.dropHintsState!.length) {
+            targetIndex = (this.props.selectionMode !== SelectionMode.none) ? i : i + 1;
+            if (_draggedColumnIndex !== targetIndex) {
+              this.props.columnReorderOptions!.handleColumnReorder(_draggedColumnIndex!, targetIndex);
+              _draggedColumnIndex = -1;
+            }
+            const newDropHintState = this.state.dropHintsState!.map(state => false);
+            this.setState({ dropHintsState: newDropHintState });
           }
-          const newDropHintState = this.state.dropHintsState!.map(state => false);
-          this.setState({ dropHintsState: newDropHintState });
         }
       },
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
+        console.log("In start");
         _draggedColumnIndex = (this.props.selectionMode !== SelectionMode.none) ? itemIndex! - 1 : itemIndex;
         event!.preventDefault();
       },

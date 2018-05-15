@@ -204,7 +204,6 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
       updateDropState: () => undefined,
       onDrop: () => undefined,
       onDragEnd: dragDropColumnEvents!.onDragEnd,
-
     };
     return options;
   }
