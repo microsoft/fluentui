@@ -25,6 +25,12 @@ module.exports = {
           test: /\.js$/,
           use: 'source-map-loader',
           enforce: 'pre'
+        },
+        {
+          test: /\.md$/,
+          use: {
+            loader: 'raw-loader'
+          }
         }
       ]
     };
@@ -142,6 +148,16 @@ module.exports = {
                   loader: 'sass-loader'
                 }
               ]
+            },
+            {
+              test: /\.md$/,
+              exclude: [
+                /node_modules/,
+                /\.md.ts$/
+              ],
+              use: {
+                loader: 'raw-loader'
+              }
             }
           ]
         },
