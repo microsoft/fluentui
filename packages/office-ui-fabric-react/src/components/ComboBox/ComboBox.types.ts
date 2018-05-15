@@ -180,7 +180,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
 
   /**
    * Value to show in the input, does not have to map to a combobox option
-   * @deprecated Use 'text' instead.
+   * @deprecated Use `text` instead.
    */
   value?: string;
 }
