@@ -34,7 +34,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       theme,
       iconProps,
       imageSrc,
-      imageSize,
+      imageSize = { width: 32, height: 32 },
       disabled,
       checked,
       id,
@@ -50,7 +50,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       hasImage: !!imageSrc,
       checked,
       disabled,
-      imageIsLarge: !!imageSrc && (imageSize!.width > 71 || imageSize!.height > 71),
+      imageIsLarge: !!imageSrc && (imageSize.width > 71 || imageSize.height > 71),
       focused
     });
 
@@ -109,9 +109,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       iconProps,
     } = props;
 
-    const imageSize = props.imageSize
-      ? props.imageSize
-      : { width: 32, height: 32 };
+    const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
 
     return (
       <label htmlFor={ id } className={ this._classNames.field }>
