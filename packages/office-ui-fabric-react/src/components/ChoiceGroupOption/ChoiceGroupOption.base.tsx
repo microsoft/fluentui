@@ -58,7 +58,6 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       <div className={ this._classNames.root }>
         <div className={ this._classNames.choiceFieldWrapper }>
           <input
-            { ...getNativeProps(this.props, inputProperties) }
             ref={ this._inputElement }
             id={ id }
             className={ this._classNames.input }
@@ -71,6 +70,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             onFocus={ this._onFocus.bind(this, this.props) }
             onBlur={ this._onBlur.bind(this, this.props) }
             aria-labelledby={ labelId }
+            { ...getNativeProps(this.props, inputProperties) }
           />
           { onRenderField(this.props, this._onRenderField) }
         </div>

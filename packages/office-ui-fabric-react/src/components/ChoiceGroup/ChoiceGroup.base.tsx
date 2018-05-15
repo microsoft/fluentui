@@ -80,13 +80,15 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       optionsContainIconOrImage: options!.some(option => Boolean(option.iconProps || option.imageSrc))
     });
 
+    const ariaLabelledBy = label ? this._id + '-label' : (this.props as any)['aria-labelledby'];
+
     return (
       // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
       <div role='application' className={ classNames.applicationRole }>
         <div
           className={ classNames.root }
           role='radiogroup'
-          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(this.props as any)['aria-labelledby'] || ''}` }
+          { ...(ariaLabelledBy && { "aria-labelledby": ariaLabelledBy }) }
         >
           { label && (<Label className={ classNames.label } required={ required } id={ this._id + '-label' }>{ label }</Label>) }
           <div className={ classNames.flexContainer }>
