@@ -82,6 +82,7 @@ export const getItemClassNames = memoizeFunction((
   dividerClassName?: string,
   iconClassName?: string,
   subMenuClassName?: string,
+  primaryDisabled?: boolean
 ): IMenuItemClassNames => {
 
   const styles = getMenuItemStyles(theme);
@@ -128,11 +129,11 @@ export const getItemClassNames = memoizeFunction((
         'is-checked',
         styles.rootChecked
       ],
-      disabled && [
+      (disabled || primaryDisabled) && [
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !checked && [{
+      !(disabled || primaryDisabled) && !checked && [{
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
