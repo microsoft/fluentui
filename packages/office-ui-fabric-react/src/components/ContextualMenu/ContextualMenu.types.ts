@@ -447,7 +447,7 @@ export interface IContextualMenuItem {
 
   /**
    * Text description for the menu item to display
-   * @deprecated Use 'text' instead.
+   * @deprecated Use `text` instead.
    */
   name?: string;
 }
