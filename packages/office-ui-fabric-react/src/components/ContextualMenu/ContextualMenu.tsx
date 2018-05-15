@@ -361,7 +361,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       item.className,
       dividerClassName,
       iconProps.className,
-      subMenuIconClassName
+      subMenuIconClassName,
+      item.primaryDisabled
     );
 
     if (item.name === '-') {
