@@ -14,11 +14,14 @@ const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardSty
 
 const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets';
 
+const PREVIEW_IMAGE_WIDTH = '198px';
+const PREVIEW_IMAGE_HEIGHT = '122px';
+
 @customizable('ChicletCardBase', ['theme'])
 export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
   public static defaultProps: IChicletCardProps = {
-    imageWidth: '198px',
-    imageHeight: '122px'
+    imageWidth: PREVIEW_IMAGE_WIDTH,
+    imageHeight: PREVIEW_IMAGE_HEIGHT
   };
 
   private _classNames: { [key in keyof IChicletCardStyles]: string };
@@ -46,14 +49,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
         <div
           className={ mergeStyles(this._classNames.preview) }
         >
-          { image ?
-            preview :
-            (<Image
-              src={ TestImages.documentPreviewTwo }
-              role='presentation'
-              alt=''
-            />)
-          }
+          { preview }
         </div>
         <div
           className={ mergeStyles(this._classNames.info) }
@@ -75,15 +71,29 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
   }
 
   private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, openGraphType?: string, imageAlt?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    const image = (
-      <Image
-        width={ imageWidth }
-        height={ imageHeight }
-        src={ TestImages.documentPreview }
-        role='presentation'
-        alt={ imageAlt ? imageAlt : undefined }
-      />
-    );
+    let image;
+    if (imageUrl != null) {
+      image = (
+        <Image
+          width={ imageWidth }
+          height={ imageHeight }
+          src={ imageUrl }
+          role='presentation'
+          alt={ imageAlt ? imageAlt : undefined }
+        />
+      );
+    }
+    else {
+      image = (
+        <Image
+          width={ PREVIEW_IMAGE_WIDTH }
+          height={ PREVIEW_IMAGE_HEIGHT }
+          src={ openGraphType ? `${ASSET_CDN_BASE_URL}/brand-icons/document/svg/` + openGraphType + `_48x1.svg` : TestImages.documentPreview /* @todo: this will be replaced by something built by the design team */ }
+          role='presentation'
+          alt={ imageAlt ? imageAlt : undefined }
+        />
+      );
+    }
 
     let src;
     if (openGraphType != null) {

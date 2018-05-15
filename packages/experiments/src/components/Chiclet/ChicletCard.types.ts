@@ -85,13 +85,13 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   imageSecureUrl?: string;
 
   /**
-   * The width of the image.
+   * The width of the preview image.
    * @default '198px'
    */
   imageWidth?: string;
 
   /**
-   * The height of the image.
+   * The height of the preview image.
    * @default '122px'
    */
   imageHeight?: string;
