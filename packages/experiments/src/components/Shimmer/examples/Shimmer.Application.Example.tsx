@@ -142,12 +142,14 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     const { isDataLoaded } = this.state;
     isDataLoaded && this._onDataMiss(index as number);
 
+    const shimmerRow: JSX.Element = (
+      <DetailsRow { ...rowProps } shimmer={ true } />
+    );
+
     return (
       <Shimmer
-        isBaseStyle={ true }
-      >
-        <DetailsRow { ...rowProps } shimmer={ true } />
-      </Shimmer>
+        customElementsGroup={ shimmerRow }
+      />
     );
   }
 

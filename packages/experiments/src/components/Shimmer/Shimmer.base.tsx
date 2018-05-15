@@ -22,7 +22,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     super(props);
 
     this._warnDeprecations({
-      'isBaseStyle': 'customElement',
+      'isBaseStyle': 'customElementsGroup',
       'width': 'widthInPercentage or widthInPixel',
       'lineElements': 'shimmerElements'
     });
