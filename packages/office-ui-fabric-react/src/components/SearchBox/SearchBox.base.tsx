@@ -22,6 +22,10 @@ export interface ISearchBoxState {
 
 @customizable('SearchBox', ['theme'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
+  public static defaultProps: ISearchBoxProps = {
+    disableAnimation: false
+  };
+
   private _rootElement = createRef<HTMLDivElement>();
   private _inputElement = createRef<HTMLInputElement>();
   private _latestValue: string;
@@ -62,7 +66,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       getStyles,
       labelText,
       theme,
-      clearButtonProps
+      clearButtonProps,
+      disableAnimation
     } = this.props;
     const { value, hasFocus, id } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
@@ -73,7 +78,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       underlined,
       hasFocus,
       disabled,
-      hasInput: value!.length > 0
+      hasInput: value!.length > 0,
+      disableAnimation
     });
 
     return (

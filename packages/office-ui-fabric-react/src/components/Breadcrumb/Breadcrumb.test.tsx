@@ -74,6 +74,34 @@ describe('Breadcrumb', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
+
+    it('renders breadcumb correctly 5', () => {
+      // With maxDisplayedItems and overflowIndex
+      const component = renderer.create(
+        <Breadcrumb
+          items={ items }
+          maxDisplayedItems={ 1 }
+          overflowIndex={ 1 }
+        />
+      );
+
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('renders breadcumb correctly 6', () => {
+      // With maxDisplayedItems and overflowIndex as 0
+      const component = renderer.create(
+        <Breadcrumb
+          items={ items }
+          maxDisplayedItems={ 0 }
+          overflowIndex={ 0 }
+        />
+      );
+
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   it('can call the callback when an item is clicked', () => {

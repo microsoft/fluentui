@@ -152,7 +152,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       spellCheck={false}
       title={undefined}
       type="text"
-      value=""
+      value="testValue"
     />
     <button
       aria-describedby={null}

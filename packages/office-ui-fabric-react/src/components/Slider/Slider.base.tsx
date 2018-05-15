@@ -18,6 +18,9 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
+/**
+ * @deprecated Unused.
+*/
 export enum ValuePosition {
   Previous = 0,
   Next = 1
