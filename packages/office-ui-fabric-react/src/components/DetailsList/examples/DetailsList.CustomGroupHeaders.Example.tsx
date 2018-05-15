@@ -32,13 +32,13 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
                 <div className='DetailsListExample-customHeaderLinkSet'>
                   <Link
                     className='DetailsListExample-customHeaderLink'
-                    onClick={ this._onClick(props!) }
+                    onClick={ this._onToggleSelectGroup(props!) }
                   >
                     { props!.isSelected ? 'Remove selection' : 'Select group' }
                   </Link>
                   <Link
                     className='DetailsListExample-customHeaderLink'
-                    onClick={ this._onClick(props!) }
+                    onClick={ this._onToggleCollapse(props!) }
                   >
                     { props!.group!.isCollapsed ? 'Expand group' : 'Collapse group' }
                   </Link>
@@ -56,10 +56,15 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
     );
   }
 
-  private _onClick(props: IGroupDividerProps): () => void {
+  private _onToggleSelectGroup(props: IGroupDividerProps): () => void {
     return () => {
       props.onToggleSelectGroup!(props.group!);
     };
   }
 
+  private _onToggleCollapse(props: IGroupDividerProps): () => void {
+    return () => {
+      props!.onToggleCollapse!(props!.group!);
+    };
+  }
 }
