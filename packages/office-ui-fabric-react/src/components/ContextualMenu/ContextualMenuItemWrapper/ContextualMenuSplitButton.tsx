@@ -82,8 +82,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             { this._renderSplitDivider(item) }
             { this._renderSplitIconButton(item, classNames, index, keytipAttributes) }
           </div >
-        )
-        }
+        ) }
       </KeytipData>
     );
   }
