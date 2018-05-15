@@ -270,8 +270,8 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _handleTouchAndPointerEvent(ev: React.TouchEvent<HTMLElement> | PointerEvent) {
     const {
-    onTap
-  } = this.props;
+      onTap
+    } = this.props;
 
     if (onTap) {
       onTap(ev);
