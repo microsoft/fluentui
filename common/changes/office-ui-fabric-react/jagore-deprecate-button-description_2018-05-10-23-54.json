@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Deprecate Button's description prop in favor of new secondaryText prop.",
+      "comment": "Buttons: Deprecate `description` prop in favor of more consistent `secondaryText` prop.",
       "type": "minor"
     }
   ],
