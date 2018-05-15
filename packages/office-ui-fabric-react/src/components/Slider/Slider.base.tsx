@@ -27,7 +27,7 @@ export enum ValuePosition {
 }
 
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
-  public static defaultProps: {} = {
+  public static defaultProps: ISliderProps = {
     step: 1,
     min: 0,
     max: 10,
