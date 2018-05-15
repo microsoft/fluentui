@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 14 May 2018 20:46:25 GMT and should not be manually modified.
+This log was last generated on Tue, 15 May 2018 07:09:49 GMT and should not be manually modified.
+
+## 5.102.0
+Tue, 15 May 2018 07:09:49 GMT
+
+### Minor changes
+
+- Deprecate ComboBox's value prop in favor of new text prop.
+
+### Patches
+
+- Fix bug where primaryDisabled is not respected on contextual menu items
+- Dropdown: Remove aria-autocomplete and aria-readonly
+- Pivot: Slight tweak to the `PivotItem` compare to ensure it works in minified scenarios.
+- shouldVirtualize takes incoming properties
 
 ## 5.101.2
 Mon, 14 May 2018 20:46:25 GMT
