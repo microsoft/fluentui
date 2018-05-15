@@ -449,7 +449,7 @@ export interface IColumnReorderOptions {
   frozenColumnCount?: number;
 
   /** Callback to handle the column reorder
-   * draggaedIndex is the source column index, that need to be placed in targetIndex
+   * draggedIndex is the source column index, that need to be placed in targetIndex
    */
   handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;
 
