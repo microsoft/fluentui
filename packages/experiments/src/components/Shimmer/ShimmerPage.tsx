@@ -6,11 +6,16 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
+import { ShimmerCustomElementsExample } from './examples/Shimmer.CustomElements.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
 import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 
 const ShimmerBasicExampleCode = require(
   '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx'
+) as string;
+
+const ShimmerCustomExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx'
 ) as string;
 
 const ShimmerLoadDataExampleCode = require(
@@ -34,6 +39,12 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               code={ ShimmerBasicExampleCode }
             >
               <ShimmerBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Custom Elements Shimmer'
+              code={ ShimmerCustomExampleCode }
+            >
+              <ShimmerCustomElementsExample />
             </ExampleCard>
             <ExampleCard
               title='Enabling Data Shimmer'

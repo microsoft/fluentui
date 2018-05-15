@@ -78,61 +78,6 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 10, verticalAlign: ElemVerticalAlign.bottom }
           ] }
         />
-        Split line examples.
-        {/* <div>
-          <Shimmer
-            isBaseStyle={ true }
-            widthInPixel={ 350 }
-          >
-            { getRenderedElements([
-              { type: ElemType.line, widthInPixel: 40, height: 40 },
-              { type: ElemType.gap, widthInPixel: 10, height: 40 }
-            ], 40) }
-            <div
-              // tslint:disable-next-line:jsx-ban-props
-              style={
-                {
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  width: '300px'
-                }
-              }
-            >
-              { getRenderedElements([
-                { type: ElemType.line, widthInPixel: 300, height: 10 },
-                { type: ElemType.line, widthInPixel: 200, height: 10 },
-                { type: ElemType.gap, widthInPixel: 100, height: 20 }
-              ], 20) }
-            </div>
-          </Shimmer>
-        </div>
-        <div>
-          <Shimmer
-            isBaseStyle={ true }
-            widthInPixel={ 550 }
-          >
-            { getRenderedElements([
-              { type: ElemType.circle, height: 40 },
-              { type: ElemType.gap, widthInPixel: 10, height: 40 }
-            ], 40) }
-            <div
-              // tslint:disable-next-line:jsx-ban-props
-              style={
-                {
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  width: '500px'
-                }
-              }
-            >
-              { getRenderedElements([
-                { type: ElemType.line, widthInPixel: 400, height: 10 },
-                { type: ElemType.gap, widthInPixel: 100, height: 20 },
-                { type: ElemType.line, widthInPixel: 500, height: 10 }
-              ], 20) }
-            </div>
-          </Shimmer>
-        </div> */}
       </div>
     );
   }

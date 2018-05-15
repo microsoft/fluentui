@@ -4,8 +4,6 @@ import {
   IShimmerProps,
   IShimmerStyleProps,
   IShimmerStyles,
-  ShimmerElementType,
-  ShimmerElementsDefaultHeights,
   IShimmerElement,
 } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup';
@@ -51,10 +49,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
     // lineElements is a deprecated prop so need to check which one was used.
     const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
-    const rowHeight: number | undefined = elements ? this._findMaxElementHeight(elements) : undefined;
 
     this._classNames = getClassNames(getStyles!, {
-      width, rowHeight, isDataLoaded, widthInPercentage, widthInPixel, className
+      width, isDataLoaded, widthInPercentage, widthInPixel, className
     });
 
     return (
@@ -64,7 +61,6 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
             customElementsGroup ? customElementsGroup :
               <ShimmerElementsGroup
                 shimmerElements={ elements }
-                rowHeight={ rowHeight }
               />
           }
         </div>
@@ -75,34 +71,5 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
         }
       </div>
     );
-  }
-
-  // User should not worry to provide which of the elements is the highest, we do the calculation for him.
-  private _findMaxElementHeight(elements: IShimmerElement[]): number {
-    const itemsDefaulted: IShimmerElement[] = elements.map((elem: IShimmerElement): IShimmerElement => {
-      switch (elem.type) {
-        case ShimmerElementType.circle:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.circle;
-          }
-        case ShimmerElementType.line:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.line;
-          }
-        case ShimmerElementType.gap:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.gap;
-          }
-      }
-      return elem;
-    });
-
-    const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
-      return next.height ?
-        next.height > acc ? next.height : acc
-        : acc;
-    }, 0);
-
-    return rowHeight;
   }
 }

@@ -139,7 +139,6 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
               }
             ]
           }
-          rowHeight={ squareHeight }
         />
         {
           itemActivity || itemName ?
@@ -170,7 +169,6 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                         }
                       ]
                     }
-                    rowHeight={ nameplateNameHeight }
                   /> : null
               }
               {
@@ -195,7 +193,6 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                         }
                       ]
                     }
-                    rowHeight={ nameplateActivityHeight }
                   /> : null
               }
               <ShimmerGap

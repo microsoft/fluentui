@@ -88,7 +88,7 @@ export interface IShimmerElement {
   type: ShimmerElementType;
 
   /**
-   * The height of the element (ICircle, ILine) in pixels.
+   * The height of the element (ICircle, ILine, IGap) in pixels.
    * Read more details for each specific element.
    */
   height?: number;
@@ -162,7 +162,6 @@ export interface IGap extends IShimmerElement {
 
 export interface IShimmerStyleProps {
   width?: number;
-  rowHeight?: number;
   widthInPercentage?: number;
   widthInPixel?: number;
   isDataLoaded?: boolean;

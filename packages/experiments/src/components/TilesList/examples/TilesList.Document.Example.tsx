@@ -266,10 +266,10 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
       <ShimmerElementsGroup
         shimmerElements={
           [
-            { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 },
+            { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 }, // gap is given to maintain height
+            { type: ElemType.gap, height: (HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE), widthInPixel: 0 }
           ]
         }
-        rowHeight={ HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE }
       />
     );
   }

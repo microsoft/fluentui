@@ -14,23 +14,30 @@ import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
 export interface IShimmerElementsGroupProps {
   shimmerElements?: IShimmerElement[];
   rowHeight?: number;
+  flexWrap?: boolean;
 }
 
 export type ShimmerElementsGroup = React.StatelessComponent<IShimmerElementsGroupProps>;
 
 export const ShimmerElementsGroup: ShimmerElementsGroup = (props: IShimmerElementsGroupProps): JSX.Element => {
-  const { shimmerElements, rowHeight } = props;
+  const {
+    shimmerElements,
+    rowHeight,
+    flexWrap = false
+  } = props;
+  const height = rowHeight ? rowHeight : findMaxElementHeight(shimmerElements ? shimmerElements : []);
 
   return (
     <div
       style={
         {
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
+          flexWrap: flexWrap ? 'wrap' : 'nowrap'
         }
       }
     >
-      { getRenderedElements(shimmerElements, rowHeight) }
+      { getRenderedElements(shimmerElements, height) }
     </div>
   );
 };
@@ -98,4 +105,33 @@ function getBorderStyles(elem: IShimmerElement, rowHeight?: number): IStyleSet |
   }
 
   return borderStyle;
+}
+
+// User should not worry to provide which of the elements is the highest, we do the calculation for him.
+export function findMaxElementHeight(elements: IShimmerElement[]): number {
+  const itemsDefaulted: IShimmerElement[] = elements.map((elem: IShimmerElement): IShimmerElement => {
+    switch (elem.type) {
+      case ShimmerElementType.circle:
+        if (!elem.height) {
+          elem.height = ShimmerElementsDefaultHeights.circle;
+        }
+      case ShimmerElementType.line:
+        if (!elem.height) {
+          elem.height = ShimmerElementsDefaultHeights.line;
+        }
+      case ShimmerElementType.gap:
+        if (!elem.height) {
+          elem.height = ShimmerElementsDefaultHeights.gap;
+        }
+    }
+    return elem;
+  });
+
+  const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
+    return next.height ?
+      next.height > acc ? next.height : acc
+      : acc;
+  }, 0);
+
+  return rowHeight;
 }

@@ -4,7 +4,6 @@ import { keyframes, DefaultPalette } from '../../Styling';
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     width,
-    rowHeight,
     isDataLoaded,
     widthInPercentage,
     widthInPixel,
@@ -33,7 +32,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       'ms-Shimmer-container',
       {
         position: 'relative',
-        minHeight: rowHeight ? `${rowHeight}px` : '16px'
       },
       className
     ],
@@ -54,10 +52,11 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
         animationName: shimmerAnimation,
-        transition: 'opacity 2000ms'
+        transition: 'opacity 200ms, background 200ms'
       },
       isDataLoaded && {
-        opacity: '0'
+        opacity: '0',
+        background: 'none'
       }
     ],
     dataWrapper: [
@@ -73,7 +72,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
-        transition: 'opacity 2000ms'
+        transition: 'opacity 200ms'
       },
       isDataLoaded && {
         opacity: '1'
