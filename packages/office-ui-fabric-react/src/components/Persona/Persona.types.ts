@@ -6,7 +6,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface IPersona {
-
+  focus: () => void;
 }
 
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {

@@ -17,6 +17,7 @@ import {
   presenceBoolean,
   sizeBoolean,
 } from './PersonaConsts';
+import { getFocusStyle } from '@uifabric/styling';
 
 const GlobalClassNames = {
   root: 'ms-Persona',
@@ -71,6 +72,7 @@ export const getStyles = (
     root: [
       classNames.root,
       normalize,
+      getFocusStyle(theme, -2),
       {
         color: palette.neutralPrimary,
         fontSize: FontSizes.medium,
@@ -82,10 +84,6 @@ export const getStyles = (
         alignItems: 'center',
 
         selectors: {
-          '.contextualHost': {
-            display: 'none',
-          },
-
           ':hover': {
             selectors: {
               '$primaryText': {
