@@ -391,10 +391,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     const dataContext: IDragDropContext = { data: this, index: 1 };
     const options = {
       selectionIndex: 1,
-      context: { data: dataContext, index: 1 },
+      context: { data: dataContext, index: 0 },
       canDrag: () => false,
       canDrop: () => true,
-      onDragStart: this._dragDropColumnEvents!.onDragStart,
+      onDragStart: () => undefined,
       updateDropState: this._updateDroppingState,
       onDrop: this._dragDropColumnEvents!.onDrop,
       onDragEnd: () => undefined,
