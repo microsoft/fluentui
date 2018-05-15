@@ -90,10 +90,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaLabel,
       ariaHidden,
       className,
-      description,
       disabled,
       primaryDisabled,
-      secondaryText,
+      secondaryText = this.props.description,
       href,
       iconProps,
       menuIconProps,
@@ -142,12 +141,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'disabled' // let disabled buttons be focused and styled as disabled.
       ]);
 
-    // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
+    // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
     let ariaDescribedBy;
     if (ariaDescription) {
       ariaDescribedBy = _ariaDescriptionId;
-    } else if (secondaryText || description) {
+    } else if (secondaryText) {
       ariaDescribedBy = _descriptionId;
     } else if ((nativeProps as any)['aria-describedby']) {
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];
@@ -314,13 +313,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       text,
       children,
-      description,
-      secondaryText,
+      secondaryText = this.props.description,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription
     } = this.props;
 
-    if (text || typeof (children) === 'string' || secondaryText || description) {
+    if (text || typeof (children) === 'string' || secondaryText) {
       return (
         <div
           className={ this._classNames.textContainer }
@@ -378,19 +376,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderDescription = (props: IButtonProps) => {
     const {
-      description,
-      secondaryText
+      secondaryText = this.props.description
     } = props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
-    return (secondaryText || description) ? (
+    return (secondaryText) ? (
       <div
         key={ this._descriptionId }
         className={ this._classNames.description }
         id={ this._descriptionId }
       >
-        { secondaryText || description }
+        { secondaryText }
       </div>
     ) : (
         null
