@@ -32,3 +32,27 @@
   background-color: white;
   color: #0078D7;
 }
+
+.description {
+  //padding: 0px 16px 17px 11px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #797671;
+  width: 248px;
+  height: 16px;
+  //overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 0px !important;
+}
+
+.chevron {
+  font-size: 8px;
+  padding-left: 3px;
+  padding-right: 3px;
+}

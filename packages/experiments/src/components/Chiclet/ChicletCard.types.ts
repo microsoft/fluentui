@@ -34,9 +34,9 @@ export interface IChicletCardStyles {
   title?: IStyle;
 
   /**
-   * Style for the link to the file.
+   * Style for the dile description, which could be a link, description, etc.
    */
-  link?: IStyle;
+  description?: IStyle;
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCardBase> {
@@ -62,6 +62,11 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
+   * Description to render for the component.
+   */
+  description?: React.ReactElement<any>;
+
+  /**
    * Footer to render for the component.
    */
   footer?: React.ReactElement<any>;
@@ -76,7 +81,6 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
    */
   title?: string;
   openGraphType?: string;
-  description?: string;
   image?: string;
   imageSecureUrl?: string;
   imageWidth?: string;

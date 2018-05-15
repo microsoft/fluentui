@@ -32,6 +32,11 @@ export interface IChicletProps extends React.Props<Chiclet> {
   size?: ChicletSize;
 
   /**
+   * Description to render for the component.
+   */
+  description?: React.ReactElement<any>;
+
+  /**
    * Footer to render for the component.
    */
   footer?: React.ReactElement<any>;

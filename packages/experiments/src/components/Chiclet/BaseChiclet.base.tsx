@@ -23,13 +23,13 @@ export class BaseChicletBase extends BaseComponent<IBaseChicletProps, any> {
   }
 
   public render() {
-    const { size, footer, getStyles, theme } = this.props;
+    const { size, footer, getStyles, theme, description } = this.props;
     const { chicletCardProps } = this.state;
 
     this._classNames = getClassNames(getStyles, { theme: theme! });
 
     return (
-      <Chiclet chicletCardProps={ chicletCardProps } size={ size ? size : ChicletSize.Medium } footer={ footer } />
+      <Chiclet chicletCardProps={ chicletCardProps } size={ size ? size : ChicletSize.Medium } footer={ footer } description={ description } />
     );
   }
 

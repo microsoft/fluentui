@@ -78,7 +78,7 @@ export const getStyles = (
         wordWrap: 'break-word'
       }
     ],
-    link: [
+    description: [
       'ms-ChicletCardLink',
       {
         padding: '0px 16px 17px 11px',

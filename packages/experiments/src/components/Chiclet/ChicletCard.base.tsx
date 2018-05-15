@@ -58,9 +58,9 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
             { title ? title : (null) }
           </div>
           <div
-            className={ mergeStyles(this._classNames.link) }
+            className={ mergeStyles(this._classNames.description) }
           >
-            { url ? url : (null) }
+            { description ? description : url }
           </div>
           { footer }
         </div>
