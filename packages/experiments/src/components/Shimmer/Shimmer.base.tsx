@@ -22,7 +22,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     super(props);
 
     this._warnDeprecations({
-      'isBaseStyle': 'onRenderCustomElement',
+      'isBaseStyle': 'customElement',
       'width': 'widthInPercentage or widthInPixel',
       'lineElements': 'shimmerElements'
     });
@@ -30,7 +30,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     this._warnMutuallyExclusive({
       'widthInPixel': 'widthInPercentage',
       'lineElements': 'shimmerElements',
-      'onRenderCustomElements': 'lineElements'
+      'customElementsGroup': 'lineElements'
     });
   }
 
@@ -46,7 +46,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       widthInPercentage,
       widthInPixel,
       className,
-      onRenderCustomElements
+      customElementsGroup
     } = this.props;
 
     // lineElements is a deprecated prop so need to check which one was used.
@@ -61,7 +61,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       <div className={ this._classNames.root }>
         <div className={ this._classNames.shimmerWrapper }>
           { isBaseStyle ? children : // isBaseStyle prop is deprecated and this check needs to be removed in the future
-            onRenderCustomElements ? onRenderCustomElements() :
+            customElementsGroup ? customElementsGroup :
               <ShimmerElementsGroup
                 shimmerElements={ elements }
                 rowHeight={ rowHeight }

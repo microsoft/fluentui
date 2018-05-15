@@ -44,9 +44,9 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Use when providing custom skeleton as children wrapped by shimmer.
-   * Deprecated in favor of 'onRenderCustomElements'
+   * Deprecated in favor of 'customElementsGroup'
    * @default false
-   * @deprecated Use 'onRenderCustomElements' instead.
+   * @deprecated Use 'customElementsGroup' instead.
    */
   isBaseStyle?: boolean;
 
@@ -63,9 +63,9 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   shimmerElements?: IShimmerElement[];
 
   /**
-   * Optional custom renderer when need to build complex placeholder skeletons.
+   * Custom elements when necessary to build complex placeholder skeletons.
    */
-  onRenderCustomElements?: () => React.ReactNode;
+  customElementsGroup?: React.ReactNode;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
