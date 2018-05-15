@@ -6,10 +6,12 @@ import { ChicletSize } from '../Chiclet.types';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import * as exampleStyles from './Chiclet.Basic.Example.scss';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
 import { Breadcrumb, IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { IRenderFunction, IComponentAs } from '../../../Utilities';
+import { IRenderFunction, IComponentAs, getRTL } from '../../../Utilities';
 
-export class ChicletBasicExample extends React.Component<any, any> {
+export class ChicletBreadcrumbExample extends React.Component<any, any> {
   constructor(props: {}) {
     super(props);
   }
@@ -17,10 +19,32 @@ export class ChicletBasicExample extends React.Component<any, any> {
   public render() {
     var footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'Save' } }, { iconProps: { iconName: 'Share' } }];
     var footer = <FooterComponent buttonProps={ footerButtonProps } activities="10 Comments  16 Shares  87 Views" />;
-
+    var breadcrumb: IBreadcrumbProps = {
+      items: [
+        { text: 'Files', 'key': 'Files' },
+        { text: 'OneDrive Design', 'key': 'OneDrive Design' },
+        { text: 'Emails', 'key': 'Emails' },
+        { text: 'Campaigns', 'key': 'Campaigns' },
+      ]
+    };
+    var divider = () => <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRightSmall' } className={ exampleStyles.chevron } />;
+    var description =
+      <DescriptionComponent breadcrumb={ breadcrumb } onRenderItem={ this._onRenderItem } dividerAs={ divider } />
     return (
-      <BaseChiclet url="http://localhost:4322" size={ ChicletSize.Medium } footer={ footer }
+      <BaseChiclet url="http://localhost:4322" size={ ChicletSize.Medium } footer={ footer } description={ description }
       />
+    );
+  }
+
+  private _onRenderItem(item: IBreadcrumbItem) {
+    return (
+      <TooltipHost
+        content={ item.text }
+        overflowMode={ TooltipOverflowMode.Parent }
+        className={ exampleStyles.description }
+      >
+        { item.text }
+      </TooltipHost>
     );
   }
 }

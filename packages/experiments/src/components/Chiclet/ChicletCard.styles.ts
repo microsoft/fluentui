@@ -32,6 +32,7 @@ export const getStyles = (
     icon: [
       'ms-ChicletCardPreview-icon',
       {
+        height: '24px',
         left: '10px',
         bottom: '10px',
         position: 'absolute'
