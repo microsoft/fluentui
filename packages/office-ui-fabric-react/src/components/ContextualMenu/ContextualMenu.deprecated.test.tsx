@@ -10,7 +10,6 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
-import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {
 
@@ -25,10 +24,10 @@ describe('ContextualMenu', () => {
 
   it('does not have a scrollbar due to an overflowing icon', () => {
     const items: IContextualMenuItem[] = [
-      { text: 'TestText 1', key: 'TestKey1', canCheck: true, isChecked: true },
-      { text: 'TestText 2', key: 'TestKey2', canCheck: true, isChecked: true },
-      { text: 'TestText 3', key: 'TestKey3', canCheck: true, isChecked: true },
-      { text: 'TestText 4', key: 'TestKey4', canCheck: true, isChecked: true },
+      { name: 'TestText 1', key: 'TestKey1', canCheck: true, isChecked: true },
+      { name: 'TestText 2', key: 'TestKey2', canCheck: true, isChecked: true },
+      { name: 'TestText 3', key: 'TestKey3', canCheck: true, isChecked: true },
+      { name: 'TestText 4', key: 'TestKey4', canCheck: true, isChecked: true },
     ];
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
@@ -44,10 +43,10 @@ describe('ContextualMenu', () => {
 
   it('closes on left arrow if it is a submenu', () => {
     const items: IContextualMenuItem[] = [
-      { text: 'TestText 1', key: 'TestKey1' },
-      { text: 'TestText 2', key: 'TestKey2' },
-      { text: 'TestText 3', key: 'TestKey3' },
-      { text: 'TestText 4', key: 'TestKey4' },
+      { name: 'TestText 1', key: 'TestKey1' },
+      { name: 'TestText 2', key: 'TestKey2' },
+      { name: 'TestText 3', key: 'TestKey3' },
+      { name: 'TestText 4', key: 'TestKey4' },
     ];
 
     let spyCalled = false;
@@ -69,10 +68,10 @@ describe('ContextualMenu', () => {
 
   it('does not close on left arrow if it is a submenu with horizontal arrowDirection', () => {
     const items: IContextualMenuItem[] = [
-      { text: 'TestText 1', key: 'TestKey1' },
-      { text: 'TestText 2', key: 'TestKey2' },
-      { text: 'TestText 3', key: 'TestKey3' },
-      { text: 'TestText 4', key: 'TestKey4' },
+      { name: 'TestText 1', key: 'TestKey1' },
+      { name: 'TestText 2', key: 'TestKey2' },
+      { name: 'TestText 3', key: 'TestKey3' },
+      { name: 'TestText 4', key: 'TestKey4' },
     ];
 
     let spyCalled = false;
@@ -95,10 +94,10 @@ describe('ContextualMenu', () => {
 
   it('does not close on left arrow if it is a submenu with bidirectional arrowDirection', () => {
     const items: IContextualMenuItem[] = [
-      { text: 'TestText 1', key: 'TestKey1' },
-      { text: 'TestText 2', key: 'TestKey2' },
-      { text: 'TestText 3', key: 'TestKey3' },
-      { text: 'TestText 4', key: 'TestKey4' },
+      { name: 'TestText 1', key: 'TestKey1' },
+      { name: 'TestText 2', key: 'TestKey2' },
+      { name: 'TestText 3', key: 'TestKey3' },
+      { name: 'TestText 4', key: 'TestKey4' },
     ];
 
     let spyCalled = false;
@@ -122,12 +121,12 @@ describe('ContextualMenu', () => {
   it('opens a submenu item on right arrow', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         subMenuProps: {
           items: [
             {
-              text: 'SubmenuText 1',
+              name: 'SubmenuText 1',
               key: 'SubmenuKey1',
               className: 'SubMenuClass'
             }
@@ -151,12 +150,12 @@ describe('ContextualMenu', () => {
   it('opens a submenu item on click', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         subMenuProps: {
           items: [
             {
-              text: 'SubmenuText 1',
+              name: 'SubmenuText 1',
               key: 'SubmenuKey1',
               className: 'SubMenuClass'
             }
@@ -181,14 +180,14 @@ describe('ContextualMenu', () => {
   it('opens a splitbutton submenu item on touch start', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         split: true,
         onClick: () => { alert('test'); },
         subMenuProps: {
           items: [
             {
-              text: 'SubmenuText 1',
+              name: 'SubmenuText 1',
               key: 'SubmenuKey1',
               className: 'SubMenuClass'
             }
@@ -203,7 +202,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    const menuItem = document.getElementsByTagName('button')[0] as HTMLButtonElement;
+    const menuItem = document.getElementsByName('TestText 1')[0] as HTMLButtonElement;
 
     // in a normal scenario, when we do a touchstart we would also cause a
     // click event to fire. This doesn't happen in the simulator so we're
@@ -218,13 +217,13 @@ describe('ContextualMenu', () => {
     const submenuId = 'testSubmenuId';
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         subMenuProps: {
           id: submenuId,
           items: [
             {
-              text: 'SubmenuText 1',
+              name: 'SubmenuText 1',
               key: 'SubmenuKey1',
               className: 'SubMenuClass'
             }
@@ -250,11 +249,11 @@ describe('ContextualMenu', () => {
   it('still works with deprecated IContextualMenuItem.items property', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         items: [
           {
-            text: 'SubmenuText 1',
+            name: 'SubmenuText 1',
             key: 'SubmenuKey1',
             className: 'SubMenuClass'
           }
@@ -277,16 +276,16 @@ describe('ContextualMenu', () => {
   it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey2',
         disabled: true,
       },
       {
-        text: 'TestText 3',
+        name: 'TestText 3',
         key: 'TestKey3',
         isDisabled: true,
       },
@@ -322,12 +321,12 @@ describe('ContextualMenu', () => {
     ];
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         onClick: () => itemsClicked[0] = true
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey2',
         disabled: true,
         onClick: () => {
@@ -336,7 +335,7 @@ describe('ContextualMenu', () => {
         }
       },
       {
-        text: 'TestText 3',
+        name: 'TestText 3',
         key: 'TestKey3',
         isDisabled: true,
         onClick: () => {
@@ -368,16 +367,16 @@ describe('ContextualMenu', () => {
   it('renders headers properly', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         itemType: ContextualMenuItemType.Header
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey3'
       },
       {
-        text: 'TestText 3',
+        name: 'TestText 3',
         key: 'TestKey3',
         itemType: ContextualMenuItemType.Header
       }
@@ -405,7 +404,7 @@ describe('ContextualMenu', () => {
   it('renders sections properly', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
@@ -414,28 +413,28 @@ describe('ContextualMenu', () => {
           bottomDivider: true,
           items: [
             {
-              text: 'TestText 2',
+              name: 'TestText 2',
               key: 'TestKey2'
             },
             {
-              text: 'TestText 3',
+              name: 'TestText 3',
               key: 'TestKey3',
             }
           ]
         }
       }, {
-        text: 'TestText 4',
+        name: 'TestText 4',
         key: 'TestKey4',
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
           key: 'Section1',
           items: [
             {
-              text: 'TestText 5',
+              name: 'TestText 5',
               key: 'TestKey5'
             },
             {
-              text: 'TestText 6',
+              name: 'TestText 6',
               key: 'TestKey6',
             }
           ]
@@ -467,31 +466,31 @@ describe('ContextualMenu', () => {
     beforeEach(() => {
       items = [
         {
-          text: 'TestText 1',
+          name: 'TestText 1',
           key: 'TestKey1',
           href: testUrl
         },
         {
-          text: 'TestText 2',
+          name: 'TestText 2',
           key: 'TestKey2',
           href: testUrl,
           target: '_blank'
         },
         {
-          text: 'TestText 3',
+          name: 'TestText 3',
           key: 'TestKey3',
           href: testUrl,
           target: '_blank',
           rel: 'test'
         },
         {
-          text: 'TestText 4',
+          name: 'TestText 4',
           key: 'TestKey4',
           href: testUrl,
           target: '_self',
         },
         {
-          text: 'TestText 5',
+          name: 'TestText 5',
           key: 'TestKey5',
           href: testUrl,
           rel: 'test'
@@ -560,12 +559,12 @@ describe('ContextualMenu', () => {
   it('correctly focuses the first element', (done) => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         className: 'testkey1'
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey2'
       },
     ];
@@ -593,12 +592,12 @@ describe('ContextualMenu', () => {
   it('will not focus the first element when shouldFocusOnMount is false', (done) => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         className: 'testkey1'
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey2'
       },
     ];
@@ -627,12 +626,12 @@ describe('ContextualMenu', () => {
   it('Hover correctly focuses the second element', (done) => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         className: 'testkey1'
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey2',
         className: 'testkey2'
       },
@@ -665,64 +664,11 @@ describe('ContextualMenu', () => {
     }).catch(done());
   });
 
-  it('ContextualMenu menuOpened callback is called only when menu is available', () => {
-    let layerMounted = false;
-    let menuMounted = false;
-    let menuMountedFirst = false;
-    let layerMountedFirst = false;
-
-    // Alter the Layer's prototype so that we can confirm that it mounts before the contextualmenu mounts.
-    /* tslint:disable:no-function-expression */
-    Layer.prototype.componentDidMount = function (componentDidMount): () => void {
-      return function (): void {
-        if (menuMounted) {
-          menuMountedFirst = true;
-        }
-        layerMounted = true;
-        return componentDidMount.call(this);
-      };
-    }(Layer.prototype.componentDidMount);
-    /* tslint:enable:no-function-expression */
-
-    const items: IContextualMenuItem[] = [
-      {
-        name: 'TestText 1',
-        key: 'TestKey1',
-        className: 'testkey1'
-      },
-      {
-        name: 'TestText 2',
-        key: 'TestKey2'
-      },
-    ];
-
-    const onMenuOpened = (): void => {
-      if (layerMounted) {
-        layerMountedFirst = true;
-      }
-      menuMounted = true;
-    };
-
-    ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-      <div>
-        <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
-        <ContextualMenu
-          target='#target'
-          items={ items }
-          onMenuOpened={ onMenuOpened }
-        />
-      </div>
-    );
-    expect(menuMounted).toEqual(true);
-    expect(layerMountedFirst).toEqual(true);
-    expect(menuMountedFirst).toEqual(false);
-  });
-
   it('merges callout classNames', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ [{
-          text: 'TestText 0',
+          name: 'TestText 0',
           key: 'TestKey0'
         }] }
         calloutProps={ { className: 'foo' } }
@@ -738,7 +684,7 @@ describe('ContextualMenu', () => {
   it('Contextual Menu submenu has chrevron icon even if submenu has no items', () => {
     const menuWithEmptySubMenu: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         subMenuProps: {
           items: []
@@ -766,7 +712,7 @@ describe('ContextualMenu', () => {
 
     const menuWithEmptySubMenu: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
         subMenuProps: {
           items: [],
@@ -791,11 +737,11 @@ describe('ContextualMenu', () => {
   it('calls the custom child renderer when the contextualMenuItemAs prop is provided', () => {
     const items: IContextualMenuItem[] = [
       {
-        text: 'TestText 1',
+        name: 'TestText 1',
         key: 'TestKey1',
       },
       {
-        text: 'TestText 2',
+        name: 'TestText 2',
         key: 'TestKey2',
       }
     ];
@@ -817,9 +763,9 @@ describe('ContextualMenu', () => {
   describe('canAnyMenuItemsCheck', () => {
     it('returns false when there are no checkable menu items', () => {
       const items: IContextualMenuItem[] = [
-        { text: 'Item 1', key: 'Item 1' },
-        { text: 'Item 2', key: 'Item 2' },
-        { text: 'Item 3', key: 'Item 3' }
+        { name: 'Item 1', key: 'Item 1' },
+        { name: 'Item 2', key: 'Item 2' },
+        { name: 'Item 3', key: 'Item 3' }
       ];
 
       expect(canAnyMenuItemsCheck(items)).toEqual(false);
@@ -827,9 +773,9 @@ describe('ContextualMenu', () => {
 
     it('returns true when there is at least one checkable menu item', () => {
       const items: IContextualMenuItem[] = [
-        { text: 'Item 1', key: 'Item 1' },
-        { text: 'Item 2', key: 'Item 2', canCheck: true },
-        { text: 'Item 3', key: 'Item 3' }
+        { name: 'Item 1', key: 'Item 1' },
+        { name: 'Item 2', key: 'Item 2', canCheck: true },
+        { name: 'Item 3', key: 'Item 3' }
       ];
 
       expect(canAnyMenuItemsCheck(items)).toEqual(true);
@@ -838,22 +784,22 @@ describe('ContextualMenu', () => {
     it('returns true when there is a menu section with an item that can check', () => {
       const items: IContextualMenuItem[] = [
         {
-          text: 'Item 1',
+          name: 'Item 1',
           key: 'Item 1'
         },
         {
-          text: 'Item 2',
+          name: 'Item 2',
           key: 'Item 2'
         },
         {
-          text: 'Item 3',
+          name: 'Item 3',
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
             items: [
-              { text: 'Item 1', key: 'Item 1' },
-              { text: 'Item 2', key: 'Item 2', canCheck: true },
-              { text: 'Item 3', key: 'Item 3' }
+              { name: 'Item 1', key: 'Item 1' },
+              { name: 'Item 2', key: 'Item 2', canCheck: true },
+              { name: 'Item 3', key: 'Item 3' }
             ]
           }
         }];
@@ -872,18 +818,18 @@ describe('ContextualMenu', () => {
         menuDismissed = false;
         const menu: IContextualMenuItem[] = [
           {
-            text: 'Test1',
+            name: 'Test1',
             key: 'Test1',
             componentRef: contextualItem,
             subMenuProps: {
               items: [
                 {
-                  text: 'Test2',
+                  name: 'Test2',
                   key: 'Test2',
                   className: 'SubMenuClass'
                 },
                 {
-                  text: 'Test3',
+                  name: 'Test3',
                   key: 'Test3',
                   className: 'SubMenuClass'
                 }
@@ -922,19 +868,19 @@ describe('ContextualMenu', () => {
         menuDismissed = false;
         const menu: IContextualMenuItem[] = [
           {
-            text: 'Test1',
+            name: 'Test1',
             key: 'Test1',
             componentRef: contextualItem,
             split: true,
             subMenuProps: {
               items: [
                 {
-                  text: 'Test2',
+                  name: 'Test2',
                   key: 'Test2',
                   className: 'SubMenuClass'
                 },
                 {
-                  text: 'Test3',
+                  name: 'Test3',
                   key: 'Test3',
                   className: 'SubMenuClass'
                 }
@@ -973,19 +919,19 @@ describe('ContextualMenu', () => {
         menuDismissed = false;
         const menu: IContextualMenuItem[] = [
           {
-            text: 'Test1',
+            name: 'Test1',
             key: 'Test1',
             componentRef: contextualItem,
             href: '#test',
             subMenuProps: {
               items: [
                 {
-                  text: 'Test2',
+                  name: 'Test2',
                   key: 'Test2',
                   className: 'SubMenuClass'
                 },
                 {
-                  text: 'Test3',
+                  name: 'Test3',
                   key: 'Test3',
                   className: 'SubMenuClass'
                 }

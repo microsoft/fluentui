@@ -35,21 +35,21 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
               [
                 {
                   key: keys[0],
-                  name: 'New',
+                  text: 'New',
                   canCheck: true,
                   isChecked: selection![keys[0]],
                   onClick: this._onToggleSelect
                 },
                 {
                   key: keys[1],
-                  name: 'Share',
+                  text: 'Share',
                   canCheck: true,
                   isChecked: selection![keys[1]],
                   onClick: this._onToggleSelect
                 },
                 {
                   key: keys[2],
-                  name: 'Mobile',
+                  text: 'Mobile',
                   canCheck: true,
                   isChecked: selection![keys[2]],
                   onClick: this._onToggleSelect
@@ -61,14 +61,14 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
 
                 {
                   key: keys[3],
-                  name: 'Print',
+                  text: 'Print',
                   canCheck: true,
                   isChecked: selection![keys[3]],
                   onClick: this._onToggleSelect
                 },
                 {
                   key: keys[4],
-                  name: 'Music',
+                  text: 'Music',
                   canCheck: true,
                   isChecked: selection![keys[4]],
                   onClick: this._onToggleSelect
@@ -82,21 +82,21 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
                     items: [
                       {
                         key: keys[6],
-                        name: 'Email message',
+                        text: 'Email message',
                         canCheck: true,
                         isChecked: selection![keys[6]],
                         onClick: this._onToggleSelect
                       },
                       {
                         key: keys[7],
-                        name: 'Calendar event',
+                        text: 'Calendar event',
                         canCheck: true,
                         isChecked: selection![keys[7]],
                         onClick: this._onToggleSelect
                       }
                     ],
                   },
-                  name: 'Split Button',
+                  text: 'Split Button',
                   canCheck: true,
                   isChecked: selection![keys[5]],
                   split: true,
@@ -111,21 +111,21 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
                     items: [
                       {
                         key: keys[9],
-                        name: 'Email message',
+                        text: 'Email message',
                         canCheck: true,
                         isChecked: selection![keys[9]],
                         onClick: this._onToggleSelect
                       },
                       {
                         key: keys[10],
-                        name: 'Calendar event',
+                        text: 'Calendar event',
                         canCheck: true,
                         isChecked: selection![keys[10]],
                         onClick: this._onToggleSelect
                       }
                     ],
                   },
-                  name: 'Split Button',
+                  text: 'Split Button',
                   canCheck: true,
                   isChecked: selection![keys[8]],
                   split: true,
@@ -142,21 +142,21 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
                     items: [
                       {
                         key: keys[12],
-                        name: 'Email message',
+                        text: 'Email message',
                         canCheck: true,
                         isChecked: selection![keys[12]],
                         onClick: this._onToggleSelect
                       },
                       {
                         key: keys[13],
-                        name: 'Calendar event',
+                        text: 'Calendar event',
                         canCheck: true,
                         isChecked: selection![keys[13]],
                         onClick: this._onToggleSelect
                       }
                     ],
                   },
-                  name: 'Split Button Left Menu',
+                  text: 'Split Button Left Menu',
                   canCheck: true,
                   isChecked: selection![keys[11]],
                   split: true,

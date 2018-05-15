@@ -43,8 +43,8 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
 };
 
 const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
-  if (item.name) {
-    return <span className={ classNames.label }>{ item.name }</span>;
+  if (item.text || item.name) {
+    return <span className={ classNames.label }>{ item.text || item.name }</span>;
   }
   return null;
 };

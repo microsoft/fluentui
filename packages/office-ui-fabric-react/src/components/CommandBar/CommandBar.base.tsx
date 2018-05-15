@@ -165,6 +165,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       buttonAs: CommandButtonType = CommandBarButton
     } = this.props;
 
+    const itemText = item.text || item.name;
+
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to
       // provide for the IContextualMenuItem onRender function. Pass in a no op function instead.
@@ -174,13 +176,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
-      text: !item.iconOnly ? item.name : '',
+      text: !item.iconOnly ? itemText : '',
       menuProps: item.subMenuProps,
     };
 
-    if (item.iconOnly && item.name !== undefined) {
+    if (item.iconOnly && itemText !== undefined) {
       return (
-        <TooltipHost content={ item.name } >
+        <TooltipHost content={ itemText } >
           <CommandButtonType { ...commandButtonProps as IButtonProps } />
         </TooltipHost>
       );
