@@ -2,12 +2,57 @@
 	"fontName": "fabric-icons-13",
 	"fontFamilyName": "FabricMDL2Icons-13",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "WindowEdit",
+			"unicode": "F50E"
+		},
+		{
+			"name": "HintText",
+			"unicode": "F50F"
+		},
+		{
+			"name": "MediaAdd",
+			"unicode": "F510"
+		},
+		{
+			"name": "AnchorLock",
+			"unicode": "F511"
+		},
+		{
+			"name": "AutoHeight",
+			"unicode": "F512"
+		},
+		{
+			"name": "ChartSeries",
+			"unicode": "F513"
+		},
+		{
+			"name": "ChartXAngle",
+			"unicode": "F514"
+		},
+		{
+			"name": "ChartYAngle",
+			"unicode": "F515"
+		},
+		{
+			"name": "Combobox",
+			"unicode": "F516"
+		},
+		{
+			"name": "LineSpacing",
+			"unicode": "F517"
+		},
+		{
+			"name": "Padding",
+			"unicode": "F518"
+		},
 		{
 			"name": "PaddingTop",
 			"unicode": "F519"
@@ -127,10 +172,6 @@
 		{
 			"name": "OneDriveFolder16",
 			"unicode": "F53B"
-		},
-		{
-			"name": "ChronosLogo",
-			"unicode": "F541"
 		},
 		{
 			"name": "FunctionalManagerDashboard",
@@ -367,46 +408,6 @@
 		{
 			"name": "DeleteRows",
 			"unicode": "F64F"
-		},
-		{
-			"name": "DeleteRowsMirrored",
-			"unicode": "F650"
-		},
-		{
-			"name": "DeleteTable",
-			"unicode": "F651"
-		},
-		{
-			"name": "VersionControlPush",
-			"unicode": "F664"
-		},
-		{
-			"name": "ExternalGit",
-			"unicode": "F665"
-		},
-		{
-			"name": "WhiteBoardApp16",
-			"unicode": "F673"
-		},
-		{
-			"name": "WhiteBoardApp32",
-			"unicode": "F674"
-		},
-		{
-			"name": "InsertSignatureLine",
-			"unicode": "F677"
-		},
-		{
-			"name": "ArrangeByFrom",
-			"unicode": "F678"
-		},
-		{
-			"name": "Phishing",
-			"unicode": "F679"
-		},
-		{
-			"name": "CreateMailRule",
-			"unicode": "F67A"
 		}
 	]
 }
