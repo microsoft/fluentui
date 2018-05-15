@@ -22,9 +22,13 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-8"`,
-      src: `url('${baseUrl}fabric-icons-8-d0700068.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-8-4995cb2b.woff') format('woff')`
     },
     icons: {
+      'StatusTriangleInner': '\uF13A',
+      'StatusTriangleExclamation': '\uF13B',
+      'StatusCircleExclamation': '\uF13C',
+      'StatusCircleErrorX': '\uF13D',
       'StatusCircleInfo': '\uF13F',
       'StatusCircleBlock2': '\uF141',
       'StatusCircleQuestionMark': '\uF142',
@@ -39,6 +43,7 @@ export function initializeIcons(
       'MobileReport': '\uF18A',
       'HardDriveGroup': '\uF18F',
       'FastMode': '\uF19A',
+      'ToggleOn': '\uF19E',
       'ToggleOff': '\uF19F',
       'Trophy2': '\uF1AE',
       'BucketColor': '\uF1B6',
@@ -72,6 +77,7 @@ export function initializeIcons(
       'Server': '\uF201',
       'SaveAll': '\uF203',
       'LinkedInLogo': '\uF20A',
+      'Decimals': '\uF218',
       'SidePanelMirrored': '\uF221',
       'ProtectRestrict': '\uF22A',
       'UnknownMirrored': '\uF22E',
@@ -118,13 +124,7 @@ export function initializeIcons(
       'DocumentApproval': '\uF28B',
       'CloneToDesktop': '\uF28C',
       'InstallToDrive': '\uF28D',
-      'Blur': '\uF28E',
-      'Build': '\uF28F',
-      'ProcessMetaTask': '\uF290',
-      'BranchFork2': '\uF291',
-      'BranchLocked': '\uF292',
-      'BranchCommit': '\uF293',
-      'BranchCompare': '\uF294'
+      'Blur': '\uF28E'
     }
   };
 

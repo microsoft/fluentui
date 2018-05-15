@@ -22,9 +22,15 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-10"`,
-      src: `url('${baseUrl}fabric-icons-10-380f2273.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-10-36a5325d.woff') format('woff')`
     },
     icons: {
+      'TypeScriptLanguage': '\uF2F7',
+      'PythonLanguage': '\uF2F8',
+      'PY': '\uF2F9',
+      'CoffeeScript': '\uF2FA',
+      'MarkDownLanguage': '\uF2FB',
+      'FullWidth': '\uF2FE',
       'FullWidthEdit': '\uF2FF',
       'Plug': '\uF300',
       'PlugSolid': '\uF301',
@@ -61,6 +67,7 @@ export function initializeIcons(
       'ColumnLeftTwoThirdsEdit': '\uF324',
       'ColumnRightTwoThirdsEdit': '\uF325',
       'StreamLogo': '\uF329',
+      'PassiveAuthentication': '\uF32A',
       'AlertSolid': '\uF331',
       'MegaphoneSolid': '\uF332',
       'TaskSolid': '\uF333',
@@ -117,14 +124,7 @@ export function initializeIcons(
       'CaretTopRightCenter8': '\uF366',
       'CaretTopLeftCenter8': '\uF367',
       'DonutChart': '\uF368',
-      'ChevronUnfold10': '\uF369',
-      'ChevronFold10': '\uF36A',
-      'DoubleChevronDown8': '\uF36B',
-      'DoubleChevronUp8': '\uF36C',
-      'DoubleChevronLeft8': '\uF36D',
-      'DoubleChevronRight8': '\uF36E',
-      'ChevronDownEnd6': '\uF36F',
-      'ChevronUpEnd6': '\uF370'
+      'ChevronUnfold10': '\uF369'
     }
   };
 

@@ -22,9 +22,17 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-13"`,
-      src: `url('${baseUrl}fabric-icons-13-be3ab2c9.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-13-941798e2.woff') format('woff')`
     },
     icons: {
+      'AnchorLock': '\uF511',
+      'AutoHeight': '\uF512',
+      'ChartSeries': '\uF513',
+      'ChartXAngle': '\uF514',
+      'ChartYAngle': '\uF515',
+      'Combobox': '\uF516',
+      'LineSpacing': '\uF517',
+      'Padding': '\uF518',
       'PaddingTop': '\uF519',
       'PaddingBottom': '\uF51A',
       'PaddingLeft': '\uF51B',
@@ -55,7 +63,6 @@ export function initializeIcons(
       'DrillExpand': '\uF534',
       'DrillShow': '\uF535',
       'OneDriveFolder16': '\uF53B',
-      'ChronosLogo': '\uF541',
       'FunctionalManagerDashboard': '\uF542',
       'BIDashboard': '\uF543',
       'CodeEdit': '\uF544',
@@ -117,14 +124,7 @@ export function initializeIcons(
       'DeleteRows': '\uF64F',
       'DeleteRowsMirrored': '\uF650',
       'DeleteTable': '\uF651',
-      'VersionControlPush': '\uF664',
-      'ExternalGit': '\uF665',
-      'WhiteBoardApp16': '\uF673',
-      'WhiteBoardApp32': '\uF674',
-      'InsertSignatureLine': '\uF677',
-      'ArrangeByFrom': '\uF678',
-      'Phishing': '\uF679',
-      'CreateMailRule': '\uF67A'
+      'VersionControlPush': '\uF664'
     }
   };
 

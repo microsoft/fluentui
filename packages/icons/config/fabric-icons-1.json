@@ -2,20 +2,13 @@
 	"fontName": "fabric-icons-1",
 	"fontFamilyName": "FabricMDL2Icons-1",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "Ferry",
-			"unicode": "E7E3"
-		},
-		{
-			"name": "Highlight",
-			"unicode": "E7E6"
-		},
 		{
 			"name": "PowerButton",
 			"unicode": "E7E8"
@@ -407,6 +400,14 @@
 		{
 			"name": "Group",
 			"unicode": "E902"
+		},
+		{
+			"name": "World",
+			"unicode": "E909"
+		},
+		{
+			"name": "Comment",
+			"unicode": "E90A"
 		}
 	]
 }

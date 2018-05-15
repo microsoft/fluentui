@@ -2,20 +2,13 @@
 	"fontName": "fabric-icons-2",
 	"fontFamilyName": "FabricMDL2Icons-2",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "World",
-			"unicode": "E909"
-		},
-		{
-			"name": "Comment",
-			"unicode": "E90A"
-		},
 		{
 			"name": "DockLeft",
 			"unicode": "E90C"
@@ -51,6 +44,10 @@
 		{
 			"name": "AlarmClock",
 			"unicode": "E919"
+		},
+		{
+			"name": "Photo",
+			"unicode": "E91B"
 		},
 		{
 			"name": "Hospital",
@@ -125,7 +122,7 @@
 			"unicode": "E940"
 		},
 		{
-			"name": "OneDrive",
+			"name": "OneDriveLogo",
 			"unicode": "E941"
 		},
 		{
@@ -251,6 +248,10 @@
 		{
 			"name": "Robot",
 			"unicode": "E99A"
+		},
+		{
+			"name": "Manufacturing",
+			"unicode": "E99C"
 		},
 		{
 			"name": "LockSolid",

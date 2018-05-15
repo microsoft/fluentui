@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "updated fabric icons with FabMDL2 v2.79",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "ahackett@microsoft.com"
+}
