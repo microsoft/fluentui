@@ -8,7 +8,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
   role="application"
 >
   <div
-    aria-labelledby=" "
     className=
         ms-ChoiceFieldGroup
         {

@@ -88,7 +88,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
         <div
           className={ classNames.root }
           role='radiogroup'
-          { ...(ariaLabelledBy && { "aria-labelledby": ariaLabelledBy }) }
+          { ...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }) }
         >
           { label && (<Label className={ classNames.label } required={ required } id={ this._id + '-label' }>{ label }</Label>) }
           <div className={ classNames.flexContainer }>
