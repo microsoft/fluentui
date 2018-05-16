@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`
     },
     icons: {
       'GlobalNavButton': '\uE700',

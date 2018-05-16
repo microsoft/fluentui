@@ -72,7 +72,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <ContextualMenuSectionExample />
             </ExampleCard>
             <ExampleCard
-              title='ContextualMenu with checkable menu items and toggable split button'
+              title='ContextualMenu with checkable menu items and toggleable split button'
               code={ ContextualMenuCheckmarksExampleCode }
             >
               <ContextualMenuCheckmarksExample />
