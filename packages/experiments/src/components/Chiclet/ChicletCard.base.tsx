@@ -27,7 +27,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render() {
-    const { title, openGraphType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, getStyles } = this.props;
+    const { title, itemType, description, image, imageType, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, getStyles } = this.props;
     const actionable = (onClick) ? true : false;
 
     this._classNames = getClassNames(getStyles, { theme: theme! });
@@ -36,7 +36,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
-    var preview = this._renderPreviewImage(image, imageHeight, imageWidth, openGraphType);
+    var preview = this._renderPreviewImage(image, imageHeight, imageWidth, itemType);
 
     return (
       <div
@@ -70,7 +70,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
     );
   }
 
-  private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, openGraphType?: string, imageAlt?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, itemType?: string, imageAlt?: string): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     let image;
     if (imageUrl != null) {
       image = (
@@ -88,7 +88,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
         <Image
           width={ PREVIEW_IMAGE_WIDTH }
           height={ PREVIEW_IMAGE_HEIGHT }
-          src={ openGraphType ? `${ASSET_CDN_BASE_URL}/brand-icons/document/svg/` + openGraphType + `_48x1.svg` : TestImages.documentPreview /* @todo: this will be replaced by something built by the design team */ }
+          src={ itemType ? `${ASSET_CDN_BASE_URL}/brand-icons/document/svg/` + itemType + `_48x1.svg` : TestImages.documentPreview /* @todo: this will be replaced by something built by the design team */ }
           role='presentation'
           alt={ imageAlt ? imageAlt : undefined }
         />
@@ -96,11 +96,11 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
     }
 
     let src;
-    if (openGraphType != null) {
-      src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + openGraphType + `_16x1_5.svg`;
+    if (itemType != null) {
+      src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + itemType + `_16x1_5.svg`;
     }
     let icon = <img className={ mergeStyles(this._classNames.icon) } src={ src } />;
-    switch (openGraphType) { // for "hero" apps, we'll use the app icons
+    switch (itemType) { // for "hero" apps, we'll use the app icons
       case "word":
       case "docx":
         icon = <img className={ mergeStyles(this._classNames.icon) } src={ `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg` } />;

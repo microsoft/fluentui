@@ -77,10 +77,10 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   theme?: ITheme;
 
   /**
-   * OpenGraph props.
+   * Item metadata.
    */
   title?: string;
-  openGraphType?: string;
+  itemType?: string;
   image?: string;
   imageSecureUrl?: string;
 

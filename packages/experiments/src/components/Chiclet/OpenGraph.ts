@@ -25,7 +25,7 @@ function _getOpenGraphValues(metaElements: NodeListOf<HTMLMetaElement>, attribut
           attributes.title = metaElements[i].content;
           break;
         case "og:type":
-          attributes.openGraphType = metaElements[i].content;
+          attributes.itemType = metaElements[i].content;
           break;
         case "og:image":
         case "og:image:url":
@@ -45,9 +45,6 @@ function _getOpenGraphValues(metaElements: NodeListOf<HTMLMetaElement>, attribut
           break;
         case "og:image:alt":
           attributes.imageAlt = metaElements[i].content;
-          break;
-        case "og:description":
-          attributes.description = metaElements[i].content;
           break;
         case "og:url":
           attributes.url = metaElements[i].content;

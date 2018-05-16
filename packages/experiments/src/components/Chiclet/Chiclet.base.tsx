@@ -21,6 +21,5 @@ export class ChicletBase extends React.Component<IChicletProps, IChicletCardProp
   }
 
   private _onClick(): void { // @todo: default click handler
-    console.log("You clicked the Chiclet");
   }
 }
