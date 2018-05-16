@@ -5,7 +5,7 @@ import {
   elementContains,
   getNativeProps,
   divProperties,
-  getFirstFocusable,
+  getFirstTabbable,
   getLastTabbable,
   getNextElement,
   focusAsync,
@@ -142,15 +142,15 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       return;
     }
 
-    const _firstFocusableChild = getFirstFocusable(this._root.current, this._root.current.firstChild as HTMLElement, true);
-    const _lastFocusableChild = getLastTabbable(this._root.current, this._root.current.lastChild as HTMLElement, true);
+    const _firstTabbableChild = getFirstTabbable(this._root.current, this._root.current.firstChild as HTMLElement, true);
+    const _lastTabbableChild = getLastTabbable(this._root.current, this._root.current.lastChild as HTMLElement, true);
 
-    if (ev.shiftKey && _firstFocusableChild === ev.target) {
-      focusAsync(_lastFocusableChild);
+    if (ev.shiftKey && _firstTabbableChild === ev.target) {
+      focusAsync(_lastTabbableChild);
       ev.preventDefault();
       ev.stopPropagation();
-    } else if (!ev.shiftKey && _lastFocusableChild === ev.target) {
-      focusAsync(_firstFocusableChild);
+    } else if (!ev.shiftKey && _lastTabbableChild === ev.target) {
+      focusAsync(_firstTabbableChild);
       ev.preventDefault();
       ev.stopPropagation();
     }
