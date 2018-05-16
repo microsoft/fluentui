@@ -74,7 +74,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this._id = getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
 
-    this._latestValue = props.value || props.defaultValue || '';
+    if (props.value !== undefined) {
+      this._latestValue = props.value;
+    } else if (props.defaultValue !== undefined) {
+      this._latestValue = props.defaultValue;
+    } else {
+      this._latestValue = '';
+    }
 
     this.state = {
       value: this._latestValue,
@@ -154,7 +160,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     } = this.props;
     const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
-    this._isDescriptionAvailable = Boolean(description || errorMessage);
+
+    // If a custom description render function is supplied then treat description as always available.
+    // Otherwise defer to the presence of description or error message text.
+    this._isDescriptionAvailable = Boolean(this.props.onRenderDescription || description || errorMessage);
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
@@ -406,8 +415,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this._latestValue = value;
 
     this.setState({
-      value: value,
-      errorMessage: ''
+      value: value
     } as ITextFieldState,
       () => {
         this._adjustInputHeight();

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
+import { INavLinkGroup } from '../Nav.types';
 import { NavToggler } from '../NavToggler';
 
 export class NavExample extends React.Component<{}, {}> {
@@ -19,7 +19,7 @@ export class NavExample extends React.Component<{}, {}> {
               { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key3' }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document' },
+          { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document', isHidden: true },
           { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key5', icon: 'Page' },
           {
             name: 'Notebook - test with long name to show ellipse',
@@ -50,13 +50,24 @@ export class NavExample extends React.Component<{}, {}> {
             icon: 'DietPlanNotebook'
           },
         ]
+      },
+      {
+        links: [
+          { name: 'Edit', url: '#', onClick: this._onEditClick, icon: 'Edit', key: 'key13' },
+          { name: 'Show less', showMoreText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' },
+        ],
+        isCustomizationGroup: true
       }
     ];
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' />
+        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' enableCustomization={ true } />
       </div>
     );
+  }
+
+  private _onEditClick(): void {
+    alert('open edit nav view / flyout');
   }
 }

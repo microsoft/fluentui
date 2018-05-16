@@ -1,6 +1,13 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Mon, 16 Apr 2018 10:23:26 GMT and should not be manually modified.
+This log was last generated on Wed, 16 May 2018 00:05:17 GMT and should not be manually modified.
+
+## 5.8.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Update to FabricMDL2 v2.80.
 
 ## 5.7.1
 Mon, 16 Apr 2018 10:23:26 GMT

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Toggle } from './Toggle';
 import { IStyle, ITheme } from '../../Styling';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IToggle {
   focus: () => void;
@@ -70,6 +71,11 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement | Toggle>
    * Custom styles for this component
    */
   styles?: IToggleStyles;
+
+  /**
+   * Optional keytip for this toggle
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export interface IToggleStyles {

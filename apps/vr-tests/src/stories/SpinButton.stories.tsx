@@ -6,7 +6,7 @@ import { FabricDecoratorFixedWidth } from '../utilities';
 import { SpinButton } from 'office-ui-fabric-react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-let props = {
+const props = {
   defaultValue: '0',
   label: 'Basic SpinButton:',
   min: 0,
@@ -36,21 +36,21 @@ storiesOf('SpinButton', module)
     </Screener>
   )).add('Root', () => (
     <SpinButton
-      {...props}
+      { ...props }
     />
   )).add('Disabled', () => (
     <SpinButton
-      {...props}
+      { ...props }
       disabled
     />
   )).add('With icon', () => (
     <SpinButton
-      {...props}
-      iconProps={ { iconName: 'IncreaseIndentLegacy' } }
+      { ...props }
+      iconProps={ { iconName: 'IncreaseIndentLegacy', } }
     />
   )).add('Label at end', () => (
     <SpinButton
-      {...props}
+      { ...props }
       labelPosition={ Position.end }
     />
   ));

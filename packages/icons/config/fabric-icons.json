@@ -2,6 +2,7 @@
 	"fontName": "fabric-icons",
 	"fontFamilyName": "FabricMDL2Icons",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {

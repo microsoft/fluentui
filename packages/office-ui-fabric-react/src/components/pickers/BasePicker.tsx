@@ -175,9 +175,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     } = this.props;
 
     const currentIndex = this.suggestionStore.currentIndex;
-    const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
-    const selectedSuggestionAlert = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
     const activeDescendant = currentIndex > -1 ? 'sug-' + currentIndex : undefined;
+
+    let selectedSuggestionAlert = undefined;
+    if (this.props.enableSelectedSuggestionAlert) {
+      const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
+      const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
+      selectedSuggestionAlert = (<div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlertText } </div>);
+    }
 
     return (
       <div
@@ -192,7 +197,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
-          <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
+          { selectedSuggestionAlert }
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }

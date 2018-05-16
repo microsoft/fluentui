@@ -132,6 +132,32 @@ describe('TextField', () => {
     expect(inputDOM.disabled).toEqual(true);
   });
 
+  it('should render a value of 0 when given the number 0', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        value={ 0 as any }
+      />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    // Assert on the input element.
+    expect(inputDOM.value).toEqual('0');
+  });
+
+  it('should render a default value of 0 when given the number 0', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue={ 0 as any }
+      />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    // Assert on the input element.
+    expect(inputDOM.defaultValue).toEqual('0');
+  });
+
   describe('error message', () => {
     const errorMessage = 'The string is too long, should not exceed 3 characters.';
 
@@ -398,6 +424,32 @@ describe('TextField', () => {
     );
 
     expect(renderedDOM.querySelector('textarea')!.value).toEqual('initial value');
+  });
+
+  it('can render description text', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        description='A custom description'
+      />
+    );
+
+    expect(renderedDOM.querySelector('.ms-TextField-description')!.textContent).toEqual('A custom description');
+  });
+
+  it('can render a static custom description without description text', () => {
+    let callCount = 0;
+    const onRenderDescription = () => {
+      callCount++;
+      return (<strong>A custom description</strong>);
+    };
+
+    renderIntoDocument(
+      <TextField
+        onRenderDescription={ onRenderDescription }
+      />
+    );
+
+    expect(callCount).toEqual(1);
   });
 
   it('should call onChanged handler for input change', () => {
