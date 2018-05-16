@@ -71,7 +71,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * If the FocusTrapZone is declared focusable (data-is-focusable=true) and it
    * receives focus directly, or if .focus() is called, it will pass on
    * focus to a child element.  This prop determines how that element is selected.
-   * @default FocusTransferRule.FirstFocusable
+   * @default FocusTransferRule.firstFocusable
    */
   focusTransferRule?: FocusTransferRule;
 
