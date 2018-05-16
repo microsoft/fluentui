@@ -9,6 +9,7 @@ import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerCustomElementsExample } from './examples/Shimmer.CustomElements.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
 import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
+import { ShimmerStylingExample } from './examples/Shimmer.Styling.Example';
 
 const ShimmerBasicExampleCode = require(
   '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx'
@@ -16,6 +17,10 @@ const ShimmerBasicExampleCode = require(
 
 const ShimmerCustomExampleCode = require(
   '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx'
+) as string;
+
+const ShimmerStylingExampleCode = require(
+  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Styling.Example.tsx'
 ) as string;
 
 const ShimmerLoadDataExampleCode = require(
@@ -57,6 +62,12 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               code={ ShimmerApplicationExampleCode }
             >
               <ShimmerApplicationExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Style override of shimmering wave using "getStyles" prop'
+              code={ ShimmerStylingExampleCode }
+            >
+              <ShimmerStylingExample />
             </ExampleCard>
           </div>
         }
