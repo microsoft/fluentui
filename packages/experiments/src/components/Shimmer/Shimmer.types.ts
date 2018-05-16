@@ -17,14 +17,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: (component: IShimmer | null) => void;
 
   /**
-   * Sets the width of the shimmer wave wrapper in percentages.
-   * Deprecated, use a more specific width like 'widthInPixel' or 'widthInPercentage'.
-   * @default 100%
-   * @deprecated Use a more specific width like 'widthInPixel' or 'widthInPercentage'.
-   */
-  width?: number;
-
-  /**
    * Sets the width of the shimmer wave wrapper in percentages relative to the containig parent element.
    * @default 100%
    */
@@ -41,21 +33,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * @default false
    */
   isDataLoaded?: boolean;
-
-  /**
-   * Use when providing custom skeleton as children wrapped by shimmer.
-   * Deprecated in favor of 'customElementsGroup'
-   * @default false
-   * @deprecated Use 'customElementsGroup' instead.
-   */
-  isBaseStyle?: boolean;
-
-  /**
-   * Elements to render in one line of the Shimmer.
-   * Deprecated, use 'shimmerElements' for better semantic meaning.
-   * @deprecated Use 'shimmerElements' instead.
-   */
-  lineElements?: IShimmerElement[];
 
   /**
    * Elements to render in one line of the Shimmer.
@@ -76,6 +53,29 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * Additional CSS class(es) to apply to the Shimmer container.
    */
   className?: string;
+
+  /**
+   * Elements to render in one line of the Shimmer.
+   * Deprecated, use 'shimmerElements' for better semantic meaning.
+   * @deprecated Use 'shimmerElements' instead.
+   */
+  lineElements?: IShimmerElement[];
+
+  /**
+   * Sets the width of the shimmer wave wrapper in percentages.
+   * Deprecated, use a more specific width like 'widthInPixel' or 'widthInPercentage'.
+   * @default 100%
+   * @deprecated Use a more specific width like 'widthInPixel' or 'widthInPercentage'.
+   */
+  width?: number;
+
+  /**
+   * Use when providing custom skeleton as children wrapped by shimmer.
+   * Deprecated in favor of 'customElementsGroup'
+   * @default false
+   * @deprecated Use 'customElementsGroup' instead.
+   */
+  isBaseStyle?: boolean;
 }
 
 /**
