@@ -623,7 +623,7 @@ function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge
   const directionalHint = DirectionalDictionary[targetEdge];
 
   // If cover target is set, then the max height should be calculated using the opposite of the target edge since
-  // that's the direction that the callout will callout expand in.
+  // that's the direction that the callout will expand in.
   // For instance, if the directionalhint is bottomLeftEdge then the callout will position so it's bottom edge
   // is aligned with the bottom of the target and expand up towards the top of the screen and the calculated max height
   // is (bottom of target) - (top of screen) - gapSpace.
