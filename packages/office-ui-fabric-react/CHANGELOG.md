@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 15 May 2018 07:09:49 GMT and should not be manually modified.
+This log was last generated on Wed, 16 May 2018 00:05:17 GMT and should not be manually modified.
+
+## 5.103.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Buttons: Deprecate `description` prop in favor of more consistent `secondaryText` prop.
+
+### Patches
+
+- Fix markdown file paths on SwatchColorPicker docs page.
+- Finishing the rest of the Calendar style updates
+- Fix detailslist custom group header example by invoking correct onClick for select and collapse toggles.
+- Fix misuse of aria props on ProgressIndicator
 
 ## 5.102.0
 Tue, 15 May 2018 07:09:49 GMT

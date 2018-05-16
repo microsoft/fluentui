@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.39.0",
+      "tag": "@uifabric/experiments_v5.39.0",
+      "date": "Wed, 16 May 2018 00:05:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "d5cf3e5a688a68fb79e3ba56ed1f865b9dbb251a",
+            "comment": "use better icon for MalwareDetectedSignal"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "0d3d9f2137f96c68b5e1e0a1bf23cb2ec69d12cd",
+            "comment": "Experiments/Nav: accessibility changes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.102.0 <6.0.0` to `>=5.103.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.38.2",
       "tag": "@uifabric/experiments_v5.38.2",
       "date": "Fri, 11 May 2018 04:21:29 GMT",

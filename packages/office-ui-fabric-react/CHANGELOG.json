@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.103.0",
+      "tag": "office-ui-fabric-react_v5.103.0",
+      "date": "Wed, 16 May 2018 00:05:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "484ed68d3dfba35781449ed20498ca74bf46e9fe",
+            "comment": "Fix markdown file paths on SwatchColorPicker docs page."
+          },
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "d7ca31cab2e99a7674ce55da2c70c7ba29689e87",
+            "comment": "Finishing the rest of the Calendar style updates"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "7183e967f5dc38ec572ca35c55f344e00a082892",
+            "comment": "Fix detailslist custom group header example by invoking correct onClick for select and collapse toggles."
+          },
+          {
+            "author": "Ian Craig <ian-craig@outlook.com>",
+            "commit": "0297e2101a84ffe514a6b59438708c75b2a4831c",
+            "comment": "Fix misuse of aria props on ProgressIndicator"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "8c4193280c7b085fb0b6ef6fa3fc3920faa4bc94",
+            "comment": "Buttons: Deprecate `description` prop in favor of more consistent `secondaryText` prop."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.102.0",
       "tag": "office-ui-fabric-react_v5.102.0",
       "date": "Tue, 15 May 2018 07:09:49 GMT",
