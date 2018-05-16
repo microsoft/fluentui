@@ -157,7 +157,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     // If a custom description render function is supplied then treat description as always available.
     // Otherwise defer to the presence of description or error message text.
-    this._isDescriptionAvailable = Boolean(this.props.onRenderDescription || (description || errorMessage));
+    this._isDescriptionAvailable = Boolean(this.props.onRenderDescription || description || errorMessage);
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
