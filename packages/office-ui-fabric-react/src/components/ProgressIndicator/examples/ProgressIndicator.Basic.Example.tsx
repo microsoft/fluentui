@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IProgressIndicatorBasicExampleState {
   percentComplete: number;
@@ -8,7 +9,6 @@ export interface IProgressIndicatorBasicExampleState {
 
 const INTERVAL_DELAY = 100;
 const INTERVAL_INCREMENT = 0.01;
-const RESTART_WAIT_TIME = 2000;
 
 export class ProgressIndicatorBasicExample extends React.Component<{}, IProgressIndicatorBasicExampleState> {
   private _interval: number;
@@ -22,11 +22,6 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     this.state = {
       percentComplete: 0
     };
-    this._startProgressDemo = this._startProgressDemo.bind(this);
-  }
-
-  public componentDidMount(): void {
-    this._startProgressDemo();
   }
 
   public componentWillUnmount(): void {
@@ -37,29 +32,31 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     const { percentComplete } = this.state;
 
     return (
-      <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />
+      <div>
+        <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />
+        <DefaultButton text="Reset" onClick={this._resetProgress} />
+        <DefaultButton text="Start" onClick={this._startProgressDemo} />
+      </div>
     );
   }
 
-  private _startProgressDemo(): void {
-    // reset the demo
-    this.setState({
-      percentComplete: 0
-    });
+  private _resetProgress = (): void => {
+    this.setState({ percentComplete: 0 });
+    this._async.clearInterval(this._interval);
+  };
 
-    // update progress
+  private _startProgressDemo = (): void => {
     this._interval = this._async.setInterval(() => {
       let percentComplete = this.state.percentComplete + INTERVAL_INCREMENT;
 
-      // once complete, set the demo to start again
       if (percentComplete >= 1.0) {
         percentComplete = 1.0;
         this._async.clearInterval(this._interval);
-        this._async.setTimeout(this._startProgressDemo, RESTART_WAIT_TIME);
       }
+
       this.setState({
         percentComplete: percentComplete
       });
     }, INTERVAL_DELAY);
-  }
+  };
 }
