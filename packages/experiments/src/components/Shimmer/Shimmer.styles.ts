@@ -1,5 +1,6 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { keyframes, DefaultPalette } from '../../Styling';
+import { getRTL } from '../../Utilities';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
@@ -9,6 +10,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     widthInPixel,
     className
   } = props;
+
+  const isRTL = getRTL();
 
   const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
 
@@ -23,6 +26,15 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
     },
     '100%': {
+      backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
+    }
+  });
+
+  const shimmerAnimationRTL: string = keyframes({
+    '100%': {
+      backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
+    },
+    '0%': {
       backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
     }
   });
@@ -51,7 +63,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
-        animationName: shimmerAnimation,
+        animationName: isRTL ? shimmerAnimationRTL : shimmerAnimation,
         transition: 'opacity 200ms, background 200ms'
       },
       isDataLoaded && {
