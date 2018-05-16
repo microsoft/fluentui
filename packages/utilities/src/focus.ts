@@ -22,7 +22,8 @@ export function getFirstFocusable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, false /*suppressChildTraversal*/, includeElementsInFocusZones);
+  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    false /*suppressChildTraversal*/, includeElementsInFocusZones);
 }
 
 /**
@@ -35,7 +36,8 @@ export function getLastFocusable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, true /*traverseChildren*/, includeElementsInFocusZones);
+  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    true /*traverseChildren*/, includeElementsInFocusZones);
 }
 
 /**
@@ -49,8 +51,8 @@ export function getFirstTabbable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, false /*suppressChildTraversal*/,
-    includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
+  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    false /*suppressChildTraversal*/, includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
 }
 
 /**
@@ -64,8 +66,8 @@ export function getLastTabbable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, true /*traverseChildren*/,
-    includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
+  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/,
+    true /*traverseChildren*/, includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
 }
 
 /**
