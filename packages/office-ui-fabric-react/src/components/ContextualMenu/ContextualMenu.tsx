@@ -558,6 +558,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean): JSX.Element {
     const { contextualMenuItemAs } = this.props;
+    const { expandedMenuItemKey } = this.state;
 
     return (
       <ContextualMenuSplitButton
@@ -580,6 +581,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
         dismissMenu={ this.dismiss }
+        expandedMenuItemKey={ expandedMenuItemKey }
         onTap={ this._onPointerAndTouchEvent }
       />
     );
