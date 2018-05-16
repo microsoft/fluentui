@@ -60,7 +60,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             data-ktp-target={ keytipAttributes['data-ktp-target'] }
             ref={ (splitButton: HTMLDivElement) => this._splitButton = splitButton }
             role={ 'menuitem' }
-            aria-label={ item.ariaLabel ? item.ariaLabel : item.name }
+            aria-label={ item.ariaLabel }
             className={ classNames.splitContainer }
             aria-disabled={ isItemDisabled(item) }
             aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
