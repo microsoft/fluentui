@@ -12,12 +12,16 @@ const getClassNames = classNamesFunction<IProgressIndicatorStyleProps, IProgress
 // This prevents animations on reset to 0 scenarios
 const ZERO_THRESHOLD = 0.01;
 
+export interface IProgressindicatorState {
+  percentComplete?: number | undefined;
+}
+
 /**
  * ProgressIndicator with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
  */
 @customizable('ProgressIndicator', ['theme', 'styles'])
-export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
+export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, IProgressindicatorState> {
   public static defaultProps = {
     label: '',
     description: '',
@@ -30,6 +34,10 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     this._warnDeprecations({
       title: 'label'
     });
+
+    this.state = {
+      percentComplete: props.percentComplete
+    };
   }
 
   public render() {
@@ -74,7 +82,9 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
   }
 
   private _onRenderProgress = (props: IProgressIndicatorProps): JSX.Element => {
-    const { ariaValueText, barHeight, className, styles, theme } = this.props;
+    const { barHeight, className, styles, theme } = this.props;
+
+    const ariaValueText = this.props.ariaValueText || '%';
 
     const percentComplete =
       typeof this.props.percentComplete === 'number'
@@ -109,7 +119,22 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
           aria-valuenow={ariaValueNow}
           aria-valuetext={ariaValueText}
         />
+        <span aria-live="polite">{this.state.percentComplete + ariaValueText}</span>
       </div>
     );
   };
+
+  public componentWillReceiveProps(nextProps: IProgressIndicatorProps): void {
+    if (this.props !== nextProps) {
+      if (typeof nextProps.percentComplete === 'number' && typeof this.props.percentComplete === 'number') {
+        const nextPercentComplete = Math.min(100, Math.max(0, nextProps.percentComplete * 100));
+        if (nextPercentComplete! - this.state.percentComplete! >= 10 || nextPercentComplete === 100) {
+          // This throttles how often the screen reader updates so it can keep up with the progressbar.
+          this.setState({
+            percentComplete: Math.floor(nextPercentComplete)
+          });
+        }
+      }
+    }
+  }
 }
