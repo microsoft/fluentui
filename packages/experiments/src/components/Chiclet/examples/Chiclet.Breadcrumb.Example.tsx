@@ -8,8 +8,8 @@ import * as exampleStyles from './Chiclet.Basic.Example.scss';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
-import { Breadcrumb, IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { IRenderFunction, IComponentAs, getRTL } from '../../../Utilities';
+import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { getRTL } from '../../../Utilities';
 
 export class ChicletBreadcrumbExample extends React.Component<any, any> {
   constructor(props: {}) {
@@ -19,19 +19,22 @@ export class ChicletBreadcrumbExample extends React.Component<any, any> {
   public render() {
     var footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'Save' } }, { iconProps: { iconName: 'Share' } }];
     var footer = <FooterComponent buttonProps={ footerButtonProps } activities="10 Comments  16 Shares  87 Views" />;
-    var breadcrumb: IBreadcrumbProps = {
-      items: [
+
+    var divider = () => <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRightSmall' } className={ exampleStyles.chevron } />;
+    var breadcrumb = <Breadcrumb
+      items={ [
         { text: 'Files', 'key': 'Files' },
         { text: 'OneDrive Design', 'key': 'OneDrive Design' },
         { text: 'Emails', 'key': 'Emails' },
         { text: 'Campaigns', 'key': 'Campaigns' },
-      ]
-    };
-    var divider = () => <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRightSmall' } className={ exampleStyles.chevron } />;
-    var description =
-      <DescriptionComponent breadcrumb={ breadcrumb } onRenderItem={ this._onRenderItem } dividerAs={ divider } />
+      ] }
+      className={ exampleStyles.description }
+      onRenderItem={ this._onRenderItem }
+      dividerAs={ divider }
+    />;
+
     return (
-      <BaseChiclet url="http://localhost:4322" size={ ChicletSize.Medium } footer={ footer } description={ description }
+      <BaseChiclet url="http://localhost:4322" size={ ChicletSize.Medium } footer={ footer } description={ breadcrumb }
       />
     );
   }
@@ -81,35 +84,4 @@ function _renderFooter(buttonProps: IButtonProps[], activities: string): React.R
       }) }
     </div>
   </div>);
-}
-
-export class DescriptionComponent extends React.Component<any, any> {
-  constructor(props: {}) {
-    super(props);
-  }
-
-  public render() {
-    const { description, breadcrumb, onRenderItem, dividerAs } = this.props;
-
-    return _renderDescription(description, breadcrumb, onRenderItem, dividerAs);
-  }
-}
-
-export interface IDescriptionComponent extends React.Props<DescriptionComponent> {
-  description?: string;
-  breadcrumb?: IBreadcrumbProps;
-  onRenderItem?: IRenderFunction<IBreadcrumbItem>;
-}
-
-function _renderDescription(description: string, breadcrumb: IBreadcrumbProps, onRenderItem: IRenderFunction<IBreadcrumbItem>, dividerAs: IComponentAs<IDividerAsProps>): React.ReactElement<any> {
-  return (
-    <div>
-      <Breadcrumb
-        items={ breadcrumb.items }
-        className={ exampleStyles.description }
-        onRenderItem={ onRenderItem }
-        dividerAs={ dividerAs }
-      />
-    </div>
-  );
 }

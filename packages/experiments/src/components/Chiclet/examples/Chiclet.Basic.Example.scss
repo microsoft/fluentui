@@ -48,11 +48,16 @@
   //overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-top: 0px !important;
 }
 
 .chevron {
   font-size: 8px;
   padding-left: 3px;
   padding-right: 3px;
+}
+
+:global {
+  .ms-ChicletCard .ms-Breadcrumb {
+    margin-top: 0px;
+  }
 }
