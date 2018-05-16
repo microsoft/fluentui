@@ -18,7 +18,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
 
     return (
       <div className='shimmerBasicExample-container'>
-        Generic Shimmer with no elements provided.
+        Basic Shimmer with no elements provided. It defaults to a line of 16px height.
         <Shimmer />
         <Shimmer
           widthInPercentage={ 75 }
@@ -26,7 +26,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <Shimmer
           widthInPercentage={ 50 }
         />
-        Custom Shimmer with elements provided.
+        Basic Shimmer with elements provided.
         <Shimmer
           shimmerElements={ [
             { type: ElemType.circle },
@@ -34,7 +34,6 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line },
           ] }
         />
-        Notice how the same elements change relative to the shimmer width provided.
         <Shimmer
           shimmerElements={ [
             { type: ElemType.circle, height: 24 },

@@ -15,6 +15,7 @@ export interface IShimmerElementsGroupProps {
   shimmerElements?: IShimmerElement[];
   rowHeight?: number;
   flexWrap?: boolean;
+  width?: string;
 }
 
 export type ShimmerElementsGroup = React.StatelessComponent<IShimmerElementsGroupProps>;
@@ -23,7 +24,8 @@ export const ShimmerElementsGroup: ShimmerElementsGroup = (props: IShimmerElemen
   const {
     shimmerElements,
     rowHeight,
-    flexWrap = false
+    flexWrap = false,
+    width
   } = props;
   const height = rowHeight ? rowHeight : findMaxElementHeight(shimmerElements ? shimmerElements : []);
 
@@ -33,7 +35,8 @@ export const ShimmerElementsGroup: ShimmerElementsGroup = (props: IShimmerElemen
         {
           display: 'flex',
           alignItems: 'center',
-          flexWrap: flexWrap ? 'wrap' : 'nowrap'
+          flexWrap: flexWrap ? 'wrap' : 'nowrap',
+          width: width ? width : 'auto'
         }
       }
     >

@@ -35,25 +35,25 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         exampleCards={
           <div>
             <ExampleCard
-              title='Basic Shimmer'
+              title='Shimmer with basic elements using the "shimmerElements" prop'
               code={ ShimmerBasicExampleCode }
             >
               <ShimmerBasicExample />
             </ExampleCard>
             <ExampleCard
-              title='Custom Elements Shimmer'
+              title='Shimmer with custom elements using the "customElementsGroup" prop'
               code={ ShimmerCustomExampleCode }
             >
               <ShimmerCustomElementsExample />
             </ExampleCard>
             <ExampleCard
-              title='Enabling Data Shimmer'
+              title='Shimmer swapping with the content it replaces'
               code={ ShimmerLoadDataExampleCode }
             >
               <ShimmerLoadDataExample />
             </ExampleCard>
             <ExampleCard
-              title='Details List with 500 items loading in async way and having enabled Shimmer.'
+              title='Details List with 500 items simulating loading data in async manner and having Shimmer enabled.'
               code={ ShimmerApplicationExampleCode }
             >
               <ShimmerApplicationExample />
