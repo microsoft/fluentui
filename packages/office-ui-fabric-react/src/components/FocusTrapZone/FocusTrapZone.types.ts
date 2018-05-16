@@ -74,9 +74,4 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * @default FocusTransferRule.firstFocusable
    */
   focusTransferRule?: FocusTransferRule;
-
-  /**
-   * Optional, onKeyDown event handler
-   */
-  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
