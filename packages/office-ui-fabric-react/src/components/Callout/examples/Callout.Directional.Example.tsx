@@ -96,6 +96,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             isBeakVisible={ isBeakVisible }
             beakWidth={ beakWidth }
             onDismiss={ this._onCalloutDismiss }
+            directionalHintFixed={ true }
             directionalHint={ directionalHint }
           >
             <div className='ms-CalloutExample-header'>

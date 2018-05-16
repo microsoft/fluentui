@@ -634,7 +634,7 @@ function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge
   } else if (target === RectangleEdge.bottom) {
     maxHeight = bounds.bottom - _getEdgeValue(targetRectangle, directionalHint.targetEdge) - gapSpace;
   } else {
-    maxHeight = bounds.top - bounds.bottom - gapSpace;
+    maxHeight = bounds.bottom - targetRectangle.top - gapSpace;
   }
 
   return maxHeight > 0 ? maxHeight : bounds.height;
