@@ -35,7 +35,28 @@ describe('ComboBox', () => {
       };
     };
     const component = renderer.create(
-      <ComboBox options={ DEFAULT_OPTIONS } />,
+      <ComboBox
+        options={ DEFAULT_OPTIONS }
+        text={ 'testValue' }
+      />,
+      { createNodeMock }
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a ComboBox with a Keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const createNodeMock = (el: React.ReactElement<{}>) => {
+      return {
+        __events__: {}
+      };
+    };
+    const component = renderer.create(
+      <ComboBox options={ DEFAULT_OPTIONS } keytipProps={ keytipProps } />,
       { createNodeMock }
     );
     const tree = component.toJSON();
@@ -155,7 +176,7 @@ describe('ComboBox', () => {
     const wrapper = mount(
       <ComboBox
         label='testgroup'
-        value='1'
+        text='1'
         options={ DEFAULT_OPTIONS }
       />);
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -169,7 +190,7 @@ describe('ComboBox', () => {
       <ComboBox
         label='testgroup'
         options={ [] }
-        value='1'
+        text='1'
       />);
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
     const inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any> = comboBoxRoot.find('input');
@@ -378,6 +399,32 @@ describe('ComboBox', () => {
     buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
     expect(returnUndefined.mock.calls.length).toBe(1);
+  });
+
+  it('Call onMenuOpened when touch start on the input', () => {
+    let comboBoxRoot;
+    let inputElement;
+    const returnUndefined = jest.fn();
+
+    const wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS2 }
+        onMenuOpen={ returnUndefined }
+        allowFreeform={ true }
+      />);
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+
+    inputElement = comboBoxRoot.find('input');
+
+    // in a normal scenario, when we do a touchstart we would also cause a
+    // click event to fire. This doesn't happen in the simulator so we're
+    // manually adding this in.
+    inputElement.simulate('touchstart');
+    inputElement.simulate('click');
+
+    expect(wrapper.find('.is-open').length).toEqual(1);
   });
 
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {

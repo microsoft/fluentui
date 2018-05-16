@@ -1,3 +1,4 @@
-- Ensure that a parent component has a CSS height, or max-height attribute set (and any intermediary containers have an inherit, or explicit height/max-height set).
+- ScrollablePane uses `position: absolute`.  Ensure that the parent element has an explicit `height` and `position: relative`, or has space already allocated for ScrollablePane (e.g: flexbox).
 - Use Sticky component on block level elements
 - Sticky component are ideally section headers and/or footers
+- Ensure that the total height of Sticky components do not exceed the height of the ScrollablePane

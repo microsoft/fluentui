@@ -15,7 +15,7 @@ export class PanelSmallFluidExample extends React.Component<{}, {
     return (
       <div>
         <DefaultButton
-          description='Opens the Sample Panel'
+          secondaryText='Opens the Sample Panel'
           // tslint:disable-next-line:jsx-no-lambda
           onClick={ () => this.setState({ showPanel: true }) }
           text='Open Panel'

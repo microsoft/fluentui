@@ -1,23 +1,24 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { IIconProps, IconType } from './Icon.types';
+import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
 import { Image } from '../Image/Image';
 import { ImageLoadState } from '../Image/Image.types';
 import {
-  css,
   getNativeProps,
   htmlElementProperties,
-  BaseComponent
+  BaseComponent,
+  classNamesFunction
 } from '../../Utilities';
 import { getIcon } from '../../Styling';
-import { getClassNames } from './Icon.classNames';
 
 export interface IIconState {
   imageLoadError: boolean;
 }
 
-export class Icon extends BaseComponent<IIconProps, IIconState> {
+const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
+
+export class IconBase extends BaseComponent<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
@@ -25,82 +26,55 @@ export class Icon extends BaseComponent<IIconProps, IIconState> {
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     const {
       ariaLabel,
       className,
-      styles,
+      getStyles,
       iconName,
       imageErrorAs,
+      styles,
     } = this.props;
-    const classNames = getClassNames(
+    const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
+    const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
+    const { iconClassName, children } = this._getIconContent(iconName);
+
+    const classNames = getClassNames(getStyles, {
+      className,
+      iconClassName,
+      isImage,
+      isPlaceholder,
       styles
-    );
+    });
 
-    const containerProps = ariaLabel ? { 'aria-label': ariaLabel, 'data-icon-name': iconName, } : {
-      role: 'presentation',
-      'aria-hidden': true,
-      'data-icon-name': iconName,
-    };
-
-    if (this.props.iconType === IconType.image || this.props.iconType === IconType.Image) {
-      const containerClassName = css(
-        'ms-Icon-imageContainer',
-        classNames.root,
-        classNames.imageContainer,
-        className
-      );
-      const { imageLoadError } = this.state;
-      const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
-      const ImageType = imageLoadError && imageErrorAs || Image;
-      return (
-        <div
-          { ...containerProps }
-          className={
-            css(
-              containerClassName,
-              classNames.root
-            ) }
-        >
-          <ImageType { ...imageProps } />
-        </div>
-      );
-    } else if (typeof iconName === 'string' && iconName.length === 0) {
-      return (
-        <i
-          { ...containerProps }
-          { ...getNativeProps(this.props, htmlElementProperties) }
-          className={
-            css(
-              'ms-Icon-placeHolder',
-              classNames.rootHasPlaceHolder,
-              this.props.className
-            ) }
-        />
-      );
-    } else {
-      const iconDefinition = getIcon(iconName) || {
-        subset: {
-          className: undefined
-        },
-        code: undefined
+    const containerProps = ariaLabel ?
+      {
+        'aria-label': ariaLabel,
+      } : {
+        role: 'presentation',
+        'aria-hidden': true,
       };
 
-      return (
-        <i
-          { ...containerProps }
-          { ...getNativeProps(this.props, htmlElementProperties) }
-          className={
-            css(
-              iconDefinition.subset.className,
-              classNames.root,
-              this.props.className
-            ) }
-        >
-          { iconDefinition.code }
-        </i>
-      );
-    }
+    const RootType = isImage ? 'div' : 'i';
+    const nativeProps = getNativeProps(this.props, htmlElementProperties);
+    const { imageLoadError } = this.state;
+    const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
+    const ImageType = imageLoadError && imageErrorAs || Image;
+
+    return (
+      <RootType
+        data-icon-name={ iconName }
+        { ...nativeProps }
+        { ...containerProps }
+        className={ classNames.root }
+      >
+        { isImage ? (
+          <ImageType { ...imageProps } />
+        ) : (
+            children
+          ) }
+      </RootType>
+    );
   }
 
   private onImageLoadingStateChange = (state: ImageLoadState): void => {
@@ -110,5 +84,19 @@ export class Icon extends BaseComponent<IIconProps, IIconState> {
     if (state === ImageLoadState.error) {
       this.setState({ imageLoadError: true });
     }
+  }
+
+  private _getIconContent(name?: string) {
+    const iconDefinition = getIcon(name) || {
+      subset: {
+        className: undefined
+      },
+      code: undefined
+    };
+
+    return {
+      children: iconDefinition.code,
+      iconClassName: iconDefinition.subset.className
+    };
   }
 }
