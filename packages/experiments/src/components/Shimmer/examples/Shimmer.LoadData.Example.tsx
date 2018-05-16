@@ -52,7 +52,13 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
         <Shimmer
           isDataLoaded={ isDataLoadedOne }
         >
-          <div>
+          <div
+            style={ {
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap'
+            } }
+          >
             { contentOne }
             { contentOne }
             { contentOne }
