@@ -177,7 +177,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Description of the action this button takes.
    * Only used for compound buttons
    */
-  description?: string;
+  secondaryText?: string;
 
   /**
    * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
@@ -249,6 +249,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Note: This may increase the amount of time it takes for the button itself to mount.
    */
   persistMenu?: boolean;
+
+  /**
+   * Style for the description text if applicable (for compound buttons.)
+   * @deprecated Use 'secondaryText' instead.
+   */
+  description?: IStyle;
 }
 
 export enum ElementType {

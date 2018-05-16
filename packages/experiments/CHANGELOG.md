@@ -1,6 +1,24 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 10 May 2018 10:27:25 GMT and should not be manually modified.
+This log was last generated on Wed, 16 May 2018 00:05:17 GMT and should not be manually modified.
+
+## 5.39.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Experiments/Nav: accessibility changes
+
+### Patches
+
+- use better icon for MalwareDetectedSignal
+
+## 5.38.2
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Fix Fluent palette color names
 
 ## 5.38.1
 Thu, 10 May 2018 10:27:25 GMT
