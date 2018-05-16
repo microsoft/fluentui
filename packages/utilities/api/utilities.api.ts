@@ -128,6 +128,11 @@ export function getFirstFocusable(rootElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
+export function getFirstTabbable(rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
+
+// @public
 export function getId(prefix?: string): string;
 
 // @public

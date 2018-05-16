@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "added getFirstTabbable, updated getNextElement to take tabbable param like getPreviousElement, fixed isElementTabbable to not assume default value of 0 for tabIndex",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "benw@microsoft.com"
+}

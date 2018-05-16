@@ -39,6 +39,19 @@ export function getLastFocusable(
 }
 
 /**
+ * Gets the first tabbable element.
+ *
+ * @public
+ */
+export function getFirstTabbable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
+
+  return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones, false, true);
+}
+
+/**
  * Gets the last tabbable element.
  *
  * @public
@@ -191,7 +204,8 @@ export function getNextElement(
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
   includeElementsInFocusZones?: boolean,
-  allowFocusRoot?: boolean): HTMLElement | null {
+  allowFocusRoot?: boolean,
+  tabbable?: boolean): HTMLElement | null {
 
   if (
     !currentElement ||
@@ -202,7 +216,7 @@ export function getNextElement(
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
+  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement, tabbable)) {
     return currentElement;
   }
 
@@ -216,7 +230,8 @@ export function getNextElement(
       true,
       false,
       includeElementsInFocusZones,
-      allowFocusRoot);
+      allowFocusRoot,
+      tabbable);
 
     if (childMatch) {
       return childMatch;
@@ -235,7 +250,8 @@ export function getNextElement(
     true,
     false,
     includeElementsInFocusZones,
-    allowFocusRoot);
+    allowFocusRoot,
+    tabbable);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -243,7 +259,7 @@ export function getNextElement(
 
   if (!suppressParentTraversal) {
     return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones,
-      allowFocusRoot);
+      allowFocusRoot, tabbable);
   }
 
   return null;
@@ -286,19 +302,16 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
     return false;
   }
 
-  let tabIndex = 0;
-  let tabIndexAttributeValue = null;
-
+  let tabIndex: number | undefined;
   if (element && element.getAttribute) {
-    tabIndexAttributeValue = element.getAttribute('tabIndex');
-
+    const tabIndexAttributeValue = element.getAttribute('tabIndex');
     if (tabIndexAttributeValue) {
       tabIndex = parseInt(tabIndexAttributeValue, 10);
     }
   }
 
   let isFocusableAttribute = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
-  let isTabIndexSet = tabIndexAttributeValue !== null && tabIndex >= 0;
+  let isTabIndexSet = tabIndex !== undefined && tabIndex >= 0;
 
   const result = !!element &&
     isFocusableAttribute !== 'false' &&
