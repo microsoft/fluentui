@@ -22,7 +22,7 @@ export function getFirstFocusable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
+  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, false /*suppressChildTraversal*/, includeElementsInFocusZones);
 }
 
 /**
@@ -35,11 +35,12 @@ export function getLastFocusable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
+  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, true /*traverseChildren*/, includeElementsInFocusZones);
 }
 
 /**
  * Gets the first tabbable element.
+ * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
  *
  * @public
  */
@@ -48,11 +49,13 @@ export function getFirstTabbable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones, false, true);
+  return getNextElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, false /*suppressChildTraversal*/,
+    includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
 }
 
 /**
  * Gets the last tabbable element.
+ * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
  *
  * @public
  */
@@ -61,7 +64,8 @@ export function getLastTabbable(
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null {
 
-  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones, false, true);
+  return getPreviousElement(rootElement, currentElement, true /*checkNode*/, false /*suppressParentTraversal*/, true /*traverseChildren*/,
+    includeElementsInFocusZones, false /*allowFocusRoot*/, true /*tabbable*/);
 }
 
 /**
@@ -84,6 +88,7 @@ export function focusFirstChild(
 
 /**
  * Traverse to find the previous element.
+ * If tabbable is true, the element must have tabIndex != -1.
  *
  * @public
  */
@@ -194,6 +199,7 @@ export function getPreviousElement(
 
 /**
  * Traverse to find the next focusable element.
+ * If tabbable is true, the element must have tabIndex != -1.
  *
  * @public
  */
@@ -292,6 +298,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 
 /**
  * Determines if an element can receive focus.
+ * If checkTabIndex is true, additionally checks to ensure the element can be focused with the tab key, meaning tabIndex != -1.
  *
  * @public
  */
