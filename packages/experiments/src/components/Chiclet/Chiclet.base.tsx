@@ -1,14 +1,34 @@
 import * as React from 'react';
-import { IChicletProps, ChicletSize } from './Chiclet.types';
-import { IChicletCardProps } from './ChicletCard.types';
+import {
+  BaseComponent,
+  customizable,
+  classNamesFunction
+} from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
+import { extractMetaTags } from './OpenGraph';
+import { IChicletProps, IChicletStyles, IChicletStyleProps, ChicletSize } from './Chiclet.types';
 
-export class ChicletBase extends React.Component<IChicletProps, IChicletCardProps> {
+const getClassNames = classNamesFunction<IChicletStyleProps, IChicletStyles>();
+
+@customizable('ChicletBase', ['theme'])
+export class ChicletBase extends BaseComponent<IChicletProps, any> {
+  private _classNames: { [key in keyof IChicletStyles]: string };
+
+  constructor(props: IChicletProps) {
+    super(props);
+
+    let chicletCardProps = extractMetaTags(this.props.url);
+    this.state = { chicletCardProps: chicletCardProps };
+  }
+
   public render() {
-    const { chicletCardProps, size, footer, description } = this.props;
+    const { size, footer, getStyles, theme, description } = this.props;
+    const { chicletCardProps } = this.state;
+
+    this._classNames = getClassNames(getStyles, { theme: theme! });
 
     switch (size) {
-      case ChicletSize.Medium:
+      case ChicletSize.medium:
         return (
           <ChicletCard { ...chicletCardProps } onClick={ this._onClick } footer={ footer } description={ description } />
         );
@@ -20,6 +40,13 @@ export class ChicletBase extends React.Component<IChicletProps, IChicletCardProp
     }
   }
 
+  public componentWillReceiveProps(nextProps: any) {
+    if (this.props.url != nextProps.url) {
+      this.setState({ chicletCardProps: extractMetaTags(this.props.url) });
+    }
+  }
+
   private _onClick(): void { // @todo: default click handler
   }
+
 }

@@ -1,30 +1,36 @@
 import * as React from 'react';
-import { Chiclet } from './Chiclet';
-import {
-  IChicletCardProps,
-  IChicletCardStyleProps,
-  IChicletCardStyles
-} from './ChicletCard.types';
+import { ChicletBase } from './Chiclet.base';
+import { IStyleFunction } from '../../Utilities';
 import {
   IStyle,
   ITheme
 } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
 
 export interface IChiclet {
 
 }
 
-export interface IChicletProps extends React.Props<Chiclet> {
+export interface IChicletProps extends React.Props<ChicletBase> {
   /**
-   * Props to render in the chosen ChicletCard
+   * Optional callback to access the IChiclet interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
    */
-  chicletCardProps?: IChicletCardProps | undefined;
+  componentRef?: (component: IChiclet | null) => void;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IChicletCardStyleProps, IChicletCardStyles>;
+  getStyles?: IStyleFunction<IChicletStyleProps, IChicletStyles>;
+
+  /**
+   * Optional class for chiclet.
+   */
+  className?: string;
+
+  /**
+   * Sharing link
+   */
+  url: string;
 
   /**
    * Chiclet size to render
@@ -34,34 +40,17 @@ export interface IChicletProps extends React.Props<Chiclet> {
   /**
    * Description to render for the component.
    */
-  description?: React.ReactElement<any>;
+  description?: React.ReactElement<any>
 
   /**
    * Footer to render for the component.
    */
-  footer?: React.ReactElement<any>;
-}
-
-export enum ChicletSize {
-  /**
-   * X-Small Chiclet
-   */
-  XSmall = 0,
+  footer?: React.ReactElement<any>
 
   /**
-   * Small Chiclet
+   * Theme for the component.
    */
-  Small = 1,
-
-  /**
-   * Medium Chiclet
-   */
-  Medium = 2,
-
-  /**
-   * Large Chiclet
-   */
-  Large = 3
+  theme?: ITheme;
 }
 
 export interface IChicletStyleProps {
@@ -72,5 +61,30 @@ export interface IChicletStyleProps {
 }
 
 export interface IChicletStyles {
+  /**
+   * Style for the root element when fixed.
+   */
   root?: IStyle;
+}
+
+export enum ChicletSize {
+  /**
+   * X-Small Chiclet
+   */
+  xSmall = 0,
+
+  /**
+   * Small Chiclet
+   */
+  small = 1,
+
+  /**
+   * Medium Chiclet
+   */
+  medium = 2,
+
+  /**
+   * Large Chiclet
+   */
+  large = 3
 }

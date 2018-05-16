@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  BaseChiclet
-} from '../BaseChiclet';
+  Chiclet
+} from '../Chiclet';
 import { ChicletSize } from '../Chiclet.types';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import * as exampleStyles from './Chiclet.Basic.Example.scss';
@@ -34,7 +34,7 @@ export class ChicletBreadcrumbExample extends React.Component<any, any> {
     />;
 
     return (
-      <BaseChiclet url="http://localhost:4322" size={ ChicletSize.Medium } footer={ footer } description={ breadcrumb }
+      <Chiclet url="http://localhost:4322" size={ ChicletSize.medium } footer={ footer } description={ breadcrumb }
       />
     );
   }
