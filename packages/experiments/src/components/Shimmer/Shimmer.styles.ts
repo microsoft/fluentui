@@ -1,6 +1,32 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { keyframes, DefaultPalette } from '../../Styling';
+import { keyframes, getGlobalClassNames } from '../../Styling';
 import { getRTL } from '../../Utilities';
+
+const GlobalClassNames = {
+  root: 'ms-Shimmer-container',
+  shimmerWrapper: 'ms-Shimmer-shimmerWrapper',
+  dataWrapper: 'ms-Shimmer-dataWrapper'
+};
+
+const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
+
+const shimmerAnimation: string = keyframes({
+  '0%': {
+    backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
+  },
+  '100%': {
+    backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
+  }
+});
+
+const shimmerAnimationRTL: string = keyframes({
+  '100%': {
+    backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
+  },
+  '0%': {
+    backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
+  }
+});
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
@@ -8,12 +34,14 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     isDataLoaded,
     widthInPercentage,
     widthInPixel,
-    className
+    className,
+    theme
   } = props;
 
-  const isRTL = getRTL();
+  const { palette } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
+  const isRTL = getRTL();
 
   // TODO reduce the logic after the deprecated value will be removed.
   const ACTUAL_WIDTH =
@@ -21,42 +49,24 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       widthInPercentage ? widthInPercentage + '%' :
         widthInPixel ? widthInPixel + 'px' : '100%';
 
-  const shimmerAnimation: string = keyframes({
-    '0%': {
-      backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
-    },
-    '100%': {
-      backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
-    }
-  });
-
-  const shimmerAnimationRTL: string = keyframes({
-    '100%': {
-      backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
-    },
-    '0%': {
-      backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
-    }
-  });
-
   return {
     root: [
-      'ms-Shimmer-container',
+      classNames.root,
       {
         position: 'relative',
       },
       className
     ],
     shimmerWrapper: [
-      'ms-Shimmer-shimmerWrapper',
+      classNames.shimmerWrapper,
       {
         width: ACTUAL_WIDTH,
-        background: `${DefaultPalette.neutralLighter}
+        background: `${palette.neutralLighter}
                     linear-gradient(
                       to right,
-                      ${DefaultPalette.neutralLighter} 0%,
-                      ${DefaultPalette.neutralLight} 50%,
-                      ${DefaultPalette.neutralLighter} 100%)
+                      ${palette.neutralLighter} 0%,
+                      ${palette.neutralLight} 50%,
+                      ${palette.neutralLighter} 100%)
                     0 0 / 90% 100%
                     no-repeat`,
         animationDuration: '2s',
@@ -72,7 +82,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       }
     ],
     dataWrapper: [
-      'ms-Shimmer-dataWrapper',
+      classNames.dataWrapper,
       {
         position: 'absolute',
         top: '0',

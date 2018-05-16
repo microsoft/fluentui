@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
 export interface IShimmer {
@@ -53,6 +53,11 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * Additional CSS class(es) to apply to the Shimmer container.
    */
   className?: string;
+
+  /**
+  * Theme provided by High-Order Component.
+  */
+  theme?: ITheme;
 
   /**
    * Elements to render in one line of the Shimmer.
@@ -166,6 +171,7 @@ export interface IShimmerStyleProps {
   widthInPixel?: number;
   isDataLoaded?: boolean;
   className?: string;
+  theme: ITheme;
 }
 
 export interface IShimmerStyles {

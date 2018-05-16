@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
 import {
   IShimmerProps,
   IShimmerStyleProps,
@@ -10,6 +10,7 @@ import { ShimmerElementsGroup } from './ShimmerElementsGroup';
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
+@customizable('Shimmer', ['theme'])
 export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   public static defaultProps: IShimmerProps = {
     isDataLoaded: false,
@@ -44,14 +45,20 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       widthInPercentage,
       widthInPixel,
       className,
-      customElementsGroup
+      customElementsGroup,
+      theme
     } = this.props;
 
     // lineElements is a deprecated prop so need to check which one was used.
     const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
 
     this._classNames = getClassNames(getStyles!, {
-      width, isDataLoaded, widthInPercentage, widthInPixel, className
+      theme: theme!,
+      width,
+      isDataLoaded,
+      widthInPercentage,
+      widthInPixel,
+      className
     });
 
     return (
