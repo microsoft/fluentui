@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "* Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a child element.  The new prop 'focusTransferRule' controls the child-choosing behavior.  * Fixed FocusTrapZone bug: If first child in the FTZ is a FocusZone and that FZ's last focused child is not the first focusable child, shift-tab would break out of the FTZ.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "benw@microsoft.com"
+}
