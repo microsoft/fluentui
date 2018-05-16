@@ -174,34 +174,83 @@ export interface IShimmerStyles {
   dataWrapper?: IStyle;
 }
 
-/**
- * The CAPS lock values will be deprecated soon.
- * @deprecated
- */
-export const enum ShimmerElementType {
-  LINE = 'line',
-  CIRCLE = 'circle',
-  GAP = 'gap',
-  line = 'line',
-  circle = 'circle',
-  gap = 'gap'
+export enum ShimmerElementType {
+  /**
+   * Line element type
+   */
+  line = 1,
+
+  /**
+   * Circle element type
+   */
+  circle = 2,
+
+  /**
+   * Gap element type
+   */
+  gap = 3,
+
+  /**
+   * @deprecated Use 'line' instead
+   */
+  LINE = 1,
+
+  /**
+   * @deprecated Use 'circle' instead
+   */
+  CIRCLE = 2,
+
+  /**
+   * @deprecated Use 'gap' instead
+   */
+  GAP = 3
 }
 
-/**
- * The CAPS lock values will be deprecated soon.
- * @deprecated
- */
-export const enum ShimmerElementVerticalAlign {
-  CENTER = 'center',
-  BOTTOM = 'bottom',
-  TOP = 'top',
-  center = 'center',
-  bottom = 'bottom',
-  top = 'top'
+export enum ShimmerElementVerticalAlign {
+  /**
+   * @deprecated Use 'center' instead
+   */
+  CENTER = 1,
+
+  /**
+   * @deprecated Use 'bottom' instead
+   */
+  BOTTOM = 2,
+
+  /**
+   * @deprecated Use 'top' instead
+   */
+  TOP = 3,
+
+  /**
+   * Positions the element vertically in center
+   */
+  center = 1,
+
+  /**
+   * Positions the element vertically at the bottom
+   */
+  bottom = 2,
+
+  /**
+   * Positions the element vertically at the top
+   */
+  top = 3
 }
 
-export const enum ShimmerElementsDefaultHeights {
+export enum ShimmerElementsDefaultHeights {
+  /**
+   * Default height of the line element when not provided by user: 16px
+   */
   line = 16,
+
+  /**
+   * Default height of the gap element when not provided by user: 16px
+   */
   gap = 16,
+
+  /**
+   * Default height of the circle element when not provided by user: 24px
+   */
   circle = 24
 }

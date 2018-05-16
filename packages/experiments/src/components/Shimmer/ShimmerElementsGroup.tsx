@@ -48,12 +48,13 @@ export const ShimmerElementsGroup: ShimmerElementsGroup = (props: IShimmerElemen
 function getRenderedElements(shimmerElements?: IShimmerElement[], rowHeight?: number): React.ReactNode {
   const renderedElements: React.ReactNode = shimmerElements ?
     shimmerElements.map((elem: IShimmerElement, index: number): JSX.Element => {
+      const { type, ...filteredElem } = elem;
       switch (elem.type) {
         case ShimmerElementType.circle:
           return (
             <ShimmerCircle
               key={ index }
-              { ...elem }
+              { ...filteredElem }
               borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
@@ -61,7 +62,7 @@ function getRenderedElements(shimmerElements?: IShimmerElement[], rowHeight?: nu
           return (
             <ShimmerGap
               key={ index }
-              { ...elem }
+              { ...filteredElem }
               borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
@@ -69,7 +70,7 @@ function getRenderedElements(shimmerElements?: IShimmerElement[], rowHeight?: nu
           return (
             <ShimmerLine
               key={ index }
-              { ...elem }
+              { ...filteredElem }
               borderStyle={ getBorderStyles(elem, rowHeight) }
             />
           );
