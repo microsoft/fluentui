@@ -155,7 +155,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  private _onKeyboardHandler = (ev: React.KeyboardEvent<HTMLElement>): void => {
+  private _onKeyboardHandler = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
     }
