@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a child element.  The new prop 'focusTransferRule' controls the child-choosing behavior.",
+      "comment": "Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a descendant element.  The new prop 'focusPreviouslyFocusedInnerElement' controls the descendant-choosing behavior.",
       "type": "minor"
     }
   ],
