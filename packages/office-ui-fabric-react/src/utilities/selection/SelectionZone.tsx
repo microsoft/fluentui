@@ -51,6 +51,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   layout?: {};
   selectionMode?: SelectionMode;
   selectionPreservedOnEmptyClick?: boolean;
+  disableAutoSelectOnInputElements?: boolean;
   enterModalOnTouch?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
@@ -199,7 +200,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           && !this._isShiftPressed && !this._isCtrlPressed) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
-        } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
+        } else if (this.props.disableAutoSelectOnInputElements &&
+          (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT')) {
           return;
         }
       }
