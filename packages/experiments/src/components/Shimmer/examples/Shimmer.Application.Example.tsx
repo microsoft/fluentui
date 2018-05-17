@@ -111,15 +111,14 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
               onText='Compact'
               offText='Normal'
             />
+            <Toggle
+              label='Enable content loading'
+              checked={ isDataLoaded }
+              onChanged={ this._onLoadData }
+              onText='Content'
+              offText='Shimmer'
+            />
           </div>
-          <span>Toggle the Load data switch to start async simulation.</span>
-          <Toggle
-            label='Load data switch'
-            checked={ isDataLoaded }
-            onChanged={ this._onLoadData }
-            onText='Loaded'
-            offText='Loading...'
-          />
         </div>
         <div className='shimmerExample-application'>
           <DetailsList
