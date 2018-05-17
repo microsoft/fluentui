@@ -943,7 +943,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { renderedWindowsAhead, renderedWindowsBehind } = props;
     const { pages } = this.state;
     // when not in virtualize mode, we render all items without measurement to optimize page rendering perf
-    if (!this._shouldVirtualize()) {
+    if (!this._shouldVirtualize(props)) {
       return;
     }
 

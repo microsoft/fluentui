@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Deprecate Persona's primaryText prop and add replacement text prop.",
+      "comment": "Buttons: Deprecate `description` prop in favor of more consistent `secondaryText` prop.",
       "type": "minor"
     }
   ],

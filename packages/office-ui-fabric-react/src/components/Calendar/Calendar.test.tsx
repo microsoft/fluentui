@@ -136,10 +136,10 @@ describe('Calendar', () => {
       expect(renderedComponent.state.selectedDate!.getDate()).toEqual(today.getDate());
       expect(renderedComponent.state.selectedDate!.getMonth()).toEqual(today.getMonth());
       expect(renderedComponent.state.selectedDate!.getFullYear()).toEqual(today.getFullYear());
-      expect(renderedComponent.state.navigatedDate).not.toBeNull();
-      expect(renderedComponent.state.navigatedDate!.getDate()).toEqual(today.getDate());
-      expect(renderedComponent.state.navigatedDate!.getMonth()).toEqual(today.getMonth());
-      expect(renderedComponent.state.navigatedDate!.getFullYear()).toEqual(today.getFullYear());
+      expect(renderedComponent.state.navigatedDayDate).not.toBeNull();
+      expect(renderedComponent.state.navigatedDayDate!.getDate()).toEqual(today.getDate());
+      expect(renderedComponent.state.navigatedDayDate!.getMonth()).toEqual(today.getMonth());
+      expect(renderedComponent.state.navigatedDayDate!.getFullYear()).toEqual(today.getFullYear());
     });
 
     it('Verify go to today', () => {
@@ -196,7 +196,7 @@ describe('Calendar', () => {
 
     it('Verify day picker selected date & navigated date', () => {
       expect(renderedComponent.state.selectedDate).toEqual(defaultDate);
-      expect(renderedComponent.state.navigatedDate).toEqual(defaultDate);
+      expect(renderedComponent.state.navigatedDayDate).toEqual(defaultDate);
     });
 
     it('Verify month picker seen', () => {

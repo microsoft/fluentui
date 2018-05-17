@@ -98,7 +98,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * Value to show in the input, does not have to map to a combobox option
    */
-  value?: string;
+  text?: string;
 
   /**
    * The IconProps to use for the button aspect of the combobox
@@ -177,6 +177,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Optional keytip for this combo box
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Value to show in the input, does not have to map to a combobox option
+   * @deprecated Use `text` instead.
+   */
+  value?: string;
 }
 
 export interface IComboBoxStyles {

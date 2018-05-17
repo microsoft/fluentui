@@ -3,20 +3,21 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
+import { LayerBase } from './Layer.base';
 import { ILayerHostProps } from './LayerHost.types';
-import { notifyHostChanged } from './Layer.notification';
 
-export class LayerHost extends BaseComponent<ILayerHostProps> {
+export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
+
   public shouldComponentUpdate() {
     return false;
   }
 
   public componentDidMount(): void {
-    notifyHostChanged(this.props.id!);
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
   public componentWillUnmount(): void {
-    notifyHostChanged(this.props.id!);
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
   public render(): JSX.Element {

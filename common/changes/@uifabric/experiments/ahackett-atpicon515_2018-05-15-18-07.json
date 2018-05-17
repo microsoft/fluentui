@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix Fluent palette color names",
+      "comment": "use better icon for MalwareDetectedSignal",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "mike@mikewheaton.ca"
+  "email": "ahackett@microsoft.com"
 }

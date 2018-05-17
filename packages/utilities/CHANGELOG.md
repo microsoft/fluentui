@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+This log was last generated on Tue, 15 May 2018 07:09:49 GMT and should not be manually modified.
+
+## 5.31.0
+Tue, 15 May 2018 07:09:49 GMT
+
+### Minor changes
+
+- Remove dependency on React from Async
 
 ## 5.30.1
 Fri, 04 May 2018 15:58:39 GMT
