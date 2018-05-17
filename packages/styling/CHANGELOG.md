@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+This log was last generated on Thu, 17 May 2018 10:28:07 GMT and should not be manually modified.
+
+## 5.30.2
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Fix import to be compatible with AMD bundlers
 
 ## 5.30.1
 Fri, 04 May 2018 15:58:39 GMT

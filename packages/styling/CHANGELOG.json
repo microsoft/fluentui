@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.30.2",
+      "tag": "@uifabric/styling_v5.30.2",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "e420ac6c48d1c8a5083e2f3ee55c12bd604649bb",
+            "comment": "Fix import to be compatible with AMD bundlers"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.30.1",
       "tag": "@uifabric/styling_v5.30.1",
       "date": "Fri, 04 May 2018 15:58:39 GMT",
