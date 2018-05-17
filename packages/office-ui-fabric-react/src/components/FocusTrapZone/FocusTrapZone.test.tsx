@@ -51,7 +51,7 @@ describe('FocusTrapZone', () => {
     lastFocusedElement = undefined;
   });
 
-  describe('Tab and shift-tab at extreme ends of the FTZ', () => {
+  describe('Tab and shift-tab wrap at extreme ends of the FTZ', () => {
     it('can tab across FocusZones with different button structures', async () => {
       expect.assertions(3);
 
@@ -233,6 +233,140 @@ describe('FocusTrapZone', () => {
       ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.tab, shiftKey: true });
       await animationFrame();
       expect(lastFocusedElement).toBe(buttonF);
+    });
+  });
+
+  describe('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 0 tabbable items', () => {
+    function setupTest() {
+      const topLevelDiv = ReactTestUtils.renderIntoDocument(
+        <div onFocusCapture={ _onFocus }>
+          <button id={ 'z1' } className={ 'z1' }>z1</button>
+          <FocusTrapZone forceFocusInsideTrap={ false }>
+            <button id={ 'a' } className={ 'a' } tabIndex={ -1 }>a</button>
+            <button id={ 'b' } className={ 'b' } tabIndex={ -1 }>b</button>
+            <button id={ 'c' } className={ 'c' } tabIndex={ -1 }>c</button>
+          </FocusTrapZone>
+          <button id={ 'z2' } className={ 'z2' }>z2</button>
+        </div>
+      ) as HTMLElement;
+
+      const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
+      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
+      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
+      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
+      const buttonZ2 = topLevelDiv.querySelector('.z2') as HTMLElement;
+
+      // Assign bounding locations to buttons.
+      setupElement(buttonZ1, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
+      setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
+      setupElement(buttonB, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
+      setupElement(buttonC, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
+      setupElement(buttonZ2, { clientRect: { top: 40, bottom: 50, left: 0, right: 10 } });
+
+      return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2 };
+    }
+
+    it('does not move when pressing tab', async () => {
+
+      expect.assertions(2);
+
+      const { buttonB } = setupTest();
+
+      // Focus the middle button in the FTZ, even though it has tabIndex=-1
+      ReactTestUtils.Simulate.focus(buttonB);
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonB);
+
+      // Pressing tab should stay where you are.
+      ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.tab });
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonB);
+    });
+
+    it('does not move when pressing shift-tab', async () => {
+
+      expect.assertions(2);
+
+      const { buttonB } = setupTest();
+
+      // Focus the middle button in the FTZ, even though it has tabIndex=-1
+      ReactTestUtils.Simulate.focus(buttonB);
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonB);
+
+      // Pressing shift-tab should stay where you are.
+      ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.tab, shiftKey: true });
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonB);
+    });
+  });
+
+  describe('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 1 focused tabbable item', () => {
+    function setupTest() {
+      const topLevelDiv = ReactTestUtils.renderIntoDocument(
+        <div onFocusCapture={ _onFocus }>
+          <button id={ 'z1' } className={ 'z1' }>z1</button>
+          <FocusTrapZone forceFocusInsideTrap={ false }>
+            <FocusZone data-is-visible={ true }>
+              <button id={ 'a' } className={ 'a' }>a</button>
+              <button id={ 'b' } className={ 'b' }>b</button>
+              <button id={ 'c' } className={ 'c' }>c</button>
+            </FocusZone>
+          </FocusTrapZone>
+          <button id={ 'z2' } className={ 'z2' }>z2</button>
+        </div>
+      ) as HTMLElement;
+
+      const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
+      const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
+      const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
+      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
+      const buttonZ2 = topLevelDiv.querySelector('.z2') as HTMLElement;
+
+      // Assign bounding locations to buttons.
+      setupElement(buttonZ1, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
+      setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
+      setupElement(buttonB, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
+      setupElement(buttonC, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
+      setupElement(buttonZ2, { clientRect: { top: 40, bottom: 50, left: 0, right: 10 } });
+
+      return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2 };
+    }
+
+    it('does not move when pressing tab', async () => {
+
+      expect.assertions(2);
+
+      const { buttonA, buttonB } = setupTest();
+
+      // Focus the middle button in the FTZ
+      ReactTestUtils.Simulate.focus(buttonA);
+      await animationFrame();
+      ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.down });
+      expect(lastFocusedElement).toBe(buttonB);
+
+      // Pressing tab should stay where you are.
+      ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.tab });
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonB);
+    });
+
+    it('does not move when pressing shift-tab', async () => {
+
+      expect.assertions(2);
+
+      const { buttonA, buttonB } = setupTest();
+
+      // Focus the middle button in the FTZ
+      ReactTestUtils.Simulate.focus(buttonA);
+      await animationFrame();
+      ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.down });
+      expect(lastFocusedElement).toBe(buttonB);
+
+      // Pressing shift-tab should stay where you are.
+      ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.tab, shiftKey: true });
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonB);
     });
   });
 });
