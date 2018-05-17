@@ -4,7 +4,6 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, createRef } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
-import { FocusTransferRule } from './FocusTrapZone.types';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {
@@ -263,11 +262,16 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Focusing the FTZ', () => {
-    function setupTest(rule: FocusTransferRule) {
+    function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
       const focusTrapZoneRef = createRef<FocusTrapZone>();
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
         <div onFocusCapture={ _onFocus }>
-          <FocusTrapZone forceFocusInsideTrap={ false } focusTransferRule={ rule } data-is-focusable={ true } ref={ focusTrapZoneRef }>
+          <FocusTrapZone
+            forceFocusInsideTrap={ false }
+            focusPreviouslyFocusedInnerElement={ focusPreviouslyFocusedInnerElement }
+            data-is-focusable={ true }
+            ref={ focusTrapZoneRef }
+          >
             <button className={ 'f' }>f</button>
             <FocusZone>
               <button className={ 'a' }>a</button>
@@ -296,7 +300,7 @@ describe('FocusTrapZone', () => {
     it('goes to previously focused element when focusing the FTZ', async () => {
       expect.assertions(4);
 
-      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(FocusTransferRule.previouslyFocusedElement);
+      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(true /*focusPreviouslyFocusedInnerElement*/);
 
       // Manually focusing FTZ when FTZ has never
       // had focus within should go to 1st focusable inner element.
@@ -323,7 +327,7 @@ describe('FocusTrapZone', () => {
     it('goes to first focusable element when focusing the FTZ', async () => {
       expect.assertions(4);
 
-      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(FocusTransferRule.firstFocusable);
+      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(false /*focusPreviouslyFocusedInnerElement*/);
 
       // Manually focusing FTZ when FTZ has never
       // had focus within should go to 1st focusable inner element.
