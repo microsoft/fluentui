@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Added resetIds for predictable jest tests",
+      "comment": "Added `resetIds` api for adding predictability in jest tests.",
       "type": "minor"
     }
   ],
