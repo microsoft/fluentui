@@ -5,7 +5,7 @@ import {
   classNamesFunction
 } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
-import { extractMetaTags } from './OpenGraph';
+import { getOpenGraphProperties } from './OpenGraph';
 import { IChicletProps, IChicletStyles, IChicletStyleProps, ChicletSize } from './Chiclet.types';
 
 const getClassNames = classNamesFunction<IChicletStyleProps, IChicletStyles>();
@@ -17,7 +17,7 @@ export class ChicletBase extends BaseComponent<IChicletProps, any> {
   constructor(props: IChicletProps) {
     super(props);
 
-    let chicletCardProps = extractMetaTags(this.props.url);
+    let chicletCardProps = getOpenGraphProperties(this.props.url);
     this.state = { chicletCardProps: chicletCardProps };
   }
 
@@ -42,7 +42,7 @@ export class ChicletBase extends BaseComponent<IChicletProps, any> {
 
   public componentWillReceiveProps(nextProps: any) {
     if (this.props.url != nextProps.url) {
-      this.setState({ chicletCardProps: extractMetaTags(this.props.url) });
+      this.setState({ chicletCardProps: getOpenGraphProperties(this.props.url) });
     }
   }
 

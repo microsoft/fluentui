@@ -1,23 +1,9 @@
 import { IChicletCardProps } from './ChicletCard.types';
 
-export function extractMetaTags(url: string) {
+export function getOpenGraphProperties(url: string) {
   var attributes: IChicletCardProps = {};
+  var metaElements = extractMetaTags(url);
 
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("GET", url, false);
-  xmlHttp.overrideMimeType('application/xml');
-  xmlHttp.send(null);
-
-  var parser = new DOMParser();
-  var doc = parser.parseFromString(xmlHttp.responseText, "text/html");
-
-  var metaElements = doc.getElementsByTagName("meta");
-  let openGraphObject = _getOpenGraphValues(metaElements, attributes);
-
-  return openGraphObject;
-}
-
-function _getOpenGraphValues(metaElements: NodeListOf<HTMLMetaElement>, attributes: IChicletCardProps): IChicletCardProps {
   for (var i = 0; i < metaElements.length; i++) {
     if (metaElements[i].attributes != null && metaElements[i].attributes.length >= 2) {
       switch (metaElements[i].attributes[0].nodeValue) {
@@ -53,4 +39,17 @@ function _getOpenGraphValues(metaElements: NodeListOf<HTMLMetaElement>, attribut
     }
   }
   return attributes;
+}
+
+function extractMetaTags(url: string) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", url, false);
+  xmlHttp.overrideMimeType('application/xml');
+  xmlHttp.send(null);
+
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(xmlHttp.responseText, "text/html");
+
+  var metaElements = doc.getElementsByTagName("meta");
+  return metaElements;
 }
