@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 17 May 2018 20:12:39 GMT and should not be manually modified.
+This log was last generated on Thu, 17 May 2018 22:02:40 GMT and should not be manually modified.
+
+## 5.106.0
+Thu, 17 May 2018 22:02:40 GMT
+
+### Minor changes
+
+- Add data-selection-select behavior to make elements select rows before taking action
+
+### Patches
+
+- Fix Slider import, make specific to Styling
 
 ## 5.105.0
 Thu, 17 May 2018 20:12:39 GMT
