@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 17 May 2018 10:28:07 GMT and should not be manually modified.
+This log was last generated on Thu, 17 May 2018 20:12:39 GMT and should not be manually modified.
+
+## 5.105.0
+Thu, 17 May 2018 20:12:39 GMT
+
+### Minor changes
+
+- Part 1 of converting Slider to mergeStyles
+- Add enter/exit keytip mode to KeytipManager
+- Added support in textfield for aria-describedby native prop
+
+### Patches
+
+- Suggestions: Fix a bug where arrow keys would not scroll correctly
 
 ## 5.104.0
 Thu, 17 May 2018 10:28:07 GMT

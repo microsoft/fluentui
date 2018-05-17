@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.105.0",
+      "tag": "office-ui-fabric-react_v5.105.0",
+      "date": "Thu, 17 May 2018 20:12:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "12b6df631671916e9a273910a02fb7cfd43e69f2",
+            "comment": "Suggestions: Fix a bug where arrow keys would not scroll correctly"
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5e6c4d39295406b5735cb3e118d4c0d9c14c2189",
+            "comment": "Update TooltipHost doc to match implementation."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "a437b080f0005d083da96dd5b1cacaaddc4b9ede",
+            "comment": "Part 1 of converting Slider to mergeStyles"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "da1315212340b2bb0784f5e405df0cfa4c58f227",
+            "comment": "Add enter/exit keytip mode to KeytipManager"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "d07871b8f02251871407865cafd36acb51a7eb51",
+            "comment": "Added support in textfield for aria-describedby native prop"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.104.0",
       "tag": "office-ui-fabric-react_v5.104.0",
       "date": "Thu, 17 May 2018 10:28:07 GMT",
