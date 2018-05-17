@@ -31,6 +31,7 @@ import {
 // If you click index 8
 //    The anchor and focus are set to 8.
 
+const SELECTION_AUTO_SELECT = 'data-selection-auto-select';
 const SELECTION_DISABLED_ATTRIBUTE_NAME = 'data-selection-disabled';
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
@@ -197,7 +198,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else if (target === itemRoot && !this._isShiftPressed && !this._isCtrlPressed) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
-        } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
+        } else if ((target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') &&
+          !this._hasAttribute(target, SELECTION_AUTO_SELECT)) {
           return;
         }
       }
@@ -241,7 +243,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else if (target === itemRoot) {
           this._onItemSurfaceClick(ev, index);
           break;
-        } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
+        } else if ((target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') &&
+          !this._hasAttribute(target, SELECTION_AUTO_SELECT)) {
           return;
         }
       }
