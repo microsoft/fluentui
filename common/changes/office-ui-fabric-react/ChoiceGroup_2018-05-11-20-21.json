@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup getStyles conversion",
+      "comment": "ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.",
       "type": "minor"
     }
   ],
