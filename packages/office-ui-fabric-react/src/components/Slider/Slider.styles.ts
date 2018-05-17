@@ -1,5 +1,5 @@
 import { ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { getGlobalClassNames  } from '../..';
+import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Slider',
