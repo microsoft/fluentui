@@ -18,7 +18,6 @@ export interface IDragDropEvents {
   onDrop?: (item?: any, event?: DragEvent) => void;
   onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
   onDragEnd?: (item?: any, event?: DragEvent) => void;
-  onDragOver?: (item?: any, event?: DragEvent) => void;
 }
 
 export interface IDragDropContext {

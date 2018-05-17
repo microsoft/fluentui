@@ -14,7 +14,6 @@ import { IColumn, ColumnActionsMode } from './DetailsList.types';
 import { ITooltipHostProps } from '../../Tooltip';
 import {
   IDragDropHelper,
-  IDragDropEvents,
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 
@@ -30,8 +29,8 @@ export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   dragDropHelper?: IDragDropHelper | null;
-  dragDropColumnEvents?: IDragDropEvents | null;
   isDraggable?: boolean;
+  setDraggedItemIndex?: (itemIndex: number) => void;
 }
 
 export interface IDetailsColumnState {
@@ -49,13 +48,15 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
       isDropping: false,
     };
     this._root = createRef();
+    this._onDragStart = this._onDragStart.bind(this);
+    this._onDragEnd = this._onDragEnd.bind(this);
   }
 
   public render() {
-    const { column, dragDropColumnEvents, columnIndex, parentId } = this.props;
+    const { column, columnIndex, parentId } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
     } = this.props;
-    const isDraggable = Boolean(dragDropColumnEvents && dragDropColumnEvents.canDrag && this.props.isDraggable);
+    const isDraggable = this.props.isDraggable;
 
     return (
       [
@@ -192,20 +193,30 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
 
   private _getColumnDragDropOptions(): IDragDropOptions {
     const {
-      columnIndex,
-      dragDropColumnEvents
+      columnIndex
     } = this.props;
     const options = {
       selectionIndex: columnIndex,
       context: { data: columnIndex, index: columnIndex },
       canDrag: () => true,
       canDrop: () => false,
-      onDragStart: dragDropColumnEvents!.onDragStart,
+      onDragStart: this._onDragStart,
       updateDropState: () => undefined,
       onDrop: () => undefined,
-      onDragEnd: dragDropColumnEvents!.onDragEnd,
+      onDragEnd: this._onDragEnd
     };
     return options;
+  }
+
+  private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
+    if (itemIndex) {
+      this.props.setDraggedItemIndex!(itemIndex);
+    }
+  }
+
+  private _onDragEnd(item?: any, event?: MouseEvent): void {
+    this.props.setDraggedItemIndex!(-1);
+    event!.preventDefault();
   }
 
   private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {

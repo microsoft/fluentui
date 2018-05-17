@@ -20,7 +20,7 @@ import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStylesModule from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
-import { IDragDropEvents, IDragDropOptions, IDragDropContext } from './../../utilities/dragdrop/interfaces';
+import { IDragDropOptions, IDragDropContext } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
 
@@ -86,6 +86,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     collapseAllVisibility: CollapseAllVisibility.visible
   };
 
+  private _draggedColumnIndex = -1;
+  private _dropHintOriginXValues: { [key: number]: number } = {};
   private _root = createRef<IFocusZone>();
 
   private _id: string;
@@ -102,13 +104,21 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
     this._onSelectAllClicked = this._onSelectAllClicked.bind(this);
+    this._setDraggedItemIndex = this._setDraggedItemIndex.bind(this);
+    this._onDragOver = this._onDragOver.bind(this);
+    this._onDrop = this._onDrop.bind(this);
+    this._getHeaderDragDropOptions = this._getHeaderDragDropOptions.bind(this);
+    this._updateDroppingState = this._updateDroppingState.bind(this);
+    this._getDropHintPositions = this._getDropHintPositions.bind(this);
+    this._updateDropHintStates = this._updateDropHintStates.bind(this);
+
     this._id = getId('header');
 
     this._dragDropHelper = this.props.dragDropColumnEvents ? new DragDropHelper({
       selection: {
         getSelection: () => { return; }
       } as ISelection,
-      minimumPixelsForDrag: 5
+      minimumPixelsForDrag: 1
     }) : null;
   }
 
@@ -431,73 +441,56 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       canDrop: () => true,
       onDragStart: () => undefined,
       updateDropState: this._updateDroppingState,
-      onDrop: this._dragDropColumnEvents!.onDrop,
+      onDrop: this._onDrop,
       onDragEnd: () => undefined,
-      onDragOver: this._dragDropColumnEvents!.onDragOver
+      onDragOver: this._onDragOver
     };
     return options;
   }
 
   private _updateDroppingState(newValue: boolean, event: DragEvent): void {
+    if (newValue === false || this._draggedColumnIndex === -1) {
+      const newDropHintState = this.state.dropHintsState!.map(state => false);
+      this.setState({ dropHintsState: newDropHintState });
+    }
     // TODO - Handle CSS changes
   }
 
-  private _getDragDropColumnEvents(): IDragDropEvents {
-    let _draggedColumnIndex: number | undefined;
-    return {
-      canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => {
-        return true;
-      },
-      canDrag: (item?: any) => {
-        return item >= this.props.columnReorderOptions!.frozenColumnCount!;
-      },
-      onDragEnter: (item?: any, event?: DragEvent) => {
-        // TODO - Not implemented
-        // return string is the css classes that will be added to the entering element.
-        return 'dragEnter';
-      },
-      onDragLeave: (item?: any, event?: DragEvent) => {
-        // TODO - Not implemented
-        return;
-      },
-      onDrop: (item?: any, event?: DragEvent) => {
-        if (_draggedColumnIndex !== undefined && _draggedColumnIndex !== -1 && event! instanceof DragEvent) {
-          let targetIndex = -1;
-          let i = -1;
-          for (i = 0; i < this.state.dropHintsState!.length; i++) {
-            if (this.state.dropHintsState![i]) {
-              break;
-            }
-          }
-          if (i != this.state.dropHintsState!.length) {
-            targetIndex = (this.props.selectionMode !== SelectionMode.none) ? i : i + 1;
-            if (_draggedColumnIndex !== targetIndex) {
-              this.props.columnReorderOptions!.handleColumnReorder(_draggedColumnIndex!, targetIndex);
-              _draggedColumnIndex = -1;
-            }
-            const newDropHintState = this.state.dropHintsState!.map(state => false);
-            this.setState({ dropHintsState: newDropHintState });
-          }
-        }
-      },
-      onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
-        console.log("In start");
-        _draggedColumnIndex = (this.props.selectionMode !== SelectionMode.none) ? itemIndex! - 1 : itemIndex;
-        event!.preventDefault();
-      },
-      onDragEnd: (item?: any, event?: DragEvent) => {
-        _draggedColumnIndex = -1;
-        const newDropHintState = this.state.dropHintsState!.map(state => false);
-        this.setState({ dropHintsState: newDropHintState });
-      },
-      onDragOver: (item: any, event: DragEvent) => {
-        // TODO - Handle CSS changes
-        if (_draggedColumnIndex !== undefined && _draggedColumnIndex !== -1) {
-          const clientX = event.clientX;
-          this._updateDropHintStates(clientX);
+  private _onDragOver(item: any, event: DragEvent): void {
+    if (this._draggedColumnIndex !== undefined && this._draggedColumnIndex !== -1) {
+      const clientX = event.clientX;
+      this._updateDropHintStates(clientX);
+    }
+  }
+
+  private _onDrop(item?: any, event?: DragEvent): void {
+    if (this._draggedColumnIndex !== -1 && event! instanceof DragEvent) {
+      let targetIndex = -1;
+      let i = -1;
+      for (i = 0; i < this.state.dropHintsState!.length; i++) {
+        if (this.state.dropHintsState![i]) {
+          break;
         }
       }
-    };
+      if (i !== this.state.dropHintsState!.length) {
+        targetIndex = (this.props.selectionMode !== SelectionMode.none) ? i : i + 1;
+        if (this._draggedColumnIndex !== targetIndex) {
+          this.props.columnReorderOptions!.handleColumnReorder(this._draggedColumnIndex!, targetIndex);
+          this._draggedColumnIndex = -1;
+        }
+        const newDropHintState = this.state.dropHintsState!.map(state => false);
+        this.setState({ dropHintsState: newDropHintState });
+        this._draggedColumnIndex = -1;
+      }
+    }
+  }
+
+  private _setDraggedItemIndex(itemIndex: number) {
+    if (itemIndex >= 0) {
+      this._draggedColumnIndex = (this.props.selectionMode !== SelectionMode.none) ? itemIndex! - 1 : itemIndex;
+    } else {
+      this._draggedColumnIndex = -1;
+    }
   }
 
   private _getDropHintPositions = (rootElement: HTMLElement): void => {
