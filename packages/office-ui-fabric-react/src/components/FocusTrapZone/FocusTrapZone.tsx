@@ -14,6 +14,9 @@ import {
 import { IFocusTrapZone, IFocusTrapZoneProps, FocusTransferRule } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+  public static defaultProps = {
+    focusTransferRule: FocusTransferRule.firstFocusable
+  };
 
   private static _focusStack: FocusTrapZone[] = [];
   private static _clickStack: FocusTrapZone[] = [];
@@ -104,7 +107,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public focus() {
-    const { focusTransferRule = FocusTransferRule.firstFocusable, firstFocusableSelector } = this.props;
+    const { focusTransferRule, firstFocusableSelector } = this.props;
 
     if (
       focusTransferRule === FocusTransferRule.previouslyFocusedElement &&
