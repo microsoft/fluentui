@@ -1,6 +1,6 @@
 import { IChicletCardProps } from './ChicletCard.types';
 
-export function getOpenGraphProperties(url: string) {
+export function getOpenGraphProperties(url: string): IChicletCardProps {
   var attributes: IChicletCardProps = {};
   var metaElements = extractMetaTags(url);
 
