@@ -4,6 +4,7 @@ import { PersonaBase } from './Persona.base';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
+import { IIconProps } from '../../Icon';
 
 export interface IPersona {
 
@@ -53,6 +54,11 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
    * @defaultvalue [Derived from text]
    */
   imageInitials?: string;
+
+  /**
+  * Icon props to be passed into coin if no image is available
+  */
+  imageIcon?: IIconProps;
 
   /**
    * Whether initials are calculated for phone numbers and number sequences.
@@ -122,7 +128,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Optional HTML element props for Persona coin.
    */
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: React.HTMLAttributes<HTMLDivElement | HTMLButtonElement>;
 
   /**
    * Theme provided by High-Order Component.
