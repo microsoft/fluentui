@@ -8,7 +8,6 @@ import {
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
 import { mergeStyles } from '../../Styling';
 import { Image } from 'office-ui-fabric-react/lib/Image';
-import { TestImages } from 'office-ui-fabric-react/src/common/TestImages';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
@@ -18,7 +17,7 @@ const PREVIEW_IMAGE_WIDTH = '198px';
 const PREVIEW_IMAGE_HEIGHT = '122px';
 
 @customizable('ChicletCardBase', ['theme'])
-export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
+export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   public static defaultProps: IChicletCardProps = {
     imageWidth: PREVIEW_IMAGE_WIDTH,
     imageHeight: PREVIEW_IMAGE_HEIGHT
@@ -105,7 +104,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, any> {
           height={ PREVIEW_IMAGE_HEIGHT }
           src={ itemType
             ? `${ASSET_CDN_BASE_URL}/brand-icons/document/svg/` + itemType + `_48x1.svg`
-            : TestImages.documentPreview /* @todo: this will be replaced by something built by the design team */ }
+            : (null) /* @todo: this will be replaced by something built by the design team */ }
           role='presentation'
           alt={ imageAlt ? imageAlt : undefined }
         />

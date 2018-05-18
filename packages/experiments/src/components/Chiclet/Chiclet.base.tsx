@@ -11,7 +11,7 @@ import { IChicletProps, IChicletStyles, IChicletStyleProps, ChicletSize } from '
 const getClassNames = classNamesFunction<IChicletStyleProps, IChicletStyles>();
 
 @customizable('ChicletBase', ['theme'])
-export class ChicletBase extends BaseComponent<IChicletProps, any> {
+export class ChicletBase extends BaseComponent<IChicletProps, {}> {
   private _classNames: { [key in keyof IChicletStyles]: string };
 
   constructor(props: IChicletProps) {
@@ -40,7 +40,7 @@ export class ChicletBase extends BaseComponent<IChicletProps, any> {
     }
   }
 
-  public componentWillReceiveProps(nextProps: any): void {
+  public componentWillReceiveProps(nextProps: IChicletProps): void {
     if (this.props.url !== nextProps.url) {
       this.setState({ chicletCardProps: getOpenGraphProperties(this.props.url) });
     }
