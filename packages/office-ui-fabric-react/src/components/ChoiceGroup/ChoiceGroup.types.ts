@@ -52,7 +52,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   theme?: ITheme;
 
   /**
-   * Call to provide customized styling that will layeron top of the variant rules.
+   * Call to provide customized styling that will layer on top of the variant rules.
    */
   getStyles?: IStyleFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>;
 }
