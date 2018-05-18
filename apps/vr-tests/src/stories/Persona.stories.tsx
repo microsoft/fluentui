@@ -15,6 +15,32 @@ const examplePersona: IPersonaProps = {
   optionalText: 'Available at 4:00pm'
 };
 
+storiesOf('Persona Button', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      { story() }
+    </Screener>
+  ))
+  .add('size10 (tiny)', () => (
+    <div>
+      <Persona
+        coinProps={ {
+          imageIcon: { iconName: 'ChevronDown' }
+        } }
+      />
+    </div>
+  ));
+
 storiesOf('Persona', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (

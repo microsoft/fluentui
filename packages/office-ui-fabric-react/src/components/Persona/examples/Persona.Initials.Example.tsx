@@ -5,7 +5,6 @@ import {
   PersonaInitialsColor,
 } from 'office-ui-fabric-react/lib/Persona';
 import './PersonaExample.scss';
-import { BaseButton } from 'office-ui-fabric-react/lib/Button';
 
 const examplePersona: IPersonaSharedProps = {
   secondaryText: 'Designer',
