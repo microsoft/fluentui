@@ -31,11 +31,12 @@ storiesOf('Persona Button', module)
       { story() }
     </Screener>
   ))
-  .add('size10 (tiny)', () => (
+  .add('default', () => (
     <div>
       <Persona
+        imageIcon={ { iconName: 'ChevronDown' } }
         coinProps={ {
-          imageIcon: { iconName: 'ChevronDown' }
+          onClick: () => console.log('hello')
         } }
       />
     </div>
