@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dialog renders chiclet with title and url 1`] = `
+exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
 <div
   className=
       ms-ChicletCard
