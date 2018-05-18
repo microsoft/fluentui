@@ -7,9 +7,11 @@ import {
 } from '@uifabric/example-app-base';
 
 import { ChicletBasicExample } from './examples/Chiclet.Basic.Example';
-const ChicletBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Basic.Example.tsx') as string;
+const ChicletBasicExampleCode =
+  require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Basic.Example.tsx') as string;
 import { ChicletBreadcrumbExample } from './examples/Chiclet.Breadcrumb.Example';
-const ChicletBreadcrumbExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Breadcrumb.Example.tsx') as string;
+const ChicletBreadcrumbExampleCode =
+  require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Breadcrumb.Example.tsx') as string;
 
 export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

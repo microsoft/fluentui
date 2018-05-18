@@ -17,11 +17,11 @@ export class ChicletBase extends BaseComponent<IChicletProps, any> {
   constructor(props: IChicletProps) {
     super(props);
 
-    let chicletCardProps = getOpenGraphProperties(this.props.url);
+    const chicletCardProps = getOpenGraphProperties(this.props.url);
     this.state = { chicletCardProps: chicletCardProps };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { size, footer, getStyles, theme, description } = this.props;
     const { chicletCardProps } = this.state;
 
@@ -40,8 +40,8 @@ export class ChicletBase extends BaseComponent<IChicletProps, any> {
     }
   }
 
-  public componentWillReceiveProps(nextProps: any) {
-    if (this.props.url != nextProps.url) {
+  public componentWillReceiveProps(nextProps: any): void {
+    if (this.props.url !== nextProps.url) {
       this.setState({ chicletCardProps: getOpenGraphProperties(this.props.url) });
     }
   }

@@ -8,4 +8,4 @@ export const getStyles = (
   return ({
     root: {}
   });
-}
+};
