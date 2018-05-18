@@ -30,6 +30,29 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
             } }
           />
           <CommandBarButton
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            iconProps={ { iconName: 'Add' } }
+            text='Create account'
+            split={ true }
+            onClick={ () => null }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+          <CommandBarButton
             data-automation-id='test2'
             disabled={ disabled }
             checked={ checked }
