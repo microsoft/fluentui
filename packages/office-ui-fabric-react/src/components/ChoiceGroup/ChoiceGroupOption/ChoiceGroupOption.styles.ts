@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, HighContrastSelector, IStyle, IPalette, getGlobalClassNames } from '../../Styling';
+import { FontSizes, FontWeights, HighContrastSelector, IStyle, IPalette, getGlobalClassNames } from '../../../Styling';
 import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles

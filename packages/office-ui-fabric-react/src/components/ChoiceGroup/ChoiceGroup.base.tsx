@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from '../../ChoiceGroupOption';
+import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import {
   BaseComponent,

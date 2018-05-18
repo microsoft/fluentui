@@ -14,7 +14,7 @@ import {
   getNativeProps,
   inputProperties,
   createRef,
-} from '../../Utilities';
+} from '../../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IIconProps } from '../../Icon';
-import { ITheme, IStyle } from '../../Styling';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
-import { IChoiceGroupOption } from '../ChoiceGroup/ChoiceGroup.types';
+import { IIconProps } from '../../../Icon';
+import { ITheme, IStyle } from '../../../Styling';
+import { IRenderFunction, IStyleFunction } from '../../../Utilities';
+import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
@@ -90,7 +90,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   checked?: boolean;
 
   /**
-   *
+   * Indicates if the ChoiceGroupOption should appear focused, visually
    */
   focused?: boolean;
 
@@ -114,6 +114,9 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
    */
   getStyles?: IStyleFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 
+  /**
+   * If true, it specifies that an option must be selected in the ChoiceGroup before submitting the form
+   */
   required?: boolean;
 
   /**
