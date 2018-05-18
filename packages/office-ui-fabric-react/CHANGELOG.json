@@ -2,6 +2,150 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.104.0",
+      "tag": "office-ui-fabric-react_v5.104.0",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "9afc622e632197b13bc55ba6ea85f13d12ea5604",
+            "comment": "ContextualMenuSplitButton: Adding the correct attributes for screen readers to read the button correctly"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "d01ce314a35af59f3516e4d793498c067f21fcc6",
+            "comment": "TextField: Invoke custom description render function if provided even if no description text provided."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.1 <6.0.0` to `>=5.30.2 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.4 <6.0.0` to `>=5.11.5 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.103.0",
+      "tag": "office-ui-fabric-react_v5.103.0",
+      "date": "Wed, 16 May 2018 00:05:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "484ed68d3dfba35781449ed20498ca74bf46e9fe",
+            "comment": "Fix markdown file paths on SwatchColorPicker docs page."
+          },
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "d7ca31cab2e99a7674ce55da2c70c7ba29689e87",
+            "comment": "Finishing the rest of the Calendar style updates"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "7183e967f5dc38ec572ca35c55f344e00a082892",
+            "comment": "Fix detailslist custom group header example by invoking correct onClick for select and collapse toggles."
+          },
+          {
+            "author": "Ian Craig <ian-craig@outlook.com>",
+            "commit": "0297e2101a84ffe514a6b59438708c75b2a4831c",
+            "comment": "Fix misuse of aria props on ProgressIndicator"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "8c4193280c7b085fb0b6ef6fa3fc3920faa4bc94",
+            "comment": "Buttons: Deprecate `description` prop in favor of more consistent `secondaryText` prop."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.102.0",
+      "tag": "office-ui-fabric-react_v5.102.0",
+      "date": "Tue, 15 May 2018 07:09:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <1581488+christiango@users.noreply.github.com>",
+            "commit": "516fc3e556d436d335b90b18f495d3cd80dbe96f",
+            "comment": "Fix bug where primaryDisabled is not respected on contextual menu items"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "647fa4e587bbc613321da2f4b671278a007c0d8d",
+            "comment": "Dropdown: Remove aria-autocomplete and aria-readonly"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2487474dc17568340e5b9eec3c10f2f8943fc4c5",
+            "comment": "Pivot: Slight tweak to the `PivotItem` compare to ensure it works in minified scenarios."
+          },
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "04c27fffd123ab7da3e620f3169fcce8feb92b3d",
+            "comment": "shouldVirtualize takes incoming properties"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ca708da05db4c7fc3715a4eb56f0adc9c93b338e",
+            "comment": "Deprecate ComboBox's value prop in favor of new text prop."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.30.1 <6.0.0` to `>=5.31.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.101.2",
+      "tag": "office-ui-fabric-react_v5.101.2",
+      "date": "Mon, 14 May 2018 20:46:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Daniel Gut <daniel.gut@solarproject.ch>",
+            "commit": "3e5cbf4319b28194d6bbde7b490c5f9d62d20d75",
+            "comment": "fixes type comparing in Pivot"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.101.1",
+      "tag": "office-ui-fabric-react_v5.101.1",
+      "date": "Mon, 14 May 2018 19:35:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Nabeelah Ali <nabeelah@gmail.com>",
+            "commit": "c6a335ff1f2507af975a9fd687acec79c2e8f852",
+            "comment": "Ensure subMenuHoverDelay is respected by the ContextualMenu for expanding and dismissing submenus"
+          },
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "32ab5c16784fedbd36ed66d42ad6095f368e00e6",
+            "comment": "Fixes issue where expanding sub menu via arrow keys was broken, and adds aria label of \"menu\" to item when keyboarded"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.101.0",
       "tag": "office-ui-fabric-react_v5.101.0",
       "date": "Mon, 14 May 2018 10:14:42 GMT",

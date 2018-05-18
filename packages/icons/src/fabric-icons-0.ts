@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-6a62cc1b.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-0-29734c63.woff') format('woff')`
     },
     icons: {
       'DecreaseIndentLegacy': '\uE290',
@@ -82,6 +82,7 @@ export function initializeIcons(
       'PageLeft': '\uE760',
       'PageRight': '\uE761',
       'MultiSelect': '\uE762',
+      'KeyboardClassic': '\uE765',
       'Play': '\uE768',
       'Pause': '\uE769',
       'Emoji2': '\uE76E',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'Train': '\uE7C0',
       'Move': '\uE7C2',
       'TouchPointer': '\uE7C9',
-      'Merge': '\uE7D5',
-      'TurnRight': '\uE7DB'
+      'Merge': '\uE7D5'
     }
   };
 

@@ -2,6 +2,7 @@
 	"fontName": "fabric-icons-0",
 	"fontFamilyName": "FabricMDL2Icons-0",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
@@ -237,6 +238,10 @@
 			"unicode": "E762"
 		},
 		{
+			"name": "KeyboardClassic",
+			"unicode": "E765"
+		},
+		{
 			"name": "Play",
 			"unicode": "E768"
 		},
@@ -403,10 +408,6 @@
 		{
 			"name": "Merge",
 			"unicode": "E7D5"
-		},
-		{
-			"name": "TurnRight",
-			"unicode": "E7DB"
 		}
 	]
 }

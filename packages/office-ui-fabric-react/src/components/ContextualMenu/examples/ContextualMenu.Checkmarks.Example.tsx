@@ -7,7 +7,7 @@ export interface IContextualMenuMultiselectExampleState {
   selection?: { [key: string]: boolean };
 }
 
-const keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent', 'disabledNewSub', 'disabledEmailMessage', 'disabledCalendarEvent', 'splitButtonSubMenuLeftDirection', 'emailMessageLeft', 'calendarEventLeft'];
+const keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent', 'disabledNewSub', 'disabledEmailMessage', 'disabledCalendarEvent', 'splitButtonSubMenuLeftDirection', 'emailMessageLeft', 'calendarEventLeft', 'disabledPrimarySplit'];
 
 export class ContextualMenuCheckmarksExample extends React.Component<{}, IContextualMenuMultiselectExampleState> {
 
@@ -161,6 +161,26 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
                   isChecked: selection![keys[11]],
                   split: true,
                   onClick: this._onToggleSelect,
+                },
+                {
+                  key: keys[12],
+                  iconProps: {
+                    iconName: 'MusicInCollectionFill'
+                  },
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: keys[12],
+                        name: 'Email message',
+                        canCheck: true,
+                        isChecked: selection![keys[12]],
+                        onClick: this._onToggleSelect
+                      }
+                    ],
+                  },
+                  name: 'Split Button Disabled Primary',
+                  split: true,
+                  primaryDisabled: true
                 },
               ]
           }

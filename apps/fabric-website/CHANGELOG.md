@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 08 May 2018 16:02:16 GMT and should not be manually modified.
+This log was last generated on Thu, 17 May 2018 10:28:07 GMT and should not be manually modified.
+
+## 5.7.5
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Get rid of App-nav container in mobile, it was blocking interation.
 
 ## 5.7.4
 Tue, 08 May 2018 16:02:16 GMT

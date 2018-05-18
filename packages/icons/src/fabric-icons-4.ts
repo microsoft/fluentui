@@ -22,9 +22,13 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-0838b5e4.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-4-aeecd474.woff') format('woff')`
     },
     icons: {
+      'Tennis': '\uEB33',
+      'Arrivals': '\uEB34',
+      'Design': '\uEB3C',
+      'Website': '\uEB41',
       'Drop': '\uEB42',
       'SkiResorts': '\uEB45',
       'Snowflake': '\uEB46',
@@ -120,11 +124,7 @@ export function initializeIcons(
       'ProgressLoopOuter': '\uECDF',
       'Blocked2': '\uECE4',
       'FangBody': '\uECEB',
-      'ChatInviteFriend': '\uECFE',
-      'Crown': '\uED01',
-      'ScaleUp': '\uED09',
-      'Feedback': '\uED15',
-      'SharepointLogoInverse': '\uED18'
+      'ChatInviteFriend': '\uECFE'
     }
   };
 

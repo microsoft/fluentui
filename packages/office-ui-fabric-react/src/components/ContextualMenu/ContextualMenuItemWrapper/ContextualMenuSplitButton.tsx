@@ -11,7 +11,7 @@ import {
   getSplitButtonVerticalDividerClassNames
 } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../KeytipData';
-import { getIsChecked, isItemDisabled } from '../../../utilities/contextualMenu/index';
+import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
@@ -39,8 +39,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       totalItemCount,
       hasCheckmarks,
       hasIcons,
-      onItemMouseLeave
+      onItemMouseLeave,
+      expandedMenuItemKey
     } = this.props;
+
+    const itemHasSubmenu = hasSubmenu(item);
 
     let { keytipProps } = item;
     if (keytipProps) {
@@ -56,10 +59,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }
             ref={ (splitButton: HTMLDivElement) => this._splitButton = splitButton }
-            role={ 'button' }
-            aria-labelledby={ item.ariaLabel }
+            role={ 'menuitem' }
+            aria-label={ item.ariaLabel }
             className={ classNames.splitContainer }
             aria-disabled={ isItemDisabled(item) }
+            aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
             aria-haspopup={ true }
             aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
             aria-checked={ item.isChecked || item.checked }
@@ -99,9 +103,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   }
 
   private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    const isChecked: boolean | null | undefined = getIsChecked(item);
-    const canCheck: boolean = isChecked !== null;
-    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemClick
@@ -113,7 +114,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       name: item.name,
       text: item.text || item.name,
       className: classNames.splitPrimary,
-      role: item.role || defaultRole,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,

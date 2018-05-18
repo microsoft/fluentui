@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.31.0",
+      "tag": "@uifabric/utilities_v5.31.0",
+      "date": "Tue, 15 May 2018 07:09:49 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "3d06688daa90a5f2b037cef48539ccc3b9176a15",
+            "comment": "Remove dependency on React from Async"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.30.1",
       "tag": "@uifabric/utilities_v5.30.1",
       "date": "Fri, 04 May 2018 15:58:39 GMT",

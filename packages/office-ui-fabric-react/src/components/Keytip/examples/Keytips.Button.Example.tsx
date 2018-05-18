@@ -32,7 +32,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
         <CompoundButton
           keytipProps={ keytipMap.CompoundButton }
           text='Compound Button'
-          description={ 'With a Keytip' }
+          secondaryText={ 'With a Keytip' }
           onClick={ () => { console.log('Compound Button'); } }
         />
         <DefaultButton

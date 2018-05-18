@@ -10,7 +10,7 @@ const baseProps: IButtonProps = {
     iconName: 'AddFriend'
   },
   children: 'Butjon',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
+  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
 };
 
 const commandProps: IButtonProps = {
