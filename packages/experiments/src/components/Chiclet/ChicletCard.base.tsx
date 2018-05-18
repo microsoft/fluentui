@@ -104,7 +104,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
           height={ PREVIEW_IMAGE_HEIGHT }
           src={ itemType
             ? `${ASSET_CDN_BASE_URL}/brand-icons/document/svg/` + itemType + `_48x1.svg`
-            : (null) /* @todo: this will be replaced by something built by the design team */ }
+            : (undefined) /* @todo: this will be replaced by something built by the design team */ }
           role='presentation'
           alt={ imageAlt ? imageAlt : undefined }
         />
