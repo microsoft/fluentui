@@ -110,7 +110,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   theme?: ITheme;
 
   /**
-   * Call to provide customized styling that will layeron top of the variant rules.
+   * Call to provide customized styling that will layer on top of the variant rules.
    */
   getStyles?: IStyleFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 
