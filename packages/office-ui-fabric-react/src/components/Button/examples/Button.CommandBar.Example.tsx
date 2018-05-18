@@ -5,6 +5,10 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
+    const alertClicked = (): void => {
+      alert('Clicked');
+    };
+
     return (
       <div>
         <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>
@@ -36,7 +40,7 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
             iconProps={ { iconName: 'Add' } }
             text='Create account'
             split={ true }
-            onClick={ () => null }
+            onClick={ alertClicked }
             menuProps={ {
               items: [
                 {
