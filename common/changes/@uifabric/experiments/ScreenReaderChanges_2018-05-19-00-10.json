@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "sikrishn@microsoft.com"
+}
