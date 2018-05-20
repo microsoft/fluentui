@@ -51,7 +51,13 @@ function _serializeRules(rules: string[], indent: (val: string) => string): stri
       insertedRules.split(';').sort().forEach((rule: string) => {
         if (rule) {
           const [name, value] = rule.split(':');
-          const valueParts = value.split(/[ ,]+/);
+          let delimiter: string | RegExp = ' ';
+
+          if (name === 'animation-name') {
+            delimiter = /[ ,]+/;
+          }
+
+          const valueParts = value.split(delimiter);
           let result: string[] = [];
 
           for (const part of valueParts) {
