@@ -63,9 +63,12 @@ describe('print', () => {
       from: { opacity: 0 },
       to: { opacity: 1 }
     });
-
+    const leftInClassName = keyframes({
+      from: { left: -100 },
+      to: { left: 0 }
+    });
     const className = mergeStyles({
-      animationName: fadeInClassName
+      animationName: `${fadeInClassName},${leftInClassName}`
     });
 
     expect(
@@ -78,7 +81,12 @@ describe('print', () => {
       '',
       '',
       indent('{'),
-      indent('  animation-name: keyframes from{opacity:0;}to{opacity:1;};'),
+      indent(
+        '  ' +
+        'animation-name: ' +
+        'keyframes from{opacity:0;}to{opacity:1;} ' +
+        'keyframes from{left:-100px;}to{left:0px;};'
+      ),
       indent('}'),
     ].join('\n'));
   });

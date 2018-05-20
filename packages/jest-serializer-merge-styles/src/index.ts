@@ -8,7 +8,6 @@ export function print(
   const classNames = [];
   const rules = [];
   const parts = val.split(' ');
-
   for (const part of parts) {
     const ruleSet = Stylesheet.getInstance().insertedRulesFromClassName(part);
 
@@ -52,7 +51,7 @@ function _serializeRules(rules: string[], indent: (val: string) => string): stri
       insertedRules.split(';').sort().forEach((rule: string) => {
         if (rule) {
           const [name, value] = rule.split(':');
-          const valueParts = value.split(' ');
+          const valueParts = value.split(/[ ,]+/);
           let result: string[] = [];
 
           for (const part of valueParts) {
