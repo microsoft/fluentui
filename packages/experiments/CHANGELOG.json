@@ -2,6 +2,217 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.40.0",
+      "tag": "@uifabric/experiments_v5.40.0",
+      "date": "Mon, 21 May 2018 10:29:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "2e3ddc814468d9353a8d02fccefade5df2555cb2",
+            "comment": "Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.106.1 <6.0.0` to `>=5.107.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.39.0",
+      "tag": "@uifabric/experiments_v5.39.0",
+      "date": "Wed, 16 May 2018 00:05:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "d5cf3e5a688a68fb79e3ba56ed1f865b9dbb251a",
+            "comment": "use better icon for MalwareDetectedSignal"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "0d3d9f2137f96c68b5e1e0a1bf23cb2ec69d12cd",
+            "comment": "Experiments/Nav: accessibility changes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.102.0 <6.0.0` to `>=5.103.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.38.2",
+      "tag": "@uifabric/experiments_v5.38.2",
+      "date": "Fri, 11 May 2018 04:21:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "2e93a2b00543990739db20fd01c1a3649aa8f270",
+            "comment": "Fix Fluent palette color names"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.99.0 <6.0.0` to `>=5.100.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.3 <6.0.0` to `>=5.11.4 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.38.1",
+      "tag": "@uifabric/experiments_v5.38.1",
+      "date": "Thu, 10 May 2018 10:27:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "ec7fbe9ca3b596f0ecaa5d29882d1a8e1fa8491e",
+            "comment": "Update Fluent theme to use relative imports"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.98.0 <6.0.0` to `>=5.99.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.38.0",
+      "tag": "@uifabric/experiments_v5.38.0",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "ba51e2f872a7548633a779ae9d583a6dbad2512d",
+            "comment": "Adds a Fluent theme experiment"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.96.1 <6.0.0` to `>=5.97.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.2 <6.0.0` to `>=5.11.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.37.0",
+      "tag": "@uifabric/experiments_v5.37.0",
+      "date": "Fri, 04 May 2018 15:58:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "0ae7286da9137337d0e864e712a4f17e4e679cf9",
+            "comment": "Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.95.0 <6.0.0` to `>=5.96.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.1 <6.0.0` to `>=5.11.2 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.6.1 <1.0.0` to `>=0.6.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.36.0",
+      "tag": "@uifabric/experiments_v5.36.0",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "920a06d0cd2c37298cd48c156b43bf1fd88fef83",
+            "comment": "Remove Keytips from experiments package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.94.0 <6.0.0` to `>=5.95.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.0 <6.0.0` to `>=5.11.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.35.0",
+      "tag": "@uifabric/experiments_v5.35.0",
+      "date": "Tue, 01 May 2018 10:23:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "2b20cab52ead58a3c93ba26e9ed2e6550311a236",
+            "comment": "remove extendedPicker, floatingPicker, and selectedItemsList from experiments"
+          },
+          {
+            "author": "KatherineThayerMicrosoft <kathayer@microsoft.com>",
+            "commit": "8de19959324dc82ffb22fb340618cf4edfb45e4e",
+            "comment": "Command bar accessibility: one tab stop with aria label"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.92.1 <6.0.0` to `>=5.93.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.0",
+      "tag": "@uifabric/experiments_v5.34.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "84e6ff3b20bd8533471a6073f5ecce39621dc889",
+            "comment": "Nav: Refactored out a NavLink component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.1",
       "tag": "@uifabric/experiments_v5.33.1",
       "date": "Wed, 25 Apr 2018 05:32:09 GMT",

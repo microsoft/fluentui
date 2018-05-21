@@ -2,12 +2,14 @@ import * as React from 'react';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import {
-  KeyCodes
+  KeyCodes,
+  createRef
 } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
+import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
 import { LayerBase as Layer } from '../Layer/Layer.base';
 
 describe('ContextualMenu', () => {
@@ -174,6 +176,42 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
+  });
+
+  it('opens a splitbutton submenu item on touch start', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        split: true,
+        onClick: () => { alert('test'); },
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    const menuItem = document.getElementsByName('TestText 1')[0] as HTMLButtonElement;
+
+    // in a normal scenario, when we do a touchstart we would also cause a
+    // click event to fire. This doesn't happen in the simulator so we're
+    // manually adding this in.
+    ReactTestUtils.Simulate.touchStart(menuItem);
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(document.querySelector('.is-expanded')).toBeDefined();
   });
 
   it('sets the correct aria-owns attribute for the submenu', () => {
@@ -821,6 +859,164 @@ describe('ContextualMenu', () => {
         }];
 
       expect(canAnyMenuItemsCheck(items)).toEqual(true);
+    });
+  });
+
+  describe('IContextualMenuRenderItem function tests', () => {
+    const contextualItem = createRef<IContextualMenuRenderItem>();
+    let menuDismissed: boolean;
+    const onDismiss = (ev?: any, dismissAll?: boolean) => { menuDismissed = true; };
+
+    describe('for a button element', () => {
+      beforeEach(() => {
+        menuDismissed = false;
+        const menu: IContextualMenuItem[] = [
+          {
+            name: 'Test1',
+            key: 'Test1',
+            componentRef: contextualItem,
+            subMenuProps: {
+              items: [
+                {
+                  name: 'Test2',
+                  key: 'Test2',
+                  className: 'SubMenuClass'
+                },
+                {
+                  name: 'Test3',
+                  key: 'Test3',
+                  className: 'SubMenuClass'
+                }
+              ],
+            }
+          }
+        ];
+        ReactTestUtils.renderIntoDocument<ContextualMenu>(
+          <ContextualMenu
+            onDismiss={ onDismiss }
+            items={ menu }
+          />
+        );
+      });
+
+      it('openSubMenu will open the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+      });
+
+      it('dismissSubMenu will close the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+        contextualItem.value!.dismissSubMenu();
+        expect(document.querySelector('.SubMenuClass')).toEqual(null);
+      });
+
+      it('dismissMenu will close the item`s menu', () => {
+        contextualItem.value!.dismissMenu();
+        expect(menuDismissed).toEqual(true);
+      });
+    });
+
+    describe('for a split button element', () => {
+      beforeEach(() => {
+        menuDismissed = false;
+        const menu: IContextualMenuItem[] = [
+          {
+            name: 'Test1',
+            key: 'Test1',
+            componentRef: contextualItem,
+            split: true,
+            subMenuProps: {
+              items: [
+                {
+                  name: 'Test2',
+                  key: 'Test2',
+                  className: 'SubMenuClass'
+                },
+                {
+                  name: 'Test3',
+                  key: 'Test3',
+                  className: 'SubMenuClass'
+                }
+              ],
+            }
+          }
+        ];
+        ReactTestUtils.renderIntoDocument<ContextualMenu>(
+          <ContextualMenu
+            onDismiss={ onDismiss }
+            items={ menu }
+          />
+        );
+      });
+
+      it('openSubMenu will open the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+      });
+
+      it('dismissSubMenu will close the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+        contextualItem.value!.dismissSubMenu();
+        expect(document.querySelector('.SubMenuClass')).toEqual(null);
+      });
+
+      it('dismissMenu will close the item`s menu', () => {
+        contextualItem.value!.dismissMenu();
+        expect(menuDismissed).toEqual(true);
+      });
+    });
+
+    describe('for an anchor element', () => {
+      beforeEach(() => {
+        menuDismissed = false;
+        const menu: IContextualMenuItem[] = [
+          {
+            name: 'Test1',
+            key: 'Test1',
+            componentRef: contextualItem,
+            href: '#test',
+            subMenuProps: {
+              items: [
+                {
+                  name: 'Test2',
+                  key: 'Test2',
+                  className: 'SubMenuClass'
+                },
+                {
+                  name: 'Test3',
+                  key: 'Test3',
+                  className: 'SubMenuClass'
+                }
+              ],
+            }
+          }
+        ];
+        ReactTestUtils.renderIntoDocument<ContextualMenu>(
+          <ContextualMenu
+            onDismiss={ onDismiss }
+            items={ menu }
+          />
+        );
+      });
+
+      it('openSubMenu will open the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+      });
+
+      it('dismissSubMenu will close the item`s submenu if present', () => {
+        contextualItem.value!.openSubMenu();
+        expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+        contextualItem.value!.dismissSubMenu();
+        expect(document.querySelector('.SubMenuClass')).toEqual(null);
+      });
+
+      it('dismissMenu will close the item`s menu', () => {
+        contextualItem.value!.dismissMenu();
+        expect(menuDismissed).toEqual(true);
+      });
     });
   });
 });

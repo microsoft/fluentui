@@ -1,6 +1,78 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+This log was last generated on Mon, 21 May 2018 10:29:16 GMT and should not be manually modified.
+
+## 5.40.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props
+
+## 5.39.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Experiments/Nav: accessibility changes
+
+### Patches
+
+- use better icon for MalwareDetectedSignal
+
+## 5.38.2
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Fix Fluent palette color names
+
+## 5.38.1
+Thu, 10 May 2018 10:27:25 GMT
+
+### Patches
+
+- Update Fluent theme to use relative imports
+
+## 5.38.0
+Tue, 08 May 2018 10:17:01 GMT
+
+### Minor changes
+
+- Adds a Fluent theme experiment
+
+## 5.37.0
+Fri, 04 May 2018 15:58:38 GMT
+
+### Minor changes
+
+- Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links
+
+### Patches
+
+- Updating React build version.
+
+## 5.36.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Remove Keytips from experiments package
+
+## 5.35.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- remove extendedPicker, floatingPicker, and selectedItemsList from experiments
+- Command bar accessibility: one tab stop with aria label
+
+## 5.34.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Nav: Refactored out a NavLink component.
 
 ## 5.33.1
 Wed, 25 Apr 2018 05:32:09 GMT

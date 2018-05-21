@@ -2,12 +2,49 @@
 	"fontName": "fabric-icons-10",
 	"fontFamilyName": "FabricMDL2Icons-10",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "CPlusPlus",
+			"unicode": "F2F4"
+		},
+		{
+			"name": "FSharpLanguage",
+			"unicode": "F2F5"
+		},
+		{
+			"name": "FSharp",
+			"unicode": "F2F6"
+		},
+		{
+			"name": "TypeScriptLanguage",
+			"unicode": "F2F7"
+		},
+		{
+			"name": "PythonLanguage",
+			"unicode": "F2F8"
+		},
+		{
+			"name": "PY",
+			"unicode": "F2F9"
+		},
+		{
+			"name": "CoffeeScript",
+			"unicode": "F2FA"
+		},
+		{
+			"name": "MarkDownLanguage",
+			"unicode": "F2FB"
+		},
+		{
+			"name": "FullWidth",
+			"unicode": "F2FE"
+		},
 		{
 			"name": "FullWidthEdit",
 			"unicode": "F2FF"
@@ -151,6 +188,10 @@
 		{
 			"name": "StreamLogo",
 			"unicode": "F329"
+		},
+		{
+			"name": "PassiveAuthentication",
+			"unicode": "F32A"
 		},
 		{
 			"name": "AlertSolid",
@@ -367,46 +408,6 @@
 		{
 			"name": "CaretTopRightCenter8",
 			"unicode": "F366"
-		},
-		{
-			"name": "CaretTopLeftCenter8",
-			"unicode": "F367"
-		},
-		{
-			"name": "DonutChart",
-			"unicode": "F368"
-		},
-		{
-			"name": "ChevronUnfold10",
-			"unicode": "F369"
-		},
-		{
-			"name": "ChevronFold10",
-			"unicode": "F36A"
-		},
-		{
-			"name": "DoubleChevronDown8",
-			"unicode": "F36B"
-		},
-		{
-			"name": "DoubleChevronUp8",
-			"unicode": "F36C"
-		},
-		{
-			"name": "DoubleChevronLeft8",
-			"unicode": "F36D"
-		},
-		{
-			"name": "DoubleChevronRight8",
-			"unicode": "F36E"
-		},
-		{
-			"name": "ChevronDownEnd6",
-			"unicode": "F36F"
-		},
-		{
-			"name": "ChevronUpEnd6",
-			"unicode": "F370"
 		}
 	]
 }

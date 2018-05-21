@@ -28,7 +28,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
   let propertyType = (type: string) => type === 'interface' ? PropertyType.interface : PropertyType.enum;
 
   if (propsInterfaceOrEnumName) {
-    regex = new RegExp(`export (interface|enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`);
+    regex = new RegExp(`export (interface|(?:const )?enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`);
     let regexResult = regex.exec(source);
     if (regexResult && regexResult.length > 0) {
       parseInfo = _parseEnumOrInterface(regexResult);
@@ -40,7 +40,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
       }];
     }
   } else {
-    regex = new RegExp(`export (interface|enum) (\\S*?)(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`, 'g');
+    regex = new RegExp(`export (interface|(?:const )?enum) (\\S*?)(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`, 'g');
     let regexResult: RegExpExecArray | null;
     let results: Array<IProperty> = [];
     while ((regexResult = regex.exec(source)) !== null) {

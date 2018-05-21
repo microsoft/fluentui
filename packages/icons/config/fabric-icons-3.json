@@ -2,12 +2,25 @@
 	"fontName": "fabric-icons-3",
 	"fontFamilyName": "FabricMDL2Icons-3",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "WorkFlow",
+			"unicode": "EA01"
+		},
+		{
+			"name": "HourGlass",
+			"unicode": "EA03"
+		},
+		{
+			"name": "StoreLogoMed20",
+			"unicode": "EA04"
+		},
 		{
 			"name": "TimeSheet",
 			"unicode": "EA05"
@@ -281,6 +294,10 @@
 			"unicode": "EAE3"
 		},
 		{
+			"name": "AllCurrency",
+			"unicode": "EAE4"
+		},
+		{
 			"name": "BarChart4",
 			"unicode": "EAE7"
 		},
@@ -391,22 +408,6 @@
 		{
 			"name": "SubstitutionsIn",
 			"unicode": "EB31"
-		},
-		{
-			"name": "Tennis",
-			"unicode": "EB33"
-		},
-		{
-			"name": "Arrivals",
-			"unicode": "EB34"
-		},
-		{
-			"name": "Design",
-			"unicode": "EB3C"
-		},
-		{
-			"name": "Website",
-			"unicode": "EB41"
 		}
 	]
 }

@@ -4,12 +4,23 @@ import {
   HighContrastSelector,
   keyframes,
   noWrap,
+  getGlobalClassNames,
+  IRawStyle
 } from '../../Styling';
 import { getRTL } from '../../Utilities';
 import {
   IProgressIndicatorStyleProps,
   IProgressIndicatorStyles,
 } from './ProgressIndicator.types';
+
+const GlobalClassNames = {
+  root: 'ms-ProgressIndicator',
+  itemName: 'ms-ProgressIndicator-itemName',
+  itemDescription: 'ms-ProgressIndicator-itemDescription',
+  itemProgress: 'ms-ProgressIndicator-itemProgress',
+  progressTrack: 'ms-ProgressIndicator-progressTrack',
+  progressBar: 'ms-ProgressIndicator-progressBar',
+};
 
 const IndeterminateProgress = keyframes({
   '0%': {
@@ -40,13 +51,14 @@ export const getStyles = (
   } = props;
 
   const { palette, semanticColors } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const marginBetweenText = 8;
   const textHeight = 18;
 
   return ({
     root: [
-      'ms-ProgressIndicator',
+      classNames.root,
       {
         fontWeight: FontWeights.regular,
       },
@@ -54,7 +66,7 @@ export const getStyles = (
     ],
 
     itemName: [
-      'ms-ProgressIndicator-itemName',
+      classNames.itemName,
       noWrap,
       {
         color: semanticColors.bodyText,
@@ -65,7 +77,7 @@ export const getStyles = (
     ],
 
     itemDescription: [
-      'ms-ProgressIndicator-itemDescription',
+      classNames.itemDescription,
       {
         color: semanticColors.bodySubtext,
         fontSize: FontSizes.xSmall,
@@ -74,7 +86,7 @@ export const getStyles = (
     ],
 
     itemProgress: [
-      'ms-ProgressIndicator-itemProgress',
+      classNames.itemProgress,
       {
         position: 'relative',
         overflow: 'hidden',
@@ -84,7 +96,7 @@ export const getStyles = (
     ],
 
     progressTrack: [
-      'ms-ProgressIndicator-progressTrack',
+      classNames.progressTrack,
       {
         position: 'absolute',
         width: '100%',
@@ -100,7 +112,6 @@ export const getStyles = (
     ],
 
     progressBar: [
-      'ms-ProgressIndicator-progressBar',
       {
         backgroundColor: palette.themePrimary,
         height: barHeight,
@@ -114,18 +125,16 @@ export const getStyles = (
           }
         }
       },
-      !indeterminate && {
+
+      indeterminate ? {
+        position: 'absolute',
+        minWidth: '33%',
+        background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
+        animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`,
+      } as IRawStyle : {
         transition: 'width .15s linear'
-      },
-      indeterminate && [
-        {
-          position: 'absolute',
-          minWidth: '33%',
-          background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
-          animation: `${IndeterminateProgress} 3s infinite`,
-        },
-        isRTL && { animation: `${IndeterminateProgressRTL} 3s infinite` },
-      ],
+      } as IRawStyle,
+      classNames.progressBar,
     ],
   });
 };

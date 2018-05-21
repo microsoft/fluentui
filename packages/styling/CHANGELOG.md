@@ -1,6 +1,45 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+This log was last generated on Thu, 17 May 2018 10:28:07 GMT and should not be manually modified.
+
+## 5.30.2
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Fix import to be compatible with AMD bundlers
+
+## 5.30.1
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Add accompanying styling work for Keytips
+
+### Patches
+
+- fix bad import in styling package
+
+## 5.29.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- Adding helper to derive a media query.
+
+## 5.28.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Adds flags to theme to support controlling global class names
 
 ## 5.27.0
 Wed, 25 Apr 2018 05:32:09 GMT

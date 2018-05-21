@@ -2,6 +2,44 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.5.0",
+      "tag": "@uifabric/variants_v5.5.0",
+      "date": "Mon, 14 May 2018 10:14:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "281f64c917eb6cd1fa94427254a3f6c174d3dba3",
+            "comment": "have variants use OUFR instead of Styling as a dependency to ease bundling optimizations"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.100.0 <6.0.0` to `>=5.101.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "@uifabric/variants_v5.4.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "660800656c40963e73450fddafb9d621ce089f4a",
+            "comment": "Adds flags to theme to support controlling global class names"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.27.0 <6.0.0` to `>=5.28.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.3",
       "tag": "@uifabric/variants_v5.3.3",
       "date": "Mon, 16 Apr 2018 10:23:26 GMT",

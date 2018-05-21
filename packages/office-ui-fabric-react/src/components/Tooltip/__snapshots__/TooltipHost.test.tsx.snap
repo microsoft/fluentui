@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TooltipHost renders correctly 1`] = `
+<div
+  aria-describedby={undefined}
+  className="ms-TooltipHost"
+  onBlurCapture={[Function]}
+  onFocusCapture={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+/>
+`;

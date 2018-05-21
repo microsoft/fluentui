@@ -31,7 +31,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 isMonthPickerVisible={ false }
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
-                showGoToToday={ false }
+                showGoToToday={ true }
               />
             </ExampleCard>
             <ExampleCard
@@ -90,7 +90,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 isMonthPickerVisible={ false }
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
-                showGoToToday={ false }
+                showGoToToday={ true }
                 showWeekNumbers={ true }
               />
             </ExampleCard>
@@ -99,7 +99,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 isMonthPickerVisible={ false }
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
-                showGoToToday={ false }
+                showGoToToday={ true }
                 showSixWeeksByDefault={ true }
               />
             </ExampleCard>
@@ -146,6 +146,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               code={ CalendarButtonExampleCode }
             >
               <CalendarButtonExample
+                highlightCurrentMonth={ true }
               />
             </ExampleCard>
             <ExampleCard

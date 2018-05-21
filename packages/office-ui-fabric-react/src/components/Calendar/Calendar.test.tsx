@@ -136,10 +136,10 @@ describe('Calendar', () => {
       expect(renderedComponent.state.selectedDate!.getDate()).toEqual(today.getDate());
       expect(renderedComponent.state.selectedDate!.getMonth()).toEqual(today.getMonth());
       expect(renderedComponent.state.selectedDate!.getFullYear()).toEqual(today.getFullYear());
-      expect(renderedComponent.state.navigatedDate).not.toBeNull();
-      expect(renderedComponent.state.navigatedDate!.getDate()).toEqual(today.getDate());
-      expect(renderedComponent.state.navigatedDate!.getMonth()).toEqual(today.getMonth());
-      expect(renderedComponent.state.navigatedDate!.getFullYear()).toEqual(today.getFullYear());
+      expect(renderedComponent.state.navigatedDayDate).not.toBeNull();
+      expect(renderedComponent.state.navigatedDayDate!.getDate()).toEqual(today.getDate());
+      expect(renderedComponent.state.navigatedDayDate!.getMonth()).toEqual(today.getMonth());
+      expect(renderedComponent.state.navigatedDayDate!.getFullYear()).toEqual(today.getFullYear());
     });
 
     it('Verify go to today', () => {
@@ -171,6 +171,7 @@ describe('Calendar', () => {
           dateRangeType={ DateRangeType.Week }
           autoNavigateOnSelection={ true }
           onSelectDate={ onSelectDate() }
+          className='CalendarTestClass'
         />) as Calendar;
     });
 
@@ -195,7 +196,7 @@ describe('Calendar', () => {
 
     it('Verify day picker selected date & navigated date', () => {
       expect(renderedComponent.state.selectedDate).toEqual(defaultDate);
-      expect(renderedComponent.state.navigatedDate).toEqual(defaultDate);
+      expect(renderedComponent.state.navigatedDayDate).toEqual(defaultDate);
     });
 
     it('Verify month picker seen', () => {
@@ -243,6 +244,17 @@ describe('Calendar', () => {
       expect(lastSelectedDateRange).not.toBeNull();
       expect(lastSelectedDateRange!.length).toEqual(7);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).toEqual(true));
+    });
+
+    it('Verify class name', () => {
+      const calendarRoot = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'CalendarTestClass');
+      expect(calendarRoot).toBeDefined();
+      expect(calendarRoot.length).toEqual(1);
+      const root = calendarRoot[0];
+      expect(root.classList).toBeDefined();
+      expect(root.classList.length).toEqual(2);
+      expect(root.classList[0]).toEqual('ms-DatePicker');
+      expect(root.classList[1]).toEqual('CalendarTestClass');
     });
   });
 
