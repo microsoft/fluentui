@@ -164,6 +164,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       }
     }
 
+    const dataIsFocusable = ((this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton) ? false : true;
+
     const buttonProps = assign(
       nativeProps,
       {
@@ -173,7 +175,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
-        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton) ? false : true,
+        'data-is-focusable': dataIsFocusable,
         'aria-pressed': checked
       }
     );

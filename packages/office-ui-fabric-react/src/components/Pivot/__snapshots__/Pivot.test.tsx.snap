@@ -114,8 +114,8 @@ exports[`Pivot renders Pivot correctly 1`] = `
             <span
               className="ms-Pivot-text"
             >
-
-
+               
+              
             </span>
           </span>
         </div>
@@ -216,8 +216,8 @@ exports[`Pivot renders Pivot correctly 1`] = `
             <span
               className="ms-Pivot-text"
             >
-
-
+               
+              
             </span>
           </span>
         </div>

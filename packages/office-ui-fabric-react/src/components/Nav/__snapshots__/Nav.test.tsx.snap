@@ -207,7 +207,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           vertical-align: middle;
                         }
                   >
-
+                    
                   </div>
                 </div>
               </button>
