@@ -7,6 +7,7 @@ const styles: any = stylesImport;
 
 export interface IGroupSpacerProps {
   count: number;
+  widthUnit?: number;
 }
 
 const SPACER_WIDTH = 36;
@@ -18,6 +19,10 @@ export const GroupSpacer = (props: IGroupSpacerProps) =>
         'ms-GroupSpacer',
         styles.root
       ) }
-      style={ { width: props.count * SPACER_WIDTH } }
+      style={ { width: props.count * getWidthUnit(props.widthUnit) } }
     />
   );
+
+function getWidthUnit(widthUnit: number | undefined): number {
+  return typeof widthUnit === 'number' ? widthUnit : SPACER_WIDTH;
+}

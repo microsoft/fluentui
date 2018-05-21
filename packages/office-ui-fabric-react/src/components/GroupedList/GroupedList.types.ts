@@ -239,6 +239,9 @@ export interface IGroupDividerProps {
   /** The indent level of the group. */
   groupLevel?: number;
 
+  /** The width unit used in the spacer for the group. */
+  spacerWidthUnit?: number;
+
   /** If all items in the group are selected. */
   selected?: boolean;
 
@@ -274,4 +277,10 @@ export interface IGroupDividerProps {
 
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
+
+  /** Allows the user to provide custom class name for the header chevron. */
+  headerChevronClassName?: string;
+
+  /** Override which allows the caller to provider a custom title. */
+  onRenderTitle?: (group: IGroup) => React.ReactNode;
 }
