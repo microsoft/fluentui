@@ -35,7 +35,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     widthInPercentage,
     widthInPixel,
     className,
-    theme
+    theme,
+    contentLoaded
   } = props;
 
   const { palette } = theme;
@@ -54,6 +55,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       classNames.root,
       {
         position: 'relative',
+        height: 'auto'
       },
       className
     ],
@@ -78,7 +80,14 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       },
       isDataLoaded && {
         opacity: '0',
-        background: 'none'
+        position: 'absolute',
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
+      },
+      contentLoaded && {
+        display: 'none'
       }
     ],
     dataWrapper: [
@@ -90,14 +99,14 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         left: '0',
         right: '0',
         opacity: '0',
-        lineHeight: '1',
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
         transition: 'opacity 200ms'
       },
       isDataLoaded && {
-        opacity: '1'
+        opacity: '1',
+        position: 'static'
       }
     ]
   };

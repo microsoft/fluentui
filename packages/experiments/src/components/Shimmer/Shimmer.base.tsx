@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable
+} from '../../Utilities';
 import {
   IShimmerProps,
   IShimmerStyleProps,
@@ -8,17 +12,30 @@ import {
 } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup';
 
+export interface IShimmerState {
+  contentLoaded?: boolean;
+}
+
+const ANIMATION_INTERVAL = 200; /* ms */
+
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
 @customizable('Shimmer', ['theme'])
-export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
+export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
     isDataLoaded: false,
     isBaseStyle: false
   };
+
   private _classNames: { [key in keyof IShimmerStyles]: string };
+  private _lastTimeoutId: number | undefined;
+
   constructor(props: IShimmerProps) {
     super(props);
+
+    this.state = {
+      contentLoaded: props.isDataLoaded
+    };
 
     this._warnDeprecations({
       'isBaseStyle': 'customElementsGroup',
@@ -31,6 +48,27 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       'lineElements': 'shimmerElements',
       'customElementsGroup': 'lineElements'
     });
+  }
+
+  public componentWillReceiveProps(nextProps: IShimmerProps): void {
+    const { isDataLoaded } = nextProps;
+
+    if (this._lastTimeoutId !== undefined) {
+      this._async.clearTimeout(this._lastTimeoutId);
+      this._lastTimeoutId = undefined;
+    }
+    if (isDataLoaded) {
+      this._lastTimeoutId = this._async.setTimeout(() => {
+        this.setState({
+          contentLoaded: isDataLoaded
+        });
+        this._lastTimeoutId = undefined;
+      }, ANIMATION_INTERVAL);
+    } else {
+      this.setState({
+        contentLoaded: isDataLoaded
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -49,6 +87,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       theme
     } = this.props;
 
+    const { contentLoaded } = this.state;
+
     // lineElements is a deprecated prop so need to check which one was used.
     const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
 
@@ -58,7 +98,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       isDataLoaded,
       widthInPercentage,
       widthInPixel,
-      className
+      className,
+      contentLoaded
     });
 
     return (
