@@ -332,6 +332,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     } = this.props;
 
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.

@@ -449,7 +449,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _updateDroppingState(newValue: boolean, event: DragEvent): void {
-    if (newValue === false || this._draggedColumnIndex === -1) {
+    if ((newValue === false || this._draggedColumnIndex === -1) && event.type !== 'drop') {
       const newDropHintState = this.state.dropHintsState!.map(state => false);
       this.setState({ dropHintsState: newDropHintState });
     }
@@ -513,6 +513,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
+  /**
+   * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
+   *
+   */
   private _updateDropHintStates = (eventXposition: number): void => {
     let currentIndex = this.props.columnReorderOptions!.frozenColumnCount!;
     const colCount = this.props.columns.length;

@@ -132,9 +132,6 @@ export class DragDropHelper implements IDragDropHelper {
         };
 
         onDragEnter = (event: DragEvent) => {
-          if (this._dragEnterCounts[key] === -1) {
-            this._dragEnterCounts[key] = 0;
-          }
           event.preventDefault(); // needed for IE
           if (!(event as IDragDropEvent).isHandled) {
             (event as IDragDropEvent).isHandled = true;
@@ -301,6 +298,7 @@ export class DragDropHelper implements IDragDropHelper {
       this._onMouseUp(event);
       return;
     }
+
     const { root, options, key } = target;
     if (this._isDragging) {
       if (this._isDroppable(target)) {
@@ -318,7 +316,7 @@ export class DragDropHelper implements IDragDropHelper {
           }
 
           if (!this._dragData.dropTarget) {
-            // EventGroup.raise(root, 'dragenter');
+            EventGroup.raise(root, 'dragenter');
             this._dragData.dropTarget = target;
           }
         }
@@ -375,6 +373,7 @@ export class DragDropHelper implements IDragDropHelper {
           this._events.on(activeTarget.target.root, 'mouseleave', this._onMouseLeave.bind(this, activeTarget.target));
         }
       }
+      //To prevent marquee selection on draggable targets
       event.stopPropagation();
     } else {
       this._dragData = null;
