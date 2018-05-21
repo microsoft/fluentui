@@ -71,6 +71,7 @@ export interface IShimmerApplicationExampleState {
 
 export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
   private _isFetchingItems: boolean;
+  private _lastTimeoutId: number;
 
   constructor(props: {}) {
     super(props);
@@ -157,7 +158,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
     if (!this._isFetchingItems) {
       this._isFetchingItems = true;
-      setTimeout(() => {
+      this._lastTimeoutId = this._async.setTimeout(() => {
         this._isFetchingItems = false;
         // tslint:disable-next-line:no-any
         const itemsCopy = ([] as any[]).concat(this.state.items);
@@ -183,6 +184,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       items = _items.slice(0, ITEMS_BATCH_SIZE).concat(new Array(ITEMS_COUNT - ITEMS_BATCH_SIZE));
     } else {
       items = new Array();
+      this._async.clearTimeout(this._lastTimeoutId);
     }
     this.setState({
       isDataLoaded: checked,
