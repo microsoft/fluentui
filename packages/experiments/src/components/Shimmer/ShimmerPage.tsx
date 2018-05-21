@@ -86,17 +86,17 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               to block rendering the rest of the UI.
             </p>
             <p>
-              When Shimmer is not wrapping the actual component to be rendered when data is
-              fetched, <code>shimmerElements</code> or <code>customElementsGroup</code> props should be used, and later just replace the
+              When Shimmer is not wrapping the actual component to be rendered while data is
+              fetching, <code>shimmerElements</code> or <code>customElementsGroup</code> props should be used, and later just replace the
               Shimmer UI with the intended content. Otherwise, if smooth transition from Shimmer UI to content is wanted, wrap the content
-              nodewith Shimmer tags and use <code>isDataLoaded</code> prop to trigger the transition. For reference use the examples
+              node with Shimmer tags and use <code>isDataLoaded</code> prop to trigger the transition. For reference use the examples
               provided below.
             </p>
             <p>
               For cases when your application supports theming, Shimmer component is equiped with everything you need to just load the
               custom theme to the application, and as long as the color palette you provide has an overried for the
-              two <Link href='https://developer.microsoft.com/en-us/fabric#/styles/colors'><code>Fabric colors</code></Link>,
-              everything should be ok. If no theming is supported, then follow the example showing the use of
+              two <Link href='https://developer.microsoft.com/en-us/fabric#/styles/colors'><code>Fabric colors</code></Link> used in
+              Shimmer, everything should be ok. If no theming is supported, then follow the example showing the use of
               the <code>getStyles</code> prop.
             </p>
           </div>

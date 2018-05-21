@@ -172,10 +172,7 @@ export interface IShimmerStyleProps {
   isDataLoaded?: boolean;
   className?: string;
   theme: ITheme;
-  /**
-   * Flag to check when to remove the shimmerWrapper from the flow.
-   */
-  contentLoaded?: boolean;
+  transitionAnimationInterval?: number;
 }
 
 export interface IShimmerStyles {

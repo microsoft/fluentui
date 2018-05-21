@@ -56,7 +56,9 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
             style={ {
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap'
+              whiteSpace: 'nowrap',
+              lineHeight: '1',
+              minHeight: '16px' // Default height of Shimmer when no elements being provided.
             } }
           >
             { contentOne }

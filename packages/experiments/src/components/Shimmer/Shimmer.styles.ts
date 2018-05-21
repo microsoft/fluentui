@@ -36,7 +36,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     widthInPixel,
     className,
     theme,
-    contentLoaded
+    transitionAnimationInterval
   } = props;
 
   const { palette } = theme;
@@ -76,7 +76,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
         animationName: isRTL ? shimmerAnimationRTL : shimmerAnimation,
-        transition: 'opacity 200ms, background 200ms'
+        transition: `opacity ${transitionAnimationInterval}ms`
       },
       isDataLoaded && {
         opacity: '0',
@@ -85,9 +85,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         bottom: '0',
         left: '0',
         right: '0',
-      },
-      contentLoaded && {
-        display: 'none'
       }
     ],
     dataWrapper: [
@@ -102,7 +99,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
-        transition: 'opacity 200ms'
+        transition: `opacity ${transitionAnimationInterval}ms`
       },
       isDataLoaded && {
         opacity: '1',

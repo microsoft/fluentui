@@ -13,10 +13,13 @@ import {
 import { ShimmerElementsGroup } from './ShimmerElementsGroup';
 
 export interface IShimmerState {
+  /**
+   * Flag for knowing when to remove the shimmerWrapper from the DOM.
+   */
   contentLoaded?: boolean;
 }
 
-const ANIMATION_INTERVAL = 200; /* ms */
+const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
@@ -44,7 +47,6 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     });
 
     this._warnMutuallyExclusive({
-      'widthInPixel': 'widthInPercentage',
       'lineElements': 'shimmerElements',
       'customElementsGroup': 'lineElements'
     });
@@ -63,7 +65,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
           contentLoaded: isDataLoaded
         });
         this._lastTimeoutId = undefined;
-      }, ANIMATION_INTERVAL);
+      }, TRANSITION_ANIMATION_INTERVAL);
     } else {
       this.setState({
         contentLoaded: isDataLoaded
@@ -99,22 +101,24 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       widthInPercentage,
       widthInPixel,
       className,
-      contentLoaded
+      transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL
     });
 
     return (
       <div className={ this._classNames.root }>
-        <div className={ this._classNames.shimmerWrapper }>
-          { isBaseStyle ? children : // isBaseStyle prop is deprecated and this check needs to be removed in the future
-            customElementsGroup ? customElementsGroup :
-              <ShimmerElementsGroup
-                shimmerElements={ elements }
-              />
-          }
-        </div>
-        { !isBaseStyle && // same in here... this check needs to be removed in the future
+        { !contentLoaded &&
+          <div className={ this._classNames.shimmerWrapper }>
+            { isBaseStyle ? children : // isBaseStyle prop is deprecated and this check needs to be removed in the future
+              customElementsGroup ? customElementsGroup :
+                <ShimmerElementsGroup
+                  shimmerElements={ elements }
+                />
+            }
+          </div>
+        }
+        { !isBaseStyle && children && // isBaseStyle prop is deprecated and needs to be removed in the future
           <div className={ this._classNames.dataWrapper }>
-            { children ? children : null }
+            { children }
           </div>
         }
       </div>
