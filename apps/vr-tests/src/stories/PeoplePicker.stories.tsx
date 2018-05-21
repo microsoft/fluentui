@@ -117,22 +117,6 @@ const getPeople = () => people;
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
-  .add('Normal with text', () => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .click('.ms-BasePicker-input')
-        .setValue('.ms-BasePicker-input', 'a')
-        .snapshot('suggestion: "a"')
-        .end() }>
-      <NormalPeoplePicker
-        onResolveSuggestions={ getPeople }
-        onEmptyInputFocus={ getPeople }
-        getTextFromItem={ getTextFromItem }
-        className={ 'ms-PeoplePicker' }
-        pickerSuggestionsProps={ suggestionProps }
-      />
-    </Screener>))
   .add('Normal disabled', () => (
     <NormalPeoplePicker
       onResolveSuggestions={ getPeople }
@@ -162,7 +146,22 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={ suggestionProps }
       disabled
     />
-  ))
+  )).add('Normal with text', () => (
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        // .click('.ms-BasePicker-input')
+        .setValue('.ms-BasePicker-input', 'a')
+        .snapshot('suggestion: "a"')
+        .end() }>
+      <NormalPeoplePicker
+        onResolveSuggestions={ getPeople }
+        onEmptyInputFocus={ getPeople }
+        getTextFromItem={ getTextFromItem }
+        className={ 'ms-PeoplePicker' }
+        pickerSuggestionsProps={ suggestionProps }
+      />
+    </Screener>))
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
@@ -226,5 +225,4 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={ suggestionProps }
       defaultSelectedItems={ [people[2]] }
     />
-  ))
-  ;
+  ));
