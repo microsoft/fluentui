@@ -24,7 +24,7 @@ export class DetailsListDragDropExample extends React.Component<
     columns: IColumn[];
     frozenColumnCount: number;
   }
-> {
+  > {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -41,8 +41,7 @@ export class DetailsListDragDropExample extends React.Component<
 
     this.state = {
       items: createListItems(10),
-      columns: _columns,
-      frozenColumnCount: 1
+      columns: _columns
     };
   }
 
