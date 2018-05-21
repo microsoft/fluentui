@@ -121,7 +121,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       selection: {
         getSelection: () => { return; }
       } as ISelection,
-      minimumPixelsForDrag: 1
+      minimumPixelsForDrag: 5
     }) : null;
   }
 
