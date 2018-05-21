@@ -64,12 +64,12 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   /**
    * Description to render for the component.
    */
-  description?: React.ReactElement<any>;
+  description?: React.ReactElement<{}>;
 
   /**
    * Footer to render for the component.
    */
-  footer?: React.ReactElement<any>;
+  footer?: React.ReactElement<HTMLDivElement>;
 
   /**
    * Theme for the component.

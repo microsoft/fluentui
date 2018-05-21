@@ -7,7 +7,19 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import * as exampleStyles from './Chiclet.Basic.Example.scss';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
-export class ChicletBasicExample extends React.Component<any, any> {
+export class FooterComponent extends React.Component<IFooterComponent, {}> {
+  constructor(props: IFooterComponent) {
+    super(props);
+  }
+
+  public render(): JSX.Element {
+    const { buttonProps, activities } = this.props;
+
+    return _renderFooter(buttonProps, activities);
+  }
+}
+
+export class ChicletBasicExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
   }
@@ -24,24 +36,12 @@ export class ChicletBasicExample extends React.Component<any, any> {
   }
 }
 
-export class FooterComponent extends React.Component<any, any> {
-  constructor(props: {}) {
-    super(props);
-  }
-
-  public render(): JSX.Element {
-    const { buttonProps, activities } = this.props;
-
-    return _renderFooter(buttonProps, activities);
-  }
-}
-
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;
 }
 
-function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<any> {
+function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<HTMLDivElement> {
   return (
     <div className={ exampleStyles.footer }>
       <div className={ exampleStyles.activities }>

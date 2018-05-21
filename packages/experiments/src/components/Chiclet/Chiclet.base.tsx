@@ -7,11 +7,16 @@ import {
 import { ChicletCard } from './ChicletCard';
 import { getOpenGraphProperties } from './OpenGraph';
 import { IChicletProps, IChicletStyles, IChicletStyleProps, ChicletSize } from './Chiclet.types';
+import { IChicletCardProps } from './ChicletCard.types';
 
 const getClassNames = classNamesFunction<IChicletStyleProps, IChicletStyles>();
 
+export interface IChicletState {
+  chicletCardProps?: IChicletCardProps;
+}
+
 @customizable('ChicletBase', ['theme'])
-export class ChicletBase extends BaseComponent<IChicletProps, {}> {
+export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
   private _classNames: { [key in keyof IChicletStyles]: string };
 
   constructor(props: IChicletProps) {

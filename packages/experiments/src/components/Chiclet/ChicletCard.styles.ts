@@ -90,7 +90,7 @@ export const getStyles = (
         lineHeight: '1.33',
         letterSpacing: 'normal',
         textAlign: 'left',
-        color: '#797671',
+        color: '#797671', // @todo: get theme from designers
         width: '248px',
         height: '16px',
         overflow: 'hidden',

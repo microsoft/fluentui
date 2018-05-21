@@ -1,7 +1,7 @@
 import { IChicletCardProps } from './ChicletCard.types';
 
 export function getOpenGraphProperties(url: string): IChicletCardProps {
-  let attributes: IChicletCardProps = {};
+  const attributes: IChicletCardProps = {};
   const metaElements = extractMetaTags(url);
 
   for (let i = 0; i < metaElements.length; i++) {
@@ -42,7 +42,7 @@ export function getOpenGraphProperties(url: string): IChicletCardProps {
 }
 
 function extractMetaTags(url: string): NodeListOf<HTMLMetaElement> {
-  let xmlHttp = new XMLHttpRequest();
+  const xmlHttp = new XMLHttpRequest();
   xmlHttp.open('GET', url, false);
   xmlHttp.overrideMimeType('application/xml');
   xmlHttp.send(null);

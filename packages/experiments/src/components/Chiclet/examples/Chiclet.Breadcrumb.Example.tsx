@@ -11,7 +11,19 @@ import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Too
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { getRTL } from '../../../Utilities';
 
-export class ChicletBreadcrumbExample extends React.Component<any, any> {
+export class FooterComponent extends React.Component<IFooterComponent, {}> {
+  constructor(props: IFooterComponent) {
+    super(props);
+  }
+
+  public render(): JSX.Element {
+    const { buttonProps, activities } = this.props;
+
+    return _renderFooter(buttonProps, activities);
+  }
+}
+
+export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
   }
@@ -61,24 +73,12 @@ export class ChicletBreadcrumbExample extends React.Component<any, any> {
   }
 }
 
-export class FooterComponent extends React.Component<any, any> {
-  constructor(props: {}) {
-    super(props);
-  }
-
-  public render(): JSX.Element {
-    const { buttonProps, activities } = this.props;
-
-    return _renderFooter(buttonProps, activities);
-  }
-}
-
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;
 }
 
-function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<any> {
+function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<HTMLDivElement> {
   return (
     <div className={ exampleStyles.footer }>
       <div className={ exampleStyles.activities }>
