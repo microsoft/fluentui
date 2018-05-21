@@ -73,23 +73,17 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       ['data-automation-id']: 'uploadButton'
     },
     {
-      key: 'share',
-      name: 'Share',
-      icon: 'Share',
-      onClick: () => { return; }
-    },
-    {
       key: 'download',
       name: 'Download',
       icon: 'Download',
-      [COACHMARK_ATTRIBUTE_NAME]: 'testing',
-      onClick: () => this._onShowMenuClicked()
+      [COACHMARK_ATTRIBUTE_NAME]: 'testin2g'
     },
     {
       key: 'link',
       name: 'Link',
       icon: 'WindowsLogo',
-      [COACHMARK_ATTRIBUTE_NAME]: 'test2'
+      [COACHMARK_ATTRIBUTE_NAME]: 'testing',
+      onClick: () => this._onShowMenuClicked()
     }
   ];
 
@@ -113,7 +107,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
   public componentDidMount(): void {
     this.item = document.body.querySelector('.ms-Nav-compositeLink.is-selected');
-    console.log(document.body.querySelector('.ms-Nav-compositeLink.is-selected'));
     setTimeout(() => {
       this.forceUpdate();
     }, 200);
@@ -228,7 +221,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={ `[${COACHMARK_ATTRIBUTE_NAME}="testing"]` }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.bottomRightEdge
+              directionalHint: DirectionalHint.leftTopEdge
             } }
           >
             {
@@ -251,7 +244,8 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={ this.item }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.rightCenter
+              directionalHint: DirectionalHint.rightTopEdge,
+              offsetFromTarget: 30
             } }
           >
             <TeachingBubbleContent
@@ -268,24 +262,25 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           </Coachmark>
         }
         {
-          <Coachmark
-            target={ `[${COACHMARK_ATTRIBUTE_NAME}="test2"]` }
-            positioningContainerProps={ {
-              directionalHint: DirectionalHint.rightCenter
-            } }
-          >
-            <TeachingBubbleContent
-              headline={ 'Need help tracking deadlines?' }
-              calloutProps={ calloutProps }
-              hasCloseIcon={ true }
-              closeButtonAriaLabel='Close'
-              onDismiss={ this._onDismiss }
-              primaryButtonProps={ buttonProps }
-              secondaryButtonProps={ buttonProps2 }
-            >
-              test
-            </TeachingBubbleContent>
-          </Coachmark>
+          // <Coachmark
+          //   target={ `[${COACHMARK_ATTRIBUTE_NAME}="test2"]` }
+          //   positioningContainerProps={ {
+          //     directionalHint: DirectionalHint.leftCenter,
+          //     allowOutOfBounds: true
+          //   } }
+          // >
+          //   <TeachingBubbleContent
+          //     headline={ 'Need help tracking deadlines?' }
+          //     calloutProps={ calloutProps }
+          //     hasCloseIcon={ true }
+          //     closeButtonAriaLabel='Close'
+          //     onDismiss={ this._onDismiss }
+          //     primaryButtonProps={ buttonProps }
+          //     secondaryButtonProps={ buttonProps2 }
+          //   >
+          //     test
+          //   </TeachingBubbleContent>
+          // </Coachmark>
         }
       </div>
     );

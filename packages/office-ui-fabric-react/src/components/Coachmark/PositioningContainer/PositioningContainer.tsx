@@ -15,7 +15,8 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  createRef
+  createRef,
+  shallowCompare
 } from '../../../Utilities';
 
 import {
@@ -114,6 +115,10 @@ export class PositioningContainer
 
   public componentDidMount(): void {
     this._onComponentDidMount();
+  }
+
+  public shouldComponentUpdate(newProps: IPositioningContainerTypes, newState: IPositioningContainerState) {
+    return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
   public componentDidUpdate(): void {
@@ -242,7 +247,7 @@ export class PositioningContainer
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the positioningContainer.
     this._async.setTimeout(() => {
-      this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
+      this._events.on(this._targetWindow, 'scroll', this._async.throttle(this._dismissOnScroll, 100), true);
       this._events.on(this._targetWindow, 'resize', this.onResize, true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
