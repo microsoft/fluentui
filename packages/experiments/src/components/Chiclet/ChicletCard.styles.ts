@@ -11,7 +11,6 @@ export const getStyles = (
 
   return ({
     root: [
-      'ms-Chiclet',
       normalize,
       {
         WebkitFontSmoothing: 'antialiased',
@@ -30,7 +29,6 @@ export const getStyles = (
       }
     ],
     icon: [
-      'ms-ChicletCardPreview-icon',
       {
         height: 24,
         left: 10,
@@ -39,7 +37,6 @@ export const getStyles = (
       }
     ],
     preview: [
-      'ms-ChicletCardPreview',
       {
         float: 'left',
         height: 122,
@@ -51,7 +48,6 @@ export const getStyles = (
       }
     ],
     info: [
-      'ms-ChicletCardInfo',
       {
         position: 'relative',
         display: 'block',
@@ -62,7 +58,6 @@ export const getStyles = (
       }
     ],
     title: [
-      'ms-ChicletCardTitle',
       {
         padding: '9px 26px 5px 11px',
         fontSize: 16,
@@ -80,7 +75,6 @@ export const getStyles = (
       }
     ],
     description: [
-      'ms-ChicletCardLink',
       {
         padding: '0px 16px 17px 11px',
         fontSize: 12,
