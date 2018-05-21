@@ -40,12 +40,12 @@ export interface IChicletProps extends React.Props<ChicletBase> {
   /**
    * Description to render for the component.
    */
-  description?: React.ReactElement<{}>;
+  description?: React.ReactElement<JSX.Element>;
 
   /**
    * Footer to render for the component.
    */
-  footer?: React.ReactElement<HTMLDivElement>;
+  footer?: React.ReactElement<JSX.Element>;
 
   /**
    * Theme for the component.
