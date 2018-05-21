@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.107.0",
+      "tag": "office-ui-fabric-react_v5.107.0",
+      "date": "Mon, 21 May 2018 10:29:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "da831117bc4a1561da0a9648450fe44b774689ab",
+            "comment": "Callout/Positioning: Fix a bug where max-height would be incorrectly calculated if covertarget was set"
+          }
+        ],
+        "patch": [
+          {
+            "author": "veloiya <30428533+veloiya@users.noreply.github.com>",
+            "commit": "b0350207df6e4663e2464f3f6cdced56b816d743",
+            "comment": "Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "233262889fb2de740cd051df2b7c08d7e944b366",
+            "comment": "Moved best design practices write up in SearchBoxes Overview to Best Practices for clarity that these are not included features"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.106.1",
       "tag": "office-ui-fabric-react_v5.106.1",
       "date": "Fri, 18 May 2018 01:46:34 GMT",
