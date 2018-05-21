@@ -54,4 +54,8 @@ export interface IShimmerLineStyleProps {
 
 export interface IShimmerLineStyles {
   root?: IStyle;
+  topLeftCorner?: IStyle;
+  topRightCorner?: IStyle;
+  bottomRightCorner?: IStyle;
+  bottomLeftCorner?: IStyle;
 }
