@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Set 'margin 0' reset style for buttons in Safari and updated snapshots in experiments",
+      "comment": "Set 'margin 0' reset style for buttons in Safari in Fabric component",
       "type": "patch"
     }
   ],
