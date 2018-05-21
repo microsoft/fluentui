@@ -31,7 +31,6 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       itemType,
       description,
       image,
-      imageType,
       imageWidth,
       imageHeight,
       imageAlt,

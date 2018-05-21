@@ -1,15 +1,12 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  customizable,
-  classNamesFunction
+  customizable
 } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
 import { getOpenGraphProperties } from './OpenGraph';
-import { IChicletProps, IChicletStyles, IChicletStyleProps, ChicletSize } from './Chiclet.types';
+import { IChicletProps, ChicletSize } from './Chiclet.types';
 import { IChicletCardProps } from './ChicletCard.types';
-
-const getClassNames = classNamesFunction<IChicletStyleProps, IChicletStyles>();
 
 export interface IChicletState {
   chicletCardProps?: IChicletCardProps;
@@ -17,7 +14,6 @@ export interface IChicletState {
 
 @customizable('ChicletBase', ['theme'])
 export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
-  private _classNames: { [key in keyof IChicletStyles]: string };
 
   constructor(props: IChicletProps) {
     super(props);
@@ -27,10 +23,8 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
   }
 
   public render(): JSX.Element {
-    const { size, footer, getStyles, theme, description } = this.props;
+    const { size, footer, description } = this.props;
     const { chicletCardProps } = this.state;
-
-    this._classNames = getClassNames(getStyles, { theme: theme! });
 
     switch (size) {
       case ChicletSize.medium:
