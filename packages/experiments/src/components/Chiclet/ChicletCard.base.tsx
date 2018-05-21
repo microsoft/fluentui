@@ -50,7 +50,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
-    const preview = this._renderPreviewImage(image, imageHeight, imageWidth, itemType);
+    const preview = this._renderPreviewImage(image, imageHeight, imageWidth, itemType, imageAlt);
 
     return (
       <div
@@ -87,7 +87,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   private _renderPreviewImage(imageUrl?: string, imageHeight?: string, imageWidth?: string, itemType?: string, imageAlt?: string)
     : React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     let image;
-    if (imageUrl !== null) {
+    if (imageUrl) {
       image = (
         <Image
           width={ imageWidth }
