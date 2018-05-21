@@ -105,7 +105,7 @@ export interface IChicletCardStyleProps {
   /**
    * Accept theme prop.
    */
-  theme?: ITheme;
+  theme: ITheme;
 
   /**
    * Accept custom classNames

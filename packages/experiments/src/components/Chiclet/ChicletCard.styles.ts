@@ -16,10 +16,10 @@ export const getStyles = (
       {
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
-        borderRadius: '2px',
+        borderRadius: 2,
         boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
-        width: '600px',
-        height: '126px',
+        width: 600,
+        height: 126,
         userSelect: 'none',
         position: 'relative',
         selectors: {
@@ -32,9 +32,9 @@ export const getStyles = (
     icon: [
       'ms-ChicletCardPreview-icon',
       {
-        height: '24px',
-        left: '10px',
-        bottom: '10px',
+        height: 24,
+        left: 10,
+        bottom: 10,
         position: 'absolute'
       }
     ],
@@ -42,8 +42,8 @@ export const getStyles = (
       'ms-ChicletCardPreview',
       {
         float: 'left',
-        height: '122px',
-        width: '198px',
+        height: 122,
+        width: 198,
         position: 'relative',
         backgroundColor: palette.white,
         display: 'block',
@@ -58,22 +58,22 @@ export const getStyles = (
         height: '100%',
         overflow: 'hidden',
         wordWrap: 'break-word',
-        width: '400px'
+        width: 400
       }
     ],
     title: [
       'ms-ChicletCardTitle',
       {
         padding: '9px 26px 5px 11px',
-        fontSize: '16px',
+        fontSize: 16,
         fontWeight: 'normal',
         fontStyle: 'normal',
         fontStretch: 'normal',
         color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
-        height: '41px', // Two lines of text, making sure the third line is hidden
-        width: '363px',
+        height: 41, // Two lines of text, making sure the third line is hidden
+        width: 363,
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'
@@ -83,7 +83,7 @@ export const getStyles = (
       'ms-ChicletCardLink',
       {
         padding: '0px 16px 17px 11px',
-        fontSize: '12px',
+        fontSize: 12,
         fontWeight: 'normal',
         fontStyle: 'normal',
         fontStretch: 'normal',
@@ -91,8 +91,8 @@ export const getStyles = (
         letterSpacing: 'normal',
         textAlign: 'left',
         color: '#797671', // @todo: get theme from designers
-        width: '248px',
-        height: '16px',
+        width: 248,
+        height: 16,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'
