@@ -76,10 +76,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 0;
@@ -192,10 +188,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 0;
