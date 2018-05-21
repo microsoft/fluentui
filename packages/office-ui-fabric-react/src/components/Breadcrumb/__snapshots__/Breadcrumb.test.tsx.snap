@@ -485,7 +485,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     color: #004578;
                   }
                   &:active {
-                    background-color: #eaeaea;
+                    background-color: #c8c8c8;
                     color: #0078d4;
                   }
                   &:hover:active {
@@ -1204,7 +1204,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     color: #004578;
                   }
                   &:active {
-                    background-color: #eaeaea;
+                    background-color: #c8c8c8;
                     color: #0078d4;
                   }
                   &:hover:active {
@@ -1571,7 +1571,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     color: #004578;
                   }
                   &:active {
-                    background-color: #eaeaea;
+                    background-color: #c8c8c8;
                     color: #0078d4;
                   }
                   &:hover:active {
@@ -1778,7 +1778,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     color: #004578;
                   }
                   &:active {
-                    background-color: #eaeaea;
+                    background-color: #c8c8c8;
                     color: #0078d4;
                   }
                   &:hover:active {

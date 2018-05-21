@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 17 May 2018 22:02:40 GMT and should not be manually modified.
+This log was last generated on Mon, 21 May 2018 10:29:16 GMT and should not be manually modified.
+
+## 5.107.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Callout/Positioning: Fix a bug where max-height would be incorrectly calculated if covertarget was set
+
+### Patches
+
+- Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled
+- Moved best design practices write up in SearchBoxes Overview to Best Practices for clarity that these are not included features
+
+## 5.106.1
+Fri, 18 May 2018 01:46:34 GMT
+
+### Patches
+
+- ContextualMenu: Make the whole menu always programatically focusable
 
 ## 5.106.0
 Thu, 17 May 2018 22:02:40 GMT
