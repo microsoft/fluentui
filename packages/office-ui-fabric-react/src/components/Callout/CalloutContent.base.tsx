@@ -382,7 +382,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
-            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
             this.forceUpdate();
           }
         });

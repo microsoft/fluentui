@@ -275,7 +275,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             ref={ (host: HTMLDivElement) => this._host = host }
             id={ id }
             className={ this._classNames.container }
-            tabIndex={ shouldFocusOnContainer ? 0 : undefined }
+            tabIndex={ shouldFocusOnContainer ? 0 : -1 }
             onKeyDown={ this._onMenuKeyDown }
           >
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
