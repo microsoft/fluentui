@@ -51,6 +51,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
         />
         <Shimmer
           isDataLoaded={ isDataLoadedOne }
+          ariaLabel={ 'Loading content' }
         >
           <div
             style={ {

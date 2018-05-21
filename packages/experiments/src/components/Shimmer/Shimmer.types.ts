@@ -45,6 +45,11 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   customElementsGroup?: React.ReactNode;
 
   /**
+   * Localized string of the status label for screen reader
+   */
+  ariaLabel?: string;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   getStyles?: IStyleFunction<IShimmerStyleProps, IShimmerStyles>;
@@ -179,6 +184,7 @@ export interface IShimmerStyles {
   root?: IStyle;
   shimmerWrapper?: IStyle;
   dataWrapper?: IStyle;
+  screenReaderText?: IStyle;
 }
 
 export enum ShimmerElementType {

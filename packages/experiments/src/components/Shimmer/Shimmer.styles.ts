@@ -1,5 +1,5 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { keyframes, getGlobalClassNames } from '../../Styling';
+import { keyframes, getGlobalClassNames, hiddenContentStyle } from '../../Styling';
 import { getRTL } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -105,6 +105,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         opacity: '1',
         position: 'static'
       }
-    ]
+    ],
+    screenReaderText: hiddenContentStyle
   };
 }

@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  customizable
+  customizable,
+  DelayedRender
 } from '../../Utilities';
 import {
   IShimmerProps,
@@ -86,7 +87,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       widthInPixel,
       className,
       customElementsGroup,
-      theme
+      theme,
+      ariaLabel
     } = this.props;
 
     const { contentLoaded } = this.state;
@@ -119,6 +121,13 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
         { !isBaseStyle && children && // isBaseStyle prop is deprecated and needs to be removed in the future
           <div className={ this._classNames.dataWrapper }>
             { children }
+          </div>
+        }
+        { ariaLabel && !isDataLoaded &&
+          <div role='status' aria-live='polite'>
+            <DelayedRender>
+              <div className={ this._classNames.screenReaderText }>{ ariaLabel }</div>
+            </DelayedRender>
           </div>
         }
       </div>
