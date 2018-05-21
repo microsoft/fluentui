@@ -150,7 +150,6 @@ storiesOf('PeoplePicker', module)
     <Screener
       steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        // .click('.ms-BasePicker-input')
         .setValue('.ms-BasePicker-input', 'a')
         .snapshot('suggestion: "a"')
         .end() }>
