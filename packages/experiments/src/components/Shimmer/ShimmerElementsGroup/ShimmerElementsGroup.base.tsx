@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
+  customizable,
 } from '../../../Utilities';
 import {
   IShimmerElementsGroupProps,
@@ -22,6 +23,7 @@ import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
 
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
+@customizable('ShimmerElementsGroup', ['theme'])
 export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
   private _classNames: { [key in keyof IShimmerElementsGroupStyles]: string };
 

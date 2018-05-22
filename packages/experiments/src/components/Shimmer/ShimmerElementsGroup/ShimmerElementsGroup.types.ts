@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle } from '../../../Styling';
+import { IStyle, ITheme } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 import { IShimmerElement } from '../Shimmer.types';
 
@@ -36,6 +36,11 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
    * Optional width for ShimmerElements container.
    */
   width?: string;
+
+  /**
+  * Theme provided by High-Order Component.
+  */
+  theme?: ITheme;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
