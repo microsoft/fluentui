@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {
   BaseComponent,
   classNamesFunction,
@@ -31,41 +30,23 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     super(props);
   }
 
-  // User should not worry to provide which of the elements is the highest, we do the calculation for him.
-  public findMaxElementHeight = (elements: IShimmerElement[]): number => {
-    const itemsDefaulted: IShimmerElement[] = elements.map((elem: IShimmerElement): IShimmerElement => {
-      switch (elem.type) {
-        case ShimmerElementType.circle:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.circle;
-          }
-        case ShimmerElementType.line:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.line;
-          }
-        case ShimmerElementType.gap:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.gap;
-          }
-      }
-      return elem;
+  public render(): JSX.Element {
+    const {
+      getStyles,
+      width,
+      shimmerElements,
+      rowHeight,
+      flexWrap,
+      theme
+    } = this.props;
+
+    this._classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      flexWrap,
+      width
     });
 
-    const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
-      return next.height ?
-        next.height > acc ? next.height : acc
-        : acc;
-    }, 0);
-
-    return rowHeight;
-  }
-
-  public render(): JSX.Element {
-    const { getStyles, width, shimmerElements, rowHeight, flexWrap } = this.props;
-
-    this._classNames = getClassNames(getStyles!, { flexWrap, width });
-
-    const height = rowHeight ? rowHeight : this.findMaxElementHeight(shimmerElements ? shimmerElements : []);
+    const height = rowHeight ? rowHeight : this._findMaxElementHeight(shimmerElements ? shimmerElements : []);
 
     return (
       <div
@@ -140,5 +121,34 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     }
 
     return borderStyle;
+  }
+
+  // User should not worry to provide which of the elements is the highest, we do the calculation for him.
+  private _findMaxElementHeight = (elements: IShimmerElement[]): number => {
+    const itemsDefaulted: IShimmerElement[] = elements.map((elem: IShimmerElement): IShimmerElement => {
+      switch (elem.type) {
+        case ShimmerElementType.circle:
+          if (!elem.height) {
+            elem.height = ShimmerElementsDefaultHeights.circle;
+          }
+        case ShimmerElementType.line:
+          if (!elem.height) {
+            elem.height = ShimmerElementsDefaultHeights.line;
+          }
+        case ShimmerElementType.gap:
+          if (!elem.height) {
+            elem.height = ShimmerElementsDefaultHeights.gap;
+          }
+      }
+      return elem;
+    });
+
+    const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
+      return next.height ?
+        next.height > acc ? next.height : acc
+        : acc;
+    }, 0);
+
+    return rowHeight;
   }
 }

@@ -51,6 +51,7 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
 export interface IShimmerElementsGroupStyleProps {
   flexWrap?: boolean;
   width?: string;
+  theme: ITheme;
 }
 
 export interface IShimmerElementsGroupStyles {
