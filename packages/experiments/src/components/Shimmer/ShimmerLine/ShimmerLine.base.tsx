@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
+  customizable
 } from '../../../Utilities';
 import {
   IShimmerLineProps,
@@ -11,6 +12,7 @@ import {
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
+@customizable('ShimmerLine', ['theme'])
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   private _classNames: { [key in keyof IShimmerLineStyles]: string };
 
@@ -19,9 +21,22 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { height, getStyles, widthInPercentage, widthInPixel, borderStyle } = this.props;
+    const {
+      height,
+      getStyles,
+      widthInPercentage,
+      widthInPixel,
+      borderStyle,
+      theme
+    } = this.props;
 
-    this._classNames = getClassNames(getStyles!, { height, widthInPixel, widthInPercentage, borderStyle });
+    this._classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      height,
+      widthInPixel,
+      widthInPercentage,
+      borderStyle
+    });
 
     return (
       <div

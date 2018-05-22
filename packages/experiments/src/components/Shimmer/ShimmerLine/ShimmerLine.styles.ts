@@ -2,37 +2,61 @@ import {
   IShimmerLineStyleProps,
   IShimmerLineStyles
 } from './ShimmerLine.types';
-import { IStyleSet, DefaultPalette } from '../../../Styling';
+import {
+  IStyleSet,
+  getGlobalClassNames,
+  HighContrastSelector
+} from '../../../Styling';
+
+const GlobalClassNames = {
+  root: 'ms-ShimmerLine-root',
+  topLeftCorner: 'ms-ShimmerLine-topLeftCorner',
+  topRightCorner: 'ms-ShimmerLine-topRightCorner',
+  bottomLeftCorner: 'ms-ShimmerLine-bottomLeftCorner',
+  bottomRightCorner: 'ms-ShimmerLine-bottomRightCorner'
+};
 
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const {
     height,
     widthInPercentage,
     widthInPixel,
-    borderStyle
+    borderStyle,
+    theme
   } = props;
+
+  const { palette, semanticColors } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const styles: IStyleSet = !!borderStyle ? borderStyle : {};
   const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
   const sharedCornerStyles: IStyleSet = {
     position: 'absolute',
-    fill: DefaultPalette.white
+    fill: palette.white
   };
 
   return {
     root: [
-      'ms-ShimmerLine-root',
+      classNames.root,
+      styles,
       {
         width: ACTUAL_WIDTH,
         height: `${height}px`,
         boxSizing: 'content-box',
-        position: 'relative'
-      },
-      styles
+        position: 'relative',
+        borderTopStyle: 'solid',
+        borderBottomStyle: 'solid',
+        borderColor: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: semanticColors.bodyBackground
+          }
+        }
+      }
     ],
     topLeftCorner: [
-      'ms-ShimmerLine-topLeftCorner',
+      classNames.topLeftCorner,
       {
         top: '0',
         left: '0'
@@ -40,7 +64,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
       sharedCornerStyles
     ],
     topRightCorner: [
-      'ms-ShimmerLine-topRightCorner',
+      classNames.topRightCorner,
       {
         top: '0',
         right: '0'
@@ -48,7 +72,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
       sharedCornerStyles
     ],
     bottomRightCorner: [
-      'ms-ShimmerLine-bottomRightCorner',
+      classNames.bottomRightCorner,
       {
         bottom: '0',
         right: '0'
@@ -56,7 +80,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
       sharedCornerStyles
     ],
     bottomLeftCorner: [
-      'ms-ShimmerLine-bottomLeftCorner',
+      classNames.bottomLeftCorner,
       {
         bottom: '0',
         left: '0'

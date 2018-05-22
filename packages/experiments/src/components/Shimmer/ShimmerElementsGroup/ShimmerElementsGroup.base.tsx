@@ -98,7 +98,6 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
   private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyleSet | undefined => {
     const elemHeight: number | undefined = elem.height;
-
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
     let borderStyle: IStyleSet | undefined;
@@ -123,7 +122,10 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     return borderStyle;
   }
 
-  // User should not worry to provide which of the elements is the highest, we do the calculation for him.
+  /**
+   * User should not worry to provide which of the elements is the highest, we do the calculation for him.
+   * Plus if user forgot to specify the height we assign their defaults.
+   */
   private _findMaxElementHeight = (elements: IShimmerElement[]): number => {
     const itemsDefaulted: IShimmerElement[] = elements.map((elem: IShimmerElement): IShimmerElement => {
       switch (elem.type) {
