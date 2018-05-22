@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 16 May 2018 00:05:17 GMT and should not be manually modified.
+This log was last generated on Tue, 22 May 2018 10:29:12 GMT and should not be manually modified.
+
+## 5.41.0
+Tue, 22 May 2018 10:29:12 GMT
+
+### Minor changes
+
+- Implementation of the Chiclet component
+
+## 5.40.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props
 
 ## 5.39.0
 Wed, 16 May 2018 00:05:17 GMT
