@@ -9,7 +9,7 @@ import {
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles
 } from './ShimmerElementsGroup.types';
-import { DefaultPalette, IStyleSet } from '../../../Styling';
+import { IStyleSet } from '../../../Styling';
 import {
   ShimmerElementType,
   ShimmerElementVerticalAlign,
@@ -104,18 +104,18 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
     if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.center) {
       borderStyle = {
-        borderBottom: `${dif ? Math.floor(dif / 2) : 0}px solid ${DefaultPalette.white}`,
-        borderTop: `${dif ? Math.ceil(dif / 2) : 0}px solid ${DefaultPalette.white}`
+        borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
+        borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`
       };
     } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.top) {
       borderStyle = {
-        borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
-        borderTop: `0px solid ${DefaultPalette.white}`
+        borderBottomWidth: `${dif ? dif : 0}px`,
+        borderTopWidth: `0px`
       };
     } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.bottom) {
       borderStyle = {
-        borderBottom: `0px solid ${DefaultPalette.white}`,
-        borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
+        borderBottomWidth: `0px`,
+        borderTopWidth: `${dif ? dif : 0}px`
       };
     }
 

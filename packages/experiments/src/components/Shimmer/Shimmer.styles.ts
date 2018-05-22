@@ -84,7 +84,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: semanticColors.bodyText
+            backgroundColor: 'WindowText'
           }
         }
       },

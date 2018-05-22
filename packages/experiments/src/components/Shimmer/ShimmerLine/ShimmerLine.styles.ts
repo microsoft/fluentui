@@ -28,7 +28,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const { palette, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const styles: IStyleSet = !!borderStyle ? borderStyle : {};
+  const styles: IStyleSet = !!borderStyle ? borderStyle : { borderWidth: '0px' };
   const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
   const sharedCornerStyles: IStyleSet = {
