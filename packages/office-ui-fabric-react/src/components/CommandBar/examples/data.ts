@@ -43,7 +43,7 @@ export const items = [
     iconProps: {
       iconName: 'Share',
     },
-    onClick: () => { return; }
+    onClick: () => console.log('Share')
   },
   {
     key: 'download',
@@ -51,7 +51,7 @@ export const items = [
     iconProps: {
       iconName: 'Download',
     },
-    onClick: () => { return; }
+    onClick: () => console.log('Download')
   }
 ];
 
@@ -86,7 +86,7 @@ export const farItems = [
     iconProps: {
       iconName: 'SortLines',
     },
-    onClick: () => { return; }
+    onClick: () => console.log('Sort')
   },
   {
     key: 'tile',
@@ -95,7 +95,7 @@ export const farItems = [
       iconName: 'Tiles',
     },
     iconOnly: true,
-    onClick: () => { return; }
+    onClick: () => console.log('Tiles')
   },
   {
     key: 'info',
@@ -104,6 +104,6 @@ export const farItems = [
       iconName: 'Info',
     },
     iconOnly: true,
-    onClick: () => { return; }
+    onClick: () => console.log('Info')
   }
 ];
