@@ -15,6 +15,11 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const styles: IStyleSet = !!borderStyle ? borderStyle : {};
   const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
+  const sharedCornerStyles: IStyleSet = {
+    position: 'absolute',
+    fill: DefaultPalette.white
+  };
+
   return {
     root: [
       'ms-ShimmerLine-root',
@@ -29,38 +34,34 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
     topLeftCorner: [
       'ms-ShimmerLine-topLeftCorner',
       {
-        position: 'absolute',
         top: '0',
-        left: '0',
-        fill: `${DefaultPalette.white}`
-      }
+        left: '0'
+      },
+      sharedCornerStyles
     ],
     topRightCorner: [
       'ms-ShimmerLine-topRightCorner',
       {
-        position: 'absolute',
         top: '0',
-        right: '0',
-        fill: `${DefaultPalette.white}`
-      }
+        right: '0'
+      },
+      sharedCornerStyles
     ],
     bottomRightCorner: [
       'ms-ShimmerLine-bottomRightCorner',
       {
-        position: 'absolute',
         bottom: '0',
-        right: '0',
-        fill: `${DefaultPalette.white}`
-      }
+        right: '0'
+      },
+      sharedCornerStyles
     ],
     bottomLeftCorner: [
       'ms-ShimmerLine-bottomLeftCorner',
       {
-        position: 'absolute',
         bottom: '0',
-        left: '0',
-        fill: `${DefaultPalette.white}`
-      }
+        left: '0'
+      },
+      sharedCornerStyles
     ]
   };
 }

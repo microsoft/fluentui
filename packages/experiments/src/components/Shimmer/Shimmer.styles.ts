@@ -1,5 +1,10 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { keyframes, getGlobalClassNames, hiddenContentStyle } from '../../Styling';
+import {
+  keyframes,
+  getGlobalClassNames,
+  hiddenContentStyle,
+  HighContrastSelector
+} from '../../Styling';
 import { getRTL } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -39,7 +44,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     transitionAnimationInterval
   } = props;
 
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const isRTL = getRTL();
@@ -76,7 +81,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
         animationName: isRTL ? shimmerAnimationRTL : shimmerAnimation,
-        transition: `opacity ${transitionAnimationInterval}ms`
+        transition: `opacity ${transitionAnimationInterval}ms`,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: semanticColors.bodyText
+          }
+        }
       },
       isDataLoaded && {
         opacity: '0',
