@@ -125,7 +125,6 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
-// This does NOT fix deprecated slots.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
@@ -186,7 +185,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
-    // Deprecated slots, fixed by _fixDeprecatedSlots() later
+    // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
     listTextColor: '',
     menuItemBackgroundChecked: p.neutralLight
   };
