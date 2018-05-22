@@ -11,7 +11,7 @@ import {
   IShimmerStyles,
   IShimmerElement,
 } from './Shimmer.types';
-import { ShimmerElementsGroup } from './ShimmerElementsGroup';
+import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
 export interface IShimmerState {
   /**

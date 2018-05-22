@@ -10,7 +10,7 @@ import {
 } from './ShimmerTile.types';
 import { TileLayoutSizes, TileSize } from '../../../Tile';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
-import { ShimmerElementsGroup } from '../ShimmerElementsGroup';
+import { ShimmerElementsGroup } from '../ShimmerElementsGroup/ShimmerElementsGroup';
 import { ShimmerElementType as ElemType } from '../Shimmer.types';
 
 const enum ShimmerTileLayoutValues {

@@ -24,8 +24,8 @@ import { ISize } from '@uifabric/experiments/lib/Utilities';
 import {
   ShimmerTile,
   ShimmerElementType as ElemType,
+  ShimmerElementsGroup
 } from '@uifabric/experiments/lib/Shimmer';
-import { ShimmerElementsGroup } from '../../Shimmer/ShimmerElementsGroup';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;
