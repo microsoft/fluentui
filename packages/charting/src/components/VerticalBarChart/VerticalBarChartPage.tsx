@@ -9,11 +9,9 @@ import {
 
 import { VerticalBarChartBasicExample } from './examples/VerticalBarChart.Basic.Example';
 
-// TODO this causes npm start error Module not found: Error: Can't resolve
-// const VerticalBarChartBasicExampleCode = require(
-//   '!raw-loader!@uifabric/charting/src/components/VerticalBarChart/examples/VerticalBarChart.Basic.Example.tsx'
-// ) as string;
-const VerticalBarChartBasicExampleCode = '';
+const VerticalBarChartBasicExampleCode = require(
+  '!raw-loader!@uifabric/charting/src/components/VerticalBarChart/examples/VerticalBarChart.Basic.Example.tsx'
+) as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -31,7 +29,6 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              // TODO this causes npm start error Module not found: Error: Can't resolve
               require<string>('!raw-loader!@uifabric/charting/src/components/VerticalBarChart/VerticalBarChart.types.ts'),
             ] }
           />

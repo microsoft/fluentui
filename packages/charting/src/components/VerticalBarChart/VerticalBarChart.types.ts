@@ -6,43 +6,52 @@ export interface IVerticalBarChart {
 }
 
 export interface IDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   */
   x: number | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
   y: number;
 }
 
 export interface IVerticalBarChartProps {
   /**
-   * The data to render in the chart.
+   * Data to render in the chart.
    */
   data?: IDataPoint[];
 
   /**
-   * The width of the chart.
+   * Width of the chart.
    */
   width?: number;
 
   /**
-   * The height of the chart.
+   * Height of the chart.
    */
   height?: number;
 
   /**
-   * The width of each bar in the chart.
+   * Width of each bar in the chart.
    */
   barWidth?: number;
 
   /**
-   * The number of ticks on the y-axis.
+   * Number of ticks on the y-axis.
    */
   yAxisTickCount?: number;
 
   /**
-   * The colors from which to select the color of each bar.
+   * Colors from which to select the color of each bar.
    */
   colors?: string[];
 
   /**
-   * The label to apply to the whole chart.
+   * Label to apply to the whole chart.
    */
   chartLabel?: string;
 
@@ -71,38 +80,62 @@ export interface IVerticalBarChartStyleProps {
 
 export interface IVerticalBarChartStyles {
   /**
-   *  Root div containing everything in the VerticalBarChart.
+   *  Style for the root element.
    */
   root?: IStyle;
 
   /**
-   * SVG element containing the chart.
+   * Style for the chart.
    */
   chart?: IStyle;
 
   /**
-   * Label for the chart.
+   * Style for the chart label.
    */
   chartLabel?: IStyle;
 
   /**
-   * SVG element containing the x-axis.
+   * Style for the element containing the x-axis.
    */
   xAxis?: IStyle;
+
+  /**
+   * Style for the line representing the domain of the x-axis.
+   */
   xAxisDomain?: IStyle;
+
+  /**
+   * Style for the lines representing the ticks along the x-axis.
+   */
   xAxisTicks?: IStyle;
+
+  /**
+   * Style for the text labeling each tick along the x-axis.
+   */
   xAxisText?: IStyle;
 
   /**
-   * SVG element containing the y-axis.
+   * Style for the element containing the y-axis.
    */
   yAxis?: IStyle;
+
+  /**
+   * Style for the line representing the domain of the y-axis.
+   */
   yAxisDomain?: IStyle;
+
+  /**
+   * Style for the lines representing the ticks along the y-axis.
+   */
   yAxisTicks?: IStyle;
+
+  /**
+   * Style for the text labeling each tick along the y-axis.
+   */
   yAxisText?: IStyle;
 
   /**
-   * SVG element containing all of the bars in the chart.
+   * Style for the element containing all the bars in the chart.
    */
   bars?: IStyle;
 }
