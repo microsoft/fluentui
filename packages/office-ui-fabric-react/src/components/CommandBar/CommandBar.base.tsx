@@ -208,7 +208,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return <OverflowButtonType aria-posinset={ this._setSize } aria-setsize={ this._setSize } { ...overflowProps as IButtonProps } />;
   }
 
-  private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
+  private _computeCacheKey(data: ICommandBarData): string {
+    const { primaryItems, farItems = [], overflowItems } = data;
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
@@ -216,7 +217,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     const primaryKey = primaryItems.reduce(returnKey, '');
     const farKey = farItems.reduce(returnKey, '');
-    const overflowKey = overflow ? 'overflow' : '';
+    const overflowKey = !!overflowItems.length ? 'overflow' : '';
 
     return [primaryKey, farKey, overflowKey].join(' ');
   }
@@ -236,7 +237,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
       const newData = this._setAriaPosinset({ ...data, primaryItems, overflowItems });
 
-      cacheKey = this._computeCacheKey(newData.primaryItems, newData.farItems!, !!newData.overflowItems.length);
+      cacheKey = this._computeCacheKey(newData);
 
       if (onDataReduced) {
         onDataReduced(movedItem);
@@ -250,7 +251,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onGrowData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { shiftOnReduce, onDataGrown } = this.props;
-    const { minimumOverflowItems, farItems } = data;
+    const { minimumOverflowItems } = data;
     let { primaryItems, overflowItems, cacheKey } = data;
     const movedItem = overflowItems[0];
 
@@ -263,7 +264,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
       const newData = this._setAriaPosinset({ ...data, primaryItems, overflowItems });
-      cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+      cacheKey = this._computeCacheKey(newData);
 
       if (onDataGrown) {
         onDataGrown(movedItem);
