@@ -373,7 +373,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'] }
         aria-invalid={ !!this.state.errorMessage }
         aria-label={ this.props.ariaLabel }
         onFocus={ this._onFocus }
@@ -396,7 +396,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'] }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }

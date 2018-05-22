@@ -158,7 +158,9 @@ storiesOf('Button Split', module)
   .add('Checked', () => (<DefaultButton { ...commandProps } checked={ true } split={ true } />))
   .add('Primary', () => (<DefaultButton { ...commandProps } primary={ true } split={ true } />))
   .add('Primary Disabled', () => (<DefaultButton { ...commandProps } primary={ true } disabled={ true } split={ true } />))
-  .add('Primary Checked', () => (<DefaultButton { ...commandProps } primary={ true } checked={ true } split={ true } />));
+  .add('Primary Checked', () => (<DefaultButton { ...commandProps } primary={ true } checked={ true } split={ true } />))
+  .add('Command Split', () => (<CommandBarButton { ...commandProps } split={ true } />))
+  ;
 
 storiesOf('Button Special Scenarios', module)
   .addDecorator(FabricDecorator)
