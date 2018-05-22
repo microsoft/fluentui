@@ -126,6 +126,7 @@
 }
 
 .footer {
+  display: flex;
   :global(.ms-Button):not(:first-child) {
     @include margin-left(20px);
   }
@@ -163,6 +164,7 @@
 .primaryButton {
   background-color: $ms-color-white;
   border-color: $ms-color-white;
+  white-space: nowrap;
 
   :global(.ms-Button-label) {
     @include ms-font-m;
@@ -189,6 +191,7 @@
 .secondaryButton {
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-white;
+  white-space: nowrap;
 
   :global(.ms-Button-label) {
     @include ms-font-m;
