@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add shouldComponentUpdate to detailsrow to improve performance",
+      "comment": "DetailsList: DetailsRow now behaves as a pure component, resulting in improved performance.",
       "type": "patch"
     }
   ],
