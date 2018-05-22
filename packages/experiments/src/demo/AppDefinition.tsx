@@ -11,6 +11,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Accordion/AccordionPage').AccordionPage,
+          key: 'Accordion',
+          name: 'Accordion',
+          url: '#/examples/accordion'
+        },
+        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',
