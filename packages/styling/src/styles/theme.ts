@@ -129,6 +129,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyBackgroundDarker: p.white,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
