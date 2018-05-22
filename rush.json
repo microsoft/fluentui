@@ -19,6 +19,12 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/charting",
+      "projectFolder": "packages/charting",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
       "versionPolicyName": "lockedMajor",
