@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.108.0",
+      "tag": "office-ui-fabric-react_v5.108.0",
+      "date": "Tue, 22 May 2018 10:29:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "841a6dea1e135fdd97154ec3c7ee41d83373dc7c",
+            "comment": "Implementation of experimental chiclet component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "03f8e872009dede0b2f8eb55861a191d3c298a1d",
+            "comment": "Revert IconButton hover/pressed background color change."
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "99145f596296fe3471d2483389c6d775f569b16d",
+            "comment": "Set 'margin 0' reset style for buttons in Safari in Fabric component"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2e04bc6e23939a0029c751ed3c0277b97446f598",
+            "comment": "CommandBarButton: Fixed split styles"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.107.0",
       "tag": "office-ui-fabric-react_v5.107.0",
       "date": "Mon, 21 May 2018 10:29:16 GMT",

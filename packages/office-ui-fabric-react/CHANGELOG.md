@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 May 2018 10:29:16 GMT and should not be manually modified.
+This log was last generated on Tue, 22 May 2018 10:29:13 GMT and should not be manually modified.
+
+## 5.108.0
+Tue, 22 May 2018 10:29:13 GMT
+
+### Minor changes
+
+- Implementation of experimental chiclet component
+
+### Patches
+
+- Revert IconButton hover/pressed background color change.
+- Set 'margin 0' reset style for buttons in Safari in Fabric component
+- CommandBarButton: Fixed split styles
 
 ## 5.107.0
 Mon, 21 May 2018 10:29:16 GMT
