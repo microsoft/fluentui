@@ -1,7 +1,7 @@
 const path = require('path');
 const resources = require('../../scripts/tasks/webpack-resources');
 
-const BUNDLE_NAME = 'experiments';
+const BUNDLE_NAME = 'charting';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 module.exports = resources.createConfig(
@@ -14,7 +14,7 @@ module.exports = resources.createConfig(
 
     output: {
       libraryTarget: 'var',
-      library: 'FabricExperiments'
+      library: 'FabricCharting'
     },
 
     externals: [
@@ -24,8 +24,8 @@ module.exports = resources.createConfig(
 
     resolve: {
       alias: {
-        '@uifabric/experiments/src': path.join(__dirname, 'src'),
-        '@uifabric/experiments/lib': path.join(__dirname, 'lib')
+        '@uifabric/charting/src': path.join(__dirname, 'src'),
+        '@uifabric/charting/lib': path.join(__dirname, 'lib')
       }
     }
   }

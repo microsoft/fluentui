@@ -32,7 +32,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
           <PropertiesTableSet
             sources={ [
               // TODO this causes npm start error Module not found: Error: Can't resolve
-              // require<string>('!raw-loader!@uifabric/charting/src/components/VerticalBarChart/VerticalBarChart.types.ts'),
+              require<string>('!raw-loader!@uifabric/charting/src/components/VerticalBarChart/VerticalBarChart.types.ts'),
             ] }
           />
         }

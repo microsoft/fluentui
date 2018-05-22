@@ -24,7 +24,7 @@
       "webpack-env"
     ],
     "paths": {
-      "@uifabric/experiments/lib/*": [
+      "@uifabric/charting/lib/*": [
         "./src/*"
       ]
     }
