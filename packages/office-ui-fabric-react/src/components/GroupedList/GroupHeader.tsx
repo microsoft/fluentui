@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css
-} from '../../Utilities';
-import { IGroupDividerProps, IGroup } from './GroupedList.types';
+import { BaseComponent, css } from '../../Utilities';
+import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
@@ -42,9 +39,6 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
   }
 
   public render(): JSX.Element | null {
-    let {
-      isCollapsedGroupSelectVisible,
-    } = this.props;
     const {
       group,
       groupLevel,
@@ -53,15 +47,13 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
       loadingText,
       isSelected,
       selected,
-      spacerWidthUnit,
-      headerChevronClassName,
+      indentWidth,
       onRenderTitle = this._onRenderTitle,
+      isCollapsedGroupSelectVisible = true
     } = this.props;
+
     const { isCollapsed, isLoadingVisible } = this.state;
 
-    if (isCollapsedGroupSelectVisible === undefined) {
-      isCollapsedGroupSelectVisible = true;
-    }
     const canSelectGroup = selectionMode === SelectionMode.multiple;
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     const currentlySelected = isSelected || selected;
@@ -91,17 +83,17 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             >
               <Check checked={ currentlySelected } />
             </button>
-          ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ widthUnit: spacerWidthUnit, count: 1 }) : null)
+          ) : (selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={ indentWidth } count={ 1 } />)
           }
 
-          { GroupSpacer({ widthUnit: spacerWidthUnit, count: groupLevel as number }) }
+          <GroupSpacer indentWidth={ indentWidth } count={ groupLevel! } />
 
           <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) }>
             <Icon iconName='Tag' />
           </div>
           <button
             type='button'
-            className={ css('ms-GroupHeader-expand', styles.expand, headerChevronClassName) }
+            className={ css('ms-GroupHeader-expand', styles.expand) }
             onClick={ this._onToggleCollapse }
           >
             <Icon
@@ -112,7 +104,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             />
           </button>
 
-          { onRenderTitle(group) }
+          { onRenderTitle(this.props, this._onRenderTitle) }
 
           { isLoadingVisible && (
             <Spinner label={ loadingText } />
@@ -163,7 +155,12 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     }
   }
 
-  private _onRenderTitle = (group: IGroup): JSX.Element => {
+  private _onRenderTitle = (props: IGroupDividerProps): JSX.Element | null => {
+    const { group } = props;
+
+    if (!group)
+      return null;
+
     return (
       <div className={ css('ms-GroupHeader-title', styles.title) }>
         <span>{ group.name }</span>

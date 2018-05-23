@@ -239,8 +239,8 @@ export interface IGroupDividerProps {
   /** The indent level of the group. */
   groupLevel?: number;
 
-  /** The width unit used in the spacer for the group. */
-  spacerWidthUnit?: number;
+  /** Width corresponding to a single level. This is multiplied by the groupLevel to get the full spacer width for the group. */
+  indentWidth?: number;
 
   /** If all items in the group are selected. */
   selected?: boolean;
@@ -282,5 +282,5 @@ export interface IGroupDividerProps {
   headerChevronClassName?: string;
 
   /** Override which allows the caller to provider a custom title. */
-  onRenderTitle?: (group: IGroup) => React.ReactNode;
+  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
 }

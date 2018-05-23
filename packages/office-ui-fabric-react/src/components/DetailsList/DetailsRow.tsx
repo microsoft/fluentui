@@ -45,7 +45,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   groupNestingDepth?: number;
-  spacerWidthUnit?: number;
+  indentWidth?: number;
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
   collapseAllVisibility?: CollapseAllVisibility;
@@ -190,7 +190,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
       rowFieldsAs: RowFields = DetailsRowFields,
       selection,
-      spacerWidthUnit,
+      indentWidth,
       shimmer,
       compact
     } = this.props;
@@ -278,7 +278,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         ) }
 
-        { GroupSpacer({ widthUnit: spacerWidthUnit, count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
+        <GroupSpacer indentWidth={ indentWidth } count={ groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) } />
 
         { item && rowFields }
         { columnMeasureInfo && (
