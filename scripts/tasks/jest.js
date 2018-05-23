@@ -14,6 +14,9 @@ module.exports = function (options) {
       // Specify the config file.
       `--config ${jestConfigPath}`,
 
+      // Run tests in serial (parallel builds seem to hang rush.)
+      process.env.TRAVIS ? `--runInBand` : undefined,
+
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
 
