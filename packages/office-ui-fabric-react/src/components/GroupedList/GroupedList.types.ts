@@ -278,9 +278,6 @@ export interface IGroupDividerProps {
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
 
-  /** Allows the user to provide custom class name for the header chevron. */
-  headerChevronClassName?: string;
-
   /** Override which allows the caller to provider a custom title. */
   onRenderTitle?: IRenderFunction<IGroupDividerProps>;
 }
