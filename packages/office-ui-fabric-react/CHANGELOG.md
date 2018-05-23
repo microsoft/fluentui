@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 23 May 2018 10:28:50 GMT and should not be manually modified.
+This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+
+## 5.110.0
+Wed, 23 May 2018 16:14:26 GMT
+
+### Minor changes
+
+- ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble.
 
 ## 5.109.0
 Wed, 23 May 2018 10:28:50 GMT

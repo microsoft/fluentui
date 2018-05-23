@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.110.0",
+      "tag": "office-ui-fabric-react_v5.110.0",
+      "date": "Wed, 23 May 2018 16:14:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "17547b3778676a5b721f3f7dacf86fbd9621f67e",
+            "comment": "ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.32.0 <6.0.0` to `>=5.33.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.109.0",
       "tag": "office-ui-fabric-react_v5.109.0",
       "date": "Wed, 23 May 2018 10:28:50 GMT",
