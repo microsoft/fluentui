@@ -116,7 +116,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themeLighter,
-    bodyBackgroundDarker: !fullTheme.isInverted ? p.themeLight : p.themeLighterAlt
+    bodyBackgroundDarker: !fullTheme.isInverted ? p.themeLight : p.themeLighterAlt,
 
     inputBorder: p.themeLighter,
     // inputBorderHovered: p.neutralPrimary,
@@ -181,7 +181,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
   const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themePrimary,
-    bodyBackgroundDarker: !fullTheme.isInverted ? p.DarkAlt : p.themeSecondary,
+    bodyBackgroundDarker: !fullTheme.isInverted ? p.themeDarkAlt : p.themeSecondary,
 
     bodyText: p.white,
     bodySubtext: p.white,
