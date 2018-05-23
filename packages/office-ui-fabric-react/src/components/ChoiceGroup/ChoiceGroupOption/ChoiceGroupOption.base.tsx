@@ -39,12 +39,12 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       checked,
       id,
       labelId,
-      getStyles,
+      styles,
       name,
       onRenderField = this._onRenderField,
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       hasIcon: !!iconProps,
       hasImage: !!imageSrc,

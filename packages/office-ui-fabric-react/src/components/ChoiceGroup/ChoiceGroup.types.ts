@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 
 export interface IChoiceGroup {
@@ -54,7 +54,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>;
+  styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
 }
 
 export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {

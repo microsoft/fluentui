@@ -65,7 +65,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const {
       className,
       theme,
-      getStyles,
+      styles,
       options,
       label,
       required,
@@ -74,7 +74,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       optionsContainIconOrImage: options!.some(option => Boolean(option.iconProps || option.imageSrc))
