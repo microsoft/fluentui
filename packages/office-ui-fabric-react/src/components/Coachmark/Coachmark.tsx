@@ -1,6 +1,6 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, shallowCompare } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, shallowCompare, IRectangle } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 
 import {
@@ -86,6 +86,11 @@ export interface ICoachmarkState {
   targetAlignment?: RectangleEdge;
 
   /**
+   * Position of Coachmark/TeachingBubble in relation to target
+   */
+  targetPosition?: RectangleEdge;
+
+  /**
    * Transform origin of teaching bubble callout
    */
   transformOrigin?: string;
@@ -97,8 +102,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     mouseProximityOffset: 10,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     color: DefaultPalette.themePrimary,
+    isPositionForced: true,
     positioningContainerProps: {
-      directionalHint: DirectionalHint.bottomAutoEdge
+      directionalHint: DirectionalHint.bottomAutoEdge,
     }
   };
 
@@ -133,33 +139,20 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private get _beakDirection(): BeakDirection {
-    const { positioningContainerProps } = this.props;
-    if (!positioningContainerProps || positioningContainerProps!.directionalHint === undefined) {
+    const { targetPosition } = this.state;
+    if (targetPosition === undefined) {
       return BeakDirection.Top;
     }
 
-    switch (positioningContainerProps.directionalHint) {
-      // If Coachmark exists above target, then beak points to bottom
-      case DirectionalHint.topLeftEdge:
-      case DirectionalHint.topCenter:
-      case DirectionalHint.topRightEdge:
-      case DirectionalHint.topAutoEdge:
+    switch (targetPosition) {
+      case RectangleEdge.top:
         return BeakDirection.Bottom;
-      // If Coachmark exists to left of target, then beak points to right
-      case DirectionalHint.leftTopEdge:
-      case DirectionalHint.leftCenter:
-      case DirectionalHint.leftBottomEdge:
-        return BeakDirection.Right;
-      // If Coachmark exists to right of target, then beak points to left
-      case DirectionalHint.rightTopEdge:
-      case DirectionalHint.rightCenter:
-      case DirectionalHint.rightBottomEdge:
+      case RectangleEdge.right:
         return BeakDirection.Left;
-      // If Coachmark exists below target, then beak points to top
-      case DirectionalHint.bottomLeftEdge:
-      case DirectionalHint.bottomCenter:
-      case DirectionalHint.bottomRightEdge:
-      case DirectionalHint.bottomAutoEdge:
+      case RectangleEdge.bottom:
+        return BeakDirection.Top;
+      case RectangleEdge.left:
+        return BeakDirection.Right;
       default:
         return BeakDirection.Top;
     }
@@ -206,6 +199,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         componentRef={ this._positioningContainer }
         finalHeight={ finalHeight }
         onPositioned={ this._onPositioned }
+        bounds={ this._getBounds() }
         { ...positioningContainerProps }
       >
         <div className={ classNames.root }>
@@ -259,7 +253,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentDidUpdate(prevProps: ICoachmarkTypes, prevState: ICoachmarkState): void {
-    if (prevState.targetAlignment !== this.state.targetAlignment) {
+    if (prevState.targetAlignment !== this.state.targetAlignment || prevState.targetPosition !== this.state.targetPosition) {
       console.log(prevState.targetAlignment, this.state.targetAlignment, this.props.target);
       this._setBeakPosition();
     }
@@ -291,11 +285,29 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _onPositioned = (positionData: IPositionedData): void => {
+    console.log('position', positionData);
     this._async.requestAnimationFrame(((): void => {
       this.setState({
-        targetAlignment: positionData.alignmentEdge
+        targetAlignment: positionData.alignmentEdge,
+        targetPosition: positionData.targetEdge
       });
     }));
+  }
+
+  private _getBounds(): IRectangle | undefined {
+    const { isPositionForced } = this.props;
+    if (isPositionForced) {
+      return {
+        left: -Infinity,
+        top: -Infinity,
+        bottom: Infinity,
+        right: Infinity,
+        width: Infinity,
+        height: Infinity
+      };
+    } else {
+      return undefined;
+    }
   }
 
   private _setBeakPosition = (): void => {
@@ -372,7 +384,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       beakBottom: beakBottom,
       beakTop: beakTop,
       transformOrigin: `${transformOriginX} ${transformOriginY}`
-    })
+    });
   }
 
   private _openCoachmark = (): void => {
@@ -432,12 +444,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         const isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
 
         if (isMouseInProximity !== this.state.isMouseInProximity) {
-          // We don't want to update the isMouseInProximity state because
-          // The coachmark only opens and does not collapse.
-          // Setting isMouseInProximity here will cause the coachmark to open and close
-          this.setState({
-            isCollapsed: !isMouseInProximity
-          });
+          this._openCoachmark();
         }
       }
 

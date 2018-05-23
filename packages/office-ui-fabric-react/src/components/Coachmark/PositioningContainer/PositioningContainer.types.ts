@@ -8,6 +8,7 @@ import {
 import { ICalloutPositon, IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IPositioningContainer {
+  updatePosition(): void;
 }
 
 export interface IPositionInfo {
@@ -63,12 +64,6 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
    * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
-
-  /**
-   * If true then allow positioned target to exist outside of window bounds
-   * @default true
-   */
-  allowOutOfBounds?: boolean;
 
   /**
    * The minimum distance the positioningContainer will be away from the edge of the screen.

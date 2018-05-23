@@ -22,6 +22,8 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
 
   positioningContainerProps?: IPositioningContainerTypes;
 
+  isPositionForced?: boolean;
+
   /**
    * The starting collapsed state for the Coachmark?
    * @default true

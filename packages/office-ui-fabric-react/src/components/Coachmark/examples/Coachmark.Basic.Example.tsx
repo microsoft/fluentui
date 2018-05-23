@@ -106,7 +106,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
   }
 
   public componentDidMount(): void {
-    this.item = document.body.querySelector('.ms-Nav-compositeLink.is-selected');
+    this.item = document.body.querySelector('.Header-title');
     setTimeout(() => {
       this.forceUpdate();
     }, 200);
@@ -221,7 +221,14 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={ `[${COACHMARK_ATTRIBUTE_NAME}="testing"]` }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.leftTopEdge
+              directionalHint: DirectionalHint.topCenter
+            } }
+            isPositionForced={ true }
+            onAnimationOpenEnd={ () => {
+              console.log('end');
+            } }
+            onAnimationOpenStart={ () => {
+              console.log('start');
             } }
           >
             {
@@ -233,6 +240,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
                 onDismiss={ this._onDismiss }
                 primaryButtonProps={ buttonProps }
                 secondaryButtonProps={ buttonProps2 }
+                hasSmallHeadline={ true }
               >
                 test
               </TeachingBubbleContent>
@@ -244,8 +252,14 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={ this.item }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.rightTopEdge,
-              offsetFromTarget: 30
+              directionalHint: DirectionalHint.topRightEdge
+            } }
+            isPositionForced={ false }
+            onAnimationOpenStart={ () => {
+              console.log('start animation');
+            } }
+            onAnimationOpenEnd={ () => {
+              console.log('end animation');
             } }
           >
             <TeachingBubbleContent
