@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "export SASS files for consistency",
+      "comment": "Common sass files are now exported in the `dist/sass` folder.",
       "type": "minor"
     }
   ],
