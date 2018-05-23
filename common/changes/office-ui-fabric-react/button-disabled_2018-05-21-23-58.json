@@ -1,7 +1,7 @@
 {
   "changes": [
     {
-      "comment": "",
+      "comment": "WAC wants ability for Button and SplitButton to have focus while disabled so created a new flag allowDisabledFocus & implemented it on these two controls.",
       "packageName": "office-ui-fabric-react",
       "type": "minor"
     }
