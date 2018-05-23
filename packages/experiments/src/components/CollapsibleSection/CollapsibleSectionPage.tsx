@@ -6,27 +6,28 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
-import { AccordionBasicExample } from './examples/Accordion.Basic.Example';
-const AccordionBasicExampleCode =
-  require('!raw-loader!@uifabric/experiments/src/components/Accordion/examples/Accordion.Basic.Example.tsx') as string;
+import { CollapsibleSectionRecursiveExample } from './examples/CollapsibleSection.Recursive.Example';
+const CollapsibleSectionRecursiveExampleCode =
+  /* tslint:disable-next-line:max-line-length */
+  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example.tsx') as string;
 
-export class AccordionPage extends React.Component<IComponentDemoPageProps, {}> {
+export class CollapsibleSectionPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Accordion'
-        componentName='Accordion'
+        title='CollapsibleSection'
+        componentName='CollapsibleSection'
         exampleCards={
           <div>
-            <ExampleCard title='Basic Medium-sized Accordion' isOptIn={ true } code={ AccordionBasicExampleCode }>
-              <AccordionBasicExample />
+            <ExampleCard title='Recursive Collapsible Section' isOptIn={ true } code={ CollapsibleSectionRecursiveExampleCode }>
+              <CollapsibleSectionRecursiveExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Accordion/Accordion.types.ts')
+              require<string>('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/CollapsibleSection.types.ts')
             ] }
           />
         }

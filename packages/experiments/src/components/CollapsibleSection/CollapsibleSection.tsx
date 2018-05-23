@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { IAccordionProps } from './Accordion.types';
+import { ICollapsibleSectionProps } from './CollapsibleSection.types';
 import { createRef } from 'office-ui-fabric-react';
 
-export interface IAccordionState {
+export interface ICollapsibleSectionState {
   collapsed: boolean;
 }
 
-export class Accordion extends React.Component<
-  IAccordionProps,
-  IAccordionState
+export class CollapsibleSection extends React.Component<
+  ICollapsibleSectionProps,
+  ICollapsibleSectionState
   > {
   private _titleElement = createRef<HTMLElement>();
 
-  constructor(props: IAccordionProps) {
+  constructor(props: ICollapsibleSectionProps) {
     super(props);
 
     this.state = {
@@ -59,7 +59,7 @@ export class Accordion extends React.Component<
   }
 
   private _onToggleCollapse = () => {
-    this.setState((state: IAccordionState) => ({ collapsed: !state.collapsed }));
+    this.setState((state: ICollapsibleSectionState) => ({ collapsed: !state.collapsed }));
     // TODO: make sense of this in design and clean this up
     if (this.props.titleProps && this.props.titleProps.onToggleCollapse) {
       this.props.titleProps.onToggleCollapse();

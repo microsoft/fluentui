@@ -11,10 +11,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Accordion/AccordionPage').AccordionPage,
-          key: 'Accordion',
-          name: 'Accordion',
-          url: '#/examples/accordion'
+          component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
+          key: 'CollapsibleSection',
+          name: 'CollapsibleSection',
+          url: '#/examples/collapsiblesection'
         },
         {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,

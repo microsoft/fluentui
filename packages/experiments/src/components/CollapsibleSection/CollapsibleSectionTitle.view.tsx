@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  IAccordionTitleProps,
-  IAccordionTitleStyles
-} from './AccordionTitle.types';
+  ICollapsibleSectionTitleProps,
+  ICollapsibleSectionTitleStyles
+} from './CollapsibleSectionTitle.types';
 import { Icon } from 'office-ui-fabric-react';
 
-export const AccordionTitleView = (
-  props: IAccordionTitleProps & { styles: { [key in keyof IAccordionTitleStyles]: string } }
+export const CollapsibleSectionTitleView = (
+  props: ICollapsibleSectionTitleProps & { styles: { [key in keyof ICollapsibleSectionTitleStyles]: string } }
 ) => {
   return (
     <button

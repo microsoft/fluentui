@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Accordion, AccordionTitle } from '..';
+import { CollapsibleSection, CollapsibleSectionTitle } from '..';
 import { lorem } from '@uifabric/example-app-base';
 
-const _accordionItems: string[] = [];
+const _collapsibleSectionItems: string[] = [];
 const _fileItems: string[] = [];
 
 const fileIcons: { name: string; }[] = [
@@ -33,36 +33,36 @@ const fileIcons: { name: string; }[] = [
   { 'name': 'xsn' }
 ];
 
-export interface IAccordionFolderProps {
+export interface IACollapsibleSectionFolderProps {
   level: number;
 }
 
 // TODO: clean up use of multiple FocusZones
 
-class AccordionFolder extends React.Component<IAccordionFolderProps, {}> {
+class CollapsibleSectionFolder extends React.Component<IACollapsibleSectionFolderProps, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        { _accordionItems.map((fileItem: string, i: number) => {
+        { _collapsibleSectionItems.map((fileItem: string, i: number) => {
           return (
-            <Accordion
+            <CollapsibleSection
               key={ i }
               collapsed={ true }
-              titleAs={ AccordionTitle }
+              titleAs={ CollapsibleSectionTitle }
               titleProps={ {
                 text: fileItem,
                 indent: this.props.level,
               } }
             >
-              <AccordionFolder level={ this.props.level + 1 } />
-            </Accordion>);
+              <CollapsibleSectionFolder level={ this.props.level + 1 } />
+            </CollapsibleSection>);
         }) }
         { _fileItems.map((fileItem: string, i: number) => { return (<Label key={ i }>{ fileItem }</Label>); }) }
       </div>);
   }
 }
 
-export class AccordionBasicExample extends React.Component<{}, {}> {
+export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
 
@@ -71,7 +71,7 @@ export class AccordionBasicExample extends React.Component<{}, {}> {
       for (let i = 0; i < 5; i++) {
         let randomFolderName: string = lorem(2).replace(/\W/g, '');
         randomFolderName = randomFolderName.charAt(0).toUpperCase() + randomFolderName.slice(1);
-        _accordionItems.push(randomFolderName);
+        _collapsibleSectionItems.push(randomFolderName);
       }
       for (let i = 0; i < 5; i++) {
         const randomDocType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
@@ -86,7 +86,7 @@ export class AccordionBasicExample extends React.Component<{}, {}> {
     return (
       <div>
         <FocusZone>
-          <AccordionFolder level={ 0 } />
+          <CollapsibleSectionFolder level={ 0 } />
         </FocusZone>
       </div>
     );

@@ -1,7 +1,7 @@
-import { IAccordionTitleProps, IAccordionTitleStyles } from './AccordionTitle.types';
+import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './CollapsibleSectionTitle.types';
 import { ITheme, getFocusStyle } from 'office-ui-fabric-react';
 
-export const getStyles = (props: IAccordionTitleProps & { theme: ITheme }): IAccordionTitleStyles => {
+export const getStyles = (props: ICollapsibleSectionTitleProps & { theme: ITheme }): ICollapsibleSectionTitleStyles => {
   const { theme } = props;
 
   return {

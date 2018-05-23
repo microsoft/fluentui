@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RefObject } from 'office-ui-fabric-react';
 
-export interface IAccordionTitleProps {
+export interface ICollapsibleSectionTitleProps {
   focusElementRef?: RefObject<HTMLElement>;
   collapsed?: boolean;
   onToggleCollapse?: () => void;
@@ -11,10 +11,10 @@ export interface IAccordionTitleProps {
   text?: string;
 }
 
-export interface IAccordionProps {
+export interface ICollapsibleSectionProps {
   className?: string;
   defaultCollapsed?: boolean;
   collapsed?: boolean;
-  titleAs: React.ReactType<IAccordionTitleProps>;
-  titleProps?: IAccordionTitleProps;
+  titleAs: React.ReactType<ICollapsibleSectionTitleProps>;
+  titleProps?: ICollapsibleSectionTitleProps;
 }
