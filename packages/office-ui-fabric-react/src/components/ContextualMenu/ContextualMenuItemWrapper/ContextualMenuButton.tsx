@@ -5,9 +5,9 @@ import {
   createRef
 } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
-import { ContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItem } from '../ContextualMenuItem';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = createRef<HTMLButtonElement>();
