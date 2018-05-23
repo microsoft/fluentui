@@ -1,16 +1,16 @@
-import { createComponent } from "./utilities/createComponent";
-import { AccordionTitleView as view } from "./AccordionTitle.view";
-import { getStyles as styles } from "./AccordionTitle.styles";
+import { createComponent } from './utilities/createComponent';
+import { AccordionTitleView as view } from './AccordionTitle.view';
+import { getStyles as styles } from './AccordionTitle.styles';
 import {
   IAccordionTitleProps,
   IAccordionTitleStyles
-} from "./AccordionTitle.types";
+} from './AccordionTitle.types';
 
-export const AccordionTitle = createComponent<
+export const AccordionTitle: React.StatelessComponent = createComponent<
   IAccordionTitleProps,
   IAccordionTitleStyles
   >({
-    scope: "AccordionTitle",
+    scope: 'AccordionTitle',
     view,
     styles
   });

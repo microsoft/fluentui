@@ -4,8 +4,8 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Accordion, AccordionTitle } from '..';
 import { lorem } from '@uifabric/example-app-base';
 
-let _accordionItems: string[] = [];
-let _fileItems: string[] = [];
+const _accordionItems: string[] = [];
+const _fileItems: string[] = [];
 
 const fileIcons: { name: string; }[] = [
   { 'name': 'accdb' },
@@ -43,7 +43,7 @@ class AccordionFolder extends React.Component<IAccordionFolderProps, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        { _accordionItems.map((fileItem, i) => {
+        { _accordionItems.map((fileItem: string, i: number) => {
           return (
             <Accordion
               key={ i }
@@ -55,9 +55,9 @@ class AccordionFolder extends React.Component<IAccordionFolderProps, {}> {
               } }
             >
               <AccordionFolder level={ this.props.level + 1 } />
-            </Accordion>)
+            </Accordion>);
         }) }
-        { _fileItems.map((fileItem, i) => { return (<Label key={ i }>{ fileItem }</Label>) }) }
+        { _fileItems.map((fileItem: string, i: number) => { return (<Label key={ i }>{ fileItem }</Label>); }) }
       </div>);
   }
 }

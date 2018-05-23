@@ -1,11 +1,13 @@
-import * as React from "react";
-import { mergeStyleSets, getTheme } from "office-ui-fabric-react";
+import * as React from 'react';
+import { mergeStyleSets, getTheme } from 'office-ui-fabric-react';
 
 export type IStyleFunction<TStylesProps, TStyles> = (
   props: TStylesProps
 ) => Partial<TStyles>;
 
-const _augmentations = {};
+// TODO: if merged, figure out typing
+// tslint:disable-next-line:no-any
+const _augmentations: any = {};
 
 export interface IComponentOptions<
   TUserProps,
@@ -30,15 +32,15 @@ export function createComponent<TProps, TStyles>(
     const theme = getTheme();
 
     ViewComponent.displayName =
-      ViewComponent.displayName || options.scope + "View";
+      ViewComponent.displayName || options.scope + 'View';
     const content = (processedProps: TProps) => {
       let styles: TStyles | undefined = undefined;
 
       switch (typeof getStyles) {
-        case "function":
+        case 'function':
           styles = getStyles({ theme, ...(processedProps as {}) });
           break;
-        case "object":
+        case 'object':
           styles = getStyles;
           break;
         default:
@@ -65,7 +67,7 @@ export function createComponent<TProps, TStyles>(
 // Helper function to augment existing components that have been created.
 export function augmentComponent<TProps, TStyles>(
   options: IComponentOptions<TProps, TStyles>
-) {
+): void {
   _augmentations[options.scope] = {
     ..._augmentations[options.scope],
     ...options

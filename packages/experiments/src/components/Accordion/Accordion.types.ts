@@ -1,5 +1,5 @@
-import * as React from "react";
-import { RefObject } from "office-ui-fabric-react";
+import * as React from 'react';
+import { RefObject } from 'office-ui-fabric-react';
 
 export interface IAccordionTitleProps {
   focusElementRef?: RefObject<HTMLElement>;

@@ -1,6 +1,6 @@
-import * as React from "react";
-import { IAccordionProps } from "./Accordion.types";
-import { createRef } from "office-ui-fabric-react";
+import * as React from 'react';
+import { IAccordionProps } from './Accordion.types';
+import { createRef } from 'office-ui-fabric-react';
 
 export interface IAccordionState {
   collapsed: boolean;
@@ -22,7 +22,7 @@ export class Accordion extends React.Component<
     };
   }
 
-  render() {
+  public render(): JSX.Element {
     const { className, titleAs: TitleType, titleProps, children } = this.props;
     const { collapsed } = this.state;
 
@@ -40,7 +40,7 @@ export class Accordion extends React.Component<
     );
   }
 
-  _onRootKeyDown = (ev: React.KeyboardEvent<Element>) => {
+  private _onRootKeyDown = (ev: React.KeyboardEvent<Element>) => {
     switch (ev.which) {
       case 37:
         if (
@@ -58,15 +58,15 @@ export class Accordion extends React.Component<
     }
   }
 
-  _onToggleCollapse = () => {
-    this.setState(state => ({ collapsed: !state.collapsed }));
+  private _onToggleCollapse = () => {
+    this.setState((state: IAccordionState) => ({ collapsed: !state.collapsed }));
     // TODO: make sense of this in design and clean this up
     if (this.props.titleProps && this.props.titleProps.onToggleCollapse) {
       this.props.titleProps.onToggleCollapse();
     }
   }
 
-  _onKeyDown = (ev: React.KeyboardEvent<Element>) => {
+  private _onKeyDown = (ev: React.KeyboardEvent<Element>) => {
     const { collapsed } = this.state;
 
     switch (ev.which) {
