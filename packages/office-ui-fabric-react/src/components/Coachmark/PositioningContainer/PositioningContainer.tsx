@@ -246,7 +246,7 @@ export class PositioningContainer
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the positioningContainer.
     this._async.setTimeout(() => {
-      this._events.on(this._targetWindow, 'scroll', this._async.throttle(this._dismissOnScroll, 100), true);
+      this._events.on(this._targetWindow, 'scroll', this._async.throttle(this._dismissOnScroll, 10), true);
       this._events.on(this._targetWindow, 'resize', this.onResize, true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
