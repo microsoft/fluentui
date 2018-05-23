@@ -1,6 +1,149 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+
+## 5.110.0
+Wed, 23 May 2018 16:14:26 GMT
+
+### Minor changes
+
+- ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble.
+
+## 5.109.0
+Wed, 23 May 2018 10:28:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Converting Facepile SCSS to MergeStyles step 1 - file structure
+- Common sass files are now exported in the `dist/sass` folder.
+
+### Patches
+
+- Fixing circular dependency and non-AMD references in ContextualMenu
+- cleanup semantic slots
+
+## 5.108.0
+Tue, 22 May 2018 10:29:13 GMT
+
+### Minor changes
+
+- Implementation of experimental chiclet component
+
+### Patches
+
+- Revert IconButton hover/pressed background color change.
+- Set 'margin 0' reset style for buttons in Safari in Fabric component
+- CommandBarButton: Fixed split styles
+
+## 5.107.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Callout/Positioning: Fix a bug where max-height would be incorrectly calculated if covertarget was set
+
+### Patches
+
+- Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled
+- Moved best design practices write up in SearchBoxes Overview to Best Practices for clarity that these are not included features
+
+## 5.106.1
+Fri, 18 May 2018 01:46:34 GMT
+
+### Patches
+
+- ContextualMenu: Make the whole menu always programatically focusable
+
+## 5.106.0
+Thu, 17 May 2018 22:02:40 GMT
+
+### Minor changes
+
+- Add data-selection-select behavior to make elements select rows before taking action
+
+### Patches
+
+- Fix Slider import, make specific to Styling
+
+## 5.105.0
+Thu, 17 May 2018 20:12:39 GMT
+
+### Minor changes
+
+- Part 1 of converting Slider to mergeStyles
+- Add enter/exit keytip mode to KeytipManager
+- Added support in textfield for aria-describedby native prop
+
+### Patches
+
+- Suggestions: Fix a bug where arrow keys would not scroll correctly
+
+## 5.104.0
+Thu, 17 May 2018 10:28:07 GMT
+
+### Minor changes
+
+- ContextualMenuSplitButton: Adding the correct attributes for screen readers to read the button correctly
+
+### Patches
+
+- TextField: Invoke custom description render function if provided even if no description text provided.
+
+## 5.103.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Buttons: Deprecate `description` prop in favor of more consistent `secondaryText` prop.
+
+### Patches
+
+- Fix markdown file paths on SwatchColorPicker docs page.
+- Finishing the rest of the Calendar style updates
+- Fix detailslist custom group header example by invoking correct onClick for select and collapse toggles.
+- Fix misuse of aria props on ProgressIndicator
+
+## 5.102.0
+Tue, 15 May 2018 07:09:49 GMT
+
+### Minor changes
+
+- Deprecate ComboBox's value prop in favor of new text prop.
+
+### Patches
+
+- Fix bug where primaryDisabled is not respected on contextual menu items
+- Dropdown: Remove aria-autocomplete and aria-readonly
+- Pivot: Slight tweak to the `PivotItem` compare to ensure it works in minified scenarios.
+- shouldVirtualize takes incoming properties
+
+## 5.101.2
+Mon, 14 May 2018 20:46:25 GMT
+
+### Patches
+
+- fixes type comparing in Pivot
+
+## 5.101.1
+Mon, 14 May 2018 19:35:51 GMT
+
+### Patches
+
+- Ensure subMenuHoverDelay is respected by the ContextualMenu for expanding and dismissing submenus
+- Fixes issue where expanding sub menu via arrow keys was broken, and adds aria label of "menu" to item when keyboarded
+
+## 5.101.0
+Mon, 14 May 2018 10:14:42 GMT
+
+### Minor changes
+
+- Pivot: include className in props to override styles
+- Add more customization hooks to ProgressIndicator
+
+### Patches
+
+- Breaking BaseButton Types dependency from ContextualMenu class
 
 ## 5.100.0
 Fri, 11 May 2018 04:21:29 GMT

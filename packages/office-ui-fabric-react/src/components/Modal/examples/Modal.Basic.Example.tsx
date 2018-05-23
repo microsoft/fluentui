@@ -18,7 +18,7 @@ export class ModalBasicExample extends React.Component<{}, {
     return (
       <div>
         <DefaultButton
-          description='Opens the Sample Modal'
+          secondaryText='Opens the Sample Modal'
           onClick={ this._showModal }
           text='Open Modal'
         />

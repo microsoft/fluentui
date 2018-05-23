@@ -65,7 +65,7 @@ describe('Button', () => {
 
   it('renders CompoundButton correctly', () => {
     const component = renderer.create(
-      <CompoundButton description='You can create a new account here.'>
+      <CompoundButton secondaryText='You can create a new account here.'>
         Create account
     </CompoundButton>);
     const tree = component.toJSON();
@@ -190,7 +190,7 @@ describe('Button', () => {
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <CompoundButton
-          description='Some awesome description'
+          secondaryText='Some awesome description'
           ariaDescription='Description on icon button'
         >
           And this is the label

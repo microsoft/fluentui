@@ -22,9 +22,18 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-9"`,
-      src: `url('${baseUrl}fabric-icons-9-938d7113.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-9-53746c82.woff') format('woff')`
     },
     icons: {
+      'CloneToDesktop': '\uF28C',
+      'InstallToDrive': '\uF28D',
+      'Blur': '\uF28E',
+      'Build': '\uF28F',
+      'ProcessMetaTask': '\uF290',
+      'BranchFork2': '\uF291',
+      'BranchLocked': '\uF292',
+      'BranchCommit': '\uF293',
+      'BranchCompare': '\uF294',
       'BranchMerge': '\uF295',
       'BranchPullRequest': '\uF296',
       'BranchSearch': '\uF297',
@@ -115,16 +124,7 @@ export function initializeIcons(
       'CSharp': '\uF2F0',
       'VisualBasicLanguage': '\uF2F1',
       'VB': '\uF2F2',
-      'CPlusPlusLanguage': '\uF2F3',
-      'CPlusPlus': '\uF2F4',
-      'FSharpLanguage': '\uF2F5',
-      'FSharp': '\uF2F6',
-      'TypeScriptLanguage': '\uF2F7',
-      'PythonLanguage': '\uF2F8',
-      'PY': '\uF2F9',
-      'CoffeeScript': '\uF2FA',
-      'MarkDownLanguage': '\uF2FB',
-      'FullWidth': '\uF2FE'
+      'CPlusPlusLanguage': '\uF2F3'
     }
   };
 

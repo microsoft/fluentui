@@ -2,12 +2,29 @@
 	"fontName": "fabric-icons-4",
 	"fontFamilyName": "FabricMDL2Icons-4",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "Tennis",
+			"unicode": "EB33"
+		},
+		{
+			"name": "Arrivals",
+			"unicode": "EB34"
+		},
+		{
+			"name": "Design",
+			"unicode": "EB3C"
+		},
+		{
+			"name": "Website",
+			"unicode": "EB41"
+		},
 		{
 			"name": "Drop",
 			"unicode": "EB42"
@@ -391,22 +408,6 @@
 		{
 			"name": "ChatInviteFriend",
 			"unicode": "ECFE"
-		},
-		{
-			"name": "Crown",
-			"unicode": "ED01"
-		},
-		{
-			"name": "ScaleUp",
-			"unicode": "ED09"
-		},
-		{
-			"name": "Feedback",
-			"unicode": "ED15"
-		},
-		{
-			"name": "SharepointLogoInverse",
-			"unicode": "ED18"
 		}
 	]
 }

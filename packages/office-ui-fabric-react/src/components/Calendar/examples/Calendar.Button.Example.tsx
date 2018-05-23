@@ -5,6 +5,7 @@ import {
   Calendar,
   DayOfWeek
 } from 'office-ui-fabric-react/lib/Calendar';
+import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 const DayPickerStrings = {
   months: [
@@ -115,20 +116,22 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
             target={ this._calendarButtonElement }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
-            setInitialFocus={ false }
+            setInitialFocus={ true }
           >
-            <Calendar
-              onSelectDate={ this._onSelectDate }
-              onDismiss={ this._onDismiss }
-              isMonthPickerVisible={ this.props.isMonthPickerVisible }
-              value={ this.state.selectedDate! }
-              firstDayOfWeek={ DayOfWeek.Sunday }
-              strings={ DayPickerStrings }
-              isDayPickerVisible={ this.props.isDayPickerVisible }
-              highlightCurrentMonth={ this.props.highlightCurrentMonth }
-              highlightSelectedMonth={ this.props.highlightSelectedMonth }
-              showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
-            />
+            <FocusTrapZone isClickableOutsideFocusTrap={ true }>
+              <Calendar
+                onSelectDate={ this._onSelectDate }
+                onDismiss={ this._onDismiss }
+                isMonthPickerVisible={ this.props.isMonthPickerVisible }
+                value={ this.state.selectedDate! }
+                firstDayOfWeek={ DayOfWeek.Sunday }
+                strings={ DayPickerStrings }
+                isDayPickerVisible={ this.props.isDayPickerVisible }
+                highlightCurrentMonth={ this.props.highlightCurrentMonth }
+                highlightSelectedMonth={ this.props.highlightSelectedMonth }
+                showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
+              />
+            </FocusTrapZone>
           </Callout>
         )
         }
