@@ -1,39 +1,17 @@
 import * as React from 'react';
-import { IIconProps } from '../../../Icon';
 import { ITheme, IStyle } from '../../../Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import { IStyleFunctionOrObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
 
 export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
-
-  /**
-   * A required key to uniquely identify the option.
-   */
-  key: string;
-
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IChoiceGroupOption) => void;
-
-  /**
-   * The text string for the option.
-   */
-  text: string;
-
-  /**
-   * Optional override of option render
-   */
-  onRenderField?: IRenderFunction<IChoiceGroupOption>;
-
-  /**
-   * Optional override of option render
-   */
-  onRenderLabel?: (props: IChoiceGroupOption) => JSX.Element;
 
   /**
    * A callback for receiving a notification when the choice has been changed.
@@ -54,55 +32,9 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   ) => void;
 
   /**
-   * The Icon component props for choice field
-   */
-  iconProps?: IIconProps;
-
-  /**
-   * The src of image for choice field.
-   */
-  imageSrc?: string;
-
-  /**
-   * The alt of image for choice field. Defaults to '' if not set.
-   */
-  imageAlt?: string;
-
-  /**
-   * The src of image for choice field which is selected.
-   */
-  selectedImageSrc?: string;
-
-  /**
-   * The width and height of the image in px for choice field.
-   * @default { width: 32, height: 32 }
-   */
-  imageSize?: { width: number; height: number };
-
-  /**
-   * Whether or not the option is disabled.
-   */
-  disabled?: boolean;
-
-  /**
-   * This value is maintained by the component and is accessible during onRenderField
-   */
-  checked?: boolean;
-
-  /**
    * Indicates if the ChoiceGroupOption should appear focused, visually
    */
   focused?: boolean;
-
-  /**
-   * This value is maintained by the component and is accessible during onRenderField
-   */
-  id?: string;
-
-  /**
-   * This value is maintained by the component and is accessible during onRenderField
-   */
-  labelId?: string;
 
   /**
    * Theme (provided through customization.)

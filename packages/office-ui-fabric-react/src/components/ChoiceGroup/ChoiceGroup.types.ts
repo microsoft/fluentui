@@ -110,17 +110,19 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   disabled?: boolean;
 
   /**
-   * This value is maintained by the component and is accessible during onRenderField
+   * Whether or not the option is checked.
    */
   checked?: boolean;
 
   /**
-   * This value is maintained by the component and is accessible during onRenderField
+   * DOM id to tag the ChoiceGroup input with, for reference.
+   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
    */
   id?: string;
 
   /**
-   * This value is maintained by the component and is accessible during onRenderField
+   * DOM id to tag the ChoiceGroup label with, for reference.
+   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
    */
   labelId?: string;
 }

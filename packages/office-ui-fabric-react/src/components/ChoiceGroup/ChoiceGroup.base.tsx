@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption';
+import { IChoiceGroupOptionProps, ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import {
   BaseComponent,
@@ -94,7 +94,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           <div className={ classNames.flexContainer }>
             { options!.map((option: IChoiceGroupOption) => {
 
-              const innerOptionProps = {
+              const innerOptionProps: IChoiceGroupOptionProps = {
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
