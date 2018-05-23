@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 22 May 2018 10:29:13 GMT and should not be manually modified.
+This log was last generated on Wed, 23 May 2018 10:28:50 GMT and should not be manually modified.
+
+## 5.109.0
+Wed, 23 May 2018 10:28:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Converting Facepile SCSS to MergeStyles step 1 - file structure
+- Common sass files are now exported in the `dist/sass` folder.
+
+### Patches
+
+- Fixing circular dependency and non-AMD references in ContextualMenu
+- cleanup semantic slots
 
 ## 5.108.0
 Tue, 22 May 2018 10:29:13 GMT

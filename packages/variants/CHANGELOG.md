@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 14 May 2018 10:14:42 GMT and should not be manually modified.
+This log was last generated on Wed, 23 May 2018 10:28:50 GMT and should not be manually modified.
+
+## 5.5.1
+Wed, 23 May 2018 10:28:50 GMT
+
+### Patches
+
+- Variants: update algorithm to match newest designs
 
 ## 5.5.0
 Mon, 14 May 2018 10:14:42 GMT
