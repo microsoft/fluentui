@@ -211,7 +211,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             <div className={ classNames.scaleAnimationLayer }>
               <div className={ classNames.rotateAnimationLayer }>
                 {
-                  this._positioningContainer.current && <Beak
+                  this._positioningContainer.current &&
+                  <Beak
                     left={ beakLeft }
                     top={ beakTop }
                     right={ beakRight }
@@ -254,7 +255,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
   public componentDidUpdate(prevProps: ICoachmarkTypes, prevState: ICoachmarkState): void {
     if (prevState.targetAlignment !== this.state.targetAlignment || prevState.targetPosition !== this.state.targetPosition) {
-      console.log(prevState.targetAlignment, this.state.targetAlignment, this.props.target);
       this._setBeakPosition();
     }
   }
@@ -281,11 +281,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _onFocusHandler = (): void => {
-    this._openCoachmark();
+    if (this.state.isCollapsed) {
+      this._openCoachmark();
+    }
   }
 
   private _onPositioned = (positionData: IPositionedData): void => {
-    console.log('position', positionData);
     this._async.requestAnimationFrame(((): void => {
       this.setState({
         targetAlignment: positionData.alignmentEdge,
@@ -392,13 +393,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isCollapsed: false
     });
 
-    this._translateAnimationContainer.current && this._translateAnimationContainer.current.addEventListener('animationstart', (): void => {
-      if (this.props.onAnimationOpenStart) {
-        this.props.onAnimationOpenStart();
-      }
-    });
+    if (this.props.onCoachmarkOpen) {
+      this.props.onCoachmarkOpen();
+    }
 
-    this._translateAnimationContainer.current && this._translateAnimationContainer.current.addEventListener('animationend', (): void => {
+    this._entityInnerHostElement.current && this._entityInnerHostElement.current.addEventListener('transitionend', (): void => {
       if (this.props.onAnimationOpenEnd) {
         this.props.onAnimationOpenEnd();
       }

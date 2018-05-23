@@ -302,8 +302,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     rotateAnimationLayer: [
       {
         width: '100%',
-        height: '100%',
-        opacity: '0.8'
+        height: '100%'
       },
       props.isCollapsed && {
         animationDuration: '14s',
