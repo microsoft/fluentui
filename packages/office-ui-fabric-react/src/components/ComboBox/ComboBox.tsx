@@ -355,7 +355,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const describedBy = id + '-option';
 
     return (
-      <div { ...divProps } ref={ this._root } className={ this._classNames.container }>
+      <div
+        role='combobox'
+        aria-haspopup='listbox'
+        aria-owns={ isOpen ? (id + '-list') : undefined }
+        aria-expanded={ isOpen }
+        { ...divProps }
+        ref={ this._root }
+        className={ this._classNames.container }
+      >
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
@@ -381,9 +389,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 onClick={ this._onAutofillClick }
                 onTouchStart={ this._onTouchStart }
                 onInputValueChange={ this._onInputChange }
-                aria-expanded={ isOpen }
                 aria-autocomplete={ this._getAriaAutoCompleteValue() }
-                role='combobox'
+                role='textbox'
                 aria-readonly={ ((allowFreeform || disabled) ? undefined : 'true') }
                 readOnly={ disabled || !allowFreeform }
                 aria-labelledby={ (label && (id + '-label')) }
@@ -391,7 +398,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
                 aria-activedescendant={ this._getAriaActiveDescentValue() }
                 aria-disabled={ disabled }
-                aria-owns={ (id + '-list') }
+                aria-controls={ isOpen ? (id + '-list') : undefined }
                 spellCheck={ false }
                 defaultVisibleValue={ this._currentVisibleValue }
                 suggestedDisplayValue={ suggestedDisplayValue }
@@ -1109,6 +1116,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             aria-selected={ isSelected ? 'true' : 'false' }
             ariaLabel={ this._getPreviewText(item) }
             disabled={ item.disabled }
+            aria-pressed={ undefined }
           > { <span ref={ isSelected ? this._selectedElement : undefined }>
             { onRenderOption(item, this._onRenderOptionContent) }
           </span>
@@ -1814,7 +1822,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
    */
   private _getAriaActiveDescentValue(): string | undefined {
-    let descendantText = (this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length >= 0 ? (this._id + '-list' + this.state.selectedIndices[0]) : undefined);
+    let descendantText = (this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length > 0 ? (this._id + '-list' + this.state.selectedIndices[0]) : undefined);
     if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
     }

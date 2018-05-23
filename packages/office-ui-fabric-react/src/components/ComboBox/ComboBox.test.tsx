@@ -93,7 +93,7 @@ describe('ComboBox', () => {
         options={ DEFAULT_OPTIONS }
       />);
 
-    expect(wrapper.find('input[role="combobox"]').text()).toEqual('');
+    expect(wrapper.find('input[role="textbox"]').text()).toEqual('');
   });
 
   it('Renders a selected item in uncontrolled case', () => {

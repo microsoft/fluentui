@@ -2,8 +2,12 @@
 
 exports[`ComboBox Renders ComboBox correctly 1`] = `
 <div
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-owns={undefined}
   autoComplete="on"
   className="ms-ComboBox-container "
+  role="combobox"
 >
   <div
     className=
@@ -109,12 +113,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
     <input
       aria-activedescendant={undefined}
       aria-autocomplete="both"
+      aria-controls={undefined}
       aria-describedby="ComboBox0-option"
       aria-disabled={undefined}
-      aria-expanded={false}
       aria-label={undefined}
       aria-labelledby={undefined}
-      aria-owns="ComboBox0-list"
       aria-readonly="true"
       autoCapitalize="off"
       autoComplete="off"
@@ -148,7 +151,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       onKeyUp={[Function]}
       onTouchStart={[Function]}
       readOnly={true}
-      role="combobox"
+      role="textbox"
       spellCheck={false}
       title={undefined}
       type="text"
@@ -289,8 +292,12 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
 
 exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
 <div
+  aria-expanded={false}
+  aria-haspopup="listbox"
+  aria-owns={undefined}
   autoComplete="on"
   className="ms-ComboBox-container "
+  role="combobox"
 >
   <div
     className=
@@ -396,12 +403,11 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     <input
       aria-activedescendant={undefined}
       aria-autocomplete="both"
+      aria-controls={undefined}
       aria-describedby="ComboBox4-option ktp-layer-id ktp-a"
       aria-disabled={undefined}
-      aria-expanded={false}
       aria-label={undefined}
       aria-labelledby={undefined}
-      aria-owns="ComboBox4-list"
       aria-readonly="true"
       autoCapitalize="off"
       autoComplete="off"
@@ -435,7 +441,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       onKeyUp={[Function]}
       onTouchStart={[Function]}
       readOnly={true}
-      role="combobox"
+      role="textbox"
       spellCheck={false}
       title={undefined}
       type="text"
