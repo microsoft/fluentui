@@ -2,6 +2,126 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.11.5",
+      "tag": "@uifabric/example-app-base_v5.11.5",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "bworline <35072931+bworline@users.noreply.github.com>",
+            "commit": "3d4a53b8233681208396816de77fd799e89ceae1",
+            "comment": "Fixed a bug in the documentation generator code that skipped const enums (parser)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.1 <6.0.0` to `>=5.30.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.4",
+      "tag": "@uifabric/example-app-base_v5.11.4",
+      "date": "Fri, 11 May 2018 04:21:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f6bc8fc6b3267db36c0ce6382b6fc8bfdbd64f3d",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.3",
+      "tag": "@uifabric/example-app-base_v5.11.3",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "0283f2a4f9465a7aad3039ce6f8d98848f9a2521",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.2",
+      "tag": "@uifabric/example-app-base_v5.11.2",
+      "date": "Fri, 04 May 2018 15:58:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7b6a2b2ce6abe32aa5ac02f013e3f30ddef912ac",
+            "comment": "Modify documentation columns for improved readability."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.1",
+      "tag": "@uifabric/example-app-base_v5.11.1",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "809c04b6d3702f247d6d442e6502fa1b793170e6",
+            "comment": "Refactors String.prototype.includes usage in favor of  String.prototype.indexOf for IE compat."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.0",
+      "tag": "@uifabric/example-app-base_v5.11.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.25.0 <6.0.0` to `>=5.26.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.2",
       "tag": "@uifabric/example-app-base_v5.10.2",
       "date": "Thu, 19 Apr 2018 18:25:59 GMT",

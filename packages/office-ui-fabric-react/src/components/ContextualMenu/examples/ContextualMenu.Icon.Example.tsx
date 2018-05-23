@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenuItemType, IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import './ContextualMenuExample.scss';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import * as stylesImport from './ContextualMenuExample.scss';
+
+// tslint:disable-next-line:no-any
+const styles: any = stylesImport;
 
 export class ContextualMenuIconExample extends React.Component<{}, { showCallout: boolean }> {
 
@@ -25,11 +29,23 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
             shouldFocusOnMount: true,
             items: [
               {
+                key: 'openInWord',
+                iconName: 'Open in Word',
+                onRenderIcon: (props: IContextualMenuItemProps) => {
+                  return (
+                    <span className={ styles.iconContainer }>
+                      <Icon iconName={ 'WordLogoFill16' } className={ styles.logoFillIcon } />
+                      <Icon iconName={ 'WordLogo16' } className={ styles.logoIcon } />
+                    </span>
+                  );
+                }
+              },
+              {
                 key: 'newItem',
                 iconProps: {
                   iconName: 'Add'
                 },
-                name: 'New'
+                iconName: 'New'
               },
               {
                 key: 'upload',
@@ -42,7 +58,7 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                     color: 'salmon'
                   }
                 },
-                name: 'Upload (Click for popup)',
+                iconName: 'Upload (Click for popup)',
                 title: 'Upload a file'
               },
               {
@@ -54,21 +70,21 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
                 iconProps: {
                   iconName: 'Share'
                 },
-                name: 'Share'
+                iconName: 'Share'
               },
               {
                 key: 'print',
                 iconProps: {
                   iconName: 'Print'
                 },
-                name: 'Print'
+                iconName: 'Print'
               },
               {
                 key: 'music',
                 iconProps: {
                   iconName: 'MusicInCollectionFill'
                 },
-                name: 'Music',
+                iconName: 'Music',
               }
             ]
           }

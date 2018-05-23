@@ -214,6 +214,14 @@ export interface IRawStyleBase extends IRawFontStyle {
   alignmentBaseline?: ICSSRule | string;
 
   /**
+   * The animation CSS property is a shorthand property for the various animation properties:
+   * `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`,
+   * `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, and
+   * `animation-play-state`.
+   */
+  animation?: ICSSRule | string;
+
+  /**
    * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
    */
   animationDelay?: ICSSRule | string;
@@ -334,6 +342,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * have been sized and positioned
    */
   backgroundRepeat?: ICSSRule | string;
+
+  /**
+   * Sets the size of background images
+   */
+  backgroundSize?: ICSSRule | string;
 
   /**
    * Shorthand property that defines the different properties of all four sides of an

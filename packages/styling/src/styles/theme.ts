@@ -17,7 +17,8 @@ let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
-  isInverted: false
+  isInverted: false,
+  disableGlobalClassNames: false,
 };
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -117,8 +118,9 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       ...theme.fonts
     },
     semanticColors: newSemanticColors,
-    isInverted: !!theme.isInverted
-  } as ITheme;
+    isInverted: !!theme.isInverted,
+    disableGlobalClassNames: !!theme.disableGlobalClassNames,
+  };
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
@@ -168,7 +170,6 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonTextCheckedHovered: p.black,
 
     menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundChecked: p.neutralLight,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 
@@ -178,15 +179,15 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
 
+    listHeaderBackgroundHovered: p.neutralLighter,
+    listHeaderBackgroundPressed: p.neutralLight,
+
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
-    // Deprecated slots, fixed by _fixDeprecatedSlots()
-    /**
-     * Deprecated. Use `listText` instead.
-     * @deprecated
-     */
-    listTextColor: ''
+    // Deprecated slots, fixed by _fixDeprecatedSlots() later
+    listTextColor: '',
+    menuItemBackgroundChecked: p.neutralLight
   };
 
   return _fixDeprecatedSlots(toReturn, depComments!);
@@ -200,5 +201,6 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
   }
 
   s.listTextColor = s.listText + dep;
+  s.menuItemBackgroundChecked += dep;
   return s;
 }

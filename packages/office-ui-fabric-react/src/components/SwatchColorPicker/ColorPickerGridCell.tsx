@@ -2,11 +2,10 @@ import {
   styled
 } from '../../Utilities';
 import { ColorPickerGridCellBase } from './ColorPickerGridCell.base';
-// tslint:disable-next-line:no-unused-variable
 import { IColorPickerGridCellProps } from './ColorPickerGridCell.types';
 import { getStyles } from './ColorPickerGridCell.styles';
 
-export const ColorPickerGridCell = styled(
+export const ColorPickerGridCell: (props: IColorPickerGridCellProps) => JSX.Element = styled(
   ColorPickerGridCellBase,
   getStyles
 );

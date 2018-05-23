@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
@@ -15,7 +14,8 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -28,7 +28,10 @@ export interface IContextualMenu {
 
 }
 
-export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWithResponsiveModeState {
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
+export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -126,6 +129,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default true
    */
   shouldFocusOnMount?: boolean;
+
+  /**
+   * Whether to focus on the contextual menu container (as opposed to the first menu item).
+   * @default null
+   */
+  shouldFocusOnContainer?: boolean;
 
   /**
    * Callback when the ContextualMenu tries to close. If dismissAll is true then all
@@ -255,6 +264,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
 export interface IContextualMenuItem {
   /**
+   * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
+   */
+  componentRef?: (component: IContextualMenuRenderItem | null) => void;
+
+  /**
    * Unique id to identify the item
    */
   key: string;
@@ -264,12 +278,22 @@ export interface IContextualMenuItem {
    */
   name?: string;
 
+  /**
+   * Seconday description for the menu item to display
+   */
+  secondaryText?: string;
+
   itemType?: ContextualMenuItemType;
 
   /**
    * Props that go to the IconComponent
    */
   iconProps?: IIconProps;
+
+  /**
+   * Custom render function for the menu item icon
+   */
+  onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 
   /**
    * Props that go to the IconComponent used for the chevron.
@@ -383,7 +407,8 @@ export interface IContextualMenuItem {
     itemClassName?: string,
     dividerClassName?: string,
     iconClassName?: string,
-    subMenuClassName?: string) => IMenuItemClassNames;
+    subMenuClassName?: string,
+    primaryDisabled?: boolean) => IMenuItemClassNames;
 
   /**
   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
@@ -452,6 +477,11 @@ export interface IContextualMenuItem {
   customOnRenderListLength?: number;
 
   /**
+   * Keytip for this contextual menu item
+   */
+  keytipProps?: IKeytipProps;
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
@@ -460,10 +490,12 @@ export interface IContextualMenuItem {
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
   inactive?: boolean;
-
 }
 
-export interface IContextualMenuSection extends React.Props<ContextualMenu> {
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
+export interface IContextualMenuSection extends React.Props<any> {
 
   /**
    * The items to include inside the section.

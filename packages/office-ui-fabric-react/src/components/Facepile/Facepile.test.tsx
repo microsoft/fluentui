@@ -1,11 +1,8 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
-import { Facepile } from './Facepile';
+import { FacepileBase } from './Facepile.base';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
 import { PersonaSize } from '../../Persona';
 import { Persona } from '../../Persona';
@@ -39,14 +36,14 @@ describe('Facepile', () => {
   });
 
   it('renders Facepile correctly', () => {
-    const component = renderer.create(<Facepile personas={ facepilePersonas } />);
+    const component = renderer.create(<FacepileBase personas={ facepilePersonas } />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders with only add button if no personas found and addButtonProps are not null', () => {
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ [] }
         addButtonProps={ {} }
         showAddButton={ true }
@@ -59,7 +56,7 @@ describe('Facepile', () => {
 
   it('renders chevron overflow button if overflowButtonProps are not null and OverflowButtonType equals downArrow', () => {
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ [] }
         overflowButtonProps={ {} }
         overflowButtonType={ OverflowButtonType.downArrow }
@@ -72,7 +69,7 @@ describe('Facepile', () => {
 
   it('renders more overflow button if overflowButtonProps are not null as OverflowButtonType equals more', () => {
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ [] }
         overflowButtonProps={ {} }
         overflowButtonType={ OverflowButtonType.more }
@@ -85,7 +82,7 @@ describe('Facepile', () => {
 
   it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ [] }
         overflowButtonProps={ {} }
         overflowButtonType={ OverflowButtonType.descriptive }
@@ -99,7 +96,7 @@ describe('Facepile', () => {
   it('renders with descriptive overflow button if overflowButtonProps are not null and maximum personas are exceeded', () => {
     const personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ personas }
         maxDisplayablePersonas={ 5 }
         overflowButtonProps={ {} }
@@ -112,7 +109,7 @@ describe('Facepile', () => {
 
   it('renders no more than maximum allowed personas', () => {
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
         maxDisplayablePersonas={ 2 }
       />
@@ -131,7 +128,7 @@ describe('Facepile', () => {
     }];
 
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ personas }
       />
     );
@@ -145,7 +142,7 @@ describe('Facepile', () => {
 
   it('personas and buttons render default size if not specified', () => {
     const wrapper = mount(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas }
         addButtonProps={ {} }
         showAddButton={ true }
@@ -169,7 +166,7 @@ describe('Facepile', () => {
   it('personas and buttons render specified size', () => {
     // Test XXS size renders
     let wrapper = shallow(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas }
         personaSize={ PersonaSize.size24 }
       />);
@@ -182,7 +179,7 @@ describe('Facepile', () => {
 
     // Test small size renders
     wrapper = shallow(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas }
         personaSize={ PersonaSize.size40 }
       />);
@@ -196,7 +193,7 @@ describe('Facepile', () => {
 
   it('renders Persona control if exactly one persona is sent in props', () => {
     let wrapper = shallow(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas.slice(0, 1) }
         overflowPersonas={ [] }
       />);
@@ -205,7 +202,7 @@ describe('Facepile', () => {
     expect(wrapper.find(Persona).length).toEqual(1);
 
     wrapper = shallow(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas.slice(0, 1) }
       />);
 
@@ -215,7 +212,7 @@ describe('Facepile', () => {
 
   it('renders Persona control if exactly one persona is sent in props', () => {
     let wrapper = shallow(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas.slice(0, 1) }
         overflowPersonas={ [] }
       />);
@@ -224,7 +221,7 @@ describe('Facepile', () => {
     expect(wrapper.find(Persona).length).toEqual(1);
 
     wrapper = shallow(
-      <Facepile
+      <FacepileBase
         personas={ facepilePersonas.slice(0, 1) }
       />);
 

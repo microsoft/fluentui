@@ -8,6 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
 import { ContextualMenuIconExample } from './examples/ContextualMenu.Icon.Example';
+import { ContextualMenuIconSecondaryTextExample } from './examples/ContextualMenu.Icon.SecondaryText.Example';
 import { ContextualMenuSectionExample } from './examples/ContextualMenu.Section.Example';
 import { ContextualMenuSubmenuExample } from './examples/ContextualMenu.Submenu.Example';
 import { ContextualMenuCustomizationWithNoWrapExample } from './examples/ContextualMenu.CustomizationWithNoWrap.Example';
@@ -21,6 +22,7 @@ import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.Example.tsx') as string;
+const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
 const ContextualMenuSectionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;
 const ContextualMenuSubmenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Submenu.Example.tsx') as string;
 const ContextualMenuCheckmarksExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
@@ -52,6 +54,12 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <ContextualMenuIconExample />
             </ExampleCard>
             <ExampleCard
+              title='ContextualMenu with icons and secondary text'
+              code={ ContextualMenuIconSecondaryTextExampleCode }
+            >
+              <ContextualMenuIconSecondaryTextExample />
+            </ExampleCard>
+            <ExampleCard
               title='ContextualMenu with submenus'
               code={ ContextualMenuSubmenuExampleCode }
             >
@@ -64,7 +72,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <ContextualMenuSectionExample />
             </ExampleCard>
             <ExampleCard
-              title='ContextualMenu with checkable menu items and toggable split button'
+              title='ContextualMenu with checkable menu items and toggleable split button'
               code={ ContextualMenuCheckmarksExampleCode }
             >
               <ContextualMenuCheckmarksExample />

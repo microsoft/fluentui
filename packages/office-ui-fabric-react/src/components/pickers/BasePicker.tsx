@@ -175,9 +175,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     } = this.props;
 
     const currentIndex = this.suggestionStore.currentIndex;
-    const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
-    const selectedSuggestionAlert = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
     const activeDescendant = currentIndex > -1 ? 'sug-' + currentIndex : undefined;
+
+    let selectedSuggestionAlert = undefined;
+    if (this.props.enableSelectedSuggestionAlert) {
+      const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
+      const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
+      selectedSuggestionAlert = (<div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlertText } </div>);
+    }
 
     return (
       <div
@@ -192,7 +197,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
-          <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
+          { selectedSuggestionAlert }
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }
@@ -253,6 +258,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
           isResultsFooterVisible={ this.state.isResultsFooterVisible }
           refocusSuggestions={ this.refocusSuggestions }
+          removeSuggestionAriaLabel={ this.props.removeButtonAriaLabel }
           { ...this.props.pickerSuggestionsProps as any }
         />
       </Callout>
@@ -444,11 +450,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onInputBlur = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    // Only blur if an unrelated element gets focus. Otherwise treat it as though it still has focus.
-    if (!elementContains(this.root.current!, ev.relatedTarget as HTMLElement)) {
+    if (this.props.inputProps && this.props.inputProps.onBlur) {
+      this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+    }
+    // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+    if (!elementContains(this.root.value!, ev.relatedTarget as HTMLElement)) {
       this.setState({ isFocused: false });
-      if (this.props.inputProps && this.props.inputProps.onBlur) {
-        this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+      if (this.props.onBlur) {
+        this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
       }
     }
   }

@@ -77,6 +77,16 @@ export interface ISemanticColors {
   bodyDivider: string;
 
   /**
+   * The color of a link.
+   */
+  link: string;
+
+  /**
+   * The color of a hovered link. Also used when the link is active.
+   */
+  linkHovered: string;
+
+  /**
    * The default color for backgrounds of disabled controls; e.g. disabled text field.
    */
   disabledBackground: string;
@@ -229,12 +239,6 @@ export interface ISemanticColors {
   menuItemBackgroundHovered: string;
 
   /**
-   * @deprecated
-   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
-   */
-  menuItemBackgroundChecked: string;
-
-  /**
    * The default colors of icons in menus.
    */
   menuIcon: string;
@@ -272,18 +276,26 @@ export interface ISemanticColors {
   listItemBackgroundCheckedHovered: string;
 
   /**
-   * The color of a link.
+   * The background color for a hovered list header.
    */
-  link: string;
+  listHeaderBackgroundHovered: string;
 
   /**
-   * The color of a hovered link. Also used when the link is active.
+   * The background color for a pressed list header.
    */
-  linkHovered: string;
+  listHeaderBackgroundPressed: string;
 
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
 
-  /** DEPRECATED use listText instead */
+  /** @deprecated
+   * This slot was incorrectly named. Use listText instead. */
   listTextColor: string;
+
+  /**
+   * @deprecated
+   * (Checked menu items no longer get a background color.)
+   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
+   */
+  menuItemBackgroundChecked: string;
 }

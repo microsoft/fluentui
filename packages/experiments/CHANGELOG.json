@@ -2,6 +2,323 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.41.0",
+      "tag": "@uifabric/experiments_v5.41.0",
+      "date": "Tue, 22 May 2018 10:29:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "841a6dea1e135fdd97154ec3c7ee41d83373dc7c",
+            "comment": "Implementation of the Chiclet component"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.107.0 <6.0.0` to `>=5.108.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.40.0",
+      "tag": "@uifabric/experiments_v5.40.0",
+      "date": "Mon, 21 May 2018 10:29:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "2e3ddc814468d9353a8d02fccefade5df2555cb2",
+            "comment": "Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.106.1 <6.0.0` to `>=5.107.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.39.0",
+      "tag": "@uifabric/experiments_v5.39.0",
+      "date": "Wed, 16 May 2018 00:05:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "d5cf3e5a688a68fb79e3ba56ed1f865b9dbb251a",
+            "comment": "use better icon for MalwareDetectedSignal"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "0d3d9f2137f96c68b5e1e0a1bf23cb2ec69d12cd",
+            "comment": "Experiments/Nav: accessibility changes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.102.0 <6.0.0` to `>=5.103.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.38.2",
+      "tag": "@uifabric/experiments_v5.38.2",
+      "date": "Fri, 11 May 2018 04:21:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "2e93a2b00543990739db20fd01c1a3649aa8f270",
+            "comment": "Fix Fluent palette color names"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.99.0 <6.0.0` to `>=5.100.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.3 <6.0.0` to `>=5.11.4 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.38.1",
+      "tag": "@uifabric/experiments_v5.38.1",
+      "date": "Thu, 10 May 2018 10:27:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "ec7fbe9ca3b596f0ecaa5d29882d1a8e1fa8491e",
+            "comment": "Update Fluent theme to use relative imports"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.98.0 <6.0.0` to `>=5.99.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.38.0",
+      "tag": "@uifabric/experiments_v5.38.0",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "ba51e2f872a7548633a779ae9d583a6dbad2512d",
+            "comment": "Adds a Fluent theme experiment"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.96.1 <6.0.0` to `>=5.97.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.2 <6.0.0` to `>=5.11.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.37.0",
+      "tag": "@uifabric/experiments_v5.37.0",
+      "date": "Fri, 04 May 2018 15:58:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "0ae7286da9137337d0e864e712a4f17e4e679cf9",
+            "comment": "Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.95.0 <6.0.0` to `>=5.96.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.1 <6.0.0` to `>=5.11.2 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.6.1 <1.0.0` to `>=0.6.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.36.0",
+      "tag": "@uifabric/experiments_v5.36.0",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "920a06d0cd2c37298cd48c156b43bf1fd88fef83",
+            "comment": "Remove Keytips from experiments package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.94.0 <6.0.0` to `>=5.95.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.0 <6.0.0` to `>=5.11.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.35.0",
+      "tag": "@uifabric/experiments_v5.35.0",
+      "date": "Tue, 01 May 2018 10:23:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "2b20cab52ead58a3c93ba26e9ed2e6550311a236",
+            "comment": "remove extendedPicker, floatingPicker, and selectedItemsList from experiments"
+          },
+          {
+            "author": "KatherineThayerMicrosoft <kathayer@microsoft.com>",
+            "commit": "8de19959324dc82ffb22fb340618cf4edfb45e4e",
+            "comment": "Command bar accessibility: one tab stop with aria label"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.92.1 <6.0.0` to `>=5.93.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.0",
+      "tag": "@uifabric/experiments_v5.34.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "84e6ff3b20bd8533471a6073f5ecce39621dc889",
+            "comment": "Nav: Refactored out a NavLink component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.1",
+      "tag": "@uifabric/experiments_v5.33.1",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "a15bb064e6ec7551c593730e266b09f0873784dc",
+            "comment": "Remove wordWrap setting."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "56c4cfb63266ef8b1952d967598bf4044a7eed7a",
+            "comment": "Fix bad aria-label prop in Tile"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.88.0 <6.0.0` to `>=5.89.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.0",
+      "tag": "@uifabric/experiments_v5.33.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "edf45906e38be620dd26401b05b9bda10322027f",
+            "comment": "Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "cf2fcbcb9ed19793090d86186042cc8e463659c8",
+            "comment": "Fix index import"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.86.0 <6.0.0` to `>=5.87.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.2 <6.0.0` to `>=5.11.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.32.0",
+      "tag": "@uifabric/experiments_v5.32.0",
+      "date": "Fri, 20 Apr 2018 23:06:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "602a5b9fe30e8df5bf22342288f7b97dc8bd3c6e",
+            "comment": "Add delete callback, expose item change methods on SelectedItemsList"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "703efd38ae346d2b0b1be7c6082c2aad492b1d31",
+            "comment": "Shimmer: adding two new props and deprecating another one."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.85.0 <6.0.0` to `>=5.86.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.4",
       "tag": "@uifabric/experiments_v5.31.4",
       "date": "Thu, 19 Apr 2018 18:25:59 GMT",

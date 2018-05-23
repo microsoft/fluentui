@@ -75,7 +75,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       }
     }
 
-    if (!ignoreExternalFocusing && this._previouslyFocusedElement && typeof this._previouslyFocusedElement.focus === 'function') {
+    const activeElement = document.activeElement as HTMLElement;
+    if (!ignoreExternalFocusing &&
+      this._previouslyFocusedElement &&
+      typeof this._previouslyFocusedElement.focus === 'function' &&
+      (elementContains(this._root.value, activeElement) || activeElement === document.body)) {
       focusAsync(this._previouslyFocusedElement);
     }
   }

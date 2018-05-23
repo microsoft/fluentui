@@ -35,7 +35,12 @@ import {
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { IGroupedList, GroupedList } from '../../GroupedList';
-import { IList, List, IListProps } from '../../List';
+import {
+  IList,
+  List,
+  IListProps,
+  ScrollToMode
+} from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
@@ -130,19 +135,20 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
-  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
-    this._list.current && this._list.current.scrollToIndex(index, measureItem);
-    this._groupedList.current && this._groupedList.current.scrollToIndex(index, measureItem);
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
+    this._list.current && this._list.current.scrollToIndex(index, measureItem, scrollToMode);
+    this._groupedList.current && this._groupedList.current.scrollToIndex(index, measureItem, scrollToMode);
   }
 
   public focusIndex(
     index: number,
     forceIntoFirstElement: boolean = false,
-    measureItem?: (itemIndex: number) => number): void {
+    measureItem?: (itemIndex: number) => number,
+    scrollToMode?: ScrollToMode): void {
 
     const item = this.props.items[index];
     if (item) {
-      this.scrollToIndex(index, measureItem);
+      this.scrollToIndex(index, measureItem, scrollToMode);
 
       const itemKey = this._getItemKey(item, index);
       const row = this._activeRows[itemKey];

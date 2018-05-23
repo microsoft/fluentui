@@ -18,7 +18,7 @@ export class PanelSmallRightExample extends React.Component<{}, {
     return (
       <div>
         <DefaultButton
-          description='Opens the Sample Panel'
+          secondaryText='Opens the Sample Panel'
           onClick={ this._onShowPanel }
           text='Open Panel'
         />

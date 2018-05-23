@@ -1,6 +1,75 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 19 Apr 2018 18:25:59 GMT and should not be manually modified.
+This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+
+## 5.33.0
+Wed, 23 May 2018 16:14:26 GMT
+
+### Minor changes
+
+- Reverting the ChoiceGroup styling update along with updates to utilities to avoid potentially breaking changes.
+
+## 5.32.0
+Wed, 23 May 2018 10:28:50 GMT
+
+### Minor changes
+
+- Added `resetIds` api for adding predictability in jest tests.
+- allow for customization of keycodes that cause the focus rect to appear
+
+## 5.31.0
+Tue, 15 May 2018 07:09:49 GMT
+
+### Minor changes
+
+- Remove dependency on React from Async
+
+## 5.30.1
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Backing out `isEqual` change which is broken.
+- Add accompanying utilities work for Keytips
+
+## 5.29.0
+Fri, 27 Apr 2018 10:15:52 GMT
+
+### Minor changes
+
+- Allow a function to be passed to the Customizers props
+
+### Patches
+
+- Add isEqual and isNotEqual utilities
+
+## 5.28.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Adding `isDirectionalKeyCode` helper.
+
+## 5.27.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The focus styling no longer adds "ms-Fabric" classname to body. Instead a very specific class for controlling focus rects is added, which should not impact any existing code.
+
+## 5.26.0
+Fri, 20 Apr 2018 23:06:06 GMT
+
+### Minor changes
+
+- InputMask: Added inputMask utilitiy and tests
 
 ## 5.25.0
 Thu, 19 Apr 2018 18:25:59 GMT

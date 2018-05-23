@@ -6,7 +6,7 @@ import {
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
-  const { theme, underlined, disabled, hasFocus, className, hasInput } = props;
+  const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors } = theme;
 
   return {
@@ -30,6 +30,11 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           },
           ':hover': {
             borderColor: palette.neutralDark,
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight'
+              }
+            }
           },
           ':hover $iconContainer': {
             color: palette.themeDark
@@ -56,7 +61,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           borderColor: palette.neutralLighter,
           backgroundColor: palette.neutralLighter,
           pointerEvents: 'none',
-          cursor: 'default',
+          cursor: 'default'
         }
       ],
       underlined && [
@@ -83,27 +88,29 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontSize: 16,
         width: 32,
         textAlign: 'center',
-        transition: `width ${AnimationVariables.durationValue1}`,
         color: palette.themePrimary,
         cursor: 'text'
       },
       hasFocus && {
-        width: 4,
-        transition: `width  ${AnimationVariables.durationValue1}`
+        width: 4
       },
       disabled && {
         color: palette.neutralTertiary
+      },
+      !disableAnimation && {
+        transition: `width ${AnimationVariables.durationValue1}`
       }
     ],
     icon: [
       'ms-SearchBox-icon',
       {
         opacity: 1,
-        transition: `opacity ${AnimationVariables.durationValue1} 0s`
       },
       hasFocus && {
-        opacity: 0,
-        transition: `opacity 0 ${AnimationVariables.durationValue1}`
+        opacity: 0
+      },
+      !disableAnimation && {
+        transition: `opacity ${AnimationVariables.durationValue1} 0s`
       }
     ],
     clearButton: [
@@ -116,7 +123,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary,
+        color: palette.themePrimary
       }
     ],
     field: [

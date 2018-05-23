@@ -66,7 +66,9 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
           </PageMarkdown>
         }
         bestPractices={
-          <div />
+          <PageMarkdown>
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md') }
+          </PageMarkdown>
         }
         dos={
           <PageMarkdown>

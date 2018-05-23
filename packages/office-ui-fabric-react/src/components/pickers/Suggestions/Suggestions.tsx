@@ -29,7 +29,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       onClick,
       className,
       onRemoveItem,
-      isSelectedOverride
+      isSelectedOverride,
+      removeButtonAriaLabel
     } = this.props;
     return (
       <div
@@ -51,8 +52,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
         { this.props.showRemoveButton ? (
           <IconButton
             iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
-            title='Remove'
-            ariaLabel='Remove'
+            title={ removeButtonAriaLabel }
+            ariaLabel={ removeButtonAriaLabel }
             onClick={ onRemoveItem }
             className={ css('ms-Suggestions-closeButton', styles.closeButton) }
           />) : (null)
@@ -75,15 +76,17 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       selectedActionType: SuggestionActionType.none,
     };
   }
+
   public componentDidMount(): void {
     this.scrollSelected();
     this.activeSelectedElement = this._selectedElement ? this._selectedElement.current : null;
   }
+
   public componentDidUpdate(): void {
     // Only scroll to selected element if the selected element has changed. Otherwise do nothing.
     // This prevents some odd behavior where scrolling the active element out of view and clicking on a selected element
     // will trigger a focus event and not give the clicked element the click.
-    if (this.activeSelectedElement && this._selectedElement.current && this.activeSelectedElement !== this._selectedElement.current) {
+    if (this._selectedElement.current && this.activeSelectedElement !== this._selectedElement.current) {
       this.scrollSelected();
       this.activeSelectedElement = this._selectedElement.current;
     }
@@ -192,13 +195,16 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               { footerTitle(this.props) }
             </div>) : (null)
         }
-        { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
+        {
           (<span
             role='alert'
+            aria-live='polite'
             className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }
           >
-            { suggestionsAvailableAlertText }
-          </span>) : (null)
+            { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
+              suggestionsAvailableAlertText : null
+            }
+          </span>)
         }
       </div>
     );
@@ -325,6 +331,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   private _renderSuggestions(): JSX.Element {
     const {
       onRenderSuggestion,
+      removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
@@ -359,6 +366,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }
               className={ suggestionsItemClassName }
               showRemoveButton={ showRemoveButtons }
+              removeButtonAriaLabel={ removeSuggestionAriaLabel }
               onRemoveItem={ this._onRemoveTypedSuggestionsItem(suggestion.item, index) }
             />
           </div>) }

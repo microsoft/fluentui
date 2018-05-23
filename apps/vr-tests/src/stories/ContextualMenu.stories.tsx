@@ -84,6 +84,41 @@ const itemsWithIcons = [
   }
 ];
 
+const itemsWithSecondaryText = [
+  {
+    key: 'Later Today',
+    iconProps: {
+      iconName: 'Clock'
+    },
+    name: 'Later Today',
+    secondaryText: '7:00 PM'
+  },
+  {
+    key: 'Tomorrow',
+    iconProps: {
+      iconName: 'Coffeescript'
+    },
+    name: 'Tomorrow',
+    secondaryText: 'Thu. 8:00 AM'
+  },
+  {
+    key: 'This Weekend',
+    iconProps: {
+      iconName: 'Vacation'
+    },
+    name: 'This Weekend',
+    secondaryText: 'Sat. 10:00 AM'
+  },
+  {
+    key: 'Next Week',
+    iconProps: {
+      iconName: 'Suitcase'
+    },
+    name: 'Next Week',
+    secondaryText: 'Mon. 8:00 AM'
+  }
+];
+
 const itemsWithSubmenu = [
   {
     key: 'newItem',
@@ -178,6 +213,47 @@ const itemsWithHeaders = [
   }
 ];
 
+const itemsWithSplitButtonSubmenu = [
+  {
+    key: 'share',
+    split: true,
+    onClick: () => { },
+    subMenuProps: {
+      items: [
+        {
+          key: 'sharetotwitter',
+          name: 'Share to Twitter',
+        },
+        {
+          key: 'sharetofacebook',
+          name: 'Share to Facebook',
+        },
+        {
+          key: 'sharetoemail',
+          split: true,
+          onClick: () => { },
+          name: 'Share to Email',
+          subMenuProps: {
+            items: [
+              {
+                key: 'sharetooutlook_1',
+                name: 'Share to Outlook',
+                title: 'Share to Outlook',
+              },
+              {
+                key: 'sharetogmail_1',
+                name: 'Share to Gmail',
+                title: 'Share to Gmail',
+              }
+            ],
+          },
+        },
+      ],
+    },
+    name: 'Share'
+  }
+];
+
 storiesOf('ContextualMenu', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
@@ -205,6 +281,11 @@ storiesOf('ContextualMenu', module)
       items={ itemsWithIcons }
     />
   ))
+  .add('With secondaryText', () => (
+    <ContextualMenu
+      items={ itemsWithSecondaryText }
+    />
+  ))
   .add('With submenu', () => (
     <ContextualMenu
       items={ itemsWithSubmenu }
@@ -213,5 +294,10 @@ storiesOf('ContextualMenu', module)
   .add('With headers', () => (
     <ContextualMenu
       items={ itemsWithHeaders }
+    />
+  ))
+  .add('With split button submenu', () => (
+    <ContextualMenu
+      items={ itemsWithSplitButtonSubmenu }
     />
   ));

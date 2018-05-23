@@ -2,6 +2,1003 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.110.0",
+      "tag": "office-ui-fabric-react_v5.110.0",
+      "date": "Wed, 23 May 2018 16:14:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "17547b3778676a5b721f3f7dacf86fbd9621f67e",
+            "comment": "ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.32.0 <6.0.0` to `>=5.33.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.109.0",
+      "tag": "office-ui-fabric-react_v5.109.0",
+      "date": "Wed, 23 May 2018 10:28:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Alicia Drummond <adrum@microsoft.com>",
+            "commit": "d152bb75e06b2b47fced0f5219e018cce2aabd97",
+            "comment": "ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme."
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "b3f7e0633228d149f05f577becab06ff354e2a16",
+            "comment": "Converting Facepile SCSS to MergeStyles step 1 - file structure"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "e6f59e1b3831045f8aadfd86ece81d2b7fbac826",
+            "comment": "Common sass files are now exported in the `dist/sass` folder."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "7ee2f5472ec4c449255ae2322f11a08d883e383a",
+            "comment": "Fixing circular dependency and non-AMD references in ContextualMenu"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fe9b632196f0a9b2d229ee074d1f25edaeb74a98",
+            "comment": "cleanup semantic slots"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.0 <6.0.0` to `>=5.17.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.2 <6.0.0` to `>=5.30.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.31.0 <6.0.0` to `>=5.32.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.108.0",
+      "tag": "office-ui-fabric-react_v5.108.0",
+      "date": "Tue, 22 May 2018 10:29:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "natalieethell <naethell@microsoft.com>",
+            "commit": "841a6dea1e135fdd97154ec3c7ee41d83373dc7c",
+            "comment": "Implementation of experimental chiclet component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "03f8e872009dede0b2f8eb55861a191d3c298a1d",
+            "comment": "Revert IconButton hover/pressed background color change."
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "99145f596296fe3471d2483389c6d775f569b16d",
+            "comment": "Set 'margin 0' reset style for buttons in Safari in Fabric component"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2e04bc6e23939a0029c751ed3c0277b97446f598",
+            "comment": "CommandBarButton: Fixed split styles"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.107.0",
+      "tag": "office-ui-fabric-react_v5.107.0",
+      "date": "Mon, 21 May 2018 10:29:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "da831117bc4a1561da0a9648450fe44b774689ab",
+            "comment": "Callout/Positioning: Fix a bug where max-height would be incorrectly calculated if covertarget was set"
+          }
+        ],
+        "patch": [
+          {
+            "author": "veloiya <30428533+veloiya@users.noreply.github.com>",
+            "commit": "b0350207df6e4663e2464f3f6cdced56b816d743",
+            "comment": "Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "233262889fb2de740cd051df2b7c08d7e944b366",
+            "comment": "Moved best design practices write up in SearchBoxes Overview to Best Practices for clarity that these are not included features"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.106.1",
+      "tag": "office-ui-fabric-react_v5.106.1",
+      "date": "Fri, 18 May 2018 01:46:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "3500a3fce6abec943b72c8ce9a00032265917aa6",
+            "comment": "ContextualMenu: Make the whole menu always programatically focusable"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.106.0",
+      "tag": "office-ui-fabric-react_v5.106.0",
+      "date": "Thu, 17 May 2018 22:02:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "92a75f376c74b9d538630560ee8ad937306e12fb",
+            "comment": "Add data-selection-select behavior to make elements select rows before taking action"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "1947c05200fb234d3bde700528a58158c128742c",
+            "comment": "Fix Slider import, make specific to Styling"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.105.0",
+      "tag": "office-ui-fabric-react_v5.105.0",
+      "date": "Thu, 17 May 2018 20:12:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "12b6df631671916e9a273910a02fb7cfd43e69f2",
+            "comment": "Suggestions: Fix a bug where arrow keys would not scroll correctly"
+          }
+        ],
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5e6c4d39295406b5735cb3e118d4c0d9c14c2189",
+            "comment": "Update TooltipHost doc to match implementation."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "a437b080f0005d083da96dd5b1cacaaddc4b9ede",
+            "comment": "Part 1 of converting Slider to mergeStyles"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "da1315212340b2bb0784f5e405df0cfa4c58f227",
+            "comment": "Add enter/exit keytip mode to KeytipManager"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "d07871b8f02251871407865cafd36acb51a7eb51",
+            "comment": "Added support in textfield for aria-describedby native prop"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.104.0",
+      "tag": "office-ui-fabric-react_v5.104.0",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "9afc622e632197b13bc55ba6ea85f13d12ea5604",
+            "comment": "ContextualMenuSplitButton: Adding the correct attributes for screen readers to read the button correctly"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "d01ce314a35af59f3516e4d793498c067f21fcc6",
+            "comment": "TextField: Invoke custom description render function if provided even if no description text provided."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.1 <6.0.0` to `>=5.30.2 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.4 <6.0.0` to `>=5.11.5 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.103.0",
+      "tag": "office-ui-fabric-react_v5.103.0",
+      "date": "Wed, 16 May 2018 00:05:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "484ed68d3dfba35781449ed20498ca74bf46e9fe",
+            "comment": "Fix markdown file paths on SwatchColorPicker docs page."
+          },
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "d7ca31cab2e99a7674ce55da2c70c7ba29689e87",
+            "comment": "Finishing the rest of the Calendar style updates"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "7183e967f5dc38ec572ca35c55f344e00a082892",
+            "comment": "Fix detailslist custom group header example by invoking correct onClick for select and collapse toggles."
+          },
+          {
+            "author": "Ian Craig <ian-craig@outlook.com>",
+            "commit": "0297e2101a84ffe514a6b59438708c75b2a4831c",
+            "comment": "Fix misuse of aria props on ProgressIndicator"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "8c4193280c7b085fb0b6ef6fa3fc3920faa4bc94",
+            "comment": "Buttons: Deprecate `description` prop in favor of more consistent `secondaryText` prop."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.102.0",
+      "tag": "office-ui-fabric-react_v5.102.0",
+      "date": "Tue, 15 May 2018 07:09:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <1581488+christiango@users.noreply.github.com>",
+            "commit": "516fc3e556d436d335b90b18f495d3cd80dbe96f",
+            "comment": "Fix bug where primaryDisabled is not respected on contextual menu items"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "647fa4e587bbc613321da2f4b671278a007c0d8d",
+            "comment": "Dropdown: Remove aria-autocomplete and aria-readonly"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2487474dc17568340e5b9eec3c10f2f8943fc4c5",
+            "comment": "Pivot: Slight tweak to the `PivotItem` compare to ensure it works in minified scenarios."
+          },
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "04c27fffd123ab7da3e620f3169fcce8feb92b3d",
+            "comment": "shouldVirtualize takes incoming properties"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ca708da05db4c7fc3715a4eb56f0adc9c93b338e",
+            "comment": "Deprecate ComboBox's value prop in favor of new text prop."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.30.1 <6.0.0` to `>=5.31.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.101.2",
+      "tag": "office-ui-fabric-react_v5.101.2",
+      "date": "Mon, 14 May 2018 20:46:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Daniel Gut <daniel.gut@solarproject.ch>",
+            "commit": "3e5cbf4319b28194d6bbde7b490c5f9d62d20d75",
+            "comment": "fixes type comparing in Pivot"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.101.1",
+      "tag": "office-ui-fabric-react_v5.101.1",
+      "date": "Mon, 14 May 2018 19:35:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Nabeelah Ali <nabeelah@gmail.com>",
+            "commit": "c6a335ff1f2507af975a9fd687acec79c2e8f852",
+            "comment": "Ensure subMenuHoverDelay is respected by the ContextualMenu for expanding and dismissing submenus"
+          },
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "32ab5c16784fedbd36ed66d42ad6095f368e00e6",
+            "comment": "Fixes issue where expanding sub menu via arrow keys was broken, and adds aria label of \"menu\" to item when keyboarded"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.101.0",
+      "tag": "office-ui-fabric-react_v5.101.0",
+      "date": "Mon, 14 May 2018 10:14:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Pramod Chandoria <39146718+pchandoria@users.noreply.github.com>",
+            "commit": "8e91d0c8745202d23f4f230b4d503fe6ce2456b7",
+            "comment": "Breaking BaseButton Types dependency from ContextualMenu class"
+          }
+        ],
+        "minor": [
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "3cae9bf1eb6f390bbd1e701555ecebe417cb2982",
+            "comment": "Pivot: include className in props to override styles"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "00927819176c5a147ac2fa43852b90b9b69aaa7f",
+            "comment": "Add more customization hooks to ProgressIndicator"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.100.0",
+      "tag": "office-ui-fabric-react_v5.100.0",
+      "date": "Fri, 11 May 2018 04:21:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "84d82e8233895a24965dd46765d57a92e8959971",
+            "comment": "Deprecate Persona's primaryText prop and add replacement text prop."
+          },
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "bb7a1888863224b2825dc5538cb73ab5eb920b07",
+            "comment": "Puts additional alert on selected suggestions behind a prop"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f6bc8fc6b3267db36c0ce6382b6fc8bfdbd64f3d",
+            "comment": "Revert change to use React.createPortal, until event leaking issues can be resolved"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.3 <6.0.0` to `>=5.11.4 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.99.0",
+      "tag": "office-ui-fabric-react_v5.99.0",
+      "date": "Thu, 10 May 2018 10:27:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "76e7918dd9f2585a2356efc98b172f61a22408de",
+            "comment": "Even if a ComboBoxOptionWrapper component doesn't update (shouldComponentUpdate returns false), children functions are still being executed unnecessarily, which can cause performance issues. This can be avoided by passing in a reference to a function that returns the children elements, instead of returning the elements themselves."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "67d8b44244f4e40b9fe05f282c1b9dfe7aadf91c",
+            "comment": "Fix index import"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Maximus <maximus12793@users.noreply.github.com>",
+            "commit": "5eaf2e19cbe0c5dc8487dfcb73a869c24e339e3f",
+            "comment": "Add secondaryText to ContextualMenuItem to render on the right of item.name (text)"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "fcd64118b21107448116e2234eda9c16d350d9ff",
+            "comment": "MarqueeSelection: Added `getStyles` function."
+          },
+          {
+            "author": "Adrian Tran <adtran@microsoft.com>",
+            "commit": "09b459a6f1324449dcd4763cdfeb91dc63b3c4ad",
+            "comment": "Added overflowMenuProps property to CommandBar"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.98.0",
+      "tag": "office-ui-fabric-react_v5.98.0",
+      "date": "Wed, 09 May 2018 15:42:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "42c097e2e29c34c1a6a03e44f07d4ffad75c98aa",
+            "comment": "FocusZone: Add a prop to allow a FocusZone to not let focus events propagate outside of the FocusZone"
+          },
+          {
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "1ff2126c39cb77633d9c802fda05abe3393fc507",
+            "comment": "Added support for special casing UnknownPersona coin"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.97.1",
+      "tag": "office-ui-fabric-react_v5.97.1",
+      "date": "Tue, 08 May 2018 18:18:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "be99bf8e02cc50a6c6f9c94df51b9a6ffcfa530c",
+            "comment": "BaseButton: Allow Alt + Down on menu buttons to open the menu"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.97.0",
+      "tag": "office-ui-fabric-react_v5.97.0",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "494ed863f267a642d00e6f982f38d6971a6a59f9",
+            "comment": "ActivityItem: Fix a previous breaking change in getStyles. Passing specific props at the end instead of general props at the beginning."
+          }
+        ],
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "4fe46b80ebb61c25519617c2cedd1e756c6487f0",
+            "comment": "Remove redundant defaultSelectedItem prop for BaseExtendedPicker"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2220e7507f7d32a73c270409457c5681ca505e3b",
+            "comment": "Icon: undoing breaking change with regards to making `IIconStyles.root` required, adding tests to ensure backwards compatibility."
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "38edb8e411d9938499836f0cd591270bf1eef5b7",
+            "comment": "Mark Slider's ValuePosition enum as deprecated as it is unused."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "daa7b6966c7fc0e52cdfd9e7ac8ab902a3810f9d",
+            "comment": "Add ContextualMenuItem functions to open and close menus"
+          },
+          {
+            "author": "rebeccaballantyne <rebeccaballantyne@gmail.com>",
+            "commit": "8b36d24d49c2581bbf67bceeabbdd252fca77844",
+            "comment": "Fixes issue where focus isn't displayed correctly on the contextual mneu"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "24ce65466c9c0a64a98042b96c7129bc3737d0c4",
+            "comment": "SearchBox: New prop for turning off icon animation."
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "0283f2a4f9465a7aad3039ce6f8d98848f9a2521",
+            "comment": "Layer: Use React Portals if available"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "c6b758901e9515c404e50675b1fde8ed6fc1db93",
+            "comment": "Popup: Added check for onBlur to prevent focus setting focus to be disabled in chrome"
+          },
+          {
+            "author": "Karthik Balasubramanian <karthikb87@gmail.com>",
+            "commit": "3ba4f92926b02ea6992145d970e8ba46f4888ca8",
+            "comment": "Fix breadcrumb rendering issue when overflow index is at last"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.2 <6.0.0` to `>=5.11.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.96.1",
+      "tag": "office-ui-fabric-react_v5.96.1",
+      "date": "Mon, 07 May 2018 10:28:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "7a6b18c3d7d1edcdf32e16b8c182201e6218d2ed",
+            "comment": "High contrast hover states: Breadcrumb, Button, ComboBox, Link, Nav, Pivot, SearchBox, SpinButton, Toggle."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "ed172777805802c75f51155564938135995fa88e",
+            "comment": "Keytips: Minor update to improve behavior"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "21f8f5f25e7592af08e9caf45e01fc004721739d",
+            "comment": "Remove keytip positioning workaround since Callout positioning was fixed"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "2ea373d0f35d2ebba56084455987f829e6e72188",
+            "comment": "In the TextField component, The code setting the 'errorMessage' state to an empty string in the _onInputChange member function was removed do to causing the message to flicker."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.96.0",
+      "tag": "office-ui-fabric-react_v5.96.0",
+      "date": "Fri, 04 May 2018 15:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "5404c2eed65ab753a4c4c28909de58bbababeba2",
+            "comment": "Fix ensureSuggestionModel null ref, get rid of unneeded FocusZone in BaseExtendedPicker, remove requirement in BaseExtendedPicker that suggestions are shown when input is focused (only clicked)"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "f08f29301255a7c27e57157ea543b464dfedb9af",
+            "comment": "Positioning: Fix cover positioning so it returns the correct edge to handle menu shrinkage"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a241eecc8d55a60a533629f222d4065cacdbb965",
+            "comment": "Fix TooltipHost mutation of calloutProps."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "f491118a364113dfab214530089d9fa72dc1c31c",
+            "comment": "SpinButton: Remove browser autocomplete"
+          },
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "2aee0d6d6f2e7a2734920ebaec2ad22f13e0fc37",
+            "comment": "Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. "
+          }
+        ],
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "34683b19a79bd2bd7b7bf83a196a2e83313780c0",
+            "comment": "ScrollablePane: Optimizations on how component functions.  Change positioning from inheriting height/maxHeight of parent element to use position: absolute"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Icon: code has been cleaned up, memoizeFunction usage has been removed."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d80042096c2646d5fdc3e85af37d12541c4b2aab",
+            "comment": "Rating: Hover states in regular and high contrast mode."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.1 <6.0.0` to `>=5.11.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.95.0",
+      "tag": "office-ui-fabric-react_v5.95.0",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "f526bfe62b033ee98eba26517af113d33fbb71dd",
+            "comment": "SplitButton/ComboBox: added onTouch support for menu expansion."
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "920a06d0cd2c37298cd48c156b43bf1fd88fef83",
+            "comment": "Add Keytip, KeytipLayer, and KeytipData component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "0f0a9fa47e601c3018cb1b484c5267f5df046c0d",
+            "comment": "If firstFocus on HoverCard is set then propagate it to setInitialFocus in ExpandingCard. This enables focusing the card on render."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "fa95634d8b77aef46e78f76470887bee5ced1647",
+            "comment": "TextField can now render the numeric value 0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.0 <6.0.0` to `>=5.11.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.94.0",
+      "tag": "office-ui-fabric-react_v5.94.0",
+      "date": "Tue, 01 May 2018 19:26:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "88c3a0a990d88f609ec639df3f46ddb803f7b80c",
+            "comment": "Theme Generator: use HSV for generating shades/tints"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.93.0",
+      "tag": "office-ui-fabric-react_v5.93.0",
+      "date": "Tue, 01 May 2018 10:23:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "d5eeeebb58d64f81399ed0b12ac462335c422f60",
+            "comment": "DatePicker: Add a reset function to the public `IDatePicker` interface."
+          },
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "2b20cab52ead58a3c93ba26e9ed2e6550311a236",
+            "comment": "move extendedPicker, floatingPicker, and selectedItemsList to OUFR"
+          },
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a3bf7e75eddc233053b9d830a019582fb7e8fb4d",
+            "comment": "Tooltip: updated to use customizable styling via `getStyles`."
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "13543616b95ab505bf383db0a3d752e721b3f23c",
+            "comment": "List: Added list scrolling modes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7a422cefe94fabc13aba23dcca5c7d69f8e63b28",
+            "comment": "Breadcrumb: Updating breadcrumb to user js styling."
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "8626a66beaa9f357336c489f0e31890d6c5ce102",
+            "comment": "Added onClick handler to rating star in the Rating component that calls _onFocus redundently for support with Firefox & Safari on OSX."
+          },
+          {
+            "author": "kanupriya28 <priya.kanu95@gmail.com>",
+            "commit": "afe9df8978f54725727da7d3c48c70ed49425fdd",
+            "comment": "details link contrast issue"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.28.0 <6.0.0` to `>=5.29.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.92.1",
+      "tag": "office-ui-fabric-react_v5.92.1",
+      "date": "Mon, 30 Apr 2018 21:22:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "05a7b2622d5e2624cf6c84a74819f523f9b95f5d",
+            "comment": "Revert isEqual check in List."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.92.0",
+      "tag": "office-ui-fabric-react_v5.92.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "175597d6e4ba9f9c3306c81ea940724d4d21f171",
+            "comment": "Contextual Menu: moved out the split button to be its own component, ContextualMenuSplitButton"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "660800656c40963e73450fddafb9d621ce089f4a",
+            "comment": "Use theme flag to control global classes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.27.0 <6.0.0` to `>=5.28.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.91.0",
+      "tag": "office-ui-fabric-react_v5.91.0",
+      "date": "Fri, 27 Apr 2018 10:15:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Lars Fernhomberg <aur@gmx.de>",
+            "commit": "52b8ced1176ee8c662baa763361fd0c0f0f7dbd7",
+            "comment": "Added optional className property to Calendar"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "23d8cfda750315abbb64aaffe22a56c1d536043e",
+            "comment": "Fix #3607"
+          },
+          {
+            "author": "Karthik Balasubramanian <karthikb87@gmail.com>",
+            "commit": "963e125151c41334d1b32cd4a49c07587dc6176a",
+            "comment": "Add a option for custom dividerAs to get item information while rendering"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.28.0 <6.0.0` to `>=5.29.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.90.0",
+      "tag": "office-ui-fabric-react_v5.90.0",
+      "date": "Thu, 26 Apr 2018 10:12:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5e99f2d4dd3de753aca40d7e5991d6ffb394bd89",
+            "comment": "Fix props validation for Breadcrumb"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "0ee2136ddb49447faa1e0a5cdb0211ea68fe068b",
+            "comment": "Gate calendar month, year, and today keydowns for only ENTER as onClick handles space with button nodes to fix double date change regression."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b9f6e845720daf7536a299a84be96ec4793ae57a",
+            "comment": "Complete ProgressIndicator conversion to mergeStyles. Add `barHeight` to enable changing height of progress bar."
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "a59edf95f45e5192907f9fa3faf8d566e5cafc93",
+            "comment": "Pickers: Several fixes regarding certain props"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.1 <6.0.0` to `>=5.17.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.89.0",
+      "tag": "office-ui-fabric-react_v5.89.0",
+      "date": "Wed, 25 Apr 2018 05:32:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6bfddc1c44aa7afcdf053467985490027eb5edcd",
+            "comment": "Fabric: the isFocusVisible class is no added to the Fabric component again, to preserve backwards compatibility. Also fixing index file to export the types."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "802a2c0847830acfbf47e2dd058da54d9dfb15ae",
+            "comment": "Fix theme slots for DetailsList header colors"
+          },
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "127d4d9deeca7e38a4ae6df6bd4d92ea5a978432",
+            "comment": "Enabled native props (aria-* and data-*) on OverflowSet even when the doNotContainWithinFocusZone prop is false"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.16.0 <6.0.0` to `>=5.16.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.27.0 <6.0.0` to `>=5.28.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.88.0",
+      "tag": "office-ui-fabric-react_v5.88.0",
+      "date": "Tue, 24 Apr 2018 10:12:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "829a5263d7ed4e4decb759cfad9cdf32aad5f86e",
+            "comment": "fixing selection bugs in Calendar component, updating styling for new designs"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "707e5387e0a469fa6f09b188c27d4c8e73636625",
+            "comment": "Begin converting Pivot to mergeStyles"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Spencer Elliott <me@elliottsj.com>",
+            "commit": "8d297e2a0f7c6cd9bd44a492f313381a0aee40c0",
+            "comment": "Use `data-is-scrollable` attribute on correct ScrollablePane div"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.87.0",
+      "tag": "office-ui-fabric-react_v5.87.0",
+      "date": "Mon, 23 Apr 2018 10:24:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "57d14eb7535d07348628c034bff03646c0851bd2",
+            "comment": "ContextualMenu: in item root styling, replaced `font: inherit` with the appropriate font style from the theme."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf655ceeaf161fd5ee3cc4dc5a4e55a82dea03e5",
+            "comment": "Updating a snapshot test."
+          },
+          {
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "af62e60a594673e79f50acd1db0c27c5b7be32a0",
+            "comment": "Adding check to focusTrapZone to only restore focus on close if focus was still inside the focusTrapZone"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "6f66dfa52f97226641778eebc2df91ff98c92828",
+            "comment": "Deprecates INavLink.iconClassName in favor of IIconProps.className."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2bbc7950bd9f10ea1e792dcb1155c625aa8e8f4f",
+            "comment": "Updating the focus styling to use the generalized `ms-Fabric--isFocusVisible` classname. This is one step closer towards removing the `Fabric` component wrapper requirement."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "0a91cdca0f3dddc89d17b581c95cb879a7901a01",
+            "comment": "Plumb ARIA label for picker suggestion remove button"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.15.2 <6.0.0` to `>=5.16.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.25.0 <6.0.0` to `>=5.26.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.2 <6.0.0` to `>=5.11.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.86.0",
+      "tag": "office-ui-fabric-react_v5.86.0",
+      "date": "Fri, 20 Apr 2018 23:06:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "5ee5b0000642c73ee99110a888360f4b6f99fa56",
+            "comment": "Callout.Basic.Example: Fix example so callout positions properly"
+          },
+          {
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "1c60faec279be119ddd0d952958570c81edb8ca5",
+            "comment": "Propagate onRenderInitials correctly from Persona to PersonaCoin"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <v-brgarl@microsoft.com>",
+            "commit": "bcfcbd31d10874a8c560273be82d4a7087d37aa4",
+            "comment": "Added support for zero star situations in the Rating component.  Before it would write out a star for  the number zero showing 6 stars when there should be 5."
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "d8c8e6fc0be8766ce6625aefc4a512e0abfe4e7f",
+            "comment": "Add onRenderIcon prop to IContextualMenuItem to allow override icon render for contextualMenuItem."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.25.0 <6.0.0` to `>=5.26.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.85.0",
       "tag": "office-ui-fabric-react_v5.85.0",
       "date": "Fri, 20 Apr 2018 10:12:34 GMT",

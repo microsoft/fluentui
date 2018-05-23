@@ -61,7 +61,6 @@ export interface IPersonaState {
 @customizable('PersonaCoin', ['theme'])
 export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
   public static defaultProps: IPersonaCoinProps = {
-    primaryText: '',
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: '',
@@ -69,6 +68,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
   constructor(props: IPersonaCoinProps) {
     super(props);
+
+    this._warnDeprecations({ 'primaryText': 'text' });
 
     this.state = {
       isImageLoaded: false,
@@ -80,6 +81,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const {
       className,
       coinProps,
+      showUnknownPersonaCoin,
       coinSize,
       getStyles,
       imageUrl,
@@ -105,6 +107,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       theme: theme!,
       className: (coinProps && coinProps.className) ? coinProps.className : className,
       size,
+      showUnknownPersonaCoin,
     });
 
     return (
@@ -128,9 +131,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
                     <div
                       className={ mergeStyles(
                         classNames.initials,
-                        {
-                          backgroundColor: initialsColorPropToColorCode(this.props)
-                        }
+                        !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
                       ) }
                       style={ coinSizeStyle }
                       aria-hidden='true'
@@ -166,13 +167,15 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       imageShouldFadeIn,
       imageShouldStartVisible,
       theme,
+      showUnknownPersonaCoin,
     } = this.props;
 
     const size = this.props.size as PersonaSize;
 
     const classNames = getClassNames(getStyles, {
       theme: theme!,
-      size
+      size,
+      showUnknownPersonaCoin
     });
 
     return (
@@ -190,16 +193,27 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     );
   }
 
+  /**
+   * Deprecation helper for getting text.
+   */
+  private _getText(): string {
+    return this.props.text || this.props.primaryText || '';
+  }
+
   private _onRenderInitials = (props: IPersonaCoinProps): JSX.Element => {
     let { imageInitials } = props;
     const {
       allowPhoneInitials,
-      primaryText,
+      showUnknownPersonaCoin
     } = props;
+
+    if (showUnknownPersonaCoin) {
+      return <Icon iconName='Help' />;
+    }
 
     const isRTL = getRTL();
 
-    imageInitials = imageInitials || getInitials(primaryText, isRTL, allowPhoneInitials);
+    imageInitials = imageInitials || getInitials(this._getText(), isRTL, allowPhoneInitials);
 
     return (
       imageInitials !== ''

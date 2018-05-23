@@ -1,4 +1,5 @@
 /* tslint:disable:no-string-literal */
+import { assign } from './object';
 
 /**
  * EventRecord interface.
@@ -86,7 +87,7 @@ export class EventGroup {
 
         ev.initEvent(eventName, bubbleEvent || false, true);
 
-        Object.assign(ev, eventArgs);
+        assign(ev, eventArgs);
 
         retVal = target.dispatchEvent(ev);
         // tslint:disable-next-line:no-any

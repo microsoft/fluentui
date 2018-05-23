@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,9 +22,21 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-12"`,
-      src: `url('${baseUrl}fabric-icons-12-e5eef780.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-12-e6882c74.woff') format('woff')`
     },
     icons: {
+      'FieldRequired': '\uF443',
+      'BacklogBoard': '\uF444',
+      'ExternalBuild': '\uF445',
+      'ExternalTFVC': '\uF446',
+      'ExternalXAML': '\uF447',
+      'IssueSolid': '\uF448',
+      'DefectSolid': '\uF449',
+      'LadybugSolid': '\uF44A',
+      'NugetLogo': '\uF44C',
+      'TFVCLogo': '\uF44D',
+      'ProjectLogo32': '\uF47E',
+      'ProjectLogoFill32': '\uF47F',
       'ProjectLogo16': '\uF480',
       'ProjectLogoFill16': '\uF481',
       'SwayLogo32': '\uF482',
@@ -46,7 +58,6 @@ export function initializeIcons(
       'KaizalaLogo': '\uF492',
       'TaskLogo': '\uF493',
       'ProtectionCenterLogo32': '\uF494',
-      'NonprofitLogo32': '\uF495',
       'GallatinLogo': '\uF496',
       'Globe2': '\uF49A',
       'Guitar': '\uF49B',
@@ -113,18 +124,7 @@ export function initializeIcons(
       'BorderDash': '\uF50A',
       'BorderDot': '\uF50B',
       'LineStyle': '\uF50C',
-      'LineThickness': '\uF50D',
-      'WindowEdit': '\uF50E',
-      'HintText': '\uF50F',
-      'MediaAdd': '\uF510',
-      'AnchorLock': '\uF511',
-      'AutoHeight': '\uF512',
-      'ChartSeries': '\uF513',
-      'ChartXAngle': '\uF514',
-      'ChartYAngle': '\uF515',
-      'Combobox': '\uF516',
-      'LineSpacing': '\uF517',
-      'Padding': '\uF518'
+      'LineThickness': '\uF50D'
     }
   };
 

@@ -27,7 +27,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   constructor(props: IAutofillProps) {
     super(props);
-    this._value = '';
+    this._value = props.defaultVisibleValue || '';
     this.state = {
       displayValue: props.defaultVisibleValue || ''
     };

@@ -36,6 +36,7 @@ const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
+const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
 export interface ISelectionZone {
   ignoreNextFocus: () => void;
@@ -50,6 +51,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   layout?: {};
   selectionMode?: SelectionMode;
   selectionPreservedOnEmptyClick?: boolean;
+  disableAutoSelectOnInputElements?: boolean;
   enterModalOnTouch?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
@@ -194,10 +196,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
           break;
-        } else if (target === itemRoot && !this._isShiftPressed && !this._isCtrlPressed) {
+        } else if ((target === itemRoot || this._hasAttribute(target, SELECTION_SELECT_ATTRIBUTE_NAME))
+          && !this._isShiftPressed && !this._isCtrlPressed) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
-        } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
+        } else if (this.props.disableAutoSelectOnInputElements &&
+          (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT')) {
           return;
         }
       }

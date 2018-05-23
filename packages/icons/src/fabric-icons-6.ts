@@ -22,9 +22,14 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-6"`,
-      src: `url('${baseUrl}fabric-icons-6-baae6235.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-6-3954c770.woff') format('woff')`
     },
     icons: {
+      'CaretLeftSolid8': '\uEDD9',
+      'CaretRightSolid8': '\uEDDA',
+      'CaretUpSolid8': '\uEDDB',
+      'CaretDownSolid8': '\uEDDC',
+      'ClearFormatting': '\uEDDD',
       'Superscript': '\uEDDE',
       'Subscript': '\uEDDF',
       'Strikethrough': '\uEDE0',
@@ -36,6 +41,7 @@ export function initializeIcons(
       'FollowUser': '\uEE05',
       'ReplyAll': '\uEE0A',
       'WorkforceManagement': '\uEE0F',
+      'RecruitmentManagement': '\uEE12',
       'Questionnaire': '\uEE19',
       'ManagerSelfService': '\uEE23',
       'ReplyMirrored': '\uEE35',
@@ -98,6 +104,7 @@ export function initializeIcons(
       'Header2': '\uEF36',
       'Header3': '\uEF37',
       'Header4': '\uEF38',
+      'Eyedropper': '\uEF3C',
       'MarketDown': '\uEF42',
       'CalendarWorkWeek': '\uEF51',
       'SidePanel': '\uEF52',
@@ -117,14 +124,7 @@ export function initializeIcons(
       'EditStyle': '\uEF60',
       'EditMail': '\uEF61',
       'Lifesaver': '\uEF62',
-      'LifesaverLock': '\uEF63',
-      'InboxCheck': '\uEF64',
-      'FolderSearch': '\uEF65',
-      'CollapseMenu': '\uEF66',
-      'ExpandMenu': '\uEF67',
-      'Boards': '\uEF68',
-      'SunAdd': '\uEF69',
-      'SunQuestionMark': '\uEF6A'
+      'LifesaverLock': '\uEF63'
     }
   };
 
