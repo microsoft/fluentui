@@ -51,7 +51,12 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
         borderColor: palette.white,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Window'
+            borderColor: 'Window',
+            selectors: {
+              '> *': {
+                fill: 'Window'
+              }
+            }
           }
         }
       }
