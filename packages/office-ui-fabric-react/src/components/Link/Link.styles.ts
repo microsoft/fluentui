@@ -24,13 +24,13 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       getFocusStyle(theme),
       {
         color: semanticColors.link,
+        display: 'inline-block',
       },
       isButton && {
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
         cursor: 'pointer',
-        display: 'inline',
         fontSize: 'inherit',
         margin: 0,
         overflow: 'inherit',
