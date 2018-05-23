@@ -21,7 +21,7 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
     theme
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const styles: IStyleSet = !!borderStyle ? borderStyle : {};
@@ -34,6 +34,7 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
       {
         backgroundColor: palette.white,
         width: ACTUAL_WIDTH,
+        minWidth: widthInPixel ? ACTUAL_WIDTH : 'auto', // Fix for IE11 flex items
         height: `${height}px`,
         boxSizing: 'content-box',
         borderTopStyle: 'solid',
@@ -41,8 +42,8 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
         borderColor: palette.white,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: semanticColors.bodyBackground,
-            borderColor: semanticColors.bodyBackground
+            backgroundColor: 'Window',
+            borderColor: 'Window'
           }
         }
       }

@@ -44,7 +44,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     transitionAnimationInterval
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const isRTL = getRTL();
@@ -84,7 +84,14 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
+            background: `WindowText
+                        linear-gradient(
+                          to right,
+                          transparent 0%,
+                          Window 50%,
+                          transparent 100%)
+                        0 0 / 90% 100%
+                        no-repeat`
           }
         }
       },

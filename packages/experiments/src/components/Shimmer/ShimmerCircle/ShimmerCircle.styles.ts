@@ -20,7 +20,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
     theme
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const styles: IStyleSet = !!borderStyle ? borderStyle : {};
@@ -32,12 +32,13 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
       {
         width: `${height}px`,
         height: `${height}px`,
+        minWidth: `${height}px`, // Fix for IE11 flex items
         borderTopStyle: 'solid',
         borderBottomStyle: 'solid',
         borderColor: palette.white,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: semanticColors.bodyBackground
+            borderColor: 'Window'
           }
         }
       }
@@ -48,7 +49,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         fill: palette.white,
         selectors: {
           [HighContrastSelector]: {
-            fill: semanticColors.bodyBackground
+            fill: 'Window'
           }
         }
       }

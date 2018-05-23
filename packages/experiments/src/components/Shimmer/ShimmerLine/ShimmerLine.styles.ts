@@ -25,7 +25,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
     theme
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const styles: IStyleSet = !!borderStyle ? borderStyle : { borderWidth: '0px' };
@@ -42,6 +42,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
       styles,
       {
         width: ACTUAL_WIDTH,
+        minWidth: widthInPixel ? ACTUAL_WIDTH : 'auto', // Fix for IE11 flex items
         height: `${height}px`,
         boxSizing: 'content-box',
         position: 'relative',
@@ -50,7 +51,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
         borderColor: palette.white,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: semanticColors.bodyBackground
+            borderColor: 'Window'
           }
         }
       }
