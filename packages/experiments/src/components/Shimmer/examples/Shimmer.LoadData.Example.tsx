@@ -54,6 +54,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
           ariaLabel={ 'Loading content' }
         >
           <div
+            // tslint:disable-next-line:jsx-ban-props
             style={ {
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -107,6 +108,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
   private _getCustomElements = (): JSX.Element => {
     return (
       <div
+        // tslint:disable-next-line:jsx-ban-props
         style={ { display: 'flex' } }
       >
         <ShimmerElementsGroup

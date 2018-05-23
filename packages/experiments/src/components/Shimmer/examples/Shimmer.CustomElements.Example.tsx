@@ -39,6 +39,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
   private _getCustomElementsExampleOne = (): JSX.Element => {
     return (
       <div
+        // tslint:disable-next-line:jsx-ban-props
         style={ { display: 'flex' } }
       >
         <ShimmerElementsGroup
@@ -62,6 +63,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
   private _getCustomElementsExampleTwo = (): JSX.Element => {
     return (
       <div
+        // tslint:disable-next-line:jsx-ban-props
         style={ { display: 'flex' } }
       >
         <ShimmerElementsGroup
@@ -85,6 +87,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
   private _getCustomElementsExampleThree = (): JSX.Element => {
     return (
       <div
+        // tslint:disable-next-line:jsx-ban-props
         style={ { display: 'flex' } }
       >
         <ShimmerElementsGroup
@@ -95,6 +98,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
           ] }
         />
         <div
+          // tslint:disable-next-line:jsx-ban-props
           style={ { display: 'flex', flexWrap: 'wrap', width: '100%' } }
         >
           <ShimmerElementsGroup
