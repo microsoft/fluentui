@@ -1,6 +1,24 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+This log was last generated on Mon, 21 May 2018 10:29:16 GMT and should not be manually modified.
+
+## 5.40.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props
+
+## 5.39.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Experiments/Nav: accessibility changes
+
+### Patches
+
+- use better icon for MalwareDetectedSignal
 
 ## 5.38.2
 Fri, 11 May 2018 04:21:29 GMT
@@ -135,7 +153,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
 
 ### Patches
 

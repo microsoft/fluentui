@@ -76,15 +76,17 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       selectedActionType: SuggestionActionType.none,
     };
   }
+
   public componentDidMount(): void {
     this.scrollSelected();
     this.activeSelectedElement = this._selectedElement ? this._selectedElement.current : null;
   }
+
   public componentDidUpdate(): void {
     // Only scroll to selected element if the selected element has changed. Otherwise do nothing.
     // This prevents some odd behavior where scrolling the active element out of view and clicking on a selected element
     // will trigger a focus event and not give the clicked element the click.
-    if (this.activeSelectedElement && this._selectedElement.current && this.activeSelectedElement !== this._selectedElement.current) {
+    if (this._selectedElement.current && this.activeSelectedElement !== this._selectedElement.current) {
       this.scrollSelected();
       this.activeSelectedElement = this._selectedElement.current;
     }

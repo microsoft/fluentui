@@ -1,13 +1,13 @@
-﻿/* tslint:disable */
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
+/* tslint:disable */
 import * as React from 'react';
 import {
+  ICustomNavLinkGroup,
   INavProps,
   INavState,
   INavLink,
-  INavLinkGroup,
   INavStyleProps,
-  INavStyles
+  INavStyles,
+  NavGroupType
 } from './Nav.types';
 import {
   getStyles
@@ -41,15 +41,13 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation'>
-          {
-            this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this._renderGroup(group, groupIndex);
-            })
-          }
-        </nav>
-      </FocusZone>
+      <nav role='navigation'>
+        {
+          this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
+            return this._renderGroup(group, groupIndex);
+          })
+        }
+      </nav>
     );
   }
 
@@ -110,11 +108,11 @@ class SlimNavComponent extends NavBase {
 
     const isSelected = nestingLevel > 0 && this.isLinkSelected(link, false /* includeChildren */);
     const {
-      getStyles,
+      styles,
       showMore,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
 
     return (
@@ -188,8 +186,8 @@ class SlimNavComponent extends NavBase {
     }
 
     const hasChildren = (!!link.links && link.links.length > 0);
-    const { getStyles } = this.props;
-    const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
+    const { styles } = this.props;
+    const classNames = getClassNames(styles!, { hasChildren, scrollTop: link.scrollTop });
 
     return (
       <div className={ classNames.navFloatingRoot }>
@@ -208,12 +206,12 @@ class SlimNavComponent extends NavBase {
     const isSelected = this.isLinkSelected(link, true /* includeChildren */);
     const hasChildren = (!!link.links && link.links.length > 0);
     const {
-      getStyles,
+      styles,
       showMore,
       onShowMoreLinkClicked,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, hasChildren });
+    const classNames = getClassNames(styles!, { isSelected, hasChildren });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -271,22 +269,22 @@ class SlimNavComponent extends NavBase {
     );
   }
 
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+  private _renderGroup(group: ICustomNavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
     if (!group || !group.links || group.links.length === 0) {
       return null;
     }
 
     const {
-      getStyles,
+      styles,
       enableCustomization
     } = this.props;
 
     // skip customization group if customization is not enabled
-    if (!enableCustomization && group.isCustomizationGroup) {
+    if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
       return null;
     }
 
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
 
     return (
       <div key={ groupIndex }>

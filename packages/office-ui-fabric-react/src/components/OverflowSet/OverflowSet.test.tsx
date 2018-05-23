@@ -234,7 +234,7 @@ describe('OverflowSet', () => {
           ));
 
         // Set current keytip at root, like we've entered keytip mode
-        const keytipTree = layerRef.value!.keytipTree;
+        const keytipTree = layerRef.value!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
         layerRef.value!.processInput('x');
@@ -273,7 +273,7 @@ describe('OverflowSet', () => {
           ));
 
         // Set current keytip at root, like we've entered keytip mode
-        const keytipTree = layerRef.value!.keytipTree;
+        const keytipTree = layerRef.value!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
         layerRef.value!.processInput('x');
@@ -320,7 +320,7 @@ describe('OverflowSet', () => {
           ));
 
         // Set current keytip at root, like we've entered keytip mode
-        const keytipTree = layerRef.value!.keytipTree;
+        const keytipTree = layerRef.value!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
         layerRef.value!.processInput('c');
@@ -383,7 +383,7 @@ describe('OverflowSet', () => {
             ));
 
           // Set current keytip at root, like we've entered keytip mode
-          const keytipTree = layerRef.value!.keytipTree;
+          const keytipTree = layerRef.value!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
           // Open d's submenu
           layerRef.value!.processInput('d');
@@ -452,7 +452,7 @@ describe('OverflowSet', () => {
             ));
 
           // Set current keytip at root, like we've entered keytip mode
-          const keytipTree = layerRef.value!.keytipTree;
+          const keytipTree = layerRef.value!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
           layerRef.value!.processInput('d');
 
@@ -545,7 +545,7 @@ describe('OverflowSet', () => {
             ));
 
           // Set current keytip at root, like we've entered keytip mode
-          const keytipTree = layerRef.value!.keytipTree;
+          const keytipTree = layerRef.value!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
 
           layerRef.value!.processInput('d');

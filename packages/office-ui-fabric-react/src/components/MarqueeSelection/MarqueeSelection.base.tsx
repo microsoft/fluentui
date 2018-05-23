@@ -91,10 +91,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   }
 
   public render(): JSX.Element {
-    const { rootProps, children, theme, className, getStyles } = this.props;
+    const { rootProps, children, theme, className, styles } = this.props;
     const { dragRect } = this.state;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className
     });

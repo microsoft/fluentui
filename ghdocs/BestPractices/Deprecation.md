@@ -41,7 +41,7 @@ An example PR following these steps can be found here:
 1. warnDeprecations will most likely cause deprecated tests to fail, requiring mocking of warnDeprecations. Please make note to clear mock at end of tests as shown below.
 
     ```tsx
-    import * as WarnUtil from '@uifabric/utilities/lib/warn';
+    import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 
     describe('MyTests', () => {
       beforeAll(() => {

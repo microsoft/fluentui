@@ -5,16 +5,8 @@ import {
   IPoint,
   IRectangle
 } from '../../../Utilities';
-import { ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IPositioningContainer {
-}
-
-export interface IPositionInfo {
-  calloutPosition: ICalloutPositon;
-  beakPosition: { position: ICalloutPositon, display: string };
-  directionalClassName: string;
-  submenuDirection: DirectionalHint;
 }
 
 export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {

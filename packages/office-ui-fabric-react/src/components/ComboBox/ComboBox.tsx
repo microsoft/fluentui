@@ -174,10 +174,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._warnMutuallyExclusive({
       'defaultSelectedKey': 'selectedKey',
+      'text': 'defaultSelectedKey',
       'value': 'defaultSelectedKey',
       'selectedKey': 'value',
       'dropdownWidth': 'useComboBoxAsMenuWidth',
     });
+
+    this._warnDeprecations({ 'value': 'text' });
 
     this._id = props.id || getId('ComboBox');
 
@@ -217,6 +220,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
     if (newProps.selectedKey !== this.props.selectedKey ||
+      newProps.text !== this.props.text ||
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
       const selectedKeys: string[] | number[] = this._getSelectedKeys(undefined, newProps.selectedKey);
@@ -232,6 +236,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     const {
       allowFreeform,
+      text,
       value,
       onMenuOpen,
       onMenuDismissed
@@ -274,7 +279,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this._focusInputAfterClose && (prevState.isOpen && !isOpen ||
       (focused &&
         ((!isOpen && !this.props.multiSelect && prevState.selectedIndices && selectedIndices && prevState.selectedIndices[0] !== selectedIndices[0]) ||
-          !allowFreeform || value !== prevProps.value)
+          !allowFreeform || text !== prevProps.text || value !== prevProps.value)
       ))) {
       this._select();
     }
@@ -497,6 +502,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _getVisibleValue = (): string | undefined => {
     const {
+      text,
       value,
       allowFreeform,
       autoComplete
@@ -515,6 +521,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the user passed is a value prop, use that
     // unless we are open and have a valid current pending index
+    if (!(isOpen && currentPendingIndexValid) && (text && !currentPendingValue)) {
+      return text;
+    }
+
     if (!(isOpen && currentPendingIndexValid) && (value && !currentPendingValue)) {
       return value;
     }
@@ -1081,6 +1091,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
+    const optionStyles = this._getCurrentOptionStyles(item);
+    const checkboxStyles = () => {
+      return optionStyles;
+    };
+
     const getOptionComponent = () => {
       return (
         !this.props.multiSelect ? (
@@ -1107,11 +1122,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         ) : (
             <Checkbox
               id={ id + '-list' + item.index }
-              ref={ 'option' + item.index }
               ariaLabel={ this._getPreviewText(item) }
               key={ item.key }
               data-index={ item.index }
-              styles={ this._getCurrentOptionStyles(item) }
+              styles={ checkboxStyles }
               className={ 'ms-ComboBox-option' }
               data-is-focusable={ true }
               onChange={ this._onItemClick(item.index!) }
@@ -1333,10 +1347,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
       });
-    } else if (this.props.value) {
+    } else if (this.props.text || this.props.value) {
       // If we had a value initially, restore it
       this.setState({
-        suggestedDisplayValue: this.props.value
+        suggestedDisplayValue: this.props.text || this.props.value
       });
     }
   }
