@@ -1,0 +1,389 @@
+@import '../../common/common';
+@import '../../common/_focusBorder';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+
+// --------------------------------------------------
+// ChoiceField semantic slots
+
+$radioButton-background-color: $bodyBackgroundColor;
+
+$radioButton-text-color: $bodyTextColor;
+$radioButton-text-hover-color: $bodyTextCheckedColor;
+
+$radioButton-dot-color: $inputBackgroundCheckedColor;
+
+$radioButton-border-color: $smallInputBorderColor;
+$radioButton-border-hover-color: $inputBorderHoveredColor;
+$radioButton-border-selected-color: $radioButton-dot-color;
+$radioButton-border-selected-hover-color: $inputBackgroundCheckedHoveredColor;
+
+$radioButton-text-disabled-color: $disabledBodyTextColor;
+$radioButton-background-unselected-disabled-color: $disabledTextColor;
+$radioButton-dot-disabled-color: $radioButton-background-unselected-disabled-color;
+$radioButton-border-disabled-color: $radioButton-background-unselected-disabled-color;
+
+//
+// --------------------------------------------------
+// ChoiceField styles
+
+$ms-choiceField-field-size: 20px;
+$ms-choiceField-image-size: 32px;
+$ms-choiceField-iconField-size: 96px;
+$ms-choiceField-transition-duration: 200ms;
+$ms-choiceField-transition-duration-inner: 150ms;
+$ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
+
+//== Component: Choicefield group
+//
+
+.root {
+  display: block;
+}
+
+.optionsContainIconOrImage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.choiceField {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  color: $radioButton-text-color;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
+  min-height: 26px;
+  border: none;
+  position: relative;
+  margin-top: 8px;
+
+  :global(.ms-Label) {
+    font-size: $ms-font-size-m;
+    @include ms-padding(0, 0, 0, 26px);
+    display: inline-block;
+  }
+}
+
+// The hidden input
+.input {
+  position: absolute;
+  opacity: 0;
+  top: 8px;
+}
+
+// The circle
+.field::before {
+  content: '';
+  display: inline-block;
+  background-color: $radioButton-background-color;
+  border: 1px solid $radioButton-border-color;
+  width: $ms-choiceField-field-size;
+  height: $ms-choiceField-field-size;
+  font-weight: normal;
+  position: absolute;
+  top: 0;
+  @include ms-left(0);
+  box-sizing: border-box;
+  transition-property: border-color;
+  transition-duration: $ms-choiceField-transition-duration;
+  transition-timing-function: $ms-choiceField-transition-timing;
+  border-radius: 50%;
+}
+
+// The dot
+.field::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  position: absolute;
+  @include ms-left($ms-choiceField-field-size / 2);
+  @include ms-right(0);
+  transition-property: border-width;
+  transition-duration: $ms-choiceField-transition-duration-inner;
+  transition-timing-function: $ms-choiceField-transition-timing;
+  box-sizing: border-box;
+}
+
+.field {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 0;
+  position: relative;
+  vertical-align: top;
+  user-select: none;
+  min-height: 20px;
+
+  &:hover,
+  &:focus {
+    &::before {
+      border-color: $radioButton-border-hover-color;
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+
+    :global(.ms-Label) {
+      color: $radioButton-text-hover-color;
+
+      @include high-contrast {
+        color: Highlight;
+      }
+    }
+  }
+
+  //== State: A choiceField is checked
+  //
+  &.fieldIsChecked {
+    &::before { // the circle
+      border: 1px solid $radioButton-border-selected-color;
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+
+    &::after { // the dot
+      border: 5px solid $radioButton-dot-color;
+      @include ms-left(5px);
+      top: 5px;
+      width: 10px;
+      height: 10px;
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        border-color: $radioButton-border-selected-hover-color;
+      }
+    }
+  }
+
+  //== State: A disabled choiceField
+  //
+  &.fieldIsDisabled {
+    cursor: default;
+
+    &::before {
+      background-color: $radioButton-background-unselected-disabled-color;
+      border-color: $radioButton-border-disabled-color;
+
+      @include high-contrast {
+        border-color: GrayText;
+      }
+    }
+
+    :global(.ms-Label) {
+      color: $radioButton-text-disabled-color;
+
+      @include high-contrast {
+        color: GrayText;
+      }
+    }
+  }
+
+  &.fieldIsChecked.fieldIsDisabled {
+    &::before {
+      background-color: $radioButton-background-color;
+      border-color: $radioButton-border-disabled-color;
+    }
+    &::after {
+      background-color: $radioButton-dot-disabled-color;
+      border-color: $radioButton-dot-disabled-color;
+    }
+  }
+}
+
+.choiceFieldIsImage, .choiceFieldIsIcon {
+  display: inline-flex;
+  font-size: 0;
+  @include ms-margin(0, 4px, 4px, 0);
+  @include ms-padding-left(0px);
+  @include ms-bgColor-neutralLighter;
+  height: 100%;
+
+  $radioButtonSpacing: 3px;
+  $radioButtonInnerSize: 5px;
+
+  .fieldIsImage, .fieldIsIcon {
+
+    display: inline-block;
+    box-sizing: content-box;
+    cursor: pointer;
+    padding-top: 22px;
+    margin: 0;
+    text-align: center;
+    transition: all $ms-choiceField-transition-duration ease;
+    border: 2px solid transparent;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    &.fieldIsDisabled {
+      cursor: default;
+
+      .innerField {
+        opacity: 0.25;
+
+        @include high-contrast {
+          color: GrayText;
+          opacity: 1;
+        }
+      }
+    }
+
+    &.imageIsLarge {
+      .innerField {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
+    .innerField {
+      position: relative;
+      display: inline-block;
+      padding-left: 30px;
+      padding-right: 30px;
+
+      .imageWrapper {
+        padding-bottom: 2px;
+        transition: opacity $ms-choiceField-transition-duration ease;
+
+        &.imageWrapperIsHidden {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          opacity: 0;
+        }
+
+        :global(.ms-Image) {
+          display: inline-block;
+          border-style: none;
+        }
+      }
+    }
+
+    .labelWrapper {
+      $lineHeight: 15px;
+      display: block;
+      position: relative;
+      margin: 4px 8px;
+      height: $lineHeight*2;
+      line-height: $lineHeight;
+      overflow: hidden;
+      white-space: pre-wrap;
+      text-overflow: ellipsis;
+      @include ms-font-m;
+
+      :global(.ms-Label) {
+        padding: 0;
+      }
+    }
+
+    &::before {
+      top: $radioButtonSpacing;
+      @include ms-right($radioButtonSpacing);
+      @include ms-left(auto); // To reset the value of 'left' to its default value, so that 'right' works
+      opacity: 0;
+    }
+
+    &::after {
+      top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
+      @include ms-right($radioButtonSpacing + ($radioButtonInnerSize * 2));
+      @include ms-left(auto); // To reset the value of 'left' to its default value, so that 'right' works
+    }
+
+    &:not(.fieldIsDisabled) {
+      &:hover,
+      &:focus {
+        border-color: $ms-color-neutralTertiaryAlt;
+
+        @include high-contrast {
+          border-color: Highlight;
+          color: Highlight;
+        }
+
+        &::before {
+          opacity: 1;
+        }
+      }
+
+
+      &.fieldIsChecked {
+        border-color: $ms-color-themePrimary;
+
+        &::before {
+          opacity: 1;
+        }
+
+        &::after {
+          top: $radioButtonSpacing + $radioButtonInnerSize;
+          @include ms-right($radioButtonSpacing + $radioButtonInnerSize);
+        }
+
+        &:hover,
+        &:focus {
+          border-color: $ms-color-themeDark;
+
+          &::before {
+            border-color: $ms-color-themeDark;
+          }
+          &::after {
+            background-color: $ms-color-themeDark;
+          }
+        }
+      }
+    }
+  }
+
+  // Hidden input for icon and image
+  .inputHasImage, .inputHasIcon {
+    top: 0;
+    right: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+.choiceFieldIsIcon {
+  $iconSize: 32px;
+
+  .iconWrapper {
+    font-size: $iconSize;
+    line-height: $iconSize;
+    height: $iconSize;
+  }
+}
+
+:global(.ms-Fabric--isFocusVisible) .choiceFieldIsInFocus .choiceFieldWrapper {
+  @include focus-border(-2px, $ms-color-neutralPrimary, 1px, false);
+
+  @include high-contrast {
+     @include focus-border(-2px, WindowText, 2px, false);
+  }
+}
+
+:global(.ms-Fabric--isFocusVisible) .choiceFieldIsInFocus {
+  &.choiceFieldIsImage .choiceFieldWrapper,
+  &.choiceFieldIsIcon .choiceFieldWrapper {
+    @include focus-border(-2px, $ms-color-neutralSecondary, 1px, false);
+
+    @include high-contrast {
+      @include focus-border(-2px, WindowText, 1px, false);
+    }
+  }
+}

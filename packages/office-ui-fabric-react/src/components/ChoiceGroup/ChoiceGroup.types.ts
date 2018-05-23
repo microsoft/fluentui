@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
-import { ITheme, IStyle } from '../../Styling';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IChoiceGroup {
 
@@ -45,16 +44,6 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
    * @deprecated
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
-
-  /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  getStyles?: IStyleFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>;
 }
 
 export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
@@ -123,17 +112,4 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * This value is maintained by the component and is accessible during onRenderField
    */
   labelId?: string;
-}
-
-export interface IChoiceGroupStyleProps {
-  theme: ITheme;
-  className?: string;
-  optionsContainIconOrImage?: boolean;
-}
-
-export interface IChoiceGroupStyles {
-  applicationRole?: IStyle;
-  root?: IStyle;
-  label?: IStyle;
-  flexContainer?: IStyle;
 }

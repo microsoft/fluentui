@@ -91,15 +91,6 @@ export function getId(prefix?: string): string {
   return (prefix || DEFAULT_ID_STRING) + index;
 }
 
-/**
- * Resets id counter to an (optional) number.
- *
- * @public
- */
-export function resetIds(counter: number = 0): void {
-  _global[CURRENT_ID_PROPERTY] = counter;
-}
-
 /* Takes an enum and iterates over each value of the enum (as a string), running the callback on each, returning a mapped array.
  * The callback takes as a first parameter the string that represents the name of the entry, and the second parameter is the
  * value of that entry, which is the value you'd normally use when using the enum (usually a number).
