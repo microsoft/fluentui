@@ -14,9 +14,6 @@ module.exports = function (options) {
       // Specify the config file.
       `--config ${jestConfigPath}`,
 
-      // Run tests in serial (parallel builds seem to hang rush.)
-      `--runInBand`,
-
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
 

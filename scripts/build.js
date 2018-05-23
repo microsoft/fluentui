@@ -89,8 +89,8 @@ function getTaskListAndTaskMap(process) {
   const allTasks = [
     ['copy'],
     ['sass'],
-    ['ts'],
-    ['tslint', 'jest', 'webpack']
+    ['ts', 'tslint', 'jest'],
+    ['webpack']
   ];
 
   // Pre require all tasks functions so we do not do that when running the tasks
