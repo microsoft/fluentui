@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react-tslint",
-  "version": "6.0.0",
+  "version": "6.0.0-beta5",
   "description": "Shared tslint rules",
   "main": "tslint.json",
   "scripts": {
