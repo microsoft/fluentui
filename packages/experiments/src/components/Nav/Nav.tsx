@@ -80,10 +80,16 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    let ariaProps = {};
+
     let rightIconName = undefined;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
-      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
+      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
+
+      ariaProps = {
+        ariaExpanded: !!link.isExpanded
+      }
     }
     else if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
@@ -116,6 +122,9 @@ class NavComponent extends NavBase {
         dataHint={ dataHint }
         dataValue={ link.key }
         ariaLabel={ linkText }
+        {
+        ...ariaProps
+        }
         role="menu"
         rootClassName={ classNames.navItemRoot }
         leftIconName={ leftIconName }

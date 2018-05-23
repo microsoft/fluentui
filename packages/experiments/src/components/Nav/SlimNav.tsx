@@ -114,7 +114,7 @@ class SlimNavComponent extends NavBase {
     } = this.props;
     const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
-
+    
     return (
       <NavLink
         id={ link.key }
@@ -229,6 +229,7 @@ class SlimNavComponent extends NavBase {
           target={ link.target }
           dataHint={ dataHint }
           dataValue={ link.key }
+          ariaLabel={ linkText }
           role="menu"
           onClick={ onClickHandler }
           rootClassName={ classNames.navItemRoot }
