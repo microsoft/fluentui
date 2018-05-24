@@ -22,7 +22,6 @@ import { NavLink } from './NavLink';
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 class SlimNavComponent extends NavBase {
-  private _floatingNavIdPrefix = 'floatingNav';
   // store the previous floating nav shown to close when the current floating nav shows up.
   private _prevFloatingNav: any;
 
@@ -99,14 +98,14 @@ class SlimNavComponent extends NavBase {
     ev.stopPropagation();
   }
 
-  private _getFloatingNav(parentElement: HTMLElement | null, floatingNavId: string): HTMLDivElement | undefined {
-    if (!parentElement || !floatingNavId) {
+  private _getFloatingNav(parentElement: HTMLElement | null): HTMLDivElement | undefined {
+    if (!parentElement) {
       return;
     }
 
-    const divs = (parentElement as HTMLElement).getElementsByTagName('div');
+    const divs = parentElement.getElementsByTagName('div');
     const arrFloatingNav = (Array.prototype.slice.call(divs) as Array<HTMLDivElement>).filter((div: HTMLDivElement) => {
-      return !!div && div.id === floatingNavId;
+      return !!div && !!div.getAttribute('data-floating-nav');
     });
 
     if (arrFloatingNav.length > 0) {
@@ -123,8 +122,7 @@ class SlimNavComponent extends NavBase {
 
     const a = nativeEvent.target as HTMLElement;
     const li = a.parentElement;
-    const floatingNavId = this._floatingNavIdPrefix + link.key;
-    const currentFloatingNav = this._getFloatingNav(li, floatingNavId);
+    const currentFloatingNav = this._getFloatingNav(li);
 
     if (!currentFloatingNav) {
       return;
@@ -247,10 +245,9 @@ class SlimNavComponent extends NavBase {
     const hasChildren = (!!link.links && link.links.length > 0);
     const { getStyles } = this.props;
     const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
-    const floatingNavId = this._floatingNavIdPrefix + link.key;
 
     return (
-      <div id={ floatingNavId } className={ classNames.navFloatingRoot }>
+      <div className={ classNames.navFloatingRoot } data-floating-nav>
         {
           this._renderFloatingLinks([link], 0 /* nestingLevel */)
         }
