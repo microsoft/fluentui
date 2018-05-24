@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Facepile } from './Facepile';
+import { FacepileBase } from './Facepile.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
+
 import { IButtonProps } from '../Button/index';
 import {
   IPersonaSharedProps,
@@ -11,12 +14,28 @@ export interface IFacepile {
 
 }
 
-export interface IFacepileProps extends React.Props<Facepile> {
+export interface IFacepileProps extends React.Props<FacepileBase> {
   /**
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IFacepile | null) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<IFacepileStyleProps, IFacepileStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Facepile
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * Array of IPersonaProps that define each Persona.
@@ -58,10 +77,6 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
 
-  /**
-   * Optional class for Facepile root element.
-   */
-  className?: string;
 }
 
 export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLDivElement> {
@@ -126,4 +141,27 @@ export enum OverflowButtonType {
   more = 2,
   /** Chevron overflow icon */
   downArrow = 3
+}
+
+export interface IFacepileStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  // Insert Facepile style props below
+}
+
+export interface IFacepileStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+
+  // Insert Facepile classNames below
 }

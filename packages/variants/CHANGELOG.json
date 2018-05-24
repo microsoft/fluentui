@@ -2,6 +2,44 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "5.5.2",
+      "tag": "@uifabric/variants_v5.5.2",
+      "date": "Thu, 24 May 2018 17:06:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "cb0a55148e1613f7a878f242125905c45b2bd052",
+            "comment": "update variants algorithm for new semantic slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.110.0 <6.0.0` to `>=5.111.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.1",
+      "tag": "@uifabric/variants_v5.5.1",
+      "date": "Wed, 23 May 2018 10:28:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "8ddffcd3343b61d6952ee349e475c3c03ea1e297",
+            "comment": "Variants: update algorithm to match newest designs"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.108.0 <6.0.0` to `>=5.109.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "@uifabric/variants_v5.5.0",
       "date": "Mon, 14 May 2018 10:14:42 GMT",

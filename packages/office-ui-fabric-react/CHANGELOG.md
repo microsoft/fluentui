@@ -1,6 +1,35 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 22 May 2018 10:29:13 GMT and should not be manually modified.
+This log was last generated on Thu, 24 May 2018 17:06:02 GMT and should not be manually modified.
+
+## 5.111.0
+Thu, 24 May 2018 17:06:02 GMT
+
+### Minor changes
+
+- Pass SelectionZone props through DetailsList and add alternate data-selection-auto-selection attribute name
+- add new semantic slot
+
+## 5.110.0
+Wed, 23 May 2018 16:14:26 GMT
+
+### Minor changes
+
+- ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble.
+
+## 5.109.0
+Wed, 23 May 2018 10:28:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Converting Facepile SCSS to MergeStyles step 1 - file structure
+- Common sass files are now exported in the `dist/sass` folder.
+
+### Patches
+
+- Fixing circular dependency and non-AMD references in ContextualMenu
+- cleanup semantic slots
 
 ## 5.108.0
 Tue, 22 May 2018 10:29:13 GMT
