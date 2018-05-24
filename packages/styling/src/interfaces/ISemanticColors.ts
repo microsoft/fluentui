@@ -58,10 +58,10 @@ export interface ISemanticColors {
 
   /**
    * A special semantic slot that will always be the same or darker (not necessarily stronger) than the bodyBackground slot, even in
-   * an inverted theme. This is useful for areas near the edge of the page, to provide a vignetting effect, particularly when using
-   * variant themes.
+   * an inverted theme. This is used for zones near the edge of the page, to provide a vignetting effect. This is especially effective
+   * with zones near the edge of the page in stronger themes or if it uses a variant theme.
    */
-  bodyBackgroundDarker: string;
+  bodyFrameBackground: string;
 
   /**
    * The default color for text.

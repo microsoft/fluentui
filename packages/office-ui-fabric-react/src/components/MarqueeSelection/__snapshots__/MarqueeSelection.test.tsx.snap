@@ -207,8 +207,8 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
           "semanticColors": Object {
             "blockingBackground": "rgba(234, 67, 0, .2)",
             "bodyBackground": "#ffffff",
-            "bodyBackgroundDarker": "#ffffff",
             "bodyDivider": "#c8c8c8",
+            "bodyFrameBackground": "#ffffff",
             "bodySubtext": "#666666",
             "bodyText": "#333333",
             "bodyTextChecked": "#000000",
