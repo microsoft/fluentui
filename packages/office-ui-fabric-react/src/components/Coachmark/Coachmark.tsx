@@ -1,12 +1,8 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, shallowCompare, IRectangle } from '../../Utilities';
+import { BaseComponent, IRectangle, classNamesFunction, createRef, shallowCompare } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
-
-import {
-  IPositionedData,
-  RectangleEdge
-} from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPositionedData, RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 // Component Dependencies
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
