@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.7.5",
+      "tag": "@uifabric/fabric-website_v5.7.5",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "218d0e70c98804a7f0b97a65e5380c232b01aca1",
+            "comment": "Get rid of App-nav container in mobile, it was blocking interation."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.103.0 <6.0.0` to `>=5.104.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.4",
       "tag": "@uifabric/fabric-website_v5.7.4",
       "date": "Tue, 08 May 2018 16:02:16 GMT",

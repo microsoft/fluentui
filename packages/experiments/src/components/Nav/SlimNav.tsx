@@ -1,13 +1,13 @@
-﻿/* tslint:disable */
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
+/* tslint:disable */
 import * as React from 'react';
 import {
+  ICustomNavLinkGroup,
   INavProps,
   INavState,
   INavLink,
-  INavLinkGroup,
   INavStyleProps,
-  INavStyles
+  INavStyles,
+  NavGroupType
 } from './Nav.types';
 import {
   getStyles
@@ -41,15 +41,13 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation'>
-          {
-            this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this._renderGroup(group, groupIndex);
-            })
-          }
-        </nav>
-      </FocusZone>
+      <nav role='navigation'>
+        {
+          this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
+            return this._renderGroup(group, groupIndex);
+          })
+        }
+      </nav>
     );
   }
 
@@ -271,7 +269,7 @@ class SlimNavComponent extends NavBase {
     );
   }
 
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+  private _renderGroup(group: ICustomNavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
     if (!group || !group.links || group.links.length === 0) {
       return null;
     }
@@ -282,7 +280,7 @@ class SlimNavComponent extends NavBase {
     } = this.props;
 
     // skip customization group if customization is not enabled
-    if (!enableCustomization && group.isCustomizationGroup) {
+    if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
       return null;
     }
 

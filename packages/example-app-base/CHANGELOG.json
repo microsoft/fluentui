@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.11.5",
+      "tag": "@uifabric/example-app-base_v5.11.5",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "bworline <35072931+bworline@users.noreply.github.com>",
+            "commit": "3d4a53b8233681208396816de77fd799e89ceae1",
+            "comment": "Fixed a bug in the documentation generator code that skipped const enums (parser)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.1 <6.0.0` to `>=5.30.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.4",
       "tag": "@uifabric/example-app-base_v5.11.4",
       "date": "Fri, 11 May 2018 04:21:29 GMT",
