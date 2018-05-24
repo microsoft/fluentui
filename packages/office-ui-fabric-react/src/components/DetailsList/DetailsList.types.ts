@@ -1,23 +1,27 @@
-import * as React from "react";
-import { DetailsList } from "./DetailsList";
+import * as React from 'react';
+import { DetailsList } from './DetailsList';
 import {
   ISelection,
   SelectionMode,
   ISelectionZoneProps
-} from "../../utilities/selection/index";
-import { IRenderFunction } from "../../Utilities";
+} from '../../utilities/selection/index';
+import { IRenderFunction } from '../../Utilities';
 import {
   IDragDropEvents,
-  IDragDropContext
-} from "./../../utilities/dragdrop/index";
-import { IGroup, IGroupRenderProps } from "../GroupedList/index";
-import { IDetailsRowProps } from "../DetailsList/DetailsRow";
-import { IDetailsHeaderProps } from "./DetailsHeader";
+  IDragDropContext,
+} from './../../utilities/dragdrop/index';
 import {
-  IWithViewportProps,
-  IViewport
-} from "../../utilities/decorators/withViewport";
-import { IList, IListProps, ScrollToMode } from "../List/index";
+  IGroup,
+  IGroupRenderProps
+} from '../GroupedList/index';
+import { IDetailsRowProps } from '../DetailsList/DetailsRow';
+import { IDetailsHeaderProps } from './DetailsHeader';
+import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
+import {
+  IList,
+  IListProps,
+  ScrollToMode
+} from '../List/index';
 
 export { IDetailsHeaderProps };
 
@@ -46,9 +50,7 @@ export interface IDetailsList extends IList {
   ) => void;
 }
 
-export interface IDetailsListProps
-  extends React.Props<DetailsList>,
-    IWithViewportProps {
+export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
   /**
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -118,10 +120,7 @@ export interface IDetailsListProps
   constrainMode?: ConstrainMode;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
-  rowElementEventMap?: {
-    eventName: string;
-    callback: (context: IDragDropContext, event?: any) => void;
-  }[];
+  rowElementEventMap?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
   onDidUpdate?: (detailsList?: DetailsList) => any;
@@ -133,33 +132,19 @@ export interface IDetailsListProps
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
   /** Callback for when the user clicks on the column header. */
-  onColumnHeaderClick?: (
-    ev?: React.MouseEvent<HTMLElement>,
-    column?: IColumn
-  ) => void;
+  onColumnHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
 
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
-  onColumnHeaderContextMenu?: (
-    column?: IColumn,
-    ev?: React.MouseEvent<HTMLElement>
-  ) => void;
+  onColumnHeaderContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /** Callback fired on column resize */
-  onColumnResize?: (
-    column?: IColumn,
-    newWidth?: number,
-    columnIndex?: number
-  ) => void;
+  onColumnResize?: (column?: IColumn, newWidth?: number, columnIndex?: number) => void;
 
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 
   /** Callback for when the context menu of an item has been accessed. If undefined or false are returned, ev.preventDefault() will be called.*/
-  onItemContextMenu?: (
-    item?: any,
-    index?: number,
-    ev?: Event
-  ) => void | boolean;
+  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 
   /**
    *  If provided, will allow the caller to override the default row rendering.
@@ -176,10 +161,7 @@ export interface IDetailsListProps
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
-  onRenderMissingItem?: (
-    index?: number,
-    rowProps?: IDetailsRowProps
-  ) => React.ReactNode;
+  onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
 
   /**
    * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
@@ -196,11 +178,7 @@ export interface IDetailsListProps
   viewport?: IViewport;
 
   /** Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it with keyboard. */
-  onActiveItemChanged?: (
-    item?: any,
-    index?: number,
-    ev?: React.FocusEvent<HTMLElement>
-  ) => void;
+  onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /** The aria-label attribute to stamp out on the list header */
   ariaLabelForListHeader?: string;
@@ -244,10 +222,10 @@ export interface IDetailsListProps
   compact?: boolean;
 
   /**
-   * Boolean value to enable render page caching. This is an experimental performance optimization
-   * that is off by default.
-   * @defaultValue false
-   */
+  * Boolean value to enable render page caching. This is an experimental performance optimization
+  * that is off by default.
+  * @defaultValue false
+  */
   usePageCache?: boolean;
 
   /**
@@ -383,10 +361,7 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.
    */
-  onColumnContextMenu?: (
-    column?: IColumn,
-    ev?: React.MouseEvent<HTMLElement>
-  ) => any;
+  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
 
   /**
    * If set will show a grouped icon next to the column header name.
@@ -416,8 +391,8 @@ export interface IColumn {
   headerClassName?: string;
 
   /**
-   * If set, will add additional LTR padding-right to column and cells.
-   */
+  * If set, will add additional LTR padding-right to column and cells.
+  */
   isPadded?: boolean;
 }
 

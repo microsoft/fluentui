@@ -189,7 +189,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public render(): JSX.Element {
-    console.count("DetailsRow.render()");
     const {
       className,
       columns,
