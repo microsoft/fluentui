@@ -332,7 +332,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           } else if (sticky.canStickyBottom) {
             stickyList.push(sticky)
           }
-        })
+        });
 
         const stickyListSorted = stickyList.sort((a, b) => {
           return a.distanceFromTop - b.distanceFromTop;
