@@ -22,6 +22,10 @@ import { NavLink } from './NavLink';
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 class SlimNavComponent extends NavBase {
+  private _floatingNavIdPrefix = 'floatingNav';
+  // store the previous floating nav shown to close when the current floating nav shows up.
+  private _prevFloatingNav: any;
+
   constructor(props: INavProps) {
     super(props);
 
@@ -95,40 +99,59 @@ class SlimNavComponent extends NavBase {
     ev.stopPropagation();
   }
 
-  private _onFocus(ev: React.SyntheticEvent<HTMLElement>): void {
-    if (!ev.nativeEvent) {
+  private _getFloatingNav(parentElement: HTMLElement | null, floatingNavId: string): HTMLDivElement | undefined {
+    if (!parentElement || !floatingNavId) {
       return;
     }
 
-    var a = (ev.nativeEvent.target as any);
+    const divs = (parentElement as HTMLElement).getElementsByTagName('div');
+    const arrFloatingNav = (Array.prototype.slice.call(divs) as Array<HTMLDivElement>).filter((div: HTMLDivElement) => {
+      return !!div && div.id === floatingNavId;
+    });
 
-    var floatingNav = a.parentElement.getElementsByTagName('div')[1];
-
-    if (floatingNav) {
-      floatingNav.style.visibility = 'visible';
+    if (arrFloatingNav.length > 0) {
+      return arrFloatingNav[0];
     }
-
-    // a.onblur = () => {
-    //   floatingNav.style.visibility = 'hidden';
-    // };
   }
 
-  private _onBlur(ev: React.SyntheticEvent<HTMLElement>): void {
-    if (!ev.nativeEvent) {
+  private _onKeyDown(link: INavLink, ev: React.SyntheticEvent<HTMLElement>): void {
+    const nativeEvent = (ev as any);
+    if (nativeEvent.keyCode !== 13) {
+      // accept only enter key to open the floating nav from slim nav
       return;
     }
 
-    var a = (ev.nativeEvent.target as any);
+    const a = nativeEvent.target as HTMLElement;
+    const li = a.parentElement;
+    const floatingNavId = this._floatingNavIdPrefix + link.key;
+    const currentFloatingNav = this._getFloatingNav(li, floatingNavId);
 
-    var floatingNav = a.parentElement.getElementsByTagName('div')[1];
-
-    if (floatingNav) {
-      floatingNav.style.visibility = 'hidden';
+    if (!currentFloatingNav) {
+      return;
     }
 
-    // a.onblur = () => {
-    //   floatingNav.style.visibility = 'hidden';
-    // };
+    if (this._prevFloatingNav === currentFloatingNav) {
+      // toggle the floating nav
+      if (currentFloatingNav.style && currentFloatingNav.style.display && currentFloatingNav.style.display === 'block') {
+        currentFloatingNav.removeAttribute('style');
+      }
+      else {
+        currentFloatingNav.setAttribute('style', 'display: block');
+      }
+    }
+    else {
+      // prev and current floating navs are different
+      // close the previous if there is one
+      if (this._prevFloatingNav) {
+        this._prevFloatingNav.removeAttribute('style');
+      }
+
+      // open the current one
+      currentFloatingNav.setAttribute('style', 'display: block');
+
+      // store the current as prev
+      this._prevFloatingNav = currentFloatingNav;
+    }
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
@@ -224,9 +247,10 @@ class SlimNavComponent extends NavBase {
     const hasChildren = (!!link.links && link.links.length > 0);
     const { getStyles } = this.props;
     const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
+    const floatingNavId = this._floatingNavIdPrefix + link.key;
 
     return (
-      <div className={ classNames.navFloatingRoot }>
+      <div id={ floatingNavId } className={ classNames.navFloatingRoot }>
         {
           this._renderFloatingLinks([link], 0 /* nestingLevel */)
         }
@@ -257,8 +281,7 @@ class SlimNavComponent extends NavBase {
         key={ link.key || linkIndex }
         onMouseEnter={ this._onLinkMouseEnterOrLeave.bind(this, link) }
         onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
-        onFocus={ this._onFocus.bind(this) }
-        // onBlur={ this._onBlur.bind(this) }
+        onKeyDown={ this._onKeyDown.bind(this, link) }
         title={ linkText }
         className={ classNames.navSlimItemRoot }>
         <NavLink

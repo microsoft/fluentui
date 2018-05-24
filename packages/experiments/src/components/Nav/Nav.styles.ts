@@ -53,7 +53,7 @@ export const getStyles = (
           fontSize: navFontSize,
           selectors: {
             'li:hover >div': {
-              visibility: 'visible'
+              display: 'block'
             }
           }
         },
@@ -103,8 +103,7 @@ export const getStyles = (
     },
     navFloatingRoot: [
       {
-        display: 'block',
-        visibility: 'hidden',
+        display: 'none',
         position: 'absolute',
         marginLeft: navCollapsedWidth,
         marginTop: -navItemHeight - (!!scrollTop && scrollTop > 0 ? scrollTop : 0),
