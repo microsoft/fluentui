@@ -9,9 +9,9 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 # [Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki)
 
-### https://github.com/OfficeDev/office-ui-fabric-react/wiki
+The bulk of documentation is available on the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
-## Contents
+# Page Contents
 
 - [Using Fabric React](#using-fabric-react)
 - [Browser support](#browser-support)
@@ -24,7 +24,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 - [Licenses](#licenses)
 - [Changelog](#changelog)
 
-### Using Fabric React
+## Using Fabric React
 
 [Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App) on how to build a simple React app with an Office UI Fabric React component.
 
