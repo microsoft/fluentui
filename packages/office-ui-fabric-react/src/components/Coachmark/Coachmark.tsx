@@ -393,8 +393,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isCollapsed: false
     });
 
-    if (this.props.onCoachmarkOpen) {
-      this.props.onCoachmarkOpen();
+    if (this.props.onAnimationOpenStart) {
+      this.props.onAnimationOpenStart();
     }
 
     this._entityInnerHostElement.current && this._entityInnerHostElement.current.addEventListener('transitionend', (): void => {
