@@ -24,6 +24,10 @@ const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimm
 
 @customizable('ShimmerElementsGroup', ['theme'])
 export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
+  public static defaultProps: IShimmerElementsGroupProps = {
+    flexWrap: false
+  };
+
   private _classNames: { [key in keyof IShimmerElementsGroupStyles]: string };
 
   constructor(props: IShimmerElementsGroupProps) {
