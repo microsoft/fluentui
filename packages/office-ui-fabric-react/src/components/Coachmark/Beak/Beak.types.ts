@@ -17,6 +17,26 @@ export interface IBeakProps extends React.Props<Beak> {
   componentRef?: (component: IBeak | null) => void;
 
   /**
+   * Beak width.
+   * @default 18
+   * @deprecated
+   */
+  width?: number;
+
+  /**
+   * Beak height.
+   * @default 18
+   * @deprecated
+   */
+  height?: number;
+
+  /**
+   * Color of the beak
+   * @deprecated
+   */
+  color?: string;
+
+  /**
    * Left position of the beak
    */
   left?: string;

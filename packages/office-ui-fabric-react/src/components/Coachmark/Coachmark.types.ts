@@ -25,7 +25,14 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   isPositionForced?: boolean;
 
   /**
-   * The starting collapsed state for the Coachmark?
+ * The starting collapsed state for the Coachmark.  Deprecated: use isCollapsed instead.
+ * @default true
+ * @deprecated
+ */
+  collapsed?: boolean;
+
+  /**
+   * The starting collapsed state for the Coachmark.
    * @default true
    */
   isCollapsed?: boolean;
@@ -48,6 +55,18 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   onAnimationOpenEnd?: () => void;
 
   /**
+ * The width of the beak component.
+ * @deprecated
+ */
+  beakWidth?: number;
+
+  /**
+   * The height of the beak component.
+   * @deprecated
+   */
+  beakHeight?: number;
+
+  /**
    * Delay before allowing mouse movements to open
    * the Coachmark
    */
@@ -57,6 +76,18 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * Runs every time the mouse moves
    */
   onMouseMove?: (e: MouseEvent) => void;
+
+  /**
+   * The width of the coachmark
+   * @deprecated
+   */
+  width?: number;
+
+  /**
+   * The height of the coachmark
+   * @deprecated
+   */
+  height?: number;
 
   /**
    * Color

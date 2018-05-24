@@ -161,7 +161,7 @@
 }
 
 //Primary button style override
-.primaryButton {
+.bodyContent .primaryButton {
   background-color: $ms-color-white;
   border-color: $ms-color-white;
   white-space: nowrap;
@@ -188,7 +188,7 @@
 }
 
 //Secondary button style override
-.secondaryButton {
+.bodyContent .secondaryButton {
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-white;
   white-space: nowrap;

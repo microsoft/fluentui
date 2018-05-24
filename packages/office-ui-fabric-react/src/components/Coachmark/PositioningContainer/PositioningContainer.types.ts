@@ -130,8 +130,10 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
 
   /**
    * Optional callback that is called once the positioningContainer has been correctly positioned.
+   * @param {IPositionedData} positions gives the user information about how the container is positioned such
+   * as the element position, the target edge, and the alignment edge of the container.
    */
-  onPositioned?: (positiong: IPositionedData) => void;
+  onPositioned?: (positions?: IPositionedData) => void;
 
   /**
    * Callback when the positioningContainer tries to close.

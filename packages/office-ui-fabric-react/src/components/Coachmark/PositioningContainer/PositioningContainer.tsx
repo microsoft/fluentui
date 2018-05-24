@@ -64,7 +64,7 @@ export class PositioningContainer
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomLeftEdge
+    directionalHint: DirectionalHint.bottomAutoEdge
   };
 
   private _didSetInitialFocus: boolean;
@@ -189,7 +189,7 @@ export class PositioningContainer
           <div>
             { children }
             { // @TODO apply to the content container
-              contentMaxHeight
+              // contentMaxHeight
             }
           </div>
         </div>

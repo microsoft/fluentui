@@ -224,12 +224,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               directionalHint: DirectionalHint.topCenter
             } }
             isPositionForced={ true }
-            onAnimationOpenEnd={ () => {
-              console.log('end');
-            } }
-            onAnimationOpenStart={ () => {
-              console.log('start');
-            } }
           >
             {
               <TeachingBubbleContent
@@ -255,12 +249,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               directionalHint: DirectionalHint.topRightEdge
             } }
             isPositionForced={ false }
-            onAnimationOpenStart={ () => {
-              console.log('start animation');
-            } }
-            onAnimationOpenEnd={ () => {
-              console.log('end animation');
-            } }
           >
             <TeachingBubbleContent
               headline={ 'Need help tracking deadlines?' }
@@ -274,27 +262,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               test
             </TeachingBubbleContent>
           </Coachmark>
-        }
-        {
-          // <Coachmark
-          //   target={ `[${COACHMARK_ATTRIBUTE_NAME}="test2"]` }
-          //   positioningContainerProps={ {
-          //     directionalHint: DirectionalHint.leftCenter,
-          //     allowOutOfBounds: true
-          //   } }
-          // >
-          //   <TeachingBubbleContent
-          //     headline={ 'Need help tracking deadlines?' }
-          //     calloutProps={ calloutProps }
-          //     hasCloseIcon={ true }
-          //     closeButtonAriaLabel='Close'
-          //     onDismiss={ this._onDismiss }
-          //     primaryButtonProps={ buttonProps }
-          //     secondaryButtonProps={ buttonProps2 }
-          //   >
-          //     test
-          //   </TeachingBubbleContent>
-          // </Coachmark>
         }
       </div>
     );
