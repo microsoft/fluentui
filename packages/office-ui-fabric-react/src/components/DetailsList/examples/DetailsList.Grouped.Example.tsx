@@ -78,6 +78,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
         <DetailsList
           componentRef={ this._root }
           items={ items }
+          useReducedRowRenderer={true}
           groups={ [
             {
               key: 'groupred0',

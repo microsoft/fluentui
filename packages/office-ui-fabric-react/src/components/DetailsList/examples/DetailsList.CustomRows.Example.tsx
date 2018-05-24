@@ -20,6 +20,7 @@ export class DetailsListCustomRowsExample extends React.Component {
         items={ _items }
         setKey='set'
         onRenderRow={ this._onRenderRow }
+        useReducedRowRenderer={true}
       />
     );
   }

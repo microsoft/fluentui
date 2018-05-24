@@ -40,6 +40,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         onColumnHeaderClick={ this._onColumnClick }
         onItemInvoked={ this._onItemInvoked }
         onColumnHeaderContextMenu={ this._onColumnHeaderContextMenu }
+        useReducedRowRenderer={true}
       />
     );
   }

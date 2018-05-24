@@ -25,6 +25,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
         <DetailsList
           items={ _items }
           groups={ _groups }
+          useReducedRowRenderer={true}
           groupProps={ {
             onRenderHeader: props => (
               <div className='DetailsListExample-customHeader'>

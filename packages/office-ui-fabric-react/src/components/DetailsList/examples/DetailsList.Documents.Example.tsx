@@ -238,6 +238,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ this._onItemInvoked }
             enterModalSelectionOnTouch={ true }
+            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>

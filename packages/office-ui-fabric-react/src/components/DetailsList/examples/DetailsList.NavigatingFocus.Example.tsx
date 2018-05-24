@@ -41,6 +41,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         items={ this.state.items }
         columns={ this._columns }
         initialFocusedIndex={ this.state.initialFocusedIndex }
+        useReducedRowRenderer={true}
       />
     );
   }
