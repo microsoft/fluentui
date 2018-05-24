@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Wed, 23 May 2018 10:28:50 GMT and should not be manually modified.
+This log was last generated on Thu, 24 May 2018 17:06:02 GMT and should not be manually modified.
+
+## 5.5.2
+Thu, 24 May 2018 17:06:02 GMT
+
+### Patches
+
+- update variants algorithm for new semantic slot
 
 ## 5.5.1
 Wed, 23 May 2018 10:28:50 GMT
