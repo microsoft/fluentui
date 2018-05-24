@@ -55,6 +55,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
   shimmer?: boolean;
+  useReducedRowRenderer?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -174,10 +175,21 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     nextProps: IDetailsRowProps,
     nextState: IDetailsRowState
   ): boolean {
-    return !shallowCompare(this.props, nextProps);
+    if(this.props.useReducedRowRenderer) {
+      if(this.state.selectionState) {
+        let newSelectionState = this._getSelectionState(nextProps);
+        if(this.state.selectionState.isSelected != newSelectionState.isSelected) {
+          return true;
+        }
+      }
+      return !shallowCompare(this.props, nextProps);
+    } else {
+      return true;
+    }
   }
 
   public render(): JSX.Element {
+    console.count("DetailsRow.render()");
     const {
       className,
       columns,

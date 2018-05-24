@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { createListItems } from '@uifabric/example-app-base';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
+import * as React from "react";
+import { createListItems } from "@uifabric/example-app-base";
+import { Link } from "office-ui-fabric-react/lib/Link";
+import { Image, ImageFit } from "office-ui-fabric-react/lib/Image";
 import {
   DetailsList,
   buildColumns,
   IColumn
-} from 'office-ui-fabric-react/lib/DetailsList';
+} from "office-ui-fabric-react/lib/DetailsList";
 
 let _items: any[];
 
@@ -15,8 +15,10 @@ export interface IDetailsListCustomColumnsExampleState {
   columns?: IColumn[];
 }
 
-export class DetailsListCustomColumnsExample extends React.Component<{}, IDetailsListCustomColumnsExampleState> {
-
+export class DetailsListCustomColumnsExample extends React.Component<
+  {},
+  IDetailsListCustomColumnsExampleState
+> {
   constructor(props: {}) {
     super(props);
 
@@ -33,18 +35,22 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     return (
       <DetailsList
-        items={ sortedItems as any[] }
-        setKey='set'
-        columns={ columns }
-        onRenderItemColumn={ _renderItemColumn }
-        onColumnHeaderClick={ this._onColumnClick }
-        onItemInvoked={ this._onItemInvoked }
-        onColumnHeaderContextMenu={ this._onColumnHeaderContextMenu }
+        items={sortedItems as any[]}
+        setKey="set"
+        columns={columns}
+        onRenderItemColumn={_renderItemColumn}
+        onColumnHeaderClick={this._onColumnClick}
+        onItemInvoked={this._onItemInvoked}
+        onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
+        useReducedRowRenderer={true}
       />
     );
   }
 
-  private _onColumnClick = (event: React.MouseEvent<HTMLElement>, column: IColumn): void => {
+  private _onColumnClick = (
+    event: React.MouseEvent<HTMLElement>,
+    column: IColumn
+  ): void => {
     const { columns } = this.state;
     let { sortedItems } = this.state;
     let isSortedDescending = column.isSortedDescending;
@@ -70,7 +76,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     this.setState({
       sortedItems: sortedItems,
       columns: columns!.map(col => {
-        col.isSorted = (col.key === column.key);
+        col.isSorted = col.key === column.key;
 
         if (col.isSorted) {
           col.isSortedDescending = isSortedDescending;
@@ -79,9 +85,12 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         return col;
       })
     });
-  }
+  };
 
-  private _onColumnHeaderContextMenu(column: IColumn | undefined, ev: React.MouseEvent<HTMLElement> | undefined): void {
+  private _onColumnHeaderContextMenu(
+    column: IColumn | undefined,
+    ev: React.MouseEvent<HTMLElement> | undefined
+  ): void {
     console.log(`column ${column!.key} contextmenu opened.`);
   }
 
@@ -93,10 +102,12 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 function _buildColumns() {
   const columns = buildColumns(_items);
 
-  const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
+  const thumbnailColumn = columns.filter(
+    column => column.name === "thumbnail"
+  )[0];
 
   // Special case one column's definition.
-  thumbnailColumn.name = '';
+  thumbnailColumn.name = "";
   thumbnailColumn.maxWidth = 50;
 
   return columns;
@@ -106,16 +117,30 @@ function _renderItemColumn(item: any, index: number, column: IColumn) {
   const fieldContent = item[column.fieldName];
 
   switch (column.key) {
-    case 'thumbnail':
-      return <Image src={ fieldContent } width={ 50 } height={ 50 } imageFit={ ImageFit.cover } />;
+    case "thumbnail":
+      return (
+        <Image
+          src={fieldContent}
+          width={50}
+          height={50}
+          imageFit={ImageFit.cover}
+        />
+      );
 
-    case 'name':
-      return <Link href='#'>{ fieldContent }</Link>;
+    case "name":
+      return <Link href="#">{fieldContent}</Link>;
 
-    case 'color':
-      return <span data-selection-disabled={ true } style={ { color: fieldContent, height: '100%', display: 'block' } }>{ fieldContent }</span>;
+    case "color":
+      return (
+        <span
+          data-selection-disabled={true}
+          style={{ color: fieldContent, height: "100%", display: "block" }}
+        >
+          {fieldContent}
+        </span>
+      );
 
     default:
-      return <span>{ fieldContent }</span>;
+      return <span>{fieldContent}</span>;
   }
 }
