@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+This log was last generated on Thu, 24 May 2018 17:06:02 GMT and should not be manually modified.
+
+## 5.111.0
+Thu, 24 May 2018 17:06:02 GMT
+
+### Minor changes
+
+- Pass SelectionZone props through DetailsList and add alternate data-selection-auto-selection attribute name
+- add new semantic slot
 
 ## 5.110.0
 Wed, 23 May 2018 16:14:26 GMT
