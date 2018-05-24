@@ -95,6 +95,42 @@ class SlimNavComponent extends NavBase {
     ev.stopPropagation();
   }
 
+  private _onFocus(ev: React.SyntheticEvent<HTMLElement>): void {
+    if (!ev.nativeEvent) {
+      return;
+    }
+
+    var a = (ev.nativeEvent.target as any);
+
+    var floatingNav = a.parentElement.getElementsByTagName('div')[1];
+
+    if (floatingNav) {
+      floatingNav.style.visibility = 'visible';
+    }
+
+    // a.onblur = () => {
+    //   floatingNav.style.visibility = 'hidden';
+    // };
+  }
+
+  private _onBlur(ev: React.SyntheticEvent<HTMLElement>): void {
+    if (!ev.nativeEvent) {
+      return;
+    }
+
+    var a = (ev.nativeEvent.target as any);
+
+    var floatingNav = a.parentElement.getElementsByTagName('div')[1];
+
+    if (floatingNav) {
+      floatingNav.style.visibility = 'hidden';
+    }
+
+    // a.onblur = () => {
+    //   floatingNav.style.visibility = 'hidden';
+    // };
+  }
+
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
@@ -114,7 +150,7 @@ class SlimNavComponent extends NavBase {
     } = this.props;
     const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
-    
+
     return (
       <NavLink
         id={ link.key }
@@ -221,6 +257,8 @@ class SlimNavComponent extends NavBase {
         key={ link.key || linkIndex }
         onMouseEnter={ this._onLinkMouseEnterOrLeave.bind(this, link) }
         onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        onFocus={ this._onFocus.bind(this) }
+        // onBlur={ this._onBlur.bind(this) }
         title={ linkText }
         className={ classNames.navSlimItemRoot }>
         <NavLink
