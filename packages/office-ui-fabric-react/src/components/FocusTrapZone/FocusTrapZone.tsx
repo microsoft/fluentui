@@ -136,6 +136,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (this.props.onFocusCapture) {
       this.props.onFocusCapture(ev);
     }
+    if (ev.isDefaultPrevented()) {
+      return;
+    }
 
     if (ev.target === ev.currentTarget) {
       // If the trap zone gets focus, pass on focus to either first focusable
