@@ -103,14 +103,7 @@ class SlimNavComponent extends NavBase {
       return;
     }
 
-    const divs = parentElement.getElementsByTagName('div');
-    const arrFloatingNav = (Array.prototype.slice.call(divs) as Array<HTMLDivElement>).filter((div: HTMLDivElement) => {
-      return !!div && !!div.getAttribute('data-floating-nav');
-    });
-
-    if (arrFloatingNav.length > 0) {
-      return arrFloatingNav[0];
-    }
+    return parentElement.querySelector('[data-floating-nav]') as HTMLDivElement;
   }
 
   private _onKeyDown(link: INavLink, ev: React.SyntheticEvent<HTMLElement>): void {
