@@ -311,12 +311,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderTextContents = (): JSX.Element | (JSX.Element | null)[] => {
     const {
+      text,
+      children,
       secondaryText = this.props.description,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription
     } = this.props;
 
-    if (this._hasText() || secondaryText) {
+    if (text || typeof (children) === 'string' || secondaryText) {
       return (
         <div
           className={ this._classNames.textContainer }
@@ -361,6 +363,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _hasText(): boolean {
+    // _onRenderTextContents and _onRenderText do not perform the same checks. Below is parity with what _onRenderText used to have
+    // before the refactor that introduced this function. _onRenderTextContents does not require props.text to be undefined in order
+    // for props.children to be used as a fallback. Purely a code maintainability/reuse issue, but logged as Issue #4979
     return this.props.text !== null && (this.props.text !== undefined || typeof (this.props.children) === 'string');
   }
 
