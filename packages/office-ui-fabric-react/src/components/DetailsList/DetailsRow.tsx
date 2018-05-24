@@ -177,8 +177,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   ): boolean {
     if(this.props.useReducedRowRenderer) {
       if(this.state.selectionState) {
-        let newSelectionState = this._getSelectionState(nextProps);
-        if(this.state.selectionState.isSelected != newSelectionState.isSelected) {
+        const newSelectionState = this._getSelectionState(nextProps);
+        if(this.state.selectionState.isSelected !== newSelectionState.isSelected) {
           return true;
         }
       }
