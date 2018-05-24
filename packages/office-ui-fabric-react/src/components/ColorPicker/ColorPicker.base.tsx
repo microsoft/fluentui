@@ -1,4 +1,3 @@
-//
 import * as React from 'react';
 import {
   BaseComponent,
@@ -28,7 +27,7 @@ export interface IColorPickerState {
 }
 
 @customizable('ColorPicker', ['theme'])
-export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerState> {
+export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> {
   public static defaultProps = {
     hexLabel: 'Hex',
     redLabel: 'Red',

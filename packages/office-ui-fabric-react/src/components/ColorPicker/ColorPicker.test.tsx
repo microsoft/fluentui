@@ -6,6 +6,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ColorPicker } from './ColorPicker';
+import { ColorPickerBase } from './ColorPicker.base';
 
 describe('ColorPicker', () => {
   it('renders ColorPicker correctly', () => {
@@ -27,7 +28,7 @@ describe('ColorPicker', () => {
   it('Reacts to props changes', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <ColorPicker color='#FFFFFF' />
-    ) as ColorPicker;
+    ) as ColorPickerBase;
 
     component.componentWillReceiveProps({ color: '#AEAEAE' });
     expect(component.state.color.hex).toEqual('aeaeae');
@@ -44,7 +45,7 @@ describe('ColorPicker', () => {
         color={ color }
         onColorChanged={ onColorChanged }
       />
-    ) as ColorPicker;
+    ) as ColorPickerBase;
 
     const newColor = '#AEAEAE';
     component.componentWillReceiveProps({ color: newColor });
@@ -56,7 +57,7 @@ describe('ColorPicker', () => {
   it('Hides alpha control slider', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <ColorPicker color='#FFFFFF' alphaSliderHidden={ true } />
-    ) as ColorPicker;
+    ) as ColorPickerBase;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const alphaSlider = renderedDOM.querySelector('.is-alpha');
@@ -71,25 +72,25 @@ describe('ColorPicker', () => {
   it('Renders default RGBA/Hex strings', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <ColorPicker color='#FFFFFF' />
-    ) as ColorPicker;
+    ) as ColorPickerBase;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<HTMLTableDataCellElement>;
 
     const hexTableHeader = tableHeaders[0];
-    expect(hexTableHeader.textContent).toEqual(ColorPicker.defaultProps.hexLabel);
+    expect(hexTableHeader.textContent).toEqual(ColorPickerBase.defaultProps.hexLabel);
 
     const redTableHeader = tableHeaders[1];
-    expect(redTableHeader.textContent).toEqual(ColorPicker.defaultProps.redLabel);
+    expect(redTableHeader.textContent).toEqual(ColorPickerBase.defaultProps.redLabel);
 
     const greenTableHeader = tableHeaders[2];
-    expect(greenTableHeader.textContent).toEqual(ColorPicker.defaultProps.greenLabel);
+    expect(greenTableHeader.textContent).toEqual(ColorPickerBase.defaultProps.greenLabel);
 
     const blueTableHeader = tableHeaders[3];
-    expect(blueTableHeader.textContent).toEqual(ColorPicker.defaultProps.blueLabel);
+    expect(blueTableHeader.textContent).toEqual(ColorPickerBase.defaultProps.blueLabel);
 
     const alphaTableHeader = tableHeaders[4];
-    expect(alphaTableHeader.textContent).toEqual(ColorPicker.defaultProps.alphaLabel);
+    expect(alphaTableHeader.textContent).toEqual(ColorPickerBase.defaultProps.alphaLabel);
   });
 
   it('Renders custom RGBA/Hex strings', () => {
@@ -108,7 +109,7 @@ describe('ColorPicker', () => {
         blueLabel={ customBlueLabel }
         alphaLabel={ customAlphaLabel }
       />
-    ) as ColorPicker;
+    ) as ColorPickerBase;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<HTMLTableDataCellElement>;
