@@ -157,6 +157,7 @@ export class PositioningContainer
       positioningContainerMaxHeight,
       children } = this.props;
     const { positions } = this.state;
+
     const styles = getClassNames();
 
     const directionalClassName = (positions && positions.targetEdge)
@@ -186,12 +187,10 @@ export class PositioningContainer
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._contentHost }
         >
-          <div>
-            { children }
-            { // @TODO apply to the content container
-              // contentMaxHeight
-            }
-          </div>
+          { children }
+          { // @TODO apply to the content container
+            // contentMaxHeight
+          }
         </div>
       </div>
     );
@@ -247,7 +246,7 @@ export class PositioningContainer
     // the target changing focus quickly prior to rendering the positioningContainer.
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._async.throttle(this._dismissOnScroll, 10), true);
-      this._events.on(this._targetWindow, 'resize', this.onResize, true);
+      this._events.on(this._targetWindow, 'resize', this._async.throttle(this.onResize, 10), true);
       this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
     }, 0);
@@ -269,7 +268,6 @@ export class PositioningContainer
   }
 
   private _updatePosition(): void {
-    console.log('update position');
     const { positions } = this.state;
     const {
       offsetFromTarget,

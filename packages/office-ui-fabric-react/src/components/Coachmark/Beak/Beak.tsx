@@ -4,7 +4,7 @@ import {
   css,
   classNamesFunction
 } from '../../../Utilities';
-import { IBeakProps, BeakDirection } from './Beak.types';
+import { BeakDirection, IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
 
