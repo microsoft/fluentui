@@ -43,11 +43,12 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   keytipExitSequences?: IKeytipTransitionKey[];
 
   /**
-   * Callback function triggered when keytip mode is exited
+   * Callback function triggered when keytip mode is exited.
+   * ev is the Mouse or Keyboard Event that triggered the exit, if any.
    *
    * @type {() => void}
    */
-  onExitKeytipMode?: () => void;
+  onExitKeytipMode?: (ev?: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>) => void;
 
   /**
    * Callback function triggered when keytip mode is entered

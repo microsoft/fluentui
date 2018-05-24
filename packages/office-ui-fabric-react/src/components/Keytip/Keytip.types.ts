@@ -41,20 +41,22 @@ export interface IKeytipProps {
   visible?: boolean;
 
   /**
-   * Function to call when this keytip is activated
-   * 'el' is the DOM element marked with 'data-ktp-execute-target'
+   * Function to call when this keytip is activated.
+   * 'executeTarget' is the DOM element marked with 'data-ktp-execute-target'.
+   * 'target' is the DOM element marked with 'data-ktp-target'.
    *
-   * @type {(HTMLElement) => void}
+   * @type {(HTMLElement | null, HTMLElement | null) => void}
    */
-  onExecute?: (el: HTMLElement | null) => void;
+  onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
 
   /**
-   * Function to call when the keytip is returned to
-   * 'el' is the DOM element marked with 'data-ktp-execute-target'
+   * Function to call when the keytip is the currentKeytip and a return sequence is pressed.
+   * 'executeTarget' is the DOM element marked with 'data-ktp-execute-target'.
+   * 'target' is the DOM element marked with 'data-ktp-target'.
    *
-   * @type {(HTMLElement) => void}
+   * @type {(HTMLElement | null, HTMLElement | null) => void}
    */
-  onReturn?: (el: HTMLElement | null) => void;
+  onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
 
   /**
    * Array of KeySequences which is the full key sequence to trigger this keytip
