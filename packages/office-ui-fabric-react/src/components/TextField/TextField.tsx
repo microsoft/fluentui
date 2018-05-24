@@ -71,7 +71,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       'value': 'defaultValue'
     });
 
-    this._id = getId('TextField');
+    this._id = props.id || getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
 
     if (props.value !== undefined) {
