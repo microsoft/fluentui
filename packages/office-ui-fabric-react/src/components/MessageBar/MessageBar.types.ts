@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { BaseButton, Button } from '../../Button';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IMessageBar {
 
@@ -59,6 +61,40 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   * Aria label on overflow button if truncated is defined.
   */
   overflowButtonAriaLabel?: string;
+
+  /**
+   * Additional CSS class(es) to apply to the MessageBar.
+   */
+  className?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<IMessageBarStyleProps, IMessageBarStyles>;
+
+  // Temporary for debugging
+  useNewStyles?: boolean;
+}
+
+export interface IMessageBarStyleProps {
+  theme: ITheme;
+  className?: string;
+  messageBarType?: MessageBarType;
+}
+
+export interface IMessageBarStyles {
+  root?: IStyle;
+  content?: IStyle;
+  icon?: IStyle;
+  text?: IStyle;
+  innerText?: IStyle;
+  dismissal?: IStyle;
+  dismissSingleLine?: IStyle;
 }
 
 export enum MessageBarType {

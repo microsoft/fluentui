@@ -13,6 +13,95 @@ export const MessageBarBasicExample = () => (
     <Label>Info/Default MessageBar</Label>
     <MessageBar>Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link></MessageBar>
 
+    {/* temporary for testing */ }
+    <Label>Single line MessageBar - new styles</Label>
+    <MessageBar isMultiline={ false } useNewStyles={ true }>Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link></MessageBar>
+
+    <Label>Error MessageBar - single line</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.error }
+      isMultiline={ false }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Error MessageBar - single line - new styles</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.error }
+      isMultiline={ false }
+      useNewStyles={ true }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Blocked MessageBar - single line</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.blocked }
+      isMultiline={ false }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Blocked MessageBar - single line - new styles</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.blocked }
+      isMultiline={ false }
+      useNewStyles={ true }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>SevereWarning MessageBar - single line</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.severeWarning }
+      isMultiline={ false }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>SevereWarning MessageBar - single line - new styles</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.severeWarning }
+      isMultiline={ false }
+      useNewStyles={ true }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Success MessageBar - single line</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.success }
+      isMultiline={ false }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Success MessageBar - single line - new styles</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.success }
+      isMultiline={ false }
+      useNewStyles={ true }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Warning MessageBar - single line</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.warning }
+      isMultiline={ false }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    <Label>Warning MessageBar - single line - new styles</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.warning }
+      isMultiline={ false }
+      useNewStyles={ true }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
     <Label>Error MessageBar - single line, with dismiss button</Label>
     <MessageBar
       messageBarType={ MessageBarType.error }
@@ -23,7 +112,18 @@ export const MessageBarBasicExample = () => (
       Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
     </MessageBar>
 
-    <Label>Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.</Label>
+    <Label>Error MessageBar - single line, with dismiss button - new styles</Label>
+    <MessageBar
+      messageBarType={ MessageBarType.error }
+      isMultiline={ false }
+      onDismiss={ log('test') }
+      dismissButtonAriaLabel='Close'
+      useNewStyles={ true }
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
+    </MessageBar>
+
+    {/* <Label>Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.</Label>
     <MessageBar
       messageBarType={ MessageBarType.blocked }
       isMultiline={ false }
@@ -92,6 +192,6 @@ export const MessageBarBasicExample = () => (
       }
     >
       Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href='www.bing.com'>Visit our website.</Link>
-    </MessageBar>
+    </MessageBar> */}
   </div>
 );
