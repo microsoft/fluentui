@@ -1,13 +1,13 @@
-import * as React from "react";
-import { Link } from "office-ui-fabric-react/lib/Link";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
-import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import * as React from 'react';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import {
   IContextualMenuProps,
   IContextualMenuItem,
   DirectionalHint,
-  ContextualMenu
-} from "office-ui-fabric-react/lib/ContextualMenu";
+  ContextualMenu,
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -19,9 +19,9 @@ import {
   Selection,
   SelectionMode,
   buildColumns
-} from "office-ui-fabric-react/lib/DetailsList";
-import { createListItems, isGroupable } from "@uifabric/example-app-base";
-import "./DetailsList.Advanced.Example.scss";
+} from 'office-ui-fabric-react/lib/DetailsList';
+import { createListItems, isGroupable } from '@uifabric/example-app-base';
+import './DetailsList.Advanced.Example.scss';
 
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
@@ -47,10 +47,7 @@ export interface IDetailsListAdvancedExampleState {
   sortedColumnKey?: string;
 }
 
-export class DetailsListAdvancedExample extends React.Component<
-  {},
-  IDetailsListAdvancedExampleState
-> {
+export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
   private _isFetchingItems: boolean;
   private _selection: Selection;
 
@@ -73,17 +70,9 @@ export class DetailsListAdvancedExample extends React.Component<
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
-      columns: this._buildColumns(
-        _items,
-        true,
-        this._onColumnClick,
-        "",
-        undefined,
-        undefined,
-        this._onColumnContextMenu
-      ),
+      columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
       contextualMenuProps: undefined,
-      sortedColumnKey: "name",
+      sortedColumnKey: 'name',
       isSortedDescending: false,
       isLazyLoaded: false,
       isHeaderVisible: true
@@ -108,51 +97,50 @@ export class DetailsListAdvancedExample extends React.Component<
     const groupProps = {
       getGroupItemLimit: (group: IGroup) => {
         if (group) {
-          return group.isShowingAll
-            ? group.count
-            : Math.min(group.count, groupItemLimit as number);
+          return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit as number);
         } else {
           return items!.length;
         }
       },
       footerProps: {
-        showAllLinkText: "Show all"
+        showAllLinkText: 'Show all'
       }
     };
 
     return (
-      <div className="ms-DetailsListAdvancedExample">
-        <CommandBar items={this._getCommandItems()} />
+      <div className='ms-DetailsListAdvancedExample'>
+        <CommandBar items={ this._getCommandItems() } />
 
-        {isGrouped ? (
-          <TextField
-            label="Group Item Limit"
-            onChanged={this._onItemLimitChanged}
-          />
-        ) : null}
+        {
+          (isGrouped) ?
+            <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
+            (null)
+        }
 
         <DetailsList
-          setKey="items"
-          items={items as any[]}
-          groups={groups}
-          columns={columns}
-          checkboxVisibility={checkboxVisibility}
-          layoutMode={layoutMode}
-          isHeaderVisible={isHeaderVisible}
-          selectionMode={selectionMode}
-          constrainMode={constrainMode}
-          groupProps={groupProps}
-          enterModalSelectionOnTouch={true}
-          onItemInvoked={this._onItemInvoked}
-          onItemContextMenu={this._onItemContextMenu}
-          ariaLabelForListHeader="Column headers. Use menus to perform column operations like sort and filter"
-          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-          ariaLabelForSelectionColumn="Toggle selection"
-          onRenderMissingItem={this._onRenderMissingItem}
+          setKey='items'
+          items={ items as any[] }
+          groups={ groups }
+          columns={ columns }
+          checkboxVisibility={ checkboxVisibility }
+          layoutMode={ layoutMode }
+          isHeaderVisible={ isHeaderVisible }
+          selectionMode={ selectionMode }
+          constrainMode={ constrainMode }
+          groupProps={ groupProps }
+          enterModalSelectionOnTouch={ true }
+          onItemInvoked={ this._onItemInvoked }
+          onItemContextMenu={ this._onItemContextMenu }
+          ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
+          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+          ariaLabelForSelectionColumn='Toggle selection'
+          onRenderMissingItem={ this._onRenderMissingItem }
           useReducedRowRenderer={true}
         />
 
-        {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
+        { contextualMenuProps && (
+          <ContextualMenu { ...contextualMenuProps } />
+        ) }
       </div>
     );
   }
@@ -161,16 +149,14 @@ export class DetailsListAdvancedExample extends React.Component<
     index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
 
     if (!this._isFetchingItems) {
+
       this._isFetchingItems = true;
 
       setTimeout(() => {
         this._isFetchingItems = false;
         const itemsCopy = ([] as any[]).concat(this.state.items);
 
-        itemsCopy.splice.apply(
-          itemsCopy,
-          [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE))
-        );
+        itemsCopy.splice.apply(itemsCopy, [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE)));
 
         this.setState({
           items: itemsCopy
@@ -182,7 +168,7 @@ export class DetailsListAdvancedExample extends React.Component<
   private _onRenderMissingItem = (index: number): null => {
     this._onDataMiss(index as number);
     return null;
-  };
+  }
 
   private _onToggleLazyLoad = (): void => {
     let { isLazyLoaded } = this.state;
@@ -191,13 +177,9 @@ export class DetailsListAdvancedExample extends React.Component<
 
     this.setState({
       isLazyLoaded: isLazyLoaded,
-      items: isLazyLoaded
-        ? _items
-            .slice(0, PAGING_SIZE)
-            .concat(new Array(ITEMS_COUNT - PAGING_SIZE))
-        : _items
+      items: isLazyLoaded ? _items.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)) : _items
     });
-  };
+  }
 
   private _onToggleResizing = (): void => {
     const { items, sortedColumnKey, isSortedDescending } = this.state;
@@ -207,42 +189,27 @@ export class DetailsListAdvancedExample extends React.Component<
 
     this.setState({
       canResizeColumns: canResizeColumns,
-      columns: this._buildColumns(
-        items as any[],
-        canResizeColumns,
-        this._onColumnClick,
-        sortedColumnKey,
-        isSortedDescending
-      )
+      columns: this._buildColumns(items as any[], canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
     });
-  };
+  }
 
-  private _onLayoutChanged = (
-    ev: React.MouseEvent<HTMLElement>,
-    menuItem: IContextualMenuItem
-  ): void => {
+  private _onLayoutChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       layoutMode: menuItem.data
     });
-  };
+  }
 
-  private _onConstrainModeChanged = (
-    ev: React.MouseEvent<HTMLElement>,
-    menuItem: IContextualMenuItem
-  ): void => {
+  private _onConstrainModeChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       constrainMode: menuItem.data
     });
-  };
+  }
 
-  private _onSelectionChanged = (
-    ev: React.MouseEvent<HTMLElement>,
-    menuItem: IContextualMenuItem
-  ): void => {
+  private _onSelectionChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
     this.setState({
       selectionMode: menuItem.data
     });
-  };
+  }
 
   private _onItemLimitChanged = (value: string): void => {
     let newValue = parseInt(value, 10);
@@ -252,7 +219,7 @@ export class DetailsListAdvancedExample extends React.Component<
     this.setState({
       groupItemLimit: newValue
     });
-  };
+  }
 
   private _getCommandItems = (): IContextualMenuItem[] => {
     const {
@@ -267,96 +234,85 @@ export class DetailsListAdvancedExample extends React.Component<
 
     return [
       {
-        key: "addRow",
-        name: "Insert row",
-        icon: "Add",
+        key: 'addRow',
+        name: 'Insert row',
+        icon: 'Add',
         onClick: this._onAddRow
       },
       {
-        key: "deleteRow",
-        name: "Delete row",
-        icon: "Delete",
+        key: 'deleteRow',
+        name: 'Delete row',
+        icon: 'Delete',
         onClick: this._onDeleteRow
       },
       {
-        key: "configure",
-        name: "Configure",
-        icon: "Settings",
+        key: 'configure',
+        name: 'Configure',
+        icon: 'Settings',
         subMenuProps: {
           items: [
             {
-              key: "resizing",
-              name: "Allow column resizing",
+              key: 'resizing',
+              name: 'Allow column resizing',
               canCheck: true,
               checked: canResizeColumns,
               onClick: this._onToggleResizing
             },
             {
-              key: "headerVisible",
-              name: "Is header visible",
+              key: 'headerVisible',
+              name: 'Is header visible',
               canCheck: true,
               checked: isHeaderVisible,
-              onClick: () =>
-                this.setState({ isHeaderVisible: !isHeaderVisible })
+              onClick: () => this.setState({ isHeaderVisible: !isHeaderVisible })
             },
             {
-              key: "lazyload",
-              name: "Simulate async loading",
+              key: 'lazyload',
+              name: 'Simulate async loading',
               canCheck: true,
               checked: isLazyLoaded,
               onClick: this._onToggleLazyLoad
             },
             {
-              key: "dash",
-              name: "-"
+              key: 'dash',
+              name: '-'
             },
             {
-              key: "checkboxVisibility",
-              name: "Checkbox visibility",
+              key: 'checkboxVisibility',
+              name: 'Checkbox visibility',
               subMenuProps: {
                 items: [
                   {
-                    key: "checkboxVisibility.always",
-                    name: "Always",
+                    key: 'checkboxVisibility.always',
+                    name: 'Always',
                     canCheck: true,
                     isChecked: checkboxVisibility === CheckboxVisibility.always,
-                    onClick: () =>
-                      this.setState({
-                        checkboxVisibility: CheckboxVisibility.always
-                      })
+                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.always })
                   },
                   {
-                    key: "checkboxVisibility.onHover",
-                    name: "On hover",
+                    key: 'checkboxVisibility.onHover',
+                    name: 'On hover',
                     canCheck: true,
-                    isChecked:
-                      checkboxVisibility === CheckboxVisibility.onHover,
-                    onClick: () =>
-                      this.setState({
-                        checkboxVisibility: CheckboxVisibility.onHover
-                      })
+                    isChecked: checkboxVisibility === CheckboxVisibility.onHover,
+                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.onHover })
                   },
                   {
-                    key: "checkboxVisibility.hidden",
-                    name: "Hidden",
+                    key: 'checkboxVisibility.hidden',
+                    name: 'Hidden',
                     canCheck: true,
                     isChecked: checkboxVisibility === CheckboxVisibility.hidden,
-                    onClick: () =>
-                      this.setState({
-                        checkboxVisibility: CheckboxVisibility.hidden
-                      })
-                  }
+                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.hidden })
+                  },
                 ]
               }
             },
             {
-              key: "layoutMode",
-              name: "Layout mode",
+              key: 'layoutMode',
+              name: 'Layout mode',
               subMenuProps: {
                 items: [
                   {
                     key: LayoutMode[LayoutMode.fixedColumns],
-                    name: "Fixed columns",
+                    name: 'Fixed columns',
                     canCheck: true,
                     checked: layoutMode === LayoutMode.fixedColumns,
                     onClick: this._onLayoutChanged,
@@ -364,7 +320,7 @@ export class DetailsListAdvancedExample extends React.Component<
                   },
                   {
                     key: LayoutMode[LayoutMode.justified],
-                    name: "Justified columns",
+                    name: 'Justified columns',
                     canCheck: true,
                     checked: layoutMode === LayoutMode.justified,
                     onClick: this._onLayoutChanged,
@@ -374,21 +330,22 @@ export class DetailsListAdvancedExample extends React.Component<
               }
             },
             {
-              key: "selectionMode",
-              name: "Selection mode",
+              key: 'selectionMode',
+              name: 'Selection mode',
               subMenuProps: {
                 items: [
                   {
                     key: SelectionMode[SelectionMode.none],
-                    name: "None",
+                    name: 'None',
                     canCheck: true,
                     checked: selectionMode === SelectionMode.none,
                     onClick: this._onSelectionChanged,
                     data: SelectionMode.none
+
                   },
                   {
                     key: SelectionMode[SelectionMode.single],
-                    name: "Single select",
+                    name: 'Single select',
                     canCheck: true,
                     checked: selectionMode === SelectionMode.single,
                     onClick: this._onSelectionChanged,
@@ -396,23 +353,23 @@ export class DetailsListAdvancedExample extends React.Component<
                   },
                   {
                     key: SelectionMode[SelectionMode.multiple],
-                    name: "Multi select",
+                    name: 'Multi select',
                     canCheck: true,
                     checked: selectionMode === SelectionMode.multiple,
                     onClick: this._onSelectionChanged,
                     data: SelectionMode.multiple
-                  }
+                  },
                 ]
               }
             },
             {
-              key: "constrainMode",
-              name: "Constrain mode",
+              key: 'constrainMode',
+              name: 'Constrain mode',
               subMenuProps: {
                 items: [
                   {
                     key: ConstrainMode[ConstrainMode.unconstrained],
-                    name: "Unconstrained",
+                    name: 'Unconstrained',
                     canCheck: true,
                     checked: constrainMode === ConstrainMode.unconstrained,
                     onClick: this._onConstrainModeChanged,
@@ -420,10 +377,9 @@ export class DetailsListAdvancedExample extends React.Component<
                   },
                   {
                     key: ConstrainMode[ConstrainMode.horizontalConstrained],
-                    name: "Horizontal constrained",
+                    name: 'Horizontal constrained',
                     canCheck: true,
-                    checked:
-                      constrainMode === ConstrainMode.horizontalConstrained,
+                    checked: constrainMode === ConstrainMode.horizontalConstrained,
                     onClick: this._onConstrainModeChanged,
                     data: ConstrainMode.horizontalConstrained
                   }
@@ -434,25 +390,22 @@ export class DetailsListAdvancedExample extends React.Component<
         }
       }
     ];
-  };
+  }
 
-  private _getContextualMenuProps(
-    ev: React.MouseEvent<HTMLElement>,
-    column: IColumn
-  ): IContextualMenuProps {
+  private _getContextualMenuProps(ev: React.MouseEvent<HTMLElement>, column: IColumn): IContextualMenuProps {
     const items = [
       {
-        key: "aToZ",
-        name: "A to Z",
-        icon: "SortUp",
+        key: 'aToZ',
+        name: 'A to Z',
+        icon: 'SortUp',
         canCheck: true,
         checked: column.isSorted && !column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, false)
       },
       {
-        key: "zToA",
-        name: "Z to A",
-        icon: "SortDown",
+        key: 'zToA',
+        name: 'Z to A',
+        icon: 'SortDown',
         canCheck: true,
         checked: column.isSorted && column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, true)
@@ -460,9 +413,9 @@ export class DetailsListAdvancedExample extends React.Component<
     ];
     if (isGroupable(column.key)) {
       items.push({
-        key: "groupBy",
-        name: "Group By " + column.name,
-        icon: "GroupedDescending",
+        key: 'groupBy',
+        name: 'Group By ' + column.name,
+        icon: 'GroupedDescending',
         canCheck: true,
         checked: column.isGrouped,
         onClick: () => this._onGroupByColumn(column)
@@ -479,56 +432,41 @@ export class DetailsListAdvancedExample extends React.Component<
   }
 
   private _onItemInvoked = (item: any, index: number): void => {
-    console.log("Item invoked", item, index);
-  };
+    console.log('Item invoked', item, index);
+  }
 
-  private _onItemContextMenu = (
-    item: any,
-    index: number,
-    ev: MouseEvent
-  ): boolean => {
-    if ((ev.target as HTMLElement).nodeName === "A") {
+  private _onItemContextMenu = (item: any, index: number, ev: MouseEvent): boolean => {
+    if ((ev.target as HTMLElement).nodeName === 'A') {
       return true;
     }
-    console.log("Item context menu invoked", item, index);
+    console.log('Item context menu invoked', item, index);
     return false;
-  };
+  }
 
-  private _onColumnClick = (
-    ev: React.MouseEvent<HTMLElement>,
-    column: IColumn
-  ): void => {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       this.setState({
         contextualMenuProps: this._getContextualMenuProps(ev, column)
       });
     }
-  };
+  }
 
-  private _onColumnContextMenu = (
-    column: IColumn,
-    ev: React.MouseEvent<HTMLElement>
-  ): void => {
+  private _onColumnContextMenu = (column: IColumn, ev: React.MouseEvent<HTMLElement>): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       this.setState({
         contextualMenuProps: this._getContextualMenuProps(ev, column)
       });
     }
-  };
+  }
 
   private _onContextualMenuDismissed = (): void => {
     this.setState({
       contextualMenuProps: undefined
     });
-  };
+  }
 
   private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
-    const sortedItems = _items
-      .slice(0)
-      .sort(
-        (a: any, b: any) =>
-          (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1
-      );
+    const sortedItems = _items.slice(0).sort((a: any, b: any) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
 
     this.setState({
       items: sortedItems,
@@ -540,25 +478,17 @@ export class DetailsListAdvancedExample extends React.Component<
         key,
         isSortedDescending,
         undefined,
-        this._onColumnContextMenu
-      ),
+        this._onColumnContextMenu),
       isSortedDescending: isSortedDescending,
       sortedColumnKey: key
     });
-  };
+  }
 
   private _onGroupByColumn = (column: IColumn): void => {
     const { key, isGrouped } = column;
-    const {
-      sortedColumnKey,
-      isSortedDescending,
-      groups,
-      items,
-      columns
-    } = this.state;
+    const { sortedColumnKey, isSortedDescending, groups, items, columns } = this.state;
 
-    if (isGrouped) {
-      // ungroup
+    if (isGrouped) { // ungroup
       this._onSortColumn(sortedColumnKey as string, !!isSortedDescending);
     } else {
       let groupedItems = [];
@@ -572,35 +502,26 @@ export class DetailsListAdvancedExample extends React.Component<
       }
 
       const newColumns = columns as IColumn[];
-      newColumns
-        .filter(matchColumn => matchColumn.key === key)
-        .forEach((groupedColumn: IColumn) => {
-          groupedColumn.isGrouped = true;
-        });
+      newColumns.filter(matchColumn => matchColumn.key === key).forEach((groupedColumn: IColumn) => {
+        groupedColumn.isGrouped = true;
+      });
       this.setState({
         items: groupedItems,
         columns: newColumns,
         groups: newGroups
       });
     }
-  };
+  }
 
   private _groupByKey(groups: IGroup[], items: any[], key: string): any[] {
     let groupedItems: any[] = [];
     if (groups) {
       groups.forEach((group: IGroup) => {
         if (group.children && group.children.length > 0) {
-          const childGroupedItems = this._groupByKey(
-            group.children,
-            items,
-            key
-          );
+          const childGroupedItems = this._groupByKey(group.children, items, key);
           groupedItems = groupedItems.concat(childGroupedItems);
         } else {
-          const itemsInGroup = items.slice(
-            group.startIndex,
-            group.startIndex + group.count
-          );
+          const itemsInGroup = items.slice(group.startIndex, group.startIndex + group.count);
           const nextLevelGroupedItems = this._groupItems(itemsInGroup, key);
           groupedItems = groupedItems.concat(nextLevelGroupedItems);
           group.children = this._getGroups(nextLevelGroupedItems, key, group);
@@ -611,27 +532,18 @@ export class DetailsListAdvancedExample extends React.Component<
   }
 
   private _groupItems(items: any[], columnKey: string): any[] {
-    return items
-      .slice(0)
-      .sort((a, b) => (a[columnKey] < b[columnKey] ? -1 : 1));
+    return items.slice(0).sort((a, b) => ((a[columnKey] < b[columnKey]) ? -1 : 1));
   }
 
-  private _getGroups(
-    groupedItems: any[],
-    key: string,
-    parentGroup?: IGroup
-  ): IGroup[] {
-    const separator = "-";
+  private _getGroups(groupedItems: any[], key: string, parentGroup?: IGroup): IGroup[] {
+    const separator = '-';
     const groups = groupedItems.reduce((current, item, index) => {
       const currentGroup = current[current.length - 1];
 
-      if (
-        !currentGroup ||
-        this._getLeafGroupKey(currentGroup.key, separator) !== item[key]
-      ) {
+      if (!currentGroup || (this._getLeafGroupKey(currentGroup.key, separator) !== item[key])) {
         current.push({
-          key: (parentGroup ? parentGroup.key + separator : "") + item[key],
-          name: key + ": " + item[key],
+          key: (parentGroup ? parentGroup.key + separator : '') + item[key],
+          name: key + ': ' + item[key],
           startIndex: parentGroup ? parentGroup.startIndex + index : index,
           count: 1,
           level: parentGroup ? parentGroup.level! + 1 : 0
@@ -658,13 +570,13 @@ export class DetailsListAdvancedExample extends React.Component<
     this.setState({
       items: createListItems(1).concat(this.state.items)
     });
-  };
+  }
 
   private _onDeleteRow = (): void => {
     this.setState({
       items: this.state.items!.slice(1)
     });
-  };
+  }
 
   private _buildColumns(
     items: any[],
@@ -673,39 +585,26 @@ export class DetailsListAdvancedExample extends React.Component<
     sortedColumnKey?: string,
     isSortedDescending?: boolean,
     groupedColumnKey?: string,
-    onColumnContextMenu?: (
-      column: IColumn,
-      ev: React.MouseEvent<HTMLElement>
-    ) => any
-  ) {
-    const columns = buildColumns(
-      items,
-      canResizeColumns,
-      onColumnClick,
-      sortedColumnKey,
-      isSortedDescending,
-      groupedColumnKey
-    );
+    onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any) {
+    const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
       column.onColumnContextMenu = onColumnContextMenu;
       column.ariaLabel = `Operations for ${column.name}`;
-      if (column.key === "thumbnail") {
-        column.iconName = "Picture";
+      if (column.key === 'thumbnail') {
+        column.iconName = 'Picture';
         column.isIconOnly = true;
-      } else if (column.key === "description") {
+      } else if (column.key === 'description') {
         column.isMultiline = true;
         column.minWidth = 200;
-      } else if (column.key === "name") {
-        column.onRender = item => (
-          <Link data-selection-invoke={true}>{item.name}</Link>
+      } else if (column.key === 'name') {
+        column.onRender = (item) => (
+          <Link data-selection-invoke={ true }>{ item.name }</Link>
         );
-      } else if (column.key === "key") {
+      } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
-        column.onRender = item => (
-          <Link href="https://microsoft.com" target="_blank" rel="noopener">
-            {item.key}
-          </Link>
+        column.onRender = (item) => (
+          <Link href='https://microsoft.com' target='_blank' rel='noopener'>{ item.key }</Link>
         );
         column.minWidth = 90;
         column.maxWidth = 90;
