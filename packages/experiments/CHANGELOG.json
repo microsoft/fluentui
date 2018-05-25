@@ -2,6 +2,30 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.42.0",
+      "tag": "@uifabric/experiments_v5.42.0",
+      "date": "Fri, 25 May 2018 16:53:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "90dab9cce616c381b5fa55cd63a4c35f08fde6d5",
+            "comment": "Experiments/Nav component: Auto select/expand based on the selectedKey prop"
+          },
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "899e801eaba7c7bd994c7dfe6f230919e6d49e90",
+            "comment": "Keyboard support for the slim version of experiments/Nav component and added aria attributes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.111.0 <6.0.0` to `>=5.111.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.41.0",
       "tag": "@uifabric/experiments_v5.41.0",
       "date": "Tue, 22 May 2018 10:29:12 GMT",

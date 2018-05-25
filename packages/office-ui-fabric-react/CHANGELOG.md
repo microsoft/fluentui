@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 24 May 2018 17:06:02 GMT and should not be manually modified.
+This log was last generated on Fri, 25 May 2018 16:53:47 GMT and should not be manually modified.
+
+## 5.111.1
+Fri, 25 May 2018 16:53:47 GMT
+
+### Patches
+
+- Revisited the Multi-select Combo box initial state selection fix
+- BaseButton sometimes has aria-labelledBy pointing to element that isn't in the DOM
+- StickyPane: Replaced Array.From since it is not supported in IE
 
 ## 5.111.0
 Thu, 24 May 2018 17:06:02 GMT
