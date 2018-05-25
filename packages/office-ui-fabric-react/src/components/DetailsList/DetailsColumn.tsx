@@ -53,10 +53,9 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
   }
 
   public render() {
-    const { column, columnIndex, parentId } = this.props;
+    const { column, columnIndex, parentId, isDraggable } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
     } = this.props;
-    const isDraggable = this.props.isDraggable;
 
     return (
       [
@@ -173,6 +172,16 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
     }
   }
 
+  public componentDidUpdate(): void {
+    if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable!) {
+      this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root.value as HTMLElement, this._events, this._getColumnDragDropOptions());
+    }
+    if (this._dragDropSubscription && !this.props.isDraggable!) {
+      this._dragDropSubscription.dispose();
+      delete this._dragDropSubscription;
+    }
+  }
+
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>): JSX.Element => {
     return (
       <span className={ tooltipHostProps.hostClassName }>
@@ -216,7 +225,6 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsCo
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
     this.props.setDraggedItemIndex!(-1);
-    event!.preventDefault();
   }
 
   private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {

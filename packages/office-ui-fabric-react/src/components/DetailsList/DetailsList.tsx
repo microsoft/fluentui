@@ -290,7 +290,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       onShouldVirtualize,
       enableShimmer,
       viewport,
-      columnReorderOptions
+      columnReorderOptions,
+      minimumPixelsForDrag
     } = this.props;
     const {
       adjustedColumns,
@@ -383,6 +384,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
                   viewport: viewport,
                   columnReorderOptions: columnReorderOptions,
+                  minimumPixelsForDrag: minimumPixelsForDrag
                 },
                 this._onRenderDetailsHeader
               )}

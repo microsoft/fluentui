@@ -157,7 +157,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 
-  /** Map of callback functions related to drag and drop functionality. */
+  /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
   /** Callback for what to render when the item is missing. */
@@ -430,12 +430,14 @@ export enum ConstrainMode {
 }
 
 export interface IColumnReorderOptions {
-  /** Specifies the number columns with position fixed from left(0th index))
+  /**
+   * Specifies the number fixed columns from left(0th index))
    * @default 0
    */
   frozenColumnCount?: number;
 
-  /** Callback to handle the column reorder
+  /**
+   * Callback to handle the column reorder
    * draggedIndex is the source column index, that need to be placed in targetIndex
    */
   handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;

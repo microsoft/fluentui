@@ -20,7 +20,7 @@ import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStylesModule from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
-import { IDragDropOptions, IDragDropContext } from './../../utilities/dragdrop/interfaces';
+import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
 import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
 
@@ -56,8 +56,8 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
   selectAllVisibility?: SelectAllVisibility;
-  frozenColumnCount?: number;
-  dragDropColumnEvents?: IDragDropEvents | null;
+  columnReorderOptions?: IColumnReorderOptions | null;
+  minimumPixelsForDrag?: number;
 }
 
 export enum SelectAllVisibility {
@@ -72,6 +72,7 @@ export interface IDetailsHeaderState {
   isSizing?: boolean;
   groupNestingDepth?: number;
   isAllCollapsed?: boolean;
+  currentDropHintIndex?: number;
 }
 
 export interface IColumnResizeDetails {
@@ -86,12 +87,17 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     collapseAllVisibility: CollapseAllVisibility.visible
   };
 
-  private _draggedColumnIndex = -1;
-  private _dropHintOriginXValues: { [key: number]: number } = {};
   private _root = createRef<IFocusZone>();
 
   private _id: string;
+  private _draggedColumnIndex = -1;
+  private _dropHintOriginXValues: { [key: number]: number } = {};
   private _dragDropHelper: DragDropHelper | null;
+  private _subscriptionObject:
+    {
+      key: string;
+      dispose(): void;
+    };
 
   constructor(props: IDetailsHeaderProps) {
     super(props);
@@ -99,7 +105,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this.state = {
       columnResizeDetails: undefined,
       groupNestingDepth: this.props.groupNestingDepth,
-      isAllCollapsed: this.props.isAllCollapsed
+      isAllCollapsed: this.props.isAllCollapsed,
+      currentDropHintIndex: Number.MIN_SAFE_INTEGER
     };
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
@@ -111,15 +118,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._updateDroppingState = this._updateDroppingState.bind(this);
     this._getDropHintPositions = this._getDropHintPositions.bind(this);
     this._updateDropHintStates = this._updateDropHintStates.bind(this);
+    this._resetDropHints = this._resetDropHints.bind(this);
+    this._isValidCurrentDropHintIndex = this._isValidCurrentDropHintIndex.bind(this);
 
     this._id = getId('header');
-
-    this._dragDropHelper = this.props.dragDropColumnEvents ? new DragDropHelper({
-      selection: {
-        getSelection: () => { return; }
-      } as ISelection,
-      minimumPixelsForDrag: 5
-    }) : null;
   }
 
   public componentDidMount(): void {
@@ -135,18 +137,22 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._events.on(rootElement, 'keydown', this._onRootKeyDown);
 
     if (columnReorderOptions) {
-      this._getDropHintPositions(rootElement);
-      this._dragDropHelper!.subscribe(rootElement, this._events, this._getHeaderDragDropOptions());
+      this._subscriptionObject = this._dragDropHelper!.subscribe(rootElement, this._events, this._getHeaderDragDropOptions());
     }
   }
 
   public componentDidUpdate(): void {
     const { columnReorderOptions } = this.props;
-    const focusZone = this._root.value;
+    const focusZone = this._root.current;
     const rootElement = findDOMNode(focusZone as any) as HTMLElement;
 
-    if (columnReorderOptions) {
-      this._getDropHintPositions(rootElement);
+    if (!columnReorderOptions) {
+      if (this._subscriptionObject) {
+        this._subscriptionObject.dispose();
+        delete this._subscriptionObject;
+      }
+    } else if (!this._subscriptionObject) {
+      this._subscriptionObject = this._dragDropHelper!.subscribe(rootElement, this._events, this._getHeaderDragDropOptions());
     }
   }
 
@@ -159,8 +165,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public componentWillUnmount(): void {
-    if (this._dragDropHelper) {
-      this._dragDropHelper.dispose();
+    if (this._subscriptionObject) {
+      this._subscriptionObject.dispose();
+      delete this._subscriptionObject;
     }
   }
 
@@ -178,12 +185,17 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       onColumnContextMenu
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
-
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
 
-    const {
-      onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
-    } = this.props;
+    const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
+    if (!this._dragDropHelper) {
+      this._dragDropHelper = this.props.columnReorderOptions ? new DragDropHelper({
+        selection: {
+          getSelection: () => { return; }
+        } as ISelection,
+        minimumPixelsForDrag: this.props.minimumPixelsForDrag
+      }) : null;
+    }
 
     return (
       <FocusZone
@@ -457,7 +469,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _onDragOver(item: any, event: DragEvent): void {
-    if (this._draggedColumnIndex !== undefined && this._draggedColumnIndex !== -1) {
+    if (this._draggedColumnIndex !== -1) {
       const clientX = event.clientX;
       this._updateDropHintStates(clientX);
     }
@@ -482,33 +494,36 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         this.setState({ dropHintsState: newDropHintState });
         this._draggedColumnIndex = -1;
       }
+
+      this._resetDropHints();
+      this._draggedColumnIndex = -1;
     }
   }
 
   private _setDraggedItemIndex(itemIndex: number) {
     if (itemIndex >= 0) {
       this._draggedColumnIndex = (this.props.selectionMode !== SelectionMode.none) ? itemIndex! - 1 : itemIndex;
+      this._getDropHintPositions();
     } else {
       this._draggedColumnIndex = -1;
     }
+
   }
 
-  private _getDropHintPositions = (rootElement: HTMLElement): void => {
+  private _resetDropHints(): void {
+    this.setState({ currentDropHintIndex: Number.MIN_SAFE_INTEGER });
+  }
+
+  private _getDropHintPositions = (): void => {
+    const focusZone = this._root.value;
+    const rootElement = findDOMNode(focusZone as any) as HTMLElement;
     const { columnReorderOptions, columns } = this.props;
     const headerOriginX = rootElement.getBoundingClientRect().left;
     const frozenColumnCount = (columnReorderOptions!.frozenColumnCount) ? columnReorderOptions!.frozenColumnCount : 0;
-    this.props.columns.map((column, columnIndex) => {
-      if (columnIndex >= frozenColumnCount!) {
-        const dropHintElement = rootElement!.querySelectorAll('#columnDropHint_' + columnIndex)[0] as HTMLElement;
-        if (dropHintElement !== null) {
-          this._dropHintOriginXValues[columnIndex] = dropHintElement!.offsetLeft + headerOriginX;
-        }
-      }
-    });
-    if (columns.length >= frozenColumnCount!) {
-      const dropHintElement = rootElement.querySelectorAll('#columnDropHint_' + columns.length)[0] as HTMLElement;
-      if (dropHintElement !== null) {
-        this._dropHintOriginXValues[columns.length] = dropHintElement!.offsetLeft + headerOriginX;
+    for (let i = frozenColumnCount!; i < columns.length + 1; i++) {
+      const dropHintElement = rootElement!.querySelectorAll('#columnDropHint_' + i)[0] as HTMLElement;
+      if (dropHintElement) {
+        this._dropHintOriginXValues[i] = dropHintElement!.offsetLeft + headerOriginX;
       }
     }
   }
@@ -518,15 +533,16 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    *
    */
   private _updateDropHintStates = (eventXposition: number): void => {
-    let currentIndex = this.props.columnReorderOptions!.frozenColumnCount!;
+    let currentIndex: number = (this.props.columnReorderOptions!.frozenColumnCount) ? this.props.columnReorderOptions!.frozenColumnCount! : 0;
     const colCount = this.props.columns.length;
+    const { currentDropHintIndex } = this.state;
     let indexToUpdate = -1;
-    const dropHintsState = this.state.dropHintsState;
-    if (eventXposition < this._dropHintOriginXValues[currentIndex]) {
+    if (eventXposition <= this._dropHintOriginXValues[currentIndex]) {
+
       indexToUpdate = currentIndex;
     } else {
       while (currentIndex < colCount) {
-        if (eventXposition > this._dropHintOriginXValues[currentIndex]
+        if (eventXposition >= this._dropHintOriginXValues[currentIndex]
           && eventXposition < this._dropHintOriginXValues[currentIndex + 1]) {
           if (eventXposition > ((this._dropHintOriginXValues[currentIndex + 1] + this._dropHintOriginXValues[currentIndex]) / 2)) {
             indexToUpdate = currentIndex + 1;
