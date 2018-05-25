@@ -316,7 +316,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     let transformOriginY;
 
     const { targetAlignment } = this.state;
-    const distanceAdjustment = '3px';
+    const distanceAdjustment = '3px';  // Adjustment distance for Beak to shift towards Coachmark bubble.
 
     switch (this._beakDirection) {
       // If Beak is pointing Up or Down

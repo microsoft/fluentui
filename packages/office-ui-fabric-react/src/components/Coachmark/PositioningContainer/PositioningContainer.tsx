@@ -189,7 +189,7 @@ export class PositioningContainer
         >
           { children }
           { // @TODO apply to the content container
-            // contentMaxHeight
+            contentMaxHeight
           }
         </div>
       </div>

@@ -14,7 +14,7 @@ export interface ICoachmarkStyleProps {
    * Is the Coachmark collapsed.  Deprecated: use isCollapsed instead.
    * @deprecated
    */
-  collapsed: boolean;
+  collapsed?: boolean;
 
   /**
    * Is the Coachmark collapsed
