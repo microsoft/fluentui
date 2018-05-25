@@ -1,13 +1,13 @@
-﻿/* tslint:disable */
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
+/* tslint:disable */
 import * as React from 'react';
 import {
+  ICustomNavLinkGroup,
   INavProps,
   INavState,
   INavLink,
-  INavLinkGroup,
   INavStyleProps,
-  INavStyles
+  INavStyles,
+  NavGroupType
 } from './Nav.types';
 import {
   getStyles
@@ -22,6 +22,9 @@ import { NavLink } from './NavLink';
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 class SlimNavComponent extends NavBase {
+  // store the previous floating nav shown to close when the current floating nav shows up.
+  private _prevFloatingNav: any;
+
   constructor(props: INavProps) {
     super(props);
 
@@ -41,15 +44,13 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation'>
-          {
-            this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this._renderGroup(group, groupIndex);
-            })
-          }
-        </nav>
-      </FocusZone>
+      <nav role='navigation'>
+        {
+          this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
+            return this._renderGroup(group, groupIndex);
+          })
+        }
+      </nav>
     );
   }
 
@@ -95,6 +96,53 @@ class SlimNavComponent extends NavBase {
 
     ev.preventDefault();
     ev.stopPropagation();
+  }
+
+  private _getFloatingNav(parentElement: HTMLElement | null): HTMLDivElement | undefined {
+    if (!parentElement) {
+      return;
+    }
+
+    return parentElement.querySelector('[data-floating-nav]') as HTMLDivElement;
+  }
+
+  private _onKeyDown(link: INavLink, ev: React.SyntheticEvent<HTMLElement>): void {
+    const nativeEvent = (ev as any);
+    if (nativeEvent.keyCode !== 13) {
+      // accept only enter key to open the floating nav from slim nav
+      return;
+    }
+
+    const a = nativeEvent.target as HTMLElement;
+    const li = a.parentElement;
+    const currentFloatingNav = this._getFloatingNav(li);
+
+    if (!currentFloatingNav) {
+      return;
+    }
+
+    if (this._prevFloatingNav === currentFloatingNav) {
+      // toggle the floating nav
+      if (currentFloatingNav.style && currentFloatingNav.style.display && currentFloatingNav.style.display === 'block') {
+        currentFloatingNav.removeAttribute('style');
+      }
+      else {
+        currentFloatingNav.setAttribute('style', 'display: block');
+      }
+    }
+    else {
+      // prev and current floating navs are different
+      // close the previous if there is one
+      if (this._prevFloatingNav) {
+        this._prevFloatingNav.removeAttribute('style');
+      }
+
+      // open the current one
+      currentFloatingNav.setAttribute('style', 'display: block');
+
+      // store the current as prev
+      this._prevFloatingNav = currentFloatingNav;
+    }
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
@@ -192,7 +240,7 @@ class SlimNavComponent extends NavBase {
     const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
 
     return (
-      <div className={ classNames.navFloatingRoot }>
+      <div className={ classNames.navFloatingRoot } data-floating-nav>
         {
           this._renderFloatingLinks([link], 0 /* nestingLevel */)
         }
@@ -223,6 +271,7 @@ class SlimNavComponent extends NavBase {
         key={ link.key || linkIndex }
         onMouseEnter={ this._onLinkMouseEnterOrLeave.bind(this, link) }
         onMouseLeave={ this._onLinkMouseEnterOrLeave.bind(this, link) }
+        onKeyDown={ this._onKeyDown.bind(this, link) }
         title={ linkText }
         className={ classNames.navSlimItemRoot }>
         <NavLink
@@ -231,6 +280,7 @@ class SlimNavComponent extends NavBase {
           target={ link.target }
           dataHint={ dataHint }
           dataValue={ link.key }
+          ariaLabel={ linkText }
           role="menu"
           onClick={ onClickHandler }
           rootClassName={ classNames.navItemRoot }
@@ -271,7 +321,7 @@ class SlimNavComponent extends NavBase {
     );
   }
 
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+  private _renderGroup(group: ICustomNavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
     if (!group || !group.links || group.links.length === 0) {
       return null;
     }
@@ -282,7 +332,7 @@ class SlimNavComponent extends NavBase {
     } = this.props;
 
     // skip customization group if customization is not enabled
-    if (!enableCustomization && group.isCustomizationGroup) {
+    if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
       return null;
     }
 

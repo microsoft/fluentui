@@ -242,7 +242,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
             options={ options }
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
-            value={ value && value }
+            text={ value && value }
             onRenderOption={ this._onRenderFontOption }
             // tslint:disable:jsx-no-lambda
             onFocus={ () => console.log('onFocus called') }

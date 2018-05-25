@@ -17,7 +17,7 @@ export class PanelLargeFixedExample extends React.Component<{}, {
     return (
       <div>
         <DefaultButton
-          description='Opens the Sample Panel'
+          secondaryText='Opens the Sample Panel'
           onClick={ this._showPanel }
           text='Open Panel'
         />

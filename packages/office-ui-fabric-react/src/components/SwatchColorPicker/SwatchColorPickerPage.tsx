@@ -33,7 +33,7 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md') }
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerOverview.md') }
           </PageMarkdown>
         }
         bestPractices={
@@ -41,12 +41,12 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
         }
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md') }
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerDos.md') }
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md') }
+            { require<string>('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/docs/SwatchColorPickerDonts.md') }
           </PageMarkdown>
         }
         isHeaderVisible={ this.props.isHeaderVisible }

@@ -134,6 +134,7 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     checkmarkIcon: 'checkmarkIcon',
     subMenuIcon: 'subMenuIcon',
     label: 'label',
+    secondaryText: 'secondaryText',
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',

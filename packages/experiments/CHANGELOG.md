@@ -1,6 +1,53 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 08 May 2018 10:17:01 GMT and should not be manually modified.
+This log was last generated on Fri, 25 May 2018 16:53:46 GMT and should not be manually modified.
+
+## 5.42.0
+Fri, 25 May 2018 16:53:46 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Auto select/expand based on the selectedKey prop
+- Keyboard support for the slim version of experiments/Nav component and added aria attributes
+
+## 5.41.0
+Tue, 22 May 2018 10:29:12 GMT
+
+### Minor changes
+
+- Implementation of the Chiclet component
+
+## 5.40.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props
+
+## 5.39.0
+Wed, 16 May 2018 00:05:17 GMT
+
+### Minor changes
+
+- Experiments/Nav: accessibility changes
+
+### Patches
+
+- use better icon for MalwareDetectedSignal
+
+## 5.38.2
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Fix Fluent palette color names
+
+## 5.38.1
+Thu, 10 May 2018 10:27:25 GMT
+
+### Patches
+
+- Update Fluent theme to use relative imports
 
 ## 5.38.0
 Tue, 08 May 2018 10:17:01 GMT

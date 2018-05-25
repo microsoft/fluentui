@@ -28,7 +28,7 @@ import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/w
 import { Callout } from '../../Callout';
 import { IIconProps } from '../../Icon';
 import { ContextualMenuItem } from './ContextualMenuItem';
-import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper';
+import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -274,14 +274,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           hidden={ this.props.hidden }
         >
           <div
-            role={ shouldFocusOnContainer ? 'menu' : undefined }
+            role={ 'menu' }
             aria-label={ ariaLabel }
             aria-labelledby={ labelElementId }
             style={ contextMenuStyle }
             ref={ (host: HTMLDivElement) => this._host = host }
             id={ id }
             className={ this._classNames.container }
-            tabIndex={ shouldFocusOnContainer ? 0 : undefined }
+            tabIndex={ shouldFocusOnContainer ? 0 : -1 }
             onKeyDown={ this._onMenuKeyDown }
           >
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
@@ -361,7 +361,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       item.className,
       dividerClassName,
       iconProps.className,
-      subMenuIconClassName
+      subMenuIconClassName,
+      item.primaryDisabled
     );
 
     if (item.name === '-') {
@@ -557,6 +558,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean): JSX.Element {
     const { contextualMenuItemAs } = this.props;
+    const { expandedMenuItemKey } = this.state;
 
     return (
       <ContextualMenuSplitButton
@@ -579,6 +581,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         openSubMenu={ this._onItemSubMenuExpand }
         dismissSubMenu={ this._onSubMenuDismiss }
         dismissMenu={ this.dismiss }
+        expandedMenuItemKey={ expandedMenuItemKey }
         onTap={ this._onPointerAndTouchEvent }
       />
     );
@@ -739,7 +742,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         });
         this._onItemSubMenuExpand(item, targetElement);
         this._enterTimerId = undefined;
-      }, NavigationIdleDelay);
+      }, timeoutDuration);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
@@ -807,14 +810,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    let openKey;
-    if (item.split) {
-      openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
-    } else {
-      openKey = KeyCodes.enter;
-    }
+    const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-    if (ev.which === openKey && !item.disabled) {
+    if ((ev.which === openKey || ev.which === KeyCodes.enter) && !item.disabled) {
       this.setState({
         expandedByMouseClick: false
       });

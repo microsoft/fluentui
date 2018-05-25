@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
@@ -29,7 +28,10 @@ export interface IContextualMenu {
 
 }
 
-export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWithResponsiveModeState {
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
+export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -276,6 +278,11 @@ export interface IContextualMenuItem {
    */
   name?: string;
 
+  /**
+   * Seconday description for the menu item to display
+   */
+  secondaryText?: string;
+
   itemType?: ContextualMenuItemType;
 
   /**
@@ -400,7 +407,8 @@ export interface IContextualMenuItem {
     itemClassName?: string,
     dividerClassName?: string,
     iconClassName?: string,
-    subMenuClassName?: string) => IMenuItemClassNames;
+    subMenuClassName?: string,
+    primaryDisabled?: boolean) => IMenuItemClassNames;
 
   /**
   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
@@ -484,7 +492,10 @@ export interface IContextualMenuItem {
   inactive?: boolean;
 }
 
-export interface IContextualMenuSection extends React.Props<ContextualMenu> {
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
+export interface IContextualMenuSection extends React.Props<any> {
 
   /**
    * The items to include inside the section.
