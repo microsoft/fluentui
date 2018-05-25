@@ -178,7 +178,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     if (item.onRender) {
       return (
         <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
-          { item.onRender(item, this._onContextMenuDismiss) }
+          { item.onRender(item, this._onContextMenuDismiss, posInSet, setSize) }
         </div>
       );
     }
@@ -436,10 +436,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     const renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
-        renderedItems.concat(this.state.renderedFarItems!),
-        renderedOverflowItems!,
-        overflowMenuProps!
-      );
+      renderedItems.concat(this.state.renderedFarItems!),
+      renderedOverflowItems!,
+      overflowMenuProps!
+    );
 
     this.setState({
       renderedItems: renderedItems,

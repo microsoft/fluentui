@@ -451,10 +451,14 @@ export interface IContextualMenuItem {
    * (like an anchor or a button) or have the `data-is-focusable` property set to true.
    *
    * The function receives a function that can be called to dismiss the menu as a second argument.
-   *  This can be used to make sure that a custom menu item click dismisses the menu.
+   * This can be used to make sure that a custom menu item click dismisses the menu.
+   *
+   * posInSet and setSize are passed to the function for cases where the rendered item needs to be
+   * able to set these aria attributes (like in the command bar)
+   *
    * @defaultvalue undefined
    */
-  onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+  onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void, posInSet?: number, setSize?: number) => React.ReactNode;
 
   /**
    * A function to be executed onMouseDown. This is executed before an onClick event and can
