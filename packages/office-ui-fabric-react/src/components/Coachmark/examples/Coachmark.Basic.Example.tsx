@@ -26,6 +26,11 @@ export interface ICoachmarkBasicExampleStyles {
    * The example button container
    */
   buttonContainer: IStyle;
+
+  /**
+   * The dropdown component container
+   */
+  dropdownContainer: IStyle;
 }
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
