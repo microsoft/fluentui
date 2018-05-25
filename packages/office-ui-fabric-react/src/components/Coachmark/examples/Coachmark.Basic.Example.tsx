@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IStyle } from '../../../Styling';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import {
   BaseComponent,
   classNamesFunction,
@@ -12,10 +12,8 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
-  isTargetVisible?: boolean;
-  isCoachmarkCollapsed?: boolean;
-  targetElement?: HTMLElement;
-  showPanel?: boolean;
+  isCoachmarkVisible?: boolean;
+  coachmarkPosition: DirectionalHint;
 }
 
 export interface ICoachmarkBasicExampleStyles {
@@ -31,26 +29,25 @@ export interface ICoachmarkBasicExampleStyles {
 }
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
-
   private _targetButton = createRef<HTMLDivElement>();
 
   public constructor(props: {}) {
     super(props);
 
     this.state = {
-      isTargetVisible: false,
-      isCoachmarkCollapsed: true,
-      showPanel: false
+      isCoachmarkVisible: false,
+      coachmarkPosition: DirectionalHint.bottomAutoEdge
     };
   }
 
   public render(): JSX.Element {
-    const { isTargetVisible } = this.state;
+    const { isCoachmarkVisible } = this.state;
 
     const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
     const classNames = getClassNames(() => {
       return {
         buttonContainer: {
+          marginTop: '30px',
           display: 'inline-block'
         }
       };
@@ -66,20 +63,46 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
     return (
       <div className={ classNames.root }>
+
+        <Dropdown
+          label='Set Coachmark position'
+          defaultSelectedKey='H'
+          onFocus={ this._onDismiss }
+          options={
+            [
+              { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
+              { key: 'B', text: 'Top Center', data: DirectionalHint.topCenter },
+              { key: 'C', text: 'Top Right Edge', data: DirectionalHint.topRightEdge },
+              { key: 'D', text: 'Top Auto Edge', data: DirectionalHint.topAutoEdge },
+              { key: 'E', text: 'Bottom Left Edge', data: DirectionalHint.bottomLeftEdge },
+              { key: 'F', text: 'Bottom Center', data: DirectionalHint.bottomCenter },
+              { key: 'G', text: 'Bottom Right Edge', data: DirectionalHint.bottomRightEdge },
+              { key: 'H', text: 'Bottom Auto Edge', data: DirectionalHint.bottomAutoEdge },
+              { key: 'I', text: 'Left Top Edge', data: DirectionalHint.leftTopEdge },
+              { key: 'J', text: 'Left Center', data: DirectionalHint.leftCenter },
+              { key: 'K', text: 'Left Bottom Edge', data: DirectionalHint.leftBottomEdge },
+              { key: 'L', text: 'Right Top Edge', data: DirectionalHint.rightTopEdge },
+              { key: 'M', text: 'Right Center', data: DirectionalHint.rightCenter },
+              { key: 'N', text: 'Right Bottom Edge', data: DirectionalHint.rightBottomEdge }
+            ]
+          }
+          onChanged={ this._onDropdownChange }
+        />
+
         <div
           className={ classNames.buttonContainer }
           ref={ this._targetButton }
         >
           <DefaultButton
             onClick={ this._onShowMenuClicked }
-            text={ isTargetVisible ? 'Hide Coachmark' : 'Show Coachmark' }
+            text={ isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark' }
           />
         </div>
-        { isTargetVisible && (
+        { isCoachmarkVisible && (
           <Coachmark
             target={ this._targetButton.current }
             positioningContainerProps={ {
-              directionalHint: DirectionalHint.topLeftEdge
+              directionalHint: this.state.coachmarkPosition
             } }
           >
             <TeachingBubbleContent
@@ -100,13 +123,20 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
   private _onDismiss = (): void => {
     this.setState({
-      isTargetVisible: false
+      isCoachmarkVisible: false
+    });
+  }
+
+  private _onDropdownChange = (option: IDropdownOption): void => {
+    console.log(option);
+    this.setState({
+      coachmarkPosition: option.data
     });
   }
 
   private _onShowMenuClicked = (): void => {
     this.setState({
-      isTargetVisible: !this.state.isTargetVisible
+      isCoachmarkVisible: !this.state.isCoachmarkVisible
     });
   }
 }
