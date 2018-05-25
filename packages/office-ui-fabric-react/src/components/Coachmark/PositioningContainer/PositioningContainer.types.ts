@@ -8,7 +8,6 @@ import {
 import { ICalloutPositon, IPositionedData } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IPositioningContainer {
-  updatePosition(): void;
 }
 
 export interface IPositionInfo {

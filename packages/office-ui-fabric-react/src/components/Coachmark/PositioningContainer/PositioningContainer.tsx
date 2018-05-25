@@ -15,8 +15,7 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  createRef,
-  shallowCompare
+  createRef
 } from '../../../Utilities';
 
 import {
@@ -114,10 +113,6 @@ export class PositioningContainer
 
   public componentDidMount(): void {
     this._onComponentDidMount();
-  }
-
-  public shouldComponentUpdate(newProps: IPositioningContainerTypes, newState: IPositioningContainerState) {
-    return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
   public componentDidUpdate(): void {
@@ -257,10 +252,6 @@ export class PositioningContainer
 
     this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
-  }
-
-  public updatePosition = (): void => {
-    this._updateAsyncPosition();
   }
 
   private _updateAsyncPosition(): void {
