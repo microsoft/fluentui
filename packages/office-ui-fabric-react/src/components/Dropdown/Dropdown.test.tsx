@@ -14,7 +14,7 @@ import { DropdownMenuItemType, IDropdownOption } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
-  { key: '1', text: '1', title: 'I am a custom title.' },
+  { key: '1', text: '1' },
   { key: '2', text: '2' },
   { key: '3', text: '3' },
   { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
