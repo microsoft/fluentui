@@ -128,7 +128,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
   }
 
   private _onDropdownChange = (option: IDropdownOption): void => {
-    console.log(option);
     this.setState({
       coachmarkPosition: option.data
     });
