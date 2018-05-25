@@ -11,45 +11,62 @@ import { createListItems } from '@uifabric/example-app-base';
 import './DetailsList.DragDrop.Example.scss';
 import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/components/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/components/MarqueeSelection/MarqueeSelection';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 let _draggedItem: any = null;
 let _draggedIndex = -1;
 let _items: any[];
 let _columns: IColumn[];
-export class DetailsListDragDropExample extends React.Component<
-  {},
-  {
-    items: {}[];
-    selectionDetails?: string;
-    columns: IColumn[];
-    frozenColumnCount: number;
-  }
-  > {
+export class DetailsListDragDropExample extends React.Component<{}, {
+  items: {}[];
+  selectionDetails?: string;
+  columns: IColumn[];
+  isColumnReorderEnabled: boolean;
+  frozenColumnCount: string;
+}> {
   private _selection: Selection;
 
   constructor(props: {}) {
     super(props);
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
-    this._handleDragDrop = this._handleDragDrop.bind(this);
+    this._handleColumnReorder = this._handleColumnReorder.bind(this);
     this._getColumnReorderOptions = this._getColumnReorderOptions.bind(this);
+    this._onChangeColumnReorderEnabled = this._onChangeColumnReorderEnabled.bind(this);
+    this._onChangeText = this._onChangeText.bind(this);
 
     this._selection = new Selection();
 
     _items = _items || createListItems(10, 0);
-    _columns = _buildColumns();
+    _columns = buildColumns(_items, true);
 
     this.state = {
       items: createListItems(10),
-      columns: _columns
+      columns: _columns,
+      isColumnReorderEnabled: false,
+      frozenColumnCount: '1'
     };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails, columns } = this.state;
+    const { items, selectionDetails, columns, isColumnReorderEnabled, frozenColumnCount } = this.state;
 
     return (
       <div className='detailsListDragDropExample'>
+        <Toggle
+          label='Enable Column Reorder'
+          checked={isColumnReorderEnabled}
+          onChanged={this._onChangeColumnReorderEnabled}
+          onText='Enabled'
+          offText='Disabled'
+        />
+        <TextField
+          label='Number of frozen columns:'
+          onGetErrorMessage={this._validateNumber}
+          value={frozenColumnCount}
+          onChanged={this._onChangeText}
+        />
         <div>{selectionDetails}</div>
         <MarqueeSelection selection={this._selection}>
           <DetailsList
@@ -61,14 +78,14 @@ export class DetailsListDragDropExample extends React.Component<
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
             dragDropEvents={this._getDragDropEvents()}
-            columnReorderOptions={this._getColumnReorderOptions()}
+            columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
           />
         </MarqueeSelection>
       </div>
     );
   }
 
-  private _handleDragDrop = (draggedIndex: number, targetIndex: number) => {
+  private _handleColumnReorder = (draggedIndex: number, targetIndex: number) => {
     const draggedItems = this.state.columns[draggedIndex];
     const newColumns: IColumn[] = [...this.state.columns];
 
@@ -83,9 +100,23 @@ export class DetailsListDragDropExample extends React.Component<
 
   private _getColumnReorderOptions(): IColumnReorderOptions {
     return {
-      frozenColumnCount: 1,
-      handleColumnReorder: this._handleDragDrop
+      frozenColumnCount: !isNaN(Number(this.state.frozenColumnCount)) ? Number.parseInt(this.state.frozenColumnCount) : undefined,
+      handleColumnReorder: this._handleColumnReorder
     };
+  }
+
+  private _validateNumber(value: string): string {
+    return isNaN(Number(value))
+      ? `The value should be a number, actual is ${value}.`
+      : '';
+  }
+
+  private _onChangeText = (text: any): void => {
+    this.setState({ frozenColumnCount: text });
+  }
+
+  private _onChangeColumnReorderEnabled = (checked: boolean): void => {
+    this.setState({ isColumnReorderEnabled: checked });
   }
 
   private _getDragDropEvents(): IDragDropEvents {
@@ -147,9 +178,4 @@ export class DetailsListDragDropExample extends React.Component<
 
     this.setState({ items: items });
   }
-}
-
-function _buildColumns(): IColumn[] {
-  const columns = buildColumns(_items, true);
-  return columns;
 }
