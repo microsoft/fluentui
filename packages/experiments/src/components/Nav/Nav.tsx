@@ -149,6 +149,9 @@ class NavComponent extends NavBase {
     // if allowed, auto expand if the child is selected
     link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
 
+    // enable auto expand until the next manual expand disables the auto expand
+    link.disableAutoExpand = false;
+
     return (
       <li
         role='listitem'
