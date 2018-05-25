@@ -58,7 +58,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
       case BeakDirection.Bottom:
         pointOne = `0, 0`;
         pointTwo = `${BEAK_WIDTH}, 0`;
-        pointThree = `${BEAK_HEIGHT}, ${BEAK_HEIGHT}`;
+        pointThree = `${BEAK_WIDTH / 2}, ${BEAK_HEIGHT}`;
         transform = 'translateY(100%)';
         break;
       case BeakDirection.Left:
