@@ -112,7 +112,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           this.updateStickyRefHeights();
         } else {
           // Else if mutation occurs in scrollable region, then find sticky it belongs to and force update
-          let stickyList: Sticky[] = [];
+          const stickyList: Sticky[] = [];
           this._stickies.forEach((sticky) => {
             if (sticky.root && sticky.root.contains(mutation[0].target)) {
               stickyList.push(sticky);
@@ -323,14 +323,14 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       if (!stickyContainer.contains(stickyContentToAdd)) {
         const stickyChildrenElements: Element[] = [].slice.call(stickyContainer.children);
 
-        let stickyList: Sticky[] = [];
+        const stickyList: Sticky[] = [];
         // Get stickies.  Filter by canStickyTop/Bottom, then sort by distance from top, and then
         // filter by elements that are in the stickyContainer already.
-        this._stickies.forEach((sticky) => {
+        this._stickies.forEach((stickyItem) => {
           if (stickyContainer === this.stickyAbove && sticky.canStickyTop) {
-            stickyList.push(sticky)
+            stickyList.push(stickyItem);
           } else if (sticky.canStickyBottom) {
-            stickyList.push(sticky)
+            stickyList.push(stickyItem);
           }
         });
 
