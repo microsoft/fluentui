@@ -352,8 +352,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         !!hasErrorMessage
       );
 
-    const describedBy = id + '-option';
-
     return (
       <div { ...divProps } ref={ this._root } className={ this._classNames.container }>
         { label && (
@@ -384,14 +382,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-expanded={ isOpen }
                 aria-autocomplete={ this._getAriaAutoCompleteValue() }
                 role='combobox'
-                aria-readonly={ ((allowFreeform || disabled) ? undefined : 'true') }
                 readOnly={ disabled || !allowFreeform }
                 aria-labelledby={ (label && (id + '-label')) }
                 aria-label={ ((ariaLabel && !label) ? ariaLabel : undefined) }
-                aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+                aria-describedby={ keytipAttributes['aria-describedby'] }
                 aria-activedescendant={ this._getAriaActiveDescentValue() }
                 aria-disabled={ disabled }
-                aria-owns={ (id + '-list') }
+                aria-owns={ isOpen ? (id + '-list') : undefined }
                 spellCheck={ false }
                 defaultVisibleValue={ this._currentVisibleValue }
                 suggestedDisplayValue={ suggestedDisplayValue }
