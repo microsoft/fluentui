@@ -1,6 +1,21 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 21 May 2018 10:29:16 GMT and should not be manually modified.
+This log was last generated on Fri, 25 May 2018 16:53:46 GMT and should not be manually modified.
+
+## 5.42.0
+Fri, 25 May 2018 16:53:46 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Auto select/expand based on the selectedKey prop
+- Keyboard support for the slim version of experiments/Nav component and added aria attributes
+
+## 5.41.0
+Tue, 22 May 2018 10:29:12 GMT
+
+### Minor changes
+
+- Implementation of the Chiclet component
 
 ## 5.40.0
 Mon, 21 May 2018 10:29:16 GMT

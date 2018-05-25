@@ -5,6 +5,10 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
 
+    const alertClicked = (): void => {
+      alert('Clicked');
+    };
+
     return (
       <div>
         <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>
@@ -25,6 +29,29 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
                   key: 'calendarEvent',
                   text: 'Calendar event',
                   iconProps: { iconName: 'Calendar' }
+                }
+              ]
+            } }
+          />
+          <CommandBarButton
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            iconProps={ { iconName: 'Add' } }
+            text='Create account'
+            split={ true }
+            onClick={ alertClicked }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
                 }
               ]
             } }

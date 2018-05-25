@@ -110,6 +110,11 @@ export interface INavLink extends INavLink {
    * provide internal implementation to show/hide nav links based on isHidden property.
    */
   isShowMoreLink?: boolean;
+
+  /**
+   * (Optional) Provides an ability to toggle auto expand when the selectedKey prop is one of the child of this link
+   */
+  disableAutoExpand?: boolean;
 }
 
 export interface ICustomNavLinkGroup extends INavLinkGroup {

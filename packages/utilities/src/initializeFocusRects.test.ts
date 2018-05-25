@@ -1,5 +1,6 @@
 import { IsFocusVisibleClassName, initializeFocusRects } from './initializeFocusRects';
 import { KeyCodes } from './KeyCodes';
+import { addDirectionalKeyCode } from './keyboard';
 
 describe('initializeFocusRects', () => {
   let classNames: string[] = [];
@@ -86,5 +87,15 @@ describe('initializeFocusRects', () => {
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
     mockWindow.mousedown({ target: mockTarget });
     expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(false);
+  });
+
+  it('can show focus when you press a custom directional key', () => {
+    mockWindow.keydown({ target: mockTarget, which: KeyCodes.f6 });
+    expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(false);
+
+    addDirectionalKeyCode(KeyCodes.f6);
+
+    mockWindow.keydown({ target: mockTarget, which: KeyCodes.f6 });
+    expect(classNames.indexOf(IsFocusVisibleClassName) > -1).toEqual(true);
   });
 });

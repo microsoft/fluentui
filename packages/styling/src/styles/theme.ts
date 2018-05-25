@@ -125,10 +125,10 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
-// This does NOT fix deprecated slots.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyFrameBackground: p.white,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
@@ -170,7 +170,6 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonTextCheckedHovered: p.black,
 
     menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundChecked: p.neutralLight,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 
@@ -186,12 +185,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 
-    // Deprecated slots, fixed by _fixDeprecatedSlots()
-    /**
-     * Deprecated. Use `listText` instead.
-     * @deprecated
-     */
-    listTextColor: ''
+    // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
+    listTextColor: '',
+    menuItemBackgroundChecked: p.neutralLight
   };
 
   return _fixDeprecatedSlots(toReturn, depComments!);
@@ -205,5 +201,6 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
   }
 
   s.listTextColor = s.listText + dep;
+  s.menuItemBackgroundChecked += dep;
   return s;
 }

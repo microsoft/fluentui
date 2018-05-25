@@ -277,6 +277,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       onColumnHeaderContextMenu,
       selectionMode,
       selectionPreservedOnEmptyClick,
+      selectionZoneProps,
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
@@ -392,6 +393,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                 onItemInvoked={ onItemInvoked }
                 onItemContextMenu={ onItemContextMenu }
                 enterModalOnTouch={ this.props.enterModalSelectionOnTouch }
+                { ...(selectionZoneProps || {}) }
               >
                 { groups ? (
                   <GroupedList
