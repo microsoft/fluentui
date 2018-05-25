@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 25 May 2018 16:53:46 GMT and should not be manually modified.
+This log was last generated on Fri, 25 May 2018 21:30:43 GMT and should not be manually modified.
+
+## 5.43.0
+Fri, 25 May 2018 21:30:43 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Enable auto expand until the next manual expand disables the auto expand
 
 ## 5.42.0
 Fri, 25 May 2018 16:53:46 GMT

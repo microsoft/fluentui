@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 May 2018 16:53:47 GMT and should not be manually modified.
+This log was last generated on Fri, 25 May 2018 21:30:43 GMT and should not be manually modified.
+
+## 5.111.2
+Fri, 25 May 2018 21:30:43 GMT
+
+### Patches
+
+- MaskedTextField: Added event callpack passthrough
+- fix old error color SASS variables so they work when themed
 
 ## 5.111.1
 Fri, 25 May 2018 16:53:47 GMT
