@@ -13,6 +13,7 @@ module.exports = {
 
     const resolveLoader = {
       modules: [
+        path.resolve(__dirname, '../../node_modules'),
         path.resolve(__dirname, '../node_modules'),
         path.resolve(process.cwd(), 'node_modules')
       ]
@@ -148,10 +149,6 @@ module.exports = {
 
         plugins: [
           new WebpackNotifierPlugin(),
-          new webpack.WatchIgnorePlugin([
-            /\.js$/,
-            /\.d\.ts$/
-          ]),
           new ForkTsCheckerWebpackPlugin()
         ]
       },

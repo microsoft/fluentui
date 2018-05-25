@@ -1,10 +1,39 @@
+// @ts-check
+const path = require('path');
+
+/**
+ * Handles resolve like require.resolve but respects the glob patterns
+ * @param {string} pattern
+ */
+function expandSourcePath(pattern) {
+  if (!pattern) {
+    return null;
+  }
+
+  // just returns the relative paths
+  if (pattern.startsWith('.')) {
+    return pattern;
+  }
+
+  // tries to resolve the packages, handling scoped packages
+  const splitPattern = pattern.split('/');
+  const packageName = pattern[0] == '@' ? `${splitPattern[0]}/${splitPattern[1]}` : splitPattern[0];
+  const resolvedPackageJson = require.resolve(`${packageName}/package.json`);
+
+  if (!resolvedPackageJson) {
+    // returns pattern if the packageName didn't contain a package.json (not really a package)
+    return pattern;
+  }
+
+  return pattern.replace(packageName, path.dirname(resolvedPackageJson));
+}
 
 module.exports = function (options) {
   const { logStartTask, logEndTask } = require('../logging');
   const path = require('path');
   const fs = require('fs');
 
-  configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
+  let configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 
   if (!fs.existsSync(configPath)) {
     return;
@@ -18,7 +47,7 @@ module.exports = function (options) {
       const sources = config.copyTo[destination];
 
       for (let source of sources) {
-        source = path.resolve(process.cwd(), source);
+        source = expandSourcePath(source);
         destination = path.resolve(process.cwd(), destination);
         startCopy(source, destination);
       }

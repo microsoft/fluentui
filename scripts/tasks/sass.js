@@ -86,11 +86,23 @@ module.exports = function (options) {
     return source.join('\n');
   }
 
+  /**
+   * @param {string} url
+   * @param {string} prev
+   * @param {Function} done
+   */
   function patchSassUrl(url, prev, done) {
     let newUrl = url;
 
     if (url[0] === '~') {
-      newUrl = path.resolve(process.cwd(), 'node_modules', url.substr(1));
+      let packageUrl = url.substr(1) + (url.endsWith('.scss') ? '' : '.scss');
+
+      try {
+        newUrl = require.resolve(packageUrl);
+      } catch (e) {
+        // try again with a private reference
+        newUrl = require.resolve(path.join(path.dirname(packageUrl), `_${path.basename(packageUrl)}`));
+      }
     }
     else if (url === 'stdin') {
       newUrl = '';
