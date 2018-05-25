@@ -104,7 +104,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
 
     return (
-      <div className={ css('ms-TeachingBubble-content') }>
+      <div className={ css('ms-TeachingBubble-content', styles.root) }>
         { imageContent }
         { closeButton }
         <div className={ css('ms-TeachingBubble-bodycontent', styles.bodyContent) }>
