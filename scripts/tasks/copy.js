@@ -1,10 +1,5 @@
-// @ts-check
 const path = require('path');
 
-/**
- * Handles resolve like require.resolve but respects the glob patterns
- * @param {string} pattern
- */
 function expandSourcePath(pattern) {
   if (!pattern) {
     return null;
@@ -18,14 +13,21 @@ function expandSourcePath(pattern) {
   // tries to resolve the packages, handling scoped packages
   const splitPattern = pattern.split('/');
   const packageName = pattern[0] == '@' ? `${splitPattern[0]}/${splitPattern[1]}` : splitPattern[0];
-  const resolvedPackageJson = require.resolve(`${packageName}/package.json`);
 
-  if (!resolvedPackageJson) {
-    // returns pattern if the packageName didn't contain a package.json (not really a package)
-    return pattern;
+  try {
+    const resolvedPackageJson = require.resolve(`${packageName}/package.json`, {
+      paths: [process.cwd()]
+    });
+
+    if (!resolvedPackageJson) {
+      // returns pattern if the packageName didn't contain a package.json (not really a package)
+      return pattern;
+    }
+
+    return pattern.replace(packageName, path.dirname(resolvedPackageJson));
+  } catch (e) {
+    console.error(e);
   }
-
-  return pattern.replace(packageName, path.dirname(resolvedPackageJson));
 }
 
 module.exports = function (options) {
