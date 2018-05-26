@@ -57,6 +57,16 @@ export class ContextualMenuBasicExample extends React.Component {
                 target: '_blank'
               },
               {
+                key: 'linkWithOnClick',
+                name: 'Link click',
+                href: 'http://bing.com',
+                onClick: (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+                  alert('Link clicked');
+                  ev.preventDefault();
+                },
+                target: '_blank'
+              },
+              {
                 key: 'disabled',
                 name: 'Disabled item',
                 disabled: true,
