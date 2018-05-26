@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Breaking types dependency from components so types dependency does not cause bundle siz",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "pramod.chandoria@hotmail.com"
+}
