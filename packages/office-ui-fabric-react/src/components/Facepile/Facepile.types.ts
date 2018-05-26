@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
 import {
   IPersonaSharedProps,
@@ -11,7 +10,7 @@ export interface IFacepile {
 
 }
 
-export interface IFacepileProps extends React.Props<Facepile> {
+export interface IFacepileProps extends React.Props<any> {
   /**
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

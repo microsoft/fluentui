@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Calendar } from './Calendar';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
@@ -9,7 +8,7 @@ export interface ICalendar {
   focus: () => void;
 }
 
-export interface ICalendarProps extends React.Props<Calendar> {
+export interface ICalendarProps extends React.Props<any> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  GroupedList
-} from './GroupedList';
-import {
   IList,
   IListProps
 } from '../../List';
@@ -37,7 +34,7 @@ export interface IGroupedList extends IList {
   toggleCollapseAll: (allCollapsed: boolean) => void;
 }
 
-export interface IGroupedListProps extends React.Props<GroupedList> {
+export interface IGroupedListProps extends React.Props<any> {
   /**
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

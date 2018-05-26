@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DatePicker } from './DatePicker';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
@@ -12,7 +11,7 @@ export interface IDatePicker {
   reset(): void;
 }
 
-export interface IDatePickerProps extends React.Props<DatePicker> {
+export interface IDatePickerProps extends React.Props<any> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Modal } from './Modal';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
@@ -10,7 +9,7 @@ export interface IModal {
   focus: () => void;
 }
 
-export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.Props<any>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

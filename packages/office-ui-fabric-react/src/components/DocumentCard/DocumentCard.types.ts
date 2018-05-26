@@ -1,12 +1,4 @@
 import * as React from 'react';
-import { DocumentCard } from './DocumentCard';
-import { DocumentCardTitle } from './DocumentCardTitle';
-import { DocumentCardPreview } from './DocumentCardPreview';
-import { DocumentCardLocation } from './DocumentCardLocation';
-import { DocumentCardActivity } from './DocumentCardActivity';
-import { DocumentCardActions } from './DocumentCardActions';
-import { DocumentCardLogo } from './DocumentCardLogo';
-import { DocumentCardStatus } from './DocumentCardStatus';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
@@ -16,7 +8,7 @@ export interface IDocumentCard {
 
 }
 
-export interface IDocumentCardProps extends React.Props<DocumentCard> {
+export interface IDocumentCardProps extends React.Props<any> {
   /**
    * Optional callback to access the IDocumentCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -66,7 +58,7 @@ export enum DocumentCardType {
   compact = 1
 }
 
-export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {
+export interface IDocumentCardPreviewProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */
@@ -154,7 +146,7 @@ export interface IDocumentCardPreviewImage {
   previewIconContainerClass?: string;
 }
 
-export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
+export interface IDocumentCardTitleProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */
@@ -178,7 +170,7 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
   showAsSecondaryTitle?: boolean;
 }
 
-export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
+export interface IDocumentCardLocationProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */
@@ -205,7 +197,7 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
   ariaLabel?: string;
 }
 
-export interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {
+export interface IDocumentCardActivityProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */
@@ -252,7 +244,7 @@ export interface IDocumentCardActivityPerson {
   initialsColor?: PersonaInitialsColor;
 }
 
-export interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {
+export interface IDocumentCardActionsProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */
@@ -269,7 +261,7 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
   views?: Number;
 }
 
-export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
+export interface IDocumentCardLogoProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */
@@ -285,7 +277,7 @@ export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
   logoName?: string;
 }
 
-export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus> {
+export interface IDocumentCardStatusProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */

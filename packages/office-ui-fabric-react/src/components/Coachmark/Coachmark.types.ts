@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
 import { IStyleFunction } from '../../Utilities';
@@ -7,7 +6,7 @@ import { IStyleFunction } from '../../Utilities';
 export interface ICoachmark {
 }
 
-export interface ICoachmarkTypes extends React.Props<Coachmark> {
+export interface ICoachmarkTypes extends React.Props<any> {
   componentRef?: (component: ICoachmark | null) => void;
 
   /**

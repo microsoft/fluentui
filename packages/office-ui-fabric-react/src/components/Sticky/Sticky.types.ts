@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Sticky } from './Sticky';
 
-export interface IStickyProps extends React.Props<Sticky> {
+export interface IStickyProps extends React.Props<any> {
   /**
    * Gets ref to component interface.
    */
