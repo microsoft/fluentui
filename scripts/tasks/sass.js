@@ -1,6 +1,7 @@
 module.exports = function (options) {
   const glob = require('glob');
   const path = require('path');
+  const requireResolveCwd = require('../require-resolve-cwd');
 
   const _fileNameToClassMap = {};
 
@@ -88,14 +89,10 @@ module.exports = function (options) {
 
   function requireResolvePackageUrl(packageUrl) {
     try {
-      return require.resolve(packageUrl, {
-        paths: [process.cwd()]
-      });
+      return requireResolveCwd(packageUrl);
     } catch (e) {
       // try again with a private reference
-      return require.resolve(path.join(path.dirname(packageUrl), `_${path.basename(packageUrl)}`), {
-        paths: [process.cwd()]
-      });
+      return requireResolveCwd(path.join(path.dirname(packageUrl), `_${path.basename(packageUrl)}`));
     }
   }
 
@@ -103,7 +100,7 @@ module.exports = function (options) {
     let newUrl = url;
 
     if (url[0] === '~') {
-      newUrl = requireResolve(url.substr(1) + (url.endsWith('.scss') ? '' : '.scss'));
+      newUrl = requireResolvePackageUrl(url.substr(1) + (url.endsWith('.scss') ? '' : '.scss'));
     }
     else if (url === 'stdin') {
       newUrl = '';

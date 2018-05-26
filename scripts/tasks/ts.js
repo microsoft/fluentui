@@ -1,7 +1,8 @@
 module.exports = function (options) {
+  const requireResolveCwd = require('../require-resolve-cwd');
   const path = require('path');
   const execSync = require('../exec-sync');
-  const typescriptPath = 'node ' + require.resolve('typescript/lib/tsc');
+  const typescriptPath = 'node ' + requireResolveCwd('typescript/lib/tsc');
   const libPath = path.resolve(process.cwd(), 'lib');
   const srcPath = path.resolve(process.cwd(), 'src');
   const extraParams = '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');

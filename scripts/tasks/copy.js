@@ -1,6 +1,8 @@
 const path = require('path');
 
 function expandSourcePath(pattern) {
+  const requireResolveCwd = require('../require-resolve-cwd');
+
   if (!pattern) {
     return null;
   }
@@ -15,9 +17,7 @@ function expandSourcePath(pattern) {
   const packageName = pattern[0] == '@' ? `${splitPattern[0]}/${splitPattern[1]}` : splitPattern[0];
 
   try {
-    const resolvedPackageJson = require.resolve(`${packageName}/package.json`, {
-      paths: [process.cwd()]
-    });
+    const resolvedPackageJson = requireResolveCwd(`${packageName}/package.json`);
 
     if (!resolvedPackageJson) {
       // returns pattern if the packageName didn't contain a package.json (not really a package)
