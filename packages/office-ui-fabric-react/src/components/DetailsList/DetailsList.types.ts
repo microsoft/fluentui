@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {
   ISelection,
-  SelectionMode
+  SelectionMode,
+  ISelectionZoneProps
 } from '../../utilities/selection/index';
 import { IRenderFunction } from '../../Utilities';
 import {
@@ -90,6 +91,11 @@ export interface IDetailsListProps extends React.Props<any>, IWithViewportProps 
    * @default false
    **/
   selectionPreservedOnEmptyClick?: boolean;
+
+  /**
+   * Addition props to pass through to the selection zone created by default.
+   */
+  selectionZoneProps?: ISelectionZoneProps;
 
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;

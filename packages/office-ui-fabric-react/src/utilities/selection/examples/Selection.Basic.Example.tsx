@@ -52,6 +52,8 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
         <span className='ms-SelectionItemExample-name'>
           { item.name }
         </span>
+        <a className='ms-SelectionItemExample-link' href='https://bing.com' target='_blank'>Link that avoids selection</a>
+        <a className='ms-SelectionItemExample-link' data-selection-select={ true } href='https://bing.com' target='_blank'>Link that selects first</a>
       </div>
     );
   }

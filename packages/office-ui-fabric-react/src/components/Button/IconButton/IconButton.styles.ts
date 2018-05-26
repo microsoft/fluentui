@@ -29,7 +29,6 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       color: palette.themeDarker,
-      backgroundColor: semanticColors.buttonBackground,
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight',
@@ -40,7 +39,6 @@ export const getStyles = memoizeFunction((
 
     rootPressed: {
       color: palette.themePrimary,
-      backgroundColor: semanticColors.buttonBackgroundHovered,
     },
 
     rootExpanded: {

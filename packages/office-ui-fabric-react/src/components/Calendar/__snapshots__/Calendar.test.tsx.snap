@@ -48,10 +48,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     aria-controls="DatePickerDay-dayPicker10"
                     aria-label={undefined}
                     className="ms-DatePicker-prevMonth js-prevMonth"
+                    disabled={false}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
-                    tabIndex={0}
                   >
                     <i
                       aria-hidden={true}
@@ -76,10 +76,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     aria-controls="DatePickerDay-dayPicker10"
                     aria-label={undefined}
                     className="ms-DatePicker-nextMonth js-nextMonth"
+                    disabled={false}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
-                    tabIndex={0}
                   >
                     <i
                       aria-hidden={true}
@@ -192,24 +192,23 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   onMouseUp={undefined}
                 >
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="January 30, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -220,20 +219,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="January 31, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -244,20 +243,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-DatePicker-dayBackground undefined"
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 1, 2000"
                         aria-selected={true}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined ms-DatePicker-day--highlighted undefined"
+                        className=""
                         data-is-focusable={true}
                         id="DatePickerDay-active9"
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -268,20 +267,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 2, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -292,20 +291,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 3, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -316,20 +315,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 4, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -340,20 +339,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 5, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -365,24 +364,23 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 6, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -393,20 +391,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 7, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -417,20 +415,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 8, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -441,20 +439,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 9, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -465,20 +463,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 10, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -489,20 +487,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 11, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -513,20 +511,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 12, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -538,24 +536,23 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 13, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -566,20 +563,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 14, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -590,20 +587,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 15, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -614,20 +611,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 16, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -638,20 +635,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 17, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -662,20 +659,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 18, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -686,20 +683,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 19, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -711,24 +708,23 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 20, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -739,20 +735,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 21, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -763,20 +759,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 22, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -787,20 +783,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 23, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -811,20 +807,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 24, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -835,20 +831,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 25, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -859,20 +855,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 26, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -884,24 +880,23 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                   </tr>
                   <tr
-                    className={undefined}
                     role="row"
                   >
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 27, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -912,20 +907,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 28, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -936,20 +931,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="February 29, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -960,20 +955,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="March 1, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -984,20 +979,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="March 2, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1008,20 +1003,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="March 3, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1032,20 +1027,20 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
+                      onMouseDown={undefined}
+                      onMouseLeave={undefined}
+                      onMouseOver={undefined}
+                      onMouseUp={undefined}
                     >
                       <div
                         aria-label="March 4, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=""
                         data-is-focusable={true}
                         id={undefined}
-                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        onMouseDown={undefined}
-                        onMouseLeave={undefined}
-                        onMouseOver={undefined}
-                        onMouseUp={undefined}
                         role="gridcell"
                       >
                         <span
@@ -1060,6 +1055,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </table>
             </div>
           </div>
+          <div
+            className={undefined}
+          />
           <div
             className="ms-DatePicker-monthPicker"
           >
@@ -1080,10 +1078,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <button
                     aria-label={undefined}
                     className="ms-DatePicker-prevYear js-prevYear"
+                    disabled={false}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
-                    tabIndex={0}
                   >
                     <i
                       aria-hidden={true}
@@ -1107,10 +1105,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <button
                     aria-label={undefined}
                     className="ms-DatePicker-nextYear js-nextYear"
+                    disabled={false}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
-                    tabIndex={0}
                   >
                     <i
                       aria-hidden={true}
@@ -1153,7 +1151,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Jan
@@ -1163,7 +1163,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={true}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Feb
@@ -1173,7 +1175,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Mar
@@ -1183,7 +1187,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Apr
@@ -1193,7 +1199,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   May
@@ -1203,7 +1211,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Jun
@@ -1213,7 +1223,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Jul
@@ -1223,7 +1235,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Aug
@@ -1233,7 +1247,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Sep
@@ -1243,7 +1259,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Oct
@@ -1253,7 +1271,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Nov
@@ -1263,7 +1283,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
                   data-is-focusable={true}
+                  disabled={false}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="gridcell"
                 >
                   Dec
@@ -1272,7 +1294,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
           </div>
           <button
-            className="ms-DatePicker-goToday js-goToday"
+            className="ms-DatePicker-goToday js-goToday undefined"
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"

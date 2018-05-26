@@ -1,34 +1,77 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { DefaultPalette, IStyleSet } from '../../Styling';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  DelayedRender
+} from '../../Utilities';
 import {
   IShimmerProps,
   IShimmerStyleProps,
   IShimmerStyles,
-  ShimmerElementType,
-  ICircle,
-  ILine,
-  IGap,
-  ShimmerElementVerticalAlign,
+  IShimmerElement,
 } from './Shimmer.types';
-import { ShimmerLine } from './ShimmerLine/ShimmerLine';
-import { ShimmerGap } from './ShimmerGap/ShimmerGap';
-import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
+import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
-const LINE_DEFAULT_HEIGHT = 16;
-const GAP_DEFAULT_HEIGHT = 16;
-const CIRCLE_DEFAULT_HEIGHT = 24;
+export interface IShimmerState {
+  /**
+   * Flag for knowing when to remove the shimmerWrapper from the DOM.
+   */
+  contentLoaded?: boolean;
+}
+
+const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
-export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
+@customizable('Shimmer', ['theme'])
+export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
     isDataLoaded: false,
     isBaseStyle: false
   };
+
   private _classNames: { [key in keyof IShimmerStyles]: string };
+  private _lastTimeoutId: number | undefined;
+
   constructor(props: IShimmerProps) {
     super(props);
+
+    this.state = {
+      contentLoaded: props.isDataLoaded
+    };
+
+    this._warnDeprecations({
+      'isBaseStyle': 'customElementsGroup',
+      'width': 'widthInPercentage or widthInPixel',
+      'lineElements': 'shimmerElements'
+    });
+
+    this._warnMutuallyExclusive({
+      'lineElements': 'shimmerElements',
+      'customElementsGroup': 'lineElements'
+    });
+  }
+
+  public componentWillReceiveProps(nextProps: IShimmerProps): void {
+    const { isDataLoaded } = nextProps;
+
+    if (this._lastTimeoutId !== undefined) {
+      this._async.clearTimeout(this._lastTimeoutId);
+      this._lastTimeoutId = undefined;
+    }
+    if (isDataLoaded) {
+      this._lastTimeoutId = this._async.setTimeout(() => {
+        this.setState({
+          contentLoaded: isDataLoaded
+        });
+        this._lastTimeoutId = undefined;
+      }, TRANSITION_ANIMATION_INTERVAL);
+    } else {
+      this.setState({
+        contentLoaded: isDataLoaded
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -36,126 +79,58 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       getStyles,
       width,
       lineElements,
+      shimmerElements,
       children,
       isDataLoaded,
       isBaseStyle,
       widthInPercentage,
-      widthInPixel
+      widthInPixel,
+      className,
+      customElementsGroup,
+      theme,
+      ariaLabel
     } = this.props;
 
-    const rowHeight: number | undefined = lineElements ? findMaxElementHeight(lineElements) : undefined;
+    const { contentLoaded } = this.state;
+
+    // lineElements is a deprecated prop so need to check which one was used.
+    const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
 
     this._classNames = getClassNames(getStyles!, {
-      width, rowHeight, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel
+      theme: theme!,
+      width,
+      isDataLoaded,
+      widthInPercentage,
+      widthInPixel,
+      className,
+      transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL
     });
-
-    const renderedElements: React.ReactNode = getRenderedElements(lineElements, rowHeight);
 
     return (
       <div className={ this._classNames.root }>
-        <div className={ this._classNames.shimmerWrapper }>
-          { !!isBaseStyle ? children : renderedElements }
-        </div>
-
-        { !!isDataLoaded &&
+        { !contentLoaded &&
+          <div className={ this._classNames.shimmerWrapper }>
+            { isBaseStyle ? children : // isBaseStyle prop is deprecated and this check needs to be removed in the future
+              customElementsGroup ? customElementsGroup :
+                <ShimmerElementsGroup
+                  shimmerElements={ elements }
+                />
+            }
+          </div>
+        }
+        { !isBaseStyle && children && // isBaseStyle prop is deprecated and needs to be removed in the future
           <div className={ this._classNames.dataWrapper }>
-            { !!children ? children : null }
+            { children }
+          </div>
+        }
+        { ariaLabel && !isDataLoaded &&
+          <div role='status' aria-live='polite'>
+            <DelayedRender>
+              <div className={ this._classNames.screenReaderText }>{ ariaLabel }</div>
+            </DelayedRender>
           </div>
         }
       </div>
     );
   }
-}
-
-export function getRenderedElements(lineElements?: Array<ICircle | IGap | ILine>, rowHeight?: number): React.ReactNode {
-  const renderedElements: React.ReactNode = lineElements ?
-    lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
-      switch (elem.type) {
-        case ShimmerElementType.circle:
-          return (
-            <ShimmerCircle
-              key={ index }
-              { ...elem }
-              borderStyle={ getBorderStyles(elem, rowHeight) }
-            />
-          );
-        case ShimmerElementType.gap:
-          return (
-            <ShimmerGap
-              key={ index }
-              { ...elem }
-              borderStyle={ getBorderStyles(elem, rowHeight) }
-            />
-          );
-        case ShimmerElementType.line:
-          return (
-            <ShimmerLine
-              key={ index }
-              { ...elem }
-              borderStyle={ getBorderStyles(elem, rowHeight) }
-            />
-          );
-      }
-    }) : (
-      <ShimmerLine
-        height={ LINE_DEFAULT_HEIGHT }
-      />
-    );
-
-  return renderedElements;
-}
-
-export function getBorderStyles(elem: ICircle | IGap | ILine, rowHeight?: number): IStyleSet | undefined {
-  const elemHeight: number | undefined = elem.height;
-
-  const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
-
-  let borderStyle: IStyleSet | undefined;
-
-  if (!elem.verticalAlign || elem.verticalAlign === ShimmerElementVerticalAlign.center) {
-    borderStyle = {
-      borderBottom: `${dif ? Math.floor(dif / 2) : 0}px solid ${DefaultPalette.white}`,
-      borderTop: `${dif ? Math.ceil(dif / 2) : 0}px solid ${DefaultPalette.white}`
-    };
-  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.top) {
-    borderStyle = {
-      borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
-      borderTop: `0px solid ${DefaultPalette.white}`
-    };
-  } else if (elem.verticalAlign && elem.verticalAlign === ShimmerElementVerticalAlign.bottom) {
-    borderStyle = {
-      borderBottom: `0px solid ${DefaultPalette.white}`,
-      borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
-    };
-  }
-
-  return borderStyle;
-}
-
-export function findMaxElementHeight(elements: Array<ICircle | IGap | ILine>): number {
-  const itemsDefaulted: Array<ICircle | IGap | ILine> = elements.map((elem: ICircle | IGap | ILine): ICircle | IGap | ILine => {
-    switch (elem.type) {
-      case ShimmerElementType.circle:
-        if (!elem.height) {
-          elem.height = CIRCLE_DEFAULT_HEIGHT;
-        }
-      case ShimmerElementType.line:
-        if (!elem.height) {
-          elem.height = LINE_DEFAULT_HEIGHT;
-        }
-      case ShimmerElementType.gap:
-        if (!elem.height) {
-          elem.height = GAP_DEFAULT_HEIGHT;
-        }
-    }
-    return elem;
-  });
-
-  const rowHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
-    return next.height ?
-      next.height > acc ? next.height : acc
-      : acc;
-  }, 0);
-
-  return rowHeight;
 }

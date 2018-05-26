@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction, IRenderFunction } from '../../Utilities';
 
 export interface IProgressIndicator {
   focus: () => void;
@@ -29,19 +29,29 @@ export interface IProgressIndicatorProps extends React.Props<any> {
   className?: string;
 
   /**
-   * Label to display above the control.
+   * Label to display above the control. May be a string or React virtual elements.
    */
-  label?: string;
+  label?: React.ReactNode;
 
   /**
-   * Text describing or supplementing the operation.
+   * Text describing or supplementing the operation. May be a string or React virtual elements.
    */
-  description?: string;
+  description?: React.ReactNode;
 
   /**
    * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
    */
   percentComplete?: number;
+
+  /**
+   * Whether or not to hide the progress state.
+   */
+  progressHidden?: boolean;
+
+  /**
+   * A render override for the progress track.
+   */
+  onRenderProgress?: IRenderFunction<IProgressIndicatorProps>;
 
   /**
    * Text alternative of the progress status, used by screen readers for reading the value of the progress.

@@ -28,6 +28,9 @@ export interface IContextualMenu {
 
 }
 
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
 export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
@@ -404,7 +407,8 @@ export interface IContextualMenuItem {
     itemClassName?: string,
     dividerClassName?: string,
     iconClassName?: string,
-    subMenuClassName?: string) => IMenuItemClassNames;
+    subMenuClassName?: string,
+    primaryDisabled?: boolean) => IMenuItemClassNames;
 
   /**
   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
@@ -488,7 +492,7 @@ export interface IContextualMenuItem {
   inactive?: boolean;
 }
 
-export interface IContextualMenuSection extends React.Props<any> {
+export interface IContextualMenuSection extends React.Props<ContextualMenu> {
 
   /**
    * The items to include inside the section.

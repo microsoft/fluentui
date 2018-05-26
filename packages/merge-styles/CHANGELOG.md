@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 26 Apr 2018 10:12:34 GMT and should not be manually modified.
+This log was last generated on Wed, 23 May 2018 10:28:50 GMT and should not be manually modified.
+
+## 5.17.1
+Wed, 23 May 2018 10:28:50 GMT
+
+### Patches
+
+- Added missing merge-styles background-size typing
 
 ## 5.17.0
 Thu, 26 Apr 2018 10:12:34 GMT
