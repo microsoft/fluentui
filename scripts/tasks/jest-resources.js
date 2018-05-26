@@ -1,6 +1,5 @@
 const path = require('path');
 const merge = require('./merge');
-const requireResolveCwd = require('../require-resolve-cwd');
 
 const styleMockPath =
   module.exports = {
@@ -13,13 +12,13 @@ const styleMockPath =
     createConfig: (customConfig) => merge(
       {
         moduleNameMapper: {
-          'ts-jest': requireResolveCwd('ts-jest'),
+          'ts-jest': require.resolve('ts-jest'),
           '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
           'KeyCodes': path.resolve(__dirname, 'jest-mock.js')
         },
 
         'transform': {
-          '.(ts|tsx)': requireResolveCwd('ts-jest/preprocessor.js')
+          '.(ts|tsx)': require.resolve('ts-jest/preprocessor.js')
         },
 
         'reporters': [

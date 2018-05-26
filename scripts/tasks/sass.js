@@ -88,11 +88,13 @@ module.exports = function (options) {
   }
 
   function requireResolvePackageUrl(packageUrl) {
+    const fullName = packageUrl + (packageUrl.endsWith('.scss') ? '' : '.scss');
+
     try {
-      return requireResolveCwd(packageUrl);
+      return requireResolveCwd(fullName);
     } catch (e) {
       // try again with a private reference
-      return requireResolveCwd(path.join(path.dirname(packageUrl), `_${path.basename(packageUrl)}`));
+      return requireResolveCwd(path.join(path.dirname(fullName), `_${path.basename(fullName)}`));
     }
   }
 
@@ -100,7 +102,7 @@ module.exports = function (options) {
     let newUrl = url;
 
     if (url[0] === '~') {
-      newUrl = requireResolvePackageUrl(url.substr(1) + (url.endsWith('.scss') ? '' : '.scss'));
+      newUrl = requireResolvePackageUrl(url.substr(1));
     }
     else if (url === 'stdin') {
       newUrl = '';
