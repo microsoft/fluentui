@@ -33,20 +33,13 @@ export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
   setDraggedItemIndex?: (itemIndex: number) => void;
 }
 
-export interface IDetailsColumnState {
-  isDropping: boolean;
-}
-
-export class DetailsColumn extends BaseComponent<IDetailsColumnProps, IDetailsColumnState> {
+export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   private _root: any;
   private _dragDropSubscription: IDisposable;
 
   constructor(props: IDetailsColumnProps) {
     super(props);
 
-    this.state = {
-      isDropping: false,
-    };
     this._root = createRef();
     this._onDragStart = this._onDragStart.bind(this);
     this._onDragEnd = this._onDragEnd.bind(this);

@@ -185,14 +185,20 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-colindex={3}
+    aria-hidden={true}
+    className="ms-DetailsHeader-dropHint"
+    data-is-focusable={false}
+    id="columnDropHint_1"
+  />
+  <div
+    aria-colindex={2}
     aria-disabled={false}
     aria-sort="none"
     className="ms-DetailsHeader-cell is-actionable undefined"
     data-automationid="ColumnsHeaderColumn"
-    data-is-draggable={false}
+    data-is-draggable={true}
     data-item-key="b"
-    draggable={false}
+    draggable={true}
     role="columnheader"
     style={
       Object {
@@ -233,6 +239,12 @@ exports[`DetailsHeader can render 1`] = `
     onClick={[Function]}
     onDoubleClick={[Function]}
     role="button"
+  />
+  <div
+    aria-hidden={true}
+    className="ms-DetailsHeader-dropHint"
+    data-is-focusable={false}
+    id="columnDropHint_2"
   />
 </div>
 `;
