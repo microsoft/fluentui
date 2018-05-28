@@ -188,13 +188,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
 
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
-    if (!this._dragDropHelper) {
-      this._dragDropHelper = this.props.columnReorderOptions ? new DragDropHelper({
+    if (!this._dragDropHelper && this.props.columnReorderOptions) {
+      this._dragDropHelper = new DragDropHelper({
         selection: {
           getSelection: () => { return; }
         } as ISelection,
         minimumPixelsForDrag: this.props.minimumPixelsForDrag
-      }) : null;
+      });
     }
 
     return (
@@ -461,15 +461,14 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _updateDroppingState(newValue: boolean, event: DragEvent): void {
-    if ((newValue === false || this._draggedColumnIndex === -1) && event.type !== 'drop') {
-      const newDropHintState = this.state.dropHintsState!.map(state => false);
-      this.setState({ dropHintsState: newDropHintState });
+    if ((!newValue || this._draggedColumnIndex === -1) && event.type !== 'drop') {
+      this._resetDropHints();
     }
     // TODO - Handle CSS changes
   }
 
   private _onDragOver(item: any, event: DragEvent): void {
-    if (this._draggedColumnIndex !== -1) {
+    if (this._draggedColumnIndex >= 0) {
       const clientX = event.clientX;
       this._updateDropHintStates(clientX);
     }
@@ -506,8 +505,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       this._getDropHintPositions();
     } else {
       this._draggedColumnIndex = -1;
+      this._dropHintOriginXValues = {};
     }
-
   }
 
   private _resetDropHints(): void {
@@ -519,7 +518,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     const rootElement = findDOMNode(focusZone as any) as HTMLElement;
     const { columnReorderOptions, columns } = this.props;
     const headerOriginX = rootElement.getBoundingClientRect().left;
-    const frozenColumnCount = (columnReorderOptions!.frozenColumnCount) ? columnReorderOptions!.frozenColumnCount : 0;
+    const frozenColumnCount = (columnReorderOptions && columnReorderOptions!.frozenColumnCount) ? columnReorderOptions!.frozenColumnCount : 0;
     for (let i = frozenColumnCount!; i < columns.length + 1; i++) {
       const dropHintElement = rootElement!.querySelectorAll('#columnDropHint_' + i)[0] as HTMLElement;
       if (dropHintElement) {
@@ -557,6 +556,14 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       const newDropHintState = dropHintsState.map(state => false);
       newDropHintState[indexToUpdate] = true;
       this.setState({ dropHintsState: newDropHintState });
+    }
+
+    if (indexToUpdate === this._draggedColumnIndex || indexToUpdate === this._draggedColumnIndex + 1) {
+      if (this._isValidCurrentDropHintIndex()) {
+        this._resetDropHints();
+      }
+    } else if (currentDropHintIndex !== indexToUpdate && indexToUpdate !== -1) {
+      this.setState({ currentDropHintIndex: indexToUpdate });
     }
   }
 

@@ -12,6 +12,10 @@ const _columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
   { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
 ];
+const _columnReorderOptions = {
+  frozenColumnCount: 1,
+  handleColumnReorder: this._dummyFunction
+};
 
 _selection.setItems(_items);
 
@@ -20,10 +24,11 @@ describe('DetailsHeader', () => {
   it('can render', () => {
     const component = renderer.create(
       <DetailsHeader
-        selection={ _selection }
-        selectionMode={ SelectionMode.multiple }
-        layoutMode={ DetailsListLayoutMode.fixedColumns }
-        columns={ _columns }
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={_columns}
+        columnReorderOptions={_columnReorderOptions}
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
