@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 25 May 2018 21:30:43 GMT and should not be manually modified.
+This log was last generated on Mon, 28 May 2018 10:23:24 GMT and should not be manually modified.
+
+## 5.44.0
+Mon, 28 May 2018 10:23:24 GMT
+
+### Minor changes
+
+- Shimmer: Refactors and enhances Shimmer with more features.
 
 ## 5.43.0
 Fri, 25 May 2018 21:30:43 GMT
