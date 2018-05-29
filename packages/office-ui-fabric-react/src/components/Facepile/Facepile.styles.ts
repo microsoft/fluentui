@@ -48,9 +48,6 @@ export const getStyles = (
             border: 0
           }
         }
-      },
-      '.ms-Persona-details': {
-        flex: '1 0 auto',
       }
     }
   };

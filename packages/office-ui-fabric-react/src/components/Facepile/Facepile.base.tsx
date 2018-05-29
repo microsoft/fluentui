@@ -132,7 +132,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     const { getPersonaProps, personaSize } = this.props;
-    const personaStyles = (props: IPersonaStyleProps): Partial<IPersonaStyles> => ({ details: { flex: '1 0 auto' } });
+    const personaStyles = (props: IPersonaStyleProps): Partial<IPersonaStyles> => ({
+      details: {
+        flex: '1 0 auto'
+      }
+    });
 
     return (
       <Persona
