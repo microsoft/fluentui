@@ -3,7 +3,6 @@ import {
   BaseComponent,
   buttonProperties,
   classNamesFunction,
-  css,
   customizable,
   getId,
   getNativeProps
@@ -35,9 +34,6 @@ import {
   PersonaSize,
   PersonaInitialsColor
 } from '../../PersonaCoin';
-
-import * as stylesImport from './Facepile.scss';
-const styles: any = stylesImport;
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
 @customizable('Facepile', ['theme'])
@@ -227,11 +223,20 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const personaNames: string = personasOverflow.map((p: IFacepilePersona) => p.personaName).join(', ');
     const numPersonasNotPictured: number = Math.max(personasOverflow.length, 0);
 
+    const {
+      getStyles,
+      theme
+    } = this.props;
+
+    const classNames = getClassNames(getStyles, {
+      theme: theme!
+    });
+
     return (
       <FacepileButton
         { ...overflowButtonProps }
         ariaDescription={ personaNames }
-        className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
+        className={ classNames.descriptiveOverflowButton }
       >
         <PersonaCoin
           title={ personaNames }
@@ -247,10 +252,19 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const { overflowButtonProps, personaSize } = this.props;
     const overflowInitialsIcon = true;
 
+    const {
+      getStyles,
+      theme
+    } = this.props;
+
+    const classNames = getClassNames(getStyles, {
+      theme: theme!
+    });
+
     return (
       <FacepileButton
         { ...overflowButtonProps }
-        className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
+        className={ classNames.overflowButton }
       >
         <PersonaCoin
           size={ personaSize }

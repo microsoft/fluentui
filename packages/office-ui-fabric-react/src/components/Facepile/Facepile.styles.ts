@@ -9,13 +9,13 @@ import {
 
 const GlobalClassNames = {
   root: 'ms-Facepile',
-  addButton: 'ms-Facepile-addButton',
-  descriptiveOverflowButton: 'ms-Facepile-descriptiveOverflowButton',
-  itemButton: 'ms-Facepile-itemButton',
+  addButton: 'ms-Facepile-addButton ms-Facepile-itemButton',
+  descriptiveOverflowButton: 'ms-Facepile-descriptiveOverflowButton ms-Facepile-itemButton',
+  itemButton: 'ms-Facepile-itemButton ms-Facepile-person',
   itemContainer: 'ms-Facepile-itemContainer',
   members: 'ms-Facepile-members',
-  overflowButton: 'ms-Facepile-overflowButton',
-}
+  overflowButton: 'ms-Facepile-overflowButton ms-Facepile-itemButton',
+};
 
 export const getStyles = (
   props: IFacepileStyleProps
@@ -34,9 +34,6 @@ export const getStyles = (
     padding: 0,
     borderRadius: '50%',
     verticalAlign: 'top',
-    // :global(.ms-Persona-details) {
-    //   flex: 1 0 auto;
-    // }
     selectors: {
       'button&': {
         display: 'inline',
@@ -46,7 +43,6 @@ export const getStyles = (
         cursor: 'pointer',
         border: 'none',
         selectors: {
-          // test in firefox
           '&::-moz-focus-inner': {
             padding: 0,
             border: 0
@@ -54,10 +50,10 @@ export const getStyles = (
         }
       },
       '.ms-Persona-details': {
-        background: 'red',
+        flex: '1 0 auto',
       }
     }
-  }
+  };
 
   return ({
     root: [
@@ -107,7 +103,7 @@ export const getStyles = (
             fontSize: fonts.small.fontSize,
             color: palette.neutralSecondary,
             backgroundColor: palette.neutralLight,
-            marginLeft: '${spacingAroundItemButton * 2}px',
+            marginLeft: `${spacingAroundItemButton * 2}px`,
           }
         }
       }
@@ -127,11 +123,11 @@ export const getStyles = (
       {
         display: 'flex',
         overflow: 'hidden',
-        margin: '${-1 * spacingAroundItemButton}px',
+        margin: `${-1 * spacingAroundItemButton}px`,
         selectors: {
           '& > *': {
             flex: '0 0 auto',
-            margin: '${spacingAroundItemButton}px',
+            margin: `${spacingAroundItemButton}px`,
           }
         }
       }
@@ -146,7 +142,7 @@ export const getStyles = (
             fontSize: fonts.medium.fontSize,
             color: palette.neutralSecondary,
             backgroundColor: palette.neutralLight,
-            marginLeft: '${spacingAroundItemButton * 2}px',
+            marginLeft: `${spacingAroundItemButton * 2}px`,
           }
         }
       }

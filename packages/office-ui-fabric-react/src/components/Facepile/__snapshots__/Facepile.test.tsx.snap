@@ -2,15 +2,40 @@
 
 exports[`Facepile renders Facepile correctly 1`] = `
 <div
-  className="ms-Facepile"
+  className=
+      ms-Facepile
+      {
+        width: auto;
+      }
 >
   <div
-    className="ms-Facepile-itemContainer"
+    className=
+        ms-Facepile-itemContainer
+        {
+          display: flex;
+        }
   >
     <div
       aria-describedby={undefined}
       aria-labelledby={undefined}
-      className="ms-FocusZone ms-Facepile-members"
+      className=
+          ms-FocusZone
+          ms-Facepile-members
+          {
+            display: flex;
+            margin-bottom: -2px;
+            margin-left: -2px;
+            margin-right: -2px;
+            margin-top: -2px;
+            overflow: hidden;
+          }
+          & > * {
+            flex: 0 0 auto;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 2px;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -18,7 +43,39 @@ exports[`Facepile renders Facepile correctly 1`] = `
       role="listbox"
     >
       <div
-        className="ms-Facepile-itemButton ms-Facepile-person"
+        className=
+            ms-Facepile-itemButton
+            ms-Facepile-person
+            {
+              border-radius: 50%;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              text-align: center;
+              vertical-align: top;
+            }
+            button& {
+              background-color: transparent;
+              background: none;
+              border: none;
+              cursor: pointer;
+              display: inline;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            & .ms-Persona-details {
+              flex: 1 0 auto;
+            }
         data="50%"
         data-is-focusable={true}
         onMouseMove={[Function]}
@@ -96,7 +153,39 @@ exports[`Facepile renders Facepile correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Facepile-itemButton ms-Facepile-person"
+        className=
+            ms-Facepile-itemButton
+            ms-Facepile-person
+            {
+              border-radius: 50%;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              text-align: center;
+              vertical-align: top;
+            }
+            button& {
+              background-color: transparent;
+              background: none;
+              border: none;
+              cursor: pointer;
+              display: inline;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            & .ms-Persona-details {
+              flex: 1 0 auto;
+            }
         data="$1,000"
         data-is-focusable={true}
         onMouseMove={[Function]}
@@ -185,7 +274,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              border-radius: 0px;
+              border-radius: 50%;
               border: 1px solid transparent;
               box-sizing: border-box;
               cursor: pointer;
@@ -194,10 +283,10 @@ exports[`Facepile renders Facepile correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               outline: transparent;
-              padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
               text-align: center;
               text-decoration: none;
@@ -205,7 +294,11 @@ exports[`Facepile renders Facepile correctly 1`] = `
               vertical-align: top;
             }
             &::-moz-focus-inner {
-              border: 0;
+              border: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
               border: 1px solid #ffffff;
@@ -225,6 +318,20 @@ exports[`Facepile renders Facepile correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            button& {
+              background-color: transparent;
+              background: none;
+              border: none;
+              cursor: pointer;
+              display: inline;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
+            & .ms-Persona-details {
+              flex: 1 0 auto;
             }
         data="75%"
         data-is-focusable={true}
