@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "revert build change\\",
-      "type": "patch"
+      "comment": "revert build change",
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fabric-website",
