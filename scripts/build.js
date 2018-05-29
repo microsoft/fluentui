@@ -12,37 +12,64 @@ const packageName = package.name;
 const isProduction = process.argv.indexOf('--production') > -1;
 
 /**
+ * Tasks with their prerequisites
+ * ['sass', 'copy'] means that sass can run after copy has completed.
+ * ['copy', null] means that copy can run immediately as it has no prerequisite.
+ *
+ * When a task is complete we find all tasks that follow the current task
+ * and execute them until no tasks are left.
+ */
+const TASKS_WITH_PREREQUISITES = [
+  ['copy', null],
+  ['sass', 'copy'],
+  ['ts', 'sass'],
+  ['tslint', 'sass'],
+  ['jest', 'sass'],
+  ['webpack', 'ts'],
+];
+
+/**
  * The taskMap maps names to task functions from the /tasks folder.
  * This makes it easy to get tasks by name.
- *
- * The taskList is a list of lists containing tasks to run. Each entry
- * the list is run sequentially, but the tasks in the inner lists
- * are run in parallel.
- *
- * ```
- * [
- *  // All the following will run in sequence
- *  ['sass'],
- *  ['copy'],
- *  ['webpack, 'tslint'] // <-- These two will run in parallel after 'copy' is complete
- * ]
- * ```
  */
-const { taskList, taskMap } = getTaskListAndTaskMap(process);
-const buildStartTime = new Date().getTime();
-let hasFailures = false;
+const taskMap = loadTaskFunctions(getAllTasks());
 
-const tasksComplete = taskList.reduce((promise, tasks) => {
-  // Run the `tasks` in parallel and wait for all of them them to complete using Promise.all
-  return promise.then(() => Promise.all(tasks.map((task) => runTask(task))));
-}, Promise.resolve());
+/**
+ * Disabled tasks are:
+ * All other tasks than the ones passed as a command line arguments
+ *  or otherwise
+ * the tasks disabled in the package.json.
+ */
+const disabledTasks = getDisabledTasks(process, package.disabledTasks);
 
-tasksComplete.then(() => {
-  if (hasFailures) {
-    process.exitCode = 1;
-  }
-  logEndBuild(packageName, !hasFailures, buildStartTime);
-});
+// Get the first tasks to execute, these are the tasks without prerequisite.
+const firstTasks = getNextTasks(null, disabledTasks);
+
+// Start executing tasks, executeTasks will call itself recursively until all tasks are done
+executeTasks(firstTasks)
+  .then(() => {
+    if (hasFailures) {
+      process.exitCode = 1;
+    }
+    logEndBuild(packageName, !hasFailures, buildStartTime);
+  });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Build helper functions
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function executeTasks(tasks) {
+  return Promise.all(tasks.map((task) => {
+    return runTask(task)
+      .then(() => {
+        const nextTasks = getNextTasks(task, disabledTasks);
+        if (nextTasks.length) {
+          return executeTasks(nextTasks);
+        }
+        return Promise.resolve();
+      });
+  }));
+}
 
 function runTask(task) {
   let taskStartTime = new Date().getTime();
@@ -69,7 +96,7 @@ function getPackage() {
 }
 
 function loadTaskFunctions(tasks) {
-  return flatten(tasks)
+  return tasks
     .reduce((acc, taskName) => {
       acc[taskName] = require('./tasks/' + taskName);
       return acc;
@@ -85,36 +112,54 @@ function removeDisabledTasks(disabledTasks = []) {
   return tasks => tasks.filter(task => disabledTasks.indexOf(task) < 0);
 }
 
-function getTaskListAndTaskMap(process) {
-  const allTasks = [
-    ['copy'],
-    ['sass'],
-    ['ts', 'tslint', 'jest'],
-    ['webpack']
-  ];
+function getAllTasks() {
+  return getTasksWithPrerequisites().map(first);
+}
 
-  // Pre require all tasks functions so we do not do that when running the tasks
-  const taskMap = loadTaskFunctions(allTasks);
+function getTasksWithPrerequisites() {
+  return TASKS_WITH_PREREQUISITES;
+}
 
-  let taskList;
+function isEqualTo(a) {
+  return (b) => a === b;
+}
 
-  // Checks if the user passed specific tasks to the build step.
-  // This can be done as follows `npm run build -- copy sass`
-  // In this case we reset the default task list and run only the
-  // provided tasks.
+function removePrerequisitesThatMatch(disabledTasks) {
+  return ([taskName, prerequisite]) => {
+    // If the prerequisite is disabled we can start the task immediately
+    if (disabledTasks.some(isEqualTo(prerequisite))) {
+      return [taskName, null];
+    }
+
+    return [taskName, prerequisite];
+  }
+}
+
+function removeDisabledTasks(tasks, disabledTasks) {
+  return tasks
+    .filter(([taskName, prerequisite]) => !disabledTasks.some(isEqualTo(taskName)))
+    .map(removePrerequisitesThatMatch(disabledTasks))
+}
+
+function getNextTasks(currentTask, disabledTasks) {
+  const wherePrerequisite = (task) => ([_, prerequisite]) => prerequisite === task;
+  const tasks = removeDisabledTasks(getTasksWithPrerequisites(), disabledTasks);
+
+  return tasks
+    .filter(wherePrerequisite(currentTask))
+    .map(([task]) => task);
+}
+
+function first(values) {
+  return values[0];
+}
+
+function getDisabledTasks(process, defaultDisabled) {
   if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
     const tasksToRun = process.argv.slice(2);
-    const disabledTasks = flatten(allTasks).filter(task => tasksToRun.indexOf(task) === -1);
-    console.log('disabled', disabledTasks);
-    taskList = allTasks.map(removeDisabledTasks(disabledTasks));
-  } else {
-    // If no options were provided we'll run all the default tasks, unless they have been disabled.
-    taskList = allTasks
-      .map(removeDisabledTasks(package.disabledTasks))
+
+    return getAllTasks().filter(task => tasksToRun.indexOf(task) === -1);
   }
 
-  return {
-    taskList,
-    taskMap
-  };
+  return defaultDisabled;
 }
