@@ -11,23 +11,12 @@ import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
 import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
-export interface IBaseExtendedPickerState {
-  // tslint:disable-next-line:no-any
-  items?: any;
-  suggestedDisplayValue?: string;
-  moreSuggestionsAvailable?: boolean;
-  isSearching?: boolean;
-  isMostRecentlyUsedVisible?: boolean;
-  suggestionsVisible?: boolean;
-  suggestionsLoading?: boolean;
-  isResultsFooterVisible?: boolean;
-}
-
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, {}>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -45,7 +34,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     this.state = {
       items: this.props.selectedItemsListProps.selectedItems ? this.props.selectedItemsListProps.selectedItems : [],
-      suggestedDisplayValue: '',
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -68,8 +56,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public clearInput(): void {
-    if (this.input.current) {
-      this.input.current.clear();
+    if (this.input.current && this.input.current.inputElement) {
+      this.input.current.inputElement.value = '';
     }
   }
 
@@ -78,7 +66,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public render(): JSX.Element {
-    const { suggestedDisplayValue } = this.state;
     const {
       className,
       inputProps,
@@ -94,31 +81,34 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         onKeyDown={ this.onBackspace }
         onCopy={ this.onCopy }
       >
-        <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-          <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
-            { this.props.headerComponent }
-            { this.renderSelectedItemsList() }
-            { this.canAddItems() && (<Autofill
-              { ...inputProps as IInputProps }
-              className={ css('ms-BasePicker-input', styles.pickerInput) }
-              ref={ this.input }
-              onFocus={ this.onInputFocus }
-              onClick={ this.onInputClick }
-              onInputValueChange={ this.onInputChange }
-              suggestedDisplayValue={ suggestedDisplayValue }
-              aria-activedescendant={ 'sug-' + this.state.items.length }
-              aria-owns='suggestion-list'
-              aria-expanded='true'
-              aria-haspopup='true'
-              autoCapitalize='off'
-              autoComplete='off'
-              role='combobox'
-              disabled={ disabled }
-              aria-controls='selected-suggestion-alert'
-              onPaste={ this.onPaste }
-            />) }
-          </div>
-        </SelectionZone>
+        <FocusZone
+          direction={ FocusZoneDirection.bidirectional }
+        >
+          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
+              { this.props.headerComponent }
+              { this.renderSelectedItemsList() }
+              { this.canAddItems() && (<Autofill
+                { ...inputProps as IInputProps }
+                className={ css('ms-BasePicker-input', styles.pickerInput) }
+                ref={ this.input }
+                onFocus={ this.onInputFocus }
+                onClick={ this.onInputClick }
+                onInputValueChange={ this.onInputChange }
+                aria-activedescendant={ 'sug-' + this.items.length }
+                aria-owns='suggestion-list'
+                aria-expanded='true'
+                aria-haspopup='true'
+                autoCapitalize='off'
+                autoComplete='off'
+                role='combobox'
+                disabled={ disabled }
+                aria-controls='selected-suggestion-alert'
+                onPaste={ this.onPaste }
+              />) }
+            </div>
+          </SelectionZone>
+        </FocusZone>
         { this.renderSuggestions() }
       </div>
     );
@@ -129,9 +119,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected canAddItems(): boolean {
-    const { items } = this.state;
     const { itemLimit } = this.props;
-    return itemLimit === undefined || items.length < itemLimit;
+    return itemLimit === undefined || this.items.length < itemLimit;
   }
 
   protected renderSuggestions(): JSX.Element {
@@ -149,6 +138,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     const onRenderSelectedItems = this.props.onRenderSelectedItems;
     return (onRenderSelectedItems({
       componentRef: this.selectedItemsList,
+      selection: this.selection,
       ...this.selectedItemsListProps
     }));
   }
@@ -185,9 +175,13 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     if (ev.which !== KeyCodes.backspace) {
       return;
     }
-    if ((this.state.items.length && !this.input.current) || (this.input.current && !this.input.current.isValueSelected)) {
-      if (this.selectedItemsList.current && (this.input.current as Autofill).cursorLocation === 0) {
+
+    if (this.selectedItemsList.current && this.items.length) {
+      if (this.input.current && !this.input.current.isValueSelected && this.input.current.inputElement == document.activeElement && (this.input.current as Autofill).cursorLocation === 0) {
         this.selectedItemsList.current.removeItemAt(this.items.length - 1);
+        this._onSelectedItemsChanged();
+      } else {
+        this.selectedItemsList.current.removeSelectedItems();
         this._onSelectedItemsChanged();
       }
     }

@@ -10,10 +10,9 @@ import 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/examples/Peop
 import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
 import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
-import * as styles from './SelectedPeopleList.Basic.Example.scss';
+import * as stylesImport from './SelectedPeopleList.Basic.Example.scss';
+const styles: any = stylesImport;
 
 export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
@@ -34,19 +33,21 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
 
   private _renderExtendedPicker(): JSX.Element {
     return (
-      <SelectedPeopleList
-        className={ 'ms-PeoplePicker' }
-        key={ 'normal' }
-        removeButtonAriaLabel={ 'Remove' }
-        defaultSelectedItems={ [people[40]] }
-        componentRef={ this._setComponentRef }
-        onCopyItems={ this._onCopyItems }
-        onExpandGroup={ this._onExpandItem }
-        copyMenuItemText={ 'Copy' }
-        removeMenuItemText={ 'Remove' }
-        selection={ this.selection }
-        onRenderItem={ this._onRenderItem }
-      />
+      <div className={ styles.container }>
+        <SelectedPeopleList
+          className={ 'ms-PeoplePicker' }
+          key={ 'normal' }
+          removeButtonAriaLabel={ 'Remove' }
+          defaultSelectedItems={ [people[40]] }
+          componentRef={ this._setComponentRef }
+          onCopyItems={ this._onCopyItems }
+          onExpandGroup={ this._onExpandItem }
+          copyMenuItemText={ 'Copy' }
+          removeMenuItemText={ 'Remove' }
+          selection={ this.selection }
+          onRenderItem={ this._onRenderItem }
+        />
+      </ div>
     );
   }
 
@@ -54,16 +55,6 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     return (
       <ExtendedSelectedItem
         { ...props }
-        renderPersonaCoin={ this._renderPersonaElement }
-      />
-    );
-  }
-
-  private _renderPersonaElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
-    return (
-      <Icon
-        iconName={ 'Contact' }
-        className={ styles.persona }
       />
     );
   }

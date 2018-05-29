@@ -83,13 +83,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         isMostRecentlyUsedVisible: false,
       });
 
-      this.showPicker();
-
-      if (queryString === '') {
-        this.updateSuggestionWithZeroState();
-      } else {
-        this.updateValue(queryString);
-      }
+      this.showPicker(true /*updateValue*/);
     }
   }
 
@@ -112,16 +106,16 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       suggestionsVisible: true,
     });
 
-    // If updateValue AND
-    //  Either suggestionsVisible is undefined (first time the suggestions is set to visble)
-    //  OR the inputElement value is different than the query string
-    if (updateValue &&
-      (this.state.suggestionsVisible === undefined
-        || (this.props.inputElement && this.props.inputElement.value !== this.state.queryString))) {
-      if (this.state.queryString === '') {
+    // Update the suggestions if updateValue == true AND
+    //  The input value is empty
+    //  OR suggestionsVisible is undefined (first time the suggestions is set to visble) or the inputElement value is different than the query string
+    if (updateValue) {
+      const value = this.props.inputElement ? this.props.inputElement.value : '';
+      if (value === '') {
         this.updateSuggestionWithZeroState();
-      } else {
-        this.updateValue(this.state.queryString);
+      } else if (this.state.suggestionsVisible === undefined
+        || (this.props.inputElement && this.props.inputElement.value !== this.state.queryString)) {
+        this.updateValue(value);
       }
     }
   }

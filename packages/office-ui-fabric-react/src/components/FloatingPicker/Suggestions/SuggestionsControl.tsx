@@ -49,7 +49,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                isSelected
+                  isSelected
               }) }
           >
             { renderItem() }
@@ -79,7 +79,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _selectedElement: HTMLDivElement;
   protected _suggestions: SuggestionsCore<T>;
   private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> =
-  SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
+    SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
@@ -120,6 +120,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
           className ? className : '',
           styles.root) }
       >
+        <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ this._getAriaLabel() } </div>
         { headerItemsProps && this.renderHeaderItems() }
         { this._renderSuggestions() }
         { footerItemsProps && this.renderFooterItems() }
@@ -128,11 +129,11 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public get currentSuggestion(): ISuggestionModel<T> {
-    return this._suggestions.getCurrentItem();
+    return this._suggestions && this._suggestions.getCurrentItem();
   }
 
   public hasSuggestionSelected(): boolean {
-    return this._suggestions.hasSuggestionSelected();
+    return this._suggestions && this._suggestions.hasSuggestionSelected();
   }
 
   public hasSelection(): boolean {
@@ -285,7 +286,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     return (
       <TypedSuggestions
         ref={ this._resolveRef('_suggestions') }
-        { ...this.props as ISuggestionsCoreProps<T>}
+        { ...this.props as ISuggestionsCoreProps<T> }
       />);
   }
 
@@ -486,4 +487,17 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         return SuggestionItemType.suggestion;
     }
   }
+
+  private _getAriaLabel(): string | undefined {
+    const { selectedHeaderIndex, selectedFooterIndex } = this.state;
+    const { headerItemsProps, footerItemsProps } = this.props;
+    if (headerItemsProps && selectedHeaderIndex !== -1) {
+      return headerItemsProps[selectedHeaderIndex].ariaLabel;
+    } else if (this.hasSuggestionSelected()) {
+      return this.currentSuggestion.ariaLabel;
+    } else if (footerItemsProps && selectedFooterIndex !== -1) {
+      return footerItemsProps[selectedFooterIndex].ariaLabel;
+    }
+  }
+
 }

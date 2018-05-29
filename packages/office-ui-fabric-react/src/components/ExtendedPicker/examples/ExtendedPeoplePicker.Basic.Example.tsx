@@ -64,7 +64,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
           if (this._picker.floatingPicker.current !== null) {
             this._picker.floatingPicker.current.forceResolveSuggestion();
           }
-        }
+        },
+        ariaLabel: "Use the typed address"
       },
       {
         renderItem: () => {
@@ -91,7 +92,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       {
         renderItem: () => { return (<div className={ styles.footerItem }>Search for more</div>); },
         onExecute: () => { this.setState({ searchMoreAvailable: false }); },
-        shouldShow: () => { return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts(); }
+        shouldShow: () => { return this.state.searchMoreAvailable && !this._shouldShowSuggestedContacts(); },
+        ariaLabel: "Search more"
       }],
       shouldSelectFirstItem: () => { return !this._shouldShowSuggestedContacts(); },
     };
@@ -120,6 +122,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       getEditingItemText: this._getEditingItemText,
       onRenderFloatingPicker: this._onRenderFloatingPicker,
       floatingPickerProps: this._floatingPickerProps,
+      className: styles.selectedItemsList
     };
   }
 

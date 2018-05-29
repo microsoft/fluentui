@@ -67,4 +67,9 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
    * A callback when and item is deleted
    */
   onItemDeleted?: (deletedItem: T) => void;
+
+  /**
+   * A callback on whether this item can be deleted
+   */
+  canRemoveItem?: (item: T) => boolean;
 }
