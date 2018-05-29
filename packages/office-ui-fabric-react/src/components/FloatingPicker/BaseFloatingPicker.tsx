@@ -19,12 +19,7 @@ const styles: any = stylesImport;
 
 export interface IBaseFloatingPickerState {
   queryString: string;
-  suggestedDisplayValue?: string;
-  moreSuggestionsAvailable?: boolean;
-  isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
-  suggestionsLoading?: boolean;
-  isResultsFooterVisible?: boolean;
   didBind: boolean;
 }
 
@@ -47,9 +42,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
       queryString: '',
-      suggestedDisplayValue: '',
-      isMostRecentlyUsedVisible: false,
-      moreSuggestionsAvailable: false,
       didBind: false,
     };
   }
@@ -78,9 +70,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString,
-        moreSuggestionsAvailable: true,
-        isMostRecentlyUsedVisible: false,
+        queryString: queryString
       });
 
       this.showPicker(true /*updateValue*/);
@@ -192,17 +182,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     ) : null;
   }
 
-  protected onSuggestionSelect(): void {
-    if (this.suggestionsControl && this.suggestionsControl.currentSuggestion) {
-      const currentValue: string = this.state.queryString;
-      const itemValue: string = this._getTextFromItem(
-        this.suggestionsControl.currentSuggestion.item,
-        currentValue
-      );
-      this.setState({ suggestedDisplayValue: itemValue });
-    }
-  }
-
   protected onSelectionChange(): void {
     this.forceUpdate();
   }
@@ -243,9 +222,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      this.setState({
-        suggestionsLoading: true
-      });
 
       this._updateSuggestionsVisible(updatedValue !== undefined && updatedValue !== '');
 
@@ -259,9 +235,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
             this.resolveNewValue(updatedValue, newSuggestions);
           } else {
             this.updateSuggestions(newSuggestions);
-            this.setState({
-              suggestionsLoading: false
-            });
 
             this._updateSuggestionsVisible(newSuggestions.length > 0);
           }
@@ -276,20 +249,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]): void {
     this.updateSuggestions(suggestions);
-    let itemValue: string | undefined = undefined;
-
-    if (this.suggestionsControl && this.suggestionsControl.currentSuggestion) {
-      itemValue = this._getTextFromItem(
-        this.suggestionsControl.currentSuggestion.item,
-        updatedValue
-      );
-    }
-
-    this.setState({
-      suggestionsLoading: false,
-      suggestedDisplayValue: itemValue
-    });
-
     this._updateSuggestionsVisible(updatedValue !== '');
   }
 
@@ -402,14 +361,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       );
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this.onChange(convertedItems[0].item);
-    }
-  }
-
-  private _getTextFromItem(item: T, currentValue?: string): string {
-    if (this.props.getTextFromItem) {
-      return (this.props.getTextFromItem as ((item: T, currentValue?: string) => string))(item, currentValue);
-    } else {
-      return '';
     }
   }
 
