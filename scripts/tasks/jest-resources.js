@@ -12,13 +12,13 @@ const styleMockPath =
     createConfig: (customConfig) => merge(
       {
         moduleNameMapper: {
-          'ts-jest': path.resolve(__dirname, '../node_modules/ts-jest'),
+          'ts-jest': require.resolve('ts-jest'),
           '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
           'KeyCodes': path.resolve(__dirname, 'jest-mock.js')
         },
 
         'transform': {
-          '.(ts|tsx)': path.resolve(__dirname, '../node_modules/ts-jest/preprocessor.js')
+          '.(ts|tsx)': require.resolve('ts-jest/preprocessor.js')
         },
 
         'reporters': [
