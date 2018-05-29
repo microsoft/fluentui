@@ -7,6 +7,21 @@
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
+## Created with Fabric
+
+<img src='./ghdocs/img/yammer.png' /> | <img src='./ghdocs/img/outlook-350-150.png' /> | <img src='./ghdocs/img/VS_rgb_Purple.png' />
+
+<details>
+    <summary>and many more...</summary>
+
+MileIQ
+PowerApps Portal
+Yammer
+OneDrive
+SharePoint
+</details>
+
+
 ## [Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki)
 
 The bulk of the documentation is available on the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
