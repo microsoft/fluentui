@@ -11,9 +11,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 [<img align="left" height="40" src='./ghdocs/img/yammer.png'/>](https://www.yammer.com)
 [<img align="left" height="50" src='./ghdocs/img/outlook-350-150.png'/>](https://www.outlook.com)
-[<img align="left" height="50" src='./ghdocs/img/VS_rgb_Purple.png'/>](https://www.visualstudio.com/team-services/")
-
-<br style="clear: both" />
+[<img height="50" src='./ghdocs/img/VS_rgb_Purple.png'/>](https://www.visualstudio.com/team-services/")
 
 <details>
     <summary>and many more...</summary>
