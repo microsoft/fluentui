@@ -6,7 +6,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={undefined}
-    aria-autocomplete="none"
     aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
@@ -25,7 +24,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   >
     <span
       aria-atomic={true}
-      aria-readonly="true"
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown94-option"
       role="listbox"
@@ -62,7 +60,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={undefined}
-    aria-autocomplete="none"
     aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
@@ -81,7 +78,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
   >
     <span
       aria-atomic={true}
-      aria-readonly="true"
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
       id="Dropdown0-option"
       role="listbox"

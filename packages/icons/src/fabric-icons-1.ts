@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-1"`,
-      src: `url('${baseUrl}fabric-icons-1-8143b877.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-1-a653c37c.woff') format('woff')`
     },
     icons: {
+      'TurnRight': '\uE7DB',
       'Ferry': '\uE7E3',
       'Highlight': '\uE7E6',
       'PowerButton': '\uE7E8',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'BulletedList': '\uE8FD',
       'Preview': '\uE8FF',
       'News': '\uE900',
-      'Chat': '\uE901',
-      'Group': '\uE902'
+      'Chat': '\uE901'
     }
   };
 

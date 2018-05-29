@@ -1,6 +1,28 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+
+## 5.33.0
+Wed, 23 May 2018 16:14:26 GMT
+
+### Minor changes
+
+- Reverting the ChoiceGroup styling update along with updates to utilities to avoid potentially breaking changes.
+
+## 5.32.0
+Wed, 23 May 2018 10:28:50 GMT
+
+### Minor changes
+
+- Added `resetIds` api for adding predictability in jest tests.
+- allow for customization of keycodes that cause the focus rect to appear
+
+## 5.31.0
+Tue, 15 May 2018 07:09:49 GMT
+
+### Minor changes
+
+- Remove dependency on React from Async
 
 ## 5.30.1
 Fri, 04 May 2018 15:58:39 GMT

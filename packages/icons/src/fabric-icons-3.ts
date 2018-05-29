@@ -22,9 +22,12 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-39ed3795.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-3-ef2110da.woff') format('woff')`
     },
     icons: {
+      'WorkFlow': '\uEA01',
+      'HourGlass': '\uEA03',
+      'StoreLogoMed20': '\uEA04',
       'TimeSheet': '\uEA05',
       'TriangleSolid': '\uEA08',
       'VideoSolid': '\uEA0C',
@@ -93,6 +96,7 @@ export function initializeIcons(
       'Weights': '\uEADB',
       'Trackers': '\uEADF',
       'AddNotes': '\uEAE3',
+      'AllCurrency': '\uEAE4',
       'BarChart4': '\uEAE7',
       'CirclePlus': '\uEAEE',
       'Coffee': '\uEAEF',
@@ -120,11 +124,7 @@ export function initializeIcons(
       'ProFootball': '\uEB27',
       'ProHockey': '\uEB28',
       'Rugby': '\uEB2D',
-      'SubstitutionsIn': '\uEB31',
-      'Tennis': '\uEB33',
-      'Arrivals': '\uEB34',
-      'Design': '\uEB3C',
-      'Website': '\uEB41'
+      'SubstitutionsIn': '\uEB31'
     }
   };
 

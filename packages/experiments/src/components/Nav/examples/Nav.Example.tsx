@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavLinkGroup } from '../Nav.types';
+import { ICustomNavLinkGroup, NavGroupType } from '../Nav.types';
 import { NavToggler } from '../NavToggler';
 
 export class NavExample extends React.Component<{}, {}> {
@@ -8,7 +8,13 @@ export class NavExample extends React.Component<{}, {}> {
   }
 
   public render(): JSX.Element {
-    const navLinkGroups: INavLinkGroup[] = [
+    const navLinkGroups: ICustomNavLinkGroup[] = [
+      {
+        links: [
+          { name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key' }
+        ],
+        groupType: NavGroupType.ToggleGroup
+      },
       {
         name: 'default group',
         links: [
@@ -28,7 +34,8 @@ export class NavExample extends React.Component<{}, {}> {
             key: 'key6',
             icon: 'DietPlanNotebook'
           },
-        ]
+        ],
+        groupType: NavGroupType.MenuGroup
       },
       {
         name: 'named menu group',
@@ -49,20 +56,21 @@ export class NavExample extends React.Component<{}, {}> {
             key: 'key12',
             icon: 'DietPlanNotebook'
           },
-        ]
+        ],
+        groupType: NavGroupType.MenuGroup
       },
       {
         links: [
           { name: 'Edit', url: '#', onClick: this._onEditClick, icon: 'Edit', key: 'key13' },
-          { name: 'Show less', showMoreText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' },
+          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' },
         ],
-        isCustomizationGroup: true
+        groupType: NavGroupType.CustomizationGroup
       }
     ];
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' enableCustomization={ true } />
+        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' enableCustomization={ true } selectedKey='key2' />
       </div>
     );
   }
