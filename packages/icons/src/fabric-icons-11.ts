@@ -22,9 +22,19 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-11"`,
-      src: `url('${baseUrl}fabric-icons-11-2c5983e3.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-11-a4026982.woff') format('woff')`
     },
     icons: {
+      'CaretTopLeftCenter8': '\uF367',
+      'DonutChart': '\uF368',
+      'ChevronUnfold10': '\uF369',
+      'ChevronFold10': '\uF36A',
+      'DoubleChevronDown8': '\uF36B',
+      'DoubleChevronUp8': '\uF36C',
+      'DoubleChevronLeft8': '\uF36D',
+      'DoubleChevronRight8': '\uF36E',
+      'ChevronDownEnd6': '\uF36F',
+      'ChevronUpEnd6': '\uF370',
       'ChevronLeftEnd6': '\uF371',
       'ChevronRightEnd6': '\uF372',
       'ContextMenu': '\uF37C',
@@ -74,8 +84,11 @@ export function initializeIcons(
       'Transition': '\uF3BC',
       'LikeSolid': '\uF3BF',
       'DislikeSolid': '\uF3C0',
+      'UnSetColor': '\uF3F9',
       'DeclineCall': '\uF405',
       'RectangularClipping': '\uF407',
+      'TeamsLogo16': '\uF40A',
+      'TeamsLogoFill16': '\uF40B',
       'Spacer': '\uF40D',
       'SkypeLogo16': '\uF40E',
       'SkypeForBusinessLogo16': '\uF40F',
@@ -111,20 +124,7 @@ export function initializeIcons(
       'PageLock': '\uF43F',
       'NotExecuted': '\uF440',
       'NotImpactedSolid': '\uF441',
-      'FieldReadOnly': '\uF442',
-      'FieldRequired': '\uF443',
-      'BacklogBoard': '\uF444',
-      'ExternalBuild': '\uF445',
-      'ExternalTFVC': '\uF446',
-      'ExternalXAML': '\uF447',
-      'IssueSolid': '\uF448',
-      'DefectSolid': '\uF449',
-      'LadybugSolid': '\uF44A',
-      'MTMLogo': '\uF44B',
-      'NugetLogo': '\uF44C',
-      'TFVCLogo': '\uF44D',
-      'ProjectLogo32': '\uF47E',
-      'ProjectLogoFill32': '\uF47F'
+      'FieldReadOnly': '\uF442'
     }
   };
 

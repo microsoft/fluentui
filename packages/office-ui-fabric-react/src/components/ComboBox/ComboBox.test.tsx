@@ -35,7 +35,10 @@ describe('ComboBox', () => {
       };
     };
     const component = renderer.create(
-      <ComboBox options={ DEFAULT_OPTIONS } />,
+      <ComboBox
+        options={ DEFAULT_OPTIONS }
+        text={ 'testValue' }
+      />,
       { createNodeMock }
     );
     const tree = component.toJSON();
@@ -173,7 +176,7 @@ describe('ComboBox', () => {
     const wrapper = mount(
       <ComboBox
         label='testgroup'
-        value='1'
+        text='1'
         options={ DEFAULT_OPTIONS }
       />);
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -187,7 +190,7 @@ describe('ComboBox', () => {
       <ComboBox
         label='testgroup'
         options={ [] }
-        value='1'
+        text='1'
       />);
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
     const inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any> = comboBoxRoot.find('input');

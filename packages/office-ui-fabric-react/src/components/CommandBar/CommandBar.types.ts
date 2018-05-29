@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IContextualMenuItem } from '../ContextualMenu/index';
+import { IContextualMenuItem, IContextualMenuProps } from '../ContextualMenu/index';
 
 export interface ICommandBar {
   /**
@@ -35,6 +35,11 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Default items to have in the overflow menu
    */
   overflowItems?: IContextualMenuItem[];
+
+  /**
+  * Menu props to be passed to overflow elipsis
+  */
+  overflowMenuProps?: Partial<IContextualMenuProps>;
 
   /**
    * Text to be read by screen readers if there are overflow items and focus is on elipsis button
