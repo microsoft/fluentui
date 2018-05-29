@@ -8,12 +8,12 @@ describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
     let menuClassNames: IMenuItemClassNames;
-    let itemOnClick: () => void;
+    let itemOnClick: jest.Mock;
 
     beforeEach(() => {
       menuItem = { key: '123' };
       menuClassNames = getMenuItemClassNames();
-      itemOnClick = () => undefined;
+      itemOnClick = jest.fn();
     });
 
     it('renders the contextual menu split button correctly', () => {
