@@ -148,6 +148,10 @@ module.exports = {
 
         plugins: [
           new WebpackNotifierPlugin(),
+          new webpack.WatchIgnorePlugin([
+            /\.js$/,
+            /\.d\.ts$/
+          ]),
           new ForkTsCheckerWebpackPlugin()
         ]
       },

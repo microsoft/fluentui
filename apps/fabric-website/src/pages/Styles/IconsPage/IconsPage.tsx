@@ -7,7 +7,7 @@ import * as stylesImport from './IconsPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const iconData = require('office-ui-fabric-core/src/data/icons.json');
+const iconData = require('../../../../node_modules/office-ui-fabric-core/src/data/icons.json');
 
 export class IconsPage extends React.Component<any, any> {
   public render(): JSX.Element {
