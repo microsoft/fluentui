@@ -13,10 +13,8 @@ export const getStyles = (props: ICollapsibleSectionTitleProps & { theme: ITheme
         alignItems: 'center',
         background: 'none',
         border: 'none',
-        height: 36,
+        height: 24,
         margin: 0,
-        padding: 8,
-        paddingLeft: 8 + (props.indent || 0) * 22,
         selectors: {
           ':hover': {
             background: theme.palette.neutralLight

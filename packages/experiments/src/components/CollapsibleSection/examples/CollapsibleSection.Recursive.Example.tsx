@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { CollapsibleSection, CollapsibleSectionTitle } from '..';
 import { lorem } from '@uifabric/example-app-base';
 
-const _collapsibleSectionItems: string[] = [];
-const _fileItems: string[] = [];
+export interface IFileItem {
+  name: string;
+  iconName: string;
+}
+
+const _folderItems: string[] = [];
+const _fileItems: IFileItem[] = [];
 
 const fileIcons: { name: string; }[] = [
   { 'name': 'accdb' },
@@ -33,32 +37,69 @@ const fileIcons: { name: string; }[] = [
   { 'name': 'xsn' }
 ];
 
-export interface IACollapsibleSectionFolderProps {
-  level: number;
+/**
+ * Simple file element showing icon and name.
+ */
+interface IExampleFileProps {
+  iconSource: string;
+  filename: string;
 }
 
-// TODO: clean up use of multiple FocusZones
+/* tslint:disable:jsx-ban-props */
+const ExampleFile = (props: IExampleFileProps) => {
+  return (
+    <div style={ { display: 'flex', alignItems: 'center', height: 24 } }>
+      <img
+        src={ props.iconSource }
+        style={ { maxWidth: 16, padding: 6 } }
+      />
+      { props.filename }
+    </div>
+  );
+};
 
-class CollapsibleSectionFolder extends React.Component<IACollapsibleSectionFolderProps, {}> {
+/**
+ * Example recursive folder structure with a random number of subfolders and items.
+ */
+class CollapsibleSectionFolder extends React.Component<{}, {}> {
   public render(): JSX.Element {
+    // Generate random files
+    const files: JSX.Element[] = [];
+    const randomFileCount = Math.floor(Math.random() * 10);
+    for (let i = 0; i < randomFileCount; i++) {
+      const randomFile = Math.floor(Math.random() * _fileItems.length);
+      files.push(
+        <ExampleFile
+          key={ i }
+          iconSource={ _fileItems[randomFile].iconName }
+          filename={ _fileItems[randomFile].name }
+        />);
+    }
+
+    // Generate random folders
+    const folders: JSX.Element[] = [];
+    const randomFolderCount = Math.floor(Math.random() * 10) + 1;
+    for (let i = 0; i < randomFolderCount; i++) {
+      const randomFolder = Math.floor(Math.random() * _folderItems.length);
+      folders.push(
+        <CollapsibleSection
+          key={ i }
+          collapsed={ true }
+          titleAs={ CollapsibleSectionTitle }
+          titleProps={ {
+            text: _folderItems[randomFolder],
+          } }
+        >
+          <CollapsibleSectionFolder />
+          { files }
+        </CollapsibleSection>
+      );
+    }
+
     return (
       <div>
-        { _collapsibleSectionItems.map((fileItem: string, i: number) => {
-          return (
-            <CollapsibleSection
-              key={ i }
-              collapsed={ true }
-              titleAs={ CollapsibleSectionTitle }
-              titleProps={ {
-                text: fileItem,
-                indent: this.props.level,
-              } }
-            >
-              <CollapsibleSectionFolder level={ this.props.level + 1 } />
-            </CollapsibleSection>);
-        }) }
-        { _fileItems.map((fileItem: string, i: number) => { return (<Label key={ i }>{ fileItem }</Label>); }) }
-      </div>);
+        { folders }
+      </div >);
   }
 }
 
@@ -66,18 +107,17 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
   constructor(props: {}) {
     super(props);
 
-    //  Populate with items for demos.
+    //  Populate with items for demo.
     if (_fileItems.length === 0) {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 500; i++) {
         let randomFolderName: string = lorem(2).replace(/\W/g, '');
         randomFolderName = randomFolderName.charAt(0).toUpperCase() + randomFolderName.slice(1);
-        _collapsibleSectionItems.push(randomFolderName);
-      }
-      for (let i = 0; i < 5; i++) {
-        const randomDocType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+        _folderItems.push(randomFolderName);
+
+        const randomFileType = this._randomFileIcon();
         let randomFileName: string = lorem(2).replace(/\W/g, '');
-        randomFileName = randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomDocType}`);
-        _fileItems.push(randomFileName);
+        randomFileName = randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomFileType.docType}`);
+        _fileItems.push({ name: randomFileName, iconName: randomFileType.url });
       }
     }
   }
@@ -86,9 +126,17 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
     return (
       <div>
         <FocusZone>
-          <CollapsibleSectionFolder level={ 0 } />
+          <CollapsibleSectionFolder />
         </FocusZone>
       </div>
     );
+  }
+
+  private _randomFileIcon(): { docType: string; url: string; } {
+    const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+    return {
+      docType,
+      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+    };
   }
 }

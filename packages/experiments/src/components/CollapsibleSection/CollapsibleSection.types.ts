@@ -1,20 +1,17 @@
 import * as React from 'react';
-import { RefObject } from 'office-ui-fabric-react';
+import { IStyle } from 'office-ui-fabric-react';
 
-export interface ICollapsibleSectionTitleProps {
-  focusElementRef?: RefObject<HTMLElement>;
-  collapsed?: boolean;
-  onToggleCollapse?: () => void;
-  onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-  indent?: number;
-  noChevron?: boolean;
-  text?: string;
-}
+import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
 export interface ICollapsibleSectionProps {
+  // TODO: how to incorporate className into createComponent?
   className?: string;
   defaultCollapsed?: boolean;
   collapsed?: boolean;
   titleAs: React.ReactType<ICollapsibleSectionTitleProps>;
   titleProps?: ICollapsibleSectionTitleProps;
+}
+
+export interface ICollapsibleSectionStyles {
+  child: IStyle;
 }
