@@ -9,16 +9,25 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ## Created with Fabric
 
-<img src='./ghdocs/img/yammer.png' /> | <img src='./ghdocs/img/outlook-350-150.png' /> | <img src='./ghdocs/img/VS_rgb_Purple.png' />
+<div style="display: flex; align-items: center">
+    <a href="https://www.yammer.com" style="margin-right: 20px">
+        <img style="width: 150px; height:auto;" src='./ghdocs/img/yammer.png' />
+    </a>
+    <a href="https://www.outlook.com" style="margin-right: 20px">
+        <img width=150 src='./ghdocs/img/outlook-350-150.png' />
+    </a>
+    <a href="https://www.visualstudio.com/team-services/">
+        <img width=150 src='./ghdocs/img/VS_rgb_Purple.png' />
+    </a>
+</div>
 
 <details>
     <summary>and many more...</summary>
 
-MileIQ
-PowerApps Portal
-Yammer
-OneDrive
-SharePoint
+- [MileIQ](https://www.mileiq.com/)
+- [PowerApps Portal](https://web.powerapps.com/home)
+- [OneDrive](https://onedrive.com)
+- [SharePoint](https://onedrive.com)
 </details>
 
 
