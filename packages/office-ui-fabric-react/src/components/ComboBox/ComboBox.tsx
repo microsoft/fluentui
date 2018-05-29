@@ -199,8 +199,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
       currentPendingValue: '',
-      currentPendingValueValidIndexOnHover: HoverStatus.default,
-
+      currentPendingValueValidIndexOnHover: HoverStatus.default
     };
   }
 
