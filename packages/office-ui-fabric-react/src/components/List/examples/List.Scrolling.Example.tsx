@@ -70,7 +70,6 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           <TextField
             value={ this.state.selectedIndex.toString(10) }
             onChanged={ this._onChangeText }
-            disabled={ true }
           />
         </div>
 
