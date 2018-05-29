@@ -8,12 +8,10 @@ describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
     let menuClassNames: IMenuItemClassNames;
-    let itemOnClick: jest.Mock;
 
     beforeEach(() => {
       menuItem = { key: '123' };
       menuClassNames = getMenuItemClassNames();
-      itemOnClick = jest.fn();
     });
 
     it('renders the contextual menu split button correctly', () => {
@@ -24,7 +22,6 @@ describe('ContextualMenuButton', () => {
           index={ 0 }
           focusableElementIndex={ 0 }
           totalItemCount={ 1 }
-          onItemClick={ itemOnClick }
         />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();

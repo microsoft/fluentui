@@ -71,7 +71,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               aria-setsize={ totalItemCount }
               aria-disabled={ isItemDisabled(item) }
               style={ item.style }
-              onClick={ onItemClick ? onItemClick.bind(this, item) : undefined }
+              onClick={ this._onItemClick }
               onMouseEnter={ this._onItemMouseEnter }
               onMouseLeave={ this._onItemMouseLeave }
               onKeyDown={ itemHasSubmenu ? this._onItemKeyDown : null }
@@ -96,5 +96,12 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
 
   protected _getSubmenuTarget = (): HTMLElement | undefined => {
     return this._anchor.current ? this._anchor.current : undefined;
+  }
+
+  protected _onItemClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { item, onItemClick } = this.props;
+    if (onItemClick) {
+      onItemClick(item, ev);
+    }
   }
 }
