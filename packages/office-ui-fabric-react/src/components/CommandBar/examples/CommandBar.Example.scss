@@ -35,15 +35,19 @@
 
 /* Require update when office-ui-fabric-react changes to CSS modules */
 .button {
-    &:global.ms-Button {
-        height: 40px;
-        min-width: 28px;
-        padding: 0 5px;
-    }
+  &:global.ms-Button {
+      height: 40px;
+      min-width: 28px;
+      padding: 0 5px;
+  }
 
-    &:hover {
-      background: initial;
-    }
+  &:hover {
+    background: initial;
+  }
+}
+
+:global(.ms-CommandBarItem-commandText) {
+  color: $ms-color-neutralPrimary;
 }
 
 .darkerBG {
