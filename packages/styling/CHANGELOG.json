@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.31.0",
+      "tag": "@uifabric/styling_v5.31.0",
+      "date": "Thu, 24 May 2018 17:06:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "cb0a55148e1613f7a878f242125905c45b2bd052",
+            "comment": "add new semantic slot"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.30.3",
       "tag": "@uifabric/styling_v5.30.3",
       "date": "Wed, 23 May 2018 10:28:50 GMT",
