@@ -2,6 +2,139 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.111.2",
+      "tag": "office-ui-fabric-react_v5.111.2",
+      "date": "Fri, 25 May 2018 21:30:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "5c18dad82b3c680567e53890b5cb5ca961a82c99",
+            "comment": "MaskedTextField: Added event callpack passthrough"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "3a4ac916d3f1426ddb2e335f9facb00f64b499a0",
+            "comment": "fix old error color SASS variables so they work when themed"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.111.1",
+      "tag": "office-ui-fabric-react_v5.111.1",
+      "date": "Fri, 25 May 2018 16:53:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Asish Padhy <asish2k14@outlook.com>",
+            "commit": "ab649b2dc093d5740ad91bd285516a3bd468e156",
+            "comment": "Revisited the Multi-select Combo box initial state selection fix"
+          },
+          {
+            "author": "Ryan Psenski <rpsenski@microsoft.com>",
+            "commit": "8447135508ed83ec6ec2996cc546b6c61ffbd4c9",
+            "comment": "BaseButton sometimes has aria-labelledBy pointing to element that isn't in the DOM"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3adeb42535d86338bc3ca3c39e92a404a532a730",
+            "comment": "StickyPane: Replaced Array.From since it is not supported in IE"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.111.0",
+      "tag": "office-ui-fabric-react_v5.111.0",
+      "date": "Thu, 24 May 2018 17:06:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "413d0313f9187644ab40b773b116262bf464e465",
+            "comment": "Pass SelectionZone props through DetailsList and add alternate data-selection-auto-selection attribute name"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "cb0a55148e1613f7a878f242125905c45b2bd052",
+            "comment": "add new semantic slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.3 <6.0.0` to `>=5.31.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.110.0",
+      "tag": "office-ui-fabric-react_v5.110.0",
+      "date": "Wed, 23 May 2018 16:14:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "17547b3778676a5b721f3f7dacf86fbd9621f67e",
+            "comment": "ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.32.0 <6.0.0` to `>=5.33.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.109.0",
+      "tag": "office-ui-fabric-react_v5.109.0",
+      "date": "Wed, 23 May 2018 10:28:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Alicia Drummond <adrum@microsoft.com>",
+            "commit": "d152bb75e06b2b47fced0f5219e018cce2aabd97",
+            "comment": "ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme."
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "b3f7e0633228d149f05f577becab06ff354e2a16",
+            "comment": "Converting Facepile SCSS to MergeStyles step 1 - file structure"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "e6f59e1b3831045f8aadfd86ece81d2b7fbac826",
+            "comment": "Common sass files are now exported in the `dist/sass` folder."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "7ee2f5472ec4c449255ae2322f11a08d883e383a",
+            "comment": "Fixing circular dependency and non-AMD references in ContextualMenu"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fe9b632196f0a9b2d229ee074d1f25edaeb74a98",
+            "comment": "cleanup semantic slots"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.0 <6.0.0` to `>=5.17.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.2 <6.0.0` to `>=5.30.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.31.0 <6.0.0` to `>=5.32.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.108.0",
       "tag": "office-ui-fabric-react_v5.108.0",
       "date": "Tue, 22 May 2018 10:29:13 GMT",

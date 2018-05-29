@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.17.1",
+      "tag": "@uifabric/merge-styles_v5.17.1",
+      "date": "Wed, 23 May 2018 10:28:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "1387cc6d9660ebeacc8d1550b5bb8ecab2dba0fd",
+            "comment": "Added missing merge-styles background-size typing"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.0",
       "tag": "@uifabric/merge-styles_v5.17.0",
       "date": "Thu, 26 Apr 2018 10:12:34 GMT",

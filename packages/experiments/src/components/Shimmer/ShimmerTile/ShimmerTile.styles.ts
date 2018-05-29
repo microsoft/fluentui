@@ -16,12 +16,6 @@ export function getStyles(props: IShimmerTileStyleProps): IShimmerTileStyles {
         display: 'flex',
         flexDirection: 'column'
       },
-    ],
-    flexDiv: [
-      'ms-ShimmerTile-flexRow',
-      {
-        display: 'flex'
-      }
     ]
   };
 }

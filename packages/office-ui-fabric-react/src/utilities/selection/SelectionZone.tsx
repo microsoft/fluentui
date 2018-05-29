@@ -196,7 +196,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
           break;
-        } else if ((target === itemRoot || this._hasAttribute(target, SELECTION_SELECT_ATTRIBUTE_NAME))
+        } else if (
+          (target === itemRoot || this._shouldAutoSelect(target))
           && !this._isShiftPressed && !this._isCtrlPressed) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
@@ -376,6 +377,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           // For toggle elements, assuming they are rendered as buttons, they will generate a click event,
           // so we can no-op for any keydowns in this case.
           break;
+        } else if (this._shouldAutoSelect(target)) {
+          // If the event went to an element which should trigger auto-select, select it and then let
+          // the default behavior kick in.
+          this._onInvokeMouseDown(ev, index);
+          break;
         } else if ((ev.which === KeyCodes.enter || ev.which === KeyCodes.space) &&
           (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT')) {
           return false;
@@ -441,7 +447,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _onInvokeClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
-    const { selection, onItemInvoked } = this.props;
+    const {
+      selection,
+      onItemInvoked
+    } = this.props;
 
     if (onItemInvoked) {
       onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
@@ -538,6 +547,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   private _getItemIndex(itemRoot: HTMLElement): number {
     return Number(itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME));
+  }
+
+  private _shouldAutoSelect(element: HTMLElement): boolean {
+    return this._hasAttribute(element, SELECTION_SELECT_ATTRIBUTE_NAME);
   }
 
   private _hasAttribute(element: HTMLElement, attributeName: string): boolean {
