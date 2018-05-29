@@ -11,6 +11,11 @@ if (!package) {
 const packageName = package.name;
 const isProduction = process.argv.indexOf('--production') > -1;
 
+// Global variable to track the state of the build
+let hasFailures = false;
+
+const buildStartTime = new Date().getTime();
+
 /**
  * Tasks with their prerequisites
  * ['sass', 'copy'] means that sass can run after copy has completed.
@@ -154,7 +159,7 @@ function first(values) {
   return values[0];
 }
 
-function getDisabledTasks(process, defaultDisabled) {
+function getDisabledTasks(process, defaultDisabled = []) {
   if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
     const tasksToRun = process.argv.slice(2);
 
