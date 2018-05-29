@@ -199,7 +199,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
       currentPendingValue: '',
-      currentPendingValueValidIndexOnHover: HoverStatus.default
+      currentPendingValueValidIndexOnHover: HoverStatus.default,
+
     };
   }
 
@@ -1177,7 +1178,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     let idxOfSelectedIndex = -1;
-    if ((index !== undefined) && this.state.selectedIndices) {
+    if (this.props.multiSelect && (index !== undefined) && this.state.selectedIndices) {
       idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
     }
     return (idxOfSelectedIndex >= 0);
