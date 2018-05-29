@@ -48,7 +48,8 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
           leading: false
         });
 
-      this._events.on(window, 'resize', this._onAsyncResize);
+      new ResizeObserver(this._onAsyncResize).observe(this.state.viewport);
+  
       const {
         skipViewportMeasures
       } = this.props as IWithViewportProps;
