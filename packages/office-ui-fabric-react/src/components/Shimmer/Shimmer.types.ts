@@ -63,29 +63,6 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   * Theme provided by High-Order Component.
   */
   theme?: ITheme;
-
-  /**
-   * Elements to render in one line of the Shimmer.
-   * Deprecated, use 'shimmerElements' for better semantic meaning.
-   * @deprecated Use 'shimmerElements' instead.
-   */
-  lineElements?: IShimmerElement[];
-
-  /**
-   * Sets the width of the shimmer wave wrapper in percentages.
-   * Deprecated, use a more specific width like 'widthInPixel' or 'widthInPercentage'.
-   * @default 100%
-   * @deprecated Use a more specific width like 'widthInPixel' or 'widthInPercentage'.
-   */
-  width?: number;
-
-  /**
-   * Use when providing custom skeleton as children wrapped by shimmer.
-   * Deprecated in favor of 'customElementsGroup'
-   * @default false
-   * @deprecated Use 'customElementsGroup' instead.
-   */
-  isBaseStyle?: boolean;
 }
 
 /**
@@ -171,7 +148,6 @@ export interface IGap extends IShimmerElement {
 }
 
 export interface IShimmerStyleProps {
-  width?: number;
   widthInPercentage?: number;
   widthInPixel?: number;
   isDataLoaded?: boolean;
@@ -201,40 +177,10 @@ export enum ShimmerElementType {
   /**
    * Gap element type
    */
-  gap = 3,
-
-  /**
-   * @deprecated Use 'line' instead
-   */
-  LINE = 1,
-
-  /**
-   * @deprecated Use 'circle' instead
-   */
-  CIRCLE = 2,
-
-  /**
-   * @deprecated Use 'gap' instead
-   */
-  GAP = 3
+  gap = 3
 }
 
 export enum ShimmerElementVerticalAlign {
-  /**
-   * @deprecated Use 'center' instead
-   */
-  CENTER = 1,
-
-  /**
-   * @deprecated Use 'bottom' instead
-   */
-  BOTTOM = 2,
-
-  /**
-   * @deprecated Use 'top' instead
-   */
-  TOP = 3,
-
   /**
    * Positions the element vertically in center
    */

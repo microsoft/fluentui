@@ -8,8 +8,7 @@ import {
 import {
   IShimmerProps,
   IShimmerStyleProps,
-  IShimmerStyles,
-  IShimmerElement,
+  IShimmerStyles
 } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
@@ -27,8 +26,7 @@ const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 @customizable('Shimmer', ['theme'])
 export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
-    isDataLoaded: false,
-    isBaseStyle: false
+    isDataLoaded: false
   };
 
   private _classNames: { [key in keyof IShimmerStyles]: string };
@@ -40,17 +38,6 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     this.state = {
       contentLoaded: props.isDataLoaded
     };
-
-    this._warnDeprecations({
-      'isBaseStyle': 'customElementsGroup',
-      'width': 'widthInPercentage or widthInPixel',
-      'lineElements': 'shimmerElements'
-    });
-
-    this._warnMutuallyExclusive({
-      'lineElements': 'shimmerElements',
-      'customElementsGroup': 'lineElements'
-    });
   }
 
   public componentWillReceiveProps(nextProps: IShimmerProps): void {
@@ -77,12 +64,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public render(): JSX.Element {
     const {
       styles,
-      width,
-      lineElements,
       shimmerElements,
       children,
       isDataLoaded,
-      isBaseStyle,
       widthInPercentage,
       widthInPixel,
       className,
@@ -93,12 +77,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
 
     const { contentLoaded } = this.state;
 
-    // lineElements is a deprecated prop so need to check which one was used.
-    const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
-
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      width,
       isDataLoaded,
       widthInPercentage,
       widthInPixel,
@@ -110,15 +90,14 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       <div className={ this._classNames.root }>
         { !contentLoaded &&
           <div className={ this._classNames.shimmerWrapper }>
-            { isBaseStyle ? children : // isBaseStyle prop is deprecated and this check needs to be removed in the future
-              customElementsGroup ? customElementsGroup :
-                <ShimmerElementsGroup
-                  shimmerElements={ elements }
-                />
+            { customElementsGroup ? customElementsGroup :
+              <ShimmerElementsGroup
+                shimmerElements={ shimmerElements }
+              />
             }
           </div>
         }
-        { !isBaseStyle && children && // isBaseStyle prop is deprecated and needs to be removed in the future
+        { children &&
           <div className={ this._classNames.dataWrapper }>
             { children }
           </div>

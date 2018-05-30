@@ -35,7 +35,6 @@ const shimmerAnimationRTL: string = keyframes({
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
-    width,
     isDataLoaded,
     widthInPercentage,
     widthInPixel,
@@ -49,11 +48,9 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
 
   const isRTL = getRTL();
 
-  // TODO reduce the logic after the deprecated value will be removed.
   const ACTUAL_WIDTH =
-    width ? width + '%' :
-      widthInPercentage ? widthInPercentage + '%' :
-        widthInPixel ? widthInPixel + 'px' : '100%';
+    widthInPercentage ? widthInPercentage + '%' :
+      widthInPixel ? widthInPixel + 'px' : '100%';
 
   return {
     root: [
