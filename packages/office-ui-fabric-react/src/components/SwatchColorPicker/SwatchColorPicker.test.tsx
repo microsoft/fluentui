@@ -28,7 +28,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -39,7 +39,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />);
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
@@ -50,7 +50,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />
     );
 
@@ -76,7 +76,7 @@ describe('SwatchColorPicker', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onColorChanged={ (color) => eventFireCounter++ }
         columnCount={ 4 }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />
     );
 
@@ -95,7 +95,7 @@ describe('SwatchColorPicker', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onCellHovered={ (color) => eventFireCounter++ }
         columnCount={ 4 }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />
     );
 
@@ -111,7 +111,7 @@ describe('SwatchColorPicker', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onCellFocused={ (color) => eventFireCounter++ }
         columnCount={ 4 }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />
     );
 

@@ -62,7 +62,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       items,
       className,
       theme,
-      getStyles
+      styles
     } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
@@ -72,7 +72,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       renderedOverflowItems
     };
 
-    this._classNames = getClassNames(getStyles, {
+    this._classNames = getClassNames(styles, {
       className,
       theme: theme!
     });

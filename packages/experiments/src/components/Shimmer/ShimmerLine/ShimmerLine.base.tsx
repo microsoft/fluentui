@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  customizable
 } from '../../../Utilities';
 import {
   IShimmerLineProps,
@@ -12,7 +11,6 @@ import {
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
-@customizable('ShimmerLine', ['theme'])
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   private _classNames: { [key in keyof IShimmerLineStyles]: string };
 
@@ -21,40 +19,12 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   }
 
   public render(): JSX.Element {
-    const {
-      height,
-      getStyles,
-      widthInPercentage,
-      widthInPixel,
-      borderStyle,
-      theme
-    } = this.props;
+    const { height, styles, widthInPercentage, widthInPixel, borderStyle } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
-      theme: theme!,
-      height,
-      widthInPixel,
-      widthInPercentage,
-      borderStyle
-    });
+    this._classNames = getClassNames(styles!, { height, widthInPixel, widthInPercentage, borderStyle });
 
     return (
-      <div
-        className={ this._classNames.root }
-      >
-        <svg width='2' height='2' className={ this._classNames.topLeftCorner }>
-          <path d='M0 2 A 2 2, 0, 0, 1, 2 0 L 0 0 Z' />
-        </svg>
-        <svg width='2' height='2' className={ this._classNames.topRightCorner }>
-          <path d='M0 0 A 2 2, 0, 0, 1, 2 2 L 2 0 Z' />
-        </svg>
-        <svg width='2' height='2' className={ this._classNames.bottomRightCorner }>
-          <path d='M2 0 A 2 2, 0, 0, 1, 0 2 L 2 2 Z' />
-        </svg>
-        <svg width='2' height='2' className={ this._classNames.bottomLeftCorner }>
-          <path d='M2 2 A 2 2, 0, 0, 1, 0 0 L 0 2 Z' />
-        </svg>
-      </div>
+      <div className={ this._classNames.root } />
     );
   }
 }

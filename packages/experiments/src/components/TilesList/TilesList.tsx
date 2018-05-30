@@ -329,9 +329,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           (
             <Shimmer
               key={ i }
-              customElementsGroup={ finalGrid }
+              isBaseStyle={ true }
               widthInPixel={ shimmerWrapperWidth }
-            />
+            >
+              { finalGrid }
+            </Shimmer>
           ) :
           finalGrid
       );
