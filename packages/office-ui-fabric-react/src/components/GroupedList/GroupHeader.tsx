@@ -158,8 +158,9 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
   private _onRenderTitle = (props: IGroupDividerProps): JSX.Element | null => {
     const { group } = props;
 
-    if (!group)
+    if (!group) {
       return null;
+    }
 
     return (
       <div className={ css('ms-GroupHeader-title', styles.title) }>
