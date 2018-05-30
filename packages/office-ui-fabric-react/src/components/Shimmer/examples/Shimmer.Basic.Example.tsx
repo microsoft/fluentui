@@ -4,7 +4,7 @@ import {
   Shimmer,
   ShimmerElementType as ElemType,
   ShimmerElementVerticalAlign as ElemVerticalAlign
-} from '@uifabric/experiments/lib/Shimmer';
+} from 'office-ui-fabric-react/lib/Shimmer';
 
 import './Shimmer.Example.scss';
 

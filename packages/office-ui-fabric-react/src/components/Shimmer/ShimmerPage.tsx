@@ -13,23 +13,23 @@ import { ShimmerApplicationExample } from './examples/Shimmer.Application.Exampl
 import { ShimmerStylingExample } from './examples/Shimmer.Styling.Example';
 
 const ShimmerBasicExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx'
+  '!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx'
 ) as string;
 
 const ShimmerCustomExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx'
+  '!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx'
 ) as string;
 
 const ShimmerStylingExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Styling.Example.tsx'
+  '!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Styling.Example.tsx'
 ) as string;
 
 const ShimmerLoadDataExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx'
+  '!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx'
 ) as string;
 
 const ShimmerApplicationExampleCode = require(
-  '!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Application.Example.tsx'
+  '!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx'
 ) as string;
 
 export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -75,7 +75,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Shimmer/Shimmer.types.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')
             ] }
           />
         }
