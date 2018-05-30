@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Use require.resolve logic in builds & watch .js files from node_modules",
-      "type": "patch"
+      "comment": "revert build change",
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
