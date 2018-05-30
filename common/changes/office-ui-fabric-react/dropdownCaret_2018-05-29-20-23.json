@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: fieldName is now an optional field of IColumn.",
-      "type": "minor"
+      "comment": "include high-contrast when setting color on caret",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
