@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IStyleSet, ITheme } from '../../../Styling';
+import { IStyle, IStyleSet } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
 export interface IShimmerGap {
@@ -40,11 +40,6 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   borderStyle?: IStyleSet;
 
   /**
-  * Theme provided by High-Order Component.
-  */
-  theme?: ITheme;
-
-  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   getStyles?: IStyleFunction<IShimmerGapStyleProps, IShimmerGapStyles>;
@@ -55,7 +50,6 @@ export interface IShimmerGapStyleProps {
   widthInPercentage?: number;
   widthInPixel?: number;
   borderStyle?: IStyleSet;
-  theme: ITheme;
 }
 
 export interface IShimmerGapStyles {
