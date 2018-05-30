@@ -16,7 +16,8 @@ import { initializeIcons as i8 } from './fabric-icons-8';
 import { initializeIcons as i9 } from './fabric-icons-9';
 
 import { IIconOptions } from '@uifabric/styling';
-import './iconAliases';
+import { registerIconAliases } from './iconAliases';
+
 const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/icons/';
 
 export function initializeIcons(
@@ -26,6 +27,8 @@ export function initializeIcons(
   [i, i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14].forEach(
     (initialize: (url: string, options?: IIconOptions) => void) => initialize(baseUrl, options)
   );
+
+  registerIconAliases();
 }
 
 export { IconNames } from './IconNames';
