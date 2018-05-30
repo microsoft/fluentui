@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
-import * as WarnUtil from '@uifabric/utilities/lib/warn';
+import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import { KeyCodes } from '../../Utilities';
 
 import { ComboBox } from './ComboBox';

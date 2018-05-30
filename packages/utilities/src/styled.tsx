@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { concatStyleSets } from '@uifabric/merge-styles/lib/index';
+import { concatStyleSets } from '@uifabric/merge-styles';
 import { IStyleFunction } from './IStyleFunction';
 
+export type IStyleFunctionOrObject<TStyleProps, TStyles> = IStyleFunction<TStyleProps, TStyles> | TStyles;
+
 export interface IPropsWithStyles<TStyleProps, TStyles> {
-  getStyles?: IStyleFunction<TStyleProps, TStyles>;
+  styles?: IStyleFunctionOrObject<TStyleProps, TStyles>;
   subComponents?: {
     [key: string]: IStyleFunction<{}, {}>;
   };
@@ -39,7 +41,11 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
       styleProps: TStyleProps
     ) => concatStyleSets(
       getBaseStyles && getBaseStyles(styleProps),
-      componentProps && componentProps.getStyles && componentProps.getStyles(styleProps)
+      componentProps && componentProps.styles && (
+        typeof componentProps.styles === 'function' ?
+          componentProps.styles(styleProps)
+          : componentProps.styles
+      )
     );
     const additionalProps = getProps ? getProps(componentProps) : {};
 
@@ -47,7 +53,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
       <Component
         { ...additionalProps }
         { ...componentProps }
-        getStyles={ getStyles }
+        styles={ getStyles }
       />
     );
   }) as IWrappedComponent<TComponentProps>;

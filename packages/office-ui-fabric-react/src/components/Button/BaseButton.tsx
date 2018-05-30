@@ -352,7 +352,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       text = children;
     }
 
-    if (text) {
+    if (this._hasText()) {
       return (
         <div
           key={ this._labelId }
@@ -365,6 +365,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return null;
+  }
+
+  private _hasText(): boolean {
+    // _onRenderTextContents and _onRenderText do not perform the same checks. Below is parity with what _onRenderText used to have
+    // before the refactor that introduced this function. _onRenderTextContents does not require props.text to be undefined in order
+    // for props.children to be used as a fallback. Purely a code maintainability/reuse issue, but logged as Issue #4979
+    return this.props.text !== null && (this.props.text !== undefined || typeof (this.props.children) === 'string');
   }
 
   private _onRenderChildren = (): JSX.Element | null => {
@@ -432,6 +439,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { onDismiss = this._dismissMenu } = menuProps;
 
+    // the accessible menu label (accessible name) has a relationship to the button.
+    // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
+    // AND the button has text, we'll set the menu aria-labelledBy to the text element id.
+    if (!menuProps.ariaLabel && !menuProps.labelElementId && this._hasText()) {
+      menuProps = { ...menuProps, labelElementId: this._labelId };
+    }
+
     return (
       <ContextualMenu
         id={ this._labelId + '-menu' }
@@ -440,7 +454,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         shouldFocusOnContainer={ this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined }
         className={ css('ms-BaseButton-menuhost', menuProps.className) }
         target={ this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current }
-        labelElementId={ this._labelId }
         onDismiss={ onDismiss }
       />
     );

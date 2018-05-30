@@ -28,7 +28,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     selected: false,
   } as IColorPickerGridCellProps;
 
-  private _classNames: {[key in keyof IColorPickerGridCellStyles]: string };
+  private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };
 
   public render(): JSX.Element {
     const {
@@ -36,7 +36,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
       id,
       selected,
       disabled,
-      getStyles,
+      styles,
       theme,
       circle,
       color,
@@ -51,7 +51,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     } = this.props;
 
     this._classNames = getClassNames(
-      getStyles!,
+      styles!,
       {
         theme: theme!,
         disabled,

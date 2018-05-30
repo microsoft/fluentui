@@ -70,7 +70,7 @@ export class NavExample extends React.Component<{}, {}> {
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' enableCustomization={ true } />
+        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' enableCustomization={ true } selectedKey='key2' />
       </div>
     );
   }

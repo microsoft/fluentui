@@ -99,11 +99,11 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
-      getStyles,
+      styles,
     } = this.props;
 
     const classNames = getClassNames(
-      getStyles!,
+      styles!,
       {
         theme: this.props.theme!,
         className,
@@ -126,7 +126,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         onBlur={ this._onSwatchColorPickerBlur }
         theme={ this.props.theme! }
         // tslint:disable-next-line:jsx-no-lambda
-        getStyles={ (props) => ({
+        styles={ (props) => ({
           root: classNames.root,
           tableCell: classNames.tableCell,
           focusedContainer: classNames.focusedContainer
@@ -169,7 +169,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         item={ item }
         id={ id }
         color={ item.color }
-        getStyles={ this.props.getColorGridCellStyles }
+        styles={ this.props.getColorGridCellStyles }
         disabled={ this.props.disabled }
         onClick={ this._onCellClick }
         onHover={ this._onGridCellHovered }
