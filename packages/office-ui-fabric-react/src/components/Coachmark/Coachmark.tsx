@@ -2,12 +2,11 @@
 import * as React from 'react';
 import { BaseComponent, IRectangle, classNamesFunction, createRef, shallowCompare } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
-import { IPositionedData, RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { IPositionedData, RectangleEdge, getOppositeEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 // Component Dependencies
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
-import { BeakDirection } from './Beak/Beak.types';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
 // Coachmark
@@ -134,24 +133,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     };
   }
 
-  private get _beakDirection(): BeakDirection {
+  private get _beakDirection(): RectangleEdge {
     const { targetPosition } = this.state;
     if (targetPosition === undefined) {
-      return BeakDirection.Top;
+      return RectangleEdge.bottom;
     }
 
-    switch (targetPosition) {
-      case RectangleEdge.top:
-        return BeakDirection.Bottom;
-      case RectangleEdge.right:
-        return BeakDirection.Left;
-      case RectangleEdge.bottom:
-        return BeakDirection.Top;
-      case RectangleEdge.left:
-        return BeakDirection.Right;
-      default:
-        return BeakDirection.Top;
-    }
+    return getOppositeEdge(targetPosition);
   }
 
   public render(): JSX.Element {
@@ -320,8 +308,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     switch (this._beakDirection) {
       // If Beak is pointing Up or Down
-      case BeakDirection.Top:
-      case BeakDirection.Bottom:
+      case RectangleEdge.top:
+      case RectangleEdge.bottom:
         // If there is no target alignment, then beak is X-axis centered in callout
         if (!targetAlignment) {
           beakLeft = `calc(50% - ${BEAK_WIDTH / 2}px)`;
@@ -329,16 +317,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         } else {
           // Beak is aligned to the left of target
           if (targetAlignment === RectangleEdge.left) {
-            beakLeft = `calc(${COACHMARK_WIDTH / 2}px - ${BEAK_WIDTH / 2}px)`;
+            beakLeft = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginX = 'left';
           } else {
             // Beak is aligned to the right of target
-            beakRight = `calc(${COACHMARK_WIDTH / 2}px - ${BEAK_WIDTH / 2}px)`;
+            beakRight = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginX = 'right';
           }
         }
 
-        if (this._beakDirection === BeakDirection.Top) {
+        if (this._beakDirection === RectangleEdge.top) {
           beakTop = distanceAdjustment;
           transformOriginY = 'top';
         } else {
@@ -347,8 +335,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         }
         break;
       // If Beak is pointing Left or Right
-      case BeakDirection.Left:
-      case BeakDirection.Right:
+      case RectangleEdge.left:
+      case RectangleEdge.right:
         // If there is no target alignment, then beak is Y-axis centered in callout
         if (!targetAlignment) {
           beakTop = `calc(50% - ${BEAK_WIDTH / 2}px)`;
@@ -356,16 +344,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         } else {
           // Beak is aligned to the top of target
           if (targetAlignment === RectangleEdge.top) {
-            beakTop = `calc(${COACHMARK_WIDTH / 2}px - ${BEAK_WIDTH / 2}px)`;
+            beakTop = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginY = `top`;
           } else {
             // Beak is aligned to the bottom of target
-            beakBottom = `calc(${COACHMARK_WIDTH / 2}px - ${BEAK_WIDTH / 2}px)`;
+            beakBottom = `${COACHMARK_WIDTH / 2 - BEAK_WIDTH / 2}px`;
             transformOriginY = `bottom`;
           }
         }
 
-        if (this._beakDirection === BeakDirection.Left) {
+        if (this._beakDirection === RectangleEdge.left) {
           beakLeft = distanceAdjustment;
           transformOriginX = 'left';
         } else {

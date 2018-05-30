@@ -1,14 +1,8 @@
 import * as React from 'react';
 import { Beak } from './Beak';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IBeak { }
-
-export enum BeakDirection {
-  Top,
-  Right,
-  Bottom,
-  Left
-}
 
 export interface IBeakProps extends React.Props<Beak> {
   /**
@@ -59,7 +53,7 @@ export interface IBeakProps extends React.Props<Beak> {
   /**
    * Direction of beak
    */
-  direction?: BeakDirection;
+  direction?: RectangleEdge;
 }
 
 export interface IBeakStylesProps {

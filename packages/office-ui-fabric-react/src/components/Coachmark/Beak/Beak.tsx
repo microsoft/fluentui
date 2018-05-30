@@ -4,9 +4,10 @@ import {
   css,
   classNamesFunction
 } from '../../../Utilities';
-import { BeakDirection, IBeakProps } from './Beak.types';
+import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
 import { IBeakStylesProps } from './Beak.types';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export const BEAK_HEIGHT = 10;
 export const BEAK_WIDTH = 18;
@@ -22,13 +23,13 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
       top,
       bottom,
       right,
-      direction = BeakDirection.Top
+      direction = RectangleEdge.top
     } = this.props;
 
     let svgHeight: number;
     let svgWidth: number;
 
-    if (direction === BeakDirection.Top || direction === BeakDirection.Bottom) {
+    if (direction === RectangleEdge.top || direction === RectangleEdge.bottom) {
       svgHeight = BEAK_HEIGHT;
       svgWidth = BEAK_WIDTH;
     } else {
@@ -42,26 +43,26 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
     let transform: string;
 
     switch (direction) {
-      case BeakDirection.Top:
+      case RectangleEdge.top:
       default:
         pointOne = `${BEAK_WIDTH / 2}, 0`;
         pointTwo = `${BEAK_WIDTH}, ${BEAK_HEIGHT}`;
         pointThree = `0, ${BEAK_HEIGHT}`;
         transform = 'translateY(-100%)';
         break;
-      case BeakDirection.Right:
+      case RectangleEdge.right:
         pointOne = `0, 0`;
         pointTwo = `${BEAK_HEIGHT}, ${BEAK_HEIGHT}`;
         pointThree = `0, ${BEAK_WIDTH}`;
         transform = 'translateX(100%)';
         break;
-      case BeakDirection.Bottom:
+      case RectangleEdge.bottom:
         pointOne = `0, 0`;
         pointTwo = `${BEAK_WIDTH}, 0`;
         pointThree = `${BEAK_WIDTH / 2}, ${BEAK_HEIGHT}`;
         transform = 'translateY(100%)';
         break;
-      case BeakDirection.Left:
+      case RectangleEdge.left:
         pointOne = `${BEAK_HEIGHT}, 0`;
         pointTwo = `0, ${BEAK_HEIGHT}`;
         pointThree = `${BEAK_HEIGHT}, ${BEAK_WIDTH}`;
