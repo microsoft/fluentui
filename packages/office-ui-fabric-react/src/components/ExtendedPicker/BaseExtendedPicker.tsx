@@ -177,7 +177,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     if (this.selectedItemsList.current && this.items.length) {
-      if (this.input.current && !this.input.current.isValueSelected && this.input.current.inputElement == document.activeElement && (this.input.current as Autofill).cursorLocation === 0) {
+      if (this.input.current && !this.input.current.isValueSelected && this.input.current.inputElement === document.activeElement && (this.input.current as Autofill).cursorLocation === 0) {
         ev.preventDefault();
         this.selectedItemsList.current.removeItemAt(this.items.length - 1);
         this._onSelectedItemsChanged();
