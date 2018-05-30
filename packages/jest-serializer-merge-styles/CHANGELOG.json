@@ -2,6 +2,18 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "5.2.2",
+      "tag": "@uifabric/jest-serializer-merge-styles_v5.2.2",
+      "date": "Wed, 30 May 2018 22:05:03 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.1",
       "tag": "@uifabric/jest-serializer-merge-styles_v5.2.1",
       "date": "Mon, 21 May 2018 10:29:16 GMT",
