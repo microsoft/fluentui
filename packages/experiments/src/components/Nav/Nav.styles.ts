@@ -52,16 +52,8 @@ export const getStyles = (
           margin: 0,
           fontSize: navFontSize,
           selectors: {
-            li: {
-              selectors: {
-                ':hover': {
-                  selectors: {
-                    '>div[class*=ms-Nav-FloatingNav]': {
-                      visibility: 'visible'
-                    }
-                  }
-                }
-              }
+            'li:hover >div': {
+              display: 'block'
             }
           }
         },
@@ -111,9 +103,7 @@ export const getStyles = (
     },
     navFloatingRoot: [
       {
-        displayName: 'ms-Nav-FloatingNav',
-        display: 'block',
-        visibility: 'hidden',
+        display: 'none',
         position: 'absolute',
         marginLeft: navCollapsedWidth,
         marginTop: -navItemHeight - (!!scrollTop && scrollTop > 0 ? scrollTop : 0),

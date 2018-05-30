@@ -307,10 +307,10 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public render(): JSX.Element {
-    const { onRenderData, className, getStyles, theme } = this.props;
+    const { onRenderData, className, styles, theme } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
-    const classNames = getClassNames(getStyles!, { theme: theme!, className });
+    const classNames = getClassNames(styles!, { theme: theme!, className });
 
     return (
       <div { ...divProps } className={ classNames.root } ref={ this._root }>
