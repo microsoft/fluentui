@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../../Styling';
-import { IStyleFunction } from '../../../Utilities';
+import { IStyleFunctionOrObject } from '../../../Utilities';
 import { IShimmerElement } from '../Shimmer.types';
 
 export interface IShimmerElementsGroup {
@@ -45,7 +45,7 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
 }
 
 export interface IShimmerElementsGroupStyleProps {
