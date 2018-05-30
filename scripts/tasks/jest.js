@@ -7,7 +7,7 @@ module.exports = function (options) {
   const jestConfigPath = findConfig('jest.config.js');
 
   if (fs.existsSync(jestConfigPath)) {
-    const jestPath = require.resolve('jest/bin/jest');
+    const jestPath = path.resolve(__dirname, '../node_modules/jest/bin/jest');
     const customArgs = options && options.argv ? options.argv.slice(3).join(' ') : '';
 
     const args = [

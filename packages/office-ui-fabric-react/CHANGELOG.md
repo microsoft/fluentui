@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 May 2018 21:30:43 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 00:35:36 GMT and should not be manually modified.
+
+## 5.112.0
+Wed, 30 May 2018 00:35:36 GMT
+
+### Minor changes
+
+- FocusZone: Added onFocusNotification API to notify creators of focus
+
+### Patches
+
+- Update local properties in BaseExtenededPicker on receiving new props
+- CommandBar Example: More specific selector for text color to override the link styles we get from msgraph on the website.
+- ComboBox: Update styling so that the "selected" item does not get the "selected" look when navigating through the potential options.
+- Fix passing onclick from props for contextual anchor item
 
 ## 5.111.2
 Fri, 25 May 2018 21:30:43 GMT
@@ -254,7 +268,7 @@ Fri, 04 May 2018 15:58:39 GMT
 - Positioning: Fix cover positioning so it returns the correct edge to handle menu shrinkage
 - Fix TooltipHost mutation of calloutProps.
 - SpinButton: Remove browser autocomplete
-- Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge. 
+- Using the proper preview text to set the aria label on combobox options. I previously had this change, but I accidentally reverted it during a merge.
 
 ## 5.95.0
 Wed, 02 May 2018 23:55:40 GMT
@@ -477,7 +491,7 @@ Mon, 16 Apr 2018 10:23:26 GMT
 - Add new component page prop for editing on GitHub.
 - SpinButton: Make sure up/down Arrow do not leave the spinButton
 - Handling the scenario where embedded text is passed in as the option's text. In This case, the ariaLabel prop will be displayed in the input and used for autocomplete matching. The value rendered in the menu will not change.
-- Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements. 
+- Wrapping combobox options in an internal component which only performs an update if the props have changed. We are currently updating every option on every mouse or keyboard event. This gives awful performance in comboboxes with many elements.
 - Adds tests for DocumentCardTitle title truncation
 - Add focus method to Pivot.
 - FocusZone: redoing the "reset alignment on mouse down" change in a less intrusive manner, with test coverage.
@@ -753,7 +767,7 @@ Thu, 15 Mar 2018 02:42:27 GMT
 
 ### Patches
 
-- Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ). 
+- Targeted the aria-labelledby on ChoiceGroup's input field to the span tag inside the span tag inside label ( option.labelId ) instead of thelabel itself ( option.id ).
 
 ## 5.64.1
 Wed, 14 Mar 2018 10:28:26 GMT
@@ -917,7 +931,7 @@ Wed, 28 Feb 2018 11:15:45 GMT
 ### Minor changes
 
 - Convert Dialog to mergeStyles, part 1 - file structure
-- Dialog: Converting to mergeStyles part 1.2 - sub component file structure. 
+- Dialog: Converting to mergeStyles part 1.2 - sub component file structure.
 - Prepare Persona for conversion to merge-styles
 
 ### Patches
@@ -953,7 +967,7 @@ Sat, 24 Feb 2018 05:10:13 GMT
 
 - Fix SplitButton rendering issue in ContextualMenu
 - ComboBox: Added property to set ComboBox's button's data-is-focusable attribute.
-- ContextualMenu: Import ContextualMenuUtility/index directly instead of folder. 
+- ContextualMenu: Import ContextualMenuUtility/index directly instead of folder.
 - [Focus] Enable focus forceIntoFirstElement parameter
 - [DetailsList] Fixed test by mocking visiblity
 - [ContextualMenu] Disabled buttons are focusable
@@ -1013,7 +1027,7 @@ Wed, 21 Feb 2018 11:12:11 GMT
 ### Patches
 
 - Enable jsx-key tslint rule
-- Only apply 'pointer-events: none' to disabled Link components if there is an href 
+- Only apply 'pointer-events: none' to disabled Link components if there is an href
 - Dialog: default modal props now respective (Modal rendered with light background.)
 - Buttons: moving className lower in the merge list so that it has more precedence than default rules.
 - Rating: Adding `type=button` to Rating buttons.
@@ -1066,7 +1080,7 @@ Wed, 14 Feb 2018 22:10:50 GMT
 - Fabric: Adds button overflow visible global style so that ie11 renders like edge/chrome/firefox
 - DatePicker: Fixing pointer when datepicker doesn't have a label
 - ComboBox: Add getClassNAmes prop to allow complete customization of the component
-- CalloutContent: Remove calloutWidth from calloutMain 
+- CalloutContent: Remove calloutWidth from calloutMain
 - SpinButton: Add getClassNAmes prop to allow complete customization of the component
 - Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items.
 
@@ -1292,7 +1306,7 @@ Fri, 19 Jan 2018 11:14:03 GMT
 ### Patches
 
 - added smallInputBorder semantic slots and updated checkbox, choicegroup, and toggle to use it.
-- Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. 
+- Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly.
 - Datepicker: Fix so calendar doesn't open when clicking icon when DatePicker is disabled
 - Persona: Fix a bug where space would be taken even though there was no secondary text
 - Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119
@@ -1757,7 +1771,7 @@ Sun, 05 Nov 2017 23:27:32 GMT
 
 ### Minor changes
 
-- Allow optional minimum and maximum date boundaries on Calendar component. 
+- Allow optional minimum and maximum date boundaries on Calendar component.
 
 ### Patches
 
@@ -1804,7 +1818,7 @@ Thu, 02 Nov 2017 18:20:18 GMT
 - Facepile style debugging, includes new FacepileButton
 - Menus: Update so they have one notion of focus (from both hover and keyboard)
 - Split Button in Menu: add vertical divider component and hook to customize splitbutton in menu div classname
-- Persona: Changed PersonaSize names from descriptive to numerical. 
+- Persona: Changed PersonaSize names from descriptive to numerical.
 - TextField/DatePicker: The required astrisk is now more correctly positioned.
 
 ## 5.17.1
@@ -1990,7 +2004,7 @@ Thu, 12 Oct 2017 10:20:49 GMT
 
 ### Minor changes
 
-- Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. 
+- Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown.
 - OverflowSet: Add FocusZoneProps and the ability to set the role
 - Callout: Added optional button at the bottom of the callout container
 - ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior
@@ -2007,7 +2021,7 @@ Wed, 11 Oct 2017 10:11:04 GMT
 
 ### Minor changes
 
-- ComboBox: Adding props to control height and width of Callout 
+- ComboBox: Adding props to control height and width of Callout
 - "Move getItemClassnNames forontextualMenuProps to IContextualMenuItem"
 - Make Modal's FocusTrapZone controllable
 
@@ -2119,7 +2133,7 @@ Fri, 29 Sep 2017 10:20:24 GMT
 - DetailsList: Allow resizing columns wider than maxWidth in justified layout
 - ContextualMenu: Make sure to check items within a menu section for the 'canCheck' property
 - Updating mergeStyleSets usage in various components to adhere to correct typing.
-- Split out and cleaned up TextField examples to better reflect the toolkit. 
+- Split out and cleaned up TextField examples to better reflect the toolkit.
 - DatePicker: call correct callback when previous year button is clicked
 
 ## 5.1.0
@@ -2568,7 +2582,7 @@ Fri, 11 Aug 2017 19:38:35 GMT
 - FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
 - ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
 - Nav: update isGroupCollapsed for new groups
-- Change dropdown's role from "combobox" to "menu" 
+- Change dropdown's role from "combobox" to "menu"
 - Changed DatePicker role to be more accurate for screen readers
 - Selection: Fix broken selection state in example.
 
@@ -2586,7 +2600,7 @@ Tue, 08 Aug 2017 15:28:32 GMT
 
 - BaseButton: Added screenReaderText styles to base button
 - BaseButton: Remove the IconButton dependency that was introduced with SplitButton.
-- Added role alert to "no results" view 
+- Added role alert to "no results" view
 
 ## 4.30.1
 Mon, 07 Aug 2017 10:22:46 GMT
@@ -2738,7 +2752,7 @@ Fri, 21 Jul 2017 10:21:45 GMT
 
 ### Patches
 
-- Do not redundantly set aria-label on command bar items. 
+- Do not redundantly set aria-label on command bar items.
 - More strict null check fixes in office-ui-fabric-react
 - Textfield: Fixed regression in disabled styles
 - ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
@@ -2905,7 +2919,7 @@ Fri, 30 Jun 2017 19:44:26 GMT
 ### Patches
 
 - Breadcrumb: Use flexbox for layout to better support multiple font sizes
-- MessageBar: Fixed padding regressions with multiline and no actions 
+- MessageBar: Fixed padding regressions with multiline and no actions
 
 ## 4.13.1
 Fri, 30 Jun 2017 10:23:15 GMT
@@ -2959,7 +2973,7 @@ Tue, 27 Jun 2017 01:26:31 GMT
 
 ### Minor changes
 
-- Commandbar: fix synchronous reflow 
+- Commandbar: fix synchronous reflow
 - Enhancing the calendar component to allow for turning off the day picker and highlighting the "today" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.
 
 ### Patches
@@ -3205,7 +3219,7 @@ Tue, 30 May 2017 03:27:20 GMT
 
 ### Patches
 
-- DetailsList: initialFocusedIndex is considered on already mounted rows 
+- DetailsList: initialFocusedIndex is considered on already mounted rows
 - SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList.
 - Introduce prop-types instead of React.PropTypes
 - List: improved measure logic and fix nested list scroll problem
@@ -3524,7 +3538,7 @@ Wed, 19 Apr 2017 03:17:40 GMT
 ### Patches
 
 - DatePicker: Improve screen-reader accessibility.
-- Regression Test: Contextual Menu 
+- Regression Test: Contextual Menu
 - fix nit for Suggestion.tsx
 
 ## 2.19.0
@@ -3688,7 +3702,7 @@ Wed, 29 Mar 2017 18:15:29 GMT
 
 - FocusZone: Adding support for default browser behavior when pressing alt + a key.
 - Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
-- PeoplePicker: Adding changes for multiple selection onChange 
+- PeoplePicker: Adding changes for multiple selection onChange
 
 ## 2.10.1
 Wed, 29 Mar 2017 15:10:15 GMT
@@ -3801,7 +3815,7 @@ Thu, 16 Mar 2017 03:05:54 GMT
 ### Minor changes
 
 - DocumentCard: Add aria role and keyboard handling
-- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion.
 
 ### Patches
 
@@ -3877,7 +3891,7 @@ Thu, 09 Mar 2017 06:11:07 GMT
 
 ### Breaking changes
 
-- IMPORTANT: 
+- IMPORTANT:
 
 This pull request converts ALL components over to use module css. What does this mean?
 
@@ -3895,7 +3909,7 @@ Problems that still exist:
 4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.
 5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.
 
-We are planning to address these and evaluating library options. Issue being tracked here: #983 
+We are planning to address these and evaluating library options. Issue being tracked here: #983
 
 
 ### Minor changes
@@ -4310,7 +4324,7 @@ Thu, 12 Jan 2017 04:06:30 GMT
 - DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated.
 - Dialog: Removing deprecated rootProps usage for the close button.
 - Persona: Set an explicit height for the image area and image.
-- Persona now has a default way of generating initials and colors 
+- Persona now has a default way of generating initials and colors
 - Pivot: Fix a11y - duplicate tabIds, aria-controls linking
 - TextField: aria-describedby is only set when a description is available.
 
@@ -4575,7 +4589,7 @@ Mon, 05 Dec 2016 04:02:30 GMT
 
 ### Minor changes
 
-- Nav: adding support for `selectedKey`. 
+- Nav: adding support for `selectedKey`.
 
 ### Patches
 

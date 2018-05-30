@@ -1,6 +1,6 @@
 ﻿/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import {
   INavLink,
   INavLinkGroup
@@ -44,7 +44,7 @@ export interface INavProps {
   /**
    * (Optional) Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * (Optional) Used for telemetry

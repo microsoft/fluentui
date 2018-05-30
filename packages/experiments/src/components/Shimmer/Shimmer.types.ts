@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyle } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IShimmer {
 
@@ -15,6 +15,14 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * the public methods and properties of the component.
    */
   componentRef?: (component: IShimmer | null) => void;
+
+  /**
+   * Sets the width of the shimmer wave wrapper in percentages.
+   * Deprecated, use a more specific width like widthInPixel or widthInPercentage.
+   * @default 100%
+   * @deprecated
+   */
+  width?: number;
 
   /**
    * Sets the width of the shimmer wave wrapper in percentages relative to the containig parent element.
@@ -35,62 +43,22 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   isDataLoaded?: boolean;
 
   /**
+   * Provide when Shimmer is intended to be used when using 'onRenderMissingItem' optional callback of the DetailsList Fabric Component.
+   * @default false
+   */
+  isBaseStyle?: boolean;
+
+  /**
    * Elements to render in one line of the Shimmer.
    */
-  shimmerElements?: IShimmerElement[];
-
-  /**
-   * Custom elements when necessary to build complex placeholder skeletons.
-   */
-  customElementsGroup?: React.ReactNode;
-
-  /**
-   * Localized string of the status label for screen reader
-   */
-  ariaLabel?: string;
+  lineElements?: Array<ICircle | IGap | ILine>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerStyleProps, IShimmerStyles>;
-
-  /**
-   * Additional CSS class(es) to apply to the Shimmer container.
-   */
-  className?: string;
-
-  /**
-  * Theme provided by High-Order Component.
-  */
-  theme?: ITheme;
-
-  /**
-   * Elements to render in one line of the Shimmer.
-   * Deprecated, use 'shimmerElements' for better semantic meaning.
-   * @deprecated Use 'shimmerElements' instead.
-   */
-  lineElements?: IShimmerElement[];
-
-  /**
-   * Sets the width of the shimmer wave wrapper in percentages.
-   * Deprecated, use a more specific width like 'widthInPixel' or 'widthInPercentage'.
-   * @default 100%
-   * @deprecated Use a more specific width like 'widthInPixel' or 'widthInPercentage'.
-   */
-  width?: number;
-
-  /**
-   * Use when providing custom skeleton as children wrapped by shimmer.
-   * Deprecated in favor of 'customElementsGroup'
-   * @default false
-   * @deprecated Use 'customElementsGroup' instead.
-   */
-  isBaseStyle?: boolean;
+  styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
 }
 
-/**
- * Shimmer Elements Interface
- */
 export interface IShimmerElement {
   /**
    * Required for every element you intend to use.
@@ -98,7 +66,7 @@ export interface IShimmerElement {
   type: ShimmerElementType;
 
   /**
-   * The height of the element (ICircle, ILine, IGap) in pixels.
+   * The height of the element (ICircle, ILine) in pixels.
    * Read more details for each specific element.
    */
   height?: number;
@@ -172,98 +140,41 @@ export interface IGap extends IShimmerElement {
 
 export interface IShimmerStyleProps {
   width?: number;
+  rowHeight?: number;
   widthInPercentage?: number;
   widthInPixel?: number;
   isDataLoaded?: boolean;
-  className?: string;
-  theme: ITheme;
-  transitionAnimationInterval?: number;
+  isBaseStyle?: boolean;
 }
 
 export interface IShimmerStyles {
   root?: IStyle;
   shimmerWrapper?: IStyle;
   dataWrapper?: IStyle;
-  screenReaderText?: IStyle;
 }
 
-export enum ShimmerElementType {
-  /**
-   * Line element type
-   */
-  line = 1,
-
-  /**
-   * Circle element type
-   */
-  circle = 2,
-
-  /**
-   * Gap element type
-   */
-  gap = 3,
-
-  /**
-   * @deprecated Use 'line' instead
-   */
-  LINE = 1,
-
-  /**
-   * @deprecated Use 'circle' instead
-   */
-  CIRCLE = 2,
-
-  /**
-   * @deprecated Use 'gap' instead
-   */
-  GAP = 3
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
+export const enum ShimmerElementType {
+  LINE = 'line',
+  CIRCLE = 'circle',
+  GAP = 'gap',
+  line = 'line',
+  circle = 'circle',
+  gap = 'gap'
 }
 
-export enum ShimmerElementVerticalAlign {
-  /**
-   * @deprecated Use 'center' instead
-   */
-  CENTER = 1,
-
-  /**
-   * @deprecated Use 'bottom' instead
-   */
-  BOTTOM = 2,
-
-  /**
-   * @deprecated Use 'top' instead
-   */
-  TOP = 3,
-
-  /**
-   * Positions the element vertically in center
-   */
-  center = 1,
-
-  /**
-   * Positions the element vertically at the bottom
-   */
-  bottom = 2,
-
-  /**
-   * Positions the element vertically at the top
-   */
-  top = 3
-}
-
-export enum ShimmerElementsDefaultHeights {
-  /**
-   * Default height of the line element when not provided by user: 16px
-   */
-  line = 16,
-
-  /**
-   * Default height of the gap element when not provided by user: 16px
-   */
-  gap = 16,
-
-  /**
-   * Default height of the circle element when not provided by user: 24px
-   */
-  circle = 24
+/**
+ * The CAPS lock values will be deprecated soon.
+ * @deprecated
+ */
+export const enum ShimmerElementVerticalAlign {
+  CENTER = 'center',
+  BOTTOM = 'bottom',
+  TOP = 'top',
+  center = 'center',
+  bottom = 'bottom',
+  top = 'top'
 }
