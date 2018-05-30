@@ -58,6 +58,9 @@ class NavComponent extends NavBase {
     if (hasChildren) {
       // show child links
       link.isExpanded = !link.isExpanded;
+      // disable auto expand based on selected key prop, instead allow to toggle child links
+      link.disableAutoExpand = true;
+
       nextState.isLinkExpandStateChanged = true;
     }
     else if (link.onClick) {
@@ -141,6 +144,13 @@ class NavComponent extends NavBase {
     }
 
     const linkText = this.getLinkText(link, this.props.showMore);
+    const isChildLinkSelected = this.isChildLinkSelected(link);
+
+    // if allowed, auto expand if the child is selected
+    link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
+
+    // enable auto expand until the next manual expand disables the auto expand
+    link.disableAutoExpand = false;
 
     return (
       <li

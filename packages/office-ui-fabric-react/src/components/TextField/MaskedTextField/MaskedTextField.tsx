@@ -206,17 +206,13 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onFocus(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const {
-      onFocus
-    } = this.props;
-
-    if (onFocus) {
-      onFocus(event);
+    if (this.props.onFocus) {
+      this.props.onFocus(event);
     }
 
     this._isFocused = true;
 
-    // Move the cursor position to the rightmost unfilled position
+    // Move the cursor position to the leftmost unfilled position
     for (let i = 0; i < this._maskCharData.length; i++) {
       if (!this._maskCharData[i].value) {
         this.setState({
@@ -229,12 +225,8 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onBlur(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const {
-      onBlur
-    } = this.props;
-
-    if (onBlur) {
-      onBlur(event);
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
     }
 
     this._isFocused = false;
@@ -243,6 +235,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onMouseDown(event: React.MouseEvent<HTMLInputElement>) {
+    if (this.props.onMouseDown) {
+      this.props.onMouseDown(event);
+    }
+
     if (!this._isFocused) {
       this._moveCursorOnMouseUp = true;
     }
@@ -250,6 +246,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onMouseUp(event: React.MouseEvent<HTMLInputElement>) {
+    if (this.props.onMouseUp) {
+      this.props.onMouseUp(event);
+    }
+
     // Move the cursor on mouseUp after focusing the textField
     if (this._moveCursorOnMouseUp) {
       this._moveCursorOnMouseUp = false;
@@ -267,6 +267,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onBeforeChange(value: String) {
+    if (this.props.onBeforeChange) {
+      this.props.onBeforeChange(value);
+    }
+
     if (this._changeSelectionData === null) {
       this._changeSelectionData = {
         changeType: inputChangeType.default,
@@ -278,6 +282,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onInputChange(value: string) {
+    if (this.props.onChanged) {
+      this.props.onChanged(value);
+    }
+
     if (!this._changeSelectionData) {
       return;
     }
@@ -357,6 +365,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(event);
+    }
+
     this._changeSelectionData = null;
     if (this._textField.value) {
       const {
@@ -394,6 +406,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onPaste(event: React.ClipboardEvent<HTMLInputElement>) {
+    if (this.props.onPaste) {
+      this.props.onPaste(event);
+    }
+
     const selectionStart = (event.target as HTMLInputElement).selectionStart,
       selectionEnd = (event.target as HTMLInputElement).selectionEnd;
     // Store the paste selection range

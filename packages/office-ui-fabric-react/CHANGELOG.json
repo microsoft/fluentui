@@ -2,6 +2,92 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.112.0",
+      "tag": "office-ui-fabric-react_v5.112.0",
+      "date": "Wed, 30 May 2018 00:35:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "a29f48c14e5c0c8ad829a3892ce1076af748dd57",
+            "comment": "Update local properties in BaseExtenededPicker on receiving new props"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6b2296457551d147a2dc671aca7c80d8fe1ab4cd",
+            "comment": "CommandBar Example: More specific selector for text color to override the link styles we get from msgraph on the website."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "5f5c3f83d91509045b265c78bb84d636884db50c",
+            "comment": "ComboBox: Update styling so that the \"selected\" item does not get the \"selected\" look when navigating through the potential options."
+          },
+          {
+            "author": "Karthik Balasubramanian <karthikb87@gmail.com>",
+            "commit": "141279bea43493241d352e09abbea391d0974567",
+            "comment": "Fix passing onclick from props for contextual anchor item"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "d076c99a3642c1f5cb3b4c6fc7c739e8148ae076",
+            "comment": "FocusZone: Added onFocusNotification API to notify creators of focus"
+          }
+        ],
+        "none": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "71c06895d0f7dafd28384357c0bd93541deb95e1",
+            "comment": "revert build change"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.111.2",
+      "tag": "office-ui-fabric-react_v5.111.2",
+      "date": "Fri, 25 May 2018 21:30:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "5c18dad82b3c680567e53890b5cb5ca961a82c99",
+            "comment": "MaskedTextField: Added event callpack passthrough"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "3a4ac916d3f1426ddb2e335f9facb00f64b499a0",
+            "comment": "fix old error color SASS variables so they work when themed"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.111.1",
+      "tag": "office-ui-fabric-react_v5.111.1",
+      "date": "Fri, 25 May 2018 16:53:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Asish Padhy <asish2k14@outlook.com>",
+            "commit": "ab649b2dc093d5740ad91bd285516a3bd468e156",
+            "comment": "Revisited the Multi-select Combo box initial state selection fix"
+          },
+          {
+            "author": "Ryan Psenski <rpsenski@microsoft.com>",
+            "commit": "8447135508ed83ec6ec2996cc546b6c61ffbd4c9",
+            "comment": "BaseButton sometimes has aria-labelledBy pointing to element that isn't in the DOM"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3adeb42535d86338bc3ca3c39e92a404a532a730",
+            "comment": "StickyPane: Replaced Array.From since it is not supported in IE"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.111.0",
       "tag": "office-ui-fabric-react_v5.111.0",
       "date": "Thu, 24 May 2018 17:06:02 GMT",

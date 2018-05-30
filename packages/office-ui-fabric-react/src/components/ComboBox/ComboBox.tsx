@@ -1177,7 +1177,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     let idxOfSelectedIndex = -1;
-    if ((index !== undefined) && this.state.selectedIndices) {
+    if (this.props.multiSelect && (index !== undefined) && this.state.selectedIndices) {
       idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
     }
     return (idxOfSelectedIndex >= 0);
