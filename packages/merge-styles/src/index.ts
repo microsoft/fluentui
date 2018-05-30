@@ -37,3 +37,7 @@ export {
   InjectionMode,
   Stylesheet
 } from './Stylesheet';
+
+export {
+  setRTL
+} from './transforms/rtlifyRules';

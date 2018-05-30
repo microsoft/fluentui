@@ -12,15 +12,15 @@ import {
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
-  private _classNames: {[key in keyof IShimmerCircleStyles]: string};
+  private _classNames: { [key in keyof IShimmerCircleStyles]: string };
 
   constructor(props: IShimmerCircleProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const { height, getStyles, borderStyle } = this.props;
-    this._classNames = getClassNames(getStyles!, { height, borderStyle });
+    const { height, styles, borderStyle } = this.props;
+    this._classNames = getClassNames(styles!, { height, borderStyle });
 
     return (
       <div className={ this._classNames.root }>

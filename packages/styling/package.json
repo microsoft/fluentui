@@ -7,9 +7,10 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "license": "MIT",
-  "main": "lib/index.js",
-  "typings": "lib-es2015/index.d.ts",
-  "sideEffects": false,
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": true,
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
@@ -23,9 +24,9 @@
     "@types/jest": "21.1.8",
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",

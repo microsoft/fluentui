@@ -2,9 +2,10 @@
   "name": "@uifabric/example-app-base",
   "version": "5.11.5",
   "description": "Office UI Fabric example app base utilities for building example sites.",
-  "main": "lib/index.js",
-  "typings": "lib-es2015/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
   "sideEffects": true,
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
@@ -24,13 +25,13 @@
     "es6-map": "^0.1.5",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "peerDependencies": {
-    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
-    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
     "@uifabric/styling": ">=5.31.0 <6.0.0",

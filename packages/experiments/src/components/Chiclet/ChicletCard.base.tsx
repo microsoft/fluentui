@@ -39,11 +39,11 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       className,
       footer,
       theme,
-      getStyles
+      styles
     } = this.props;
     const actionable = (onClick) ? true : false;
 
-    this._classNames = getClassNames(getStyles, { theme: theme! });
+    this._classNames = getClassNames(styles, { theme: theme! });
 
     // if this element is actionable it should have an aria role
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;

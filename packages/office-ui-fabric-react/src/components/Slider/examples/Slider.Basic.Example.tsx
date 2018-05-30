@@ -26,7 +26,7 @@ export class SliderBasicExample extends React.Component<{}, {
             defaultValue={ 2 }
             showValue={ true }
             // tslint:disable-next-line:jsx-no-lambda
-            onChange={ (value) => console.log(value) }
+            onChange={ (value: any) => console.log(value) }
           />
           <Slider
             label='Disabled example:'
@@ -42,7 +42,7 @@ export class SliderBasicExample extends React.Component<{}, {
             max={ 10 }
             value={ this.state.value }
             // tslint:disable-next-line:jsx-no-lambda
-            onChange={ value => this.setState({ value }) }
+            onChange={ (value: any) => this.setState({ value }) }
             showValue={ true }
           />
         </div>
@@ -57,7 +57,7 @@ export class SliderBasicExample extends React.Component<{}, {
               showValue={ true }
               vertical={ true }
               // tslint:disable-next-line:jsx-no-lambda
-              onChange={ (value) => console.log(value) }
+              onChange={ (value: any) => console.log(value) }
             />
           </div>
           <div className='ms-verticalBox'>

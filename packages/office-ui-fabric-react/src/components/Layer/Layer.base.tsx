@@ -91,8 +91,8 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   public componentDidUpdate(): void {
     const host = this._getHost();
 
-    const { className, getStyles, theme } = this.props;
-    const classNames = getClassNames(getStyles!,
+    const { className, styles, theme } = this.props;
+    const classNames = getClassNames(styles!,
       {
         theme: theme!,
         className,
