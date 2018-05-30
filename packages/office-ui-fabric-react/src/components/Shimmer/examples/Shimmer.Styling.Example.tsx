@@ -18,23 +18,23 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
       <div className='shimmerBasicExample-container'>
         <Shimmer
           widthInPercentage={ 75 }
-          getStyles={ this._getShimmerStyles }
+          styles={ this._getShimmerStyles }
         />
         <Shimmer
           widthInPercentage={ 75 }
-          getStyles={ this._getShimmerStyles }
+          styles={ this._getShimmerStyles }
         />
         <Shimmer
           widthInPercentage={ 75 }
-          getStyles={ this._getShimmerStyles }
+          styles={ this._getShimmerStyles }
         />
         <Shimmer
           widthInPercentage={ 75 }
-          getStyles={ this._getShimmerStyles }
+          styles={ this._getShimmerStyles }
         />
         <Shimmer
           widthInPercentage={ 75 }
-          getStyles={ this._getShimmerStyles }
+          styles={ this._getShimmerStyles }
         />
       </div>
     );

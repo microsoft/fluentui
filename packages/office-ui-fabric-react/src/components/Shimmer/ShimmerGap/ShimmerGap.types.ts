@@ -47,7 +47,7 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<IShimmerGapStyleProps, IShimmerGapStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerGapStyleProps, IShimmerGapStyles>;
 }
 
 export interface IShimmerGapStyleProps {

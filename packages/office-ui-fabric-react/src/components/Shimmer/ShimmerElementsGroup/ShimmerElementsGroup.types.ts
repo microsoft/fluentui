@@ -45,7 +45,7 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
 }
 
 export interface IShimmerElementsGroupStyleProps {

@@ -52,7 +52,7 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
 
   /**
    * Additional CSS class(es) to apply to the Shimmer container.
