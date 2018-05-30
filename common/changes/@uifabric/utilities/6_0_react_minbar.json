@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/utilities",
       "comment": "Minimum React version is now 16.3.2.",
-      "type": "major"
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
