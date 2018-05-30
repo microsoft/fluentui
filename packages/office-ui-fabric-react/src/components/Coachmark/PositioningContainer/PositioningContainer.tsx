@@ -197,6 +197,14 @@ export class PositioningContainer
     );
   }
 
+  /**
+   * Deprecated. Use onResize instead.
+   * @deprecated
+   */
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+    this.onResize(ev);
+  }
+
   public onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
     if (onDismiss) {
