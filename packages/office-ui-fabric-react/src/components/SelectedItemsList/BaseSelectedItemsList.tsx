@@ -127,6 +127,10 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     }
   }
 
+  public hasSelectedItems(): boolean {
+    return this.selection.getSelectedCount() > 0;
+  }
+
   public unselectAll(): void {
     this.selection.setAllSelected(false);
   }
