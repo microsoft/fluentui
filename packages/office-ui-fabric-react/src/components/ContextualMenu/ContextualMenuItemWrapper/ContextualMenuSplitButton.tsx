@@ -3,7 +3,8 @@ import {
   assign,
   buttonProperties,
   getNativeProps,
-  KeyCodes
+  KeyCodes,
+  mergeAriaAttributes
 } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
@@ -66,7 +67,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-disabled={ isItemDisabled(item) }
             aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
             aria-haspopup={ true }
-            aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ mergeAriaAttributes(item.ariaDescription, keytipAttributes['aria-describedby']) }
             aria-checked={ item.isChecked || item.checked }
             aria-posinset={ focusableElementIndex + 1 }
             aria-setsize={ totalItemCount }
