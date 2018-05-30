@@ -21,10 +21,10 @@ import {
 import {
   IPositionProps,
   getMaxHeight,
-  ICalloutPositon,
   positionElement,
   IPositionedData,
-  RectangleEdge
+  RectangleEdge,
+  IPosition
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
@@ -350,7 +350,7 @@ export class PositioningContainer
     return this._comparePositions(positions.elementPosition, newPosition.elementPosition);
   }
 
-  private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon): boolean {
+  private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
     for (const key in newPositions) {
       // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {

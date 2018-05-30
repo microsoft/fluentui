@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Minimum React version is now 16.3.2.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "cliff.koh@microsoft.com"
+}

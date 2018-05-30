@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Bump to 6.0 alongside office-ui-fabric-react 6.0 release.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "cliff.koh@microsoft.com"
+}

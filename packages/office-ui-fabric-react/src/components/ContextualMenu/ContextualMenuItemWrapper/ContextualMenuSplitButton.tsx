@@ -113,11 +113,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
+      text: item.text || item.name,
       className: classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
-      icon: item.icon,
       iconProps: item.iconProps,
       'data-is-focusable': false,
       'aria-hidden': true
