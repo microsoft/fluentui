@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  css
+  css,
+  autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import {
   FocusZone,
@@ -94,10 +95,12 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     return h;
   }
 
+  @autobind
   private _onChangeText(value: any): void {
     this._scroll(parseInt(value, 10) || 0, this.state.scrollToMode);
   }
 
+  @autobind
   private _onDropdownChanged(option: IDropdownOption) {
     let scrollMode = this.state.scrollToMode;
     switch (option.key) {
@@ -133,12 +136,14 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     );
   }
 
+  @autobind
   private _scrollRelative(delta: number): () => void {
     return (): void => {
       this._scroll(this.state.selectedIndex + delta, this.state.scrollToMode);
     };
   }
 
+  @autobind
   private _scroll(index: number, scrollToMode: ScrollToMode) {
     const updatedSelectedIndex = Math.min(Math.max(index, 0), this.props.items.length - 1);
 
