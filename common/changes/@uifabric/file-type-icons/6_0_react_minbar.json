@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/file-type-icons",
       "comment": "Minimum React version is now 16.3.2.",
-      "type": "major"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/file-type-icons",

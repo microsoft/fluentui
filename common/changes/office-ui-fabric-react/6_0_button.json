@@ -12,7 +12,7 @@
     },
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Command Bar component has been replaced with the one from the experiments package.",
+      "comment": "CommandBar component has been replaced with the one from the experiments package.",
       "type": "major"
     }
   ],
