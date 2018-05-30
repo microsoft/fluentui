@@ -182,7 +182,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
 
 ### Patches
 

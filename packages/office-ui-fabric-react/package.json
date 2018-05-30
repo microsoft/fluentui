@@ -1,10 +1,11 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "5.111.2",
+  "version": "5.112.0",
   "description": "Reusable React components for building experiences for Office 365.",
-  "main": "lib/index.js",
-  "typings": "lib-es2015/index.d.ts",
-  "sideEffects": true,
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": false,
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
@@ -39,9 +40,9 @@
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.12.0",
     "office-ui-fabric-core": ">=9.0.0 <10.0.0",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
     "react-highlight": "0.10.0",
     "react-test-renderer": "^16.3.0",
     "resemblejs": "~2.2.3",
@@ -52,12 +53,12 @@
     "@uifabric/icons": ">=5.8.0 <6.0.0",
     "@uifabric/merge-styles": ">=5.17.1 <6.0.0",
     "@uifabric/styling": ">=5.31.0 <6.0.0",
-    "@uifabric/utilities": ">=5.33.0 <6.0.0",
+    "@uifabric/utilities": ">=6.0.0 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
-    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
-    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   }
 }
