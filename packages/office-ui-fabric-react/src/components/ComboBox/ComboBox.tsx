@@ -1092,6 +1092,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
+    const optionStyles = this._getCurrentOptionStyles(item);
+    const checkboxStyles = () => {
+      return optionStyles;
+    };
+
     const getOptionComponent = () => {
       return (
         !this.props.multiSelect ? (
@@ -1118,11 +1123,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         ) : (
             <Checkbox
               id={ id + '-list' + item.index }
-              ref={ 'option' + item.index }
               ariaLabel={ this._getPreviewText(item) }
               key={ item.key }
               data-index={ item.index }
-              styles={ this._getCurrentOptionStyles(item) }
+              styles={ checkboxStyles }
               className={ 'ms-ComboBox-option' }
               data-is-focusable={ true }
               onChange={ this._onItemClick(item.index!) }

@@ -1,7 +1,7 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as WarnUtil from '@uifabric/utilities/lib/warn';
+import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 

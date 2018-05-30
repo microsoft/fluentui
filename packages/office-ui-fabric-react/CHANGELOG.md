@@ -1,6 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 30 May 2018 00:35:36 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 20:28:34 GMT and should not be manually modified.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:34 GMT
+
+### Breaking changes
+
+- Selection utility: getSelectedIndices is now a mandatory member of the `ISelection` interface.
+- CommandBar component has been replaced with the one from the experiments package.
+- Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed `styles` and `getClassNames` from the `ICheckboxProps` interface, made the checkmark visible on hover, added high contrast styles.
+- CommandBarButton: Supports custom styling and button aliasing. Interface improvements.
+- ContextualMenu: Remove deprecated since v0.69 `icon` prop of ContextualMenu component.
+- Positioning/Callout/ContextualMenu: Remove all deprecated props
+- Minimum React version is now 16.3.2.
+- Label and Toggle now support javascript styling. Improvements to Label and Toggle interfaces. Added Toggle and Label root aliasing.
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Deprecate ContextualMenu's name prop in favor of new text prop.
+- DetailsList: fieldName is now an optional field of IColumn.
+- All `getStyles` properties accept either a function to return a style object, or a static style object
+
+### Patches
+
+- BaseButton: Make adjustment so that customclass names has precedence.
+- CommandBarButton: High contrast hover state.
+- CommandBar: Removed unnecessary endAligned styleprops and styles
+- Port CommandBar accessibility fixes (PR #4686) to 6.0
+- Positioning: correctly positon callout without beak
+- Suggestions: Fix a bug where arrow keys would not scroll correctly
 
 ## 5.112.0
 Wed, 30 May 2018 00:35:36 GMT
@@ -2073,38 +2103,6 @@ Thu, 05 Oct 2017 17:03:43 GMT
 ### Minor changes
 
 - Fixing version dependencies.
-
-## 6.0.1
-Thu, 05 Oct 2017 10:17:42 GMT
-
-### Patches
-
-- Added min-width for button icons so that its easy to create buttons with space for an icon
-
-## 6.0.0
-Wed, 04 Oct 2017 22:40:22 GMT
-
-### Breaking changes
-
-- Positioning: Refactored positioning and removed deprecated properties
-
-### Minor changes
-
-- ComboBox: when options are scrollable, added prop to scroll selected item to top when callout is opened.
-- "Buttons: adding `primaryDisabled` flag for disabling only the primary action of the split button, leaving the menu enabled."
-
-### Patches
-
-- TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied
-- DatePicker - make onSelectDate callback execute as part of SetState instead of after it. This ensures that selected date changes occur in the expected order
-- Dropdown: fixed logic in getSelectedIndex to support controlled uses
-- General bug fixes: Updated ResourcePage text, Reordered TextField page to give priority to design guidance examples, improved padding and spacing for TextField and ComboBox examples, and various website pages. Synced ComboBox error message spacing to be like TextField and per design specs.
-- Removed duplicate header in ResizeGroup.
-- Added new inline prop for SearchBox and corresonding new example. Adjested the SearchBoxPage to better reflect the current toolkit documentation.
-- Fixed duplicate header on Tooltip page.
-- List: Fix Grid example to read right to left in RTL mode
-- High contrast fixes for breadcrumb, contextualMenu, overlay, pivot, calendar, and searchbox
-- BaseButton: Added borderRadius:0 to fix new default styles in webkit
 
 ## 5.3.0
 Mon, 02 Oct 2017 10:19:43 GMT

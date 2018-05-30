@@ -3,7 +3,7 @@ let path = require('path');
 
 const config = createConfig({
   setupFiles: [
-    path.resolve(__dirname, 'lib/common/tests.js')
+    path.resolve(__dirname, 'lib-commonjs/common/tests.js')
   ],
   snapshotSerializers: [
     path.resolve(__dirname, './node_modules/@uifabric/jest-serializer-merge-styles')

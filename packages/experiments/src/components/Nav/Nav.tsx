@@ -106,12 +106,12 @@ class NavComponent extends NavBase {
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
     const {
-      getStyles,
+      styles,
       showMore,
       onShowMoreLinkClicked,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -209,7 +209,7 @@ class NavComponent extends NavBase {
     }
 
     const {
-      getStyles,
+      styles,
       enableCustomization
     } = this.props;
 
@@ -218,7 +218,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
 
     return (
       <div key={ groupIndex }>
