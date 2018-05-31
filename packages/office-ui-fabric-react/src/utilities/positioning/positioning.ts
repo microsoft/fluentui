@@ -13,10 +13,8 @@ import {
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,
-  ICalloutPositon,
   ICalloutPositionProps,
-  RectangleEdge,
-  IRelativePositions
+  RectangleEdge
 } from './positioning.types';
 
 export class Rectangle extends FullRectangle {
@@ -52,15 +50,6 @@ const DirectionalDictionary: { [key: number]: IPositionDirectionalHintData } = {
   [DirectionalHint.rightBottomEdge]: _createPositionData(RectangleEdge.right, RectangleEdge.bottom)
 };
 
-/**
- * @deprecated will be removed in 6.0.
- */
-const SLIDE_ANIMATIONS: { [key: number]: string; } = {
-  [RectangleEdge.top]: 'slideUpIn20',
-  [RectangleEdge.bottom]: 'slideDownIn20',
-  [RectangleEdge.left]: 'slideLeftIn20',
-  [RectangleEdge.right]: 'slideRightIn20'
-};
 /**
  * Do not call methods from this directly, use either positionCallout or positionElement or make another function that
  * utilizes them.
@@ -455,7 +444,7 @@ function _calculateActualBeakWidthInPixels(beakWidth: number): number {
 function _getPositionData(
   directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
   directionalHintForRTL?: DirectionalHint,
-  previousPositions?: IPositionedData
+  previousPositions?: IPositionDirectionalHintData
 ): IPositionDirectionalHintData {
   if (previousPositions) {
     return {
@@ -618,25 +607,23 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint
 /**
  * If max height is less than zero it returns the bounds height instead.
  */
-function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle) {
+function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle, coverTarget?: boolean) {
   let maxHeight = 0;
+  const directionalHint = DirectionalDictionary[targetEdge];
 
-  switch (targetEdge) {
-    case DirectionalHint.bottomAutoEdge:
-    case DirectionalHint.bottomCenter:
-    case DirectionalHint.bottomLeftEdge:
-    case DirectionalHint.bottomRightEdge:
-      maxHeight = bounds.bottom - targetRectangle.bottom - gapSpace;
-      break;
-    case DirectionalHint.topAutoEdge:
-    case DirectionalHint.topCenter:
-    case DirectionalHint.topLeftEdge:
-    case DirectionalHint.topRightEdge:
-      maxHeight = targetRectangle.top - bounds.top - gapSpace;
-      break;
-    default:
-      maxHeight = bounds.bottom - targetRectangle.top - gapSpace;
-      break;
+  // If cover target is set, then the max height should be calculated using the opposite of the target edge since
+  // that's the direction that the callout will expand in.
+  // For instance, if the directionalhint is bottomLeftEdge then the callout will position so it's bottom edge
+  // is aligned with the bottom of the target and expand up towards the top of the screen and the calculated max height
+  // is (bottom of target) - (top of screen) - gapSpace.
+  const target = coverTarget ? directionalHint.targetEdge * -1 : directionalHint.targetEdge;
+
+  if (target === RectangleEdge.top) {
+    maxHeight = _getEdgeValue(targetRectangle, directionalHint.targetEdge) - bounds.top - gapSpace;
+  } else if (target === RectangleEdge.bottom) {
+    maxHeight = bounds.bottom - _getEdgeValue(targetRectangle, directionalHint.targetEdge) - gapSpace;
+  } else {
+    maxHeight = bounds.bottom - targetRectangle.top - gapSpace;
   }
 
   return maxHeight > 0 ? maxHeight : bounds.height;
@@ -696,7 +683,7 @@ function _positionCallout(props: ICalloutPositionProps,
   hostElement: HTMLElement,
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo {
-  const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
+  const beakWidth: number = props.isBeakVisible ? props.beakWidth || 0 : 0;
   const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
@@ -725,45 +712,6 @@ export const __positioningTestPackage = {
   _getMaxHeightFromTargetRectangle
 };
 /* tslint:enable:variable-name */
-
-/**
- * @deprecated Do not use, this will be removed in 6.0
- * use either _positionCallout or _positionElement.
- * @export
- * @param {IPositionProps} props
- * @param {HTMLElement} hostElement
- * @param {HTMLElement} elementToPosition
- * @returns
- */
-export function _getRelativePositions(
-  props: IPositionProps,
-  hostElement: HTMLElement,
-  elementToPosition: HTMLElement): IRelativePositions {
-  const positions = _positionCallout(props, hostElement, elementToPosition);
-  const beakPosition = positions && positions.beakPosition ? positions.beakPosition.elementPosition : undefined;
-  return {
-    calloutPosition: positions.elementPosition as ICalloutPositon,
-    beakPosition: { position: { ...beakPosition }, display: 'block' },
-    directionalClassName: SLIDE_ANIMATIONS[positions.targetEdge],
-    submenuDirection: (positions.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
-  };
-}
-
-/**
- * @deprecated Do not use, this will be removed in 6.0.
- * Use either positionElement, or positionCallout
- *
- * @export
- * @param {IPositionProps} props
- * @param {HTMLElement} hostElement
- * @param {HTMLElement} calloutElement
- * @returns
- */
-export function getRelativePositions(props: IPositionProps,
-  hostElement: HTMLElement,
-  calloutElement: HTMLElement): IRelativePositions {
-  return _getRelativePositions(props, hostElement, calloutElement);
-}
 
 /**
  * Used to position an element relative to the given positioning props.
@@ -798,7 +746,7 @@ export function positionCallout(props: IPositionProps,
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle): number {
+export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle, coverTarget?: boolean): number {
   const mouseTarget: MouseEvent = target as MouseEvent;
   const elementTarget: Element = target as Element;
   const pointTarget: IPoint = target as IPoint;
@@ -815,5 +763,5 @@ export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: 
     targetRect = _getRectangleFromElement(elementTarget);
   }
 
-  return _getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle);
+  return _getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle, coverTarget);
 }

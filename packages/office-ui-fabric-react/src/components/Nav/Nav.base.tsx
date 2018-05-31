@@ -89,7 +89,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   public render(): JSX.Element | null {
-    const { getStyles, groups, className, isOnTop, theme } = this.props;
+    const { styles, groups, className, isOnTop, theme } = this.props;
 
     if (!groups) {
       return null;
@@ -97,7 +97,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
     const groupElements: React.ReactElement<{}>[] = groups.map(this._renderGroup);
 
-    const classNames = getClassNames(getStyles!, { theme: theme!, className, isOnTop, groups });
+    const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
@@ -117,20 +117,20 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _onRenderLink = (link: INavLink): JSX.Element => {
-    const { getStyles, groups, theme } = this.props;
-    const classNames = getClassNames(getStyles!, { theme: theme!, groups });
+    const { styles, groups, theme } = this.props;
+    const classNames = getClassNames(styles!, { theme: theme!, groups });
     return (<div className={ classNames.linkText }>{ link.name }</div>);
   }
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
     const {
-      getStyles,
+      styles,
       groups,
       theme,
       onRenderLink = this._onRenderLink
     } = this.props;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       isSelected: this._isLinkSelected(link),
       isButtonEntry: link.onClick && !link.forceAnchor,
@@ -160,8 +160,8 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
-    const { getStyles, groups, theme } = this.props;
-    const classNames = getClassNames(getStyles!, {
+    const { styles, groups, theme } = this.props;
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       isExpanded: !!link.isExpanded,
       isSelected: this._isLinkSelected(link),
@@ -195,8 +195,8 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const { getStyles, groups, theme } = this.props;
-    const classNames = getClassNames(getStyles!, { theme: theme!, groups });
+    const { styles, groups, theme } = this.props;
+    const classNames = getClassNames(styles!, { theme: theme!, groups });
 
     return (
       <li key={ link.key || linkIndex } role='listitem' className={ classNames.navItem }>
@@ -213,8 +213,8 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const linkElements: React.ReactElement<{}>[] = links.map(
       (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel));
 
-    const { getStyles, groups, theme } = this.props;
-    const classNames = getClassNames(getStyles!, { theme: theme!, groups });
+    const { styles, groups, theme } = this.props;
+    const classNames = getClassNames(styles!, { theme: theme!, groups });
 
     return (
       <ul role='list' className={ classNames.navItems }>
@@ -224,8 +224,8 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderGroup = (group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> => {
-    const { getStyles, groups, theme } = this.props;
-    const classNames = getClassNames(getStyles!, {
+    const { styles, groups, theme } = this.props;
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       isGroup: true,
       isExpanded: !this.state.isGroupCollapsed![group.name!],

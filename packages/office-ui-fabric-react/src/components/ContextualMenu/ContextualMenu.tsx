@@ -26,7 +26,6 @@ import {
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
-import { IIconProps } from '../../Icon';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 
@@ -100,12 +99,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       subMenuId: getId('ContextualMenu')
     };
 
-    this._warnDeprecations({
-      'targetPoint': 'target',
-      'useTargetPoint': 'target',
-      'arrowDirection': 'focusZoneProps'
-    });
-
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
   }
@@ -163,6 +156,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
     }
+
+    this._events.dispose();
+    this._async.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -175,8 +171,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       items,
       labelElementId,
       id,
-      targetPoint,
-      useTargetPoint,
       beakWidth,
       directionalHint,
       directionalHintForRTL,
@@ -205,7 +199,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     function itemsHaveIcons(contextualMenuItems: IContextualMenuItem[]): boolean {
       for (const item of contextualMenuItems) {
-        if (!!item.icon || !!item.iconProps) {
+        if (!!item.iconProps) {
           return true;
         }
 
@@ -257,7 +251,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return (
         <Callout
           { ...calloutProps }
-          target={ useTargetPoint ? targetPoint : target }
+          target={ target }
           isBeakVisible={ isBeakVisible }
           beakWidth={ beakWidth }
           directionalHint={ directionalHint }
@@ -333,11 +327,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _getFocusZoneDirection() {
     const {
-      arrowDirection,
       focusZoneProps
     } = this.props;
-    return arrowDirection !== undefined ? arrowDirection :
-      focusZoneProps && focusZoneProps.direction !== undefined ? focusZoneProps.direction : FocusZoneDirection.vertical;
+    return focusZoneProps && focusZoneProps.direction !== undefined ? focusZoneProps.direction : FocusZoneDirection.vertical;
   }
 
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
@@ -346,7 +338,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     const renderedItems: React.ReactNode[] = [];
-    const iconProps = this._getIconProps(item);
+    const iconProps = item.iconProps || { iconName: 'None' };
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
@@ -365,7 +357,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       item.primaryDisabled
     );
 
-    if (item.name === '-') {
+    if (item.text === '-' || item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;
     }
     switch (item.itemType) {
@@ -400,7 +392,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       const headerContextualMenuItem: IContextualMenuItem = {
         key: `section-${section.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        name: section.title,
+        text: section.title,
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }
@@ -585,13 +577,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onTap={ this._onPointerAndTouchEvent }
       />
     );
-  }
-
-  private _getIconProps(item: IContextualMenuItem): IIconProps {
-    const iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: item.icon
-    };
-    return iconProps;
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
