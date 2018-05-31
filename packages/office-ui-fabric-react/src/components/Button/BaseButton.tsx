@@ -9,7 +9,8 @@ import {
   getNativeProps,
   KeyCodes,
   createRef,
-  css
+  css,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -142,16 +143,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ]);
 
     // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
-    // otherwise default to null.
-    let ariaDescribedBy;
+    // otherwise default to undefined so property does not appear in output.
+    let ariaDescribedBy = undefined;
     if (ariaDescription) {
       ariaDescribedBy = _ariaDescriptionId;
     } else if (secondaryText) {
       ariaDescribedBy = _descriptionId;
     } else if ((nativeProps as any)['aria-describedby']) {
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];
-    } else {
-      ariaDescribedBy = null;
     }
 
     // If an explicit ariaLabel is given, use that as the label and we're done.
@@ -159,12 +158,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If any kind of description is given (which will end up as an aria-describedby attribute),
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
     // text on the button (if it exists). Never set both aria-label and aria-labelledby.
-    let ariaLabelledBy = null;
+    let ariaLabelledBy = undefined;
     if (!ariaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = text ? _labelId : null;
+        ariaLabelledBy = text ? _labelId : undefined;
       }
     }
 
@@ -514,7 +513,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'data-is-focusable': false
       }
     );
-    const ariaDescribedBy = buttonProps.ariaDescription || '';
+    const ariaDescribedBy = buttonProps.ariaDescription;
 
     if (keytipProps && menuProps) {
       keytipProps = {
@@ -534,7 +533,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-haspopup={ true }
             aria-expanded={ this._isExpanded }
             aria-pressed={ this.props.checked }
-            aria-describedby={ ariaDescribedBy + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby']) }
             className={ classNames && classNames.splitButtonContainer }
             onKeyDown={ this._onSplitButtonContainerKeyDown }
             onTouchStart={ this._onTouchStart }
