@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shimmer renders Shimmer correctly 1`] = `
+<div
+  className=
+      ms-Shimmer-container
+      {
+        height: auto;
+        position: relative;
+      }
+>
+  <div
+    className=
+        ms-Shimmer-shimmerWrapper
+        {
+          animation-direction: normal;
+          animation-duration: 2s;
+          animation-iteration-count: infinite;
+          animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+          animation-timing-function: ease-in-out;
+          background: #f4f4f4
+                            linear-gradient(
+                              to right,
+                              #f4f4f4 0%,
+                              #eaeaea 50%,
+                              #f4f4f4 100%)
+                            0 0 / 90% 100%
+                            no-repeat;
+          transition: opacity 200ms;
+          width: 100%;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: WindowText
+                                linear-gradient(
+                                  to right,
+                                  transparent 0%,
+                                  Window 50%,
+                                  transparent 100%)
+                                0 0 / 90% 100%
+                                no-repeat;
+        }
+  >
+    <div
+      className=
+          ms-ShimmerElementsGroup-root
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            width: auto;
+          }
+    >
+      <div
+        className=
+            ms-ShimmerLine-root
+            {
+              border-bottom-style: solid;
+              border-color: #ffffff;
+              border-top-style: solid;
+              border-width: 0px;
+              box-sizing: content-box;
+              height: 16px;
+              min-width: auto;
+              position: relative;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-color: Window;
+            }
+            @media screen and (-ms-high-contrast: active){& > * {
+              fill: Window;
+            }
+      >
+        <svg
+          className=
+              ms-ShimmerLine-topLeftCorner
+              {
+                fill: #ffffff;
+                left: 0;
+                position: absolute;
+                top: 0;
+              }
+          height="2"
+          width="2"
+        >
+          <path
+            d="M0 2 A 2 2, 0, 0, 1, 2 0 L 0 0 Z"
+          />
+        </svg>
+        <svg
+          className=
+              ms-ShimmerLine-topRightCorner
+              {
+                fill: #ffffff;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+          height="2"
+          width="2"
+        >
+          <path
+            d="M0 0 A 2 2, 0, 0, 1, 2 2 L 2 0 Z"
+          />
+        </svg>
+        <svg
+          className=
+              ms-ShimmerLine-bottomRightCorner
+              {
+                bottom: 0;
+                fill: #ffffff;
+                position: absolute;
+                right: 0;
+              }
+          height="2"
+          width="2"
+        >
+          <path
+            d="M2 0 A 2 2, 0, 0, 1, 0 2 L 2 2 Z"
+          />
+        </svg>
+        <svg
+          className=
+              ms-ShimmerLine-bottomLeftCorner
+              {
+                bottom: 0;
+                fill: #ffffff;
+                left: 0;
+                position: absolute;
+              }
+          height="2"
+          width="2"
+        >
+          <path
+            d="M2 2 A 2 2, 0, 0, 1, 0 0 L 0 2 Z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
