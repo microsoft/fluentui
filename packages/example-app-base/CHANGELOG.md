@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 11 May 2018 04:21:29 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 20:28:33 GMT and should not be manually modified.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Minimum React version is now 16.3.2.
+
+## 5.11.5
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Fixed a bug in the documentation generator code that skipped const enums (parser)
 
 ## 5.11.4
 Fri, 11 May 2018 04:21:29 GMT

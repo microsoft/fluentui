@@ -18,7 +18,7 @@ export class DialogLargeHeaderExample extends React.Component<{}, {
     return (
       <div>
         <DefaultButton
-          description='Opens the Sample Dialog'
+          secondaryText='Opens the Sample Dialog'
           onClick={ this._showDialog }
           text='Open Dialog'
         />

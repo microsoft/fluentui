@@ -2,12 +2,17 @@
 	"fontName": "fabric-icons-1",
 	"fontFamilyName": "FabricMDL2Icons-1",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "TurnRight",
+			"unicode": "E7DB"
+		},
 		{
 			"name": "Ferry",
 			"unicode": "E7E3"
@@ -403,10 +408,6 @@
 		{
 			"name": "Chat",
 			"unicode": "E901"
-		},
-		{
-			"name": "Group",
-			"unicode": "E902"
 		}
 	]
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IImage {
 
@@ -16,7 +16,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IImageStyleProps, IImageStyles>;
+  styles?: IStyleFunctionOrObject<IImageStyleProps, IImageStyles>;
 
   /**
    * Theme provided by HOC.

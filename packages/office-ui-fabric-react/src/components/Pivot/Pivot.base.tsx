@@ -41,6 +41,8 @@ export interface IPivotState {
   selectedTabId: string;
 }
 
+const PivotItemType = (<PivotItem />).type;
+
 export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
@@ -216,7 +218,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     this._keyToTabIds = {};
 
     React.Children.map(props.children, (child: any, index: number) => {
-      if (typeof child === 'object' && child.type === PivotItem) {
+      if (typeof child === 'object' && child.type === PivotItemType) {
         const pivotItem = child as PivotItem;
         const itemKey = pivotItem.props.itemKey || index.toString();
 

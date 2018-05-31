@@ -89,11 +89,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
                   ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds
                 }) }
-                onClick={ this._onSelectPrevYear }
-                onKeyDown={ this._onSelectPrevYearKeyDown }
+                disabled={ !isPrevYearInBounds }
+                onClick={ isPrevYearInBounds ? this._onSelectPrevYear : undefined }
+                onKeyDown={ isPrevYearInBounds ? this._onSelectPrevYearKeyDown : undefined }
                 aria-label={ strings.prevYearAriaLabel ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1)) : undefined }
                 role='button'
-                tabIndex={ 0 }
               >
                 <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
               </button>
@@ -101,11 +101,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
                   ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds
                 }) }
-                onClick={ this._onSelectNextYear }
-                onKeyDown={ this._onSelectNextYearKeyDown }
+                disabled={ !isNextYearInBounds }
+                onClick={ isNextYearInBounds ? this._onSelectNextYear : undefined }
+                onKeyDown={ isNextYearInBounds ? this._onSelectNextYearKeyDown : undefined }
                 aria-label={ strings.nextYearAriaLabel ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1)) : undefined }
                 role='button'
-                tabIndex={ 0 }
               >
                 <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
               </button>
@@ -133,13 +133,15 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   css('ms-DatePicker-monthOption', styles.monthOption,
                     {
                       ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
-                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: (highlightCurrentMonth && isNavigatedMonth) ||
-                        (highlightSelectedMonth && isSelectedMonth && isSelectedYear),
+                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: (highlightCurrentMonth || highlightSelectedMonth) &&
+                        isSelectedMonth && isSelectedYear,
                       ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
                     })
                 }
+                disabled={ !isInBounds }
                 key={ index }
                 onClick={ isInBounds ? this._selectMonthCallbacks[index] : undefined }
+                onKeyDown={ isInBounds ? this._onSelectMonthKeyDown(index) : undefined }
                 aria-label={ dateTimeFormatter.formatMonthYear(indexedMonth, strings) }
                 aria-selected={ isCurrentMonth || isNavigatedMonth }
                 data-is-focusable={ isInBounds ? true : undefined }
@@ -167,7 +169,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _onKeyDown = (callback: () => void, ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+    if (ev.which === KeyCodes.enter) {
       callback();
     }
   }
@@ -192,6 +194,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     if (ev.which === KeyCodes.enter) {
       this._onKeyDown(this._onSelectPrevYear, ev);
     }
+  }
+
+  private _onSelectMonthKeyDown = (index: number): (ev: React.KeyboardEvent<HTMLElement>) => void => {
+    return (ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(() => this._onSelectMonth(index), ev);
   }
 
   private _onSelectMonth = (newMonth: number): void => {

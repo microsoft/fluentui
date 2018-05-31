@@ -23,7 +23,7 @@ export class ContextualMenuBasicExample extends React.Component {
             items: [
               {
                 key: 'newItem',
-                name: 'New',
+                text: 'New',
                 onClick: () => console.log('New clicked')
               },
               {
@@ -32,33 +32,43 @@ export class ContextualMenuBasicExample extends React.Component {
               },
               {
                 key: 'rename',
-                name: 'Rename',
+                text: 'Rename',
                 onClick: () => console.log('Rename clicked')
               },
               {
                 key: 'edit',
-                name: 'Edit',
+                text: 'Edit',
                 onClick: () => console.log('Edit clicked')
               },
               {
                 key: 'properties',
-                name: 'Properties',
+                text: 'Properties',
                 onClick: () => console.log('Properties clicked')
               },
               {
                 key: 'linkNoTarget',
-                name: 'Link same window',
+                text: 'Link same window',
                 href: 'http://bing.com'
               },
               {
                 key: 'linkWithTarget',
-                name: 'Link new window',
+                text: 'Link new window',
                 href: 'http://bing.com',
                 target: '_blank'
               },
               {
+                key: 'linkWithOnClick',
+                name: 'Link click',
+                href: 'http://bing.com',
+                onClick: (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+                  alert('Link clicked');
+                  ev.preventDefault();
+                },
+                target: '_blank'
+              },
+              {
                 key: 'disabled',
-                name: 'Disabled item',
+                text: 'Disabled item',
                 disabled: true,
                 onClick: () => console.error('Disabled item should not be clickable.')
               }

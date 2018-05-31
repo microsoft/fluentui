@@ -18,7 +18,7 @@ export class PanelCustomExample extends React.Component<{}, {
       <div>
         <DefaultButton
           text='Open Panel'
-          description='Opens the Sample Panel'
+          secondaryText='Opens the Sample Panel'
           onClick={ this._showPanel }
         />
         <Panel

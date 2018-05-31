@@ -2,27 +2,63 @@
 
 exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 <div
-  className={undefined}
+  className=
+
+
   role="application"
 >
   <div
-    aria-labelledby=" "
-    className="ms-ChoiceFieldGroup"
+    className=
+        ms-ChoiceFieldGroup
+        {
+          display: block;
+        }
     role="radiogroup"
   >
     <div
-      className="ms-ChoiceFieldGroup-flexContainer"
+      className=
+          ms-ChoiceFieldGroup-flexContainer
+
     >
       <div
-        className="ms-ChoiceField"
+        className=
+            ms-ChoiceField
+            {
+              align-items: center;
+              border: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: flex;
+              font-size: 14px;
+              font-weight: 400;
+              margin-top: 8px;
+              min-height: 26px;
+              position: relative;
+            }
+            & .ms-Label {
+              display: inline-block;
+              font-size: 14px;
+              padding-bottom: 0;
+              padding-left: 26px;
+              padding-right: 0;
+              padding-top: 0;
+            }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             aria-labelledby="ChoiceGroupLabel1-1"
             checked={false}
-            className="ms-ChoiceField-input"
+            className=
+                ms-ChoiceField-input
+                {
+                  opacity: 0;
+                  position: absolute;
+                  top: 8px;
+                }
             data-automation-id="auto1"
             disabled={undefined}
             id="ChoiceGroup0-1"
@@ -34,7 +70,61 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             type="radio"
           />
           <label
-            className="ms-ChoiceField-field"
+            className=
+                ms-ChoiceField-field
+                {
+                  cursor: pointer;
+                  display: inline-block;
+                  margin-top: 0px;
+                  min-height: 20px;
+                  position: relative;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &:hover .ms-Label {
+                  color: #000000;
+                }
+                &:hover:before {
+                  border-color: #212121;
+                }
+                &:focus .ms-Label {
+                  color: #000000;
+                }
+                &:focus:before {
+                  border-color: #212121;
+                }
+                &:before {
+                  background-color: #ffffff;
+                  border-color: #666666;
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  content: "";
+                  display: inline-block;
+                  font-weight: normal;
+                  height: 20px;
+                  left: 0px;
+                  position: absolute;
+                  top: 0px;
+                  transition-duration: 200ms;
+                  transition-property: border-color;
+                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                  width: 20px;
+                }
+                &:after {
+                  border-radius: 50%;
+                  box-sizing: border-box;
+                  content: "";
+                  height: 0px;
+                  left: 10px;
+                  position: absolute;
+                  right: 0px;
+                  transition-duration: 200ms;
+                  transition-property: border-width;
+                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                  width: 0px;
+                }
             htmlFor="ChoiceGroup0-1"
           >
             <div
@@ -56,15 +146,44 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-ChoiceField"
+        className=
+            ms-ChoiceField
+            {
+              align-items: center;
+              border: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: flex;
+              font-size: 14px;
+              font-weight: 400;
+              margin-top: 8px;
+              min-height: 26px;
+              position: relative;
+            }
+            & .ms-Label {
+              display: inline-block;
+              font-size: 14px;
+              padding-bottom: 0;
+              padding-left: 26px;
+              padding-right: 0;
+              padding-top: 0;
+            }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             aria-labelledby="ChoiceGroupLabel1-2"
             checked={false}
-            className="ms-ChoiceField-input"
+            className=
+                ms-ChoiceField-input
+                {
+                  opacity: 0;
+                  position: absolute;
+                  top: 8px;
+                }
             disabled={undefined}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
@@ -75,7 +194,61 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             type="radio"
           />
           <label
-            className="ms-ChoiceField-field"
+            className=
+                ms-ChoiceField-field
+                {
+                  cursor: pointer;
+                  display: inline-block;
+                  margin-top: 0px;
+                  min-height: 20px;
+                  position: relative;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &:hover .ms-Label {
+                  color: #000000;
+                }
+                &:hover:before {
+                  border-color: #212121;
+                }
+                &:focus .ms-Label {
+                  color: #000000;
+                }
+                &:focus:before {
+                  border-color: #212121;
+                }
+                &:before {
+                  background-color: #ffffff;
+                  border-color: #666666;
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  content: "";
+                  display: inline-block;
+                  font-weight: normal;
+                  height: 20px;
+                  left: 0px;
+                  position: absolute;
+                  top: 0px;
+                  transition-duration: 200ms;
+                  transition-property: border-color;
+                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                  width: 20px;
+                }
+                &:after {
+                  border-radius: 50%;
+                  box-sizing: border-box;
+                  content: "";
+                  height: 0px;
+                  left: 10px;
+                  position: absolute;
+                  right: 0px;
+                  transition-duration: 200ms;
+                  transition-property: border-width;
+                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                  width: 0px;
+                }
             htmlFor="ChoiceGroup0-2"
           >
             <div
@@ -97,15 +270,44 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-ChoiceField"
+        className=
+            ms-ChoiceField
+            {
+              align-items: center;
+              border: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: flex;
+              font-size: 14px;
+              font-weight: 400;
+              margin-top: 8px;
+              min-height: 26px;
+              position: relative;
+            }
+            & .ms-Label {
+              display: inline-block;
+              font-size: 14px;
+              padding-bottom: 0;
+              padding-left: 26px;
+              padding-right: 0;
+              padding-top: 0;
+            }
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          className=
+              ms-ChoiceField-wrapper
+
         >
           <input
             aria-labelledby="ChoiceGroupLabel1-3"
             checked={false}
-            className="ms-ChoiceField-input"
+            className=
+                ms-ChoiceField-input
+                {
+                  opacity: 0;
+                  position: absolute;
+                  top: 8px;
+                }
             disabled={undefined}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
@@ -116,7 +318,61 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             type="radio"
           />
           <label
-            className="ms-ChoiceField-field"
+            className=
+                ms-ChoiceField-field
+                {
+                  cursor: pointer;
+                  display: inline-block;
+                  margin-top: 0px;
+                  min-height: 20px;
+                  position: relative;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &:hover .ms-Label {
+                  color: #000000;
+                }
+                &:hover:before {
+                  border-color: #212121;
+                }
+                &:focus .ms-Label {
+                  color: #000000;
+                }
+                &:focus:before {
+                  border-color: #212121;
+                }
+                &:before {
+                  background-color: #ffffff;
+                  border-color: #666666;
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  content: "";
+                  display: inline-block;
+                  font-weight: normal;
+                  height: 20px;
+                  left: 0px;
+                  position: absolute;
+                  top: 0px;
+                  transition-duration: 200ms;
+                  transition-property: border-color;
+                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                  width: 20px;
+                }
+                &:after {
+                  border-radius: 50%;
+                  box-sizing: border-box;
+                  content: "";
+                  height: 0px;
+                  left: 10px;
+                  position: absolute;
+                  right: 0px;
+                  transition-duration: 200ms;
+                  transition-property: border-width;
+                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                  width: 0px;
+                }
             htmlFor="ChoiceGroup0-3"
           >
             <div

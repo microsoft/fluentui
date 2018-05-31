@@ -2,12 +2,53 @@
 	"fontName": "fabric-icons-11",
 	"fontFamilyName": "FabricMDL2Icons-11",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "CaretTopLeftCenter8",
+			"unicode": "F367"
+		},
+		{
+			"name": "DonutChart",
+			"unicode": "F368"
+		},
+		{
+			"name": "ChevronUnfold10",
+			"unicode": "F369"
+		},
+		{
+			"name": "ChevronFold10",
+			"unicode": "F36A"
+		},
+		{
+			"name": "DoubleChevronDown8",
+			"unicode": "F36B"
+		},
+		{
+			"name": "DoubleChevronUp8",
+			"unicode": "F36C"
+		},
+		{
+			"name": "DoubleChevronLeft8",
+			"unicode": "F36D"
+		},
+		{
+			"name": "DoubleChevronRight8",
+			"unicode": "F36E"
+		},
+		{
+			"name": "ChevronDownEnd6",
+			"unicode": "F36F"
+		},
+		{
+			"name": "ChevronUpEnd6",
+			"unicode": "F370"
+		},
 		{
 			"name": "ChevronLeftEnd6",
 			"unicode": "F371"
@@ -205,12 +246,24 @@
 			"unicode": "F3C0"
 		},
 		{
+			"name": "UnSetColor",
+			"unicode": "F3F9"
+		},
+		{
 			"name": "DeclineCall",
 			"unicode": "F405"
 		},
 		{
 			"name": "RectangularClipping",
 			"unicode": "F407"
+		},
+		{
+			"name": "TeamsLogo16",
+			"unicode": "F40A"
+		},
+		{
+			"name": "TeamsLogoFill16",
+			"unicode": "F40B"
 		},
 		{
 			"name": "Spacer",
@@ -355,58 +408,6 @@
 		{
 			"name": "FieldReadOnly",
 			"unicode": "F442"
-		},
-		{
-			"name": "FieldRequired",
-			"unicode": "F443"
-		},
-		{
-			"name": "BacklogBoard",
-			"unicode": "F444"
-		},
-		{
-			"name": "ExternalBuild",
-			"unicode": "F445"
-		},
-		{
-			"name": "ExternalTFVC",
-			"unicode": "F446"
-		},
-		{
-			"name": "ExternalXAML",
-			"unicode": "F447"
-		},
-		{
-			"name": "IssueSolid",
-			"unicode": "F448"
-		},
-		{
-			"name": "DefectSolid",
-			"unicode": "F449"
-		},
-		{
-			"name": "LadybugSolid",
-			"unicode": "F44A"
-		},
-		{
-			"name": "MTMLogo",
-			"unicode": "F44B"
-		},
-		{
-			"name": "NugetLogo",
-			"unicode": "F44C"
-		},
-		{
-			"name": "TFVCLogo",
-			"unicode": "F44D"
-		},
-		{
-			"name": "ProjectLogo32",
-			"unicode": "F47E"
-		},
-		{
-			"name": "ProjectLogoFill32",
-			"unicode": "F47F"
 		}
 	]
 }
