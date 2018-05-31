@@ -31,6 +31,7 @@ export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
   dragDropHelper?: IDragDropHelper | null;
   isDraggable?: boolean;
   setDraggedItemIndex?: (itemIndex: number) => void;
+  isDropped?: boolean;
 }
 
 export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
@@ -46,7 +47,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   public render() {
-    const { column, columnIndex, parentId, isDraggable } = this.props;
+    const { column, columnIndex, parentId, isDraggable, isDropped } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
     } = this.props;
 
@@ -67,14 +68,23 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
               (column.columnActionsMode !== ColumnActionsMode.disabled) && ('is-actionable ' + styles.cellIsActionable),
               !column.name && ('is-empty ' + styles.cellIsEmpty),
               (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
-              column.isPadded && styles.cellWrapperPadded
+              column.isPadded && styles.cellWrapperPadded,
+              isDropped && styles.borderAfterDropping
             ) }
             data-is-draggable={ isDraggable }
             draggable={ isDraggable }
             style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='ColumnsHeaderColumn'
             data-item-key={ column.key }
+
           >
+            { isDraggable && (
+              <Icon
+                iconName='GripperBarVertical'
+                className={ css(styles.GripperBarVerticalStyle) }
+              />
+            )
+            }
             {
               onRenderColumnHeaderTooltip({
                 hostClassName: css(styles.cellTooltip),
@@ -173,6 +183,13 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
       this._dragDropSubscription.dispose();
       delete this._dragDropSubscription;
     }
+    if (this.props.isDropped) {
+      setTimeout(() => {
+        if (this._root!.current!) {
+          this._root!.current!.classList!.remove(styles.borderAfterDropping);
+        }
+      }, 2000);
+    }
   }
 
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>): JSX.Element => {
@@ -213,11 +230,13 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
     if (itemIndex) {
       this.props.setDraggedItemIndex!(itemIndex);
+      this._root.current.classList.add(styles.borderWhileDragging);
     }
   }
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
     this.props.setDraggedItemIndex!(-1);
+    this._root.current.classList.remove(styles.borderWhileDragging);
   }
 
   private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {

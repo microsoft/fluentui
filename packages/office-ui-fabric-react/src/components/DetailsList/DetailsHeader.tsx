@@ -98,7 +98,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       key: string;
       dispose(): void;
     };
-
+  private _onDropIndexInfo: {
+    sourceIndex: number;
+    targetIndex: number;
+  };
   constructor(props: IDetailsHeaderProps) {
     super(props);
 
@@ -120,7 +123,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._updateDropHintStates = this._updateDropHintStates.bind(this);
     this._resetDropHints = this._resetDropHints.bind(this);
     this._isValidCurrentDropHintIndex = this._isValidCurrentDropHintIndex.bind(this);
-
+    this._onDropIndexInfo = {
+      sourceIndex: Number.MIN_SAFE_INTEGER,
+      targetIndex: Number.MIN_SAFE_INTEGER
+    };
     this._id = getId('header');
   }
 
@@ -153,6 +159,24 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       }
     } else if (!this._subscriptionObject) {
       this._subscriptionObject = this._dragDropHelper!.subscribe(rootElement, this._events, this._getHeaderDragDropOptions());
+    }
+
+    if (this._draggedColumnIndex < 0) {
+      this._onDropIndexInfo = {
+        sourceIndex: Number.MIN_SAFE_INTEGER,
+        targetIndex: Number.MIN_SAFE_INTEGER
+      };
+    }
+  }
+
+  public componentWillUpdate(nextProps: IDetailsHeaderProps, nextState: IDetailsHeaderState): void {
+    if (this.props !== nextProps && this._onDropIndexInfo.sourceIndex >= 0 && this._onDropIndexInfo.targetIndex >= 0) {
+      if (this.props.columns[this._onDropIndexInfo.sourceIndex] === nextProps.columns[this._onDropIndexInfo.sourceIndex] && this.props.columns[this._onDropIndexInfo.targetIndex] === nextProps.columns[this._onDropIndexInfo.targetIndex]) {
+        this._onDropIndexInfo = {
+          sourceIndex: Number.MIN_SAFE_INTEGER,
+          targetIndex: Number.MIN_SAFE_INTEGER
+        };
+      }
     }
   }
 
@@ -467,6 +491,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     // TODO - Handle CSS changes
   }
 
+  private _isValidCurrentDropHintIndex() {
+    return this.state.currentDropHintIndex! >= 0;
+  }
+
   private _onDragOver(item: any, event: DragEvent): void {
     if (this._draggedColumnIndex >= 0) {
       const clientX = event.clientX;
@@ -475,13 +503,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _onDrop(item?: any, event?: DragEvent): void {
-    if (this._draggedColumnIndex !== -1 && event! instanceof DragEvent) {
-      let targetIndex = -1;
-      let i = -1;
-      for (i = 0; i < this.state.dropHintsState!.length; i++) {
-        if (this.state.dropHintsState![i]) {
-          break;
-        }
+    if (this._draggedColumnIndex >= 0 && event! instanceof DragEvent) {
+      if (this._isValidCurrentDropHintIndex()) {
+        this._onDropIndexInfo.sourceIndex = this._draggedColumnIndex;
+        this._onDropIndexInfo.targetIndex = this.state.currentDropHintIndex! + ((this._draggedColumnIndex > this.state.currentDropHintIndex!) ? 1 : 0);
+        this.props.columnReorderOptions!.handleColumnReorder(this._draggedColumnIndex, this.state.currentDropHintIndex!);
       }
       if (i !== this.state.dropHintsState!.length) {
         targetIndex = (this.props.selectionMode !== SelectionMode.none) ? i : i + 1;
@@ -495,9 +521,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       }
 
       this._resetDropHints();
+      this._dropHintOriginXValues = {};
       this._draggedColumnIndex = -1;
     }
-  }
 
   private _setDraggedItemIndex(itemIndex: number) {
     if (itemIndex >= 0) {
