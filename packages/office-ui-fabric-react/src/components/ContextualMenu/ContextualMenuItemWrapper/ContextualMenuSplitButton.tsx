@@ -5,14 +5,15 @@ import {
   getNativeProps,
   KeyCodes
 } from '../../../Utilities';
-import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItem } from '../ContextualMenuItem';
+import { IContextualMenuItem } from '../ContextualMenu.types';
 import {
   IMenuItemClassNames,
   getSplitButtonVerticalDividerClassNames
 } from '../ContextualMenu.classNames';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
-import { VerticalDivider } from '../../Divider';
+import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
 export interface IContextualMenuSplitButtonState { }
@@ -112,11 +113,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
+      text: item.text || item.name,
       className: classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
-      icon: item.icon,
       iconProps: item.iconProps,
       'data-is-focusable': false,
       'aria-hidden': true

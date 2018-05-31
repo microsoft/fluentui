@@ -43,7 +43,7 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
       delay,
       directionalHint,
       directionalHintForRTL,
-      getStyles,
+      styles,
       id,
       maxWidth,
       onRenderContent = this._onRenderContent,
@@ -51,7 +51,7 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
       theme
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
       delay: delay!,

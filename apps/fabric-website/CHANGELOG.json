@@ -2,6 +2,37 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.0.0",
+      "tag": "@uifabric/fabric-website_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Bump to 6.0 alongside office-ui-fabric-react 6.0 release."
+          }
+        ],
+        "none": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "71c06895d0f7dafd28384357c0bd93541deb95e1",
+            "comment": "revert build change"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "81773bd855d12f20ca5a482ceabbb0997111f24c",
+            "comment": "Update sharepoint xd toolkit link"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.112.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.5",
       "tag": "@uifabric/fabric-website_v5.7.5",
       "date": "Thu, 17 May 2018 10:28:07 GMT",

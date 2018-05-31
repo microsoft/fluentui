@@ -180,6 +180,9 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         background-color: #eaeaea;
         color: #212121;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: Highlight;
+      }
       &:active {
         background-color: #dadada;
         color: #000000;
@@ -595,7 +598,6 @@ exports[`Button renders IconButton correctly 1`] = `
         top: -2px;
       }
       &:hover {
-        background-color: #f4f4f4;
         color: #004578;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
@@ -603,7 +605,6 @@ exports[`Button renders IconButton correctly 1`] = `
         color: Highlight;
       }
       &:active {
-        background-color: #eaeaea;
         color: #0078d4;
       }
   data-is-focusable={true}

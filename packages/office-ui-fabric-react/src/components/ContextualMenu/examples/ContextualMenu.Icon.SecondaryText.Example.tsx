@@ -24,7 +24,7 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Clock'
                 },
-                name: 'Later Today',
+                text: 'Later Today',
                 secondaryText: '7:00 PM'
               },
               {
@@ -32,7 +32,7 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Coffeescript'
                 },
-                name: 'Tomorrow',
+                text: 'Tomorrow',
                 secondaryText: 'Thu. 8:00 AM'
               },
               {
@@ -40,7 +40,7 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Vacation'
                 },
-                name: 'This Weekend',
+                text: 'This Weekend',
                 secondaryText: 'Sat. 10:00 AM'
               },
               {
@@ -48,7 +48,7 @@ export class ContextualMenuIconSecondaryTextExample extends React.Component<{}, 
                 iconProps: {
                   iconName: 'Suitcase'
                 },
-                name: 'Next Week',
+                text: 'Next Week',
                 secondaryText: 'Mon. 8:00 AM'
               },
             ]

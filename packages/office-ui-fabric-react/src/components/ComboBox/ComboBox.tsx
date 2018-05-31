@@ -814,7 +814,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         return;
       }
       if (this.props.multiSelect) {
-        option.selected = !option.selected;
+        // Setting the initial state of option.selected in Multi-select combobox by checking the selectedIndices array and overriding the undefined issue
+        option.selected = option.selected !== undefined ? !option.selected : (selectedIndices.indexOf(index) < 0);
         if (option.selected && selectedIndices.indexOf(index) < 0) {
           selectedIndices.push(index);
         } else if (!option.selected && selectedIndices.indexOf(index) >= 0) {
@@ -1091,6 +1092,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
+    const optionStyles = this._getCurrentOptionStyles(item);
+    const checkboxStyles = () => {
+      return optionStyles;
+    };
+
     const getOptionComponent = () => {
       return (
         !this.props.multiSelect ? (
@@ -1117,11 +1123,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         ) : (
             <Checkbox
               id={ id + '-list' + item.index }
-              ref={ 'option' + item.index }
               ariaLabel={ this._getPreviewText(item) }
               key={ item.key }
               data-index={ item.index }
-              styles={ this._getCurrentOptionStyles(item) }
+              styles={ checkboxStyles }
               className={ 'ms-ComboBox-option' }
               data-is-focusable={ true }
               onChange={ this._onItemClick(item.index!) }
@@ -1176,7 +1181,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     let idxOfSelectedIndex = -1;
-    if ((index !== undefined) && this.state.selectedIndices) {
+    if (this.props.multiSelect && (index !== undefined) && this.state.selectedIndices) {
       idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
     }
     return (idxOfSelectedIndex >= 0);

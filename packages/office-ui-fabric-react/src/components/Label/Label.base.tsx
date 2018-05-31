@@ -1,19 +1,36 @@
 import * as React from 'react';
 import { BaseComponent, divProperties, getNativeProps, customizable } from '../../Utilities';
-import { ILabelProps } from './Label.types';
-import { getLabelClassNames } from './Label.classNames';
+import { classNamesFunction } from '../../Utilities';
+import { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
+const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>();
 @customizable('Label', ['theme'])
-export class Label extends BaseComponent<ILabelProps, {}> {
+export class LabelBase extends BaseComponent<ILabelProps, {}> {
   public render(): JSX.Element {
-    const { disabled, required, children, className, theme } = this.props;
+    const {
+      as: RootType = 'label',
+      children,
+      className,
+      disabled,
+      styles,
+      required,
+      theme
+    } = this.props;
+    const classNames = getClassNames(
+      styles,
+      {
+        className,
+        disabled,
+        required,
+        theme: theme!
+      });
     return (
-      <label
+      <RootType
         { ...getNativeProps(this.props, divProperties) }
-        className={ getLabelClassNames(theme!, className, !!disabled, !!required).root }
+        className={ classNames.root }
       >
         { children }
-      </label>
+      </RootType>
     );
   }
 }

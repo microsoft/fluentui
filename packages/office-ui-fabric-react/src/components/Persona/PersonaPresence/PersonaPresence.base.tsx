@@ -35,7 +35,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
   public render(): JSX.Element | null {
     const {
       coinSize,
-      getStyles, // Use getStyles from props.
+      styles, // Use getStyles from props.
       presence,
       theme,
     } = this.props;
@@ -50,7 +50,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
     // Use getStyles from props, or fall back to getStyles from styles file.
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       presence,
       size: this.props.size,

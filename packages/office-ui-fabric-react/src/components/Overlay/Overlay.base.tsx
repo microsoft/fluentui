@@ -32,12 +32,12 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
       isDarkThemed: isDark,
       className,
       theme,
-      getStyles
+      styles
     } = this.props;
 
     const divProps = getNativeProps(this.props, divProperties);
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       isDark,

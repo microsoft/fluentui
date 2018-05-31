@@ -1,6 +1,126 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 May 2018 01:46:34 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 22:05:04 GMT and should not be manually modified.
+
+## 6.1.1
+Wed, 30 May 2018 22:05:03 GMT
+
+*Version update only*
+
+## 6.1.0
+Wed, 30 May 2018 20:28:34 GMT
+
+### Breaking changes
+
+- Selection utility: getSelectedIndices is now a mandatory member of the `ISelection` interface.
+- CommandBar component has been replaced with the one from the experiments package.
+- Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed `styles` and `getClassNames` from the `ICheckboxProps` interface, made the checkmark visible on hover, added high contrast styles.
+- CommandBarButton: Supports custom styling and button aliasing. Interface improvements.
+- ContextualMenu: Remove deprecated since v0.69 `icon` prop of ContextualMenu component.
+- Positioning/Callout/ContextualMenu: Remove all deprecated props
+- Minimum React version is now 16.3.2.
+- Label and Toggle now support javascript styling. Improvements to Label and Toggle interfaces. Added Toggle and Label root aliasing.
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Deprecate ContextualMenu's name prop in favor of new text prop.
+- DetailsList: fieldName is now an optional field of IColumn.
+- All `getStyles` properties accept either a function to return a style object, or a static style object
+
+### Patches
+
+- BaseButton: Make adjustment so that customclass names has precedence.
+- CommandBarButton: High contrast hover state.
+- CommandBar: Removed unnecessary endAligned styleprops and styles
+- Port CommandBar accessibility fixes (PR #4686) to 6.0
+- Positioning: correctly positon callout without beak
+- Suggestions: Fix a bug where arrow keys would not scroll correctly
+
+## 5.112.0
+Wed, 30 May 2018 00:35:36 GMT
+
+### Minor changes
+
+- FocusZone: Added onFocusNotification API to notify creators of focus
+
+### Patches
+
+- Update local properties in BaseExtenededPicker on receiving new props
+- CommandBar Example: More specific selector for text color to override the link styles we get from msgraph on the website.
+- ComboBox: Update styling so that the "selected" item does not get the "selected" look when navigating through the potential options.
+- Fix passing onclick from props for contextual anchor item
+
+## 5.111.2
+Fri, 25 May 2018 21:30:43 GMT
+
+### Patches
+
+- MaskedTextField: Added event callpack passthrough
+- fix old error color SASS variables so they work when themed
+
+## 5.111.1
+Fri, 25 May 2018 16:53:47 GMT
+
+### Patches
+
+- Revisited the Multi-select Combo box initial state selection fix
+- BaseButton sometimes has aria-labelledBy pointing to element that isn't in the DOM
+- StickyPane: Replaced Array.From since it is not supported in IE
+
+## 5.111.0
+Thu, 24 May 2018 17:06:02 GMT
+
+### Minor changes
+
+- Pass SelectionZone props through DetailsList and add alternate data-selection-auto-selection attribute name
+- add new semantic slot
+
+## 5.110.0
+Wed, 23 May 2018 16:14:26 GMT
+
+### Minor changes
+
+- ChoiceGroup: Reverting the updates to ChoiceGroup styling. We found some breaking changes in it, so we'd like to minimize partner impact by moving this to the 6.0 (next) release. Sorry for the trouble.
+
+## 5.109.0
+Wed, 23 May 2018 10:28:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Converting Facepile SCSS to MergeStyles step 1 - file structure
+- Common sass files are now exported in the `dist/sass` folder.
+
+### Patches
+
+- Fixing circular dependency and non-AMD references in ContextualMenu
+- cleanup semantic slots
+
+## 5.108.0
+Tue, 22 May 2018 10:29:13 GMT
+
+### Minor changes
+
+- Implementation of experimental chiclet component
+
+### Patches
+
+- Revert IconButton hover/pressed background color change.
+- Set 'margin 0' reset style for buttons in Safari in Fabric component
+- CommandBarButton: Fixed split styles
+
+## 5.107.0
+Mon, 21 May 2018 10:29:16 GMT
+
+### Minor changes
+
+- Callout/Positioning: Fix a bug where max-height would be incorrectly calculated if covertarget was set
+
+### Patches
+
+- Added an addtional prop in IPickerItemProps for allowing focus on tagItem when picker is disabled
+- Moved best design practices write up in SearchBoxes Overview to Best Practices for clarity that these are not included features
 
 ## 5.106.1
 Fri, 18 May 2018 01:46:34 GMT

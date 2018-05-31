@@ -1,6 +1,18 @@
 # Change Log - @uifabric/jest-serializer-merge-styles
 
-This log was last generated on Mon, 23 Apr 2018 10:24:54 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 22:05:03 GMT and should not be manually modified.
+
+## 5.2.2
+Wed, 30 May 2018 22:05:03 GMT
+
+*Version update only*
+
+## 5.2.1
+Mon, 21 May 2018 10:29:16 GMT
+
+### Patches
+
+- The `animation-name` values reference class names which should be expanded if there is a comma delimited list of them.
 
 ## 5.2.0
 Mon, 23 Apr 2018 10:24:54 GMT
