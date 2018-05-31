@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/fabric-website",
       "comment": "Add addins-sketch-toolkit link",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fabric-website",
