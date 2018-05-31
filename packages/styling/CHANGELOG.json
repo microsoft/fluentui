@@ -2,6 +2,40 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/styling_v6.0.1",
+      "date": "Wed, 30 May 2018 22:05:04 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/styling_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Bump to 6.0 alongside office-ui-fabric-react 6.0 release."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.0",
       "tag": "@uifabric/styling_v5.31.0",
       "date": "Thu, 24 May 2018 17:06:02 GMT",
