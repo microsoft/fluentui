@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Image } from '../../Image';
 import { Icon } from '../../Icon';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { IClassNames } from '@uifabric/utilities/lib/IClassNames';
 import {
   IChoiceGroupOptionProps,
@@ -14,6 +15,7 @@ import {
   getNativeProps,
   inputProperties,
   createRef,
+  hasOverflow
 } from '../../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
@@ -22,9 +24,15 @@ const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGr
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
   private _inputElement = createRef<HTMLInputElement>();
   private _classNames: IClassNames<IChoiceGroupOptionStyles>;
+  private _labelWrapperElementList: HTMLDivElement[] = [];
 
   constructor(props: IChoiceGroupOptionProps) {
     super(props);
+  }
+
+
+  public componentDidMount(): void {
+    this._calculateLabelTextOverflow();
   }
 
   public render(): JSX.Element {
@@ -146,9 +154,11 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
         { imageSrc || iconProps ? (
           <div
             className={ this._classNames.labelWrapper }
-            style={ { maxWidth: imageSize.width * 2 } }
+            style={ { maxWidth: imageSize.width * 2 + 8 } }
           >
-            { onRenderLabel!(props) }
+            <div ref={ (el) => { this._onLabelWrapperRef(el); } }>
+              { onRenderLabel!(props) }
+            </div>
           </div>
         ) : (
             onRenderLabel!(props)
@@ -157,11 +167,50 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     );
   }
 
+  private _onLabelWrapperRef(element: HTMLDivElement | null): void {
+    if (element) {
+      const labelWrapperElement = createRef<HTMLDivElement>();
+      labelWrapperElement.current = element;
+      this._labelWrapperElementList.push(labelWrapperElement.current);
+    }
+  }
+
+  private _calculateLabelTextOverflow = (): void => {
+    if (!this._labelWrapperElementList) {
+      return;
+    }
+    for (let labelListIndex = 0; labelListIndex < this._labelWrapperElementList.length; labelListIndex++) {
+      const labelElement = this._labelWrapperElementList[labelListIndex];
+      if (labelElement && hasOverflow(labelElement)) {
+        const node = document.createElement('span');
+        const textNode = document.createTextNode('...');
+        node.appendChild(textNode);
+        this._classNames.labelOverflowWrapper && node.classList.add(this._classNames.labelOverflowWrapper);
+        labelElement.insertAdjacentElement('afterend', node);
+      }
+    }
+  }
+
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
+    const imageSize = props.imageSize;
+    let gapSpace = 60;
+
+    if (imageSize) {
+      const imageHeight = imageSize.height ? imageSize.height : 32;
+      const paddingBorderTop = 28; // includes padding, border, margin from styles
+      gapSpace = paddingBorderTop + imageHeight;
+    }
+
     return (
-      <span id={ props.labelId } className='ms-Label'>
-        { props.text }
-      </span>
+      <TooltipHost
+        overflowMode={ TooltipOverflowMode.Parent }
+        calloutProps={ { gapSpace: gapSpace } }
+        content={ props.text }
+      >
+        <span id={ props.labelId } className='ms-Label'>
+          { props.text }
+        </span>
+      </TooltipHost>
     );
   }
 }
