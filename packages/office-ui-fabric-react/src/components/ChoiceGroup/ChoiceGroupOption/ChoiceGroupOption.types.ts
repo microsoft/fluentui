@@ -77,4 +77,5 @@ export interface IChoiceGroupOptionStyles {
   selectedImageWrapper?: IStyle;
   iconWrapper?: IStyle;
   labelWrapper?: IStyle;
+  labelOverflowWrapper?: IStyle;
 }
