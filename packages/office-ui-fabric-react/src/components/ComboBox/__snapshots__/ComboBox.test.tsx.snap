@@ -162,8 +162,8 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       checked={false}
       className=
           ms-Button
-          ms-ComboBox-CaretDown-button
           ms-Button--icon
+          ms-ComboBox-CaretDown-button
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -448,8 +448,8 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       checked={false}
       className=
           ms-Button
-          ms-ComboBox-CaretDown-button
           ms-Button--icon
+          ms-ComboBox-CaretDown-button
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;

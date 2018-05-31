@@ -101,7 +101,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               items: [
                 {
                   key: 'newItem',
-                  name: 'New'
+                  text: 'New'
                 },
                 {
                   key: 'divider_1',
@@ -109,19 +109,19 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
                 },
                 {
                   key: 'rename',
-                  name: 'Rename'
+                  text: 'Rename'
                 },
                 {
                   key: 'edit',
-                  name: 'Edit'
+                  text: 'Edit'
                 },
                 {
                   key: 'properties',
-                  name: 'Properties'
+                  text: 'Properties'
                 },
                 {
                   key: 'disabled',
-                  name: 'Disabled item',
+                  text: 'Disabled item',
                   disabled: true
                 }
               ]

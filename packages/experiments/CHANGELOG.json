@@ -2,6 +2,53 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.0.0",
+      "tag": "@uifabric/experiments_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "860bb5f4a8ee32c3cba0dd07b8b7379fb4766a7a",
+            "comment": "Command Bar: Promoted to main office-ui-fabric-react package."
+          },
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Minimum React version is now 16.3.2."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.112.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.8.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.5 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.6.2 <1.0.0` to `>=0.7.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.44.0",
+      "tag": "@uifabric/experiments_v5.44.0",
+      "date": "Mon, 28 May 2018 10:23:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "5ecdca834ff5fb4a5f343b18d3068dd883ce95e1",
+            "comment": "Shimmer: Refactors and enhances Shimmer with more features."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.43.0",
       "tag": "@uifabric/experiments_v5.43.0",
       "date": "Fri, 25 May 2018 21:30:43 GMT",
