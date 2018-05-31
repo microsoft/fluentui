@@ -1,6 +1,36 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 22 May 2018 10:29:12 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 20:28:33 GMT and should not be manually modified.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Command Bar: Promoted to main office-ui-fabric-react package.
+- Minimum React version is now 16.3.2.
+
+## 5.44.0
+Mon, 28 May 2018 10:23:24 GMT
+
+### Minor changes
+
+- Shimmer: Refactors and enhances Shimmer with more features.
+
+## 5.43.0
+Fri, 25 May 2018 21:30:43 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Enable auto expand until the next manual expand disables the auto expand
+
+## 5.42.0
+Fri, 25 May 2018 16:53:46 GMT
+
+### Minor changes
+
+- Experiments/Nav component: Auto select/expand based on the selectedKey prop
+- Keyboard support for the slim version of experiments/Nav component and added aria attributes
 
 ## 5.41.0
 Tue, 22 May 2018 10:29:12 GMT

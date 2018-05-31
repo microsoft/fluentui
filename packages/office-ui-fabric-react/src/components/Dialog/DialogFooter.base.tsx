@@ -20,11 +20,11 @@ export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
   public render(): JSX.Element {
     const {
       className,
-      getStyles,
+      styles,
       theme
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       className
     });

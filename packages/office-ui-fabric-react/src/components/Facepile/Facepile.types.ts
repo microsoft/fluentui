@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FacepileBase } from './Facepile.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 import { IButtonProps } from '../Button/index';
 import {
@@ -24,7 +24,7 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IFacepileStyleProps, IFacepileStyles>;
+  styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;
 
   /**
    * Theme provided by High-Order Component.

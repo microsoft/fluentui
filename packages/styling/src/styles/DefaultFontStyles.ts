@@ -1,12 +1,12 @@
 import {
   fontFace,
   IFontWeight
-} from '@uifabric/merge-styles/lib/index';
+} from '@uifabric/merge-styles';
 import {
   IFontStyles
 } from '../interfaces/index';
 import { createFontStyles, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './fonts';
-import { getLanguage } from '@uifabric/utilities/lib/language';
+import { getLanguage } from '@uifabric/utilities';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.

@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  IClassNames,
   classNamesFunction,
   css,
   customizable,
   format,
   getId
 } from '../../Utilities';
-import {
-  IClassNames
-} from '@uifabric/utilities/lib/IClassNames';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
@@ -88,7 +86,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const {
       disabled,
       getAriaLabel,
-      getStyles,
+      styles,
       max,
       rating,
       readOnly,
@@ -96,7 +94,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       theme
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       disabled,
       readOnly,
       theme: theme!

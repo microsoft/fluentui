@@ -2,6 +2,25 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "0.7.0",
+      "tag": "@uifabric/file-type-icons_v0.7.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "118fb929b0dd715c9be5ce9a5f9f3e911a3ecbcd",
+            "comment": "Minimum React version is now 16.3.2."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.31.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.2",
       "tag": "@uifabric/file-type-icons_v0.6.2",
       "date": "Fri, 04 May 2018 15:58:39 GMT",
