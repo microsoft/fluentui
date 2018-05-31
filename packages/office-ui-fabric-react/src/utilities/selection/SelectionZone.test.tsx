@@ -241,8 +241,13 @@ describe('SelectionZone', () => {
     expect(_selection.isIndexSelected(1)).toEqual(false);
   });
 
-  it('select an item when a button is clicked that has data-selection-select', () => {
+  it('selects an item when a button is clicked that has data-selection-select', () => {
     ReactTestUtils.Simulate.mouseDown(_select1);
+    expect(_selection.isIndexSelected(1)).toEqual(true);
+  });
+
+  it('selects an item when a button is clicked that has data-selection-select', () => {
+    ReactTestUtils.Simulate.keyDown(_select1, { which: KeyCodes.enter });
     expect(_selection.isIndexSelected(1)).toEqual(true);
   });
 });

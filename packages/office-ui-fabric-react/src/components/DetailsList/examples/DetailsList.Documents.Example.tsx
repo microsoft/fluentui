@@ -320,7 +320,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         newCol.isSortedDescending = true;
       }
     });
-    newItems = this._sortItems(newItems, currColumn.fieldName, currColumn.isSortedDescending);
+    newItems = this._sortItems(newItems, currColumn.fieldName || '', currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
       items: newItems

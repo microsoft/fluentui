@@ -15,7 +15,7 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
   public render(): JSX.Element {
     const {
       content,
-      getStyles,
+      styles,
       theme,
       disabled,
       visible
@@ -23,7 +23,7 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
 
     const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
     const classNames = getClassNames(
-      getStyles!,
+      styles!,
       {
         theme: theme!,
         disabled,

@@ -74,7 +74,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
-      getStyles,
+      styles,
       hidden,
       ignoreExternalFocusing,
       isBlocking,
@@ -102,7 +102,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       ...this.props.dialogContentProps,
     };
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className: className || modalProps!.className,
       containerClassName: containerClassName || modalProps!.containerClassName,
