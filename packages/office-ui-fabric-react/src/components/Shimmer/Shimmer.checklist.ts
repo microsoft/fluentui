@@ -2,7 +2,7 @@ import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.type
 
 export const ShimmerStatus = {
   keyboardAccessibilitySupport: ChecklistStatus.notApplicable,
-  markupSupport: ChecklistStatus.pass,
+  markupSupport: ChecklistStatus.unknown,
   highContrastSupport: ChecklistStatus.pass,
   rtlSupport: ChecklistStatus.pass,
   testCoverage: ChecklistStatus.unknown
