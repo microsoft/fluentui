@@ -33,7 +33,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
   public render(): JSX.Element {
     const {
-      getStyles,
+      styles,
       width,
       lineElements,
       children,
@@ -45,7 +45,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
     const rowHeight: number | undefined = lineElements ? findMaxElementHeight(lineElements) : undefined;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       width, rowHeight, isDataLoaded, isBaseStyle, widthInPercentage, widthInPixel
     });
 

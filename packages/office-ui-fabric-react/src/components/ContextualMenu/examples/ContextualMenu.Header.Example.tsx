@@ -17,7 +17,7 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
               {
                 key: 'Actions',
                 itemType: 2,
-                name: 'Actions'
+                text: 'Actions'
               },
               {
                 key: 'upload',
@@ -27,12 +27,12 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
                     color: 'salmon'
                   }
                 },
-                name: 'Upload',
+                text: 'Upload',
                 title: 'Upload a file'
               },
               {
                 key: 'rename',
-                name: 'Rename'
+                text: 'Rename'
               },
               {
                 key: 'share',
@@ -43,46 +43,46 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
                   items: [
                     {
                       key: 'sharetoemail',
-                      name: 'Share to Email',
+                      text: 'Share to Email',
                       iconProps: {
                         iconName: 'Mail'
                       },
                     },
                     {
                       key: 'sharetofacebook',
-                      name: 'Share to Facebook',
+                      text: 'Share to Facebook',
                     },
                     {
                       key: 'sharetotwitter',
-                      name: 'Share to Twitter',
+                      text: 'Share to Twitter',
                       iconProps: {
                         iconName: 'Share'
                       },
                     },
                   ],
                 },
-                name: 'Sharing'
+                text: 'Sharing'
               },
               {
                 key: 'navigation',
                 itemType: 2,
-                name: 'Navigation'
+                text: 'Navigation'
               },
               {
                 key: 'properties',
-                name: 'Properties'
+                text: 'Properties'
               },
               {
                 key: 'print',
                 iconProps: {
                   iconName: 'Print'
                 },
-                name: 'Print'
+                text: 'Print'
               },
 
               {
                 key: 'Bing',
-                name: 'Go to Bing',
+                text: 'Go to Bing',
                 href: 'http://www.bing.com'
               },
             ]

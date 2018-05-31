@@ -83,7 +83,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       coinProps,
       showUnknownPersonaCoin,
       coinSize,
-      getStyles,
+      styles,
       imageUrl,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
@@ -103,7 +103,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
 
     // Use getStyles from props, or fall back to getStyles from styles file.
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className: (coinProps && coinProps.className) ? coinProps.className : className,
       size,
@@ -161,7 +161,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   private _onRenderCoin = (props: IPersonaCoinProps): JSX.Element | null => {
     const {
       coinSize,
-      getStyles,
+      styles,
       imageUrl,
       imageAlt,
       imageShouldFadeIn,
@@ -172,7 +172,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const size = this.props.size as PersonaSize;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       size,
       showUnknownPersonaCoin
