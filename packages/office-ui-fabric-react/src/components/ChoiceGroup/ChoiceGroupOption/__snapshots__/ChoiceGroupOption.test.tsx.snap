@@ -108,12 +108,21 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
         htmlFor={undefined}
       >
-        <span
-          className="ms-Label"
-          id={undefined}
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
-          Option A
-        </span>
+          <span
+            className="ms-Label"
+            id={undefined}
+          >
+            Option A
+          </span>
+        </div>
       </label>
     </div>
   </div>
@@ -244,12 +253,21 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
         htmlFor={undefined}
       >
-        <span
-          className="ms-Label"
-          id={undefined}
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
-          Option B
-        </span>
+          <span
+            className="ms-Label"
+            id={undefined}
+          >
+            Option B
+          </span>
+        </div>
       </label>
     </div>
   </div>
@@ -391,12 +409,21 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
         htmlFor={undefined}
       >
-        <span
-          className="ms-Label"
-          id={undefined}
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
-          Option C
-        </span>
+          <span
+            className="ms-Label"
+            id={undefined}
+          >
+            Option C
+          </span>
+        </div>
       </label>
     </div>
   </div>
@@ -503,12 +530,21 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
         htmlFor={undefined}
       >
-        <span
-          className="ms-Label"
-          id={undefined}
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
-          Option D
-        </span>
+          <span
+            className="ms-Label"
+            id={undefined}
+          >
+            Option D
+          </span>
+        </div>
       </label>
     </div>
   </div>
@@ -624,12 +660,21 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
         htmlFor={undefined}
       >
-        <span
-          className="ms-Label"
-          id={undefined}
+        <div
+          aria-describedby={undefined}
+          className="ms-TooltipHost"
+          onBlurCapture={[Function]}
+          onFocusCapture={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
-          Option E
-        </span>
+          <span
+            className="ms-Label"
+            id={undefined}
+          >
+            Option E
+          </span>
+        </div>
       </label>
     </div>
   </div>
@@ -820,10 +865,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
-                display: block;
+                display: flex;
+                flex-direction: row;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 31px;
                 line-height: 15px;
                 margin-bottom: 4px;
                 margin-left: 8px;
@@ -831,8 +877,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-top: 4px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
-                white-space: pre-wrap;
+                word-break: break-all;
               }
               & .ms-Label {
                 padding-bottom: 0px;
@@ -842,16 +887,27 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
           style={
             Object {
-              "maxWidth": 64,
+              "maxWidth": 72,
             }
           }
         >
-          <span
-            className="ms-Label"
-            id={undefined}
-          >
-            Option F
-          </span>
+          <div>
+            <div
+              aria-describedby={undefined}
+              className="ms-TooltipHost"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <span
+                className="ms-Label"
+                id={undefined}
+              >
+                Option F
+              </span>
+            </div>
+          </div>
         </div>
       </label>
     </div>
@@ -1064,10 +1120,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
-                display: block;
+                display: flex;
+                flex-direction: row;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 31px;
                 line-height: 15px;
                 margin-bottom: 4px;
                 margin-left: 8px;
@@ -1075,8 +1132,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-top: 4px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
-                white-space: pre-wrap;
+                word-break: break-all;
               }
               & .ms-Label {
                 padding-bottom: 0px;
@@ -1086,16 +1142,27 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
           style={
             Object {
-              "maxWidth": 64,
+              "maxWidth": 72,
             }
           }
         >
-          <span
-            className="ms-Label"
-            id={undefined}
-          >
-            Option G
-          </span>
+          <div>
+            <div
+              aria-describedby={undefined}
+              className="ms-TooltipHost"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <span
+                className="ms-Label"
+                id={undefined}
+              >
+                Option G
+              </span>
+            </div>
+          </div>
         </div>
       </label>
     </div>
@@ -1298,10 +1365,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
-                display: block;
+                display: flex;
+                flex-direction: row;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 31px;
                 line-height: 15px;
                 margin-bottom: 4px;
                 margin-left: 8px;
@@ -1309,8 +1377,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-top: 4px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
-                white-space: pre-wrap;
+                word-break: break-all;
               }
               & .ms-Label {
                 padding-bottom: 0px;
@@ -1320,16 +1387,27 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
           style={
             Object {
-              "maxWidth": 64,
+              "maxWidth": 72,
             }
           }
         >
-          <span
-            className="ms-Label"
-            id={undefined}
-          >
-            Option H
-          </span>
+          <div>
+            <div
+              aria-describedby={undefined}
+              className="ms-TooltipHost"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <span
+                className="ms-Label"
+                id={undefined}
+              >
+                Option H
+              </span>
+            </div>
+          </div>
         </div>
       </label>
     </div>
@@ -1515,10 +1593,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           className=
               ms-ChoiceField-labelWrapper
               {
-                display: block;
+                display: flex;
+                flex-direction: row;
                 font-size: 14px;
                 font-weight: 400;
-                height: 30px;
+                height: 31px;
                 line-height: 15px;
                 margin-bottom: 4px;
                 margin-left: 8px;
@@ -1526,8 +1605,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-top: 4px;
                 overflow: hidden;
                 position: relative;
-                text-overflow: ellipsis;
-                white-space: pre-wrap;
+                word-break: break-all;
               }
               & .ms-Label {
                 padding-bottom: 0px;
@@ -1537,16 +1615,27 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
           style={
             Object {
-              "maxWidth": 64,
+              "maxWidth": 72,
             }
           }
         >
-          <span
-            className="ms-Label"
-            id={undefined}
-          >
-            Option I
-          </span>
+          <div>
+            <div
+              aria-describedby={undefined}
+              className="ms-TooltipHost"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <span
+                className="ms-Label"
+                id={undefined}
+              >
+                Option I
+              </span>
+            </div>
+          </div>
         </div>
       </label>
     </div>
