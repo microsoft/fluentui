@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
@@ -22,7 +21,7 @@ export interface IOverflowSet {
   focusElement(childElement?: HTMLElement): boolean;
 }
 
-export interface IOverflowSetProps extends React.Props<OverflowSet> {
+export interface IOverflowSetProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */

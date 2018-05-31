@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { PositioningContainer } from './PositioningContainer';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import {
   IPoint,
@@ -9,7 +8,7 @@ import {
 export interface IPositioningContainer {
 }
 
-export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {
+export interface IPositioningContainerTypes extends React.Props<any> {
   /**
   * All props for your component are to be defined here.
   */

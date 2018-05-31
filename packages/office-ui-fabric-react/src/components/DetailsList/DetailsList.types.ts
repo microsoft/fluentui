@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DetailsList } from './DetailsList';
 import {
   ISelection,
   SelectionMode,
@@ -50,7 +49,7 @@ export interface IDetailsList extends IList {
   ) => void;
 }
 
-export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
+export interface IDetailsListProps extends React.Props<any>, IWithViewportProps {
   /**
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -123,7 +122,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   rowElementEventMap?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
-  onDidUpdate?: (detailsList?: DetailsList) => any;
+  onDidUpdate?: (detailsList?: IDetailsList) => any;
 
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DialogContentBase } from './DialogContent.base';
 import { IButtonProps } from '../Button/Button.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IStyle, ITheme } from '../../Styling';
@@ -9,7 +8,7 @@ export interface IDialogContent {
 
 }
 
-export interface IDialogContentProps extends React.Props<DialogContentBase> {
+export interface IDialogContentProps extends React.Props<any> {
   /**
   * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
   * the public methods and properties of the component.

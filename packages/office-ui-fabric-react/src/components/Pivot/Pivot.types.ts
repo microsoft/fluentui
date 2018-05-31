@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { PivotBase } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { PivotItem } from './PivotItem';
@@ -11,7 +10,7 @@ export interface IPivot {
   focus(): void;
 }
 
-export interface IPivotProps extends React.Props<PivotBase> {
+export interface IPivotProps extends React.Props<any> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

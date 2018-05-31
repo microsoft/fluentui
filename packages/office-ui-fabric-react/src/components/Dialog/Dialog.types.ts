@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IModalProps } from '../../Modal';
-import { DialogBase } from './Dialog.base';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { IButtonProps } from '../Button/Button.types';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
@@ -12,7 +11,7 @@ export interface IDialog {
 
 }
 
-export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IDialogProps extends React.Props<any>, IWithResponsiveModeState, IAccessiblePopupProps {
 
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing

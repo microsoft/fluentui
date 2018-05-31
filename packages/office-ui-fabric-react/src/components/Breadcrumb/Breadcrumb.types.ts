@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
+import { IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../Icon';
 import { IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
@@ -12,7 +12,7 @@ export interface IBreadcrumb {
   focus(): void;
 }
 
-export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
+export interface IBreadcrumbProps extends React.Props<any> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Panel } from './Panel';
 import { IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
@@ -15,7 +14,7 @@ export interface IPanel {
    */
   dismiss: () => void;
 }
-export interface IPanelProps extends React.Props<Panel> {
+export interface IPanelProps extends React.Props<any> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

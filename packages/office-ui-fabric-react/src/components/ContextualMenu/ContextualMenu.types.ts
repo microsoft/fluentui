@@ -455,9 +455,6 @@ export interface IContextualMenuItem {
   name?: string;
 }
 
-/**
- * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
- */
 export interface IContextualMenuSection extends React.Props<any> {
 
   /**

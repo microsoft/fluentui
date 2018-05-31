@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { CheckBase } from './Check.base';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
-export interface ICheckProps extends React.Props<CheckBase> {
+export interface ICheckProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */

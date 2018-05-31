@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ProgressIndicatorBase } from './ProgressIndicator.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
@@ -7,7 +6,7 @@ export interface IProgressIndicator {
   focus: () => void;
 }
 
-export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
+export interface IProgressIndicatorProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */

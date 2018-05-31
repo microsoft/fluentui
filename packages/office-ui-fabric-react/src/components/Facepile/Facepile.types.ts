@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FacepileBase } from './Facepile.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
@@ -14,7 +13,7 @@ export interface IFacepile {
 
 }
 
-export interface IFacepileProps extends React.Props<FacepileBase> {
+export interface IFacepileProps extends React.Props<any> {
   /**
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

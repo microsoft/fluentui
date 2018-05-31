@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { DialogFooterBase } from './DialogFooter.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
+export interface IDialogFooterProps extends React.Props<any> {
   /**
    * Gets the component ref.
    */
