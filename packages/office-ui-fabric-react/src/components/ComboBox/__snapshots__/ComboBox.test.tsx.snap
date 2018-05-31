@@ -154,10 +154,10 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       value="testValue"
     />
     <button
-      aria-describedby={null}
+      aria-describedby={undefined}
       aria-hidden={true}
       aria-label={undefined}
-      aria-labelledby={null}
+      aria-labelledby={undefined}
       aria-pressed={false}
       checked={false}
       className=
@@ -440,10 +440,10 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       value=""
     />
     <button
-      aria-describedby={null}
+      aria-describedby={undefined}
       aria-hidden={true}
       aria-label={undefined}
-      aria-labelledby={null}
+      aria-labelledby={undefined}
       aria-pressed={false}
       checked={false}
       className=
