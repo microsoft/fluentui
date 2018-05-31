@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 30 May 2018 22:05:04 GMT and should not be manually modified.
+This log was last generated on Thu, 31 May 2018 10:18:58 GMT and should not be manually modified.
+
+## 6.1.2
+Thu, 31 May 2018 10:18:58 GMT
+
+### Patches
+
+- MessageBar: fix color for X close button so that it is accessible
+- Theming: generate a more accessible themeLighter and more accessibility pairs
+- HoverCard: example fix for keyboard navigation to HoverCard target.
 
 ## 6.1.1
 Wed, 30 May 2018 22:05:03 GMT

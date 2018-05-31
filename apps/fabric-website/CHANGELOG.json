@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/fabric-website_v6.0.1",
+      "date": "Thu, 31 May 2018 10:18:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "425c887c654822e6fb31513f390471cf1953f1aa",
+            "comment": "made sure the deps are resolved by package rather than relative paths"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.1.1 <7.0.0` to `>=6.1.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.0",
       "tag": "@uifabric/fabric-website_v6.0.0",
       "date": "Wed, 30 May 2018 20:28:33 GMT",

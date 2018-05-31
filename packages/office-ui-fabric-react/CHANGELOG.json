@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.1.2",
+      "tag": "office-ui-fabric-react_v6.1.2",
+      "date": "Thu, 31 May 2018 10:18:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "d076bc5b3ad309295569283105eb7d04ac24e3c3",
+            "comment": "MessageBar: fix color for X close button so that it is accessible"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "bc4fcf6692f6638553105180a44b83f5b8da938a",
+            "comment": "Theming: generate a more accessible themeLighter and more accessibility pairs"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c78b98f405d59c3ba476b2a85550895ea61df5bc",
+            "comment": "HoverCard: example fix for keyboard navigation to HoverCard target."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.1",
       "tag": "office-ui-fabric-react_v6.1.1",
       "date": "Wed, 30 May 2018 22:05:03 GMT",
