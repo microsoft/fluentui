@@ -63,7 +63,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
       personas,
       overflowPersonas,
       showAddButton,
-      getStyles,
+      styles,
       theme
     } = this.props;
 
@@ -78,7 +78,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const personasPrimary: IFacepilePersona[] = hasOverflowPersonas ? personas : personas.slice(0, numPersonasToShow);
     const personasOverflow: IFacepilePersona[] = (hasOverflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow)) || [];
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
       className,
     });
@@ -106,11 +106,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const { ariaDescription } = this.props;
 
     const {
-      getStyles,
+      styles,
       theme
     } = this.props;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!,
     });
 
@@ -147,7 +147,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         text={ persona.personaName }
         size={ personaSize }
         { ...(getPersonaProps ? getPersonaProps(persona) : null) }
-        getStyles={ personaStyles }
+        styles={ personaStyles }
       />
     );
   }
@@ -191,7 +191,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getElementProps(persona: IFacepilePersona, index: number): { key: React.Key, ['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
-    const classNames = getClassNames(this.props.getStyles, {
+    const classNames = getClassNames(this.props.styles, {
       theme: this.props.theme!
     });
 
@@ -228,11 +228,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const numPersonasNotPictured: number = Math.max(personasOverflow.length, 0);
 
     const {
-      getStyles,
+      styles,
       theme
     } = this.props;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!
     });
 
@@ -257,11 +257,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const overflowInitialsIcon = true;
 
     const {
-      getStyles,
+      styles,
       theme
     } = this.props;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!
     });
 
@@ -282,11 +282,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const {
       addButtonProps,
       personaSize,
-      getStyles,
+      styles,
       theme
     } = this.props;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!
     });
 
@@ -323,11 +323,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   private _renderInitials(iconName: string, overflowButton?: boolean): () => JSX.Element {
     const {
-      getStyles,
+      styles,
       theme
     } = this.props;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!
     });
 
@@ -343,11 +343,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   private _renderInitialsNotPictured(numPersonasNotPictured: number): () => JSX.Element {
     const {
-      getStyles,
+      styles,
       theme
     } = this.props;
 
-    const classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(styles, {
       theme: theme!
     });
 

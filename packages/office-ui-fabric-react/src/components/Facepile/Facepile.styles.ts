@@ -17,7 +17,7 @@ const GlobalClassNames = {
   overflowButton: 'ms-Facepile-overflowButton ms-Facepile-itemButton',
 };
 
-export const getStyles = (
+export const styles = (
   props: IFacepileStyleProps
 ): IFacepileStyles => {
   const {
