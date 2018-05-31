@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: Removed unnecessary endAligned styleprops and styles",
+      "comment": "Theming: generate a more accessible themeLighter and more accessibility pairs",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "phkuo@microsoft.com"
 }
