@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 23 May 2018 10:28:50 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 22:05:03 GMT and should not be manually modified.
+
+## 6.0.0
+Wed, 30 May 2018 22:05:03 GMT
+
+### Breaking changes
+
+- v6 release - see office-ui-fabric-react@6.1.0 for all up v6 release notes.
 
 ## 5.17.1
 Wed, 23 May 2018 10:28:50 GMT

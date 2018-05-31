@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: Removed unnecessary endAligned styleprops and styles",
+      "comment": "MessageBar: fix color for X close button so that it is accessible",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "phkuo@microsoft.com"
 }

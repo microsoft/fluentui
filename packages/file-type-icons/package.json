@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/file-type-icons",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "Office UI Fabric file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.31.0 <6.0.0",
+    "@uifabric/styling": ">=6.0.1 <7.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
