@@ -73,9 +73,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            & .ms-Persona-details {
-              flex: 1 0 auto;
-            }
         data="50%"
         data-is-focusable={true}
         onMouseMove={[Function]}
@@ -182,9 +179,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
               padding-left: 0px;
               padding-right: 0px;
               padding-top: 0px;
-            }
-            & .ms-Persona-details {
-              flex: 1 0 auto;
             }
         data="$1,000"
         data-is-focusable={true}
@@ -329,9 +323,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
               padding-left: 0px;
               padding-right: 0px;
               padding-top: 0px;
-            }
-            & .ms-Persona-details {
-              flex: 1 0 auto;
             }
         data="75%"
         data-is-focusable={true}
