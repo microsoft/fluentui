@@ -146,6 +146,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public componentDidMount(): void {
     // Add window listeners
     this._events.on(window, 'mouseup', this._onDismiss, true /* useCapture */);
+    this._events.on(window, 'pointerup', this._onDismiss, true /* useCapture */);
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -159,6 +160,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public componentWillUnmount(): void {
     // Remove window listeners
     this._events.off(window, 'mouseup', this._onDismiss, true /* useCapture */);
+    this._events.off(window, 'pointerup', this._onDismiss, true /* useCapture */);
     this._events.off(window, 'resize', this._onDismiss);
     this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
