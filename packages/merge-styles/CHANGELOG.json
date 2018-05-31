@@ -2,6 +2,18 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.0.0",
+      "tag": "@uifabric/merge-styles_v6.0.0",
+      "date": "Wed, 30 May 2018 22:05:03 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "v6 release - see office-ui-fabric-react@6.1.0 for all up v6 release notes."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.1",
       "tag": "@uifabric/merge-styles_v5.17.1",
       "date": "Wed, 23 May 2018 10:28:50 GMT",

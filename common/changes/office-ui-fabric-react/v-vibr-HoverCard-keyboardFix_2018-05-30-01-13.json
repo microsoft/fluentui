@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Port CommandBar accessibility fixes (PR #4686) to 6.0",
+      "comment": "HoverCard: example fix for keyboard navigation to HoverCard target.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kathayer@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }
