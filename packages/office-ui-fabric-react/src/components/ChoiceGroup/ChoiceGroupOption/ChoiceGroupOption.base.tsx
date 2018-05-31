@@ -30,7 +30,6 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     super(props);
   }
 
-
   public componentDidMount(): void {
     this._calculateLabelTextOverflow();
   }
