@@ -6,13 +6,7 @@
  *
  * @param ariaAttributes ARIA attributes to merge
  */
-export function mergeAriaAttributes(...ariaAttributes: (string | undefined)[]): string | undefined {
-  let mergedAttribute = '';
-  ariaAttributes.forEach((arg: string | undefined) => {
-    if (arg !== undefined && arg !== null) {
-      mergedAttribute = mergedAttribute + arg;
-    }
-  });
-
+export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined {
+  const mergedAttribute = ariaAttributes.filter((arg: string | undefined) => arg !== undefined && arg !== null).join('');
   return (mergedAttribute === '' ? undefined : mergedAttribute);
 }

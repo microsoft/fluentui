@@ -21,7 +21,7 @@ import {
   getFirstFocusable,
   getLastFocusable,
   createRef,
-  mergeAriaAttributes
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
@@ -169,7 +169,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               role='listbox'
               aria-live={ disabled || isOpen ? 'off' : 'assertive' }
               aria-label={ ariaLabel }
-              aria-describedby={ mergeAriaAttributes(describedBy, keytipAttributes['aria-describedby']) }
+              aria-describedby={ mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby']) }
               aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : undefined }
               aria-disabled={ disabled }
               aria-owns={ isOpen ? id + '-list' : undefined }

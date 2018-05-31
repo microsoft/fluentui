@@ -20,7 +20,7 @@ import {
   getId,
   getNativeProps,
   shallowCompare,
-  mergeAriaAttributes
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
@@ -389,7 +389,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 readOnly={ disabled || !allowFreeform }
                 aria-labelledby={ (label && (id + '-label')) }
                 aria-label={ ((ariaLabel && !label) ? ariaLabel : undefined) }
-                aria-describedby={ mergeAriaAttributes(describedBy, keytipAttributes['aria-describedby']) }
+                aria-describedby={ mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby']) }
                 aria-activedescendant={ this._getAriaActiveDescentValue() }
                 aria-disabled={ disabled }
                 aria-owns={ (id + '-list') }

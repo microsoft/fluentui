@@ -1,4 +1,4 @@
-import { mergeAriaAttributes } from './aria';
+import { mergeAriaAttributeValues } from './aria';
 
 interface IMergeTestCase {
   args: (string | undefined)[];
@@ -11,7 +11,7 @@ interface IMergeTest {
 }
 
 describe('aria utils tests', () => {
-  describe('mergeAriaAttributes tests', () => {
+  describe('mergeAriaAttributeValues tests', () => {
     const mergeTestCases: IMergeTest[] = [
       {
         description: 'returns undefined when given no args',
@@ -94,7 +94,7 @@ describe('aria utils tests', () => {
     mergeTestCases.forEach((test: IMergeTest) => {
       test.cases.forEach((testCase: IMergeTestCase, index: number) => {
         it(test.description + ', case #' + index, () => {
-          const merged = mergeAriaAttributes(...testCase.args);
+          const merged = mergeAriaAttributeValues(...testCase.args);
           expect(merged).toEqual(testCase.expected);
         });
       });

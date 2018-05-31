@@ -10,7 +10,7 @@ import {
   KeyCodes,
   createRef,
   css,
-  mergeAriaAttributes
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -533,7 +533,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-haspopup={ true }
             aria-expanded={ this._isExpanded }
             aria-pressed={ this.props.checked }
-            aria-describedby={ mergeAriaAttributes(ariaDescribedBy, keytipAttributes['aria-describedby']) }
+            aria-describedby={ mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby']) }
             className={ classNames && classNames.splitButtonContainer }
             onKeyDown={ this._onSplitButtonContainerKeyDown }
             onTouchStart={ this._onTouchStart }
