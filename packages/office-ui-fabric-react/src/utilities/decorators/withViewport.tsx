@@ -47,10 +47,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
         {
           leading: false
         });
+
       if (window.ResizeObserver) {
         new window.ResizeObserver(this._onAsyncResize).observe(this.state.viewport);
       } else {
-        this._events.on(window, 'resize', this._onAsyncResize);	
+        this._events.on(window, 'resize', this._onAsyncResize);
       }
 
       const {
