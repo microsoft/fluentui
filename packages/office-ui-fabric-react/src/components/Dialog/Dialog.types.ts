@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button/Button.types';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IDialog {
 
@@ -22,7 +22,7 @@ export interface IDialogProps extends React.Props<any>, IWithResponsiveModeState
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IDialogStyleProps, IDialogStyles>;
+  styles?: IStyleFunctionOrObject<IDialogStyleProps, IDialogStyles>;
 
   /**
    * Theme provided by HOC.

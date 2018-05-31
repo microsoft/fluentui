@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LayerBase } from './Layer.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ILayer {
 
@@ -17,7 +17,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<ILayerStyleProps, ILayerStyles>;
+  styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
 
   /**
    * Theme provided by HOC.

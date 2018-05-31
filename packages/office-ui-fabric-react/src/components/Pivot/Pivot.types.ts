@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { PivotItem } from './PivotItem';
 
 export interface IPivot {
@@ -20,7 +20,7 @@ export interface IPivotProps extends React.Props<any> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IPivotStyleProps, IPivotStyles>;
+  styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
 
   /**
    * Theme provided by High-Order Component.

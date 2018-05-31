@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '@uifabric/styling';
-import { IStyleFunction } from '@uifabric/utilities';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
 
 export interface ICheckProps extends React.Props<any> {
   /**
@@ -17,7 +17,7 @@ export interface ICheckProps extends React.Props<any> {
   /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
-  getStyles?: IStyleFunction<ICheckStyleProps, ICheckStyles>;
+  styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
 
   /**
    * Flag to always show the check icon. Not currently working.

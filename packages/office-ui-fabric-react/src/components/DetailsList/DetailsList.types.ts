@@ -261,7 +261,7 @@ export interface IColumn {
    * The field to pull the text value from for the column. This can be null if a custom
    * onRender method is provided.
    */
-  fieldName: string;
+  fieldName?: string;
 
   /**
    * An optional class name to stick on the column cell within each row.

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IButtonProps } from '../Button/Button.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IDialogContent {
 
@@ -18,7 +18,7 @@ export interface IDialogContentProps extends React.Props<any> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IDialogContentStyleProps, IDialogContentStyles>;
+  styles?: IStyleFunctionOrObject<IDialogContentStyleProps, IDialogContentStyles>;
 
   /**
    * Theme provided by HOC.

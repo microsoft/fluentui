@@ -2,6 +2,10 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  HoverCard,
+  IExpandingCardProps
+} from 'office-ui-fabric-react/lib/HoverCard';
 import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
 import {
   IColumn,
@@ -71,7 +75,6 @@ export interface IShimmerApplicationExampleState {
 
 export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
   private _isFetchingItems: boolean;
-  private _lastTimeoutId: number;
 
   constructor(props: {}) {
     super(props);
@@ -112,14 +115,15 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
               onText='Compact'
               offText='Normal'
             />
-            <Toggle
-              label='Enable content loading'
-              checked={ isDataLoaded }
-              onChanged={ this._onLoadData }
-              onText='Content'
-              offText='Shimmer'
-            />
           </div>
+          <span>Toggle the Load data switch to start async simulation.</span>
+          <Toggle
+            label='Load data switch'
+            checked={ isDataLoaded }
+            onChanged={ this._onLoadData }
+            onText='Loaded'
+            offText='Loading...'
+          />
         </div>
         <div className='shimmerExample-application'>
           <DetailsList
@@ -142,14 +146,12 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     const { isDataLoaded } = this.state;
     isDataLoaded && this._onDataMiss(index as number);
 
-    const shimmerRow: JSX.Element = (
-      <DetailsRow { ...rowProps } shimmer={ true } />
-    );
-
     return (
       <Shimmer
-        customElementsGroup={ shimmerRow }
-      />
+        isBaseStyle={ true }
+      >
+        <DetailsRow { ...rowProps } shimmer={ true } />
+      </Shimmer>
     );
   }
 
@@ -158,7 +160,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     index = Math.floor(index / ITEMS_BATCH_SIZE) * ITEMS_BATCH_SIZE;
     if (!this._isFetchingItems) {
       this._isFetchingItems = true;
-      this._lastTimeoutId = this._async.setTimeout(() => {
+      setTimeout(() => {
         this._isFetchingItems = false;
         // tslint:disable-next-line:no-any
         const itemsCopy = ([] as any[]).concat(this.state.items);
@@ -184,7 +186,6 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       items = _items.slice(0, ITEMS_BATCH_SIZE).concat(new Array(ITEMS_COUNT - ITEMS_BATCH_SIZE));
     } else {
       items = new Array();
-      this._async.clearTimeout(this._lastTimeoutId);
     }
     this.setState({
       isDataLoaded: checked,
@@ -201,6 +202,22 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   private _onRenderItemColumn = (item: IItem, index: number, column: IColumn): JSX.Element | string | number => {
+    const expandingCardProps: IExpandingCardProps = {
+      onRenderCompactCard: this._onRenderCompactCard,
+      onRenderExpandedCard: this._onRenderExpandedCard,
+      renderData: item
+    };
+
+    if (column.key === 'key') {
+      return (
+        <HoverCard id='myID1' expandingCardProps={ expandingCardProps } instantOpenOnClick={ true }>
+          <div className='HoverCard-item'>
+            { item.key }
+          </div>
+        </HoverCard>
+      );
+    }
+
     if (column.key === 'thumbnail') {
       return (
         <img
@@ -210,6 +227,30 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     }
 
     return item[column.key];
+  }
+
+  private _onRenderCompactCard = (item: IItem): JSX.Element => {
+    return (
+      <div className='hoverCardExample-compactCard'>
+        <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
+          { item.location }
+        </a>
+      </div>
+    );
+  }
+
+  private _onRenderExpandedCard = (item: IItem): JSX.Element => {
+    const { items, columns } = this.state;
+    return (
+      <div className='hoverCardExample-expandedCard'>
+        { item.description }
+        <DetailsList
+          setKey='expandedCardSet'
+          items={ items! }
+          columns={ columns }
+        />
+      </div>
+    );
   }
 
   private _randomFileIcon(): { docType: string; url: string; } {

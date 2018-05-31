@@ -1,6 +1,55 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 May 2018 21:30:43 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 22:05:04 GMT and should not be manually modified.
+
+## 6.1.1
+Wed, 30 May 2018 22:05:03 GMT
+
+*Version update only*
+
+## 6.1.0
+Wed, 30 May 2018 20:28:34 GMT
+
+### Breaking changes
+
+- Selection utility: getSelectedIndices is now a mandatory member of the `ISelection` interface.
+- CommandBar component has been replaced with the one from the experiments package.
+- Checkbox: replaced optional properties of the `ICheckboxStyles` interface, removed `styles` and `getClassNames` from the `ICheckboxProps` interface, made the checkmark visible on hover, added high contrast styles.
+- CommandBarButton: Supports custom styling and button aliasing. Interface improvements.
+- ContextualMenu: Remove deprecated since v0.69 `icon` prop of ContextualMenu component.
+- Positioning/Callout/ContextualMenu: Remove all deprecated props
+- Minimum React version is now 16.3.2.
+- Label and Toggle now support javascript styling. Improvements to Label and Toggle interfaces. Added Toggle and Label root aliasing.
+
+### Minor changes
+
+- ChoiceGroup: now supports customizable theming. Various bug fixes, cleanup within. Tests updated to use enzyme.
+- Deprecate ContextualMenu's name prop in favor of new text prop.
+- DetailsList: fieldName is now an optional field of IColumn.
+- All `getStyles` properties accept either a function to return a style object, or a static style object
+
+### Patches
+
+- BaseButton: Make adjustment so that customclass names has precedence.
+- CommandBarButton: High contrast hover state.
+- CommandBar: Removed unnecessary endAligned styleprops and styles
+- Port CommandBar accessibility fixes (PR #4686) to 6.0
+- Positioning: correctly positon callout without beak
+- Suggestions: Fix a bug where arrow keys would not scroll correctly
+
+## 5.112.0
+Wed, 30 May 2018 00:35:36 GMT
+
+### Minor changes
+
+- FocusZone: Added onFocusNotification API to notify creators of focus
+
+### Patches
+
+- Update local properties in BaseExtenededPicker on receiving new props
+- CommandBar Example: More specific selector for text color to override the link styles we get from msgraph on the website.
+- ComboBox: Update styling so that the "selected" item does not get the "selected" look when navigating through the potential options.
+- Fix passing onclick from props for contextual anchor item
 
 ## 5.111.2
 Fri, 25 May 2018 21:30:43 GMT

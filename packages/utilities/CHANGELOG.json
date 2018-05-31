@@ -2,6 +2,37 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.0.2",
+      "tag": "@uifabric/utilities_v6.0.2",
+      "date": "Wed, 30 May 2018 22:05:04 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/utilities_v6.0.1",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "694dc6b7c243eabb47277c927a3476a4b2d5dcc8",
+            "comment": "Minimum React version is now 16.3.2."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f0ee1745275fc799065d26dbe3fa2c4170b80f05",
+            "comment": "Added `resetIds` api for adding predictability in jest tests."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.0",
       "tag": "@uifabric/utilities_v5.33.0",
       "date": "Wed, 23 May 2018 16:14:26 GMT",

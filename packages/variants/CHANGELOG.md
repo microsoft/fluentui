@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 24 May 2018 17:06:02 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 20:28:33 GMT and should not be manually modified.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Minimum React version is now 16.3.2.
 
 ## 5.5.2
 Thu, 24 May 2018 17:06:02 GMT

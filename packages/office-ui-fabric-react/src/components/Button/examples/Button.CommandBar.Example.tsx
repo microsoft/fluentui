@@ -22,13 +22,13 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }

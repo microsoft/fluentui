@@ -27,7 +27,7 @@ staleLabel: no-recent-activity
 markComment: >
   This issue has been automatically marked as stale because it has not activity for **30 days**. It will be closed if no further activity occurs **within 14 days of this comment**. Thank you for your contributions to Fabric React!
 
-  [Why am I receiving this notification?](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/FAQ.md#q-why-do-i-get-the-stalebot-messages-why-is-my-issue-marked-as-stale)
+  [Why am I receiving this notification?](https://github.com/OfficeDev/office-ui-fabric-react/wiki/FAQ#q-why-do-i-get-the-stalebot-messages-why-is-my-issue-marked-as-stale)
 
 # Comment to post when removing the stale label.
 # unmarkComment: >
@@ -37,7 +37,7 @@ markComment: >
 closeComment: >
   This issue has been automatically closed because it has not had recent activity after being marked as stale. If you belive this issue is still a problem or should be reopened, please reopen it! Thank you for your contributions to Fabric React!
 
-  [Why am I receiving this notification?](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/FAQ.md#q-why-do-i-get-the-stalebot-messages-why-is-my-issue-marked-as-stale)
+  [Why am I receiving this notification?](https://github.com/OfficeDev/office-ui-fabric-react/wiki/FAQ#q-why-do-i-get-the-stalebot-messages-why-is-my-issue-marked-as-stale)
 
 # Limit the number of actions per hour, from 1-30. Default is 30
 limitPerRun: 30
