@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.0.3",
+      "tag": "@uifabric/utilities_v6.0.3",
+      "date": "Fri, 01 Jun 2018 10:18:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "75bfc52e1da9ba136b20507ba89f8c916228defd",
+            "comment": "Add utility function to help merge ARIA attributes."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.2",
       "tag": "@uifabric/utilities_v6.0.2",
       "date": "Wed, 30 May 2018 22:05:04 GMT",
