@@ -299,7 +299,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 }
 
 /**
- * Determines if an element can receive focus.
+ * Determines if an element can receive focus programmatically or via a mouse click.
  * If checkTabIndex is true, additionally checks to ensure the element can be focused with the tab key, meaning tabIndex != -1.
  *
  * @public
