@@ -15,7 +15,9 @@ module.exports = function (options) {
       `--config ${jestConfigPath}`,
 
       // Run tests in serial (parallel builds seem to hang rush.)
-      process.env.TRAVIS ? `--runInBand` : undefined,
+      // On Windows, this is occasionally an issue: https://github.com/facebook/jest/issues/4444
+      // Temporarily run sequentially on Windows until jest is upgraded.
+      process.env.TRAVIS || process.platform === 'win32' ? `--runInBand` : undefined,
 
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
