@@ -32,7 +32,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
         <CompoundButton
           keytipProps={ keytipMap.CompoundButton }
           text='Compound Button'
-          description={ 'With a Keytip' }
+          secondaryText={ 'With a Keytip' }
           onClick={ () => { console.log('Compound Button'); } }
         />
         <DefaultButton
@@ -43,12 +43,12 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
             items: [
               {
                 key: 'buttonMenuItem1',
-                name: 'Menu Item 1',
+                text: 'Menu Item 1',
                 keytipProps: keytipMap.ButtonMenuItem1
               },
               {
                 key: 'buttonMenuItem2',
-                name: 'Menu Item 2',
+                text: 'Menu Item 2',
                 keytipProps: keytipMap.ButtonMenuItem2
               }
             ]
@@ -63,12 +63,12 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
             items: [
               {
                 key: 'splitButtonMenuButton1',
-                name: 'Split Button Menu Item 1',
+                text: 'Split Button Menu Item 1',
                 keytipProps: keytipMap.SplitButtonMenuItem1
               },
               {
                 key: 'splitButtonMenuButton2',
-                name: 'Split Button Menu Item 2',
+                text: 'Split Button Menu Item 2',
                 keytipProps: keytipMap.SplitButtonMenuItem2
               }
             ]

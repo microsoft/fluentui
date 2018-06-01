@@ -28,12 +28,12 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       onRenderItem,
       positionInSet,
       setSize,
-      getStyles
+      styles
     } = this.props;
 
     const htmlProps = getNativeProps(this.props, htmlElementProperties, ['onBlur, aria-posinset, aria-setsize']);
 
-    const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
+    const classNames = getClassNames(styles!, { theme: this.props.theme! });
 
     // Array to store the cells in the correct row index
     const rowsOfItems: any[][] = toMatrix(items, columnCount);

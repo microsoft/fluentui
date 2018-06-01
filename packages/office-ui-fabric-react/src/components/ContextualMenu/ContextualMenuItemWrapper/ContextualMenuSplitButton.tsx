@@ -3,16 +3,18 @@ import {
   assign,
   buttonProperties,
   getNativeProps,
-  KeyCodes
+  KeyCodes,
+  mergeAriaAttributeValues
 } from '../../../Utilities';
-import { IContextualMenuItem, ContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItem } from '../ContextualMenuItem';
+import { IContextualMenuItem } from '../ContextualMenu.types';
 import {
   IMenuItemClassNames,
   getSplitButtonVerticalDividerClassNames
 } from '../ContextualMenu.classNames';
-import { KeytipData } from '../../KeytipData';
-import { getIsChecked, isItemDisabled } from '../../../utilities/contextualMenu/index';
-import { VerticalDivider } from '../../Divider';
+import { KeytipData } from '../../../KeytipData';
+import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
 export interface IContextualMenuSplitButtonState { }
@@ -39,8 +41,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       totalItemCount,
       hasCheckmarks,
       hasIcons,
-      onItemMouseLeave
+      onItemMouseLeave,
+      expandedMenuItemKey
     } = this.props;
+
+    const itemHasSubmenu = hasSubmenu(item);
 
     let { keytipProps } = item;
     if (keytipProps) {
@@ -56,12 +61,13 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           <div
             data-ktp-target={ keytipAttributes['data-ktp-target'] }
             ref={ (splitButton: HTMLDivElement) => this._splitButton = splitButton }
-            role={ 'button' }
-            aria-labelledby={ item.ariaLabel }
+            role={ 'menuitem' }
+            aria-label={ item.ariaLabel }
             className={ classNames.splitContainer }
             aria-disabled={ isItemDisabled(item) }
+            aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
             aria-haspopup={ true }
-            aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ mergeAriaAttributeValues(item.ariaDescription, keytipAttributes['aria-describedby']) }
             aria-checked={ item.isChecked || item.checked }
             aria-posinset={ focusableElementIndex + 1 }
             aria-setsize={ totalItemCount }
@@ -99,9 +105,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   }
 
   private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    const isChecked: boolean | null | undefined = getIsChecked(item);
-    const canCheck: boolean = isChecked !== null;
-    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemClick
@@ -111,12 +114,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
+      text: item.text || item.name,
       className: classNames.splitPrimary,
-      role: item.role || defaultRole,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
-      icon: item.icon,
       iconProps: item.iconProps,
       'data-is-focusable': false,
       'aria-hidden': true

@@ -2,9 +2,9 @@ import {
   IPalette,
   ISemanticColors,
   ITheme,
-  IPartialTheme
-} from '@uifabric/styling/lib/index';
-import { createTheme } from '@uifabric/styling/lib/index';
+  IPartialTheme,
+  createTheme
+} from 'office-ui-fabric-react/lib/Styling';
 
 function makeThemeFromPartials(
   originalTheme: IPartialTheme,
@@ -31,7 +31,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
   const p = fullTheme.palette;
 
   // commented lines are unchanged, but left in for tracking purposes
-  // in a tint variant, most colors remain unchanged
+  // in a neutral variant, most colors remain unchanged
   const partialPalette: Partial<IPalette> = {
     // theme
     // themeDarker: '#004578',
@@ -64,14 +64,15 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
-    bodyBackground: p.neutralLighter
+    bodyBackground: p.neutralLighter,
+    bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt
   };
 
   return makeThemeFromPartials(theme, partialPalette, partialSemantic);
 }
 
 /**
- * A variant where the background a softer version of the primary color. Most other colors remain unchanged.
+ * A variant where the background is a soft version of the primary color. Most other colors remain unchanged.
  *
  * @export
  * @param {IPartialTheme} theme the theme for which to build a variant for
@@ -82,7 +83,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
   const p = fullTheme.palette;
 
   // commented lines are unchanged, but left in for tracking purposes
-  // in a tint variant, most colors remain unchanged
+  // in a soft variant, most colors remain unchanged
   const partialPalette: Partial<IPalette> = {
     // theme
     // themeDarker: '#004578',
@@ -104,24 +105,25 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // neutralTertiary: '#a6a6a6',
 
     // backgrounds
-    // neutralTertiaryAlt: '#c8c8c8', // themeLighter?
-    // neutralQuaternary: '#d0d0d0',
-    // neutralQuaternaryAlt: '#dadada',
-    // neutralLight: '#eaeaea',
-    // neutralLighter: '#f4f4f4',
-    // neutralLighterAlt: '#f8f8f8',
-    white: p.themeLighterAlt
+    neutralTertiaryAlt: p.themeDark,
+    neutralQuaternary: p.themeDarkAlt,
+    neutralQuaternaryAlt: p.themePrimary,
+    neutralLight: p.themeSecondary,
+    neutralLighter: p.themeTertiary,
+    neutralLighterAlt: p.themeLight,
+    white: p.themeLighter
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
-    bodyBackground: p.themeLighterAlt,
+    bodyBackground: p.themeLighter,
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeLight : p.themeLighterAlt,
 
     inputBorder: p.themeLighter,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeLighter,
     // inputBackgroundChecked: p.themePrimary,
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.themeLighterAlt,
+    inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
   };
 
@@ -169,16 +171,18 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
     // backgrounds
     neutralTertiaryAlt: p.themeLighterAlt,
-    neutralQuaternary: p.themeLighter,
-    neutralQuaternaryAlt: p.themeLight,
-    neutralLight: p.themeTertiary,
-    neutralLighter: p.themeSecondary,
-    neutralLighterAlt: p.themePrimary,
-    white: p.themeDarkAlt
+    neutralQuaternary: p.themeLighterAlt, // something needs to overlap here since we're out of slots
+    neutralQuaternaryAlt: p.themeLighter,
+    neutralLight: p.themeLight,
+    neutralLighter: p.themeTertiary,
+    neutralLighterAlt: p.themeSecondary,
+    white: p.themePrimary
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
-    bodyBackground: p.themeDarkAlt,
+    bodyBackground: p.themePrimary,
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themeSecondary,
+
     bodyText: p.white,
     bodySubtext: p.white,
 
@@ -186,7 +190,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeDark,
     inputBackgroundChecked: p.white,
-    // inputBackgroundCheckedHovered: p.themeDarkAlt,
+    // inputBackgroundCheckedHovered: p.themePrimary,
     inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
   };

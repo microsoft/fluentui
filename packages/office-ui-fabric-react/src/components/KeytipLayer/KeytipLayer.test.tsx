@@ -121,10 +121,10 @@ describe('KeytipLayer', () => {
 
     it('correctly sets variables when entering and exiting', () => {
       // Call enterKeytipMode
-      layerRef.value!.enterKeytipMode();
-      ktpTree = layerRef.value!.keytipTree;
+      ktpMgr.enterKeytipMode();
       expect(ktpLayer.state('inKeytipMode')).toEqual(true);
       expect(onEnter).toBeCalled();
+      ktpTree = layerRef.value!.getKeytipTree();
 
       // 4 nodes + the root
       expect(Object.keys(ktpTree.nodeMap)).toHaveLength(5);
@@ -142,17 +142,26 @@ describe('KeytipLayer', () => {
       expect(ktpTree.currentKeytip).toEqual(ktpTree.root);
 
       // Call enterKeytipMode
-      layerRef.value!.exitKeytipMode();
-      ktpTree = layerRef.value!.keytipTree;
+      ktpMgr.exitKeytipMode();
       expect(ktpLayer.state('inKeytipMode')).toEqual(false);
-
       expect(onExit).toBeCalled();
+      ktpTree = layerRef.value!.getKeytipTree();
 
       visibleKeytips = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(0);
 
       expect(layerRef.value!.getCurrentSequence()).toEqual('');
       expect(ktpTree.currentKeytip).toBeUndefined();
+    });
+
+    it('respects shouldEnterKeytipMode', () => {
+      ktpMgr.shouldEnterKeytipMode = false;
+      ktpMgr.enterKeytipMode();
+      expect(ktpLayer.state('inKeytipMode')).toEqual(false);
+      ktpMgr.shouldEnterKeytipMode = true;
+      ktpMgr.enterKeytipMode();
+      expect(ktpLayer.state('inKeytipMode')).toEqual(true);
+      expect(onEnter).toBeCalled();
     });
   });
 
@@ -183,7 +192,7 @@ describe('KeytipLayer', () => {
             />
           );
           layerValue = layerRef.value!;
-          ktpTree = layerValue.keytipTree;
+          ktpTree = layerValue.getKeytipTree();
         });
 
         it('calls on enter keytip mode when we process alt + left win', () => {
@@ -260,7 +269,7 @@ describe('KeytipLayer', () => {
           />
         );
         layerValue = layerRef.value!;
-        ktpTree = layerValue.keytipTree;
+        ktpTree = layerValue.getKeytipTree();
       });
 
       // Processing keys tests
@@ -386,7 +395,7 @@ describe('KeytipLayer', () => {
           content='Alt Windows'
         />
       );
-      ktpTree = layerRef.value!.keytipTree;
+      ktpTree = layerRef.value!.getKeytipTree();
     });
 
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {

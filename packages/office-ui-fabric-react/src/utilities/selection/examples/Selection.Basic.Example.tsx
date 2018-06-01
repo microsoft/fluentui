@@ -52,6 +52,8 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
         <span className='ms-SelectionItemExample-name'>
           { item.name }
         </span>
+        <a className='ms-SelectionItemExample-link' href='https://bing.com' target='_blank'>Link that avoids selection</a>
+        <a className='ms-SelectionItemExample-link' data-selection-select={ true } href='https://bing.com' target='_blank'>Link that selects first</a>
       </div>
     );
   }
@@ -164,7 +166,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
     return [
       {
         key: 'selectionMode',
-        name: 'Selection Mode',
+        text: 'Selection Mode',
         items: [
           {
             key: SelectionMode[SelectionMode.none],
@@ -195,13 +197,13 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
       },
       {
         key: 'selectAll',
-        name: 'Select All',
-        icon: 'CheckMark',
+        text: 'Select All',
+        iconProps: { iconName: 'CheckMark' },
         onClick: this._onToggleSelectAll
       },
       {
         key: 'allowCanSelect',
-        name: 'Choose selectable items',
+        text: 'Choose selectable items',
         items: [
           {
             key: 'all',

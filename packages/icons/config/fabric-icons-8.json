@@ -2,12 +2,41 @@
 	"fontName": "fabric-icons-8",
 	"fontFamilyName": "FabricMDL2Icons-8",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "StatusCircleInner",
+			"unicode": "F137"
+		},
+		{
+			"name": "StatusCircleRing",
+			"unicode": "F138"
+		},
+		{
+			"name": "StatusTriangleOuter",
+			"unicode": "F139"
+		},
+		{
+			"name": "StatusTriangleInner",
+			"unicode": "F13A"
+		},
+		{
+			"name": "StatusTriangleExclamation",
+			"unicode": "F13B"
+		},
+		{
+			"name": "StatusCircleExclamation",
+			"unicode": "F13C"
+		},
+		{
+			"name": "StatusCircleErrorX",
+			"unicode": "F13D"
+		},
 		{
 			"name": "StatusCircleInfo",
 			"unicode": "F13F"
@@ -63,6 +92,10 @@
 		{
 			"name": "FastMode",
 			"unicode": "F19A"
+		},
+		{
+			"name": "ToggleOn",
+			"unicode": "F19E"
 		},
 		{
 			"name": "ToggleOff",
@@ -195,6 +228,10 @@
 		{
 			"name": "LinkedInLogo",
 			"unicode": "F20A"
+		},
+		{
+			"name": "Decimals",
+			"unicode": "F218"
 		},
 		{
 			"name": "SidePanelMirrored",
@@ -371,42 +408,6 @@
 		{
 			"name": "DocumentApproval",
 			"unicode": "F28B"
-		},
-		{
-			"name": "CloneToDesktop",
-			"unicode": "F28C"
-		},
-		{
-			"name": "InstallToDrive",
-			"unicode": "F28D"
-		},
-		{
-			"name": "Blur",
-			"unicode": "F28E"
-		},
-		{
-			"name": "Build",
-			"unicode": "F28F"
-		},
-		{
-			"name": "ProcessMetaTask",
-			"unicode": "F290"
-		},
-		{
-			"name": "BranchFork2",
-			"unicode": "F291"
-		},
-		{
-			"name": "BranchLocked",
-			"unicode": "F292"
-		},
-		{
-			"name": "BranchCommit",
-			"unicode": "F293"
-		},
-		{
-			"name": "BranchCompare",
-			"unicode": "F294"
 		}
 	]
 }

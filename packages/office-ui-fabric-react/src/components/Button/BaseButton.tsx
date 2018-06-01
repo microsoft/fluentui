@@ -8,7 +8,9 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  createRef
+  createRef,
+  css,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -67,7 +69,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
 
     this._warnDeprecations({
-      rootProps: undefined
+      rootProps: undefined,
+      'description': 'secondaryText'
     });
     this._labelId = getId();
     this._descriptionId = getId();
@@ -88,9 +91,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaLabel,
       ariaHidden,
       className,
-      description,
       disabled,
       primaryDisabled,
+      secondaryText = this.props.description,
       href,
       iconProps,
       menuIconProps,
@@ -139,17 +142,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'disabled' // let disabled buttons be focused and styled as disabled.
       ]);
 
-    // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
-    // otherwise default to null.
-    let ariaDescribedBy;
+    // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
+    // otherwise default to undefined so property does not appear in output.
+    let ariaDescribedBy = undefined;
     if (ariaDescription) {
       ariaDescribedBy = _ariaDescriptionId;
-    } else if (description) {
+    } else if (secondaryText) {
       ariaDescribedBy = _descriptionId;
     } else if ((nativeProps as any)['aria-describedby']) {
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];
-    } else {
-      ariaDescribedBy = null;
     }
 
     // If an explicit ariaLabel is given, use that as the label and we're done.
@@ -157,12 +158,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If any kind of description is given (which will end up as an aria-describedby attribute),
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
     // text on the button (if it exists). Never set both aria-label and aria-labelledby.
-    let ariaLabelledBy = null;
+    let ariaLabelledBy = undefined;
     if (!ariaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = text ? _labelId : null;
+        ariaLabelledBy = text ? _labelId : undefined;
       }
     }
 
@@ -311,12 +312,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       text,
       children,
-      description,
+      secondaryText = this.props.description,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription
     } = this.props;
 
-    if (text || typeof (children) === 'string' || description) {
+    if (text || typeof (children) === 'string' || secondaryText) {
       return (
         <div
           className={ this._classNames.textContainer }
@@ -345,7 +346,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       text = children;
     }
 
-    if (text) {
+    if (this._hasText()) {
       return (
         <div
           key={ this._labelId }
@@ -358,6 +359,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return null;
+  }
+
+  private _hasText(): boolean {
+    // _onRenderTextContents and _onRenderText do not perform the same checks. Below is parity with what _onRenderText used to have
+    // before the refactor that introduced this function. _onRenderTextContents does not require props.text to be undefined in order
+    // for props.children to be used as a fallback. Purely a code maintainability/reuse issue, but logged as Issue #4979
+    return this.props.text !== null && (this.props.text !== undefined || typeof (this.props.children) === 'string');
   }
 
   private _onRenderChildren = (): JSX.Element | null => {
@@ -374,18 +382,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderDescription = (props: IButtonProps) => {
     const {
-      description
+      secondaryText = this.props.description
     } = props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
-    return description ? (
+    return (secondaryText) ? (
       <div
         key={ this._descriptionId }
         className={ this._classNames.description }
         id={ this._descriptionId }
       >
-        { description }
+        { secondaryText }
       </div>
     ) : (
         null
@@ -425,15 +433,21 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { onDismiss = this._dismissMenu } = menuProps;
 
+    // the accessible menu label (accessible name) has a relationship to the button.
+    // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
+    // AND the button has text, we'll set the menu aria-labelledBy to the text element id.
+    if (!menuProps.ariaLabel && !menuProps.labelElementId && this._hasText()) {
+      menuProps = { ...menuProps, labelElementId: this._labelId };
+    }
+
     return (
       <ContextualMenu
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         { ...menuProps }
         shouldFocusOnContainer={ this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined }
-        className={ 'ms-BaseButton-menuhost ' + menuProps.className }
+        className={ css('ms-BaseButton-menuhost', menuProps.className) }
         target={ this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current }
-        labelElementId={ this._labelId }
         onDismiss={ onDismiss }
       />
     );
@@ -450,7 +464,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _openMenu = (shouldFocusOnContainer?: boolean): void => {
     if (this.props.menuProps) {
-      const menuProps = {...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
+      const menuProps = { ...this.props.menuProps, shouldFocusOnContainer: shouldFocusOnContainer };
       if (this.props.persistMenu) {
         menuProps.hidden = false;
       }
@@ -499,7 +513,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'data-is-focusable': false
       }
     );
-    const ariaDescribedBy = buttonProps.ariaDescription || '';
+    const ariaDescribedBy = buttonProps.ariaDescription;
 
     if (keytipProps && menuProps) {
       keytipProps = {
@@ -519,7 +533,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-haspopup={ true }
             aria-expanded={ this._isExpanded }
             aria-pressed={ this.props.checked }
-            aria-describedby={ ariaDescribedBy + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby']) }
             className={ classNames && classNames.splitButtonContainer }
             onKeyDown={ this._onSplitButtonContainerKeyDown }
             onTouchStart={ this._onTouchStart }
@@ -679,13 +693,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _isValidMenuOpenKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
-    } else {
-      if (this._isSplitButton) {
-        return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
-      } else {
-        return ev.which === KeyCodes.enter;
-      }
+    } else if (this.props.menuProps) {
+      return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
+
+    // Note: When enter is pressed, we will let the event continue to propagate
+    // to trigger the onClick event on the button
+    return false;
   }
 
   private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {

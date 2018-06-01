@@ -2,12 +2,33 @@
 	"fontName": "fabric-icons-5",
 	"fontFamilyName": "FabricMDL2Icons-5",
 	"excludeGlyphs": false,
+	"excludeThirdPartyIcons": true,
 	"chunkSubsets": true,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
+		{
+			"name": "Crown",
+			"unicode": "ED01"
+		},
+		{
+			"name": "Diamond",
+			"unicode": "ED02"
+		},
+		{
+			"name": "ScaleUp",
+			"unicode": "ED09"
+		},
+		{
+			"name": "Feedback",
+			"unicode": "ED15"
+		},
+		{
+			"name": "SharepointLogoInverse",
+			"unicode": "ED18"
+		},
 		{
 			"name": "YammerLogo",
 			"unicode": "ED19"
@@ -387,26 +408,6 @@
 		{
 			"name": "CaretDown8",
 			"unicode": "EDD8"
-		},
-		{
-			"name": "CaretLeftSolid8",
-			"unicode": "EDD9"
-		},
-		{
-			"name": "CaretRightSolid8",
-			"unicode": "EDDA"
-		},
-		{
-			"name": "CaretUpSolid8",
-			"unicode": "EDDB"
-		},
-		{
-			"name": "CaretDownSolid8",
-			"unicode": "EDDC"
-		},
-		{
-			"name": "ClearFormatting",
-			"unicode": "EDDD"
 		}
 	]
 }

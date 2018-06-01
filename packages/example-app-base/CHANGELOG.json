@@ -2,6 +2,75 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.0.0",
+      "tag": "@uifabric/example-app-base_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Minimum React version is now 16.3.2."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.31.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.5",
+      "tag": "@uifabric/example-app-base_v5.11.5",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "bworline <35072931+bworline@users.noreply.github.com>",
+            "commit": "3d4a53b8233681208396816de77fd799e89ceae1",
+            "comment": "Fixed a bug in the documentation generator code that skipped const enums (parser)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.30.1 <6.0.0` to `>=5.30.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.4",
+      "tag": "@uifabric/example-app-base_v5.11.4",
+      "date": "Fri, 11 May 2018 04:21:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f6bc8fc6b3267db36c0ce6382b6fc8bfdbd64f3d",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.3",
+      "tag": "@uifabric/example-app-base_v5.11.3",
+      "date": "Tue, 08 May 2018 10:17:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "0283f2a4f9465a7aad3039ce6f8d98848f9a2521",
+            "comment": "Pin markdown-to-jsx dependency"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.2",
       "tag": "@uifabric/example-app-base_v5.11.2",
       "date": "Fri, 04 May 2018 15:58:38 GMT",

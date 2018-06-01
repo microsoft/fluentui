@@ -5,9 +5,9 @@ import {
   createRef
 } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
-import { ContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenuItem } from '../ContextualMenuItem';
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = createRef<HTMLAnchorElement>();
@@ -96,5 +96,12 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
 
   protected _getSubmenuTarget = (): HTMLElement | undefined => {
     return this._anchor.current ? this._anchor.current : undefined;
+  }
+
+  protected _onItemClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { item, onItemClick } = this.props;
+    if (onItemClick) {
+      onItemClick(item, ev);
+    }
   }
 }

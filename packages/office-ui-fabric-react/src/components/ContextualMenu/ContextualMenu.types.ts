@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
+import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -29,7 +28,10 @@ export interface IContextualMenu {
 
 }
 
-export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWithResponsiveModeState {
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
+export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -83,19 +85,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
-
-  /**
-   * If true use a point rather than rectangle to position the ContextualMenu.
-   * For example it can be used to position based on a click.
-   * @deprecated Use 'target' instead
-   */
-  useTargetPoint?: boolean;
-
-  /**
-   * Point used to position the ContextualMenu
-   * @deprecated Use 'target' instead
-   */
-  targetPoint?: IPoint;
 
   /**
    * If true then the beak is visible. If false it will not be shown.
@@ -175,12 +164,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default false
    */
   doNotLayer?: boolean;
-
-  /**
-   * Direction for arrow navigation of the ContextualMenu. Should only be specified if using custom-rendered menu items.
-   * @deprecated Use focusZoneProps instead
-   */
-  arrowDirection?: FocusZoneDirection;
 
   /**
    * If true the position will not change sides in an attempt to fit the ContextualMenu within bounds.
@@ -274,7 +257,12 @@ export interface IContextualMenuItem {
   /**
    * Text description for the menu item to display
    */
-  name?: string;
+  text?: string;
+
+  /**
+   * Seconday description for the menu item to display
+   */
+  secondaryText?: string;
 
   itemType?: ContextualMenuItemType;
 
@@ -294,12 +282,6 @@ export interface IContextualMenuItem {
   submenuIconProps?: IIconProps;
 
   /**
-   * Deprecated at v0.69.0 and will no longer exist after 1.0 use IconProps instead.
-   * @deprecated
-   */
-  icon?: string;
-
-  /**
    * Whether the menu item is disabled
    * @defaultvalue false
    */
@@ -310,12 +292,6 @@ export interface IContextualMenuItem {
    * @defaultvalue false
    */
   primaryDisabled?: boolean;
-
-  /**
-   * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'disabled' instead.
-   * @deprecated
-   */
-  isDisabled?: boolean;
 
   /**
    * [TODO] Not Yet Implemented
@@ -333,12 +309,6 @@ export interface IContextualMenuItem {
    * @defaultvalue false
    */
   checked?: boolean;
-
-  /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
-   * @deprecated
-   */
-  isChecked?: boolean;
 
   /**
    * Whether or not this menu item is a splitButton.
@@ -373,12 +343,6 @@ export interface IContextualMenuItem {
   rel?: string;
 
   /**
-   * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
-   * @deprecated
-   */
-  items?: IContextualMenuItem[];
-
-  /**
    * Properties to apply to a submenu to this item.
    * The ContextualMenu will provide default values for 'target', 'onDismiss', 'isSubMenu',
    *  'id', 'shouldFocusOnMount', 'directionalHint', 'className', and 'gapSpace', all of which
@@ -400,7 +364,8 @@ export interface IContextualMenuItem {
     itemClassName?: string,
     dividerClassName?: string,
     iconClassName?: string,
-    subMenuClassName?: string) => IMenuItemClassNames;
+    subMenuClassName?: string,
+    primaryDisabled?: boolean) => IMenuItemClassNames;
 
   /**
   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
@@ -482,9 +447,18 @@ export interface IContextualMenuItem {
    * Optional prop to make an item readonly which is disabled but visitable by keyboard, will apply aria-readonly and some styling. Not supported by all components
    */
   inactive?: boolean;
+
+  /**
+   * Text description for the menu item to display
+   * @deprecated Use `text` instead.
+   */
+  name?: string;
 }
 
-export interface IContextualMenuSection extends React.Props<ContextualMenu> {
+/**
+ * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ */
+export interface IContextualMenuSection extends React.Props<any> {
 
   /**
    * The items to include inside the section.
@@ -542,12 +516,6 @@ export interface IMenuItemStyles extends IButtonStyles {
   * Styles for a divider item of a ConextualMenu.
   */
   divider: IStyle;
-
-  /**
-   *  Styles for a split button divider in a menu item
-   * @deprecated
-   */
-  splitButtonSeparator: IStyle;
 }
 
 export interface IContextualMenuStyles {

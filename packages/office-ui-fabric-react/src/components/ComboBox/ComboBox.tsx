@@ -90,6 +90,11 @@ const ReadOnlyPendingAutoCompleteTimeout = 1000 /* ms */;
 interface IComboBoxOptionWrapperProps extends IComboBoxOption {
   // True if the option is currently selected
   isSelected: boolean;
+
+  // A function that returns the children of the OptionWrapper. We pass this in as a function to ensure that
+  // children methods don't get called unnecessarily if the component doesn't need to be updated. This leads
+  // to a significant performance increase in ComboBoxes with many options and/or complex onRenderOption functions
+  render: () => JSX.Element;
 }
 
 // Internal class that is used to wrap all ComboBox options
@@ -97,12 +102,12 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
 // so we don't rerender every option every time render is executed
 class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
   public render(): React.ReactNode {
-    return this.props.children;
+    return this.props.render();
   }
 
   public shouldComponentUpdate(newProps: IComboBoxOptionWrapperProps): boolean {
-    // The children will always be different, so we ignore that prop
-    return !shallowCompare({ ...this.props, children: undefined }, { ...newProps, children: undefined });
+    // The render function will always be different, so we ignore that prop
+    return !shallowCompare({ ...this.props, render: undefined }, { ...newProps, render: undefined });
   }
 }
 
@@ -169,10 +174,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._warnMutuallyExclusive({
       'defaultSelectedKey': 'selectedKey',
+      'text': 'defaultSelectedKey',
       'value': 'defaultSelectedKey',
       'selectedKey': 'value',
       'dropdownWidth': 'useComboBoxAsMenuWidth',
     });
+
+    this._warnDeprecations({ 'value': 'text' });
 
     this._id = props.id || getId('ComboBox');
 
@@ -212,6 +220,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
     if (newProps.selectedKey !== this.props.selectedKey ||
+      newProps.text !== this.props.text ||
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
       const selectedKeys: string[] | number[] = this._getSelectedKeys(undefined, newProps.selectedKey);
@@ -227,6 +236,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     const {
       allowFreeform,
+      text,
       value,
       onMenuOpen,
       onMenuDismissed
@@ -269,7 +279,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this._focusInputAfterClose && (prevState.isOpen && !isOpen ||
       (focused &&
         ((!isOpen && !this.props.multiSelect && prevState.selectedIndices && selectedIndices && prevState.selectedIndices[0] !== selectedIndices[0]) ||
-          !allowFreeform || value !== prevProps.value)
+          !allowFreeform || text !== prevProps.text || value !== prevProps.value)
       ))) {
       this._select();
     }
@@ -342,8 +352,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         !!hasErrorMessage
       );
 
-    const describedBy = id + '-option';
-
     return (
       <div { ...divProps } ref={ this._root } className={ this._classNames.container }>
         { label && (
@@ -374,14 +382,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-expanded={ isOpen }
                 aria-autocomplete={ this._getAriaAutoCompleteValue() }
                 role='combobox'
-                aria-readonly={ ((allowFreeform || disabled) ? undefined : 'true') }
                 readOnly={ disabled || !allowFreeform }
                 aria-labelledby={ (label && (id + '-label')) }
                 aria-label={ ((ariaLabel && !label) ? ariaLabel : undefined) }
-                aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+                aria-describedby={ keytipAttributes['aria-describedby'] }
                 aria-activedescendant={ this._getAriaActiveDescentValue() }
                 aria-disabled={ disabled }
-                aria-owns={ (id + '-list') }
+                aria-owns={ isOpen ? (id + '-list') : undefined }
                 spellCheck={ false }
                 defaultVisibleValue={ this._currentVisibleValue }
                 suggestedDisplayValue={ suggestedDisplayValue }
@@ -492,6 +499,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _getVisibleValue = (): string | undefined => {
     const {
+      text,
       value,
       allowFreeform,
       autoComplete
@@ -510,6 +518,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the user passed is a value prop, use that
     // unless we are open and have a valid current pending index
+    if (!(isOpen && currentPendingIndexValid) && (text && !currentPendingValue)) {
+      return text;
+    }
+
     if (!(isOpen && currentPendingIndexValid) && (value && !currentPendingValue)) {
       return value;
     }
@@ -799,7 +811,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         return;
       }
       if (this.props.multiSelect) {
-        option.selected = !option.selected;
+        // Setting the initial state of option.selected in Multi-select combobox by checking the selectedIndices array and overriding the undefined issue
+        option.selected = option.selected !== undefined ? !option.selected : (selectedIndices.indexOf(index) < 0);
         if (option.selected && selectedIndices.indexOf(index) < 0) {
           selectedIndices.push(index);
         } else if (!option.selected && selectedIndices.indexOf(index) >= 0) {
@@ -926,7 +939,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Check to see if the user typed an exact match
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
-        const pendingOptionText: string = currentOptions[currentPendingValueValidIndex].text.toLocaleLowerCase();
+        const pendingOptionText: string = this._getPreviewText(currentOptions[currentPendingValueValidIndex]).toLocaleLowerCase();
 
         // By exact match, that means: our pending value is the same as the the pending option text OR
         // the pending option starts with the pending value and we have an "autoComplete" selection
@@ -1077,25 +1090,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
-    const wrapperProps = {
-      key: item.key,
-      index: item.index,
-      styles: optionStyles,
-      disabled: item.disabled,
-      isSelected: isSelected,
-      text: item.text,
+    const checkboxStyles = () => {
+      return optionStyles;
     };
 
-    return (
-      !this.props.multiSelect ? (
-        <ComboBoxOptionWrapper
-          { ...wrapperProps }
-        >
+    const getOptionComponent = () => {
+      return (
+        !this.props.multiSelect ? (
           <CommandButton
             id={ id + '-list' + item.index }
             key={ item.key }
             data-index={ item.index }
-            styles={ optionStyles }
+            styles={ this._getCurrentOptionStyles(item) }
             checked={ isSelected }
             className={ 'ms-ComboBox-option' }
             onClick={ this._onItemClick(item.index) }
@@ -1111,18 +1117,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           </span>
             }
           </CommandButton>
-        </ComboBoxOptionWrapper >
-      ) : (
-          <ComboBoxOptionWrapper
-            { ...wrapperProps }
-          >
+        ) : (
             <Checkbox
               id={ id + '-list' + item.index }
-              ref={ 'option' + item.index }
               ariaLabel={ this._getPreviewText(item) }
               key={ item.key }
               data-index={ item.index }
-              styles={ optionStyles }
+              styles={ checkboxStyles }
               className={ 'ms-ComboBox-option' }
               data-is-focusable={ true }
               onChange={ this._onItemClick(item.index!) }
@@ -1133,8 +1134,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             >
               { onRenderOption(item, this._onRenderOptionContent) }
             </Checkbox>
-          </ComboBoxOptionWrapper >
-        )
+          )
+      );
+    };
+
+    return (
+      <ComboBoxOptionWrapper
+        key={ item.key }
+        index={ item.index }
+        disabled={ item.disabled }
+        isSelected={ isSelected }
+        text={ item.text }
+        render={ getOptionComponent }
+      />
     );
   }
 
@@ -1166,7 +1178,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     let idxOfSelectedIndex = -1;
-    if ((index !== undefined) && this.state.selectedIndices) {
+    if (this.props.multiSelect && (index !== undefined) && this.state.selectedIndices) {
       idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
     }
     return (idxOfSelectedIndex >= 0);
@@ -1333,10 +1345,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
       });
-    } else if (this.props.value) {
+    } else if (this.props.text || this.props.value) {
       // If we had a value initially, restore it
       this.setState({
-        suggestedDisplayValue: this.props.value
+        suggestedDisplayValue: this.props.text || this.props.value
       });
     }
   }

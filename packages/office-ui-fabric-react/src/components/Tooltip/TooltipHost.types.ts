@@ -55,7 +55,6 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
 
   /**
    * Indicator of how the tooltip should be anchored to its targetElement.
-   * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
 
