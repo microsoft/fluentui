@@ -85,7 +85,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   delayBeforeMouseOpen?: number;
 
   /**
-   * Runs every time the mouse moves.
+   * Callback to run when the mouse moves.
    */
   onMouseMove?: (e: MouseEvent) => void;
 
