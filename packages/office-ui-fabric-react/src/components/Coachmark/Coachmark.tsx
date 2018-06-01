@@ -283,6 +283,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   private _getBounds(): IRectangle | undefined {
     const { isPositionForced, positioningContainerProps } = this.props;
     if (isPositionForced) {
+      // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
+      // to the window x-axis to have auto positioning work correctly.
       if (positioningContainerProps && (
         positioningContainerProps.directionalHint === DirectionalHint.topAutoEdge ||
         positioningContainerProps.directionalHint === DirectionalHint.bottomAutoEdge
@@ -292,7 +294,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           top: -Infinity,
           bottom: Infinity,
           right: window.innerWidth,
-          width: Infinity,
+          width: window.innerWidth,
           height: Infinity
         };
       } else {

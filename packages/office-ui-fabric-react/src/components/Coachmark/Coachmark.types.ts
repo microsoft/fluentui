@@ -15,7 +15,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   componentRef?: (component: ICoachmark | null) => void;
 
   /**
-   * Get styles method.
+   * Call to provide customized styling that will layer on top of the variant rules
    */
   styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
 
@@ -26,7 +26,8 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
 
   /**
    * Props to pass to the PositioningContainer component.  Specific the `directionalHint` to indicate which edge the
-   * Coachmark/TeachingBubble should live
+   * Coachmark/TeachingBubble should live.
+   * @default directionalHint: DirectionalHint.bottomAutoEdge
    */
   positioningContainerProps?: IPositioningContainerTypes;
 
@@ -36,7 +37,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   isPositionForced?: boolean;
 
   /**
- * The starting collapsed state for the Coachmark.  Deprecated: use isCollapsed instead.
+ * The starting collapsed state for the Coachmark.  Use isCollapsed instead.
  * @default true
  * @deprecated
  */
@@ -79,6 +80,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
 
   /**
    * Delay before allowing mouse movements to open the Coachmark.
+   * @default 3600
    */
   delayBeforeMouseOpen?: number;
 
