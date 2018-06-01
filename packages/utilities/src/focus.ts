@@ -311,16 +311,19 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
     return false;
   }
 
-  let tabIndex: number | undefined;
+  let tabIndex = 0;
+  let tabIndexAttributeValue = null;
+
   if (element && element.getAttribute) {
-    const tabIndexAttributeValue = element.getAttribute('tabIndex');
+    tabIndexAttributeValue = element.getAttribute('tabIndex');
+
     if (tabIndexAttributeValue) {
       tabIndex = parseInt(tabIndexAttributeValue, 10);
     }
   }
 
   let isFocusableAttribute = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
-  let isTabIndexSet = tabIndex !== undefined && tabIndex >= 0;
+  let isTabIndexSet = tabIndexAttributeValue !== null && tabIndex >= 0;
 
   const result = !!element &&
     isFocusableAttribute !== 'false' &&
