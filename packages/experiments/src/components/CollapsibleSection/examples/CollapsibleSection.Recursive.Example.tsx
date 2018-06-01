@@ -65,7 +65,7 @@ class CollapsibleSectionFolder extends React.Component<{}, {}> {
   public render(): JSX.Element {
     // Generate random files
     const files: JSX.Element[] = [];
-    const randomFileCount = Math.floor(Math.random() * 10);
+    const randomFileCount = Math.floor(Math.random() * 10) + 1;
     for (let i = 0; i < randomFileCount; i++) {
       const randomFile = Math.floor(Math.random() * _fileItems.length);
       files.push(
