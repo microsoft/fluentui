@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Added getFirstTabbable, Updated getNextElement to take tabbable param like getPreviousElement, Fixed isElementTabbable to not assume default value of 0 for tabIndex.",
+      "comment": "Added getFirstTabbable, Updated getNextElement to take tabbable param like getPreviousElement.",
       "type": "minor"
     }
   ],
