@@ -1,7 +1,7 @@
-import { IDemoPageProps } from './IDemoPageProps';
+import { IDemoPageProps } from './DemoPage.types';
 import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
 import * as React from 'react';
-import { ComponentStatus } from 'office-ui-fabric-react/lib/demo/ComponentStatus/ComponentStatus';
+import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
 export function DemoPage(componentPageProps: IDemoPageProps) {
   return (

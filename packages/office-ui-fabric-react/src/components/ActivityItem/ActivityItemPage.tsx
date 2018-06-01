@@ -3,8 +3,8 @@ import { ActivityItemStatus } from './ActivityItem.checklist';
 import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example';
 import { ActivityItemPersonaExample } from './examples/ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './examples/ActivityItem.Compact.Example';
-import { IDemoPageProps } from '../../demo/components/IDemoPageProps';
-import { DemoPage } from 'office-ui-fabric-react/lib/demo/components/DemoPage';
+import { IDemoPageProps } from '../../demo/components/DemoPage.types';
+import { DemoPage } from '../../demo/components/DemoPage';
 
 const ActivityItemBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Basic.Example.tsx') as string;
 const ActivityItemPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Persona.Example.tsx') as string;
