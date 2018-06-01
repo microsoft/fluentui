@@ -5,7 +5,7 @@ import * as React from 'react';
 /* tslint:enable */
 
 export class NavBase extends React.Component<INavProps, INavState> implements INav {
-  protected _hasAtleastOneHiddenLink: boolean = false;
+  protected _hasAtleastOneHiddenLink = false;
 
   constructor(props: INavProps) {
     super(props);
