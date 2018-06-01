@@ -23,7 +23,8 @@ export class DetailsListDragDropExample extends React.Component<{}, {
   selectionDetails?: string;
   columns: IColumn[];
   isColumnReorderEnabled: boolean;
-  frozenColumnCount: string;
+  frozenColumnCountFromStart: string;
+  frozenColumnCountFromEnd: string;
 }> {
   private _selection: Selection;
 
@@ -34,7 +35,8 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     this._handleColumnReorder = this._handleColumnReorder.bind(this);
     this._getColumnReorderOptions = this._getColumnReorderOptions.bind(this);
     this._onChangeColumnReorderEnabled = this._onChangeColumnReorderEnabled.bind(this);
-    this._onChangeText = this._onChangeText.bind(this);
+    this._onChangeStartCountText = this._onChangeStartCountText.bind(this);
+    this._onChangeEndCountText = this._onChangeEndCountText.bind(this);
 
     this._selection = new Selection();
 
@@ -45,12 +47,13 @@ export class DetailsListDragDropExample extends React.Component<{}, {
       items: createListItems(10),
       columns: _columns,
       isColumnReorderEnabled: false,
-      frozenColumnCount: '1'
+      frozenColumnCountFromStart: '1',
+      frozenColumnCountFromEnd: '0'
     };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails, columns, isColumnReorderEnabled, frozenColumnCount } = this.state;
+    const { items, selectionDetails, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
 
     return (
       <div className='detailsListDragDropExample'>
@@ -62,10 +65,16 @@ export class DetailsListDragDropExample extends React.Component<{}, {
           offText='Disabled'
         />
         <TextField
-          label='Number of frozen columns:'
+          label='Number of Left frozen columns:'
           onGetErrorMessage={this._validateNumber}
-          value={frozenColumnCount}
-          onChanged={this._onChangeText}
+          value={frozenColumnCountFromStart}
+          onChanged={this._onChangeStartCountText}
+        />
+        <TextField
+          label='Number of Right frozen columns:'
+          onGetErrorMessage={this._validateNumber}
+          value={frozenColumnCountFromEnd}
+          onChanged={this._onChangeEndCountText}
         />
         <div>{selectionDetails}</div>
         <MarqueeSelection selection={this._selection}>
@@ -100,7 +109,8 @@ export class DetailsListDragDropExample extends React.Component<{}, {
 
   private _getColumnReorderOptions(): IColumnReorderOptions {
     return {
-      frozenColumnCount: !isNaN(Number(this.state.frozenColumnCount)) ? Number.parseInt(this.state.frozenColumnCount) : undefined,
+      frozenColumnCountFromStart: !isNaN(Number(this.state.frozenColumnCountFromStart)) ? Number.parseInt(this.state.frozenColumnCountFromStart) : undefined,
+      frozenColumnCountFromEnd: !isNaN(Number(this.state.frozenColumnCountFromEnd)) ? Number.parseInt(this.state.frozenColumnCountFromEnd) : undefined,
       handleColumnReorder: this._handleColumnReorder
     };
   }
@@ -111,8 +121,12 @@ export class DetailsListDragDropExample extends React.Component<{}, {
       : '';
   }
 
-  private _onChangeText = (text: any): void => {
-    this.setState({ frozenColumnCount: text });
+  private _onChangeStartCountText = (text: any): void => {
+    this.setState({ frozenColumnCountFromStart: text });
+  }
+
+  private _onChangeEndCountText = (text: any): void => {
+    this.setState({ frozenColumnCountFromEnd: text });
   }
 
   private _onChangeColumnReorderEnabled = (checked: boolean): void => {
