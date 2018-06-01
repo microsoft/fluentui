@@ -3,14 +3,14 @@ import { ActivityItemStatus } from './ActivityItem.checklist';
 import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example';
 import { ActivityItemPersonaExample } from './examples/ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './examples/ActivityItem.Compact.Example';
-import { PageProps } from '../../demo/PageProps';
-import { createDemoComponentPage } from 'office-ui-fabric-react/lib/demo/createDemoComponentPage';
+import { IDemoPageProps } from '../../demo/components/IDemoPageProps';
+import { DemoPage } from 'office-ui-fabric-react/lib/demo/components/DemoPage';
 
 const ActivityItemBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Basic.Example.tsx') as string;
 const ActivityItemPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Persona.Example.tsx') as string;
 const ActivityItemCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/ActivityItem.Compact.Example.tsx') as string;
 
-export const ActivityItemPageProps: PageProps = {
+export const ActivityItemPageProps: IDemoPageProps = {
   title: 'ActivityItem',
   componentName: 'ActivityItem',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem',
@@ -37,6 +37,7 @@ export const ActivityItemPageProps: PageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md'),
-}
+  isHeaderVisible: true,
+};
 
-export const ActivityItemPage = createDemoComponentPage(ActivityItemPageProps);
+export const ActivityItemPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...ActivityItemPageProps, ...props } } />);

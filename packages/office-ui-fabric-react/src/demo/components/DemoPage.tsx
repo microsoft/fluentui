@@ -1,9 +1,9 @@
-import { PageProps } from './PageProps';
+import { IDemoPageProps } from './IDemoPageProps';
 import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
 import * as React from 'react';
 import { ComponentStatus } from 'office-ui-fabric-react/lib/demo/ComponentStatus/ComponentStatus';
 
-export function createDemoComponentPage(componentPageProps: PageProps) {
+export function DemoPage(componentPageProps: IDemoPageProps) {
   return (
     <ComponentPage
       title={ componentPageProps.title }
@@ -43,7 +43,7 @@ export function createDemoComponentPage(componentPageProps: PageProps) {
           { componentPageProps.donts }
         </PageMarkdown>
       }
-      isHeaderVisible={ this.props.isHeaderVisible }
+      isHeaderVisible={ componentPageProps.isHeaderVisible }
       componentStatus={
         <ComponentStatus
           { ...componentPageProps.componentStatus }

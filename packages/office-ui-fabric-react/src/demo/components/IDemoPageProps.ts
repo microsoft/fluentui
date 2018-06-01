@@ -1,6 +1,6 @@
 import { IComponentStatusProps } from 'office-ui-fabric-react/lib/demo/ComponentStatus/ComponentStatus.types';
 
-export interface PageProps {
+export interface IDemoPageProps {
   title: string;
   componentName: string;
   componentUrl: string;
@@ -15,4 +15,5 @@ export interface PageProps {
   dos: string;
   donts: string;
   bestPractices: string;
+  isHeaderVisible: boolean;
 }
