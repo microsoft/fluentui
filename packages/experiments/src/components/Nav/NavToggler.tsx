@@ -48,10 +48,10 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     } = this.state;
 
     const {
-      getStyles,
+      styles,
       groups
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isCollapsed: isNavCollapsed });
+    const classNames = getClassNames(styles!, { isCollapsed: isNavCollapsed });
 
     const toggleNavGroups = groups.filter((navGroup: ICustomNavLinkGroup) => {
       return !!navGroup && navGroup.groupType === NavGroupType.ToggleGroup;
@@ -117,10 +117,10 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
 
     const isNavCollapsed = this.state.isNavCollapsed;
     const {
-      getStyles,
+      styles,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
     const link = toggleNavGroups[0].links[0];
     const ariaLabel = isNavCollapsed ? link.name : link.alternateText;
 

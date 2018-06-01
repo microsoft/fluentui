@@ -61,6 +61,16 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.forceUpdate();
   }
 
+  public componentWillReceiveProps(newProps: P): void {
+    if (newProps.floatingPickerProps) {
+      this.floatingPickerProps = newProps.floatingPickerProps;
+    }
+
+    if (newProps.selectedItemsListProps) {
+      this.selectedItemsListProps = newProps.selectedItemsListProps;
+    }
+  }
+
   public focus(): void {
     if (this.input.current) {
       this.input.current.focus();

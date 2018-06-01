@@ -1,4 +1,4 @@
-import { IRawStyle, keyframes } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles';
 
 const DEFAULT_DURATION = '14s';
 const DEFAULT_DELAY = '2s';

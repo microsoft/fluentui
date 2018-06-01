@@ -20,7 +20,8 @@ import {
   divProperties,
   getFirstFocusable,
   getLastFocusable,
-  createRef
+  createRef,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
@@ -168,7 +169,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               role='listbox'
               aria-live={ disabled || isOpen ? 'off' : 'assertive' }
               aria-label={ ariaLabel }
-              aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+              aria-describedby={ mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby']) }
               aria-activedescendant={ isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? (this._id + '-list' + selectedIndices[0]) : undefined }
               aria-disabled={ disabled }
               aria-owns={ isOpen ? id + '-list' : undefined }
@@ -479,7 +480,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { selectedIndices = [] } = this.state;
     const id = this._id;
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
-    const checkboxStyles = getCheckboxStyles(getTheme());
+    const checkboxStyles = () => {
+      return getCheckboxStyles({
+        theme: getTheme(),
+        checked: isItemSelected,
+        disabled: item.disabled
+      });
+    };
 
     return (
       !this.props.multiSelect ?
@@ -510,7 +517,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -536,11 +542,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             checked={ isItemSelected }
             // Hover is being handled by focus styles
             // so clear out the explicit hover styles
-            styles={ {
-              checkboxHovered: checkboxStyles.checkbox,
-              checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-              textHovered: checkboxStyles.text
-            } }
+            styles={ checkboxStyles }
           />
         )
     );

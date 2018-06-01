@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle } from '../../../Styling';
-import { ISize, IStyleFunction } from '../../../Utilities';
+import { ISize, IStyleFunctionOrObject } from '../../../Utilities';
 import { TileSize } from '../../Tile';
 
 export interface IShimmerTile {
@@ -49,7 +49,7 @@ export interface IShimmerTileProps extends React.AllHTMLAttributes<HTMLElement> 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerTileStyleProps, IShimmerTileStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerTileStyleProps, IShimmerTileStyles>;
 }
 
 export interface IShimmerTileStyleProps {

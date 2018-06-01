@@ -23,14 +23,14 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   public render(): JSX.Element {
     const {
       height,
-      getStyles,
+      styles,
       widthInPercentage,
       widthInPixel,
       borderStyle,
       theme
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       height,
       widthInPixel,
