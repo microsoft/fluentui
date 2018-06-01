@@ -113,7 +113,6 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             positioningContainerProps={ {
               directionalHint: this.state.coachmarkPosition
             } }
-            color="#ff0000"
           >
             <TeachingBubbleContent
               headline='Example Title'
