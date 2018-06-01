@@ -5,13 +5,15 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
 
-import { Toggle } from './Toggle';
+import { ToggleBase } from './Toggle.base';
+import { getStyles } from './Toggle.styles';
 
 describe('Toggle', () => {
 
   it('renders a label', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <Toggle
+      <ToggleBase
+        styles={ getStyles }
         label='Label'
       />
     );
@@ -23,7 +25,8 @@ describe('Toggle', () => {
 
   it('renders toggle correctly', () => {
     const component = renderer.create(
-      <Toggle
+      <ToggleBase
+        styles={ getStyles }
         label='Label'
       />
     );
@@ -33,7 +36,8 @@ describe('Toggle', () => {
 
   it('renders aria-label', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <Toggle
+      <ToggleBase
+        styles={ getStyles }
         label='Label'
         offAriaLabel='offLabel'
       />
@@ -52,7 +56,8 @@ describe('Toggle', () => {
     let component: any;
 
     ReactTestUtils.renderIntoDocument<React.ReactInstance>(
-      <Toggle
+      <ToggleBase
+        styles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         label='Label'
@@ -64,14 +69,15 @@ describe('Toggle', () => {
 
     ReactTestUtils.Simulate.click(button);
     expect(isToggledValue).toEqual(true);
-    expect((component as React.Component<any, any>).state.isChecked).toEqual(true);
+    expect((component as React.Component<any, any>).state.checked).toEqual(true);
   });
 
   it(`doesn't update the state if the user provides checked`, () => {
     let component: any;
 
     ReactTestUtils.renderIntoDocument(
-      <Toggle
+      <ToggleBase
+        styles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         label='Label'
@@ -83,12 +89,13 @@ describe('Toggle', () => {
 
     ReactTestUtils.Simulate.click(button);
 
-    expect((component as React.Component<any, any>).state.isChecked).toEqual(false);
+    expect((component as React.Component<any, any>).state.checked).toEqual(false);
   });
 
   it(`doesn't render a label element if none is provided`, () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <Toggle
+      <ToggleBase
+        styles={ getStyles }
         checked={ false }
       />
     );
@@ -112,7 +119,8 @@ describe('Toggle', () => {
           e.preventDefault();
         } }
       >
-        <Toggle
+        <ToggleBase
+          styles={ getStyles }
           // tslint:disable-next-line:jsx-no-lambda
           componentRef={ ref => component = ref }
           label='Label'
@@ -122,7 +130,7 @@ describe('Toggle', () => {
     const button: any = wrapper.find('button');
     // simulate to change toggle state
     button.simulate('click');
-    expect((component as React.Component<any, any>).state.isChecked).toEqual(true);
+    expect((component as React.Component<any, any>).state.checked).toEqual(true);
     expect(onSubmit.called).toEqual(false);
   });
 

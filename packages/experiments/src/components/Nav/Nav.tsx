@@ -37,6 +37,10 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    // reset the flag
+    // on render link, find if there is atleast one hidden link to display "Show more" link
+    this._hasAtleastOneHiddenLink = false;
+
     return (
       <nav role='navigation'>
         {
@@ -58,6 +62,9 @@ class NavComponent extends NavBase {
     if (hasChildren) {
       // show child links
       link.isExpanded = !link.isExpanded;
+      // disable auto expand based on selected key prop, instead allow to toggle child links
+      link.disableAutoExpand = true;
+
       nextState.isLinkExpandStateChanged = true;
     }
     else if (link.onClick) {
@@ -80,10 +87,16 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    let ariaProps = {};
+
     let rightIconName = undefined;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
-      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
+      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
+
+      ariaProps = {
+        ariaExpanded: !!link.isExpanded
+      }
     }
     else if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
@@ -97,12 +110,12 @@ class NavComponent extends NavBase {
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
     const {
-      getStyles,
+      styles,
       showMore,
       onShowMoreLinkClicked,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -116,6 +129,9 @@ class NavComponent extends NavBase {
         dataHint={ dataHint }
         dataValue={ link.key }
         ariaLabel={ linkText }
+        {
+        ...ariaProps
+        }
         role="menu"
         rootClassName={ classNames.navItemRoot }
         leftIconName={ leftIconName }
@@ -132,6 +148,13 @@ class NavComponent extends NavBase {
     }
 
     const linkText = this.getLinkText(link, this.props.showMore);
+    const isChildLinkSelected = this.isChildLinkSelected(link);
+
+    // if allowed, auto expand if the child is selected
+    link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
+
+    // enable auto expand until the next manual expand disables the auto expand
+    link.disableAutoExpand = false;
 
     return (
       <li
@@ -172,7 +195,14 @@ class NavComponent extends NavBase {
         {
           links.map((link: INavLink, linkIndex: number) => {
             if (enableCustomization && link.isHidden && !showMore) {
+              // atleast one link is hidden
+              this._hasAtleastOneHiddenLink = true;
+
               // "Show more" overrides isHidden property
+              return null;
+            }
+            else if (link.isShowMoreLink && !this._hasAtleastOneHiddenLink && !showMore) {
+              // there is no hidden link, hide "Show more" link
               return null;
             }
             else {
@@ -190,7 +220,7 @@ class NavComponent extends NavBase {
     }
 
     const {
-      getStyles,
+      styles,
       enableCustomization
     } = this.props;
 
@@ -199,7 +229,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
 
     return (
       <div key={ groupIndex }>

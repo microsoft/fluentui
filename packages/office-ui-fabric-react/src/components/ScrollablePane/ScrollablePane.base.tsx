@@ -112,9 +112,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           this.updateStickyRefHeights();
         } else {
           // Else if mutation occurs in scrollable region, then find sticky it belongs to and force update
-          const stickyList = Array.from(this._stickies).filter((sticky) => {
-            if (this.root) {
-              return this.root.contains(mutation[0].target);
+          const stickyList: Sticky[] = [];
+          this._stickies.forEach((sticky) => {
+            if (sticky.root && sticky.root.contains(mutation[0].target)) {
+              stickyList.push(sticky);
             }
           });
           if (stickyList.length) {
@@ -164,9 +165,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public render(): JSX.Element {
-    const { className, theme, getStyles } = this.props;
+    const { className, theme, styles } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
-    const classNames = getClassNames(getStyles!,
+    const classNames = getClassNames(styles!,
       {
         theme: theme!,
         className
@@ -320,17 +321,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     } else {
       // If stickyContentToAdd isn't a child element of target container, then append
       if (!stickyContainer.contains(stickyContentToAdd)) {
-        const stickyChildrenElements = Array.from(stickyContainer.children);
+        const stickyChildrenElements: Element[] = [].slice.call(stickyContainer.children);
 
+        const stickyList: Sticky[] = [];
         // Get stickies.  Filter by canStickyTop/Bottom, then sort by distance from top, and then
         // filter by elements that are in the stickyContainer already.
-        const stickyListSorted = Array.from(this._stickies).filter((item) => {
-          if (stickyContainer === this.stickyAbove) {
-            return item.canStickyTop;
-          } else {
-            return item.canStickyBottom;
+        this._stickies.forEach((stickyItem) => {
+          if (stickyContainer === this.stickyAbove && sticky.canStickyTop) {
+            stickyList.push(stickyItem);
+          } else if (sticky.canStickyBottom) {
+            stickyList.push(stickyItem);
           }
-        }).sort((a, b) => {
+        });
+
+        const stickyListSorted = stickyList.sort((a, b) => {
           return a.distanceFromTop - b.distanceFromTop;
         }).filter((item) => {
           const stickyContent = (stickyContainer === this.stickyAbove) ? item.stickyContentTop : item.stickyContentBottom;

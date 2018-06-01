@@ -25,7 +25,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
       size,
       ariaLabel,
       ariaLive,
-      getStyles,
+      styles,
       label,
       theme,
       className
@@ -40,7 +40,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
       styleSize = type === SpinnerType.large ? SpinnerSize.large : SpinnerSize.medium;
     }
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       size: styleSize,
       className

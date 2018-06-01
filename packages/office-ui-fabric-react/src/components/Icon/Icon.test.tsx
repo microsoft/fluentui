@@ -33,7 +33,7 @@ describe('Icon', () => {
       <Icon
         className='className'
         iconName='Upload'
-        getStyles={ customStyles }
+        styles={ customStyles }
       />
     );
     expect(component.toJSON()).toMatchSnapshot();

@@ -429,9 +429,11 @@ ShallowWrapper {
     index={1}
     item={
       Object {
-        "icon": "itemIcon",
+        "iconProps": Object {
+          "iconName": "itemIcon",
+        },
         "key": "123",
-        "name": "menuItem",
+        "text": "menuItem",
       }
     }
   />,
