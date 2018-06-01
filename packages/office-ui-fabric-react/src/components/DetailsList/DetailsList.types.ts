@@ -128,7 +128,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
 
-  /** Callback for when a given row has been mounted. Useful for identifying when a row has been removed from the page. */
+  /** Callback for when a given row has been unmounted. Useful for identifying when a row has been removed from the page. */
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
   /** Callback for when the user clicks on the column header. */
@@ -245,6 +245,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Whether or not the selection zone should enter modal state on touch.
    */
   enterModalSelectionOnTouch?: boolean;
+
+  /**
+   * Callback when the list is unmounted. Useful to send back certain properties and state of the list
+   */
+  onWillUnmount?: (detailsList?: DetailsList) => void;
 }
 
 export interface IColumn {

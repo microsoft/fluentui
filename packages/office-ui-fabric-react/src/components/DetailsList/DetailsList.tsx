@@ -55,6 +55,7 @@ export interface IDetailsListState {
   isSizing?: boolean;
   isDropping?: boolean;
   isSomeGroupExpanded?: boolean;
+  lastFocusedItemIndex?: number;
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
@@ -123,7 +124,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       isSizing: false,
       isDropping: false,
       isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
-      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
+      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed,
+      lastFocusedItemIndex: -1
     };
 
     this._selection = props.selection || new Selection({ onSelectionChanged: undefined, getKey: props.getKey });
@@ -161,6 +163,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   public componentWillUnmount(): void {
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
+    }
+
+    if (this.props.onWillUnmount) {
+      this.props.onWillUnmount(this);
     }
   }
 
@@ -848,8 +854,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _onBlur(event: React.FocusEvent<HTMLElement>): void {
+    const lastFocusedItemIndex = this.state.focusedItemIndex;
     this.setState({
-      focusedItemIndex: -1
+      focusedItemIndex: -1,
+      lastFocusedItemIndex: lastFocusedItemIndex
     });
   }
 
