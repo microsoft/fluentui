@@ -1,6 +1,26 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 23 May 2018 16:14:26 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Jun 2018 10:18:43 GMT and should not be manually modified.
+
+## 6.0.3
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Patches
+
+- Add utility function to help merge ARIA attributes.
+
+## 6.0.2
+Wed, 30 May 2018 22:05:04 GMT
+
+*Version update only*
+
+## 6.0.1
+Wed, 30 May 2018 20:28:33 GMT
+
+### Patches
+
+- Minimum React version is now 16.3.2.
+- Added `resetIds` api for adding predictability in jest tests.
 
 ## 5.33.0
 Wed, 23 May 2018 16:14:26 GMT

@@ -1,6 +1,7 @@
 module.exports = function (options) {
   const path = require('path');
   const exec = require('../exec');
+  const resolve = require('resolve');
   const typescriptPath = 'node ' + require.resolve('typescript/lib/tsc');
   const libPath = path.resolve(process.cwd(), 'lib');
   const srcPath = path.resolve(process.cwd(), 'src');
@@ -10,7 +11,6 @@ module.exports = function (options) {
   return Promise.all([
     runTscFor('lib', 'commonjs', extraParams),
     runTscFor('lib-es2015', 'es2015', extraParams),
-    options.isProduction ? runTscFor('lib-amd', 'amd', extraParams) : Promise.resolve()
   ]);
 
   // Flag to keep track of if we already logged errors.

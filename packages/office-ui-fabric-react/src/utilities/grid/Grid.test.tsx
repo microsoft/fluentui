@@ -22,7 +22,7 @@ describe('Grid', () => {
       <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 4 }
-        getStyles={ getStyles }
+        styles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
@@ -38,7 +38,7 @@ describe('Grid', () => {
       <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
-        getStyles={ getStyles }
+        styles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
@@ -54,7 +54,7 @@ describe('Grid', () => {
       <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
-        getStyles={ getStyles }
+        styles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
         positionInSet={ 1 }

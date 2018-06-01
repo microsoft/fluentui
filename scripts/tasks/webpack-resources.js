@@ -29,7 +29,7 @@ module.exports = {
       ]
     };
 
-    const devtool = 'source-map';
+    const devtool = 'cheap-module-source-map';
     const configs = [];
 
     if (!onlyProduction) {
@@ -172,6 +172,11 @@ function getPlugins(
         reportFilename: bundleName + '.stats.html',
         openAnalyzer: false,
         generateStatsFile: true,
+        statsOptions: {
+          source: false,
+          reasons: false,
+          chunks: false,
+        },
         statsFilename: bundleName + '.stats.json',
         logLevel: 'warn'
       })

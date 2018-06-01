@@ -37,6 +37,10 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    // reset the flag
+    // on render link, find if there is atleast one hidden link to display "Show more" link
+    this._hasAtleastOneHiddenLink = false;
+
     return (
       <nav role='navigation'>
         {
@@ -106,12 +110,12 @@ class NavComponent extends NavBase {
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
     const {
-      getStyles,
+      styles,
       showMore,
       onShowMoreLinkClicked,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -191,7 +195,14 @@ class NavComponent extends NavBase {
         {
           links.map((link: INavLink, linkIndex: number) => {
             if (enableCustomization && link.isHidden && !showMore) {
+              // atleast one link is hidden
+              this._hasAtleastOneHiddenLink = true;
+
               // "Show more" overrides isHidden property
+              return null;
+            }
+            else if (link.isShowMoreLink && !this._hasAtleastOneHiddenLink && !showMore) {
+              // there is no hidden link, hide "Show more" link
               return null;
             }
             else {
@@ -209,7 +220,7 @@ class NavComponent extends NavBase {
     }
 
     const {
-      getStyles,
+      styles,
       enableCustomization
     } = this.props;
 
@@ -218,7 +229,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
 
     return (
       <div key={ groupIndex }>

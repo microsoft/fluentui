@@ -21,7 +21,7 @@ describe('Rating', () => {
     try {
       rating = ReactTestUtils.renderIntoDocument(
         <RatingBase
-          getStyles={ getStyles }
+          styles={ getStyles }
           rating={ 2 }
         />
       );
@@ -61,7 +61,7 @@ describe('Rating', () => {
     try {
       rating = ReactTestUtils.renderIntoDocument(
         <RatingBase
-          getStyles={ getStyles }
+          styles={ getStyles }
           rating={ 10 }
         />
       );
@@ -95,7 +95,7 @@ describe('Rating', () => {
     try {
       rating = ReactTestUtils.renderIntoDocument<RatingBase>(
         <RatingBase
-          getStyles={ getStyles }
+          styles={ getStyles }
           rating={ 2.5 }
         />
       );
@@ -127,7 +127,7 @@ describe('Rating', () => {
     try {
       choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(
         <RatingBase
-          getStyles={ getStyles }
+          styles={ getStyles }
           disabled={ true }
         />
       );
@@ -152,7 +152,7 @@ describe('Rating', () => {
     try {
       choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(
         <RatingBase
-          getStyles={ getStyles }
+          styles={ getStyles }
           readOnly={ true }
           rating={ 2 }
         />

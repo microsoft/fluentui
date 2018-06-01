@@ -21,7 +21,7 @@ import {
   IMaskValue,
   insertString,
   parseMask
-} from '@uifabric/utilities/lib/inputMask';
+} from './inputMask';
 
 /**
  * props.mask:

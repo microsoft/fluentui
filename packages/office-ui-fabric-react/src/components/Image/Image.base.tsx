@@ -78,12 +78,12 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       imageFit,
       role,
       maximizeFrame,
-      getStyles,
+      styles,
       theme
     } = this.props;
     const { loadState } = this.state;
     const coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
-    const classNames = getClassNames(getStyles!,
+    const classNames = getClassNames(styles!,
       {
         theme: theme!,
         className,
