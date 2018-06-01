@@ -9,8 +9,8 @@ module.exports = function (options) {
 
   // We wait for all compilations to be done to report success
   return Promise.all([
-    runTscFor('lib', 'commonjs', extraParams),
-    runTscFor('lib-es2015', 'es2015', extraParams),
+    runTscFor('lib-commonjs', 'commonjs', extraParams),
+    runTscFor('lib', 'es2015', extraParams),
   ]);
 
   // Flag to keep track of if we already logged errors.
