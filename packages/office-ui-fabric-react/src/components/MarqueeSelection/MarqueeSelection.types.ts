@@ -59,7 +59,7 @@ export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>;
+  styles?: IStyleFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>;
 }
 
 export interface IMarqueeSelectionStyleProps {

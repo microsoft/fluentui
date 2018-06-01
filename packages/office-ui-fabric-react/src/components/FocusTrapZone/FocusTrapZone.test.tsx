@@ -1,8 +1,6 @@
 import * as React from 'react';
-
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes } from '../../Utilities';
-
+import { KeyCodes, createRef } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 
@@ -301,72 +299,94 @@ describe('FocusTrapZone', () => {
     });
   });
 
-  describe('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 1 focused tabbable item', () => {
-    function setupTest() {
+  describe('Focusing the FTZ', () => {
+    function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
+      const focusTrapZoneRef = createRef<FocusTrapZone>();
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
         <div onFocusCapture={ _onFocus }>
-          <button id={ 'z1' } className={ 'z1' }>z1</button>
-          <FocusTrapZone forceFocusInsideTrap={ false }>
-            <FocusZone data-is-visible={ true }>
-              <button id={ 'a' } className={ 'a' }>a</button>
-              <button id={ 'b' } className={ 'b' }>b</button>
-              <button id={ 'c' } className={ 'c' }>c</button>
+          <FocusTrapZone
+            forceFocusInsideTrap={ false }
+            focusPreviouslyFocusedInnerElement={ focusPreviouslyFocusedInnerElement }
+            data-is-focusable={ true }
+            ref={ focusTrapZoneRef }
+          >
+            <button className={ 'f' }>f</button>
+            <FocusZone>
+              <button className={ 'a' }>a</button>
+              <button className={ 'b' }>b</button>
             </FocusZone>
           </FocusTrapZone>
-          <button id={ 'z2' } className={ 'z2' }>z2</button>
+          <button className={ 'z' }>z</button>
         </div>
       ) as HTMLElement;
 
-      const buttonZ1 = topLevelDiv.querySelector('.z1') as HTMLElement;
+      const focusTrapZone = ReactDOM.findDOMNode(focusTrapZoneRef.current!) as Element;
+      const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;
       const buttonA = topLevelDiv.querySelector('.a') as HTMLElement;
       const buttonB = topLevelDiv.querySelector('.b') as HTMLElement;
-      const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
-      const buttonZ2 = topLevelDiv.querySelector('.z2') as HTMLElement;
+      const buttonZ = topLevelDiv.querySelector('.z') as HTMLElement;
 
       // Assign bounding locations to buttons.
-      setupElement(buttonZ1, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
+      setupElement(buttonF, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
       setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
       setupElement(buttonB, { clientRect: { top: 20, bottom: 30, left: 0, right: 10 } });
-      setupElement(buttonC, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
-      setupElement(buttonZ2, { clientRect: { top: 40, bottom: 50, left: 0, right: 10 } });
+      setupElement(buttonZ, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
 
-      return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2 };
+      return { focusTrapZone, buttonF, buttonA, buttonB, buttonZ };
     }
 
-    it('does not move when pressing tab', async () => {
+    it('goes to previously focused element when focusing the FTZ', async () => {
+      expect.assertions(4);
 
-      expect.assertions(2);
+      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(true /*focusPreviouslyFocusedInnerElement*/);
 
-      const { buttonA, buttonB } = setupTest();
-
-      // Focus the middle button in the FTZ
-      ReactTestUtils.Simulate.focus(buttonA);
+      // Manually focusing FTZ when FTZ has never
+      // had focus within should go to 1st focusable inner element.
+      ReactTestUtils.Simulate.focus(focusTrapZone);
       await animationFrame();
-      ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.down });
+      expect(lastFocusedElement).toBe(buttonF);
+
+      // Focus inside the trap zone, not the first element.
+      ReactTestUtils.Simulate.focus(buttonB);
+      await animationFrame();
       expect(lastFocusedElement).toBe(buttonB);
 
-      // Pressing tab should stay where you are.
-      ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.tab });
+      // Focus outside the trap zone
+      ReactTestUtils.Simulate.focus(buttonZ);
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonZ);
+
+      // Manually focusing FTZ should return to originally focused inner element.
+      ReactTestUtils.Simulate.focus(focusTrapZone);
       await animationFrame();
       expect(lastFocusedElement).toBe(buttonB);
     });
 
-    it('does not move when pressing shift-tab', async () => {
+    it('goes to first focusable element when focusing the FTZ', async () => {
+      expect.assertions(4);
 
-      expect.assertions(2);
+      const { focusTrapZone, buttonF, buttonB, buttonZ } = setupTest(false /*focusPreviouslyFocusedInnerElement*/);
 
-      const { buttonA, buttonB } = setupTest();
-
-      // Focus the middle button in the FTZ
-      ReactTestUtils.Simulate.focus(buttonA);
+      // Manually focusing FTZ when FTZ has never
+      // had focus within should go to 1st focusable inner element.
+      ReactTestUtils.Simulate.focus(focusTrapZone);
       await animationFrame();
-      ReactTestUtils.Simulate.keyDown(buttonA, { which: KeyCodes.down });
+      expect(lastFocusedElement).toBe(buttonF);
+
+      // Focus inside the trap zone, not the first element.
+      ReactTestUtils.Simulate.focus(buttonB);
+      await animationFrame();
       expect(lastFocusedElement).toBe(buttonB);
 
-      // Pressing shift-tab should stay where you are.
-      ReactTestUtils.Simulate.keyDown(buttonB, { which: KeyCodes.tab, shiftKey: true });
+      // Focus outside the trap zone
+      ReactTestUtils.Simulate.focus(buttonZ);
       await animationFrame();
-      expect(lastFocusedElement).toBe(buttonB);
+      expect(lastFocusedElement).toBe(buttonZ);
+
+      // Manually focusing FTZ should go to the first focusable element.
+      ReactTestUtils.Simulate.focus(focusTrapZone);
+      await animationFrame();
+      expect(lastFocusedElement).toBe(buttonF);
     });
   });
 });

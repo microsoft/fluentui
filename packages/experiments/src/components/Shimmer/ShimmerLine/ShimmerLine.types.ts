@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, IStyleSet } from '../../../Styling';
-import { IStyleFunction } from '../../../Utilities';
+import { IStyle, IStyleSet, ITheme } from '../../../Styling';
+import { IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IShimmerLine {
 
@@ -40,9 +40,14 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
   borderStyle?: IStyleSet;
 
   /**
+  * Theme provided by High-Order Component.
+  */
+  theme?: ITheme;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerLineStyleProps, IShimmerLineStyles>;
+  styles?: IStyleFunctionOrObject<IShimmerLineStyleProps, IShimmerLineStyles>;
 }
 
 export interface IShimmerLineStyleProps {
@@ -50,8 +55,13 @@ export interface IShimmerLineStyleProps {
   widthInPercentage?: number;
   widthInPixel?: number;
   borderStyle?: IStyleSet;
+  theme: ITheme;
 }
 
 export interface IShimmerLineStyles {
   root?: IStyle;
+  topLeftCorner?: IStyle;
+  topRightCorner?: IStyle;
+  bottomRightCorner?: IStyle;
+  bottomLeftCorner?: IStyle;
 }

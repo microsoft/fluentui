@@ -2,12 +2,13 @@
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import {
+  ICustomNavLinkGroup,
   INavProps,
   INavState,
   INavLink,
-  INavLinkGroup,
   INavStyleProps,
-  INavStyles
+  INavStyles,
+  NavGroupType
 } from './Nav.types';
 import {
   getStyles
@@ -39,7 +40,7 @@ class NavComponent extends NavBase {
     return (
       <nav role='navigation'>
         {
-          this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
+          this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
             return this._renderGroup(group, groupIndex);
           })
         }
@@ -57,6 +58,9 @@ class NavComponent extends NavBase {
     if (hasChildren) {
       // show child links
       link.isExpanded = !link.isExpanded;
+      // disable auto expand based on selected key prop, instead allow to toggle child links
+      link.disableAutoExpand = true;
+
       nextState.isLinkExpandStateChanged = true;
     }
     else if (link.onClick) {
@@ -79,10 +83,16 @@ class NavComponent extends NavBase {
       return null;
     }
 
+    let ariaProps = {};
+
     let rightIconName = undefined;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
-      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown'
+      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
+
+      ariaProps = {
+        ariaExpanded: !!link.isExpanded
+      }
     }
     else if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
@@ -96,12 +106,12 @@ class NavComponent extends NavBase {
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
     const {
-      getStyles,
+      styles,
       showMore,
       onShowMoreLinkClicked,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -115,6 +125,9 @@ class NavComponent extends NavBase {
         dataHint={ dataHint }
         dataValue={ link.key }
         ariaLabel={ linkText }
+        {
+        ...ariaProps
+        }
         role="menu"
         rootClassName={ classNames.navItemRoot }
         leftIconName={ leftIconName }
@@ -131,6 +144,13 @@ class NavComponent extends NavBase {
     }
 
     const linkText = this.getLinkText(link, this.props.showMore);
+    const isChildLinkSelected = this.isChildLinkSelected(link);
+
+    // if allowed, auto expand if the child is selected
+    link.isExpanded = link.disableAutoExpand ? link.isExpanded : isChildLinkSelected;
+
+    // enable auto expand until the next manual expand disables the auto expand
+    link.disableAutoExpand = false;
 
     return (
       <li
@@ -183,22 +203,22 @@ class NavComponent extends NavBase {
     );
   }
 
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+  private _renderGroup(group: ICustomNavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
     if (!group || !group.links || group.links.length === 0) {
       return null;
     }
 
     const {
-      getStyles,
+      styles,
       enableCustomization
     } = this.props;
 
     // skip customization group if customization is not enabled
-    if (!enableCustomization && group.isCustomizationGroup) {
+    if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
       return null;
     }
 
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
 
     return (
       <div key={ groupIndex }>

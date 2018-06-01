@@ -1,6 +1,32 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 17 May 2018 10:28:07 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 22:05:04 GMT and should not be manually modified.
+
+## 6.0.1
+Wed, 30 May 2018 22:05:04 GMT
+
+*Version update only*
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Bump to 6.0 alongside office-ui-fabric-react 6.0 release.
+
+## 5.31.0
+Thu, 24 May 2018 17:06:02 GMT
+
+### Minor changes
+
+- add new semantic slot
+
+## 5.30.3
+Wed, 23 May 2018 10:28:50 GMT
+
+### Patches
+
+- cleanup semantic slots
 
 ## 5.30.2
 Thu, 17 May 2018 10:28:07 GMT

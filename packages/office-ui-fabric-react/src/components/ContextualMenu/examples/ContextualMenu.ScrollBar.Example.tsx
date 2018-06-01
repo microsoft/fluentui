@@ -27,23 +27,23 @@ export class ContextualMenuWithScrollBarExample extends React.Component<{}, {
             items: [
               {
                 key: 'newItem',
-                name: 'New'
+                text: 'New'
               },
               {
                 key: 'item 2',
-                name: 'Item with a very long label text'
+                text: 'Item with a very long label text'
               },
               {
                 key: 'edit',
-                name: 'Edit'
+                text: 'Edit'
               },
               {
                 key: 'properties',
-                name: 'Properties'
+                text: 'Properties'
               },
               {
                 key: 'disabled',
-                name: 'Disabled item',
+                text: 'Disabled item',
                 disabled: true
               }
             ],

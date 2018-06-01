@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 04 May 2018 15:58:39 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 20:28:33 GMT and should not be manually modified.
+
+## 0.7.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Minor changes
+
+- Minimum React version is now 16.3.2.
 
 ## 0.6.2
 Fri, 04 May 2018 15:58:39 GMT
