@@ -26,7 +26,6 @@ export interface IBeakProps extends React.Props<Beak> {
 
   /**
    * Color of the beak
-   * @deprecated
    */
   color?: string;
 
