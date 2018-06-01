@@ -71,6 +71,11 @@ export class PersonaInitialsExample extends React.Component<any, any> {
           { ...personaWithInitials }
           initialsColor={ PersonaInitialsColor.teal }
         />
+        <Persona
+          coinProps={ { onClick: () => console.log('clicked') } }
+          imageIcon={ { iconName: 'ChevronDown' } }
+          initialsColor={ PersonaInitialsColor.teal }
+        />
       </div>
     );
   }

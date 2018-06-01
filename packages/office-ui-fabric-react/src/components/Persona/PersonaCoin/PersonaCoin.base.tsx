@@ -4,9 +4,10 @@ import {
   classNamesFunction,
   customizable,
   divProperties,
+  buttonProperties,
   getInitials,
   getNativeProps,
-  getRTL,
+  getRTL
 } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
@@ -18,6 +19,10 @@ import {
   ImageFit,
   ImageLoadState
 } from '../../../Image';
+import {
+  IconButton,
+  IButtonStyles
+} from '../../../Button';
 import {
   IPersonaCoinProps,
   IPersonaCoinStyleProps,
@@ -52,6 +57,28 @@ const SIZE_TO_PIXELS: { [key: number]: number } = {
 export interface IPersonaState {
   isImageLoaded?: boolean;
   isImageError?: boolean;
+}
+
+class CoinButton extends IconButton {
+  public render(): JSX.Element {
+    const coinStyles: IButtonStyles = {
+      root: {
+        background: 'transparent',
+        padding: 0,
+        height: 'auto',
+        width: 'auto'
+      },
+      rootHovered: {
+        background: 'transparent'
+      },
+      rootPressed: {
+        background: 'transparent'
+      }
+    };
+    return (
+      <IconButton styles={ coinStyles }{ ...this.props } />
+    );
+  }
 }
 
 /**
@@ -92,7 +119,10 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     } = this.props;
 
     const size = this.props.size as PersonaSize;
-    const divProps = getNativeProps(this.props, divProperties);
+    const containerProps: React.HTMLAttributes<HTMLDivElement | HTMLButtonElement> = getNativeProps(
+      this.props.coinProps || {},
+      [...divProperties, ...buttonProperties]
+    );
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
     const personaPresenceProps: IPersonaPresenceProps = {
@@ -110,9 +140,11 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin,
     });
 
+    const CoinAs = containerProps.onClick ? CoinButton : 'div';
+
     return (
-      <div
-        { ...divProps }
+      <CoinAs
+        { ...containerProps }
         className={ classNames.coin }
       >
 
@@ -140,7 +172,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
                     </div>
                   )
                 }
-                { onRenderCoin(this.props, this._onRenderCoin) }
+                { imageUrl && onRenderCoin(this.props, this._onRenderCoin) }
                 <PersonaPresence { ...personaPresenceProps } />
               </div>
             ) : ( // Otherwise, render just PersonaPresence.
@@ -154,7 +186,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
             )
         }
         { this.props.children }
-      </div>
+      </CoinAs>
     );
   }
 
@@ -206,6 +238,10 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       allowPhoneInitials,
       showUnknownPersonaCoin
     } = props;
+
+    if (this.props.imageIcon) {
+      return <Icon { ...this.props.imageIcon } />;
+    }
 
     if (showUnknownPersonaCoin) {
       return <Icon iconName='Help' />;

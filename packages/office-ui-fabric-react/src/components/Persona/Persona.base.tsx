@@ -58,6 +58,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       styles,
       imageAlt,
       imageInitials,
+      imageIcon,
       imageShouldFadeIn,
       imageShouldStartVisible,
       imageUrl,
@@ -72,11 +73,12 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 
     const personaCoinProps: IPersonaSharedProps = {
       allowPhoneInitials,
-      coinProps,
+      coinProps: coinProps,
       showUnknownPersonaCoin,
       coinSize,
       imageAlt,
       imageInitials,
+      imageIcon,
       imageShouldFadeIn,
       imageShouldStartVisible,
       imageUrl,

@@ -74,15 +74,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
       >
         <div
           className=
@@ -121,53 +112,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
             <span>
               TN
             </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
           </div>
         </div>
       </div>
@@ -396,15 +340,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
       >
         <div
           className=
@@ -443,53 +378,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
             <span>
               TN
             </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
           </div>
         </div>
       </div>
@@ -601,15 +489,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
       >
         <div
           className=
@@ -649,53 +528,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               TN
             </span>
           </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
         </div>
       </div>
       <div
@@ -709,15 +541,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
       >
         <div
           className=
@@ -791,15 +614,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
-        style={
-          Object {
-            "display": "inline-block",
-            "minWidth": "10px",
-            "overflow": "visible",
-            "width": "10px",
-          }
-        }
       >
         <div
           className=
@@ -838,53 +652,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             <span>
               AN
             </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
           </div>
         </div>
       </div>
@@ -967,8 +734,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
             {
               display: block;
             }
-        size={11}
-        style={undefined}
       >
         <div
           className=
@@ -1007,53 +772,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
             <span>
               TN
             </span>
-          </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 32px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 32px;
-                }
-            style={
-              Object {
-                "height": 32,
-                "width": 32,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
           </div>
         </div>
       </div>
@@ -1255,8 +973,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             {
               display: block;
             }
-        size={8}
-        style={undefined}
       >
         <div
           className=
@@ -1296,53 +1012,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               TN
             </span>
           </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
         </div>
       </div>
       <div
@@ -1353,8 +1022,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             {
               display: block;
             }
-        size={8}
-        style={undefined}
       >
         <div
           className=
@@ -1425,8 +1092,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             {
               display: block;
             }
-        size={8}
-        style={undefined}
       >
         <div
           className=
@@ -1466,53 +1131,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               AN
             </span>
           </div>
-          <div
-            className=
-                ms-Image
-                ms-Persona-image
-                {
-                  border-radius: 50%;
-                  border: 0px;
-                  height: 16px;
-                  left: 0px;
-                  margin-right: 10px;
-                  overflow: hidden;
-                  perspective: 1px;
-                  position: absolute;
-                  top: 0px;
-                  width: 16px;
-                }
-            style={
-              Object {
-                "height": undefined,
-                "width": undefined,
-              }
-            }
-          >
-            <img
-              alt=""
-              className=
-                  ms-Image-image
-                  ms-Image-image--cover
-                  ms-Image-image--portrait
-                  is-notLoaded
-                  is-fadeIn
-                  {
-                    display: block;
-                    height: auto;
-                    left: 50% /* @noflip */;
-                    opacity: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 100%;
-                  }
-              onError={[Function]}
-              onLoad={[Function]}
-              role={undefined}
-              src={undefined}
-            />
-          </div>
         </div>
       </div>
       <div
@@ -1523,8 +1141,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             {
               display: block;
             }
-        size={8}
-        style={undefined}
       >
         <div
           className=
