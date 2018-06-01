@@ -1,7 +1,7 @@
 module.exports = function (options) {
   const path = require('path');
   const fs = require('fs');
-  const execSync = require('../exec-sync');
+  const exec = require('../exec');
   const findConfig = require('../find-config');
   const jestConfigPath = findConfig('jest.config.js');
   const resolve = require('resolve');
@@ -15,7 +15,9 @@ module.exports = function (options) {
       `--config ${jestConfigPath}`,
 
       // Run tests in serial (parallel builds seem to hang rush.)
-      `--runInBand`,
+      // On Windows, this is occasionally an issue: https://github.com/facebook/jest/issues/4444
+      // Temporarily run sequentially on Windows until jest is upgraded.
+      process.env.TRAVIS || process.platform === 'win32' ? `--runInBand` : undefined,
 
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
@@ -29,6 +31,6 @@ module.exports = function (options) {
 
     const command = `node ${jestPath} ${args}`;
 
-    execSync(command, undefined, path.dirname(jestConfigPath));
+    return exec(command, undefined, path.dirname(jestConfigPath), process);
   }
 };
