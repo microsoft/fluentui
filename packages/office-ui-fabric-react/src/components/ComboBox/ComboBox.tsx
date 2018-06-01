@@ -353,8 +353,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         !!hasErrorMessage
       );
 
-    const describedBy = id + '-option';
-
     return (
       <div { ...divProps } ref={ this._root } className={ this._classNames.container }>
         { label && (
@@ -385,14 +383,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-expanded={ isOpen }
                 aria-autocomplete={ this._getAriaAutoCompleteValue() }
                 role='combobox'
-                aria-readonly={ ((allowFreeform || disabled) ? undefined : 'true') }
                 readOnly={ disabled || !allowFreeform }
                 aria-labelledby={ (label && (id + '-label')) }
                 aria-label={ ((ariaLabel && !label) ? ariaLabel : undefined) }
-                aria-describedby={ describedBy + (keytipAttributes['aria-describedby'] || '') }
+                aria-describedby={ keytipAttributes['aria-describedby'] }
                 aria-activedescendant={ this._getAriaActiveDescentValue() }
                 aria-disabled={ disabled }
-                aria-owns={ (id + '-list') }
+                aria-owns={ isOpen ? (id + '-list') : undefined }
                 spellCheck={ false }
                 defaultVisibleValue={ this._currentVisibleValue }
                 suggestedDisplayValue={ suggestedDisplayValue }
@@ -948,7 +945,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Check to see if the user typed an exact match
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
-        const pendingOptionText: string = currentOptions[currentPendingValueValidIndex].text.toLocaleLowerCase();
+        const pendingOptionText: string = this._getPreviewText(currentOptions[currentPendingValueValidIndex]).toLocaleLowerCase();
 
         // By exact match, that means: our pending value is the same as the the pending option text OR
         // the pending option starts with the pending value and we have an "autoComplete" selection
@@ -1098,6 +1095,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = this._id;
     const isSelected: boolean = this._isOptionSelected(item.index);
+    const optionStyles = this._getCurrentOptionStyles(item);
+    const checkboxStyles = () => {
+      return optionStyles;
+    };
+
     const getOptionComponent = () => {
       return (
         !this.props.multiSelect ? (
@@ -1124,11 +1126,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         ) : (
             <Checkbox
               id={ id + '-list' + item.index }
-              ref={ 'option' + item.index }
               ariaLabel={ this._getPreviewText(item) }
               key={ item.key }
               data-index={ item.index }
-              styles={ this._getCurrentOptionStyles(item) }
+              styles={ checkboxStyles }
               className={ 'ms-ComboBox-option' }
               data-is-focusable={ true }
               onChange={ this._onItemClick(item.index!) }
@@ -1183,7 +1184,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     let idxOfSelectedIndex = -1;
-    if ((index !== undefined) && this.state.selectedIndices) {
+    if (this.props.multiSelect && (index !== undefined) && this.state.selectedIndices) {
       idxOfSelectedIndex = this.state.selectedIndices.indexOf(index);
     }
     return (idxOfSelectedIndex >= 0);

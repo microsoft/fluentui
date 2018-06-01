@@ -13,62 +13,62 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
           text='Click for ContextualMenu'
           menuProps={ {
             items:
-            [
-              {
-                key: 'section',
-                itemType: ContextualMenuItemType.Section,
-                sectionProps: {
-                  topDivider: true,
-                  bottomDivider: true,
-                  title: 'Actions',
-                  items: [
-                    {
-                      key: 'newItem',
-                      name: 'New',
-                    },
-                    {
-                      key: 'deleteItem',
-                      name: 'Delete',
-                    }
-                  ]
+              [
+                {
+                  key: 'section',
+                  itemType: ContextualMenuItemType.Section,
+                  sectionProps: {
+                    topDivider: true,
+                    bottomDivider: true,
+                    title: 'Actions',
+                    items: [
+                      {
+                        key: 'newItem',
+                        text: 'New',
+                      },
+                      {
+                        key: 'deleteItem',
+                        text: 'Delete',
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: 'section',
+                  itemType: ContextualMenuItemType.Section,
+                  sectionProps: {
+                    title: 'Social',
+                    items: [
+                      {
+                        key: 'share',
+                        text: 'Share'
+                      },
+                      {
+                        key: 'print',
+                        text: 'Print'
+                      },
+                      {
+                        key: 'music',
+                        text: 'Music',
+                      },
+                    ]
+                  }
+                },
+                {
+                  key: 'section',
+                  itemType: ContextualMenuItemType.Section,
+                  sectionProps: {
+                    title: 'Navigation',
+                    items: [
+                      {
+                        key: 'Bing',
+                        text: 'Go to Bing',
+                        href: 'http://www.bing.com'
+                      }
+                    ]
+                  }
                 }
-              },
-              {
-                key: 'section',
-                itemType: ContextualMenuItemType.Section,
-                sectionProps: {
-                  title: 'Social',
-                  items: [
-                    {
-                      key: 'share',
-                      name: 'Share'
-                    },
-                    {
-                      key: 'print',
-                      name: 'Print'
-                    },
-                    {
-                      key: 'music',
-                      name: 'Music',
-                    },
-                  ]
-                }
-              },
-              {
-                key: 'section',
-                itemType: ContextualMenuItemType.Section,
-                sectionProps: {
-                  title: 'Navigation',
-                  items: [
-                    {
-                      key: 'Bing',
-                      name: 'Go to Bing',
-                      href: 'http://www.bing.com'
-                    }
-                  ]
-                }
-              }
-            ]
+              ]
           }
           }
         />

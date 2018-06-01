@@ -110,7 +110,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public render(): JSX.Element {
     const {
       content,
-      getStyles
+      styles
     } = this.props;
 
     const {
@@ -119,11 +119,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     } = this.state;
 
     this._classNames = getClassNames(
-      getStyles!
+      styles!
     );
 
     return (
-      <Layer getStyles={ getLayerStyles }>
+      <Layer styles={ getLayerStyles }>
         <span id={ KTP_LAYER_ID } className={ this._classNames.innerContent }>{ `${content}${KTP_ARIA_SEPARATOR}` }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return (
@@ -146,6 +146,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public componentDidMount(): void {
     // Add window listeners
     this._events.on(window, 'mouseup', this._onDismiss, true /* useCapture */);
+    this._events.on(window, 'pointerup', this._onDismiss, true /* useCapture */);
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -159,6 +160,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public componentWillUnmount(): void {
     // Remove window listeners
     this._events.off(window, 'mouseup', this._onDismiss, true /* useCapture */);
+    this._events.off(window, 'pointerup', this._onDismiss, true /* useCapture */);
     this._events.off(window, 'resize', this._onDismiss);
     this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);

@@ -2,6 +2,63 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.1.0",
+      "tag": "@uifabric/experiments_v6.1.0",
+      "date": "Fri, 01 Jun 2018 10:18:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "da8b4e77263fb23a8ef344b3e017a279890473aa",
+            "comment": "Experiments/Nav component: display \"show more\" link only if there is atleast one hidden link"
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "a269865d17ff20983a46f2dfb49841afed569c07",
+            "comment": "Shimmer: Shimmer refactor to use new props and deprecate others. Build more examples of Shimmer use."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.1.2 <7.0.0` to `>=6.2.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/experiments_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "860bb5f4a8ee32c3cba0dd07b8b7379fb4766a7a",
+            "comment": "Command Bar: Promoted to main office-ui-fabric-react package."
+          },
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Minimum React version is now 16.3.2."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.112.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.8.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.5 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.6.2 <1.0.0` to `>=0.7.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.44.0",
       "tag": "@uifabric/experiments_v5.44.0",
       "date": "Mon, 28 May 2018 10:23:24 GMT",

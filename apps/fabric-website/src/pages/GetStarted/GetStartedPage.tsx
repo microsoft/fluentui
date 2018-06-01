@@ -8,7 +8,7 @@ const diagramStyles: any = require('./GetStartedPage.diagram.module.scss');
 import * as stylesImport from './GetStartedPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../PageStyles.module.scss');
-const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
+const corePackageData = require('office-ui-fabric-core/package.json');
 const corePackageVersion: string = corePackageData && corePackageData.version || '9.2.0';
 
 export class GetStartedPage extends React.Component<any, any> {

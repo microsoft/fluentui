@@ -36,7 +36,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
   public render(): JSX.Element {
     const {
-      getStyles,
+      styles,
       width,
       shimmerElements,
       rowHeight,
@@ -44,7 +44,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
       theme
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       flexWrap,
       width
