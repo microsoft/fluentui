@@ -43,6 +43,10 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
+    // reset the flag
+    // on render link, find if there is atleast one hidden link to display "Show more" link
+    this._hasAtleastOneHiddenLink = false;
+
     return (
       <nav role='navigation'>
         {
@@ -309,7 +313,14 @@ class SlimNavComponent extends NavBase {
         {
           links.map((link: INavLink, linkIndex: number) => {
             if (enableCustomization && link.isHidden && !showMore) {
+              // atleast one link is hidden
+              this._hasAtleastOneHiddenLink = true;
+
               // "Show more" overrides isHidden property
+              return null;
+            }
+            else if (link.isShowMoreLink && !this._hasAtleastOneHiddenLink && !showMore) {
+              // there is no hidden link, hide "Show more" link
               return null;
             }
             else {
