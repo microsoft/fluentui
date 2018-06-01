@@ -3,7 +3,7 @@ import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown } from '@u
 import * as React from 'react';
 import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
-export function DemoPage(componentPageProps: IDemoPageProps) {
+export const DemoPage = (componentPageProps: IDemoPageProps) => {
   return (
     <ComponentPage
       title={ componentPageProps.title }
@@ -51,4 +51,4 @@ export function DemoPage(componentPageProps: IDemoPageProps) {
       }
     />
   );
-}
+};
