@@ -3,7 +3,12 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Shimmer, ShimmerElementType as ElemType } from 'office-ui-fabric-react';
+import {
+  Shimmer,
+  ShimmerElementType as ElemType,
+  ShimmerElementVerticalAlign as ElemVerticalAlign,
+  ShimmerElementsGroup
+} from 'office-ui-fabric-react';
 
 storiesOf('Shimmer', module)
   .addDecorator(story => (
@@ -35,6 +40,32 @@ storiesOf('Shimmer', module)
         { type: ElemType.gap, widthInPercentage: 2 },
         { type: ElemType.line },
       ] }
+    />
+  )).add('Custom elements', () => (
+    <Shimmer
+      customElementsGroup={ (
+        <div
+          // tslint:disable-next-line:jsx-ban-props
+          style={ { display: 'flex' } }
+        >
+          <ShimmerElementsGroup
+            shimmerElements={ [
+              { type: ElemType.circle, height: 40 },
+              { type: ElemType.gap, widthInPixel: 16, height: 40 }
+            ] }
+          />
+          <ShimmerElementsGroup
+            flexWrap={ true }
+            width={ '100%' }
+            shimmerElements={ [
+              { type: ElemType.line, widthInPercentage: 100, height: 10, verticalAlign: ElemVerticalAlign.bottom },
+              { type: ElemType.line, widthInPercentage: 90, height: 8 },
+              { type: ElemType.gap, widthInPercentage: 10, height: 20 }
+            ] }
+          />
+        </div>
+      ) }
+      widthInPixel={ 300 }
     />
   )).add('Data not loaded', () => (
     <Shimmer
