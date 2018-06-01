@@ -202,6 +202,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     right={ beakRight }
                     bottom={ beakBottom }
                     direction={ this._beakDirection }
+                    color={ color }
                   />
                 }
                 <FocusZone>
@@ -280,16 +281,30 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _getBounds(): IRectangle | undefined {
-    const { isPositionForced } = this.props;
+    const { isPositionForced, positioningContainerProps } = this.props;
     if (isPositionForced) {
-      return {
-        left: -Infinity,
-        top: -Infinity,
-        bottom: Infinity,
-        right: Infinity,
-        width: Infinity,
-        height: Infinity
-      };
+      if (positioningContainerProps && (
+        positioningContainerProps.directionalHint === DirectionalHint.topAutoEdge ||
+        positioningContainerProps.directionalHint === DirectionalHint.bottomAutoEdge
+      )) {
+        return {
+          left: 0,
+          top: -Infinity,
+          bottom: Infinity,
+          right: window.innerWidth,
+          width: Infinity,
+          height: Infinity
+        };
+      } else {
+        return {
+          left: -Infinity,
+          top: -Infinity,
+          bottom: Infinity,
+          right: Infinity,
+          width: Infinity,
+          height: Infinity
+        };
+      }
     } else {
       return undefined;
     }

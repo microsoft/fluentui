@@ -8,6 +8,10 @@ export interface ICoachmark {
 }
 
 export interface ICoachmarkTypes extends React.Props<Coachmark> {
+  /**
+   * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
   componentRef?: (component: ICoachmark | null) => void;
 
   /**
@@ -16,12 +20,19 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
 
   /**
-   * The target that the TeachingBubble should try to position itself based on.
+   * The target that the Coachmark should try to position itself based on.
    */
   target: HTMLElement | string | null;
 
+  /**
+   * Props to pass to the PositioningContainer component.  Specific the `directionalHint` to indicate which edge the
+   * Coachmark/TeachingBubble should live
+   */
   positioningContainerProps?: IPositioningContainerTypes;
 
+  /**
+   * Whether or not to force the Coachmark/TeachingBubble content to fit within the window bounds.
+   */
   isPositionForced?: boolean;
 
   /**
@@ -39,7 +50,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
 
   /**
    * The distance in pixels the mouse is located
-   * before opening up the coachmark.
+   * before opening up the Coachmark.
    * @default 10
    */
   mouseProximityOffset?: number;
@@ -55,52 +66,51 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   onAnimationOpenEnd?: () => void;
 
   /**
- * The width of the beak component.
+ * The width of the Beak component.
  * @deprecated
  */
   beakWidth?: number;
 
   /**
-   * The height of the beak component.
+   * The height of the Beak component.
    * @deprecated
    */
   beakHeight?: number;
 
   /**
-   * Delay before allowing mouse movements to open
-   * the Coachmark
+   * Delay before allowing mouse movements to open the Coachmark.
    */
   delayBeforeMouseOpen?: number;
 
   /**
-   * Runs every time the mouse moves
+   * Runs every time the mouse moves.
    */
   onMouseMove?: (e: MouseEvent) => void;
 
   /**
-   * The width of the coachmark
+   * The width of the Coachmark.
    * @deprecated
    */
   width?: number;
 
   /**
-   * The height of the coachmark
+   * The height of the Coachmark.
    * @deprecated
    */
   height?: number;
 
   /**
-   * Color
+   * Color of the Coachmark/TeachingBubble.
    */
   color?: string;
 
   /**
-   * Beacon color one
+   * Beacon color one.
    */
   beaconColorOne?: string;
 
   /**
-   * Beacon color two
+   * Beacon color two.
    */
   beaconColorTwo?: string;
 }

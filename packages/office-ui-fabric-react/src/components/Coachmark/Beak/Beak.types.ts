@@ -64,4 +64,5 @@ export interface IBeakStylesProps {
   width?: string;
   height?: string;
   transform?: string;
+  color?: string;
 }

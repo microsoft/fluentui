@@ -113,6 +113,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             positioningContainerProps={ {
               directionalHint: this.state.coachmarkPosition
             } }
+            color="#ff0000"
           >
             <TeachingBubbleContent
               headline='Example Title'
@@ -122,7 +123,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               secondaryButtonProps={ buttonProps2 }
               onDismiss={ this._onDismiss }
             >
-              Welcome to the land of coachmarks
+              Welcome to the land of Coachmarks!
             </TeachingBubbleContent>
           </Coachmark>
         ) }

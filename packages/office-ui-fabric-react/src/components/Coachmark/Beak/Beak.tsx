@@ -23,6 +23,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
       top,
       bottom,
       right,
+      color,
       direction = RectangleEdge.top
     } = this.props;
 
@@ -78,7 +79,8 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
       right,
       height: `${svgHeight}px`,
       width: `${svgWidth}px`,
-      transform: transform
+      transform: transform,
+      color
     });
 
     return (
