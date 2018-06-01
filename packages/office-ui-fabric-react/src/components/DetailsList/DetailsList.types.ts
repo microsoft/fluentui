@@ -444,10 +444,16 @@ export enum ConstrainMode {
 
 export interface IColumnReorderOptions {
   /**
-   * Specifies the number fixed columns from left(0th index))
+   * Specifies the number fixed columns from left(0th index)
    * @default 0
    */
-  frozenColumnCount?: number;
+  frozenColumnCountFromStart?: number;
+
+  /**
+   * Specifies the number fixed columns from right
+   * @default 0
+   */
+  frozenColumnCountFromEnd?: number;
 
   /**
    * Callback to handle the column reorder

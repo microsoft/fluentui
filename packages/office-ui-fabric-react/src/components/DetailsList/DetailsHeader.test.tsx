@@ -13,7 +13,7 @@ const _columns: IColumn[] = [
   { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
 ];
 const _columnReorderOptions = {
-  frozenColumnCount: 1,
+  frozenColumnCountFromStart: 1,
   handleColumnReorder: this._dummyFunction
 };
 

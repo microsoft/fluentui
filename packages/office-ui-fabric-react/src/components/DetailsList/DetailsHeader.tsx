@@ -224,6 +224,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         minimumPixelsForDrag: this.props.minimumPixelsForDrag
       });
     }
+    const frozenColumnCountFromStart = columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart ? columnReorderOptions!.frozenColumnCountFromStart! : 0;
+    const frozenColumnCountFromEnd = columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd ? columnReorderOptions!.frozenColumnCountFromEnd! : 0;
 
     return (
       <FocusZone
@@ -491,6 +493,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       this._dropHintOriginXValues = {};
       this._draggedColumnIndex = -1;
     }
+  }
 
   private _setDraggedItemIndex(itemIndex: number) {
     if (itemIndex >= 0) {
@@ -511,8 +514,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     const rootElement = findDOMNode(focusZone as any) as HTMLElement;
     const { columnReorderOptions, columns } = this.props;
     const headerOriginX = rootElement.getBoundingClientRect().left;
-    const frozenColumnCount = (columnReorderOptions && columnReorderOptions!.frozenColumnCount) ? columnReorderOptions!.frozenColumnCount : 0;
-    for (let i = frozenColumnCount!; i < columns.length + 1; i++) {
+    const frozenColumnCountFromStart = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart) ? columnReorderOptions!.frozenColumnCountFromStart : 0;
+    const frozenColumnCountFromEnd = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd) ? columnReorderOptions!.frozenColumnCountFromEnd : 0;
+    for (let i = frozenColumnCountFromStart!; i < columns.length - frozenColumnCountFromEnd! + 1; i++) {
       const dropHintElement = rootElement!.querySelectorAll('#columnDropHint_' + i)[0] as HTMLElement;
       if (dropHintElement) {
         this._dropHintOriginXValues[i] = dropHintElement!.offsetLeft + headerOriginX;
@@ -525,15 +529,19 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    *
    */
   private _updateDropHintStates = (eventXposition: number): void => {
-    let currentIndex: number = (this.props.columnReorderOptions!.frozenColumnCount) ? this.props.columnReorderOptions!.frozenColumnCount! : 0;
-    const colCount = this.props.columns.length;
+    const { columnReorderOptions, columns } = this.props;
+    const frozenColumnCountFromStart = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromStart) ? columnReorderOptions!.frozenColumnCountFromStart : 0;
+    const frozenColumnCountFromEnd = (columnReorderOptions && columnReorderOptions!.frozenColumnCountFromEnd) ? columnReorderOptions!.frozenColumnCountFromEnd : 0;
+    let currentIndex: number = frozenColumnCountFromStart!;
+    const totalValidColumnCount = columns.length - frozenColumnCountFromEnd!;
     const { currentDropHintIndex } = this.state;
     let indexToUpdate = -1;
     if (eventXposition <= this._dropHintOriginXValues[currentIndex]) {
-
       indexToUpdate = currentIndex;
+    } else if (eventXposition >= this._dropHintOriginXValues[totalValidColumnCount]) {
+      indexToUpdate = totalValidColumnCount;
     } else {
-      while (currentIndex < colCount) {
+      while (currentIndex < totalValidColumnCount) {
         if (eventXposition >= this._dropHintOriginXValues[currentIndex]
           && eventXposition < this._dropHintOriginXValues[currentIndex + 1]) {
           if (eventXposition > ((this._dropHintOriginXValues[currentIndex + 1] + this._dropHintOriginXValues[currentIndex]) / 2)) {
