@@ -79,6 +79,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             onTouchStart={ this._onTouchStart }
             tabIndex={ 0 }
             data-is-focusable={ true }
+            aria-roledescription={ item['aria-roledescription'] }
           >
             { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
             { this._renderSplitDivider(item) }
