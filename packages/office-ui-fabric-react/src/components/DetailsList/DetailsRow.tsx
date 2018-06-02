@@ -263,7 +263,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         { showCheckbox && (
           <div
             role='gridcell'
-            aria-colindex={ 0 }
+            aria-colindex={ 1 }
             data-selection-toggle={ true }
             className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell, checkboxCellClassName) }
           >

@@ -161,7 +161,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               ) }
               aria-labelledby={ `${this._id}-check` }
               onClick={ this._onSelectAllClicked }
-              aria-colindex={ 0 }
+              aria-colindex={ 1 }
               role='columnheader'
             >
               {
@@ -225,7 +225,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   role='columnheader'
                   aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                   aria-disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
-                  aria-colindex={ (showCheckbox ? 1 : 0) + columnIndex }
+                  aria-colindex={ (showCheckbox ? 2 : 1) + columnIndex }
                   className={ css(
                     'ms-DetailsHeader-cell',
                     styles.cell,
@@ -273,19 +273,28 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           </span>
 
                           { column.isFiltered && (
-                            <Icon className={ styles.nearIcon } iconName='Filter' />
+                            <Icon ariaLabel={ column.filterAriaLabel } className={ styles.nearIcon } iconName='Filter' />
                           ) }
 
                           { column.isSorted && (
-                            <Icon className={ css(styles.nearIcon, styles.sortIcon) } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
+                            <Icon
+                              ariaLabel={
+                                column.isSortedDescending ?
+                                  column.sortDescendingAriaLabel :
+                                  column.sortAscendingAriaLabel
+                              }
+                              className={ css(styles.nearIcon, styles.sortIcon) }
+                              iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' }
+                            />
                           ) }
 
                           { column.isGrouped && (
-                            <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
+                            <Icon ariaLabel={ column.groupAriaLabel } className={ styles.nearIcon } iconName='GroupedDescending' />
                           ) }
 
                           { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
                             <Icon
+                              aria-hidden={ true }
                               className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
                               iconName='ChevronDown'
                             />
