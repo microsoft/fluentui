@@ -33,6 +33,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         width: `${height}px`,
         height: `${height}px`,
         minWidth: `${height}px`, // Fix for IE11 flex items
+        boxSizing: 'content-box',
         borderTopStyle: 'solid',
         borderBottomStyle: 'solid',
         borderColor: palette.white,
@@ -46,6 +47,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
     svg: [
       classNames.svg,
       {
+        display: 'block',
         fill: palette.white,
         selectors: {
           [HighContrastSelector]: {
