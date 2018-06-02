@@ -1,13 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { EventGroup } from '../../Utilities';
-import {
-  IDragDropHelper,
-  IDragDropTarget,
-  IDragDropOptions,
-  IDragDropEvent,
-  IDragDropContext
-} from './interfaces';
+import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
 
 const DISTANCE_FOR_DRAG_SQUARED = 25; // the minimum mouse move distance to treat it as drag event
@@ -46,8 +40,10 @@ export class DragDropHelper implements IDragDropHelper {
     this._dragEnterCounts = {};
     this._activeTargets = {};
     this._lastId = 0;
-    this._distanceSquaredForDrag = typeof params.minimumPixelsForDrag === 'number' ?
-      params.minimumPixelsForDrag * params.minimumPixelsForDrag : DISTANCE_FOR_DRAG_SQUARED;
+    this._distanceSquaredForDrag =
+      typeof params.minimumPixelsForDrag === 'number'
+        ? params.minimumPixelsForDrag * params.minimumPixelsForDrag
+        : DISTANCE_FOR_DRAG_SQUARED;
 
     this._events = new EventGroup(this);
     // clear drag data when mouse up, use capture event to ensure it will be run
@@ -59,13 +55,15 @@ export class DragDropHelper implements IDragDropHelper {
     this._events.dispose();
   }
 
-  public subscribe(root: HTMLElement, events: EventGroup, dragDropOptions: IDragDropOptions): {
+  public subscribe(
+    root: HTMLElement,
+    events: EventGroup,
+    dragDropOptions: IDragDropOptions
+  ): {
     key: string;
     dispose(): void;
   } {
-    const {
-      key = `${++this._lastId}`
-    } = dragDropOptions;
+    const { key = `${++this._lastId}` } = dragDropOptions;
 
     const handlers: {
       callback: (context: IDragDropContext, event?: any) => void;
@@ -89,11 +87,7 @@ export class DragDropHelper implements IDragDropHelper {
     };
 
     if (dragDropOptions && root) {
-      const {
-        eventMap,
-        context,
-        updateDropState
-      } = dragDropOptions;
+      const { eventMap, context, updateDropState } = dragDropOptions;
 
       const dragDropTarget: IDragDropTarget = {
         root: root,
@@ -304,9 +298,7 @@ export class DragDropHelper implements IDragDropHelper {
         // So, check if the last dropTarget is not a child of the current.
 
         if (this._dragData) {
-          if (this._dragData.dropTarget &&
-            this._dragData.dropTarget.key !== key &&
-            !this._isChild(root, this._dragData.dropTarget.root)) {
+          if (this._dragData.dropTarget && this._dragData.dropTarget.key !== key && !this._isChild(root, this._dragData.dropTarget.root)) {
             EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
             this._dragData.dropTarget = undefined;
           }

@@ -46,7 +46,7 @@ export enum FabricSlots {
   neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade7]);
 
   black, // BaseSlots.foregroundColor, Shade[Shade.Shade8]);
-  white, // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+  white // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
 }
 
 /* List of all the semantic color slots for this theme.

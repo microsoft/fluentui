@@ -5,11 +5,7 @@ import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import {
-  IPoint,
-  IRectangle,
-  IRenderFunction
-} from '../../Utilities';
+import { IPoint, IRectangle, IRenderFunction } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -24,9 +20,7 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
-export interface IContextualMenu {
-
-}
+export interface IContextualMenu {}
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
@@ -214,16 +208,14 @@ export interface IContextualMenuProps extends React.Props<any>, IWithResponsiveM
 
   /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
-  */
+   */
   subMenuHoverDelay?: number;
 
   /**
    * Method to override the render of the individual menu items
    * @default ContextualMenuItem
    */
-  contextualMenuItemAs?:
-  React.ComponentClass<IContextualMenuItemProps> |
-  React.StatelessComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -351,11 +343,12 @@ export interface IContextualMenuItem {
   subMenuProps?: IContextualMenuProps;
 
   /**
-  * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
-  * defined in ContextualMenu.classnames.
-  * @default getItemClassNames
-  */
-  getItemClassNames?: (theme: ITheme,
+   * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
+   * defined in ContextualMenu.classnames.
+   * @default getItemClassNames
+   */
+  getItemClassNames?: (
+    theme: ITheme,
     disabled: boolean,
     expanded: boolean,
     checked: boolean,
@@ -365,12 +358,13 @@ export interface IContextualMenuItem {
     dividerClassName?: string,
     iconClassName?: string,
     subMenuClassName?: string,
-    primaryDisabled?: boolean) => IMenuItemClassNames;
+    primaryDisabled?: boolean
+  ) => IMenuItemClassNames;
 
   /**
-  * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
-  * @default getSplitButtonVerticalDividerClassNames
-  */
+   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
+   * @default getSplitButtonVerticalDividerClassNames
+   */
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**
@@ -459,7 +453,6 @@ export interface IContextualMenuItem {
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  */
 export interface IContextualMenuSection extends React.Props<any> {
-
   /**
    * The items to include inside the section.
    */
@@ -513,13 +506,12 @@ export interface IMenuItemStyles extends IButtonStyles {
   subMenuIcon: IStyle;
 
   /**
-  * Styles for a divider item of a ConextualMenu.
-  */
+   * Styles for a divider item of a ConextualMenu.
+   */
   divider: IStyle;
 }
 
 export interface IContextualMenuStyles {
-
   /**
    * Style override for the contextual menu title.
    */

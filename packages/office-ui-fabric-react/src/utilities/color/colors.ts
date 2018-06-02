@@ -31,21 +31,11 @@ export interface IColor extends IRGB, IHSV {
 }
 
 export function cssColor(color: string): IRGB | undefined {
-  return (_named(color)
-    || _hex3(color)
-    || _hex6(color)
-    || _rgb(color)
-    || _rgba(color)
-    || _hsl(color)
-    || _hsla(color) as IRGB);
+  return _named(color) || _hex3(color) || _hex6(color) || _rgb(color) || _rgba(color) || _hsl(color) || (_hsla(color) as IRGB);
 }
 
 export function rgb2hex(r: number, g: number, b: number): string {
-  return [
-    _numberToPaddedHex(r),
-    _numberToPaddedHex(g),
-    _numberToPaddedHex(b)
-  ].join('');
+  return [_numberToPaddedHex(r), _numberToPaddedHex(g), _numberToPaddedHex(b)].join('');
 }
 
 export function hsv2hex(h: number, s: number, v: number): string {
@@ -80,31 +70,31 @@ export function rgb2hsv(r: number, g: number, b: number): IHSV {
   }
 
   // saturation
-  s = Math.round((max === 0 ? 0 : (delta / max)) * 100);
+  s = Math.round((max === 0 ? 0 : delta / max) * 100);
 
   // value
-  v = Math.round(max / 255 * 100);
+  v = Math.round((max / 255) * 100);
 
   return { h, s, v };
 }
 
 export function hsl2hsv(h: number, s: number, l: number): IHSV {
-  s *= ((l < 50) ? l : (100 - l)) / 100;
+  s *= (l < 50 ? l : 100 - l) / 100;
 
   return {
     h: h,
-    s: 2 * s / (l + s) * 100,
+    s: ((2 * s) / (l + s)) * 100,
     v: l + s
   };
 }
 
-export function hsv2hsl(h: number, s: number, v: number): { h: number, s: number, l: number } {
+export function hsv2hsl(h: number, s: number, v: number): { h: number; s: number; l: number } {
   s /= MAX_COLOR_SATURATION;
   v /= MAX_COLOR_VALUE;
 
   let l = (2 - s) * v;
   let sl = s * v;
-  sl /= (l <= 1) ? l : 2 - l;
+  sl /= l <= 1 ? l : 2 - l;
   sl = sl || 0;
   l /= 2;
 
@@ -125,7 +115,7 @@ export function hsv2rgb(h: number, s: number, v: number): IRGB {
 
   const c = v * s;
   const hh = h / 60;
-  const x = c * (1 - Math.abs(hh % 2 - 1));
+  const x = c * (1 - Math.abs((hh % 2) - 1));
   const m = v - c;
 
   switch (Math.floor(hh)) {
@@ -184,7 +174,7 @@ export function getColorFromString(inputColor: string): IColor | undefined {
   };
 }
 
-export function getColorFromRGBA(rgba: { r: number, g: number, b: number, a: number }): IColor {
+export function getColorFromRGBA(rgba: { r: number; g: number; b: number; a: number }): IColor {
   const { a, b, g, r } = rgba;
   const { h, s, v } = rgb2hsv(r, g, b);
 
@@ -197,7 +187,7 @@ export function getColorFromRGBA(rgba: { r: number, g: number, b: number, a: num
     hex: hex,
     r: r,
     s: s,
-    str: (a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${a / 100})`,
+    str: a === 100 ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${a / 100})`,
     v: v
   };
 }
@@ -218,7 +208,7 @@ export function updateSV(color: IColor, s: number, v: number): IColor {
     hex: hex,
     r: r,
     s: s,
-    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${(color.a as number) / 100})`,
+    str: color.a === 100 ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${(color.a as number) / 100})`,
     v: v
   };
 }
@@ -235,7 +225,7 @@ export function updateH(color: IColor, h: number): IColor {
     hex: hex,
     r: r,
     s: color.s,
-    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${(color.a as number) / 100})`,
+    str: color.a === 100 ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${(color.a as number) / 100})`,
     v: color.v
   };
 }
@@ -243,7 +233,7 @@ export function updateH(color: IColor, h: number): IColor {
 export function updateA(color: IColor, a: number): IColor {
   return assign({}, color, {
     a: a,
-    str: (a === 100) ? `#${color.hex}` : `rgba(${color.r}, ${color.g}, ${color.b}, ${a / 100})`
+    str: a === 100 ? `#${color.hex}` : `rgba(${color.r}, ${color.g}, ${color.b}, ${a / 100})`
   });
 }
 
@@ -268,7 +258,7 @@ function _named(str: string): IRGB | undefined {
 
 function _rgb(str: string): IRGB | undefined {
   if (0 === str.indexOf('rgb(')) {
-    str = (str.match(/rgb\(([^)]+)\)/)!)[1];
+    str = str.match(/rgb\(([^)]+)\)/)![1];
 
     const parts = str.split(/ *, */).map(Number);
 
@@ -283,7 +273,7 @@ function _rgb(str: string): IRGB | undefined {
 
 function _rgba(str: string): IRGB | undefined {
   if (str.indexOf('rgba(') === 0) {
-    str = (str.match(/rgba\(([^)]+)\)/)!)[1];
+    str = str.match(/rgba\(([^)]+)\)/)![1];
 
     const parts = str.split(/ *, */).map(Number);
 
@@ -320,7 +310,7 @@ function _hex3(str: string): IRGB | undefined {
 
 function _hsl(str: string): IRGB | undefined {
   if (str.indexOf('hsl(') === 0) {
-    str = (str.match(/hsl\(([^)]+)\)/)!)[1];
+    str = str.match(/hsl\(([^)]+)\)/)![1];
     const parts = str.split(/ *, */);
 
     const h = parseInt(parts[0], 10);
@@ -336,7 +326,7 @@ function _hsl(str: string): IRGB | undefined {
 
 function _hsla(str: string): IRGB | undefined {
   if (str.indexOf('hsla(') === 0) {
-    str = (str.match(/hsla\(([^)]+)\)/)!)[1];
+    str = str.match(/hsla\(([^)]+)\)/)![1];
 
     const parts = str.split(/ *, */);
     const h = parseInt(parts[0], 10);

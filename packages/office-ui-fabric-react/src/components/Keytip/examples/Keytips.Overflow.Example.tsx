@@ -14,19 +14,25 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
     {
       key: 'item1',
       name: 'Link 1',
-      onClick: () => { return; },
+      onClick: () => {
+        return;
+      },
       keytipProps: keytipMap.OverflowButton1
     },
     {
       key: 'item2',
       name: 'Link 2',
-      onClick: () => { return; },
+      onClick: () => {
+        return;
+      },
       keytipProps: keytipMap.OverflowButton2
     },
     {
       key: 'item3',
       name: 'Link 3',
-      onClick: () => { return; },
+      onClick: () => {
+        return;
+      },
       keytipProps: keytipMap.OverflowButton3
     }
   ];
@@ -96,33 +102,28 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
     return (
       <div>
         <p>
-          Keytips in an overflow well have a special behavior. When a keytip goes into the overflow button menu, it will also register a 'persisted' keytip that can be accessed from the top level as a shortcut. A shortcut to a normal button item will trigger that button. A shortcut to a menu button item will open the overflow button menu and then open that item's menu as well. In this example triggering 'T' and 'Y' will show off this functionality (see console messages)
+          Keytips in an overflow well have a special behavior. When a keytip goes into the overflow button menu, it will also register a
+          'persisted' keytip that can be accessed from the top level as a shortcut. A shortcut to a normal button item will trigger that
+          button. A shortcut to a menu button item will open the overflow button menu and then open that item's menu as well. In this
+          example triggering 'T' and 'Y' will show off this functionality (see console messages)
         </p>
         <OverflowSet
-          items={ this.state.items }
-          overflowItems={ this.state.overflowItems }
-          keytipSequences={ keytipMap.OverflowButton4.keySequences }
-          onRenderOverflowButton={ this._onRenderOverflowButton }
-          onRenderItem={ this._onRenderItem }
+          items={this.state.items}
+          overflowItems={this.state.overflowItems}
+          keytipSequences={keytipMap.OverflowButton4.keySequences}
+          onRenderOverflowButton={this._onRenderOverflowButton}
+          onRenderItem={this._onRenderItem}
         />
-        <p>
-          When an item is moved out of the overflow well, it behaves as a normal keytip
-        </p>
-        <DefaultButton
-          text={ 'Move overflow items' }
-          onClick={ this._toggleOverflowItems }
-        />
+        <p>When an item is moved out of the overflow well, it behaves as a normal keytip</p>
+        <DefaultButton text={'Move overflow items'} onClick={this._toggleOverflowItems} />
       </div>
     );
   }
 
   private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
     return (
-      <CommandBarButton
-        { ...item }
-        styles={ { root: { padding: '10px' } } }
-        menuProps={ item.subMenuProps }
-      >{ item.name }
+      <CommandBarButton {...item} styles={{ root: { padding: '10px' } }} menuProps={item.subMenuProps}>
+        {item.name}
       </CommandBarButton>
     );
   }
@@ -130,12 +131,12 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
-        menuIconProps={ { iconName: 'More' } }
-        menuProps={ { items: overflowItems! } }
-        keytipProps={ keytipMap.OverflowButton4 }
+        menuIconProps={{ iconName: 'More' }}
+        menuProps={{ items: overflowItems! }}
+        keytipProps={keytipMap.OverflowButton4}
       />
     );
-  }
+  };
 
   private _toggleOverflowItems = (): void => {
     this.setState((prevState: IKeytipsOverflowExampleState) => {
@@ -152,5 +153,5 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
       }
       return { items, overflowItems };
     });
-  }
+  };
 }

@@ -1,8 +1,6 @@
 import { InjectionMode, Stylesheet } from './Stylesheet';
 
-export function renderStatic(
-  onRender: () => string
-): { html: string, css: string } {
+export function renderStatic(onRender: () => string): { html: string; css: string } {
   const stylesheet = Stylesheet.getInstance();
 
   stylesheet.setConfig({

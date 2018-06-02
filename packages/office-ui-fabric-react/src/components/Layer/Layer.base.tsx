@@ -4,19 +4,8 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import { Fabric } from '../../Fabric';
-import {
-  ILayerProps,
-  ILayerStyleProps,
-  ILayerStyles,
-} from './Layer.types';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  getDocument,
-  setVirtualParent,
-  createRef
-} from '../../Utilities';
+import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
+import { BaseComponent, classNamesFunction, customizable, getDocument, setVirtualParent, createRef } from '../../Utilities';
 
 const _layersByHostId: { [hostId: string]: LayerBase[] } = {};
 let _defaultHostSelector: string | undefined;
@@ -25,7 +14,6 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 @customizable('Layer', ['theme', 'hostId'])
 export class LayerBase extends BaseComponent<ILayerProps, {}> {
-
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
     onLayerWillUnmount: () => undefined
@@ -92,13 +80,11 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     const host = this._getHost();
 
     const { className, styles, theme } = this.props;
-    const classNames = getClassNames(styles!,
-      {
-        theme: theme!,
-        className,
-        isNotHost: !this.props.hostId
-      }
-    );
+    const classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      isNotHost: !this.props.hostId
+    });
 
     if (host !== this._host) {
       this._removeLayerElement();
@@ -125,11 +111,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       // Using this 'unstable' method allows us to retain the React context across the layer projection.
       ReactDOM.unstable_renderSubtreeIntoContainer(
         this,
-        (
-          <Fabric className={ classNames.content }>
-            { this.props.children }
-          </Fabric>
-        ),
+        <Fabric className={classNames.content}>{this.props.children}</Fabric>,
         this._layerElement,
         () => {
           if (!this._hasMounted) {
@@ -142,17 +124,13 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
             this.props.onLayerDidMount!();
           }
-        });
+        }
+      );
     }
   }
 
   public render(): JSX.Element {
-    return (
-      <span
-        className='ms-Layer'
-        ref={ this._rootElement }
-      />
-    );
+    return <span className="ms-Layer" ref={this._rootElement} />;
   }
 
   private _removeLayerElement(): void {
@@ -180,8 +158,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     if (hostId) {
       return doc.getElementById(hostId) as Node;
     } else {
-      return _defaultHostSelector ? doc.querySelector(_defaultHostSelector) as Node : doc.body;
+      return _defaultHostSelector ? (doc.querySelector(_defaultHostSelector) as Node) : doc.body;
     }
   }
-
 }

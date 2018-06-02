@@ -10,17 +10,16 @@ import { IFormContext } from '../../Form';
  * Dropdown input for Form
  */
 export class FormDropdown extends FormBaseInput<number | string, IFormDropdownProps, IFormBaseInputState<number | string>> {
-
   constructor(props: IFormDropdownProps, context: IFormContext) {
     super(props, context);
     this.state = {
       isValid: true,
-      currentValue: this.props.value !== null && this.props.value !== undefined ?
-        this.props.value :
-        (
-          (this.props.dropdownProps && this.props.dropdownProps.options && this.props.dropdownProps.options.length > 0) ?
-            this.props.dropdownProps.options[0].key : undefined
-        ),
+      currentValue:
+        this.props.value !== null && this.props.value !== undefined
+          ? this.props.value
+          : this.props.dropdownProps && this.props.dropdownProps.options && this.props.dropdownProps.options.length > 0
+            ? this.props.dropdownProps.options[0].key
+            : undefined,
       currentError: undefined
     };
     this._validateDropdownProps(this.props.dropdownProps);
@@ -32,19 +31,18 @@ export class FormDropdown extends FormBaseInput<number | string, IFormDropdownPr
   public render(): JSX.Element {
     return (
       <Dropdown
-        { ...this.props.dropdownProps }
-
+        {...this.props.dropdownProps}
         // These props cannot be overridden
-        key={ this.props.inputKey }
-        onChanged={ this._onChanged }
-        selectedKey={ this.state.currentValue }
+        key={this.props.inputKey}
+        onChanged={this._onChanged}
+        selectedKey={this.state.currentValue}
       />
     );
   }
 
   private _onChanged = (option: IDropdownOption): void => {
     this.setValue(option.key);
-  }
+  };
 
   private _validateDropdownProps(props?: IDropdownProps): void {
     if (props) {

@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
@@ -19,57 +13,50 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='ScrollablePane'
-        componentName='ScrollablePaneExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ScrollablePane'
+        title="ScrollablePane"
+        componentName="ScrollablePaneExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ScrollablePane"
         exampleCards={
           <div>
-            <ExampleCard title='Default' code={ ScrollablePaneDefaultExampleCode }>
+            <ExampleCard title="Default" code={ScrollablePaneDefaultExampleCode}>
               <ScrollablePaneDefaultExample />
             </ExampleCard>
-            <ExampleCard title='DetailsList Locked Header' code={ ScrollablePaneDetailsListExampleCode }>
+            <ExampleCard title="DetailsList Locked Header" code={ScrollablePaneDetailsListExampleCode}>
               <ScrollablePaneDetailsListExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ true }
-        nativePropsElement={ ['a', 'button'] }
+        allowNativeProps={true}
+        nativePropsElement={['a', 'button']}
         propertiesTables={
           <div>
             <PropertiesTableSet
-              sources={ [
+              sources={[
                 require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
                 require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
-              ] }
+              ]}
             />
           </div>
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ScrollablePaneStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...ScrollablePaneStatus} />}
       />
     );
   }
-
 }

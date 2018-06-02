@@ -1,65 +1,20 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import {
-  Calendar,
-  DayOfWeek
-} from 'office-ui-fabric-react/lib/Calendar';
+import { Calendar, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 
 const DayPickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
   goToToday: 'Go to today',
-  weekNumberFormatString: 'Week number {0}',
+  weekNumberFormatString: 'Week number {0}'
 };
 
 export interface ICalendarInlineExampleState {
@@ -117,46 +72,53 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     }
 
     return (
-      <div style={ divStyle }>
-        { <div>
-          Selected date(s): <span>{ !this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
-        </div> }
+      <div style={divStyle}>
+        {
+          <div>
+            Selected date(s): <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
+          </div>
+        }
         <div>
           Selected dates:
-          <span> { !dateRangeString ? 'Not set' : dateRangeString }</span>
+          <span> {!dateRangeString ? 'Not set' : dateRangeString}</span>
         </div>
-        { (this.props.minDate || this.props.maxDate) &&
+        {(this.props.minDate || this.props.maxDate) && (
           <div>
             Date boundary:
-            <span> { this.props.minDate ? this.props.minDate.toLocaleDateString() : 'Not set' }-{ this.props.maxDate ? this.props.maxDate.toLocaleDateString() : 'Not set' }</span>
+            <span>
+              {' '}
+              {this.props.minDate ? this.props.minDate.toLocaleDateString() : 'Not set'}-{this.props.maxDate
+                ? this.props.maxDate.toLocaleDateString()
+                : 'Not set'}
+            </span>
           </div>
-        }
+        )}
         <Calendar
-          onSelectDate={ this._onSelectDate }
-          onDismiss={ this._onDismiss }
-          isMonthPickerVisible={ this.props.isMonthPickerVisible }
-          dateRangeType={ this.props.dateRangeType }
-          autoNavigateOnSelection={ this.props.autoNavigateOnSelection }
-          showGoToToday={ this.props.showGoToToday }
-          value={ this.state.selectedDate! }
-          firstDayOfWeek={ this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday }
-          strings={ DayPickerStrings }
-          highlightCurrentMonth={ this.props.highlightCurrentMonth }
-          highlightSelectedMonth={ this.props.highlightSelectedMonth }
-          isDayPickerVisible={ this.props.isDayPickerVisible }
-          showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
-          showWeekNumbers={ this.props.showWeekNumbers }
-          minDate={ this.props.minDate }
-          maxDate={ this.props.maxDate }
-          showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
-          workWeekDays={ this.props.workWeekDays }
+          onSelectDate={this._onSelectDate}
+          onDismiss={this._onDismiss}
+          isMonthPickerVisible={this.props.isMonthPickerVisible}
+          dateRangeType={this.props.dateRangeType}
+          autoNavigateOnSelection={this.props.autoNavigateOnSelection}
+          showGoToToday={this.props.showGoToToday}
+          value={this.state.selectedDate!}
+          firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}
+          strings={DayPickerStrings}
+          highlightCurrentMonth={this.props.highlightCurrentMonth}
+          highlightSelectedMonth={this.props.highlightSelectedMonth}
+          isDayPickerVisible={this.props.isDayPickerVisible}
+          showMonthPickerAsOverlay={this.props.showMonthPickerAsOverlay}
+          showWeekNumbers={this.props.showWeekNumbers}
+          minDate={this.props.minDate}
+          maxDate={this.props.maxDate}
+          showSixWeeksByDefault={this.props.showSixWeeksByDefault}
+          workWeekDays={this.props.workWeekDays}
         />
-        { this.props.showNavigateButtons &&
+        {this.props.showNavigateButtons && (
           <div>
-            <DefaultButton style={ buttonStyle } onClick={ this._goPrevious } text='Previous' />
-            <DefaultButton style={ buttonStyle } onClick={ this._goNext } text='Next' />
+            <DefaultButton style={buttonStyle} onClick={this._goPrevious} text="Previous" />
+            <DefaultButton style={buttonStyle} onClick={this._goNext} text="Next" />
           </div>
-        }
+        )}
       </div>
     );
   }

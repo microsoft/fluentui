@@ -8,26 +8,25 @@ export interface IFormBasicExampleState {
 }
 
 export class FormBasicExample extends React.Component<{}, IFormBasicExampleState> {
-
   public render(): JSX.Element {
     return (
       <div>
-        <Form onSubmit={ this._onSubmit }>
-          <FormTextInput textFieldProps={ { label: 'Name' } } inputKey='name' />
+        <Form onSubmit={this._onSubmit}>
+          <FormTextInput textFieldProps={{ label: 'Name' }} inputKey="name" />
           <PrimaryButton>Submit</PrimaryButton>
         </Form>
-        {
-          this.state && this.state.formResults &&
-          <div className='results-view'>
-            <h4>Results</h4>
-            { JSON.stringify(this.state.formResults) }
-          </div>
-        }
+        {this.state &&
+          this.state.formResults && (
+            <div className="results-view">
+              <h4>Results</h4>
+              {JSON.stringify(this.state.formResults)}
+            </div>
+          )}
       </div>
     );
   }
 
   private _onSubmit = (values: { [key: string]: any }): void => {
     this.setState({ formResults: values });
-  }
+  };
 }

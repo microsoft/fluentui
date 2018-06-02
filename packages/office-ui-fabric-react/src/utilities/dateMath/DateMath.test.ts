@@ -14,10 +14,8 @@ enum Months {
   Oct = 9,
   Nov = 10,
   Dec = 11
-
 }
 describe('DateMath', () => {
-
   it('can add days', () => {
     const startDate = new Date(2016, Months.Apr, 1);
     const result = DateMath.addDays(startDate, 5);
@@ -282,29 +280,13 @@ describe('DateMath', () => {
     Array(7).forEach((val: undefined, i: number) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
 
     // Date range: work week
-    const workWeekDays = [
-      DayOfWeek.Monday,
-      DayOfWeek.Tuesday,
-      DayOfWeek.Thursday,
-      DayOfWeek.Friday
-    ];
-    expectedDates = [
-      new Date(2017, 2, 13),
-      new Date(2017, 2, 14),
-      new Date(2017, 2, 16),
-      new Date(2017, 2, 17),
-    ];
+    const workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Friday];
+    expectedDates = [new Date(2017, 2, 13), new Date(2017, 2, 14), new Date(2017, 2, 16), new Date(2017, 2, 17)];
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday, workWeekDays);
     Array(4).forEach((val: undefined, i: number) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
 
     // work week defaults
-    expectedDates = [
-      new Date(2017, 2, 13),
-      new Date(2017, 2, 14),
-      new Date(2017, 2, 15),
-      new Date(2017, 2, 16),
-      new Date(2017, 2, 17),
-    ];
+    expectedDates = [new Date(2017, 2, 13), new Date(2017, 2, 14), new Date(2017, 2, 15), new Date(2017, 2, 16), new Date(2017, 2, 17)];
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
     Array(4).forEach((val: undefined, i: number) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
 

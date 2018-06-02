@@ -9,8 +9,7 @@ export interface IDONavigationLinkProps {
   icon?: IDOIconProps;
 }
 
-export interface IDONavigationLinkState {
-}
+export interface IDONavigationLinkState {}
 
 export class DONavigationLink extends React.Component<IDONavigationLinkProps, IDONavigationLinkState> {
   public static defaultProps = {
@@ -19,16 +18,16 @@ export class DONavigationLink extends React.Component<IDONavigationLinkProps, ID
 
   public render(): JSX.Element {
     return (
-      <a className='od-Navigation-subMenuItem' href={ this.props.href } role={ this.props.role }>
-        { this._getIcon() }
-        { this.props.label }
+      <a className="od-Navigation-subMenuItem" href={this.props.href} role={this.props.role}>
+        {this._getIcon()}
+        {this.props.label}
       </a>
     );
   }
 
   private _getIcon() {
     if (this.props.icon) {
-      return <DOIcon iconClass={ this.props.icon.iconClass } bgColor={ this.props.icon.bgColor } />;
+      return <DOIcon iconClass={this.props.icon.iconClass} bgColor={this.props.icon.bgColor} />;
     }
   }
 }

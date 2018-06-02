@@ -33,42 +33,38 @@ export class Table extends React.Component<ITableProps, ITableState> {
 
   public render(): JSX.Element {
     let { content } = this.props;
-    return (this.state.currentBreakpoint === 'mobile' && this.props.responsive) ? this._renderMobile(content) : this._renderDesktop(content);
+    return this.state.currentBreakpoint === 'mobile' && this.props.responsive ? this._renderMobile(content) : this._renderDesktop(content);
   }
 
   // Render Table cell.  Cell content is either cell's value property, or cell's html property (if value is an empty string)
   private _renderCell(cell, index): JSX.Element {
-    return (
-      (cell.value.length) ?
-        <td className={ cell.className } key={ index }>{ cell.value }</td> :
-        <td className={ cell.className } key={ index } dangerouslySetInnerHTML={ { __html: cell.html } } />
+    return cell.value.length ? (
+      <td className={cell.className} key={index}>
+        {cell.value}
+      </td>
+    ) : (
+      <td className={cell.className} key={index} dangerouslySetInnerHTML={{ __html: cell.html }} />
     );
   }
 
   // Render Desktop view
   private _renderDesktop(content): JSX.Element {
     return (
-      <table className={ `${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '') }>
+      <table className={`${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')}>
         <thead>
-          <tr>
-            {
-              content.headers.map((heading, headingIndex) => (
-                <th key={ headingIndex }>{ this._capitalizeFirstLetter(heading) }</th>
-              ))
-            }
-          </tr>
+          <tr>{content.headers.map((heading, headingIndex) => <th key={headingIndex}>{this._capitalizeFirstLetter(heading)}</th>)}</tr>
         </thead>
         <tbody>
-          { content.data.map((row, rowIndex) => (
-            <tr key={ rowIndex }>
-              {
-                row.map((cell, cellIndex) => (
-                  this._renderCell(cell, cellIndex)
-                ))
-              }
-              { this.props.isAnimation && <td className={ styles.animCell }><AnimationCell data={ row } /></td> }
+          {content.data.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.map((cell, cellIndex) => this._renderCell(cell, cellIndex))}
+              {this.props.isAnimation && (
+                <td className={styles.animCell}>
+                  <AnimationCell data={row} />
+                </td>
+              )}
             </tr>
-          )) }
+          ))}
         </tbody>
       </table>
     );
@@ -79,27 +75,29 @@ export class Table extends React.Component<ITableProps, ITableState> {
     const headers = this.props.content.headers;
     return (
       <div>
-        { content.data.map((row, rowIndex) => (
-          <table className={ `${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '') }
-            key={ rowIndex }>
+        {content.data.map((row, rowIndex) => (
+          <table
+            className={`${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')}
+            key={rowIndex}
+          >
             <tbody>
-              {
-                row.map((cell, cellIndex) => (
-                  <tr key={ cellIndex }>
-                    <td>{ this._capitalizeFirstLetter(headers[cellIndex]) }</td>
-                    { this._renderCell(cell, cellIndex) }
-                  </tr>
-                ))
-              }
-              { this.props.isAnimation &&
+              {row.map((cell, cellIndex) => (
+                <tr key={cellIndex}>
+                  <td>{this._capitalizeFirstLetter(headers[cellIndex])}</td>
+                  {this._renderCell(cell, cellIndex)}
+                </tr>
+              ))}
+              {this.props.isAnimation && (
                 <tr>
                   <td>Animation</td>
-                  <td><AnimationCell data={ row } /></td>
+                  <td>
+                    <AnimationCell data={row} />
+                  </td>
                 </tr>
-              }
+              )}
             </tbody>
           </table>
-        )) }
+        ))}
       </div>
     );
   }
@@ -121,6 +119,6 @@ export class Table extends React.Component<ITableProps, ITableState> {
 
   // Check and return window size
   private _getWindowSize(): string {
-    return (window.innerWidth < this.MOBILE_BREAKPOINT) ? 'mobile' : 'desktop';
+    return window.innerWidth < this.MOBILE_BREAKPOINT ? 'mobile' : 'desktop';
   }
 }

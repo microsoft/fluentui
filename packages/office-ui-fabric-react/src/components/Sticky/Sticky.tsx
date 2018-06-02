@@ -30,7 +30,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       updateStickyRefHeights: () => void;
       sortSticky: (sticky: Sticky) => void;
       notifySubscribers: (sort?: boolean) => void;
-    }
+    };
   };
 
   public distanceFromTop: number;
@@ -96,44 +96,36 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
     const { isStickyTop, isStickyBottom } = this.state;
-    return isStickyTop !== nextState.isStickyTop ||
+    return (
+      isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
-      this.props.children !== nextProps.children;
+      this.props.children !== nextProps.children
+    );
   }
 
   public render(): JSX.Element {
     const { isStickyTop, isStickyBottom } = this.state;
 
     return (
-      <div ref={ this._root }>
-        {
-          this.canStickyTop &&
-          <div
-            className={ this.props.stickyClassName }
-            ref={ this._stickyContentTop }
-            aria-hidden={ !isStickyTop }
-          >
-            <div style={ this._getStickyPlaceholderHeight(isStickyTop) } />
+      <div ref={this._root}>
+        {this.canStickyTop && (
+          <div className={this.props.stickyClassName} ref={this._stickyContentTop} aria-hidden={!isStickyTop}>
+            <div style={this._getStickyPlaceholderHeight(isStickyTop)} />
           </div>
-        }
-        {
-          this.canStickyBottom &&
-          <div
-            className={ this.props.stickyClassName }
-            ref={ this._stickyContentBottom }
-            aria-hidden={ !isStickyBottom }
-          >
-            <div style={ this._getStickyPlaceholderHeight(isStickyBottom) } />
+        )}
+        {this.canStickyBottom && (
+          <div className={this.props.stickyClassName} ref={this._stickyContentBottom} aria-hidden={!isStickyBottom}>
+            <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
-        }
-        <div style={ this._getNonStickyPlaceholderHeight() } />
+        )}
+        <div style={this._getNonStickyPlaceholderHeight()} />
         <div
-          ref={ this._nonStickyContent }
-          className={ isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined }
-          style={ this._getContentStyles(isStickyTop || isStickyBottom) }
+          ref={this._nonStickyContent}
+          className={isStickyTop || isStickyBottom ? this.props.stickyClassName : undefined}
+          style={this._getContentStyles(isStickyTop || isStickyBottom)}
         >
-          { this.props.children }
+          {this.props.children}
         </div>
       </div>
     );
@@ -171,7 +163,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _getNonStickyPlaceholderHeight(): React.CSSProperties {
-    const { isStickyTop, isStickyBottom, } = this.state;
+    const { isStickyTop, isStickyBottom } = this.state;
     if (isStickyTop || isStickyBottom) {
       const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
       return {
@@ -197,7 +189,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= this.distanceFromTop) {
-        isStickyBottom = this.distanceFromTop - container.scrollTop > this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
+        isStickyBottom =
+          this.distanceFromTop - container.scrollTop > this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
 
       this.setState({
@@ -205,7 +198,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyBottom: isStickyBottom
       });
     }
-  }
+  };
 
   private _getStickyDistanceFromTop = (): number => {
     let distance = 0;
@@ -214,7 +207,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     return distance;
-  }
+  };
 
   private _getStickyDistanceFromTopForFooter = (container: HTMLElement, footerStickyVisibleContainer: HTMLElement): number => {
     let distance = 0;
@@ -223,7 +216,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     return distance;
-  }
+  };
 
   private _getNonStickyDistanceFromTop = (container: HTMLElement): number => {
     let distance = 0;
@@ -240,7 +233,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       }
     }
     return distance;
-  }
+  };
 
   // Gets background of nearest parent element that has a declared background-color attribute
   private _getBackground(): string | undefined {
@@ -250,8 +243,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     let curr: HTMLElement = this.root;
 
-    while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
-      window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {
+    while (
+      window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
+      window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent'
+    ) {
       if (curr.tagName === 'HTML') {
         // Fallback color if no element has a declared background-color attribute
         return undefined;

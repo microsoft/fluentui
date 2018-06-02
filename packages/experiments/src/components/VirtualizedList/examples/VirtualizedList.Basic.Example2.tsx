@@ -13,11 +13,7 @@ const items: IItem[] = [];
 const Item = (props: { item: IItem }) => {
   const { item } = props;
 
-  return (
-    <div>
-      { item.key }
-    </div>
-  );
+  return <div>{item.key}</div>;
 };
 
 type ExampleList = new () => VirtualizedList<IItem>;
@@ -41,12 +37,8 @@ export class VirtualizedListBasicExample2 extends React.Component {
   public render(): JSX.Element {
     return (
       <div>
-        <ScrollContainer scrollDebounceDelay={ 200 } className={ VirtualizedListExampleStylesModule.fixedHeight }>
-          <ExampleList
-            items={ items }
-            itemHeight={ 30 }
-            onRenderItem={ this._renderItem }
-          />
+        <ScrollContainer scrollDebounceDelay={200} className={VirtualizedListExampleStylesModule.fixedHeight}>
+          <ExampleList items={items} itemHeight={30} onRenderItem={this._renderItem} />
         </ScrollContainer>
       </div>
     );
@@ -55,9 +47,9 @@ export class VirtualizedListBasicExample2 extends React.Component {
   private _renderItem = (item: IItem, itemIndex: number): JSX.Element => {
     return (
       // tslint:disable-next-line:jsx-ban-props
-      <div key={ item.key } style={ { height: 30, border: '1px solid blue' } }>
-        <Item item={ item } />
+      <div key={item.key} style={{ height: 30, border: '1px solid blue' }}>
+        <Item item={item} />
       </div>
     );
-  }
+  };
 }

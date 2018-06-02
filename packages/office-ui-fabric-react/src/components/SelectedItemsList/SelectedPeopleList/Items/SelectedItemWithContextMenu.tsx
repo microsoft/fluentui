@@ -26,22 +26,19 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
 
   public render(): JSX.Element {
     return (
-      <div
-        ref={ this.itemElement }
-        onContextMenu={ this._onClick }
-      >
-        { this.props.renderedItem }
-        { this.state.contextualMenuVisible ? (
+      <div ref={this.itemElement} onContextMenu={this._onClick}>
+        {this.props.renderedItem}
+        {this.state.contextualMenuVisible ? (
           <ContextualMenu
-            items={ this.props.menuItems }
-            shouldFocusOnMount={ true }
-            target={ this.itemElement.current }
-            onDismiss={ this._onCloseContextualMenu }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-          />)
-          : null
-        }
-      </div >);
+            items={this.props.menuItems}
+            shouldFocusOnMount={true}
+            target={this.itemElement.current}
+            onDismiss={this._onCloseContextualMenu}
+            directionalHint={DirectionalHint.bottomLeftEdge}
+          />
+        ) : null}
+      </div>
+    );
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -51,9 +48,9 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
     } else {
       this.setState({ contextualMenuVisible: true });
     }
-  }
+  };
 
   private _onCloseContextualMenu = (ev: Event): void => {
     this.setState({ contextualMenuVisible: false });
-  }
+  };
 }

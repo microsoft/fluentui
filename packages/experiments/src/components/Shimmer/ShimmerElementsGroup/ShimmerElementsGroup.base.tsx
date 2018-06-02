@@ -1,21 +1,8 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-} from '../../../Utilities';
-import {
-  IShimmerElementsGroupProps,
-  IShimmerElementsGroupStyleProps,
-  IShimmerElementsGroupStyles
-} from './ShimmerElementsGroup.types';
+import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
+import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
 import { IStyleSet } from '../../../Styling';
-import {
-  ShimmerElementType,
-  ShimmerElementVerticalAlign,
-  ShimmerElementsDefaultHeights,
-  IShimmerElement
-} from '../Shimmer.types';
+import { ShimmerElementType, ShimmerElementVerticalAlign, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
 import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
@@ -35,14 +22,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
   }
 
   public render(): JSX.Element {
-    const {
-      styles,
-      width,
-      shimmerElements,
-      rowHeight,
-      flexWrap,
-      theme
-    } = this.props;
+    const { styles, width, shimmerElements, rowHeight, flexWrap, theme } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -52,53 +32,28 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
     const height = rowHeight ? rowHeight : this._findMaxElementHeight(shimmerElements ? shimmerElements : []);
 
-    return (
-      <div
-        className={ this._classNames.root }
-      >
-        { this._getRenderedElements(shimmerElements, height) }
-      </div>
-    );
+    return <div className={this._classNames.root}>{this._getRenderedElements(shimmerElements, height)}</div>;
   }
 
   private _getRenderedElements = (shimmerElements?: IShimmerElement[], rowHeight?: number): React.ReactNode => {
-    const renderedElements: React.ReactNode = shimmerElements ?
+    const renderedElements: React.ReactNode = shimmerElements ? (
       shimmerElements.map((elem: IShimmerElement, index: number): JSX.Element => {
         const { type, ...filteredElem } = elem;
         switch (elem.type) {
           case ShimmerElementType.circle:
-            return (
-              <ShimmerCircle
-                key={ index }
-                { ...filteredElem }
-                borderStyle={ this._getBorderStyles(elem, rowHeight) }
-              />
-            );
+            return <ShimmerCircle key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
           case ShimmerElementType.gap:
-            return (
-              <ShimmerGap
-                key={ index }
-                { ...filteredElem }
-                borderStyle={ this._getBorderStyles(elem, rowHeight) }
-              />
-            );
+            return <ShimmerGap key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
           case ShimmerElementType.line:
-            return (
-              <ShimmerLine
-                key={ index }
-                { ...filteredElem }
-                borderStyle={ this._getBorderStyles(elem, rowHeight) }
-              />
-            );
+            return <ShimmerLine key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
         }
-      }) : (
-        <ShimmerLine
-          height={ ShimmerElementsDefaultHeights.line }
-        />
-      );
+      })
+    ) : (
+      <ShimmerLine height={ShimmerElementsDefaultHeights.line} />
+    );
 
     return renderedElements;
-  }
+  };
 
   private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IStyleSet | undefined => {
     const elemHeight: number | undefined = elem.height;
@@ -124,7 +79,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     }
 
     return borderStyle;
-  }
+  };
 
   /**
    * User should not worry to provide which of the elements is the highest, we do the calculation for him.
@@ -150,11 +105,9 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     });
 
     const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
-      return next.height ?
-        next.height > acc ? next.height : acc
-        : acc;
+      return next.height ? (next.height > acc ? next.height : acc) : acc;
     }, 0);
 
     return rowHeight;
-  }
+  };
 }

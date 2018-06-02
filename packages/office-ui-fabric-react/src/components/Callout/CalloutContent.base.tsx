@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  ICalloutProps,
-  ICalloutContentStyleProps,
-  ICalloutContentStyles
-} from './Callout.types';
+import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   BaseComponent,
@@ -28,15 +24,13 @@ import {
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
-import {
-  AnimationClassNames
-} from '../../Styling';
+import { AnimationClassNames } from '../../Styling';
 
-const ANIMATIONS: { [key: number]: string | undefined; } = {
+const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
   [RectangleEdge.bottom]: AnimationClassNames.slideDownIn10,
   [RectangleEdge.left]: AnimationClassNames.slideLeftIn10,
-  [RectangleEdge.right]: AnimationClassNames.slideRightIn10,
+  [RectangleEdge.right]: AnimationClassNames.slideRightIn10
 };
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
@@ -56,7 +50,6 @@ export interface ICalloutState {
 
 @customizable('CalloutContent', ['theme'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
-
   public static defaultProps = {
     preventDismissOnScroll: false,
     isBeakVisible: true,
@@ -114,7 +107,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
-    if (newTarget !== oldTarget || typeof (newTarget) === 'string' || newTarget instanceof String) {
+    if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
@@ -132,7 +125,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         positions: undefined
       });
     }
-
   }
 
   public componentDidMount(): void {
@@ -146,9 +138,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (!this._targetWindow) {
       return null;
     }
-    let {
-      target
-    } = this.props;
+    let { target } = this.props;
     const {
       styles,
       role,
@@ -163,69 +153,60 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       finalHeight,
       backgroundColor,
       calloutMaxHeight,
-      onScroll,
+      onScroll
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
 
     const getContentMaxHeight: number | undefined = this._getMaxHeight() ? this._getMaxHeight()! + this.state.heightOffset! : undefined;
-    const contentMaxHeight: number | undefined = calloutMaxHeight! && getContentMaxHeight && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
+    const contentMaxHeight: number | undefined =
+      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight ? calloutMaxHeight! : getContentMaxHeight!;
     const overflowYHidden = !!finalHeight;
 
-    const beakVisible = isBeakVisible && (!!target);
-    this._classNames = getClassNames(
-      styles!,
-      {
-        theme: this.props.theme!,
-        className,
-        overflowYHidden: overflowYHidden,
-        calloutWidth,
-        positions,
-        beakWidth,
-        backgroundColor
-      }
-    );
+    const beakVisible = isBeakVisible && !!target;
+    this._classNames = getClassNames(styles!, {
+      theme: this.props.theme!,
+      className,
+      overflowYHidden: overflowYHidden,
+      calloutWidth,
+      positions,
+      beakWidth,
+      backgroundColor
+    });
 
-    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden', maxHeight: contentMaxHeight } : { maxHeight: contentMaxHeight };
+    const overflowStyle: React.CSSProperties = overflowYHidden
+      ? { overflowY: 'hidden', maxHeight: contentMaxHeight }
+      : { maxHeight: contentMaxHeight };
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
-      <div
-        ref={ this._hostElement }
-        className={ this._classNames.container }
-        style={ visibilityStyle }
-      >
+      <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
         <div
-          className={ css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!]) }
-          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
-          tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
+          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          ref={ this._calloutElement }
+          ref={this._calloutElement}
         >
-
-          { beakVisible && (
-            <div
-              className={ this._classNames.beak }
-              style={ this._getBeakPosition() }
-            />) }
-          { beakVisible &&
-            (<div className={ this._classNames.beakCurtain } />) }
-          { !this.props.hidden && <Popup
-            role={ role }
-            ariaLabel={ ariaLabel }
-            ariaDescribedBy={ ariaDescribedBy }
-            ariaLabelledBy={ ariaLabelledBy }
-            className={ this._classNames.calloutMain }
-            onDismiss={ this.dismiss }
-            onScroll={ onScroll }
-            shouldRestoreFocus={ true }
-            style={ overflowStyle }
-          >
-            { children }
-          </Popup>
-          }
+          {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
+          {beakVisible && <div className={this._classNames.beakCurtain} />}
+          {!this.props.hidden && (
+            <Popup
+              role={role}
+              ariaLabel={ariaLabel}
+              ariaDescribedBy={ariaDescribedBy}
+              ariaLabelledBy={ariaLabelledBy}
+              className={this._classNames.calloutMain}
+              onDismiss={this.dismiss}
+              onScroll={onScroll}
+              shouldRestoreFocus={true}
+              style={overflowStyle}
+            >
+              {children}
+            </Popup>
+          )}
         </div>
-      </div >
+      </div>
     );
 
     return content;
@@ -237,7 +218,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (onDismiss) {
       onDismiss(ev);
     }
-  }
+  };
 
   protected _dismissOnScroll(ev: Event) {
     const { preventDismissOnScroll } = this.props;
@@ -252,10 +233,11 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
     if (
       (!this._target && clickedOutsideCallout) ||
-      ev.target !== this._targetWindow &&
-      clickedOutsideCallout &&
-      ((this._target as MouseEvent).stopPropagation ||
-        (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))) {
+      (ev.target !== this._targetWindow &&
+        clickedOutsideCallout &&
+        ((this._target as MouseEvent).stopPropagation ||
+          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+    ) {
       this.dismiss(ev);
     }
   }
@@ -265,10 +247,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       this._didSetInitialFocus = true;
       this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
     }
-  }
+  };
 
   protected _onComponentDidMount = (): void => {
-
     this._addListeners();
 
     if (this.props.onLayerMounted) {
@@ -277,7 +258,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
     this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
-  }
+  };
 
   private _addListeners() {
     // This is added so the callout will dismiss when the window is scrolled
@@ -308,7 +289,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _getBeakPosition(): React.CSSProperties {
     const { positions } = this.state;
     const beakPostionStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
+      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null)
     };
 
     if (!beakPostionStyle.top && !beakPostionStyle.bottom && !beakPostionStyle.left && !beakPostionStyle.right) {
@@ -333,9 +314,10 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
-      if ((!positions && newPositions) ||
-        (positions && newPositions && !this._arePositionsEqual(positions, newPositions)
-          && this._positionAttempts < 5)) {
+      if (
+        (!positions && newPositions) ||
+        (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
+      ) {
         // We should not reposition the callout more than a few times, if it is then the content is likely resizing
         // and we should stop trying to reposition to prevent a stack overflow.
         this._positionAttempts++;
@@ -394,8 +376,10 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
-    return this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
-      this._comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition);
+    return (
+      this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
+      this._comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition)
+    );
   }
 
   private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
@@ -421,7 +405,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? currentDoc.querySelector(target) as Element : null;
+        this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
@@ -443,7 +427,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _setHeightOffsetEveryFrame(): void {
     if (this._calloutElement.current && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem = this._calloutElement.current && this._calloutElement.current.lastChild as HTMLElement;
+        const calloutMainElem = this._calloutElement.current && (this._calloutElement.current.lastChild as HTMLElement);
 
         if (!calloutMainElem) {
           return;

@@ -26,10 +26,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
    * A callback for receiving a notification when the choice has lost focus.
    */
-  onBlur?: (
-    ev: React.FocusEvent<HTMLElement>,
-    props?: IChoiceGroupOption
-  ) => void;
+  onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
 
   /**
    * Indicates if the ChoiceGroupOption should appear focused, visually

@@ -28,13 +28,8 @@ describe('FormDatePicker Unit Tests', () => {
 
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
-          <Form
-            onSubmit={ undefined }
-          >
-            <FormDatePicker
-              inputKey={ null as any }
-              value={ undefined }
-            />
+          <Form onSubmit={undefined}>
+            <FormDatePicker inputKey={null as any} value={undefined} />
           </Form>
         );
       };
@@ -53,14 +48,8 @@ describe('FormDatePicker Unit Tests', () => {
 
     it('Null props still render', () => {
       renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onSubmit={ undefined }
-        >
-          <FormDatePicker
-            inputKey='name'
-            value={ undefined }
-            validators={ undefined }
-          />
+        <Form onSubmit={undefined}>
+          <FormDatePicker inputKey="name" value={undefined} validators={undefined} />
         </Form>
       ) as Form;
 
@@ -72,12 +61,11 @@ describe('FormDatePicker Unit Tests', () => {
       const now: Date = new Date();
       renderedForm = ReactTestUtils.renderIntoDocument(
         <Form
-          onSubmit={ (value: any) => { result = value; } }
+          onSubmit={(value: any) => {
+            result = value;
+          }}
         >
-          <FormDatePicker
-            inputKey='name'
-            value={ now }
-          />
+          <FormDatePicker inputKey="name" value={now} />
         </Form>
       ) as Form;
 
@@ -107,13 +95,8 @@ describe('FormDatePicker Unit Tests', () => {
     it('DatePicker is leading and trailing debounced', () => {
       const updateStub: sinon.SinonStub = sinon.stub();
       const renderedForm = ReactTestUtils.renderIntoDocument(
-        <Form
-          onUpdated={ updateStub }
-        >
-          <ExtendsDatePicker
-            inputKey='name'
-            value={ new Date() }
-          />
+        <Form onUpdated={updateStub}>
+          <ExtendsDatePicker inputKey="name" value={new Date()} />
         </Form>
       ) as Form;
 

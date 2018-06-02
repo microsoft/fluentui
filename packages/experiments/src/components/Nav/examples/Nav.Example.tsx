@@ -10,16 +10,18 @@ export class NavExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const navLinkGroups: ICustomNavLinkGroup[] = [
       {
-        links: [
-          { name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key' }
-        ],
+        links: [{ name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key' }],
         groupType: NavGroupType.ToggleGroup
       },
       {
         name: 'default group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: true, icon: 'Home', key: 'key1',
+            name: 'Home - no action supported',
+            url: 'http://example.com',
+            isExpanded: true,
+            icon: 'Home',
+            key: 'key1',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key2' },
               { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key3' }
@@ -33,7 +35,7 @@ export class NavExample extends React.Component<{}, {}> {
             target: '_blank',
             key: 'key6',
             icon: 'DietPlanNotebook'
-          },
+          }
         ],
         groupType: NavGroupType.MenuGroup
       },
@@ -41,7 +43,11 @@ export class NavExample extends React.Component<{}, {}> {
         name: 'named menu group',
         links: [
           {
-            name: 'Home - no action supported', url: 'http://example.com', isExpanded: false, icon: 'Home', key: 'key7',
+            name: 'Home - no action supported',
+            url: 'http://example.com',
+            isExpanded: false,
+            icon: 'Home',
+            key: 'key7',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key8' },
               { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key9' }
@@ -55,14 +61,14 @@ export class NavExample extends React.Component<{}, {}> {
             target: '_blank',
             key: 'key12',
             icon: 'DietPlanNotebook'
-          },
+          }
         ],
         groupType: NavGroupType.MenuGroup
       },
       {
         links: [
           { name: 'Edit', url: '#', onClick: this._onEditClick, icon: 'Edit', key: 'key13' },
-          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' },
+          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' }
         ],
         groupType: NavGroupType.CustomizationGroup
       }
@@ -70,7 +76,7 @@ export class NavExample extends React.Component<{}, {}> {
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' enableCustomization={ true } selectedKey='key2' />
+        <NavToggler groups={navLinkGroups} dataHint="LeftNav" enableCustomization={true} selectedKey="key2" />
       </div>
     );
   }

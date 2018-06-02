@@ -17,30 +17,19 @@ const TEST_OPTIONS: IChoiceGroupOption[] = [
 const QUERY_SELECTOR = '.ms-ChoiceField-input';
 
 describe('ChoiceGroup', () => {
-
   beforeEach(() => {
     // Resetting ids to create predictability in generated ids.
     resetIds();
   });
 
   it('renders ChoiceGroup correctly', () => {
-    const component = renderer.create(
-      <ChoiceGroup
-        options={ TEST_OPTIONS }
-        required
-      />
-    );
+    const component = renderer.create(<ChoiceGroup options={TEST_OPTIONS} required />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('can change options', () => {
-    const choiceGroup = mount(
-      <ChoiceGroup
-        label='testgroup'
-        options={ TEST_OPTIONS }
-        required={ true }
-      />);
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
@@ -73,12 +62,7 @@ describe('ChoiceGroup', () => {
     const options = { ...TEST_OPTIONS };
     options[0].disabled = true;
 
-    const choiceGroup = mount(
-      <ChoiceGroup
-        label='testgroup'
-        options={ TEST_OPTIONS }
-        required={ true }
-      />);
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
@@ -88,14 +72,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('renders all choice options as disabled when disabled', () => {
-    const choiceGroup = mount(
-      <ChoiceGroup
-        label='testgroup'
-        options={ TEST_OPTIONS }
-        required={ true }
-        disabled={ true }
-      />
-    );
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} disabled={true} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
@@ -105,12 +82,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('can act as an uncontrolled component', () => {
-    const choiceGroup = mount(
-      <ChoiceGroup
-        defaultSelectedKey='1'
-        options={ TEST_OPTIONS }
-      />
-    );
+    const choiceGroup = mount(<ChoiceGroup defaultSelectedKey="1" options={TEST_OPTIONS} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
@@ -127,13 +99,7 @@ describe('ChoiceGroup', () => {
       _selectedItem = item;
     };
 
-    const choiceGroup = mount(
-      <ChoiceGroup
-        selectedKey='1'
-        options={ TEST_OPTIONS }
-        onChange={ onChange }
-      />
-    );
+    const choiceGroup = mount(<ChoiceGroup selectedKey="1" options={TEST_OPTIONS} onChange={onChange} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
@@ -150,12 +116,7 @@ describe('ChoiceGroup', () => {
   it('extra <input> attributes appear in dom if specified', () => {
     const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
 
-    const choiceGroup = mount(
-      <ChoiceGroup
-        options={ TEST_OPTIONS }
-        onChange={ onChange }
-      />
-    );
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} onChange={onChange} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 

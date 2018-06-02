@@ -9,9 +9,7 @@ import { styleToRegistration, applyRegistration } from './styleToClassName';
  *
  * @public
  */
-export function mergeStyleSets<K extends string>(
-  ...cssSets: ({[P in K]?: IStyle } | null | undefined)[]
-): {[P in K]: string} {
+export function mergeStyleSets<K extends string>(...cssSets: ({ [P in K]?: IStyle } | null | undefined)[]): { [P in K]: string } {
   // tslint:disable-next-line:no-any
   const classNameSet: any = {};
   const classMap: { [key: string]: string } = {};

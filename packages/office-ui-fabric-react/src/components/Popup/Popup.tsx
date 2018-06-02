@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  divProperties,
-  doesElementContainFocus,
-  getDocument,
-  getNativeProps,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, createRef } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -18,7 +10,6 @@ export interface IPopupState {
  * This adds accessibility to Dialog and Panel controls
  */
 export class Popup extends BaseComponent<IPopupProps, IPopupState> {
-
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
   };
@@ -61,7 +52,8 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
       this.props.shouldRestoreFocus &&
       this._originalFocusedElement &&
       this._containsFocus &&
-      this._originalFocusedElement as any !== window) {
+      (this._originalFocusedElement as any) !== window
+    ) {
       // This slight delay is required so that we can unwind the stack, let react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
@@ -76,17 +68,17 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
     return (
       <div
-        ref={ this._root }
-        { ...getNativeProps(this.props, divProperties) }
-        className={ className }
-        role={ role }
-        aria-label={ ariaLabel }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
-        onKeyDown={ this._onKeyDown }
-        style={ { overflowY: this.state.needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
+        ref={this._root}
+        {...getNativeProps(this.props, divProperties)}
+        className={className}
+        role={role}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        onKeyDown={this._onKeyDown}
+        style={{ overflowY: this.state.needsVerticalScrollBar ? 'scroll' : 'auto', ...style }}
       >
-        { this.props.children }
+        {this.props.children}
       </div>
     );
   }
@@ -94,7 +86,6 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     switch (ev.which) {
       case KeyCodes.escape:
-
         if (this.props.onDismiss) {
           this.props.onDismiss(ev);
 
@@ -104,7 +95,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
         break;
     }
-  }
+  };
 
   private _updateScrollBarAsync(): void {
     this._async.requestAnimationFrame(() => {
@@ -127,7 +118,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
       const rootHeight = this._root.current.clientHeight;
       const firstChildHeight = this._root.current.firstElementChild.clientHeight;
       if (rootHeight > 0 && firstChildHeight > rootHeight) {
-        needsVerticalScrollBar = (firstChildHeight - rootHeight) > 1;
+        needsVerticalScrollBar = firstChildHeight - rootHeight > 1;
       }
     }
     if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {

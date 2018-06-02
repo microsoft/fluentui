@@ -14,7 +14,9 @@ describe('PersonaCoin', () => {
 
   beforeAll(() => {
     // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => { /** no impl **/ });
+    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
+      /** no impl **/
+    });
   });
 
   afterAll(() => {
@@ -28,19 +30,19 @@ describe('PersonaCoin', () => {
   });
 
   it('renders correctly with text', () => {
-    const component = renderer.create(<PersonaCoin primaryText='Kat Larrson' />);
+    const component = renderer.create(<PersonaCoin primaryText="Kat Larrson" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with provided initials', () => {
-    const component = renderer.create(<PersonaCoin imageInitials='JG' />);
+    const component = renderer.create(<PersonaCoin imageInitials="JG" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with image', () => {
-    const component = renderer.create(<PersonaCoin primaryText='Kat Larrson' imageUrl={ testImage1x1 } />);
+    const component = renderer.create(<PersonaCoin primaryText="Kat Larrson" imageUrl={testImage1x1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

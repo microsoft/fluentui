@@ -26,41 +26,21 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
 
   return (
     <a
-      id={ props.id }
-      href={ props.href }
-      target={ props.target }
-      onClick={ props.onClick }
-      data-hint={ props.dataHint }
-      data-value={ props.dataValue }
-      aria-label={ props.ariaLabel }
-      aria-expanded={ props.ariaExpanded }
-      role={ props.role }
+      id={props.id}
+      href={props.href}
+      target={props.target}
+      onClick={props.onClick}
+      data-hint={props.dataHint}
+      data-value={props.dataValue}
+      aria-label={props.ariaLabel}
+      aria-expanded={props.ariaExpanded}
+      role={props.role}
     >
-      <div className={ props.rootClassName } aria-hidden='true'>
-        {
-          props.leftIconName ?
-            <Icon
-              iconName={ props.leftIconName }
-              className={ props.iconClassName }
-            />
-            : null
-        }
-        {
-          props.content ?
-            <div className={ mergeStyles(props.textClassName, computedTextWidth) }>
-              { props.content }
-            </div>
-            : null
-        }
-        {
-          props.rightIconName ?
-            <Icon
-              iconName={ props.rightIconName }
-              className={ props.iconClassName }
-            />
-            : null
-        }
+      <div className={props.rootClassName} aria-hidden="true">
+        {props.leftIconName ? <Icon iconName={props.leftIconName} className={props.iconClassName} /> : null}
+        {props.content ? <div className={mergeStyles(props.textClassName, computedTextWidth)}>{props.content}</div> : null}
+        {props.rightIconName ? <Icon iconName={props.rightIconName} className={props.iconClassName} /> : null}
       </div>
-    </a >
+    </a>
   );
 };

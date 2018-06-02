@@ -35,7 +35,7 @@ const OFF_SCREEN_STYLE = { opacity: 0 };
 // properly we need to set the border.
 // The value is abitrary.
 const BORDER_WIDTH = 1;
-const SLIDE_ANIMATIONS: { [key: number]: string; } = {
+const SLIDE_ANIMATIONS: { [key: number]: string } = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
@@ -55,10 +55,8 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer
-  extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState>
+export class PositioningContainer extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState>
   implements PositioningContainer {
-
   public static defaultProps: IPositioningContainerTypes = {
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
@@ -126,7 +124,7 @@ export class PositioningContainer
     // fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
-    if (newTarget !== oldTarget || typeof (newTarget) === 'string' || newTarget instanceof String) {
+    if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
@@ -146,55 +144,45 @@ export class PositioningContainer
       return null;
     }
 
-    const {
-      className,
-      positioningContainerWidth,
-      positioningContainerMaxHeight,
-      children } = this.props;
+    const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = this.props;
     const { positions } = this.state;
 
     const styles = getClassNames();
 
-    const directionalClassName = (positions && positions.targetEdge)
-      ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]]
-      : '';
+    const directionalClassName =
+      positions && positions.targetEdge ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]] : '';
 
     const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    const contentMaxHeight: number = positioningContainerMaxHeight!
-      && (positioningContainerMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : positioningContainerMaxHeight!;
+    const contentMaxHeight: number =
+      positioningContainerMaxHeight! && positioningContainerMaxHeight! > getContentMaxHeight
+        ? getContentMaxHeight
+        : positioningContainerMaxHeight!;
     const content = (
-      <div
-        ref={ this._positionedHost }
-        className={ css('ms-PositioningContainer', styles.container) }
-      >
+      <div ref={this._positionedHost} className={css('ms-PositioningContainer', styles.container)}>
         <div
-          className={
-            mergeStyles(
-              'ms-PositioningContainer-layerHost',
-              styles.root,
-              className,
-              directionalClassName,
-              !!positioningContainerWidth && { width: positioningContainerWidth }
-            ) }
+          className={mergeStyles(
+            'ms-PositioningContainer-layerHost',
+            styles.root,
+            className,
+            directionalClassName,
+            !!positioningContainerWidth && { width: positioningContainerWidth }
+          )}
           // tslint:disable-next-line:jsx-ban-props
-          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
-          tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-          ref={ this._contentHost }
+          ref={this._contentHost}
         >
-          { children }
-          { // @TODO apply to the content container
+          {children}
+          {
+            // @TODO apply to the content container
             contentMaxHeight
           }
         </div>
       </div>
     );
 
-    return this.props.doNotLayer ? content : (
-      <Layer>
-        { content }
-      </Layer>
-    );
+    return this.props.doNotLayer ? content : <Layer>{content}</Layer>;
   }
 
   /**
@@ -203,7 +191,7 @@ export class PositioningContainer
    */
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     this.onResize(ev);
-  }
+  };
 
   public onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     const { onDismiss } = this.props;
@@ -212,7 +200,7 @@ export class PositioningContainer
     } else {
       this._updateAsyncPosition();
     }
-  }
+  };
 
   protected _dismissOnScroll(ev: Event): void {
     const { preventDismissOnScroll } = this.props;
@@ -227,10 +215,11 @@ export class PositioningContainer
 
     if (
       (!this._target && clickedOutsideCallout) ||
-      ev.target !== this._targetWindow &&
-      clickedOutsideCallout &&
-      ((this._target as MouseEvent).stopPropagation ||
-        (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))) {
+      (ev.target !== this._targetWindow &&
+        clickedOutsideCallout &&
+        ((this._target as MouseEvent).stopPropagation ||
+          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+    ) {
       this.onResize(ev);
     }
   }
@@ -240,7 +229,7 @@ export class PositioningContainer
       this._didSetInitialFocus = true;
       focusFirstChild(this._contentHost.current);
     }
-  }
+  };
 
   protected _onComponentDidMount = (): void => {
     // This is added so the positioningContainer will dismiss when the window is scrolled
@@ -260,7 +249,7 @@ export class PositioningContainer
 
     this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
-  }
+  };
 
   private _updateAsyncPosition(): void {
     this._async.requestAnimationFrame(() => this._updatePosition());
@@ -268,10 +257,7 @@ export class PositioningContainer
 
   private _updatePosition(): void {
     const { positions } = this.state;
-    const {
-      offsetFromTarget,
-      onPositioned
-    } = this.props;
+    const { offsetFromTarget, onPositioned } = this.props;
 
     const hostElement = this._positionedHost.current;
     const positioningContainerElement = this._contentHost.current;
@@ -286,19 +272,23 @@ export class PositioningContainer
         const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
         // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
         // The position should not change if the position is within 2 decimal places.
-        if ((!positions && newPositions) ||
-          (positions && newPositions && !this._arePositionsEqual(positions, newPositions)
-            && this._positionAttempts < 5)) {
+        if (
+          (!positions && newPositions) ||
+          (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
+        ) {
           // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
           // and we should stop trying to reposition to prevent a stack overflow.
           this._positionAttempts++;
-          this.setState({
-            positions: newPositions
-          }, () => {
-            if (onPositioned) {
-              onPositioned(newPositions);
+          this.setState(
+            {
+              positions: newPositions
+            },
+            () => {
+              if (onPositioned) {
+                onPositioned(newPositions);
+              }
             }
-          });
+          );
         } else {
           this._positionAttempts = 0;
           if (onPositioned) {
@@ -337,11 +327,7 @@ export class PositioningContainer
    * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
-    const {
-      directionalHintFixed,
-      offsetFromTarget,
-      directionalHint
-    } = this.props;
+    const { directionalHintFixed, offsetFromTarget, directionalHint } = this.props;
 
     if (!this._maxHeight) {
       if (directionalHintFixed && this._target) {
@@ -379,7 +365,7 @@ export class PositioningContainer
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
+        this._target = currentDoc ? (currentDoc.querySelector(target) as HTMLElement) : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;

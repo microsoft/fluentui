@@ -11,11 +11,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyles extends { [P 
   getStyles?: IStyleFunctionOrObject<TStyleProps, TStyles>,
   styleProps?: TStyleProps
 ) => IClassNames<TStyles> {
-
   // TODO: memoize.
-  return (
-    getStyles?: IStyleFunctionOrObject<TStyleProps, TStyles>,
-    styleProps?: TStyleProps
-  ): IClassNames<TStyles> => mergeStyleSets(getStyles && (typeof getStyles === 'function' ? getStyles(styleProps!) : getStyles)
-  );
+  return (getStyles?: IStyleFunctionOrObject<TStyleProps, TStyles>, styleProps?: TStyleProps): IClassNames<TStyles> =>
+    mergeStyleSets(getStyles && (typeof getStyles === 'function' ? getStyles(styleProps!) : getStyles));
 }

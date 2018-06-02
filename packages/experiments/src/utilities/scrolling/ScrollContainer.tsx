@@ -63,13 +63,9 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     const { children, className } = this.props;
 
     return (
-      <div
-        className={ css('ms-ScrollContainer', ScrollContainerStyles.root, className) }
-        data-is-scrollable={ true }
-        ref={ this._resolveRoot }
-      >
-        { children as JSX.Element }
-      </div >
+      <div className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)} data-is-scrollable={true} ref={this._resolveRoot}>
+        {children as JSX.Element}
+      </div>
     );
   }
 
@@ -84,7 +80,7 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
       this._root = element;
       this._init();
     }
-  }
+  };
 
   private _onIntersection = (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void => {
     for (const entry of entries) {
@@ -102,7 +98,7 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
         return;
       }
     }
-  }
+  };
 
   private _init(): void {
     if (typeof IntersectionObserver !== 'undefined') {
@@ -146,5 +142,5 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     for (const callback of this._callbacks) {
       callback(scrollTop);
     }
-  }
+  };
 }

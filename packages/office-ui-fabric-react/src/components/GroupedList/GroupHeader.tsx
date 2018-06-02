@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css
-} from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
@@ -42,18 +39,8 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
   }
 
   public render(): JSX.Element | null {
-    let {
-      isCollapsedGroupSelectVisible
-    } = this.props;
-    const {
-      group,
-      groupLevel,
-      viewport,
-      selectionMode,
-      loadingText,
-      isSelected,
-      selected
-    } = this.props;
+    let { isCollapsedGroupSelectVisible } = this.props;
+    const { group, groupLevel, viewport, selectionMode, loadingText, isSelected, selected } = this.props;
     const { isCollapsed, isLoadingVisible } = this.state;
 
     if (isCollapsedGroupSelectVisible === undefined) {
@@ -68,62 +55,52 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     }
     return (
       <div
-        className={ css('ms-GroupHeader', styles.root, {
+        className={css('ms-GroupHeader', styles.root, {
           ['is-selected ' + styles.rootIsSelected]: currentlySelected
-        }) }
-        style={ viewport ? { minWidth: viewport.width } : {} }
-        onClick={ this._onHeaderClick }
-        aria-label={ group.ariaLabel || group.name }
-        data-is-focusable={ true }
+        })}
+        style={viewport ? { minWidth: viewport.width } : {}}
+        onClick={this._onHeaderClick}
+        aria-label={group.ariaLabel || group.name}
+        data-is-focusable={true}
       >
-
-        <FocusZone className={ styles.groupHeaderContainer } direction={ FocusZoneDirection.horizontal }>
-
-          { isSelectionCheckVisible ? (
+        <FocusZone className={styles.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
+          {isSelectionCheckVisible ? (
             <button
-              type='button'
-              className={ css('ms-GroupHeader-check', styles.check) }
-              data-selection-toggle={ true }
-              onClick={ this._onToggleSelectGroupClick }
+              type="button"
+              className={css('ms-GroupHeader-check', styles.check)}
+              data-selection-toggle={true}
+              onClick={this._onToggleSelectGroupClick}
             >
-              <Check checked={ currentlySelected } />
+              <Check checked={currentlySelected} />
             </button>
-          ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
-          }
+          ) : selectionMode !== SelectionMode.none ? (
+            GroupSpacer({ count: 1 })
+          ) : null}
 
-          { GroupSpacer({ count: groupLevel as number }) }
+          {GroupSpacer({ count: groupLevel as number })}
 
-          <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) }>
-            <Icon iconName='Tag' />
+          <div className={css('ms-GroupHeader-dropIcon', styles.dropIcon)}>
+            <Icon iconName="Tag" />
           </div>
-          <button
-            type='button'
-            className={ css('ms-GroupHeader-expand', styles.expand) }
-            onClick={ this._onToggleCollapse }
-          >
-            <Icon
-              className={ css(
-                isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)
-              ) }
-              iconName='ChevronDown'
-            />
+          <button type="button" className={css('ms-GroupHeader-expand', styles.expand)} onClick={this._onToggleCollapse}>
+            <Icon className={css(isCollapsed && 'is-collapsed ' + styles.expandIsCollapsed)} iconName="ChevronDown" />
           </button>
 
-          <div className={ css('ms-GroupHeader-title', styles.title) }>
-            <span>{ group.name }</span>
+          <div className={css('ms-GroupHeader-title', styles.title)}>
+            <span>{group.name}</span>
             {
               // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
               // sorting to simulate grouping behaviors, in which case group count is the number of items returned
               // so far. That's the reason we need to use "+" to show we might have more items than count
               // indicates.
             }
-            <span className={ styles.headerCount }>({ group.count }{ group.hasMoreData && '+' })</span>
+            <span className={styles.headerCount}>
+              ({group.count}
+              {group.hasMoreData && '+'})
+            </span>
           </div>
 
-          { isLoadingVisible && (
-            <Spinner label={ loadingText } />
-          ) }
-
+          {isLoadingVisible && <Spinner label={loadingText} />}
         </FocusZone>
       </div>
     );
@@ -146,7 +123,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
     ev.stopPropagation();
     ev.preventDefault();
-  }
+  };
 
   private _onToggleSelectGroupClick = (ev: React.MouseEvent<HTMLElement>): void => {
     const { onToggleSelectGroup, group } = this.props;
@@ -157,7 +134,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
     ev.preventDefault();
     ev.stopPropagation();
-  }
+  };
 
   private _onHeaderClick = (): void => {
     const { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
@@ -167,5 +144,5 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     } else if (onToggleSelectGroup) {
       onToggleSelectGroup(group!);
     }
-  }
+  };
 }

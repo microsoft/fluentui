@@ -20,10 +20,12 @@ describe('FocusTrapZone', () => {
     lastFocusedElement = ev.target;
   }
 
-  function setupElement(element: HTMLElement, {
-    clientRect,
-    isVisible = true
-  }: {
+  function setupElement(
+    element: HTMLElement,
+    {
+      clientRect,
+      isVisible = true
+    }: {
       clientRect: {
         top: number;
         left: number;
@@ -31,7 +33,8 @@ describe('FocusTrapZone', () => {
         right: number;
       };
       isVisible?: boolean;
-    }): void {
+    }
+  ): void {
     element.getBoundingClientRect = () => ({
       top: clientRect.top,
       left: clientRect.left,
@@ -52,25 +55,25 @@ describe('FocusTrapZone', () => {
 
   it('can tab across FocusZones with different button structures', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div { ...{ onFocusCapture: _onFocus } }>
-        <FocusTrapZone forceFocusInsideTrap={ false }>
-          <FocusZone direction={ FocusZoneDirection.horizontal } data-is-visible={ true }>
-            <div data-is-visible={ true }>
-              <button className='a'>a</button>
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusTrapZone forceFocusInsideTrap={false}>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <div data-is-visible={true}>
+              <button className="a">a</button>
             </div>
-            <div data-is-visible={ true }>
-              <button className='b'>b</button>
+            <div data-is-visible={true}>
+              <button className="b">b</button>
             </div>
-            <div data-is-visible={ true }>
-              <button className='c'>c</button>
+            <div data-is-visible={true}>
+              <button className="c">c</button>
             </div>
           </FocusZone>
-          <FocusZone direction={ FocusZoneDirection.horizontal } data-is-visible={ true }>
-            <div data-is-visible={ true }>
-              <div data-is-visible={ true }>
-                <button className='d'>d</button>
-                <button className='e'>e</button>
-                <button className='f'>f</button>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <div data-is-visible={true}>
+              <div data-is-visible={true}>
+                <button className="d">d</button>
+                <button className="e">e</button>
+                <button className="f">f</button>
               </div>
             </div>
           </FocusZone>
@@ -165,20 +168,20 @@ describe('FocusTrapZone', () => {
 
   it('can tab across a FocusZone with different button structures', () => {
     const component = ReactTestUtils.renderIntoDocument(
-      <div { ...{ onFocusCapture: _onFocus } }>
-        <FocusTrapZone forceFocusInsideTrap={ false }>
-          <div data-is-visible={ true }>
-            <button className='x'>x</button>
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusTrapZone forceFocusInsideTrap={false}>
+          <div data-is-visible={true}>
+            <button className="x">x</button>
           </div>
-          <FocusZone direction={ FocusZoneDirection.horizontal } data-is-visible={ true }>
-            <div data-is-visible={ true }>
-              <button className='a'>a</button>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <div data-is-visible={true}>
+              <button className="a">a</button>
             </div>
-            <div data-is-visible={ true }>
-              <div data-is-visible={ true }>
-                <button className='b'>b</button>
-                <button className='c'>c</button>
-                <button className='d'>d</button>
+            <div data-is-visible={true}>
+              <div data-is-visible={true}>
+                <button className="b">b</button>
+                <button className="c">c</button>
+                <button className="d">d</button>
               </div>
             </div>
           </FocusZone>
@@ -265,20 +268,20 @@ describe('FocusTrapZone', () => {
     function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
       const focusTrapZoneRef = createRef<FocusTrapZone>();
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
-        <div onFocusCapture={ _onFocus }>
+        <div onFocusCapture={_onFocus}>
           <FocusTrapZone
-            forceFocusInsideTrap={ false }
-            focusPreviouslyFocusedInnerElement={ focusPreviouslyFocusedInnerElement }
-            data-is-focusable={ true }
-            ref={ focusTrapZoneRef }
+            forceFocusInsideTrap={false}
+            focusPreviouslyFocusedInnerElement={focusPreviouslyFocusedInnerElement}
+            data-is-focusable={true}
+            ref={focusTrapZoneRef}
           >
-            <button className={ 'f' }>f</button>
+            <button className={'f'}>f</button>
             <FocusZone>
-              <button className={ 'a' }>a</button>
-              <button className={ 'b' }>b</button>
+              <button className={'a'}>a</button>
+              <button className={'b'}>b</button>
             </FocusZone>
           </FocusTrapZone>
-          <button className={ 'z' }>z</button>
+          <button className={'z'}>z</button>
         </div>
       ) as HTMLElement;
 

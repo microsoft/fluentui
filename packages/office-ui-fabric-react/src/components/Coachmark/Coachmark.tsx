@@ -99,7 +99,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     color: DefaultPalette.themePrimary,
     isPositionForced: true,
     positioningContainerProps: {
-      directionalHint: DirectionalHint.bottomAutoEdge,
+      directionalHint: DirectionalHint.bottomAutoEdge
     }
   };
 
@@ -143,12 +143,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public render(): JSX.Element {
-    const {
-      children,
-      target,
-      color,
-      positioningContainerProps
-    } = this.props;
+    const { children, target, color, positioningContainerProps } = this.props;
 
     const {
       beakLeft,
@@ -178,44 +173,26 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     return (
       <PositioningContainer
-        target={ target }
-        offsetFromTarget={ BEAK_HEIGHT }
-        componentRef={ this._positioningContainer }
-        finalHeight={ finalHeight }
-        onPositioned={ this._onPositioned }
-        bounds={ this._getBounds() }
-        { ...positioningContainerProps }
+        target={target}
+        offsetFromTarget={BEAK_HEIGHT}
+        componentRef={this._positioningContainer}
+        finalHeight={finalHeight}
+        onPositioned={this._onPositioned}
+        bounds={this._getBounds()}
+        {...positioningContainerProps}
       >
-        <div className={ classNames.root }>
-          <div className={ classNames.pulsingBeacon } />
-          <div
-            className={ classNames.translateAnimationContainer }
-            ref={ this._translateAnimationContainer }
-          >
-            <div className={ classNames.scaleAnimationLayer }>
-              <div className={ classNames.rotateAnimationLayer }>
-                {
-                  this._positioningContainer.current &&
-                  <Beak
-                    left={ beakLeft }
-                    top={ beakTop }
-                    right={ beakRight }
-                    bottom={ beakBottom }
-                    direction={ this._beakDirection }
-                    color={ color }
-                  />
-                }
+        <div className={classNames.root}>
+          <div className={classNames.pulsingBeacon} />
+          <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
+            <div className={classNames.scaleAnimationLayer}>
+              <div className={classNames.rotateAnimationLayer}>
+                {this._positioningContainer.current && (
+                  <Beak left={beakLeft} top={beakTop} right={beakRight} bottom={beakBottom} direction={this._beakDirection} color={color} />
+                )}
                 <FocusZone>
-                  <div
-                    className={ classNames.entityHost }
-                    data-is-focusable={ true }
-                    onFocus={ this._onFocusHandler }
-                  >
-                    <div
-                      className={ classNames.entityInnerHost }
-                      ref={ this._entityInnerHostElement }
-                    >
-                      { children }
+                  <div className={classNames.entityHost} data-is-focusable={true} onFocus={this._onFocusHandler}>
+                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
+                      {children}
                     </div>
                   </div>
                 </FocusZone>
@@ -245,50 +222,55 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentDidMount(): void {
-    this._async.requestAnimationFrame(((): void => {
-      if (this._entityInnerHostElement.current && (this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
-        this.setState({
-          isMeasuring: false,
-          entityInnerHostRect: {
-            width: this._entityInnerHostElement.current.offsetWidth,
-            height: this._entityInnerHostElement.current.offsetHeight
-          }
-        });
-        this._setBeakPosition();
-        this.forceUpdate();
-      }
+    this._async.requestAnimationFrame(
+      (): void => {
+        if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
+          this.setState({
+            isMeasuring: false,
+            entityInnerHostRect: {
+              width: this._entityInnerHostElement.current.offsetWidth,
+              height: this._entityInnerHostElement.current.offsetHeight
+            }
+          });
+          this._setBeakPosition();
+          this.forceUpdate();
+        }
 
-      // We dont want to the user to immediatley trigger the coachmark when it's opened
-      this._async.setTimeout(() => {
-        this._addProximityHandler(this.props.mouseProximityOffset);
-      }, this.props.delayBeforeMouseOpen!);
-    }));
+        // We dont want to the user to immediatley trigger the coachmark when it's opened
+        this._async.setTimeout(() => {
+          this._addProximityHandler(this.props.mouseProximityOffset);
+        }, this.props.delayBeforeMouseOpen!);
+      }
+    );
   }
 
   private _onFocusHandler = (): void => {
     if (this.state.isCollapsed) {
       this._openCoachmark();
     }
-  }
+  };
 
   private _onPositioned = (positionData: IPositionedData): void => {
-    this._async.requestAnimationFrame(((): void => {
-      this.setState({
-        targetAlignment: positionData.alignmentEdge,
-        targetPosition: positionData.targetEdge
-      });
-    }));
-  }
+    this._async.requestAnimationFrame(
+      (): void => {
+        this.setState({
+          targetAlignment: positionData.alignmentEdge,
+          targetPosition: positionData.targetEdge
+        });
+      }
+    );
+  };
 
   private _getBounds(): IRectangle | undefined {
     const { isPositionForced, positioningContainerProps } = this.props;
     if (isPositionForced) {
       // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
       // to the window x-axis to have auto positioning work correctly.
-      if (positioningContainerProps && (
-        positioningContainerProps.directionalHint === DirectionalHint.topAutoEdge ||
-        positioningContainerProps.directionalHint === DirectionalHint.bottomAutoEdge
-      )) {
+      if (
+        positioningContainerProps &&
+        (positioningContainerProps.directionalHint === DirectionalHint.topAutoEdge ||
+          positioningContainerProps.directionalHint === DirectionalHint.bottomAutoEdge)
+      ) {
         return {
           left: 0,
           top: -Infinity,
@@ -321,7 +303,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     let transformOriginY;
 
     const { targetAlignment } = this.state;
-    const distanceAdjustment = '3px';  // Adjustment distance for Beak to shift towards Coachmark bubble.
+    const distanceAdjustment = '3px'; // Adjustment distance for Beak to shift towards Coachmark bubble.
 
     switch (this._beakDirection) {
       // If Beak is pointing Up or Down
@@ -387,7 +369,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       beakTop: beakTop,
       transformOrigin: `${transformOriginX} ${transformOriginY}`
     });
-  }
+  };
 
   private _openCoachmark = (): void => {
     this.setState({
@@ -398,12 +380,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       this.props.onAnimationOpenStart();
     }
 
-    this._entityInnerHostElement.current && this._entityInnerHostElement.current.addEventListener('transitionend', (): void => {
-      if (this.props.onAnimationOpenEnd) {
-        this.props.onAnimationOpenEnd();
-      }
-    });
-  }
+    this._entityInnerHostElement.current &&
+      this._entityInnerHostElement.current.addEventListener(
+        'transitionend',
+        (): void => {
+          if (this.props.onAnimationOpenEnd) {
+            this.props.onAnimationOpenEnd();
+          }
+        }
+      );
+  };
 
   private _addProximityHandler(mouseProximityOffset: number = 0): void {
     /**
@@ -422,15 +408,23 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       // Every time the event is triggered we want to
       // setTimeout and then clear any previous instances
       // of setTimeout.
-      this._events.on(window, 'resize', (): void => {
-        timeoutIds.forEach((value: number): void => {
-          clearInterval(value);
-        });
+      this._events.on(
+        window,
+        'resize',
+        (): void => {
+          timeoutIds.forEach(
+            (value: number): void => {
+              clearInterval(value);
+            }
+          );
 
-        timeoutIds.push(this._async.setTimeout((): void => {
-          this._setTargetElementRect();
-        }, 100));
-      });
+          timeoutIds.push(
+            this._async.setTimeout((): void => {
+              this._setTargetElementRect();
+            }, 100)
+          );
+        }
+      );
     }, 10);
 
     // Every time the document's mouse move is triggered
@@ -461,9 +455,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   private _isInsideElement(mouseX: number, mouseY: number, mouseProximityOffset: number = 0): boolean {
-    return mouseX > (this._targetElementRect.left - mouseProximityOffset) &&
-      mouseX < ((this._targetElementRect.left + this._targetElementRect.width) + mouseProximityOffset) &&
-      mouseY > (this._targetElementRect.top - mouseProximityOffset) &&
-      mouseY < ((this._targetElementRect.top + this._targetElementRect.height) + mouseProximityOffset);
+    return (
+      mouseX > this._targetElementRect.left - mouseProximityOffset &&
+      mouseX < this._targetElementRect.left + this._targetElementRect.width + mouseProximityOffset &&
+      mouseY > this._targetElementRect.top - mouseProximityOffset &&
+      mouseY < this._targetElementRect.top + this._targetElementRect.height + mouseProximityOffset
+    );
   }
 }

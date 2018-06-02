@@ -3,8 +3,7 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle } from '../../Styling';
 import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
-export interface IKeytipLayer {
-}
+export interface IKeytipLayer {}
 
 export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   /**
@@ -22,10 +21,10 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   content: string;
 
   /**
-  * List of key sequences that will start keytips mode
-  *
-  * @type {KeySequence}
-  */
+   * List of key sequences that will start keytips mode
+   *
+   * @type {KeySequence}
+   */
   keytipStartSequences?: IKeytipTransitionKey[];
 
   /**
@@ -67,5 +66,4 @@ export interface IKeytipLayerStyles {
   innerContent: IStyle;
 }
 
-export interface IKeytipLayerStyleProps {
-}
+export interface IKeytipLayerStyleProps {}

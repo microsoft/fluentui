@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PageMarkdown,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
@@ -25,46 +19,40 @@ export class TeachingBubblePage extends React.Component<IComponentDemoPageProps,
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='TeachingBubble'
-        componentName='TeachingBubbleExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble'
+        title="TeachingBubble"
+        componentName="TeachingBubbleExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble"
         exampleCards={
           <LayerHost>
-            <ExampleCard title='TeachingBubble' code={ TeachingBubbleBasicExampleCode }>
+            <ExampleCard title="TeachingBubble" code={TeachingBubbleBasicExampleCode}>
               <TeachingBubbleBasicExample />
             </ExampleCard>
-            <ExampleCard title='TeachingBubble Condensed' code={ TeachingBubbleCondensedExampleCode }>
+            <ExampleCard title="TeachingBubble Condensed" code={TeachingBubbleCondensedExampleCode}>
               <TeachingBubbleCondensedExample />
             </ExampleCard>
-            <ExampleCard title='TeachingBubble with Illustration' code={ TeachingBubbleIllustrationExampleCode }>
+            <ExampleCard title="TeachingBubble with Illustration" code={TeachingBubbleIllustrationExampleCode}>
               <TeachingBubbleIllustrationExample />
             </ExampleCard>
-            <ExampleCard title='TeachingBubble wide with Illustration' code={ TeachingBubbleWideIllustrationExampleCode }>
+            <ExampleCard title="TeachingBubble wide with Illustration" code={TeachingBubbleWideIllustrationExampleCode}>
               <TeachingBubbleWideIllustrationExample />
             </ExampleCard>
-            <ExampleCard title='TeachingBubble with small headline' code={ TeachingBubbleSmallHeadlineExampleCode }>
+            <ExampleCard title="TeachingBubble with small headline" code={TeachingBubbleSmallHeadlineExampleCode}>
               <TeachingBubbleSmallHeadlineExample />
             </ExampleCard>
           </LayerHost>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...TeachingBubbleStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...TeachingBubbleStatus} />}
       />
     );
   }

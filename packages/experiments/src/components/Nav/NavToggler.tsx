@@ -1,27 +1,12 @@
 /* tslint:disable */
 import * as React from 'react';
 import { Nav } from './Nav';
-import {
-  ICustomNavLinkGroup,
-  INavProps,
-  INavState,
-  INavStyleProps,
-  INavStyles,
-  NavGroupType,
-} from "./Nav.types";
+import { ICustomNavLinkGroup, INavProps, INavState, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
 import { SlimNav } from './SlimNav';
-import {
-  getStyles
-} from './Nav.styles';
-import {
-  styled,
-  classNamesFunction
-} from 'office-ui-fabric-react/lib/Utilities';
+import { getStyles } from './Nav.styles';
+import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
-import {
-  FocusZone,
-  FocusZoneDirection
-} from 'office-ui-fabric-react/lib/components/FocusZone';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/components/FocusZone';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
@@ -42,15 +27,9 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
       return null;
     }
 
-    const {
-      isNavCollapsed,
-      showMore
-    } = this.state;
+    const { isNavCollapsed, showMore } = this.state;
 
-    const {
-      styles,
-      groups
-    } = this.props;
+    const { styles, groups } = this.props;
     const classNames = getClassNames(styles!, { isCollapsed: isNavCollapsed });
 
     const toggleNavGroups = groups.filter((navGroup: ICustomNavLinkGroup) => {
@@ -62,30 +41,29 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     });
 
     return (
-      <div className={ classNames.root }>
-        <FocusZone direction={ FocusZoneDirection.vertical }>
-          {
-            this._renderExpandCollapseNavItem(toggleNavGroups)
-          }
-          {
-            isNavCollapsed ?
-              <SlimNav
-                groups={ nonToggleNavGroups }
-                selectedKey={ this.props.selectedKey }
-                navScrollerId={ this.props.navScrollerId }
-                dataHint={ this.props.dataHint }
-                enableCustomization={ this.props.enableCustomization }
-                showMore={ showMore }
-                onShowMoreLinkClicked={ this._onShowMoreLinkClicked } />
-              :
-              <Nav
-                groups={ nonToggleNavGroups }
-                selectedKey={ this.props.selectedKey }
-                dataHint={ this.props.dataHint }
-                enableCustomization={ this.props.enableCustomization }
-                showMore={ showMore }
-                onShowMoreLinkClicked={ this._onShowMoreLinkClicked } />
-          }
+      <div className={classNames.root}>
+        <FocusZone direction={FocusZoneDirection.vertical}>
+          {this._renderExpandCollapseNavItem(toggleNavGroups)}
+          {isNavCollapsed ? (
+            <SlimNav
+              groups={nonToggleNavGroups}
+              selectedKey={this.props.selectedKey}
+              navScrollerId={this.props.navScrollerId}
+              dataHint={this.props.dataHint}
+              enableCustomization={this.props.enableCustomization}
+              showMore={showMore}
+              onShowMoreLinkClicked={this._onShowMoreLinkClicked}
+            />
+          ) : (
+            <Nav
+              groups={nonToggleNavGroups}
+              selectedKey={this.props.selectedKey}
+              dataHint={this.props.dataHint}
+              enableCustomization={this.props.enableCustomization}
+              showMore={showMore}
+              onShowMoreLinkClicked={this._onShowMoreLinkClicked}
+            />
+          )}
         </FocusZone>
       </div>
     );
@@ -110,34 +88,31 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
   }
 
   private _renderExpandCollapseNavItem(toggleNavGroups: ICustomNavLinkGroup[]): React.ReactElement<{}> | null {
-    if (!!toggleNavGroups && toggleNavGroups.length === 0 || !toggleNavGroups[0].links || toggleNavGroups[0].links.length === 0) {
+    if ((!!toggleNavGroups && toggleNavGroups.length === 0) || !toggleNavGroups[0].links || toggleNavGroups[0].links.length === 0) {
       // There is no toggle group with links defined
       return null;
     }
 
     const isNavCollapsed = this.state.isNavCollapsed;
-    const {
-      styles,
-      dataHint
-    } = this.props;
+    const { styles, dataHint } = this.props;
     const classNames = getClassNames(styles!, {});
     const link = toggleNavGroups[0].links[0];
     const ariaLabel = isNavCollapsed ? link.name : link.alternateText;
 
     return (
       <NavLink
-        id={ link.key }
-        href={ link.url }
-        onClick={ this._onNavCollapseClicked.bind(this) }
-        ariaExpanded={ !isNavCollapsed }
-        dataHint={ dataHint }
-        dataValue={ link.key }
-        ariaLabel={ ariaLabel }
-        rootClassName={ classNames.navToggler }
-        leftIconName={ link.icon }
-        iconClassName={ classNames.navItemIconColumn }
-        role="menu">
-      </NavLink>
+        id={link.key}
+        href={link.url}
+        onClick={this._onNavCollapseClicked.bind(this)}
+        ariaExpanded={!isNavCollapsed}
+        dataHint={dataHint}
+        dataValue={link.key}
+        ariaLabel={ariaLabel}
+        rootClassName={classNames.navToggler}
+        leftIconName={link.icon}
+        iconClassName={classNames.navItemIconColumn}
+        role="menu"
+      />
     );
   }
 
@@ -153,8 +128,5 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
   }
 }
 
-export const NavToggler = styled<INavProps, INavStyleProps, INavStyles>(
-  NavTogglerComponent,
-  getStyles
-);
+export const NavToggler = styled<INavProps, INavStyleProps, INavStyles>(NavTogglerComponent, getStyles);
 /* tslint:enable */

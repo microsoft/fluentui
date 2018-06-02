@@ -9,33 +9,21 @@ import {
 import './Shimmer.Example.scss';
 
 export class ShimmerBasicExample extends React.Component<{}, {}> {
-
   constructor(props: {}) {
     super(props);
   }
 
   public render(): JSX.Element {
-
     return (
-      <div className='shimmerBasicExample-container'>
+      <div className="shimmerBasicExample-container">
         Basic Shimmer with no elements provided. It defaults to a line of 16px height.
         <Shimmer />
-        <Shimmer
-          widthInPercentage={ 75 }
-        />
-        <Shimmer
-          widthInPercentage={ 50 }
-        />
+        <Shimmer widthInPercentage={75} />
+        <Shimmer widthInPercentage={50} />
         Basic Shimmer with elements provided.
+        <Shimmer shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, widthInPercentage: 2 }, { type: ElemType.line }]} />
         <Shimmer
-          shimmerElements={ [
-            { type: ElemType.circle },
-            { type: ElemType.gap, widthInPercentage: 2 },
-            { type: ElemType.line },
-          ] }
-        />
-        <Shimmer
-          shimmerElements={ [
+          shimmerElements={[
             { type: ElemType.circle, height: 24 },
             { type: ElemType.gap, widthInPercentage: 2 },
             { type: ElemType.line, height: 16, widthInPercentage: 20 },
@@ -45,11 +33,11 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 16, widthInPercentage: 15 },
             { type: ElemType.gap, widthInPercentage: 10 },
             { type: ElemType.line, height: 16 }
-          ] }
+          ]}
         />
         <Shimmer
-          widthInPercentage={ 70 }
-          shimmerElements={ [
+          widthInPercentage={70}
+          shimmerElements={[
             { type: ElemType.circle, height: 24 },
             { type: ElemType.gap, widthInPercentage: 2 },
             { type: ElemType.line, height: 16, widthInPercentage: 20 },
@@ -59,11 +47,11 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 16, widthInPercentage: 15 },
             { type: ElemType.gap, widthInPercentage: 10 },
             { type: ElemType.line, height: 16 }
-          ] }
+          ]}
         />
         Variations of vertical alignment for Circles and Lines.
         <Shimmer
-          shimmerElements={ [
+          shimmerElements={[
             { type: ElemType.circle },
             { type: ElemType.gap, widthInPercentage: 2 },
             { type: ElemType.circle, height: 15, verticalAlign: ElemVerticalAlign.top },
@@ -75,7 +63,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
             { type: ElemType.line, height: 16, widthInPercentage: 15 },
             { type: ElemType.gap, widthInPercentage: 2 },
             { type: ElemType.line, height: 10, verticalAlign: ElemVerticalAlign.bottom }
-          ] }
+          ]}
         />
       </div>
     );

@@ -15,7 +15,7 @@ describe('Panel', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('fires the correct events when closing', (done) => {
+  it('fires the correct events when closing', done => {
     let dismissedCalled = false;
     let dismissCalled = false;
     const setDismissTrue = (): void => {
@@ -25,13 +25,7 @@ describe('Panel', () => {
       dismissedCalled = true;
     };
 
-    const panel: Panel = ReactDOM.render(
-      <Panel
-        isOpen={ true }
-        onDismiss={ setDismissTrue }
-        onDismissed={ setDismissedTrue }
-      />,
-      div) as any;
+    const panel: Panel = ReactDOM.render(<Panel isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />, div) as any;
 
     panel.dismiss();
 

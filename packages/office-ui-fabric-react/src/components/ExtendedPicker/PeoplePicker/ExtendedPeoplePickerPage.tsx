@@ -1,34 +1,25 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  IComponentDemoPageProps,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 import { ExtendedPeoplePickerTypesExample } from '../examples/ExtendedPeoplePicker.Basic.Example';
 
-const ExtendedPeoplePickerBasicExampleCode = require(
-  '!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx'
-) as string;
+const ExtendedPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx') as string;
 
 export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='ExtendedPeoplePicker'
-        componentName='ExtendedPeoplePickerExample'
+        title="ExtendedPeoplePicker"
+        componentName="ExtendedPeoplePickerExample"
         exampleCards={
           <div>
-            <ExampleCard title='Extended People Picker' code={ ExtendedPeoplePickerBasicExampleCode }>
+            <ExampleCard title="Extended People Picker" code={ExtendedPeoplePickerBasicExampleCode}>
               <ExtendedPeoplePickerTypesExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/BaseExtendedPicker.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/BaseExtendedPicker.types.ts')]}
           />
         }
         overview={
@@ -39,13 +30,14 @@ export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPage
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
         bestPractices={
-          <div>The ExtendedPeoplePicker is used to select one or more entities, such as people or groups. Entry points for
-            ExtendedPeoplePicker are
-            typically specialized TextField-like input fields known as a "well", which are used to search for recipients from a list. When
-            a recipient is selected from the list, it is added to the well as a specialized Persona that can be interacted with or removed.
-            Clicking on a Persona from the well should invoke a PersonaCard or open a profile pane for that recipient.</div>
+          <div>
+            The ExtendedPeoplePicker is used to select one or more entities, such as people or groups. Entry points for ExtendedPeoplePicker
+            are typically specialized TextField-like input fields known as a "well", which are used to search for recipients from a list.
+            When a recipient is selected from the list, it is added to the well as a specialized Persona that can be interacted with or
+            removed. Clicking on a Persona from the well should invoke a PersonaCard or open a profile pane for that recipient.
+          </div>
         }
         dos={
           <div>
@@ -68,5 +60,4 @@ export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPage
       />
     );
   }
-
 }

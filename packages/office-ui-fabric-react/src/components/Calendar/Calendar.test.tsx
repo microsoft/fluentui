@@ -11,55 +11,13 @@ import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
 
 describe('Calendar', () => {
   const dayPickerStrings = {
-    months: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ],
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
-    shortMonths: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ],
+    shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
-    days: [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
-    ],
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
-    shortDays: [
-      'S',
-      'M',
-      'T',
-      'W',
-      'T',
-      'F',
-      'S'
-    ],
+    shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
     goToToday: 'Go to today'
   };
@@ -70,12 +28,7 @@ describe('Calendar', () => {
 
     // Act
 
-    const renderedComponent = mount(
-      <Calendar
-        strings={ dayPickerStrings }
-        isMonthPickerVisible={ true }
-        value={ defaultDate }
-      />);
+    const renderedComponent = mount(<Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />);
 
     const today = renderedComponent.find('.ms-DatePicker-day--today');
     expect(+today.text()).toEqual(new Date().getDate());
@@ -86,21 +39,13 @@ describe('Calendar', () => {
 
     beforeAll(() => {
       renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar
-          strings={ dayPickerStrings }
-          isMonthPickerVisible={ false }
-        />) as Calendar;
+        <Calendar strings={dayPickerStrings} isMonthPickerVisible={false} />
+      ) as Calendar;
     });
 
     it('Renders simple calendar correctly', () => {
       const date = new Date(2000, 1, 1);
-      const component = renderer.create(
-        <Calendar
-          strings={ dayPickerStrings }
-          isMonthPickerVisible
-          value={ date }
-        />
-      );
+      const component = renderer.create(<Calendar strings={dayPickerStrings} isMonthPickerVisible value={date} />);
 
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -156,7 +101,7 @@ describe('Calendar', () => {
 
     beforeAll(() => {
       defaultDate = new Date(2017, 2, 16);
-      const onSelectDate = (): (date: Date, dateRangeArray: Date[]) => void => {
+      const onSelectDate = (): ((date: Date, dateRangeArray: Date[]) => void) => {
         return (date: Date, dateRangeArray: Date[]): void => {
           lastSelectedDateRange = dateRangeArray;
         };
@@ -164,15 +109,16 @@ describe('Calendar', () => {
 
       renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar
-          strings={ dayPickerStrings }
-          isMonthPickerVisible={ true }
-          value={ defaultDate }
-          firstDayOfWeek={ DayOfWeek.Tuesday }
-          dateRangeType={ DateRangeType.Week }
-          autoNavigateOnSelection={ true }
-          onSelectDate={ onSelectDate() }
-          className='CalendarTestClass'
-        />) as Calendar;
+          strings={dayPickerStrings}
+          isMonthPickerVisible={true}
+          value={defaultDate}
+          firstDayOfWeek={DayOfWeek.Tuesday}
+          dateRangeType={DateRangeType.Week}
+          autoNavigateOnSelection={true}
+          onSelectDate={onSelectDate()}
+          className="CalendarTestClass"
+        />
+      ) as Calendar;
     });
 
     it('Verify day picker header', () => {
@@ -265,13 +211,14 @@ describe('Calendar', () => {
       const maxDate = new Date('Mar 24 2017');
       const renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar
-          strings={ dayPickerStrings }
-          value={ defaultDate }
-          firstDayOfWeek={ DayOfWeek.Sunday }
-          dateRangeType={ DateRangeType.Day }
-          minDate={ minDate }
-          maxDate={ maxDate }
-        />) as Calendar;
+          strings={dayPickerStrings}
+          value={defaultDate}
+          firstDayOfWeek={DayOfWeek.Sunday}
+          dateRangeType={DateRangeType.Day}
+          minDate={minDate}
+          maxDate={maxDate}
+        />
+      ) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
 
@@ -285,21 +232,22 @@ describe('Calendar', () => {
       const defaultDate = new Date('Mar 16 2017');
       const minDate = new Date('Mar 6 2017');
       const maxDate = new Date('Mar 24 2017');
-      const onSelectDate = (): (date: Date, dateRangeArray: Date[]) => void => {
+      const onSelectDate = (): ((date: Date, dateRangeArray: Date[]) => void) => {
         return (date: Date, dateRangeArray: Date[]): void => {
           lastSelectedDateRange = dateRangeArray;
         };
       };
       const renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar
-          strings={ dayPickerStrings }
-          value={ defaultDate }
-          firstDayOfWeek={ DayOfWeek.Sunday }
-          dateRangeType={ DateRangeType.Month }
-          minDate={ minDate }
-          maxDate={ maxDate }
-          onSelectDate={ onSelectDate() }
-        />) as Calendar;
+          strings={dayPickerStrings}
+          value={defaultDate}
+          firstDayOfWeek={DayOfWeek.Sunday}
+          dateRangeType={DateRangeType.Month}
+          minDate={minDate}
+          maxDate={maxDate}
+          onSelectDate={onSelectDate()}
+        />
+      ) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
       ReactTestUtils.Simulate.click(days[18]);
@@ -314,13 +262,14 @@ describe('Calendar', () => {
     const maxDate = new Date('Mar 31 2017');
     const renderedComponent = ReactTestUtils.renderIntoDocument(
       <Calendar
-        strings={ dayPickerStrings }
-        value={ defaultDate }
-        firstDayOfWeek={ DayOfWeek.Sunday }
-        dateRangeType={ DateRangeType.Day }
-        minDate={ minDate }
-        maxDate={ maxDate }
-      />) as Calendar;
+        strings={dayPickerStrings}
+        value={defaultDate}
+        firstDayOfWeek={DayOfWeek.Sunday}
+        dateRangeType={DateRangeType.Day}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
+    ) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextMonth');
@@ -335,13 +284,14 @@ describe('Calendar', () => {
     const maxDate = new Date('Oct 1 2017');
     const renderedComponent = ReactTestUtils.renderIntoDocument(
       <Calendar
-        strings={ dayPickerStrings }
-        value={ defaultDate }
-        firstDayOfWeek={ DayOfWeek.Sunday }
-        dateRangeType={ DateRangeType.Day }
-        minDate={ minDate }
-        maxDate={ maxDate }
-      />) as Calendar;
+        strings={dayPickerStrings}
+        value={defaultDate}
+        firstDayOfWeek={DayOfWeek.Sunday}
+        dateRangeType={DateRangeType.Day}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
+    ) as Calendar;
 
     const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
 
@@ -356,13 +306,14 @@ describe('Calendar', () => {
     const maxDate = new Date('Dec 31 2017');
     const renderedComponent = ReactTestUtils.renderIntoDocument(
       <Calendar
-        strings={ dayPickerStrings }
-        value={ defaultDate }
-        firstDayOfWeek={ DayOfWeek.Sunday }
-        dateRangeType={ DateRangeType.Day }
-        minDate={ minDate }
-        maxDate={ maxDate }
-      />) as Calendar;
+        strings={dayPickerStrings}
+        value={defaultDate}
+        firstDayOfWeek={DayOfWeek.Sunday}
+        dateRangeType={DateRangeType.Day}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
+    ) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevYear');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextYear');

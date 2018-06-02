@@ -83,7 +83,11 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
   /**
    * Callback for when the click event on the icon button which also takes in a specific HTMLElement that will be focused.
    */
-  onItemClickBase?: (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, target: HTMLElement) => void;
+  onItemClickBase?: (
+    item: IContextualMenuItem,
+    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    target: HTMLElement
+  ) => void;
 
   /**
    * Callback for keyboard events on the wrapper.

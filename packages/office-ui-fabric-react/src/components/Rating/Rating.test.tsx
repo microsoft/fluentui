@@ -19,12 +19,7 @@ describe('Rating', () => {
     let threwException = false;
     let rating;
     try {
-      rating = ReactTestUtils.renderIntoDocument(
-        <RatingBase
-          styles={ getStyles }
-          rating={ 2 }
-        />
-      );
+      rating = ReactTestUtils.renderIntoDocument(<RatingBase styles={getStyles} rating={2} />);
     } catch (e) {
       threwException = true;
     }
@@ -59,12 +54,7 @@ describe('Rating', () => {
     let threwException = false;
     let rating;
     try {
-      rating = ReactTestUtils.renderIntoDocument(
-        <RatingBase
-          styles={ getStyles }
-          rating={ 10 }
-        />
-      );
+      rating = ReactTestUtils.renderIntoDocument(<RatingBase styles={getStyles} rating={10} />);
     } catch (e) {
       threwException = true;
     }
@@ -86,19 +76,13 @@ describe('Rating', () => {
     checkState(3, '100%');
     checkState(4, '100%');
     checkState(5, '100%');
-
   });
 
   it('Half star is displayed when 2.5 value is passed.', () => {
     let threwException = false;
     let rating;
     try {
-      rating = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <RatingBase
-          styles={ getStyles }
-          rating={ 2.5 }
-        />
-      );
+      rating = ReactTestUtils.renderIntoDocument<RatingBase>(<RatingBase styles={getStyles} rating={2.5} />);
     } catch (e) {
       threwException = true;
     }
@@ -118,19 +102,13 @@ describe('Rating', () => {
     checkState(3, '50%');
     checkState(4, '0%');
     checkState(5, '0%');
-
   });
 
   it('When rating is disabled cannot change rating', () => {
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <RatingBase
-          styles={ getStyles }
-          disabled={ true }
-        />
-      );
+      choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(<RatingBase styles={getStyles} disabled={true} />);
     } catch (e) {
       threwException = true;
     }
@@ -143,23 +121,15 @@ describe('Rating', () => {
     expect((ratingButtons[2] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[3] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[4] as HTMLButtonElement).disabled).toEqual(true);
-
   });
 
   it('When rating is readonly cannot change rating', () => {
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <RatingBase
-          styles={ getStyles }
-          readOnly={ true }
-          rating={ 2 }
-        />
-      );
+      choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(<RatingBase styles={getStyles} readOnly={true} rating={2} />);
     } catch (e) {
       threwException = true;
-
     }
     expect(threwException).toEqual(false);
 
@@ -184,5 +154,4 @@ describe('Rating', () => {
     checkState(4, '0%');
     checkState(5, '0%');
   });
-
 });

@@ -60,9 +60,9 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   defaultSelectedKeys?: string[] | number[];
 
   /**
-  * Keys of the selected items. If you provide this, you must maintain selection
-  * state by observing onChange events and passing a new value in when changed.
-  */
+   * Keys of the selected items. If you provide this, you must maintain selection
+   * state by observing onChange events and passing a new value in when changed.
+   */
   selectedKeys?: string[] | number[];
 
   /**

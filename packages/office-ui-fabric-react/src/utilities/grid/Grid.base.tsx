@@ -1,19 +1,11 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  getId,
-  toMatrix,
-  classNamesFunction,
-  getNativeProps,
-  htmlElementProperties
-} from '../../Utilities';
+import { BaseComponent, getId, toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
 export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
-
   private _id: string;
 
   constructor(props: IGridProps) {
@@ -22,14 +14,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      columnCount,
-      onRenderItem,
-      positionInSet,
-      setSize,
-      styles
-    } = this.props;
+    const { items, columnCount, onRenderItem, positionInSet, setSize, styles } = this.props;
 
     const htmlProps = getNativeProps(this.props, htmlElementProperties, ['onBlur, aria-posinset, aria-setsize']);
 
@@ -39,51 +24,36 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <table
-        { ...htmlProps }
-        aria-posinset={ positionInSet }
-        aria-setsize={ setSize }
-        id={ this._id }
-        role={ 'grid' }
-        className={ classNames.root }
-      >
+      <table {...htmlProps} aria-posinset={positionInSet} aria-setsize={setSize} id={this._id} role={'grid'} className={classNames.root}>
         <tbody>
-          {
-            rowsOfItems.map((rows: any[], rowIndex: number) => {
-              return (
-                <tr
-                  role={ 'row' }
-                  key={ this._id + '-' + rowIndex + '-row' }
-                >
-                  { rows.map((cell: any, cellIndex: number) => {
-                    return (
-                      <td
-                        role={ 'presentation' }
-                        key={ this._id + '-' + cellIndex + '-cell' }
-                        className={ classNames.tableCell }
-                      >
-                        { onRenderItem(cell, cellIndex) }
-                      </td>
-                    );
-                  }) }
-                </tr>
-              );
-            })
-          }
+          {rowsOfItems.map((rows: any[], rowIndex: number) => {
+            return (
+              <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
+                {rows.map((cell: any, cellIndex: number) => {
+                  return (
+                    <td role={'presentation'} key={this._id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
+                      {onRenderItem(cell, cellIndex)}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
-      </table >
+      </table>
     );
 
     // Create the table/grid
-    return (
-      this.props.doNotContainWithinFocusZone ? content : (
-        <FocusZone
-          isCircularNavigation={ this.props.shouldFocusCircularNavigate }
-          className={ classNames.focusedContainer }
-          onBlur={ this.props.onBlur }
-        >
-          { content }
-        </FocusZone>
-      ));
+    return this.props.doNotContainWithinFocusZone ? (
+      content
+    ) : (
+      <FocusZone
+        isCircularNavigation={this.props.shouldFocusCircularNavigate}
+        className={classNames.focusedContainer}
+        onBlur={this.props.onBlur}
+      >
+        {content}
+      </FocusZone>
+    );
   }
 }
