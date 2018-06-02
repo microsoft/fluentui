@@ -51,7 +51,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
           role={ 'columnheader' }
           aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
           aria-disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
-          aria-colindex={ columnIndex }
+          aria-colindex={ columnIndex + 1 }
           className={ css(
             'ms-DetailsHeader-cell',
             styles.cell,
@@ -102,24 +102,33 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
                     { !column.isIconOnly ? column.name : undefined }
                   </span>
 
-                  { column.isFiltered && <Icon className={ styles.nearIcon } iconName={ 'Filter' } /> }
+                  { column.isFiltered && (
+                    <Icon ariaLabel={ column.filterAriaLabel } className={ styles.nearIcon } iconName='Filter' />
+                  ) }
 
                   { column.isSorted && (
                     <Icon
+                      ariaLabel={
+                        column.isSortedDescending ?
+                          column.sortDescendingAriaLabel :
+                          column.sortAscendingAriaLabel
+                      }
                       className={ css(styles.nearIcon, styles.sortIcon) }
                       iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' }
                     />
                   ) }
 
-                  { column.isGrouped && <Icon className={ styles.nearIcon } iconName={ 'GroupedDescending' } /> }
+                  { column.isGrouped && (
+                    <Icon ariaLabel={ column.groupAriaLabel } className={ styles.nearIcon } iconName='GroupedDescending' />
+                  ) }
 
-                  { column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && (
-                      <Icon
-                        className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
-                        iconName={ 'ChevronDown' }
-                      />
-                    ) }
+                  { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
+                    <Icon
+                      aria-hidden={ true }
+                      className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
+                      iconName='ChevronDown'
+                    />
+                  ) }
                 </span>
               )
             },
@@ -129,7 +138,11 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
       ),
       (
         column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
-          <label key={ `${column.key}_label` } id={ `${parentId}-${column.key}-tooltip` } className={ styles.accessibleLabel }>
+          <label
+            key={ `${column.key}_label` }
+            id={ `${parentId}-${column.key}-tooltip` }
+            className={ styles.accessibleLabel }
+          >
             { column.ariaLabel }
           </label>
         ) : null
