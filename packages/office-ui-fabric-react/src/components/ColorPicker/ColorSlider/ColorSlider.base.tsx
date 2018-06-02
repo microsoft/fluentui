@@ -1,24 +1,13 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css,
+  classNamesFunction,
+  customizable,
   createRef
-} from '../../Utilities';
-import * as stylesImport from './ColorPicker.scss';
-const styles: any = stylesImport;
+} from '../../../Utilities';
+import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
-export interface IColorSliderProps {
-  componentRef?: () => void;
-  minValue?: number;
-  maxValue?: number;
-  value?: number;
-  thumbColor?: string;
-  overlayStyle?: any;
-  onChanged?: (newValue: number) => void;
-
-  className?: string;
-  style?: any;
-}
+const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
 export interface IColorSliderState {
   isAdjusting?: boolean;
@@ -26,7 +15,8 @@ export interface IColorSliderState {
   currentValue?: number;
 }
 
-export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderState> {
+@customizable('ColorSlider', ['theme'])
+export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,
     maxValue: 100,
@@ -55,24 +45,35 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
   }
 
   public render(): JSX.Element {
-    const { className, minValue, maxValue, overlayStyle } = this.props;
-    const { currentValue, isAdjusting } = this.state;
+    const { isAlpha, minValue, maxValue, overlayStyle, theme, className, getStyles } = this.props;
+    const { currentValue } = this.state;
+
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      className
+    });
 
     const currentPercentage = 100 * (currentValue! - minValue!) / (maxValue! - minValue!);
+
+    const hueStyle = {
+      background: 'linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)'
+    };
+
+    const alphaStyle = {
+      backgroundImage: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)'
+    };
+
+    const sliderStyle = isAlpha ? alphaStyle : hueStyle;
 
     return (
       <div
         ref={ this._root }
-        className={ css(
-          'ms-ColorPicker-slider',
-          styles.slider,
-          className,
-          isAdjusting && 'is-adjusting'
-        ) }
+        className={ classNames.root }
         onMouseDown={ this._onMouseDown }
+        style={ sliderStyle }
       >
-        <div className={ css('ms-ColorPicker-sliderOverlay', styles.sliderOverlay) } style={ overlayStyle } />
-        <div className={ css('ms-ColorPicker-thumb is-slider', styles.thumb, styles.thumbIsSlider) } style={ { left: currentPercentage + '%' } } />
+        <div id="sliderOverlay" className={ classNames.sliderOverlay } style={ overlayStyle } />
+        <div className={ classNames.sliderThumb } style={ { left: currentPercentage + '%' } } />
       </div>
     );
   }
@@ -116,5 +117,4 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
       origin: undefined
     });
   }
-
 }

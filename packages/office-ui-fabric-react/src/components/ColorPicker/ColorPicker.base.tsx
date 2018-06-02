@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css,
+  classNamesFunction,
   customizable
 } from '../../Utilities';
-import { IColorPickerProps } from './ColorPicker.types';
+import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
 import { TextField } from '../../TextField';
-import { ColorRectangle } from './ColorRectangle';
-import { ColorSlider } from './ColorSlider';
+import { ColorRectangle } from './ColorRectangle/ColorRectangle';
+import { ColorSlider } from './ColorSlider/ColorSlider';
 import {
   MAX_COLOR_HUE,
   IColor,
@@ -17,14 +17,13 @@ import {
   updateH,
   updateSV
 } from '../../utilities/color/colors';
-import { FontClassNames } from '../../Styling';
-import * as stylesImport from './ColorPicker.scss';
-const styles: any = stylesImport;
 
 export interface IColorPickerState {
   isOpen: boolean;
   color: IColor;
 }
+
+const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerStyles>();
 
 @customizable('ColorPicker', ['theme'])
 export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> {
@@ -57,14 +56,20 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   }
 
   public render(): JSX.Element {
+    const { theme, className, getStyles } = this.props;
     const { color } = this.state;
 
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      className
+    });
+
     return (
-      <div className={ css('ms-ColorPicker', styles.root) }>
-        <div className={ css('ms-ColorPicker-panel', styles.panel) }>
+      <div className={ classNames.root }>
+        <div className={ classNames.panel }>
           <ColorRectangle color={ color } onSVChanged={ this._onSVChanged } />
           <ColorSlider
-            className={ css('is-hue', styles.colorSliderIsHue) }
+            className='is-hue'
             minValue={ 0 }
             maxValue={ MAX_COLOR_HUE }
             value={ color.h }
@@ -72,17 +77,18 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
           />
           { !this.props.alphaSliderHidden && (
             <ColorSlider
-              className={ css('is-alpha', styles.colorSliderIsAlpha) }
+              className='is-alpha'
+              isAlpha
               overlayStyle={ { background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` } }
               minValue={ 0 }
               maxValue={ 100 }
               value={ color.a }
               onChanged={ this._onAChanged }
             />) }
-          <table className={ css('ms-ColorPicker-table', styles.table) } cellPadding='0' cellSpacing='0'>
+          <table className={ classNames.table } cellPadding='0' cellSpacing='0'>
             <thead>
-              <tr className={ FontClassNames.small }>
-                <td className={ styles.tableHexCell }>{ this.props.hexLabel }</td>
+              <tr className={ classNames.tableHeader }>
+                <td className={ classNames.tableHexCell }>{ this.props.hexLabel }</td>
                 <td>{ this.props.redLabel }</td>
                 <td>{ this.props.greenLabel }</td>
                 <td>{ this.props.blueLabel }</td>
@@ -94,7 +100,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
               <tr>
                 <td>
                   <TextField
-                    className={ css('ms-ColorPicker-input', styles.input) }
+                    className={ classNames.input }
                     value={ color.hex }
                     ref={ (ref) => this.hexText = ref! }
                     onBlur={ this._onHexChanged }
@@ -103,7 +109,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                 </td>
                 <td style={ { width: '18%' } }>
                   <TextField
-                    className={ css('ms-ColorPicker-input', styles.input) }
+                    className={ classNames.input }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
                     ref={ (ref) => this.rText = ref! }
@@ -112,7 +118,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                 </td>
                 <td style={ { width: '18%' } }>
                   <TextField
-                    className={ css('ms-ColorPicker-input', styles.input) }
+                    className={ classNames.input }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
                     ref={ (ref) => this.gText = ref! }
@@ -121,7 +127,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                 </td>
                 <td style={ { width: '18%' } }>
                   <TextField
-                    className={ css('ms-ColorPicker-input', styles.input) }
+                    className={ classNames.input }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
                     ref={ (ref) => this.bText = ref! }
@@ -131,7 +137,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                 { !this.props.alphaSliderHidden && (
                   <td style={ { width: '18%' } }>
                     <TextField
-                      className={ css('ms-ColorPicker-input', styles.input) }
+                      className={ classNames.input }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
                       ref={ (ref) => this.aText = ref! }

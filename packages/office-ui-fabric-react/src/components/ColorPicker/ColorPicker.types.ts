@@ -1,11 +1,15 @@
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 
+export interface IColorPicker {
+
+}
+
 export interface IColorPickerProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: (component: IColorPicker | null) => void;
 
   /**
    * The CSS-compatible string to describe the initial color
@@ -76,7 +80,8 @@ export interface IColorPickerStyleProps {
 export interface IColorPickerStyles {
   root?: IStyle;
   panel?: IStyle;
-  colorRect?: IStyle;
-  rectContainer?: IStyle;
-  capture?: IStyle;
+  table?: IStyle;
+  tableHeader?: IStyle;
+  tableHexCell?: IStyle;
+  input?: IStyle;
 }
