@@ -59,6 +59,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
               border-color: #ffffff;
               border-top-style: solid;
               border-top-width: 0px;
+              box-sizing: content-box;
               height: 30px;
               min-width: 30px;
               width: 30px;
@@ -71,6 +72,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
           className=
               ms-ShimmerCircle-svg
               {
+                display: block;
                 fill: #ffffff;
               }
               @media screen and (-ms-high-contrast: active){& {
