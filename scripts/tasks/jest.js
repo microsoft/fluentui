@@ -14,6 +14,8 @@ module.exports = function (options) {
       // Specify the config file.
       `--config ${jestConfigPath}`,
 
+      '--passWithNoTests',
+
       // Run tests in serial (parallel builds seem to hang rush.)
       // On Windows, this is occasionally an issue: https://github.com/facebook/jest/issues/4444
       // Temporarily run sequentially on Windows until jest is upgraded.
