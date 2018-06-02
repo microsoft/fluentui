@@ -1,34 +1,34 @@
-import { IComponentStatusProps } from 'office-ui-fabric-react/lib/demo/ComponentStatus/ComponentStatus.types';
+import { IComponentStatusProps } from '../ComponentStatus/ComponentStatus.types';
 
 export interface IDemoPageProps {
-  /** title that goes into the header */
+  /** Title that goes into the header */
   title: string;
 
-  /** name of the component being documented */
+  /** Name of the component being documented */
   componentName: string;
 
   /** URL of the checked in component, should be somewhere on github.com */
   componentUrl: string;
 
-  /** status of the component; e.g. keyboard accessible */
+  /** Status of the component; e.g. keyboard accessible */
   componentStatus: IComponentStatusProps;
 
-  /** array of examples, displayed in the order defined */
+  /** Array of examples, displayed in the order defined */
   examples: {
-    /** title of the example */
+    /** Title of the example */
     title: string;
 
-    /** raw source code of the example */
+    /** Raw source code of the example */
     code: string;
 
-    /** working example of the example */
+    /** Working example of the example */
     view: JSX.Element;
   }[];
 
-  /** properties table(s) as markdown string */
+  /** Properties table(s) as markdown string */
   propertiesTablesSources: string[];
 
-  /** overview of the component as markdown string */
+  /** Overview of the component as markdown string */
   overview: string;
 
   /** DO's blurb as markdown string */
@@ -37,9 +37,9 @@ export interface IDemoPageProps {
   /** DON'Ts blurb as markdown string */
   donts: string;
 
-  /** best practice as markdown string */
+  /** Best practice as markdown string */
   bestPractices: string;
 
-  /** passed through header visibility flag from the demo component page component */
+  /** Passed through header visibility flag from the demo component page component */
   isHeaderVisible: boolean;
 }

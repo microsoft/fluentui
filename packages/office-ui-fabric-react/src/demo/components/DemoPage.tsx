@@ -3,7 +3,7 @@ import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown } from '@u
 import * as React from 'react';
 import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
-export const DemoPage = (componentPageProps: IDemoPageProps) => {
+export const DemoPage: React.StatelessComponent<IDemoPageProps> = (componentPageProps) => {
   return (
     <ComponentPage
       title={ componentPageProps.title }
