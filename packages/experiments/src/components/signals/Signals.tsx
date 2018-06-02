@@ -229,7 +229,7 @@ export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element 
     <IconSignal
       { ...props }
       signalClass={ SignalsStyles.malwareDetected }
-      iconName='BlockedSite'
+      iconName='BlockedSiteSolid12'
     />
   );
 };

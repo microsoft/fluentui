@@ -55,7 +55,7 @@ describe('ContextMenuItemChildren', () => {
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
-        menuItem = { key: '123', icon: 'itemIcon', name: 'menuItem' };
+        menuItem = { key: '123', iconProps: { iconName: 'itemIcon' }, text: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
         wrapper = shallow(
@@ -134,6 +134,7 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     checkmarkIcon: 'checkmarkIcon',
     subMenuIcon: 'subMenuIcon',
     label: 'label',
+    secondaryText: 'secondaryText',
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',

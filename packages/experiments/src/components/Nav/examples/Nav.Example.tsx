@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavLinkGroup } from 'office-ui-fabric-react/lib/components/Nav';
+import { ICustomNavLinkGroup, NavGroupType } from '../Nav.types';
 import { NavToggler } from '../NavToggler';
 
 export class NavExample extends React.Component<{}, {}> {
@@ -8,7 +8,13 @@ export class NavExample extends React.Component<{}, {}> {
   }
 
   public render(): JSX.Element {
-    const navLinkGroups: INavLinkGroup[] = [
+    const navLinkGroups: ICustomNavLinkGroup[] = [
+      {
+        links: [
+          { name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key' }
+        ],
+        groupType: NavGroupType.ToggleGroup
+      },
       {
         name: 'default group',
         links: [
@@ -19,7 +25,7 @@ export class NavExample extends React.Component<{}, {}> {
               { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key3' }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document' },
+          { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document', isHidden: true },
           { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key5', icon: 'Page' },
           {
             name: 'Notebook - test with long name to show ellipse',
@@ -28,7 +34,8 @@ export class NavExample extends React.Component<{}, {}> {
             key: 'key6',
             icon: 'DietPlanNotebook'
           },
-        ]
+        ],
+        groupType: NavGroupType.MenuGroup
       },
       {
         name: 'named menu group',
@@ -49,14 +56,26 @@ export class NavExample extends React.Component<{}, {}> {
             key: 'key12',
             icon: 'DietPlanNotebook'
           },
-        ]
+        ],
+        groupType: NavGroupType.MenuGroup
+      },
+      {
+        links: [
+          { name: 'Edit', url: '#', onClick: this._onEditClick, icon: 'Edit', key: 'key13' },
+          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' },
+        ],
+        groupType: NavGroupType.CustomizationGroup
       }
     ];
 
     return (
       <div>
-        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' />
+        <NavToggler groups={ navLinkGroups } dataHint='LeftNav' enableCustomization={ true } selectedKey='key2' />
       </div>
     );
+  }
+
+  private _onEditClick(): void {
+    alert('open edit nav view / flyout');
   }
 }

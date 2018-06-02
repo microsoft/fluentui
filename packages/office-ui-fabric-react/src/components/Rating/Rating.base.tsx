@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  IClassNames,
   classNamesFunction,
   css,
   customizable,
   format,
   getId
 } from '../../Utilities';
-import {
-  IClassNames
-} from '@uifabric/utilities/lib/IClassNames';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
@@ -19,6 +17,7 @@ const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   fillPercentage: number;
   disabled: boolean;
+  readOnly: boolean;
   classNames: IClassNames<IRatingStyles>;
 }
 
@@ -87,7 +86,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const {
       disabled,
       getAriaLabel,
-      getStyles,
+      styles,
       max,
       rating,
       readOnly,
@@ -95,8 +94,9 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       theme
     } = this.props;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       disabled,
+      readOnly,
       theme: theme!
     });
 
@@ -105,6 +105,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         const ratingStarProps: IRatingStarProps = {
           fillPercentage: this._getFillingPercentage(i),
           disabled: disabled ? true : false,
+          readOnly: readOnly ? true : false,
           classNames: this._classNames
         };
 
@@ -113,13 +114,14 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         stars.push(
           <button
             className={ css(this._classNames.ratingButton, {
-              [this._classNames.rootIsLarge]: size === RatingSize.Large,
-              [this._classNames.rootIsSmall]: size !== RatingSize.Large
+              [this._classNames.ratingStarIsLarge]: size === RatingSize.Large,
+              [this._classNames.ratingStarIsSmall]: size !== RatingSize.Large
             }) }
             id={ starIds[i - 1] }
             key={ i }
             { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
             onFocus={ this._onFocus.bind(this, i) }
+            onClick={ this._onFocus.bind(this, i) } // For Safari & Firefox on OSX
             disabled={ disabled || readOnly ? true : false }
             role='presentation'
             type='button'
@@ -133,14 +135,20 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     return (
       <div
-        className={ 'ms-Rating-star' }
+        className={ css('ms-Rating-star', this._classNames.root, {
+          [this._classNames.rootIsLarge]: size === RatingSize.Large,
+          [this._classNames.rootIsSmall]: size !== RatingSize.Large
+        }) }
         aria-label={ getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
         id={ id }
       >
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
           tabIndex={ readOnly ? 0 : -1 }
-          className={ this._classNames.ratingFocusZone }
+          className={ css(this._classNames.ratingFocusZone, {
+            [this._classNames.rootIsLarge]: size === RatingSize.Large,
+            [this._classNames.rootIsSmall]: size !== RatingSize.Large
+          }) }
           data-is-focusable={ readOnly ? true : false }
           defaultActiveElement={ rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined }
         >
@@ -155,13 +163,15 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
-    this.setState({
-      rating: value
-    } as IRatingState);
+    if (this.state.rating !== value) {
+      this.setState({
+        rating: value
+      } as IRatingState);
 
-    const { onChanged } = this.props;
-    if (onChanged) {
-      onChanged(value);
+      const { onChanged } = this.props;
+      if (onChanged) {
+        onChanged(value);
+      }
     }
   }
 

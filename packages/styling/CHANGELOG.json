@@ -2,6 +2,163 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/styling_v6.0.1",
+      "date": "Wed, 30 May 2018 22:05:04 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.1 <7.0.0` to `>=6.0.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/styling_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Bump to 6.0 alongside office-ui-fabric-react 6.0 release."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.0.0 <7.0.0` to `>=6.0.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.0",
+      "tag": "@uifabric/styling_v5.31.0",
+      "date": "Thu, 24 May 2018 17:06:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "cb0a55148e1613f7a878f242125905c45b2bd052",
+            "comment": "add new semantic slot"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.30.3",
+      "tag": "@uifabric/styling_v5.30.3",
+      "date": "Wed, 23 May 2018 10:28:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fe9b632196f0a9b2d229ee074d1f25edaeb74a98",
+            "comment": "cleanup semantic slots"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.31.0 <6.0.0` to `>=5.32.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.17.0 <6.0.0` to `>=5.17.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.30.2",
+      "tag": "@uifabric/styling_v5.30.2",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "e420ac6c48d1c8a5083e2f3ee55c12bd604649bb",
+            "comment": "Fix import to be compatible with AMD bundlers"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.30.1",
+      "tag": "@uifabric/styling_v5.30.1",
+      "date": "Fri, 04 May 2018 15:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.30.0",
+      "tag": "@uifabric/styling_v5.30.0",
+      "date": "Wed, 02 May 2018 23:55:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Chao <fengchao199011@hotmail.com>",
+            "commit": "d63f34335dd774e1c0f2d12bde16d7a1b16af7e2",
+            "comment": "fix bad import in styling package"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "920a06d0cd2c37298cd48c156b43bf1fd88fef83",
+            "comment": "Add accompanying styling work for Keytips"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.29.0 <6.0.0` to `>=5.30.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.29.0",
+      "tag": "@uifabric/styling_v5.29.0",
+      "date": "Tue, 01 May 2018 10:23:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7a422cefe94fabc13aba23dcca5c7d69f8e63b28",
+            "comment": "Adding helper to derive a media query."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.28.0",
+      "tag": "@uifabric/styling_v5.28.0",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "660800656c40963e73450fddafb9d621ce089f4a",
+            "comment": "Adds flags to theme to support controlling global class names"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.27.0",
       "tag": "@uifabric/styling_v5.27.0",
       "date": "Wed, 25 Apr 2018 05:32:09 GMT",

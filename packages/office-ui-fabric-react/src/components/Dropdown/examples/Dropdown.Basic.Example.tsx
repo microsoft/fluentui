@@ -31,7 +31,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
           options={
             [
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
-              { key: 'A', text: 'Option a' },
+              { key: 'A', text: 'Option a', title: 'I am option a.' },
               { key: 'B', text: 'Option b' },
               { key: 'C', text: 'Option c', disabled: true },
               { key: 'D', text: 'Option d' },

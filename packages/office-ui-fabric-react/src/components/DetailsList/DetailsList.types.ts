@@ -2,7 +2,8 @@ import * as React from 'react';
 import { DetailsList } from './DetailsList';
 import {
   ISelection,
-  SelectionMode
+  SelectionMode,
+  ISelectionZoneProps
 } from '../../utilities/selection/index';
 import { IRenderFunction } from '../../Utilities';
 import {
@@ -16,7 +17,11 @@ import {
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
-import { IList, IListProps } from '../List/index';
+import {
+  IList,
+  IListProps,
+  ScrollToMode
+} from '../List/index';
 
 export { IDetailsHeaderProps };
 
@@ -35,8 +40,14 @@ export interface IDetailsList extends IList {
    * @param forceIntoFirstElement If true, focus will be set to the first focusable child element of the item rather
    *  than the item itself.
    * @param measureItem Optional callback to measure the height of an individual item
+   * @param scrollToMode Optional setting to determine where in the window the item should be scrolled to when focused.
    */
-  focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number) => void;
+  focusIndex: (
+    index: number,
+    forceIntoFirstElement?: boolean,
+    measureItem?: (itemIndex: number) => number,
+    scrollToMode?: ScrollToMode
+  ) => void;
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
@@ -81,6 +92,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * @default false
    **/
   selectionPreservedOnEmptyClick?: boolean;
+
+  /**
+   * Addition props to pass through to the selection zone created by default.
+   */
+  selectionZoneProps?: ISelectionZoneProps;
 
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
@@ -246,7 +262,7 @@ export interface IColumn {
    * The field to pull the text value from for the column. This can be null if a custom
    * onRender method is provided.
    */
-  fieldName: string;
+  fieldName?: string;
 
   /**
    * An optional class name to stick on the column cell within each row.

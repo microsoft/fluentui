@@ -11,10 +11,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
-          key: 'CommandBar',
-          name: 'CommandBar',
-          url: '#/examples/commandbar'
+          component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
+          key: 'Chiclet',
+          name: 'Chiclet',
+          url: '#/examples/chiclet'
         },
         {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
@@ -33,18 +33,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'FileTypeIcon',
           name: 'FileTypeIcon',
           url: '#/examples/filetypeicon'
-        },
-        {
-          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
-          key: 'Keytip',
-          name: 'Keytip',
-          url: '#/examples/keytip'
-        },
-        {
-          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
-          key: 'KeytipLayer',
-          name: 'KeytipLayer',
-          url: '#/examples/keytipLayer'
         },
         {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
@@ -77,24 +65,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/shimmer'
         },
         {
-          component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
-          key: 'FloatingPeoplePicker',
-          name: 'FloatingPeoplePicker',
-          url: '#/examples/floatingpeoplepicker'
-        },
-        {
-          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
-          key: 'PeopleItemList',
-          name: 'PeopleItemList',
-          url: '#/examples/peopleitemlist'
-        },
-        {
-          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
-          key: 'ExtendedPeoplePicker',
-          name: 'ExtendedPeoplePicker',
-          url: '#/examples/extendedpeoplepicker'
-        },
-        {
           component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
           key: 'VirtualizedList',
           name: 'VirtualizedList',
@@ -111,6 +81,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Nav',
           name: 'Nav',
           url: '#/examples/nav'
+        },
+        {
+          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
+          key: 'FluentTheme',
+          name: 'Fluent Theme',
+          url: '#/examples/fluenttheme'
         }
       ]
     }

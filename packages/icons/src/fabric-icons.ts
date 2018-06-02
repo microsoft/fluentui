@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -6,7 +6,7 @@ import {
   IIconOptions,
   IIconSubset,
   registerIcons
-} from '@uifabric/styling/lib/index';
+} from '@uifabric/styling';
 
 export function initializeIcons(
   baseUrl: string = '',
@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`
     },
     icons: {
       'GlobalNavButton': '\uE700',

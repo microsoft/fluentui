@@ -1,6 +1,6 @@
 ﻿/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import {
   INavLink,
   INavLinkGroup
@@ -8,11 +8,17 @@ import {
 import { INavState } from 'office-ui-fabric-react/lib/components/Nav/Nav.base';
 /* tslint:enable */
 
+export enum NavGroupType {
+  ToggleGroup,
+  MenuGroup,
+  CustomizationGroup
+}
+
 export interface INavProps {
   /**
    * A collection of link groups to display in the navigation bar
    */
-  groups: INavLinkGroup[] | null;
+  groups: ICustomNavLinkGroup[] | null;
 
   /**
    * (Optional) The key of the nav item initially selected.
@@ -36,19 +42,39 @@ export interface INavProps {
   navScrollerId?: string;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules
+   * (Optional) Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
-   * Used for telemetry
+   * (Optional) Used for telemetry
    */
   dataHint?: string;
+
+  /**
+   * (Optional) When enabled
+   * 1. Links will consider isHidden property to show/hide itself.
+   * 2. There will be a customization group with show more/less link to show/hide hidden links.
+   * 3. There will also be an edit nav link button. This is for the partner to implement the UX which
+   * will customize the isHidden property of the nav link (possibly through a flyout and refresh the Nav component).
+   */
+  enableCustomization?: boolean;
+
+  /**
+   * Used to override isHidden property of the Nav link when the "Show More" link is clicked
+   */
+  showMore?: boolean;
 
   /**
    * (Optional) callback for the parent component when the nav component is toggled between expanded and collapsed state
    */
   onNavCollapsedCallback?(isCollapsed: boolean): void;
+
+  /**
+   * (Optional) callback for the Nav and SlimNav component when the "Show more" / "Show less" nav link is clicked.
+   * The state "showMore" stays in the parent NavToggler component to keep show more/less state of Nav and SlimNav component in sync.
+   */
+  onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>): void;
 }
 
 export interface INavState extends INavState {
@@ -56,11 +82,46 @@ export interface INavState extends INavState {
    * Used to toggle the nav component between expanded and collapsed state.
    */
   isNavCollapsed?: boolean;
+
+  /**
+   * Used to override isHidden property of the Nav link when the "Show More" link is clicked
+   */
+  showMore?: boolean;
 }
 
 export interface INavLink extends INavLink {
-  /* used to adjust the floating nav when the scrollbar appears */
+  /**
+   * (Optional) Used to adjust the floating nav when the scrollbar appears
+   */
   scrollTop?: number;
+
+  /**
+   * (Optional) Show / hide the nav link
+   */
+  isHidden?: boolean;
+
+  /**
+   * (Optional) Localized alternate text for the name field.
+   */
+  alternateText?: string;
+
+  /**
+   * (Optional) To identify whether this link is show more/less and
+   * provide internal implementation to show/hide nav links based on isHidden property.
+   */
+  isShowMoreLink?: boolean;
+
+  /**
+   * (Optional) Provides an ability to toggle auto expand when the selectedKey prop is one of the child of this link
+   */
+  disableAutoExpand?: boolean;
+}
+
+export interface ICustomNavLinkGroup extends INavLinkGroup {
+  /**
+   * Used to identify whether the nav group is toggle group or menu group or the customization group.
+   */
+  groupType: NavGroupType;
 }
 
 export interface INavStyleProps {

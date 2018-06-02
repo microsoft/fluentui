@@ -29,6 +29,16 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a DefaultButton with a keytip correctly', () => {
+    const keytipProps = {
+      content: 'A',
+      keySequences: ['a']
+    };
+    const component = renderer.create(<DefaultButton text='Button' keytipProps={ keytipProps } />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders CommandBarButton correctly', () => {
     const component = renderer.create(
       <CommandBarButton
@@ -38,13 +48,13 @@ describe('Button', () => {
           items: [
             {
               key: 'emailMessage',
-              name: 'Email message',
-              icon: 'Mail'
+              text: 'Email message',
+              iconProps: { iconName: 'Mail' }
             },
             {
               key: 'calendarEvent',
-              name: 'Calendar event',
-              icon: 'Calendar'
+              text: 'Calendar event',
+              iconProps: { iconName: 'Calendar' }
             }
           ]
         } }
@@ -55,7 +65,7 @@ describe('Button', () => {
 
   it('renders CompoundButton correctly', () => {
     const component = renderer.create(
-      <CompoundButton description='You can create a new account here.'>
+      <CompoundButton secondaryText='You can create a new account here.'>
         Create account
     </CompoundButton>);
     const tree = component.toJSON();
@@ -180,7 +190,7 @@ describe('Button', () => {
 
       button = ReactTestUtils.renderIntoDocument<any>(
         <CompoundButton
-          description='Some awesome description'
+          secondaryText='Some awesome description'
           ariaDescription='Description on icon button'
         >
           And this is the label
@@ -197,7 +207,7 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuProps={ { items: [{ key: 'item', name: 'Item' }] } }>Hello</DefaultButton>
+          <DefaultButton menuProps={ { items: [{ key: 'item', text: 'Item' }] } }>Hello</DefaultButton>
         ) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
@@ -247,13 +257,13 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }
@@ -275,13 +285,13 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }
@@ -308,13 +318,13 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }
@@ -339,13 +349,13 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }
@@ -366,13 +376,13 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }
@@ -381,6 +391,40 @@ describe('Button', () => {
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
+      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+    });
+
+    it('Touch Start on primary button of SplitButton expands menu', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          split={ true }
+          onClick={ alertClicked }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
+              },
+              {
+                key: 'calendarEvent',
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
+              }
+            ]
+          } }
+        />
+      );
+      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const primaryButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
+
+      // in a normal scenario, when we do a touchstart we would also cause a
+      // click event to fire. This doesn't happen in the simulator so we're
+      // manually adding this in.
+      ReactTestUtils.Simulate.touchStart(primaryButtonDOM);
+      ReactTestUtils.Simulate.click(primaryButtonDOM);
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
@@ -394,13 +438,13 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }
@@ -415,7 +459,7 @@ describe('Button', () => {
       expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
     });
 
-    it('If menu trigger is specefied, default key is overridden', () => {
+    it('If menu trigger is specified, default key is overridden', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
           data-automation-id='test'
@@ -425,13 +469,13 @@ describe('Button', () => {
             items: [
               {
                 key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
               },
               {
                 key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
               }
             ]
           } }
@@ -473,13 +517,13 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -502,13 +546,13 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -540,13 +584,13 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -575,13 +619,13 @@ describe('Button', () => {
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
             } }
@@ -591,6 +635,78 @@ describe('Button', () => {
 
         ReactTestUtils.Simulate.click(buttonElement);
         expect(didClick).toEqual(false);
+      });
+    });
+
+    describe('with contextual menu', () => {
+      function buildRenderAndClickButtonAndReturnContextualMenuDOMElement(menuPropsPatch?: any, text?: string, textAsChildElement: boolean = false): HTMLElement {
+        const menuProps = { items: [{ key: 'item', name: 'Item' }], ...menuPropsPatch };
+        const element: React.ReactElement<any> = (
+          <DefaultButton
+            iconProps={ { iconName: 'Add' } }
+            text={ !textAsChildElement && text ? text : undefined }
+            menuProps={ ...menuProps }
+          >
+            { textAsChildElement && text ? text : null }
+          </DefaultButton>
+        );
+
+        const button = ReactTestUtils.renderIntoDocument<any>(element) as React.ReactInstance;
+        const renderedDOM = ReactDOM.findDOMNode(button) as HTMLElement;
+
+        expect(renderedDOM).toBeDefined();
+        ReactTestUtils.Simulate.click(renderedDOM);
+
+        // get the menu id from the button's aria attribute
+        const menuId = renderedDOM.getAttribute('aria-owns');
+        expect(menuId).toBeDefined();
+
+        const menuDOM = renderedDOM.ownerDocument.getElementById(menuId as string);
+        expect(menuDOM).toBeDefined();
+
+        return menuDOM as HTMLElement;
+      }
+
+      it('If button has text, contextual menu has aria-labelledBy attribute set', () => {
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
+
+        expect(contextualMenuElement).not.toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-label') === null);
+        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
+      });
+
+      it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text', true);
+
+        expect(contextualMenuElement).not.toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-label') === null);
+        expect(contextualMenuElement.getAttribute('aria-labelledBy') !== null);
+      });
+
+      it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
+
+        expect(contextualMenuElement).not.toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-label') === null);
+        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+      });
+
+      it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
+        const explicitLabel = 'ExplicitLabel';
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement({ ariaLabel: explicitLabel }, 'Button Text');
+
+        expect(contextualMenuElement).not.toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-label') === explicitLabel);
+        expect(contextualMenuElement.getAttribute('aria-labelledBy') === null);
+      });
+
+      it('If button has text but labelElementId provided in menuProps, contextual menu has aria-labelledBy reflecting labelElementId', () => {
+        const explicitLabelElementId = 'id_ExplicitLabel';
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement({ labelElementId: explicitLabelElementId }, 'Button Text');
+
+        expect(contextualMenuElement).not.toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-label') === null);
+        expect(contextualMenuElement.getAttribute('aria-labelledBy') === explicitLabelElementId);
       });
     });
   });

@@ -42,11 +42,11 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       titleId,
       title,
       type,
-      getStyles,
+      styles,
       theme,
     } = this.props;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       isLargeHeader: type === DialogType.largeHeader,

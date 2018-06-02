@@ -1,6 +1,71 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 25 Apr 2018 05:32:09 GMT and should not be manually modified.
+This log was last generated on Wed, 30 May 2018 22:05:04 GMT and should not be manually modified.
+
+## 6.0.1
+Wed, 30 May 2018 22:05:04 GMT
+
+*Version update only*
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Bump to 6.0 alongside office-ui-fabric-react 6.0 release.
+
+## 5.31.0
+Thu, 24 May 2018 17:06:02 GMT
+
+### Minor changes
+
+- add new semantic slot
+
+## 5.30.3
+Wed, 23 May 2018 10:28:50 GMT
+
+### Patches
+
+- cleanup semantic slots
+
+## 5.30.2
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Fix import to be compatible with AMD bundlers
+
+## 5.30.1
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Add accompanying styling work for Keytips
+
+### Patches
+
+- fix bad import in styling package
+
+## 5.29.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- Adding helper to derive a media query.
+
+## 5.28.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Adds flags to theme to support controlling global class names
 
 ## 5.27.0
 Wed, 25 Apr 2018 05:32:09 GMT

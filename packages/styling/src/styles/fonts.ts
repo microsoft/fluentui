@@ -1,7 +1,7 @@
 import {
   IRawStyle,
   IFontWeight
-} from '@uifabric/merge-styles/lib/index';
+} from '@uifabric/merge-styles';
 import {
   IFontStyles
 } from '../interfaces/index';

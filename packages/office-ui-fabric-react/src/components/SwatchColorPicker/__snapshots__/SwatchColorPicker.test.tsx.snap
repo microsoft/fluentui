@@ -51,9 +51,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="green"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -180,6 +180,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -244,9 +248,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="orange"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -373,6 +377,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -437,9 +445,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="blue"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -566,6 +574,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -630,9 +642,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="red"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -759,6 +771,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -827,9 +843,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="green"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -956,6 +972,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1020,9 +1040,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="orange"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -1149,6 +1169,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1213,9 +1237,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="blue"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -1342,6 +1366,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1406,9 +1434,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="red"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -1535,6 +1563,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1603,9 +1635,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="black"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -1732,6 +1764,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1796,9 +1832,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="grey"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -1925,6 +1961,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -1989,9 +2029,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="purple"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -2118,6 +2158,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;
@@ -2182,9 +2226,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-describedby={null}
+            aria-describedby={undefined}
             aria-label="yellow"
-            aria-labelledby={null}
+            aria-labelledby={undefined}
             aria-pressed={undefined}
             aria-selected={false}
             className=
@@ -2311,6 +2355,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 &:hover {
                   color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
                 }
                 &:active {
                   color: #000000;

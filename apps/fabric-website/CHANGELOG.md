@@ -1,6 +1,56 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 17 Apr 2018 18:47:11 GMT and should not be manually modified.
+This log was last generated on Thu, 31 May 2018 10:18:58 GMT and should not be manually modified.
+
+## 6.0.1
+Thu, 31 May 2018 10:18:58 GMT
+
+### Patches
+
+- made sure the deps are resolved by package rather than relative paths
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Bump to 6.0 alongside office-ui-fabric-react 6.0 release.
+
+## 5.7.5
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Get rid of App-nav container in mobile, it was blocking interation.
+
+## 5.7.4
+Tue, 08 May 2018 16:02:16 GMT
+
+### Patches
+
+- When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on.
+
+## 5.7.3
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Add fabric sketch toolkit
+- Updating React build version.
+
+## 5.7.2
+Tue, 01 May 2018 19:26:35 GMT
+
+### Patches
+
+- LocalizationPage: Only show icon names on hover so they don't overlap.
+
+## 5.7.1
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Patches
+
+- Removing unused refs.
 
 ## 5.7.0
 Tue, 17 Apr 2018 18:47:11 GMT

@@ -2,6 +2,158 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/fabric-website_v6.0.1",
+      "date": "Thu, 31 May 2018 10:18:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "425c887c654822e6fb31513f390471cf1953f1aa",
+            "comment": "made sure the deps are resolved by package rather than relative paths"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.1.1 <7.0.0` to `>=6.1.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/fabric-website_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Bump to 6.0 alongside office-ui-fabric-react 6.0 release."
+          }
+        ],
+        "none": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "71c06895d0f7dafd28384357c0bd93541deb95e1",
+            "comment": "revert build change"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "81773bd855d12f20ca5a482ceabbb0997111f24c",
+            "comment": "Update sharepoint xd toolkit link"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.112.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.5",
+      "tag": "@uifabric/fabric-website_v5.7.5",
+      "date": "Thu, 17 May 2018 10:28:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "218d0e70c98804a7f0b97a65e5380c232b01aca1",
+            "comment": "Get rid of App-nav container in mobile, it was blocking interation."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.103.0 <6.0.0` to `>=5.104.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.4",
+      "tag": "@uifabric/fabric-website_v5.7.4",
+      "date": "Tue, 08 May 2018 16:02:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d3a85ba759d58bd74e4a1741ab73b729c96fa637",
+            "comment": "When navigating to a new page, the page will now be scrolled to the top instead of whatever position of the page you were on."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.3",
+      "tag": "@uifabric/fabric-website_v5.7.3",
+      "date": "Fri, 04 May 2018 15:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "097a1c9680161fe7faae9573f1e12fd21295eda6",
+            "comment": "Add fabric sketch toolkit"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aa297a4ca6b3457ea23bf2473ac88a31b1d06d3e",
+            "comment": "Updating React build version."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.95.0 <6.0.0` to `>=5.96.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.2",
+      "tag": "@uifabric/fabric-website_v5.7.2",
+      "date": "Tue, 01 May 2018 19:26:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2d89229b5623713af268b537e1bd72ce476354c4",
+            "comment": "LocalizationPage: Only show icon names on hover so they don't overlap."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.93.0 <6.0.0` to `>=5.94.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.1",
+      "tag": "@uifabric/fabric-website_v5.7.1",
+      "date": "Mon, 30 Apr 2018 10:16:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c3769b65c2596d3f9dea0d9f25a0715cf23914ea",
+            "comment": "Removing unused refs."
+          }
+        ],
+        "none": [
+          {
+            "author": "VincentBailly <vincentbaill@gmail.com>",
+            "commit": "88e043f28db97e59b0cbb25aca26ffbd606121af",
+            "comment": "fix corner case bug with Safari"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.91.0 <6.0.0` to `>=5.92.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "@uifabric/fabric-website_v5.7.0",
       "date": "Tue, 17 Apr 2018 18:47:11 GMT",

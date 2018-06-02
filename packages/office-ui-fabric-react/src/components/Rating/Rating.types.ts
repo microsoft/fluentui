@@ -3,7 +3,7 @@ import {
   IStyle,
   ITheme
 } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IRating {
 
@@ -81,7 +81,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IRatingStyleProps, IRatingStyles>;
+  styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
 
   /**
    * Theme (provided through customization.)
@@ -96,14 +96,18 @@ export enum RatingSize {
 
 export interface IRatingStyleProps {
   disabled?: boolean;
+  readOnly?: boolean;
   theme: ITheme;
 }
 
 export interface IRatingStyles {
+  root: IStyle;
   ratingStar: IStyle;
   ratingStarBack: IStyle;
   ratingStarFront: IStyle;
   ratingButton: IStyle;
+  ratingStarIsSmall: IStyle;
+  ratingStarIsLarge: IStyle;
   rootIsSmall: IStyle;
   rootIsLarge: IStyle;
   labelText: IStyle;

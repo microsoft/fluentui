@@ -224,9 +224,15 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             <td>Slot pair</td>
           </thead>
           <tbody>
-            { [this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white)] }
+            { [this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white),
+            this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
+            this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter),
+            this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLighter),
+            this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.neutralLighter),
+            this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter)] }
           </tbody>
         </table>
+
       </div>
     );
   }
@@ -302,7 +308,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     return (
       <tr key={ String(foreground) + String(background) }>
-        <td style={ { backgroundColor: bgc.str, color: fgc.str } }>The quick brown fox jumps over the lazy dog.</td>
+        <td style={ { backgroundColor: bgc.str, color: fgc.str } }>How vexingly quick daft zebras jump.</td>
         <td>{ contrastRatioString }</td>
         <td>{ FabricSlots[foreground] + ' + ' + FabricSlots[background] }</td>
       </tr>
