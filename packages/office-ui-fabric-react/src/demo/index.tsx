@@ -9,7 +9,7 @@ import { ComponentPage, IAppLink, IAppLinkGroup } from '@uifabric/example-app-ba
 import './index.scss';
 import './ColorStyles.scss';
 
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from '@uifabric/icons';
 
 initializeIcons();
 
