@@ -32,7 +32,10 @@ describe('FormCheckBox Unit Tests', () => {
       expect(renderedInput).toBeTruthy();
     });
 
-    xit('Null name throws error', () => {
+    it('Null name throws error', () => {
+      const consoleMock = jest.spyOn(console, 'error');
+      consoleMock.mockImplementation(() => undefined);
+
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
           <Form
@@ -47,6 +50,12 @@ describe('FormCheckBox Unit Tests', () => {
       };
 
       expect(errorFunction).toThrow();
+      expect(console.error).toHaveBeenCalledTimes(2);
+      expect((consoleMock as jest.MockInstance<{}>).mock.calls[0][0]).toMatch(
+        'Uncaught [Error: FormBaseInput: name must defined on all form inputs]'
+      );
+
+      consoleMock.mockRestore();
 
       (renderedForm as any) = {};
       (renderedInput as any) = {};
