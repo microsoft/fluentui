@@ -20,6 +20,7 @@ const app = express();
 
 const TodoApp = require('../lib-commonjs/TodoApp').default;
 
+app.use(express.static('./dist'));
 app.get('/', (req, res) => {
 
   const { html, css } = renderStatic(() => {
@@ -28,7 +29,8 @@ app.get('/', (req, res) => {
 
   res.send(
     `<style>${css}</style>` +
-    `<div id='content'>${html}</div>`
+    `<div id='content'>${html}</div>` +
+    `<script type='text/javascript' src='test-app.min.js'></script>`
   );
 });
 

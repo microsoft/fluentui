@@ -9,10 +9,7 @@ let _rootDiv: HTMLElement;
 function start(): void {
   initializeIcons();
 
-  if (!_rootDiv) {
-    _rootDiv = document.createElement('div');
-    document.body.appendChild(_rootDiv);
-  }
+  _rootDiv = document.querySelector('#content');
 
   ReactDOM.render(
     <TodoApp />,
