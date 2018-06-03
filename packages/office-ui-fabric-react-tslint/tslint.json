@@ -24,7 +24,7 @@
     "jsx-key": true,
     "jsx-no-lambda": true,
     "jsx-self-close": true,
-    "jsx-wrap-multiline": true,
+    "jsx-wrap-multiline": false,
     "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
     "jsx-ban-props": [
@@ -41,7 +41,10 @@
     ],
     "max-line-length": [
       true,
-      140
+      {
+        "limit": 140,
+        "ignore-pattern": "require\\(|https?:\\/\\/"
+      }
     ],
     "no-arg": true,
     "radix": true,
@@ -56,7 +59,8 @@
     "quotemark": [
       true,
       "single",
-      "jsx-single"
+      "jsx-double",
+      "avoid-escape"
     ],
     "no-inferrable-types": [
       true,
@@ -159,7 +163,8 @@
     ],
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "typedef-whitespace": [
       true,

@@ -99,12 +99,14 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this._fabricSlotWidget(FabricSlots.neutralLighterAlt),
       this._fabricSlotWidget(FabricSlots.white)];
 
+    const stylingUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling';
+
     return (
       <div className='ms-themer'>
         <div className='overview'>
           <h2 id='Overview'>Overview</h2>
           <p>This tool helps you easily create all the shades and slots for a custom theme.
-          The theme can be used by Fabric React's styling package, see the <a className={ 'themeGeneratorPageLink' } href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
+          The theme can be used by Fabric React's styling package, see the <a className={ 'themeGeneratorPageLink' } href={ stylingUrl }>documentation</a>.
           <br />
             As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.</p>
         </div>

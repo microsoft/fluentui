@@ -1,0 +1,6 @@
+package.json
+packages/*/package.json
+packages/**/*.api.ts
+
+lib/**/*.js
+lib-commonjs/**/*.js

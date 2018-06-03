@@ -64,8 +64,8 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
         <div className={ classNames.header }>
           <p className={ classNames.title } id={ titleId } role='heading'>{ title }</p>
           <div className={ classNames.topButton }>
-            { this.props.topButtonsProps!.map((props) => (
-              <IconButton { ...props } />
+            { this.props.topButtonsProps!.map((props, index) => (
+              <IconButton key={ props.uniqueId || index } { ...props } />
             )) }
             { (type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) &&
               <IconButton

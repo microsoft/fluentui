@@ -12,6 +12,7 @@
     "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
     "_test": "npm run _webpack && npm run _mocha",
     "build": "npm run _test",
+    "code-style": "node -v",
     "clean": ""
   },
   "license": "MIT",
