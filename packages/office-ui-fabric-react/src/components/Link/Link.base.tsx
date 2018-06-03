@@ -69,8 +69,8 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     }
   }
 
-  private _removeInvalidPropsForRootType(RootType: string | React.ComponentClass | React.StatelessComponent, props: ILinkProps): Partial<ILinkProps> {
-    // Deconstruct the props so we remove props like `as`, `theme` and `getStyles`
+  private _removeInvalidPropsForRootType(RootType: string | React.ComponentClass | React.StatelessComponent, props: ILinkProps & { getStyles?: any }): Partial<ILinkProps> {
+    // Deconstruct the props so we remove props like `as`, `theme` and `styles`
     // as those will always be removed. We also take some props that are optional
     // based on the RootType.
     const {
@@ -81,8 +81,9 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       href,
       theme,
       getStyles,
+      styles,
       ...restProps
-    } = this.props;
+    } = props;
 
     // RootType will be a string if we're dealing with an html component
     if (typeof RootType === 'string') {
