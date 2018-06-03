@@ -371,7 +371,7 @@ describe('Calendar', () => {
     expect(nextMonth.classList.contains('ms-DatePicker-nextYear--disabled')).toBe(true);
   });
 
-  describe("Test Rendering Basic Calendar with Year Picker", () => {
+  describe('Test Rendering Basic Calendar with Year Picker', () => {
     let renderedComponent: Calendar;
     let defaultDate: Date;
     let lastSelectedDate: Date;
@@ -394,20 +394,20 @@ describe('Calendar', () => {
         />) as Calendar;
     });
 
-    it("month header should have button role", () => {
+    it('month header should have button role', () => {
       const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
-      expect(monthHeader.getAttribute("role")).toBe("button");
+      expect(monthHeader.getAttribute('role')).toBe('button');
     });
 
-    it("year picker should show when clicking month header", () => {
+    it('year picker should show when clicking month header', () => {
       const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
       ReactTestUtils.Simulate.click(monthHeader);
       const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentDecade');
       expect(yearHeader).toBeTruthy();
-      expect(yearHeader.getAttribute("role")).toBe("button");
+      expect(yearHeader.getAttribute('role')).toBe('button');
     });
 
-    it("year picker cells render as expected", () => {
+    it('year picker cells render as expected', () => {
       // working with the year grid
       const grid = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-optionGrid');
       const cells = grid.getElementsByClassName('ms-DatePicker-yearOption');
@@ -416,10 +416,10 @@ describe('Calendar', () => {
       // expect each of the cells to have a grid cell role type
       const visitedYears: number[] = [];
       for (let i = 0; i < cells.length; i++) {
-        expect(cells.item(i).getAttribute("role")).toBe("gridcell");
+        expect(cells.item(i).getAttribute('role')).toBe('gridcell');
         const cellContent = cells.item(i).textContent;
         expect(cellContent).toBeTruthy();
-        const year = parseInt(cellContent as string);
+        const year = parseInt(cellContent as string, 10);
         expect(visitedYears.indexOf(year)).toBeLessThan(0);
         expect(year).toBeGreaterThanOrEqual(2010);
         expect(year).toBeLessThanOrEqual(2021);
@@ -427,7 +427,7 @@ describe('Calendar', () => {
       }
     });
 
-    it("month picker should show when clicking year picker", () => {
+    it('month picker should show when clicking year picker', () => {
       const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentDecade');
       ReactTestUtils.Simulate.click(yearHeader);
       const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
