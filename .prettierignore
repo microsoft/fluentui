@@ -1,0 +1,5 @@
+package.json
+packages/*/package.json
+
+lib/**/*.js
+lib-commonjs/**/*.js
