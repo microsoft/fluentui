@@ -146,6 +146,14 @@ $dontColor: #A61E22;
     }
   }
 
+  .ComponentPage-variantsList {
+    @include ms-padding-left(18px);
+
+    li {
+      list-style: disc;
+    }
+  }
+
   .ComponentPage-bestPracticesSection {
     background-color: $ms-color-neutralLighterAlt;
   }

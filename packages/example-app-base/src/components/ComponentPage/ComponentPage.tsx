@@ -27,7 +27,7 @@ export interface IComponentPageProps {
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
   donts?: JSX.Element;
-  overview: JSX.Element;
+  overview?: JSX.Element;
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
@@ -100,23 +100,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           { this._pageHeader() }
           <div className='ComponentPage-body'>
             { this._getComponentStatusBadges() }
-            <div className='ComponentPage-overviewSection'>
-              <div className='ComponentPage-overviewSectionHeader'>
-                <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
-                <EditSection
-                  title={ this.props.title }
-                  section={ ComponentPageSection.Overview }
-                  sectionContent={ this.props.overview }
-                  url={ this._getURL('Overview', this.props.editOverviewUrl) }
-                />
-              </div>
-              <div className='ComponentPage-overviewSectionContent'>
-                <div className='ComponentPage-overview'>
-                  { overview }
-                </div>
-                { this._getRelatedComponents() }
-              </div>
-            </div>
+            { this._getOverview() }
             { this._getDosAndDonts() }
             { this._getVariants() }
             { this._getImplementationExamples() }
@@ -302,10 +286,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getVariants(): JSX.Element | undefined {
+    // We want to show the "Variants" header if the header is present since it has a relative anchor to it
+    // or we have more than one example JSX element to render.
+    const hasVariants = this.props.isHeaderVisible || !!this.props.exampleCards!.props.children.length;
+
+    // If only one variant then use its title as the header text, otherwise use "Variants".
+    const headerText = hasVariants ? 'Variants' : this.props.title;
+
     if (this.props.exampleCards) {
       return (
         <div className='ComponentPage-variantsSection'>
-          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
+          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>{ headerText }</h2>
           { this.props.exampleCards }
         </div>
       );
@@ -332,6 +323,32 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       return (
         <div className='ComponentPage-componentStatusSection'>
           { this.props.componentStatus }
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getOverview(): JSX.Element | undefined {
+    if (this.props.overview) {
+      return (
+        <div className='ComponentPage-overviewSection'>
+          <div className='ComponentPage-overviewSectionHeader'>
+            <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+            <EditSection
+              title={ this.props.title }
+              section={ ComponentPageSection.Overview }
+              sectionContent={ this.props.overview }
+              url={ this._getURL('Overview', this.props.editOverviewUrl) }
+            />
+          </div>
+          <div className='ComponentPage-overviewSectionContent'>
+            <div className='ComponentPage-overview'>
+              { this.props.overview }
+            </div>
+            { this._getRelatedComponents() }
+          </div>
         </div>
       );
     }

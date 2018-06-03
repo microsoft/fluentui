@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Variant section lists have same style as best practices section lists. ComponentPage Overview now marked optional prop.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "keco@microsoft.com"
+}
