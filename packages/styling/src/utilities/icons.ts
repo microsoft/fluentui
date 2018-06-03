@@ -6,7 +6,8 @@ import {
   IRawStyle,
   IFontFace,
   fontFace,
-  mergeStyles
+  mergeStyles,
+  Stylesheet
 } from '@uifabric/merge-styles';
 
 export interface IIconSubset {
@@ -66,6 +67,15 @@ const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
     warnOnMissingIcons: true
   },
   __remapped: {}
+});
+
+// Reset icon registration on stylesheet resets.
+Stylesheet.getInstance().onReset(() => {
+  for (const name in _iconSettings) {
+    if (_iconSettings.hasOwnProperty(name) && !!(_iconSettings[name] as IIconRecord).subset) {
+      (_iconSettings[name] as IIconRecord).subset.isRegistered = false;
+    }
+  }
 });
 
 /**

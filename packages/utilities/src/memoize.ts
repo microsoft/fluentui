@@ -1,3 +1,7 @@
+import { Stylesheet } from '@uifabric/merge-styles';
+
+Stylesheet.getInstance().onReset(resetMemoizations);
+
 // tslint:disable:no-any
 declare class WeakMap {
   public get(key: any): any;
@@ -5,6 +9,7 @@ declare class WeakMap {
   public has(key: any): boolean;
 }
 
+let _resetCounter = 0;
 const _emptyObject = { empty: true };
 const _dictionary: any = {};
 let _weakMap = (typeof WeakMap === 'undefined') ? null : WeakMap;
@@ -21,6 +26,13 @@ interface IMemoizeNode {
  * */
 export function setMemoizeWeakMap(weakMap: any): void {
   _weakMap = weakMap;
+}
+
+/**
+ * Reset memoizations.
+ */
+export function resetMemoizations(): void {
+  _resetCounter++;
 }
 
 /**
@@ -70,22 +82,23 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   cb: T,
   maxCacheSize: number = 100
 ): T {
-
-  let rootNode: any;
-  let cacheSize = 0;
-
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
     return cb;
   }
 
+  let rootNode: any;
+  let cacheSize = 0;
+  let localResetCounter = _resetCounter;
+
   // tslint:disable-next-line:no-function-expression
   return function memoizedFunction(...args: any[]): RET_TYPE {
     let currentNode: any = rootNode;
 
-    if (rootNode === undefined || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
+    if (rootNode === undefined || (localResetCounter !== _resetCounter) || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
       rootNode = _createNode();
       cacheSize = 0;
+      localResetCounter = _resetCounter;
     }
 
     currentNode = rootNode;

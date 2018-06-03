@@ -12,6 +12,6 @@ export function renderStatic(
 
   return {
     html: onRender(),
-    css: stylesheet.getRules()
+    css: stylesheet.getRules(true)
   };
 }

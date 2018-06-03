@@ -22,6 +22,26 @@
       "sourceMaps": true
     },
     {
+      "name": "Run server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/apps/server-rendered-app/server/index.js",
+      "cwd": "${workspaceRoot}/apps/server-rendered-app",
+      "stopOnEntry": false,
+      "args": [
+        "-i"
+      ],
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
+    },
+    {
       "name": "Build fabric",
       "type": "node",
       "request": "launch",

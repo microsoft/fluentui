@@ -3,6 +3,9 @@
     "tslint-react"
   ],
   "rules": {
+    "deprecation": [
+      true
+    ],
     "function-name": [
       true,
       {

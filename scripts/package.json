@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^4.2.6",
-    "@microsoft/load-themed-styles": "^1.7.13",
+    "@microsoft/load-themed-styles": "^1.7.60",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
     "@uifabric/merge-styles": ">=6.0.0 <7.0.0",
     "autoprefixer": "^7.1.5",
