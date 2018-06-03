@@ -171,6 +171,48 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 buttonString={ 'Click for Overlayed Day Picker and Month Picker' }
               />
             </ExampleCard>
+            <ExampleCard
+              title='Inline Calendar with year picker enabled'
+              code={ CalendarInlineExampleCode }
+            >
+              <CalendarInlineExample
+                isYearPickerEnabled={ true }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ true }
+                highlightCurrentMonth={ false }
+                highlightSelectedMonth={ true }
+                showGoToToday={ true }
+              />
+            </ExampleCard>
+            <ExampleCard
+              title='Inline Calendar with date boundary (minDate, maxDate) and year picker enabled'
+              code={ CalendarInlineExampleCode }
+            >
+              <CalendarInlineExample
+                isYearPickerEnabled={ true }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ true }
+                highlightCurrentMonth={ false }
+                highlightSelectedMonth={ true }
+                showGoToToday={ false }
+                minDate={ addMonths(today, -1) }
+                maxDate={ addYears(today, 1) }
+              />
+            </ExampleCard>
+            <ExampleCard
+              title='Inline Calendar with overlayed month picker and year picker enabled'
+              code={ CalendarInlineExampleCode }
+            >
+              <CalendarInlineExample
+                isYearPickerEnabled={ true }
+                showMonthPickerAsOverlay={ true }
+                highlightCurrentMonth={ false }
+                highlightSelectedMonth={ true }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ false }
+                showGoToToday={ false }
+              />
+            </ExampleCard>
           </div>
         }
         propertiesTables={

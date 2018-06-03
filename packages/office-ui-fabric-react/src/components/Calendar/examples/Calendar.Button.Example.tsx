@@ -69,6 +69,7 @@ export interface ICalendarButtonExampleState {
 export interface ICalendarButtonExampleProps {
   isDayPickerVisible?: boolean;
   isMonthPickerVisible?: boolean;
+  isYearPickerEnabled?: boolean;
   highlightCurrentMonth?: boolean;
   highlightSelectedMonth?: boolean;
   buttonString?: string;
