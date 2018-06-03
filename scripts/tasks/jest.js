@@ -14,6 +14,13 @@ module.exports = function (options) {
       // Specify the config file.
       `--config ${jestConfigPath}`,
 
+      // When there are no tests we still want to consider that a success.
+      // packages like `variants` do not have any tests (yet).
+      '--passWithNoTests',
+
+      // Forces test results output highlighting even if stdout is not a TTY.
+      '--colors',
+
       // Run tests in serial (parallel builds seem to hang rush.)
       // On Windows, this is occasionally an issue: https://github.com/facebook/jest/issues/4444
       // Temporarily run sequentially on Windows until jest is upgraded.
