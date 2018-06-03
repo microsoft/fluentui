@@ -239,6 +239,9 @@ export interface IGroupDividerProps {
   /** The indent level of the group. */
   groupLevel?: number;
 
+  /** Width corresponding to a single level. This is multiplied by the groupLevel to get the full spacer width for the group. */
+  indentWidth?: number;
+
   /** If all items in the group are selected. */
   selected?: boolean;
 
@@ -274,4 +277,7 @@ export interface IGroupDividerProps {
 
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
+
+  /** Override which allows the caller to provider a custom title. */
+  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
 }

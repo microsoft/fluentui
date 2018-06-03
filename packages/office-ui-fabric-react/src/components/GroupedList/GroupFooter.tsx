@@ -10,12 +10,12 @@ const styles: any = stylesImport;
 
 export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
   public render(): JSX.Element | null {
-    const { group, groupLevel, footerText } = this.props;
+    const { group, groupLevel, footerText, indentWidth } = this.props;
 
     if (group && footerText) {
       return (
         <div className={ css('ms-groupFooter', styles.root) }>
-          { GroupSpacer({ count: groupLevel! }) }
+          <GroupSpacer indentWidth={ indentWidth } count={ groupLevel! } />
           { footerText }
         </div>
       );
