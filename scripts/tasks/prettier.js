@@ -8,6 +8,7 @@ module.exports = function(options) {
   const projectPath = path.resolve(process.cwd());
   const sourcePath = path.join(process.cwd(), '**', '*.{ts,tsx,json,js}');
   const prettierPath = 'node ' + path.resolve(__dirname, '../node_modules/prettier/bin-prettier.js');
+  const prettierIgnorePath = path.resolve(__dirname, '..', '.prettierignore');
 
   const prettierConfigPath = path.join(
     process.cwd(),
@@ -26,6 +27,6 @@ module.exports = function(options) {
     process.exit(1);
   }
 
-  const prettierCommand = `${prettierPath} --config ${prettierConfigPath} --write "${sourcePath}"`;
-  childProcess.execSync(`${prettierPath} --config ${prettierConfigPath} --write "${sourcePath}"`);
+  const prettierCommand = `${prettierPath} --config ${prettierConfigPath} --ignore-path "${prettierIgnorePath}" --write "${sourcePath}"`;
+  childProcess.execSync(prettierCommand);
 };
