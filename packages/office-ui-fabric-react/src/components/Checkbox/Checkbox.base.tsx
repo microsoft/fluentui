@@ -3,18 +3,17 @@ import {
   BaseComponent,
   getId,
   createRef,
-  customizable
+  customizable,
+  classNamesFunction,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
   ICheckbox,
   ICheckboxProps,
+  ICheckboxStyleProps,
+  ICheckboxStyles
 } from './Checkbox.types';
-import {
-  ICheckboxClassNames,
-  getClassNames
-} from './Checkbox.classNames';
-import { getStyles } from './Checkbox.styles';
 import { KeytipData } from '../../KeytipData';
 
 export interface ICheckboxState {
@@ -22,15 +21,17 @@ export interface ICheckboxState {
   isChecked?: boolean;
 }
 
+const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
+
 @customizable('Checkbox', ['theme'])
-export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
+export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
     boxSide: 'start'
   };
 
   private _checkBox = createRef<HTMLElement>();
   private _id: string;
-  private _classNames: ICheckboxClassNames;
+  private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   /**
    * Initialize a new instance of the TopHeaderV2
@@ -74,7 +75,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       ariaLabel,
       ariaLabelledBy,
       ariaDescribedBy,
-      styles: customStyles,
+      styles,
       onRenderLabel = this._onRenderLabel,
       checkmarkIconProps,
       ariaPositionInSet,
@@ -85,15 +86,13 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    this._classNames = this.props.getClassNames ?
-      this.props.getClassNames(theme!, !!disabled, !!isChecked, !!isReversed, className)
-      : getClassNames(
-        getStyles(theme!, customStyles),
-        !!disabled,
-        !!isChecked,
-        !!isReversed,
-        className
-      );
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      disabled,
+      checked: isChecked,
+      reversed: isReversed
+    });
 
     return (
       <KeytipData keytipProps={ keytipProps } disabled={ disabled }>
@@ -117,7 +116,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
             aria-disabled={ disabled }
             aria-label={ ariaLabel }
             aria-labelledby={ ariaLabelledBy }
-            aria-describedby={ (ariaDescribedBy || '') + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby']) }
             aria-posinset={ ariaPositionInSet }
             aria-setsize={ ariaSetSize }
           >

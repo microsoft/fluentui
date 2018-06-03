@@ -43,6 +43,10 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
+    // reset the flag
+    // on render link, find if there is atleast one hidden link to display "Show more" link
+    this._hasAtleastOneHiddenLink = false;
+
     return (
       <nav role='navigation'>
         {
@@ -158,11 +162,11 @@ class SlimNavComponent extends NavBase {
 
     const isSelected = nestingLevel > 0 && this.isLinkSelected(link, false /* includeChildren */);
     const {
-      getStyles,
+      styles,
       showMore,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, nestingLevel });
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
     const linkText = this.getLinkText(link, showMore);
 
     return (
@@ -236,8 +240,8 @@ class SlimNavComponent extends NavBase {
     }
 
     const hasChildren = (!!link.links && link.links.length > 0);
-    const { getStyles } = this.props;
-    const classNames = getClassNames(getStyles!, { hasChildren, scrollTop: link.scrollTop });
+    const { styles } = this.props;
+    const classNames = getClassNames(styles!, { hasChildren, scrollTop: link.scrollTop });
 
     return (
       <div className={ classNames.navFloatingRoot } data-floating-nav>
@@ -256,12 +260,12 @@ class SlimNavComponent extends NavBase {
     const isSelected = this.isLinkSelected(link, true /* includeChildren */);
     const hasChildren = (!!link.links && link.links.length > 0);
     const {
-      getStyles,
+      styles,
       showMore,
       onShowMoreLinkClicked,
       dataHint
     } = this.props;
-    const classNames = getClassNames(getStyles!, { isSelected, hasChildren });
+    const classNames = getClassNames(styles!, { isSelected, hasChildren });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -309,7 +313,14 @@ class SlimNavComponent extends NavBase {
         {
           links.map((link: INavLink, linkIndex: number) => {
             if (enableCustomization && link.isHidden && !showMore) {
+              // atleast one link is hidden
+              this._hasAtleastOneHiddenLink = true;
+
               // "Show more" overrides isHidden property
+              return null;
+            }
+            else if (link.isShowMoreLink && !this._hasAtleastOneHiddenLink && !showMore) {
+              // there is no hidden link, hide "Show more" link
               return null;
             }
             else {
@@ -327,7 +338,7 @@ class SlimNavComponent extends NavBase {
     }
 
     const {
-      getStyles,
+      styles,
       enableCustomization
     } = this.props;
 
@@ -336,7 +347,7 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
-    const classNames = getClassNames(getStyles!, {});
+    const classNames = getClassNames(styles!, {});
 
     return (
       <div key={ groupIndex }>

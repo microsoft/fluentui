@@ -65,7 +65,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               <ShimmerApplicationExample />
             </ExampleCard>
             <ExampleCard
-              title='Style override of shimmering wave using "getStyles" prop'
+              title='Style override of shimmering wave using "styles" prop'
               code={ ShimmerStylingExampleCode }
             >
               <ShimmerStylingExample />
@@ -97,7 +97,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               custom theme to the application, and as long as the color palette you provide has an overried for the
               two <Link href='https://developer.microsoft.com/en-us/fabric#/styles/colors'><code>Fabric colors</code></Link> used in
               Shimmer, everything should be ok. If no theming is supported, then follow the example showing the use of
-              the <code>getStyles</code> prop.
+              the <code>styles</code> prop.
             </p>
           </div>
         }

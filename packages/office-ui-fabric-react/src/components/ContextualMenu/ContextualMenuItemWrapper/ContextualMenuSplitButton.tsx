@@ -3,7 +3,8 @@ import {
   assign,
   buttonProperties,
   getNativeProps,
-  KeyCodes
+  KeyCodes,
+  mergeAriaAttributeValues
 } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
@@ -66,7 +67,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-disabled={ isItemDisabled(item) }
             aria-expanded={ itemHasSubmenu ? item.key === expandedMenuItemKey : undefined }
             aria-haspopup={ true }
-            aria-describedby={ item.ariaDescription + (keytipAttributes['aria-describedby'] || '') }
+            aria-describedby={ mergeAriaAttributeValues(item.ariaDescription, keytipAttributes['aria-describedby']) }
             aria-checked={ item.isChecked || item.checked }
             aria-posinset={ focusableElementIndex + 1 }
             aria-setsize={ totalItemCount }
@@ -78,6 +79,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             onTouchStart={ this._onTouchStart }
             tabIndex={ 0 }
             data-is-focusable={ true }
+            aria-roledescription={ item['aria-roledescription'] }
           >
             { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
             { this._renderSplitDivider(item) }
@@ -113,11 +115,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
+      text: item.text || item.name,
       className: classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
-      icon: item.icon,
       iconProps: item.iconProps,
       'data-is-focusable': false,
       'aria-hidden': true

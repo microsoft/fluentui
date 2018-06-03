@@ -14,6 +14,7 @@ import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
 import {
   ktpTargetFromId,
+  ktpTargetFromSequences,
   sequencesToID,
   mergeOverflows
 } from '../../utilities/keytips/KeytipUtils';
@@ -110,7 +111,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public render(): JSX.Element {
     const {
       content,
-      getStyles
+      styles
     } = this.props;
 
     const {
@@ -119,11 +120,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     } = this.state;
 
     this._classNames = getClassNames(
-      getStyles!
+      styles!
     );
 
     return (
-      <Layer getStyles={ getLayerStyles }>
+      <Layer styles={ getLayerStyles }>
         <span id={ KTP_LAYER_ID } className={ this._classNames.innerContent }>{ `${content}${KTP_ARIA_SEPARATOR}` }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return (
@@ -146,6 +147,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public componentDidMount(): void {
     // Add window listeners
     this._events.on(window, 'mouseup', this._onDismiss, true /* useCapture */);
+    this._events.on(window, 'pointerup', this._onDismiss, true /* useCapture */);
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -159,6 +161,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   public componentWillUnmount(): void {
     // Remove window listeners
     this._events.off(window, 'mouseup', this._onDismiss, true /* useCapture */);
+    this._events.off(window, 'pointerup', this._onDismiss, true /* useCapture */);
     this._events.off(window, 'resize', this._onDismiss);
     this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
@@ -191,23 +194,23 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    *
    * @param transitionKey - IKeytipTransitionKey received by the layer to process
    */
-  public processTransitionInput(transitionKey: IKeytipTransitionKey): void {
+  public processTransitionInput(transitionKey: IKeytipTransitionKey, ev?: React.KeyboardEvent<HTMLElement>): void {
     const currKtp = this._keytipTree.currentKeytip;
     if (transitionKeysContain(this.props.keytipExitSequences!, transitionKey) && currKtp) {
       // If key sequence is in 'exit sequences', exit keytip mode
       this._keyHandled = true;
-      this._exitKeytipMode();
+      this._exitKeytipMode(ev);
     } else if (transitionKeysContain(this.props.keytipReturnSequences!, transitionKey)) {
       // If key sequence is in return sequences, move currentKeytip to parent (or if currentKeytip is the root, exit)
       if (currKtp) {
         this._keyHandled = true;
         if (currKtp.id === this._keytipTree.root.id) {
           // We are at the root, exit keytip mode
-          this._exitKeytipMode();
+          this._exitKeytipMode(ev);
         } else {
           // If this keytip has a onReturn prop, we execute the func.
           if (currKtp.onReturn) {
-            currKtp.onReturn(this._getKeytipDOMElement(currKtp.id));
+            currKtp.onReturn(this._getKtpExecuteTarget(currKtp), this._getKtpTarget(currKtp));
           }
 
           // Reset currentSequence
@@ -230,7 +233,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    *
    * @param key - Key pressed by the user
    */
-  public processInput(key: string): void {
+  public processInput(key: string, ev?: React.KeyboardEvent<HTMLElement>): void {
     // Concat the input key with the current sequence
     const currSequence: string = this._currentSequence + key;
     let currKtp = this._keytipTree.currentKeytip;
@@ -244,14 +247,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
         // Execute this node's onExecute if defined
         if (currKtp.onExecute) {
-          currKtp.onExecute(this._getKeytipDOMElement(currKtp.id));
+          currKtp.onExecute(this._getKtpExecuteTarget(currKtp), this._getKtpTarget(currKtp));
           // Reset currKtp, this might have changed from the onExecute
           currKtp = this._keytipTree.currentKeytip;
         }
 
         // To exit keytipMode after executing the keytip it must not have a menu or have dynamic children
         if (currKtpChildren.length === 0 && !(currKtp.hasDynamicChildren || currKtp.hasMenu)) {
-          this._exitKeytipMode();
+          this._exitKeytipMode(ev);
         } else {
           // Show all children keytips
           this.showKeytips(currKtpChildren);
@@ -321,7 +324,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   /**
    * Exits keytip mode for this layer
    */
-  private _exitKeytipMode(): void {
+  private _exitKeytipMode(ev?: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>): void {
     this._keytipTree.currentKeytip = undefined;
     this._currentSequence = '';
     // Hide all keytips
@@ -334,7 +337,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this._setInKeytipMode(false /* inKeytipMode */);
 
     if (this.props.onExitKeytipMode) {
-      this.props.onExitKeytipMode();
+      this.props.onExitKeytipMode(ev);
     }
   }
 
@@ -360,7 +363,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // Execute the overflow button's onExecute
     const overflowKeytipNode = this._keytipTree.getNode(sequencesToID(overflowButtonSequences));
     if (overflowKeytipNode && overflowKeytipNode.onExecute) {
-      overflowKeytipNode.onExecute(this._getKeytipDOMElement(overflowKeytipNode.id));
+      overflowKeytipNode.onExecute(this._getKtpExecuteTarget(overflowKeytipNode), this._getKtpTarget(overflowKeytipNode));
     }
   }
 
@@ -373,7 +376,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _onDismiss = (ev?: React.MouseEvent<HTMLElement>): void => {
     // if we are in keytip mode, then exit keytip mode
     if (this.state.inKeytipMode) {
-      this._exitKeytipMode();
+      this._exitKeytipMode(ev);
     }
   }
 
@@ -401,9 +404,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       case 'Right':
         if (this.state.inKeytipMode) {
           this._keyHandled = true;
-          this._exitKeytipMode();
-          ev.preventDefault();
-          ev.stopPropagation();
+          this._exitKeytipMode(ev);
         }
         break;
       default:
@@ -420,7 +421,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         }
         const transitionKey: IKeytipTransitionKey = { key };
         transitionKey.modifierKeys = this._getModifierKey(key, ev);
-        this.processTransitionInput(transitionKey);
+        this.processTransitionInput(transitionKey, ev);
         break;
     }
   }
@@ -451,7 +452,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _onKeyPress = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (this.state.inKeytipMode && !this._keyHandled) {
       // Call processInput
-      this.processInput(ev.key.toLocaleLowerCase());
+      this.processInput(ev.key.toLocaleLowerCase(), ev);
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -539,7 +540,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       }
 
       if (this._keytipTree.currentKeytip.onExecute) {
-        this._keytipTree.currentKeytip.onExecute(this._getKeytipDOMElement(this._keytipTree.currentKeytip.id));
+        this._keytipTree.currentKeytip.onExecute(this._getKtpExecuteTarget(this._keytipTree.currentKeytip), this._getKtpTarget(this._keytipTree.currentKeytip));
       }
     }
 
@@ -578,15 +579,12 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     }
   }
 
-  /**
-   * Gets the DOM element for the specified keytip
-   *
-   * @param keytipId - ID of the keytip to query for
-   * @returns {HTMLElement | null} DOM element of the keytip if found
-   */
-  private _getKeytipDOMElement(keytipId: string): HTMLElement | null {
-    const dataKtpExecuteTarget = ktpTargetFromId(keytipId);
-    return getDocument()!.querySelector(dataKtpExecuteTarget);
+  private _getKtpExecuteTarget(currKtp: IKeytipTreeNode): HTMLElement | null {
+    return getDocument()!.querySelector(ktpTargetFromId(currKtp.id));
+  }
+
+  private _getKtpTarget(currKtp: IKeytipTreeNode): HTMLElement | null {
+    return getDocument()!.querySelector(ktpTargetFromSequences(currKtp.keySequences));
   }
 
   /**

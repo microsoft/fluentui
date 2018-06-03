@@ -76,7 +76,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
 
   public render(): JSX.Element {
     const {
-      getStyles,
+      styles,
       width,
       lineElements,
       shimmerElements,
@@ -96,7 +96,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     // lineElements is a deprecated prop so need to check which one was used.
     const elements: IShimmerElement[] | undefined = shimmerElements || lineElements;
 
-    this._classNames = getClassNames(getStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       width,
       isDataLoaded,

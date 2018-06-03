@@ -20,9 +20,9 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
   public render(): JSX.Element {
-    const { disabled, children, className, href, theme, getStyles, keytipProps } = this.props;
+    const { disabled, children, className, href, theme, styles, keytipProps } = this.props;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       className,
       isButton: !href,
       isDisabled: disabled,

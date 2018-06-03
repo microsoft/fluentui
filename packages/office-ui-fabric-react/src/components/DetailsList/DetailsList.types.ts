@@ -262,7 +262,7 @@ export interface IColumn {
    * The field to pull the text value from for the column. This can be null if a custom
    * onRender method is provided.
    */
-  fieldName: string;
+  fieldName?: string;
 
   /**
    * An optional class name to stick on the column cell within each row.
@@ -389,6 +389,23 @@ export interface IColumn {
   * If set, will add additional LTR padding-right to column and cells.
   */
   isPadded?: boolean;
+
+  /**
+   * ARIA label for the sort order of this column when sorted ascending.
+   */
+  sortAscendingAriaLabel?: string;
+  /**
+   * ARIA label for the sort order of this column when sorted descending.
+   */
+  sortDescendingAriaLabel?: string;
+  /**
+   * ARIA label for the status of this column when grouped.
+   */
+  groupAriaLabel?: string;
+  /**
+   * ARIA label for the status of this column when filtered.
+   */
+  filterAriaLabel?: string;
 }
 
 /**

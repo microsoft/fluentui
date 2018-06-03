@@ -5,7 +5,7 @@ import {
   IStyle,
   ITheme
 } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
 export interface ILink {
@@ -28,7 +28,7 @@ export interface ILinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ILinkStyleProps, ILinkStyles>;
+  styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
 
   /**
    * Theme (provided through customization.)

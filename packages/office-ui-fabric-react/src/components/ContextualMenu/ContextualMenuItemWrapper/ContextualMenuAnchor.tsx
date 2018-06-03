@@ -97,4 +97,11 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   protected _getSubmenuTarget = (): HTMLElement | undefined => {
     return this._anchor.current ? this._anchor.current : undefined;
   }
+
+  protected _onItemClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { item, onItemClick } = this.props;
+    if (onItemClick) {
+      onItemClick(item, ev);
+    }
+  }
 }
