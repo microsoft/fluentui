@@ -15,7 +15,9 @@ export class GettingStartedPage extends React.Component<any, any> {
           </div>
           {this._getEditButton()}
         </div>
-        <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md')}</PageMarkdown>
+        <PageMarkdown>
+          {require<string>('!raw-loader!office-ui-fabric-react/src/demo/docs/GettingStartedOverview.md')}
+        </PageMarkdown>
       </div>
     );
   }

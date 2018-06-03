@@ -88,7 +88,11 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={this._classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color as string)!.str}>
+      <svg
+        className={this._classNames.svg}
+        viewBox="0 0 20 20"
+        fill={getColorFromString(colorOption.color as string)!.str}
+      >
         {this.props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );

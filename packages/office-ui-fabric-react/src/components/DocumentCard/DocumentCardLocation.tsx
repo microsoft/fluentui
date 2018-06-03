@@ -9,7 +9,12 @@ export class DocumentCardLocation extends BaseComponent<IDocumentCardLocationPro
     const { location, locationHref, ariaLabel, onClick } = this.props;
 
     return (
-      <a className={css('ms-DocumentCardLocation', styles.location)} href={locationHref} onClick={onClick} aria-label={ariaLabel}>
+      <a
+        className={css('ms-DocumentCardLocation', styles.location)}
+        href={locationHref}
+        onClick={onClick}
+        aria-label={ariaLabel}
+      >
         {location}
       </a>
     );

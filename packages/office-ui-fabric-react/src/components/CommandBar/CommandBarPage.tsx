@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-import { ComponentPage, ExampleCard, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { CommandBarStatus } from './CommandBar.checklist';
@@ -36,7 +42,9 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
+              require<
+                string
+              >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
             ]}
           />
         }

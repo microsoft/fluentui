@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
 const FocusTrapZoneBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Example.tsx') as string;
 
@@ -24,10 +30,16 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
             <ExampleCard title="Simple Box" code={FocusTrapZoneBoxExampleCode}>
               <FocusTrapZoneBoxExample />
             </ExampleCard>
-            <ExampleCard title="Simple Box with focus on custom focusable element" code={FocusTrapZoneBoxExampleWithFocusableItemCode}>
+            <ExampleCard
+              title="Simple Box with focus on custom focusable element"
+              code={FocusTrapZoneBoxExampleWithFocusableItemCode}
+            >
               <FocusTrapZoneBoxExampleWithFocusableItem />
             </ExampleCard>
-            <ExampleCard title="Simple Box with Clicking outside Trap Zone enabled" code={FocusTrapZoneBoxClickExampleCode}>
+            <ExampleCard
+              title="Simple Box with Clicking outside Trap Zone enabled"
+              code={FocusTrapZoneBoxClickExampleCode}
+            >
               <FocusTrapZoneBoxClickExample />
             </ExampleCard>
             <ExampleCard title="Multiple Nest FocusTrapZones" code={FocusTrapZoneNestedExampleCode}>
@@ -38,12 +50,16 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
         allowNativeProps={true}
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md')}
           </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

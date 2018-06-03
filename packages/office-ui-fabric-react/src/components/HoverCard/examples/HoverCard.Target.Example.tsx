@@ -34,7 +34,10 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
 
   public render() {
     return (
-      <div ref={(c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c })} data-is-focusable={true}>
+      <div
+        ref={(c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c })}
+        data-is-focusable={true}
+      >
         {this.props.content}
         {this.state.contentRendered && (
           <HoverCard

@@ -48,21 +48,27 @@ describe('Facepile', () => {
   });
 
   it('renders chevron overflow button if overflowButtonProps are not null and OverflowButtonType equals downArrow', () => {
-    const wrapper = mount(<FacepileBase personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.downArrow} />);
+    const wrapper = mount(
+      <FacepileBase personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.downArrow} />
+    );
 
     expectOne(wrapper, '.ms-Facepile-overflowButton');
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
   it('renders more overflow button if overflowButtonProps are not null as OverflowButtonType equals more', () => {
-    const wrapper = mount(<FacepileBase personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.more} />);
+    const wrapper = mount(
+      <FacepileBase personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.more} />
+    );
 
     expectOne(wrapper, '.ms-Facepile-overflowButton');
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
   it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
-    const wrapper = mount(<FacepileBase personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.descriptive} />);
+    const wrapper = mount(
+      <FacepileBase personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.descriptive} />
+    );
 
     expectMissing(wrapper, '.ms-Facepile-descriptiveOverflowButton');
     expectMissing(wrapper, '.ms-Facepile-itemButton');
@@ -84,7 +90,10 @@ describe('Facepile', () => {
 
   it('renders no more than maximum allowed personas', () => {
     const wrapper = mount(
-      <FacepileBase personas={facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas)} maxDisplayablePersonas={2} />
+      <FacepileBase
+        personas={facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas)}
+        maxDisplayablePersonas={2}
+      />
     );
     expect(findNodes(wrapper, '.ms-Facepile-itemButton').length).toEqual(2);
   });

@@ -51,7 +51,10 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
           {pivotArray}
         </Pivot>
         <div>
-          <DefaultButton onClick={this._handleClick} text={`${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item`} />
+          <DefaultButton
+            onClick={this._handleClick}
+            text={`${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item`}
+          />
         </div>
       </div>
     );

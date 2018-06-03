@@ -6,7 +6,11 @@ import { IChicletCardProps } from './ChicletCard.types';
 
 describe('Dialog', () => {
   it('renders chiclet with title, icon, onClick, and url', () => {
-    const chicletCardProps: IChicletCardProps = { title: 'My Daily Notes', itemType: 'docx', onClick: () => alert('test') };
+    const chicletCardProps: IChicletCardProps = {
+      title: 'My Daily Notes',
+      itemType: 'docx',
+      onClick: () => alert('test')
+    };
     const component = renderer.create(<ChicletCard {...chicletCardProps} url="https://onedrive.com" />);
 
     const tree = component.toJSON();

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { ButtonStatus } from './Button.checklist';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
@@ -68,7 +74,10 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
               <ButtonCompoundExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
             </ExampleCard>
             <ExampleCard title="Command Bar Button" code={ButtonCommandBarExampleCode}>
-              <ButtonCommandBarExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+              <ButtonCommandBarExample
+                disabled={this.state.areButtonsDisabled}
+                checked={this.state.areButtonsChecked}
+              />
             </ExampleCard>
             <ExampleCard title="Split Button" code={ButtonSplitExampleCode}>
               <ButtonSplitExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
@@ -77,7 +86,10 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
               <ButtonIconExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
             </ExampleCard>
             <ExampleCard title="Contextual Menu Button" code={ButtonContextualMenuExampleCode}>
-              <ButtonContextualMenuExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+              <ButtonContextualMenuExample
+                disabled={this.state.areButtonsDisabled}
+                checked={this.state.areButtonsChecked}
+              />
             </ExampleCard>
             <ExampleCard title="Action Button" code={ButtonActionExampleCode}>
               <ButtonActionExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
@@ -90,28 +102,44 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
               <ButtonAnchorExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
             </ExampleCard>
             <ExampleCard title="Button with Aria Description for Screen Reader" code={ButtonScreenReaderExampleCode}>
-              <ButtonScreenReaderExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+              <ButtonScreenReaderExample
+                disabled={this.state.areButtonsDisabled}
+                checked={this.state.areButtonsChecked}
+              />
             </ExampleCard>
             <ExampleCard title="Button Swap with Focus State" code={ButtonSwapExampleCode}>
               <ButtonSwapExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
             </ExampleCard>
             <ExampleCard title="Custom Split Button" code={ButtonSplitExampleCode}>
-              <ButtonSplitCustomExample disabled={this.state.areButtonsDisabled} checked={this.state.areButtonsChecked} />
+              <ButtonSplitCustomExample
+                disabled={this.state.areButtonsDisabled}
+                checked={this.state.areButtonsChecked}
+              />
             </ExampleCard>
           </div>
         }
         allowNativeProps={true}
         nativePropsElement={['a', 'button']}
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')]}
+          />
         }
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonOverview.md')}
+          </PageMarkdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md')}
+          </PageMarkdown>
+        }
         donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md')}
+          </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...ButtonStatus} />}

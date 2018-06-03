@@ -1,4 +1,12 @@
-import { FontSizes, FontWeights, HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
+import {
+  FontSizes,
+  FontWeights,
+  HighContrastSelector,
+  keyframes,
+  noWrap,
+  getGlobalClassNames,
+  IRawStyle
+} from '../../Styling';
 import { getRTL } from '../../Utilities';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 

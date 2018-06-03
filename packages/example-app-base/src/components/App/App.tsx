@@ -59,7 +59,9 @@ export class App extends React.Component<IAppProps, IAppState> {
       responsiveMode = ResponsiveMode.large;
     }
 
-    let navPanel = <Nav groups={appDefinition.examplePages} onLinkClick={this._onLinkClick} onRenderLink={this._onRenderLink} />;
+    let navPanel = (
+      <Nav groups={appDefinition.examplePages} onLinkClick={this._onLinkClick} onRenderLink={this._onRenderLink} />
+    );
 
     return (
       <Fabric className={css('ms-App', 'ms-App--' + ResponsiveMode[responsiveMode])}>

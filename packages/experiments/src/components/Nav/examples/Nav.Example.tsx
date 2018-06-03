@@ -24,7 +24,12 @@ export class NavExample extends React.Component<{}, {}> {
             key: 'key1',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key2' },
-              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key3' }
+              {
+                name: 'News - test with long name to show ellipse',
+                url: 'http://msn.com',
+                target: '_blank',
+                key: 'key3'
+              }
             ]
           },
           { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document', isHidden: true },
@@ -50,7 +55,12 @@ export class NavExample extends React.Component<{}, {}> {
             key: 'key7',
             links: [
               { name: 'Activity', url: 'http://msn.com', key: 'key8' },
-              { name: 'News - test with long name to show ellipse', url: 'http://msn.com', target: '_blank', key: 'key9' }
+              {
+                name: 'News - test with long name to show ellipse',
+                url: 'http://msn.com',
+                target: '_blank',
+                key: 'key9'
+              }
             ]
           },
           { name: 'Documents', url: 'http://example.com', key: 'key10', icon: 'Document' },

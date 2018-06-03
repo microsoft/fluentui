@@ -299,7 +299,11 @@ describe('Dropdown', () => {
       const container = document.createElement('div');
 
       ReactDOM.render(
-        <Dropdown label="testgroup" options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]} multiSelect />,
+        <Dropdown
+          label="testgroup"
+          options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]}
+          multiSelect
+        />,
         container
       );
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
@@ -345,7 +349,10 @@ describe('Dropdown', () => {
     it('Renders a selected item in uncontrolled case', () => {
       const container = document.createElement('div');
 
-      ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />, container);
+      ReactDOM.render(
+        <Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />,
+        container
+      );
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
@@ -355,13 +362,19 @@ describe('Dropdown', () => {
     it('does not change the selected items when defaultSelectedKeys changes', () => {
       const container = document.createElement('div');
 
-      ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />, container);
+      ReactDOM.render(
+        <Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />,
+        container
+      );
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1, 2');
 
-      ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKeys={['3', '4']} multiSelect options={DEFAULT_OPTIONS} />, container);
+      ReactDOM.render(
+        <Dropdown label="testgroup" defaultSelectedKeys={['3', '4']} multiSelect options={DEFAULT_OPTIONS} />,
+        container
+      );
 
       expect(titleElement.textContent).toEqual('1, 2');
     });
@@ -369,7 +382,10 @@ describe('Dropdown', () => {
     it('Renders selected items in controlled case', () => {
       const container = document.createElement('div');
 
-      ReactDOM.render(<Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />, container);
+      ReactDOM.render(
+        <Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />,
+        container
+      );
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
@@ -379,13 +395,19 @@ describe('Dropdown', () => {
     it('changes selected items in controlled case', () => {
       const container = document.createElement('div');
 
-      ReactDOM.render(<Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />, container);
+      ReactDOM.render(
+        <Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />,
+        container
+      );
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1, 3');
 
-      ReactDOM.render(<Dropdown label="testgroup" selectedKeys={['2', '4']} multiSelect options={DEFAULT_OPTIONS} />, container);
+      ReactDOM.render(
+        <Dropdown label="testgroup" selectedKeys={['2', '4']} multiSelect options={DEFAULT_OPTIONS} />,
+        container
+      );
       expect(titleElement.textContent).toEqual('2, 4');
     });
 

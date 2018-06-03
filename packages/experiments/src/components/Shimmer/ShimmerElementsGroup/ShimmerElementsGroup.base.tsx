@@ -1,8 +1,17 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, customizable } from '../../../Utilities';
-import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
+import {
+  IShimmerElementsGroupProps,
+  IShimmerElementsGroupStyleProps,
+  IShimmerElementsGroupStyles
+} from './ShimmerElementsGroup.types';
 import { IStyleSet } from '../../../Styling';
-import { ShimmerElementType, ShimmerElementVerticalAlign, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
+import {
+  ShimmerElementType,
+  ShimmerElementVerticalAlign,
+  ShimmerElementsDefaultHeights,
+  IShimmerElement
+} from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
 import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
@@ -37,17 +46,21 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 
   private _getRenderedElements = (shimmerElements?: IShimmerElement[], rowHeight?: number): React.ReactNode => {
     const renderedElements: React.ReactNode = shimmerElements ? (
-      shimmerElements.map((elem: IShimmerElement, index: number): JSX.Element => {
-        const { type, ...filteredElem } = elem;
-        switch (elem.type) {
-          case ShimmerElementType.circle:
-            return <ShimmerCircle key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
-          case ShimmerElementType.gap:
-            return <ShimmerGap key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
-          case ShimmerElementType.line:
-            return <ShimmerLine key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
+      shimmerElements.map(
+        (elem: IShimmerElement, index: number): JSX.Element => {
+          const { type, ...filteredElem } = elem;
+          switch (elem.type) {
+            case ShimmerElementType.circle:
+              return (
+                <ShimmerCircle key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />
+              );
+            case ShimmerElementType.gap:
+              return <ShimmerGap key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
+            case ShimmerElementType.line:
+              return <ShimmerLine key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
+          }
         }
-      })
+      )
     ) : (
       <ShimmerLine height={ShimmerElementsDefaultHeights.line} />
     );
@@ -86,23 +99,25 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
    * Plus if user forgot to specify the height we assign their defaults.
    */
   private _findMaxElementHeight = (elements: IShimmerElement[]): number => {
-    const itemsDefaulted: IShimmerElement[] = elements.map((elem: IShimmerElement): IShimmerElement => {
-      switch (elem.type) {
-        case ShimmerElementType.circle:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.circle;
-          }
-        case ShimmerElementType.line:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.line;
-          }
-        case ShimmerElementType.gap:
-          if (!elem.height) {
-            elem.height = ShimmerElementsDefaultHeights.gap;
-          }
+    const itemsDefaulted: IShimmerElement[] = elements.map(
+      (elem: IShimmerElement): IShimmerElement => {
+        switch (elem.type) {
+          case ShimmerElementType.circle:
+            if (!elem.height) {
+              elem.height = ShimmerElementsDefaultHeights.circle;
+            }
+          case ShimmerElementType.line:
+            if (!elem.height) {
+              elem.height = ShimmerElementsDefaultHeights.line;
+            }
+          case ShimmerElementType.gap:
+            if (!elem.height) {
+              elem.height = ShimmerElementsDefaultHeights.gap;
+            }
+        }
+        return elem;
       }
-      return elem;
-    });
+    );
 
     const rowHeight = itemsDefaulted.reduce((acc: number, next: IShimmerElement): number => {
       return next.height ? (next.height > acc ? next.height : acc) : acc;

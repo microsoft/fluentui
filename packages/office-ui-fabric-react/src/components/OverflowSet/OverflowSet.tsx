@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { css, BaseComponent, createRef, getNativeProps, divProperties, focusFirstChild, elementContains } from '../../Utilities';
+import {
+  css,
+  BaseComponent,
+  createRef,
+  getNativeProps,
+  divProperties,
+  focusFirstChild,
+  elementContains
+} from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -26,7 +34,15 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   public render(): JSX.Element {
-    const { items, overflowItems, className, focusZoneProps, vertical = false, role = 'menubar', doNotContainWithinFocusZone } = this.props;
+    const {
+      items,
+      overflowItems,
+      className,
+      focusZoneProps,
+      vertical = false,
+      role = 'menubar',
+      doNotContainWithinFocusZone
+    } = this.props;
 
     let Tag;
     let uniqueComponentProps;
@@ -150,7 +166,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   };
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
-    const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
+    const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
+      className: css('ms-OverflowSet-overflowButton', styles.item)
+    };
     const overflowKeytipSequences = this.props.keytipSequences;
     let newOverflowItems: any[] = [];
 

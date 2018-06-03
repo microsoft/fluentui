@@ -119,7 +119,12 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#212121');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
-  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false): void {
+  function _makeFabricSlotRule(
+    slotName: string,
+    inheritedBase: BaseSlots,
+    inheritedShade: Shade,
+    isBackgroundShade = false
+  ): void {
     const inherits = slotRules[BaseSlots[inheritedBase]];
     const thisSlotRule = {
       name: slotName,

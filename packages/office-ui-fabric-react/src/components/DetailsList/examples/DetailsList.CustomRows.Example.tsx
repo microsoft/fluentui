@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowCheckProps } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsList,
+  DetailsRow,
+  IDetailsRowProps,
+  IDetailsRowCheckProps
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';

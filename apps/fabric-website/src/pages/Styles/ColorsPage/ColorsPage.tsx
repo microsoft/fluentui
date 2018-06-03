@@ -37,11 +37,13 @@ export class ColorsPage extends React.Component<any, any> {
         <div className={css(pageStyles.u_maxTextWidth, styles.overview)}>
           <h2 id="Overview">Overview</h2>
           <p>
-            Fabric includes 9 theme colors and 11 neutral colors. Each has helper classes for text, background, border, and hover states.
-            When selecting colors, refer to the{' '}
+            Fabric includes 9 theme colors and 11 neutral colors. Each has helper classes for text, background, border,
+            and hover states. When selecting colors, refer to the{' '}
             <a
               className={styles.colorsPageLink}
-              href={'https://static2.sharepointonline.com/files/fabric/fabric-website/files/coloraccessibility_29sep2016.pdf'}
+              href={
+                'https://static2.sharepointonline.com/files/fabric/fabric-website/files/coloraccessibility_29sep2016.pdf'
+              }
             >
               color accessibility guidance (PDF)
             </a>{' '}

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
@@ -39,17 +45,25 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Scrolling items into view" isOptIn={true} code={ListScrollingExampleCode}>
               <ListScrollingExample items={_cachedItems} />
             </ExampleCard>
-            <ExampleCard title="Rendering ghost items while the list is scrolling" isOptIn={true} code={ListGhostingExampleCode}>
+            <ExampleCard
+              title="Rendering ghost items while the list is scrolling"
+              isOptIn={true}
+              code={ListGhostingExampleCode}
+            >
               <ListGhostingExample items={_cachedItems} />
             </ExampleCard>
           </div>
         }
         allowNativeProps={true}
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')]}
+          />
         }
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md')}
+          </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...ListStatus} />}

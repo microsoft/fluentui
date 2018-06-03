@@ -66,7 +66,10 @@ export function memoize<T extends Function>(
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @returns A memoized version of the function.
  */
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize: number = 100): T {
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
+  cb: T,
+  maxCacheSize: number = 100
+): T {
   let rootNode: any;
   let cacheSize = 0;
 

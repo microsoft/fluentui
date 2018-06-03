@@ -41,7 +41,10 @@ export class PageImageSet extends BaseComponent<IPageImageSetProps, {}> {
   public render(): JSX.Element {
     const { theme, getStyles, images } = this.props;
     const styleProps: IPageImageSetStyleProps = { theme: theme! };
-    const classNames: IClassNames<IPageImageSetStyles> = mergeStyleSets(getDefaultStyles(styleProps), getStyles && getStyles(styleProps));
+    const classNames: IClassNames<IPageImageSetStyles> = mergeStyleSets(
+      getDefaultStyles(styleProps),
+      getStyles && getStyles(styleProps)
+    );
 
     return (
       <div className={classNames.root}>

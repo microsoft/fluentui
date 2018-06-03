@@ -33,7 +33,9 @@ describe('ColorPicker', () => {
       color = str;
     };
 
-    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color={color} onColorChanged={onColorChanged} />) as ColorPicker;
+    const component = ReactTestUtils.renderIntoDocument(
+      <ColorPicker color={color} onColorChanged={onColorChanged} />
+    ) as ColorPicker;
 
     const newColor = '#AEAEAE';
     component.componentWillReceiveProps({ color: newColor });
@@ -43,7 +45,9 @@ describe('ColorPicker', () => {
   });
 
   it('Hides alpha control slider', () => {
-    const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />) as ColorPicker;
+    const component = ReactTestUtils.renderIntoDocument(
+      <ColorPicker color="#FFFFFF" alphaSliderHidden={true} />
+    ) as ColorPicker;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const alphaSlider = renderedDOM.querySelector('.is-alpha');
@@ -59,7 +63,9 @@ describe('ColorPicker', () => {
     const component = ReactTestUtils.renderIntoDocument(<ColorPicker color="#FFFFFF" />) as ColorPicker;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<HTMLTableDataCellElement>;
+    const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<
+      HTMLTableDataCellElement
+    >;
 
     const hexTableHeader = tableHeaders[0];
     expect(hexTableHeader.textContent).toEqual(ColorPicker.defaultProps.hexLabel);
@@ -96,7 +102,9 @@ describe('ColorPicker', () => {
     ) as ColorPicker;
 
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<HTMLTableDataCellElement>;
+    const tableHeaders = renderedDOM.querySelectorAll('.ms-ColorPicker-table > thead > tr > td') as NodeListOf<
+      HTMLTableDataCellElement
+    >;
 
     const hexTableHeader = tableHeaders[0];
     expect(hexTableHeader.textContent).toEqual(customHexLabel);

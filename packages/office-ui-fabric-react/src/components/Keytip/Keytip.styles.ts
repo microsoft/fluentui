@@ -61,7 +61,9 @@ export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutCont
   };
 };
 
-export const getCalloutOffsetStyles = (offset: IPoint): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
+export const getCalloutOffsetStyles = (
+  offset: IPoint
+): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
   return (props: ICalloutContentStyleProps): ICalloutContentStyles => {
     return mergeStyleSets(getCalloutStyles(props), {
       root: [

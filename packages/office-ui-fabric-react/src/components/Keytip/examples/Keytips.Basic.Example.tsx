@@ -9,7 +9,11 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
 export class KeytipsBasicExample extends React.Component<{}> {
-  private _sampleOptions = [{ key: 'A', text: 'Option 1' }, { key: 'B', text: 'Option 2' }, { key: 'C', text: 'Option 3' }];
+  private _sampleOptions = [
+    { key: 'A', text: 'Option 1' },
+    { key: 'B', text: 'Option 2' },
+    { key: 'C', text: 'Option 3' }
+  ];
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
   public render(): JSX.Element {

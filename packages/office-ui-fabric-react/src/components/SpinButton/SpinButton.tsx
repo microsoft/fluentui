@@ -2,7 +2,15 @@ import * as React from 'react';
 import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { BaseComponent, getId, KeyCodes, customizable, calculatePrecision, precisionRound, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  getId,
+  KeyCodes,
+  customizable,
+  calculatePrecision,
+  precisionRound,
+  createRef
+} from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
@@ -355,7 +363,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    */
-  private _updateValue = (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
+  private _updateValue = (
+    shouldSpin: boolean,
+    stepDelay: number,
+    stepFunction: (value: string) => string | void
+  ): void => {
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;

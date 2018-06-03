@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerHostedExample } from './examples/Layer.Hosted.Example';
 import { LayerCustomizedExample } from './examples/Layer.Customized.Example';
@@ -25,20 +31,35 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Using LayerHost to control projection" code={LayerHostedExampleCode}>
               <LayerHostedExample />
             </ExampleCard>
-            <ExampleCard title="Using Customizer to control the default layer behavior" code={LayerCustomizedExampleCode}>
+            <ExampleCard
+              title="Using Customizer to control the default layer behavior"
+              code={LayerCustomizedExampleCode}
+            >
               <LayerCustomizedExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.types.ts')]}
+          />
         }
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md')}
+          </PageMarkdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md')}</PageMarkdown>}
-        donts={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md')}
+          </PageMarkdown>
+        }
+        donts={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md')}
+          </PageMarkdown>
+        }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...LayerStatus} />}
       />

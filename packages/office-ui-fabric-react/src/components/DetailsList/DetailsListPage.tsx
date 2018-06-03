@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DetailsListStatus } from './DetailsList.checklist';
 
@@ -66,13 +72,21 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             <ExampleCard title="Simple Grouped DetailsList" isOptIn={true} code={DetailsListGroupedExampleCode}>
               <DetailsListGroupedExample />
             </ExampleCard>
-            <ExampleCard title="Rendering custom item columns with sorting" isOptIn={true} code={DetailsListCustomColumnsExampleCode}>
+            <ExampleCard
+              title="Rendering custom item columns with sorting"
+              isOptIn={true}
+              code={DetailsListCustomColumnsExampleCode}
+            >
               <DetailsListCustomColumnsExample />
             </ExampleCard>
             <ExampleCard title="Rendering custom item rows" isOptIn={true} code={DetailsListCustomRowsExampleCode}>
               <DetailsListCustomRowsExample />
             </ExampleCard>,
-            <ExampleCard title="Rendering custom group headers" isOptIn={true} code={DetailsListCustomGroupHeadersExampleCode}>
+            <ExampleCard
+              title="Rendering custom group headers"
+              isOptIn={true}
+              code={DetailsListCustomGroupHeadersExampleCode}
+            >
               <DetailsListCustomGroupHeadersExample />
             </ExampleCard>
             <ExampleCard
@@ -82,7 +96,11 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             >
               <DetailsListAdvancedExample />
             </ExampleCard>
-            <ExampleCard title="Drag and Drop DetailsList with 10 items" isOptIn={true} code={DetailsListDragDropExampleCode}>
+            <ExampleCard
+              title="Drag and Drop DetailsList with 10 items"
+              isOptIn={true}
+              code={DetailsListDragDropExampleCode}
+            >
               <DetailsListDragDropExample />
             </ExampleCard>
             <ExampleCard
@@ -96,12 +114,16 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md')}
           </PageMarkdown>
         }
         bestPractices={<div />}

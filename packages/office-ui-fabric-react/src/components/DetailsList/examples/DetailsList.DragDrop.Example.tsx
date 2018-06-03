@@ -95,7 +95,9 @@ export class DetailsListDragDropExample extends React.Component<
   }
 
   private _insertBeforeItem(item: any): void {
-    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+    const draggedItems = this._selection.isIndexSelected(_draggedIndex)
+      ? this._selection.getSelection()
+      : [_draggedItem];
 
     const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
     let insertIndex = items.indexOf(item);

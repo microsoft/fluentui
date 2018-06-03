@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ColorPickerStatus } from './ColorPicker.checklist';
@@ -20,12 +26,16 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts')
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md')}
           </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

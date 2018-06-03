@@ -20,7 +20,11 @@ describe('CommandBar', () => {
 
   it('renders commands correctly', () => {
     expect(
-      renderer.create(<CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} className={'TestClassName'} />).toJSON()
+      renderer
+        .create(
+          <CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} className={'TestClassName'} />
+        )
+        .toJSON()
     ).toMatchSnapshot();
   });
 
@@ -52,10 +56,9 @@ describe('CommandBar', () => {
       }
     ];
 
-    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBarBase>(<CommandBarBase items={items} />) as React.Component<
-      CommandBarBase,
-      {}
-    >;
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBarBase>(
+      <CommandBarBase items={items} />
+    ) as React.Component<CommandBarBase, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent)!);
 
     const [item1, item2, item3] = ['.item1', '.item2', '.item3'].map(i => document.querySelector(i)!);

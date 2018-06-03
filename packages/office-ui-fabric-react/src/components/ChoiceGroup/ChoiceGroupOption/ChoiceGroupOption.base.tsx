@@ -2,8 +2,19 @@ import * as React from 'react';
 import { Image } from '../../Image';
 import { Icon } from '../../Icon';
 import { IClassNames } from '@uifabric/utilities/lib/IClassNames';
-import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
-import { BaseComponent, customizable, classNamesFunction, getNativeProps, inputProperties, createRef } from '../../../Utilities';
+import {
+  IChoiceGroupOptionProps,
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles
+} from './ChoiceGroupOption.types';
+import {
+  BaseComponent,
+  customizable,
+  classNamesFunction,
+  getNativeProps,
+  inputProperties,
+  createRef
+} from '../../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
@@ -101,7 +112,12 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
               <Image src={imageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
             </div>
             <div className={this._classNames.selectedImageWrapper}>
-              <Image src={selectedImageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
+              <Image
+                src={selectedImageSrc}
+                alt={imageAlt ? imageAlt : ''}
+                width={imageSize.width}
+                height={imageSize.height}
+              />
             </div>
           </div>
         )}

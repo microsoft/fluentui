@@ -58,7 +58,12 @@ export class App extends React.Component<IAppProps, any> {
           <div className="App-nav" style={navStyle}>
             <Nav pages={AppState.pages} />
           </div>
-          <div className="App-content" data-is-scrollable="true" ref={el => (this._appContent = el)} data-app-content-div="true">
+          <div
+            className="App-content"
+            data-is-scrollable="true"
+            ref={el => (this._appContent = el)}
+            data-app-content-div="true"
+          >
             {this.props.children}
           </div>
         </div>

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
@@ -39,12 +45,16 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         nativePropsElement={'input'}
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md')}
           </PageMarkdown>
         }
         bestPractices={<div />}

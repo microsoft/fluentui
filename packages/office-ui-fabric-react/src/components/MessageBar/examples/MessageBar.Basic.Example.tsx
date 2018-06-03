@@ -11,17 +11,24 @@ export const MessageBarBasicExample = () => (
   <div className="ms-BasicMessageBarsExample">
     <Label>Info/Default MessageBar</Label>
     <MessageBar>
-      Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href="www.bing.com">Visit our website.</Link>
+      Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+      <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
     <Label>Error MessageBar - single line, with dismiss button</Label>
-    <MessageBar messageBarType={MessageBarType.error} isMultiline={false} onDismiss={log('test')} dismissButtonAriaLabel="Close">
-      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href="www.bing.com">Visit our website.</Link>
+    <MessageBar
+      messageBarType={MessageBarType.error}
+      isMultiline={false}
+      onDismiss={log('test')}
+      dismissButtonAriaLabel="Close"
+    >
+      Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+      <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
     <Label>
-      Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or
-      multiline and should be used sparingly.
+      Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use
+      action buttons or multiline and should be used sparingly.
     </Label>
     <MessageBar
       messageBarType={MessageBarType.blocked}
@@ -31,11 +38,12 @@ export const MessageBarBasicExample = () => (
       truncated={true}
       overflowButtonAriaLabel="Overflow"
     >
-      Blocked lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus,
-      ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed
-      lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet
-      faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem,
-      ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.{' '}
+      Blocked lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
+      augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
+      orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
+      placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
+      ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
+      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.{' '}
       <Link href="www.bing.com">Visit our website.</Link>
     </MessageBar>
 
@@ -96,11 +104,12 @@ export const MessageBarBasicExample = () => (
         </div>
       }
     >
-      Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus,
-      ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed
-      lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet
-      faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem,
-      ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href="www.bing.com">
+      Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio
+      augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae
+      orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac
+      placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu
+      ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit
+      magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href="www.bing.com">
         Visit our website.
       </Link>
     </MessageBar>

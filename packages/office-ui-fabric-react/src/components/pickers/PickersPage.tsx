@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';

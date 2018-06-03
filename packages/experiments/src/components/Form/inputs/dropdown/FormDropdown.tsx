@@ -9,7 +9,11 @@ import { IFormContext } from '../../Form';
 /**
  * Dropdown input for Form
  */
-export class FormDropdown extends FormBaseInput<number | string, IFormDropdownProps, IFormBaseInputState<number | string>> {
+export class FormDropdown extends FormBaseInput<
+  number | string,
+  IFormDropdownProps,
+  IFormBaseInputState<number | string>
+> {
   constructor(props: IFormDropdownProps, context: IFormContext) {
     super(props, context);
     this.state = {

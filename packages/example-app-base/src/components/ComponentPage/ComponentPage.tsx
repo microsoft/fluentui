@@ -167,7 +167,10 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
             return (
               <div key={index + 'class'} className="ComponentPage-navLink">
-                <Link key={index + componentPageSection.title} {...{ href: this._baseUrl + '#' + componentPageSection.title }}>
+                <Link
+                  key={index + componentPageSection.title}
+                  {...{ href: this._baseUrl + '#' + componentPageSection.title }}
+                >
                   {componentPageSection.title}
                 </Link>
               </div>
@@ -243,8 +246,10 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
       return (
         <MessageBar>
-          <strong>Native Props Allowed{componentString}</strong> - all HTML attributes native to the {elementString}, including all aria and
-          custom data attributes, can be applied as native props on{componentString || <> this component</>}.
+          <strong>Native Props Allowed{componentString}</strong> - all HTML attributes native to the {elementString},
+          including all aria and custom data attributes, can be applied as native props on{componentString || (
+            <> this component</>
+          )}.
         </MessageBar>
       );
     }

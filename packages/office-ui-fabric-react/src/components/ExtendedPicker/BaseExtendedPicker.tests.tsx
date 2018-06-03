@@ -38,10 +38,9 @@ const BasePickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPicker
   IBaseFloatingPickerProps<ISimple>
 >;
 
-const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (props: IBaseSelectedItemsListProps<ISimple>) => BaseSelectedItemsList<
-  ISimple,
-  IBaseSelectedItemsListProps<ISimple>
->;
+const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (
+  props: IBaseSelectedItemsListProps<ISimple>
+) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
 const basicSuggestionRenderer = (props: ISimple) => {
   return <div> {props.name} </div>;
@@ -78,10 +77,9 @@ export type TypedBaseExtendedPicker = BaseExtendedPicker<ISimple, IBaseExtendedP
 
 describe('Pickers', () => {
   describe('BasePicker', () => {
-    const BaseExtendedPickerWithType = BaseExtendedPicker as new (props: IBaseExtendedPickerProps<ISimple>) => BaseExtendedPicker<
-      ISimple,
-      IBaseExtendedPickerProps<ISimple>
-    >;
+    const BaseExtendedPickerWithType = BaseExtendedPicker as new (
+      props: IBaseExtendedPickerProps<ISimple>
+    ) => BaseExtendedPicker<ISimple, IBaseExtendedPickerProps<ISimple>>;
 
     it('renders BaseExtendedPicker correctly', () => {
       const component = renderer.create(

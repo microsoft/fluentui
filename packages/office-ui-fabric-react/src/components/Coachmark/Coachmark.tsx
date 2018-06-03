@@ -11,7 +11,13 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHi
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
-import { COACHMARK_HEIGHT, COACHMARK_WIDTH, getStyles, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
+import {
+  COACHMARK_HEIGHT,
+  COACHMARK_WIDTH,
+  getStyles,
+  ICoachmarkStyles,
+  ICoachmarkStyleProps
+} from './Coachmark.styles';
 import { FocusZone } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
@@ -187,7 +193,14 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
                 {this._positioningContainer.current && (
-                  <Beak left={beakLeft} top={beakTop} right={beakRight} bottom={beakBottom} direction={this._beakDirection} color={color} />
+                  <Beak
+                    left={beakLeft}
+                    top={beakTop}
+                    right={beakRight}
+                    bottom={beakBottom}
+                    direction={this._beakDirection}
+                    color={color}
+                  />
                 )}
                 <FocusZone>
                   <div className={classNames.entityHost} data-is-focusable={true} onFocus={this._onFocusHandler}>
@@ -216,7 +229,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentDidUpdate(prevProps: ICoachmarkTypes, prevState: ICoachmarkState): void {
-    if (prevState.targetAlignment !== this.state.targetAlignment || prevState.targetPosition !== this.state.targetPosition) {
+    if (
+      prevState.targetAlignment !== this.state.targetAlignment ||
+      prevState.targetPosition !== this.state.targetPosition
+    ) {
       this._setBeakPosition();
     }
   }
@@ -224,7 +240,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public componentDidMount(): void {
     this._async.requestAnimationFrame(
       (): void => {
-        if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
+        if (
+          this._entityInnerHostElement.current &&
+          this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0
+        ) {
           this.setState({
             isMeasuring: false,
             entityInnerHostRect: {

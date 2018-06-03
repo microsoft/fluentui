@@ -62,6 +62,13 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
   };
 
   private _onRenderTodoItem(item: ITodoItem): React.ReactElement<ITodoItemProps> {
-    return <TodoItem key={item.id} item={item} onToggleComplete={this.props.onToggleComplete} onDeleteItem={this.props.onDeleteItem} />;
+    return (
+      <TodoItem
+        key={item.id}
+        item={item}
+        onToggleComplete={this.props.onToggleComplete}
+        onDeleteItem={this.props.onDeleteItem}
+      />
+    );
   }
 }

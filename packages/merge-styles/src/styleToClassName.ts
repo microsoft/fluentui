@@ -186,14 +186,17 @@ export function applyRegistration(registration: IRegistration, classMap?: { [key
         let selector = rulesToInsert[i];
 
         // Fix selector using map.
-        selector = selector.replace(/(&)|\$([\w-]+)\b/g, (match: string, amp: string, cn: string): string => {
-          if (amp) {
-            return '.' + registration.className;
-          } else if (cn) {
-            return '.' + ((classMap && classMap[cn]) || cn);
+        selector = selector.replace(
+          /(&)|\$([\w-]+)\b/g,
+          (match: string, amp: string, cn: string): string => {
+            if (amp) {
+              return '.' + registration.className;
+            } else if (cn) {
+              return '.' + ((classMap && classMap[cn]) || cn);
+            }
+            return '';
           }
-          return '';
-        });
+        );
 
         // Insert. Note if a media query, we must close the query with a final bracket.
         const processedRule = `${selector}{${rules}}${selector.indexOf('@media') === 0 ? '}' : ''}`;

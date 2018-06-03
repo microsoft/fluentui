@@ -98,7 +98,12 @@ describe('KeytipLayer', () => {
 
       // Create layer
       ktpLayer = mount(
-        <KeytipLayerBase componentRef={layerRef} content="Alt Windows" onEnterKeytipMode={onEnter} onExitKeytipMode={onExit} />
+        <KeytipLayerBase
+          componentRef={layerRef}
+          content="Alt Windows"
+          onEnterKeytipMode={onEnter}
+          onExitKeytipMode={onExit}
+        />
       );
     });
 
@@ -167,7 +172,12 @@ describe('KeytipLayer', () => {
 
           // Create layer
           ktpLayer = mount(
-            <KeytipLayerBase componentRef={layerRef} content="Alt Windows" onEnterKeytipMode={onEnter} onExitKeytipMode={onExit} />
+            <KeytipLayerBase
+              componentRef={layerRef}
+              content="Alt Windows"
+              onEnterKeytipMode={onEnter}
+              onExitKeytipMode={onExit}
+            />
           );
           layerValue = layerRef.value!;
           ktpTree = layerValue.getKeytipTree();
@@ -239,7 +249,12 @@ describe('KeytipLayer', () => {
 
         // Create layer
         ktpLayer = mount(
-          <KeytipLayerBase componentRef={layerRef} content="Alt Windows" onEnterKeytipMode={onEnter} onExitKeytipMode={onExit} />
+          <KeytipLayerBase
+            componentRef={layerRef}
+            content="Alt Windows"
+            onEnterKeytipMode={onEnter}
+            onExitKeytipMode={onExit}
+          />
         );
         layerValue = layerRef.value!;
         ktpTree = layerValue.getKeytipTree();

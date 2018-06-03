@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
 import { ContextualMenuIconExample } from './examples/ContextualMenu.Icon.Example';
 import { ContextualMenuIconSecondaryTextExample } from './examples/ContextualMenu.Icon.SecondaryText.Example';
@@ -40,7 +46,10 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             <ExampleCard title="ContextualMenu with icons" code={ContextualMenuIconExampleCode}>
               <ContextualMenuIconExample />
             </ExampleCard>
-            <ExampleCard title="ContextualMenu with icons and secondary text" code={ContextualMenuIconSecondaryTextExampleCode}>
+            <ExampleCard
+              title="ContextualMenu with icons and secondary text"
+              code={ContextualMenuIconSecondaryTextExampleCode}
+            >
               <ContextualMenuIconSecondaryTextExample />
             </ExampleCard>
             <ExampleCard title="ContextualMenu with submenus" code={ContextualMenuSubmenuExampleCode}>
@@ -55,19 +64,31 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             >
               <ContextualMenuCheckmarksExample />
             </ExampleCard>
-            <ExampleCard title="ContextualMenu with beak and directional settings" code={ContextualMenuDirectionalExampleCode}>
+            <ExampleCard
+              title="ContextualMenu with beak and directional settings"
+              code={ContextualMenuDirectionalExampleCode}
+            >
               <ContextualMenuDirectionalExample />
             </ExampleCard>
             <ExampleCard title="ContextualMenu with customized submenus" code={ContextualMenuCustomizationExampleCode}>
               <ContextualMenuCustomizationExample />
             </ExampleCard>
-            <ExampleCard title="ContextualMenu with customized submenus and noWrap attributes" code={ContextualMenuSubmenuExampleCode}>
+            <ExampleCard
+              title="ContextualMenu with customized submenus and noWrap attributes"
+              code={ContextualMenuSubmenuExampleCode}
+            >
               <ContextualMenuCustomizationWithNoWrapExample />
             </ExampleCard>
-            <ExampleCard title="ContextualMenu with a scroll bar and fixed direction" code={ContextualMenuWithScrollBarExampleCode}>
+            <ExampleCard
+              title="ContextualMenu with a scroll bar and fixed direction"
+              code={ContextualMenuWithScrollBarExampleCode}
+            >
               <ContextualMenuWithScrollBarExample />
             </ExampleCard>
-            <ExampleCard title="ContextualMenu with custom rendered menu items" code={ContextualMenuWithCustomMenuItemExampleCode}>
+            <ExampleCard
+              title="ContextualMenu with custom rendered menu items"
+              code={ContextualMenuWithCustomMenuItemExampleCode}
+            >
               <ContextualMenuWithCustomMenuItemExample />
             </ExampleCard>
           </div>
@@ -75,25 +96,33 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
+              require<
+                string
+              >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
               require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
             ]}
           />
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuOverview.md')}
           </PageMarkdown>
         }
         bestPractices={<div />}
         dos={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDos.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDonts.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDonts.md')}
           </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

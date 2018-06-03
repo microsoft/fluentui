@@ -3,4 +3,7 @@ import { IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } f
 import { DialogContentBase } from './DialogContent.base';
 import { getStyles } from './DialogContent.styles';
 
-export const DialogContent = styled<IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles>(DialogContentBase, getStyles);
+export const DialogContent = styled<IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles>(
+  DialogContentBase,
+  getStyles
+);

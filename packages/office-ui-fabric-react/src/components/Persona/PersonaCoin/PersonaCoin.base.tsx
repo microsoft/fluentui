@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, divProperties, getInitials, getNativeProps, getRTL } from '../../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  divProperties,
+  getInitials,
+  getNativeProps,
+  getRTL
+} from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
 import { Icon } from '../../../Icon';
@@ -130,7 +138,16 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   }
 
   private _onRenderCoin = (props: IPersonaCoinProps): JSX.Element | null => {
-    const { coinSize, styles, imageUrl, imageAlt, imageShouldFadeIn, imageShouldStartVisible, theme, showUnknownPersonaCoin } = this.props;
+    const {
+      coinSize,
+      styles,
+      imageUrl,
+      imageAlt,
+      imageShouldFadeIn,
+      imageShouldStartVisible,
+      theme,
+      showUnknownPersonaCoin
+    } = this.props;
 
     const size = this.props.size as PersonaSize;
 

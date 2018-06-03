@@ -100,7 +100,10 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   }
 
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
-  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments), ...theme.semanticColors };
+  let newSemanticColors = {
+    ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
+    ...theme.semanticColors
+  };
 
   return {
     palette: newPalette,

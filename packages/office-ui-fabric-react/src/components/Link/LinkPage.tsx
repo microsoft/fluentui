@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { LinkStatus } from './Link.checklist';
@@ -21,14 +27,26 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
         allowNativeProps={true}
         nativePropsElement={['a', 'button']}
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')]}
+          />
         }
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md')}
+          </PageMarkdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md')}</PageMarkdown>}
-        donts={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md')}
+          </PageMarkdown>
+        }
+        donts={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md')}
+          </PageMarkdown>
+        }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...LinkStatus} />}
       />

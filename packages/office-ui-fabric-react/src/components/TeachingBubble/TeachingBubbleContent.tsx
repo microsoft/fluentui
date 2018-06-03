@@ -88,7 +88,11 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
           {secondaryButtonProps && (
             <DefaultButton
               {...secondaryButtonProps}
-              className={css('ms-TeachingBubble-secondaryButton', styles.secondaryButton, secondaryButtonProps.className)}
+              className={css(
+                'ms-TeachingBubble-secondaryButton',
+                styles.secondaryButton,
+                secondaryButtonProps.className
+              )}
             />
           )}
         </div>

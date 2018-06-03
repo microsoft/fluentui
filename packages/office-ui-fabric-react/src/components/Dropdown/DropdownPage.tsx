@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
 import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
@@ -36,7 +42,9 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
+              require<
+                string
+              >('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
             ]}
           />
         }
@@ -47,10 +55,14 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         }
         bestPractices={<div />}
         dos={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md')}
+          </PageMarkdown>
         }
         donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md')}
+          </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...DropdownStatus} />}

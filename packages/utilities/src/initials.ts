@@ -60,7 +60,11 @@ function cleanupDisplayName(displayName: string): string {
  *
  * @public
  */
-export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string {
+export function getInitials(
+  displayName: string | undefined | null,
+  isRtl: boolean,
+  allowPhoneInitials?: boolean
+): string {
   if (!displayName) {
     return '';
   }

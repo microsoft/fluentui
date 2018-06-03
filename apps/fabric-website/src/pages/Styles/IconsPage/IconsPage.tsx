@@ -31,9 +31,9 @@ export class IconsPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h2 id="implementation">Implementation</h2>
           <p>
-            Fabric uses a custom font for its iconography. This font contains glyphs that you can scale, color, and style in any way. You
-            can even flip them for right-to-left localization. To use the icons, combine the base ms-Icon class with a modifier class for
-            the specific icon.
+            Fabric uses a custom font for its iconography. This font contains glyphs that you can scale, color, and
+            style in any way. You can even flip them for right-to-left localization. To use the icons, combine the base
+            ms-Icon class with a modifier class for the specific icon.
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>
@@ -41,8 +41,8 @@ export class IconsPage extends React.Component<any, any> {
         </CodeBlock>
         <div className={pageStyles.u_maxTextWidth}>
           <p>
-            Note the <code>aria-hidden</code> attribute, which prevents screen readers from reading the icon. In cases where meaning is
-            conveyed only through the icon, such as an icon-only navigation bar, use the{' '}
+            Note the <code>aria-hidden</code> attribute, which prevents screen readers from reading the icon. In cases
+            where meaning is conveyed only through the icon, such as an icon-only navigation bar, use the{' '}
             <a
               className={styles.iconsPageLink}
               href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute"

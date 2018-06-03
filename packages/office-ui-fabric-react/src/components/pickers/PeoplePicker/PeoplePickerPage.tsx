@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 import { ComponentStatus } from '../../../demo/ComponentStatus/ComponentStatus';
 import { PeoplePickerStatus } from './PeoplePicker.checklist';
@@ -27,22 +33,30 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md')}
           </PageMarkdown>
         }
         bestPractices={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md')}
           </PageMarkdown>
         }
         dos={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDos.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md')}
           </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

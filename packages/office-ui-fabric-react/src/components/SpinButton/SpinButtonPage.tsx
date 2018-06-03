@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
 import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisabled.Example';
 import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Example';
@@ -39,10 +45,16 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title={'Basic SpinButton With Icon'} code={SpinButtonBasicWithIconExampleCode}>
               <SpinButtonBasicWithIconExample />
             </ExampleCard>
-            <ExampleCard title={'Basic SpinButton With Icon Disabled'} code={SpinButtonBasicWithIconDisabledExampleCode}>
+            <ExampleCard
+              title={'Basic SpinButton With Icon Disabled'}
+              code={SpinButtonBasicWithIconDisabledExampleCode}
+            >
               <SpinButtonBasicWithIconDisabledExample />
             </ExampleCard>
-            <ExampleCard title={'Basic SpinButton With Icon and Positioned at the End'} code={SpinButtonBasicWithEndPositionExampleCode}>
+            <ExampleCard
+              title={'Basic SpinButton With Icon and Positioned at the End'}
+              code={SpinButtonBasicWithEndPositionExampleCode}
+            >
               <SpinButtonBasicWithEndPositionExample />
             </ExampleCard>
             <ExampleCard title={'Custom Styled SpinButton'} code={SpinButtonCustomStyledExampleCode}>
@@ -52,7 +64,9 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')
+            ]}
           />
         }
         overview={

@@ -32,7 +32,13 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
   ];
 
   public render(): JSX.Element {
-    return <DetailsList items={this.state.items} columns={this._columns} initialFocusedIndex={this.state.initialFocusedIndex} />;
+    return (
+      <DetailsList
+        items={this.state.items}
+        columns={this._columns}
+        initialFocusedIndex={this.state.initialFocusedIndex}
+      />
+    );
   }
 
   private _navigate = (name: string): (() => void) => {

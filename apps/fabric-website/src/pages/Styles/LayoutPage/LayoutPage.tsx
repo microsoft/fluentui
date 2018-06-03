@@ -34,8 +34,8 @@ export class LayoutPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h2 id="grid">Grid</h2>
           <p>
-            Fabric comes with a mobile-first, 12-column, responsive grid that you can use to create flexible layouts for a variety of screen
-            sizes and device types.
+            Fabric comes with a mobile-first, 12-column, responsive grid that you can use to create flexible layouts for
+            a variety of screen sizes and device types.
           </p>
         </div>
 
@@ -141,9 +141,9 @@ export class LayoutPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h3>How to use</h3>
           <p>
-            A grid (ms-Grid) can contain multiple rows (ms-Grid-row), each of which has one or more columns (ms-Grid-col). Utility classes
-            (ms-sm6) specify how large each column should be on small, medium, and large devices. The columns in a row should add up to 12
-            for each device size.
+            A grid (ms-Grid) can contain multiple rows (ms-Grid-row), each of which has one or more columns
+            (ms-Grid-col). Utility classes (ms-sm6) specify how large each column should be on small, medium, and large
+            devices. The columns in a row should add up to 12 for each device size.
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>
@@ -168,13 +168,13 @@ export class LayoutPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h4>Inheritance</h4>
           <p>
-            Because Fabric is mobile-first, any layout defined for small screens is automatically inherited by medium and large screens. The
-            small size utilities (ms-sm6) are required. If you want to change the layout on larger screens, you can apply the other utility
-            classes.
+            Because Fabric is mobile-first, any layout defined for small screens is automatically inherited by medium
+            and large screens. The small size utilities (ms-sm6) are required. If you want to change the layout on
+            larger screens, you can apply the other utility classes.
           </p>
           <p>
-            Try this out! On a large screen, the example block will be smaller. Try shrinking your browser window to see how the example
-            block will take up the entire width of the screen.
+            Try this out! On a large screen, the example block will be smaller. Try shrinking your browser window to see
+            how the example block will take up the entire width of the screen.
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>
@@ -191,8 +191,9 @@ export class LayoutPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h4>Push and pull</h4>
           <p>
-            You might want your column source order to differ from the display order, or to change the column display order based on the
-            screen size. The push and pull utilities make this possible. Push moves a column to the right; pull moves it to the left.
+            You might want your column source order to differ from the display order, or to change the column display
+            order based on the screen size. The push and pull utilities make this possible. Push moves a column to the
+            right; pull moves it to the left.
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>
@@ -213,9 +214,9 @@ export class LayoutPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h4>Visibility</h4>
           <p>
-            Some designs call for certain content to be shown or hidden depending on the screen size. You can achieve this using Fabric's
-            responsive visibility classes. These allow you to show or hide content at a specific screen size, or across a whole range of
-            sizes.
+            Some designs call for certain content to be shown or hidden depending on the screen size. You can achieve
+            this using Fabric's responsive visibility classes. These allow you to show or hide content at a specific
+            screen size, or across a whole range of sizes.
           </p>
         </div>
         <Table content={visibilityData} responsive={true} />

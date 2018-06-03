@@ -17,7 +17,10 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
-import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import {
+  getClassNames as getBaseSplitButtonClassNames,
+  ISplitButtonClassNames
+} from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 
 export interface IBaseButtonProps extends IButtonProps {
@@ -173,7 +176,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
-      'data-is-focusable': (this.props as any)['data-is-focusable'] === false || disabled || this._isSplitButton ? false : true,
+      'data-is-focusable':
+        (this.props as any)['data-is-focusable'] === false || disabled || this._isSplitButton ? false : true,
       'aria-pressed': checked
     });
 
@@ -200,7 +204,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
-    if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
+    if (
+      this._isSplitButton &&
+      this._splitButtonContainer.value &&
+      'onpointerdown' in this._splitButtonContainer.value
+    ) {
       this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
     }
   }
@@ -285,7 +293,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return Content;
   }
 
-  private _onRenderIcon = (buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null => {
+  private _onRenderIcon = (
+    buttonProps?: IButtonProps,
+    defaultRender?: IRenderFunction<IButtonProps>
+  ): JSX.Element | null => {
     const { iconProps } = this.props;
 
     if (iconProps) {
@@ -511,7 +522,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
+  private _onRenderSplitButtonMenuButton(
+    classNames: ISplitButtonClassNames | undefined,
+    keytipAttributes: any
+  ): JSX.Element {
     let { menuIconProps } = this.props;
 
     const { splitButtonAriaLabel } = this.props;
@@ -588,7 +602,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onTouchStart: () => void = () => {
-    if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
+    if (
+      this._isSplitButton &&
+      this._splitButtonContainer.value &&
+      !('onpointerdown' in this._splitButtonContainer.value)
+    ) {
       this._handleTouchAndPointerEvent();
     }
   };
@@ -622,7 +640,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
    * @param ev - the keyboard event
    * @returns True if user clicks on custom trigger key if enabled or alt + down arrow if not. False otherwise.
    */
-  private _isValidMenuOpenKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
+  private _isValidMenuOpenKey(
+    ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>
+  ): boolean {
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
     } else if (this.props.menuProps) {

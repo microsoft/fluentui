@@ -4,7 +4,15 @@ import { IColorPickerProps } from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
-import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH, updateSV } from '../../utilities/color/colors';
+import {
+  MAX_COLOR_HUE,
+  IColor,
+  getColorFromString,
+  getColorFromRGBA,
+  updateA,
+  updateH,
+  updateSV
+} from '../../utilities/color/colors';
 import { FontClassNames } from '../../Styling';
 import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;

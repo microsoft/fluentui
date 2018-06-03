@@ -33,7 +33,12 @@ describe('ResizeGroup', () => {
     expect(
       renderer
         .create(
-          <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} className={'TestClassName'} />
+          <ResizeGroup
+            data={initialData}
+            onReduceData={onReduceScalingData}
+            onRenderData={onRenderData}
+            className={'TestClassName'}
+          />
         )
         .toJSON()
     ).toMatchSnapshot();
@@ -282,7 +287,12 @@ describe('ResizeGroup', () => {
         renderedData: renderedData
       };
 
-      const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, increasedWidth);
+      const result = getNextResizeGroupState(
+        resizeGroupProps,
+        currentState,
+        getMeasuredElementWidthStub,
+        increasedWidth
+      );
 
       expect(result).toEqual({
         renderedData: renderedData,
@@ -415,7 +425,12 @@ describe('ResizeGroup', () => {
         renderedData: renderedData
       };
 
-      const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, increasedWidth);
+      const result = getNextResizeGroupState(
+        resizeGroupProps,
+        currentState,
+        getMeasuredElementWidthStub,
+        increasedWidth
+      );
 
       expect(result).toEqual({
         renderedData: renderedData,

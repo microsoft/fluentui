@@ -17,7 +17,8 @@ export interface ISwatchColorPickerState {
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
 @customizable('SwatchColorPicker', ['theme'])
-export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
+export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState>
+  implements ISwatchColorPicker {
   public static defaultProps = {
     cellShape: 'circle',
     disabled: false,
@@ -41,7 +42,11 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       focusOnHover: 'onHover'
     });
 
-    this._warnConditionallyRequiredProps(['focusOnHover'], 'mouseLeaveParentSelector', !!this.props.mouseLeaveParentSelector);
+    this._warnConditionallyRequiredProps(
+      ['focusOnHover'],
+      'mouseLeaveParentSelector',
+      !!this.props.mouseLeaveParentSelector
+    );
 
     this.isNavigationIdle = true;
     this.async = new Async(this);
@@ -258,7 +263,12 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * Callback that
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>): void => {
-    if (ev.which === KeyCodes.up || ev.which === KeyCodes.down || ev.which === KeyCodes.left || ev.which === KeyCodes.right) {
+    if (
+      ev.which === KeyCodes.up ||
+      ev.which === KeyCodes.down ||
+      ev.which === KeyCodes.left ||
+      ev.which === KeyCodes.right
+    ) {
       this.setNavigationTimeout();
     }
   };

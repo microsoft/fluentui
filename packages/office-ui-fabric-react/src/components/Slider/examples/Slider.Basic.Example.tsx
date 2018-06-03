@@ -30,7 +30,15 @@ export class SliderBasicExample extends React.Component<
             // tslint:disable-next-line:jsx-no-lambda
             onChange={(value: any) => console.log(value)}
           />
-          <Slider label="Disabled example:" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
+          <Slider
+            label="Disabled example:"
+            min={50}
+            max={500}
+            step={50}
+            defaultValue={300}
+            showValue={true}
+            disabled={true}
+          />
           <Slider
             label="Controlled example:"
             max={10}

@@ -169,7 +169,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               aria-label={ariaLabel}
               aria-describedby={mergeAriaAttributeValues(describedBy, keytipAttributes['aria-describedby'])}
               aria-activedescendant={
-                isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : undefined
+                isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
+                  ? this._id + '-list' + selectedIndices[0]
+                  : undefined
               }
               aria-disabled={disabled}
               aria-owns={isOpen ? id + '-list' : undefined}
@@ -441,7 +443,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { onRenderOption = this._onRenderOption } = this.props;
     const { selectedIndices = [] } = this.state;
     const id = this._id;
-    const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
+    const isItemSelected =
+      item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
     const checkboxStyles = () => {
       return getCheckboxStyles({
         theme: getTheme(),
@@ -600,7 +603,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   };
 
   // Get all selected indexes for multi-select mode
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
+  private _getSelectedIndexes(
+    options: IDropdownOption[],
+    selectedKey: string | number | string[] | number[] | undefined
+  ): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);
@@ -633,7 +639,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _getAllSelectedIndices(options: IDropdownOption[]): number[] {
-    return options.map((option: IDropdownOption, index: number) => (option.selected ? index : -1)).filter(index => index !== -1);
+    return options
+      .map((option: IDropdownOption, index: number) => (option.selected ? index : -1))
+      .filter(index => index !== -1);
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerWeekNumbersExample } from './examples/DatePicker.WeekNumbers.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
@@ -47,7 +53,9 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')
+            ]}
           />
         }
         overview={

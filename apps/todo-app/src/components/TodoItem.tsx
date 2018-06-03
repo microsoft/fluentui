@@ -52,7 +52,11 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={css(styles.itemTaskRow, 'ms-Grid-row')}>
-            <Checkbox label={this.props.item.title} onChange={this._onCheckboxChange} checked={this.props.item.isComplete === true} />
+            <Checkbox
+              label={this.props.item.title}
+              onChange={this._onCheckboxChange}
+              checked={this.props.item.isComplete === true}
+            />
             <IconButton
               className={styles.deleteButton}
               iconProps={{ iconName: 'X' }}
@@ -68,7 +72,9 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
 
   private get _ariaLabel(): string {
     const completeState: string =
-      this.props.item.isComplete === true ? strings.todoItemAriaLabelCheckedState : strings.todoItemAriaLabelUncheckedState;
+      this.props.item.isComplete === true
+        ? strings.todoItemAriaLabelCheckedState
+        : strings.todoItemAriaLabelUncheckedState;
     const titleString: string = strings.todoItemAriaLabelTitle + this.props.item.title;
     return `${completeState} ${titleString}`;
   }

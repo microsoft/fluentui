@@ -1,4 +1,12 @@
-import { concatStyleSets, FontSizes, FontWeights, getFocusStyle, HighContrastSelector, IRawStyle, ITheme } from '../../Styling';
+import {
+  concatStyleSets,
+  FontSizes,
+  FontWeights,
+  getFocusStyle,
+  HighContrastSelector,
+  IRawStyle,
+  ITheme
+} from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 

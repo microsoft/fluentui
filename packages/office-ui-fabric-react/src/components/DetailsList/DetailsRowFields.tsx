@@ -38,7 +38,11 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     const { cellContent } = this.state;
 
     return (
-      <div className={css('ms-DetailsRow-fields', styles.fields)} data-automationid="DetailsRowFields" role="presentation">
+      <div
+        className={css('ms-DetailsRow-fields', styles.fields)}
+        data-automationid="DetailsRowFields"
+        role="presentation"
+      >
         {columns.map((column, columnIndex) => (
           <div
             key={columnIndex}

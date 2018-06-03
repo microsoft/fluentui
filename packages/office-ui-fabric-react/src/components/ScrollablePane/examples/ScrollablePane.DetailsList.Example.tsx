@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, IDetailsHeaderProps, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsList,
+  DetailsListLayoutMode,
+  IDetailsHeaderProps,
+  Selection,
+  IColumn
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
@@ -83,7 +89,9 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           <TextField
             label="Filter by name:"
             // tslint:disable-next-line:jsx-no-lambda
-            onChanged={text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items })}
+            onChanged={text =>
+              this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items })
+            }
           />
           <Sticky stickyPosition={StickyPositionType.Header}>
             <h1 style={{ margin: '0px' }}>Item List</h1>
@@ -100,7 +108,9 @@ export class ScrollablePaneDetailsListExample extends React.Component<
                   <Sticky stickyPosition={StickyPositionType.Header}>
                     {defaultRender({
                       ...detailsHeaderProps,
-                      onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost {...tooltipHostProps} />
+                      onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
+                        <TooltipHost {...tooltipHostProps} />
+                      )
                     })}
                   </Sticky>
                 )

@@ -31,7 +31,11 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     const buttonNativeProps = getNativeProps(this.props, buttonProperties);
 
     const anchorElement: JSX.Element = (
-      <KeytipData keytipProps={keytipProps} ariaDescribedBy={(anchorNativeProps as any)['aria-describedby']} disabled={disabled}>
+      <KeytipData
+        keytipProps={keytipProps}
+        ariaDescribedBy={(anchorNativeProps as any)['aria-describedby']}
+        disabled={disabled}
+      >
         {(keytipAttributes: any): JSX.Element => (
           <a
             {...anchorNativeProps}
@@ -49,7 +53,11 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     );
 
     const buttonElement: JSX.Element = (
-      <KeytipData keytipProps={keytipProps} ariaDescribedBy={(buttonNativeProps as any)['aria-describedby']} disabled={disabled}>
+      <KeytipData
+        keytipProps={keytipProps}
+        ariaDescribedBy={(buttonNativeProps as any)['aria-describedby']}
+        disabled={disabled}
+      >
         {(keytipAttributes: any): JSX.Element => (
           <button
             {...buttonNativeProps}

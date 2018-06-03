@@ -51,9 +51,9 @@ export class BrandIconsPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h2 id="overview">Overview</h2>
           <p>
-            Fabric includes product and document icons that you can use to connect your experience with other Office and Office 365
-            endpoints. The icons come in three formats &mdash; SVG and PNG for multicolor and the icon font for monochrome &mdash; in a
-            variety of sizes and resolutions.
+            Fabric includes product and document icons that you can use to connect your experience with other Office and
+            Office 365 endpoints. The icons come in three formats &mdash; SVG and PNG for multicolor and the icon font
+            for monochrome &mdash; in a variety of sizes and resolutions.
           </p>
           <p>
             Usage of these icons is subject to the{' '}
@@ -62,8 +62,8 @@ export class BrandIconsPage extends React.Component<any, any> {
               href="https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf"
             >
               assets license agreement (PDF)
-            </a>. Please read this document and the resolution/size guidance carefully to ensure that you use our branded icons correctly to
-            create the best experience.
+            </a>. Please read this document and the resolution/size guidance carefully to ensure that you use our
+            branded icons correctly to create the best experience.
           </p>
         </div>
         <h3>Product icons</h3>
@@ -71,9 +71,9 @@ export class BrandIconsPage extends React.Component<any, any> {
           <div className="ms-Grid-row">
             <div className="ms-Grid-col ms-sm12 ms-lg6">
               <p className={styles.paragraphInGrid}>
-                Use product icons to help your users transition between Microsoft products. Product icons represent an app or brand. Do not
-                use a product icon to create a new document of that type. For example, do not create a Word document from a Word product
-                icon.
+                Use product icons to help your users transition between Microsoft products. Product icons represent an
+                app or brand. Do not use a product icon to create a new document of that type. For example, do not
+                create a Word document from a Word product icon.
               </p>
             </div>
             <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -112,9 +112,10 @@ export class BrandIconsPage extends React.Component<any, any> {
           <div className="ms-Grid-row">
             <div className="ms-Grid-col ms-sm12 ms-lg6">
               <p className={styles.paragraphInGrid}>
-                Use document icons to indicate to users that they are creating a new document of that type. Make sure that a document of the
-                type that the icon represents loads when the user selects the icon. Document icons should always represent Microsoft Office
-                documents. For example, do not use a Word .docx icon to open a .txt file.
+                Use document icons to indicate to users that they are creating a new document of that type. Make sure
+                that a document of the type that the icon represents loads when the user selects the icon. Document
+                icons should always represent Microsoft Office documents. For example, do not use a Word .docx icon to
+                open a .txt file.
               </p>
             </div>
             <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -153,21 +154,22 @@ export class BrandIconsPage extends React.Component<any, any> {
           <div className="ms-Grid-row">
             <div className="ms-Grid-col ms-sm12 ms-lg6">
               <p className={styles.paragraphInGrid}>
-                Multicolor product and document icons look best at 16x16, 48x48, and 96x96 px sizes in the UI of Microsoft products. Fabric
-                provides these icons in both SVG and PNG formats. SVGs are more versatile but are not supported by all browsers. PNGs are
-                supported by most browsers, but require many sizes to remain visually crisp.
+                Multicolor product and document icons look best at 16x16, 48x48, and 96x96 px sizes in the UI of
+                Microsoft products. Fabric provides these icons in both SVG and PNG formats. SVGs are more versatile but
+                are not supported by all browsers. PNGs are supported by most browsers, but require many sizes to remain
+                visually crisp.
               </p>
               <p className={styles.paragraphInGrid}>
-                PNGs come in 16x16, 32x32, 48x48, and 96x96 pixel sizes. Where possible, use the default sizes to prevent artifacts and
-                split pixels. Otherwise, use a size that is close to one of the default sizes.
+                PNGs come in 16x16, 32x32, 48x48, and 96x96 pixel sizes. Where possible, use the default sizes to
+                prevent artifacts and split pixels. Otherwise, use a size that is close to one of the default sizes.
               </p>
               <p className={styles.paragraphInGrid}>
-                Because SVGs are vectors, you can resize them more easily. They come in two sizes: 16x16 and 48x48 px. Use the size that
-                most closely maps to what you need for your experience for the best quality.
+                Because SVGs are vectors, you can resize them more easily. They come in two sizes: 16x16 and 48x48 px.
+                Use the size that most closely maps to what you need for your experience for the best quality.
               </p>
               <p className={styles.paragraphInGrid}>
-                Monochrome product icons that are included in the icon font are subject to the branding guidelines, but you can reference
-                them just like other icons noted in the{' '}
+                Monochrome product icons that are included in the icon font are subject to the branding guidelines, but
+                you can reference them just like other icons noted in the{' '}
                 <a className={styles.brandIconsPageLink} href="#/styles/icons">
                   icons section
                 </a>.
@@ -214,7 +216,10 @@ export class BrandIconsPage extends React.Component<any, any> {
               </ul>
               <ul className={styles.exampleIcons}>
                 <li>
-                  <i className="ms-Icon ms-Icon--OutlookLogo ms-fontColor-neutralSecondary" style={{ fontSize: '64px' }} />
+                  <i
+                    className="ms-Icon ms-Icon--OutlookLogo ms-fontColor-neutralSecondary"
+                    style={{ fontSize: '64px' }}
+                  />
                   <span>Icon font</span>
                 </li>
               </ul>
@@ -227,9 +232,10 @@ export class BrandIconsPage extends React.Component<any, any> {
           <div className="ms-Grid-row">
             <div className="ms-Grid-col ms-sm12 ms-lg6">
               <p className={styles.paragraphInGrid}>
-                Fabric provides multicolor icons of each type and size at different resolutions to accommodate pixel densities and scaling
-                factors across mobile, laptop, and desktop screens. Choose the right resolution for your viewport to avoid icons that appear
-                blurry. The resolution guidance doesn&rsquo;t apply to the monochrome font icons.
+                Fabric provides multicolor icons of each type and size at different resolutions to accommodate pixel
+                densities and scaling factors across mobile, laptop, and desktop screens. Choose the right resolution
+                for your viewport to avoid icons that appear blurry. The resolution guidance doesn&rsquo;t apply to the
+                monochrome font icons.
               </p>
             </div>
             <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -242,15 +248,15 @@ export class BrandIconsPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h2 id="implementation">Implementation</h2>
           <p>
-            To use the Office and Office 365 multicolor brand icons, select the format and size that best meets your needs. The following
-            code shows you how to reference the file. Be sure to use the right resolution for the pixel density of the screen you&rsquo;re
-            targeting.
+            To use the Office and Office 365 multicolor brand icons, select the format and size that best meets your
+            needs. The following code shows you how to reference the file. Be sure to use the right resolution for the
+            pixel density of the screen you&rsquo;re targeting.
           </p>
           <p>
-            Office brand icons come in predefined dimensions at 16px, 48px, and 96px. Although you may overwrite icon sizes with your custom
-            styles, we recommend using our icons at the predefined sizes so the images appear as intended. Fabric includes custom media
-            queries that will display our PNG brand icons in a different resolution depending on the device's pixel density. See the code
-            sample below for an example:
+            Office brand icons come in predefined dimensions at 16px, 48px, and 96px. Although you may overwrite icon
+            sizes with your custom styles, we recommend using our icons at the predefined sizes so the images appear as
+            intended. Fabric includes custom media queries that will display our PNG brand icons in a different
+            resolution depending on the device's pixel density. See the code sample below for an example:
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>
@@ -317,7 +323,9 @@ https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/pn
           {productIcons.map((icon, iconIndex) => (
             <li key={iconIndex}>
               <img
-                src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/${icon.name}_48x1.svg`}
+                src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/${
+                  icon.name
+                }_48x1.svg`}
                 alt={icon.name + 'Brand icon'}
               />
               <span>{icon.name}</span>
@@ -331,7 +339,9 @@ https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/pn
             <li key={iconIndex}>
               {/* @todo: Change this back to using SVGs once the CDN has been updated to include the "xsn" icons (issue 252058) */}
               <img
-                src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${icon.name}_48x1.svg`}
+                src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${
+                  icon.name
+                }_48x1.svg`}
                 alt={icon.name + ' Document Icon'}
               />
               <span>{icon.name}</span>
@@ -345,8 +355,8 @@ https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/pn
           <a className={styles.brandIconsPageLink} href="#/styles/icons">
             icon set
           </a>{' '}
-          also contains single-color product and document icons. You use these single-color icons like all other icons in Fabric. For more
-          information, see the{' '}
+          also contains single-color product and document icons. You use these single-color icons like all other icons
+          in Fabric. For more information, see the{' '}
           <a className={styles.brandIconsPageLink} href="#/styles/icons">
             icons page
           </a>{' '}

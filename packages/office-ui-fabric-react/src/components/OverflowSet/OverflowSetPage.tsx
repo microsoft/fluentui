@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
 import { OverflowSetVerticalExample } from './examples/OverflowSet.Vertical.Example';
@@ -20,7 +26,9 @@ export class OverflowSetPage extends React.Component<IComponentDemoPageProps, an
         componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet"
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md')}
           </PageMarkdown>
         }
         allowNativeProps={true}
@@ -39,7 +47,9 @@ export class OverflowSetPage extends React.Component<IComponentDemoPageProps, an
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/OverflowSet.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/OverflowSet.types.ts')
+            ]}
           />
         }
         componentStatus={<ComponentStatus {...OverflowSetStatus} />}

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
@@ -88,7 +94,9 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         nativePropsElement={['input', 'textarea']}
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
+            ]}
           />
         }
         overview={
@@ -98,7 +106,9 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         }
         bestPractices={<div />}
         dos={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md')}
+          </PageMarkdown>
         }
         donts={
           <PageMarkdown>

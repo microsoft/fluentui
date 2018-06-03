@@ -211,7 +211,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
 
   protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._positionedHost.current && !elementContains(this._positionedHost.current, target);
+    const clickedOutsideCallout =
+      this._positionedHost.current && !elementContains(this._positionedHost.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -411,7 +412,9 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     }
   }
 
-  private _getTarget(props: IPositioningContainerTypes = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(
+    props: IPositioningContainerTypes = this.props
+  ): HTMLElement | string | MouseEvent | IPoint | null {
     const { target } = props;
     return target!;
   }

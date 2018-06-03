@@ -19,7 +19,20 @@ export interface IDatePickerState {
 }
 
 const DEFAULT_STRINGS: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -97,7 +110,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
 
     if (!errorMessage && value) {
-      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
+      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate)
+        ? strings!.isOutOfBoundsErrorMessage || ' '
+        : undefined;
     }
 
     // Set error message
@@ -365,7 +380,16 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   private _validateTextInput = (): void => {
-    const { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate, minDate, maxDate } = this.props;
+    const {
+      isRequired,
+      allowTextInput,
+      strings,
+      parseDateFromString,
+      onSelectDate,
+      formatDate,
+      minDate,
+      maxDate
+    } = this.props;
     const inputValue = this.state.formattedDate;
 
     // Do validation only if DatePicker's popup is dismissed

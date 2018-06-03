@@ -47,7 +47,9 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(<ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />);
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />
+    );
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
@@ -725,7 +727,9 @@ describe('ContextualMenu', () => {
     ];
     const customRenderer = jest.fn(() => null);
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(<ContextualMenu items={items} contextualMenuItemAs={customRenderer} />);
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu items={items} contextualMenuItemAs={customRenderer} />
+    );
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
@@ -769,7 +773,11 @@ describe('ContextualMenu', () => {
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
-            items: [{ text: 'Item 1', key: 'Item 1' }, { text: 'Item 2', key: 'Item 2', canCheck: true }, { text: 'Item 3', key: 'Item 3' }]
+            items: [
+              { text: 'Item 1', key: 'Item 1' },
+              { text: 'Item 2', key: 'Item 2', canCheck: true },
+              { text: 'Item 3', key: 'Item 3' }
+            ]
           }
         }
       ];

@@ -3,7 +3,15 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
-import { IColumn, DetailsList, buildColumns, SelectionMode, Toggle, IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react';
+import {
+  IColumn,
+  DetailsList,
+  buildColumns,
+  SelectionMode,
+  Toggle,
+  IDetailsRowProps,
+  DetailsRow
+} from 'office-ui-fabric-react';
 import { Shimmer } from '@uifabric/experiments/lib/Shimmer';
 import './Shimmer.Example.scss';
 
@@ -98,7 +106,13 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
               onText="Compact"
               offText="Normal"
             />
-            <Toggle label="Enable content loading" checked={isDataLoaded} onChanged={this._onLoadData} onText="Content" offText="Shimmer" />
+            <Toggle
+              label="Enable content loading"
+              checked={isDataLoaded}
+              onChanged={this._onLoadData}
+              onText="Content"
+              offText="Shimmer"
+            />
           </div>
         </div>
         <div className="shimmerExample-application">
@@ -136,7 +150,10 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         this._isFetchingItems = false;
         // tslint:disable-next-line:no-any
         const itemsCopy = ([] as any[]).concat(this.state.items);
-        itemsCopy.splice.apply(itemsCopy, [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE)));
+        itemsCopy.splice.apply(
+          itemsCopy,
+          [index, ITEMS_BATCH_SIZE].concat(_items.slice(index, index + ITEMS_BATCH_SIZE))
+        );
         this.setState({
           items: itemsCopy
         });

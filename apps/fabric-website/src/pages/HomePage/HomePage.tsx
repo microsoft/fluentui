@@ -32,7 +32,9 @@ export class HomePage extends React.Component<any, any> {
               alt="React logo"
             />
             <span className={styles.flavorTitle}>Built with React</span>
-            <span className={styles.flavorDescription}>Fabric&rsquo;s robust, up-to-date components are built with React</span>
+            <span className={styles.flavorDescription}>
+              Fabric&rsquo;s robust, up-to-date components are built with React
+            </span>
             <a href="#/components" className={styles.button}>
               See components
             </a>
@@ -57,7 +59,8 @@ export class HomePage extends React.Component<any, any> {
           <div>
             <span className={styles.productTitle}>SharePoint</span>
             <span className={styles.productDescription}>
-              New SharePoint experiences are built with Fabric and the SharePoint Framework comes with it baked in to make things simple.{' '}
+              New SharePoint experiences are built with Fabric and the SharePoint Framework comes with it baked in to
+              make things simple.{' '}
               <a
                 className={styles.homePageLink}
                 href="https://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components"
@@ -79,8 +82,8 @@ export class HomePage extends React.Component<any, any> {
           <div>
             <span className={styles.productTitle}>Office Add-ins</span>
             <span className={styles.productDescription}>
-              Fabric is the official UX design framework for Office Add-ins. With Fabric, add-ins blend seamlessly with Word, Excel,
-              PowerPoint, and Outlook.{' '}
+              Fabric is the official UX design framework for Office Add-ins. With Fabric, add-ins blend seamlessly with
+              Word, Excel, PowerPoint, and Outlook.{' '}
               <a className={styles.homePageLink} href="http://dev.office.com/docs/add-ins/design/add-in-design">
                 Learn more
               </a>
@@ -98,13 +101,16 @@ export class HomePage extends React.Component<any, any> {
         <div className={styles.featured}>
           <span className={styles.featuredTitle}>Highlights</span>
           <span className={styles.featuredDescription}>
-            Fabric offers a variety of UI elements to help you create an experience that delights users and complements Office 365.
+            Fabric offers a variety of UI elements to help you create an experience that delights users and complements
+            Office 365.
           </span>
           <ul className={styles.featureList} aria-label="List of highlighted features">
             <li>
               <a href="#/styles/icons">
                 <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-icons.svg'}
+                  src={
+                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-icons.svg'
+                  }
                   width="240"
                   height="112"
                   alt="Illustrations of <icons className=&quot;&quot;></icons>"
@@ -115,7 +121,9 @@ export class HomePage extends React.Component<any, any> {
             <li>
               <a href="#/styles/typography">
                 <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-typography.svg'}
+                  src={
+                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-typography.svg'
+                  }
                   width="240"
                   height="112"
                   alt="Illustration of different font weights."
@@ -126,7 +134,9 @@ export class HomePage extends React.Component<any, any> {
             <li>
               <a href="#/styles/brand-icons">
                 <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-brand.svg'}
+                  src={
+                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-brand.svg'
+                  }
                   width="240"
                   height="112"
                   alt="Word, Excel, OneNote, PowerPoint icons."
@@ -137,7 +147,9 @@ export class HomePage extends React.Component<any, any> {
             <li>
               <a href="#/components/button">
                 <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-buttons.svg'}
+                  src={
+                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-buttons.svg'
+                  }
                   width="240"
                   height="112"
                   alt="Illustrated representation of buttons."
@@ -147,7 +159,8 @@ export class HomePage extends React.Component<any, any> {
             </li>
           </ul>
           <span className={styles.trademark}>
-            All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons, is subject to the{' '}
+            All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons,
+            is subject to the{' '}
             <a
               className={styles.homePageLink}
               href="https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf"
@@ -157,8 +170,8 @@ export class HomePage extends React.Component<any, any> {
           </span>
           <span className={styles.featuredTitle}>Design Toolkit</span>
           <span className={styles.featuredDescription} id={styles.toolkitDescription}>
-            The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless,
-            beautiful Office experiences.{' '}
+            The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you
+            to create seamless, beautiful Office experiences.{' '}
             <a className={styles.homePageLink} href="#/resources">
               Learn more
             </a>

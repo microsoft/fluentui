@@ -38,7 +38,9 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     >
       <div className={props.rootClassName} aria-hidden="true">
         {props.leftIconName ? <Icon iconName={props.leftIconName} className={props.iconClassName} /> : null}
-        {props.content ? <div className={mergeStyles(props.textClassName, computedTextWidth)}>{props.content}</div> : null}
+        {props.content ? (
+          <div className={mergeStyles(props.textClassName, computedTextWidth)}>{props.content}</div>
+        ) : null}
         {props.rightIconName ? <Icon iconName={props.rightIconName} className={props.iconClassName} /> : null}
       </div>
     </a>

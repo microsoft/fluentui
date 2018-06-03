@@ -92,10 +92,16 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           ]}
         />
         <div id="foo" tab-index="-1">
-          <div>Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:</div>
+          <div>
+            Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:
+          </div>
           <div
             style={{
-              color: this.state.previewColor2 ? this.state.previewColor2 : this.state.color2 ? this.state.color2 : undefined,
+              color: this.state.previewColor2
+                ? this.state.previewColor2
+                : this.state.color2
+                  ? this.state.color2
+                  : undefined,
               fontSize: '24px'
             }}
           >

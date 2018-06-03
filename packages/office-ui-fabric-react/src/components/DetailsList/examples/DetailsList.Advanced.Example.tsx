@@ -2,7 +2,12 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { IContextualMenuProps, IContextualMenuItem, DirectionalHint, ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  DirectionalHint,
+  ContextualMenu
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -65,7 +70,15 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
-      columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
+      columns: this._buildColumns(
+        _items,
+        true,
+        this._onColumnClick,
+        '',
+        undefined,
+        undefined,
+        this._onColumnContextMenu
+      ),
       contextualMenuProps: undefined,
       sortedColumnKey: 'name',
       isSortedDescending: false,
@@ -176,7 +189,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       canResizeColumns: canResizeColumns,
-      columns: this._buildColumns(items as any[], canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
+      columns: this._buildColumns(
+        items as any[],
+        canResizeColumns,
+        this._onColumnClick,
+        sortedColumnKey,
+        isSortedDescending
+      )
     });
   };
 
@@ -209,7 +228,15 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _getCommandItems = (): IContextualMenuItem[] => {
-    const { canResizeColumns, checkboxVisibility, constrainMode, isHeaderVisible, isLazyLoaded, layoutMode, selectionMode } = this.state;
+    const {
+      canResizeColumns,
+      checkboxVisibility,
+      constrainMode,
+      isHeaderVisible,
+      isLazyLoaded,
+      layoutMode,
+      selectionMode
+    } = this.state;
 
     return [
       {
@@ -444,12 +471,22 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
-    const sortedItems = _items.slice(0).sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+    const sortedItems = _items
+      .slice(0)
+      .sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
 
     this.setState({
       items: sortedItems,
       groups: undefined,
-      columns: this._buildColumns(sortedItems, true, this._onColumnClick, key, isSortedDescending, undefined, this._onColumnContextMenu),
+      columns: this._buildColumns(
+        sortedItems,
+        true,
+        this._onColumnClick,
+        key,
+        isSortedDescending,
+        undefined,
+        this._onColumnContextMenu
+      ),
       isSortedDescending: isSortedDescending,
       sortedColumnKey: key
     });
@@ -559,7 +596,14 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     groupedColumnKey?: string,
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any
   ) {
-    const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
+    const columns = buildColumns(
+      items,
+      canResizeColumns,
+      onColumnClick,
+      sortedColumnKey,
+      isSortedDescending,
+      groupedColumnKey
+    );
 
     columns.forEach(column => {
       column.onColumnContextMenu = onColumnContextMenu;

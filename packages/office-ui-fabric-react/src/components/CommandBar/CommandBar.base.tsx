@@ -1,7 +1,13 @@
 import * as React from 'react';
 
 import { BaseComponent, css, customizable, nullRender } from '../../Utilities';
-import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
+import {
+  ICommandBar,
+  ICommandBarItemProps,
+  ICommandBarProps,
+  ICommandBarStyleProps,
+  ICommandBarStyles
+} from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -190,7 +196,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
-    return <OverflowButtonType aria-posinset={this._setSize} aria-setsize={this._setSize} {...overflowProps as IButtonProps} />;
+    return (
+      <OverflowButtonType
+        aria-posinset={this._setSize}
+        aria-setsize={this._setSize}
+        {...overflowProps as IButtonProps}
+      />
+    );
   };
 
   private _computeCacheKey(data: ICommandBarData): string {

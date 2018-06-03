@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { NavBasicExample } from './examples/Nav.Basic.Example';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
@@ -36,14 +42,26 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')]}
+          />
         }
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md')}
+          </PageMarkdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md')}</PageMarkdown>}
-        donts={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md')}
+          </PageMarkdown>
+        }
+        donts={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md')}
+          </PageMarkdown>
+        }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...NavStatus} />}
       />

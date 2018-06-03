@@ -127,7 +127,9 @@ describe('Rating', () => {
     let threwException = false;
     let choiceGroup;
     try {
-      choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(<RatingBase styles={getStyles} readOnly={true} rating={2} />);
+      choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(
+        <RatingBase styles={getStyles} readOnly={true} rating={2} />
+      );
     } catch (e) {
       threwException = true;
     }

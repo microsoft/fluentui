@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
@@ -21,23 +27,27 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
           <div>
             <ExampleCard title="Default DocumentCard" code={DocumentCardBasicExampleCode}>
               <p>
-                The default configuration for a card represents a single file, with space to denote the last significant event and the
-                person involved.
+                The default configuration for a card represents a single file, with space to denote the last significant
+                event and the person involved.
               </p>
               <DocumentCardBasicExample />
             </ExampleCard>
-            <ExampleCard title="DocumentCard with multiple items, commands, and views" code={DocumentCardCompleteExampleCode}>
+            <ExampleCard
+              title="DocumentCard with multiple items, commands, and views"
+              code={DocumentCardCompleteExampleCode}
+            >
               <p>
-                This example shows a couple of optional abilities, including being able to have a card represent multiple items, being able
-                to expose up to three relevant commands, and showing the number of views in the bottom right corner.
+                This example shows a couple of optional abilities, including being able to have a card represent
+                multiple items, being able to expose up to three relevant commands, and showing the number of views in
+                the bottom right corner.
               </p>
               <p>Also show a card with Logo, text preview and status that is used for Conversation card.</p>
               <DocumentCardCompleteExample />
             </ExampleCard>
             <ExampleCard title="DocumentCard with compact layout " code={DocumentCardCompactExampleCode}>
               <p>
-                When showing a card on a mobile device or a similarly narrow layout, you may choose this Compact layout which helps the
-                filename remain scannable while giving roomy space for a preview thumbnail.
+                When showing a card on a mobile device or a similarly narrow layout, you may choose this Compact layout
+                which helps the filename remain scannable while giving roomy space for a preview thumbnail.
               </p>
               <DocumentCardCompactExample />
             </ExampleCard>
@@ -45,12 +55,16 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.types.ts')
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md')}
           </PageMarkdown>
         }
         bestPractices={<div />}
@@ -61,7 +75,9 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
         }
         donts={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDonts.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDonts.md')}
           </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

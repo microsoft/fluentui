@@ -68,7 +68,8 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
       ['ms-MessageBar--error ' + styles.rootIsError]: this.props.messageBarType === MessageBarType.error,
       ['ms-MessageBar--blocked ' + styles.rootIsBlocked]:
         this.props.messageBarType === MessageBarType.blocked || this.props.messageBarType === MessageBarType.remove, // TODO remove deprecated value at >= 1.0.0
-      ['ms-MessageBar--severeWarning ' + styles.rootIsSevereWarning]: this.props.messageBarType === MessageBarType.severeWarning,
+      ['ms-MessageBar--severeWarning ' + styles.rootIsSevereWarning]:
+        this.props.messageBarType === MessageBarType.severeWarning,
       ['ms-MessageBar--success ' + styles.rootIsSuccess]: this.props.messageBarType === MessageBarType.success,
       ['ms-MessageBar--warning ' + styles.rootIsWarning]: this.props.messageBarType === MessageBarType.warning
     });
@@ -91,7 +92,9 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _getDismissSingleLine(): JSX.Element | null {
     if (this.props.onDismiss) {
-      return <div className={css('ms-MessageBar-dismissSingleLine', styles.dismissSingleLine)}>{this._getDismissDiv()}</div>;
+      return (
+        <div className={css('ms-MessageBar-dismissSingleLine', styles.dismissSingleLine)}>{this._getDismissDiv()}</div>
+      );
     }
     return null;
   }
@@ -178,7 +181,11 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
         )}
         id={this.state.labelId}
       >
-        <span className={css('ms-MessageBar-innerText ' + styles.innerText)} role="status" aria-live={this._getAnnouncementPriority()}>
+        <span
+          className={css('ms-MessageBar-innerText ' + styles.innerText)}
+          role="status"
+          aria-live={this._getAnnouncementPriority()}
+        >
           <DelayedRender>
             <span>{this.props.children}</span>
           </DelayedRender>

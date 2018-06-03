@@ -32,7 +32,10 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
         style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
-          shimmerElements={[{ type: ElemType.line, widthInPixel: 40, height: 40 }, { type: ElemType.gap, widthInPixel: 10, height: 40 }]}
+          shimmerElements={[
+            { type: ElemType.line, widthInPixel: 40, height: 40 },
+            { type: ElemType.gap, widthInPixel: 10, height: 40 }
+          ]}
         />
         <ShimmerElementsGroup
           flexWrap={true}
@@ -53,7 +56,10 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
         style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
-          shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, widthInPixel: 10, height: 40 }]}
+          shimmerElements={[
+            { type: ElemType.circle, height: 40 },
+            { type: ElemType.gap, widthInPixel: 10, height: 40 }
+          ]}
         />
         <ShimmerElementsGroup
           flexWrap={true}
@@ -75,14 +81,20 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
       >
         <ShimmerElementsGroup
           width={'90px'}
-          shimmerElements={[{ type: ElemType.line, height: 80, widthInPixel: 80 }, { type: ElemType.gap, widthInPixel: 10, height: 80 }]}
+          shimmerElements={[
+            { type: ElemType.line, height: 80, widthInPixel: 80 },
+            { type: ElemType.gap, widthInPixel: 10, height: 80 }
+          ]}
         />
         <div
           // tslint:disable-next-line:jsx-ban-props
           style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}
         >
           <ShimmerElementsGroup
-            shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, widthInPixel: 10, height: 40 }]}
+            shimmerElements={[
+              { type: ElemType.circle, height: 40 },
+              { type: ElemType.gap, widthInPixel: 10, height: 40 }
+            ]}
           />
           <ShimmerElementsGroup
             flexWrap={true}

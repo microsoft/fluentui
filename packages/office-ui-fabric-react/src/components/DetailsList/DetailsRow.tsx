@@ -1,6 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BaseComponent, IDisposable, assign, css, shallowCompare, getNativeProps, divProperties, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  IDisposable,
+  assign,
+  css,
+  shallowCompare,
+  getNativeProps,
+  divProperties,
+  createRef
+} from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -90,7 +99,11 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
-      this._dragDropSubscription = dragDropHelper.subscribe(this._root as HTMLElement, this._events, this._getRowDragDropOptions());
+      this._dragDropSubscription = dragDropHelper.subscribe(
+        this._root as HTMLElement,
+        this._events,
+        this._getRowDragDropOptions()
+      );
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -188,7 +201,11 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
     const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
-    const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
+    const droppingClassName = isDropping
+      ? this._droppingClassNames
+        ? this._droppingClassNames
+        : DEFAULT_DROPPING_CSS_CLASS
+      : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
     const canSelect = selection.canSelectItem!(item);
@@ -208,7 +225,11 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     );
     // Rendering Shimmer Animation outside the focus zone
     if (shimmer) {
-      return <div className={css(showCheckbox && styles.shimmerLeftBorder, !compact && styles.shimmerBottomBorder)}>{rowFields}</div>;
+      return (
+        <div className={css(showCheckbox && styles.shimmerLeftBorder, !compact && styles.shimmerBottomBorder)}>
+          {rowFields}
+        </div>
+      );
     }
 
     return (
@@ -220,12 +241,20 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         role="row"
         aria-label={ariaLabel}
         ariaDescribedBy={ariaDescribedBy}
-        className={css('ms-DetailsRow', className, AnimationClassNames.fadeIn400, styles.root, checkStyles.owner, droppingClassName, {
-          [`is-contentUnselectable ${styles.rootIsContentUnselectable}`]: isContentUnselectable,
-          [`is-selected ${checkStyles.isSelected} ${styles.rootIsSelected}`]: isSelected,
-          [`${styles.anySelected} ${checkStyles.anySelected}`]: isSelectionModal,
-          [`is-check-visible ${checkStyles.isVisible}`]: checkboxVisibility === CheckboxVisibility.always
-        })}
+        className={css(
+          'ms-DetailsRow',
+          className,
+          AnimationClassNames.fadeIn400,
+          styles.root,
+          checkStyles.owner,
+          droppingClassName,
+          {
+            [`is-contentUnselectable ${styles.rootIsContentUnselectable}`]: isContentUnselectable,
+            [`is-selected ${checkStyles.isSelected} ${styles.rootIsSelected}`]: isSelected,
+            [`${styles.anySelected} ${checkStyles.anySelected}`]: isSelectionModal,
+            [`is-check-visible ${checkStyles.isVisible}`]: checkboxVisibility === CheckboxVisibility.always
+          }
+        )}
         data-is-focusable={true}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
@@ -260,7 +289,9 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         )}
 
-        {GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) })}
+        {GroupSpacer({
+          count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)
+        })}
 
         {item && rowFields}
         {columnMeasureInfo && (
@@ -279,7 +310,12 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </span>
         )}
 
-        <span role="checkbox" className={css(styles.checkCover)} aria-checked={isSelected} data-selection-toggle={true} />
+        <span
+          role="checkbox"
+          className={css(styles.checkCover)}
+          aria-checked={isSelected}
+          data-selection-toggle={true}
+        />
       </FocusZone>
     );
   }

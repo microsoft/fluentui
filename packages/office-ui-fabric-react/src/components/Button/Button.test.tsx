@@ -67,13 +67,17 @@ describe('Button', () => {
   });
 
   it('renders CompoundButton correctly', () => {
-    const component = renderer.create(<CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>);
+    const component = renderer.create(
+      <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders IconButton correctly', () => {
-    const component = renderer.create(<IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />);
+    const component = renderer.create(
+      <IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -618,7 +622,11 @@ describe('Button', () => {
       ): HTMLElement {
         const menuProps = { items: [{ key: 'item', name: 'Item' }], ...menuPropsPatch };
         const element: React.ReactElement<any> = (
-          <DefaultButton iconProps={{ iconName: 'Add' }} text={!textAsChildElement && text ? text : undefined} menuProps={menuProps}>
+          <DefaultButton
+            iconProps={{ iconName: 'Add' }}
+            text={!textAsChildElement && text ? text : undefined}
+            menuProps={menuProps}
+          >
             {textAsChildElement && text ? text : null}
           </DefaultButton>
         );
@@ -648,7 +656,11 @@ describe('Button', () => {
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text', true);
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+          null,
+          'Button Text',
+          true
+        );
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement.getAttribute('aria-label') === null);

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 import { CheckboxImplementationExamples } from './examples/Checkbox.ImplementationExamples';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
@@ -27,7 +33,9 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')]}
+          />
         }
         overview={
           <PageMarkdown>
@@ -36,10 +44,14 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         }
         bestPractices={<div />}
         dos={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md')}
+          </PageMarkdown>
         }
         donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md')}
+          </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...CheckboxStatus} />}

@@ -53,9 +53,16 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     return (
       <div className="ms-CalloutExample">
         <div className="ms-CalloutExample-configArea">
-          <Checkbox className={exampleStyles.exampleCheckbox} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
+          <Checkbox
+            className={exampleStyles.exampleCheckbox}
+            label="Show beak"
+            checked={isBeakVisible}
+            onChange={this._onShowBeakChange}
+          />
           <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
-          {isBeakVisible && <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />}
+          {isBeakVisible && (
+            <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />
+          )}
           <Dropdown
             label="Directional hint"
             selectedKey={directionalHint!}
@@ -86,7 +93,8 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             <div className="ms-CalloutExample-inner">
               <div className="ms-CalloutExample-content">
                 <p className="ms-CalloutExample-subText">
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at
+                  the bottom.
                 </p>
               </div>
             </div>

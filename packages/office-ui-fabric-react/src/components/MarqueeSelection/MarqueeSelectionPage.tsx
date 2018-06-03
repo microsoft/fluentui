@@ -19,7 +19,9 @@ export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProp
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md')}
           </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

@@ -33,7 +33,9 @@ export class Table extends React.Component<ITableProps, ITableState> {
 
   public render(): JSX.Element {
     let { content } = this.props;
-    return this.state.currentBreakpoint === 'mobile' && this.props.responsive ? this._renderMobile(content) : this._renderDesktop(content);
+    return this.state.currentBreakpoint === 'mobile' && this.props.responsive
+      ? this._renderMobile(content)
+      : this._renderDesktop(content);
   }
 
   // Render Table cell.  Cell content is either cell's value property, or cell's html property (if value is an empty string)
@@ -52,7 +54,11 @@ export class Table extends React.Component<ITableProps, ITableState> {
     return (
       <table className={`${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')}>
         <thead>
-          <tr>{content.headers.map((heading, headingIndex) => <th key={headingIndex}>{this._capitalizeFirstLetter(heading)}</th>)}</tr>
+          <tr>
+            {content.headers.map((heading, headingIndex) => (
+              <th key={headingIndex}>{this._capitalizeFirstLetter(heading)}</th>
+            ))}
+          </tr>
         </thead>
         <tbody>
           {content.data.map((row, rowIndex) => (
@@ -77,7 +83,9 @@ export class Table extends React.Component<ITableProps, ITableState> {
       <div>
         {content.data.map((row, rowIndex) => (
           <table
-            className={`${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')}
+            className={
+              `${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')
+            }
             key={rowIndex}
           >
             <tbody>

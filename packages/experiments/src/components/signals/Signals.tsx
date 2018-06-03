@@ -131,5 +131,7 @@ type IIconSignalProps = ISignalProps &
 function IconSignal(props: IIconSignalProps): JSX.Element {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
-  return <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />;
+  return (
+    <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />
+  );
 }

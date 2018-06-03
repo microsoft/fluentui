@@ -108,12 +108,17 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
         this._isTruncated = true;
         this.setState({
           truncatedTitleFirstPiece: originalTitle.slice(0, maxLength / 2 + TRUNCATION_FIRST_PIECE_LONGER_BY),
-          truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - (maxLength / 2 - TRUNCATION_FIRST_PIECE_LONGER_BY))
+          truncatedTitleSecondPiece: originalTitle.slice(
+            originalTitle.length - (maxLength / 2 - TRUNCATION_FIRST_PIECE_LONGER_BY)
+          )
         });
       } else {
         // The text is not so long, so we'll just break it into two pieces
         this.setState({
-          truncatedTitleFirstPiece: originalTitle.slice(0, Math.ceil(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY),
+          truncatedTitleFirstPiece: originalTitle.slice(
+            0,
+            Math.ceil(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY
+          ),
           truncatedTitleSecondPiece: originalTitle.slice(
             originalTitle.length - Math.floor(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY
           )

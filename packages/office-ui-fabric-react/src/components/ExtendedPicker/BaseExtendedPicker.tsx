@@ -22,7 +22,8 @@ export interface IBaseExtendedPickerState {
   isResultsFooterVisible?: boolean;
 }
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
+  extends BaseComponent<P, IBaseExtendedPickerState>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -87,7 +88,12 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     const { className, inputProps, disabled } = this.props;
 
     return (
-      <div ref={this.root} className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onBackspace} onCopy={this.onCopy}>
+      <div
+        ref={this.root}
+        className={css('ms-BasePicker', className ? className : '')}
+        onKeyDown={this.onBackspace}
+        onCopy={this.onCopy}
+      >
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
           <div className={css('ms-BasePicker-text', styles.pickerText)} role={'list'}>
             {this.props.headerComponent}
@@ -181,7 +187,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     if (ev.which !== KeyCodes.backspace) {
       return;
     }
-    if ((this.state.items.length && !this.input.current) || (this.input.current && !this.input.current.isValueSelected)) {
+    if (
+      (this.state.items.length && !this.input.current) ||
+      (this.input.current && !this.input.current.isValueSelected)
+    ) {
       if (this.selectedItemsList.current && (this.input.current as Autofill).cursorLocation === 0) {
         this.selectedItemsList.current.removeItemAt(this.items.length - 1);
         this._onSelectedItemsChanged();

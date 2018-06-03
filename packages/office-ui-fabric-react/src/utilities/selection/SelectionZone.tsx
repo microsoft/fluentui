@@ -191,7 +191,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
           break;
-        } else if ((target === itemRoot || this._shouldAutoSelect(target)) && !this._isShiftPressed && !this._isCtrlPressed) {
+        } else if (
+          (target === itemRoot || this._shouldAutoSelect(target)) &&
+          !this._isShiftPressed &&
+          !this._isCtrlPressed
+        ) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
         } else if (
@@ -302,7 +306,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       const index = this._getItemIndex(itemRoot);
 
       while (target !== this._root.current) {
-        if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+        if (
+          this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) ||
+          this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
+        ) {
           break;
         } else if (target === itemRoot) {
           this._onInvokeClick(ev, index);
@@ -470,7 +477,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onInvokeMouseDown(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
+  private _onInvokeMouseDown(
+    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    index: number
+  ): void {
     const { selection } = this.props;
 
     // Only do work if item is not selected.

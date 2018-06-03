@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, css, divProperties, getNativeProps, getId, assign, hasOverflow, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  css,
+  divProperties,
+  getNativeProps,
+  getId,
+  assign,
+  hasOverflow,
+  createRef
+} from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
@@ -48,7 +57,10 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
-    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
+    const isContentPresent = !!(
+      content ||
+      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
+    );
     const showTooltip = isTooltipVisible && isContentPresent;
 
     return (
@@ -145,7 +157,10 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
   private _toggleTooltip(isTooltipVisible: boolean): void {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
-      this.setState({ isTooltipVisible }, () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible));
+      this.setState(
+        { isTooltipVisible },
+        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
+      );
     }
   }
 }

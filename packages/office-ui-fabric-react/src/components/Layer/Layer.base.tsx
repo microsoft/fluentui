@@ -5,7 +5,14 @@ import * as ReactDOM from 'react-dom';
 
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
-import { BaseComponent, classNamesFunction, customizable, getDocument, setVirtualParent, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  getDocument,
+  setVirtualParent,
+  createRef
+} from '../../Utilities';
 
 const _layersByHostId: { [hostId: string]: LayerBase[] } = {};
 let _defaultHostSelector: string | undefined;

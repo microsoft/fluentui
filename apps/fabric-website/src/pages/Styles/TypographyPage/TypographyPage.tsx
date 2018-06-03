@@ -36,16 +36,16 @@ export class TypographyPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h2 id="base">Base classes</h2>
           <p>
-            Fabric includes 10 base font classes that represent the type ramp for the Office Design Language. Each class sets the text size
-            along with a default weight.
+            Fabric includes 10 base font classes that represent the type ramp for the Office Design Language. Each class
+            sets the text size along with a default weight.
           </p>
         </div>
         <Table responsive={true} content={typeRampData} />
 
         <div className={pageStyles.u_maxTextWidth}>
           <p>
-            To provide flexibility, text color is not included in these base classes. We recommend using 'neutral primary' for most text on
-            white backgrounds. See the{' '}
+            To provide flexibility, text color is not included in these base classes. We recommend using 'neutral
+            primary' for most text on white backgrounds. See the{' '}
             <a className={styles.typographyPageLink} href="#/styles/colors">
               color documentation
             </a>{' '}

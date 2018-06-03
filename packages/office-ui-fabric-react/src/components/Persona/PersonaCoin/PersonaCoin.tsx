@@ -6,4 +6,7 @@ import { getStyles } from './PersonaCoin.styles';
 /**
  * PersonaCoin is used to render an individual's avatar and presence.
  */
-export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(PersonaCoinBase, getStyles);
+export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(
+  PersonaCoinBase,
+  getStyles
+);

@@ -15,7 +15,9 @@ describe('DocumentCardTitle', () => {
     // https://github.com/airbnb/enzyme/issues/1435
     component.setProps({});
 
-    expect(component.text()).toEqual('This is obviously a very very very very very very v… that will need to be truncated');
+    expect(component.text()).toEqual(
+      'This is obviously a very very very very very very v… that will need to be truncated'
+    );
   });
 
   it('does not truncate a title when shouldTruncate is set to false', () => {

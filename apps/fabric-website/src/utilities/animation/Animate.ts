@@ -329,7 +329,7 @@ export class Animate {
   }
 
   private static _easeOutExpo(time: number, begin: number, change: number, duration: number): number {
-    return time === duration ? begin + change : change * (-Math.pow(2, -10 * time / duration) + 1) + begin;
+    return time === duration ? begin + change : change * (-Math.pow(2, (-10 * time) / duration) + 1) + begin;
   }
 
   // private static _easeInOutQuad (time: number, begin: number, change: number, duration: number) {

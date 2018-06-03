@@ -127,7 +127,9 @@ describe('TextField', () => {
     const errorMessage = 'The string is too long, should not exceed 3 characters.';
 
     function assertErrorMessage(renderedDOM: HTMLElement, expectedErrorMessage: string | boolean): void {
-      const errorMessageDOM: HTMLElement = renderedDOM.querySelector('[data-automation-id=error-message]') as HTMLElement;
+      const errorMessageDOM: HTMLElement = renderedDOM.querySelector(
+        '[data-automation-id=error-message]'
+      ) as HTMLElement;
 
       if (expectedErrorMessage === false) {
         expect(errorMessageDOM).toBeNull(); // element not exists
@@ -228,7 +230,9 @@ describe('TextField', () => {
         return value.length > 3 ? errorMessage : '';
       }
 
-      const renderedDOM: HTMLElement = renderIntoDocument(<TextField value="initial value" onGetErrorMessage={validator} />);
+      const renderedDOM: HTMLElement = renderIntoDocument(
+        <TextField value="initial value" onGetErrorMessage={validator} />
+      );
 
       delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
 

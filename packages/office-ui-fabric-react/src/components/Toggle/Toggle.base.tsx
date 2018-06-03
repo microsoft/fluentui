@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, createRef, getId, inputProperties, getNativeProps } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  createRef,
+  getId,
+  inputProperties,
+  getNativeProps
+} from '../../Utilities';
 import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import { Label } from '../../Label';
 import { KeytipData } from '../../KeytipData';
@@ -77,7 +85,11 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         )}
 
         <div className={classNames.container}>
-          <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
+          <KeytipData
+            keytipProps={keytipProps}
+            ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
+            disabled={disabled}
+          >
             {(keytipAttributes: any): JSX.Element => (
               <button
                 {...toggleNativeProps}

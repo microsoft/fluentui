@@ -11,7 +11,20 @@ import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
 
 describe('Calendar', () => {
   const dayPickerStrings = {
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ],
 
     shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -28,7 +41,9 @@ describe('Calendar', () => {
 
     // Act
 
-    const renderedComponent = mount(<Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />);
+    const renderedComponent = mount(
+      <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />
+    );
 
     const today = renderedComponent.find('.ms-DatePicker-day--today');
     expect(+today.text()).toEqual(new Date().getDate());
@@ -55,7 +70,10 @@ describe('Calendar', () => {
       const today = new Date();
       const monthName = dayPickerStrings.months[today.getMonth()];
       const year = today.getFullYear();
-      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-monthAndYear'
+      );
       expect(dayPickerMonth).toBeDefined();
       expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + year.toString());
     });
@@ -123,7 +141,10 @@ describe('Calendar', () => {
 
     it('Verify day picker header', () => {
       const monthName = dayPickerStrings.months[defaultDate.getMonth()];
-      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      const dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-monthAndYear'
+      );
       expect(dayPickerMonth).toBeDefined();
       expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + defaultDate.getFullYear().toString());
     });
@@ -146,13 +167,19 @@ describe('Calendar', () => {
     });
 
     it('Verify month picker seen', () => {
-      const monthPicker = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthPicker') as HTMLElement;
+      const monthPicker = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-monthPicker'
+      ) as HTMLElement;
       expect(monthPicker).toBeDefined();
       expect(monthPicker.style.display).not.toEqual('none');
     });
 
     it('Verify month picker header', () => {
-      const currentYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      const currentYear = ReactTestUtils.findRenderedDOMComponentWithClass(
+        renderedComponent,
+        'ms-DatePicker-currentYear'
+      );
       expect(currentYear).toBeDefined();
       expect(currentYear.textContent).toEqual(defaultDate.getFullYear().toString());
     });

@@ -25,7 +25,10 @@ describe('Panel', () => {
       dismissedCalled = true;
     };
 
-    const panel: Panel = ReactDOM.render(<Panel isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />, div) as any;
+    const panel: Panel = ReactDOM.render(
+      <Panel isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+      div
+    ) as any;
 
     panel.dismiss();
 

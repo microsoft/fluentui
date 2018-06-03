@@ -30,9 +30,10 @@ export class LocalizationPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h2 id="layout">Right-to-left layouts</h2>
           <p>
-            Fabric comes with an alternate CSS file for pages written in right-to-left (RTL) languages, such as Arabic and Hebrew. This
-            reverses the order of columns in the responsive grid, making it easy to create an RTL layout without writing additional
-            templates. Many icons are also reversed, particularly those used for navigation such as arrows.
+            Fabric comes with an alternate CSS file for pages written in right-to-left (RTL) languages, such as Arabic
+            and Hebrew. This reverses the order of columns in the responsive grid, making it easy to create an RTL
+            layout without writing additional templates. Many icons are also reversed, particularly those used for
+            navigation such as arrows.
           </p>
 
           <h3>Implementation</h3>
@@ -50,8 +51,8 @@ export class LocalizationPage extends React.Component<any, any> {
 
         <h3>Directional icons</h3>
         <p>
-          With the reading direction set to RTL and Fabric's RTL stylesheet referenced (see above), directional icons will automatically be
-          substituted. These pairs of icons will be swapped when viewed on RTL pages:
+          With the reading direction set to RTL and Fabric's RTL stylesheet referenced (see above), directional icons
+          will automatically be substituted. These pairs of icons will be swapped when viewed on RTL pages:
         </p>
 
         <ul className={styles.directionalIcons}>
@@ -72,14 +73,16 @@ export class LocalizationPage extends React.Component<any, any> {
         <div className={pageStyles.u_maxTextWidth}>
           <h2 id="fonts">Language-optimized fonts</h2>
           <p>
-            By default, Fabric presents all text using the Western European character set of Segoe UI. For languages with other characters,
-            Fabric will either serve a version of Segoe UI with a different character set or use a system font.
+            By default, Fabric presents all text using the Western European character set of Segoe UI. For languages
+            with other characters, Fabric will either serve a version of Segoe UI with a different character set or use
+            a system font.
           </p>
 
           <h3>Implementation</h3>
           <p>
-            The HTML &ldquo;lang&rdquo; attribute specifies the language of the element's content. This is typically applied to the root
-            HTML element, where it will be inherited by the entire page. In this example the entire page is in Thai.
+            The HTML &ldquo;lang&rdquo; attribute specifies the language of the element's content. This is typically
+            applied to the root HTML element, where it will be inherited by the entire page. In this example the entire
+            page is in Thai.
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>
@@ -88,8 +91,8 @@ export class LocalizationPage extends React.Component<any, any> {
 
         <div className={pageStyles.u_maxTextWidth}>
           <p>
-            For pages with content in multiple languages, the &ldquo;lang&rdquo; attribute can be applied to individual elements. In this
-            example, a page that is mostly Thai also contains some Vietnamese.
+            For pages with content in multiple languages, the &ldquo;lang&rdquo; attribute can be applied to individual
+            elements. In this example, a page that is mostly Thai also contains some Vietnamese.
           </p>
         </div>
         <CodeBlock language="html" isLightTheme={true}>

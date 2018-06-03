@@ -239,8 +239,22 @@ export class KeytipTree {
     return fullSequence[fullSequence.length - 1];
   }
 
-  private _createNode(id: string, parentId: string, children: string[], keytipProps: IKeytipProps, persisted?: boolean): IKeytipTreeNode {
-    const { keySequences, hasDynamicChildren, overflowSetSequence, hasMenu, onExecute, onReturn, disabled } = keytipProps;
+  private _createNode(
+    id: string,
+    parentId: string,
+    children: string[],
+    keytipProps: IKeytipProps,
+    persisted?: boolean
+  ): IKeytipTreeNode {
+    const {
+      keySequences,
+      hasDynamicChildren,
+      overflowSetSequence,
+      hasMenu,
+      onExecute,
+      onReturn,
+      disabled
+    } = keytipProps;
     const node = {
       id,
       keySequences,

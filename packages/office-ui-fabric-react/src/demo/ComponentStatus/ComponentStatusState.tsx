@@ -14,7 +14,8 @@ export const ComponentStatusInfoState: IComponentStatusInfoState[] = [
   {
     name: 'Keyboard Accessibility Support',
     description: 'Components should be fully usable with the keyboard.',
-    success: 'For this badge to pass, all of the functionalities of a component needs to be accessible via the keyboard.'
+    success:
+      'For this badge to pass, all of the functionalities of a component needs to be accessible via the keyboard.'
   },
   {
     name: 'Markup Accessibility Support',
@@ -30,7 +31,8 @@ export const ComponentStatusInfoState: IComponentStatusInfoState[] = [
   {
     name: 'High Contrast Support',
     description: 'Components should display correctly in high contrast mode.',
-    success: 'For this badge to pass, set your operating system to use high contrast and then ensure that the components render correctly.'
+    success:
+      'For this badge to pass, set your operating system to use high contrast and then ensure that the components render correctly.'
   },
   {
     name: 'Right To Left Support',

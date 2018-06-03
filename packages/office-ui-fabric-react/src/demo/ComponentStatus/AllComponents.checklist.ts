@@ -38,7 +38,8 @@ export const AllComponentsStatus: IComponentStatusState = {
   Pickers: require<any>('../../components/pickers/Pickers.checklist').PickersStatus,
   PeoplePicker: require<any>('../../components/pickers/PeoplePicker/PeoplePicker.checklist').PeoplePickerStatus,
   Pivot: require<any>('../../components/Pivot/Pivot.checklist').PivotStatus,
-  ProgressIndicator: require<any>('../../components/ProgressIndicator/ProgressIndicator.checklist').ProgressIndicatorStatus,
+  ProgressIndicator: require<any>('../../components/ProgressIndicator/ProgressIndicator.checklist')
+    .ProgressIndicatorStatus,
   Rating: require<any>('../../components/Rating/Rating.checklist').RatingStatus,
   ResizeGroup: require<any>('../../components/ResizeGroup/ResizeGroup.checklist').ResizeGroupStatus,
   ScrollablePane: require<any>('../../components/ScrollablePane/ScrollablePane.checklist').ScrollablePaneStatus,
@@ -46,7 +47,8 @@ export const AllComponentsStatus: IComponentStatusState = {
   Slider: require<any>('../../components/Slider/Slider.checklist').SliderStatus,
   Spinner: require<any>('../../components/Spinner/Spinner.checklist').SpinnerStatus,
   SpinButton: require<any>('../../components/SpinButton/SpinButton.checklist').SpinButtonStatus,
-  SwatchColorPicker: require<any>('../../components/SwatchColorPicker/SwatchColorPicker.checklist').SwatchColorPickerStatus,
+  SwatchColorPicker: require<any>('../../components/SwatchColorPicker/SwatchColorPicker.checklist')
+    .SwatchColorPickerStatus,
   TeachingBubble: require<any>('../../components/TeachingBubble/TeachingBubble.checklist').TeachingBubbleStatus,
   TextField: require<any>('../../components/TextField/TextField.checklist').TextFieldStatus,
   Toggle: require<any>('../../components/Toggle/Toggle.checklist').ToggleStatus,

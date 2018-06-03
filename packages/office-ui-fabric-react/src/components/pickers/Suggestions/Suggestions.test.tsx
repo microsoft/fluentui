@@ -50,7 +50,11 @@ function mockOnClick() {
 describe('Suggestions', () => {
   it('renders a list properly', () => {
     const component = renderer.create(
-      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
+      <Suggestions
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
+      />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -58,7 +62,11 @@ describe('Suggestions', () => {
 
   it('scrolls to selected index properly', () => {
     const component = renderer.create(
-      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
+      <Suggestions
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
+      />
     );
 
     component.update(

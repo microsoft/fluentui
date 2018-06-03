@@ -102,7 +102,9 @@ export class ComboBoxBasicExample extends React.Component<
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
           onPendingValueChanged={(option, pendingIndex, pendingValue) =>
-            console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue)
+            console.log(
+              'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
+            )
           }
           // tslint:enable:jsx-no-lambda
         />
@@ -171,7 +173,9 @@ export class ComboBoxBasicExample extends React.Component<
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
           onPendingValueChanged={(option, pendingIndex, pendingValue) =>
-            console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue)
+            console.log(
+              'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
+            )
           }
           // tslint:enable:jsx-no-lambda
         />
@@ -288,7 +292,10 @@ export class ComboBoxBasicExample extends React.Component<
 
   // Render content of item
   private _onRenderFontOption = (item: IComboBoxOption): JSX.Element => {
-    if (item.itemType === SelectableOptionMenuItemType.Header || item.itemType === SelectableOptionMenuItemType.Divider) {
+    if (
+      item.itemType === SelectableOptionMenuItemType.Header ||
+      item.itemType === SelectableOptionMenuItemType.Divider
+    ) {
       return <span className={'ms-ComboBox-optionText'}>{item.text}</span>;
     }
 

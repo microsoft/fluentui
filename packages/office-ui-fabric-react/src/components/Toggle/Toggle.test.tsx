@@ -24,7 +24,9 @@ describe('Toggle', () => {
   });
 
   it('renders aria-label', () => {
-    const component = ReactTestUtils.renderIntoDocument(<ToggleBase styles={getStyles} label="Label" offAriaLabel="offLabel" />);
+    const component = ReactTestUtils.renderIntoDocument(
+      <ToggleBase styles={getStyles} label="Label" offAriaLabel="offLabel" />
+    );
     const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const labelElement = renderedDOM.querySelector('button') as Element;
 

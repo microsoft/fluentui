@@ -54,9 +54,9 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   protected _suggestions: SuggestionsCore<T>;
-  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> = SuggestionsCore as new (
-    props: ISuggestionsCoreProps<T>
-  ) => SuggestionsCore<T>;
+  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<
+    T
+  > = SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);

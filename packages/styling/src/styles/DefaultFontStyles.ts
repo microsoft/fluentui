@@ -33,9 +33,19 @@ function _registerFontFaceSet(
   const urlBase = `${baseUrl}/${cdnFolder}/${cdnFontName}`;
 
   _registerFontFace(fontFamily, urlBase + '-light', FontWeights.light, localFontName && localFontName + ' Light');
-  _registerFontFace(fontFamily, urlBase + '-semilight', FontWeights.semilight, localFontName && localFontName + ' SemiLight');
+  _registerFontFace(
+    fontFamily,
+    urlBase + '-semilight',
+    FontWeights.semilight,
+    localFontName && localFontName + ' SemiLight'
+  );
   _registerFontFace(fontFamily, urlBase + '-regular', FontWeights.regular, localFontName);
-  _registerFontFace(fontFamily, urlBase + '-semibold', FontWeights.semibold, localFontName && localFontName + ' SemiBold');
+  _registerFontFace(
+    fontFamily,
+    urlBase + '-semibold',
+    FontWeights.semibold,
+    localFontName && localFontName + ' SemiBold'
+  );
 }
 
 export function registerDefaultFontFaces(baseUrl: string): void {

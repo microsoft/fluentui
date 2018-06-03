@@ -161,7 +161,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
               )}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
-              isClickableOutsideFocusTrap={focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true}
+              isClickableOutsideFocusTrap={
+                focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
+              }
             >
               <div className={css('ms-Panel-commands')} data-is-visible={true}>
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
@@ -249,7 +251,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     if (headerText) {
       return (
         <div className={css('ms-Panel-header', styles.header)}>
-          <p className={css('ms-Panel-headerText', styles.headerText, headerClassName)} id={headerTextId} role="heading">
+          <p
+            className={css('ms-Panel-headerText', styles.headerText, headerClassName)}
+            id={headerTextId}
+            role="heading"
+          >
             {headerText}
           </p>
         </div>

@@ -16,7 +16,10 @@ export class NavNestedExample extends React.Component<any, any> {
                   {
                     name: 'Child link',
                     url: 'http://example.com',
-                    links: [{ name: 'Child link', url: 'http://example.com' }, { name: 'Child link', url: 'http://example.com' }]
+                    links: [
+                      { name: 'Child link', url: 'http://example.com' },
+                      { name: 'Child link', url: 'http://example.com' }
+                    ]
                   },
                   { name: 'Child link', url: 'http://example.com' }
                 ]

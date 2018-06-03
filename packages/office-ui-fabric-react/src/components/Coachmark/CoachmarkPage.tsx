@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 
 import { CoachmarkBasicExample } from './examples/Coachmark.Basic.Example';
 const CoachmarkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Coachmark/examples/Coachmark.Basic.Example.tsx') as string;
@@ -20,7 +26,9 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/Coachmark.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/Coachmark.types.ts')
+            ]}
           />
         }
         overview={
@@ -30,7 +38,9 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
         }
         bestPractices={<div />}
         dos={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/docs/CoachmarkDos.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/docs/CoachmarkDos.md')}
+          </PageMarkdown>
         }
         donts={
           <PageMarkdown>

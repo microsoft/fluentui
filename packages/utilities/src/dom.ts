@@ -74,7 +74,10 @@ export function getVirtualParent(child: HTMLElement): HTMLElement | undefined {
  * @public
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
-  return child && ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)));
+  return (
+    child &&
+    ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)))
+  );
 }
 
 /**
@@ -107,7 +110,11 @@ export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean =
  *
  * @public
  */
-export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean {
+export function elementContains(
+  parent: HTMLElement | null,
+  child: HTMLElement | null,
+  allowVirtualParents: boolean = true
+): boolean {
   let isContained = false;
 
   if (parent && child) {
@@ -203,7 +210,10 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
  * @param matchFunction the function that determines if the element is a match
  * @returns the matched element or null no match was found
  */
-export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null {
+export function findElementRecursive(
+  element: HTMLElement | null,
+  matchFunction: (element: HTMLElement) => boolean
+): HTMLElement | null {
   if (!element || element === document.body) {
     return null;
   }

@@ -15,7 +15,12 @@ import {
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IBasePickerProps, BasePickerListBelow, IPickerItemProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import {
+  IBasePickerProps,
+  BasePickerListBelow,
+  IPickerItemProps,
+  ISuggestionItemProps
+} from 'office-ui-fabric-react/lib/Pickers';
 
 import { TestImages } from '../../../common/TestImages';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -262,14 +267,16 @@ const data: IFullDocumentCardProps[] = [
   }
 ];
 
-export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (
+  documentProps: IFullDocumentCardProps
+) => {
   return <div> {documentProps.documentTitleProps && documentProps.documentTitleProps.title} </div>;
 };
 
-export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
+export const SuggestedBigItem: (
   documentProps: IFullDocumentCardProps,
   itemProps: ISuggestionItemProps<any>
-) => {
+) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
   const { documentPreviewProps, documentTitleProps } = documentProps;
 
   return (
@@ -302,7 +309,11 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   return (
     <DocumentCard onClick={log('You clicked the card.')}>
       <DocumentCardPreview {...documentPreviewProps as IDocumentCardPreviewProps} />
-      <DocumentCardLocation location="Marketing Documents" locationHref="http://microsoft.com" ariaLabel="Location, Marketing Documents" />
+      <DocumentCardLocation
+        location="Marketing Documents"
+        locationHref="http://microsoft.com"
+        ariaLabel="Location, Marketing Documents"
+      />
       <DocumentCardTitle {...documentTitleProps as IDocumentCardTitleProps} />
       <DocumentCardActivity {...documentActivityProps as IDocumentCardActivityProps} />
       <DocumentCardActions actions={actions} />
@@ -362,7 +373,11 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
   private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
     return filterText
       ? data
-          .filter(item => item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter(
+            item =>
+              item.documentTitleProps &&
+              item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0
+          )
           .filter(item => !this._listContainsDocument(item, items))
       : [];
   }
@@ -372,6 +387,8 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
       return false;
     }
     const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
-    return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
+    return (
+      items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0
+    );
   }
 }

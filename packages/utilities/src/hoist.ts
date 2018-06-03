@@ -19,8 +19,13 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
  * @param exclusions - (Optional) What methods to exclude from being hoisted.
  * @returns An array of names of methods that were hoisted.
  */
-// tslint:disable-next-line:no-any
-export function hoistMethods(destination: any, source: any, exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS): string[] {
+export function hoistMethods(
+  // tslint:disable-next-line:no-any
+  destination: any,
+  // tslint:disable-next-line:no-any
+  source: any,
+  exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS
+): string[] {
   let hoisted: string[] = [];
   for (let methodName in source) {
     if (

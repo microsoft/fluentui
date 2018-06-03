@@ -7,8 +7,18 @@ import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
-import { SuggestionsStore, FloatingPeoplePicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from '../../FloatingPicker';
-import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from '../../SelectedItemsList';
+import {
+  SuggestionsStore,
+  FloatingPeoplePicker,
+  IBaseFloatingPickerProps,
+  IBaseFloatingPickerSuggestionProps
+} from '../../FloatingPicker';
+import {
+  IBaseSelectedItemsListProps,
+  ISelectedPeopleProps,
+  SelectedPeopleList,
+  IExtendedPersonaProps
+} from '../../SelectedItemsList';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
@@ -50,12 +60,18 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
             return (
               <div className={styles.headerItem}>
                 Use this address:{' '}
-                {this._picker && this._picker.inputElement && this._picker.inputElement ? this._picker.inputElement.value : ''}
+                {this._picker && this._picker.inputElement && this._picker.inputElement
+                  ? this._picker.inputElement.value
+                  : ''}
               </div>
             );
           },
           shouldShow: () => {
-            return this._picker !== undefined && this._picker.inputElement !== null && this._picker.inputElement.value.indexOf('@') > -1;
+            return (
+              this._picker !== undefined &&
+              this._picker.inputElement !== null &&
+              this._picker.inputElement.value.indexOf('@') > -1
+            );
           },
           onExecute: () => {
             if (this._picker.floatingPicker.current !== null) {
@@ -190,7 +206,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _onExpandItem = (item: IExtendedPersonaProps): void => {
     if (this._picker.selectedItemsList.current) {
       // tslint:disable-next-line:no-any
-      (this._picker.selectedItemsList.current as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+      (this._picker.selectedItemsList.current as SelectedPeopleList).replaceItem(
+        item,
+        this._getExpandedGroupItems(item as any)
+      );
     }
   };
 
@@ -200,7 +219,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList
+        .slice(0, indexPeopleList)
+        .concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
@@ -267,7 +288,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.text as string, filterText));
+    return this.state.peopleList.filter((item: IPersonaProps) =>
+      this._doesTextStartWith(item.text as string, filterText)
+    );
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {

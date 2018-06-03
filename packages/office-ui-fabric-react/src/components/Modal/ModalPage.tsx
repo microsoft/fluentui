@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ModalStatus } from './Modal.checklist';
@@ -21,14 +27,26 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')]}
+          />
         }
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md')}
+          </PageMarkdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md')}</PageMarkdown>}
-        donts={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md')}
+          </PageMarkdown>
+        }
+        donts={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md')}
+          </PageMarkdown>
+        }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...ModalStatus} />}
       />

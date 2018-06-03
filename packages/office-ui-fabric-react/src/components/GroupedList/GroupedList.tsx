@@ -268,7 +268,10 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   };
 
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
-    return !!(groups && groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed)));
+    return !!(
+      groups &&
+      groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
+    );
   }
 
   private _updateIsSomeGroupExpanded(): void {

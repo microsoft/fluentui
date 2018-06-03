@@ -78,7 +78,11 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         gapSpace={this.props.gapSpace}
       >
         {this.props.trapFocus ? (
-          <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true} disableFirstFocus={!firstFocus}>
+          <FocusTrapZone
+            forceFocusInsideTrap={false}
+            isClickableOutsideFocusTrap={true}
+            disableFirstFocus={!firstFocus}
+          >
             {content}
           </FocusTrapZone>
         ) : (

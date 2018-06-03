@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  IComponentDemoPageProps,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { items } from '../CommandBar/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
@@ -28,7 +34,10 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
             <ExampleCard title="Default Callout" code={CalloutBasicExampleCode}>
               <CalloutBasicExample />
             </ExampleCard>
-            <ExampleCard title="Nested Callout... Callout with a commandbar with a sub menu" code={CalloutNestedExampleCode}>
+            <ExampleCard
+              title="Nested Callout... Callout with a commandbar with a sub menu"
+              code={CalloutNestedExampleCode}
+            >
               <CalloutNestedExample {...cmdBarParamsTextAndIcons} />
             </ExampleCard>
             <ExampleCard title="Callout with directional hint" code={CalloutDirectionalExampleCode}>
@@ -41,10 +50,12 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
         }
         propertiesTables={
           <div>
-            <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')]} />
+            <PropertiesTableSet
+              sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')]}
+            />
             <p>
-              Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and{' '}
-              <code>a</code> components accept.
+              Besides the above properties, the <code>Callout</code> component accepts all properties that the React{' '}
+              <code>button</code> and <code>a</code> components accept.
             </p>
           </div>
         }
@@ -54,9 +65,15 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
           </PageMarkdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md')}
+          </PageMarkdown>
+        }
         donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md')}
+          </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...CalloutStatus} />}

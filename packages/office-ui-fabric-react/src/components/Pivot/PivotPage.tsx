@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
 import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
 import { PivotLargeExample } from './examples/Pivot.Large.Example';
@@ -75,11 +81,21 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md')}
+          </PageMarkdown>
         }
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md')}</PageMarkdown>}
-        donts={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md')}
+          </PageMarkdown>
+        }
+        donts={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md')}
+          </PageMarkdown>
+        }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...PivotStatus} />}
       />

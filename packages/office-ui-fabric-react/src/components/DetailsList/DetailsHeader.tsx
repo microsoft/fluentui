@@ -114,7 +114,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public render(): JSX.Element {
-    const { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
+    const {
+      columns,
+      ariaLabel,
+      ariaLabelForSelectAllCheckbox,
+      selectAllVisibility,
+      ariaLabelForSelectionColumn
+    } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -184,7 +190,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
-          <div className={css('ms-DetailsHeader-cell', styles.cell)} onClick={this._onToggleCollapseAll} data-is-focusable={true}>
+          <div
+            className={css('ms-DetailsHeader-cell', styles.cell)}
+            onClick={this._onToggleCollapseAll}
+            data-is-focusable={true}
+          >
             <Icon
               className={css(
                 'ms-DetailsHeader-collapseButton',
@@ -231,7 +241,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       className={css('ms-DetailsHeader-cellTitle', styles.cellTitle)}
                       data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                       role={column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined}
-                      aria-describedby={this.props.onRenderColumnHeaderTooltip ? `${this._id}-${column.key}-tooltip` : undefined}
+                      aria-describedby={
+                        this.props.onRenderColumnHeaderTooltip ? `${this._id}-${column.key}-tooltip` : undefined
+                      }
                       onContextMenu={this._onColumnContextMenu.bind(this, column)}
                       onClick={this._onColumnClick.bind(this, column)}
                       aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
@@ -249,18 +261,26 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                         {!column.isIconOnly ? column.name : undefined}
                       </span>
 
-                      {column.isFiltered && <Icon ariaLabel={column.filterAriaLabel} className={styles.nearIcon} iconName="Filter" />}
+                      {column.isFiltered && (
+                        <Icon ariaLabel={column.filterAriaLabel} className={styles.nearIcon} iconName="Filter" />
+                      )}
 
                       {column.isSorted && (
                         <Icon
-                          ariaLabel={column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel}
+                          ariaLabel={
+                            column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel
+                          }
                           className={css(styles.nearIcon, styles.sortIcon)}
                           iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
                         />
                       )}
 
                       {column.isGrouped && (
-                        <Icon ariaLabel={column.groupAriaLabel} className={styles.nearIcon} iconName="GroupedDescending" />
+                        <Icon
+                          ariaLabel={column.groupAriaLabel}
+                          className={styles.nearIcon}
+                          iconName="GroupedDescending"
+                        />
                       )}
 
                       {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
@@ -278,7 +298,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               )}
             </div>,
             column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
-              <label key={`${column.key}_label`} id={`${this._id}-${column.key}-tooltip`} className={styles.accessibleLabel}>
+              <label
+                key={`${column.key}_label`}
+                id={`${this._id}-${column.key}-tooltip`}
+                className={styles.accessibleLabel}
+              >
                 {column.ariaLabel}
               </label>
             ) : null,
@@ -287,7 +311,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         })}
         {isSizing && (
           <Layer>
-            <div className={css(isSizing && styles.sizingOverlay)} onMouseMove={this._onSizerMouseMove} onMouseUp={this._onSizerMouseUp} />
+            <div
+              className={css(isSizing && styles.sizingOverlay)}
+              onMouseMove={this._onSizerMouseMove}
+              onMouseUp={this._onSizerMouseUp}
+            />
           </Layer>
         )}
       </FocusZone>
@@ -318,7 +346,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           styles.cellSizer,
           columnIndex < columns.length - 1 ? styles.cellSizerStart : styles.cellSizerEnd,
           {
-            ['is-resizing ' + styles.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
+            ['is-resizing ' + styles.cellIsResizing]:
+              columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
           }
         )}
         onDoubleClick={this._onSizerDoubleClick.bind(this, columnIndex)}

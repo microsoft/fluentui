@@ -38,7 +38,11 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
     if (props && propName in props) {
       let propInExclusiveMapValue = exclusiveMap[propName];
       if (propInExclusiveMapValue && propInExclusiveMapValue in props) {
-        warn(`${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`);
+        warn(
+          `${componentName} property '${propName}' is mutually exclusive with '${
+            exclusiveMap[propName]
+          }'. Use one or the other.`
+        );
       }
     }
   }

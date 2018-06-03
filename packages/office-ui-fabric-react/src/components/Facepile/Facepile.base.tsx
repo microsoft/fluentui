@@ -46,7 +46,8 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
     const hasOverflowPersonas = overflowPersonas && overflowPersonas.length > 0;
     const personasPrimary: IFacepilePersona[] = hasOverflowPersonas ? personas : personas.slice(0, numPersonasToShow);
-    const personasOverflow: IFacepilePersona[] = (hasOverflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow)) || [];
+    const personasOverflow: IFacepilePersona[] =
+      (hasOverflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow)) || [];
 
     return (
       <div className={css('ms-Facepile', styles.root, className)}>
@@ -83,7 +84,9 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   private _onRenderVisiblePersonas(personas: IFacepilePersona[], singlePersona: boolean): JSX.Element[] {
     return personas.map((persona: IFacepilePersona, index: number) => {
-      const personaControl: JSX.Element = singlePersona ? this._getPersonaControl(persona) : this._getPersonaCoinControl(persona);
+      const personaControl: JSX.Element = singlePersona
+        ? this._getPersonaControl(persona)
+        : this._getPersonaCoinControl(persona);
       return persona.onClick
         ? this._getElementWithOnClickEvent(personaControl, persona, index)
         : this._getElementWithoutOnClickEvent(personaControl, persona, index);
@@ -120,7 +123,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithOnClickEvent(
+    personaControl: JSX.Element,
+    persona: IFacepilePersona,
+    index: number
+  ): JSX.Element {
     return (
       <FacepileButton
         {...getNativeProps(persona, buttonProperties)}
@@ -132,7 +139,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithoutOnClickEvent(
+    personaControl: JSX.Element,
+    persona: IFacepilePersona,
+    index: number
+  ): JSX.Element {
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, index)}>
         {personaControl}
@@ -206,7 +217,12 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     return (
       <FacepileButton
         {...overflowButtonProps}
-        className={css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton)}
+        className={css(
+          'ms-Facepile-overflowButton',
+          'ms-Facepile-itemButton',
+          styles.overflowButton,
+          styles.itemButton
+        )}
       >
         <PersonaCoin
           size={personaSize}

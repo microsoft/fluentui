@@ -82,7 +82,11 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
           <div className={css('ms-GroupHeader-dropIcon', styles.dropIcon)}>
             <Icon iconName="Tag" />
           </div>
-          <button type="button" className={css('ms-GroupHeader-expand', styles.expand)} onClick={this._onToggleCollapse}>
+          <button
+            type="button"
+            className={css('ms-GroupHeader-expand', styles.expand)}
+            onClick={this._onToggleCollapse}
+          >
             <Icon className={css(isCollapsed && 'is-collapsed ' + styles.expandIsCollapsed)} iconName="ChevronDown" />
           </button>
 

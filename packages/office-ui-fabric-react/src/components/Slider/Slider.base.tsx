@@ -218,7 +218,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical
+          ? (event as TouchEvent).touches[0].clientX
+          : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;

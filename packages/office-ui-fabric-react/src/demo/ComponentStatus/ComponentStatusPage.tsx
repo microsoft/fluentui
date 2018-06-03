@@ -27,7 +27,9 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
   private _renderOverView(): JSX.Element {
     return (
       <PageMarkdown>
-        {require<string>('!raw-loader!office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md')}
+        {require<
+          string
+        >('!raw-loader!office-ui-fabric-react/src/demo/ComponentStatus/docs/ComponentChecklistOverview.md')}
       </PageMarkdown>
     );
   }

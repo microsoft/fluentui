@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, IBaseProps, customizable, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  BaseComponent,
+  IBaseProps,
+  customizable,
+  classNamesFunction,
+  IStyleFunction,
+  styled
+} from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 /**

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  IComponentDemoPageProps,
+  ComponentPage,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { VerticalDividerBasicExample } from './examples/VerticalDivider.Basic.Example';
 import { VerticalDividerCustomExample } from './examples/VerticalDivider.Custom.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
@@ -28,7 +34,9 @@ export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')
+            ]}
           />
         }
         overview={
@@ -41,9 +49,15 @@ export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
             {require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md')}
           </PageMarkdown>
         }
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md')}</PageMarkdown>}
+        dos={
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md')}
+          </PageMarkdown>
+        }
         donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md')}
+          </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...DividerStatus} />}

@@ -5,7 +5,9 @@
  */
 export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: { extensions: ['accdb', 'mdb'] },
-  archive: { extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'] },
+  archive: {
+    extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z']
+  },
   audio: {
     extensions: [
       'aif',
@@ -361,7 +363,24 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   txt: { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
   vector: {
-    extensions: ['ai', 'dgn', 'gdraw', 'pd', 'emf', 'eps', 'indd', 'indt', 'ps', 'svg', 'svgz', 'wmf', 'oxps', 'xps', 'xd', 'sketch']
+    extensions: [
+      'ai',
+      'dgn',
+      'gdraw',
+      'pd',
+      'emf',
+      'eps',
+      'indd',
+      'indt',
+      'ps',
+      'svg',
+      'svgz',
+      'wmf',
+      'oxps',
+      'xps',
+      'xd',
+      'sketch'
+    ]
   },
   video: {
     extensions: [

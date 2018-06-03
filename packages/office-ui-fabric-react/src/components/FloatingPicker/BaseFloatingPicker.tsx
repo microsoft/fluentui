@@ -2,7 +2,11 @@ import * as React from 'react';
 import { BaseComponent, KeyCodes, css, getRTL, createRef } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { ISuggestionModel } from '../../Pickers';
-import { IBaseFloatingPicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
+import {
+  IBaseFloatingPicker,
+  IBaseFloatingPickerProps,
+  IBaseFloatingPickerSuggestionProps
+} from './BaseFloatingPicker.types';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
@@ -21,16 +25,17 @@ export interface IBaseFloatingPickerState {
   didBind: boolean;
 }
 
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState>
+export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
+  extends BaseComponent<P, IBaseFloatingPickerState>
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
   protected root = createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
   protected suggestionsControl: SuggestionsControl<T>;
-  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> = SuggestionsControl as new (
-    props: ISuggestionsControlProps<T>
-  ) => SuggestionsControl<T>;
+  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<
+    T
+  > = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   protected loadingTimer: number | undefined;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
@@ -111,7 +116,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     //  OR the inputElement value is different than the query string
     if (
       updateValue &&
-      (this.state.suggestionsVisible === undefined || (this.props.inputElement && this.props.inputElement.value !== this.state.queryString))
+      (this.state.suggestionsVisible === undefined ||
+        (this.props.inputElement && this.props.inputElement.value !== this.state.queryString))
     ) {
       if (this.state.queryString === '') {
         this.updateSuggestionWithZeroState();
@@ -349,7 +355,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   };
 
   private _onResolveSuggestions(updatedValue: string): void {
-    const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
+    const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(
+      updatedValue,
+      this.props.selectedItems
+    );
 
     if (suggestions !== null) {
       this.updateSuggestionsList(suggestions, updatedValue);

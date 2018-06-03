@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { BaseComponent, assign, css, createRef } from '../../Utilities';
-import { IColor, MAX_COLOR_SATURATION, MAX_COLOR_VALUE, getFullColorString, hsv2hex } from '../../utilities/color/colors';
+import {
+  IColor,
+  MAX_COLOR_SATURATION,
+  MAX_COLOR_VALUE,
+  getFullColorString,
+  hsv2hex
+} from '../../utilities/color/colors';
 import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -98,7 +104,10 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     });
 
     newColor.hex = hsv2hex(newColor.h, newColor.s, newColor.v);
-    newColor.str = newColor.a === 100 ? '#' + newColor.hex : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
+    newColor.str =
+      newColor.a === 100
+        ? '#' + newColor.hex
+        : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
 
     this.setState({
       isAdjusting: true,

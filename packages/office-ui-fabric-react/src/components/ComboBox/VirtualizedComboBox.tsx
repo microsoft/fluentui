@@ -28,7 +28,12 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
 
   public render(): JSX.Element {
     return (
-      <ComboBox {...this.props} componentRef={this._comboBox} onRenderList={this._onRenderList} onScrollToItem={this._onScrollToItem} />
+      <ComboBox
+        {...this.props}
+        componentRef={this._comboBox}
+        onRenderList={this._onRenderList}
+        onScrollToItem={this._onScrollToItem}
+      />
     );
   }
 

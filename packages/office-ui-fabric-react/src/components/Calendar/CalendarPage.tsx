@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  IComponentDemoPageProps,
+  PropertiesTableSet,
+  PageMarkdown
+} from '@uifabric/example-app-base';
 import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
@@ -28,7 +34,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showGoToToday={true}
               />
             </ExampleCard>
-            <ExampleCard title="Inline Calendar with overlayed month picker when header is clicked" code={CalendarInlineExampleCode}>
+            <ExampleCard
+              title="Inline Calendar with overlayed month picker when header is clicked"
+              code={CalendarInlineExampleCode}
+            >
               <CalendarInlineExample
                 showMonthPickerAsOverlay={true}
                 highlightCurrentMonth={false}
@@ -131,7 +140,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 buttonString={'Click for Month Picker'}
               />
             </ExampleCard>
-            <ExampleCard title="Calendar with overlayed month picker launched from a button" code={CalendarButtonExampleCode}>
+            <ExampleCard
+              title="Calendar with overlayed month picker launched from a button"
+              code={CalendarButtonExampleCode}
+            >
               <CalendarButtonExample
                 showMonthPickerAsOverlay={true}
                 highlightCurrentMonth={false}
@@ -142,7 +154,9 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')]}
+          />
         }
         overview={
           <PageMarkdown>
@@ -151,10 +165,14 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         }
         bestPractices={<div />}
         dos={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md')}
+          </PageMarkdown>
         }
         donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md')}
+          </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
         componentStatus={<ComponentStatus {...CalendarStatus} />}

@@ -90,7 +90,12 @@ export class ThemeGenerator {
       if (slotRules.hasOwnProperty(ruleName)) {
         const rule: IThemeSlotRule = slotRules[ruleName];
         const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
-        output += format(sassVarTemplate, camelCasedName, camelCasedName, rule.color ? rule.color.str : rule.value || '');
+        output += format(
+          sassVarTemplate,
+          camelCasedName,
+          camelCasedName,
+          rule.color ? rule.color.str : rule.value || ''
+        );
       }
     }
     return output;
@@ -130,7 +135,13 @@ export class ThemeGenerator {
      Then, iterates through all other rules (that are this rule's dependents) to update them accordingly.
      isCustomization=true means it's a user provided color, set it to that raw color
      isCustomization=false means the rule it's inheriting from changed, so updated using asShade */
-  private static _setSlot(rule: IThemeSlotRule, color: IColor, isInverted: boolean, isCustomization: boolean, overwriteCustomColor = true) {
+  private static _setSlot(
+    rule: IThemeSlotRule,
+    color: IColor,
+    isInverted: boolean,
+    isCustomization: boolean,
+    overwriteCustomColor = true
+  ) {
     if (!rule.color && rule.value) {
       // not a color rule
       return;
@@ -138,7 +149,12 @@ export class ThemeGenerator {
 
     if (overwriteCustomColor || !rule.color || !rule.isCustomized || !rule.inherits) {
       // set the rule's color under these conditions
-      if ((overwriteCustomColor || !rule.isCustomized) && !isCustomization && rule.inherits && isValidShade(rule.asShade)) {
+      if (
+        (overwriteCustomColor || !rule.isCustomized) &&
+        !isCustomization &&
+        rule.inherits &&
+        isValidShade(rule.asShade)
+      ) {
         // it's inheriting by shade
         if (rule.isBackgroundShade) {
           rule.color = getBackgroundShade(color, rule.asShade!, isInverted)!;

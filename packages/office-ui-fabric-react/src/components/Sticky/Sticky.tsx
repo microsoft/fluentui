@@ -65,11 +65,15 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public get canStickyTop(): boolean {
-    return this.props.stickyPosition === StickyPositionType.Both || this.props.stickyPosition === StickyPositionType.Header;
+    return (
+      this.props.stickyPosition === StickyPositionType.Both || this.props.stickyPosition === StickyPositionType.Header
+    );
   }
 
   public get canStickyBottom(): boolean {
-    return this.props.stickyPosition === StickyPositionType.Both || this.props.stickyPosition === StickyPositionType.Footer;
+    return (
+      this.props.stickyPosition === StickyPositionType.Both || this.props.stickyPosition === StickyPositionType.Footer
+    );
   }
 
   public componentDidMount(): void {
@@ -190,7 +194,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= this.distanceFromTop) {
         isStickyBottom =
-          this.distanceFromTop - container.scrollTop > this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
+          this.distanceFromTop - container.scrollTop >
+          this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
 
       this.setState({
@@ -209,10 +214,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     return distance;
   };
 
-  private _getStickyDistanceFromTopForFooter = (container: HTMLElement, footerStickyVisibleContainer: HTMLElement): number => {
+  private _getStickyDistanceFromTopForFooter = (
+    container: HTMLElement,
+    footerStickyVisibleContainer: HTMLElement
+  ): number => {
     let distance = 0;
     if (this.stickyContentBottom) {
-      distance = container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.offsetTop;
+      distance =
+        container.clientHeight - footerStickyVisibleContainer.offsetHeight + this.stickyContentBottom.offsetTop;
     }
 
     return distance;

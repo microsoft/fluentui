@@ -80,7 +80,10 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
           }}
         />
         <DefaultButton text="I do not have a keytip" />
-        <p>A keytip can have an 'offset' prop which will position the keytip starting from the top-left corner of the element</p>
+        <p>
+          A keytip can have an 'offset' prop which will position the keytip starting from the top-left corner of the
+          element
+        </p>
         <DefaultButton
           keytipProps={keytipMap.ButtonOffset}
           text="Button keytip offset 10x10"
@@ -89,10 +92,15 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
           }}
         />
         <p>
-          A keytip will become disabled when its corresponding component becomes disabled. A disabled keytip will be visible but cannot be
-          triggered
+          A keytip will become disabled when its corresponding component becomes disabled. A disabled keytip will be
+          visible but cannot be triggered
         </p>
-        <Toggle onText={'Enabled'} offText={'Disabled'} defaultChecked={!this.state.btnDisabled} onChanged={this._toggleDisabled} />
+        <Toggle
+          onText={'Enabled'}
+          offText={'Disabled'}
+          defaultChecked={!this.state.btnDisabled}
+          onChanged={this._toggleDisabled}
+        />
         <DefaultButton
           keytipProps={keytipMap.DisabledButton}
           disabled={this.state.btnDisabled}

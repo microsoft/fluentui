@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, getNativeProps, imageProperties, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  getNativeProps,
+  imageProperties,
+  createRef
+} from '../../Utilities';
 import { IImageProps, IImageStyles, IImageStyleProps, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -76,7 +83,9 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       maximizeFrame,
       shouldFadeIn,
       shouldStartVisible,
-      isLoaded: loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
+      isLoaded:
+        loadState === ImageLoadState.loaded ||
+        (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
       isLandscape: coverStyle === ImageCoverStyle.landscape,
       isCenter: imageFit === ImageFit.center,
       isContain: imageFit === ImageFit.contain,

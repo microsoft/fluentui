@@ -7,8 +7,17 @@ import { BaseComponent, classNamesFunction, getDocument, arraysEqual } from '../
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
-import { ktpTargetFromId, ktpTargetFromSequences, sequencesToID, mergeOverflows } from '../../utilities/keytips/KeytipUtils';
-import { transitionKeysContain, KeytipTransitionModifier, IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
+import {
+  ktpTargetFromId,
+  ktpTargetFromSequences,
+  sequencesToID,
+  mergeOverflows
+} from '../../utilities/keytips/KeytipUtils';
+import {
+  transitionKeysContain,
+  KeytipTransitionModifier,
+  IKeytipTransitionKey
+} from '../../utilities/keytips/IKeytipTransitionKey';
 import { KeytipEvents, KTP_LAYER_ID, KTP_ARIA_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
 
 export interface IKeytipLayerState {
@@ -341,7 +350,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // Execute the overflow button's onExecute
     const overflowKeytipNode = this._keytipTree.getNode(sequencesToID(overflowButtonSequences));
     if (overflowKeytipNode && overflowKeytipNode.onExecute) {
-      overflowKeytipNode.onExecute(this._getKtpExecuteTarget(overflowKeytipNode), this._getKtpTarget(overflowKeytipNode));
+      overflowKeytipNode.onExecute(
+        this._getKtpExecuteTarget(overflowKeytipNode),
+        this._getKtpTarget(overflowKeytipNode)
+      );
     }
   }
 
@@ -577,7 +589,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _isCurrentKeytipAnAlias(keytipProps: IKeytipProps): boolean {
     const currKtp = this._keytipTree.currentKeytip;
-    if (currKtp && (currKtp.overflowSetSequence || currKtp.persisted) && arraysEqual(keytipProps.keySequences, currKtp.keySequences)) {
+    if (
+      currKtp &&
+      (currKtp.overflowSetSequence || currKtp.persisted) &&
+      arraysEqual(keytipProps.keySequences, currKtp.keySequences)
+    ) {
       return true;
     }
     return false;

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
@@ -32,7 +38,9 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
           <div>
             <PropertiesTableSet
               sources={[
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
+                require<
+                  string
+                >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
                 require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
               ]}
             />
@@ -40,18 +48,24 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         }
         overview={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md')}
           </PageMarkdown>
         }
         bestPractices={<div />}
         dos={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md')}
           </PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

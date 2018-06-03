@@ -95,7 +95,10 @@ describe('ChoiceGroup', () => {
 
   it('can render as a controlled component', () => {
     let _selectedItem;
-    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
+    const onChange = (
+      ev: React.FormEvent<HTMLElement | HTMLInputElement>,
+      item: IChoiceGroupOption | undefined
+    ): void => {
       _selectedItem = item;
     };
 
@@ -114,7 +117,10 @@ describe('ChoiceGroup', () => {
   });
 
   it('extra <input> attributes appear in dom if specified', () => {
-    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
+    const onChange = (
+      ev: React.FormEvent<HTMLElement | HTMLInputElement>,
+      item: IChoiceGroupOption | undefined
+    ): void => undefined;
 
     const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} onChange={onChange} />);
 

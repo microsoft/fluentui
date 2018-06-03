@@ -31,7 +31,12 @@ export class Selection implements ISelection {
   private _isModal: boolean;
 
   constructor(options: ISelectionOptions = {}) {
-    const { onSelectionChanged, getKey, canSelectItem = (item: IObjectWithKey) => true, selectionMode = SelectionMode.multiple } = options;
+    const {
+      onSelectionChanged,
+      getKey,
+      canSelectItem = (item: IObjectWithKey) => true,
+      selectionMode = SelectionMode.multiple
+    } = options;
 
     this.mode = selectionMode;
 
@@ -189,7 +194,9 @@ export class Selection implements ISelection {
   }
 
   public getSelectedCount(): number {
-    return this._isAllSelected ? this._items.length - this._exemptedCount - this._unselectableCount : this._exemptedCount;
+    return this._isAllSelected
+      ? this._items.length - this._exemptedCount - this._unselectableCount
+      : this._exemptedCount;
   }
 
   public getSelectedIndices(): number[] {

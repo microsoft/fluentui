@@ -3,8 +3,14 @@ import { ITheme, IStyle } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
-export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
-export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+export type OnFocusCallback = (
+  ev?: React.FocusEvent<HTMLElement | HTMLInputElement>,
+  props?: IChoiceGroupOption
+) => void | undefined;
+export type OnChangeCallback = (
+  evt?: React.FormEvent<HTMLElement | HTMLInputElement>,
+  props?: IChoiceGroupOption
+) => void;
 
 export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**

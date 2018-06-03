@@ -4,7 +4,20 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -44,9 +57,9 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
     return (
       <div className="docs-DatePickerExample">
         <p>
-          Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control will avoid parsing
-          the formatted strings of dates selected using the UI when text input is allowed. In this example, we are formatting and parsing
-          dates as dd/MM/yy.
+          Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the
+          control will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In
+          this example, we are formatting and parsing dates as dd/MM/yy.
         </p>
         <DatePicker
           label="Start date"

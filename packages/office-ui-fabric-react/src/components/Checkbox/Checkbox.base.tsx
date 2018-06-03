@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, getId, createRef, customizable, classNamesFunction, mergeAriaAttributeValues } from '../../Utilities';
+import {
+  BaseComponent,
+  getId,
+  createRef,
+  customizable,
+  classNamesFunction,
+  mergeAriaAttributeValues
+} from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';

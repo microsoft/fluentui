@@ -5,7 +5,11 @@ import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
+import {
+  IExtendedPersonaProps,
+  SelectedPeopleList,
+  ISelectedPeopleItemProps
+} from '../SelectedPeopleList/SelectedPeopleList';
 import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
@@ -49,7 +53,10 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     return <ExtendedSelectedItem {...props} renderPersonaCoin={this._renderPersonaElement} />;
   };
 
-  private _renderPersonaElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
+  private _renderPersonaElement(
+    props: IPersonaProps,
+    defaultRender: (props?: IPersonaProps) => JSX.Element | null
+  ): JSX.Element {
     return <Icon iconName={'Contact'} className={styles.persona} />;
   }
 

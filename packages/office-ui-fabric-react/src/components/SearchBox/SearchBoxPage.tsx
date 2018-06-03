@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PageMarkdown,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
 import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
@@ -37,7 +43,9 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/SearchBox.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/SearchBox.types.ts')
+            ]}
           />
         }
         overview={
@@ -47,11 +55,15 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         }
         bestPractices={
           <PageMarkdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md')}
+            {require<
+              string
+            >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md')}
           </PageMarkdown>
         }
         dos={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md')}
+          </PageMarkdown>
         }
         donts={
           <PageMarkdown>

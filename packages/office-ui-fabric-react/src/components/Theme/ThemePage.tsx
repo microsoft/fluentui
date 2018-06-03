@@ -34,7 +34,9 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
         componentName="ThemeExample"
         componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Theme"
         overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemesOverview.md')}</PageMarkdown>
+          <PageMarkdown>
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Theme/docs/ThemesOverview.md')}
+          </PageMarkdown>
         }
         otherSections={[
           {
@@ -94,8 +96,16 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, IThemePa
         />
 
         {colorPickerProps && (
-          <Callout isBeakVisible={false} gapSpace={10} target={colorPickerProps.targetElement} onDismiss={this._onPickerDismiss}>
-            <ColorPicker color={colorPickerProps.value} onColorChanged={this._onColorChanged.bind(this, colorPickerProps.index)} />
+          <Callout
+            isBeakVisible={false}
+            gapSpace={10}
+            target={colorPickerProps.targetElement}
+            onDismiss={this._onPickerDismiss}
+          >
+            <ColorPicker
+              color={colorPickerProps.value}
+              onColorChanged={this._onColorChanged.bind(this, colorPickerProps.index)}
+            />
           </Callout>
         )}
       </div>

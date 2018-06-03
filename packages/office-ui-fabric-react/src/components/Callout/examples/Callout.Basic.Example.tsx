@@ -67,7 +67,11 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     return (
       <div>
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
-          <DefaultButton id="toggleCallout" onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
+          <DefaultButton
+            id="toggleCallout"
+            onClick={this._onShowMenuClicked}
+            text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
+          />
         </div>
         <Callout
           className="ms-CalloutExample-callout"
@@ -88,7 +92,8 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
           <div className="ms-CalloutExample-inner">
             <div className="ms-CalloutExample-content">
               <p className="ms-CalloutExample-subText" id={'callout-description-1'}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                Message body is optional. If help documentation is available, consider adding a link to learn more at
+                the bottom.
               </p>
             </div>
             <div className="ms-CalloutExample-actions">

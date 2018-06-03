@@ -2,7 +2,16 @@ import * as React from 'react';
 import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { DelayedRender, BaseComponent, getId, css, getNativeProps, inputProperties, textAreaProperties, createRef } from '../../Utilities';
+import {
+  DelayedRender,
+  BaseComponent,
+  getId,
+  css,
+  getNativeProps,
+  inputProperties,
+  textAreaProperties,
+  createRef
+} from '../../Utilities';
 import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
@@ -187,15 +196,21 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
             )}
           >
             {(addonString !== undefined || this.props.onRenderAddon) && (
-              <div className={css('ms-TextField-prefix', styles.fieldPrefixSuffix)}>{onRenderAddon(this.props, this._onRenderAddon)}</div>
+              <div className={css('ms-TextField-prefix', styles.fieldPrefixSuffix)}>
+                {onRenderAddon(this.props, this._onRenderAddon)}
+              </div>
             )}
             {(prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={css('ms-TextField-prefix', styles.fieldPrefixSuffix)}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
+              <div className={css('ms-TextField-prefix', styles.fieldPrefixSuffix)}>
+                {onRenderPrefix(this.props, this._onRenderPrefix)}
+              </div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
             {(iconClass || iconProps) && <Icon className={css(iconClass, styles.icon)} {...iconProps} />}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={css('ms-TextField-suffix', styles.fieldPrefixSuffix)}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
+              <div className={css('ms-TextField-suffix', styles.fieldPrefixSuffix)}>
+                {onRenderSuffix(this.props, this._onRenderSuffix)}
+              </div>
             )}
           </div>
         </div>
@@ -205,7 +220,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
             {errorMessage && (
               <div aria-live="assertive">
                 <DelayedRender>
-                  <p className={css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage)}>
+                  <p
+                    className={css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage)}
+                  >
                     <span className={styles.errorText} data-automation-id="error-message">
                       {errorMessage}
                     </span>
@@ -336,7 +353,11 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     let textFieldClassName: string;
 
     if (this.props.multiline && !this.props.resizable) {
-      textFieldClassName = css('ms-TextField-field ms-TextField-field--unresizable', styles.field, styles.fieldIsUnresizable);
+      textFieldClassName = css(
+        'ms-TextField-field ms-TextField-field--unresizable',
+        styles.field,
+        styles.fieldIsUnresizable
+      );
     } else {
       textFieldClassName = css('ms-TextField-field', styles.field);
     }
@@ -377,7 +398,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
+      'defaultValue'
+    ]);
 
     return (
       <input
@@ -439,7 +462,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
+    const onGetErrorMessage = this.props.onGetErrorMessage as (
+      value: string
+    ) => string | PromiseLike<string> | undefined;
     const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {

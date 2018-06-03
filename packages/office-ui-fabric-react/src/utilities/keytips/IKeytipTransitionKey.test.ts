@@ -1,4 +1,9 @@
-import { IKeytipTransitionKey, transitionKeysAreEqual, transitionKeysContain, KeytipTransitionModifier } from './IKeytipTransitionKey';
+import {
+  IKeytipTransitionKey,
+  transitionKeysAreEqual,
+  transitionKeysContain,
+  KeytipTransitionModifier
+} from './IKeytipTransitionKey';
 
 describe('IKeytipTransitionKey', () => {
   describe('transitionKeysAreEqual', () => {
@@ -15,8 +20,14 @@ describe('IKeytipTransitionKey', () => {
       const key1: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.alt] };
       const key2: IKeytipTransitionKey = { key: 'a' };
       const key3: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.ctrl] };
-      const key4: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.alt, KeytipTransitionModifier.shift] };
-      const key5: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.shift, KeytipTransitionModifier.alt] };
+      const key4: IKeytipTransitionKey = {
+        key: 'a',
+        modifierKeys: [KeytipTransitionModifier.alt, KeytipTransitionModifier.shift]
+      };
+      const key5: IKeytipTransitionKey = {
+        key: 'a',
+        modifierKeys: [KeytipTransitionModifier.shift, KeytipTransitionModifier.alt]
+      };
 
       expect(transitionKeysAreEqual(key1, key2)).toEqual(false);
       expect(transitionKeysAreEqual(key1, key3)).toEqual(false);

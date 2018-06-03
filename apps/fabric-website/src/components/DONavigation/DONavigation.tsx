@@ -122,7 +122,12 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
             </a>
           </div>
           <div className="od-Navigation-linkContainer">
-            <a className="od-Navigation-link" role="menuitem" aria-label="Code Samples menu item" href="http://dev.office.com/code-samples">
+            <a
+              className="od-Navigation-link"
+              role="menuitem"
+              aria-label="Code Samples menu item"
+              href="http://dev.office.com/code-samples"
+            >
               Code Samples
             </a>
           </div>
@@ -138,7 +143,9 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
               <i className="ms-Icon ms-Icon--ChevronDown" aria-hidden="true" />
             </a>
             <div className="od-Navigation-subMenu">
-              <div className="od-Navigation-subMenuItems od-Navigation-menuFirstColumn">{this._getLinks(links.resourcesLinks)}</div>
+              <div className="od-Navigation-subMenuItems od-Navigation-menuFirstColumn">
+                {this._getLinks(links.resourcesLinks)}
+              </div>
             </div>
           </div>
           <div className="od-Navigation-linkContainer">
@@ -153,7 +160,9 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
               <i className="ms-Icon ms-Icon--ChevronDown" aria-hidden="true" />
             </a>
             <div className="od-Navigation-subMenu">
-              <div className="od-Navigation-subMenuItems od-Navigation-menuFirstColumn">{this._getLinks(links.documentationLinks)}</div>
+              <div className="od-Navigation-subMenuItems od-Navigation-menuFirstColumn">
+                {this._getLinks(links.documentationLinks)}
+              </div>
             </div>
           </div>
         </div>
@@ -183,7 +192,9 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     let linkElements: Array<JSX.Element> = [];
 
     for (let i = 0; i < linkArray.length; i++) {
-      linkElements.push(<DONavigationLink label={linkArray[i].label} href={linkArray[i].href} icon={linkArray[i].icon} key={i} />);
+      linkElements.push(
+        <DONavigationLink label={linkArray[i].label} href={linkArray[i].href} icon={linkArray[i].icon} key={i} />
+      );
     }
 
     return linkElements;

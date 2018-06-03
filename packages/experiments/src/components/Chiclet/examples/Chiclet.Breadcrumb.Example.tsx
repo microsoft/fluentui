@@ -34,7 +34,9 @@ export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
     ];
     const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
-    const divider = () => <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={exampleStyles.chevron} />;
+    const divider = () => (
+      <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRightSmall'} className={exampleStyles.chevron} />
+    );
     const breadcrumb = (
       <Breadcrumb
         items={[

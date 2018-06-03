@@ -4,7 +4,10 @@ import { BaseDecorator } from './BaseDecorator';
 export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, S>
 ): any {
-  return class WithContainsFocusComponent extends BaseDecorator<TProps & { containsFocus?: boolean }, { containsFocus?: boolean }> {
+  return class WithContainsFocusComponent extends BaseDecorator<
+    TProps & { containsFocus?: boolean },
+    { containsFocus?: boolean }
+  > {
     private _newContainsFocus: boolean;
     private _delayedSetContainsFocus: () => void;
 
@@ -30,7 +33,11 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
 
       return (
         <div onFocus={this._handleFocus} onBlur={this._handleBlur}>
-          <ComposedComponent ref={this._updateComposedComponentRef} containsFocus={containsFocus} {...this.props as any} />
+          <ComposedComponent
+            ref={this._updateComposedComponentRef}
+            containsFocus={containsFocus}
+            {...this.props as any}
+          />
         </div>
       );
     }

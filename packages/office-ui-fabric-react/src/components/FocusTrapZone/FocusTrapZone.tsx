@@ -125,7 +125,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
 
     const focusSelector =
-      typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
+      typeof firstFocusableSelector === 'string'
+        ? firstFocusableSelector
+        : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild;
 
@@ -133,7 +135,14 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       if (focusSelector) {
         _firstFocusableChild = this._root.current.querySelector('.' + focusSelector);
       } else {
-        _firstFocusableChild = getNextElement(this._root.current, this._root.current.firstChild as HTMLElement, true, false, false, true);
+        _firstFocusableChild = getNextElement(
+          this._root.current,
+          this._root.current.firstChild as HTMLElement,
+          true,
+          false,
+          false,
+          true
+        );
       }
     }
     if (_firstFocusableChild) {
@@ -181,7 +190,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       return;
     }
 
-    const _firstFocusableChild = getFirstFocusable(this._root.current, this._root.current.firstChild as HTMLElement, true);
+    const _firstFocusableChild = getFirstFocusable(
+      this._root.current,
+      this._root.current.firstChild as HTMLElement,
+      true
+    );
     const _lastFocusableChild = getLastTabbable(this._root.current, this._root.current.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {

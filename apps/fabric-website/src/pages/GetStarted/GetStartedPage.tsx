@@ -49,7 +49,9 @@ export class GetStartedPage extends React.Component<any, any> {
               <div className={css('ms-Grid-col ms-lg4', styles.feature)}>
                 <div className={styles.featureImage}>
                   <img
-                    src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg'}
+                    src={
+                      'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg'
+                    }
                     alt="Illustration of Typography and color swatches."
                   />
                 </div>
@@ -57,14 +59,16 @@ export class GetStartedPage extends React.Component<any, any> {
                   Styles
                 </a>
                 <div className={styles.description}>
-                  Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and
-                  responsive grid for Office 365.
+                  Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette,
+                  type ramp, icons, and responsive grid for Office 365.
                 </div>
               </div>
               <div className={css('ms-Grid-col ms-lg4', styles.feature)}>
                 <div className={styles.featureImage}>
                   <img
-                    src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg'}
+                    src={
+                      'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg'
+                    }
                     alt="Illustration of Icons"
                   />
                 </div>
@@ -72,14 +76,16 @@ export class GetStartedPage extends React.Component<any, any> {
                   Icons
                 </a>
                 <div className={styles.description}>
-                  Fabric includes Office&rsquo;s official product icons. Fabric also provides a suite of product and document symbols, so
-                  you can use the same metaphors we use.
+                  Fabric includes Office&rsquo;s official product icons. Fabric also provides a suite of product and
+                  document symbols, so you can use the same metaphors we use.
                 </div>
               </div>
               <div className={css('ms-Grid-col ms-lg4', styles.feature)}>
                 <div className={styles.featureImage}>
                   <img
-                    src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg'}
+                    src={
+                      'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg'
+                    }
                     alt="Illustration of Components"
                   />
                 </div>
@@ -87,8 +93,8 @@ export class GetStartedPage extends React.Component<any, any> {
                   Components
                 </a>
                 <div className={styles.description}>
-                  Components are the building blocks of your UI. Fabric has a variety of components, including navigation, commands,
-                  containers, and content.
+                  Components are the building blocks of your UI. Fabric has a variety of components, including
+                  navigation, commands, containers, and content.
                 </div>
               </div>
             </div>
@@ -98,8 +104,8 @@ export class GetStartedPage extends React.Component<any, any> {
               Design Toolkit
             </a>
             <span className={styles.descriptionLarge}>
-              The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create
-              seamless, beautiful Office experiences.
+              The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable
+              you to create seamless, beautiful Office experiences.
             </span>
           </div>
         </div>
@@ -125,7 +131,9 @@ export class GetStartedPage extends React.Component<any, any> {
                 <div className={diagramStyles.graphics}>
                   <img
                     className={diagramStyles.componentImage}
-                    src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-many.svg'}
+                    src={
+                      'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-many.svg'
+                    }
                     width="175"
                     height="90"
                     alt="Illustrated Diagram of many components"
@@ -138,7 +146,9 @@ export class GetStartedPage extends React.Component<any, any> {
                 </div>
                 <div className={diagramStyles.content}>
                   <span className={diagramStyles.headline}>Fabric React</span>
-                  <span className={diagramStyles.description}>Robust, up-to-date components built with the React framework</span>
+                  <span className={diagramStyles.description}>
+                    Robust, up-to-date components built with the React framework
+                  </span>
                   <a className={styles.getStartedLink} href="#/components">
                     See components
                   </a>
@@ -148,7 +158,9 @@ export class GetStartedPage extends React.Component<any, any> {
                 <div className={diagramStyles.graphics}>
                   <img
                     className={diagramStyles.componentImage}
-                    src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg'}
+                    src={
+                      'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg'
+                    }
                     width="175"
                     height="90"
                     alt="Illustrated Diagram of few components"
@@ -161,7 +173,9 @@ export class GetStartedPage extends React.Component<any, any> {
                 </div>
                 <div className={diagramStyles.content}>
                   <span className={diagramStyles.headline}>AngularJS</span>
-                  <span className={diagramStyles.description}>Community-driven project to build components for Angular-based apps</span>
+                  <span className={diagramStyles.description}>
+                    Community-driven project to build components for Angular-based apps
+                  </span>
                   <a className={styles.getStartedLink} href="#/angular-js">
                     Learn more
                   </a>
@@ -193,9 +207,9 @@ export class GetStartedPage extends React.Component<any, any> {
             </li>
             <li>
               <p>
-                The library includes commonjs entry points under the lib folder. To use a control (like DefaultButton), import it along with
-                React and use it in your render method. Note that wrapping your application in the Fabric component is required to support
-                RTL, keyboard focus, and other features.
+                The library includes commonjs entry points under the lib folder. To use a control (like DefaultButton),
+                import it along with React and use it in your render method. Note that wrapping your application in the
+                Fabric component is required to support RTL, keyboard focus, and other features.
               </p>
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`import * as React from 'react';
@@ -233,8 +247,8 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`}
             </li>
             <li>
               <p>
-                If you are using Fabric React components that have icons, you can make all icons available by calling the{' '}
-                <code>initializeIcons</code> function from the <code>@uifabric/icons</code> package.
+                If you are using Fabric React components that have icons, you can make all icons available by calling
+                the <code>initializeIcons</code> function from the <code>@uifabric/icons</code> package.
               </p>
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`import { initializeIcons } from '@uifabric/icons';
@@ -246,7 +260,8 @@ initializeIcons();
 initializeIcons('https://my.cdn.com/path/to/icons/');`}
               </CodeBlock>
               <p>
-                This will make ALL icons in the collection available, but will download them on demand when referenced using the{' '}
+                This will make ALL icons in the collection available, but will download them on demand when referenced
+                using the{' '}
                 <a className={styles.getStartedLink} href="#/components/Icon">
                   Icon component
                 </a>.
@@ -257,20 +272,26 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
           <h3>Other ways to get Fabric React</h3>
           <p>
             For advanced scenarios or alternatives to NPM see the{' '}
-            <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md">
+            <a
+              className={styles.getStartedLink}
+              href="https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md"
+            >
               advanced documentation in the Fabric React repository
             </a>.
           </p>
 
           <h3>Need a component Fabric React doesn&rsquo;t have?</h3>
           <p>
-            First, check the <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/issues">
+            First, check the <a
+              className={styles.getStartedLink}
+              href="https://github.com/OfficeDev/office-ui-fabric-react/issues"
+            >
               Fabric React issue queue
             </a>{' '}
             or <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/projects">
               projects
-            </a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project
-            for the component you're looking for, please <a
+            </a> to see if your component has already been requested or is being worked on. If you don't see an existing
+            issue or project for the component you're looking for, please <a
               className={styles.getStartedLink}
               href="https://github.com/OfficeDev/office-ui-fabric-react/issues"
             >
@@ -279,7 +300,10 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
           </p>
 
           <h2 id="core">Get started with Fabric Core</h2>
-          <p>With one reference to our CDN, you can access Fabric&rsquo;s fonts, icons, type styles, colors, grid, and more.</p>
+          <p>
+            With one reference to our CDN, you can access Fabric&rsquo;s fonts, icons, type styles, colors, grid, and
+            more.
+          </p>
 
           <ol className={styles.steps}>
             <li>
@@ -293,7 +317,8 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
             <li>
               <p>
                 Reference core Fabric styles. Add the <code>ms-Fabric</code> class to a containing element, such as{' '}
-                <code>&lt;body&gt;</code>, to set the font-family for all Fabric typography classes used within that element.
+                <code>&lt;body&gt;</code>, to set the font-family for all Fabric typography classes used within that
+                element.
               </p>
               <CodeBlock language="html" isLightTheme={true}>
                 {`<body class="ms-Fabric">
@@ -323,23 +348,32 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
               download a copy of Fabric for your project
             </a>{' '}
             or{' '}
-            <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/PACKAGES.md">
+            <a
+              className={styles.getStartedLink}
+              href="https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/PACKAGES.md"
+            >
               add it through a package manager
             </a>. You can also{' '}
-            <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/BUILDING.md">
+            <a
+              className={styles.getStartedLink}
+              href="https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/BUILDING.md"
+            >
               build your own copy from the source code
             </a>.
           </p>
 
           <h3>Need an icon or feature Fabric Core doesn&rsquo;t have?</h3>
           <p>
-            First, check the <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/issues">
+            First, check the <a
+              className={styles.getStartedLink}
+              href="https://github.com/OfficeDev/office-ui-fabric-react/issues"
+            >
               Fabric React issue queue
             </a>{' '}
             or <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/projects">
               projects
-            </a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project
-            for the component you're looking for, please <a
+            </a> to see if your component has already been requested or is being worked on. If you don't see an existing
+            issue or project for the component you're looking for, please <a
               className={styles.getStartedLink}
               href="https://github.com/OfficeDev/office-ui-fabric-react/issues"
             >

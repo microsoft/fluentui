@@ -19,7 +19,11 @@ export class PositioningContainerPage extends React.Component<IComponentDemoPage
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')]}
+            sources={[
+              require<
+                string
+              >('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')
+            ]}
           />
         }
         overview={<div />}

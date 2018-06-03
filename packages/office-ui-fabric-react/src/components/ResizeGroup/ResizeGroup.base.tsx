@@ -1,6 +1,14 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, classNamesFunction, customizable, divProperties, getNativeProps, provideContext, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  customizable,
+  divProperties,
+  getNativeProps,
+  provideContext,
+  createRef
+} from '../../Utilities';
 import { IResizeGroupProps, IResizeGroupStyles, IResizeGroupStyleProps } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
@@ -236,7 +244,10 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     if (newContainerWidth) {
       // If we know what the last container size was and we rendered data at that width, we can do an optimized render
       if (_containerWidth && currentState.renderedData && !currentState.dataToMeasure) {
-        return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, props.onGrowData) };
+        return {
+          ...currentState,
+          ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, props.onGrowData)
+        };
       }
 
       // If we are just setting the container width for the first time, we can't do any optimizations

@@ -30,7 +30,9 @@ export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Tile/Tile.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Tile/Tile.types.ts')]}
+          />
         }
         overview={<div />}
         bestPractices={<div />}

@@ -23,7 +23,9 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
 
 describe('SwatchColorPicker', () => {
   it('renders SwatchColorPicker correctly', () => {
-    const component = renderer.create(<SwatchColorPickerBase colorCells={DEFAULT_OPTIONS} columnCount={4} styles={getStyles} />);
+    const component = renderer.create(
+      <SwatchColorPickerBase colorCells={DEFAULT_OPTIONS} columnCount={4} styles={getStyles} />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

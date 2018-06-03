@@ -5,7 +5,11 @@ export class DOSearchBox extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div className="od-SearchBox">
-        <form className="od-SearchBox-searchForm ng-pristine ng-valid" action="http://dev.office.com/Search" method="get">
+        <form
+          className="od-SearchBox-searchForm ng-pristine ng-valid"
+          action="http://dev.office.com/Search"
+          method="get"
+        >
           <fieldset>
             <input
               name="q"

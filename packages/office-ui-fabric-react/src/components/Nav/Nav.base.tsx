@@ -125,7 +125,9 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         href={link.url || (link.forceAnchor ? 'javascript:' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon || '' }}
         ariaDescription={link.title || link.name}
-        onClick={link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
+        onClick={
+          link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)
+        }
         title={link.title || link.name}
         target={link.target}
         rel={rel}

@@ -15,7 +15,8 @@
           {
             "author": "Vitalie Braga <vitaliebraga@gmail.com>",
             "commit": "a269865d17ff20983a46f2dfb49841afed569c07",
-            "comment": "Shimmer: Shimmer refactor to use new props and deprecate others. Build more examples of Shimmer use."
+            "comment":
+              "Shimmer: Shimmer refactor to use new props and deprecate others. Build more examples of Shimmer use."
           }
         ],
         "dependency": [
@@ -81,7 +82,8 @@
           {
             "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
             "commit": "3ddc20e2df591a60ef91cacd43de469b6238766e",
-            "comment": "Experiments/Nav component: Enable auto expand until the next manual expand disables the auto expand"
+            "comment":
+              "Experiments/Nav component: Enable auto expand until the next manual expand disables the auto expand"
           }
         ],
         "dependency": [
@@ -143,7 +145,8 @@
           {
             "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
             "commit": "2e3ddc814468d9353a8d02fccefade5df2555cb2",
-            "comment": "Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props"
+            "comment":
+              "Screen reader support for the toggle nav menu and made the toggle nav menu customizable through props"
           }
         ],
         "dependency": [
@@ -151,7 +154,8 @@
             "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.106.1 <6.0.0` to `>=5.107.0 <6.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
           }
         ]
       }
@@ -264,7 +268,8 @@
           {
             "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
             "commit": "0ae7286da9137337d0e864e712a4f17e4e679cf9",
-            "comment": "Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links"
+            "comment":
+              "Edit link to customize experiments/Nav component and show more/less link to toggle hidden nav links"
           }
         ],
         "dependency": [
@@ -380,7 +385,8 @@
           {
             "author": "Cliff Koh <cliff.koh@microsoft.com>",
             "commit": "edf45906e38be620dd26401b05b9bda10322027f",
-            "comment": "Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package."
+            "comment":
+              "Fix code in @uifabric/experiments such that it adheres to same tslint rules as the main office-ui-fabric-react package."
           },
           {
             "author": "Thomas Michon <thomas@michon.com>",
@@ -403,7 +409,8 @@
             "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.10.2 <6.0.0` to `>=5.11.0 <6.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
           }
         ]
       }
@@ -601,7 +608,8 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "7a3ba05123ffdf79f16c6a428c2cdabee4646e1c",
-            "comment": "FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same "
+            "comment":
+              "FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same "
           }
         ],
         "patch": [
@@ -953,7 +961,8 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "1340339d7c62eeb1b526f08d9edbd7fe44b398f3",
-            "comment": "BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection"
+            "comment":
+              "BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection"
           }
         ],
         "patch": [
@@ -1101,7 +1110,8 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "0bcc2870320b3940d9e386a9996981e759ba4ddf",
-            "comment": "Make Selection optional (create default seleciton fallback), change render typedef to any, to allow use in lower versions of types/react\""
+            "comment":
+              "Make Selection optional (create default seleciton fallback), change render typedef to any, to allow use in lower versions of types/react\""
           }
         ],
         "dependency": [
@@ -1142,7 +1152,8 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "194ce4efa804ac4bbacef04b03d426c8a561a6b0",
-            "comment": "add optional title element to extendedPicker, css changes to have selected items flow on the same row as input"
+            "comment":
+              "add optional title element to extendedPicker, css changes to have selected items flow on the same row as input"
           }
         ],
         "dependency": [
@@ -1250,7 +1261,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+            "comment":
+              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
           }
         ],
         "dependency": [
@@ -1261,7 +1273,8 @@
             "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.1.2 <6.0.0` to `>=5.2.0 <6.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
           }
         ]
       }
@@ -1418,7 +1431,8 @@
           {
             "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
             "commit": "d6b160b67456101362c1b241b4c4ee6d11850fdb",
-            "comment": "Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot"
+            "comment":
+              "Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot"
           }
         ],
         "dependency": [
@@ -1522,7 +1536,8 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "5f56a5cb0576b0e9fa5f5a95ca23be6e13a8a530",
-            "comment": "Added SelectedItemsList, change ExtendedPicker from extending BasePicker to be new component utilizing SelectedItemsList and FloatingPicker"
+            "comment":
+              "Added SelectedItemsList, change ExtendedPicker from extending BasePicker to be new component utilizing SelectedItemsList and FloatingPicker"
           }
         ],
         "dependency": [
@@ -1549,7 +1564,8 @@
             "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.12.0 <6.0.0` to `>=5.13.0 <6.0.0`"
           },
           {
-            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+            "comment":
+              "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
           }
         ]
       }
@@ -1601,7 +1617,8 @@
           {
             "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
             "commit": "ddecb07ddeb35964ee17705d2ebccabd6c44f8dd",
-            "comment": "Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively"
+            "comment":
+              "Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively"
           }
         ],
         "dependency": [
@@ -1639,7 +1656,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+            "comment":
+              "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
           }
         ],
         "dependency": [
@@ -2014,7 +2032,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
-            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+            "comment":
+              "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
           }
         ],
         "dependency": [
@@ -2082,17 +2101,20 @@
           {
             "author": "erichdev <a.erich@gmail.com>",
             "commit": "017873a67b9772721cd94ff56f7860a1eefe6ec3",
-            "comment": "Removed suppression of tslint max line length rule from Experiments package, and broke up large lines or inserted tslint:disable comments to pass tslint"
+            "comment":
+              "Removed suppression of tslint max line length rule from Experiments package, and broke up large lines or inserted tslint:disable comments to pass tslint"
           },
           {
             "author": "erichdev <a.erich@gmail.com>",
             "commit": "1d1f46e65d4ea0ec1cec42301c6fe9c10122ee5c",
-            "comment": "Removed suppression of tslint unused variables rule from Experiments package and removed unused variables to pass tslint"
+            "comment":
+              "Removed suppression of tslint unused variables rule from Experiments package and removed unused variables to pass tslint"
           },
           {
             "author": "erichdev <a.erich@gmail.com>",
             "commit": "4851f696d5579d213c70ecea143392b228c5c6cf",
-            "comment": "Removed suppression of tslint self-close rule from Experiments package and self-closed all empty elements to pass tslint"
+            "comment":
+              "Removed suppression of tslint self-close rule from Experiments package and self-closed all empty elements to pass tslint"
           },
           {
             "author": "erichdev <a.erich@gmail.com>",

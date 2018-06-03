@@ -13,9 +13,9 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
   protected _selectedElement: HTMLDivElement;
-  private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<T> = SuggestionsItem as new (
-    props: ISuggestionItemProps<T>
-  ) => SuggestionsItem<T>;
+  private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<
+    T
+  > = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
   constructor(suggestionsProps: ISuggestionsCoreProps<T>) {
     super(suggestionsProps);

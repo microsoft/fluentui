@@ -131,7 +131,20 @@ describe('DatePicker', () => {
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
     const strings: IDatePickerStrings = {
-      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ],
       shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -141,7 +154,9 @@ describe('DatePicker', () => {
     let datePicker: ReactWrapper<any, any>;
 
     beforeEach(() => {
-      datePicker = mount(<DatePicker allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />);
+      datePicker = mount(
+        <DatePicker allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
+      );
     });
 
     afterEach(() => {

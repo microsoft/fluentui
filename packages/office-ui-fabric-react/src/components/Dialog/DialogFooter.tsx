@@ -3,4 +3,7 @@ import { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from
 import { DialogFooterBase } from './DialogFooter.base';
 import { getStyles } from './DialogFooter.styles';
 
-export const DialogFooter = styled<IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles>(DialogFooterBase, getStyles);
+export const DialogFooter = styled<IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles>(
+  DialogFooterBase,
+  getStyles
+);

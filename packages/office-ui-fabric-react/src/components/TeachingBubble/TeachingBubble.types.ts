@@ -12,7 +12,9 @@ export interface ITeachingBubble {}
  * TeachingBubble component props.
  */
 
-export interface ITeachingBubbleProps extends React.Props<TeachingBubble | TeachingBubbleContent>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps
+  extends React.Props<TeachingBubble | TeachingBubbleContent>,
+    IAccessiblePopupProps {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

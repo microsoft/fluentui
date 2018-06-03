@@ -92,7 +92,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const { selection: nextSelection, selectionIndex: nextSelectionIndex = -1 } = nextProps;
 
     if (selection !== nextSelection || selectionIndex !== nextSelectionIndex) {
-      const isSelected = !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
+      const isSelected =
+        !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
       const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
@@ -338,7 +339,13 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
 
   const width = contentSize.width;
 
-  const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight, foregroundMargin } = TileLayoutSizes[tileSize];
+  const {
+    nameplatePadding,
+    nameplateMargin,
+    nameplateActivityHeight,
+    nameplateNameHeight,
+    foregroundMargin
+  } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 
