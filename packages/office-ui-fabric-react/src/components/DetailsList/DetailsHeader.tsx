@@ -45,6 +45,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
+  indentWidth?: number;
   collapseAllVisibility?: CollapseAllVisibility;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
@@ -122,7 +123,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public render(): JSX.Element {
-    const { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
+    const { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn, indentWidth } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -215,7 +216,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             </div>
           ) : (null)
         }
-        { GroupSpacer({ count: groupNestingDepth! - 1 }) }
+        <GroupSpacer indentWidth={ indentWidth } count={ groupNestingDepth! - 1 } />
         {
           columns.map((column: IColumn, columnIndex: number) => {
             return (
