@@ -1,4 +1,4 @@
-module.exports = function (options) {
+module.exports = function(options) {
   const childProcess = require('child_process');
   const execSync = require('../exec-sync');
   const path = require('path');
@@ -6,12 +6,10 @@ module.exports = function (options) {
   const prettier = require('prettier');
 
   const projectPath = path.resolve(process.cwd());
-  const sourcePath = path.join(process.cwd(), 'src', '**', '*.{ts,tsx}');
+  const sourcePath = path.join(process.cwd(), '**', '*.{ts,tsx,json,js}');
   const prettierPath = 'node ' + path.resolve(__dirname, '../node_modules/prettier/bin-prettier.js');
 
-  const prettierConfigPath = path.join(
-    process.cwd(), '..', '..', 'packages', 'office-ui-fabric-react-tslint', 'prettier.config.js'
-  );
+  const prettierConfigPath = path.join(process.cwd(), '..', '..', 'packages', 'office-ui-fabric-react-tslint', 'prettier.config.js');
 
   try {
     fs.accessSync(prettierConfigPath, fs.constants.R_OK);
