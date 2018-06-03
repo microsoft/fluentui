@@ -85,6 +85,7 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                 key: 'shareSplit',
                 onClick: () => alert('Split buttons!'),
                 split: true,
+                'aria-roledescription': 'split button',
                 subMenuProps: {
                   items: [
                     {

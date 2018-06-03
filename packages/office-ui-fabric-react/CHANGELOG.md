@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 30 May 2018 22:05:04 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Jun 2018 10:18:43 GMT and should not be manually modified.
+
+## 6.2.0
+Fri, 01 Jun 2018 10:18:43 GMT
+
+### Minor changes
+
+- Added FocusTrapZone capability: When the FTZ is focused, it will pass focus to a descendant element.  The new prop 'focusPreviouslyFocusedInnerElement' controls the descendant-choosing behavior.
+
+### Patches
+
+- Fix ComboBox ARIA attributes.
+- Prevent invalid empty ARIA values from being output.
+- ComboBox: Fix the value that is checked when submitting a pending value to take into account if the aria-label is used as text. This line was missed in the initial change
+- Add support for pointerup to dismiss keytips
+
+## 6.1.2
+Thu, 31 May 2018 10:18:58 GMT
+
+### Patches
+
+- MessageBar: fix color for X close button so that it is accessible
+- Theming: generate a more accessible themeLighter and more accessibility pairs
+- HoverCard: example fix for keyboard navigation to HoverCard target.
 
 ## 6.1.1
 Wed, 30 May 2018 22:05:03 GMT

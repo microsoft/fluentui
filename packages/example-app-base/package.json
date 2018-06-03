@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@uifabric/styling": ">=6.0.1 <7.0.0",
-    "@uifabric/utilities": ">=6.0.2 <7.0.0",
+    "@uifabric/utilities": ">=6.0.3 <7.0.0",
     "highlight.js": "^9.12.0",
     "markdown-to-jsx": "6.6.1",
     "office-ui-fabric-react": ">=5.1.0 <6.0.0",

@@ -33,6 +33,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             onClick={ alertClicked }
             split={ true }
             splitButtonAriaLabel={ 'See 2 sample options' }
+            aria-roledescription={ 'split button' }
             style={ { height: '35px' } }
             menuProps={ {
               items: [
@@ -60,6 +61,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
+            aria-roledescription={ 'split button' }
             style={ { height: '35px' } }
             menuProps={ {
               items: [
@@ -88,6 +90,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
+            aria-roledescription={ 'split button' }
             style={ { height: '35px' } }
             menuProps={ {
               items: [
@@ -116,6 +119,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
+            aria-roledescription={ 'split button' }
             style={ { height: '35px' } }
             menuProps={ {
               items: [
@@ -155,6 +159,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
           text='Create account'
           onClick={ alertClicked }
           split={ true }
+          aria-roledescription={ 'split button' }
           styles={ customSplitButtonStyles }
           menuProps={ {
             items: [

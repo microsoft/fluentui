@@ -58,5 +58,4 @@ export interface IShimmerTileStyleProps {
 
 export interface IShimmerTileStyles {
   root?: IStyle;
-  flexDiv?: IStyle;
 }

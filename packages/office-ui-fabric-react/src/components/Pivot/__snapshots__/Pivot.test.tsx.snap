@@ -17,9 +17,9 @@ exports[`Pivot renders Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={null}
+        aria-describedby={undefined}
         aria-label={undefined}
-        aria-labelledby={null}
+        aria-labelledby={undefined}
         aria-pressed={undefined}
         aria-selected={true}
         className=
@@ -125,9 +125,9 @@ exports[`Pivot renders Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={null}
+        aria-describedby={undefined}
         aria-label={undefined}
-        aria-labelledby={null}
+        aria-labelledby={undefined}
         aria-pressed={undefined}
         aria-selected={false}
         className=
@@ -260,9 +260,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={null}
+        aria-describedby={undefined}
         aria-label={undefined}
-        aria-labelledby={null}
+        aria-labelledby={undefined}
         aria-pressed={undefined}
         aria-selected={true}
         className=
@@ -368,9 +368,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={null}
+        aria-describedby={undefined}
         aria-label={undefined}
-        aria-labelledby={null}
+        aria-labelledby={undefined}
         aria-pressed={undefined}
         aria-selected={false}
         className=

@@ -14,12 +14,12 @@ import {
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
-
   private static _focusStack: FocusTrapZone[] = [];
   private static _clickStack: FocusTrapZone[] = [];
 
   private _root = createRef<HTMLDivElement>();
-  private _previouslyFocusedElement: HTMLElement;
+  private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
+  private _previouslyFocusedElementInTrapZone?: HTMLElement;
   private _isInFocusStack = false;
   private _isInClickStack = false;
 
@@ -38,8 +38,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   public componentDidMount(): void {
     const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
-    this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    if (!elementContains(this._root.current, this._previouslyFocusedElement) && !disableFirstFocus) {
+    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
+    if (!elementContains(this._root.current, this._previouslyFocusedElementOutsideTrapZone) && !disableFirstFocus) {
       this.focus();
     }
 
@@ -54,8 +54,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
   public componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
-    if (elementToFocusOnDismiss && this._previouslyFocusedElement !== elementToFocusOnDismiss) {
-      this._previouslyFocusedElement = elementToFocusOnDismiss;
+    if (elementToFocusOnDismiss && this._previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {
+      this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss;
     }
   }
 
@@ -77,10 +77,10 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
     const activeElement = document.activeElement as HTMLElement;
     if (!ignoreExternalFocusing &&
-      this._previouslyFocusedElement &&
-      typeof this._previouslyFocusedElement.focus === 'function' &&
+      this._previouslyFocusedElementOutsideTrapZone &&
+      typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
       (elementContains(this._root.value, activeElement) || activeElement === document.body)) {
-      focusAsync(this._previouslyFocusedElement);
+      focusAsync(this._previouslyFocusedElementOutsideTrapZone);
     }
   }
 
@@ -95,20 +95,28 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
         ref={ this._root }
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyboardHandler }
+        onFocusCapture={ this._onFocusCapture }
       >
         { this.props.children }
       </div>
     );
   }
 
-  /**
-   * Need to expose this method in case of popups since focus needs to be set when popup is opened
-   */
   public focus() {
-    const { firstFocusableSelector } = this.props;
-    const focusSelector = typeof firstFocusableSelector === 'string'
-      ? firstFocusableSelector
-      : firstFocusableSelector && firstFocusableSelector();
+    const { focusPreviouslyFocusedInnerElement, firstFocusableSelector } = this.props;
+
+    if (
+      focusPreviouslyFocusedInnerElement &&
+      this._previouslyFocusedElementInTrapZone &&
+      elementContains(this._root.value, this._previouslyFocusedElementInTrapZone)
+    ) {
+      // focus on the last item that had focus in the zone before we left the zone
+      focusAsync(this._previouslyFocusedElementInTrapZone);
+      return;
+    }
+
+    const focusSelector =
+      typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild;
 
@@ -124,7 +132,29 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  private _onKeyboardHandler = (ev: React.KeyboardEvent<HTMLElement>): void => {
+  private _onFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    if (this.props.onFocusCapture) {
+      this.props.onFocusCapture(ev);
+    }
+    if (ev.isDefaultPrevented()) {
+      return;
+    }
+
+    if (ev.target === ev.currentTarget) {
+      // If the trap zone gets focus, pass on focus to either first focusable
+      // child element or the last focused element when this zone last had
+      // a focused child (depending on a prop).
+      this.focus();
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      // every time focus changes within the trap zone, remember the focused element so that
+      // it can be restored if focus leaves the pane and returns via keystroke (i.e. via a call to this.focus(true))
+      this._previouslyFocusedElementInTrapZone = ev.target as HTMLElement;
+    }
+  }
+
+  private _onKeyboardHandler = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
     }

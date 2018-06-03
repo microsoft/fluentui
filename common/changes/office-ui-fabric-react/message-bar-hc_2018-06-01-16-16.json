@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Theming: generate a more accessible themeLighter and more accessibility pairs",
+      "comment": "MessageBar: New color for dismiss / expand button in hc mode for better visibility.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }

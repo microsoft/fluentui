@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "HoverCard: example fix for keyboard navigation to HoverCard target.",
+      "comment": "Updated test snapshots",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-vibr@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

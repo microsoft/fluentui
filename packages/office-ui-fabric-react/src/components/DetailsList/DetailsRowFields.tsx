@@ -47,7 +47,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
           <div
             key={ columnIndex }
             role={ column.isRowHeader ? 'rowheader' : 'gridcell' }
-            aria-colindex={ columnIndex + columnStartIndex }
+            aria-colindex={ columnIndex + columnStartIndex + 1 }
             className={ css('ms-DetailsRow-cell', styles.cell, column.className,
               column.isMultiline && 'is-multiline',
               column.isRowHeader && styles.isRowHeader,

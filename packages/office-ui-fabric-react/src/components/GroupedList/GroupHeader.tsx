@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css
-} from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
@@ -42,9 +39,6 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
   }
 
   public render(): JSX.Element | null {
-    let {
-      isCollapsedGroupSelectVisible
-    } = this.props;
     const {
       group,
       groupLevel,
@@ -52,13 +46,14 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
       selectionMode,
       loadingText,
       isSelected,
-      selected
+      selected,
+      indentWidth,
+      onRenderTitle = this._onRenderTitle,
+      isCollapsedGroupSelectVisible = true
     } = this.props;
+
     const { isCollapsed, isLoadingVisible } = this.state;
 
-    if (isCollapsedGroupSelectVisible === undefined) {
-      isCollapsedGroupSelectVisible = true;
-    }
     const canSelectGroup = selectionMode === SelectionMode.multiple;
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     const currentlySelected = isSelected || selected;
@@ -88,10 +83,10 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             >
               <Check checked={ currentlySelected } />
             </button>
-          ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
+          ) : (selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={ indentWidth } count={ 1 } />)
           }
 
-          { GroupSpacer({ count: groupLevel as number }) }
+          <GroupSpacer indentWidth={ indentWidth } count={ groupLevel! } />
 
           <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) }>
             <Icon iconName='Tag' />
@@ -109,16 +104,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             />
           </button>
 
-          <div className={ css('ms-GroupHeader-title', styles.title) }>
-            <span>{ group.name }</span>
-            {
-              // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
-              // sorting to simulate grouping behaviors, in which case group count is the number of items returned
-              // so far. That's the reason we need to use "+" to show we might have more items than count
-              // indicates.
-            }
-            <span className={ styles.headerCount }>({ group.count }{ group.hasMoreData && '+' })</span>
-          </div>
+          { onRenderTitle(this.props, this._onRenderTitle) }
 
           { isLoadingVisible && (
             <Spinner label={ loadingText } />
@@ -167,5 +153,26 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     } else if (onToggleSelectGroup) {
       onToggleSelectGroup(group!);
     }
+  }
+
+  private _onRenderTitle = (props: IGroupDividerProps): JSX.Element | null => {
+    const { group } = props;
+
+    if (!group) {
+      return null;
+    }
+
+    return (
+      <div className={ css('ms-GroupHeader-title', styles.title) }>
+        <span>{ group.name }</span>
+        {
+          // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
+          // sorting to simulate grouping behaviors, in which case group count is the number of items returned
+          // so far. That's the reason we need to use "+" to show we might have more items than count
+          // indicates.
+        }
+        <span className={ styles.headerCount }>({ group.count }{ group.hasMoreData && '+' })</span>
+      </div>
+    );
   }
 }

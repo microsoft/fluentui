@@ -1,6 +1,7 @@
 module.exports = function (options) {
   const glob = require('glob');
   const path = require('path');
+  const requireResolveCwd = require('../require-resolve-cwd');
 
   const _fileNameToClassMap = {};
 
@@ -12,7 +13,6 @@ module.exports = function (options) {
     const files = glob.sync(path.resolve(process.cwd(), 'src/**/*.scss'));
 
     if (files.length) {
-      const execSync = require('../exec-sync');
       const sass = require('node-sass');
       const fs = require('fs');
       const postcss = require('postcss');
@@ -86,11 +86,22 @@ module.exports = function (options) {
     return source.join('\n');
   }
 
+  function requireResolvePackageUrl(packageUrl) {
+    const fullName = packageUrl + (packageUrl.endsWith('.scss') ? '' : '.scss');
+
+    try {
+      return requireResolveCwd(fullName);
+    } catch (e) {
+      // try again with a private reference
+      return requireResolveCwd(path.join(path.dirname(fullName), `_${path.basename(fullName)}`));
+    }
+  }
+
   function patchSassUrl(url, prev, done) {
     let newUrl = url;
 
     if (url[0] === '~') {
-      newUrl = path.resolve(process.cwd(), 'node_modules', url.substr(1));
+      newUrl = requireResolvePackageUrl(url.substr(1));
     }
     else if (url === 'stdin') {
       newUrl = '';
