@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added multiple customization entry-points to GroupedList, including custom group spacing and header customization",
+      "comment": "GroupedList: Added multiple customization entry-points including custom indent spacing and header customization.",
       "type": "minor"
     }
   ],
