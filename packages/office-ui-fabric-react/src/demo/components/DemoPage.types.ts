@@ -56,7 +56,7 @@ export interface IDemoPageProps {
   isHeaderVisible: boolean;
 
   /** Allows native props */
-  allowNativeProps?: boolean;
+  allowNativeProps?: boolean | string;
 
   /** Native props root element */
   nativePropsElement?: string | string[];

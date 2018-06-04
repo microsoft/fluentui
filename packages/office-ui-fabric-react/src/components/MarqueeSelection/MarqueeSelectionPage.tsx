@@ -1,35 +1,26 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  ComponentPage,
-  PageMarkdown,
-  IComponentDemoPageProps
-} from '@uifabric/example-app-base';
 
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 
+import { DemoPage } from "../../demo/components/DemoPage";
+import { IDemoPageProps } from "../../demo/components/DemoPage.types";
+
 const MarqueeSelectionBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/examples/MarqueeSelection.Basic.Example.tsx') as string;
+export const MarqueeSelectionPageProps: IDemoPageProps = {
+  title: 'MarqueeSelection',
+  componentName: 'MarqueeSelection',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/MarqueeSelection',
+  examples: [{
+    "title": "Basic Selection Example",
+    "code": MarqueeSelectionBasicExampleCode,
+    "view": <MarqueeSelectionBasicExample />
+  }],
+  propertiesTablesSources: [],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
+  bestPractices: "",
+  dos: "",
+  donts: "",
+  isHeaderVisible: true,
+};
 
-export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProps, any> {
-  public render(): JSX.Element {
-    return (
-      <ComponentPage
-        title='MarqueeSelection'
-        componentName='MarqueeSelectionExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/MarqueeSelection'
-        exampleCards={
-          <ExampleCard title='Basic Selection Example' code={ MarqueeSelectionBasicExampleCode }>
-            <MarqueeSelectionBasicExample />
-          </ExampleCard>
-        }
-        overview={
-          <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md') }
-          </PageMarkdown>
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
-      />
-    );
-  }
-
-}
+export const MarqueeSelectionPage = (props: { isHeaderVisible: boolean }) => (<DemoPage { ...{ ...MarqueeSelectionPageProps, ...props } } />);
