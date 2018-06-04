@@ -6,7 +6,8 @@ import {
   ITilesGridSegment
 } from '@uifabric/experiments/lib/TilesList';
 import {
-  Tile
+  Tile,
+  ShimmerTile
 } from '@uifabric/experiments/lib/Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
@@ -22,7 +23,6 @@ import {
 } from './ExampleHelpers';
 import { ISize } from '@uifabric/experiments/lib/Utilities';
 import {
-  ShimmerTile,
   ShimmerElementType as ElemType,
   ShimmerElementsGroup
 } from '@uifabric/experiments/lib/Shimmer';
