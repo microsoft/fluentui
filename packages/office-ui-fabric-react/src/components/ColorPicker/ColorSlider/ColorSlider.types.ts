@@ -1,5 +1,5 @@
 import { ITheme, IStyle } from '../../../Styling';
-import { IStyleFunction } from '../../../Utilities';
+import { IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IColorSlider {
 
@@ -32,7 +32,7 @@ export interface IColorSliderProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IColorSliderStyleProps, IColorSliderStyles>;
+  styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
 }
 
 export interface IColorSliderStyleProps {

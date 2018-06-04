@@ -59,10 +59,10 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   }
 
   public render(): JSX.Element {
-    const { minSize, theme, className, getStyles } = this.props;
+    const { minSize, theme, className, styles } = this.props;
     const { color, fullColorString } = this.state;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className
     });

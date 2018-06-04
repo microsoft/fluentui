@@ -1,5 +1,5 @@
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IColorPicker {
 
@@ -69,7 +69,7 @@ export interface IColorPickerProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IColorPickerStyleProps, IColorPickerStyles>;
+  styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
 }
 
 export interface IColorPickerStyleProps {

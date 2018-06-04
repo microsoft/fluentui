@@ -56,10 +56,10 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   }
 
   public render(): JSX.Element {
-    const { theme, className, getStyles } = this.props;
+    const { theme, className, styles } = this.props;
     const { color } = this.state;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className
     });

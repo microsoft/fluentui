@@ -1,5 +1,5 @@
 import { ITheme, IStyle } from '../../../Styling';
-import { IStyleFunction } from '../../../Utilities';
+import { IStyleFunctionOrObject } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/colors';
 
 export interface IColorRectangle {
@@ -35,7 +35,7 @@ export interface IColorRectangleProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IColorRectangleStyleProps, IColorRectangleStyles>;
+  styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
 
   /**
    * Callback for when the color changes.

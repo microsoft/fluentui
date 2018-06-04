@@ -45,10 +45,10 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
   }
 
   public render(): JSX.Element {
-    const { isAlpha, minValue, maxValue, overlayStyle, theme, className, getStyles } = this.props;
+    const { isAlpha, minValue, maxValue, overlayStyle, theme, className, styles } = this.props;
     const { currentValue } = this.state;
 
-    const classNames = getClassNames(getStyles!, {
+    const classNames = getClassNames(styles!, {
       theme: theme!,
       className
     });
