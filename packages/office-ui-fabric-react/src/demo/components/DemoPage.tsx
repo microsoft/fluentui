@@ -9,6 +9,16 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = (componentPage
       title={ componentPageProps.title }
       componentName={ componentPageProps.componentName }
       componentUrl={ componentPageProps.componentUrl }
+      implementationExampleCards={ componentPageProps.implementationExamples ? (
+        <div>
+          { componentPageProps.implementationExamples.map(example => (
+            <ExampleCard title={ example.title } code={ example.code } key={ example.title }>
+              { example.view }
+            </ExampleCard>
+          )) }
+        </div>) : undefined
+      }
+      related={ componentPageProps.related || undefined }
       exampleCards={
         <div>
           { componentPageProps.examples.map(example => (

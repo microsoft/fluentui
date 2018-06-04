@@ -25,6 +25,18 @@ export interface IDemoPageProps {
     view: JSX.Element;
   }[];
 
+  /** Array of implementation examples, displayed in the order defined */
+  implementationExamples?: {
+    /** Title of the example */
+    title: string;
+
+    /** Raw source code of the example */
+    code: string;
+
+    /** Working example of the example */
+    view: JSX.Element;
+  }[];
+
   /** Properties table(s) as markdown string */
   propertiesTablesSources: string[];
 
@@ -42,4 +54,13 @@ export interface IDemoPageProps {
 
   /** Passed through header visibility flag from the demo component page component */
   isHeaderVisible: boolean;
+
+  /** Allows native props */
+  allowNativeProps?: boolean;
+
+  /** Native props root element */
+  nativePropsElement?: string | string[];
+
+  /** Related link */
+  related?: JSX.Element;
 }
