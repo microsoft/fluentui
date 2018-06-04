@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, IStyleSet, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
 
-export interface IShimmerGap {
-
-}
+export interface IShimmerGap {}
 
 /**
  * ShimmerGap component props.
@@ -40,8 +38,8 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   borderStyle?: IStyleSet;
 
   /**
-  * Theme provided by High-Order Component.
-  */
+   * Theme provided by High-Order Component.
+   */
   theme?: ITheme;
 
   /**

@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  customizable
-} from '../../Utilities';
+import { BaseComponent, customizable } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
 import { getOpenGraphProperties } from './OpenGraph';
 import { IChicletProps, ChicletSize } from './Chiclet.types';
@@ -14,7 +11,6 @@ export interface IChicletState {
 
 @customizable('ChicletBase', ['theme'])
 export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
-
   constructor(props: IChicletProps) {
     super(props);
 
@@ -28,14 +24,10 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
 
     switch (size) {
       case ChicletSize.medium:
-        return (
-          <ChicletCard { ...chicletCardProps } onClick={ this._onClick } footer={ footer } description={ description } />
-        );
+        return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
       // @todo: handle other types of chiclets
       default:
-        return (
-          <ChicletCard { ...chicletCardProps } onClick={ this._onClick } footer={ footer } description={ description } />
-        );
+        return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
     }
   }
 
@@ -45,7 +37,7 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
     }
   }
 
-  private _onClick(): void { // @todo: default click handler
+  private _onClick(): void {
+    // @todo: default click handler
   }
-
 }

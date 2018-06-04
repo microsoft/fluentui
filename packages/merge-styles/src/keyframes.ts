@@ -21,12 +21,7 @@ export function keyframes(timeline: { [key: string]: {} }): string {
 
   stylesheet.insertRule(`@keyframes ${name}{${rules}}`);
 
-  stylesheet.cacheClassName(
-    name,
-    rules,
-    [],
-    ['keyframes', rules]
-  );
+  stylesheet.cacheClassName(name, rules, [], ['keyframes', rules]);
 
   return name;
 }
