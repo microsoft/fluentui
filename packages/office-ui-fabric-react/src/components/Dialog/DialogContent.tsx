@@ -1,9 +1,5 @@
 import { styled } from '../../Utilities';
-import {
-  IDialogContentProps,
-  IDialogContentStyleProps,
-  IDialogContentStyles
-} from './DialogContent.types';
+import { IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { DialogContentBase } from './DialogContent.base';
 import { getStyles } from './DialogContent.styles';
 

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Revert PR 4897",
-      "type": "minor"
+      "comment": "Added Prettier",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "mark@thedutchies.com"
 }
