@@ -63,7 +63,7 @@ executeTasks(firstTasks).then(() => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function isPrettier() {
-  return process.env.PRETTIER;
+  return process.env.PRETTIER === 'true';
 }
 
 function executeTasks(tasks) {
@@ -108,7 +108,7 @@ function getPackage() {
 }
 
 function loadTaskFunctions(tasks) {
-  if (isPrettier) {
+  if (isPrettier()) {
     return { prettier: require('./tasks/prettier') };
   }
 
