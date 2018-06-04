@@ -18,21 +18,21 @@ const devServer = {
   host: HOST_NAME,
   disableHostCheck: true,
   port: 4324
-}
+};
 
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
   output: {
     filename: entryPointFilename + '.js',
     path: path.join(__dirname, 'dist'),
-    publicPath: 'http://'+ HOST_NAME +':' + devServer.port + '/dist/',
+    publicPath: 'http://' + HOST_NAME + ':' + devServer.port + '/dist/',
     chunkFilename: `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`
   },
 
   devServer: devServer,
 
   externals: {
-    'react': 'React',
+    react: 'React',
     'react-dom': 'ReactDOM'
   },
 
@@ -45,8 +45,5 @@ module.exports = resources.createServeConfig({
     }
   },
 
-  plugins: [
-    new WriteFilePlugin()
-  ]
-
+  plugins: [new WriteFilePlugin()]
 });

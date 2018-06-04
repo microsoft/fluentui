@@ -2,6 +2,44 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/variants_v6.0.1",
+      "date": "Mon, 04 Jun 2018 10:16:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4e1cd119bbf0f75e0432b0f92bad342714b57bef",
+            "comment": "Updating react typings."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.2.0 <7.0.0` to `>=6.3.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/variants_v6.0.0",
+      "date": "Wed, 30 May 2018 20:28:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Cliff Koh <zihankoh@microsoft.com>",
+            "commit": "937364830cb4f1d6c38a319e61f6388eab2fbe32",
+            "comment": "Minimum React version is now 16.3.2."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.112.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.2",
       "tag": "@uifabric/variants_v5.5.2",
       "date": "Thu, 24 May 2018 17:06:02 GMT",

@@ -1,41 +1,31 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { FolderCoverBasicExample } from './examples/FolderCover.Basic.Example';
-const FolderCoverBasicExampleCode =
-  require('!raw-loader!@uifabric/experiments/src/components/FolderCover/examples/FolderCover.Basic.Example.tsx') as string;
+const FolderCoverBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/FolderCover/examples/FolderCover.Basic.Example.tsx') as string;
 
 export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='FolderCover'
-        componentName='FolderCover'
+        title="FolderCover"
+        componentName="FolderCover"
         exampleCards={
           <div>
-            <ExampleCard title='Folder Cover' isOptIn={ true } code={ FolderCoverBasicExampleCode }>
+            <ExampleCard title="Folder Cover" isOptIn={true} code={FolderCoverBasicExampleCode}>
               <FolderCoverBasicExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
+            sources={[
               require<string>('!raw-loader!@uifabric/experiments/src/components/FolderCover/FolderCover.types.ts')
-            ] }
+            ]}
           />
         }
-        overview={
-          <div />
-        }
-        bestPractices={
-          <div />
-        }
+        overview={<div />}
+        bestPractices={<div />}
         dos={
           <div>
             <ul>
@@ -50,7 +40,7 @@ export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }

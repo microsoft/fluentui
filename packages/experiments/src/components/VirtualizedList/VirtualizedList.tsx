@@ -22,7 +22,10 @@ export interface IVirtualizedListState {
   items: React.ReactNode[];
 }
 
-export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent<IVirtualizedListProps<TItem>, IVirtualizedListState> {
+export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent<
+  IVirtualizedListProps<TItem>,
+  IVirtualizedListState
+> {
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
@@ -38,7 +41,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     this._focusedIndex = -1;
 
     const {
-      initialViewportHeight = window.innerHeight  // Start with the window height if not passed in props, this does not cause layout
+      initialViewportHeight = window.innerHeight // Start with the window height if not passed in props, this does not cause layout
     } = this.props;
 
     this.state = {
@@ -78,35 +81,20 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     const { items } = this.state;
 
     return (
-      <div
-        className={ css('ms-VirtualizedList', className) }
-        ref={ this._root }
-      >
-        { items }
+      <div className={css('ms-VirtualizedList', className)} ref={this._root}>
+        {items}
       </div>
     );
   }
 
   private _renderItems(scrollTop: number, viewportHeight: number): (JSX.Element | null)[] {
-    const {
-      itemHeight,
-      items,
-      itemOverdraw = 2
-    } = this.props;
+    const { itemHeight, items, itemOverdraw = 2 } = this.props;
 
     const ranges: IRange[] = [];
 
     // Calculate visible range
-    const startIndex = Math.floor(
-      Math.max(
-        scrollTop / itemHeight - itemOverdraw,
-        0)
-    );
-    const endIndex = Math.floor(
-      Math.min(
-        startIndex + (itemOverdraw * 2) + (viewportHeight / itemHeight),
-        items.length)
-    );
+    const startIndex = Math.floor(Math.max(scrollTop / itemHeight - itemOverdraw, 0));
+    const endIndex = Math.floor(Math.min(startIndex + itemOverdraw * 2 + viewportHeight / itemHeight, items.length));
 
     const visibleRange = {
       start: startIndex,
@@ -143,11 +131,10 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     for (const range of ranges) {
       // Spacer item before range or between the last range and this one
       const isFirstRange = lastRenderedIndex === -1;
-      if ((isFirstRange && range.start !== 0)
-        || (!isFirstRange && lastRenderedIndex !== range.start)) {
+      if ((isFirstRange && range.start !== 0) || (!isFirstRange && lastRenderedIndex !== range.start)) {
         // Last range is not continuous with this one,
         // or the first range does not start from the beginning: insert spacer item
-        const spacerStartIndex = (isFirstRange ? 0 : lastRenderedIndex);
+        const spacerStartIndex = isFirstRange ? 0 : lastRenderedIndex;
         const gapBetweenRanges = range.start - spacerStartIndex;
         if (gapBetweenRanges > 0) {
           result.push(this._renderSpacerItem(gapBetweenRanges, spacerStartIndex));
@@ -171,11 +158,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   }
 
   private _renderSpacerItem(numberOfItems: number, index: number): JSX.Element {
-    const {
-      itemHeight,
-      items = [],
-      spacerItemTagName: ItemTag = 'div'
-    } = this.props;
+    const { itemHeight, items = [], spacerItemTagName: ItemTag = 'div' } = this.props;
 
     const spacerHeight = numberOfItems * itemHeight;
     const itemCount = items.length;
@@ -190,7 +173,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     }
 
     // tslint:disable-next-line:jsx-ban-props
-    return <ItemTag ref={ this._spacerRef.bind(this, key) } key={ key } style={ { height: spacerHeight } } />;
+    return <ItemTag ref={this._spacerRef.bind(this, key)} key={key} style={{ height: spacerHeight }} />;
   }
 
   private _spacerRef = (key: string, ref: HTMLElement): void => {
@@ -199,7 +182,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     } else {
       delete this._spacerElements[key];
     }
-  }
+  };
 
   private _render(scrollTop: number): void {
     scrollTop = Math.floor(scrollTop);

@@ -75,9 +75,9 @@ exports[`Nav renders Nav correctly 1`] = `
               name=""
             >
               <button
-                aria-describedby={null}
+                aria-describedby={undefined}
                 aria-label={undefined}
-                aria-labelledby={null}
+                aria-labelledby={undefined}
                 aria-pressed={undefined}
                 className=
                     ms-Button

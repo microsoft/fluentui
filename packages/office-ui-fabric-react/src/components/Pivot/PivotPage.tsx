@@ -34,76 +34,70 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Pivot'
-        componentName='PivotExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot'
+        title="Pivot"
+        componentName="PivotExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot"
         exampleCards={
           <div>
-            <ExampleCard title='Default Pivot' code={ PivotBasicExampleCode }>
+            <ExampleCard title="Default Pivot" code={PivotBasicExampleCode}>
               <PivotBasicExample />
             </ExampleCard>
-            <ExampleCard title='Count and Icon' code={ PivotIconCountExampleCode }>
+            <ExampleCard title="Count and Icon" code={PivotIconCountExampleCode}>
               <PivotIconCountExample />
             </ExampleCard>
-            <ExampleCard title='Large link size' code={ PivotLargeExampleCode }>
+            <ExampleCard title="Large link size" code={PivotLargeExampleCode}>
               <PivotLargeExample />
             </ExampleCard>
-            <ExampleCard title='Links of tab style' code={ PivotTabsExampleCode }>
+            <ExampleCard title="Links of tab style" code={PivotTabsExampleCode}>
               <PivotTabsExample />
             </ExampleCard>
-            <ExampleCard title='Links of large tab style' code={ PivotTabsLargesExampleCode }>
+            <ExampleCard title="Links of large tab style" code={PivotTabsLargesExampleCode}>
               <PivotTabsLargeExample />
             </ExampleCard>
-            <ExampleCard title='Trigger onchange event' code={ PivotOnChangeExampleCode }>
+            <ExampleCard title="Trigger onchange event" code={PivotOnChangeExampleCode}>
               <PivotOnChangeExample />
             </ExampleCard>
-            <ExampleCard title='Rendering nested components within the Pivot' code={ PivotFabricExampleCode }>
+            <ExampleCard title="Rendering nested components within the Pivot" code={PivotFabricExampleCode}>
               <PivotFabricExample />
             </ExampleCard>
-            <ExampleCard title='Show/Hide pivot item' code={ PivotRemoveExampleCode }>
+            <ExampleCard title="Show/Hide pivot item" code={PivotRemoveExampleCode}>
               <PivotRemoveExample />
             </ExampleCard>
-            <ExampleCard title='Override selected item' code={ PivotOverrideExampleCode }>
+            <ExampleCard title="Override selected item" code={PivotOverrideExampleCode}>
               <PivotOverrideExample />
             </ExampleCard>
-            <ExampleCard title='Render content separately' code={ PivotSeparateExampleCode }>
+            <ExampleCard title="Render content separately" code={PivotSeparateExampleCode}>
               <PivotSeparateExample />
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ 'PivotItem' }
+        allowNativeProps={'PivotItem'}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
+            sources={[
               require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
               require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
-            ] }
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md')}
           </PageMarkdown>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md')}
           </PageMarkdown>
         }
         donts={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...PivotStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...PivotStatus} />}
       />
     );
   }

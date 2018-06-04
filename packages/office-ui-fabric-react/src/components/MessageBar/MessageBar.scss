@@ -212,7 +212,11 @@
     font-size: 12px;
     height: 12px;
     line-height: 12px;
-    color: $ms-color-neutralSecondary;
+    color: $warningTextColor;
+
+    @include high-contrast {
+      color: WindowText;
+    }
   }
 }
 

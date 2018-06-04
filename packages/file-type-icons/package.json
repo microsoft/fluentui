@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/file-type-icons",
-  "version": "0.6.2",
+  "version": "0.7.1",
   "description": "Office UI Fabric file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,8 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/code-style.js"
   },
   "disabledTasks": [
     "sass",
@@ -21,14 +22,14 @@
     "jest"
   ],
   "devDependencies": {
-    "@types/react": "16.3.13",
+    "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.31.0 <6.0.0",
+    "@uifabric/styling": ">=6.0.2 <7.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

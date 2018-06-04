@@ -125,7 +125,8 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/facepile'
         },
         {
-          component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
+          component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage')
+            .FloatingPeoplePickerPage,
           key: 'FloatingPeoplePicker',
           name: 'FloatingPeoplePicker',
           url: '#examples/floatingpeoplepicker'
@@ -257,7 +258,8 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/shimmer'
         },
         {
-          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
+          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage')
+            .SelectedPeopleListPage,
           key: 'SelectedPeopleList',
           name: 'SelectedPeopleList',
           url: '#examples/selectedpeoplelist'
@@ -316,7 +318,8 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/colorpicker'
         },
         {
-          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage')
+            .ExtendedPeoplePickerPage,
           key: 'ExtendedPeoplePicker',
           name: 'ExtendedPeoplePicker',
           url: '#examples/extendedpeoplepicker'
@@ -421,7 +424,6 @@ export const AppDefinition: IAppDefinition = {
       url: 'http://www.github.com/officedev'
     }
   ]
-
 };
 
-export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;
+export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;

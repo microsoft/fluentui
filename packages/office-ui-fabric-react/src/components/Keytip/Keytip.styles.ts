@@ -16,55 +16,62 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
           [HighContrastSelector]: {
             color: 'GrayText',
             opacity: 1
-          },
+          }
         }
       },
       !visible && {
         visibility: 'hidden'
       }
     ],
-    root: [{
-      textAlign: 'center',
-      paddingLeft: '3px',
-      paddingRight: '3px',
-      backgroundColor: theme.palette.neutralDark,
-      color: theme.palette.neutralLight,
-      minWidth: '11px',
-      lineHeight: '17px',
-      height: '17px',
-      display: 'inline-block'
-    },
-    disabled && {
-      color: theme.palette.neutralTertiaryAlt
-    }]
+    root: [
+      {
+        textAlign: 'center',
+        paddingLeft: '3px',
+        paddingRight: '3px',
+        backgroundColor: theme.palette.neutralDark,
+        color: theme.palette.neutralLight,
+        minWidth: '11px',
+        lineHeight: '17px',
+        height: '17px',
+        display: 'inline-block'
+      },
+      disabled && {
+        color: theme.palette.neutralTertiaryAlt
+      }
+    ]
   };
 };
 
 export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
   return {
-    container: [
+    container: [],
+    root: [
+      {
+        border: 'none',
+        boxShadow: 'none'
+      }
     ],
-    root: [{
-      border: 'none',
-      boxShadow: 'none'
-    }],
-    beak: [
-    ],
-    beakCurtain: [
-    ],
-    calloutMain: [{
-      backgroundColor: 'transparent'
-    }]
+    beak: [],
+    beakCurtain: [],
+    calloutMain: [
+      {
+        backgroundColor: 'transparent'
+      }
+    ]
   };
 };
 
-export const getCalloutOffsetStyles = (offset: IPoint): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
+export const getCalloutOffsetStyles = (
+  offset: IPoint
+): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
   return (props: ICalloutContentStyleProps): ICalloutContentStyles => {
     return mergeStyleSets(getCalloutStyles(props), {
-      root: [{
-        marginLeft: offset.x,
-        marginTop: offset.y
-      }]
+      root: [
+        {
+          marginLeft: offset.x,
+          marginTop: offset.y
+        }
+      ]
     });
   };
 };

@@ -19,9 +19,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -125,9 +125,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -231,9 +231,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -337,9 +337,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -443,9 +443,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -549,9 +549,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -655,9 +655,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -761,9 +761,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -867,9 +867,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -973,9 +973,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1079,9 +1079,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1185,9 +1185,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1291,9 +1291,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1397,9 +1397,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1503,9 +1503,9 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1628,9 +1628,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1734,9 +1734,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1840,9 +1840,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -1946,9 +1946,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2052,9 +2052,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2158,9 +2158,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2264,9 +2264,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2370,9 +2370,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2476,9 +2476,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2582,9 +2582,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2688,9 +2688,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2794,9 +2794,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -2900,9 +2900,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -3006,9 +3006,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button
@@ -3112,9 +3112,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={null}
+          aria-describedby={undefined}
           aria-label={undefined}
-          aria-labelledby={null}
+          aria-labelledby={undefined}
           aria-pressed={undefined}
           className=
               ms-Button

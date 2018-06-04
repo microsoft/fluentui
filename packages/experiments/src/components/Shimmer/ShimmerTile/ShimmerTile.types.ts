@@ -3,9 +3,7 @@ import { IStyle } from '../../../Styling';
 import { ISize, IStyleFunctionOrObject } from '../../../Utilities';
 import { TileSize } from '../../Tile';
 
-export interface IShimmerTile {
-
-}
+export interface IShimmerTile {}
 
 /**
  * ShimmerTile component props.
@@ -58,5 +56,4 @@ export interface IShimmerTileStyleProps {
 
 export interface IShimmerTileStyles {
   root?: IStyle;
-  flexDiv?: IStyle;
 }

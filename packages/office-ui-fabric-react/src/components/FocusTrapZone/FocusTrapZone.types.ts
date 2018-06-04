@@ -2,8 +2,8 @@ import * as React from 'react';
 
 export interface IFocusTrapZone {
   /**
-  * Sets focus on the first focusable, or configured, child in focus trap zone
-  */
+   * Sets focus on the first focusable, or configured, child in focus trap zone
+   */
   focus: () => void;
 }
 
@@ -38,14 +38,14 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   ignoreExternalFocusing?: boolean;
 
   /**
-  * Indicates whether focus trap zone should force focus inside the focus trap zone
-  * @default true
-  */
+   * Indicates whether focus trap zone should force focus inside the focus trap zone
+   * @default true
+   */
   forceFocusInsideTrap?: boolean;
 
   /**
-  * Indicates the selector for first focusable item
-  */
+   * Indicates the selector for first focusable item
+   */
   firstFocusableSelector?: string | (() => string);
 
   /**

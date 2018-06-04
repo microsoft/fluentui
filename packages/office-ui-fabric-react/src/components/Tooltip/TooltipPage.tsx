@@ -25,48 +25,44 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Tooltip'
-        componentName='TooltipExample'
-        componentUrl='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip'
+        title="Tooltip"
+        componentName="TooltipExample"
+        componentUrl="https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip"
         exampleCards={
           <LayerHost>
-            <ExampleCard title='Default Tooltip' code={ TooltipBasicExampleCode }>
+            <ExampleCard title="Default Tooltip" code={TooltipBasicExampleCode}>
               <TooltipBasicExample />
             </ExampleCard>
 
-            <ExampleCard title='Tooltip with list' code={ TooltipCustomExampleCode }>
+            <ExampleCard title="Tooltip with list" code={TooltipCustomExampleCode}>
               <TooltipCustomExample />
             </ExampleCard>
 
-            <ExampleCard title='Tooltip with a closing delay' code={ TooltipInteractiveExampleCode }>
+            <ExampleCard title="Tooltip with a closing delay" code={TooltipInteractiveExampleCode}>
               <TooltipInteractiveExample />
             </ExampleCard>
 
-            <ExampleCard title='Tooltip only on overflow' code={ TooltipOverflowExampleCode }>
+            <ExampleCard title="Tooltip only on overflow" code={TooltipOverflowExampleCode}>
               <TooltipOverflowExample />
             </ExampleCard>
           </LayerHost>
         }
-        allowNativeProps={ true }
+        allowNativeProps={true}
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
+            sources={[
               require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
               require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
-            ] }
+            ]}
           />
         }
         overview={
           <PageMarkdown>
-            { require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md') }
+            {require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md')}
           </PageMarkdown>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...TooltipStatus }
-          />
-        }
+        isHeaderVisible={this.props.isHeaderVisible}
+        componentStatus={<ComponentStatus {...TooltipStatus} />}
       />
     );
   }
