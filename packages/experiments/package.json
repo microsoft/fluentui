@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "office-ui-fabric-react": ">=6.3.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.4.0 <7.0.0",
     "@uifabric/icons": ">=6.0.0 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
