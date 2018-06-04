@@ -619,14 +619,12 @@ describe('SpinButton', () => {
     expect(currentValue).toEqual(newCurrentValue);
   });
 
-  it('should fire custom handlers even when value prop is 0', () => {
-    const val: string = 0 as any;
+  it('should fire custom onIncrement handler (with minimal properties)', () => {
     const onIncrement: jest.Mock = jest.fn();
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton
         label='label'
-        value={ val }
         onIncrement={ onIncrement }
       />
     );
@@ -642,5 +640,47 @@ describe('SpinButton', () => {
     );
 
     expect(onIncrement).toBeCalled();
+  });
+
+  it('should fire custom onDecrement handler (with minimal properties)', () => {
+    const onDecrement: jest.Mock = jest.fn();
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label='label'
+        onDecrement={ onDecrement }
+      />
+    );
+
+    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-DownButton')[0];
+
+    ReactTestUtils.Simulate.mouseDown(buttonDOM,
+      {
+        type: 'mousedown',
+        clientX: 0,
+        clientY: 0
+      }
+    );
+
+    expect(onDecrement).toBeCalled();
+  });
+
+  it('should fire custom onValidate handler (with minimal properties)', () => {
+    const onValidate: jest.Mock = jest.fn();
+    const exampleNewValue = '99';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label='label'
+        onValidate={ onValidate }
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.blur(inputDOM);
+
+    expect(onValidate).toBeCalled();
   });
 });
