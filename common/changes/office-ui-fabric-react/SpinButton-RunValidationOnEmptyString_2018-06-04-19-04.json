@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "_onValidate should only skip validation on text entry if state.value is undefined (it was skipping when text entry was empty string)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "rpsenski@microsoft.com"
+}

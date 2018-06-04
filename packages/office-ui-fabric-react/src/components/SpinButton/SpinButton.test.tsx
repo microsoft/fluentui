@@ -317,6 +317,32 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).toEqual(String(exampleDefaultValue));
   });
 
+  it('should reset the value of the spin button when input value is cleared (empty)', () => {
+    const exampleLabelValue = 'SpinButton';
+    const exampleMinValue = 2;
+    const exampleMaxValue = 22;
+    const exampleDefaultValue = '12';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label={ exampleLabelValue }
+        min={ exampleMinValue }
+        max={ exampleMaxValue }
+        defaultValue={ exampleDefaultValue }
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent());
+    ReactTestUtils.Simulate.blur(inputDOM);
+
+    expect(inputDOM.value).toEqual(exampleDefaultValue);
+    expect(inputDOM.getAttribute('aria-valuemin')).toEqual(String(exampleMinValue));
+    expect(inputDOM.getAttribute('aria-valuemax')).toEqual(String(exampleMaxValue));
+    expect(inputDOM.getAttribute('aria-valuenow')).toEqual(String(exampleDefaultValue));
+  });
+
   it('should revert to max value when input value is higher than the max of the spin button', () => {
     const exampleLabelValue = 'SpinButton';
     const exampleMinValue = 2;
