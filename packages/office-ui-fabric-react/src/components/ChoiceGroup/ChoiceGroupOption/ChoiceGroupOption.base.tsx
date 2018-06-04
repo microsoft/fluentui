@@ -19,6 +19,7 @@ import {
 } from '../../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
+const defaultImageSize = 32;
 
 @customizable('ChoiceGroupOption', ['theme'])
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
@@ -41,7 +42,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       theme,
       iconProps,
       imageSrc,
-      imageSize = { width: 32, height: 32 },
+      imageSize = { width: defaultImageSize, height: defaultImageSize },
       disabled,
       checked,
       id,
@@ -116,7 +117,11 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       iconProps,
     } = props;
 
-    const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
+    const imageSize = props.imageSize ? props.imageSize : { width: defaultImageSize, height: defaultImageSize };
+    // We want to size the labelWrapper in relation to the imageSize width.
+    // The extra 8px allows for images with the defaultImageSize to fit 9 letters in a row before word breaking,
+    // thus minimizing the frequency of word break.
+    const labelWrapperMaxWidth = imageSize.width * 2 + 8;
 
     return (
       <label htmlFor={ id } className={ this._classNames.field }>
@@ -153,7 +158,9 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
         { imageSrc || iconProps ? (
           <div
             className={ this._classNames.labelWrapper }
-            style={ { maxWidth: imageSize.width * 2 + 8 } }
+            style={ {
+              maxWidth: labelWrapperMaxWidth
+            } }
           >
             <div ref={ (el) => { this._onLabelWrapperRef(el); } }>
               { onRenderLabel!(props) }
@@ -192,13 +199,8 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
 
   private _onRenderLabel = (props: IChoiceGroupOptionProps): JSX.Element => {
     const imageSize = props.imageSize;
-    let gapSpace = 60;
-
-    if (imageSize) {
-      const imageHeight = imageSize.height ? imageSize.height : 32;
-      const paddingBorderTop = 28; // includes padding, border, margin from styles
-      gapSpace = paddingBorderTop + imageHeight;
-    }
+    const paddingBorderTop = 28; // includes padding, border, margin from styles
+    let gapSpace = ((imageSize && imageSize.height) ? imageSize.height : defaultImageSize) + paddingBorderTop;
 
     return (
       <TooltipHost
