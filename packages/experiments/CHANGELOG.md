@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 01 Jun 2018 10:18:43 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+
+## 6.1.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+- Fixed tests to be compatible with jest 23
 
 ## 6.1.0
 Fri, 01 Jun 2018 10:18:43 GMT
