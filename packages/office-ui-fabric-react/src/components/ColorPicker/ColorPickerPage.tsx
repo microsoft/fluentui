@@ -19,9 +19,7 @@ export const ColorPickerPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts')
   ],
   overview: require<
     string
@@ -32,5 +30,6 @@ export const ColorPickerPageProps: IDemoPageProps = {
   isHeaderVisible: true
 };
 
-export const ColorPickerPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ColorPickerPageProps, ...props }} />;
+export const ColorPickerPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ColorPickerPageProps, ...props }} />
+);

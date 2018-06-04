@@ -33,8 +33,7 @@ export const CalendarPageProps: IDemoPageProps = {
       )
     },
     {
-      title:
-        'Inline Calendar with overlayed month picker when header is clicked',
+      title: 'Inline Calendar with overlayed month picker when header is clicked',
       code: CalendarInlineExampleCode,
 
       view: (
@@ -164,12 +163,7 @@ export const CalendarPageProps: IDemoPageProps = {
           highlightCurrentMonth={false}
           highlightSelectedMonth={true}
           showGoToToday={true}
-          workWeekDays={[
-            DayOfWeek.Tuesday,
-            DayOfWeek.Saturday,
-            DayOfWeek.Wednesday,
-            DayOfWeek.Friday
-          ]}
+          workWeekDays={[DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday]}
         />
       )
     },
@@ -207,22 +201,15 @@ export const CalendarPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md'),
   isHeaderVisible: true
 };
 
-export const CalendarPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...CalendarPageProps, ...props }} />;
+export const CalendarPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...CalendarPageProps, ...props }} />
+);

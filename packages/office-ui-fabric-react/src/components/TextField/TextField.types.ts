@@ -99,13 +99,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   addonString?: string;
 
   /**
-  * String for prefix
-  */
+   * String for prefix
+   */
   prefix?: string;
 
   /**
-  * String for suffix
-  */
+   * String for suffix
+   */
   suffix?: string;
 
   /**
@@ -115,13 +115,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
   /**
-  * Custom render function for prefix.
-  */
+   * Custom render function for prefix.
+   */
   onRenderPrefix?: IRenderFunction<ITextFieldProps>;
 
   /**
-  * Custom render function for suffix.
-  */
+   * Custom render function for suffix.
+   */
   onRenderSuffix?: IRenderFunction<ITextFieldProps>;
 
   /**

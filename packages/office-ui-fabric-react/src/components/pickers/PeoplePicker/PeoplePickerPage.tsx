@@ -16,11 +16,11 @@ export const PeoplePickerPageProps: IDemoPageProps = {
     {
       title: 'People Pickers',
       code: PeoplePickerTypesExampleCode,
-      view: <PeoplePickerTypesExample />,
-    },
+      view: <PeoplePickerTypesExample />
+    }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')
   ],
   overview: require<
     string
@@ -34,7 +34,7 @@ export const PeoplePickerPageProps: IDemoPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: true
 };
 
 export const PeoplePickerPage = (props: { isHeaderVisible: boolean }) => (

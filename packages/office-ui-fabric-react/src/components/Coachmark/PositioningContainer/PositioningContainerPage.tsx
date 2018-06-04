@@ -14,21 +14,19 @@ export const PositioningContainerPageProps: IDemoPageProps = {
     {
       title: 'Positioning Container Basic',
       code: CoachmarkBasicExampleCode,
-      view: <PositioningContainerBasicExample />,
-    },
+      view: <PositioningContainerBasicExample />
+    }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts'),
+    require<string>('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')
   ],
   overview: '',
   bestPractices: '',
   dos: '',
   donts: '',
-  isHeaderVisible: true,
+  isHeaderVisible: true
 };
 
-export const PositioningContainerPage = (props: {
-  isHeaderVisible: boolean;
-}) => <DemoPage {...{ ...PositioningContainerPageProps, ...props }} />;
+export const PositioningContainerPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...PositioningContainerPageProps, ...props }} />
+);

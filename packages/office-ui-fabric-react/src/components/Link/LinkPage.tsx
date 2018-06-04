@@ -19,25 +19,14 @@ export const LinkPageProps: IDemoPageProps = {
       view: <LinkBasicExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true,
   nativePropsElement: ['a', 'button']
 };
 
-export const LinkPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...LinkPageProps, ...props }} />;
+export const LinkPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...LinkPageProps, ...props }} />;

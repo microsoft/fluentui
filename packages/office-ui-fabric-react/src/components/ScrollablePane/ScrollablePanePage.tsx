@@ -28,20 +28,14 @@ export const ScrollablePanePageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
   ],
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md'),
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
@@ -50,5 +44,6 @@ export const ScrollablePanePageProps: IDemoPageProps = {
   nativePropsElement: ['a', 'button']
 };
 
-export const ScrollablePanePage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ScrollablePanePageProps, ...props }} />;
+export const ScrollablePanePage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ScrollablePanePageProps, ...props }} />
+);

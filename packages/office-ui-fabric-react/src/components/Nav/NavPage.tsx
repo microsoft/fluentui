@@ -40,23 +40,12 @@ export const NavPageProps: IDemoPageProps = {
       view: <NavByKeysExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md'),
   isHeaderVisible: true
 };
 
-export const NavPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...NavPageProps, ...props }} />;
+export const NavPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...NavPageProps, ...props }} />;

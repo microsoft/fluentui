@@ -27,9 +27,7 @@ export const GroupedListPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/GroupedList/GroupedList.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/GroupedList.types.ts')
   ],
   overview: require<
     string
@@ -40,5 +38,6 @@ export const GroupedListPageProps: IDemoPageProps = {
   isHeaderVisible: true
 };
 
-export const GroupedListPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...GroupedListPageProps, ...props }} />;
+export const GroupedListPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...GroupedListPageProps, ...props }} />
+);

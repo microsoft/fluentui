@@ -46,22 +46,13 @@ export const CalloutPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
   isHeaderVisible: true
 };
 
-export const CalloutPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...CalloutPageProps, ...props }} />;
+export const CalloutPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...CalloutPageProps, ...props }} />;

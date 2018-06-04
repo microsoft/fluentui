@@ -20,7 +20,7 @@ export const DialogPageProps: IDemoPageProps = {
     {
       title: 'Default Dialog',
       code: DialogBasicExampleCode,
-      view: <DialogBasicExample />,
+      view: <DialogBasicExample />
     },
     {
       title: 'Dialog with large header and ChoiceGroup',
@@ -28,13 +28,12 @@ export const DialogPageProps: IDemoPageProps = {
       view: (
         <>
           <p>
-            Use this Dialog sparingly, when calling extra attention to the
-            content. It can be used in situations where you want to teach the
-            user something or notify them of an important change.
+            Use this Dialog sparingly, when calling extra attention to the content. It can be used in situations where
+            you want to teach the user something or notify them of an important change.
           </p>
           <DialogLargeHeaderExample />
         </>
-      ),
+      )
     },
     {
       title: 'Blocking Dialog',
@@ -42,35 +41,23 @@ export const DialogPageProps: IDemoPageProps = {
       view: (
         <>
           <p>
-            A blocking Dialog disables all other actions and commands on the
-            page behind it. They should be used very sparingly, only when it is
-            critical that the user makes a choice or provides information before
-            they can proceed. Blocking Dialogs are generally used for
-            irreversible or potentially destructive tasks.
+            A blocking Dialog disables all other actions and commands on the page behind it. They should be used very
+            sparingly, only when it is critical that the user makes a choice or provides information before they can
+            proceed. Blocking Dialogs are generally used for irreversible or potentially destructive tasks.
           </p>
           <DialogBlockingExample />
         </>
-      ),
-    },
+      )
+    }
   ],
   propertiesTablesSources: [
-    require<
-      string
-      >('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.types.ts')
   ],
-  overview: require<
-    string
-    >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-    >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
-  donts: require<
-    string
-    >('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
-  isHeaderVisible: true,
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
+  isHeaderVisible: true
 };
 
-export const DialogPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage { ...{ ...DialogPageProps, ...props } } />
-);
+export const DialogPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...DialogPageProps, ...props }} />;

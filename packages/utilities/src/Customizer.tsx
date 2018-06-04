@@ -7,49 +7,50 @@ export interface ICustomizerContext {
   customizations: ICustomizations;
 }
 
-export type ICustomizerProps = IBaseProps & Partial<{
-  /**
-   * @description
-   * Settings are used as general settings for the React tree below.
-   * Components can subscribe to receive the settings by using `customizable`.
-   *
-   * @example
-   * Settings can be represented by a plain object that contains the key value pairs.
-   * ```
-   *  <Customizer settings={{ color: 'red' }} />
-   * ```
-   * or a function that receives the current settings and returns the new ones
-   * ```
-   *  <Customizer settings={(currentSettings) => ({ ...currentSettings, color: 'red' })} />
-   * ```
-   */
-  settings: Settings | SettingsFunction;
-  /**
-   * @description
-   * Scoped settings are settings that are scoped to a specific scope. The
-   * scope is the name that is passed to the `customizable` function when the
-   * the component is customized.
-   *
-   * @example
-   * Scoped settings can be represented by a plain object that contains the key value pairs.
-   * ```
-   *  const myScopedSettings = {
-   *    Button: { color: 'red' };
-   *  };
-   *
-   *  <Customizer scopedSettings={myScopedSettings} />
-   * ```
-   * or a function that receives the current settings and returns the new ones
-   * ```
-   *  const myScopedSettings = {
-   *    Button: { color: 'red' };
-   *  };
-   *
-   *  <Customizer scopedSettings={(currentScopedSettings) => ({ ...currentScopedSettings, ...myScopedSettings })} />
-   * ```
-   */
-  scopedSettings: Settings | SettingsFunction
-}>;
+export type ICustomizerProps = IBaseProps &
+  Partial<{
+    /**
+     * @description
+     * Settings are used as general settings for the React tree below.
+     * Components can subscribe to receive the settings by using `customizable`.
+     *
+     * @example
+     * Settings can be represented by a plain object that contains the key value pairs.
+     * ```
+     *  <Customizer settings={{ color: 'red' }} />
+     * ```
+     * or a function that receives the current settings and returns the new ones
+     * ```
+     *  <Customizer settings={(currentSettings) => ({ ...currentSettings, color: 'red' })} />
+     * ```
+     */
+    settings: Settings | SettingsFunction;
+    /**
+     * @description
+     * Scoped settings are settings that are scoped to a specific scope. The
+     * scope is the name that is passed to the `customizable` function when the
+     * the component is customized.
+     *
+     * @example
+     * Scoped settings can be represented by a plain object that contains the key value pairs.
+     * ```
+     *  const myScopedSettings = {
+     *    Button: { color: 'red' };
+     *  };
+     *
+     *  <Customizer scopedSettings={myScopedSettings} />
+     * ```
+     * or a function that receives the current settings and returns the new ones
+     * ```
+     *  const myScopedSettings = {
+     *    Button: { color: 'red' };
+     *  };
+     *
+     *  <Customizer scopedSettings={(currentScopedSettings) => ({ ...currentScopedSettings, ...myScopedSettings })} />
+     * ```
+     */
+    scopedSettings: Settings | SettingsFunction;
+  }>;
 
 /**
  * The Customizer component allows for default props to be mixed into components which
@@ -68,12 +69,13 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerConte
   public static contextTypes: {
     customizations: PropTypes.Requireable<{}>;
   } = {
-      customizations: PropTypes.object
-    };
+    customizations: PropTypes.object
+  };
 
   public static childContextTypes: {
     customizations: PropTypes.Requireable<{}>;
-  } = Customizer.contextTypes;
+  } =
+    Customizer.contextTypes;
 
   // tslint:disable-next-line:no-any
   constructor(props: ICustomizerProps, context: any) {
@@ -95,18 +97,13 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerConte
     return React.Children.only(this.props.children);
   }
 
-  private _getCustomizations(
-    props: ICustomizerProps,
-    context: ICustomizerContext
-  ): ICustomizerContext {
-    const {
-      customizations = { settings: {}, scopedSettings: {} }
-    } = context;
+  private _getCustomizations(props: ICustomizerProps, context: ICustomizerContext): ICustomizerContext {
+    const { customizations = { settings: {}, scopedSettings: {} } } = context;
 
     return {
       customizations: {
         settings: mergeSettings(customizations.settings, props.settings),
-        scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings),
+        scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings)
       }
     };
   }
@@ -129,7 +126,7 @@ function isSettingsFunction(settings?: Settings | SettingsFunction): settings is
 }
 
 function settingsMergeWith(newSettings?: object): (settings: Settings) => Settings {
-  return (settings: Settings) => newSettings ? { ...newSettings, ...settings } : settings;
+  return (settings: Settings) => (newSettings ? { ...newSettings, ...settings } : settings);
 }
 
 function scopedSettingsMergeWith(scopedSettingsFromProps: Settings = {}): (scopedSettings: Settings) => Settings {

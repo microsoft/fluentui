@@ -2,7 +2,6 @@ import { IButtonClassNames } from '../../components/Button/BaseButton.classNames
 import { ITheme } from '../../Styling';
 
 export interface IGridCellProps<T> {
-
   /**
    * The option that will be made available to the user
    */
@@ -54,33 +53,34 @@ export interface IGridCellProps<T> {
   className?: string;
 
   /**
-  * Optional, the CSS class used for when the cell is disabled
-  */
+   * Optional, the CSS class used for when the cell is disabled
+   */
   cellDisabledStyle?: string[];
 
   /**
-  * Optional, the CSS class used for when the cell is selected
-  */
+   * Optional, the CSS class used for when the cell is selected
+   */
   cellIsSelectedStyle?: string[];
 
   /**
-  * Index for this option
-  */
+   * Index for this option
+   */
   index?: number;
 
   /**
- * The label for this item.
- * Visible text if this item is a header,
- * tooltip if is this item is normal
- */
+   * The label for this item.
+   * Visible text if this item is a header,
+   * tooltip if is this item is normal
+   */
   label?: string;
 
   /**
-  * Method to provide the classnames to style a button.
-  * The default value for this prop is the getClassnames func
-  * defined in BaseButton.classnames.
-  */
-  getClassNames?: (theme: ITheme,
+   * Method to provide the classnames to style a button.
+   * The default value for this prop is the getClassnames func
+   * defined in BaseButton.classnames.
+   */
+  getClassNames?: (
+    theme: ITheme,
     className: string,
     variantClassName: string,
     iconClassName: string | undefined,
@@ -88,12 +88,13 @@ export interface IGridCellProps<T> {
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined) => IButtonClassNames;
+    isSplit: boolean | undefined
+  ) => IButtonClassNames;
 
   /**
-  * Optional, mouseEnter handler.
-  * @returns true if the event should be processed, false otherwise
-  */
+   * Optional, mouseEnter handler.
+   * @returns true if the event should be processed, false otherwise
+   */
   onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
 
   /**

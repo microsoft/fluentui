@@ -55,23 +55,14 @@ export const PersonaPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
-export const PersonaPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...PersonaPageProps, ...props }} />;
+export const PersonaPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...PersonaPageProps, ...props }} />;

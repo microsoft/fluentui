@@ -40,24 +40,13 @@ export const IconPageProps: IDemoPageProps = {
       view: <IconImageSheetExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
-export const IconPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...IconPageProps, ...props }} />;
+export const IconPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...IconPageProps, ...props }} />;

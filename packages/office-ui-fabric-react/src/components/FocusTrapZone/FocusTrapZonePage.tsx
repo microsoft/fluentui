@@ -41,9 +41,7 @@ export const FocusTrapZonePageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
   ],
   overview: require<
     string
@@ -55,5 +53,6 @@ export const FocusTrapZonePageProps: IDemoPageProps = {
   allowNativeProps: true
 };
 
-export const FocusTrapZonePage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...FocusTrapZonePageProps, ...props }} />;
+export const FocusTrapZonePage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...FocusTrapZonePageProps, ...props }} />
+);

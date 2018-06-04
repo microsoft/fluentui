@@ -34,26 +34,19 @@ export const DropdownPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
     require<
       string
     >('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
-export const DropdownPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...DropdownPageProps, ...props }} />;
+export const DropdownPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...DropdownPageProps, ...props }} />
+);

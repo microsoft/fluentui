@@ -1,8 +1,5 @@
 import { fontFace } from './fontFace';
-import {
-  Stylesheet,
-  InjectionMode
-} from './Stylesheet';
+import { Stylesheet, InjectionMode } from './Stylesheet';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 

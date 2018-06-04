@@ -28,5 +28,6 @@ export const MarqueeSelectionPageProps: IDemoPageProps = {
   isHeaderVisible: true
 };
 
-export const MarqueeSelectionPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...MarqueeSelectionPageProps, ...props }} />;
+export const MarqueeSelectionPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...MarqueeSelectionPageProps, ...props }} />
+);

@@ -20,22 +20,13 @@ export const SliderPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-      >('!raw-loader!office-ui-fabric-react/src/components/Slider/Slider.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/Slider.types.ts')
   ],
-  overview: require<
-    string
-    >('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-    >('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
-  donts: require<
-    string
-    >('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
   isHeaderVisible: true
 };
 
-export const SliderPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage { ...{ ...SliderPageProps, ...props } } />;
+export const SliderPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...SliderPageProps, ...props }} />;

@@ -64,7 +64,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "1d305b55114bffaece2841500c8476ba3996d2b2",
-            "comment": "merge-styles: `style` elements which are created on the fly now \"bunch\" together, avoiding unpredictability in specificity."
+            "comment":
+              "merge-styles: `style` elements which are created on the fly now \"bunch\" together, avoiding unpredictability in specificity."
           }
         ]
       }
@@ -99,7 +100,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "68acb9b5f356c7b76ef334984ce4a9258a926061",
-            "comment": "mergeStyles: rules are now registered in separate styling objects, improving performance significantly."
+            "comment":
+              "mergeStyles: rules are now registered in separate styling objects, improving performance significantly."
           }
         ]
       }
@@ -211,7 +213,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "711ef243d0212f623a55ebde0d98042f148d81db",
-            "comment": "mergeStyles: Adding support to register selectors globally. Use `:global(rule)` as the selector to ensure that the unique className is not prepended in the output. See merge-styles README.md for more details."
+            "comment":
+              "mergeStyles: Adding support to register selectors globally. Use `:global(rule)` as the selector to ensure that the unique className is not prepended in the output. See merge-styles README.md for more details."
           }
         ]
       }
@@ -295,7 +298,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
-            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+            "comment":
+              "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
           }
         ]
       }
@@ -309,7 +313,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "a1c3530c60b1b1b90de33fb917d0f668f1055525",
-            "comment": "Fixing issues where child variables in selectors would not expand correctly. Also fixing a case where the same static class registered in two different sets will not show up multiple times in the result from `mergeStyleSets`."
+            "comment":
+              "Fixing issues where child variables in selectors would not expand correctly. Also fixing a case where the same static class registered in two different sets will not show up multiple times in the result from `mergeStyleSets`."
           }
         ]
       }
@@ -323,7 +328,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "df00b312271aff8c1b662b593caf1724271210d4",
-            "comment": "Adding `onInsertNode` callback and adjusting appendChild method for injecting styles to not cause flashes."
+            "comment":
+              "Adding `onInsertNode` callback and adjusting appendChild method for injecting styles to not cause flashes."
           }
         ]
       }
@@ -351,7 +357,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "696cd19b230f855f071f766c27c0066eb15d8109",
-            "comment": "Adding the ability to append style content rather than inject using insertRule, for special cases."
+            "comment":
+              "Adding the ability to append style content rather than inject using insertRule, for special cases."
           }
         ]
       }
@@ -365,7 +372,8 @@
           {
             "author": "stephenzsy <stephen.zsy@gmail.com>",
             "commit": "5e58d5a68692b2fcef119444fb52361b51118b1f",
-            "comment": "When selectors use previously registered class names as values, they are now correctly auto expanded."
+            "comment":
+              "When selectors use previously registered class names as values, they are now correctly auto expanded."
           }
         ]
       }
@@ -393,7 +401,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "74e329e01e32d23b5669c469fe7e4c4a2b4eee89",
-            "comment": "Calling `mergeStyles` with strings containing space delimited class names was not expanding merge-styles generated class names in the final merge. Fixed so that it does."
+            "comment":
+              "Calling `mergeStyles` with strings containing space delimited class names was not expanding merge-styles generated class names in the final merge. Fixed so that it does."
           }
         ]
       }
@@ -407,7 +416,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "ab9e5db6f06d9f52c648281cd97bbbce4cf9fa77",
-            "comment": "mergeStyles: in RTL we were seeing exceptions with registering opacity: 0 in keyframes. This has been addressed and a test has been added to cover the case."
+            "comment":
+              "mergeStyles: in RTL we were seeing exceptions with registering opacity: 0 in keyframes. This has been addressed and a test has been added to cover the case."
           }
         ]
       }
@@ -470,7 +480,8 @@
           {
             "author": "Jon Schectman <joschect@microsoft.com>",
             "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
-            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+            "comment":
+              "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
           }
         ]
       }
@@ -484,7 +495,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "f95fa74185b6faaf278fdc0a78e72635bcc3ec48",
-            "comment": "Adding selector support to target child class names that were generated in the same mergeStyleSets set."
+            "comment":
+              "Adding selector support to target child class names that were generated in the same mergeStyleSets set."
           }
         ]
       }
@@ -498,7 +510,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "4ef41283e7667631964dd6cf973534fab4cbb1fa",
-            "comment": "Found that adding `false` to the list of accepted typings in `mergeStyleSets` was breaking type safety. Removed it."
+            "comment":
+              "Found that adding `false` to the list of accepted typings in `mergeStyleSets` was breaking type safety. Removed it."
           }
         ]
       }
@@ -512,7 +525,8 @@
           {
             "author": "David Zearing <dzearing@microsoft.com>",
             "commit": "88b06cfda2262661375f90f3bde2d6a16af749a9",
-            "comment": "The `mergeStyleSets` method's type safety was not correct. Now with significantly better type safety."
+            "comment":
+              "The `mergeStyleSets` method's type safety was not correct. Now with significantly better type safety."
           }
         ]
       }

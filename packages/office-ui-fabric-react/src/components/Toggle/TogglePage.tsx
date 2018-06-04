@@ -21,31 +21,21 @@ export const TogglePageProps: IDemoPageProps = {
       view: <ToggleBasicExample />
     },
     {
-      title:
-        'Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off',
+      title: 'Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off',
       code: ToggleAriaLabelExampleCode,
       view: <ToggleAriaLabelExample />
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true,
   nativePropsElement: 'input'
 };
 
-export const TogglePage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...TogglePageProps, ...props }} />;
+export const TogglePage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...TogglePageProps, ...props }} />;

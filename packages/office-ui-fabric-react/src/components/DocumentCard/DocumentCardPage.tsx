@@ -23,12 +23,12 @@ export const DocumentCardPageProps: IDemoPageProps = {
       view: (
         <>
           <p>
-            The default configuration for a card represents a single file, with
-            space to denote the last significant event and the person involved.
+            The default configuration for a card represents a single file, with space to denote the last significant
+            event and the person involved.
           </p>
           <DocumentCardBasicExample />
         </>
-      ),
+      )
     },
     {
       title: 'DocumentCard with multiple items, commands, and views',
@@ -36,18 +36,14 @@ export const DocumentCardPageProps: IDemoPageProps = {
       view: (
         <>
           <p>
-            This example shows a couple of optional abilities, including being
-            able to have a card represent multiple items, being able to expose
-            up to three relevant commands, and showing the number of views in
-            the bottom right corner.
+            This example shows a couple of optional abilities, including being able to have a card represent multiple
+            items, being able to expose up to three relevant commands, and showing the number of views in the bottom
+            right corner.
           </p>
-          <p>
-            Also show a card with Logo, text preview and status that is used for
-            Conversation card.
-          </p>
+          <p>Also show a card with Logo, text preview and status that is used for Conversation card.</p>
           <DocumentCardCompleteExample />
         </>
-      ),
+      )
     },
     {
       title: 'DocumentCard with compact layout ',
@@ -55,31 +51,24 @@ export const DocumentCardPageProps: IDemoPageProps = {
       view: (
         <>
           <p>
-            When showing a card on a mobile device or a similarly narrow layout,
-            you may choose this Compact layout which helps the filename remain
-            scannable while giving roomy space for a preview thumbnail.
+            When showing a card on a mobile device or a similarly narrow layout, you may choose this Compact layout
+            which helps the filename remain scannable while giving roomy space for a preview thumbnail.
           </p>
           <DocumentCardCompactExample />
         </>
-      ),
-    },
+      )
+    }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.types.ts')
   ],
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDonts.md'),
-  isHeaderVisible: true,
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDonts.md'),
+  isHeaderVisible: true
 };
 
 export const DocumentCardPage = (props: { isHeaderVisible: boolean }) => (

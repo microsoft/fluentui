@@ -106,24 +106,17 @@ export const TextFieldPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true,
   nativePropsElement: ['input', 'textarea']
 };
 
-export const TextFieldPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...TextFieldPageProps, ...props }} />;
+export const TextFieldPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...TextFieldPageProps, ...props }} />
+);

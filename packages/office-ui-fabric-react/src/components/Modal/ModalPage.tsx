@@ -19,23 +19,12 @@ export const ModalPageProps: IDemoPageProps = {
       view: <ModalBasicExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md'),
   isHeaderVisible: true
 };
 
-export const ModalPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ModalPageProps, ...props }} />;
+export const ModalPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...ModalPageProps, ...props }} />;

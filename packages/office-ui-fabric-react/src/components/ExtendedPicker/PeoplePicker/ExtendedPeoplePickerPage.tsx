@@ -14,13 +14,11 @@ export const ExtendedPeoplePickerPageProps: IDemoPageProps = {
     {
       title: 'Extended People Picker',
       code: ExtendedPeoplePickerBasicExampleCode,
-      view: <ExtendedPeoplePickerTypesExample />,
-    },
+      view: <ExtendedPeoplePickerTypesExample />
+    }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/BaseExtendedPicker.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/BaseExtendedPicker.types.ts')
   ],
   overview: require<
     string
@@ -34,9 +32,9 @@ export const ExtendedPeoplePickerPageProps: IDemoPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: true
 };
 
-export const ExtendedPeoplePickerPage = (props: {
-  isHeaderVisible: boolean;
-}) => <DemoPage {...{ ...ExtendedPeoplePickerPageProps, ...props }} />;
+export const ExtendedPeoplePickerPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ExtendedPeoplePickerPageProps, ...props }} />
+);

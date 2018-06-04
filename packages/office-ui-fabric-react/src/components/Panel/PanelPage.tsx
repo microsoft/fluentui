@@ -103,24 +103,13 @@ export const PanelPageProps: IDemoPageProps = {
       view: <PanelFooterExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
-export const PanelPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...PanelPageProps, ...props }} />;
+export const PanelPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...PanelPageProps, ...props }} />;

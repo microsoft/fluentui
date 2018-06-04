@@ -33,23 +33,12 @@ export const LayerPageProps: IDemoPageProps = {
       view: <LayerCustomizedExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md'),
   isHeaderVisible: true
 };
 
-export const LayerPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...LayerPageProps, ...props }} />;
+export const LayerPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...LayerPageProps, ...props }} />;

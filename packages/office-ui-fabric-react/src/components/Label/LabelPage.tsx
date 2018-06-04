@@ -19,24 +19,13 @@ export const LabelPageProps: IDemoPageProps = {
       view: <LabelBasicExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
-export const LabelPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...LabelPageProps, ...props }} />;
+export const LabelPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...LabelPageProps, ...props }} />;

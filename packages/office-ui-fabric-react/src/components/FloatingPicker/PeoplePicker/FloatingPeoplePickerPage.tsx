@@ -14,11 +14,11 @@ export const FloatingPeoplePickerPageProps: IDemoPageProps = {
     {
       title: 'Floating People Picker',
       code: FloatingPeoplePickerBasicExampleCode,
-      view: <FloatingPeoplePickerTypesExample />,
-    },
+      view: <FloatingPeoplePickerTypesExample />
+    }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/BaseFloatingPicker.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/BaseFloatingPicker.types.ts')
   ],
   overview: require<
     string
@@ -32,7 +32,7 @@ export const FloatingPeoplePickerPageProps: IDemoPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: true
 };
 
 export const FloatingPeoplePickerPage = (props: { isHeaderVisible: boolean }) => (

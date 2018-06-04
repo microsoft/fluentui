@@ -14,13 +14,13 @@ export const SelectedPeopleListPageProps: IDemoPageProps = {
     {
       title: 'Selected People List',
       code: PeopleSelectedItemsListExampleCode,
-      view: <PeopleSelectedItemsListExample />,
-    },
+      view: <PeopleSelectedItemsListExample />
+    }
   ],
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts'),
+    >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
   ],
   overview: '',
   bestPractices: '',
@@ -30,7 +30,7 @@ export const SelectedPeopleListPageProps: IDemoPageProps = {
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: true
 };
 
 export const SelectedPeopleListPage = (props: { isHeaderVisible: boolean }) => (

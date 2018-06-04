@@ -62,22 +62,15 @@ export const SpinButtonPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDonts.md'),
   isHeaderVisible: true
 };
 
-export const SpinButtonPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...SpinButtonPageProps, ...props }} />;
+export const SpinButtonPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...SpinButtonPageProps, ...props }} />
+);

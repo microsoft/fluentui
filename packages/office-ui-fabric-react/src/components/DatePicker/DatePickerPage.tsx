@@ -55,22 +55,15 @@ export const DatePickerPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDonts.md'),
   isHeaderVisible: true
 };
 
-export const DatePickerPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...DatePickerPageProps, ...props }} />;
+export const DatePickerPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...DatePickerPageProps, ...props }} />
+);

@@ -83,26 +83,15 @@ export const PivotPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: 'PivotItem'
 };
 
-export const PivotPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...PivotPageProps, ...props }} />;
+export const PivotPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...PivotPageProps, ...props }} />;

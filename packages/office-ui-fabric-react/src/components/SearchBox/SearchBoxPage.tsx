@@ -41,24 +41,17 @@ export const SearchBoxPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/SearchBox.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/SearchBox.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md'),
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md'),
   isHeaderVisible: true
 };
 
-export const SearchBoxPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...SearchBoxPageProps, ...props }} />;
+export const SearchBoxPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...SearchBoxPageProps, ...props }} />
+);

@@ -23,38 +23,38 @@ export const KeytipsPageProps: IDemoPageProps = {
     {
       title: 'Keytips on Buttons',
       code: KeytipsButtonCode,
-      view: <KeytipsButtonExample />,
+      view: <KeytipsButtonExample />
     },
     {
       title: 'Keytips in a CommandBar',
       code: KeytipsCommandBarCode,
-      view: <KeytipsCommandBarExample />,
+      view: <KeytipsCommandBarExample />
     },
     {
       title: 'Keytips in an OverflowWell',
       code: KeytipsOverflowCode,
-      view: <KeytipsOverflowExample />,
+      view: <KeytipsOverflowExample />
     },
     {
       title: 'Keytips Example',
       code: KeytipsBasicCode,
-      view: <KeytipsBasicExample />,
-    },
+      view: <KeytipsBasicExample />
+    }
   ],
   propertiesTablesSources: [
     require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/Keytip.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/KeytipLayer/KeytipLayer.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/KeytipLayer/KeytipLayer.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDonts.md'),
-  isHeaderVisible: true,
+  isHeaderVisible: true
 };
 
 export const KeytipsPage = (props: { isHeaderVisible: boolean }) => (
   <div>
     <DemoPage {...{ ...KeytipsPageProps, ...props }} />
-    <KeytipLayer content='Alt Windows' />
+    <KeytipLayer content="Alt Windows" />
   </div>
 );

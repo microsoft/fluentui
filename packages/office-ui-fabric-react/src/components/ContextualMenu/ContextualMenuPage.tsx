@@ -58,8 +58,7 @@ export const ContextualMenuPageProps: IDemoPageProps = {
       view: <ContextualMenuSectionExample />
     },
     {
-      title:
-        'ContextualMenu with checkable menu items and toggleable split button',
+      title: 'ContextualMenu with checkable menu items and toggleable split button',
       code: ContextualMenuCheckmarksExampleCode,
       view: <ContextualMenuCheckmarksExample />
     },
@@ -90,25 +89,20 @@ export const ContextualMenuPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
   ],
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDos.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDos.md'),
   donts: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDonts.md'),
   isHeaderVisible: true
 };
 
-export const ContextualMenuPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ContextualMenuPageProps, ...props }} />;
+export const ContextualMenuPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ContextualMenuPageProps, ...props }} />
+);

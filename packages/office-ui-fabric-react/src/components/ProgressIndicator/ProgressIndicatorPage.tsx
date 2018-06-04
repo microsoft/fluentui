@@ -27,9 +27,7 @@ export const ProgressIndicatorPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.types.ts')
   ],
   overview: require<
     string
@@ -44,5 +42,6 @@ export const ProgressIndicatorPageProps: IDemoPageProps = {
   isHeaderVisible: true
 };
 
-export const ProgressIndicatorPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ProgressIndicatorPageProps, ...props }} />;
+export const ProgressIndicatorPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ProgressIndicatorPageProps, ...props }} />
+);

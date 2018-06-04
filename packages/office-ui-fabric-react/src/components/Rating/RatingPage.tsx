@@ -27,22 +27,13 @@ export const RatingPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
   isHeaderVisible: true
 };
 
-export const RatingPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...RatingPageProps, ...props }} />;
+export const RatingPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...RatingPageProps, ...props }} />;

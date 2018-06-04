@@ -55,25 +55,14 @@ export const ImagePageProps: IDemoPageProps = {
       view: <ImageMaximizeFrameExample />
     }
   ],
-  propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true,
   nativePropsElement: 'img'
 };
 
-export const ImagePage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ImagePageProps, ...props }} />;
+export const ImagePage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...ImagePageProps, ...props }} />;

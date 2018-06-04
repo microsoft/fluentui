@@ -27,23 +27,16 @@ export const ComboBoxPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/ComboBox/ComboBox.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/ComboBox.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDonts.md'),
   isHeaderVisible: true,
   allowNativeProps: true
 };
 
-export const ComboBoxPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...ComboBoxPageProps, ...props }} />;
+export const ComboBoxPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...ComboBoxPageProps, ...props }} />
+);

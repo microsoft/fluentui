@@ -20,22 +20,13 @@ export const SpinnerPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),
   isHeaderVisible: true
 };
 
-export const SpinnerPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...SpinnerPageProps, ...props }} />;
+export const SpinnerPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...SpinnerPageProps, ...props }} />;

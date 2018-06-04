@@ -20,22 +20,15 @@ export const MessageBarPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/MessageBar/MessageBar.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/MessageBar.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDonts.md'),
   isHeaderVisible: true
 };
 
-export const MessageBarPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...MessageBarPageProps, ...props }} />;
+export const MessageBarPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...MessageBarPageProps, ...props }} />
+);

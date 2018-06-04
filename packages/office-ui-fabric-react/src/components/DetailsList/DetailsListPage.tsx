@@ -41,8 +41,7 @@ export const DetailsListPageProps: IDemoPageProps = {
   componentStatus: DetailsListStatus,
   examples: [
     {
-      title:
-        'Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns',
+      title: 'Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns',
       code: DetailsListDocumentsExampleCode,
       view: <DetailsListDocumentsExample />
     },
@@ -87,29 +86,23 @@ export const DetailsListPageProps: IDemoPageProps = {
       view: <DetailsListDragDropExample />
     },
     {
-      title:
-        'Navigating to new content preserving keyboard focus with initialFocusedIndex',
+      title: 'Navigating to new content preserving keyboard focus with initialFocusedIndex',
       code: DetailsListNavigatingFocusExampleCode,
       view: <DetailsListNavigatingFocusExample />
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
   ],
   overview: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
   isHeaderVisible: true
 };
 
-export const DetailsListPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...DetailsListPageProps, ...props }} />;
+export const DetailsListPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...DetailsListPageProps, ...props }} />
+);

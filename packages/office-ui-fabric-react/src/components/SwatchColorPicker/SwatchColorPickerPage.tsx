@@ -20,9 +20,7 @@ export const SwatchColorPickerPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/SwatchColorPicker.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/SwatchColorPicker.types.ts')
   ],
   overview: require<
     string
@@ -37,5 +35,6 @@ export const SwatchColorPickerPageProps: IDemoPageProps = {
   isHeaderVisible: true
 };
 
-export const SwatchColorPickerPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...SwatchColorPickerPageProps, ...props }} />;
+export const SwatchColorPickerPage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...SwatchColorPickerPageProps, ...props }} />
+);

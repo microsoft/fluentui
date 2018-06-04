@@ -28,24 +28,15 @@ export const DividerPageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerOverview.md'),
   bestPractices: require<
     string
   >('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md'),
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md'),
   isHeaderVisible: true
 };
 
-export const DividerPage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...DividerPageProps, ...props }} />;
+export const DividerPage = (props: { isHeaderVisible: boolean }) => <DemoPage {...{ ...DividerPageProps, ...props }} />;

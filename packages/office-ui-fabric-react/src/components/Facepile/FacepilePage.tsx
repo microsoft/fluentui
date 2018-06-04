@@ -34,22 +34,15 @@ export const FacepilePageProps: IDemoPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
   bestPractices: '',
-  dos: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
   isHeaderVisible: true
 };
 
-export const FacepilePage = (props: { isHeaderVisible: boolean }) =>
-  <DemoPage {...{ ...FacepilePageProps, ...props }} />;
+export const FacepilePage = (props: { isHeaderVisible: boolean }) => (
+  <DemoPage {...{ ...FacepilePageProps, ...props }} />
+);
