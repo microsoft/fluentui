@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Jun 2018 10:16:13 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Jun 2018 18:50:06 GMT and should not be manually modified.
+
+## 6.4.0
+Mon, 04 Jun 2018 18:50:06 GMT
+
+### Minor changes
+
+- Revert PR 4897
 
 ## 6.3.0
 Mon, 04 Jun 2018 10:16:13 GMT

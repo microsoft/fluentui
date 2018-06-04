@@ -1,41 +1,31 @@
 import * as React from 'react';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { LayoutGroupBasicExample } from './examples/LayoutGroup.Basic.Example';
-const LayoutGroupBasicExampleCode =
-  require('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/examples/LayoutGroup.Basic.Example.tsx') as string;
+const LayoutGroupBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/examples/LayoutGroup.Basic.Example.tsx') as string;
 
 export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='LayoutGroup'
-        componentName='LayoutGroup'
+        title="LayoutGroup"
+        componentName="LayoutGroup"
         exampleCards={
           <div>
-            <ExampleCard title='Folder Cover' isOptIn={ true } code={ LayoutGroupBasicExampleCode }>
+            <ExampleCard title="Folder Cover" isOptIn={true} code={LayoutGroupBasicExampleCode}>
               <LayoutGroupBasicExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
+            sources={[
               require<string>('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/LayoutGroup.types.ts')
-            ] }
+            ]}
           />
         }
-        overview={
-          <div />
-        }
-        bestPractices={
-          <div />
-        }
+        overview={<div />}
+        bestPractices={<div />}
         dos={
           <div>
             <ul>
@@ -50,7 +40,7 @@ export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }

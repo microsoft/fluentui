@@ -5,7 +5,6 @@ const setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
 const setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
 
 describe('Selection', () => {
-
   it('fires change events only when selection changes occur', () => {
     let changeCount = 0;
     const selection = new Selection({ onSelectionChanged: () => changeCount++ });
@@ -85,5 +84,4 @@ describe('Selection', () => {
     selection.setAllSelected(true);
     expect(selection.isAllSelected()).toEqual(true);
   });
-
 });

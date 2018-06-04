@@ -2,9 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IImage {
-
-}
+export interface IImage {}
 
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
